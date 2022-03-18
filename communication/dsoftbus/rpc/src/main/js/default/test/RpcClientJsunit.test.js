@@ -1232,7 +1232,10 @@ describe('ActsRpcClientJsTest', function(){
             var token = 'ades';
             var result = data.writeChar(token);
             console.log("SUB_Softbus_IPC_MessageParcel_6000:run writeChar success, result is " + result);
-            expect(result == false).assertTrue()
+            expect(result == true).assertTrue()
+            var readresult = data.readChar();
+            expect(result == 'a').assertTrue()
+
         } catch (error) {
             console.log("SUB_Softbus_IPC_MessageParcel_6000:error = " + error);
         }
@@ -1744,6 +1747,7 @@ describe('ActsRpcClientJsTest', function(){
             var result = data.writeRemoteObject(testRemoteObject);
             console.log("SUB_Softbus_IPC_MessageParcel_7400: result is " + result);
             expect(result == true).assertTrue();
+            
         } catch (error) {
             console.log("SUB_Softbus_IPC_MessageParcel_7400:error = " + error);
         }
@@ -2196,6 +2200,9 @@ describe('ActsRpcClientJsTest', function(){
             await gIRemoteObject.sendRequest(CODE_WRITE_REMOTEOBJECTARRAY, data, reply, option).then((result) => {
                 console.log("SUB_Softbus_IPC_MessageParcel_8600: sendRequest success, result is " + result.errCode);
                 expect(result.errCode).assertEqual(0);
+                expect(result.code).assertEqual(CODE_WRITE_REMOTEOBJECTARRAY);
+                expect(result.data).assertEqual(data);
+                expect(result.reply).assertEqual(reply);
             });
 
             data.reclaim();
@@ -2483,7 +2490,7 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_9200", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_9100---------------------------");
+        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_9200---------------------------");
         try{
             var data = rpc.MessageParcel.create();
             console.log("SUB_Softbus_IPC_MessageParcel_9200: create object successfully.");
@@ -2552,6 +2559,8 @@ describe('ActsRpcClientJsTest', function(){
         let listener = new TestListener("rpcListener", checkResult)
         let result = data.writeRemoteObject(listener)
         expect(result == true).assertTrue()
+        let readresult = data.readRemoteObject()
+        expect(readresult == null).assertFalse()
         console.info("SUB_Softbus_IPC_MessageParcel_9300 result is:" + result)
         expect(data.writeInt(123)).assertTrue()
         expect(data.writeString("rpcListenerTest")).assertTrue()
@@ -2579,7 +2588,7 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it('SUB_Softbus_IPC_MessageParcel_9400', 0, async function(done) {
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_9200---------------------------");
+        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_9400---------------------------");
         try{
             function checkResult(num, str) {
                 expect(num).assertEqual(123)
@@ -2645,6 +2654,8 @@ describe('ActsRpcClientJsTest', function(){
             new TestListener("rpcListener6", checkResult)]
             let result = data.writeRemoteObjectArray(listeners)
             expect(result == true).assertTrue()
+            let readresult = data.readRemoteObjectArray()
+            expect(readresult == null).assertFalse()
             console.info("SUB_Softbus_IPC_MessageParcel_9500 result is:" + result)
             expect(data.writeInt(123)).assertTrue()
             expect(data.writeString("rpcListenerTest")).assertTrue()
@@ -2690,7 +2701,7 @@ describe('ActsRpcClientJsTest', function(){
             console.log("SUB_Softbus_IPC_MessageOption_0100: run getFlags success, flog is " + flog);
             expect(flog == rpc.MessageOption.TF_SYNC).assertTrue();
 
-            option.setFlags(rpc.MessageOption.TF_SYNC)
+            option.setFlags(rpc.MessageOption.TF_AYNC)
             console.log("SUB_Softbus_IPC_MessageOption_0100: run setFlags success");
 
             let flog2 = option.getFlags();
@@ -2732,6 +2743,29 @@ describe('ActsRpcClientJsTest', function(){
             console.log("SUB_Softbus_IPC_MessageOption_0200: error " + error);
         }
         console.log("---------------------end SUB_Softbus_IPC_MessageOption_0200---------------------------");
+    })
+
+    /*
+     * @tc.number  SUB_Softbus_IPC_MessageOption_0300
+     * @tc.name    Setflags interface outlier detection
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it("SUB_Softbus_IPC_MessageOption_0300",0,function(){
+        console.log("---------------------start SUB_Softbus_IPC_MessageOption_0300---------------------------");
+        try{
+           expect(rpc.MessageOption.TF_SYNC).assertEqual(0);
+
+           expect(rpc.MessageOption.TF_AYNC).assertEqual(1);
+
+           expect(rpc.MessageOption.TF_WAIT_TIME).assertEqual(4);
+
+           expect(rpc.MessageOption.TF_ACCEPT_FDS).assertEqual(0x10);
+
+        }catch(error){
+            console.log("SUB_Softbus_IPC_MessageOption_0300: error " + error);
+        }
+        console.log("---------------------end SUB_Softbus_IPC_MessageOption_0300---------------------------");
     })
 
     /*
@@ -2945,7 +2979,7 @@ describe('ActsRpcClientJsTest', function(){
 
             ashmem.unmapAshmem();
             console.log("SUB_Softbus_IPC_Ashmem_0900: run unmapAshmem success");
-
+            expect(ashmem.mapReadAndWriteAshmem()).assertFalse();
             let result2 = ashmem.mapReadAndWriteAshmem();
             console.log("SUB_Softbus_IPC_Ashmem_0900: run mapReadAndWriteAshmem success, result2 is " + result2);
             expect(result2 == false).assertTrue();
@@ -2982,7 +3016,7 @@ describe('ActsRpcClientJsTest', function(){
     })
 
     /*
-     * @tc.number  SUB_Softbus_IPC_Ashmem_0900
+     * @tc.number  SUB_Softbus_IPC_Ashmem_1100
      * @tc.name    Mapreadonlyashmem exception validation
      * @tc.desc    Function test
      * @tc.level   0
@@ -2992,7 +3026,6 @@ describe('ActsRpcClientJsTest', function(){
         try{
 
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 1024)
-            expect(ashmem).assertTrue()
             console.log("SUB_Softbus_IPC_Ashmem_1100: ashmem " + ashmem);
 
             let result = ashmem.mapAshmem(rpc.Ashmem.PROT_WRITE);
@@ -3001,13 +3034,10 @@ describe('ActsRpcClientJsTest', function(){
 
             ashmem.unmapAshmem();
             console.log("SUB_Softbus_IPC_Ashmem_1100: run unmapAshmem success");
-
+            ashmem.closeAshmem()
             let result2 = ashmem.mapReadOnlyAshmem();
             console.log("SUB_Softbus_IPC_Ashmem_1100: run mapReadAndWriteAshmem success, result2 is " + result2);
             expect(result2 == false).assertTrue();
-
-            ashmem.closeAshmem()
-
         }catch(error){
             console.log("SUB_Softbus_IPC_Ashmem_1100: error " + error);
         }
@@ -3068,7 +3098,7 @@ describe('ActsRpcClientJsTest', function(){
 
             let result = ashmem.setProtection(3);
             console.log("SUB_Softbus_IPC_Ashmem_1300: run setProtection success, result is " + result);
-            expect(result == false).assertTrue();
+            expect(result == true).assertTrue();
 
             ashmem.closeAshmem()
         }catch(error){
@@ -3167,7 +3197,7 @@ describe('ActsRpcClientJsTest', function(){
             let size = bytes.length + 10;
             let result = ashmem.writeToAshmem(bytes, 3, 0);
             console.log("SUB_Softbus_IPC_Ashmem_1600: run writeToAshmem success, result is " + result);
-            expect(result == false).assertTrue()
+            expect(result == true).assertTrue()
 
             ashmem.closeAshmem()
 
@@ -3425,6 +3455,28 @@ describe('ActsRpcClientJsTest', function(){
 //        console.log("---------------------end SUB_Softbus_IPC_Ashmem_2200---------------------------");
 //    })
 
+ /*
+     * @tc.number  SUB_Softbus_IPC_Ashmem_2300
+     * @tc.name    Test the mapped memory is executable
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+ it("SUB_Softbus_IPC_Ashmem_2300",0,function(){
+    console.log("---------------------start SUB_Softbus_IPC_Ashmem_2300---------------------------");
+    try{
+        let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 1024);
+
+        let resultwrite = ashmem.setProtection(rpc.Ashmem.PROT_EXEC)
+        console.log("SUB_Softbus_IPC_Ashmem_2300: run setProtection success, resultwrite is " + resultwrite);
+        expect(resultwrite == true).assertTrue();
+
+        ashmem.closeAshmem()
+    }catch(error){
+        console.log("SUB_Softbus_IPC_Ashmem_2300: error " + error);
+    }
+    console.log("---------------------end SUB_Softbus_IPC_Ashmem_2300---------------------------");
+})
+
     /*
      * @tc.number  SUB_Softbus_IPC_IRemoteObject_0100
      * @tc.name    Call sendrequestresult interface to send data
@@ -3576,26 +3628,18 @@ describe('ActsRpcClientJsTest', function(){
     it("SUB_Softbus_IPC_IRemoteObject_0400", 0,async function(){
         console.log("---------------------start SUB_Softbus_IPC_IRemoteObject_0400---------------------------");
         try{
-            let recipient = new MyDeathRecipient(gIRemoteObject, null)
-            var resultAdd1 = gIRemoteObject.addDeathRecipient(recipient, 0)
+            let object = new TestAbilityStub("Test1")
+            var resultAdd1 = object.addDeathRecipient(null, 0)
             console.log("SUB_Softbus_IPC_IRemoteObject_0400:run addDeathRecipient first result is " + resultAdd1);
-            expect(resultAdd1 == true).assertTrue();
+            expect(resultAdd1 == false).assertTrue();
 
-            var resultAdd2 = gIRemoteObject.addDeathRecipient(recipient, 0)
-            console.log("SUB_Softbus_IPC_IRemoteObject_0400:run addDeathRecipient second result is " + resultAdd2);
-            expect(resultAdd2 == true).assertTrue();
-
-            var resultRemove1 = gIRemoteObject.removeDeathRecipient(recipient, 0)
+            var resultRemove1 = object.removeDeathRecipient(null, 0)
             console.log("SUB_Softbus_IPC_IRemoteObject_0400:run removeDeathRecipient1 result is " + resultRemove1);
-            expect(resultRemove1 == true).assertTrue();
+            expect(resultRemove1 == false).assertTrue();
 
-            var resultRemove2 = gIRemoteObject.removeDeathRecipient(recipient, 0)
-            console.log("SUB_Softbus_IPC_IRemoteObject_0400:run  removeDeathRecipient2 result is " + resultRemove2);
-            expect(resultRemove2 == true).assertTrue();
-
-            var resultRemove3 = gIRemoteObject.removeDeathRecipient(recipient, 0)
-            console.log("SUB_Softbus_IPC_IRemoteObject_0400:run  removeDeathRecipient3 result is " + resultRemove3);
-            expect(resultRemove3 == false).assertTrue();
+            let isDead = object.isObjectDead()
+            console.log("SUB_Softbus_IPC_IRemoteObject_0400:run  isDead result is " + isDead);
+            expect(isDead == false).assertTrue();
         } catch (error) {
             console.log("SUB_Softbus_IPC_IRemoteObject_0400:error = " + error);
         }
@@ -3745,24 +3789,24 @@ describe('ActsRpcClientJsTest', function(){
     it("SUB_Softbus_IPC_RemoteProxy_0200", 0,async function(){
         console.log("---------------------start SUB_Softbus_IPC_RemoteProxy_0200---------------------------");
         try{
-            let recipient = new MyDeathRecipient(gIRemoteObject, null)
-            var resultAdd1 = gIRemoteObject.addDeathRecipient(recipient, 0)
+            let recipient = new MyDeathRecipient(proxy, null)
+            var resultAdd1 = proxy.addDeathRecipient(recipient, 0)
             console.log("SUB_Softbus_IPC_RemoteProxy_0200:run addDeathRecipient first result is " + resultAdd1);
             expect(resultAdd1 == true).assertTrue();
 
-            var isDead1 = gIRemoteObject.isObjectDead();
+            var isDead1 = proxy.isObjectDead();
             console.log("SUB_Softbus_IPC_RemoteProxy_0200: run isObjectDead result is " + isDead1);
             expect(isDead1 == true).assertTrue();
 
-            var resultAdd2 = gIRemoteObject.addDeathRecipient(recipient, 0)
+            var resultAdd2 = proxy.addDeathRecipient(recipient, 0)
             console.log("SUB_Softbus_IPC_RemoteProxy_0200:run addDeathRecipient second result is " + resultAdd2);
             expect(resultAdd2 == true).assertTrue();
 
-            var resultRemove1 = gIRemoteObject.removeDeathRecipient(recipient, 0)
+            var resultRemove1 = proxy.removeDeathRecipient(recipient, 0)
             console.log("SUB_Softbus_IPC_RemoteProxy_0200:run removeDeathRecipient1 result is " + resultRemove1);
             expect(resultRemove1 == true).assertTrue();
 
-            var isDead2 = gIRemoteObject.isObjectDead();
+            var isDead2 = proxy.isObjectDead();
             console.log("SUB_Softbus_IPC_RemoteProxy_0200: run isObjectDead2 result is " + isDead2);
             expect(isDead1 == false).assertTrue();
         } catch (error) {
@@ -3832,29 +3876,18 @@ describe('ActsRpcClientJsTest', function(){
     it("SUB_Softbus_IPC_RemoteProxy_0500", 0, async function(done){
         console.log("SUB_Softbus_IPC_RemoteProxy_0500 is starting-------------")
         try {
-            let data = rpc.MessageParcel.create();
-            let reply = rpc.MessageParcel.create();
-            var option = new rpc.MessageOption();
-            let writeInt = data.writeInt(1)
-            console.log("SUB_Softbus_IPC_RemoteProxy_0500: writeInt result is" + writeInt);
-            if (gIRemoteObject == undefined)
-            {
-                console.log("SUB_Softbus_IPC_RemoteProxy_0500 : gIRemoteObject is undefined");
-            }
-            await gIRemoteObject.sendRequest(CODE_TRANSACTION, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_RemoteProxy_0500: run success, result is " + result);
-                let a = result.reply.RemoteProxy.PING_TRANSACTION;
-                console.log("SUB_Softbus_IPC_RemoteProxy_0500:The result a is" + a);
-                let b = result.reply.RemoteProxy.DUMP_TRANSACTION;
-                console.log("SUB_Softbus_IPC_RemoteProxy_0500:The result b is" + b);
-                let c = result.reply.RemoteProxy.INTERFACE_TRANSACTION;
-                console.log("SUB_Softbus_IPC_RemoteProxy_0500:The result c is" + c);
-                let d = result.reply.RemoteProxy.MIN_TRANSACTION_ID;
-                console.log("SUB_Softbus_IPC_RemoteProxy_0500:The result d is" + d);
-                let e = result.reply.RemoteProxy.MAX_TRANSACTION_ID;
-                console.log("SUB_Softbus_IPC_RemoteProxy_0500:The result e is" + e);
-            });
-            done();
+            
+                expect(rpc.RemoteProxy.PING_TRANSACTION).assertEqual(1599098439);
+
+                expect(rpc.RemoteProxy.DUMP_TRANSACTION).assertEqual(1598311760);
+                
+                expect(rpc.RemoteProxy.INTERFACE_TRANSACTION).assertEqual(1598968902);
+               
+                expect(rpc.RemoteProxy.MIN_TRANSACTION_ID).assertEqual(0x1);
+             
+                expect(rpc.RemoteProxy.MAX_TRANSACTION_ID).assertEqual(0x00FFFFFF);
+                
+           
         } catch (error) {
             console.log("SUB_Softbus_IPC_RemoteProxy_0500 error is" + error);
         }
@@ -3893,12 +3926,23 @@ describe('ActsRpcClientJsTest', function(){
         try{
             let getCallingPid = rpc.IPCSkeleton.getCallingPid();
             console.log("SUB_Softbus_IPC_IPCSkeleton_2000: run  getCallingPid result is :" + getCallingPid);
+            expect(getCallingPid.assertEqual(nll)).assertFale();
+
             let getCallingUid = rpc.IPCSkeleton.getCallingUid();
             console.log("SUB_Softbus_IPC_IPCSkeleton_2000: run getCallingUid result is :" + getCallingUid);
+            expect(getCallingUid.assertEqual(nll)).assertFale();
+
+            let getCallingToKenId = rpc.IPCSkeleton.getCallingToKenId();
+            console.log("SUB_Softbus_IPC_IPCSkeleton_2000: run getCallingToKenId result is :" + getCallingToKenId);
+            expect(getCallingToKenId.assertEqual(nll)).assertFale();
+
             let getLocalDeviceID = rpc.IPCSkeleton.getLocalDeviceID();
             console.log("SUB_Softbus_IPC_IPCSkeleton_2000: run getLocalDeviceID result is :" + getLocalDeviceID);
+            expect(getLocalDeviceID.assertEqual(nll)).assertFale();
+
             let getCallingDeviceID = rpc.IPCSkeleton.getCallingDeviceID();
             console.log("SUB_Softbus_IPC_IPCSkeleton_2000: run getCallingDeviceID result is :" + getCallingDeviceID);
+            expect(getCallingDeviceID.assertEqual(nll)).assertFale();
         } catch (error){
             console.log("SUB_Softbus_IPC_IPCSkeleton_2000: error = " + error);
         }
