@@ -127,7 +127,7 @@ export function getFileTextLen(fpath) {
     expect(ss !== null).assertTrue()
     let len = ss.readSync(new ArrayBuffer(4096))
     console.log('file:' + fpath)
-    console.log('file lenth:' + len)
+    console.log('file length:' + len)
     expect(ss.closeSync() !== null).assertTrue()
     return len
   } 

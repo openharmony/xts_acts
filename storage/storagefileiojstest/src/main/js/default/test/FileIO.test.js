@@ -1336,7 +1336,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_UnlinkSync_0200
    * @tc.name fileio_test_unlink_sync_002
-   * @tc.desc Function of API, invaild parameter
+   * @tc.desc Function of API, invalid parameter
    */
   it('fileio_test_unlink_sync_002', 0, async function () {
     let fpath = await nextFileName('fileIOTest');
@@ -1460,7 +1460,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_WriteSync_0500
    * @tc.name fileio_test_write_sync_005
-   * @tc.desc Function of API, invaild offset.
+   * @tc.desc Function of API, invalid offset.
    */
   it('fileio_test_write_sync_005', 0, async function () {
     let fpath = await nextFileName('fileio_test_write_sync_005');
@@ -1483,7 +1483,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_WriteSync_0600
    * @tc.name fileio_test_write_sync_006
-   * @tc.desc Function of API, invaild length.
+   * @tc.desc Function of API, invalid length.
    */
   it('fileio_test_write_sync_006', 0, async function () {
     let fpath = await nextFileName('fileio_test_write_sync_006');
@@ -1521,7 +1521,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_WriteSync_0800
    * @tc.name fileio_test_write_sync_008
-   * @tc.desc Function of API, invaild parameter.
+   * @tc.desc Function of API, invalid parameter.
    */
   it('fileio_test_write_sync_008', 0, async function () {
     try {
@@ -1630,7 +1630,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_ReadSync_0300
    * @tc.name fileio_test_read_sync_003
-   * @tc.desc Function of API, invaild offset
+   * @tc.desc Function of API, invalid offset
    */
   it('fileio_test_read_sync_003', 0, async function () {
     let fd
@@ -1654,7 +1654,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_ReadSync_0300
    * @tc.name fileio_test_read_sync_004
-   * @tc.desc Function of API, invaild length.
+   * @tc.desc Function of API, invalid length.
    */
   it('fileio_test_read_sync_004', 0, async function () {
     let fd
@@ -1717,7 +1717,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_ReadSync_0700
    * @tc.name fileio_test_read_sync_007
-   * @tc.desc Function of API, invaild position.
+   * @tc.desc Function of API, invalid position.
    */
   it('fileio_test_read_sync_007', 0, async function () {
     let fpath = await nextFileName('fileio_test_read_sync_007');
@@ -2170,7 +2170,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_copyFileSync_0100
    * @tc.name fileio_test_copy_file_sync_001
-   * @tc.desc Function of API, copy. fpatch is invaild, fpathTarget is vaild, same path, file not same.
+   * @tc.desc Function of API, copy. fpatch is invalid, fpathTarget is vaild, same path, file not same.
    */
   it('fileio_test_copy_file_sync_001', 0, async function () {
     let fpath = await nextFileName('fileio_test_copy_file_sync_001') + 'd'
@@ -2187,7 +2187,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_copyFileSync_0200
    * @tc.name fileio_test_copy_file_sync_002
-   * @tc.desc Function of API, copy. fpatch is vaild, fpathTarget is invaild.
+   * @tc.desc Function of API, copy. fpatch is vaild, fpathTarget is invalid.
    */
   it('fileio_test_copy_file_sync_002', 0, async function () {
     let fpath = await nextFileName('fileio_test_copy_file_sync_002');
@@ -2262,7 +2262,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_copyFileSync_0600
    * @tc.name fileio_test_copy_file_sync_006
-   * @tc.desc Function of API, copy. fpathTarget is invaild.
+   * @tc.desc Function of API, copy. fpathTarget is invalid.
    */
   it('fileio_test_copy_file_sync_006', 0, async function () {
     let fpath = await nextFileName('fileio_test_copy_file_sync_006');
@@ -2279,7 +2279,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_copyFileSync_0700
    * @tc.name fileio_test_copy_file_sync_007
-   * @tc.desc Function of API, copy. fpatch is invaild, fpathTarget is invaild.
+   * @tc.desc Function of API, copy. fpatch is invalid, fpathTarget is invalid.
    */
   it('fileio_test_copy_file_sync_007', 0, async function () {
     try {
@@ -2440,7 +2440,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_truncateSync_0200
    * @tc.name fileio_test_truncate_sync_002
-   * @tc.desc Function of API, no invaild parameter.
+   * @tc.desc Function of API, no invalid parameter.
    */
   it('fileio_test_truncate_sync_002', 0, async function () {
     let fpath = await nextFileName('fileio_test_truncate_sync_001');
@@ -2511,7 +2511,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_RenameSync_0200
    * @tc.name fileio_test_rename_sync_002
-   * @tc.desc Function of API, renameSync. The test file is exist, fpathTarget is invaild.
+   * @tc.desc Function of API, renameSync. The test file is exist, fpathTarget is invalid.
    */
   it('fileio_test_rename_sync_002', 0, async function () {
     let fpath = await nextFileName('fileio_test_rename_sync_002');
@@ -2732,7 +2732,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_FchmodSync_0400
    * @tc.name fileio_test_fchmod_sync_004
-   * @tc.desc Function of API, mode is invaild. The test file is exist.
+   * @tc.desc Function of API, mode is invalid. The test file is exist.
    */
   it('fileio_test_fchmod_sync_004', 0, async function () {
     let fpath = await nextFileName('fileio_test_fchmod_sync_004');
@@ -3067,7 +3067,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_FtruncateSync_0200
    * @tc.name fileio_test_ftruncate_sync_002
-   * @tc.desc Function of API, invaild parameter. The test file is not exist.
+   * @tc.desc Function of API, invalid parameter. The test file is not exist.
    */
   it('fileio_test_ftruncate_sync_002', 0, async function () {
     try {
@@ -3082,7 +3082,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_FtruncateSync_0300
    * @tc.name fileio_test_ftruncate_sync_003
-   * @tc.desc Function of API, invaild parameter. The test file is not exist.
+   * @tc.desc Function of API, invalid parameter. The test file is not exist.
    */
   it('fileio_test_ftruncate_sync_003', 0, async function () {
     try {
@@ -3150,7 +3150,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_FsyncSync_0200
    * @tc.name fileio_test_fsync_sync_002
-   * @tc.desc Function of API, invaild parameter.
+   * @tc.desc Function of API, invalid parameter.
    */
   it('fileio_test_fsync_sync_002', 0, async function () {
     try {
@@ -3233,7 +3233,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_MkdirSync_RmdirSync_0400
    * @tc.name fileio_test_mkdir_sync_rmdir_sync_004
-   * @tc.desc Function of API, invaild parameter. The test file is not exist.
+   * @tc.desc Function of API, invalid parameter. The test file is not exist.
    */
   it('fileio_test_mkdir_sync_rmdir_sync_004', 0, async function () {
     try {
@@ -3248,7 +3248,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_MkdirSync_RmdirSync_0500
    * @tc.name fileio_test_mkdir_sync_rmdir_sync_005
-   * @tc.desc Function of API, invaild parameter. The test file is not exist.
+   * @tc.desc Function of API, invalid parameter. The test file is not exist.
    */
   it('fileio_test_mkdir_sync_rmdir_sync_005', 0, async function () {
     try {
@@ -3583,7 +3583,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_ChownSync_0200
    * @tc.name fileio_test_chown_sync_002
-   * @tc.desc Function of API, invaild fd. The test file is not exist.
+   * @tc.desc Function of API, invalid fd. The test file is not exist.
    */
   it('fileio_test_chown_sync_002', 0, async function () {
     let fpath = await nextFileName('fileio_test_chown_sync_002');
