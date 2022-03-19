@@ -84,24 +84,6 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
 
-        await audioManager.setAudioScene(AudioScene).then(async function () {
-            console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-            await audioManager.getAudioScene().then(async function (data) {
-                console.info('AudioFrameworkRenderLog: getAudioScene : Value : '+data);
-            }).catch((err) => {
-                console.info('AudioFrameworkRenderLog: getAudioScene : ERROR : '+err.message);
-                resultFlag=false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: setAudioScene : ERROR : '+err.message);
-            resultFlag=false;
-        });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-            return resultFlag;
-        }
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
-
         await audioRen.getStreamInfo().then(async function (audioParamsGet) {
             console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
             console.info('AudioFrameworkRenderLog: Renderer sampleFormat:' + audioParamsGet.sampleFormat);
@@ -5123,21 +5105,6 @@ describe('audioRenderer', function () {
 
      console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
 
-     await audioManager.setAudioScene(AudioScene).then(async function () {
-         console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-         await audioManager.getAudioScene().then(async function (data) {
-             console.info('AudioFrameworkRenderLog: getAudioScene : Value : '+data);
-         }).catch((err) => {
-             console.info('AudioFrameworkRenderLog: getAudioScene : ERROR : '+err.message);
-             resultFlag=false;
-         });
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: setAudioScene : ERROR : '+err.message);
-         resultFlag=false;
-     });
-
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
-
      await audioRen.getStreamInfo().then(async function (audioParamsGet) {
          console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
          console.info('AudioFrameworkRenderLog: Renderer sampleFormat:' + audioParamsGet.sampleFormat);
@@ -5295,21 +5262,6 @@ describe('audioRenderer', function () {
     });
 
      console.info('AudioFrameworkRenderLog: AudioRenderer : Path : '+fpath);
-
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
-
-     await audioManager.setAudioScene(AudioScene).then(async function () {
-         console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-         await audioManager.getAudioScene().then(async function (data) {
-             console.info('AudioFrameworkRenderLog: getAudioScene : Value : '+data);
-         }).catch((err) => {
-             console.info('AudioFrameworkRenderLog: getAudioScene : ERROR : '+err.message);
-             resultFlag=false;
-         });
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: setAudioScene : ERROR : '+err.message);
-         resultFlag=false;
-     });
 
      console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
 
@@ -5471,34 +5423,6 @@ describe('audioRenderer', function () {
 
      console.info('AudioFrameworkRenderLog: AudioRenderer : Path : '+fpath);
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
-
-     await audioManager.setAudioScene(AudioScene).then(async function () {
-         console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-         await audioManager.getAudioScene().then(async function (data) {
-             console.info('AudioFrameworkRenderLog: getAudioScene : Value : '+data);
-         }).catch((err) => {
-             console.info('AudioFrameworkRenderLog: getAudioScene : ERROR : '+err.message);
-             resultFlag=false;
-         });
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: setAudioScene : ERROR : '+err.message);
-         resultFlag=false;
-     });
-
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
-
-     await audioRen.getStreamInfo().then(async function (audioParamsGet) {
-         console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
-         console.info('AudioFrameworkRenderLog: Renderer sampleFormat:' + audioParamsGet.sampleFormat);
-         console.info('AudioFrameworkRenderLog: Renderer samplingRate:' + audioParamsGet.samplingRate);
-         console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
-         console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
-     }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
-
      await audioRen.getRendererInfo().then(async function (audioParamsGet) {
          console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
          console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
@@ -5656,20 +5580,6 @@ describe('audioRenderer', function () {
 
      console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
 
-     await audioManager.setAudioScene(AudioScene).then(async function () {
-         console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-         await audioManager.getAudioScene().then(async function (data) {
-             console.info('AudioFrameworkRenderLog: getAudioScene : Value : '+data);
-         }).catch((err) => {
-             console.info('AudioFrameworkRenderLog: getAudioScene : ERROR : '+err.message);
-             resultFlag=false;
-         });
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: setAudioScene : ERROR : '+err.message);
-         resultFlag=false;
-     });
-
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
 
      await audioRen.getStreamInfo().then(async function (audioParamsGet) {
          console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
@@ -8052,20 +7962,6 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
 
-        await audioManager.setAudioScene(AudioScene).then(async function () {
-            console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-            await audioManager.getAudioScene().then(async function (data) {
-                console.info('AudioFrameworkRenderLog: getAudioScene : Value : '+data);
-            }).catch((err) => {
-                console.info('AudioFrameworkRenderLog: getAudioScene : ERROR : '+err.message);
-                resultFlag=false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: setAudioScene : ERROR : '+err.message);
-            resultFlag=false;
-        });
-
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
 
         await audioRen.getStreamInfo().then(async function (audioParamsGet) {
             console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');

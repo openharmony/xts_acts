@@ -1606,6 +1606,21 @@ describe('audioManger', function () {
         await sleep(50);
         done();
     })
+	
+	    /* *
+                * @tc.number    : SUB_AUDIO_MANAGER_DeviceType_003
+                * @tc.name      : DeviceType - USB_HEADSET
+                * @tc.desc      : DeviceType - USB_HEADSET
+                * @tc.size      : MEDIUM
+                * @tc.type      : Function
+                * @tc.level     : Level 0
+            */
+    it('SUB_AUDIO_MANAGER_DeviceType_003', 0, async function (done) {
+
+        expect(audio.DeviceType.USB_HEADSET).assertEqual(22);
+        await sleep(50);
+        done();
+    })
 
 
 
