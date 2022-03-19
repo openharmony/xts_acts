@@ -30,7 +30,6 @@ const TAG_TEST_0900 = ' context_featureAbility_test_0100 ';
 const TAG_TEST_0010 = ' context_featureAbility_test_0200 ';
 const TAG_TEST_0011 = ' context_featureAbility_test_0300 ';
 const TAG_TEST_0012 = ' context_featureAbility_test_0400 ';
-const TAG_TEST_0013 = ' context_particleAbility_test_0100 ';
 
 export default function addContextAndAbilityJsunit() {
     describe('appInfoTest', function () {
@@ -297,20 +296,6 @@ export default function addContextAndAbilityJsunit() {
       expect(permission_deny).assertEqual(-3);
       done();
       console.log('------------------ ' + TAG_TEST_0012 + ' end -------------------');
-    });
-
-    /*
-     * @tc.number: context_particleAbility_test_0100
-     * @tc.name: particleAbility.ErrorCode : particleAbility.ErrorCode
-     * @tc.desc: Check the particleAbility.ErrorCode.INVALID_PARAMETER
-     * @tc.level 0
-     */
-    it(TAG_TEST_0013, 0, async function (done) {
-      console.info(TAG_TEST_0013 + ' INVALID_PARAMETER START');
-      var invalid_parameter = ability_particleAbility.ErrorCode.INVALID_PARAMETER
-      console.info(TAG_TEST_0013 + ' featureAbility invalid_parameter is: ' + invalid_parameter);
-      done();
-      console.log('------------------ ' + TAG_TEST_0013 + ' end -------------------');
     });
     })
 }

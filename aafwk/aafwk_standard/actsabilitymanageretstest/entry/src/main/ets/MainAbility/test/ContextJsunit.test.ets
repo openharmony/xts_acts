@@ -17,7 +17,7 @@ import featureAbility from '@ohos.ability.featureAbility'
 import {describe, beforeEach, afterEach, it, expect} from "deccjsunit/index.ets";
 import Utils from './Utils';
 
-export default function contextJsunit() {
+export default function ContextJsunit() {
   describe('appInfoTest', function () {
     beforeEach(async function (done) {
       console.info("context before each called");
@@ -47,11 +47,11 @@ export default function contextJsunit() {
         })
       } catch (error) {
         console.log("logMessage context_getCacheDir_test_0100: error = " + error);
-        expect(error).assertEqual("/data/accounts/account_0/appdata/com.ohos.acecollaboration/cache");
+        expect(error).assertEqual("/data/storage/el2/base/haps/entry/caches");
       }
       var data1 = await context.getCacheDir();
       expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/accounts/account_0/appdata/com.ohos.acecollaboration/cache");
+      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/caches");
       done();
       console.log("------------------end context_getCacheDir_test_0100-------------------");
     });
@@ -74,11 +74,11 @@ export default function contextJsunit() {
         });
       } catch (error) {
         console.log("logMessage context_getCacheDir_test_0200: error = " + error);
-        expect(error).assertEqual("/data/accounts/account_0/appdata/com.ohos.acecollaboration/cache");
+        expect(error).assertEqual("/data/storage/el2/base/haps/entry/caches");
       }
       var data1 = await context.getCacheDir();
       expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/accounts/account_0/appdata/com.ohos.acecollaboration/cache");
+      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/caches");
       done();
       console.log("------------------end context_getCacheDir_test_0200-------------------");
     });
@@ -101,11 +101,11 @@ export default function contextJsunit() {
         })
       } catch (error) {
         console.log("logMessage context_getFilesDir_test_0100: error = " + error);
-        expect(error).assertEqual("/data/accounts/account_0/appdata/com.ohos.acecollaboration/files");
+        expect(error).assertEqual("/data/storage/el2/base/haps/entry/files");
       }
       var data1 = await context.getFilesDir();
       expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/accounts/account_0/appdata/com.ohos.acecollaboration/files");
+      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/files");
       done();
       console.log("------------------end context_getFilesDir_test_0100-------------------");
     });
@@ -128,11 +128,11 @@ export default function contextJsunit() {
         });
       } catch (error) {
         console.log("logMessage context_getFilesDir_test_0200: error = " + error);
-        expect(error).assertEqual("/data/accounts/account_0/appdata/com.ohos.acecollaboration/files");
+        expect(error).assertEqual("/data/storage/el2/base/haps/entry/files");
       }
       var data1 = await context.getFilesDir();
       expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/accounts/account_0/appdata/com.ohos.acecollaboration/files");
+      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/files");
       done();
       console.log("------------------end context_getFilesDir_test_0200-------------------");
     });
