@@ -75,29 +75,6 @@ export default function getHapModuleInfoJsunit() {
       done();
     });
 
-    /**
-     * @tc.number: context_getHapModuleInfo_test_0300_1
-     * @tc.name: getHapModuleInfo:Obtains the HapModuleInfo object of the application.
-     * @tc.desc: Check the return value of the interface
-     * @tc.level  0
-     */
-    it('context_getHapModuleInfo_test_0300_1', 0, async function (done) {
-      console.info('[context_getHapModuleInfo_test_0300_1] START');
-      var str = {
-        "want": {
-          "bundleName": "com.ohos.acecollaboration",
-          "abilityName": "com.example.myapplication1.MainAbility",
-        },
-      };
-      ability_featureAbility.startAbility(str)
-        .then((data) => {
-          console.info('[context_getHapModuleInfo_test_0300_1] start myapplication1 successful: ' + JSON.stringify(data))
-        }).catch((error) => {
-        console.error('[context_getHapModuleInfo_test_0300_1] start myapplication1 Cause: ' + JSON.stringify(error));
-      })
-      done();
-    });
-
     function checkHapModuleInfo(msg, data) {
       console.log(msg + "checkHapModuleInfo start  " + JSON.stringify(data));
       console.log(msg + "checkHapModuleInfo name : " + data.name);
@@ -147,10 +124,7 @@ export default function getHapModuleInfoJsunit() {
       expect(data.backgroundImg).assertEqual("");
       expect(data.supportedModes).assertEqual(0);
       expect(data.deviceTypes[0]).assertEqual("phone");
-      for (var i = 0; i < data.abilityInfos.length; i++) {
-        console.log(msg + "-------AbilityInfo data.abilityInfos[" + i + "] : START ------" );
-        checkAbilityInfo(msg,data.abilityInfos[i]);
-      }
+      checkAbilityInfo(msg,data.abilityInfos[0]);
       expect(data.moduleName).assertEqual("entry")
       expect(data.mainAbilityName).assertEqual("");
       expect(data.installationFree).assertEqual(false);
@@ -233,8 +207,6 @@ export default function getHapModuleInfoJsunit() {
       expect(data.label).assertEqual("$string:entry_MainAbility");
       expect(data.description).assertEqual("$string:mainability_description");
       expect(data.icon).assertEqual("$media:icon");
-      expect(data.descriptionId > 0).assertTrue();
-      expect(data.iconId > 0).assertTrue();
       expect(data.moduleName).assertEqual("entry");
       expect(data.process).assertEqual("");
       expect(data.targetAbility).assertEqual("");
@@ -247,106 +219,15 @@ export default function getHapModuleInfoJsunit() {
       expect(data.deviceTypes[0]).assertEqual("phone");
       expect(data.readPermission).assertEqual("");
       expect(data.writePermission).assertEqual("");
-      checkApplicationInfo(msg,data.applicationInfo);
       expect(data.formEntity).assertEqual(0);
       expect(data.minFormHeight).assertEqual(0);
       expect(data.defaultFormHeight).assertEqual(0);
       expect(data.minFormWidth).assertEqual(0);
       expect(data.defaultFormWidth).assertEqual(0);
       expect(data.uri).assertEqual("");
-      expect(data.labelId > 0).assertTrue();
       expect(data.subType).assertEqual(0);
       console.log(msg+ "---checkAbilityInfo End---  ");
     }
 
-    function checkApplicationInfo(msg,info) {
-      console.log(msg+ "checkApplicationInfo start : " + JSON.stringify(info));
-      console.log(msg+ "checkApplicationInfo name : " + info.name);
-      console.log(msg+ "checkApplicationInfo description : " + info.description);
-      console.log(msg+ "checkApplicationInfo descriptionId : " + info.descriptionId);
-      console.log(msg+ "checkApplicationInfo systemApp : " + info.systemApp);
-      console.log(msg+ "checkApplicationInfo enabled : " + info.enabled);
-      console.log(msg+ "checkApplicationInfo label : " + info.label);
-      console.log(msg+ "checkApplicationInfo labelId : " + info.labelId);
-      console.log(msg+ "checkApplicationInfo icon : " + info.icon);
-      console.log(msg+ "checkApplicationInfo iconId : " + info.iconId);
-      console.log(msg+ "checkApplicationInfo process : " + info.process);
-      console.log(msg+ "checkApplicationInfo supportedModes : " + info.supportedModes);
-      console.log(msg+ "checkApplicationInfo moduleSourceDirs length : " + info.moduleSourceDirs.length);
-      for (var j = 0; j < info.moduleSourceDirs.length; j++) {
-        console.log(msg+ "checkApplicationInfo info.moduleSourceDirs[" + j + "] : " + info.moduleSourceDirs[j]);
-      }
-      console.log(msg+ "checkApplicationInfo permissions length : " + info.permissions.length);
-      for (var k = 0; k < info.permissions.length; k++) {
-        console.log(msg+ "checkApplicationInfo info.permissions[" + k + "] : " + info.permissions[k]);
-      }
-      console.log(msg+ "checkApplicationInfo moduleInfos length : " + info.moduleInfos.length);
-      for (var i = 0; i < info.moduleInfos.length; i++) {
-        console.log(msg+ "checkApplicationInfo info.moduleInfos[" + i + "].moduleName : " +
-        info.moduleInfos[i].moduleName);
-        console.log(msg+ "checkApplicationInfo info.moduleInfos[" + i + "].moduleSourceDir : " +
-        info.moduleInfos[i].moduleSourceDir);
-      }
-      console.log(msg+ "checkApplicationInfo entryDir : " + info.entryDir);
-      expect(typeof (info)).assertEqual("object");
-      expect(typeof (info.name)).assertEqual("string");
-      expect(typeof (info.description)).assertEqual("string");
-      expect(typeof (info.descriptionId)).assertEqual("number");
-      expect(typeof (info.systemApp)).assertEqual("boolean");
-      expect(typeof (info.enabled)).assertEqual("boolean");
-      expect(typeof (info.label)).assertEqual("string");
-      expect(typeof (info.labelId)).assertEqual("string");
-      expect(typeof (info.icon)).assertEqual("string");
-      expect(typeof (info.iconId)).assertEqual("string");
-      expect(typeof (info.process)).assertEqual("string");
-      expect(typeof (info.supportedModes)).assertEqual("number");
-      expect(Array.isArray(info.moduleSourceDirs)).assertEqual(true);
-      expect(Array.isArray(info.permissions)).assertEqual(true);
-      expect(Array.isArray(info.moduleInfos)).assertEqual(true);
-      expect(typeof (info.entryDir)).assertEqual("string");
-      if (info.moduleSourceDirs.length == 1){
-        expect(info.moduleInfos[0].moduleName).assertEqual("entry");
-        expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-        "com.ohos.acecollaboration/com.ohos.acecollaboration");
-      }else if(info.moduleSourceDirs.length == 2) {
-        if (info.moduleInfos[0].moduleName == "myapplication1") {
-          expect(info.moduleInfos[0].moduleName).assertEqual("myapplication1");
-          expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-          "com.ohos.acecollaboration/com.example.myapplication1");
-          expect(info.moduleInfos[1].moduleName).assertEqual("entry");
-          expect(info.moduleInfos[1].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-          "com.ohos.acecollaboration/com.ohos.acecollaboration");
-        }else{
-          expect(info.moduleInfos[0].moduleName).assertEqual("myapplication2");
-          expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-          "com.ohos.acecollaboration/com.example.myapplication2");
-          expect(info.moduleInfos[1].moduleName).assertEqual("entry");
-          expect(info.moduleInfos[1].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-          "com.ohos.acecollaboration/com.ohos.acecollaboration");
-        }
-      }else {
-        expect(info.moduleInfos[0].moduleName).assertEqual("myapplication1");
-        expect(info.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-        "com.ohos.acecollaboration/com.example.myapplication1");
-        expect(info.moduleInfos[1].moduleName).assertEqual("myapplication2");
-        expect(info.moduleInfos[1].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-        "com.ohos.acecollaboration/com.example.myapplication2");
-        expect(info.moduleInfos[2].moduleName).assertEqual("entry");
-        expect(info.moduleInfos[2].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/" +
-        "com.ohos.acecollaboration/com.ohos.acecollaboration");
-      }
-      expect(info.name).assertEqual("com.ohos.acecollaboration");
-      expect(info.description).assertEqual("$string:mainability_description");
-      expect(info.descriptionId > 0).assertTrue();
-      expect(info.systemApp).assertEqual(true);
-      expect(info.enabled).assertEqual(true);
-      expect(info.label).assertEqual("$string:entry_MainAbility");
-      expect(info.icon).assertEqual("$media:icon");
-      expect(info.process).assertEqual("");
-      expect(info.supportedModes).assertEqual(0);
-      expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/" +
-      "com.ohos.acecollaboration/com.ohos.acecollaboration");
-      console.log(msg+ "---checkApplicationInfo End--- ");
-    }
   })
 }
