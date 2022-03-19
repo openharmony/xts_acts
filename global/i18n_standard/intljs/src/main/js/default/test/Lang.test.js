@@ -61,7 +61,7 @@ describe('LangTest', function () {
     }
 
     /* *
-    * execute this step after every testcase
+    * restore the init lang list
     */
     function restoreLang(){
         for(let j = 0; j < initLen; j++){
@@ -127,7 +127,14 @@ describe('LangTest', function () {
         console.log('i18n_test_clock_0100 ' + 'start');
         let value = I18n.is24HourClock();
         console.log('i18n_test_clock_0100 ' + value);
-        expect(value).assertFalse();
+        if(hour)
+        {
+            expect(value).assertTrue();
+        }
+        else
+        {
+            expect(value).assertFalse();
+        }
     })
 
     /* *
