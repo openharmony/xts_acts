@@ -904,7 +904,7 @@ describe("WorkSchedulerJsTest", function () {
 			networkType: NETWORK_TYPE_ANY
         }
         let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(true);
+        expect(res).assertEqual(false);
 		console.info("workSchedulerLog workInfo networkType :" + workInfo.networkType);
         done();
     })
