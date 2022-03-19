@@ -40,9 +40,9 @@ require('./getAllPeersTestCallback.test.js')
 require('./getAllPeersTestPromise.test.js')
 require('./mediaLibraryTestCallBack.test.js')
 require('./mediaLibraryTestPromise.test.js')
-require('./mediaLibraryTestPromiseOnOff.test.js')
 require('./albumTestCallBack.test.js')
 require('./albumTestPromise.test.js')
+require('./mediaLibraryTestPromiseOnOff.test.js')
 
 
 
