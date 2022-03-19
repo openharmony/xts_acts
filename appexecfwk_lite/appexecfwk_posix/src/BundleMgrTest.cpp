@@ -102,7 +102,8 @@ HWTEST_F(BundleMgrTest, testClearAbilityInfoIllegal, Function | MediumTest | Lev
     printf("------start testClearAbilityInfoIllegal------\n");
     // abilityInfo is nullptr
     AbilityInfo abilityInfo;
-    memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
+    int32_t result = memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
+    EXPECT_EQ(result, 0);
     abilityInfo.bundleName = (char*)"com.openharmony.testjsdemo";
     printf("abilityInfo.bundleName is %s \n", abilityInfo.bundleName);
     ClearAbilityInfo(nullptr);
@@ -119,7 +120,8 @@ HWTEST_F(BundleMgrTest, testClearBundleInfoIllegal, Function | MediumTest | Leve
 {
     printf("------start testClearBundleInfoIllegal------\n");
     BundleInfo bundleInfo;
-    memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    int32_t result = memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    EXPECT_EQ(result, 0);
     bundleInfo.bundleName = (char*)"com.openharmony.testjsdemo";
     printf("abilityInfo.bundleName is %s \n", bundleInfo.bundleName);
     ClearBundleInfo(nullptr);
@@ -137,7 +139,8 @@ HWTEST_F(BundleMgrTest, testClearModuleInfoIllegal, Function | MediumTest | Leve
 {
     printf("------start testClearModuleInfoIllegal------\n");
     ModuleInfo moduleInfo;
-    memset_s(&moduleInfo, sizeof(moduleInfo), 0, sizeof(moduleInfo));
+    int32_t result = memset_s(&moduleInfo, sizeof(moduleInfo), 0, sizeof(moduleInfo));
+    EXPECT_EQ(result, 0);
     moduleInfo.description = (char*)"test app";
     moduleInfo.moduleType = (char*)"entry";
     ClearModuleInfo(nullptr);
@@ -556,15 +559,18 @@ HWTEST_F(BundleMgrTest, testQueryAbilityInfoRight, Function | MediumTest | Level
 {
     printf("------start testQueryAbilityInfoRight------\n");
     Want want;
-    memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    int32_t resultWant = memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    EXPECT_EQ(resultWant, 0);
     ElementName element;
-    memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    int32_t resultElementName = memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    EXPECT_EQ(resultElementName, 0);
     SetElementAbilityName(&element, "MainAbility");
     SetElementBundleName(&element, "com.openharmony.testjsdemo");
     SetWantElement(&want, element);
     SetWantData(&want, "test", 4);
     AbilityInfo abilityInfo;
-    memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
+    int32_t result = memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
+    EXPECT_EQ(result, 0);
     printf("element.elementname is %s \n",  want.element->bundleName);
     printf("AbilityName2 is %s \n", want.element->abilityName);
     g_errorCode = QueryAbilityInfo(&want, &abilityInfo);
@@ -584,16 +590,19 @@ HWTEST_F(BundleMgrTest, testQueryAbilityInfoIllegal, Function | MediumTest | Lev
 {
     printf("------start testQueryAbilityInfoIllegal------\n");
     AbilityInfo abilityInfo;
-    memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
+    int32_t result = memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
+    EXPECT_EQ(result, 0);
     // want is nullptr
     g_errorCode = QueryAbilityInfo(nullptr, &abilityInfo);
     printf("ret is %d \n", g_errorCode);
     EXPECT_TRUE(g_errorCode == 4);
     // abilityInfo is nullptr
     Want want;
-    memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    int32_t resultWant = memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    EXPECT_EQ(resultWant, 0);
     ElementName element;
-    memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    int32_t resultElementName = memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    EXPECT_EQ(resultElementName, 0);
     SetElementAbilityName(&element, "MainAbility");
     SetElementBundleName(&element, "com.openharmony.testjsdemo");
     SetWantElement(&want, element);
@@ -624,7 +633,8 @@ HWTEST_F(BundleMgrTest, testGetBundleInfoRight, Function | MediumTest | Level1)
 {
     printf("------start testGetBundleInfoRight------\n");
     BundleInfo bundleInfo;
-    memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    int32_t result = memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    EXPECT_EQ(result, 0);
     const char *bundleName = (char*)"com.openharmony.testjsdemo";
     int32_t flags = 0;
     printf("bundleName is %s \n", bundleName);
@@ -655,7 +665,8 @@ HWTEST_F(BundleMgrTest, testGetBundleInfoIllegal, Function | MediumTest | Level2
 {
     printf("------start testGetBundleInfoIllegal------\n");
     BundleInfo bundleInfo;
-    memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    int32_t result = memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    EXPECT_EQ(result, 0);
     const char *bundleName = (char*)"com.openharmony.nothishap";
     int32_t flags = 0;
     // error bundleName
