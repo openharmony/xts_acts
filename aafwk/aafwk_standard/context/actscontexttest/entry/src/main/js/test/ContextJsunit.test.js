@@ -245,4 +245,17 @@ describe('ActsContextTest', function () {
         },1000)
     })
 
+    /*
+    * @tc.number: ACTS_GetContextMode_0100
+    * @tc.name: Verify that the context is a stage model or a FA model
+    * @tc.desc: Indicates the context is FA Mode or Stage Mode
+    */
+    it('ACTS_GetContextMode_0100', 0, async function (done) {
+        console.log('ACTS_GetContextMode_0100====<begin');
+        var context = await featureAbility.getContext();
+        var stageMode1 = context.stageMode;
+        console.log('ACTS_GetContextMode_0100====stageMode1:' + stageMode1)
+        expect("false").assertEqual(stageMode1.toString());
+        done();
+    })
 })
