@@ -84,7 +84,7 @@ describe('window_test', function() {
                 done();
             }).catch((err) => {
                 console.log('jsunittest faModelSetColorSpaceTest2 wnd.setColorSpace failed, err :' + JSON.stringify(err));
-                expect(err.code).assertEqual(120);
+                expect(err.code).assertEqual(130);
                 done();
             })
         }).catch((err) => {
@@ -462,7 +462,7 @@ describe('window_test', function() {
                                 done();
                             })
                         })
-                    }, 1000)
+                    }, 3000)
                 }).catch((err) => {
                     console.log('jsunittest faModelMinimizeAllTest1 minimizeAll failed, err :' + JSON.stringify(err));
                     expect().assertFail();

@@ -17,5 +17,5 @@ require('./window.api.part2.js')
 require('./window.test.js')
 require('./window.parameter.js')
 require('./window.promise.js')
-require('./display.screenshot.api.js')
+require('./screenshot.test.js')
 
