@@ -52,7 +52,7 @@ export default function imageJsunit() {
       console.info("imageTest_0100 component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("imageTest_0100 obj.$attrs.content is: " + obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('Hello');
+      expect(obj.$attrs.content).assertEqual('string_hello');
       expect(obj.$attrs.fontSize).assertEqual('9.00fp');
       console.info('imageTest_0100 END');
       done();
