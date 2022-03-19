@@ -405,7 +405,7 @@ describe('screenshot_test', function () {
 			done();
 		}, (err) => {
 			console.log('screenshotTest screenShotSaveTest10 screenshot.save failed, err : ' + JSON.stringify(err));
-			expect(TRUE_FLAG).assertFail();
+			expect().assertFail();
 			done();
 		})
 	})

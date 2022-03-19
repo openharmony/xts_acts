@@ -12,10 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('./window.api.part1.js')
-require('./window.api.part2.js')
 require('./window.test.js')
-require('./window.parameter.js')
-require('./window.promise.js')
+require('./display.test.js')
 require('./screenshot.test.js')
 
