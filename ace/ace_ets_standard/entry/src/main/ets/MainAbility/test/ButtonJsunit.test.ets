@@ -36,7 +36,7 @@ export default function buttonJsunit() {
       }
       try {
         router.clear();
-	await sleep(1);
+        await sleep(1);
         let pages = router.getState();
         console.info("get Button state success " + JSON.stringify(pages));
         if (!("Button" == pages.name)) {
@@ -65,16 +65,8 @@ export default function buttonJsunit() {
       console.info('testGetInspectorByKey START');
       let strJson = getInspectorByKey('button');
       let obj = JSON.parse(strJson);
-      let style = JSON.parse(obj.$attrs.style)
-      console.log(style.fontSize)
-      console.info("cd button component obj is: " + JSON.stringify(obj));
-      console.log("cd button type" + JSON.stringify(obj.$type));
-      console.log("cd button  Buttontype" + JSON.stringify(obj.$attrs.type));
-      console.log("cd button stateEffect" + JSON.stringify(obj.$attrs.stateEffect));
-      console.log("cd button label" + JSON.stringify(obj.$attrs.label));
-      console.log("cd button fontSize" + JSON.stringify(obj.$attrs.fontSize));
-      console.log("cd button fontWeight" + JSON.stringify(obj.$attrs.fontWeight));
-      console.log("cd button fontColor" + JSON.stringify(obj.$attrs.fontColor));
+      console.info("buttonGetInspectorByKey010 obj is: " + JSON.stringify(obj));
+      console.info("buttonGetInspectorByKey010 obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$type).assertEqual('Button')
       expect(obj.$attrs.type).assertEqual('ButtonType.Circle')
       expect(obj.$attrs.stateEffect).assertEqual('true')
@@ -92,9 +84,6 @@ export default function buttonJsunit() {
       let strJson = getInspectorByKey('button1');
       let obj = JSON.parse(strJson);
       console.info("cd button1 component obj is: " + JSON.stringify(obj));
-      console.log("cd button1 type" + JSON.stringify(obj.$type));
-      console.log("cd button1  Buttontype" + JSON.stringify(obj.$attrs.type));
-      console.log("cd button1 stateEffect" + JSON.stringify(obj.$attrs.stateEffect));
       expect(obj.$attrs.type).assertEqual('ButtonType.Capsule')
       expect(obj.$attrs.stateEffect).assertEqual('false')
       console.info('cd button1InspectorByKey END');
@@ -110,8 +99,6 @@ export default function buttonJsunit() {
       let strJson = getInspectorByKey('button2');
       let obj = JSON.parse(strJson);
       console.info("cd button2 component obj is: " + JSON.stringify(obj));
-      console.log("cd button2 type" + JSON.stringify(obj.$type));
-      console.log("cd button2  Buttontype" + JSON.stringify(obj.$attrs.type));
       expect(obj.$attrs.type).assertEqual('ButtonType.Normal')
       console.info('cd button2InspectorByKey END');
       done();

@@ -19,11 +19,12 @@ import app from '@system.app';
 
 export default function systemAppJsunit() {
   describe('appInfoTest', function () {
+
     it('systemAppTest_0100', 0, async function (done) {
       console.info('systemAppTest_0100 START');
       var a = app.getInfo();
       console.log('systemAppTest_0100 END' + JSON.stringify(a));
-      expect(a.appID == "com.open.harmony.acetest").assertTrue();
+      expect(a.appID == "com.open.harmony.acetestfour").assertTrue();
       console.info('systemAppTest_0100 END');
       done();
     });
