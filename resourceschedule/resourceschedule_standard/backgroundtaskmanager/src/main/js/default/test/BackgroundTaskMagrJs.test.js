@@ -188,17 +188,18 @@ describe("TransientTaskJsTest", function () {
      * @tc.require: 
      */
     it("TransientTaskJsTest006", 0, async function (done) {
+        console.info('----------------------TransientTaskJsTest006---------------------------');
         function callback() {}
         var info = backgroundTaskManager.requestSuspendDelay("test", callback);
         if (info.requestId != -1) {
             console.info('TransientTaskJsTest006  DelaySuspendInfo actualDealyTime:' + 
             info.actualDealyTime);
-            expect(info).assertTrue();
+            expect(true).assertTrue();
         } else {
             expect(false).assertTrue();
 			done();
         }
-        
+		
 		setTimeout(() => {
 			done();
 		},500);

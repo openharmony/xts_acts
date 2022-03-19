@@ -850,7 +850,7 @@ describe("WorkSchedulerJsTest", function () {
     })
 	
 	 /*
-    * @tc.name: WorkSchedulerJsTest044
+     * @tc.name: WorkSchedulerJsTest044
      * @tc.desc: test work scheduler without conditions.
      * @tc.type: FUNC
      * @tc.require: 
@@ -904,8 +904,8 @@ describe("WorkSchedulerJsTest", function () {
 			networkType: NETWORK_TYPE_ANY
         }
         let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(true);
-		console.info("workSchedulerLog workInfo networkType :" + workInfo.networkType)
+        expect(res).assertEqual(false);
+		console.info("workSchedulerLog workInfo networkType :" + workInfo.networkType);
         done();
     })
 	
@@ -924,8 +924,8 @@ describe("WorkSchedulerJsTest", function () {
 			chargerType: workScheduler.ChargingType.CHARGING_PLUGGED_AC
         }
         let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(true);
-		console.info("workSchedulerLog workInfo ChargingType :" + workScheduler.ChargingType.CHARGING_PLUGGED_AC)
+        expect(res).assertEqual(false);
+		console.info("workSchedulerLog workInfo ChargingType :" + workScheduler.ChargingType.CHARGING_PLUGGED_AC);
         done();
     })
 	
@@ -944,8 +944,8 @@ describe("WorkSchedulerJsTest", function () {
 			batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW
         }
         let res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(true);
-		console.info("workSchedulerLog workInfo BatteryStatus :" + workScheduler.BatteryStatus.BATTERY_STATUS_LOW)
+        expect(res).assertEqual(false);
+		console.info("workSchedulerLog workInfo BatteryStatus :" + workScheduler.BatteryStatus.BATTERY_STATUS_LOW);
         done();
     })
 	
@@ -962,8 +962,8 @@ describe("WorkSchedulerJsTest", function () {
             bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
             abilityName: "com.mytest.abilityName",
         }
-        let res = workScheduler.onWorkStart(workInfo);
-        expect(res).assertEqual(true);
+        var res = workScheduler.onWorkStart(workInfo);
+        expect(res).assertEqual(false);
         done();
     })
 	
@@ -980,13 +980,8 @@ describe("WorkSchedulerJsTest", function () {
             bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
             abilityName: "com.mytest.abilityName",
         }
-        let res = workSchedulerCallback.onWorkStop(workInfo);
-		if(res === true) {
-			let stopRes = WorkSchedulerCallback.onWorkStop(workInfo,false);
-			expect(stopRes).assertEqual(true);
-		} else {
-			expect(false).assertEqual(true);
-		}
+        var stopRes = workSchedulerCallback.onWorkStop(workInfo, true);
+			expect(stopRes).assertEqual(false);
         done();
     })
 	
@@ -1004,8 +999,8 @@ describe("WorkSchedulerJsTest", function () {
             abilityName: "com.mytest.abilityName",
         }
         var res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(true);
-		console.log("workScheduler workInfo bundleName :" + info.bundleName)
+        expect(res).assertEqual(false);
+		console.log("workScheduler workInfo bundleName :" + workInfo.bundleName);
         done();
     })
 	
@@ -1018,13 +1013,13 @@ describe("WorkSchedulerJsTest", function () {
     it("WorkSchedulerJsTest052", 0, async function (done) {
         console.info('----------------------WorkSchedulerJsTest052---------------------------');
         let workInfo = {
-            workId: 4,
+            workId: 8,
             bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
             abilityName: "com.mytest.abilityName",
         }
         var res = workScheduler.startWork(workInfo);
-        expect(res).assertEqual(true);
-		console.log("workScheduler workInfo abilityName :" + info.abilityName)
+        expect(res).assertEqual(false);
+		console.log("test workScheduler workInfo abilityName :" + workInfo.abilityName);
         done();
     })
 })
