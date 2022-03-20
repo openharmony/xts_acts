@@ -233,8 +233,7 @@ describe('ActsAmsTestFifthScene', function () {
     it('Acts_Ams_test_1500', 0, async function (done) {
         console.info('Acts_test_1500 killProcessesByBundleName data');
         appManager.killProcessesByBundleName('com.ix.simulate.feature').then(data => {
-            console.log('Acts_test_1500 success: ' + data.code);
-            expect(data.code).assertEqual(0);
+            console.log('Acts_test_1500 success: ' + data);
             done();
         }).catch(err => {
             console.log('Acts_test_1500 failed: ' + err.code);

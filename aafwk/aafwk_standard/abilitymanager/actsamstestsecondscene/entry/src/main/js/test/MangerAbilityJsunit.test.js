@@ -195,25 +195,6 @@ describe('ActsAmsTestSecondScene', function () {
     })
 
     /*
-     * @tc.number    : Acts_Ams_test_2100
-     * @tc.name      : clearMission : Remove Mission
-     * @tc.desc      : Remove Mission(by Promise)
-     */
-    it('Acts_Ams_test_2300', 0, async function (done) {
-        var maxnum = 20;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_2300 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        var info = await missionManager.clearMission(result[0].missionId).catch(err => {
-            console.log('Acts_Ams_test_2300 clearMission failed: ' + err);
-            expect(err).assertEqual(0);
-        });
-        console.info('Acts_Ams_test_2300 clearMission data  [' + info + ']');
-        done();
-    })
-
-    /*
      * @tc.number    : Acts_Ams_test_3100
      * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
      * @tc.desc      : Kill Processes By BundleName(by Promise)

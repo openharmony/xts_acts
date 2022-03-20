@@ -196,28 +196,6 @@ describe('ActsAmsCallBackFifthScene', function () {
     })
 
     /*
-     * @tc.number    : Acts_Ams_test_7200
-     * @tc.name      : clearMission : Remove Mission
-     * @tc.desc      : Remove Mission(by CallBack)
-     */
-    it('Acts_Ams_test_7200', 0, async function (done) {
-        var maxnum = 10;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_7200 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        missionManager.clearMission(result[1].missionId,
-            (error, info) => {
-                console.info('Acts_Ams_test_7200 clearMission error.code \
-                ' + error.code + ',data  [' + info + ']');
-                expect(error.code).assertEqual(0);
-                done();
-            }
-        );
-        setTimeout(timeout, 5000);
-    })
-
-    /*
      * @tc.number    : Acts_Ams_test_7600
      * @tc.name      : moveMissionToFront : Move Mission To Top
      * @tc.desc      : Move Mission To Top(by CallBack)
@@ -231,28 +209,6 @@ describe('ActsAmsCallBackFifthScene', function () {
         missionManager.moveMissionToFront(result[0].missionId,
             (error, info) => {
                 console.info('Acts_Ams_test_7600 moveMissionToFront error.code \
-                ' + error.code + ',data  [' + info + ']');
-                expect(error.code).assertEqual(0);
-                done();
-            }
-        );
-        setTimeout(timeout, 5000);
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_12000
-     * @tc.name      : clearMission : Remove Missions
-     * @tc.desc      : Remove Missions(by CallBack)
-     */
-    it('Acts_Ams_test_12000', 0, async function (done) {
-        var maxnum = 10;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_12000 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        missionManager.clearMission(result[0].missionId,
-            (error, info) => {
-                console.info('Acts_Ams_test_12000 clearMission error.code \
                 ' + error.code + ',data  [' + info + ']');
                 expect(error.code).assertEqual(0);
                 done();
