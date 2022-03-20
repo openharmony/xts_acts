@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function ToggleJsunit() {
-  describe('appInfoTest', function () {
+  describe('toggleTest', function () {
     beforeEach(async function (done) {
       console.info("toggle beforeEach start");
       let options = {
@@ -129,6 +129,110 @@ export default function ToggleJsunit() {
       console.info("testToggle05 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.selectedColor).assertEqual('#330A59F8');
       console.info('testToggle05 END');
+      done();
+    });
+
+    it('testToggle06', 0, async function (done) {
+      console.info('testToggle06 START');
+      try {
+        let eventData = {
+          data: {
+            "selectedColor": '-a',
+          }
+        }
+        let indexEvent = {
+          eventId: 1033,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testToggle06 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testToggle06 change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJsonNew = getInspectorByKey('toggle');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testToggle06 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.selectedColor).assertEqual('#FF000000');
+      console.info('testToggle06 END');
+      done();
+    });
+
+    it('testToggle07', 0, async function (done) {
+      console.info('testToggle07 START');
+      try {
+        let eventData = {
+          data: {
+            "selectedColor": '-0.1',
+          }
+        }
+        let indexEvent = {
+          eventId: 1034,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testToggle07 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testToggle07 change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJsonNew = getInspectorByKey('toggle');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testToggle07 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.selectedColor).assertEqual('#FF000000');
+      console.info('testToggle07 END');
+      done();
+    });
+
+    it('testToggle08', 0, async function (done) {
+      console.info('testToggle04 START');
+      try {
+        let eventData = {
+          data: {
+            "isOn": 'aaa',
+          }
+        }
+        let indexEvent = {
+          eventId: 1035,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testToggle04 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testToggle04 change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJsonNew = getInspectorByKey('toggle');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testToggle04 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.isOn).assertEqual('false');
+      console.info('testToggle04 END');
+      done();
+    });
+
+    it('testToggle09', 0, async function (done) {
+      console.info('testToggle04 START');
+      try {
+        let eventData = {
+          data: {
+            "isOn": -1,
+          }
+        }
+        let indexEvent = {
+          eventId: 1036,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testToggle04 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testToggle04 change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJsonNew = getInspectorByKey('toggle');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testToggle04 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.isOn).assertEqual('false');
+      console.info('testToggle04 END');
       done();
     });
   })

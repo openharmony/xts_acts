@@ -22,7 +22,6 @@ struct BadgeExample {
   @State message: string = 'new';
   @State fontSizeValue: number = 20;
   @State colorValue: Color = Color.Red;
-
   private stateChangCallBack = (eventData) => {
     if (eventData != null) {
       console.info("Badge page state change called:" + JSON.stringify(eventData));
@@ -45,6 +44,16 @@ struct BadgeExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    var stateChangeEventOne = {
+      eventId: 64,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventOne, this.stateChangCallBack);
+    var stateChangeEventTwo = {
+      eventId: 65,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack);
   }
 
   build() {
@@ -58,7 +67,10 @@ struct BadgeExample {
           .onClick(() => {
             this.counts++
           })
-          .width(200).height(100).backgroundColor(0x317aff).fontSize(20)
+          .width(200)
+          .height(100)
+          .backgroundColor(0x317aff)
+          .fontSize(20)
       }.width(100).height(50).key('badge')
 
       Badge({
@@ -66,8 +78,13 @@ struct BadgeExample {
         style: { color: this.colorValue, fontSize: 9, badgeSize: 20, badgeColor: Color.Red }
       }) {
         Text('message')
-          .width(80).height(50).fontSize(16).lineHeight(37)
-          .borderRadius(10).textAlign(TextAlign.Center).backgroundColor(0xF3F4ED)
+          .width(80)
+          .height(50)
+          .fontSize(16)
+          .lineHeight(37)
+          .borderRadius(10)
+          .textAlign(TextAlign.Center)
+          .backgroundColor(0xF3F4ED)
       }.width(80).height(50).key('badge2')
 
       Badge({
@@ -76,8 +93,13 @@ struct BadgeExample {
         style: { badgeSize: 6, badgeColor: Color.Red }
       }) {
         Text('message')
-          .width(90).height(50).fontSize(16).lineHeight(37)
-          .borderRadius(10).textAlign(TextAlign.Center).backgroundColor(0xF3F4ED)
+          .width(90)
+          .height(50)
+          .fontSize(16)
+          .lineHeight(37)
+          .borderRadius(10)
+          .textAlign(TextAlign.Center)
+          .backgroundColor(0xF3F4ED)
       }.width(90).height(50)
 
     }.width('100%').margin({ top: 5 })

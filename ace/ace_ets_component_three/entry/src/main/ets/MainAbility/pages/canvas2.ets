@@ -42,14 +42,17 @@ struct Canvas2Example {
     .width('100%')
     .height('100%')
   }
+
   onPageShow() {
   }
+
   transferFromImageBitmap() {
     this.offContext.fillStyle = '#0000ff';
     this.offContext.fillRect(20, 160, 150, 100);
     let image = this.offContext.transferToImageBitmap();
     this.context.transferFromImageBitmap(image);
   }
+
   offScreenToDataURL() {
     let dataUrl = this.offContext.toDataURL();
     console.info("[canvas] offContext canvas rendering context2D toDataURL-----" + JSON.stringify(dataUrl));

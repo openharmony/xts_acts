@@ -21,13 +21,11 @@ import events_emitter from '@ohos.emitter'
 struct RatingExample {
   @State rating: number = 1
   @State indicator: boolean = false
-
-
   private stateChangCallBack = (eventData) => {
     console.info("rating page stateChangCallBack");
     if (eventData != null) {
       console.info("rating page state change called:" + JSON.stringify(eventData.data.rating));
-      if(eventData.data.rating != null) {
+      if (eventData.data.rating != null) {
         this.rating = eventData.data.rating;
       }
     }
@@ -63,13 +61,25 @@ struct RatingExample {
       eventId: 177,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventSix , this.stateChangCallBack)
+    events_emitter.on(stateChangeEventSix, this.stateChangCallBack)
 
     var stateChangeEventSeven = {
       eventId: 178,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventSeven , this.stateChangCallBack)
+    events_emitter.on(stateChangeEventSeven, this.stateChangCallBack)
+
+    var stateChangeEventSeven = {
+      eventId: 1027,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventSeven, this.stateChangCallBack)
+
+    var stateChangeEventSeven = {
+      eventId: 1028,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventSeven, this.stateChangCallBack)
   }
 
   build() {

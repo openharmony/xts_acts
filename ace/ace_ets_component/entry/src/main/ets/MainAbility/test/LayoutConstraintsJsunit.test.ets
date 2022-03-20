@@ -119,5 +119,57 @@ export default function layoutConstraintsJsunit() {
       expect(obj.$attrs.displayPriority).assertEqual(5);
       done();
     });
+
+    it('testLayoutConstraints005', 0, async function (done) {
+      console.info('[testLayoutConstraints005] START');
+      try {
+        let eventData = {
+          data: {
+            "aspectRatio": -4
+          }
+        }
+        let indexEvent = {
+          eventId: 1112,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testLayoutConstraints005] start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("[testLayoutConstraints005] change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJson = getInspectorByKey('aspectRatio');
+      console.info("[testLayoutConstraints005] component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("[testLayoutConstraints005] aspectRatio: " + obj.$attrs.aspectRatio);
+      expect(obj.$attrs.aspectRatio).assertEqual(-4);
+      done();
+    });
+
+    it('testLayoutConstraints006', 0, async function (done) {
+      console.info('[testLayoutConstraints006] START');
+      try {
+        let eventData = {
+          data: {
+            "aspectRatio": 9997077
+          }
+        }
+        let indexEvent = {
+          eventId: 1112,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testLayoutConstraints006] start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("[testLayoutConstraints006] change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJson = getInspectorByKey('aspectRatio');
+      console.info("[testLayoutConstraints006] component strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      console.info("[testLayoutConstraints006] aspectRatio: " + obj.$attrs.aspectRatio);
+      expect(obj.$attrs.aspectRatio).assertEqual(9997077);
+      done();
+    });
   });
 }

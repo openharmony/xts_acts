@@ -68,7 +68,7 @@ export default function circleJsunit() {
         }
         console.info('[circleTest_0200] START');
         var innerEvent = {
-          eventId:77,
+          eventId: 77,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[circleTest_0200] start to publish emit");
@@ -97,20 +97,20 @@ export default function circleJsunit() {
         }
         console.info('[circleTest_0300] START');
         var innerEvent = {
-          eventId:77,
+          eventId: 77,
           priority: events_emitter.EventPriority.LOW
         }
-        console.info("[circleTest_0300] start to publish emit");
+        console.info("[circleTest_030] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[circleTest_0300] change component data error: " + err.message);
+        console.log("[circleTest_030] change component data error: " + err.message);
       }
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('circle');
       let obj = JSON.parse(strJson);
       console.info("[circleTest_0300] component objNew is: " + JSON.stringify(obj));
-      expect(obj.$attrs.height).assertEqual('0.00px');
       expect(obj.$attrs.width).assertEqual('0.00px');
+      expect(obj.$attrs.height).assertEqual('0.00px');
       console.info('circleTest_0300 END');
       done();
     });

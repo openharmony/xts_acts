@@ -218,5 +218,59 @@ export default function ratingJsunit() {
       console.info('testRating_700 END');
       done();
     });
+
+    it('testRating_800', 0, async function (done) {
+      console.info('testRating_800 START');
+      await Utils.sleep(1000);
+      try {
+        let eventData = {
+          data: {
+            "rating": -1
+          }
+        }
+        var innerEvent = {
+          eventId: 1027,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testRating_800 start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("testRating_800 change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('Rating');
+      let obj = JSON.parse(strJson);
+      console.info("testRating_800 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.rating).assertEqual("0.000000");
+      console.info('testRating_800 END');
+      done();
+    });
+
+    it('testRating_900', 0, async function (done) {
+      console.info('testRating_900 START');
+      await Utils.sleep(1000);
+      try {
+        let eventData = {
+          data: {
+            "rating": 'a'
+          }
+        }
+        var innerEvent = {
+          eventId: 1028,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testRating_900 start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("testRating_900 change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('Rating');
+      let obj = JSON.parse(strJson);
+      console.info("testRating_900 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.rating).assertEqual("0.000000");
+      console.info('testRating_900 END');
+      done();
+    });
   })
 }

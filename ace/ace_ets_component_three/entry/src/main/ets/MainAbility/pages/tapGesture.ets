@@ -27,7 +27,11 @@ struct TapGestureExample {
       Text('Click twice')
       Text(this.value)
     }
-    .height(200).width(300).padding(60).border({ width: 1 }).margin(30)
+    .height(200)
+    .width(300)
+    .padding(60)
+    .border({ width: 1 })
+    .margin(30)
     .gesture(
     TapGesture({ count: 2 })
       .onAction(() => {
@@ -49,6 +53,7 @@ struct TapGestureExample {
           console.info("click action state err: " + JSON.stringify(err.message))
         }
       })
-    ).key('tapGesture')
+    )
+    .key('tapGesture')
   }
 }

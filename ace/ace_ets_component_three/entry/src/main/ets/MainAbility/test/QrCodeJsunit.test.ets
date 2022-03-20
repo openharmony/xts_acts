@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function qrCodeJsunit() {
-  describe('appInfoTest', function () {
+  describe('qrCodeTest', function () {
     beforeEach(async function (done) {
       let options = {
         uri: 'pages/QrCode',
@@ -106,6 +106,110 @@ export default function qrCodeJsunit() {
       var obj = JSON.parse(strJson);
       console.info("[test_qrCode_003] component obj is: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFB6C1');
+      done();
+    });
+
+    it('test_qrCode_004', 0, async function (done) {
+      console.info('[test_qrCode_004] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "color": 'a'
+          }
+        }
+        var innerEvent = {
+          eventId: 1023,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[test_qrCode_004] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[test_qrCode_004] change component color error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      var strJson = getInspectorByKey('QrCodeColor');
+      var obj = JSON.parse(strJson);
+      console.info("[test_qrCode_004] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.color).assertEqual('#FF000000');
+      done();
+    });
+
+    it('test_qrCode_005', 0, async function (done) {
+      console.info('[test_qrCode_005] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "color": 332
+          }
+        }
+        var innerEvent = {
+          eventId: 1024,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[test_qrCode_005] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[test_qrCode_005] change component color error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      var strJson = getInspectorByKey('QrCodeColor');
+      var obj = JSON.parse(strJson);
+      console.info("[test_qrCode_005] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.color).assertEqual('#0000014C');
+      done();
+    });
+
+    it('test_qrCode_006', 0, async function (done) {
+      console.info('[test_qrCode_006] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "backgroundColor": 'b'
+          }
+        }
+        var innerEvent = {
+          eventId: 1025,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[test_qrCode_006] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[test_qrCode_006] change component color error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      var strJson = getInspectorByKey('QrCodeColor');
+      var obj = JSON.parse(strJson);
+      console.info("[test_qrCode_006] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.backgroundColor).assertEqual('#FF000000');
+      done();
+    });
+
+    it('test_qrCode_007', 0, async function (done) {
+      console.info('[test_qrCode_007] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "backgroundColor": 333
+          }
+        }
+        var innerEvent = {
+          eventId: 1026,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[test_qrCode_007] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[test_qrCode_007] change component color error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      var strJson = getInspectorByKey('QrCodeColor');
+      var obj = JSON.parse(strJson);
+      console.info("[test_qrCode_007] component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.backgroundColor).assertEqual('#0000014D');
       done();
     });
   })
