@@ -155,47 +155,6 @@ describe('ActsAmsCallBackFirstScene', function () {
     })
 
     /*
-     * @tc.number    : Acts_Ams_test_1400
-     * @tc.name      : clearMissions : Remove Missions
-     * @tc.desc      : Remove Missions(by CallBack)
-     */
-    it('Acts_Ams_test_1400', 0, async function (done) {
-        var maxnum = 10;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_1400 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        var missionID = result[0].missionId + 100;
-        missionManager.clearMission(missionID,
-            (error, info) => {
-                console.info('Acts_Ams_test_1400 clearMissions error.code \
-                ' + error.code + ',data  [' + info + ']');
-                expect(error.code).assertLarger(-1);
-                done();
-            });
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_0800
-     * @tc.name      : clearMission : Remove Mission
-     * @tc.desc      : Remove Mission(by CallBack)
-     */
-    it('Acts_Ams_test_0800', 0, async function (done) {
-        var maxnum = 10;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_0800 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        missionManager.clearMission(result[0].missionId,
-            (error, info) => {
-                console.info('Acts_Ams_test_0800 clearMission error.code \
-                ' + error.code + ',data  [' + info + ']');
-                expect(error.code).assertEqual(0);
-                done();
-            });
-    })
-
-    /*
     * @tc.number    : Acts_Ams_test_1600
     * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
     * @tc.desc      : Kill Processes By BundleName(by CallBack)
