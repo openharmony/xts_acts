@@ -167,27 +167,6 @@ describe('ActsAmsCallBackThirdScene', function () {
     })
 
     /*
-     * @tc.number    : Acts_Ams_test_4000
-     * @tc.name      : clearMission : Remove Mission
-     * @tc.desc      : Remove Mission(by CallBack)
-     */
-    it('Acts_Ams_test_4000', 0, async function (done) {
-        var maxnum = 20;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_4000 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        missionManager.clearMission(result[1].missionId,
-            (error, info) => {
-                console.info('Acts_Ams_test_4000 clearMission error.code \
-                ' + error.code + ',data  [' + info + ']');
-                expect(error.code).assertEqual(0);
-                done();
-            }
-        );
-    })
-
-    /*
      * @tc.number    : Acts_Ams_test_4400
      * @tc.name      : moveMissionToFront : Move Mission To Top
      * @tc.desc      : Move Mission To Top(by CallBack)
@@ -206,28 +185,6 @@ describe('ActsAmsCallBackThirdScene', function () {
                 done();
             }
         );
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_11800
-     * @tc.name      : clearMissions : delete Missions
-     * @tc.desc      : delete Missions(by CallBack)
-     */
-    it('Acts_Ams_test_11800', 0, async function (done) {
-        var maxnum = 10;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_11800 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        missionManager.clearMission(result[0].missionId,
-            (error, info) => {
-                console.info('Acts_Ams_test_11800 clearMissions error.code \
-                ' + error.code + ',data  [' + info + ']');
-                expect(error.code).assertEqual(0);
-                done();
-            }
-        );
-        done();
     })
 
     /*

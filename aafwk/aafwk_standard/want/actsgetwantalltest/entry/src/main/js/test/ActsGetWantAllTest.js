@@ -45,6 +45,11 @@ describe('ActsGetWantTest', function () {
             }
         },
             (err, data) => {
+                if (err.code != 0) {
+                    console.info('error: ' + JSON.stringify(err));
+                    done();
+                    return;
+                }
                 console.info('====> ACTS_StartAbilityForResult_0100 start ability=====>' + JSON.stringify(data))
                 expect(data.want.deviceId).assertEqual("");
                 expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -66,55 +71,6 @@ describe('ActsGetWantTest', function () {
             })
     })
 
-
-    //  @tc.number: ACTS_GetWant_0200
-    //  @tc.name: getWant : get want in current ability
-    //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
-    it('ACTS_GetWant_0200', 0, async function (done) {
-        console.info('====> ACTS_GetWant_0200 begin =====>');
-        featureAbility.startAbilityForResult({
-            want: {
-                deviceId: "",
-                bundleName: "com.example.actsgetwantalltesthap",
-                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
-                action: "action2",
-            }
-        }).then(data => {  
-            console.info('====> ACTS_StartAbilityForResult_0200 start ability=====>' + JSON.stringify(data))
-            console.info('====> before done=====>then');
-            done();
-        }).catch(err => {
-            console.info('====> err =====>' + err.code);
-        })
-        done();
-    })
-
-    //  @tc.number: ACTS_GetWant_0300
-    //  @tc.name: getWant : get want in current ability
-    //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
-    it('ACTS_GetWant_0300', 0, async function (done) {
-        featureAbility.startAbilityForResult({
-            want:
-            {
-                deviceId: "",
-                bundleName: "com.example.actsgetwantalltesthap",
-                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
-                action: "action1",
-                entities: ["entity1"],
-                type: "MIMETYPE",
-                uri: "key={true,true,false}",
-            },
-        },
-        (err, data) => {
-            console.info('====> ACTS_StartAbilityForResult_0300 start ability=====>' + JSON.stringify(data))
-            expect(data.want.deviceId).assertEqual("");
-            console.info('====> before done=====>')
-            done();
-        })
-        done();
-    })
     //  @tc.number: ACTS_GetWant_0400
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
@@ -143,6 +99,11 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
+                if (err.code != 0) {
+                    console.info('error: ' + JSON.stringify(err));
+                    done();
+                    return;
+                }
                 console.info('====> ACTS_StartAbilityForResult_0400 start ability=====>' + JSON.stringify(data))
                 expect(data.want.deviceId).assertEqual("");
                 expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -198,6 +159,11 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
+                if (err.code != 0) {
+                    console.info('error: ' + JSON.stringify(err));
+                    done();
+                    return;
+                }
                 console.info('====> ACTS_StartAbilityForResult_0500 start ability=====>' + JSON.stringify(data))
                 expect(data.want.deviceId).assertEqual("");
                 expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -251,6 +217,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     console.info('====> ACTS_StartAbilityForResult_0600 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -304,6 +275,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     console.info('====> ACTS_StartAbilityForResult_0700 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -356,6 +332,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     console.info('====> ACTS_StartAbilityForResult_0800 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -408,6 +389,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     console.info('====> ACTS_StartAbilityForResult_0900 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -461,6 +447,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     console.info('====> ACTS_StartAbilityForResult_1000 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -514,6 +505,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     console.info('====> ACTS_StartAbilityForResult_1100 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -567,6 +563,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     console.info('====> ACTS_StartAbilityForResult_1200 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -620,6 +621,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     console.info('====> ACTS_StartAbilityForResult_1300 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -673,6 +679,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     console.info('====> ACTS_StartAbilityForResult_1400 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -726,6 +737,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     console.info('====> ACTS_StartAbilityForResult_1500 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -779,6 +795,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     console.info('====> ACTS_StartAbilityForResult_1600 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -832,6 +853,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     console.info('====> ACTS_StartAbilityForResult_1700 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -885,6 +911,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     console.info('====> ACTS_StartAbilityForResult_1800 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -938,6 +969,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     console.info('====> ACTS_StartAbilityForResult_1900 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -996,6 +1032,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
+                    if (err.code != 0) {
+                        console.info('error: ' + JSON.stringify(err));
+                        done();
+                        return;
+                    }
                     checkOnAbilityResult(data);
                     done();
                 })

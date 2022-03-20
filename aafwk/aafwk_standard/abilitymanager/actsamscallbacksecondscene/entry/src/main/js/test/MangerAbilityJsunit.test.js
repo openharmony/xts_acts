@@ -227,24 +227,4 @@ describe('ActsAmsCallBackSecondScene', function () {
                 done();
             });
     })
-
-    /*
-     * @tc.number    : Acts_Ams_test_3000
-     * @tc.name      : clearMissions: Remove Missions
-     * @tc.desc      : Remove Missions(by CallBack)
-     */
-    it('Acts_Ams_test_3000', 0, async function (done) {
-        var maxnum = 20;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_3000 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        missionManager.clearMission(result[0].missionId,
-            (error, info) => {
-                console.info('Acts_Ams_test_3000 clearMission error.code \
-                ' + error.code + ',data  [' + info + ']');
-                expect(error.code).assertEqual(0);
-                done();
-            });
-    })
 })
