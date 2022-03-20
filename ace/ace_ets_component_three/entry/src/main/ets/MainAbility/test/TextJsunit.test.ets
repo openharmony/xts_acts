@@ -66,10 +66,10 @@ export default function textJsunit() {
       console.info("testText_0200 component obj is: " + JSON.stringify(obj));
       var res = obj.$attrs.src.indexOf('rawfile/test.png');
       console.info("testText_0200 result is: " + res);
-      var sres = obj.$attrs.src.slice(res,res + 16);
+      var sres = obj.$attrs.src.slice(res, res + 16);
       console.info("testText_0200 slice result is: " + sres);
       expect(obj.$type).assertEqual('Image');
-      expect(obj.$attrs.src.slice(res,res + 16)).assertEqual('rawfile/test.png');
+      expect(obj.$attrs.src.slice(res, res + 16)).assertEqual('rawfile/test.png');
       console.info('testText_0200 END');
       done();
     });
@@ -123,7 +123,7 @@ export default function textJsunit() {
         let indexEvent = {
           eventId: 227,
           priority: events_emitter.EventPriority.LOW
-        } 
+        }
         console.info("testText_0500 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
@@ -220,6 +220,110 @@ export default function textJsunit() {
       console.info("testText_1000 component obj is: " + JSON.stringify(obj.$attrs.decoration));
       expect(obj.$attrs.decoration).assertEqual("{\"type\":\"TextDecorationType.None\",\"color\":\"#FFFF0000\"}");
       console.info('testText_1000 END');
+      done();
+    });
+
+    it('testText_1100', 0, async function (done) {
+      console.info('testText_1100 START');
+      try {
+        let eventData = {
+          data: {
+            "fontColor": "-a",
+          }
+        }
+        let indexEvent = {
+          eventId: 230,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testText_1100 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testText_1100 change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJsonNew = getInspectorByKey('text');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testText_1100 component objNew is: " + JSON.stringify(objNew.$attrs.fontColor));
+      expect(objNew.$attrs.fontColor).assertEqual('#FF000000');
+      console.info('testText_1100 END');
+      done();
+    });
+
+    it('testText_1200', 0, async function (done) {
+      console.info('testText_1200 START');
+      try {
+        let eventData = {
+          data: {
+            "fontColor": "12321321",
+          }
+        }
+        let indexEvent = {
+          eventId: 231,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testText_1200 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testText_1200 change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJsonNew = getInspectorByKey('text');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testText_1200 component objNew is: " + JSON.stringify(objNew.$attrs.fontColor));
+      expect(objNew.$attrs.fontColor).assertEqual('#00BC0229');
+      console.info('testText_1200 END');
+      done();
+    });
+
+    it('testText_1300', 0, async function (done) {
+      console.info('testText_1300 START');
+      try {
+        let eventData = {
+          data: {
+            "fontSize": "-a",
+          }
+        }
+        let indexEvent = {
+          eventId: 232,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testText_1300 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testText_1300 change component data error: " + err.message);
+      }
+      await Utils.sleep(3000);
+      let strJsonNew = getInspectorByKey('text');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testText_1300 component objNew is: " + JSON.stringify(objNew.$attrs.fontSize));
+      expect(objNew.$attrs.fontSize).assertEqual('nanfp');
+      console.info('testText_1300 END');
+      done();
+    });
+
+    it('testText_1400', 0, async function (done) {
+      console.info('testText_1400 START');
+      try {
+        let eventData = {
+          data: {
+            "fontSize": "-20",
+          }
+        }
+        let indexEvent = {
+          eventId: 233,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testText_1400 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testText_1400 change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJsonNew = getInspectorByKey('text');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testText_1400 component objNew is: " + JSON.stringify(objNew.$attrs.fontSize));
+      expect(objNew.$attrs.fontSize).assertEqual('-20.00fp');
+      console.info('testText_1400 END');
       done();
     });
   })

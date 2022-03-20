@@ -19,21 +19,22 @@ import events_emitter from '@ohos.emitter'
 @Component
 struct ParentComp {
   @State isCountDown: boolean = true
+
   build() {
     Column() {
       Text(this.isCountDown ? 'Count Down' : 'Stopwatch')
       if (this.isCountDown) {
         Image($rawfile('ic_health_heart.png')).width(50).height(50)
-        TimerComponent({counter: 10, changePerSec: -1, showInColor: Color.Red})
+        TimerComponent({ counter: 10, changePerSec: -1, showInColor: Color.Red })
       } else {
         Image($rawfile('ic_health_heart.png')).width(150).height(150)
-        TimerComponent({counter: 0, changePerSec: +1, showInColor: Color.Black })
+        TimerComponent({ counter: 0, changePerSec: +1, showInColor: Color.Black })
       }
       Button(this.isCountDown ? 'Swtich to Stopwatch' : 'Switch to Count Down')
         .onClick(() => {
           this.isCountDown = !this.isCountDown
         })
-      .key('button1')
+        .key('button1')
     }
   }
 }
@@ -43,8 +44,8 @@ struct TimerComponent {
   @State counter: number = 0
   private changePerSec: number = -1
   private showInColor: Color = Color.Black
-  private timerId : number = -1
-  @State onActionCalled :boolean = false
+  private timerId: number = -1
+  @State onActionCalled: boolean = false
 
   build() {
     Text(`${this.counter}sec`)
@@ -52,7 +53,9 @@ struct TimerComponent {
   }
 
   aboutToAppear() {
-    this.timerId = setInterval(() => {this.counter += this.changePerSec}, 1000)
+    this.timerId = setInterval(() => {
+      this.counter += this.changePerSec
+    }, 1000)
   }
 
   aboutToDisappear() {

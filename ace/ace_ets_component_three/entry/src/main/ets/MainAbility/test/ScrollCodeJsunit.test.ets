@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function scrollCodeJsunit() {
-  describe('appInfoTest', function () {
+  describe('scrollCodeTest', function () {
     beforeEach(async function (done) {
       let options = {
         uri: 'pages/scrollCode',
@@ -167,7 +167,7 @@ export default function scrollCodeJsunit() {
     it('test_scrollCode_006', 0, async function (done) {
       await Utils.sleep(1000)
       var callback = (eventData) => {
-        console.info("[test_scrollCode_006] get event state result is: " + JSON.stringify(eventData));
+        console.info("[test_scrollCode_06] get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.scrollToIndex).assertEqual(10)
       }
       var innerEvent = {
@@ -177,7 +177,7 @@ export default function scrollCodeJsunit() {
       try {
         events_emitter.on(innerEvent, callback)
       } catch (err) {
-        console.info("[test_scrollCode_006] on events_emitter err : " + JSON.stringify(err));
+        console.info("[test_scrollCode_06] on events_emitter err : " + JSON.stringify(err));
       }
       console.info('[test_scrollCode_006] sendEventByKey ' + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1000)

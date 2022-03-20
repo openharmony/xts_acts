@@ -19,7 +19,7 @@ import events_emitter from '@ohos.emitter'
 @Entry
 @Preview
 @Component
-struct TouchExample   {
+struct TouchExample {
   @State text: string = ''
   @State eventType: string = ''
   @State touchFlag: boolean = false
@@ -37,13 +37,13 @@ struct TouchExample   {
     console.info("[touch] page stateChangCallBack");
     if (eventData != null) {
       console.info("[touch] page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.text != null) {
+      if (eventData.data.text != null) {
         this.text = eventData.data.text;
       }
-      if(eventData.data.eventType != null) {
+      if (eventData.data.eventType != null) {
         this.eventType = eventData.data.eventType;
       }
-      if(eventData.data.touchFlag != null) {
+      if (eventData.data.touchFlag != null) {
         this.touchFlag = eventData.data.touchFlag
       }
     }
@@ -51,7 +51,10 @@ struct TouchExample   {
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-      Button('Touch').backgroundColor(0x2788D9).height(40).width(80)
+      Button('Touch')
+        .backgroundColor(0x2788D9)
+        .height(40)
+        .width(80)
         .key('touch')
         .onTouch((event: Touch) => {
           if (event.type === TouchType.Down) {
@@ -72,7 +75,7 @@ struct TouchExample   {
           stopPropagation: () => {
             console.info('stopPropagation')
           }
-          console.info('onTouch successful, touchFlag is : ' + this.eventType + ', ' +this.touchFlag)
+          console.info('onTouch successful, touchFlag is : ' + this.eventType + ', ' + this.touchFlag)
           console.info(this.text = 'TouchType:' + this.eventType
           + '\nDistance between touch point and touch element:\nx: '
           + event.touches[0].x + '\n' + 'y: ' + event.touches[0].y + '\ncomponent globalPos：（'
@@ -84,7 +87,7 @@ struct TouchExample   {
           + event.target.area.globalPos.x + ',' + event.target.area.globalPos.y + '）\nwidth:'
           + event.target.area.width + '\nheight：' + event.target.area.height)
           console.log('fang--->A')
-          try{
+          try {
             console.log('fang--->B')
             var backData = {
               data: {
@@ -99,7 +102,7 @@ struct TouchExample   {
             console.log('fang--->D')
             console.info("touchFlag start to emit action state")
             events_emitter.emit(backEvent, backData)
-          }catch{
+          } catch {
             console.info("touchFlag emit action state err: " + JSON.stringify(err.message))
           }
         })

@@ -23,7 +23,6 @@ struct TouchAbleExample {
   @State text1: string = '';
   @State text2: string = '';
   @State touchableValue: boolean = false;
-
   private stateChangCallBack = (eventData) => {
     console.info("[TouchAble] page stateChangCallBack");
     if (eventData != null) {
@@ -46,13 +45,17 @@ struct TouchAbleExample {
   build() {
     Stack() {
       Rect()
-        .fill(Color.Gray).width(150).height(150)
+        .fill(Color.Gray)
+        .width(150)
+        .height(150)
         .onClick(() => {
           console.info(this.text1 = 'Rect Clicked')
         })
         .overlay(this.text1, { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
       Ellipse()
-        .fill(Color.Pink).width(150).height(80)
+        .fill(Color.Pink)
+        .width(150)
+        .height(80)
         .key('ellipse')
         .touchable(this.touchableValue)
         .onClick(() => {

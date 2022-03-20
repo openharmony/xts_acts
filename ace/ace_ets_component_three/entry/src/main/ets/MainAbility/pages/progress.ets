@@ -22,15 +22,14 @@ struct ProgressExample {
   @State value: number = 20
   @State total: number = 100
   @State style: ProgressStyle = ProgressStyle.Linear
-
   private stateChangCallBack = (eventData) => {
     console.info("progress page stateChangCallBack");
     if (eventData != null) {
       console.info("progress page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.value != null) {
+      if (eventData.data.value != null) {
         this.value = eventData.data.value;
       }
-      if(eventData.data.total != null) {
+      if (eventData.data.total != null) {
         this.total = eventData.data.total;
       }
     }
@@ -73,6 +72,16 @@ struct ProgressExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventSix, this.stateChangCallBack)
+    var stateChangeEventseven = {
+      eventId: 1021,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventseven, this.stateChangCallBack)
+    var stateChangeEventeight = {
+      eventId: 1022,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventeight, this.stateChangCallBack)
   }
 
   build() {

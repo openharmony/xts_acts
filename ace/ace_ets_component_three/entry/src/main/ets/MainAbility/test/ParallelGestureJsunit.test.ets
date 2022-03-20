@@ -53,7 +53,9 @@ export default function parallelGestureJsunit() {
       let x_value = rect.left + (rect.right - rect.left) / 2;
       let y_value = rect.top + (rect.bottom - rect.top) / 2;
       console.info("parallelGestureTest_0100 onTouch location is: " + "[x]=== " + x_value + "   [y]===" + y_value);
-      let point: TouchObject = { id: 11, x: x_value, y: y_value, type: TouchType.DOWN}
+      let point: TouchObject = {
+        id: 11, x: x_value, y: y_value, type: TouchType.DOWN
+      }
       var callback = (eventData) => {
         console.info("parallelGestureTest_0100 get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.value).assertEqual('gesture onAction')

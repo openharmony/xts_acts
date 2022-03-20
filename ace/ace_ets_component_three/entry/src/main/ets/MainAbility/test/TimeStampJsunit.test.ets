@@ -18,8 +18,8 @@ import router from '@system.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
-export default function timeStampJsunit(){
-  describe('timeStampTest', function (){
+export default function timeStampJsunit() {
+  describe('timeStampTest', function () {
     beforeEach(async function (done) {
       let options = {
         uri: 'pages/timeStamp',
@@ -61,7 +61,7 @@ export default function timeStampJsunit(){
       } catch (err) {
         console.info("timeStampTest_0100 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("timeStampTest_0100 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
+      console.info("timeStampTest_0100 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1500);
       console.info('timeStampTest_0100 END');
       done();

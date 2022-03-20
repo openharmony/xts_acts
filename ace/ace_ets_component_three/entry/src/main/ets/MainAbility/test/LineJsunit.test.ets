@@ -18,7 +18,7 @@ import router from '@system.router';
 import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
-export default function LineJsunit(){
+export default function LineJsunit() {
   describe('LineTest', function () {
     beforeEach(async function (done) {
       let options = {
@@ -195,10 +195,10 @@ export default function LineJsunit(){
       await Utils.sleep(2000);
       var strJson = getInspectorByKey('line');
       var obj = JSON.parse(strJson);
-      console.info("lineTest_0800 component obj is: " + JSON.stringify(obj.$attrs.endPoint[0]));
       console.info("lineTest_0800 component objOne is: " + JSON.stringify(obj.$attrs.endPoint[1]));
-      expect(obj.$attrs.endPoint[0]).assertEqual(0);
+      console.info("lineTest_0800 component obj is: " + JSON.stringify(obj.$attrs.endPoint[0]));
       expect(obj.$attrs.endPoint[1]).assertEqual(0);
+      expect(obj.$attrs.endPoint[0]).assertEqual(0);
       done();
     });
   })

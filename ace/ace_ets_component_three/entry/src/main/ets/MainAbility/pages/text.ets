@@ -21,8 +21,9 @@ struct TextExample {
   @State fontSize: number = 9;
   @State fontColor: string = "0xCCCCCC";
   @State textAlign: TextAlign = TextAlign.Start;
-  @State textOverflow	: TextOverflow = TextOverflow.Clip;
+  @State textOverflow: TextOverflow = TextOverflow.Clip;
   @State decoration: TextDecorationType = TextDecorationType.None;
+
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
       Text('lineHeightt')
@@ -30,7 +31,7 @@ struct TextExample {
         .fontColor(this.fontColor)
         .textAlign(this.textAlign)
         .textOverflow({ overflow: this.textOverflow })
-        .decoration({ type: this.decoration, color:Color.Red })
+        .decoration({ type: this.decoration, color: Color.Red })
         .key('text')
       Image($rawfile('test.png'))
         .key('image')
@@ -65,6 +66,30 @@ struct TextExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventThree, this.stateChangCallBack)
+
+    var stateChangeEventFour = {
+      eventId: 230,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventFour, this.stateChangCallBack)
+
+    var stateChangeEventFive = {
+      eventId: 231,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventFive, this.stateChangCallBack)
+
+    var stateChangeEventSix = {
+      eventId: 232,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventSix, this.stateChangCallBack)
+
+    var stateChangeEventSeven = {
+      eventId: 233,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventSeven, this.stateChangCallBack)
   }
 
   private stateChangCallBack = (eventData) => {

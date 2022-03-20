@@ -28,7 +28,6 @@ struct ShapeExample {
   @State strokeDashArray: Array<Length> = [20];
   @State fillOpacity: number = 0;
   @State strokeValue: Color = '#FF000000';
-
   private stateChangCallBack = (eventData) => {
     if (eventData != null) {
       console.info("text page state change called:" + JSON.stringify(eventData));
@@ -98,7 +97,7 @@ struct ShapeExample {
       .strokeWidth(this.strokeWidth)
       .antiAlias(this.antiAlias)
       .fillOpacity(this.fillOpacity)
-      .mesh([],1,1)
+      .mesh([], 1, 1)
     }.width('100%').margin({ top: 15 })
   }
 }

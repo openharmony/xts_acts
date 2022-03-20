@@ -23,7 +23,6 @@ struct ButtonExample {
   @State fontColorValue: Color = Color.Black;
   @State text: string = '';
   @State onClickValue: boolean = false;
-
   private stateChangCallBack = (eventData) => {
     if (eventData != null) {
       console.info("Button page state change called:" + JSON.stringify(eventData));
@@ -46,76 +45,105 @@ struct ButtonExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    var stateChangeEventOne = {
+      eventId: 74,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventOne, this.stateChangCallBack);
+    var stateChangeEventTwo = {
+      eventId: 75,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack);
+    var stateChangeEventThree = {
+      eventId: 76,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventThree, this.stateChangCallBack);
   }
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.SpaceBetween }) {
-       Button('Ok', { type: this.buttonTypeValue, stateEffect: true })
-          .borderRadius(8).backgroundColor(0x317aff).width(90).key('button')
-       Button('ok').type(`${this.buttonTypeValue}`).key('button1')
-          .backgroundColor(0x317aff).width(90)
-       Button('ok').type(this.buttonTypeValue).key('button2').fontSize(this.fontSizeValue)
-          .backgroundColor(0x317aff).width(90).fontColor(this.fontColorValue)
-          .onClick(() => {
-             try {
-               var backData = {
-                 data: {
-                   "fontColorValue": this.fontColorValue,
-                 }
-               }
-               var backEvent = {
-                 eventId: 71,
-                 priority: events_emitter.EventPriority.LOW
-               }
-               console.info("button2 start to emit action state")
-               events_emitter.emit(backEvent, backData)
-             } catch (err) {
-               console.info("button2 emit action state err: " + JSON.stringify(err.message))
-             }
-          })
-       Button('ok!').type(this.buttonTypeValue).key('button3').fontColor(this.fontColorValue)
-         .backgroundColor(0x317aff).width(90)
-         .onClick(() => {
-           try {
-             var backData = {
-               data: {
-                 "fontColorValue": this.fontColorValue,
-               }
-             }
-             var backEvent = {
-               eventId: 72,
-               priority: events_emitter.EventPriority.LOW
-             }
-             console.info("button3 start to emit action state")
-             events_emitter.emit(backEvent, backData)
-           } catch (err) {
-             console.info("button3 emit action state err: " + JSON.stringify(err.message))
-           }
-         })
-       Button('Click').backgroundColor(0x2788D9).width(200).height(100).fontSize(20)
-         .onClick((event: ClickEvent) => {
-           console.info(this.text = 'Click Point:' + '\n  screenX:' + event.screenX + '\n  screenY:' + event.screenY
-           + '\n  x :' + event.x + '\n  y:' + event.y + '\ntarget:' + '\n  component globalPos：（'
-           + event.target.area.globalPos.x + ',' + event.target.area.globalPos.y + '）\n  width:'
-           + event.target.area.width + '\n  height：' + event.target.area.height);
-           this.onClickValue = true;
-           try {
-             var backData = {
-               data: {
-                 "ACTION": this.onClickValue,
-                 "event": JSON.stringify(event)
-               }
-             }
-             var backEvent = {
-               eventId: 4,
-               priority: events_emitter.EventPriority.LOW
-             }
-             console.info("click to emit action state")
-             events_emitter.emit(backEvent, backData)
-           } catch (err) {
-             console.info("click action state err: " + JSON.stringify(err.message))
-           }
-         }).key('buttonClick')
+      Button('Ok', { type: this.buttonTypeValue, stateEffect: true })
+        .borderRadius(8).backgroundColor(0x317aff).width(90).key('button')
+      Button('ok').type(`${this.buttonTypeValue}`).key('button1')
+        .backgroundColor(0x317aff).width(90)
+      Button('ok')
+        .type(this.buttonTypeValue)
+        .key('button2')
+        .fontSize(this.fontSizeValue)
+        .backgroundColor(0x317aff)
+        .width(90)
+        .fontColor(this.fontColorValue)
+        .onClick(() => {
+          try {
+            var backData = {
+              data: {
+                "fontColorValue": this.fontColorValue,
+              }
+            }
+            var backEvent = {
+              eventId: 71,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("button2 start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("button2 emit action state err: " + JSON.stringify(err.message))
+          }
+        })
+      Button('ok!')
+        .type(this.buttonTypeValue)
+        .key('button3')
+        .fontColor(this.fontColorValue)
+        .backgroundColor(0x317aff)
+        .width(90)
+        .onClick(() => {
+          try {
+            var backData = {
+              data: {
+                "fontColorValue": this.fontColorValue,
+              }
+            }
+            var backEvent = {
+              eventId: 72,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("button3 start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("button3 emit action state err: " + JSON.stringify(err.message))
+          }
+        })
+      Button('Click')
+        .backgroundColor(0x2788D9)
+        .width(200)
+        .height(100)
+        .fontSize(20)
+        .onClick((event: ClickEvent) => {
+          console.info(this.text = 'Click Point:' + '\n  screenX:' + event.screenX + '\n  screenY:' + event.screenY
+          + '\n  x :' + event.x + '\n  y:' + event.y + '\ntarget:' + '\n  component globalPos：（'
+          + event.target.area.globalPos.x + ',' + event.target.area.globalPos.y + '）\n  width:'
+          + event.target.area.width + '\n  height：' + event.target.area.height);
+          this.onClickValue = true;
+          try {
+            var backData = {
+              data: {
+                "ACTION": this.onClickValue,
+                "event": JSON.stringify(event)
+              }
+            }
+            var backEvent = {
+              eventId: 4,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("click to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("click action state err: " + JSON.stringify(err.message))
+          }
+        })
+        .key('buttonClick')
     }.height(400).padding({ left: 35, right: 35, top: 35 })
   }
 }

@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 import file from '@system.file';
-
 import {Core, ExpectExtend, InstrumentLog, ReportExtend} from "deccjsunit/index.ets";
 import testsuite from "../test/List.test.ets";
 import featureAbility from "@ohos.ability.featureAbility";

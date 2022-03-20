@@ -28,7 +28,6 @@ struct ImageEffectsExample {
   @State contrastValue: string= 20;
   @State invertValue: string= 10;
   @State hueRotateValue: string= 10
-
   private stateChangCallBack = (eventData) => {
     if (eventData != null) {
       console.info("imageEffects page state change called:" + JSON.stringify(eventData));

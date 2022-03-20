@@ -31,7 +31,7 @@ struct SharedTransitionExample {
         Row() {
           Navigator({ target: 'pages/sharedTransition2', type: NavigationType.Push }) {
             Image($rawfile('ic_health_heart.png')).width(50).height(50)
-              .sharedTransition('sharedImage1', { duration:this.duration , delay: this.delay , type: this.type})
+              .sharedTransition('sharedImage1', { duration: this.duration, delay: this.delay, type: this.type })
           }
           .key('Navigator')
           .padding({ left: 10 })
@@ -41,9 +41,9 @@ struct SharedTransitionExample {
             try {
               var backData = {
                 data: {
-                  "duration" : this.duration,
-                  "delay" : this.delay,
-                  "type" : this.type
+                  "duration": this.duration,
+                  "delay": this.delay,
+                  "type": this.type
                 }
               }
               var backEvent = {
@@ -56,6 +56,7 @@ struct SharedTransitionExample {
               console.info("SharedTransition emit action state err: " + JSON.stringify(err.message))
             }
           })
+
           Text('SharedTransition').width(80).height(80).textAlign(TextAlign.Center)
         }
       }

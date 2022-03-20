@@ -62,7 +62,7 @@ export default function aboutToDisappearJsunit() {
       } catch (err) {
         console.info("aboutToDisappearTest_0100 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("aboutToDisappearTest_0100 click result is: " + JSON.stringify(sendEventByKey('button1',10,"")));
+      console.info("aboutToDisappearTest_0100 click result is: " + JSON.stringify(sendEventByKey('button1', 10, "")));
       await Utils.sleep(1000);
       console.info('aboutToDisappearTest_0100 END');
       done();

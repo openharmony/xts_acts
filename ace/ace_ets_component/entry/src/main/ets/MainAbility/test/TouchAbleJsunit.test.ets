@@ -51,7 +51,7 @@ export default function touchAbleJsunit() {
       let strJson = getInspectorByKey('ellipse');
       let obj = JSON.parse(strJson);
       console.info("[testTouchAble001] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.focusable).assertEqual(false);
+      expect(obj.$attrs.focusable).assertEqual(true);
       done();
     });
 

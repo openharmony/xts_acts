@@ -19,7 +19,7 @@ import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function priorityGestureJsunit() {
-  describe('PriorityGestureTest', function () {
+  describe('priorityGestureTest', function () {
     beforeEach(async function (done) {
       let options = {
         uri: 'pages/priorityGesture',
@@ -52,7 +52,9 @@ export default function priorityGestureJsunit() {
       let x_value = rect.left + (rect.right - rect.left) / 2;
       let y_value = rect.top + (rect.bottom - rect.top) / 2;
       console.info("priorityGestureTest_0100 onTouch location is: " + "[x]=== " + x_value + "   [y]===" + y_value);
-      let point: TouchObject = { id: 11, x: x_value, y: y_value, type: TouchType.Move}
+      let point: TouchObject = {
+        id: 11, x: x_value, y: y_value, type: TouchType.Move
+      }
       var callback = (eventData) => {
         console.info("priorityGestureTest_0100 get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.value).assertEqual('gesture onAction')

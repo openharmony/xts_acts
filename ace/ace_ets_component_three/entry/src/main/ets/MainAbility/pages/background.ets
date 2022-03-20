@@ -21,38 +21,36 @@ struct BackgroundExample {
   @State width: string = "200px";
   @State height: string = "200px";
   @State color: Array = [[0x080808], [0xEEEE00], [0xFF0000]];
-
   private stateChangCallBack = (eventData) => {
     if (eventData != null) {
       console.info("gauge page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.colorValues != null) {
+      if (eventData.data.colorValues != null) {
         this.colorValues = JSON.parse(eventData.data.colorValues);
       }
-      if(eventData.data.width != null) {
+      if (eventData.data.width != null) {
         this.width = eventData.data.width;
       }
-      if(eventData.data.height != null) {
+      if (eventData.data.height != null) {
         this.height = eventData.data.height;
       }
-      if(eventData.data.srcValue != null) {
+      if (eventData.data.srcValue != null) {
         this.srcValue = eventData.data.srcValue;
       }
     }
   }
-
   private stateChangCallBackTwo = (eventData) => {
     if (eventData != null) {
       console.info("Background page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.backgroundColor != null) {
+      if (eventData.data.backgroundColor != null) {
         this.backgroundColor = eventData.data.backgroundColor;
       }
-      if(eventData.data.backgroundImage != null) {
+      if (eventData.data.backgroundImage != null) {
         this.backgroundImage = eventData.data.backgroundImage;
       }
-      if(eventData.data.backgroundImageSize != null) {
+      if (eventData.data.backgroundImageSize != null) {
         this.backgroundImageSize = eventData.data.backgroundImageSize;
       }
-      if(eventData.data.backgroundImagePosition != null) {
+      if (eventData.data.backgroundImagePosition != null) {
         this.backgroundImagePosition = eventData.data.backgroundImagePosition;
       }
     }
@@ -76,7 +74,12 @@ struct BackgroundExample {
   build() {
     Column({ space: 5 }) {
       Text('background color').fontSize(9).width('90%').fontColor(0xFF0000).key("fontColor")
-      Row().width('90%').height(50).backgroundColor(0xEEEE00).key("backgroundColor").border({ width: 1 })
+      Row()
+        .width('90%')
+        .height(50)
+        .backgroundColor(0xEEEE00)
+        .key("backgroundColor")
+        .border({ width: 1 })
       Text('background image repeat along X').fontSize(9).width('90%').fontColor(0xCCCCCC)
       Row()
         .backgroundImage('/images/bg.jpg', ImageRepeat.X)
@@ -93,7 +96,8 @@ struct BackgroundExample {
         .border({ width: 1 })
       Text('background image size').fontSize(9).width('90%').fontColor(0xFF0000)
       Row()
-        .width('90%').height(150)
+        .width('90%')
+        .height(150)
         .backgroundImage('/images/bg.jpg', ImageRepeat.NoRepeat)
         .backgroundImageSize({ width: 1000, height: 500 })
         .border({ width: 1 })

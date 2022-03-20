@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function badgeJsunit() {
-  describe('appInfoTest', function () {
+  describe('badgeTest', function () {
     beforeEach(async function (done) {
       console.info("badge beforeEach start");
       let options = {
@@ -244,5 +244,58 @@ export default function badgeJsunit() {
       done();
     });
 
+    it('testBadge10', 0, async function (done) {
+      console.info('[testBadge10] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "colorValue": ab88,
+          }
+        }
+        var innerEvent = {
+          eventId: 64,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testBadge10] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testBadge10] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('badge2');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("[testBadge10] component objNew is: " + JSON.stringify(objNew));
+      let style = JSON.parse(objNew.$attrs.style);
+      expect(style.color).assertEqual('#FF0000FF');
+      done();
+    });
+
+    it('testBadge11', 0, async function (done) {
+      console.info('[testBadge11] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "colorValue": -300,
+          }
+        }
+        var innerEvent = {
+          eventId: 65,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testBadge11] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testBadge11] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('badge2');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("[testBadge11] component objNew is: " + JSON.stringify(objNew));
+      let style = JSON.parse(objNew.$attrs.style);
+      expect(style.color).assertEqual('#FFFFFED4');
+      done();
+    });
   })
 }

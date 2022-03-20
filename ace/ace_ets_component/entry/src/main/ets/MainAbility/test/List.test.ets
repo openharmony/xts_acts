@@ -34,8 +34,11 @@ import touchAbleJsunit from './TouchAbleJsunit.test.ets';
 import touchJsunit from './TouchJsunit.test.ets';
 import visibilityJsunit from './VisibilityJsunit.test.ets';
 import zIndexJsunit from './ZIndexJsunit.test.ets';
+import columnJsunit from './ColumnJsunit.test.ets';
 
 export default function testsuite() {
+  touchAbleJsunit();
+  columnJsunit();
   enableJsunit();
   appearJsunit();
   zIndexJsunit();
@@ -46,7 +49,6 @@ export default function testsuite() {
   visibilityJsunit();
   girdContainerJsunit();
   areaChangeJsunit();
-  gridSettingsJsunit();
   imageEffectsJsunit();
   layoutConstraintsJsunit();
   listJsunit();
@@ -55,6 +57,6 @@ export default function testsuite() {
   stepperJsunit();
   swiperJsunit();
   textStyleJsunit();
-  touchAbleJsunit();
   touchJsunit();
+  gridSettingsJsunit();
 }

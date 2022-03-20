@@ -31,7 +31,7 @@ struct TabsExample {
 
   build() {
     Column() {
-      Tabs({ barPosition: this.barPosition, controller: this.controller,index: this.index }) {
+      Tabs({ barPosition: this.barPosition, controller: this.controller, index: this.index }) {
         TabContent() {
           Column().width('100%').height('100%').backgroundColor(Color.Pink)
         }.tabBar('pink').key('tabContent1')
@@ -54,12 +54,15 @@ struct TabsExample {
             console.info("tabContent1 emit action state err: " + JSON.stringify(err.message))
           }
         })
+
         TabContent() {
           Column().width('100%').height('100%').backgroundColor(Color.Yellow)
         }.tabBar('yellow')
+
         TabContent() {
           Column().width('100%').height('100%').backgroundColor(Color.Blue)
         }.tabBar('blue')
+
         TabContent() {
           Column().width('100%').height('100%').backgroundColor(Color.Green)
         }.tabBar('green')
@@ -89,6 +92,18 @@ struct TabsExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+
+    var stateChangeEventOne = {
+      eventId: 214,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
+
+    var stateChangeEventTwo = {
+      eventId: 215,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
   }
 
   private stateChangCallBack = (eventData) => {

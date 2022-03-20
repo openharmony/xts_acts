@@ -31,6 +31,12 @@ struct OverlayExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+
+    var stateChangeEvent2 = {
+      eventId: 1110,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
   }
 
   private stateChangCallBack = (eventData) => {
