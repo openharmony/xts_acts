@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function buttonJsunit() {
-  describe('appInfoTest', function () {
+  describe('buttonTest', function () {
     beforeEach(async function (done) {
       console.info("button beforeEach start");
       let options = {
@@ -241,7 +241,7 @@ export default function buttonJsunit() {
         eventId: 72,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback= (indexEvent) => {
+      let callback = (indexEvent) => {
         console.info("testButton10 get state result is: " + JSON.stringify(indexEvent))
         except(indexEvent.data.fontColorValue).assertEqual(Color.Pink)
       }
@@ -250,7 +250,7 @@ export default function buttonJsunit() {
       } catch (err) {
         console.info("testButton10 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("testButton10 click result is: " + JSON.stringify(sendEventByKey('button3',10 ,"")));
+      console.info("testButton10 click result is: " + JSON.stringify(sendEventByKey('button3', 10, "")));
       await Utils.sleep(1000);
       console.info('[testButton10] END');
       done();
@@ -278,7 +278,7 @@ export default function buttonJsunit() {
         eventId: 71,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback= (indexEvent) => {
+      let callback = (indexEvent) => {
         console.info("testButton11 get state result is: " + JSON.stringify(indexEvent))
         except(indexEvent.data.fontColorValue).assertEqual(332)
       }
@@ -287,7 +287,7 @@ export default function buttonJsunit() {
       } catch (err) {
         console.info("testButton11 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("testButton11 click result is: " + JSON.stringify(sendEventByKey('button2',10 ,"")));
+      console.info("testButton11 click result is: " + JSON.stringify(sendEventByKey('button2', 10, "")));
       await Utils.sleep(1000);
       console.info('[testButton11] END');
       done();
@@ -316,6 +316,95 @@ export default function buttonJsunit() {
       console.info('[testButton12] sendEventByKey ' + JSON.stringify(sendEventByKey('buttonClick', 10, "")));
       await Utils.sleep(1000)
       console.info('[testButton12] testSendTouchEvent END');
+      done();
+    });
+
+    it('testButton13', 0, async function (done) {
+      console.info('[testButton13] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "buttonTypeValue": qaq,
+          }
+        }
+        var innerEvent = {
+          eventId: 74,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testButton13] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testButton13] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('button');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("[testButton13] component objNew is: " + JSON.stringify(objNew.$attrs.type));
+      expect(objNew.$attrs.type).assertEqual('ButtonType.Capsule');
+      done();
+    });
+
+    it('testButton14', 0, async function (done) {
+      console.info('[testButton14] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "buttonTypeValue": 41961,
+          }
+        }
+        var innerEvent = {
+          eventId: 75,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testButton14] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testButton14] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('button');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("[testButton14] component objNew is: " + JSON.stringify(objNew.$attrs.type));
+      expect(objNew.$attrs.type).assertEqual('');
+      done();
+    });
+
+    it('testButton15', 0, async function (done) {
+      console.info('[testButton15] START');
+      try {
+        let eventData = {
+          data: {
+            "fontColorValue": ab996
+          }
+        }
+        let indexEventOne = {
+          eventId: 76,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testButton15 start to publish emit");
+        events_emitter.emit(indexEventOne, eventData);
+      } catch (err) {
+        console.log("testButton15 change component data error: " + err.message);
+      }
+      await Utils.sleep(1000);
+      let indexEvent = {
+        eventId: 77,
+        priority: events_emitter.EventPriority.LOW
+      }
+      let callback = (indexEvent) => {
+        console.info("testButton15 get state result is: " + JSON.stringify(indexEvent))
+        except(indexEvent.data.fontColorValue).assertEqual('ab996')
+      }
+      try {
+        events_emitter.on(indexEvent, callback);
+      } catch (err) {
+        console.info("testButton15 on events_emitter err : " + JSON.stringify(err));
+      }
+      console.info("testButton15 click result is: " + JSON.stringify(sendEventByKey('button4', 10, "")));
+      await Utils.sleep(1000);
+      console.info('[testButton15] END');
       done();
     });
   })

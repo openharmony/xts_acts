@@ -19,6 +19,7 @@ import events_emitter from '@ohos.emitter'
 @Component
 struct GestureSettingsExample {
   @State value: string = ''
+
   build() {
     Column() {
       Text('Click\n' + this.value).gesture(TapGesture()
@@ -43,7 +44,11 @@ struct GestureSettingsExample {
       )
         .key('tapGesture')
     }
-    .height(200).width(300).padding(60).border({ width: 1 }).margin(30)
+    .height(200)
+    .width(300)
+    .padding(60)
+    .border({ width: 1 })
+    .margin(30)
     .priorityGesture(
     TapGesture()
       .onAction(() => {

@@ -13,40 +13,44 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import events_emitter from '@ohos.emitter';
 
 @Entry
 @Component
-struct BlankExample {
-  @State colorValue: Color = Color.Blue;
-  private stateChangCallBack = (eventData) => {
-    if (eventData != null) {
-      console.info("Blank page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.colorValue != null) {
-        this.colorValue = eventData.data.colorValue;
-      }
-    }
-  }
+struct ColumnExample {
+  @State alignItems: HorizontalAlign = HorizontalAlign.Start;
 
   onPageShow() {
-    console.info('Blank page1 show called');
+    console.info('[column] page show called');
     var stateChangeEvent = {
-      eventId: 69,
+      eventId: 192,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
+  private stateChangCallBack = (eventData) => {
+    console.info("[column] page stateChangCallBack");
+    if (eventData != null) {
+      console.info("[column] page state change called:" + JSON.stringify(eventData));
+      if(eventData.data.alignItems != null) {
+        this.alignItems = eventData.data.alignItems;
+      }
+    }
+  }
+
   build() {
     Column() {
-      Row() {
-        Text('Bluetooth').fontSize(18)
-        Blank().color(this.colorValue).key('blank')
-        Toggle({ type: ToggleType.Switch })
-      }.width('100%')
-      .backgroundColor(0xFFFFFF)
-      .borderRadius(15)
-      .padding({ left: 12 })
-    }.backgroundColor(0xEFEFEF).padding(20)
+      Text('alignItems').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      Column() {
+        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('50%').height(30).backgroundColor(0x00FFFF)
+      }
+      .key("alignItemsColumn")
+      .width('90%')
+      .border({ width: 1 })
+      .alignItems(this.alignItems)
+    }.width('100%').padding({ top: 5 })
   }
 }

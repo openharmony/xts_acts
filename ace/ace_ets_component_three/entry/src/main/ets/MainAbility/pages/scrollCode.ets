@@ -22,44 +22,41 @@ struct scrollCode {
   @State scrollBar: BarState = BarState.On;
   @State scrollBarColor: Color = "#FF0000FF";
   @State scrollBarWidth: number = 30;
-
   scroller: Scroller = new Scroller()
-
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
   private stateChangCallBack = (eventData) => {
     if (eventData != null) {
       console.info("scrollCode page state change called:" + JSON.stringify(eventData));
       var scrollableValue = eventData.data.scrollable;
       console.info("scrollableValue:" + scrollableValue);
-      if (scrollableValue!= null && scrollableValue.length != 0) {
+      if (scrollableValue != null && scrollableValue.length != 0) {
         this.scrollable = scrollableValue;
         console.info("this.scrollable:" + this.scrollable);
-      }else{
+      } else {
         console.info("scrollableValue is null or empty " + scrollableValue);
       }
       var scrollBarValue = eventData.data.scrollBar;
       console.info("scrollBarValue:" + scrollBarValue);
-      if (scrollBarValue!= null && scrollBarValue.length != 0) {
+      if (scrollBarValue != null && scrollBarValue.length != 0) {
         this.scrollBar = scrollBarValue;
         console.info("this.scrollBar:" + this.scrollBar);
-      }else{
+      } else {
         console.info("scrollBarValue is null or empty " + scrollBarValue);
       }
       var scrollBarColorValue = eventData.data.scrollBarColor;
       console.info("scrollBarColorValue:" + scrollBarColorValue);
-      if (scrollBarColorValue!= null && scrollBarColorValue.length != 0) {
+      if (scrollBarColorValue != null && scrollBarColorValue.length != 0) {
         this.scrollBarColor = scrollBarColorValue;
         console.info("this.scrollBarColor:" + this.scrollBarColor);
-      }else{
+      } else {
         console.info("scrollBarColorValue is null or empty " + scrollBarColorValue);
       }
       var scrollBarWidthValue = eventData.data.scrollBarWidth;
       console.info("scrollBarWidthValue:" + scrollBarWidthValue);
-      if (scrollBarWidthValue!= null && scrollBarWidthValue.length != 0) {
+      if (scrollBarWidthValue != null && scrollBarWidthValue.length != 0) {
         this.scrollBarWidth = scrollBarWidthValue;
         console.info("this.scrollBarWidth:" + this.scrollBarWidth);
-      }else{
+      } else {
         console.info("scrollBarWidthValue is null or empty " + scrollBarWidthValue);
       }
     } else {
@@ -100,8 +97,12 @@ struct scrollCode {
         Column() {
           ForEach(this.arr, (item) => {
             Text(item.toString())
-              .width('90%').height(150).backgroundColor(0xFFFFFF)
-              .borderRadius(15).fontSize(16).textAlign(TextAlign.Center)
+              .width('90%')
+              .height(150)
+              .backgroundColor(0xFFFFFF)
+              .borderRadius(15)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
               .margin({ top: 10 })
           }, item => item)
         }.width('100%')
@@ -120,6 +121,7 @@ struct scrollCode {
       .onScrollEnd(() => {
         console.info('Scroll Stop')
       })
+
       Button('scroll 100')
         .onClick(() => {
           this.scroller.scrollTo({ xOffset: 0, yOffset: this.scroller.currentOffset().yOffset + 100 })
@@ -129,7 +131,9 @@ struct scrollCode {
           this.scroller.scrollEdge(Edge.Top)
         })
         .margin({ top: 120, left: 20 })
-      Button('next page').backgroundColor(0x2788D9).fontSize(20)
+      Button('next page')
+        .backgroundColor(0x2788D9)
+        .fontSize(20)
         .onClick((event: ClickEvent) => {
           this.onClickValue = true;
           try {
@@ -148,7 +152,11 @@ struct scrollCode {
             console.info("click action state err: " + JSON.stringify(err.message))
           }
           this.scroller.scrollPage({ next: true })
-        }).key('button').margin({ top: 10, left: 20 })
-    }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+        })
+        .key('button')
+        .margin({ top: 10, left: 20 })
+    }.width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
   }
 }

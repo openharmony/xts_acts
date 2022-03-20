@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function ResponseRegionJsunit() {
-  describe('appInfoTest', function () {
+  describe('responseRegionTest', function () {
     var x_value;
     var y_value;
 

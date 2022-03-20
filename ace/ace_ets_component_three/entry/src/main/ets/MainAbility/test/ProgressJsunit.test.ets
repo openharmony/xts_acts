@@ -257,5 +257,65 @@ export default function progressJsunit() {
       console.info('testProgress_900 END');
       done();
     });
+
+    it('testProgress_1000', 0, async function (done) {
+      console.info('testProgress_1000 START');
+      let strJson1 = getInspectorByKey('LPValue');
+      let objLP = JSON.parse(strJson1);
+      console.info("testProgress_1000 component objLP is: " + objLP.$attrs.value);
+      await Utils.sleep(1000);
+      try {
+        let eventData = {
+          data: {
+            "value": -5
+          }
+        }
+        var innerEvent = {
+          eventId: 1021,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testProgress_1000 start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("testProgress_1000 change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('LPValue');
+      let obj = JSON.parse(strJson);
+      console.info("testProgress_1000 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.value).assertEqual("-5.000000");
+      console.info('testProgress_1000 END');
+      done();
+    });
+
+    it('testProgress_1100', 0, async function (done) {
+      console.info('testProgress_1100 START');
+      let strJson1 = getInspectorByKey('LPValue');
+      let objLP = JSON.parse(strJson1);
+      console.info("testProgress_1100 component objLP is: " + objLP.$attrs.value);
+      await Utils.sleep(1000);
+      try {
+        let eventData = {
+          data: {
+            "value": 121212121
+          }
+        }
+        var innerEvent = {
+          eventId: 1022,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testProgress_1100 start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("testProgress_1100 change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('LPValue');
+      let obj = JSON.parse(strJson);
+      console.info("testProgress_1100 component obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.value).assertEqual("121212121.000000");
+      console.info('testProgress_1100 END');
+      done();
+    });
   })
 }

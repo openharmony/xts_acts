@@ -19,6 +19,7 @@ import events_emitter from '@ohos.emitter'
 @Component
 struct ClickExample {
   @State text: string = ''
+
   build() {
     Column() {
       Button('Click').backgroundColor(0x2788D9)

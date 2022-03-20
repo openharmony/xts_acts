@@ -22,7 +22,6 @@ struct QrCode {
   @State qrCodeBackgroundColor: Color = "#FF008000";
   @State qrCodeColor: Color = "#FF0000FF";
   @State qrCodeValue: string = 'qrCodeValue';
-
   private stateChangCallBack = (eventData) => {
     if (eventData != null) {
       console.info("qrCode page state change called:" + JSON.stringify(eventData));
@@ -30,14 +29,13 @@ struct QrCode {
       if (colorValue != null && colorValue.length != 0) {
         this.qrCodeColor = colorValue;
         console.info("qrCodeColor:" + qrCodeColor);
-      }else{
+      } else {
         console.info("qrCodeColor is null or empty " + qrCodeColor);
       }
     } else {
       console.info("qrCode page color not change called:" + JSON.stringify(eventData));
     }
   }
-
   private stateChangCallBackTwo = (eventData) => {
     if (eventData != null) {
       console.info("qrCode page state change called:" + JSON.stringify(eventData));
@@ -45,7 +43,7 @@ struct QrCode {
       if (backgroundColorValue != null && backgroundColorValue.length != 0) {
         this.qrCodeBackgroundColor = backgroundColorValue;
         console.info("qrCodeBackgroundColor:" + qrCodeBackgroundColor);
-      }else{
+      } else {
         console.info("backgroundColorValue is null or empty " + qrCodeColor);
       }
     } else {
@@ -63,6 +61,30 @@ struct QrCode {
 
     var stateChangeEvent = {
       eventId: 171,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent, this.stateChangCallBackTwo);
+
+    var stateChangeEvent = {
+      eventId: 1023,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+
+    var stateChangeEvent = {
+      eventId: 1024,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+
+    var stateChangeEvent = {
+      eventId: 1025,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent, this.stateChangCallBackTwo);
+
+    var stateChangeEvent = {
+      eventId: 1026,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBackTwo);

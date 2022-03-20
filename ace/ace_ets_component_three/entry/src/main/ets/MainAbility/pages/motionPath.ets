@@ -22,15 +22,15 @@ struct MotionPathExample {
   @State offsetY: number = 0
   @State toggle: boolean = true
   @State rotatable: boolean = false
-  @State path:string='Mstart.x start.y L300 200 L300 500 Lend.x end.y'
-  @State fromX:number = 0
-  @State toY:number = 1
+  @State path: string= 'Mstart.x start.y L300 200 L300 500 Lend.x end.y'
+  @State fromX: number = 0
+  @State toY: number = 1
 
   build() {
     Column() {
       Button('click me')
         .key('button')
-        .motionPath({ path: this.path, from: this.fromX, to: this.toY, rotatable:this.rotatable })
+        .motionPath({ path: this.path, from: this.fromX, to: this.toY, rotatable: this.rotatable })
         .onClick(() => {
           this.rotatable = true;
           console.info('button rotate current action state is:' + this.rotatable);
@@ -79,22 +79,22 @@ struct MotionPathExample {
     .width('100%').height('100%').alignItems(this.toggle ? HorizontalAlign.Start : HorizontalAlign.Center)
   }
 
-  onPageShow(){
+  onPageShow() {
     console.info('motionPath page show called');
     var stateChangeEvent = {
-      eventId:134,
+      eventId: 134,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent,this.stateChangeCallBack)
+    events_emitter.on(stateChangeEvent, this.stateChangeCallBack)
   }
 
-  private stateChangeCallBack = (eventData) =>{
-    if(eventData != null){
+  private stateChangeCallBack = (eventData) => {
+    if (eventData != null) {
       console.info('motionPath page state change called:' + JSON.stringify(eventData));
-      if(eventData.data.fromX != null){
+      if (eventData.data.fromX != null) {
         this.fromX == parseInt(eventData.data.fromX);
       }
-      if(eventData.data.toY != null){
+      if (eventData.data.toY != null) {
         this.toY == parseInt(eventData.data.toY);
       }
     }

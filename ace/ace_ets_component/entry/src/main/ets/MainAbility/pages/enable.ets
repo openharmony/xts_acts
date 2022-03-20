@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+
 import events_emitter from '@ohos.emitter'
 
 @Entry
@@ -28,6 +30,12 @@ struct EnabledExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+
+    var stateChangeEvent2 = {
+      eventId: 1111,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
 
   }
 

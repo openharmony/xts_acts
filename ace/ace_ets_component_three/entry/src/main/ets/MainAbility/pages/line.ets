@@ -18,12 +18,13 @@ import events_emitter from '@ohos.emitter'
 @Entry
 @Component
 struct LineExample {
-  @State startPoint:Point = [0,0]
-  @State endPoint:Point = [50,100]
+  @State startPoint: Point = [0, 0]
+  @State endPoint: Point = [50, 100]
+
   build() {
     Column() {
       Line({ width: 50, height: 100 }).startPoint(this.startPoint).endPoint(this.endPoint)
-      .key('line')
+        .key('line')
     }.margin({ top: 5 })
   }
 
@@ -36,11 +37,11 @@ struct LineExample {
       if (eventData.data.startPointOne != null) {
         this.startPoint[1] = eventData.data.startPointOne;
       }
-      if (eventData.data.endPoint != null) {
-        this.endPoint[0] = eventData.data.endPoint;
-      }
       if (eventData.data.endPointOne != null) {
         this.endPoint[1] = eventData.data.endPointOne;
+      }
+      if (eventData.data.endPoint != null) {
+        this.endPoint[0] = eventData.data.endPoint;
       }
     }
   }

@@ -18,11 +18,10 @@ import events_emitter from '@ohos.emitter'
 @Entry
 @Component
 struct SpanExample {
-  @State decorationValue:object={ type: TextDecorationType.None, color: Color.Red }
-  @State textCaseValue:TextCase=TextCase.Normal
-  @State fontSizeValue:number=40
+  @State decorationValue: object= { type: TextDecorationType.None, color: Color.Red }
+  @State textCaseValue: TextCase= TextCase.Normal
+  @State fontSizeValue: number= 40
   @State fontColorValue: Color= 0xCCCCCC
-
   private stateChangCallBack = (eventData) => {
     console.info("span page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
@@ -57,6 +56,30 @@ struct SpanExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent3, this.stateChangCallBack);
+
+    var stateChangeEvent4 = {
+      eventId: 1029,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent4, this.stateChangCallBack);
+
+    var stateChangeEvent5 = {
+      eventId: 1030,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent5, this.stateChangCallBack);
+
+    var stateChangeEvent6 = {
+      eventId: 1031,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent6, this.stateChangCallBack);
+
+    var stateChangeEvent7 = {
+      eventId: 1032,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent7, this.stateChangCallBack);
   }
 
   build() {

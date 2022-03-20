@@ -20,7 +20,7 @@ import prompt from '@system.prompt'
 @Entry
 @Preview
 @Component
-struct AppearExample  {
+struct AppearExample {
   @State isShow: boolean = true
   @State appearFlag: boolean = false
   @State disAppearFlag: boolean = false
@@ -40,7 +40,7 @@ struct AppearExample  {
     console.info("[appear] page stateChangCallBack");
     if (eventData != null) {
       console.info("[appear] page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.isShow != null) {
+      if (eventData.data.isShow != null) {
         this.isShow = eventData.data.isShow;
       }
     }
@@ -60,7 +60,7 @@ struct AppearExample  {
             this.changeAppear = 'Show Text'
             console.info('appearFlag current action state is: ' + this.appearFlag);
             prompt.showToast({ message: 'The text is shown', duration: 2000 })
-            try{
+            try {
               var backData = {
                 data: {
                   "ACTION": this.appearFlag,
@@ -72,7 +72,7 @@ struct AppearExample  {
               }
               console.info("appearFlag start to emit action state")
               events_emitter.emit(backEvent, backData)
-            }catch{
+            } catch {
               console.info("appearFlag emit action state err: " + JSON.stringify(err.message))
             }
           })
@@ -81,7 +81,7 @@ struct AppearExample  {
             this.changeAppear = 'Hide Text'
             console.info('disAppearFlag current action state is: ' + this.disAppearFlag);
             prompt.showToast({ message: 'The text is hidden', duration: 2000 })
-            try{
+            try {
               var backData = {
                 data: {
                   "ACTION": this.disAppearFlag,
@@ -93,7 +93,7 @@ struct AppearExample  {
               }
               console.info("disAppearFlag start to emit action state")
               events_emitter.emit(backEvent, backData)
-            }catch{
+            } catch {
               console.info("disAppearFlag emit action state err: " + JSON.stringify(err.message))
             }
           })

@@ -17,7 +17,6 @@
 @Entry
 @Component
 struct GlobalExample {
-
   onPageShow() {
   }
 
@@ -44,9 +43,9 @@ struct GlobalExample {
     let width = img.width;
     let height = img.height;
     this.context.imageSmoothingEnabled = false;
-    this.context.drawImage( img, 30, 950, 160, 100);
-    console.log("imagebitmap_width="+width);
-    console.log("imagebitmap_height="+height);
+    this.context.drawImage(img, 30, 950, 160, 100);
+    console.log("imagebitmap_width=" + width);
+    console.log("imagebitmap_height=" + height);
   }
 
   testOffscreenCanvas() {
@@ -63,17 +62,19 @@ struct GlobalExample {
   testImageData() {
     var offscreen = new OffscreenCanvas(300, 300);
     var offCanvas2 = offscreen.getContext("2d");
-    var imageData = offCanvas2.createImageData(100,100);
+    var imageData = offCanvas2.createImageData(100, 100);
     var imgData = imageData.data;
-    console.log("imageData_width="+imageData.width);
-    console.log("imageData_height="+imageData.height);
+    console.log("imageData_width=" + imageData.width);
+    console.log("imageData_height=" + imageData.height);
   }
 
-  testImage(){
-    var img = new Image("/images/bg.jpg",100,100)
-      .onload(()=>{})
-      .onerror(()=>{});
-    console.log("img_width="+img.width);
-    console.log("img_height="+img.height);
+  testImage() {
+    var img = new Image("/images/bg.jpg", 100, 100)
+      .onload(() => {
+      })
+      .onerror(() => {
+      });
+    console.log("img_width=" + img.width);
+    console.log("img_height=" + img.height);
   }
 }

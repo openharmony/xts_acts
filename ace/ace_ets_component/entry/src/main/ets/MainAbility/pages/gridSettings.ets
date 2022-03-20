@@ -24,8 +24,8 @@ struct GridSetting {
   @State gridSpan: number = 1;
   @State gridOffset: number = 0;
 
-  build(){
-    GridContainer({sizeType: SizeType.SM}) {
+  build() {
+    GridContainer({ sizeType: SizeType.SM }) {
       Row({}) {
         Row() {
           Text('Left').fontSize(25)
@@ -34,6 +34,7 @@ struct GridSetting {
         .height("100%")
         .backgroundColor(0x66bbb2cb)
         .key('gridOffset')
+
         Row() {
           Text('Center').fontSize(25)
         }
@@ -44,6 +45,7 @@ struct GridSetting {
         .height("100%")
         .backgroundColor(0x66b6c5d1)
         .key('gridRow')
+
         Row() {
           Text('Right').fontSize(25)
         }
@@ -58,6 +60,7 @@ struct GridSetting {
     .margin({ top: 10 })
     .key('gridContainer')
   }
+
   onPageShow() {
     let smChangeEvent = {
       eventId: 9,
@@ -75,6 +78,7 @@ struct GridSetting {
     }
     events_emitter.on(spanChangeEvent, this.stateChangCallBack);
   }
+
   stateChangCallBack = (eventData) => {
     console.info("GridSetting page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData && eventData.data) {

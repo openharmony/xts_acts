@@ -34,52 +34,55 @@ struct StepperExample {
           .fontColor(Color.Blue)
           .width(200)
           .lineHeight(50)
-          .margin({top:250})
+          .margin({ top: 250 })
       }
       .nextLabel('')
-      .position({x: '35%', y: 0})
+      .position({ x: '35%', y: 0 })
       .key('stepperItem1')
+
       StepperItem() {
         Text('Page Two')
           .fontSize(35)
           .fontColor(Color.Blue)
           .width(200)
           .lineHeight(50)
-          .margin({top:250})
+          .margin({ top: 250 })
           .key('text1')
-          .onClick(()=>{
+          .onClick(() => {
             this.firstState = this.firstState === ItemState.Skip ? ItemState.Normal : ItemState.Skip
           })
       }
       .nextLabel('Next')
       .prevLabel('Previous')
       .status(this.firstState)
-      .position({x: '35%', y: 0})
+      .position({ x: '35%', y: 0 })
       .key('stepperItem2')
+
       StepperItem() {
         Text('Page Three')
           .fontSize(35)
           .fontColor(Color.Blue)
           .width(200)
           .lineHeight(50)
-          .margin({top:250})
+          .margin({ top: 250 })
           .key('text2')
-          .onClick(()=>{
+          .onClick(() => {
             this.secondState = this.secondState === ItemState.Waiting ? ItemState.Normal : ItemState.Waiting
           })
       }
-      .position({x: '35%', y: 0})
+      .position({ x: '35%', y: 0 })
       .status(this.secondState)
       .key('stepperItem3')
+
       StepperItem() {
         Text('Page four')
           .fontSize(35)
           .fontColor(Color.Blue)
           .width(200)
           .lineHeight(50)
-          .margin({top:250})
+          .margin({ top: 250 })
       }
-      .position({x: '35%', y: 0})
+      .position({ x: '35%', y: 0 })
       .nextLabel('Finish')
       .key('stepperItem4')
     }
@@ -103,16 +106,28 @@ struct StepperExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+
+    var stateChangeEventTwo = {
+      eventId: 909,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack);
+
+    var stateChangeEventThree = {
+      eventId: 910,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventThree, this.stateChangCallBack);
   }
 
   private stateChangCallBack = (eventData) => {
     console.info("stepper page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData != null) {
       console.info("stepper page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.currentIndex != null) {
+      if (eventData.data.currentIndex != null) {
         this.currentIndex = parseInt(eventData.data.currentIndex);
       }
-      if(eventData.data.disabled != null) {
+      if (eventData.data.disabled != null) {
         this.disabled = eventData.data.disabled;
       }
     }

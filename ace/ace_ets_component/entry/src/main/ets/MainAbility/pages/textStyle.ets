@@ -68,8 +68,9 @@ struct TextStyle {
         .fontStyle(FontStyle.Normal)
         .fontWeight(400)
         .fontFamily('source-sans-pro,cursive,sans-serif')
-    }.width('100%').margin({top: 20})
+    }.width('100%').margin({ top: 20 })
   }
+
   onPageShow() {
     let fontColorChangeEvent = {
       eventId: 37,
@@ -97,6 +98,7 @@ struct TextStyle {
     }
     events_emitter.on(fontFamilyChangeEvent, this.textStyleChangCallBack);
   }
+
   textStyleChangCallBack = (eventData) => {
     console.info("textStyle page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData && eventData.data) {

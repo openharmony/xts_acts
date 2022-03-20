@@ -44,7 +44,7 @@ struct MarqueeExample {
         .allowScale(false)
         .fontWeight(FontWeight.Bold)
         .backgroundColor(Color.Black)
-        .margin({bottom:40})
+        .margin({ bottom: 40 })
         .onStart(() => {
           console.log('Marquee animation complete onStart')
           console.info('Onstart current action state is: ' + this.fontColor);
@@ -125,7 +125,7 @@ struct MarqueeExample {
         })
         .width(200)
         .height(60)
-        .margin({bottom:20})
+        .margin({ bottom: 20 })
     }
     .width('100%')
     .height('100%')

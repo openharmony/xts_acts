@@ -72,7 +72,7 @@ export default function motionPathJsunit() {
       } catch (err) {
         console.info("motionPathTest_0200 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("motionPathTest_0200 click result is: " + JSON.stringify(sendEventByKey('button1',10,"")));
+      console.info("motionPathTest_0200 click result is: " + JSON.stringify(sendEventByKey('button1', 10, "")));
       await Utils.sleep(1000);
       console.info('motionPathTest_0200 END');
       done();
@@ -94,7 +94,7 @@ export default function motionPathJsunit() {
       } catch (err) {
         console.info("motionPathTest_0300 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("motionPathTest_0300 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
+      console.info("motionPathTest_0300 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1000);
       console.info('motionPathTest_0300 END');
       done();
