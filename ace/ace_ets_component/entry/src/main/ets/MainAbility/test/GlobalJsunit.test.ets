@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import Utils from './Utils';
+import Utils from './Utils.ets';
 
 export default function globalJsunit() {
   describe('globalJsunit', function () {
@@ -50,7 +50,7 @@ export default function globalJsunit() {
      * @tc.desc Test setTimeout
      */
     it('ACE_global_setTimeout', 0, function (done) {
-      let caseName:string = "ACE_global_setTimeout"
+      let caseName: string = "ACE_global_setTimeout"
       console.info(`${caseName} START`);
       setTimeout(() => {
         expect(true).assertTrue();
@@ -65,9 +65,9 @@ export default function globalJsunit() {
      * @tc.desc Test canIUse
      */
     it('ACE_global_canIUse', 0, function (done) {
-      let caseName:string = "ACE_global_canIUse"
+      let caseName: string = "ACE_global_canIUse"
       console.info(`${caseName} START`);
-      let syscapName:string = "";
+      let syscapName: string = "";
       var result = canIUse(syscapName);
       expect(result === false).assertTrue();
       console.info(`${caseName} END`);
@@ -80,11 +80,12 @@ export default function globalJsunit() {
      * @tc.desc Test getApp
      */
     it('ACE_global_getApp', 0, function (done) {
-      let caseName:string = "ACE_global_getApp"
+      let caseName: string = "ACE_global_getApp"
       console.info(`${caseName} START`);
-      try{
+      try {
         var info = getApp();
-      }catch(err){}
+      } catch (err) {
+      }
       console.info(`${caseName} END`);
       done();
     });
@@ -95,11 +96,12 @@ export default function globalJsunit() {
      * @tc.desc Test createLocalParticleAbility
      */
     it('ACE_global_createLocalParticleAbility', 0, function (done) {
-      let caseName:string = "ACE_global_createLocalParticleAbility"
+      let caseName: string = "ACE_global_createLocalParticleAbility"
       console.info(`${caseName} START`);
-      try{
+      try {
         var info = createLocalParticleAbility(100);
-      }catch(err){}
+      } catch (err) {
+      }
       console.info(`${caseName} END`);
       done();
     });
@@ -164,7 +166,6 @@ export default function globalJsunit() {
       console.log("-----------------------ACE_global_console_warn Test end-----------------------");
       done();
     });
-
 
 
   })

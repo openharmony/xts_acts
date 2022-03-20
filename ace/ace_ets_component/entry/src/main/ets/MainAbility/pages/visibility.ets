@@ -33,23 +33,28 @@ struct VisibilityExample {
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(noneChangeEvent, this.noneChangCallBack)
+
+    var stateChangeEvent2 = {
+      eventId: 1116,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
   }
 
   private hiddenChangCallBack = (eventData) => {
     console.info("[hiddenChangCallBack] stateChangCallBack");
     if (eventData != null) {
       console.info("[hiddenChangCallBack] state change called:" + JSON.stringify(eventData));
-      if(eventData.data.visibility != null) {
+      if (eventData.data.visibility != null) {
         this.visibility = eventData.data.visibility;
       }
     }
   }
-
   private noneChangCallBack = (eventData) => {
     console.info("[noneChangCallBack] stateChangCallBack");
     if (eventData != null) {
       console.info("[noneChangCallBack] state change called:" + JSON.stringify(eventData));
-      if(eventData.data.visibility != null) {
+      if (eventData.data.visibility != null) {
         this.visibility = eventData.data.visibility;
       }
     }
@@ -59,10 +64,21 @@ struct VisibilityExample {
     Column() {
       Column() {
         Text('BoxOne').fontSize(9).width('90%').fontColor(0xCCCCCC)
-        Row().visibility(this.visibility).width('90%').height(80).backgroundColor(0xAFEEEE).padding(20).key('box')
+        Row()
+          .visibility(this.visibility)
+          .width('90%')
+          .height(80)
+          .backgroundColor(0xAFEEEE)
+          .padding(20)
+          .key('box')
 
         Text('BoxTwo').fontSize(9).width('90%').fontColor(0xCCCCCC)
-        Row().visibility(Visibility.Visible).width('90%').height(80).backgroundColor(0xAFEEEE).padding(20)
+        Row()
+          .visibility(Visibility.Visible)
+          .width('90%')
+          .height(80)
+          .backgroundColor(0xAFEEEE)
+          .padding(20)
       }.width('90%').border({ width: 1 })
     }.width('100%').margin({ top: 5 })
   }

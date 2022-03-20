@@ -55,8 +55,12 @@ export default function longPressGestureJsunit() {
       let x_value_two = rect.left + (rect.right - rect.left) / 20;
       let y_value_two = rect.top + (rect.bottom - rect.top) / 20;
       console.info("[testTapGesture01] onTouch location is: " + "[x]=== " + x_value + "   [y]===" + y_value);
-      let point: TouchObject = { id: 1, x: x_value, y: y_value, type: TouchType.Move}
-      let point2: TouchObject = { id: 2, x: x_value_two, y: y_value_two, type: TouchType.Move}
+      let point: TouchObject = {
+        id: 1, x: x_value, y: y_value, type: TouchType.Move
+      }
+      let point2: TouchObject = {
+        id: 2, x: x_value_two, y: y_value_two, type: TouchType.Move
+      }
       var callback = (eventData) => {
         console.info("[testTapGesture01] get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual(true)

@@ -16,10 +16,9 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils';
-
+import Utils from './Utils.ets';
 export default function listJsunit() {
-  describe('appInfoTest', function () {
+  describe('listTest', function () {
     beforeEach(async function (done) {
       console.info("list beforeEach start");
       let options = {
@@ -269,6 +268,84 @@ export default function listJsunit() {
       console.info("[testList09] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.divider.endMargin).assertEqual("30.00vp");
       console.info('testList09 END');
+      done();
+    });
+
+    it('testList10', 0, async function (done) {
+      console.info('[testList10] START');
+      try {
+        var eventData = {
+          data: {
+            "editMode": "true123"
+          }
+        }
+        var innerEvent = {
+          eventId: 901,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testList10] start to publish emit:" + JSON.stringify(eventData.data));
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testList10] change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJson = getInspectorByKey('list');
+      let obj = JSON.parse(strJson);
+      console.info("[testList10] obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.editMode).assertEqual('true');
+      console.info('testList10 END');
+      done();
+    });
+
+    it('testList11', 0, async function (done) {
+      console.info('[testList11] START');
+      try {
+        var eventData = {
+          data: {
+            "editMode": "39000000"
+          }
+        }
+        var innerEvent = {
+          eventId: 902,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testList11] start to publish emit:" + JSON.stringify(eventData.data));
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testList11] change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJson = getInspectorByKey('list');
+      let obj = JSON.parse(strJson);
+      console.info("[testList11] obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.editMode).assertEqual('true');
+      console.info('testList11 END');
+      done();
+    });
+
+    it('testList12', 0, async function (done) {
+      console.info('[testList12] START');
+      try {
+        var eventData = {
+          data: {
+            "chainAnimation": "true123"
+          }
+        }
+        var innerEvent = {
+          eventId: 903,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testList12] start to publish emit:" + JSON.stringify(eventData.data));
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testList12] change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJson = getInspectorByKey('list');
+      let obj = JSON.parse(strJson);
+      console.info("[testList12] obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.chainAnimation).assertEqual('true');
+      console.info('testList12 END');
       done();
     });
   })

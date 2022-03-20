@@ -19,30 +19,30 @@ import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils.ets';
 
 export default function touchJsunit() {
-  describe('appInfoTest', function () {
+  describe('touchTest', function () {
     beforeEach(async function (done) {
       console.info("touch beforeEach start");
       let options = {
         uri: 'pages/touch',
       }
       let result;
-      try{
+      try {
         router.clear();
         let pages = router.getState();
         console.info("get touch state pages: " + JSON.stringify(pages));
-        if(!("touch" == pages.name)){
+        if (!("touch" == pages.name)) {
           console.info("get touch state pages.name: " + JSON.stringify(pages.name));
           result = await router.push(options);
           await Utils.sleep(2000);
           console.info("push touch page result: " + JSON.stringify(result));
         }
-      }catch(err){
+      } catch (err) {
         console.error("push touch page error: " + err);
       }
       done()
     });
 
-    afterEach(async function(){
+    afterEach(async function () {
       await Utils.sleep(1000);
       console.info("touch after each called");
     })
@@ -61,10 +61,10 @@ export default function touchJsunit() {
           priority: events_emitter.EventPriority.LOW
         }
         events_emitter.on(backEvent, callBackTouch);
-      }catch(err) {
+      } catch (err) {
         console.info("testTouch01 on touchEvent err : " + JSON.stringify(err));
       }
-      console.info("testTouch01 click result is: " + JSON.stringify(sendEventByKey('touch',10,"")));
+      console.info("testTouch01 click result is: " + JSON.stringify(sendEventByKey('touch', 10, "")));
       console.info('[testTouch01] END');
       done();
     });

@@ -15,9 +15,9 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import Utils from './Utils';
-
+import Utils from './Utils.ets';
 import events_emitter from '@ohos.events.emitter';
+
 export default function marqueeJsunit() {
   describe('marqueeTest', function () {
     beforeEach(async function (done) {
@@ -62,7 +62,7 @@ export default function marqueeJsunit() {
       } catch (err) {
         console.info("testMarquee_0100 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("testMarquee_0100 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
+      console.info("testMarquee_0100 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1000);
       var callback1 = (eventData) => {
         console.info("testMarquee_0100 get event state result is: " + JSON.stringify(eventData));
@@ -97,7 +97,7 @@ export default function marqueeJsunit() {
       } catch (err) {
         console.info("testMarquee_0200 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("testMarquee_0200 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
+      console.info("testMarquee_0200 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1000);
       var callback1 = (eventData) => {
         console.info("testMarquee_0200 get event state result is: " + JSON.stringify(eventData));
@@ -132,7 +132,7 @@ export default function marqueeJsunit() {
       } catch (err) {
         console.info("testMarquee_0300 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("testMarquee_0300 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
+      console.info("testMarquee_0300 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1000);
       var callback1 = (eventData) => {
         console.info("testMarquee_0300 get event state result is: " + JSON.stringify(eventData));

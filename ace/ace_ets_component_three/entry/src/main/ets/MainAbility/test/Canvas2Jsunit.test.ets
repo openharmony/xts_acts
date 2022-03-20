@@ -17,8 +17,8 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 import router from '@system.router';
 import Utils from './Utils';
 
-export default function canvasJsunit() {
-  describe('canvasTest', function () {
+export default function canvas2Jsunit() {
+  describe('canvas2Test', function () {
     beforeEach(async function (done) {
       console.info("canvas beforeEach start");
       let options = {

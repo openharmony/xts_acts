@@ -19,7 +19,7 @@ import Utils from './Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function tabsJsunit() {
-  describe('appInfoTest', function () {
+  describe('tabsTest', function () {
     beforeEach(async function (done) {
       console.info("tabs beforeEach start");
       let options = {
@@ -126,12 +126,26 @@ export default function tabsJsunit() {
 
     it('testTabs_0800', 0, async function (done) {
       console.info('testTabs_0800 START');
-      let strJson = getInspectorByKey('tabContent1');
-      console.info("testTabs_0800 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("testTabs_0800 component obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('TabContent');
-      expect(obj.$attrs.tabBar).assertEqual('pink');
+      try {
+        let eventData = {
+          data: {
+            "vertical": "false",
+          }
+        }
+        let indexEvent = {
+          eventId: 213,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testTabs_0800 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testTabs_0800 change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('tabs');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testTabs_0800 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.vertical).assertEqual('false');
       console.info('testTabs_0800 END');
       done();
     });
@@ -141,7 +155,7 @@ export default function tabsJsunit() {
       try {
         let eventData = {
           data: {
-            "vertical": "false",
+            "scrollable": "false",
           }
         }
         let indexEvent = {
@@ -157,7 +171,7 @@ export default function tabsJsunit() {
       let strJsonNew = getInspectorByKey('tabs');
       let objNew = JSON.parse(strJsonNew);
       console.info("testTabs_0900 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.vertical).assertEqual('false');
+      expect(objNew.$attrs.scrollable).assertEqual(false);
       console.info('testTabs_0900 END');
       done();
     });
@@ -167,7 +181,7 @@ export default function tabsJsunit() {
       try {
         let eventData = {
           data: {
-            "scrollable": "false",
+            "scrollable": "false53",
           }
         }
         let indexEvent = {
@@ -193,7 +207,7 @@ export default function tabsJsunit() {
       try {
         let eventData = {
           data: {
-            "scrollable": "false53",
+            "vertical": "39284",
           }
         }
         let indexEvent = {
@@ -219,11 +233,11 @@ export default function tabsJsunit() {
       try {
         let eventData = {
           data: {
-            "vertical": "39284",
+            "vertical": "abc123",
           }
         }
         let indexEvent = {
-          eventId: 213,
+          eventId: 214,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("testTabs_1200 start to publish emit");
@@ -235,16 +249,42 @@ export default function tabsJsunit() {
       let strJsonNew = getInspectorByKey('tabs');
       let objNew = JSON.parse(strJsonNew);
       console.info("testTabs_1200 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.scrollable).assertEqual(false);
+      expect(objNew.$attrs.vertical).assertEqual('false');
       console.info('testTabs_1200 END');
       done();
     });
 
     it('testTabs_1300', 0, async function (done) {
       console.info('testTabs_1300 START');
+      try {
+        let eventData = {
+          data: {
+            "scrollable": "avc12321",
+          }
+        }
+        let indexEvent = {
+          eventId: 215,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testTabs_1300 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testTabs_1300 change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('tabs');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testTabs_1300 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.scrollable).assertEqual(false);
+      console.info('testTabs_1300 END');
+      done();
+    });
+
+    it('testTabs_1400', 0, async function (done) {
+      console.info('testTabs_1400 START');
       await Utils.sleep(1500);
       let callback = (indexEvent) => {
-        console.info("testTabs_1300 get state result is: " + JSON.stringify(indexEvent));
+        console.info("testTabs_1400 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(true);
       }
       let indexEvent = {
@@ -254,11 +294,11 @@ export default function tabsJsunit() {
       try {
         events_emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("testTabs_1300 on events_emitter err : " + JSON.stringify(err));
+        console.info("testTabs_1400 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("testTabs_1300 click result is: " + JSON.stringify(sendEventByKey('tabContent1',10,"")));
+      console.info("testTabs_1400 click result is: " + JSON.stringify(sendEventByKey('tabContent1', 10, "")));
       await Utils.sleep(1000);
-      console.info('testTabs_1300 END');
+      console.info('testTabs_1400 END');
       done();
     });
   })

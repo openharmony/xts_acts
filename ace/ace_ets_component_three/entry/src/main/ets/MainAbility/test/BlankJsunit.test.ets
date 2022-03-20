@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function blankJsunit() {
-  describe('appInfoTest', function () {
+  describe('blankTest', function () {
     beforeEach(async function (done) {
       console.info("blank beforeEach start");
       let options = {
@@ -81,8 +81,8 @@ export default function blankJsunit() {
       let strJsonNew = getInspectorByKey('blank');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testBlank02] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$type).assertEqual('Blank');
       expect(objNew.$attrs.color).assertEqual('#FFFF0000');
+      expect(objNew.$type).assertEqual('Blank');
       done();
     });
   })

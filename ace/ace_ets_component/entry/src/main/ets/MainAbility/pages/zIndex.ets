@@ -30,6 +30,12 @@ struct zIndexExample {
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
+    var stateChangeEvent2 = {
+      eventId: 1113,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
+
   }
 
   private stateChangCallBack = (eventData) => {

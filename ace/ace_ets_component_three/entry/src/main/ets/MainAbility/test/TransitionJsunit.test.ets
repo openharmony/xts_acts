@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function transitionJsunit() {
-  describe('appInfoTest', function () {
+  describe('transitionTest', function () {
     beforeEach(async function (done) {
       console.info("text beforeEach start");
       let options = {
@@ -74,7 +74,7 @@ export default function transitionJsunit() {
       } catch (err) {
         console.info("transitionTest_0200 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("transitionTest_0200 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
+      console.info("transitionTest_0200 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1000);
       console.info('transitionTest_0200 END');
       done();
@@ -126,7 +126,7 @@ export default function transitionJsunit() {
       await Utils.sleep(4000);
       let strJsonNew = getInspectorByKey('button');
       let objNew = JSON.parse(strJsonNew);
-      console.info("transitionTest_0400 component objNew is: " + JSON.stringify(objNew));
+      console.info("transitionTest_040 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.opacity).assertEqual(null);
       console.info('transitionTest_0400 END');
       done();

@@ -20,6 +20,7 @@ import events_emitter from '@ohos.emitter';
 struct CircleExample {
   @State width: string = "450px";
   @State height: string = "450px";
+
   onPageShow() {
     console.info('[circle] page show called');
     var stateChangeEvent = {
@@ -29,18 +30,20 @@ struct CircleExample {
     console.info('[circle] page show calledA');
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
+
   private stateChangCallBack = (eventData) => {
     console.info("[circle] page stateChangCallBack");
     if (eventData != null) {
       console.info("[circle] page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.width != null) {
-        this.width = eventData.data.width;
-      }
-      if(eventData.data.height != null) {
+      if (eventData.data.height != null) {
         this.height = eventData.data.height;
+      }
+      if (eventData.data.width != null) {
+        this.width = eventData.data.width;
       }
     }
   }
+
   build() {
     Flex({ justifyContent: FlexAlign.SpaceAround }) {
       Circle({ width: 150, height: 150 })

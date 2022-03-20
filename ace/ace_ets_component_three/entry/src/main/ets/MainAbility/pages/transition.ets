@@ -27,8 +27,14 @@ struct TransitionExample {
   @State transitionTypeThree: TransitionType = TransitionType.All
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,}) {
-      Button(this.show).width(80).height(30).backgroundColor(0x317aff).margin({bottom:50}).key('button').opacity(this.opacity)
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, }) {
+      Button(this.show)
+        .width(80)
+        .height(30)
+        .backgroundColor(0x317aff)
+        .margin({ bottom: 50 })
+        .key('button')
+        .opacity(this.opacity)
         .onClick(() => {
           this.onActionCalled = true;
           try {
@@ -48,9 +54,9 @@ struct TransitionExample {
           }
           animateTo({ duration: 3000 }, () => {
             this.btn1 = !this.btn1
-            if(this.btn1){
+            if (this.btn1) {
               this.show = "hide"
-            }else{
+            } else {
               this.show = "show"
             }
           })
@@ -58,10 +64,11 @@ struct TransitionExample {
       if (this.btn1) {
         Button() {
           Image($rawfile('test.png')).width("80%").height(300).key('image')
-        }.transition({ type: this.transitionTypeOne, scale: {x:0,y:1.0,z:1.0} }).key('button1')
-        .transition({ type: this.transitionTypeTwo, scale: { x: 1.0, y: 0.0 } })
+        }.transition({ type: this.transitionTypeOne, scale: { x: 0, y: 1.0, z: 1.0 }, opacity: this.opacity })
+        .key('button1')
+        .transition({ type: this.transitionTypeTwo, scale: { x: 1.0, y: 0.0 }, opacity: this.opacity })
       }
-    }.height(400).width("100%").padding({top:100})
+    }.height(400).width("100%").padding({ top: 100 })
   }
 
   onPageShow() {
