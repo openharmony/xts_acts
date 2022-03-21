@@ -24,7 +24,8 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod 644 /data/*.hap"
+                "chmod 644 /data/*.hap",
+                "param set ro.config.pass_edm_permission true"
             ]
         }
     ]
