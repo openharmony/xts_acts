@@ -120,7 +120,7 @@ static void* CommTcpClientTask(void* param)
         "client:!!@@##$$%%^^&&**(()),FD:[%d]", "client:(((112233445566778899))),FD:[%d]", "bye"};
     for (int i = 0; i < count; i++) {
         sleep(sleepSecond);
-        memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+        (viod) memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
         rst = sprintf_s(dataBuf, sizeof(dataBuf), sendMsgList[i], clnFd);
         if (rst < 0) {
             printf("[comm client]sprintf_s error!\n");
@@ -131,7 +131,7 @@ static void* CommTcpClientTask(void* param)
             *ret = -1;
             printf("[comm client][%d]send fail\n", clnFd);
         }
-        memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+        (viod) memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
         rst = recv(clnFd, dataBuf, sizeof(dataBuf), 0);
         if (rst > 0) {
             printf("[comm client][%d]recv msg[%s]\n", clnFd, dataBuf);
@@ -182,14 +182,14 @@ static void* SampleTcpServerTask(void* p)
 
     static char buf[BUF_SIZE + 1] = {0};
     unsigned int srvMsgLen = strlen(g_srvMsg);
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = strcpy_s(buf, BUF_SIZE, g_srvMsg);
     EXPECT_EQ(0, ret);
     ret = send(clnFd, buf, srvMsgLen, 0);
     printf("[tcp server]send, ret=%d\n", ret);
     EXPECT_EQ(srvMsgLen, (unsigned int)ret);
 
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = recv(clnFd, buf, sizeof(buf), 0);
     printf("[tcp server]recv, ret=%d, msg[%s]\n", ret, buf);
     EXPECT_EQ(strlen(g_cliMsg), (unsigned int)ret);
@@ -201,7 +201,7 @@ static void* SampleTcpServerTask(void* p)
     clnAddr.sin_family = AF_INET;
     clnAddr.sin_addr.s_addr = inet_addr(g_localHost);
     clnAddr.sin_port = htons(PEER_PORT);
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = strcpy_s(buf, BUF_SIZE, g_srvMsg);
     EXPECT_EQ(0, ret);
     msg.msg_name = &clnAddr;
@@ -217,8 +217,8 @@ static void* SampleTcpServerTask(void* p)
     EXPECT_EQ(len * srvMsgLen, (unsigned int)ret);
 
     WAIT();
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
-    memset_s(&msg, sizeof(msg), 0, sizeof(msg));
+    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (viod) memset_s(&msg, sizeof(msg), 0, sizeof(msg));
     msg.msg_name = &clnAddr;
     msg.msg_namelen = sizeof(clnAddr);
     msg.msg_iov = iov;
@@ -270,14 +270,14 @@ static void* SampleTcpClientTask(void* p)
 
     static char buf[BUF_SIZE + 1] = {0};
     unsigned int cliMsgLen = strlen(g_cliMsg);
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = strcpy_s(buf, BUF_SIZE, g_cliMsg);
     EXPECT_EQ(0, ret);
     ret = send(clnFd, buf, cliMsgLen, 0);
     printf("[tcp client]send, ret=%d\n", ret);
     EXPECT_EQ(cliMsgLen, (unsigned int)ret);
 
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = recv(clnFd, buf, sizeof(buf), 0);
     printf("[tcp client]recv, ret=%d, msg[%s]\n", ret, buf);
     EXPECT_EQ(strlen(g_srvMsg), (unsigned int)ret);
@@ -290,7 +290,7 @@ static void* SampleTcpClientTask(void* p)
     clnAddr.sin_family = AF_INET;
     clnAddr.sin_addr.s_addr = inet_addr(g_localHost);
     clnAddr.sin_port = htons(PEER_PORT);
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = strcpy_s(buf, BUF_SIZE, g_cliMsg);
     EXPECT_EQ(0, ret);
     msg.msg_name = &clnAddr;
@@ -306,8 +306,8 @@ static void* SampleTcpClientTask(void* p)
     EXPECT_EQ(len * cliMsgLen, (unsigned int)ret);
 
     WAIT();
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
-    memset_s(&msg, sizeof(msg), 0, sizeof(msg));
+    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (viod) memset_s(&msg, sizeof(msg), 0, sizeof(msg));
     msg.msg_name = &clnAddr;
     msg.msg_namelen = sizeof(clnAddr);
     msg.msg_iov = iov;
@@ -344,7 +344,7 @@ static int TcpServerForFork()
         goto FINALLY;
     }
     while (timeout > 0) {
-        memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+        (viod) memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
         ret = recv(cliFd, dataBuf, sizeof(dataBuf), 0);
         if (ret > 0) {
             printf("[server process]recv msg[%s]\n", dataBuf);
@@ -355,7 +355,7 @@ static int TcpServerForFork()
         } else {
             printf("[server process]recv no data\n");
         }
-        memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+        (viod) memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
         sprintf_s(dataBuf, sizeof(dataBuf), "server timeout:%d", timeout);
         ret = send(cliFd, dataBuf, strlen(dataBuf), 0);
         if (ret > 0) {
@@ -466,7 +466,7 @@ static int SelectServerForFork(unsigned int timeoutSec)
                 continue;
             }
             if (FD_ISSET(fds[i], &readSet)) {
-                memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+                (viod) memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
                 int len = recv(fds[i], dataBuf, sizeof(dataBuf), 0);
                 if (len > 0) {
                     printf("[select process][%d]recv msg[%s]\n", fds[i], dataBuf);
@@ -550,20 +550,20 @@ HWTEST_F(ActsLwipTest, testUdpSample, Function | MediumTest | Level2)
     clnAddr.sin_family = AF_INET;
     clnAddr.sin_addr.s_addr = inet_addr(g_localHost);
     clnAddr.sin_port = htons(PEER_PORT);
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = strcpy_s(buf, BUF_SIZE, g_udpMsg);
     EXPECT_EQ(0, ret);
     ret = sendto(sfd, buf, strlen(g_udpMsg), 0, (struct sockaddr*)&clnAddr, (socklen_t)sizeof(clnAddr));
     EXPECT_NE(-1, ret);
 
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = recvfrom(sfd, buf, sizeof(buf), 0, (struct sockaddr*)&clnAddr, &clnAddrLen);
     EXPECT_EQ(strlen(g_udpMsg), (unsigned int)ret);
 
     clnAddr.sin_family = AF_INET;
     clnAddr.sin_addr.s_addr = inet_addr(g_localHost);
     clnAddr.sin_port = htons(PEER_PORT);
-    memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = strcpy_s(buf, BUF_SIZE, g_udpMsg);
     EXPECT_EQ(0, ret);
     msg.msg_name = &clnAddr;
@@ -761,7 +761,7 @@ HWTEST_F(ActsLwipTest, testSocketOpt, Function | MediumTest | Level2)
     ret = setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, len);
     EXPECT_EQ(0, ret);
 
-    memset_s(&timeout, len, 0, len);
+    (viod) memset_s(&timeout, len, 0, len);
     ret = getsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, &len);
     EXPECT_EQ(0, ret);
     EXPECT_EQ(1000, timeout.tv_sec);
