@@ -25,9 +25,9 @@ describe('ActsBmsHapModuleTest', function () {
      */
     it('bms_getHapModuleInfo_0100', 0, async function (done) {
         console.debug('===========begin bms_getHapModuleInfo_0100===========')
-        var bundlePath = ['/data/test/bmsMainAbilityFirstScene.hap'];
+        let bundlePath = ['/data/test/bmsMainAbilityFirstScene.hap'];
         let bundleName = 'com.example.bmsmainabilityfirstscene';
-        var installer = await bundle.getBundleInstaller();
+        let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
             userId: 100,
             installFlag: 1,
@@ -91,11 +91,11 @@ describe('ActsBmsHapModuleTest', function () {
      */
     it('bms_getHapModuleInfo_0200', 0, async function (done) {
         console.debug('===========begin bms_getHapModuleInfo_0200===========')
-        var bundlePath = ['/data/test/bmsMainAbilityFirstScene.hap', '/data/test/bmsMainAbilitySecondScene.hap'];
+        let bundlePath = ['/data/test/bmsMainAbilityFirstScene.hap', '/data/test/bmsMainAbilitySecondScene.hap'];
         let bundleName = 'com.example.bmsmainabilityfirstscene';
         let firstMainAbility = 'com.example.bmsmainabilityfirstscene.MainAbility';
         let secondMainAbility = 'com.example.bmsmainabilitysecondscene.MainAbility';
-        var installer = await bundle.getBundleInstaller();
+        let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
             userId: 100,
             installFlag: 1,
@@ -135,9 +135,9 @@ describe('ActsBmsHapModuleTest', function () {
      */
     it('bms_getHapModuleInfo_0300', 0, async function (done) {
         console.debug('===========begin bms_getHapModuleInfo_0300===========')
-        var bundlePath = ['/data/test/bmsThirdBundleTest2.hap'];
+        let bundlePath = ['/data/test/bmsThirdBundleTest2.hap'];
         let bundleName = 'com.example.third2';
-        var installer = await bundle.getBundleInstaller();
+        let installer = await bundle.getBundleInstaller();
         console.log('========install========' + typeof installer);
         installer.install(bundlePath, {
             userId: 100,
@@ -186,9 +186,9 @@ describe('ActsBmsHapModuleTest', function () {
      */
     it('bms_getHapModuleInfo_0400', 0, async function (done) {
         console.debug('===========begin bms_getHapModuleInfo_0400===========')
-        var bundlePath = ['/data/test/bmsThirdBundleTest5.hap'];
+        let bundlePath = ['/data/test/bmsThirdBundleTest5.hap'];
         let bundleName = 'com.example.third5';
-        var installer = await bundle.getBundleInstaller();
+        let installer = await bundle.getBundleInstaller();
         console.log('========install========' + typeof installer);
         installer.install(bundlePath, {
             userId: 100,
@@ -232,10 +232,10 @@ describe('ActsBmsHapModuleTest', function () {
      */
     it('bms_getHapModuleInfo_0500', 0, async function (done) {
         console.debug('===========begin bms_getHapModuleInfo_0500===========')
-        var bundlePath1 = ['/data/test/bmsThirdBundleTest1.hap'];
-        var bundlePath2 = ['/data/test/bmsThirdBundleTestA1.hap'];
+        let bundlePath1 = ['/data/test/bmsThirdBundleTest1.hap'];
+        let bundlePath2 = ['/data/test/bmsThirdBundleTestA1.hap'];
         let bundleName = 'com.example.third1';
-        var installer = await bundle.getBundleInstaller();
+        let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath1, {
             userId: 100,
             installFlag: 1,

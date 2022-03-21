@@ -28,8 +28,8 @@ describe('ActsBmsAccessTokenTest', function () {
      */
     it('bms_AccessTokenId_0100', 0, async function (done) {
         console.info('bms_AccessTokenId_0100 start');
-        var bundlePath = ['/data/test/bmsAccessTokenTest1.hap'];
-        var bundleName = 'com.example.bmsaccesstoken1';
+        let bundlePath = ['/data/test/bmsAccessTokenTest1.hap'];
+        let bundleName = 'com.example.bmsaccesstoken1';
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
             userId: 100,
@@ -67,8 +67,8 @@ describe('ActsBmsAccessTokenTest', function () {
      */
     it('bms_AccessTokenId_0200', 0, async function (done) {
         console.info('bms_AccessTokenId_0200 start');
-        var bundlePath = ['/data/test/bmsAccessTokenTest1.hap'];
-        var bundleName = 'com.example.bmsaccesstoken1';
+        let bundlePath = ['/data/test/bmsAccessTokenTest1.hap'];
+        let bundleName = 'com.example.bmsaccesstoken1';
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
             userId: 100,
@@ -112,9 +112,9 @@ describe('ActsBmsAccessTokenTest', function () {
      */
     it('bms_AccessTokenId_0300', 0, async function (done) {
         console.info('bms_AccessTokenId_0300 start');
-        var bundlePath1 = ['/data/test/bmsAccessTokenTest1.hap'];
-        var bundlePath2 = ['/data/test/bmsAccessTokenTest2.hap'];
-        var bundleName = 'com.example.bmsaccesstoken1';
+        let bundlePath1 = ['/data/test/bmsAccessTokenTest1.hap'];
+        let bundlePath2 = ['/data/test/bmsAccessTokenTest2.hap'];
+        let bundleName = 'com.example.bmsaccesstoken1';
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath1, {
             userId: 100,
@@ -172,9 +172,9 @@ describe('ActsBmsAccessTokenTest', function () {
      */
     it('bms_AccessTokenId_0400', 0, async function (done) {
         console.info('bms_AccessTokenId_0400 start');
-        var bundlePath1 = ['/data/test/bmsAccessTokenTest1.hap'];
-        var bundlePath2 = ['/data/test/bmsAccessTokenTest3.hap'];
-        var bundleName = 'com.example.bmsaccesstoken1';
+        let bundlePath1 = ['/data/test/bmsAccessTokenTest1.hap'];
+        let bundlePath2 = ['/data/test/bmsAccessTokenTest3.hap'];
+        let bundleName = 'com.example.bmsaccesstoken1';
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath1, {
             userId: 100,
@@ -234,8 +234,8 @@ describe('ActsBmsAccessTokenTest', function () {
      */
     it("bms_AccessTokenId_0500", 0, async function (done) {
         console.info("bms_AccessTokenId_0500 start");
-        var bundlePath = ["/data/test/bmsAccessTokenTest1.hap"];
-        var bundleName = "com.example.bmsaccesstoken1";
+        let bundlePath = ["/data/test/bmsAccessTokenTest1.hap"];
+        let bundleName = "com.example.bmsaccesstoken1";
         let installer = await bundle.getBundleInstaller();
         installer.install(
             bundlePath,
@@ -281,8 +281,8 @@ describe('ActsBmsAccessTokenTest', function () {
      */
     it("bms_AccessTokenId_0600", 0, async function (done) {
         console.info("bms_AccessTokenId_0600 start");
-        var bundlePath = ["/data/test/bmsAccessTokenTest1.hap"];
-        var bundleName = "com.example.bmsaccesstoken1";
+        let bundlePath = ["/data/test/bmsAccessTokenTest1.hap"];
+        let bundleName = "com.example.bmsaccesstoken1";
         let installer = await bundle.getBundleInstaller();
         installer.install(
             bundlePath,
@@ -329,8 +329,8 @@ describe('ActsBmsAccessTokenTest', function () {
      */
     it("bms_AccessTokenId_0700", 0, async function (done) {
         console.info("bms_AccessTokenId_0700 start");
-        var bundlePath = ["/data/test/bmsAccessTokenTest1.hap"];
-        var bundleName = "com.example.bmsaccesstoken1";
+        let bundlePath = ["/data/test/bmsAccessTokenTest1.hap"];
+        let bundleName = "com.example.bmsaccesstoken1";
         let installer = await bundle.getBundleInstaller();
         installer.install(
               bundlePath,
@@ -377,8 +377,8 @@ describe('ActsBmsAccessTokenTest', function () {
      */
     it("bms_AccessTokenId_0800", 0, async function (done) {
         console.info("bms_AccessTokenId_0800 start");
-        var bundlePath = ["/data/test/bmsAccessTokenTest1.hap"];
-        var bundleName = "com.example.bmsaccesstoken1";
+        let bundlePath = ["/data/test/bmsAccessTokenTest1.hap"];
+        let bundleName = "com.example.bmsaccesstoken1";
         let installer = await bundle.getBundleInstaller();
         installer.install(
               bundlePath,

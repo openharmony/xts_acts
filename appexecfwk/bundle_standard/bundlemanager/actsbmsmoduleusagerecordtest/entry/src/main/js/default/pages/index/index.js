@@ -27,7 +27,7 @@ export default {
     },
     onShow() {
         console.info('onShow finish')
-        if (this.testTime == 0) {
+        if (!this.testTime) {
             console.info('test start')
             const core = Core.getInstance()
             const expectExtend = new ExpectExtend({

@@ -27,7 +27,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
     */
     it('bms_queryAbilityByWant_0100', 0, async function (done){
         console.info('=====================bms_queryAbilityByWant_0100==================');
-        var bundlePath = [BUNDLE_PATH1]
+        let bundlePath = [BUNDLE_PATH1]
         bundle.getBundleInstaller().then(installer => {
             function onReceiveinstallEvent(err, data) {
                 console.log('bms_queryAbilityByWant_0100 install called: ' + data)
@@ -86,7 +86,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
             bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION|bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY, 
         100).then(data => {
                 for(let i = 0; i < data.length; ++i) {
-                    var jsondata = JSON.stringify(data[i]);
+                    let jsondata = JSON.stringify(data[i]);
                     console.log('bms_queryAbilityByWant_0200 test query system app ' + jsondata)
                     expect(data[i].applicationInfo.systemApp).assertEqual(true)
                 }

@@ -55,7 +55,7 @@ describe('ActsBundleManagerUninstall', function () {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
-            var datainfo1 = await demo.getBundleInfo(NAME1, 1);
+            let datainfo1 = await demo.getBundleInfo(NAME1, 1);
             expect(datainfo1.name).assertEqual(NAME1);
             installData.uninstall(NAME1, {
                 userId: 100,
@@ -91,13 +91,13 @@ describe('ActsBundleManagerUninstall', function () {
             expect(err.code).assertEqual(ERR_CODE);
             expect(data.status).assertEqual(STATUS_INSTALL_FAILURE_CONFLICT);
             expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_CONFLICT');
-            var datainfo1 = demo.getBundleInfo(NAME1, 1);
+            let datainfo1 = demo.getBundleInfo(NAME1, 1);
             datainfo1.then(data => {
                 expect().assertFail();
             }).catch(err => {
                 expect(err).assertEqual(1);
             });
-            var datainfo2 = demo.getBundleInfo(NAME2, 1);
+            let datainfo2 = demo.getBundleInfo(NAME2, 1);
             datainfo2.then(data => {
                 expect().assertFail();
             }).catch(err => {
@@ -108,7 +108,7 @@ describe('ActsBundleManagerUninstall', function () {
                 installFlag: 1,
                 isKeepData: false
             }, async(err, data) => {
-                var datainfo3 = demo.getBundleInfo(NAME1, 1);
+                let datainfo3 = demo.getBundleInfo(NAME1, 1);
                 datainfo3.then(data => {
                     expect().assertFail();
                 }).catch(err => {
@@ -119,7 +119,7 @@ describe('ActsBundleManagerUninstall', function () {
                     installFlag: 1,
                     isKeepData: false
                 }, async(err, data) => {
-                    var datainfo4 = demo.getBundleInfo(NAME2, 1);
+                    let datainfo4 = demo.getBundleInfo(NAME2, 1);
                     datainfo4.then(data => {
                         expect().assertFail();
                     }).catch(err => {
@@ -146,19 +146,19 @@ describe('ActsBundleManagerUninstall', function () {
             expect(err.code).assertEqual(ERR_CODE);
             expect(data.status).assertEqual(STATUS_INSTALL_FAILURE_INVALID);
             expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_INVALID');
-            var datainfo1 = demo.getBundleInfo(NAME3, 1);
+            let datainfo1 = demo.getBundleInfo(NAME3, 1);
             datainfo1.then(data => {
                 expect().assertFail();
             }).catch(err => {
                 expect(err).assertEqual(1);
             });
-            var datainfo2 = demo.getBundleInfo(NAME4, 1);
+            let datainfo2 = demo.getBundleInfo(NAME4, 1);
             datainfo2.then(data => {
                 expect().assertFail();
             }).catch(err => {
                 expect(err).assertEqual(1);
             });
-            var datainfo3 = demo.getBundleInfo(NAME5, 1);
+            let datainfo3 = demo.getBundleInfo(NAME5, 1);
             datainfo3.then(data => {
                 expect().assertFail();
             }).catch(err => {
@@ -169,7 +169,7 @@ describe('ActsBundleManagerUninstall', function () {
                 installFlag: 1,
                 isKeepData: false
             }, async(err, data) => {
-                var datainfo4 = demo.getBundleInfo(NAME3, 1);
+                let datainfo4 = demo.getBundleInfo(NAME3, 1);
                 datainfo4.then(data => {
                     expect().assertFail();
                 }).catch(err => {
@@ -180,7 +180,7 @@ describe('ActsBundleManagerUninstall', function () {
                     installFlag: 1,
                     isKeepData: false
                 }, async(err, data) => {
-                    var datainfo5 = demo.getBundleInfo(NAME4, 1);
+                    let datainfo5 = demo.getBundleInfo(NAME4, 1);
                     datainfo5.then(data => {
                         expect().assertFail();
                     }).catch(err => {
@@ -191,7 +191,7 @@ describe('ActsBundleManagerUninstall', function () {
                         installFlag: 1,
                         isKeepData: false
                     }, async(err, data) => {
-                        var datainfo6 = demo.getBundleInfo(NAME5, 1);
+                        let datainfo6 = demo.getBundleInfo(NAME5, 1);
                         datainfo6.then(data => {
                             expect().assertFail();
                         }).catch(err => {

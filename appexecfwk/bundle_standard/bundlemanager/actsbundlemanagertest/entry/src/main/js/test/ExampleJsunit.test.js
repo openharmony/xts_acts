@@ -43,7 +43,7 @@ const DIR1 = "/data/accounts/account_0/applications/com.example.myapplication1/c
 const DIR2 = "/data/accounts/account_0/applications/com.example.myapplication2/com.example.myapplication2"
 const DESCRIPTION = "$string:mainability_description"
 const START_ABILITY_TIMEOUT = 3000;
-var installParam = {
+let installParam = {
     userId: 100,
     installFlag: 0,
     isKeepData: false
@@ -69,7 +69,7 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getBundleInfo(NAME1, 
+            let datainfo = await demo.getBundleInfo(NAME1, 
                 demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES|demo.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
             expect(datainfo.name).assertEqual(NAME1)
             expect(datainfo.vendor).assertEqual("example")
@@ -98,7 +98,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.compatibleVersion).assertEqual(5)
             expect(datainfo.targetVersion).assertEqual(5)
             expect(datainfo.isCompressNativeLibs).assertEqual(false)
-            for (var s = 0; s < datainfo.hapModuleInfos; s++) {
+            for (let s = 0; s < datainfo.hapModuleInfos; s++) {
                 expect(datainfo.moduleInfos[s].name).assertEqual("com.example.myapplication1")
                 expect(datainfo.moduleInfos[s].moduleName).assertEqual("entry")
             }
@@ -106,7 +106,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.isSilentInstallation.length).assertEqual(0)
             expect(datainfo.minCompatibleVersionCode).assertEqual(0)
             expect(datainfo.entryInstallationFree).assertEqual(false)
-            for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
+            for (let j = 0; j < datainfo.appInfo.moduleInfos; j++) {
                 expect(datainfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry")
                 expect(datainfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
             }
@@ -143,7 +143,7 @@ describe('ActsBundleManagerTest', function () {
         });
 
         async function getInfo() {
-            var datainfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
+            let datainfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent)
             function OnReceiveEvent(err, datainfo) {
                 expect(datainfo.name).assertEqual(NAME1)
                 expect(datainfo.vendor).assertEqual("example")
@@ -159,7 +159,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(true)
                 expect(datainfo.appInfo.supportedModes).assertEqual(0)
-                for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
+                for (let j = 0; j < datainfo.appInfo.moduleInfos; j++) {
                     expect(datainfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry")
                     expect(datainfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
                 }
@@ -198,7 +198,7 @@ describe('ActsBundleManagerTest', function () {
             });
         });
         async function getInfo() {
-            var datainfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT)
+            let datainfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT)
             expect(datainfo.name).assertEqual(NAME1)
             expect(datainfo.vendor).assertEqual("example")
             expect(datainfo.versionCode).assertEqual(VERSIONCODE1)
@@ -263,7 +263,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(true)
                 expect(datainfo.appInfo.supportedModes).assertEqual(0)
-                for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
+                for (let j = 0; j < datainfo.appInfo.moduleInfos; j++) {
                     expect(datainfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry")
                     expect(datainfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
                 }
@@ -300,7 +300,7 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getAllApplicationInfo(8, 100)
+            let datainfo = await demo.getAllApplicationInfo(8, 100)
             checkgetApplicationInfos(datainfo)
             installData.uninstall(NAME1, {
                 userId: 100,
@@ -317,7 +317,7 @@ describe('ActsBundleManagerTest', function () {
     function checkgetApplicationInfos(datainfo) {
         console.log("=============datainfo.length===============" + datainfo.length)
         expect(datainfo.length).assertLarger(0)
-        for (var i = 0; i < datainfo.length; i++) {
+        for (let i = 0; i < datainfo.length; i++) {
             expect(datainfo[i].name.length).assertLarger(0)
             if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2
                 || datainfo[i].name == NAME3 || datainfo[i].name == NAME4 || datainfo[i].name == NAME5) {
@@ -329,7 +329,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo[i].moduleInfos.length).assertLarger(0)
             expect(datainfo[i].supportedModes).assertEqual(0)
             expect(datainfo[i].flags).assertEqual(0)
-            for (var j = 0; j < datainfo[i].moduleInfos; j++) {
+            for (let j = 0; j < datainfo[i].moduleInfos; j++) {
                 expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0)
                 expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0)
             }
@@ -358,7 +358,7 @@ describe('ActsBundleManagerTest', function () {
         async function getInfo() {
             await demo.getAllApplicationInfo(8, 100, (error, datainfo) => {
                 expect(datainfo.length).assertLarger(0)
-                for (var i = 0; i < datainfo.length; i++) {
+                for (let i = 0; i < datainfo.length; i++) {
                     expect(datainfo[i].name.length).assertLarger(0)
 
                     //                    expect(datainfo[i].description.length).assertLarger(0)
@@ -368,7 +368,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo[i].moduleInfos.length).assertLarger(0)
                     expect(datainfo[i].supportedModes).assertEqual(0)
                     expect(datainfo[i].flags).assertEqual(0)
-                    for (var j = 0; j < datainfo[i].moduleInfos; j++) {
+                    for (let j = 0; j < datainfo[i].moduleInfos; j++) {
                         expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0)
                         expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0)
                     }
@@ -406,10 +406,10 @@ describe('ActsBundleManagerTest', function () {
         });
 
         async function getInfo() {
-            var data = await demo.getAllBundleInfo(0)
+            let data = await demo.getAllBundleInfo(0)
             expect(typeof data).assertEqual(OBJECT)
             expect(data.length).assertLarger(0)
-            for (var i = 0; i < data.length; i++) {
+            for (let i = 0; i < data.length; i++) {
                 expect(data[i].name.length).assertLarger(0)
                 expect(data[i].appInfo.name.length).assertLarger(0)
                 if (data[i].name == NAME1 || data[i].name == NAME2
@@ -471,7 +471,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.metaData.entry[0].value).assertEqual("metaDataValue")
                 expect(datainfo.metaData.entry[0].extra).assertEqual("$string:app_name")
                 expect(datainfo.moduleSourceDirs.length).assertLarger(0)
-                for (var j = 0; j < datainfo.moduleInfos; j++) {
+                for (let j = 0; j < datainfo.moduleInfos; j++) {
                     expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry")
                     expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0)
                 }
@@ -508,7 +508,7 @@ describe('ActsBundleManagerTest', function () {
         async function getInfo() {
             await demo.getAllBundleInfo(0, (error, data) => {
                 expect(typeof data).assertEqual(OBJECT)
-                for (var i = 0; i < data.length; i++) {
+                for (let i = 0; i < data.length; i++) {
                     expect(data[i].name.length).assertLarger(0)
                     expect(data[i].appInfo.name.length).assertLarger(0)
                     if (data[i].name == NAME1 || data[i].name == NAME2
@@ -566,7 +566,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.systemApp).assertEqual(true)
                 expect(datainfo.supportedModes).assertEqual(0)
                 expect(datainfo.enabled).assertEqual(true)
-                for (var j = 0; j < datainfo.moduleInfos; j++) {
+                for (let j = 0; j < datainfo.moduleInfos; j++) {
                     expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry")
                     expect(datainfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
 
@@ -677,7 +677,7 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getBundleArchiveInfo(PATH + BMSJSTEST1, 1)
+            let datainfo = await demo.getBundleArchiveInfo(PATH + BMSJSTEST1, 1)
             expect(datainfo.name).assertEqual(NAME1)
             expect(datainfo.vendor).assertEqual("example")
             expect(datainfo.versionCode).assertEqual(1)
@@ -692,10 +692,10 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.labelId >= 0).assertTrue()
             expect(datainfo.appInfo.systemApp).assertEqual(false)
             expect(datainfo.appInfo.supportedModes).assertEqual(0)
-            for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
+            for (let j = 0; j < datainfo.appInfo.moduleInfos; j++) {
                 expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
             }
-            for (var j = 0; j < datainfo.abilityInfos; j++) {
+            for (let j = 0; j < datainfo.abilityInfos; j++) {
                 expect(datainfo.abilityInfos[j].name).assertEqual(".MainAbility")
                 expect(datainfo.abilityInfos[j].label).assertEqual("$string:app_name")
                 expect(datainfo.abilityInfos[j].description).assertEqual(DESCRIPTION)
@@ -735,7 +735,7 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getBundleArchiveInfo(PATH + BMSJSTEST2, 1)
+            let datainfo = await demo.getBundleArchiveInfo(PATH + BMSJSTEST2, 1)
             expect(datainfo.name).assertEqual(NAME2)
             expect(datainfo.vendor).assertEqual("example")
             expect(datainfo.versionCode).assertEqual(1)
@@ -779,7 +779,7 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getBundleArchiveInfo(PATH + BMSJSTEST4, 1)
+            let datainfo = await demo.getBundleArchiveInfo(PATH + BMSJSTEST4, 1)
             expect(datainfo.name).assertEqual(NAME3)
             expect(datainfo.vendor).assertEqual("example")
             expect(datainfo.versionCode).assertEqual(1)
@@ -837,7 +837,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getBundleArchiveInfo interfaces with none hap.
      */
     it('getBundleArchiveInfo_0500', 0, async function (done) {
-        var datainfo = await demo.getBundleArchiveInfo(' ', 1).then(datainfo => {
+        let datainfo = await demo.getBundleArchiveInfo(' ', 1).then(datainfo => {
             console.info("getBundleArchiveInfo success" + JSON.stringify(datainfo))
             expect(datainfo).assertFail()
             done()
@@ -883,10 +883,10 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(false)
                 expect(datainfo.appInfo.supportedModes).assertEqual(0)
-                for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
+                for (let j = 0; j < datainfo.appInfo.moduleInfos; j++) {
                     expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
                 }
-                for (var j = 0; j < datainfo.abilityInfos; j++) {
+                for (let j = 0; j < datainfo.abilityInfos; j++) {
                     expect(datainfo.abilityInfos[j].name).assertEqual(".MainAbility")
                     expect(datainfo.abilityInfos[j].label).assertEqual("$string:app_name")
                     expect(datainfo.abilityInfos[j].description).assertEqual(DESCRIPTION)
@@ -1075,10 +1075,10 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(false)
                 expect(datainfo.appInfo.supportedModes).assertEqual(0)
-                for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
+                for (let j = 0; j < datainfo.appInfo.moduleInfos; j++) {
                     expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
                 }
-                for (var j = 0; j < datainfo.abilityInfos; j++) {
+                for (let j = 0; j < datainfo.abilityInfos; j++) {
                     expect(datainfo.abilityInfos[j].name).assertEqual(".MainAbility")
                     expect(datainfo.abilityInfos[j].label).assertEqual("$string:app_name")
                     expect(datainfo.abilityInfos[j].description).assertEqual(DESCRIPTION)
@@ -1136,10 +1136,10 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.appInfo.labelId >= 0).assertTrue()
                 expect(datainfo.appInfo.systemApp).assertEqual(false)
                 expect(datainfo.appInfo.supportedModes).assertEqual(0)
-                for (var j = 0; j < datainfo.appInfo.moduleInfos; j++) {
+                for (let j = 0; j < datainfo.appInfo.moduleInfos; j++) {
                     expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
                 }
-                for (var j = 0; j < datainfo.abilityInfos; j++) {
+                for (let j = 0; j < datainfo.abilityInfos; j++) {
                     expect(datainfo.abilityInfos[j].name).assertEqual(".MainAbility")
                     expect(datainfo.abilityInfos[j].label).assertEqual("$string:app_name")
                     expect(datainfo.abilityInfos[j].description).assertEqual(DESCRIPTION)
@@ -1180,7 +1180,7 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getBundleInfo(NAME2, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
+            let datainfo = await demo.getBundleInfo(NAME2, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
             expect(datainfo.name).assertEqual(NAME2)
             expect(datainfo.vendor).assertEqual("example")
             expect(datainfo.versionCode).assertEqual(1)
@@ -1273,7 +1273,7 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getAllApplicationInfo(8, 100)
+            let datainfo = await demo.getAllApplicationInfo(8, 100)
             console.info("==========ActsBmsGetInfosSecondScene is ==========" + JSON.stringify(datainfo));
             checkgetApplicationInfos(datainfo)
             installData.uninstall(NAME2, {
@@ -1307,7 +1307,7 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getAllApplicationInfo(0, 100)
+            let datainfo = await demo.getAllApplicationInfo(0, 100)
             expect(datainfo.length).assertLarger(0)
             checkgetApplicationInfos(datainfo)
             installData.uninstall(NAME2, {
@@ -1343,7 +1343,7 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             await demo.getAllApplicationInfo(8, 100, (error, datainfo) => {
-                for (var i = 0; i < datainfo.length; i++) {
+                for (let i = 0; i < datainfo.length; i++) {
                     expect(datainfo[i].name.length).assertLarger(0)
                     if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2
                         || datainfo[i].name == NAME3 || datainfo[i].name == NAME4 || datainfo[i].name == NAME5) {
@@ -1355,7 +1355,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo[i].moduleInfos.length).assertLarger(0)
                     expect(datainfo[i].supportedModes).assertEqual(0)
                     expect(datainfo[i].flags).assertEqual(0)
-                    for (var j = 0; j < datainfo[i].moduleInfos; j++) {
+                    for (let j = 0; j < datainfo[i].moduleInfos; j++) {
                         expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0)
                         expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0)
                     }
@@ -1393,7 +1393,7 @@ describe('ActsBundleManagerTest', function () {
         });
         async function getInfo() {
             await demo.getAllApplicationInfo(0, 100, (error, datainfo) => {
-                for (var i = 0; i < datainfo.length; i++) {
+                for (let i = 0; i < datainfo.length; i++) {
                     expect(datainfo[i].name.length).assertLarger(0)
                     if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2
                         || datainfo[i].name == NAME3 || datainfo[i].name == NAME4 || datainfo[i].name == NAME5) {
@@ -1405,7 +1405,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo[i].moduleInfos.length).assertLarger(0)
                     expect(datainfo[i].supportedModes).assertEqual(0)
                     expect(datainfo[i].flags).assertEqual(0)
-                    for (var j = 0; j < datainfo[i].moduleInfos; j++) {
+                    for (let j = 0; j < datainfo[i].moduleInfos; j++) {
                         expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0)
                         expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0)
                     }
@@ -1444,10 +1444,10 @@ describe('ActsBundleManagerTest', function () {
         });
 
         async function getInfo() {
-            var data = await demo.getAllBundleInfo(0)
+            let data = await demo.getAllBundleInfo(0)
             expect(typeof data).assertEqual(OBJECT)
 
-            for (var i = 0; i < data.length; i++) {
+            for (let i = 0; i < data.length; i++) {
                 console.info('====> getBundleInfos_02200 =====>' + JSON.stringify(data[i].name.length))
                 console.info('====> getBundleInfos_03300 =====>' + JSON.stringify(data[i].entryModuleName.length))
                 console.info('====> getBundleInfos_04400 =====>' + JSON.stringify(data[i].appInfo.name.length))
@@ -1500,10 +1500,10 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var data = await demo.getAllBundleInfo(1)
+            let data = await demo.getAllBundleInfo(1)
             expect(typeof data).assertEqual(OBJECT)
 
-            for (var i = 0; i < data.length; i++) {
+            for (let i = 0; i < data.length; i++) {
                 expect(data[i].name.length).assertLarger(0)
                 expect(data[i].appInfo.name.length).assertLarger(0)
                 if (data[i].name == NAME1 || data[i].name == NAME2
@@ -1542,7 +1542,7 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getApplicationInfo(NAME2,
+            let datainfo = await demo.getApplicationInfo(NAME2,
                     demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 100)
             console.info("getApplicationInfo result" + JSON.stringify(datainfo))
             expect(typeof datainfo).assertEqual(OBJECT)
@@ -1565,7 +1565,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.enabled).assertEqual(true)
             expect(datainfo.flags).assertEqual(0)
             expect(datainfo.moduleSourceDirs.length).assertLarger(0)
-            for (var j = 0; j < datainfo.moduleInfos; j++) {
+            for (let j = 0; j < datainfo.moduleInfos; j++) {
                 expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry")
                 expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0)
             }
@@ -1600,7 +1600,7 @@ describe('ActsBundleManagerTest', function () {
             await demo.getAllBundleInfo(0, (error, data) => {
                 expect(typeof data).assertEqual(OBJECT)
 
-                for (var i = 0; i < data.length; i++) {
+                for (let i = 0; i < data.length; i++) {
                     expect(data[i].name.length).assertLarger(0)
                     expect(data[i].appInfo.name.length).assertLarger(0)
                     if (data[i].name == NAME1 || data[i].name == NAME2
@@ -1648,7 +1648,7 @@ describe('ActsBundleManagerTest', function () {
             await demo.getAllBundleInfo(1, (error, data) => {
                 expect(typeof data).assertEqual(OBJECT)
 
-                for (var i = 0; i < data.length; i++) {
+                for (let i = 0; i < data.length; i++) {
                     expect(data[i].name.length).assertLarger(0)
                     expect(data[i].appInfo.name.length).assertLarger(0)
                     if (data[i].name == NAME1 || data[i].name == NAME2
@@ -1757,9 +1757,9 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var data = await demo.getAllBundleInfo(0)
+            let data = await demo.getAllBundleInfo(0)
 
-            for (var i = 0; i < data.length; i++) {
+            for (let i = 0; i < data.length; i++) {
                 expect(data[i].name.length).assertLarger(0)
                 expect(data[i].appInfo.name.length).assertLarger(0)
                 if (data[i].name == NAME1 || data[i].name == NAME2
@@ -1811,9 +1811,9 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var data = await demo.getAllBundleInfo(1)
+            let data = await demo.getAllBundleInfo(1)
 
-            for (var i = 0; i < data.length; i++) {
+            for (let i = 0; i < data.length; i++) {
                 expect(data[i].name.length).assertLarger(0)
                 expect(data[i].appInfo.name.length).assertLarger(0)
                 if (data[i].name == NAME1 || data[i].name == NAME2
@@ -1868,7 +1868,7 @@ describe('ActsBundleManagerTest', function () {
         async function getInfo() {
             await demo.getAllBundleInfo(0, (error, data) => {
 
-                for (var i = 0; i < data.length; i++) {
+                for (let i = 0; i < data.length; i++) {
                     expect(data[i].name.length).assertLarger(0)
                     expect(data[i].appInfo.name.length).assertLarger(0)
                     if (data[i].name == NAME1 || data[i].name == NAME2
@@ -2136,7 +2136,7 @@ describe('ActsBundleManagerTest', function () {
                     100).then(data => {
                     expect(data.length).assertLarger(0);
                     for (let i = 0, len = data.length; i < len; i++) {
-                        var datainfo = data[i];
+                        let datainfo = data[i];
                         expect(datainfo.name).assertEqual("com.example.myapplication1.MainAbility")
                         expect(datainfo.label).assertEqual("$string:app_name")
                         expect(datainfo.description).assertEqual(DESCRIPTION)
@@ -2159,7 +2159,7 @@ describe('ActsBundleManagerTest', function () {
                         expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
                         expect(datainfo.applicationInfo.enabled).assertEqual(true)
                         expect(datainfo.metaData.length).assertLarger(0)
-                        for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
+                        for (let j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
                             expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
                             expect(datainfo.applicationInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
                         }
@@ -2198,7 +2198,7 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var data =
+            let data =
                 await demo.queryAbilityByWant(
                     {
                         "bundleName": "com.example.myapplication2",
@@ -2206,7 +2206,7 @@ describe('ActsBundleManagerTest', function () {
                     }, demo.BundleFlag.GET_ALL_APPLICATION_INFO, 100)
             expect(data.length).assertLarger(0);
             for (let i = 0, len = data.length; i < len; i++) {
-                var datainfo = data[i];
+                let datainfo = data[i];
                 expect(datainfo.name.length).assertLarger(0)
                 expect(datainfo.label).assertEqual("$string:app_name")
                 expect(datainfo.description).assertEqual(DESCRIPTION)
@@ -2225,7 +2225,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.applicationInfo.systemApp).assertEqual(true)
                 expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
                 expect(datainfo.applicationInfo.enabled).assertEqual(true)
-                for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
+                for (let j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
                     expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
                     expect(datainfo.applicationInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR2)
                 }
@@ -2279,7 +2279,7 @@ describe('ActsBundleManagerTest', function () {
                 }, 4, 100).then(data => {
                     let queryResultCount = 0;
                     for (let i = 0, len = data.length; i < len; i++) {
-                        var datainfo = data[i];
+                        let datainfo = data[i];
                         if (datainfo.bundleName == NAME3){
                             expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility")
                             expect(datainfo.label).assertEqual("$string:app_name")
@@ -2298,7 +2298,7 @@ describe('ActsBundleManagerTest', function () {
                             expect(datainfo.applicationInfo.supportedModes).assertEqual(0)
                             expect(datainfo.orientation).assertEqual(2)
                             expect(datainfo.applicationInfo.enabled).assertEqual(true)
-                            for (var j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
+                            for (let j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
                                 expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry")
                             }
                             queryResultCount++
@@ -2432,10 +2432,10 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var bundleOptions = {
+            let bundleOptions = {
                 userId: 100
             };
-            var dataInfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions);
+            let dataInfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions);
             expect(dataInfo.name).assertEqual(NAME1)
             expect(dataInfo.vendor).assertEqual("example")
             expect(dataInfo.versionCode).assertEqual(VERSIONCODE1)
@@ -2456,7 +2456,7 @@ describe('ActsBundleManagerTest', function () {
             expect(dataInfo.compatibleVersion).assertEqual(5)
             expect(dataInfo.targetVersion).assertEqual(5)
             expect(dataInfo.isCompressNativeLibs).assertEqual(false)
-            for (var s = 0; s < dataInfo.hapModuleInfos; s++) {
+            for (let s = 0; s < dataInfo.hapModuleInfos; s++) {
                 expect(dataInfo.moduleInfos[s].name).assertEqual("com.example.myapplication1")
                 expect(dataInfo.moduleInfos[s].moduleName).assertEqual("entry")
             }
@@ -2464,7 +2464,7 @@ describe('ActsBundleManagerTest', function () {
             expect(dataInfo.isSilentInstallation.length).assertEqual(0)
             expect(dataInfo.minCompatibleVersionCode).assertEqual(0)
             expect(dataInfo.entryInstallationFree).assertEqual(false)
-            for (var j = 0; j < dataInfo.appInfo.moduleInfos; j++) {
+            for (let j = 0; j < dataInfo.appInfo.moduleInfos; j++) {
                 expect(dataInfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry")
                 expect(dataInfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
             }
@@ -2500,7 +2500,7 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var bundleOptions = {
+            let bundleOptions = {
                 userId: 100
             };
             demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions, (err, dataInfo) => {
@@ -2524,7 +2524,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(dataInfo.compatibleVersion).assertEqual(5)
                 expect(dataInfo.targetVersion).assertEqual(5)
                 expect(dataInfo.isCompressNativeLibs).assertEqual(false)
-                for (var s = 0; s < dataInfo.hapModuleInfos; s++) {
+                for (let s = 0; s < dataInfo.hapModuleInfos; s++) {
                     expect(dataInfo.moduleInfos[s].name).assertEqual("com.example.myapplication1")
                     expect(dataInfo.moduleInfos[s].moduleName).assertEqual("entry")
                 }
@@ -2532,7 +2532,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(dataInfo.isSilentInstallation.length).assertEqual(0)
                 expect(dataInfo.minCompatibleVersionCode).assertEqual(0)
                 expect(dataInfo.entryInstallationFree).assertEqual(false)
-                for (var j = 0; j < dataInfo.appInfo.moduleInfos; j++) {
+                for (let j = 0; j < dataInfo.appInfo.moduleInfos; j++) {
                     expect(dataInfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry")
                     expect(dataInfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1)
                 }
@@ -2655,7 +2655,7 @@ describe('ActsBundleManagerTest', function () {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + BMSJSTEST1], installParam, async (err, data) => {
             expect(data.statusMessage).assertEqual("SUCCESS")
-            var datainfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+            let datainfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             console.info("getBundleInfo result" + JSON.stringify(datainfo))
             expect(datainfo.name).assertEqual(NAME1);
             installData.uninstall(NAME1, installParam, async (err, data) => {
@@ -2675,7 +2675,7 @@ describe('ActsBundleManagerTest', function () {
     it('install_0200', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + BMSJSTEST2], installParam, async (err, data) => {
-            var datainfo = await demo.getBundleInfo(NAME2, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+            let datainfo = await demo.getBundleInfo(NAME2, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo.name).assertEqual(NAME2);
             installData.uninstall(NAME2, installParam, (err, data) => {
                 expect(err.code).assertEqual(0);
@@ -2803,7 +2803,7 @@ describe('ActsBundleManagerTest', function () {
         async function OnReceiveInstallEvent(err, data) {
             expect(typeof data).assertEqual(OBJECT);
             expect(data.statusMessage).assertEqual(SUCCESS);
-            var datainfo1 = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+            let datainfo1 = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo1.name).assertEqual(NAME1);
             installData.uninstall(NAME1, installParam, async (err, data) => {
                 expect(err.code).assertEqual(0);
@@ -2853,7 +2853,7 @@ describe('ActsBundleManagerTest', function () {
             getInfo();
         });
         async function getInfo() {
-            var datainfo = await demo.getBundleInfo(THIRD1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+            let datainfo = await demo.getBundleInfo(THIRD1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo.name).assertEqual(THIRD1);
             expect(datainfo.versionCode).assertEqual(VERSIONCODE1);
             expect(datainfo.versionName).assertLarger(0);
@@ -2865,7 +2865,7 @@ describe('ActsBundleManagerTest', function () {
             });
         }
         async function getInfo1() {
-            var datainfo = await demo.getBundleInfo(THIRD1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+            let datainfo = await demo.getBundleInfo(THIRD1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo.name).assertEqual(THIRD1);
             expect(datainfo.versionCode).assertEqual(VERSIONCODE2);
             expect(datainfo.versionName).assertLarger(0);
@@ -2892,7 +2892,7 @@ describe('ActsBundleManagerTest', function () {
         }, async (err, data) => {
             expect(typeof data).assertEqual(OBJECT);
             expect(data.statusMessage).assertEqual(SUCCESS);
-            var datainfo = await demo.getBundleInfo(THIRD1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+            let datainfo = await demo.getBundleInfo(THIRD1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo.versionCode).assertEqual(VERSIONCODE2);
             expect(datainfo.versionName).assertLarger(0);
             installData.install([PATH + BMSJSTEST8], {
@@ -2904,7 +2904,7 @@ describe('ActsBundleManagerTest', function () {
         async function OnReceiveinstallEvent(err, data) {
             expect(typeof data).assertEqual(OBJECT);
             expect(data.statusMessage).assertEqual('STATUS_INSTALL_FAILURE_INCOMPATIBLE');
-            var datainfo = await demo.getBundleInfo(THIRD1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+            let datainfo = await demo.getBundleInfo(THIRD1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
             expect(datainfo.versionCode).assertEqual(VERSIONCODE2);
             expect(datainfo.versionName).assertLarger(0);
             installData.uninstall(THIRD1, {

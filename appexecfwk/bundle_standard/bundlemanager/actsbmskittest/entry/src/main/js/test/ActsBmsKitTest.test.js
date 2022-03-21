@@ -22,13 +22,13 @@ const STRESSLEVEL = 20;
 const BUNDLE_NAME = 'com.example.actsbmskittest';
 const PERMISSION_NAME = 'ohos.permission.GET_BUNDLE_INFO_PRIVILEGED';
 const START_ABILITY_TIMEOUT = 3000;
-var subscriberInfo_0100 = {
+let subscriberInfo_0100 = {
     events: ['ACTS_Third1_Publish_CommonEvent'],
 };
 describe('ActsBmsKitTest', function () {
 
     beforeAll(async (done) => {
-        var subscriber;
+        let subscriber;
         let id;
         function subscribeCallBack(err, data) {
             clearTimeout(id);
@@ -71,12 +71,12 @@ describe('ActsBmsKitTest', function () {
     */
     it('ActsBmsKit_getModuleUsageRecordTest_0100', 0, async function (done) {
         console.debug('=====================ActsBmsKit_getModuleUsageRecordTest_0100==================');
-        var bundleName = 'com.example.third1';
+        let bundleName = 'com.example.third1';
         for (let count = 0; count < STRESSLEVEL; count++) {
             console.debug("===========STRESSLEVEL===============" + count)
             let records = await bundle.getModuleUsageRecords(50);
             checkModuleUsageRecord(records, 'ActsBmsKit_getModuleUsageRecordTest_0100');
-            var result = checkIsExist(records, bundleName);
+            let result = checkIsExist(records, bundleName);
             expect(result).assertEqual(true);
             if (!result) {
                 break;
@@ -92,18 +92,18 @@ describe('ActsBmsKitTest', function () {
     */
     it('ActsBmsKit_getModuleUsageRecordTest_0200', 0, async function (done) {
         console.debug('=====================ActsBmsKit_getModuleUsageRecordTest_0200==================');
-        var bundleName = 'com.example.third1';
+        let bundleName = 'com.example.third1';
         let count = 0;
         let flag = true;
         for (let i = 0; i < STRESSLEVEL; i++) {
             bundle.getModuleUsageRecords(50, (err, data) => {
                 expect(err.code).assertEqual(0);
                 checkModuleUsageRecord(data, 'ActsBmsKit_getModuleUsageRecordTest_0200');
-                var result = checkIsExist(data, bundleName);
+                let result = checkIsExist(data, bundleName);
                 expect(result).assertEqual(true);
                 if (count == STRESSLEVEL - 1) {
                     done();
-                } else if (err.code != 0) {
+                } else if (err.code) {
                     console.log('call function level is: ' + count);
                     expect().assertFail();
                     flag = false;
@@ -179,9 +179,9 @@ describe('ActsBmsKitTest', function () {
         expect(typeof dataInfo.hostAbility).assertEqual('string');
         console.info('=============label==============' + JSON.stringify(dataInfo.label));
         expect(typeof dataInfo.wants).assertEqual('object');
-        if (typeof dataInfo.wants != 'undefined' && Object.keys(dataInfo.wants).length != 0) {
+        if (typeof dataInfo.wants != 'undefined' && Object.keys(dataInfo.wants).length) {
             expect(dataInfo.wants.length).assertLarger(0);
-            for (var j = 0; j < dataInfo.wants.length; j++) {
+            for (let j = 0; j < dataInfo.wants.length; j++) {
                 console.info('========targetClass=========' + JSON.stringify(dataInfo.wants[j].targetClass));
                 expect(dataInfo.wants[j].targetClass).assertEqual('com.example.' + name + '.MainAbility');
                 console.info('========targetBundle=========' + JSON.stringify(dataInfo.wants[j].targetBundle));
@@ -192,7 +192,7 @@ describe('ActsBmsKitTest', function () {
 
     function checkShortcutIsExist(dataInfo, shortcutId, testName) {
         let info = new Map();
-        for (var i = 0, len = dataInfo.length; i < len; i++) {
+        for (let i = 0, len = dataInfo.length; i < len; i++) {
             expect(typeof dataInfo[i]).assertEqual('object');
             info.set(dataInfo[i].id, dataInfo[i]);
         }

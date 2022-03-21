@@ -86,7 +86,7 @@ describe('ActsBmsFormsInfoTest', function () {
     */
     it('bms_getFormsInfo_0100', 0, async function (done) {
         console.info('==============bms_getFormsInfo_0100============');
-        var data = await bundle.getFormsInfo('');
+        let data = await bundle.getFormsInfo('');
         expect(data.length).assertEqual(0);
         done();
     })
@@ -123,7 +123,7 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
-            var formsInfo = await bundle.getFormsInfo(BUNDLE_NAME2);
+            let formsInfo = await bundle.getFormsInfo(BUNDLE_NAME2);
             expect(formsInfo.length).assertEqual(0);
             installer.uninstall(BUNDLE_NAME2, {
                 userId: 100,
@@ -191,7 +191,7 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
-            var formsInfo = await bundle.getFormsInfo(BUNDLE_NAME1);
+            let formsInfo = await bundle.getFormsInfo(BUNDLE_NAME1);
             expect(formsInfo.length).assertEqual(2);
             checkFormIsExist('Form_JS1', formsInfo, '1');
             checkFormIsExist('Form_JS3', formsInfo, '3')
@@ -351,7 +351,7 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
-            var formsInfo = await bundle.getFormsInfo(BUNDLE_NAME4);
+            let formsInfo = await bundle.getFormsInfo(BUNDLE_NAME4);
             expect(formsInfo.length).assertEqual(2);
             checkFormByName(formsInfo[0], '4A');
             checkFormByName(formsInfo[1], '4B');
@@ -424,7 +424,7 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
-            var formsInfo = await bundle.getFormsInfo(BUNDLE_NAME5);
+            let formsInfo = await bundle.getFormsInfo(BUNDLE_NAME5);
             expect(formsInfo.length).assertEqual(2);
             checkFormIsExist('Form_JS5A', formsInfo, '5A');
             checkFormIsExist('Form_JS5B', formsInfo, '5B');
@@ -486,7 +486,7 @@ describe('ActsBmsFormsInfoTest', function () {
     */
     it('bms_getFormsInfo_1300', 0, async function (done) {
         console.info('==============bms_getFormsInfo_1300============');
-        var data = await bundle.getFormsInfo('com.example.vendor1');
+        let data = await bundle.getFormsInfo('com.example.vendor1');
         expect(data.length).assertEqual(2);
         checkFormIsExist('Form_JS1V', data, '1V', false, true);
         checkFormIsExist('Form_JS1V2', data, '1V2');
@@ -543,7 +543,7 @@ describe('ActsBmsFormsInfoTest', function () {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
-                var formsInfo = await bundle.getFormsInfo(BUNDLE_NAME4);
+                let formsInfo = await bundle.getFormsInfo(BUNDLE_NAME4);
                 expect(formsInfo.length).assertEqual(0);
                 done();
             });
@@ -603,7 +603,7 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
-            var formsInfo = await bundle.getFormsInfoByModule(BUNDLE_NAME1, 'entry');
+            let formsInfo = await bundle.getFormsInfoByModule(BUNDLE_NAME1, 'entry');
             expect(formsInfo.length).assertEqual(1);
             checkFormIsExist('Form_JS1', formsInfo, '1');
             installer.uninstall(BUNDLE_NAME1, {
@@ -809,7 +809,7 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
-            var formsInfo = await bundle.getFormsInfoByModule(BUNDLE_NAME1, 'bmsThirdBundle3');
+            let formsInfo = await bundle.getFormsInfoByModule(BUNDLE_NAME1, 'bmsThirdBundle3');
             expect(formsInfo.length).assertEqual(1);
             checkFormIsExist('Form_JS3', formsInfo, '3')
             installer.uninstall(BUNDLE_NAME1, {
@@ -879,7 +879,7 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
-            var formsInfo = await bundle.getFormsInfoByModule(BUNDLE_NAME4, 'entry');
+            let formsInfo = await bundle.getFormsInfoByModule(BUNDLE_NAME4, 'entry');
             expect(formsInfo.length).assertEqual(2);
             checkFormIsExist('Form_JS4A', formsInfo, '4A');
             checkFormIsExist('Form_JS4B', formsInfo, '4B');
@@ -952,7 +952,7 @@ describe('ActsBmsFormsInfoTest', function () {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual('SUCCESS');
-            var formsInfo = await bundle.getFormsInfoByModule(BUNDLE_NAME5, 'entry');
+            let formsInfo = await bundle.getFormsInfoByModule(BUNDLE_NAME5, 'entry');
             expect(formsInfo.length).assertEqual(2);
             checkFormIsExist('Form_JS5A', formsInfo, '5A');
             checkFormIsExist('Form_JS5B', formsInfo, '5B');
@@ -1014,7 +1014,7 @@ describe('ActsBmsFormsInfoTest', function () {
     */
     it('bms_getFormsInfoByModule_1300', 0, async function (done) {
         console.info('==============bms_getFormsInfoByModule_1300============');
-        var data = await bundle.getFormsInfoByModule('com.example.vendor1', 'entry');
+        let data = await bundle.getFormsInfoByModule('com.example.vendor1', 'entry');
         expect(data.length).assertEqual(2);
         checkFormIsExist('Form_JS1V', data, '1V', false, true);
         checkFormIsExist('Form_JS1V2', data, '1V2');
@@ -1071,7 +1071,7 @@ describe('ActsBmsFormsInfoTest', function () {
                 expect(err.code).assertEqual(0);
                 expect(data.status).assertEqual(0);
                 expect(data.statusMessage).assertEqual('SUCCESS');
-                var formsInfo = await bundle.getFormsInfoByModule(BUNDLE_NAME5, 'entry');
+                let formsInfo = await bundle.getFormsInfoByModule(BUNDLE_NAME5, 'entry');
                 expect(formsInfo.length).assertEqual(0);
                 done();
             });
@@ -1222,7 +1222,7 @@ describe('ActsBmsFormsInfoTest', function () {
 
     function checkFormNoExist(dataInfo, formName) {
         let info = new Map();
-        for (var i = 0, len = dataInfo.length; i < len; i++) {
+        for (let i = 0, len = dataInfo.length; i < len; i++) {
             info.set(dataInfo[i].name, 0)
         }
         expect(info.has(formName)).assertFalse();
@@ -1254,7 +1254,7 @@ describe('ActsBmsFormsInfoTest', function () {
         expect(typeof dataInfo.relatedBundleName).assertEqual('string');
         console.debug('====dataInfo.scheduledUpdateTime====' + dataInfo.scheduledUpdateTime)
         expect(typeof dataInfo.customizeDatas).assertEqual('object');
-        for (var j = 0, len = dataInfo.customizeDatas.length; j < len; j++) {
+        for (let j = 0, len = dataInfo.customizeDatas.length; j < len; j++) {
             console.info('======customizeDatasName======' + JSON.stringify(dataInfo.customizeDatas[j].name));
             expect(dataInfo.customizeDatas[j].name).assertEqual('originWidgetName' + name);
             expect(typeof dataInfo.customizeDatas[j].name).assertEqual('string');

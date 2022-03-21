@@ -35,7 +35,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
      */
     it('bms_JsInstallPermissionTest_0100', 0, async function (done) {
         console.info('bms_JsInstallPermissionTest start');
-        var bundlePath = ['/data/test/bmsJstest1.hap'];
+        let bundlePath = ['/data/test/bmsJstest1.hap'];
         let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
             userId: 100,
@@ -57,7 +57,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
      */
     it('bms_JsUnInstallPermissionTest_0100', 0, async function (done) {
         console.info('bms_JsUnInstallPermissionTest start');
-        var bundleName = 'com.example.myapplication1';
+        let bundleName = 'com.example.myapplication1';
         let installer = await bundle.getBundleInstaller();
         installer.uninstall(bundleName, {
             userId: 100,
