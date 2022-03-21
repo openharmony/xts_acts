@@ -726,4 +726,3 @@ describe('fileTestPromise.test.js', function () {
 
     // -------------------------------  file type end -----------------------------
 });
-

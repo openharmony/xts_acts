@@ -52,9 +52,9 @@ let filesfetchOp = {
     selectionArgs: [fileType.toString()],
 };
 
-let imageAndAudiofetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ',
-    selectionArgs: [imageType.toString(), audioType.toString()],
+let imageAndVideofetchOp = {
+    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: [imageType.toString(), videoType.toString()],
 };
 let imageAndVideoAndfilefetchOp = {
     selections:
@@ -96,7 +96,7 @@ async function copyFile(fd1, fd2) {
     await fileio.write(fd2, buf);
 }
 
-describe('GET_ALBUM.test.js', function () {
+describe('mediaLibraryTestPromise.test.js', function () {
     const context = featureAbility.getContext();
     const media = mediaLibrary.getMediaLibrary(context);
 
@@ -130,8 +130,6 @@ describe('GET_ALBUM.test.js', function () {
         }
     });
 
-    
-    
     /**
      * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_001
      * @tc.name      : getFileAssets
@@ -222,7 +220,7 @@ describe('GET_ALBUM.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_005', 0, async function (done) {
         try {
-            const fetchFileResult = await media.getFileAssets(imageAndAudiofetchOp);
+            const fetchFileResult = await media.getFileAssets(imageAndVideofetchOp);
             expect(fetchFileResult != undefined).assertTrue();
             done();
         } catch (error) {
@@ -469,7 +467,7 @@ describe('GET_ALBUM.test.js', function () {
 
             const dicResult = await media.getPublicDirectory(DIR_AUDIO);
 
-            expect(dicResult == 'Music/').assertTrue();
+            expect(dicResult == 'Audios/').assertTrue();
             done();
         } catch (error) {
             console.info(`MediaLibraryTest : getPublicDirectory 004 failed, error: ${error}`);
@@ -831,4 +829,34 @@ describe('GET_ALBUM.test.js', function () {
         }
     });
 
+      /**
+     * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_001
+     * @tc.name      : createAsset
+     * @tc.desc      : Create File Asset image (does not exist)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+       it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_009', 0, async function (done) {
+        try {
+            const path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE);
+            const filePath = path  + "image/";
+            const fileAssets = await media.getFileAssets(videosfetchOp);
+            const dataList = await fileAssets.getAllObject();
+            const asset1 = dataList[0];
+            const creatAsset1 = await media.createAsset(imageType, jpgName, filePath);
+            const fd1 = await asset1.open('rw');
+            const creatAssetFd1 = await creatAsset1.open('rw');
+            await copyFile(fd1, creatAssetFd1);
+            await creatAsset1.close(creatAssetFd1);
+            await asset1.close(fd1);
+            console.info('MediaLibraryTest : createAsset 009 passed');
+            expect(true).assertTrue();
+            done();
+        } catch (error) {
+            console.info(`MediaLibraryTest : createAsset 009 failed, error: ${error}`);
+            expect(false).assertTrue();
+            done();
+        }
+    });
 });

@@ -26,7 +26,10 @@ let allTypefetchOp = {
     selections: '',
     selectionArgs: [],
 };
-
+let albumCoverUrifetchOp = {
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.ALBUM_NAME + '= ?',
+    selectionArgs: ['pictures/','weixin'],
+};
 let imageAlbumfetchOp = {
     selections: fileKeyObj.MEDIA_TYPE + '= ?',
     selectionArgs: [imageType.toString()],
@@ -75,7 +78,7 @@ function checkAlbumAttr(done, album) {
     }
 }
 
-describe('album.promise.test.js', async function () {
+describe('albumTestPromise.test.js', async function () {
     var context = featureAbility.getContext();
     var media = mediaLibrary.getMediaLibrary(context);
     beforeAll(function () {});
@@ -392,9 +395,7 @@ describe('album.promise.test.js', async function () {
         };
         try {
             const albumList = await media.getAlbums(fileHasArgsfetchOp3);
-            console.info(
-                'SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_06 length:' + albumList.length
-            );
+            console.info('GETALBUMASSETS_PROMISE_002_06 length:' + albumList.length);
             expect(albumList.length == 0).assertTrue();
             done();
         } catch (error) {
@@ -419,9 +420,7 @@ describe('album.promise.test.js', async function () {
         };
         try {
             const albumList = await media.getAlbums(fileHasArgsfetchOp4);
-            console.info(
-                'SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_07 length:' + albumList.length
-            );
+            console.info('GETALBUMASSETS_PROMISE_002_07 length:' + albumList.length);
             expect(albumList.length == 0).assertTrue();
             done();
         } catch (error) {
@@ -447,9 +446,7 @@ describe('album.promise.test.js', async function () {
 
         try {
             const albumList = await media.getAlbums(fileHasArgsfetchOp5);
-            console.info(
-                'SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_08 length:' + albumList.length
-            );
+            console.info('GETALBUMASSETS_PROMISE_002_08 length:' + albumList.length);
             expect(albumList.length == 0).assertTrue();
             done();
         } catch (error) {
@@ -671,14 +668,28 @@ describe('album.promise.test.js', async function () {
      */
     it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_004_01', 0, async function (done) {
         try {
-            const albumList = await media.getAlbums(allTypefetchOp);
+            let coverUrifetchOp = {
+                selections: '',
+                selectionArgs: [],
+                order: 'date_added DESC LIMIT 0,1',
+            };
+            const albumList = await media.getAlbums(albumCoverUrifetchOp);
             const album = albumList[0];
-            const fetchFileResult = await album.getFileAssets(allTypefetchOp);
+            console.info('PROMISE getAlbum 004_01 album name = ' + album.albumName);
+            console.info('PROMISE getAlbum 004_01 album id = ' + album.albumId);
+            const fetchFileResult = await album.getFileAssets(coverUrifetchOp);
             const asset = await fetchFileResult.getFirstObject();
-            expect(asset.uri == album.coverUri).assertTrue();
-            done();
+            if (asset == undefined) {
+                expect(false).assertTrue();
+                done();
+            } else {
+                console.info('PROMISE getAlbum 004_01 coveruri = ' + album.coverUri);
+                console.info('PROMISE getAlbum 004_01 asset.uri = ' + asset.uri);
+                expect(asset.uri == album.coverUri).assertTrue();
+                done();
+            }
         } catch (error) {
-            console.info('ALBUM_PROMISE getAlbum 004_01 failed, message = ' + error);
+            console.info('PROMISE getAlbum 004_01 failed, message = ' + error);
             expect(false).assertTrue();
             done();
         }
