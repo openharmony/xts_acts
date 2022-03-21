@@ -13,4 +13,5 @@
  * limitations under the License.
  */
 require('./battery_unit.test.js')
+require('./battery_common_event.test.js')
 require('./power_manager_running_lock.test.js')
