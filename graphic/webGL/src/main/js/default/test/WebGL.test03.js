@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import app from '@system.app'
-import webgl from "@ohos.webglnapi";
 import Context from '@ohos.napi_context'
 
 import {
@@ -812,25 +811,6 @@ describe('webgl1Test', function() {
 		expect(isBuffer).assertEqual(false);
 		done();
 	});
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0233
-	 * @tc.name testGetVertexAttribOffset
-	 * @tc.desc Test getVertexAttribOffset.
-	 */
-	it('testGetVertexAttribOffset', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL getVertexAttribOffset test start ...' + JSON.stringify(gl));
-		gl.vertexAttrib1f(0, 2.8);
-		const index = gl.getVertexAttribOffset(0, gl.VERTEX_ATTRIB_ARRAY_POINTER);
-		console.info("getVertexAttribOffset: index" + index);
-
-		const errorCode = gl.getError();
-		console.info("jsWebGL getFramebufferAttachmentParameter errorCode: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_VALUE);
-		done();
-	});
-
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0234
