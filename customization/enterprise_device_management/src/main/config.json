@@ -56,6 +56,10 @@
       {
         "name":"ohos.permission.EDM_MANAGE_DATETIME",
         "reason":"need use EDM_MANAGE_DATETIME"
+      },
+      {
+        "name":"ohos.permission.MANAGE_ADMIN",
+        "reason":"need use MANAGE_ADMIN"
       }
     ],
     "js": [
