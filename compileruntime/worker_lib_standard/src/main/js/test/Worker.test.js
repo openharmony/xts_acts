@@ -36,32 +36,32 @@ describe('workerTest', function () {
 
     // check worker constructor is ok
     it('worker_constructor_test_001', 0, function () {
-        var ss = new worker.Worker("workers/worker.js")
+        let ss = new worker.Worker("workers/worker.js")
         expect(ss != null).assertTrue()
     })
 
     it('worker_constructor_test_002', 0, function () {
-        var ss = new worker.Worker("workers/worker.js",{name:"second worker",shared:"False"})
+        let ss = new worker.Worker("workers/worker.js",{name:"second worker",shared:"False"})
         expect(ss != null).assertTrue()
     })
 
     it('worker_constructor_test_003', 0, function () {
-        var ss = new worker.Worker("workers/worker.js",{type:"classic",name:"second worker",shared:"false"})
+        let ss = new worker.Worker("workers/worker.js",{type:"classic",name:"second worker",shared:"false"})
         expect(ss != null).assertTrue()
     })
 
     it('worker_constructor_test_004', 0, function () {
-        var ss = new worker.Worker("workers/worker.js",{type:"classic",name:"third worker",shared:"true"})
+        let ss = new worker.Worker("workers/worker.js",{type:"classic",name:"third worker",shared:"true"})
         expect(ss != null).assertTrue()
     })
 
     // check postMessage is ok
     // main post "hello world", will receive "hello world worker"
     it('worker_postMessage_test_001', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_002.js");
+        let ss = new worker.Worker("workers/worker_002.js");
 
-        var res = undefined
-        var flag = false
+        let res = undefined
+        let flag = false
 
         ss.onmessage = function (e) {
             res = e.data;
@@ -79,10 +79,10 @@ describe('workerTest', function () {
     // check postMessage is ok
     // main post 12 , will receive 12 * 2 + 1
     it('worker_postMessage_test_002', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_003.js");
+        let ss = new worker.Worker("workers/worker_003.js");
 
-        var res = undefined
-        var flag = false
+        let res = undefined
+        let flag = false
 
         ss.onmessage = function (e) {
             res = e.data;
@@ -100,10 +100,10 @@ describe('workerTest', function () {
     // check postMessage is ok
     // main post {message:"hello world"} , will receive {message:"hello world worker"}
     it('worker_postMessage_test_003', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_004.js");
+        let ss = new worker.Worker("workers/worker_004.js");
 
-        var res = undefined
-        var flag = false
+        let res = undefined
+        let flag = false
 
         ss.onmessage = function (e) {
             res = e.data.message;
@@ -120,10 +120,10 @@ describe('workerTest', function () {
 
     // check worker name is ok
     it('worker_postMessage_test_004', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_005.js", {name: "zhangsan"});
+        let ss = new worker.Worker("workers/worker_005.js", {name: "zhangsan"});
 
-        var res = undefined
-        var flag = false
+        let res = undefined
+        let flag = false
 
         ss.onmessage = function (e) {
             res = e.data;
@@ -140,13 +140,13 @@ describe('workerTest', function () {
 
     // check worker transfer buffer is ok
     it('worker_postMessage_test_005', 0, function () {
-        var ss = new worker.Worker("workers/worker_006.js");
+        let ss = new worker.Worker("workers/worker_006.js");
 
         const buffer = new ArrayBuffer(8)
         expect(buffer.byteLength).assertEqual(8)
         ss.postMessage(buffer, [buffer])
-        var length = undefined;
-        var exception = undefined;
+        let length = undefined;
+        let exception = undefined;
         try {
             length = buffer.byteLength;
         } catch (e) {
@@ -165,10 +165,10 @@ describe('workerTest', function () {
 
     // check worker handle error is ok
     it('worker_postMessage_test_006', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_007.js");
+        let ss = new worker.Worker("workers/worker_007.js");
 
-        var res = undefined
-        var flag = false
+        let res = undefined
+        let flag = false
 
         ss.onerror = function (e) {
             res = e.message;
@@ -185,9 +185,9 @@ describe('workerTest', function () {
 
     // check worker terminate is ok
     it('worker_terminate_test_001', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker.js");
-        var res = 0
-        var flag = false
+        let ss = new worker.Worker("workers/worker.js");
+        let res = 0
+        let flag = false
 
         ss.onexit = function () {
             flag = true
@@ -203,9 +203,9 @@ describe('workerTest', function () {
 
     // check worker terminate is ok
     it('worker_terminate_test_002', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker.js");
-        var res = 0
-        var flag = false
+        let ss = new worker.Worker("workers/worker.js");
+        let res = 0
+        let flag = false
 
         ss.onexit = function () {
             flag = true
@@ -225,9 +225,9 @@ describe('workerTest', function () {
 
     // check worker terminate is ok
     it('worker_terminate_test_003', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker.js");
-        var res = 0
-        var flag = false
+        let ss = new worker.Worker("workers/worker.js");
+        let res = 0
+        let flag = false
 
         ss.onexit = function () {
             flag = true
@@ -252,9 +252,9 @@ describe('workerTest', function () {
 
     // check worker on function is ok
     it('worker_on_test_001', 0, function () {
-        var ss = new worker.Worker("workers/worker.js");
+        let ss = new worker.Worker("workers/worker.js");
 
-        var times = 0;
+        let times = 0;
         ss.on("zhangsan", ()=>{
             times++;
         })
@@ -266,9 +266,9 @@ describe('workerTest', function () {
 
     // check worker on function is ok
     it('worker_on_test_002', 0, function () {
-        var ss = new worker.Worker("workers/worker.js");
+        let ss = new worker.Worker("workers/worker.js");
 
-        var times = 0;
+        let times = 0;
         ss.on("zhangsan", ()=>{
             times--;
         })
@@ -285,14 +285,14 @@ describe('workerTest', function () {
 
     // check worker on function is ok
     it('worker_on_test_003', 0, function () {
-        var ss = new worker.Worker("workers/worker.js");
+        let ss = new worker.Worker("workers/worker.js");
 
-        var times = 0;
+        let times = 0;
         ss.on("zhangsan", ()=>{
             times++;
         })
 
-        for (var i=0;i<10;i++)
+        for (let i=0;i<10;i++)
         {
             ss.dispatchEvent({type: "zhangsan"})
         }
@@ -302,9 +302,9 @@ describe('workerTest', function () {
 
     // check worker once function is ok
     it('worker_once_test_001', 0, function () {
-        var ss = new worker.Worker("workers/worker.js");
+        let ss = new worker.Worker("workers/worker.js");
 
-        var times = 0;
+        let times = 0;
         ss.once("zhangsan", ()=>{
             times++;
         })
@@ -314,14 +314,14 @@ describe('workerTest', function () {
 
     // check worker once function is ok
     it('worker_once_test_002', 0, function () {
-        var ss = new worker.Worker("workers/worker.js");
+        let ss = new worker.Worker("workers/worker.js");
 
-        var times = 0;
+        let times = 0;
         ss.once("zhangsan", ()=>{
             times++;
         })
 
-        for (var i=0;i<10;i++)
+        for (let i=0;i<10;i++)
         {
             ss.dispatchEvent({type: "zhangsan"})
         }
@@ -330,9 +330,9 @@ describe('workerTest', function () {
     })
 
     it('worker_once_test_003', 0, function () {
-        var ss = new worker.Worker("workers/worker.js");
+        let ss = new worker.Worker("workers/worker.js");
 
-        var times = 0;
+        let times = 0;
         ss.once("zhangsan", ()=>{
             times--;
         })
@@ -349,9 +349,9 @@ describe('workerTest', function () {
 
     // check worker addEventListener function is ok
     it('worker_addEventListener_test_001', 0, function () {
-        var ss = new worker.Worker("workers/worker.js");
+        let ss = new worker.Worker("workers/worker.js");
 
-        var times = 0;
+        let times = 0;
         ss.addEventListener("zhangsan", ()=>{
             times++;
         })
@@ -364,9 +364,9 @@ describe('workerTest', function () {
 
     // check worker addEventListener function is ok
     it('worker_addEventListener_test_002', 0, function () {
-        var ss = new worker.Worker("workers/worker.js");
+        let ss = new worker.Worker("workers/worker.js");
 
-        var times = 0;
+        let times = 0;
         ss.addEventListener("zhangsan", ()=>{
             times++;
         })
@@ -383,14 +383,14 @@ describe('workerTest', function () {
 
     // check worker addEventListener function is ok
     it('worker_addEventListener_test_003', 0, function () {
-        var ss = new worker.Worker("workers/worker.js");
+        let ss = new worker.Worker("workers/worker.js");
 
-        var times = 0;
+        let times = 0;
         ss.addEventListener("zhangsan", ()=>{
             times++;
         })
 
-        for (var i=0;i<10;i++)
+        for (let i=0;i<10;i++)
         {
             ss.dispatchEvent({type: "zhangsan"})
         }
@@ -400,9 +400,9 @@ describe('workerTest', function () {
 
     // check worker off function is ok
     it('worker_off_test_001', 0, function () {
-        var ss = new worker.Worker("workers/worker.js");
+        let ss = new worker.Worker("workers/worker.js");
 
-        var zhangsan_times = 0;
+        let zhangsan_times = 0;
         ss.on("zhangsan", ()=>{
             zhangsan_times++;
         })
@@ -419,9 +419,9 @@ describe('workerTest', function () {
 
     // check worker off function is ok
     it('worker_off_test_002', 0, function () {
-        var ss = new worker.Worker("workers/worker.js");
+        let ss = new worker.Worker("workers/worker.js");
 
-        var zhangsan_times = 0;
+        let zhangsan_times = 0;
         ss.on("zhangsan", ()=>{
             zhangsan_times++;
         })
@@ -430,7 +430,7 @@ describe('workerTest', function () {
         ss.dispatchEvent({type: "zhangsan"})
         expect(zhangsan_times).assertEqual(2)
 
-        for (var i=0;i<3;i++)
+        for (let i=0;i<3;i++)
         {
             ss.off("zhangsan")
         }
@@ -441,9 +441,9 @@ describe('workerTest', function () {
 
     // check worker removeEventListener function is ok
     it('worker_removeListener_test_001', 0, function () {
-        var ss = new worker.Worker("workers/worker.js");
+        let ss = new worker.Worker("workers/worker.js");
 
-        var zhangsan_times = 0;
+        let zhangsan_times = 0;
         ss.addEventListener("zhangsan", ()=>{
             zhangsan_times++;
         })
@@ -460,9 +460,9 @@ describe('workerTest', function () {
 
     // check worker removeEventListener function is ok
     it('worker_removeListener_test_002', 0, function () {
-        var ss = new worker.Worker("workers/worker.js");
+        let ss = new worker.Worker("workers/worker.js");
 
-        var zhangsan_times = 0;
+        let zhangsan_times = 0;
         ss.addEventListener("zhangsan", ()=>{
             zhangsan_times++;
         })
@@ -471,7 +471,7 @@ describe('workerTest', function () {
         ss.dispatchEvent({type: "zhangsan"})
         expect(zhangsan_times).assertEqual(2)
 
-        for (var i=0;i<3;i++)
+        for (let i=0;i<3;i++)
         {
             ss.removeEventListener("zhangsan")
         }
@@ -483,14 +483,14 @@ describe('workerTest', function () {
 
     // check worker removeAllListener function is ok
     it('worker_removeListener_test_003', 0, function () {
-        var ss = new worker.Worker("workers/worker.js");
+        let ss = new worker.Worker("workers/worker.js");
 
-        var zhangsan_times = 0;
+        let zhangsan_times = 0;
         ss.addEventListener("zhangsan", ()=>{
             zhangsan_times++;
         })
 
-        var lisi_times = 0;
+        let lisi_times = 0;
         ss.addEventListener("lisi", ()=>{
             lisi_times++;
         })
@@ -515,9 +515,9 @@ describe('workerTest', function () {
 
     // check parentPort.close is ok
     it('worker_parentPortClose_test_001', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_008.js");
-        var res = 0
-        var flag = false;
+        let ss = new worker.Worker("workers/worker_008.js");
+        let res = 0
+        let flag = false;
 
         ss.onexit = function (e) {
             res++;
@@ -534,9 +534,9 @@ describe('workerTest', function () {
 
     // check parentPort.close is ok
     it('worker_parentPortClose_test_002', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_008.js");
-        var res = 0
-        var flag = false;
+        let ss = new worker.Worker("workers/worker_008.js");
+        let res = 0
+        let flag = false;
 
         ss.onexit = function () {
             flag = true
@@ -559,9 +559,9 @@ describe('workerTest', function () {
 
     // check onmessageerror is ok
     it('worker_onmessageerror_test_001', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_008.js");
-        var res = 0
-        var flag = false;
+        let ss = new worker.Worker("workers/worker_008.js");
+        let res = 0
+        let flag = false;
 
         ss.onexit = function () {
             flag = true
@@ -581,9 +581,9 @@ describe('workerTest', function () {
 
     // check onmessageerror is ok
     it('worker_onmessageerror_test_002', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_008.js");
-        var res = 0
-        var flag = false;
+        let ss = new worker.Worker("workers/worker_008.js");
+        let res = 0
+        let flag = false;
 
         ss.onmessageerror = function (e) {
             flag = true;
@@ -601,9 +601,9 @@ describe('workerTest', function () {
 
     // check new second worker is ok
     it('worker_new_second_worker_test_001', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_009.js");
-        var flag = false;
-        var res = undefined;
+        let ss = new worker.Worker("workers/worker_009.js");
+        let flag = false;
+        let res = undefined;
 
         ss.onmessage = function (e) {
             flag = true;
@@ -622,9 +622,9 @@ describe('workerTest', function () {
 
     // check new third worker is ok
     it('worker_new_second_worker_test_002', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_012.js");
-        var flag = false;
-        var res = undefined;
+        let ss = new worker.Worker("workers/worker_012.js");
+        let flag = false;
+        let res = undefined;
 
         ss.onmessage = function (e) {
             flag = true;
@@ -647,9 +647,9 @@ describe('workerTest', function () {
 
     // check second worker postMessage number is ok
     it('worker_second_worker_postMessage_test_001', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_010.js");
-        var flag = false;
-        var res = undefined;
+        let ss = new worker.Worker("workers/worker_010.js");
+        let flag = false;
+        let res = undefined;
 
         ss.onmessage = function (e) {
             flag = true;
@@ -672,9 +672,9 @@ describe('workerTest', function () {
 
     // check second worker postMessage string is ok
     it('worker_second_worker_postMessage_test_002', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_013.js");
-        var flag = false;
-        var res = undefined;
+        let ss = new worker.Worker("workers/worker_013.js");
+        let flag = false;
+        let res = undefined;
 
         ss.onmessage = function (e) {
             flag = true;
@@ -697,9 +697,9 @@ describe('workerTest', function () {
 
     // check second worker postMessage array is ok
     it('worker_second_worker_postMessage_test_003', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_014.js");
-        var flag = false;
-        var res = undefined;
+        let ss = new worker.Worker("workers/worker_014.js");
+        let flag = false;
+        let res = undefined;
 
         ss.onmessage = function (e) {
             flag = true;
@@ -723,9 +723,9 @@ describe('workerTest', function () {
 
     // check third worker postMessage is ok
     it('worker_second_worker_postMessage_test_004', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_015.js");
-        var flag = false;
-        var res = undefined;
+        let ss = new worker.Worker("workers/worker_015.js");
+        let flag = false;
+        let res = undefined;
 
         ss.onmessage = function (e) {
             flag = true;
@@ -748,9 +748,9 @@ describe('workerTest', function () {
 
     // check second worker terminate is ok
     it('worker_second_worker_terminate_test_001', 0, async function (done) {
-        var ss = new worker.Worker("workers/worker_011.js");
-        var flag = false;
-        var res = undefined;
+        let ss = new worker.Worker("workers/worker_011.js");
+        let flag = false;
+        let res = undefined;
 
         ss.onmessage = function (e) {
             flag = true;
