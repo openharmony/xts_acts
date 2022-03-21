@@ -1235,7 +1235,7 @@ HWTEST_F(ActsNetTest, testIoctlIfhwAddr, Function | MediumTest | Level2)
     ASSERT_EQ(0, ret) << "ioctl fail[SIOCGIFCONF], errinfo[" << strerror(errno) << "]";
 
     char rst1[18];
-    char rst2[18];
+
     char* macPtr = nullptr;
     struct ifreq ifrTmp = {0};
     struct sockaddr_in *addr = nullptr;
