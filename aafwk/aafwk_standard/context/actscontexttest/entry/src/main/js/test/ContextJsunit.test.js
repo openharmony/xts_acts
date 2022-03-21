@@ -258,4 +258,157 @@ describe('ActsContextTest', function () {
         expect("false").assertEqual(stageMode1.toString());
         done();
     })
+
+    /*
+    * @tc.number: ACTS_GetDisplayOrientation_0100
+    * @tc.name: context.getDisplayOrientation : Get an ability display orientation.
+    * @tc.desc: Check the return display orientation of the interface (by AsyncCallback)
+    */
+    it('ACTS_GetDisplayOrientation_0100', 0, async function (done) {
+        console.log('ACTS_GetDisplayOrientation_0100====<begin');
+
+        try {
+            context.getDisplayOrientation((err,data)=>{
+                console.log('getDisplayOrientation call back');
+                done();
+            });
+            done();
+        } catch (err) {
+            console.log('ACTS_GetDisplayOrientation_0100====<end err=' + err)
+            done();
+        }
+        console.log('ACTS_GetDisplayOrientation_0100====<end');
+    })
+
+    /*
+    * @tc.number: ACTS_GetDisplayOrientation_0200
+    * @tc.name: context.getDisplayOrientation : Get an ability display orientation.
+    * @tc.desc: Check the return display orientation of the interface
+    */
+    it('ACTS_GetDisplayOrientation_0200', 0, async function (done) {
+        console.log('ACTS_GetDisplayOrientation_0200====<begin');
+        try {
+            var displayOrientation = context.getDisplayOrientation();
+            done();
+        } catch (err) {
+            console.log('ACTS_GetDisplayOrientation_0200====<end err=' + err)
+            done();
+        }
+        console.log('ACTS_GetDisplayOrientation_0200====<end');
+    })
+
+    /*
+    * @tc.number: ACTS_SetDisplayOrientation_0100
+    * @tc.name: context.setDisplayOrientation : Set an ability display orientation.
+    * @tc.desc: Check the return display orientation of the interface (by AsyncCallback)
+    */
+    it('ACTS_SetDisplayOrientation_0100', 0, async function (done) {
+        console.log('ACTS_SetDisplayOrientation_0100====<begin');
+
+        try {
+            context.setDisplayOrientation(true, (err,data)=>{
+                console.log('SetDisplayOrientation call back');
+                done();
+            });
+            done();
+        } catch (err) {
+            console.log('ACTS_SetDisplayOrientation_0100====<end err=' + err)
+            done();
+        }
+        console.log('ACTS_SetDisplayOrientation_0100====<end');
+    })
+
+    /*
+    * @tc.number: ACTS_SetDisplayOrientation_0200
+    * @tc.name: context.setDisplayOrientation : Set an ability display orientation.
+    * @tc.desc: Check the return display orientation of the interface
+    */
+    it('ACTS_SetDisplayOrientation_0200', 0, async function (done) {
+        console.log('ACTS_SetDisplayOrientation_0200====<begin');
+        try {
+            context.setDisplayOrientation(true);
+            done();
+        } catch (err) {
+            console.log('ACTS_SetDisplayOrientation_0200====<end err=' + err)
+            done();
+        }
+        console.log('ACTS_SetDisplayOrientation_0200====<end');
+    })
+
+    /*
+    * @tc.number: ACTS_SetShowOnLockScreen_0100
+    * @tc.name: context.setShowOnLockScreen : Set an ability show on lock screen.
+    * @tc.desc: Check the return show on lock screen status of the interface (by AsyncCallback)
+    */
+    it('ACTS_SetShowOnLockScreen_0100', 0, async function (done) {
+        console.log('ACTS_SetShowOnLockScreen_0100====<begin');
+
+        try {
+            context.setShowOnLockScreen(true, (err,data)=>{
+                console.log('SetShowOnLockScreen call back');
+                done();
+            });
+            done();
+        } catch (err) {
+            console.log('ACTS_SetShowOnLockScreen_0100====<end err=' + err)
+            done();
+        }
+        console.log('ACTS_SetShowOnLockScreen_0100====<end');
+    })
+
+    /*
+    * @tc.number: ACTS_SetShowOnLockScreen_0200
+    * @tc.name: context.setShowOnLockScreen : Set an ability show on lock screen.
+    * @tc.desc: Check the return show on lock screen status of the interface
+    */
+    it('ACTS_SetShowOnLockScreen_0200', 0, async function (done) {
+        console.log('ACTS_SetShowOnLockScreen_0200====<begin');
+        try {
+            context.setShowOnLockScreen(true);
+            done();
+        } catch (err) {
+            console.log('ACTS_SetShowOnLockScreen_0200====<end err=' + err)
+            done();
+        }
+        console.log('ACTS_SetShowOnLockScreen_0200====<end');
+    })
+
+    /*
+    * @tc.number: ACTS_SetWakeUpScreen_0100
+    * @tc.name: context.setWakeUpScreen : Set an ability wake up screen.
+    * @tc.desc: Check the return wake up screen status of the interface (by AsyncCallback)
+    */
+    it('ACTS_SetWakeUpScreen_0100', 0, async function (done) {
+        console.log('ACTS_SetWakeUpScreen_0100====<begin');
+
+        try {
+            context.setWakeUpScreen(true, (err,data)=>{
+                console.log('setWakeUpScreen call back');
+                done();
+            });
+            done();
+        } catch (err) {
+            console.log('ACTS_SetWakeUpScreen_0100====<end err=' + err)
+            done();
+        }
+        console.log('ACTS_SetWakeUpScreen_0100====<end');
+    })
+
+    /*
+    * @tc.number: ACTS_SetWakeUpScreen_0200
+    * @tc.name: context.setWakeUpScreen : Set an ability wake up screen.
+    * @tc.desc: Check the return wake up screen status of the interface
+    */
+    it('ACTS_SetWakeUpScreen_0200', 0, async function (done) {
+        console.log('ACTS_SetWakeUpScreen_0200====<begin');
+        try {
+            context.setWakeUpScreen(true);
+            done();
+        } catch (err) {
+            console.log('ACTS_SetWakeUpScreen_0200====<end err=' + err)
+            done();
+        }
+        console.log('ACTS_SetWakeUpScreen_0200====<end');
+    })
+
 })
