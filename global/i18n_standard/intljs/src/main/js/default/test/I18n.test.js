@@ -186,7 +186,7 @@ describe('I18nTest', function () {
         expect(value).assertFalse();
         let lang = I18n.getSystemLanguage();
         console.log('i18n_test_0900 ' + lang);
-        expect(lang).assertEqual('aa');
+        expect(lang).assertEqual('aaa');
     })
 
     /* *
