@@ -229,7 +229,8 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             requestCode: 0,
             wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
-        wantAgent.getWantAgent(agentInfoc,
+		setTimeout(function(){
+			wantAgent.getWantAgent(agentInfoc,
             (err, data) => {
                 if (err.code == 0) {
                     WantAgentc = data;
@@ -266,11 +267,13 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                     console.info(data);
                     expect(typeof(data)).assertEqual("object");
                 }
-                done();
                 setTimeout(function(){
                     console.debug("====>time out ACTS_SetWantInfo_0300====>");
+					done();
                 }, time);
             });
+        }, 1000);
+        
       })
 
     /*
@@ -334,7 +337,8 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             requestCode: 0,
             wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
-        wantAgent.getWantAgent(agentInfof,
+		setTimeout(function(){
+			wantAgent.getWantAgent(agentInfof,
             (err, data) => {
                 console.log("=======agentInfof======="+err.code+JSON.stringify(data))
                 if (err.code == 0) {
@@ -359,11 +363,13 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                 else{
                     console.info('----getWantAgent failed!----'+err.code+data);
                 }
-                done();
+                
                 setTimeout(function(){
                     console.debug("====>time out ACTS_SetWantInfo_0400====>");
+					done();
                 }, time);
             });
+		}, 1000);
     })
     /*
     * @tc.number: ACTS_SetWantInfo_0500
@@ -425,7 +431,8 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             requestCode: 0,
             wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
-        wantAgent.getWantAgent(agentInfof,
+		setTimeout(function(){
+			wantAgent.getWantAgent(agentInfof,
             (err, data) => {
                 if (err.code == 0) {
                     WantAgente = data;
@@ -462,6 +469,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                     console.debug("====>time out ACTS_SetWantInfo_0500====>");
                 }, time);
             });
+		}, 1000);
     })
     /*
     * @tc.number: ACTS_SetWantInfo_0600
