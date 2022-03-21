@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import app from '@system.app'
-import webgl from "@ohos.webglnapi";
 import Context from '@ohos.napi_context'
 
 import {
@@ -1663,21 +1662,6 @@ describe('webgl1Test', function() {
 		const isTexture = gl.isTexture(framebuffer);
 		console.info("createShader --> isTexture: " + isTexture);
 		expect(isTexture).assertEqual(false);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0382
-	 * @tc.name testLineWidth
-	 * @tc.desc Test lineWidth.
-	 */
-	it('testLineWidth', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testLineWidth test start ...66');
-		gl.lineWidth(5);
-		const windtherror = gl.getError();
-		console.info("windtherror: " + windtherror);
-		expect(windtherror).assertEqual(gl.INVALID_VALUE);
 		done();
 	})
 
