@@ -1834,7 +1834,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================ANS_Remove_2300 removeAllCallBack data:=========>" + JSON.stringify(data));
         console.info("================ANS_Remove_2300 removeAllCallBack end:==========>")
     }
-    let timesOfOnConsumeRemoveAll
+    var timesOfOnConsumeRemoveAll
     function onConsumeRemoveAll(data) {
         timesOfOnConsumeRemoveAll = timesOfOnConsumeRemoveAll + 1
         console.info("================ANS_Remove_2300 onConsume start==================>");
@@ -1846,7 +1846,7 @@ describe('ActsAnsNotificationRemove', function () {
         }
         console.info("================ANS_Remove_2300 onConsume end====================>");
     }
-    let timesOfOnCancelRemoveAll
+    var timesOfOnCancelRemoveAll
     function onCancelRemoveAll(data) {
         timesOfOnCancelRemoveAll = timesOfOnCancelRemoveAll + 1
         console.info("==================ANS_Remove_2300 onCancel start===========>");
@@ -1951,7 +1951,7 @@ describe('ActsAnsNotificationRemove', function () {
         }),timeout);
     })
 
-    let timesOfOnConsumeRemoveAll
+    var timesOfOnConsumeRemoveAll
     function onConsumeRemoveAllPromise(data) {
         timesOfOnConsumeRemoveAll = timesOfOnConsumeRemoveAll + 1
         console.info("===========ANS_Remove_2400 onConsume start==============>");
