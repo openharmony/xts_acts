@@ -93,7 +93,7 @@ HWTEST_F(PidTest, testOrphanProcess, Function | MediumTest | Level1)
             if (pPid != 1) {
                 LOG("getppid orphaned process fail, expect:1, but get:%d", pPid);
                 // transfer result to main process
-                shmAddr[0] == retFail;
+                shmAddr[0] = retFail;
             }
             shmAddr[1] =2;
             LOG("child child exit %d", shmAddr[1]);
