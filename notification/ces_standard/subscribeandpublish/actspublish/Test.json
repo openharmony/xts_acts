@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "actsPublish.hap"
+                "ActsPublishAsUserTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
