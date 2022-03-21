@@ -338,7 +338,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      */
     it("DeviceUsageStatisticsJsTest013", 0, function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest013---------------------------');
-        let value1 = bundleState.intervalType.BY_OPTIMIZED;
+        let value1 = bundleState.IntervalType.BY_OPTIMIZED;
         expect(value1).assertEqual(0)
         done();
     })
@@ -351,7 +351,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      */
     it("DeviceUsageStatisticsJsTest014", 0, function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest014---------------------------');
-        let value1 = bundleState.intervalType.BY_DAILY;
+        let value1 = bundleState.IntervalType.BY_DAILY;
         expect(value1).assertEqual(1)
         done();
     })
@@ -364,7 +364,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      */
     it("DeviceUsageStatisticsJsTest015", 0, function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest015---------------------------');
-        let value1 = bundleState.intervalType.BY_WEEKLY;
+        let value1 = bundleState.IntervalType.BY_WEEKLY;
         expect(value1).assertEqual(2)
         done();
     })
@@ -377,7 +377,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      */
     it("DeviceUsageStatisticsJsTest016", 0, function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest016---------------------------');
-        let value1 = bundleState.intervalType.BY_MONTHLY;
+        let value1 = bundleState.IntervalType.BY_MONTHLY;
         expect(value1).assertEqual(3)
         done();
     })
@@ -390,7 +390,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      */
     it("DeviceUsageStatisticsJsTest017", 0, function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest017---------------------------');
-        let value1 = bundleState.intervalType.BY_ANNUALLY;
+        let value1 = bundleState.IntervalType.BY_ANNUALLY;
         expect(value1).assertEqual(4)
         done();
     })
@@ -685,7 +685,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
         console.info('----------------------DeviceUsageStatisticsJsTest028---------------------------');
         let beginTime = 10;
         let endTime = 20000000000000;
-        bundleState.queryCurrentBundleActiveStates(beginTime, endTime, (err, res) => {
+        bundleState.queryBundleActiveStates(beginTime, endTime, (err, res) => {
             if(err.code === 0) {
                 expect(true).assertEqual(true);
 				if(res === undefined) {
@@ -712,7 +712,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
         console.info('----------------------DeviceUsageStatisticsJsTest029---------------------------');
         let beginTime = 10;
         let endTime = 20000000000000;
-        bundleState.queryCurrentBundleActiveStates(beginTime, endTime, (err, res) => {
+        bundleState.queryBundleActiveStates(beginTime, endTime, (err, res) => {
             if(err.code === 0) {
                 expect(true).assertEqual(true);
 				if(res === undefined) {
@@ -739,7 +739,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
         console.info('----------------------DeviceUsageStatisticsJsTest030---------------------------');
         let beginTime = 10;
         let endTime = 20000000000000;
-        bundleState.queryCurrentBundleActiveStates(beginTime, endTime, (err, res) => {
+        bundleState.queryBundleActiveStates(beginTime, endTime, (err, res) => {
             if(err.code === 0) {
                 expect(true).assertEqual(true);
 				if(res === undefined) {
@@ -766,7 +766,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
         console.info('----------------------DeviceUsageStatisticsJsTest031---------------------------');
         let beginTime = 10;
         let endTime = 20000000000000;
-        bundleState.queryCurrentBundleActiveStates(beginTime, endTime, (err, res) => {
+        bundleState.queryBundleActiveStates(beginTime, endTime, (err, res) => {
             if(err.code === 0) {
                 expect(true).assertEqual(true);
 				if(res === undefined) {
@@ -793,7 +793,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
         console.info('----------------------DeviceUsageStatisticsJsTest032---------------------------');
         let beginTime = 10;
         let endTime = 20000000000000;
-        bundleState.queryCurrentBundleActiveStates(beginTime, endTime, (err, res) => {
+        bundleState.queryBundleActiveStates(beginTime, endTime, (err, res) => {
             if(err.code === 0) {
                 expect(true).assertEqual(true);
 				if(res === undefined) {
@@ -820,7 +820,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
         console.info('----------------------DeviceUsageStatisticsJsTest033---------------------------');
         let beginTime = 10;
         let endTime = 20000000000000;
-        bundleState.queryCurrentBundleActiveStates(beginTime, endTime, (err, res) => {
+        bundleState.queryBundleActiveStates(beginTime, endTime, (err, res) => {
             if(err.code === 0) {
                 expect(true).assertEqual(true);
 				if(res === undefined) {
@@ -847,7 +847,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
         console.info('----------------------DeviceUsageStatisticsJsTest034---------------------------');
         let beginTime = 10;
         let endTime = 20000000000000;
-        bundleState.queryCurrentBundleActiveStates(beginTime, endTime).then((res) => {
+        bundleState.queryBundleStateInfos(beginTime, endTime).then((res) => {
             expect(true).assertEqual(true);
 			let bundleStateInfo1 = {
 				bundleName: 'www.explace.com',
@@ -886,7 +886,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
         console.info('----------------------DeviceUsageStatisticsJsTest035---------------------------');
         let beginTime = 1001;
         let endTime = 20000000000000;
-        bundleState.queryCurrentBundleActiveStates(0, beginTime, endTime, (err, res) => {
+        bundleState.queryBundleStateInfoByInterval(0, beginTime, endTime, (err, res) => {
             if(err.code === 0) {
                 expect(true).assertEqual(true);
 				if(res === undefined) {

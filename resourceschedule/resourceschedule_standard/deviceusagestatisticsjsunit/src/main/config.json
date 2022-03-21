@@ -55,6 +55,16 @@
           "autoDesignWidth": false
         }
       }
+    ],
+	"defPermissions": [
+        {
+          "name": "ohos.permission.BUNDLE_ACTIVE_INFO"
+        }
+      ],
+      "reqPermissions": [
+        {
+          "name": "ohos.permission.BUNDLE_ACTIVE_INFO"
+        }
     ]
   }
 }
