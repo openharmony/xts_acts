@@ -1894,7 +1894,7 @@ HWTEST_F(ActsNetTest, testInetNtopIpv4Abnormal, Function | MediumTest | Level2)
     char rstBuff[INET_ADDRSTRLEN];
     char expectStr[2][16] = {"255.255.255.255", "0.0.0.0"};
     for (int i = 0; i < 2; i++) {
-        inputAddr.s_addr = (i == 0 ? -1 : 4294967296);
+        inputAddr.s_addr = in_addr_t(i == 0 ? -1 : 4294967296);
         ret = inet_ntop(AF_INET, &inputAddr, rstBuff, sizeof(rstBuff));
         ASSERT_TRUE(ret != NULL);
         EXPECT_STREQ(expectStr[i], ret);

@@ -46,9 +46,9 @@ uint64_t CheckStep(int value)
         }
         uint64_t state = *shared;
         shmdt(shared);
-
         return state;
     }
+    return 0;
 }
 
 int CountPrimes(uint32_t maxNumber)
