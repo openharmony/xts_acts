@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAnsGetAllActiveTestXts.hap"
+                "ActsAnsGetAllActiveTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
