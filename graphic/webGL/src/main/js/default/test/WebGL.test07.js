@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import app from '@system.app'
-import webgl from "@ohos.webglnapi";
 import Context from '@ohos.napi_context'
 
 import {
@@ -747,61 +746,6 @@ describe('webgl1Test', function() {
 		done();
 	});
 
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0626
-	 * @tc.name webgl_test_detachShader2
-	 * @tc.desc Test detachShader.
-	 */
-	it('webgl_test_detachShader2', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into detachShader");
-
-		//顶点着色器
-		var vertexShader = gl.createShader(gl.VERTEX_SHADER);
-		gl.shaderSource(vertexShader, VSHADER_SOURCE);
-		gl.compileShader(vertexShader);
-		//片元着色器
-		var fragmentShader = gl.createShader(gl.FRAGMENT_SHADER); //创建 WebGLShader。
-		gl.shaderSource(fragmentShader, FSHADER_SOURCE); //fragmentSrc设置一个 WebGLShader 的源码。
-		gl.compileShader(fragmentShader);
-
-		//WebGLProgram
-		var program = gl.createProgram(); //创建 WebGLProgram
-		gl.attachShader(program, vertexShader); //往 WebGLProgram 添加一个片段或者顶点着色器。
-		gl.attachShader(program, fragmentShader);
-		gl.linkProgram(program); //链接给入的 WebGLProgram 对象
-		gl.detachShader(program, "vertexShader"); //从一个WebGLProgram中分离一个先前附加的片段或者顶点着色器;
-		gl.detachShader(program, "fragmentShader");
-		gl.deleteShader(vertexShader);
-		gl.deleteShader(fragmentShader);
-
-		let errorCode = gl.getError();
-		console.info("webgltest uniform3uiv getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.NO_ERROR);
-
-		//deleteContext();
-		done();
-	});
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0627
-	 * @tc.name webgl_test_disableVertexAttribArray2
-	 * @tc.desc Test disableVertexAttribArray.
-	 */
-	it('webgl_test_disableVertexAttribArray2', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into disableVertexAttribArray");
-		gl.disableVertexAttribArray("error");
-		let errorCode = gl.getError();
-		console.info("webgltest disableVertexAttribArray getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.NO_ERROR);
-		//deleteContext();
-		done();
-	});
-
-
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0628
 	 * @tc.name webgl_test_enableVertexAttribArray2
@@ -945,8 +889,6 @@ describe('webgl1Test', function() {
 		done();
 	});
 
-
-
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0639
 	 * @tc.name webgl_test_bindSampler2
@@ -972,27 +914,6 @@ describe('webgl1Test', function() {
 		//deleteContext();
 		done();
 	});
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0640
-	 * @tc.name webgl_test_samplerParameteri2
-	 * @tc.desc Test samplerParameteri.
-	 */
-	it('webgl_test_samplerParameteri2', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into samplerParameteri");
-		let sampler = gl2.createSampler();
-		gl2.samplerParameteri(sampler, gl.TEXTURE_MAG_FILTER);
-
-		let errorCode = gl.getError();
-		console.info("webgltest samplerParameteri getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_OPERATION);
-		gl2.deleteSampler(sampler);
-		//deleteContext();
-		done();
-	});
-
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0641
@@ -1274,28 +1195,6 @@ describe('webgl1Test', function() {
 		//deleteContext();
 		done();
 	});
-
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0652
-	 * @tc.name webgl_test_endTransformFeedback2
-	 * @tc.desc Test endTransformFeedback.
-	 */
-	it('webgl_test_endTransformFeedback2', 0, async function(done) {
-		//initContext();
-		console.info("webgltest into endTransformFeedback");
-		let transformFeedback = gl2.createTransformFeedback();
-		gl2.bindTransformFeedback(gl2.TRANSFORM_FEEDBACK, transformFeedback);
-		gl2.beginTransformFeedback(gl.TRIANGLES);
-		gl.drawArrays(gl.TRIANGLES, 0, 3);
-		gl2.endTransformFeedback('error');
-		let errorCode = gl.getError();
-		console.info("webgltest framebufferTexture2D getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
-		//deleteContext();
-		done();
-	});
-
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0653
