@@ -228,9 +228,9 @@ describe('ActsAnsActionButtonTest', function () {
         WantAgent.trigger(wantAgentD, triggerInfoD,
             (err, data) => {
                 if (err.code == 0) {
-                    console.info('==== triggerD success' + err.code+JSON.stringify(data) );
+                    console.info('==== triggered success' + err.code + JSON.stringify(data) );
                 } else {
-                    console.info('----triggerD failed!----'+err.code);
+                    console.info('----triggered failed!----'+ err.code);
                 }
             });
     }
