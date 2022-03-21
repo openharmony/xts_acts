@@ -1029,14 +1029,7 @@ describe('window_test', function () {
                 wnd.show().then(() => {
                     wnd.isShowing().then(res => {
                         expect(res).assertTrue();
-                        wnd.destroy().then(() => {
-                            expect(wnd == null).assertTrue();
-                            done();
-                        }, (err) => {
-                            console.log('windowTest IsShowingTest1 wnd.destroy failed, err :' + JSON.stringify(err));
-                            expect().assertFail();
-                            done();
-                        })
+                        done();
                     }, (err) => {
                         console.log('windowTest IsShowingTest1 wnd.isShowing failed, err :' + JSON.stringify(err));
                         expect().assertFail();
@@ -1089,16 +1082,7 @@ describe('window_test', function () {
                                         done();
                                     } else {
                                         expect(res2).assertTrue();
-                                        data.destroy((err) => {
-                                            if (err.code) {
-                                                console.log('windowTest IsShowingTest2 data.show fail err ' + JSON.stringify(err));
-                                                expect().assertFail();
-                                                done();
-                                            } else {
-                                                expect(data == null).assertTrue();
-                                                done();
-                                            }
-                                        })
+                                        done();
                                     }
                                 })
                             }
@@ -1233,7 +1217,7 @@ describe('window_test', function () {
                 console.log('windowTest SetColorSpaceTest4 setColorSpace callback begin' + JSON.stringify(err));
                 if (err.code != 0) {
                     console.log('windowTest SetColorSpaceTest4 setColorSpace callback fail' + JSON.stringify(err.code));
-                    expect(err.code).assertEqual(120);
+                    expect(err.code).assertEqual(130);
                     done();
                 } else {
                     expect().assertFail();
