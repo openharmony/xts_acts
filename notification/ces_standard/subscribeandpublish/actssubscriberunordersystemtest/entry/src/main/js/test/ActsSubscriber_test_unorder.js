@@ -17,10 +17,10 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('ActsSubscriberTestUnorderSystem', async function (done) {
     console.info("===========ActsSubscriberTestUnorderSystem start====================>");
-    var commonEventSubscriber1;
-    var commonEventSubscriber2;
-    var commonEventSubscriber3;
-    var array = [
+    let commonEventSubscriber1;
+    let commonEventSubscriber2;
+    let commonEventSubscriber3;
+    let array = [
             Subscriber.Support.COMMON_EVENT_SHUTDOWN,
             Subscriber.Support.COMMON_EVENT_BATTERY_CHANGED,
             Subscriber.Support.COMMON_EVENT_BATTERY_LOW,
@@ -116,9 +116,9 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
     }
 
     function findArray(str) {
-        var value = false;
-        var index1 = 0;
-        var length = array.length;
+        let value = false;
+        let index1 = 0;
+        let length = array.length;
         for(; index1 < length; ++index1) {
             if (array[index1] == str) {
                 value = true;
@@ -135,7 +135,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
      */
     it('ActsSubscriberTestUnorderSystem_0100', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorderSystem_0100 start==========================>");
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: [
                     Subscriber.Support.COMMON_EVENT_SHUTDOWN,
                     Subscriber.Support.COMMON_EVENT_BATTERY_CHANGED,
@@ -190,7 +190,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             ],
         };
 
-        var result = 0;
+        let result = 0;
 
         function subscriberCallBack001(err, data) {
             console.info("==========================>subscriberCallBack001 event = "+ data.event);
@@ -226,7 +226,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
      */
     it('ActsSubscriberTestUnorderSystem_0200', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorderSystem_0200 start==========================>");
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: [
                     Subscriber.Support.COMMON_EVENT_WIFI_HOTSPOT_STATE,
                     Subscriber.Support.COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE,
@@ -267,7 +267,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             ],
         };
 
-        var result = 0;
+        let result = 0;
 
         function subscriberCallBack002(err, data) {
             console.info("==========================>subscriberCallBack002 event = "+ data.event);
@@ -304,7 +304,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
      */
     it('ActsSubscriberTestUnorderSystem_0300', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorderSystem_0300 start==========================>");
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: [
                 Subscriber.Support.COMMON_EVENT_WIFI_P2P_CONN_STATE,
                 Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED,

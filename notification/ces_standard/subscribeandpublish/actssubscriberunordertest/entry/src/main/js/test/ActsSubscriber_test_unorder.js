@@ -17,18 +17,18 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('ActsSubscriberTestUnorder', async function (done) {
     console.info("===========ActsSubscriberTestUnorder start====================>");
-    var commonEventSubscriber001;
-    var commonEventSubscriber002;
-    var commonEventSubscriber003;
-    var commonEventSubscriber004;
-    var commonEventSubscriber0051;
-    var commonEventSubscriber0052;
-    var commonEventSubscriber006;
-    var commonEventSubscriber008;
-    var commonEventSubscriber0101;
-    var commonEventSubscriber0102;
-    var commonEventSubscriber011;
-    var commonEventSubscriber012;
+    let commonEventSubscriber001;
+    let commonEventSubscriber002;
+    let commonEventSubscriber003;
+    let commonEventSubscriber004;
+    let commonEventSubscriber0051;
+    let commonEventSubscriber0052;
+    let commonEventSubscriber006;
+    let commonEventSubscriber008;
+    let commonEventSubscriber0101;
+    let commonEventSubscriber0102;
+    let commonEventSubscriber011;
+    let commonEventSubscriber012;
 
     function publishCallback(err) {
         console.info("==========================>publishCallback");
@@ -62,7 +62,7 @@ describe('ActsSubscriberTestUnorder', async function (done) {
             done();
         }
 
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: ["publish_event0100"],
         };
 
@@ -100,7 +100,7 @@ describe('ActsSubscriberTestUnorder', async function (done) {
             done();
         }
 
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: ["@#￥#3243adsafdf_"],
         };
 
@@ -128,13 +128,13 @@ describe('ActsSubscriberTestUnorder', async function (done) {
      */
     it('ActsSubscriberTestUnorder_0300', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorder_0300==========================>");
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: ["publish_event0300"],
             publisherDeviceId: "PublishDeviceId0300",
             priority: 10,
         };
 
-        var commonEventPublishData = {
+        let commonEventPublishData = {
             isOrdered: false,
             bundleName: "PublishBundleName0300",
             code: 55,
@@ -179,11 +179,11 @@ describe('ActsSubscriberTestUnorder', async function (done) {
      */
     it('ActsSubscriberTestUnorder_0400', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorder_0400==========================>");
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: ["publish_eventSticky0400"]
         };
 
-        var commonEventPublishData = {
+        let commonEventPublishData = {
             isOrdered: false,
             isSticky: true,
         }
@@ -227,11 +227,11 @@ describe('ActsSubscriberTestUnorder', async function (done) {
      */
     it('ActsSubscriberTestUnorder_0500', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorder_0500==========================>");
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: ["publish_event0500"]
         };
 
-        var commonEventPublishData = {
+        let commonEventPublishData = {
             isOrdered: false,
             isSticky: false,
         }
@@ -280,12 +280,12 @@ describe('ActsSubscriberTestUnorder', async function (done) {
      */
     it('ActsSubscriberTestUnorder_0600', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorder_0600==========================>");
-        var num = 0;
-        var commonEventSubscribeInfo = {
+        let num = 0;
+        let commonEventSubscribeInfo = {
             events: ["publish_event0600"]
         };
 
-        var commonEventPublishData = {
+        let commonEventPublishData = {
             isOrdered: false,
             isSticky: false,
         }
@@ -331,12 +331,12 @@ describe('ActsSubscriberTestUnorder', async function (done) {
      */
     it('ActsSubscriberTestUnorder_0800', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorder_0800==========================>");
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: ["publish_event0800"],
             publisherPermission:"publish_event0800_publisherPermission"
         };
 
-        var commonEventPublishData = {
+        let commonEventPublishData = {
             subscriberPermissions:["publish_event0800_subscriberPermissions"],
             isOrdered: false,
             isSticky: false
@@ -349,7 +349,7 @@ describe('ActsSubscriberTestUnorder', async function (done) {
         }
 
         function sleep(delay) {
-            var start = (new Date()).getTime();
+            let start = (new Date()).getTime();
             while ((new Date()).getTime() - start < delay) {
             }
             done();
@@ -391,19 +391,19 @@ describe('ActsSubscriberTestUnorder', async function (done) {
     it('ActsSubscriberTestUnorder_1000', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorder_1000==========================>");
 
-        var num = 0;
+        let num = 0;
 
-        var commonEventSubscribeInfo1 = {
+        let commonEventSubscribeInfo1 = {
             events: ["publish_event1000_1"],
             priority: 5
         };
 
-        var commonEventSubscribeInfo2 = {
+        let commonEventSubscribeInfo2 = {
             events: ["publish_event1000_2"],
             priority: 10
         };
 
-        var commonEventPublishData1 = {
+        let commonEventPublishData1 = {
             bundleName: "publish_event1000_bundleName1",
             code: 3,
             data: "publish_event1000_data",
@@ -411,7 +411,7 @@ describe('ActsSubscriberTestUnorder', async function (done) {
             isSticky: false,
         }
 
-        var commonEventPublishData2 = {
+        let commonEventPublishData2 = {
             bundleName: "publish_event1000_bundleName2",
             code: 5,
             data: "publish_event1000_data",
@@ -489,7 +489,7 @@ describe('ActsSubscriberTestUnorder', async function (done) {
             done();
         }
 
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: ["publish_event1100"],
         };
 
@@ -533,11 +533,11 @@ describe('ActsSubscriberTestUnorder', async function (done) {
            done();
        }
 
-       var commonEventSubscribeInfo = {
+       let commonEventSubscribeInfo = {
            events: ["publish_event1200"],
        };
 
-       var commonEventPublishData = {
+       let commonEventPublishData = {
            isOrdered: false,
            isSticky: false,
            parameters: {
