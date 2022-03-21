@@ -1846,7 +1846,7 @@ describe('ActsAnsNotificationRemove', function () {
         }
         console.info("================ANS_Remove_2300 onConsume end====================>");
     }
-    var timesOfOnCancelRemoveAll
+
     function onCancelRemoveAll(data) {
         timesOfOnCancelRemoveAll = timesOfOnCancelRemoveAll + 1
         console.info("==================ANS_Remove_2300 onCancel start===========>");
@@ -1963,7 +1963,7 @@ describe('ActsAnsNotificationRemove', function () {
         }
         console.info("===========ANS_Remove_2400 onConsume end==============>");
     }
-    let timesOfOnCancelRemoveAll
+
     function onCancelRemoveAllPromise(data) {
         timesOfOnCancelRemoveAll = timesOfOnCancelRemoveAll + 1
         console.info("===========ANS_Remove_2400 onCancel start=======================>");
