@@ -22,6 +22,8 @@ describe('ActsGetWantTest', function () {
         done();
     })
 
+    var TIMEOUT_NUMBER = 2500;
+
     //  @tc.number: ACTS_GetWant_0100
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
@@ -45,11 +47,6 @@ describe('ActsGetWantTest', function () {
             }
         },
             (err, data) => {
-                if (err.code != 0) {
-                    console.info('error: ' + JSON.stringify(err));
-                    done();
-                    return;
-                }
                 console.info('====> ACTS_StartAbilityForResult_0100 start ability=====>' + JSON.stringify(data))
                 expect(data.want.deviceId).assertEqual("");
                 expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -67,7 +64,9 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[0]).assertEqual("str");
                 expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
-                done();
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
             })
     })
 
@@ -99,11 +98,6 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
-                if (err.code != 0) {
-                    console.info('error: ' + JSON.stringify(err));
-                    done();
-                    return;
-                }
                 console.info('====> ACTS_StartAbilityForResult_0400 start ability=====>' + JSON.stringify(data))
                 expect(data.want.deviceId).assertEqual("");
                 expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -127,7 +121,9 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[1]).assertEqual("!@#$%");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
                 console.info('====> before done=====>')
-                done();
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
             })
     })
 
@@ -159,11 +155,6 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
-                if (err.code != 0) {
-                    console.info('error: ' + JSON.stringify(err));
-                    done();
-                    return;
-                }
                 console.info('====> ACTS_StartAbilityForResult_0500 start ability=====>' + JSON.stringify(data))
                 expect(data.want.deviceId).assertEqual("");
                 expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -186,7 +177,9 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                 console.info('====> before done=====>')
-                done();
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
             })
     })
     //  @tc.number: ACTS_GetWant_0600
@@ -217,11 +210,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_0600 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -244,7 +232,9 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                     console.info('====> before done=====>')
-                    done();
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_0700
@@ -275,11 +265,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_0700 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -302,7 +287,9 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                     console.info('====> before done=====>')
-                    done();
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_0800
@@ -332,11 +319,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_0800 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -358,7 +340,9 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                     console.info('====> before done=====>')
-                    done();
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_0900
@@ -389,11 +373,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_0900 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -416,7 +395,9 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                     console.info('====> before done=====>')
-                    done();
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1000
@@ -447,11 +428,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1000 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -474,7 +450,9 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                     console.info('====> before done=====>')
-                    done();
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1100
@@ -505,11 +483,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1100 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -531,8 +504,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    console.info('====> before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1200
@@ -563,11 +538,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1200 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -589,8 +559,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1300
@@ -621,11 +593,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1300 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -647,8 +614,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1400
@@ -679,11 +648,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1400 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -705,8 +669,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1500
@@ -737,11 +703,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1500 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -763,8 +724,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1600
@@ -795,11 +758,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1600 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -821,8 +779,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1700
@@ -853,11 +813,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1700 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -879,8 +834,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1800
@@ -911,11 +868,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1800 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -937,8 +889,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1900
@@ -969,11 +923,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1900 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -995,8 +944,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
         
@@ -1032,13 +983,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     checkOnAbilityResult(data);
-                    done();
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         }catch(error){
             console.log("ACTS_GetWant_2000 : error = " + error);
