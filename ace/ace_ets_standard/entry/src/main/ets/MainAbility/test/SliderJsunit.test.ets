@@ -65,22 +65,8 @@ export default function sliderJsunit() {
       let obj = JSON.parse(strJson);
       console.info("component obj is  Slider: " + JSON.stringify(obj));
       console.info("component obj is  Slider: " + JSON.stringify(obj.$attrs.constructor));
-      console.info("slider1 blockColor" + JSON.stringify(obj.$attrs.constructor.blockColor))
-      console.info("slider1 selectedColor" + JSON.stringify(obj.$attrs.constructor.selectedColor))
-      console.info("slider1 trackColor" + JSON.stringify(obj.$attrs.constructor.trackColor))
-      console.info("slider1 showTips" + JSON.stringify(obj.$attrs.constructor.showTips))
-      console.info("slider1 showSteps" + JSON.stringify(obj.$attrs.constructor.showSteps))
-      console.info("slider1 value" + JSON.stringify(obj.$attrs.constructor.value))
-      console.info("slider1 direction" + JSON.stringify(obj.$attrs.constructor.direction))
-      console.info("slider1 reverse" + JSON.stringify(obj.$attrs.constructor.reverse))
-      console.info("slider1 minLabel" + JSON.stringify(obj.$attrs.constructor.minLabel))
-      console.info("slider1 maxLabel" + JSON.stringify(obj.$attrs.constructor.maxLabel))
-      console.info("slider1 min" + JSON.stringify(obj.$attrs.constructor.min))
-      console.info("slider1 max" + JSON.stringify(obj.$attrs.constructor.max))
-      console.info("slider1 step" + JSON.stringify(obj.$attrs.constructor.step))
-      console.info("slider1 style" + JSON.stringify(obj.$attrs.constructor.style))
-      expect(obj.$attrs.constructor.showTips).assertEqual("false")
-      expect(obj.$attrs.constructor.showSteps).assertEqual("false")
+      expect(obj.$attrs.showTips).assertEqual("false")
+      expect(obj.$attrs.showSteps).assertEqual("false")
       expect(obj.$attrs.constructor.value).assertEqual(40.000000.toFixed(6))
       expect(obj.$attrs.constructor.min).assertEqual(0.000000.toFixed(6))
       expect(obj.$attrs.constructor.max).assertEqual(100.000000.toFixed(6))
@@ -100,11 +86,8 @@ export default function sliderJsunit() {
       let strJson = getInspectorByKey('slider2');
       let obj = JSON.parse(strJson);
       console.info("component obj is  Slider: " + JSON.stringify(obj));
-      console.info("slider2 showTips" + JSON.stringify(obj.$attrs.constructor.showTips))
-      console.info("slider2 showSteps" + JSON.stringify(obj.$attrs.constructor.showSteps))
-      console.info("slider1 style" + JSON.stringify(obj.$attrs.constructor.style))
-      expect(obj.$attrs.constructor.showTips).assertEqual("true")
-      expect(obj.$attrs.constructor.showSteps).assertEqual("true")
+      expect(obj.$attrs.showTips).assertEqual("true")
+      expect(obj.$attrs.showSteps).assertEqual("true")
       expect(obj.$attrs.constructor.style).assertEqual("SliderStyle.InSet")
       console.info('testGetSliderAttr2 END');
       done();
