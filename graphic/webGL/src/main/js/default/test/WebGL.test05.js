@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import app from '@system.app'
-import webgl from "@ohos.webglnapi";
 import Context from '@ohos.napi_context'
 
 import {
@@ -867,25 +866,6 @@ describe('webgl1Test', function() {
 	})
 
 	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0434
-	 * @tc.name testUniform1fv_2
-	 * @tc.desc Test uniform1fv.
-	 */
-	it('testUniform1fv_2', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testUniform1fv_2 test start ...66');
-		const framebuffer = gl.createFramebuffer();
-		const uniformlocationObj = gl.getUniformLocation(framebuffer, "a_Position1");
-		const flaot32list = new Float32Array([-1, -2]);
-		gl.uniform1fv(uniformlocationObj, flaot32list);
-		const uniform1fvError = gl.getError();
-		console.info("uniform1fvError: " + uniform1fvError);
-		const errorCode = gl.getError();
-		expect(uniform1fvError).assertEqual(gl.INVALID_OPERATION);
-		done();
-	})
-
-	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0435
 	 * @tc.name testUniform1fv_3
 	 * @tc.desc Test uniform1fv.
@@ -895,25 +875,6 @@ describe('webgl1Test', function() {
 		console.info('jsWebGL testUniform1fv_3 test start ...66');
 		const programobject = gl.createProgram();
 		const uniformlocationObj = gl.getUniformLocation(programobject, "a_Position1");
-		const flaot32list = new Float32Array([-1, -2]);
-		gl.uniform1fv(uniformlocationObj, flaot32list);
-		const uniform1fvError = gl.getError();
-		console.info("uniform1fvError: " + uniform1fvError);
-		const errorCode = gl.getError();
-		expect(uniform1fvError).assertEqual(gl.INVALID_OPERATION);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0436
-	 * @tc.name testUniform1fv_4
-	 * @tc.desc Test uniform1fv.
-	 */
-	it('testUniform1fv_4', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testUniform1fv_4 test start ...66');
-		const renderbuffer = gl.createRenderbuffer();
-		const uniformlocationObj = gl.getUniformLocation(renderbuffer, "a_Position1");
 		const flaot32list = new Float32Array([-1, -2]);
 		gl.uniform1fv(uniformlocationObj, flaot32list);
 		const uniform1fvError = gl.getError();
@@ -942,24 +903,6 @@ describe('webgl1Test', function() {
 	})
 
 	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0438
-	 * @tc.name testUniform2fv_1
-	 * @tc.desc Test uniform2fv.
-	 */
-	it('testUniform2fv_1', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testUniform2fv_1 test start ...66');
-		const renderbuffer = gl.createRenderbuffer();
-		const uniformlocationObj = gl.getUniformLocation(renderbuffer, "123");
-		const flaot32list = new Float32Array([1, 2]);
-		gl.uniform2fv(uniformlocationObj, flaot32list);
-		const uniform2fvError = gl.getError();
-		console.info("uniform2fvError: " + uniform2fvError);
-		expect(uniform2fvError).assertEqual(gl.INVALID_OPERATION);
-		done();
-	})
-
-	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0439
 	 * @tc.name testUniform2fv_2
 	 * @tc.desc Test uniform2fv.
@@ -969,24 +912,6 @@ describe('webgl1Test', function() {
 		console.info('jsWebGL testUniform2fv_2 test start ...66');
 		const programObj = gl.createProgram();
 		const uniformlocationObj = gl.getUniformLocation(programObj, "123");
-		const flaot32list = new Float32Array([1, 2]);
-		gl.uniform2fv(uniformlocationObj, flaot32list);
-		const uniform2fvError = gl.getError();
-		console.info("uniform2fvError: " + uniform2fvError);
-		expect(uniform2fvError).assertEqual(gl.INVALID_OPERATION);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0440
-	 * @tc.name testUniform2fv_3
-	 * @tc.desc Test uniform2fv.
-	 */
-	it('testUniform2fv_3', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testUniform2fv_3 test start ...66');
-		const framebuffer = gl.createFramebuffer();
-		const uniformlocationObj = gl.getUniformLocation(framebuffer, "a_Position");
 		const flaot32list = new Float32Array([1, 2]);
 		gl.uniform2fv(uniformlocationObj, flaot32list);
 		const uniform2fvError = gl.getError();
@@ -1050,24 +975,6 @@ describe('webgl1Test', function() {
 	})
 
 	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0444
-	 * @tc.name testUniform3fv_2
-	 * @tc.desc Test uniform3fv.
-	 */
-	it('testUniform3fv_2', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testUniform3fv_2 test start ...66');
-		const framebuffer = gl.createFramebuffer();
-		const uniformlocationObj = gl.getUniformLocation(framebuffer, "a_Position");
-		const flaot32list = new Float32Array([1, 2]);
-		gl.uniform3fv(uniformlocationObj, flaot32list);
-		const uniform3fvError = gl.getError();
-		console.info("uniform3fvError: " + uniform3fvError);
-		expect(uniform3fvError).assertEqual(gl.NO_ERROR);
-		done();
-	})
-
-	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0446
 	 * @tc.name testUniform3fv_4
 	 * @tc.desc Test uniform3fv.
@@ -1113,24 +1020,6 @@ describe('webgl1Test', function() {
 		console.info('jsWebGL testUniform4fv_01 test start ...66');
 		const programObj = gl.createProgram();
 		const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
-		const flaot32list = new Float32Array([1, 2]);
-		gl.uniform4fv(uniformlocationObj, flaot32list);
-		const uniform4fvError = gl.getError();
-		console.info("uniform4fvError: " + uniform4fvError);
-		expect(uniform4fvError).assertEqual(gl.INVALID_OPERATION);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0450
-	 * @tc.name testUniform4fv_03
-	 * @tc.desc Test uniform4fv.
-	 */
-	it('testUniform4fv_03', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testUniform4fv_03 test start ...66');
-		const framebuffer = gl.createFramebuffer();
-		const uniformlocationObj = gl.getUniformLocation(framebuffer, "a_Position");
 		const flaot32list = new Float32Array([1, 2]);
 		gl.uniform4fv(uniformlocationObj, flaot32list);
 		const uniform4fvError = gl.getError();
@@ -1194,60 +1083,6 @@ describe('webgl1Test', function() {
 	})
 
 	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0454
-	 * @tc.name testUniform1iv_02
-	 * @tc.desc Test uniform1iv.
-	 */
-	it('testUniform1iv_02', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testUniform1iv_02 test start ...66');
-		const renderbuffer = gl.createRenderbuffer();
-		const uniformlocationObj = gl.getUniformLocation(renderbuffer, "a_Position");
-		const int32list = new Int32Array([1, 2]);
-		gl.uniform1iv(uniformlocationObj, int32list);
-		const uniform1ivError = gl.getError();
-		console.info("uniform1ivError: " + uniform1ivError);
-		expect(uniform1ivError).assertEqual(gl.INVALID_OPERATION);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0455
-	 * @tc.name testUniform1iv_03
-	 * @tc.desc Test uniform1iv.
-	 */
-	it('testUniform1iv_03', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testUniform1iv_03 test start ...66');
-		const framebuffer = gl.createFramebuffer();
-		const uniformlocationObj = gl.getUniformLocation(framebuffer, "a_Position");
-		const int32list = new Int32Array([1, 2]);
-		gl.uniform1iv(uniformlocationObj, int32list);
-		const uniform1ivError = gl.getError();
-		console.info("uniform1ivError: " + uniform1ivError);
-		expect(uniform1ivError).assertEqual(gl.INVALID_OPERATION);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0456
-	 * @tc.name testUniform1iv_04
-	 * @tc.desc Test uniform1iv.
-	 */
-	it('testUniform1iv_04', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testUniform1iv_04 test start ...66');
-		const shader = gl.createShader(gl.VERTEX_SHADER);
-		const uniformlocationObj = gl.getUniformLocation(shader, "a_Position");
-		const int32list = new Int32Array([1, 2]);
-		gl.uniform1iv(uniformlocationObj, int32list);
-		const uniform1ivError = gl.getError();
-		console.info("uniform1ivError: " + uniform1ivError);
-		expect(uniform1ivError).assertEqual(gl.INVALID_OPERATION);
-		done();
-	})
-
-	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0457
 	 * @tc.name testUniform2iv
 	 * @tc.desc Test uniform2iv.
@@ -1275,24 +1110,6 @@ describe('webgl1Test', function() {
 		console.info('jsWebGL testUniform2iv_01 test start ...66');
 		const programObj = gl.createProgram();
 		const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
-		const int32list = new Int32Array([1, 2]);
-		gl.uniform2iv(uniformlocationObj, int32list);
-		const uniform2ivError = gl.getError();
-		console.info("testUniform2ivError: " + uniform2ivError);
-		expect(uniform2ivError).assertEqual(gl.INVALID_OPERATION);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0459
-	 * @tc.name testUniform2iv_02
-	 * @tc.desc Test uniform2iv.
-	 */
-	it('testUniform2iv_02', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testUniform2iv_02 test start ...66');
-		const renderbuffer = gl.createRenderbuffer();
-		const uniformlocationObj = gl.getUniformLocation(renderbuffer, "a_Position");
 		const int32list = new Int32Array([1, 2]);
 		gl.uniform2iv(uniformlocationObj, int32list);
 		const uniform2ivError = gl.getError();
@@ -1347,24 +1164,6 @@ describe('webgl1Test', function() {
 		console.info('jsWebGL testUniform3iv_01 test start ...66');
 		const programObj = gl.createProgram();
 		const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
-		const int32list = new Int32Array([1, 2]);
-		gl.uniform3iv(uniformlocationObj, int32list);
-		const uniform3ivError = gl.getError();
-		console.info("testUniform3ivError: " + uniform3ivError);
-		expect(uniform3ivError).assertEqual(gl.INVALID_OPERATION);
-		done();
-	})
-
-	/**
-	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0465
-	 * @tc.name testUniform3iv_03
-	 * @tc.desc Test uniform3iv.
-	 */
-	it('testUniform3iv_03', 0, async function(done) {
-		//initContext();
-		console.info('jsWebGL testUniform3iv_03 test start ...66');
-		var texture = gl.createTexture();
-		const uniformlocationObj = gl.getUniformLocation(texture, "a_Position");
 		const int32list = new Int32Array([1, 2]);
 		gl.uniform3iv(uniformlocationObj, int32list);
 		const uniform3ivError = gl.getError();
