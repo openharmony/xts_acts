@@ -19,6 +19,24 @@ export default function responseCodeJsunit() {
   describe("responseCodeJsunitTest", function () {
 
     /**
+     * @tc.number Telephony_Http_ResponseCode_OK_0100
+     * @tc.name ResponseCode::OK
+     * @tc.desc Test ResponseCode property.
+     */
+
+    it("Telephony_Http_ResponseCode_OK_0100", 0, async function (done) {
+      console.log("-----------------------Telephony_Http_ResponseCode_OK_0100 start-----------------------");
+      try {
+        expect(200).assertEqual(http.ResponseCode.OK);
+        console.log("-----------------------Telephony_Http_ResponseCode_OK_0100 OK assertEqual SUCCESS-----------------------");
+      } catch (error) {
+        console.log("Telephony_Http_ResponseCode_OK_0100 : error = " + error);
+      }
+      done();
+      console.log("-----------------------Telephony_Http_ResponseCode_OK_0100 end-----------------------");
+    });
+
+    /**
      * @tc.number Telephony_Http_ResponseCode_ACCEPTED_0100
      * @tc.name ResponseCode::ACCEPTED
      * @tc.desc Test Test ResponseCode property.
