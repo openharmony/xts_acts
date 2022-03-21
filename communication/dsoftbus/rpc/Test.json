@@ -10,10 +10,15 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsRpcHapTest.hap"
+                "ActsRpcHapTest.hap",
+                "./resource/dsoftbus/ipcserver/entry-release-standard-signed.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
         }
     ]
+
+
+
+
 }
