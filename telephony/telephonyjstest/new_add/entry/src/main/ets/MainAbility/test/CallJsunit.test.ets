@@ -295,6 +295,9 @@ export default function callJsunit(){
             console.log(`${caseName} error,error :${toString(err)}`);
             done();
             return;
+          } else {
+            let callAttributeOptions = data;
+            console.log(`${caseName} success, startTime = :` + callAttributeOptions.startTime);
           }
           expect(true).assertTrue();
           done();
