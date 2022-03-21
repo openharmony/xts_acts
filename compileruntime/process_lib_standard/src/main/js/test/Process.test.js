@@ -23,11 +23,11 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testRunCmd001', 0, async function (done) {
-        var child = process.runCmd('echo abc')
+        let child = process.runCmd('echo abc')
         child.wait()
-        var array = new Uint8Array([97, 98, 99, 10, 0])
+        let array = new Uint8Array([97, 98, 99, 10, 0])
         await child.getOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i])
             }
         });
@@ -41,11 +41,11 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testRunCmd002', 0, async function (done) {
-        var child = process.runCmd('echo abc;', { maxBuffer : 2 })
+        let child = process.runCmd('echo abc;', { maxBuffer : 2 })
         child.wait()
-        var array = new Uint8Array([97, 98, 0])
+        let array = new Uint8Array([97, 98, 0])
         await child.getOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i])
             }
         });
@@ -59,11 +59,11 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testRunCmd003', 0, async function (done) {
-        var child = process.runCmd('sleep 5; echo abc;', { timeout : 1, killSignal : 9 })
+        let child = process.runCmd('sleep 5; echo abc;', { timeout : 1, killSignal : 9 })
         child.wait()
-        var array = new Uint8Array([0])
+        let array = new Uint8Array([0])
         await child.getOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i])
             }
         });
@@ -78,11 +78,11 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testRunCmd004', 0, async function (done) {
-        var child = process.runCmd('sleep 2; echo abc;', { timeout : 9000, killSignal : 9 })
+        let child = process.runCmd('sleep 2; echo abc;', { timeout : 9000, killSignal : 9 })
         child.wait()
-        var array = new Uint8Array([97, 98, 99, 10, 0])
+        let array = new Uint8Array([97, 98, 99, 10, 0])
         await child.getOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i])
             }
         });
@@ -97,11 +97,11 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testRunCmd005', 0, async function (done) {
-        var child = process.runCmd('echo abc', { maxBuffer : 1000 })
+        let child = process.runCmd('echo abc', { maxBuffer : 1000 })
         child.wait()
-        var array = new Uint8Array([97, 98, 99, 10, 0])
+        let array = new Uint8Array([97, 98, 99, 10, 0])
         await child.getOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i])
             }
         });
@@ -115,11 +115,11 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetOutput001', 0, async function (done) {
-        var child = process.runCmd('echo bcd;')
-        var array = new Uint8Array([98, 99, 100, 10, 0])
+        let child = process.runCmd('echo bcd;')
+        let array = new Uint8Array([98, 99, 100, 10, 0])
         child.wait();
         await child.getOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i])
             }
         });
@@ -133,11 +133,11 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetOutput002', 0, async function (done) {
-        var child = process.runCmd('echo 123;');
-        var array = new Uint8Array([49, 50, 51, 10, 0]);
+        let child = process.runCmd('echo 123;');
+        let array = new Uint8Array([49, 50, 51, 10, 0]);
         child.wait();
         await child.getOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i]);
             }
         });
@@ -151,11 +151,11 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetOutput003', 0, async function (done) {
-        var child = process.runCmd('echo helloWorld;');
-        var array = new Uint8Array([104, 101, 108, 108, 111, 87, 111, 114, 108, 100, 10, 0]);
+        let child = process.runCmd('echo helloWorld;');
+        let array = new Uint8Array([104, 101, 108, 108, 111, 87, 111, 114, 108, 100, 10, 0]);
         child.wait();
         await child.getOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i]);
             }
         });
@@ -169,11 +169,11 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetOutput004', 0, async function (done) {
-        var child = process.runCmd('echo 浣犲�?');
-        var array = new Uint8Array([230, 181, 163, 231, 138, 178, 239, 191, 189, 63, 10, 0]);
+        let child = process.runCmd('echo 浣犲�?');
+        let array = new Uint8Array([230, 181, 163, 231, 138, 178, 239, 191, 189, 63, 10, 0]);
         child.wait();
         await child.getOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i]);
             }
         });
@@ -187,11 +187,11 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetOutput005', 0, async function (done) {
-        var child = process.runCmd('echo ~_~;');
-        var array = new Uint8Array([126, 95, 126, 10, 0]);
+        let child = process.runCmd('echo ~_~;');
+        let array = new Uint8Array([126, 95, 126, 10, 0]);
         child.wait();
         await child.getOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i]);
             }
         });
@@ -205,12 +205,12 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetErrorOutput001', 0, async function (done) {
-        var child = process.runCmd('makdir 1.txt')
+        let child = process.runCmd('makdir 1.txt')
         child.wait()
-        var array = new Uint8Array([115, 104, 58, 32, 109, 97, 107, 100, 105, 114, 58, 32, 105, 110, 97, 99, 99,
+        let array = new Uint8Array([115, 104, 58, 32, 109, 97, 107, 100, 105, 114, 58, 32, 105, 110, 97, 99, 99,
         101, 115, 115, 105, 98, 108, 101, 32, 111, 114, 32, 110, 111, 116, 32, 102, 111, 117, 110, 100, 10, 0])
         await child.getErrorOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i])
             }
         });
@@ -224,11 +224,11 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetErrorOutput002', 0, async function (done) {
-        var child = process.runCmd('echo "error" 1>&2')
+        let child = process.runCmd('echo "error" 1>&2')
         child.wait()
-        var array = new Uint8Array([101, 114, 114, 111, 114, 10, 0])
+        let array = new Uint8Array([101, 114, 114, 111, 114, 10, 0])
         await child.getErrorOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i])
             }
         });
@@ -242,12 +242,12 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetErrorOutput003', 0, async function (done) {
-        var child = process.runCmd('1')
+        let child = process.runCmd('1')
         child.wait()
-        var array = new Uint8Array([115, 104, 58, 32, 49, 58, 32, 105, 110, 97, 99, 99, 101, 115, 115, 105, 98,
+        let array = new Uint8Array([115, 104, 58, 32, 49, 58, 32, 105, 110, 97, 99, 99, 101, 115, 115, 105, 98,
         108, 101, 32, 111, 114, 32, 110, 111, 116, 32, 102, 111, 117, 110, 100, 10, 0])
         await child.getErrorOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i])
             }
         });
@@ -261,12 +261,12 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetErrorOutput004', 0, async function (done) {
-        var child = process.runCmd('chmod 777 123')
-        var array = new Uint8Array([99, 104, 109, 111, 100, 58, 32, 49, 50, 51, 58, 32, 78, 111, 32, 115, 117, 99,
+        let child = process.runCmd('chmod 777 123')
+        let array = new Uint8Array([99, 104, 109, 111, 100, 58, 32, 49, 50, 51, 58, 32, 78, 111, 32, 115, 117, 99,
         104, 32, 102, 105, 108, 101, 32, 111, 114, 32, 100, 105, 114, 101, 99, 116, 111, 114, 121, 10, 0]);
         child.wait();
         await child.getErrorOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i])
             }
         });
@@ -280,12 +280,12 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetErrorOutput005', 0, async function (done) {
-        var child = process.runCmd('cp ./1 ./2')
-        var array = new Uint8Array([99, 112, 58, 32, 98, 97, 100, 32, 39, 46, 47, 49, 39, 58, 32, 78, 111, 32, 115,
+        let child = process.runCmd('cp ./1 ./2')
+        let array = new Uint8Array([99, 112, 58, 32, 98, 97, 100, 32, 39, 46, 47, 49, 39, 58, 32, 78, 111, 32, 115,
         117, 99, 104, 32, 102, 105, 108, 101, 32, 111, 114, 32, 100, 105, 114, 101, 99, 116, 111, 114, 121, 10, 0])
         child.wait();
         await child.getErrorOutput().then(val=>{
-            for (var i = 0; i < array.length; i++) {
+            for (let i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i])
             }
         });
@@ -299,7 +299,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testWait001', 0, async function (done) {
-        var child = process.runCmd('ls')
+        let child = process.runCmd('ls')
         await child.wait().then(val=>{
             expect(val).assertEqual(0)
         });
@@ -313,7 +313,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testWait002', 0, async function (done) {
-        var child = process.runCmd('ls; sleep 5;')
+        let child = process.runCmd('ls; sleep 5;')
         child.kill(9);
         await child.wait().then(val=>{
             expect(val).assertEqual(9)
@@ -328,7 +328,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testWait003', 0, async function (done) {
-        var child = process.runCmd('echo helloWorld');
+        let child = process.runCmd('echo helloWorld');
         await child.wait().then(val=>{
             expect(val).assertEqual(0);
         });
@@ -342,7 +342,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testWait004', 0, async function (done) {
-        var child = process.runCmd('mkdir 123');
+        let child = process.runCmd('mkdir 123');
         await child.wait().then(val=>{
             expect(val).assertEqual(0);
         });
@@ -356,7 +356,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testWait005', 0, async function (done) {
-        var child = process.runCmd('sleep 5; echo abc;', { timeout : 1, killSignal : 9 });
+        let child = process.runCmd('sleep 5; echo abc;', { timeout : 1, killSignal : 9 });
         await child.wait().then(val=>{
             expect(val).assertEqual(9);
         });
@@ -370,9 +370,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testchildPid001', 0, function () {
-        var child = process.runCmd('ls; sleep 5;')
+        let child = process.runCmd('ls; sleep 5;')
         child.wait()
-        var pid_ = child.pid
+        let pid_ = child.pid
         expect(pid_ > 0).assertEqual(true)
     })
 
@@ -383,9 +383,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid002', 0, function () {
-        var child = process.runCmd('mkdir test.cpp')
+        let child = process.runCmd('mkdir test.cpp')
         child.wait()
-        var pid_ = child.pid
+        let pid_ = child.pid
         expect(pid_ > 0).assertEqual(true)
     })
 
@@ -396,9 +396,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid003', 0, function () {
-        var child = process.runCmd('each abc')
+        let child = process.runCmd('each abc')
         child.wait()
-        var pid_ = child.pid
+        let pid_ = child.pid
         expect(pid_ > 0).assertEqual(true)
     })
 
@@ -409,9 +409,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid004', 0, function () {
-        var child = process.runCmd('cd ..')
+        let child = process.runCmd('cd ..')
         child.wait()
-        var pid_ = child.pid
+        let pid_ = child.pid
         expect(pid_ > 0).assertEqual(true)
     })
 
@@ -422,9 +422,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid005', 0, function () {
-        var child = process.runCmd('adc')
+        let child = process.runCmd('adc')
         child.wait()
-        var pid_ = child.pid
+        let pid_ = child.pid
         expect(pid_ > 0).assertEqual(true)
     })
 
@@ -435,9 +435,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPpid001', 0, function () {
-        var child = process.runCmd('ls; sleep 5;')
-        var status = child.wait()
-        var ppid_ = child.ppid
+        let child = process.runCmd('ls; sleep 5;')
+        let status = child.wait()
+        let ppid_ = child.ppid
         expect(ppid_ > 0).assertEqual(true)
     })
 
@@ -448,9 +448,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPpid002', 0, function () {
-        var child = process.runCmd('mkdir test.cpp')
+        let child = process.runCmd('mkdir test.cpp')
         child.wait()
-        var ppid_ = child.ppid
+        let ppid_ = child.ppid
         expect(ppid_ > 0).assertEqual(true)
     })
 
@@ -461,9 +461,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPpid003', 0, function () {
-        var child = process.runCmd('each abc')
+        let child = process.runCmd('each abc')
         child.wait()
-        var ppid_ = child.ppid
+        let ppid_ = child.ppid
         expect(ppid_ > 0).assertEqual(true)
     })
 
@@ -474,9 +474,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPpid004', 0, function () {
-        var child = process.runCmd('cd ..')
+        let child = process.runCmd('cd ..')
         child.wait()
-        var ppid_ = child.ppid
+        let ppid_ = child.ppid
         expect(ppid_ > 0).assertEqual(true)
     })
 
@@ -487,9 +487,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPpid005', 0, function () {
-        var child = process.runCmd('adc')
+        let child = process.runCmd('adc')
         child.wait()
-        var ppid_ = child.ppid
+        let ppid_ = child.ppid
         expect(ppid_ > 0).assertEqual(true)
     })
 
@@ -500,9 +500,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKill001', 0, function () {
-        var child =  process.runCmd('ls; sleep 5s;')
-        var result = child.kill(13)
-        var temp = child.killed
+        let child =  process.runCmd('ls; sleep 5s;')
+        let result = child.kill(13)
+        let temp = child.killed
         expect(temp).assertEqual(true)
     })
 
@@ -513,9 +513,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKill002', 0, function () {
-        var child =  process.runCmd('ls; sleep 5s;')
-        var result = child.kill(1)
-        var temp = child.killed
+        let child =  process.runCmd('ls; sleep 5s;')
+        let result = child.kill(1)
+        let temp = child.killed
         expect(temp).assertEqual(true)
     })
 
@@ -526,9 +526,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKill003', 0, function () {
-        var child =  process.runCmd('ls; sleep 5s;')
-        var result = child.kill('SIGHUP')
-        var temp = child.killed
+        let child =  process.runCmd('ls; sleep 5s;')
+        let result = child.kill('SIGHUP')
+        let temp = child.killed
         expect(temp).assertEqual(true)
     })
 
@@ -539,9 +539,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKill004', 0, function () {
-        var child =  process.runCmd('ls; sleep 5s;')
-        var result = child.kill('ABC')
-        var temp = child.killed
+        let child =  process.runCmd('ls; sleep 5s;')
+        let result = child.kill('ABC')
+        let temp = child.killed
         expect(temp).assertEqual(true)
     })
 
@@ -552,10 +552,10 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKill005', 0, function () {
-        var child =  process.runCmd('ls')
+        let child =  process.runCmd('ls')
         child.wait()
-        var result = child.kill(9)
-        var temp = child.killed
+        let result = child.kill(9)
+        let temp = child.killed
         expect(temp).assertEqual(false)
     })
 
@@ -566,8 +566,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testClose001', 0, function () {
-        var child =  process.runCmd('ls; sleep 5s;')
-        var result = child.close()
+        let child =  process.runCmd('ls; sleep 5s;')
+        let result = child.close()
         expect(child.exitCode).assertEqual(9)
     })
 
@@ -578,12 +578,12 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testClose002', 0, function () {
-        var child =  process.runCmd('ls')
+        let child =  process.runCmd('ls')
         function sleep(ms, callback) {
             setTimeout(callback, ms)
         }
         sleep(1000, () => {} )
-        var result = child.close()
+        let result = child.close()
         expect(child.exitCode === 0).assertEqual(false)
     })
 
@@ -594,9 +594,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testClose003', 0, function () {
-        var child =  process.runCmd('ls;')
-        var status = child.wait()
-        var result = child.close()
+        let child =  process.runCmd('ls;')
+        let status = child.wait()
+        let result = child.close()
         expect(child.exitCode).assertEqual(0)
     })
 
@@ -607,8 +607,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testClose004', 0, function () {
-        var child =  process.runCmd('ls')
-        var result = child.close()
+        let child =  process.runCmd('ls')
+        let result = child.close()
         expect(child.exitCode).assertEqual(9)
     })
 
@@ -619,9 +619,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testClose005', 0, function () {
-        var child =  process.runCmd('sleep 5; echo A')
-        var result = child.close()
-        var status = child.wait()
+        let child =  process.runCmd('sleep 5; echo A')
+        let result = child.close()
+        let status = child.wait()
         expect(child.exitCode).assertEqual(9)
     })
 
@@ -632,9 +632,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKilled001', 0, function () {
-        var child =  process.runCmd('ls; sleep 1s;')
-        var result = child.kill(3)
-        var temp = child.killed
+        let child =  process.runCmd('ls; sleep 1s;')
+        let result = child.kill(3)
+        let temp = child.killed
         expect(temp).assertEqual(true)
     })
 
@@ -645,9 +645,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKilled002', 0, function () {
-        var child =  process.runCmd('ls; sleep 1s;')
-        var result = child.close()
-        var temp = child.killed
+        let child =  process.runCmd('ls; sleep 1s;')
+        let result = child.close()
+        let temp = child.killed
         expect(temp).assertEqual(false)
     })
 
@@ -658,10 +658,10 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKilled003', 0, function () {
-        var child =  process.runCmd('ls; sleep 1s;')
-        var status = child.wait()
-        var result = child.kill(9)
-        var temp = child.killed
+        let child =  process.runCmd('ls; sleep 1s;')
+        let status = child.wait()
+        let result = child.kill(9)
+        let temp = child.killed
         expect(temp).assertEqual(false)
     })
 
@@ -672,9 +672,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKilled004', 0, function () {
-        var child =  process.runCmd('ls; sleep 5s;')
-        var result = child.kill('SIGHUP')
-        var temp = child.killed
+        let child =  process.runCmd('ls; sleep 5s;')
+        let result = child.kill('SIGHUP')
+        let temp = child.killed
         expect(temp).assertEqual(true)
     })
 
@@ -685,9 +685,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKilled005', 0, function () {
-        var child =  process.runCmd('ls; sleep 5s;')
-        var result = child.kill('1')
-        var temp = child.killed
+        let child =  process.runCmd('ls; sleep 5s;')
+        let result = child.kill('1')
+        let temp = child.killed
         expect(temp).assertEqual(true)
     })
 
@@ -698,10 +698,10 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testExitCode001', 0, function () {
-        var child =  process.runCmd('ls; sleep 5s;')
-        var temp = child.kill(9)
+        let child =  process.runCmd('ls; sleep 5s;')
+        let temp = child.kill(9)
         child.wait()
-        var result = child.exitCode
+        let result = child.exitCode
         expect(result).assertEqual(9)
     })
 
@@ -712,9 +712,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testExitCode002', 0, function () {
-        var child =  process.runCmd('ls;')
+        let child =  process.runCmd('ls;')
         child.wait()
-        var result = child.exitCode
+        let result = child.exitCode
         expect(result).assertEqual(0)
     })
 
@@ -725,10 +725,10 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testExitCode003', 0, function () {
-        var child =  process.runCmd('ls; sleep 5s;')
+        let child =  process.runCmd('ls; sleep 5s;')
         child.close()
         child.wait()
-        var result = child.exitCode
+        let result = child.exitCode
         expect(result).assertEqual(9)
     })
 
@@ -739,10 +739,10 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testExitCode004', 0, function () {
-        var child =  process.runCmd('ls')
-        var temp = child.kill('ABCD')
+        let child =  process.runCmd('ls')
+        let temp = child.kill('ABCD')
         child.close()
-        var result = child.exitCode
+        let result = child.exitCode
         expect(result).assertEqual(0)
     })
 
@@ -753,9 +753,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testExitCode005', 0, function () {
-        var child =  process.runCmd('echo A')
-        var result= child.wait()
-        var status = child.close()
+        let child =  process.runCmd('echo A')
+        let result= child.wait()
+        let status = child.close()
         expect(child.exitCode).assertEqual(0)
     })
 
@@ -766,7 +766,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetUid001', 0, function () {
-        var result = process.uid
+        let result = process.uid
         if(result > 0) {
             var flag = true
         }
@@ -780,8 +780,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetUid002', 0, function () {
-        for(var i = 0; i < 3; i++){
-            var result = process.uid
+        for(let i = 0; i < 3; i++){
+            let result = process.uid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -798,8 +798,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetUid003', 0, function () {
-        for(var i = 0; i < 6; i++){
-            var result = process.uid
+        for(let i = 0; i < 6; i++){
+            let result = process.uid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -816,8 +816,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetUid004', 0, function () {
-        for(var i = 0; i < 8; i++){
-            var result = process.uid
+        for(let i = 0; i < 8; i++){
+            let result = process.uid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -834,8 +834,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetUid005', 0, function () {
-        for(var i = 0; i < 5; i++){
-            var result = process.uid
+        for(let i = 0; i < 5; i++){
+            let result = process.uid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -852,7 +852,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetGid001', 0, function () {
-        var result = process.gid
+        let result = process.gid
         if(result > 0) {
             var flag = true
         }
@@ -866,8 +866,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetGid002', 0, function () {
-        for(var i = 0; i < 3; i++){
-            var result = process.gid
+        for(let i = 0; i < 3; i++){
+            let result = process.gid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -884,8 +884,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetGid003', 0, function () {
-        for(var i = 0; i < 5; i++){
-            var result = process.gid
+        for(let i = 0; i < 5; i++){
+            let result = process.gid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -902,8 +902,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetGid004', 0, function () {
-        for(var i = 0; i < 6; i++){
-            var result = process.gid
+        for(let i = 0; i < 6; i++){
+            let result = process.gid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -920,8 +920,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetGid005', 0, function () {
-        for(var i = 0; i < 8; i++){
-            var result = process.gid
+        for(let i = 0; i < 8; i++){
+            let result = process.gid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -938,7 +938,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetEuid001', 0, function () {
-        var result = process.euid
+        let result = process.euid
         if(result > 0) {
             var flag = true
         }
@@ -952,8 +952,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetEuid002', 0, function () {
-        for(var i = 0; i < 3; i++){
-            var result = process.euid
+        for(let i = 0; i < 3; i++){
+            let result = process.euid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -970,8 +970,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetEuid003', 0, function () {
-        for(var i = 0; i < 5; i++){
-            var result = process.euid
+        for(let i = 0; i < 5; i++){
+            let result = process.euid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -988,8 +988,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetEuid004', 0, function () {
-        for(var i = 0; i < 6; i++){
-            var result = process.euid
+        for(let i = 0; i < 6; i++){
+            let result = process.euid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -1006,8 +1006,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetEuid005', 0, function () {
-        for(var i = 0; i < 8; i++){
-            var result = process.euid
+        for(let i = 0; i < 8; i++){
+            let result = process.euid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -1024,7 +1024,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetEgid001', 0, function () {
-        var result = process.egid
+        let result = process.egid
         if(result > 0) {
             var flag = true
         }
@@ -1038,8 +1038,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetEgid002', 0, function () {
-        for(var i = 0; i < 3; i++){
-            var result = process.egid
+        for(let i = 0; i < 3; i++){
+            let result = process.egid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -1056,8 +1056,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetEgid003', 0, function () {
-        for(var i = 0; i < 5; i++){
-            var result = process.egid
+        for(let i = 0; i < 5; i++){
+            let result = process.egid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -1074,8 +1074,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetEgid004', 0, function () {
-        for(var i = 0; i < 6; i++){
-            var result = process.egid
+        for(let i = 0; i < 6; i++){
+            let result = process.egid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -1092,8 +1092,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetEgid005', 0, function () {
-        for(var i = 0; i < 8; i++){
-            var result = process.egid
+        for(let i = 0; i < 8; i++){
+            let result = process.egid
             if(result != null) {
                 if(result > 0) {
                     var flag = true
@@ -1110,8 +1110,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetGroups001', 0, function () {
-        var result = process.groups
-        var len = result.length
+        let result = process.groups
+        let len = result.length
         if(len > 0) {
             var flag = true
         }
@@ -1125,10 +1125,10 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetGroups002', 0, function () {
-        for(var i = 0; i < 3; i++){
-            var result = process.groups
+        for(let i = 0; i < 3; i++){
+            let result = process.groups
             if(result != null) {
-                var len = result.length
+                let len = result.length
                 if(len > 0) {
                     var flag = true
                 }
@@ -1144,10 +1144,10 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetGroups003', 0, function () {
-        for(var i = 0; i < 5; i++){
-            var result = process.groups
+        for(let i = 0; i < 5; i++){
+            let result = process.groups
             if(result != null) {
-                var len = result.length
+                let len = result.length
                 if(len > 0) {
                     var flag = true
                 }
@@ -1163,10 +1163,10 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetGroups004', 0, function () {
-        for(var i = 0; i < 6; i++){
-            var result = process.groups
+        for(let i = 0; i < 6; i++){
+            let result = process.groups
             if(result != null) {
-                var len = result.length
+                let len = result.length
                 if(len > 0) {
                     var flag = true
                 }
@@ -1182,10 +1182,10 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetGroups005', 0, function () {
-        for(var i = 0; i < 8; i++){
-            var result = process.groups
+        for(let i = 0; i < 8; i++){
+            let result = process.groups
             if(result != null) {
-                var len = result.length
+                let len = result.length
                 if(len > 0) {
                     var flag = true
                 }
@@ -1201,8 +1201,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testChdir001', 0, function () {
-        var result = process.chdir('/system')
-        var result1 = process.cwd()
+        let result = process.chdir('/system')
+        let result1 = process.cwd()
         expect(result1).assertEqual('/system')
     })
 
@@ -1213,8 +1213,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testChdir002', 0, function () {
-        var result = process.chdir('/system/lib')
-        var result1 = process.cwd()
+        let result = process.chdir('/system/lib')
+        let result1 = process.cwd()
         expect(result1).assertEqual('/system/lib')
     })
 
@@ -1225,8 +1225,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testChdir003', 0, function () {
-        var result = process.chdir('/..')
-        var result1 = process.cwd()
+        let result = process.chdir('/..')
+        let result1 = process.cwd()
         expect(result1).assertEqual('/')
     })
 
@@ -1237,8 +1237,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testChdir004', 0, function () {
-        var result = process.chdir('/system/app')
-        var result1 = process.cwd()
+        let result = process.chdir('/system/app')
+        let result1 = process.cwd()
         expect(result1).assertEqual('/system/app')
     })
 
@@ -1249,8 +1249,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testChdir005', 0, function () {
-        var result = process.chdir('/data')
-        var result1 = process.cwd()
+        let result = process.chdir('/data')
+        let result1 = process.cwd()
         expect(result1).assertEqual('/data')
     })
 
@@ -1261,7 +1261,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKill001', 0, function () {
-        var result = process.kill(3, 123)
+        let result = process.kill(3, 123)
         expect(result).assertEqual(false)
     })
 
@@ -1272,8 +1272,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKill002', 0, function () {
-        var pres = process.pid
-        var result = process.kill(23, pres)
+        let pres = process.pid
+        let result = process.kill(23, pres)
         expect(result).assertEqual(true)
     })
 
@@ -1284,8 +1284,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKill003', 0, function () {
-        var pres = process.pid
-        var result = process.kill(28, pres)
+        let pres = process.pid
+        let result = process.kill(28, pres)
         expect(result).assertEqual(true)
     })
 
@@ -1296,8 +1296,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKill004', 0, function () {
-        var pres = process.pid
-        var result = process.kill(17, pres)
+        let pres = process.pid
+        let result = process.kill(17, pres)
         expect(result).assertEqual(true)
     })
 
@@ -1308,7 +1308,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testKill005', 0, function () {
-        var result = process.kill(3, 113)
+        let result = process.kill(3, 113)
         expect(result).assertEqual(false)
     })
 
@@ -1319,12 +1319,12 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testUptime001', 0, function () {
-        var result1 = process.uptime()
+        let result1 = process.uptime()
         function sleep(d){
             while(process.uptime() - result1 <= d);
         }
         sleep(5);
-        var result2 = process.uptime() - 6
+        let result2 = process.uptime() - 6
         expect(result1).assertEqual(result2)
     })
 
@@ -1340,7 +1340,7 @@ describe('ChildProcessTest', function () {
             while(process.uptime() - result1 <= d);
         }
         sleep(8);
-        var result2 = process.uptime() - 9
+        let result2 = process.uptime() - 9
         expect(result1).assertEqual(result2)
     })
 
@@ -1351,12 +1351,12 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testUptime003', 0, function () {
-        var result1 = process.uptime()
+        let result1 = process.uptime()
         function sleep(d){
             while(process.uptime() - result1 <= d);
         }
         sleep(10);
-        var result2 = process.uptime() - 11
+        let result2 = process.uptime() - 11
         expect(result1).assertEqual(result2)
     })
 
@@ -1367,12 +1367,12 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testUptime004', 0, function () {
-        var result1 = process.uptime()
+        let result1 = process.uptime()
         function sleep(d){
             while(process.uptime() - result1 <= d);
         }
         sleep(7);
-        var result2 = process.uptime() - 8
+        let result2 = process.uptime() - 8
         expect(result1).assertEqual(result2)
     })
 
@@ -1399,7 +1399,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid001', 0, function () {
-        var result = process.pid
+        let result = process.pid
         if(result > 0) {
             var flag = true
         }
@@ -1413,9 +1413,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid002', 0, function () {
-        for(var i = 0; i < 3; i++)
+        for(let i = 0; i < 3; i++)
         {
-            var result = process.pid
+            let result = process.pid
             if(result > 0) {
                 var flag = true
             }
@@ -1430,9 +1430,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid003', 0, function () {
-        for(var i = 0; i < 5; i++)
+        for(let i = 0; i < 5; i++)
         {
-            var result = process.pid
+            let result = process.pid
             if(result > 0) {
                 var flag = true
             }
@@ -1447,9 +1447,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid004', 0, function () {
-        for(var i = 0; i < 6; i++)
+        for(let i = 0; i < 6; i++)
         {
-            var result = process.pid
+            let result = process.pid
             if(result > 0) {
                 var flag = true
             }
@@ -1464,9 +1464,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid005', 0, function () {
-        for(var i = 0; i < 8; i++)
+        for(let i = 0; i < 8; i++)
         {
-            var result = process.pid
+            let result = process.pid
             if(result > 0) {
                 var flag = true
             }
@@ -1481,7 +1481,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPpid001', 0, function () {
-        var result = process.ppid
+        let result = process.ppid
         if(result > 0) {
             var flag = true
         }
@@ -1495,9 +1495,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPpid002', 0, function () {
-        for(var i = 0; i < 3; i++)
+        for(let i = 0; i < 3; i++)
         {
-            var result = process.ppid
+            let result = process.ppid
             if(result > 0) {
                 var flag = true
             }
@@ -1512,9 +1512,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPpid003', 0, function () {
-        for(var i = 0; i < 5; i++)
+        for(let i = 0; i < 5; i++)
         {
-            var result = process.ppid
+            let result = process.ppid
             if(result > 0) {
                 var flag = true
             }
@@ -1529,9 +1529,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPpid004', 0, function () {
-        for(var i = 0; i < 6; i++)
+        for(let i = 0; i < 6; i++)
         {
-            var result = process.ppid
+            let result = process.ppid
             if(result > 0) {
                 var flag = true
             }
@@ -1546,9 +1546,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPpid005', 0, function () {
-        for(var i = 0; i < 8; i++)
+        for(let i = 0; i < 8; i++)
         {
-            var result = process.ppid
+            let result = process.ppid
             if(result > 0) {
                 var flag = true
             }
@@ -1563,7 +1563,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testCwd001', 0, function () {
-        var cwdir = process.cwd()
+        let cwdir = process.cwd()
         if(cwdir){
             var flag = true
         }
@@ -1577,9 +1577,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testCwd002', 0, function () {
-        for(var i = 0; i < 3; i++)
+        for(let i = 0; i < 3; i++)
         {
-            var cwdir = process.cwd()
+            let cwdir = process.cwd()
             if(cwdir){
                 var flag = true
             }
@@ -1594,9 +1594,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testCwd003', 0, function () {
-        for(var i = 0; i < 5; i++)
+        for(let i = 0; i < 5; i++)
         {
-            var cwdir = process.cwd()
+            let cwdir = process.cwd()
             if(cwdir){
                 var flag = true
             }
@@ -1611,9 +1611,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testCwd004', 0, function () {
-        for(var i = 0; i < 6; i++)
+        for(let i = 0; i < 6; i++)
         {
-            var cwdir = process.cwd()
+            let cwdir = process.cwd()
             if(cwdir){
                 var flag = true
             }
@@ -1628,9 +1628,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testCwd005', 0, function () {
-        for(var i = 0; i < 8; i++)
+        for(let i = 0; i < 8; i++)
         {
-            var cwdir = process.cwd()
+            let cwdir = process.cwd()
             if(cwdir){
                 var flag = true
             }
@@ -1646,9 +1646,9 @@ describe('ChildProcessTest', function () {
      */
     it('testOn001', 0, function () {
         function add(){
-            var value = 3 + 2
+            let value = 3 + 2
         }
-        var ontest = process.on(1, add)
+        let ontest = process.on(1, add)
         expect(ontest).assertEqual(false)
     })
 
@@ -1660,9 +1660,9 @@ describe('ChildProcessTest', function () {
      */
     it('testOn002', 0, function () {
         function add1(num){
-            var value = num + 3
+            let value = num + 3
         }
-        var on = process.on("add123", add1)
+        let on = process.on("add123", add1)
     })
 
     /**
@@ -1673,9 +1673,9 @@ describe('ChildProcessTest', function () {
      */
     it('testOn003', 0, function () {
         function add2(num0, num1){
-            var value = num0 + num1
+            let value = num0 + num1
         }
-        var ontest = process.on(879, add2)
+        let ontest = process.on(879, add2)
         expect(ontest).assertEqual(false)
     })
 
@@ -1687,9 +1687,9 @@ describe('ChildProcessTest', function () {
      */
     it('testOn004', 0, function () {
         function add3(num0, num1){
-            var value = num0 + num1
+            let value = num0 + num1
         }
-        var ontest = process.on(12345, add3)
+        let ontest = process.on(12345, add3)
         expect(ontest).assertEqual(false)
     })
 
@@ -1701,9 +1701,9 @@ describe('ChildProcessTest', function () {
      */
     it('testOn005', 0, function () {
         function add4(num0, num1){
-            var value = num0 + num1
+            let value = num0 + num1
         }
-        var ontest = process.on(1000, add4)
+        let ontest = process.on(1000, add4)
         expect(ontest).assertEqual(false)
     })
 
@@ -1715,10 +1715,10 @@ describe('ChildProcessTest', function () {
      */
     it('testOff001', 0, function () {
         function add1(num){
-            var value = num + 3
+            let value = num + 3
         }
-        var on = process.on("UnHandleRejection", add1)
-        var offtest = process.off("UnHandleRejection")
+        let on = process.on("UnHandleRejection", add1)
+        let offtest = process.off("UnHandleRejection")
         expect(offtest).assertEqual(true)
     })
 
@@ -1729,7 +1729,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testOff002', 0, function () {
-        var offtest = process.off("123")
+        let offtest = process.off("123")
         expect(offtest).assertEqual(false)
     })
 
@@ -1740,7 +1740,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testOff003', 0, function () {
-        var offtest = process.off("456")
+        let offtest = process.off("456")
         expect(offtest).assertEqual(false)
     })
 
@@ -1752,10 +1752,10 @@ describe('ChildProcessTest', function () {
      */
     it('testOff004', 0, function () {
         function add1(num){
-            var value = num + 3
+            let value = num + 3
         }
-        var on = process.on("UnHandleRejection", add1)
-        var offtest = process.off("UnHandleRejection")
+        let on = process.on("UnHandleRejection", add1)
+        let offtest = process.off("UnHandleRejection")
         expect(offtest).assertEqual(true)
     })
 
@@ -1767,10 +1767,10 @@ describe('ChildProcessTest', function () {
      */
     it('testOff005', 0, function () {
         function add1(num){
-            var value = num + 3
+            let value = num + 3
         }
-        var on = process.on("UnHandleRejection", add1)
-        var offtest = process.off("UnHandleRejection")
+        let on = process.on("UnHandleRejection", add1)
+        let offtest = process.off("UnHandleRejection")
         expect(offtest).assertEqual(true)
     })
 
@@ -1781,7 +1781,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-001', 0, function () {
-        var pres = process.tid
+        let pres = process.tid
         if(pres > 0)
         {
             var flag = new Boolean(true)
@@ -1796,9 +1796,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-002', 0, function () {
-        for(var i=0; i < 5; i++)
+        for(let i=0; i < 5; i++)
         {
-            var pres = process.tid
+            let pres = process.tid
             if(pres > 0)
             {
                 var flag = new Boolean(true)
@@ -1814,9 +1814,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-003', 0, function () {
-        for(var i=0; i < 3; i++)
+        for(let i=0; i < 3; i++)
         {
-            var pres = process.tid
+            let pres = process.tid
             if(pres > 0)
             {
                 var flag = new Boolean(true)
@@ -1833,7 +1833,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-004', 0, function () {
-        var pres = process.isIsolatedProcess()
+        let pres = process.isIsolatedProcess()
         expect(pres).assertEqual(true)
     })
 
@@ -1844,9 +1844,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-005', 0, function () {
-        for(var i=0; i < 3; i++)
+        for(let i=0; i < 3; i++)
         {
-            var pres =process.isIsolatedProcess()
+            let pres =process.isIsolatedProcess()
             expect(pres).assertEqual(true)
         }
     })
@@ -1858,9 +1858,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-006', 0, function () {
-        for(var i=0; i < 5; i++)
+        for(let i=0; i < 5; i++)
         {
-            var pres =process.isIsolatedProcess()
+            let pres =process.isIsolatedProcess()
             expect(pres).assertEqual(true)
         }
     })
@@ -1873,7 +1873,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-007', 0, function () {
-        var isorno = process.isAppUid(167)
+        let isorno = process.isAppUid(167)
         expect(isorno).assertEqual(false)
     })
 
@@ -1884,7 +1884,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-008', 0, function () {
-        var isorno = process.isAppUid(123)
+        let isorno = process.isAppUid(123)
         expect(isorno).assertEqual(false)
     })
 
@@ -1895,7 +1895,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testIsappuid003', 0, function () {
-        var isorno = process.isAppUid(80000)
+        let isorno = process.isAppUid(80000)
         expect(isorno).assertEqual(false)
     })
 
@@ -1906,7 +1906,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testIsappuid004', 0, function () {
-        var isorno = process.isAppUid(789)
+        let isorno = process.isAppUid(789)
         expect(isorno).assertEqual(false)
     })
 
@@ -1917,7 +1917,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testIsappuid005', 0, function () {
-        var isorno = process.isAppUid(8569)
+        let isorno = process.isAppUid(8569)
         expect(isorno).assertEqual(false)
     })
 
@@ -1928,7 +1928,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-009', 0, function () {
-        var isorno = process.is64Bit()
+        let isorno = process.is64Bit()
         expect(isorno).assertEqual(false)
     })
 
@@ -1939,9 +1939,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-010', 0, function () {
-        for(var i=0; i<3; i++)
+        for(let i=0; i<3; i++)
         {
-            var isorno = process.is64Bit()
+            let isorno = process.is64Bit()
             expect(isorno).assertEqual(false)
         }
     })
@@ -1953,9 +1953,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-011', 0, function () {
-        for(var i=0; i<5; i++)
+        for(let i=0; i<5; i++)
         {
-            var isorno = process.is64Bit()
+            let isorno = process.is64Bit()
             expect(isorno).assertEqual(false)
         }
     })
@@ -1968,10 +1968,10 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-012',0, function () {
-        var pres = process.getUidForName("root")
+        let pres = process.getUidForName("root")
         if(pres != -1)
         {
-            var flag = new Boolean(true)
+            let flag = new Boolean(true)
             expect(Boolean(flag)).assertEqual(true)
         }
     })
@@ -1983,9 +1983,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-013', 0, function () {
-        for(var i=0; i<3; i++)
+        for(let i=0; i<3; i++)
         {
-            var pres = process.getUidForName("12356")
+            let pres = process.getUidForName("12356")
             expect(pres).assertEqual(-1)
         }
     })
@@ -1997,9 +1997,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-014', 0, function () {
-        for(var i=0; i<5; i++)
+        for(let i=0; i<5; i++)
         {
-            var pres = process.getUidForName("12356")
+            let pres = process.getUidForName("12356")
             expect(pres).assertEqual(-1)
         }
     })
@@ -2012,11 +2012,11 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-015', 0, function () {
-        var pres = process.tid
-        var pri = process.getThreadPriority(pres)
+        let pres = process.tid
+        let pri = process.getThreadPriority(pres)
         if(pri)
         {
-            var flag = new Boolean(true)
+            let flag = new Boolean(true)
             expect(Boolean(flag)).assertEqual(true)
         }
     })
@@ -2028,13 +2028,13 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-016', 0, function () {
-        var pres = process.tid
-        for(var i=0; i<3; i++)
+        let pres = process.tid
+        for(let i=0; i<3; i++)
         {
-            var pri = process.getThreadPriority(pres)
+            let pri = process.getThreadPriority(pres)
             if(pri > 0)
             {
-                var flag = new Boolean(true)
+                let flag = new Boolean(true)
                 expect(Boolean(flag)).assertEqual(true)
             }
         }
@@ -2047,13 +2047,13 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-017', 0, function () {
-        var pres = process.tid
-        for(var i=0; i<5; i++)
+        let pres = process.tid
+        for(let i=0; i<5; i++)
         {
-            var pri = process.getThreadPriority(pres)
+            let pri = process.getThreadPriority(pres)
             if(pri > 0)
             {
-                var flag = new Boolean(true)
+                let flag = new Boolean(true)
                 expect(Boolean(flag)).assertEqual(true)
             }
         }
@@ -2067,9 +2067,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-019', 0, function () {
-        for(var i=0; i<3; i++)
+        for(let i=0; i<3; i++)
         {
-            var pri = process.getStartRealtime()
+            let pri = process.getStartRealtime()
             if(pri !== null)
             {
                 var flag = new Boolean(true)
@@ -2086,7 +2086,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-018', 0, function () {
-        var pri = process.getStartRealtime()
+        let pri = process.getStartRealtime()
         if(pri !== null)
         {
             var flag = new Boolean(true)
@@ -2102,9 +2102,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-020', 0, function () {
-        for(var i=0; i<5; i++)
+        for(let i=0; i<5; i++)
         {
-            var pri = process.getStartRealtime()
+            let pri = process.getStartRealtime()
             if(pri !== null)
             {
                 var flag = new Boolean(true)
@@ -2121,8 +2121,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-021', 0, function () {
-            var priOne = process.getStartRealtime()
-            var priTwo = process.getStartRealtime()
+            let priOne = process.getStartRealtime()
+            let priTwo = process.getStartRealtime()
             expect(priOne - priTwo).assertEqual(0)       
     })
 
@@ -2134,9 +2134,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetstartrealtime004', 0, function () {
-        for(var i=0; i<6; i++)
+        for(let i=0; i<6; i++)
         {
-            var pri = process.getStartRealtime()
+            let pri = process.getStartRealtime()
             if(pri > 0)
             {
                 var flag = new Boolean(true)
@@ -2152,9 +2152,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetpastCpuTime001', 0, function () {
-        for(var i=0; i<3; i++)
+        for(let i=0; i<3; i++)
         {
-            var pri = process.getPastCpuTime()
+            let pri = process.getPastCpuTime()
             if(pri > 0)
             {
                 var flag = new Boolean(true)
@@ -2170,7 +2170,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-022', 0, function () {
-        var pri = process.getPastCpuTime()
+        let pri = process.getPastCpuTime()
         if(pri > 0)
         {
             var flag = new Boolean(true)
@@ -2185,9 +2185,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-023', 0, function () {
-        for(var i=0; i<5; i++)
+        for(let i=0; i<5; i++)
         {
-            var pri = process.getPastCpuTime()
+            let pri = process.getPastCpuTime()
             if(pri > 0)
             {
                 var flag = new Boolean(true)
@@ -2203,9 +2203,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-024', 0, function () {
-        for(var i=0; i<8; i++)
+        for(let i=0; i<8; i++)
         {
-            var pri = process.getPastCpuTime()
+            let pri = process.getPastCpuTime()
             if(pri > 0)
             {
                 var flag = new Boolean(true)
@@ -2221,8 +2221,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-025', 0, function () {
-        var _SC_ARG_MAX = 0
-        var pri = process.getSystemConfig(_SC_ARG_MAX)
+        let _SC_ARG_MAX = 0
+        let pri = process.getSystemConfig(_SC_ARG_MAX)
         if(pri > 0)
         {
             var flag = new Boolean(true)
@@ -2237,10 +2237,10 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-026', 0, function () {
-        var _SC_ARG_MAX = 0
-        for(var i=0; i<3; i++)
+        let _SC_ARG_MAX = 0
+        for(let i=0; i<3; i++)
         {
-            var pri = process.getSystemConfig(_SC_ARG_MAX)
+            let pri = process.getSystemConfig(_SC_ARG_MAX)
             if(pri > 0)
             {
                 var flag = new Boolean(true)
@@ -2256,10 +2256,10 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-027', 0, function () {
-        var _SC_ARG_MAX = 0
-        for(var i=0; i<5; i++)
+        let _SC_ARG_MAX = 0
+        for(let i=0; i<5; i++)
         {
-            var pri = process.getSystemConfig(_SC_ARG_MAX)
+            let pri = process.getSystemConfig(_SC_ARG_MAX)
             if(pri > 0)
             {
                 var flag = new Boolean(true)
@@ -2275,8 +2275,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-028', 0, function () {
-        var _SC_OPEN_MAX = 4
-        var pri = process.getSystemConfig(_SC_OPEN_MAX)
+        let _SC_OPEN_MAX = 4
+        let pri = process.getSystemConfig(_SC_OPEN_MAX)
         if(pri > 0)
         {
             var flag = new Boolean(true)
@@ -2291,8 +2291,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-029', 0, function () {
-        var _SC_PAGESIZE = 8
-        var pri = process.getSystemConfig(_SC_PAGESIZE)
+        let _SC_PAGESIZE = 8
+        let pri = process.getSystemConfig(_SC_PAGESIZE)
         if(pri > 0)
         {
             var flag = new Boolean(true)
@@ -2307,7 +2307,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-033', 0, function () {
-        var pri = process.getEnvironmentVar("USER")
+        let pri = process.getEnvironmentVar("USER")
         if(pri != null) {
             var flag = new Boolean(true)
             expect(Boolean(flag)).assertEqual(true)
@@ -2321,9 +2321,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-036', 0, function () {
-        for(var i=0; i<3; i++)
+        for(let i=0; i<3; i++)
         {
-            var pri = process.getEnvironmentVar("PATH")
+            let pri = process.getEnvironmentVar("PATH")
             if(pri != null)
             {
                 var flag = new Boolean(true)
@@ -2339,9 +2339,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetEnvironmentVar003', 0, function () {
-        for(var i=0; i<5; i++)
+        for(let i=0; i<5; i++)
         {
-            var pri = process.getEnvironmentVar("PATH")
+            let pri = process.getEnvironmentVar("PATH")
             if(pri != null)
             {
                 var flag = new Boolean(true)
@@ -2357,9 +2357,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-034', 0, function () {
-        for(var i=0; i<6; i++)
+        for(let i=0; i<6; i++)
         {
-            var pri = process.getEnvironmentVar("USER")
+            let pri = process.getEnvironmentVar("USER")
             if(pri != null)
             {
                 var flag = new Boolean(true)
@@ -2375,9 +2375,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-035', 0, function () {
-        for(var i=0; i<8; i++)
+        for(let i=0; i<8; i++)
         {
-            var pri = process.getEnvironmentVar("USER")
+            let pri = process.getEnvironmentVar("USER")
             if(pri != null)
             {
                 var flag = new Boolean(true)
@@ -2393,9 +2393,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-037', 0, function () {
-        for(var i=0; i<100; i++)
+        for(let i=0; i<100; i++)
         {
-            var pri = process.getEnvironmentVar("i123")
+            let pri = process.getEnvironmentVar("i123")
             if(pri == null)
             {
                 var flag = new Boolean(true)
