@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -34,9 +34,9 @@ describe('display_test', function () {
      * @tc.desc			To test the function of obtaining the default screen
      */
     it('getDefaultDisplay_Test_001', 0, async function (done) {
-        console.log('displayTest getDefaultDisplayTest1 begin')
+        console.log('displayTest getDefaultDisplayTest1 begin');
         display.getDefaultDisplay().then(dsp => {
-            console.log('displayTest getDefaultDisplayTest1 getDefaultDisplay id :' + JSON.stringify(dsp))
+            console.log('displayTest getDefaultDisplayTest1 getDefaultDisplay id :' + JSON.stringify(dsp));
             expect(dsp.id != null).assertTrue();
             expect(dsp.refreshRate != null).assertTrue();
             expect(dsp.width != null).assertTrue();
@@ -78,9 +78,9 @@ describe('display_test', function () {
      * @tc.desc			To verify the function of obtaining all screens.
      */
     it('getAllDisplay_Test_001', 0, async function (done) {
-        console.log('displayTest getAllDisplayTest1 begin')
+        console.log('displayTest getAllDisplayTest1 begin');
         display.getAllDisplay().then(dsp => {
-            console.log('displayTest getAllDisplayTest1 getAllDisplay id :' + JSON.stringify(dsp))
+            console.log('displayTest getAllDisplayTest1 getAllDisplay id :' + JSON.stringify(dsp));
             expect(dsp[0].id != null).assertTrue();
             expect(dsp[0].refreshRate != null).assertTrue();
             expect(dsp[0].width != null).assertTrue();
@@ -102,11 +102,11 @@ describe('display_test', function () {
         console.log('displayTest getAllDisplayTest2 begin');
         display.getAllDisplay((err, data) => {
             if (err.code != 0) {
-                console.log('displayTest getAllDisplayTest2 getAllDisplay callback fail');
+                console.log('displayTest getAllDisplayTest2 getAllDisplay callback fail' + JSON.stringify(err));
                 expect().assertFail();
                 done();
             } else {
-                console.log('displayTest getAllDisplayTest2 getDefaultDisplay id :' + JSON.stringify(data));
+                console.log('displayTest getAllDisplayTest2 getAllDisplay id :' + JSON.stringify(data));
                 expect(data[0].refreshRate != null).assertTrue();
                 expect(data[0].width != null).assertTrue();
                 expect(data[0].height != null).assertTrue();
