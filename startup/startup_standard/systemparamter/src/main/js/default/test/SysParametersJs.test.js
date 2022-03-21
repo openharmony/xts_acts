@@ -47,7 +47,7 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_0801', 0, async function (done) {
         console.info('system_parameter_test_0801 start');
-        var ret = false;
+        let ret = false;
         try {
             var parameterInfo = systemparameter.wait("test.wait_param.101", "100", 1);
             parameterInfo.then(function (result) { // timeout
@@ -73,7 +73,7 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_0802', 0, async function (done) {
         console.info('system_parameter_test_0802 start');
-        var ret = false;
+        let ret = false;
         try {
             var parameterInfo = systemparameter.wait("test.wait_param.102", "", 1);
             parameterInfo.then(function (result) {  // timeout
@@ -100,7 +100,7 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_0803', 0, async function (done) {
         console.info('system_parameter_test_0803 start');
-        var ret = false;
+        let ret = false;
         SetParameter("test.wait_param.103", "103");
         try {
             var parameterInfo = systemparameter.wait("test.wait_param.103", "103", 1);
@@ -127,7 +127,7 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_0804', 0, async function (done) {
         console.info('system_parameter_test_0804 start');
-        var ret = false;
+        let ret = false;
         SetParameter("test.wait_param.104", "104");
         try {
             var parameterInfo = systemparameter.wait("test.wait_param.104", "*", 1);
@@ -154,7 +154,7 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_0805', 0, async function (done) {
         console.info('system_parameter_test_0805 start');
-        var ret = false;
+        let ret = false;
         SetParameter("test.wait_param.105", "105");
         try {
             var parameterInfo = systemparameter.wait("test.wait_param.105", "*", -1);
@@ -181,7 +181,7 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_0806', 0, async function (done) {
         console.info('system_parameter_test_0806 start');
-        var ret = false;
+        let ret = false;
         try {
             systemparameter.wait("test.wait_param.201", "100", 1, function (err, data) {
                 if (err == undefined || err.code === 0) {
@@ -210,7 +210,7 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_0807', 0, async function (done) {
         console.info('system_parameter_test_0807 start');
-        var ret = false;
+        let ret = false;
         try {
             ret = true;
             systemparameter.wait("test.wait_param.202", "", 1, function (err, data) {
@@ -238,7 +238,7 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_0808', 0, async function (done) {
         console.info('system_parameter_test_0808 start');
-        var ret = false;
+        let ret = false;
         SetParameter("test.wait_param.203", "103");
         try {
             systemparameter.wait("test.wait_param.203", "103", 1, function (err, data) {
@@ -268,7 +268,7 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_0809', 0, async function (done) {
         console.info('system_parameter_test_0809 start');
-        var ret = false;
+        let ret = false;
         SetParameter("test.wait_param.204", "104");
         try {
             systemparameter.wait("test.wait_param.204", "*", 1, function (err, data) {
@@ -299,7 +299,7 @@ describe('SystemParameterTest', function () {
      */
     it('system_parameter_test_0810', 0, async function (done) {
         console.info('system_parameter_test_0810 start');
-        var ret = false;
+        let ret = false;
         SetParameter("test.wait_param.205", "105");
         try {
             systemparameter.wait("test.wait_param.205", "*", 1, function (err, data) {
