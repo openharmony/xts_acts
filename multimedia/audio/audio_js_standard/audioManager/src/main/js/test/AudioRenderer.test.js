@@ -320,40 +320,40 @@ describe('audioRenderer', function () {
      var waitTime;
      switch (samplingRate) {
          case 44100:
-             waitTime = 10;
+             waitTime = 45;
              break;
          case 8000:
              waitTime = 60;
              break;
          case 32000:
-             waitTime = 30;
+             waitTime = 45;
              break;
          case 64000:
-             waitTime = 4;
+             waitTime = 45;
              break;
          case 96000:
-             waitTime = 2;
+             waitTime = 45;
              break;
          case 11025:
              waitTime = 45;
              break;
          case 12000:
-             waitTime = 20;
+             waitTime = 45;
              break;
          case 16000:
-             waitTime = 10;
+             waitTime = 45;
              break;
          case 22050:
-             waitTime = 10;
+             waitTime = 45;
              break;
          case 24000:
-             waitTime = 6;
+             waitTime = 45;
              break;
          case 48000:
-             waitTime = 2;
+             waitTime = 45;
              break;
          default:
-             waitTime = 10;
+             waitTime = 45;
              break
      }
 
