@@ -2626,7 +2626,7 @@ describe('ActsRpcClientJsTest', function(){
             })
             console.log("---------------------end SUB_Softbus_IPC_MessageParcel_9300---------------------------");
         })
-    })
+    
 
     /*
      * @tc.number  SUB_Softbus_IPC_MessageParcel_9400
