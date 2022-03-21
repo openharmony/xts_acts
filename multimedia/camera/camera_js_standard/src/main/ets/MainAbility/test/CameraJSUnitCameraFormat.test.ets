@@ -372,64 +372,6 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       done();
     })
 
-    /**
-      * @tc.number    : CREATE_CAMERA_INPUT_POSITION_TYPE_TC_009
-      * @tc.name      : Create camerainput from camera-0 cameraposition & cameratype async api
-      * @tc.desc      : Create camerainput from camera-0 cameraposition & cameratype async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('CREATE_CAMERA_INPUT_POSITION_TYPE_TC_009', 0, async function (done) {
-      console.info("--------------CREATE_CAMERA_INPUT_POSITION_TYPE_TC_009--------------");
-      cameraManager.createCameraInput(camerasArray[0].cameraPosition, camerasArray[0].cameraType, async (err, data) => {
-        if (!err || err.message != "Failed to get create camera input arguments!") {
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POSITION_TYPE_TC_009 success");
-          if (data == null || data == undefined) {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POSITION_TYPE_TC_009 data is null || undefined");
-            expect(true).assertTrue();
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POSITION_TYPE_TC_009 PASSED");
-          } else {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POSITION_TYPE_TC_009 FAILED: " + err.message);
-            expect().assertFail();
-          }
-        } else {
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POSITION_TYPE_TC_009 FAILED: " + err.message);
-          expect().assertFail();
-        }
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POSITION_TYPE_TC_009 ends here");
-        await sleep(1000);
-        done();
-      })
-      await sleep(1000);
-      done();
-    })
-
-    /**
-      * @tc.number    : CREATE_CAMERA_INPUT_POSITION_TYPE_PROMISE_TC_010
-      * @tc.name      : Create camerainput from camera-0 cameraposition & cameratype promise api
-      * @tc.desc      : Create camerainput from camera-0 cameraposition & cameratype promise api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('CREATE_CAMERA_INPUT_POSITION_TYPE_PROMISE_TC_010', 0, async function (done) {
-      console.info("--------------CREATE_CAMERA_INPUT_POSITION_TYPE_PROMISE_TC_010--------------");
-      var cameraInputPromise = await cameraManager.createCameraInput(camerasArray[0].cameraPosition, camerasArray[0].cameraType);
-      console.info(TAG + "Entering CREATE_CAMERA_INPUT_POSITION_TYPE_PROMISE_TC_010 cameraInputPromise: " + JSON.stringify(cameraInputPromise));
-      if (cameraInputPromise == undefined) {
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POSITION_TYPE_PROMISE_TC_010 cameraInputPromise is null || undefined");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POSITION_TYPE_PROMISE_TC_010 PASSED");
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POSITION_TYPE_PROMISE_TC_010 FAILED");
-      }
-      console.info(TAG + "Entering CREATE_CAMERA_INPUT_POSITION_TYPE_PROMISE_TC_010 ends here");
-      await sleep(1000);
-      done();
-    })
-
     /*GET_SUPPORTED_PREVIEW_PHOTO_FORMATS_SIZE_TC*/
     /**
       * @tc.number    : GET_SUPPORTED_PREVIEW_FORMATS_TC_011
