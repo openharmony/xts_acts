@@ -69,7 +69,7 @@ struct NavigationExample {
         { value: 'add' },
         { value: 'collect' }
       ] })
-      .onTitleModeChanged((titleModel: NavigationTitleMode) => {
+      .onTitleModeChange((titleModel: NavigationTitleMode) => {
         console.log('titleMode:' + titleModel)
       })
 

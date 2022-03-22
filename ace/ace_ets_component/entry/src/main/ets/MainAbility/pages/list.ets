@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import events_emitter from '@ohos.emitter';
 
 @Entry
@@ -31,51 +32,68 @@ struct ListExample {
   onPageShow() {
     console.info('[list] page show called');
     var stateChangeEvent = {
-      eventId: 80,
+      eventId: 124,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
     var stateChangeEventTwo = {
-      eventId: 81,
+      eventId: 125,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBackTwo);
+
+    var stateChangeEvent3 = {
+      eventId: 901,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent3, this.stateChangCallBackTwo);
+
+    var stateChangeEvent4 = {
+      eventId: 902,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent4, this.stateChangCallBackTwo);
+
+    var stateChangeEvent5 = {
+      eventId: 903,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent5, this.stateChangCallBackTwo);
   }
 
   private stateChangCallBack = (eventData) => {
     console.info("[stateChangCallBack] stateChangCallBack");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called:" + JSON.stringify(eventData));
-      if(eventData.data.listDirection != null) {
+      if (eventData.data.listDirection != null) {
         this.listDirection = eventData.data.listDirection;
       }
-      if(eventData.data.editMode != null) {
+      if (eventData.data.editMode != null) {
         this.editMode = eventData.data.editMode;
       }
-      if(eventData.data.edgeEffect != null) {
+      if (eventData.data.edgeEffect != null) {
         this.edgeEffect = eventData.data.edgeEffect;
       }
-      if(eventData.data.chainAnimation != null) {
+      if (eventData.data.chainAnimation != null) {
         this.chainAnimation = eventData.data.chainAnimation;
       }
     }
   }
-
   private stateChangCallBackTwo = (eventData) => {
     console.info("[stateChangCallBackTwo] stateChangCallBack");
     if (eventData != null) {
       console.info("[stateChangCallBackTwo] state change called:" + JSON.stringify(eventData));
-      if(eventData.data.strokeWidth != null) {
+      if (eventData.data.strokeWidth != null) {
         this.strokeWidth = eventData.data.strokeWidth;
       }
-      if(eventData.data.color != null) {
+      if (eventData.data.color != null) {
         this.color = eventData.data.color;
       }
-      if(eventData.data.startMargin != null) {
+      if (eventData.data.startMargin != null) {
         this.startMargin = eventData.data.startMargin;
       }
-      if(eventData.data.endMargin != null) {
+      if (eventData.data.endMargin != null) {
         this.endMargin = eventData.data.endMargin;
       }
     }
@@ -88,19 +106,33 @@ struct ListExample {
           ForEach(this.arr, (item) => {
             ListItem() {
               Text('' + item)
-                .width('100%').height(100).fontSize(16)
-                .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+                .width('100%')
+                .height(100)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
             }.editable(true)
           }, item => item)
         }
         .key('list')
         .listDirection(this.listDirection)
-        .divider({ strokeWidth: this.strokeWidth, color: this.color, startMargin: this.startMargin, endMargin: this.endMargin })
+        .divider({
+          strokeWidth: this.strokeWidth,
+          color: this.color,
+          startMargin: this.startMargin,
+          endMargin: this.endMargin
+        })
         .edgeEffect(this.edgeEffect)
         .chainAnimation(this.chainAnimation)
+        .multiSelectable(true)
         .onScrollIndex((firstIndex: number, lastIndex: number) => {
           console.info('first' + firstIndex)
           console.info('last' + lastIndex)
+        })
+        .onScroll((scrollOffset: number, scrollState: ScrollState) => {
+          console.info('scrollOffset:' + scrollOffset)
+          console.info('scrollState:' + scrollState)
         })
         .editMode(this.editMode)
         .onItemDelete((index: number) => {
@@ -109,8 +141,10 @@ struct ListExample {
           console.info(JSON.stringify(this.arr))
           this.editFlag = false
           return true
-        }).width('90%')
+        })
+        .width('90%')
       }.width('100%')
+
       Button('edit list')
         .onClick(() => {
           this.editMode = !this.editMode

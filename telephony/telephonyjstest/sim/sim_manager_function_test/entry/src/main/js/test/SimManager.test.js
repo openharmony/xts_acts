@@ -1175,7 +1175,7 @@ describe('SimManagerTest', function () {
   /**
    * @tc.number  Telephony_Sim_queryIccDiallingNumbers_Async_0800
    * @tc.name    Test sim.queryIccDiallingNumbers(soltId: 2, type: 1, callback:
-   *             AsyncCallback<Array<DiallingNumbersInfo>>), expect return a empty array.
+   *             AsyncCallback<Array<DiallingNumbersInfo>>), expect return an empty array.
    * @tc.desc    Function test
    */
   it('Telephony_Sim_queryIccDiallingNumbers_Async_0800', 0, async function (done) {
@@ -1196,7 +1196,7 @@ describe('SimManagerTest', function () {
   /**
    * @tc.number  elephony_Sim_queryIccDiallingNumbers_Promise_0800
    * @tc.name    Test sim.queryIccDiallingNumbers(soltId: 2, type: 1):Promise<Array<DiallingNumbersInfo>>
-   *             promise interface, expect result is a empty array.
+   *             promise interface, expect result is an empty array.
    * @tc.desc    Function test
    */
   it('telephony_Sim_queryIccDiallingNumbers_Promise_0800', 0, async function (done) {

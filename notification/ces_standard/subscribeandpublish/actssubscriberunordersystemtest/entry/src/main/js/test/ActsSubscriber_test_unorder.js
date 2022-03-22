@@ -17,10 +17,10 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('ActsSubscriberTestUnorderSystem', async function (done) {
     console.info("===========ActsSubscriberTestUnorderSystem start====================>");
-    var commonEventSubscriber1;
-    var commonEventSubscriber2;
-    var commonEventSubscriber3;
-    var array = [
+    let commonEventSubscriber1;
+    let commonEventSubscriber2;
+    let commonEventSubscriber3;
+    let array = [
             Subscriber.Support.COMMON_EVENT_SHUTDOWN,
             Subscriber.Support.COMMON_EVENT_BATTERY_CHANGED,
             Subscriber.Support.COMMON_EVENT_BATTERY_LOW,
@@ -107,6 +107,8 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             Subscriber.Support.COMMON_EVENT_AIRPLANE_MODE_CHANGED,
             Subscriber.Support.COMMON_EVENT_SMS_RECEIVE_COMPLETED,
             Subscriber.Support.COMMON_EVENT_SPN_INFO_UPDATED,
+            Subscriber.Support.COMMON_EVENT_BOOT_COMPLETED,
+            Subscriber.Support.COMMON_EVENT_SPLIT_SCREEN
     ];
 
     function publishCallback(err) {
@@ -114,9 +116,9 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
     }
 
     function findArray(str) {
-        var value = false;
-        var index1 = 0;
-        var length = array.length;
+        let value = false;
+        let index1 = 0;
+        let length = array.length;
         for(; index1 < length; ++index1) {
             if (array[index1] == str) {
                 value = true;
@@ -133,7 +135,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
      */
     it('ActsSubscriberTestUnorderSystem_0100', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorderSystem_0100 start==========================>");
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: [
                     Subscriber.Support.COMMON_EVENT_SHUTDOWN,
                     Subscriber.Support.COMMON_EVENT_BATTERY_CHANGED,
@@ -188,7 +190,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             ],
         };
 
-        var result = 0;
+        let result = 0;
 
         function subscriberCallBack001(err, data) {
             console.info("==========================>subscriberCallBack001 event = "+ data.event);
@@ -204,15 +206,15 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
 
         Subscriber.createSubscriber(
             commonEventSubscribeInfo
-        ).then(function (data) {
+        ).then((data)=>{
             console.info("===============>ActsSubscriberTestUnorderSystem_0100=========createSubscriber promise");
             commonEventSubscriber1 = data;
             Subscriber.subscribe(commonEventSubscriber1, subscriberCallBack001);
-            for (var i = 0; i < 50; ++i) {
-                console.debug("===============>ActsSubscriberTestUnorderSystem_0100 delay 1s==================");
-                console.info("Subscriber.publish is run at:" + commonEventSubscribeInfo.events[i]);
-                console.info("Subscriber type:" + typeof(commonEventSubscribeInfo.events[i]));
-                Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
+            for (let i = 0; i < 50; ++i) {
+                setTimeout(function (){
+                    console.debug("===============>ActsSubscriberTestUnorderSystem_0100 delay 1s=========i:"+i);
+                    Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
+                }, 1000);
             }
         })
     })
@@ -224,7 +226,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
      */
     it('ActsSubscriberTestUnorderSystem_0200', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorderSystem_0200 start==========================>");
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: [
                     Subscriber.Support.COMMON_EVENT_WIFI_HOTSPOT_STATE,
                     Subscriber.Support.COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE,
@@ -265,7 +267,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             ],
         };
 
-        var result = 0;
+        let result = 0;
 
         function subscriberCallBack002(err, data) {
             console.info("==========================>subscriberCallBack002 event = "+ data.event);
@@ -281,28 +283,28 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
 
         Subscriber.createSubscriber(
             commonEventSubscribeInfo
-        ).then(function (data) {
+        ).then((data)=>{
             console.info("===============>ActsSubscriberTestUnorderSystem_0200=========createSubscriber promise");
             commonEventSubscriber2 = data;
             Subscriber.subscribe(commonEventSubscriber2, subscriberCallBack002);
-            for (var i = 0; i < 36; ++i) {
-                console.debug("===============>ActsSubscriberTestUnorderSystem_0200 delay 1s==================");
-                console.info("Subscriber.publish is run at:" + commonEventSubscribeInfo.events[i]);
-                console.info("Subscriber type:" + typeof(commonEventSubscribeInfo.events[i]));
-                Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
+            for (let i = 0; i < 36; ++i) {
+                setTimeout(function (){
+                    console.debug("===============>ActsSubscriberTestUnorderSystem_0200 delay 1s===========i:"+i);
+                    Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
+                }, 1000);
             }
         })
     })
 
     /*
      * @tc.number    : ActsSubscriberTestUnorderSystem_0300
-     * @tc.name      : verify subscribe and publish : Check subscribe and publish system event data with  permission 
+     * @tc.name      : verify subscribe and publish : Check subscribe and publish system event data without permission
      *               : including multiple permissions
      * @tc.desc      : Check the subscriber can receive event "publish_event0100" type of the interface (by Promise)
      */
     it('ActsSubscriberTestUnorderSystem_0300', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorderSystem_0300 start==========================>");
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: [
                 Subscriber.Support.COMMON_EVENT_WIFI_P2P_CONN_STATE,
                 Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED,
@@ -375,14 +377,14 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
 
         Subscriber.createSubscriber(
             commonEventSubscribeInfo
-        ).then(function (data) {
+        ).then((data)=>{
             console.info("===============>ActsSubscriberTestUnorderSystem_0300=========createSubscriber promise");
             commonEventSubscriber3 = data;
             Subscriber.subscribe(commonEventSubscriber3, subscriberCallBack003);
             setTimeout(function (){
                 console.debug("===============>ActsSubscriberTestUnorderSystem_0300 delay 3s==================");
                 Subscriber.unsubscribe(commonEventSubscriber3, unsubscribeCallback);
-            }, 3000); 
+            }, 3000);
         })
     })
 })

@@ -14,28 +14,43 @@
  * limitations under the License.
  */
 
+import events_emitter from '@ohos.emitter';
+
 @Entry
 @Component
 struct ColumnExample {
+  @State alignItems: HorizontalAlign = HorizontalAlign.Start;
+
+  onPageShow() {
+    console.info('[column] page show called');
+    var stateChangeEvent = {
+      eventId: 192,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+  }
+
+  private stateChangCallBack = (eventData) => {
+    console.info("[column] page stateChangCallBack");
+    if (eventData != null) {
+      console.info("[column] page state change called:" + JSON.stringify(eventData));
+      if(eventData.data.alignItems != null) {
+        this.alignItems = eventData.data.alignItems;
+      }
+    }
+  }
+
   build() {
-    Column({ space: 5 }) {
-      Text('space').fontSize(9).fontColor(0xCCCCCC).width('90%')
-      Column({ space: 5 }) {
-        Column().width('100%').height(50).backgroundColor(0xAFEEEE)
-        Column().width('100%').height(50).backgroundColor(0x00FFFF).key('column')
-      }.width('90%').height(107).border({ width: 1 })
-
-      Text('alignItems(Start)').fontSize(9).fontColor(0xCCCCCC).width('90%')
+    Column() {
+      Text('alignItems').fontSize(9).fontColor(0xCCCCCC).width('90%')
       Column() {
-        Column().width('50%').height(50).backgroundColor(0xAFEEEE)
-        Column().width('50%').height(50).backgroundColor(0x00FFFF)
-      }.alignItems(HorizontalAlign.Start).width('90%').border({ width: 1 })
-
-      Text('alignItems(End)').fontSize(9).fontColor(0xCCCCCC).width('90%')
-      Column() {
-        Column().width('50%').height(50).backgroundColor(0xAFEEEE)
-        Column().width('50%').height(50).backgroundColor(0x00FFFF)
-      }.alignItems(HorizontalAlign.End).width('90%').border({ width: 1 })
+        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('50%').height(30).backgroundColor(0x00FFFF)
+      }
+      .key("alignItemsColumn")
+      .width('90%')
+      .border({ width: 1 })
+      .alignItems(this.alignItems)
     }.width('100%').padding({ top: 5 })
   }
 }

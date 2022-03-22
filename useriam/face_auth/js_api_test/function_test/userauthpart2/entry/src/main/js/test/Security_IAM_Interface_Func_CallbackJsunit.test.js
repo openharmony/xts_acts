@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,9 +14,9 @@
  */
 
 import {describe, it, expect} from 'deccjsunit/index'
-import userAuth from '@ohos.userauth'
-import userIDM from '@ohos.useridm'
-import pinAuth from '@ohos.pinauth'
+import userAuth from '@ohos.userAuth'
+import userIDM from '@ohos.userIDM'
+import pinAuth from '@ohos.pinAuth'
 import * as publicFC from './Publicfunction-n.js'
 
 
@@ -33,7 +33,7 @@ describe('userauthTest', function () {
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_IDMAuthSubType_0101', 0, async function (done) {
+    it('Security_IAM_Face_Interface_check_IDMAuthType_0101', 0, async function (done) {
         console.info('testFace Security_IAM_Face_Interface_check_IDMAuthSubType_0101 start');
         expect(1).assertEqual(userIDM.AuthType.PIN);
         expect(2).assertEqual(userIDM.AuthType.FACE);

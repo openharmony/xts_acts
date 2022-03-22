@@ -16,10 +16,10 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from './Utils';
+import Utils from './Utils.ets';
 
 export default function areaChangeJsunit() {
-  describe('areaChange', function () {
+  describe('areaChangeTest', function () {
     beforeEach(async function (done) {
       let options = {
         uri: 'pages/areaChange',
@@ -65,8 +65,8 @@ export default function areaChangeJsunit() {
       let obj = JSON.parse(strJson);
       console.info("areaChangeTest_0200 component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.width).assertEqual('409.000000');
-      expect(obj.$attrs.height).assertEqual('175.000000');
+      expect(obj.$attrs.width).assertEqual('519.000000');
+      expect(obj.$attrs.height).assertEqual('210.000000');
       console.info('areaChangeTest_0200 END');
       done();
     });
@@ -79,7 +79,7 @@ export default function areaChangeJsunit() {
         expect(indexEvent.data.value).assertEqual('TextText');
       }
       let indexEvent = {
-        eventId: 21,
+        eventId: 61,
         priority: events_emitter.EventPriority.LOW
       }
       try {
@@ -89,7 +89,7 @@ export default function areaChangeJsunit() {
       }
       console.info("areaChangeTest_0300 click result is: " + JSON.stringify(sendEventByKey('text1', 10, "")));
       var innerEventOne = {
-        eventId: 22,
+        eventId: 62,
         priority: events_emitter.EventPriority.LOW
       }
       await Utils.sleep(1500);
@@ -114,7 +114,7 @@ export default function areaChangeJsunit() {
         expect(indexEvent.data.value).assertEqual('TextTextText');
       }
       let indexEvent = {
-        eventId: 21,
+        eventId: 62,
         priority: events_emitter.EventPriority.LOW
       }
       try {
@@ -122,7 +122,7 @@ export default function areaChangeJsunit() {
       } catch (err) {
         console.info("areaChangeTest_0400 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("areaChangeTest_0400 click result is: " + JSON.stringify(sendEventByKey('text1',10,"")));
+      console.info("areaChangeTest_0400 click result is: " + JSON.stringify(sendEventByKey('text1', 10, "")));
       console.info('areaChangeTest_0400 END');
       done();
     });

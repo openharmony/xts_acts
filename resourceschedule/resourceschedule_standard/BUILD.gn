@@ -18,6 +18,7 @@ group("resourceschedule_standard") {
   if (is_standard_system) {
     deps = [
       "backgroundtaskmanager:resourceschedule_backgroundtaskmanager_js_test",
+      "deviceusagestatisticsjsunit:resourceschedule_deviceusagestatisticsjsunit_js_test",
       "reminderagent:resourceschedule_reminderagent_js_test",
       "workscheduler:resourceschedule_workscheduler_js_test",
     ]

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,6 +15,7 @@
 
 import media from '@ohos.multimedia.media'
 import Fileio from '@ohos.fileio'
+import router from '@system.router'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 
@@ -32,17 +33,21 @@ describe('VideoDecoderEnum', function () {
     let surfaceID = '';
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const BASIC_PATH = '/data/media/';
+    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/';
     let ES_FRAME_SIZE = [];
-    const H264_FRAME_SIZE_30FPS_1080 =
-    [ 3491, 115184];
+    const H264_FRAME_SIZE_60FPS_320 =
+    [ 2106, 11465];
     beforeAll(function() {
         console.info('beforeAll case');
         // getSurfaceID();
     })
 
-    beforeEach(function() {
+    beforeEach(async function() {
         console.info('beforeEach case');
+        await toDisplayPage().then(() => {
+        }, failCallback).catch(failCatch);
+        await msleep(1000).then(() => {
+        }, failCallback).catch(failCatch);
         frameCountIn = 0;
         frameCountOut = 0;
         timestamp = 0;
@@ -50,6 +55,7 @@ describe('VideoDecoderEnum', function () {
         outputQueue = [];
         isCodecData = false;
         inputEosFlag = false;
+        surfaceID = globalThis.value;
     })
 
     afterEach(async function() {
@@ -60,13 +66,10 @@ describe('VideoDecoderEnum', function () {
             }, failCallback).catch(failCatch);
             videoDecodeProcessor = null;
         }
-        if (videoPlayer != null) {
-            await videoPlayer.release().then(() => {
-                console.info('in case : videoPlayer release success');
-            }, failCallback).catch(failCatch);
-            videoPlayer = null;
-        }
+        await router.clear().then(() => {
+        }, failCallback).catch(failCatch);
     })
+
 
     afterAll(function() {
         console.info('afterAll case');
@@ -87,6 +90,22 @@ describe('VideoDecoderEnum', function () {
             readStreamSync = Fileio.createStreamSync(path, 'rb');
         } catch(e) {
             console.error('in case readFile' + e);
+        }
+    }
+
+    function msleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    async function toDisplayPage() {
+        let path = 'pages/display/display';
+        let options = {
+            uri: path,
+        }
+        try {
+            await router.push(options);
+        } catch (e) {
+            console.error('in case toDisplayPage' + e);
         }
     }
 
@@ -148,7 +167,7 @@ describe('VideoDecoderEnum', function () {
                     console.info('in case: setParameter success ');
                 }, failCallback).catch(failCatch);
             }
-            videoDecodeProcessor.queueInput(inputObject).then(() => {
+            videoDecodeProcessor.pushInputData(inputObject).then(() => {
                 console.info('in case: queueInput success ');
             }, failCallback).catch(failCatch);
         }
@@ -164,7 +183,7 @@ describe('VideoDecoderEnum', function () {
                 return;
             }
             frameCountOut++;
-            await videoDecodeProcessor.releaseOutput(outputObject, true).then(() => {
+            await videoDecodeProcessor.freeOutputBuffer(outputObject).then(() => {
                 console.log('in case: release output count:' + frameCountOut);
             }, failCallback).catch(failCatch);
         }
@@ -172,7 +191,7 @@ describe('VideoDecoderEnum', function () {
 
     function setCallback(nextStep){
         console.info('in case:  setCallback in');
-        videoDecodeProcessor.on('inputBufferAvailable', async (inBuffer) => {
+        videoDecodeProcessor.on('needInputData', async (inBuffer) => {
             expect(inBuffer.index !== undefined).assertTrue();
             console.info('in case: inputBufferAvailable inBuffer.index: '+ inBuffer.index);
             expect(inBuffer.data !== undefined).assertTrue();
@@ -189,7 +208,7 @@ describe('VideoDecoderEnum', function () {
             await enqueueInputs();
         });
 
-        videoDecodeProcessor.on('outputBufferAvailable', async (outBuffer) => {
+        videoDecodeProcessor.on('newOutputData', async (outBuffer) => {
             console.info('in case: outputBufferAvailable outBuffer.index: '+ outBuffer.index);
             videoDecodeProcessor.getOutputMediaDescription().then((MediaDescription) => {
                 console.info('get outputMediaDescription : ' + MediaDescription);
@@ -204,7 +223,7 @@ describe('VideoDecoderEnum', function () {
             console.info('in case: err.code is ' + err.code);
         });
 
-        videoDecodeProcessor.on('outputFormatChanged',(format) => {
+        videoDecodeProcessor.on('streamChanged',(format) => {
             console.info('in case: Output format changed: ' + format.toString());
         });
         console.info('in case:  setCallback out');
@@ -294,51 +313,29 @@ describe('VideoDecoderEnum', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_ENUM_AVCProfile_0100
-        * @tc.name      : 001.AVCProfile
-        * @tc.desc      : Test Enumerate AVCProfile
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_DECODER_ENUM_AVCProfile_0100', 0, async function (done) {
-        expect(media.AVCProfile.AVC_PROFILE_BASELINE).assertEqual(0);
-        expect(media.AVCProfile.AVC_PROFILE_CONSTRAINED_BASELINE).assertEqual(1);
-        expect(media.AVCProfile.AVC_PROFILE_CONSTRAINED_HIGH).assertEqual(2);
-        expect(media.AVCProfile.AVC_PROFILE_EXTENDED).assertEqual(3);
-        expect(media.AVCProfile.AVC_PROFILE_HIGH).assertEqual(4);
-        expect(media.AVCProfile.AVC_PROFILE_HIGH_10).assertEqual(5);
-        expect(media.AVCProfile.AVC_PROFILE_HIGH_422).assertEqual(6);
-        expect(media.AVCProfile.AVC_PROFILE_HIGH_444).assertEqual(7);
-        expect(media.AVCProfile.AVC_PROFILE_MAIN).assertEqual(8);
-        done();
-    })    
-
-    /* *
         * @tc.number    : SUB_MEDIA_VIDEO_DECODER_ENUM_CodecBuffer_0100
-        * @tc.name      : 002.CodecBuffer
+        * @tc.name      : 001.CodecBuffer
         * @tc.desc      : Test Interface CodecBuffer
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
     it('SUB_MEDIA_VIDEO_DECODER_ENUM_CodecBuffer_0100', 0, async function (done) {
-        ES_FRAME_SIZE = H264_FRAME_SIZE_30FPS_1080;
+        ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
         isCodecData = true;
-        let srcPath = BASIC_PATH + 'out_1920_1080_30fps_3s.h264';
+        let srcPath = BASIC_PATH + 'out_320_240_10s.h264';
         let mediaDescription = {
             'track_type': 1,
             'codec_mime': 'video/avc',
-            'width': 1920,
-            'height': 1080,
+            'width': 320,
+            'height': 240,
             'pixel_format': 4,
-            'frame_rate': 30.00,
+            'frame_rate': 60.00,
             'max_input_size': 150000,
         }
         await toCreateVideoDecoderByMime('video/avc', done);
         await toGetVideoDecoderCaps();
         await toConfigure(mediaDescription, srcPath);
-        await setSurfaceID(done);
         await toSetOutputSurface(true);
         setCallback(
             function(){eventEmitter.emit('nextStep', done);}
@@ -349,7 +346,7 @@ describe('VideoDecoderEnum', function () {
 
     /* *
         * @tc.number    : SUB_MEDIA_VIDEO_DECODER_ENUM_CodecMimeType_0100
-        * @tc.name      : 003.CodecMimeType
+        * @tc.name      : 002.CodecMimeType
         * @tc.desc      : Test Enumerate CodecMimeType
         * @tc.size      : MediumTest
         * @tc.type      : Function test
@@ -359,107 +356,9 @@ describe('VideoDecoderEnum', function () {
         expect(media.CodecMimeType.VIDEO_H263).assertEqual('video/h263');
         expect(media.CodecMimeType.VIDEO_AVC).assertEqual('video/avc');
         expect(media.CodecMimeType.VIDEO_MPEG2).assertEqual('video/mpeg2');
-        expect(media.CodecMimeType.VIDEO_HEVC).assertEqual('video/hevc');
         expect(media.CodecMimeType.VIDEO_MPEG4).assertEqual('video/mp4v-es');
         expect(media.CodecMimeType.VIDEO_VP8).assertEqual('video/x-vnd.on2.vp8');
-        expect(media.CodecMimeType.VIDEO_VP9).assertEqual('video/x-vnd.on2.vp9');
         done();
     })   
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_ENUM_H263Profile_0100
-        * @tc.name      : 004.H263Profile
-        * @tc.desc      : Test Enumerate H263Profile
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_DECODER_ENUM_H263Profile_0100', 0, async function (done) {
-        expect(media.H263Profile.H263_PROFILE_BACKWARD_COMPATIBLE).assertEqual(0);
-        expect(media.H263Profile.H263_PROFILE_BASELINE).assertEqual(1);
-        expect(media.H263Profile.H263_PROFILE_H320_CODING).assertEqual(2);
-        expect(media.H263Profile.H263_PROFILE_HIGH_COMPRESSION).assertEqual(3);
-        expect(media.H263Profile.H263_PROFILE_HIGH_LATENCY).assertEqual(4);
-        expect(media.H263Profile.H263_PROFILE_ISW_V2).assertEqual(5);
-        expect(media.H263Profile.H263_PROFILE_ISW_V3).assertEqual(6);
-        expect(media.H263Profile.H263_PROFILE_INTERLACE).assertEqual(7);
-        expect(media.H263Profile.H263_PROFILE_INTERNET).assertEqual(8);
-        done();
-    })   
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_ENUM_MPEG2Profile_0100
-        * @tc.name      : 006.MPEG2Profile
-        * @tc.desc      : Test Enumerate MPEG2Profile
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_DECODER_ENUM_MPEG2Profile_0100', 0, async function (done) {
-        expect(media.MPEG2Profile.MPEG2_PROFILE_422).assertEqual(0);
-        expect(media.MPEG2Profile.MPEG2_PROFILE_HIGH).assertEqual(1);
-        expect(media.MPEG2Profile.MPEG2_PROFILE_MAIN).assertEqual(2);
-        expect(media.MPEG2Profile.MPEG2_PROFILE_SNR).assertEqual(3);
-        expect(media.MPEG2Profile.MPEG2_PROFILE_SIMPLE).assertEqual(4);
-        expect(media.MPEG2Profile.MPEG2_PROFILE_SPATIAL).assertEqual(5);
-        done();
-    })
-    
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_ENUM_MPEG4Profile_0100
-        * @tc.name      : 007.MPEG4Profile
-        * @tc.desc      : Test Enumerate MPEG4Profile
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_DECODER_ENUM_MPEG4Profile_0100', 0, async function (done) {
-        expect(media.MPEG4Profile.MPEG4_PROFILE_ADVANCED_CODING).assertEqual(0);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_ADVANCED_CORE).assertEqual(1);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_ADVANCED_REAL_TIME).assertEqual(2);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_ADVANCED_SCALABLE).assertEqual(3);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_ADVANCED_SIMPLE).assertEqual(4);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_BASIC_ANIMATED).assertEqual(5);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_CORE).assertEqual(6);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_CORE_SCALABLE).assertEqual(7);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_HYBRID).assertEqual(8);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_MAIN).assertEqual(9);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_NBIT).assertEqual(10);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_SCALABLE_TEXXTURE).assertEqual(11);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_SIMPLE).assertEqual(12);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_SIMPLE_FBA).assertEqual(13);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_SIMPLE_FACE).assertEqual(14);
-        expect(media.MPEG4Profile.MPEG4_PROFILE_SIMPLE_SCALABLE).assertEqual(15);
-        done();
-    })  
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_ENUM_VideoPixelFormat_0100
-        * @tc.name      : 009.VideoPixelFormat
-        * @tc.desc      : Test Enumerate VideoPixelFormat
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_DECODER_ENUM_VideoPixelFormat_0100', 0, async function (done) {
-        expect(media.VideoPixelFormat.YUVI420).assertEqual(1);
-        expect(media.VideoPixelFormat.NV12).assertEqual(2);
-        expect(media.VideoPixelFormat.NV21).assertEqual(3);
-        expect(media.VideoPixelFormat.SURFACE_FORMAT).assertEqual(4);
-        done();
-    })  
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_ENUM_VP8Profile_0100
-        * @tc.name      : 010.VP8Profile
-        * @tc.desc      : Test Enumerate VP8Profile
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_DECODER_ENUM_VP8Profile_0100', 0, async function (done) {
-        expect(media.VP8Profile.VP8_PROFILE_MAIN).assertEqual(0);
-        done();
-    }) 
 })
     

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,10 +13,16 @@
  * limitations under the License.
  */
 
-require('./Security_IAM_PIN_Kit_CallbackJsunit.test.js')
-require('./Security_IAM_PIN_Func_CallbackJsunit.test.js')
 require('./Security_IAM_PIN_DFX_CallbackJsunit.test.js')
-require('./Security_IAM_Coauth_DFX_CallbackJsunit.test.js')
-require('./Security_IAM_Coauth_Func_CallbackJsunit.test.js')
+
+// require('./mytest.test.js')
+require('./Security_IAM_PIN_Func_CallbackJsunit.test.js')
+require('./Security_IAM_PIN_Kit_CallbackJsunit.test.js')
 require('./Security_IAM_Face_DFX_CallbackJsunit.test.js')
 require('./Security_IAM_Face_Func_CallbackJsunit.test.js')
+require('./Security_IAM_Interface_DFX_CallbackJsunit.test.js')
+require('./Security_IAM_Interface_Func_CallbackJsunit.test.js')
+require('./Security_IAM_Coauth_DFX_CallbackJsunit.test.js')
+require('./Security_IAM_Coauth_Func_CallbackJsunit.test.js')
+
+

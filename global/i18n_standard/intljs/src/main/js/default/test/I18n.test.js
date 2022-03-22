@@ -19,6 +19,45 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 describe('I18nTest', function () {
     console.log('*************start I18NTest*************');
 
+    let hour = I18n.is24HourClock();
+    console.log('init 24 hour clock value ' + hour);
+
+    /* *
+    * execute this step before all testcases
+    */
+    beforeAll(function(){
+        console.log('step before all cases in I18n.'
+        + ' 24hour: ' + I18n.is24HourClock()
+        + ' prelang: ' + I18n.getPreferredLanguageList()
+        + ' syslocale: ' + I18n.getSystemLocale());
+    })
+
+    /* *
+    * execute this step before every testcase
+    */
+    beforeEach(function(){
+        console.log('step before every case in I18n.');
+    })
+
+    /* *
+    * execute this step after every testcase
+    */
+    afterEach(function(){
+        let afterValue = I18n.set24HourClock(hour);
+        console.log('step after every cases.' + afterValue);
+        console.log('24 hour clock after every cases ' + I18n.is24HourClock());
+    })
+
+    /* *
+    * execute this step after all testcases
+    */
+    afterAll(function(){
+        console.log('step after all cases in I18n.'
+        + ' 24hour: ' + I18n.is24HourClock()
+        + ' prelang: ' + I18n.getPreferredLanguageList()
+        + ' syslocale: ' + I18n.getSystemLocale());
+    })
+
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_0100
     * @tc.name getSystemLanguage
@@ -123,6 +162,20 @@ describe('I18nTest', function () {
     })
 
     /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_0850
+    * @tc.name setSystemLanguage with not exist param aaa
+    * @tc.desc check the language
+    */
+    it('SUB_GLOBAL_I18N_JS_0850', 0, function () {
+        let value = I18n.setSystemLanguage('aaa');
+        console.log('SUB_GLOBAL_I18N_JS_0850 ' + value);
+        expect(value).assertTrue();
+        let lang = I18n.getSystemLanguage();
+        console.log('SUB_GLOBAL_I18N_JS_0850 ' + lang);
+        expect(lang).assertEqual('aaa');
+    })
+
+    /* *
     * @tc.number SUB_GLOBAL_I18N_JS_0900
     * @tc.name setSystemLanguage with not exist param aabb
     * @tc.desc check the language
@@ -133,7 +186,7 @@ describe('I18nTest', function () {
         expect(value).assertFalse();
         let lang = I18n.getSystemLanguage();
         console.log('i18n_test_0900 ' + lang);
-        expect(lang).assertEqual('aa');
+        expect(lang).assertEqual('aaa');
     })
 
     /* *
@@ -202,6 +255,29 @@ describe('I18nTest', function () {
         console.log('i18n_test_1400 ' + value);
         expect(value).assertTrue();
     })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_1420
+    * @tc.name setSystemRegion with ACN param
+    * @tc.desc check the region
+    */
+    it('i18n_test_1420', 0, function () {
+        let value = I18n.setSystemRegion('ACN');
+        console.log('i18n_test_1420 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_1440
+    * @tc.name setSystemRegion with cn param
+    * @tc.desc check the region
+    */
+    it('i18n_test_1440', 0, function () {
+        let value = I18n.setSystemRegion('cn');
+        console.log('i18n_test_1440 ' + value);
+        expect(value).assertFalse();
+    })
+
 
     /* *
     * @tc.number SUB_GLOBAL_I18N_JS_1500
@@ -684,11 +760,41 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5100', 0, function () {
-        console.error('i18n_test_5100 ' + 'start');
+        console.log('i18n_test_5100 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('13510574676');
-        console.error('i18n_test_5100 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_5100 ' + ran);
+        let valid = phonenumber.isValidNumber('1351057467' + ran);
+        console.log('i18n_test_5100 ' + valid);
         expect(valid).assertEqual(true);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_5120
+    * @tc.name test isValidNumber interface with 0755-6100088X param
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_5120', 0, function () {
+        console.log('i18n_test_5120 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_5120 ' + ran);
+        let valid = phonenumber.isValidNumber('0755-6100088' + ran);
+        console.log('i18n_test_5120 ' + valid);
+        expect(valid).assertEqual(true);
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_5140
+    * @tc.name test isValidNumber interface with 110 param
+    * @tc.desc get the isValidNumber value
+    */
+     it('i18n_test_5140', 0, function () {
+        console.log('i18n_test_5140 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let valid = phonenumber.isValidNumber('110');
+        console.log('i18n_test_5140 ' + valid);
+        expect(valid).assertEqual(false);
     })
 
     /**
@@ -697,10 +803,12 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5200', 0, function () {
-        console.error('i18n_test_5200 ' + 'start');
+        console.log('i18n_test_5200 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('135 1057 4676');
-        console.error('i18n_test_5200 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_5200 ' + ran);
+        let valid = phonenumber.isValidNumber('135 1057 467' + ran);
+        console.log('i18n_test_5200 ' + valid);
         expect(valid).assertEqual(true);
     })
 
@@ -710,10 +818,12 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5300', 0, function () {
-        console.error('i18n_test_5300 ' + 'start');
+        console.log('i18n_test_5300 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('+86 135 1057 4676');
-        console.error('i18n_test_5300 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_5300 ' + ran);
+        let valid = phonenumber.isValidNumber('+86 135 1057 467' + ran);
+        console.log('i18n_test_5300 ' + valid);
         expect(valid).assertEqual(true);
     })
 
@@ -723,10 +833,12 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5400', 0, function () {
-        console.error('i18n_test_5400 ' + 'start');
+        console.log('i18n_test_5400 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('135-1057-4676');
-        console.error('i18n_test_5400 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_5400 ' + ran);
+        let valid = phonenumber.isValidNumber('135-1057-467' + ran);
+        console.log('i18n_test_5400 ' + valid);
         expect(valid).assertEqual(true);
     })
 
@@ -736,10 +848,12 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5500', 0, function () {
-        console.error('i18n_test_5500 ' + 'start');
+        console.log('i18n_test_5500 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('tel:+86-135-1057-4676');
-        console.error('i18n_test_5500 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_5500 ' + ran);
+        let valid = phonenumber.isValidNumber('tel:+86-135-1057-467' + ran);
+        console.log('i18n_test_5500 ' + valid);
         expect(valid).assertEqual(true);
     })
 
@@ -749,10 +863,12 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5600', 0, function () {
-        console.error('i18n_test_5600 ' + 'start');
+        console.log('i18n_test_5600 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('86-135-1057-4676');
-        console.error('i18n_test_5600 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_5600 ' + ran);
+        let valid = phonenumber.isValidNumber('86-135-1057-467' + ran);
+        console.log('i18n_test_5600 ' + valid);
         expect(valid).assertEqual(true);
     })
 
@@ -762,10 +878,12 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5700', 0, function () {
-        console.error('i18n_test_5700 ' + 'start');
+        console.log('i18n_test_5700 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('+8613510574676');
-        console.error('i18n_test_5700 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_5700 ' + ran);
+        let valid = phonenumber.isValidNumber('+861351057467' + ran);
+        console.log('i18n_test_5700 ' + valid);
         expect(valid).assertEqual(true);
     })
 
@@ -775,10 +893,12 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5800', 0, function () {
-        console.error('i18n_test_5800 ' + 'start');
+        console.log('i18n_test_5800 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('8613510574676');
-        console.error('i18n_test_5800 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_5800 ' + ran);
+        let valid = phonenumber.isValidNumber('861351057467' + ran);
+        console.log('i18n_test_5800 ' + valid);
         expect(valid).assertEqual(true);
     })
 
@@ -788,10 +908,12 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_5900', 0, function () {
-        console.error('i18n_test_5900 ' + 'start');
+        console.log('i18n_test_5900 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('1351057467');
-        console.error('i18n_test_5900 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_5900 ' + ran);
+        let valid = phonenumber.isValidNumber('135105746' + ran);
+        console.log('i18n_test_5900 ' + valid);
         expect(valid).assertEqual(false);
     })
 
@@ -801,10 +923,12 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6000', 0, function () {
-        console.error('i18n_test_6000 ' + 'start');
+        console.log('i18n_test_6000 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('135105746761');
-        console.error('i18n_test_6000 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_6000 ' + ran);
+        let valid = phonenumber.isValidNumber('13510574676' + ran);
+        console.log('i18n_test_6000 ' + valid);
         expect(valid).assertEqual(false);
     })
 
@@ -814,10 +938,12 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6100', 0, function () {
-        console.error('i18n_test_6100 ' + 'start');
+        console.log('i18n_test_6100 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let valid = phonenumber.isValidNumber('1351057467a');
-        console.error('i18n_test_6100 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_6100 ' + ran);
+        let valid = phonenumber.isValidNumber('135105746' + ran + 'a');
+        console.log('i18n_test_6100 ' + valid);
         expect(valid).assertEqual(false);
     })
 
@@ -827,10 +953,12 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6200', 0, function () {
-        console.error('i18n_test_6200 ' + 'start');
+        console.log('i18n_test_6200 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
-        let valid = phonenumber.isValidNumber('6262023379');
-        console.error('i18n_test_6200 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_6200 ' + ran);
+        let valid = phonenumber.isValidNumber('626202337' + ran);
+        console.log('i18n_test_6200 ' + valid);
         expect(valid).assertEqual(true);
     })
 
@@ -840,10 +968,12 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6300', 0, function () {
-        console.error('i18n_test_6300 ' + 'start');
+        console.log('i18n_test_6300 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
-        let valid = phonenumber.isValidNumber('626202337');
-        console.error('i18n_test_6300 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_6300 ' + ran);
+        let valid = phonenumber.isValidNumber('62620233' + ran);
+        console.log('i18n_test_6300 ' + valid);
         expect(valid).assertEqual(false);
     })
 
@@ -853,10 +983,12 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6400', 0, function () {
-        console.error('i18n_test_6400 ' + 'start');
+        console.log('i18n_test_6400 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
-        let valid = phonenumber.isValidNumber('62620233791');
-        console.error('i18n_test_6400 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_6400 ' + ran);
+        let valid = phonenumber.isValidNumber('6262023379' + ran);
+        console.log('i18n_test_6400 ' + valid);
         expect(valid).assertEqual(false);
     })
 
@@ -866,10 +998,12 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6500', 0, function () {
-        console.error('i18n_test_6500 ' + 'start');
+        console.log('i18n_test_6500 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
-        let valid = phonenumber.isValidNumber('626202337a');
-        console.error('i18n_test_6500 ' + valid);
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_6500 ' + ran);
+        let valid = phonenumber.isValidNumber('62620233' + ran + 'a');
+        console.log('i18n_test_6500 ' + valid);
         expect(valid).assertEqual(false);
     })
 
@@ -879,11 +1013,13 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6600', 0, function () {
-        console.error('i18n_test_6600 ' + 'start');
+        console.log('i18n_test_6600 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN');
-        let value = phonenumber.format('13510574676');
-        console.error('i18n_test_6600 ' + value);
-        expect(value).assertEqual('135 1057 4676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_6600 ' + ran);
+        let value = phonenumber.format('1351057467' + ran);
+        console.log('i18n_test_6600 ' + value);
+        expect(value).assertEqual('135 1057 467' + ran);
     })
 
     /**
@@ -892,11 +1028,13 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6700', 0, function () {
-        console.error('i18n_test_6700 ' + 'start');
+        console.log('i18n_test_6700 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US');
-        let value = phonenumber.format('6262023379');
-        console.error('i18n_test_6700 ' + value);
-        expect(value).assertEqual('(626) 202-3379');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_6700 ' + ran);
+        let value = phonenumber.format('626202337' + ran);
+        console.log('i18n_test_6700 ' + value);
+        expect(value).assertEqual('(626) 202-337' + ran);
     })
 
     /**
@@ -905,11 +1043,13 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6800', 0, function () {
-        console.error('i18n_test_6800 ' + 'start');
+        console.log('i18n_test_6800 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
-        let value = phonenumber.format('13510574676');
-        console.error('i18n_test_6800 ' + value);
-        expect(value).assertEqual('135 1057 4676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_6800 ' + ran);
+        let value = phonenumber.format('1351057467' + ran);
+        console.log('i18n_test_6800 ' + value);
+        expect(value).assertEqual('135 1057 467' + ran);
     })
 
     /**
@@ -918,11 +1058,13 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_6900', 0, function () {
-        console.error('i18n_test_6900 ' + 'start');
+        console.log('i18n_test_6900 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
-        let value = phonenumber.format('1351057467');
-        console.error('i18n_test_6900 ' + value);
-        expect(value).assertEqual('1351057467');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_6900 ' + ran);
+        let value = phonenumber.format('135105746' + ran);
+        console.log('i18n_test_6900 ' + value);
+        expect(value).assertEqual('135105746' + ran);
     })
 
     /**
@@ -931,11 +1073,13 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7000', 0, function () {
-        console.error('i18n_test_7000 ' + 'start');
+        console.log('i18n_test_7000 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
-        let value = phonenumber.format('135105746761');
-        console.error('i18n_test_7000 ' + value);
-        expect(value).assertEqual('013 510 574 6761');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7000 ' + ran);
+        let value = phonenumber.format('13510574676' + ran);
+        console.log('i18n_test_7000 ' + value);
+        expect(value).assertEqual('013 510 574 676' + ran);
     })
 
     /**
@@ -944,11 +1088,13 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7100', 0, function () {
-        console.error('i18n_test_7100 ' + 'start');
+        console.log('i18n_test_7100 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'NATIONAL'});
-        let value = phonenumber.format('135 1057 4676');
-        console.error('i18n_test_7100 ' + value);
-        expect(value).assertEqual('135 1057 4676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7100 ' + ran);
+        let value = phonenumber.format('135 1057 467' + ran);
+        console.log('i18n_test_7100 ' + value);
+        expect(value).assertEqual('135 1057 467' + ran);
     })
 
     /**
@@ -957,11 +1103,13 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7200', 0, function () {
-        console.error('i18n_test_7200 ' + 'start');
+        console.log('i18n_test_7200 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'INTERNATIONAL'});
-        let value = phonenumber.format('13510574676');
-        console.error('i18n_test_7200 ' + value);
-        expect(value).assertEqual('+86 135 1057 4676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7200 ' + ran);
+        let value = phonenumber.format('1351057467' + ran);
+        console.log('i18n_test_7200 ' + value);
+        expect(value).assertEqual('+86 135 1057 467' + ran);
     })
 
     /**
@@ -970,11 +1118,13 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7300', 0, function () {
-        console.error('i18n_test_7300 ' + 'start');
+        console.log('i18n_test_7300 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'RFC3966'});
-        let value = phonenumber.format('13510574676');
-        console.error('i18n_test_7300 ' + value);
-        expect(value).assertEqual('tel:+86-135-1057-4676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7300 ' + ran);
+        let value = phonenumber.format('1351057467' + ran);
+        console.log('i18n_test_7300 ' + value);
+        expect(value).assertEqual('tel:+86-135-1057-467' + ran);
     })
 
     /**
@@ -983,11 +1133,13 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7400', 0, function () {
-        console.error('i18n_test_7400 ' + 'start');
+        console.log('i18n_test_7400 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('CN', {'type': 'E164'});
-        let value = phonenumber.format('13510574676');
-        console.error('i18n_test_7400 ' + value);
-        expect(value).assertEqual('+8613510574676');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7400 ' + ran);
+        let value = phonenumber.format('1351057467' + ran);
+        console.log('i18n_test_7400 ' + value);
+        expect(value).assertEqual('+861351057467' + ran);
     })
 
     /**
@@ -996,11 +1148,13 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7500', 0, function () {
-        console.error('i18n_test_7500 ' + 'start');
+        console.log('i18n_test_7500 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'NATIONAL'});
-        let value = phonenumber.format('6262023379');
-        console.error('i18n_test_7500 ' + value);
-        expect(value).assertEqual('(626) 202-3379');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7500 ' + ran);
+        let value = phonenumber.format('626202337' + ran);
+        console.log('i18n_test_7500 ' + value);
+        expect(value).assertEqual('(626) 202-337' + ran);
     })
 
     /**
@@ -1009,11 +1163,13 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7600', 0, function () {
-        console.error('i18n_test_7600 ' + 'start');
+        console.log('i18n_test_7600 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'INTERNATIONAL'});
-        let value = phonenumber.format('6262023379');
-        console.error('i18n_test_7600 ' + value);
-        expect(value).assertEqual('+1 626-202-3379');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7600 ' + ran);
+        let value = phonenumber.format('626202337' + ran);
+        console.log('i18n_test_7600 ' + value);
+        expect(value).assertEqual('+1 626-202-337' + ran);
     })
 
     /**
@@ -1022,11 +1178,13 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7700', 0, function () {
-        console.error('i18n_test_7700 ' + 'start');
+        console.log('i18n_test_7700 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'RFC3966'});
-        let value = phonenumber.format('6262023379');
-        console.error('i18n_test_7700 ' + value);
-        expect(value).assertEqual('tel:+1-626-202-3379');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7700 ' + ran);
+        let value = phonenumber.format('626202337' + ran);
+        console.log('i18n_test_7700 ' + value);
+        expect(value).assertEqual('tel:+1-626-202-337' + ran);
     })
 
     /**
@@ -1035,11 +1193,13 @@ describe('I18nTest', function () {
     * @tc.desc get the isValidNumber value
     */
     it('i18n_test_7800', 0, function () {
-        console.error('i18n_test_7800 ' + 'start');
+        console.log('i18n_test_7800 ' + 'start');
         let phonenumber = new I18n.PhoneNumberFormat('US', {'type': 'E164'});
-        let value = phonenumber.format('6262023379');
-        console.error('i18n_test_7800 ' + value);
-        expect(value).assertEqual('+16262023379');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7800 ' + ran);
+        let value = phonenumber.format('626202337' + ran);
+        console.log('i18n_test_7800 ' + value);
+        expect(value).assertEqual('+1626202337' + ran);
     })
 
     /**
@@ -1048,10 +1208,10 @@ describe('I18nTest', function () {
     * @tc.desc get the isWeekend value
     */
     it('i18n_test_7900', 0, function () {
-        console.error('i18n_test_7900 ' + 'start');
+        console.log('i18n_test_7900 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = calendar.isWeekend(new Date(2021, 10, 1, 10, 0, 0, 0));
-        console.error('i18n_test_7900 ' + value);
+        console.log('i18n_test_7900 ' + value);
         expect(value).assertFalse();
     })
 
@@ -1061,22 +1221,22 @@ describe('I18nTest', function () {
     * @tc.desc get the getCalendar value
     */
      it('i18n_test_7920', 0, function () {
-        console.error('i18n_test_7920 ' + 'start');
+        console.log('i18n_test_7920 ' + 'start');
         let calendar = I18n.getCalendar('ja', 'japanese');
         let name = calendar.getDisplayName('ja');
-        console.error('i18n_test_7920 ' + name);
+        console.log('i18n_test_7920 ' + name);
         expect(name).assertEqual('和暦');
         let timezone = calendar.getTimeZone();
-        console.error('i18n_test_7920 ' + timezone);
+        console.log('i18n_test_7920 ' + timezone);
         expect(timezone).assertEqual('Coordinated Universal Time');
         let firstday = calendar.getFirstDayOfWeek();
-        console.error('i18n_test_7920 ' + firstday);
+        console.log('i18n_test_7920 ' + firstday);
         expect(firstday).assertEqual(1);
         let miniday = calendar.getMinimalDaysInFirstWeek();
-        console.error('i18n_test_7920 ' + miniday);
+        console.log('i18n_test_7920 ' + miniday);
         expect(miniday).assertEqual(1);
         let value = calendar.isWeekend(new Date(2022, 10, 1, 10, 0, 0, 0));
-        console.error('i18n_test_7920 ' + value);
+        console.log('i18n_test_7920 ' + value);
         expect(value).assertFalse();
     })
 
@@ -1086,10 +1246,10 @@ describe('I18nTest', function () {
     * @tc.desc get the getCalendar value
     */
     it('i18n_test_7940', 0, function () {
-        console.error('i18n_test_7940 ' + 'start');
+        console.log('i18n_test_7940 ' + 'start');
         let calendar = I18n.getCalendar('zh', 'chinese');
         let name = calendar.getDisplayName('zh');
-        console.error('i18n_test_7940 ' + name);
+        console.log('i18n_test_7940 ' + name);
         expect(name).assertEqual('农历');
     })
 
@@ -1099,10 +1259,10 @@ describe('I18nTest', function () {
     * @tc.desc get the getCalendar value
     */
     it('i18n_test_7960', 0, function () {
-        console.error('i18n_test_7960 ' + 'start');
+        console.log('i18n_test_7960 ' + 'start');
         let calendar = I18n.getCalendar('zh', 'japanese');
         let name = calendar.getDisplayName('zh');
-        console.error('i18n_test_7960 ' + name);
+        console.log('i18n_test_7960 ' + name);
         expect(name).assertEqual('和历');
     })
 
@@ -1112,10 +1272,10 @@ describe('I18nTest', function () {
     * @tc.desc get the getDisplayName value
     */
     it('i18n_test_8000', 0, function () {
-        console.error('i18n_test_8000 ' + 'start');
+        console.log('i18n_test_8000 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = calendar.getDisplayName('zh');
-        console.error('i18n_test_8000 ' + value);
+        console.log('i18n_test_8000 ' + value);
         expect(value).assertEqual('公历');
     })
 
@@ -1125,10 +1285,10 @@ describe('I18nTest', function () {
     * @tc.desc get the getDisplayName value
     */
     it('i18n_test_8020', 0, function () {
-        console.error('i18n_test_8020 ' + 'start');
+        console.log('i18n_test_8020 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = calendar.getDisplayName('en');
-        console.error('i18n_test_8020 ' + value);
+        console.log('i18n_test_8020 ' + value);
         expect(value).assertEqual('Gregorian Calendar');
     })
 
@@ -1138,10 +1298,10 @@ describe('I18nTest', function () {
     * @tc.desc get the get value
     */
     it('i18n_test_8100', 0, function () {
-        console.error('i18n_test_8100 ' + 'start');
+        console.log('i18n_test_8100 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = calendar.get('year');
-        console.error('i18n_test_8100 ' + value);
+        console.log('i18n_test_8100 ' + value);
         expect(value).assertLarger(0);
     })
 
@@ -1151,12 +1311,12 @@ describe('I18nTest', function () {
     * @tc.desc get the get value
     */
      it('i18n_test_8120', 0, function () {
-        console.error('i18n_test_8120 ' + 'start');
+        console.log('i18n_test_8120 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let date1 = new Date(2021, 8, 8, 8, 8, 8, 8);
         calendar.setTime(date1);
         let value = calendar.get('month');
-        console.error('i18n_test_8120 ' + value);
+        console.log('i18n_test_8120 ' + value);
         expect(value).assertEqual(8);
     })
 
@@ -1166,10 +1326,10 @@ describe('I18nTest', function () {
     * @tc.desc get the get value
     */
     it('i18n_test_8140', 0, function () {
-        console.error('i18n_test_8140 ' + 'start');
+        console.log('i18n_test_8140 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let value = calendar.get('day_of_year');
-        console.error('i18n_test_8140 ' + value);
+        console.log('i18n_test_8140 ' + value);
         expect(value).assertLarger(0);
     })
 
@@ -1179,11 +1339,11 @@ describe('I18nTest', function () {
     * @tc.desc get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
     */
     it('i18n_test_8200', 0, function () {
-        console.error('i18n_test_8200 ' + 'start');
+        console.log('i18n_test_8200 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setMinimalDaysInFirstWeek(1);
         let value = calendar.getMinimalDaysInFirstWeek();
-        console.error('i18n_test_8200 ' + value);
+        console.log('i18n_test_8200 ' + value);
         expect(value).assertEqual(1);
     })
 
@@ -1193,11 +1353,11 @@ describe('I18nTest', function () {
     * @tc.desc get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
     */
     it('i18n_test_8220', 0, function () {
-        console.error('i18n_test_8220 ' + 'start');
+        console.log('i18n_test_8220 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setMinimalDaysInFirstWeek(0);
         let value = calendar.getMinimalDaysInFirstWeek();
-        console.error('i18n_test_8220 ' + value);
+        console.log('i18n_test_8220 ' + value);
         expect(value).assertEqual(1);
     })
 
@@ -1207,11 +1367,11 @@ describe('I18nTest', function () {
     * @tc.desc get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
     */
     it('i18n_test_8240', 0, function () {
-        console.error('i18n_test_8240 ' + 'start');
+        console.log('i18n_test_8240 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setMinimalDaysInFirstWeek(8);
         let value = calendar.getMinimalDaysInFirstWeek();
-        console.error('i18n_test_8240 ' + value);
+        console.log('i18n_test_8240 ' + value);
         expect(value).assertEqual(7);
     })
 
@@ -1221,11 +1381,11 @@ describe('I18nTest', function () {
     * @tc.desc get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
     */
     it('i18n_test_8260', 0, function () {
-        console.error('i18n_test_8260 ' + 'start');
+        console.log('i18n_test_8260 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setMinimalDaysInFirstWeek(7);
         let value = calendar.getMinimalDaysInFirstWeek();
-        console.error('i18n_test_8260 ' + value);
+        console.log('i18n_test_8260 ' + value);
         expect(value).assertEqual(7);
     })
 
@@ -1235,11 +1395,11 @@ describe('I18nTest', function () {
     * @tc.desc get the setFirstDayOfWeek and getFirstDayOfWeek value
     */
     it('i18n_test_8300', 0, function () {
-        console.error('i18n_test_8300 ' + 'start');
+        console.log('i18n_test_8300 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setFirstDayOfWeek(1);
         let value = calendar.getFirstDayOfWeek();
-        console.error('i18n_test_8300 ' + value);
+        console.log('i18n_test_8300 ' + value);
         expect(value).assertEqual(1);
     })
 
@@ -1249,11 +1409,11 @@ describe('I18nTest', function () {
     * @tc.desc get the setFirstDayOfWeek and getFirstDayOfWeek value
     */
     it('i18n_test_8320', 0, function () {
-        console.error('i18n_test_8320 ' + 'start');
+        console.log('i18n_test_8320 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setFirstDayOfWeek(0);
         let value = calendar.getFirstDayOfWeek();
-        console.error('i18n_test_8320 ' + value);
+        console.log('i18n_test_8320 ' + value);
         expect(value).assertEqual(1);
     })
 
@@ -1263,11 +1423,11 @@ describe('I18nTest', function () {
     * @tc.desc get the setFirstDayOfWeek and getFirstDayOfWeek value
     */
     it('i18n_test_8340', 0, function () {
-        console.error('i18n_test_8340 ' + 'start');
+        console.log('i18n_test_8340 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setFirstDayOfWeek(7);
         let value = calendar.getFirstDayOfWeek();
-        console.error('i18n_test_8340 ' + value);
+        console.log('i18n_test_8340 ' + value);
         expect(value).assertEqual(7);
     })
 
@@ -1277,11 +1437,11 @@ describe('I18nTest', function () {
     * @tc.desc get the setFirstDayOfWeek and getFirstDayOfWeek value
     */
     it('i18n_test_8360', 0, function () {
-        console.error('i18n_test_8360 ' + 'start');
+        console.log('i18n_test_8360 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setFirstDayOfWeek(8);
         let value = calendar.getFirstDayOfWeek();
-        console.error('i18n_test_8360 ' + value);
+        console.log('i18n_test_8360 ' + value);
         expect(value).assertEqual(1);
     })
 
@@ -1291,11 +1451,11 @@ describe('I18nTest', function () {
     * @tc.desc get the setTimeZone and getTimeZone value
     */
     it('i18n_test_8400', 0, function () {
-        console.error('i18n_test_8400 ' + 'start');
+        console.log('i18n_test_8400 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setTimeZone('Asia/Shanghai');
         let value = calendar.getTimeZone();
-        console.error('i18n_test_8400 ' + value);
+        console.log('i18n_test_8400 ' + value);
         expect(value).assertEqual('China Standard Time');
     })
 
@@ -1305,11 +1465,11 @@ describe('I18nTest', function () {
     * @tc.desc get the setTimeZone and getTimeZone value
     */
     it('i18n_test_8420', 0, function () {
-        console.error('i18n_test_8420 ' + 'start');
+        console.log('i18n_test_8420 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setTimeZone('AAA');
         let value = calendar.getTimeZone();
-        console.error('i18n_test_8420 ' + value);
+        console.log('i18n_test_8420 ' + value);
         expect(value).assertEqual('GMT');
     })
 
@@ -1319,11 +1479,11 @@ describe('I18nTest', function () {
     * @tc.desc get the set value
     */
     it('i18n_test_8500', 0, function () {
-        console.error('i18n_test_8500 ' + 'start');
+        console.log('i18n_test_8500 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.set(2021, 11, 11);
         let value = calendar.isWeekend();
-        console.error('i18n_test_8500 ' + value);
+        console.log('i18n_test_8500 ' + value);
         expect(value).assertTrue();
     })
 
@@ -1333,11 +1493,11 @@ describe('I18nTest', function () {
     * @tc.desc get the set value
     */
     it('i18n_test_8520', 0, function () {
-        console.error('i18n_test_8520 ' + 'start');
+        console.log('i18n_test_8520 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.set(2021, 11, 11, 10, 10, 10);
         let value = calendar.isWeekend();
-        console.error('i18n_test_8520 ' + value);
+        console.log('i18n_test_8520 ' + value);
         expect(value).assertTrue();
     })
 
@@ -1347,11 +1507,11 @@ describe('I18nTest', function () {
     * @tc.desc get the set value
     */
     it('i18n_test_8540', 0, function () {
-        console.error('i18n_test_8540 ' + 'start');
+        console.log('i18n_test_8540 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.set(2021, 11, 11, 10, 10);
         let value = calendar.isWeekend();
-        console.error('i18n_test_8540 ' + value);
+        console.log('i18n_test_8540 ' + value);
         expect(value).assertTrue();
     })
 
@@ -1361,13 +1521,13 @@ describe('I18nTest', function () {
     * @tc.desc get the setTime value
     */
     it('i18n_test_8600', 0, function () {
-        console.error('i18n_test_8600 ' + 'start');
+        console.log('i18n_test_8600 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         //actuall month is 9
         let date1 = new Date(2021, 8, 8, 8, 8, 8, 8);
         calendar.setTime(date1);
         let value = calendar.isWeekend();
-        console.error('i18n_test_8600 ' + value);
+        console.log('i18n_test_8600 ' + value);
         expect(value).assertFalse();
     })
 
@@ -1377,12 +1537,12 @@ describe('I18nTest', function () {
     * @tc.desc get the setTime value
     */
     it('i18n_test_8620', 0, function () {
-        console.error('i18n_test_8620 ' + 'start');
+        console.log('i18n_test_8620 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         let date1 = new Date(2021, 18, 8, 8, 8, 8, 8);
         calendar.setTime(date1);
         let value = calendar.isWeekend();
-        console.error('i18n_test_8620 ' + value);
+        console.log('i18n_test_8620 ' + value);
         expect(value).assertFalse();
     })
 
@@ -1392,11 +1552,11 @@ describe('I18nTest', function () {
     * @tc.desc get the setTime value
     */
     it('i18n_test_8700', 0, function () {
-        console.error('i18n_test_8700 ' + 'start');
+        console.log('i18n_test_8700 ' + 'start');
         let calendar = I18n.getCalendar('zh');
         calendar.setTime(10540800000);
         let value = calendar.isWeekend();
-        console.error('i18n_test_8700 ' + value);
+        console.log('i18n_test_8700 ' + value);
         expect(value).assertTrue();
     })
 
@@ -1406,9 +1566,9 @@ describe('I18nTest', function () {
     * @tc.desc get the isRTL value
     */
     it('i18n_test_8800', 0, function () {
-        console.error('i18n_test_8800 ' + 'start');
+        console.log('i18n_test_8800 ' + 'start');
         let value = I18n.isRTL('zh-CN');
-        console.error('i18n_test_8800 ' + value);
+        console.log('i18n_test_8800 ' + value);
         expect(value).assertFalse();
     })
 
@@ -1418,9 +1578,9 @@ describe('I18nTest', function () {
     * @tc.desc get the isRTL value
     */
     it('i18n_test_8900', 0, function () {
-        console.error('i18n_test_8900 ' + 'start');
+        console.log('i18n_test_8900 ' + 'start');
         let value = I18n.isRTL('en-US');
-        console.error('i18n_test_8900 ' + value);
+        console.log('i18n_test_8900 ' + value);
         expect(value).assertFalse();
     })
 
@@ -1430,9 +1590,9 @@ describe('I18nTest', function () {
     * @tc.desc get the isRTL value
     */
     it('i18n_test_9000', 0, function () {
-        console.error('i18n_test_9000 ' + 'start');
+        console.log('i18n_test_9000 ' + 'start');
         let value = I18n.isRTL('ar');
-        console.error('i18n_test_9000 ' + value);
+        console.log('i18n_test_9000 ' + value);
         expect(value).assertTrue();
     })
 
@@ -1442,13 +1602,13 @@ describe('I18nTest', function () {
     * @tc.desc get the unitConvert value
     */
     it('i18n_test_9100', 0, function () {
-        console.error('i18n_test_9100 ' + 'start');
+        console.log('i18n_test_9100 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, 
                                         {unit: 'liter', measureSystem: 'SI'}, 
                                         1000, 
                                         'en-US', 
                                         'long');
-        console.error('i18n_test_9100 ' + value);
+        console.log('i18n_test_9100 ' + value);
         expect(value).assertEqual('236.588 liters');
     })
 
@@ -1458,13 +1618,13 @@ describe('I18nTest', function () {
     * @tc.desc get the unitConvert value
     */
     it('i18n_test_9200', 0, function () {
-        console.error('i18n_test_9200 ' + 'start');
+        console.log('i18n_test_9200 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, 
                                         {unit: 'liter', measureSystem: 'SI'}, 
                                         1000, 
                                         'en-US', 
                                         'medium');
-        console.error('i18n_test_9200 ' + value);
+        console.log('i18n_test_9200 ' + value);
         expect(value).assertEqual('236.588L');
     })
 
@@ -1474,13 +1634,13 @@ describe('I18nTest', function () {
     * @tc.desc get the unitConvert value
     */
     it('i18n_test_9300', 0, function () {
-        console.error('i18n_test_9300 ' + 'start');
+        console.log('i18n_test_9300 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'}, 
                                         {unit: 'liter', measureSystem: 'SI'}, 
                                         1000, 
                                         'en-US', 
                                         'short');
-        console.error('i18n_test_9300 ' + value);
+        console.log('i18n_test_9300 ' + value);
         expect(value).assertEqual('236.588 L');
     })
 
@@ -1490,13 +1650,13 @@ describe('I18nTest', function () {
     * @tc.desc get the unitConvert value
     */
     it('i18n_test_9400', 0, function () {
-        console.error('i18n_test_9400 ' + 'start');
+        console.log('i18n_test_9400 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, 
                                         {unit: 'mile', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
                                         'long');
-        console.error('i18n_test_9400 ' + value);
+        console.log('i18n_test_9400 ' + value);
         expect(value).assertEqual('0.621英里');
     })
 
@@ -1506,13 +1666,13 @@ describe('I18nTest', function () {
     * @tc.desc get the unitConvert value
     */
     it('i18n_test_9500', 0, function () {
-        console.error('i18n_test_9500 ' + 'start');
+        console.log('i18n_test_9500 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'hour', measureSystem: 'SI'}, 
                                         {unit: 'second', measureSystem: 'SI'}, 
                                         10, 
                                         'zh-CN', 
                                         'medium');
-        console.error('i18n_test_9500 ' + value);
+        console.log('i18n_test_9500 ' + value);
         expect(value).assertEqual('36,000秒');
     })
 
@@ -1522,13 +1682,13 @@ describe('I18nTest', function () {
     * @tc.desc get the unitConvert value
     */
     it('i18n_test_9600', 0, function () {
-        console.error('i18n_test_9600 ' + 'start');
+        console.log('i18n_test_9600 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'celsius', measureSystem: 'SI'}, 
                                         {unit: 'fahrenheit', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
                                         'short');
-        console.error('i18n_test_9600 ' + value);
+        console.log('i18n_test_9600 ' + value);
         expect(value).assertEqual('1,832°F');
     })
 
@@ -1538,13 +1698,13 @@ describe('I18nTest', function () {
     * @tc.desc get the unitConvert value
     */
     it('i18n_test_9700', 0, function () {
-        console.error('i18n_test_9700 ' + 'start');
+        console.log('i18n_test_9700 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'acre', measureSystem: 'SI'}, 
                                         {unit: 'hectare', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
                                         'long');
-        console.error('i18n_test_9700 ' + value);
+        console.log('i18n_test_9700 ' + value);
         expect(value).assertEqual('404.686公顷');
     })
 
@@ -1554,13 +1714,13 @@ describe('I18nTest', function () {
     * @tc.desc get the unitConvert value
     */
     it('i18n_test_9710', 0, function () {
-        console.error('i18n_test_9710 ' + 'start');
+        console.log('i18n_test_9710 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'acre', measureSystem: 'SI'}, 
                                         {unit: 'square-meter', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
                                         'long');
-        console.error('i18n_test_9710 ' + value);
+        console.log('i18n_test_9710 ' + value);
         expect(value).assertEqual('4,046,856.422平方米');
     })
 
@@ -1570,13 +1730,13 @@ describe('I18nTest', function () {
     * @tc.desc get the unitConvert value
     */
     it('i18n_test_9800', 0, function () {
-        console.error('i18n_test_9800 ' + 'start');
+        console.log('i18n_test_9800 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'}, 
                                         {unit: 'knot', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
                                         'long');
-        console.error('i18n_test_9800 ' + value);
+        console.log('i18n_test_9800 ' + value);
         expect(value).assertEqual('539.957节');
     })
 
@@ -1586,13 +1746,13 @@ describe('I18nTest', function () {
     * @tc.desc get the unitConvert value
     */
     it('i18n_test_9850', 0, function () {
-        console.error('i18n_test_9850 ' + 'start');
+        console.log('i18n_test_9850 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'kilometer-per-hour', measureSystem: 'SI'}, 
                                         {unit: 'meter-per-second', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
                                         'long');
-        console.error('i18n_test_9850 ' + value);
+        console.log('i18n_test_9850 ' + value);
         expect(value).assertEqual('每秒277.778米');
     })
 
@@ -1602,13 +1762,13 @@ describe('I18nTest', function () {
     * @tc.desc get the unitConvert value
     */
     it('i18n_test_9900', 0, function () {
-        console.error('i18n_test_9900 ' + 'start');
+        console.log('i18n_test_9900 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, 
                                         {unit: 'kilometer', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
                                         'long');
-        console.error('i18n_test_9900 ' + value);
+        console.log('i18n_test_9900 ' + value);
         expect(value).assertEqual('1公里');
     })
 
@@ -1618,13 +1778,13 @@ describe('I18nTest', function () {
     * @tc.desc get the unitConvert value
     */
     it('i18n_test_9910', 0, function () {
-        console.error('i18n_test_9910 ' + 'start');
+        console.log('i18n_test_9910 ' + 'start');
         let value = I18n.Util.unitConvert({unit: 'meter', measureSystem: 'SI'}, 
                                         {unit: 'meter-per-second', measureSystem: 'SI'}, 
                                         1000, 
                                         'zh-CN', 
                                         'long');
-        console.error('i18n_test_9910 ' + value);
+        console.log('i18n_test_9910 ' + value);
         expect(value).assertEqual('1,000米');
     })
 

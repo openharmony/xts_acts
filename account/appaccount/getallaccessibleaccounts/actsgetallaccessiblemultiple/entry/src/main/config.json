@@ -28,12 +28,12 @@
       {
         "availableScope": [],
         "grantMode": "system_grant",
-        "name": "ohos.permission.GET_ACCOUNTS_PRIVILEGED"
+        "name": "ohos.permission.GET_ALL_APP_ACCOUNTS"
       }
     ],
     "reqPermissions": [
       {
-        "name": "ohos.permission.GET_ACCOUNTS_PRIVILEGED",
+        "name": "ohos.permission.GET_ALL_APP_ACCOUNTS",
         "reason": "ceshi"
       },
       {

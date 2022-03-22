@@ -15,14 +15,14 @@
 
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-var timeout = 300;
+let timeout = 300;
 describe('ActsAnsNotificationRemove', function () {
     console.info("===========ActsAnsNotificationRemove start====================>");
-    var subscriber;
+    let subscriber;
     function publishCallback(err) {
         console.info("==========================publishCallback=======================>");
     }
-    var hashCode;
+    let hashCode;
     function onConsumeRemove(data) {
         console.info("=============ANS_Remove_0100 onConsume start=======================>");
         console.info("=============ANS_Remove_0100 onConsume data:==================>" + JSON.stringify(data));
@@ -64,13 +64,13 @@ describe('ActsAnsNotificationRemove', function () {
     it('ANS_Remove_0100', 0, async function (done) {
         console.info("===============ANS_Remove_0100==========================>");
         hashCode = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemove,
             onCancel:onCancelRemove,
         }
         await notify.subscribe(subscriber);
         console.info("==================ANS_Remove_0100 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -140,13 +140,13 @@ describe('ActsAnsNotificationRemove', function () {
     it('ANS_Remove_0200', 0, async function (done) {
         console.info("===============ANS_Remove_0200==========================>");
         hashCode = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemovePromise,
             onCancel:onCancelRemovePromise,
         }
         await notify.subscribe(subscriber);
         console.info("===============ANS_Remove_0200 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -214,13 +214,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_0300', 0, async function (done) {
         console.info("===============ANS_Remove_0300==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveErrHashCode,
             onCancel:onCancelRemoveErrHashCode,
         }
         await notify.subscribe(subscriber);
         console.info("==================ANS_Remove_0300 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -287,13 +287,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_0400', 0, async function (done) {
         console.info("===============ANS_Remove_0400==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveErrHashCodePromise,
             onCancel:onCancelRemoveErrHashCodePromise,
         }
         await notify.subscribe(subscriber);
         console.info("===============ANS_Remove_0400 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -365,13 +365,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_0500', 0, async function (done) {
         console.info("===============ANS_Remove_0500==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveUseEmptyCharacter,
             onCancel:onCancelRemoveUseEmptyCharacter,
         }
         await notify.subscribe(subscriber);
         console.info("==================ANS_Remove_0500 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -440,13 +440,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_0600', 0, async function (done) {
         console.info("===============ANS_Remove_0600 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:OnConsumeRemoveUseEmptyCharacterPromise,
             onCancel:OnCancelRemoveUseEmptyCharacterPromise,
         }
         await notify.subscribe(subscriber);
         console.info("==================ANS_Remove_0600 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -518,13 +518,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_0700', 0, async function (done) {
         console.info("===============ANS_Remove_0700==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveNotExistHashCode,
             onCancel:onCancelRemoveNotExistHashCode,
         }
         await notify.subscribe(subscriber);
         console.info("================ANS_Remove_0700 subscribe promise=======>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -593,13 +593,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_0800', 0, async function (done) {
         console.info("===============ANS_Remove_0800==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveNotExistHashCodePromise,
             onCancel:onCancelRemoveNotExistHashCodePromise,
         }
         await notify.subscribe(subscriber);
         console.info("================ANS_Remove_0800 subscribe promise=======>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -671,13 +671,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_0900', 0, async function (done) {
         console.info("===============ANS_Remove_0900==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveNonComplianceHashCode,
             onCancel:onCancelRemoveNonComplianceHashCode,
         }
         await notify.subscribe(subscriber);
         console.info("============ANS_Remove_0900 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -745,13 +745,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_1000', 0, async function (done) {
         console.info("===============ANS_Remove_1000==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveNonComplianceHashCodePromise,
             onCancel:onCancelRemoveNonComplianceHashCodePromise,
         }
         await notify.subscribe(subscriber);
         console.info("================ANS_Remove_1000 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -805,7 +805,7 @@ describe('ActsAnsNotificationRemove', function () {
         notify.remove(hashCode1100,removeCallBack2TimesOf2);
         console.info("=====ANS_Remove_1100 removeCallBack2TimesOf1 end============>");
     }
-    var hashCode1100;
+    let hashCode1100;
     function onConsumeCallbackRemove2Times(data) {
         console.info("=====ANS_Remove_1100 onConsume start=================>");
         console.info("=====ANS_Remove_1100 onConsume data: ================>" + JSON.stringify(data));
@@ -814,7 +814,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("=====ANS_Remove_1100 onConsume remove================>");
         console.info("=====ANS_Remove_1100 onConsume end===================>");
     }
-    var timesOfOnCancelCallbackRemove2Times
+    let timesOfOnCancelCallbackRemove2Times
     function onCancelCallbackRemove2Times(data) {
         timesOfOnCancelCallbackRemove2Times = timesOfOnCancelCallbackRemove2Times + 1
         console.info("=====ANS_Remove_1100 onCancel start=======================>");
@@ -837,13 +837,13 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("===============ANS_Remove_1100==========================>");
         hashCode1100 = 0;
         timesOfOnCancelCallbackRemove2Times = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCallbackRemove2Times,
             onCancel:onCancelCallbackRemove2Times,
         }
         await notify.subscribe(subscriber);
         console.info("===============ANS_Remove_1100 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -901,7 +901,7 @@ describe('ActsAnsNotificationRemove', function () {
             console.info("================ANS_Remove_1200 onConsume end=================>");
         });
     }
-    var timesOfOnCancelCallbackRemove2TimesPromise
+    let timesOfOnCancelCallbackRemove2TimesPromise
     function onCancelCallbackRemove2TimesPromise(data) {
         timesOfOnCancelCallbackRemove2TimesPromise = timesOfOnCancelCallbackRemove2TimesPromise + 1
         console.info("================ANS_Remove_1200 onCancel start=========>");
@@ -924,13 +924,13 @@ describe('ActsAnsNotificationRemove', function () {
     it('ANS_Remove_1200', 0, async function (done) {
         console.info("===============ANS_Remove_1200 start========================>");
         timesOfOnCancelCallbackRemove2TimesPromise = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCallbackRemove2TimesPromise,
             onCancel:onCancelCallbackRemove2TimesPromise,
         }
         await notify.subscribe(subscriber);
         console.info("===============ANS_Remove_1200 subscribe promise=============>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -982,14 +982,13 @@ describe('ActsAnsNotificationRemove', function () {
     function onCancelRemoveIsUnremovable(data) {
         console.info("==========ANS_Remove_1300 onCancel start================>");
         console.info("==========ANS_Remove_1300 onCancel data:================>" + JSON.stringify(data));
-        expect().assertFail();
         console.info("==========ANS_Remove_1300 onCancel end================>");
     }
 
     function removeIsUnremovableCallBack(err) {
         console.info("==========ANS_Remove_1300 removeCallBack start===================>");
         console.info("==========ANS_Remove_1300 removeCallBack err=====================>" + JSON.stringify(err));
-        expect(err.code != 0).assertEqual(true);
+        expect(err.code).assertEqual(0);
         console.info("==========ANS_Remove_1300 removeCallBack end=====================>");
     }
 
@@ -1001,13 +1000,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_1300', 0, async function (done) {
         console.info("===============ANS_Remove_1300==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveIsUnremovable,
             onCancel:onCancelRemoveIsUnremovable,
         }
         await notify.subscribe(subscriber);
         console.info("================ANS_Remove_1300 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1055,7 +1054,7 @@ describe('ActsAnsNotificationRemove', function () {
             console.info("=======ANS_Remove_1400 onConsume remove data:=======>" + JSON.stringify(data));
         }).catch((err)=>{
             console.info("=======ANS_Remove_1400 onConsume remove err:========>" + JSON.stringify(err));
-            expect(err.code != 0).assertEqual(true);
+            expect(err.code).assertEqual(0);
             console.info("=======ANS_Remove_1400 onConsume end================>");
         });
     }
@@ -1063,7 +1062,6 @@ describe('ActsAnsNotificationRemove', function () {
     function OnCancelRemoveIsUnremovablePromise(data) {
         console.info("==============ANS_Remove_1400 onCancel start==============>");
         console.info("==============ANS_Remove_1400 onCancel data:==============>" + JSON.stringify(data));
-        expect().assertFail();
         console.info("==============ANS_Remove_1400 onCancel end================>");
     }
 
@@ -1075,13 +1073,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_1400', 0, async function (done) {
         console.info("===============ANS_Remove_1400 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:OnConsumeRemoveIsUnremovablePromise,
             onCancel:OnCancelRemoveIsUnremovablePromise,
         }
         await notify.subscribe(subscriber);
         console.info("===============ANS_Remove_1400 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1122,12 +1120,12 @@ describe('ActsAnsNotificationRemove', function () {
         }),timeout);
     })
 
-    var timesOfOnConsumeRemoveAllByBundleOption
+    let timesOfOnConsumeRemoveAllByBundleOption
     function onConsumeRemoveAllByBundleOption(data) {
         timesOfOnConsumeRemoveAllByBundleOption = timesOfOnConsumeRemoveAllByBundleOption + 1
         console.info("==========ANS_Remove_1500 onConsume start=======>");
         console.info("==========ANS_Remove_1500 onConsume data:=======>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:data.request.creatorUid,
         }
@@ -1137,7 +1135,7 @@ describe('ActsAnsNotificationRemove', function () {
         }
         console.info("===========ANS_Remove_1500 onConsume end===========>");
     }
-    var timesOfOnCancelRemoveAllByBundleOption
+    let timesOfOnCancelRemoveAllByBundleOption
     function onCancelRemoveAllByBundleOption(data) {
         timesOfOnCancelRemoveAllByBundleOption = timesOfOnCancelRemoveAllByBundleOption + 1
         console.info("===========ANS_Remove_1500 onCancel start====================>");
@@ -1165,13 +1163,13 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("===============ANS_Remove_1500 start==========================>");
         timesOfOnCancelRemoveAllByBundleOption = 0
         timesOfOnConsumeRemoveAllByBundleOption = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveAllByBundleOption,
             onCancel:onCancelRemoveAllByBundleOption,
         }
         await notify.subscribe(subscriber);
         console.info("===============ANS_Remove_1500 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1201,7 +1199,7 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        var notificationRequest1 = {
+        let notificationRequest1 = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1244,11 +1242,11 @@ describe('ActsAnsNotificationRemove', function () {
         }),timeout);
     })
 
-    var timesOfOnConsumeRemoveAllByBundleOptionNullUid
+    let timesOfOnConsumeRemoveAllByBundleOptionNullUid
     function onConsumeRemoveAllByBundleOptionNullUid(data) {
         console.info("===============ANS_Remove_1600 onConsume start================>");
         console.info("===============ANS_Remove_1600 onConsume data:========>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:0,
         }
@@ -1280,13 +1278,13 @@ describe('ActsAnsNotificationRemove', function () {
     it('ANS_Remove_1600', 0, async function (done) {
         console.info("===============ANS_Remove_1600==========================>");
         timesOfOnConsumeRemoveAllByBundleOptionNullUid = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveAllByBundleOptionNullUid,
             onCancel:onCancelRemoveAllByBundleOptionNullUid,
         }
         await notify.subscribe(subscriber);
         console.info("==================ANS_Remove_1600 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1316,7 +1314,7 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        var notificationRequest1 = {
+        let notificationRequest1 = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1362,7 +1360,7 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveAllByBundleOptionWrongUid(data) {
         console.info("========ANS_Remove_1700 onConsume start==============>");
         console.info("========ANS_Remove_1700 onConsume data:==============>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:123456789
         }
@@ -1390,13 +1388,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_1700', 0, async function (done) {
         console.info("===============ANS_Remove_1700==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveAllByBundleOptionWrongUid,
             onCancel:onCancelRemoveAllByBundleOptionWrongUid,
         }
         await notify.subscribe(subscriber);
         console.info("=============ANS_Remove_1700 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1441,7 +1439,7 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveAllByBundleOptionWrongBundleCorrectUid(data) {
         console.info("==============ANS_Remove_1800 onConsume start=============>");
         console.info("==============ANS_Remove_1800 onConsume data:=============>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:"wrongBundleName",
             uid:data.request.creatorUid,
         }
@@ -1469,13 +1467,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_1800', 0, async function (done) {
         console.info("===============ANS_Remove_1800 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveAllByBundleOptionWrongBundleCorrectUid,
             onCancel:onCancelremoveAllByBundleOptionwrongBundleCorrectUid,
         }
         await notify.subscribe(subscriber);
         console.info("================ANS_Remove_1800 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1519,7 +1517,7 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveAllByBundleOptionNullCharacterBundleCorrectUid(data) {
         console.info("===========ANS_Remove_1900 onConsume start===============>");
         console.info("===========ANS_Remove_1900 onConsume data:===============>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:"",
             uid:data.request.creatorUid,
         }
@@ -1548,13 +1546,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_1900', 0, async function (done) {
         console.info("===============ANS_Remove_1900 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveAllByBundleOptionNullCharacterBundleCorrectUid,
             onCancel:onCancelRemoveAllByBundleOptionNullCharacterBundleCorrectUid,
         }
         await notify.subscribe(subscriber);
         console.info("===============ANS_Remove_1900 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1598,7 +1596,7 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveAllByBundleOptionWrongBundleWrongUid(data) {
         console.info("============ANS_Remove_2000 onConsume start================>");
         console.info("============ANS_Remove_2000 onConsume data:================>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:"wrongBundleName",
             uid:123456789,
         }
@@ -1626,13 +1624,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_2000', 0, async function (done) {
         console.info("===============ANS_Remove_2000 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveAllByBundleOptionWrongBundleWrongUid,
             onCancel:onCancelRemoveAllByBundleOptionWrongBundleWrongUid,
         }
         await notify.subscribe(subscriber);
         console.info("==============ANS_Remove_2000 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1676,7 +1674,7 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveAllByBundleOptionNullCharacterBundleWrongUid(data) {
         console.info("=========ANS_Remove_2100 onConsume start===================>");
         console.info("=========ANS_Remove_2100 onConsume data:======>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:"",
             uid:123456789,
         }
@@ -1705,13 +1703,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_2100', 0, async function (done) {
         console.info("===============ANS_Remove_2100 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveAllByBundleOptionNullCharacterBundleWrongUid,
             onCancel:onCancelRemoveAllByBundleOptionNullCharacterBundleWrongUid,
         }
         await notify.subscribe(subscriber);
         console.info("============ANS_Remove_2100 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1755,7 +1753,7 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveAllByBundleOptionIsUnremovable(data) {
         console.info("==========ANS_Remove_2200 onConsume start==================>");
         console.info("==========ANS_Remove_2200 onConsume data:=================>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:data.request.creatorUid,
         }
@@ -1783,13 +1781,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_2200', 0, async function (done) {
         console.info("===============ANS_Remove_2200 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveAllByBundleOptionIsUnremovable,
             onCancel:onCancelRemoveAllByBundleOptionIsUnremovable,
         }
         await notify.subscribe(subscriber);
         console.info("==============ANS_Remove_2200 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1836,7 +1834,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================ANS_Remove_2300 removeAllCallBack data:=========>" + JSON.stringify(data));
         console.info("================ANS_Remove_2300 removeAllCallBack end:==========>")
     }
-    var timesOfOnConsumeRemoveAll
+    let timesOfOnConsumeRemoveAll
     function onConsumeRemoveAll(data) {
         timesOfOnConsumeRemoveAll = timesOfOnConsumeRemoveAll + 1
         console.info("================ANS_Remove_2300 onConsume start==================>");
@@ -1848,7 +1846,7 @@ describe('ActsAnsNotificationRemove', function () {
         }
         console.info("================ANS_Remove_2300 onConsume end====================>");
     }
-    var timesOfOnCancelRemoveAll
+    let timesOfOnCancelRemoveAll
     function onCancelRemoveAll(data) {
         timesOfOnCancelRemoveAll = timesOfOnCancelRemoveAll + 1
         console.info("==================ANS_Remove_2300 onCancel start===========>");
@@ -1874,13 +1872,13 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("===============ANS_Remove_2300 start==========================>");
         timesOfOnConsumeRemoveAll = 0;
         timesOfOnCancelRemoveAll = 0;
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveAll,
             onCancel:onCancelRemoveAll,
         }
         await notify.subscribe(subscriber);
         console.info("=============ANS_Remove_2300 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1910,7 +1908,7 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        var notificationRequest1 = {
+        let notificationRequest1 = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1953,7 +1951,6 @@ describe('ActsAnsNotificationRemove', function () {
         }),timeout);
     })
 
-    var timesOfOnConsumeRemoveAll
     function onConsumeRemoveAllPromise(data) {
         timesOfOnConsumeRemoveAll = timesOfOnConsumeRemoveAll + 1
         console.info("===========ANS_Remove_2400 onConsume start==============>");
@@ -1965,7 +1962,7 @@ describe('ActsAnsNotificationRemove', function () {
         }
         console.info("===========ANS_Remove_2400 onConsume end==============>");
     }
-    var timesOfOnCancelRemoveAll
+
     function onCancelRemoveAllPromise(data) {
         timesOfOnCancelRemoveAll = timesOfOnCancelRemoveAll + 1
         console.info("===========ANS_Remove_2400 onCancel start=======================>");
@@ -1991,13 +1988,13 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("===============ANS_Remove_2400 start==========================>");
         timesOfOnConsumeRemoveAll = 0
         timesOfOnCancelRemoveAll = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveAllPromise,
             onCancel:onCancelRemoveAllPromise,
         }
         await notify.subscribe(subscriber);
         console.info("==============ANS_Remove_2400 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -2027,7 +2024,7 @@ describe('ActsAnsNotificationRemove', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        var notificationRequest1 = {
+        let notificationRequest1 = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -2098,13 +2095,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_2500', 0, async function (done) {
         console.info("===============ANS_Remove_2500 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveAllIsUnremovable,
             onCancel:onCancelCallbackRemoveAllIsUnremovable,
         }
         await notify.subscribe(subscriber);
         console.info("======ANS_Remove_2500 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -2166,13 +2163,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_2600', 0, async function (done) {
         console.info("===============ANS_Remove_2600 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:OnConsumeRemoveAllIsUnremovablePromise,
             onCancel:OnCancelCallbackRemoveAllIsUnremovablePromise,
         }
         await notify.subscribe(subscriber);
         console.info("============ANS_Remove_2600 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -2233,7 +2230,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("=======ANS_Remove_2700 onConsume remove========>");
         console.info("=======ANS_Remove_2700 onConsume end===========>");
     }
-    var timesOfOnCancelCallbackRemoveAll2Times
+    let timesOfOnCancelCallbackRemoveAll2Times
     function onCancelRemoveAll2Times(data) {
         timesOfOnCancelCallbackRemoveAll2Times = timesOfOnCancelCallbackRemoveAll2Times + 1
         console.info("=======ANS_Remove_2700 onCancel start============>");
@@ -2256,13 +2253,13 @@ describe('ActsAnsNotificationRemove', function () {
     it('ANS_Remove_2700', 0, async function (done) {
         console.info("===============ANS_Remove_2700 start==========================>");
         timesOfOnCancelCallbackRemoveAll2Times = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveAll2Times,
             onCancel:onCancelRemoveAll2Times,
         }
         await notify.subscribe(subscriber);
         console.info("============ANS_Remove_2700 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -2312,7 +2309,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("=============ANS_Remove_2800 onConsume removeAll2=======================>");
         console.info("=============ANS_Remove_2800 onConsume end=============>");
     }
-    var timesOfOnCancelCallbackRemoveAll2TimesPromise
+    let timesOfOnCancelCallbackRemoveAll2TimesPromise
     function onCancelCallbackRemoveAll2TimesPromise(data) {
         timesOfOnCancelCallbackRemoveAll2TimesPromise = timesOfOnCancelCallbackRemoveAll2TimesPromise + 1
         console.info("===================ANS_Remove_2800 onCancel start=======================>");
@@ -2334,13 +2331,13 @@ describe('ActsAnsNotificationRemove', function () {
     it('ANS_Remove_2800', 0, async function (done) {
         console.info("===============ANS_Remove_2800 start==========================>");
         timesOfOnCancelCallbackRemoveAll2TimesPromise = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCallbackRemoveAll2TimesPromise,
             onCancel:onCancelCallbackRemoveAll2TimesPromise,
         }
         await notify.subscribe(subscriber);
         console.info("================ANS_Remove_2800 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -2388,11 +2385,11 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("=======ANS_Remove_2900 onConsume creatorUid:==============>" + data.request.creatorUid);
         console.info("=======ANS_Remove_2900 onConsume id: =======================>" + data.request.id);
         console.info("=======ANS_Remove_2900 onConsume label: =======================>" + data.request.label);
-        var bundleOption = {
+        let bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:data.request.creatorUid,
         }
-        var notificationKey = {
+        let notificationKey = {
             id:data.request.id,
             label:data.request.label
         }
@@ -2425,13 +2422,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_2900', 0, async function (done) {
         console.info("===============ANS_Remove_2900 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveByNotificationKey,
             onCancel:onCancelRemoveByNotificationKey,
         }
         await notify.subscribe(subscriber);
         console.info("================ANS_Remove_2900 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -2475,11 +2472,11 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveByNotificationKeyPromise(data) {
         console.info("==========ANS_Remove_3000 onConsume start==============>");
         console.info("==========ANS_Remove_3000 data: =======================>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:data.request.creatorUid,
         }
-        var notificationKey = {
+        let notificationKey = {
             id:30,
             label:"3000"
         }
@@ -2504,13 +2501,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_3000', 0, async function (done) {
         console.info("===============ANS_Remove_3000 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveByNotificationKeyPromise,
             onCancel:onCancelRemoveByNotificationKeyPromise,
         }
         await notify.subscribe(subscriber);
         console.info("===============ANS_Remove_3000 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -2554,11 +2551,11 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveByNotificationKeyWrongKey(data) {
         console.info("==========ANS_Remove_3100 onConsume start=============>");
         console.info("==========ANS_Remove_3100 onConsume data:=============>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:data.request.creatorUid,
         }
-        var notificationKey = {
+        let notificationKey = {
             id:0,
             label:"wrongLabel"
         }
@@ -2589,13 +2586,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_3100', 0, async function (done) {
         console.info("===============ANS_Remove_3100 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveByNotificationKeyWrongKey,
             onCancel:onCancelRemoveByNotificationKeyWrongKey,
         }
         await notify.subscribe(subscriber);
         console.info("==============ANS_Remove_3100 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -2639,11 +2636,11 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveByNotificationKeyWrongKeyPromise(data) {
         console.info("===========ANS_Remove_3200 onConsume start===============>");
         console.info("===========ANS_Remove_3200 onConsume data:===============>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:data.request.creatorUid,
         }
-        var notificationKey = {
+        let notificationKey = {
             id:0,
             label:"wrongLabel"
         }
@@ -2672,13 +2669,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_3200', 0, async function (done) {
         console.info("===============ANS_Remove_3200 start=================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveByNotificationKeyWrongKeyPromise,
             onCancel:onCancelRemoveByNotificationKeyWrongKeyPromise,
         }
         await notify.subscribe(subscriber);
         console.info("===============ANS_Remove_3200 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -2722,11 +2719,11 @@ describe('ActsAnsNotificationRemove', function () {
     function OnConsumeRemoveByNotificationKeyWrongBundle(data) {
         console.info("==============ANS_Remove_3300 onConsume start===============>");
         console.info("==============ANS_Remove_3300 onConsume data:===============>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:"wrongBundleName",
             uid:0,
         }
-        var notificationKey = {
+        let notificationKey = {
             id:33,
             label:"3300"
         }
@@ -2757,13 +2754,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_3300', 0, async function (done) {
         console.info("===============ANS_Remove_3300 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:OnConsumeRemoveByNotificationKeyWrongBundle,
             onCancel:OnCancelRemoveByNotificationKeyWrongBundle,
         }
         await notify.subscribe(subscriber);
         console.info("================ANS_Remove_3300 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -2807,11 +2804,11 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveByNotificationKeyWrongBundlePromise(data) {
         console.info("===========ANS_Remove_3400 onConsume start============>");
         console.info("===========ANS_Remove_3400 onConsume data:============>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:"wrongBundleName",
             uid:0,
         }
-        var notificationKey = {
+        let notificationKey = {
             id:34,
             label:"3400"
         }
@@ -2840,13 +2837,13 @@ describe('ActsAnsNotificationRemove', function () {
      */
     it('ANS_Remove_3400', 0, async function (done) {
         console.info("===============ANS_Remove_3400 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveByNotificationKeyWrongBundlePromise,
             onCancel:onCancelRemoveByNotificationKeyWrongBundlePromise,
         }
         await notify.subscribe(subscriber);
         console.info("============ANS_Remove_3400 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -2904,11 +2901,11 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveByNotificationKey2Times(data) {
         console.info("=========ANS_Remove_3500 onConsume start=======================>");
         console.info("=========ANS_Remove_3500 onConsume data:=========>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:data.request.creatorUid,
         }
-        var notificationKey = {
+        let notificationKey = {
             id:35,
             label:"3500"
         }
@@ -2917,7 +2914,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("=========ANS_Remove_3500 onConsume remove==============>");
         console.info("=========ANS_Remove_3500 onConsume end=================>");
     }
-    var timesOfOnCancelRemoveByNotificationKey2Times
+    let timesOfOnCancelRemoveByNotificationKey2Times
     function onCancelRemoveByNotificationKey2Times(data) {
         timesOfOnCancelRemoveByNotificationKey2Times = timesOfOnCancelRemoveByNotificationKey2Times + 1
         console.info("=========ANS_Remove_3500 onCancel start===============>");
@@ -2940,13 +2937,13 @@ describe('ActsAnsNotificationRemove', function () {
     it('ANS_Remove_3500', 0, async function (done) {
         console.info("===============ANS_Remove_3500 start==========================>");
         timesOfOnCancelRemoveByNotificationKey2Times = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveByNotificationKey2Times,
             onCancel:onCancelRemoveByNotificationKey2Times,
         }
         await notify.subscribe(subscriber);
         console.info("===========ANS_Remove_3500 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -2990,11 +2987,11 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveByNotificationKey2TimesPromise(data) {
         console.info("=========ANS_Remove_3600 onConsume start===========>");
         console.info("=========ANS_Remove_3600 onConsume data: =======================>" + JSON.stringify(data));
-        var bundleOption = {
+        let bundleOption = {
             bundle:data.request.creatorBundleName,
             uid:data.request.creatorUid,
         }
-        var notificationKey = {
+        let notificationKey = {
             id:36,
             label:"3600"
         }
@@ -3008,7 +3005,7 @@ describe('ActsAnsNotificationRemove', function () {
             console.info("=========ANS_Remove_3600 onConsume end===========>");
         });
     }
-    var timesOnCancelcbRemoveByKey2TimesPromise
+    let timesOnCancelcbRemoveByKey2TimesPromise
     function onCancelRemoveByNotificationKey2TimesPromise(data) {
         timesOnCancelcbRemoveByKey2TimesPromise = timesOnCancelcbRemoveByKey2TimesPromise + 1
         console.info("=========ANS_Remove_3600 onCancel start=============>");
@@ -3032,13 +3029,13 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("===============ANS_Remove_3600 start==========================>");
         timesOnCancelcbRemoveByKey2TimesPromise = 0
         timesOnCancelcbRemoveByKey2TimesPromise = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeRemoveByNotificationKey2TimesPromise,
             onCancel:onCancelRemoveByNotificationKey2TimesPromise,
         }
         await notify.subscribe(subscriber);
         console.info("========ANS_Remove_3600 subscribe promise=============>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {

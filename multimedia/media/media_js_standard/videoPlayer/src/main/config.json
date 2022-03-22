@@ -35,7 +35,7 @@
               "visible": true,
               "labelId": 16777216,
               "icon": "$media:icon",
-              "name": "ohos.acts.multimedia.audio.audioplayer.MainAbility",
+              "name": "ohos.acts.multimedia.video.videoplayer.MainAbility",
               "description": "$string:mainability_description",
               "label": "$string:entry_MainAbility",
               "type": "page",
@@ -49,20 +49,21 @@
           "tv",
           "wearable"
       ],
-      "mainAbility": "ohos.acts.multimedia.audio.audioplayer.MainAbility",
+      "mainAbility": "ohos.acts.multimedia.video.videoplayer.MainAbility",
       "distro": {
           "moduleType": "entry",
           "installationFree": false,
           "deliveryWithInstall": true,
           "moduleName": "entry"
       },
-      "package": "ohos.acts.multimedia.audio.audioplayer",
+      "package": "ohos.acts.multimedia.video.videoplayer",
       "name": ".MyApplication",
       "js": [
           {
               "pages": [
                   "pages/index/index",
-                  "pages/surfaceTest/surfaceTest"
+                  "pages/surfaceTest/surfaceTest",
+                  "pages/surfaceTest2/surfaceTest2"
               ],
               "name": "default",
               "window": {

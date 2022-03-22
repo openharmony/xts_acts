@@ -16,10 +16,10 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from './Utils';
+import Utils from './Utils.ets';
 
 export default function girdContainerJsunit() {
-  describe('appInfoTest', function () {
+  describe('girdContainerTest', function () {
     beforeEach(async function (done) {
       console.info("girdContainer beforeEach start");
       let options = {
@@ -55,11 +55,12 @@ export default function girdContainerJsunit() {
       expect(obj.$type).assertEqual('GridContainer');
       expect(obj.$attrs.constructor.columns).assertEqual('12');
       expect(obj.$attrs.constructor.sizeType).assertEqual('SizeType.XS');
-      expect(obj.$attrs.constructor.gutter).assertEqual('10.000000vp');
-      expect(obj.$attrs.constructor.margin).assertEqual('20.000000vp');
+      expect(obj.$attrs.constructor.gutter).assertEqual('10.00vp');
+      expect(obj.$attrs.constructor.margin).assertEqual('20.00vp');
       console.info('testGirdContainer01 END');
       done();
     });
+
 
     it('testGirdContainer02', 0, async function (done) {
       console.info('[testEllipse02] START');
@@ -70,7 +71,7 @@ export default function girdContainerJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 7,
+          eventId: 109,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testGirdContainer02] start to publish emit");

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -231,7 +231,7 @@ describe('AudioEncoderFuncPromise', function () {
             }
             timestamp += 23;
             frameCnt += 1;
-            audioEncodeProcessor.queueInput(inputobject).then(() => {
+            audioEncodeProcessor.pushInputData(inputobject).then(() => {
                 console.info('case queueInput success');
             });
         }
@@ -260,7 +260,7 @@ describe('AudioEncoderFuncPromise', function () {
                 writeFile(savepath, outputobject.data, outputobject.length);
                 console.info("write to file success");
             }
-            audioEncodeProcessor.releaseOutput(outputobject).then(() => {
+            audioEncodeProcessor.freeOutputBuffer(outputobject).then(() => {
                 console.info('release output success');
             });
         }
@@ -268,12 +268,12 @@ describe('AudioEncoderFuncPromise', function () {
 
     function setCallback(savepath, done) {
         console.info('case callback');
-        audioEncodeProcessor.on('inputBufferAvailable', async(inBuffer) => {
+        audioEncodeProcessor.on('needInputData', async(inBuffer) => {
             console.info('inputBufferAvailable');
             inputQueue.push(inBuffer);
             await enqueueInputs(inputQueue);
         });
-        audioEncodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
+        audioEncodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('outputBufferAvailable');
             if (needgetMediaDes) {
                 audioEncodeProcessor.getOutputMediaDescription().then((MediaDescription) => {
@@ -288,7 +288,7 @@ describe('AudioEncoderFuncPromise', function () {
         audioEncodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
         });
-        audioEncodeProcessor.on('outputFormatChanged',(format) => {
+        audioEncodeProcessor.on('streamChanged',(format) => {
             console.info('Output format changed: ' + format);
         });
     }
@@ -306,7 +306,7 @@ describe('AudioEncoderFuncPromise', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let mediaDescription2 = {
             "codec_mime": 'audio/mp4a-latm',
@@ -371,7 +371,7 @@ describe('AudioEncoderFuncPromise', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let savepath = BASIC_PATH + '0100.es';
         eosframenum = 500;
@@ -410,7 +410,7 @@ describe('AudioEncoderFuncPromise', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let savepath = BASIC_PATH + '0200.es';
         workdoneAtEOS = true;
@@ -455,7 +455,7 @@ describe('AudioEncoderFuncPromise', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let savepath = BASIC_PATH + '0300.es';
         eosframenum = 500;
@@ -494,7 +494,7 @@ describe('AudioEncoderFuncPromise', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let savepath = BASIC_PATH + '0400.es';
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
@@ -544,7 +544,7 @@ describe('AudioEncoderFuncPromise', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let savepath = BASIC_PATH + '0500.es';
         eosframenum = 100;
@@ -598,7 +598,7 @@ describe('AudioEncoderFuncPromise', function () {
         let mediaDescription = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         let savepath = BASIC_PATH + '0600.es';
         eosframenum = 100;
@@ -625,7 +625,7 @@ describe('AudioEncoderFuncPromise', function () {
         let mediaDescription2 = {
             "channel_count": 1,
             "sample_rate": 48000,
-            "audio_raw_format": 16,
+            "audio_sample_format": 3,
         }
         await sleep(10000).then(() => {
             console.info("start configure 2");

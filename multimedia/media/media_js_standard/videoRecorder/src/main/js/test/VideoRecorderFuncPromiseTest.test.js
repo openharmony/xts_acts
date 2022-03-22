@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -25,6 +25,8 @@ describe('VideoRecorderFuncPromiseTest', function () {
     let cameras;
     let captureSession;
     let fdPath;
+    let fileAsset;
+    let fdNumber;
     let configFile = {
         audioBitrate : 48000,
         audioChannels : 2,
@@ -44,7 +46,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         videoSourceType : 0,
         profile : configFile,
         url : 'file:///data/media/01.mp4',
-        orientationHint : 0,
+        rotation : 0,
         location : { latitude : 30, longitude : 130 },
         maxSize : 100,
         maxDuration : 500
@@ -64,7 +66,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         videoSourceType : 0,
         profile : onlyVideoProfile,
         url : 'file:///data/media/01.mp4',
-        orientationHint : 0,
+        rotation : 0,
         location : { latitude : 30, longitude : 130 },
         maxSize : 100,
         maxDuration : 500
@@ -164,8 +166,8 @@ describe('VideoRecorderFuncPromiseTest', function () {
                 selectionArgs : [args],
             }
             let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
-            let fileAsset = await fetchFileResult.getAllObject();
-            let fdNumber = await fileAsset[0].open('Rw');
+            fileAsset = await fetchFileResult.getAllObject();
+            fdNumber = await fileAsset[0].open('Rw');
             fdPath = "fd://" + fdNumber.toString();
         }
     }
@@ -1261,7 +1263,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
 
     /* *
         * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1900
-        * @tc.name      : 19.orientationHint 90 (promise)
+        * @tc.name      : 19.rotation 90 (promise)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
@@ -1273,7 +1275,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         let videoOutput;
         await getFd('40.mp4');
         videoConfig.url = fdPath;
-        videoConfig.orientationHint = 90;
+        videoConfig.rotation = 90;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -1310,7 +1312,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
 
     /* *
         * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2000
-        * @tc.name      : 20.orientationHint 180 (promise)
+        * @tc.name      : 20.rotation 180 (promise)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
@@ -1322,7 +1324,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         let videoOutput;
         await getFd('41.mp4');
         videoConfig.url = fdPath;
-        videoConfig.orientationHint = 180;
+        videoConfig.rotation = 180;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -1359,7 +1361,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
 
     /* *
         * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2100
-        * @tc.name      : 21.orientationHint 270 (promise)
+        * @tc.name      : 21.rotation 270 (promise)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
@@ -1371,7 +1373,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         let videoOutput;
         await getFd('42.mp4');
         videoConfig.url = fdPath;
-        videoConfig.orientationHint = 270;
+        videoConfig.rotation = 270;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {

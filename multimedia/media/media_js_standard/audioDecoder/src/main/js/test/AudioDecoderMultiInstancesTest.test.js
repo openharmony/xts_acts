@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -173,7 +173,7 @@ describe('AudioDecoderMultiInstances', function () {
             }
             timestamp += ES[frameCnt]/samplerate;
             frameCnt += 1;
-            audioDecodeProcessor.queueInput(inputobject).then(() => {
+            audioDecodeProcessor.pushInputData(inputobject).then(() => {
                 console.info('case queueInput success');
             });
         }
@@ -202,7 +202,7 @@ describe('AudioDecoderMultiInstances', function () {
                 writeFile(savapath, outputobject.data, outputobject.length);
                 console.info("write to file success");
             }
-            audioDecodeProcessor.releaseOutput(outputobject).then(() => {
+            audioDecodeProcessor.freeOutputBuffer(outputobject).then(() => {
                 console.info('release output success');
             });
         }
@@ -210,12 +210,12 @@ describe('AudioDecoderMultiInstances', function () {
 
     function setCallback(audioDecodeProcessor, savepath, done) {
         console.info('case callback');
-        audioDecodeProcessor.on('inputBufferAvailable', async(inBuffer) => {
+        audioDecodeProcessor.on('needInputData', async(inBuffer) => {
             console.info('inputBufferAvailable');
             inputQueue.push(inBuffer);
             await enqueueAllInputs(audioDecodeProcessor, inputQueue);
         });
-        audioDecodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
+        audioDecodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('outputBufferAvailable');
             console.info("outputbuffer.flags: " + outBuffer.flags);
             if (needGetMediaDes) {
@@ -230,14 +230,14 @@ describe('AudioDecoderMultiInstances', function () {
         audioDecodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
         });
-        audioDecodeProcessor.on('outputFormatChanged',(format) => {
+        audioDecodeProcessor.on('streamChanged',(format) => {
             console.info('Output format changed: ' + format);
         });
     }
 
     /* *
         * @tc.number    : SUB_MEDIA_AUDIO_DECODER_MULTIINSTANCE_0100
-        * @tc.name      : 001.create 16 decoder
+        * @tc.name      : 001.create multiple decoders
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
@@ -246,7 +246,7 @@ describe('AudioDecoderMultiInstances', function () {
     it('SUB_MEDIA_AUDIO_DECODER_MULTIINSTANCE_0100', 0, async function (done) {
         console.info("case test multiple instances");
         let array = new Array();
-        for (let i = 0; i < 16; i += 1) {
+        for (let i = 0; i < 2; i += 1) {
             await media.createAudioDecoderByMime('audio/mp4a-latm').then((processor) => {
                 if (typeof(processor) != 'undefined') {
                     console.info("case create createAudioDecoder success: " + i);
@@ -256,9 +256,8 @@ describe('AudioDecoderMultiInstances', function () {
                 }
             }, failCallback).catch(failCatch);
         }
-        console.info('case has created 16 decoders');
-        console.info('case array: ' + array);
-        for (let j = 0; j < 16; j++) {
+        console.info('case has created multiple decoders');
+        for (let j = 0; j < 2; j++) {
             resetParam();
             await array[j].reset().then(() => {
                 console.info("reset decoder " + j);

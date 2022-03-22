@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,14 +15,14 @@
 
 
 import {describe, it, expect} from 'deccjsunit/index'
-import userAuth from '@ohos.userauth'
-import userIDM from '@ohos.useridm'
-import pinAuth from '@ohos.pinauth'
+import userAuth from '@ohos.userAuth'
+import userIDM from '@ohos.userIDM'
+import pinAuth from '@ohos.pinAuth'
 import * as publicFC from './Publicfunction-n'
 
-let UserIDM = userIDM.constructor()
-let PinAuth = pinAuth.constructor()
-let UserAuth = userAuth.constructor()
+let UserIDM = new userIDM.UserIdentityManager();
+let PinAuth = new pinAuth.PINAuth();
+let UserAuth = new userAuth.UserAuth();
 
 let AuthType = {
     PIN: 1,
@@ -307,7 +307,7 @@ describe('userauthTest', function () {
                 let challenge;
                 let cancelresult;
                 let token;
-                cancelresult = publicFC.publiccancel(UserIDM, challenge);
+                // cancelresult = publicFC.publiccancel(UserIDM, challenge);
                 console.info("testFace Security_IAM_PIN_AddCred_Func_0105 cancelresult" + cancelresult);
                 publicFC.publicOpenSession(UserIDM, function (data) {
                     challenge = data;
@@ -315,6 +315,7 @@ describe('userauthTest', function () {
                     let result1 = null;
                     publicFC.publicaddCredential(UserIDM, CredentialInfopinmix, async function (data) {
                         result1 = data.addCredresult;
+                        cancelresult = publicFC.publiccancel(UserIDM, challenge);
                         console.info("testFace Security_IAM_PIN_AddCred_Func_0105 result1" + result1);
                         if(cancelresult == 0){
                             expect(ResultCode.CANCELED).assertEqual(result1);
@@ -454,7 +455,7 @@ describe('userauthTest', function () {
                             await publicFC.publicauth(UserAuth, challenge1, AuthType.PIN, AuthTurstLevel.ATL1,
 							function (data) {
                                 let authresult = data.authresult
-                                expect(ResultCode.Authfail).assertEqual(authresult);
+                                expect(ResultCode.FAIL).assertEqual(authresult);
                                 publicFC.publicdelUser(UserIDM, token, function (data) {
                                     let delresult = data.delUserresult
                                     console.info("Security_IAM_PIN_Auth_Func_0101 delresult = " + delresult);
@@ -503,7 +504,7 @@ describe('userauthTest', function () {
                             await publicFC.publicauth(UserAuth, challenge1, AuthType.PIN, AuthTurstLevel.ATL1,
 							function (data) {
                                 let authresult = data.authresult
-                                expect(ResultCode.Authfail).assertEqual(authresult);
+                                expect(ResultCode.FAIL).assertEqual(authresult);
                                 let deluserresult = publicFC.publicdelUser(UserIDM, token, function (data) {
                                     let delresult = data.delUserresult
                                     console.info("Security_IAM_PIN_Auth_Func_0102 delresult = " + delresult);
@@ -552,7 +553,7 @@ describe('userauthTest', function () {
                             await publicFC.publicauth(UserAuth, challenge1, AuthType.PIN, AuthTurstLevel.ATL1,
 							function (data) {
                                 let authresult = data.authresult
-                                expect(ResultCode.Authfail).assertEqual(authresult);
+                                expect(ResultCode.FAIL).assertEqual(authresult);
                                 let deluserresult = publicFC.publicdelUser(UserIDM, token, function (data) {
                                     let delresult = data.delUserresult
                                     console.info("Security_IAM_PIN_Auth_Func_0103 delresult = " + delresult);
@@ -602,7 +603,7 @@ describe('userauthTest', function () {
                             await publicFC.publicauthUser(
 							UserAuth, userID.User1, challenge1, AuthType.PIN, AuthTurstLevel.ATL1, function (data) {
                                 let authresult = data.authresult
-                                expect(ResultCode.Authfail).assertEqual(authresult);
+                                expect(ResultCode.FAIL).assertEqual(authresult);
                                 let deluserresult = publicFC.publicdelUser(UserIDM, token, function (data) {
                                     let delresult = data.delUserresult
                                     console.info("Security_IAM_PIN_Auth_Func_0104 delresult = " + delresult);
@@ -652,7 +653,7 @@ describe('userauthTest', function () {
                             await publicFC.publicauthUser(
 							UserAuth, userID.User1, challenge1, AuthType.PIN, AuthTurstLevel.ATL1, function (data) {
                                 let authresult = data.authresult
-                                expect(ResultCode.Authfail).assertEqual(authresult);
+                                expect(ResultCode.FAIL).assertEqual(authresult);
                                 let deluserresult = publicFC.publicdelUser(UserIDM, token, function (data) {
                                     let delresult = data.delUserresult
                                     console.info("Security_IAM_PIN_Auth_Func_0105 delresult = " + delresult);
@@ -702,7 +703,7 @@ describe('userauthTest', function () {
                             await publicFC.publicauthUser(
 							UserAuth, userID.User1, challenge1, AuthType.PIN, AuthTurstLevel.ATL1, function (data) {
                                 let authresult = data.authresult
-                                expect(ResultCode.Authfail).assertEqual(authresult);
+                                expect(ResultCode.FAIL).assertEqual(authresult);
                                 let deluserresult = publicFC.publicdelUser(UserIDM, token, function (data) {
                                     let delresult = data.delUserresult
                                     console.info("Security_IAM_PIN_Auth_Func_0106 delresult = " + delresult);
@@ -1057,9 +1058,9 @@ describe('userauthTest', function () {
                             await setTimeout(
 							publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_MIXED, Inputerdatamix), 500)
                             console.info("Security_IAM_PIN_Update_Func_0102 challenge = " + challenge);
-                            CredentialInfopinnum.token = token
-                            console.info("PIN_Update_Func_0102 Infopinnum.token = " + CredentialInfopinnum.token);
-                            await publicFC.publicupdateCred(UserIDM, CredentialInfopinnum, function (data) {
+                            CredentialInfopinmix.token = token
+                            console.info("PIN_Update_Func_0102 Infopinnum.token = " + CredentialInfopinmix.token);
+                            await publicFC.publicupdateCred(UserIDM, CredentialInfopinmix, function (data) {
                                 let updateresult = data.updateCredresult;
                                 console.info("Security_IAM_PIN_Update_Func_0102 updateresult = " + updateresult);
                                 expect(ResultCode.SUCCESS).assertEqual(updateresult);
@@ -1103,7 +1104,7 @@ describe('userauthTest', function () {
             publicFC.publicOpenSession(UserIDM, function (data) {
                 let challenge = data;
                 console.info("Security_IAM_PIN_Update_Func_0103 challenge = " + challenge);
-                publicFC.publicaddCredential(UserIDM, CredentialInfopinnum, function (data) {
+                publicFC.publicaddCredential(UserIDM, CredentialInfopinmix, function (data) {
                     let addcredresult103 = data.addcredresult;
                     console.info("Security_IAM_PIN_Update_Func_0103 addcredresult103 = " + addcredresult103);
                     publicFC.publicauth(UserAuth, challenge, AuthType.PIN, AuthTurstLevel.ATL1, function (data) {
@@ -1116,9 +1117,9 @@ describe('userauthTest', function () {
                             await setTimeout(
 							publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata), 500)
                             console.info("Security_IAM_PIN_Update_Func_0103 challenge = " + challenge);
-                            CredentialInfopinnum.token = token
-                            console.info("PIN_Update_Func_0103 Infopinnum.token = " + CredentialInfopinnum.token);
-                            await publicFC.publicupdateCred(UserIDM, CredentialInfopinnum, function (data) {
+                            CredentialInfopinsix.token = token
+                            console.info("PIN_Update_Func_0103 Infopinnum.token = " + CredentialInfopinsix.token);
+                            await publicFC.publicupdateCred(UserIDM, CredentialInfopinsix, function (data) {
                                 let updateresult = data.updateCredresult;
                                 console.info("Security_IAM_PIN_Update_Func_0103 updateresult = " + updateresult);
                                 expect(ResultCode.SUCCESS).assertEqual(updateresult);

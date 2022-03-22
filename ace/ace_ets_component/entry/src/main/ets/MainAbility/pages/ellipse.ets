@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import events_emitter from '@ohos.emitter';
 
 @Entry
@@ -24,27 +25,39 @@ struct EllipseExample {
   onPageShow() {
     console.info('[ellipse] page show called');
     var stateChangeEvent = {
-      eventId: 5,
+      eventId: 92,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+
+    var stateChangeEventTwo = {
+      eventId: 907,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack);
+
+    var stateChangeEventThree = {
+      eventId: 908,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEventThree, this.stateChangCallBack);
   }
 
   private stateChangCallBack = (eventData) => {
     console.info("[ellipse] page stateChangCallBack");
     if (eventData != null) {
       console.info("[ellipse] page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.width != null) {
+      if (eventData.data.width != null) {
         this.width = eventData.data.width;
       }
-      if(eventData.data.height != null) {
+      if (eventData.data.height != null) {
         this.height = eventData.data.height;
       }
     }
   }
 
   build() {
-    Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center,justifyContent: FlexAlign.Center}) {
+    Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Ellipse().width(`${this.width}`).height(`${this.height}`).key('ellipse')
     }.width('100%').height('100%')
   }

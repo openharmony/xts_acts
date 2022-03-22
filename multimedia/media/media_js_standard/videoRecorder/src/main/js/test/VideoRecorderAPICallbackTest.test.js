@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -44,6 +44,8 @@ describe('VideoRecorderAPICallbackTest', function () {
     let videoOutput;
     let surfaceID;
     let fdPath;
+    let fileAsset;
+    let fdNumber;
     let events = require('events');
     let eventEmitter = new events.EventEmitter();
 
@@ -60,13 +62,13 @@ describe('VideoRecorderAPICallbackTest', function () {
         videoFrameHeight : 480,
         videoFrameRate : 10
     }
-    // orientationHint 0, 90, 180, 270
+    // rotation 0, 90, 180, 270
     let videoConfig = {
         audioSourceType : 1,
         videoSourceType : 0,
         profile : configFile,
         url : 'file:///data/media/API.mp4',
-        orientationHint : 0,
+        rotation : 0,
         location : { latitude : 30, longitude : 130 },
         maxSize : 100,
         maxDuration : 500
@@ -86,7 +88,7 @@ describe('VideoRecorderAPICallbackTest', function () {
         videoSourceType : 0,
         profile : onlyVideoProfile,
         url : 'file:///data/media/API.mp4',
-        orientationHint : 0,
+        rotation : 0,
         location : { latitude : 30, longitude : 130 },
         maxSize : 100,
         maxDuration : 500
@@ -130,8 +132,8 @@ describe('VideoRecorderAPICallbackTest', function () {
                 selectionArgs : [args],
             }
             let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
-            let fileAsset = await fetchFileResult.getAllObject();
-            let fdNumber = await fileAsset[0].open('Rw');
+            fileAsset = await fetchFileResult.getAllObject();
+            fdNumber = await fileAsset[0].open('Rw');
             fdPath = "fd://" + fdNumber.toString();
         }
     }

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,21 +22,30 @@ struct OverlayExample {
   @State title: string = 'old title'
   @State x: number = 0
   @State y: number = -15
-  @State Alignment: Alignment = Alignment.Bottom
+  @State alignment: Alignment = Alignment.Bottom
 
   onPageShow() {
     console.info('[overlay] page show called ');
     var stateChangeEvent = {
-      eventId: 83,
+      eventId: 143,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+
+    var stateChangeEvent2 = {
+      eventId: 1110,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
   }
 
   private stateChangCallBack = (eventData) => {
     console.info("[stateChangCallBack] stateChangCallBack ");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called: " + JSON.stringify(eventData));
+      if (eventData.data.align != null) {
+        this.alignment = eventData.data.align
+      }
       if (eventData.data.title != null) {
         this.title = eventData.data.title
       }
@@ -45,9 +55,7 @@ struct OverlayExample {
       if (eventData.data.y != null) {
         this.y = eventData.data.y
       }
-      if (eventData.data.align != null) {
-        this.Alignment = eventData.data.align
-      }
+
     }
   }
 
@@ -61,7 +69,7 @@ struct OverlayExample {
             .width(340).height(240)
             .key('overlay')
             .overlay(this.title,
-              { align: this.Alignment, offset: { x: this.x, y: this.y } })
+              { align: this.alignment, offset: { x: this.x, y: this.y } })
         }.border({ color: Color.Black, width: 2 })
       }.width('100%')
     }.padding({ top: 20 })

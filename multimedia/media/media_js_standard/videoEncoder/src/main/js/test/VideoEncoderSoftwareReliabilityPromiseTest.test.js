@@ -49,9 +49,9 @@ describe('videoEncoderReliabilityPromise', function () {
     const WAITFORALLOUTS = 14;
     const JUDGE_EOS = 15;
     const WAITTIME = 3000;
-    let width = 720;
-    let height = 480;
-    let framerate = 60;
+    let width = 320;
+    let height = 240;
+    let framerate = 30;
     let mediaDescription = {
         "width": width, 
         "height": height,
@@ -75,9 +75,9 @@ describe('videoEncoderReliabilityPromise', function () {
         sawOutputEOS = false;
         needGetMediaDes = false;
         workdoneAtEOS = false;
-        width = 720;
-        height = 480;
-        framerate = 60;
+        width = 320;
+        height = 240;
+        framerate = 30;
         frameTotal = 100;
     })
 
@@ -246,7 +246,7 @@ describe('videoEncoderReliabilityPromise', function () {
             } else {
                 writeFile(path, outputObject.data, outputObject.length);
                 console.info("write to file success");
-                videoEncodeProcessor.releaseOutput(outputObject).then(() => {
+                videoEncodeProcessor.freeOutputBuffer(outputObject).then(() => {
                     console.info('release output success');
                     frameCountOut++;
                     console.log('release output count:' + frameCountOut);
@@ -257,7 +257,7 @@ describe('videoEncoderReliabilityPromise', function () {
 
     function setCallback(path, done) {
         console.info('case callback');
-        videoEncodeProcessor.on('outputBufferAvailable', async(outBuffer) => {
+        videoEncodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('outputBufferAvailable');
             console.info('outBuffer.flags :' + outBuffer.flags);
             if (needGetMediaDes) {
@@ -274,7 +274,7 @@ describe('videoEncoderReliabilityPromise', function () {
         videoEncodeProcessor.on('error',(err) => {
             console.info('case error called,errName is' + err);
         });
-        videoEncodeProcessor.on('outputFormatChanged',(format) => {
+        videoEncodeProcessor.on('streamChanged',(format) => {
             console.info('Output format changed: ' + format);
         });
     }
@@ -459,7 +459,7 @@ describe('videoEncoderReliabilityPromise', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_PROMISE_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0200.es';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, CONFIGURE, ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, CONFIGURE, ERROR, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -590,7 +590,7 @@ describe('videoEncoderReliabilityPromise', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0200.es';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 
@@ -604,7 +604,7 @@ describe('videoEncoderReliabilityPromise', function () {
     */
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_PROMISE_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0300.es';
-        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, PREPARE, ERROR, STOPSTREAM, END);
+        let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, PREPARE, ERROR, END);
         createVideoEncoder(savepath, mySteps, done);
     })
 

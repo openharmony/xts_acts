@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,7 +21,8 @@ describe("ListTest", function () {
       let list = new List();
       expect(list != undefined).assertEqual(true);
     } catch (err) {
-      expect(err).assertEqual("Error:Cannot create new list");
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("cannot create new list");
     }
   });
   it("SR000GGR4A_testGet002", 0, function () {
@@ -230,7 +231,7 @@ describe("ListTest", function () {
     list.add("c");
     list.add("a");
     let res = list.set(2, "d");
-    let res1 = list.getNode(2).element;
+    let res1 = list.get(2);
     expect(res1).assertEqual("d");
   });
   it("SR000GGR4A_testSort020", 0, function () {
@@ -363,11 +364,8 @@ describe("ListTest", function () {
     list.add("a");
     list.add("b");
     list.add("b");
-    try {
-      let res = list.get(6);
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
-    }
+    let res = list.get(6);
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR4A_testGetLastIndexOf029", 0, function () {
     let list = new List();
@@ -390,7 +388,8 @@ describe("ListTest", function () {
     try {
       let res = list.removeByIndex(5);
     } catch (err) {
-      expect(err).assertEqual("Error: removeByIndex is out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
   it("SR000GGR4A_testRemove031", 0, function () {
@@ -406,8 +405,12 @@ describe("ListTest", function () {
     list.add("c");
     list.add("a");
     list.add("b");
-    let res = list.insert("d", 8);
-    expect(res).assertEqual(undefined);
+    try {
+      let res = list.insert("d", 8);
+    } catch(err) {
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
+    }
   });
   it("SR000GGR4A_testSort033", 0, function () {
     let list = new List();
@@ -434,14 +437,11 @@ describe("ListTest", function () {
     list.add("1");
     list.add("2");
     list.add("14");
-    let res = list.getSubList(2, 8);
-    let arr = [];
-    res.forEach((item, index) => {
-      arr.push(item);
-    });
-    let a = ["1", "2"];
-    for (let i = 0; i < a.length; i++) {
-      expect(arr[i]).assertEqual(a[i]);
+    try {
+      list.getSubList(2, 8);
+    } catch (err) {
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the fromIndex or the toIndex is out-of-bounds");
     }
   });
   it("SR000GGR4A_testGetSubList035", 0, function () {
@@ -454,7 +454,8 @@ describe("ListTest", function () {
     try {
       let res = list.getSubList(6, 8);
     } catch (err) {
-      expect(err).assertEqual("Error: fromIndex or toIndex is out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the fromIndex or the toIndex is out-of-bounds");
     }
   });
   it("SR000GGR4A_testGetSubList036", 0, function () {
@@ -467,9 +468,8 @@ describe("ListTest", function () {
     try {
       let res = list.getSubList(6, 2);
     } catch (err) {
-      expect(err).assertEqual(
-        "Error: toIndex cannot be less than or equal to fromIndex"
-      );
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the toIndex cannot be less than or equal to fromIndex");
     }
   });
   it("SR000GGR4A_testAdd037", 0, function () {
@@ -573,17 +573,15 @@ describe("ListTest", function () {
     try {
       let res = list.removeByIndex(1);
     } catch (err) {
-      expect(err).assertEqual("Error: removeByIndex is out-of-bounds");
+      expect(err.name).assertEqual("RangeError");
+      expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
   it("SR000GGR4A_testEqual050", 0, function () {
     let list = new List();
     let list1 = new List();
-    try {
-      let res = list.equal(list1);
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
-    }
+    let res = list.equal(list1);
+    expect(res).assertEqual(true);
   });
   it("SR000GGR4A_testGetIndexOf051", 0, function () {
     let list = new List();
@@ -593,38 +591,25 @@ describe("ListTest", function () {
   it("SR000GGR4A_testForEach052", 0, function () {
     let list = new List();
     let num = 0;
-    try {
-      list.forEach((item, index) => {
-        num++;
-      });
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
-    }
+    list.forEach((item, index) => {
+      num++;
+    });
     expect(num).assertEqual(0);
   });
   it("SR000GGR4A_testIsEmpty053", 0, function () {
     let list = new List();
-    try {
-      let res = list.isEmpty();
-    } catch (err) {
-      expect(err).assertEqual("TypeError: is not callable");
-    }
+    let res = list.isEmpty();
+    expect(res).assertEqual(true);
   });
   it("SR000GGR4A_testHas054", 0, function () {
     let list = new List();
-    try {
-      let res = list.has(1);
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
-    }
+    let res = list.has(1);
+    expect(res).assertEqual(false);
   });
   it("SR000GGR4A_testGet055", 0, function () {
     let list = new List();
-    try {
-      let res = list.get(1);
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
-    }
+    let res = list.get(1);
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR4A_testClear056", 0, function () {
     let list = new List();
@@ -634,22 +619,15 @@ describe("ListTest", function () {
   });
   it("SR000GGR4A_testGetLast057", 0, function () {
     let list = new List();
-    try {
-      let res = list.getLast();
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
-    }
+    let res = list.getLast();
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR4A_testReplaceAllElements058", 0, function () {
     let list = new List();
     let num = 0;
-    try {
-      list.replaceAllElements((item, index) => {
-        num++;
-      });
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
-    }
+    list.replaceAllElements((item, index) => {
+      num++;
+    });
     expect(num).assertEqual(0);
   });
   it("SR000GGR4A_testConvertToArray059", 0, function () {
@@ -675,11 +653,8 @@ describe("ListTest", function () {
   });
   it("SR000GGR4A_testGetFirst062", 0, function () {
     let list = new List();
-    try {
-      let res = list.getFirst();
-    } catch (err) {
-      expect(err).assertEqual("TypeError: Obj is not a valid object");
-    }
+    let res = list.getFirst();
+    expect(res).assertEqual(undefined);
   });
   it("SR000GGR4A_testIterator063", 0, function () {
     let list = new List();
@@ -701,4 +676,4 @@ describe("ListTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-});
+  });

@@ -16,6 +16,7 @@ import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 const NUM_TWO = 2;
 const NUM_FOUR = 4;
+const bundleName = 'com.ohos.launcher'
 describe('ActsBmsJsTest', function () {
     /*
     * @tc.number: bms_getJsAbility_0100
@@ -204,4 +205,35 @@ describe('ActsBmsJsTest', function () {
             });
         }
     })
+
+    /**
+     * @tc.number getNameForUid_0100
+     * @tc.name BUNDLE::getBundleInfo
+     * @tc.desc Test getBundleInfo interfaces with hap.
+     */
+         it('getNameForUid_0100', 0, async function (done) {
+            bundle.getBundleInfo(bundleName).then(dataInfo => {
+                bundle.getNameForUid(dataInfo.uid).then(data => {
+                    expect(data).assertEqual(bundleName)
+                    done()
+                })
+            })
+            .catch(err => {
+                console.info("getNameForUid fail:" + JSON.stringify(err))
+                expect(err).assertFail()
+                done()
+            })
+        })
+    
+        /**
+         * @tc.number getNameForUid_0200
+         * @tc.name BUNDLE::getBundleInfo
+         * @tc.desc Test getBundleInfo interfaces with hap.
+         */
+        it('getNameForUid_0200', 0, async function (done) {
+            let dataInfo = await bundle.getBundleInfo(bundleName)
+            let data = await bundle.getNameForUid(dataInfo.uid)
+            expect(data).assertEqual(bundleName)
+            done()
+        })
 })

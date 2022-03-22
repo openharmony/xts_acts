@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -31,7 +31,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     const RESET_STATE = 6;
     const RELEASE_STATE = 7;
     const ERROR_STATE = 8;
-    const RECORDER_TIME = 1000;
+    const RECORDER_TIME = 3000;
     const CHANNEL_ONE = 1;
     const CHANNEL_TWO = 2;
     const FORMAT_MP4 = 2;

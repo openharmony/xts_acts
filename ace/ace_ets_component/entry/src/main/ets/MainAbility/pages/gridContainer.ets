@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import events_emitter from '@ohos.emitter'
 
 @Entry
@@ -47,7 +48,7 @@ struct GridContainerExample {
   onPageShow() {
     console.info('gridContainer page show called');
     var stateChangeEvent = {
-      eventId: 7,
+      eventId: 109,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
@@ -98,6 +99,7 @@ struct GridContainerExample {
               md: { span: 2, offset: 10 },
               lg: { span: 6, offset: 6 }
             })
+
             .height(50)
             .backgroundColor(0x00BFFF)
             .textAlign(TextAlign.Center)

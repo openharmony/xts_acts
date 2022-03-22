@@ -15,10 +15,10 @@
 
 import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-var timeout = 500;
+let timeout = 500;
 describe('ActsAnsNotificationCancel', function () {
     console.info("===========ActsAnsNotificationCancel start====================>");
-    var timesOfOnConsume
+    let timesOfOnConsume
     function onConsumeCancelAll(data) {
         console.info("================ANS_Cancel_0100 onConsume start=======================>");
         console.info("================ANS_Cancel_0100 onConsume data:=================>" + JSON.stringify(data));
@@ -29,7 +29,7 @@ describe('ActsAnsNotificationCancel', function () {
         }
         console.info("================ANS_Cancel_0100 onConsume end=======================>");
     }
-    var timesOfOnCancel
+    let timesOfOnCancel
     function onCancelCancelAll(data) {
         console.info("================ANS_Cancel_0100 onCancel start===============>");
         console.info("================ANS_Cancel_0100 onCancel data:===============>" + JSON.stringify(data));
@@ -58,11 +58,11 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("==================ANS_Cancel_0100 start==================>");
         timesOfOnConsume = 0
         timesOfOnCancel = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelAll,
             onCancel:onCancelCancelAll,
         }
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -92,7 +92,7 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        var notificationRequest1 = {
+        let notificationRequest1 = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -170,13 +170,13 @@ describe('ActsAnsNotificationCancel', function () {
         console.info("===============ANS_Cancel_0200 start==========================>");
         timesOfOnConsume = 0
         timesOfOnCancel = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelAllPromise,
             onCancel:onCancelCancelAllPromise,
         }
         await notify.subscribe(subscriber);
         console.info("==================ANS_Cancel_0200 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -206,7 +206,7 @@ describe('ActsAnsNotificationCancel', function () {
             badgeIconStyle: 1,
             showDeliveryTime: true,
         }
-        var notificationRequest1 = {
+        let notificationRequest1 = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -277,7 +277,7 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_0300', 0, async function (done) {
         console.info("===============ANS_Cancel_0300 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelAllNoNotify,
             onCancel:onCancelCancelAllNoNotify,
         }
@@ -316,7 +316,7 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_0400', 0, async function (done) {
         console.info("===============ANS_Cancel_0400 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelAllNoNotifyPromise,
             onCancel:onCancelCancelAllNoNotifyPromise,
         }
@@ -374,13 +374,13 @@ describe('ActsAnsNotificationCancel', function () {
     it('ANS_Cancel_0500', 0, async function (done) {
         console.info("============ANS_Cancel_0500 start==================>");
         timesOfOnCancel = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelAll2Times,
             onCancel:onCancelCancelAll2Times,
         }
         await notify.subscribe(subscriber);
         console.info("============ANS_Cancel_0500 subscribe promise======>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -449,13 +449,13 @@ describe('ActsAnsNotificationCancel', function () {
     it('ANS_Cancel_0600', 0, async function (done) {
         console.info("===============ANS_Cancel_0600 start==========================>");
         timesOfOnCancel = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelAll2TimesPromise,
             onCancel:onCancelCancelAll2TimesPromise,
         }
         await notify.subscribe(subscriber);
         console.info("==================ANS_Cancel_0600 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -523,13 +523,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_0700', 0, async function (done) {
         console.info("===============ANS_Cancel_0700 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelAllIsUnremovable,
             onCancel:onCancelCancelAllIsUnremovable,
         }
         await notify.subscribe(subscriber);
         console.info("========ANS_Cancel_0700 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -591,13 +591,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_0800', 0, async function (done) {
         console.info("===============ANS_Cancel_0800 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelAllIsUnremovablPromise,
             onCancel:onCancelCancelAllIsUnremovablePromise,
         }
         await notify.subscribe(subscriber);
         console.info("==================ANS_Cancel_0800 subscribe promsie==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -663,13 +663,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_0900', 0, async function (done) {
         console.info("===============ANS_Cancel_0900 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancel,
             onCancel:onCancelCancel,
         }
         await notify.subscribe(subscriber);
         console.info("==================ANS_Cancel_0900 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -737,13 +737,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_1000', 0, async function (done) {
         console.info("===============ANS_Cancel_1000 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelWrongId,
             onCancel:onCancelCancelWrongId,
         }
         await notify.subscribe(subscriber);
         console.info("================ANS_Cancel_1000 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -812,13 +812,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_1100', 0, async function (done) {
         console.info("===============ANS_Cancel_1100 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelIsUnremovable,
             onCancel:onCancelCancelIsUnremovable,
         }
         await notify.subscribe(subscriber);
         console.info("===============ANS_Cancel_1100 subscribe promise=============>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -856,7 +856,7 @@ describe('ActsAnsNotificationCancel', function () {
         }),timeout);
     })
 
-    var id1200
+    let id1200
     function onConsumeCancel2Times(data) {
         console.info("=========ANS_Cancel_1200 onConsume start=====================>");
         console.info("=========ANS_Cancel_1200 onConsume data:=====================>" + JSON.stringify(data));
@@ -904,13 +904,13 @@ describe('ActsAnsNotificationCancel', function () {
     it('ANS_Cancel_1200', 0, async function (done) {
         console.info("=============ANS_Cancel_1200 start==========================>");
         timesOfOnCancel = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancel2Times,
             onCancel:onCancelCancel2Times,
         }
         await notify.subscribe(subscriber);
         console.info("=============ANS_Cancel_1200 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -978,7 +978,7 @@ describe('ActsAnsNotificationCancel', function () {
      * @tc.desc: Verify that the cancel notification is successful by calling the
                  cancel(id: number, label: string, callback: AsyncCallback<void>): void; interface
      */
-    var subscriber
+    let subscriber
     it('ANS_Cancel_1300', 0, async function (done) {
         console.info("===============ANS_Cancel_1300 start==========================>");
         subscriber ={
@@ -987,7 +987,7 @@ describe('ActsAnsNotificationCancel', function () {
         }
         await notify.subscribe(subscriber);
         console.info("================ANS_Cancel_1300 subscribe promise==============>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1059,7 +1059,7 @@ describe('ActsAnsNotificationCancel', function () {
         }
         await notify.subscribe(subscriber);
         console.info("==========ANS_Cancel_1400 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1130,13 +1130,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_1500', 0, async function (done) {
         console.info("===============ANS_Cancel_1500 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelLabelIsUnremoveable,
             onCancel:onCancelCancelLabelIsUnremoveable,
         }
         await notify.subscribe(subscriber);
         console.info("=======ANS_Cancel_1500 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1202,13 +1202,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_1600', 0, async function (done) {
         console.info("===============ANS_Cancel_1600 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelLabelIsUnremoveablePromise,
             onCancel:onCancelCancelLabelIsUnremoveablePromise,
         }
         await notify.subscribe(subscriber);
         console.info("==============ANS_Cancel_1600 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1276,13 +1276,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_1700', 0, async function (done) {
         console.info("===============ANS_Cancel_1700 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelWrongLabel,
             onCancel:onCancelCancelWrongLabel,
         }
         await notify.subscribe(subscriber);
         console.info("==============ANS_Cancel_1700 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1349,13 +1349,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_1800', 0, async function (done) {
         console.info("===============ANS_Cancel_1800 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelWrongLabelPromise,
             onCancel:onCancelCancelWrongLabelPromise,
         }
         await notify.subscribe(subscriber);
         console.info("==============ANS_Cancel_1800 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1424,13 +1424,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_1900', 0, async function (done) {
         console.info("===============ANS_Cancel_1900 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelLabelNullCharacter,
             onCancel:onCancelCancelLabelNullCharacter,
         }
         await notify.subscribe(subscriber);
         console.info("=============ANS_Cancel_1900 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1498,13 +1498,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_2000', 0, async function (done) {
         console.info("===============ANS_Cancel_2000 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelNullCharacter,
             onCancel:onCancelCancelNullCharacter,
         }
         await notify.subscribe(subscriber);
         console.info("=========ANS_Cancel_2000 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1543,8 +1543,8 @@ describe('ActsAnsNotificationCancel', function () {
         }),timeout);
     })
 
-    var id2100
-    var label2100
+    let id2100
+    let label2100
     function onConsumeCancelLabel2Times(data) {
         console.info("=========ANS_Cancel_2100 onConsume start==================>");
         console.info("=========ANS_Cancel_2100 onConsume data:==================>" + JSON.stringify(data));
@@ -1592,13 +1592,13 @@ describe('ActsAnsNotificationCancel', function () {
     it('ANS_Cancel_2100', 0, async function (done) {
         console.info("===============ANS_Cancel_2100 start==========================>");
         timesOfOnCancel = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelLabel2Times,
             onCancel:onCancelCancelLabel2Times,
         }
         await notify.subscribe(subscriber);
         console.info("=============ANS_Cancel_2100 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1637,8 +1637,8 @@ describe('ActsAnsNotificationCancel', function () {
         }),timeout);
     })
 
-    var id2200
-    var label2200
+    let id2200
+    let label2200
     function onConsumeCancelLabelPromise2Times(data) {
         console.info("===========ANS_Cancel_2200 onConsume start=======================>");
         console.info("===========ANS_Cancel_2200 onConsume data:=========>" + JSON.stringify(data));
@@ -1679,13 +1679,13 @@ describe('ActsAnsNotificationCancel', function () {
     it('ANS_Cancel_2200', 0, async function (done) {
         console.info("===============ANS_Cancel_2200 start==========================>");
         timesOfOnCancel = 0
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelLabelPromise2Times,
             onCancel:onCancelCancelLabelPromise2Times,
         }
         await notify.subscribe(subscriber);
         console.info("================ANS_Cancel_2200 subscribe_2200_promise=============>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1754,13 +1754,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_2300', 0, async function (done) {
         console.info("===============ANS_Cancel_2300 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelRightLabelWrongId,
             onCancel:onCancelCancelRightLabelWrongId,
         }
         await notify.subscribe(subscriber);
         console.info("================ANS_Cancel_2300 promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1828,13 +1828,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_2400', 0, async function (done) {
         console.info("===============ANS_Cancel_2400 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelRightLabelWrongIdPromise,
             onCancel:onCancelCancelRightLabelWrongIdPromise,
         }
         await notify.subscribe(subscriber);
         console.info("============ANS_Cancel_2400 subscribe promise========>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1903,13 +1903,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_2500', 0, async function (done) {
         console.info("===============ANS_Cancel_2500 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelWrongLabelWrongId,
             onCancel:onCancelCancelWrongLabelWrongId,
         }
         await notify.subscribe(subscriber);
         console.info("================ANS_Cancel_2500 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
@@ -1977,13 +1977,13 @@ describe('ActsAnsNotificationCancel', function () {
      */
     it('ANS_Cancel_2600', 0, async function (done) {
         console.info("===============ANS_Cancel_2600 start==========================>");
-        var subscriber ={
+        let subscriber ={
             onConsume:onConsumeCancelWrongLabelWrongIdPromise,
             onCancel:onCancelCancelWrongLabelWrongIdPromise,
         }
         await notify.subscribe(subscriber);
         console.info("===============ANS_Cancel_2600 subscribe promise==================>");
-        var notificationRequest = {
+        let notificationRequest = {
             content:{
                 contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {

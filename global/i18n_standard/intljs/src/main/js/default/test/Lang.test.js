@@ -21,6 +21,7 @@ describe('LangTest', function () {
 
     let initPreferredLang = I18n.getPreferredLanguageList();
     let initLen = initPreferredLang.length;
+    let hour = I18n.is24HourClock();
 
     /* *
     * get the current preferred language list
@@ -60,7 +61,7 @@ describe('LangTest', function () {
     }
 
     /* *
-    * execute this step after every testcase
+    * restore the init lang list
     */
     function restoreLang(){
         for(let j = 0; j < initLen; j++){
@@ -78,6 +79,16 @@ describe('LangTest', function () {
     }
 
     /* *
+    * execute this step before all testcases
+    */
+    beforeAll(function(){
+        console.log('step before all cases in lang.'
+        + ' 24hour: ' + I18n.is24HourClock()
+        + ' prelang: ' + I18n.getPreferredLanguageList()
+        + ' syslocale: ' + I18n.getSystemLocale());
+    })
+
+    /* *
     * execute this step before every testcase
     */
     beforeEach(function(){
@@ -92,7 +103,19 @@ describe('LangTest', function () {
         console.log('i18n_test_preferredlanguage_afterEach ' + currLang);
         clearLang(currLang);
         restoreLang();
-        I18n.set24HourClock(false);
+        let afterValue = I18n.set24HourClock(hour);
+        console.log('step after every cases.' + afterValue);
+        console.log('24 hour clock after every cases ' + I18n.is24HourClock());
+    })
+
+    /* *
+    * execute this step after all testcases
+    */
+    afterAll(function(){
+        console.log('step after all cases.'
+        + ' 24hour: ' + I18n.is24HourClock()
+        + ' prelang: ' + I18n.getPreferredLanguageList()
+        + ' syslocale: ' + I18n.getSystemLocale());
     })
 
     /* *
@@ -104,7 +127,14 @@ describe('LangTest', function () {
         console.log('i18n_test_clock_0100 ' + 'start');
         let value = I18n.is24HourClock();
         console.log('i18n_test_clock_0100 ' + value);
-        expect(value).assertFalse();
+        if(hour)
+        {
+            expect(value).assertTrue();
+        }
+        else
+        {
+            expect(value).assertFalse();
+        }
     })
 
     /* *
@@ -525,6 +555,227 @@ describe('LangTest', function () {
         let value = date.toLocaleLowerCase('en-US');
         console.log('transfer_test_0400 ' + value);
         expect(value).assertEqual('the sky is in blue-style!');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0100
+    * @tc.name test getTimeZone method
+    * @tc.desc get the getTimeZone value
+    */
+    it('timezone_test_0100', 0, function () {
+        console.log('timezone_test_0100 ' + 'start');
+        let timezone = I18n.getTimeZone();
+        let value = timezone.getID();
+        console.log('timezone_test_0100 ' + value);
+        expect(value).assertEqual('UTC');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0200
+    * @tc.name test getDisplayName method
+    * @tc.desc get the getDisplayName value
+    */
+    it('timezone_test_0200', 0, function () {
+        console.log('timezone_test_0200 ' + 'start');
+        let timezone = I18n.getTimeZone();
+        let value = timezone.getDisplayName();
+        console.log('timezone_test_0200 ' + value);
+        expect(value).assertEqual('GMT');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0300
+    * @tc.name test getDisplayName method with zh-CN param
+    * @tc.desc get the getDisplayName value
+    */
+    it('timezone_test_0300', 0, function () {
+        console.log('timezone_test_0300 ' + 'start');
+        let timezone = I18n.getTimeZone();
+        let value = timezone.getDisplayName('zh-CN');
+        console.log('timezone_test_0300 ' + value);
+        expect(value).assertEqual('GMT');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0400
+    * @tc.name test getDisplayName method with true param
+    * @tc.desc get the getDisplayName value
+    */
+    it('timezone_test_0400', 0, function () {
+        console.log('timezone_test_0400 ' + 'start');
+        let timezone = I18n.getTimeZone();
+        let value = timezone.getDisplayName(true);
+        console.log('timezone_test_0400 ' + value);
+        expect(value).assertEqual('GMT');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0500
+    * @tc.name test getDisplayName method with false param
+    * @tc.desc get the getDisplayName value
+    */
+    it('timezone_test_0500', 0, function () {
+        console.log('timezone_test_0500 ' + 'start');
+        let timezone = I18n.getTimeZone();
+        let value = timezone.getDisplayName(false);
+        console.log('timezone_test_0500 ' + value);
+        expect(value).assertEqual('GMT');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0600
+    * @tc.name test getRawOffset method
+    * @tc.desc get the getRawOffset value
+    */
+    it('timezone_test_0600', 0, function () {
+        console.log('timezone_test_0600 ' + 'start');
+        let timezone = I18n.getTimeZone();
+        let value = timezone.getRawOffset();
+        console.log('timezone_test_0600 ' + value);
+        expect(value >= 0).assertEqual(true);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0700
+    * @tc.name test getOffset method
+    * @tc.desc get the getOffset value
+    */
+    it('timezone_test_0700', 0, function () {
+        console.log('timezone_test_0700 ' + 'start');
+        let timezone = I18n.getTimeZone();
+        let value = timezone.getOffset();
+        console.log('timezone_test_0700 ' + value);
+        expect(value >= 0).assertEqual(true);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0800
+    * @tc.name test getOffset method with date param
+    * @tc.desc get the getOffset value
+    */
+    it('timezone_test_0800', 0, function () {
+        console.log('timezone_test_0800 ' + 'start');
+        let timezone = I18n.getTimeZone();
+        let value = timezone.getOffset(10540800000);
+        console.log('timezone_test_0800 ' + value);
+        expect(value >= 0).assertEqual(true);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0900
+    * @tc.name test getID
+    * @tc.desc get the getID value
+    */
+    it('timezone_test_0900', 0, function () {
+        console.log('timezone_test_0900 ' + 'start');
+        let timezone = I18n.getTimeZone('ACT');
+        let value = timezone.getID();
+        console.log('timezone_test_0900 ' + value);
+        expect(value).assertEqual('ACT');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1000
+    * @tc.name test getDisplayName with timezone id
+    * @tc.desc get the getID value
+    */
+    it('timezone_test_1000', 0, function () {
+        console.log('timezone_test_1000 ' + 'start');
+        let timezone = I18n.getTimeZone('ACT');
+        let value = timezone.getDisplayName();
+        console.log('timezone_test_1000 ' + value);
+        expect(value).assertEqual('澳大利亚中部标准时间');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1100
+    * @tc.name test getDisplayName with locale
+    * @tc.desc get the getID value
+    */
+    it('timezone_test_1100', 0, function () {
+        console.log('timezone_test_1100 ' + 'start');
+        let timezone = I18n.getTimeZone('Asia/Shanghai');
+        let value = timezone.getDisplayName('zh-CN');
+        console.log('timezone_test_1100 ' + value);
+        expect(value).assertEqual('中国标准时间');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1200
+    * @tc.name test getDisplayName with locale
+    * @tc.desc get the getID value
+    */
+    it('timezone_test_1200', 0, function () {
+        console.log('timezone_test_1200 ' + 'start');
+        let timezone = I18n.getTimeZone('Asia/Shanghai');
+        let value = timezone.getDisplayName('zh-CN', true);
+        console.log('timezone_test_1200 ' + value);
+        expect(value).assertEqual('中国标准时间');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1300
+    * @tc.name test getDisplayName with en-US and true param
+    * @tc.desc get the getID value
+    */
+    it('timezone_test_1300', 0, function () {
+        console.log('timezone_test_1300 ' + 'start');
+        let timezone = I18n.getTimeZone('Asia/Shanghai');
+        let value = timezone.getDisplayName('en-US', true);
+        console.log('timezone_test_1300 ' + value);
+        expect(value).assertEqual('China Standard Time');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1400
+    * @tc.name test getDisplayName with zh-CN and false param
+    * @tc.desc get the getID value
+    */
+    it('timezone_test_1400', 0, function () {
+        console.log('timezone_test_1400 ' + 'start');
+        let timezone = I18n.getTimeZone('Asia/Shanghai');
+        let value = timezone.getDisplayName('zh-CN', false);
+        console.log('timezone_test_1400 ' + value);
+        expect(value).assertEqual('中国标准时间');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1500
+    * @tc.name test getRawOffset method with timezone id
+    * @tc.desc get the getRawOffset value
+    */
+    it('timezone_test_1500', 0, function () {
+        console.log('timezone_test_1500 ' + 'start');
+        let timezone = I18n.getTimeZone('ACT');
+        let value = timezone.getRawOffset();
+        console.log('timezone_test_1500 ' + value);
+        expect(value > 0).assertEqual(true);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1600
+    * @tc.name test getOffset method with timezone id
+    * @tc.desc get the getOffset value
+    */
+    it('timezone_test_1600', 0, function () {
+        console.log('timezone_test_1600 ' + 'start');
+        let timezone = I18n.getTimeZone('ACT');
+        let value = timezone.getOffset();
+        console.log('timezone_test_1600 ' + value);
+        expect(value > 0).assertEqual(true);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1700
+    * @tc.name test getOffset method with date and timezone id param
+    * @tc.desc get the getOffset value
+    */
+    it('timezone_test_1700', 0, function () {
+        console.log('timezone_test_1700 ' + 'start');
+        let timezone = I18n.getTimeZone('ACT');
+        let value = timezone.getOffset(10540800000);
+        console.log('timezone_test_1700 ' + value);
+        expect(value > 0).assertEqual(true);
     })
 
     console.log('*************end LangTest*************');

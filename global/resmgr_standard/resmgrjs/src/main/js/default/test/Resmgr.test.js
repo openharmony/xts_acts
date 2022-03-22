@@ -384,5 +384,35 @@ describe('resMgrTest', function () {
         done();
     })
 
+    /* *
+    * @tc.number SUB_GLOBAL_RESMGR_JS_2200
+    * @tc.name test closeRawFileDescriptor method in callback mode
+    * @tc.desc get the closeRawFileDescriptor in callback mode
+    */
+    it('closeRawFileDescriptor_test_001', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.closeRawFileDescriptor('rawfiletest.xml', (error, value) => {
+                expect(error == null).assertTrue();
+                console.log('closeRawFileDescriptor_test_001--' + error);
+            })
+        })
+        done();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_RESMGR_JS_2300
+    * @tc.name test closeRawFileDescriptor method in promise mode
+    * @tc.desc get the closeRawFileDescriptor in promise mode
+    */
+    it('closeRawFileDescriptor_test_002', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.closeRawFileDescriptor('rawfiletest.xml').then(value => {
+                expect(value !== null).assertTrue();
+                console.log('closeRawFileDescriptor_test_002--' + value);
+            })
+        })
+        done();
+    })
+
     console.log('*************end ResmgrTest*************');
 }) 

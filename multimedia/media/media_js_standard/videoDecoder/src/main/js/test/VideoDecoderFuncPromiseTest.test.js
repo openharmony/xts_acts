@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -32,15 +32,24 @@ describe('VideoDecoderFuncPromiseTest', function () {
     let surfaceID = '';
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.videodecoder/shared/';
+    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/';
     let ES_FRAME_SIZE = [];
-    const H264_FRAME_SIZE_30FPS_1080 =
-    [ 3491, 115184, 9423, 1046, 19038, 2059, 2306, 28773, 4815, 1670, 31464, 6322, 2969, 3518, 38279, 8419, 4463,
-        4554, 35457, 7848, 3870, 4235, 32523, 7606, 3992, 4132, 58148, 10144, 7625, 6051, 38774, 8929, 5309, 5784,
-        45250, 8696, 5511, 5224, 36732, 8221, 4885, 5103, 40075, 9799, 5259, 5373, 39394, 10406, 5016, 5572, 60935,
-        13292, 6469, 7040, 45344, 12370, 5825, 6712, 47052, 12502, 6800, 7453, 52653, 14088, 7257, 8931, 46638, 13277,
-        7612, 8663, 44022, 13672, 7763, 7784, 51638, 14118, 8112, 6458, 41013, 12910, 6759, 6974, 38409, 12813, 6785,
-        6934, 33390, 12910, 6825, 6954, 21092, 13599, 6968, 7937];
+    const H264_FRAME_SIZE_60FPS_320 =
+    [ 2106, 11465, 321, 72, 472, 68, 76, 79, 509, 90, 677, 88, 956, 99, 347, 77, 452, 681, 81, 1263, 94, 106, 97,
+        998, 97, 797, 93, 1343, 150, 116, 117, 926, 1198, 128, 110, 78, 1582, 158, 135, 112, 1588, 165, 132,
+        128, 1697, 168, 149, 117, 1938, 170, 141, 142, 1830, 106, 161, 122, 1623, 160, 154, 156, 1998, 230,
+        177, 139, 1650, 186, 128, 134, 1214, 122, 1411, 120, 1184, 128, 1591, 195, 145, 105, 1587, 169, 140,
+        118, 1952, 177, 150, 161, 1437, 159, 123, 1758, 180, 165, 144, 1936, 214, 191, 175, 2122, 180, 179,
+        160, 1927, 161, 184, 119, 1973, 218, 210, 129, 1962, 196, 127, 154, 2308, 173, 127, 1572, 142, 122,
+        2065, 262, 159, 206, 2251, 269, 179, 170, 2056, 308, 168, 191, 2090, 303, 191, 110, 1932, 272, 162,
+        122, 1877, 245, 167, 141, 1908, 294, 162, 118, 1493, 132, 1782, 273, 184, 133, 1958, 274, 180, 149,
+        2070, 216, 169, 143, 1882, 224, 149, 139, 1749, 277, 184, 139, 2141, 197, 170, 140, 2002, 269, 162,
+        140, 1862, 202, 179, 131, 1868, 214, 164, 140, 1546, 226, 150, 130, 1707, 162, 146, 1824, 181, 147,
+        130, 1898, 209, 143, 131, 1805, 180, 148, 106, 1776, 147, 141, 1572, 177, 130, 105, 1776, 178, 144,
+        122, 1557, 142, 124, 114, 1436, 143, 126, 1326, 127, 1755, 169, 127, 105, 1807, 177, 131, 134, 1613,
+        187, 137, 136, 1314, 134, 118, 2005, 194, 129, 147, 1566, 185, 132, 131, 1236, 174, 137, 106, 11049,
+        574, 126, 1242, 188, 130, 119, 1450, 187, 137, 141, 1116, 124, 1848, 138, 122, 1605, 186, 127, 140,
+        1798, 170, 124, 121, 1666, 157, 128, 130, 1678, 135, 118, 1804, 169, 135, 125, 1837, 168, 124, 124];
     const H263_FRAME_SIZE =
     [ 96618, 3515, 4132, 4336, 4646, 3497, 4430, 5437, 7560, 4613, 4876, 4734, 53617, 4079, 4507, 5222, 6244,
       5843, 6601, 6622, 6751, 6539, 7666, 7706, 53977, 7311, 12906, 10308, 26791, 15983, 34794, 22110, 37165,
@@ -210,7 +219,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
                     console.info('in case: setParameter success ');
                 }, failCallback).catch(failCatch);
             }
-            videoDecodeProcessor.queueInput(inputObject).then(() => {
+            videoDecodeProcessor.pushInputData(inputObject).then(() => {
                 console.info('in case: queueInput success ');
             }, failCallback).catch(failCatch);
         }
@@ -226,7 +235,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
                 return;
             }
             frameCountOut++;
-            await videoDecodeProcessor.releaseOutput(outputObject, true).then(() => {
+            await videoDecodeProcessor.renderOutputData(outputObject).then(() => {
                 console.log('in case: release output count:' + frameCountOut);
             }, failCallback).catch(failCatch);
         }
@@ -234,13 +243,13 @@ describe('VideoDecoderFuncPromiseTest', function () {
 
     function setCallback(nextStep){
         console.info('in case:  setCallback in');
-        videoDecodeProcessor.on('inputBufferAvailable', async (inBuffer) => {
+        videoDecodeProcessor.on('needInputData', async (inBuffer) => {
             console.info('in case: inputBufferAvailable inBuffer.index: '+ inBuffer.index);
             inputQueue.push(inBuffer);
             await enqueueInputs();
         });
 
-        videoDecodeProcessor.on('outputBufferAvailable', async (outBuffer) => {
+        videoDecodeProcessor.on('newOutputData', async (outBuffer) => {
             console.info('in case: outputBufferAvailable outBuffer.index: '+ outBuffer.index);
             videoDecodeProcessor.getOutputMediaDescription().then((MediaDescription) => {
                 console.info('get outputMediaDescription : ' + MediaDescription);
@@ -253,7 +262,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
             console.info('in case: error called,errName is' + err);
         });
 
-        videoDecodeProcessor.on('outputFormatChanged',(format) => {
+        videoDecodeProcessor.on('streamChanged',(format) => {
             console.info('in case: Output format changed: ' + format.toString());
         });
         console.info('in case:  setCallback out');
@@ -341,50 +350,19 @@ describe('VideoDecoderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */ 
     it('SUB_MEDIA_VIDEO_DECODER_H264_PROMISE_0100', 0, async function (done) {
-        ES_FRAME_SIZE = H264_FRAME_SIZE_30FPS_1080;
+        ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
         isCodecData = true;
-        let srcPath = BASIC_PATH + 'out_1920_1080_30fps_3s.h264';
+        let srcPath = BASIC_PATH + 'out_320_240_10s.h264';
         let mediaDescription = {
             'track_type': 1,
             'codec_mime': 'video/avc',
-            'width': 1920,
-            'height': 1080,
-            'pixel_format': 4,
-            'frame_rate': 30.00,
-            'max_input_size': 150000,
-        }
-        await toCreateVideoDecoderByMime('video/avc', done);
-        await toGetVideoDecoderCaps();
-        await toConfigure(mediaDescription, srcPath);
-        await toSetOutputSurface(true);
-        setCallback(
-            function(){eventEmitter.emit('nextStep', done);}
-        );
-        await toPrepare();
-        await toStart();
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_H263_PROMISE_0100
-        * @tc.name      : 001.basic Video decode function
-        * @tc.desc      : start-> EOS -> stop -> reset
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */ 
-    it('SUB_MEDIA_VIDEO_DECODER_H263_PROMISE_0100', 0, async function (done) {
-        ES_FRAME_SIZE = H263_FRAME_SIZE;
-        let srcPath = BASIC_PATH + 'h263_1408_1152.es';
-        let mediaDescription = {
-            'track_type': 1,
-            'codec_mime': 'video/h263',
-            'width': 1408,
-            'height': 1152,
+            'width': 320,
+            'height': 240,
             'pixel_format': 4,
             'frame_rate': 60.00,
             'max_input_size': 150000,
         }
-        await toCreateVideoDecoderByMime('video/h263', done);
+        await toCreateVideoDecoderByMime('video/avc', done);
         await toGetVideoDecoderCaps();
         await toConfigure(mediaDescription, srcPath);
         await toSetOutputSurface(true);
@@ -459,28 +437,28 @@ describe('VideoDecoderFuncPromiseTest', function () {
 
     /* *
         * @tc.number    : SUB_MEDIA_VIDEO_DECODER_MULTIINSTANCE_PROMISE_0100
-        * @tc.name      : 001.creat 16 video decoder
-        * @tc.desc      : creat 16 video decoder
+        * @tc.name      : 001.creat multiple video decoders
+        * @tc.desc      : creat multiple video decoders
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
     it('SUB_MEDIA_VIDEO_DECODER_MULTIINSTANCE_PROMISE_0100', 0, async function (done) {
-        ES_FRAME_SIZE = H264_FRAME_SIZE_30FPS_1080;
+        ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
         isCodecData = true;
-        let srcPath = BASIC_PATH + 'out_1920_1080_30fps_3s.h264';
+        let srcPath = BASIC_PATH + 'out_320_240_10s.h264';
         let mediaDescription = {
             'track_type': 1,
             'codec_mime': 'video/avc',
-            'width': 1920,
-            'height': 1080,
+            'width': 320,
+            'height': 240,
             'pixel_format': 4,
-            'frame_rate': 30.00,
+            'frame_rate': 60.00,
             'max_input_size': 150000,
         }
         let array = new Array();
         eventEmitter.on('releaseAllDecoder', async () => {
-            for (let j = 0; j < 15; j++) {
+            for (let j = 0; j < 2; j++) {
                 await array[j].release().then(() => {
                     array[j] = null;
                 }, failCallback).catch(failCatch);
@@ -491,11 +469,11 @@ describe('VideoDecoderFuncPromiseTest', function () {
             videoDecodeProcessor = null;
             done();
         })
-        for (let i = 0; i < 16; i++) {
+        for (let i = 0; i < 3; i++) {
             await media.createVideoDecoderByMime('video/avc').then((processor) => {
                 if (typeof (processor) != 'undefined') {
                     console.info('in case : createVideoDecoderByMime success');
-                    if (i == 15) {
+                    if (i == 2) {
                         videoDecodeProcessor = processor;
                     } else {
                         array[i] = processor;

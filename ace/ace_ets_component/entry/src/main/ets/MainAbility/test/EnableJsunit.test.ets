@@ -16,10 +16,9 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from './Utils';
-
+import Utils from './Utils.ets';
 export default function enableJsunit() {
-  describe('appInfoTest', function () {
+  describe('enableTest', function () {
     beforeEach(async function (done) {
       console.info("enable beforeEach start");
       let options = {
@@ -67,7 +66,7 @@ export default function enableJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 82,
+          eventId: 93,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testEnable02] start to publish emit");
@@ -78,9 +77,60 @@ export default function enableJsunit() {
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('enabled');
       let obj = JSON.parse(strJson);
-      console.info("[testEnable02] obj is: " + JSON.stringify(obj));
+      console.info("[testEnable02] obj is: " + JSON.stringify(obj.$attrs.enabled));
       expect(obj.$attrs.enabled).assertEqual(false);
       console.info('testEnable02 END');
+      done();
+    });
+
+    it('testEnable03', 0, async function (done) {
+      console.info('[testEnable03] START');
+      try {
+        var eventData = {
+          data: {
+            "enabled": -3
+          }
+        }
+        var innerEvent = {
+          eventId: 1111,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testEnable03] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testEnable03] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('enabled');
+      let obj = JSON.parse(strJson);
+      console.info("[testEnable03] obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.enabled).assertEqual(true);
+      console.info('testEnable03 END');
+      done();
+    });
+
+    it('testEnable04', 0, async function (done) {
+      console.info('testEnable04 START');
+      try {
+        let eventData = {
+          data: {
+            "enabled": 33567444
+          }
+        }
+        let indexEvent = {
+          eventId: 1111,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("testEnable04 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("testEnable04 change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('enabled');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("testEnable04 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.enabled).assertEqual(true);
       done();
     });
   })
