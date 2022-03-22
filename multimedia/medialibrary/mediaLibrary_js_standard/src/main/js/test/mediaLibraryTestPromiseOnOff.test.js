@@ -20,7 +20,10 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
     const context = featureAbility.getContext();
     const media = mediaLibrary.getMediaLibrary(context);
-
+    beforeAll(function() {});
+    beforeEach(function() {});
+    afterEach(function() {});
+    afterAll(function() {});
     let fileKeyObj = mediaLibrary.FileKey;
     let imageType = mediaLibrary.MediaType.IMAGE;
     let videoType = mediaLibrary.MediaType.VIDEO;
@@ -43,7 +46,7 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
         selections: fileKeyObj.MEDIA_TYPE + '= ?',
         selectionArgs: [fileType.toString()],
     };
-
+    
     /**
      * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_001
      * @tc.name      : ON
@@ -56,20 +59,19 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
         try {
             let conut = 0;
             media.on('imageChange', () => {
+                console.info('MediaLibraryTest : on 001 callback');
                 conut++;
             });
             const fetchFileResult = await media.getFileAssets(imagesfetchOp);
 
-            const dataList = await fetchFileResult.getAllObject();
-
-            const asset = dataList[0];
-            asset.title = 'changename';
+            const asset = await fetchFileResult.getFirstObject();
+            asset.title = asset.title + 'changename';
             await asset.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            expect(conut > 0).assertTrue();
-            media.off('imageChange');
-            done();
+            setTimeout(() => {
+                expect(conut > 0).assertTrue();
+                media.off('imageChange');
+                done();
+            }, 1000);
         } catch (error) {
             console.info(`MediaLibraryTest : on 001 failed, error: ${error}`);
             expect(false).assertTrue();
@@ -90,17 +92,18 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
         try {
             let conut = 0;
             media.on('videoChange', () => {
+                console.info('MediaLibraryTest : on 002 callback');
                 conut++;
             });
             const fetchFileResult = await media.getFileAssets(videosfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
+            const asset = await fetchFileResult.getFirstObject();
+            asset.title = asset.title + 'changename';
             await asset.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-            expect(conut == 1).assertTrue();
-            media.off('videoChange');
-            done();
+            setTimeout(() => {
+                expect(conut > 0).assertTrue();
+                media.off('videoChange');
+                done();
+            }, 1000);
         } catch (error) {
             console.info(`MediaLibraryTest : on 002 failed, error: ${error}`);
             expect(false).assertTrue();
@@ -121,17 +124,18 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
         try {
             let conut = 0;
             media.on('audioChange', () => {
+                console.info('MediaLibraryTest : on 003 callback');
                 conut++;
             });
             const fetchFileResult = await media.getFileAssets(audiosfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
+            const asset = await fetchFileResult.getFirstObject();
+            asset.title = asset.title + 'changename';
             await asset.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-            expect(conut == 1).assertTrue();
-            media.off('audioChange');
-            done();
+            setTimeout(() => {
+                expect(conut > 0).assertTrue();
+                media.off('audioChange');
+                done();
+            }, 1000);
         } catch (error) {
             console.info(`MediaLibraryTest : on 003 failed, error: ${error}`);
             expect(false).assertTrue();
@@ -152,17 +156,18 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
         try {
             let conut = 0;
             media.on('fileChange', () => {
+                console.info('MediaLibraryTest : on 004 callback');
                 conut++;
             });
             const fetchFileResult = await media.getFileAssets(filesfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
+            const asset = await fetchFileResult.getFirstObject();
+            asset.title = asset.title + 'changename';
             await asset.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-            expect(conut == 1).assertTrue();
-            media.off('fileChange');
-            done();
+            setTimeout(() => {
+                expect(conut > 0).assertTrue();
+                media.off('fileChange');
+                done();
+            }, 1000);
         } catch (error) {
             console.info(`MediaLibraryTest : on 004 failed, error: ${error}`);
             expect(false).assertTrue();
@@ -183,17 +188,18 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
         try {
             let conut = 0;
             media.on('albumChange', () => {
+                console.info('MediaLibraryTest : on 005 callback');
                 conut++;
             });
             const fetchFileResult = await media.getFileAssets(filesfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
+            const asset = await fetchFileResult.getFirstObject();
+            asset.title = asset.title + 'changename';
             await asset.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-            expect(conut == 0).assertTrue();
-            media.off('albumChange');
-            done();
+            setTimeout(() => {
+                expect(conut == 0).assertTrue();
+                media.off('albumChange');
+                done();
+            }, 1000);
         } catch (error) {
             console.info(`MediaLibraryTest : on 005 failed, error: ${error}`);
             expect(false).assertTrue();
@@ -216,17 +222,18 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
             expect(true).assertTrue();
             done();
             media.on('deviceChange', () => {
+                console.info('MediaLibraryTest : on 006 callback');
                 conut++;
             });
             const fetchFileResult = await media.getFileAssets(filesfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
+            const asset = await fetchFileResult.getFirstObject();
+            asset.title = asset.title + 'changename';
             await asset.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-            expect(conut == 0).assertTrue();
-            media.off('deviceChange');
-            done();
+            setTimeout(() => {
+                expect(conut == 0).assertTrue();
+                media.off('deviceChange');
+                done();
+            }, 1000);
         } catch (error) {
             console.info(`MediaLibraryTest : on 006 failed, error: ${error}`);
             expect(false).assertTrue();
@@ -249,17 +256,18 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
             expect(true).assertTrue();
             done();
             media.on('remoteFileChange', () => {
+                console.info('MediaLibraryTest : on 007 callback');
                 conut++;
             });
             const fetchFileResult = await media.getFileAssets(filesfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
+            const asset = await fetchFileResult.getFirstObject();
+            asset.title = asset.title + 'changename';
             await asset.commitModify();
-            await new Promise((res) => setTimeout(() => res(), 3000));
-            expect(conut == 0).assertTrue();
-            media.off('remoteFileChange');
-            done();
+            setTimeout(() => {
+                expect(conut == 0).assertTrue();
+                media.off('remoteFileChange');
+                done();
+            }, 1000);
         } catch (error) {
             console.info(`MediaLibraryTest : on 006 failed, error: ${error}`);
             expect(false).assertTrue();
@@ -287,16 +295,14 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
 
             media.off('imageChange');
             const fetchFileResult = await media.getFileAssets(imagesfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
+            const asset = await fetchFileResult.getFirstObject();
+            asset.title = asset.title + 'changename';
             await asset.commitModify();
-
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            console.info('MediaLibraryTest : off 001 passed');
-            expect(true).assertTrue();
-            done();
+            setTimeout(() => {
+                console.info('MediaLibraryTest : off 001 passed');
+                expect(true).assertTrue();
+                done();
+            }, 1000);
         } catch (error) {
             console.info(`MediaLibraryTest : off 001 failed, error: ${error}`);
             expect(false).assertTrue();
@@ -324,16 +330,14 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
 
             media.off('videoChange');
             const fetchFileResult = await media.getFileAssets(videosfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
+            const asset = await fetchFileResult.getFirstObject();
+            asset.title = asset.title + 'changename';
             await asset.commitModify();
-
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            console.info('MediaLibraryTest : off 002 passed');
-            expect(true).assertTrue();
-            done();
+            setTimeout(() => {
+                console.info('MediaLibraryTest : off 002 passed');
+                expect(true).assertTrue();
+                done();
+            }, 1000);
         } catch (error) {
             console.info(`MediaLibraryTest : off 002 failed, error: ${error}`);
             expect(false).assertTrue();
@@ -361,16 +365,14 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
 
             media.off('audioChange');
             const fetchFileResult = await media.getFileAssets(audiosfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
+            const asset = await fetchFileResult.getFirstObject();
+            asset.title = asset.title + 'changename';
             await asset.commitModify();
-
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            console.info('MediaLibraryTest : off 003 passed');
-            expect(true).assertTrue();
-            done();
+            setTimeout(() => {
+                console.info('MediaLibraryTest : off 003 passed');
+                expect(true).assertTrue();
+                done();
+            }, 1000);
         } catch (error) {
             console.info(`MediaLibraryTest : off 003 failed, error: ${error}`);
             expect(false).assertTrue();
@@ -398,16 +400,14 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
 
             media.off('fileChange');
             const fetchFileResult = await media.getFileAssets(videosfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'changename';
+            const asset = await fetchFileResult.getFirstObject();
+            asset.title = asset.title + 'changename';
             await asset.commitModify();
-
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            console.info('MediaLibraryTest : off 004 passed');
-            expect(true).assertTrue();
-            done();
+            setTimeout(() => {
+                console.info('MediaLibraryTest : off 004 passed');
+                expect(true).assertTrue();
+                done();
+            }, 1000);
         } catch (error) {
             console.info(`MediaLibraryTest : off 004 failed, error: ${error}`);
             expect(false).assertTrue();
@@ -435,16 +435,14 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
 
             media.off('albumChange');
             const fetchFileResult = await media.getFileAssets(videosfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'albumChange';
+            const asset = await fetchFileResult.getFirstObject();
+            asset.title = asset.title + 'albumChange';
             await asset.commitModify();
-
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            console.info('MediaLibraryTest : off 005 passed');
-            expect(true).assertTrue();
-            done();
+            setTimeout(() => {
+                console.info('MediaLibraryTest : off 005 passed');
+                expect(true).assertTrue();
+                done();
+            }, 1000);
         } catch (error) {
             console.info(`MediaLibraryTest : off 005 failed, error: ${error}`);
             expect(false).assertTrue();
@@ -472,16 +470,14 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
 
             media.off('deviceChange');
             const fetchFileResult = await media.getFileAssets(videosfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'deviceChange';
+            const asset = await fetchFileResult.getFirstObject();
+            asset.title = asset.title + 'deviceChange';
             await asset.commitModify();
-
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            console.info('MediaLibraryTest : off 006 passed');
-            expect(true).assertTrue();
-            done();
+            setTimeout(() => {
+                console.info('MediaLibraryTest : off 006 passed');
+                expect(true).assertTrue();
+                done();
+            }, 1000);
         } catch (error) {
             console.info(`MediaLibraryTest : off 006 failed, error: ${error}`);
             expect(false).assertTrue();
@@ -509,16 +505,14 @@ describe('mediaLibraryTestPromiseOnOff.test.js', async function () {
 
             media.off('remoteFileChange');
             const fetchFileResult = await media.getFileAssets(videosfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset = dataList[0];
-            asset.title = 'remoteFileChange';
+            const asset = await fetchFileResult.getFirstObject();
+            asset.title = asset.title + 'remoteFileChange';
             await asset.commitModify();
-
-            await new Promise((res) => setTimeout(() => res(), 3000));
-
-            console.info('MediaLibraryTest : off 007 passed');
-            expect(true).assertTrue();
-            done();
+            setTimeout(() => {
+                console.info('MediaLibraryTest : off 007 passed');
+                expect(true).assertTrue();
+                done();
+            }, 1000);
         } catch (error) {
             console.info(`MediaLibraryTest : off 006 failed, error: ${error}`);
             expect(false).assertTrue();
