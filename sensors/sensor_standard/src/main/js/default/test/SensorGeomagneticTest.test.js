@@ -144,7 +144,7 @@ describe("SensorJsTest", function () {
                             reject(err)
                         }, 500)
                     } else {
-                        console.info('SensorGeomagenticAlgorithmJSTest002 success x: ' + data.x + ',y: ' 
+                        console.info('SensorGeomagenticAlgorithmJSTest002 success x: ' + data.x + ',y: '
                             + data.y + ',z: '
                             + data.z + ',geomagneticDip: ' + data.geomagneticDip
                             + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -214,7 +214,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest004 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest004 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest004 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -314,7 +314,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest007 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest007 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest007 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -346,7 +346,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest008 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest008 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest008 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -372,7 +372,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest009 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest009 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest009 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -398,7 +398,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest010 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest010 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest010 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -424,7 +424,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest011 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest011 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest011 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -452,7 +452,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest012 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest012 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest012 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -484,7 +484,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest013 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest013 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest013 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -510,7 +510,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest014 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest014 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest014 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -536,7 +536,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest015 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest015 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest015 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -562,7 +562,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest016 once success');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest016 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest016 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -613,7 +613,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest018 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest018 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest018 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -639,7 +639,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest019 failed');
                     expect(false).assertfalse();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest019 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest019 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -690,7 +690,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest021 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest021 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest021 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -716,7 +716,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest022 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest022 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest022 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -742,7 +742,7 @@ describe("SensorJsTest", function () {
                     console.info('SensorGeomagenticAlgorithmJSTest023 failed');
                     expect(false).assertTrue();
                 } else {
-                    console.info('SensorGeomagenticAlgorithmJSTest023 success x: ' + data.x + ',y: ' + data.y 
+                    console.info('SensorGeomagenticAlgorithmJSTest023 success x: ' + data.x + ',y: ' + data.y
                         + ',z: ' + data.z
                         + ',geomagneticDip: ' + data.geomagneticDip
                         + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
@@ -812,7 +812,7 @@ describe("SensorJsTest", function () {
      */
     it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0260", 0, async function (done) {
         console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0260-------------------------");
-        for (var i = 0; i < timeMillis.length; i++) {
+        for (let i = 0; i < timeMillis.length; i++) {
             await sensor.getGeomagneticField({ 'latitude': 80, 'longitude': 0, 'altitude': 0 },
                 timeMillis[i]).then((data) => {
                     console.info('SensorGeomagenticAlgorithmJSTest026 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1130,7 +1130,7 @@ describe("SensorJsTest", function () {
      * @tc.desc:verify app info is not null
      */
     it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0390', 0, async function (done) {
-        for (var i = 0; i < timeMillis.length; i++) {
+        for (let i = 0; i < timeMillis.length; i++) {
             console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0390------------------');
             await sensor.getGeomagneticField({ 'latitude': 80, 'longitude': 0, 'altitude': 0 },
                 timeMillis[i]).then((data) => {
@@ -1259,7 +1259,7 @@ describe("SensorJsTest", function () {
      */
     it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0450', 0, async function (done) {
         console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0450------------------');
-        for (var i = 0; i < GEOMAGNETIC_COORDINATES.length; i++) {
+        for (let i = 0; i < GEOMAGNETIC_COORDINATES.length; i++) {
             await sensor.getGeomagneticField({
                 'latitude': GEOMAGNETIC_COORDINATES[i][0],
                 'longitude': GEOMAGNETIC_COORDINATES[i][1], 'altitude': GEOMAGNETIC_COORDINATES[i][2]

@@ -73,7 +73,7 @@ describe('MultimodalInput_test', function () {
         expect(false).assertTrue();
       } else {
         let arr = [];
-        for (var i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
           inputDevice.getDevice(data[i], (res, err) => {
             console.log(`getDevice:data_i ${JSON.stringify(data[i])}`)
             console.log(`getDevice:data ${JSON.stringify(data)}`)
@@ -94,7 +94,7 @@ describe('MultimodalInput_test', function () {
         expect(false).assertTrue();
       } else {
         let arr = [];
-        for (var i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
           inputDevice.getDevice(data[i], (res, err) => {
             console.log(`getDevice:data_i ${JSON.stringify(data[i])}`)
             console.log(`getDevice:data ${JSON.stringify(data)}`)
