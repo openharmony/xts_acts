@@ -53,28 +53,28 @@ let getFileCountOneHundredOp = {
 
 let getFirstObjectOp = {
     selections : fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ 'camera/' ],
+    selectionArgs : [ 'Camera/' ],
     order : fileKeyObj.ID + " DESC LIMIT 0,5",
     extendArgs : "",
 }
 
 let getAllObjectLimitOneOp = {
     selections : fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ 'camera/' ],
+    selectionArgs : [ 'Camera/' ],
     order : fileKeyObj.ID + " DESC LIMIT 0,1",
     extendArgs : "",
 }
 
 let getAllObjectLimitTwoOp = {
     selections : fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ 'camera/' ],
+    selectionArgs : [ 'Camera/' ],
     order : fileKeyObj.ID + " DESC LIMIT 0,1",
     extendArgs : "",
 }
 
 let getAllObjectLimitOneHundredOp = {
     selections : fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ 'camera/' ],
+    selectionArgs : [ 'Camera/' ],
     order : fileKeyObj.ID + " DESC LIMIT 0,100",
     extendArgs : "",
 }
@@ -86,7 +86,7 @@ let getFileCountZeroOp = {
 
 let getFileOp = {
     selections : fileKeyObj.DISPLAY_NAME + '= ? AND ' + fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ '01.jpg', 'camera/' ],
+    selectionArgs : [ '01.jpg', 'Camera/' ],
     order : fileKeyObj.ID + " DESC LIMIT 0,100",
     extendArgs : "",
 }
@@ -300,7 +300,7 @@ describe('fetchFileResultPromise.test.js', async function() {
             console.info('MediaLibraryTest : FETCHRESULT getFirstObject begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             let firstObject = await fetchFileResult.getFirstObject();
-            expect(firstObject.relativePath == 'camera/').assertTrue();
+            expect(firstObject.relativePath == 'Camera/').assertTrue();
             fetchFileResult.close();
             console.info('MediaLibraryTest : FETCHRESULT getFirstObject 004 end');
             done();
@@ -327,9 +327,9 @@ describe('fetchFileResultPromise.test.js', async function() {
             console.info('MediaLibraryTest : FETCHRESULT getNextObject 005 begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             let firstObject = await fetchFileResult.getFirstObject();
-            expect(firstObject.relativePath == 'camera/').assertTrue();
+            expect(firstObject.relativePath == 'Camera/').assertTrue();
             let nextObject = await fetchFileResult.getNextObject();
-            expect(nextObject.relativePath == 'camera/').assertTrue();
+            expect(nextObject.relativePath == 'Camera/').assertTrue();
             fetchFileResult.close();
             done();
             console.info('MediaLibraryTest : FETCHRESULT getNextObject 005  end');
@@ -355,7 +355,7 @@ describe('fetchFileResultPromise.test.js', async function() {
             console.info('MediaLibraryTest : FETCHRESULT getLastObject begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             let lastObject = await fetchFileResult.getLastObject();
-            expect(lastObject.relativePath == 'camera/').assertTrue();
+            expect(lastObject.relativePath == 'Camera/').assertTrue();
             fetchFileResult.close();
             console.info('MediaLibraryTest : FETCHRESULT getLastObject 006 end');
             done();
@@ -381,7 +381,7 @@ describe('fetchFileResultPromise.test.js', async function() {
             console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_01 begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             let targetObject = await fetchFileResult.getPositionObject(0);
-            expect(targetObject.relativePath == 'camera/').assertTrue();
+            expect(targetObject.relativePath == 'Camera/').assertTrue();
             fetchFileResult.close();
             done();
             console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_01 end');
@@ -405,7 +405,7 @@ describe('fetchFileResultPromise.test.js', async function() {
             console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_02 begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             let targetObject = await fetchFileResult.getPositionObject(1);
-            expect(targetObject.relativePath == 'camera/').assertTrue();
+            expect(targetObject.relativePath == 'Camera/').assertTrue();
             fetchFileResult.close();
             done();
             console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_02 end');
@@ -430,7 +430,7 @@ describe('fetchFileResultPromise.test.js', async function() {
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             const count = await fetchFileResult.getCount();
             let targetObject = await fetchFileResult.getPositionObject(count - 1);
-            expect(targetObject.relativePath == 'camera/').assertTrue();
+            expect(targetObject.relativePath == 'Camera/').assertTrue();
             fetchFileResult.close();
             done();
             console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_03 end');
@@ -598,8 +598,8 @@ describe('fetchFileResultPromise.test.js', async function() {
                 console.info('MediaLibraryTest :firstObject.title:' + firstObject.title);
             }
 
-            expect(firstObject.relativePath == 'camera/').assertTrue();
-            if (firstObject.relativePath != 'camera/') {
+            expect(firstObject.relativePath == 'Camera/').assertTrue();
+            if (firstObject.relativePath != 'Camera/') {
                 console.info('MediaLibraryTest :firstObject.relativePath:' + firstObject.relativePath);
             }
 
@@ -658,8 +658,8 @@ describe('fetchFileResultPromise.test.js', async function() {
                 console.info('MediaLibraryTest :firstObject.albumUri:' + firstObject.albumUri);
             }
 
-            expect(firstObject.albumName == 'camera').assertTrue();
-            if (firstObject.albumName != 'camera') {
+            expect(firstObject.albumName == 'Camera').assertTrue();
+            if (firstObject.albumName != 'Camera') {
                 console.info('MediaLibraryTest :firstObject.albumName:' + firstObject.albumName);
             }
 
