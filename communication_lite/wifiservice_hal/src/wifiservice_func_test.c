@@ -595,10 +595,10 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanType, Function | MediumT
     int freq = 2460;
     WifiScanParams scanParams = {0};
     char bssid[WIFI_MAC_LEN] = {0xac, 0x75, 0x1d, 0xd8, 0x55, 0xc1};
-    (viod) strcpy_s(scanParams.ssid, sizeof(scanParams.ssid), "wifi_service_xts");
+    (void) strcpy_s(scanParams.ssid, sizeof(scanParams.ssid), "wifi_service_xts");
     scanParams.ssidLen = strlen(scanParams.ssid);
     scanParams.freqs = freq;
-    (viod) memcpy_s(scanParams.bssid, sizeof(scanParams.bssid), bssid, sizeof(bssid));
+    (void) memcpy_s(scanParams.bssid, sizeof(scanParams.bssid), bssid, sizeof(bssid));
 
     scanParams.scanType = WIFI_SSID_SCAN;
     g_staScanSuccess = 0;
@@ -676,7 +676,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanInvalidParam02, Function
 
     WifiScanParams* scanParams = malloc(sizeof(WifiScanParams));
     TEST_ASSERT_NOT_NULL(scanParams);
-    (viod) memset_s(scanParams, sizeof(WifiScanParams), 0, sizeof(WifiScanParams));
+    (void) memset_s(scanParams, sizeof(WifiScanParams), 0, sizeof(WifiScanParams));
 
     error = AdvanceScan(scanParams);
     TEST_ASSERT_EQUAL_INT(ERROR_WIFI_UNKNOWN, error);
@@ -689,8 +689,8 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanInvalidParam02, Function
     error = AdvanceScan(scanParams);
     TEST_ASSERT_EQUAL_INT(ERROR_WIFI_UNKNOWN, error);
 
-    (viod) memset_s(scanParams, sizeof(WifiScanParams), 0, sizeof(WifiScanParams));
-    (viod) strcpy_s(scanParams->ssid, sizeof(scanParams->ssid), "wifi_service_xts");
+    (void) memset_s(scanParams, sizeof(WifiScanParams), 0, sizeof(WifiScanParams));
+    (void) strcpy_s(scanParams->ssid, sizeof(scanParams->ssid), "wifi_service_xts");
     scanParams->scanType = WIFI_SSID_SCAN;
     error = AdvanceScan(scanParams);
     TEST_ASSERT_EQUAL_INT(ERROR_WIFI_UNKNOWN, error);
@@ -721,7 +721,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanInvalidParam03, Function
 
     WifiScanParams* scanParams = malloc(sizeof(WifiScanParams));
     TEST_ASSERT_NOT_NULL(scanParams);
-    (viod) memset_s(scanParams, sizeof(WifiScanParams), 0, sizeof(WifiScanParams));
+    (void) memset_s(scanParams, sizeof(WifiScanParams), 0, sizeof(WifiScanParams));
 
     scanParams->scanType = WIFI_BAND_SCAN;
     g_staScanSuccess = 0;
@@ -739,7 +739,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanInvalidParam03, Function
     TEST_ASSERT_EQUAL_INT(1, g_staScanSuccess);
 
     char bssid[WIFI_MAC_LEN] = {0xac, 0x75, 0x1d, 0xd8, 0x55, 0xc1};
-    (viod) memcpy_s(scanParams->bssid, sizeof(scanParams->bssid), bssid, sizeof(bssid));
+    (void) memcpy_s(scanParams->bssid, sizeof(scanParams->bssid), bssid, sizeof(bssid));
     scanParams->scanType = WIFI_BSSID_SCAN;
     g_staScanSuccess = 0;
     error = AdvanceScan(scanParams);

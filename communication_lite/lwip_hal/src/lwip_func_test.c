@@ -135,7 +135,7 @@ static void CommTcpClientTask(void)
         "client:!!@@##$$%%^^&&**(()),FD:[%d]", "client:(((112233445566778899))),FD:[%d]", "bye"};
     for (int i = 0; i < count; i++) {
         sleep(ONE_SECOND);
-        (viod) memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+        (void) memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
         rst = sprintf_s(dataBuf, sizeof(dataBuf), sendMsgList[i], clnFd);
         if (rst < 0) {
             printf("[comm client]sprintf_s error!\n");
@@ -146,7 +146,7 @@ static void CommTcpClientTask(void)
         if (rst <= 0) {
             printf("[comm client][%d]send fail\n", clnFd);
         }
-        (viod) memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+        (void) memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
         rst = recv(clnFd, dataBuf, sizeof(dataBuf), 0);
         if (rst > 0) {
             printf("[comm client][%d]recv msg[%s]\n", clnFd, dataBuf);
@@ -185,14 +185,14 @@ static void SampleTcpServerTask(void)
     TEST_ASSERT_NOT_EQUAL(LWIP_TEST_FAIL, clientFd);
 
     int srvMsgLen = strlen(SRV_MSG);
-    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (void) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = strcpy_s(buf, BUF_SIZE, SRV_MSG);
     TEST_ASSERT_EQUAL_INT(LWIP_TEST_SUCCESS, ret);
     ret = send(clientFd, buf, srvMsgLen, 0);
     printf("[tcp server]send, ret=%d\n", ret);
     TEST_ASSERT_EQUAL_INT(srvMsgLen, ret);
 
-    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (void) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = recv(clientFd, buf, sizeof(buf), 0);
     printf("[tcp server]recv, ret=%d\n", ret);
     TEST_ASSERT_EQUAL_INT(strlen(CLI_MSG), ret);
@@ -202,7 +202,7 @@ static void SampleTcpServerTask(void)
     clnAddr.sin_family = AF_INET;
     clnAddr.sin_addr.s_addr = inet_addr(PEER_IP);
     clnAddr.sin_port = htons(PEER_PORT);
-    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (void) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = strcpy_s(buf, BUF_SIZE, SRV_MSG);
     TEST_ASSERT_EQUAL_INT(LWIP_TEST_SUCCESS, ret);
     msg.msg_name = &clnAddr;
@@ -218,7 +218,7 @@ static void SampleTcpServerTask(void)
     TEST_ASSERT_EQUAL_INT(len * srvMsgLen, ret);
 
     WaitServer();
-    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (void) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     int recvSum = 0;
     int recvTimes = 50;
     while (recvTimes > 0) {
@@ -282,14 +282,14 @@ static void SampleTcpClientTask(void)
     TEST_ASSERT_EQUAL_INT(inet_addr(STACK_IP), ((struct sockaddr_in*)&addr)->sin_addr.s_addr);
 
     int cliMsgLen = strlen(CLI_MSG);
-    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (void) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = strcpy_s(buf, BUF_SIZE, CLI_MSG);
     TEST_ASSERT_EQUAL_INT(LWIP_TEST_SUCCESS, ret);
     ret = send(clientFd, buf, cliMsgLen, 0);
     printf("[tcp client]send, ret=%d\n", ret);
     TEST_ASSERT_EQUAL_INT(cliMsgLen, ret);
 
-    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (void) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = recv(clientFd, buf, sizeof(buf), 0);
     printf("[tcp client]recv,ret=%d\n", ret);
     TEST_ASSERT_EQUAL_INT(strlen(SRV_MSG), ret);
@@ -299,7 +299,7 @@ static void SampleTcpClientTask(void)
     clnAddr.sin_family = AF_INET;
     clnAddr.sin_addr.s_addr = inet_addr(PEER_IP);
     clnAddr.sin_port = htons(PEER_PORT);
-    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (void) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     ret = strcpy_s(buf, BUF_SIZE, CLI_MSG);
     TEST_ASSERT_EQUAL_INT(LWIP_TEST_SUCCESS, ret);
     msg.msg_name = &clnAddr;
@@ -315,7 +315,7 @@ static void SampleTcpClientTask(void)
     TEST_ASSERT_EQUAL_INT(len * cliMsgLen, ret);
 
     WaitClient();
-    (viod) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
+    (void) memset_s(buf, BUF_SIZE, 0, BUF_SIZE);
     int recvSum = 0;
     int recvTimes = 50;
     while (recvTimes > 0) {
@@ -405,7 +405,7 @@ static void SelectServerTask(void)
                 continue;
             }
             if (FD_ISSET(fds[i], &readSet)) {
-                (viod) memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
+                (void) memset_s(dataBuf, sizeof(dataBuf), 0, sizeof(dataBuf));
                 int len = recv(fds[i], dataBuf, sizeof(dataBuf), 0);
                 if (len > 0) {
                     printf("[select process][%d]recv msg[%s]\n", fds[i], dataBuf);
@@ -588,20 +588,20 @@ LITE_TEST_CASE(LwipFuncTestSuite, testUdp, Function | MediumTest | Level2)
     clnAddr.sin_family = AF_INET;
     clnAddr.sin_addr.s_addr = inet_addr(PEER_IP);
     clnAddr.sin_port = htons(PEER_PORT);
-    (viod) memset_s(g_buf, BUF_SIZE, 0, BUF_SIZE);
+    (void) memset_s(g_buf, BUF_SIZE, 0, BUF_SIZE);
     ret = strcpy_s(g_buf, BUF_SIZE, UDP_MSG);
     TEST_ASSERT_EQUAL_INT(LWIP_TEST_SUCCESS, ret);
     ret = sendto(fd, g_buf, strlen(UDP_MSG), 0, (struct sockaddr*)&clnAddr, (socklen_t)sizeof(clnAddr));
     TEST_ASSERT_NOT_EQUAL(LWIP_TEST_FAIL, ret);
 
-    (viod) memset_s(g_buf, BUF_SIZE, 0, BUF_SIZE);
+    (void) memset_s(g_buf, BUF_SIZE, 0, BUF_SIZE);
     ret = recvfrom(fd, g_buf, sizeof(g_buf), 0, (struct sockaddr*)&clnAddr, &clnAddrLen);
     TEST_ASSERT_EQUAL_INT(strlen(UDP_MSG), ret);
 
     clnAddr.sin_family = AF_INET;
     clnAddr.sin_addr.s_addr = inet_addr(PEER_IP);
     clnAddr.sin_port = htons(PEER_PORT);
-    (viod) memset_s(g_buf, BUF_SIZE, 0, BUF_SIZE);
+    (void) memset_s(g_buf, BUF_SIZE, 0, BUF_SIZE);
     ret = strcpy_s(g_buf, BUF_SIZE, UDP_MSG);
     TEST_ASSERT_EQUAL_INT(LWIP_TEST_SUCCESS, ret);
     msg.msg_name = &clnAddr;
@@ -720,7 +720,7 @@ LITE_TEST_CASE(LwipFuncTestSuite, testSocketOpt, Function | MediumTest | Level2)
     ret = setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, len);
     TEST_ASSERT_EQUAL_INT(0, ret);
 
-    (viod) memset_s(&timeout, len, 0, len);
+    (void) memset_s(&timeout, len, 0, len);
     ret = getsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, &len);
     TEST_ASSERT_EQUAL_INT(0, ret);
     TEST_ASSERT_EQUAL_INT(1000, timeout.tv_sec);
