@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,6 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import window from '@ohos.window'
 import screen from '@ohos.screen'
 const TRUE_WINDOW = true;
+const avoidAreaType = 3;
 
 describe('window_test', function () {
     var wnd;
@@ -57,8 +58,7 @@ describe('window_test', function () {
         'ABOVE_APP_SYSTEM_WINDOW_END': 2116,
         'SYSTEM_WINDOW_END': 2116
     }
-    var windowCount = 2022;
-    var topWindow = null;
+    var topWindow;
     const DELAY_TIME = 3000;
     var listenerStatus;
 
@@ -111,7 +111,6 @@ describe('window_test', function () {
         }
     })
     afterEach(function () {
-        windowCount++;
     })
     afterAll(function () {
     })
@@ -172,6 +171,10 @@ describe('window_test', function () {
                     done();
                 }
             })
+        }, (err) => {
+            console.log('windowTest getPropertiesTest2 window.getTopWindow failed, err : ' + JSON.stringify(err));
+            expect().assertFail();
+            done();
         })
     })
 
@@ -243,7 +246,7 @@ describe('window_test', function () {
         window.getTopWindow().then(wnd => {
             console.log('windowTest getAvoidAreaTest3 window.getTopWindow wnd: ' + wnd);
             expect(wnd != null).assertTrue();
-            wnd.getAvoidArea(3).then((data) => {
+            wnd.getAvoidArea(avoidAreaType).then((data) => {
                 console.log('windowTest getAvoidAreaTest3 wnd.getAvoidArea success, data :' + JSON.stringify(data));
                 expect(data.rightRect != null).assertTrue();
                 expect(data.topRect != null).assertTrue();
@@ -329,7 +332,7 @@ describe('window_test', function () {
         window.getTopWindow().then(wnd => {
             console.log('windowTest getAvoidAreaTest6 window.getTopWindow wnd: ' + wnd);
             expect(wnd != null).assertTrue();
-            wnd.getAvoidArea(3, (err, data) => {
+            wnd.getAvoidArea(avoidAreaType, (err, data) => {
                 if (err.code != 0) {
                     console.log('windowTest getAvoidAreaTest6 wnd.getAvoidArea callback fail' + JSON.stringify(err));
                     expect().assertFail();
@@ -496,7 +499,7 @@ describe('window_test', function () {
     })
 
     /**
-     * @tc.number    SUB_WMS_SETLAYOUTFULLSCREEN_JSAPI_001
+     * @tc.number    SUB_WMS_SETLAYOUTFULLSCREEN_JSAPI_002
      * @tc.name      Test setLayoutFullScreen_Test_002
      * @tc.desc      Set window and layout to full screen.
      */
@@ -925,10 +928,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number    SUB_WMS_ONOFF_JSAPI_001
-     * @tc.name      Test OnOff_Test_001.
+     * @tc.name      Test onOff_Test_001.
      * @tc.desc      To verify the function of enabling and disabling intercepting when the window size changes.
      */
-    it('OnOff_Test_001', 0, async function (done) {
+    it('onOff_Test_001', 0, async function (done) {
         console.log('windowTest OnOffTest1 begin');
         window.getTopWindow((err, data) => {
             if (err.code != 0) {
@@ -969,10 +972,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number    SUB_WMS_ONOFF_JSAPI_002
-     * @tc.name      Test OnOff_Test_002
+     * @tc.name      Test onOff_Test_002
      * @tc.desc      To verify the function of enabling and disabling lawful interception in the system and window
      */
-    it('OnOff_Test_002', 0, async function (done) {
+    it('onOff_Test_002', 0, async function (done) {
         console.log('windowTest OnOffTest2 begin')
         window.getTopWindow((err, data) => {
             if (err.code != 0) {
@@ -1013,10 +1016,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number      SUB_WMS_ISSHOWING_JSAPI_001
-     * @tc.name        Test  IsShowing_Test_001.
+     * @tc.name        Test isShowing_Test_001.
      * @tc.desc        To verify the function of obtaining the display status when a window is hidden and then displayed.
      */
-    it('IsShowing_Test_001', 0, async function (done) {
+    it('isShowing_Test_001', 0, async function (done) {
         console.log('windowTest IsShowingTest1 begin');
         window.create('isShow1', window.WindowType.TYPE_APP).then(wnd => {
             expect(wnd != null).assertTrue();
@@ -1054,10 +1057,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number    SUB_WMS_ISSHOWING_JSAPI_002
-     * @tc.name      Test IsShowing_Test_002.
+     * @tc.name      Test isShowing_Test_002.
      * @tc.desc      To verify the function of obtaining the display status when a window is hidden and then displayed.
      */
-    it('IsShowing_Test_002', 0, async function (done) {
+    it('isShowing_Test_002', 0, async function (done) {
         console.log('windowTest IsShowingTest2 begin');
         window.create('isShow2', window.WindowType.TYPE_APP, (err, data) => {
             if (err.code) {
@@ -1086,7 +1089,6 @@ describe('window_test', function () {
                                         done();
                                     } else {
                                         expect(res2).assertTrue();
-                                        done();
                                         data.destroy((err) => {
                                             if (err.code) {
                                                 console.log('windowTest IsShowingTest2 data.show fail err ' + JSON.stringify(err));
@@ -1109,10 +1111,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number      SUB_WMS_SETCOLORSPACE_JSAPI_001
-     * @tc.name        Test  SetColorSpace_Test_001
+     * @tc.name        Test setColorSpace_Test_001
      * @tc.desc        To verify the setting of the wide color gamut color space
      */
-    it('SetColorSpace_Test_001', 0, async function (done) {
+    it('setColorSpace_Test_001', 0, async function (done) {
         console.log('windowTest SetColorSpaceTest1 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest SetColorSpaceTest1 wnd: ' + wnd);
@@ -1149,10 +1151,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number      SUB_WMS_SETCOLORSPACE_JSAPI_002
-     * @tc.name        Test  SetColorSpace_Test_002
+     * @tc.name        Test setColorSpace_Test_002
      * @tc.desc        To verify that the color space of invaild values is set successfully
      */
-    it('SetColorSpace_Test_002', 0, async function (done) {
+    it('setColorSpace_Test_002', 0, async function (done) {
         console.log('windowTest SetColorSpaceTest2 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest SetColorSpaceTest2 wnd: ' + wnd);
@@ -1175,10 +1177,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number    SUB_WMS_SETCOLORSPACE_JSAPI_003
-     * @tc.name      Test SetColorSpace_Test_003
+     * @tc.name      Test setColorSpace_Test_003
      * @tc.desc      To verify the setting of the wide color gamut color space
      */
-    it('SetColorSpace_Test_003', 0, async function (done) {
+    it('setColorSpace_Test_003', 0, async function (done) {
         console.log('windowTest SetColorSpaceTest3 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest SetColorSpaceTest3 wnd: ' + wnd);
@@ -1219,10 +1221,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number    SUB_WMS_SETCOLORSPACE_JSAPI_004
-     * @tc.name      Test SetColorSpace_Test_004
+     * @tc.name      Test setColorSpace_Test_004
      * @tc.desc      To verify that the color space of invalid values is set successfully
      */
-    it('SetColorSpace_Test_004', 0, async function (done) {
+    it('setColorSpace_Test_004', 0, async function (done) {
         console.log('windowTest SetColorSpaceTest4 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest SetColorSpaceTest4 wnd: ' + wnd);
@@ -1247,10 +1249,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number		SUB_WMS_CREATE_JSAPI_001
-     * @tc.name			Test Create_Test_001.
+     * @tc.name			Test create_Test_001.
      * @tc.desc			To verify the function of creating an application subwindow.
      */
-    it('Create_Test_001', 0, async function (done) {
+    it('create_Test_001', 0, async function (done) {
         console.log('windowTest CreateTest1 begin');
         window.create('subWindow', window.WindowType.TYPE_APP).then(wnd => {
             console.log('windowTest CreateTest1 create success wnd' + wnd);
@@ -1265,10 +1267,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number    SUB_WMS_CREATE_JSAPI_001
-     * @tc.name      Test Create_Test_002
+     * @tc.name      Test create_Test_002
      * @tc.desc      To verify the function of creating an application subwindow
      */
-    it('Create_Test_002', 0, async function (done) {
+    it('create_Test_002', 0, async function (done) {
         console.log('windowTest CreateTest2 begin');
         window.create('subWindow1', window.WindowType.TYPE_APP, (err, data) => {
             if (err.code != 0) {
@@ -1285,10 +1287,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number		SUB_WMS_DESTROY_JSAPI_001
-     * @tc.name			Test Destroy_Test_001
+     * @tc.name			Test destroy_Test_001
      * @tc.desc			Verify that a window is destroyed after being created
      */
-    it('Destroy_Test_001', 0, async function (done) {
+    it('destroy_Test_001', 0, async function (done) {
         console.log('windowTest DestroyTest1 begin');
         window.create('subWindow2', window.WindowType.TYPE_APP).then(wnd => {
             console.log('windowTest DestroyTest1 create success wnd' + wnd);
@@ -1318,10 +1320,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number    SUB_WMS_DESTROY_JSAPI_002
-     * @tc.name      Test Destroy_Test_002
+     * @tc.name      Test destroy_Test_002
      * @tc.desc      Verify that a window is destroyed after being created
      */
-    it('Destroy_Test_002', 0, async function (done) {
+    it('destroy_Test_002', 0, async function (done) {
         console.log('windowTest DestroyTest2 begin');
         window.create('subWindow2', window.WindowType.TYPE_APP, (err, data) => {
             if (err.code != 0) {
@@ -1356,10 +1358,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number		SUB_WMS_SETSYSTEMBARENABLE_JSAPI_001
-     * @tc.name			Test SetSystemBarEnable_Test_001
+     * @tc.name			Test setSystemBarEnable_Test_001
      * @tc.desc			To verify the function of setting a scenario that is visible to the system bar
      */
-    it('SetSystemBarEnable_Test_001', 0, async function (done) {
+    it('setSystemBarEnable_Test_001', 0, async function (done) {
         console.log('windowTest SetSystemBarEnableTest1 begin');
         var names = ["status", "navigation"];
         window.getTopWindow().then(wnd => {
@@ -1389,10 +1391,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number    SUB_WMS_SETSYSTEMBARENABLE_JSAPI_002
-     * @tc.name      Test SetSystemBarEnable_Test_002
+     * @tc.name      Test setSystemBarEnable_Test_002
      * @tc.desc      To verify the function of setting a scenario that is visible to the system bar
      */
-    it('SetSystemBarEnable_Test_002', 0, async function (done) {
+    it('setSystemBarEnable_Test_002', 0, async function (done) {
         console.log('windowTest SetSystemBarEnableTest2 begin');
         var names = ["status", "navigation"];
         window.getTopWindow((err, data) => {
@@ -1419,10 +1421,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number		SUB_WMS_SETSYSTEMBARPROPERTIES_JSAPI_001
-     * @tc.name			Test SetSystemBarProperties_Test_001
+     * @tc.name			Test setSystemBarProperties_Test_001
      * @tc.desc			To verify the function of setting system bar attributes
      */
-    it('SetSystemBarProperties_Test_001', 0, async function (done) {
+    it('setSystemBarProperties_Test_001', 0, async function (done) {
         console.log('windowTest SetSystemBarPropertiesTest1 begin');
         var SystemBarProperties = {
             statusBarColor: '#ff00ff',
@@ -1453,10 +1455,10 @@ describe('window_test', function () {
 
     /**
      * @tc.number    SUB_WMS_SETSYSTEMBARPROPERTIES_JSAPI_002
-     * @tc.name      Test SetSystemBarProperties_Test_002
+     * @tc.name      Test setSystemBarProperties_Test_002
      * @tc.desc      To verify the function of setting system bar attributes
      */
-    it('SetSystemBarProperties_Test_002', 0, async function (done) {
+    it('setSystemBarProperties_Test_002', 0, async function (done) {
         console.log('windowTest SetSystemBarPropertiesTest2 begin');
         var SystemBarProperties = {
             statusBarColor: '#ff00ff',
@@ -1928,7 +1930,8 @@ describe('window_test', function () {
                 done();
             })
         }, (err) => {
-            console.log('screenshotTest getActiveModeTest1 failed: err: ' + JSON.stringify(err))
+            console.log('screenshotTest setScreenActiveModeTest1 failed: err: ' + JSON.stringify(err));
+            done();
         })
     })
 
