@@ -17,18 +17,18 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('ActsSubscriberTestOrder', function () {
     console.info("===========ActsSubscriberTestOrder start====================>");
-    var num2 = 0;
-    var order = false;
-    var commonEventSubscriber0100;
-    var commonEventSubscriber0101;
-    var commonEventSubscriber0200;
-    var commonEventSubscriber0201;
-    var commonEventSubscriber0300;
-    var commonEventSubscriber0301;
-    var commonEventSubscriber0400;
-    var commonEventSubscriber0401;
-    var commonEventSubscriber0500;
-    var commonEventSubscriber0501;
+    let num2 = 0;
+    let order = false;
+    let commonEventSubscriber0100;
+    let commonEventSubscriber0101;
+    let commonEventSubscriber0200;
+    let commonEventSubscriber0201;
+    let commonEventSubscriber0300;
+    let commonEventSubscriber0301;
+    let commonEventSubscriber0400;
+    let commonEventSubscriber0401;
+    let commonEventSubscriber0500;
+    let commonEventSubscriber0501;
 
     function publishCallback(err) {
         console.info("===============>publishCallback");
@@ -46,17 +46,17 @@ describe('ActsSubscriberTestOrder', function () {
     it('ActsSubscriberTestOrder_0100', 0, async function (done) {
         console.info("===============ActsSubscriberTestOrder_0100===============>");
 
-        var commonEventSubscribeInfo1 = {
+        let commonEventSubscribeInfo1 = {
             events: ["publish_event0100"],
             priority: 10
         };
 
-        var commonEventSubscribeInfo2 = {
+        let commonEventSubscribeInfo2 = {
             events: ["publish_event0100"],
             priority: 9
         };
 
-        var commonEventPublishData = {
+        let commonEventPublishData = {
             bundleName: "publish_event0100_bundleName",
             code: 1,
             data: "publish_event1001_init",
@@ -163,25 +163,25 @@ describe('ActsSubscriberTestOrder', function () {
     it ('ActsSubscriberTestOrder_0200', 0, async function (done) {
         console.info("===============ActsSubscriberTestOrder_0200===============>");
 
-        var commonEventSubscribeInfo1 = {
+        let commonEventSubscribeInfo1 = {
             events: ["publish_event0200",
                 "publish_event0201"],
             priority: 10
         };
 
-        var commonEventSubscribeInfo2 = {
+        let commonEventSubscribeInfo2 = {
             events: ["publish_event0201"],
             priority: 9
         };
 
-        var commonEventPublishData1 = {
+        let commonEventPublishData1 = {
             bundleName: "publish_event0200_bundleName",
             code: 1,
             data: "publish_event0200_init",
             isOrdered: false,
         }
 
-        var commonEventPublishData2 = {
+        let commonEventPublishData2 = {
             bundleName: "publish_event0201_bundleName",
             code: 1,
             data: "publish_event0201_init",
@@ -275,24 +275,24 @@ describe('ActsSubscriberTestOrder', function () {
     it ('ActsSubscriberTestOrder_0300', 0, async function (done) {
         console.info("===============ActsSubscriberTestOrder_0300===============>");
 
-        var commonEventSubscribeInfo1 = {
+        let commonEventSubscribeInfo1 = {
             events: ["publish_event0301"],
             priority: 9
         };
 
-        var commonEventSubscribeInfo2 = {
+        let commonEventSubscribeInfo2 = {
             events: ["publish_event0301"],
             priority: 10
         };
 
-        var commonEventPublishData2 = {
+        let commonEventPublishData2 = {
             bundleName: "publish_event0301_bundleName",
             code: 1,
             data: "publish_event0301_init",
             isOrdered: true,
         }
 
-        var callBackNum = 0;
+        let callBackNum = 0;
         async function subscriberCallBack0300(err, data) {
             console.info("===============>subscriberCallBack0300========event: " + data.event);
             console.info("===============>subscriberCallBack0300========bundleName: " + data.bundleName);
@@ -368,7 +368,7 @@ describe('ActsSubscriberTestOrder', function () {
             data.getSubscribeInfo().then(()=>{
                 console.info("===============ActsSubscriberTestOrder_0300=========getSubscribeInfo promise2");
                 Subscriber.subscribe(commonEventSubscriber0301, subscriberCallBack0301);
-                var numindex = 0;
+                let numindex = 0;
                 for (; numindex < 3; ++numindex) {
                     setTimeout(function(){
                         console.debug("===================ActsSubscriberTestOrder_0300 delay 100ms==================");
@@ -388,17 +388,17 @@ describe('ActsSubscriberTestOrder', function () {
     it ('ActsSubscriberTestOrder_0400', 0, async function (done) {
         console.info("===============ActsSubscriberTestOrder_0400===============>");
 
-        var commonEventSubscribeInfo1 = {
+        let commonEventSubscribeInfo1 = {
             events: ["publish_eventOrder0400"],
             priority: 10
         };
 
-        var commonEventSubscribeInfo2 = {
+        let commonEventSubscribeInfo2 = {
             events: ["publish_eventOrder0400"],
             priority: 9
         };
 
-        var commonEventPublishData = {
+        let commonEventPublishData = {
             bundleName: "publish_event0400_bundleName",
             code: 1,
             data: "publish_event0400_init",
@@ -472,17 +472,17 @@ describe('ActsSubscriberTestOrder', function () {
     it ('ActsSubscriberTestOrder_0500', 0, async function (done) {
         console.info("===============ActsSubscriberTestOrder_0500===============>");
 
-        var commonEventSubscribeInfo1 = {
+        let commonEventSubscribeInfo1 = {
             events: ["publish_event0500"],
             priority: 1001
         };
 
-        var commonEventSubscribeInfo2 = {
+        let commonEventSubscribeInfo2 = {
             events: ["publish_event0500"],
             priority: -101
         };
 
-        var commonEventPublishData = {
+        let commonEventPublishData = {
             bundleName: "publish_event0500_bundleName",
             code: 10,
             data: "publish_event0500_init",
