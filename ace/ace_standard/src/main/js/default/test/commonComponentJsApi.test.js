@@ -966,29 +966,6 @@ describe('aceJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testVideoComponent
-     * @tc.desc      ACE
-     */
-    it('testVideoComponent', 0, async function (done) {
-        let result;
-        let options = {
-            uri: 'pages/video/router/index'
-        }
-        try {
-            result = router.push(options)
-            console.info("push video page success " + JSON.stringify(result));
-        } catch (err) {
-            console.error("push video page error " + JSON.stringify(result));
-        }
-        await sleep(5000)
-        let pages = router.getState();
-        console.info("[router.video] getState" + JSON.stringify(pages));
-        expect("pages/video/router/").assertEqual(pages.path);
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testGridContainerComponent
      * @tc.desc      ACE
      */
