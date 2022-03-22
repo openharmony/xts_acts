@@ -17,18 +17,18 @@ import app from '@system.app'
 import Context from '@ohos.napi_context'
 import batteryInfo from '@ohos.batteryInfo';
 import brightness from '@ohos.brightness';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 describe('appInfoTest', function () {
   console.log("*************Battery Unit Test Begin*************");
-  
+
   /**
    * @tc.number battery_manager_js_0100
    * @tc.name battery_soc_test
    * @tc.desc Battery acquisition kit
    */
   it('battery_soc_test', 0, function () {
-    var batterySoc = batteryInfo.batterySOC;
+    let batterySoc = batteryInfo.batterySOC;
     console.info('batterySoc = ' + batterySoc);
     expect(batterySoc >= -1 && batterySoc <= 100).assertTrue()
   })
@@ -39,7 +39,7 @@ describe('appInfoTest', function () {
    * @tc.desc Battery charging kit
    */
   it('charging_status_test', 0, function () {
-    var chargingStatus = batteryInfo.chargingStatus;
+    let chargingStatus = batteryInfo.chargingStatus;
     console.info('chargingStatus = ' + chargingStatus);
     expect(chargingStatus >= 0 && chargingStatus <= 4).assertTrue()
   })
@@ -50,7 +50,7 @@ describe('appInfoTest', function () {
    * @tc.desc Get Battery Health Get KIT
    */
   it('health_status_test', 0, function () {
-    var healthStatus = batteryInfo.healthStatus;
+    let healthStatus = batteryInfo.healthStatus;
     console.info('healthStatus = ' + healthStatus);
     expect(healthStatus >= 0 && healthStatus <= 6).assertTrue()
   })
@@ -61,7 +61,7 @@ describe('appInfoTest', function () {
    * @tc.desc Obtaining the USB Connection Type KIT
    */
   it('plugged_type_test', 0, function () {
-    var pluggedType = batteryInfo.pluggedType;
+    let pluggedType = batteryInfo.pluggedType;
     console.info('pluggedType = ' + pluggedType);
     expect(pluggedType >= 0 && pluggedType <= 4).assertTrue()
   })
@@ -72,7 +72,7 @@ describe('appInfoTest', function () {
    * @tc.desc Obtaining the Voltage Interface KIT
    */
   it('voltage_test', 0, function () {
-    var voltage = batteryInfo.voltage;
+    let voltage = batteryInfo.voltage;
     console.info('voltage = ' + voltage);
     expect(voltage >= -1).assertTrue()
   })
@@ -83,7 +83,7 @@ describe('appInfoTest', function () {
    * @tc.desc Obtaining the Battery Technology Interface KIT
    */
   it('technology_test', 0, function () {
-    var technology = batteryInfo.technology;
+    let technology = batteryInfo.technology;
     console.info('technology = ' + technology);
     expect(technology !== null).assertTrue()
   })
@@ -94,7 +94,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryTemperature values Interface Test
    */
   it('battery_temperature_test', 0, function () {
-    var batteryTemperature = batteryInfo.batteryTemperature;
+    let batteryTemperature = batteryInfo.batteryTemperature;
     console.info('batteryTemperature = ' + batteryTemperature);
     expect(batteryTemperature <= 700).assertTrue()
   })
@@ -105,7 +105,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryHealthState values Interface Test
    */
   it('enum_health_state_test_unknown', 0, function () {
-    var batteryHealthState = batteryInfo.BatteryHealthState.UNKNOWN;
+    let batteryHealthState = batteryInfo.BatteryHealthState.UNKNOWN;
     console.info('batteryHealthState = ' + batteryHealthState);
     expect(batteryHealthState == 0).assertTrue()
   })
@@ -116,7 +116,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryHealthState values Interface Test
    */
   it('enum_health_state_test_good', 0, function () {
-    var batteryHealthState = batteryInfo.BatteryHealthState.GOOD;
+    let batteryHealthState = batteryInfo.BatteryHealthState.GOOD;
     console.info('batteryHealthState = ' + batteryHealthState);
     expect(batteryHealthState == 1).assertTrue()
   })
@@ -127,7 +127,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryHealthState values Interface Test
    */
   it('enum_health_state_test_overheat', 0, function () {
-    var batteryHealthState = batteryInfo.BatteryHealthState.OVERHEAT;
+    let batteryHealthState = batteryInfo.BatteryHealthState.OVERHEAT;
     console.info('batteryHealthState = ' + batteryHealthState);
     expect(batteryHealthState == 2).assertTrue()
   })
@@ -138,7 +138,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryHealthState values Interface Test
    */
   it('enum_health_state_test_overvoltage', 0, function () {
-    var batteryHealthState = batteryInfo.BatteryHealthState.OVERVOLTAGE;
+    let batteryHealthState = batteryInfo.BatteryHealthState.OVERVOLTAGE;
     console.info('batteryHealthState = ' + batteryHealthState);
     expect(batteryHealthState == 3).assertTrue()
   })
@@ -149,7 +149,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryHealthState values Interface Test
    */
   it('enum_health_state_test_cold', 0, function () {
-    var batteryHealthState = batteryInfo.BatteryHealthState.COLD;
+    let batteryHealthState = batteryInfo.BatteryHealthState.COLD;
     console.info('batteryHealthState = ' + batteryHealthState);
     expect(batteryHealthState == 4).assertTrue()
   })
@@ -160,7 +160,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryHealthState values Interface Test
    */
   it('enum_health_state_test_dead', 0, function () {
-    var batteryHealthState = batteryInfo.BatteryHealthState.DEAD;
+    let batteryHealthState = batteryInfo.BatteryHealthState.DEAD;
     console.info('batteryHealthState = ' + batteryHealthState);
     expect(batteryHealthState == 5).assertTrue()
   })
@@ -171,7 +171,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryChargeState values Interface Test
    */
   it('enum_charge_state_test_none', 0, function () {
-    var batteryChargeState = batteryInfo.BatteryChargeState.NONE;
+    let batteryChargeState = batteryInfo.BatteryChargeState.NONE;
     console.info('batteryChargeState = ' + batteryChargeState);
     expect(batteryChargeState == 0).assertTrue()
   })
@@ -182,7 +182,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryChargeState values Interface Test
    */
   it('enum_charge_state_test_enable', 0, function () {
-    var batteryChargeState = batteryInfo.BatteryChargeState.ENABLE;
+    let batteryChargeState = batteryInfo.BatteryChargeState.ENABLE;
     console.info('batteryChargeState = ' + batteryChargeState);
     expect(batteryChargeState == 1).assertTrue()
   })
@@ -193,7 +193,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryChargeState values Interface Test
    */
   it('enum_charge_state_test_disable', 0, function () {
-    var batteryChargeState = batteryInfo.BatteryChargeState.DISABLE;
+    let batteryChargeState = batteryInfo.BatteryChargeState.DISABLE;
     console.info('batteryChargeState = ' + batteryChargeState);
     expect(batteryChargeState == 2).assertTrue()
   })
@@ -204,7 +204,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryChargeState values Interface Test
    */
   it('enum_charge_state_test_full', 0, function () {
-    var batteryChargeState = batteryInfo.BatteryChargeState.FULL;
+    let batteryChargeState = batteryInfo.BatteryChargeState.FULL;
     console.info('batteryChargeState = ' + batteryChargeState);
     expect(batteryChargeState == 3).assertTrue()
   })
@@ -215,7 +215,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryPluggedType values Interface Test
    */
   it('enum_plugged_type_test_none', 0, function () {
-    var batteryPluggedType = batteryInfo.BatteryPluggedType.NONE;
+    let batteryPluggedType = batteryInfo.BatteryPluggedType.NONE;
     console.info('batteryPluggedType = ' + batteryPluggedType);
     expect(batteryPluggedType == 0).assertTrue()
   })
@@ -226,7 +226,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryPluggedType values Interface Test
    */
   it('enum_plugged_type_test_ac', 0, function () {
-    var batteryPluggedType = batteryInfo.BatteryPluggedType.AC;
+    let batteryPluggedType = batteryInfo.BatteryPluggedType.AC;
     console.info('batteryPluggedType = ' + batteryPluggedType);
     expect(batteryPluggedType == 1).assertTrue()
   })
@@ -237,7 +237,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryPluggedType values Interface Test
    */
   it('enum_plugged_type_test_usb', 0, function () {
-    var batteryPluggedType = batteryInfo.BatteryPluggedType.USB;
+    let batteryPluggedType = batteryInfo.BatteryPluggedType.USB;
     console.info('batteryPluggedType = ' + batteryPluggedType);
     expect(batteryPluggedType == 2).assertTrue()
   })
@@ -248,7 +248,7 @@ describe('appInfoTest', function () {
    * @tc.desc BatteryPluggedType values Interface Test
    */
   it('enum_plugged_type_test_wireless', 0, function () {
-    var batteryPluggedType = batteryInfo.BatteryPluggedType.WIRELESS;
+    let batteryPluggedType = batteryInfo.BatteryPluggedType.WIRELESS;
     console.info('batteryPluggedType = ' + batteryPluggedType);
     expect(batteryPluggedType == 3).assertTrue()
   })
@@ -271,12 +271,12 @@ describe('appInfoTest', function () {
    * @tc.desc Battry Present Interface Test
    */
   it('is_battery_present_test', 0, function () {
-    var isBatteryPresent = batteryInfo.isBatteryPresent;
+    let isBatteryPresent = batteryInfo.isBatteryPresent;
     console.info('isBatteryPresent = ' + isBatteryPresent);
     if (isBatteryPresent) {
-        expect(isBatteryPresent).assertTrue();
-    }else{
-        expect(isBatteryPresent).assertFalse();        
+      expect(isBatteryPresent).assertTrue();
+    } else {
+      expect(isBatteryPresent).assertFalse();
     }
   })
 })
