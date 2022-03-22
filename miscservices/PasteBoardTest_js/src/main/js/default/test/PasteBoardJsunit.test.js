@@ -19,7 +19,7 @@ import pasteboard from '@ohos.pasteboard'
 
 describe('PasteBoardTest', function() {
     console.log('start################################start');
-    
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_0100
      * @tc.name      Adds PlainTextData
@@ -145,7 +145,7 @@ describe('PasteBoardTest', function() {
         systemPasteboard.clear()
         
         var textData = ''
-        for (var i = 0; i < (300 * 1024); i++){
+        for (var i = 0; i < (300 * 1); i++){
             textData=textData + "A";
         }
         console.log('createPlainTextData = ' + textData)
@@ -187,7 +187,7 @@ describe('PasteBoardTest', function() {
         
         var textData = ''
         var textData300 = ''
-        for (var i = 0; i < (301 * 1024); i++){
+        for (var i = 0; i < (301 * 1); i++){
             textData = textData + "A";
             if(299 == i )
             {
@@ -738,6 +738,13 @@ describe('PasteBoardTest', function() {
         assert.equal(pasteData.getRecordAt(2).uri, uriText)
         assert.deepEqual(pasteData.getRecordAt(3).want, wantText)
         
+        console.log('Checks the MIME types of all content on the pasteboard')
+        var getMimeTypesArray = pasteData.getMimeTypes()
+        assert.equal(getMimeTypesArray[0], MIMETYPE_TEXT_PLAIN)
+        assert.equal(getMimeTypesArray[1], MIMETYPE_TEXT_HTML)
+        assert.equal(getMimeTypesArray[2], MIMETYPE_TEXT_URI)
+        assert.equal(getMimeTypesArray[3], MIMETYPE_TEXT_WANT)
+        
         console.log('SUB_pasteBoard_function_JS_API_1800 end');
     })
     
@@ -936,7 +943,7 @@ describe('PasteBoardTest', function() {
         systemPasteboard.clear()
         
         var textData = ''
-        for (var i = 0; i < (300 * 1024); i++){
+        for (var i = 0; i < (300 * 1); i++){
             textData=textData + "A";
         }
         console.log('createPlainTextData = ' + textData)
@@ -1015,11 +1022,11 @@ describe('PasteBoardTest', function() {
         
         console.log('Checks there is  no content in the pasteboard')
         assert.equal(systemPasteboard.hasPasteData(), false)
-		
+        
         console.log('SUB_pasteBoard_function_JS_API_2400 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_2500
      * @tc.name      Deletes replaced record
      * @tc.desc      Test pasteBoard API functionality.
@@ -1073,7 +1080,7 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_2500 end');
     })
-	
+    
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_2600
      * @tc.name      Deletes 文本、uri、html、want records
@@ -1114,9 +1121,9 @@ describe('PasteBoardTest', function() {
         
         console.log('Removes the Record')
         assert.equal(pasteData.removeRecordAt(0), true)
-		assert.equal(pasteData.removeRecordAt(1), true)
-		assert.equal(pasteData.removeRecordAt(2), true)
-		assert.equal(pasteData.removeRecordAt(3), true)
+        assert.equal(pasteData.removeRecordAt(1), true)
+        assert.equal(pasteData.removeRecordAt(2), true)
+        assert.equal(pasteData.removeRecordAt(3), true)
         
         console.log('Writes PasteData to the pasteboard')
         systemPasteboard.setPasteData(pasteData)
@@ -1130,7 +1137,7 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_2600 end');
     })
-	
+    
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_2700
      * @tc.name      Replaces 文本 record
@@ -1174,7 +1181,7 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_2700 end');
     })
-	
+    
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_2800
      * @tc.name      Replaces htmlText record
@@ -1222,7 +1229,7 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_2800 end');
     })
-	
+    
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_2900
      * @tc.name      Replaces uri record
@@ -1270,7 +1277,7 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_2900 end');
     })
-	
+    
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_3000
      * @tc.name      Replaces want record
@@ -1318,7 +1325,7 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_3000 end');
     })
-	
+    
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_3100
      * @tc.name      Replaces 300k文本 record
@@ -1334,11 +1341,10 @@ describe('PasteBoardTest', function() {
         systemPasteboard.on(contentChanges)
         systemPasteboard.clear()
         
-	var textData0 = ''
-	for (var i = 0; i < (300 * 1024); i++)
-	{
-	    textData0 = textData0 + "A";
-	}
+        var textData0 = ''
+        for (var i = 0; i < (300 * 1); i++){
+            textData0 = textData0 + "A";
+        }
         console.log('createPlainTextData = ' + textData0)
         var pasteData = pasteboard.createPlainTextData(textData0)
         
@@ -1366,7 +1372,7 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_3100 end');
     })
-	
+    
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_3200
      * @tc.name      Adds one record(s), gets record count
@@ -1415,10 +1421,10 @@ describe('PasteBoardTest', function() {
         console.log('createPlainTextData = ' + textData0)
         var pasteData = pasteboard.createPlainTextData(textData0)
         
-		var textData1 = 'Hello World1'
-		console.log('addTextRecord = ' + textData1)
-		pasteData.addTextRecord(textData1)
-		
+        var textData1 = 'Hello World1'
+        console.log('addTextRecord = ' + textData1)
+        pasteData.addTextRecord(textData1)
+        
         console.log('Writes PasteData to the pasteboard')
         systemPasteboard.setPasteData(pasteData)
         
@@ -1428,8 +1434,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_3300 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_3400
      * @tc.name      Adds 15 record(s), gets record count
      * @tc.desc      Test pasteBoard API functionality.
@@ -1448,22 +1454,22 @@ describe('PasteBoardTest', function() {
         console.log('createPlainTextData = ' + textData0)
         var pasteData = pasteboard.createPlainTextData(textData0)
         
-		var textData = ''
-		for(var i = 1; i < 15; i++)
-		{
-			textData = 'Hello World'
-			textData = textData + i
-			console.log('addTextRecord = ' + textData)
-			pasteData.addTextRecord(textData)
-		}
-		
+        var textData = ''
+        for(var i = 1; i < 15; i++)
+        {
+            textData = 'Hello World'
+            textData = textData + i
+            console.log('addTextRecord = ' + textData)
+            pasteData.addTextRecord(textData)
+        }
+        
         console.log('Writes PasteData to the pasteboard')
         systemPasteboard.setPasteData(pasteData)
         
         console.log('Checks the number of records')
         pasteData = systemPasteboard.getPasteData()
         assert.equal(pasteData.getRecordCount(), 15)
-		
+        
         console.log('SUB_pasteBoard_function_JS_API_3400 end');
     })
     
@@ -1486,26 +1492,26 @@ describe('PasteBoardTest', function() {
         console.log('createPlainTextData = ' + textData0)
         var pasteData = pasteboard.createPlainTextData(textData0)
         
-	var textData = ''
-	for(var i = 1; i < 30; i++)
-	{
-	   textData = 'Hello World'
-	   textData = textData + i
-	   console.log('addTextRecord = ' + textData)
-	   pasteData.addTextRecord(textData)
-	}
-		
+        var textData = ''
+        for(var i = 1; i < 30; i++)
+        {
+            textData = 'Hello World'
+            textData = textData + i
+            console.log('addTextRecord = ' + textData)
+            pasteData.addTextRecord(textData)
+        }
+        
         console.log('Writes PasteData to the pasteboard')
         systemPasteboard.setPasteData(pasteData)
         
         console.log('Checks the number of records')
         pasteData = systemPasteboard.getPasteData()
         assert.equal(pasteData.getRecordCount(), 30)
-		
+        
         console.log('SUB_pasteBoard_function_JS_API_3500 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_3600
      * @tc.name      Adds 31 record(s), gets record count
      * @tc.desc      Test pasteBoard API functionality.
@@ -1524,25 +1530,25 @@ describe('PasteBoardTest', function() {
         console.log('createPlainTextData = ' + textData0)
         var pasteData = pasteboard.createPlainTextData(textData0)
         
-		var textData = ''
-		for(var i = 1; i < 31; i++)
-		{
-			textData = 'Hello World'
-			textData = textData + i
-			console.log('addTextRecord = ' + textData)
-			pasteData.addTextRecord(textData)
-		}
-		
+        var textData = ''
+        for(var i = 1; i < 31; i++)
+        {
+            textData = 'Hello World'
+            textData = textData + i
+            console.log('addTextRecord = ' + textData)
+            pasteData.addTextRecord(textData)
+        }
+        
         console.log('Writes PasteData to the pasteboard')
         systemPasteboard.setPasteData(pasteData)
         
         console.log('Checks the number of records')
         pasteData = systemPasteboard.getPasteData()
         assert.equal(pasteData.getRecordCount(), 30)
-		
+        
         console.log('SUB_pasteBoard_function_JS_API_3600 end');
     })
-	
+    
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_3700
      * @tc.name      Replaces one record, gets record count
@@ -1583,7 +1589,7 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_3700 end');
     })
-	
+    
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_3800
      * @tc.name      Clears pasteBoard, gets record count
@@ -1619,7 +1625,7 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_3800 end');
     })
-	
+    
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_3900
      * @tc.name      Adds Property
@@ -1666,7 +1672,7 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_3900 end');
     })
-	
+    
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_4000
      * @tc.name      Set Property's tags
@@ -1714,7 +1720,7 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_4000 end');
     })
-	
+    
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_4100
      * @tc.name      Clears pasteBoard and check property
@@ -1743,9 +1749,9 @@ describe('PasteBoardTest', function() {
         console.log('Checks the number of records')
         pasteData = systemPasteboard.getPasteData()
         assert.equal(pasteData.getRecordCount(), 1)
-		
-		console.log('Clears the pasteBoard')
-		systemPasteboard.clear()
+        
+        console.log('Clears the pasteBoard')
+        systemPasteboard.clear()
         
         console.log('Checks the Property')
         pasteData = systemPasteboard.getPasteData()
@@ -1770,9 +1776,9 @@ describe('PasteBoardTest', function() {
         
         var systemPasteboard = pasteboard.getSystemPasteboard()
         systemPasteboard.clear()
-		
-		console.log('Open the infor for pasteboard content changes')
-		systemPasteboard.on(contentChanges)
+        
+        console.log('Open the infor for pasteboard content changes')
+        systemPasteboard.on(contentChanges)
         
         var textData0 = 'Hello World!'
         console.log('createPlainTextData = ' + textData0)
@@ -1799,8 +1805,8 @@ describe('PasteBoardTest', function() {
         
         console.log('Checks the pasteboard content')
         assert.equal(pasteData.getRecordAt(0).plainText, textData1)
-		
-		console.log('Removes the Record')
+        
+        console.log('Removes the Record')
         assert.equal(pasteData.removeRecordAt(0), true)
         
         console.log('Writes PasteData to the pasteboard')
@@ -1815,8 +1821,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_4200 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_4300
      * @tc.name      打开内容变化通知功能：向剪贴板数据增加、更新、删除html数据项
      * @tc.desc      Test pasteBoard API functionality.
@@ -1829,9 +1835,9 @@ describe('PasteBoardTest', function() {
         
         var systemPasteboard = pasteboard.getSystemPasteboard()
         systemPasteboard.clear()
-		
-		console.log('Open the infor for pasteboard content changes')
-		systemPasteboard.on(contentChanges)
+        
+        console.log('Open the infor for pasteboard content changes')
+        systemPasteboard.on(contentChanges)
         
         var textData0 = 'Hello World!'
         console.log('createPlainTextData = ' + textData0)
@@ -1862,8 +1868,8 @@ describe('PasteBoardTest', function() {
         
         console.log('Checks the pasteboard content')
         assert.equal(pasteData.getRecordAt(1).htmlText, htmlText1)
-		
-		console.log('Removes the Record')
+        
+        console.log('Removes the Record')
         assert.equal(pasteData.removeRecordAt(0), true)
         
         console.log('Writes PasteData to the pasteboard')
@@ -1878,8 +1884,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_4300 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_4400
      * @tc.name      打开内容变化通知功能：向剪贴板数据增加、更新、删除uri数据项
      * @tc.desc      Test pasteBoard API functionality.
@@ -1892,9 +1898,9 @@ describe('PasteBoardTest', function() {
         
         var systemPasteboard = pasteboard.getSystemPasteboard()
         systemPasteboard.clear()
-		
-	console.log('Open the infor for pasteboard content changes')
-	systemPasteboard.on(contentChanges)
+        
+        console.log('Open the infor for pasteboard content changes')
+        systemPasteboard.on(contentChanges)
 
         
         var textData0 = 'Hello World!'
@@ -1926,8 +1932,8 @@ describe('PasteBoardTest', function() {
         
         console.log('Checks the pasteboard content')
         assert.equal(pasteData.getRecordAt(1).uri, uriText1)
-		
-		console.log('Removes the Record')
+        
+        console.log('Removes the Record')
         assert.equal(pasteData.removeRecordAt(0), true)
         
         console.log('Writes PasteData to the pasteboard')
@@ -1942,8 +1948,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_4400 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_4500
      * @tc.name      打开内容变化通知功能：向剪贴板数据增加、更新、删除want数据项
      * @tc.desc      Test pasteBoard API functionality.
@@ -1956,9 +1962,9 @@ describe('PasteBoardTest', function() {
         
         var systemPasteboard = pasteboard.getSystemPasteboard()
         systemPasteboard.clear()
-		
-		console.log('Open the infor for pasteboard content changes')
-		systemPasteboard.on(contentChanges)
+        
+        console.log('Open the infor for pasteboard content changes')
+        systemPasteboard.on(contentChanges)
         
         var textData0 = 'Hello World!'
         console.log('createPlainTextData = ' + textData0)
@@ -1989,8 +1995,8 @@ describe('PasteBoardTest', function() {
         
         console.log('Checks the pasteboard content')
         assert.deepEqual(pasteData.getRecordAt(1).want, wantText1)
-		
-		console.log('Removes the Record')
+        
+        console.log('Removes the Record')
         assert.equal(pasteData.removeRecordAt(0), true)
         
         console.log('Writes PasteData to the pasteboard')
@@ -2005,8 +2011,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_4500 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_4600
      * @tc.name      打开内容变化通知功能：清除剪切板内容
      * @tc.desc      Test pasteBoard API functionality.
@@ -2019,9 +2025,9 @@ describe('PasteBoardTest', function() {
         
         var systemPasteboard = pasteboard.getSystemPasteboard()
         systemPasteboard.clear()
-		
-		console.log('Open the infor for pasteboard content changes')
-		systemPasteboard.on(contentChanges)
+        
+        console.log('Open the infor for pasteboard content changes')
+        systemPasteboard.on(contentChanges)
         
         var textData0 = 'Hello World!'
         console.log('createPlainTextData = ' + textData0)
@@ -2048,8 +2054,8 @@ describe('PasteBoardTest', function() {
         
         console.log('Checks the pasteboard content')
         assert.equal(pasteData.getRecordAt(0).plainText, textData1)
-		
-		console.log('Removes the Record')
+        
+        console.log('Removes the Record')
         assert.equal(pasteData.removeRecordAt(0), true)
         
         console.log('Writes PasteData to the pasteboard')
@@ -2061,14 +2067,14 @@ describe('PasteBoardTest', function() {
         
         console.log('Checks there is  no content in the pasteboard')
         assert.equal(systemPasteboard.hasPasteData(), false)
-		
-		console.log('Clears the pasteBoard')
-		systemPasteboard.clear()
+        
+        console.log('Clears the pasteBoard')
+        systemPasteboard.clear()
         
         console.log('SUB_pasteBoard_function_JS_API_4600 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_4700
      * @tc.name      关闭内容变化通知功能：向剪贴板数据增加、更新、删除文本数据项
      * @tc.desc      Test pasteBoard API functionality.
@@ -2081,9 +2087,9 @@ describe('PasteBoardTest', function() {
         
         var systemPasteboard = pasteboard.getSystemPasteboard()
         systemPasteboard.clear()
-		
-		console.log('Closes the infor for pasteboard content changes')
-		systemPasteboard.off(contentChanges)
+        
+        console.log('Closes the infor for pasteboard content changes')
+        systemPasteboard.off(contentChanges)
         
         var textData0 = 'Hello World!'
         console.log('createPlainTextData = ' + textData0)
@@ -2110,8 +2116,8 @@ describe('PasteBoardTest', function() {
         
         console.log('Checks the pasteboard content')
         assert.equal(pasteData.getRecordAt(0).plainText, textData1)
-		
-		console.log('Removes the Record')
+        
+        console.log('Removes the Record')
         assert.equal(pasteData.removeRecordAt(0), true)
         
         console.log('Writes PasteData to the pasteboard')
@@ -2126,8 +2132,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_4700 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_4800
      * @tc.name      关闭内容变化通知功能：向剪贴板数据增加、更新、删除html数据项
      * @tc.desc      Test pasteBoard API functionality.
@@ -2140,9 +2146,9 @@ describe('PasteBoardTest', function() {
         
         var systemPasteboard = pasteboard.getSystemPasteboard()
         systemPasteboard.clear()
-		
-		console.log('Closes the infor for pasteboard content changes')
-		systemPasteboard.off(contentChanges)
+        
+        console.log('Closes the infor for pasteboard content changes')
+        systemPasteboard.off(contentChanges)
         
         var textData0 = 'Hello World!'
         console.log('createPlainTextData = ' + textData0)
@@ -2173,8 +2179,8 @@ describe('PasteBoardTest', function() {
         
         console.log('Checks the pasteboard content')
         assert.equal(pasteData.getRecordAt(1).htmlText, htmlText1)
-		
-		console.log('Removes the Record')
+        
+        console.log('Removes the Record')
         assert.equal(pasteData.removeRecordAt(0), true)
         
         console.log('Writes PasteData to the pasteboard')
@@ -2189,8 +2195,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_4800 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_4900
      * @tc.name      关闭内容变化通知功能：向剪贴板数据增加、更新、删除uri数据项
      * @tc.desc      Test pasteBoard API functionality.
@@ -2203,9 +2209,9 @@ describe('PasteBoardTest', function() {
         
         var systemPasteboard = pasteboard.getSystemPasteboard()
         systemPasteboard.clear()
-		
-		console.log('Closes the infor for pasteboard content changes')
-		systemPasteboard.off(contentChanges)
+        
+        console.log('Closes the infor for pasteboard content changes')
+        systemPasteboard.off(contentChanges)
 
         
         var textData0 = 'Hello World!'
@@ -2237,8 +2243,8 @@ describe('PasteBoardTest', function() {
         
         console.log('Checks the pasteboard content')
         assert.equal(pasteData.getRecordAt(1).uri, uriText1)
-		
-		console.log('Removes the Record')
+        
+        console.log('Removes the Record')
         assert.equal(pasteData.removeRecordAt(0), true)
         
         console.log('Writes PasteData to the pasteboard')
@@ -2253,8 +2259,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_4900 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_5000
      * @tc.name      关闭内容变化通知功能：向剪贴板数据增加、更新、删除want数据项
      * @tc.desc      Test pasteBoard API functionality.
@@ -2267,9 +2273,9 @@ describe('PasteBoardTest', function() {
         
         var systemPasteboard = pasteboard.getSystemPasteboard()
         systemPasteboard.clear()
-		
-		console.log('Closes the infor for pasteboard content changes')
-		systemPasteboard.off(contentChanges)
+        
+        console.log('Closes the infor for pasteboard content changes')
+        systemPasteboard.off(contentChanges)
         
         var textData0 = 'Hello World!'
         console.log('createPlainTextData = ' + textData0)
@@ -2300,8 +2306,8 @@ describe('PasteBoardTest', function() {
         
         console.log('Checks the pasteboard content')
         assert.deepEqual(pasteData.getRecordAt(1).want, wantText1)
-		
-		console.log('Removes the Record')
+        
+        console.log('Removes the Record')
         assert.equal(pasteData.removeRecordAt(0), true)
         
         console.log('Writes PasteData to the pasteboard')
@@ -2316,8 +2322,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_5000 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_5100
      * @tc.name      关闭内容变化通知功能：清除剪切板内容
      * @tc.desc      Test pasteBoard API functionality.
@@ -2330,9 +2336,9 @@ describe('PasteBoardTest', function() {
         
         var systemPasteboard = pasteboard.getSystemPasteboard()
         systemPasteboard.clear()
-		
-		console.log('Closes the infor for pasteboard content changes')
-		systemPasteboard.off(contentChanges)
+        
+        console.log('Closes the infor for pasteboard content changes')
+        systemPasteboard.off(contentChanges)
         
         var textData0 = 'Hello World!'
         console.log('createPlainTextData = ' + textData0)
@@ -2359,8 +2365,8 @@ describe('PasteBoardTest', function() {
         
         console.log('Checks the pasteboard content')
         assert.equal(pasteData.getRecordAt(0).plainText, textData1)
-		
-		console.log('Removes the Record')
+        
+        console.log('Removes the Record')
         assert.equal(pasteData.removeRecordAt(0), true)
         
         console.log('Writes PasteData to the pasteboard')
@@ -2372,14 +2378,14 @@ describe('PasteBoardTest', function() {
         
         console.log('Checks there is  no content in the pasteboard')
         assert.equal(systemPasteboard.hasPasteData(), false)
-		
-		console.log('Clears the pasteBoard')
-		systemPasteboard.clear()
+        
+        console.log('Clears the pasteBoard')
+        systemPasteboard.clear()
         
         console.log('SUB_pasteBoard_function_JS_API_5100 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_5200
      * @tc.name      清除剪切板内的文本数据项
      * @tc.desc      Test pasteBoard API functionality.
@@ -2410,10 +2416,10 @@ describe('PasteBoardTest', function() {
         console.log('Checks the pasteboard content')
         assert.equal(pasteData.getPrimaryText(), textData)
         
-		console.log('Clears the pasteBoard')
-		systemPasteboard.clear()
-		
-		console.log('Checks the number of records')
+        console.log('Clears the pasteBoard')
+        systemPasteboard.clear()
+        
+        console.log('Checks the number of records')
         pasteData = systemPasteboard.getPasteData()
         assert.equal(pasteData.getRecordCount(), 0)
         
@@ -2422,8 +2428,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_5200 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_5300
      * @tc.name      清除剪切板内的uri数据项
      * @tc.desc      Test pasteBoard API functionality.
@@ -2456,9 +2462,9 @@ describe('PasteBoardTest', function() {
         assert.equal(pasteData.getPrimaryUri(), uriText)
         
         console.log('Clears the pasteBoard')
-		systemPasteboard.clear()
-		
-		console.log('Checks the number of records')
+        systemPasteboard.clear()
+        
+        console.log('Checks the number of records')
         pasteData = systemPasteboard.getPasteData()
         assert.equal(pasteData.getRecordCount(), 0)
         
@@ -2467,8 +2473,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_5300 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_5400
      * @tc.name      清除剪切板内的html数据项
      * @tc.desc      Test pasteBoard API functionality.
@@ -2501,9 +2507,9 @@ describe('PasteBoardTest', function() {
         assert.equal(pasteData.getPrimaryHtml(), htmlText)
         
         console.log('Clears the pasteBoard')
-		systemPasteboard.clear()
-		
-		console.log('Checks the number of records')
+        systemPasteboard.clear()
+        
+        console.log('Checks the number of records')
         pasteData = systemPasteboard.getPasteData()
         assert.equal(pasteData.getRecordCount(), 0)
         
@@ -2512,8 +2518,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_5400 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_5500
      * @tc.name      清除剪切板内的want数据项
      * @tc.desc      Test pasteBoard API functionality.
@@ -2546,9 +2552,9 @@ describe('PasteBoardTest', function() {
         assert.equal(pasteData.getPrimaryWant(), want)
         
         console.log('Clears the pasteBoard')
-		systemPasteboard.clear()
-		
-		console.log('Checks the number of records')
+        systemPasteboard.clear()
+        
+        console.log('Checks the number of records')
         pasteData = systemPasteboard.getPasteData()
         assert.equal(pasteData.getRecordCount(), 0)
         
@@ -2557,8 +2563,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_5500 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_5600
      * @tc.name      向剪切板内增加30条数据项，然后清除
      * @tc.desc      Test pasteBoard API functionality.
@@ -2577,15 +2583,15 @@ describe('PasteBoardTest', function() {
         console.log('createPlainTextData = ' + textData0)
         var pasteData = pasteboard.createPlainTextData(textData0)
         
-		var textData = ''
-		for(var i = 1; i < 30; i++)
-		{
-			textData = 'Hello World'
-			textData = textData + i
-			console.log('addTextRecord = ' + textData)
-			pasteData.addTextRecord(textData)
-		}
-		
+        var textData = ''
+        for(var i = 1; i < 30; i++)
+        {
+            textData = 'Hello World'
+            textData = textData + i
+            console.log('addTextRecord = ' + textData)
+            pasteData.addTextRecord(textData)
+        }
+        
         console.log('Writes PasteData to the pasteboard')
         systemPasteboard.setPasteData(pasteData)
         
@@ -2594,27 +2600,27 @@ describe('PasteBoardTest', function() {
         assert.equal(pasteData.getRecordCount(), 30)
         
         console.log('Checks the pasteboard content')
-		for(var i = 0; i < 30; i++)
-		{
-			textData = 'Hello World'
-			textData = textData + i
-			assert.equal(pasteData.getRecordAt(i).plainText, textData)
-		}
-		
-		console.log('Clears the pasteBoard')
-		systemPasteboard.clear()
-		
-		console.log('Checks the number of records')
+        for(var i = 0; i < 30; i++)
+        {
+            textData = 'Hello World'
+            textData = textData + i
+            assert.equal(pasteData.getRecordAt(i).plainText, textData)
+        }
+        
+        console.log('Clears the pasteBoard')
+        systemPasteboard.clear()
+        
+        console.log('Checks the number of records')
         pasteData = systemPasteboard.getPasteData()
         assert.equal(pasteData.getRecordCount(), 0)
         
         console.log('Checks there is  no content in the pasteboard')
         assert.equal(systemPasteboard.hasPasteData(), false)
-		
+        
         console.log('SUB_pasteBoard_function_JS_API_5600 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_5700
      * @tc.name      向剪贴板数据各增加5条文本、uri、html、want数据，然后清除
      * @tc.desc      Test pasteBoard API functionality.
@@ -2633,62 +2639,62 @@ describe('PasteBoardTest', function() {
         console.log('createPlainTextData = ' + textData0)
         var pasteData = pasteboard.createPlainTextData(textData0)
         
-		var textData = ''
-		for(var i = 1; i < 5; i++)
-		{
-			textData = 'Hello World'
-			textData = textData + i
-			console.log('addTextRecord = ' + textData)
-			pasteData.addTextRecord(textData)
-		}
-		
-		var htmlText = ''
-		for(var i = 0; i < 5; i++)
-		{
-			htmlText = '<html><head></head><body>Hello World!</body></html>'
-			htmlText = htmlText + i
-			console.log('addHtmlRecord = ' + htmlText)
-			pasteData.addHtmlRecord(htmlText)
-		}
-		
-		var uriText = ''
-		for(var i = 0; i < 5; i++)
-		{
-			uriText = 'https://www.baidu.com/'
-			uriText = uriText + i
-			console.log('addUriRecord = ' + uriText)
-			pasteData.addUriRecord(uriText)
-		}
-		
-		var wantText = new Want()
-		for(var i = 0; i < 5; i++)
-		{
-			wantText = new Want()
-			console.log('addWantRecord = ' + wantText)
-			pasteData.addWantRecord(wantText)
-		}
-		
+        var textData = ''
+        for(var i = 1; i < 5; i++)
+        {
+            textData = 'Hello World'
+            textData = textData + i
+            console.log('addTextRecord = ' + textData)
+            pasteData.addTextRecord(textData)
+        }
+        
+        var htmlText = ''
+        for(var i = 0; i < 5; i++)
+        {
+            htmlText = '<html><head></head><body>Hello World!</body></html>'
+            htmlText = htmlText + i
+            console.log('addHtmlRecord = ' + htmlText)
+            pasteData.addHtmlRecord(htmlText)
+        }
+        
+        var uriText = ''
+        for(var i = 0; i < 5; i++)
+        {
+            uriText = 'https://www.baidu.com/'
+            uriText = uriText + i
+            console.log('addUriRecord = ' + uriText)
+            pasteData.addUriRecord(uriText)
+        }
+        
+        var wantText = new Want()
+        for(var i = 0; i < 5; i++)
+        {
+            wantText = new Want()
+            console.log('addWantRecord = ' + wantText)
+            pasteData.addWantRecord(wantText)
+        }
+        
         console.log('Writes PasteData to the pasteboard')
         systemPasteboard.setPasteData(pasteData)
         
         console.log('Checks the number of records')
         pasteData = systemPasteboard.getPasteData()
         assert.equal(pasteData.getRecordCount(), 20)
-		
-		console.log('Clears the pasteBoard')
-		systemPasteboard.clear()
-		
-		console.log('Checks the number of records')
+        
+        console.log('Clears the pasteBoard')
+        systemPasteboard.clear()
+        
+        console.log('Checks the number of records')
         pasteData = systemPasteboard.getPasteData()
         assert.equal(pasteData.getRecordCount(), 0)
         
         console.log('Checks there is  no content in the pasteboard')
         assert.equal(systemPasteboard.hasPasteData(), false)
-		
+        
         console.log('SUB_pasteBoard_function_JS_API_5700 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_5800
      * @tc.name      向剪贴板数据增加文本数据项，查询剪贴板存在剪贴板数据
      * @tc.desc      Test pasteBoard API functionality.
@@ -2714,8 +2720,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_5800 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_5900
      * @tc.name      向剪贴板数据增加uri数据项，查询剪贴板存在剪贴板数据
      * @tc.desc      Test pasteBoard API functionality.
@@ -2742,8 +2748,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_5900 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_6000
      * @tc.name      向剪贴板数据增加html数据项，查询剪贴板存在剪贴板数据
      * @tc.desc      Test pasteBoard API functionality.
@@ -2770,8 +2776,8 @@ describe('PasteBoardTest', function() {
              
         console.log('SUB_pasteBoard_function_JS_API_6000 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_6100
      * @tc.name      向剪贴板数据增加want数据项，查询剪贴板存在剪贴板数据
      * @tc.desc      Test pasteBoard API functionality.
@@ -2798,8 +2804,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_6100 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_6200
      * @tc.name      向剪贴板数据各增加5条文本、uri、html、want数据，查询剪贴板存在剪贴板数据
      * @tc.desc      Test pasteBoard API functionality.
@@ -2818,51 +2824,51 @@ describe('PasteBoardTest', function() {
         console.log('createPlainTextData = ' + textData0)
         var pasteData = pasteboard.createPlainTextData(textData0)
         
-		var textData = ''
-		for(var i = 1; i < 5; i++)
-		{
-			textData = 'Hello World'
-			textData = textData + i
-			console.log('addTextRecord = ' + textData)
-			pasteData.addTextRecord(textData)
-		}
-		
-		var htmlText = ''
-		for(var i = 0; i < 5; i++)
-		{
-			htmlText = '<html><head></head><body>Hello World!</body></html>'
-			htmlText = htmlText + i
-			console.log('addHtmlRecord = ' + htmlText)
-			pasteData.addHtmlRecord(htmlText)
-		}
-		
-		var uriText = ''
-		for(var i = 0; i < 5; i++)
-		{
-			uriText = 'https://www.baidu.com/'
-			uriText = uriText + i
-			console.log('addUriRecord = ' + uriText)
-			pasteData.addUriRecord(uriText)
-		}
-		
-		var wantText = new Want()
-		for(var i = 0; i < 5; i++)
-		{
-			wantText = new Want()
-			console.log('addWantRecord = ' + wantText)
-			pasteData.addWantRecord(wantText)
-		}
-		
+        var textData = ''
+        for(var i = 1; i < 5; i++)
+        {
+            textData = 'Hello World'
+            textData = textData + i
+            console.log('addTextRecord = ' + textData)
+            pasteData.addTextRecord(textData)
+        }
+        
+        var htmlText = ''
+        for(var i = 0; i < 5; i++)
+        {
+            htmlText = '<html><head></head><body>Hello World!</body></html>'
+            htmlText = htmlText + i
+            console.log('addHtmlRecord = ' + htmlText)
+            pasteData.addHtmlRecord(htmlText)
+        }
+        
+        var uriText = ''
+        for(var i = 0; i < 5; i++)
+        {
+            uriText = 'https://www.baidu.com/'
+            uriText = uriText + i
+            console.log('addUriRecord = ' + uriText)
+            pasteData.addUriRecord(uriText)
+        }
+        
+        var wantText = new Want()
+        for(var i = 0; i < 5; i++)
+        {
+            wantText = new Want()
+            console.log('addWantRecord = ' + wantText)
+            pasteData.addWantRecord(wantText)
+        }
+        
         console.log('Writes PasteData to the pasteboard')
         systemPasteboard.setPasteData(pasteData)
         
-		console.log('Checks there is content in the pasteboard')
+        console.log('Checks there is content in the pasteboard')
         assert.equal(systemPasteboard.hasPasteData(), true)
-		
+        
         console.log('SUB_pasteBoard_function_JS_API_6200 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_6300
      * @tc.name      更新剪贴板数据，查询剪贴板存在剪贴板数据
      * @tc.desc      Test pasteBoard API functionality.
@@ -2896,13 +2902,13 @@ describe('PasteBoardTest', function() {
         console.log('Writes PasteData to the pasteboard')
         systemPasteboard.setPasteData(pasteData)
         
-		console.log('Checks there is content in the pasteboard')
-		assert.equal(systemPasteboard.hasPasteData(), true)
+        console.log('Checks there is content in the pasteboard')
+        assert.equal(systemPasteboard.hasPasteData(), true)
         
         console.log('SUB_pasteBoard_function_JS_API_6300 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_6400
      * @tc.name      删除所有的剪贴板数据，查询剪贴板不存在剪贴板数据
      * @tc.desc      Test pasteBoard API functionality.
@@ -2942,8 +2948,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_6400 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_6500
      * @tc.name      清除剪贴板数据，查询剪贴板不存在剪贴板数据
      * @tc.desc      Test pasteBoard API functionality.
@@ -2973,9 +2979,9 @@ describe('PasteBoardTest', function() {
         assert.equal(pasteData.getRecordCount(), 1)
         
         console.log('Clears the pasteBoard')
-		systemPasteboard.clear()
-		
-		console.log('Checks the number of records')
+        systemPasteboard.clear()
+        
+        console.log('Checks the number of records')
         pasteData = systemPasteboard.getPasteData()
         assert.equal(pasteData.getRecordCount(), 0)
         
@@ -3056,8 +3062,8 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_6700 end');
     })
-	
-	/**
+    
+    /**
      * @tc.number    SUB_pasteBoard_function_JS_API_6800
      * @tc.name      将一条超长文本数据 (大小为301K)强制转换为文本
      * @tc.desc      Test pasteBoard API functionality.
@@ -3073,14 +3079,14 @@ describe('PasteBoardTest', function() {
         systemPasteboard.clear()
         
         var textData = ''
-		var textData300 = ''
-		for (var i = 0; i < (301 * 1024); i++){
-			textData = textData + "A";
-			if(299 == i )
-			{
-				textData300 = textData
-			}
-		}
+        var textData300 = ''
+        for (var i = 0; i < (301 * 1); i++){
+            textData = textData + "A";
+            if(299 == i )
+            {
+                textData300 = textData
+            }
+        }
         console.log('createPlainTextData = ' + textData)
         var pasteData = pasteboard.createPlainTextData(textData)
         
@@ -3136,6 +3142,7 @@ describe('PasteBoardTest', function() {
         
         console.log('SUB_pasteBoard_function_JS_API_6900 end');
     })
+    
     
     /**
      *  The callback function is used for pasteboard content changes

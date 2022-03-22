@@ -15,10 +15,10 @@ import("//build/ohos_var.gni")
 group("miscservices") {
   testonly = true
   deps = [
-    "InputMethodTest_ets:inputMethod_ets_test",
-    "PasteBoardTest_js:pasteboard_js_test",
-    "RequestTest_js:miscservices_request_js_test",
-    "TimeTest_js:time_js_test",
-    "TimerTest_js:timer_js_test",
+    "InputMethodTest_ets:ActsInputMethodEtsTest",
+    "PasteBoardTest_js:ActsPasteBoardJSApiTest",
+    "RequestTest_js:ActsMiscservicesRequestJSApiTest",
+    "TimeTest_js:ActsTimeJSApiTest",
+    "TimerTest_js:ActsTimerJSApiTest",
   ]
 }
