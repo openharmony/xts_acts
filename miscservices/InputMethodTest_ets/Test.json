@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "InputMethodEtsTest.hap"
+                "ActsInputMethodEtsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -12,14 +12,14 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("miscservices_request_js_test") {
+ohos_js_hap_suite("ActsMiscservicesRequestJSApiTest") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":request_js_assets",
     ":request_js_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "MiscservicesRequestJSApiTest"
+  hap_name = "ActsMiscservicesRequestJSApiTest"
 }
 ohos_js_assets("request_js_assets") {
   source_dir = "./entry/src/main/js/default"

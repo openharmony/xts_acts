@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("inputMethod_ets_test") {
+ohos_js_hap_suite("ActsInputMethodEtsTest") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":inputMethod_ets_assets",
@@ -21,7 +21,7 @@ ohos_js_hap_suite("inputMethod_ets_test") {
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "InputMethodEtsTest"
+  hap_name = "ActsInputMethodEtsTest"
 }
 ohos_js_assets("inputMethod_ets_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"
