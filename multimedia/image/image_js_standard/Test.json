@@ -37,6 +37,7 @@
             "type": "ShellKit",
             "run-command": [
                 "chmod -R 666 /data/media/*",
+                "chmod -R 666 /data/local/*",
                 "setenforce 0"
             ],
             "teardown-command":[
