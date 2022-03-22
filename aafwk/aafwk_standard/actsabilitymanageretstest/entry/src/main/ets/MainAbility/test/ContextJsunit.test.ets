@@ -47,11 +47,11 @@ export default function ContextJsunit() {
         })
       } catch (error) {
         console.log("logMessage context_getCacheDir_test_0100: error = " + error);
-        expect(error).assertEqual("/data/storage/el2/base/haps/entry/caches");
+        expect(error).assertEqual("/data/storage/el2/base/haps/entry/cache");
       }
       var data1 = await context.getCacheDir();
       expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/caches");
+      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/cache");
       done();
       console.log("------------------end context_getCacheDir_test_0100-------------------");
     });
@@ -74,11 +74,11 @@ export default function ContextJsunit() {
         });
       } catch (error) {
         console.log("logMessage context_getCacheDir_test_0200: error = " + error);
-        expect(error).assertEqual("/data/storage/el2/base/haps/entry/caches");
+        expect(error).assertEqual("/data/storage/el2/base/haps/entry/cache");
       }
       var data1 = await context.getCacheDir();
       expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/caches");
+      expect(data1).assertEqual("/data/storage/el2/base/haps/entry/cache");
       done();
       console.log("------------------end context_getCacheDir_test_0200-------------------");
     });
