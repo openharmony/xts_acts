@@ -16,7 +16,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import dataRdb from '@ohos.data.rdb';
 import dataAbility from '@ohos.data.dataAbility';
 
-const TAG = "[RDB_JSKITS _TEST]"
+const TAG = '[RDB_JSKITS _TEST]'
 const CREATE_TABLE_ALL_DATA_TYPE_SQL = "CREATE TABLE IF NOT EXISTS AllDataType "
 + "(id INTEGER PRIMARY KEY AUTOINCREMENT, "
 + "integerValue INTEGER , longValue INTEGER , shortValue INTEGER , booleanValue INTEGER , "
