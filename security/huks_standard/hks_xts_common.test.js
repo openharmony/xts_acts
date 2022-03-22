@@ -36,19 +36,18 @@ export function makeGenerateKeyOption(alg, size, purpose, padding, mode, digest)
   properties[0] = makeAlgTagProperty(alg);
   properties[1] = makeSizeProperty(size);
   properties[2] = makePurposeProperty(purpose);
-  if (purpose == (hks.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT | hks.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT)) {
+  if (purpose == (hks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | hks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT)) {
     properties[3] = makePaddingProperty(padding);
     properties[4] = makeModeProperty(mode);
-    if (alg == hks.HksKeyAlg.HKS_ALG_RSA) {
+    if (alg == hks.HuksKeyAlg.HUKS_ALG_RSA) {
       properties[5] = makeDigestProperty(digest);
       properties[6] = makeKeyGenerateType();
     }
-  } else if (purpose == (hks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | hks.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY)) {
+  } else if (purpose == (hks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | hks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY)) {
     properties[3] = makePaddingProperty(padding);
     properties[4] = makeDigestProperty(digest);
-  } else if (purpose == hks.HksKeyPurpose.HKS_KEY_PURPOSE_MAC) {
+  } else if (purpose == hks.HuksKeyPurpose.HUKS_KEY_PURPOSE_MAC) {
     properties[3] = makeDigestProperty(digest);
-    properties[4] = makeKeyType();
   } else {
     properties[3] = makeDigestProperty(digest);
   }
@@ -64,9 +63,9 @@ export function makeEncryptAndDecryptOption(alg, purpose, padding, mode, size, d
   properties[1] = makePurposeProperty(purpose);
   properties[2] = makePaddingProperty(padding);
   properties[3] = makeModeProperty(mode);
-  if (alg == hks.HksKeyAlg.HKS_ALG_AES) {
+  if (alg == hks.HuksKeyAlg.HUKS_ALG_AES) {
     properties[4] = makeIV();
-    if (mode == hks.HksCipherMode.HKS_MODE_GCM) {
+    if (mode == hks.HuksCipherMode.HUKS_MODE_GCM) {
       properties[5] = makeAAD();
       properties[6] = makeNonce();
     }
@@ -106,32 +105,32 @@ export function makeRandomArr(size) {
 
 export function makePlainTextSize(size,padding,digest){
   var plainTextSize = 0;
-  if (padding == hks.HksKeyPadding.HKS_PADDING_OAEP) {
-    if (digest == hks.HksKeyDigest.HKS_DIGEST_SHA224 && size == hks.HksKeySize.HKS_RSA_KEY_SIZE_512) {
+  if (padding == hks.HuksKeyPadding.HUKS_PADDING_OAEP) {
+    if (digest == hks.HuksKeyDigest.HUKS_DIGEST_SHA224 && size == hks.HuksKeySize.HUKS_RSA_KEY_SIZE_512) {
       plainTextSize = 4;
     } else {
       plainTextSize = 16;
     }
-  } else if (padding == hks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5) {
+  } else if (padding == hks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5) {
     plainTextSize = 8;
   } else {
     switch (size) {
-      case hks.HksKeySize.HKS_RSA_KEY_SIZE_512:
+      case hks.HuksKeySize.HUKS_RSA_KEY_SIZE_512:
         plainTextSize = 64;
         break;
-      case hks.HksKeySize.HKS_RSA_KEY_SIZE_768:
+      case hks.HuksKeySize.HUKS_RSA_KEY_SIZE_768:
         plainTextSize = 96;
         break;
-      case hks.HksKeySize.HKS_RSA_KEY_SIZE_1024:
+      case hks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024:
         plainTextSize = 128;
         break;
-      case hks.HksKeySize.HKS_RSA_KEY_SIZE_2048:
+      case hks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048:
         plainTextSize = 256;
         break;
-      case hks.HksKeySize.HKS_RSA_KEY_SIZE_3072:
+      case hks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072:
         plainTextSize = 384;
         break;
-      case hks.HksKeySize.HKS_RSA_KEY_SIZE_4096:
+      case hks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096:
         plainTextSize = 512;
         break;
       default:
@@ -147,8 +146,8 @@ export function makeImportOption(alg, size, purpose, padding, mode, digest, publ
   properties[1] = makeSizeProperty(size);
   properties[2] = makePurposeProperty(purpose);
   properties[3] = makePaddingProperty(padding);
-  if (alg == hks.HksKeyAlg.HKS_ALG_RSA || alg == hks.HksKeyAlg.HKS_ALG_DSA || alg == hks.HksKeyAlg.HKS_ALG_ECC) {
-    if (purpose == (hks.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT | hks.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT)) {
+  if (alg == hks.HuksKeyAlg.HUKS_ALG_RSA || alg == hks.HuksKeyAlg.HUKS_ALG_DSA || alg == hks.HuksKeyAlg.HUKS_ALG_ECC) {
+    if (purpose == (hks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | hks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT)) {
       properties[4] = makeModeProperty(mode);
       properties[5] = makeDigestProperty(digest);
       properties[6] = makeKeyGenerateType();
@@ -166,7 +165,7 @@ export function makeImportOption(alg, size, purpose, padding, mode, digest, publ
 
 function makeAlgTagProperty(alg) {
   var property = {
-    tag: hks.HksTag.HKS_TAG_ALGORITHM,
+    tag: hks.HuksTag.HUKS_TAG_ALGORITHM,
     value: alg
   }
   return property;
@@ -174,7 +173,7 @@ function makeAlgTagProperty(alg) {
 
 function makeSizeProperty(size) {
   var property = {
-    tag: hks.HksTag.HKS_TAG_KEY_SIZE,
+    tag: hks.HuksTag.HUKS_TAG_KEY_SIZE,
     value: size
   };
   return property;
@@ -182,7 +181,7 @@ function makeSizeProperty(size) {
 
 function makePurposeProperty(purpose) {
   var property = {
-    tag: hks.HksTag.HKS_TAG_PURPOSE,
+    tag: hks.HuksTag.HUKS_TAG_PURPOSE,
     value: purpose
   };
   return property;
@@ -190,7 +189,7 @@ function makePurposeProperty(purpose) {
 
 function makePaddingProperty(padding) {
   var property = {
-    tag: hks.HksTag.HKS_TAG_PADDING,
+    tag: hks.HuksTag.HUKS_TAG_PADDING,
     value: padding
   };
   return property;
@@ -198,7 +197,7 @@ function makePaddingProperty(padding) {
 
 function makeModeProperty(mode) {
   var property = {
-    tag: hks.HksTag.HKS_TAG_BLOCK_MODE,
+    tag: hks.HuksTag.HUKS_TAG_BLOCK_MODE,
     value: mode
   };
   return property;
@@ -206,7 +205,7 @@ function makeModeProperty(mode) {
 
 function makeDigestProperty(digest) {
   var property = {
-    tag: hks.HksTag.HKS_TAG_DIGEST,
+    tag: hks.HuksTag.HUKS_TAG_DIGEST,
     value: digest
   };
   return property;
@@ -214,23 +213,15 @@ function makeDigestProperty(digest) {
 
 function makeKeyGenerateType() {
   var property = {
-    tag: hks.HksTag.HKS_TAG_KEY_GENERATE_TYPE,
-    value: hks.HksKeyGenerateType.HKS_KEY_GENERATE_TYPE_DEFAULT
-  };
-  return property;
-};
-
-function makeKeyType() {
-  var property = {
-    tag: hks.HksTag.HKS_TAG_KEY_TYPE,
-    value: hks.HksKeyType.HKS_KEY_TYPE_HMAC
+    tag: hks.HuksTag.HUKS_TAG_KEY_GENERATE_TYPE,
+    value: hks.HuksKeyGenerateType.HUKS_KEY_GENERATE_TYPE_DEFAULT
   };
   return property;
 };
 
 function makeIV() {
   var property = {
-    tag: hks.HksTag.HKS_TAG_IV,
+    tag: hks.HuksTag.HUKS_TAG_IV,
     value: new Uint8Array(16)
   };
   return property;
@@ -238,7 +229,7 @@ function makeIV() {
 
 function makeAAD() {
   var property = {
-    tag: hks.HksTag.HKS_TAG_ASSOCIATED_DATA,
+    tag: hks.HuksTag.HUKS_TAG_ASSOCIATED_DATA,
     value: new Uint8Array(16)
   };
   return property;
@@ -246,7 +237,7 @@ function makeAAD() {
 
 function makeNonce() {
   var property = {
-    tag: hks.HksTag.HKS_TAG_NONCE,
+    tag: hks.HuksTag.HUKS_TAG_NONCE,
     value: new Uint8Array(16)
   };
   return property;
@@ -254,7 +245,7 @@ function makeNonce() {
 
 function makeIsKeyAlias() {
   var property = {
-    tag: hks.HksTag.HKS_TAG_IS_KEY_ALIAS,
+    tag: hks.HuksTag.HUKS_TAG_IS_KEY_ALIAS,
     value: true
   };
   return property;
@@ -278,16 +269,16 @@ function makeInDataOption() {
 export function makeMacOption(plaintText) {
   var properties = new Array();
   properties[0] = {
-    tag: hks.HksTag.HKS_TAG_ALGORITHM,
-    value: hks.HksKeyAlg.HKS_ALG_HMAC
+    tag: hks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: hks.HuksKeyAlg.HUKS_ALG_HMAC
   };
   properties[1] = {
-    tag: hks.HksTag.HKS_TAG_PURPOSE,
-    value: hks.HksKeyPurpose.HKS_KEY_PURPOSE_MAC
+    tag: hks.HuksTag.HUKS_TAG_PURPOSE,
+    value: hks.HuksKeyPurpose.HUKS_KEY_PURPOSE_MAC
   };
   properties[2] = {
-    tag: hks.HksTag.HKS_TAG_DIGEST,
-    value: hks.HksKeyDigest.HKS_DIGEST_SHA1
+    tag: hks.HuksTag.HUKS_TAG_DIGEST,
+    value: hks.HuksKeyDigest.HUKS_DIGEST_SHA1
   };
   var options = {
     properties: properties,
@@ -299,12 +290,12 @@ export function makeMacOption(plaintText) {
 export function makeAgreeOptions(publicKey) {
   var properties = new Array();
   properties[0] = {
-    tag: hks.HksTag.HKS_TAG_ALGORITHM,
-    value: hks.HksKeyAlg.HKS_ALG_ECDH
+    tag: hks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: hks.HuksKeyAlg.HUKS_ALG_ECDH
   };
   properties[1] = {
-    tag: hks.HksTag.HKS_TAG_KEY_SIZE,
-    value: hks.HksKeySize.HKS_ECC_KEY_SIZE_224
+    tag: hks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: hks.HuksKeySize.HUKS_ECC_KEY_SIZE_224
   };
   var options = {
     properties: properties,

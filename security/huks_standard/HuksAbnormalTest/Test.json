@@ -2,7 +2,7 @@
     "description": "Configuration for algorithm completion test",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "300000",
+        "test-timeout": "7200000",
         "package": "com.example.err",
         "shell-timeout": "60000"
     },

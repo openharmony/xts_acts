@@ -32,11 +32,11 @@ var keyB = [];
 function makeAgreeOptions(alg, size, publicKey) {
   var properties = new Array();
   properties[0] = {
-    tag: huks.HksTag.HKS_TAG_ALGORITHM,
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: alg
   };
   properties[1] = {
-    tag: huks.HksTag.HKS_TAG_KEY_SIZE,
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
     value: size
   };
   var options = {
@@ -48,101 +48,101 @@ function makeAgreeOptions(alg, size, publicKey) {
 
 describe('Hks_XtsTest_AlgCompletion_Agree', function () {
 
-    /**
-     * @tc.number    HUKS_ALG_COMPLETION_37300
-     * @tc.name      DH2048_DH_Promise
-     * @tc.desc      Test for algorithm completion(agree with DH).
-     */
-    it('HUKS_ALG_COMPLETION_37300', 0, async function (done) {
-      agreePromise(
-        huks.HksKeyAlg.HKS_ALG_DH,
-        huks.HksKeySize.HKS_DH_KEY_SIZE_2048,
-        done,
-        'HUKS_ALG_COMPLETION_37300'
-      );
-      setTimeout(function () {
-      }, timer);
-    });
+  /**
+   * @tc.number    HUKS_ALG_COMPLETION_37300
+   * @tc.name      DH2048_DH_Promise
+   * @tc.desc      Test for algorithm completion(agree with DH).
+   */
+  it('HUKS_ALG_COMPLETION_37300', 0, async function (done) {
+    agreePromise(
+      huks.HuksKeyAlg.HUKS_ALG_DH,
+      huks.HuksKeySize.HUKS_DH_KEY_SIZE_2048,
+      done,
+      'HUKS_ALG_COMPLETION_37300'
+    );
+    setTimeout(function () {
+    }, timer);
+  });
 
-    /**
-     * @tc.number    HUKS_ALG_COMPLETION_37400
-     * @tc.name      DH3072_DH_Promise
-     * @tc.desc      Test for algorithm completion(agree with DH).
-     */
-    it('HUKS_ALG_COMPLETION_37400', 0, async function (done) {
-      agreePromise(
-        huks.HksKeyAlg.HKS_ALG_DH,
-        huks.HksKeySize.HKS_DH_KEY_SIZE_3072,
-        done,
-        'HUKS_ALG_COMPLETION_37400'
-      );
-      setTimeout(function () {
-      }, timer);
-    });
+  /**
+   * @tc.number    HUKS_ALG_COMPLETION_37400
+   * @tc.name      DH3072_DH_Promise
+   * @tc.desc      Test for algorithm completion(agree with DH).
+   */
+  it('HUKS_ALG_COMPLETION_37400', 0, async function (done) {
+    agreePromise(
+      huks.HuksKeyAlg.HUKS_ALG_DH,
+      huks.HuksKeySize.HUKS_DH_KEY_SIZE_3072,
+      done,
+      'HUKS_ALG_COMPLETION_37400'
+    );
+    setTimeout(function () {
+    }, timer);
+  });
 
-    /**
-     * @tc.number    HUKS_ALG_COMPLETION_37500
-     * @tc.name      DH4096_DH_Promise
-     * @tc.desc      Test for algorithm completion(agree with DH).
-     */
-    it('HUKS_ALG_COMPLETION_37500', 0, async function (done) {
-      agreePromise(
-        huks.HksKeyAlg.HKS_ALG_DH,
-        huks.HksKeySize.HKS_DH_KEY_SIZE_4096,
-        done,
-        'HUKS_ALG_COMPLETION_37500'
-      );
-      setTimeout(function () {
-      }, timer);
-    });
+  /**
+   * @tc.number    HUKS_ALG_COMPLETION_37500
+   * @tc.name      DH4096_DH_Promise
+   * @tc.desc      Test for algorithm completion(agree with DH).
+   */
+  it('HUKS_ALG_COMPLETION_37500', 0, async function (done) {
+    agreePromise(
+      huks.HuksKeyAlg.HUKS_ALG_DH,
+      huks.HuksKeySize.HUKS_DH_KEY_SIZE_4096,
+      done,
+      'HUKS_ALG_COMPLETION_37500'
+    );
+    setTimeout(function () {
+    }, timer);
+  });
 
-    /**
-     * @tc.number    HUKS_ALG_COMPLETION_37600
-     * @tc.name      DH2048_DH_AsyncCallback
-     * @tc.desc      Test for algorithm completion(agree with DH).
-     */
-    it('HUKS_ALG_COMPLETION_37600', 0, async function (done) {
-      agreeCallback(
-        huks.HksKeyAlg.HKS_ALG_DH,
-        huks.HksKeySize.HKS_DH_KEY_SIZE_2048,
-        done,
-        'HUKS_ALG_COMPLETION_37600'
-      );
-      setTimeout(function () {
-      }, timer);
-    });
-    
-    /**
-     * @tc.number    HUKS_ALG_COMPLETION_37700
-     * @tc.name      DH3072_DH_AsyncCallback
-     * @tc.desc      Test for algorithm completion(agree with DH).
-     */
-    it('HUKS_ALG_COMPLETION_37700', 0, async function (done) {
-      agreeCallback(
-        huks.HksKeyAlg.HKS_ALG_DH,
-        huks.HksKeySize.HKS_DH_KEY_SIZE_3072,
-        done,
-        'HUKS_ALG_COMPLETION_37700'
-      );
-      setTimeout(function () {
-      }, timer);
-    });
+  /**
+   * @tc.number    HUKS_ALG_COMPLETION_37600
+   * @tc.name      DH2048_DH_AsyncCallback
+   * @tc.desc      Test for algorithm completion(agree with DH).
+   */
+  it('HUKS_ALG_COMPLETION_37600', 0, async function (done) {
+    agreeCallback(
+      huks.HuksKeyAlg.HUKS_ALG_DH,
+      huks.HuksKeySize.HUKS_DH_KEY_SIZE_2048,
+      done,
+      'HUKS_ALG_COMPLETION_37600'
+    );
+    setTimeout(function () {
+    }, timer);
+  });
+  
+  /**
+   * @tc.number    HUKS_ALG_COMPLETION_37700
+   * @tc.name      DH3072_DH_AsyncCallback
+   * @tc.desc      Test for algorithm completion(agree with DH).
+   */
+  it('HUKS_ALG_COMPLETION_37700', 0, async function (done) {
+    agreeCallback(
+      huks.HuksKeyAlg.HUKS_ALG_DH,
+      huks.HuksKeySize.HUKS_DH_KEY_SIZE_3072,
+      done,
+      'HUKS_ALG_COMPLETION_37700'
+    );
+    setTimeout(function () {
+    }, timer);
+  });
 
-    /**
-     * @tc.number    HUKS_ALG_COMPLETION_37800
-     * @tc.name      DH4096_DH_AsyncCallback
-     * @tc.desc      Test for algorithm completion(agree with DH).
-     */
-    it('HUKS_ALG_COMPLETION_37800', 0, async function (done) {
-      agreeCallback(
-        huks.HksKeyAlg.HKS_ALG_DH,
-        huks.HksKeySize.HKS_DH_KEY_SIZE_4096,
-        done,
-        'HUKS_ALG_COMPLETION_37800'
-      );
-      setTimeout(function () {
-      }, timer);
-    });
+  /**
+   * @tc.number    HUKS_ALG_COMPLETION_37800
+   * @tc.name      DH4096_DH_AsyncCallback
+   * @tc.desc      Test for algorithm completion(agree with DH).
+   */
+  it('HUKS_ALG_COMPLETION_37800', 0, async function (done) {
+    agreeCallback(
+      huks.HuksKeyAlg.HUKS_ALG_DH,
+      huks.HuksKeySize.HUKS_DH_KEY_SIZE_4096,
+      done,
+      'HUKS_ALG_COMPLETION_37800'
+    );
+    setTimeout(function () {
+    }, timer);
+  });
 
   /**
    * @tc.number    HUKS_ALG_COMPLETION_37900
@@ -151,8 +151,8 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_37900', 0, async function (done) {
     agreePromise(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
       done,
       'HUKS_ALG_COMPLETION_37900'
     );
@@ -167,8 +167,8 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_38000', 0, async function (done) {
     agreePromise(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_256,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256,
       done,
       'HUKS_ALG_COMPLETION_38000'
     );
@@ -183,8 +183,8 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_38100', 0, async function (done) {
     agreePromise(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_384,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_384,
       done,
       'HUKS_ALG_COMPLETION_38100'
     );
@@ -199,8 +199,8 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_38200', 0, async function (done) {
     agreePromise(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_521,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_521,
       done,
       'HUKS_ALG_COMPLETION_38200'
     );
@@ -215,8 +215,8 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_38300', 0, async function (done) {
     agreeCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
       done,
       'HUKS_ALG_COMPLETION_38300'
     );
@@ -229,12 +229,12 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    * @tc.name      ECDH256_AsyncCallback
    * @tc.desc      Test for algorithm completion(agree with ECDH).
    */
-  it('HUKS_ALG_COMPLETION_38300', 0, async function (done) {
+  it('HUKS_ALG_COMPLETION_38400', 0, async function (done) {
     agreeCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_256,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256,
       done,
-      'HUKS_ALG_COMPLETION_38300'
+      'HUKS_ALG_COMPLETION_38400'
     );
     setTimeout(function () {
     }, timer);
@@ -247,8 +247,8 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_38500', 0, async function (done) {
     agreeCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_384,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_384,
       done,
       'HUKS_ALG_COMPLETION_38500'
     );
@@ -263,8 +263,8 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_38600', 0, async function (done) {
     agreeCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_521,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_521,
       done,
       'HUKS_ALG_COMPLETION_38600'
     );
@@ -279,8 +279,8 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_38700', 0, async function (done) {
     agreePromise(
-      huks.HksKeyAlg.HKS_ALG_X25519,
-      huks.HksKeySize.HKS_CURVE25519_KEY_SIZE_256,
+      huks.HuksKeyAlg.HUKS_ALG_X25519,
+      huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256,
       done,
       'HUKS_ALG_COMPLETION_38700'
     );
@@ -295,8 +295,8 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_38800', 0, async function (done) {
     agreeCallback(
-      huks.HksKeyAlg.HKS_ALG_X25519,
-      huks.HksKeySize.HKS_CURVE25519_KEY_SIZE_256,
+      huks.HuksKeyAlg.HUKS_ALG_X25519,
+      huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256,
       done,
       'HUKS_ALG_COMPLETION_38800'
     );
@@ -312,14 +312,14 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
   it('HUKS_ALG_COMPLETION_38900', 0, async function (done) {
     var generateKeyOptions = makeGenerateKeyOption(
       -1,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_AGREE,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
       null,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_NONE
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE
     );
     var generateKeyRet = await huks.generateKey(defaultAliasA, generateKeyOptions);
-    expect(generateKeyRet.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_ALGORITHM);
+    expect(generateKeyRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ALGORITHM);
     done();
     setTimeout(function () {
     }, timer);
@@ -333,14 +333,14 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
   it('HUKS_ALG_COMPLETION_39000', 0, async function (done) {
     var generateKeyOptions = makeGenerateKeyOption(
       -1,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_AGREE,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
       null,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_NONE
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE
     );
     huks.generateKey(defaultAliasA, generateKeyOptions, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_ALGORITHM);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ALGORITHM);
       done();
     });
     setTimeout(function () {
@@ -354,15 +354,15 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_39100', 0, async function (done) {
     var generateKeyOptions = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_ECC,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
       -1,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_AGREE,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
       null,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_NONE
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE
     );
     var generateKeyRet = await huks.generateKey(defaultAliasA, generateKeyOptions);
-    expect(generateKeyRet.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_KEY_SIZE);
+    expect(generateKeyRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_KEY_SIZE);
     done();
     setTimeout(function () {
     }, timer);
@@ -375,15 +375,15 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_39200', 0, async function (done) {
     var generateKeyOptions = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_ECC,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
       -1,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_AGREE,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
       null,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_NONE
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE
     );
     huks.generateKey(defaultAliasA, generateKeyOptions, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_KEY_SIZE);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_KEY_SIZE);
       done();
     });
     setTimeout(function () {
@@ -397,15 +397,15 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_39300', 0, async function (done) {
     var generateKeyOptions = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
       -1,
       null,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_NONE
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE
     );
     var generateKeyRet = await huks.generateKey(defaultAliasA, generateKeyOptions);
-    expect(generateKeyRet.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_PURPOSE);
+    expect(generateKeyRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_PURPOSE);
     done();
     setTimeout(function () {
     }, timer);
@@ -418,15 +418,15 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_39400', 0, async function (done) {
     var generateKeyOptions = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
       -1,
       null,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_NONE
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE
     );
     huks.generateKey(defaultAliasA, generateKeyOptions, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_PURPOSE);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_PURPOSE);
       done();
     });
     setTimeout(function () {
@@ -440,15 +440,15 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_39500', 0, async function (done) {
     var generateKeyOptions = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_AGREE,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
       null,
       null,
       -1
     );
     var generateKeyRet = await huks.generateKey(defaultAliasA, generateKeyOptions);
-    expect(generateKeyRet.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_DIGEST);
+    expect(generateKeyRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_DIGEST);
     done();
     setTimeout(function () {
     }, timer);
@@ -461,15 +461,15 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_39600', 0, async function (done) {
     var generateKeyOptions = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_AGREE,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
       null,
       null,
       -1
     );
     huks.generateKey(defaultAliasA, generateKeyOptions, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_DIGEST);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_DIGEST);
       done();
     });
     setTimeout(function () {
@@ -483,17 +483,17 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_39700', 0, async function (done) {
     var generateKeyOptions = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_AGREE,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
       null,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_NONE
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE
     );
     var generateKeyARet = await huks.generateKey(defaultAliasA, generateKeyOptions);
-    expect(generateKeyARet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+    expect(generateKeyARet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
     var generateKeyBRet = await huks.generateKey(defaultAliasB, generateKeyOptions);
-    expect(generateKeyBRet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+    expect(generateKeyBRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
 
     var exportKeyARet = await huks.exportKey(defaultAliasA, emptyOption);
     publicKeyA = exportKeyARet.outData;
@@ -503,14 +503,14 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
 
     var agreeKeyAOption = makeAgreeOptions(
       -1,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
       publicKeyB
     );
     var agreeKeyARet = await huks.agreeKey(defaultAliasB, agreeKeyAOption);
-    expect(agreeKeyARet.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_ALGORITHM);
+    expect(agreeKeyARet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ALGORITHM);
 
     huks.agreeKey(defaultAliasA, agreeKeyAOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_ALGORITHM);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ALGORITHM);
       done();
     });
 
@@ -525,30 +525,30 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
    */
   it('HUKS_ALG_COMPLETION_39800', 0, async function (done) {
     var generateKeyOptions = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_AGREE,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
       null,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_NONE
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE
     );
     var generateKeyARet = await huks.generateKey(defaultAliasA, generateKeyOptions);
-    expect(generateKeyARet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+    expect(generateKeyARet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
     var generateKeyBRet = await huks.generateKey(defaultAliasB, generateKeyOptions);
-    expect(generateKeyBRet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+    expect(generateKeyBRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
     var exportKeyARet = await huks.exportKey(defaultAliasA, emptyOption);
     publicKeyA = exportKeyARet.outData;
     var exportKeyBRet = await huks.exportKey(defaultAliasB, emptyOption);
     publicKeyB = exportKeyBRet.outData;
     var agreeKeyAOption = makeAgreeOptions(
-      huks.HksKeyAlg.HKS_ALG_ECDH,
+      huks.HuksKeyAlg.HUKS_ALG_ECDH,
       -1,
       publicKeyB
     );
     var agreeKeyARet = await huks.agreeKey(defaultAliasB, agreeKeyAOption);
-    expect(agreeKeyARet.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_ARGUMENT);
+    expect(agreeKeyARet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ARGUMENT);
     huks.agreeKey(defaultAliasA, agreeKeyAOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_ARGUMENT);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ARGUMENT);
       done();
     });
     setTimeout(function () {
@@ -572,14 +572,14 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
 
   function deleteKeyB(caseId, done) {
     huks.deleteKey(defaultAliasB, emptyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       isKeyAExist(caseId, done);
     });
   };
 
   function deleteKeyA(caseId, done) {
     huks.deleteKey(defaultAliasA, emptyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       deleteKeyB(caseId, done);
     });
   };
@@ -587,7 +587,7 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
   function agreeKeyB(alg, size, done, caseId) {
     var agreeKeyAOption = makeAgreeOptions(alg, size, publicKeyB);
     huks.agreeKey(defaultAliasA, agreeKeyAOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       keyB = data.outData;
       expect(JSON.stringify(keyB)).assertEqual(JSON.stringify(keyA));
       deleteKeyA(caseId, done);
@@ -595,12 +595,12 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
   };
 
   function agreeKeyA(alg, size, done, caseId) {
-    if (alg == huks.HksKeyAlg.HKS_ALG_ECC) {
-      alg = huks.HksKeyAlg.HKS_ALG_ECDH
+    if (alg == huks.HuksKeyAlg.HUKS_ALG_ECC) {
+      alg = huks.HuksKeyAlg.HUKS_ALG_ECDH
     }
     var agreeKeyAOption = makeAgreeOptions(alg, size, publicKeyB);
     huks.agreeKey(defaultAliasA, agreeKeyAOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       keyA = data.outData;
       agreeKeyB(alg, size, done, caseId);
     });
@@ -608,11 +608,11 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
 
   function exportKeyB(alg, size, done, caseId) {
     huks.exportKey(defaultAliasB, emptyOption, function (err, data) {
-      if (useLib == 'openssl' && alg == huks.HksKeyAlg.HKS_ALG_X25519) {
-        expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_ARGUMENT);
+      if (useLib == 'openssl' && alg == huks.HuksKeyAlg.HUKS_ALG_X25519) {
+        expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ARGUMENT);
         done();
       } else {
-        expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+        expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
         publicKeyB = data.outData;
         agreeKeyA(alg, size, done, caseId);
       }
@@ -621,10 +621,10 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
 
   function exportKeyA(alg, size, done, caseId) {
     huks.exportKey(defaultAliasA, emptyOption, function (err, data) {
-      if (useLib == 'openssl' && alg == huks.HksKeyAlg.HKS_ALG_X25519) {
-        expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_ARGUMENT);
+      if (useLib == 'openssl' && alg == huks.HuksKeyAlg.HUKS_ALG_X25519) {
+        expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ARGUMENT);
       } else {
-        expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+        expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
         publicKeyA = data.outData;
       }
       exportKeyB(alg, size, done, caseId);
@@ -635,13 +635,13 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
     var generateKeyBOption = makeGenerateKeyOption(
       alg,
       size,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_AGREE,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
       null,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_NONE
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE
     );
     huks.generateKey(defaultAliasB, generateKeyBOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       exportKeyA(alg, size, done, caseId);
     });
   };
@@ -650,13 +650,13 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
     var generateKeyAOption = makeGenerateKeyOption(
       alg,
       size,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_AGREE,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE,
       null,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_NONE
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE
     );
     huks.generateKey(defaultAliasA, generateKeyAOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       generateKeyB(alg, size, done, caseId);
     });
   };
@@ -667,41 +667,41 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
 
   async function agreePromise(alg, size, done, caseId){
     var generateKeyAOption = makeGenerateKeyOption(
-      alg, size, huks.HksKeyPurpose.HKS_KEY_PURPOSE_AGREE, null, null, huks.HksKeyDigest.HKS_DIGEST_NONE
+      alg, size, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE, null, null, huks.HuksKeyDigest.HUKS_DIGEST_NONE
     );
     var generateKeyARet = await huks.generateKey(defaultAliasA, generateKeyAOption);
-    expect(generateKeyARet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+    expect(generateKeyARet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
     var generateKeyBOption = makeGenerateKeyOption(
-      alg, size, huks.HksKeyPurpose.HKS_KEY_PURPOSE_AGREE, null, null, huks.HksKeyDigest.HKS_DIGEST_NONE
+      alg, size, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_AGREE, null, null, huks.HuksKeyDigest.HUKS_DIGEST_NONE
     );
     var generateKeyBRet = await huks.generateKey(defaultAliasB, generateKeyBOption);
-    expect(generateKeyBRet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+    expect(generateKeyBRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
 
     var exportKeyARet = await huks.exportKey(defaultAliasA, emptyOption);
     var exportKeyBRet = await huks.exportKey(defaultAliasB, emptyOption);
-    if (useLib == 'openssl' && alg == huks.HksKeyAlg.HKS_ALG_X25519) {
-      expect(exportKeyARet.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_ARGUMENT);
-      expect(exportKeyBRet.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_ARGUMENT);
+    if (useLib == 'openssl' && alg == huks.HuksKeyAlg.HUKS_ALG_X25519) {
+      expect(exportKeyARet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ARGUMENT);
+      expect(exportKeyBRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ARGUMENT);
       done();
     } else {
-      expect(exportKeyARet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
-      expect(exportKeyBRet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(exportKeyARet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
+      expect(exportKeyBRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       publicKeyA = exportKeyARet.outData;
       publicKeyB = exportKeyBRet.outData;
-      if (alg == huks.HksKeyAlg.HKS_ALG_ECC) {
-        alg = huks.HksKeyAlg.HKS_ALG_ECDH
+      if (alg == huks.HuksKeyAlg.HUKS_ALG_ECC) {
+        alg = huks.HuksKeyAlg.HUKS_ALG_ECDH
       }
       var agreeKeyAOption = makeAgreeOptions(alg, size, publicKeyB);
       var agreeKeyARet = await huks.agreeKey(defaultAliasA, agreeKeyAOption);
-      expect(agreeKeyARet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(agreeKeyARet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       var agreeKeyBOption = makeAgreeOptions(alg, size, publicKeyA);
       var agreeKeyBRet = await huks.agreeKey(defaultAliasB, agreeKeyBOption);
-      expect(agreeKeyBRet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(agreeKeyBRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       expect(JSON.stringify(agreeKeyARet.outData)).assertEqual(JSON.stringify(agreeKeyBRet.outData));
       var deleteKeyARet = await huks.deleteKey(defaultAliasA, emptyOption);
-      expect(deleteKeyARet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(deleteKeyARet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       var deleteKeyBRet = await huks.deleteKey(defaultAliasB, emptyOption);
-      expect(deleteKeyBRet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(deleteKeyBRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       var isKeyAExist = await huks.isKeyExist(defaultAliasA, emptyOption);
       expect(isKeyAExist).assertEqual(false);
       var isKeyBExist = await huks.isKeyExist(defaultAliasA, emptyOption);

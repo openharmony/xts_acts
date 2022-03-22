@@ -34,7 +34,7 @@ describe('Hks_XtsTest_AlgCompletion_Mac', function () {
    */
   it('HUKS_ALG_COMPLETION_39900', 0, async function (done) {
     macPromise(
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       160,
       done,
       'HUKS_ALG_COMPLETION_39900'
@@ -48,7 +48,7 @@ describe('Hks_XtsTest_AlgCompletion_Mac', function () {
    */
   it('HUKS_ALG_COMPLETION_40000', 0, async function (done) {
     macPromise(
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       224,
       done,
       'HUKS_ALG_COMPLETION_40000'
@@ -62,7 +62,7 @@ describe('Hks_XtsTest_AlgCompletion_Mac', function () {
    */
   it('HUKS_ALG_COMPLETION_40100', 0, async function (done) {
     macPromise(
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       256,
       done,
       'HUKS_ALG_COMPLETION_40100'
@@ -76,7 +76,7 @@ describe('Hks_XtsTest_AlgCompletion_Mac', function () {
    */
   it('HUKS_ALG_COMPLETION_40200', 0, async function (done) {
     macPromise(
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       384,
       done,
       'HUKS_ALG_COMPLETION_40200'
@@ -90,7 +90,7 @@ describe('Hks_XtsTest_AlgCompletion_Mac', function () {
    */
   it('HUKS_ALG_COMPLETION_40300', 0, async function (done) {
     macPromise(
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       512,
       done,
       'HUKS_ALG_COMPLETION_40300'
@@ -107,7 +107,7 @@ describe('Hks_XtsTest_AlgCompletion_Mac', function () {
 
   function deleteKey(done, caseId){
     huks.deleteKey(defaultAlias, emptyOption, function(err,data){
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       isKeyExist(done, caseId);
     });
   };
@@ -115,17 +115,17 @@ describe('Hks_XtsTest_AlgCompletion_Mac', function () {
   function doMac(digest, size, done, caseId){
     var macOption = makeMacOption(size, digest);
     huks.mac(defaultAlias, macOption,function(err,data){
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       deleteKey(done,caseId);
     });
   };
 
   function macCallback(digest, size, done, caseId) {
     var generateKeyOption = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_HMAC, size, huks.HksKeyPurpose.HKS_KEY_PURPOSE_MAC, null, null, digest
+      huks.HuksKeyAlg.HUKS_ALG_HMAC, size, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_MAC, null, null, digest
     );
     huks.generateKey(defaultAlias, generateKeyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       doMac(digest, size, done, caseId);
     });
   };
@@ -137,7 +137,7 @@ describe('Hks_XtsTest_AlgCompletion_Mac', function () {
    */
   it('HUKS_ALG_COMPLETION_40400', 0, async function (done) {
     macCallback(
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       160,
       done,
       'HUKS_ALG_COMPLETION_40400'
@@ -153,7 +153,7 @@ describe('Hks_XtsTest_AlgCompletion_Mac', function () {
    */
   it('HUKS_ALG_COMPLETION_40500', 0, async function (done) {
     macCallback(
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       224,
       done,
       'HUKS_ALG_COMPLETION_40500'
@@ -169,7 +169,7 @@ describe('Hks_XtsTest_AlgCompletion_Mac', function () {
    */
   it('HUKS_ALG_COMPLETION_40600', 0, async function (done) {
     macCallback(
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       256,
       done,
       'HUKS_ALG_COMPLETION_40600'
@@ -185,7 +185,7 @@ describe('Hks_XtsTest_AlgCompletion_Mac', function () {
    */
   it('HUKS_ALG_COMPLETION_40700', 0, async function (done) {
     macCallback(
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       384,
       done,
       'HUKS_ALG_COMPLETION_40700'
@@ -201,7 +201,7 @@ describe('Hks_XtsTest_AlgCompletion_Mac', function () {
    */
   it('HUKS_ALG_COMPLETION_40800', 0, async function (done) {
     macCallback(
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       512,
       done,
       'HUKS_ALG_COMPLETION_40800'
@@ -213,15 +213,15 @@ describe('Hks_XtsTest_AlgCompletion_Mac', function () {
   function makeMacOption(size, digest) {
     var properties = new Array();
     properties[0] = {
-      tag: huks.HksTag.HKS_TAG_ALGORITHM,
-      value: huks.HksKeyAlg.HKS_ALG_HMAC
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_HMAC
     };
     properties[1] = {
-      tag: huks.HksTag.HKS_TAG_PURPOSE,
-      value: huks.HksKeyPurpose.HKS_KEY_PURPOSE_MAC
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_MAC
     };
     properties[2] = {
-      tag: huks.HksTag.HKS_TAG_DIGEST,
+      tag: huks.HuksTag.HUKS_TAG_DIGEST,
       value: digest
     };
     var options = {
@@ -233,17 +233,17 @@ describe('Hks_XtsTest_AlgCompletion_Mac', function () {
 
   async function macPromise(digest, size, done, caseId) {
     var generateKeyOption = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_HMAC, size, huks.HksKeyPurpose.HKS_KEY_PURPOSE_MAC, null, null, digest
+      huks.HuksKeyAlg.HUKS_ALG_HMAC, size, huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_MAC, null, null, digest
     );
     var generateKeyRet = await huks.generateKey(defaultAlias, generateKeyOption);
-    expect(generateKeyRet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+    expect(generateKeyRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
 
     var macOption = makeMacOption(size, digest);
     var macRet = await huks.mac(defaultAlias, macOption);
-    expect(macRet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+    expect(macRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
 
     var deleteKeyRet = await huks.deleteKey(defaultAlias, emptyOption);
-    expect(deleteKeyRet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+    expect(deleteKeyRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
 
     var isKeyExist = await huks.isKeyExist(defaultAlias, emptyOption);
     expect(isKeyExist).assertEqual(false);
