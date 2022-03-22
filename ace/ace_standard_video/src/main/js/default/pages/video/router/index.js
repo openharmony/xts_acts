@@ -30,7 +30,7 @@ export default {
     errorCallback:function(){ this.event = '视频播放错误';},
     seekingCallback:function(e){ this.seekingtime = e.currenttime; },
     timeupdateCallback:function(e){ this.timeupdatetime = e.currenttime;},
-    change_start_pause: function() {
+    changeStartPause: function() {
         if(this.isStart) {
             this.$element('videoId').pause();
             this.isStart = false;
@@ -39,7 +39,7 @@ export default {
             this.isStart = true;
         }
     },
-    change_fullscreenchange: function() {//全屏
+    changeFullScreenChange: function() {//全屏
         if(!this.isfullscreenchange) {
             this.$element('videoId').requestFullscreen({ screenOrientation : 'default' });
             this.isfullscreenchange = true;

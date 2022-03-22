@@ -416,18 +416,18 @@ describe('basicabilityapi', function () {
      */
     it('testSetTimeout', 0, async function (done) {
         console.info('testSetTimeout START');
-        let start_time = new Date().getTime();
+        let startTime = new Date().getTime();
         const delay = 200;
         await setTimeout(function (v1, v2) {
-            let end_time = new Date().getTime();
-            console.info("[settimeout] start_time: " + start_time);
-            console.info("[settimeout] end_time: " + end_time);
-            console.info('[settimeout] delay: ' + (end_time - start_time));
-            console.info('[settimeout] v1: ' + v1);
-            console.info('[settimeout] v2: ' + v2);
+            let endTime = new Date().getTime();
+            console.info("[setTimeout] startTime: " + startTime);
+            console.info("[setTimeout] endTime: " + endTime);
+            console.info('[setTimeout] delay: ' + (endTime - startTime));
+            console.info('[setTimeout] v1: ' + v1);
+            console.info('[setTimeout] v2: ' + v2);
             expect('test').assertEqual(v1);
             expect('message').assertEqual(v2);
-            expect(end_time - start_time >= delay).assertTrue();
+            expect(endTime - startTime >= delay).assertTrue();
             console.info('testSetTimeout END');
             done();
         }, delay, 'test', 'message');
