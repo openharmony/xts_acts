@@ -15,7 +15,7 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 import notify from '@ohos.notification';
-var timeout = 1000;
+var timeout = 2000;
 describe('ActsAnsSubTestXts', function () {
   console.info("==ActsAnsSubscriberTest start==>");
   //ActsSubscriber_test_0100
@@ -31,7 +31,7 @@ describe('ActsAnsSubTestXts', function () {
         expect(err.code).assertEqual(0);
     }
   function unSubscribeCallbacka(err){
-        console.debug("==>unSubscribeCallbacka code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0100 unSubscribeCallbacka code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function disconnectCallbacka(){
@@ -42,7 +42,7 @@ describe('ActsAnsSubTestXts', function () {
         console.debug("==>connectCallbackb code==>");
     }
   function subscribeCallbackb(err) {
-        console.debug("==>subscribeCallbackb code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0200 subscribeCallbackb code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function subscribeCallbackc(err) {
@@ -50,7 +50,7 @@ describe('ActsAnsSubTestXts', function () {
         expect(err.code).assertEqual(0);
     }
   function unSubscribeCallbackb(err){
-        console.debug("==>unSubscribeCallbackb code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0200 unSubscribeCallbackb code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function disconnectCallbackb(){
@@ -64,19 +64,19 @@ describe('ActsAnsSubTestXts', function () {
         console.debug("==>connectCallbackd code==>");
     }
   function subscribeCallbackd(err) {
-        console.debug("==>subscribeCallbackd code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0300 subscribeCallbackd code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function subscribeCallbacke(err) {
-        console.debug("==>subscribeCallbacke code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0300 subscribeCallbacke code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function unSubscribeCallbackc(err){
-        console.debug("==>unSubscribeCallbackc code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0300 unSubscribeCallbackc code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function unSubscribeCallbackd(err){
-        console.debug("==>unSubscribeCallbackd code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0300 unSubscribeCallbackd code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function disconnectCallbackc(){
@@ -93,23 +93,23 @@ describe('ActsAnsSubTestXts', function () {
         console.debug("==>connectCallbackg code==>");
     }
   function subscribeCallbackg(err) {
-        console.debug("==>subscribeCallbackg code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0400 subscribeCallbackg code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function subscribeCallbackh(err) {
-        console.debug("==>subscribeCallbackh code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0400 subscribeCallbackh code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function subscribeCallbacki(err) {
-        console.debug("==>subscribeCallbacki code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0400 subscribeCallbacki code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function unSubscribeCallbackf(err){
-        console.debug("==>unSubscribeCallbackf code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0400 unSubscribeCallbackf code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function unSubscribeCallbackg(err){
-        console.debug("==>unSubscribeCallbackg code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0400 unSubscribeCallbackg code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function disconnectCallbackf(){
@@ -127,11 +127,11 @@ describe('ActsAnsSubTestXts', function () {
         console.debug("==>connectCallbacki code==>");
     }
   function subscribeCallbackl(err) {
-        console.debug("==>subscribeCallbackl code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0500 subscribeCallbackl code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function unSubscribeCallbacki(err){
-        console.debug("==>unSubscribeCallbacki code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0500 unSubscribeCallbacki code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function disconnectCallbacki(){
@@ -146,7 +146,7 @@ describe('ActsAnsSubTestXts', function () {
         console.debug("==>connectCallbackj code==>");
     }
   function unSubscribeCallbackj(err){
-        console.debug("==>unSubscribeCallbackj code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0600 unSubscribeCallbackj code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function disconnectCallbackj(){
@@ -161,11 +161,11 @@ describe('ActsAnsSubTestXts', function () {
         console.debug("==>connectCallbackm code==>");
     }
   function subscribeCallbackn(err) {
-        console.debug("==>subscribeCallbackn code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0700 subscribeCallbackn code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function unSubscribeCallbackl(err){
-        console.debug("==>unSubscribeCallbackl code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0700 unSubscribeCallbackl code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function disconnectCallbackl(){
@@ -180,7 +180,7 @@ describe('ActsAnsSubTestXts', function () {
         console.debug("==>connectCallbackn code==>");
     }
   function unSubscribeCallbackm(err){
-        console.debug("==>unSubscribeCallbackm code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_0800 unSubscribeCallbackm code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function disconnectCallbackm(){
@@ -191,11 +191,11 @@ describe('ActsAnsSubTestXts', function () {
         console.debug("==>connectCallbackl code==>");
     }
   function subscribeCallbacko(err){
-        console.debug("==>subscribeCallbacko code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_1300 subscribeCallbacko code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function unSubscribeCallbackn(err){
-        console.debug("==>unSubscribeCallbackn code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_1300 unSubscribeCallbackn code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function disconnectCallbackn(){
@@ -206,7 +206,7 @@ describe('ActsAnsSubTestXts', function () {
         console.debug("==>connectCallbacko  code==>");
     }
   function subscribeCallbackp(err){
-        console.debug("==>subscribeCallbackp code==>" +err.code);
+        console.debug("==>ActsSubscriber_test_xts_1400 subscribeCallbackp code==>" +err.code);
         expect(err.code).assertEqual(0);
     }
   function unSubscribeCallbacko(err){
@@ -223,11 +223,15 @@ describe('ActsAnsSubTestXts', function () {
   * @tc.desc: verify the function of subscribe
   */
   it('ActsSubscriber_test_xts_0100', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_0100==begin==>");
+        console.debug("==ActsSubscriber_test_xts_0100==begin==>");
         await notify.subscribe(subInfoa, subscribeCallbacka);
-        await notify.unsubscribe(subInfoa, unSubscribeCallbacka);
-        console.debug("==ActsSubscriber_test_0100==end==>");
-        done();
+        setTimeout((async function(){
+            await notify.unsubscribe(subInfoa, unSubscribeCallbacka);
+        }),1000);
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_0100==end==>");
+            done();
+        }),timeout);
     })
 
   /*
@@ -236,16 +240,20 @@ describe('ActsAnsSubTestXts', function () {
   * @tc.desc: verify the function of subscribe
   */
   it('ActsSubscriber_test_xts_0200', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_0200==begin==>");
+        console.debug("==ActsSubscriber_test_xts_0200==begin==>");
         var subInfo ={
             onConnect:connectCallbackb,
             onDisconnect:disconnectCallbackb,
         }
         await notify.subscribe(subInfo,subscribeCallbackb);
         await notify.subscribe(subInfo,subscribeCallbackc);
-        await notify.unsubscribe(subInfo, unSubscribeCallbackb);
-        console.debug("==ActsSubscriber_test_0200==end==>");
-        done();
+        setTimeout((async function(){
+            await notify.unsubscribe(subInfo, unSubscribeCallbackb);
+        }),1000);
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_0200==end==>");
+            done();
+        }),timeout);
     })
 
   /*
@@ -254,7 +262,7 @@ describe('ActsAnsSubTestXts', function () {
   * @tc.desc: verify the function of subscribe
   */
   it('ActsSubscriber_test_xts_0300', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_0300==begin==>");
+        console.debug("==ActsSubscriber_test_xts_0300==begin==>");
 
         var subInfo ={
             onConnect:connectCallbackc,
@@ -266,10 +274,14 @@ describe('ActsAnsSubTestXts', function () {
         }
         await notify.subscribe(subInfo,subscribeCallbackd);
         await notify.subscribe(subInfo2,subscribeCallbacke);
-        await notify.unsubscribe(subInfo, unSubscribeCallbackc);
-        await notify.unsubscribe(subInfo2, unSubscribeCallbackd);
-        console.debug("==ActsSubscriber_test_0300==end==>");
-        done();
+        setTimeout((async function(){
+            await notify.unsubscribe(subInfo, unSubscribeCallbackc);
+            await notify.unsubscribe(subInfo2, unSubscribeCallbackd);
+        }),1000);
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_0300==end==>");
+            done();
+        }),timeout);
     })
 
   /*
@@ -278,8 +290,7 @@ describe('ActsAnsSubTestXts', function () {
   * @tc.desc: verify the function of subscribe
   */
   it('ActsSubscriber_test_xts_0400', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_0500==begin==>");
-
+        console.debug("==ActsSubscriber_test_xts_0400==begin==>");
         var subInfo ={
             onConnect:connectCallbackf,
             onDisconnect:disconnectCallbackf,
@@ -291,11 +302,14 @@ describe('ActsAnsSubTestXts', function () {
         await notify.subscribe(subInfo,subscribeCallbackg);
         await notify.subscribe(subInfo,subscribeCallbackh);
         await notify.subscribe(subInfo2,subscribeCallbacki);
-
-        await notify.unsubscribe(subInfo, unSubscribeCallbackf);
-        await notify.unsubscribe(subInfo2, unSubscribeCallbackg);
-        console.debug("==ActsSubscriber_test_0500==end==>");
-        done();
+        setTimeout((async function(){
+            await notify.unsubscribe(subInfo, unSubscribeCallbackf);
+            await notify.unsubscribe(subInfo2, unSubscribeCallbackg);
+        }),1000);
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_0400==end==>");
+            done();
+        }),timeout);
     })
 
   /*
@@ -304,11 +318,15 @@ describe('ActsAnsSubTestXts', function () {
   * @tc.desc: verify the function of subscribe
   */
   it('ActsSubscriber_test_xts_0500', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_0500==begin==>");
+        console.debug("==ActsSubscriber_test_xts_0500==begin==>");
         await notify.subscribe(subInfob, {bundleNames:["com.example.actsanspublishtest"]},subscribeCallbackl);
-        await notify.unsubscribe(subInfob, unSubscribeCallbacki);
-        console.debug("==ActsSubscriber_test_0500==end3==>");
-        done();
+        setTimeout((async function(){
+            await notify.unsubscribe(subInfob, unSubscribeCallbacki);
+        }),1000);
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_0500==end3==>");
+            done();
+        }),timeout);
     })
 
   /*
@@ -317,13 +335,17 @@ describe('ActsAnsSubTestXts', function () {
   * @tc.desc: verify the function of subscribe
   */
   it('ActsSubscriber_test_xts_0600', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_0600==begin==>");
+        console.debug("==ActsSubscriber_test_xts_0600==begin==>");
         await notify.subscribe(subInfoc, {bundleNames:["com.example.actsanspublishtest"]}).then(async()=> {
-            console.log("ActsSubscriber_test_0600=======promise")
-            await notify.unsubscribe(subInfoc, unSubscribeCallbackj)
+            console.log("ActsSubscriber_test_xts_0600=======promise")
+            setTimeout((async function(){
+                await notify.unsubscribe(subInfoc, unSubscribeCallbackj)
+            }),1000);
         });
-        console.debug("==ActsSubscriber_test_0600==end==>");
-        done();
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_0600==end==>");
+            done();
+        }),timeout);
     })
 
   /*
@@ -332,11 +354,18 @@ describe('ActsAnsSubTestXts', function () {
   * @tc.desc: verify the function of subscribe
   */
   it('ActsSubscriber_test_xts_0700', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_0700==begin==>");
-        await notify.subscribe(subInfod, {bundleNames:["com.example.actsanspublishtest","com.example.actsanspublishtest"]},subscribeCallbackn);
-        console.debug("==ActsSubscriber_test_0700==end==>");
-        await notify.unsubscribe(subInfod, unSubscribeCallbackl);
-        done();
+        console.debug("==ActsSubscriber_test_xts_0700==begin==>");
+        await notify.subscribe(subInfod,
+            {bundleNames:["com.example.actsanspublishtest","com.example.actsanspublishtest"]},subscribeCallbackn);
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_0700==end==>");
+            await notify.unsubscribe(subInfod, unSubscribeCallbackl);
+
+        }),1000);
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_0700==end==>");
+            done();
+        }),timeout);
     })
 
   /*
@@ -345,13 +374,18 @@ describe('ActsAnsSubTestXts', function () {
   * @tc.desc: verify the function of subscribe
   */
   it('ActsSubscriber_test_xts_0800', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_0900==begin==>");
-        await notify.subscribe(subInfoe, {bundleNames:["com.example.actsanspublishtest","com.example.actsanspublishtest"]}).then(async()=> {
-            console.log("ActsSubscriber_test_0900=======promise")
-            await notify.unsubscribe(subInfoe, unSubscribeCallbackm)
+        console.debug("==ActsSubscriber_test_xts_0800==begin==>");
+        await notify.subscribe(subInfoe,
+            {bundleNames:["com.example.actsanspublishtest","com.example.actsanspublishtest"]}).then(async()=> {
+            console.log("ActsSubscriber_test_xts_0800=======promise")
+            setTimeout((async function(){
+                await notify.unsubscribe(subInfoe, unSubscribeCallbackm)
+            }),1000);
         });
-        console.debug("==ActsSubscriber_test_0900==end==>");
-        done();
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_0800==end==>");
+            done();
+        }),timeout);
     })
 
   /*
@@ -360,11 +394,13 @@ describe('ActsAnsSubTestXts', function () {
   * @tc.desc: verify the function of subscribe
   */
   it('ActsSubscriber_test_xts_0900', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_1000==begin==>");
+        console.debug("==ActsSubscriber_test_xts_0900==begin==>");
         var promise = notify.subscribe(100,{bundleNames:["com.example.actsanspublishtest"]});
         expect(promise).assertEqual(undefined);
-        console.debug("==ActsSubscriber_test_1000==end==>");
-        done();
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_0900==end==>");
+            done();
+        }),timeout);
     })
 
   /*
@@ -373,12 +409,14 @@ describe('ActsAnsSubTestXts', function () {
   * @tc.desc: verify the function of subscribe
   */
   it('ActsSubscriber_test_xts_1000', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_1000==begin==>");
+        console.debug("==ActsSubscriber_test_xts_1000==begin==>");
         var subInfo = null
         var promise = await notify.subscribe(subInfo,{bundleNames:["com.example.actsanspublishtest"]});
         expect(promise).assertEqual(undefined);
-        console.debug("==ActsSubscriber_test_1000==end==>");
-        done();
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_1000==end==>");
+            done();
+        }),timeout);
     })
 
   /*
@@ -387,12 +425,14 @@ describe('ActsAnsSubTestXts', function () {
   * @tc.desc: verify the function of subscribe
   */
   it('ActsSubscriber_test_xts_1100', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_1200==begin==>");
+        console.debug("==ActsSubscriber_test_xts_1100==begin==>");
         var subInfo = "#$#%$%$^&%^%"
         var promise = notify.subscribe(subInfo,{bundleNames:["com.example.actsanspublishtest"]});
         expect(promise).assertEqual(undefined);
-        console.debug("==ActsSubscriber_test_1200==end==>");
-        done();
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_1100==end==>");
+            done();
+        }),timeout);
     })
 
   /*
@@ -401,12 +441,14 @@ describe('ActsAnsSubTestXts', function () {
   * @tc.desc: verify the function of subscribe
   */
   it('ActsSubscriber_test_xts_1200', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_1200==begin==>");
+        console.debug("==ActsSubscriber_test_xts_1200==begin==>");
         var subInfo = ""
         var promise = await notify.subscribe(subInfo,{bundleNames:["com.example.actsanspublishtest"]});
         expect(promise).assertEqual(undefined);
-        console.debug("==ActsSubscriber_test_1200==end==>");
-        done();
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_1200==end==>");
+            done();
+        }),timeout);
     })
 
   /*
@@ -415,16 +457,19 @@ describe('ActsAnsSubTestXts', function () {
   * @tc.desc: verify the function of subscribe
   */
   it('ActsSubscriber_test_xts_1300', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_1300==begin==>");
+        console.debug("==ActsSubscriber_test_xts_1300==begin==>");
         var subInfo ={
             onConnect:connectCallbackl,
             onDisconnect:disconnectCallbackn,
         }
         await notify.subscribe(subInfo,{bundleNames:["wrongBudleName"]},subscribeCallbacko);
-        await notify.unsubscribe(subInfo, unSubscribeCallbackn);
-          console.debug("==ActsSubscriber_test_1300==end==>");
-          done();
-
+        setTimeout((async function(){
+            await notify.unsubscribe(subInfo, unSubscribeCallbackn);
+        }),1000);
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_1300==end==>");
+            done();
+        }),timeout);
     })
 
   /*
@@ -433,7 +478,7 @@ describe('ActsAnsSubTestXts', function () {
   * @tc.desc: verify the function of subscribe
   */
   it('ActsSubscriber_test_xts_1400', 0, async function (done) {
-        console.debug("==ActsSubscriber_test_1400==begin==>");
+        console.debug("==ActsSubscriber_test_xts_1400==begin==>");
         var subInfo ={
             onConnect:connectCallbacko,
             onDisconnect:disconnectCallbacko,
@@ -441,10 +486,12 @@ describe('ActsAnsSubTestXts', function () {
         try{
            await notify.subscribe(subInfo, {bundleNames: []}, subscribeCallbackp);
         }catch(err){
-        console.debug("==ActsSubscriber_test_1400==err==>"+err);
+        console.debug("==ActsSubscriber_test_xts_1400==err==>"+err);
         }
-        console.debug("==ActsSubscriber_test_1400==end==>");
-        done();
+        setTimeout((async function(){
+            console.debug("==ActsSubscriber_test_xts_1400==end==>");
+            done();
+        }),timeout);
     })
 })
 
