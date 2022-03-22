@@ -68,18 +68,18 @@ describe('favoriteTestCallBack.test.js', function () {
                             asset.favorite(false, () => {
                                 asset.isFavorite((err1, isFavorite) => {
                                     if (isFavorite) {
-                                        console.info('FAV_ASSET_CALLBACK 001_01 fail');
+                                        console.info('FAV_ASSET_CALLBACK 001_01 fail0');
                                         expect(false).assertTrue();
                                         done();
                                     } else {
                                         asset.favorite(true, () => {
                                             asset.isFavorite((err1, isFavorite) => {
                                                 if (isFavorite) {
-                                                    console.info('FAV_ASSET_CALLBACK 001_01 success');
+                                                    console.info('FAV_ASSET_CALLBACK 001_01 success1');
                                                     expect(true).assertTrue();
                                                     done();
                                                 } else {
-                                                    console.info('FAV_ASSET_CALLBACK 001_01 fail');
+                                                    console.info('FAV_ASSET_CALLBACK 001_01 fail1');
                                                     expect(false).assertTrue();
                                                     done();
                                                 }
@@ -92,11 +92,11 @@ describe('favoriteTestCallBack.test.js', function () {
                             asset.favorite(true, () => {
                                 asset.isFavorite((err1, isFavorite) => {
                                     if (isFavorite) {
-                                        console.info('FAV_ASSET_CALLBACK 001_01 success');
+                                        console.info('FAV_ASSET_CALLBACK 001_01 success2');
                                         expect(true).assertTrue();
                                         done();
                                     } else {
-                                        console.info('FAV_ASSET_CALLBACK 001_01 fail');
+                                        console.info('FAV_ASSET_CALLBACK 001_01 fail2');
                                         expect(false).assertTrue();
                                         done();
                                     }
@@ -107,7 +107,7 @@ describe('favoriteTestCallBack.test.js', function () {
                 });
             });
         } catch (error) {
-            console.info('FAV_ASSET_CALLBACK 001_01 fail, message = ' + error);
+            console.info('FAV_ASSET_CALLBACK 001_01 fail3, message = ' + error);
             expect(false).assertTrue();
             done();
         }
