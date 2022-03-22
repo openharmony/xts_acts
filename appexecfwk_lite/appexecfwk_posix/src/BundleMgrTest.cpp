@@ -32,7 +32,7 @@ static sem_t g_sem;
 static string g_testPath;
 
 extern "C" {
-void __attribute__((weak)) HOS_SystemInit(void){}
+    void __attribute__((weak)) HOS_SystemInit(void){}
 }
 
 /* callback */
@@ -52,8 +52,7 @@ static void TestBundleStateCallback(const uint8_t resultCode, const void *result
 static string GetCurDir()
 {
     string filePath = "";
-    char *buffer;
-    if (!(buffer = getcwd(NULL, 0))) {
+    if (!(char *buffer = getcwd(NULL, 0))) {
         perror("get file path error");
     } else {
         printf("Current Dir: %s\r\n", buffer);
