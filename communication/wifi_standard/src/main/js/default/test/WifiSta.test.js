@@ -29,7 +29,7 @@ async function tryToEnableWifi(){
     console.info("wifi_test/wifi status:" + wifi.isWifiActive());
 }
 
-var WifiSecurityType = {
+let WifiSecurityType = {
     WIFI_SEC_TYPE_INVALID: 0,
     WIFI_SEC_TYPE_OPEN: 1,
     WIFI_SEC_TYPE_WEP: 2,
@@ -37,7 +37,7 @@ var WifiSecurityType = {
     WIFI_SEC_TYPE_SAE: 4,
 }
 
-var SuppState = {
+let SuppState = {
     DISCONNECTED: 0,
     INTERFACE_DISABLED: 1,
     INACTIVE : 2,
@@ -52,7 +52,7 @@ var SuppState = {
     INVALID: 11,
 }
 
-var ConnState = {
+let ConnState = {
     SCANNING: 0,
     CONNECTING: 1,
     AUTHENTICATING: 2,
@@ -63,14 +63,14 @@ var ConnState = {
     UNKNOWN: 7,
 }
 
-var ipConfig = {
+let ipConfig = {
     "ipAddress": 1284752956,
     "gateway": 17017024,
     "dnsServers": 12345678,
     "domains": ["aaa"],
 }
 
-var IpType = {
+let IpType = {
     STATIC : 0,
     DHCP : 1,
     UNKNOWN: 2
@@ -88,14 +88,14 @@ describe('ACTS_WifiTest', function() {
      */
     it('SUB_Communication_WiFi_Sta_Open_0001', 0, async function(done) {
         console.info("[wifi_test] check the state of wifi, if it's close, open it.");
-        var active = wifi.isWifiActive();
+        let active = wifi.isWifiActive();
         if (!active) {
-            var enable = wifi.enableWifi();
+            let enable = wifi.enableWifi();
             await sleep(5000);
             console.log("[wifi_test] wifi open result: " + enable);
             expect(enable).assertTrue();
         }
-        var disable = wifi.disableWifi();
+        let disable = wifi.disableWifi();
         await sleep(5000);
         console.log("[wifi_test] wifi close result: " + disable);
         expect(disable).assertTrue();
@@ -112,14 +112,14 @@ describe('ACTS_WifiTest', function() {
      */
     it('SUB_Communication_WiFi_Sta_Scan_0001', 0, async function(done) {
         await tryToEnableWifi();
-        var scan = wifi.scan();
+        let scan = wifi.scan();
         await sleep(3000);
         console.log("[wifi_test] open wifi scan result: " + scan);
         expect(scan).assertTrue();
 
         await wifi.getScanInfos()
             .then(result => {
-                var clen = Object.keys(result).length;
+                let clen = Object.keys(result).length;
                 expect(clen).assertLarger(0);
                 console.info("[wifi_test] getScanInfos promise result " + JSON.stringify(result));
             });
@@ -129,20 +129,17 @@ describe('ACTS_WifiTest', function() {
                 if(err) {
                     console.log("[wifi_test] wifi getScanInfos failed " + err);
                 }
-                var clen = Object.keys(result).length;
+                let clen = Object.keys(result).length;
                 if (!(clen == 0)) {
                     expect(clen).assertLarger(0);
                     console.info("[wifi_test] getScanInfos callback result: " + JSON.stringify(result));
-                    for (var j = 0; j < clen; ++j) {
-                        console.info("ssid: " + result[j].ssid);
-                        console.info("bssid: " + result[j].bssid);
-                        console.info("securityType: " + result[j].securityType);
-                        console.info("rssi: " + result[j].rssi);
-                        console.info("band: " + result[j].band);
-                        console.info("frequency: " + result[j].frequency);
-                        console.info("timestamp: " + result[j].timestamp);
-                        console.info("capabilities: " + result[j].capabilities);
-                        console.info("channelWidth: " + result[j].channelWidth);
+                    for (let j = 0; j < clen; ++j) {
+                        console.info("ssid: " + result[j].ssid + "bssid: " + result[j].bssid + 
+                        "securityType: " + result[j].securityType + 
+                         "rssi: " + result[j].rssi + "band: " + result[j].band + 
+                          "frequency: " + result[j].frequency +
+                          "timestamp" + result[j].timestamp + "capabilities" + result[j].capabilities
+                          + "channelWidth: " + result[j].channelWidth);
                     }
                 }
                 done()
@@ -196,7 +193,7 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Sta_Config_0001', 0, async function(done) {
         await tryToEnableWifi();
         wifi.removeAllNetwork();
-        var wifiDeviceConfig1 = {
+        let wifiDeviceConfig1 = {
             "ssid": "TEST_OPEN",
             "bssid": "",
             "preSharedKey": "",
@@ -216,7 +213,7 @@ describe('ACTS_WifiTest', function() {
                 console.info("[wifi_test]add OPEN Deviceconfig promise : " + JSON.stringify(netWorkId));
                 expect(true).assertEqual(netWorkId != -1);
                 
-                var configs = wifi.getDeviceConfigs();
+                let configs = wifi.getDeviceConfigs();
                 console.info("[wifi_test] wifi getDeviceConfigs result1 : " + JSON.stringify(configs));
                 expect(true).assertEqual(configs[0].securityType == wifiDeviceConfig1.securityType);
                 expect(true).assertEqual(configs[0].isHiddenSsid == wifiDeviceConfig1.isHiddenSsid);
@@ -232,16 +229,16 @@ describe('ACTS_WifiTest', function() {
                 console.info("[wifi_test]add OPEN Deviceconfig callback : " + JSON.stringify(netWorkId));
                 expect(true).assertEqual(netWorkId != -1);
                 
-                var configs = wifi.getDeviceConfigs();
-                console.info("[wifi_test] wifi getDeviceConfigs result2 : " + JSON.stringify(configs));
-                expect(true).assertEqual(configs[0].securityType == wifiDeviceConfig1.securityType);
-                expect(true).assertEqual(configs[0].isHiddenSsid == wifiDeviceConfig1.isHiddenSsid);
-                expect(true).assertEqual(configs[0].ssid == wifiDeviceConfig1.ssid);
+                let configs1 = wifi.getDeviceConfigs();
+                console.info("[wifi_test] wifi getDeviceConfigs result2 : " + JSON.stringify(configs1));
+                expect(true).assertEqual(configs1[0].securityType == wifiDeviceConfig1.securityType);
+                expect(true).assertEqual(configs1[0].isHiddenSsid == wifiDeviceConfig1.isHiddenSsid);
+                expect(true).assertEqual(configs1[0].ssid == wifiDeviceConfig1.ssid);
 
-                var isRemoved = wifi.removeAllNetwork();
+                let isRemoved = wifi.removeAllNetwork();
                 expect(isRemoved).assertTrue();
-                var configs = wifi.getDeviceConfigs();
-                expect(true).assertEqual(configs.length == 0);
+                let configs2 = wifi.getDeviceConfigs();
+                expect(true).assertEqual(configs2.length == 0);
                 done()
             });
     })
@@ -254,7 +251,7 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Sta_Config_0002', 0, async function(done) {
         await tryToEnableWifi();
         
-        var wifiDeviceConfig1 = {
+        let wifiDeviceConfig1 = {
             "ssid": "TEST_PSK",
             "bssid": "",
             "preSharedKey": "12345678",
@@ -274,18 +271,18 @@ describe('ACTS_WifiTest', function() {
                 console.info("[wifi_test]add PSK Deviceconfig promise : " + JSON.stringify(netWorkId));
                 expect(true).assertEqual(netWorkId != -1);
 
-                var configs = wifi.getDeviceConfigs();
+                let configs = wifi.getDeviceConfigs();
                 console.info("[wifi_test] wifi getDeviceConfigs result1 : " + JSON.stringify(configs));
                 expect(true).assertEqual(configs[0].securityType == wifiDeviceConfig1.securityType);
                 expect(true).assertEqual(configs[0].isHiddenSsid == wifiDeviceConfig1.isHiddenSsid);
                 expect(true).assertEqual(configs[0].preSharedKey == wifiDeviceConfig1.preSharedKey);
                 expect(true).assertEqual(configs[0].ssid == wifiDeviceConfig1.ssid);
 
-                var isRemoved = wifi.removeDevice(netWorkId);
+                let isRemoved = wifi.removeDevice(netWorkId);
                 expect(isRemoved).assertTrue();
-                var configs = wifi.getDeviceConfigs();
-                console.info("[wifi_test]remove config,current getConfig: " + JSON.stringify(configs));
-                expect(true).assertEqual(configs.length == 0);
+                let configs1 = wifi.getDeviceConfigs();
+                console.info("[wifi_test]remove config,current getConfig: " + JSON.stringify(configs1));
+                expect(true).assertEqual(configs1.length == 0);
             });
         done()
     })
@@ -298,7 +295,7 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Sta_Config_0003', 0, async function(done) {
         await tryToEnableWifi();
         
-        var wifiDeviceConfig1 = {
+        let wifiDeviceConfig1 = {
             "ssid": "TEST_WEP",
             "bssid": "",
             "preSharedKey": "ABCDEF1234",
@@ -318,7 +315,7 @@ describe('ACTS_WifiTest', function() {
                 console.info("[wifi_test]add WEP Deviceconfig promise : " + JSON.stringify(netWorkId));
                 expect(true).assertEqual(netWorkId != -1);
 
-                var configs = wifi.getDeviceConfigs();
+                let configs = wifi.getDeviceConfigs();
                 console.info("[wifi_test]connectdevice result: " + wifi.connectToNetwork(netWorkId));
                 expect(wifi.connectToNetwork(netWorkId)).assertTrue();
                 console.info("[wifi_test] wifi getDeviceConfigs result1 : " + JSON.stringify(configs));
@@ -327,10 +324,10 @@ describe('ACTS_WifiTest', function() {
                 expect(true).assertEqual(configs[0].preSharedKey == wifiDeviceConfig1.preSharedKey);
                 expect(true).assertEqual(configs[0].ssid == wifiDeviceConfig1.ssid);
 
-                var isRemoved = wifi.removeDevice(netWorkId);
+                let isRemoved = wifi.removeDevice(netWorkId);
                 expect(isRemoved).assertTrue();
-                var configs = wifi.getDeviceConfigs();
-                expect(true).assertEqual(configs.length == 0);
+                let configs1 = wifi.getDeviceConfigs();
+                expect(true).assertEqual(configs1.length == 0);
             });
         done()
     })
@@ -342,14 +339,14 @@ describe('ACTS_WifiTest', function() {
      */
     it('SUB_Communication_WiFi_Sta_Config_0004', 0, async function(done) {
         await tryToEnableWifi();
-        var wifiDeviceConfig1 = {
+        let wifiDeviceConfig1 = {
             "ssid": "TESTWgr1",
             "bssid": "",
             "preSharedKey": "123456789",
             "isHiddenSsid": false,
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
         };
-        var wifiDeviceConfig2 = {
+        let wifiDeviceConfig2 = {
             "ssid": "TESTWgr2",
             "bssid": "",
             "preSharedKey": "",
@@ -366,7 +363,7 @@ describe('ACTS_WifiTest', function() {
                     console.info("[wifi_test] wifi addDeviceconfig1 callback:" + JSON.stringify(netWorkId1));
                     expect(true).assertEqual(netWorkId1 != -1);
 
-                    var configs = wifi.getDeviceConfigs();
+                    let configs = wifi.getDeviceConfigs();
                     console.info("[wifi_test] wifi getDeviceConfigs result : " + JSON.stringify(configs));
                     resolve()
                 });
@@ -381,14 +378,14 @@ describe('ACTS_WifiTest', function() {
                     console.info("[wifi_test] wifi addDeviceconfig2 callback : " + JSON.stringify(netWorkId2));
                     expect(true).assertEqual(netWorkId2 != -1);
 
-                    var configs = wifi.getDeviceConfigs();
-                    console.info("[wifi_test] wifi getDeviceConfigs result : " + JSON.stringify(configs));
-                    expect(true).assertEqual(configs.length >= 1);
+                    let configs1 = wifi.getDeviceConfigs();
+                    console.info("[wifi_test] wifi getDeviceConfigs result : " + JSON.stringify(configs1));
+                    expect(true).assertEqual(configs1.length >= 1);
 
-                    var isRemoved = wifi.removeAllNetwork();
+                    let isRemoved = wifi.removeAllNetwork();
                     expect(isRemoved).assertTrue();
-                    var configs = wifi.getDeviceConfigs();
-                    expect(true).assertEqual(configs.length == 0);
+                    let configs2 = wifi.getDeviceConfigs();
+                    expect(true).assertEqual(configs2.length == 0);
                     resolve()
                 });
         })
@@ -404,7 +401,7 @@ describe('ACTS_WifiTest', function() {
      */
      it('SUB_Communication_WiFi_Sta_Config_0005', 0, async function(done) {
         await tryToEnableWifi();
-        var wifiDeviceConfigD = {
+        let wifiDeviceConfigD = {
             "ssid": "TESTD",
             "bssid": "",
             "preSharedKey": "12345678",
@@ -423,17 +420,17 @@ describe('ACTS_WifiTest', function() {
                 console.info("[wifi_test]add PSK Deviceconfig promise : " + JSON.stringify(netWorkId));
                 expect(true).assertEqual(netWorkId != -1);
                 expect(wifi.connectToNetwork(netWorkId)).assertTrue();
-                var disconNet = wifi.disableNetwork(netWorkId);
+                let disconNet = wifi.disableNetwork(netWorkId);
                 expect(disconNet).assertTrue();
 
-                var configs = wifi.getDeviceConfigs();
+                let configs = wifi.getDeviceConfigs();
                 console.info("[wifi_test] wifi device config result : " + JSON.stringify(configs));
                 expect(true).assertEqual(configs[0].ssid == wifiDeviceConfigD.ssid);
 
-                var isRemoved = wifi.removeAllNetwork();
+                let isRemoved = wifi.removeAllNetwork();
                 expect(isRemoved).assertTrue();
-                var configs = wifi.getDeviceConfigs();
-                expect(true).assertEqual(configs.length == 0);
+                let configs1 = wifi.getDeviceConfigs();
+                expect(true).assertEqual(configs1.length == 0);
             });
         done()
     })
@@ -445,7 +442,7 @@ describe('ACTS_WifiTest', function() {
      */
     it('SUB_Communication_WiFi_Sta_Config_0006', 0, async function(done) {
         await tryToEnableWifi();
-        var wifiDeviceConfigU = {
+        let wifiDeviceConfigU = {
             "ssid": "TEST",
             "bssid": "",
             "preSharedKey": "12345678",
@@ -464,21 +461,21 @@ describe('ACTS_WifiTest', function() {
                 console.info("[wifi_test]add PSK Deviceconfig promise : " + JSON.stringify(netWorkId));
                 expect(true).assertEqual(netWorkId != -1);
                
-                var configs = wifi.getDeviceConfigs();
+                let configs = wifi.getDeviceConfigs();
                 console.info("[wifi_test] wifi getDeviceConfigs result1 : " + JSON.stringify(configs));
 
                 wifiDeviceConfigU.ssid = "UPDATE";
                 wifiDeviceConfigU.preSharedKey = "1234567890";
                 expect(true).assertEqual(wifi.updateNetwork(wifiDeviceConfigU) >= 0);
-                var configs = wifi.getDeviceConfigs();
-                console.info("[wifi_test] updated wifi device config result : " + JSON.stringify(configs));
-                expect(true).assertEqual(configs[1].ssid == wifiDeviceConfigU.ssid);
-                expect(true).assertEqual(configs[1].preSharedKey == wifiDeviceConfigU.preSharedKey);
+                let configs1 = wifi.getDeviceConfigs();
+                console.info("[wifi_test] updated wifi device config result : " + JSON.stringify(configs1));
+                expect(true).assertEqual(configs1[1].ssid == wifiDeviceConfigU.ssid);
+                expect(true).assertEqual(configs1[1].preSharedKey == wifiDeviceConfigU.preSharedKey);
 
-                var isRemoved = wifi.removeAllNetwork();
+                let isRemoved = wifi.removeAllNetwork();
                 expect(isRemoved).assertTrue();
-                var configs = wifi.getDeviceConfigs();
-                expect(true).assertEqual(configs.length == 0);
+                let configs2 = wifi.getDeviceConfigs();
+                expect(true).assertEqual(configs2.length == 0);
             });
         done()
     })
@@ -491,7 +488,7 @@ describe('ACTS_WifiTest', function() {
     it('SSUB_Communication_WiFi_Sta_Conn_SSID_0001', 0, async function(done) {
         await tryToEnableWifi();
 
-        var wifiDeviceConfigZ = {
+        let wifiDeviceConfigZ = {
             "ssid": "中文测试SSID",
             "bssid": "",
             "preSharedKey": "12345678",
@@ -512,19 +509,19 @@ describe('ACTS_WifiTest', function() {
 
                 expect(wifi.connectToNetwork(netWorkId)).assertTrue();
 
-                var disconNet = wifi.disableNetwork(netWorkId);
+                let disconNet = wifi.disableNetwork(netWorkId);
                 expect(disconNet).assertTrue();
 
-                var configs = wifi.getDeviceConfigs();
+                let configs = wifi.getDeviceConfigs();
                 console.info("[wifi_test] wifi getDeviceConfigs result1 : " + JSON.stringify(configs));
                 expect(true).assertEqual(configs[0].ssid == wifiDeviceConfigZ.ssid);
                 expect(true).assertEqual(configs[0].preSharedKey == wifiDeviceConfigZ.preSharedKey);
 
-                var isRemoved = wifi.removeAllNetwork();
+                let isRemoved = wifi.removeAllNetwork();
                 expect(isRemoved).assertTrue();
-                var configs = wifi.getDeviceConfigs();
-                console.info("[wifi_test]remove config,current get Config : " + JSON.stringify(configs));
-                expect(true).assertEqual(configs.length == 0);
+                let configs1 = wifi.getDeviceConfigs();
+                console.info("[wifi_test]remove config,current get Config : " + JSON.stringify(configs1));
+                expect(true).assertEqual(configs1.length == 0);
             });
         done()
     })
@@ -537,7 +534,7 @@ describe('ACTS_WifiTest', function() {
      */
     it('SSUB_Communication_WiFi_Sta_Conn_SSID_0002', 0, async function(done) {
         await tryToEnableWifi();
-        var wifiDeviceConfigK = {
+        let wifiDeviceConfigK = {
             "ssid": "test text",
             "bssid": "",
             "preSharedKey": "12345678",
@@ -559,18 +556,18 @@ describe('ACTS_WifiTest', function() {
                 
                 expect(wifi.connectToNetwork(netWorkId)).assertTrue();
                 
-                var disconNet = wifi.disableNetwork(netWorkId);
+                let disconNet = wifi.disableNetwork(netWorkId);
                 expect(disconNet).assertTrue();
                 
-                var configs = wifi.getDeviceConfigs();
+                let configs = wifi.getDeviceConfigs();
                 console.info("[wifi_test] wifi getDeviceConfigs result1 : " + JSON.stringify(configs));
                 expect(true).assertEqual(configs[0].ssid == wifiDeviceConfigK.ssid);
                 expect(true).assertEqual(configs[0].preSharedKey == wifiDeviceConfigK.preSharedKey);
 
-                var isRemoved = wifi.removeAllNetwork();
+                let isRemoved = wifi.removeAllNetwork();
                 expect(isRemoved).assertTrue();
-                var configs = wifi.getDeviceConfigs();
-                expect(true).assertEqual(configs.length == 0);
+                let configs1 = wifi.getDeviceConfigs();
+                expect(true).assertEqual(configs1.length == 0);
             });
         done()
     })
@@ -582,7 +579,7 @@ describe('ACTS_WifiTest', function() {
      */
     it('SSUB_Communication_WiFi_Sta_Conn_SSID_0003', 0, async function(done) {
         await tryToEnableWifi();
-        var wifiDeviceConfigT = {
+        let wifiDeviceConfigT = {
             "ssid": "！@#￥%&*/",
             "bssid": "",
             "preSharedKey": "12345678",
@@ -602,17 +599,17 @@ describe('ACTS_WifiTest', function() {
               
                 expect(true).assertEqual(netWorkId != -1);
                 console.info("[wifi_test]connectdevice result: " + wifi.connectToNetwork(netWorkId));
-                var configs = wifi.getDeviceConfigs();
+                let configs = wifi.getDeviceConfigs();
                 console.info("[wifi_test] wifi getDeviceConfigs result1 : " + JSON.stringify(configs));
                 expect(true).assertEqual(configs[0].ssid == wifiDeviceConfigT.ssid);
                 expect(true).assertEqual(configs[0].preSharedKey == wifiDeviceConfigT.preSharedKey);
 
-                var isRemoved = wifi.removeAllNetwork();
+                let isRemoved = wifi.removeAllNetwork();
                 expect(isRemoved).assertTrue();
 
-                var configs = wifi.getDeviceConfigs();
-                console.info("[wifi_test]remove config,current get Config : " + JSON.stringify(configs));
-                expect(true).assertEqual(configs.length == 0);
+                let configs1 = wifi.getDeviceConfigs();
+                console.info("[wifi_test]remove config,current get Config : " + JSON.stringify(configs1));
+                expect(true).assertEqual(configs1.length == 0);
             });
         done()
     })
@@ -624,7 +621,7 @@ describe('ACTS_WifiTest', function() {
      */
     it('SUB_Communication_WiFi_Sta_Conn_SSID_0007', 0, async function(done) {
         await tryToEnableWifi();
-        var wifiDeviceConfigT = {
+        let wifiDeviceConfigT = {
             "ssid": "test",
             "bssid": "",
             "preSharedKey": "12345678",
@@ -644,16 +641,16 @@ describe('ACTS_WifiTest', function() {
                 
                 expect(true).assertEqual(netWorkId != -1);
                 console.info("[wifi_test]connectdevice result: " + wifi.connectToNetwork(netWorkId));
-                var configs = wifi.getDeviceConfigs();
+                let configs = wifi.getDeviceConfigs();
                 console.info("[wifi_test] wifi getDeviceConfigs result1 : " + JSON.stringify(configs));
                 expect(true).assertEqual(configs[0].ssid == wifiDeviceConfigT.ssid);
                 expect(true).assertEqual(configs[0].isHiddenSsid == wifiDeviceConfigT.isHiddenSsid);
 
-                var isRemoved = wifi.removeAllNetwork();
+                let isRemoved = wifi.removeAllNetwork();
                 expect(isRemoved).assertTrue();
-                var configs = wifi.getDeviceConfigs();
-                console.info("[wifi_test]remove config,current get Config : " + JSON.stringify(configs));
-                expect(true).assertEqual(configs.length == 0);
+                let configs1 = wifi.getDeviceConfigs();
+                console.info("[wifi_test]remove config,current get Config : " + JSON.stringify(configs1));
+                expect(true).assertEqual(configs1.length == 0);
             });
         done()
     })
@@ -670,7 +667,7 @@ describe('ACTS_WifiTest', function() {
        await tryToEnableWifi();
        expect(wifi.isWifiActive()).assertTrue();
        console.info('[wifi_test] getDeviceMacAddress test start ...');
-       var result = wifi.getDeviceMacAddress();
+       let result = wifi.getDeviceMacAddress();
        console.info("[wifi_test] getDeviceMacAddress -> " + JSON.stringify(result));
        expect(true).assertEqual(result.length >= 1)
        done();
@@ -688,7 +685,7 @@ describe('ACTS_WifiTest', function() {
         await tryToEnableWifi();
         expect(wifi.isWifiActive()).assertTrue();
         console.info(" [wifi_test] getCountryCode start ... ");
-        var countryCode = wifi.getCountryCode();
+        let countryCode = wifi.getCountryCode();
         console.info("[wifi_test] getCountryCode -> " + JSON.stringify(countryCode));
         expect(JSON.stringify(countryCode)).assertEqual('"CN"');
         done()
@@ -705,7 +702,7 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Sta_info_0004', 0, async function (done) {
         await tryToEnableWifi();
         expect(wifi.isWifiActive()).assertTrue();
-        var result = wifi.getSupportedFeatures();
+        let result = wifi.getSupportedFeatures();
         console.info("[wifi_test] getFeatureSupported -> " + JSON.stringify(result));
         console.info("[wifi_test] isFeatureSupported: " + result +"->" + wifi.isFeatureSupported(result));
         expect(wifi.isFeatureSupported(result)).assertTrue();
@@ -724,7 +721,7 @@ describe('ACTS_WifiTest', function() {
         console.info(" [wifi_test] isHotspotDualBandSupported start ... ");
         await tryToEnableWifi();
         expect(wifi.isWifiActive()).assertTrue();
-        var DualBand = wifi.isHotspotDualBandSupported();
+        let DualBand = wifi.isHotspotDualBandSupported();
         console.info("[wifi_test] isHotspotDualBandSupported -> " + JSON.stringify(DualBand));
         expect(DualBand).assertFalse();
         done();
@@ -738,7 +735,7 @@ describe('ACTS_WifiTest', function() {
     */
    it('SUB_Communication_WiFi_Sta_Conn_Info_0001', 0, async function (done) {
         await tryToEnableWifi();
-        var wifiDeviceConfigConn = {
+        let wifiDeviceConfigConn = {
             "ssid": "TESTCONN",
             "bssid": "",
             "preSharedKey": "12345678",
@@ -753,14 +750,14 @@ describe('ACTS_WifiTest', function() {
             "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
         };
         expect(wifi.isWifiActive()).assertTrue();
-        var result1 = wifi.connectToDevice(wifiDeviceConfigConn);
+        let result1 = wifi.connectToDevice(wifiDeviceConfigConn);
         expect(result1).assertTrue();
         console.info("[wifi_test]isConnected : " + wifi.isConnected());
         expect(wifi.isConnected()).assertFalse();
         expect(wifi.reconnect()).assertTrue();
-        var isRemoved = wifi.removeAllNetwork();
+        let isRemoved = wifi.removeAllNetwork();
         expect(isRemoved).assertTrue();
-        var configs = wifi.getDeviceConfigs();
+        let configs = wifi.getDeviceConfigs();
         console.info("[wifi_test]remove config,current get Config : " + JSON.stringify(configs));
         expect(true).assertEqual(configs.length == 0);
         done()
@@ -797,7 +794,7 @@ describe('ACTS_WifiTest', function() {
                 if(err) {
                     console.log("[wifi_test] wifi getLinkedInfo failed " + err);
                 }
-                var clen = Object.keys(result).length;
+                let clen = Object.keys(result).length;
                 expect(clen).assertLarger(0);
                 console.info("[wifi_test] getLinkedInfo callback result: " + JSON.stringify(result));
                 console.info("ssid: " + result.ssid + "bssid:"+ result.bssid +"band: " + result.band+
@@ -818,7 +815,7 @@ describe('ACTS_WifiTest', function() {
     */
     it('SUB_Communication_WiFi_Sta_Conn_Security_0001', 0, async function(done) {
         await tryToEnableWifi();
-        var wifiDeviceConfig1 = {
+        let wifiDeviceConfig1 = {
             "ssid": "TEST10",
             "bssid": "",
             "preSharedKey": "ABCDEF1234",
@@ -832,12 +829,12 @@ describe('ACTS_WifiTest', function() {
             "randomMacAddr": "11:22:33:44:55:66",
             "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
         };
-        var result1 = wifi.connectToDevice(wifiDeviceConfig1);
+        let result1 = wifi.connectToDevice(wifiDeviceConfig1);
         console.log("[wifi_test] wifi connectToDevice result: " + result1);
         expect(result1).assertTrue();
-        var isConnected= wifi.isConnected();
+        let isConnected= wifi.isConnected();
         expect(isConnected).assertFalse();
-        var isRemoved = wifi.removeAllNetwork();
+        let isRemoved = wifi.removeAllNetwork();
         console.info("[wifi_test] check remove configs successfully,result:" + isRemoved);
         expect(isRemoved).assertTrue();
         done()
@@ -850,7 +847,7 @@ describe('ACTS_WifiTest', function() {
     */
     it('SUB_Communication_WiFi_Sta_Conn_Security_0002', 0, async function(done) {
         await tryToEnableWifi();
-        var wifiDeviceConfig1 = {
+        let wifiDeviceConfig1 = {
             "ssid": "TESTDIS",
             "bssid": "",
             "preSharedKey": "12345678",
@@ -864,15 +861,15 @@ describe('ACTS_WifiTest', function() {
             "randomMacAddr": "11:22:33:44:55:66",
             "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
         };
-        var result1 = wifi.connectToDevice(wifiDeviceConfig1);
+        let result1 = wifi.connectToDevice(wifiDeviceConfig1);
         console.log("[wifi_test] wifi connectToDevice result: " + result1);
         expect(result1).assertTrue();
   
-        var isConnected= wifi.isConnected();
+        let isConnected= wifi.isConnected();
         expect(isConnected).assertFalse();
  
         expect(wifi.disconnect()).assertTrue();
-        var isRemoved = wifi.removeAllNetwork();
+        let isRemoved = wifi.removeAllNetwork();
         console.info("[wifi_test] check remove configs successfully,result:" + isRemoved);
         expect(isRemoved).assertTrue();
         done()
@@ -885,7 +882,7 @@ describe('ACTS_WifiTest', function() {
     */
     it('SUB_Communication_WiFi_Sta_Conn_Security_0003', 0, async function(done) {
         await tryToEnableWifi();
-        var wifiDeviceConfig1 = {
+        let wifiDeviceConfig1 = {
             "ssid": "TEST26",
             "bssid": "",
             "preSharedKey": "12345678901234567890123456",
@@ -899,13 +896,13 @@ describe('ACTS_WifiTest', function() {
             "randomMacAddr": "11:22:33:44:55:66",
             "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
         };
-        var result1 = wifi.connectToDevice(wifiDeviceConfig1);
+        let result1 = wifi.connectToDevice(wifiDeviceConfig1);
         console.log("[wifi_test] wifi connectToDevice result: " + result1);
         expect(result1).assertTrue();
 
-        var isConnected= wifi.isConnected();
+        let isConnected= wifi.isConnected();
         expect(isConnected).assertFalse();
-        var isRemoved = wifi.removeAllNetwork();
+        let isRemoved = wifi.removeAllNetwork();
         console.info("[wifi_test] check remove configs successfully,result:" + isRemoved);
         expect(isRemoved).assertTrue();
         done()
@@ -918,7 +915,7 @@ describe('ACTS_WifiTest', function() {
     */
     it('SUB_Communication_WiFi_Sta_Conn_Security_0005', 0, async function(done) {
         await tryToEnableWifi();
-        var wifiDeviceConfig1 = {
+        let wifiDeviceConfig1 = {
             "ssid": "TEST5",
             "bssid": "",
             "preSharedKey": "aB1@g",
@@ -932,13 +929,13 @@ describe('ACTS_WifiTest', function() {
             "randomMacAddr": "11:22:33:44:55:66",
             "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
         };
-        var result1 = wifi.connectToDevice(wifiDeviceConfig1);
+        let result1 = wifi.connectToDevice(wifiDeviceConfig1);
         console.log("[wifi_test] wifi connectToDevice result: " + result1);
         expect(result1).assertTrue();
 
-        var isConnected= wifi.isConnected();
+        let isConnected= wifi.isConnected();
         expect(isConnected).assertFalse();
-        var isRemoved = wifi.removeAllNetwork();
+        let isRemoved = wifi.removeAllNetwork();
         console.info("[wifi_test] check remove configs successfully,result:" + isRemoved);
         expect(isRemoved).assertTrue();
         done()
@@ -951,7 +948,7 @@ describe('ACTS_WifiTest', function() {
     */
     it('SUB_Communication_WiFi_Sta_Conn_Security_0007', 0, async function(done) {
         await tryToEnableWifi();
-        var wifiDeviceConfig1 = {
+        let wifiDeviceConfig1 = {
             "ssid": "TEST7",
             "bssid": "",
             "preSharedKey": "1234aA@fFgGzZ",
@@ -965,13 +962,13 @@ describe('ACTS_WifiTest', function() {
             "randomMacAddr": "11:22:33:44:55:66",
             "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
         };
-        var result1 = wifi.connectToDevice(wifiDeviceConfig1);
+        let result1 = wifi.connectToDevice(wifiDeviceConfig1);
         console.log("[wifi_test] wifi connectToDevice result: " + result1);
         expect(result1).assertTrue();
         console.info("[wifi_test] check isconnected wifi");
-        var isConnected= wifi.isConnected();
+        let isConnected= wifi.isConnected();
         expect(isConnected).assertFalse();
-        var isRemoved = wifi.removeAllNetwork();
+        let isRemoved = wifi.removeAllNetwork();
         console.info("[wifi_test] check remove configs successfully,result:" + isRemoved);
         expect(isRemoved).assertTrue();
         done()
@@ -984,7 +981,7 @@ describe('ACTS_WifiTest', function() {
     */
     it('SUB_Communication_WiFi_Sta_Conn_Security_0013', 0, async function(done) {
         await tryToEnableWifi();
-        var wifiDeviceConfig1 = {
+        let wifiDeviceConfig1 = {
             "ssid": "TEST13",
             "bssid": "",
             "preSharedKey": "ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH1234567",
@@ -998,13 +995,13 @@ describe('ACTS_WifiTest', function() {
             "randomMacAddr": "11:22:33:44:55:66",
             "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
         };
-        var result1 = wifi.connectToDevice(wifiDeviceConfig1);
+        let result1 = wifi.connectToDevice(wifiDeviceConfig1);
         console.log("[wifi_test] wifi connectToDevice result: " + result1);
         expect(result1).assertTrue();
 
-        var isConnected= wifi.isConnected();
+        let isConnected= wifi.isConnected();
         expect(isConnected).assertFalse();
-        var isRemoved = wifi.removeAllNetwork();
+        let isRemoved = wifi.removeAllNetwork();
         console.info("[wifi_test] check remove configs successfully,result:" + isRemoved);
         expect(isRemoved).assertTrue();
         done()
@@ -1017,7 +1014,7 @@ describe('ACTS_WifiTest', function() {
     */
     it('SUB_Communication_WiFi_Sta_Conn_Security_0014', 0, async function(done) {
         await tryToEnableWifi();
-        var wifiDeviceConfig1 = {
+        let wifiDeviceConfig1 = {
             "ssid": "TEST13",
             "bssid": "",
             "preSharedKey": "ABCDEFGH",
@@ -1031,13 +1028,13 @@ describe('ACTS_WifiTest', function() {
             "randomMacAddr": "11:22:33:44:55:66",
             "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
         };
-        var result1 = wifi.connectToDevice(wifiDeviceConfig1);
+        let result1 = wifi.connectToDevice(wifiDeviceConfig1);
         console.log("[wifi_test] wifi connectToDevice result: " + result1);
         expect(result1).assertTrue();
 
-        var isConnected= wifi.isConnected();
+        let isConnected= wifi.isConnected();
         expect(isConnected).assertFalse();
-        var isRemoved = wifi.removeAllNetwork();
+        let isRemoved = wifi.removeAllNetwork();
         console.info("[wifi_test] check remove configs successfully,result:" + isRemoved);
         expect(isRemoved).assertTrue();
         done()
@@ -1050,7 +1047,7 @@ describe('ACTS_WifiTest', function() {
     */
     it('SUB_Communication_WiFi_Sta_Conn_Security_0015', 0, async function(done) {
         await tryToEnableWifi();
-        var wifiDeviceConfig1 = {
+        let wifiDeviceConfig1 = {
             "ssid": "TEST13",
             "bssid": "",
             "preSharedKey": "ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH1234567",
@@ -1064,13 +1061,13 @@ describe('ACTS_WifiTest', function() {
             "randomMacAddr": "11:22:33:44:55:66",
             "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
         };
-        var result1 = wifi.connectToDevice(wifiDeviceConfig1);
+        let result1 = wifi.connectToDevice(wifiDeviceConfig1);
         console.log("[wifi_test] wifi connectToDevice result: " + result1);
         expect(result1).assertTrue();
         console.info("[wifi_test] check isconnected wifi");
-        var isConnected= wifi.isConnected();
+        let isConnected= wifi.isConnected();
         expect(isConnected).assertFalse();
-        var isRemoved = wifi.removeAllNetwork();
+        let isRemoved = wifi.removeAllNetwork();
         console.info("[wifi_test] check remove configs successfully,result:" + isRemoved);
         expect(isRemoved).assertTrue();
         done()
@@ -1083,7 +1080,7 @@ describe('ACTS_WifiTest', function() {
     */
     it('SUB_Communication_WiFi_Sta_Conn_Info_0003', 0, async function (done) {
         await tryToEnableWifi();
-        var wifiDeviceConfigIp = {
+        let wifiDeviceConfigIp = {
             "ssid": "TEST1",
             "bssid": "",
             "preSharedKey": "123456789",
@@ -1097,17 +1094,17 @@ describe('ACTS_WifiTest', function() {
             "randomMacAddr": "11:22:33:44:55:66",
             "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
         };
-        var result1 = wifi.connectToDevice(wifiDeviceConfigIp);
+        let result1 = wifi.connectToDevice(wifiDeviceConfigIp);
         console.log("[wifi_test] wifi connectToDevice result: " + result1);
         expect(result1).assertTrue();
 
-        var isConnected= wifi.isConnected();
+        let isConnected= wifi.isConnected();
         expect(isConnected).assertFalse();
 
-        var reass= wifi.reassociate();
+        let reass= wifi.reassociate();
         expect(reass).assertTrue();
 
-        var ipInfo = wifi.getIpInfo();
+        let ipInfo = wifi.getIpInfo();
         expect(JSON.stringify(ipInfo)).assertContain("gateway");
         console.info("gateway: " + ipInfo.gateway + "ipAddress: " + ipInfo.ipAddress
          + "leaseDuration: " + ipInfo.leaseDuration + 
@@ -1115,9 +1112,9 @@ describe('ACTS_WifiTest', function() {
         "netmask: " + ipInfo.netmask + "primaryDns:" + ipInfo.primaryDns +
         "secondDns: " + ipInfo.secondDns + "serverIp: " + ipInfo.serverIp );
         
-        var isRemoved = wifi.removeAllNetwork();
+        let isRemoved = wifi.removeAllNetwork();
         expect(isRemoved).assertTrue();
-        var configs = wifi.getDeviceConfigs();
+        let configs = wifi.getDeviceConfigs();
         console.info("[wifi_test]remove config,current get Config : " + JSON.stringify(configs));
         expect(true).assertEqual(configs.length == 0);
         done()
@@ -1142,9 +1139,9 @@ describe('ACTS_WifiTest', function() {
             })
              await promise.then(done)
         });
-        var disable = wifi.disableWifi()
+        let disable = wifi.disableWifi()
         await sleep(5000);
-        var enable = wifi.enableWifi();
+        let enable = wifi.enableWifi();
         await sleep(5000);
         console.log("[wifi_test]  check the state of wifi: " + wifi.isWifiActive());   
         done();  
@@ -1195,7 +1192,7 @@ describe('ACTS_WifiTest', function() {
             })
              await promise.then(done)
          });  
-        var scan = wifi.scan();
+        let scan = wifi.scan();
         await sleep(3000);
         done();  
        
@@ -1251,4 +1248,5 @@ describe('ACTS_WifiTest', function() {
     })
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
+
 
