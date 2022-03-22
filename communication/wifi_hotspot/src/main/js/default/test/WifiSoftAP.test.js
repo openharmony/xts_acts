@@ -29,7 +29,7 @@ async function tryToDisableWifi(){
     console.info("wifi_test/wifi status:" + wifi.isWifiActive());
 }
 
-var WifiSecurityType = {
+let WifiSecurityType = {
     WIFI_SEC_TYPE_INVALID : 0,
     WIFI_SEC_TYPE_OPEN : 1,
     WIFI_SEC_TYPE_WEP : 2,
@@ -37,7 +37,7 @@ var WifiSecurityType = {
     WIFI_SEC_TYPE_SAE : 4,
 }
 
-var HotspotConfig = {
+let HotspotConfig = {
     "ssid": "testWgr",
     "band": 1,
     "preSharedKey": "12345678",
@@ -60,15 +60,15 @@ describe('ACTS_WifiTest', function() {
     */
     it('SUB_Communication_WiFi_Hotspot_Open_0002', 0, async function (done) {
         if (wifi.isWifiActive()) {
-            var disable = wifi.disableWifi();
+            let disable = wifi.disableWifi();
             await sleep(5000);
             expect(disable).assertTrue();
         }
-        var close =wifi.isWifiActive();
+        let close =wifi.isWifiActive();
         console.info("[wifi_test] wifi status result: " + close);
         expect(close).assertFalse();
         if (!wifi.isHotspotActive()) {
-            var on = wifi.enableHotspot();
+            let on = wifi.enableHotspot();
             await sleep(5000);
             expect(on).assertTrue();
         }
@@ -86,16 +86,16 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_Config_0001', 0, async function (done) {
         await tryToDisableWifi();
         if (wifi.isHotspotActive()) {
-            var off = wifi.disableHotspot();
+            let off = wifi.disableHotspot();
             await sleep(3000);
             expect(off).assertTrue();
         }
         console.info("[wifi_test] Hotspot status result -> " + wifi.isHotspotActive());
         expect(wifi.isHotspotActive()).assertFalse();
-        var isSuccess = wifi.setHotspotConfig(HotspotConfig);
+        let isSuccess = wifi.setHotspotConfig(HotspotConfig);
         expect(isSuccess).assertTrue();
 
-        var hotspotConfig = wifi.getHotspotConfig();
+        let hotspotConfig = wifi.getHotspotConfig();
         console.log("[wifi_test] getHotspotConfig  result: " + JSON.stringify(hotspotConfig));
         expect(hotspotConfig.band).assertEqual(1);
         done()
@@ -110,24 +110,24 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_Config_0002', 0, async function (done) {
         await tryToDisableWifi();
         if (wifi.isHotspotActive()) {
-            var off = wifi.disableHotspot();
+            let off = wifi.disableHotspot();
             await sleep(3000);
             expect(off).assertTrue();
         }
         console.info("[wifi_test] Hotspot status result -> " + wifi.isHotspotActive());
-        var HotspotConfig5G = {
+        let HotspotConfig5G = {
             "ssid": "testWgr",
             "band": 2,
             "preSharedKey": "12345678",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 8
         };
-        var isSuccess5 = wifi.setHotspotConfig(HotspotConfig5G);
-        expect(isSuccess5).assertFalse();
+        let isSuccess5 = wifi.setHotspotConfig(HotspotConfig5G);
+        expect(isSuccess5).assertTrue();
 
-        var hotspotConfig5 = wifi.getHotspotConfig();
+        let hotspotConfig5 = wifi.getHotspotConfig();
         console.log("[wifi_test] getHotspotConfig  result: " + JSON.stringify(hotspotConfig5));
-        expect(hotspotConfig5.band).assertEqual(1);
+        expect(hotspotConfig5.band).assertEqual(2);
         done()
     })
 
@@ -140,19 +140,19 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_Config_0003', 0, async function (done) {
         await tryToDisableWifi();
         if (wifi.isHotspotActive()) {
-            var off = wifi.disableHotspot();
+            let off = wifi.disableHotspot();
             await sleep(3000);
             console.info("[wifi_test] disableHotspot result -> " + off);
             expect(off).assertTrue();
         }
-        var HotspotConfig1= {
+        let HotspotConfig1= {
             "ssid": "testWgr",
             "band": 21,
             "preSharedKey": "12345678",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 8
         };
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfig1);
+        let isSuccess1 = wifi.setHotspotConfig(HotspotConfig1);
         console.log("[wifi_test] set invalid band hotspot config  result1:" + isSuccess1);
         expect(isSuccess1).assertFalse();
         done();
@@ -169,31 +169,31 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_Config_0004', 0, async function (done) {
         await tryToDisableWifi();
         if (wifi.isHotspotActive()) {
-            var off = wifi.disableHotspot();
+            let off = wifi.disableHotspot();
             await sleep(5000);
             expect(off).assertTrue();
         }
-        var HotspotConfigM= {
+        let HotspotConfigM= {
             "ssid": "testWgr",
             "band": 1,
             "preSharedKey": "123456789123456789123456789123456789123456789123456789123456789",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 8
         };
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigM);
+        let isSuccess1 = wifi.setHotspotConfig(HotspotConfigM);
         console.log("[wifi_test] set max preSharedKey valid hotspot config  result: " + isSuccess1);
         expect(isSuccess1).assertTrue();
 
-        var HotspotConfigM1= {
+        let HotspotConfigM1= {
             "ssid": "testWgr",
             "band": 1,
             "preSharedKey": "1234567891234567891234567891234567891234567891234567891234567891",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 8
         };
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigM1);
-        expect(isSuccess1).assertFalse();
-        var hotspotConfigS= wifi.getHotspotConfig();
+        let isSuccess2 = wifi.setHotspotConfig(HotspotConfigM1);
+        expect(isSuccess2).assertFalse();
+        let hotspotConfigS= wifi.getHotspotConfig();
         console.log("[wifi_test] getHotspotConfig  result: " + JSON.stringify(hotspotConfigS));
         expect(hotspotConfigS.preSharedKey.length).assertEqual(63);
         done();
@@ -208,39 +208,39 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_Config_0005', 0, async function (done) {
         await tryToDisableWifi();
         if (wifi.isHotspotActive()) {
-            var off = wifi.disableHotspot();
+            let off = wifi.disableHotspot();
             await sleep(5000);
             expect(off).assertTrue();
         }
 
-        var HotspotConfigI= {
+        let HotspotConfigI= {
             "ssid": "testWgr",
             "band": 1,
             "preSharedKey": "12345678",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 8
         };
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigI);
+        let isSuccess1 = wifi.setHotspotConfig(HotspotConfigI);
         expect(isSuccess1).assertTrue();
 
-        var config = wifi.getHotspotConfig();
+        let config = wifi.getHotspotConfig();
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
         console.info("preSharedKey: " + config.preSharedKey);
         expect(config.preSharedKey.length).assertEqual(8);
 
-        var HotspotConfigI2= {
+        let HotspotConfigI2= {
             "ssid": "testWgr",
             "band": 1,
             "preSharedKey": "1234567",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 8
         };
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigI2);
-        expect(isSuccess1).assertFalse();
+        let isSuccess2 = wifi.setHotspotConfig(HotspotConfigI2);
+        expect(isSuccess2).assertFalse();
 
-        var config = wifi.getHotspotConfig();
-        console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
-        expect(config.preSharedKey.length).assertEqual(8);
+        let config1 = wifi.getHotspotConfig();
+        console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config1));
+        expect(config1.preSharedKey.length).assertEqual(8);
         done();
     })
 
@@ -253,35 +253,35 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_Config_0006', 0, async function (done) {
         await tryToDisableWifi();
         if (wifi.isHotspotActive()) {
-            var off = wifi.disableHotspot();
+            let off = wifi.disableHotspot();
             await sleep(5000);
             expect(off).assertTrue();
         }
-        var isHotspotActive = wifi.isHotspotActive();
+        let isHotspotActive = wifi.isHotspotActive();
         console.info("[wifi_test] isHotspotActive -> " + isHotspotActive);
         expect(isHotspotActive).assertFalse();
 
-        var HotspotConfigS= {
+        let HotspotConfigS= {
             "ssid": "testWgr123testWgr123testWgr12356",
             "band": 1,
             "preSharedKey": "12345678",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 8
         };
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigS);
+        let isSuccess1 = wifi.setHotspotConfig(HotspotConfigS);
         expect(isSuccess1).assertTrue();
 
-        var HotspotConfigS1= {
+        let HotspotConfigS1= {
             "ssid": "testWgr123testWgr123testWgr123567",
             "band": 1,
             "preSharedKey": "12345678",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 8
         };
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigS1);
-        console.log("[wifi_test] set 33bit ssid invalid hotspot config  result: " + isSuccess1);
-        expect(isSuccess1).assertFalse();
-        var config = wifi.getHotspotConfig();
+        let isSuccess2 = wifi.setHotspotConfig(HotspotConfigS1);
+        console.log("[wifi_test] set 33bit ssid invalid hotspot config  result: " + isSuccess2);
+        expect(isSuccess2).assertFalse();
+        let config = wifi.getHotspotConfig();
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
         expect(config.ssid.length).assertEqual(32);
         done();
@@ -297,18 +297,18 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_Config_0007', 0, async function(done) {
         await tryToDisableWifi();
         if (wifi.isHotspotActive()) {
-            var off = wifi.disableHotspot();
+            let off = wifi.disableHotspot();
             await sleep(2000);
             expect(off).assertTrue();
         }
-        var HotspotConfigN= {
+        let HotspotConfigN= {
             "ssid": "",
             "band": 1,
             "preSharedKey": "12345678",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 8
         };
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigN);
+        let isSuccess1 = wifi.setHotspotConfig(HotspotConfigN);
         console.log("[wifi_test] set a null ssid invalid hotspot config  result1:" + isSuccess1);
         expect(isSuccess1).assertFalse();
         done();
@@ -322,24 +322,24 @@ describe('ACTS_WifiTest', function() {
     */
     it('SUB_Communication_WiFi_Hotspot_Config_0008', 0, async function(done) {
         if (wifi.isHotspotActive()) {
-            var off = wifi.disableHotspot();
+            let off = wifi.disableHotspot();
             await sleep(3000);
             expect(off).assertTrue();
         }
-        var HotspotConfigC= {
+        let HotspotConfigC= {
             "ssid": "测试123！@#￥%……&*（ ",
             "band": 1,
             "preSharedKey": "12345678",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 8
         };
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigC);
+        let isSuccess1 = wifi.setHotspotConfig(HotspotConfigC);
         expect(isSuccess1).assertTrue();
 
-        var isHotspotActive = wifi.isHotspotActive();
+        let isHotspotActive = wifi.isHotspotActive();
         console.info("[wifi_test] isHotspotActive -> " + isHotspotActive);
         expect(isHotspotActive).assertFalse();
-        var config = wifi.getHotspotConfig();
+        let config = wifi.getHotspotConfig();
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
         expect(true).assertEqual(config.ssid==HotspotConfigC.ssid);
         done();
@@ -354,41 +354,41 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_Config_0009', 0, async function (done) {
         await tryToDisableWifi();
         if (wifi.isHotspotActive()) {
-            var off = wifi.disableHotspot();
+            let off = wifi.disableHotspot();
             await sleep(3000);
             expect(off).assertTrue();
 
         }
-        var HotspotConfigWep= {
+        let HotspotConfigWep= {
             "ssid": "test123",
             "band": 1,
             "preSharedKey": "12345678",
             "securityType":WifiSecurityType.WIFI_SEC_TYPE_WEP,
             "maxConn": 8
         };
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigWep);
+        let isSuccess1 = wifi.setHotspotConfig(HotspotConfigWep);
         console.log("[wifi_test] set a invalid preSharedKey hotspot config  result1: " + isSuccess1);
         expect(isSuccess1).assertFalse();
 
-        var HotspotConfigSAE= {
+        let HotspotConfigSAE= {
             "ssid": "test123",
             "band": 1,
             "preSharedKey": "12345678",
             "securityType":WifiSecurityType.WIFI_SEC_TYPE_SAE,
             "maxConn": 8
         };
-        var isSuccess2 = wifi.setHotspotConfig(HotspotConfigSAE);
+        let isSuccess2 = wifi.setHotspotConfig(HotspotConfigSAE);
         console.log("[wifi_test] set a invalid preSharedKey hotspot config  result1: " + isSuccess2);
         expect(isSuccess2).assertFalse();
 
-        var HotspotConfigC= {
+        let HotspotConfigC= {
             "ssid": "test123",
             "band": 1,
             "preSharedKey": "12345678",
             "securityType":12,
             "maxConn": 8
         };
-        var isSuccess3 = wifi.setHotspotConfig(HotspotConfigC);
+        let isSuccess3 = wifi.setHotspotConfig(HotspotConfigC);
         console.log("[wifi_test] set a invalid preSharedKey hotspot config  result1: " + isSuccess3);
         expect(isSuccess3).assertFalse();
         done();
@@ -404,25 +404,25 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_Config_0010', 0, async function (done) {
         await tryToDisableWifi();
         if (wifi.isHotspotActive()) {
-            var off = wifi.disableHotspot();
+            let off = wifi.disableHotspot();
             await sleep(5000);
             expect(off).assertTrue();
         }
 
-        var HotspotConfigPSK= {
+        let HotspotConfigPSK= {
             "ssid": "test123",
             "band": 1,
             "preSharedKey": "12345678",
             "securityType":WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 8
         }
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigPSK);
+        let isSuccess1 = wifi.setHotspotConfig(HotspotConfigPSK);
         expect(isSuccess1).assertTrue();
-        var config = wifi.getHotspotConfig();
+        let config = wifi.getHotspotConfig();
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
         expect(config.securityType).assertEqual(3);
         console.log("[wifi_test] check the state of Hotspot" );
-        var isHotspotActive = wifi.isHotspotActive();
+        let isHotspotActive = wifi.isHotspotActive();
         console.info("[wifi_test] isHotspotActive -> " + isHotspotActive);
         expect(isHotspotActive).assertFalse();
         done();
@@ -438,22 +438,22 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_Config_0011', 0, async function (done) {
         await tryToDisableWifi();
         if (wifi.isHotspotActive()) {
-            var off = wifi.disableHotspot();
+            let off = wifi.disableHotspot();
             await sleep(5000);
             expect(off).assertTrue();
         }
 
-        var HotspotConfigO= {
+        let HotspotConfigO= {
             "ssid": "test123",
             "band": 1,
             "preSharedKey": "",
             "securityType":WifiSecurityType.WIFI_SEC_TYPE_OPEN,
             "maxConn": 8
         }
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigO);
+        let isSuccess1 = wifi.setHotspotConfig(HotspotConfigO);
         console.log("[wifi_test] set a open preSharedKey hotspot config  result1: " + isSuccess1);
         expect(isSuccess1).assertTrue();
-        var config = wifi.getHotspotConfig();
+        let config = wifi.getHotspotConfig();
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
         expect(config.securityType).assertEqual(1);
         done();
@@ -469,38 +469,38 @@ describe('ACTS_WifiTest', function() {
      it('SUB_Communication_WiFi_Hotspot_Conn_0001', 0, async function (done) {
         await tryToDisableWifi();
         if (wifi.isHotspotActive()) {
-            var off = wifi.disableHotspot();
+            let off = wifi.disableHotspot();
             await sleep(5000);
             expect(off).assertTrue();
 
         }
-        var HotspotConfigI= {
+        let HotspotConfigI= {
             "ssid": "testWgr",
             "band": 1,
             "preSharedKey": "12345678",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 8
         };
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigI);
+        let isSuccess1 = wifi.setHotspotConfig(HotspotConfigI);
         console.log("[wifi_test] set maxConn valid hotspot config  result: " + isSuccess1);
         expect(isSuccess1).assertTrue();
-        var config = wifi.getHotspotConfig();
+        let config = wifi.getHotspotConfig();
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
         expect(config.maxConn).assertEqual(8);
 
-        var HotspotConfigI2= {
+        let HotspotConfigI2= {
             "ssid": "testWgr",
             "band": 1,
             "preSharedKey": "1234567",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 9
         };
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigI2);
-        console.log("[wifi_test] set  more maxConn invalid hotspot config  result: " + isSuccess1);
-        expect(isSuccess1).assertFalse();
-        var config = wifi.getHotspotConfig();
-        console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
-        expect(config.maxConn).assertEqual(8);
+        let isSuccess2 = wifi.setHotspotConfig(HotspotConfigI2);
+        console.log("[wifi_test] set  more maxConn invalid hotspot config  result: " + isSuccess2);
+        expect(isSuccess2).assertFalse();
+        let config1 = wifi.getHotspotConfig();
+        console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config1));
+        expect(config1.maxConn).assertEqual(8);
         done();
     })
 
@@ -513,24 +513,24 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_Config_0012', 0, async function (done) {
         await tryToDisableWifi();
         if (!wifi.isHotspotActive()) {
-            var on = wifi.enableHotspot();
+            let on = wifi.enableHotspot();
             await sleep(5000);
             expect(on).assertTrue();
         }
-        var isHotspotActive = wifi.isHotspotActive();
+        let isHotspotActive = wifi.isHotspotActive();
         console.info("[wifi_test] isHotspotActive -> " + isHotspotActive);
         expect(isHotspotActive).assertTrue();
-        var HotspotConfigWO= {
+        let HotspotConfigWO= {
             "ssid": "WIFITEST",
             "band": 1,
             "preSharedKey": "123456789",
             "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
             "maxConn": 8
         }
-        var isSuccess1 = wifi.setHotspotConfig(HotspotConfigWO);
+        let isSuccess1 = wifi.setHotspotConfig(HotspotConfigWO);
         console.log("[wifi_test] set a psk preSharedKey hotspot config result1: " + isSuccess1);
         expect(isSuccess1).assertTrue();
-        var config = wifi.getHotspotConfig();
+        let config = wifi.getHotspotConfig();
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
         expect(config.ssid).assertEqual('WIFITEST');
         done();
@@ -547,14 +547,14 @@ describe('ACTS_WifiTest', function() {
     it('SUB_Communication_WiFi_Hotspot_Conn_0002', 0, async function (done) {
         await tryToDisableWifi();
         if (!wifi.isHotspotActive()) {
-            var on = wifi.enableHotspot();
+            let on = wifi.enableHotspot();
             await sleep(5000);
             expect(on).assertTrue();
         }
-        var isHotspotActive = wifi.isHotspotActive();
+        let isHotspotActive = wifi.isHotspotActive();
         console.info("[wifi_test] isHotspotActive -> " + isHotspotActive);
         expect(isHotspotActive).assertTrue();
-        var stationInfo = wifi.getStations();
+        let stationInfo = wifi.getStations();
         console.info("[wifi_test] getStations result ->" + JSON.stringify(stationInfo));
         console.info("ssid: " + stationInfo.name +
          "macAddress: " + stationInfo.macAddress + 
@@ -698,5 +698,6 @@ describe('ACTS_WifiTest', function() {
 
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
+
 
 
