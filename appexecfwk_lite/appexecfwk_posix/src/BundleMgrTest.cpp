@@ -32,7 +32,7 @@ static sem_t g_sem;
 static string g_testPath;
 
 extern "C" {
-    void __attribute__((weak)) HOS_SystemInit(void){}
+void __attribute__((weak)) HOS_SystemInit(void) { }
 }
 
 /* callback */
