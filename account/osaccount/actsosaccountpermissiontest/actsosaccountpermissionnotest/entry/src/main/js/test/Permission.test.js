@@ -24,7 +24,7 @@ var commonEventSubscribeInfo = {
 var subscriber;
 var receiveLocalId = -1;
 const TIMEOUT = 2000;
-const TIMEOUTSTART = 10000;
+const TIMEOUTSTART = 20000;
 const OSACCOUNTMAXNUMBER = 999;
 const ERR_OSACCOUNT_KIT_CREATE_OS_ACCOUNT_ERROR = 4587523;
 const ERR_OSACCOUNT_KIT_IS_OS_ACCOUNT_ACTIVED_ERROR = 4587542;
