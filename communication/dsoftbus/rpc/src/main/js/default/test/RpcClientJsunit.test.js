@@ -1763,7 +1763,7 @@ describe('ActsRpcClientJsTest', function(){
             var Capacity = data.getRawDataCapacity()
             console.log("SUB_Softbus_IPC_MessageParcel_7300:run Capacity success, result is " + Capacity);
             var token = new Int8Array([2,1,4,3,129]) ;
-            var result = data.writeRawData(token, token.length);
+            var result = data.writeRawData(token, 149000000);
             console.log("SUB_Softbus_IPC_MessageParcel_7300:run writeRawData success, result is " + result);
             expect(result == false).assertTrue();
             data.reclaim();
@@ -1792,7 +1792,7 @@ describe('ActsRpcClientJsTest', function(){
             var result = data.writeRemoteObject(testRemoteObject);
             console.log("SUB_Softbus_IPC_MessageParcel_7400: result is " + result);
             expect(result == true).assertTrue();
-            
+            data.readRemoteObject()           
         } catch (error) {
             console.log("SUB_Softbus_IPC_MessageParcel_7400:error = " + error);
         }
@@ -2590,42 +2590,39 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it('SUB_Softbus_IPC_MessageParcel_9300', 0, async function(done) {
-        console.info("SUB_Softbus_IPC_MessageParcel_9300")
+        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_9300---------------------------");
         function checkResult(num, str) {
             expect(num).assertEqual(123)
             expect(str).assertEqual("rpcListenerTest")
             done()
         }
+    try{
         let option = new rpc.MessageOption()
         let data = rpc.MessageParcel.create()
         let reply = rpc.MessageParcel.create()
 
-        expect(data.writeInterfaceToken("rpcTestAbility")).assertTrue()
         let listener = new TestListener("rpcListener", checkResult)
         let result = data.writeRemoteObject(listener)
         expect(result == true).assertTrue()
-        let readresult = data.readRemoteObject()
-        expect(readresult == null).assertFalse()
         console.info("SUB_Softbus_IPC_MessageParcel_9300 result is:" + result)
         expect(data.writeInt(123)).assertTrue()
         expect(data.writeString("rpcListenerTest")).assertTrue()
         await gIRemoteObject.sendRequest(CODE_WRITE_REMOTEOBJECT, data, reply, option)
-            .then(function(result) {
+            .then((result)=> {
                 console.info("sendRequest done, error code: " + result.errCode)
                 expect(result.errCode).assertEqual(0)
                 result.reply.readException()
             })
-            .catch(function(e) {
-                console.error("send request got exception: " + e)
-                expect(0).assertEqual(1)
-            })
-            .finally(() => {
+
                 data.reclaim()
                 reply.reclaim()
                 console.log("test done")
-            })
+    } catch(error) {
+            console.log("SUB_Softbus_IPC_MessageParcel_9300: error = " + error);
+        }
             console.log("---------------------end SUB_Softbus_IPC_MessageParcel_9300---------------------------");
-        })
+    })
+    
 
     /*
      * @tc.number  SUB_Softbus_IPC_MessageParcel_9400
@@ -2651,35 +2648,27 @@ describe('ActsRpcClientJsTest', function(){
             let option = new rpc.MessageOption()
             let data = rpc.MessageParcel.create()
             let reply = rpc.MessageParcel.create()
-            expect(data.writeInterfaceToken("rpcTestAbility")).assertTrue()
-            let listeners = [new TestListener("rpcListener4", checkResult),
-            new TestListener("rpcListener5", checkResult),
-            new TestListener("rpcListener6", checkResult)]
+            let listeners = [new TestListener("rpcListener", checkResult),
+            new TestListener("rpcListener2", checkResult),
+            new TestListener("rpcListener3", checkResult)]
             let result = data.writeRemoteObjectArray(listeners)
             expect(result == true).assertTrue()
             console.info("SUB_Softbus_IPC_MessageParcel_9400 result is:" + result)
             expect(data.writeInt(123)).assertTrue()
             expect(data.writeString("rpcListenerTest")).assertTrue()
             await gIRemoteObject.sendRequest(CODE_WRITE_REMOTEOBJECTARRAY_1, data, reply, option)
-            .then( ( result) => {
-                console.info("SUB_Softbus_IPC_MessageParcel_9500:sendRequest done, error code: " + result.errCode)
+            .then((result)=> {
+                console.info("sendRequest done, error code: " + result.errCode)
                 expect(result.errCode).assertEqual(0)
+                result.reply.readException()
             })
-            .catch(function(e) {
-                console.error("SUB_Softbus_IPC_MessageParcel_9400: send request got exception: " + e)
-                expect(0).assertEqual(1)
-            })
-            .finally(() => {
+
                 data.reclaim()
                 reply.reclaim()
                 console.log("test done")
-            })
-            done();
-            data.reclaim();
-            reply.reclaim();
-        }catch(error){
+        } catch(error) {
             console.log("SUB_Softbus_IPC_MessageParcel_9400: error = " + error);
-        }
+            }
         console.log("---------------------end SUB_Softbus_IPC_MessageParcel_9400---------------------------");
     })
 
@@ -2707,37 +2696,28 @@ describe('ActsRpcClientJsTest', function(){
             let option = new rpc.MessageOption()
             let data = rpc.MessageParcel.create()
             let reply = rpc.MessageParcel.create()
-            expect(data.writeInterfaceToken("rpcTestAbility")).assertTrue()
-            let listeners = [new TestListener("rpcListener4", checkResult),
-            new TestListener("rpcListener5", checkResult),
-            new TestListener("rpcListener6", checkResult)]
+            let listeners = [new TestListener("rpcListener", checkResult),
+            new TestListener("rpcListener2", checkResult),
+            new TestListener("rpcListener3", checkResult)]
             let result = data.writeRemoteObjectArray(listeners)
             expect(result == true).assertTrue()
-            let readresult = data.readRemoteObjectArray()
-            expect(readresult == null).assertFalse()
+            data.readRemoteObjectArray()
             console.info("SUB_Softbus_IPC_MessageParcel_9500 result is:" + result)
             expect(data.writeInt(123)).assertTrue()
             expect(data.writeString("rpcListenerTest")).assertTrue()
             await gIRemoteObject.sendRequest(CODE_WRITE_REMOTEOBJECTARRAY_2, data, reply, option)
-            .then( ( result) => {
-                    console.info("SUB_Softbus_IPC_MessageParcel_9500:sendRequest done, error code: " + result.errCode)
-                    expect(result.errCode).assertEqual(0)
-                })
-                .catch(function(e) {
-                    console.error("SUB_Softbus_IPC_MessageParcel_9500: send request got exception: " + e)
-                    expect(0).assertEqual(1)
-                })
-                .finally(() => {
-                    data.reclaim()
-                    reply.reclaim()
-                    console.log("test done")
-                })
-            done();
-            data.reclaim();
-            reply.reclaim();
-        }catch(error){
+            .then((result)=> {
+                console.info("sendRequest done, error code: " + result.errCode)
+                expect(result.errCode).assertEqual(0)
+                result.reply.readException()
+            })
+
+                data.reclaim()
+                reply.reclaim()
+                console.log("test done")
+        } catch(error) {
             console.log("SUB_Softbus_IPC_MessageParcel_9500: error = " + error);
-        }
+            }
         console.log("---------------------end SUB_Softbus_IPC_MessageParcel_9500---------------------------");
     })
 
