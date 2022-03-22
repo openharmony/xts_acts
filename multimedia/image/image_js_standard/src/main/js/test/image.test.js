@@ -2444,6 +2444,7 @@ describe('Image', function () {
             let bufferSize = testimagebuffer.length;
             let offset = 0;
             const incSouce = image.createIncrementalSource(new ArrayBuffer(1));
+            let ret;
             let isFinished = false;
             while (offset < testimagebuffer.length) {
                 console.info('TC_053 0006 ' + testimagebuffer.length);
@@ -2497,6 +2498,7 @@ describe('Image', function () {
             let offset = 0;
             const incSouce = image.createIncrementalSource(new ArrayBuffer(1));
             let isFinished = false;
+            let ret;
             while (offset < testimagebuffer.length) {
                 console.info('TC_053-1 0006 ' + testimagebuffer.length);
                 var oneStep = testimagebuffer.slice(offset, offset + bufferSize);
