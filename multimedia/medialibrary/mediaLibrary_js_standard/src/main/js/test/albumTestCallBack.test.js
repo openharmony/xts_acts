@@ -28,7 +28,7 @@ let allTypefetchOp = {
 };
 let albumCoverUrifetchOp = {
     selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.ALBUM_NAME + '= ?',
-    selectionArgs: ['pictures/','weixin'],
+    selectionArgs: ['Pictures/','weixin'],
 };
 let imageAlbumfetchOp = {
     selections: fileKeyObj.MEDIA_TYPE + '= ?',

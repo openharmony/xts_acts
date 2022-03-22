@@ -63,7 +63,7 @@ describe('fileAssetTestCallback.test.js', async function() {
                     console.info(
                         'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_01  res.bytesRead:'
                         + res.bytesRead);
-                    expect(res.bytesRead > 0).assertTrue();
+                    expect(res.bytesRead >= 0).assertTrue();
                     asset1 = dataList[1];
                     fd1 = await asset1.open('r');
                     let buf2 = new ArrayBuffer(4096);
@@ -74,7 +74,7 @@ describe('fileAssetTestCallback.test.js', async function() {
                                  + write);
                     await asset.close(fd);
                     await asset1.close(fd1);
-                    if (fd > 0 && res.bytesRead > 0 && write > 0) {
+                    if (fd > 0 && res.bytesRead >= 0 && write > 0) {
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_01  success');
                         done();

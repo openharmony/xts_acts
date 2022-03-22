@@ -53,28 +53,28 @@ let getFileCountOneHundredOp = {
 
 let getFirstObjectOp = {
     selections : fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ 'camera/' ],
+    selectionArgs : [ 'Camera/' ],
     order : fileKeyObj.ID + " DESC LIMIT 0,5",
     extendArgs : "",
 }
 
 let getAllObjectLimitOneOp = {
     selections : fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ 'camera/' ],
+    selectionArgs : [ 'Camera/' ],
     order : fileKeyObj.ID + " DESC LIMIT 0,1",
     extendArgs : "",
 }
 
 let getAllObjectLimitTwoOp = {
     selections : fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ 'camera/' ],
+    selectionArgs : [ 'Camera/' ],
     order : fileKeyObj.ID + " DESC LIMIT 0,1",
     extendArgs : "",
 }
 
 let getAllObjectLimitOneHundredOp = {
     selections : fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ 'camera/' ],
+    selectionArgs : [ 'Camera/' ],
     order : fileKeyObj.ID + " DESC LIMIT 0,100",
     extendArgs : "",
 }
@@ -86,7 +86,7 @@ let getFileCountZeroOp = {
 
 let getFileOp = {
     selections : fileKeyObj.DISPLAY_NAME + '= ? AND ' + fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ '01.jpg', 'camera/' ],
+    selectionArgs : [ '01.jpg', 'Camera/' ],
     order : fileKeyObj.ID + " DESC LIMIT 0,100",
     extendArgs : "",
 }
@@ -118,7 +118,7 @@ describe('fetchFileResultCallback.test.js', async function() {
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 004  fail');
                     done();
                 } else {
-                    expect(firstObject.relativePath == 'camera/').assertTrue();
+                    expect(firstObject.relativePath == 'Camera/').assertTrue();
                     fetchFileResult.close();
                     console.info('MediaLibraryTest : FETCHRESULT getFirstObject 004 end');
                     done();
@@ -147,7 +147,7 @@ describe('fetchFileResultCallback.test.js', async function() {
             console.info('MediaLibraryTest : FETCHRESULT getNextObject 005 begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             let firstObject = await fetchFileResult.getFirstObject();
-            expect(firstObject.relativePath == 'camera/').assertTrue();
+            expect(firstObject.relativePath == 'Camera/').assertTrue();
             fetchFileResult.getNextObject(async (error, nextObject) => {
                 if (nextObject == undefined) {
                     expect(false).assertTrue();
@@ -155,7 +155,7 @@ describe('fetchFileResultCallback.test.js', async function() {
                     done();
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 005  fail');
                 } else {
-                    expect(nextObject.relativePath == 'camera/').assertTrue();
+                    expect(nextObject.relativePath == 'Camera/').assertTrue();
                     fetchFileResult.close();
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 005  end');
                     done();
@@ -189,7 +189,7 @@ describe('fetchFileResultCallback.test.js', async function() {
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 006  fail');
                     done();
                 } else {
-                    expect(lastObject.relativePath == 'camera/').assertTrue();
+                    expect(lastObject.relativePath == 'Camera/').assertTrue();
                     fetchFileResult.close();
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 006  end');
                     done();
@@ -223,7 +223,7 @@ describe('fetchFileResultCallback.test.js', async function() {
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 007_01  fail');
                     done();
                 } else {
-                    expect(targetObject.relativePath == 'camera/').assertTrue();
+                    expect(targetObject.relativePath == 'Camera/').assertTrue();
                     fetchFileResult.close();
                     console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_01 end');
                     done();
@@ -255,7 +255,7 @@ describe('fetchFileResultCallback.test.js', async function() {
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 007_02  fail');
                     done();
                 } else {
-                    expect(targetObject.relativePath == 'camera/').assertTrue();
+                    expect(targetObject.relativePath == 'Camera/').assertTrue();
                     fetchFileResult.close();
                     console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_02 end');
                     done();
@@ -288,7 +288,7 @@ describe('fetchFileResultCallback.test.js', async function() {
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 007_03  fail');
                     done();
                 } else {
-                    expect(targetObject.relativePath == 'camera/').assertTrue();
+                    expect(targetObject.relativePath == 'Camera/').assertTrue();
                     fetchFileResult.close();
                     console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_03 end');
                     done();
@@ -487,8 +487,8 @@ describe('fetchFileResultCallback.test.js', async function() {
                         console.info('MediaLibraryTest :firstObject.title:' + firstObject.title);
                     }
 
-                    expect(firstObject.relativePath == 'camera/').assertTrue();
-                    if (firstObject.relativePath != 'camera/') {
+                    expect(firstObject.relativePath == 'Camera/').assertTrue();
+                    if (firstObject.relativePath != 'Camera/') {
                         console.info('MediaLibraryTest :firstObject.relativePath:' + firstObject.relativePath);
                     }
 
@@ -547,8 +547,8 @@ describe('fetchFileResultCallback.test.js', async function() {
                         console.info('MediaLibraryTest :firstObject.albumUri:' + firstObject.albumUri);
                     }
 
-                    expect(firstObject.albumName == 'camera').assertTrue();
-                    if (firstObject.albumName != 'camera') {
+                    expect(firstObject.albumName == 'Camera').assertTrue();
+                    if (firstObject.albumName != 'Camera') {
                         console.info('MediaLibraryTest :firstObject.albumName:' + firstObject.albumName);
                     }
 
