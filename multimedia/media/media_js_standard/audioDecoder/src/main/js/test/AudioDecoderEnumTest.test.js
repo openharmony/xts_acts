@@ -28,7 +28,6 @@ describe('AudioDecoderEnum', function () {
 
     afterEach(function() {
         console.info('afterEach case');
-        wait(2000);
     })
 
     afterAll(function() {

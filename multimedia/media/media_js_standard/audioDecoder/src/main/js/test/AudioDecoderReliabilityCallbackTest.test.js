@@ -538,8 +538,7 @@ describe('AudioDecoderReliabilityCallback', function () {
                 }
             }
             else{
-                writeFile(savepath, outputobject.data, outputobject.length);
-                console.info("write to file success");
+                console.info("not last frame, continue");
             }
             audioDecodeProcessor.freeOutputBuffer(outputobject, () => {
                 console.info('release output success');

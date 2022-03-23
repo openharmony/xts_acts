@@ -136,57 +136,50 @@ describe('VideoDecoderEnum', function () {
     }
     
     /* push inputbuffers into codec  */
-    async function enqueueInputs(){
+    async function enqueueInputs(inputObject) {
         console.info('in case: enqueueInputs in');
-        while (inputQueue.length > 0 && !inputEosFlag) {
-            let inputObject = inputQueue.shift(); 
-            console.log('in case: inputObject.index: ' + inputObject.index);
-            if (frameCountIn < ES_FRAME_SIZE.length) {
-                getContent(inputObject.data, ES_FRAME_SIZE[frameCountIn]);
-                inputObject.timeMs = timestamp;
-                inputObject.offset = 0;
-                inputObject.length = ES_FRAME_SIZE[frameCountIn];
-                console.info('in case: frameCountIn ' + frameCountIn);
-                frameCountIn++;
-                timestamp += 16.67;
-            }
-            if (isCodecData) {
-                inputObject.flags = 8;
-                isCodecData = false;
-                timestamp = 0;
-            } else if (frameCountIn >= ES_FRAME_SIZE.length - 1) {
-                inputObject.flags = 1;
-                inputEosFlag = true;
-            } else {
-                inputObject.flags = 4;
-            }
-            if (frameCountIn == ES_FRAME_SIZE.length / 2) {
-                videoDecodeProcessor.setParameter({
-                    'bitrate': 6400,
-                }).then(() => {
-                    console.info('in case: setParameter success ');
-                }, failCallback).catch(failCatch);
-            }
-            videoDecodeProcessor.pushInputData(inputObject).then(() => {
-                console.info('in case: queueInput success ');
+        console.log('in case: inputObject.index: ' + inputObject.index);
+        if (frameCountIn < ES_FRAME_SIZE.length) {
+            getContent(inputObject.data, ES_FRAME_SIZE[frameCountIn]);
+            inputObject.timeMs = timestamp;
+            inputObject.offset = 0;
+            inputObject.length = ES_FRAME_SIZE[frameCountIn];
+            console.info('in case: frameCountIn ' + frameCountIn);
+            frameCountIn++;
+            timestamp += 16.67;
+        }
+        if (isCodecData) {
+            inputObject.flags = 8;
+            isCodecData = false;
+            timestamp = 0;
+        } else if (frameCountIn >= ES_FRAME_SIZE.length - 1) {
+            inputObject.flags = 1;
+            inputEosFlag = true;
+        } else {
+            inputObject.flags = 4;
+        }
+        if (frameCountIn == ES_FRAME_SIZE.length / 2) {
+            videoDecodeProcessor.setParameter({
+                'bitrate': 6400,
+            }).then(() => {
+                console.info('in case: setParameter success ');
             }, failCallback).catch(failCatch);
         }
+        videoDecodeProcessor.pushInputData(inputObject).then(() => {
+            console.info('in case: queueInput success ');
+        }, failCallback).catch(failCatch);
     }
 
     /* get outputbuffers from codec  */
-    async function dequeueOutputs(nextStep){
-        console.log('outputQueue.length:' + outputQueue.length);
-        while (outputQueue.length > 0){
-            let outputObject = outputQueue.shift();
-            if (outputObject.flags == 1) {
-                nextStep();
-                return;
-            }
-            frameCountOut++;
-            await videoDecodeProcessor.freeOutputBuffer(outputObject).then(() => {
-                console.log('in case: release output count:' + frameCountOut);
-            }, failCallback).catch(failCatch);
+    async function dequeueOutputs(nextStep, outputObject){
+        if (outputObject.flags == 1) {
+            nextStep();
+            return;
         }
+        frameCountOut++;
+        await videoDecodeProcessor.freeOutputBuffer(outputObject).then(() => {
+            console.log('in case: release output count:' + frameCountOut);
+        }, failCallback).catch(failCatch);
     }
 
     function setCallback(nextStep){
@@ -204,8 +197,7 @@ describe('VideoDecoderEnum', function () {
             console.info('in case: inputBufferAvailable inBuffer.flags: '+ inBuffer.flags);
             expect(inBuffer.timeMs !== undefined).assertTrue();
             console.info('in case: inputBufferAvailable inBuffer.timeMs: '+ inBuffer.timeMs);
-            inputQueue.push(inBuffer);
-            await enqueueInputs();
+            enqueueInputs(inBuffer);
         });
 
         videoDecodeProcessor.on('newOutputData', async (outBuffer) => {
@@ -213,8 +205,7 @@ describe('VideoDecoderEnum', function () {
             videoDecodeProcessor.getOutputMediaDescription().then((MediaDescription) => {
                 console.info('get outputMediaDescription : ' + MediaDescription);
             }, failCallback).catch(failCatch);
-            outputQueue.push(outBuffer);
-            await dequeueOutputs(nextStep);
+            dequeueOutputs(nextStep, outBuffer);
         });
 
         videoDecodeProcessor.on('error',(err) => {

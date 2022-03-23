@@ -64,6 +64,8 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
 
     beforeEach(async function() {
         console.info('beforeEach case');
+        await msleep(1000).then(() => {
+        }, failCallback).catch(failCatch);
         videoEncodeProcessor = null;
         mediaTest = null;
         surfaceID = '';
@@ -98,6 +100,11 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
         console.error(`in case error failCatch called,errMessage is ${err.message}`);
         expect(err == undefined).assertTrue();
     }
+
+    function msleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
     function printError(err, expectFail) {
         expect((err != undefined) == expectFail).assertTrue();
         if (expectFail == false && err != undefined) {
@@ -105,6 +112,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
             console.error(`in case error failCatch called,errMessage is ${err.message}`);
         }
     }
+    
     function writeFile(path, buf, len){
         try {
             let writestream = Fileio.createStreamSync(path, 'ab+');
