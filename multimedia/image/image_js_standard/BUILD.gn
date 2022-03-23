@@ -20,7 +20,7 @@ ohos_js_hap_suite("image_js_hap") {
     ":image_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ImageJsTest"
+  hap_name = "ActsImageJsTest"
 }
 ohos_js_assets("image_js_assets") {
   source_dir = "./src/main/js/default"
