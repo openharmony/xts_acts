@@ -14,17 +14,17 @@
 group("telephonyjstest") {
   testonly = true
   deps = [
-    "call_manager:call_manager",
+    # "call_manager:call_manager",
     "cellular_data:cellular_data",
-    "contact_function:ActsContactFunctionEtsTest",
-    "contact_function_merge:ActsContactFunctionMergeEtsTest",
-    "contact_performance:ActsContactPerformanceEtsTest",
-    "contact_stability:ActsContactStabilityEtsTest",
+    #"contact_function:ActsContactFunctionEtsTest",
+    #"contact_function_merge:ActsContactFunctionMergeEtsTest",
+    #"contact_performance:ActsContactPerformanceEtsTest",
+    #"contact_stability:ActsContactStabilityEtsTest",
     "netmanager_http:ActsNetManagerHttpEtsTest",
-    "netmanager_socket:ActsNetManagerSocketEtsTest",
-    "network_search:network_search",
+    # "netmanager_socket:ActsNetManagerSocketEtsTest",
+    # "network_search:network_search",
     "new_add:ActsNewAddEtsTest",
-    "sim:sim",
-    "sms_mms:sms_mms",
+    # "sim:sim",
+    # "sms_mms:sms_mms",
   ]
 }
