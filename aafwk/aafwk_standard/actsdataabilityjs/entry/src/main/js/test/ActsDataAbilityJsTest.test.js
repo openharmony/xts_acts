@@ -727,7 +727,7 @@ it('ACTS_ARelease_0100', 0, async function (done) {
 it("ACTS_Call_0100", 0, async function (done) {
     console.log('ACTS_Call_0100  start......');
     var pacMap = {
-        'group_name': 'test1',
+        'groupName': 'test1',
         'ringtone_modify_time': 28
     };
     var rDAHelper
@@ -735,7 +735,7 @@ it("ACTS_Call_0100", 0, async function (done) {
         rDAHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri);
         console.debug('ACTS_AbeforeAll rDAHelper ====>: ' + rDAHelper + " ,JSON. " + JSON.stringify(rDAHelper));
         expect(typeof (rDAHelper)).assertEqual("object");
-        pacMap.group_name = 'test2';
+        pacMap.groupName = 'test2';
         rDAHelper.call(dataAbilityUri, 'insert', '', pacMap).then((data) => {
             console.info('ACTS_Call_0100 succeeded   data: ' + JSON.stringify(data));
         }).catch((error) => {
@@ -759,10 +759,10 @@ it("ACTS_Call_0100", 0, async function (done) {
  */
 it("ACTS_Call_0200", 0, async function (done) {
     console.log('ACTS_Call_0200 start......');
-    var arg = "{\"equalTo\": \"group_name\"}";
+    var arg = "{\"equalTo\": \"groupName\"}";
     var pacMap = {
-        "group_name": "test1",
-        "columns": "group_name,ringtone_modify_time"
+        "groupName": "test1",
+        "columns": "groupName,ringtone_modify_time"
     };
     var rDAHelper
     try {
@@ -794,7 +794,7 @@ it("ACTS_Call_0300", 0, async function (done) {
     var arg = "{\"equalTo\": \"ringtone_modify_time\"}";
     var pacMap = {
         'ringtone_modify_time': 28,
-        'group_name': 'testupdata1'
+        'groupName': 'testupdata1'
     };
     var rDAHelper
     try {
