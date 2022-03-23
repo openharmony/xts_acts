@@ -19,7 +19,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('AudioEncoderFuncPromise', function () {
     const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/'
-    const AUDIOPATH = RESOURCEPATH + 'S32LE.pcm';
+    const AUDIOPATH = RESOURCEPATH + 'S16LE.pcm';
     let readStreamSync;
     let eosframenum = 0;
     let stopAtEOS = false;
@@ -35,7 +35,7 @@ describe('AudioEncoderFuncPromise', function () {
     let inputQueue = [];
     let outputQueue = [];
     const ES = [0, 4096];
-    let ES_LENGTH = 2000;
+    let ES_LENGTH = 1500;
 
     beforeAll(function() {
         console.info('beforeAll case');
@@ -57,7 +57,7 @@ describe('AudioEncoderFuncPromise', function () {
         sawOutputEOS = false;
         inputQueue = [];
         outputQueue = [];
-        ES_LENGTH = 2000;
+        ES_LENGTH = 1500;
     })
 
     afterEach(function() {
@@ -140,8 +140,8 @@ describe('AudioEncoderFuncPromise', function () {
         console.info("start add ADTS to Packet");
         let packetLen = len + 7; // 7: head length
         let profile = 2; // 2: AAC LC  
-        let freqIdx = 3; // 3: 48000HZ 
-        let chanCfg = 1; // 1: 1 channel
+        let freqIdx = 4; // 4: 44100HZ 
+        let chanCfg = 2; // 2: 2 channel
         view[0] = 0xFF;
         view[1] = 0xF9;
         view[2] = ((profile - 1) << 6) + (freqIdx << 2) + (chanCfg >> 2);
@@ -159,9 +159,12 @@ describe('AudioEncoderFuncPromise', function () {
 
     async function resetWork(audioEncodeProcessor) {
         resetParam();
-        await audioEncodeProcessor.reset().then(() => {
+        await audioEncodeProcessor.reset().then(async() => {
             console.info("case reset success");
             if (needrelease) {
+                await audioEncodeProcessor.release().then(() => {
+                    console.info("case release success");
+                }, failCallback).catch(failCatch);
                 audioEncodeProcessor = null;
             }
         }, failCallback).catch(failCatch);
@@ -309,8 +312,8 @@ describe('AudioEncoderFuncPromise', function () {
             }, failCallback).catch(failCatch);
             await array[j].release().then(() => {
                 console.info("case release success");
-                array[j] = null;
             }, failCallback).catch(failCatch);
+            array[j] = null;
         }
         done();
     })

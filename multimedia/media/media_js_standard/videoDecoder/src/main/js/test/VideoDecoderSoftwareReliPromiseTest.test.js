@@ -179,55 +179,47 @@ describe('VideoDecoderSoftwareReliPromiseTest', function () {
     }
 
     /* push inputbuffers into codec  */
-    async function enqueueInputs() {
-        console.info('in case: enqueueInputs in');
-        while (inputQueue.length > 0 && !inputEosFlag) {
-            let inputObject = inputQueue.shift(); 
-            console.log('in case: inputObject.index: ' + inputObject.index);
-            if (frameCountIn < ES_FRAME_SIZE.length) {
-                getContent(inputObject.data, position, ES_FRAME_SIZE[frameCountIn]);
-                inputObject.timeMs = timestamp;
-                inputObject.offset = 0;
-                inputObject.length = ES_FRAME_SIZE[frameCountIn];
-                position = position + ES_FRAME_SIZE[frameCountIn];
-                console.info('in case: frameCountIn ' + frameCountIn);
-                frameCountIn++;
-                timestamp += 1000 / mediaDescription.frame_rate;
-            }
-            if (isCodecData) {
-                inputObject.flags = 8;
-                isCodecData = false;
-                timestamp = 0;
-            } else if (frameCountIn >= ES_FRAME_SIZE.length || frameCountIn == eosFrameId) {
-                inputObject.flags = 1;
-                inputEosFlag = true;
-            } else {
-                inputObject.flags = 4;
-            }
-            videoDecodeProcessor.pushInputData(inputObject).then(() => {
-                console.info('in case: queueInput success ');
-            }, caseCallback).catch(failCatch);          
+    async function enqueueInputs(inputObject) {
+        console.log('in case: inputObject.index: ' + inputObject.index);
+        if (frameCountIn < ES_FRAME_SIZE.length) {
+            getContent(inputObject.data, position, ES_FRAME_SIZE[frameCountIn]);
+            inputObject.timeMs = timestamp;
+            inputObject.offset = 0;
+            inputObject.length = ES_FRAME_SIZE[frameCountIn];
+            position = position + ES_FRAME_SIZE[frameCountIn];
+            console.info('in case: frameCountIn ' + frameCountIn);
+            frameCountIn++;
+            timestamp += 1000 / mediaDescription.frame_rate;
         }
+        if (isCodecData) {
+            inputObject.flags = 8;
+            isCodecData = false;
+            timestamp = 0;
+        } else if (frameCountIn >= ES_FRAME_SIZE.length || frameCountIn == eosFrameId) {
+            inputObject.flags = 1;
+            inputEosFlag = true;
+        } else {
+            inputObject.flags = 4;
+        }
+        videoDecodeProcessor.pushInputData(inputObject).then(() => {
+            console.info('in case: queueInput success ');
+        }, caseCallback).catch(failCatch);          
     }
 
     /* get outputbuffers from codec  */
-    async function dequeueOutputs(nextStep) {
-        console.log('outputQueue.length:' + outputQueue.length);
-        while (outputQueue.length > 0){
-            let outputObject = outputQueue.shift();
-            if (outputObject.flags == 1 ) {
-                if (workdoneAtEOS) {
-                    await doneWork();
-                    nextStep();
-                }
-                return;
+    async function dequeueOutputs(nextStep, outputObject) {
+        if (outputObject.flags == 1 ) {
+            if (workdoneAtEOS) {
+                await doneWork();
+                nextStep();
             }
-            frameCountOut++;
-            videoDecodeProcessor.renderOutputData(outputObject).then(() => {
-                console.info('in case: release output success');
-                console.log('in case: release output count:' + frameCountOut);
-            }, caseCallback).catch(failCatch);
+            return;
         }
+        frameCountOut++;
+        videoDecodeProcessor.freeOutputBuffer(outputObject).then(() => {
+            console.info('in case: release output success');
+            console.log('in case: release output count:' + frameCountOut);
+        }, caseCallback).catch(failCatch);
     }
     
     function toConfigure(mySteps, done, failureCallback, catchCallback) {
@@ -399,14 +391,12 @@ describe('VideoDecoderSoftwareReliPromiseTest', function () {
     function setCallback(nextStep){
         videoDecodeProcessor.on('needInputData', async (inBuffer) => {
             console.info('in case: inputBufferAvailable inBuffer.index: '+ inBuffer.index);
-            inputQueue.push(inBuffer);
-            await enqueueInputs();
+            enqueueInputs(inBuffer);
         });
 
         videoDecodeProcessor.on('newOutputData', async (outBuffer) => {
             console.info('in case: outputBufferAvailable outBuffer.index: '+ outBuffer.index);
-            outputQueue.push(outBuffer);
-            await dequeueOutputs(nextStep);
+            dequeueOutputs(nextStep, outBuffer);
         });
 
         videoDecodeProcessor.on('error',(err) => {

@@ -19,8 +19,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('AudioEncoderFuncPromise', function () {
     const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/'
-    const AUDIOPATH = RESOURCEPATH + 'S32LE.pcm';
-    const AUDIOPATH2 = RESOURCEPATH + 'S32LE_2.pcm';
+    const AUDIOPATH = RESOURCEPATH + 'S16LE.pcm';
     const BASIC_PATH = RESOURCEPATH + 'results/encode_func_promise_';
     let audioEncodeProcessor;
     let readStreamSync;
@@ -38,7 +37,7 @@ describe('AudioEncoderFuncPromise', function () {
     let inputQueue = [];
     let outputQueue = [];
     const ES = [0, 4096];
-    let ES_LENGTH = 2000;
+    let ES_LENGTH = 1500;
 
     beforeAll(function() {
         console.info('beforeAll case');
@@ -61,7 +60,7 @@ describe('AudioEncoderFuncPromise', function () {
         sawOutputEOS = false;
         inputQueue = [];
         outputQueue = [];
-        ES_LENGTH = 2000;
+        ES_LENGTH = 1500;
     })
 
     afterEach(async function() {
@@ -150,8 +149,8 @@ describe('AudioEncoderFuncPromise', function () {
         console.info("start add ADTS to Packet");
         let packetLen = len + 7; // 7: head length
         let profile = 2; // 2: AAC LC  
-        let freqIdx = 3; // 3: 48000HZ 
-        let chanCfg = 1; // 1: 1 channel
+        let freqIdx = 4; // 4: 44100HZ 
+        let chanCfg = 2; // 2: 2 channel
         view[0] = 0xFF;
         view[1] = 0xF9;
         view[2] = ((profile - 1) << 6) + (freqIdx << 2) + (chanCfg >> 2);
@@ -169,9 +168,12 @@ describe('AudioEncoderFuncPromise', function () {
 
     async function resetWork() {
         resetParam();
-        await audioEncodeProcessor.reset().then(() => {
+        await audioEncodeProcessor.reset().then(async() => {
             console.info("case reset success");
             if (needrelease) {
+                await audioEncodeProcessor.release().then(() => {
+                    console.info("case release success");
+                }, failCallback).catch(failCatch);
                 audioEncodeProcessor = null;
             }
         }, failCallback).catch(failCatch);
@@ -201,7 +203,6 @@ describe('AudioEncoderFuncPromise', function () {
         }, failCallback).catch(failCatch);
         audioEncodeProcessor = null;
     }
-
 
     function sleep(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
@@ -304,14 +305,14 @@ describe('AudioEncoderFuncPromise', function () {
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_00_0100', 0, async function (done) {
         console.info("case test set EOS after last frame and reset");
         let mediaDescription = {
-            "channel_count": 1,
-            "sample_rate": 48000,
-            "audio_sample_format": 3,
+            "channel_count": 2,
+            "sample_rate": 44100,
+            "audio_sample_format": 1,
         }
         let mediaDescription2 = {
             "codec_mime": 'audio/mp4a-latm',
         }
-        let savepath = BASIC_PATH + '0000.es';
+        let savepath = BASIC_PATH + '0000.aac';
         needgetMediaDes = true;
         workdoneAtEOS = true;
         await media.getMediaCapability().then((mediaCaps)  => {
@@ -369,11 +370,11 @@ describe('AudioEncoderFuncPromise', function () {
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0100', 0, async function (done) {
         console.info("case test set EOS manually before last frame and reset");
         let mediaDescription = {
-            "channel_count": 1,
-            "sample_rate": 48000,
-            "audio_sample_format": 3,
+            "channel_count": 2,
+            "sample_rate": 44100,
+            "audio_sample_format": 1,
         }
-        let savepath = BASIC_PATH + '0100.es';
+        let savepath = BASIC_PATH + '0100.aac';
         eosframenum = 500;
         workdoneAtEOS = true;
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
@@ -408,11 +409,11 @@ describe('AudioEncoderFuncPromise', function () {
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0200', 0, async function (done) {
         console.info("case test flush at running state");
         let mediaDescription = {
-            "channel_count": 1,
-            "sample_rate": 48000,
-            "audio_sample_format": 3,
+            "channel_count": 2,
+            "sample_rate": 44100,
+            "audio_sample_format": 1,
         }
-        let savepath = BASIC_PATH + '0200.es';
+        let savepath = BASIC_PATH + '0200.aac';
         workdoneAtEOS = true;
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
             console.info("case create createAudioEncoder success");
@@ -453,11 +454,11 @@ describe('AudioEncoderFuncPromise', function () {
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0300', 0, async function (done) {
         console.info("case test flush at EOS state");
         let mediaDescription = {
-            "channel_count": 1,
-            "sample_rate": 48000,
-            "audio_sample_format": 3,
+            "channel_count": 2,
+            "sample_rate": 44100,
+            "audio_sample_format": 1,
         }
-        let savepath = BASIC_PATH + '0300.es';
+        let savepath = BASIC_PATH + '0300.aac';
         eosframenum = 500;
         flushAtEOS = true;
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
@@ -492,11 +493,11 @@ describe('AudioEncoderFuncPromise', function () {
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0400', 0, async function (done) {
         console.info("case test stop at running state and reset");
         let mediaDescription = {
-            "channel_count": 1,
-            "sample_rate": 48000,
-            "audio_sample_format": 3,
+            "channel_count": 2,
+            "sample_rate": 44100,
+            "audio_sample_format": 1,
         }
-        let savepath = BASIC_PATH + '0400.es';
+        let savepath = BASIC_PATH + '0400.aac';
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
             console.info("case create createAudioEncoder success");
             audioEncodeProcessor = processor;
@@ -542,11 +543,11 @@ describe('AudioEncoderFuncPromise', function () {
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0500', 0, async function (done) {
         console.info("case test stop and restart");
         let mediaDescription = {
-            "channel_count": 1,
-            "sample_rate": 48000,
-            "audio_sample_format": 3,
+            "channel_count": 2,
+            "sample_rate": 44100,
+            "audio_sample_format": 1,
         }
-        let savepath = BASIC_PATH + '0500.es';
+        let savepath = BASIC_PATH + '0500.aac';
         eosframenum = 100;
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
             console.info("case create createAudioEncoder success");
@@ -596,11 +597,11 @@ describe('AudioEncoderFuncPromise', function () {
     it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0600', 0, async function (done) {
         console.info("case test reconfigure for new file with the same format");
         let mediaDescription = {
-            "channel_count": 1,
-            "sample_rate": 48000,
-            "audio_sample_format": 3,
+            "channel_count": 2,
+            "sample_rate": 44100,
+            "audio_sample_format": 1,
         }
-        let savepath = BASIC_PATH + '0600.es';
+        let savepath = BASIC_PATH + '0600.aac';
         eosframenum = 100;
         resetAtEOS = true;
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
@@ -623,9 +624,9 @@ describe('AudioEncoderFuncPromise', function () {
             console.info("case start success");
         }, failCallback).catch(failCatch);
         let mediaDescription2 = {
-            "channel_count": 1,
-            "sample_rate": 48000,
-            "audio_sample_format": 3,
+            "channel_count": 2,
+            "sample_rate": 44100,
+            "audio_sample_format": 1,
         }
         await sleep(10000).then(() => {
             console.info("start configure 2");
@@ -633,9 +634,9 @@ describe('AudioEncoderFuncPromise', function () {
         await audioEncodeProcessor.configure(mediaDescription2).then(() => {
             console.info("configure 2 success");
             resetParam();
-            readFile(AUDIOPATH2);
+            readFile(AUDIOPATH);
         }, failCallback).catch(failCatch);
-        let savepath2 = BASIC_PATH + '0601.es';
+        let savepath2 = BASIC_PATH + '0601.aac';
         workdoneAtEOS = true;
         setCallback(savepath2, done);
         await audioEncodeProcessor.prepare().then(() => {
