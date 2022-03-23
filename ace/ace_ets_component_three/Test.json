@@ -2,7 +2,7 @@
     "description": "Configuration for aceceshi Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "1000000",
+        "test-timeout": "1200000",
         "package": "com.open.harmony.acetestthree",
         "shell-timeout": "60000"
     },
