@@ -12,12 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
 require('./getPermission.test.js')
 require('./albumGetFileAssetsCallback.test.js')
 require('./albumGetFileAssetsPromise.test.js')
-require('./distributedCallback.test.js')
-require('./distributedPromise.test.js')
 require('./favoriteTestCallBack.test.js')
 require('./favoriteTestPromise.test.js')
 require('./fetchFileResultCallBack.test.js')
@@ -34,18 +31,15 @@ require('./filekeyTestCallBack.test.js')
 require('./filekeyTestPromise.test.js')
 require('./fileTestCallBack.test.js')
 require('./fileTestPromise.test.js')
-require('./getAllPeersDeviceTestCallback.test.js')
-require('./getAllPeersDeviceTestPromise.test.js')
-require('./getAllPeersTestCallback.test.js')
-require('./getAllPeersTestPromise.test.js')
 require('./mediaLibraryTestCallBack.test.js')
 require('./mediaLibraryTestPromise.test.js')
 require('./albumTestCallBack.test.js')
 require('./albumTestPromise.test.js')
 require('./mediaLibraryTestPromiseOnOff.test.js')
-
-
-
-
-
+require('./getAllPeersDeviceTestCallback.test.js')
+require('./getAllPeersDeviceTestPromise.test.js')
+require('./getAllPeersTestCallback.test.js')
+require('./getAllPeersTestPromise.test.js')
+require('./distributedCallback.test.js')
+require('./distributedPromise.test.js')
 
