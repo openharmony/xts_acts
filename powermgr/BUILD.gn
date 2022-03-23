@@ -17,7 +17,6 @@ group("powermgr") {
     if (is_standard_system) {
       deps = [
         "powermgrbattery_rk3568:powermgr_battery_test_rk3568",
-        "powermgrbatterystats:powermgr_batterystats_test",
         "powermgrthermal:powermgr_thermal_test",
       ]
     }
@@ -25,7 +24,6 @@ group("powermgr") {
     if (is_standard_system) {
       deps = [
         "powermgrbattery:powermgr_battery_test",
-        "powermgrbatterystats:powermgr_batterystats_test",
         "powermgrthermal:powermgr_thermal_test",
       ]
     }

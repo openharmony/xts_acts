@@ -120,8 +120,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_068
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.require: AR000GH2RV
-     * @tc.author:
      */
     it('SensorJsTest_068', 0, async function (done) {
         sensor.createRotationMatrix(gravity[0], geomagnetic[0], (error, data) => {
@@ -141,8 +139,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_069
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.require: AR000GH2RV
-     * @tc.author:
      */
 
     it('SensorJsTest_069', 0, async function (done) {
@@ -163,8 +159,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_070
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.require: AR000GH2RV
-     * @tc.author:
      */
     it('SensorJsTest_070', 0, async function (done) {
         sensor.getDirection(rotationMatrix[0], (error, data) => {
@@ -186,8 +180,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_071
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.require: AR000GH2RV
-     * @tc.author:
      */
     it('SensorJsTest_071', 0, async function (done) {
         sensor.getDirection(rotationMatrix[1], function (error, data) {
@@ -209,8 +201,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_072
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.require: AR000GH2RV
-     * @tc.author:
      */
     it('SensorJsTest_072', 0, async function (done) {
         sensor.createRotationMatrix(gravity[0], geomagnetic[0]).then((data) => {
@@ -228,8 +218,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_073
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.require: AR000GH2RV
-     * @tc.author:
      */
     it('SensorJsTest_073', 0, async function (done) {
         sensor.createRotationMatrix(gravity[1], geomagnetic[1]).then((data) => {
@@ -247,8 +235,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_074
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.require: AR000GH2RV
-     * @tc.author:
      */
     it('SensorJsTest_074', 0, async function (done) {
         sensor.createRotationMatrix(gravity[2], geomagnetic[2]).then((data) => {
@@ -266,8 +252,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_075
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.require: AR000GH2RN
-     * @tc.author:
      */
     it('SensorJsTest_075', 0, async function (done) {
         sensor.getDirection(rotationMatrix[0]).then((data) => {
@@ -287,8 +271,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_076
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.require: AR000GH2RN
-     * @tc.author:
      */
     it('SensorJsTest_076', 0, async function (done) {
         sensor.getDirection(rotationMatrix[1]).then((data) => {
@@ -308,8 +290,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_077
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.require: AR000GH2RN
-     * @tc.author:
      */
     it('SensorJsTest_077', 0, async function (done) {
         sensor.getDirection([1, 2, 3, 1, 2, 3, 1, 2, 3, 0]).then((data) => {
@@ -337,8 +317,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_078
      * @tc.desc:
-     * @tc.require: AR000GH2SL
-     * @tc.author:
      */
     it('SensorJsTest_078', 0, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_078");
@@ -363,8 +341,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_079
      * @tc.desc:
-     * @tc.require: AR000GH2SL
-     * @tc.author:
      */
     it('SensorJsTest_079', 0, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_079");
@@ -393,8 +369,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_080
      * @tc.desc:
-     * @tc.require: AR000GH2SL
-     * @tc.author:
      */
     it('SensorJsTest_080', 0, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_080");
@@ -423,8 +397,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_081
      * @tc.desc:
-     * @tc.require: AR000GH2SL
-     * @tc.author:
      */
     it('SensorJsTest_081', 0, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_081");
@@ -453,8 +425,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_082
      * @tc.desc:
-     * @tc.require: AR000GH2SL
-     * @tc.author:
      */
     it('SensorJsTest_082', 0, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_082");
@@ -480,8 +450,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_083
      * @tc.desc:
-     * @tc.require: AR000GH2SL
-     * @tc.author:
      */
     it('SensorJsTest_083', 0, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_083");
@@ -505,8 +473,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_084
      * @tc.desc:
-     * @tc.require: AR000GH2SL
-     * @tc.author:
      */
     it('SensorJsTest_084', 0, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_084");
@@ -533,8 +499,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_085
      * @tc.desc:
-     * @tc.require: AR000GH2SL
-     * @tc.author:
      */
     it('SensorJsTest_085', 0, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_085");
@@ -561,8 +525,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_086
      * @tc.desc:
-     * @tc.require: AR000GH2SL
-     * @tc.author:
      */
     it('SensorJsTest_086', 0, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_076");
@@ -589,8 +551,6 @@ describe("SensorJsTest", function () {
      *
      * @tc.name: SensorJsTest_087
      * @tc.desc:
-     * @tc.require: AR000GH2SL
-     * @tc.author:
      */
     it('SensorJsTest_087', 0, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_087");
@@ -621,8 +581,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_088
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2RP
-    * @tc.author:
     */
     it('SensorJsTest_088', 0, async function (done) {
         console.info('SensorJsTest_088 start')
@@ -644,8 +602,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_089
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2RP
-    * @tc.author:
     */
     it('SensorJsTest_089', 0, async function (done) {
         console.info('SensorJsTest_089 start')
@@ -666,8 +622,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_090
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2RP
-    * @tc.author:
     */
     it('SensorJsTest_090', 0, async function (done) {
         console.info('SensorJsTest_090 start')
@@ -689,8 +643,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_091
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2RP
-    * @tc.author:
     */
     it('SensorJsTest_091', 0, async function (done) {
         console.info('SensorJsTest_091 start')
@@ -712,8 +664,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_092
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2RP
-    * @tc.author:
     */
     it('SensorJsTest_092', 0, async function (done) {
         console.info('SensorJsTest_092 start')
@@ -732,8 +682,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_093
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2RP
-    * @tc.author:
     */
     it('SensorJsTest_093', 0, async function (done) {
         console.info('SensorJsTest_093 start')
@@ -755,8 +703,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_094
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2RP
-    * @tc.author:
     */
     it('SensorJsTest_094', 0, async function (done) {
         console.info('SensorJsTest_094 start')
@@ -775,8 +721,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_095
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2RP
-    * @tc.author:
     */
     it('SensorJsTest_095', 0, async function (done) {
         console.info('SensorJsTest_095 start')
@@ -798,8 +742,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_096
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2RP
-    * @tc.author:
     */
     it('SensorJsTest_096', 0, async function (done) {
         console.info('SensorJsTest_096 start')
@@ -820,8 +762,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_097
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2RP
-    * @tc.author:
     */
     it('SensorJsTest_097', 0, async function (done) {
         console.info('SensorJsTest_097 start')
@@ -845,8 +785,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_098
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2RV
-    * @tc.author:
     */
     it('SensorJsTest_098', 0, async function (done) {
         console.info("SensorJsTest_098 start");
@@ -869,8 +807,6 @@ describe("SensorJsTest", function () {
     /*
     * tc.name: SensorJsTest_099
     * tc.desc: Verfication results of the incorrect parameters of test interface.
-    * tc.require: SR000GH2A2
-    * @tc.author:
     */
     it('SensorJsTest_099', 0, async function (done) {
         console.info('SensorJsTest_099 start')
@@ -891,8 +827,6 @@ describe("SensorJsTest", function () {
     /*
     * tc.name: SensorJsTest_100
     * tc.desc: Verfication results of the incorrect parameters of test interface.
-    * tc.require: AR000GH2RV
-    * @tc.author:
     */
     it('SensorJsTest_100', 0, async function (done) {
         console.info('SensorJsTest_100 start')
@@ -915,8 +849,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_101
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2OG
-    * @tc.author:
     */
     it('SensorJsTest_101', 0, async function (done) {
         console.info('SensorJsTest_101 start')
@@ -937,8 +869,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_102
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2OG
-    * @tc.author:
     */
     it('SensorJsTest_102', 0, async function (done) {
         console.info('SensorJsTest_102 start')
@@ -958,8 +888,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_103
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2OG
-    * @tc.author:
     */
     it('SensorJsTest_103', 0, async function (done) {
         console.info('SensorJsTest_103 start')
@@ -979,8 +907,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_104
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2OG
-    * @tc.author:
     */
     it('SensorJsTest_104', 0, async function (done) {
         console.info('SensorJsTest_104 start')
@@ -1000,8 +926,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_105
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2OG
-    * @tc.author:
     */
     it('SensorJsTest_105', 0, async function (done) {
         sensor.getAltitude(0, 100).then((data) => {
@@ -1018,8 +942,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_106
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2OG
-    * @tc.author:
     */
     it('SensorJsTest_106', 0, async function (done) {
         sensor.getAltitude(5, 0).then((data) => {
@@ -1046,8 +968,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_107
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2TR
-    * @tc.author:
     */
     it('SensorJsTest_107', 0, async function (done) {
         console.info("---------------------------SensorJsTest_107----------------------------------");
@@ -1069,8 +989,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_108
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2TR
-    * @tc.author:
     */
     it('SensorJsTest_108', 0, async function (done) {
         console.info("---------------------------SensorJsTest_108----------------------------------");
@@ -1090,8 +1008,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_109
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2TR
-    * @tc.author:
     */
     it("SensorJsTest_109", 0, async function (done) {
         console.info("---------------------------SensorJsTest_109----------------------------------");
@@ -1114,8 +1030,6 @@ describe("SensorJsTest", function () {
     /*
     * @tc.name: SensorJsTest_110
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    * @tc.require: AR000GH2TR
-    * @tc.author:
     */
     it("SensorJsTest_110", 0, async function (done) {
         console.info("---------------------------SensorJsTest_110----------------------------------");
