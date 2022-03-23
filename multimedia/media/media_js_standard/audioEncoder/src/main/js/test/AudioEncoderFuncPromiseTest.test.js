@@ -168,7 +168,7 @@ describe('AudioEncoderFuncPromise', function () {
 
     async function resetWork() {
         resetParam();
-        await audioEncodeProcessor.reset().then(() => {
+        await audioEncodeProcessor.reset().then(async() => {
             console.info("case reset success");
             if (needrelease) {
                 await audioEncodeProcessor.release().then(() => {
