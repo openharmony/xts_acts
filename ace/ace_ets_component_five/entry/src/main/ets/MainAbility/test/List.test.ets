@@ -27,8 +27,6 @@ import shapeClippingJsunit from './ShapeClippingJsunit.test.ets';
 import backgroundAndSizeSettingJsunit from './BackgroundAndSizeSettingJsunit.test.ets';
 import borderJsunit from './BorderJsunit.test.ets';
 import colorGradientJsunit from './ColorGradientJsunit.test.ets';
-import enmusFlexAlignJsunit from './EnmusFlexAlignJsunit.test.ets';
-import enmusVerticalAlignJsunit from './EnmusVerticalAlignJsunit.test.ets';
 import enmusHorizontalAlignJsunit from './EnmusHorizontalAlignJsunit.test.ets';
 
 export default function testsuite() {
@@ -48,6 +46,4 @@ export default function testsuite() {
   backgroundAndSizeSettingJsunit();
   shapeClippingJsunit();
   enmusHorizontalAlignJsunit();
-  enmusFlexAlignJsunit();
-  enmusVerticalAlignJsunit();
 }

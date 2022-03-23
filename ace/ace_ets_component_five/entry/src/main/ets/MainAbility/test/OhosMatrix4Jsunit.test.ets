@@ -42,7 +42,7 @@ export default function ohosMatrix4Jsunit() {
     });
 
     afterEach(async function () {
-      await Utils.sleep(1000);
+      await Utils.sleep(3000);
       console.info("OhosMatrix4 each called");
     });
 
