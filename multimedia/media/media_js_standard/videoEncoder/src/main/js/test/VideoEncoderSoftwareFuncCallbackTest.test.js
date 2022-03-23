@@ -38,8 +38,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         console.info('beforeAll case');
     })
 
-    beforeEach(function() {
+    beforeEach(async function() {
         console.info('beforeEach case');
+        await msleep(1000).then(() => {
+        }, failCallback).catch(failCatch);
         videoEncodeProcessor = null;
         mediaTest = null;
         surfaceID = '';
@@ -72,6 +74,10 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
     let failCatch = function(err) {
         console.error(`in case error failCatch called,errMessage is ${err.message}`);
         expect(err == undefined).assertTrue();
+    }
+
+    function msleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
     function writeFile(path, buf, len){

@@ -65,8 +65,10 @@ describe('videoEncoderReliabilityPromise', function () {
         console.info('beforeAll case');
     })
 
-    beforeEach(function() {
+    beforeEach(async function() {
         console.info('beforeEach case');
+        await msleep(1000).then(() => {
+        }, failCallback).catch(failCatch);
         videoEncodeProcessor = null;
         surfaceID = '';
         outputQueue = [];
@@ -86,8 +88,8 @@ describe('videoEncoderReliabilityPromise', function () {
         if (videoEncodeProcessor != null) {
             await videoEncodeProcessor.release().then(() => {
                 console.info(`case release 1`);
-                videoEncodeProcessor = null;
             }, failCallback).catch(failCatch);
+            videoEncodeProcessor = null;
         }
     })
 
@@ -109,6 +111,10 @@ describe('videoEncoderReliabilityPromise', function () {
     let failCatch = function(err) {
         console.info('case catch err : ' + err);
         expect(err).assertUndefined();
+    }
+
+    function msleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
     function resetParam() {
@@ -1353,7 +1359,7 @@ describe('videoEncoderReliabilityPromise', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0500.es';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
-            JUDGE_EOS, STOP, START, STOP, STOPSTREAM, END);
+            JUDGE_EOS, STOP, START, STOP, STOPSTREAM, RELEASE, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })
