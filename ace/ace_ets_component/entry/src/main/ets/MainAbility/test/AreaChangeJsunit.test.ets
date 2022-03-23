@@ -45,32 +45,6 @@ export default function areaChangeJsunit() {
       console.info("areaChange after each called");
     });
 
-    it('areaChangeTest_0100', 0, async function (done) {
-      console.info('areaChangeTest_0100 START');
-      let strJson = getInspectorByKey('text1');
-      console.info("areaChangeTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("areaChangeTest_0100 component obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.width).assertEqual('42.000000');
-      expect(obj.$attrs.height).assertEqual('23.000000');
-      console.info('areaChangeTest_0100 END');
-      done();
-    });
-
-    it('areaChangeTest_0200', 0, async function (done) {
-      console.info('areaChangeTest_0200 START');
-      let strJson = getInspectorByKey('text2');
-      console.info("areaChangeTest_0200 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("areaChangeTest_0200 component obj is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.width).assertEqual('519.000000');
-      expect(obj.$attrs.height).assertEqual('210.000000');
-      console.info('areaChangeTest_0200 END');
-      done();
-    });
-
     it('areaChangeTest_0300', 0, async function (done) {
       console.info('areaChangeTest_0300 START');
       await Utils.sleep(1000);
