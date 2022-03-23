@@ -75,7 +75,9 @@ function performanceTest3() {
     it('ThermalPerformance_003', 0, function () {
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            thermal.unsubscribeThermalLevel();
+            thermal.unsubscribeThermalLevel(() => {
+                console.info("unsubscribe success.");
+            });
         }
         let waitTime = new Date().getTime() - startTime;
         let avgTime = waitTime; //us
