@@ -26,6 +26,10 @@ let allTypefetchOp = {
     selections: '',
     selectionArgs: [],
 };
+let albumDeletefetchOp = {
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.ALBUM_NAME + '= ?',
+    selectionArgs: ['Pictures/','DeleteAlbumCallback'],
+};
 let albumCoverUrifetchOp = {
     selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.ALBUM_NAME + '= ?',
     selectionArgs: ['Pictures/','weixin'],
@@ -840,7 +844,7 @@ describe('albumTestCallBack.test.js', async function () {
 
      it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_005_01', 0, async function (done) {
         try {
-            const albumList = await media.getAlbums(allTypefetchOp);
+            const albumList = await media.getAlbums(albumDeletefetchOp);
 
             const album = albumList[0];
             let fetchFileResult = await album.getFileAssets(allTypefetchOp);
@@ -926,3 +930,4 @@ describe('albumTestCallBack.test.js', async function () {
     });
     // ------------------------------ 006 test end -------------------------
 });
+
