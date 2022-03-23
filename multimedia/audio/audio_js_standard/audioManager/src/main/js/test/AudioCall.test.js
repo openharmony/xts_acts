@@ -45,8 +45,7 @@ describe('audioCall', function () {
                 console.error('AudioFrameworkRenderLog: Failed to obtain the cache directory. Cause:' + error.message);
             });
         await sleep(200);
-        var mediaDirTemp = path1 + packageName + '/' + packageName + '/assets/entry/resources/rawfile';
-
+		var mediaDirTemp = '/data'
         console.info('AudioFrameworkRenderLog: Resource DIR Path : '+mediaDirTemp);
         return mediaDirTemp;
 
