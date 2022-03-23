@@ -19,8 +19,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import sensor from '@ohos.sensor'
 
 function sleep(NumberMillis) {
-    var now = new Date()
-    var exitTime = now.getTime() + NumberMillis
+    let now = new Date()
+    let exitTime = now.getTime() + NumberMillis
     while (true) {
         now = new Date()
         if (now.getTime > exitTime) {
