@@ -19,6 +19,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe("DeviceUsageStatisticsJsTest", function () {
     beforeAll(function() {
+		
         /*
          * @tc.setup: setup invoked before all testcases
          */
@@ -26,6 +27,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
     })
     
     afterAll(function() {
+		
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
@@ -33,6 +35,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
     })
     
     beforeEach(function() {
+		
         /*
          * @tc.setup: setup invoked before each testcases
          */
@@ -40,6 +43,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
     })
     
     afterEach(function() {
+		
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
@@ -50,7 +54,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      * @tc.name: DeviceUsageStatisticsJsTest001
      * @tc.desc: test isIdleState promise.
      * @tc.type: FUNC
-     * @tc.require: SR000GGTN7 AR000GH89H AR000GH89I AR000GH899
+     * @tc.require:
      */
     it("DeviceUsageStatisticsJsTest001", 0, async function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest001---------------------------');
@@ -72,7 +76,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      * @tc.name: DeviceUsageStatisticsJsTest002
      * @tc.desc: test isIdleState callback.
      * @tc.type: FUNC
-     * @tc.require: SR000GGTN7 AR000GH89E AR000GH89F AR000GH89G
+     * @tc.require:
      */
     it("DeviceUsageStatisticsJsTest002", 0, async function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest002---------------------------');
@@ -96,7 +100,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      * @tc.name: DeviceUsageStatisticsJsTest003
      * @tc.desc: test queryAppUsagePriorityGroup promise.
      * @tc.type: FUNC
-     * @tc.require: SR000GGTN7 AR000GH89H AR000GH89I AR000GH899
+     * @tc.require:
      */
     it("DeviceUsageStatisticsJsTest003", 0, async function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest003---------------------------');
@@ -117,7 +121,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      * @tc.name: DeviceUsageStatisticsJsTest004
      * @tc.desc: test queryAppUsagePriorityGroup callback.
      * @tc.type: FUNC
-     * @tc.require: SR000GGTN7 AR000GH89E AR000GH89F AR000GH89G
+     * @tc.require:
      */
     it("DeviceUsageStatisticsJsTest004", 0, async function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest004---------------------------');
@@ -140,7 +144,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      * @tc.name: DeviceUsageStatisticsJsTest005
      * @tc.desc: test queryBundleActiveStates promise.
      * @tc.type: FUNC
-     * @tc.require: SR000GGTN7 AR000GH89H AR000GH89I AR000GH899
+     * @tc.require:
      */
     it("DeviceUsageStatisticsJsTest005", 0, async function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest005---------------------------');
@@ -163,7 +167,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      * @tc.name: DeviceUsageStatisticsJsTest006
      * @tc.desc: test queryBundleActiveStates callback.
      * @tc.type: FUNC
-     * @tc.require: SR000GGTN7 AR000GH89E AR000GH89F AR000GH89G
+     * @tc.require:
      */
     it("DeviceUsageStatisticsJsTest006", 0, async function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest006---------------------------');
@@ -188,7 +192,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      * @tc.name: DeviceUsageStatisticsJsTest007
      * @tc.desc: test queryBundleStateInfos promise.
      * @tc.type: FUNC
-     * @tc.require: SR000GGTN7 AR000GH89H AR000GH89I AR000GH899
+     * @tc.require:
      */
     it("DeviceUsageStatisticsJsTest007", 0, async function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest007---------------------------');
@@ -211,7 +215,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      * @tc.name: DeviceUsageStatisticsJsTest008
      * @tc.desc: test queryBundleStateInfos callback.
      * @tc.type: FUNC
-     * @tc.require: SR000GGTN7 AR000GH89E AR000GH89F AR000GH89G
+     * @tc.require:
      */
     it("DeviceUsageStatisticsJsTest008", 0, async function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest008---------------------------');
@@ -236,7 +240,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      * @tc.name: DeviceUsageStatisticsJsTest009
      * @tc.desc: test queryCurrentBundleActiveStates promise.
      * @tc.type: FUNC
-     * @tc.require: SR000GGTN7 AR000GH89H AR000GH89I AR000GH899
+     * @tc.require:
      */
     it("DeviceUsageStatisticsJsTest009", 0, async function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest009---------------------------');
@@ -259,7 +263,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      * @tc.name: DeviceUsageStatisticsJsTest010
      * @tc.desc: test queryCurrentBundleActiveStates callback.
      * @tc.type: FUNC
-     * @tc.require: SR000GGTN7 AR000GH89E AR000GH89F AR000GH89G
+     * @tc.require:
      */
     it("DeviceUsageStatisticsJsTest010", 0, async function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest010---------------------------');
@@ -284,7 +288,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      * @tc.name: DeviceUsageStatisticsJsTest011
      * @tc.desc: test queryBundleStateInfoByInterval promise.
      * @tc.type: FUNC
-     * @tc.require: SR000GGTN7 AR000GH89H AR000GH89I AR000GH899
+     * @tc.require:
      */
     it("DeviceUsageStatisticsJsTest011", 0, async function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest011---------------------------');
@@ -308,7 +312,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
      * @tc.name: DeviceUsageStatisticsJsTest012
      * @tc.desc: test queryBundleStateInfoByInterval callback.
      * @tc.type: FUNC
-     * @tc.require: SR000GGTN7 AR000GH89E AR000GH89F AR000GH89G
+     * @tc.require:
      */
     it("DeviceUsageStatisticsJsTest012", 0, async function (done) {
         console.info('----------------------DeviceUsageStatisticsJsTest012---------------------------');
