@@ -60,7 +60,7 @@ describe('AudioEncoderFuncCallback', function () {
         sawOutputEOS = false;
         inputQueue = [];
         outputQueue = [];
-        ES_LENGTH = 2000;
+        ES_LENGTH = 1500;
     })
 
     afterEach(async function() {
@@ -309,7 +309,7 @@ describe('AudioEncoderFuncCallback', function () {
         let mediaDescription2 = {
             "codec_mime": 'audio/mp4a-latm',
         }
-        let savepath = BASIC_PATH + 'callback0000.aac';
+        let savepath = BASIC_PATH + '0000.aac';
         needGetMediaDes = true;
         workdoneAtEOS = true;
         eventEmitter.on('getAudioEncoderCaps', () => {
@@ -389,7 +389,7 @@ describe('AudioEncoderFuncCallback', function () {
             "sample_rate": 44100,
             "audio_sample_format": 1,
         }
-        let savepath = BASIC_PATH + 'callback0100.aac';
+        let savepath = BASIC_PATH + '0100.aac';
         eosframenum = 500;
         workdoneAtEOS = true;
         eventEmitter.on('getAudioEncoderCaps', () => {
@@ -447,7 +447,7 @@ describe('AudioEncoderFuncCallback', function () {
             "sample_rate": 44100,
             "audio_sample_format": 1,
         }
-        let savepath = BASIC_PATH + 'callback0200.aac';
+        let savepath = BASIC_PATH + '0200.aac';
         workdoneAtEOS = true;
         eventEmitter.on('getAudioEncoderCaps', () => {
             audioEncodeProcessor.getAudioEncoderCaps((err, Audiocaps) => {
@@ -513,7 +513,7 @@ describe('AudioEncoderFuncCallback', function () {
             "sample_rate": 44100,
             "audio_sample_format": 1,
         }
-        let savepath = BASIC_PATH + 'callback0300.aac';
+        let savepath = BASIC_PATH + '0300.aac';
         eosframenum = 500;
         flushAtEOS = true;
         eventEmitter.on('getAudioEncoderCaps', () => {
@@ -571,7 +571,7 @@ describe('AudioEncoderFuncCallback', function () {
             "sample_rate": 44100,
             "audio_sample_format": 1,
         }
-        let savepath = BASIC_PATH + 'callback0400.aac';
+        let savepath = BASIC_PATH + '0400.aac';
         eventEmitter.on('getAudioEncoderCaps', () => {
             audioEncodeProcessor.getAudioEncoderCaps((err, Audiocaps) => {
                 expect(err).assertUndefined();
@@ -653,7 +653,7 @@ describe('AudioEncoderFuncCallback', function () {
             "sample_rate": 44100,
             "audio_sample_format": 1,
         }
-        let savepath = BASIC_PATH + 'callback0500.aac';
+        let savepath = BASIC_PATH + '0500.aac';
         eosframenum = 100;
         eventEmitter.on('getAudioEncoderCaps', () => {
             audioEncodeProcessor.getAudioEncoderCaps((err, Audiocaps) => {
@@ -732,7 +732,7 @@ describe('AudioEncoderFuncCallback', function () {
             "sample_rate": 44100,
             "audio_sample_format": 1,
         }
-        let savepath = BASIC_PATH + 'callback0600.aac';
+        let savepath = BASIC_PATH + '0600.aac';
         eosframenum = 100;
         resetAtEOS = true;
         let mediaDescription2 = {
@@ -781,7 +781,7 @@ describe('AudioEncoderFuncCallback', function () {
                     console.info(`case configure 2`);
                     resetParam();
                     readFile(AUDIOPATH)
-                    savepath = BASIC_PATH + 'callback0601.aac';
+                    savepath = BASIC_PATH + '0601.aac';
                     workdoneAtEOS = true;
                     hasreconfigured = true;
                     eventEmitter.emit('prepare');
