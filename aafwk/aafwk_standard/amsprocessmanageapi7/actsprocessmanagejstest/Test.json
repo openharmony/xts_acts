@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAmsProcessManageJsTestApi7.hap"
+                "ActsAmsProcessManageJsApi7Test.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

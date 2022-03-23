@@ -13,8 +13,8 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAmsProcessManageJsTestApi7") {
-  hap_name = "ActsAmsProcessManageJsTestApi7"
+ohos_js_hap_suite("ActsAmsProcessManageJsApi7Test") {
+  hap_name = "ActsAmsProcessManageJsApi7Test"
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":hjs_demo_js_assets",
