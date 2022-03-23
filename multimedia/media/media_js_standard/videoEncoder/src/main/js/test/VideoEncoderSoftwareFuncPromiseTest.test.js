@@ -37,7 +37,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
         console.info('beforeAll case');
     })
 
-    beforeEach(function() {
+    beforeEach(async function() {
         console.info('beforeEach case');
         await msleep(1000).then(() => {
         }, failCallback).catch(failCatch);
