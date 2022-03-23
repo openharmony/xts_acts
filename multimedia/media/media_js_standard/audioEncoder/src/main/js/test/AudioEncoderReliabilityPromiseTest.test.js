@@ -17,9 +17,9 @@ import media from '@ohos.multimedia.media'
 import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-describe('AudioEncoderSTTPromise', function () {
+describe('AudioEncoderReliabilityPromise', function () {
     const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/'
-    const AUDIOPATH = RESOURCEPATH + 'S32LE.pcm';
+    const AUDIOPATH = RESOURCEPATH + 'S16LE.pcm';
     const BASIC_PATH = RESOURCEPATH + 'results/encode_reliability_promise_';
     const END = 0;
     const CONFIGURE = 1;
@@ -54,9 +54,9 @@ describe('AudioEncoderSTTPromise', function () {
     let ES_LENGTH = 200;
     let mime = 'audio/mp4a-latm';
     let mediaDescription = {
-                "channel_count": 1,
-                "sample_rate": 48000,
-                "audio_sample_format": 3,
+                "channel_count": 2,
+                "sample_rate": 44100,
+                "audio_sample_format": 1,
     };
     let expectError = false;
 
@@ -88,8 +88,8 @@ describe('AudioEncoderSTTPromise', function () {
         if (audioEncodeProcessor != null) {
             await audioEncodeProcessor.release().then(() => {
                 console.info('audioEncodeProcessor release success');
-                audioEncodeProcessor = null;
             }, failCallback).catch(failCatch);
+            audioEncodeProcessor = null;
         }
     })
 
@@ -183,8 +183,8 @@ describe('AudioEncoderSTTPromise', function () {
         console.info("start add ADTS to Packet");
         let packetLen = len + 7; // 7: head length
         let profile = 2; // 2: AAC LC  
-        let freqIdx = 3; // 3: 48000HZ 
-        let chanCfg = 1; // 1: 1 channel
+        let freqIdx = 4; // 4: 44100HZ 
+        let chanCfg = 2; // 2: 2 channel
         view[0] = 0xFF;
         view[1] = 0xF9;
         view[2] = ((profile - 1) << 6) + (freqIdx << 2) + (chanCfg >> 2);
@@ -391,9 +391,7 @@ describe('AudioEncoderSTTPromise', function () {
                 }
             }
             else{
-                writeHead(savepath, outputobject.length);
-                writeFile(savepath, outputobject.data, outputobject.length);
-                console.info("write to file success");
+                console.info("not last frame, continue");
             }
             audioEncodeProcessor.freeOutputBuffer(outputobject).then(() => {
                 console.info('release output success');

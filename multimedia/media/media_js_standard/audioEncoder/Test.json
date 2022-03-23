@@ -1,5 +1,5 @@
 {
-    "description": "Configuration for audioPlayer Tests",
+    "description": "Configuration for audioEncoder Tests",
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "2000000",
@@ -19,8 +19,7 @@
             "pre-push": [
             ],
             "push": [
-                "./resource/audio/audioEncode/S32LE.pcm ->/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/",
-                "./resource/audio/audioEncode/S32LE_2.pcm ->/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/"
+                "./resource/audio/audioEncode/S16LE.pcm ->/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/"
             ]
         },
         {

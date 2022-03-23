@@ -1,5 +1,5 @@
 {
-    "description": "Configuration for videoPlayer Tests",
+    "description": "Configuration for videoEncoder Tests",
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "2000000",
