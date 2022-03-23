@@ -17,7 +17,6 @@ import appearJsunit from './AppearJsunit.test.ets';
 import areaChangeJsunit from './AreaChangeJsunit.test.ets';
 import ellipseJsunit from './EllipseJsunit.test.ets';
 import enableJsunit from './EnableJsunit.test.ets';
-import flexJsunit from './FlexJsunit.test.ets';
 import gaugeJsunit from './GaugeJsunit.test.ets';
 import globalJsunit from './GlobalJsunit.test.ets';
 import girdContainerJsunit from './GridContainerJsunit.test.ets';
@@ -34,16 +33,13 @@ import touchAbleJsunit from './TouchAbleJsunit.test.ets';
 import touchJsunit from './TouchJsunit.test.ets';
 import visibilityJsunit from './VisibilityJsunit.test.ets';
 import zIndexJsunit from './ZIndexJsunit.test.ets';
-import columnJsunit from './ColumnJsunit.test.ets';
 
 export default function testsuite() {
   touchAbleJsunit();
-  columnJsunit();
   enableJsunit();
   appearJsunit();
   zIndexJsunit();
   ellipseJsunit();
-  flexJsunit();
   gaugeJsunit();
   globalJsunit();
   visibilityJsunit();

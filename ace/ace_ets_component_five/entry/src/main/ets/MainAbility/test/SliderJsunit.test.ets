@@ -31,7 +31,7 @@ export default function sliderJsunit() {
         if (!("slider" == pages.name)) {
           console.info("get slider success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await Utils.sleep(3000);
           console.info("push slider page success " + JSON.stringify(result));
         }
       } catch (err) {

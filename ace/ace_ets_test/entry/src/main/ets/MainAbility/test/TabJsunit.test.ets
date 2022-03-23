@@ -83,24 +83,6 @@ export default function tabJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0520
-     * @tc.name      tabTest002
-     * @tc.desc      aceEtsTest
-     */
-    it('tabTest002', 0, async function (done) {
-      console.info('++++++++++++++++ Tab TestCase 2 START ++++++++++++++++');
-      let strJson = getInspectorByKey('tabcontent');
-      let obj = JSON.parse(strJson);
-      console.info("get inspector value is: " + JSON.stringify(obj));
-      console.log(JSON.stringify(obj.$type))
-      console.log(JSON.stringify(obj.$attrs.tabBar))
-      expect(obj.$type).assertEqual('TabContent')
-      expect(obj.$attrs.tabBar).assertEqual('yellow')
-      console.info('++++++++++++++++ Tab TestCase 2 End ++++++++++++++++');
-      done();
-    });
-
-    /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_0530
      * @tc.name      tabTest003
      * @tc.desc      aceEtsTest
