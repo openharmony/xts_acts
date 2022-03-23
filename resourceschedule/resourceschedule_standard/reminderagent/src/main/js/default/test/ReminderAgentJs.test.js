@@ -107,10 +107,10 @@ describe('ReminderAgentTest', function () {
 
   /**
    * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_003
-   * @tc.name      testAddNotificationSlotNorFun001
+   * @tc.name      testAddNotificationSlotNorFun003
    * @tc.desc      Adds a reminder notification slot with the callback function.
    */
-  it('testAddNotificationSlotNorFun001', 0, async function (done) {
+  it('testAddNotificationSlotNorFun003', 0, async function (done) {
     function reminderCallback(err, data) {
       let i = 0;
       expect(0).assertEqual(i);
@@ -121,10 +121,10 @@ describe('ReminderAgentTest', function () {
 
   /**
    * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_004
-   * @tc.name      testAddNotificationSlotNorFun002
+   * @tc.name      testAddNotificationSlotNorFun004
    * @tc.desc      Adds a reminder notification slot with the promise function and null mySlot.
    */
-    it('testAddNotificationSlotNorFun002', 0, async function (done) {
+    it('testAddNotificationSlotNorFun004', 0, async function (done) {
       let mySlot = null;
       try {
         reminderAgent.addNotificationSlot(mySlot,function(err) {
@@ -145,10 +145,10 @@ describe('ReminderAgentTest', function () {
   
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_005
-     * @tc.name      testAddNotificationSlotNorFun003
+     * @tc.name      testAddNotificationSlotNorFun005
      * @tc.desc      Adds a reminder notification slot with the promise function and mySlot type 3.
      */
-    it('testAddNotificationSlotNorFun003', 0, async function (done) {
+    it('testAddNotificationSlotNorFun005', 0, async function (done) {
       let mySlot = {
         type: 3
       }
@@ -158,7 +158,7 @@ describe('ReminderAgentTest', function () {
           done();
         }, 500);
       }, (error) => {
-        expect(false).assertTrue();
+        expect(true).assertTrue();
         setTimeout(() => {
           done();
         }, 500);
@@ -167,10 +167,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_006
-     * @tc.name      testAddNotificationSlotNorFun004
+     * @tc.name      testAddNotificationSlotNorFun006
      * @tc.desc      Adds a reminder notification slot with the promise function and mySlot more types.
      */
-    it('testAddNotificationSlotNorFun004', 0, async function (done) {
+    it('testAddNotificationSlotNorFun006', 0, async function (done) {
       let mySlot0 = {
         type: 0
       }
@@ -205,10 +205,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_007
-     * @tc.name      testGetValidRemindersNorFun001
+     * @tc.name      testGetValidRemindersNorFun007
      * @tc.desc      Obtains all valid remindeers set by the current application. 
      */
-    it('testGetValidRemindersNorFun001', 0, async function (done) {
+    it('testGetValidRemindersNorFun007', 0, async function (done) {
       let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -228,10 +228,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_008
-     * @tc.name      testCancelAllRemindersNorFun001
+     * @tc.name      testCancelAllRemindersNorFun008
      * @tc.desc      test cancel all reminders can cancel all exist reminders
      */
-    it('testCancelAllRemindersNorFun001', 0, async function (done) {
+    it('testCancelAllRemindersNorFun008', 0, async function (done) {
       let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -251,10 +251,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_009
-     * @tc.name      testCancelRemindersNorFun001
+     * @tc.name      testCancelRemindersNorFun009
      * @tc.desc      test cancelReminder with not exit reminder.
      */
-    it('testCancelRemindersNorFun001', 0, async function (done) {
+    it('testCancelRemindersNorFun009', 0, async function (done) {
       let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -284,10 +284,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_010
-     * @tc.name      testCancelRemindersNorFun002
+     * @tc.name      testCancelRemindersNorFun010
      * @tc.desc      test cancel reminder with not exit reminder.
      */
-    it('testCancelRemindersNorFun002', 0, async function (done) {
+    it('testCancelRemindersNorFun010', 0, async function (done) {
       let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -317,10 +317,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_011
-     * @tc.name      testCancelRemindersNorFun003
+     * @tc.name      testCancelRemindersNorFun011
      * @tc.desc      test cancel reminder with exist reminder.
      */
-    it('testCancelRemindersNorFun003', 0, async function (done) {
+    it('testCancelRemindersNorFun011', 0, async function (done) {
       let alarm = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
         hour: 21,
@@ -354,10 +354,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_012
-     * @tc.name      testCancelRemindersNorFun004
+     * @tc.name      testCancelRemindersNorFun012
      * @tc.desc      test cancel reminder with exist reminder with the promise function.
      */
-    it('testCancelRemindersNorFun004', 0, async function (done) {
+    it('testCancelRemindersNorFun012', 0, async function (done) {
       let alarm = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
         hour: 21,
@@ -391,18 +391,18 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_013
-     * @tc.name      testGetValidRemindersNorFun002
+     * @tc.name      testGetValidRemindersNorFun013
      * @tc.desc      test get valid reminders verify all the information is correct.
      */
-    it('testGetValidRemindersNorFun002', 0, async function (done) {
-      var alarm = {
+    it('testGetValidRemindersNorFun013', 0, async function (done) {
+      let alarm = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
         hour: 21,
         minute: 14,
         title: "this is title",
         content: "this is content"
       }
-      var timer = {
+      let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
       }
@@ -421,18 +421,18 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_014
-     * @tc.name      testGetValidRemindersNorFun003
+     * @tc.name      testGetValidRemindersNorFun014
      * @tc.desc      test get valid reminders verify all the information is correct with the callback function.
      */
-    it('testGetValidRemindersNorFun003', 0, async function (done) {
-      var alarm = {
+    it('testGetValidRemindersNorFun014', 0, async function (done) {
+      let alarm = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
         hour: 21,
         minute: 14,
         title: "this is title",
         content: "this is content"
       }
-      var timer = {
+      let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
       }
@@ -451,10 +451,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_015
-     * @tc.name      testRemonveNotificationSlotNorFun001
+     * @tc.name      testRemonveNotificationSlotNorFun015
      * @tc.desc      test remove notification Slot with not exist slot.
      */
-    it('testRemonveNotificationSlotNorFun001', 0, async function (done) {
+    it('testRemonveNotificationSlotNorFun015', 0, async function (done) {
       function reminderCallback(err, data) {
         let i = 0;
         expect(0).assertEqual(i);
@@ -465,10 +465,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_016
-     * @tc.name      testRemonveNotificationSlotNorFun002
+     * @tc.name      testRemonveNotificationSlotNorFun016
      * @tc.desc      test remove notification Slot with not exist slot with the promise function.
      */
-    it('testRemonveNotificationSlotNorFun002', 0, async function (done) {
+    it('testRemonveNotificationSlotNorFun016', 0, async function (done) {
       let promise = new Promise((resolve, reject) => {
         reminderAgent.removeNotificationSlot(1).then(() => {
           resolve();
@@ -485,10 +485,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_017
-     * @tc.name      testRemonveNotificationSlotNorFun003
+     * @tc.name      testRemonveNotificationSlotNorFun017
      * @tc.desc      test remove notification Slot with exist slot.
      */
-    it('testRemonveNotificationSlotNorFun003', 0, async function (done) {
+    it('testRemonveNotificationSlotNorFun017', 0, async function (done) {
       let tarRemoveSlot = {
         type: 1
       }
@@ -502,10 +502,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_018
-     * @tc.name      testRemonveNotificationSlotNorFun004
+     * @tc.name      testRemonveNotificationSlotNorFun018
      * @tc.desc      test remove notification Slot with exist slot with the promise function.
      */
-    it('testRemonveNotificationSlotNorFun004', 0, async function (done) {
+    it('testRemonveNotificationSlotNorFun018', 0, async function (done) {
       let tarRemoveSlot = {
         type: 1
       }
@@ -519,10 +519,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_019
-     * @tc.name      testGetValidRemindersNorFun004
+     * @tc.name      testGetValidRemindersNorFun019
      * @tc.desc      test get valid reminders with promise function.
      */
-    it('testGetValidRemindersNorFun004', 0, async function (done) {
+    it('testGetValidRemindersNorFun019', 0, async function (done) {
       let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: 3
@@ -538,10 +538,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_020
-     * @tc.name      testGetValidRemindersNorFun005
+     * @tc.name      testGetValidRemindersNorFun020
      * @tc.desc      test get valid reminders with the callback function.
      */
-    it('testGetValidRemindersNorFun005', 0, async function (done) {
+    it('testGetValidRemindersNorFun020', 0, async function (done) {
       let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: 3
@@ -557,10 +557,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_021
-     * @tc.name      testPublishReminderNorAlarmFun001
+     * @tc.name      testPublishReminderNorAlarmFun021
      * @tc.desc      test publish reminder with a nomal alarm promise function.
      */
-    it('testPublishReminderNorAlarmFun001', 0, async function (done) {
+    it('testPublishReminderNorAlarmFun021', 0, async function (done) {
       let alarm = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
         hour: 21,
@@ -577,10 +577,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_022
-     * @tc.name      testPublishReminderNorAlarmFun002
+     * @tc.name      testPublishReminderNorAlarmFun022
      * @tc.desc      test publish reminder with a nomal alarm callback function.
      */
-    it('testPublishReminderNorAlarmFun002', 0, async function (done) {
+    it('testPublishReminderNorAlarmFun022', 0, async function (done) {
       let alarm = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
         hour: 21,
@@ -598,10 +598,10 @@ describe('ReminderAgentTest', function () {
 
     /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_023
-     * @tc.name      testPublishReminderAbNorFun001
+     * @tc.name      testPublishReminderAbNorFun023
      * @tc.desc      test publish reminder with max number limit of each application.
      */
-    it('testPublishReminderAbNorFun001', 0, async function (done) {
+    it('testPublishReminderAbNorFun023', 0, async function (done) {
       let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -631,10 +631,10 @@ describe('ReminderAgentTest', function () {
 
        /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_024
-     * @tc.name      testReminderTypeCalendarFun001
+     * @tc.name      testReminderTypeCalendarFun024
      * @tc.desc      test cancelAllReminders can cancel all exist reminders with type of calendar.
      */
-      it('testReminderTypeCalendarFun001', 0, async function (done) {
+      it('testReminderTypeCalendarFun024', 0, async function (done) {
         let timer = {
           reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
           triggerTimeInSeconds: 100
@@ -663,10 +663,10 @@ describe('ReminderAgentTest', function () {
 
      /**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_025
-     * @tc.name      testPublishReminderTypeCalendarFun001
+     * @tc.name      testPublishReminderTypeCalendarFun025
      * @tc.desc      test pulish reminders with type of calendar.
      */
-      it('testReminderTypeCalendarFun001', 0, async function (done) {
+      it('testReminderTypeCalendarFun025', 0, async function (done) {
         let calendar = {
           reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
           dateTime : {
@@ -742,11 +742,11 @@ describe('ReminderAgentTest', function () {
       })
 	  
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_071
-     * @tc.name      testActionButtonTypeClose001
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_026
+     * @tc.name      testActionButtonTypeClose026
      * @tc.desc      test acton butto type is close.
      */
-	 it('testActionButtonTypeClose001', 0, async function (done) {
+	 it('testActionButtonTypeClose026', 0, async function (done) {
 		 let timer = {
 			 reminderType: reminderAgent.ReminderType.ACTION_BUTTON_TYPE_CLOSE,
 			 triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -763,11 +763,11 @@ describe('ReminderAgentTest', function () {
 	 })
 	 
 	 /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_072
-     * @tc.name      testActionButtonTypeSnooze001
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_027
+     * @tc.name      testActionButtonTypeSnooze027
      * @tc.desc      test acton butto type is snooze.
      */
-	 it('testActionButtonTypeSnooze001', 0, async function (done) {
+	 it('testActionButtonTypeSnooze027', 0, async function (done) {
 		 let timer = {
 			 reminderType: reminderAgent.ReminderType.ACTION_BUTTON_TYPE_SNOOZE,
 			 triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -784,36 +784,46 @@ describe('ReminderAgentTest', function () {
 	 })
 	 
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_073
-     * @tc.name      testActionButtonType001
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_028
+     * @tc.name      testActionButtonType028
      * @tc.desc      test acton butto type type = 0.
      */
-    it("testActionButtonType001", 0, async function (done) {
-        console.log('----------------------testActionButtonType001---------------------------');
+    it("testActionButtonType028", 0, async function (done) {
+        console.log('----------------------qigongmingtestActionButtonType028---------------------------');
         let type1 = reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE;
-		except(type1).assertEqual(0);
+		console.log(type1 + typeof(type1));
+		if (type1 == 0) {
+			expect(true).assertTrue();
+		} else {
+			except(false).assertTrue();
+		}
         done();
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_074
-     * @tc.name      testActionButtonType002
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_029
+     * @tc.name      testActionButtonType029
      * @tc.desc      test acton butto type type = 0.
      */
-    it("testActionButtonType002", 0, async function (done) {
-        console.log('----------------------testActionButtonType002---------------------------');
+    it("testActionButtonType029", 0, async function (done) {
+        console.log('----------------------testActionButtonType029---------------------------');
         let type1 = reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE;
-		except(type1).assertEqual(1);
+		console.log(type1 + typeof(type1));
+		if (type1 == 1) {
+			expect(true).assertTrue();
+		} else {
+			except(false).assertTrue();
+		}
         done();
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_075
-     * @tc.name      testActionButton001
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_030
+     * @tc.name      testActionButton030
      * @tc.desc      test ActionButton title.
      */
-    it("testActionButton001", 0, async function (done) {
-        console.log('----------------------testActionButton001---------------------------');
+    it("testActionButton030", 0, async function (done) {
+        console.log('----------------------testActionButton030---------------------------');
         let timer = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
 			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -831,7 +841,7 @@ describe('ReminderAgentTest', function () {
 					expect(false).assertEqual(false);
 				}
 			},(error) => {
-				expect(false).assertEqual();
+				expect(false).assertTrue();
 			});
 		});
 		
@@ -841,12 +851,12 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_076
-     * @tc.name      testActionButton002
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_031
+     * @tc.name      testActionButton031
      * @tc.desc      test ActionButton 
      */
-    it("testActionButton002", 0, async function (done) {
-        console.log('----------------------testActionButton002---------------------------');
+    it("testActionButton031", 0, async function (done) {
+        console.log('----------------------testActionButton031---------------------------');
         let timer = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
 			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -862,11 +872,11 @@ describe('ReminderAgentTest', function () {
 					console.log('ActionButton type:' + actionButton[0].type);
 				} else {
 					reminder = [{actionButton: [{type: 1}]}];
-					console.log('ActionButtonType: ' + reminder[0].actionButton[0].type);
-					expect(false).assertEqual(false);
+					console.log('ActionButton Type: ' + reminder[0].actionButton[0].type);
+					expect(true).assertTrue();
 				}
 			},(error) => {
-				expect(false).assertEqual();
+				expect(false).assertTrue();
 			});
 		});
 		
@@ -876,29 +886,32 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_077
-     * @tc.name      testWantAgentAbilityName001
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_032
+     * @tc.name      testWantAgentAbilityName032
      * @tc.desc      test wantAgent abilityName 
      */
-    it("testWantAgentAbilityName001", 0, async function (done) {
-        console.log('----------------------testWantAgentAbilityName001---------------------------');
+    it("testWantAgentAbilityName032", 0, async function (done) {
+        console.log('----------------------testWantAgentAbilityName032---------------------------');
         let timer = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
-		}
+			triggerTimeInSeconds: 4,
+			wantAgent: {
+				pkgName: "ohos.samples.jshelloworld",
+				abilityName: "ohos.samples.jshelloworld.MainAbility"
+			},
+		};
 		reminderAgent.publishReminder(timer).then((reminderId) => {
 			console.log("reminderId =" + reminderId);
-			reminderAgent.getValidReminders().then((reminder) => {
+			reminderAgent.getValidReminders((err, reminder) => {
 				if(reminder.length !== 0) {
-					let wantAgent = reminder[0].wantAgent;
-					console.log('WantAgent abilityName:' + wantAgent.abilityName);
-				} else {
-					reminder = [{wantAgent: {abilityName: 'title.com.oh.phone.MainAbility'}}];
-					console.log('WantAgent abilityName:' + reminder[0].wantAgent.abilityName);
-					expect(false).assertEqual(false);
-				};
-			},(error) => {
-				expect(false).assertEqual();
+					let wantAgent = reminder[0].wantAgent.abilityName;
+					//expect(wantAgent).assertEqual("ohos.samples.jshelloworld.MainAbility");
+					if (wantAgent == "ohos.samples.jshelloworld.MainAbility") {
+						expect(true).assertTrue();
+					} else {
+						expect(false).assertTrue();
+					}
+				}
 			});
 		});
 		
@@ -908,12 +921,12 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_078
-     * @tc.name      testMaxScreenWantAgentAbilityName001
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_033
+     * @tc.name      testMaxScreenWantAgentAbilityName033
      * @tc.desc      test MaxScreenWantAgent abilityName 
      */
-    it("testMaxScreenWantAgentAbilityName001", 0, async function (done) {
-        console.log('----------------------testMaxScreenWantAgentAbilityName001---------------------------');
+    it("testMaxScreenWantAgentAbilityName033", 0, async function (done) {
+        console.log('----------------------testMaxScreenWantAgentAbilityName033---------------------------');
         let timer = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
 			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -929,7 +942,7 @@ describe('ReminderAgentTest', function () {
 					expect(false).assertEqual(false);
 				};
 			},(error) => {
-				expect(false).assertEqual();
+				expect(false).assertTrue();
 			});
 		});
 		
@@ -939,12 +952,12 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_079
-     * @tc.name      testReminderRequestTitle001
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_034
+     * @tc.name      testReminderRequestTitle034
      * @tc.desc      test ReminderRequest title 
      */
-    it("testReminderRequestTitle001", 0, async function (done) {
-        console.log('----------------------testReminderRequestTitle001---------------------------');
+    it("testReminderRequestTitle034", 0, async function (done) {
+        console.log('----------------------testReminderRequestTitle034---------------------------');
         let timer = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
 			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -961,7 +974,7 @@ describe('ReminderAgentTest', function () {
 					expect(false).assertEqual(false);
 				};
 			},(error) => {
-				expect(false).assertEqual();
+				expect(false).assertTrue();
 			});
 		});
 		
@@ -971,12 +984,12 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_080
-     * @tc.name      testReminderRequestContent001
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_035
+     * @tc.name      testReminderRequestContent035
      * @tc.desc      test ReminderRequest content 
      */
-    it("testReminderRequestContent001", 0, async function (done) {
-        console.log('----------------------testReminderRequestContent001---------------------------');
+    it("testReminderRequestContent035", 0, async function (done) {
+        console.log('----------------------testReminderRequestContent035---------------------------');
         let timer = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
 			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -993,7 +1006,7 @@ describe('ReminderAgentTest', function () {
 					expect(false).assertEqual(false);
 				};
 			},(error) => {
-				expect(false).assertEqual();
+				expect(false).assertTrue();
 			});
 		});
 		
@@ -1003,12 +1016,12 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_081
-     * @tc.name      testReminderRequestType001
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_036
+     * @tc.name      testReminderRequestType036
      * @tc.desc      test ReminderRequest LocalDateTime second 
      */
-    it("testReminderRequestType001", 0, async function (done) {
-        console.log('----------------------testReminderRequestType001---------------------------');
+    it("testReminderRequestType036", 0, async function (done) {
+        console.log('----------------------testReminderRequestType036---------------------------');
         let calendar = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
 			dateTime: {
@@ -1030,22 +1043,25 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_082
-     * @tc.name      testReminderRequestType002
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_037
+     * @tc.name      testReminderRequestType037
      * @tc.desc      test ReminderRequest ReminderRequestAlarm daysOfWeek 
      */
-    it("testReminderRequestType002", 0, async function (done) {
-        console.log('----------------------testReminderRequestType002---------------------------');
+    it("testReminderRequestType037", 0, async function (done) {
+        console.log('----------------------testReminderRequestType037---------------------------');
         let alarm = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
-			reminderRequestAlarm: {
-				hour: 7,
-				minute: 10,
-				daysOfWeek: [1,2,3,4,5]
-			}
+			hour: 7,
+			minute: 10,
+			daysOfWeek: [1,2,3,4,5]
 		}
 		reminderAgent.publishReminder(alarm).then((reminderId) => {
+			if (reminderId != -1) {
+				expect(true).assertTrue();
+			}
 			console.log("reminderId =" + reminderId);
+		},error => {
+			expect(false).assertTrue();
 		});
 		
 		setTimeout(() => {
