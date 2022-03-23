@@ -14,7 +14,7 @@
  */
 
 import thermal from "@ohos.thermal"
-import {describe, it, expect} from 'deccjsunit/index';
+import { describe, it, expect } from 'deccjsunit/index';
 
 describe('appInfoTest', function () {
     console.log("*************Thermal Performance Test Begin*************");
@@ -25,7 +25,7 @@ describe('appInfoTest', function () {
 })
 
 function performanceTest1() {
-    var MAXNUM = 1000;
+    let MAXNUM = 1000;
 
     /**
      * @tc.number ThermalPerformance_001
@@ -35,7 +35,7 @@ function performanceTest1() {
     it('ThermalPerformance_001', 0, function () {
         let startTime = new Date().getTime();
         for (let i = 0; i < MAXNUM; i++) {
-            var level = thermal.getThermalLevel();
+            let level = thermal.getThermalLevel();
         }
         let waitTime = new Date().getTime() - startTime;
         let avgTime = waitTime; //us
@@ -44,7 +44,7 @@ function performanceTest1() {
 }
 
 function performanceTest2() {
-    var MAXNUM = 1000;
+    let MAXNUM = 1000;
 
     /**
      * @tc.number ThermalPerformance_002
@@ -65,7 +65,7 @@ function performanceTest2() {
 }
 
 function performanceTest3() {
-    var MAXNUM = 1000;
+    let MAXNUM = 1000;
 
     /**
      * @tc.number ThermalPerformance_002
