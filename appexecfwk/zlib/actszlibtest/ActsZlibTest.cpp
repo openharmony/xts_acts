@@ -1151,7 +1151,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzRewind, Function | MediumTest | Level2)
  */
 HWTEST_F(ActsZlibTest, ActsZlibTestGzseek, Function | MediumTest | Level2)
 {
-    int64_t err = 0L;
+    long err = 0L;
     gzFile file;
     file = gzopen(TESTFILE, "wb");
     ASSERT_TRUE(file != NULL);
@@ -1331,7 +1331,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateCodesUsed, Function | MediumTest | Lev
     compr = static_cast<Byte*>(calloc(static_cast<uInt>(comprLen), CALLOC_SIZE));
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
     ASSERT_TRUE(compr != Z_NULL && uncompr != Z_NULL);
-    unsigned uint64_t err;
+    unsigned long err;
     z_stream d_stream; /* decompression stream */
     strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
     d_stream.zalloc = nullptr;
