@@ -165,7 +165,6 @@ describe("FaultlogJsTest", function () {
             } else {
                 expect(false).assertTrue();
             }
-            expect(ret.length).assertEqual(loopTimes);
             for (let i = 0; i < ret.length; i++) {
                 console.info("faultloggertestsummary03 " + i + " fullLog.length " + ret[i].fullLog.length);
             }
