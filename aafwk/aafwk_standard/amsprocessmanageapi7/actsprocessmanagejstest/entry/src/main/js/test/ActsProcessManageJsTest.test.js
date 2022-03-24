@@ -59,7 +59,7 @@ var uriSystemA = 'internal://cache/../../com.acts.pmsystemappaapi7/';
 var uriSystemB = 'internal://cache/../../com.acts.pmsystemappbapi7/';
 var uriVendorA = 'internal://cache/../../com.acts.pmvendorappaapi7/';
 
-describe('ActsAmsProcessManageJsTestApi7', function () {
+describe('ActsAmsProcessManageJsApi7Test', function () {
 
     beforeEach(async (done) => {
         await clearMissionId();

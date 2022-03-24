@@ -17,15 +17,14 @@ group("aafwk_standard") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ActsAbilityDelegatorCaseTest:ActsAbilityDelegatorCaseTest",
-      "ActsAbilityLifecycleStateNewTest:ActsAbilityLifecycleStateNewTest",
-      "ActsDataAbilityJsTest:ActsDataAbilityJsTest",
-      "ActsKillProcessWithAccountApi7:ActsKillProcessWithAccountApi7",
-      "ActsStServiceAbilityClientCaseTest:ActsStServiceAbilityClientCaseTest",
       "abilitymanager:actsabilitymanagertest",
+      "actsabilitydelegatorcase:ActsAbilityDelegatorCaseTest",
       "actsabilitydistributetest:ActsAbilityDistributeTest",
-      "actsabilitydistributetest:ActsAbilityDistributeTest",
+      "actsabilitylifecyclestatenew:ActsAbilityLifecycleStateNewTest",
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
+      "actsdataabilityjs:ActsDataAbilityJsTest",
+      "actskillprocesswithaccount:ActsKillProcessWithAccountApi7Test",
+      "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
       "amsabilitymanager/amsMissionSnapshotTest:ActsAmsMissionSnapshotTest",
       "amsabilitymanager/amsMissionSnapshotTestSingleton:ActsAmsMissionSnapshotTestSingleton",
       "amsabilitymanager/amsMissionSnapshotTestSingletonS:ActsAmsMissionSnapshotTestSingletonS",
@@ -54,10 +53,6 @@ group("aafwk_standard") {
       "featureability:featureability",
       "formmanager:formmanager",
       "lanuageConfigapi7:lanuageConfigapi7",
-      "serviceability/sceneProject/particlestartability:ParticleStartAbility",
-      "serviceability/sceneProject/particletestserver:ParticleTestServer",
-      "serviceability/stserviceabilityserver:amsStServiceAilityServer",
-      "serviceability/stserviceabilityserversecond:ActsAmsStServiceAilityServerSecondTest",
       "setshowonlockscreen:setshowonlockscreen",
       "want:want",
     ]
