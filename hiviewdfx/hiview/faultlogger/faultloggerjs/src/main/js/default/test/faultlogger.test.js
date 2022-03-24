@@ -89,7 +89,7 @@ describe("FaultlogJsTest", function () {
             const loopTimes = 10;
             for (let i = 0; i < loopTimes; i++) {
                 console.info("--------FaultlogJsTest_002 3 + " + i + "----------");
-                faultlogger.addFaultLog(i, faultlogger.FaultType.CPP_CRASH, module, "faultloggertestsummary02 " + i);
+                faultlogger.addFaultLog(i + 100, faultlogger.FaultType.CPP_CRASH, module, "faultloggertestsummary02 " + i);
                 await msleep(300);
             }
             await msleep(1000);
@@ -139,7 +139,7 @@ describe("FaultlogJsTest", function () {
             const loopTimes = 10;
             for (let i = 0; i < loopTimes; i++) {
                 console.info("--------FaultlogJsTest_003 3 + " + i + "----------");
-                faultlogger.addFaultLog(i, faultlogger.FaultType.JS_CRASH, module, "faultloggertestsummary03 " + i);
+                faultlogger.addFaultLog(i + 200, faultlogger.FaultType.JS_CRASH, module, "faultloggertestsummary03 " + i);
                 await msleep(300);
             }
             await msleep(1000);
@@ -184,7 +184,7 @@ describe("FaultlogJsTest", function () {
             const loopTimes = 10;
             for (let i = 0; i < loopTimes; i++) {
                 console.info("--------FaultlogJsTest_004 3 + " + i + "----------");
-                faultlogger.addFaultLog(i, faultlogger.FaultType.APP_FREEZE, module, "faultloggertestsummary04 " + i);
+                faultlogger.addFaultLog(i + 300, faultlogger.FaultType.APP_FREEZE, module, "faultloggertestsummary04 " + i);
                 await msleep(300);
             }
             await msleep(1000);
@@ -229,7 +229,7 @@ describe("FaultlogJsTest", function () {
             const loopTimes = 10;
             for (let i = 0; i < loopTimes; i++) {
                 console.info("--------FaultlogJsTest_005 + " + i + "----------");
-                faultlogger.addFaultLog(i + 20,
+                faultlogger.addFaultLog(i + 400,
                     faultlogger.FaultType.CPP_CRASH, module, "faultloggertestsummary05 " + i);
                 await msleep(300);
             }
