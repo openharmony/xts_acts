@@ -19,12 +19,6 @@ group("huks_standard") {
     deps = [
       "HuksAbnormalTest:ActsHuksAbnormalTest",
       "HuksAlgCompletionTest:ActsHuksAlgCompletionTest",
-      "HuksConcurrencyApp1:ActsHuksConcurrencyApp1Test",
-      "HuksConcurrencyApp2:ActsHuksConcurrencyApp2Test",
-      "HuksConcurrencyTest:ActsHuksConcurrencyTest",
-      "HuksJSTimingTest:ActsHuksJSTimingTest",
-
-      #"HuksStressTest:ActsHuksStressTest",
     ]
   }
 }

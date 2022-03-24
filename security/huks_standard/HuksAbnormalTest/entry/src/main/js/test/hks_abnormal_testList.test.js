@@ -13,6 +13,15 @@
  * limitations under the License.
  */
 
-require('./hks_abnormal_promise.test.js');
-
-require('./hks_abnormal_callback.test.js');
+require('./hks_abnormal_promise_part1.test.js');
+require('./hks_abnormal_promise_part2.test');
+require('./hks_abnormal_promise_part3.test');
+require('./hks_abnormal_promise_part4.test');
+require('./hks_abnormal_promise_part5.test');
+require('./hks_abnormal_promise_part6.test');
+require('./hks_abnormal_callback_part1.test.js');
+require('./hks_abnormal_callback_part2.test');
+require('./hks_abnormal_callback_part3.test');
+require('./hks_abnormal_callback_part4.test');
+require('./hks_abnormal_callback_part5.test');
+require('./hks_abnormal_callback_part6.test');

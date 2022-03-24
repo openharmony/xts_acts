@@ -32,16 +32,16 @@ describe('HuksTest_JSApiTest_CA', function () {
    */
   it('HuksTest_JSApiTest_CA_00100', 0, async function (done) {
     var attestKeyRet = await huks.attestKey(alias, emptyOption);
-    expect(attestKeyRet.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_NOT_SUPPORTED);
+    expect(attestKeyRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_NOT_SUPPORTED);
 
     var getCertificateChainRet = await huks.getCertificateChain(alias, emptyOption);
-    expect(getCertificateChainRet.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_NOT_SUPPORTED);
+    expect(getCertificateChainRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_NOT_SUPPORTED);
 
     var wrapKeyRet = await huks.wrapKey(alias, targetAlias, emptyOption);
-    expect(wrapKeyRet.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_NOT_SUPPORTED);
+    expect(wrapKeyRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_NOT_SUPPORTED);
 
     var unwrapKeyRet = await huks.unwrapKey(alias, targetAlias, inDataOption);
-    expect(unwrapKeyRet.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_NOT_SUPPORTED);
+    expect(unwrapKeyRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_NOT_SUPPORTED);
 
     done();
     setTimeout(function () {
@@ -50,48 +50,48 @@ describe('HuksTest_JSApiTest_CA', function () {
 
   /**
    * @tc.number   HuksTest_JSApiTest_CA_00200
-   * @tc.name     JSAPI_Test_CA
+   * @tc.name     JSAPI_Test_attestKey
    * @tc.desc     Test for attestKey.
    */
   it('HuksTest_JSApiTest_CA_00200', 0, async function (done) {
     huks.attestKey(alias, emptyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_NOT_SUPPORTED);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_NOT_SUPPORTED);
       done();
     });
   });
 
   /**
    * @tc.number   HuksTest_JSApiTest_CA_00300
-   * @tc.name     JSAPI_Test_CA
-   * @tc.desc     Test for attestKey.
+   * @tc.name     JSAPI_Test_getCertificateChain
+   * @tc.desc     Test for getCertificateChain.
    */
   it('HuksTest_JSApiTest_CA_00300', 0, async function (done) {
     huks.getCertificateChain(alias, emptyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_NOT_SUPPORTED);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_NOT_SUPPORTED);
       done();
     });
   });
 
   /**
    * @tc.number   HuksTest_JSApiTest_CA_00400
-   * @tc.name     JSAPI_Test_CA
-   * @tc.desc     Test for attestKey.
+   * @tc.name     JSAPI_Test_wrapKey
+   * @tc.desc     Test for wrapKey.
    */
   it('HuksTest_JSApiTest_CA_00400', 0, async function (done) {
     huks.wrapKey(alias, targetAlias, emptyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_NOT_SUPPORTED);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_NOT_SUPPORTED);
       done();
     });
   });
 
   /**
    * @tc.number   HuksTest_JSApiTest_CA_00500
-   * @tc.name     JSAPI_Test_CA
-   * @tc.desc     Test for attestKey.
+   * @tc.name     JSAPI_Test_unwrapKey
+   * @tc.desc     Test for unwrapKey.
    */
   it('HuksTest_JSApiTest_CA_00500', 0, async function (done) {
     huks.unwrapKey(alias, targetAlias, inDataOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_NOT_SUPPORTED);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_NOT_SUPPORTED);
       done();
     });
   });

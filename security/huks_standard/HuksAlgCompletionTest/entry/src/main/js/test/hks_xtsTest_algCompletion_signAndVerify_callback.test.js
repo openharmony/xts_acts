@@ -39,10 +39,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_17500', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_MD5,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5,
       done,
       'HUKS_ALG_COMPLETION_17500'
     );
@@ -57,10 +57,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_17600', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_768,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_MD5,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_768,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5,
       done,
       'HUKS_ALG_COMPLETION_17600'
     );
@@ -75,10 +75,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_17700', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_1024,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_MD5,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5,
       done,
       'HUKS_ALG_COMPLETION_17700'
     );
@@ -93,10 +93,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_17800', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_2048,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_MD5,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5,
       done,
       'HUKS_ALG_COMPLETION_17800'
     );
@@ -111,10 +111,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_17900', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_3072,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_MD5,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5,
       done,
       'HUKS_ALG_COMPLETION_17900'
     );
@@ -129,10 +129,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_18000', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_4096,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_MD5,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5,
       done,
       'HUKS_ALG_COMPLETION_18000'
     );
@@ -147,10 +147,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_18100', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_18100'
     );
@@ -165,10 +165,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_18200', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_768,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_768,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_18200'
     );
@@ -183,10 +183,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_18300', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_1024,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_18300'
     );
@@ -201,10 +201,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_18400', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_2048,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_18400'
     );
@@ -219,10 +219,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_18500', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_3072,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_18500'
     );
@@ -237,10 +237,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_18600', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_4096,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_18600'
     );
@@ -255,10 +255,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_18700', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_18700'
     );
@@ -273,10 +273,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_18800', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_768,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_768,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_18800'
     );
@@ -291,10 +291,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_18900', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_1024,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_18900'
     );
@@ -309,10 +309,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_19000', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_2048,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_19000'
     );
@@ -327,10 +327,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_19100', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_3072,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_19100'
     );
@@ -345,10 +345,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_19200', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_4096,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_19200'
     );
@@ -363,10 +363,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_19300', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_19300'
     );
@@ -381,10 +381,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_19400', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_768,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_768,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_19400'
     );
@@ -399,10 +399,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_19500', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_1024,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_19500'
     );
@@ -417,10 +417,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_19600', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_2048,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_19600'
     );
@@ -435,10 +435,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_19700', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_3072,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_19700'
     );
@@ -453,10 +453,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_19800', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_4096,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_19800'
     );
@@ -471,10 +471,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_19900', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_19900'
     );
@@ -489,10 +489,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_20000', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_768,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_768,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_20000'
     );
@@ -507,10 +507,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_20100', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_1024,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_20100'
     );
@@ -525,10 +525,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_20200', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_2048,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_20200'
     );
@@ -543,10 +543,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_20300', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_3072,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_20300'
     );
@@ -561,10 +561,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_20400', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_4096,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_20400'
     );
@@ -580,26 +580,26 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
   it('HUKS_ALG_COMPLETION_20500', 0, async function (done) {
     var plainText = makeRandomArr(16);
     var generateKeyOption = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | huks.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384
     );
     var generateKeyRet = await huks.generateKey(aliasA, generateKeyOption);
-    expect(generateKeyRet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+    expect(generateKeyRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
 
     var signOption = makeSignAndVerifyOption(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       plainText
     );
     huks.sign(aliasA, signOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_CRYPTO_ENGINE_ERROR);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_CRYPTO_ENGINE_ERROR);
       console.log('HUKS_ALG_COMPLETION_20500 end');
       done();
     });
@@ -614,10 +614,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_20600', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_768,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_768,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_20600'
     );
@@ -632,10 +632,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_20700', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_1024,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_20700'
     );
@@ -650,10 +650,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_20800', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_2048,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_20800'
     );
@@ -668,10 +668,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_20900', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_3072,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_20900'
     );
@@ -686,10 +686,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_21000', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_4096,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_21000'
     );
@@ -705,26 +705,26 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
   it('HUKS_ALG_COMPLETION_21100', 0, async function (done) {
     var plainText = makeRandomArr(16);
     var generateKeyOption = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | huks.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512
     );
     var generateKeyRet = await huks.generateKey(aliasA, generateKeyOption);
-    expect(generateKeyRet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+    expect(generateKeyRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
 
     var signOption = makeSignAndVerifyOption(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       plainText
     );
     huks.sign(aliasA, signOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_CRYPTO_ENGINE_ERROR);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_CRYPTO_ENGINE_ERROR);
       console.log('HUKS_ALG_COMPLETION_21100 end');
       done();
     });
@@ -739,10 +739,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_21200', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_768,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_768,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_21200'
     );
@@ -757,10 +757,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_21300', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_1024,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_21300'
     );
@@ -775,10 +775,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_21400', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_2048,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_21400'
     );
@@ -793,10 +793,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_21500', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_3072,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_21500'
     );
@@ -811,10 +811,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_21600', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_4096,
-      huks.HksKeyPadding.HKS_PADDING_PKCS1_V1_5,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_21600'
     );
@@ -831,10 +831,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_25900', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_MD5,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5,
       done,
       'HUKS_ALG_COMPLETION_25900'
     );
@@ -849,10 +849,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_26000', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_768,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_MD5,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_768,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5,
       done,
       'HUKS_ALG_COMPLETION_26000'
     );
@@ -867,10 +867,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_26100', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_1024,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_MD5,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5,
       done,
       'HUKS_ALG_COMPLETION_26100'
     );
@@ -885,10 +885,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_26200', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_2048,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_MD5,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5,
       done,
       'HUKS_ALG_COMPLETION_26200'
     );
@@ -903,10 +903,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_26300', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_3072,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_MD5,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5,
       done,
       'HUKS_ALG_COMPLETION_26300'
     );
@@ -921,10 +921,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_26400', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_4096,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_MD5,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5,
       done,
       'HUKS_ALG_COMPLETION_26400'
     );
@@ -939,10 +939,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_26500', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_26500'
     );
@@ -957,10 +957,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_26600', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_768,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_768,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_26600'
     );
@@ -975,10 +975,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_26700', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_1024,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_26700'
     );
@@ -993,10 +993,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_26800', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_2048,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_26800'
     );
@@ -1011,10 +1011,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_26900', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_3072,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_26900'
     );
@@ -1029,10 +1029,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_27000', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_4096,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_27000'
     );
@@ -1047,10 +1047,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_27100', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_27100'
     );
@@ -1065,10 +1065,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_27200', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_768,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_768,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_27200'
     );
@@ -1083,10 +1083,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_27300', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_1024,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_27300'
     );
@@ -1101,10 +1101,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_27400', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_2048,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_27400'
     );
@@ -1119,10 +1119,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_27500', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_3072,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_27500'
     );
@@ -1137,10 +1137,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_27600', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_4096,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_27600'
     );
@@ -1155,10 +1155,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_27700', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_27700'
     );
@@ -1173,10 +1173,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_27800', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_768,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_768,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_27800'
     );
@@ -1191,10 +1191,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_27900', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_1024,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_27900'
     );
@@ -1209,10 +1209,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_28000', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_2048,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_28000'
     );
@@ -1227,10 +1227,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_28100', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_3072,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_28100'
     );
@@ -1245,10 +1245,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_28200', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_4096,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_28200'
     );
@@ -1263,10 +1263,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_28300', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_28300'
     );
@@ -1281,10 +1281,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_28400', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_768,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_768,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_28400'
     );
@@ -1299,10 +1299,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_28500', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_1024,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_28500'
     );
@@ -1317,10 +1317,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_28600', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_2048,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_28600'
     );
@@ -1335,10 +1335,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_28700', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_3072,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_28700'
     );
@@ -1353,10 +1353,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_28800', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_4096,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_28800'
     );
@@ -1371,10 +1371,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_28900', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_28900'
     );
@@ -1389,10 +1389,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_29000', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_768,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_768,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_29000'
     );
@@ -1407,10 +1407,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_29100', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_1024,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_29100'
     );
@@ -1425,10 +1425,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_29200', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_2048,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_29200'
     );
@@ -1443,10 +1443,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_29300', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_3072,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_29300'
     );
@@ -1461,10 +1461,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_29400', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_4096,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_29400'
     );
@@ -1480,26 +1480,26 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
   it('HUKS_ALG_COMPLETION_29500', 0, async function (done) {
     var plainText = makeRandomArr(16);
     var generateKeyOption = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | huks.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512
     );
     var generateKeyRet = await huks.generateKey(aliasA, generateKeyOption);
-    expect(generateKeyRet.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+    expect(generateKeyRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
 
     var signOption = makeSignAndVerifyOption(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_512,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_512,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       plainText
     );
     huks.sign(aliasA, signOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_CRYPTO_ENGINE_ERROR);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_CRYPTO_ENGINE_ERROR);
       console.log('HUKS_ALG_COMPLETION_29500 end');
       done();
     });
@@ -1514,10 +1514,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_29600', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_768,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_768,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_29600'
     );
@@ -1532,10 +1532,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_29700', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_1024,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_1024,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_29700'
     );
@@ -1550,10 +1550,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_29800', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_2048,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_29800'
     );
@@ -1568,10 +1568,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_29900', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_3072,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_3072,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_29900'
     );
@@ -1586,10 +1586,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_30000', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_RSA,
-      huks.HksKeySize.HKS_RSA_KEY_SIZE_4096,
-      huks.HksKeyPadding.HKS_PADDING_PSS,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_RSA,
+      huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096,
+      huks.HuksKeyPadding.HUKS_PADDING_PSS,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_30000'
     );
@@ -1606,15 +1606,15 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_30800', 0, async function (done) {
     var generateKeyOption = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_DSA,
+      huks.HuksKeyAlg.HUKS_ALG_DSA,
       1024,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | huks.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_MD5
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5
     );
     huks.generateKey(aliasA, generateKeyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_DIGEST);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_DIGEST);
       console.log('HUKS_ALG_COMPLETION_30800 end');
       done();
     });
@@ -1629,15 +1629,15 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_30900', 0, async function (done) {
     var generateKeyOption = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_DSA,
+      huks.HuksKeyAlg.HUKS_ALG_DSA,
       1024,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | huks.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_NONE
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE
     );
     huks.generateKey(aliasA, generateKeyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_DIGEST);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_DIGEST);
       console.log('HUKS_ALG_COMPLETION_30900 end');
       done();
     });
@@ -1652,10 +1652,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_31000', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_DSA,
+      huks.HuksKeyAlg.HUKS_ALG_DSA,
       1024,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_31000'
     );
@@ -1670,10 +1670,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_31100', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_DSA,
+      huks.HuksKeyAlg.HUKS_ALG_DSA,
       1024,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_31100'
     );
@@ -1688,10 +1688,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_31200', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_DSA,
+      huks.HuksKeyAlg.HUKS_ALG_DSA,
       1024,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_31200'
     );
@@ -1706,10 +1706,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_31300', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_DSA,
+      huks.HuksKeyAlg.HUKS_ALG_DSA,
       1024,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_31300'
     );
@@ -1724,10 +1724,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_31400', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_DSA,
+      huks.HuksKeyAlg.HUKS_ALG_DSA,
       1024,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_31400'
     );
@@ -1744,15 +1744,15 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_32200', 0, async function (done) {
     var generateKeyOption = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | huks.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_MD5
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5
     );
     huks.generateKey(aliasA, generateKeyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_DIGEST);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_DIGEST);
       console.log('HUKS_ALG_COMPLETION_32200 end');
       done();
     });
@@ -1767,10 +1767,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_32300', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_32300'
     );
@@ -1785,10 +1785,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_32400', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_32400'
     );
@@ -1803,10 +1803,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_32500', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_32500'
     );
@@ -1821,10 +1821,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_32600', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_32600'
     );
@@ -1839,10 +1839,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_32700', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_32700'
     );
@@ -1857,10 +1857,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_32800', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_224,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_224,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_32800'
     );
@@ -1877,15 +1877,15 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_33600', 0, async function (done) {
     var generateKeyOption = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_256,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | huks.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_MD5
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5
     );
     huks.generateKey(aliasA, generateKeyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_DIGEST);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_DIGEST);
       console.log('HUKS_ALG_COMPLETION_33600 end');
       done();
     });
@@ -1900,10 +1900,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_33700', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_33700'
     );
@@ -1918,10 +1918,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_33800', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_33800'
     );
@@ -1936,10 +1936,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_33900', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_33900'
     );
@@ -1954,10 +1954,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_34000', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_34000'
     );
@@ -1972,10 +1972,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_34100', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_34100'
     );
@@ -1990,10 +1990,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_34200', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_34200'
     );
@@ -2008,15 +2008,15 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_35000', 0, async function (done) {
     var generateKeyOption = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_384,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | huks.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_384,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_MD5
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5
     );
     huks.generateKey(aliasA, generateKeyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_DIGEST);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_DIGEST);
       console.log('HUKS_ALG_COMPLETION_35000 end');
       done();
     });
@@ -2031,10 +2031,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_35100', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_384,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_384,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_35100'
     );
@@ -2049,10 +2049,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_35200', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_384,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_384,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_35200'
     );
@@ -2067,10 +2067,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_35300', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_384,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_384,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_35300'
     );
@@ -2085,10 +2085,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_35400', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_384,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_384,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_35400'
     );
@@ -2103,10 +2103,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_35500', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_384,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_384,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_35500'
     );
@@ -2121,10 +2121,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_35600', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_384,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_384,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_35600'
     );
@@ -2139,15 +2139,15 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_36400', 0, async function (done) {
     var generateKeyOption = makeGenerateKeyOption(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_521,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | huks.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_521,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
       null,
-      huks.HksKeyDigest.HKS_DIGEST_MD5
+      huks.HuksKeyDigest.HUKS_DIGEST_MD5
     );
     huks.generateKey(aliasA, generateKeyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_INVALID_DIGEST);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_DIGEST);
       console.log('HUKS_ALG_COMPLETION_36400 end');
       done();
     });
@@ -2162,10 +2162,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_36500', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_521,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_521,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_36500'
     );
@@ -2180,10 +2180,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_36600', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_521,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA1,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_521,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA1,
       done,
       'HUKS_ALG_COMPLETION_36600'
     );
@@ -2198,10 +2198,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_36700', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_521,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA224,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_521,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA224,
       done,
       'HUKS_ALG_COMPLETION_36700'
     );
@@ -2216,10 +2216,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_36800', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_521,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA256,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_521,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
       done,
       'HUKS_ALG_COMPLETION_36800'
     );
@@ -2234,10 +2234,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_36900', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_521,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA384,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_521,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA384,
       done,
       'HUKS_ALG_COMPLETION_36900'
     );
@@ -2252,10 +2252,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_37000', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ECC,
-      huks.HksKeySize.HKS_ECC_KEY_SIZE_521,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_SHA512,
+      huks.HuksKeyAlg.HUKS_ALG_ECC,
+      huks.HuksKeySize.HUKS_ECC_KEY_SIZE_521,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_SHA512,
       done,
       'HUKS_ALG_COMPLETION_37000'
     );
@@ -2270,10 +2270,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
    */
   it('HUKS_ALG_COMPLETION_37200', 0, async function (done) {
     signAndVerifyCallback(
-      huks.HksKeyAlg.HKS_ALG_ED25519,
-      huks.HksKeySize.HKS_CURVE25519_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksKeyDigest.HKS_DIGEST_NONE,
+      huks.HuksKeyAlg.HUKS_ALG_ED25519,
+      huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksKeyDigest.HUKS_DIGEST_NONE,
       done,
       'HUKS_ALG_COMPLETION_37200'
     );
@@ -2298,14 +2298,14 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
 
   function deleteAliasB(done, caseId) {
     huks.deleteKey(aliasB, emptyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       isAliasAExist(done, caseId);
     })
   };
 
   function deleteAliasA(done, caseId) {
     huks.deleteKey(aliasA, emptyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       deleteAliasB(done, caseId);
     })
   };
@@ -2314,13 +2314,13 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
     var verifyOptions = makeSignAndVerifyOption(
       alg,
       size,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY,
       padding,
       digest,
       plainText
     );
     huks.verify(aliasB, verifyOptions, signedText, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       deleteAliasA(done, caseId);
     });
   };
@@ -2329,21 +2329,21 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
     var importOption = makeImportOption(
       alg,
       size,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY,
       padding,
       null,
       digest,
       publicKey
     );
     huks.importKey(aliasB, importOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       verifyWithCallback(alg, size, padding, digest, plainText, done, caseId);
     });
   };
 
   function exportWithCallback(alg, size, padding, digest, plainText, done, caseId) {
     huks.exportKey(aliasA, emptyOption, function (err, data) {
-      expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+      expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       publicKey = data.outData;
       importWithCallback(alg, size, padding, digest, plainText, done, caseId);
     });
@@ -2354,7 +2354,7 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
     var signOption = makeSignAndVerifyOption(
       alg,
       size,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN,
       padding,
       digest,
       plainText
@@ -2364,10 +2364,10 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
         caseId == 'HUKS_ALG_COMPLETION_28900' ||
         caseId == 'HUKS_ALG_COMPLETION_29500' ||
         caseId == 'HUKS_ALG_COMPLETION_29600')) {
-        expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_CRYPTO_ENGINE_ERROR);
+        expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_CRYPTO_ENGINE_ERROR);
         done();
       } else {
-        expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+        expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
         signedText = data.outData;
         console.log('signedText ' + JSON.stringify(signedText));
         exportWithCallback(alg, size, padding, digest, plainText, done, caseId);
@@ -2379,18 +2379,18 @@ describe('Hks_XtsTest_AlgCompletion_Sign_Verify', function () {
     var generateKeyOption = makeGenerateKeyOption(
       alg,
       size,
-      huks.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | huks.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
+      huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY,
       padding,
       null,
       digest
     );
     huks.generateKey(aliasA, generateKeyOption, function (err, data) {
-      if (useLib == 'mbedtls' && alg == huks.HksKeyAlg.HKS_ALG_DSA) {
-        expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_ERROR_NOT_SUPPORTED);
+      if (useLib == 'mbedtls' && alg == huks.HuksKeyAlg.HUKS_ALG_DSA) {
+        expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_NOT_SUPPORTED);
         console.log(caseId + ' end');
         done();
       } else {
-        expect(data.errorCode).assertEqual(huks.HksErrorCode.HKS_SUCCESS);
+        expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
         signWithCallback(alg, size, padding, digest, done, caseId);
       }
     });

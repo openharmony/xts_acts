@@ -29,9 +29,9 @@ var alias = '';
 
 function makeAesGenerateKeyOption (size, padding, mode) {
   var option = makeGenerateKeyOption (
-    huks.HksKeyAlg.HKS_ALG_AES,
+    huks.HuksKeyAlg.HUKS_ALG_AES,
     size,
-    huks.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT | huks.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
     padding,
     mode
   );
@@ -40,8 +40,8 @@ function makeAesGenerateKeyOption (size, padding, mode) {
 
 function makeAesEncryptOption (padding, mode) {
   var option = makeEncryptAndDecryptOption (
-    huks.HksKeyAlg.HKS_ALG_AES,
-    huks.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT,
+    huks.HuksKeyAlg.HUKS_ALG_AES,
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT,
     padding,
     mode,
     null,
@@ -53,8 +53,8 @@ function makeAesEncryptOption (padding, mode) {
 
 function makeAesDecryptOption (padding, mode, ciphertext) {
   var option = makeEncryptAndDecryptOption (
-    huks.HksKeyAlg.HKS_ALG_AES,
-    huks.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
+    huks.HuksKeyAlg.HUKS_ALG_AES,
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
     padding,
     mode,
     null,
@@ -73,9 +73,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_00100', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_128,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_CBC,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_128,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_CBC,
       done,
       'HUKS_ALG_COMPLETION_00100'
     );
@@ -88,9 +88,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_00200', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_128,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_CBC,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_128,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_CBC,
       done,
       'HUKS_ALG_COMPLETION_00200'
     );
@@ -103,9 +103,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_00300', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_192,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_CBC,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_192,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_CBC,
       done,
       'HUKS_ALG_COMPLETION_00300'
     );
@@ -118,9 +118,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_00400', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_192,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_CBC,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_192,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_CBC,
       done,
       'HUKS_ALG_COMPLETION_00400'
     );
@@ -133,9 +133,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_00500', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_CBC,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_CBC,
       done,
       'HUKS_ALG_COMPLETION_00500'
     );
@@ -148,9 +148,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_00600', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_CBC,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_CBC,
       done,
       'HUKS_ALG_COMPLETION_00600'
     );
@@ -163,9 +163,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_00700', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_128,
-      huks.HksKeyPadding.HKS_PADDING_PKCS7,
-      huks.HksCipherMode.HKS_MODE_CBC,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_128,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS7,
+      huks.HuksCipherMode.HUKS_MODE_CBC,
       done,
       'HUKS_ALG_COMPLETION_00700'
     );
@@ -178,9 +178,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_00800', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_128,
-      huks.HksKeyPadding.HKS_PADDING_PKCS7,
-      huks.HksCipherMode.HKS_MODE_CBC,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_128,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS7,
+      huks.HuksCipherMode.HUKS_MODE_CBC,
       done,
       'HUKS_ALG_COMPLETION_00800'
     );
@@ -193,9 +193,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_00900', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_192,
-      huks.HksKeyPadding.HKS_PADDING_PKCS7,
-      huks.HksCipherMode.HKS_MODE_CBC,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_192,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS7,
+      huks.HuksCipherMode.HUKS_MODE_CBC,
       done,
       'HUKS_ALG_COMPLETION_00900'
     );
@@ -208,9 +208,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_01000', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_192,
-      huks.HksKeyPadding.HKS_PADDING_PKCS7,
-      huks.HksCipherMode.HKS_MODE_CBC,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_192,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS7,
+      huks.HuksCipherMode.HUKS_MODE_CBC,
       done,
       'HUKS_ALG_COMPLETION_01000'
     );
@@ -223,9 +223,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_01100', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_PKCS7,
-      huks.HksCipherMode.HKS_MODE_CBC,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS7,
+      huks.HuksCipherMode.HUKS_MODE_CBC,
       done,
       'HUKS_ALG_COMPLETION_01100'
     );
@@ -238,9 +238,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_01200', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_PKCS7,
-      huks.HksCipherMode.HKS_MODE_CBC,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS7,
+      huks.HuksCipherMode.HUKS_MODE_CBC,
       done,
       'HUKS_ALG_COMPLETION_01200'
     );
@@ -253,9 +253,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_01300', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_128,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_CTR,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_128,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_CTR,
       done,
       'HUKS_ALG_COMPLETION_01300'
     );
@@ -268,9 +268,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_01400', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_128,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_CTR,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_128,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_CTR,
       done,
       'HUKS_ALG_COMPLETION_01400'
     );
@@ -283,9 +283,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_01500', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_192,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_CTR,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_192,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_CTR,
       done,
       'HUKS_ALG_COMPLETION_01500'
     );
@@ -298,9 +298,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_01600', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_192,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_CTR,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_192,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_CTR,
       done,
       'HUKS_ALG_COMPLETION_01600'
     );
@@ -313,9 +313,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_01700', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_CTR,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_CTR,
       done,
       'HUKS_ALG_COMPLETION_01700'
     );
@@ -328,9 +328,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_01800', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_CTR,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_CTR,
       done,
       'HUKS_ALG_COMPLETION_01800'
     );
@@ -343,9 +343,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_01900', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_128,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_ECB,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_128,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_ECB,
       done,
       'HUKS_ALG_COMPLETION_01900'
     );
@@ -358,9 +358,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_02000', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_128,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_ECB,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_128,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_ECB,
       done,
       'HUKS_ALG_COMPLETION_02000'
     );
@@ -373,9 +373,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_02100', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_192,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_ECB,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_192,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_ECB,
       done,
       'HUKS_ALG_COMPLETION_02100'
     );
@@ -388,9 +388,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_02200', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_192,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_ECB,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_192,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_ECB,
       done,
       'HUKS_ALG_COMPLETION_02200'
     );
@@ -403,9 +403,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_02300', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_ECB,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_ECB,
       done,
       'HUKS_ALG_COMPLETION_02300'
     );
@@ -418,9 +418,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_02400', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_ECB,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_ECB,
       done,
       'HUKS_ALG_COMPLETION_02400'
     );
@@ -433,9 +433,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_02500', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_128,
-      huks.HksKeyPadding.HKS_PADDING_PKCS7,
-      huks.HksCipherMode.HKS_MODE_ECB,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_128,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS7,
+      huks.HuksCipherMode.HUKS_MODE_ECB,
       done,
       'HUKS_ALG_COMPLETION_02500'
     );
@@ -448,9 +448,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_02600', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_128,
-      huks.HksKeyPadding.HKS_PADDING_PKCS7,
-      huks.HksCipherMode.HKS_MODE_ECB,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_128,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS7,
+      huks.HuksCipherMode.HUKS_MODE_ECB,
       done,
       'HUKS_ALG_COMPLETION_02600'
     );
@@ -463,9 +463,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_02700', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_192,
-      huks.HksKeyPadding.HKS_PADDING_PKCS7,
-      huks.HksCipherMode.HKS_MODE_ECB,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_192,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS7,
+      huks.HuksCipherMode.HUKS_MODE_ECB,
       done,
       'HUKS_ALG_COMPLETION_02700'
     );
@@ -478,9 +478,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_02800', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_192,
-      huks.HksKeyPadding.HKS_PADDING_PKCS7,
-      huks.HksCipherMode.HKS_MODE_ECB,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_192,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS7,
+      huks.HuksCipherMode.HUKS_MODE_ECB,
       done,
       'HUKS_ALG_COMPLETION_02800'
     );
@@ -493,9 +493,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_02900', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_PKCS7,
-      huks.HksCipherMode.HKS_MODE_ECB,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS7,
+      huks.HuksCipherMode.HUKS_MODE_ECB,
       done,
       'HUKS_ALG_COMPLETION_02900'
     );
@@ -508,9 +508,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_03000', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_PKCS7,
-      huks.HksCipherMode.HKS_MODE_ECB,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_PKCS7,
+      huks.HuksCipherMode.HUKS_MODE_ECB,
       done,
       'HUKS_ALG_COMPLETION_03000'
     );
@@ -523,9 +523,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_03100', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_128,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_GCM,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_128,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_GCM,
       done,
       'HUKS_ALG_COMPLETION_03100'
     );
@@ -538,9 +538,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_03200', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_128,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_GCM,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_128,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_GCM,
       done,
       'HUKS_ALG_COMPLETION_03200'
     );
@@ -553,9 +553,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_03300', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_192,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_GCM,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_192,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_GCM,
       done,
       'HUKS_ALG_COMPLETION_03300'
     );
@@ -568,9 +568,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_03400', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_192,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_GCM,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_192,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_GCM,
       done,
       'HUKS_ALG_COMPLETION_03400'
     );
@@ -583,9 +583,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_03500', 0, async function (done) {
     encryptAndDecryptWithPromise (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_GCM,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_GCM,
       done,
       'HUKS_ALG_COMPLETION_03500'
     );
@@ -598,9 +598,9 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
    */
   it ('HUKS_ALG_COMPLETION_03600', 0, async function (done) {
     encryptAndDecryptWithCallback (
-      huks.HksKeySize.HKS_AES_KEY_SIZE_256,
-      huks.HksKeyPadding.HKS_PADDING_NONE,
-      huks.HksCipherMode.HKS_MODE_GCM,
+      huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+      huks.HuksKeyPadding.HUKS_PADDING_NONE,
+      huks.HuksCipherMode.HUKS_MODE_GCM,
       done,
       'HUKS_ALG_COMPLETION_03600'
     );
@@ -609,42 +609,42 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
   async function encryptAndDecryptWithPromise (size, padding, mode, done, caseId) {
     var generateKeyOption = makeAesGenerateKeyOption (size, padding, mode);
     var generateKeyResult = await huks.generateKey (caseId, generateKeyOption);
-    expect (generateKeyResult.errorCode).assertEqual (huks.HksErrorCode.HKS_SUCCESS);
+    expect (generateKeyResult.errorCode).assertEqual (huks.HuksErrorCode.HUKS_SUCCESS);
     var isKeyExist = await huks.isKeyExist (caseId, emptyOption);
     expect (isKeyExist).assertEqual (true);
     var encryptOption = makeAesEncryptOption (padding, mode);
     var encryptResult = await huks.encrypt (caseId, encryptOption);
     if (useLib == 'openssl') {
-      expect (encryptResult.errorCode).assertEqual (huks.HksErrorCode.HKS_SUCCESS);
+      expect (encryptResult.errorCode).assertEqual (huks.HuksErrorCode.HUKS_SUCCESS);
       var decryptOption = makeAesDecryptOption (padding, mode, encryptResult.outData);
       var decryptResult = await huks.decrypt (caseId, decryptOption);
-      expect (decryptResult.errorCode).assertEqual (huks.HksErrorCode.HKS_SUCCESS);
+      expect (decryptResult.errorCode).assertEqual (huks.HuksErrorCode.HUKS_SUCCESS);
       expect (JSON.stringify (plainText)).assertEqual (JSON.stringify (decryptResult.outData));
       var deleteKeyResult = await huks.deleteKey (caseId, emptyOption);
-      expect (deleteKeyResult.errorCode).assertEqual (huks.HksErrorCode.HKS_SUCCESS);
+      expect (deleteKeyResult.errorCode).assertEqual (huks.HuksErrorCode.HUKS_SUCCESS);
       var isKeyExist = await huks.isKeyExist (caseId, emptyOption);
       expect (isKeyExist).assertEqual (false);
     } else {
-      if (mode == huks.HksCipherMode.HKS_MODE_CBC
-        || mode == huks.HksCipherMode.HKS_MODE_CTR
-        || mode == huks.HksCipherMode.HKS_MODE_GCM) {
-          expect (encryptResult.errorCode).assertEqual (huks.HksErrorCode.HKS_SUCCESS);
+      if (mode == huks.HuksCipherMode.HUKS_MODE_CBC
+        || mode == huks.HuksCipherMode.HUKS_MODE_CTR
+        || mode == huks.HuksCipherMode.HUKS_MODE_GCM) {
+          expect (encryptResult.errorCode).assertEqual (huks.HuksErrorCode.HUKS_SUCCESS);
           var decryptOption = makeAesDecryptOption (padding, mode, encryptResult.outData);
           var decryptResult = await huks.decrypt (caseId, decryptOption);
-          expect (decryptResult.errorCode).assertEqual (huks.HksErrorCode.HKS_SUCCESS);
+          expect (decryptResult.errorCode).assertEqual (huks.HuksErrorCode.HUKS_SUCCESS);
           expect (JSON.stringify (plainText)).assertEqual (JSON.stringify (decryptResult.outData));
           var deleteKeyResult = await huks.deleteKey (caseId, emptyOption);
-          expect (deleteKeyResult.errorCode).assertEqual (huks.HksErrorCode.HKS_SUCCESS);
+          expect (deleteKeyResult.errorCode).assertEqual (huks.HuksErrorCode.HUKS_SUCCESS);
           var isKeyExist = await huks.isKeyExist (caseId, emptyOption);
           expect (isKeyExist).assertEqual (false);
-      } else if (huks.HksCipherMode.HKS_MODE_ECB) {
-        if (padding == huks.HksKeyPadding.HKS_PADDING_PKCS7) {
-          expect (encryptResult.errorCode).assertEqual (huks.HksErrorCode.HKS_ERROR_NOT_SUPPORTED);
+      } else if (huks.HuksCipherMode.HUKS_MODE_ECB) {
+        if (padding == huks.HuksKeyPadding.HUKS_PADDING_PKCS7) {
+          expect (encryptResult.errorCode).assertEqual (huks.HuksErrorCode.HUKS_ERROR_NOT_SUPPORTED);
         } else {
-          expect (encryptResult.errorCode).assertEqual (huks.HksErrorCode.HKS_ERROR_CRYPTO_ENGINE_ERROR);
+          expect (encryptResult.errorCode).assertEqual (huks.HuksErrorCode.HUKS_ERROR_CRYPTO_ENGINE_ERROR);
         }
       } else {
-        expect (encryptResult.errorCode).assertEqual (huks.HksErrorCode.HKS_ERROR_CRYPTO_ENGINE_ERROR);
+        expect (encryptResult.errorCode).assertEqual (huks.HuksErrorCode.HUKS_ERROR_CRYPTO_ENGINE_ERROR);
       }
     }
     console.log (caseId + ' end');
@@ -665,7 +665,7 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
 
   function deleteKeyWithCallback (done, caseId) {
     huks.deleteKey (caseId, emptyOption, function (err, data) {
-      expect (data.errorCode).assertEqual (huks.HksErrorCode.HKS_SUCCESS);
+      expect (data.errorCode).assertEqual (huks.HuksErrorCode.HUKS_SUCCESS);
       checkKeyIsExistAfterDeleteKey (done, caseId);
     });
   };
@@ -673,7 +673,7 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
   function decryptWithCallback (size, padding, mode, ciphertext, done, caseId) {
     var decryptOption = makeAesDecryptOption (padding, mode, ciphertext);
     huks.decrypt (caseId, decryptOption, function (err, data) {
-      expect (data.errorCode).assertEqual (huks.HksErrorCode.HKS_SUCCESS);
+      expect (data.errorCode).assertEqual (huks.HuksErrorCode.HUKS_SUCCESS);
       expect (JSON.stringify (plainText)).assertEqual (JSON.stringify (data.outData));
       deleteKeyWithCallback (done, caseId);
     });
@@ -686,23 +686,23 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
         decryptWithCallback (size, padding, mode, data.outData, done, caseId);
       } else {
         switch (mode) {
-          case huks.HksCipherMode.HKS_MODE_CBC:
-          case huks.HksCipherMode.HKS_MODE_CTR:
-          case huks.HksCipherMode.HKS_MODE_GCM:
-            expect (data.errorCode).assertEqual (huks.HksErrorCode.HKS_SUCCESS);
+          case huks.HuksCipherMode.HUKS_MODE_CBC:
+          case huks.HuksCipherMode.HUKS_MODE_CTR:
+          case huks.HuksCipherMode.HUKS_MODE_GCM:
+            expect (data.errorCode).assertEqual (huks.HuksErrorCode.HUKS_SUCCESS);
             decryptWithCallback (size, padding, mode, data.outData, done, caseId);
             break;
-          case huks.HksCipherMode.HKS_MODE_ECB:
-            if (padding == huks.HksKeyPadding.HKS_PADDING_PKCS7) {
-              expect (data.errorCode).assertEqual (huks.HksErrorCode.HKS_ERROR_NOT_SUPPORTED);
+          case huks.HuksCipherMode.HUKS_MODE_ECB:
+            if (padding == huks.HuksKeyPadding.HUKS_PADDING_PKCS7) {
+              expect (data.errorCode).assertEqual (huks.HuksErrorCode.HUKS_ERROR_NOT_SUPPORTED);
               done ();
             } else {
-              expect (data.errorCode).assertEqual (huks.HksErrorCode.HKS_ERROR_CRYPTO_ENGINE_ERROR);
+              expect (data.errorCode).assertEqual (huks.HuksErrorCode.HUKS_ERROR_CRYPTO_ENGINE_ERROR);
               done ();
             }
             break;
           default:
-            expect (data.errorCode).assertEqual (huks.HksErrorCode.HKS_ERROR_CRYPTO_ENGINE_ERROR);
+            expect (data.errorCode).assertEqual (huks.HuksErrorCode.HUKS_ERROR_CRYPTO_ENGINE_ERROR);
             done ();
         }
       }
@@ -719,7 +719,7 @@ describe ('Hks_XtsTest_algCompletion_Aes_Encrypt_Decrypt', function () {
   function encryptAndDecryptWithCallback (size, padding, mode, done, caseId) {
     var generateKeyOption = makeAesGenerateKeyOption (size, padding, mode);
     huks.generateKey (caseId, generateKeyOption, function (err, data) {
-      expect (data.errorCode).assertEqual (huks.HksErrorCode.HKS_SUCCESS);
+      expect (data.errorCode).assertEqual (huks.HuksErrorCode.HUKS_SUCCESS);
       checkKeyIsExistAfterGenerateKey (size, padding, mode, done, caseId);
     });
   };
