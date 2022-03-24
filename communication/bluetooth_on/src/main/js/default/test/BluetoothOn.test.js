@@ -135,6 +135,7 @@ describe('bluetoothhostTest', function() {
         let sta = bluetooth.getState();
         switch(sta){
             case 0:
+                console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
                 await sleep(3000);
                 break;
@@ -143,9 +144,10 @@ describe('bluetoothhostTest', function() {
                 await sleep(3000);
                 break;
             case 2:
-                console.info('[bluetooth_js] state is On:'+ JSON.stringify(sta));
+                console.info('[bluetooth_js] bt turn on:'+ JSON.stringify(sta));
                 break;
             case 3:
+                console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
                 await sleep(3000);
                 break;
