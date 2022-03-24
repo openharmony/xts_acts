@@ -130,6 +130,13 @@ function sleep(ms) {
 
 describe('userauthTest', function () {
 
+    /*
+        * @tc.number    : Security_IAM_PIN_Kit_Func_0101
+        * @tc.name      : Kit interface get version
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
     it('Security_IAM_PIN_Kit_Func_0101', 0, async function (done) {
         try {
             let getversionresult = null;
@@ -143,7 +150,14 @@ describe('userauthTest', function () {
         }
     })
 
-    it('Security_IAM_PIN_Kit_Func_0102', 1, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Kit_Func_0102
+        * @tc.name      : Kit interface get AvailabeStatus
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
+    it('Security_IAM_PIN_Kit_Func_0102', 0, async function (done) {
         console.info('testFace GetAvailabeStatusTest0101 start');
         try {
             publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
@@ -196,7 +210,13 @@ describe('userauthTest', function () {
         }
     })
 
-
+    /*
+        * @tc.number    : Security_IAM_PIN_Kit_Func_0103
+        * @tc.name      : Kit interface auth and cancel auth
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
 it('Security_IAM_PIN_Kit_Func_0103', 0, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
@@ -219,7 +239,6 @@ it('Security_IAM_PIN_Kit_Func_0103', 0, async function (done) {
                             console.info('AuthTest_0101 publicaddCredential = ' + addfaceresult.addCredresult);
                             expect(ResultCode.SUCCESS).assertEqual(addfaceresult.addCredresult);
                             publicFC.publicauth(UserAuthKit,challenge,AuthType.FACE,10000, async function (data) {
-//                                console.info('testFace AuthTest_0101 onResult = ' + JSON.stringify(data));
                                 let faceauth101 = data;
                                 console.info('AuthTest_0101 publicauth = ' + faceauth101.authresult);
                                 expect(ResultCode.SUCCESS).assertEqual(faceauth101.authresult);
@@ -267,6 +286,13 @@ it('Security_IAM_PIN_Kit_Func_0103', 0, async function (done) {
         }
     })
 
+    /*
+        * @tc.number    : Security_IAM_PIN_Kit_Func_0104
+        * @tc.name      : Kit interface enum AuthTrustLevel
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
     it('Security_IAM_PIN_Kit_Func_0104', 0, async function (done) {
         console.info('testFace Security_IAM_PIN_Kit_Func_0104 start');
         expect(10000).assertEqual(userAuthNorth.AuthTrustLevel.ATL1);
@@ -277,6 +303,13 @@ it('Security_IAM_PIN_Kit_Func_0103', 0, async function (done) {
         done();
     })
 
+    /*
+        * @tc.number    : Security_IAM_PIN_Kit_Func_0105
+        * @tc.name      : Kit interface enum FaceTips
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
     it('Security_IAM_PIN_Kit_Func_0105', 0, async function (done) {
         console.info('testFace Security_IAM_PIN_Kit_Func_0105 start');
         expect(1).assertEqual(userAuthNorth.FaceTips.FACE_AUTH_TIP_TOO_BRIGHT);
@@ -294,6 +327,13 @@ it('Security_IAM_PIN_Kit_Func_0103', 0, async function (done) {
         done();
     })
 
+    /*
+        * @tc.number    : Security_IAM_PIN_Kit_Func_0106
+        * @tc.name      : Kit interface enum UserAuthType
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
     it('Security_IAM_PIN_Kit_Func_0106', 0, async function (done) {
         console.info('testFace Security_IAM_PIN_Kit_Func_0106 start');
         expect(2).assertEqual(userAuthNorth.UserAuthType.FACE);
@@ -302,6 +342,13 @@ it('Security_IAM_PIN_Kit_Func_0103', 0, async function (done) {
         done();
     })
 
+    /*
+        * @tc.number    : Security_IAM_PIN_Kit_Func_0107
+        * @tc.name      : Kit interface enum ResultCode
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
     it('Security_IAM_PIN_Kit_Func_0107', 0, async function (done) {
         console.info('testFace Security_IAM_PIN_Kit_Func_0107 start');
         expect(0).assertEqual(userAuthNorth.ResultCode.SUCCESS);
@@ -319,6 +366,13 @@ it('Security_IAM_PIN_Kit_Func_0103', 0, async function (done) {
         done();
     })
 
+    /*
+        * @tc.number    : Security_IAM_PIN_Kit_Func_0108
+        * @tc.name      : Kit interface enum FingerprintTips
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
     it('Security_IAM_PIN_Kit_Func_0108', 0, async function (done) {
         console.info('testFace Security_IAM_PIN_Kit_Func_0108 start');
         expect(0).assertEqual(userAuthNorth.FingerprintTips.FINGERPRINT_AUTH_TIP_GOOD);

@@ -26,7 +26,6 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-//同步
 function publicRegisterInputer(PinAuth,AuthSubType,Inputerdata){
     console.info('testFace publicRegisterInputer in');
     try {
@@ -194,7 +193,6 @@ function publicupdateCred(UserIDM,CredentialInfo,callback1,callback2){
     }
 }
 
-//同步
 function publiccancel(UserIDM,challenge){
     console.info('testFace publiccancel in');
     try {
@@ -328,7 +326,6 @@ function publicgetallAuthInfo(UserIDM,callback){
     }
 }
 
-//同步
 function publicgetAvailabeStatus(UserAuth,authType,authTrustLevel){
     console.info('testFace publicgetAvailableStatus in');
     try {
@@ -465,7 +462,6 @@ function publicauthUser(UserAuth,userID,challenge,authType,authTrustLevel,callba
     }
 }
 
-//同步
 function publicgecancelAuth(UserAuth,contextID){
     console.info('testFace publicgecancelAuth in');
     try {

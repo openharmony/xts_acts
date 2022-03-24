@@ -14,8 +14,6 @@
  */
 
 require('./Security_IAM_PIN_DFX_CallbackJsunit.test.js')
-
-// require('./mytest.test.js')
 require('./Security_IAM_PIN_Func_CallbackJsunit.test.js')
 require('./Security_IAM_PIN_Kit_CallbackJsunit.test.js')
 require('./Security_IAM_Face_DFX_CallbackJsunit.test.js')

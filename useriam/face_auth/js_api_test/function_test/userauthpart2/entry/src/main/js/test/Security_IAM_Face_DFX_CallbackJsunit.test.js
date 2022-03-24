@@ -121,7 +121,14 @@ function sleep(ms) {
 
 describe('userauthTest', function () {
 
-    it('Security_IAM_Face_AddCred_DFX_0103', 2, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_AddCred_DFX_0103
+        * @tc.name      : Can't add face with no pin
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 3
+    */
+    it('Security_IAM_Face_AddCred_DFX_0103', 3, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
             publicFC.publicOpenSession(UserIDM, function (data) {
@@ -168,6 +175,13 @@ describe('userauthTest', function () {
         }
     })
 
+    /*
+        * @tc.number    : Security_IAM_Face_AddCred_DFX_0104
+        * @tc.name      : Can't add face with no pin
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
     it('Security_IAM_Face_AddCred_DFX_0104', 2, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
@@ -214,7 +228,14 @@ describe('userauthTest', function () {
         }
     })
 
-    it('Security_IAM_Face_Delet_DFX_0104', 2, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_Delet_DFX_0104
+        * @tc.name      : Delete face with no pin
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 3
+    */
+    it('Security_IAM_Face_Delet_DFX_0104', 3, async function (done) {
 		console.info('testFace Security_IAM_Face_Delet_DFX_0104 start');
         try {
             publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
@@ -244,7 +265,14 @@ describe('userauthTest', function () {
         }
     })
 
-    it('Security_IAM_Face_Delet_DFX_0105', 2, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_Delet_DFX_0105
+        * @tc.name      : Delete face with no face
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_Face_Delet_DFX_0105', 1, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
             publicFC.publicOpenSession(UserIDM, function (data) {
@@ -290,7 +318,14 @@ describe('userauthTest', function () {
         }
     })
 
-    it('Security_IAM_Face_Auth_DFX_0101', 2, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_Auth_DFX_0101
+        * @tc.name      : Auth face with no pin
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 3
+    */
+    it('Security_IAM_Face_Auth_DFX_0101', 3, async function (done) {
         console.info('testFace Security_IAM_Face_Auth_DFX_0101 start');
         try {
             publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
@@ -320,6 +355,13 @@ describe('userauthTest', function () {
         }
     })
 
+    /*
+        * @tc.number    : Security_IAM_Face_Auth_DFX_0102
+        * @tc.name      : Auth face with no face
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 3
+    */
     it('Security_IAM_Face_Auth_DFX_0102', 2, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
@@ -364,7 +406,14 @@ describe('userauthTest', function () {
         }
     })
 
-    it('Security_IAM_Face_Auth_DFX_0104', 2, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_Auth_DFX_0104
+        * @tc.name      : Auth face after delete pin
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 4
+    */
+    it('Security_IAM_Face_Auth_DFX_0104', 4, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
             publicFC.publicOpenSession(UserIDM, function (data) {
@@ -413,6 +462,13 @@ describe('userauthTest', function () {
         }
     })
 
+    /*
+        * @tc.number    : Security_IAM_Face_AddCred_DFX_0101
+        * @tc.name      : Can't add face by old token
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 4
+    */
     it('Security_IAM_Face_AddCred_DFX_0101', 0, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
@@ -471,7 +527,14 @@ describe('userauthTest', function () {
         }
     })
 
-    it('Security_IAM_Face_Delet_DFX_0101', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_AddCred_DFX_0101
+        * @tc.name      : Can't delete face by wrong token
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_Face_Delet_DFX_0101', 2, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
             let challenge ;
@@ -523,198 +586,4 @@ describe('userauthTest', function () {
             expect(null).assertFail();
         }
     })
-
-
-//    it('testcancelauthpinwitholdcontextID101', 0, async function (done) {
-//        try {
-//            publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
-//            publicFC.publicOpenSession(UserIDM, function (data) {
-//                let challenge1 = data
-//                console.info("testcancelauthpinwitholdcontextID101 challenge1 = " + challenge1)
-//                publicFC.publicaddCredential(UserIDM, CredentialInfopinsix, function (data) {
-//                    let addcredresult101 = data
-//                    console.info("testcancelauthpinwitholdcontextID101 addcredresult101 = " + addcredresult101)
-//                    let contextID1 = null
-//                    publicFC.publicauth(UserAuth, challenge1, AuthType.PIN, AuthTurstLevel.ATL1, function (data) {
-//                        let authinfo101 = data
-//                        contextID1 = UserAuth.authUser(userID, challenge1, AuthType.PIN, AuthTurstLevel.ATL1,
-//                        async function (data) {
-//                            await sleep(5000);
-//                            let cancelresult = publicFC.publicgecancelAuth(UserAuth, authinfo101.contextID)
-//                            console.info("testcancelauthpinwitholdcontextID101 cancelresult = " + cancelresult)
-//                            expect(ResultCode.FAIL).assertEqual(authinfo101.contextID);
-//                            cancelresult = publicFC.publicgecancelAuth(UserAuth, contextID1)
-//                            expect(ResultCode.SUCCESS).assertEqual(contextID1);
-//                            publicFC.publicauth(UserAuth, challenge1, AuthType.PIN, AuthTurstLevel.ATL1,
-//                            function (data) {
-//                                let info1011 = data
-//                                console.info("testcancelauthpinwitholdcontextID101 info1011 = " + info1011)
-//                                let token = info1011.extraInfo.token
-//                                console.info("testcancelauthpinwitholdcontextID101 token = " + token)
-//                                publicFC.publicdelUser(UserIDM, token, function (data) {
-//                                    let deluserresult = data.delUserresult
-//                                    console.info("testcancelauthpinwitholdcontextID deluserresult =" + deluserresult)
-//                                    publicFC.publicCloseSession(UserIDM, function (data) {
-//                                        console.info("testcancelauthpinwitholdcontextID101 closesession = " + data)
-//                                        publicFC.publicunRegisterInputer(PinAuth, function (data) {
-//                                            console.info("testcancelauthpinwitholdcontextID101 unRegist = " + data)
-//                                            done();
-//                                        })
-//                                    })
-//                                }, function (data) {
-//                                })
-//                            }, function (data) {
-//                            })
-//                        }, function (data) {
-//                        })
-//                    }, function (data) {
-//                    })
-//                }, function (data) {
-//                })
-//
-//            })
-//
-//        } catch (e) {
-//            console.log("testcancelauthwitholdchallenge101 fail " + e);
-//            expect(null).assertFail();
-//        }
-//    })
-//
-//    it('testaddpincancelwitholdchallenge101', 0, async function (done) {
-//		console.info('testFace testaddpincancelwitholdchallenge101 start');
-//        try {
-//            publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_MIXED, Inputerdata)
-//            publicFC.publicOpenSession(UserIDM, function (data) {
-//                let challenge = data
-//                console.info("testaddpincancelwitholdchallenge101 challenge = " + data)
-//                publicFC.publicOpenSession(UserIDM, function (data) {
-//                    let challenge1 = data
-//                    console.info("testaddpincancelwitholdchallenge101 challenge1 = " + data)
-//                    UserIDM.updateCredential(CredentialInfopinsix, async function (data) {
-//                        await sleep(5000);
-//                        let cancelresult = publicFC.publiccancel(UserIDM, challenge)
-//                        console.info("testaddpincancelwitholdchallenge101 cancelresult = " + cancelresult)
-//                        expect(ResultCode.FAIL).assertEqual(cancelresult);
-//                        let cancelresult1 = publicFC.publiccancel(UserIDM, challenge1)
-//                        console.info("testaddpincancelwitholdchallenge101 cancelresult1 = " + cancelresult1)
-//                        expect(ResultCode.SUCCESS).assertEqual(cancelresult1);
-//                        publicFC.publicCloseSession(UserIDM, function (data) {
-//                            console.info("testaddpincancelwitholdchallenge101 closesession = " + data)
-//                            publicFC.publicunRegisterInputer(PinAuth, function (data) {
-//                                console.info("testaddpincancelwitholdchallenge101 unRegist = " + data)
-//                                done();
-//                            })
-//                        })
-//                    }, function (data) {
-//                    })
-//
-//                })
-//
-//            })
-//
-//        } catch (e) {
-//            console.log("testaddpincancelwitholdchallenge101 fail " + e);
-//            expect(null).assertFail();
-//        }
-//    })
-//
-//    it('testaddfacecancelwitholdchallenge101', 0, async function (done) {
-//        try {
-//            publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
-//            publicFC.publicOpenSession(UserIDM, function (data) {
-//                let challenge1 = data;
-//                console.info("testaddfacecancelwitholdchallenge101 challenge1 = " + challenge1)
-//                publicFC.publicOpenSession(UserIDM, function (data) {
-//                    let challenge2 = data;
-//                    console.info("testaddfacecancelwitholdchallenge101 challenge2 = " + challenge2)
-//                    publicFC.publicaddCredential(UserIDM, CredentialInfopinsix, function (data) {
-//                        let info101 = publicFC.publicauth(UserAuth, challenge2, AuthType.PIN, AuthTurstLevel.ATL1)
-//                        let token = info101.extraInfo.token
-//                        CredentialInfoface2d.token = token
-//                        console.info("testaddfacecancelwitholdchallenge101 token = " + token)
-//                        UserIDM.addCredential(CredentialInfoface2d, async function (data) {
-//                            let result1 = data.addCredresult
-//                            console.info("testaddfacecancelwitholdchallenge101 result1 = " + result1)
-//                            await sleep(3000);
-//                            let cancelresult = publicFC.publiccancel(UserIDM, challenge1)
-//                            console.info("testaddfacecancelwitholdchallenge101 cancelresult = " + cancelresult)
-//                            expect(ResultCode.FAIL).assertEqual(cancelresult);
-//                            let cancelresult2 = publicFC.publiccancel(UserIDM, challenge2)
-//                            console.info("testaddfacecancelwitholdchallenge101 cancelresult2 = " + cancelresult2)
-//                            expect(ResultCode.SUCCESS).assertEqual(cancelresult);
-//                            expect(ResultCode.CANCELED).assertEqual(result1);
-//                            publicFC.publicCloseSession(UserIDM, function (data) {
-//                                console.info("testaddfacecancelwitholdchallenge101 closesession = " + data)
-//                                publicFC.publicunRegisterInputer(PinAuth, function (data) {
-//                                    console.info("testaddfacecancelwitholdchallenge101 unRegist = " + data)
-//                                    done();
-//                                })
-//                            })
-//                        }, function (data) {
-//                        })
-//
-//                    }, function (data) {
-//                    })
-//
-//                })
-//
-//            })
-//
-//        } catch (e) {
-//            console.log("testaddfacecancel101 fail " + e);
-//            expect(null).assertFail();
-//        }
-//    })
-//
-//    it('testcancelauthfacewitholdcontextID101', 0, async function (done) {
-//        try {
-//            publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
-//            publicFC.publicOpenSession(UserIDM, function (data) {
-//                let challenge = data
-//                console.info("testcancelauthfacewitholdcontextID101 challenge = " + challenge)
-//                publicFC.publicaddCredential(UserIDM, CredentialInfopinsix, function (data) {
-//                    let info101 = publicFC.publicauth(UserAuth, challenge, AuthType.PIN, AuthTurstLevel.ATL1)
-//                    console.info("testcancelauthfacewitholdcontextID101 info101 = " + info101)
-//                    let token = info101.extraInfo.token
-//                    CredentialInfoface2d.token = token
-//                    console.info("testcancelauthfacewitholdcontextID101 token = " + token)
-//                     publicFC.publicaddCredential(UserIDM, CredentialInfoface2d, function (data) {
-//                         let addfaceresult = data.addCredresult
-//                         console.info("testcancelauthfacewitholdcontextID101 addfaceresult = " + addfaceresult)
-//                        let contextID1 = null
-//                         publicFC.publicauth(UserAuth, challenge, AuthType.PIN, AuthTurstLevel.ATL1,function(data){
-//                             let authinfo101 = data
-//                            contextID1 = UserAuth.auth(challenge, AuthType.FACE, AuthTurstLevel.ATL1,
-//                            async function(data){
-//                                await sleep(3000);
-//                                let authfacecancel101 = publicFC.publicgecancelAuth(UserAuth, authinfo101.contextID)
-//                                console.info("testcancelauthfacewitholdcontextID101 cancel101=" + authfacecancel101)
-//                                expect(ResultCode.FAIL).assertEqual(authfacecancel101);
-//                                let authfacecancel1011 = publicFC.publicgecancelAuth(UserAuth, contextID1);
-//                                console.info("testcancelauthfacewitholdcontextID101 cancel = " + authfacecancel1011)
-//                                expect(ResultCode.CANCELED).assertEqual(authfacecancel1011);
-//                                publicFC.publicdelUser(UserIDM, token, function (data) {
-//                                    let deluserresult = data.delUserresult
-//                                    console.info("testcancelauthfacewitholdcontextID101 delresult =" + deluserresult)
-//                                    publicFC.publicCloseSession(UserIDM, function (data) {
-//                                        console.info("testcancelauthfacewitholdcontextID101 closesession = " + data)
-//                                        publicFC.publicunRegisterInputer(PinAuth, function (data) {
-//                                            console.info("testcancelauthfacewitholdcontextID101 unRegist = " + data)
-//                                            done();
-//                                        })
-//                                    })
-//                                }, function (data) {
-//                                })
-//                            },function(data){})
-//
-//                        },function(data){})
-//
-//                    }, function (data) {})
-//                }, function (data) {})
-//            })
-//        } catch (e) {
-//            console.log("testauthfacecancel101 fail " + e);
-//            expect(null).assertFail();
-//        }
-//    })
 })

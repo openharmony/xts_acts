@@ -122,14 +122,12 @@ function sleep(ms) {
 describe('userauthTest', function () {
 	
     /*
-        * @tc.number    : testGetEntriesString101
-        * @tc.name      : Use getEntries get the value by mixing the string key
-        * @tc.desc      : Mixed strings value can be obtained correctly
+        * @tc.number    : Security_IAM_Coauth_Func_0102
+        * @tc.name      : Can't use old challenge add face in new session
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level 1
     */
-
     it('Security_IAM_Coauth_Func_0102', 3, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
@@ -180,7 +178,14 @@ describe('userauthTest', function () {
             expect(null).assertFail();
         }
     })
-
+	
+    /*
+        * @tc.number    : Security_IAM_Coauth_Func_0104
+        * @tc.name      : Inquire face credential information
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
      it('Security_IAM_Coauth_Func_0104', 3, async function (done) {
          try {
              publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
@@ -232,6 +237,13 @@ describe('userauthTest', function () {
          }
      })
 
+	/*
+        * @tc.number    : Security_IAM_Coauth_Func_0105
+        * @tc.name      : Inquire all credential information with one credential
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
     it('Security_IAM_Coauth_Func_0105', 3, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
@@ -273,6 +285,13 @@ describe('userauthTest', function () {
         }
     })
 
+    /*
+        * @tc.number    : Security_IAM_Coauth_Func_0106
+        * @tc.name      : Inquire all credential information with two credential
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
      it('Security_IAM_Coauth_Func_0106', 3, async function (done) {
          try {
              publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
@@ -320,7 +339,13 @@ describe('userauthTest', function () {
          }
      })
 
-
+    /*
+        * @tc.number    : Security_IAM_Coauth_Func_0108
+        * @tc.name      : Get face availabe status
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 3
+    */
     it('Security_IAM_Coauth_Func_0108', 3, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
@@ -374,6 +399,13 @@ describe('userauthTest', function () {
         }
     })
 
+    /*
+        * @tc.number    : Security_IAM_Coauth_Func_0109
+        * @tc.name      : Get pin availabe status
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 3
+    */
     it('Security_IAM_Coauth_Func_0109', 2, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
@@ -422,6 +454,13 @@ describe('userauthTest', function () {
         }
     })
 
+    /*
+        * @tc.number    : Security_IAM_Coauth_Func_0110
+        * @tc.name      : Get pin and face property
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 3
+    */
     it('Security_IAM_Coauth_Func_0110', 3, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
@@ -467,6 +506,13 @@ describe('userauthTest', function () {
         }
     })
     
+	/*
+        * @tc.number    : Security_IAM_Coauth_Func_0112
+        * @tc.name      : Anti violence cracking with four times
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 3
+    */
     it('Security_IAM_Coauth_Func_0112', 3, async function (done) {
         console.info('testFace Security_IAM_Coauth_Func_0112 start');
         try {
@@ -483,8 +529,8 @@ describe('userauthTest', function () {
                         console.info("Security_IAM_Coauth_Func_0112 token = " + token);
                         publicFC.publicunRegisterInputer(PinAuth, async function (data) {
                             console.info("Security_IAM_Coauth_Func_0112 unRegist = " + data);
-                            await setTimeout(
-							publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdatan), 500)
+                            setTimeout(
+						publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdatan), 500)
                             console.info("Security_IAM_Coauth_Func_0112 challenge2 = " + challenge1);
                             await publicFC.publicauth(UserAuth, challenge1, AuthType.PIN, AuthTurstLevel.ATL1,
 							function (data) {
@@ -510,8 +556,8 @@ describe('userauthTest', function () {
                                                 expect(1).assertEqual(data.remainTimes);
                                                 publicFC.publicunRegisterInputer(PinAuth, async function (data) {
                                                     console.info("Security_IAM_Coauth_Func_0112 unRegist = " + data);
-                                                    await setTimeout(publicFC.publicRegisterInputer(
-													PinAuth, AuthSubType.PIN_SIX, Inputerdata), 500)
+                                                    setTimeout(publicFC.publicRegisterInputer(
+												PinAuth, AuthSubType.PIN_SIX, Inputerdata), 500)
                                                     console.info("Coauth_Func_0112 challenge2 = " + challenge1);
                                                     await publicFC.publicauth(
 													UserAuth, challenge1, AuthType.PIN, AuthTurstLevel.ATL1,
@@ -555,6 +601,13 @@ describe('userauthTest', function () {
         }
     })
 
+	/*
+        * @tc.number    : Security_IAM_Coauth_Func_0122
+        * @tc.name      : Cancel auth face.
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
     it('Security_IAM_Coauth_Func_0122', 0, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
@@ -577,7 +630,6 @@ describe('userauthTest', function () {
                             console.info('Coauth_Func_0122 publicaddCredential = ' + addfaceresult.addCredresult);
                             expect(ResultCode.SUCCESS).assertEqual(addfaceresult.addCredresult);
                             publicFC.publicauth(UserAuth,challenge,AuthType.FACE,10000, async function (data) {
-//                                console.info('testFace AuthTest_0101 onResult = ' + JSON.stringify(data));
                                 let faceauth101 = data;
                                 console.info('Coauth_Func_0122 publicauth = ' + faceauth101.authresult);
                                 expect(ResultCode.SUCCESS).assertEqual(faceauth101.authresult);
@@ -625,6 +677,13 @@ describe('userauthTest', function () {
         }
     })
 
+	/*
+        * @tc.number    : Security_IAM_Coauth_Func_0113
+        * @tc.name      : Anti violence cracking with five times
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+    */
     it('Security_IAM_Coauth_Func_0113', 3, async function (done) {
         console.info('testFace Security_IAM_Coauth_Func_0113 start');
         try {
@@ -641,8 +700,8 @@ describe('userauthTest', function () {
                         console.info("Security_IAM_Coauth_Func_0113 token = " + token);
                         publicFC.publicunRegisterInputer(PinAuth, async function (data) {
                             console.info("Security_IAM_Coauth_Func_0113 unRegist = " + data);
-                            await setTimeout(
-							publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdatan), 500)
+                            setTimeout(
+						publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdatan), 500)
                             console.info("Security_IAM_Coauth_Func_0113 challenge2 = " + challenge1);
                             await publicFC.publicauth(UserAuth, challenge1, AuthType.PIN, AuthTurstLevel.ATL1,
 							function (data) {
@@ -669,21 +728,14 @@ describe('userauthTest', function () {
                                                     expect(0).assertEqual(data.remainTimes);
                                                     publicFC.publicunRegisterInputer(PinAuth, async function (data) {
                                                         console.info("Coauth_Func_0113 unRegist = " + data);
-                                                        await setTimeout(publicFC.publicRegisterInputer(
-														PinAuth, AuthSubType.PIN_SIX, Inputerdata), 500)
+                                                        setTimeout(publicFC.publicRegisterInputer(
+													PinAuth, AuthSubType.PIN_SIX, Inputerdata), 500)
                                                         console.info("Coauth_Func_0113 challenge2 = " + challenge1);
                                                         await publicFC.publicauth(
 														UserAuth, challenge1, AuthType.PIN, AuthTurstLevel.ATL1,
 														async function (data) {
                                                             let authresult6 = data.authresult
                                                             expect(ResultCode.LOCKED).assertEqual(authresult6);
-// await sleep(181000);
-// await publicFC.publicauth(UserAuth, challenge1, AuthType.PIN, AuthTurstLevel.ATL1, async function (data) {
-//     let authresult7 = data.authresult
-//     expect(ResultCode.SUCCESS).assertEqual(authresult7);
-//     publicFC.publicdelUser(UserIDM, token, function (data) {
-//         let delresult = data.delUserresult
-//         console.info("Security_IAM_Coauth_Func_0113 delresult = " + delresult);
                                                                     publicFC.publicCloseSession(UserIDM,
 																	function (data) {
                                                                         console.info("closesession = " + data);
@@ -693,10 +745,6 @@ describe('userauthTest', function () {
                                                                             done();
                                                                         })
                                                                     })
-                                                            //     }, function (data) {
-                                                            //     })
-                                                            // }, function (data) {
-                                                            // })
                                                         }, function (data) {
                                                         })
                                                     })
@@ -718,7 +766,7 @@ describe('userauthTest', function () {
                 })
             })
         } catch (e) {
-            console.log("Security_IAM_Coauth_Func_0112 fail " + e);
+            console.log("Security_IAM_Coauth_Func_0113 fail " + e);
             expect(null).assertFail();
         }
     })
