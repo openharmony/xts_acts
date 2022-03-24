@@ -214,12 +214,13 @@ static void CreateTxt()
 static int CapsetOnlySETPCAP(int num)
 {
     struct __user_cap_header_struct capheader;
-    memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0, sizeof(struct __user_cap_header_struct));
+    (void)memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+        0, sizeof(struct __user_cap_header_struct));
     capheader.version = _LINUX_CAPABILITY_VERSION_3;
     capheader.pid = 0;
     struct __user_cap_data_struct capdata[CAP_NUM];
-    memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
-             0, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    (void)memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
+        0, CAP_NUM * sizeof(struct __user_cap_data_struct));
     capdata[CAP_TO_INDEX(CAP_SETPCAP)].permitted |= CAP_TO_MASK(CAP_SETPCAP);
     capdata[CAP_TO_INDEX(CAP_SETPCAP)].effective |= CAP_TO_MASK(CAP_SETPCAP);
     capdata[CAP_TO_INDEX(CAP_SETPCAP)].inheritable |= CAP_TO_MASK(CAP_SETPCAP);
@@ -235,12 +236,13 @@ static int CapsetOnlySETPCAP(int num)
 static int AddCapUnauthorized(int num)
 {
     struct __user_cap_header_struct capheader;
-    memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0, sizeof(struct __user_cap_header_struct));
+    (void)memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+        0, sizeof(struct __user_cap_header_struct));
     capheader.version = _LINUX_CAPABILITY_VERSION_3;
     capheader.pid = 0;
     struct __user_cap_data_struct capdata[CAP_NUM];
-    memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
-             0, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    (void)memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
+        0, CAP_NUM * sizeof(struct __user_cap_data_struct));
     capdata[0].permitted = LINUX_FULL_CAP;
     capdata[0].effective = LINUX_FULL_CAP;
     capdata[0].inheritable = LINUX_FULL_CAP;
@@ -256,12 +258,21 @@ static int AddCapUnauthorized(int num)
 static int CapgetWithAllCap(int num)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0, sizeof(struct __user_cap_header_struct));
+    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+        0, sizeof(struct __user_cap_header_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     capheader.version = _LINUX_CAPABILITY_VERSION_3;
     capheader.pid = 0;
     struct __user_cap_data_struct capdataget[CAP_NUM] = { { 0 }, { 0 } };
-    memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
-             0, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    result = memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
+        0, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     int ret = capget(&capheader, &capdataget[0]);
     if (ret != 0) {
         EXPECT_EQ(ret, 0) << "ErrInfo: Failed to get CAPs";
@@ -280,12 +291,21 @@ static int CapgetWithAllCap(int num)
 static int CapgetWithNoCap(int num)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0, sizeof(struct __user_cap_header_struct));
+    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+        0, sizeof(struct __user_cap_header_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     capheader.version = _LINUX_CAPABILITY_VERSION_3;
     capheader.pid = 0;
     struct __user_cap_data_struct capdataget[CAP_NUM] = { { 0 }, { 0 } };
-    memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
-             0, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    result = memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
+        0, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     int ret = capget(&capheader, &capdataget[0]);
     if (ret != 0) {
         EXPECT_EQ(ret, 0) << "ErrInfo: Failed to get CAPs";
@@ -304,12 +324,21 @@ static int CapgetWithNoCap(int num)
 static int CapgetOnlySETPCAP(int num)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0, sizeof(struct __user_cap_header_struct));
+    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+        0, sizeof(struct __user_cap_header_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     capheader.version = _LINUX_CAPABILITY_VERSION_3;
     capheader.pid = 0;
     struct __user_cap_data_struct capdataget[CAP_NUM] = { { 0 }, { 0 } };
-    memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
-             0, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    result = memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
+        0, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     int ret = capget(&capheader, &capdataget[0]);
     if (ret != 0) {
         EXPECT_EQ(ret, 0) << "ErrInfo: Failed to get CAPs";
@@ -372,12 +401,21 @@ static int CapsetWithoutSETPCAP()
 static int CapsetWithVersion(pid_t pid, unsigned int version)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0, sizeof(struct __user_cap_header_struct));
+    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+        0, sizeof(struct __user_cap_header_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     capheader.pid = pid;
     capheader.version = version;
     struct __user_cap_data_struct capdata[CAP_NUM] = { { 0 }, { 0 } };
-    memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
-             0xff, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    result = memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
+        0xff, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     // Capget based on input parameters
     int ret = capset(&capheader, &capdata[0]);
     if (ret != 0) {
@@ -390,12 +428,21 @@ static int CapsetWithVersion(pid_t pid, unsigned int version)
 static int CapgetWithVersion(pid_t pid, unsigned int version)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0, sizeof(struct __user_cap_header_struct));
+    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+        0, sizeof(struct __user_cap_header_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     capheader.pid = pid;
     capheader.version = version;
     struct __user_cap_data_struct capdataget[CAP_NUM] = { { 0 }, { 0 } };
-    memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
-             0xff, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    result = memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
+        0xff, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     // Capget based on input parameters
     int ret = capget(&capheader, &capdataget[0]);
     if (ret != 0) {
@@ -408,12 +455,21 @@ static int CapgetWithVersion(pid_t pid, unsigned int version)
 static int CapgetWithCaps(pid_t pid, unsigned int caps)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0, sizeof(struct __user_cap_header_struct));
+    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+        0, sizeof(struct __user_cap_header_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     capheader.pid = pid;
     capheader.version = _LINUX_CAPABILITY_VERSION_3;
     struct __user_cap_data_struct capdataget[CAP_NUM] = { { 0 }, { 0 } };
-    memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
-             0xff, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    result = memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
+        0xff, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     // Capget based on input parameters and check whether the capability is the same as the input parameter
     int ret = capget(&capheader, &capdataget[0]);
     if (ret != 0 || capdataget[0].effective != caps) {
@@ -1179,12 +1235,13 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1500, Reliability | MediumTest | Lev
     if (pid == 0) {
         int exitCode = 0;
         struct __user_cap_header_struct capheader = { 0 };
-        memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0, sizeof(struct __user_cap_header_struct));
+        (void)memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+            0, sizeof(struct __user_cap_header_struct));
         capheader.version = _LINUX_CAPABILITY_VERSION_3;
         capheader.pid = 0;
         struct __user_cap_data_struct capdata[CAP_NUM] = { { 0 }, { 0 } };
-        memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
-        LINUX_FULL_CAP, CAP_NUM * sizeof(struct __user_cap_data_struct));
+        (void)memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
+            LINUX_FULL_CAP, CAP_NUM * sizeof(struct __user_cap_data_struct));
         capdata[CAP_TO_INDEX(INVALID_CAP_TO_INDEX)].permitted &= ~CAP_TO_MASK(INVALID_CAP_TO_INDEX);
         capdata[CAP_TO_INDEX(INVALID_CAP_TO_INDEX)].effective &= ~CAP_TO_MASK(INVALID_CAP_TO_INDEX);
         capdata[CAP_TO_INDEX(INVALID_CAP_TO_INDEX)].inheritable &= ~CAP_TO_MASK(INVALID_CAP_TO_INDEX);
@@ -1583,10 +1640,11 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2300, Security | MediumTest | Level1
 {
     int ret;
     struct __user_cap_header_struct capheader = { 0 };
-    memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0, sizeof(struct __user_cap_header_struct));
+    (void)memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+        0, sizeof(struct __user_cap_header_struct));
     capheader.version = _LINUX_CAPABILITY_VERSION_3;
     struct __user_cap_data_struct capdataget[CAP_NUM] = { { 0 }, { 0 } };
-    memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
+    (void)memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
     0, CAP_NUM * sizeof(struct __user_cap_data_struct));
     pid_t pid = getpid();
     for (int num = OTHER_PID; num <= pid; num++) {
