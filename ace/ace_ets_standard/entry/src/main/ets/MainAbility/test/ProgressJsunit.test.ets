@@ -64,21 +64,15 @@ export default function progressJsunit() {
       console.info('testGetProgressAttr START');
       let strJson = getInspectorByKey('progress');
       let obj = JSON.parse(strJson);
-      console.info("component obj is: " + JSON.stringify(obj));
-      console.log("progress value" + JSON.stringify(obj.$attrs.value))
-      console.log("progress type" + JSON.stringify(obj.$type))
-      console.log("progress color" + JSON.stringify(obj.$attrs.color))
-      console.log("progress width" + JSON.stringify(obj.$attrs.width))
-      console.log("progress height" + JSON.stringify(obj.$attrs.height))
-      console.log("progress total" + JSON.stringify(obj.$attrs.total))
-      console.log("progress style" + JSON.stringify(obj.$attrs.style))
+      let objConstructor = JSON.parse(obj.$attrs.constructor)
+      console.log("progress constructor is " + objConstructor)
       expect(obj.$attrs.value).assertEqual(3.000000.toFixed(6))
       expect(obj.$type).assertEqual('Progress')
       expect(obj.$attrs.color).assertEqual("#FF0000FF")
       expect(obj.$attrs.width).assertEqual("50.00vp")
       expect(obj.$attrs.height).assertEqual("70.00vp")
-      expect(obj.$attrs.total).assertEqual(40.000000.toFixed(6))
-      expect(obj.$attrs.style).assertEqual("ProgressStyle.Linear")
+      expect(objConstructor.total).assertEqual(40.000000.toFixed(6))
+      expect(objConstructor.type).assertEqual("ProgressStyle.Linear")
       console.info('testGetProgressAttr END');
       done();
     });
@@ -93,8 +87,9 @@ export default function progressJsunit() {
       let strJson = getInspectorByKey('progress2');
       let obj = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      console.log("progress style" + JSON.stringify(obj.$attrs.style))
-      expect(obj.$attrs.style).assertEqual("ProgressStyle.Eclipse")
+      let objConstructor = JSON.parse(obj.$attrs.constructor)
+      console.log("progress constructor is " + objConstructor)
+      expect(objConstructor.type).assertEqual("ProgressStyle.Eclipse")
       console.info('testGetProgressAttr2 END');
       done();
     });
@@ -109,8 +104,9 @@ export default function progressJsunit() {
       let strJson = getInspectorByKey('progress3');
       let obj = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      console.log("progress style" + JSON.stringify(obj.$attrs.style))
-      expect(obj.$attrs.style).assertEqual("ProgressStyle.Ring")
+      let objConstructor = JSON.parse(obj.$attrs.constructor)
+      console.log("progress constructor is " + objConstructor)
+      expect(objConstructor.type).assertEqual("ProgressStyle.Ring")
       console.info('testGetProgressAttr3 END');
       done();
     });
@@ -125,8 +121,9 @@ export default function progressJsunit() {
       let strJson = getInspectorByKey('progress4');
       let obj = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      console.log("progress style" + JSON.stringify(obj.$attrs.style))
-      expect(obj.$attrs.style).assertEqual("ProgressStyle.ScaleRing")
+      let objConstructor = JSON.parse(obj.$attrs.constructor)
+      console.log("progress constructor is " + objConstructor)
+      expect(objConstructor.type).assertEqual("ProgressStyle.ScaleRing")
       console.info('testGetProgressAttr4 END');
       done();
     });
@@ -141,8 +138,9 @@ export default function progressJsunit() {
       let strJson = getInspectorByKey('progress5');
       let obj = JSON.parse(strJson);
       console.info("component obj is: " + JSON.stringify(obj));
-      console.log("progress style" + JSON.stringify(obj.$attrs.style))
-      expect(obj.$attrs.style).assertEqual("ProgressStyle.Capsule")
+      let objConstructor = JSON.parse(obj.$attrs.constructor)
+      console.log("progress constructor is " + objConstructor)
+      expect(objConstructor.type).assertEqual("ProgressStyle.Capsule")
       console.info('testGetProgressAttr5 END');
       done();
     });
