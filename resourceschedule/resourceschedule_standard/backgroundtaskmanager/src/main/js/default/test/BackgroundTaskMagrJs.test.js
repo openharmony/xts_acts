@@ -58,7 +58,7 @@ describe("TransientTaskJsTest", function () {
     it("TransientTaskJsTest001", 0, async function (done) {
         console.info('----------------------TransientTaskJsTest001---------------------------');
         function callback() {}
-        var info = backgroundTaskManager.requestSuspendDelay("test", callback);
+        let info = backgroundTaskManager.requestSuspendDelay("test", callback);
         if (info.requestId != -1) {
             console.info('TransientTaskJsTest001  backgroundTaskManager success, requestId:' + info.requestId);
             expect(true).assertTrue();
@@ -78,10 +78,10 @@ describe("TransientTaskJsTest", function () {
     it("TransientTaskJsTest002", 0, async function (done) {
         console.info('----------------------TransientTaskJsTest002---------------------------');
         function callback() {}
-        var info1 =  backgroundTaskManager.requestSuspendDelay("test", callback);
-        var info2 =  backgroundTaskManager.requestSuspendDelay("test", callback);
-        var info3 =  backgroundTaskManager.requestSuspendDelay("test", callback);
-        var info4 =  backgroundTaskManager.requestSuspendDelay("test", callback);
+        let info1 =  backgroundTaskManager.requestSuspendDelay("test", callback);
+        let info2 =  backgroundTaskManager.requestSuspendDelay("test", callback);
+        let info3 =  backgroundTaskManager.requestSuspendDelay("test", callback);
+        let info4 =  backgroundTaskManager.requestSuspendDelay("test", callback);
         if (info4.requestId == -1) {
             console.info('TransientTaskJsTest002 backgroundTaskManager more than three');
             expect(true).assertTrue();
@@ -102,7 +102,7 @@ describe("TransientTaskJsTest", function () {
      */
     it("TransientTaskJsTest003", 0, async function (done) {
         function callback() {}
-        var info = backgroundTaskManager.requestSuspendDelay("test", callback);
+        let info = backgroundTaskManager.requestSuspendDelay("test", callback);
         if (info.requestId != -1) {
             console.info('TransientTaskJsTest003  backgroundTaskManager success, requestId:' + info.requestId);
             expect(true).assertTrue();
@@ -134,7 +134,7 @@ describe("TransientTaskJsTest", function () {
      */
     it("TransientTaskJsTest004", 0, async function (done) {
         function callback() {}
-        var info = backgroundTaskManager.requestSuspendDelay("test", callback);
+        let info = backgroundTaskManager.requestSuspendDelay("test", callback);
         if (info.requestId != -1) {
             console.info('TransientTaskJsTest004  backgroundTaskManager success, requestId:' + info.requestId);
             expect(true).assertTrue();
@@ -169,7 +169,7 @@ describe("TransientTaskJsTest", function () {
     it("TransientTaskJsTest005", 0, async function (done) {
         console.info('----------------------TransientTaskJsTest005---------------------------');
         function callback() {}
-        var info = backgroundTaskManager.requestSuspendDelay("test", callback);
+        let info = backgroundTaskManager.requestSuspendDelay("test", callback);
         if (info.actualDealyTime != -1) {
             console.info('TransientTaskJsTest001  backgroundTaskManager success, actualDealyTime:' + 
             info.actualDealyTime);
@@ -190,7 +190,7 @@ describe("TransientTaskJsTest", function () {
     it("TransientTaskJsTest006", 0, async function (done) {
         console.info('----------------------TransientTaskJsTest006---------------------------');
         function callback() {}
-        var info = backgroundTaskManager.requestSuspendDelay("test", callback);
+        let info = backgroundTaskManager.requestSuspendDelay("test", callback);
         if (info.requestId != -1) {
             console.info('TransientTaskJsTest006  DelaySuspendInfo actualDealyTime:' + 
             info.actualDealyTime);
