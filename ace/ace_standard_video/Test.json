@@ -2,7 +2,7 @@
     "description": "Configuration for acevideo Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "30000",
+        "test-timeout": "1000000",
         "package": "com.example.acevideo",
         "shell-timeout": "30000"
     },
