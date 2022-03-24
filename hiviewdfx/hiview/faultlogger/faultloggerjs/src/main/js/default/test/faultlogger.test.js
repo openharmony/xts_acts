@@ -89,7 +89,8 @@ describe("FaultlogJsTest", function () {
             const loopTimes = 10;
             for (let i = 0; i < loopTimes; i++) {
                 console.info("--------FaultlogJsTest_002 3 + " + i + "----------");
-                faultlogger.addFaultLog(i + 100, faultlogger.FaultType.CPP_CRASH, module, "faultloggertestsummary02 " + i);
+                faultlogger.addFaultLog(i + 100, 
+                    faultlogger.FaultType.CPP_CRASH, module, "faultloggertestsummary02 " + i);
                 await msleep(300);
             }
             await msleep(1000);
@@ -135,27 +136,38 @@ describe("FaultlogJsTest", function () {
         try {
             let now = Date.now();
             console.info("FaultlogJsTest_003 2 + " + now);
-            let module = "ohos.faultloggerjs.test";
-            const loopTimes = 10;
-            for (let i = 0; i < loopTimes; i++) {
-                console.info("--------FaultlogJsTest_003 3 + " + i + "----------");
-                faultlogger.addFaultLog(i + 200, faultlogger.FaultType.JS_CRASH, module, "faultloggertestsummary03 " + i);
-                await msleep(300);
-            }
+            const loopTimes = 2;
+            let i = 0;
+            let pro = new Promise(
+                (r, e) => {
+                    setTimeout(function run() {
+                        if (i < loopTimes) {
+                            setTimeout(run, 1001);
+                        } else {
+                            r("done!")
+                            return
+                        }
+                        console.info("--------FaultlogJsTest_003 3 + " + i + "----------");
+                        ++i;
+                        let dataStr = ["1", "2"]
+                        console.info(dataStr[2].test);
+                    }, 1001);
+                }
+            );
+            await pro;
             await msleep(1000);
 
             console.info("--------FaultlogJsTest_003 4" + "----------");
             let ret = await faultlogger.querySelfFaultLog(faultlogger.FaultType.JS_CRASH);
             console.info("FaultlogJsTest_003 ret == " + ret.length);
+            if (ret.length > 0) {
+                expect(true).assertTrue();
+            } else {
+                expect(false).assertTrue();
+            }
             expect(ret.length).assertEqual(loopTimes);
-            for (let i = 0; i < loopTimes; i++) {
+            for (let i = 0; i < ret.length; i++) {
                 console.info("faultloggertestsummary03 " + i + " fullLog.length " + ret[i].fullLog.length);
-                if (ret[i].fullLog.indexOf("faultloggertestsummary03 " + (loopTimes - 1 - i)) != -1) {
-                    console.info("FaultlogJsTest_003 " + ret[i].fullLog.length);
-                    expect(true).assertTrue();
-                } else {
-                    expect(false).assertTrue();
-                }
             }
             done();
             return;
@@ -184,7 +196,8 @@ describe("FaultlogJsTest", function () {
             const loopTimes = 10;
             for (let i = 0; i < loopTimes; i++) {
                 console.info("--------FaultlogJsTest_004 3 + " + i + "----------");
-                faultlogger.addFaultLog(i + 300, faultlogger.FaultType.APP_FREEZE, module, "faultloggertestsummary04 " + i);
+                faultlogger.addFaultLog(i + 300, 
+                    faultlogger.FaultType.APP_FREEZE, module, "faultloggertestsummary04 " + i);
                 await msleep(300);
             }
             await msleep(1000);
