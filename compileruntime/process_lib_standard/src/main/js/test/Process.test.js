@@ -1325,9 +1325,10 @@ describe('ChildProcessTest', function () {
         }
         sleep(6);
         let result2 = process.uptime()
+        var flag = false
         if ((result2 - result1) >= 6)
         {
-            let flag = true
+            flag = true
         }
         expect(flag).assertEqual(true)
     })
@@ -1345,9 +1346,10 @@ describe('ChildProcessTest', function () {
         }
         sleep(8);
         let result2 = process.uptime()
+        var flag = false
         if ((result2 - result1) >= 8)
         {
-            let flag = true
+            flag = true
         }
         expect(flag).assertEqual(true)
     })
@@ -1365,9 +1367,10 @@ describe('ChildProcessTest', function () {
         }
         sleep(10);
         let result2 = process.uptime()
+        var flag = false
         if ((result2 - result1) >= 10)
         {
-            let flag = true
+            flag = true
         }
         expect(flag).assertEqual(true)
     })
@@ -1385,9 +1388,10 @@ describe('ChildProcessTest', function () {
         }
         sleep(7);
         let result2 = process.uptime()
+        var flag = false
         if ((result2 - result1) >= 7)
         {
-            let flag = true
+            flag = true
         }
         expect(flag).assertEqual(true)
     })
@@ -1405,9 +1409,10 @@ describe('ChildProcessTest', function () {
         }
         sleep(11);
         let result2 = process.uptime()
+        var flag = false
         if ((result2 - result1) >= 11)
         {
-            let flag = true
+            flag = true
         }
         expect(flag).assertEqual(true)
     })
@@ -2419,7 +2424,7 @@ describe('ChildProcessTest', function () {
             if(pri == null)
             {
                 var flag = new Boolean(true)
-                expect(flag).assertEqual(true)
+                expect(Boolean(flag)).assertEqual(true)
             }
         }
     })
