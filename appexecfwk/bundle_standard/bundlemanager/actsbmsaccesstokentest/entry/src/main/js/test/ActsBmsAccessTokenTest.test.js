@@ -51,13 +51,13 @@ describe('ActsBmsAccessTokenTest', function () {
                 installFlag: 1,
                 isKeepData: false
             }, OnReceiveUninstallEvent);
-        };
+        }
         function OnReceiveUninstallEvent(err, data) {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             done();
-        };
+        }
     });
 
     /*
@@ -96,13 +96,13 @@ describe('ActsBmsAccessTokenTest', function () {
                 installFlag: 1,
                 isKeepData: false
             }, OnReceiveUninstallEvent);
-        };
+        }
         function OnReceiveUninstallEvent(err, data) {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             done();
-        };
+        }
     });
 
     /*
@@ -131,7 +131,7 @@ describe('ActsBmsAccessTokenTest', function () {
                 installFlag: 1,
                 isKeepData: false
             }, OnReceiveUpdateEvent);
-        };
+        }
         async function OnReceiveUpdateEvent(err, data) {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
@@ -162,7 +162,7 @@ describe('ActsBmsAccessTokenTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             done();
-        };
+        }
     });
 
     /*
@@ -191,7 +191,7 @@ describe('ActsBmsAccessTokenTest', function () {
                 installFlag: 0,
                 isKeepData: false
             }, OnReceiveUpdateEvent);
-        };
+        }
         async function OnReceiveUpdateEvent(err, data) {
             expect(err.code).assertEqual(0);
             expect(data.status).assertEqual(0);
@@ -224,7 +224,7 @@ describe('ActsBmsAccessTokenTest', function () {
             expect(data.status).assertEqual(0);
             expect(data.statusMessage).assertEqual("SUCCESS");
             done();
-        };
+        }
     });
 
     /**
@@ -320,7 +320,7 @@ describe('ActsBmsAccessTokenTest', function () {
             expect(data.statusMessage).assertEqual("SUCCESS");
             done();
         }
-    })  ;
+    });
 
     /**
      * @tc.number bms_AccessTokenId_0700
