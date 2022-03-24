@@ -1323,9 +1323,14 @@ describe('ChildProcessTest', function () {
         function sleep(d){
             while(process.uptime() - result1 <= d);
         }
-        sleep(5);
-        let result2 = process.uptime() - 6
-        expect(result1).assertEqual(result2)
+        sleep(6);
+        let result2 = process.uptime()
+        var flag = false
+        if ((result2 - result1) >= 6)
+        {
+            flag = true
+        }
+        expect(flag).assertEqual(true)
     })
 
     /**
@@ -1335,13 +1340,18 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testUptime002', 0, function () {
-        var result1 = process.uptime()
+        let result1 = process.uptime()
         function sleep(d){
             while(process.uptime() - result1 <= d);
         }
         sleep(8);
-        let result2 = process.uptime() - 9
-        expect(result1).assertEqual(result2)
+        let result2 = process.uptime()
+        var flag = false
+        if ((result2 - result1) >= 8)
+        {
+            flag = true
+        }
+        expect(flag).assertEqual(true)
     })
 
     /**
@@ -1356,8 +1366,13 @@ describe('ChildProcessTest', function () {
             while(process.uptime() - result1 <= d);
         }
         sleep(10);
-        let result2 = process.uptime() - 11
-        expect(result1).assertEqual(result2)
+        let result2 = process.uptime()
+        var flag = false
+        if ((result2 - result1) >= 10)
+        {
+            flag = true
+        }
+        expect(flag).assertEqual(true)
     })
 
     /**
@@ -1372,8 +1387,13 @@ describe('ChildProcessTest', function () {
             while(process.uptime() - result1 <= d);
         }
         sleep(7);
-        let result2 = process.uptime() - 8
-        expect(result1).assertEqual(result2)
+        let result2 = process.uptime()
+        var flag = false
+        if ((result2 - result1) >= 7)
+        {
+            flag = true
+        }
+        expect(flag).assertEqual(true)
     })
 
     /**
@@ -1383,13 +1403,18 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testUptime005', 0, function () {
-        var result1 = process.uptime()
+        let result1 = process.uptime()
         function sleep(d){
             while(process.uptime() - result1 <= d);
         }
         sleep(11);
-        var result2 = process.uptime() - 12
-        expect(result1).assertEqual(result2)
+        let result2 = process.uptime()
+        var flag = false
+        if ((result2 - result1) >= 11)
+        {
+            flag = true
+        }
+        expect(flag).assertEqual(true)
     })
 
     /**
@@ -2399,7 +2424,7 @@ describe('ChildProcessTest', function () {
             if(pri == null)
             {
                 var flag = new Boolean(true)
-                expect(flag).assertEqual(true)
+                expect(Boolean(flag)).assertEqual(true)
             }
         }
     })
