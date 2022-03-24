@@ -166,12 +166,12 @@ describe('I18nTest', function () {
     * @tc.name setSystemLanguage with not exist param aaa
     * @tc.desc check the language
     */
-    it('SUB_GLOBAL_I18N_JS_0850', 0, function () {
+    it('i18n_test_0850', 0, function () {
         let value = I18n.setSystemLanguage('aaa');
-        console.log('SUB_GLOBAL_I18N_JS_0850 ' + value);
+        console.log('i18n_test_0850 ' + value);
         expect(value).assertTrue();
         let lang = I18n.getSystemLanguage();
-        console.log('SUB_GLOBAL_I18N_JS_0850 ' + lang);
+        console.log('i18n_test_0850 ' + lang);
         expect(lang).assertEqual('aaa');
     })
 

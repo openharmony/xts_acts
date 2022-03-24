@@ -48,6 +48,10 @@
       {
         "name":"ohos.permission.GET_BUNDLE_INFO",
         "reason":"need use ohos.permission.GET_BUNDLE_INFO"
+      },
+      {
+        "name":"ohos.permission.UPDATE_CONFIGURATION",
+        "reason":"need use ohos.permission.UPDATE_CONFIGURATION"
       }
     ],
     "js": [
