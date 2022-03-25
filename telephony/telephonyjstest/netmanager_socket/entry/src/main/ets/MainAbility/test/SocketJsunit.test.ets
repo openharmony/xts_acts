@@ -14,22 +14,24 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index";
 import socket from '@ohos.net.socket'
 import utils from './Utils.ets'
 
 export default function socketJsunit() {
   describe('socketTest', function () {
     console.log("************* socket Test start*************");
-
+	let tcp = socket.constructTCPSocketInstance();
+	let udp = socket.constructUDPSocketInstance();
+	
     /*
      * @tc.number    : Telephony_Socket_Socket_constructUDPSocketInstance_0100
      * @tc.name      : constructUDPSocketInstance
      * @tc.desc      : Creates a UDPSocket object.
      */
-    it('Telephony_Socket_Socket_constructUDPSocketInstance_0100', 0, async function (done) {
+    it('Telephony_Socket_Socket_constructUDPSocketInstance_0100', 0, function (done) {
       console.log("************* Telephony_Socket_Socket_constructUDPSocketInstance_0100 Test start*************");
-      var udpSocket = socket.constructUDPSocketInstance();
+      var udpSocket = udp;
       expect(udpSocket != null).assertTrue();
       console.log("************* Telephony_Socket_Socket_constructUDPSocketInstance_0100 Test end*************");
       done();
@@ -40,9 +42,9 @@ export default function socketJsunit() {
      * @tc.name      : constructTCPSocketInstance
      * @tc.desc      : Creates a TCPSocket object.
      */
-    it('Telephony_Socket_Socket_constructTCPSocketInstance_0100', 0, async function (done) {
+    it('Telephony_Socket_Socket_constructTCPSocketInstance_0100', 0, function (done) {
       console.log("************* Telephony_Socket_Socket_constructTCPSocketInstance_0100 Test start*************");
-      var tcpSocket = socket.constructTCPSocketInstance();
+      var tcpSocket = tcp;
       expect(tcpSocket != null).assertTrue();
       console.log("************* Telephony_Socket_Socket_constructTCPSocketInstance_0100 Test end*************");
       done();
@@ -53,9 +55,9 @@ export default function socketJsunit() {
      * @tc.name      : NetAddress
      * @tc.desc      : interface NetAddress
      */
-    it('Telephony_Socket_Socket_NetAddress_0100', 0, async function (done) {
+    it('Telephony_Socket_Socket_NetAddress_0100', 0, function (done) {
       console.log("************* Telephony_Socket_Socket_NetAddress_0100 Test start*************");
-      let netAddress: socket.NetAddress = {
+      let netAddress = {
         address: "test address",
         family: 1,
         port: 8080
@@ -72,9 +74,9 @@ export default function socketJsunit() {
      * @tc.name      : UDPSendOptions.data
      * @tc.desc      : UDPSendOptions.data
      */
-    it('Telephony_Socket_UDPSendOptions_data_0100', 0, async function (done) {
+    it('Telephony_Socket_UDPSendOptions_data_0100', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSendOptions_data_0100 Test start*************");
-      let udpSendOptions: socket.UDPSendOptions = {
+      let udpSendOptions = {
         data: "test data",
         address: {
           address: "test address",
@@ -92,9 +94,9 @@ export default function socketJsunit() {
      * @tc.name      : ExtraOptionsBase.receiveBufferSize
      * @tc.desc      : ExtraOptionsBase.receiveBufferSize
      */
-    it('Telephony_Socket_ExtraOptionsBase_receiveBufferSize_0100', 0, async function (done) {
+    it('Telephony_Socket_ExtraOptionsBase_receiveBufferSize_0100', 0, function (done) {
       console.log("************* Telephony_Socket_ExtraOptionsBase_receiveBufferSize_0100 Test start*************");
-      let extraOptionsBase: socket.ExtraOptionsBase = {
+      let extraOptionsBase = {
         receiveBufferSize: 1,
         sendBufferSize: 1,
         reuseAddress: true,
@@ -110,9 +112,9 @@ export default function socketJsunit() {
      * @tc.name      : ExtraOptionsBase.sendBufferSize
      * @tc.desc      : ExtraOptionsBase.sendBufferSize
      */
-    it('Telephony_Socket_ExtraOptionsBase_sendBufferSize_0100', 0, async function (done) {
+    it('Telephony_Socket_ExtraOptionsBase_sendBufferSize_0100', 0, function (done) {
       console.log("************* Telephony_Socket_ExtraOptionsBase_sendBufferSize_0100 Test start*************");
-      let extraOptionsBase: socket.ExtraOptionsBase = {
+      let extraOptionsBase = {
         receiveBufferSize: 1,
         sendBufferSize: 1,
         reuseAddress: true,
@@ -128,9 +130,9 @@ export default function socketJsunit() {
      * @tc.name      : ExtraOptionsBase.reuseAddress
      * @tc.desc      : ExtraOptionsBase.reuseAddress
      */
-    it('Telephony_Socket_ExtraOptionsBase_reuseAddress_0100', 0, async function (done) {
+    it('Telephony_Socket_ExtraOptionsBase_reuseAddress_0100', 0, function (done) {
       console.log("************* Telephony_Socket_ExtraOptionsBase_reuseAddress_0100 Test start*************");
-      let extraOptionsBase: socket.ExtraOptionsBase = {
+      let extraOptionsBase = {
         receiveBufferSize: 1,
         sendBufferSize: 1,
         reuseAddress: true,
@@ -146,9 +148,9 @@ export default function socketJsunit() {
      * @tc.name      : ExtraOptionsBase.socketTimeout
      * @tc.desc      : ExtraOptionsBase.socketTimeout
      */
-    it('Telephony_Socket_ExtraOptionsBase_socketTimeout_0100', 0, async function (done) {
+    it('Telephony_Socket_ExtraOptionsBase_socketTimeout_0100', 0, function (done) {
       console.log("************* Telephony_Socket_ExtraOptionsBase_socketTimeout_0100 Test start*************");
-      let extraOptionsBase: socket.ExtraOptionsBase = {
+      let extraOptionsBase = {
         receiveBufferSize: 1,
         sendBufferSize: 1,
         reuseAddress: true,
@@ -164,9 +166,9 @@ export default function socketJsunit() {
      * @tc.name      : SocketStateBase.isClose
      * @tc.desc      : SocketStateBase.isClose
      */
-    it('Telephony_Socket_SocketStateBase_isClose_0100', 0, async function (done) {
+    it('Telephony_Socket_SocketStateBase_isClose_0100', 0, function (done) {
       console.log("************* Telephony_Socket_SocketStateBase_isClose_0100 Test start*************");
-      let socketStateBase: socket.SocketStateBase = {
+      let socketStateBase = {
         isBound: true,
         isClose: true,
         isConnected: true
@@ -181,9 +183,9 @@ export default function socketJsunit() {
      * @tc.name      : SocketRemoteInfo.port
      * @tc.desc      : SocketRemoteInfo.port
      */
-    it('Telephony_Socket_SocketRemoteInfo_port_0100', 0, async function (done) {
+    it('Telephony_Socket_SocketRemoteInfo_port_0100', 0, function (done) {
       console.log("************* Telephony_Socket_SocketRemoteInfo_port_0100 Test start*************");
-      let socketRemoteInfo: socket.SocketRemoteInfo = {
+      let socketRemoteInfo = {
         address: "test address",
         family: 'IPv4',
         port: 8080,
@@ -199,9 +201,9 @@ export default function socketJsunit() {
      * @tc.name      : SocketRemoteInfo.size
      * @tc.desc      : SocketRemoteInfo.size
      */
-    it('Telephony_Socket_SocketRemoteInfo_size_0100', 0, async function (done) {
+    it('Telephony_Socket_SocketRemoteInfo_size_0100', 0, function (done) {
       console.log("************* Telephony_Socket_SocketRemoteInfo_size_0100 Test start*************");
-      let socketRemoteInfo: socket.SocketRemoteInfo = {
+      let socketRemoteInfo = {
         address: "test address",
         family: 'IPv4',
         port: 8080,
@@ -217,9 +219,9 @@ export default function socketJsunit() {
      * @tc.name      : TCPConnectOptions.timeout
      * @tc.desc      : TCPConnectOptions.timeout
      */
-    it('Telephony_Socket_TCPConnectOptions_timeout_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPConnectOptions_timeout_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPConnectOptions_timeout_0100 Test start*************");
-      let tcpConnectOptions: socket.TCPConnectOptions = {
+      let tcpConnectOptions = {
         address: {
           address: "test address",
           family: 1,
@@ -237,9 +239,9 @@ export default function socketJsunit() {
      * @tc.name      : TCPSendOptions.data
      * @tc.desc      : TCPSendOptions.data
      */
-    it('Telephony_Socket_TCPSendOptions_data_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSendOptions_data_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSendOptions_data_0100 Test start*************");
-      let tcpSendOptions: socket.TCPSendOptions = {
+      let tcpSendOptions = {
         data: "test data",
         encoding: "test encoding"
       }
@@ -253,9 +255,9 @@ export default function socketJsunit() {
      * @tc.name      : TCPSendOptions.encoding
      * @tc.desc      : TCPSendOptions.encoding
      */
-    it('Telephony_Socket_TCPSendOptions_encoding_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSendOptions_encoding_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSendOptions_encoding_0100 Test start*************");
-      let tcpSendOptions: socket.TCPSendOptions = {
+      let tcpSendOptions = {
         data: "test data",
         encoding: "test encoding"
       }
@@ -269,9 +271,9 @@ export default function socketJsunit() {
      * @tc.name      : TCPExtraOptions.keepAlive
      * @tc.desc      : TCPExtraOptions.keepAlive
      */
-    it('Telephony_Socket_TCPExtraOptions_keepAlive_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPExtraOptions_keepAlive_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPExtraOptions_keepAlive_0100 Test start*************");
-      let tcpExtraOptions: socket.TCPExtraOptions = {
+      let tcpExtraOptions = {
         keepAlive: true,
         OOBInline: false,
         TCPNoDelay: true,
@@ -290,9 +292,9 @@ export default function socketJsunit() {
      * @tc.name      : TCPExtraOptions.OOBInline
      * @tc.desc      : TCPExtraOptions.OOBInline
      */
-    it('Telephony_Socket_TCPExtraOptions_OOBInline_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPExtraOptions_OOBInline_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPExtraOptions_OOBInline_0100 Test start*************");
-      let tcpExtraOptions: socket.TCPExtraOptions = {
+      let tcpExtraOptions = {
         keepAlive: true,
         OOBInline: false,
         TCPNoDelay: true,
@@ -311,9 +313,9 @@ export default function socketJsunit() {
      * @tc.name      : TCPExtraOptions.TCPNoDelay
      * @tc.desc      : TCPExtraOptions.TCPNoDelay
      */
-    it('Telephony_Socket_TCPExtraOptions_TCPNoDelay_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPExtraOptions_TCPNoDelay_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPExtraOptions_TCPNoDelay_0100 Test start*************");
-      let tcpExtraOptions: socket.TCPExtraOptions = {
+      let tcpExtraOptions = {
         keepAlive: true,
         OOBInline: false,
         TCPNoDelay: true,
@@ -332,9 +334,9 @@ export default function socketJsunit() {
      * @tc.name      : TCPExtraOptions.socketLinger
      * @tc.desc      : TCPExtraOptions.socketLinger
      */
-    it('Telephony_Socket_TCPExtraOptions_socketLinger_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPExtraOptions_socketLinger_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPExtraOptions_socketLinger_0100 Test start*************");
-      let tcpExtraOptions: socket.TCPExtraOptions = {
+      let tcpExtraOptions = {
         keepAlive: true,
         OOBInline: false,
         TCPNoDelay: true,
@@ -355,15 +357,15 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number.
      */
-    it('Telephony_Socket_UDPSocket_bind_0100', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_bind_0100', 0, function (done) {
       let caseName = "Telephony_Socket_UDPSocket_bind_0100"
       console.log("************* Telephony_Socket_UDPSocket_bind_0100 Test start*************");
-      let netAddress: socket.NetAddress = {
+      let netAddress = {
         address: "test address",
         family: 1,
         port: 8080
       }
-      socket.UDPSocket.bind(netAddress, (error, data) => {
+      udp.bind(netAddress, (error, data) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -382,10 +384,10 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number.
      */
-    it('Telephony_Socket_UDPSocket_bind_0200', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_bind_0200', 0, function (done) {
       let caseName = "Telephony_Socket_UDPSocket_bind_0200"
       console.log("************* Telephony_Socket_UDPSocket_bind_0200 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
@@ -396,13 +398,17 @@ export default function socketJsunit() {
         port: 8080
       }
       try {
-        await socket.UDPSocket.bind(netAddress).then(data => {
+        udp.bind(netAddress).then(data => {
           console.log(`${caseName} success,data:${toString(data)}`);
+		  done();
         }).catch((error) => {
           console.log(`${caseName} failed,error:${toString(error)}`);
+		  done();
         });
+		done();
       } catch (err) {
         console.log(`${caseName} failed,catch error:${toString(error)}`);
+		done();
       }
       console.log("************* Telephony_Socket_UDPSocket_bind_0200 Test end*************");
       done();
@@ -413,13 +419,13 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number.
      */
-    it('Telephony_Socket_UDPSocket_bind_0300', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_bind_0300', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_bind_0300 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_bind_0300"
-      let netAddress: socket.NetAddress = {
+      let netAddress = {
         address: "second test address"
       }
-      socket.UDPSocket.bind(netAddress, (error, data) => {
+      udp.bind(netAddress, (error, data) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -438,23 +444,25 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number.
      */
-    it('Telephony_Socket_UDPSocket_bind_0400', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_bind_0400', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_bind_0400 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_bind_0400"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let netAddress: socket.NetAddress = {
+      let netAddress = {
         address: "third test address",
         family: 3,
         port: 8080
       }
-      socket.UDPSocket.bind(netAddress).then(data => {
+      udp.bind(netAddress).then(data => {
         console.log(`${caseName} success,data:${toString(data)}`);
+		done();
       }).catch((error) => {
         console.log(`${caseName} failed,error:${toString(error)}`);
+		done();
       });
       console.log("************* Telephony_Socket_UDPSocket_bind_0400 Test end*************");
       done();
@@ -465,15 +473,15 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_send_0100', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_send_0100', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_send_0100 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_send_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let udpSendOptions: socket.UDPSendOptions = {
+      let udpSendOptions = {
         data: "test data",
         address: {
           address: "test address",
@@ -481,7 +489,7 @@ export default function socketJsunit() {
           port: 8080
         }
       }
-      socket.UDPSocket.send(udpSendOptions, (error, data) => {
+      udp.send(udpSendOptions, (error, data) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -500,15 +508,15 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_send_0200', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_send_0200', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_send_0200 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_send_0200"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let udpSendOptions: socket.UDPSendOptions = {
+      let udpSendOptions = {
         data: "test data",
         address: {
           address: "test address",
@@ -516,7 +524,7 @@ export default function socketJsunit() {
           port: 8080
         }
       }
-      socket.UDPSocket.send(udpSendOptions).then(data => {
+      udp.send(udpSendOptions).then(data => {
         console.log(`${caseName} success,data:${toString(data)}`);
       }).catch((error) => {
         console.log(`${caseName} failed,error:${toString(error)}`);
@@ -530,21 +538,21 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_send_0300', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_send_0300', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_send_0300 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_send_0300"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let udpSendOptions: socket.UDPSendOptions = {
+      let udpSendOptions = {
         data: "test data",
         address: {
           address: "second test address",
         }
       }
-      socket.UDPSocket.send(udpSendOptions, (error, data) => {
+      udp.send(udpSendOptions, (error, data) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -563,21 +571,21 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_send_0400', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_send_0400', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_send_0400 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_send_0400"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let udpSendOptions: socket.UDPSendOptions = {
+      let udpSendOptions = {
         data: "test data",
         address: {
           address: "third test address"
         }
       }
-      socket.UDPSocket.send(udpSendOptions).then(data => {
+      udp.send(udpSendOptions).then(data => {
         console.log(`${caseName} success,data:${toString(data)}`);
       }).catch((error) => {
         console.log(`${caseName} failed,error:${toString(error)}`);
@@ -591,15 +599,15 @@ export default function socketJsunit() {
      * @tc.name      : close
      * @tc.desc      : Closes a UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_close_0100', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_close_0100', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_close_0100 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_close_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.close((error, data) => {
+      udp.close((error, data) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -617,15 +625,15 @@ export default function socketJsunit() {
      * @tc.name      : close
      * @tc.desc      : Closes a UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_close_0200', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_close_0200', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_close_0200 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_close_0200"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.close().then(data => {
+      udp.close().then(data => {
         console.log(`${caseName} success,data:${toString(data)}`);
       }).catch((error) => {
         console.log(`${caseName} failed,error:${toString(error)}`);
@@ -639,21 +647,21 @@ export default function socketJsunit() {
      * @tc.name      : getState
      * @tc.desc      : Obtains the status of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_getState_0100', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_getState_0100', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_getState_0100 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_getState_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.getState((error, data) => {
+      udp.getState((error, data) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
           return;
         }
-        let socketStateBase: socket.SocketStateBase = data
+        let socketStateBase = data
         console.log(`${caseName} data:${toString(socketStateBase.isClose)}`);
         done();
       })
@@ -666,15 +674,15 @@ export default function socketJsunit() {
      * @tc.name      : getState
      * @tc.desc      : Obtains the status of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_getState_0200', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_getState_0200', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_getState_0200 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_getState_0200"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.getState().then(data => {
+      udp.getState().then(data => {
         console.log(`${caseName} success,data:${toString(data)}`);
       }).catch((error) => {
         console.log(`${caseName} failed,error:${toString(error)}`);
@@ -689,28 +697,36 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_setExtraOptions_0100', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_setExtraOptions_0100', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_setExtraOptions_0100 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_setExtraOptions_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let udpExtraOptions: socket.UDPExtraOptions = {
+      let udpExtraOptions = {
         broadcast: true
       }
-      socket.UDPSocket.setExtraOptions(udpExtraOptions, (error) => {
-        if (error) {
-          console.log(`${caseName} error, case success,error:${toString(error)}`);
-          done();
-          return;
-        }
-        expect().assertFail();
-        expect(true).assertTrue();
-        console.log(`${caseName} error, case failed`);
-        done();
-      })
+	  try{
+		udp.setExtraOptions(udpExtraOptions, funtion(error,data) {
+		  if (error) {
+			expect().assertFail();
+			console.log(`${caseName} error, case failed,error: ` + JSON.stringify(error));
+			done();
+		  } else{
+			expect().assertTrue();
+			console.log(`${caseName} error, case success failed`);
+		    done();
+		  }
+		  done();
+		})
+		done();
+	  } catch(error){
+		  console.log(`${caseName} failed,error:${error}`);
+	      expect(true).assertTrue();
+		  done();
+      }
       console.log("************* Telephony_Socket_UDPSocket_setExtraOptions_0100 Test end*************");
       done();
     });
@@ -720,14 +736,14 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_setExtraOptions_0200', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_setExtraOptions_0200', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_setExtraOptions_0200 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_setExtraOptions_0200"
-      let udpExtraOptions: socket.UDPExtraOptions = {
+      let udpExtraOptions = {
         broadcast: true
       }
       try {
-        await socket.UDPSocket.setExtraOptions(udpExtraOptions);
+        udp.setExtraOptions(udpExtraOptions);
         console.log(`${caseName} success`);
         done();
       } catch (error) {
@@ -743,16 +759,16 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_setExtraOptions_0300', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_setExtraOptions_0300', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_setExtraOptions_0300 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_setExtraOptions_0300"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let udpExtraOptions: socket.UDPExtraOptions = {}
-      socket.UDPSocket.setExtraOptions(udpExtraOptions, (error) => {
+      let udpExtraOptions = {}
+      udp.setExtraOptions(udpExtraOptions, (error) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -771,12 +787,14 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_setExtraOptions_0400', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_setExtraOptions_0400', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_setExtraOptions_0400 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_setExtraOptions_0400"
-      let udpExtraOptions: socket.UDPExtraOptions = {}
+      let udpExtraOptions = {}
       try {
-        await socket.UDPSocket.setExtraOptions(udpExtraOptions);
+        udp.setExtraOptions(udpExtraOptions).then(function(data){
+			console.log(`${caseName}`);
+		});
         console.log(`${caseName} success`);
         done();
       } catch (error) {
@@ -793,16 +811,16 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for message receiving events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_on_message_0100', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_on_message_0100', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_on_message_0100 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_on_message_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.on('message', (data) => {
-        let socketRemoteInfo: socket.SocketRemoteInfo = data.remoteInfo;
+      udp.on('message', (data) => {
+        let socketRemoteInfo = data.remoteInfo;
         console.log(`${caseName} port:${socketRemoteInfo.port}`);
         console.log(`${caseName} size:${socketRemoteInfo.size}`);
       });
@@ -815,16 +833,16 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for message receiving events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_message_0100', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_off_message_0100', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_off_message_0100 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_off_message_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.off("message", data => {
-        let socketRemoteInfo: socket.SocketRemoteInfo = data.remoteInfo;
+      udp.off("message", data => {
+        let socketRemoteInfo = data.remoteInfo;
         console.log(`${caseName} port:${socketRemoteInfo.port}`);
         console.log(`${caseName} size:${socketRemoteInfo.size}`);
       });
@@ -837,14 +855,14 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for message receiving events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_message_0200', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_off_message_0200', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_off_message_0200 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.off("message");
+      udp.off("message");
       expect(true).assertTrue();
       console.log("************* Telephony_Socket_UDPSocket_off_message_0200 Test end*************");
       done();
@@ -855,14 +873,14 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for data packet message events or close events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_on_listening_0100', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_on_listening_0100', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_on_listening_0100 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.on("listening", data => {
+      udp.on("listening", data => {
         expect(true).assertTrue();
       });
       console.log("************* Telephony_Socket_UDPSocket_on_listening_0100 Test end*************");
@@ -874,14 +892,14 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for data packet message events or close events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_listening_0100', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_off_listening_0100', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_off_listening_0100 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.off("listening", data => {
+      udp.off("listening", data => {
         expect(true).assertTrue();
       });
       console.log("************* Telephony_Socket_UDPSocket_off_listening_0100 Test end*************");
@@ -893,14 +911,14 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for data packet message events or close events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_listening_0200', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_off_listening_0200', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_off_listening_0200 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.off("listening");
+      udp.off("listening");
       expect(true).assertTrue();
       console.log("************* Telephony_Socket_UDPSocket_off_listening_0200 Test end*************");
       done();
@@ -911,14 +929,14 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for data packet message events or close events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_on_close_0100', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_on_close_0100', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_on_close_0100 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.on("close", data => {
+      udp.on("close", data => {
         expect(true).assertTrue();
       });
       console.log("************* Telephony_Socket_UDPSocket_on_close_0100 Test end*************");
@@ -930,14 +948,14 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for data packet message events or close events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_close_0100', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_off_close_0100', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_off_close_0100 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.off("close", data => {
+      udp.off("close", data => {
         expect(true).assertTrue();
       });
       console.log("************* Telephony_Socket_UDPSocket_off_close_0100 Test end*************");
@@ -949,14 +967,14 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for data packet message events or close events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_close_0200', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_off_close_0200', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_off_close_0200 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.off("close");
+      udp.off("close");
       expect(true).assertTrue();
       console.log("************* Telephony_Socket_UDPSocket_off_close_0200 Test end*************");
       done();
@@ -967,15 +985,15 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for error events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_on_error_0100', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_on_error_0100', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_on_error_0100 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_on_error_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.on("error", error => {
+      udp.on("error", error => {
         console.log(`${caseName} fail, error:${toString(error)}`);
         expect().assertFail();
       });
@@ -989,15 +1007,15 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for error events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_error_0100', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_off_error_0100', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_off_error_0100 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_off_error_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.off("error", error => {
+      udp.off("error", error => {
         console.log(`${caseName} fail, error:${toString(error)}`);
         expect().assertFail();
       });
@@ -1011,14 +1029,14 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for error events of the UDPSocket connection.
      */
-    it('Telephony_Socket_UDPSocket_off_error_0200', 0, async function (done) {
+    it('Telephony_Socket_UDPSocket_off_error_0200', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_off_error_0200 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.UDPSocket.off("error");
+      udp.off("error");
       expect(true).assertTrue();
       console.log("************* Telephony_Socket_UDPSocket_off_error_0200 Test end*************");
       done();
@@ -1029,15 +1047,15 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number
      */
-    it('Telephony_Socket_TCPSocket_bind_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_bind_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_bind_0100 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_bind_0100"
-      let netAddress: socket.NetAddress = {
+      let netAddress = {
         address: "test address",
         family: 1,
         port: 8080
       }
-      socket.TCPSocket.bind(netAddress, (error, data) => {
+      tcp.bind(netAddress, (error, data) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -1056,23 +1074,25 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number
      */
-    it('Telephony_Socket_TCPSocket_bind_0200', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_bind_0200', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_bind_0200 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_bind_0200"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let netAddress: socket.NetAddress = {
+      let netAddress = {
         address: "test address",
         family: 1,
         port: 8080
       }
-      socket.TCPSocket.bind(netAddress).then(data => {
+      tcp.bind(netAddress).then(data => {
         console.log(`${caseName} success,data:${toString(data)}`);
+		done();
       }).catch((error) => {
         console.log(`${caseName} failed,error:${toString(error)}`);
+		done();
       });
       console.log("************* Telephony_Socket_TCPSocket_bind_0200 Test end*************");
       done();
@@ -1083,13 +1103,13 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number
      */
-    it('Telephony_Socket_TCPSocket_bind_0300', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_bind_0300', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_bind_0300 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_bind_0300"
-      let netAddress: socket.NetAddress = {
+      let netAddress = {
         address: "second test address",
       }
-      socket.TCPSocket.bind(netAddress, (error, data) => {
+      tcp.bind(netAddress, (error, data) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -1108,21 +1128,23 @@ export default function socketJsunit() {
      * @tc.name      : bind
      * @tc.desc      : Binds the IP address and port number
      */
-    it('Telephony_Socket_TCPSocket_bind_0400', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_bind_0400', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_bind_0400 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_bind_0400"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let netAddress: socket.NetAddress = {
+      let netAddress = {
         address: "third test address"
       }
-      socket.TCPSocket.bind(netAddress).then(data => {
+      tcp.bind(netAddress).then(data => {
         console.log(`${caseName} success,data:${toString(data)}`);
+		done();
       }).catch((error) => {
         console.log(`${caseName} failed,error:${toString(error)}`);
+		done();
       });
       console.log("************* Telephony_Socket_TCPSocket_bind_0400 Test end*************");
       done();
@@ -1133,19 +1155,19 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_send_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_send_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_send_0100 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_send_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let tcpSendOptions: socket.TCPSendOptions = {
+      let tcpSendOptions = {
         data: "test data",
         encoding: "test encoding"
       }
-      socket.TCPSocket.send(tcpSendOptions, (error, data) => {
+      tcp.send(tcpSendOptions, (error, data) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -1164,19 +1186,19 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_send_0200', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_send_0200', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_send_0200 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_send_0200"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let tcpSendOptions: socket.TCPSendOptions = {
+      let tcpSendOptions = {
         data: "test data",
         encoding: "test encoding"
       }
-      socket.TCPSocket.send(tcpSendOptions).then(data => {
+      tcp.send(tcpSendOptions).then(data => {
         console.log(`${caseName} success,data:${toString(data)}`);
       }).catch((error) => {
         console.log(`${caseName} failed,error:${toString(error)}`);
@@ -1190,18 +1212,18 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_send_0300', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_send_0300', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_send_0300 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_send_0300"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let tcpSendOptions: socket.TCPSendOptions = {
+      let tcpSendOptions = {
         data: "second test data",
       }
-      socket.TCPSocket.send(tcpSendOptions, (error, data) => {
+      tcp.send(tcpSendOptions, (error, data) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -1220,18 +1242,18 @@ export default function socketJsunit() {
      * @tc.name      : send
      * @tc.desc      : Sends data over a TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_send_0400', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_send_0400', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_send_0400 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_send_0400"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let tcpSendOptions: socket.TCPSendOptions = {
+      let tcpSendOptions = {
         data: "second test data",
       }
-      socket.TCPSocket.send(tcpSendOptions).then(data => {
+      tcp.send(tcpSendOptions).then(data => {
         console.log(`${caseName} success,data:${toString(data)}`);
       }).catch((error) => {
         console.log(`${caseName} failed,error:${toString(error)}`);
@@ -1245,15 +1267,15 @@ export default function socketJsunit() {
      * @tc.name      : connect
      * @tc.desc      : Sets up a connection to the specified IP address and port number.
      */
-    it('Telephony_Socket_TCPSocket_connect_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_connect_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_connect_0100 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_connect_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let tcpConnectOptions: socket.TCPConnectOptions = {
+      let tcpConnectOptions = {
         address: {
           address: "test address",
           family: 1,
@@ -1261,7 +1283,7 @@ export default function socketJsunit() {
         },
         timeout: 1000
       }
-      socket.TCPSocket.connect(tcpConnectOptions, (error, data) => {
+      tcp.connect(tcpConnectOptions, (error, data) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -1280,15 +1302,15 @@ export default function socketJsunit() {
      * @tc.name      : connect
      * @tc.desc      : Sets up a connection to the specified IP address and port number.
      */
-    it('Telephony_Socket_TCPSocket_connect_0200', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_connect_0200', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_connect_0200 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_connect_0200"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let tcpConnectOptions: socket.TCPConnectOptions = {
+      let tcpConnectOptions = {
         address: {
           address: "test address",
           family: 1,
@@ -1296,7 +1318,7 @@ export default function socketJsunit() {
         },
         timeout: 1000
       }
-      socket.TCPSocket.connect(tcpConnectOptions).then(function (data) {
+      tcp.connect(tcpConnectOptions).then(function (data) {
         console.log(`${caseName} success,data:${toString(data)}`);
       }).catch((error) => {
         console.log(`${caseName} failed,error:${toString(error)}`);
@@ -1310,22 +1332,22 @@ export default function socketJsunit() {
      * @tc.name      : connect
      * @tc.desc      : Sets up a connection to the specified IP address and port number.
      */
-    it('Telephony_Socket_TCPSocket_connect_0300', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_connect_0300', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_connect_0300 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_connect_0300"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let tcpConnectOptions: socket.TCPConnectOptions = {
+      let tcpConnectOptions = {
         address: {
           address: "second test address",
           family: 1,
           port: 8080
         }
       }
-      socket.TCPSocket.connect(tcpConnectOptions, (error, data) => {
+      tcp.connect(tcpConnectOptions, (error, data) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -1344,22 +1366,22 @@ export default function socketJsunit() {
      * @tc.name      : connect
      * @tc.desc      : Sets up a connection to the specified IP address and port number.
      */
-    it('Telephony_Socket_TCPSocket_connect_0200', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_connect_0200', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_connect_0400 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_connect_0400"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let tcpConnectOptions: socket.TCPConnectOptions = {
+      let tcpConnectOptions = {
         address: {
           address: "second test address",
           family: 1,
           port: 8080
         }
       }
-      socket.TCPSocket.connect(tcpConnectOptions).then(function (data) {
+      tcp.connect(tcpConnectOptions).then(function (data) {
         console.log(`${caseName} success,data:${toString(data)}`);
       }).catch((error) => {
         console.log(`${caseName} failed,error:${toString(error)}`);
@@ -1373,15 +1395,15 @@ export default function socketJsunit() {
      * @tc.name      : close
      * @tc.desc      : Closes a UDPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_close_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_close_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_close_0100 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_close_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.close((error, data) => {
+      tcp.close((error, data) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -1399,15 +1421,15 @@ export default function socketJsunit() {
      * @tc.name      : close
      * @tc.desc      : Closes a UDPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_close_0200', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_close_0200', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_close_0200 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_close_0200"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.close().then(data => {
+      tcp.close().then(data => {
         console.log(`${caseName} success,data:${toString(data)}`);
       }).catch((error) => {
         console.log(`${caseName} failed,error:${toString(error)}`);
@@ -1421,15 +1443,15 @@ export default function socketJsunit() {
      * @tc.name      : getState
      * @tc.desc      : Obtains the status of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_getState_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_getState_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_getState_0100 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_getState_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.getState((error, data) => {
+      tcp.getState((error, data) => {
         if (error) {
           console.log(`${caseName} case success,error:${toString(error)}`);
           done();
@@ -1448,15 +1470,15 @@ export default function socketJsunit() {
      * @tc.name      : getState
      * @tc.desc      : Obtains the status of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_getState_0200', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_getState_0200', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_getState_0200 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_getState_0200"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.getState().then(data => {
+      tcp.getState().then(data => {
         console.log(`${caseName} success,data:${toString(data)}`);
       }).catch((error) => {
         console.log(`${caseName} failed,error:${toString(error)}`);
@@ -1471,15 +1493,15 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_setExtraOptions_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_setExtraOptions_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_setExtraOptions_0100 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_setExtraOptions_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let tcpExtraOptions: socket.TCPExtraOptions = {
+      let tcpExtraOptions = {
         keepAlive: true,
         OOBInline: true,
         TCPNoDelay: true,
@@ -1488,7 +1510,7 @@ export default function socketJsunit() {
           linger: true
         }
       }
-      socket.TCPSocket.setExtraOptions(tcpExtraOptions, (error) => {
+      tcp.setExtraOptions(tcpExtraOptions, (error) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -1507,15 +1529,15 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_setExtraOptions_0200', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_setExtraOptions_0200', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_setExtraOptions_0200 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_setExtraOptions_0200"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let tcpExtraOptions: socket.TCPExtraOptions = {
+      let tcpExtraOptions = {
         keepAlive: true,
         OOBInline: true,
         TCPNoDelay: true,
@@ -1525,7 +1547,9 @@ export default function socketJsunit() {
         }
       }
       try {
-        await socket.TCPSocket.setExtraOptions(tcpExtraOptions);
+        tcp.setExtraOptions(tcpExtraOptions).then(function(data) {
+		  console.log(`${caseName}`);
+		});
         console.log(`${caseName} success`);
         expect(true).assertTrue();
         done();
@@ -1542,21 +1566,21 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_setExtraOptions_0300', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_setExtraOptions_0300', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_setExtraOptions_0300 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_setExtraOptions_0300"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let tcpExtraOptions: socket.TCPExtraOptions = {
+      let tcpExtraOptions = {
         socketLinger: {
           on: true,
           linger: true
         }
       }
-      socket.TCPSocket.setExtraOptions(tcpExtraOptions, (error) => {
+      tcp.setExtraOptions(tcpExtraOptions, (error) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -1575,22 +1599,24 @@ export default function socketJsunit() {
      * @tc.name      : setExtraOptions
      * @tc.desc      : Sets other attributes of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_setExtraOptions_0400', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_setExtraOptions_0400', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_setExtraOptions_0400 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_setExtraOptions_0400"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      let tcpExtraOptions: socket.TCPExtraOptions = {
+      let tcpExtraOptions = {
         socketLinger: {
           on: true,
           linger: true
         }
       }
       try {
-        await socket.TCPSocket.setExtraOptions(tcpExtraOptions);
+        tcp.setExtraOptions(tcpExtraOptions).then(function(data){
+		  console.log(`${caseName}`);
+		});
         console.log(`${caseName} success`);
         expect(true).assertTrue();
         done();
@@ -1607,15 +1633,15 @@ export default function socketJsunit() {
      * @tc.name      : getRemoteAddress
      * @tc.desc      : Obtains the peer address of a TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_getRemoteAddress_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_getRemoteAddress_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_getRemoteAddress_0100 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_getRemoteAddress_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.getRemoteAddress((error) => {
+      tcp.getRemoteAddress((error) => {
         if (error) {
           console.log(`${caseName} error, case success,error:${toString(error)}`);
           done();
@@ -1633,15 +1659,15 @@ export default function socketJsunit() {
      * @tc.name      : getRemoteAddress
      * @tc.desc      : Obtains the peer address of a TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_getRemoteAddress_0200', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_getRemoteAddress_0200', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_getRemoteAddress_0200 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_getRemoteAddress_0200"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.getRemoteAddress().then(data => {
+      tcp.getRemoteAddress().then(data => {
         console.log(`${caseName} success,data:${toString(data)}`);
       }).catch((error) => {
         console.log(`${caseName} failed,error:${toString(error)}`);
@@ -1655,15 +1681,15 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for message receiving events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_on_message_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_on_message_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_on_message_0100 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_on_message_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.on("message", data => {
+      tcp.on("message", data => {
         let socketRemoteInfo: socket.SocketRemoteInfo = data.remoteInfo;
         console.log(`${caseName} port:${socketRemoteInfo.port}`);
         console.log(`${caseName} size:${socketRemoteInfo.size}`);
@@ -1677,15 +1703,15 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for message receiving events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_message_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_off_message_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_off_message_0100 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_off_message_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.off("message", data => {
+      tcp.off("message", data => {
         let socketRemoteInfo: socket.SocketRemoteInfo = data.remoteInfo;
         console.log(`${caseName} port:${socketRemoteInfo.port}`);
         console.log(`${caseName} size:${socketRemoteInfo.size}`);
@@ -1699,14 +1725,14 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for message receiving events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_message_0200', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_off_message_0200', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_off_message_0200 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.off("message");
+      tcp.off("message");
       expect(true).assertTrue();
       console.log("************* Telephony_Socket_TCPSocket_off_message_0200 Test end*************");
       done();
@@ -1717,14 +1743,14 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for connection or close events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_on_connect_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_on_connect_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_on_connect_0100 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.on("connect", data => {
+      tcp.on("connect", data => {
         expect(true).assertTrue();
       });
       console.log("************* Telephony_Socket_TCPSocket_on_connect_0100 Test end*************");
@@ -1736,14 +1762,14 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for connection or close events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_connect_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_off_connect_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_off_connect_0100 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.off("connect", data => {
+      tcp.off("connect", data => {
         expect(true).assertTrue();
       });
       console.log("************* Telephony_Socket_TCPSocket_off_connect_0100 Test end*************");
@@ -1755,14 +1781,14 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for connection or close events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_connect_0200', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_off_connect_0200', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_off_connect_0200 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.off("connect");
+      tcp.off("connect");
       expect(true).assertTrue();
       console.log("************* Telephony_Socket_TCPSocket_off_connect_0200 Test end*************");
       done();
@@ -1773,14 +1799,14 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for connection or close events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_on_close_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_on_close_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_on_close_0100 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.on("close", data => {
+      tcp.on("close", data => {
         expect(true).assertTrue();
       });
       console.log("************* Telephony_Socket_TCPSocket_on_close_0100 Test end*************");
@@ -1792,14 +1818,14 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for connection or close events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_close_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_off_close_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_off_close_0100 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.off("close", data => {
+      tcp.off("close", data => {
         expect(true).assertTrue();
       });
       console.log("************* Telephony_Socket_TCPSocket_off_close_0100 Test end*************");
@@ -1811,14 +1837,14 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for connection or close events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_close_0200', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_off_close_0200', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_off_close_0200 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.off("close");
+      tcp.off("close");
       expect(true).assertTrue();
       console.log("************* Telephony_Socket_TCPSocket_off_close_0200 Test end*************");
       done();
@@ -1829,15 +1855,15 @@ export default function socketJsunit() {
      * @tc.name      : on
      * @tc.desc      : Listens for error events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_on_error_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_on_error_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_on_error_0100 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_on_error_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.on("error", error => {
+      tcp.on("error", error => {
         console.log(`${caseName} fail, error:${toString(error)}`);
         expect().assertFail();
       });
@@ -1851,15 +1877,15 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for error events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_error_0100', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_off_error_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_off_error_0100 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_off_error_0100"
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.off("error", error => {
+      tcp.off("error", error => {
         console.log(`${caseName} fail, error:${toString(error)}`);
         expect().assertFail();
       });
@@ -1873,14 +1899,14 @@ export default function socketJsunit() {
      * @tc.name      : off
      * @tc.desc      : Cancels listening for error events of the TCPSocket connection.
      */
-    it('Telephony_Socket_TCPSocket_off_error_0200', 0, async function (done) {
+    it('Telephony_Socket_TCPSocket_off_error_0200', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_off_error_0200 Test start*************");
-      if (utils.notCheck) {
+      if (2 === 0) {
         expect(true).assertTrue();
         done();
         return;
       }
-      socket.TCPSocket.off("error");
+      tcp.off("error");
       expect(true).assertTrue();
       console.log("************* Telephony_Socket_TCPSocket_off_error_0200 Test end*************");
       done();
