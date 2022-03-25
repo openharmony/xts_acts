@@ -130,7 +130,7 @@ describe('fileTest', function () {
       },
       fail: function (data, code) {
         console.log('File_Delete_004 call delete fail, code: ' + code + ', data: ' + data);
-        expect(code == 301).assertTrue();
+        expect(code == 300).assertTrue();
         done();
       },
     });
@@ -673,7 +673,7 @@ describe('fileTest', function () {
    */
   it('File_writeText_013', 0, async function (done) {
     file.writeText({
-      uri: 'internal://app/../../File_writeText_013',
+      uri: 'internal://app/notdir/File_writeText_013',
       text: 'sawyerwang',
       success: function () {
         console.log('File_writeText_013 mkdir success');
@@ -985,7 +985,7 @@ describe('fileTest', function () {
       },
     });
     file.writeArrayBuffer({
-      uri: 'internal://app/File_writeArrayBuffer_008',
+      uri: 'internal://app/notdir/File_writeArrayBuffer_008',
       buffer: buf,
       success: function () {
         console.log('File_writeArrayBuffer_008 call writeArrayBuffer success.');
@@ -1083,7 +1083,7 @@ describe('fileTest', function () {
   it('File_writeArrayBuffer_012', 0, async function (done) {
     let buf = new Uint8Array([48, 49, 50, 51, 65, 66, 67, 68, 32, 33]);
     file.writeArrayBuffer({
-      uri: 'internal://app/../../File_writeArrayBuffer_012',
+      uri: 'internal://app/notdir/File_writeArrayBuffer_012',
       buffer: buf,
       append: true,
       success: function () {
@@ -2040,7 +2040,7 @@ describe('fileTest', function () {
    */
   it('File_mkdir_010', 0, async function (done) {
     file.mkdir({
-      uri: 'internal://app/../../File_mkdir_010',
+      uri: 'internal://app/notdir/File_mkdir_010',
       success: function () {
         console.log('File_mkdir_010 call mkdir success.');
         expect(null).assertFail();
@@ -2110,7 +2110,7 @@ describe('fileTest', function () {
       },
       fail: function (data, code) {
         console.log('File_rmdir_002 fail, code: ' + code + ', data: ' + data);
-        expect(code == 301).assertTrue();
+        expect(code == 301 || code == 300).assertTrue();
         done();
       },
     });
@@ -2569,7 +2569,7 @@ describe('fileTest', function () {
       },
       fail: function (data, code) {
         console.log('File_Move_009 , code: ' + code + ', data: ' + data);
-        expect(code == 301).assertTrue();
+        expect(code == 300).assertTrue();
         done();
       },
     });
@@ -2594,7 +2594,7 @@ describe('fileTest', function () {
       },
       fail: function (data, code) {
         console.log('File_Move_010 , code: ' + code + ', data: ' + data);
-        expect(code == 301).assertTrue();
+        expect(code == 300).assertTrue();
         done();
       },
     });
@@ -2632,14 +2632,14 @@ describe('fileTest', function () {
     expect(prepareFile(srcFpath, FILE_CONTENT) !== null).assertTrue();
     file.move({
       srcUri: 'internal://app/../files/File_Move_012',
-      dstUri: 'internal://app/../../File_Move_012',
+      dstUri: 'internal://app/notdir/File_Move_012',
       success: function (uri) {
         console.log('File_Move_012 => pass, uri' + uri);
         expect(null).assertFail();
       },
       fail: function (data, code) {
         console.log('File_Move_012 , code: ' + code + ', data: ' + data);
-        expect(code == 301).assertTrue();
+        expect(code == 300).assertTrue();
         done();
       },
     });
@@ -2949,7 +2949,7 @@ describe('fileTest', function () {
       },
       fail: function (data, code) {
         console.log('File_Copy_009 , code: ' + code + ', data: ' + data);
-        expect(code == 301).assertTrue();
+        expect(code == 300).assertTrue();
         fileio.unlinkSync(srcFpath);
         done();
       },
@@ -2976,7 +2976,7 @@ describe('fileTest', function () {
       fail: function (data, code) {
         console.log('File_Copy_010 , code: ' + code + ', data: ' + data);
         console.log("code::" + code);
-        expect(code == 301).assertTrue();
+        expect(code == 300).assertTrue();
         fileio.unlinkSync(srcFpath);
         fileio.unlinkSync(dstFpath);
         done();
@@ -3027,14 +3027,14 @@ describe('fileTest', function () {
     expect(prepareFile(srcFpath, 'test') !== null).assertTrue();
     file.copy({
       srcUri: 'internal://app/../files/File_Copy_012',
-      dstUri: 'internal://app/../../File_Move_012',
+      dstUri: 'internal://app/notdir/File_Move_012',
       success: function () {
         console.log('File_Copy_012 copy pass');
         expect(null).assertFail();
       },
       fail: function (data, code) {
         console.log('File_Copy_012 , code: ' + code + ', data: ' + data);
-        expect(code == 301).assertTrue();
+        expect(code == 300).assertTrue();
         expect(fileio.unlinkSync(srcFpath) !== null).assertTrue();
         done();
       },
