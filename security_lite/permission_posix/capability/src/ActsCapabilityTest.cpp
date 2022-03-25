@@ -258,7 +258,7 @@ static int AddCapUnauthorized(int num)
 static int CapgetWithAllCap(int num)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("CapgetWithAllCap memset_s failed");
@@ -291,7 +291,7 @@ static int CapgetWithAllCap(int num)
 static int CapgetWithNoCap(int num)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("CapgetWithAllCap memset_s failed");
@@ -324,7 +324,7 @@ static int CapgetWithNoCap(int num)
 static int CapgetOnlySETPCAP(int num)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("CapgetWithAllCap memset_s failed");
@@ -401,7 +401,7 @@ static int CapsetWithoutSETPCAP()
 static int CapsetWithVersion(pid_t pid, unsigned int version)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("CapgetWithAllCap memset_s failed");
@@ -428,7 +428,7 @@ static int CapsetWithVersion(pid_t pid, unsigned int version)
 static int CapgetWithVersion(pid_t pid, unsigned int version)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("CapgetWithAllCap memset_s failed");
@@ -455,7 +455,7 @@ static int CapgetWithVersion(pid_t pid, unsigned int version)
 static int CapgetWithCaps(pid_t pid, unsigned int caps)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("CapgetWithAllCap memset_s failed");

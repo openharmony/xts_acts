@@ -56,7 +56,7 @@ int CapInit()
 int DropCAPCHOWN()
 {
     struct __user_cap_header_struct capheader = { 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("DropCAPCHOWN memset_s failed");
@@ -85,7 +85,7 @@ int DropCAPCHOWN()
 int DropCAPDACOVERRIDE()
 {
     struct __user_cap_header_struct capheader = { 0, 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("DropCAPDACOVERRIDE memset_s failed");
@@ -114,7 +114,7 @@ int DropCAPDACOVERRIDE()
 int DropCAPDACREADSEARCH()
 {
     struct __user_cap_header_struct capheader = { 0, 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("DropCAPDACREADSEARCH memset_s failed");
@@ -143,7 +143,7 @@ int DropCAPDACREADSEARCH()
 int DropCAPDACOVERRIDEAndREADSEARCH()
 {
     struct __user_cap_header_struct capheader = { 0, 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("DropCAPDACOVERRIDEAndREADSEARCH memset_s failed");
@@ -175,7 +175,7 @@ int DropCAPDACOVERRIDEAndREADSEARCH()
 int DropCAPFOWNER()
 {
     struct __user_cap_header_struct capheader = { 0, 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("DropCAPFOWNER memset_s failed");
@@ -204,7 +204,7 @@ int DropCAPFOWNER()
 int DropCAPKILL()
 {
     struct __user_cap_header_struct capheader = { 0, 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("DropCAPKILL memset_s failed");
@@ -233,7 +233,7 @@ int DropCAPKILL()
 int DropCAPSETGID()
 {
     struct __user_cap_header_struct capheader = { 0, 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("DropCAPSETGID memset_s failed");
@@ -243,7 +243,7 @@ int DropCAPSETGID()
     capheader.pid = 0;
     struct __user_cap_data_struct capdata[CAP_NUM] = { { 0 }, { 0 } };
     result = memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
-        0xff, CAP_NUM * sizeof(struct __user_cap_data_struct);
+        0xff, CAP_NUM * sizeof(struct __user_cap_data_struct));
     if (result != EOK) {
         LOG("DropCAPSETGID memset_s failed");
         return FALSE;
@@ -262,7 +262,7 @@ int DropCAPSETGID()
 int DropCAPSETUID()
 {
     struct __user_cap_header_struct capheader = { 0, 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("DropCAPSETUID memset_s failed");
@@ -291,7 +291,7 @@ int DropCAPSETUID()
 int DropCAPSETPCAP()
 {
     struct __user_cap_header_struct capheader = { 0, 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("DropCAPSETPCAP memset_s failed");
@@ -320,7 +320,7 @@ int DropCAPSETPCAP()
 int DropCAPSYSNICE()
 {
     struct __user_cap_header_struct capheader = { 0, 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("DropCAPSYSNICE memset_s failed");
@@ -349,7 +349,7 @@ int DropCAPSYSNICE()
 int DropCAPSYSTIME()
 {
     struct __user_cap_header_struct capheader = { 0, 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("DropCAPSYSTIME memset_s failed");
@@ -378,7 +378,7 @@ int DropCAPSYSTIME()
 int DropAllCAP()
 {
     struct __user_cap_header_struct capheader = { 0, 0 };
-    error_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
         0, sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("DropAllCAP memset_s failed");
