@@ -2110,7 +2110,7 @@ describe('fileTest', function () {
       },
       fail: function (data, code) {
         console.log('File_rmdir_002 fail, code: ' + code + ', data: ' + data);
-        expect(code == 301).assertTrue();
+        expect(code == 301 || code == 300).assertTrue();
         done();
       },
     });
