@@ -3325,7 +3325,7 @@ describe('audioCapturer', function () {
                         console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
                         if ((audioCapCallBack.state == 4)) {
                             console.info('AudioFrameworkRecLog: ---------AFTER CHECK AUDIO RELEASED STATE---------');
-                            stateFlag = false;
+                            stateFlag = true;
                             console.info('AudioFrameworkRenderLog: resultFlag : '+stateFlag);
                             expect(stateFlag).assertTrue();
                             done();
