@@ -16,60 +16,27 @@ import app from '@system.app'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import window from '@ohos.window'
 import screen from '@ohos.screen'
+import display from '@ohos.display'
 const TRUE_WINDOW = true;
 const avoidAreaType = 3;
 
 describe('window_test', function () {
     var wnd;
-    var windowTypeArr = [];
-    var windowTypeDic = {
-        'APP_WINDOW_BASE': 1,
-        'APP_MAIN_WINDOW_BASE': 1,
-        'WINDOW_TYPE_APP_MAIN_WINDOW': 1,
-        'APP_MAIN_WINDOW_END': 1,
-        'APP_SUB_WINDOW_BASE': 1000,
-        'WINDOW_TYPE_MEDIA': 1000,
-        'WINDOW_TYPE_APP_SUB_WINDOW': 1001,
-        'APP_SUB_WINDOW_END': 1001,
-        'APP_WINDOW_END': 1001,
-        'SYSTEM_WINDOW_BASE': 2000,
-        'BELOW_APP_SYSTEM_WINDOW_BASE': 2000,
-        'WINDOW_TYPE_WALLPAPER': 2000,
-        'WINDOW_TYPE_DESKTOP': 2001,
-        'BELOW_APP_SYSTEM_WINDOW_END': 2001,
-        'ABOVE_APP_SYSTEM_WINDOW_BASE': 2100,
-        'WINDOW_TYPE_APP_LAUNCHING': 2100,
-        'WINDOW_TYPE_DOCK_SLICE': 2101,
-        'WINDOW_TYPE_INCOMING_CALL': 2102,
-        'WINDOW_TYPE_SEARCHING_BAR': 2103,
-        'WINDOW_TYPE_SYSTEM_ALARM_WINDOW': 2104,
-        'WINDOW_TYPE_INPUT_METHOD_FLOAT': 2105,
-        'WINDOW_TYPE_FLOAT': 2106,
-        'WINDOW_TYPE_TOAST': 2107,
-        'WINDOW_TYPE_STATUS_BAR': 2108,
-        'WINDOW_TYPE_PANEL': 2109,
-        'WINDOW_TYPE_KEYGUARD': 2110,
-        'WINDOW_TYPE_VOLUME_OVERLAY': 2111,
-        'WINDOW_TYPE_NAVIGATION_BAR': 2112,
-        'WINDOW_TYPE_DRAGGING_EFFECT': 2113,
-        'WINDOW_TYPE_POINTER': 2114,
-        'WINDOW_TYPE_LAUNCHER_RECENT': 2115,
-        'WINDOW_TYPE_LAUNCHER_DOCK': 2116,
-        'ABOVE_APP_SYSTEM_WINDOW_END': 2116,
-        'SYSTEM_WINDOW_END': 2116
-    }
     var topWindow;
     const DELAY_TIME = 3000;
-    var listenerStatus;
+    var height;
 
-    function callback(data) {
-        listenerStatus = 1;
-        console.log('windowTest OnOffTest callback  ' + JSON.stringify(data) +
-        'listenerStatus :' + listenerStatus);
+    function windowSizeChangeCallback(data) {
+        console.log('windowTest OnOffTest1 callback  ' + JSON.stringify(data));
+		height = data.height;
+    }
+	
+	function systemAvoidAreaChangeCallback(data) {
+        console.log('windowTest OnOffTest2 callback  ' + JSON.stringify(data));
+		height = data.bottomRect.height;
     }
 
     beforeAll(function (done) {
-        windowTypeArr = Object.keys(windowTypeDic);
         console.log('windowTest beforeAll begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest beforeAll window.getTopWindow wnd: ' + wnd);
@@ -874,7 +841,7 @@ describe('window_test', function () {
 	 */
     it('find_Test_002', 0, async function (done) {
         console.log('windowTest findTest2 begin');
-        window.find('nonexist').then((window) => {
+        window.find('window').then((window) => {
             console.log('windowTest findTest2 wnd.find success, window : ' + JSON.stringify(window));
             expect().assertFail();
             done();
@@ -912,7 +879,7 @@ describe('window_test', function () {
      */
     it('find_Test_004', 0, async function (done) {
         console.log('windowTest findTest4 begin');
-        window.find('nonexist', (err, data) => {
+        window.find('window', (err, data) => {
             if (err.code) {
                 console.log('windowTest findTest4 wnd.find fail, err : ' + JSON.stringify(err));
                 expect(TRUE_WINDOW).assertTrue();
@@ -933,40 +900,43 @@ describe('window_test', function () {
      */
     it('onOff_Test_001', 0, async function (done) {
         console.log('windowTest OnOffTest1 begin');
-        window.getTopWindow((err, data) => {
-            if (err.code != 0) {
-                console.log('windowTest OnOffTest1 getTopWindow  fail ' + JSON.stringify(err.code));
-                expect().assertFail();
-                done();
-            } else {
-                expect(data != null).assertTrue();
-                data.on('windowSizeChange', callback);
-                data.setLayoutFullScreen(true, (err) => {
-                    if (err.code != 0) {
-                        console.log('windowTest OnOffTest1 setLayoutFullScreen  fail ' + JSON.stringify(err.code));
-                        expect().assertFail();
-                        done();
-                    } else {
-                        setTimeout((async function () {
-                            expect(listenerStatus).assertEqual(1);
-                            data.off('windowSizeChange')
-                            listenerStatus = 0;
-                            data.setLayoutFullScreen(false, (err) => {
-                                if (err.code != 0 || listenerStatus == 1) {
-                                    console.log('windowTest OnOffTest1 setLayoutFullScreen callback fail ' + JSON.stringify(err));
-                                    expect().assertFail();
-                                    done();
-                                } else {
-                                    console.log('windowTest OnOffTest1 listenerStatus 3: ' + listenerStatus);
-                                    expect(TRUE_WINDOW).assertTrue();
-                                    done();
-                                }
-                            })
-                        }), 3000)
-                    }
-                })
-            }
-
+	    display.getDefaultDisplay().then(dsp => {
+            window.getTopWindow((err, data) => {
+				if (err.code != 0) {
+					console.log('windowTest OnOffTest1 getTopWindow  fail ' + JSON.stringify(err.code));
+					expect().assertFail();
+					done();
+				} else {
+					expect(data != null).assertTrue();
+					data.on('windowSizeChange', windowSizeChangeCallback);
+					data.setLayoutFullScreen(true, (err) => {
+						if (err.code != 0) {
+							console.log('windowTest OnOffTest1 setLayoutFullScreen  fail ' + JSON.stringify(err.code));
+							expect().assertFail();
+							done();
+						} else {
+							setTimeout((async function () {
+								expect(dsp.height == height).assertTrue();
+								data.off('windowSizeChange');
+								data.setLayoutFullScreen(false, (err) => {
+									if (err.code != 0) {
+										console.log('windowTest OnOffTest1 setLayoutFullScreen callback fail ' + JSON.stringify(err));
+										expect().assertFail();
+										done();
+									} else {
+										expect(dsp.height == height).assertTrue();
+										done();
+									}
+								})
+							}), 3000)
+						}
+					})
+				}
+			})
+        }, (err) => {
+            console.log('displayTest OnOffTest1 getDefaultDisplay failed, err :' + JSON.stringify(err));
+            expect().assertFail();
+            done();
         })
     })
 
@@ -976,7 +946,7 @@ describe('window_test', function () {
      * @tc.desc      To verify the function of enabling and disabling lawful interception in the system and window
      */
     it('onOff_Test_002', 0, async function (done) {
-        console.log('windowTest OnOffTest2 begin')
+        console.log('windowTest OnOffTest2 begin');
         window.getTopWindow((err, data) => {
             if (err.code != 0) {
                 console.log('windowTest OnOffTest2 getTopWindow callback fail ' + JSON.stringify(err.code));
@@ -984,7 +954,7 @@ describe('window_test', function () {
                 done();
             } else {
                 expect(data != null).assertTrue();
-                data.on('systemAvoidAreaChange', callback);
+                data.on('systemAvoidAreaChange', systemAvoidAreaChangeCallback);
                 data.setFullScreen(true, (err) => {
                     if (err.code != 0) {
                         console.log('windowTest OnOffTest2 setLayoutFullScreen callback fail ' + JSON.stringify(err));
@@ -992,18 +962,16 @@ describe('window_test', function () {
                         done();
                     } else {
                         setTimeout((async function () {
-                            console.log('windowTest OnOffTest2 listenerStatus 111: ' + listenerStatus);
-                            expect(listenerStatus).assertEqual(1);
-                            data.off('systemAvoidAreaChange')
-                            listenerStatus = 0;
+                            expect(height == 0).assertTrue();
+                            data.off('systemAvoidAreaChange');
                             data.setFullScreen(false, (err) => {
-                                if (err.code != 0 || listenerStatus == 1) {
+                                if (err.code != 0) {
                                     console.log('windowTest OnOffTest2 setLayoutFullScreen callback fail ' + JSON.stringify(err));
                                     expect().assertFail();
                                     done();
                                 } else {
                                     console.log('windowTest OnOffTest2 off callback success');
-                                    expect(TRUE_WINDOW).assertTrue();
+                                    expect(height == 0).assertTrue();
                                     done();
                                 }
                             })
@@ -1021,7 +989,7 @@ describe('window_test', function () {
      */
     it('isShowing_Test_001', 0, async function (done) {
         console.log('windowTest IsShowingTest1 begin');
-        window.create('isShow1', window.WindowType.TYPE_APP).then(wnd => {
+        window.create('subWindow1', window.WindowType.TYPE_APP).then(wnd => {
             expect(wnd != null).assertTrue();
             wnd.isShowing().then(res => {
                 console.log('windowTest IsShowingTest1 wnd.isShowing data:' + res);
@@ -1055,7 +1023,7 @@ describe('window_test', function () {
      */
     it('isShowing_Test_002', 0, async function (done) {
         console.log('windowTest IsShowingTest2 begin');
-        window.create('isShow2', window.WindowType.TYPE_APP, (err, data) => {
+        window.create('subWindow2', window.WindowType.TYPE_APP, (err, data) => {
             if (err.code) {
                 console.log('windowTest IsShowingTest2 window.create fail err ' + JSON.stringify(err));
                 expect().assertFail();
@@ -1106,7 +1074,7 @@ describe('window_test', function () {
             wnd.setColorSpace(window.ColorSpace.WIDE_GAMUT).then(() => {
                 console.log('windowTest SetColorSpaceTest1 setColorSpace WIDE_GAMUT');
                 wnd.getColorSpace().then(res => {
-                    expect(res == 1).assertTrue();
+                    expect(res == window.ColorSpace.WIDE_GAMUT).assertTrue();
                     console.log('windowTest SetColorSpaceTest1 setColorSpace WIDE_GAMUT success');
                     wnd.isSupportWideGamut().then(data => {
                         expect(data).assertTrue();
@@ -1181,7 +1149,7 @@ describe('window_test', function () {
                             expect().assertFail();
                             done();
                         } else {
-                            expect(data == 1).assertTrue();
+                            expect(data == window.ColorSpace.WIDE_GAMUT).assertTrue();
                             wnd.isSupportWideGamut((err, data) => {
                                 if (err.code != 0) {
                                     console.log('windowTest SetColorSpaceTest3 getColorSpace callback fail' + JSON.stringify(err));
@@ -1238,7 +1206,7 @@ describe('window_test', function () {
      */
     it('create_Test_001', 0, async function (done) {
         console.log('windowTest CreateTest1 begin');
-        window.create('subWindow', window.WindowType.TYPE_APP).then(wnd => {
+        window.create('subWindow3', window.WindowType.TYPE_APP).then(wnd => {
             console.log('windowTest CreateTest1 create success wnd' + wnd);
             expect(wnd != null).assertTrue();
             done();
@@ -1256,7 +1224,7 @@ describe('window_test', function () {
      */
     it('create_Test_002', 0, async function (done) {
         console.log('windowTest CreateTest2 begin');
-        window.create('subWindow1', window.WindowType.TYPE_APP, (err, data) => {
+        window.create('subWindow4', window.WindowType.TYPE_APP, (err, data) => {
             if (err.code != 0) {
                 console.log('windowTest CreateTest2 create callback fail' + JSON.stringify(err.code));
                 expect().assertFail();
@@ -1276,11 +1244,11 @@ describe('window_test', function () {
      */
     it('destroy_Test_001', 0, async function (done) {
         console.log('windowTest DestroyTest1 begin');
-        window.create('subWindow2', window.WindowType.TYPE_APP).then(wnd => {
+        window.create('subWindow5', window.WindowType.TYPE_APP).then(wnd => {
             console.log('windowTest DestroyTest1 create success wnd' + wnd);
             expect(wnd != null).assertTrue();
             wnd.destroy().then(() => {
-                window.find('subWindow2').then((data) => {
+                window.find('subWindow5').then((data) => {
                     console.log('windowTest DestroyTest1 window.find success, window :' + JSON.stringify(data));
                     expect().assertFail();
                     done();
@@ -1309,7 +1277,7 @@ describe('window_test', function () {
      */
     it('destroy_Test_002', 0, async function (done) {
         console.log('windowTest DestroyTest2 begin');
-        window.create('subWindow2', window.WindowType.TYPE_APP, (err, data) => {
+        window.create('subWindow6', window.WindowType.TYPE_APP, (err, data) => {
             if (err.code != 0) {
                 console.log('windowTest DestroyTest2 create callback fail' + JSON.stringify(err.code));
                 expect().assertFail();
@@ -1322,7 +1290,7 @@ describe('window_test', function () {
                         expect().assertFail();
                         done();
                     } else {
-                        window.find('subWindow2', (err, data) => {
+                        window.find('subWindow6', (err, data) => {
                             console.log('windowTest DestroyTest2 find callback begin' + JSON.stringify(data));
                             if (err.code != 0) {
                                 console.log('windowTest DestroyTest2 find callback fail' + JSON.stringify(err.code));
