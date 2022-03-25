@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -105,7 +105,7 @@ static void OnAbilityConnectDone(ElementName *elementName, SvcIdentity *serviceS
     sem_post(&g_sem);
 }
 
-static void OnAbilityDisconnectDone(ElementName *elementName, int resultCode, void *storeData)
+static void OnAbilityDisconnectDone(ElementName (void)*elementName, int resultCode, void *storeData)
 {
     printf("OnAbilityDisconnectDone\n");
 }
@@ -443,9 +443,9 @@ HWTEST_F(AbilityMgrTest2, testGetBundleNameIllegal, Function | MediumTest | Leve
 {
     printf("------start testGetBundleNameIllegal------\n");
     Want want;
-    memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    (void)memset_s(&want, sizeof(Want), 0, sizeof(Want));
     ElementName element;
-    memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    (void)memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementBundleName(&element, "com.openharmony.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     SetWantElement(&want, element);
@@ -517,9 +517,9 @@ HWTEST_F(AbilityMgrTest2, testDumpIllegal, Function | MediumTest | Level1)
 {
     printf("------start testDump------\n");
     Want want;
-    memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    (void)memset_s(&want, sizeof(Want), 0, sizeof(Want));
     ElementName element;
-    memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    (void)memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementBundleName(&element, "com.openharmony.testnative");
     SetElementAbilityName(&element, "ServiceAbility");
     SetWantElement(&want, element);
@@ -771,15 +771,15 @@ HWTEST_F(AbilityMgrTest2, testWantMatchBundle, Function | MediumTest | Level1)
 {
     printf("------start testWantMathBundle------\n");
     Want want;
-    memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    (void)memset_s(&want, sizeof(Want), 0, sizeof(Want));
     ElementName element;
-    memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    (void)memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementAbilityName(&element, "ServiceAbility");
     SetElementBundleName(&element, "com.openharmony.testnative");
     SetElementDeviceID(&element, "");
     SetWantElement(&want, element);
     AbilityInfo abilityInfo;
-    memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
+    (void)memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
     g_errorCode = QueryAbilityInfo(&want, &abilityInfo);
     printf("ret of query is %d \n", g_errorCode);
     EXPECT_EQ(g_errorCode, 0);
@@ -810,15 +810,15 @@ HWTEST_F(AbilityMgrTest2, testWantNotMathBundle, Function | MediumTest | Level2)
 {
     printf("------start testWantNotMathBundle------\n");
     Want want;
-    memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    (void)memset_s(&want, sizeof(Want), 0, sizeof(Want));
     ElementName element;
     std::string aName = "NoThisAbility";
-    memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    (void)memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementAbilityName(&element, aName.c_str());
     SetElementBundleName(&element, "com.openharmony.nothishap");
     SetWantElement(&want, element);
     AbilityInfo abilityInfo;
-    memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
+    (void)memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
     g_errorCode = QueryAbilityInfo(&want, &abilityInfo);
     printf("ret is %d \n", g_errorCode);
     EXPECT_TRUE(g_errorCode != 0);
@@ -843,15 +843,15 @@ HWTEST_F(AbilityMgrTest2, testWantOnlyMathBundleName, Function | MediumTest | Le
 {
     printf("------start testWantOnlyMathBundleName------\n");
     Want want;
-    memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    (void)memset_s(&want, sizeof(Want), 0, sizeof(Want));
     ElementName element;
     std::string aName = "Ability";
-    memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    (void)memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementAbilityName(&element, aName.c_str());
     SetElementBundleName(&element, "com.openharmony.testnative");
     SetWantElement(&want, element);
     AbilityInfo abilityInfo;
-    memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
+    (void)memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
     g_errorCode = QueryAbilityInfo(&want, &abilityInfo);
     printf("ret is %d \n", g_errorCode);
     EXPECT_TRUE(g_errorCode != 0);
@@ -876,15 +876,15 @@ HWTEST_F(AbilityMgrTest2, testWantOnlyMathAbility, Function | MediumTest | Level
 {
     printf("------start testWantOnlyMathAbility------\n");
     Want want;
-    memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    (void)memset_s(&want, sizeof(Want), 0, sizeof(Want));
     ElementName element;
     std::string aName = "ServiceAbility";
-    memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    (void)memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementAbilityName(&element, aName.c_str());
     SetElementBundleName(&element, "com.openharmony.test");
     SetWantElement(&want, element);
     AbilityInfo abilityInfo;
-    memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
+    (void)memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
     g_errorCode = QueryAbilityInfo(&want, &abilityInfo);
     printf("ret is %d \n", g_errorCode);
     EXPECT_TRUE(g_errorCode != 0);
@@ -909,15 +909,15 @@ HWTEST_F(AbilityMgrTest2, testWantDataMatchLength, Function | MediumTest | Level
 {
     printf("------start testWantDataMatchLength------\n");
     Want want;
-    memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    (void)memset_s(&want, sizeof(Want), 0, sizeof(Want));
     ElementName element;
-    memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    (void)memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementAbilityName(&element, "ServiceAbility");
     SetElementBundleName(&element, "com.openharmony.testnative");
     SetWantElement(&want, element);
     SetWantData(&want, "test", 5);
     AbilityInfo abilityInfo;
-    memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
+    (void)memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
     g_errorCode = QueryAbilityInfo(&want, &abilityInfo);
     printf("ret is %d \n", g_errorCode);
     EXPECT_TRUE(g_errorCode == 0);
@@ -942,9 +942,9 @@ HWTEST_F(AbilityMgrTest2, testWantDataNotMatchLength, Function | MediumTest | Le
 {
     printf("------start testWantDataNotMatchLength------\n");
     Want want;
-    memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    (void)memset_s(&want, sizeof(Want), 0, sizeof(Want));
     ElementName element;
-    memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    (void)memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
     SetElementAbilityName(&element, "ServiceAbility");
     SetElementBundleName(&element, "com.openharmony.testnative");
     SetWantElement(&want, element);

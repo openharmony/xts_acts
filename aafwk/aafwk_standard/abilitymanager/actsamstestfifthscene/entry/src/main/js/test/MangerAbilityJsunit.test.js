@@ -17,7 +17,7 @@ import missionManager from '@ohos.application.missionManager'
 import appManager from "@ohos.application.appManager"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-var abilityNameList = [
+let abilityNameList = [
     "com.ohos.launcher.MainAbility",
     "com.ohos.callui.ServiceAbility",
     "com.example.SimulateFeatureAbilityFir",
@@ -26,7 +26,7 @@ var abilityNameList = [
     "com.example.actsamstestfifthscene.MainAbility"
 ]
 
-var bundleNameList = [
+let bundleNameList = [
     "com.ohos.launcher",
     "com.ohos.systemui",
     "com.ohos.callui",
@@ -42,10 +42,10 @@ var bundleNameList = [
 describe('ActsAmsTestFifthScene', function () {
     console.info('----ActsAmsTestFifthScene----');
     beforeAll(async function (done) {
-        var maxnum = 10;
-        var data = await missionManager.getMissionInfos("", maxnum);
+        let maxnum = 10;
+        let data = await missionManager.getMissionInfos("", maxnum);
         console.log('ActsAmsTestFifthScene beforeAll getMissionInfos data: ' + JSON.stringify(data));
-        for (var i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
             if (data[i].want.bundleName != 'com.example.actsamstestfifthscene') {
                 console.log("ActsAmsTestFifthScene, missionId: " + data[i].missionId)
                 missionManager.clearMission(data[i].missionId,
@@ -132,7 +132,7 @@ describe('ActsAmsTestFifthScene', function () {
     }
 
     function sleep(delay) {
-        var start = new Date().getTime();
+        let start = new Date().getTime();
         while (true) {
             if (new Date().getTime() - start > delay) {
                 break;
@@ -149,10 +149,10 @@ describe('ActsAmsTestFifthScene', function () {
         console.info("sleep begin");
         sleep(5000);
         console.info("sleep end");
-        var info = await appManager.getProcessRunningInfos();
+        let info = await appManager.getProcessRunningInfos();
         expect(Array.isArray(info)).assertEqual(true);
         expect(info.length).assertLarger(0);
-        for (var i = 0; i < info.length; i++) {
+        for (let i = 0; i < info.length; i++) {
             console.info('Acts_Ams_test_0100 getProcessRunningInfo[' + i + "]: " + JSON.stringify(info[i]));
             expect(typeof (info[i].pid)).assertEqual("number");
             expect(info[i].pid).assertLarger(0);
@@ -175,14 +175,14 @@ describe('ActsAmsTestFifthScene', function () {
     */
     it('Acts_Ams_test_1100', 0, async function (done) {
         console.log('Acts_Ams_test_1100 begin');
-        var maxnum = 10;
-        var result = await missionManager.getMissionInfos("", maxnum).catch(err => {
+        let maxnum = 10;
+        let result = await missionManager.getMissionInfos("", maxnum).catch(err => {
             console.log('Acts_Ams_test_1100 getMissionInfos failed: ' + err);
         });
-        for (var i = 0; i < result.length; i++) {
+        for (let i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_1100 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
-        var info = await missionManager.moveMissionToFront(result[0].missionId).catch(err => {
+        let info = await missionManager.moveMissionToFront(result[0].missionId).catch(err => {
             console.log('Acts_Ams_test_1100 moveMissionToFront failed: ' + err);
             expect(err).assertEqual(0);
         });
@@ -196,12 +196,12 @@ describe('ActsAmsTestFifthScene', function () {
     * @tc.desc      : Query Running Ability Mission Infos(by Promise)
     */
     it('Acts_Ams_test_0300', 0, async function (done) {
-        var maxnum = 10;
+        let maxnum = 10;
         await missionManager.getMissionInfos("", maxnum).then(data => {
             console.info('Acts_Ams_test_0300 getMissionInfos data ' + JSON.stringify(data));
             expect(Array.isArray(data)).assertEqual(true);
             expect(data.length).assertEqual(4);
-            for (var i = 0; i < data.length; i++) {
+            for (let i = 0; i < data.length; i++) {
                 console.info('Acts_Ams_test_0300 getMissionInfos data[' + i + "]: " + JSON.stringify(data[i]));
                 expect(typeof (data[i].missionId)).assertEqual("number");
                 expect(data[i].missionId).assertLarger(0);

@@ -20,7 +20,7 @@ injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
 export default {
     data: {
-        title: ""
+        title: ''
     },
     onInit() {
         this.title = this.$t('strings.world');
@@ -29,7 +29,7 @@ export default {
         console.info('onShow finish')
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({
-            'id': 'extend'
+            id: 'extend'
         })
         core.addService('expect', expectExtend)
         core.init()
@@ -41,5 +41,6 @@ export default {
         core.execute()
     },
     onReady() {
+        console.info('onReady');
     },
 }
