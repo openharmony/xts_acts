@@ -549,89 +549,225 @@ function getPropertyerror(inputer,done){
     }
 }
 
-
-
 describe('userauthTest', function () {
 
-    it('Security_IAM_PIN_Interface_DFX_0101', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0101
+        * @tc.name      : Test regrsterInputer interface DFX with null
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0101', 2, async function (done) {
         inputererror(null,done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0102', 1, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0102
+        * @tc.name      : Test regrsterInputer interface DFX with string
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0102', 2, async function (done) {
         inputererror('Errortest',done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0103', 1, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0103
+        * @tc.name      : Test addCredential interface DFX with null
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0103', 2, async function (done) {
         addCredentialerr(null,done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0104', 1, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0104
+        * @tc.name      : Test addCredential interface DFX with string
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0104', 2, async function (done) {
         addCredentialerr('Errortest',done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0105', 1, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0105
+        * @tc.name      : Test auth interface DFX with null
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0105', 2, async function (done) {
         autherror(null,done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0106', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0106
+        * @tc.name      : Test auth interface DFX with string
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0106', 2, async function (done) {
         autherror('Errortest',done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0107', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0107
+        * @tc.name      : Test authuser interface DFX with null
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0107', 2, async function (done) {
         authusererror(null,done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0108', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0108
+        * @tc.name      : Test authuser interface DFX with string
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0108', 2, async function (done) {
         authusererror('Errortest',done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0109', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0109
+        * @tc.name      : Test getProperty interface DFX with null
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0109', 2, async function (done) {
         getPropertyerror(null,done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0110', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0110
+        * @tc.name      : Test getProperty interface DFX with string
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0110', 2, async function (done) {
         getPropertyerror('Errortest',done);
     })
 	
-    it('Security_IAM_PIN_Interface_DFX_0111', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0111
+        * @tc.name      : Test updateCredential interface DFX with null
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */	
+    it('Security_IAM_PIN_Interface_DFX_0111', 2, async function (done) {
         updateerror(null,done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0112', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0112
+        * @tc.name      : Test updateCredential interface DFX with string
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0112', 2, async function (done) {
         updateerror('Errortest',done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0113', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0113
+        * @tc.name      : Test deluser interface DFX with null
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */	
+    it('Security_IAM_PIN_Interface_DFX_0113', 2, async function (done) {
         delusererror(null,done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0114', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0114
+        * @tc.name      : Test deluser interface DFX with string
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0114', 2, async function (done) {
         delusererror('Errortest',done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0115', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0115
+        * @tc.name      : Test delcred interface DFX with null
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */	
+    it('Security_IAM_PIN_Interface_DFX_0115', 2, async function (done) {
         delcrederror(null,done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0116', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0116
+        * @tc.name      : Test delcred interface DFX with string
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0116', 2, async function (done) {
         delcrederror('Errortest',done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0117', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0117
+        * @tc.name      : Test getauthinfo interface DFX with null
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */	
+    it('Security_IAM_PIN_Interface_DFX_0117', 2, async function (done) {
         getauthinfoerror(null,done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0118', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0118
+        * @tc.name      : Test delcred interface DFX with string
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0118', 2, async function (done) {
         getauthinfoerror('Errortest',done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0119', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0119
+        * @tc.name      : Test getAvailabeStatus interface DFX with null
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */	
+    it('Security_IAM_PIN_Interface_DFX_0119', 2, async function (done) {
         getAvailabeStatuserror(null,done);
     })
 
-    it('Security_IAM_PIN_Interface_DFX_0120', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Interface_DFX_0120
+        * @tc.name      : Test getAvailabeStatus interface DFX with string
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 2
+    */
+    it('Security_IAM_PIN_Interface_DFX_0120', 2, async function (done) {
         getAvailabeStatuserror('Errortest',done);
     })
-
 })
-

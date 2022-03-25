@@ -21,8 +21,15 @@ import * as publicFC from './Publicfunction-n.js'
 
 
 describe('userauthTest', function () {
-
-    it('Security_IAM_Face_Interface_check_IDMAuthSubType_0101', 0, async function (done) {
+	
+    /*
+        * @tc.number    : Security_IAM_Face_Interface_check_IDMAuthSubType_0101
+        * @tc.name      : InnerKit interface enum AuthSubType
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_Face_Interface_check_IDMAuthSubType_0101', 1, async function (done) {
         console.info('testFace Security_IAM_Face_Interface_check_IDMAuthSubType_0101 start');
         expect(10000).assertEqual(userIDM.AuthSubType.PIN_SIX);
         expect(10001).assertEqual(userIDM.AuthSubType.PIN_NUMBER);
@@ -33,7 +40,14 @@ describe('userauthTest', function () {
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_IDMAuthType_0101', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_Interface_check_IDMAuthType_0101
+        * @tc.name      : InnerKit interface enum AuthType
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_Face_Interface_check_IDMAuthType_0101', 1, async function (done) {
         console.info('testFace Security_IAM_Face_Interface_check_IDMAuthSubType_0101 start');
         expect(1).assertEqual(userIDM.AuthType.PIN);
         expect(2).assertEqual(userIDM.AuthType.FACE);
@@ -41,6 +55,13 @@ describe('userauthTest', function () {
         done();
     })
 
+    /*
+        * @tc.number    : Security_IAM_Face_Interface_check_pinauthAuthSubType_0101
+        * @tc.name      : InnerKit interface enum AuthSubType
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
     it('Security_IAM_Face_Interface_check_pinauthAuthSubType_0101', 0, async function (done) {
         console.info('testFace Security_IAM_Face_Interface_check_pinauthAuthSubType_0101 start');
         expect(10000).assertEqual(pinAuth.AuthSubType.PIN_SIX);
@@ -52,7 +73,14 @@ describe('userauthTest', function () {
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_userauthAuthSubType_0101', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_Interface_check_userauthAuthSubType_0101
+        * @tc.name      : InnerKit interface enum AuthSubType
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_Face_Interface_check_userauthAuthSubType_0101', 1, async function (done) {
         console.info('testFace Security_IAM_Face_Interface_check_userauthAuthSubType_0101 start');
         expect(10000).assertEqual(userAuth.AuthSubType.PIN_SIX);
         expect(10001).assertEqual(userAuth.AuthSubType.PIN_NUMBER);
@@ -63,7 +91,14 @@ describe('userauthTest', function () {
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_userauthAuthTrustLevel_0101', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_Interface_check_userauthAuthTrustLevel_0101
+        * @tc.name      : InnerKit interface enum AuthTrustLevel
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_Face_Interface_check_userauthAuthTrustLevel_0101', 1, async function (done) {
         console.info('testFace Security_IAM_Face_Interface_check_userauthAuthTrustLevel_0101 start');
         expect(10000).assertEqual(userAuth.AuthTrustLevel.ATL1);
         expect(20000).assertEqual(userAuth.AuthTrustLevel.ATL2);
@@ -73,15 +108,29 @@ describe('userauthTest', function () {
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_userauthAuthType_0101', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_Interface_check_userauthAuthType_0101
+        * @tc.name      : InnerKit interface enum AuthType
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_Face_Interface_check_userauthAuthType_0101', 1, async function (done) {
         console.info('testFace Security_IAM_Face_Interface_check_userauthAuthType_0101 start');
         expect(1).assertEqual(userAuth.AuthType.PIN);
         expect(2).assertEqual(userAuth.AuthType.FACE);
         console.info('testFace Security_IAM_Face_Interface_check_userauthAuthType_0101 end');
         done();
     })
-
-    it('Security_IAM_Face_Interface_check_userauthGetPropertyType_0101', 0, async function (done) {
+	
+    /*
+        * @tc.number    : Security_IAM_Face_Interface_check_userauthGetPropertyType_0101
+        * @tc.name      : InnerKit interface enum GetPropertyType
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_Face_Interface_check_userauthGetPropertyType_0101', 1, async function (done) {
         console.info('testFace Security_IAM_Face_Interface_check_userauthGetPropertyType_0101 start');
         expect(1).assertEqual(userAuth.GetPropertyType.AUTH_SUB_TYPE);
         expect(2).assertEqual(userAuth.GetPropertyType.REMAIN_TIMES);
@@ -90,7 +139,14 @@ describe('userauthTest', function () {
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_userauthAuthMethod_0101', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_Interface_check_userauthAuthMethod_0101
+        * @tc.name      : InnerKit interface enum AuthMethod
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_Face_Interface_check_userauthAuthMethod_0101', 1, async function (done) {
         console.info('testFace Security_IAM_Face_Interface_check_userauthAuthMethod_0101 start');
         expect(0xF).assertEqual(userAuth.AuthMethod.PIN_ONLY);
         expect(0xF0).assertEqual(userAuth.AuthMethod.FACE_ONLY);
@@ -98,21 +154,42 @@ describe('userauthTest', function () {
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_userauthSetPropertyType_0101', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_Interface_check_userauthSetPropertyType_0101
+        * @tc.name      : InnerKit interface enum SetPropertyType
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_Face_Interface_check_userauthSetPropertyType_0101', 1, async function (done) {
         console.info('testFace Security_IAM_Face_Interface_check_userauthSetPropertyType_0101 start');
         expect(1).assertEqual(userAuth.SetPropertyType.INIT_ALGORITHM);
         console.info('testFace Security_IAM_Face_Interface_check_userauthSetPropertyType_0101 end');
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_userauthModule_0101', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_Interface_check_userauthModule_0101
+        * @tc.name      : InnerKit interface enum Module
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_Face_Interface_check_userauthModule_0101', 1, async function (done) {
         console.info('testFace Security_IAM_Face_Interface_check_userauthModule_0101 start');
         expect(1).assertEqual(userAuth.Module.FACE_AUTH);
         console.info('testFace Security_IAM_Face_Interface_check_userauthModule_0101 end');
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_userauthResultCode_0101', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_Interface_check_userauthResultCode_0101
+        * @tc.name      : InnerKit interface enum ResultCode
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_Face_Interface_check_userauthResultCode_0101', 1, async function (done) {
         console.info('testFace Security_IAM_Face_Interface_check_userauthResultCode_0101 start');
         expect(0).assertEqual(userAuth.ResultCode.SUCCESS);
         expect(1).assertEqual(userAuth.ResultCode.FAIL);
@@ -129,7 +206,14 @@ describe('userauthTest', function () {
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_userauthFaceTipsCode_0101', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_Interface_check_userauthFaceTipsCode_0101
+        * @tc.name      : InnerKit interface enum FaceTipsCode
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_Face_Interface_check_userauthFaceTipsCode_0101', 1, async function (done) {
         console.info('testFace Security_IAM_Face_Interface_check_userauthFaceTipsCode_0101 start');
         expect(1).assertEqual(userAuth.FaceTipsCode.FACE_AUTH_TIP_TOO_BRIGHT);
         expect(2).assertEqual(userAuth.FaceTipsCode.FACE_AUTH_TIP_TOO_DARK);
@@ -146,7 +230,14 @@ describe('userauthTest', function () {
         done();
     })
 
-    it('Security_IAM_Face_Interface_check_userauthFingerprintTips_0101', 0, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_Face_Interface_check_userauthFingerprintTips_0101
+        * @tc.name      : InnerKit interface enum FingerprintTips
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_Face_Interface_check_userauthFingerprintTips_0101', 1, async function (done) {
         console.info('testFace Security_IAM_Face_Interface_check_userauthFingerprintTips_0101 start');
         expect(0).assertEqual(userAuth.FingerprintTips.FINGERPRINT_TIP_GOOD);
         expect(1).assertEqual(userAuth.FingerprintTips.FINGERPRINT_TIP_IMAGER_DIRTY);
