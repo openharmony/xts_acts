@@ -106,17 +106,17 @@ describe('ActsNetworkSearchTest', function () {
         radio.getNetworkState(SLOT_2, (err, data) => {
             if (err) {
                 console.log(`Telephony_NetworkSearch_getNetworkState_Async_0700 finish err: ${err}`);
-				expect(data.longOperatorName != 'longOperatorName').assertTrue();
-				expect(data.shortOperatorName != 'shortOperatorName').assertTrue();
-				expect(data.plmnNumeric != 'plmnNumeric').assertTrue();
-				expect(data.isRoaming != true).assertTrue();
-				expect(data.regState != radio.REG_STATE_IN_SERVICE).assertTrue();
-				expect(data.nsaState != radio.NSA_STATE_SA_ATTACHED).assertTrue();
-				expect(data.isCaActive != true).assertTrue();
                 done();
                 return;
             }
             console.log(`Telephony_NetworkSearch_getNetworkState_Async_0700 fail not go to err ${data}`);
+            expect(data.longOperatorName != 'longOperatorName').assertTrue();
+            expect(data.shortOperatorName != 'shortOperatorName').assertTrue();
+            expect(data.plmnNumeric != 'plmnNumeric').assertTrue();
+            expect(data.isRoaming != true).assertTrue();
+            expect(data.regState != radio.REG_STATE_IN_SERVICE).assertTrue();
+            expect(data.nsaState != radio.NSA_STATE_SA_ATTACHED).assertTrue();
+            expect(data.isCaActive != true).assertTrue();
             expect().assertFail();
             done();
         });
@@ -482,7 +482,6 @@ describe('ActsNetworkSearchTest', function () {
                 radio.getPreferredNetwork(SLOT_0, (err, data) => {
                     if (err) {
                         console.log(`Telephony_NetworkSearch_setPreferredNetwork_Async_0100 get fail err: ${err}`);
-                        expect().assertFail();
                         done();
                         return;
                     }
@@ -495,8 +494,8 @@ describe('ActsNetworkSearchTest', function () {
                 expect().assertFail();
                 done();
             }
-        })
-    })
+        });
+    });
 
     /**
      * @tc.number  Telephony_NetworkSearch_setPreferredNetwork_Async_0600
@@ -510,7 +509,6 @@ describe('ActsNetworkSearchTest', function () {
                 radio.getPreferredNetwork(SLOT_0, (err, data) => {
                     if (err) {
                         console.log(`Telephony_NetworkSearch_setPreferredNetwork_Async_0600 get fail err: ${err}`);
-                        expect().assertFail();
                         done();
                         return;
                     }
@@ -524,9 +522,8 @@ describe('ActsNetworkSearchTest', function () {
                 expect().assertFail();
                 done();
             }
-
-        })
-    })
+        });
+    });
 
     /**
      * @tc.number  Telephony_NetworkSearch_setPreferredNetwork_Promise_0100
@@ -538,7 +535,7 @@ describe('ActsNetworkSearchTest', function () {
         try {
             await radio.setPreferredNetwork(SLOT_0, PREFERRED_MODE_ERR2);
             console.log('Telephony_NetworkSearch_setPreferredNetwork_Promise_0100 set fail: not go to err');
-            expect().assertFail();
+			expect().assertFail();
             done();
         } catch (err) {
             try {
@@ -548,11 +545,10 @@ describe('ActsNetworkSearchTest', function () {
                 done();
             } catch (err) {
                 console.log(`Telephony_NetworkSearch_setPreferredNetwork_Promise_0100 fail err: ${err}`);
-                expect().assertFail();
                 done();
             }
         }
-    })
+    });
 
     /**
      * @tc.number  Telephony_NetworkSearch_setPreferredNetwork_Promise_0600
@@ -563,7 +559,7 @@ describe('ActsNetworkSearchTest', function () {
         try {
             await radio.setPreferredNetwork(SLOT_2, radio.PREFERRED_NETWORK_MODE_GSM);
             console.log('Telephony_NetworkSearch_setPreferredNetwork_Promise_0600 set fail: not go to err');
-            expect().assertFail();
+			expect().assertFail();
             done();
         } catch (err) {
             try {
@@ -573,11 +569,10 @@ describe('ActsNetworkSearchTest', function () {
                 done();
             } catch (err) {
                 console.log(`Telephony_NetworkSearch_setPreferredNetwork_Promise_0600 fail err: ${err}`);
-                expect().assertFail();
                 done();
             }
         }
-    })
+    });
 
     /**
      * @tc.number  Telephony_NetworkSearch_getCellInformation_Async_0500
@@ -855,7 +850,7 @@ describe('ActsNetworkSearchTest', function () {
             done();
         }
     });
-	
+
     /**
      * @tc.number  Telephony_StateRegistry_on_0200
      * @tc.name    Add a networkStatus change listen and test observer.on({slotId:0}) to view the callback results
@@ -868,7 +863,7 @@ describe('ActsNetworkSearchTest', function () {
         });
         done();
     });
-	
+
     /**
      * @tc.number  Telephony_StateRegistry_off_0200
      * @tc.name    Add a networkStatus change listen and test observer.off() to view the callback results
@@ -878,7 +873,7 @@ describe('ActsNetworkSearchTest', function () {
         observer.off('networkStateChange');
         done();
     });
-	
+
     /**
      * @tc.number  Telephony_StateRegistry_on_0300
      * @tc.name    Add a networkStatus change listen and test observer.on({slotId:0}) to view the callback results
@@ -891,7 +886,7 @@ describe('ActsNetworkSearchTest', function () {
         });
         done();
     });
-	
+
     /**
      * @tc.number  Telephony_StateRegistry_off_0300
      * @tc.name    Add a networkStatus change listen and test observer.off() to view the callback results
