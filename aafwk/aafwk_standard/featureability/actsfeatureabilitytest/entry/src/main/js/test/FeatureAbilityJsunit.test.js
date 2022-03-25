@@ -1905,7 +1905,6 @@ describe('ActsFeatureAbilityTest', function () {
         expect(data.reqCapabilities[0]).assertEqual("reqCapabilitiesTest1");
         expect(data.reqCapabilities[1]).assertEqual("reqCapabilitiesTest2");
         expect(data.deviceTypes[0]).assertEqual("phone");
-        checkAbilityInfo(data.abilityInfos[0]);
         expect(data.moduleName).assertEqual("entry")
         expect(data.mainAbilityName).assertEqual("");
         expect(data.installationFree).assertEqual(false);
