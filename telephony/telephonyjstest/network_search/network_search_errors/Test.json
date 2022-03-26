@@ -2,7 +2,7 @@
     "description": "Configuration for NetworkSearch Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "1800000",
+        "test-timeout": "2100000",
         "package": "com.ohos.networksearch",
         "shell-timeout": "60000"
     },
