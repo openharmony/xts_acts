@@ -17,11 +17,11 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import client from '@ohos.update';
 
 let updater;
-var param_value1 = 0;
-var param_value2 = 0;
-var expect_value = 0;
+let param_value1 = 0;
+let param_value2 = 0;
+let expect_value = 0;
 
-var updateState = {
+let updateState = {
     UPDATE_STATE_INIT : 0,
     UPDATE_STATE_CHECK_VERSION_ON : 10,
     UPDATE_STATE_CHECK_VERSION_FAIL : 11,
