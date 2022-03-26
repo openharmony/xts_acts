@@ -24,8 +24,6 @@ const int USE_HOS_PKG = 1;
 const int NOT_HOS_PKG = 0;
 const int ERR_PAK_FALG = 2;
 const int DATA_LENGTH = 190;
-const int READ_LENGTH = 0;
-const int ERR_LENGTH = 9;
 const int DATA_OFFSET = 0;
 
 using namespace std;
