@@ -23,8 +23,8 @@ usage()
     echo "                  First, you must be execute stf/start.bat in the windows which connected a device."
     echo "                  target_platform : TARGET_PLATFORM the target platform, such as phone or ivi; Default to phone"
     echo "                  device    : IP:PORT  the host ip:port of the connected device."
-    echo "                  module    : MODULE_NAME the module name to run. Run all modules by default."
-    echo "                  test      : TEST_NAME the test name to run. Run all tests by default. This should be a FULL-QUALIFIED className or methodName."
+    echo "                  module    : MODULE_NAME name of the module to run. Run all modules by default."
+    echo "                  test      : TEST_NAME name of the test to run. Run all tests by default. This should be a FULL-QUALIFIED className or methodName."
     echo "                  runonly   : RUN_ONLY TRUE=not build, only runtest; FALSE=build and runtest. FALSE by default."
     echo
     exit 1
@@ -152,7 +152,7 @@ run_test()
         if [ ! -z "$MAPPED_MODULE_NAME" ]; then
           echo -e "\033[32mTest module name of build_target "$MODULE_NAME is" "$MAPPED_MODULE_NAME"\033[0m"
         else
-          echo -e "\033[31mTest module "$MODULE_NAME" dose not exist!\033[0m"
+          echo -e "\033[31mTest module "$MODULE_NAME" does not exist!\033[0m"
           exit 1
         fi
     fi
