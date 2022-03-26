@@ -16,7 +16,7 @@
 #include "hctest.h"
 
 /**
- * @tc.name: register a test suit named "StringTestSuite"
+ * @tc.name: register a test suite named "StringTestSuite"
  * @param: test subsystem name
  * @param: example module name
  * @param: StringTestSuite test suit name
@@ -24,7 +24,7 @@
 LITE_TEST_SUIT(test, example, StringTestSuite);
 
 /**
- * @tc.setup: define a setup for test suit, format:"StringTestSuite + SetUp"
+ * @tc.setup: define a setup for test suite, format:"StringTestSuite + SetUp"
  * @return: true——setup success
  */
 static BOOL StringTestSuiteSetUp()
@@ -34,7 +34,7 @@ static BOOL StringTestSuiteSetUp()
 }
 
 /**
- * @tc.teardown: define a setup for test suit, format:"StringTestSuite + TearDown"
+ * @tc.teardown: define a setup for test suite, format:"StringTestSuite + TearDown"
  * @return: true——teardown success
  */
 static BOOL StringTestSuiteTearDown()
