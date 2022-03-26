@@ -2099,88 +2099,6 @@ describe('Image', function () {
     })
 
     /**
-     * @tc.number    : TC_050-6
-     * @tc.name      : createPixelMap(decodingOptions:rotate -10})-jpg
-     * @tc.desc      : 1.create imagesource
-     *                 2.set index and DecodeOptions
-     *                 3.create PixelMap
-     *                 4.callback return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('TC_050-6', 0, async function (done) {
-        let fdJpg = fileio.openSync(pathJpg);
-        const imageSourceApi = image.createImageSource(fdJpg);
-        if (imageSourceApi == undefined) {
-            console.info('TC_050-6 create image source failed');
-            expect(false).assertTrue();
-            done();
-        } else {
-            let decodingOptions = {
-                sampleSize:1,
-                editable: true, 
-                desiredSize:{ width:1, height:2},
-                rotate:-10,
-                desiredPixelFormat:2,
-                desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
-            };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
-                    console.info('TC_050-6 success ');
-                    expect(true).assertTrue();
-                    done();
-                }else{
-                    expect(false).assertTrue();
-                    done();
-                }   
-            }) 
-        }
-    })
-
-    /**
-     * @tc.number    : TC_050-7
-     * @tc.name      : createPixelMap(decodingOptions:unsupported pixelformat)-jpg 
-     * @tc.desc      : 1.create imagesource
-     *                 2.set index and DecodeOptions
-     *                 3.create PixelMap
-     *                 4.callback return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('TC_050-7', 0, async function (done) {
-        let fdJpg = fileio.openSync(pathJpg);
-        const imageSourceApi = image.createImageSource(fdJpg);
-        if (imageSourceApi == undefined) {
-            console.info('TC_050-7 create image source failed');
-            expect(false).assertTrue();
-            done();
-        } else {
-            let decodingOptions = {
-                sampleSize:1,
-                editable: true, 
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:60,
-                desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
-            };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
-                    console.info('TC_050-7 success ');
-                    expect(true).assertTrue();
-                    done();
-                }else{
-                    expect(false).assertTrue();
-                    done();
-                }   
-            }) 
-        }
-    })
-
-    /**
      * @tc.number    : TC_050-8
      * @tc.name      : createPixelMap(decodingOptions:editable false})-jpg
      * @tc.desc      : 1.create imagesource
@@ -2365,47 +2283,6 @@ describe('Image', function () {
                 imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
                     if(pixelmap == undefined){
                         console.info('TC_050-12 success ');
-                        expect(true).assertTrue();
-                        done();
-                    }else{
-                        expect(false).assertTrue();
-                        done();
-                    }   
-                }) 
-            }        
-        })
-    
-        /**
-         * @tc.number    : TC_050-13
-         * @tc.name      : createPixelMap(decodingOptions:rotate>360)-jpg
-         * @tc.desc      : 1.create imagesource
-         *                 2.set index and DecodeOptions
-         *                 3.create PixelMap
-         *                 4.callback return undefined
-         * @tc.size      : MEDIUM 
-         * @tc.type      : Functional
-         * @tc.level     : Level 1
-         */
-        it('TC_050-13', 0, async function (done) {
-            let fdJpg = fileio.openSync(pathJpg);
-            const imageSourceApi = image.createImageSource(fdJpg);
-            if (imageSourceApi == undefined) {
-                console.info('TC_050-13 create image source failed');
-                expect(false).assertTrue();
-                done();
-            } else {
-                let decodingOptions = {
-                    sampleSize:1,
-                    editable: true, 
-                    desiredSize:{ width:1, height:2},
-                    rotate:500,
-                    desiredPixelFormat:2,
-                    desiredRegion: { size: { height: 1, width: 2 }, x: 1, y: 2 },
-                    index:0
-                };
-                imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                    if(pixelmap == undefined){
-                        console.info('TC_050-13 success ');
                         expect(true).assertTrue();
                         done();
                     }else{
@@ -3389,88 +3266,6 @@ describe('Image', function () {
             }) 
         }
     })
-
-    /**
-     * @tc.number    : TC_067-6
-     * @tc.name      : createPixelMap(decodingOptions:rotate -10})-gif
-     * @tc.desc      : 1.create imagesource
-     *                 2.set index and DecodeOptions
-     *                 3.create PixelMap
-     *                 4.callback return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */    
-    it('TC_067-6', 0, async function (done) {
-        let fdMovingGif = fileio.openSync(pathMovingGif);
-        const imageSourceApi = image.createImageSource(fdMovingGif);
-        if (imageSourceApi == undefined) {
-            console.info('TC_067-6 create image source failed');
-            expect(false).assertTrue();
-            done();
-        } else {
-            let decodingOptions = {
-                sampleSize:1,
-                editable: true, 
-                desiredSize:{ width:1, height:2},
-                rotate:-10,
-                desiredPixelFormat:2,
-                desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
-            };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
-                    console.info('TC_067-6 success ');
-                    expect(true).assertTrue();
-                    done();
-                }else{
-                    expect(false).assertTrue();
-                    done();
-                }   
-            }) 
-        }
-    })
-
-    /**
-     * @tc.number    : TC_067-7
-     * @tc.name      : createPixelMap(decodingOptions:unsupported pixelformat)-gif 
-     * @tc.desc      : 1.create imagesource
-     *                 2.set index and DecodeOptions
-     *                 3.create PixelMap
-     *                 4.callback return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */    
-    it('TC_067-7', 0, async function (done) {
-        let fdMovingGif = fileio.openSync(pathMovingGif);
-        const imageSourceApi = image.createImageSource(fdMovingGif);
-        if (imageSourceApi == undefined) {
-            console.info('TC_067-7 create image source failed');
-            expect(false).assertTrue();
-            done();
-        } else {
-            let decodingOptions = {
-                sampleSize:1,
-                editable: true, 
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:60,
-                desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
-            };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
-                    console.info('TC_067-7 success ');
-                    expect(true).assertTrue();
-                    done();
-                }else{
-                    expect(false).assertTrue();
-                    done();
-                }   
-            }) 
-        }
-    })
     /**
      * @tc.number    : TC_067-8
      * @tc.name      : createPixelMap(decodingOptions:editable false})-gif
@@ -3664,49 +3459,7 @@ describe('Image', function () {
                 }   
             }) 
         }
-    })  
-
-    /**
-     * @tc.number    : TC_067-13
-     * @tc.name      : createPixelMap(decodingOptions:rotate>360)-gif
-     * @tc.desc      : 1.create imagesource
-     *                 2.set index and DecodeOptions
-     *                 3.create PixelMap
-     *                 4.callback return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */ 
-    it('TC_067-13', 0, async function (done) {
-        let fdMovingGif = fileio.openSync(pathMovingGif);
-        const imageSourceApi = image.createImageSource(fdMovingGif);
-        if (imageSourceApi == undefined) {
-            console.info('TC_067-13 create image source failed');
-            expect(false).assertTrue();
-            done();
-        } else {
-            let decodingOptions = {
-                sampleSize:1,
-                editable: true, 
-                desiredSize:{ width:1, height:2},
-                rotate:500,
-                desiredPixelFormat:2,
-                desiredRegion: { size: { height: 1, width: 2 }, x: 1, y: 2 },
-                index:0
-            };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
-                    console.info('TC_067-13 success ');
-                    expect(true).assertTrue();
-                    done();
-                }else{
-                    expect(false).assertTrue();
-                    done();
-                }   
-            }) 
-        }
     }) 
-    
     /**
      * @tc.number    : TC_067-14
      * @tc.name      : createPixelMap-promise-gif
@@ -3993,89 +3746,6 @@ describe('Image', function () {
             }) 
         }
     }) 
-
-    /**
-     * @tc.number    : TC_068-6
-     * @tc.name      : createPixelMap(decodingOptions:rotate -10})-bmp
-     * @tc.desc      : 1.create imagesource
-     *                 2.set index and DecodeOptions
-     *                 3.create PixelMap
-     *                 4.callback return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */ 
-    it('TC_068-6', 0, async function (done) {
-        let fdBmp = fileio.openSync(pathBmp);
-        const imageSourceApi = image.createImageSource(fdBmp);
-        if (imageSourceApi == undefined) {
-            console.info('TC_068-6 create image source failed');
-            expect(false).assertTrue();
-            done();
-        } else {
-            let decodingOptions = {
-                sampleSize:1,
-                editable: true, 
-                desiredSize:{ width:1, height:2},
-                rotate:-10,
-                desiredPixelFormat:2,
-                desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
-            };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
-                    console.info('TC_068-6 success ');
-                    expect(true).assertTrue();
-                    done();
-                }else{
-                    expect(false).assertTrue();
-                    done();
-                }   
-            }) 
-        }
-    })  
-
-    /**
-     * @tc.number    : TC_068-7
-     * @tc.name      : createPixelMap(decodingOptions:unsupported pixelformat)-bmp 
-     * @tc.desc      : 1.create imagesource
-     *                 2.set index and DecodeOptions
-     *                 3.create PixelMap
-     *                 4.callback return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */ 
-    it('TC_068-7', 0, async function (done) {
-        let fdBmp = fileio.openSync(pathBmp);
-        const imageSourceApi = image.createImageSource(fdBmp);
-        if (imageSourceApi == undefined) {
-            console.info('TC_068-7 create image source failed');
-            expect(false).assertTrue();
-            done();
-        } else {
-            let decodingOptions = {
-                sampleSize:1,
-                editable: true, 
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:60,
-                desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
-            };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
-                    console.info('TC_068-7 success ');
-                    expect(true).assertTrue();
-                    done();
-                }else{
-                    expect(false).assertTrue();
-                    done();
-                }   
-            }) 
-        }
-    })
-
     /**
      * @tc.number    : TC_068-8
      * @tc.name      : createPixelMap(decodingOptions:editable false})-bmp
@@ -4261,46 +3931,6 @@ describe('Image', function () {
             imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
                 if(pixelmap == undefined){
                     console.info('TC_068-12 success ');
-                    expect(true).assertTrue();
-                    done();
-                }else{
-                    expect(false).assertTrue();
-                    done();
-                }   
-            }) 
-        }
-    })
-    /**
-     * @tc.number    : TC_068-13
-     * @tc.name      : createPixelMap(decodingOptions:rotate>360)-jpg
-     * @tc.desc      : 1.create imagesource
-     *                 2.set index and DecodeOptions
-     *                 3.create PixelMap
-     *                 4.callback return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('TC_068-13', 0, async function (done) {
-        let fdBmp = fileio.openSync(pathBmp);
-        const imageSourceApi = image.createImageSource(fdBmp);
-        if (imageSourceApi == undefined) {
-            console.info('TC_068-13 create image source failed');
-            expect(false).assertTrue();
-            done();
-        } else {
-            let decodingOptions = {
-                sampleSize:1,
-                editable: true, 
-                desiredSize:{ width:1, height:2},
-                rotate:500,
-                desiredPixelFormat:2,
-                desiredRegion: { size: { height: 1, width: 2 }, x: 1, y: 2 },
-                index:0 
-            };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
-                    console.info('TC_068-13 success ');
                     expect(true).assertTrue();
                     done();
                 }else{
@@ -4596,91 +4226,6 @@ describe('Image', function () {
             }) 
         }
     })
-
-    /**
-     * @tc.number    : TC_163-6
-     * @tc.name      : createPixelMap(decodingOptions:rotate -10})-png
-     * @tc.desc      : 1.create imagesource
-     *                 2.set decodingOptions
-     *                 3.call createPixelMap
-     *                 4.set index=-1,options
-     *                 5.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */ 
-    it('TC_163-6', 0, async function (done) {
-        let fdPng = fileio.openSync(pathPng);
-        const imageSourceApi = image.createImageSource(fdPng);
-        if (imageSourceApi == undefined) {
-            console.info('TC_163-6 create image source failed');
-            expect(false).assertTrue();
-            done();
-        } else {
-            let decodingOptions = {
-                sampleSize:1,
-                editable: true, 
-                desiredSize:{ width:1, height:2},
-                rotate:-10,
-                desiredPixelFormat:2,
-                desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
-            };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
-                    console.info('TC_163-6 success ');
-                    expect(true).assertTrue();
-                    done();
-                }else{
-                    expect(false).assertTrue();
-                    done();
-                }   
-            }) 
-        }
-    })  
-
-    /**
-     * @tc.number    : TC_163-7
-     * @tc.name      : createPixelMap(decodingOptions:unsupported pixelformat)-png
-     * @tc.desc      : 1.create imagesource
-     *                 2.set decodingOptions
-     *                 3.call createPixelMap
-     *                 4.set index=-1,options
-     *                 5.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */ 
-    it('TC_163-7', 0, async function (done) {
-        let fdPng = fileio.openSync(pathPng);
-        const imageSourceApi = image.createImageSource(fdPng);
-        if (imageSourceApi == undefined) {
-            console.info('TC_163-7 create image source failed');
-            expect(false).assertTrue();
-            done();
-        } else {
-            let decodingOptions = {
-                sampleSize:1,
-                editable: true, 
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:60,
-                desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
-            };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
-                    console.info('TC_163-7 success ');
-                    expect(true).assertTrue();
-                    done();
-                }else{
-                    expect(false).assertTrue();
-                    done();
-                }   
-            }) 
-        }
-    })  
-
     /**
      * @tc.number    : TC_163-8
      * @tc.name      : createPixelMap(decodingOptions:editable false})-png
@@ -4717,44 +4262,7 @@ describe('Image', function () {
             })
         }
     })
-
-    /**
-     * @tc.number    : TC_163-9
-     * @tc.name      : createPixelMap(decodingOptions:desiredSize>imagesize)-png
-     * @tc.desc      : 1.create imagesource
-     *                 2.set decodingOptions
-     *                 3.call createPixelMap
-     *                 4.set index=-1,options
-     *                 5.return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */    
-    it('TC_163-9', 0, async function (done) {
-        let fdPng = fileio.openSync(pathPng);
-        const imageSourceApi = image.createImageSource(fdPng);
-        if (imageSourceApi == undefined) {
-            console.info('TC_163-9 create image source failed');
-            expect(false).assertTrue();
-            done();
-        } else {
-            let decodingOptions = {
-                sampleSize:1,
-                editable: true, 
-                desiredSize:{ width:10000, height:10000},
-                rotate:10,
-                desiredPixelFormat:2,
-                desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
-            };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                console.info('TC_163-9 success');
-                expect(pixelmap != undefined ).assertTrue();
-                done();
-            })
-        }
-    })
-
+	
     /**
      * @tc.number    : TC_163-10
      * @tc.name      : createPixelMap(decodingOptions:desiredRegion>imagesize)-png
@@ -4879,46 +4387,6 @@ describe('Image', function () {
                 }   
             }) 
         }
-    })
-    /**
-         * @tc.number    : TC_163-13
-         * @tc.name      : createPixelMap(decodingOptions:rotate>360)-png
-         * @tc.desc      : 1.create imagesource
-         *                 2.set index and DecodeOptions
-         *                 3.create PixelMap
-         *                 4.callback return undefined
-         * @tc.size      : MEDIUM 
-         * @tc.type      : Functional
-         * @tc.level     : Level 1
-         */
-     it('TC_163-13', 0, async function (done) {
-        let fdPng = fileio.openSync(pathPng);
-        const imageSourceApi = image.createImageSource(fdPng);
-        if (imageSourceApi == undefined) {
-            console.info('TC_163-13 create image source failed');
-            expect(false).assertTrue();
-            done();
-        } else {
-            let decodingOptions = {
-                sampleSize:1,
-                editable: true, 
-                desiredSize:{ width:1, height:2},
-                rotate:500,
-                desiredPixelFormat:2,
-                desiredRegion: { size: { height: 1, width: 2 }, x: 1, y: 2 },
-                index:0
-            };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
-                    console.info('TC_163-13 success ');
-                    expect(true).assertTrue();
-                    done();
-                }else{
-                    expect(false).assertTrue();
-                    done();
-                }   
-            }) 
-        }        
     })
     /**
      * @tc.number    : TC_163-14
