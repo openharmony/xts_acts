@@ -98,40 +98,6 @@ export default function toggleJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1660
-     * @tc.name      testToggle030
-     * @tc.desc      aceEtsTest
-     */
-    it('testToggle030', 0, async function (done) {
-      console.info('testToggle030 START');
-      let strJson = getInspectorByKey('toggle3');
-      let obj = JSON.parse(strJson);
-      console.info("[toggle3] get inspector value is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Toggle')
-      expect(obj.$attrs.type).assertEqual('ToggleType.Checkbox')
-      expect(obj.$attrs.isOn).assertEqual('false')
-      console.info('testToggle030 End');
-      done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_1670
-     * @tc.name      testToggle040
-     * @tc.desc      aceEtsTest
-     */
-    it('testToggle040', 0, async function (done) {
-      console.info('testToggle040 START');
-      let strJson = getInspectorByKey('toggle4');
-      let obj = JSON.parse(strJson);
-      console.info("[toggle4] get inspector value is: " + JSON.stringify(obj));
-      expect(obj.$type).assertEqual('Toggle')
-      expect(obj.$attrs.type).assertEqual('ToggleType.Checkbox')
-      expect(obj.$attrs.isOn).assertEqual('true')
-      console.info('testToggle040 End');
-      done();
-    });
-
-    /**
      * @tc.number    SUB_ACE_BASIC_ETS_API_1680
      * @tc.name      testToggle050
      * @tc.desc      aceEtsTest
