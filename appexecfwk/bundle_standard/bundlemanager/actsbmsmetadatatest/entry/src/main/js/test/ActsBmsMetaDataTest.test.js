@@ -25,8 +25,8 @@ describe('ActsBmsMetaDataTest', function () {
     */
     it('bms_getMetaData_0100', 0, async function (done) {
         console.info('=====================bms_getMetaData_0100==================');
-        var bundlePath = ['/data/test/bmsThirdBundleTest1.hap']
-        var installer = await bundle.getBundleInstaller();
+        let bundlePath = ['/data/test/bmsThirdBundleTest1.hap']
+        let installer = await bundle.getBundleInstaller();
         let abilityName1 = 'com.example.third1.MainAbility';
         let dataMap = new Map();
         installer.install(bundlePath, {
@@ -70,11 +70,11 @@ describe('ActsBmsMetaDataTest', function () {
     */
     it('bms_getMetaData_0200', 0, async function (done) {
         console.info('=====================bms_getMetaData_0200==================');
-        var bundlePath1 = ['/data/test/bmsThirdBundleTest1.hap']
-        var bundlePath2 = ['/data/test/bmsThirdBundleTestA1.hap']
+        let bundlePath1 = ['/data/test/bmsThirdBundleTest1.hap']
+        let bundlePath2 = ['/data/test/bmsThirdBundleTestA1.hap']
         let dataMap = new Map();
         let abilityName1 = 'com.example.third1.AMainAbility';
-        var installer = await bundle.getBundleInstaller();
+        let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath1, {
             userId: 100,
             installFlag: 1,
@@ -124,9 +124,9 @@ describe('ActsBmsMetaDataTest', function () {
     */
     it('bms_getMetaData_0300', 0, async function (done) {
         console.info('=====================bms_getMetaData_0300==================');
-        var bundlePath = ['/data/test/bmsThirdBundleTest1.hap']
+        let bundlePath = ['/data/test/bmsThirdBundleTest1.hap']
         let bundleName = 'com.example.third1';
-        var installer = await bundle.getBundleInstaller();
+        let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
             userId: 100,
             installFlag: 1,
@@ -159,10 +159,10 @@ describe('ActsBmsMetaDataTest', function () {
     */
     it('bms_getMetaData_0400', 0, async function (done) {
         console.info('=====================bms_getMetaData_0400==================');
-        var bundlePath = ['/data/test/bmsThirdBundleTest5.hap']
+        let bundlePath = ['/data/test/bmsThirdBundleTest5.hap']
         let dataMap = new Map();
         let abilityName1 = 'com.example.third5.AMainAbility';
-        var installer = await bundle.getBundleInstaller();
+        let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, {
             userId: 100,
             installFlag: 1,
@@ -258,9 +258,9 @@ describe('ActsBmsMetaDataTest', function () {
             });
         if (dataMap.has(abilityName1)) {
             let data = dataMap.get(abilityName1);
-            var parameters = data.parameters;
-            var results = data.results;
-            var customizeDatas = data.customizeDatas;
+            let parameters = data.parameters;
+            let results = data.results;
+            let customizeDatas = data.customizeDatas;
             expect(parameters.length).assertEqual(2);
             expect(results.length).assertEqual(1);
             expect(customizeDatas.length).assertEqual(1);
@@ -285,9 +285,9 @@ describe('ActsBmsMetaDataTest', function () {
     })
 
     function checkMetaData(data, name) {
-        var parameters = data.parameters;
-        var results = data.results;
-        var customizeDatas = data.customizeDatas;
+        let parameters = data.parameters;
+        let results = data.results;
+        let customizeDatas = data.customizeDatas;
         expect(typeof parameters).assertEqual('object');
         expect(typeof results).assertEqual('object');
         expect(typeof customizeDatas).assertEqual('object');

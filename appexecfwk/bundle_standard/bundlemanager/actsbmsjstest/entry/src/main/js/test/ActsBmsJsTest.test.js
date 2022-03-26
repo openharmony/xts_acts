@@ -32,7 +32,7 @@ describe('ActsBmsJsTest', function () {
         console.info('=====================bms_getJsAbility_0100==================');
         let bundleName = 'com.example.third2';
         let abilityName = 'com.example.third2.MainAbility';
-        var installer = await bundle.getBundleInstaller();
+        let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest2.hap'], {
             userId: 100,
             installFlag: 1,
@@ -76,10 +76,10 @@ describe('ActsBmsJsTest', function () {
      */
     it('bms_getJsAbility_0200', 0, async function (done) {
         console.info('=====================bms_getJsAbility_0200==================');
-        var bundleName = 'com.example.third5';
+        let bundleName = 'com.example.third5';
         let abilityName1 = 'com.example.third5.AMainAbility';
         let abilityName2 = 'com.example.third5.BMainAbility';
-        var installer = await bundle.getBundleInstaller();
+        let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleTest5.hap'], {
             userId: 100,
             installFlag: 1,
@@ -128,7 +128,7 @@ describe('ActsBmsJsTest', function () {
         console.info('=====================bms_getJsAbility_0300==================');
         let bundleName = 'com.example.js';
         let abilityName = 'com.example.js.MainAbility';
-        var installer = await bundle.getBundleInstaller();
+        let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleJs.hap'], {
             userId: 100,
             installFlag: 1,
@@ -174,7 +174,7 @@ describe('ActsBmsJsTest', function () {
         console.info('=====================bms_getJsAbility_0400==================');
         let bundleName = 'com.example.c';
         let abilityName = '.MainAbility';
-        var installer = await bundle.getBundleInstaller();
+        let installer = await bundle.getBundleInstaller();
         installer.install(['/data/test/bmsThirdBundleC.hap'], {
             userId: 100,
             installFlag: 1,

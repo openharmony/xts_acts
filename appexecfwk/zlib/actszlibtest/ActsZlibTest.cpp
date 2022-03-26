@@ -43,7 +43,7 @@ static unsigned pull(void *desc, unsigned char **buf)
     static unsigned int next = 0;
     static unsigned char dat[] = {0x63, 0, 2, 0};
 
-    if (desc == nullptr) {
+    if (!desc) {
         next = 0;
         return 0;   /* no input (already provided at next_in) */
     }
@@ -314,7 +314,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestLargeDeflate, Function | MediumTest | Level2)
     err = deflate(&c_stream, Z_NO_FLUSH);
     fprintf(stderr, "deflate result: %d\n", err);
     ASSERT_EQ(err, Z_OK);
-    ASSERT_TRUE(c_stream.avail_in == 0);
+    ASSERT_TRUE(!c_stream.avail_in);
 
     /* Feed in already compressed data and switch to no compression: */
     deflateParams(&c_stream, Z_NO_COMPRESSION, Z_DEFAULT_STRATEGY);
@@ -1002,7 +1002,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzOpen, Function | MediumTest | Level2)
     gzclose(file);
     file = gzopen(TESTFILE, "rb");
     ASSERT_TRUE(file != NULL);
-    gzclose(file); 
+    gzclose(file);
 #endif
 #ifdef Z_LARGE64
     int err = Z_OK;
@@ -1019,7 +1019,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzOpen, Function | MediumTest | Level2)
     gzclose(file);
     file = gzopen64(TESTFILE, "rb");
     ASSERT_TRUE(file != NULL);
-    gzclose(file); 
+    gzclose(file);
 #endif
 #if (defined(_WIN32) || defined(__CYGWIN__)) && !defined(Z_SOLO)
     gzFile file;
@@ -1161,7 +1161,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzseek, Function | MediumTest | Level2)
     err = gzseek(file, 1L, SEEK_CUR);
 #endif
 #ifdef Z_LARGE64
-    err = gzseek64(file, 1L, SEEK_CUR); 
+    err = gzseek64(file, 1L, SEEK_CUR);
 #endif
     ASSERT_TRUE(err == 1L);
     gzclose(file);
@@ -1713,7 +1713,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestzlibCompileFlags, Function | MediumTest | Lev
         fprintf(stderr, "incompatible zlib version\n");
         ASSERT_TRUE(false);
 
-    } else if (strcmp(zlibVersion(), ZLIB_VERSION) != 0) {
+    } else if (strcmp(zlibVersion(), ZLIB_VERSION)) {
         fprintf(stderr, "warning: different zlib version\n");
     }
 
@@ -1728,7 +1728,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestzlibCompileFlags, Function | MediumTest | Lev
  */
 HWTEST_F(ActsZlibTest, ActsZlibTestzError, Function | MediumTest | Level2)
 {
-    const char* err;   
+    const char* err;
     err = zError(Z_DATA_ERROR);
     ASSERT_EQ(err, "data error");
 }

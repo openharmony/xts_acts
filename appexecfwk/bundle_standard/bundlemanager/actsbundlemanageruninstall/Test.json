@@ -18,6 +18,7 @@
             "type": "PushKit",
             "push": [
                 "bmsJstest1.hap->/data/bmsJstest1.hap",
+                "bmsJstest2.hap->/data/bmsJstest2.hap",
                 "bmsJstest3.hap->/data/bmsJstest3.hap",
                 "bmsJstest4.hap->/data/bmsJstest4.hap",
                 "bmsJstest5.hap->/data/bmsJstest5.hap",

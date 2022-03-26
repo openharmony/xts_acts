@@ -45,7 +45,7 @@ let voip = 128;
 let taskKeeping = 256;
 const USERID = 100;
 
-var installParam = {
+let installParam = {
     userId: USERID,
     installFlag: 1,
     isKeepData: false
@@ -66,11 +66,11 @@ describe('ActsBmsGetBackGroundModes', function () {
     */
     it('bms_backGroundModes_0100', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0100==================');
-        var bundlePath = [BUNDLE_PATH5]
-        var installer = await bundle.getBundleInstaller();
+        let bundlePath = [BUNDLE_PATH5]
+        let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, installParam, async (err, data) => {
             checkInstallOrUninstall(err, data);
-            var dataInfos = await bundle.queryAbilityByWant({
+            let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
                 elementName: {
@@ -87,7 +87,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                 expect(dataInfos[NUM_THREE].name).assertEqual("com.example.third5.MainAbilityB");
                 expect(dataInfos[NUM_THREE].backgroundModes).assertEqual(dataTransfer | voip);
             }
-            var bundleInfos = await bundle.getAllBundleInfo(1, USERID)
+            let bundleInfos = await bundle.getAllBundleInfo(1, USERID)
             for (let i = 0; i < bundleInfos.length; i++) {
                 console.info("========>bundleInfos[i].name======" + bundleInfos[i].name)
                 console.info("========>bundleInfos[i]======" + JSON.stringify(bundleInfos[i]));
@@ -107,7 +107,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                 }
 
             }
-            var data3 = await bundle.getBundleInfo(BUNDLE_NAME5, 1)
+            let data3 = await bundle.getBundleInfo(BUNDLE_NAME5, 1)
             console.info("========>data3======" + data3.abilityInfos.length)
             for (let q = 0; q < data3.abilityInfos.length; q++) {
                 console.info("=====>data3.abilityInfos======" + JSON.stringify(data3.abilityInfos[2].backgroundModes))
@@ -117,7 +117,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                 location | bluetoothInteraction | multiDeviceConnection | wifiInteraction | voip | taskKeeping);
             expect(data3.abilityInfos[3].backgroundModes).assertEqual(dataTransfer | voip);
 
-            var data5 = await bundle.getBundleArchiveInfo(BUNDLE_PATH5, 1)
+            let data5 = await bundle.getBundleArchiveInfo(BUNDLE_PATH5, 1)
             console.info("========>data5======" + data5.abilityInfos.length)
             for (let i = 0; i < data5.abilityInfos.length; i++) {
                 console.info("=====>data5.abilityInfos======" + JSON.stringify(data5.abilityInfos[2].backgroundModes))
@@ -141,11 +141,11 @@ describe('ActsBmsGetBackGroundModes', function () {
     */
     it('bms_backGroundModes_0200', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0200==================');
-        var bundlePath = [BUNDLE_PATH6]
-        var installer = await bundle.getBundleInstaller();
+        let bundlePath = [BUNDLE_PATH6]
+        let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, installParam, async (err, data) => {
             checkInstallOrUninstall(err, data);
-            var dataInfos = await bundle.queryAbilityByWant({
+            let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
                 elementName: {
@@ -174,11 +174,11 @@ describe('ActsBmsGetBackGroundModes', function () {
     */
     it('bms_backGroundModes_0300', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0300==================');
-        var bundlePath = [BUNDLE_PATH2]
-        var installer = await bundle.getBundleInstaller();
+        let bundlePath = [BUNDLE_PATH2]
+        let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, installParam, async (err, data) => {
             checkInstallOrUninstall(err, data);
-            var dataInfos = await bundle.queryAbilityByWant({
+            let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
                 elementName: {
@@ -234,11 +234,11 @@ describe('ActsBmsGetBackGroundModes', function () {
     */
     it('bms_backGroundModes_0400', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0400==================');
-        var bundlePath1 = [BUNDLE_PATH4]
-        var installer = await bundle.getBundleInstaller();
+        let bundlePath1 = [BUNDLE_PATH4]
+        let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath1, installParam, async (err, data) => {
             checkInstallOrUninstall(err, data);
-            var dataInfos = await bundle.queryAbilityByWant({
+            let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
                 elementName: {
@@ -266,11 +266,11 @@ describe('ActsBmsGetBackGroundModes', function () {
     */
     it('bms_backGroundModes_0500', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0500==================');
-        var bundlePath = [BUNDLE_PATH1, BUNDLE_PATH3];
-        var installer = await bundle.getBundleInstaller();
+        let bundlePath = [BUNDLE_PATH1, BUNDLE_PATH3];
+        let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath, installParam, async (err, data) => {
             checkInstallOrUninstall(err, data);
-            var dataInfos = await bundle.queryAbilityByWant({
+            let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
                 elementName: {
@@ -303,12 +303,12 @@ describe('ActsBmsGetBackGroundModes', function () {
     */
     it('bms_backGroundModes_0600', 0, async function (done) {
         console.info('=====================bms_backGroundModes_0600==================');
-        var bundlePath1 = [BUNDLE_PATH1]
-        var bundlePath2 = [BUNDLE_PATHUPDATE]
-        var installer = await bundle.getBundleInstaller();
+        let bundlePath1 = [BUNDLE_PATH1]
+        let bundlePath2 = [BUNDLE_PATHUPDATE]
+        let installer = await bundle.getBundleInstaller();
         installer.install(bundlePath1, installParam, async (err, data) => {
             checkInstallOrUninstall(err, data);
-            var dataInfos = await bundle.queryAbilityByWant({
+            let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ['entity.system.home'],
                 elementName: {
@@ -325,7 +325,7 @@ describe('ActsBmsGetBackGroundModes', function () {
             }
             installer.install(bundlePath2, installParam, async (err, data) => {
                 checkInstallOrUninstall(err, data);
-                var dataInfos = await bundle.queryAbilityByWant({
+                let dataInfos = await bundle.queryAbilityByWant({
                     action: 'action.system.home',
                     entities: ['entity.system.home'],
                     elementName: {
@@ -358,7 +358,7 @@ describe('ActsBmsGetBackGroundModes', function () {
         let installer = await bundle.getBundleInstaller()
         installer.install([SYSTEM_PATH], installParam, async (err, data) => {
             checkInstallOrUninstall(err, data);
-            var dataInfos = await bundle.queryAbilityByWant({
+            let dataInfos = await bundle.queryAbilityByWant({
                 action: 'action.system.home',
                 entities: ["entity.app.music",
                     "entity.app.email",

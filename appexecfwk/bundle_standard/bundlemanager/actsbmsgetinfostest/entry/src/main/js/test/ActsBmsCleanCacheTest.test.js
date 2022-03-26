@@ -30,7 +30,7 @@ describe('ActsCleancache', function () {
      it('bms_cleancache_0100', 0, async function (done){
         console.info('=====================bms_cleancache_0100==================');
 
-        var bundlePath = [BUNDLE_PATH1]
+        let bundlePath = [BUNDLE_PATH1]
         bundle.getBundleInstaller().then(installer => {
             function onReceiveinstallEvent(err, data) {
                 console.log('bms_cleancache_0100 install called: ' + data)
@@ -77,7 +77,7 @@ describe('ActsCleancache', function () {
      it('bms_cleancache_0200', 0, async function (done){
         console.info('=====================bms_cleancache_0100==================');
 
-        var bundlePath = [BUNDLE_PATH1]
+        let bundlePath = [BUNDLE_PATH1]
         bundle.getBundleInstaller().then(installer => {
             function onReceiveinstallEvent(err, data) {
                 console.log('bms_cleancache_0100 install called: ' + data)
@@ -123,7 +123,7 @@ describe('ActsCleancache', function () {
       it('bms_cleancache_0300', 0, async function (done){
         console.info('=====================bms_cleancache_0100==================');
 
-        var bundlePath = [BUNDLE_PATH1]
+        let bundlePath = [BUNDLE_PATH1]
         bundle.getBundleInstaller().then(installer => {
             function onReceiveinstallEvent(err, data) {
                 console.log('bms_cleancache_0300 install called: ' + data)
