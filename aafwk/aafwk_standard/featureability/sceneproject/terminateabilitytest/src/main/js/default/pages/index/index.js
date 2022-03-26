@@ -33,7 +33,7 @@ function PublishCallBackFour() {
 }
 export default {
     data: {
-        title: ""
+        title: ''
     },
     onInit() {
         this.title = this.$t('strings.world');
@@ -50,5 +50,6 @@ export default {
         );
     },
     onReady() {
+        console.info('onReady');
     },
 }

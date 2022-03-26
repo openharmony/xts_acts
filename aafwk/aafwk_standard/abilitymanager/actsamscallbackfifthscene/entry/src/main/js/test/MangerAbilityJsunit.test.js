@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,7 +17,7 @@ import missionManager from '@ohos.application.missionManager'
 import appManager from "@ohos.application.appManager"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-var abilityNameList = [
+let abilityNameList = [
     "com.ohos.launcher.MainAbility",
     "com.ohos.callui.ServiceAbility",
     "com.example.SimulateFeatureAbilityFir",
@@ -26,7 +26,7 @@ var abilityNameList = [
     "com.example.actsamscallbackfifthscene.MainAbility"
 ]
 
-var bundleNameList = [
+let bundleNameList = [
     "com.ohos.launcher",
     "com.ohos.systemui",
     "com.ohos.callui",
@@ -42,10 +42,10 @@ var bundleNameList = [
 describe('ActsAmsCallBackFifthScene', function () {
     console.info('----ActsAmsCallBackFifthScene----');
     beforeAll(async function (done) {
-        var maxnum = 10;
-        var data = await missionManager.getMissionInfos("", maxnum);
+        let maxnum = 10;
+        let data = await missionManager.getMissionInfos("", maxnum);
         console.log('ActsAmsCallBackFifthScene beforeAll getMissionInfos data: ' + JSON.stringify(data));
-        for (var i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
             if (data[i].want.bundleName != 'com.example.actsamscallbackfifthscene') {
                 console.log("ActsAmsCallBackFifthScene, missionId: " + data[i].missionId)
                 missionManager.clearMission(data[i].missionId,
@@ -117,7 +117,7 @@ describe('ActsAmsCallBackFifthScene', function () {
     }
 
     function sleep(delay) {
-        var start = new Date().getTime();
+        let start = new Date().getTime();
         while (true) {
             if (new Date().getTime() - start > delay) {
                 break;
@@ -140,7 +140,7 @@ describe('ActsAmsCallBackFifthScene', function () {
                 ' + error.code + ', data length [' + info.length + ']');
                 expect(Array.isArray(info)).assertEqual(true);
                 expect(info.length).assertLarger(0);
-                for (var i = 0; i < info.length; i++) {
+                for (let i = 0; i < info.length; i++) {
                     console.info('Acts_Ams_test_6600 getProcessRunningInfo[' + i + "]: " + JSON.stringify(info[i]));
                     expect(typeof (info[i].pid)).assertEqual("number");
                     expect(info[i].pid).assertLarger(0);
@@ -165,14 +165,14 @@ describe('ActsAmsCallBackFifthScene', function () {
      * @tc.desc      : Query Recent Ability Mission Infos(by CallBack)
      */
     it('Acts_Ams_test_7000', 0, async function (done) {
-        var maxnum = 10;
+        let maxnum = 10;
         missionManager.getMissionInfos("", maxnum,
             (error, data) => {
                 console.info('Acts_Ams_test_7000 getMissionInfos error.code : \
                 ' + error.code + ',data length [' + data.length + ']');
                 expect(Array.isArray(data)).assertEqual(true);
                 expect(data.length).assertEqual(4);
-                for (var i = 0; i < data.length; i++) {
+                for (let i = 0; i < data.length; i++) {
                     console.info('Acts_Ams_test_7000 getMissionInfos data[' + i + "]: " + JSON.stringify(data[i]));
                     expect(typeof (data[i].missionId)).assertEqual("number");
                     expect(data[i].missionId).assertLarger(0);
@@ -201,9 +201,9 @@ describe('ActsAmsCallBackFifthScene', function () {
      * @tc.desc      : Move Mission To Top(by CallBack)
      */
     it('Acts_Ams_test_7600', 0, async function (done) {
-        var maxnum = 10;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
+        let maxnum = 10;
+        let result = await missionManager.getMissionInfos("", maxnum);
+        for (let i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_7600 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
         missionManager.moveMissionToFront(result[0].missionId,

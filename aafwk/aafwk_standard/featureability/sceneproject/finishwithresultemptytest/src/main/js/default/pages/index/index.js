@@ -23,25 +23,25 @@ function PublishCallBackOne() {
 }
 export default {
     data: {
-        title: ""
+        title: ''
     },
     onInit() {
         this.title = this.$t('strings.world');
     },
     async onShow() {
         commonEvent.publish("ACTS_FinishWithResult_0300_CommonEvent", PublishCallBackOne);
-        var promise = await featureAbility.terminateSelfWithResult(
+        await featureAbility.terminateSelfWithResult(
             {
                 resultCode: 1,
                 want:
                 {
-                    action: "",
-                    entities: [""],
-                    type: "",
-                    deviceId: "",
-                    bundleName: "",
-                    abilityName: "",
-                    uri:"",
+                    action: '',
+                    entities: [''],
+                    type: '',
+                    deviceId: '',
+                    bundleName: '',
+                    abilityName: '',
+                    uri:'',
                 },
             }
         );
@@ -51,5 +51,6 @@ export default {
         });
     },
     onReady() {
+        console.info('onReady');
     },
 }

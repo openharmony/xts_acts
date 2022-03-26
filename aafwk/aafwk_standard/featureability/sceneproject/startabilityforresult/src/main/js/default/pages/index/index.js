@@ -19,13 +19,13 @@ injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
 export default {
     data: {
-        title: "StartAbility"
+        title: 'StartAbility'
     },
     onInit() {
         this.title = "StartAbilityForResult";
     },
     async onShow() {
-        var promise = await featureAbility.terminateSelfWithResult(
+        await featureAbility.terminateSelfWithResult(
             {
                 resultCode: 1,
                 want:
@@ -38,5 +38,6 @@ export default {
         await featureAbility.terminateSelf();
     },
     onReady() {
+        console.info('onReady');
     },
 }

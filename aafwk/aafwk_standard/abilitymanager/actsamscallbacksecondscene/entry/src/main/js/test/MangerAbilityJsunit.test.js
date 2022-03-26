@@ -17,7 +17,7 @@ import missionManager from '@ohos.application.missionManager'
 import appManager from "@ohos.application.appManager"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit'
 
-var abilityNameList = [
+let abilityNameList = [
     "com.ohos.launcher.MainAbility",
     "com.ohos.callui.ServiceAbility",
     "com.example.SimulateFeatureAbilityFir",
@@ -25,7 +25,7 @@ var abilityNameList = [
     "com.example.actsamscallbacksecondscene.MainAbility"
 ]
 
-var bundleNameList = [
+let bundleNameList = [
     "com.ohos.launcher",
     "com.ohos.systemui",
     "com.ohos.callui",
@@ -41,10 +41,10 @@ var bundleNameList = [
 describe('ActsAmsCallBackSecondScene', function () {
     console.info('----ActsAmsCallBackSecondScene----');
     beforeAll(async function (done) {
-        var maxnum = 10;
-        var data = await missionManager.getMissionInfos("", maxnum);
+        let maxnum = 10;
+        let data = await missionManager.getMissionInfos("", maxnum);
         console.log('ActsAmsCallBackSecondScene beforeAll getMissionInfos data: ' + JSON.stringify(data));
-        for (var i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
             if (data[i].want.bundleName != 'com.example.actsamscallbacksecondscene') {
                 console.log("ActsAmsCallBackSecondScene, missionId: " + data[i].missionId)
                 missionManager.clearMission(data[i].missionId,
@@ -99,7 +99,7 @@ describe('ActsAmsCallBackSecondScene', function () {
     }
 
     function sleep(delay) {
-        var start = new Date().getTime();
+        let start = new Date().getTime();
         while (true) {
             if (new Date().getTime() - start > delay) {
                 break;
@@ -122,7 +122,7 @@ describe('ActsAmsCallBackSecondScene', function () {
                 ' + error.code + ', data length [' + info.length + ']');
                 expect(Array.isArray(info)).assertEqual(true);
                 expect(info.length).assertLarger(0);
-                for (var i = 0; i < info.length; i++) {
+                for (let i = 0; i < info.length; i++) {
                     console.info('Acts_Ams_test_1800 getProcessRunningInfo[' + i + "]: " + JSON.stringify(info[i]));
                     expect(typeof (info[i].pid)).assertEqual("number");
                     expect(info[i].pid).assertLarger(0);
@@ -145,14 +145,14 @@ describe('ActsAmsCallBackSecondScene', function () {
      * @tc.desc      : Query Running Ability Mission Infos(by CallBack)
      */
     it('Acts_Ams_test_2000', 0, async function (done) {
-        var maxnum = 20;
+        let maxnum = 20;
         missionManager.getMissionInfos("", maxnum,
             (error, info) => {
                 console.info('Acts_Ams_test_2000 getMissionInfos error.code : \
                 ' + error.code + ',data length [' + info.length + ']');
                 expect(Array.isArray(info)).assertEqual(true);
                 expect(info.length).assertEqual(3);
-                for (var i = 0; i < info.length; i++) {
+                for (let i = 0; i < info.length; i++) {
                     console.info('Acts_Ams_test_2000 getMissionInfos data[' + i + "]: " + JSON.stringify(info[i]));
                     expect(typeof (info[i].missionId)).assertEqual("number");
                     expect(info[i].missionId).assertLarger(0);
@@ -179,9 +179,9 @@ describe('ActsAmsCallBackSecondScene', function () {
      * @tc.desc      : Remove Mission(by CallBack)
      */
     it('Acts_Ams_test_2400', 0, async function (done) {
-        var maxnum = 20;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
+        let maxnum = 20;
+        let result = await missionManager.getMissionInfos("", maxnum);
+        for (let i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_2400 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
         missionManager.clearMission(result[1].missionId,
@@ -199,9 +199,9 @@ describe('ActsAmsCallBackSecondScene', function () {
      * @tc.desc      : Move Mission To Top(by CallBack)
      */
     it('Acts_Ams_test_2800', 0, async function (done) {
-        var maxnum = 20;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
+        let maxnum = 20;
+        let result = await missionManager.getMissionInfos("", maxnum);
+        for (let i = 0; i < result.length; i++) {
             console.info('Acts_Ams_test_2800 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
         missionManager.moveMissionToFront(result[0].missionId,

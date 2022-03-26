@@ -12,10 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import file from '@system.file'
-import app from '@system.app'
-import device from '@system.device'
-import router from '@system.router'
+
 import {Core, ExpectExtend} from 'deccjsunit/index'
 
 const injectRef = Object.getPrototypeOf(global) || global
@@ -23,7 +20,7 @@ injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
 export default {
     data: {
-        title: ""
+        title: ''
     },
     onInit() {
         this.title = this.$t('strings.world');
@@ -32,7 +29,7 @@ export default {
         console.info('onShow finish')
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({
-            'id': 'extend'
+            id: 'extend'
         })
         core.addService('expect', expectExtend)
         core.init()
@@ -44,6 +41,7 @@ export default {
         core.execute()
     },
     onReady() {
+        console.info('onReady');
     },
 }
 

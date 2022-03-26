@@ -33,7 +33,7 @@ export default {
         featureAbility.setShowOnLockScreen(false,(error, data) => {
             console.log('FeatureAbilityTestCallBack ACTS_setShowOnLockScreen_0100 Called.' + ' error ' + error.code )
         });
-        console.log('ZLM-----onClick1 end');
+        console.log('ZLM-----onClick2 end');
     },
     onShow(){
         this.title = this.$t('strings.world');
@@ -41,6 +41,6 @@ export default {
         featureAbility.setShowOnLockScreen(false,(error, data) => {
             console.log('FeatureAbilityTestCallBack ACTS_setShowOnLockScreen_0100 Called.' + ' error ' + error.code )
         });
-        console.log('ZLM-----onClick1 end');
+        console.log('ZLM-----onClick3 end');
     }
 }
