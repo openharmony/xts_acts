@@ -7,41 +7,31 @@
 		"shell-timeout": "120000"
     },
     "kits": [
+   
+		{
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir /data/accounts/account_0/appdata/image",
+                "chmod -R 666 /data/media/*",
+                "chmod -R 666 /data/accounts/account_0/appdata/image/*"
+            ],
+            "teardown-command":[
+              
+            ]
+        },
         {
             "type": "PushKit",
             "pre-push": [
             ],
             "push": [
-                "./resource/image/test.arw ->/data/local/tmp",
-				"./resource/image/test.bmp ->/data/local/tmp",
-				"./resource/image/test.cr2 ->/data/local/tmp",
-				"./resource/image/test.dng ->/data/local/tmp",
-				"./resource/image/test.gif ->/data/local/tmp",
-				"./resource/image/test.jpg ->/data/local/tmp",
-				"./resource/image/test.nrw ->/data/local/tmp",
-				"./resource/image/test.pef ->/data/local/tmp",
-				"./resource/image/test.png ->/data/local/tmp",
-				"./resource/image/test.raf ->/data/local/tmp",
-				"./resource/image/test.rw2 ->/data/local/tmp",
-				"./resource/image/test.wbmp ->/data/local/tmp",
-				"./resource/image/test.webp->/data/local/tmp",
-				"./resource/image/test_exif.jpg ->/data/local/tmp",
-				"./resource/image/test_hw.jpg ->/data/local/tmp",
-				"./resource/image/test_large.webp ->/data/local/tmp",
-				"./resource/image/hasNoExif.jpg ->/data/local/tmp",
-				"./resource/image/moving_test.gif ->/data/local/tmp",
-				"./resource/image/test.9.png ->/data/local/tmp"
-            ]
-        },
-		{
-            "type": "ShellKit",
-            "run-command": [
-                "chmod -R 666 /data/media/*",
-                "chmod -R 666 /data/local/*",
-                "setenforce 0"
-            ],
-            "teardown-command":[
-                "setenforce 1"
+                "./resource/image/test.tiff ->/data/accounts/account_0/appdata/image",
+				"./resource/image/test.123 ->/data/accounts/account_0/appdata/image",
+				"./resource/image/test.bmp ->/data/accounts/account_0/appdata/image",
+                "./resource/image/test.png ->/data/accounts/account_0/appdata/image",
+				"./resource/image/test.gif ->/data/accounts/account_0/appdata/image",
+				"./resource/image/test.jpg ->/data/accounts/account_0/appdata/image",
+				"./resource/image/test_exif.jpg ->/data/accounts/account_0/appdata/image",
+				"./resource/image/moving_test.gif ->/data/accounts/account_0/appdata/image"
             ]
         },
         {
@@ -52,4 +42,5 @@
             "cleanup-apps": true
         }
     ]
+    
 }
