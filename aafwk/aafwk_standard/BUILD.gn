@@ -51,7 +51,7 @@ group("aafwk_standard") {
       "context:context",
       "featureability:featureability",
       "formmanager:formmanager",
-      "lanuageConfigapi7:lanuageConfigapi7",
+      # "lanuageConfigapi7:lanuageConfigapi7",
       "serviceability/sceneProject/particlestartability:ParticleStartAbility",
       "serviceability/sceneProject/particletestserver:ParticleTestServer",
       "serviceability/stserviceabilityserver:amsStServiceAilityServer",
