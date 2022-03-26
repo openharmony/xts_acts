@@ -127,7 +127,7 @@ describe('deviceManagerTest', function() {
                 expect().assertFail();
             }
 
-            var info = {
+            let info = {
                 "subscribeId": 2115,
                 "mode": DISCOVER_MODE_ACTIVE,
                 "medium": AUTO,
@@ -136,7 +136,7 @@ describe('deviceManagerTest', function() {
                 "isWakeRemote": true,
                 "capability": 0
             };
-            var start = data.startDeviceDiscovery(info);
+            let start = data.startDeviceDiscovery(info);
             expect(start != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_startDeviceDiscovery_0100----------");
@@ -157,7 +157,7 @@ describe('deviceManagerTest', function() {
                 expect().assertFail();
             }
 
-            var info = {
+            let info = {
                 "subscribeId": 2115,
                 "mode": DISCOVER_MODE_PASSIVE,
                 "medium": BLE,
@@ -166,7 +166,7 @@ describe('deviceManagerTest', function() {
                 "isWakeRemote": true,
                 "capability": SUBSCRIBE_CAPABILITY_OSD
             };
-            var start = data.startDeviceDiscovery(info);
+            let start = data.startDeviceDiscovery(info);
             expect(start != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_startDeviceDiscovery_0100----------");
@@ -187,7 +187,7 @@ describe('deviceManagerTest', function() {
                 expect().assertFail();
             }
 
-            var info = {
+            let info = {
                 "subscribeId": 2115,
                 "mode": DISCOVER_MODE_PASSIVE,
                 "medium": COAP,
@@ -196,7 +196,7 @@ describe('deviceManagerTest', function() {
                 "isWakeRemote": true,
                 "capability": SUBSCRIBE_CAPABILITY_DDMP
             };
-            var start = data.startDeviceDiscovery(info);
+            let start = data.startDeviceDiscovery(info);
             expect(start != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_startDeviceDiscovery_0100----------");
@@ -216,7 +216,7 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var re = data.release();
+            let re = data.release();
             expect(re != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_release_0100----------");
@@ -236,7 +236,7 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var array = data.getTrustedDeviceListSync();
+            let array = data.getTrustedDeviceListSync();
             expect(array == null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_getTrustedDeviceListSync_0100----------");
@@ -256,8 +256,8 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var subscribeId = 2115;
-            var start = data.stopDeviceDiscovery(subscribeId);
+            let subscribeId = 2115;
+            let start = data.stopDeviceDiscovery(subscribeId);
             expect(start != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_stopDeviceDiscovery_0100----------");
@@ -283,7 +283,7 @@ describe('deviceManagerTest', function() {
             },1000);
         });
         async function dmGetLocalDeviceInfoSync(){
-            var deviceInfo = dmClass.getLocalDeviceInfoSync();
+            let deviceInfo = dmClass.getLocalDeviceInfoSync();
             expect(deviceInfo.deviceId != null).assertTrue();
         }
         console.log("----------stop running deviceManagerTest_getLocalDeviceInfoSync_0100----------");
@@ -309,7 +309,7 @@ describe('deviceManagerTest', function() {
             },1000);
         });
         async function getLocalDeviceInfo1(){
-            var deviceInfo = dmClass.getLocalDeviceInfo((err, data) => {
+            let deviceInfo = dmClass.getLocalDeviceInfo((err, data) => {
                 if (err) {
                     expect().assertFail();
                     console.log("[deviceManagerTest] createDeviceManager error");
@@ -340,7 +340,7 @@ describe('deviceManagerTest', function() {
             },1000);
         });
         async function getLocalDeviceInfo2(){
-            var deviceInfo = dmClass.getLocalDeviceInfo().then(data => {
+            let deviceInfo = dmClass.getLocalDeviceInfo().then(data => {
             })
             expect(deviceInfo != null).assertTrue();
         }
@@ -384,7 +384,7 @@ describe('deviceManagerTest', function() {
                     expect().assertFail();
                     console.log("[deviceManagerTest] createDeviceManager error");
                 }
-                var token = data.pinToken;
+                let token = data.pinToken;
                 expect(token != null).assertTrue();
             });
         });
@@ -428,7 +428,7 @@ describe('deviceManagerTest', function() {
                     console.log("[deviceManagerTest] authenticateDevice error");
                     expect().assertFail();
                 }
-                var token = data.pinToken;
+                let token = data.pinToken;
                 expect(token != null).assertTrue();
             });
         });
@@ -472,7 +472,7 @@ describe('deviceManagerTest', function() {
                     console.log("[deviceManagerTest] authenticateDevice error");
                     expect().assertFail();
                 }
-                var token = data.pinToken;
+                let token = data.pinToken;
                 expect(token != null).assertTrue();
             });
         });
@@ -516,7 +516,7 @@ describe('deviceManagerTest', function() {
                     console.log("[deviceManagerTest] authenticateDevice error");
                     expect().assertFail();
                 }
-                var token = data.pinToken;
+                let token = data.pinToken;
                 expect(token != null).assertTrue();
             });
         });
@@ -560,7 +560,7 @@ describe('deviceManagerTest', function() {
                     console.log("[deviceManagerTest] authenticateDevice error");
                     expect().assertFail();
                 }
-                var token = data.pinToken;
+                let token = data.pinToken;
                 expect(token != null).assertTrue();
             });
         });
@@ -604,7 +604,7 @@ describe('deviceManagerTest', function() {
                     console.log("[deviceManagerTest] authenticateDevice error");
                     expect().assertFail();
                 }
-                var token = data.pinToken;
+                let token = data.pinToken;
                 expect(token != null).assertTrue();
             });
         });
@@ -680,7 +680,7 @@ describe('deviceManagerTest', function() {
                 "appThumbnail": new Uint8Array([]),
                 "extraInfo": extraInfo
             }
-            var result = dmClass.unAuthenticateDevice(deviceInfo, authParam, (err, data) => {
+            let result = dmClass.unAuthenticateDevice(deviceInfo, authParam, (err, data) => {
                 if (err) {
                     console.log("[deviceManagerTest] unAuthenticateDevice error");
                     expect().assertFail();
@@ -705,7 +705,7 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var authparam = data.getAuthenticationParam();
+            let authparam = data.getAuthenticationParam();
             expect(authparam != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_getAuthenticationParam_0100----------");
@@ -725,7 +725,7 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
+            let fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
                 expect(deviceStateChangeAction.ONLINE == 0).assertTrue();
             });
             expect(fa != null).assertTrue();
@@ -747,7 +747,7 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
+            let fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
                 expect(deviceStateChangeAction.OFFLINE == 0).assertTrue();
             });
             expect(fa != null).assertNotNull();
@@ -769,7 +769,7 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
+            let fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
                 expect(deviceStateChangeAction.READY == 0).assertTrue();
             });
             expect(fa != null).assertTrue();
@@ -791,7 +791,7 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
+            let fa = data.on('deviceStateChange', (deviceStateChangeAction, deviceInfo) => {
                 expect(deviceStateChangeAction.CHANGE == 0).assertTrue();
             });
             expect(fa != null).assertTrue();
@@ -813,7 +813,7 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var fa = data.off('deviceStateChange', () => {});
+            let fa = data.off('deviceStateChange', () => {});
             expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_off-deviceStateChange_0100----------");
@@ -833,7 +833,7 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var fa = data.on('deviceFound', () => {});
+            let fa = data.on('deviceFound', () => {});
             expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_on-deviceFound_0100----------");
@@ -853,7 +853,7 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var fa = data.off('deviceFound', () => {});
+            let fa = data.off('deviceFound', () => {});
             expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_off-deviceFound_0100----------");
@@ -873,7 +873,7 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var fa = data.on('discoverFail', () => {});
+            let fa = data.on('discoverFail', () => {});
             expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_on-discoverFail_0100----------");
@@ -893,7 +893,7 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var fa = data.off('discoverFail', () => {});
+            let fa = data.off('discoverFail', () => {});
             expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_off-discoverFail_0100----------");
@@ -913,7 +913,7 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var fa = data.on('serviceDie', () => {});
+            let fa = data.on('serviceDie', () => {});
             expect(fa != null).assertTrue();
         });
         console.log("----------start running deviceManagerTest_on-serviceDie_0100----------");
@@ -933,7 +933,7 @@ describe('deviceManagerTest', function() {
                 console.log("[deviceManagerTest] createDeviceManager error");
                 expect().assertFail();
             }
-            var fa = data.off('serviceDie', () => {});
+            let fa = data.off('serviceDie', () => {});
             expect(fa != null).assertTrue();
         });
         console.log("----------stop running deviceManagerTest_off-serviceDie_0100----------");
