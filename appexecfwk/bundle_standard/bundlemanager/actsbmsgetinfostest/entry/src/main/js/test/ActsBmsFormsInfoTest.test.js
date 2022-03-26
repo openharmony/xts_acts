@@ -1295,7 +1295,11 @@ describe('ActsBmsFormsInfoTest', function () {
      */
     it('bms_getAbilityIcon_0200', 0, async function (done) {
         bundle.getAbilityIcon(BUNDLE_NAME6, ABILITIY_NAME, (err, pixelmap) => {
-            expect(err).assertFail()
+            if (err) {
+                console.info("getAbilityIcon fail:" + JSON.stringify(err))
+                expect(err).assertFail()
+            }
+            console.info('bms_getAbilityIcon_0200 success: ' + JSON.stringify(pixelmap))
             expect(pixelmap !== null).assertTrue()
             done()
         })
