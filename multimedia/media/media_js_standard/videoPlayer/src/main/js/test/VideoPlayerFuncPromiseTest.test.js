@@ -826,6 +826,10 @@ describe('VideoPlayerFuncPromiseTest', function () {
         for (let i = 0; i < arrayDescription.length; i++) {
             printfDescription(arrayDescription[i]);
         }
+
+        await videoPlayer.release().then(() => {
+            console.info('case release called!!');
+        }, failureCallback).catch(catchCallback);
         done();            
     })
 
