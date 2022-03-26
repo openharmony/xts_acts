@@ -1399,7 +1399,7 @@ describe('ActsAnsNotificationCancel', function () {
         console.info('===========ANS_Cancel_1900 onConsume data:==================>' + JSON.stringify(data));
         console.info('===========ANS_Cancel_1900 onConsume label:=================>' + data.request.label);
         console.info('===========ANS_Cancel_1900 onConsume id:====================>' + data.request.id);
-        notify.cancel(data.request.id, ', cancelCallBackCancelNullCharacter);
+        notify.cancel(data.request.id, '', cancelCallBackCancelNullCharacter);
         console.info('===========ANS_Cancel_1900 onConsume cancel=======================>');
         console.info('===========ANS_Cancel_1900 onConsume end=======================>');
     }
@@ -1474,7 +1474,7 @@ describe('ActsAnsNotificationCancel', function () {
         console.info('==========ANS_Cancel_2000 onConsume data:=================>' + JSON.stringify(data));
         console.info('==========ANS_Cancel_2000 onConsume label:================>' + data.request.label);
         console.info('==========ANS_Cancel_2000 onConsume id:===================>' + data.request.id);
-        notify.cancel(data.request.id, ').then(()=>{
+        notify.cancel(data.request.id, '').then(()=>{
             console.info('=========ANS_Cancel_2000 onConsume cancel then======>');
         }).catch((err)=>{
             console.info('=========ANS_Cancel_2000 onConsume cancel catch err======>'+JSON.stringify(err));
