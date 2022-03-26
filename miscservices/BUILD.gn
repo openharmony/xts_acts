@@ -18,7 +18,7 @@ group("miscservices") {
     "InputMethodTest_ets:ActsInputMethodEtsTest",
     "PasteBoardTest_js:ActsPasteBoardJSApiTest",
     "RequestTest_js:ActsMiscservicesRequestJSApiTest",
-    "TimeTest_js:ActsTimeJSApiTest",
+    # "TimeTest_js:ActsTimeJSApiTest",
     "TimerTest_js:ActsTimerJSApiTest",
   ]
 }

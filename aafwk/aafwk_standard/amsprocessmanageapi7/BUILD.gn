@@ -17,7 +17,7 @@ group("amsprocessmanageapi7") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsprocessmanagejstest:ActsAmsProcessManageJsTestApi7",
+      # "actsprocessmanagejstest:ActsAmsProcessManageJsTestApi7",
       "pmsystemappa:ActsAmsProcessManageSystemAppAApi7",
       "pmsystemappamulti:ActsAmsProcessManageSystemAppAMultiApi7",
       "pmsystemappb:ActsAmsProcessManageSystemAppBApi7",
