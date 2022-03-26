@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import fileio from '@ohos.fileio';
 import commonEvent from "@ohos.commonevent"
 import abilitymanager from '@ohos.app.abilitymanager'
 import abilityManager from '@ohos.application.appManager'
@@ -22,7 +23,7 @@ import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 const BUNDLE_PATHS = [['/data/ActsAmsProcessManageSystemAppAApi7.hap',
- '/data/ActsAmsProcessManageSystemAppAMultiApi7.hap'],
+    '/data/ActsAmsProcessManageSystemAppAMultiApi7.hap'],
 ['/data/ActsAmsProcessManageSystemAppBApi7.hap'],
 ['/data/ActsAmsProcessManageVendorAppAApi7.hap']];
 const BUNDLE_NAMES = ['com.acts.pmsystemappaapi7',
@@ -49,24 +50,25 @@ var systemAAbilityName = "com.acts.pmsystemappaapi7.MainAbility";
 var systemBAbilityName = "com.acts.pmsystemappbapi7.MainAbility";
 var vendorAAbilityName = "com.acts.pmvendorappaapi7.MainAbility";
 var systemAMultiAbilityName = "com.acts.pmsystemappamultiapi7.MainAbility";
-var vendorServiceAbilityName = "com.acts.pmvendorappserviceapi7.ServiceAbility";
 
 var systemAProcessName = systemABundleName;
 var systemAMultiProcessName = systemAMultiBundleName;
 var systemBProcessName = systemBBundleName;
 var vendorAProcessName = vendorABundleName;
-var uriSystemA = 'internal://cache/../../com.acts.pmsystemappaapi7/';
-var uriSystemB = 'internal://cache/../../com.acts.pmsystemappbapi7/';
-var uriVendorA = 'internal://cache/../../com.acts.pmvendorappaapi7/';
+var uriSystemA = '/data/accounts/account_0/appdata/com.acts.pmsystemappa/com.acts.pmsystemappa';
+var uriSystemAMulti = '/data/accounts/account_0/appdata/com.acts.pmsystemappa/com.acts.pmsystemappamulti';
+var uriSystemB = '/data/accounts/account_0/appdata/com.acts.pmsystemappb/com.acts.pmsystemappb';
+var uriVendorA = '/data/accounts/account_0/appdata/com.acts.pmvendorappa/com.acts.pmvendorappa';
 
-describe('ActsAmsProcessManageJsApi7Test', function () {
+describe('ActsAmsProcessManageJsTestApi7', function () {
 
     beforeEach(async (done) => {
         await clearMissionId();
         setTimeout(async function () {
             try {
                 let installer = await bundle.getBundleInstaller();
-                console.log('======>ACTS_ProcessManage beforeEach installer<=======' + JSON.stringify(installer));
+                console.log('======>ACTS_ProcessManage beforeEach installer<======='
+                    + JSON.stringify(installer));
                 var count = 0;
                 for (let i = 0; i < PATHS_COUNT; i++) {
                     installer.install(BUNDLE_PATHS[i], {
@@ -75,11 +77,16 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
                         isKeepData: false
                     }, (err, data) => {
                         count++;
-                        console.log('======>ACTS_ProcessManage beforeEach install finish<=======' + err.code);
-                        console.log('======>ACTS_ProcessManage beforeEach install finish<=======' + data.status);
-                        console.log('======>ACTS_ProcessManage beforeEach install finish<=======' + data.statusMessage);
+                        console.log('======>ACTS_ProcessManage beforeEach install finish<======='
+                            + err.code);
+                        console.log('======>ACTS_ProcessManage beforeEach install finish<======='
+                            + data.status);
+                        console.log('======>ACTS_ProcessManage beforeEach install finish<======='
+                            + data.statusMessage);
                         if (count == PATHS_COUNT) {
-                            done();
+                            setTimeout(function () {
+                                done();
+                            }, 2000);
                         }
                     })
                 }
@@ -106,15 +113,20 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
                     isKeepData: false
                 }, (err, data) => {
                     count++;
-                    console.log('======>ACTS_ProcessManage afterEach uninstall finish<=======' + err.code);
-                    console.log('======>ACTS_ProcessManage afterEach uninstall finish<=======' + data.status);
-                    console.log('======>ACTS_ProcessManage afterEach uninstall finish<=======' + data.statusMessage);
+                    console.log('======>ACTS_ProcessManage afterEach uninstall finish<======='
+                        + err.code);
+                    console.log('======>ACTS_ProcessManage afterEach uninstall finish<======='
+                        + data.status);
+                    console.log('======>ACTS_ProcessManage afterEach uninstall finish<======='
+                        + data.statusMessage);
                     if (count == BUNDLE_COUNT) {
-                        done();
+                        setTimeout(function () {
+                            done();
+                        }, 2000);
                     }
                 })
             }
-        }, 500);
+        }, 1000);
     })
 
     function getMissionId() {
@@ -137,22 +149,22 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
 
     function clearMissionId() {
         return new Promise(async (resolve, reject) => {
-          var numMax = 1024;
-          var missionInfos = await missionmanager.getMissionInfos('', numMax);
-          for (let i = 0; i < missionInfos.length; i++) {
-            if ((missionInfos[i].want.bundleName == systemABundleName) ||
-            (missionInfos[i].want.bundleName == systemBBundleName) ||
-            (missionInfos[i].want.bundleName == vendorABundleName) ||
-            (missionInfos[i].want.bundleName == vendorServiceBundleName)) {
-              missionmanager.clearMission(missionInfos[i].missionId, (err, data) => {
-                console.debug("====>ACTS_ProcessManage clearMission id:" + missionInfos[i].missionId);
-              });
+            var numMax = 1024;
+            var missionInfos = await missionmanager.getMissionInfos('', numMax);
+            for (let i = 0; i < missionInfos.length; i++) {
+                if ((missionInfos[i].want.bundleName == systemABundleName) ||
+                    (missionInfos[i].want.bundleName == systemBBundleName) ||
+                    (missionInfos[i].want.bundleName == vendorABundleName) ||
+                    (missionInfos[i].want.bundleName == vendorServiceBundleName)) {
+                    missionmanager.clearMission(missionInfos[i].missionId, (err, data) => {
+                        console.debug("====>ACTS_ProcessManage clearMission id:" + missionInfos[i].missionId);
+                    });
+                }
             }
-          }
-          console.log('======>ACTS_ProcessManage clearMission finish<=======');
-          resolve();
+            console.log('======>ACTS_ProcessManage clearMission finish<=======');
+            resolve();
         })
-      }
+    }
 
 
     function checkPromiseExistDelay(processName) {
@@ -208,18 +220,19 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
     function getAppDataPathFileNums(uri, callBack) {
         setTimeout(async function () {
 
-        file.list({
-            uri: uri,
-            success: function (data) {
-                console.log('====>ActsProcessManageJsTest call list success data ====>' + JSON.stringify(data));
-                callBack(null, data.fileList.length);
-            },
-            fail: function (data, code) {
-                callBack(data, null);
-                console.log('call list failed, code: ' + code + ', data: ' + data);
-            },
-        });
-    }, 2000);
+            file.list({
+                uri: uri,
+                success: function (data) {
+                    console.log('====>ActsProcessManageJsTest call list success data ====>'
+                        + JSON.stringify(data));
+                    callBack(null, data.fileList.length);
+                },
+                fail: function (data, code) {
+                    callBack(data, null);
+                    console.log('call list failed, code: ' + code + ', data: ' + data);
+                },
+            });
+        }, 2000);
     }
 
     /*
@@ -442,7 +455,7 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
 
             console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0400 end');
             done();
-        }, 4000);
+        }, 6000);
     })
 
     /*
@@ -663,7 +676,7 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
 
             console.log('ACTS_ProcessManage_killProcessesByBundleNameFA_0800 end');
             done();
-        }, 4000);
+        }, 6000);
 
     })
 
@@ -781,7 +794,7 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
         }
     })
 
-    
+
     /*
   * @tc.number: ACTS_ProcessManage_clearUpApplicationDataFA_0100
   * @tc.name: The system application cleans itself
@@ -813,13 +826,27 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
                 + JSON.stringify(missionexist));
             expect(missionexist).assertEqual(false);
 
-            getAppDataPathFileNums(uriSystemA, async (err, nums) => {
-                expect(err).assertEqual(null);
-                expect(nums).assertEqual(4);
-                console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0100 getFileNums nums = '
-                    + nums);
+            fileio.opendir(uriSystemA).then(function (dir) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0100 opendir successfully:"
+                    + JSON.stringify(dir));
+            }).catch(function (err) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0100 opendir failed error:" + err);
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0100 opendir failed JSON error:"
+                    + JSON.stringify(err));
+                expect(err.code).assertEqual('2');
+            });
+            fileio.opendir(uriSystemAMulti).then(function (dir) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0100 opendir Multi successfully:"
+                    + JSON.stringify(dir));
+            }).catch(function (err) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0100 opendir Multi failed error:" + err);
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0100 opendir Multi failed JSON error:"
+                    + JSON.stringify(err));
+                expect(err.code).assertEqual('2');
+                console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0100 end');
                 done();
             });
+
         }, 2000);
     })
 
@@ -867,10 +894,14 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
                 + JSON.stringify(missionexist));
             expect(missionexist).assertEqual(false);
 
-            getAppDataPathFileNums(uriSystemB, async (err, nums) => {
-                expect(err).assertEqual(null);
-                expect(nums).assertEqual(4);
-                console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0200 getFileNums nums = ' + nums);
+            fileio.opendir(uriSystemB).then(function (dir) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0200 opendir successfully:"
+                    + JSON.stringify(dir));
+            }).catch(function (err) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0200 opendir failed error:" + err);
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0200 opendir failed JSON error:"
+                    + JSON.stringify(err));
+                expect(err.code).assertEqual('2');
                 console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0200 end');
                 done();
             });
@@ -923,10 +954,15 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
                 console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0300 subscribeCallBack missionexist:"
                     + JSON.stringify(missionexist));
                 expect(missionexist).assertEqual(false);
-                getAppDataPathFileNums(uriVendorA, async (err, nums) => {
-                    expect(err).assertEqual(null);
-                    expect(nums).assertEqual(4);
-                    console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0300 getFileNums nums = ' + nums);
+
+                fileio.opendir(uriVendorA).then(function (dir) {
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0300 opendir successfully:"
+                        + JSON.stringify(dir));
+                }).catch(function (err) {
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0300 opendir failed error:" + err);
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0300 opendir failed JSON error:"
+                        + JSON.stringify(err));
+                    expect(err.code).assertEqual('2');
                     console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0300 end');
                     done();
                 });
@@ -1003,11 +1039,23 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
             expect(flagMissionA).assertEqual(0);
             expect(flagMissionAMulti).assertEqual(0);
 
-            getAppDataPathFileNums(uriSystemA, async (err, nums) => {
-                expect(err).assertEqual(null);
-                expect(nums).assertEqual(4);
-                console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0400 getFileNums nums = '
-                    + nums);
+            fileio.opendir(uriSystemA).then(function (dir) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0400 opendir successfully:"
+                    + JSON.stringify(dir));
+            }).catch(function (err) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0400 opendir failed error:" + err);
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0400 opendir failed JSON error:"
+                    + JSON.stringify(err));
+                expect(err.code).assertEqual('2');
+            });
+            fileio.opendir(uriSystemAMulti).then(function (dir) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0400 opendir Multi successfully:"
+                    + JSON.stringify(dir));
+            }).catch(function (err) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0400 opendir Multi failed error:" + err);
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0400 opendir Multi failed JSON error:"
+                    + JSON.stringify(err));
+                expect(err.code).assertEqual('2');
                 console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0400 end');
                 done();
             });
@@ -1045,11 +1093,24 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
                 + JSON.stringify(missionexist));
             expect(missionexist).assertEqual(false);
 
-            getAppDataPathFileNums(uriSystemA, async (err, nums) => {
-                expect(err).assertEqual(null);
-                expect(nums).assertEqual(4);
-                console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0500 getFileNums nums = '
-                    + nums);
+            fileio.opendir(uriSystemA).then(function (dir) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0500 opendir successfully:"
+                    + JSON.stringify(dir));
+            }).catch(function (err) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0500 opendir failed error:" + err);
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0500 opendir failed JSON error:"
+                    + JSON.stringify(err));
+                expect(err.code).assertEqual('2');
+            });
+            fileio.opendir(uriSystemAMulti).then(function (dir) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0500 opendir Multi successfully:"
+                    + JSON.stringify(dir));
+            }).catch(function (err) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0500 opendir Multi failed error:" + err);
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0500 opendir Multi failed JSON error:"
+                    + JSON.stringify(err));
+                expect(err.code).assertEqual('2');
+                console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0500 end');
                 done();
             });
         }, 6000);
@@ -1102,11 +1163,14 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
                     + JSON.stringify(missionexist));
                 expect(missionexist).assertEqual(false);
 
-                getAppDataPathFileNums(uriSystemB, async (err, nums) => {
-                    expect(err).assertEqual(null);
-                    expect(nums).assertEqual(4);
-                    console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0600 getFileNums nums = ' + nums);
-
+                fileio.opendir(uriSystemB).then(function (dir) {
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0600 opendir successfully:"
+                        + JSON.stringify(dir));
+                }).catch(function (err) {
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0600 opendir failed error:" + err);
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0600 opendir failed JSON error:"
+                        + JSON.stringify(err));
+                    expect(err.code).assertEqual('2');
                     console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0600 end');
                     done();
                 });
@@ -1161,13 +1225,17 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
                 console.debug("====>ACTS_ProcessManage_clearUpApplicationDataFA_0700 missionexist:====>"
                     + JSON.stringify(missionexist));
                 expect(missionexist).assertEqual(false);
-                getAppDataPathFileNums(uriVendorA, async (err, nums) => {
-                    expect(err).assertEqual(null);
-                    expect(nums).assertEqual(4);
-                    console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0700 getFileNums nums = ' + nums);
+
+                fileio.opendir(uriVendorA).then(function (dir) {
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0700 opendir successfully:"
+                        + JSON.stringify(dir));
+                }).catch(function (err) {
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0700 opendir failed error:" + err);
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0700 opendir failed JSON error:"
+                        + JSON.stringify(err));
+                    expect(err.code).assertEqual('2');
                     console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0700 end');
                     done();
-
                 });
             }, 6000);
         }
@@ -1242,11 +1310,23 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
             expect(flagMissionA).assertEqual(0);
             expect(flagMissionAMulti).assertEqual(0);
 
-            getAppDataPathFileNums(uriSystemA, async (err, nums) => {
-                expect(err).assertEqual(null);
-                expect(nums).assertEqual(4);
-                console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_0800 getFileNums nums = '
-                    + nums);
+            fileio.opendir(uriSystemA).then(function (dir) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0800 opendir successfully:"
+                    + JSON.stringify(dir));
+            }).catch(function (err) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0800 opendir failed error:" + err);
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0800 opendir failed JSON error:"
+                    + JSON.stringify(err));
+                expect(err.code).assertEqual('2');
+            });
+            fileio.opendir(uriSystemAMulti).then(function (dir) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0800 opendir Multi successfully:"
+                    + JSON.stringify(dir));
+            }).catch(function (err) {
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0800 opendir Multi failed error:" + err);
+                console.info("ACTS_ProcessManage_clearUpApplicationDataFA_0800 opendir Multi failed JSON error:"
+                    + JSON.stringify(err));
+                expect(err.code).assertEqual('2');
                 console.log('ACTS_ProcessManage_clearUpApplicationDataFA_0800 end');
                 done();
             });
@@ -1342,14 +1422,20 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
                 + JSON.stringify(data));
             expect(err.code).assertEqual(0);
             setTimeout(async function () {
-            getAppDataPathFileNums(uriSystemA, async (err, nums) => {
-                expect(err).assertEqual(null);
-                expect(nums).assertEqual(4);
-                console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_1300 getFileNums nums = ' + nums);
-                console.log('ACTS_ProcessManage_clearUpApplicationDataFA_1300 end');
-                done();
-            });
-        }, 4000);
+                fileio.opendir(uriSystemA).then(function (dir) {
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_1300 opendir successfully:"
+                        + JSON.stringify(dir));
+                    console.log('ACTS_ProcessManage_clearUpApplicationDataFA_1300 end');
+                    done();
+                }).catch(function (err) {
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_1300 opendir failed error:" + err);
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_1300 opendir failed JSON error:"
+                        + JSON.stringify(err));
+                    expect(err.code).assertEqual('2');
+                    console.log('ACTS_ProcessManage_clearUpApplicationDataFA_1300 end');
+                    done();
+                });
+            }, 4000);
         });
     })
 
@@ -1400,12 +1486,14 @@ describe('ActsAmsProcessManageJsApi7Test', function () {
                     + JSON.stringify(missionexist));
                 expect(missionexist).assertEqual(false);
 
-                getAppDataPathFileNums(uriVendorA, async (err, nums) => {
-                    expect(err).assertEqual(null);
-                    expect(nums).assertEqual(4);
-                    console.log('====>ACTS_ProcessManage_clearUpApplicationDataFA_1400 getAppDataPathFileNums nums = '
-                        + nums);
-
+                fileio.opendir(uriVendorA).then(function (dir) {
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_1400 opendir successfully:"
+                        + JSON.stringify(dir));
+                }).catch(function (err) {
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_1400 opendir failed error:" + err);
+                    console.info("ACTS_ProcessManage_clearUpApplicationDataFA_1400 opendir failed JSON error:"
+                        + JSON.stringify(err));
+                    expect(err.code).assertEqual('2');
                     console.log('ACTS_ProcessManage_clearUpApplicationDataFA_1400 end');
                     done();
                 });
