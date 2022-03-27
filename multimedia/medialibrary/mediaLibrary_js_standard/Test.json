@@ -54,7 +54,8 @@
                 "aa start  -a MediaScannerAbility -b com.ohos.medialibrary.MediaScannerAbilityA"
             ],
             "teardown-command":[
-                "rm -rf /storage/media/100/local/files/*"
+                "rm -rf /storage/media/100/local/files/*",
+				"rm -rf /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/database/*"
             ]
         },
         {
@@ -66,4 +67,3 @@
         }
     ]
 }
-
