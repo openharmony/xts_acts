@@ -31,13 +31,16 @@ describe('TimeTest', function() {
     it('systemTime_setTime_test1', 0, async function (done) {
         console.log("SUB_systemTime_setTime_JS_API_0100 start");
         systemTime.setTime(152600, (err, data) => { // callback形式调用异步接口
-        if (err) {
+        if ((typeof err !== 'undefined') && (err.code !== 0)) {
             console.error('SetTime failed because ' + JSON.stringify(err));
             expect().assertFail();
             done();
             return;
             }
             console.info('SetTime success data : ' + JSON.stringify(data));
+            expect(true).assertTrue();
+            done();
+            return;
         });
         console.log('SUB_systemTime_setTime_JS_API_0100 end');
     })
@@ -52,14 +55,17 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test1', 0, async function (done) {
         console.log("SUB_systemTime_setTimezone_JS_API_0100 start");
-        systemTime.setTimezone('Anadyr, Russia', (err, data) => { // callback形式调用异步接口
-        if (err) {
+        systemTime.setTimezone('Asia/Shanghai', (err, data) => { // callback形式调用异步接口
+        if ((typeof err !== 'undefined') && (err.code !== 0)) {
             console.error('setTimezone failed because ' + JSON.stringify(err));
             expect().assertFail();
             done();
             return;
             }
             console.info('setTimezone success data : ' + JSON.stringify(data));
+            expect(true).assertTrue();
+            done();
+            return;
         });
         console.log('SUB_systemTime_setTimezone_JS_API_0100 end');
     })
