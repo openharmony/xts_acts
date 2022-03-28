@@ -482,7 +482,7 @@ describe('fileVirtualPath', function () {
    */
   it('File_Move_013', 0, async function (done) {
     let srcFpath = fileName('File_Move_013');
-    expect(prepareFile(srcFpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     file.move({
       srcUri: 'internal://app/../files/File_Move_013',
       dstUri: 'internal://app/../../ohos.acts.distributeddatamgr.distributedfile/File_Move_013',
@@ -511,7 +511,7 @@ describe('fileVirtualPath', function () {
    */
   it('File_Copy_013', 0, async function (done) {
     let srcFpath = fileName('File_Copy_013');
-    expect(prepareFile(srcFpath, 'test') !== null).assertTrue();
+    expect(prepareFile(srcFpath, 'test')).assertTrue();
     file.copy({
       srcUri: 'internal://app/../files/File_Copy_013',
       dstUri: 'internal://app/../../ohos.acts.distributeddatamgr.distributedfile/File_Copy_013',
