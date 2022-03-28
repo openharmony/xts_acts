@@ -29,7 +29,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test1',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_0100 start')
-		var timezone = 'Anadyr, Russia'
+		var timezone = 'Antarctica/McMurdo'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -51,7 +51,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test2',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_0200 start')
-		var timezone = 'Honiara, SolomonIslands'
+		var timezone = 'Africa/Kinshasa'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -73,7 +73,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test3',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_0300 start')
-		var timezone = 'Melbourne, Australia'
+		var timezone = 'Asia/Nicosia'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -95,7 +95,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test4',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_0400 start')
-		var timezone = 'Tokyo, Japan'
+		var timezone = 'America/Guayaquil'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -117,7 +117,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test5',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_0500 start')
-		var timezone = 'Beijing, China'
+		var timezone = 'Pacific/Pohnpei'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -139,7 +139,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test6',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_0600 start')
-		var timezone = 'Jakarta, Indonesia'
+		var timezone = 'Asia/Almaty'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -161,7 +161,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test7',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_0700 start')
-		var timezone = 'Dhaka, Bangladesh'
+		var timezone = 'America/Godthab'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -183,7 +183,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test8',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_0800 start')
-		var timezone = 'Tashkent, Uzbekistan'
+		var timezone = 'Pacific/Majuro'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -205,7 +205,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test9',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_0900 start')
-		var timezone = 'Dubai, U.A.E.'
+		var timezone = 'Asia/Kuala_Lumpur'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -227,7 +227,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test10',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_1000 start')
-		var timezone = 'Moscow, Russia'
+		var timezone = 'Asia/Gaza'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -249,7 +249,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test11',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_1100 start')
-		var timezone = 'Brussels, Belgium'
+		var timezone = 'Europe/Kiev'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -271,7 +271,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test12',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_1200 start')
-		var timezone = 'London, England'
+		var timezone = 'America/New_York'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -293,7 +293,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test13',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_1300 start')
-		var timezone = 'Accra, Ghana'
+		var timezone = 'Pacific/Pohnpei'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -315,7 +315,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test14',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_1400 start')
-		var timezone = 'Praia, CaboVerde'
+		var timezone = 'America/Guayaquil'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -337,7 +337,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test15',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_1500 start')
-		var timezone = 'Nuuk, Greenland'
+		var timezone = 'Pacific/Auckland'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -359,7 +359,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test16',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_1600 start')
-		var timezone = 'Buenos Aires, Argentina'
+		var timezone = 'Pacific/Auckland'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -381,7 +381,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test17',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_1700 start')
-		var timezone = 'New York, U.S.A.'
+		var timezone = 'America/Godthab'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -403,7 +403,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test18',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_1800 start')
-		var timezone = 'Mexico City, Mexico'
+		var timezone = 'Europe/Berlin'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -425,7 +425,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test19',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_1900 start')
-		var timezone = 'Guatemala City, Guatemala'
+		var timezone = 'Asia/Jakarta'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -447,7 +447,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test20',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_2000 start')
-		var timezone = 'Los Angeles, U.S.A.'
+		var timezone = 'Asia/Tashkent'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -469,7 +469,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test20',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_2000 start')
-		var timezone = 'Anchorage, U.S.A.'
+		var timezone = 'Asia/Tashkent'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -491,7 +491,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test22',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_2200 start')
-		var timezone = 'Adak, U.S.A.'
+		var timezone = 'Asia/Tashkent'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -513,7 +513,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test23',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_2300 start')
-		var timezone = 'Honolulu, U.S.A.'
+		var timezone = 'Pacific/Pohnpei'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -535,7 +535,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test24',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_2400 start')
-		var timezone = 'Alofi, Niue'
+		var timezone = 'Pacific/Pohnpei'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -557,7 +557,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test25',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_2500 start')
-		var timezone = 'Baker Island, U.S.A.'
+		var timezone = 'Asia/Nicosia'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
@@ -579,7 +579,7 @@ describe('TimeTest', function() {
      */
     it('systemTime_setTimezone_test26',0, async () => {
         console.log('SUB_systemTime_setTimezone_JS_API_2600 start')
-		var timezone = 'Baker Island, U.S.A.'
+		var timezone = 'Asia/Nicosia'
 		
 		console.log('setTimezone = ' + timezone)
         systemTime.setTimezone(timezone)
