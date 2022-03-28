@@ -60,7 +60,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_000', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_000');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o202);
       expect(fd !== null).assertTrue();
@@ -80,7 +80,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_001', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_001');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o100, 0o01);
       expect(fd !== null).assertTrue();
@@ -100,7 +100,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_002', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_002');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath);
       expect(fd !== null).assertTrue();
@@ -120,7 +120,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_003', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_003');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o100, 0o004);
       expect(fd !== null).assertTrue();
@@ -144,7 +144,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_004', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_004');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o101, 0o002);
       expect(fd !== null).assertTrue();
@@ -166,7 +166,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_005', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_005');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o001);
       expect(fd !== null).assertTrue();
@@ -196,7 +196,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_006', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_006');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       fileio.openSync(fpath, 0o200, 0o700);
       expect(null).assertFail();
@@ -287,7 +287,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_010', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_010');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o402);
       expect(fd !== null).assertTrue();
@@ -317,7 +317,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_011', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_011');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o1000);
       expect(fd !== null).assertTrue();
@@ -341,7 +341,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_012', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_012');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o1001);
       expect(fd !== null).assertTrue();
@@ -363,7 +363,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_013', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_013');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o2002);
       expect(fd !== null).assertTrue();
@@ -393,7 +393,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_014', 0, async function (done) {
     let fpath = await nextFileName('fileio_test_open_014');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o4002);
       expect(fd !== null).assertTrue();
@@ -417,7 +417,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_015', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_015');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o20002);
       expect(fd !== null).assertTrue();
@@ -437,7 +437,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_016', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_016');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o10002);
       expect(fd !== null).assertTrue();
@@ -457,7 +457,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_017', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_017');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o4010002);
       expect(fd !== null).assertTrue();
@@ -477,7 +477,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_018', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_018');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o100002);
       expect(fd !== null).assertTrue();
@@ -497,7 +497,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_019', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_019');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       fileio.openSync(fpath, 0o40002, 0o700);
       expect(null).assertFail();
@@ -515,7 +515,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_021', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_021');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o2000002);
       expect(fd !== null).assertTrue();
@@ -535,7 +535,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_022', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_022');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o200002);
       expect(fd !== null).assertTrue();
@@ -555,7 +555,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_023', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_023');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o400002);
       expect(fd !== null).assertTrue();
@@ -575,7 +575,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_024', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_024');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o1000002, 0o700);
       expect(fd !== null).assertTrue();
@@ -595,7 +595,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_025', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_025');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o10000002);
       expect(fd !== null).assertTrue();
@@ -615,7 +615,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_026', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_026');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o002, 0o700);
       expect(fd !== null).assertTrue();
@@ -635,7 +635,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_027', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_027');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o002, 0o400);
       expect(fd !== null).assertTrue();
@@ -662,7 +662,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_028', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_028');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o002, 0o200);
       expect(fd !== null).assertTrue();
@@ -689,7 +689,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_029', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_029');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o002, 0o100);
       expect(fd !== null).assertTrue();
@@ -709,7 +709,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_030', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_030');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o002, 0o070);
       expect(fd !== null).assertTrue();
@@ -739,7 +739,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_031', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_031');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o002, 0o040);
       expect(fd !== null).assertTrue();
@@ -766,7 +766,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_032', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_032');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o002, 0o020);
       expect(fd !== null).assertTrue();
@@ -793,7 +793,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_033', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_033');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o002, 0o010);
       expect(fd !== null).assertTrue();
@@ -813,7 +813,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_034', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_034');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o002, 0o007);
       expect(fd !== null).assertTrue();
@@ -843,7 +843,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_035', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_035');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o002, 0o004);
       expect(fd !== null).assertTrue();
@@ -870,7 +870,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_036', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_036');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o002, 0o002);
       expect(fd !== null).assertTrue();
@@ -897,7 +897,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_037', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_037');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o002, 0o001);
       expect(fileio.closeSync(fd) !== null).assertTrue();
@@ -933,7 +933,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_sync_001', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_sync_001');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o200);
       expect(fd !== null).assertTrue();
@@ -953,7 +953,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_sync_002', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_sync_002');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o201);
       expect(fd !== null).assertTrue();
@@ -973,7 +973,7 @@ describe('fileIOTest', function () {
    */
   it('fileio_test_open_sync_003', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_sync_003');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o202);
       expect(fd !== null).assertTrue();
