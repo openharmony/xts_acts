@@ -45,17 +45,6 @@ export default function sliderJsunit() {
       console.info("slider after each called");
     });
 
-    it('testSlider001', 0, async function (done) {
-      console.info('[testSlider001] START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('slider');
-      console.info("[testSlider001] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testSlider001] decoration:" + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.decoration).assertEqual(undefined);
-      done();
-    });
-
     it('testSlider002', 0, async function (done) {
       console.info('[testSlider002] START');
       try {
