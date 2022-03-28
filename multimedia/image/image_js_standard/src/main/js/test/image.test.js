@@ -798,7 +798,7 @@ describe('Image', function () {
                     var readArr = new Uint8Array(readArea.pixels);
                     var res = true;
                     for (var i = 0; i < readArr.length; i++) {
-                        if (readArr[i] == 0) {
+                        if (readArr[i] != tc_022buf[i]) {
                             res = false;
                             console.info('TC_022-1 failed');
                             expect(false).assertTrue();
@@ -4614,7 +4614,7 @@ describe('Image', function () {
             imageSourceApi.getImageProperty("BitsPerSample")
             .then(data => {
                 console.info('TC_171 BitsPerSample ' + data);
-                expect(data != undefined  && data != '' ).assertTrue();
+                expect(data != undefined).assertTrue();
                 done();
             })
             .catch(error => {
@@ -4914,7 +4914,7 @@ describe('Image', function () {
                     done();
                 }else{
                     console.info('TC_172 BitsPerSample ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined).assertTrue();
                     done();
                 }
             })
@@ -5204,7 +5204,7 @@ describe('Image', function () {
                     done();
                 }else{
                     console.info('TC_173 BitsPerSample ' + data);
-                    expect(data != '9999' && data != undefined && data != '').assertTrue();
+                    expect(data != '9999' && data != undefined).assertTrue();
                     done();
                 }
             })
