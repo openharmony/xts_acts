@@ -46,7 +46,7 @@ describe('fileTest', function () {
    */
   it('File_Delete_001', 0, async function (done) {
     let fpath = await fileName('File_Delete_001');
-    prepareFile(fpath, 'hello');
+    expect(prepareFile(fpath, 'hello')).assertTrue();
     file.delete({
       uri: 'internal://cache/../files/File_Delete_001',
       success: function () {
@@ -121,7 +121,7 @@ describe('fileTest', function () {
     let dpath = await fileName('File_Delete_004');
     let fpath = dpath + '/File_Delete_004';
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.delete({
       uri: 'internal://app/File_Delete_004',
       success: function () {
@@ -1424,7 +1424,7 @@ describe('fileTest', function () {
    */
   it('File_read_array_buffer_004', 0, async function (done) {
     let fpath = await fileName('File_read_array_buffer_004');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.readArrayBuffer({
       uri: fpath,
       position: 100,
@@ -1447,7 +1447,7 @@ describe('fileTest', function () {
    */
   it('File_read_array_buffer_005', 0, async function (done) {
     let fpath = await fileName('File_read_array_buffer_005');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.readArrayBuffer({
       uri: fpath,
       length: -1,
@@ -2368,7 +2368,7 @@ describe('fileTest', function () {
     for (let i = 0; i < typeArray.length; i++) {
       let srcFpath = await fileName('File_Move_002') + typeArray[i];
       let dstFpath = await cacheFileName('File_Move_002') + typeArray[i];
-      expect(prepareEmptyFile(srcFpath) !== null).assertTrue();
+      expect(prepareEmptyFile(srcFpath)).assertTrue();
       file.move({
         srcUri: 'internal://cache/../files/File_Move_002' + typeArray[i],
         dstUri: 'internal://cache/../files/cache/File_Move_002' + typeArray[i],
@@ -2391,7 +2391,7 @@ describe('fileTest', function () {
    */
   it('File_Move_003', 0, async function (done) {
     let srcFpath = await fileName('File_Move_003');
-    expect(prepareFile(srcFpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     let dstFpath = await cacheFileName('File_Move_003');
     let srcUri = 'internal://cache/../files/File_Move_003';
     let dstUri = 'internal://app/cache/File_Move_003';
@@ -2416,7 +2416,7 @@ describe('fileTest', function () {
    */
   it('File_Move_004', 0, async function (done) {
     let srcFpath = await fileName('File_Move_004');
-    expect(prepareFile(srcFpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     file.move({
       srcUri: 'internal://app/File_Move_004',
       dstUri: null,
@@ -2462,7 +2462,7 @@ describe('fileTest', function () {
    */
   it('File_Move_006', 0, async function (done) {
     let dstUri = await fileName('File_Move_006');
-    expect(prepareFile(dstUri, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(dstUri, FILE_CONTENT)).assertTrue();
     file.move({
       srcUri: 'internal://app/File_Move',
       dstUri: 'internal://app/File_Move_006',
@@ -2559,7 +2559,7 @@ describe('fileTest', function () {
    */
   it('File_Move_009', 0, async function (done) {
     let srcFpath = await fileName('File_Move_009');
-    expect(prepareFile(srcFpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     file.move({
       srcUri: 'internal://app/File_Move_009',
       dstUri: 'internal://app/File_Move_009',
@@ -2583,8 +2583,8 @@ describe('fileTest', function () {
   it('File_Move_010', 0, async function (done) {
     let srcFpath = await fileName('File_Move_010');
     let dstFpath = await cacheFileName('File_Move_010');
-    expect(prepareFile(srcFpath, 'aaa') !== null).assertTrue();
-    expect(prepareFile(dstFpath, 'bbb') !== null).assertTrue();
+    expect(prepareFile(srcFpath, 'aaa')).assertTrue();
+    expect(prepareFile(dstFpath, 'bbb')).assertTrue();
     file.move({
       srcUri: 'internal://app/File_Move_010',
       dstUri: 'internal://app/cache/File_Move_010',
@@ -2607,7 +2607,7 @@ describe('fileTest', function () {
    */
   it('File_Move_011', 0, async function (done) {
     let srcFpath = await fileName('File_Move_011');
-    expect(prepareFile(srcFpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     file.move({
       srcUri: 'internal://cache/../files/File_Move_011',
       dstUri: 'internal://cache/File_Move_011',
@@ -2629,7 +2629,7 @@ describe('fileTest', function () {
    */
   it('File_Move_012', 0, async function (done) {
     let srcFpath = await fileName('File_Move_012');
-    expect(prepareFile(srcFpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     file.move({
       srcUri: 'internal://app/../files/File_Move_012',
       dstUri: 'internal://app/notdir/File_Move_012',
@@ -2653,7 +2653,7 @@ describe('fileTest', function () {
   it('File_Move_014', 0, async function (done) {
     let srcFpath = await fileName('File_Move_014');
     let dstFpath = await cacheFileName('File_Move_014');
-    expect(prepareFile(srcFpath, 'test') !== null).assertTrue();
+    expect(prepareFile(srcFpath, 'test')).assertTrue();
     let dstUri = 'internal://cache/File_Move_014';
     file.move({
       srcUri: 'internal://cache/../files/File_Move_014',
@@ -2677,7 +2677,7 @@ describe('fileTest', function () {
   it('File_Copy_001', 0, async function (done) {
     let srcFpath = await fileName('File_Copy_001');
     let dstFpath = await cacheFileName('File_Copy_001');
-    expect(prepareFile(srcFpath, 'test.') !== null).assertTrue();
+    expect(prepareFile(srcFpath, 'test.')).assertTrue();
     file.copy({
       srcUri: 'internal://cache/../files/File_Copy_001',
       dstUri: 'internal://cache/../files/cache/File_Copy_001',
@@ -2715,7 +2715,7 @@ describe('fileTest', function () {
     for (let i = 0; i < typeArray.length; i++) {
       let srcFpath = await fileName('File_Copy_002') + typeArray[i];
       let dstFpath = await cacheFileName('File_Copy_002') + typeArray[i];
-      expect(prepareEmptyFile(srcFpath) !== null).assertTrue();
+      expect(prepareEmptyFile(srcFpath)).assertTrue();
       file.copy({
         srcUri: 'internal://cache/../files/File_Copy_002' + typeArray[i],
         dstUri: 'internal://cache/../files/cache/File_Copy_002' + typeArray[i],
@@ -2740,7 +2740,7 @@ describe('fileTest', function () {
    */
   it('File_Copy_003', 0, async function (done) {
     let srcFpath = await fileName('File_Copy_003');
-    expect(prepareFile(srcFpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     let dstFpath = await cacheFileName('File_Copy_003');
     file.copy({
       srcUri: 'internal://cache/../files/File_Copy_003',
@@ -2777,7 +2777,7 @@ describe('fileTest', function () {
    */
   it('File_Copy_004', 0, async function (done) {
     let srcFpath = await fileName('File_Copy_004');
-    expect(prepareFile(srcFpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     file.copy({
       srcUri: 'internal://app/File_Copy_004',
       dstUri: null,
@@ -2939,7 +2939,7 @@ describe('fileTest', function () {
    */
   it('File_Copy_009', 0, async function (done) {
     let srcFpath = await fileName('File_Copy_009');
-    expect(prepareFile(srcFpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(srcFpath, FILE_CONTENT)).assertTrue();
     file.copy({
       srcUri: 'internal://app/File_Copy_009',
       dstUri: 'internal://app/File_Copy_009',
@@ -2964,8 +2964,8 @@ describe('fileTest', function () {
   it('File_Copy_010', 0, async function (done) {
     let srcFpath = await fileName('File_Copy_010');
     let dstFpath = await cacheFileName('File_Copy_010');
-    expect(prepareFile(srcFpath, 'aaa') !== null).assertTrue();
-    expect(prepareFile(dstFpath, 'bbb') !== null).assertTrue();
+    expect(prepareFile(srcFpath, 'aaa')).assertTrue();
+    expect(prepareFile(dstFpath, 'bbb')).assertTrue();
     file.copy({
       srcUri: 'internal://app/File_Copy_010',
       dstUri: 'internal://app/cache/File_Copy_010',
@@ -2991,7 +2991,7 @@ describe('fileTest', function () {
    */
   it('File_Copy_011', 0, async function (done) {
     let srcFpath = await fileName('File_Copy_011');
-    expect(prepareFile(srcFpath, 'test.') !== null).assertTrue();
+    expect(prepareFile(srcFpath, 'test.')).assertTrue();
     file.copy({
       srcUri: 'internal://cache/../files/File_Copy_011',
       dstUri: 'internal://cache/File_Copy_011',
@@ -3024,7 +3024,7 @@ describe('fileTest', function () {
    */
   it('File_Copy_012', 0, async function (done) {
     let srcFpath = await fileName('File_Copy_012');
-    expect(prepareFile(srcFpath, 'test') !== null).assertTrue();
+    expect(prepareFile(srcFpath, 'test')).assertTrue();
     file.copy({
       srcUri: 'internal://app/../files/File_Copy_012',
       dstUri: 'internal://app/notdir/File_Move_012',
@@ -3050,7 +3050,7 @@ describe('fileTest', function () {
   it('File_Copy_014', 0, async function (done) {
     let srcFpath = await fileName('File_Copy_014');
     let dstFpath = await cacheFileName('File_Copy_014');
-    expect(prepareFile(srcFpath, 'test') !== null).assertTrue();
+    expect(prepareFile(srcFpath, 'test')).assertTrue();
     let dstUri = 'internal://cache/File_Copy_014';
     file.copy({
       srcUri: 'internal://cache/../files/File_Copy_014',
@@ -3077,7 +3077,7 @@ describe('fileTest', function () {
     let ddpath = dpath + '/File_List_001_1d';
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
     expect(fileio.mkdirSync(ddpath) !== null).assertTrue();
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.list({
       uri: 'internal://cache/../files/File_List_001d',
       success: function (data) {
@@ -3105,7 +3105,7 @@ describe('fileTest', function () {
     let ddpath = dpath + '/File_List_002_1d';
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
     expect(fileio.mkdirSync(ddpath) !== null).assertTrue();
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.list({
       uri: 'internal://cache/../files/File_List_002d',
       success: function (data) {
@@ -3133,7 +3133,7 @@ describe('fileTest', function () {
     let ddpath = dpath + '/File_List_003_1d';
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
     expect(fileio.mkdirSync(ddpath) !== null).assertTrue();
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.list({
       uri: 'internal://cache/../files/File_List_003d',
       success: function (data) {
@@ -3180,7 +3180,7 @@ describe('fileTest', function () {
     let ddpath = dpath + '/File_List_004_1d';
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
     expect(fileio.mkdirSync(ddpath) !== null).assertTrue();
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.list({
       uri: 'internal://cache/../files/File_List_004d',
       success: function (data) {
@@ -3205,7 +3205,7 @@ describe('fileTest', function () {
     let ddpath = dpath + '/File_List_005_1d';
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
     expect(fileio.mkdirSync(ddpath) !== null).assertTrue();
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.list({
       uri: 'internal://cache/../files/File_List_005d',
       success: function (data) {
@@ -3247,7 +3247,7 @@ describe('fileTest', function () {
    */
   it('File_List_007', 0, async function (done) {
     let fpath = await fileName('File_List_007');
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.list({
       uri: 'internal://cache/../files/File_List_007',
       success: function (data) {
@@ -3326,9 +3326,9 @@ describe('fileTest', function () {
     try {
       expect(fileio.mkdirSync(dpath) !== null).assertTrue();
       expect(fileio.mkdirSync(ddpath) !== null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
-      expect(prepareFile(ffpath, FILE_CONTENT) !== null).assertTrue();
-      expect(prepareFile(fffpath, FILE_CONTENT) !== null).assertTrue();
+      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+      expect(prepareFile(ffpath, FILE_CONTENT)).assertTrue();
+      expect(prepareFile(fffpath, FILE_CONTENT)).assertTrue();
     }
     catch (e) {
       console.log('File_List_010 has failed for ' + e);
@@ -3363,7 +3363,7 @@ describe('fileTest', function () {
     let ddpath = dpath + '/File_List_011_1d';
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
     expect(fileio.mkdirSync(ddpath) !== null).assertTrue();
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.list({
       uri: 'internal://cache/../files/File_List_011d',
       success: function (data) {
@@ -3406,7 +3406,7 @@ describe('fileTest', function () {
    */
   it('File_Get_001', 0, async function (done) {
     let fpath = await fileName('File_Get_001');
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.get({
       uri: 'internal://cache/../files/File_Get_001',
       recursive: true,
@@ -3429,7 +3429,7 @@ describe('fileTest', function () {
    */
   it('File_Get_002', 0, async function (done) {
     let fpath = await fileName('File_Get_002');
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.get({
       uri: 'internal://cache/../files/File_Get_002',
       recursive: false,
@@ -3457,7 +3457,7 @@ describe('fileTest', function () {
    */
   it('File_Get_003', 0, async function (done) {
     let fpath = await fileName('File_Get_003');
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.get({
       uri: 'internal://cache/../files/File_Get_003',
       success: function (data) {
@@ -3490,8 +3490,8 @@ describe('fileTest', function () {
     let ffpath = ddpath + '/File_Get_004ff'
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
     expect(fileio.mkdirSync(ddpath) !== null).assertTrue();
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
-    expect(prepareFile(ffpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(prepareFile(ffpath, FILE_CONTENT)).assertTrue();
     file.get({
       uri: 'internal://cache/../files/File_Get_004d',
       recursive: true,
@@ -3528,8 +3528,8 @@ describe('fileTest', function () {
     let ffpath = ddpath + '/File_Get_005ff';
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
     expect(fileio.mkdirSync(ddpath) !== null).assertTrue();
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
-    expect(prepareFile(ffpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(prepareFile(ffpath, FILE_CONTENT)).assertTrue();
     file.get({
       uri: 'internal://cache/../files/File_Get_005d',
       recursive: false,
@@ -3566,8 +3566,8 @@ describe('fileTest', function () {
     let ffpath = ddpath + '/File_Get_006ff';
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
     expect(fileio.mkdirSync(ddpath) !== null).assertTrue();
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
-    expect(prepareFile(ffpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(prepareFile(ffpath, FILE_CONTENT)).assertTrue();
     file.get({
       uri: 'internal://cache/../files/File_Get_006d',
       success: function (data) {
@@ -3766,8 +3766,8 @@ describe('fileTest', function () {
     let ffpath = ddpath + '/File_Get_013ff';
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
     expect(fileio.mkdirSync(ddpath) !== null).assertTrue();
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
-    expect(prepareFile(ffpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(prepareFile(ffpath, FILE_CONTENT)).assertTrue();
     file.get({
       uri: 'internal://cache/../files/../files/File_Get_013d',
       recursive: true,
