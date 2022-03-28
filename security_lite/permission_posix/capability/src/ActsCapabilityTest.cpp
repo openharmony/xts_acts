@@ -451,7 +451,10 @@ static int CapgetWithVersion(pid_t pid, unsigned int version)
     }
     return 0;
 }
+#endif
 
+#if (defined(_BOARD_HI3516_) && defined(LITE_FS_VFAT)) ||
+    (!defined(_BOARD_HI3516_) && (defined(LITE_FS_JFFS2) || defined(LITE_FS_VFAT)))
 static int CapgetWithCaps(pid_t pid, unsigned int caps)
 {
     struct __user_cap_header_struct capheader = { 0 };

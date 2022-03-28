@@ -42,7 +42,6 @@ static void CreateDevDir()
 static void CreateDevTxt()
 {
     int ret;
-    int fd = 0;
     // Initialize the process and set the uid and gid of the process to zero
     SetUidGid(UID0, GID0);
     // Create a directory 'DACDIR0' in the directory '/storage'
