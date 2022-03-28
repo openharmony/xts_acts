@@ -186,8 +186,7 @@ describe('HidebugJsTest', function () {
             console.log(JSON.stringify(res));
         } catch(e) {
             console.info('the file is not exists');
-        };
-        
+        }
         try {
             hidebug.startProfiling('');
             let temp = 100;
@@ -216,7 +215,7 @@ describe('HidebugJsTest', function () {
             console.log(JSON.stringify(res));
         } catch(e) {
             console.info('the file is not exists');
-        };
+        }
         let str = '';
         for (let i = 0; i < 1000; i++) {
             str += 'abcd';
@@ -272,8 +271,7 @@ describe('HidebugJsTest', function () {
             console.log(JSON.stringify(res));
         } catch(e) {
             console.info('the file is not exists');
-        };
-        
+        }
         try {
             hidebug.dumpHeapData('');
             fileio.accessSync(path, 0);
@@ -300,7 +298,7 @@ describe('HidebugJsTest', function () {
             console.log(JSON.stringify(res));
         } catch(e) {
             console.info('the file is not exists');
-        };
+        }
         let str = '';
         for (let i = 0; i < 1000; i++) {
             str += 'abcd';
