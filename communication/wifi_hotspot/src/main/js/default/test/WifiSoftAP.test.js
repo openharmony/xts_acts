@@ -530,6 +530,7 @@ describe('ACTS_WifiTest', function() {
         let isSuccess1 = wifi.setHotspotConfig(HotspotConfigWO);
         console.log("[wifi_test] set a psk preSharedKey hotspot config result1: " + isSuccess1);
         expect(isSuccess1).assertTrue();
+        await sleep(5000);
         let config = wifi.getHotspotConfig();
         console.info("[wifi_test] getHotspotConfig result -> " + JSON.stringify(config));
         expect(config.ssid).assertEqual('WIFITEST');
