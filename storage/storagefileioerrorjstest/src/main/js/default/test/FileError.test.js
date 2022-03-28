@@ -217,7 +217,7 @@ describe('FileError', function () {
    */
   it('File_test_error_007', 0, async function (done) {
     let fpath = fileName('file_test_error_007');
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.rmdir({
       uri: 'internal://app/file_test_error_007',
       recursive: true,
@@ -282,7 +282,7 @@ describe('FileError', function () {
     let dpath = fileName('file_test_error_009') + 'd';
     let fpath = dpath + '/file_test_error_009';
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.rmdir({
       uri: 'internal://app/file_test_error_009d',
       recursive: true,
@@ -311,7 +311,7 @@ describe('FileError', function () {
     let dpath = fileName('file_test_error_010') + 'd';
     let fpath = dpath + '/file_test_error_010';
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
-    expect(prepareFile(fpath, FILE_CONTENT) !== null).assertTrue();
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     file.rmdir({
       uri: 'internal://app/file_test_error_010d',
       recursive: false,

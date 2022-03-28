@@ -216,7 +216,7 @@ describe('FileIOError', function () {
     let dpath = fileName('fileio_test_error_009d');
     let fpath = dpath + '/fileio_test_error_009f';
     fileio.mkdirSync(dpath);
-    prepareFile(fpath, 'hello');
+    expect(prepareFile(fpath, 'hello')).assertTrue();
     try {
       expect(fileio.rmdirSync(dpath) !== null).assertTrue();
       expect(null).assertFail();
@@ -235,7 +235,7 @@ describe('FileIOError', function () {
    */
   it('FileIo_test_error_010', 0, function () {
     let fpath = fileName('fileio_test_error_010f');
-    prepareFile(fpath, 'hello');
+    expect(prepareFile(fpath, 'hello')).assertTrue();
     try {
       expect(fileio.rmdirSync(fpath) !== null).assertTrue();
       expect(null).assertFail();
@@ -283,7 +283,7 @@ describe('FileIOError', function () {
    */
   it('FileIo_test_error_012', 0, function () {
     let fpath = nextFileName('FileIo_test_error_012');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       fileio.openSync(fpath, 0o102);
       expect(null).assertFail();
@@ -317,7 +317,7 @@ describe('FileIOError', function () {
    */
   it('FileIo_test_error_014', 0, function () {
     let fpath = nextFileName('FileIo_test_error_014');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       fileio.openSync(fpath, 0o202);
       expect(null).assertFail();
@@ -335,7 +335,7 @@ describe('FileIOError', function () {
    */
   it('FileIo_test_error_015', 0, function () {
     let fpath = nextFileName('FileIo_test_error_015');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       fileio.openSync(fpath, 0o302);
       expect(null).assertFail();
@@ -353,7 +353,7 @@ describe('FileIOError', function () {
    */
   it('FileIo_test_error_016', 0, function () {
     let fpath = nextFileName('FileIo_test_error_016');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       fileio.openSync(fpath, 0o100002);
       expect(null).assertFail();
@@ -406,7 +406,7 @@ describe('FileIOError', function () {
   it('FileIo_test_error_019', 0, function () {
     let fpath = nextFileName('FileIo_test_error_019');
     let txt = 'h'
-    prepareFile(fpath, txt);
+    expect(prepareFile(fpath, txt)).assertTrue();
     try {
       fileio.openSync(fpath, 0o400002);
       expect(null).assertFail();
@@ -425,7 +425,7 @@ describe('FileIOError', function () {
   it('FileIo_test_error_020', 0, function () {
     let fpath = nextFileName('FileIo_test_error_020');
     let txt = randomString(5000);
-    prepareFile(fpath, txt);
+    expect(prepareFile(fpath, txt)).assertTrue();
     try {
       fileio.openSync(fpath, 0o400002);
       expect(null).assertFail();
@@ -459,7 +459,7 @@ describe('FileIOError', function () {
    */
   it('FileIo_test_error_022', 0, function () {
     let fpath = nextFileName('FileIo_test_error_022');
-    prepareFile(fpath, FILE_CONTENT);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let fpathTarget = fpath + 'f1';
     try {
       fileio.copyFileSync(fpath, fpathTarget, 1);
