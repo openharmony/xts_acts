@@ -24,7 +24,19 @@ parentPort.onmessage = function(e) {
     case "new":
       ss = new worker.Worker("workers/worker_0091.js");
       console.log("worker:: workerxx ");
+      ss.onexit = function() {
+        flag = true;
+      }
       parentPort.postMessage(ss != null);
+      break;
+    case "wait":
+      if (flag) {
+        parentPort.postMessage("terminate");
+      }
+      break;
+    case "terminate":
+      flag = false;
+      ss.terminate();
       break;
     default:
       break;
