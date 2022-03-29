@@ -453,7 +453,7 @@ static int CapgetWithVersion(pid_t pid, unsigned int version)
 }
 #endif
 
-#if (defined(_BOARD_HI3516_) && defined(LITE_FS_VFAT)) ||
+#if (defined(_BOARD_HI3516_) && defined(LITE_FS_VFAT)) || \
     (!defined(_BOARD_HI3516_) && (defined(LITE_FS_JFFS2) || defined(LITE_FS_VFAT)))
 static int CapgetWithCaps(pid_t pid, unsigned int caps)
 {
