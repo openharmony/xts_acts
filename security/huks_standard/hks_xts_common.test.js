@@ -15,8 +15,8 @@
 
 import hks from '@ohos.security.huks'
 
-export var alias = 'alias';
-export var aliasA = 'aliasA';
+export const alias = 'alias';
+export const aliasA = 'aliasA';
 export var aliasB = 'aliasB';
 export var targetAlias = 'targetAlias';
 
