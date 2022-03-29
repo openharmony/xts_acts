@@ -42,7 +42,8 @@ export default function ohosMatrix4Jsunit() {
     });
 
     afterEach(async function () {
-      await Utils.sleep(3000);
+      router.clear();
+      await Utils.sleep(2000);
       console.info("OhosMatrix4 each called");
     });
 

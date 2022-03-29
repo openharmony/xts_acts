@@ -17,12 +17,12 @@ group("ace") {
     "ace_ets_component:AceEtsComponentTest",
     "ace_ets_component_five:AceEtsComponentFiveTest",
     "ace_ets_component_four:AceEtsComponentFourTest",
-    # "ace_ets_component_three:AceEtsComponentThreeTest",
+    "ace_ets_component_three:AceEtsComponentThreeTest",
     "ace_ets_component_two:AceEtsComponentTwoTest",
     "ace_ets_standard:ActsAceEtsStTest",
     "ace_ets_test:ActsAceEtsTest",
     "ace_ets_third_test:ActsAceEtsThirdTest",
-    # "ace_standard:ace_standard_test",
+    "ace_standard:ace_standard_test",
     "ace_standard_video:ace_standard_video_test"
   ]
 }
