@@ -105,7 +105,7 @@ static void OnAbilityConnectDone(ElementName *elementName, SvcIdentity *serviceS
     sem_post(&g_sem);
 }
 
-static void OnAbilityDisconnectDone(ElementName (void)*elementName, int resultCode, void *storeData)
+static void OnAbilityDisconnectDone(ElementName *elementName, int resultCode, void *storeData)
 {
     printf("OnAbilityDisconnectDone\n");
 }
