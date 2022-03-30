@@ -34,7 +34,7 @@ describe('audioCall', function () {
     console.info('AudioFrameworkRecLog: Create AudioManger Object JS Framework');
 
     async function getPathName(){
-        var path1 = '/data/accounts/account_0/applications/';
+        var path1 = '/data/accounts/account_0/appdata/';
         var packageName;
         var context = ability_featureAbility.getContext();
         await context.getBundleName()
@@ -45,7 +45,8 @@ describe('audioCall', function () {
                 console.error('AudioFrameworkRenderLog: Failed to obtain the cache directory. Cause:' + error.message);
             });
         await sleep(200);
-		var mediaDirTemp = '/data'
+        //var mediaDirTemp = path1 + packageName + '/' + packageName + '/assets/entry/resources/rawfile';
+        var mediaDirTemp = path1+packageName
         console.info('AudioFrameworkRenderLog: Resource DIR Path : '+mediaDirTemp);
         return mediaDirTemp;
 
@@ -55,7 +56,7 @@ describe('audioCall', function () {
         console.info('AudioFrameworkTest: beforeAll: Prerequisites at the test suite level');
         mediaDir = await getPathName();
         dateTime = new Date().getTime();
-        dirPath = '/data/accounts/account_0/applications'+'/RecTest'+dateTime;
+        dirPath = mediaDir+'/files/RecTest'+dateTime;
         console.info('AudioFrameworkRecLog: Recording files Path: '+dirPath);
         fpath = dirPath+'/capture_js.pcm';
         await sleep(100);
@@ -181,7 +182,7 @@ describe('audioCall', function () {
         totalSize = totalSize-44;
         console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
         let rlen = 0;
-        while (rlen < totalSize) {
+        while (rlen < totalSize/2) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
             console.info('BufferAudioFramework: bytes read from file: ' +rlen);
@@ -335,7 +336,7 @@ describe('audioCall', function () {
             return resultFlagRec;
         }
 
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             var buffer = await audioCap.read(bufferSize, true);
             var number = fileio.writeSync(fd, buffer);
@@ -398,7 +399,7 @@ describe('audioCall', function () {
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = await playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-1C-44100-2SW.wav', audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        var resultFlag = await playbackPromise(AudioRendererOptions, mediaDir+'/files/StarWars10s-1C-44100-2SW.wav', audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
 
@@ -490,8 +491,8 @@ describe('audioCall', function () {
        }
        recPromise(AudioCapturerOptions, dirPath+'/capture_js-44100-2C-16B-2.pcm', audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
        await sleep(500);
-       await playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-1C-44100-2SW.wav', audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
-       await sleep(500);
+       await playbackPromise(AudioRendererOptions, mediaDir+'/files/StarWars10s-1C-44100-2SW.wav', audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+       await sleep(1000);
        console.info('AudioFrameworkRecLog: resultFlag : Capturer : '+resultFlagRec);
        console.info('AudioFrameworkRenderLog: resultFlag : Renderer : '+resultFlagRen);
 

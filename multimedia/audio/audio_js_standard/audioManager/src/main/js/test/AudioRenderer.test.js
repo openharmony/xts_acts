@@ -27,7 +27,7 @@ describe('audioRenderer', function () {
     var mediaDir;
 
     async function getPathName(){
-        var path1 = '/data/accounts/account_0/applications/';
+        var path1 = '/data/accounts/account_0/appdata/';
         var packageName;
         var context = ability_featureAbility.getContext();
         await context.getBundleName()
@@ -39,7 +39,7 @@ describe('audioRenderer', function () {
             });
         await sleep(200);
         //var mediaDirTemp = path1 + packageName + '/' + packageName + '/assets/entry/resources/rawfile';
-		var mediaDirTemp = '/data'
+        var mediaDirTemp = path1+packageName+'/files'
         console.info('AudioFrameworkRenderLog: Resource DIR Path : '+mediaDirTemp);
         return mediaDirTemp;
 

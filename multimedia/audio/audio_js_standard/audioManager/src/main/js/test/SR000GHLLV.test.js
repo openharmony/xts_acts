@@ -15,17 +15,41 @@
 
 import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
+import ability_featureAbility from '@ohos.ability.featureAbility';
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
 describe('audioCapturer', function () {
 
+
     var dateTime = new Date().getTime();
-    const dirPath = '/data/accounts/account_0/appdata/RecTest'+dateTime;
-    var fpath = dirPath+'/capture_js.pcm';
+    //const dirPath = '/data/accounts/account_0/appdata/RecTest'+dateTime;
+    //var fpath = dirPath+'/capture_js.pcm';
     var audioCapCallBack;
     var audioCapPromise;
-    console.info('AudioFrameworkRecLog: Recording files Path: '+dirPath);
+    var dirPath;
+    var mediaDir;
+    var fpath;
+    //console.info('AudioFrameworkRecLog: Recording files Path: '+dirPath);
+
+    async function getPathName(){
+        var path1 = '/data/accounts/account_0/appdata/';
+        var packageName;
+        var context = ability_featureAbility.getContext();
+        await context.getBundleName()
+            .then((data) => {
+                console.info('AudioFrameworkRenderLog: Cache directory obtained. Data: ' + data);
+                packageName = data;
+            }).catch((error) => {
+                console.error('AudioFrameworkRenderLog: Failed to obtain the cache directory. Cause:' + error.message);
+            });
+        await sleep(200);
+        //var mediaDirTemp = path1 + packageName + '/' + packageName + '/assets/entry/resources/rawfile';
+        var mediaDirTemp = path1+packageName
+        console.info('AudioFrameworkRenderLog: Resource DIR Path : '+mediaDirTemp);
+        return mediaDirTemp;
+
+    }
 
     const audioManager = audio.getAudioManager();
     console.info('AudioFrameworkRenderLog: Create AudioManger Object JS Framework');
@@ -33,9 +57,16 @@ describe('audioCapturer', function () {
     const audioManagerRec = audio.getAudioManager();
     console.info('AudioFrameworkRecLog: Create AudioManger Object JS Framework');
 
-    beforeAll(function () {
+    beforeAll(async function () {
         console.info('AudioFrameworkTest: beforeAll: Prerequisites at the test suite level');
+        mediaDir = await getPathName();
+        dateTime = new Date().getTime();
+        dirPath = mediaDir+'/files/RecTest'+dateTime;
+        console.info('AudioFrameworkRecLog: Recording files Path: '+dirPath);
+        fpath = dirPath+'/capture_js.pcm';
+        await sleep(100);
         fileio.mkdirSync(dirPath);
+        console.info('AudioFrameworkTest: beforeAll: END');
     })
 
     beforeEach(async function () {
@@ -174,7 +205,7 @@ describe('audioCapturer', function () {
             return resultFlag;
         }
         await sleep(100);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------READ BUFFER---------');
             var buffer = await audioCap.read(bufferSize, true);
@@ -315,7 +346,7 @@ describe('audioCapturer', function () {
             return resultFlag;
         }
 
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------READ BUFFER---------');
             var buffer = await audioCapCallBack.read(bufferSize, true);
@@ -1252,7 +1283,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -2100,7 +2131,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         //await sleep(1000);
-        var numBuffersToCapture = 500;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE PROMISE READ ---------');
             console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
@@ -3247,97 +3278,6 @@ describe('audioCapturer', function () {
     })
 
     /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_BEFORE_START_054
-               * @tc.name      : AudioCapturer-GET_AUDIO_TIME
-               * @tc.desc      : AudioCapturer GET_AUDIO_TIME
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_BEFORE_START_054', 0, async function (done) {
-        var stateFlag ;
-        var fpath = dirPath+'/capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm';
-        var AudioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
-            channels: audio.AudioChannel.CHANNEL_2,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-        }
-
-        var AudioCapturerInfo = {
-            source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
-        }
-
-        var AudioCapturerOptions = {
-            streamInfo: AudioStreamInfo,
-            capturerInfo: AudioCapturerInfo
-        }
-
-        audio.createAudioCapturer(AudioCapturerOptions,async(err,value) => {
-            if (err){
-                console.info('AudioFrameworkRecLog: AudioCapturer Not Created : Fail : Stream Type: FAIL');
-            } else {
-                audioCapCallBack = value;
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-            }
-        });
-        await sleep(1000);
-        await audioCapCallBack.getAudioTime().then(async function (audioTime) {
-            console.info('AudioFrameworkRecLog: AudioCapturer getAudioTime : Success' + audioTime );
-            if (audioTime == 0) {
-                stateFlag = true;
-                expect(stateFlag).assertTrue();
-            } else {
-                stateFlag = false;
-                expect(stateFlag).assertTrue();
-            }
-        }).catch((err) => {
-            console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : '+err.message);
-        });
-        if (stateFlag == true) {
-            audioCapCallBack.release(async(err,value) => {
-                console.info('AudioFrameworkRecLog: ---------RELEASE RECORD---------');
-                if (err){
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : '+err.message);
-                    stateFlag=false;
-                } else {console.info('AudioFrameworkRecLog: ---------BEFORE CHECK AUDIO RELASED STATE---------');
-                        console.info('AudioFrameworkRecLog: Capturer release : SUCCESS');
-                        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                        if ((audioCapCallBack.state == 4)) {
-                            console.info('AudioFrameworkRecLog: ---------AFTER CHECK AUDIO RELEASED STATE---------');
-                            stateFlag = true;
-                            console.info('AudioFrameworkRenderLog: resultFlag : '+stateFlag);
-                            expect(stateFlag).assertTrue();
-                            done();
-                        }
-                }
-            });
-            await sleep(1000);
-        } else {
-            audioCapCallBack.release(async(err,value) => {
-                console.info('AudioFrameworkRecLog: ---------RELEASE RECORD---------');
-                if (err){
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : '+err.message);
-                    stateFlag=false;
-                } else {console.info('AudioFrameworkRecLog: ---------BEFORE CHECK AUDIO RELASED STATE---------');
-                        console.info('AudioFrameworkRecLog: Capturer release : SUCCESS');
-                        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                        if ((audioCapCallBack.state == 4)) {
-                            console.info('AudioFrameworkRecLog: ---------AFTER CHECK AUDIO RELEASED STATE---------');
-                            stateFlag = true;
-                            console.info('AudioFrameworkRenderLog: resultFlag : '+stateFlag);
-                            expect(stateFlag).assertTrue();
-                            done();
-                        }
-                }
-            });
-            await sleep(1000);
-        }
-
-    })
-
-    /*     *
                * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_START_055
                * @tc.name      : AudioCapturer-GET_AUDIO_TIME
                * @tc.desc      : AudioCapturer GET_AUDIO_TIME
@@ -3555,7 +3495,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -3719,7 +3659,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -5299,7 +5239,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -5451,7 +5391,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -5596,7 +5536,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -5742,7 +5682,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -5888,7 +5828,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -6035,7 +5975,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -6182,7 +6122,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -6328,7 +6268,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -6475,7 +6415,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -6620,7 +6560,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -6787,7 +6727,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -6954,7 +6894,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -7122,7 +7062,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -7289,7 +7229,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 250;
+        var numBuffersToCapture = 100;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {

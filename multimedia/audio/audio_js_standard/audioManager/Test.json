@@ -12,6 +12,10 @@
                 "ActsAudioManagerJsTest.hap"
             ],
             "type": "AppInstallKit",
+            "run-command": [
+                "chmod 777 /data/*",
+                "chmod 777 /data -R"
+            ],
             "cleanup-apps": true
         }
     ]
