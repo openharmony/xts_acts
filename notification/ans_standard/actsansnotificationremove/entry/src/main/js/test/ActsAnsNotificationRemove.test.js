@@ -891,7 +891,7 @@ describe('ActsAnsNotificationRemove', function () {
             console.info("=======ANS_Remove_1200 onConsume remove_2times1:=======>");
         }).catch((err)=>{
             console.info("=======ANS_Remove_1200 onConsume remove_2times1 err:========>" + JSON.stringify(err));
-            expect(err.code = 0).assertEqual(true);
+            expect(err.code == 0).assertEqual(true);
         });
         notify.remove(data.request.hashCode).then((data)=>{
             console.info("=======ANS_Remove_1200 onConsume remove_2times2 data:=======>" + JSON.stringify(data));
@@ -1834,7 +1834,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================ANS_Remove_2300 removeAllCallBack data:=========>" + JSON.stringify(data));
         console.info("================ANS_Remove_2300 removeAllCallBack end:==========>")
     }
-    var timesOfOnConsumeRemoveAll
+    let timesOfOnConsumeRemoveAll
     function onConsumeRemoveAll(data) {
         timesOfOnConsumeRemoveAll = timesOfOnConsumeRemoveAll + 1
         console.info("================ANS_Remove_2300 onConsume start==================>");
@@ -1846,7 +1846,7 @@ describe('ActsAnsNotificationRemove', function () {
         }
         console.info("================ANS_Remove_2300 onConsume end====================>");
     }
-
+    let timesOfOnCancelRemoveAll
     function onCancelRemoveAll(data) {
         timesOfOnCancelRemoveAll = timesOfOnCancelRemoveAll + 1
         console.info("==================ANS_Remove_2300 onCancel start===========>");
@@ -1951,7 +1951,6 @@ describe('ActsAnsNotificationRemove', function () {
         }),timeout);
     })
 
-    var timesOfOnConsumeRemoveAll
     function onConsumeRemoveAllPromise(data) {
         timesOfOnConsumeRemoveAll = timesOfOnConsumeRemoveAll + 1
         console.info("===========ANS_Remove_2400 onConsume start==============>");
