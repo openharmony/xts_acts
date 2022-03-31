@@ -14,6 +14,7 @@
  */
 
 require('./DeviceUsageStatisticsJsunit.test.js')
+require('./BundleState.test.js')
 
 
 
