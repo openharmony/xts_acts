@@ -891,7 +891,7 @@ describe('ActsAnsNotificationRemove', function () {
             console.info("=======ANS_Remove_1200 onConsume remove_2times1:=======>");
         }).catch((err)=>{
             console.info("=======ANS_Remove_1200 onConsume remove_2times1 err:========>" + JSON.stringify(err));
-            expect(err.code = 0).assertEqual(true);
+            expect(err.code == 0).assertEqual(true);
         });
         notify.remove(data.request.hashCode).then((data)=>{
             console.info("=======ANS_Remove_1200 onConsume remove_2times2 data:=======>" + JSON.stringify(data));
