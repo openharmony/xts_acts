@@ -13,5 +13,4 @@
  * limitations under the License.
  */
 require('./ActsBmsQueryAbilityByWant.test.js') 
-require('./ActsBmsCleanCacheTest.test.js')
 require('./ActsBmsGetBackGroundModes.test.js')

@@ -40,15 +40,15 @@ const NUM_THREE = 3;
 const NUM_FOUR = 4;
 const NUM_NINE = 9;
 const USERID = 100;
-let dataTransfer = 1;
-let audioPlayback = 2;
-let audioRecording = 4;
-let location = 8;
-let bluetoothInteraction = 16;
-let multiDeviceConnection = 32;
-let wifiInteraction = 64;
-let voip = 128;
-let taskKeeping = 256;
+const DATATRANSFER = 1;
+const AUDIOPLAYBACK = 2;
+const AUDIORECORDING = 4;
+const LOCATION = 8;
+const BLUETOOTHINTERACTION = 16;
+const MULTIDEVICECONNECTION = 32;
+const WIFIINTERACTION = 64;
+const VOIP = 128;
+const TASKKEEPING = 256;
 let installParam = {
     userId: USERID,
     installFlag: 1,
@@ -79,33 +79,29 @@ describe('ActsBmsGetBackGroundModes', function () {
             expect(dataInfos.length).assertEqual(NUM_FOUR);
             if (dataInfos.length == NUM_FOUR) {
                 expect(dataInfos[NUM_TWO].name).assertEqual(ABILITIY_NAME1);
-                expect(dataInfos[NUM_TWO].backgroundModes).assertEqual(dataTransfer | audioPlayback | audioRecording |
-                    location | bluetoothInteraction | multiDeviceConnection | wifiInteraction | voip | taskKeeping);
+                expect(dataInfos[NUM_TWO].backgroundModes).assertEqual(DATATRANSFER | AUDIOPLAYBACK | AUDIORECORDING |
+                    LOCATION | BLUETOOTHINTERACTION | MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING);
                 expect(dataInfos[NUM_THREE].name).assertEqual(ABILITIY_NAME2);
-                expect(dataInfos[NUM_THREE].backgroundModes).assertEqual(dataTransfer | voip);
+                expect(dataInfos[NUM_THREE].backgroundModes).assertEqual(DATATRANSFER | VOIP);
             }
             let bundleInfos = await bundle.getAllBundleInfo(bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, USERID);
             for (let i = 0; i < bundleInfos.length; i++) {
                 if (bundleInfos[i].name == BUNDLE_NAME5) {
                     for (let j = 0; j < bundleInfos[i].abilityInfos.length; j++) {
                         if (bundleInfos[i].abilityInfos[j].name == ABILITIY_NAME1) {
-                            expect(bundleInfos[i].abilityInfos[j].backgroundModes).assertEqual(dataTransfer |
-                                audioPlayback | audioRecording | location | bluetoothInteraction |
-                                multiDeviceConnection | wifiInteraction | voip | taskKeeping);
+                            expect(bundleInfos[i].abilityInfos[j].backgroundModes).assertEqual(DATATRANSFER |
+                                AUDIOPLAYBACK | AUDIORECORDING | LOCATION | BLUETOOTHINTERACTION |
+                                MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING);
                         } else if (bundleInfos[i].abilityInfos[j].name == ABILITIY_NAME2) {
-                            expect(bundleInfos[i].abilityInfos[j].backgroundModes).assertEqual(dataTransfer | voip);
+                            expect(bundleInfos[i].abilityInfos[j].backgroundModes).assertEqual(DATATRANSFER | VOIP);
                         }
                     }
                 }
             }
             let data3 = await bundle.getBundleInfo(BUNDLE_NAME5, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
-            expect(data3.abilityInfos[2].backgroundModes).assertEqual(dataTransfer | audioPlayback | audioRecording |
-                location | bluetoothInteraction | multiDeviceConnection | wifiInteraction | voip | taskKeeping);
-            expect(data3.abilityInfos[3].backgroundModes).assertEqual(dataTransfer | voip);
-            let data5 = await bundle.getBundleArchiveInfo(BUNDLE_PATH5, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
-            expect(data5.abilityInfos[2].backgroundModes).assertEqual(dataTransfer | audioPlayback | audioRecording |
-                location | bluetoothInteraction | multiDeviceConnection | wifiInteraction | voip | taskKeeping);
-            expect(data5.abilityInfos[3].backgroundModes).assertEqual(dataTransfer | voip);
+            expect(data3.abilityInfos[2].backgroundModes).assertEqual(DATATRANSFER | AUDIOPLAYBACK | AUDIORECORDING |
+                LOCATION | BLUETOOTHINTERACTION | MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING);
+            expect(data3.abilityInfos[3].backgroundModes).assertEqual(DATATRANSFER | VOIP);
             installer.uninstall(BUNDLE_NAME5, installParam, (err, data) => {
                 checkInstallOrUninstall(err, data);
                 done();
@@ -166,8 +162,8 @@ describe('ActsBmsGetBackGroundModes', function () {
             expect(dataInfos.length).assertEqual(NUM_TWO);
             if (dataInfos.length == NUM_TWO) {
                 expect(dataInfos[1].name).assertEqual(ABILITIY_NAME3)
-                expect(dataInfos[1].backgroundModes).assertEqual(audioPlayback | audioRecording | location
-                    | bluetoothInteraction | multiDeviceConnection | wifiInteraction | voip | taskKeeping)
+                expect(dataInfos[1].backgroundModes).assertEqual(AUDIOPLAYBACK | AUDIORECORDING | LOCATION
+                    | BLUETOOTHINTERACTION | MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING)
             }
             bundle.getAllBundleInfo(bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, USERID, (err, bundleInfos) => {
                 for (let i = 0; i < bundleInfos.length; i++) {
@@ -175,20 +171,16 @@ describe('ActsBmsGetBackGroundModes', function () {
                         for (let j = 0; j < bundleInfos[i].abilityInfos.length; j++) {
                             if (bundleInfos[i].abilityInfos[j].name == ABILITIY_NAME3) {
                                 expect(bundleInfos[i].abilityInfos[j].backgroundModes).assertEqual(
-                                    audioPlayback | audioRecording | location | bluetoothInteraction
-                                    | multiDeviceConnection | wifiInteraction | voip | taskKeeping);
+                                    AUDIOPLAYBACK | AUDIORECORDING | LOCATION | BLUETOOTHINTERACTION
+                                    | MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING);
                             }
                         }
                     }
                 }
             });
             bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, (err, data3) => {
-                expect(data3.abilityInfos[1].backgroundModes).assertEqual(audioPlayback | audioRecording | location
-                    | bluetoothInteraction | multiDeviceConnection | wifiInteraction | voip | taskKeeping)
-            });
-            bundle.getBundleArchiveInfo(BUNDLE_PATH2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, (err, data5) => {
-                expect(data5.abilityInfos[1].backgroundModes).assertEqual(audioPlayback | audioRecording | location
-                    | bluetoothInteraction | multiDeviceConnection | wifiInteraction | voip | taskKeeping)
+                expect(data3.abilityInfos[1].backgroundModes).assertEqual(AUDIOPLAYBACK | AUDIORECORDING | LOCATION
+                    | BLUETOOTHINTERACTION | MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING)
             });
             installer.uninstall(BUNDLE_NAME2, installParam, (err, data) => {
                 checkInstallOrUninstall(err, data);
@@ -250,11 +242,11 @@ describe('ActsBmsGetBackGroundModes', function () {
             expect(dataInfos.length).assertEqual(NUM_FOUR);
             if (dataInfos.length == NUM_FOUR) {
                 expect(dataInfos[1].name).assertEqual(ABILITIY_NAME5)
-                expect(dataInfos[1].backgroundModes).assertEqual(dataTransfer | audioPlayback | audioRecording |
-                    location | bluetoothInteraction | multiDeviceConnection | wifiInteraction | voip | taskKeeping)
+                expect(dataInfos[1].backgroundModes).assertEqual(DATATRANSFER | AUDIOPLAYBACK | AUDIORECORDING |
+                    LOCATION | BLUETOOTHINTERACTION | MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING)
                 expect(dataInfos[3].name).assertEqual(ABILITIY_NAME6)
-                expect(dataInfos[3].backgroundModes).assertEqual(dataTransfer | audioPlayback | audioRecording |
-                    location | bluetoothInteraction | multiDeviceConnection | wifiInteraction | voip | taskKeeping)
+                expect(dataInfos[3].backgroundModes).assertEqual(DATATRANSFER | AUDIOPLAYBACK | AUDIORECORDING |
+                    LOCATION | BLUETOOTHINTERACTION | MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING)
             }
             installer.uninstall(BUNDLE_NAME1, installParam, (err, data) => {
                 checkInstallOrUninstall(err, data);
@@ -286,8 +278,8 @@ describe('ActsBmsGetBackGroundModes', function () {
             expect(dataInfos.length).assertEqual(NUM_TWO);
             if (dataInfos.length == NUM_TWO) {
                 expect(dataInfos[1].name).assertEqual(ABILITIY_NAME5);
-                expect(dataInfos[1].backgroundModes).assertEqual(dataTransfer | audioPlayback | audioRecording |
-                    location | bluetoothInteraction | multiDeviceConnection | wifiInteraction | voip | taskKeeping);
+                expect(dataInfos[1].backgroundModes).assertEqual(DATATRANSFER | AUDIOPLAYBACK | AUDIORECORDING |
+                    LOCATION | BLUETOOTHINTERACTION | MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING);
             }
             installer.install(bundlePath2, installParam, async (err, data) => {
                 checkInstallOrUninstall(err, data);
@@ -303,8 +295,8 @@ describe('ActsBmsGetBackGroundModes', function () {
                 expect(dataInfos.length).assertEqual(NUM_TWO);
                 if (dataInfos.length == NUM_TWO) {
                     expect(dataInfos[1].name).assertEqual(ABILITIY_NAME7);
-                    expect(dataInfos[1].backgroundModes).assertEqual(audioRecording | location | bluetoothInteraction |
-                        multiDeviceConnection | wifiInteraction | voip | taskKeeping);
+                    expect(dataInfos[1].backgroundModes).assertEqual(AUDIORECORDING | LOCATION | BLUETOOTHINTERACTION |
+                        MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING);
                 }
                 installer.uninstall(BUNDLE_NAME1, installParam, (err, data) => {
                     checkInstallOrUninstall(err, data);

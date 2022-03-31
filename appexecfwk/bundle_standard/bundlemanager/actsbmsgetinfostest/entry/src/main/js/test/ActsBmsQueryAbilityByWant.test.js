@@ -28,6 +28,7 @@ let installParam = {
 };
 
 describe('ActsBmsQueryAbilityByWant', function () {
+
     /*
     * @tc.number: bms_queryAbilityByWant_0100
     * @tc.name:  queryAbilityByWant callback by other callback
@@ -108,8 +109,45 @@ describe('ActsBmsQueryAbilityByWant', function () {
                     abilityName: '',
                 },
             }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, USERID);
+            for(let i = 0; i < dataInfos.length ; i ++){
+                console.info ('dataInfos============='+ i);
+                for (const item in dataInfos[0]) {
+                    const a = dataInfos[0][item];
+                    console.info(item+":"+ JSON.stringify(a));
+                };
+            };
             expect(dataInfos.length).assertEqual(1);
             expect(dataInfos[0].name).assertEqual(ABILITIY_NAME8);
+            expect(dataInfos[0].label).assertEqual('$string:app_name');
+            expect(dataInfos[0].description).assertEqual('$string:mainability_description');
+            expect(dataInfos[0].icon).assertEqual("$media:icon");
+            expect(dataInfos[0].srcPath).assertEqual("");
+            expect(dataInfos[0].srcLanguage).assertEqual("js");
+            expect(dataInfos[0].isVisible).assertEqual(false);
+            expect(dataInfos[0].permissions.length).assertEqual(0);
+            expect(dataInfos[0].deviceCapabilities.length).assertEqual(0);
+            expect(dataInfos[0].deviceTypes[0]).assertEqual('phone');
+            expect(dataInfos[0].process).assertEqual('');
+            expect(dataInfos[0].uri).assertEqual('');
+            expect(dataInfos[0].bundleName).assertEqual(SYSTEM_NAME);
+            expect(dataInfos[0].moduleName).assertEqual("entry");
+            expect(Object.keys(dataInfos[0].applicationInfo).length).assertLarger(0);
+            expect(dataInfos[0].type).assertEqual(1);
+            expect(dataInfos[0].orientation).assertEqual(0);
+            expect(dataInfos[0].launchMode).assertEqual(1);
+            expect(dataInfos[0].backgroundModes).assertEqual(0);
+            expect(dataInfos[0].descriptionId).assertLarger(0);
+            expect(dataInfos[0].formEnabled).assertEqual(false);
+            expect(dataInfos[0].iconId).assertLarger(0);
+            expect(dataInfos[0].labelId).assertLarger(0);
+            expect(dataInfos[0].subType).assertEqual(0);
+            expect(dataInfos[0].readPermission).assertEqual("");
+            expect(dataInfos[0].writePermission).assertEqual("");
+            expect(dataInfos[0].targetAbility).assertEqual("");
+            expect(dataInfos[0].theme).assertEqual("");
+            expect(dataInfos[0].metaData.length).assertEqual(0);
+            expect(dataInfos[0].metadata.length).assertEqual(0);
+            expect(dataInfos[0].enabled).assertEqual(true);
             installer.uninstall(SYSTEM_NAME, installParam, (err, data) => {
                 checkInstallOrUninstall(err, data);
                 done();
