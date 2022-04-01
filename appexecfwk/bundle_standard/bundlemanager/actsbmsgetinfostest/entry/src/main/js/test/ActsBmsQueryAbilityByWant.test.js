@@ -44,11 +44,12 @@ describe('ActsBmsQueryAbilityByWant', function () {
                     action: ['action.system.home'],
                     entities: ['entity.system.home'],
                     bundleName: BUNDLE_NAME1
-                }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY, USERID).then(data => {
-                    expect(data).assertFail();
-                }).catch(err => {
-                    expect(err).assertEqual(1);
-                });
+                }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
+                    USERID).then(data => {
+                        expect(data).assertFail();
+                    }).catch(err => {
+                        expect(err).assertEqual(1);
+                    });
                 bundle.queryAbilityByWant({
                     action: ['action.system.home'],
                     entities: ['entity.system.home'],

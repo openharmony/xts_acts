@@ -39,13 +39,14 @@ describe('ActsBmsAccessTokenTest', function () {
         installer.install(BUNDLE_PATH1, installParam, OnReceiveInstallEvent);
         async function OnReceiveInstallEvent(err, data) {
             checkInstallOrUninstall(err, data);
-            await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT, USERID).then(applicationInfo => {
-                console.info('accessTokenId: ' + applicationInfo.accessTokenId);
-                expect(applicationInfo.name).assertEqual(BUNDLE_NAME1);
-                expect(applicationInfo.accessTokenId).assertLarger(0);
-            }).catch((err) => {
-                expect(err).assertFail();
-            });
+            await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT, USERID)
+                .then(applicationInfo => {
+                    console.info('accessTokenId: ' + applicationInfo.accessTokenId);
+                    expect(applicationInfo.name).assertEqual(BUNDLE_NAME1);
+                    expect(applicationInfo.accessTokenId).assertLarger(0);
+                }).catch((err) => {
+                    expect(err).assertFail();
+                });
             installer.uninstall(BUNDLE_NAME1, installParam, (err, data) => {
                 checkInstallOrUninstall(err, data);
                 done();
@@ -63,19 +64,20 @@ describe('ActsBmsAccessTokenTest', function () {
         installer.install(BUNDLE_PATH1, installParam, OnReceiveInstallEvent);
         async function OnReceiveInstallEvent(err, data) {
             checkInstallOrUninstall(err, data);
-            await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION).then(bundleInfo => {
-                expect(bundleInfo.name).assertEqual(BUNDLE_NAME1);
-                expect(bundleInfo.reqPermissions.length).assertEqual(3);
-                expect(bundleInfo.reqPermissions[0]).assertEqual("ohos.permission.ALPHA");
-                expect(bundleInfo.reqPermissions[1]).assertEqual("ohos.permission.BETA");
-                expect(bundleInfo.reqPermissions[2]).assertEqual("ohos.permission.KEEP_BACKGROUND_RUNNING");
-                expect(bundleInfo.reqPermissionStates.length).assertEqual(3);
-                expect(bundleInfo.reqPermissionStates[0]).assertEqual(-1);
-                expect(bundleInfo.reqPermissionStates[1]).assertEqual(-1);
-                expect(bundleInfo.reqPermissionStates[2]).assertEqual(0);
-            }).catch((err) => {
-                expect(err).assertFail();
-            });
+            await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
+                .then(bundleInfo => {
+                    expect(bundleInfo.name).assertEqual(BUNDLE_NAME1);
+                    expect(bundleInfo.reqPermissions.length).assertEqual(3);
+                    expect(bundleInfo.reqPermissions[0]).assertEqual("ohos.permission.ALPHA");
+                    expect(bundleInfo.reqPermissions[1]).assertEqual("ohos.permission.BETA");
+                    expect(bundleInfo.reqPermissions[2]).assertEqual("ohos.permission.KEEP_BACKGROUND_RUNNING");
+                    expect(bundleInfo.reqPermissionStates.length).assertEqual(3);
+                    expect(bundleInfo.reqPermissionStates[0]).assertEqual(-1);
+                    expect(bundleInfo.reqPermissionStates[1]).assertEqual(-1);
+                    expect(bundleInfo.reqPermissionStates[2]).assertEqual(0);
+                }).catch((err) => {
+                    expect(err).assertFail();
+                });
             installer.uninstall(BUNDLE_NAME1, installParam, (err, data) => {
                 checkInstallOrUninstall(err, data);
                 done();
@@ -97,23 +99,24 @@ describe('ActsBmsAccessTokenTest', function () {
         }
         async function OnReceiveUpdateEvent(err, data) {
             checkInstallOrUninstall(err, data);
-            await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION).then(bundleInfo => {
-                expect(bundleInfo.name).assertEqual(BUNDLE_NAME1);
-                expect(bundleInfo.reqPermissions.length).assertEqual(5);
-                expect(bundleInfo.reqPermissions[0]).assertEqual("ohos.permission.ALPHA");
-                expect(bundleInfo.reqPermissions[1]).assertEqual("ohos.permission.KEEP_BACKGROUND_RUNNING");
-                expect(bundleInfo.reqPermissions[2]).assertEqual("ohos.permission.LOCATION_IN_BACKGROUND");
-                expect(bundleInfo.reqPermissions[3]).assertEqual("ohos.permission.SYSTEM_FLOAT_WINDOW");
-                expect(bundleInfo.reqPermissions[4]).assertEqual("ohos.permission.USE_BLUETOOTH");
-                expect(bundleInfo.reqPermissionStates.length).assertEqual(5);
-                expect(bundleInfo.reqPermissionStates[0]).assertEqual(-1);
-                expect(bundleInfo.reqPermissionStates[1]).assertEqual(0);
-                expect(bundleInfo.reqPermissionStates[2]).assertEqual(-1);
-                expect(bundleInfo.reqPermissionStates[3]).assertEqual(0);
-                expect(bundleInfo.reqPermissionStates[4]).assertEqual(0);
-            }).catch((err) => {
-                expect(err).assertFail();
-            });
+            await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
+                .then(bundleInfo => {
+                    expect(bundleInfo.name).assertEqual(BUNDLE_NAME1);
+                    expect(bundleInfo.reqPermissions.length).assertEqual(5);
+                    expect(bundleInfo.reqPermissions[0]).assertEqual("ohos.permission.ALPHA");
+                    expect(bundleInfo.reqPermissions[1]).assertEqual("ohos.permission.KEEP_BACKGROUND_RUNNING");
+                    expect(bundleInfo.reqPermissions[2]).assertEqual("ohos.permission.LOCATION_IN_BACKGROUND");
+                    expect(bundleInfo.reqPermissions[3]).assertEqual("ohos.permission.SYSTEM_FLOAT_WINDOW");
+                    expect(bundleInfo.reqPermissions[4]).assertEqual("ohos.permission.USE_BLUETOOTH");
+                    expect(bundleInfo.reqPermissionStates.length).assertEqual(5);
+                    expect(bundleInfo.reqPermissionStates[0]).assertEqual(-1);
+                    expect(bundleInfo.reqPermissionStates[1]).assertEqual(0);
+                    expect(bundleInfo.reqPermissionStates[2]).assertEqual(-1);
+                    expect(bundleInfo.reqPermissionStates[3]).assertEqual(0);
+                    expect(bundleInfo.reqPermissionStates[4]).assertEqual(0);
+                }).catch((err) => {
+                    expect(err).assertFail();
+                });
             installer.uninstall(BUNDLE_NAME1, installParam, (err, data) => {
                 checkInstallOrUninstall(err, data);
                 done();
@@ -135,25 +138,26 @@ describe('ActsBmsAccessTokenTest', function () {
         }
         async function OnReceiveUpdateEvent(err, data) {
             checkInstallOrUninstall(err, data);
-            await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION).then(bundleInfo => {
-                expect(bundleInfo.name).assertEqual(BUNDLE_NAME1);
-                expect(bundleInfo.reqPermissions.length).assertEqual(6);
-                expect(bundleInfo.reqPermissions[0]).assertEqual("ohos.permission.ALPHA");
-                expect(bundleInfo.reqPermissions[1]).assertEqual("ohos.permission.BETA");
-                expect(bundleInfo.reqPermissions[2]).assertEqual("ohos.permission.KEEP_BACKGROUND_RUNNING");
-                expect(bundleInfo.reqPermissions[3]).assertEqual("ohos.permission.LOCATION_IN_BACKGROUND");
-                expect(bundleInfo.reqPermissions[4]).assertEqual("ohos.permission.SYSTEM_FLOAT_WINDOW");
-                expect(bundleInfo.reqPermissions[5]).assertEqual("ohos.permission.USE_BLUETOOTH");
-                expect(bundleInfo.reqPermissionStates.length).assertEqual(6);
-                expect(bundleInfo.reqPermissionStates[0]).assertEqual(-1);
-                expect(bundleInfo.reqPermissionStates[1]).assertEqual(-1);
-                expect(bundleInfo.reqPermissionStates[2]).assertEqual(0);
-                expect(bundleInfo.reqPermissionStates[3]).assertEqual(-1);
-                expect(bundleInfo.reqPermissionStates[4]).assertEqual(0);
-                expect(bundleInfo.reqPermissionStates[5]).assertEqual(0);
-            }).catch((err) => {
-                expect(err).assertFail();
-            });
+            await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
+                .then(bundleInfo => {
+                    expect(bundleInfo.name).assertEqual(BUNDLE_NAME1);
+                    expect(bundleInfo.reqPermissions.length).assertEqual(6);
+                    expect(bundleInfo.reqPermissions[0]).assertEqual("ohos.permission.ALPHA");
+                    expect(bundleInfo.reqPermissions[1]).assertEqual("ohos.permission.BETA");
+                    expect(bundleInfo.reqPermissions[2]).assertEqual("ohos.permission.KEEP_BACKGROUND_RUNNING");
+                    expect(bundleInfo.reqPermissions[3]).assertEqual("ohos.permission.LOCATION_IN_BACKGROUND");
+                    expect(bundleInfo.reqPermissions[4]).assertEqual("ohos.permission.SYSTEM_FLOAT_WINDOW");
+                    expect(bundleInfo.reqPermissions[5]).assertEqual("ohos.permission.USE_BLUETOOTH");
+                    expect(bundleInfo.reqPermissionStates.length).assertEqual(6);
+                    expect(bundleInfo.reqPermissionStates[0]).assertEqual(-1);
+                    expect(bundleInfo.reqPermissionStates[1]).assertEqual(-1);
+                    expect(bundleInfo.reqPermissionStates[2]).assertEqual(0);
+                    expect(bundleInfo.reqPermissionStates[3]).assertEqual(-1);
+                    expect(bundleInfo.reqPermissionStates[4]).assertEqual(0);
+                    expect(bundleInfo.reqPermissionStates[5]).assertEqual(0);
+                }).catch((err) => {
+                    expect(err).assertFail();
+                });
             installer.uninstall(BUNDLE_NAME1, installParam, (err, data) => {
                 checkInstallOrUninstall(err, data);
                 done();
@@ -175,13 +179,14 @@ describe('ActsBmsAccessTokenTest', function () {
         );
         async function OnReceiveInstallEvent(err, data) {
             checkInstallOrUninstall(err, data);
-            await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT).then((applicationInfo) => {
-                console.info("bms_AccessTokenId_0500 accessTokenId: " + applicationInfo.accessTokenId);
-                expect(applicationInfo.name).assertEqual(BUNDLE_NAME1);
-                expect(applicationInfo.accessTokenId).assertLarger(0);
-            }).catch((err) => {
-                expect(err).assertFail();
-            });
+            await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT)
+                .then((applicationInfo) => {
+                    console.info("bms_AccessTokenId_0500 accessTokenId: " + applicationInfo.accessTokenId);
+                    expect(applicationInfo.name).assertEqual(BUNDLE_NAME1);
+                    expect(applicationInfo.accessTokenId).assertLarger(0);
+                }).catch((err) => {
+                    expect(err).assertFail();
+                });
             installer.uninstall(
                 BUNDLE_NAME1,
                 installParam,

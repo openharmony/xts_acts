@@ -96,47 +96,16 @@ describe('ActsBmsHapModuleTest', function () {
                 if (result.hapModuleInfos.length == 2) {
                     let hapModuleInfo = result.hapModuleInfos[0];
                     let hapModuleInfo1 = result.hapModuleInfos[1];
+                    checkHapMoudleInfos(hapModuleInfo);
+                    checkHapMoudleInfos(hapModuleInfo1);
                     expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME1);
                     expect(hapModuleInfo1.name).assertEqual(BUNDLE_NAME6);
                     expect(hapModuleInfo.moduleName).assertEqual('entry');
-                    expect(hapModuleInfo.description).assertEqual('');
-                    expect(hapModuleInfo.descriptionId).assertEqual(0);
-                    expect(hapModuleInfo.iconPath).assertEqual("$media:icon");
-                    expect(hapModuleInfo.icon).assertEqual('');
-                    expect(hapModuleInfo.label).assertEqual('$string:app_name');
-                    expect(hapModuleInfo.labelId).assertEqual(0);
-                    expect(hapModuleInfo.iconId).assertEqual(0);
-                    expect(hapModuleInfo.backgroundImg).assertEqual("");
-                    expect(hapModuleInfo.supportedModes).assertEqual(0);
-                    expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
-                    expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
                     expect(hapModuleInfo.mainAbilityName).assertEqual(FIRSTMAINABILITY);
                     expect(hapModuleInfo.mainElementName).assertEqual(FIRSTMAINABILITY);
-                    expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
-                    expect(hapModuleInfo.colorMode).assertEqual(-1);
-                    expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
-                    expect(hapModuleInfo.metadata.length).assertEqual(0);
-                    expect(hapModuleInfo.installationFree).assertEqual(false);
-                    expect(hapModuleInfo1.name).assertEqual(BUNDLE_NAME6);
                     expect(hapModuleInfo1.moduleName).assertEqual('bmsmainabilitysecondscene');
-                    expect(hapModuleInfo1.description).assertEqual('');
-                    expect(hapModuleInfo1.descriptionId).assertEqual(0);
-                    expect(hapModuleInfo1.iconPath).assertEqual("$media:icon");
-                    expect(hapModuleInfo1.icon).assertEqual('');
-                    expect(hapModuleInfo1.label).assertEqual('$string:app_name');
-                    expect(hapModuleInfo1.labelId).assertEqual(0);
-                    expect(hapModuleInfo1.iconId).assertEqual(0);
-                    expect(hapModuleInfo1.backgroundImg).assertEqual("");
-                    expect(hapModuleInfo1.supportedModes).assertEqual(0);
-                    expect(hapModuleInfo1.reqCapabilities.length).assertEqual(0);
-                    expect(hapModuleInfo1.deviceTypes[0]).assertEqual('phone');
                     expect(hapModuleInfo1.mainAbilityName).assertEqual(SECONDMAINABILITY);
                     expect(hapModuleInfo1.mainElementName).assertEqual(SECONDMAINABILITY);
-                    expect(hapModuleInfo1.abilityInfo.length).assertLarger(0);
-                    expect(hapModuleInfo1.colorMode).assertEqual(-1);
-                    expect(hapModuleInfo1.extensionAbilityInfo.length).assertEqual(0);
-                    expect(hapModuleInfo1.metadata.length).assertEqual(0);
-                    expect(hapModuleInfo1.installationFree).assertEqual(false);
                 }
                 installer.uninstall(BUNDLE_NAME1, installParam, (err, data) => {
                     checkInstallOrUninstall(err, data);
@@ -156,36 +125,37 @@ describe('ActsBmsHapModuleTest', function () {
         installer.install(BUNDLE_PATH3, installParam, onReceiveInstallEvent);
         async function onReceiveInstallEvent(err, data) {
             checkInstallOrUninstall(err, data);
-            await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(async (result) => {
-                expect(result.hapModuleInfos.length).assertEqual(1);
-                if (result.hapModuleInfos.length > 0) {
-                    let hapModuleInfo = result.hapModuleInfos[0];
-                    expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME2);
-                    expect(hapModuleInfo.moduleName).assertEqual('entry');
-                    expect(hapModuleInfo.description).assertEqual('');
-                    expect(hapModuleInfo.descriptionId).assertEqual(0);
-                    expect(hapModuleInfo.iconPath).assertEqual("$media:icon");
-                    expect(hapModuleInfo.icon).assertEqual('');
-                    expect(hapModuleInfo.label).assertEqual('$string:app_name');
-                    expect(hapModuleInfo.labelId).assertEqual(0);
-                    expect(hapModuleInfo.iconId).assertEqual(0);
-                    expect(hapModuleInfo.backgroundImg).assertEqual("");
-                    expect(hapModuleInfo.supportedModes).assertEqual(0);
-                    expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
-                    expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
-                    expect(hapModuleInfo.mainAbilityName).assertEqual("");
-                    expect(hapModuleInfo.mainElementName).assertEqual("");
-                    expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
-                    expect(hapModuleInfo.colorMode).assertEqual(-1);
-                    expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
-                    expect(hapModuleInfo.metadata.length).assertEqual(0);
-                    expect(hapModuleInfo.installationFree).assertEqual(false);
-                }
-                installer.uninstall(BUNDLE_NAME2, installParam, (err, data) => {
-                    checkInstallOrUninstall(err, data);
-                    done();
+            await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
+                .then(async (result) => {
+                    expect(result.hapModuleInfos.length).assertEqual(1);
+                    if (result.hapModuleInfos.length > 0) {
+                        let hapModuleInfo = result.hapModuleInfos[0];
+                        expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME2);
+                        expect(hapModuleInfo.moduleName).assertEqual('entry');
+                        expect(hapModuleInfo.description).assertEqual('');
+                        expect(hapModuleInfo.descriptionId).assertEqual(0);
+                        expect(hapModuleInfo.iconPath).assertEqual("$media:icon");
+                        expect(hapModuleInfo.icon).assertEqual('');
+                        expect(hapModuleInfo.label).assertEqual('$string:app_name');
+                        expect(hapModuleInfo.labelId).assertEqual(0);
+                        expect(hapModuleInfo.iconId).assertEqual(0);
+                        expect(hapModuleInfo.backgroundImg).assertEqual("");
+                        expect(hapModuleInfo.supportedModes).assertEqual(0);
+                        expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
+                        expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
+                        expect(hapModuleInfo.mainAbilityName).assertEqual("");
+                        expect(hapModuleInfo.mainElementName).assertEqual("");
+                        expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
+                        expect(hapModuleInfo.colorMode).assertEqual(-1);
+                        expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
+                        expect(hapModuleInfo.metadata.length).assertEqual(0);
+                        expect(hapModuleInfo.installationFree).assertEqual(false);
+                    }
+                    installer.uninstall(BUNDLE_NAME2, installParam, (err, data) => {
+                        checkInstallOrUninstall(err, data);
+                        done();
+                    });
                 });
-            });
         }
     });
 
@@ -312,6 +282,25 @@ describe('ActsBmsHapModuleTest', function () {
             done();
         }
     });
+
+    function checkHapMoudleInfos(info) {
+        expect(info.description).assertEqual('');
+        expect(info.descriptionId).assertEqual(0);
+        expect(info.iconPath).assertEqual("$media:icon");
+        expect(info.icon).assertEqual('');
+        expect(info.label).assertEqual('$string:app_name');
+        expect(info.labelId).assertEqual(0);
+        expect(info.iconId).assertEqual(0);
+        expect(info.backgroundImg).assertEqual("");
+        expect(info.supportedModes).assertEqual(0);
+        expect(info.reqCapabilities.length).assertEqual(0);
+        expect(info.deviceTypes[0]).assertEqual('phone');
+        expect(info.abilityInfo.length).assertLarger(0);
+        expect(info.colorMode).assertEqual(-1);
+        expect(info.extensionAbilityInfo.length).assertEqual(0);
+        expect(info.metadata.length).assertEqual(0);
+        expect(info.installationFree).assertEqual(false);
+    }
 
     function checkInstallOrUninstall(err, data) {
         expect(err.code).assertEqual(0);
