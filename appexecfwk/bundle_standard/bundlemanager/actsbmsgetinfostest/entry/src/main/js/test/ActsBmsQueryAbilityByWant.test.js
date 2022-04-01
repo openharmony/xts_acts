@@ -45,7 +45,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
                     entities: ['entity.system.home'],
                     bundleName: BUNDLE_NAME1
                 }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY, USERID).then(data => {
-                    expect(data).assertEqual("QueryAbilityInfos failed");
+                    expect(data).assertFail();
                 }).catch(err => {
                     expect(err).assertEqual(1);
                 });
