@@ -74,10 +74,7 @@ export function fileToWriteOnly(fpath) {
     return false
   }
 }
-export function nextFileName1(testName) {
-  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.storage.fileio/cache/'
-  return BASE_PATH + testName + '_' + randomString(testName.length);
-}
+
 export async function nextFileName(testName) {
   let context = featureAbility.getContext();
   let data = await context.getFilesDir();

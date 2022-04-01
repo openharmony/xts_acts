@@ -96,15 +96,15 @@ export function fileToReadAndWrite(fpath) {
   }
 }
 export function appName(testName) {
-  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/'
+  const BASE_PATH = '/data/storage/el2/base/haps/entry/'
   return BASE_PATH + testName
 }
 export function nextFileName(testName) {
-  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/cache/'
+  const BASE_PATH = '/data/storage/el2/base/haps/entry/cache/'
   return BASE_PATH + testName
 }
 export function fileName(testName) {
-  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/files/'
+  const BASE_PATH = '/data/storage/el2/base/haps/entry/files/'
   return BASE_PATH + testName
 }
 export function cacheFileName(testName) {
