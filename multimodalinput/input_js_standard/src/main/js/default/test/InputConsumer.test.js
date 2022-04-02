@@ -30,30 +30,20 @@ describe('MultimodalInputConsumer_test', function () {
   it('inputConsumer::inputConsumer_test01', 0, function () {
     let label = '02800/MultimodalinputJs';
     let keyCode = 2018;
-    console.log(`${label}:onClickConsumerOn start`)
     let params = {
       preKeys: [],
       finalKey: keyCode,
       isFinalKeyDown: false,
       finalKeyDownDuration: 0,
     };
-
-    console.log(`${label}:onClickConsumerOn callback`)
     const handleCallback = (data) => {
-      console.log(`${label}:callbackKey start`);
       if (!data) {
-        console.log(`${label}:callbackKey error:${JSON.stringify(data)}`);
         expect(false).assertTrue();
         return;
       }
-      console.log(`${label}:callbackKey success: ${JSON.stringify(data)}`);
       expect(data.finalKey == keyCode).assertTrue();
     };
-
     inputConsumer.on("key", params, handleCallback);
-    console.log(`${label}:onClickConsumerOn end`)
-
-    console.log(`${label}:onClickInjectKey start`)
     let keyDown = {
       isPressed: true,
       keyCode: keyCode,
@@ -63,8 +53,6 @@ describe('MultimodalInputConsumer_test', function () {
       KeyEvent: keyDown
     });
     ret == 0 ? console.log(`${label}:onClickInjectKey success`) : console.log(`${label}:onClickInjectKey failed`);
-
-    console.log(`${label}:onClickInjectKey up`)
     let keyUp = {
       isPressed: false,
       keyCode: keyCode,
@@ -76,10 +64,7 @@ describe('MultimodalInputConsumer_test', function () {
     retUp == 0 ? console.log(`${label}:onClickInjectKey success`) : console.log(`${label}:onClickInjectKey failed`);
 
     setTimeout(() => {
-      console.log(`${label}:onClickConsumerOff start`)
       inputConsumer.off("key", params, handleCallback);
-      console.log(`${label}:onClickConsumerOff end`);
     }, 3000);
-    console.log(`${label}:onClickInjectKey end`)
   })
 })
