@@ -14,7 +14,7 @@
  */
 
 import {
-  fileio, FILE_CONTENT, prepareFile, nextFileName1, nextFileName,
+  fileio, FILE_CONTENT, prepareFile, nextFileName,
   describe, it, expect,
 } from '../../Common';
 
@@ -36,16 +36,18 @@ describe('fileio_stream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
-      ss.write(new ArrayBuffer(4096), {
+      let length = 4096;
+      ss.write(new ArrayBuffer(length), {
         position: 1
       }).then(function (len) {
-        expect(len == (FILE_CONTENT.length - 1)).assertTrue();
+        expect(len == length).assertTrue();
         expect(fileio.unlinkSync(fpath) == null).assertTrue();
+        done();
       })
-      done();
     } catch (e) {
       console.log('fileio_test_stream_write_async_000 has failed for ' + e);
       expect(null).assertFail();
+      done();
     }
   });
 
@@ -59,20 +61,23 @@ describe('fileio_stream', function () {
    * @tc.require
    */
   it('fileio_test_stream_write_async_001', 0, async function (done) {
-    let fpath = nextFileName1('fileio_test_stream_write_async_001');
+    let fpath = await nextFileName('fileio_test_stream_write_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
-      ss.write(new ArrayBuffer(4096), { offset: 1, encoding: 'utf-8' }, function (err, bytesWritten) {
-        expect(bytesWritten == (FILE_CONTENT.length - 1)).assertTrue();
+      let length = 4096;
+      let offset = 1;
+      ss.write(new ArrayBuffer(length), { offset: offset, encoding: 'utf-8' }, function (err, bytesWritten) {
+        expect(bytesWritten == (length - offset)).assertTrue();
         expect(fileio.unlinkSync(fpath) == null).assertTrue();
+        done();
       });
-      done();
     } catch (e) {
       console.log('fileio_test_stream_write_async_001 has failed for ' + e);
       expect(null).assertFail();
+      done();
     }
   });
 });
