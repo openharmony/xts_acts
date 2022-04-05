@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,4 +13,6 @@
  * limitations under the License.
  */
 require('./battery_unit.test.js')
+require('./battery_common_event.test.js')
 require('./power_manager_running_lock.test.js')
+require('./system_battery.test.js')
