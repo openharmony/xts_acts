@@ -19,10 +19,9 @@ import fileIO from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoPlayerFuncPromiseTest', function () {
-    const AUDIO_SOURCE = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoplayer/H264_AAC.mp4';
+    const VIDEO_SOURCE = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoplayer/H264_AAC.mp4';
     const PLAY_TIME = 3000;
     const SEEK_TIME = 5000;
-    const SEEK_CLOSEST = 3;
     const WIDTH_VALUE = 720;
     const HEIGHT_VALUE = 480;
     const DURATION_TIME = 10034;
@@ -38,9 +37,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
     })
 
     beforeEach(async function() {
-        console.info('case flush surfaceID start');
         await toNewPage();
-        console.info('case flush surfaceID end');
         await msleep(1000).then(() => {
         }, failureCallback).catch(catchCallback);
         console.info('beforeEach case');
@@ -95,7 +92,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
 
     async function getFd() {
         fdPath = 'fd://';
-        await fileIO.open(AUDIO_SOURCE).then((fdNumber) => {
+        await fileIO.open(VIDEO_SOURCE).then((fdNumber) => {
             fdPath = fdPath + '' + fdNumber;
             fdValue = fdNumber;
             console.info('[fileIO]case open fd success,fdPath is ' + fdPath);
