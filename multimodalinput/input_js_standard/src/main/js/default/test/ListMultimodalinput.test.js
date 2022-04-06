@@ -15,5 +15,4 @@
 
 
 require('./InputDevice.test.js')
-require('./InputConsumer.test.js')
-require('./InputMonitor.test.js')
+
