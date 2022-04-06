@@ -2,9 +2,9 @@
     "description": "Configuration for PasteBoard js api Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "180000",
-        "package": "ohos.acts.miscservices.pasteboard",
-        "shell-timeout": "180000"
+        "test-timeout": "1800000",
+        "package": "com.open.harmony.pasteboard",
+        "shell-timeout": "1800000"
     },
     "kits": [
         {
