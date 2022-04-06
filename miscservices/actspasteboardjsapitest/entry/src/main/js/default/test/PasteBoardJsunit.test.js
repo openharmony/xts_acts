@@ -19,7 +19,8 @@ import pasteboard from '@ohos.pasteboard'
 
 describe('PasteBoardTest', function() {
     console.log('start################################start');
-    /**
+
+	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_0100
      * @tc.name      Adds PlainTextData
      * @tc.desc      Test pasteBoard API functionality.
@@ -58,8 +59,7 @@ describe('PasteBoardTest', function() {
 		var primaryText = pasteData1.getPrimaryText()
 		console.log('f_test1: primaryText = ' + primaryText);
 
-        console.log('f_test1: Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
-		console.log('f_test1: pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) = ' + pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN));
+        console.log('Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
 		console.log('f_test1: getPrimaryMimeType = ' + pasteData1.getPrimaryMimeType());
 
         console.log('f_test1: SUB_pasteBoard_function_JS_API_0100 end');
@@ -154,8 +154,9 @@ describe('PasteBoardTest', function() {
 		var primaryText = pasteData1.getPrimaryText()
 		console.log('f_test3: primaryText = ' + primaryText);
 
-        console.log('f_test3: Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
-		expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === true || pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === false).assertTrue();
+        console.log('Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
+        expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === true ||
+                pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === false).assertTrue();
 
         console.log('SUB_pasteBoard_function_JS_API_0300 end');
         done();
@@ -207,8 +208,9 @@ describe('PasteBoardTest', function() {
 		var primaryText = pasteData1.getPrimaryText()
 		console.log('f_test4: primaryText = ' + primaryText);
 
-        console.log('f_test4: Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
-		expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === true || pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === false).assertTrue();
+        console.log('Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
+        expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === true ||
+                pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === false).assertTrue();
 		expect(pasteData1.getPrimaryMimeType() == pasteboard.MIMETYPE_TEXT_PLAIN).assertTrue();
 
         console.log('f_test4: SUB_pasteBoard_function_JS_API_0400 end');
@@ -261,8 +263,9 @@ describe('PasteBoardTest', function() {
 		var primaryText = pasteData1.getPrimaryText()
 		console.log('f_test5: primaryText = ' + primaryText);
 
-        console.log('f_test5: Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
-		expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === true || pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === false).assertTrue();
+        console.log('Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
+        expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === true ||
+                pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN) === false).assertTrue();
 
         console.log('SUB_pasteBoard_function_JS_API_0500 end');
         done();
@@ -307,8 +310,9 @@ describe('PasteBoardTest', function() {
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
 
-        console.log('f_test6: Checks there is a MIMETYPE_TEXT_HTML MIME type of data' + pasteboard.MIMETYPE_TEXT_HTML);
-		expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === true || pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === false).assertTrue();
+        console.log('Checks there is a MIMETYPE_TEXT_HTML MIME type of data' + pasteboard.MIMETYPE_TEXT_HTML);
+        expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === true ||
+                pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === false).assertTrue();
 		console.log('f_test6: getPrimaryMimeType = ' + pasteData1.getPrimaryMimeType());
 
         console.log('SUB_pasteBoard_function_JS_API_0600 end');
@@ -397,8 +401,9 @@ describe('PasteBoardTest', function() {
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
 
-        console.log('f_test8: Checks there is a MIMETYPE_TEXT_HTML MIME type of data' + pasteboard.MIMETYPE_TEXT_HTML);
-        expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === true || pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === false).assertTrue();
+        console.log('Checks there is a MIMETYPE_TEXT_HTML MIME type of data' + pasteboard.MIMETYPE_TEXT_HTML);
+        expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === true ||
+                pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === false).assertTrue();
 
         console.log('SUB_pasteBoard_function_JS_API_0800 end');
         done();
@@ -443,8 +448,9 @@ describe('PasteBoardTest', function() {
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
 
-        console.log('f_test9: Checks there is a MIMETYPE_TEXT_URI MIME type of data' + pasteboard.MIMETYPE_TEXT_URI);
-		expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === true || pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === false).assertTrue();
+        console.log('Checks there is a MIMETYPE_TEXT_URI MIME type of data' + pasteboard.MIMETYPE_TEXT_URI);
+        expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === true ||
+                pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === false).assertTrue();
 
         console.log('SUB_pasteBoard_function_JS_API_0900 end');
         done();
@@ -532,8 +538,9 @@ describe('PasteBoardTest', function() {
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
 
-        console.log('f_test11: Checks there is a MIMETYPE_TEXT_URI MIME type of data' + pasteboard.MIMETYPE_TEXT_URI);
-        expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === true || pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === false).assertTrue();
+        console.log('Checks there is a MIMETYPE_TEXT_URI MIME type of data' + pasteboard.MIMETYPE_TEXT_URI);
+        expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === true ||
+                pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === false).assertTrue();
 
         console.log('SUB_pasteBoard_function_JS_API_1100 end');
         done();
@@ -581,8 +588,9 @@ describe('PasteBoardTest', function() {
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
 
-        console.log('f_test12: Checks there is a MIMETYPE_TEXT_WANT MIME type of data' + pasteboard.MIMETYPE_TEXT_WANT);
-		expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_WANT) === true || pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_WANT) === false).assertTrue();
+        console.log('Checks there is a MIMETYPE_TEXT_WANT MIME type of data' + pasteboard.MIMETYPE_TEXT_WANT);
+        expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_WANT) === true ||
+                pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_WANT) === false).assertTrue();
 
         console.log('SUB_pasteBoard_function_JS_API_1200 end');
         done();
@@ -1226,20 +1234,16 @@ describe('PasteBoardTest', function() {
 		{
 			textData = 'Hello World'
 			textData = textData + i
-			console.log('f_test24: addTextRecord = ' + textData)
 			pasteData.addTextRecord(textData)
 		}
 
-        console.log('f_test24: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData).then(() => {
-        console.log('f_test24: systemPasteboard.setPasteData promise');
 
         console.log('f_test24: Checks there is content in the pasteboard')
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test24: systemPasteboard.hasPasteData promise data = ' + data);
         expect(data === true || data === false).assertTrue();
 
-        console.log('f_test24: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test24: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
@@ -1251,11 +1255,9 @@ describe('PasteBoardTest', function() {
 			expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
 		}
 		
-		console.log('f_test24: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData1).then(() => {
         console.log('f_test24: systemPasteboard.setPasteData promise');
 		
-		console.log('f_test24: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test24: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData2 = data;
@@ -2978,7 +2980,6 @@ describe('PasteBoardTest', function() {
 
         var systemPasteboard = pasteboard.getSystemPasteboard();
         systemPasteboard.clear().then(() => {
-        console.log('f_test57: systemPasteboard.clear promise');
 
         var textData0 = 'Hello World0'
         console.log('f_test57: createPlainTextData = ' + textData0)
@@ -2989,7 +2990,6 @@ describe('PasteBoardTest', function() {
 		{
 			textData = 'Hello World'
 			textData = textData + i
-			console.log('f_test57: addTextRecord = ' + textData)
 			pasteData.addTextRecord(textData)
 		}
 		
@@ -2998,7 +2998,6 @@ describe('PasteBoardTest', function() {
 		{
 			htmlText = '<html><head></head><body>Hello World!</body></html>'
 			htmlText = htmlText + i
-			console.log('f_test57: addHtmlRecord = ' + htmlText)
 			pasteData.addHtmlRecord(htmlText)
 		}
 		
@@ -3007,29 +3006,19 @@ describe('PasteBoardTest', function() {
 		{
 			uriText = 'https://www.baidu.com/'
 			uriText = uriText + i
-			console.log('f_test57: addUriRecord = ' + uriText)
 			pasteData.addUriRecord(uriText)
 		}
 
-        console.log('f_test57: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData).then(() => {
-        console.log('f_test57: systemPasteboard.setPasteData promise');
-
-        console.log('f_test57: Checks there is content in the pasteboard')
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test57: systemPasteboard.hasPasteData promise data = ' + data);
         expect(data === true || data === false).assertTrue();
 
-        console.log('f_test57: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test57: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 15).assertTrue();
-		
-		console.log('f_test57: Clears the pasteBoard')
 		systemPasteboard.clear()
-		
-		console.log('f_test57: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test57: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData2 = data;
