@@ -62,7 +62,7 @@ describe('MultimodalInputConsumer_test', function () {
       KeyEvent: keyUp
     });
     retUp == 0 ? console.log(`${label}:onClickInjectKey success`) : console.log(`${label}:onClickInjectKey failed`);
-
+    expect(retUp == 0).assertTrue();
     setTimeout(() => {
       inputConsumer.off("key", params, handleCallback);
     }, 3000);
