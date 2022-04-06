@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 // @ts-nocheck
-import process from '@ohos.process';
 import inputConsumer from "@ohos.multimodalInput.inputConsumer";
 import inputEventClient from "@ohos.multimodalInput.inputEventClient";
 import {
@@ -28,7 +27,6 @@ import {
 
 describe('MultimodalInputConsumer_test', function () {
   it('inputConsumer::inputConsumer_test01', 0, function () {
-    let label = '02800/MultimodalinputJs';
     let keyCode = 2018;
     let params = {
       preKeys: [],
@@ -52,7 +50,7 @@ describe('MultimodalInputConsumer_test', function () {
     let ret = inputEventClient.injectEvent({
       KeyEvent: keyDown
     });
-    ret == 0 ? console.log(`${label}:onClickInjectKey success`) : console.log(`${label}:onClickInjectKey failed`);
+    expect(ret == 0).assertTrue();
     let keyUp = {
       isPressed: false,
       keyCode: keyCode,
@@ -61,7 +59,6 @@ describe('MultimodalInputConsumer_test', function () {
     let retUp = inputEventClient.injectEvent({
       KeyEvent: keyUp
     });
-    retUp == 0 ? console.log(`${label}:onClickInjectKey success`) : console.log(`${label}:onClickInjectKey failed`);
     expect(retUp == 0).assertTrue();
     setTimeout(() => {
       inputConsumer.off("key", params, handleCallback);
