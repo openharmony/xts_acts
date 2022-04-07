@@ -1,19 +1,20 @@
 {
   "app": {
-    "bundleName": "ohos.acts.miscservices.pasteboard",
-    "vendor": "acts",
+    "bundleName": "com.open.harmony.pasteboard",
+    "vendor": "open",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
     },
     "apiVersion": {
       "compatible": 4,
+      "releaseType": "Beta1",
       "target": 5
     }
   },
   "deviceConfig": {},
   "module": {
-    "package": "ohos.acts.miscservices.pasteboard",
+    "package": "com.open.harmony.pasteboard",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -25,7 +26,6 @@
     },
     "abilities": [
       {
-        "visible": true,
         "skills": [
           {
             "entities": [
@@ -36,12 +36,13 @@
             ]
           }
         ],
-        "name": "ohos.acts.miscservices.pasteboard.MainAbility",
+        "name": "com.open.harmony.pasteboard.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "visible": true
       }
     ],
     "js": [
