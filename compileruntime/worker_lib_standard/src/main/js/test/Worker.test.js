@@ -40,7 +40,7 @@ describe('workerTest', function () {
         let isTerminate = false
 
         ss.onexit = function () {
-			isTerminate = true
+            isTerminate = true
         }
 
         expect(ss != null).assertTrue()
@@ -111,7 +111,7 @@ describe('workerTest', function () {
         let res = undefined
         let flag = false
         let isTerminate = false
-		
+
         ss.onexit = function () {
             isTerminate = true
         }

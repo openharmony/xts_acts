@@ -17,6 +17,7 @@ import worker from "@ohos.worker"
 const parentPort = worker.parentPort;
 
 var ss = undefined;
+var flag = false;
 
 parentPort.onmessage = function(e) {
   let data = e.data;
