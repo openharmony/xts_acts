@@ -14,12 +14,12 @@
  */
 
 import resourceManager from '@ohos.resourceManager';
+import {expect} from 'deccjsunit/index'
 
 export async function getFileDescriptor(fileName) {
-    let fileDescriptor;
+    let fileDescriptor = undefined;
     await resourceManager.getResourceManager().then(async (mgr) => {
         await mgr.getRawFileDescriptor(fileName).then(value => {
-            console.log('case getRawFileDescriptor fd: ' + value.fd);
             fileDescriptor = {fd: value.fd, offset: value.offset, length: value.length};
         }).catch(error => {
             console.log('case getRawFileDescriptor err: ' + error);
@@ -36,4 +36,12 @@ export async function closeFileDescriptor(fileName) {
             console.log('case closeRawFileDescriptor err: ' + error);
         });
     });
+}
+
+export function isFileOpen(fileDescriptor, done) {
+    if (fileDescriptor == undefined) {
+        expect().assertFail();
+        console.info('case error fileDescriptor undefined, open file fail');
+        done();
+    }
 }

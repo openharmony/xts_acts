@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 require('./VideoPlayerFuncCallbackTest.test.js')
 require('./VideoPlayerFuncPromiseTest.test.js')
 require('./VideoPlayerAPICallbackTest.test.js')
