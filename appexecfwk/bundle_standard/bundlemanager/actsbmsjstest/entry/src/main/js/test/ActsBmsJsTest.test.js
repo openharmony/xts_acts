@@ -347,6 +347,7 @@ describe('ActsBmsJsTest', function () {
      * @tc.desc Test hasInstalled interface.
      */
     it('hasInstalled_0400', 0, async function (done) {
+        let flag = false;
         pkg.hasInstalled({
             bundleName: NUM_TWO,
             success: function success(data) {
@@ -355,11 +356,15 @@ describe('ActsBmsJsTest', function () {
             },
             fail: function fail(data, code) {
                 console.info('hasInstalled fail function in');
+                expect(flag).assertFalse();
+                flag = true;
                 expect(data).assertEqual(ERR_MERSSAGE);
                 expect(code).assertEqual(ERR_CODE);
             },
             complete: function complete() {
                 console.info('hasInstalled complete function in');
+                expect(flag).assertTrue();
+                flag = true;
             }
         });
         done();
