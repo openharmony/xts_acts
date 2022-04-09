@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-
+require('./AudioDecoderTestBase.test.js')
 require('./AudioDecoderFuncPromiseTest.test.js')
 require('./AudioDecoderFuncCallbackTest.test.js')
 require('./AudioDecoderFormatPromiseTest.test.js')

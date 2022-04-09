@@ -49,6 +49,28 @@
           "tv",
           "wearable"
       ],
+      "reqPermissions": [
+        {
+          "name" : "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+          "reason" : "use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
+        },
+        {
+          "name" : "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS",
+          "reason" : "use ohos.permission.REVOKE_SENSITIVE_PERMISSIONS"
+        },
+        {
+          "name" : "ohos.permission.MEDIA_LOCATION",
+          "reason" : "use ohos.permission.MEDIA_LOCATION"
+        },
+        {
+          "name" : "ohos.permission.READ_MEDIA",
+          "reason" : "use ohos.permission.READ_MEDIA"
+        },
+        {
+          "name" : "ohos.permission.WRITE_MEDIA",
+          "reason" : "use ohos.permission.WRITE_MEDIA"
+        }
+      ],
       "mainAbility": "ohos.acts.multimedia.audio.audioencoder.MainAbility",
       "distro": {
           "moduleType": "entry",

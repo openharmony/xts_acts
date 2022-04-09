@@ -15,14 +15,18 @@
 
 import media from '@ohos.multimedia.media'
 import mediademo from '@ohos.multimedia.mediademo'
-import Fileio from '@ohos.fileio'
+import fileio from '@ohos.fileio'
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
+import bundle from '@ohos.bundle'
+import featureAbility from '@ohos.ability.featureAbility'
+import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('videoEncoderSoftwareMultiInstances', function () {
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const ROOT = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/';
-    const BASIC_PATH = ROOT + 'video_multiinstances_';
+    const ROOT = '/data/app/el1/bundle/results/';
+    const BASIC_PATH = 'video_multiinstances_';
     let videoEncodeProcessor;
     let mediaTest;
     let surfaceID = '';
@@ -34,9 +38,16 @@ describe('videoEncoderSoftwareMultiInstances', function () {
     let flushAtEOS = false;
     let sawOutputEOS = false;
     let needGetMediaDes = false;
-
-    beforeAll(function() {
-        console.info('beforeAll case');
+    let fd_write;
+    let fileAsset_write;
+    const context = featureAbility.getContext();
+    const mediaLibraryTest = mediaLibrary.getMediaLibrary(context);
+    let fileKeyObj = mediaLibrary.FileKey;
+    
+    beforeAll(async function() {
+        console.info('beforeAll case 1');
+        await applyPermission();
+        console.info('beforeAll case after get permission');
     })
 
     beforeEach(function() {
@@ -56,6 +67,7 @@ describe('videoEncoderSoftwareMultiInstances', function () {
 
     afterEach(async function() {
         console.info('afterEach case');
+        await closeFdWrite();
     })
 
     afterAll(function() {
@@ -83,17 +95,6 @@ describe('videoEncoderSoftwareMultiInstances', function () {
         needGetMediaDes = false;
     }
 
-    function writeFile(path, buf, len){
-        try{
-            let writestream = Fileio.createStreamSync(path, "ab+");
-            let num = writestream.writeSync(buf, {length:len});
-            writestream.flushSync();
-            writestream.closeSync();
-        } catch(e) {
-            console.info(e)
-        }
-    }
-
     function sleep(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
     } 
@@ -102,19 +103,92 @@ describe('videoEncoderSoftwareMultiInstances', function () {
         for(let t = Date.now(); Date.now() - t <= time;);
     }
 
-    async function dequeueOutputs(path, nextStep) {
+    async function applyPermission() {
+        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.video.videoencoder', 0, 100);
+        let atManager = abilityAccessCtrl.createAtManager();
+        if (atManager != null) {
+            let tokenID = appInfo.accessTokenId;
+            console.info('[permission] case accessTokenID is ' + tokenID);
+            let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
+            let permissionName2 = 'ohos.permission.READ_MEDIA';
+            let permissionName3 = 'ohos.permission.WRITE_MEDIA';
+            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
+                console.info('[permission] case grantUserGrantedPermission success :' + result);
+            }).catch((err) => {
+                console.info('[permission] case grantUserGrantedPermission failed :' + err);
+            });
+            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
+                console.info('[permission] case grantUserGrantedPermission success :' + result);
+            }).catch((err) => {
+                console.info('[permission] case grantUserGrantedPermission failed :' + err);
+            });
+            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
+                console.info('[permission] case grantUserGrantedPermission success :' + result);
+            }).catch((err) => {
+                console.info('[permission] case grantUserGrantedPermission failed :' + err);
+            });
+        } else {
+            console.info('[permission] case apply permission failed, createAtManager failed');
+        }
+    }
+
+    async function getFdWrite(pathName) {
+        console.info('[mediaLibrary] case start getFdWrite');
+        console.info('[mediaLibrary] case getFdWrite pathName is ' + pathName);
+        let mediaType = mediaLibrary.MediaType.VIDEO;
+        console.info('[mediaLibrary] case mediaType is ' + mediaType);
+        let publicPath = await mediaLibraryTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
+        console.info('[mediaLibrary] case getFdWrite publicPath is ' + publicPath);
+        let dataUri = await mediaLibraryTest.createAsset(mediaType, pathName, publicPath);
+        if (dataUri != undefined) {
+            let args = dataUri.id.toString();
+            let fetchOp = {
+                selections : fileKeyObj.ID + "=?",
+                selectionArgs : [args],
+            }
+            let fetchWriteFileResult = await mediaLibraryTest.getFileAssets(fetchOp);
+            console.info('[mediaLibrary] case getFdWrite getFileAssets() success');
+            fileAsset_write = await fetchWriteFileResult.getAllObject();
+            console.info('[mediaLibrary] case getFdWrite getAllObject() success');
+            fd_write = await fileAsset_write[0].open('Rw');
+            console.info('[mediaLibrary] case getFdWrite fd_write is ' + fd_write);
+        }
+    }
+
+    async function closeFdWrite() {
+        if (fileAsset_write != null) {
+            await fileAsset_write[0].close(fd_write).then(() => {
+                console.info('[mediaLibrary] case close fd_write success, fd is ' + fd_write);
+            }).catch((err) => {
+                console.info('[mediaLibrary] case close fd_write failed');
+            });
+        } else {
+            console.info('[mediaLibrary] case fileAsset_write is null');
+        }
+    }
+
+    function writeFile(buf, len) {
+        try{
+            let res = fileio.write(fd_write, buf, {length: len});
+            console.info('case fileio.write buffer success');
+        } catch(e) {
+            console.info('case fileio.write buffer error is ' + e);
+        }
+    }
+
+    async function dequeueOutputs(nextStep) {
         while (outputQueue.length > 0) {
             let outputObject = outputQueue.shift();
             outputCnt += 1;
             if (outputObject.flags == 1) {
                 console.info("case last frame");
                 mediaTest.closeStream(surfaceID);
-                toRelease();
+                await toRelease();
                 nextStep();
                 return;
             } else {
                 console.info('not last frame, write data to file');
-                writeFile(path, outputObject.data, outputObject.length);
+                writeFile(outputObject.data, outputObject.length);
                 console.info("write to file success");
                 videoEncodeProcessor.freeOutputBuffer(outputObject).then(() => {
                     console.info('release output success');
@@ -123,7 +197,7 @@ describe('videoEncoderSoftwareMultiInstances', function () {
         } 
     }
 
-    function setCallback(path, nextStep) {
+    function setCallback(nextStep) {
         console.info('case callback');
         videoEncodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('outputBufferAvailable');
@@ -136,7 +210,7 @@ describe('videoEncoderSoftwareMultiInstances', function () {
                 }, failCallback).catch(failCatch);
             }
             outputQueue.push(outBuffer);
-            dequeueOutputs(path, nextStep);
+            dequeueOutputs(nextStep);
         });
 
         videoEncodeProcessor.on('error',(err) => {
@@ -291,6 +365,7 @@ describe('videoEncoderSoftwareMultiInstances', function () {
             toCreateStream();
             toSetStreamParam(width, height, framerate, frameTotal);
             await toConfigure(mediaDescription);
+            await getFdWrite(savepath);
             setCallback(savepath, function(){eventEmitter.emit('nextStep')});
             await toGetInputSurface();
             await toPrepare();
