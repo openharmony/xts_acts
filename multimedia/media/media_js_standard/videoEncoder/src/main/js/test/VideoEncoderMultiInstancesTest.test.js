@@ -197,7 +197,7 @@ describe('videoEncoderSoftwareMultiInstances', function () {
         } 
     }
 
-    function setCallback(nextStep) {
+    function setCallback(path, nextStep) {
         console.info('case callback');
         videoEncodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('outputBufferAvailable');
@@ -324,7 +324,6 @@ describe('videoEncoderSoftwareMultiInstances', function () {
         await videoEncodeProcessor.release().then(() => {
             console.info("case release success"); 
         }, failCallback).catch(failCatch);
-        videoEncodeProcessor = null;
     }
 
 
