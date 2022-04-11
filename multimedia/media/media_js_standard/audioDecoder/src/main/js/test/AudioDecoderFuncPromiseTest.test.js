@@ -903,12 +903,12 @@ describe('AudioDecoderFuncPromise', function () {
         await audioDecodeProcessor.configure(mediaDescription2).then(() => {
             console.info("case configure 2 success");
             resetParam();
-            readFile(AUDIOPATH2);
         }, failCallback).catch(failCatch);
         readpath = AUDIOPATH2;
         savepath = 'audioDecode_function_promise_06_2.pcm';
         await getFdWrite(savepath);
         await getFdRead(readpath, done);
+        readFile(AUDIOPATH2);
         workdoneAtEOS = true;
         ES = [0, 239, 302, 309, 330, 474, 684, 699, 683, 674, 647, 649, 638, 644, 640,
             639, 650, 702, 713, 718, 707, 707, 683, 670, 674, 699, 654, 650, 715, 770,
@@ -993,12 +993,12 @@ describe('AudioDecoderFuncPromise', function () {
         await audioDecodeProcessor.configure(mediaDescription2).then(() => {
             console.info("case configure 2 success");
             resetParam();
-            readFile(AUDIOPATH3);
         }, failCallback).catch(failCatch);
+        readpath = AUDIOPATH3;
         savepath = 'audioDecode_function_promise_07_2.pcm';
         await getFdWrite(savepath);
         await getFdRead(readpath, done);
-        readpath = AUDIOPATH3;
+        readFile(AUDIOPATH3);
         workdoneAtEOS = true;
         ES = [0, 2116, 2093, 2886, 2859, 2798, 2778, 2752, 2752, 2754, 2720, 2898, 2829,
             2806, 2796, 2786, 2774, 2758, 2741, 3489, 3342, 3272, 3167, 3048, 3060, 2919,
