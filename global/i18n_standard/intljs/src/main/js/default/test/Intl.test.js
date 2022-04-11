@@ -1096,19 +1096,6 @@ describe('intlTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2250
-    * @tc.name format the number with unitUsage
-    * @tc.desc check the number with unitUsage
-    */
-    it('formatNumber_test_2250', 0, function () {
-        let numfmt = new Intl.NumberFormat('zh-CN', { style: 'unit', unit: 'meter',
-            unitDisplay: 'long', unitUsage: 'length-road' });
-        console.log('formatNumber_test_2250 ' + numfmt.format(123456.789));
-        expect(numfmt.format(123456.789)).assertEqual('123,456.789米');
-        expect(numfmt.resolvedOptions().unitUsage).assertEqual('length-road');
-    })
-
-    /* *
     * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2100
     * @tc.name format the number with signDisplay
     * @tc.desc check the number with signDisplay
@@ -1142,6 +1129,71 @@ describe('intlTest', function () {
         expect(numfmt.resolvedOptions().style).assertEqual('unit');
         expect(numfmt.resolvedOptions().unit).assertEqual('meter');
         expect(numfmt.resolvedOptions().unitDisplay).assertEqual('long');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2250
+    * @tc.name format the number with unitUsage
+    * @tc.desc check the number with unitUsage
+    */
+    it('formatNumber_test_2250', 0, function () {
+        let numfmt = new Intl.NumberFormat('zh-CN', { style: 'unit', unit: 'meter',
+            unitDisplay: 'long', unitUsage: 'length-road' });
+        console.log('formatNumber_test_2250 ' + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123,456.789米');
+        expect(numfmt.resolvedOptions().unitUsage).assertEqual('length-road');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2260
+    * @tc.name format the number with narrow value in unitUsage param
+    * @tc.desc check the number with unitUsage
+    */
+    it('formatNumber_test_2260', 0, function () {
+        let numfmt = new Intl.NumberFormat('zh-CN', { style: 'unit', unit: 'meter',
+            unitDisplay: 'narrow', unitUsage: 'length-road' });
+        console.log('formatNumber_test_2260 ' + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123,456.789米');
+        expect(numfmt.resolvedOptions().unitUsage).assertEqual('length-road');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2270
+    * @tc.name format the number with short value in unitUsage param
+    * @tc.desc check the number with unitUsage
+    */
+    it('formatNumber_test_2270', 0, function () {
+        let numfmt = new Intl.NumberFormat('zh-CN', { style: 'unit', unit: 'meter',
+            unitDisplay: 'short', unitUsage: 'length-road' });
+        console.log('formatNumber_test_2270 ' + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('123,456.789米');
+        expect(numfmt.resolvedOptions().unitUsage).assertEqual('length-road');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2280
+    * @tc.name format the number with narrow value in unitUsage param
+    * @tc.desc check the number with unitUsage
+    */
+    it('formatNumber_test_2280', 0, function () {
+        let numfmt = new Intl.NumberFormat('en-US', { style: 'unit', unit: 'meter',
+            unitDisplay: 'narrow', unitUsage: 'length-road' });
+        console.log('formatNumber_test_2280 ' + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('76.712mi');
+        expect(numfmt.resolvedOptions().unitUsage).assertEqual('length-road');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_INTL_JS_NUMBER_2290
+    * @tc.name format the number with short value in unitUsage param
+    * @tc.desc check the number with unitUsage
+    */
+    it('formatNumber_test_2290', 0, function () {
+        let numfmt = new Intl.NumberFormat('en-US', { style: 'unit', unit: 'meter',
+            unitDisplay: 'short', unitUsage: 'length-road' });
+        console.log('formatNumber_test_2290 ' + numfmt.format(123456.789));
+        expect(numfmt.format(123456.789)).assertEqual('76.712 mi');
+        expect(numfmt.resolvedOptions().unitUsage).assertEqual('length-road');
     })
 
     /* *
