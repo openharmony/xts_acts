@@ -17,12 +17,12 @@
         {
           "type": "ShellKit",
           "run-command": [
-		    "mkdir -p /data/app/el1/bundle/public/ohos.acts.multimedia.video.videoplayer/ohos.acts.multimedia.video.videoplayer/assets/entry/resources/rawfile"
+            "mkdir -p /data/app/el1/bundle/public/ohos.acts.multimedia.video.videoplayer/ohos.acts.multimedia.video.videoplayer/assets/entry/resources/rawfile"
           ],
           "teardown-command":[
           ]
         },
-		{
+        {
           "type": "PushKit",
           "pre-push": [
           ],

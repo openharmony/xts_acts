@@ -13,26 +13,25 @@
  * limitations under the License.
  */
 
-import resourceManager from '@ohos.resourceManager';
+import router from '@system.router'
 
-export async function getFileDescriptor(fileName) {
-    let fileDescriptor;
-    await resourceManager.getResourceManager().then(async (mgr) => {
-        await mgr.getRawFileDescriptor(fileName).then(value => {
-            fileDescriptor = {fd: value.fd, offset: value.offset, length: value.length};
-        }).catch(error => {
-            console.log('case getRawFileDescriptor err: ' + error);
-        });
-    });
-    return fileDescriptor;
+export async function toNewPage(page) {
+    let path = '';
+    if (page == 0) {
+        path = 'pages/surfaceTest/surfaceTest';
+    } else {
+        path = 'pages/surfaceTest/surfaceTest2';
+    }
+    let options = {
+        uri: path,
+    }
+    try {
+        await router.push(options);
+    } catch {
+        console.info('case route failed');
+    }
 }
 
-export async function closeFileDescriptor(fileName) {
-    await resourceManager.getResourceManager().then(async (mgr) => {
-        await mgr.closeRawFileDescriptor(fileName).then(value => {
-            console.log('case closeRawFileDescriptor ' + value);
-        }).catch(error => {
-            console.log('case closeRawFileDescriptor err: ' + error);
-        });
-    });
+export async function clearRouter() {
+    await router.clear();
 }

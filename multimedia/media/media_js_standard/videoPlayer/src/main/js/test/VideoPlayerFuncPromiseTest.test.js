@@ -14,12 +14,12 @@
  */
 
 import media from '@ohos.multimedia.media'
-import router from '@system.router'
-import fileIO from '@ohos.fileio'
+import {toNewPage, clearRouter} from './VideoPlayerTestBase.js';
+import {getFileDescriptor, closeFileDescriptor, isFileOpen} from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoPlayerFuncPromiseTest', function () {
-    const VIDEO_SOURCE = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoplayer/H264_AAC.mp4';
+    const VIDEO_SOURCE = 'H264_AAC.mp4';
     const PLAY_TIME = 3000;
     const SEEK_TIME = 5000;
     const WIDTH_VALUE = 720;
@@ -29,27 +29,33 @@ describe('VideoPlayerFuncPromiseTest', function () {
     const NEXT_FRAME_TIME = 8333;
     const PREV_FRAME_TIME = 4166;
     let surfaceID = '';
-    let fdPath;
-    let fdValue;
-    let temp = 0;
-    beforeAll(function() {
+    let fdHead = 'fd://';
+    let fileDescriptor = undefined;
+    let page = 0;
+
+    beforeAll(async function() {
         console.info('beforeAll case');
+        await getFileDescriptor(VIDEO_SOURCE).then((res) => {
+            fileDescriptor = res;
+        });
     })
 
     beforeEach(async function() {
-        await toNewPage();
-        await msleep(1000).then(() => {
-        }, failureCallback).catch(catchCallback);
+        await toNewPage(page);
+        page = (page + 1) % 2;
+        await msleep(1000).then(() => {}, failureCallback).catch(catchCallback);
+        surfaceID = globalThis.value;
+        console.info('case new surfaceID is ' + surfaceID);
         console.info('beforeEach case');
     })
 
     afterEach(async function() {
-        await router.clear();
+        await clearRouter();
         console.info('afterEach case');
     })
 
     afterAll(async function() {
-        await fileIO.close(fdValue);
+        await closeFileDescriptor(VIDEO_SOURCE);
         console.info('afterAll case');
     })
 
@@ -69,38 +75,6 @@ describe('VideoPlayerFuncPromiseTest', function () {
     function catchCallback(error) {
         expect().assertFail();
         console.info(`case error called,errMessage is ${error.message}`);
-    }
-
-    async function toNewPage() {
-        let path = '';
-        if (temp == 0) {
-            path = 'pages/surfaceTest/surfaceTest';
-            temp = 1;
-        } else {
-            path = 'pages/surfaceTest/surfaceTest2';
-            temp = 0;
-        }
-        let options = {
-            uri: path,
-        }
-        try {
-            let result = await router.push(options);
-        } catch {
-            console.info('case route failed');
-        }
-    }
-
-    async function getFd() {
-        fdPath = 'fd://';
-        await fileIO.open(VIDEO_SOURCE).then((fdNumber) => {
-            fdPath = fdPath + '' + fdNumber;
-            fdValue = fdNumber;
-            console.info('[fileIO]case open fd success,fdPath is ' + fdPath);
-        }, (err) => {
-            console.info('[fileIO]case open fd failed');
-        }).catch((err) => {
-            console.info('[fileIO]case catch open fd failed');
-        });
     }
 
     function printfDescription(obj) { 
@@ -147,9 +121,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_PLAYER_MULTIPLE_0100', 0, async function (done) {
-        await getFd();
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let testVideoPlayer1 = null;
         let testVideoPlayer2 = null;
         await media.createVideoPlayer().then((video) => {
@@ -162,7 +134,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        testVideoPlayer1.url = fdPath;
+        testVideoPlayer1.url = fdHead + fileDescriptor.fd;
         await testVideoPlayer1.setDisplaySurface(surfaceID).then(() => {
             console.info('case setDisplaySurface success');
             expect(testVideoPlayer1.state).assertEqual('idle');
@@ -200,7 +172,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        testVideoPlayer2.url = fdPath;
+        testVideoPlayer2.url = fdHead + fileDescriptor.fd;
         await testVideoPlayer2.setDisplaySurface(surfaceID).then(() => {
             console.info('case setDisplaySurface success');
             expect(testVideoPlayer2.state).assertEqual('idle');
@@ -239,8 +211,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0100', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -253,7 +224,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             console.info('case setDisplaySurface success');
             expect(videoPlayer.state).assertEqual('idle');
@@ -291,8 +262,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0200', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -304,7 +274,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             console.info('case setDisplaySurface success');
             expect(videoPlayer.state).assertEqual('idle');
@@ -347,8 +317,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0300', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -360,7 +329,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -412,8 +381,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0400', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -425,7 +393,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -468,8 +436,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0500', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -481,7 +448,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -524,8 +491,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0600', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -537,7 +503,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -581,8 +547,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0700', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -594,7 +559,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -668,8 +633,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0800', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -681,7 +645,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -724,8 +688,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_0900', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -737,7 +700,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -785,8 +748,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1000', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let arrayDescription = null;
         await media.createVideoPlayer().then((video) => {
@@ -799,7 +761,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -839,8 +801,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1100', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -852,7 +813,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -898,8 +859,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1200', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -911,7 +871,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -959,8 +919,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1300', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -972,7 +931,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1020,8 +979,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1400', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -1033,7 +991,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1091,8 +1049,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1500', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -1104,7 +1061,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1168,8 +1125,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1600', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -1181,7 +1137,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1238,8 +1194,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1700', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -1251,7 +1206,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1309,8 +1264,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1800', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -1322,7 +1276,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1370,8 +1324,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_1900', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -1383,7 +1336,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1415,7 +1368,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case reset called!!');
         }, failureCallback).catch(catchCallback);
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.prepare().then(() => {
             expect(videoPlayer.state).assertEqual('prepared');
             expect(videoPlayer.duration).assertEqual(DURATION_TIME);
@@ -1448,8 +1401,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2000', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -1461,7 +1413,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1515,8 +1467,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2100', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -1528,7 +1479,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1588,8 +1539,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2200', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -1610,7 +1560,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }, failureCallback).catch(catchCallback);
         });
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1654,8 +1604,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2300', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -1676,7 +1625,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }, failureCallback).catch(catchCallback);
         });
         
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1726,8 +1675,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2400', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -1748,7 +1696,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }, failureCallback).catch(catchCallback);
         });
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1795,8 +1743,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2500', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -1817,7 +1764,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }, failureCallback).catch(catchCallback);
         });
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1862,8 +1809,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2600', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -1875,7 +1821,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
@@ -1920,8 +1866,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_2700', 0, async function (done) {
-        surfaceID = globalThis.value;
-        console.info('case new surfaceID is ' + surfaceID);
+        isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
             if (typeof (video) != 'undefined') {
@@ -1933,7 +1878,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             }
         }, failureCallback).catch(catchCallback);
 
-        videoPlayer.url = fdPath;
+        videoPlayer.url = fdHead + fileDescriptor.fd;
         await videoPlayer.setDisplaySurface(surfaceID).then(() => {
             expect(videoPlayer.state).assertEqual('idle');
             console.info('case setDisplaySurface success');
