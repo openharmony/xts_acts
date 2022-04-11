@@ -178,7 +178,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
 
     function writeFile(buf, len) {
         try{
-            let res = fileio.write(fdWrite, buf, {length: len});
+            let res = fileio.writeSync(fdWrite, buf, {length: len});
             console.info('case fileio.write buffer success');
         } catch(e) {
             console.info('case fileio.write buffer error is ' + e);

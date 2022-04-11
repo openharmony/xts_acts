@@ -211,7 +211,7 @@ describe('AudioEncoderFuncCallback', function () {
         try{
             let head = new ArrayBuffer(7);
             addADTStoPacket(head, len);
-            let res = fileio.write(fdWrite, head, {length: 7});
+            let res = fileio.writeSync(fdWrite, head, {length: 7});
             console.info('case fileio.write head success');
         } catch(e) {
             console.info('case fileio.write head error is ' + e);
@@ -220,7 +220,7 @@ describe('AudioEncoderFuncCallback', function () {
 
     function writeFile(path, buf, len) {
         try{
-            let res = fileio.write(fdWrite, buf, {length: len});
+            let res = fileio.writeSync(fdWrite, buf, {length: len});
             console.info('case fileio.write buffer success');
         } catch(e) {
             console.info('case fileio.write buffer error is ' + e);
