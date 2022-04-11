@@ -130,6 +130,7 @@ describe('AudioEncoderFuncPromise', function () {
                 done();
             } else {
                 fdRead = res.fd;
+                console.info("case pathName is: " + pathName);
                 console.info("case fdRead is: " + fdRead);
             }
         })
@@ -758,12 +759,12 @@ describe('AudioEncoderFuncPromise', function () {
         await audioEncodeProcessor.configure(mediaDescription2).then(() => {
             console.info("configure 2 success");
             resetParam();
-            readFile(AUDIOPATH);
         }, failCallback).catch(failCatch);
         readpath = AUDIOPATH;
         savepath = 'audioEncode_function_promise_06_2.aac';
         await getFdWrite(savepath);
         await getFdRead(readpath, done);
+        readFile(AUDIOPATH);
         workdoneAtEOS = true;
         setCallback(savepath, done);
         await audioEncodeProcessor.prepare().then(() => {

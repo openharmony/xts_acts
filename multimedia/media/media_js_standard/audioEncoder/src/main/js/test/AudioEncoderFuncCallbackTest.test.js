@@ -120,6 +120,7 @@ describe('AudioEncoderFuncCallback', function () {
                 done();
             } else {
                 fdRead = res.fd;
+                console.info("case pathName is: " + pathName);
                 console.info("case fdRead is: " + fdRead);
             }
         })
@@ -908,11 +909,11 @@ describe('AudioEncoderFuncCallback', function () {
                     expect(err).assertUndefined();
                     console.info(`case configure 2`);
                     resetParam();
-                    readFile(AUDIOPATH)
                     readpath = AUDIOPATH;
                     savepath = 'audioEncode_function_callback_06_2.aac';
                     await getFdWrite(savepath);
                     await getFdRead(readpath, done);
+                    readFile(AUDIOPATH);
                     workdoneAtEOS = true;
                     hasreconfigured = true;
                     eventEmitter.emit('prepare');

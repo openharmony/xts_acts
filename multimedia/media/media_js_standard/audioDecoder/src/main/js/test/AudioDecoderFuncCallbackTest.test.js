@@ -301,6 +301,7 @@ describe('AudioDecoderFuncCallback', function () {
                 done();
             } else {
                 fdRead = res.fd;
+                console.info("case pathName is : " + pathName);
                 console.info("case fdRead is: " + fdRead);
             }
         })
@@ -1192,11 +1193,11 @@ describe('AudioDecoderFuncCallback', function () {
                 expect(err).assertUndefined();
                 console.info(`case configure 2`);
                 resetParam();
-                readFile(AUDIOPATH3)
                 readpath = AUDIOPATH3;
                 savepath = 'audioDecode_function_callback_07_2.pcm';
                 await getFdWrite(savepath);
                 await getFdRead(readpath, done);
+                readFile(AUDIOPATH3)
                 workdoneAtEOS = true;
                 ES = [0, 2116, 2093, 2886, 2859, 2798, 2778, 2752, 2752, 2754, 2720, 2898, 2829,
                     2806, 2796, 2786, 2774, 2758, 2741, 3489, 3342, 3272, 3167, 3048, 3060, 2919,
