@@ -631,7 +631,7 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             expect(data.status).assertEqual(status);
             expect(data.statusMessage).assertEqual(statusMessage);
             console.info('===install uninstall result===' + JSON.stringify(data.statusMessage));
-        };
+        }
     }
 
     async function queryInfo(bundleName, assertFlag){
@@ -653,6 +653,6 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
                 console.info("getBundleInfo result1" + JSON.stringify(err));
                 expect(err).assertEqual(1);
             });
-        };
+        }
     }
 })

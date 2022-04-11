@@ -220,8 +220,8 @@ describe('ActsBundleManagerUninstall', function () {
                 console.info("getBundleInfo result1"+JSON.stringify(err));
                 expect(err).assertEqual(1);
             });
-        };
-    };
+        }
+    }
 
     function checkInstallResult(err, result) {
         console.info("install uninstall result" + JSON.stringify(result));
