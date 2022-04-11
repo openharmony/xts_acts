@@ -1625,6 +1625,22 @@ describe('I18nTest', function () {
                                         'en-US', 
                                         'medium');
         console.log('i18n_test_9200 ' + value);
+        expect(value).assertEqual('236.588 L');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_9250
+    * @tc.name test unitConvert interface from cup to liter unit with narrow style
+    * @tc.desc get the unitConvert value
+    */
+     it('i18n_test_9250', 0, function () {
+        console.log('i18n_test_9250 ' + 'start');
+        let value = I18n.Util.unitConvert({unit: 'cup', measureSystem: 'US'},
+            {unit: 'liter', measureSystem: 'SI'},
+            1000,
+            'en-US',
+            'narrow');
+        console.log('i18n_test_9250 ' + value);
         expect(value).assertEqual('236.588L');
     })
 
