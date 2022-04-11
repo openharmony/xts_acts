@@ -75,7 +75,7 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
         574, 126, 1242, 188, 130, 119, 1450, 187, 137, 141, 1116, 124, 1848, 138, 122, 1605, 186, 127, 140,
         1798, 170, 124, 121, 1666, 157, 128, 130, 1678, 135, 118, 1804, 169, 135, 125, 1837, 168, 124, 124];
     let ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
-    let fd_Read;
+    let fdRead;
 
     beforeAll(function() {
         console.info('beforeAll case');
@@ -151,7 +151,7 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
         console.info('case read file start execution');
         try{
             console.info('case filepath: ' + path);
-            readStreamSync = fileio.fdopenStreamSync(fd_Read, 'rb');
+            readStreamSync = fileio.fdopenStreamSync(fdRead, 'rb');
         }catch(e) {
             console.info(e);
         }
@@ -431,8 +431,8 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
                 console.info('case error fileDescriptor undefined, open file fail');
                 done();
             } else {
-                fd_Read = res.fd;
-                console.info("case fd_Read is: " + fd_Read);
+                fdRead = res.fd;
+                console.info("case fdRead is: " + fdRead);
             }
         })
         media.createVideoDecoderByName(name, (err, processor) => {

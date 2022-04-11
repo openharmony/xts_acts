@@ -108,7 +108,7 @@ describe('VideoDecoderFuncCallbackTest', function () {
           295, 206, 264, 349, 4071, 242, 296, 271, 231, 307, 265, 254, 267, 317, 232, 348, 4077, 259, 222, 268, 235,
           324, 266, 256, 312, 246, 248, 325, 4000, 266, 201, 230, 293, 264, 265, 273, 301, 304, 253, 266, 3978, 228,
           232, 250, 248, 281, 219, 243, 293, 287, 253, 328, 3719];
-    let fd_Read;
+    let fdRead;
     let readpath;
     
     beforeAll(function() {
@@ -178,8 +178,8 @@ describe('VideoDecoderFuncCallbackTest', function () {
                 console.info('case error fileDescriptor undefined, open file fail');
                 done();
             } else {
-                fd_Read = res.fd;
-                console.info("case fd_Read is: " + fd_Read);
+                fdRead = res.fd;
+                console.info("case fdRead is: " + fdRead);
             }
         })
     }
@@ -188,7 +188,7 @@ describe('VideoDecoderFuncCallbackTest', function () {
         console.info('case read file start execution');
         try{
             console.info('case filepath: ' + path);
-            readStreamSync = fileio.fdopenStreamSync(fd_Read, 'rb');
+            readStreamSync = fileio.fdopenStreamSync(fdRead, 'rb');
         }catch(e) {
             console.info(e);
         }

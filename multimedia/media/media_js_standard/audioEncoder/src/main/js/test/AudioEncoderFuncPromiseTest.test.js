@@ -45,9 +45,9 @@ describe('AudioEncoderFuncPromise', function () {
     let ES_LENGTH = 1500;
     let readpath;
     let savepath;
-    let fd_Read;
-    let fd_Write;
-    let fileAsset_Write;
+    let fdRead;
+    let fdWrite;
+    let fileAsset;
     const context = featureAbility.getContext();
     const mediaTest = mediaLibrary.getMediaLibrary(context);
     let fileKeyObj = mediaLibrary.FileKey;
@@ -129,8 +129,8 @@ describe('AudioEncoderFuncPromise', function () {
                 console.info('case error fileDescriptor undefined, open file fail');
                 done();
             } else {
-                fd_Read = res.fd;
-                console.info("case fd_Read is: " + fd_Read);
+                fdRead = res.fd;
+                console.info("case fdRead is: " + fdRead);
             }
         })
     }
@@ -180,22 +180,22 @@ describe('AudioEncoderFuncPromise', function () {
             }
             let fetchWriteFileResult = await mediaTest.getFileAssets(fetchOp);
             console.info('[mediaLibrary] case getFdWrite getFileAssets() success');
-            fileAsset_Write = await fetchWriteFileResult.getAllObject();
+            fileAsset = await fetchWriteFileResult.getAllObject();
             console.info('[mediaLibrary] case getFdWrite getAllObject() success');
-            fd_Write = await fileAsset_Write[0].open('Rw');
-            console.info('[mediaLibrary] case getFdWrite fd_Write is ' + fd_Write);
+            fdWrite = await fileAsset[0].open('Rw');
+            console.info('[mediaLibrary] case getFdWrite fdWrite is ' + fdWrite);
         }
     }
 
     async function closeFdWrite() {
-        if (fileAsset_Write != null) {
-            await fileAsset_Write[0].close(fd_Write).then(() => {
-                console.info('[mediaLibrary] case close fd_Write success, fd is ' + fd_Write);
+        if (fileAsset != null) {
+            await fileAsset[0].close(fdWrite).then(() => {
+                console.info('[mediaLibrary] case close fdWrite success, fd is ' + fdWrite);
             }).catch((err) => {
-                console.info('[mediaLibrary] case close fd_Write failed');
+                console.info('[mediaLibrary] case close fdWrite failed');
             });
         } else {
-            console.info('[mediaLibrary] case fileAsset_Write is null');
+            console.info('[mediaLibrary] case fileAsset is null');
         }
     }
     
@@ -203,7 +203,7 @@ describe('AudioEncoderFuncPromise', function () {
         console.info('read file start execution');
         try{
             console.info('filepath: ' + path);
-            readStreamSync = fileio.fdopenStreamSync(fd_Read, 'rb');
+            readStreamSync = fileio.fdopenStreamSync(fdRead, 'rb');
         }catch(e) {
             console.info(e);
         }
@@ -220,7 +220,7 @@ describe('AudioEncoderFuncPromise', function () {
         try{
             let head = new ArrayBuffer(7);
             addADTStoPacket(head, len);
-            let res = fileio.write(fd_Write, head, {length: 7});
+            let res = fileio.write(fdWrite, head, {length: 7});
             console.info('case fileio.write head success');
         } catch(e) {
             console.info('case fileio.write head error is ' + e);
@@ -229,7 +229,7 @@ describe('AudioEncoderFuncPromise', function () {
 
     function writeFile(path, buf, len) {
         try{
-            let res = fileio.write(fd_Write, buf, {length: len});
+            let res = fileio.write(fdWrite, buf, {length: len});
             console.info('case fileio.write buffer success');
         } catch(e) {
             console.info('case fileio.write buffer error is ' + e);
