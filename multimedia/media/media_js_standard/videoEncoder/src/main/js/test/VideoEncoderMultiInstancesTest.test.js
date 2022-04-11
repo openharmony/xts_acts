@@ -38,8 +38,8 @@ describe('videoEncoderSoftwareMultiInstances', function () {
     let flushAtEOS = false;
     let sawOutputEOS = false;
     let needGetMediaDes = false;
-    let fd_write;
-    let fileAsset_write;
+    let fd_Write;
+    let fileAsset_Write;
     const context = featureAbility.getContext();
     const mediaLibraryTest = mediaLibrary.getMediaLibrary(context);
     let fileKeyObj = mediaLibrary.FileKey;
@@ -148,28 +148,28 @@ describe('videoEncoderSoftwareMultiInstances', function () {
             }
             let fetchWriteFileResult = await mediaLibraryTest.getFileAssets(fetchOp);
             console.info('[mediaLibrary] case getFdWrite getFileAssets() success');
-            fileAsset_write = await fetchWriteFileResult.getAllObject();
+            fileAsset_Write = await fetchWriteFileResult.getAllObject();
             console.info('[mediaLibrary] case getFdWrite getAllObject() success');
-            fd_write = await fileAsset_write[0].open('Rw');
-            console.info('[mediaLibrary] case getFdWrite fd_write is ' + fd_write);
+            fd_Write = await fileAsset_Write[0].open('Rw');
+            console.info('[mediaLibrary] case getFdWrite fd_Write is ' + fd_Write);
         }
     }
 
     async function closeFdWrite() {
-        if (fileAsset_write != null) {
-            await fileAsset_write[0].close(fd_write).then(() => {
-                console.info('[mediaLibrary] case close fd_write success, fd is ' + fd_write);
+        if (fileAsset_Write != null) {
+            await fileAsset_Write[0].close(fd_Write).then(() => {
+                console.info('[mediaLibrary] case close fd_Write success, fd is ' + fd_Write);
             }).catch((err) => {
-                console.info('[mediaLibrary] case close fd_write failed');
+                console.info('[mediaLibrary] case close fd_Write failed');
             });
         } else {
-            console.info('[mediaLibrary] case fileAsset_write is null');
+            console.info('[mediaLibrary] case fileAsset_Write is null');
         }
     }
 
     function writeFile(buf, len) {
         try{
-            let res = fileio.write(fd_write, buf, {length: len});
+            let res = fileio.write(fd_Write, buf, {length: len});
             console.info('case fileio.write buffer success');
         } catch(e) {
             console.info('case fileio.write buffer error is ' + e);

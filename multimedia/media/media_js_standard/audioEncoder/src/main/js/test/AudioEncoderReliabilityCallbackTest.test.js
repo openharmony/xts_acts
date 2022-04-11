@@ -59,7 +59,7 @@ describe('AudioEncoderReliabilityCallback', function () {
                 "sample_rate": 44100,
                 "audio_sample_format": 1,
     };
-    let fd_read;
+    let fd_Read;
 
     beforeAll(function() {
         console.info('beforeAll case');
@@ -133,8 +133,8 @@ describe('AudioEncoderReliabilityCallback', function () {
                 console.info('case error fileDescriptor undefined, open file fail');
                 done();
             } else {
-                fd_read = res.fd;
-                console.info("case fd_read is: " + fd_read);
+                fd_Read = res.fd;
+                console.info("case fd_Read is: " + fd_Read);
             }
         })
     }
@@ -143,7 +143,7 @@ describe('AudioEncoderReliabilityCallback', function () {
         console.info('read file start execution');
         try{
             console.info('filepath: ' + path);
-            readStreamSync = fileio.fdopenStreamSync(fd_read, 'rb');
+            readStreamSync = fileio.fdopenStreamSync(fd_Read, 'rb');
         }catch(e) {
             console.info(e);
         }
