@@ -304,7 +304,8 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             checkResult(err, data, demo.InstallErrorCode.SUCCESS, "SUCCESS");
             await queryInfo(NAME, 0);
             installData.install([PATH + SIXTH_RIGHT], installParam1, async (err, data) => {
-                checkResult(err, data, demo.InstallErrorCode.STATUS_INSTALL_FAILURE_CONFLICT, "STATUS_INSTALL_FAILURE_CONFLICT");
+                checkResult(err, data, demo.InstallErrorCode.STATUS_INSTALL_FAILURE_CONFLICT,
+                    "STATUS_INSTALL_FAILURE_CONFLICT");
                 installData.uninstall(NAME, installParam1, async (err, data) => {
                     checkResult(err, data, demo.InstallErrorCode.SUCCESS, "SUCCESS");
                     await queryInfo(NAME, 1);
@@ -325,7 +326,8 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             checkResult(err, data, demo.InstallErrorCode.SUCCESS, "SUCCESS");
             await queryInfo(NAME, 0);
             installData.install([PATH + THIRTEENTH_RIGHT], installParam1, async (err, data) => {
-                checkResult(err, data, demo.InstallErrorCode.STATUS_INSTALL_FAILURE_INCOMPATIBLE, "STATUS_INSTALL_FAILURE_INCOMPATIBLE");
+                checkResult(err, data, demo.InstallErrorCode.STATUS_INSTALL_FAILURE_INCOMPATIBLE,
+                    "STATUS_INSTALL_FAILURE_INCOMPATIBLE");
                 installData.uninstall(NAME, installParam1, async (err, data) => {
                     checkResult(err, data, demo.InstallErrorCode.SUCCESS, "SUCCESS");
                     await queryInfo(NAME, 1);
@@ -504,7 +506,8 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             checkResult(err, data, demo.InstallErrorCode.SUCCESS, "SUCCESS");
             await queryInfo(NAME, 0);
             installData.install([PATH + THIRTEENTH_RIGHT], installParam1, async (err, data) => {
-                checkResult(err, data, demo.InstallErrorCode.STATUS_INSTALL_FAILURE_INCOMPATIBLE, "STATUS_INSTALL_FAILURE_INCOMPATIBLE");
+                checkResult(err, data, demo.InstallErrorCode.STATUS_INSTALL_FAILURE_INCOMPATIBLE,
+                    "STATUS_INSTALL_FAILURE_INCOMPATIBLE");
                 installData.uninstall(NAME, installParam1, async (err, data) => {
                     checkResult(err, data, demo.InstallErrorCode.SUCCESS, "SUCCESS");
                     await queryInfo(NAME, 1);
@@ -584,7 +587,8 @@ describe('ActsBundleMgrMultipleInstallTest', function () {
             checkResult(err, data, demo.InstallErrorCode.SUCCESS, "SUCCESS");
             await queryInfo(NAME, 0);
             installData.install([PATH + THIRTEENTH_RIGHT], installParam1, async (err, data) => {
-                checkResult(err, data, demo.InstallErrorCode.STATUS_INSTALL_FAILURE_INCOMPATIBLE, "STATUS_INSTALL_FAILURE_INCOMPATIBLE");
+                checkResult(err, data, demo.InstallErrorCode.STATUS_INSTALL_FAILURE_INCOMPATIBLE,
+                    "STATUS_INSTALL_FAILURE_INCOMPATIBLE");
                 installData.uninstall(NAME, installParam1, async (err, data) => {
                     checkResult(err, data, demo.InstallErrorCode.SUCCESS, "SUCCESS");
                     await queryInfo(NAME, 1);
