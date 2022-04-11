@@ -53,46 +53,47 @@ describe('SimManagerTest', function () {
 
   /**
     * @tc.number  Telephony_Sim_constantValidate_0100
-    * @tc.name    SIM card constant validation 
+    * @tc.name    SIM card constant validation
     * @tc.desc    Function test
     */
-   it('Telephony_Sim_constantValidate_0100', 0, async function (done) {
-    expect(sim.SIM_STATE_UNKNOWN === env.CONSTANTS.SIM_STATE_UNKNOWN).assertTrue();
-    expect(sim.SIM_STATE_NOT_PRESENT === env.CONSTANTS.SIM_STATE_NOT_PRESENT).assertTrue();
-    expect(sim.SIM_STATE_LOCKED === env.CONSTANTS.SIM_STATE_LOCKED).assertTrue();
-    expect(sim.SIM_STATE_NOT_READY === env.CONSTANTS.SIM_STATE_NOT_READY).assertTrue();
-    expect(sim.SIM_STATE_READY === env.CONSTANTS.SIM_STATE_READY).assertTrue();
-    expect(sim.SIM_STATE_LOADED === env.CONSTANTS.SIM_STATE_LOADED).assertTrue();
-    expect(sim.GENERAL_CONTACT === env.CONSTANTS.GENERAL_CONTACT).assertTrue();
-    expect(sim.FIXED_DIALING === env.CONSTANTS.FIXED_DIALING).assertTrue();
-    expect(sim.LOCK_OFF === env.CONSTANTS.LOCK_OFF).assertTrue();
-    expect(sim.LOCK_ON === env.CONSTANTS.LOCK_ON).assertTrue();
-    expect(sim.PIN_LOCK === env.CONSTANTS.PIN_LOCK).assertTrue();
-    expect(sim.FDN_LOCK === env.CONSTANTS.FDN_LOCK).assertTrue();
-    expect(sim.UNKNOWN_CARD === env.CONSTANTS.UNKNOWN_CARD).assertTrue();
-    expect(sim.SINGLE_MODE_SIM_CARD === env.CONSTANTS.SINGLE_MODE_SIM_CARD).assertTrue();
-    expect(sim.SINGLE_MODE_USIM_CARD === env.CONSTANTS.SINGLE_MODE_USIM_CARD).assertTrue();
-    expect(sim.SINGLE_MODE_RUIM_CARD === env.CONSTANTS.SINGLE_MODE_RUIM_CARD).assertTrue();
-    expect(sim.DUAL_MODE_CG_CARD === env.CONSTANTS.DUAL_MODE_CG_CARD).assertTrue();
-    expect(sim.CT_NATIONAL_ROAMING_CARD === env.CONSTANTS.CT_NATIONAL_ROAMING_CARD).assertTrue();
-    expect(sim.CU_DUAL_MODE_CARD === env.CONSTANTS.CU_DUAL_MODE_CARD).assertTrue();
-    expect(sim.DUAL_MODE_TELECOM_LTE_CARD === env.CONSTANTS.DUAL_MODE_TELECOM_LTE_CARD).assertTrue();
-    expect(sim.DUAL_MODE_UG_CARD === env.CONSTANTS.DUAL_MODE_UG_CARD).assertTrue();
-    expect(sim.SINGLE_MODE_ISIM_CARD === env.CONSTANTS.SINGLE_MODE_ISIM_CARD).assertTrue();
-    expect(sim.PN_PIN_LOCK === env.CONSTANTS.PN_PIN_LOCK).assertTrue();
-    expect(sim.PN_PUK_LOCK === env.CONSTANTS.PN_PUK_LOCK).assertTrue();
-    expect(sim.PU_PIN_LOCK === env.CONSTANTS.PU_PIN_LOCK).assertTrue();
-    expect(sim.PU_PUK_LOCK === env.CONSTANTS.PU_PUK_LOCK).assertTrue();
-    expect(sim.PP_PIN_LOCK === env.CONSTANTS.PP_PIN_LOCK).assertTrue();
-    expect(sim.PP_PUK_LOCK === env.CONSTANTS.PP_PUK_LOCK).assertTrue();
-    expect(sim.PC_PIN_LOCK === env.CONSTANTS.PC_PIN_LOCK).assertTrue();
-    expect(sim.PC_PUK_LOCK === env.CONSTANTS.PC_PUK_LOCK).assertTrue();
-    expect(sim.SIM_PIN_LOCK === env.CONSTANTS.SIM_PIN_LOCK).assertTrue();
-    expect(sim.SIM_PUK_LOCK === env.CONSTANTS.SIM_PUK_LOCK).assertTrue();
-    console.log(`Telephony_Sim_constantValidate_0100 finish`);
-    done();
-  });
-
+    it('Telephony_Sim_constantValidate_0100', 0, async function (done) {
+        console.log(`Telephony_Sim_constantValidate_0100 start`);
+        expect(sim.SimState.SIM_STATE_UNKNOWN !== env.INVALID_VALUE).assertTrue();
+        expect(sim.SimState.SIM_STATE_NOT_PRESENT !== env.INVALID_VALUE).assertTrue();
+        expect(sim.SimState.SIM_STATE_LOCKED !== env.INVALID_VALUE).assertTrue();
+        expect(sim.SimState.SIM_STATE_NOT_READY !== env.INVALID_VALUE).assertTrue();
+        expect(sim.SimState.SIM_STATE_READY !== env.INVALID_VALUE).assertTrue();
+        expect(sim.SimState.SIM_STATE_LOADED !== env.INVALID_VALUE).assertTrue();
+        expect(sim.ContactType.GENERAL_CONTACT !== env.INVALID_VALUE).assertTrue();
+        expect(sim.ContactType.FIXED_DIALING !== env.INVALID_VALUE).assertTrue();
+        expect(sim.LockState.LOCK_OFF !== env.INVALID_VALUE).assertTrue();
+        expect(sim.LockState.LOCK_ON !== env.INVALID_VALUE).assertTrue();
+        expect(sim.PIN_LOCK !== env.INVALID_VALUE).assertTrue();
+        expect(sim.FDN_LOCK !== env.INVALID_VALUE).assertTrue();
+        expect(sim.UNKNOWN_CARD !== env.INVALID_VALUE).assertTrue();
+        expect(sim.SINGLE_MODE_SIM_CARD !== env.INVALID_VALUE).assertTrue();
+        expect(sim.SINGLE_MODE_USIM_CARD !== env.INVALID_VALUE).assertTrue();
+        expect(sim.SINGLE_MODE_RUIM_CARD !== env.INVALID_VALUE).assertTrue();
+        expect(sim.DUAL_MODE_CG_CARD !== env.INVALID_VALUE).assertTrue();
+        expect(sim.CT_NATIONAL_ROAMING_CARD !== env.INVALID_VALUE).assertTrue();
+        expect(sim.CU_DUAL_MODE_CARD !== env.INVALID_VALUE).assertTrue();
+        expect(sim.DUAL_MODE_TELECOM_LTE_CARD !== env.INVALID_VALUE).assertTrue();
+        expect(sim.DUAL_MODE_UG_CARD !== env.INVALID_VALUE).assertTrue();
+        expect(sim.SINGLE_MODE_ISIM_CARD !== env.INVALID_VALUE).assertTrue();
+        expect(sim.PN_PIN_LOCK !== env.INVALID_VALUE).assertTrue();
+        expect(sim.PN_PUK_LOCK !== env.INVALID_VALUE).assertTrue();
+        expect(sim.PU_PIN_LOCK !== env.INVALID_VALUE).assertTrue();
+        expect(sim.PU_PUK_LOCK !== env.INVALID_VALUE).assertTrue();
+        expect(sim.PP_PIN_LOCK !== env.INVALID_VALUE).assertTrue();
+        expect(sim.PP_PUK_LOCK !== env.INVALID_VALUE).assertTrue();
+        expect(sim.PC_PIN_LOCK !== env.INVALID_VALUE).assertTrue();
+        expect(sim.PC_PUK_LOCK !== env.INVALID_VALUE).assertTrue();
+        expect(sim.SIM_PIN_LOCK !== env.INVALID_VALUE).assertTrue();
+        expect(sim.SIM_PUK_LOCK !== env.INVALID_VALUE).assertTrue();
+        console.log(`Telephony_Sim_constantValidate_0100 finish`);
+        done();
+    });
+	
   /**
     * @tc.number  Telephony_Sim_getISOCountryCodeForSim_Async_0200
     * @tc.name    Enter exception parameters to test whether the getISOCountryCodeForSim interface function
@@ -546,7 +547,7 @@ describe('SimManagerTest', function () {
   it('Telephony_Sim_SetLockState_Async_1000', 0, async function (done) {
     const CASE_NAME = 'Telephony_Sim_SetLockState_Async_1000';
     const lockInfo = { lockType: sim.PIN_LOCK, state: sim.LOCK_OFF, password: env.CORRECT_PIN };
-    sim.setLockState(env.SLOTID2, lockInfo, error => {
+    sim.setLockState(env.SLOTID2, lockInfo, (error) => {
       if (error) {
         console.log(`${CASE_NAME} setLockState expect error: ${error.message}`);
         console.log(`${CASE_NAME} test finish`);
@@ -1724,7 +1725,7 @@ describe('SimManagerTest', function () {
   it('Telephony_Sim_unlockSimLock_Async_2600', 0, function (done) {
     const CASE_NAME = 'Telephony_Sim_unlockSimLock_Async_2600';
     const lockInfo = { lockType: sim.PN_PIN_LOCK, password: env.SIM_PN_PIN_PASSWORD };
-    sim.unlockSimLock(env.SLOTID2, lockInfo, async (error) => {
+    sim.unlockSimLock(env.SLOTID2, lockInfo, (error) => {
       if (error) {
         console.log(`${CASE_NAME} expect error: ${error.message}`);
         console.log(`${CASE_NAME} test finish.`);
