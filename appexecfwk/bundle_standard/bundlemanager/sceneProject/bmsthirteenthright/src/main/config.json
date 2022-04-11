@@ -12,7 +12,7 @@
         "bundleName": "com.example.l3jsdemo",
         "label": "$string:app_name",
         "version": {
-            "code": 999999,
+            "code": 1000000,
             "name": "1.0.0"
         }
     },
@@ -43,7 +43,7 @@
         "mainAbility": "com.example.l1jsdemo.MainAbility",
         "distro": {
             "moduleType": "feature",
-            "installationFree": false,
+            "installationFree": true,
             "deliveryWithInstall": true,
             "moduleName": "l1jsdemo"
         },

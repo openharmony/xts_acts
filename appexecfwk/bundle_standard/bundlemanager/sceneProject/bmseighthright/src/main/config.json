@@ -12,7 +12,7 @@
         "bundleName": "com.example.l3jsdemo",
         "label": "$string:app_name",
         "version": {
-            "code": 1000000,
+            "code": 2000000,
             "name": "1.0.1"
         }
     },
