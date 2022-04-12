@@ -16,28 +16,28 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import demo from '@ohos.bundle'
 
-const PATH = "/data/"
-const ERROR = "error.hap"
-const BMSJSTEST1 = "bmsJstest1.hap"
-const BMSJSTEST2 = "bmsJstest2.hap"
-const BMSJSTEST3 = "bmsJstest3.hap"
-const BMSJSTEST4 = "bmsJstest4.hap"
-const BMSJSTEST5 = "bmsJstest5.hap"
-const BMSJSTEST6 = "bmsJstest6.hap"
-const BMSJSTEST8 = "bmsJstest8.hap"
-const NAME1 = "com.example.myapplication1"
-const NAME2 = "com.example.myapplication2"
-const NAME3 = "com.example.myapplication4"
-const NAME4 = "com.example.myapplication5"
-const NAME5 = "com.example.myapplication6"
-const THIRD1 = "com.example.third1"
-const LAUNCHER = "com.ohos.launcher"
-const SUCCESS = "SUCCESS"
-let installParam = {
+const PATH = "/data/";
+const ERROR = "error.hap";
+const BMSJSTEST1 = "bmsJstest1.hap";
+const BMSJSTEST2 = "bmsJstest2.hap";
+const BMSJSTEST3 = "bmsJstest3.hap";
+const BMSJSTEST4 = "bmsJstest4.hap";
+const BMSJSTEST5 = "bmsJstest5.hap";
+const BMSJSTEST6 = "bmsJstest6.hap";
+const BMSJSTEST8 = "bmsJstest8.hap";
+const NAME1 = "com.example.myapplication1";
+const NAME2 = "com.example.myapplication2";
+const NAME3 = "com.example.myapplication4";
+const NAME4 = "com.example.myapplication5";
+const NAME5 = "com.example.myapplication6";
+const THIRD1 = "com.example.third1";
+const LAUNCHER = "com.ohos.launcher";
+const SUCCESS = "SUCCESS";
+const installParam = {
     userId: 100,
     installFlag: 1,
     isKeepData: false
-}
+};
 
 describe('ActsBundleManagerUninstall', function () {
 
@@ -47,17 +47,17 @@ describe('ActsBundleManagerUninstall', function () {
      * @tc.desc Test uninstall interfaces.
      */
     it('uninstall_0100', 0, async function (done) {
-        let installData = await demo.getBundleInstaller()
+        let installData = await demo.getBundleInstaller();
         installData.install([PATH + BMSJSTEST1], installParam, async (err, data) => {
-            checkInstallResult(data)
-            await queryInfo(NAME1, 0)
+            checkInstallResult(err, data);
+            await queryInfo(NAME1, 0);
             installData.uninstall(NAME1, installParam, async (err, data) => {
-                checkInstallResult(data)
-                await queryInfo(NAME1, 1)
-                done()
-            })
-        })
-    })
+                checkInstallResult(err, data);
+                await queryInfo(NAME1, 1);
+                done();
+            });
+        });
+    });
 
     /**
      * @tc.number uninstall_0200
@@ -65,18 +65,18 @@ describe('ActsBundleManagerUninstall', function () {
      * @tc.desc Test uninstall interfaces.
      */
     it('uninstall_0200', 0, async function (done) {
-        let installData = await demo.getBundleInstaller()
+        let installData = await demo.getBundleInstaller();
         installData.install([PATH + BMSJSTEST2, PATH + BMSJSTEST3], installParam, async (err, data) => {
-            checkInstallResult(data)
+            checkInstallResult(err, data);
             let bundleInfo = await demo.getBundleInfo(NAME2, demo.BundleFlag.GET_BUNDLE_DEFAULT);
-            expect(bundleInfo.appInfo.moduleSourceDirs.length).assertEqual(2)
+            expect(bundleInfo.appInfo.moduleSourceDirs.length).assertEqual(2);
             installData.uninstall(NAME2, installParam, async(err, data) => {
-                checkInstallResult(data)
-                await queryInfo(NAME2, 1)
-                done()
-            })
-        })
-    })
+                checkInstallResult(err, data);
+                await queryInfo(NAME2, 1);
+                done();
+            });
+        });
+    });
 
     /**
      * @tc.number uninstall_0300
@@ -84,33 +84,33 @@ describe('ActsBundleManagerUninstall', function () {
      * @tc.desc Test uninstall interfaces.
      */
     it('uninstall_0300', 0, async function (done) {
-        let installData = await demo.getBundleInstaller()
+        let installData = await demo.getBundleInstaller();
         installData.install([PATH + BMSJSTEST4], installParam, async (err, data) => {
-            checkInstallResult(data)
+            checkInstallResult(err, data);
             installData.install([PATH + BMSJSTEST5], installParam, async (err, data) => {
-                checkInstallResult(data)
+                checkInstallResult(err, data);
                 installData.install([PATH + BMSJSTEST6], installParam, async (err, data) => {
-                    checkInstallResult(data)
-                    await queryInfo(NAME3, 0)
-                    await queryInfo(NAME4, 0)
-                    await queryInfo(NAME5, 0)
+                    checkInstallResult(err, data);
+                    await queryInfo(NAME3, 0);
+                    await queryInfo(NAME4, 0);
+                    await queryInfo(NAME5, 0);
                     installData.uninstall(NAME3, installParam, async (err, data) => {
-                        checkInstallResult(data)
+                        checkInstallResult(err, data);
                         installData.uninstall(NAME4, installParam, async (err, data) => {
-                            checkInstallResult(data)
+                            checkInstallResult(err, data);
                             installData.uninstall(NAME5, installParam, async (err, data) => {
-                                checkInstallResult(data)
-                                await queryInfo(NAME3, 1)
-                                await queryInfo(NAME4, 1)
-                                await queryInfo(NAME5, 1)
-                                done()
-                            })
-                        })
-                    })
-                })
-            })
-        })
-    })
+                                checkInstallResult(err, data);
+                                await queryInfo(NAME3, 1);
+                                await queryInfo(NAME4, 1);
+                                await queryInfo(NAME5, 1);
+                                done();
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    });
 
     /**
      * @tc.number uninstall_0400
@@ -120,12 +120,13 @@ describe('ActsBundleManagerUninstall', function () {
     it('uninstall_0400', 0, async function (done) {
         demo.getBundleInstaller().then((data) => {
             data.uninstall(ERROR, installParam, (err, data) => {
-                expect(data.status).assertEqual(demo.InstallErrorCode.STATUS_UNINSTALL_FAILURE)
-                expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE")
-                done()
-            })
-        })
-    })
+                expect(err.code).assertEqual(-1);
+                expect(data.status).assertEqual(demo.InstallErrorCode.STATUS_UNINSTALL_FAILURE);
+                expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE");
+                done();
+            });
+        });
+    });
 
     /**
      * @tc.number uninstall_0500
@@ -135,12 +136,13 @@ describe('ActsBundleManagerUninstall', function () {
     it('uninstall_0500', 0, async function (done) {
         demo.getBundleInstaller().then((data) => {
             data.uninstall('', installParam, (err, data) => {
-                expect(data.status).assertEqual(demo.InstallErrorCode.STATUS_UNINSTALL_FAILURE_ABORTED)
-                expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE_ABORTED")
-                done()
-            })
-        })
-    })
+                expect(err.code).assertEqual(-1);
+                expect(data.status).assertEqual(demo.InstallErrorCode.STATUS_UNINSTALL_FAILURE);
+                expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE");
+                done();
+            });
+        });
+    });
 
     /**
      * @tc.number uninstall_0600
@@ -150,12 +152,13 @@ describe('ActsBundleManagerUninstall', function () {
     it('uninstall_0600', 0, async function (done) {
         demo.getBundleInstaller().then((data) => {
             data.uninstall(LAUNCHER, installParam, (err, data) => {
-                expect(data.status).assertEqual(demo.InstallErrorCode.STATUS_UNINSTALL_FAILURE_CONFLICT)
-                expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE_CONFLICT")
-                done()
-            })
-        })
-    })
+                expect(err.code).assertEqual(-1);
+                expect(data.status).assertEqual(demo.InstallErrorCode.STATUS_UNINSTALL_FAILURE);
+                expect(data.statusMessage).assertEqual("STATUS_UNINSTALL_FAILURE");
+                done();
+            });
+        });
+    });
 
     /**
      * @tc.number uninstall_0700
@@ -169,15 +172,15 @@ describe('ActsBundleManagerUninstall', function () {
             installFlag: 1,
             isKeepData: true
         }, async (err, data) => {
-            checkInstallResult(data)
-            await queryInfo(NAME1, 0)
+            checkInstallResult(err, data);
+            await queryInfo(NAME1, 0);
             result.uninstall(NAME1, installParam, async (err, data) => {
-                checkInstallResult(data)
-                await queryInfo(NAME1, 1)
-                done()
-            })
-        })
-    })
+                checkInstallResult(err, data);
+                await queryInfo(NAME1, 1);
+                done();
+            });
+        });
+    });
 
     /**
      * @tc.number uninstall_0800
@@ -187,42 +190,43 @@ describe('ActsBundleManagerUninstall', function () {
     it('uninstall_0800', 0, async function (done) {
         let installData = await demo.getBundleInstaller();
         installData.install([PATH + BMSJSTEST8], installParam, async (err, data) => {
-            checkInstallResult(data)
+            checkInstallResult(err, data);
             let bundleInfo = await demo.getBundleInfo('com.example.third1', demo.BundleFlag.GET_BUNDLE_DEFAULT);
             expect(bundleInfo.uid).assertLarger(10000);
             installData.uninstall(THIRD1, installParam, async (err, data) => {
-                checkInstallResult(data)
-                await queryInfo('com.example.third1', 1)
-                done()
-            })
-        })
-    })
+                checkInstallResult(err, data);
+                await queryInfo('com.example.third1', 1);
+                done();
+            });
+        });
+    });
 
     async function queryInfo(bundleName, assertFlag){
         if (!assertFlag) {
             await demo.getBundleInfo(bundleName, demo.BundleFlag.GET_BUNDLE_DEFAULT
                 ).then(datainfo => {
-                console.info("getBundleInfo result0"+JSON.stringify(datainfo))
-                expect(datainfo.name).assertEqual(bundleName)
+                console.info("getBundleInfo result0"+JSON.stringify(datainfo));
+                expect(datainfo.name).assertEqual(bundleName);
             }).catch(err => {
-                console.info("getBundleInfo result0"+JSON.stringify(datainfo))
-                expect(err).assertFail()
-            })
+                console.info("getBundleInfo result0"+JSON.stringify(datainfo));
+                expect(err).assertFail();
+            });
         } else {
             await demo.getBundleInfo(bundleName, demo.BundleFlag.GET_BUNDLE_DEFAULT
                 ).then(datainfo => {
-                console.info("getBundleInfo result1"+JSON.stringify(datainfo))
-                expect(datainfo).assertFail()
+                console.info("getBundleInfo result1"+JSON.stringify(datainfo));
+                expect(datainfo).assertFail();
             }).catch(err => {
-                console.info("getBundleInfo result1"+JSON.stringify(err))
-                expect(err).assertEqual(1)
-            })
+                console.info("getBundleInfo result1"+JSON.stringify(err));
+                expect(err).assertEqual(1);
+            });
         }
     }
 
-    function checkInstallResult(result) {
-        console.info("install uninstall result" + JSON.stringify(result))
-        expect(result.status).assertEqual(demo.InstallErrorCode.SUCCESS)
-        expect(result.statusMessage).assertEqual(SUCCESS)
+    function checkInstallResult(err, result) {
+        console.info("install uninstall result" + JSON.stringify(result));
+        expect(err.code).assertEqual(0);
+        expect(result.status).assertEqual(demo.InstallErrorCode.SUCCESS);
+        expect(result.statusMessage).assertEqual(SUCCESS);
     }
 })

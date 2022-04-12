@@ -12,8 +12,8 @@
         "bundleName": "com.example.l3jsdemo",
         "label": "$string:app_name",
         "version": {
-            "code": 1000000,
-            "name": "1.0.0"
+            "code": 2000000,
+            "name": "2.0.0"
         }
     },
     "deviceConfig": {
@@ -43,7 +43,7 @@
         "mainAbility": "com.example.l2jsdemo.MainAbility",
         "distro": {
             "moduleType": "feature",
-            "installationFree": false,
+            "installationFree": true,
             "deliveryWithInstall": true,
             "moduleName": "l2jsdemo"
         },

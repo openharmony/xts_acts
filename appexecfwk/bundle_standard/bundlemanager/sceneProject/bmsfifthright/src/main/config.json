@@ -8,8 +8,8 @@
         "vendor": "example",
         "bundleName": "com.example.l3jsdemo",
         "version": {
-            "code": 1000000,
-            "name": "1.0.0"
+            "code": 2000000,
+            "name": "2.0.0"
         }
     },
     "deviceConfig": {
