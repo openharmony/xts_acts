@@ -15,20 +15,32 @@
             "cleanup-apps": true
         },
         {
+            "type": "ShellKit",
+            "run-command": [
+                "rm -rf /storage/media/100/local/files/*",
+                "mkdir -p /data/app/el1/bundle/public/ohos.acts.multimedia.audio.audioencoder/ohos.acts.multimedia.audio.audioencoder/assets/entry/resources/rawfile/",
+                "chmod 777 -R /data/app/el1/bundle/public/ohos.acts.multimedia.audio.audioencoder/ohos.acts.multimedia.audio.audioencoder/assets/entry/resources/rawfile/"
+            ],
+            "teardown-command":[
+            ]
+        },
+        {
             "type": "PushKit",
             "pre-push": [
             ],
             "push": [
-                "./resource/audio/audioEncode/S16LE.pcm ->/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/"
+                "./resource/audio/audioEncode/S16LE.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.audioencoder/ohos.acts.multimedia.audio.audioencoder/assets/entry/resources/rawfile/"
             ]
         },
         {
             "type": "ShellKit",
             "run-command": [
-                "rm -R /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/results",
-                "mkdir -p /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/results/",
-                "chmod 777 -R /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder",
-                "chmod 777 /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/*"
+                "chmod 777 -R /data/app/el1/bundle/public/ohos.acts.multimedia.audio.audioencoder/ohos.acts.multimedia.audio.audioencoder/assets/entry/resources/rawfile/",
+                "chmod 777 /data/app/el1/bundle/public/ohos.acts.multimedia.audio.audioencoder/ohos.acts.multimedia.audio.audioencoder/assets/entry/resources/rawfile/*",
+                "chmod 777 -R  /storage/media/100/local/files/",
+                "chmod 777 /storage/media/100/local/files/*",
+                "killall com.ohos.medialibrary.MediaScannerAbilityA",
+                "aa start  -a MediaScannerAbility -b com.ohos.medialibrary.MediaScannerAbilityA"
             ],
             "teardown-command":[
             ]

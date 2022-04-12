@@ -14,10 +14,11 @@
  */
 
 import media from '@ohos.multimedia.media'
-import Fileio from '@ohos.fileio'
+import fileio from '@ohos.fileio'
 import router from '@system.router'
+import {getFileDescriptor, closeFileDescriptor} from './VideoDecoderTestBase.test.js'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-export
+
 const DECODE_STEP = {
     WAIT_FOR_EOS : 'waitForEOS',
     CONFIGURE : 'configure',
@@ -47,7 +48,7 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
     let workdoneAtEOS = false;
     let surfaceID = '';
     const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/';
-    const SRCPATH = BASIC_PATH + 'out_320_240_10s.h264';
+    const SRCPATH = 'out_320_240_10s.h264';
     let mediaDescription = {
         'track_type': 1,
         'codec_mime': 'video/avc',
@@ -74,6 +75,8 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
         574, 126, 1242, 188, 130, 119, 1450, 187, 137, 141, 1116, 124, 1848, 138, 122, 1605, 186, 127, 140,
         1798, 170, 124, 121, 1666, 157, 128, 130, 1678, 135, 118, 1804, 169, 135, 125, 1837, 168, 124, 124];
     let ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
+    let fdRead;
+
     beforeAll(function() {
         console.info('beforeAll case');
     })
@@ -107,10 +110,12 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
         }
         await router.clear().then(() => {
         }, failCallback).catch(failCatch);
+        await closeFileDescriptor(SRCPATH);
     })
 
-    afterAll(function() {
+    afterAll(async function() {
         console.info('afterAll case');
+        await closeFileDescriptor(SRCPATH);
     })
     let failCallback = function(err) {
         console.info(`in case error failCallback called, errMessage is ${err.message}`);
@@ -141,13 +146,14 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
             console.error('in case toDisplayPage' + e);
         }
     }
-    function readFile(path){
-        console.info('in case : read file start execution');
-        try {
-            console.info('in case: file path ' + path);
-            readStreamSync = Fileio.createStreamSync(path, 'rb');
-        } catch(e) {
-            console.info('in case readFile' + e);
+
+    function readFile(path) {
+        console.info('case read file start execution');
+        try{
+            console.info('case filepath: ' + path);
+            readStreamSync = fileio.fdopenStreamSync(fdRead, 'rb');
+        }catch(e) {
+            console.info(e);
         }
     }
 
@@ -418,7 +424,17 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
             toNextStep(mySteps, done);
         })
     }
-    function toCreateVideoDecoderByName(name, mySteps, done) {
+    async function toCreateVideoDecoderByName(name, mySteps, done) {
+        await getFileDescriptor(SRCPATH).then((res) => {
+            if (res == undefined) {
+                expect().assertFail();
+                console.info('case error fileDescriptor undefined, open file fail');
+                done();
+            } else {
+                fdRead = res.fd;
+                console.info("case fdRead is: " + fdRead);
+            }
+        })
         media.createVideoDecoderByName(name, (err, processor) => {
             printError(err, false);
             console.info(`case createVideoDecoderByName callback`);

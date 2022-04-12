@@ -14,8 +14,9 @@
  */
 
 import media from '@ohos.multimedia.media'
-import Fileio from '@ohos.fileio'
+import fileio from '@ohos.fileio'
 import router from '@system.router'
+import {getFileDescriptor, closeFileDescriptor} from './VideoDecoderTestBase.test.js'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 
@@ -37,6 +38,9 @@ describe('VideoDecoderEnum', function () {
     let ES_FRAME_SIZE = [];
     const H264_FRAME_SIZE_60FPS_320 =
     [ 2106, 11465];
+    let readpath;
+    let fdRead;
+
     beforeAll(function() {
         console.info('beforeAll case');
         // getSurfaceID();
@@ -83,14 +87,22 @@ describe('VideoDecoderEnum', function () {
         console.info(`in case error failCatch called,errMessage is ${error.message}`);
         expect(err).assertUndefined();
     }
-    function readFile(path){
-        console.info('in case : read file start execution');
-        try {
-            console.info('in case: filepath ' + path);
-            readStreamSync = Fileio.createStreamSync(path, 'rb');
-        } catch(e) {
+
+    function readFile(path) {
+        console.info('case read file start execution');
+        try{
+            console.info('case filepath: ' + path);
+            readStreamSync = fileio.fdopenStreamSync(fdRead, 'rb');
+        }catch(e) {
             console.error('in case readFile' + e);
         }
+    }
+
+    function getContent(buf, len) {
+        console.info("case start get content");
+        let lengthreal = -1;
+        lengthreal = readStreamSync.readSync(buf,{length:len});
+        console.info('case lengthreal is :' + lengthreal);
     }
 
     function msleep(ms) {
@@ -109,22 +121,9 @@ describe('VideoDecoderEnum', function () {
         }
     }
 
-    function getContent(buf, len) {
-        console.info('start get content, len ' + len + ' buf.byteLength ' + buf.byteLength);
-        let lengthReal = -1;
-        try {
-            lengthReal = readStreamSync.readSync(
-                buf, 
-                {length: len}
-            );
-            console.info('in case: lengthReal: ' + lengthReal);
-        } catch(e) {
-            console.error('in case error getContent ' + e);
-        }
-    }
     function getSurfaceID() {
         let surfaceIDTest = new ArrayBuffer(20);
-        let readSurfaceID = Fileio.createStreamSync('/data/media/surfaceID.txt', 'rb');
+        let readSurfaceID = fileio.createStreamSync('/data/media/surfaceID.txt', 'rb');
         readSurfaceID.readSync(surfaceIDTest, {length: 13});
         let view2 = new Uint8Array(surfaceIDTest);
         for (let i = 0; i < 13; i++) {
@@ -290,6 +289,7 @@ describe('VideoDecoderEnum', function () {
         }, failCallback).catch(failCatch);
         videoDecodeProcessor = null;
         console.info('in case : done');
+        await closeFileDescriptor(readpath);
         done();
     });
     async function toPrepare() {
@@ -314,7 +314,18 @@ describe('VideoDecoderEnum', function () {
     it('SUB_MEDIA_VIDEO_DECODER_ENUM_CodecBuffer_0100', 0, async function (done) {
         ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
         isCodecData = true;
-        let srcPath = BASIC_PATH + 'out_320_240_10s.h264';
+        let srcPath = 'out_320_240_10s.h264';
+        readpath = srcPath;
+        await getFileDescriptor(readpath).then((res) => {
+            if (res == undefined) {
+                expect().assertFail();
+                console.info('case error fileDescriptor undefined, open file fail');
+                done();
+            } else {
+                fdRead = res.fd;
+                console.info("case fdRead is: " + fdRead);
+            }
+        })
         let mediaDescription = {
             'track_type': 1,
             'codec_mime': 'video/avc',

@@ -19,7 +19,7 @@ import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('videoEncoderReliabilityPromise', function () {
-    const ROOT = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/';
+    const ROOT = '/data/app/el1/bundle/results/';
     const BASIC_PATH = ROOT + 'video_reliability_promise_';
     let videoEncodeProcessor;
     let mediaTest = mediademo.createMediaTest();
@@ -250,8 +250,7 @@ describe('videoEncoderReliabilityPromise', function () {
                     console.info("sawOutputEOS = true;");
                 }
             } else {
-                writeFile(path, outputObject.data, outputObject.length);
-                console.info("write to file success");
+                console.info('not last frame, continue');
                 videoEncodeProcessor.freeOutputBuffer(outputObject).then(() => {
                     console.info('release output success');
                     frameCountOut++;

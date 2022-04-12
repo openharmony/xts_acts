@@ -14,12 +14,13 @@
  */
 
 import media from '@ohos.multimedia.media'
-import Fileio from '@ohos.fileio'
+import fileio from '@ohos.fileio'
+import {getFileDescriptor, closeFileDescriptor} from './AudioDecoderTestBase.test.js'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('AudioDecoderReliabilityPromise', function () {
     const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/'
-    const AUDIOPATH =  RESOURCEPATH + 'AAC_48000_32_1.aac';
+    const AUDIOPATH = 'AAC_48000_32_1.aac';
     const BASIC_PATH = RESOURCEPATH + 'results/decode_reliability_promise';
     const END = 0;
     const CONFIGURE = 1;
@@ -148,12 +149,13 @@ describe('AudioDecoderReliabilityPromise', function () {
                 "audio_sample_format": 1,
     };
     let expectError = false;
+    let fdRead;
 
     beforeAll(function() {
         console.info('beforeAll case');
     })
 
-    beforeEach(function() {
+    beforeEach(async function() {
         console.info('beforeEach case');
         audioDecodeProcessor = null;
         readStreamSync = undefined;
@@ -270,10 +272,12 @@ describe('AudioDecoderReliabilityPromise', function () {
                 audioDecodeProcessor = null;
             }, failCallback).catch(failCatch);
         }
+        await closeFileDescriptor(AUDIOPATH);
     })
 
-    afterAll(function() {
+    afterAll(async function() {
         console.info('afterAll case');
+        await closeFileDescriptor(AUDIOPATH);
     })
 
     let failCallback = function(err) {
@@ -308,7 +312,8 @@ describe('AudioDecoderReliabilityPromise', function () {
         outputQueue = [];
     }
 
-    function createAudioDecoder(savepath, mySteps, done) {
+    async function createAudioDecoder(savepath, mySteps, done) {
+        await getFdRead(AUDIOPATH, done);
         media.createAudioDecoderByMime(mime, (err, processor) => {
             expect(err).assertUndefined();
             console.info(`case createAudioDecoder 1`);
@@ -319,22 +324,24 @@ describe('AudioDecoderReliabilityPromise', function () {
         })
     }
 
-    function writeFile(path, buf, len) {
-        try{
-            let writestream = Fileio.createStreamSync(path, "ab+");
-            let num = writestream.writeSync(buf, {length:len});
-            writestream.flushSync();
-            writestream.closeSync();
-        }catch(e) {
-            console.info(e)
-        }
+    async function getFdRead(pathName, done) {
+        await getFileDescriptor(pathName).then((res) => {
+            if (res == undefined) {
+                expect().assertFail();
+                console.info('case error fileDescriptor undefined, open file fail');
+                done();
+            } else {
+                fdRead = res.fd;
+                console.info("case fdRead is: " + fdRead);
+            }
+        })
     }
 
     function readFile(path) {
-        console.info('read file start execution');
+        console.info('case read file start execution');
         try{
-            console.info('filepath: ' + path);
-            readStreamSync = Fileio.createStreamSync(path, 'rb');
+            console.info('case filepath: ' + path);
+            readStreamSync = fileio.fdopenStreamSync(fdRead, 'rb');
         }catch(e) {
             console.info(e);
         }
@@ -344,7 +351,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         console.info("case start get content");
         let lengthreal = -1;
         lengthreal = readStreamSync.readSync(buf,{length:len});
-        console.info('lengthreal: ' + lengthreal);
+        console.info('case lengthreal is :' + lengthreal);
     }
 
     async function doneWork() {
@@ -369,7 +376,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         for(let t = Date.now(); Date.now() - t <= time;);
     }
 
-    function nextStep(mySteps, done) {
+    async function nextStep(mySteps, done) {
         console.info("case myStep[0]: " + mySteps[0]);
         if (mySteps[0] == END) {
             audioDecodeProcessor.release().then(() => {
@@ -401,6 +408,8 @@ describe('AudioDecoderReliabilityPromise', function () {
                 console.info(`case to start`);
                 if (sawOutputEOS) {
                     resetParam();
+                    await closeFileDescriptor(AUDIOPATH);
+                    await getFdRead(AUDIOPATH, done);
                     readFile(AUDIOPATH);
                     workdoneAtEOS = true;
                     enqueueAllInputs(inputQueue);
@@ -415,9 +424,11 @@ describe('AudioDecoderReliabilityPromise', function () {
                 console.info(`case to flush`);
                 inputQueue = [];
                 outputQueue = [];
-                audioDecodeProcessor.flush().then(() => {
+                audioDecodeProcessor.flush().then(async() => {
                     console.info(`case flush 1`);
                     if (flushAtEOS) {
+                        await closeFileDescriptor(AUDIOPATH);
+                        await getFdRead(AUDIOPATH, done);
                         resetParam();
                         readFile(AUDIOPATH);
                         workdoneAtEOS = true;
@@ -1296,7 +1307,7 @@ describe('AudioDecoderReliabilityPromise', function () {
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_EOS_PROMISE_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0200.pcm';
-        let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, FLUSH, WAITFORALLOUTS);
+        let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, FLUSH, END);
         EOSFrameNum = 2;
         flushAtEOS = true;
         createAudioDecoder(savepath, mySteps, done);
@@ -1327,7 +1338,7 @@ describe('AudioDecoderReliabilityPromise', function () {
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_EOS_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0400.pcm';
-        let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, STOP, START, WAITFORALLOUTS);
+        let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, STOP, START, END);
         EOSFrameNum = 2;
         createAudioDecoder(savepath, mySteps, done);
     })

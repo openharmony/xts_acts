@@ -15,7 +15,11 @@
 
 import media from '@ohos.multimedia.media'
 import mediademo from '@ohos.multimedia.mediademo'
-import Fileio from '@ohos.fileio'
+import fileio from '@ohos.fileio'
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
+import bundle from '@ohos.bundle'
+import featureAbility from '@ohos.ability.featureAbility'
+import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoEncoderSoftwareFuncCallbackTest', function () {
@@ -31,11 +35,18 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
     let stopBuffer = false;
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const ROOT = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/';
+    const ROOT = '/data/app/el1/bundle/results/';
     const BASIC_PATH = ROOT + 'video_func_callback_';
+    let fdWrite;
+    let fileAsset;
+    const context = featureAbility.getContext();
+    const mediaLibraryTest = mediaLibrary.getMediaLibrary(context);
+    let fileKeyObj = mediaLibrary.FileKey;
     
-    beforeAll(function() {
-        console.info('beforeAll case');
+    beforeAll(async function() {
+        console.info('beforeAll case 1');
+        await applyPermission();
+        console.info('beforeAll case after get permission');
     })
 
     beforeEach(async function() {
@@ -62,6 +73,7 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
             }, failCallback).catch(failCatch);
             videoEncodeProcessor = null;
         }
+        await closeFdWrite();
     })
 
     afterAll(function() {
@@ -80,18 +92,80 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
-    function writeFile(path, buf, len){
-        try {
-            let writestream = Fileio.createStreamSync(path, 'ab+');
-            let num = writestream.writeSync(buf, {length:len});
-            writestream.flushSync();
-            writestream.closeSync();
-        } catch(e) {
-            console.error('in case error writeFile: ' + e);
+    async function applyPermission() {
+        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.video.videoencoder', 0, 100);
+        let atManager = abilityAccessCtrl.createAtManager();
+        if (atManager != null) {
+            let tokenID = appInfo.accessTokenId;
+            console.info('[permission] case accessTokenID is ' + tokenID);
+            let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
+            let permissionName2 = 'ohos.permission.READ_MEDIA';
+            let permissionName3 = 'ohos.permission.WRITE_MEDIA';
+            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
+                console.info('[permission] case grantUserGrantedPermission success :' + result);
+            }).catch((err) => {
+                console.info('[permission] case grantUserGrantedPermission failed :' + err);
+            });
+            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
+                console.info('[permission] case grantUserGrantedPermission success :' + result);
+            }).catch((err) => {
+                console.info('[permission] case grantUserGrantedPermission failed :' + err);
+            });
+            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
+                console.info('[permission] case grantUserGrantedPermission success :' + result);
+            }).catch((err) => {
+                console.info('[permission] case grantUserGrantedPermission failed :' + err);
+            });
+        } else {
+            console.info('[permission] case apply permission failed, createAtManager failed');
         }
     }
 
-    async function dequeueOutputs(path, nextStep) {
+    async function getFdWrite(pathName) {
+        console.info('[mediaLibrary] case start getFdWrite');
+        console.info('[mediaLibrary] case getFdWrite pathName is ' + pathName);
+        let mediaType = mediaLibrary.MediaType.VIDEO;
+        console.info('[mediaLibrary] case mediaType is ' + mediaType);
+        let publicPath = await mediaLibraryTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
+        console.info('[mediaLibrary] case getFdWrite publicPath is ' + publicPath);
+        let dataUri = await mediaLibraryTest.createAsset(mediaType, pathName, publicPath);
+        if (dataUri != undefined) {
+            let args = dataUri.id.toString();
+            let fetchOp = {
+                selections : fileKeyObj.ID + "=?",
+                selectionArgs : [args],
+            }
+            let fetchWriteFileResult = await mediaLibraryTest.getFileAssets(fetchOp);
+            console.info('[mediaLibrary] case getFdWrite getFileAssets() success');
+            fileAsset = await fetchWriteFileResult.getAllObject();
+            console.info('[mediaLibrary] case getFdWrite getAllObject() success');
+            fdWrite = await fileAsset[0].open('Rw');
+            console.info('[mediaLibrary] case getFdWrite fdWrite is ' + fdWrite);
+        }
+    }
+
+    async function closeFdWrite() {
+        if (fileAsset != null) {
+            await fileAsset[0].close(fdWrite).then(() => {
+                console.info('[mediaLibrary] case close fdWrite success, fd is ' + fdWrite);
+            }).catch((err) => {
+                console.info('[mediaLibrary] case close fdWrite failed');
+            });
+        } else {
+            console.info('[mediaLibrary] case fileAsset is null');
+        }
+    }
+
+    function writeFile(buf, len) {
+        try{
+            let res = fileio.writeSync(fdWrite, buf, {length: len});
+            console.info('case fileio.write buffer success');
+        } catch(e) {
+            console.info('case fileio.write buffer error is ' + e);
+        }
+    }
+
+    async function dequeueOutputs(nextStep) {
         while (outputQueue.length > 0) {
             let outputObject = outputQueue.shift();
             if (outputObject.flags == 1 || frameCountOut == frameTotal || frameCountOut == finalFrameId) {
@@ -99,7 +173,7 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
                 return;
             }
             frameCountOut++;
-            writeFile(path, outputObject.data, outputObject.length);
+            writeFile(outputObject.data, outputObject.length);
             videoEncodeProcessor.freeOutputBuffer(outputObject, (err) => {
                 if (typeof(err) == 'undefined') {
                     console.log('in case release output count:' + frameCountOut);
@@ -116,16 +190,15 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
             console.info('video encoder value is ' + property);
         }
     }
-    function setCallback(path, nextStep) {
+    function setCallback(nextStep) {
         console.info('case callback');
         videoEncodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('outputBufferAvailable');
             if (stopBuffer == false) {
                 outputQueue.push(outBuffer);
-                dequeueOutputs(path, nextStep);
+                dequeueOutputs(nextStep);
             }
         });
-
         videoEncodeProcessor.on('error',(err) => {
             console.info('in case error called, errName is' + err);
         });
@@ -162,10 +235,12 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
 
     eventEmitter.on('configure', (mediaDescription, decPath, nextStep, done) => {
         console.info('in case : configure in');
-        videoEncodeProcessor.configure(mediaDescription, (err) => {
+        videoEncodeProcessor.configure(mediaDescription, async(err) => {
             expect(err).assertUndefined();
             console.info('in case : configure success');
-            setCallback(decPath, nextStep);
+            await getFdWrite(decPath);
+            console.info('case getFdWrite success');
+            setCallback(nextStep);
             eventEmitter.emit('getVideoEncoderCaps', done);
         });
     });
@@ -270,7 +345,7 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         * @tc.level     : Level0
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_00_0100', 0, async function (done) {
-        let decPath = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_00_0100.es';
+        let decPath = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_00_0100.es';
         let mime = 'video/mp4v-es';
         let mediaDescription = {
             "codec_mime": 'video/mp4v-es',
@@ -284,7 +359,7 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
             console.info(`case getMediaCapability 1`);
             mediaCaps.getVideoEncoderCaps((err, videoCapsArray) => {
                 expect(err).assertUndefined();
-                console.info('getVideoDecoderCaps success');
+                console.info('getVideoEncoderCaps success');
                 if (typeof (videoCapsArray) != 'undefined') {
                     console.info("case videoCapsArray" + videoCapsArray);
                 } else {
@@ -332,7 +407,7 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         * @tc.level     : Level0
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0100', 0, async function (done) {
-        let decPath = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0100.es';
+        let decPath = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0100.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
             'width': 320, 
@@ -368,7 +443,7 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         * @tc.level     : Level0
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0200', 0, async function (done) {
-        let decPath = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0200.es';
+        let decPath = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0200.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
             'width': 320, 
@@ -404,7 +479,7 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         * @tc.level     : Level0
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0300', 0, async function (done) {
-        let decPath = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0300.es';
+        let decPath = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0300.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
             'width': 320, 
@@ -441,7 +516,7 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         * @tc.level     : Level0
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0400', 0, async function (done) {
-        let decPath = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0400.es';
+        let decPath = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0400.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
             'width': 320, 
@@ -477,7 +552,7 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         * @tc.level     : Level0
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0500', 0, async function (done) {
-        let decPath = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0500.es';
+        let decPath = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0500.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
             'width': 320, 
@@ -512,7 +587,7 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
         * @tc.level     : Level0
     */ 
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0600', 0, async function (done) {
-        let decPath = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0600.es';
+        let decPath = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0600.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
             'width': 320, 
@@ -520,18 +595,19 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
             'pixel_format': 3,
             'frame_rate': 30.00,
         }
-        let decPath2 = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0600_2.es';
+        let decPath2 = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0600_2.es';
         let mediaDescription2 = {
             'width': 320, 
             'height': 240,
             'pixel_format': 3,
             'frame_rate': 30.00,
         }
-        eventEmitter.on('reset_for_callback_01_0600', (done) => {
-            videoEncodeProcessor.reset((err) => {
+        eventEmitter.on('reset_for_callback_01_0600', async(done) => {
+            videoEncodeProcessor.reset(async(err) => {
                 expect(err).assertUndefined();
                 console.info('in case : reset_for_callback_01_0600 success');
                 toStopStream();
+                await closeFdWrite();
                 surfaceID = '';
                 frameCountOut = 0;
                 outputQueue = [];

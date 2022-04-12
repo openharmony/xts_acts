@@ -15,22 +15,32 @@
             "cleanup-apps": true
         },
         {
+            "type": "ShellKit",
+            "run-command": [
+                "rm -rf /storage/media/100/local/files/*",
+                "mkdir -p /data/app/el1/bundle/public/ohos.acts.multimedia.video.videodecoder/ohos.acts.multimedia.video.videodecoder/assets/entry/resources/rawfile/",
+                "chmod 777 -R /data/app/el1/bundle/public/ohos.acts.multimedia.video.videodecoder/ohos.acts.multimedia.video.videodecoder/assets/entry/resources/rawfile/"
+            ],
+            "teardown-command":[
+            ]
+        },
+        {
             "type": "PushKit",
             "pre-push": [
             ],
             "push": [
-                "./resource/media/es/out_1920_1080_30fps_3s.h264 ->/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/",
-                "./resource/media/es/h263_1408_1152.es ->/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/",
-                "./resource/media/es/MPEG2_720_480.es ->/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/",
-                "./resource/media/es/mpeg4_320_240.es ->/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/",
-                "./resource/media/es/out_320_240_10s.h264 ->/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/"
+                "./resource/media/es/out_1920_1080_30fps_3s.h264 ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.videodecoder/ohos.acts.multimedia.video.videodecoder/assets/entry/resources/rawfile/",
+                "./resource/media/es/h263_1408_1152.es ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.videodecoder/ohos.acts.multimedia.video.videodecoder/assets/entry/resources/rawfile/",
+                "./resource/media/es/MPEG2_720_480.es ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.videodecoder/ohos.acts.multimedia.video.videodecoder/assets/entry/resources/rawfile/",
+                "./resource/media/es/mpeg4_320_240.es ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.videodecoder/ohos.acts.multimedia.video.videodecoder/assets/entry/resources/rawfile/",
+                "./resource/media/es/out_320_240_10s.h264 ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.videodecoder/ohos.acts.multimedia.video.videodecoder/assets/entry/resources/rawfile/"
             ]
         },
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod 777 -R /data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder",
-                "chmod 777 /data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/*"
+                "chmod 777 -R /data/app/el1/bundle/public/ohos.acts.multimedia.video.videodecoder/ohos.acts.multimedia.video.videodecoder/assets/entry/resources/rawfile/",
+                "chmod 777 /data/app/el1/bundle/public/ohos.acts.multimedia.video.videodecoder/ohos.acts.multimedia.video.videodecoder/assets/entry/resources/rawfile/*"
             ],
             "teardown-command":[
             ]
