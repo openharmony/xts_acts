@@ -20,8 +20,8 @@ group("communication") {
      # "bluetooth_on:ActsBluetoothOnJsTest",
      # "bluetooth_standard:ActsBluetoothJsTest",
      # "dsoftbus/rpc:ActsRpcJsTest",
-      "wifi_hotspot:ActsHotSpotJSTest",
-      "wifi_p2p:ActsP2PJSTest",
+     # "wifi_hotspot:ActsHotSpotJSTest",
+     # "wifi_p2p:ActsP2PJSTest",
       "wifi_standard:ActsWifiJSTest",
     ]
   } else {
