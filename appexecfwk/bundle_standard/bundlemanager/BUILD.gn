@@ -27,7 +27,6 @@ group("bundlemanager") {
       "actsbundlemanagertest:ActsBundleManagerTest",
       "actsbundlemanageruninstall:ActsBundleManagerUninstallTest",
       "actsbundlemgrmultipleinstalltest:ActsBundleMgrMultipleInstallTest",
-      "actsbundlenativetest:ActsBundleNativeTest",
       "sceneProject/bmsaccesstokenone:bmsAccessTokenTest1",
       "sceneProject/bmsaccesstokenthree:bmsAccessTokenTest3",
       "sceneProject/bmsaccesstokentwo:bmsAccessTokenTest2",
