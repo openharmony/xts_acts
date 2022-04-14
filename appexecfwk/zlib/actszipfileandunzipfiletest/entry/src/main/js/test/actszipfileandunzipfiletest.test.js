@@ -28,7 +28,7 @@ describe('ActsZlibTest', function () {
         dir = data;
        var objectone = "com.example.amsZipfileUnzipfileST.MainAbility/com.example.amsZipfileUnzipfileST/";
        var objecttwo = "com.example.amsZipfileUnzipfileST.MainAbility/com.example.amsZipfileUnzipfileST/zipunzip";
-       var objectthree="com.example.amsZipfileUnzipfileST.MainAbility/ActsZlibTest/com.example.amsZipfileUnzipfileST/zipunzip";
+       var objectthree ="com.example.amsZipfileUnzipfileST.MainAbility/ActsZlibTest/example.amsZipfileUnzipfileST";
         infos =dir + objectone + objecttwo + objectthree;
         done();
       })
