@@ -13,4 +13,5 @@
  * limitations under the License.
  */
 
-require('./Geolocation.test.js')
+require('./GeocoderTest.test.js')
+require('./LocationTest.test.js')
