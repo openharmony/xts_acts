@@ -44,7 +44,7 @@ it('ACTS_ZipFile_0100', 0, async function (done) {
     var path ="";
     var zipDest = dir + "/ACTS_ZipFile_0100.zip"
     var options = {};
-    options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH;
+    options.level = zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION;
     zlib.zipFile(path, zipDest, options).then((data) => {
       console.log("ACTS_ZipFile_0100 data: " + data);
       expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
@@ -69,7 +69,7 @@ it('ACTS_ZipFile_0200', 0, async function (done) {
     fileio.write(fd, infos).then(function (number) {
       console.info("ACTS_ZipFile_0200 write data to file successfully:" + number);
       var options = {};
-      options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH;
+      options.level = zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION;
       zlib.zipFile(src, dir, options).then((data) => {
         console.log("ACTS_ZipFile_0200 data: " + data);
         expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
@@ -98,7 +98,7 @@ it('ACTS_ZipFile_0300', 0, async function (done) {
     fileio.write(fd, infos).then(function (number) {
       console.info("ACTS_ZipFile_0300 write data to file successfully:" + number);
       var options = {};
-      options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH;
+      options.level = zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION;
       zlib.zipFile(path, zipDest, options).then((data) => {
         console.log("ACTS_ZipFile_0300 data: " + data);
         expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
@@ -127,7 +127,7 @@ it('ACTS_ZipFile_0400', 0, async function (done) {
     fileio.write(fd, infos).then(function (number) {
       console.info("ACTS_ZipFile_0400 write data to file successfully:" + number);
       var options = {};
-      options.flush = zlib.FlushType.FLUSH_TYPE_NO_FLUSH;
+      options.level = zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION;
       zlib.zipFile(path, zipDest, options).then((data) => {
         console.log("ACTS_ZipFile_0400 data: " + data);
         expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
@@ -142,175 +142,6 @@ it('ACTS_ZipFile_0400', 0, async function (done) {
       done();
     });
   })
-
-/*
-* @tc.number: ACTS_ZipFile_1900
-* @tc.name: zipFile
-* @tc.desc: chunkSize: 64,
-*/
-it('ACTS_ZipFile_1900', 0, async function (done) {
-    console.log("==================ACTS_ZipFile_1900 start==================");
-    var path = dir + "/ACTS_ZipFile_1900.txt";
-    var zipDest = dir + "/ACTS_ZipFile_1900.zip"
-    var unzipdir = dir + "/ACTS_ZipFile_1900";
-    var unzipresultfile = unzipdir + "/ACTS_ZipFile_1900.txt";
-    var fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
-    var options = {
-      chunkSize: 64,
-    };
-    fileio.write(fd, infos).then(function (number) {
-      console.info("ACTS_ZipFile_1900 write data to file successfully:" + number);
-      zlib.zipFile(path, zipDest, options).then((data) => {
-        var zipStat = fileio.statSync(zipDest);
-        var isFile = zipStat.isFile();
-        expect(isFile).assertTrue();
-        var srcSize = fileio.statSync(path).size;
-        var destSize = zipStat.size;
-        expect(srcSize > destSize).assertTrue();
-        expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
-        fileio.mkdir(unzipdir).then(function () {
-          console.info("ACTS_ZipFile_1900 mkdir successfully");
-          zlib.unzipFile(zipDest, unzipdir, options).then((data) => {
-            var unzipStat = fileio.statSync(unzipresultfile);
-            var isFile = unzipStat.isFile();
-            expect(isFile).assertTrue();
-            var destSize = unzipStat.size;
-            var originSize = fileio.statSync(path).size;
-            var result = (originSize == destSize);
-            expect(result).assertTrue();
-            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
-            console.error('ACTS_ZipFile_1900 unzipFile');
-            done();
-          }).catch((err) => {
-            console.log("ACTS_ZipFile_1900 err: " + err);
-            done();
-          })
-        }).catch(function (error) {
-         console.info("ACTS_ZipFile_1900 mkdir failed with error:" + error);
-         done();
-        });
-      }).catch((err) => {
-        console.log("zipFile fail: " + err);
-        expect(err).assertFail();
-        done();
-      })
-    }).catch(function (err) {
-      console.info("ACTS_ZipFile_1900 write data to file failed with error:" + err);
-      done();
-    });
-    console.log("==================ACTS_ZipFile_1900 end==================");
-  });
-
-/*
-* @tc.number: ACTS_ZipFile_2000
-* @tc.name: zipFile
-* @tc.desc: chunkSize: 1024,
-*/
-it('ACTS_ZipFile_2000', 0, async function (done) {
-    console.log("==================ACTS_ZipFile_2000 start==================");
-    var path = dir + "/ACTS_ZipFile_2000.txt";
-    var zipDest = dir + "/ACTS_ZipFile_2000.zip"
-    var unzipdir = dir + "/ACTS_ZipFile_2000";
-    var unzipresultfile = unzipdir + "/ACTS_ZipFile_2000.txt";
-    var options = {
-      chunkSize: 1024,
-    };
-    var fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
-    fileio.write(fd, infos).then(function (number) {
-      console.info("ACTS_ZipFile_2000 write data to file successfully:" + number);
-      zlib.zipFile(path, zipDest, options).then((data) => {
-        var zipStat = fileio.statSync(zipDest);
-        var isFile = zipStat.isFile();
-        expect(isFile).assertTrue();
-        var srcSize = fileio.statSync(path).size;
-        var destSize = zipStat.size;
-        expect(srcSize > destSize).assertTrue();
-        expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
-        fileio.mkdir(unzipdir).then(function () {
-          console.info("ACTS_ZipFile_2000 mkdir successfully");
-          zlib.unzipFile(zipDest, unzipdir, options).then((data) => {
-            var unzipStat = fileio.statSync(unzipresultfile);
-            var isFile = unzipStat.isFile();
-            expect(isFile).assertTrue();
-            var destSize = unzipStat.size;
-            var originSize = fileio.statSync(path).size;
-            var result = (originSize == destSize);
-            expect(result).assertTrue();
-            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
-            console.error('ACTS_ZipFile_2000 unzipFile');
-            done();
-          }).catch((err) => {
-            console.log("ACTS_ZipFile_2000 err: " + err);
-            done();
-          })
-        }).catch(function (error) {
-          console.info("ACTS_ZipFile_2000 mkdir failed with error:" + error);
-        });
-      }).catch((err) => {
-        console.log("zipFile fail: " + err);
-        expect(err).assertFail();
-      })
-    }).catch(function (err) {
-      console.info("ACTS_ZipFile_2000 write data to file failed with error:" + err);
-    });
-    console.log("==================ACTS_ZipFile_2000 end==================");
-  });
-
-
-/*
-* @tc.number: ACTS_ZipFile_2100
-* @tc.name: zipFile
-* @tc.desc: chunkSize: 999,
-*/
-it('ACTS_ZipFile_2100', 0, async function (done) {
-    console.log("==================ACTS_ZipFile_2100 start==================");
-    var path = dir + "/ACTS_ZipFile_2100.txt";
-    var zipDest = dir + "/ACTS_ZipFile_2100.zip"
-    var unzipdir = dir + "/ACTS_ZipFile_2100";
-    var unzipresultfile = unzipdir + "/ACTS_ZipFile_2100.txt";
-    var options = {
-      chunkSize: 999,
-    };
-    var fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
-    fileio.write(fd, infos).then(function (number) {
-      console.info("ACTS_ZipFile_2100 write data to file successfully:" + number);
-      zlib.zipFile(path, zipDest, options).then((data) => {
-        var zipStat = fileio.statSync(zipDest);
-        var isFile = zipStat.isFile();
-        expect(isFile).assertTrue();
-        var srcSize = fileio.statSync(path).size;
-        var destSize = zipStat.size;
-        expect(srcSize > destSize).assertTrue();
-        expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
-        fileio.mkdir(unzipdir).then(function () {
-          console.info("ACTS_ZipFile_2100 mkdir successfully");
-          zlib.unzipFile(zipDest, unzipdir, options).then((data) => {
-            var unzipStat = fileio.statSync(unzipresultfile);
-            var isFile = unzipStat.isFile();
-            expect(isFile).assertTrue();
-            var destSize = unzipStat.size;
-            var originSize = fileio.statSync(path).size;
-            var result = (originSize == destSize);
-            expect(result).assertTrue();
-            expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
-            console.error('ACTS_ZipFile_2100 unzipFile');
-            done();
-          }).catch((err) => {
-            console.log("ACTS_ZipFile_2100 err: " + err);
-            done();
-          })
-        }).catch(function (error) {
-          console.info("ACTS_ZipFile_2100 mkdir failed with error:" + error);
-        });
-      }).catch((err) => {
-          console.log("zipFile fail: " + err);
-          expect(err).assertFail();
-      })
-    }).catch(function (err) {
-        console.info("ACTS_ZipFile_2100 write data to file failed with error:" + err);
-    });
-    console.log("==================ACTS_ZipFile_2100 end==================");
-  });
 
 /*
 * @tc.number: ACTS_ZipFile_2200
