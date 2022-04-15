@@ -32,7 +32,7 @@ describe('storageTest', function () {
 
     /**
      * @tc.name getStorageSync interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0010
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_Helper_0010
      * @tc.desc getStorageSync interface test
      */
     it('testGetStorageHelper001', 0, function () {
@@ -45,7 +45,7 @@ describe('storageTest', function () {
 
     /**
      * @tc.name getStorage interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0020
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_Helper_0020
      * @tc.desc getStorage interface test
      */
     it('testGetStorageHelper002', 0, async function (done) {
@@ -64,7 +64,7 @@ describe('storageTest', function () {
 
     /**
      * @tc.name removeStorageFromCacheSync interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0030
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_Helper_0030
      * @tc.desc removeStorageFromCacheSync interface test
      */
     it('testRemoveStorageFromCache001', 0, function () {
@@ -81,7 +81,7 @@ describe('storageTest', function () {
 
     /**
      * @tc.name removeStorageFromCache interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0040
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_Helper_0040
      * @tc.desc removeStorageFromCache interface test
      */
     it('testRemoveStorageFromCache002', 0, async function (done) {
@@ -98,7 +98,7 @@ describe('storageTest', function () {
 
     /**
      * @tc.name deleteStorageSync interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0050
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_Helper_0050
      * @tc.desc deleteStorageSync interface test
      */
     it('testDeleteStorageHelper001', 0, function () {
@@ -117,7 +117,7 @@ describe('storageTest', function () {
 
     /**
      * @tc.name deleteStorage interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0060
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_Helper_0060
      * @tc.desc deleteStorage interface test
      */
     it('testDeleteStorageHelper002', 0, async function (done) {
