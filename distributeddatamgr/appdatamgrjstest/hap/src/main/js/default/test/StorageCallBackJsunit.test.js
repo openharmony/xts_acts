@@ -262,7 +262,7 @@ describe('storageTest', function () {
 
         /**
      * @tc.name flush callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0010
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0170
      * @tc.desc flush callback interface test
      */
     it('testFluesh00172', 0, async function (done) {

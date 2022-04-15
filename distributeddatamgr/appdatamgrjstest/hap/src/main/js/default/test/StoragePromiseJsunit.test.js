@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import storage from '@ohos.data.storage'
 
 const PATH = '/data/test_storage';
@@ -326,7 +326,7 @@ describe('storageTest', function () {
 
     /**
      * @tc.name deleteSync promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0140
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0180
      * @tc.desc deleteSync promise interface test
      */
     it('testPutString0171', 0, async function (done) {
@@ -347,7 +347,7 @@ describe('storageTest', function () {
 
     /**
      * @tc.name flush promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0150
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0190
      * @tc.desc flush promise interface test
      */
     it('testFlush00181', 0, async function (done) {
