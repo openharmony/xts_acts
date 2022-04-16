@@ -23,7 +23,6 @@ import richTextJsunit from './RichTextJsunit.test.ets';
 import textPickerJsunit from './TextPickerJsunit.test.ets';
 import textTimerJsunit from './TextTimerJsunit.test.ets';
 import subscribedAbstractPropertyJsunit from './SubscribedAbstractPropertyJsunit.test.ets';
-import contentStorageJsunit from './ContentStorage.test.ets';
 import appStorageJsunit from './AppStorageJsunit.test.ets';
 import subscribaleAbstractJsunit from './SubscribaleAbstractJsunit.test.ets';
 import pathJsunit from './PathJsunit.test.ets';
@@ -58,7 +57,6 @@ export default function testsuite() {
   textPickerJsunit();
   textTimerJsunit();
   subscribedAbstractPropertyJsunit();
-  contentStorageJsunit();
   textClockJsunit();
   appStorageJsunit();
   subscribaleAbstractJsunit();
