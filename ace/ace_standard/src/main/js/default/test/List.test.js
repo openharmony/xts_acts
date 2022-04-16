@@ -15,7 +15,6 @@
 
 require('./basicabilityapi.test.js')
 require('./mediaquery.test.js')
-require('./commonComponentJsApi.test.js')
 require('./divProps.test.js')
 require('./buttonProps.test.js')
 require('./chartProps.test.js')
