@@ -54,6 +54,7 @@ it('ACTS_ZipFile_0100', 0, async function (done) {
       expect(err).assertFail();
       done();
     })
+    console.log("==================ACTS_ZipFile_0100 end==================");
   })
 
 /*
@@ -81,8 +82,10 @@ it('ACTS_ZipFile_0200', 0, async function (done) {
       })
     }).catch(function (err) {
       console.info("ACTS_ZipFile_0200 write data to file failed with error:" + err);
+      expect(err).assertFail();
       done();
     });
+    console.log("==================ACTS_ZipFile_0200 end==================");
   })
 
 /*
@@ -110,8 +113,10 @@ it('ACTS_ZipFile_0300', 0, async function (done) {
       })
     }).catch(function (err) {
       console.info("ACTS_ZipFile_0300 write data to file failed with error:" + err);
+      expect(err).assertFail();
       done();
     });
+    console.log("==================ACTS_ZipFile_0300 end==================");
   })
 
 /*
@@ -139,8 +144,10 @@ it('ACTS_ZipFile_0400', 0, async function (done) {
       })
     }).catch(function (err) {
       console.info("ACTS_ZipFile_0400 write data to file failed with error:" + err);
+      expect(err).assertFail();
       done();
     });
+    console.log("==================ACTS_ZipFile_0400 end==================");
   })
 
 /*
@@ -182,17 +189,23 @@ it('ACTS_ZipFile_2200', 0, async function (done) {
             done();
           }).catch((err) => {
             console.log("ACTS_ZipFile_2200 err: " + err);
+            expect(err).assertFail();
             done();
           })
         }).catch(function (error) {
           console.info("ACTS_ZipFile_2200 mkdir failed with error:" + error);
+          expect(error).assertFail();
+          done();
         });
       }).catch((err) => {
           console.log("zipFile fail: " + err);
           expect(err).assertFail();
+          done();
       })
     }).catch(function (err) {
         console.info("ACTS_ZipFile_2200 write data to file failed with error:" + err);
+        expect(err).assertFail();
+        done();
     });
     console.log("==================ACTS_ZipFile_2200 end==================");
   });
@@ -236,17 +249,23 @@ it('ACTS_ZipFile_2300', 0, async function (done) {
             done();
           }).catch((err) => {
             console.log("ACTS_ZipFile_2300 err: " + err);
+            expect(err).assertFail();
             done();
           })
         }).catch(function (error) {
           console.info("ACTS_ZipFile_2300 mkdir failed with error:" + error);
+          expect(error).assertFail();
+          done();
         });
       }).catch((err) => {
           console.log("zipFile fail: " + err);
           expect(err).assertFail();
+          done();
       })
     }).catch(function (err) {
         console.info("ACTS_ZipFile_2200 write data to file failed with error:" + err);
+        expect(err).assertFail();
+        done();
     });
      console.log("==================ACTS_ZipFile_2300 end==================");
   })
@@ -290,17 +309,23 @@ it('ACTS_ZipFile_2400', 0, async function (done) {
             done();
           }).catch((err) => {
             console.log("ACTS_ZipFile_2400 err: " + err);
+            expect(err).assertFail();
             done();
           })
         }).catch(function (error) {
           console.info("ACTS_ZipFile_2400 mkdir failed with error:" + error);
+          expect(error).assertFail();
+          done();
         });
       }).catch((err) => {
           console.log("zipFile fail: " + err);
           expect(err).assertFail();
+          done();
       })
     }).catch(function (err) {
         console.info("ACTS_ZipFile_2400 write data to file failed with error:" + err);
+        expect(err).assertFail();
+        done();
     });
     console.log("==================ACTS_ZipFile_2400 end==================");
   });
@@ -344,17 +369,23 @@ it('ACTS_ZipFile_2500', 0, async function (done) {
             done();
           }).catch((err) => {
             console.log("ACTS_ZipFile_2500 err: " + err);
+            expect(err).assertFail();
             done()
           })
         }).catch(function (error) {
           console.info("ACTS_ZipFile_2500 mkdir failed with error:" + error);
+          expect(error).assertFail();
+          done();
         });
       }).catch((err) => {
           console.log("zipFile fail: " + err);
           expect(err).assertFail();
+          done();
       })
     }).catch(function (err) {
         console.info("ACTS_ZipFile_2500 write data to file failed with error:" + err);
+        expect(err).assertFail();
+        done();
     });
     console.log("==================ACTS_ZipFile_2500 end==================");
   });
@@ -398,17 +429,23 @@ it('ACTS_ZipFile_2600', 0, async function (done) {
             done();
           }).catch((err) => {
             console.log("ACTS_ZipFile_2600 err: " + err);
+            expect(err).assertFail();
             done();
           })
         }).catch(function (error) {
           console.info("ACTS_ZipFile_2600 mkdir failed with error:" + error);
+          expect(error).assertFail();
+          done();
         });
       }).catch((err) => {
           console.log("zipFile fail: " + err);
           expect(err).assertFail();
+          done();
       })
     }).catch(function (err) {
         console.info("ACTS_ZipFile_2600 write data to file failed with error:" + err);
+        expect(err).assertFail();
+        done();
     });
     console.log("==================ACTS_ZipFile_2600 end==================");
   });
@@ -452,17 +489,23 @@ it('ACTS_ZipFile_2700', 0, async function (done) {
             done();
           }).catch((err) => {
             console.log("ACTS_ZipFile_2700 err: " + err);
+            expect(err).assertFail();
             done();
           })
         }).catch(function (error) {
           console.info("ACTS_ZipFile_2700 mkdir failed with error:" + error);
+          expect(error).assertFail();
+          done();
         });
       }).catch((err) => {
           console.log("zipFile fail: " + err);
          expect(err).assertFail();
+         done();
       })
     }).catch(function (err) {
         console.info("ACTS_ZipFile_2700 write data to file failed with error:" + err);
+        expect(err).assertFail();
+        done();
     });
     console.log("==================ACTS_ZipFile_2700 end==================");
   });
@@ -506,17 +549,23 @@ it('ACTS_ZipFile_2800', 0, async function (done) {
             done();
           }).catch((err) => {
             console.log("ACTS_ZipFile_2800 err: " + err);
+            expect(err).assertFail();
             done();
           })
         }).catch(function (error) {
           console.info("ACTS_ZipFile_2800 mkdir failed with error:" + error);
+          expect(error).assertFail();
+          done();
         });
       }).catch((err) => {
           console.log("zipFile fail: " + err);
           expect(err).assertFail();
+          done();
       })
     }).catch(function (err) {
         console.info("ACTS_ZipFile_2800 write data to file failed with error:" + err);
+        expect(err).assertFail();
+        done();
     });
     console.log("==================ACTS_ZipFile_2800 end==================");
   });
@@ -560,17 +609,23 @@ it('ACTS_ZipFile_2900', 0, async function (done) {
               done();
             }).catch((err) => {
               console.log("ACTS_ZipFile_2900 err: " + err);
+              expect(err).assertFail();
               done();
             })
           }).catch(function (error) {
             console.info("ACTS_ZipFile_2900 mkdir failed with error:" + error);
+            expect(error).assertFail();
+            done();
           });
       }).catch((err) => {
           console.log("zipFile fail: " + err);
           expect(err).assertFail();
+          done();
       })
     }).catch(function (err) {
         console.info("ACTS_ZipFile_2900 write data to file failed with error:" + err);
+        expect(err).assertFail();
+        done();
     });
     console.log("==================ACTS_ZipFile_2900 end==================");
   });
@@ -614,17 +669,23 @@ it('ACTS_ZipFile_3000', 0, async function (done) {
             done();
           }).catch((err) => {
             console.log("ACTS_ZipFile_3000 err: " + err);
+            expect(err).assertFail();
             done();
           })
         }).catch(function (error) {
           console.info("ACTS_ZipFile_3000 mkdir failed with error:" + error);
+          expect(error).assertFail();
+          done();
         });
       }).catch((err) => {
           console.log("zipFile fail: " + err);
           expect(err).assertFail();
+          done();
       })
     }).catch(function (err) {
         console.info("ACTS_ZipFile_3000 write data to file failed with error:" + err);
+        expect(err).assertFail();
+        done();
     });
     console.log("==================ACTS_ZipFile_3000 end==================");
   });
@@ -668,17 +729,23 @@ it('ACTS_ZipFile_3100', 0, async function (done) {
             done();
           }).catch((err) => {
             console.log("ACTS_ZipFile_3100 err: " + err);
+            expect(err).assertFail();
             done();
           })
         }).catch(function (error) {
           console.info("ACTS_ZipFile_3100 mkdir failed with error:" + error);
+          expect(error).assertFail();
+          done();
         });
       }).catch((err) => {
           console.log("zipFile fail: " + err);
           expect(err).assertFail();
+          done();
       })
     }).catch(function (err) {
         console.info("ACTS_ZipFile_3100 write data to file failed with error:" + err);
+        expect(err).assertFail();
+        done();
     });
     console.log("==================ACTS_ZipFile_3100 end==================");
   });
@@ -722,16 +789,23 @@ it('ACTS_ZipFile_3200', 0, async function (done) {
             done();
           }).catch((err) => {
             console.log("ACTS_ZipFile_3200 err: " + err);done();
+            expect(err).assertFail();
+            done();
           })
         }).catch(function (error) {
           console.info("ACTS_ZipFile_3200 mkdir failed with error:" + error);
+          expect(error).assertFail();
+          done();
         });
       }).catch((err) => {
           console.log("zipFile fail: " + err);
           expect(err).assertFail();
+          done();
       })
     }).catch(function (err) {
         console.info("ACTS_ZipFile_3200 write data to file failed with error:" + err);
+        expect(err).assertFail();
+        done();
     });
     console.log("==================ACTS_ZipFile_3200 end==================");
   });
@@ -775,17 +849,23 @@ it('ACTS_ZipFile_3300', 0, async function (done) {
             done();
           }).catch((err) => {
             console.log("ACTS_ZipFile_3300 err: " + err);
+            expect(err).assertFail();
             done();
           })
         }).catch(function (error) {
           console.info("ACTS_ZipFile_3300 mkdir failed with error:" + error);
+          expect(error).assertFail();
+          done();
         });
       }).catch((err) => {
           console.log("zipFile fail: " + err);
           expect(err).assertFail();
+          done();
       })
     }).catch(function (err) {
         console.info("ACTS_ZipFile_3300 write data to file failed with error:" + err);
+        expect(err).assertFail();
+        done();
     });
     console.log("==================ACTS_ZipFile_3300 end==================");
   });
@@ -806,17 +886,20 @@ it('ACTS_ZipFile_3500', 0, async function (done) {
     fileio.write(fd, infos).then(function (number) {
       console.info("ACTS_ZipFile_3500 write  successfully:" + number);
       zlib.zipFile(src, dir, options).then((data) => {
-        console.log("zipFilePromise_3500 data: " + data);
+        console.log("ACTS_ZipFile_3500 data: " + data);
         expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
         done();
       }).catch((err) => {
-        console.log("zipFilePromise_3500 err: " + err);
+        console.log("ACTS_ZipFile_3500 err: " + err);
+        expect(err).assertFail();
         done();
       });
     }).catch(function (err) {
       console.info("ACTS_ZipFile_3500 write data to file failed with error:" + err);
+      expect(err).assertFail();
+      done();
     });
-    console.log("==================zipFilePromise_3500 end ==================");
+    console.log("==================ACTS_ZipFile_3500 end ==================");
   })
 
 /*
@@ -834,17 +917,20 @@ it('ACTS_ZipFile_3600', 0, async function (done) {
     fileio.write(fd, infos).then(function (number) {
       console.info("ACTS_ZipFile_3600 write data to file successfully:" + number);
       zlib.zipFile(path, zipDest, options).then((data) => {
-        console.log("zipFilePromise_3600 data: " + data);
+        console.log("ACTS_ZipFile_3600 data: " + data);
         expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
         done();
       }).catch((err) => {
-        console.log("zipFilePromise_3600 err: " + err);
+        console.log("ACTS_ZipFile_3600 err: " + err);
+        expect(err).assertFail();
         done();
       });
     }).catch(function (err) {
       console.info("ACTS_ZipFile_3600 write data to file failed with error:" + err);
+      expect(err).assertFail();
+      done();
     });
-    console.log("==================zipFilePromise_3600 end ==================")
+    console.log("==================ACTS_ZipFile_3600 end ==================")
   })
 
 /*
@@ -880,18 +966,25 @@ it('ACTS_ZipFile_4500', 0, async function (done) {
               done();
             }).catch((err) => {
               console.log("ACTS_ZipFile_4500 err: " + err);
+              expect(err).assertFail();
               done();
             })
           }).catch(function (error) {
             console.info("ACTS_ZipFile_4500 mkdir failed with error:" + error);
+            expect(error).assertFail();
+            done();
           });
       }).catch((err) => {
          console.log("zipFile fail: " + err);
          expect(err).assertFail();
+         done();
       })
     }).catch(function (err) {
         console.info("ACTS_ZipFile_4500 write data to file failed with error:" + err);
+        expect(err).assertFail();
+        done();
     });
+    console.log("==================ACTS_ZipFile_4500 end==================");
   })
 
 /*
@@ -932,14 +1025,20 @@ it('ACTS_ZipFile_4900', 0, async function (done) {
           })
         }).catch(function (error) {
           console.info("ACTS_ZipFile_4900 mkdir failed with error:" + error);
+          expect(error).assertFail();
+          done();
         });
       }).catch(err => {
         console.log("zipFile fail: " + err);
         expect(err).assertFail();
+        done();
       })
     }).catch(function (err) {
       console.info("ACTS_ZipFile_4900 write data to file failed with error:" + err);
+      expect(err).assertFail();
+      done();
     });
+    console.log("==================ACTS_ZipFile_4900 end==================");
 })
     
 /*
@@ -978,14 +1077,20 @@ it('ACTS_ZipFile_5000', 0, async function (done) {
           })
         }).catch(function (error) {
           console.info("ACTS_ZipFile_5000 mkdir failed with error:" + error);
+          expect(error).assertFail();
+          done();
         });
       }).catch(err => {
         console.log("zipFile fail: " + err);
         expect(err).assertFail();
+        done();
       })
     }).catch(function (err) {
       console.info("ACTS_ZipFile_5000 write data to file failed with error:" + err);
+      expect(err).assertFail();
+      done();
     });
+    console.log("==================ACTS_ZipFile_5000 end==================");
     })
 })
 
