@@ -207,7 +207,7 @@ describe('ActsAmsTestThirdScene', function () {
             console.log('Acts_test_4700 success: ' + data);
         }).catch(err => {
             console.log('Acts_test_4700 failed: ' + err.code);
-            expect(err.code).assertEqual(2097215);
+            expect(err.code).assertEqual(2097183);
             done();
         });
     })

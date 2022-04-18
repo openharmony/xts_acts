@@ -267,7 +267,7 @@ describe('ActsAmsCallBackFourthScene', function () {
         appManager.killProcessesByBundleName('xxxxxxxxx',
             (error) => {
                 console.info('Acts_Ams_test_6400 killProcessesByBundleName error.code ' + error.code);
-                expect(error.code).assertEqual(2097215);
+                expect(error.code).assertEqual(2097183);
                 done();
             });
     })
