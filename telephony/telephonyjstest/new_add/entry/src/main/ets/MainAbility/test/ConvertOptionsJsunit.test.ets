@@ -15,7 +15,7 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-import  ConvertXML from '@ohos.convertxml'
+import  convertxml from '@ohos.convertxml'
 export default function convertOptionsJsunit() {
   describe('XmlTest',function () {
     console.log("************* settings Test start*************");
@@ -27,8 +27,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false,trim :true})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false,trim :true}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -59,8 +59,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreDeclaration: true});
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreDeclaration: true}));
       var str1 = '{"_elements":[{"_type":"element",'+
       '"_name":"note",'+
       '"_attributes":{"importance":"high",'+
@@ -89,8 +89,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreDeclaration: true});
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreDeclaration: true}));
       var str1 = '{"_elements":[{"_type":"element",'+
       '"_name":"note",'+
       '"_attributes":{"importance":"high",'+
@@ -119,8 +119,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreAttributes: true});
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreAttributes: true}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -150,8 +150,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreComment: true})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreComment: true}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -183,8 +183,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreCDATA: true})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreCDATA: true}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -216,8 +216,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreDoctype: true})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreDoctype: true}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -248,8 +248,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreText: true})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreText: true}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -274,8 +274,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, declarationKey: "123"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, declarationKey: "123"}));
       var str1 = '{"123":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -307,8 +307,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, instructionKey: "123"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, instructionKey: "123"}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -343,8 +343,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, attributesKey: "123"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, attributesKey: "123"}));
       var str1 = '{"_declaration":{"123":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"123":{"importance":"high",'+
@@ -378,8 +378,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, textKey: "123"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, textKey: "123"}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -411,8 +411,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, cdataKey: "123"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, cdataKey: "123"}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -446,8 +446,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, doctypeKey: 'doctype'})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, doctypeKey: 'doctype'}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"doctype","doctype":"foo"},'+
@@ -480,8 +480,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, commentKey: "123"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, commentKey: "123"}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"123":"note",'+
@@ -515,8 +515,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, parentKey: "123"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, parentKey: "123"}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -551,8 +551,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, typeKey: "123"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, typeKey: "123"}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"123":"element",'+
@@ -583,8 +583,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, nameKey: "123"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, nameKey: "123"}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"123":"note",'+
@@ -615,8 +615,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, elementsKey: "123"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, elementsKey: "123"}));
       var str1 = '{"123":[{"123":[{"123":[{"_type":"text",'+
       '"_text":"Happy"}],'+
       '"_type":"element",'+
@@ -647,8 +647,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false,trim :true})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false,trim :true}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -679,8 +679,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreDeclaration: true});
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreDeclaration: true}));
       var str1 = '{"_elements":[{"_type":"element",'+
       '"_name":"note",'+
       '"_attributes":{"importance":"high",'+
@@ -709,8 +709,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreDeclaration: true});
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreDeclaration: true}));
       var str1 = '{"_elements":[{"_type":"element",'+
       '"_name":"note",'+
       '"_attributes":{"importance":"high",'+
@@ -739,8 +739,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreAttributes: true});
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreAttributes: true}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -770,8 +770,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreComment: true})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreComment: true}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -803,8 +803,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreCDATA: true})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreCDATA: true}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -836,8 +836,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreDoctype: true})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreDoctype: true}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -868,8 +868,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreText: true})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreText: true}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -894,8 +894,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, declarationKey: "456"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, declarationKey: "456"}));
       var str1 = '{"456":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -927,8 +927,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, instructionKey: "456"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, instructionKey: "456"}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -963,8 +963,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, attributesKey: "456"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, attributesKey: "456"}));
       var str1 = '{"_declaration":{"456":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"456":{"importance":"high",'+
@@ -998,8 +998,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, textKey: "456"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, textKey: "456"}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -1031,8 +1031,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, cdataKey: "456"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, cdataKey: "456"}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -1066,8 +1066,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, doctypeKey: 'doctype_next'})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, doctypeKey: 'doctype_next'}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"doctype","doctype_next":"foo"},'+
@@ -1100,8 +1100,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, commentKey: "456"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, commentKey: "456"}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"456":"note",'+
@@ -1135,8 +1135,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, parentKey: "456"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, parentKey: "456"}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
@@ -1171,8 +1171,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, typeKey: "123"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, typeKey: "123"}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"123":"element",'+
@@ -1203,8 +1203,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, nameKey: "123"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, nameKey: "123"}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"123":"note",'+
@@ -1235,8 +1235,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, elementsKey: "123"})
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, elementsKey: "123"}));
       var str1 = '{"123":[{"123":[{"123":[{"_type":"text",'+
       '"_text":"Happy"}],'+
       '"_type":"element",'+
@@ -1273,8 +1273,8 @@ export default function convertOptionsJsunit() {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-      var convertml = new ConvertXML();
-      var result1 = convertml.convert(xml, {compact: false, ignoreInstruction: true});
+      var conv = new convertxml.ConvertXML();
+      var result1 = JSON.stringify(conv.convert(xml, {compact: false, ignoreInstruction: true}));
       var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
       '"encoding":"utf-8"}},'+
       '"_elements":[{"_type":"element",'+
