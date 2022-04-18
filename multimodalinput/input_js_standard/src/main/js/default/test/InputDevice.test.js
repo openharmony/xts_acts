@@ -96,15 +96,36 @@ describe('MultimodalInput_test', function () {
           inputDevice.getDevice(data[i], (res, err) => {
             console.log(`getDevice:data ${JSON.stringify(data)}`)
             arr = Object.keys(res);
-            expect(data[i].id).assertInstanceOf('number');
-            expect(data[i].sources).assertInstanceOf('string');
-            expect(data[i].name).assertInstanceOf('Array');
-            expect(data[i].axisRanges).assertInstanceOf('Array');
+            expect(res.id).assertInstanceOf('number');
+            expect(res.sources).assertInstanceOf('string');
+            expect(res.name).assertInstanceOf('Array');
+            expect(res.axisRanges).assertInstanceOf('Array');
           })
           expect(arr.length > 0).assertTrue();
         }
       }
       console.log(`inputDevice::getDevice_test-03 exit`);
+    });
+  })
+
+  // 参数正常,返回值正常
+  it("inputDevice::getKeystrokeAbility_test-01", 0, function () {
+    console.log(`inputDevice::getKeystrokeAbility_test-01 enter`);
+    inputDevice.getDeviceIds((data, err) => {
+      if (err) {
+        expect(false).assertTrue();
+      } else {
+        let arr = [];
+        for (let i = 0; i < data.length; ++i) {
+          inputDevice.getKeystrokeAbility(data[i], [17, 22, 2055], (res, err) => {
+            arr = Object.keys(res);
+            expect(res.keyCode).assertInstanceOf('number');
+            expect(res.isSupport).assertInstanceOf('boolean');
+          });
+          expect(arr.length > 0).assertTrue();
+        }
+      }
+      console.log(`inputDevice::getKeystrokeAbility_test-01 exit`);
     });
   })
 })
