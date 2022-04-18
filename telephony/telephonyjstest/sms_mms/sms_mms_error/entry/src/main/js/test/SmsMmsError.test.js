@@ -343,8 +343,8 @@ describe('SmsMmsErrorTest', function () {
         return;
       }
 	  if (result.length > 0) {
-		  except(result[0].shortMessage != null).assertTrue();
-		  except(result[0].indexOnSim != -1).assertTrue();
+		  expect(result[0].shortMessage != null).assertTrue();
+		  expect(result[0].indexOnSim != -1).assertTrue();
 	  }
       expect(result === undefined || result.length === 0).assertTrue();
       console.log('Telephony_SmsMms_getAllSIMMessages_Async_0200 finish');
@@ -776,7 +776,7 @@ describe('SmsMmsErrorTest', function () {
     };
     try {
       let encodePromise = await sms.encodeMms({messageType: sms.TYPE_MMS_READ_ORIG_IND, mmsType});
-      expect(encodePromise.length > 0).assertTrue();
+      expect(encodePromise.length == 0).assertTrue();
       console.log('Telephony_SmsMms_encodeMms_Promise_0900 encodeMms finish');
       let promise = await sms.decodeMms(encodePromise);
       expect(promise.messageType === sms.TYPE_MMS_READ_ORIG_IND).assertTrue();
