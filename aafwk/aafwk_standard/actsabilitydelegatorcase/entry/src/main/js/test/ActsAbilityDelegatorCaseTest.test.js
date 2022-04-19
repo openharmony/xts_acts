@@ -268,7 +268,7 @@ describe('ActsStServiceAbilityTest', function () {
                 done();
             }
             var context = featureAbility.getContext()
-            var result = context.getDisplayOrientation().then((data) => {
+            var result = await context.getDisplayOrientation().then((data) => {
                 clearTimeout(currentAlertTimeout);
                 console.debug("ACTS_AGetDisplayOrientation_0200====DisplayOrientation>"
                     + JSON.stringify(DisplayOrientation) + " , err= " + err);

@@ -223,7 +223,7 @@ describe('ActsAmsCallBackSecondScene', function () {
             (error, info) => {
                 console.info('Acts_Ams_test_3200 killProcessesByBundleName error.code: \
                     ' + error.code + ',data  [' + info + ']');
-                expect(error.code).assertEqual(2097215);
+                expect(error.code).assertEqual(2097183);
                 done();
             });
     })
