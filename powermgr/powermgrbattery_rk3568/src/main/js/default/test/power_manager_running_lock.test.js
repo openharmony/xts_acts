@@ -210,4 +210,63 @@ describe('appInfoTest', function () {
             }
         })
     })
+    it('power_wakeupDevice_test_string', 0, async function (done) {//wakeupDevice(detail: string): void
+        power.isScreenOn()
+            .then(screenOn => {
+                console.info('power_wakeupDevice_test_string: The current screenOn is ' + screenOn);
+                if (screenOn) {
+                    power.suspendDevice();
+                }  
+            })
+            .catch(error => {
+                console.log('power_wakeupDevice_test_string error: ' + error);
+                expect().assertFail();
+                done();
+            })
+        setTimeout(function(){
+            power.wakeupDevice("power_wakeupDevice_test_string");
+            power.isScreenOn()
+            .then(screenOn => {
+                console.info('power_wakeupDevice_test_string: The current screenOn is ' + screenOn);
+                expect(screenOn).assertTrue();
+                console.info('power_wakeupDevice_test_string success');
+                done();
+            })
+            .catch(error => {
+                console.log('power_wakeupDevice_test_string error: ' + error);
+                expect().assertFail();
+                done();
+            })
+        }, 2000); 
+    })
+    it('power_suspendDevice_test', 0, async function (done) {//function suspendDevice(): void;
+        power.isScreenOn()
+            .then(screenOn => {
+                console.info('power_suspendDevice_test: The current screenOn is ' + screenOn);
+                if (!screenOn) { 
+                    power.wakeupDevice("power_suspendDevice_test");
+                } 
+            })
+            .catch(error => {
+                console.log('power_suspendDevice_test error: ' + error);
+                expect().assertFail();
+                done();
+            })
+        setTimeout(function(){
+            power.suspendDevice();
+            console.info('power_suspendDevice_test: SuspendDevice end');
+            power.isScreenOn()
+            .then(screenOn => {
+                console.info('power_suspendDevice_test: The current screenOn is ' + screenOn);
+                expect(screenOn).assertFalse();
+                console.info('power_suspendDevice_test success');
+                done();
+            })
+            .catch(error => {
+                console.log('power_suspendDevice_test error: ' + error);
+                expect().assertFail();
+                done();
+            })
+        }, 2000); 
+    })
 })
