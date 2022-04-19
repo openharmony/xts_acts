@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Huawei Device Co., Ltd.
+# Copyright (C) 2021-2022 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -17,6 +17,7 @@ group("powermgr") {
     if (is_standard_system) {
       deps = [
         "powermgrbattery_rk3568:powermgr_battery_test_rk3568",
+        "powermgrdisplay:powermgr_display_test",
         "powermgrthermal:powermgr_thermal_test",
       ]
     }
@@ -24,6 +25,7 @@ group("powermgr") {
     if (is_standard_system) {
       deps = [
         "powermgrbattery:powermgr_battery_test",
+        "powermgrdisplay:powermgr_display_test",
         "powermgrthermal:powermgr_thermal_test",
       ]
     }
