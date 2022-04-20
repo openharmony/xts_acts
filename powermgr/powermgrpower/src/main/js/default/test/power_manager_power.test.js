@@ -19,6 +19,12 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 describe('appInfoTest', function () {
     console.log("*************Power Unit Test Begin*************");
+
+    /**
+     * @tc.number power_js_001
+     * @tc.name power_is_screen_on_promise_test
+     * @tc.desc Checks whether the screen of a device is on or off
+     */
     it('power_is_screen_on_promise_test', 0, async function (done) {//isScreenOn(): Promise<boolean>
         power.wakeupDevice("power_is_screen_on_promise_test");
         power.isScreenOn()
@@ -34,6 +40,12 @@ describe('appInfoTest', function () {
                 done();
             })
     })
+
+    /**
+     * @tc.number power_js_002
+     * @tc.name power_is_screen_on_callback_test
+     * @tc.desc Checks whether the screen of a device is on or off
+     */
     it('power_is_screen_on_callback_test', 0, async function (done) {//isScreenOn(callback: AsyncCallback<boolean>)
         power.wakeupDevice("power_is_screen_on_callback_test");
         power.isScreenOn((error, screenOn) => {
@@ -49,6 +61,12 @@ describe('appInfoTest', function () {
             }
         })
     })
+
+    /**
+     * @tc.number power_js_003
+     * @tc.name power_wakeupDevice_test_string
+     * @tc.desc Try to wakeup the device and let screen on
+     */
     it('power_wakeupDevice_test_string', 0, async function (done) {//wakeupDevice(detail: string): void
         power.isScreenOn()
             .then(screenOn => {
@@ -78,6 +96,12 @@ describe('appInfoTest', function () {
             })
         }, 2000); 
     })
+
+    /**
+     * @tc.number power_js_003
+     * @tc.name power_suspendDevice_test
+     * @tc.desc Try to suspend the device and let screen off
+     */
     it('power_suspendDevice_test', 0, async function (done) {//function suspendDevice(): void;
         power.isScreenOn()
             .then(screenOn => {

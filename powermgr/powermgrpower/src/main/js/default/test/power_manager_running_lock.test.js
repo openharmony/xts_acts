@@ -13,17 +13,19 @@
  * limitations under the License.
  */
 
-import app from '@system.app'
-import Context from '@ohos.napi_context'
 import runningLock from '@ohos.runningLock';
-import power from '@ohos.power';
 import '@ohos.permission.RUNNING_LOCK'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 describe('appInfoTest', function () {
-    console.log("*************Power Unit Test Begin*************");
-    //createRunningLock(name: string, type: RunningLockType): Promise<RunningLock>
+    console.log("*************RunningLock Unit Test Begin*************");
+
+    /**
+     * @tc.number running_lock_js_001
+     * @tc.name create_running_lock_promise_test
+     * @tc.desc Create running lock
+     */
     it('create_running_lock_promise_test', 0, async function (done) {
         runningLock.createRunningLock("running_lock_test_1", runningLock.RunningLockType.BACKGROUND)
             .then(runninglock => {
@@ -37,7 +39,12 @@ describe('appInfoTest', function () {
                 done();
             })
     })
-    //createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback<RunningLock>)
+
+    /**
+     * @tc.number running_lock_js_002
+     * @tc.name create_running_lock_callback_test
+     * @tc.desc Create running lock
+     */
     it('create_running_lock_callback_test', 0, async function (done) {
         runningLock.createRunningLock("running_lock_test_2", runningLock.RunningLockType.BACKGROUND,
             (error, runninglock) => {
@@ -60,7 +67,12 @@ describe('appInfoTest', function () {
                 }
             })
     })
-    //lock(timeout: number)
+
+    /**
+     * @tc.number running_lock_js_003
+     * @tc.name running_lock_lock_test
+     * @tc.desc Prevents the system from hibernating and sets the lock duration
+     */
     it('running_lock_lock_test', 0, async function (done) {
         runningLock.createRunningLock("running_lock_test_3", runningLock.RunningLockType.BACKGROUND)
             .then(runninglock => {
@@ -81,7 +93,12 @@ describe('appInfoTest', function () {
                 done();
             })
     })
-    //isUsed()
+
+    /**
+     * @tc.number running_lock_js_004
+     * @tc.name running_lock_lock_test
+     * @tc.desc Checks whether a lock is held or in use
+     */
     it('running_lock_isused_test', 0, async function (done) {
         runningLock.createRunningLock("running_lock_test_4", runningLock.RunningLockType.BACKGROUND)
             .then(runninglock => {
@@ -98,7 +115,12 @@ describe('appInfoTest', function () {
                 done();
             })
     })
-    //unlock()
+
+    /**
+     * @tc.number running_lock_js_005
+     * @tc.name running_lock_unlock_test
+     * @tc.desc Release running lock
+     */
     it('running_lock_unlock_test', 0, async function (done) {
         runningLock.createRunningLock("running_lock_test_5", runningLock.RunningLockType.BACKGROUND)
             .then(runninglock => {
@@ -123,21 +145,36 @@ describe('appInfoTest', function () {
                 done();
             })
     })
-    //Runninglock锁的类型为BACKGROUND
+
+    /**
+     * @tc.number running_lock_js_006
+     * @tc.name enum_runningLock_type_background_test
+     * @tc.desc The lock type is BACKGROUND
+     */
     it('enum_runningLock_type_background_test', 0, function () {
         let runningLockType = runningLock.RunningLockType.BACKGROUND;
         console.info('runningLockType = ' + runningLockType);
         expect(runningLockType == 1).assertTrue();
         console.info('enum_runningLock_type_background_test success');
     })
-    //Runninglock锁的类型为PROXIMITY_SCREEN_CONTROL
+
+    /**
+     * @tc.number running_lock_js_007
+     * @tc.name enum_runningLock_type_proximityscreencontrol_test
+     * @tc.desc The lock type is PROXIMITY_SCREEN_CONTROL
+     */
     it('enum_runningLock_type_proximityscreencontrol_test', 0, function () {
         let runningLockType = runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL;
         console.info('runningLockType = ' + runningLockType);
         expect(runningLockType == 2).assertTrue();
         console.info('enum_runningLock_type_proximityscreencontrol_test success');
     })
-    //isRunningLockTypeSupported(type: RunningLockType): Promise<boolean>
+
+    /**
+     * @tc.number running_lock_js_008
+     * @tc.name is_runninglock_type_supported_promise_test_1
+     * @tc.desc Checks whether the specified RunningLockType is supported.
+     */
     it('is_runninglock_type_supported_promise_test_1', 0, async function (done) {
         runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.PROXIMITY_SCREEN_CONTROL)
             .then(supported => {
@@ -152,7 +189,12 @@ describe('appInfoTest', function () {
                 done();
             })
     })
-    //isRunningLockTypeSupported(type: RunningLockType)  多余
+
+    /**
+     * @tc.number running_lock_js_009
+     * @tc.name is_runninglock_type_supported_promise_test_2
+     * @tc.desc Checks whether the specified RunningLockType is supported.
+     */
     it('is_runninglock_type_supported_promise_test_2', 0, async function (done) {
         runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
             .then(supported => {
@@ -167,7 +209,12 @@ describe('appInfoTest', function () {
                 done();
             })
     })
-    //isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback<boolean>)
+
+    /**
+     * @tc.number running_lock_js_010
+     * @tc.name is_runninglock_type_supported_callback_test_3
+     * @tc.desc Checks whether the specified RunningLockType is supported.
+     */
     it('is_runninglock_type_supported_callback_test_3', 0, async function (done) {
         runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (error, supported) => {
             if (typeof error === "undefined") {
