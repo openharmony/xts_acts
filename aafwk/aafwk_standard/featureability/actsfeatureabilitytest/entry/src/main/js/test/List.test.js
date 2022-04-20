@@ -13,3 +13,4 @@
  * limitations under the License.
  */
 require('./FeatureAbilityJsunit.test.js')
+require('./StartAbilityJsunit.test.js')
