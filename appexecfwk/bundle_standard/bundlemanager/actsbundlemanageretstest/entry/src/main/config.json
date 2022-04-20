@@ -29,6 +29,9 @@
       },
       {
         "name": "ohos.permission.CHANGE_ABILITY_ENABLED_STATE"
+      },
+      {
+        "name": "ohos.permission.INSTALL_BUNDLE"
       }
     ],
     "distro": {
