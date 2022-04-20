@@ -12,7 +12,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('./battery_unit.test.js')
-require('./battery_common_event.test.js')
 require('./power_manager_running_lock.test.js')
-require('./system_battery.test.js')
+require('./power_manager_power.test.js')
