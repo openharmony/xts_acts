@@ -15,8 +15,8 @@ group("powermgr") {
   testonly = true
   deps = [
     "powermgrbattery:powermgr_battery_test",
+    "powermgrdisplay:powermgr_display_test",
     "powermgrpower:powermgr_power_test",
     "powermgrthermal:powermgr_thermal_test",
-    "powermgrdisplay:powermgr_display_test",
   ]
 }
