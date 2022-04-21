@@ -13,5 +13,5 @@
  * limitations under the License.
  */
 
-require('./ActsBmsJsTest.test.js'),
+require('./ActsBmsJsTest.test.js')
 require('./ActsBmsHasInstalldTest.test.js')
