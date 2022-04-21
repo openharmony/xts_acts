@@ -51,7 +51,7 @@ describe('rdbStoreInsertTest', function () {
 
     /**
      * @tc.name rdb transaction insert test
-     * @tc.number SUB_DDM_AppDataFWK_testRdbTransactionInsert0001
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_testRdbTransactionInsert0001
      * @tc.desc rdb transaction insert & commit, the result comes out is 3 items;
      */
     it('testRdbTransactionInsert0001', 0, async function (done) {
@@ -86,7 +86,7 @@ describe('rdbStoreInsertTest', function () {
 
     /**
      * @tc.name rdb transaction insert test
-     * @tc.number SUB_DDM_AppDataFWK_testRdbTransactionInsert0002
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_testRdbTransactionInsert0002
      * @tc.desc rdb transaction insert & commit, the result comes out is 3 items;
      */
     it('testRdbTransactionInsert0002', 0, async function (done) {
@@ -137,7 +137,7 @@ describe('rdbStoreInsertTest', function () {
 
     /**
      * @tc.name rdb transaction insert test
-     * @tc.number SUB_DDM_AppDataFWK_testRdbTransactionInsert0003
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_testRdbTransactionInsert0003
      * @tc.desc while using transaction to insert values, querying the db,
      *     the result comes out is 0;
      */
