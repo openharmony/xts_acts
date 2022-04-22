@@ -10,17 +10,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import("//build/ohos_var.gni")
 import("//test/xts/tools/build/suite.gni")
 
-group("security") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "access_token/AccessTokenTest_NoPermission_js:ActsAccessTokenJSApiTestNoPermission",
-      "access_token/AccessTokenTest_Normal_js:ActsAccessTokenJSApiTestNormal",
-      "huks_standard",
-      "security_huks_basic",
-    ]
-  }
+ohos_js_hap_suite("huksderive_callback_basic_js_test") {
+  hap_profile = "./entry/src/main/config.json"
+  deps = [
+    ":huks_js_assets",
+    ":huks_js_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "huksDeriveBasicCallbackJSApiTest"
+}
+ohos_js_assets("huks_js_assets") {
+  source_dir = "./entry/src/main/js/MainAbility"
+}
+ohos_resources("huks_js_resources") {
+  sources = [ "./entry/src/main/js/resources" ]
+  hap_profile = "./entry/src/main/config.json"
 }
