@@ -28,6 +28,8 @@ describe('VideoPlayerFuncCallbackTest', function () {
     const CREATE_EVENT = 'create';
     const SETSURFACE_EVENT = 'setDisplaySurface';
     const GETDESCRIPTION = 'getTrackDescription';
+    const SETSOURCE_EVENT = 'setSource';
+    const SETFDSOURCE_EVENT = 'setFdSource';
     const PREPARE_EVENT = 'prepare';
     const SRC_PREPARE_EVENT = 'src2prepare';
     const PLAY_EVENT = 'play';
@@ -39,13 +41,16 @@ describe('VideoPlayerFuncCallbackTest', function () {
     const SEEK_MODE_EVENT = 'seekMode';
     const SETVOLUME_EVENT = 'volume';
     const SETSPEED_EVENT = 'speed';
+    const SETLOOP_EVENT = 'loop';
+    const WAIT_EVENT = 'wait';
+    const ERROR_EVENT = 'error';
     const END_EVENT = 'end';
-    const VOLUME_VALUE = 1;
-    const SPEED_VALUE = 1;
     const DELTA_TIME = 1000;
     const NEXT_FRAME_TIME = 8333;
     const PREV_FRAME_TIME = 4166;
+    const DELTA_SEEK_TIME = 100;
     let surfaceID = '';
+    let fdHead = 'fd://';
     let fileDescriptor = undefined;
     let page = 0;
     let events = require('events');
@@ -119,7 +124,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
             eventEmitter.emit(steps[0], videoPlayer, steps, done);
         }
     }
-    function setOnCallback(videoPlayer) {
+    function setOnCallback(videoPlayer, steps, done) {
         videoPlayer.on('playbackCompleted', () => {
             console.info('case playbackCompleted success');
         });
@@ -139,6 +144,10 @@ describe('VideoPlayerFuncCallbackTest', function () {
 
         videoPlayer.on('error', (error) => {
             console.info(`case error called,errMessage is ${error.message}`);
+            if (steps[0] == ERROR_EVENT) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
+            }
         });
     }
 
@@ -147,9 +156,12 @@ describe('VideoPlayerFuncCallbackTest', function () {
         media.createVideoPlayer((err, video) => {
             if (typeof (video) != 'undefined') {
                 videoPlayer = video;
-                setOnCallback(videoPlayer);
+                setOnCallback(videoPlayer, steps, done);
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case createVideoPlayer success!!');
+                toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
                 printfError(err, done);
@@ -157,13 +169,42 @@ describe('VideoPlayerFuncCallbackTest', function () {
         });
     });
 
+    eventEmitter.on(SETFDSOURCE_EVENT, (videoPlayer, steps, done) => {
+        steps.shift();
+        videoPlayer.fdSrc = steps[0];
+        steps.shift();
+        toNextStep(videoPlayer, steps, done);
+    });
+
+    eventEmitter.on(SETSOURCE_EVENT, (videoPlayer, steps, done) => {
+        steps.shift();
+        videoPlayer.url = steps[0];
+        steps.shift();
+        toNextStep(videoPlayer, steps, done);
+    });
+
+    eventEmitter.on(SETLOOP_EVENT, (videoPlayer, steps, done) => {
+        steps.shift();
+        videoPlayer.loop = steps[0];
+        steps.shift();
+        toNextStep(videoPlayer, steps, done);
+    });
+
+    eventEmitter.on(WAIT_EVENT, (videoPlayer, steps, done) => {
+        steps.shift();
+        sleep(PLAY_TIME);
+        toNextStep(videoPlayer, steps, done);
+    });
+
     eventEmitter.on(SETSURFACE_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
-        videoPlayer.fdSrc = fileDescriptor;
         videoPlayer.setDisplaySurface(surfaceID, (err) => {
             if (typeof (err) == 'undefined') {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success!!');
+                toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
                 printfError(err, done);
@@ -181,6 +222,9 @@ describe('VideoPlayerFuncCallbackTest', function () {
                 expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
                 console.info('case prepare success!!');
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
                 printfError(err, done);
             }
@@ -189,7 +233,6 @@ describe('VideoPlayerFuncCallbackTest', function () {
 
     eventEmitter.on(SRC_PREPARE_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
-        videoPlayer.fdSrc = fileDescriptor;
         videoPlayer.prepare((err) => {
             if (typeof (err) == 'undefined') {
                 expect(videoPlayer.state).assertEqual('prepared');
@@ -197,6 +240,9 @@ describe('VideoPlayerFuncCallbackTest', function () {
                 expect(videoPlayer.width).assertEqual(WIDTH_VALUE);
                 expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
                 console.info('case prepare success!!');
+                toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
                 printfError(err, done);
@@ -212,8 +258,11 @@ describe('VideoPlayerFuncCallbackTest', function () {
                     printfDescription(arrlist[i]);
                 }
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
-                printfError(err, done); 
+                printfError(err, done);
             }
         });
     });
@@ -229,6 +278,9 @@ describe('VideoPlayerFuncCallbackTest', function () {
                 let endTime = videoPlayer.currentTime;
                 expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
                 printfError(err, done);
             }
@@ -241,6 +293,9 @@ describe('VideoPlayerFuncCallbackTest', function () {
             if (typeof (err) == 'undefined') {
                 expect(videoPlayer.state).assertEqual('paused');
                 console.info('case pause success!!');
+                toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
                 printfError(err, done);
@@ -255,6 +310,9 @@ describe('VideoPlayerFuncCallbackTest', function () {
                 expect(videoPlayer.state).assertEqual('stopped');
                 console.info('case stop success!!');
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
                 printfError(err, done);
             }
@@ -268,6 +326,9 @@ describe('VideoPlayerFuncCallbackTest', function () {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case reset success!!');
                 toNextStep(videoPlayer, steps, done);
+            }  else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
                 printfError(err, done);
             }
@@ -280,6 +341,9 @@ describe('VideoPlayerFuncCallbackTest', function () {
             if (typeof (err) == 'undefined') {
                 console.info('case release success!!');
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
                 printfError(err, done);
             }
@@ -290,20 +354,20 @@ describe('VideoPlayerFuncCallbackTest', function () {
         switch (seekMode) {
             case media.SeekMode.SEEK_NEXT_SYNC:
                 if (seekTime == 0) {
-                    expect(seekDoneTime).assertEqual(0);
+                    expect(seekDoneTime + DELTA_SEEK_TIME).assertClose(DELTA_SEEK_TIME, DELTA_SEEK_TIME);
                 } else if (seekTime == DURATION_TIME) {
-                    expect(seekDoneTime).assertEqual(DURATION_TIME);
+                    expect(seekDoneTime).assertClose(DURATION_TIME, DELTA_SEEK_TIME);
                 } else {
-                    expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME);
+                    expect(seekDoneTime).assertClose(NEXT_FRAME_TIME, DELTA_SEEK_TIME);
                 }
                 break;
             case media.SeekMode.SEEK_PREV_SYNC:
                 if (seekTime == 0) {
-                    expect(seekDoneTime).assertEqual(0);
+                    expect(seekDoneTime + DELTA_SEEK_TIME).assertClose(DELTA_SEEK_TIME, DELTA_SEEK_TIME);
                 } else if (seekTime == DURATION_TIME) {
-                    expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME);
+                    expect(seekDoneTime).assertClose(NEXT_FRAME_TIME, DELTA_SEEK_TIME);
                 } else {
-                    expect(seekDoneTime).assertEqual(PREV_FRAME_TIME);
+                    expect(seekDoneTime).assertClose(PREV_FRAME_TIME, DELTA_SEEK_TIME);
                 }
                 break;
             default:
@@ -322,6 +386,9 @@ describe('VideoPlayerFuncCallbackTest', function () {
                 }
                 checkSeekTime(media.SeekMode.SEEK_PREV_SYNC, seekTime, seekDoneTime);
                 console.info('case seek success and seekDoneTime is '+ seekDoneTime);
+                toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
                 printfError(err, done);
@@ -343,6 +410,9 @@ describe('VideoPlayerFuncCallbackTest', function () {
                 checkSeekTime(seekMode, seekTime, seekDoneTime);
                 console.info('case seek success and seekDoneTime is '+ seekDoneTime);
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
                 printfError(err, done);
             }
@@ -356,6 +426,9 @@ describe('VideoPlayerFuncCallbackTest', function () {
         videoPlayer.setVolume(volumeValue, (err) => {
             if (typeof (err) == 'undefined') {
                 console.info('case setVolume success');
+                toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
                 printfError(err, done);
@@ -400,6 +473,9 @@ describe('VideoPlayerFuncCallbackTest', function () {
                 console.info('case setSpeed success and speedMode is '+ speedMode);
                 checkSpeedTime(videoPlayer, speedValue, startTime);
                 toNextStep(videoPlayer, steps, done);
+            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+                steps.shift();
+                toNextStep(videoPlayer, steps, done);
             } else {
                 printfError(err, done);
             }
@@ -407,425 +483,229 @@ describe('VideoPlayerFuncCallbackTest', function () {
     });
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0100
-        * @tc.name      : 001.play (callback)
+        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_SETSOURCE
+        * @tc.name      : 001.test setSorce '' (callback)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_SETSOURCE', 0, async function (done) {
         isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-            PREPARE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
+        let fdPath = '';
+        let mySteps = new Array(CREATE_EVENT, SETSOURCE_EVENT, fdPath, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0200
-        * @tc.name      : 002.pause (callback)
+        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_SETVOLUME
+        * @tc.name      : 001.test SetVolume 0/0.5/1 (callback)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_SETVOLUME', 0, async function (done) {
         isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT,
-            PLAY_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
+        let mySteps = new Array(CREATE_EVENT, SETFDSOURCE_EVENT, fileDescriptor, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, 0, SETVOLUME_EVENT, 0.5, SETVOLUME_EVENT, 1,
+            RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);         
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0300
-        * @tc.name      : 003.pause->play (callback)
+        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_SETSPEED
+        * @tc.name      : 001.test SetSpeed 0.75/1/1.25/1.75/2 (callback)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_SETSPEED', 0, async function (done) {
         isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            PAUSE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0400
-        * @tc.name      : 004.stop (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT,
-            PLAY_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0500
-        * @tc.name      : 005.reset (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0500', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT,
-            PLAY_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0600
-        * @tc.name      : 006.seek (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0600', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0700
-        * @tc.name      : 007.seek mode(callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0700', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            SEEK_MODE_EVENT, SEEK_TIME, media.SeekMode.SEEK_NEXT_SYNC,
-            SEEK_MODE_EVENT, SEEK_TIME, media.SeekMode.SEEK_PREV_SYNC,RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0800
-        * @tc.name      : 008.setVolume (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0800', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-    
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0900
-        * @tc.name      : 009.setSpeed (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_0900', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1000
-        * @tc.name      : 010.getTrackDescription (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1000', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT,
-            GETDESCRIPTION, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1200
-        * @tc.name      : 012.play->pause->stop (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level1
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            PAUSE_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1300
-        * @tc.name      : 013.play->pause->reset (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level1
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            PAUSE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1400
-        * @tc.name      : 014.play->pause->seek->play (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level1
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            PAUSE_EVENT, SEEK_EVENT, SEEK_TIME, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1500
-        * @tc.name      : 015.play->pause->seek(mode)->play (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level1
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1500', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            PAUSE_EVENT, SEEK_MODE_EVENT, SEEK_TIME, media.SeekMode.SEEK_NEXT_SYNC,
-            SEEK_MODE_EVENT, SEEK_TIME, media.SeekMode.SEEK_PREV_SYNC, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1600
-        * @tc.name      : 016.play->pause->setvolume->play (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level1
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1600', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            PAUSE_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1700
-        * @tc.name      : 017.play->pause->setspeed->play (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level1
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1700', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            PAUSE_EVENT, SETSPEED_EVENT, SPEED_VALUE, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1800
-        * @tc.name      : 018.play->stop->reset (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level1
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1800', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            STOP_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1900
-        * @tc.name      : 019.play->stop->reset->prepare->play (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level1
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_1900', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            STOP_EVENT, RESET_EVENT, SRC_PREPARE_EVENT,
-            PLAY_EVENT, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2000
-        * @tc.name      : 020.play->seek(0)->pause->stop (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level1
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2000', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            SEEK_EVENT, 0, PAUSE_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2100
-        * @tc.name      : 021.play->seek(0, mode)->pause->stop (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level1
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            SEEK_MODE_EVENT, 0, media.SeekMode.SEEK_NEXT_SYNC, 
-            SEEK_MODE_EVENT, 0, media.SeekMode.SEEK_PREV_SYNC, PAUSE_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2200
-        * @tc.name      : 022.play->seek(duration)->finish (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level1
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            SEEK_EVENT, DURATION_TIME, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2300
-        * @tc.name      : 023.play->seek(duration, mode)->finish (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level1
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            SEEK_MODE_EVENT, DURATION_TIME, media.SeekMode.SEEK_PREV_SYNC,
-            SEEK_MODE_EVENT, DURATION_TIME, media.SeekMode.SEEK_NEXT_SYNC, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2400
-        * @tc.name      : 024.play->seek(out of duration) (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level2
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            SEEK_EVENT, DURATION_TIME + 1, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2500
-        * @tc.name      : 025.play->seek(out of duration, mode) (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level2
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2500', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            SEEK_MODE_EVENT, DURATION_TIME + 1, media.SeekMode.SEEK_PREV_SYNC,
-            SEEK_MODE_EVENT, DURATION_TIME + 1, media.SeekMode.SEEK_NEXT_SYNC, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2600
-        * @tc.name      : 026. play->setvolume(0~1) (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level2
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2600', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
-            SETVOLUME_EVENT, 0, SETVOLUME_EVENT, 0.2, SETVOLUME_EVENT, 0.4, SETVOLUME_EVENT, 0.6,
-            SETVOLUME_EVENT, 0.8, SETVOLUME_EVENT, 1, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2700
-        * @tc.name      : 027.play->setspeed(0~4) (callback)
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level2
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_2700', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
+        let mySteps = new Array(CREATE_EVENT, SETFDSOURCE_EVENT, fileDescriptor, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, media.PlaybackSpeed.SPEED_FORWARD_0_75_X,
+            SETSPEED_EVENT, media.PlaybackSpeed.SPEED_FORWARD_1_00_X, 
+            SETSPEED_EVENT, media.PlaybackSpeed.SPEED_FORWARD_1_25_X,
+            SETSPEED_EVENT, media.PlaybackSpeed.SPEED_FORWARD_1_75_X,
             SETSPEED_EVENT, media.PlaybackSpeed.SPEED_FORWARD_2_00_X, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);            
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_SEEKMODE
+        * @tc.name      : 001.test seek mode SEEK_PREV_SYNC/SEEK_NEXT_SYNC (callback)
+        * @tc.desc      : Video playback control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_SEEKMODE', 0, async function (done) {
+        isFileOpen(fileDescriptor, done);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETFDSOURCE_EVENT, fileDescriptor, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, media.SeekMode.SEEK_NEXT_SYNC,
+            SEEK_MODE_EVENT, SEEK_TIME, media.SeekMode.SEEK_PREV_SYNC,RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done); 
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_CALLBACK
+        * @tc.name      : 001.test callback bufferingUpdate/videoSizeChanged/startRenderFrame/playbackCompleted
+        * @tc.desc      : Video playback control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_CALLBACK', 0, async function (done) {
+        isFileOpen(fileDescriptor, done);
+        let videoPlayer = null;
+        let frameCount = -1;
+        let completedCount = 0;
+        let widthValue = -1;
+        let heightValue = -1;
+
+        eventEmitter.on('test_create', () => {
+            media.createVideoPlayer((err, video) => {
+                if (typeof (video) != 'undefined') {
+                    videoPlayer = video;
+                    expect(videoPlayer.state).assertEqual('idle');
+                    console.info('case createVideoPlayer success!!');
+                    eventEmitter.emit('test_callback');
+                }else {
+                    printfError(err, done);
+                }
+            });
+        });
+
+        eventEmitter.on('test_callback', () => {
+            videoPlayer.on('playbackCompleted', async () => {
+                console.info('case playbackCompleted success');
+                completedCount++;
+                expect(widthValue).assertEqual(WIDTH_VALUE);
+                expect(heightValue).assertEqual(HEIGHT_VALUE);
+                expect(completedCount).assertEqual(1);
+                videoPlayer.release((err) => {
+                    if (typeof (err) == 'undefined') {
+                        console.info('case release success!!');
+                        done();
+                    } else {
+                        printfError(err, done);
+                    }
+                });
+            });
+    
+            videoPlayer.on('bufferingUpdate', (infoType, value) => {
+                console.info('case bufferingUpdate success infoType is ' + infoType);
+                console.info('case bufferingUpdate success value is ' + value);
+            });
+    
+            videoPlayer.on('startRenderFrame', () => {
+                console.info('case startRenderFrame success');
+            });
+    
+            videoPlayer.on('videoSizeChanged', (width, height) => {
+                console.info('case videoSizeChanged success');
+                widthValue = width;
+                heightValue = height;
+            });
+            eventEmitter.emit('test_setSurface');
+        });
+
+        eventEmitter.on('test_setSurface', () => {
+            videoPlayer.url = fdHead + fileDescriptor.fd;
+            videoPlayer.setDisplaySurface(surfaceID, (err) => {
+                if (typeof (err) == 'undefined') {
+                    expect(videoPlayer.state).assertEqual('idle');
+                    console.info('case setDisplaySurface success!!');
+                    eventEmitter.emit('test_prepare');
+                }else {
+                    printfError(err, done);
+                }
+            })
+        });
+
+        eventEmitter.on('test_prepare', () => {
+            videoPlayer.prepare((err) => {
+                if (typeof (err) == 'undefined') {
+                    expect(videoPlayer.state).assertEqual('prepared');
+                    expect(videoPlayer.duration).assertEqual(DURATION_TIME);
+                    expect(videoPlayer.width).assertEqual(WIDTH_VALUE);
+                    expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
+                    console.info('case prepare success!!');
+                    eventEmitter.emit('test_play');
+                } else {
+                    printfError(err, done);
+                }
+            });
+        });
+
+        eventEmitter.on('test_play', () => {
+            videoPlayer.play((err) => {
+                if (typeof (err) == 'undefined') {
+                    expect(videoPlayer.state).assertEqual('playing');
+                    console.info('case play success!!');
+                } else {
+                    printfError(err, done);
+                }
+            });
+        });
+        eventEmitter.emit('test_create');
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_GETTRECKDESCRIPTION
+        * @tc.name      : 001.test getTrackDescription (callback)
+        * @tc.desc      : Video playback control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_GETTRECKDESCRIPTION', 0, async function (done) {
+        isFileOpen(fileDescriptor, done);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETFDSOURCE_EVENT, fileDescriptor, SETSURFACE_EVENT,
+            PREPARE_EVENT, GETDESCRIPTION, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done); 
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_LOOP
+        * @tc.name      : 001.test LOOP (callback)
+        * @tc.desc      : Video playback control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_LOOP', 0, async function (done) {
+        isFileOpen(fileDescriptor, done);
+        let videoPlayer = null;
+        let mySteps = new Array(CREATE_EVENT, SETFDSOURCE_EVENT, fileDescriptor, SETSURFACE_EVENT,
+            PREPARE_EVENT, SETLOOP_EVENT, true, PLAY_EVENT, SEEK_EVENT, DURATION_TIME, WAIT_EVENT,
+            SEEK_EVENT, DURATION_TIME, WAIT_EVENT, SEEK_EVENT, DURATION_TIME, WAIT_EVENT,
+            SEEK_EVENT, DURATION_TIME, WAIT_EVENT, SETLOOP_EVENT, false, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done); 
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_BASE
+        * @tc.name      : 001.test video playe (callback)
+        * @tc.desc      : Video playback control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_BASE', 0, async function (done) {
+        isFileOpen(fileDescriptor, done);
+        let videoPlayer = null;
+        let fdPath = fdHead + fileDescriptor.fd;
+        let mySteps = new Array(CREATE_EVENT, SETFDSOURCE_EVENT, fileDescriptor, SETSURFACE_EVENT,
+            PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, PLAY_EVENT, STOP_EVENT, RESET_EVENT, SETSOURCE_EVENT, fdPath,
+            PREPARE_EVENT, SETLOOP_EVENT, true, PLAY_EVENT, SEEK_EVENT, DURATION_TIME / 2, SEEK_EVENT, 0,
+            SEEK_EVENT, DURATION_TIME, WAIT_EVENT, SETLOOP_EVENT, false, RELEASE_EVENT, END_EVENT);
+        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done); 
     })
 })

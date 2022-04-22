@@ -20,7 +20,7 @@ export async function toNewPage(page) {
     if (page == 0) {
         path = 'pages/surfaceTest/surfaceTest';
     } else {
-        path = 'pages/surfaceTest/surfaceTest2';
+        path = 'pages/surfaceTest2/surfaceTest2';
     }
     let options = {
         uri: path,
