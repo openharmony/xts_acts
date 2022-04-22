@@ -17,7 +17,6 @@ group("customization") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "cust/custjs:custjs_test",
       "enterprise_device_management:edm_test_grop",
     ]
   }
