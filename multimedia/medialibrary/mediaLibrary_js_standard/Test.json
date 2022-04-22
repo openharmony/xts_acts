@@ -24,8 +24,14 @@
             "run-command": [
                 "mkdir /storage/media/100/local/files/Pictures",
                 "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/",
+                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/02.jpg",
+                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/03.jpg",
                 "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/",
+                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/02.mp3",
+                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/03.mp3",
                 "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/",
+                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/02.mp4",
+                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/03.mp4",
                 "mkdir /storage/media/100/local/files/Pictures/weixin",
                 "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/weixin",
                 "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/weixin",
@@ -48,6 +54,22 @@
                 "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/DeleteAlbumCallback",
                 "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/DeleteAlbumCallback",
                 "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/DeleteAlbumCallback",
+                "mkdir /storage/media/100/local/files/Pictures/AblumInfo",
+                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/AblumInfo",
+                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/AblumInfo",
+                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/AblumInfo",
+                "mkdir /storage/media/100/local/files/Pictures/FileAssetTest",
+                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/FileAssetTest",
+                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/FileAssetTest/02.jpg",
+                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/FileAssetTest",
+                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/FileAssetTest/02.mp3",
+                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/FileAssetTest",
+                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/FileAssetTest/02.mp4",
+                "mkdir /storage/media/100/local/files/Pictures/MediaLibraryTest",
+                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/MediaLibraryTest",
+                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/MediaLibraryTest",
+                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/MediaLibraryTest",
+                "cp /storage/media/100/local/files/test.dat /storage/media/100/local/files/Pictures/MediaLibraryTest",
                 "chmod -R 777 /storage/media/100/local/files/*",
                 "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
                 "killall com.ohos.medialibrary.MediaScannerAbilityA",
@@ -55,7 +77,7 @@
             ],
             "teardown-command":[
                 "rm -rf /storage/media/100/local/files/*",
-				"rm -rf /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/database/*"
+                "rm -rf /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/*"
             ]
         },
         {

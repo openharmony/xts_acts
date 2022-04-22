@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 require('./getPermission.test.js')
+// phase I
 require('./albumGetFileAssetsCallback.test.js')
 require('./albumGetFileAssetsPromise.test.js')
 require('./favoriteTestCallBack.test.js')

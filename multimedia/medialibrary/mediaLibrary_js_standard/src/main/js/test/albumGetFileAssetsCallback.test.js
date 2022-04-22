@@ -14,17 +14,17 @@
  */
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
-describe('albumGetFileAssetsCallback.test.js', async function() {
+describe('albumGetFileAssetsCallback.test.js', async function () {
     var context = featureAbility.getContext();
     console.info('MediaLibraryTest : getMediaLibrary IN');
     var media = mediaLibrary.getMediaLibrary(context);
     console.info('MediaLibraryTest : getMediaLibrary OUT');
-    beforeAll(function() {});
-    beforeEach(function() {});
-    afterEach(function() {});
-    afterAll(function() {});
+    beforeAll(function () { });
+    beforeEach(function () { });
+    afterEach(function () { });
+    afterAll(function () { });
 
     const fileKeyObj = mediaLibrary.FileKey;
 
@@ -32,7 +32,8 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
     let videoType = mediaLibrary.MediaType.VIDEO;
     let audioType = mediaLibrary.MediaType.AUDIO;
     const count = 3;
-
+    const countOne = 1;
+    
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_01
      * @tc.name      : getFileAssets
@@ -41,12 +42,12 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_01', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_01', 0, async function (done) {
         try {
             let allTypefetchOp = {
-                selections : '',
-                selectionArgs : [],
-                order : 'date_added DESC LIMIT 0,3',
+                selections: '',
+                selectionArgs: [],
+                order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(allTypefetchOp);
             const album = albumList[0];
@@ -55,7 +56,7 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    expect(fetchFileResult.getCount() <= count).assertTrue();
+                    expect(fetchFileResult.getCount() == count).assertTrue();
                     done();
                 }
             });
@@ -74,12 +75,12 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_02', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_02', 0, async function (done) {
         try {
             let imageAlbumfetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ imageType.toString() ],
-                order : 'date_added DESC LIMIT 0,3',
+                selections: fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Pictures', imageType.toString()],
+                order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(imageAlbumfetchOp);
             const album = albumList[0];
@@ -88,7 +89,7 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    expect(fetchFileResult.getCount() <= count).assertTrue();
+                    expect(fetchFileResult.getCount() == count).assertTrue();
                     done();
                 }
             });
@@ -107,12 +108,12 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_03', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_03', 0, async function (done) {
         try {
             let audioAlbumfetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ audioType.toString() ],
-                order : 'date_added DESC LIMIT 0,3',
+                selections: fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Pictures', audioType.toString()],
+                order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(audioAlbumfetchOp);
             const album = albumList[0];
@@ -121,7 +122,7 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    expect(fetchFileResult.getCount() <= count).assertTrue();
+                    expect(fetchFileResult.getCount() == count).assertTrue();
                     done();
                 }
             });
@@ -139,12 +140,12 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_04', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_04', 0, async function (done) {
         try {
             let videoAlbumfetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ videoType.toString() ],
-                order : 'date_added DESC LIMIT 0,3',
+                selections: fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Pictures', videoType.toString()],
+                order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(videoAlbumfetchOp);
             const album = albumList[0];
@@ -153,7 +154,7 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    expect(fetchFileResult.getCount() <= count).assertTrue();
+                    expect(fetchFileResult.getCount() == count).assertTrue();
                     done();
                 }
             });
@@ -171,12 +172,12 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_05', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_05', 0, async function (done) {
         try {
             let imageAndVideoAlbumfetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ imageType.toString(), videoType.toString() ],
-                order : 'date_added DESC LIMIT 0,3',
+                selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [imageType.toString(), videoType.toString()],
+                order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(imageAndVideoAlbumfetchOp);
             const album = albumList[0];
@@ -185,7 +186,7 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    expect(fetchFileResult.getCount() <= count).assertTrue();
+                    expect(fetchFileResult.getCount() == count).assertTrue();
                     done();
                 }
             });
@@ -203,12 +204,12 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_06', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_06', 0, async function (done) {
         try {
             let imageAndAudioAlbumfetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ imageType.toString(), audioType.toString() ],
-                order : 'date_added DESC LIMIT 0,3',
+                selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [imageType.toString(), audioType.toString()],
+                order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(imageAndAudioAlbumfetchOp);
             const album = albumList[0];
@@ -217,7 +218,7 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    expect(fetchFileResult.getCount() <= count).assertTrue();
+                    expect(fetchFileResult.getCount() == count).assertTrue();
                     done();
                 }
             });
@@ -235,12 +236,12 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_07', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_07', 0, async function (done) {
         try {
             let videoAndAudioAlbumfetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ videoType.toString(), audioType.toString() ],
-                order : 'date_added DESC LIMIT 0,3',
+                selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [videoType.toString(), audioType.toString()],
+                order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(videoAndAudioAlbumfetchOp);
             const album = albumList[0];
@@ -249,7 +250,7 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    expect(fetchFileResult.getCount() <= count).assertTrue();
+                    expect(fetchFileResult.getCount() == count).assertTrue();
                     done();
                 }
             });
@@ -267,13 +268,13 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_08', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_08', 0, async function (done) {
         try {
             let imgAndVideoAndAudioAlbumfetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ? or '
-                                 + fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ imageType.toString(), videoType.toString(), audioType.toString() ],
-                order : 'date_added DESC LIMIT 0,3',
+                selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ? or '
+                    + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [imageType.toString(), videoType.toString(), audioType.toString()],
+                order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(imgAndVideoAndAudioAlbumfetchOp);
             const album = albumList[0];
@@ -282,7 +283,7 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    expect(fetchFileResult.getCount() <= count).assertTrue();
+                    expect(fetchFileResult.getCount() == count).assertTrue();
                     done();
                 }
             });
@@ -300,12 +301,12 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_09', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_09', 0, async function (done) {
         try {
             let albumfetchOpOne = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ imageType.toString() ],
-                order : 'date_added DESC LIMIT 0,1',
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [imageType.toString()],
+                order: 'date_added DESC LIMIT 0,1',
             };
             const albumList = await media.getAlbums(albumfetchOpOne);
             const album = albumList[0];
@@ -314,7 +315,7 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    expect(fetchFileResult.getCount() <= count).assertTrue();
+                    expect(fetchFileResult.getCount() == countOne).assertTrue();
                     done();
                 }
             });
@@ -332,12 +333,12 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_10', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_10', 0, async function (done) {
         try {
             let albumfetchOpOne = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ audioType.toString() ],
-                order : 'date_added DESC LIMIT 0,1',
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [audioType.toString()],
+                order: 'date_added DESC LIMIT 0,1',
             };
             const albumList = await media.getAlbums(albumfetchOpOne);
             const album = albumList[0];
@@ -346,7 +347,7 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    expect(fetchFileResult.getCount() <= count).assertTrue();
+                    expect(fetchFileResult.getCount() == countOne).assertTrue();
                     done();
                 }
             });
@@ -364,12 +365,12 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_11', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_11', 0, async function (done) {
         try {
             let albumfetchOpOne = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ videoType.toString() ],
-                order : 'date_added DESC LIMIT 0,1',
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [videoType.toString()],
+                order: 'date_added DESC LIMIT 0,1',
             };
             const albumList = await media.getAlbums(albumfetchOpOne);
             const album = albumList[0];
@@ -378,7 +379,7 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    expect(fetchFileResult.getCount() <= count).assertTrue();
+                    expect(fetchFileResult.getCount() == countOne).assertTrue();
                     done();
                 }
             });
@@ -396,12 +397,12 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_12', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_12', 0, async function (done) {
         try {
             let albumfetchOpNone = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ? AND date_added < 0',
-                selectionArgs : [ imageType.toString() ],
-                order : 'date_added DESC LIMIT 0,1',
+                selections: fileKeyObj.MEDIA_TYPE + '= ? AND date_added < 0',
+                selectionArgs: [imageType.toString()],
+                order: 'date_added DESC LIMIT 0,1',
             };
             media.getAlbums(albumfetchOpNone, (error, albumList) => {
                 if (albumList == undefined) {
@@ -433,12 +434,12 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_13', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_13', 0, async function (done) {
         try {
             let albumfetchOpNone = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ? AND date_added < 0',
-                selectionArgs : [ audioType.toString() ],
-                order : 'date_added DESC LIMIT 0,1',
+                selections: fileKeyObj.MEDIA_TYPE + '= ? AND date_added < 0',
+                selectionArgs: [audioType.toString()],
+                order: 'date_added DESC LIMIT 0,1',
             };
 
             media.getAlbums(albumfetchOpNone, (error, albumList) => {
@@ -470,12 +471,12 @@ describe('albumGetFileAssetsCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_14', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_CALLBACK_001_14', 0, async function (done) {
         try {
             let albumfetchOpNone = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ? AND date_added < 0',
-                selectionArgs : [ videoType.toString() ],
-                order : 'date_added DESC LIMIT 0,1',
+                selections: fileKeyObj.MEDIA_TYPE + '= ? AND date_added < 0',
+                selectionArgs: [videoType.toString()],
+                order: 'date_added DESC LIMIT 0,1',
             };
             media.getAlbums(albumfetchOpNone, (error, albumList) => {
                 if (albumList == undefined) {

@@ -16,15 +16,17 @@
 import mediaLibrary from '@ohos.multimedia.medialibrary';
 import featureAbility from '@ohos.ability.featureAbility';
 import fileio from '@ohos.fileio';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
-describe('fileAssetTestCallback.test.js', async function() {
+describe('fileAssetTestCallback.test.js', async function () {
     var context = featureAbility.getContext();
     console.info('MediaLibraryTest : getMediaLibrary IN');
     var media = mediaLibrary.getMediaLibrary(context);
     console.info('MediaLibraryTest : getMediaLibrary OUT');
     const fileKeyObj = mediaLibrary.FileKey;
-
+    function isNum(value) {
+        return typeof value === 'number' && !isNaN(value);
+    }
     //======================== FILE BEGIN ==================================
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_01
@@ -34,16 +36,20 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_01', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_01', 0, async function (done) {
         let asset;
         let asset1;
         let fd;
         let fd1;
+        let assetProps = {
+            bytesRead: 10,
+            write: 4096,
+        }
         try {
             let fileType = mediaLibrary.MediaType.FILE;
             let fileFetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ fileType.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [fileType.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fileFetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -56,25 +62,25 @@ describe('fileAssetTestCallback.test.js', async function() {
                     done();
                 } else {
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_01  fd:'
-                                 + fd);
-                    expect(fd > 0).assertTrue();
+                        + fd);
+                    expect(isNum(fd)).assertTrue();
                     let buf = new ArrayBuffer(4096);
                     let res = await fileio.read(fd, buf);
                     console.info(
                         'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_01  res.bytesRead:'
                         + res.bytesRead);
-                    expect(res.bytesRead >= 0).assertTrue();
+                    expect(res.bytesRead == assetProps.bytesRead).assertTrue();
                     asset1 = dataList[1];
                     fd1 = await asset1.open('r');
                     let buf2 = new ArrayBuffer(4096);
                     let res2 = await fileio.read(fd1, buf2);
                     let write = await fileio.write(fd, buf2);
-                    expect(write > 0).assertTrue();
+                    expect(write == assetProps.write).assertTrue();
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_01  write:'
-                                 + write);
+                        + write);
                     await asset.close(fd);
                     await asset1.close(fd1);
-                    if (fd > 0 && res.bytesRead >= 0 && write > 0) {
+                    if (isNum(fd) && res.bytesRead == assetProps.bytesRead && write == assetProps.write) {
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_01  success');
                         done();
@@ -103,14 +109,17 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_02', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_02', 0, async function (done) {
         let asset;
         let fd;
+        let assetProps = {
+            bytesRead: 4096,
+        }
         try {
             let type = mediaLibrary.MediaType.FILE;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -123,12 +132,12 @@ describe('fileAssetTestCallback.test.js', async function() {
                         expect(false).assertTrue();
                         done();
                     } else {
-                        expect(fd > 0).assertTrue();
+                        expect(isNum(fd)).assertTrue();
                         console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_02 fd:'
-                                     + fd);
+                            + fd);
                         let buf = new ArrayBuffer(4096);
                         let res = await fileio.read(fd, buf);
-                        expect(res.bytesRead > 0).assertTrue();
+                        expect(res.bytesRead == assetProps.bytesRead).assertTrue();
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_02 res.bytesRead:'
                             + res.bytesRead);
@@ -138,9 +147,9 @@ describe('fileAssetTestCallback.test.js', async function() {
                     }
                 } catch (error) {
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_02  error:'
-                                 + error);
+                        + error);
                     expect(true).assertTrue();
-                    if (fd > 0) {
+                    if (isNum(fd)) {
                         await asset.close(fd);
                     }
                     done();
@@ -148,9 +157,9 @@ describe('fileAssetTestCallback.test.js', async function() {
             });
         } catch (error) {
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_02  error:'
-                         + error);
+                + error);
             expect(false).assertTrue();
-            if (fd > 0) {
+            if (isNum(fd)) {
                 await asset.close(fd);
             }
             done();
@@ -165,7 +174,7 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_03', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_03', 0, async function (done) {
         let asset;
         let asset1;
         let fd;
@@ -173,8 +182,8 @@ describe('fileAssetTestCallback.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.FILE;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -188,16 +197,16 @@ describe('fileAssetTestCallback.test.js', async function() {
                         expect(false).assertTrue();
                         done();
                     } else {
-                        expect(fd > 0).assertTrue();
+                        expect(isNum(fd)).assertTrue();
                         console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_03  fd:'
-                                     + fd);
+                            + fd);
                         fd1 = await asset1.open('r');
                         let buf = new ArrayBuffer(4096);
                         let res = await fileio.read(fd1, buf);
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_03  read  fd1 success');
                         let write = await fileio.write(fd, buf);
-                        expect(write > 0).assertTrue();
+                        expect(write == assetProps.write).assertTrue();
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_03  write:'
                             + write);
@@ -209,7 +218,7 @@ describe('fileAssetTestCallback.test.js', async function() {
                     }
                 } catch (error) {
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_03  error:'
-                                 + error);
+                        + error);
                     expect(true).assertTrue();
                     await asset.close(fd);
                     await asset1.close(fd1);
@@ -218,7 +227,7 @@ describe('fileAssetTestCallback.test.js', async function() {
             });
         } catch (error) {
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_03  error:'
-                         + error);
+                + error);
             expect(false).assertTrue();
             await asset.close(fd);
             await asset1.close(fd1);
@@ -237,14 +246,14 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_04', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_04', 0, async function (done) {
         let asset;
         let fd;
         try {
             let type = mediaLibrary.MediaType.ALBUM;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -255,9 +264,9 @@ describe('fileAssetTestCallback.test.js', async function() {
             });
         } catch (error) {
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_04  error:'
-                         + error);
+                + error);
             expect(true).assertTrue();
-            if (fd > 0) {
+            if (isNum(fd)) {
                 asset.close(fd);
             }
             done();
@@ -272,14 +281,14 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_05', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_05', 0, async function (done) {
         let asset;
         let fd;
         try {
             let type = mediaLibrary.MediaType.ALBUM;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -290,9 +299,9 @@ describe('fileAssetTestCallback.test.js', async function() {
             });
         } catch (error) {
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_05  error:'
-                         + error);
+                + error);
             expect(true).assertTrue();
-            if (fd > 0) {
+            if (isNum(fd)) {
                 asset.close(fd);
             }
             done();
@@ -307,14 +316,14 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_06', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_06', 0, async function (done) {
         let asset;
         let fd;
         try {
             let type = mediaLibrary.MediaType.ALBUM;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -324,9 +333,9 @@ describe('fileAssetTestCallback.test.js', async function() {
             });
         } catch (error) {
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_06  error:'
-                         + error);
+                + error);
             expect(true).assertTrue();
-            if (fd > 0) {
+            if (isNum(fd)) {
                 asset.close(fd);
             }
             done();
@@ -344,16 +353,20 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_07', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_07', 0, async function (done) {
         let asset;
         let asset1;
         let fd;
         let fd1;
+        let assetProps = {
+            bytesRead: 4096,
+            write: 4096,
+        }
         try {
             let fileType = mediaLibrary.MediaType.IMAGE;
             let fileFetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ fileType.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [fileType.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fileFetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -364,21 +377,21 @@ describe('fileAssetTestCallback.test.js', async function() {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    expect(fd > 0).assertTrue();
+                    expect(isNum(fd)).assertTrue();
                     let buf = new ArrayBuffer(4096);
                     let res = await fileio.read(fd, buf);
-                    expect(res.bytesRead > 0).assertTrue();
+                    expect(res.bytesRead == assetProps.bytesRead).assertTrue();
                     asset1 = dataList[1];
                     fd1 = await asset1.open('r');
                     let buf2 = new ArrayBuffer(4096);
                     let res2 = await fileio.read(fd1, buf2);
                     let write = await fileio.write(fd, buf2);
-                    expect(write > 0).assertTrue();
+                    expect(write == assetProps.write).assertTrue();
 
                     await asset.close(fd);
                     await asset1.close(fd1);
 
-                    if (fd > 0 && res.bytesRead > 0 && write > 0) {
+                    if (isNum(fd) && res.bytesRead == assetProps.bytesRead && write == assetProps.write) {
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_07  success');
                         done();
@@ -406,14 +419,18 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_08', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_08', 0, async function (done) {
         let asset;
         let fd;
+        let assetProps = {
+            bytesRead: 4096,
+            write: 4096,
+        }
         try {
             let type = mediaLibrary.MediaType.IMAGE;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -426,10 +443,10 @@ describe('fileAssetTestCallback.test.js', async function() {
                         expect(false).assertTrue();
                         done();
                     } else {
-                        expect(fd > 0).assertTrue();
+                        expect(isNum(fd)).assertTrue();
                         let buf = new ArrayBuffer(4096);
                         let res = await fileio.read(fd, buf);
-                        expect(res.bytesRead > 0).assertTrue();
+                        expect(res.bytesRead == assetProps.bytesRead).assertTrue();
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_08  res.bytesRead:'
                             + res.bytesRead);
@@ -439,8 +456,8 @@ describe('fileAssetTestCallback.test.js', async function() {
                     }
                 } catch (error) {
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_08  error:'
-                                 + error);
-                    if (fd > 0) {
+                        + error);
+                    if (isNum(fd)) {
                         expect(true).assertTrue();
                     }
                     await asset.close(fd);
@@ -449,7 +466,7 @@ describe('fileAssetTestCallback.test.js', async function() {
             });
         } catch (error) {
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_08  error:'
-                         + error);
+                + error);
             expect(false).assertTrue();
             await asset.close(fd);
             done();
@@ -464,21 +481,25 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_09', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_09', 0, async function (done) {
         let asset;
         let asset1;
         let fd;
         let fd1;
+        let assetProps = {
+            bytesRead: 4096,
+            write: 4096,
+        }
         try {
             let type = mediaLibrary.MediaType.IMAGE;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_09 dataList.length:'
-                         + dataList.length);
+                + dataList.length);
             asset = dataList[0];
             asset1 = dataList[1];
 
@@ -490,14 +511,14 @@ describe('fileAssetTestCallback.test.js', async function() {
                         expect(false).assertTrue();
                         done();
                     } else {
-                        expect(fd > 0).assertTrue();
+                        expect(isNum(fd)).assertTrue();
                         console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_09  fd:'
-                                     + fd);
+                            + fd);
                         fd1 = await asset1.open('r');
                         let buf = new ArrayBuffer(4096);
                         let res = await fileio.read(fd1, buf);
                         let write = await fileio.write(fd, buf);
-                        expect(write > 0).assertTrue();
+                        expect(write == assetProps.write).assertTrue();
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_09  write:'
                             + write);
@@ -509,7 +530,7 @@ describe('fileAssetTestCallback.test.js', async function() {
                     }
                 } catch (error) {
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_09  error:'
-                                 + error);
+                        + error);
                     expect(true).assertTrue();
                     await asset.close(fd);
                     await asset1.close(fd1);
@@ -518,7 +539,7 @@ describe('fileAssetTestCallback.test.js', async function() {
             });
         } catch (error) {
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_09  error:'
-                         + error);
+                + error);
             expect(false).assertTrue();
             await asset.close(fd);
             await asset1.close(fd1);
@@ -537,42 +558,46 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_10', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_10', 0, async function (done) {
         let asset;
         let asset1;
         let fd;
         let fd1;
+        let assetProps = {
+            bytesRead: 4096,
+            write: 4096,
+        }
         try {
             let fileType = mediaLibrary.MediaType.AUDIO;
             let fileFetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ fileType.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [fileType.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fileFetchOp);
             const dataList = await fetchFileResult.getAllObject();
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_10 dataList.length:'
-                         + dataList.length);
+                + dataList.length);
             asset = dataList[0];
             asset.open('rw', async (error, fd) => {
                 if (fd == undefined) {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    expect(fd > 0).assertTrue();
+                    expect(isNum(fd)).assertTrue();
                     let buf = new ArrayBuffer(4096);
                     let res = await fileio.read(fd, buf);
-                    expect(res.bytesRead > 0).assertTrue();
+                    expect(res.bytesRead == assetProps.bytesRead).assertTrue();
                     asset1 = dataList[1];
                     fd1 = await asset1.open('r');
                     let buf2 = new ArrayBuffer(4096);
                     let res2 = await fileio.read(fd1, buf2);
                     let write = await fileio.write(fd, buf2);
-                    expect(write > 0).assertTrue();
+                    expect(write == assetProps.write).assertTrue();
 
                     await asset.close(fd);
                     await asset1.close(fd1);
 
-                    if (fd > 0 && res.bytesRead > 0 && write > 0) {
+                    if (isNum(fd) && res.bytesRead == assetProps.bytesRead && write == assetProps.write) {
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_10  success');
                         done();
@@ -600,19 +625,23 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_11', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_11', 0, async function (done) {
         let asset;
         let fd;
+        let assetProps = {
+            bytesRead: 4096,
+            write: 4096,
+        }
         try {
             let type = mediaLibrary.MediaType.AUDIO;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_11 dataList.length:'
-                         + dataList.length);
+                + dataList.length);
             asset = dataList[0];
             asset.open('r', async (error, fd) => {
                 try {
@@ -622,15 +651,15 @@ describe('fileAssetTestCallback.test.js', async function() {
                         expect(false).assertTrue();
                         done();
                     } else {
-                        expect(fd > 0).assertTrue();
+                        expect(isNum(fd)).assertTrue();
                         console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_11 fd:'
-                                     + fd);
+                            + fd);
                         let buf = new ArrayBuffer(4096);
                         let res = await fileio.read(fd, buf);
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_11 res.bytesRead:'
                             + res.bytesRead);
-                        expect(res.bytesRead > 0).assertTrue();
+                        expect(res.bytesRead == assetProps.bytesRead).assertTrue();
                         let write = await fileio.write(fd, buf);
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_11 write');
@@ -638,9 +667,9 @@ describe('fileAssetTestCallback.test.js', async function() {
                     }
                 } catch (error) {
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_11  error:'
-                                 + error);
+                        + error);
                     expect(true).assertTrue();
-                    if (fd > 0) {
+                    if (isNum(fd)) {
                         await asset.close(fd);
                     }
                     done();
@@ -648,9 +677,9 @@ describe('fileAssetTestCallback.test.js', async function() {
             });
         } catch (error) {
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_11  error:'
-                         + error);
+                + error);
             expect(false).assertTrue();
-            if (fd > 0) {
+            if (isNum(fd)) {
                 await asset.close(fd);
             }
             done();
@@ -665,7 +694,7 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_12', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_12', 0, async function (done) {
         let asset;
         let asset1;
         let fd;
@@ -673,13 +702,13 @@ describe('fileAssetTestCallback.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.AUDIO;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_12 dataList.length:'
-                         + dataList.length);
+                + dataList.length);
             asset = dataList[0];
             asset1 = dataList[1];
 
@@ -692,13 +721,13 @@ describe('fileAssetTestCallback.test.js', async function() {
                         done();
                     } else {
                         console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_12 fd:'
-                                     + fd);
-                        expect(fd > 0).assertTrue();
+                            + fd);
+                        expect(isNum(fd)).assertTrue();
                         fd1 = await asset1.open('r');
                         let buf = new ArrayBuffer(4096);
                         let res = await fileio.read(fd1, buf);
                         let write = await fileio.write(fd, buf);
-                        expect(write > 0).assertTrue();
+                        expect(write == assetProps.write).assertTrue();
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_12 write:'
                             + write);
@@ -710,7 +739,7 @@ describe('fileAssetTestCallback.test.js', async function() {
                     }
                 } catch (error) {
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_12  error:'
-                                 + error);
+                        + error);
                     expect(true).assertTrue();
                     await asset.close(fd);
                     await asset1.close(fd1);
@@ -719,7 +748,7 @@ describe('fileAssetTestCallback.test.js', async function() {
             });
         } catch (error) {
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_12  error:'
-                         + error);
+                + error);
             expect(false).assertTrue();
             await asset.close(fd);
             await asset1.close(fd1);
@@ -738,16 +767,20 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_13', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_13', 0, async function (done) {
         let asset;
         let asset1;
         let fd;
         let fd1;
+        let assetProps = {
+            bytesRead: 4096,
+            write: 4096,
+        }
         try {
             let fileType = mediaLibrary.MediaType.VIDEO;
             let fileFetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ fileType.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [fileType.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fileFetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -760,11 +793,11 @@ describe('fileAssetTestCallback.test.js', async function() {
                     done();
                 } else {
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_13 fd:'
-                                 + fd);
-                    expect(fd > 0).assertTrue();
+                        + fd);
+                    expect(isNum(fd)).assertTrue();
                     let buf = new ArrayBuffer(4096);
                     let res = await fileio.read(fd, buf);
-                    expect(res.bytesRead > 0).assertTrue();
+                    expect(res.bytesRead == assetProps.bytesRead).assertTrue();
                     console.info(
                         'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_13 res.bytesRead :'
                         + res.bytesRead);
@@ -773,11 +806,11 @@ describe('fileAssetTestCallback.test.js', async function() {
                     let buf2 = new ArrayBuffer(4096);
                     let res2 = await fileio.read(fd1, buf2);
                     let write = await fileio.write(fd, buf2);
-                    expect(write > 0).assertTrue();
+                    expect(write == assetProps.write).assertTrue();
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_13 write :'
-                                 + write);
+                        + write);
 
-                    if (fd > 0 && res.bytesRead > 0 && write > 0) {
+                    if (isNum(fd) && res.bytesRead == assetProps.bytesRead && write == assetProps.write) {
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_13  success');
                         done();
@@ -809,14 +842,18 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_14', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_14', 0, async function (done) {
         let asset;
         let fd;
+        let assetProps = {
+            bytesRead: 4096,
+            write: 4096,
+        }
         try {
             let type = mediaLibrary.MediaType.VIDEO;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -830,12 +867,12 @@ describe('fileAssetTestCallback.test.js', async function() {
                         expect(false).assertTrue();
                         done();
                     } else {
-                        expect(fd > 0).assertTrue();
+                        expect(isNum(fd)).assertTrue();
                         console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_14 fd:'
-                                     + fd);
+                            + fd);
                         let buf = new ArrayBuffer(4096);
                         let res = await fileio.read(fd, buf);
-                        expect(res.bytesRead > 0).assertTrue();
+                        expect(res.bytesRead == assetProps.bytesRead).assertTrue();
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_14 res.bytesRead:'
                             + res.bytesRead);
@@ -847,7 +884,7 @@ describe('fileAssetTestCallback.test.js', async function() {
                     }
                 } catch (error) {
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_14  error:'
-                                 + error);
+                        + error);
                     expect(true).assertTrue();
                     await asset.close(fd);
                     done();
@@ -855,9 +892,9 @@ describe('fileAssetTestCallback.test.js', async function() {
             });
         } catch (error) {
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_14  error:'
-                         + error);
+                + error);
             expect(false).assertTrue();
-            if (fd > 0) {
+            if (isNum(fd)) {
                 await asset.close(fd);
             }
             done();
@@ -872,7 +909,7 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_15', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_15', 0, async function (done) {
         let asset;
         let asset1;
         let fd;
@@ -880,13 +917,13 @@ describe('fileAssetTestCallback.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.VIDEO;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_15 dataList.length:'
-                         + dataList.length);
+                + dataList.length);
             asset = dataList[0];
             asset1 = dataList[1];
             asset.open('w', async (error, fd) => {
@@ -898,13 +935,13 @@ describe('fileAssetTestCallback.test.js', async function() {
                         done();
                     } else {
                         console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_15 fd :'
-                                     + fd);
-                        expect(fd > 0).assertTrue();
+                            + fd);
+                        expect(isNum(fd)).assertTrue();
                         fd1 = await asset1.open('r');
                         let buf = new ArrayBuffer(4096);
                         let res = await fileio.read(fd1, buf);
                         let write = await fileio.write(fd, buf);
-                        expect(write > 0).assertTrue();
+                        expect(write == assetProps.write).assertTrue();
                         console.info(
                             'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_15 wreite:'
                             + write);
@@ -916,7 +953,7 @@ describe('fileAssetTestCallback.test.js', async function() {
                     }
                 } catch (error) {
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_15  error:'
-                                 + error);
+                        + error);
                     expect(true).assertTrue();
                     await asset.close(fd);
                     await asset1.close(fd1);
@@ -925,7 +962,7 @@ describe('fileAssetTestCallback.test.js', async function() {
             });
         } catch (error) {
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_15  error:'
-                         + error);
+                + error);
             expect(false).assertTrue();
             await asset.close(fd);
             await asset1.close(fd1);
@@ -945,15 +982,15 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_31', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_31', 0, async function (done) {
         let asset;
         let fd;
         let fd1;
         try {
             let type = mediaLibrary.MediaType.FILE;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -963,7 +1000,7 @@ describe('fileAssetTestCallback.test.js', async function() {
             asset.close(fd, async (error) => {
                 fd1 = await asset.open('r');
                 await asset.close(fd1);
-                if (fd > 0 && fd1 > 0) {
+                if (isNum(fd) && isNum(fd1)) {
                     console.info(
                         'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_31  success');
                     expect(true).assertTrue();
@@ -993,15 +1030,15 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_33', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_33', 0, async function (done) {
         let asset;
         let fd;
         let fd1;
         try {
             let type = mediaLibrary.MediaType.IMAGE;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -1013,7 +1050,7 @@ describe('fileAssetTestCallback.test.js', async function() {
                 fd1 = await asset.open('r');
                 console.info('MediaLibraryTest : ==2 fd2:' + fd1);
                 await asset.close(fd1);
-                if (fd > 0 && fd1 > 0) {
+                if (isNum(fd) && isNum(fd1)) {
                     console.info(
                         'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_33  success');
                     expect(true).assertTrue();
@@ -1041,15 +1078,15 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_34', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_34', 0, async function (done) {
         let asset;
         let fd;
         let fd1;
         try {
             let type = mediaLibrary.MediaType.AUDIO;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -1059,7 +1096,7 @@ describe('fileAssetTestCallback.test.js', async function() {
             asset.close(fd, async (error) => {
                 fd1 = await asset.open('r');
                 await asset.close(fd1);
-                if (fd > 0 && fd1 > 0) {
+                if (isNum(fd) && isNum(fd1)) {
                     console.info(
                         'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_34  success');
                     expect(true).assertTrue();
@@ -1089,30 +1126,30 @@ describe('fileAssetTestCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_35', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_35', 0, async function (done) {
         let asset;
         let fd;
         let fd1;
         try {
             let type = mediaLibrary.MediaType.VIDEO;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs : [ type.toString() ],
+                selections: fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: [type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_35 dataList.length:'
-                         + dataList.length);
+                + dataList.length);
             asset = dataList[0];
             fd = await asset.open('r');
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_35 fd' + fd);
-            expect(fd > 0).assertTrue();
+            expect(isNum(fd)).assertTrue();
             asset.close(fd, async (error) => {
                 try {
                     fd1 = await asset.open('r');
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_35 fd1'
-                                 + fd1);
-                    expect(fd1 > 0).assertTrue();
+                        + fd1);
+                    expect(isNum(fd1)).assertTrue();
                     expect(error == undefined).assertTrue();
                     console.info(
                         'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_35 error == undefined');
@@ -1123,7 +1160,7 @@ describe('fileAssetTestCallback.test.js', async function() {
                     done();
                 } catch (error) {
                     console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_35  error'
-                                 + error);
+                        + error);
                     await asset.close(fd);
                     await asset.close(fd1);
                     expect(false).assertTrue();
