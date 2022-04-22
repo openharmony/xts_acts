@@ -12,14 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import getLaunchWantForBundle from './GetLaunchWantForBundle.test.ets';
 import getabilityInfo from './GetabilityInfo.test.ets';
 import getApplicationInfoJsunit from './getApplicationInfoJsunit.test.ets';
 import getAllAppInfoJsunit from './getAllApplicationInfoJsunit.test.ets';
 import getAbilityLabelJsUnit from "./GetAbilityLabelJsUnit.test.ets";
 import isAbilityEnableETSUnit from "./IsAbilityEnabledETSUnit.ets";
 import isApplicationEnabledETSUnit from "./IsApplicationEnabledETSUnit.ets";
+import getAbilityIcon from "./GetAbilityIcon.test.ets";
+import getNameForUid from "./GetNameForUid.test.ets";
 
 export default function testsuite() {
+  getAbilityIcon();
+  getLaunchWantForBundle();
+  getNameForUid();
   //RM.007
   getApplicationInfoJsunit();
   getAllAppInfoJsunit();

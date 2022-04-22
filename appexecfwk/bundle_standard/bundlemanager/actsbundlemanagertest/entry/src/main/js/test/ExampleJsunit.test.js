@@ -1901,7 +1901,6 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.versionName.length).assertLarger(0)
             expect(datainfo.uid).assertLarger(2099)
             expect(datainfo.appInfo.name).assertEqual(LAUNCHER)
-            expect(datainfo.appInfo.description).assertEqual(DESCRIPTION)
             expect(datainfo.appInfo.systemApp).assertEqual(true)
             expect(datainfo.appInfo.supportedModes).assertEqual(0)
             expect(datainfo.appInfo.moduleInfos.length).assertLarger(0)

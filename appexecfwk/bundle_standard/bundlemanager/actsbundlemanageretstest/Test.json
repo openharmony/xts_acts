@@ -13,6 +13,33 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "remount",
+                "mkdir /data/test/"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "push":[
+                "bmsThirdBundleTest1.hap -> /data/bmsThirdBundleTest1.hap ",
+                "first_right.hap -> /data/test/first_right.hap",
+                "second_right.hap -> /data/second_right.hap"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "bm install -p /data/bmsThirdBundleTest1.hap",
+                "bm install -p /data/test/first_right.hap",
+                "bm install -p /data/second_right.hap"
+            ],
+            "teardown-command":[
+                "bm uninstall -n com.example.third1",
+                "bm uninstall -n com.example.l3jsdemo"
+            ]
         }
     ]
 }

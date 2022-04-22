@@ -98,6 +98,7 @@ describe('ActsBmsHapModuleTest', function () {
                     let hapModuleInfo1 = result.hapModuleInfos[1];
                     checkHapMoudleInfos(hapModuleInfo);
                     checkHapMoudleInfos(hapModuleInfo1);
+                    expect(hapModuleInfo.label).assertEqual('$string:app_name');
                     expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME1);
                     expect(hapModuleInfo1.name).assertEqual(BUNDLE_NAME6);
                     expect(hapModuleInfo.moduleName).assertEqual('entry');
@@ -288,7 +289,6 @@ describe('ActsBmsHapModuleTest', function () {
         expect(info.descriptionId).assertEqual(0);
         expect(info.iconPath).assertEqual("$media:icon");
         expect(info.icon).assertEqual('');
-        expect(info.label).assertEqual('$string:app_name');
         expect(info.labelId).assertEqual(0);
         expect(info.iconId).assertEqual(0);
         expect(info.backgroundImg).assertEqual("");
