@@ -1,0 +1,18 @@
+{
+  "description": "Configuration for huksCipherCallback js api Tests",
+  "driver": {
+    "type": "JSUnitTest",
+    "test-timeout": "2700000",
+    "package": "com.example.huksciphercallback",
+    "shell-timeout": "60000"
+  },
+  "kits": [
+    {
+      "test-file-name": [
+        "huksCipherCallbackJSApiTest.hap"
+      ],
+      "type": "AppInstallKit",
+      "cleanup-apps": true
+    }
+  ]
+}

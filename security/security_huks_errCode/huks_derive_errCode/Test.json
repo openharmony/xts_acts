@@ -1,0 +1,18 @@
+{
+  "description": "Configuration for huksDeriveErrCode js api Tests",
+  "driver": {
+    "type": "JSUnitTest",
+    "test-timeout": "25200000",
+    "package": "com.example.huksderiveErrCode",
+    "shell-timeout": "60000"
+  },
+  "kits": [
+    {
+      "test-file-name": [
+        "huksDeriveErrCodeJSApiTest.hap"
+      ],
+      "type": "AppInstallKit",
+      "cleanup-apps": true
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "description": "Configuration for huksHmacJS js api Tests",
+  "driver": {
+    "type": "JSUnitTest",
+    "test-timeout": "21600000",
+    "package": "com.example.huksHmac",
+    "shell-timeout": "60000"
+  },
+  "kits": [
+    {
+      "test-file-name": [
+        "huksHmacJSApiTest.hap"
+      ],
+      "type": "AppInstallKit",
+      "cleanup-apps": true
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "description": "Configuration for huksCipherRsaStress js api Tests",
+  "driver": {
+    "type": "JSUnitTest",
+    "test-timeout": "25200000",
+    "package": "com.example.hukscipherRsastress",
+    "shell-timeout": "60000"
+  },
+  "kits": [
+    {
+      "test-file-name": [
+        "huksCipherRsaStressJSApiTest.hap"
+      ],
+      "type": "AppInstallKit",
+      "cleanup-apps": true
+    }
+  ]
+}
