@@ -35,24 +35,9 @@ async function changedLocationMode(){
      await geolocation.isLocationEnabled().then(async(result) => {
         console.info('[lbs_js] getLocationSwitchState result: ' + result);
         if(!result){
-            await geolocation.enableLocation().then(async(result) => {
+            await geolocation.requestEnableLocation().then(async(result) => {
                 await sleep(3000);
-                console.info('[lbs_js] test enableLocation promise result: ' + result);
-                expect(result).assertTrue();
-            }).catch((error) => {
-                console.info("[lbs_js] promise then error." + error.message);
-                expect().assertFail();
-            });
-        }
-    })
-}
-async function offLocationMode(){
-     await geolocation.isLocationEnabled().then(async(result) => {
-        console.info('[lbs_js] getLocationSwitchState result: ' + result);
-        if(result){
-            await geolocation.disableLocation().then(async(result) => {
-                await sleep(3000);
-                console.info('[lbs_js] test disableLocation promise result: ' + result);
+                console.info('[lbs_js] test requestEnableLocation promise result: ' + result);
                 expect(result).assertTrue();
             }).catch((error) => {
                 console.info("[lbs_js] promise then error." + error.message);
@@ -106,8 +91,8 @@ describe('geolocationTest', function () {
         console.info('beforeAll case');
     })
 
-    beforeEach(function () {
-        sleep(3000);
+    beforeEach(async function () {
+        await changedLocationMode();
         console.info('beforeEach case');
     })
     afterEach(function () {
@@ -122,42 +107,16 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Geo_0001', 0, async function (done) {
-        geolocation.enableLocation(async(err, data) => {
+        geolocation.isGeoServiceAvailable(async(err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
-               
+                console.info('[lbs_js]  getGeoServiceState err is : ' + err );
+                
+            }else {
+                console.info('[lbs_js] isGeoServiceAvailable callback result: ' + data);
+                expect(data).assertTrue();
             }
-            console.info("[lbs_js] enableLocation callback data: " + data);
-            expect(data).assertTrue();
-            geolocation.isGeoServiceAvailable(async(err, data) => {
-                if (err) {
-                    console.info('[lbs_js]  getGeoServiceState err is : ' + err );
-                    
-                }else {
-                    console.info('[lbs_js] isGeoServiceAvailable callback result: ' + data);
-                    expect(data).assertTrue();
-                }
-                geolocation.disableLocation(async(err, data) => {
-                    if (err) {
-                        console.info('[lbs_js]  disableLocation callback err is : ' + err );
-                       
-                    }else {
-                        console.info("[lbs_js] disableLocation callback data: " + data);
-                        expect(data).assertTrue();
-                    }
-                    geolocation.isGeoServiceAvailable(async(err, data) => {
-                        if (err) {
-                            console.info('[lbs_js]  getGeoServiceState err is : ' + err );
-                            
-                        }else {
-                            console.info('[lbs_js] isGeoServiceAvailable2 callback result: ' + data);
-                            expect(data).assertFalse();
-                            done()
-                        }
-                    });
-                })
-            })
-        });
+            done()
+        })
     });
 
     /**
@@ -169,27 +128,9 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */ 
     it('SUB_HSS_LocationSystem_Geo_0002', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] test enableLocation promise result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         await geolocation.isGeoServiceAvailable().then( (result) => {
             console.info('[lbs_js] isGeoServiceAvailable1 promise result: ' + result);
             expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
-        await geolocation.disableLocation().then((data) => {
-            console.info('[lbs_js] disableLocation promise data: ' + data);
-            expect(data).assertTrue();
-        });
-        await geolocation.isGeoServiceAvailable().then( (result) => {
-            console.info('[lbs_js] isGeoServiceAvailable2  promise result: ' + result);
-            expect(result).assertFalse();
         }).catch((error) => {
             console.info("[lbs_js] promise then error." + error.message);
             expect().assertFail();
@@ -206,21 +147,8 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */ 
      it('SUB_HSS_LocationSystem_Geo_0003', 0, async function (done) {
-        let promiseOne = new Promise((resolve,reject) => {
-            geolocation.enableLocation((err, data) => {
-                if (err) {
-                    console.info('[lbs_js]  enableLocation callback err is : ' + err );
-                    
-                }else {
-                    console.info("[lbs_js] enableLocation callback data: " + data);
-                    expect(data).assertTrue();
-                }
-                resolve()
-                });
-        })
-        await sleep(3000);
         let reverseGeocodeRequest = {"latitude": 31.265496, "longitude": 121.62771, "maxItems": 1,"locale": "zh"};
-        let promiseTwo = new Promise((resolve,reject) => {
+        let promise = new Promise((resolve,reject) => {
             geolocation.getAddressesFromLocation(reverseGeocodeRequest, (err, data) => {
                 if (err) {
                     console.info('[lbs_js]  getAddressesFromLocation callback err is : ' + err);
@@ -231,9 +159,7 @@ describe('geolocationTest', function () {
                 resolve()
             });
         })
-        await promiseOne.then(()=>{
-            return promiseTwo
-        }).then(done)
+        await promise.then(done)
     })
 
     /**
@@ -245,13 +171,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Geo_0004', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] testenableLocation promise result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         let reverseGeocodeRequest = {"latitude": 31.265496, "longitude": 121.62771, "maxItems": 1};
         await geolocation.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
             console.info('[lbs_js] getAddressesFromLocation04 promise: ' +  JSON.stringify(data));
@@ -277,13 +196,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
      it('SUB_HSS_LocationSystem_Geo_0005', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] testenableLocation promise result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         let reverseGeocodeRequest = {"latitude": 31.265496, "longitude": 121.62771, "maxItems": 5};
         await geolocation.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
             console.info('[lbs_js] getAddressesFromLocation05 promise: ' +  JSON.stringify(data));
@@ -305,13 +217,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */ 
     it('SUB_HSS_LocationSystem_Geo_0006', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] testenableLocation promise result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         let reverseGeocodeRequest1 = {"latitude": 90, "longitude": 121.62771, "maxItems": 1};
         await geolocation.getAddressesFromLocation(reverseGeocodeRequest1).then((data) => {
             console.info('[lbs_js] getAddressesFromLocation0601 promise: ' +  JSON.stringify(data));
@@ -350,19 +255,12 @@ describe('geolocationTest', function () {
     /**
      * @tc.number Geo_0007
      * @tc.name SUB_HSS_LocationSystem_Geo_0007
-     * @tc.desc Test enableLocation api .
+     * @tc.desc Test requestEnableLocation api .
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */ 
     it('SUB_HSS_LocationSystem_Geo_0007', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] testenableLocation promise result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         let reverseGeocodeRequest = {"latitude": 31.265496, "longitude": 180, "maxItems": 1};
         await geolocation.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
             console.info('[lbs_js] getAddressesFromLocation0701 promise: ' +  JSON.stringify(data));
@@ -407,13 +305,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */ 
      it('SUB_HSS_LocationSystem_Geo_0008', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] testenableLocation result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         let geocodeRequest = {"description": "上海市浦东新区金穗路1800号", "maxItems": 1,"locale": "zh","minLatitude":"" ,
             "minLongitude":"" ,"maxLatitude":"" ,"maxLongitude": ""};
         geolocation.getAddressesFromLocationName(geocodeRequest, (err, data) => {
@@ -460,13 +351,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */ 
     it('SUB_HSS_LocationSystem_Geo_0009', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] testenableLocation result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         let geocodeRequest = {"description": "上海市浦东新区金穗路1800号", "maxItems": 1};
         await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
             console.info("[lbs_js] getAddressesFromLocation callback data is: " + JSON.stringify(result));
@@ -487,13 +371,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */ 
     it('SUB_HSS_LocationSystem_Geo_0010', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] test enableLocation result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         let geocodeRequest = {"description": "上海市浦东新区金穗路1800号", "maxItems": 5};
         await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
             console.info("[lbs_js]  getAddressesFromLocation m  callback data is: " + JSON.stringify(result));
@@ -514,13 +391,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */ 
     it('SUB_HSS_LocationSystem_Geo_0011', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] test enableLocation result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         let geocodeRequest = {"description": "", "maxItems": 1};
         await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
             console.info("[lbs_js]  getAddressesFromLocation  promise data is: " + JSON.stringify(result));
@@ -549,13 +419,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Geo_0012', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] test enableLocation result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         let geocodeRequest = {"description": "上海金穗路1800号", "maxItems": 1, "minLatitude":31.3082812847 ,
             "minLongitude":121.5782001832,"maxLatitude":31.1537977881,"maxLongitude":121.8026736943};
         await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
@@ -577,13 +440,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Geo_0013', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] test enableLocation result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error" + error.message);
-            expect().assertFail();
-        });
         let geocodeRequest = {"description": "", "maxItems": 1, "minLatitude":331.3082812847 ,
             "minLongitude":121.5782001832,"maxLatitude":31.1537977881,"maxLongitude":121.8026736943};
         await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
@@ -614,13 +470,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Geo_0014', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] testenableLocation result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         let geocodeRequest = {"description": "北京天安门", "maxItems": 1, "minLatitude":40.85 ,
             "minLongitude":116.35,"maxLatitude":40.95,"maxLongitude":116.45};
         await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
@@ -642,13 +491,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Geo_0015', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] test enableLocation result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         let geocodeRequest = {"description": "北京天安门", "maxItems": 1, "minLatitude":39.95 ,
             "minLongitude":116.45,"maxLatitude":39.85,"maxLongitude":116.35};
         await geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
@@ -670,13 +512,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */ 
     it('SUB_HSS_LocationSystem_Geo_0016', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] testenableLocation result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         let geocodeRequest1 = {"description": "上海金穗路1800号", "maxItems": 1, "minLatitude":-90 ,
             "minLongitude":121.5782001832,"maxLatitude":31.1537977881,"maxLongitude":121.8026736943};
         await geolocation.getAddressesFromLocationName(geocodeRequest1).then((result) => {
@@ -761,13 +596,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */ 
     it('SUB_HSS_LocationSystem_Geo_0017', 0, async function (done) {
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] test enableLocation result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         let geocodeRequest1 = {"description": "北京天安门", "maxItems": 1, "minLatitude":39.85 ,
             "minLongitude":-180,"maxLatitude":39.95,"maxLongitude":116.45};
         await geolocation.getAddressesFromLocationName(geocodeRequest1).then((result) => {
@@ -852,42 +680,16 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocSwitch_0001', 0, async function (done) {
-        await offLocationMode();
-        geolocation.enableLocation(async(err, data) => {
+        geolocation.isLocationEnabled(async(err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  getLocationSwitchState err is : ' + err );
+                
+            }else {
+                console.info('[lbs_js] getLocationSwitchState callback data1: ' + data);
+                expect(data).assertTrue();
             }
-            console.info("[lbs_js] enableLocation callback data: " + data);
-            expect(data).assertTrue();
-            geolocation.isLocationEnabled(async(err, data) => {
-                if (err) {
-                    console.info('[lbs_js]  getLocationSwitchState err is : ' + err );
-                    
-                }else {
-                    console.info('[lbs_js] getLocationSwitchState callback data1: ' + data);
-                    expect(data).assertTrue();
-                }
-                geolocation.disableLocation(async(err, data) => {
-                    if (err) {
-                        console.info('[lbs_js]  disableLocation callback err is : ' + err );
-                        
-                    }else {
-                        console.info("[lbs_js] disableLocation callback data: " + data);
-                        expect(data).assertTrue();
-                    }
-                    geolocation.isLocationEnabled(async(err, data) => {
-                        if (err) {
-                            console.info('[lbs_js]  getLocationSwitchState err is : ' + err );
-                            
-                        }else {
-                            console.info('[lbs_js] getLocationSwitchState callback data2: ' + data);
-                            expect(data).assertFalse();
-                            done()
-                        }
-                    });
-                })
-            })
-        });
+            done()
+        })
     });
 
     /**
@@ -899,27 +701,9 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocSwitch_0002', 0, async function (done) {
-        await offLocationMode();
-        await geolocation.enableLocation().then((result) => {
-            console.info('[lbs_js] testenableLocation result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         await geolocation.isLocationEnabled().then((result) => {
             console.info('[lbs_js] getLocationSwitchStateLocSwitch_00021 result: ' + result);
             expect(result).assertTrue();
-        }).catch((error) => {
-            expect().assertFail();
-        });
-        await geolocation.disableLocation().then((data) => {
-            console.info('[lbs_js] disableLocation data: ' + data);
-            expect(data).assertTrue();
-        });
-        await geolocation.isLocationEnabled().then((result) => {
-            console.info('[lbs_js] getLocationSwitchStateLocSwitch_00022 result: ' + result);
-            expect(result).assertFalse();
         }).catch((error) => {
             expect().assertFail();
         });
@@ -929,51 +713,33 @@ describe('geolocationTest', function () {
     /**
      * @tc.number LocSwitch_0003
      * @tc.name SUB_HSS_LocationSystem_LocSwitch_0003
-     * @tc.desc Test requestEnableLocation api .
+     * @tc.desc Test requestrequestEnableLocation api .
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocSwitch_0003', 0, async function (done) {
-        await offLocationMode();
-        geolocation.requestEnableLocation(async(err, data) => {
+        geolocation.isLocationEnabled(async(err, data) => {
             if (err) {
-                console.info('[lbs_js] requestEnableLocation err is : ' + err );
+                console.info('[lbs_js] getLocationSwitchState callback err is : ' + err );
                 
             }else {
-                console.info('[lbs_js] requestEnableLocation callback data1: ' + data);
+                console.info("[lbs_js] getLocationSwitchState callback data: " + data);
                 expect(data).assertTrue();
             }
-            geolocation.isLocationEnabled(async(err, data) => {
-                if (err) {
-                    console.info('[lbs_js] getLocationSwitchState callback err is : ' + err );
-                    
-                }else {
-                    console.info("[lbs_js] getLocationSwitchState callback data: " + data);
-                    expect(data).assertTrue();
-                    done()
-                }
-            })
-        });
+            done()
+        })
     });
 
     /**
      * @tc.number LocSwitch_0004
      * @tc.name SUB_HSS_LocationSystem_LocSwitch_0004
-     * @tc.desc Test requestEnableLocation api .
+     * @tc.desc Test requestrequestEnableLocation api .
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocSwitch_0004', 0, async function (done) {
-        await offLocationMode();
-        await geolocation.requestEnableLocation().then((result) => {
-            console.info('[lbs_js] requestEnableLocation result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
-        });
         await geolocation.isLocationEnabled().then((result1) => {
             console.info('[lbs_js] getLocationSwitchStateLocSwitch_0004 result: ' + result1);
             expect(result1).assertTrue();
@@ -992,7 +758,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocSwitch_0005', 0, async function (done) {
-        await offLocationMode();
         geolocation.on('locationServiceState',
             (result) => {
                 if(err){
@@ -1002,11 +767,11 @@ describe('geolocationTest', function () {
                 expect(true).assertEqual(result !=null);
                 done();
             });
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -1032,11 +797,11 @@ describe('geolocationTest', function () {
      */
     it('SUB_HSS_LocationSystem_SingleLoc_0001', 0, async function(done) {
         let currentLocationRequest = { "priority": 0x200, "scenario": 0x301, "timeoutMs": 10, "maxAccuracy": 0 };
-        geolocation.enableLocation(async(err, data) => {
+        geolocation.requestEnableLocation(async(err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }
-            console.info("[lbs_js] enableLocation callback data: " + data);
+            console.info("[lbs_js] requestEnableLocation callback data: " + data);
             expect(data).assertTrue();
             geolocation.getCurrentLocation(currentLocationRequest,
                 async(err, result) => {
@@ -1060,7 +825,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_SingleLoc_0002', 0, async function (done) {
-        await changedLocationMode();
         let currentLocationRequest = { "priority": 0x203, "scenario": 0x301, "timeoutMs": 10, "maxAccuracy": 0 };
         try {
             geolocation.getCurrentLocation(currentLocationRequest).then( (result) => {
@@ -1082,7 +846,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_SingleLoc_0003', 0, async function(done) {
-        await changedLocationMode();
         let currentLocationRequest = { "priority": 0x200, "scenario": 0x302, "timeoutMs": 10, "maxAccuracy": 0 };
         geolocation.getCurrentLocation(currentLocationRequest,
             (err, result) => {
@@ -1104,7 +867,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_SingleLoc_0004', 0, async function(done) {
-        await changedLocationMode();
         let currentLocationRequest = { "priority": 0x200, "scenario": 0x303, "timeoutMs": 10, "maxAccuracy": 0 };
         geolocation.getCurrentLocation(currentLocationRequest,
             (err, result) => {
@@ -1127,7 +889,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_SingleLoc_0005', 0, async function(done) {
-        await changedLocationMode();
         let currentLocationRequest = { "priority": 0x200, "scenario": 0x304, "timeoutMs": 10, "maxAccuracy": 0 };
         geolocation.getCurrentLocation(currentLocationRequest,
             (err, result) => {
@@ -1150,7 +911,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_SingleLoc_0006', 0, async function(done) {
-        await changedLocationMode();
         let currentLocationRequest1 = { "priority": 0x200, "scenario": 0x305, "timeoutMs": 10, "maxAccuracy": 0 };
         let currentLocationRequest2= { "priority": 0x200, "scenario": 0x301, "timeoutMs": 10, "maxAccuracy": 0 };
         geolocation.getCurrentLocation(currentLocationRequest1,
@@ -1185,7 +945,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_SingleLoc_0007', 0, async function(done) {
-        await changedLocationMode();
         let currentLocationRequest = { "priority": 0x0201, "scenario": 0x0300, "timeoutMs": 10, "maxAccuracy": 0 };
         geolocation.getCurrentLocation(currentLocationRequest,
             (err, result) => {
@@ -1209,7 +968,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_SingleLoc_0008', 0, async function(done) {
-        await changedLocationMode();
         let currentLocationRequest = { "priority": 0x0203, "scenario": 0x0300, "timeoutMs": 10, "maxAccuracy": 0 };
         geolocation.getCurrentLocation(currentLocationRequest,
             (err, result) => {
@@ -1233,7 +991,6 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_SingleLoc_0009', 0, async function(done) {
-        await changedLocationMode();
         let currentLocationRequest = { "priority": 0x0202, "scenario": 0x0300, "timeoutMs": 10, "maxAccuracy": 0 };
         geolocation.getCurrentLocation(currentLocationRequest,
             (err, result) => {
@@ -1249,5 +1006,6 @@ describe('geolocationTest', function () {
     })
 
 })
+
 
 

@@ -21,12 +21,9 @@ function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
 }
 
-async function tryToEnableWifi(){
-    if(!wifi.isWifiActive()){
-        console.info("wifi_test/enable wifi:" + wifi.enableWifi());
-        await sleep(3000);
-    }
+function checkWifiPowerOn(){
     console.info("wifi_test/wifi status:" + wifi.isWifiActive());
+    expect(wifi.isWifiActive()).assertTrue();
 }
 
 let GroupOwnerBand = {
@@ -43,26 +40,12 @@ describe('ACTS_WifiTest', function () {
     })
 
     /**
-    * @tc.number     Setting_0001
-    * @tc.name       SUB_Communication_WiFi_P2P_Setting_0001
-    * @tc.desc       Test setDeviceName infos
-    */
-    it('SUB_Communication_WiFi_P2P_Setting_0001', 0, async function(done) {
-        await tryToEnableWifi();
-        console.info("[wifi_test] test setDeviceName start.");
-        let devName = wifi.setDeviceName("P2PTest");
-        console.info("[wifi_test] test start setDeviceName->" + devName);
-        expect(devName).assertTrue();
-        done();
-    })
-
-    /**
     * @tc.number     config_0001
     * @tc.name       SUB_Communication_WiFi_P2P_Config_0001
     * @tc.desc       Test createGroup and getCurrentGroup promise infos
     */
     it('SUB_Communication_WiFi_P2P_Config_0001', 0, async function(done) {
-        await tryToEnableWifi();
+        checkWifiPowerOn();
         let WifiP2PConfig = {
             deviceAddress : "00:00:00:00:00:00",
             netId : -1,
@@ -95,7 +78,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc       Test getCurrentGroup callback infos
     */
     it('SUB_Communication_WiFi_P2P_Config_0002', 0, async function(done) {
-        await tryToEnableWifi();
+        checkWifiPowerOn();
         let WifiP2PConfig = {
             deviceAddress : "00:00:00:00:00:00",
             netId : -1,
@@ -139,7 +122,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc       Test createGroup 2.4G band and getCurrentGroup infos
     */
     it('SUB_Communication_WiFi_P2P_Config_0003', 0, async function(done) {
-        await tryToEnableWifi();
+        checkWifiPowerOn();
         let WifiP2PConfig2 = {
             deviceAddress : "00:00:00:00:00:00",
             netId : -1,
@@ -170,10 +153,10 @@ describe('ACTS_WifiTest', function () {
     /**
     * @tc.number     config_0004
     * @tc.name       SUB_Communication_WiFi_P2P_Config_0004
-    * @tc.desc       Test createGroup and deletePersistentGroup infos
+    * @tc.desc       Test create PersistentGroup infos
     */
     it('SUB_Communication_WiFi_P2P_Config_0004', 0, async function(done) {
-        await tryToEnableWifi();
+        checkWifiPowerOn();
         let WifiP2PConfig = {
             deviceAddress : "00:00:00:00:00:00",
             netId : -2,
@@ -193,9 +176,6 @@ describe('ACTS_WifiTest', function () {
             console.info("[wifi_test] getCurrentGroup  [promise] result -> " + JSON.stringify(data));
             expect(true).assertEqual(resultLength!=0);
 
-            let removePConfig = wifi.deletePersistentGroup(data.networkId);
-            expect(removePConfig).assertTrue();
-
             let removeConfig = wifi.removeGroup();
             expect(removeConfig).assertTrue();
         });
@@ -208,7 +188,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc   Test p2pConnect infos
     */
     it('SUB_Communication_WiFi_P2P_Config_0005', 0, async function(done) {
-        await tryToEnableWifi();
+        checkWifiPowerOn();
         let WifiP2PConfig3 = {
             deviceAddress : "00:00:00:00:00:00",
             netId : -2,
@@ -237,7 +217,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc       Test getP2pLinkedInfo promise infos
     */
     it('SUB_Communication_WiFi_P2P_Config_0006', 0, async function(done) {
-        await tryToEnableWifi();
+        checkWifiPowerOn();
         let P2pConnectState = {
             DISCONNECTED :0,
             CONNECTED : 1,
@@ -261,7 +241,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc       Test getP2pLinkedInfo callback infos
     */
     it('SUB_Communication_WiFi_P2P_Config_0007', 0, async function(done) {
-        await tryToEnableWifi();
+        checkWifiPowerOn();
         let P2pConnectState = {
             DISCONNECTED :0,
             CONNECTED : 1,
@@ -287,7 +267,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc       Test p2pCancelConnect infos
     */
     it('SUB_Communication_WiFi_P2P_Config_0008', 0,  async function(done) {
-        await tryToEnableWifi();
+        checkWifiPowerOn();
         let disConn = wifi.p2pCancelConnect();
         await sleep(2000);
         console.info("[wifi_test] test p2pCancelConnect result." + disConn);
@@ -304,7 +284,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc       Test getP2pPeerDevices infos
     */
     it('SUB_Communication_WiFi_P2P_Config_0009', 0, async function(done){
-        await tryToEnableWifi();
+        checkWifiPowerOn();
         let P2pDeviceStatus = {
             CONNECTED : 0,
             INVITED : 1,
@@ -337,7 +317,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc       Test getP2pPeerDevices infos
     */
     it('SUB_Communication_WiFi_P2P_Config_0010', 0, async function(done){
-        await tryToEnableWifi();
+        checkWifiPowerOn();
         let P2pDeviceStatus = {
             CONNECTED : 0,
             INVITED : 1,
@@ -393,7 +373,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc       Test p2pStateChange callback
     */
     it('SUB_Communication_WiFi_P2P_P2pStateChange_0001', 0, async function (done) {
-        await tryToEnableWifi();
+        checkWifiPowerOn();
         await wifi.on('p2pStateChange', result => {
             console.info("onP2pStateChange callback, result:" + JSON.stringify(result));
             expect(true).assertEqual(result !=null);
@@ -415,7 +395,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc       Test p2pConnectionChange callback
     */
     it('SUB_Communication_WiFi_P2P_p2pConnectionChange_0002', 0, async function (done) {
-        await tryToEnableWifi();   
+        checkWifiPowerOn();   
         await wifi.on('p2pConnectionChange', recvP2pConnectionChangeFunc =>  {
             console.info("[wifi_test] p2pConnectionChange result -> " + recvP2pConnectionChangeFunc);
             expect(true).assertEqual(recvP2pConnectionChangeFunc !=null);
@@ -459,7 +439,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc       Test p2pPeerDeviceChange callback
     */
     it('SUB_Communication_WiFi_P2P_p2pPeerDeviceChange_0004', 0, async function (done) {
-        await tryToEnableWifi();
+        checkWifiPowerOn();
         let recvP2pPeerDeviceChangeFunc = result => {
             console.info("wifi_test / p2p peer device change receive event: " + JSON.stringify(result));
             wifi.getP2pDevices((err, data) => {
@@ -505,7 +485,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc       Test p2pPersistentGroupChange callback
     */
     it('SUB_Communication_WiFi_P2P_p2pPersistentGroupChange_0005', 0, async function (done) {
-        await tryToEnableWifi();
+        checkWifiPowerOn();
         let recvP2pPersistentGroupChangeFunc = result => {
             console.info("wifi_test / p2p persistent group change receive event" + JSON.stringify(result));
             let config = {
@@ -545,7 +525,7 @@ describe('ACTS_WifiTest', function () {
     * @tc.desc       Test p2pDiscoveryChange callback
     */
     it('SUB_Communication_WiFi_P2P_p2pDiscoveryChange_0006', 0, async function (done) {
-        await tryToEnableWifi();
+        checkWifiPowerOn();
         await wifi.on('p2pDiscoveryChange', result => {
             console.info("onp2pDiscoveryChange callback, result:" + JSON.stringify(result));
             expect(true).assertEqual(result !=null);
@@ -562,5 +542,6 @@ describe('ACTS_WifiTest', function () {
 
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
+
 
 

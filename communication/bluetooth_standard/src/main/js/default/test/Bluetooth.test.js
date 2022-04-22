@@ -420,24 +420,6 @@ describe('bluetoothhostTest', function() {
 
 
     /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_CANCEL_PAIRED_DEV_0001
-     * @tc.name testCancelPairedDevice
-     * @tc.desc Test CancelPairedDevice api.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('SUB_COMMUNACATION_bluetooth_CANCEL_PAIRED_DEV_0001', 0, async function (done) {
-        console.info('[bluetooth_js] cancelPairedDevice start');
-        await tryToEnableBt();
-        let ret = bluetooth.cancelPairedDevice("00:00:00:00:00:00");
-        console.info('[bluetooth_js] cancelPairedDevice ret2 : ' + JSON.stringify(ret));
-        expect(ret).assertFalse();
-        done();
-    })
-
-
-    /**
      * @tc.number SUB_COMMUNACATION_bluetooth_SET_LOCAL_NAME_0001
      * @tc.name testsetLocalName
      * @tc.desc Test setLocalName api.
@@ -713,3 +695,4 @@ describe('bluetoothhostTest', function() {
     })
 
 })
+
