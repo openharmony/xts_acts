@@ -14,3 +14,4 @@
  */
 
 require('./execute.js')
+require('./enumTest.js')
