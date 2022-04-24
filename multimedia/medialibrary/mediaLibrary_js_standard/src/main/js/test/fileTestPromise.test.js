@@ -64,10 +64,10 @@ describe('fileTestPromise.test.js', function () {
     console.info('getMediaLibrary IN');
     var media = mediaLibrary.getMediaLibrary(context);
     console.info('getMediaLibrary OUT');
-    beforeAll(function () {});
-    beforeEach(function () {});
-    afterEach(function () {});
-    afterAll(function () {});
+    beforeAll(function () { });
+    beforeEach(function () { });
+    afterEach(function () { });
+    afterAll(function () { });
 
     async function copyFile(fd1, fd2) {
         let stat = await fileio.fstat(fd1);
@@ -530,22 +530,10 @@ describe('fileTestPromise.test.js', function () {
             const newAsset = newdataList[0];
 
             if (asset.dateModified != undefined) {
-                if (newAsset.dateModified != asset.dateModified) {
-                    console.info('ASSET_PROMISE getFileAssets 003_07 passed');
-                    expect(true).assertTrue();
-                    done();
-                } else {
-                    console.info('ASSET_PROMISE getFileAssets 003_07 failed');
-                    expect(false).assertTrue();
-                    done();
-                }
-            } else if (newAsset.dateModified != undefined) {
-                console.info('ASSET_PROMISE getFileAssets 003_07 passed');
-                expect(true).assertTrue();
+                expect(newAsset.dateModified != asset.dateModified).assertTrue()
                 done();
             } else {
-                console.info('ASSET_PROMISE getFileAssets 003_07 failed');
-                expect(false).assertTrue();
+                expect(newAsset.dateModified != undefined).assertTrue();
                 done();
             }
         } catch (error) {

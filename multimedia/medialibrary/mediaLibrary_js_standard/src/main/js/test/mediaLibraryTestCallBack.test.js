@@ -52,22 +52,44 @@ let filesfetchOp = {
     selectionArgs: [fileType.toString()],
 };
 
+let imageRelativefetchOp = {
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: ['Pictures/MediaLibraryTest/', imageType.toString()],
+};
+let videoRelativefetchOp = {
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: ['Pictures/MediaLibraryTest/', videoType.toString()],
+};
+let audioRelativefetchOp = {
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: ['Pictures/MediaLibraryTest/', audioType.toString()],
+};
+let fileRelativefetchOp = {
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: ['Pictures/MediaLibraryTest/', fileType.toString()],
+    order: fileKeyObj.DATE_ADDED + " DESC",
+};
+
 let imageAndVideofetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: [imageType.toString(), videoType.toString()],
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND (' + 
+                fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?)',
+    selectionArgs: ['Pictures/MediaLibraryTest/', imageType.toString(), videoType.toString()],
 };
 let imageAndVideoAndfilefetchOp = {
     selections:
+        fileKeyObj.RELATIVE_PATH + '= ? AND (' +
         fileKeyObj.MEDIA_TYPE +
         '= ? or ' +
         fileKeyObj.MEDIA_TYPE +
         '= ? or ' +
         fileKeyObj.MEDIA_TYPE +
-        '= ?',
-    selectionArgs: [imageType.toString(), videoType.toString(), fileType.toString()],
+        '= ?)',
+    selectionArgs: ['Pictures/MediaLibraryTest/', imageType.toString(), videoType.toString(), fileType.toString()],
+    order: fileKeyObj.DATE_ADDED + " DESC",
 };
 let imageAndVideoAndfileAndAudiofetchOp = {
     selections:
+        fileKeyObj.RELATIVE_PATH + '= ? AND (' +
         fileKeyObj.MEDIA_TYPE +
         '= ? or ' +
         fileKeyObj.MEDIA_TYPE +
@@ -75,14 +97,17 @@ let imageAndVideoAndfileAndAudiofetchOp = {
         fileKeyObj.MEDIA_TYPE +
         '= ? or ' +
         fileKeyObj.MEDIA_TYPE +
-        '= ?',
+        '= ?)',
     selectionArgs: [
+        'Pictures/MediaLibraryTest/',
         imageType.toString(),
         videoType.toString(),
         fileType.toString(),
         audioType.toString(),
     ],
+    order: fileKeyObj.DATE_ADDED + " DESC",
 };
+
 
 let allTypefetchOp = {
     selections: '',
@@ -94,6 +119,105 @@ async function copyFile(fd1, fd2) {
     let buf = new ArrayBuffer(stat.size);
     await fileio.read(fd1, buf);
     await fileio.write(fd2, buf);
+}
+
+const props = {
+    image: {
+        mimeType: 'image/*',
+        displayName: '01.jpg',
+        relativePath: 'Pictures/MediaLibraryTest/',
+        size: '348113',
+        mediaType: '3',
+        title: '01',
+        dateTaken: '0',
+        width: '1279',
+        height: '1706',
+        orientation: '0',
+        duration: '0',
+        albumId: '1118',
+        albumName: 'MediaLibraryTest'
+    },
+    video: {
+        mimeType: 'video/mp4',
+        displayName: '01.mp4',
+        relativePath: 'Pictures/MediaLibraryTest/',
+        size: '4853005',
+        mediaType: '4',
+        title: '01',
+        dateTaken: '0',
+        width: '1280',
+        height: '720',
+        orientation: '0',
+        duration: '10100',
+        albumName: 'MediaLibraryTest'
+    },
+    audio: {
+        mimeType: 'audio/mpeg',
+        displayName: '01.mp3',
+        relativePath: 'Pictures/MediaLibraryTest/',
+        size: '4113874',
+        mediaType: '5',
+        title: '01',
+        dateTaken: '0',
+        artist: 'Richard Stoltzman/Slovak Radio Symphony Orchestra',
+        width: '0',
+        height: '0',
+        orientation: '0',
+        duration: '169697',
+        albumName: 'MediaLibraryTest'
+    },
+    file: {
+        mimeType: 'file/*',
+        displayName: 'test.dat',
+        relativePath: 'Pictures/MediaLibraryTest/',
+        size: '10',
+        displayName: 'test.dat',
+        mediaType: '1',
+        title: 'test',
+        dateTaken: '0',
+        width: '0',
+        height: '0',
+        orientation: '0',
+        duration: '0',
+        albumName: 'MediaLibraryTest'
+    }
+
+}
+
+async function checkFileAssetAttr(done, fetchFileResult, type, count, typesArr) {
+    expect(fetchFileResult != undefined).assertTrue();
+    expect(fetchFileResult.getCount() == count).assertTrue();
+    let asset = await fetchFileResult.getFirstObject();
+    if (count > 1) {
+        type = asset.mimeType.match(/[a-z]+/g)[0]
+    }
+    if (type == 'audio' && asset.artist != props[type].artist) {
+        expect(false).assertTrue();
+        done();
+    }
+    if (typesArr) {
+        let assetList = await fetchFileResult.getAllObject();
+        for (const assetItem of assetList) {
+            expect(typesArr.includes(assetItem.mimeType)).assertTrue();
+        }
+    }
+    if (
+        asset.mimeType != props[type].mimeType ||
+        asset.displayName != props[type].displayName ||
+        asset.relativePath != props[type].relativePath ||
+        asset.size != props[type].size ||
+        asset.mediaType != props[type].mediaType ||
+        asset.title != props[type].title ||
+        asset.dateTaken != props[type].dateTaken ||
+        asset.width != props[type].width ||
+        asset.height != props[type].height ||
+        asset.orientation != props[type].orientation ||
+        asset.duration != props[type].duration ||
+        asset.albumName != props[type].albumName
+    ) {
+        expect(false).assertTrue();
+        done();
+    }
 }
 
 describe('mediaLibraryTestCallBack.test.js', function () {
@@ -120,8 +244,10 @@ describe('mediaLibraryTestCallBack.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_001', 0, async function (done) {
         try {
-            media.getFileAssets(imagesfetchOp, (err, fetchFileResult) => {
-                expect(fetchFileResult != undefined).assertTrue();
+            media.getFileAssets(imageRelativefetchOp, async (err, fetchFileResult) => {
+                let count = 1;
+                let type = 'image';
+                await checkFileAssetAttr(done, fetchFileResult, type, count)
                 done();
             });
         } catch (error) {
@@ -141,8 +267,10 @@ describe('mediaLibraryTestCallBack.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_002', 0, async function (done) {
         try {
-            media.getFileAssets(videosfetchOp, (err, fetchFileResult) => {
-                expect(fetchFileResult != undefined).assertTrue();
+            media.getFileAssets(videoRelativefetchOp, async (err, fetchFileResult) => {
+                let count = 1;
+                let type = 'video';
+                await checkFileAssetAttr(done, fetchFileResult, type, count)
                 done();
             });
         } catch (error) {
@@ -162,8 +290,10 @@ describe('mediaLibraryTestCallBack.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_003', 0, async function (done) {
         try {
-            media.getFileAssets(audiosfetchOp, (err, fetchFileResult) => {
-                expect(fetchFileResult != undefined).assertTrue();
+            media.getFileAssets(audioRelativefetchOp, async (err, fetchFileResult) => {
+                let count = 1;
+                let type = 'audio';
+                await checkFileAssetAttr(done, fetchFileResult, type, count)
                 done();
             });
         } catch (error) {
@@ -183,8 +313,10 @@ describe('mediaLibraryTestCallBack.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_004', 0, async function (done) {
         try {
-            media.getFileAssets(filesfetchOp, (err, fetchFileResult) => {
-                expect(fetchFileResult != undefined).assertTrue();
+            media.getFileAssets(fileRelativefetchOp, async (err, fetchFileResult) => {
+                let count = 1;
+                let type = 'file';
+                await checkFileAssetAttr(done, fetchFileResult, type, count)
                 done();
             });
         } catch (error) {
@@ -204,8 +336,11 @@ describe('mediaLibraryTestCallBack.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_005', 0, async function (done) {
         try {
-            media.getFileAssets(imageAndVideofetchOp, (err, fetchFileResult) => {
-                expect(fetchFileResult != undefined).assertTrue();
+            media.getFileAssets(imageAndVideofetchOp, async (err, fetchFileResult) => {
+                let count = 2;
+                let type = 'video';
+                let typesArr = ['image/*', 'video/mp4']
+                await checkFileAssetAttr(done, fetchFileResult, type, count, typesArr)
                 done();
             });
         } catch (error) {
@@ -225,8 +360,11 @@ describe('mediaLibraryTestCallBack.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_006', 0, async function (done) {
         try {
-            media.getFileAssets(imageAndVideoAndfilefetchOp, (err, fetchFileResult) => {
-                expect(fetchFileResult != undefined).assertTrue();
+            media.getFileAssets(imageAndVideoAndfilefetchOp, async (err, fetchFileResult) => {
+                let count = 3;
+                let type = 'file';
+                let typesArr = ['image/*', 'video/mp4', 'file/*']
+                await checkFileAssetAttr(done, fetchFileResult, type, count, typesArr)
                 done();
             });
         } catch (error) {
@@ -246,8 +384,11 @@ describe('mediaLibraryTestCallBack.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_007', 0, async function (done) {
         try {
-            media.getFileAssets(imageAndVideoAndfileAndAudiofetchOp, (err, fetchFileResult) => {
-                expect(fetchFileResult != undefined).assertTrue();
+            media.getFileAssets(imageAndVideoAndfileAndAudiofetchOp, async (err, fetchFileResult) => {
+                let count = 4;
+                let type = 'audio';
+                let typesArr = ['image/*', 'video/mp4', 'file/*', 'audio/mpeg']
+                await checkFileAssetAttr(done, fetchFileResult, type, count, typesArr)
                 done();
             });
         } catch (error) {

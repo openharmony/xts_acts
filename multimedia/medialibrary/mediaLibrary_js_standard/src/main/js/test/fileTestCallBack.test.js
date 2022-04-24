@@ -64,10 +64,10 @@ describe('fileTestCallBack.test.js', function () {
     console.info('getMediaLibrary IN');
     var media = mediaLibrary.getMediaLibrary(context);
     console.info('getMediaLibrary OUT');
-    beforeAll(function () {});
-    beforeEach(function () {});
-    afterEach(function () {});
-    afterAll(function () {});
+    beforeAll(function () { });
+    beforeEach(function () { });
+    afterEach(function () { });
+    afterAll(function () { });
 
     async function copyFile(fd1, fd2) {
         let stat = await fileio.fstat(fd1);
@@ -97,7 +97,7 @@ describe('fileTestCallBack.test.js', function () {
                 `${new Date().getTime()}.jpg`,
                 path,
                 async (err, creatAsset1) => {
-                    if(creatAsset1 == undefined) {
+                    if (creatAsset1 == undefined) {
                         expect(false).assertTrue();
                         done();
                     } else {
@@ -189,7 +189,7 @@ describe('fileTestCallBack.test.js', function () {
                 const newAssets = await media.getFileAssets(idOP);
                 const newdataList = await newAssets.getAllObject();
                 const newAsset = newdataList[0];
-    
+
                 if (asset.dateModified != undefined) {
                     if (newAsset.dateModified != asset.dateModified) {
                         console.info('ASSET_CALLBACK getFileAssets 001_07 passed');
@@ -277,7 +277,7 @@ describe('fileTestCallBack.test.js', function () {
                 `${new Date().getTime()}.mp4`,
                 path,
                 async (err, creatAsset1) => {
-                    if(creatAsset1 == undefined) {
+                    if (creatAsset1 == undefined) {
                         expect(false).assertTrue();
                         done();
                     } else {
@@ -371,7 +371,7 @@ describe('fileTestCallBack.test.js', function () {
                 const newAssets = await media.getFileAssets(idOP);
                 const newdataList = await newAssets.getAllObject();
                 const newAsset = newdataList[0];
-    
+
                 if (asset.dateModified != undefined) {
                     if (newAsset.dateModified != asset.dateModified) {
                         console.info('ASSET_CALLBACK getFileAssets 002_07 passed');
@@ -392,7 +392,7 @@ describe('fileTestCallBack.test.js', function () {
                     done();
                 }
             });
-         } catch (error) {
+        } catch (error) {
             console.info('ASSET_CALLBACK getFileAssets 002_07 failed, message = ' + error);
         }
     });
@@ -477,7 +477,7 @@ describe('fileTestCallBack.test.js', function () {
                     done();
                 }
             );
-            
+
         } catch (error) {
             console.info('ASSET_CALLBACK createAsset 003_01 failed');
             expect(false).assertTrue();
@@ -546,24 +546,12 @@ describe('fileTestCallBack.test.js', function () {
                 const newAssets = await media.getFileAssets(idOP);
                 const newdataList = await newAssets.getAllObject();
                 const newAsset = newdataList[0];
-    
+
                 if (asset.dateModified != undefined) {
-                    if (newAsset.dateModified != asset.dateModified) {
-                        console.info('ASSET_CALLBACK getFileAssets 003_07 passed');
-                        expect(true).assertTrue();
-                        done();
-                    } else {
-                        console.info('ASSET_CALLBACK getFileAssets 003_07 failed');
-                        expect(false).assertTrue();
-                        done();
-                    }
-                } else if (newAsset.dateModified != undefined) {
-                    console.info('ASSET_CALLBACK getFileAssets 003_07 passed');
-                    expect(true).assertTrue();
+                    expect(newAsset.dateModified != asset.dateModified).assertTrue()
                     done();
                 } else {
-                    console.info('ASSET_CALLBACK getFileAssets 003_07 failed');
-                    expect(false).assertTrue();
+                    expect(newAsset.dateModified != undefined).assertTrue();
                     done();
                 }
             });
@@ -694,13 +682,13 @@ describe('fileTestCallBack.test.js', function () {
             const dataList = await fileAssets.getAllObject();
             const asset = dataList[0];
             asset.title = `title_${new Date().getTime()}`;
-            asset.commitModify(async ()=> {
+            asset.commitModify(async () => {
                 const id = asset.id;
                 const idOP = { selections: fileKeyObj.ID + '= ?', selectionArgs: ['' + id] };
                 const newAssets = await media.getFileAssets(idOP);
                 const newdataList = await newAssets.getAllObject();
                 const newAsset = newdataList[0];
-    
+
                 if (asset.dateModified != undefined) {
                     if (newAsset.dateModified != asset.dateModified) {
                         console.info('ASSET_CALLBACK getFileAssets 004_07 passed');

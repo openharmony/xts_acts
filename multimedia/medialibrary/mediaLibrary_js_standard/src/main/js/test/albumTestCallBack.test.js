@@ -28,35 +28,55 @@ let allTypefetchOp = {
 };
 let albumDeletefetchOp = {
     selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.ALBUM_NAME + '= ?',
-    selectionArgs: ['Pictures/','DeleteAlbumCallback'],
+    selectionArgs: ['Pictures/', 'DeleteAlbumCallback'],
 };
 let albumCoverUrifetchOp = {
     selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.ALBUM_NAME + '= ?',
-    selectionArgs: ['Pictures/','weixin'],
+    selectionArgs: ['Pictures/', 'weixin'],
 };
-let imageAlbumfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: [imageType.toString()],
+let allTypeInfofetchOp = {
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.ALBUM_NAME + '= ?',
+    selectionArgs: ['Pictures/', 'AblumInfo'],
 };
-let videoAlbumfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: [videoType.toString()],
+
+let imageAlbumInfofetchOp = {
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + 
+                fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: ['Pictures/', 'AblumInfo', imageType.toString()],
 };
-let audioAlbumfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: [audioType.toString()],
+
+let videoAlbumInfofetchOp = {
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' +
+                fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: ['Pictures/', 'AblumInfo', videoType.toString()],
 };
-let imageAndVideoAlbumfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: [imageType.toString(), videoType.toString()],
+
+let audioAlbumInfofetchOp = {
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' +
+                fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: ['Pictures/', 'AblumInfo', audioType.toString()],
 };
-let imageAndAudioAlbumfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: [imageType.toString(), audioType.toString()],
+
+let imageAndVideoAlbumInfofetchOp = {
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + 
+                fileKeyObj.ALBUM_NAME + '= ? AND (' + 
+                fileKeyObj.MEDIA_TYPE +'= ? or ' + 
+                fileKeyObj.MEDIA_TYPE + '= ?)',
+    selectionArgs: ['Pictures/', 'AblumInfo', imageType.toString(), videoType.toString()],
 };
-let videoAndAudioAlbumfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: [videoType.toString(), audioType.toString()],
+let imageAndAudioAlbumInfofetchOp = {
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + 
+                fileKeyObj.ALBUM_NAME + '= ? AND (' + 
+                fileKeyObj.MEDIA_TYPE + '= ? or ' + 
+                fileKeyObj.MEDIA_TYPE + '= ?)',
+    selectionArgs: ['Pictures/', 'AblumInfo', imageType.toString(), audioType.toString()],
+};
+let videoAndAudioAlbumInfofetchOp = {
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + 
+                fileKeyObj.ALBUM_NAME + '= ? AND (' + 
+                fileKeyObj.MEDIA_TYPE + '= ? or ' + 
+                fileKeyObj.MEDIA_TYPE + '= ?)',
+    selectionArgs: ['Pictures/', 'AblumInfo', videoType.toString(), audioType.toString()],
 };
 function printAlbumMessage(testNum, album) {
     console.info(`ALBUM_CALLBACK getAlbum ${testNum} album.albumId: ${album.albumId}`);
@@ -67,16 +87,22 @@ function printAlbumMessage(testNum, album) {
     console.info(`ALBUM_CALLBACK getAlbum ${testNum} album.relativePath: ${album.relativePath}`);
     console.info(`ALBUM_CALLBACK getAlbum ${testNum} album.coverUri: ${album.coverUri}`);
 }
+
+const props = {
+    albumName: 'AblumInfo',
+    albumUri: 'dataability:///media/album/',
+    relativePath: 'Pictures/',
+    count: 1
+}
 function checkAlbumAttr(done, album) {
     if (
         album.albumId == undefined ||
-        album.albumName == undefined ||
-        album.albumUri == undefined ||
-        album.count == undefined ||
-        album.relativePath == undefined ||
+        album.albumName != props.albumName ||
+        album.albumUri != props.albumUri + album.albumId ||
+        album.count != props.count ||
+        album.relativePath != props.relativePath ||
         album.coverUri == undefined
     ) {
-        console.info('ALBUM_CALLBACK getAlbum 001_01 failed');
         expect(false).assertTrue();
         done();
     }
@@ -94,7 +120,7 @@ describe('albumTestCallBack.test.js', async function () {
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_01
      * @tc.name      : getAlbums
-     * @tc.desc      : Get Album by AllTypefetchOp, print all album info,
+     * @tc.desc      : Get Album by allTypeInfofetchOp, print all album info,
      *                 print all asset info, check asset info (mediaType, albumId, albumUri, albumName)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -102,7 +128,7 @@ describe('albumTestCallBack.test.js', async function () {
      */
     it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_01', 0, async function (done) {
         try {
-            media.getAlbums(allTypefetchOp, (err, albumList) => {
+            media.getAlbums(allTypeInfofetchOp, (err, albumList) => {
                 if (albumList == undefined) {
                     expect(false).assertTrue();
                     done();
@@ -127,7 +153,7 @@ describe('albumTestCallBack.test.js', async function () {
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_02
      * @tc.name      : getAlbums
-     * @tc.desc      : Get Album by imageAlbumfetchOp, print all album info,
+     * @tc.desc      : Get Album by imageAlbumInfofetchOp, print all album info,
      *                 print all asset info, check asset info (mediaType, albumId, albumUri, albumName)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -135,7 +161,7 @@ describe('albumTestCallBack.test.js', async function () {
      */
     it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_02', 0, async function (done) {
         try {
-            media.getAlbums(imageAlbumfetchOp, (err, albumList) => {
+            media.getAlbums(imageAlbumInfofetchOp, (err, albumList) => {
                 if (albumList == undefined) {
                     expect(false).assertTrue();
                     done();
@@ -160,7 +186,7 @@ describe('albumTestCallBack.test.js', async function () {
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_03
      * @tc.name      : getAlbums
-     * @tc.desc      : Get Album by videoAlbumfetchOp, print all album info,
+     * @tc.desc      : Get Album by videoAlbumInfofetchOp, print all album info,
      *                 print all asset info, check asset info (mediaType, albumId, albumUri, albumName)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -168,7 +194,7 @@ describe('albumTestCallBack.test.js', async function () {
      */
     it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_03', 0, async function (done) {
         try {
-            media.getAlbums(videoAlbumfetchOp, (err, albumList) => {
+            media.getAlbums(videoAlbumInfofetchOp, (err, albumList) => {
                 if (albumList == undefined) {
                     expect(false).assertTrue();
                     done();
@@ -193,7 +219,7 @@ describe('albumTestCallBack.test.js', async function () {
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_04
      * @tc.name      : getAlbums
-     * @tc.desc      : Get Album by audioAlbumfetchOp, print all album info,
+     * @tc.desc      : Get Album by audioAlbumInfofetchOp, print all album info,
      *                 print all asset info, check asset info (mediaType, albumId, albumUri, albumName)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
@@ -201,7 +227,7 @@ describe('albumTestCallBack.test.js', async function () {
      */
     it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_04', 0, async function (done) {
         try {
-            media.getAlbums(audioAlbumfetchOp, (err, albumList) => {
+            media.getAlbums(audioAlbumInfofetchOp, (err, albumList) => {
                 if (albumList == undefined) {
                     expect(false).assertTrue();
                     done();
@@ -225,7 +251,7 @@ describe('albumTestCallBack.test.js', async function () {
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_05
      * @tc.name      : getAlbums
-     * @tc.desc      : Get Album by imageAndVideoAlbumfetchOp, print all album info,
+     * @tc.desc      : Get Album by imageAndVideoAlbumInfofetchOp, print all album info,
      *                 print all asset info, check asset info (mediaType, albumId, albumUri, albumName),
      *                 check media types (imageType, audioType)
      * @tc.size      : MEDIUM
@@ -234,7 +260,7 @@ describe('albumTestCallBack.test.js', async function () {
      */
     it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_05', 0, async function (done) {
         try {
-            media.getAlbums(imageAndVideoAlbumfetchOp, (err, albumList) => {
+            media.getAlbums(imageAndVideoAlbumInfofetchOp, (err, albumList) => {
                 if (albumList == undefined) {
                     expect(false).assertTrue();
                     done();
@@ -260,7 +286,7 @@ describe('albumTestCallBack.test.js', async function () {
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_06
      * @tc.name      : getAlbums
-     * @tc.desc      : Get Album by imageAndAudioAlbumfetchOp, print all album info,
+     * @tc.desc      : Get Album by imageAndAudioAlbumInfofetchOp, print all album info,
      *                 print all asset info, check asset info (mediaType, albumId, albumUri, albumName),
      *                 check media types (imageType, audioType)
      * @tc.size      : MEDIUM
@@ -269,7 +295,7 @@ describe('albumTestCallBack.test.js', async function () {
      */
     it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_06', 0, async function (done) {
         try {
-            media.getAlbums(imageAndAudioAlbumfetchOp, (err, albumList) => {
+            media.getAlbums(imageAndAudioAlbumInfofetchOp, (err, albumList) => {
                 if (albumList == undefined) {
                     expect(false).assertTrue();
                     done();
@@ -294,7 +320,7 @@ describe('albumTestCallBack.test.js', async function () {
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_07
      * @tc.name      : getAlbums
-     * @tc.desc      : Get Album by videoAndAudioAlbumfetchOp, print all album info,
+     * @tc.desc      : Get Album by videoAndAudioAlbumInfofetchOp, print all album info,
      *                 print all asset info, check asset info (mediaType, albumId, albumUri, albumName),
      *                 check media types (imageType, audioType)
      * @tc.size      : MEDIUM
@@ -303,7 +329,7 @@ describe('albumTestCallBack.test.js', async function () {
      */
     it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_07', 0, async function (done) {
         try {
-            media.getAlbums(videoAndAudioAlbumfetchOp, (err, albumList) => {
+            media.getAlbums(videoAndAudioAlbumInfofetchOp, (err, albumList) => {
                 if (albumList == undefined) {
                     expect(false).assertTrue();
                     done();
@@ -582,18 +608,13 @@ describe('albumTestCallBack.test.js', async function () {
 
             album.commitModify(async () => {
                 try {
-                    const newAlbumList = await media.getAlbums(allTypefetchOp);
-                    let passed = false;
-                    for (let i = 0; i < newAlbumList.length; i++) {
-                        const album = newAlbumList[i];
-                        if (album.albumId == albumId && album.albumName == newName) {
-                            console.info('ALBUM_CALLBACK Modify 003_01 passed');
-                            expect(true).assertTrue();
-                            done();
-                            passed = true;
-                        }
-                    }
-                    expect(passed).assertTrue();
+                    let currentfetchOp = {
+                        selections: fileKeyObj.ALBUM_ID + '= ?',
+                        selectionArgs: [albumId + ''],
+                    };
+                    const newAlbumList = await media.getAlbums(currentfetchOp);
+
+                    expect(newAlbumList[0].albumName == newName).assertTrue();
                     done();
                 } catch (error) {
                     console.info('ALBUM_CALLBACK Modify 003_01 commitModify failed, message = ' + error);
@@ -626,18 +647,13 @@ describe('albumTestCallBack.test.js', async function () {
 
             album.commitModify(async () => {
                 try {
-                    const newAlbumList = await media.getAlbums(allTypefetchOp);
-                    let changed = false;
-                    for (let i = 0; i < newAlbumList.length; i++) {
-                        const album = newAlbumList[i];
-                        if (album.albumId == albumId && album.albumName == newName) {
-                            console.info('ALBUM_CALLBACK Modify 003_02 failed');
-                            expect(false).assertTrue();
-                            done();
-                            changed = true;
-                        }
-                    }
-                    expect(!changed).assertTrue();
+                    let currentfetchOp = {
+                        selections: fileKeyObj.ALBUM_ID + '= ?',
+                        selectionArgs: [albumId + ''],
+                    };
+                    const newAlbumList = await media.getAlbums(currentfetchOp);
+
+                    expect(newAlbumList[0].albumName == newName).assertFalse();
                     done();
                 } catch (error) {
                     console.info('ALBUM_CALLBACK Modify 003_02 commitModify failed, message = ' + error);
@@ -674,18 +690,13 @@ describe('albumTestCallBack.test.js', async function () {
 
             album.commitModify(async () => {
                 try {
-                    const newAlbumList = await media.getAlbums(allTypefetchOp);
-                    let changed = false;
-                    for (let i = 0; i < newAlbumList.length; i++) {
-                        const album = newAlbumList[i];
-                        if (album.albumId == albumId && album.albumName == newName) {
-                            console.info('ALBUM_CALLBACK Modify 003_03 failed');
-                            expect(false).assertTrue();
-                            done();
-                            changed = true;
-                        }
-                    }
-                    expect(!changed).assertTrue();
+                    let currentfetchOp = {
+                        selections: fileKeyObj.ALBUM_ID + '= ?',
+                        selectionArgs: [albumId + ''],
+                    };
+                    const newAlbumList = await media.getAlbums(currentfetchOp);
+
+                    expect(newAlbumList[0].albumName == newName).assertFalse();
                     done();
                 } catch (error) {
                     console.info('ALBUM_CALLBACK Modify 003_03 commitModify failed, message = ' + error);
@@ -719,18 +730,13 @@ describe('albumTestCallBack.test.js', async function () {
 
             album.commitModify(async () => {
                 try {
-                    const newAlbumList = await media.getAlbums(allTypefetchOp);
-                    let changed = false;
-                    for (let i = 0; i < newAlbumList.length; i++) {
-                        const album = newAlbumList[i];
-                        if (album.albumId == albumId && album.albumName == newName) {
-                            console.info('ALBUM_CALLBACK Modify 003_04 failed');
-                            expect(false).assertTrue();
-                            done();
-                            changed = true;
-                        }
-                    }
-                    expect(!changed).assertTrue();
+                    let currentfetchOp = {
+                        selections: fileKeyObj.ALBUM_ID + '= ?',
+                        selectionArgs: [albumId + ''],
+                    };
+                    const newAlbumList = await media.getAlbums(currentfetchOp);
+
+                    expect(newAlbumList[0].albumName == newName).assertFalse();
                     done();
                 } catch (error) {
                     console.info('ALBUM_CALLBACK Modify 003_04 commitModify failed, message = ' + error);
@@ -762,18 +768,13 @@ describe('albumTestCallBack.test.js', async function () {
             album.albumName = newName;
             album.commitModify(async () => {
                 try {
-                    const newAlbumList = await media.getAlbums(allTypefetchOp);
-                    let changed = false;
-                    for (let i = 0; i < newAlbumList.length; i++) {
-                        const album = newAlbumList[i];
-                        if (album.albumId == albumId && album.albumName == newName) {
-                            console.info('ALBUM_CALLBACK Modify 003_05 failed');
-                            expect(false).assertTrue();
-                            done();
-                            changed = true;
-                        }
-                    }
-                    expect(!changed).assertTrue();
+                    let currentfetchOp = {
+                        selections: fileKeyObj.ALBUM_ID + '= ?',
+                        selectionArgs: [albumId + ''],
+                    };
+                    const newAlbumList = await media.getAlbums(currentfetchOp);
+
+                    expect(newAlbumList[0].albumName == newName).assertFalse();
                     done();
                 } catch (error) {
                     console.info('ALBUM_CALLBACK Modify 003_05 commitModify failed, message = ' + error);
@@ -803,7 +804,7 @@ describe('albumTestCallBack.test.js', async function () {
                 selectionArgs: [],
                 order: 'date_added DESC LIMIT 0,1',
             };
-            media.getAlbums(albumCoverUrifetchOp, async(err, albumList) => {
+            media.getAlbums(albumCoverUrifetchOp, async (err, albumList) => {
                 if (albumList == undefined) {
                     expect(false).assertTrue();
                     done();
@@ -821,7 +822,7 @@ describe('albumTestCallBack.test.js', async function () {
                         console.info('ALBUM_CALLBACK getAlbum 004_01 asset.uri = ' + asset.uri);
                         expect(asset.uri == album.coverUri).assertTrue();
                         done();
-                    }            
+                    }
                 }
             });
         } catch (error) {
@@ -842,7 +843,7 @@ describe('albumTestCallBack.test.js', async function () {
      * @tc.level     : Level 0
      */
 
-     it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_005_01', 0, async function (done) {
+    it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_005_01', 0, async function (done) {
         try {
             const albumList = await media.getAlbums(albumDeletefetchOp);
 
