@@ -14,112 +14,212 @@
  */
 
 import battery from '@system.battery';
-import batteryInfo from '@ohos.batteryInfo';
-import { describe } from 'deccjsunit/index'
+import batteryInfo from '@ohos.battery';
+
+import {describe, it, expect} from 'deccjsunit/index';
+
+function successFunc(data, tag) {
+    console.log(tag + ": level: " + data.level + ", charging: " + data.charging);
+    let soc = (batteryInfo.batterySOC * 0.01);
+    expect(fabs(soc - data.level) <= 1e-9).assertTrue();
+    if (batteryInfo.chargingStatus === batteryInfo.BatteryChargeState.ENABLE ||
+        batteryInfo.chargingStatus === batteryInfo.BatteryChargeState.FULL) {
+        expect(data.charging).assertTrue();
+    } else {
+        expect(data.charging).assertFalse();
+    }
+}
+
+function failFunc(data, code, tag) {
+    console.log(tag + ": data: " + data + ", code: " + code);
+    expect().assertFail();
+}
+
+function completeFunc(tag) {
+    console.log(tag + ": The device information is obtained successfully.");
+}
 
 describe('appInfoTest', function () {
-  console.log("*************System Battery Unit Test Begin*************");
+    console.log("*************System Battery Unit Test Begin*************");
 
     /**
      * @tc.number system_battery_js_0100
-     * @tc.name get_status_test_success
+     * @tc.name get_status_success_test
      * @tc.desc Battery acquisition kit
      */
-    it('get_status_test_success', 0, function () {
-        let execSucc = false
-        let execcomplete = false
+    const successTest = "get_status_success_test";
+    it(successTest, 0, function () {
+        let execSucc = false;
+        let execcomplete = false;
         battery.getStatus({
             success: (data) => {
-                execSucc = true
-                let batterySoc = (batteryInfo.batterySOC * 0.01);
-                console.log("batterySoc: " + batterySoc + ", data.level: " + data.levet)
-                expect(fabs(data.levet - batterySoc) <= 1e-9).assertTrue()
-                if (batteryInfo.chargingStatus == batteryInfo.BatteryChargeState.ENABLE) {
-                    expect(data.charging).assertTrue()
-                } else {
-                    expect(data.charging).assertFalse()
-                }
+                execSucc = true;
+                successFunc(data, successTest);
             },
             fail: (data, code) => {
-                console.log("get_status_test_success, data: " + data + ", code: " + code);
-                expect(true).assertFalse()
+                failFunc(data, code, successTest);
             },
             complete: () => {
-                execcomplete = true
-                expect(true).assertTrue()
-                console.log("The device information is obtained successfully. Procedure");
+                execcomplete = true;
+                completeFunc(successTest);
             }
         });
-        expect(execSucc).assertTrue()
-        expect(execcomplete).assertTrue()
-    })
+        expect(execSucc).assertTrue();
+        expect(execcomplete).assertTrue();
+    });
 
     /**
      * @tc.number system_battery_js_0200
-     * @tc.name get_status_test_fail
+     * @tc.name get_status_success_null_test
      * @tc.desc Battery acquisition kit
      */
-     it('get_status_test_fail', 0, function () {
-        let exec = false
-        let execcomplete = false
+    const successNullTest = "get_status_success_null_test";
+    it(successNullTest, 0, function () {
+        let execcomplete = false;
         battery.getStatus({
             success: null,
             fail: (data, code) => {
-                console.log("get_status_test_fail, data: " + data + ", code: " + code);
-                exec = true;
-                // The success argument is not a function, code: -4
-                expect(code == -4).assertTrue()
+                failFunc(data, code, successNullTest);
             },
             complete: () => {
-                execcomplete = true
-                expect(true).assertTrue()
-                console.log("The device information is obtained successfully. Procedure");
+                execcomplete = true;
+                completeFunc(successNullTest);
             }
         });
-        expect(exec).assertTrue()
-        expect(execcomplete).assertTrue()
-    })
+        expect(execcomplete).assertTrue();
+    });
 
     /**
      * @tc.number system_battery_js_0300
-     * @tc.name get_status_test_complete
+     * @tc.name get_status_success_empty_test
      * @tc.desc Battery acquisition kit
      */
-     it('get_status_test_complete', 0, function () {
-        let execcomplete = false
+    const successEmptyTest = "get_status_success_null_test";
+    it(successEmptyTest, 0, function () {
+        let execcomplete = false;
         battery.getStatus({
-            success: null,
-            fail: null,
+            fail: (data, code) => {
+                failFunc(data, code, successEmptyTest);
+            },
             complete: () => {
-                execcomplete = true
-                expect(true).assertTrue()
-                console.log("The device information is obtained successfully. Procedure");
+                execcomplete = true;
+                completeFunc(successEmptyTest);
             }
         });
-        expect(execcomplete).assertTrue()
-    })
+        expect(execcomplete).assertTrue();
+    });
 
     /**
      * @tc.number system_battery_js_0400
-     * @tc.name get_status_test_parameter_is_null
+     * @tc.name get_status_fail_null_test
      * @tc.desc Battery acquisition kit
      */
-     it('get_status_test_parameter_is_null', 0, function () {
+    let failNullTest = "get_status_fail_null_test";
+    it(failNullTest, 0, function () {
+        let execSucc = false;
+        let execcomplete = false;
         battery.getStatus({
-            success: null,
+            success: (data) => {
+                execSucc = true;
+                successFunc(data, failNullTest);
+            },
             fail: null,
-            complete: null
+            complete: () => {
+                execcomplete = true;
+                completeFunc(failNullTest);
+            }
         });
-        expect(true).assertTrue()
-    })
+        expect(execSucc).assertTrue();
+        expect(execcomplete).assertTrue();
+    });
 
     /**
      * @tc.number system_battery_js_0500
-     * @tc.name get_status_test_parameter_is_empty
+     * @tc.name get_status_fail_empty_test
      * @tc.desc Battery acquisition kit
      */
-     it('get_status_test_parameter_is_empty', 0, function () {
+    let failEmptyTest = "get_status_fail_empty_test";
+    it(failEmptyTest, 0, function () {
+        let execSucc = false;
+        let execcomplete = false;
+        battery.getStatus({
+            success: () => {
+                execSucc = true;
+                successFunc(data, failEmptyTest);
+            },
+            complete: () => {
+                execcomplete = true;
+                completeFunc(failEmptyTest);
+            }
+        });
+        expect(execSucc).assertTrue();
+        expect(execcomplete).assertTrue();
+    });
+
+    /**
+     * @tc.number system_battery_js_0600
+     * @tc.name get_status_complete_null_test
+     * @tc.desc Battery acquisition kit
+     */
+    let completeNullTest = "get_status_complete_null_test";
+    it(completeNullTest, 0, function () {
+        let execSucc = false;
+        battery.getStatus({
+            success: (data) => {
+                execSucc = true;
+                successFunc(data, completeNullTest);
+            },
+            fail: (data, code) => {
+                failFunc(data, code, completeNullTest);
+            },
+            complete: null
+        });
+        expect(execSucc).assertTrue();
+    });
+
+    /**
+     * @tc.number system_battery_js_0700
+     * @tc.name get_status_complete_empty_test
+     * @tc.desc Battery acquisition kit
+     */
+    let completeEmptyTest = "get_status_complete_empty_test";
+    it(completeEmptyTest, 0, function () {
+        let execSucc = false;
+        battery.getStatus({
+            success: (data) => {
+                execSucc = true;
+                successFunc(data, completeEmptyTest);
+            },
+            fail: (data, code) => {
+                failFunc(data, code, completeEmptyTest);
+            }
+        });
+        expect(execSucc).assertTrue();
+    });
+
+    /**
+     * @tc.number system_battery_js_0800
+     * @tc.name get_status_all_null
+     * @tc.desc Battery acquisition kit
+     */
+    it('get_status_all_null', 0, function () {
+        let allNull = false;
+        battery.getStatus({
+            success: null,
+            fail: null,
+            complete: null,
+        });
+        expect(!allNull).assertTrue();
+    });
+
+    /**
+     * @tc.number system_battery_js_0800
+     * @tc.name get_status_all_empty
+     * @tc.desc Battery acquisition kit
+     */
+    it('get_status_all_empty', 0, function () {
+        let allNull = false;
         battery.getStatus();
-        expect(true).assertTrue()
-    })
-})
+        expect(!allNull).assertTrue();
+   });
+});
