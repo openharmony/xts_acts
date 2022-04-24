@@ -12,14 +12,14 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("huksagree_callback_basic_js_test") {
+ohos_js_hap_suite("acts_huksagree_callback_basic_js_test") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":huks_js_assets",
     ":huks_js_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "huksAgreeBasicCallbackJSApiTest"
+  hap_name = "ActsHuksAgreeBasicCallbackJSApiTest"
 }
 ohos_js_assets("huks_js_assets") {
   source_dir = "./entry/src/main/js/MainAbility"
