@@ -12,7 +12,7 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("acts_hukscipher_promise_basic_js_test") {
+ohos_js_hap_suite("hukscipher_promise_basic_js_test") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":huks_js_assets",
