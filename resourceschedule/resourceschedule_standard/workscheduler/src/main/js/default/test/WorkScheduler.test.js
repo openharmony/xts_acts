@@ -1022,4 +1022,377 @@ describe("WorkSchedulerJsTest", function () {
 		console.log("test workScheduler workInfo abilityName :" + workInfo.abilityName);
         done();
     })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest053
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest053", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest053---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			batteryLevel: 10
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest054
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest054", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest054---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			batteryLevel: 30
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest055
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest055", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest055---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			batteryLevel: 40
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest056
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest056", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest056---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			batteryLevel: 60
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest057
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest057", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest057---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			batteryLevel: 70
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest058
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest058", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest058---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			batteryLevel: 90
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest059
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest059", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest059---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			batteryLevel: 100
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest060
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest060", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest060---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			isRepeat: true,
+			repeatCycleTime: 1200000
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest061
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest061", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest061---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			isRepeat: true,
+			repeatCycleTime: 1500000
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest062
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest062", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest062---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			isRepeat: true,
+			repeatCycleTime: 1800000
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest063
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest063", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest063---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			isRepeat: true,
+			repeatCycleTime: 2100000
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest064
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest064", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest064---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			isRepeat: false,
+			repeatCycleTime: 1200000
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest065
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest065", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest065---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			isRepeat: false,
+			repeatCycleTime: 1500000
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest066
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest066", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest066---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			isRepeat: false,
+			repeatCycleTime: 1800000
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest067
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest067", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest067---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			isRepeat: false,
+			repeatCycleTime: 2100000
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest068
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest068", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest068---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			repeatCycleTime: 1200000,
+			repeatCount: 1
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest069
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest069", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest069---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			repeatCycleTime: 1500000,
+			repeatCount: 1
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest070
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest070", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest070---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			repeatCycleTime: 1800000,
+			repeatCount: 2
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
+	
+	/*
+     * @tc.name: WorkSchedulerJsTest071
+     * @tc.desc: test work scheduler without conditions.
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("WorkSchedulerJsTest071", 0, async function (done) {
+        console.info('----------------------WorkSchedulerJsTest071---------------------------');
+        let workInfo = {
+            workId: 5,
+            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+            abilityName: "com.mytest.abilityName",
+			repeatCycleTime: 2100000,
+			repeatCount: 2
+        }
+        let res = workScheduler.startWork(workInfo);
+        expect(res).assertEqual(false)
+        done();
+    })
 })

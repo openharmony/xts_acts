@@ -920,4 +920,1029 @@ describe("DeviceUsageStatisticsJsTest", function () {
             done();
         }, 500);
     })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest036
+     * @tc.desc: test getRecentlyUsedModules callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest036", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest036---------------------------');
+        let maxNum = 1;
+        bundleState.getRecentlyUsedModules(maxNum, (err, res) => {
+            if (err) {
+                console.info('BUNDLE_ACTIVE getRecentlyUsedModules callback failure.');
+                expect(false).assertEqual(true);
+            } else {
+                console.info('BUNDLE_ACTIVE getRecentlyUsedModules callback success.');
+                expect(true).assertEqual(true);
+            }
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+
+    /*
+     * @tc.name: DeviceUsageStatisticsJsTest037
+     * @tc.desc: test getRecentlyUsedModules promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest037", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest037---------------------------');
+        let maxNum = 1;
+        bundleState.getRecentlyUsedModules(maxNum).then((res) => {
+            console.info('BUNDLE_ACTIVE getRecentlyUsedModules promise success.');
+            expect(true).assertEqual(true);
+        }).catch((err) => {
+            console.info('BUNDLE_ACTIVE getRecentlyUsedModules promise failure.');
+            expect(false).assertEqual(true);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest038
+     * @tc.desc: test bundleState isIdleState promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest038", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest038---------------------------');
+        bundleState.isIdleState('').then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest038 promise success, result= ' + res );
+            expect(res).assertEqual(false);
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest038 promise fail, result= ' + 
+			JSON.stringify(err.code));
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest039
+     * @tc.desc: test bundleState isIdleState promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest039", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest039---------------------------');
+        bundleState.isIdleState(12345).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest039 promise success, result= ' + res );
+            expect(res).assertEqual(false);
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest039 promise fail, result= ' + 
+			JSON.stringify(err.code));
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest040
+     * @tc.desc: test bundleState isIdleState promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest040", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest040---------------------------');
+        bundleState.isIdleState(true).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest040 promise success, result= ' + res );
+            expect(res).assertEqual(false);
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest040 promise fail, result= ' + 
+			JSON.stringify(err.code));
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest041
+     * @tc.desc: test bundleState isIdleState promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest041", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest041---------------------------');
+        bundleState.isIdleState(null).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest041 promise success, result= ' + res );
+            expect(res).assertEqual(false);
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest041 promise fail, result= ' + 
+			JSON.stringify(err.code));
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest042
+     * @tc.desc: test bundleState isIdleState promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest042", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest042---------------------------');
+        bundleState.isIdleState(undefined).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest042 promise success, result= ' + res );
+            expect(res).assertFail();
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest042 promise fail, result= ' + 
+			JSON.stringify(err.code));
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest043
+     * @tc.desc: test bundleState isIdleState callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest043", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest043---------------------------');
+        bundleState.isIdleState(undefined, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest043 callback fail, result= ' + 
+				JSON.stringify(err.code));
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest043 callback success, result= ' + res );
+				expect(res).assertFail();
+			}
+		});
+		
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest044
+     * @tc.desc: test bundleState isIdleState callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest044", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest044---------------------------');
+        bundleState.isIdleState(null, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest044 callback fail, result= ' + 
+				JSON.stringify(err.code));
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest044 callback success, result= ' + res );
+				expect(res).assertFail();
+			}
+		});
+		
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest045
+     * @tc.desc: test bundleState queryBundleStateInfos callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest045", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest045---------------------------');
+        bundleState.queryBundleStateInfos(20000000000000, 123456, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest045 callback failed, because: ' + err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest045 callback success, result= ' + res );
+				expect(res).assertFail();
+			}
+		});
+		
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest046
+     * @tc.desc: test bundleState queryBundleStateInfos callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest046", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest046---------------------------');
+        bundleState.queryBundleStateInfos('', '', (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest046 callback failed, because: ' + err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest046 callback success, result= ' + res );
+				expect(res).assertFail();
+			}
+		});
+		
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest047
+     * @tc.desc: test bundleState queryBundleStateInfos callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest047", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest047---------------------------');
+        bundleState.queryBundleStateInfos(null, true, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest047 callback failed, because: ' + err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest047 callback success, result= ' + res );
+				expect(res).assertFail();
+			}
+		});
+		
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest048
+     * @tc.desc: test bundleState queryBundleStateInfos callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest048", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest048---------------------------');
+        bundleState.queryBundleStateInfos(0, undefined, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest048 callback failed, because: ' + err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest048 callback success, result= ' + res );
+				expect(res).assertFail();
+			}
+		});
+		
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest049
+     * @tc.desc: test bundleState queryBundleStateInfos promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest049", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest049---------------------------');
+        bundleState.queryBundleStateInfos(undefined, undefined).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest049 promise success, result= ' + res );
+            expect(res).assertFail();
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest049 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest050
+     * @tc.desc: test bundleState queryBundleStateInfos promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest050", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest050---------------------------');
+        bundleState.queryBundleStateInfos(null, 20000000000000).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest050 promise success, result= ' + res );
+            expect(res).assertFail();
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest050 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest051
+     * @tc.desc: test bundleState queryBundleStateInfos promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest051", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest051---------------------------');
+        bundleState.queryBundleStateInfos(20000000000000, true).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest051 promise success, result= ' + res );
+            expect(res).assertFail();
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest051 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest052
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest052", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest052---------------------------');
+        bundleState.queryBundleStateInfoByInterval(1, 123, 20000000000000).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest052 promise success');
+			for (let i=0; i<res.length; i++) {
+				console.info('test bundle DeviceUsageStatisticsJsTest052 promise success, result ' + 
+				JSON.stringify(res[i]));
+			}
+            expect(res).assertInstanceOf('Array');
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest052 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest053
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest053", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest053---------------------------');
+        bundleState.queryBundleStateInfoByInterval(2, 123, 20000000000000).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest053 promise success');
+			for (let i=0; i<res.length; i++) {
+				console.info('test bundle DeviceUsageStatisticsJsTest053 promise success, result ' + 
+				JSON.stringify(res[i]));
+			}
+            expect(res).assertInstanceOf('Array');
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest053 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest054
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest054", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest054---------------------------');
+        bundleState.queryBundleStateInfoByInterval(3, 123, 20000000000000).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest054 promise success');
+			for (let i=0; i<res.length; i++) {
+				console.info('test bundle DeviceUsageStatisticsJsTest054 promise success, result ' + 
+				JSON.stringify(res[i]));
+			}
+            expect(res).assertInstanceOf('Array');
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest054 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest055
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest055", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest055---------------------------');
+        bundleState.queryBundleStateInfoByInterval(4, 123, 20000000000000).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest055 promise success');
+			for (let i=0; i<res.length; i++) {
+				console.info('test bundle DeviceUsageStatisticsJsTest055 promise success, result ' + 
+				JSON.stringify(res[i]));
+			}
+            expect(res).assertInstanceOf('Array');
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest055 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest056
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest056", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest056---------------------------');
+        bundleState.queryBundleStateInfoByInterval(4, null, 20000000000000).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest056 promise success');
+            expect(res).assertFail();
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest056 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest057
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest057", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest057---------------------------');
+        bundleState.queryBundleStateInfoByInterval('', null, true).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest057 promise success');
+            expect(res).assertFail();
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest057 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest058
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest058", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest058---------------------------');
+        bundleState.queryBundleStateInfoByInterval(3, 1234567, true).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest058 promise success');
+            expect(res).assertFail();
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest058 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest059
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest059", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest059---------------------------');
+        bundleState.queryBundleStateInfoByInterval(6, 123678, 20000000600000).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest059 promise success');
+            expect(res).assertFail();
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest059 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest060
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest060", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest060---------------------------');
+        bundleState.queryBundleStateInfoByInterval(6, 123678, undefined).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest060 promise success');
+            expect(res).assertFail();
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest060 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest061
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest061", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest061---------------------------');
+        bundleState.queryBundleStateInfoByInterval(3, 123678, 20000000000000, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest061 callback failed, because: ' + err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest061 callback success');
+				expect(res).assertInstanceOf('Array');
+			} 
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest062
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest062", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest062---------------------------');
+        bundleState.queryBundleStateInfoByInterval(5, 123678, 20000000000000, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest062 callback failed, because: ' + err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest062 callback success');
+				expect(res).assertInstanceOf('Array');
+			} 
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest063
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest063", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest063---------------------------');
+        bundleState.queryBundleStateInfoByInterval(9, 123678, 20000000000000, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest063 callback failed, because: ' + err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest063 callback success');
+				expect(res).assertFail();
+			} 
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest064
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest064", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest064---------------------------');
+        bundleState.queryBundleStateInfoByInterval(2, 123678, null, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest064 callback failed, because: ' + err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest064 callback success');
+				expect(res).assertFail();
+			} 
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest065
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest065", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest065---------------------------');
+        bundleState.queryBundleStateInfoByInterval(4, true, 20000000000000, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest065 callback failed, because: ' + 
+				err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest065 callback success');
+				expect(res).assertFail();
+			} 
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest066
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest066", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest066---------------------------');
+        bundleState.queryBundleStateInfoByInterval(7, 0, 20000000000000, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest066 callback failed, because: ' + 
+				err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest066 callback success');
+				expect(res).assertFail();
+			} 
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest067
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest067", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest067---------------------------');
+        bundleState.queryBundleStateInfoByInterval(20000000000000, 12345, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest067 callback failed, because: ' + 
+				err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest067 callback success');
+				expect(res).assertFail();
+			} 
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest068
+     * @tc.desc: test bundleState queryBundleStateInfoByInterval callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest068", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest068---------------------------');
+        bundleState.queryBundleStateInfoByInterval(null, 20000000000000, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest068 callback failed, because: ' + 
+				err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest068 callback success');
+				expect(res).assertFail();
+			} 
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest069
+     * @tc.desc: test bundleState queryBundleStateInfos promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest069", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest069---------------------------');
+        bundleState.queryBundleStateInfos(null, true).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest069 promise success');
+            expect(res).assertFail();
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest069 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest070
+     * @tc.desc: test bundleState queryBundleStateInfos promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest070", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest070---------------------------');
+        bundleState.queryBundleStateInfos(12345, undefined).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest070 promise success');
+            expect(res).assertFail();
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest070 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest071
+     * @tc.desc: test bundleState queryBundleStateInfos promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest071", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest071---------------------------');
+        bundleState.queryBundleStateInfos('12345', 'undefined').then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest071 promise success');
+            expect(res).assertFail();
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest071 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest072
+     * @tc.desc: test bundleState queryBundleStateInfos promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest072", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest072---------------------------');
+        bundleState.queryBundleStateInfos('', '').then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest072 promise success');
+            expect(res).assertFail();
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest072 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest073
+     * @tc.desc: test bundleState getRecentlyUsedModules param promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest073", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest073---------------------------');
+        bundleState.getRecentlyUsedModules(999).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest073 promise success');
+            expect(res).assertInstanceOf('Array');
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest073 promise failed, because: ' + err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest074
+     * @tc.desc: test bundleState getRecentlyUsedModules param promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest074", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest074---------------------------');
+        bundleState.getRecentlyUsedModules(1).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest074 promise success');
+            expect(res).assertInstanceOf('Array');
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest074 promise failed, because: ' + 
+			err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest075
+     * @tc.desc: test bundleState getRecentlyUsedModules param promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest075", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest075---------------------------');
+        bundleState.getRecentlyUsedModules(0).then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest075 promise success');
+            expect(res).assertInstanceOf('Array');
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest075 promise failed, because: ' + 
+			err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest076
+     * @tc.desc: test bundleState getRecentlyUsedModules noParam promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest076", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest076---------------------------');
+        bundleState.getRecentlyUsedModules().then((res) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest076 promise success');
+            expect(res).assertInstanceOf('Array');
+        }).catch((err) => {
+            console.info('test bundle DeviceUsageStatisticsJsTest076 promise failed, because: ' + 
+			err.code);
+            expect(err.code).assertLarger(0);
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest077
+     * @tc.desc: test bundleState getRecentlyUsedModules noParam callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest077", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest077---------------------------');
+        bundleState.getRecentlyUsedModules( (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest077 callback failed, because: ' + 
+				err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest077 promise success');
+				expect(res).assertInstanceOf('Array');
+			}
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest078
+     * @tc.desc: test bundleState getRecentlyUsedModules param promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest078", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest078---------------------------');
+        bundleState.getRecentlyUsedModules( 10, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest078 callback failed, because: ' + 
+				err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest078 promise success');
+				for (let i=0; i<res.length; i++) {
+					console.info('test bundle DeviceUsageStatisticsJsTest078 promise success' + 
+					JSON.stringify(res[i]));
+				}
+				expect(res).assertInstanceOf('Array');
+			}
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest079
+     * @tc.desc: test bundleState getRecentlyUsedModules param callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest079", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest079---------------------------');
+        bundleState.getRecentlyUsedModules( 10000, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest079 callback failed, because: ' + 
+				err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest079 promise success' + 
+				JSON.stringify(res));
+				expect(res).assertInstanceOf('Array');
+			}
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest080
+     * @tc.desc: test bundleState getRecentlyUsedModules param callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("DeviceUsageStatisticsJsTest080", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest080---------------------------');
+        bundleState.getRecentlyUsedModules( -1, (err, res) => {
+			if(err) {
+				console.info('test bundle DeviceUsageStatisticsJsTest080 callback failed, because: ' + 
+				err.code);
+				expect(err.code).assertLarger(0);
+			} else {
+				console.info('test bundle DeviceUsageStatisticsJsTest080 promise success' + 
+				JSON.stringify(res));
+				expect(res).assertFail();
+			}
+        });
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
 })
