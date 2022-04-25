@@ -26,8 +26,6 @@ group("bundlemanager") {
       "actsbmsmetadatatest:ActsBmsMetaDataTest",
       "actsbundlemanageretstest:ActsBundleManagerEtsTest",
       "actsbundlemanagertest:ActsBundleManagerTest",
-      "actsbundlemanageruninstall:ActsBundleManagerUninstallTest",
-      "actsbundlemgrmultipleinstalltest:ActsBundleMgrMultipleInstallTest",
       "sceneProject/bmsaccesstokenone:bmsAccessTokenTest1",
       "sceneProject/bmsaccesstokenthree:bmsAccessTokenTest3",
       "sceneProject/bmsaccesstokentwo:bmsAccessTokenTest2",

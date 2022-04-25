@@ -36,7 +36,20 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod 644 /data/test/*.hap"
+                "chmod 644 /data/test/*.hap",
+                "bm install -p /data/test/bmsMainAbilityFirstScene.hap",
+                "bm install -p /data/test/bmsMainAbilitySecondScene.hap",
+                "bm install -p /data/test/bmsThirdBundleTest1.hap",
+                "bm install -p /data/test/bmsThirdBundleTest2.hap",
+                "bm install -p /data/test/bmsThirdBundleTest5.hap",
+                "bm install -p /data/test/bmsThirdBundleTestA1.hap"
+            ],
+            "teardown-command":[
+                "bm uninstall -n com.example.third2",
+                "bm uninstall -n com.example.third1",
+                "bm uninstall -n com.example.third5",
+                "bm uninstall -n com.example.bmsmainabilityfirstscene",
+                "rm -rf /data/test/"
             ]
         }
     ]
