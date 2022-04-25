@@ -17,7 +17,7 @@ group("ans_standard") {
   if (is_standard_system) {
     deps = [
       #"actsansnotificationcancel:ActsAnsNotificationCancelTest",
-      "actsansnotificationremove:ActsAnsNotificationRemoveTest",
+      #"actsansnotificationremove:ActsAnsNotificationRemoveTest",
       "actsansslottest:ActsAnsSlotTest",
       "publish_test:publish_test",
     ]
