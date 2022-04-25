@@ -14,7 +14,7 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("ActsPasteBoardJSApiTest") {
-  hap_profile = "./src/main/config.json"
+  hap_profile = "./entry/src/main/config.json"
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
@@ -23,9 +23,9 @@ ohos_js_hap_suite("ActsPasteBoardJSApiTest") {
   hap_name = "ActsPasteBoardJSApiTest"
 }
 ohos_js_assets("hjs_demo_js_assets") {
-  source_dir = "./src/main/js/default"
+  source_dir = "./entry/src/main/js/default"
 }
 ohos_resources("hjs_demo_resources") {
-  sources = [ "./src/main/resources" ]
-  hap_profile = "./src/main/config.json"
+  sources = [ "./entry/src/main/js/resources" ]
+  hap_profile = "./entry/src/main/config.json"
 }
