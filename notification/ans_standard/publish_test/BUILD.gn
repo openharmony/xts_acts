@@ -26,6 +26,7 @@ group("publish_test") {
       #"publishcontentype:publishcontentype",
       #"subscribe:subscribe",
       "activebtn:activebtn",
+
       #"actsansdistributedtest:ActsAnsDistributeTest",
       "actsansgetallactive:ActsAnsGetAllActiveTestXts",
       "ansactscancelgroup:ActsAnsCancelGroupTest",
@@ -33,6 +34,7 @@ group("publish_test") {
       "donotdisturbmode:ActsAnsDoNotDisturbTest",
       "publish:ActsAnsNotificationPublishXts",
       "publishsound:ActsAnsPublishSoundTest",
+
       #"publishvibra:ActsAnsPublishVibraTest",
       "sub:ActsAnsSubTestXts",
       "unsubscribe:ActsAnsUnSubscriberTest",
