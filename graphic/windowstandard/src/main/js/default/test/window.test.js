@@ -1910,4 +1910,22 @@ describe('window_test', function () {
         })
     })
 
+    /**
+     * @tc.number		SUB_WMS_ENUM_WINDOWSTAGEEVENTTYPE_JSAPI_001
+     * @tc.name			Test enumWindowStageEventType_Test_001.
+     * @tc.desc			To test the enum value of WindowStageEventType.
+     */
+    it('enumWindowStageEventType_Test_001', 0, async function (done) {
+        console.log('test the enum value of WindowStageEventType begin');
+        try {
+            expect(1).assertEqual(window.WindowStageEventType.FOREGROUND);
+            expect(2).assertEqual(window.WindowStageEventType.ACTIVE);
+            expect(3).assertEqual(window.WindowStageEventType.INACTIVE);
+            expect(4).assertEqual(window.WindowStageEventType.BACKGROUND);
+            done();
+        } catch (err) {
+            console.log('test enum value of windowStageEventType error ' + JSON.stringify(err));
+        }
+    })
+
 })
