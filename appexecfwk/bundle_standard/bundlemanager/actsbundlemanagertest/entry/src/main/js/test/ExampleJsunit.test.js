@@ -29,6 +29,7 @@ const OBJECT = "object"
 const DIR1 = "/data/accounts/account_0/applications/com.example.myapplication1/com.example.myapplication1"
 const DIR2 = "/data/accounts/account_0/applications/com.example.myapplication2/com.example.myapplication2"
 const DESCRIPTION = "$string:mainability_description"
+const USERID = 100 ;
 
 describe('ActsBundleManagerTest', function () {
 
@@ -197,7 +198,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with one hap.
      */
     it('getApplicationInfos_0100', 0, async function (done) {
-        let datainfo = await demo.getAllApplicationInfo(8, 100);
+        let datainfo = await demo.getAllApplicationInfo(8, USERID);
         checkgetApplicationInfos(datainfo);
         done();
     })
@@ -230,7 +231,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with one hap.
      */
     it('getApplicationInfos_0600', 0, async function (done) {
-        await demo.getAllApplicationInfo(8, 100, (error, datainfo) => {
+        await demo.getAllApplicationInfo(8, USERID, (error, datainfo) => {
             expect(datainfo.length).assertLarger(0);
             for (let i = 0; i < datainfo.length; i++) {
                 expect(datainfo[i].name.length).assertLarger(0);
@@ -279,7 +280,7 @@ describe('ActsBundleManagerTest', function () {
     it('getApplicationInfo_0100', 0, async function (done) {
         await demo.getApplicationInfo(NAME1,
             demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION | demo.BundleFlag.GET_APPLICATION_INFO_WITH_METADATA,
-            100).then(datainfo => {
+            USERID).then(datainfo => {
                 expect(typeof datainfo).assertEqual(OBJECT);
                 console.info("getApplicationInfo success:" + JSON.stringify(datainfo));
                 expect(datainfo.moduleSourceDirs.length).assertLarger(0);
@@ -349,7 +350,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with one hap.
      */
     it('getApplicationInfo_0600', 0, async function (done) {
-        await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 100,
+        await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USERID,
             (error, datainfo) => {
                 if (error) {
                     console.info("getApplicationInfo fail:" + JSON.stringify(error));
@@ -381,7 +382,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with one hap and different param.
      */
     it('getApplicationInfo_1100', 0, async function (done) {
-        await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT, 100).then(datainfo => {
+        await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT, USERID).then(datainfo => {
             console.info("getApplicationInfo success" + JSON.stringify(datainfo));
             expect(typeof datainfo).assertEqual(OBJECT);
             expect(datainfo.name).assertEqual(NAME1);
@@ -406,7 +407,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with one hap and different param.
      */
     it('getApplicationInfo_1200', 0, async function (done) {
-        await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT, 100, (error, datainfo) => {
+        await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT, USERID, (error, datainfo) => {
             if (error) {
                 console.info("getApplicationInfo fail" + JSON.stringify(error));
                 expect(error).assertFail();
@@ -480,7 +481,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with two haps.
      */
     it('getApplicationInfos_0200', 0, async function (done) {
-        let datainfo = await demo.getAllApplicationInfo(8, 100);
+        let datainfo = await demo.getAllApplicationInfo(8, USERID);
         console.info("==========ActsBmsGetInfosSecondScene is ==========" + JSON.stringify(datainfo));
         checkgetApplicationInfos(datainfo);
         done();
@@ -492,7 +493,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with two haps and different param.
      */
     it('getApplicationInfos_0400', 0, async function (done) {
-        let datainfo = await demo.getAllApplicationInfo(0, 100);
+        let datainfo = await demo.getAllApplicationInfo(0, USERID);
         expect(datainfo.length).assertLarger(0);
         checkgetApplicationInfos(datainfo);
         done();
@@ -504,7 +505,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with two haps.
      */
     it('getApplicationInfos_0700', 0, async function (done) {
-        await demo.getAllApplicationInfo(8, 100, (error, datainfo) => {
+        await demo.getAllApplicationInfo(8, USERID, (error, datainfo) => {
             for (let i = 0; i < datainfo.length; i++) {
                 expect(datainfo[i].name.length).assertLarger(0);
                 if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2
@@ -524,7 +525,34 @@ describe('ActsBundleManagerTest', function () {
             }
             done();
         });
+    })
 
+    /**
+     * @tc.number getApplicationInfos_0800
+     * @tc.name BUNDLE::getApplicationInfos
+     * @tc.desc Test getApplicationInfos interfaces with three haps.
+    */
+    it('getApplicationInfos_0800', 0, async function (done) {
+        await demo.getAllApplicationInfo(0, USERID, (error, datainfo) => {
+            for (let i = 0; i < datainfo.length; i++) {
+                expect(datainfo[i].name.length).assertLarger(0);
+                if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2
+                    || datainfo[i].name == NAME3 || datainfo[i].name == NAME4 || datainfo[i].name == NAME5) {
+                    expect(datainfo[i].description.length).assertLarger(0);
+                    expect(datainfo[i].icon.length).assertLarger(0);
+                    expect(datainfo[i].label.length).assertLarger(0);
+                }
+                expect(datainfo[i].moduleSourceDirs.length).assertLarger(0);
+                expect(datainfo[i].moduleInfos.length).assertLarger(0);
+                expect(datainfo[i].supportedModes).assertEqual(0);
+                expect(datainfo[i].flags).assertEqual(0);
+                for (let j = 0; j < datainfo[i].moduleInfos; j++) {
+                    expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0);
+                    expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0);
+                }
+            }
+            done();
+        });
     })
 
     /**
@@ -533,7 +561,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with two haps and different param.
      */
     it('getApplicationInfos_0900', 0, async function (done) {
-        await demo.getAllApplicationInfo(0, 100, (error, datainfo) => {
+        await demo.getAllApplicationInfo(0, USERID, (error, datainfo) => {
             for (let i = 0; i < datainfo.length; i++) {
                 expect(datainfo[i].name.length).assertLarger(0);
                 if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2
@@ -608,7 +636,7 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getApplicationInfo_0200', 0, async function (done) {
         let datainfo = await demo.getApplicationInfo(NAME2,
-            demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 100);
+            demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USERID);
         console.info("getApplicationInfo result" + JSON.stringify(datainfo));
         expect(typeof datainfo).assertEqual(OBJECT);
         expect(datainfo.name.length).assertLarger(0);
@@ -693,7 +721,7 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getApplicationInfo_0700', 0, async function (done) {
         await demo.getApplicationInfo(NAME2,
-            demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 100, (error, datainfo) => {
+            demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USERID, (error, datainfo) => {
                 if (error) {
                     console.info("getApplicationInfo error" + JSON.stringify(error));
                     expect(error).assertFail();
@@ -853,7 +881,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with error hap.
      */
     it('getApplicationInfo_0400', 0, async function (done) {
-        demo.getApplicationInfo(ERROR, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 100).then(datainfo => {
+        demo.getApplicationInfo(ERROR, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USERID).then(datainfo => {
             checkgetApplicationInfoe(datainfo);
         }).catch(err => {
             console.info("getApplicationInfo err" + JSON.stringify(err));
@@ -873,7 +901,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with error hap.
      */
     it('getApplicationInfo_0900', 0, async function (done) {
-        demo.getApplicationInfo(ERROR, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 100, (error, datainfo) => {
+        demo.getApplicationInfo(ERROR, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USERID, (error, datainfo) => {
             if (error) {
                 console.info("getApplicationInfo fail" + JSON.stringify(error));
                 expect(error).assertEqual(1);
@@ -912,7 +940,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with none hap.
      */
     it('getApplicationInfo_0500', 0, async function (done) {
-        demo.getApplicationInfo('', demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 100, (error, datainfo) => {
+        demo.getApplicationInfo('', demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USERID, (error, datainfo) => {
             if (error) {
                 console.info("getApplicationInfo err" + JSON.stringify(error));
                 expect(error).assertEqual(1);
@@ -948,7 +976,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with none hap.
      */
     it('getApplicationInfo_1000', 0, async function (done) {
-        demo.getApplicationInfo('', demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, 100, (error, datainfo) => {
+        demo.getApplicationInfo('', demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USERID, (error, datainfo) => {
             if (error) {
                 console.info("getApplicationInfo fail" + JSON.stringify(error));
                 expect(error).assertEqual(1);
@@ -974,7 +1002,7 @@ describe('ActsBundleManagerTest', function () {
             }, demo.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION |
             demo.BundleFlag.GET_ABILITY_INFO_WITH_PERMISSION |
         demo.BundleFlag.GET_ABILITY_INFO_WITH_METADATA,
-            100).then(data => {
+            USERID).then(data => {
                 expect(data.length).assertLarger(0);
                 for (let i = 0, len = data.length; i < len; i++) {
                     let datainfo = data[i];
@@ -1022,7 +1050,7 @@ describe('ActsBundleManagerTest', function () {
             {
                 "bundleName": "com.example.myapplication2",
                 "abilityName": "com.example.myapplication1.MainAbility",
-            }, demo.BundleFlag.GET_ALL_APPLICATION_INFO, 100);
+            }, demo.BundleFlag.GET_ALL_APPLICATION_INFO, USERID);
         expect(data.length).assertLarger(0);
         for (let i = 0, len = data.length; i < len; i++) {
             let datainfo = data[i];
@@ -1061,7 +1089,7 @@ describe('ActsBundleManagerTest', function () {
         await demo.queryAbilityByWant(
             {
                 entities: ['entity.system.home', 'entitiesentities']
-            }, 4, 100).then(data => {
+            }, 4, USERID).then(data => {
                 let queryResultCount = 0;
                 for (let i = 0, len = data.length; i < len; i++) {
                     let datainfo = data[i];
@@ -1123,7 +1151,7 @@ describe('ActsBundleManagerTest', function () {
             {
                 "bundleName": "wrong name",
                 "abilityName": "com.example.myapplication1.MainAbility"
-            }, 0, 100).then(datainfo => {
+            }, 0, USERID).then(datainfo => {
                 console.info("queryAbilityByWant_0400 dataInfo : ===========" + datainfo);
                 expect(datainfo).assertFail();
             }).catch(err => {
@@ -1167,7 +1195,7 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getBundleInfo_1400', 0, async function (done) {
         let bundleOptions = {
-            userId: 100
+            userId: USERID
         };
         let dataInfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions);
         for (const item in dataInfo) {
@@ -1219,7 +1247,7 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getBundleInfo_1500', 0, async function (done) {
         let bundleOptions = {
-            userId: 100
+            userId: USERID
         };
         demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions, (err, dataInfo) => {
             expect(dataInfo.name).assertEqual(NAME1);
@@ -1300,7 +1328,7 @@ describe('ActsBundleManagerTest', function () {
             {
                 bundleName: "wrong name",
                 abilityName: "wrong name",
-            }, 0, 100, OnReceiveEvent);
+            }, 0, USERID, OnReceiveEvent);
         function OnReceiveEvent(err, datainfo) {
             expect(err).assertEqual(1);
             expect(datainfo.length).assertLarger(0);
