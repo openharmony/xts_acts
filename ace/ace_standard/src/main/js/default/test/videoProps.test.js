@@ -240,25 +240,6 @@ describe('videoPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testVideoDisabledPropNone
-     * @tc.desc      ACE
-     */
-    it('testVideoDisabledPropNone', 0, async function (done) {
-        console.info('testVideoDisabledPropNone START');
-        console.info("[videoProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.disabledPropNone);
-        console.info("[videoProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[videoProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('video')
-        expect(obj.$attrs.id).assertEqual('disabledPropNone')
-        expect(obj.$attrs.disabled).assertEqual('false')
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testVideoFocusablePropTrue
      * @tc.desc      ACE
      */
@@ -291,25 +272,6 @@ describe('videoPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('video')
         expect(obj.$attrs.id).assertEqual('focusablePropFalse')
-        expect(obj.$attrs.focusable).assertEqual('false')
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testVideoFocusablePropNone
-     * @tc.desc      ACE
-     */
-    it('testVideoFocusablePropNone', 0, async function (done) {
-        console.info('testVideoFocusablePropNone START');
-        console.info("[videoProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.focusablePropNone);
-        console.info("[videoProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[videoProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('video')
-        expect(obj.$attrs.id).assertEqual('focusablePropNone')
         expect(obj.$attrs.focusable).assertEqual('false')
         done();
     });
@@ -667,26 +629,6 @@ describe('videoPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testVideoShowPropNone
-     * @tc.desc      ACE
-     */
-    it('testVideoShowPropNone', 0, async function (done) {
-        console.info('testVideoShowPropNone START');
-        console.info("[videoProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.showPropNone);
-        console.info("[videoProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[videoProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('video')
-        expect(obj.$attrs.id).assertEqual('showPropNone')
-        expect(obj.$attrs.show).assertEqual('true')
-        console.info("[videoProps] get show value is: " + JSON.stringify(obj.$attrs.show));
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testVideoMutedPropFalse
      * @tc.desc      ACE
      */
@@ -721,26 +663,6 @@ describe('videoPropsJsTest', function () {
         expect(obj.$type).assertEqual('video')
         expect(obj.$attrs.id).assertEqual('mutedPropTrue')
         expect(obj.$attrs.muted).assertEqual('true')
-        console.info("[videoProps] get muted value is: " + JSON.stringify(obj.$attrs.muted));
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testVideoMutedPropNone
-     * @tc.desc      ACE
-     */
-    it('testVideoMutedPropNone', 0, async function (done) {
-        console.info('testVideoMutedPropNone START');
-        console.info("[videoProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.mutedPropNone);
-        console.info("[videoProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[videoProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('video')
-        expect(obj.$attrs.id).assertEqual('mutedPropNone')
-        expect(obj.$attrs.muted).assertEqual('false')
         console.info("[videoProps] get muted value is: " + JSON.stringify(obj.$attrs.muted));
         done();
     });
@@ -827,26 +749,6 @@ describe('videoPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testVideoAutoplayPropNone
-     * @tc.desc      ACE
-     */
-    it('testVideoAutoplayPropNone', 0, async function (done) {
-        console.info('testVideoAutoplayPropNone START');
-        console.info("[videoProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.autoplayPropNone);
-        console.info("[videoProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[videoProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('video')
-        expect(obj.$attrs.id).assertEqual('autoplayPropNone')
-        expect(obj.$attrs.autoplay).assertEqual('false')
-        console.info("[videoProps] get autoplay value is: " + JSON.stringify(obj.$attrs.autoplay));
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testVideoPosterProp
      * @tc.desc      ACE
      */
@@ -920,26 +822,6 @@ describe('videoPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('video')
         expect(obj.$attrs.id).assertEqual('controlsPropTrue')
-        expect(obj.$attrs.controls).assertEqual('true')
-        console.info("[videoProps] get controls value is: " + JSON.stringify(obj.$attrs.controls));
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testVideoControlsPropNone
-     * @tc.desc      ACE
-     */
-    it('testVideoControlsPropNone', 0, async function (done) {
-        console.info('testVideoControlsPropNone START');
-        console.info("[videoProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.controlsPropNone);
-        console.info("[videoProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[videoProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('video')
-        expect(obj.$attrs.id).assertEqual('controlsPropNone')
         expect(obj.$attrs.controls).assertEqual('true')
         console.info("[videoProps] get controls value is: " + JSON.stringify(obj.$attrs.controls));
         done();

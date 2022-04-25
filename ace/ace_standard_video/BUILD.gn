@@ -11,18 +11,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ace") {
-  testonly = true
+import("//test/xts/tools/build/suite.gni")
+
+ohos_js_hap_suite("ace_standard_video_test") {
+  hap_profile = "./src/main/config.json"
   deps = [
-    "ace_ets_component:AceEtsComponentTest",
-    "ace_ets_component_five:AceEtsComponentFiveTest",
-    "ace_ets_component_four:AceEtsComponentFourTest",
-    "ace_ets_component_three:AceEtsComponentThreeTest",
-    "ace_ets_component_two:AceEtsComponentTwoTest",
-    "ace_ets_standard:ActsAceEtsStTest",
-    "ace_ets_test:ActsAceEtsTest",
-    "ace_ets_third_test:ActsAceEtsThirdTest",
-    "ace_standard:ace_standard_test",
-    "ace_standard_video:ace_standard_video_test"
+    ":ace_js_assets",
+    ":ace_resources",
   ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAceStandardVideoTest"
+}
+ohos_js_assets("ace_js_assets") {
+  source_dir = "./src/main/js/default"
+}
+ohos_resources("ace_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }

@@ -50,12 +50,12 @@ export default {
         showPropNone : null,
         multitext:[["a", "b", "c"], ["e", "f", "g"], ["h", "i"], ["k", "l", "m"]],
         rangetext:['15', "20", "25"],
-//        multitextselect:[1,2,0],
-//        pickerViewText: null,
-//        pickerViewDate: null,
-//        pickerViewTime: null,
-//        pickerViewDatetime: null,
-//        pickerViewMultiText: null
+        multitextselect:[1,2,0],
+        pickerViewText: null,
+        pickerViewDate: null,
+        pickerViewTime: null,
+        pickerViewDatetime: null,
+        pickerViewMultiText: null
     },
 
     onShow(){
@@ -90,11 +90,11 @@ export default {
             showPropTrue : this.showPropTrue,
             showPropFalse : this.showPropFalse,
             showPropNone : this.showPropNone,
-//            pickerViewText: this.pickerViewText,
-//            pickerViewDate: this.pickerViewDate,
-//            pickerViewTime: this.pickerViewTime,
-//            pickerViewDatetime: this.pickerViewDatetime,
-//            pickerViewMultiText: this.pickerViewMultiText
+            pickerViewText: this.pickerViewText,
+            pickerViewDate: this.pickerViewDate,
+            pickerViewTime: this.pickerViewTime,
+            pickerViewDatetime: this.pickerViewDatetime,
+            pickerViewMultiText: this.pickerViewMultiText
         }
     },
 
@@ -128,5 +128,10 @@ export default {
         this.showPropTrue = this.$element("showPropTrue").getInspector()
         this.showPropFalse = this.$element("showPropFalse").getInspector()
         this.showPropNone = this.$element("showPropNone").getInspector()
+        this.pickerViewViewText = this.$element("pickerViewViewText").getInspector()
+        this.pickerViewViewDate = this.$element("pickerViewViewDate").getInspector()
+        this.pickerViewViewTime = this.$element("pickerViewViewTime").getInspector()
+        this.pickerViewViewDatetime = this.$element("pickerViewViewDatetime").getInspector()
+        this.pickerViewViewMultiText = this.$element("pickerViewViewMultiText").getInspector()
     }
 }

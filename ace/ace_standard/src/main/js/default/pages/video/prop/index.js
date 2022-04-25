@@ -27,10 +27,8 @@ export default {
         refPropNone : null,
         disabledPropTrue : null,
         disabledPropFalse : null,
-        disabledPropNone : null,
         focusablePropTrue : null,
         focusablePropFalse : null,
-        focusablePropNone : null,
         dataProp : null,
         dataPropNone : null,
         forPropNull : null,
@@ -41,20 +39,16 @@ export default {
         ifPropNone : null,
         showPropTrue : null,
         showPropFalse : null,
-        showPropNone : null,
         mutedPropFalse : null,
         mutedPropTrue : null,
-        mutedPropNone : null,
         srcProp : null,
         srcPropNone : null,
         autoplayPropFalse : null,
         autoplayPropTrue : null,
-        autoplayPropNone : null,
         posterProp : null,
         posterPropNone : null,
         controlsPropFalse : null,
         controlsPropTrue : null,
-        controlsPropNone : null,
         loopPropFalse : null,
         loopPropTrue : null,
         loopPropNone : null,
@@ -79,10 +73,8 @@ export default {
             refPropNone : this.refPropNone,
             disabledPropTrue : this.disabledPropTrue,
             disabledPropFalse : this.disabledPropFalse,
-            disabledPropNone : this.disabledPropNone,
             focusablePropTrue : this.focusablePropTrue,
             focusablePropFalse : this.focusablePropFalse,
-            focusablePropNone : this.focusablePropNone,
             dataProp : this.dataProp,
             dataPropNone : this.dataPropNone,
             forPropNull : this.forPropNull,
@@ -91,20 +83,16 @@ export default {
             ifPropTrue : this.ifPropTrue,
             showPropTrue : this.showPropTrue,
             showPropFalse : this.showPropFalse,
-            showPropNone : this.showPropNone,
             mutedPropFalse : this.mutedPropFalse,
             mutedPropTrue : this.mutedPropTrue,
-            mutedPropNone : this.mutedPropNone,
             srcProp : this.srcProp,
             srcPropNone : this.srcPropNone,
             autoplayPropFalse : this.autoplayPropFalse,
             autoplayPropTrue : this.autoplayPropTrue,
-            autoplayPropNone : this.autoplayPropNone,
             posterProp : this.posterProp,
             posterPropNone : this.posterPropNone,
             controlsPropFalse : this.controlsPropFalse,
             controlsPropTrue : this.controlsPropTrue,
-            controlsPropNone : this.controlsPropNone,
             loopPropFalse : this.loopPropFalse,
             loopPropTrue : this.loopPropTrue,
             loopPropNone : this.loopPropNone,
@@ -128,10 +116,8 @@ export default {
         this.refPropNone = this.$element("refPropNone").getInspector()
         this.disabledPropTrue = this.$element("disabledPropTrue").getInspector()
         this.disabledPropFalse = this.$element("disabledPropFalse").getInspector()
-        this.disabledPropNone = this.$element("disabledPropNone").getInspector()
         this.focusablePropTrue = this.$element("focusablePropTrue").getInspector()
         this.focusablePropFalse = this.$element("focusablePropFalse").getInspector()
-        this.focusablePropNone = this.$element("focusablePropNone").getInspector()
         this.dataProp = this.$element("dataProp").getInspector()
         this.dataPropNone = this.$element("dataPropNone").getInspector()
         this.forPropNull = this.$element("forPropNull").getInspector()
@@ -140,20 +126,16 @@ export default {
         this.ifPropTrue = this.$element("ifPropTrue").getInspector()
         this.showPropTrue = this.$element("showPropTrue").getInspector()
         this.showPropFalse = this.$element("showPropFalse").getInspector()
-        this.showPropNone = this.$element("showPropNone").getInspector()
         this.mutedPropFalse = this.$element("mutedPropFalse").getInspector()
         this.mutedPropTrue = this.$element("mutedPropTrue").getInspector()
-        this.mutedPropNone = this.$element("mutedPropNone").getInspector()
         this.srcProp = this.$element("srcProp").getInspector()
         this.srcPropNone = this.$element("srcPropNone").getInspector()
         this.autoplayPropFalse = this.$element("autoplayPropFalse").getInspector()
         this.autoplayPropTrue = this.$element("autoplayPropTrue").getInspector()
-        this.autoplayPropNone = this.$element("autoplayPropNone").getInspector()
         this.posterProp = this.$element("posterProp").getInspector()
         this.posterPropNone = this.$element("posterPropNone").getInspector()
         this.controlsPropFalse = this.$element("controlsPropFalse").getInspector()
         this.controlsPropTrue = this.$element("controlsPropTrue").getInspector()
-        this.controlsPropNone = this.$element("controlsPropNone").getInspector()
         this.loopPropFalse = this.$element("loopPropFalse").getInspector()
         this.loopPropTrue = this.$element("loopPropTrue").getInspector()
         this.loopPropNone = this.$element("loopPropNone").getInspector()
