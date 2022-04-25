@@ -15,6 +15,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index.ets"
 import bundle from '@ohos.bundle'
+import pkg from '@system.package'
 
 const DEFAULT_FLAG = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
 const INVALID_CODE = 1;
@@ -83,6 +84,58 @@ export default function actsBmsJsUnPermissionTest() {
                 expect(data).assertEqual(undefined);
                 done();
             });
+        });
+
+        /*
+         * @tc.number: SUB_BMS_HAP_STATUS_0011
+         * @tc.name: test hasInstalled
+         * @tc.desc: test hasInstalled without permission
+        */
+        it('SUB_BMS_HAP_STATUS_0011', 0, async function (done) {
+            pkg.hasInstalled({
+                bundleName: SELF_BUNDLENAME,
+                success: function success(data) {
+                    console.info("get hasInstalled success" + JSON.stringify(data));
+                    expect(data.result).assertTrue();
+                    done();
+                },
+                fail: function fail(data, code) {
+                    console.info("get hasInstalled fail" + JSON.stringify(data));
+                    expect(data).assertFail();
+                    done();
+                },
+                complete: function complete() {
+                    console.info("get hasInstalled complete");
+                    expect(data).assertFail();
+                    done();
+                }
+            })
+        });
+
+        /*
+         * @tc.number: SUB_BMS_HAP_STATUS_0012
+         * @tc.name: test hasInstalled
+         * @tc.desc: test hasInstalled without permission
+        */
+        it('SUB_BMS_HAP_STATUS_0012', 0, async function (done) {
+            pkg.hasInstalled({
+                bundleName: LAUNCHER_BUNDLE_NAME,
+                success: function success(data) {
+                    console.info("get hasInstalled success" + JSON.stringify(data));
+                    expect(data.result).assertFalse();
+                    done();
+                },
+                fail: function fail(data, code) {
+                    console.info("get hasInstalled fail" + JSON.stringify(data));
+                    expect(data).assertFail();
+                    done();
+                },
+                complete: function complete() {
+                    console.info("get hasInstalled complete");
+                    expect(data).assertFail();
+                    done();
+                }
+            })
         });
 
         /*

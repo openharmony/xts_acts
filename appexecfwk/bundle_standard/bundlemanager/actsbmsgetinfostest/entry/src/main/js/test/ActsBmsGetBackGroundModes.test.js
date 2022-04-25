@@ -21,14 +21,12 @@ const BUNDLE_NAME2 = 'com.example.third2';
 const BUNDLE_NAME4 = 'com.example.third4';
 const BUNDLE_NAME5 = 'com.example.third5';
 const BUNDLE_NAME6 = 'com.example.third6';
-const BUNDLE_NAME7 = 'com.example.third7';
 const ABILITIY_NAME1 = "com.example.third5.MainAbilityA";
 const ABILITIY_NAME2 = "com.example.third5.MainAbilityB";
 const ABILITIY_NAME3 = "com.example.third2.MainAbilityA";
 const ABILITIY_NAME4 = "com.example.third4.MainAbility";
 const ABILITIY_NAME5 = "com.example.third1.MainAbilityA";
 const ABILITIY_NAME6 = "com.example.third3.MainAbilityA";
-const ABILITIY_NAME7 = "com.example.third7.AMainAbilityA";
 const NUM_TWO = 2;
 const NUM_THREE = 3;
 const NUM_FOUR = 4;
@@ -200,30 +198,6 @@ describe('ActsBmsGetBackGroundModes', function () {
             expect(dataInfos[3].name).assertEqual(ABILITIY_NAME6)
             expect(dataInfos[3].backgroundModes).assertEqual(DATATRANSFER | AUDIOPLAYBACK | AUDIORECORDING |
                 LOCATION | BLUETOOTHINTERACTION | MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING)
-        }
-        done();
-    });
-
-    /*
-    * @tc.number: bms_backGroundModes_0600
-    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant
-    * @tc.desc: Get the backgroundModes information of the upgraded application's ability 
-    */
-    it('bms_backGroundModes_0600', 0, async function (done) {
-        let dataInfos = await bundle.queryAbilityByWant({
-            action: 'action.system.home',
-            entities: ['entity.system.home'],
-            elementName: {
-                deviceId: '0',
-                bundleName: BUNDLE_NAME7,
-                abilityName: '',
-            },
-        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, USERID);
-        expect(dataInfos.length).assertEqual(NUM_TWO);
-        if (dataInfos.length == NUM_TWO) {
-            expect(dataInfos[1].name).assertEqual(ABILITIY_NAME7);
-            expect(dataInfos[1].backgroundModes).assertEqual(AUDIORECORDING | LOCATION | BLUETOOTHINTERACTION |
-                MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING);
         }
         done();
     });

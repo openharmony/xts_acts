@@ -32,8 +32,6 @@
                 "bmsThirdBundleTest4.hap->/data/test/bmsThirdBundleTest4.hap",
                 "bmsThirdBundleTest5.hap->/data/test/bmsThirdBundleTest5.hap",
                 "bmsThirdBundleTest6.hap->/data/test/bmsThirdBundleTest6.hap",
-                "bmsThirdBundleTest7.hap->/data/test/bmsThirdBundleTest7.hap",
-                "bmsThirdBundleTest7A.hap->/data/test/bmsThirdBundleTest7A.hap",
                 "bmsThirdBundleTestA1.hap->/data/test/bmsThirdBundleTestA1.hap",
                 "bmsSystemBundleTest2.hap->/data/test/bmsSystemBundleTest2.hap"
             ]
@@ -47,8 +45,6 @@
                 "bm install -p /data/test/bmsThirdBundleTest4.hap",
                 "bm install -p /data/test/bmsThirdBundleTest5.hap",
                 "bm install -p /data/test/bmsThirdBundleTest6.hap",
-                "bm install -p /data/test/bmsThirdBundleTest7.hap",
-                "bm install -p /data/test/bmsThirdBundleTest7A.hap",
                 "bm install -p /data/test/bmsSystemBundleTest2.hap"
             ],
             "teardown-command":[
@@ -57,7 +53,6 @@
                 "bm uninstall -n com.example.third4",
                 "bm uninstall -n com.example.third5",
                 "bm uninstall -n com.example.third6",
-                "bm uninstall -n com.example.third7",
                 "bm uninstall -n com.example.system2",
                 "rm -rf /data/test/"
             ]

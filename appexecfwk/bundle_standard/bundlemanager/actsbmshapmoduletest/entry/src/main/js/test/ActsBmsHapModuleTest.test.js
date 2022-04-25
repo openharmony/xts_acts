@@ -19,7 +19,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 const BUNDLE_NAME1 = 'com.example.bmsmainabilityfirstscene';
 const BUNDLE_NAME2 = 'com.example.third2';
 const BUNDLE_NAME3 = 'com.example.third5';
-const BUNDLE_NAME4 = 'com.example.third1';
 const BUNDLE_NAME5 = 'com.example.system1';
 const BUNDLE_NAME6 = "com.example.bmsmainabilitysecondscene";
 const FIRSTMAINABILITY = 'com.example.bmsmainabilityfirstscene.MainAbility';
@@ -168,44 +167,6 @@ describe('ActsBmsHapModuleTest', function () {
                 done();
             }
         });
-    });
-
-    /*
-     * @tc.number: bms_getHapModuleInfo_0500
-     * @tc.name: get the hapModuleInfo of the upgraded hap package from an application through getBundleInfo
-     * @tc.desc: get the module information of the mainAbility upgrade hap
-     */
-    it('bms_getHapModuleInfo_0500', 0, async function (done) {
-        let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME4, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
-        bundle.getBundleInfo(BUNDLE_NAME4, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, callback);
-        function callback(err, result) {
-            expect(JSON.stringify(result)).assertEqual(JSON.stringify(dataInfo));
-            expect(result.hapModuleInfos.length).assertEqual(1);
-            if (result.hapModuleInfos.length == 1) {
-                let hapModuleInfo = result.hapModuleInfos[0];
-                expect(hapModuleInfo.name).assertEqual("com.example.third1.entry");
-                expect(hapModuleInfo.moduleName).assertEqual('entry');
-                expect(hapModuleInfo.description).assertEqual('');
-                expect(hapModuleInfo.descriptionId).assertEqual(0);
-                expect(hapModuleInfo.iconPath).assertEqual("$media:icon");
-                expect(hapModuleInfo.icon).assertEqual('');
-                expect(hapModuleInfo.label).assertEqual('$string:app_name');
-                expect(hapModuleInfo.labelId).assertEqual(0);
-                expect(hapModuleInfo.iconId).assertEqual(0);
-                expect(hapModuleInfo.backgroundImg).assertEqual("");
-                expect(hapModuleInfo.supportedModes).assertEqual(0);
-                expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
-                expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
-                expect(hapModuleInfo.mainAbilityName).assertEqual("com.example.third1.AMainAbility");
-                expect(hapModuleInfo.mainElementName).assertEqual("com.example.third1.AMainAbility");
-                expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
-                expect(hapModuleInfo.colorMode).assertEqual(0);
-                expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
-                expect(hapModuleInfo.metadata.length).assertEqual(0);
-                expect(hapModuleInfo.installationFree).assertEqual(false);
-                done();
-            }
-        }
     });
 
     /*

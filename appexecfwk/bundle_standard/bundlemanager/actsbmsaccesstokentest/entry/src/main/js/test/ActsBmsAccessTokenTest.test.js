@@ -177,22 +177,4 @@ describe('ActsBmsAccessTokenTest', function () {
             });
     });
 
-    /**
-     * @tc.number bms_AccessTokenId_0800
-     * @tc.name BUNDLE::getBundleInfos
-     * @tc.desc Test getBundleInfos interfaces with a flag
-     */
-    it("bms_AccessTokenId_0800", 0, async function (done) {
-        await bundle.getApplicationInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION)
-            .then((applicationInfo) => {
-                console.info("bms_AccessTokenId_0800 accessTokenId: " + applicationInfo.accessTokenId);
-                expect(applicationInfo.name).assertEqual(BUNDLE_NAME2);
-                expect(applicationInfo.accessTokenId).assertLarger(0);
-                done();
-            }).catch((err) => {
-                expect(err).assertFail();
-                done();
-            });
-    });
-
 });

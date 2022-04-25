@@ -16,30 +16,17 @@
 import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-const BUNDLE_PATH1 = ['/data/test/bmsThirdBundleTest1.hap'];
-const BUNDLE_PATH2 = ['/data/test/bmsThirdBundleTestA1.hap'];
-const BUNDLE_PATH3 = ['/data/test/bmsThirdBundleTest5.hap'];
-const BUNDLE_PATH4 = ['/data/test/bmsSystemBundleTest1.hap'];
-const BUNDLE_PATH5 = ['/data/test/bmsVendorBundleTest1.hap'];
 const BUNDLE_NAME1 = 'com.example.third1';
 const BUNDLE_NAME2 = 'com.example.third5';
 const BUNDLE_NAME3 = 'com.example.noexist';
 const BUNDLE_NAME4 = 'com.example.system1';
 const BUNDLE_NAME5 = 'com.example.vendor1';
-const BUNDLE_NAME6 = 'com.example.third7';
 const ABILITY_NAME1 = 'com.example.third1.MainAbility';
-const ABILITY_NAME2 = 'com.example.third1.AMainAbility';
 const ABILITY_NAME3 = 'com.example.third5.AMainAbility';
 const ABILITY_NAME4 = 'com.example.noexist.MainAbility';
 const ABILITY_NAME5 = 'com.example.system1.MainAbility';
 const ABILITY_NAME6 = 'com.example.vendor1.MainAbility';
-const ABILITY_NAME7 = 'com.example.third7.AMainAbility';
 const USERID = 100;
-const INSTALLPARAM = {
-    userId: 100,
-    installFlag: 1,
-    isKeepData: false
-};
 
 describe('ActsBmsMetaDataTest', function () {
 
@@ -57,29 +44,6 @@ describe('ActsBmsMetaDataTest', function () {
                 console.info("dataInfos[0].metaData" + JSON.stringify(dataInfos[0].metaData));
                 let metaData = dataInfos[0].metaData;
                 expect(metaData[0].name).assertEqual("Data1");
-                expect(metaData[0].value).assertEqual("float");
-                expect(metaData[0].extra).assertEqual("$string:mainability_description");
-                done();
-            }).catch(err => {
-                expect(err).assertFail();
-                done();
-            });
-    });
-
-    /*
-    * @tc.number: bms_getMetaData_0200
-    * @tc.name: test to get meta data for an update application.
-    * @tc.desc: get an application's meta data that is updated.
-    */
-    it('bms_getMetaData_0200', 0, async function (done) {
-        await bundle.queryAbilityByWant(
-            {
-                "bundleName": BUNDLE_NAME6,
-                "abilityName": ABILITY_NAME7
-            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID).then(dataInfos => {
-                console.info("dataInfos[0].metaData" + JSON.stringify(dataInfos[0].metaData));
-                let metaData = dataInfos[0].metaData;
-                expect(metaData[0].name).assertEqual("DataA1");
                 expect(metaData[0].value).assertEqual("float");
                 expect(metaData[0].extra).assertEqual("$string:mainability_description");
                 done();
