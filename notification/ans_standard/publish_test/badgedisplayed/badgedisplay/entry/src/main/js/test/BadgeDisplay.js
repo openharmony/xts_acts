@@ -32,22 +32,7 @@ describe('ActsAnsBadgeDisplayTest', function () {
             done();
         })
     })
-    /*
-     * @tc.number: ActsGetDisplay_test_0200
-     * @tc.name: isBadgeDisplayed()
-     * @tc.desc: verify the function of isBadgeDisplayed
-     */
-    it('ActsGetDisplay_test_0200', 0, async function (done) {
-       notify.isBadgeDisplayed({
-                bundle:"com.example.actsanslocalcandisplaytest",
-            }).then((promise)=>{
-                 console.log("===>ActsGetDisplay_test_0200 success===>"+promise)
-                 expect(typeof(promise)).assertEqual('boolean')
-                 done()}
-               ).catch((err)=>{
-           console.log("===>ActsGetDisplay_test_0200 err===>"+err.code)
-       })
-    })
+
     /*
      * @tc.number: ActsGetDisplay_test_0300
      * @tc.name: isBadgeDisplayed()
@@ -122,45 +107,7 @@ describe('ActsAnsBadgeDisplayTest', function () {
         expect(promise).assertEqual(undefined)
         done();
     })
-    /*
-     * @tc.number: ActsGetDisplay_test_0900
-     * @tc.name: isBadgeDisplayed()
-     * @tc.desc: verify the function of isBadgeDisplayed
-     */
-    it('ActsGetDisplay_test_0900', 0, async function (done) {
-        await notify.displayBadge({
-            bundle:"com.example.actsanslocalcandisplaytest"
-        },true,async(err) => {
-            console.log("===>ActsGetDisplay_test_0900 success===>"+err)
-            await notify.isBadgeDisplayed({
-                bundle:"com.example.actsanslocalcandisplaytest",
-            },(err,data) => {
-                console.log("===>ActsGetDisplay_test_0900 success===>"+err+data)
-                expect(typeof(data)).assertEqual('boolean')
-                expect(data).assertEqual(true)
-                done();
-            })
-        })
-    })
-    /*
-     * @tc.number: ActsGetDisplay_test_1000
-     * @tc.name: isBadgeDisplayed()
-     * @tc.desc: verify the function of isBadgeDisplayed
-     */
-    it('ActsGetDisplay_test_1000', 0, async function (done) {
-        await notify.displayBadge({
-            bundle:"com.example.actsanslocalcandisplaytest"
-        },true,async(err) => {
-            console.log("===>ActsGetDisplay_test_1000 success===>"+err)
-            var promise = await notify.isBadgeDisplayed({
-                bundle:"com.example.actsanslocalcandisplaytest",
-            })
-            console.log("===>ActsGetDisplay_test_1000 success===>"+promise)
-            expect(typeof(promise)).assertEqual('boolean')
-            expect(promise).assertEqual(true)
-            done();
-            })
-    })
+    
     /*
      * @tc.number: ActsSetDisplay_test_0100
      * @tc.name: displayBadge()
@@ -214,43 +161,7 @@ describe('ActsAnsBadgeDisplayTest', function () {
             done();
         })
     })
-    /*
-     * @tc.number: ActsSetDisplay_test_0500
-     * @tc.name: displayBadge()
-     * @tc.desc: verify the function of displayBadge
-     */
-    it('ActsSetDisplay_test_0500', 0, async function (done) {
-        await notify.displayBadge({
-            bundle:"com.example.actsanslocalcandisplaytest"
-        },true,async(err) => {
-            await notify.isBadgeDisplayed({
-                bundle:"com.example.actsanslocalcandisplaytest",
-            },(err,data) => {
-                console.log("===>ActsSetDisplay_test_0500 success===>"+err+data)
-                expect(typeof(data)).assertEqual('boolean')
-                expect(data).assertEqual(true)
-                done();
-            })
-        })
-    })
-    /*
-     * @tc.number: ActsSetDisplay_test_0600
-     * @tc.name: displayBadge()
-     * @tc.desc: verify the function of displayBadge
-     */
-    it('ActsSetDisplay_test_0600', 0, async function (done) {
-        await notify.displayBadge({
-            bundle:"com.example.actsanslocalcandisplaytest"
-        },true).then(async(err) => {
-            var promise = await notify.isBadgeDisplayed({
-                bundle:"com.example.actsanslocalcandisplaytest",
-            })
-            console.log("===>ActsSetDisplay_test_0600 success===>"+promise)
-            expect(typeof(promise)).assertEqual('boolean')
-            expect(promise).assertEqual(true)
-            done();
-        })
-    })
+    
     /*
      * @tc.number: ActsSetDisplay_test_0700
      * @tc.name: displayBadge()
@@ -268,49 +179,6 @@ describe('ActsAnsBadgeDisplayTest', function () {
                 expect(data).assertEqual(false)
                 done();
             })
-        })
-    })
-    /*
-     * @tc.number: ActsSetDisplay_test_0800
-     * @tc.name: displayBadge()
-     * @tc.desc: verify the function of displayBadge
-     */
-    it('ActsSetDisplay_test_0800', 0, async function (done) {
-        await notify.displayBadge({
-            bundle:"com.example.actsanslocalcandisplaytest"
-        },false).then(async(err) => {
-            var promise = await notify.isBadgeDisplayed({
-                bundle:"com.example.actsanslocalcandisplaytest",
-            })
-            console.log("===>ActsSetDisplay_test_0800 success===>"+promise)
-            expect(typeof(promise)).assertEqual('boolean')
-            expect(promise).assertEqual(false)
-            done();
-        })
-    })
-    /*
-     * @tc.number: ActsSetDisplay_test_0900
-     * @tc.name: enableNotification()
-     * @tc.desc: verify the function of enableNotification
-     */
-    it('ActsSetDisplay_test_0900', 0, async function (done) {
-        await notify.isBadgeDisplayed({
-            bundle:"com.example.actsanslocalcandisplaytest",
-        },(err,data) => {
-            console.log("===>ActsSetDisplay_test_0900 success===>"+err+data)
-            expect(typeof(data)).assertEqual('boolean')
-            expect(data).assertEqual(false)
-        })
-        await notify.displayBadge({
-            bundle:"com.example.actsanslocalcandisplaytest"
-        },true).then(async(err) => {
-            var promise = await notify.isBadgeDisplayed({
-                bundle:"com.example.actsanslocalcandisplaytest",
-            })
-            console.log("===>ActsSetDisplay_test_0900 success===>"+promise)
-            expect(typeof(promise)).assertEqual('boolean')
-            expect(promise).assertEqual(true)
-            done();
         })
     })
 })
