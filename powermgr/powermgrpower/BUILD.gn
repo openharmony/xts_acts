@@ -13,19 +13,19 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("powermgr_battery_test_rk3568") {
+ohos_js_hap_suite("powermgr_power_test") {
   hap_profile = "./src/main/config.json"
   deps = [
-    ":powermgr_battery_js_assets",
-    ":powermgr_battery_resources",
+    ":powermgr_power_js_assets",
+    ":powermgr_power_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsPowerMgrBatteryTest"
+  hap_name = "ActsPowerMgrPowerTest"
 }
-ohos_js_assets("powermgr_battery_js_assets") {
+ohos_js_assets("powermgr_power_js_assets") {
   source_dir = "./src/main/js/default"
 }
-ohos_resources("powermgr_battery_resources") {
+ohos_resources("powermgr_power_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"
 }
