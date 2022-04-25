@@ -833,58 +833,6 @@ describe('albumTestCallBack.test.js', async function () {
     });
     // ------------------------------ 004 test end -------------------------
 
-    // ------------------------------ 005 test start -------------------------
-    /**
-     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_005_01
-     * @tc.name      : deleteAsset
-     * @tc.desc      : delete album
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-
-    it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_005_01', 0, async function (done) {
-        try {
-            const albumList = await media.getAlbums(albumDeletefetchOp);
-
-            const album = albumList[0];
-            let fetchFileResult = await album.getFileAssets(allTypefetchOp);
-
-            let datas = await fetchFileResult.getAllObject();
-
-            const assetsLength = datas.length;
-
-            for (let j = 0; j < assetsLength; j++) {
-                const asset = datas[j];
-                if (j == assetsLength - 1) {
-                    media.deleteAsset(asset.uri, async () => {
-                        const albumId = album.albumId;
-                        const newAlbumList = await media.getAlbums(allTypefetchOp);
-
-                        for (let i = 0; i < newAlbumList.length; i++) {
-                            const album = newAlbumList[i];
-                            if (album.albumId == albumId) {
-                                console.info('ALBUM_CALLBACK getAlbum 005_01 failed');
-                                expect(false).assertTrue();
-                                done();
-                            }
-                        }
-                        console.info('ALBUM_CALLBACK getAlbum 005_01 passed');
-                        expect(true).assertTrue();
-                        done();
-                    });
-                } else {
-                    await media.deleteAsset(asset.uri);
-                }
-            }
-        } catch (error) {
-            console.info('ALBUM_CALLBACK getAlbum 005_01 failed, message = ' + error);
-            expect(false).assertTrue();
-            done();
-        }
-    });
-    // ------------------------------ 005 test end -------------------------
-
     // ------------------------------ 006 test start -------------------------
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_006_01
