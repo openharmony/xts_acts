@@ -46,6 +46,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     const SPEED_VALUE = 1;
     const NEXT_FRAME_TIME = 8333;
     const PREV_FRAME_TIME = 4166;
+    const DELTA_TIME = 100;
     let surfaceID = '';
     let fileDescriptor = undefined;
     let page = 0;
@@ -326,20 +327,20 @@ describe('VideoPlayerAPICallbackTest', function () {
         switch (seekMode) {
             case media.SeekMode.SEEK_NEXT_SYNC:
                 if (seekTime == 0) {
-                    expect(seekDoneTime).assertEqual(0);
+                    expect(seekDoneTime + DELTA_TIME).assertClose(DELTA_TIME, DELTA_TIME);
                 } else if (seekTime == DURATION_TIME) {
-                    expect(seekDoneTime).assertEqual(DURATION_TIME);
+                    expect(seekDoneTime).assertClose(DURATION_TIME, DELTA_TIME);
                 } else {
-                    expect(seekDoneTime).assertEqual(NEXT_FRAME_TIME);
+                    expect(seekDoneTime).assertClose(NEXT_FRAME_TIME, DELTA_TIME);
                 }
                 break;
             case media.SeekMode.SEEK_PREV_SYNC:
                 if (seekTime == 0) {
-                    expect(seekDoneTime).assertEqual(0);
+                    expect(seekDoneTime + DELTA_TIME).assertClose(DELTA_TIME, DELTA_TIME);
                 } else if (seekTime == DURATION_TIME) {
-                    expect(seekDoneTime).assertEqual(PREV_FRAME_TIME);
+                    expect(seekDoneTime).assertClose(NEXT_FRAME_TIME, DELTA_TIME);
                 } else {
-                    expect(seekDoneTime).assertEqual(PREV_FRAME_TIME);
+                    expect(seekDoneTime).assertClose(PREV_FRAME_TIME, DELTA_TIME);
                 }
                 break;
             default:
