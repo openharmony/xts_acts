@@ -23,13 +23,13 @@ export default {
         isfullscreenchange: false,
         duration: '',
     },
-    preparedCallback:function(e){ this.event = '视频连接成功'; this.duration = e.duration;},
-    startCallback:function(){ this.event = '视频开始播放';},
-    pauseCallback:function(){ this.event = '视频暂停播放'; },
-    finishCallback:function(){ this.event = '视频播放结束';},
-    errorCallback:function(){ this.event = '视频播放错误';},
-    seekingCallback:function(e){ this.seekingtime = e.currenttime; },
-    timeupdateCallback:function(e){ this.timeupdatetime = e.currenttime;},
+    preparedCallback:function(e){this.event = '视频连接成功'; this.duration = e.duration;},
+    startCallback:function(){this.event = '视频开始播放';},
+    pauseCallback:function(){this.event = '视频暂停播放';},
+    finishCallback:function(){this.event = '视频播放结束';},
+    errorCallback:function(){this.event = '视频播放错误';},
+    seekingCallback:function(e){this.seekingtime = e.currenttime;},
+    timeupdateCallback:function(e){this.timeupdatetime = e.currenttime;},
     changeStartPause: function() {
         if(this.isStart) {
             this.$element('videoId').pause();
