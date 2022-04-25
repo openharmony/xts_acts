@@ -14,11 +14,7 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
-import commonEvent from '@ohos.commonevent'
-import bundle from '@ohos.bundle'
-import missionManager from '@ohos.application.missionManager'
 import abilityManager from '@ohos.application.AbilityManager'
-import featureAbility from '@ohos.ability.featureAbility'
 import appManager from '@ohos.application.AppManager'
 
 describe('ActsAbilityRunningInfosTest', function () {
@@ -34,12 +30,6 @@ describe('ActsAbilityRunningInfosTest', function () {
                 expect(dataInfo[i].pid).assertLarger(500);
                 expect(dataInfo[i].startTime).assertLarger(3000);
                 expect(dataInfo[i].abilityState).assertLarger(0);
-                expect(dataInfo[i].abilityState==abilityManager.AbilityState.FOREGROUND ||
-                dataInfo[i].abilityState==abilityManager.AbilityState.BACKGROUNDING
-                || (dataInfo[i].abilityState!=abilityManager.AbilityState.INITIAL
-                ) || (dataInfo[i].abilityState!=abilityManager.AbilityState.FOREGROUNDING
-                ) || (dataInfo[i].abilityState!=abilityManager.AbilityState.BACKGROUNDING
-                )).assertTrue();
                 return true;
             }
         }
@@ -58,36 +48,7 @@ describe('ActsAbilityRunningInfosTest', function () {
     }
 
     /*
-    * @tc.number: ACTS_getAbilityRunningInfos_0100
-    * @tc.name: Application running ability information query
-    * @tc.desc: Verify applications are started to query getAbilityRunningInfos ability information
-    *           （by promise）
-    */
-    it('ACTS_getAbilityRunningInfos_0100', 0, async function (done) {
-        console.log('ACTS_getAbilityRunningInfos_0100====<begin');
-        var data = await abilityManager.getAbilityRunningInfos()
-        console.info('====> ACTS_getAbilityRunningInfos_0100 ====>' + JSON.stringify(data))
-        expect(checkRunningAbility('com.ohos.launcher.MainAbility', data)).assertTrue();
-        done();
-    })
-
-    /*
-    * @tc.number: ACTS_getAbilityRunningInfos_0200
-    * @tc.name: Application running ability information query
-    * @tc.desc: Verify applications are started to query getAbilityRunningInfos ability information
-    *           （by callback）
-    */
-    it('ACTS_getAbilityRunningInfos_0200', 0, async function (done) {
-        console.log('ACTS_getAbilityRunningInfos_0200====<begin');
-        abilityManager.getAbilityRunningInfos((err,data)=>{
-        console.info('====> ACTS_getAbilityRunningInfos_0200 ====>' + JSON.stringify(data))
-        expect(checkRunningAbility('com.ohos.launcher.MainAbility', data)).assertTrue();
-        done();
-        })
-    })
-
-    /*
-    * @tc.number: ACTS_getAbilityRunningInfos_0100
+    * @tc.number: ACTS_getProcessRunningInfos_0100
     * @tc.name: Application running ability information query
     * @tc.desc: Verify applications are started to query getProcessRunningInfos ability information
     *           （by promise）

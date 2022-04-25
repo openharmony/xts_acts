@@ -169,16 +169,4 @@ describe('ActsAmsTestFirstScene', function () {
         }
         done();
     })
-
-    /*
-    * @tc.number    : Acts_Ams_test_1500
-    * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
-    * @tc.desc      : Kill Processes By BundleName(by Promise)
-    */
-    it('Acts_Ams_test_1500', 0, async function (done) {
-        var info = await appManager.killProcessesByBundleName('com.ix.simulate.feature');
-        console.info('Acts_Ams_test_1500 killProcessesByBundleName data  [' + info + ']');
-        expect(info).assertEqual(0);
-        done();
-    })
 })

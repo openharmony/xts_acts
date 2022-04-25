@@ -259,20 +259,6 @@ describe('ActsAmsCallBackFourthScene', function () {
     })
 
     /*
-     * @tc.number    : Acts_Ams_test_6400
-     * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
-     * @tc.desc      : Kill Processes By BundleName(by CallBack)
-     */
-    it('Acts_Ams_test_6400', 0, async function (done) {
-        appManager.killProcessesByBundleName('xxxxxxxxx',
-            (error) => {
-                console.info('Acts_Ams_test_6400 killProcessesByBundleName error.code ' + error.code);
-                expect(error.code).assertEqual(2097183);
-                done();
-            });
-    })
-
-    /*
      * @tc.number    : Acts_Ams_test_11900
      * @tc.name      : clearMissions : delete Missions
      * @tc.desc      : delete Missions(by CallBack)
