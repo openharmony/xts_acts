@@ -36,9 +36,9 @@ async function changedLocationMode(){
     await geolocation.isLocationEnabled().then(async(result) => {
         console.info('[lbs_js] getLocationSwitchState result: ' + result);
         if(!result){
-            await geolocation.enableLocation().then(async(result) => {
+            await geolocation.requestEnableLocation().then(async(result) => {
                 await sleep(3000);
-                console.info('[lbs_js] test enableLocation promise result:' + result);
+                console.info('[lbs_js] test requestEnableLocation promise result:' + result);
                 expect(result).assertTrue();
             }).catch((error) => {
                 console.info("[lbs_js] promise then error." + error.message);
@@ -93,7 +93,6 @@ describe('geolocationTest', function () {
     })
 
     beforeEach(function () {
-        sleep(3000);
         console.info('beforeEach case');
     })
     afterEach(function () {
@@ -108,11 +107,11 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocRequest_0001', 0, async function (done) {
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -151,11 +150,11 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocRequest_0002', 0, async function (done) {
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -194,11 +193,11 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocRequest_0003', 0, async function (done) {
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -237,11 +236,11 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocRequest_0004', 0, async function (done) {
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -280,11 +279,11 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocRequest_0005', 0, async function (done) {
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -323,11 +322,11 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocRequest_0006', 0, async function (done) {
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -348,15 +347,6 @@ describe('geolocationTest', function () {
                 expect(true).assertEqual(locationChange !=null);
                 done();
             });
-        geolocation.disableLocation((err, data) => {
-            if (err) {
-                console.info('[lbs_js]  disableLocation callback err is : ' + err );
-            }else {
-                console.info("[lbs_js] disableLocation callback data: " + data);
-                expect(data).assertTrue();
-            }
-            done()
-        });
         geolocation.on('locationChange',requestInfo2,
             (locationChange) => {
                 if(err){
@@ -366,11 +356,11 @@ describe('geolocationTest', function () {
                 expect(true).assertEqual(locationChange !=null);
                 done();
             });
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -395,11 +385,11 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocRequest_0007', 0, async function (done) {
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -437,11 +427,11 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocRequest_0008', 0, async function (done) {
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -479,11 +469,11 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocRequest_0009', 0, async function (done) {
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -521,11 +511,11 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocRequest_0010', 0, async function (done) {
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -563,11 +553,11 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LocRequest_0011', 0, async function (done) {
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -605,8 +595,8 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LastLoc_0001', 0, async function(done) {
-        await geolocation.enableLocation().then(async(result) => {
-            console.info('[lbs_js] test enableLocation result: ' + result);
+        await geolocation.requestEnableLocation().then(async(result) => {
+            console.info('[lbs_js] test requestEnableLocation result: ' + result);
             expect(result).assertTrue();
             let currentLocationRequest = { "priority": 0x200, "scenario": 0x301, "timeoutMs": 10, "maxAccuracy": 0 };
             geolocation.getCurrentLocation(currentLocationRequest,
@@ -671,11 +661,11 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LastLoc_0002', 0, async function (done) {
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -713,193 +703,6 @@ describe('geolocationTest', function () {
             expect(true).assertEqual(error != null);
             done();
         });
-    })
-
-    /**
-     * @tc.number Privacy_0001
-     * @tc.name SUB_HSS_LocationSystem_Privacy_0001
-     * @tc.desc Test setLocationPrivacyConfirmStatus api .
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('SUB_HSS_LocationSystem_Privacy_0001', 0, async function (done) {
-        let reqType = 1;
-        let value = true;
-        await geolocation.setLocationPrivacyConfirmStatus(reqType, value, async(err, resp)=>{
-            console.log("[lbs_js] setLocationPrivacyConfirmStatus current type1 is "+ JSON.stringify(resp))
-            await geolocation.isLocationPrivacyConfirmed(reqType ,async(err,resp) => {
-                console.log("[lbs_js] isLocationPrivacyConfirmed current type1 is "+ JSON.stringify(resp))
-                expect(resp).assertTrue();
-                await geolocation.setLocationPrivacyConfirmStatus(reqType, false, async(err, resp)=>{
-                    console.log("[lbs_js] setLocationPrivacyConfirmStatus current type2 is "+ JSON.stringify(resp))
-                    await geolocation.isLocationPrivacyConfirmed(reqType ,(err,resp) => {
-                        console.log("[lbs_js] isLocationPrivacyConfirmed current type2 is "+ JSON.stringify(resp))
-                        expect(resp).assertFalse();
-                        done();
-                    });
-                });
-            });
-        });
-    })
-
-    /**
-     * @tc.number Privacy_0002
-     * @tc.name SUB_HSS_LocationSystem_Privacy_0002
-     * @tc.desc Test setLocationPrivacyConfirmStatus api .
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('SUB_HSS_LocationSystem_Privacy_0002', 0, async function (done) {
-        await geolocation.setLocationPrivacyConfirmStatus(1,true).then(async(result) => {
-            console.info('[lbs_js] setLocationPrivacyConfirmStatus promise1 result: ' + result);
-            expect(result).assertTrue();
-            await geolocation.isLocationPrivacyConfirmed(1).then( async(result) => {
-                console.info('[lbs_js] isLocationPrivacyConfirmed promise1 result: ' + result);
-                expect(result).assertTrue();
-                await geolocation.setLocationPrivacyConfirmStatus(1,false).then(async(result) => {
-                    console.info('[lbs_js] setLocationPrivacyConfirmStatus promise2 result: ' + result);
-                    expect(result).assertTrue();
-                    await geolocation.isLocationPrivacyConfirmed(1).then( (result) => {
-                        console.info('[lbs_js] isLocationPrivacyConfirmed promise2 result: ' + result);
-                        expect(result).assertFalse();
-                        done()
-                    });
-                }).catch((error) => {
-                    console.info("[lbs_js] setLocationPrivacyConfirmStatus then error." + error.message);
-                    expect().assertFail();
-                });
-            });
-        }).catch((error) => {
-            console.info("[lbs_js] setLocationPrivacyConfirmStatus then error." + error.message);
-            expect().assertFail();
-        });
-    })
-
-    /**
-     * @tc.number Privacy_0003
-     * @tc.name SUB_HSS_LocationSystem_Privacy_0003
-     * @tc.desc Test setLocationPrivacyConfirmStatus api .
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('SUB_HSS_LocationSystem_Privacy_0003', 0, async function (done) {
-        let reqType = 2;
-        let value = true;
-        await geolocation.setLocationPrivacyConfirmStatus(reqType, value, async(err, resp)=>{
-            console.log("[lbs_js] setLocationPrivacyConfirmStatus current type1 is "+ JSON.stringify(resp))
-            await geolocation.isLocationPrivacyConfirmed(reqType ,async(err,resp) => {
-                console.log("[lbs_js] isLocationPrivacyConfirmed current type1 is "+ JSON.stringify(resp))
-                expect(resp).assertTrue();
-                await geolocation.setLocationPrivacyConfirmStatus(reqType, false, async(err, resp)=>{
-                    console.log("[lbs_js] setLocationPrivacyConfirmStatus current type2 is "+ JSON.stringify(resp))
-                    await geolocation.isLocationPrivacyConfirmed(reqType ,(err,resp) => {
-                        console.log("[lbs_js] isLocationPrivacyConfirmed current type2 is "+ JSON.stringify(resp))
-                        expect(resp).assertFalse();
-                        done();
-                    });
-                });
-            });
-        });
-    })
-
-    /**
-     * @tc.number Privacy_0004
-     * @tc.name SUB_HSS_LocationSystem_Privacy_0004
-     * @tc.desc Test setLocationPrivacyConfirmStatus api .
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('SUB_HSS_LocationSystem_Privacy_0004', 0, async function (done) {
-        await geolocation.setLocationPrivacyConfirmStatus(2,true).then(async(result) => {
-            console.info('[lbs_js] setLocationPrivacyConfirmStatus promise1 result: ' + result);
-            expect(result).assertTrue();
-            await geolocation.isLocationPrivacyConfirmed(2).then( async(result) => {
-                console.info('[lbs_js] isLocationPrivacyConfirmed promise1 result: ' + result);
-                expect(result).assertTrue();
-                await geolocation.setLocationPrivacyConfirmStatus(2,false).then(async(result) => {
-                    console.info('[lbs_js] setLocationPrivacyConfirmStatus promise2 result: ' + result);
-                    expect(result).assertTrue();
-                    await geolocation.isLocationPrivacyConfirmed(2).then( (result) => {
-                        console.info('[lbs_js] isLocationPrivacyConfirmed promise2 result: ' + result);
-                        expect(result).assertFalse();
-                        done()
-                    });
-                }).catch((error) => {
-                    console.info("[lbs_js] setLocationPrivacyConfirmStatus then error." + error.message);
-                    expect().assertFail();
-                });
-            });
-        }).catch((error) => {
-            console.info("[lbs_js] setLocationPrivacyConfirmStatus then error." + error.message);
-            expect().assertFail();
-        });
-    })
-
-    /**
-     * @tc.number Privacy_0005
-     * @tc.name SUB_HSS_LocationSystem_Privacy_0005
-     * @tc.desc Test setLocationPrivacyConfirmStatus api .
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('SUB_HSS_LocationSystem_Privacy_0005', 0, async function (done) {
-        await geolocation.setLocationPrivacyConfirmStatus(1,true).then(async(resp) => {
-            console.log("[lbs_js] setLocationPrivacyConfirmStatus current type1 is "+ JSON.stringify(resp))
-            expect(resp).assertTrue();
-            await geolocation.setLocationPrivacyConfirmStatus(2,false).then(async(resp) => {
-                console.log("[lbs_js] setLocationPrivacyConfirmStatus current type1 is "+ JSON.stringify(resp))
-                expect(resp).assertTrue();
-                await geolocation.isLocationPrivacyConfirmed(1).then(async(resp) => {
-                    console.log("[lbs_js] isLocationPrivacyConfirmed current type2 is "+ JSON.stringify(resp))
-                    expect(resp).assertTrue();
-                    await geolocation.isLocationPrivacyConfirmed(2).then(resp => {
-                        console.log("[lbs_js] isLocationPrivacyConfirmed current type2 is "+ JSON.stringify(resp))
-                        expect(resp).assertFalse();
-                        done();
-                    });
-                }).catch((error) => {
-                    console.info("[lbs_js] setLocationPrivacyConfirmStatus then error." + error.message);
-                    expect().assertFail();
-                });
-            });
-        }).catch((error) => {
-            console.info("[lbs_js] setLocationPrivacyConfirmStatus then error." + error.message);
-            expect().assertFail();
-        });
-
-    })
-
-    /**
-     * @tc.number Privacy_0006
-     * @tc.name SUB_HSS_LocationSystem_Privacy_0006
-     * @tc.desc Test setLocationPrivacyConfirmStatus api .
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('SUB_HSS_LocationSystem_Privacy_0006', 0, async function (done) {
-        await geolocation.setLocationPrivacyConfirmStatus(1,false).then(async(resp) => {
-            console.log("[lbs_js] setLocationPrivacyConfirmStatus current type1 is "+ JSON.stringify(resp))
-            expect(resp).assertTrue();
-            await geolocation.setLocationPrivacyConfirmStatus(2,true).then(async(resp) => {
-                console.log("[lbs_js] setLocationPrivacyConfirmStatus current type1 is "+ JSON.stringify(resp))
-                expect(resp).assertTrue();
-                await geolocation.isLocationPrivacyConfirmed(1).then(async(resp) => {
-                    console.log("[lbs_js] isLocationPrivacyConfirmed current type2 is "+ JSON.stringify(resp))
-                    expect(resp).assertFalse();
-                    await geolocation.isLocationPrivacyConfirmed(2).then(resp => {
-                        console.log("[lbs_js] isLocationPrivacyConfirmed current type2 is "+ JSON.stringify(resp))
-                        expect(resp).assertTrue();
-                        done();
-                    })
-                })
-            })
-        })
     })
 
     /**
@@ -1153,11 +956,11 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_Batching_0002', 0, async function (done) {
-        geolocation.enableLocation((err, data) => {
+        geolocation.requestEnableLocation((err, data) => {
             if (err) {
-                console.info('[lbs_js]  enableLocation callback err is : ' + err );
+                console.info('[lbs_js]  requestEnableLocation callback err is : ' + err );
             }else {
-                console.info("[lbs_js] enableLocation callback data: " + data);
+                console.info("[lbs_js] requestEnableLocation callback data: " + data);
                 expect(data).assertTrue();
             }
             done()
@@ -1379,5 +1182,6 @@ describe('geolocationTest', function () {
         });
     })
 })
+
 
 
