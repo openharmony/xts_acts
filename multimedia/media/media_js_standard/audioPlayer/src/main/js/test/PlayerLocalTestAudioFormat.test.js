@@ -14,7 +14,7 @@
  */
 
 import media from '@ohos.multimedia.media'
-import {getFileDescriptor, closeFileDescriptor, isFileOpen} from '../../../../../MediaTestBase.js';
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('PlayerLocalTestAudioFormat', function () {
@@ -41,21 +41,17 @@ describe('PlayerLocalTestAudioFormat', function () {
     })
 
     afterAll(async function() {
-        await closeFileDescriptor(audioSource);
+        await mediaTestBase.closeFileDescriptor(audioSource);
         console.info('afterAll case');
     })
-
-    function sleep(time) {
-        for(let t = Date.now(); Date.now() - t <= time;);
-    }
 
     async function playSource(audioFile, done) {
         let audioPlayer = media.createAudioPlayer();
         audioSource = audioFile;
-        await getFileDescriptor(audioSource).then((res) => {
+        await mediaTestBase.getFileDescriptor(audioSource).then((res) => {
             fileDescriptor = res;
         });
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         audioPlayer.src = 'fd://' + fileDescriptor.fd;
         audioPlayer.on('dataLoad', () => {
             console.info('case set source success');
@@ -66,7 +62,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         audioPlayer.on('play', () => {
             console.info('case start to play');
             expect(audioPlayer.state).assertEqual('playing');
-            sleep(PLAY_TIME);
+            mediaTestBase.msleep(PLAY_TIME);
             if (!isToSeek) {
                 audioPlayer.pause();
             } else {
@@ -102,7 +98,7 @@ describe('PlayerLocalTestAudioFormat', function () {
             if (!isToDuration) {
                 expect(SEEK_TIME).assertEqual(seekDoneTime);
                 isToDuration = true;
-                sleep(PLAY_TIME);
+                mediaTestBase.msleep(PLAY_TIME);
                 audioPlayer.seek(audioPlayer.duration);
             } else {
                 expect(audioPlayer.duration).assertEqual(seekDoneTime);

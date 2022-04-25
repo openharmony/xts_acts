@@ -16,11 +16,13 @@
 import resourceManager from '@ohos.resourceManager';
 import {expect} from 'deccjsunit/index'
 
+// File operation
 export async function getFileDescriptor(fileName) {
     let fileDescriptor = undefined;
     await resourceManager.getResourceManager().then(async (mgr) => {
         await mgr.getRawFileDescriptor(fileName).then(value => {
             fileDescriptor = {fd: value.fd, offset: value.offset, length: value.length};
+            console.log('case getRawFileDescriptor success fileName: ' + fileName);
         }).catch(error => {
             console.log('case getRawFileDescriptor err: ' + error);
         });
@@ -30,8 +32,8 @@ export async function getFileDescriptor(fileName) {
 
 export async function closeFileDescriptor(fileName) {
     await resourceManager.getResourceManager().then(async (mgr) => {
-        await mgr.closeRawFileDescriptor(fileName).then(value => {
-            console.log('case closeRawFileDescriptor ' + value);
+        await mgr.closeRawFileDescriptor(fileName).then(()=> {
+            console.log('case closeRawFileDescriptor ' + fileName);
         }).catch(error => {
             console.log('case closeRawFileDescriptor err: ' + error);
         });
@@ -44,4 +46,42 @@ export function isFileOpen(fileDescriptor, done) {
         console.info('case error fileDescriptor undefined, open file fail');
         done();
     }
+}
+
+// wait synchronously 
+export function msleep(time) {
+    for(let t = Date.now();Date.now() - t <= time;);
+}
+
+// wait asynchronously
+export async function msleepAsync(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export function printError(error, done) {
+    expect().assertFail();
+    console.info(`case error called,errMessage is ${error.message}`);
+    done();
+}
+
+// callback function for promise call back error
+export function failureCallback(error) {
+    expect().assertFail();
+    console.info(`case error called,errMessage is ${error.message}`);
+}
+
+// callback function for promise catch error
+export function catchCallback(error) {
+    expect().assertFail();
+    console.info(`case error called,errMessage is ${error.message}`);
+}
+
+export function printDescription(obj) { 
+    let description = ""; 
+    for(let i in obj) { 
+        let property = obj[i];
+        console.info('case key is  '+ i);
+        console.info('case value is  '+ property);
+        description += i + " = " + property + "\n"; 
+    } 
 }

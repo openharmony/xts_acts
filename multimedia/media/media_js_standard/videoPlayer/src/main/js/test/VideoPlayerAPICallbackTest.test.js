@@ -15,7 +15,7 @@
 
 import media from '@ohos.multimedia.media'
 import {toNewPage, clearRouter} from './VideoPlayerTestBase.js';
-import {getFileDescriptor, closeFileDescriptor, isFileOpen} from '../../../../../MediaTestBase.js';
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoPlayerAPICallbackTest', function () {
@@ -59,12 +59,13 @@ describe('VideoPlayerAPICallbackTest', function () {
     })
 
     beforeEach(async function() {
-        await getFileDescriptor(VIDEO_SOURCE).then((res) => {
+        await mediaTestBase.getFileDescriptor(VIDEO_SOURCE).then((res) => {
             fileDescriptor = res;
         });
         await toNewPage(page);
         page = (page + 1) % 2;
-        await msleep(1000).then(() => {}, failureCallback).catch(catchCallback);
+        await mediaTestBase.msleepAsync(1000).then(
+            () => {}, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         surfaceID = globalThis.value;
         console.info('case new surfaceID is ' + surfaceID);
         console.info('beforeEach case');
@@ -72,47 +73,13 @@ describe('VideoPlayerAPICallbackTest', function () {
 
     afterEach(async function() {
         await clearRouter();
-        await closeFileDescriptor(VIDEO_SOURCE);
+        await mediaTestBase.closeFileDescriptor(VIDEO_SOURCE);
         console.info('afterEach case');
     })
 
     afterAll(async function() {
         console.info('afterAll case');
     })
-
-    function msleep(ms) {
-        return new Promise((resolve) => setTimeout(resolve, ms));
-    }
-
-    function failureCallback(error) {
-        expect().assertFail();
-        console.info(`case error called,errMessage is ${error.message}`);
-    }
-
-    function catchCallback(error) {
-        expect().assertFail();
-        console.info(`case error called,errMessage is ${error.message}`);
-    }
-
-    function sleep(time) {
-        for(let t = Date.now(); Date.now() - t <= time;);
-    }
-
-    function printfError(error, done) {
-        expect().assertFail();
-        console.info(`case error called,errMessage is ${error.message}`);
-        done();
-    }
-
-    function printfDescription(obj) { 
-        let description = ""; 
-        for(let i in obj) { 
-            let property = obj[i];
-            console.info('case key is  '+ i);
-            console.info('case value is  '+ property);
-            description += i + " = " + property + "\n"; 
-        } 
-    }
 
     function toNextStep(videoPlayer, steps, done) {
         if (steps[0] == END_EVENT) {
@@ -159,7 +126,7 @@ describe('VideoPlayerAPICallbackTest', function () {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
-                printfError(err, done);
+                mediaTestBase.printError(err, done);
             }
         });
     });
@@ -184,7 +151,7 @@ describe('VideoPlayerAPICallbackTest', function () {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
-                printfError(err, done);
+                mediaTestBase.printError(err, done);
             }
         })
     });
@@ -204,7 +171,7 @@ describe('VideoPlayerAPICallbackTest', function () {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
-                printfError(err, done);
+                mediaTestBase.printError(err, done);
             }
         });
     });
@@ -214,14 +181,14 @@ describe('VideoPlayerAPICallbackTest', function () {
         videoPlayer.getTrackDescription((err, arrlist) => {
             if (typeof (err) == 'undefined') {
                 for (let i = 0; i < arrlist.length; i++) {
-                    printfDescription(arrlist[i]);
+                    mediaTestBase.printDescription(arrlist[i]);
                 }
                 toNextStep(videoPlayer, steps, done);
             } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
-                printfError(err, done);
+                mediaTestBase.printError(err, done);
             }
         });
     });
@@ -232,13 +199,13 @@ describe('VideoPlayerAPICallbackTest', function () {
             if (typeof (err) == 'undefined') {
                 expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play success!!');
-                sleep(PLAY_TIME);
+                mediaTestBase.msleep(PLAY_TIME);
                 toNextStep(videoPlayer, steps, done);
             } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
-                printfError(err, done);
+                mediaTestBase.printError(err, done);
             }
         });
     });
@@ -254,7 +221,7 @@ describe('VideoPlayerAPICallbackTest', function () {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
-                printfError(err, done);
+                mediaTestBase.printError(err, done);
             }
         });
     });
@@ -270,7 +237,7 @@ describe('VideoPlayerAPICallbackTest', function () {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
-                printfError(err, done);
+                mediaTestBase.printError(err, done);
             }
         });
     });
@@ -286,7 +253,7 @@ describe('VideoPlayerAPICallbackTest', function () {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
-                printfError(err, done);
+                mediaTestBase.printError(err, done);
             }
         });
     });
@@ -301,7 +268,7 @@ describe('VideoPlayerAPICallbackTest', function () {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
-                printfError(err, done);
+                mediaTestBase.printError(err, done);
             }
         });
     });
@@ -318,7 +285,7 @@ describe('VideoPlayerAPICallbackTest', function () {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
-                printfError(err, done);
+                mediaTestBase.printError(err, done);
             }
         });
     });
@@ -361,7 +328,7 @@ describe('VideoPlayerAPICallbackTest', function () {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
-                printfError(err, done);
+                mediaTestBase.printError(err, done);
             }
         });
     });
@@ -378,7 +345,7 @@ describe('VideoPlayerAPICallbackTest', function () {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
-                printfError(err, done);
+                mediaTestBase.printError(err, done);
             }
         });
     });
@@ -396,7 +363,7 @@ describe('VideoPlayerAPICallbackTest', function () {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
-                printfError(err, done);
+                mediaTestBase.printError(err, done);
             }
         });
     });
@@ -410,7 +377,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_fdSrc_CALLBACK_0100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         fileDescriptor.fd = -1;
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETFDSRC_EVENT, SETSURFACE_EVENT, ERROR_EVENT,
@@ -427,7 +394,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it(' SUB_MEDIA_VIDEO_PLAYER_fdSrc_CALLBACK_0200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         fileDescriptor.offset = -1;
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETFDSRC_EVENT, SETSURFACE_EVENT,
@@ -444,7 +411,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it(' SUB_MEDIA_VIDEO_PLAYER_fdSrc_CALLBACK_0300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         fileDescriptor.length = -1;
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETFDSRC_EVENT, SETSURFACE_EVENT,
@@ -461,7 +428,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it(' SUB_MEDIA_VIDEO_PLAYER_fdSrc_CALLBACK_0400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         fileDescriptor = undefined;
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETFDSRC_EVENT, SETSURFACE_EVENT, ERROR_EVENT,
@@ -478,7 +445,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -494,7 +461,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -510,7 +477,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             PAUSE_EVENT, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -526,7 +493,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             STOP_EVENT, PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -542,7 +509,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0500', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             RESET_EVENT, SETURL_EVENT, PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -558,7 +525,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0600', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SEEK_EVENT, SEEK_TIME, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -574,7 +541,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0700', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SEEK_MODE_EVENT, SEEK_TIME, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -590,7 +557,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0800', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SETVOLUME_EVENT, VOLUME_VALUE, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -606,7 +573,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_0900', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PLAY_EVENT,
             SETSPEED_EVENT, SPEED_VALUE, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -622,7 +589,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_1000', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -638,7 +605,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_1100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, GETDESCRIPTION,
             PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -654,7 +621,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PREPARE_CALLBACK_1200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PREPARE_EVENT,
             PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -670,7 +637,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -685,7 +652,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
@@ -701,7 +668,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
@@ -717,7 +684,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -733,7 +700,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0500', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -749,7 +716,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0600', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
@@ -765,7 +732,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0700', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
@@ -781,7 +748,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0800', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
@@ -797,7 +764,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_0900', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
@@ -813,7 +780,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_1000', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -829,7 +796,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_1100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, GETDESCRIPTION, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
@@ -845,7 +812,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PLAY_CALLBACK_1200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PLAY_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
@@ -861,7 +828,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -876,7 +843,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -892,7 +859,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -908,7 +875,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -924,7 +891,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0500', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -940,7 +907,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0600', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -956,7 +923,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0700', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -972,7 +939,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0800', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -988,7 +955,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_0900', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1004,7 +971,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_1000', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1020,7 +987,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_1100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, GETDESCRIPTION, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1036,7 +1003,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_PAUSE_CALLBACK_1200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, PAUSE_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1052,7 +1019,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -1067,7 +1034,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1083,7 +1050,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1099,7 +1066,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1115,7 +1082,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0500', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1131,7 +1098,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0600', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, STOP_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1147,7 +1114,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0700', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, STOP_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1163,7 +1130,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0800', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, STOP_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1179,7 +1146,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_0900', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, STOP_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1195,7 +1162,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_1000', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1211,7 +1178,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_1100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, GETDESCRIPTION, STOP_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1227,7 +1194,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_STOP_CALLBACK_1200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, STOP_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1243,7 +1210,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -1258,7 +1225,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1274,7 +1241,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1290,7 +1257,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1306,7 +1273,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0500', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1322,7 +1289,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0600', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RESET_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1338,7 +1305,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0700', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, RESET_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1354,7 +1321,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0800', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RESET_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1370,7 +1337,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_0900', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RESET_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1386,7 +1353,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_1000', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             RESET_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1402,7 +1369,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_1100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, GETDESCRIPTION, RESET_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1418,7 +1385,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RESET_CALLBACK_1200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, RESET_EVENT, RESET_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1434,7 +1401,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -1449,7 +1416,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1465,7 +1432,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1481,7 +1448,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1497,7 +1464,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0500', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1513,7 +1480,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0600', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
@@ -1529,7 +1496,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0700', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_MODE_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
@@ -1545,7 +1512,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0800', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
@@ -1561,7 +1528,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_0900', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
@@ -1577,7 +1544,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_1000', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -1592,7 +1559,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_1100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, GETDESCRIPTION, RELEASE_EVENT, END_EVENT);
@@ -1608,7 +1575,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_RELEASE_CALLBACK_1200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1624,7 +1591,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -1639,7 +1606,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
@@ -1655,7 +1622,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
@@ -1671,7 +1638,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
@@ -1687,7 +1654,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0500', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1703,7 +1670,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0600', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1719,7 +1686,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0700', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, SEEK_EVENT,
@@ -1736,7 +1703,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0800', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE,
@@ -1753,7 +1720,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_0900', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             SEEK_EVENT, SEEK_TIME, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1769,7 +1736,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1000', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, GETDESCRIPTION, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
@@ -1785,7 +1752,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, SEEK_EVENT, SEEK_TIME,
@@ -1802,7 +1769,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, -1, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1818,7 +1785,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, DURATION_TIME + 1000, RELEASE_EVENT, END_EVENT);
@@ -1834,7 +1801,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -1849,7 +1816,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
@@ -1865,7 +1832,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
@@ -1881,7 +1848,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
@@ -1897,7 +1864,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0500', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
@@ -1913,7 +1880,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0600', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
@@ -1929,7 +1896,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0700', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, SETVOLUME_EVENT,
@@ -1946,7 +1913,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0800', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, SETVOLUME_EVENT,
@@ -1963,7 +1930,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_0900', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             SETVOLUME_EVENT, VOLUME_VALUE, END_EVENT);
@@ -1979,7 +1946,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_1000', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, GETDESCRIPTION, SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
@@ -1995,7 +1962,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_1100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, SETVOLUME_EVENT, VOLUME_VALUE,
@@ -2012,7 +1979,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_1300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, -1, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -2028,7 +1995,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETVOLUME_CALLBACK_1400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, 2, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -2044,7 +2011,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETSPEED_EVENT, SPEED_VALUE,ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
@@ -2059,7 +2026,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0200', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
@@ -2075,7 +2042,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
@@ -2091,7 +2058,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
@@ -2107,7 +2074,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0500', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, SETSPEED_EVENT, SPEED_VALUE,
@@ -2124,7 +2091,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0600', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, RESET_EVENT, SETSPEED_EVENT, SPEED_VALUE,
@@ -2141,7 +2108,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0700', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME,
@@ -2158,7 +2125,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0800', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETVOLUME_EVENT, VOLUME_VALUE, SETSPEED_EVENT,
@@ -2175,7 +2142,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_0900', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             SETSPEED_EVENT, SPEED_VALUE, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -2191,7 +2158,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_1000', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, GETDESCRIPTION, SETSPEED_EVENT, SPEED_VALUE, RELEASE_EVENT, END_EVENT);
@@ -2207,7 +2174,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_1100', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, SPEED_VALUE, SETSPEED_EVENT, SPEED_VALUE,
@@ -2224,7 +2191,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_1300', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, -1, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -2240,7 +2207,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         * @tc.level     : Level2
     */
     it('SUB_MEDIA_VIDEO_PLAYER_SETSPEED_CALLBACK_1400', 0, async function (done) {
-        isFileOpen(fileDescriptor, done);
+        mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, SETSPEED_EVENT, 5, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
