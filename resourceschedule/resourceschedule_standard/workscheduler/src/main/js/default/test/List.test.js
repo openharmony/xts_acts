@@ -14,6 +14,7 @@
  */
 
 require('./WorkScheduler.test.js')
+require('./WorkSchedulerJs.performance.js')
 
 
 
