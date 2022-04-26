@@ -166,7 +166,6 @@ export default function getAbilityLabelJsUnit() {
             done();
         });
 
-
         /*
          * @tc.number: context_getAbilityLabel_test_0700
          * @tc.name: getAbilityLabel : Gets the specified ability label

@@ -142,10 +142,4 @@ describe('ActsBmsMetaDataTest', function () {
             });
     });
 
-    function checkInstallOrUninstall(err, data) {
-        expect(err.code).assertEqual(0);
-        expect(data.status).assertEqual(0);
-        expect(data.statusMessage).assertEqual('SUCCESS');
-    }
-
 })

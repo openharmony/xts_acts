@@ -99,37 +99,35 @@ describe('ActsBmsHapModuleTest', function () {
      * @tc.desc: get the module information of the hap without mainAbility
      */
     it('bms_getHapModuleInfo_0300', 0, async function (done) {
-        await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
-            .then(async (result) => {
-                bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES,(err,data)=>{
-                    expect(JSON.stringify(result)).assertEqual(JSON.stringify(data));
-                });
-                expect(result.hapModuleInfos.length).assertEqual(1);
-                if (result.hapModuleInfos.length > 0) {
-                    let hapModuleInfo = result.hapModuleInfos[0];
-                    expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME2);
-                    expect(hapModuleInfo.moduleName).assertEqual('entry');
-                    expect(hapModuleInfo.description).assertEqual('');
-                    expect(hapModuleInfo.descriptionId).assertEqual(0);
-                    expect(hapModuleInfo.iconPath).assertEqual("$media:icon");
-                    expect(hapModuleInfo.icon).assertEqual('');
-                    expect(hapModuleInfo.label).assertEqual('$string:app_name');
-                    expect(hapModuleInfo.labelId).assertEqual(0);
-                    expect(hapModuleInfo.iconId).assertEqual(0);
-                    expect(hapModuleInfo.backgroundImg).assertEqual("");
-                    expect(hapModuleInfo.supportedModes).assertEqual(0);
-                    expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
-                    expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
-                    expect(hapModuleInfo.mainAbilityName).assertEqual("");
-                    expect(hapModuleInfo.mainElementName).assertEqual("");
-                    expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
-                    expect(hapModuleInfo.colorMode).assertEqual(-1);
-                    expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
-                    expect(hapModuleInfo.metadata.length).assertEqual(0);
-                    expect(hapModuleInfo.installationFree).assertEqual(false);
-                    done();
-                }
-            });
+        let result = await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+        bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, (err, data) => {
+            expect(JSON.stringify(result)).assertEqual(JSON.stringify(data));
+            expect(result.hapModuleInfos.length).assertEqual(1);
+            if (result.hapModuleInfos.length > 0) {
+                let hapModuleInfo = result.hapModuleInfos[0];
+                expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME2);
+                expect(hapModuleInfo.moduleName).assertEqual('entry');
+                expect(hapModuleInfo.description).assertEqual('');
+                expect(hapModuleInfo.descriptionId).assertEqual(0);
+                expect(hapModuleInfo.iconPath).assertEqual("$media:icon");
+                expect(hapModuleInfo.icon).assertEqual('');
+                expect(hapModuleInfo.label).assertEqual('$string:app_name');
+                expect(hapModuleInfo.labelId).assertEqual(0);
+                expect(hapModuleInfo.iconId).assertEqual(0);
+                expect(hapModuleInfo.backgroundImg).assertEqual("");
+                expect(hapModuleInfo.supportedModes).assertEqual(0);
+                expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
+                expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
+                expect(hapModuleInfo.mainAbilityName).assertEqual("");
+                expect(hapModuleInfo.mainElementName).assertEqual("");
+                expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
+                expect(hapModuleInfo.colorMode).assertEqual(-1);
+                expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
+                expect(hapModuleInfo.metadata.length).assertEqual(0);
+                expect(hapModuleInfo.installationFree).assertEqual(false);
+                done();
+            }
+        });
     });
 
     /*
@@ -224,5 +222,4 @@ describe('ActsBmsHapModuleTest', function () {
         expect(info.metadata.length).assertEqual(0);
         expect(info.installationFree).assertEqual(false);
     }
-
 })
