@@ -320,13 +320,6 @@ describe('ActsBundleManagerTest', function () {
      */
     it('getBundleInfos_0600', 0, async function (done) {
         await demo.getAllBundleInfo(demo.BundleFlag.GET_BUNDLE_DEFAULT, (error, data) => {
-            for (let i = 0; i < data.length; i++) {
-                console.info('dataInfos=============' + i);
-                for (const item in data[i]) {
-                    const a = data[i][item];
-                    console.info(item + ":" + JSON.stringify(a));
-                };
-            };
             expect(typeof data).assertEqual(OBJECT);
             for (let i = 0; i < data.length; i++) {
                 expect(data[i].name.length).assertLarger(0);
@@ -1198,10 +1191,6 @@ describe('ActsBundleManagerTest', function () {
             userId: USERID
         };
         let dataInfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions);
-        for (const item in dataInfo) {
-            const a = dataInfo[item];
-            console.info(item + ":" + JSON.stringify(a));
-        };
         console.info("getBundleInfo_1400 start --------");
         expect(dataInfo.name).assertEqual(NAME1);
         expect(dataInfo.vendor).assertEqual("example");
