@@ -12,161 +12,47 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import testsuite2 from "../test/List.test.ets";
 import file from '@system.file';
 import {Core, ExpectExtend, ReportExtend} from "deccjsunit/index.ets";
-import testsuite from "../test/List.test.ets";
-import featureAbility from "@ohos.ability.featureAbility";
-
-async function startService2() {
-  var str = {
-    "want": {
-      "bundleName": "com.ohos.acecollaboration",
-      "abilityName": "com.ohos.acecollaboration.ServiceAbility2",
-    },
-  };
-  var data = featureAbility.startAbility(str);
-  console.info('particleAbility_connectAbility_test_0100 startAbility succeeded: ' + JSON.stringify(data));
-}
-async function startService3() {
-  var str = {
-    "want": {
-      "bundleName": "com.ohos.acecollaboration",
-      "abilityName": "com.ohos.acecollaboration.ServiceAbility3",
-    },
-  };
-  var data = featureAbility.startAbility(str);
-  console.info('particleAbility_connectAbility_test_0200 startAbility succeeded: ' + JSON.stringify(data));
-}
-async function startService4() {
-  var str = {
-    "want": {
-      "bundleName": "com.ohos.acecollaboration",
-      "abilityName": "com.ohos.acecollaboration.ServiceAbility4",
-    },
-  };
-  var data = featureAbility.startAbility(str);
-  console.info('particleAbility_connectAbility_test_0300 startAbility succeeded: ' + JSON.stringify(data));
-}
-async function startService5() {
-  var str = {
-    "want": {
-      "bundleName": "com.ohos.acecollaboration",
-      "abilityName": "com.ohos.acecollaboration.ServiceAbility5",
-    },
-  };
-  var data = featureAbility.startAbility(str);
-  console.info('particleAbility_connectAbility_test_0400 startAbility succeeded: ' + JSON.stringify(data));
-}
-async function startService6(){
-  var str = {
-    "want": {
-      "bundleName": "com.ohos.acecollaboration",
-      "abilityName": "com.ohos.acecollaboration.ServiceAbility6",
-    },
-  };
-  var data = featureAbility.startAbility(str);
-  console.info('particleAbility_connectAbility_test_0500 startAbility succeeded: ' + JSON.stringify(data));
-}
-async function startService7(){
-  var str = {
-    "want": {
-      "bundleName": "com.ohos.acecollaboration",
-      "abilityName": "com.ohos.acecollaboration.ServiceAbility7",
-    },
-  };
-  var data = featureAbility.startAbility(str);
-  console.info('particleAbility_connectAbility_test_0600 startAbility succeeded: ' + JSON.stringify(data));
-}
 
 @Entry
 @Component
 struct MyComponent {
   aboutToAppear() {
-    console.info("start run testcase!!!!")
-    featureAbility.getWant()
-      .then((Want) => {
-        const core = Core.getInstance();
-        const expectExtend = new ExpectExtend({
-          'id': 'extend'
-        });
-        core.addService('expect', expectExtend);
-        const reportExtend = new ReportExtend(file);
-        core.addService('report', reportExtend);
-        core.init();
-        core.subscribeEvent('task', reportExtend);
-        const configService = core.getDefaultService('config');
-        console.info('parameters---->' + JSON.stringify(Want.parameters));
-        configService.setConfig(Want.parameters);
-        testsuite();
-        core.execute();
-        console.info('Operation successful. Data: ' + JSON.stringify(Want));
-      })
-      .catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-      })
+    console.info("start run testcase2!!!!")
+    const core = Core.getInstance();
+    const expectExtend = new ExpectExtend({
+      'id': 'extend'
+    });
+    core.addService('expect', expectExtend);
+    const reportExtend = new ReportExtend(file);
+    core.addService('report', reportExtend);
+    core.init();
+    core.subscribeEvent('task', reportExtend);
+    const configService = core.getDefaultService('config');
+    configService.setConfig(this)
+    testsuite2();
+    core.execute();
   }
 
   build() {
-    Flex({
-      direction: FlexDirection.Column,
-      alignItems: ItemAlign.Center,
-      justifyContent: FlexAlign.Center
-    }) {
-      Text('ACE ETS TEST 组件协同')
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Text('Hello World')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
-      Button('disconnectAbility_promise')
-        .fontSize(40)
-        .height(40)
-        .margin({ top: 20 })
-        .fontWeight(FontWeight.Bold)
-        .onClick(() => {
-          startService2();
-        });
-      Button('disconnectAbility_callback')
-        .fontSize(40)
-        .height(40)
-        .margin({ top: 20 })
-        .fontWeight(FontWeight.Bold)
-        .onClick(() => {
-          startService3();
-        });
-      Button('connectotherAbility')
-        .fontSize(40)
-        .height(40)
-        .margin({ top: 20 })
-        .fontWeight(FontWeight.Bold)
-        .onClick(() => {
-          startService4();
-        });
-      Button('connectnull')
-        .fontSize(40)
-        .height(40)
-        .margin({ top: 20 })
-        .fontWeight(FontWeight.Bold)
-        .onClick(() => {
-          startService5();
-        });
-      Button('connecterror')
-        .fontSize(40)
-        .height(40)
-        .margin({top:20})
-        .fontWeight(FontWeight.Bold)
-        .onClick(() => {
-          startService6();
-        });
-      Button('connectAPI8')
-        .fontSize(40)
-        .height(40)
-        .margin({top:20})
-        .fontWeight(FontWeight.Bold)
-        .onClick(() => {
-          startService7();
-        });
-
+      Button() {
+        Text('next page')
+          .fontSize(25)
+          .fontWeight(FontWeight.Bold)
+      }.type(ButtonType.Capsule)
+      .margin({
+        top: 20
+      })
+      .backgroundColor('#0D9FFB')
     }
     .width('100%')
     .height('100%')
   }
 }
-

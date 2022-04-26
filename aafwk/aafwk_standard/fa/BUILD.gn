@@ -28,7 +28,6 @@ group("fa") {
       "fa_missionmanager_test:FaMissionmanagerTest",
       "fa_movemissiontofront_test:FaMissionmanagerTest",
       "fa_state_test:FaStateTest",
-      "fa_statelistener_test:FaStatelistenerTest",
       "fa_sumstate_test:FaSumstateTest",
       "fa_taskmanager_test:FaTaskmanagerTest",
       "fa_taskswiting_test:FaTaskswitingTest",

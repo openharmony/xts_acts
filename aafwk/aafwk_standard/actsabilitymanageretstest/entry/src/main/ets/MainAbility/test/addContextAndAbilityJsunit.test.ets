@@ -15,6 +15,7 @@
 import {describe, it, expect} from "deccjsunit/index.ets";
 import Utils from './Utils';
 import ability_featureAbility from '@ohos.ability.featureAbility';
+import ability_particleAbility from '@ohos.ability.particleAbility';
 import abilityManager from "@ohos.app.abilitymanager"
 
 const TAG_TEST_0100 = ' context_isUpdatingConfigurations_test_0100 ';

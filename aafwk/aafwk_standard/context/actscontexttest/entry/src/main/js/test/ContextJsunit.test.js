@@ -246,20 +246,6 @@ describe('ActsContextTest', function () {
     })
 
     /*
-    * @tc.number: ACTS_GetContextMode_0100
-    * @tc.name: Verify that the context is a stage model or a FA model
-    * @tc.desc: Indicates the context is FA Mode or Stage Mode
-    */
-    it('ACTS_GetContextMode_0100', 0, async function (done) {
-        console.log('ACTS_GetContextMode_0100====<begin');
-        var context = await featureAbility.getContext();
-        var stageMode1 = context.stageMode;
-        console.log('ACTS_GetContextMode_0100====stageMode1:' + stageMode1)
-        expect("false").assertEqual(stageMode1.toString());
-        done();
-    })
-
-    /*
     * @tc.number: ACTS_GetDisplayOrientation_0100
     * @tc.name: context.getDisplayOrientation : Get an ability display orientation.
     * @tc.desc: Check the return display orientation of the interface (by AsyncCallback)
