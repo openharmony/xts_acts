@@ -14,8 +14,16 @@
  */
 import inputmethohJsunit from './InputmethohJsunit.test.ets';
 import inputmethodEngineJsunit from './InputmethodEngineJsunit.test.ets';
+import inputRequestJsunit from './InputRequestJsunit.test.ets';
+import requestJsunit from './RequestJsunit.test.ets';
+import requestDownloadJsunit from './RequestDownloadTaskJsunit.test.ets';
+import screenLockJsunit from './ScreenLockJsunit.test.ets';
 
 export default function testsuite() {
   inputmethohJsunit();
   inputmethodEngineJsunit();
+  inputRequestJsunit();
+  requestDownloadJsunit();
+  requestJsunit();
+  screenLockJsunit();
 }
