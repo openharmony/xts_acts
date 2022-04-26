@@ -55,10 +55,6 @@
       {
         "name":"ohos.permission.GET_BUNDLE_INFO",
         "reason":"need use ohos.permission.GET_BUNDLE_INFO"
-      },
-      {
-        "name":"ohos.permission.CHANGE_ABILITY_ENABLED_STATE",
-        "reason":"need use ohos.permission.CHANGE_ABILITY_ENABLED_STATE"
       }
     ],
     "js": [
