@@ -29,7 +29,7 @@ const OBJECT = "object"
 const DIR1 = "/data/accounts/account_0/applications/com.example.myapplication1/com.example.myapplication1"
 const DIR2 = "/data/accounts/account_0/applications/com.example.myapplication2/com.example.myapplication2"
 const DESCRIPTION = "$string:mainability_description"
-const USERID = 100 ;
+const USERID = 100;
 
 describe('ActsBundleManagerTest', function () {
 
@@ -198,7 +198,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with one hap.
      */
     it('getApplicationInfos_0100', 0, async function (done) {
-        let datainfo = await demo.getAllApplicationInfo(demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION , USERID);
+        let datainfo = await demo.getAllApplicationInfo(demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USERID);
         checkgetApplicationInfos(datainfo);
         done();
     })
@@ -231,21 +231,22 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with one hap.
      */
     it('getApplicationInfos_0600', 0, async function (done) {
-        await demo.getAllApplicationInfo(demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION , USERID, (error, datainfo) => {
-            expect(datainfo.length).assertLarger(0);
-            for (let i = 0; i < datainfo.length; i++) {
-                expect(datainfo[i].name.length).assertLarger(0);
-                expect(datainfo[i].moduleSourceDirs.length).assertLarger(0);
-                expect(datainfo[i].moduleInfos.length).assertLarger(0);
-                expect(datainfo[i].supportedModes).assertEqual(0);
-                expect(datainfo[i].flags).assertEqual(0);
-                for (let j = 0; j < datainfo[i].moduleInfos; j++) {
-                    expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0);
-                    expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0);
+        await demo.getAllApplicationInfo(demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
+            USERID, (error, datainfo) => {
+                expect(datainfo.length).assertLarger(0);
+                for (let i = 0; i < datainfo.length; i++) {
+                    expect(datainfo[i].name.length).assertLarger(0);
+                    expect(datainfo[i].moduleSourceDirs.length).assertLarger(0);
+                    expect(datainfo[i].moduleInfos.length).assertLarger(0);
+                    expect(datainfo[i].supportedModes).assertEqual(0);
+                    expect(datainfo[i].flags).assertEqual(0);
+                    for (let j = 0; j < datainfo[i].moduleInfos; j++) {
+                        expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0);
+                        expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0);
+                    }
                 }
-            }
-            done();
-        });
+                done();
+            });
     })
 
     /**
@@ -498,26 +499,27 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfos interfaces with two haps.
      */
     it('getApplicationInfos_0700', 0, async function (done) {
-        await demo.getAllApplicationInfo(demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USERID, (error, datainfo) => {
-            for (let i = 0; i < datainfo.length; i++) {
-                expect(datainfo[i].name.length).assertLarger(0);
-                if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2
-                    || datainfo[i].name == NAME3 || datainfo[i].name == NAME4 || datainfo[i].name == NAME5) {
-                    expect(datainfo[i].description.length).assertLarger(0);
-                    expect(datainfo[i].icon.length).assertLarger(0);
-                    expect(datainfo[i].label.length).assertLarger(0);
+        await demo.getAllApplicationInfo(demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
+            USERID, (error, datainfo) => {
+                for (let i = 0; i < datainfo.length; i++) {
+                    expect(datainfo[i].name.length).assertLarger(0);
+                    if (datainfo[i].name == NAME1 || datainfo[i].name == NAME2
+                        || datainfo[i].name == NAME3 || datainfo[i].name == NAME4 || datainfo[i].name == NAME5) {
+                        expect(datainfo[i].description.length).assertLarger(0);
+                        expect(datainfo[i].icon.length).assertLarger(0);
+                        expect(datainfo[i].label.length).assertLarger(0);
+                    }
+                    expect(datainfo[i].moduleSourceDirs.length).assertLarger(0);
+                    expect(datainfo[i].moduleInfos.length).assertLarger(0);
+                    expect(datainfo[i].supportedModes).assertEqual(0);
+                    expect(datainfo[i].flags).assertEqual(0);
+                    for (let j = 0; j < datainfo[i].moduleInfos; j++) {
+                        expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0);
+                        expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0);
+                    }
                 }
-                expect(datainfo[i].moduleSourceDirs.length).assertLarger(0);
-                expect(datainfo[i].moduleInfos.length).assertLarger(0);
-                expect(datainfo[i].supportedModes).assertEqual(0);
-                expect(datainfo[i].flags).assertEqual(0);
-                for (let j = 0; j < datainfo[i].moduleInfos; j++) {
-                    expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0);
-                    expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0);
-                }
-            }
-            done();
-        });
+                done();
+            });
     })
 
     /**
@@ -874,13 +876,14 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with error hap.
      */
     it('getApplicationInfo_0400', 0, async function (done) {
-        demo.getApplicationInfo(ERROR, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USERID).then(datainfo => {
-            checkgetApplicationInfoe(datainfo);
-        }).catch(err => {
-            console.info("getApplicationInfo err" + JSON.stringify(err));
-            expect(err).assertEqual(1);
-            done();
-        });
+        demo.getApplicationInfo(ERROR, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
+            USERID).then(datainfo => {
+                checkgetApplicationInfoe(datainfo);
+            }).catch(err => {
+                console.info("getApplicationInfo err" + JSON.stringify(err));
+                expect(err).assertEqual(1);
+                done();
+            });
     })
     function checkgetApplicationInfoe(datainfo) {
         console.info("getApplicationInfo success" + JSON.stringify(datainfo));
@@ -894,17 +897,18 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with error hap.
      */
     it('getApplicationInfo_0900', 0, async function (done) {
-        demo.getApplicationInfo(ERROR, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USERID, (error, datainfo) => {
-            if (error) {
-                console.info("getApplicationInfo fail" + JSON.stringify(error));
-                expect(error).assertEqual(1);
+        demo.getApplicationInfo(ERROR, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
+            USERID, (error, datainfo) => {
+                if (error) {
+                    console.info("getApplicationInfo fail" + JSON.stringify(error));
+                    expect(error).assertEqual(1);
+                    done();
+                    return;
+                }
+                console.info("getApplicationInfo success" + JSON.stringify(datainfo));
+                expect(datainfo).assertFail();
                 done();
-                return;
-            }
-            console.info("getApplicationInfo success" + JSON.stringify(datainfo));
-            expect(datainfo).assertFail();
-            done();
-        })
+            })
     })
 
     /**
@@ -933,17 +937,18 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with none hap.
      */
     it('getApplicationInfo_0500', 0, async function (done) {
-        demo.getApplicationInfo('', demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USERID, (error, datainfo) => {
-            if (error) {
-                console.info("getApplicationInfo err" + JSON.stringify(error));
-                expect(error).assertEqual(1);
+        demo.getApplicationInfo('', demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
+            USERID, (error, datainfo) => {
+                if (error) {
+                    console.info("getApplicationInfo err" + JSON.stringify(error));
+                    expect(error).assertEqual(1);
+                    done();
+                    return;
+                }
+                console.info("getApplicationInfo success" + JSON.stringify(datainfo));
+                expect(datainfo).assertFail();
                 done();
-                return;
-            }
-            console.info("getApplicationInfo success" + JSON.stringify(datainfo));
-            expect(datainfo).assertFail();
-            done();
-        })
+            })
     })
 
     /**
@@ -969,17 +974,18 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getApplicationInfo interfaces with none hap.
      */
     it('getApplicationInfo_1000', 0, async function (done) {
-        demo.getApplicationInfo('', demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USERID, (error, datainfo) => {
-            if (error) {
-                console.info("getApplicationInfo fail" + JSON.stringify(error));
-                expect(error).assertEqual(1);
+        demo.getApplicationInfo('', demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
+            USERID, (error, datainfo) => {
+                if (error) {
+                    console.info("getApplicationInfo fail" + JSON.stringify(error));
+                    expect(error).assertEqual(1);
+                    done();
+                    return;
+                }
+                console.info("getApplicationInfo success" + JSON.stringify(datainfo));
+                expect(datainfo).assertFail();
                 done();
-                return;
-            }
-            console.info("getApplicationInfo success" + JSON.stringify(datainfo));
-            expect(datainfo).assertFail();
-            done();
-        });
+            });
     })
 
     /**
@@ -1079,59 +1085,54 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test queryAbilityByWant interfaces with three haps.
      */
     it('queryAbilityByWant_0300', 0, async function (done) {
-        await demo.queryAbilityByWant(
-            {
-                entities: ['entity.system.home', 'entitiesentities']
-            }, 4, USERID).then(data => {
-                let queryResultCount = 0;
-                for (let i = 0, len = data.length; i < len; i++) {
-                    let datainfo = data[i];
-                    if (datainfo.bundleName == NAME3) {
-                        expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
-                        expect(datainfo.label).assertEqual("$string:app_name");
-                        expect(datainfo.description).assertEqual(DESCRIPTION);
-                        expect(datainfo.icon).assertEqual("$media:icon");
-                        expect(datainfo.moduleName).assertEqual("entry");
-                        expect(datainfo.bundleName).assertEqual(NAME3);
-                        expect(datainfo.applicationInfo.name).assertEqual(NAME3);
-                        expect(datainfo.applicationInfo.description).assertEqual(DESCRIPTION);
-                        expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue();
-                        expect(datainfo.applicationInfo.icon).assertEqual("$media:icon");
-                        expect(datainfo.applicationInfo.iconId >= 0).assertTrue();
-                        expect(datainfo.applicationInfo.label).assertEqual("$string:app_name");
-                        expect(datainfo.applicationInfo.labelId >= 0).assertTrue();
-                        expect(datainfo.applicationInfo.systemApp).assertEqual(true);
-                        expect(datainfo.applicationInfo.supportedModes).assertEqual(0);
-                        expect(datainfo.orientation).assertEqual(2);
-                        expect(datainfo.applicationInfo.enabled).assertEqual(true);
-                        for (let j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
-                            expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry");
-                        }
-                        queryResultCount++;
-                        console.info("queryResultCount 1===================" + queryResultCount);
+        await demo.queryAbilityByWant({
+            entities: ['entity.system.home', 'entitiesentities']
+        }, 4, USERID).then(data => {
+            let queryResultCount = 0;
+            for (let i = 0, len = data.length; i < len; i++) {
+                let datainfo = data[i];
+                if (datainfo.bundleName == NAME3) {
+                    expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
+                    expect(datainfo.label).assertEqual("$string:app_name");
+                    expect(datainfo.description).assertEqual(DESCRIPTION);
+                    expect(datainfo.icon).assertEqual("$media:icon");
+                    expect(datainfo.moduleName).assertEqual("entry");
+                    expect(datainfo.bundleName).assertEqual(NAME3);
+                    expect(datainfo.applicationInfo.name).assertEqual(NAME3);
+                    expect(datainfo.applicationInfo.description).assertEqual(DESCRIPTION);
+                    expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue();
+                    expect(datainfo.applicationInfo.icon).assertEqual("$media:icon");
+                    expect(datainfo.applicationInfo.iconId >= 0).assertTrue();
+                    expect(datainfo.applicationInfo.label).assertEqual("$string:app_name");
+                    expect(datainfo.applicationInfo.labelId >= 0).assertTrue();
+                    expect(datainfo.applicationInfo.systemApp).assertEqual(true);
+                    expect(datainfo.applicationInfo.supportedModes).assertEqual(0);
+                    expect(datainfo.orientation).assertEqual(2);
+                    expect(datainfo.applicationInfo.enabled).assertEqual(true);
+                    for (let j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
+                        expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry");
                     }
-                    if (datainfo.bundleName == NAME4) {
-                        expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
-                        expect(datainfo.bundleName).assertEqual(NAME4);
-                        expect(datainfo.orientation).assertEqual(3);
-                        queryResultCount++;
-                        console.info("queryResultCount 2===================" + queryResultCount);
-                    }
-                    if (datainfo.bundleName == NAME5) {
-                        expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
-                        expect(datainfo.bundleName).assertEqual(NAME5);
-                        expect(datainfo.orientation).assertEqual(0);
-                        queryResultCount++;
-                        console.info("queryResultCount 3===================" + queryResultCount);
-                    }
+                    queryResultCount++;
                 }
-                console.info("queryResultCount 4===================" + queryResultCount);
-                expect(queryResultCount).assertEqual(3);
-                done();
-            }).catch(err => {
-                expect(err).assertFail();
-                done();
-            })
+                if (datainfo.bundleName == NAME4) {
+                    expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
+                    expect(datainfo.bundleName).assertEqual(NAME4);
+                    expect(datainfo.orientation).assertEqual(3);
+                    queryResultCount++;
+                }
+                if (datainfo.bundleName == NAME5) {
+                    expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
+                    expect(datainfo.bundleName).assertEqual(NAME5);
+                    expect(datainfo.orientation).assertEqual(0);
+                    queryResultCount++;
+                }
+            }
+            expect(queryResultCount).assertEqual(3);
+            done();
+        }).catch(err => {
+            expect(err).assertFail();
+            done();
+        })
     })
 
     /**
