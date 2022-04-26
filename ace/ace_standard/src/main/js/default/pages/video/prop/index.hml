@@ -62,9 +62,6 @@
         <video id="disabledPropFalse"
                disabled="false">
         </video>
-        <video id="disabledPropNone"
-               disabled="">
-        </video>
 
         <text class="sub-title">
             通用属性 -- focusable
@@ -74,9 +71,6 @@
         </video>
         <video id="focusablePropFalse"
                focusable="false">
-        </video>
-        <video id="focusablePropNone"
-               focusable="">
         </video>
 
         <text class="sub-title">
@@ -118,9 +112,6 @@
         <video id="showPropFalse"
                show="false">
         </video>
-        <video id="showPropNone"
-               show="">
-        </video>
     </div>
 
     <div style="background-color: #000000; width: 2px; height: 100%;">
@@ -137,9 +128,6 @@
         </video>
         <video id="mutedPropTrue"
                muted="true">
-        </video>
-        <video id="mutedPropNone"
-               muted="">
         </video>
 
         <text class="sub-title">
@@ -161,9 +149,6 @@
         <video id="autoplayPropTrue"
                autoplay="true">
         </video>
-        <video id="autoplayPropNone"
-               autoplay="">
-        </video>
 
         <text class="sub-title">
             预览海报属性 -- poster
@@ -183,9 +168,6 @@
         </video>
         <video id="controlsPropTrue"
                controls="true">
-        </video>
-        <video id="controlsPropNone"
-               controls="">
         </video>
 
         <text class="sub-title">

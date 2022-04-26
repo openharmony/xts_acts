@@ -176,7 +176,7 @@ describe('dividerPropsJsTest', function () {
 
         expect(obj.$type).assertEqual('divider')
         expect(obj.$attrs.id).assertEqual('refProp')
-        expect(obj.$attrs.ref).assertEqual('refProp')
+        expect(obj.$attrs.ref).assertEqual(undefined)
         done();
     });
 
