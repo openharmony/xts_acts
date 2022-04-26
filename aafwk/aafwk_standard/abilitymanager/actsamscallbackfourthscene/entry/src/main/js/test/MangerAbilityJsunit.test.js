@@ -267,12 +267,11 @@ describe('ActsAmsCallBackFourthScene', function () {
         let maxnum = 30;
         let result = await missionManager.getMissionInfos("", maxnum);
         for (let i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_11900 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
+            console.info('getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
         missionManager.clearAllMissions(
             (error, info) => {
-                console.info('Acts_Ams_test_11900 clearAllMissions error.code: \
-                ' + error.code + ',data  [' + info + ']');
+                console.info('clearAllMissions error.code: \ ' + error.code + ',data  [' + info + ']');
                 expect(error.code).assertEqual(0);
                 done();
             });
