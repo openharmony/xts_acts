@@ -14,4 +14,3 @@
  */
  
 require('./SystemTimeJsunit.test.js')
-require('./SystemTimeJsunit.Pertest.js')
