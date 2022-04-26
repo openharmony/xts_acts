@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.example.bmsaccesstoken1",
+    "bundleName": "com.example.bmsaccesstoken2",
     "vendor": "example",
     "version": {
       "code": 1,
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.bmsaccesstoken1",
+    "package": "com.example.bmsaccesstoken2",
     "name": ".MyApplication1",
     "deviceType": [
       "phone"

@@ -16,6 +16,14 @@
 import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
+const BUNDLE_NAME1 = 'com.example.bmsmainabilityfirstscene';
+const BUNDLE_NAME2 = 'com.example.third2';
+const BUNDLE_NAME3 = 'com.example.third5';
+const BUNDLE_NAME5 = 'com.example.system1';
+const BUNDLE_NAME6 = "com.example.bmsmainabilitysecondscene";
+const FIRSTMAINABILITY = 'com.example.bmsmainabilityfirstscene.MainAbility';
+const SECONDMAINABILITY = 'com.example.bmsmainabilitysecondscene.MainAbility';
+
 describe('ActsBmsHapModuleTest', function () {
 
     /*
@@ -24,62 +32,34 @@ describe('ActsBmsHapModuleTest', function () {
      * @tc.desc: get the module information of the hap with type of entry
      */
     it('bms_getHapModuleInfo_0100', 0, async function (done) {
-        console.debug('===========begin bms_getHapModuleInfo_0100===========')
-        var bundlePath = ['/data/test/bmsMainAbilityFirstScene.hap'];
-        let bundleName = 'com.example.bmsmainabilityfirstscene';
-        var installer = await bundle.getBundleInstaller();
-        installer.install(bundlePath, {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, onReceiveInstallEvent);
-        function onReceiveInstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            bundle.getBundleInfo(bundleName, 1, callback);
-            async function callback(err, result) {
-                expect(result.hapModuleInfos.length).assertEqual(1);
-                if (result.hapModuleInfos.length > 0) {
-                    let hapModuleInfo = result.hapModuleInfos[0];
-                    expect(hapModuleInfo.moduleName).assertEqual('entry');
-                    expect(hapModuleInfo.mainAbilityName).assertEqual('com.example.bmsmainabilityfirstscene.MainAbility');
-                    expect(hapModuleInfo.mainElementName).assertEqual('com.example.bmsmainabilityfirstscene.MainAbility');
-                    expect(hapModuleInfo.name).assertEqual('com.example.bmsmainabilityfirstscene');
-                    expect(hapModuleInfo.description).assertEqual('');
-                    expect(hapModuleInfo.descriptionId).assertEqual(0);
-                    expect(hapModuleInfo.icon).assertEqual('');
-                    expect(hapModuleInfo.label).assertEqual('$string:app_name');
-                    expect(hapModuleInfo.labelId).assertEqual(0);
-                    expect(hapModuleInfo.iconId).assertEqual(0);
-                    expect(hapModuleInfo.backgroundImg).assertEqual('');
-                    expect(hapModuleInfo.supportedModes).assertEqual(0);
-                    console.info('hapModuleInfo.reqCapabilities' + JSON.stringify(hapModuleInfo.reqCapabilities));
-                    expect(typeof hapModuleInfo.reqCapabilities).assertEqual('object');
-                    console.info('===hapModuleInfo devicetypes===' + JSON.stringify(hapModuleInfo.deviceTypes));
-                    expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
-                    console.info('===hapModuleInfo.abilityInfo===' + JSON.stringify(hapModuleInfo.abilityInfo));
-                    expect(typeof hapModuleInfo.abilityInfo).assertEqual('object');
-                    expect(hapModuleInfo.moduleName).assertEqual('entry');
-                    expect(hapModuleInfo.mainAbilityName).assertEqual('com.example.bmsmainabilityfirstscene.MainAbility');
-                    expect(hapModuleInfo.installationFree).assertEqual(false);
-                    for (let i = 0, len = hapModuleInfo.reqCapabilities.length; i < len; i++) {
-                        expect(hapModuleInfo.reqCapabilities[i]).assertEqual('');
-                    }
-                    for (let j = 0, len = hapModuleInfo.abilityInfo.length; j < len; j++) {
-                        expect(hapModuleInfo.abilityInfo[j].name).assertEqual('com.example.bmsmainabilityfirstscene.MainAbility');
-                    }
-                }
-                installer.uninstall(bundleName, {
-                    userId: 100,
-                    installFlag: 1,
-                    isKeepData: false
-                }, (err, data) => {
-                    expect(err.code).assertEqual(0);
-                    expect(data.status).assertEqual(0);
-                    expect(data.statusMessage).assertEqual('SUCCESS');
-                    done();
-                });
+        let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+        bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, callback);
+        async function callback(err, result) {
+            expect(JSON.stringify(result)).assertEqual(JSON.stringify(dataInfo));
+            expect(result.hapModuleInfos.length).assertEqual(2);
+            if (result.hapModuleInfos.length > 0) {
+                let hapModuleInfo = result.hapModuleInfos[0];
+                expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME1);
+                expect(hapModuleInfo.moduleName).assertEqual('entry');
+                expect(hapModuleInfo.description).assertEqual('');
+                expect(hapModuleInfo.descriptionId).assertEqual(0);
+                expect(hapModuleInfo.iconPath).assertEqual("$media:icon");
+                expect(hapModuleInfo.icon).assertEqual('');
+                expect(hapModuleInfo.label).assertEqual('$string:app_name');
+                expect(hapModuleInfo.labelId).assertEqual(0);
+                expect(hapModuleInfo.iconId).assertEqual(0);
+                expect(hapModuleInfo.backgroundImg).assertEqual("");
+                expect(hapModuleInfo.supportedModes).assertEqual(0);
+                expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
+                expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
+                expect(hapModuleInfo.mainAbilityName).assertEqual(FIRSTMAINABILITY);
+                expect(hapModuleInfo.mainElementName).assertEqual(FIRSTMAINABILITY);
+                expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
+                expect(hapModuleInfo.colorMode).assertEqual(-1);
+                expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
+                expect(hapModuleInfo.metadata.length).assertEqual(0);
+                expect(hapModuleInfo.installationFree).assertEqual(false);
+                done();
             }
         }
     });
@@ -90,43 +70,28 @@ describe('ActsBmsHapModuleTest', function () {
      * @tc.desc: get the module information of the hap with type of feature
      */
     it('bms_getHapModuleInfo_0200', 0, async function (done) {
-        console.debug('===========begin bms_getHapModuleInfo_0200===========')
-        var bundlePath = ['/data/test/bmsMainAbilityFirstScene.hap', '/data/test/bmsMainAbilitySecondScene.hap'];
-        let bundleName = 'com.example.bmsmainabilityfirstscene';
-        let firstMainAbility = 'com.example.bmsmainabilityfirstscene.MainAbility';
-        let secondMainAbility = 'com.example.bmsmainabilitysecondscene.MainAbility';
-        var installer = await bundle.getBundleInstaller();
-        installer.install(bundlePath, {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, async (err, data) => {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            bundle.getBundleInfo(bundleName, 1, async (err, result) => {
-                expect(result.hapModuleInfos.length).assertEqual(2);
-                if (result.hapModuleInfos.length == 2) {
-                    expect(result.hapModuleInfos[0].mainAbilityName).assertEqual(firstMainAbility);
-                    expect(result.hapModuleInfos[0].moduleName).assertEqual('entry');
-                    checkHapModuleInfo(result.hapModuleInfos[0]);
-                    expect(result.hapModuleInfos[1].mainAbilityName).assertEqual(secondMainAbility);
-                    expect(result.hapModuleInfos[1].moduleName).assertEqual('bmsmainabilitysecondscene');
-                    checkHapModuleInfo(result.hapModuleInfos[1]);
-                }
-                installer.uninstall(bundleName, {
-                    userId: 100,
-                    installFlag: 1,
-                    isKeepData: false
-                }, (err, data) => {
-                    expect(err.code).assertEqual(0);
-                    expect(data.status).assertEqual(0);
-                    expect(data.statusMessage).assertEqual('SUCCESS');
-                    done();
-                });
-            });
+        let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+        bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, async (err, result) => {
+            expect(JSON.stringify(result)).assertEqual(JSON.stringify(dataInfo));
+            expect(result.hapModuleInfos.length).assertEqual(2);
+            if (result.hapModuleInfos.length == 2) {
+                let hapModuleInfo = result.hapModuleInfos[0];
+                let hapModuleInfo1 = result.hapModuleInfos[1];
+                checkHapMoudleInfos(hapModuleInfo);
+                checkHapMoudleInfos(hapModuleInfo1);
+                expect(hapModuleInfo.label).assertEqual('$string:app_name');
+                expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME1);
+                expect(hapModuleInfo1.name).assertEqual(BUNDLE_NAME6);
+                expect(hapModuleInfo.moduleName).assertEqual('entry');
+                expect(hapModuleInfo.mainAbilityName).assertEqual(FIRSTMAINABILITY);
+                expect(hapModuleInfo.mainElementName).assertEqual(FIRSTMAINABILITY);
+                expect(hapModuleInfo1.moduleName).assertEqual('bmsmainabilitysecondscene');
+                expect(hapModuleInfo1.mainAbilityName).assertEqual(SECONDMAINABILITY);
+                expect(hapModuleInfo1.mainElementName).assertEqual(SECONDMAINABILITY);
+                done();
+            }
         });
-    })
+    });
 
     /*
      * @tc.number: bms_getHapModuleInfo_0300
@@ -134,50 +99,36 @@ describe('ActsBmsHapModuleTest', function () {
      * @tc.desc: get the module information of the hap without mainAbility
      */
     it('bms_getHapModuleInfo_0300', 0, async function (done) {
-        console.debug('===========begin bms_getHapModuleInfo_0300===========')
-        var bundlePath = ['/data/test/bmsThirdBundleTest2.hap'];
-        let bundleName = 'com.example.third2';
-        var installer = await bundle.getBundleInstaller();
-        console.log('========install========' + typeof installer);
-        installer.install(bundlePath, {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, onReceiveInstallEvent);
-        function onReceiveInstallEvent(err, data) {
-            console.info('========install Finish========');
-            expect(typeof err).assertEqual('object');
-            expect(err.code).assertEqual(0);
-            expect(typeof data).assertEqual('object');
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            bundle.getBundleInfo(bundleName, 1,).then(async (result) => {
-                console.debug('=======get hapModule========' + JSON.stringify(result))
-                expect(result.hapModuleInfos.length).assertEqual(1);
-                if (result.hapModuleInfos.length > 0) {
-                    console.debug('=======get hapModule mainAbilityName========' + result.hapModuleInfos[0].mainAbilityName)
-                    expect(result.hapModuleInfos[0].mainAbilityName).assertEqual('');
-                    expect(result.hapModuleInfos[0].moduleName).assertEqual('entry');
-                    checkHapModuleInfo(result.hapModuleInfos[0]);
-                }
-                installer.uninstall(bundleName, {
-                    userId: 100,
-                    installFlag: 1,
-                    isKeepData: false
-                }, onReceiveUninstallEvent);
-
-                function onReceiveUninstallEvent(err, data) {
-                    console.info('========uninstall Finish========');
-                    expect(typeof err).assertEqual('object');
-                    expect(err.code).assertEqual(0);
-                    expect(typeof data).assertEqual('object');
-                    expect(data.status).assertEqual(0);
-                    expect(data.statusMessage).assertEqual('SUCCESS');
-                    done();
-                }
-            });
-        }
-    })
+        let result = await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+        bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, (err, data) => {
+            expect(JSON.stringify(result)).assertEqual(JSON.stringify(data));
+            expect(result.hapModuleInfos.length).assertEqual(1);
+            if (result.hapModuleInfos.length > 0) {
+                let hapModuleInfo = result.hapModuleInfos[0];
+                expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME2);
+                expect(hapModuleInfo.moduleName).assertEqual('entry');
+                expect(hapModuleInfo.description).assertEqual('');
+                expect(hapModuleInfo.descriptionId).assertEqual(0);
+                expect(hapModuleInfo.iconPath).assertEqual("$media:icon");
+                expect(hapModuleInfo.icon).assertEqual('');
+                expect(hapModuleInfo.label).assertEqual('$string:app_name');
+                expect(hapModuleInfo.labelId).assertEqual(0);
+                expect(hapModuleInfo.iconId).assertEqual(0);
+                expect(hapModuleInfo.backgroundImg).assertEqual("");
+                expect(hapModuleInfo.supportedModes).assertEqual(0);
+                expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
+                expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
+                expect(hapModuleInfo.mainAbilityName).assertEqual("");
+                expect(hapModuleInfo.mainElementName).assertEqual("");
+                expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
+                expect(hapModuleInfo.colorMode).assertEqual(-1);
+                expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
+                expect(hapModuleInfo.metadata.length).assertEqual(0);
+                expect(hapModuleInfo.installationFree).assertEqual(false);
+                done();
+            }
+        });
+    });
 
     /*
      * @tc.number: bms_getHapModuleInfo_0400
@@ -185,95 +136,35 @@ describe('ActsBmsHapModuleTest', function () {
      * @tc.desc: get the module information of the hap with the added field mainAbility
      */
     it('bms_getHapModuleInfo_0400', 0, async function (done) {
-        console.debug('===========begin bms_getHapModuleInfo_0400===========')
-        var bundlePath = ['/data/test/bmsThirdBundleTest5.hap'];
-        let bundleName = 'com.example.third5';
-        var installer = await bundle.getBundleInstaller();
-        console.log('========install========' + typeof installer);
-        installer.install(bundlePath, {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, (err, data) => {
-            console.info('========install Finish========');
-            expect(typeof err).assertEqual('object');
-            expect(err.code).assertEqual(0);
-            expect(typeof data).assertEqual('object');
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            bundle.getBundleInfo(bundleName, 1, async (err, result) => {
-                console.debug('=======get hapModule========' + JSON.stringify(result))
-                expect(result.hapModuleInfos.length).assertEqual(1);
-                if (result.hapModuleInfos.length == 1) {
-                    expect(result.hapModuleInfos[0].mainAbilityName).assertEqual('com.example.third5.AMainAbility');
-                    expect(result.hapModuleInfos[0].moduleName).assertEqual('entry');
-                    checkHapModuleInfo(result.hapModuleInfos[0]);
-                }
-                installer.uninstall(bundleName, {
-                    userId: 100,
-                    installFlag: 1,
-                    isKeepData: false
-                }, onReceiveUninstallEvent);
-
-                function onReceiveUninstallEvent(err, data) {
-                    expect(err.code).assertEqual(0);
-                    expect(data.status).assertEqual(0);
-                    expect(data.statusMessage).assertEqual('SUCCESS');
-                    done();
-                }
-            });
-        })
-    })
-
-    /*
-     * @tc.number: bms_getHapModuleInfo_0500
-     * @tc.name: get the hapModuleInfo of the upgraded hap package from an application through getBundleInfo
-     * @tc.desc: get the module information of the mainAbility upgrade hap
-     */
-    it('bms_getHapModuleInfo_0500', 0, async function (done) {
-        console.debug('===========begin bms_getHapModuleInfo_0500===========')
-        var bundlePath1 = ['/data/test/bmsThirdBundleTest1.hap'];
-        var bundlePath2 = ['/data/test/bmsThirdBundleTestA1.hap'];
-        let bundleName = 'com.example.third1';
-        var installer = await bundle.getBundleInstaller();
-        installer.install(bundlePath1, {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, async (err, data) => {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            installer.install(bundlePath2, {
-                userId: 100,
-                installFlag: 1,
-                isKeepData: false
-            }, (err, data) => {
-                expect(err.code).assertEqual(0);
-                expect(data.status).assertEqual(0);
-                expect(data.statusMessage).assertEqual('SUCCESS');
-                bundle.getBundleInfo(bundleName, 1, callback);
-            })
-        })
-        function callback(err, result) {
+        let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+        bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, async (err, result) => {
+            expect(JSON.stringify(result)).assertEqual(JSON.stringify(dataInfo));
             expect(result.hapModuleInfos.length).assertEqual(1);
             if (result.hapModuleInfos.length == 1) {
                 let hapModuleInfo = result.hapModuleInfos[0];
+                expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME3);
                 expect(hapModuleInfo.moduleName).assertEqual('entry');
-                expect(hapModuleInfo.mainAbilityName).assertEqual('com.example.third1.AMainAbility');
-                checkHapModuleInfo(hapModuleInfo);
-            }
-            installer.uninstall(bundleName, {
-                userId: 100,
-                installFlag: 1,
-                isKeepData: false
-            }, (err, data) => {
-                expect(err.code).assertEqual(0);
-                expect(data.status).assertEqual(0);
-                expect(data.statusMessage).assertEqual('SUCCESS');
+                expect(hapModuleInfo.description).assertEqual('');
+                expect(hapModuleInfo.descriptionId).assertEqual(0);
+                expect(hapModuleInfo.iconPath).assertEqual("$media:icon");
+                expect(hapModuleInfo.icon).assertEqual('');
+                expect(hapModuleInfo.label).assertEqual('$string:app_name');
+                expect(hapModuleInfo.labelId).assertEqual(0);
+                expect(hapModuleInfo.iconId).assertEqual(0);
+                expect(hapModuleInfo.backgroundImg).assertEqual("");
+                expect(hapModuleInfo.supportedModes).assertEqual(0);
+                expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
+                expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
+                expect(hapModuleInfo.mainAbilityName).assertEqual("com.example.third5.AMainAbility");
+                expect(hapModuleInfo.mainElementName).assertEqual("com.example.third5.AMainAbility");
+                expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
+                expect(hapModuleInfo.colorMode).assertEqual(-1);
+                expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
+                expect(hapModuleInfo.metadata.length).assertEqual(0);
+                expect(hapModuleInfo.installationFree).assertEqual(false);
                 done();
-            })
-        }
+            }
+        });
     });
 
     /*
@@ -282,38 +173,53 @@ describe('ActsBmsHapModuleTest', function () {
      * @tc.desc: get module information of mainAbility system application 
      */
     it('bms_getHapModuleInfo_0600', 0, async function (done) {
-        console.debug('===========begin bms_getHapModuleInfo_0600===========')
-        let bundleName = 'com.example.system1';
-        bundle.getBundleInfo(bundleName, 1, callback);
+        let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME5, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+        bundle.getBundleInfo(BUNDLE_NAME5, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, callback);
         function callback(err, data) {
+            expect(JSON.stringify(data)).assertEqual(JSON.stringify(dataInfo));
             expect(data.hapModuleInfos.length).assertEqual(1);
             if (data.hapModuleInfos.length == 1) {
                 let hapModuleInfo = data.hapModuleInfos[0];
-                console.debug('=======get hapModule========' + JSON.stringify(hapModuleInfo))
-                console.debug('=======get hapModule mainAbilityName========' + hapModuleInfo.mainAbilityName)
+                expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME5);
                 expect(hapModuleInfo.moduleName).assertEqual('entry');
-                expect(hapModuleInfo.mainAbilityName).assertEqual('com.example.system1.MainAbility');
-                checkHapModuleInfo(hapModuleInfo);
+                expect(hapModuleInfo.description).assertEqual('');
+                expect(hapModuleInfo.descriptionId).assertEqual(0);
+                expect(hapModuleInfo.iconPath).assertEqual("$media:icon");
+                expect(hapModuleInfo.icon).assertEqual('');
+                expect(hapModuleInfo.label).assertEqual('$string:app_name');
+                expect(hapModuleInfo.labelId).assertEqual(0);
+                expect(hapModuleInfo.iconId).assertEqual(0);
+                expect(hapModuleInfo.backgroundImg).assertEqual("");
+                expect(hapModuleInfo.supportedModes).assertEqual(0);
+                expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
+                expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
+                expect(hapModuleInfo.mainAbilityName).assertEqual("com.example.system1.MainAbility");
+                expect(hapModuleInfo.mainElementName).assertEqual("com.example.system1.MainAbility");
+                expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
+                expect(hapModuleInfo.colorMode).assertEqual(-1);
+                expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
+                expect(hapModuleInfo.metadata.length).assertEqual(0);
+                expect(hapModuleInfo.installationFree).assertEqual(false);
             }
             done();
         }
     });
 
-    function checkHapModuleInfo(dataInfo) {
-        expect(typeof dataInfo.name).assertEqual('string');
-        expect(typeof dataInfo.description).assertEqual('string');
-        expect(typeof dataInfo.descriptionId).assertEqual('number');
-        expect(typeof dataInfo.icon).assertEqual('string');
-        expect(typeof dataInfo.label).assertEqual('string');
-        expect(typeof dataInfo.labelId).assertEqual('number');
-        expect(typeof dataInfo.iconId).assertEqual('number');
-        expect(typeof dataInfo.backgroundImg).assertEqual('string');
-        expect(typeof dataInfo.supportedModes).assertEqual('number');
-        expect(typeof dataInfo.reqCapabilities).assertEqual('object');
-        expect(typeof dataInfo.deviceTypes).assertEqual('object');
-        expect(typeof dataInfo.abilityInfo).assertEqual('object');
-        expect(typeof dataInfo.moduleName).assertEqual('string');
-        expect(typeof dataInfo.mainAbilityName).assertEqual('string');
-        expect(typeof dataInfo.installationFree).assertEqual('boolean');
+    function checkHapMoudleInfos(info) {
+        expect(info.description).assertEqual('');
+        expect(info.descriptionId).assertEqual(0);
+        expect(info.iconPath).assertEqual("$media:icon");
+        expect(info.icon).assertEqual('');
+        expect(info.labelId).assertEqual(0);
+        expect(info.iconId).assertEqual(0);
+        expect(info.backgroundImg).assertEqual("");
+        expect(info.supportedModes).assertEqual(0);
+        expect(info.reqCapabilities.length).assertEqual(0);
+        expect(info.deviceTypes[0]).assertEqual('phone');
+        expect(info.abilityInfo.length).assertLarger(0);
+        expect(info.colorMode).assertEqual(-1);
+        expect(info.extensionAbilityInfo.length).assertEqual(0);
+        expect(info.metadata.length).assertEqual(0);
+        expect(info.installationFree).assertEqual(false);
     }
 })

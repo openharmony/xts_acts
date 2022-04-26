@@ -33,15 +33,28 @@
                 "bmsThirdBundleTest5.hap->/data/test/bmsThirdBundleTest5.hap",
                 "bmsThirdBundleTest6.hap->/data/test/bmsThirdBundleTest6.hap",
                 "bmsThirdBundleTestA1.hap->/data/test/bmsThirdBundleTestA1.hap",
-                "bmsSystemBundleTest2.hap->/data/test/bmsSystemBundleTest2.hap",
-                "bmsSystemBundleTest2Feature.hap->/data/test/bmsSystemBundleTest2Feature.hap",
-                "bmsSystemBundleTest2Update.hap->/data/test/bmsSystemBundleTest2Update.hap"
+                "bmsSystemBundleTest2.hap->/data/test/bmsSystemBundleTest2.hap"
             ]
         },
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod 644 /data/test/*.hap"
+                "bm install -p /data/test/bmsThirdBundleTest1.hap",
+                "bm install -p /data/test/bmsThirdBundleTest2.hap",
+                "bm install -p /data/test/bmsThirdBundleTest3.hap",
+                "bm install -p /data/test/bmsThirdBundleTest4.hap",
+                "bm install -p /data/test/bmsThirdBundleTest5.hap",
+                "bm install -p /data/test/bmsThirdBundleTest6.hap",
+                "bm install -p /data/test/bmsSystemBundleTest2.hap"
+            ],
+            "teardown-command":[
+                "bm uninstall -n com.example.third1",
+                "bm uninstall -n com.example.third2",
+                "bm uninstall -n com.example.third4",
+                "bm uninstall -n com.example.third5",
+                "bm uninstall -n com.example.third6",
+                "bm uninstall -n com.example.system2",
+                "rm -rf /data/test/"
             ]
         }
     ]
