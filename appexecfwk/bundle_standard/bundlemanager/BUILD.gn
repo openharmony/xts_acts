@@ -26,11 +26,11 @@ group("bundlemanager") {
       "actsbmsmetadatatest:ActsBmsMetaDataTest",
       "actsbundlemanageretstest:ActsBundleManagerEtsTest",
       "actsbundlemanagertest:ActsBundleManagerTest",
+      "sceneProject/bmsaccesstokenfive:bmsAccessTokenTest5",
+      "sceneProject/bmsaccesstokenfour:bmsAccessTokenTest4",
       "sceneProject/bmsaccesstokenone:bmsAccessTokenTest1",
       "sceneProject/bmsaccesstokenthree:bmsAccessTokenTest3",
       "sceneProject/bmsaccesstokentwo:bmsAccessTokenTest2",
-      "sceneProject/bmsaccesstokenfour:bmsAccessTokenTest4",
-      "sceneProject/bmsaccesstokenfive:bmsAccessTokenTest5",
       "sceneProject/bmsfirstright:first_right",
       "sceneProject/bmsgetinfosfifthscene:bmsThirdBundleTest5",
       "sceneProject/bmsgetinfosfirstscene:bmsThirdBundleTest1",
@@ -52,7 +52,7 @@ group("bundlemanager") {
       "sceneProject/bmsscenesix:bmsJstest6",
       "sceneProject/bmsscenethree:bmsJstest3",
       "sceneProject/bmsscenetwo:bmsJstest2",
-      "sceneProject/bmssecondright:second_right"
+      "sceneProject/bmssecondright:second_right",
     ]
   }
 }
