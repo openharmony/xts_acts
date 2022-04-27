@@ -16,6 +16,7 @@ group("telephonyjstest") {
   deps = [
     "call_manager:call_manager",
     "cellular_data:cellular_data",
+
     #"contact_function:ActsContactFunctionEtsTest",
     #"contact_function_merge:ActsContactFunctionMergeEtsTest",
     #"contact_performance:ActsContactPerformanceEtsTest",
