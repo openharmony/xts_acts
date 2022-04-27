@@ -118,4 +118,48 @@ describe('ActsBmsHasInstalldTest', function () {
             }
         });
     });
+
+    /*
+         * @tc.number: hasInstalled_0500
+         * @tc.name: test hasInstalled bundleName is number
+         * @tc.desc: test hasInstalled bundleName is number without function fail
+         * @tc.level 3
+         */
+    it('hasInstalled_0500', 0, async function (done) {
+        pkg.hasInstalled({
+            bundleName: NUM_TWO,
+            success: function success(data) {
+                console.info('hasInstalled success' + JSON.stringify(data));
+                expect(error).assertFail();
+                done();
+            },
+            complete: function complete() {
+                console.info('hasInstalled complete');
+                done();
+            }
+        })
+    });
+
+    /*
+     * @tc.number: hasInstalled_0600
+     * @tc.name: test hasInstalled bundleName is number
+     * @tc.desc: test hasInstalled bundleName is number without function complete
+     * @tc.level 3
+     */
+    it('hasInstalled_0600', 0, async function (done) {
+        pkg.hasInstalled({
+            bundleName: NUM_TWO,
+            success: function success(data) {
+                console.info('hasInstalled success' + JSON.stringify(data));
+                expect(error).assertFail();
+                done();
+            },
+            fail: function fail(data, code) {
+                console.info('hasInstalled fail');
+                expect(data).assertEqual("value is not an available number");
+                expect(code).assertEqual(202);
+                done();
+            }
+        })
+    });
 })

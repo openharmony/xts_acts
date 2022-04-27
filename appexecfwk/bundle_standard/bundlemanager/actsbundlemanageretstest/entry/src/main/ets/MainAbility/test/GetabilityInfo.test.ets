@@ -42,12 +42,8 @@ export default function GetabilityInfo() {
             let timeOldStamp = await Utils.getNowTime();
             await bundleManager.getAbilityInfo(BUNDLE_NAME1, ABILITY_NAME1).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('bundle_GetabilityInfo_test_0100', timeOldStamp, timeNewStamp)
+                Utils.getDurationTime('bundle_GetabilityInfo_test_0100', timeOldStamp, timeNewStamp);
                 console.info('[bundle_GetabilityInfo_test_0100] getApplicationInfo promise data is: ' + JSON.stringify(data));
-                for (const item in data) {
-                    const a = data[item];
-                    console.info(item + ":" + JSON.stringify(a));
-                };
                 expect(typeof (data)).assertEqual("object");
                 mData = data;
                 checkAbilityInfo(mData);
@@ -93,10 +89,6 @@ export default function GetabilityInfo() {
             await bundleManager.getAbilityInfo(BUNDLE_NAME4, ABILITY_NAME3).then(res => {
                 checkAbilityInfo_other(res);
                 console.info('actwsBundleManager getAbilityInfo promise success res:' + JSON.stringify(res));
-                for (const item in res) {
-                    const a = res[item];
-                    console.info(item + ":" + JSON.stringify(a));
-                };
             }).catch(err => {
                 console.info('actwsBundleManager getAbilityInfo promise err:' + JSON.stringify(err));
                 expect().assertFail();
@@ -110,10 +102,6 @@ export default function GetabilityInfo() {
                 }
                 checkAbilityInfo_other(res);
                 console.info('actwsBundleManager getAbilityInfo callback success res:' + JSON.stringify(res));
-                for (const item in res) {
-                    const a = res[item];
-                    console.info(item + ":" + JSON.stringify(a));
-                };
                 done();
             });
         });

@@ -21,170 +21,105 @@ const BUNDLE_NAME_ERROR = 'com.ohos.acepackage.error'
 
 export default function IsApplicationEnabledETSUnit() {
 
-    describe('context_isApplicationEnabled_test', function () {
+    describe('isApplicationEnabled_test', function () {
 
         /*
-         * @tc.number: context_isApplicationEnabled_test_0100
+         * @tc.number: isApplicationEnabled_test_0100
          * @tc.name: isApplicationEnabled : Get whether to enable a specified application
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it('context_isApplicationEnabled_test_0100', 0, async function (done) {
+        it('isApplicationEnabled_test_0100', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             let mData;
             await Bundle.isApplicationEnabled(BUNDLE_NAME).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_isApplicationEnabled_test_0100]', timeOldStamp, timeNewStamp);
+                Utils.getDurationTime('[isApplicationEnabled_test_0100]', timeOldStamp, timeNewStamp);
                 mData = data;
-                console.info('[context_isApplicationEnabled_test_0100]  promise data is: ' + JSON.stringify(data));
+                console.info('[isApplicationEnabled_test_0100]  promise data is: ' + JSON.stringify(data));
             }).catch((error) => {
-                console.info('[context_isApplicationEnabled_test_0100]  promise error is: ' + error);
+                console.info('[isApplicationEnabled_test_0100]  promise error is: ' + error);
                 expect(error).assertFail();
             });
-            getApplicationEnabledSuccess('[context_isApplicationEnabled_test_0100]', mData);
+            getApplicationEnabledTrue('[isApplicationEnabled_test_0100]', mData);
             done();
         });
 
         /*
-         * @tc.number: context_isApplicationEnabled_test_0200
+         * @tc.number: isApplicationEnabled_test_0200
          * @tc.name: isApplicationEnabled : Get whether to enable a specified application
          * @tc.desc: Check the return value of the interface (by callback)
          * @tc.level   0
          */
-        it('context_isApplicationEnabled_test_0200', 0, async function (done) {
+        it('isApplicationEnabled_test_0200', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             let mData;
             Bundle.isApplicationEnabled(BUNDLE_NAME, (error, data) => {
                 if (error) {
-                    console.error('[context_isApplicationEnabled_test_0200]Operation failed. Cause: ' + JSON.stringify(error));
+                    console.error('[isApplicationEnabled_test_0200]Operation failed. Cause: ' + JSON.stringify(error));
                     expect(error).assertFail();
                 }
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_isApplicationEnabled_test_0200]', timeOldStamp, timeNewStamp);
+                Utils.getDurationTime('[isApplicationEnabled_test_0200]', timeOldStamp, timeNewStamp);
                 mData = data;
-                console.info('[context_isApplicationEnabled_test_0200]  callBack error: ' + error);
-                console.info('[context_isApplicationEnabled_test_0200]  callBack data is:' + JSON.stringify(data));
+                console.info('[isApplicationEnabled_test_0200]  callBack data is:' + JSON.stringify(data));
             });
             await Utils.sleep(2000);
-            getApplicationEnabledSuccess('[context_isApplicationEnabled_test_0200]', mData);
+            getApplicationEnabledTrue('[isApplicationEnabled_test_0200]', mData);
             done();
         });
 
         /*
-         * @tc.number: context_isApplicationEnabled_test_0300
+         * @tc.number: isApplicationEnabled_test_0300
          * @tc.name: isApplicationEnabled : Get whether to enable a specified application
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it('context_isApplicationEnabled_test_0300', 0, async function (done) {
+        it('isApplicationEnabled_test_0300', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             let mData;
             await Bundle.isApplicationEnabled(BUNDLE_NAME_ERROR).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_isApplicationEnabled_test_0300]', timeOldStamp, timeNewStamp);
+                Utils.getDurationTime('[isApplicationEnabled_test_0300]', timeOldStamp, timeNewStamp);
                 mData = data;
-                console.info('[context_isApplicationEnabled_test_0300]  promise data is: ' + JSON.stringify(data));
+                console.info('[isApplicationEnabled_test_0300]  promise data is: ' + JSON.stringify(data));
             }).catch((error) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_isApplicationEnabled_test_0300]', timeOldStamp, timeNewStamp);
-                console.info('[context_isApplicationEnabled_test_0300]  promise error is: ' + error);
+                Utils.getDurationTime('[isApplicationEnabled_test_0300]', timeOldStamp, timeNewStamp);
+                console.info('[isApplicationEnabled_test_0300]  promise error is: ' + error);
                 expect(error).assertFail();
             });
-            getApplicationEnabledFalse('[context_isApplicationEnabled_test_0300]', mData);
+            getApplicationEnabledFalse('[isApplicationEnabled_test_0300]', mData);
             done();
         });
 
         /*
-         * @tc.number: context_isApplicationEnabled_test_0400
+         * @tc.number: isApplicationEnabled_test_0400
          * @tc.name: isApplicationEnabled : Get whether to enable a specified application
          * @tc.desc: Check the return value of the interface (by callback)
          * @tc.level   0
          */
-        it('context_isApplicationEnabled_test_0400', 0, async function (done) {
+        it('isApplicationEnabled_test_0400', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             let mData;
             Bundle.isApplicationEnabled(BUNDLE_NAME_ERROR, (error, data) => {
                 if (error) {
-                    console.error('[context_isApplicationEnabled_test_0400]Operation failed. Cause: ' + JSON.stringify(error));
+                    console.error('[isApplicationEnabled_test_0400]Operation failed. Cause: ' + JSON.stringify(error));
                     expect(error).assertFail();
                 }
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_isApplicationEnabled_test_0400]', timeOldStamp, timeNewStamp);
+                Utils.getDurationTime('[isApplicationEnabled_test_0400]', timeOldStamp, timeNewStamp);
                 mData = data;
-                console.info('[context_isApplicationEnabled_test_0400]  callBack error: ' + error);
-                console.info('[context_isApplicationEnabled_test_0400]  callBack data is:' + JSON.stringify(data));
+                console.info('[isApplicationEnabled_test_0400]  callBack data is:' + JSON.stringify(data));
             });
             await Utils.sleep(2000);
-            getApplicationEnabledFalse('[context_isApplicationEnabled_test_0300]', mData);
-            console.info('[context_isApplicationEnabled_test_0400]  Failure ');
-            done();
-        });
-
-        /*
-         * @tc.number: context_isApplicationEnabled_test_0500
-         * @tc.name: isApplicationEnabled : Get whether to enable a specified application
-         * @tc.desc: Check the return value of the interface (by promise)
-         * @tc.level   0
-         */
-        it('context_isApplicationEnabled_test_0500', 0, async function (done) {
-            await Bundle.setApplicationEnabled(BUNDLE_NAME, true).then((data) => {
-                console.info('[context_isApplicationEnabled_test_0500]  set enable true data is: ' + JSON.stringify(data));
-            }).catch((error) => {
-                console.info('[context_isApplicationEnabled_test_0500]  set enable true error is: ' + error);
-                expect(error).assertFail();
-            });
-            await Utils.sleep(1000);
-            let timeOldStamp = await Utils.getNowTime();
-            let mData;
-            await Bundle.isApplicationEnabled(BUNDLE_NAME).then((data) => {
-                let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_isApplicationEnabled_test_0500]', timeOldStamp, timeNewStamp);
-                mData = data;
-                console.info('[context_isApplicationEnabled_test_0500]  promise data is: ' + JSON.stringify(data));
-            }).catch((error) => {
-                console.info('[context_isApplicationEnabled_test_0500]  promise error is: ' + error);
-                expect(error).assertFail();
-            });
-            getApplicationEnabledTrue('[context_isApplicationEnabled_test_0500]', mData);
-            done();
-        });
-
-        /*
-         * @tc.number: context_isApplicationEnabled_test_0600
-         * @tc.name: isApplicationEnabled : Get whether to enable a specified application
-         * @tc.desc: Check the return value of the interface (by callback)
-         * @tc.level   0
-         */
-        it('context_isApplicationEnabled_test_0600', 0, async function (done) {
-            await Bundle.setApplicationEnabled(BUNDLE_NAME, false).then((data) => {
-                console.info('[context_isApplicationEnabled_test_0600]  set enable false data is: ' + JSON.stringify(data));
-            }).catch((error) => {
-                console.info('[context_isApplicationEnabled_test_0600]  set enable false error is: ' + error);
-                expect(error).assertFail();
-            });
-            await Utils.sleep(1000);
-            let timeOldStamp = await Utils.getNowTime();
-            let mData;
-            Bundle.isApplicationEnabled(BUNDLE_NAME, (error, data) => {
-                if (error) {
-                    console.error('[context_isApplicationEnabled_test_0600]Operation failed. Cause: ' + JSON.stringify(error));
-                    expect(error).assertFail();
-                }
-                let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_isApplicationEnabled_test_0600]', timeOldStamp, timeNewStamp);
-                mData = data;
-                console.info('[context_isApplicationEnabled_test_0600]  callBack error: ' + error);
-                console.info('[context_isApplicationEnabled_test_0600]  callBack data is:' + JSON.stringify(data));
-            });
-            await Utils.sleep(2000);
-            getApplicationEnabledFalse('[context_isApplicationEnabled_test_0600]', mData);
+            getApplicationEnabledFalse('[isApplicationEnabled_test_0300]', mData);
             done();
         });
 
         function getApplicationEnabledSuccess(msg, data) {
             console.log(msg + ' start  ' + JSON.stringify(data));
-            console.log(msg + ' data : ' + data);
-            expect(typeof (data)).assertEqual('boolean')
+            expect(typeof (data)).assertEqual('boolean');
         }
 
         function getApplicationEnabledTrue(msg, data) {
