@@ -16,8 +16,10 @@
 import bundle from '@ohos.bundle'
 import { describe, it, expect } from 'deccjsunit/index'
 
-const NAMECOUNT = 10000;
-const INSTALL_FLAG = 1
+const BUNDLE_NAME1 = 'com.example.bmsaccesstoken1';
+const BUNDLE_NAME2 = 'com.example.bmsaccesstoken2';
+const BUNDLE_NAME3 = 'com.example.bmsaccesstoken3';
+const USERID = 100;
 
 describe('ActsBmsAccessTokenTest', function () {
 
@@ -27,37 +29,16 @@ describe('ActsBmsAccessTokenTest', function () {
      * @tc.desc: get the accessTokenId
      */
     it('bms_AccessTokenId_0100', 0, async function (done) {
-        console.info('bms_AccessTokenId_0100 start');
-        var bundlePath = ['/data/test/bmsAccessTokenTest1.hap'];
-        var bundleName = 'com.example.bmsaccesstoken1';
-        let installer = await bundle.getBundleInstaller();
-        installer.install(bundlePath, {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, OnReceiveInstallEvent);
-
-        async function OnReceiveInstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            bundle.getApplicationInfo(bundleName, 0, 0).then(applicationInfo => {
-                console.info('accessTokenId: '+ applicationInfo.accessTokenId);
-                expect(applicationInfo.name).assertEqual(bundleName);
+        await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT, USERID)
+            .then(applicationInfo => {
+                console.info('accessTokenId: ' + applicationInfo.accessTokenId);
+                expect(applicationInfo.name).assertEqual(BUNDLE_NAME1);
                 expect(applicationInfo.accessTokenId).assertLarger(0);
-            })
-            installer.uninstall(bundleName, {
-                userId: 100,
-                installFlag: 1,
-                isKeepData: false
-            }, OnReceiveUninstallEvent);
-        };
-        function OnReceiveUninstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            done();
-        };
+                done();
+            }).catch((err) => {
+                expect(err).assertFail();
+                done();
+            });
     });
 
     /*
@@ -66,22 +47,9 @@ describe('ActsBmsAccessTokenTest', function () {
      * @tc.desc: get the reqPermissions and reqPermissionStates
      */
     it('bms_AccessTokenId_0200', 0, async function (done) {
-        console.info('bms_AccessTokenId_0200 start');
-        var bundlePath = ['/data/test/bmsAccessTokenTest1.hap'];
-        var bundleName = 'com.example.bmsaccesstoken1';
-        let installer = await bundle.getBundleInstaller();
-        installer.install(bundlePath, {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, OnReceiveInstallEvent);
-
-        async function OnReceiveInstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            bundle.getBundleInfo(bundleName, 16).then(bundleInfo => {
-                expect(bundleInfo.name).assertEqual(bundleName);
+        await bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
+            .then(bundleInfo => {
+                expect(bundleInfo.name).assertEqual(BUNDLE_NAME3);
                 expect(bundleInfo.reqPermissions.length).assertEqual(3);
                 expect(bundleInfo.reqPermissions[0]).assertEqual("ohos.permission.ALPHA");
                 expect(bundleInfo.reqPermissions[1]).assertEqual("ohos.permission.BETA");
@@ -90,19 +58,11 @@ describe('ActsBmsAccessTokenTest', function () {
                 expect(bundleInfo.reqPermissionStates[0]).assertEqual(-1);
                 expect(bundleInfo.reqPermissionStates[1]).assertEqual(-1);
                 expect(bundleInfo.reqPermissionStates[2]).assertEqual(0);
-            })
-            installer.uninstall(bundleName, {
-                userId: 100,
-                installFlag: 1,
-                isKeepData: false
-            }, OnReceiveUninstallEvent);
-        };
-        function OnReceiveUninstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            done();
-        };
+                done();
+            }).catch((err) => {
+                expect(err).assertFail();
+                done();
+            });
     });
 
     /*
@@ -111,33 +71,9 @@ describe('ActsBmsAccessTokenTest', function () {
      * @tc.desc: get the reqPermissions and reqPermissionStates
      */
     it('bms_AccessTokenId_0300', 0, async function (done) {
-        console.info('bms_AccessTokenId_0300 start');
-        var bundlePath1 = ['/data/test/bmsAccessTokenTest1.hap'];
-        var bundlePath2 = ['/data/test/bmsAccessTokenTest2.hap'];
-        var bundleName = 'com.example.bmsaccesstoken1';
-        let installer = await bundle.getBundleInstaller();
-        installer.install(bundlePath1, {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, OnReceiveInstallEvent);
-
-        async function OnReceiveInstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            installer.install(bundlePath2, {
-                userId: 100,
-                installFlag: 1,
-                isKeepData: false
-            }, OnReceiveUpdateEvent);
-        };
-        async function OnReceiveUpdateEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            bundle.getBundleInfo(bundleName, 16).then(bundleInfo => {
-                expect(bundleInfo.name).assertEqual(bundleName);
+        await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
+            .then(bundleInfo => {
+                expect(bundleInfo.name).assertEqual(BUNDLE_NAME2);
                 expect(bundleInfo.reqPermissions.length).assertEqual(5);
                 expect(bundleInfo.reqPermissions[0]).assertEqual("ohos.permission.ALPHA");
                 expect(bundleInfo.reqPermissions[1]).assertEqual("ohos.permission.KEEP_BACKGROUND_RUNNING");
@@ -150,19 +86,11 @@ describe('ActsBmsAccessTokenTest', function () {
                 expect(bundleInfo.reqPermissionStates[2]).assertEqual(-1);
                 expect(bundleInfo.reqPermissionStates[3]).assertEqual(0);
                 expect(bundleInfo.reqPermissionStates[4]).assertEqual(0);
-            })
-            installer.uninstall(bundleName, {
-                userId: 100,
-                installFlag: 1,
-                isKeepData: false
-            }, OnReceiveUninstallEvent);
-        }
-        function OnReceiveUninstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            done();
-        };
+                done();
+            }).catch((err) => {
+                expect(err).assertFail();
+                done();
+            });
     });
 
     /*
@@ -171,33 +99,9 @@ describe('ActsBmsAccessTokenTest', function () {
      * @tc.desc: get the reqPermissions and reqPermissionStates
      */
     it('bms_AccessTokenId_0400', 0, async function (done) {
-        console.info('bms_AccessTokenId_0400 start');
-        var bundlePath1 = ['/data/test/bmsAccessTokenTest1.hap'];
-        var bundlePath2 = ['/data/test/bmsAccessTokenTest3.hap'];
-        var bundleName = 'com.example.bmsaccesstoken1';
-        let installer = await bundle.getBundleInstaller();
-        installer.install(bundlePath1, {
-            userId: 100,
-            installFlag: 1,
-            isKeepData: false
-        }, OnReceiveInstallEvent);
-
-        async function OnReceiveInstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            installer.install(bundlePath2, {
-                userId: 100,
-                installFlag: 0,
-                isKeepData: false
-            }, OnReceiveUpdateEvent);
-        };
-        async function OnReceiveUpdateEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            bundle.getBundleInfo(bundleName, 16).then(bundleInfo => {
-                expect(bundleInfo.name).assertEqual(bundleName);
+        await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION)
+            .then(bundleInfo => {
+                expect(bundleInfo.name).assertEqual(BUNDLE_NAME1);
                 expect(bundleInfo.reqPermissions.length).assertEqual(6);
                 expect(bundleInfo.reqPermissions[0]).assertEqual("ohos.permission.ALPHA");
                 expect(bundleInfo.reqPermissions[1]).assertEqual("ohos.permission.BETA");
@@ -212,66 +116,29 @@ describe('ActsBmsAccessTokenTest', function () {
                 expect(bundleInfo.reqPermissionStates[3]).assertEqual(-1);
                 expect(bundleInfo.reqPermissionStates[4]).assertEqual(0);
                 expect(bundleInfo.reqPermissionStates[5]).assertEqual(0);
-            })
-            installer.uninstall(bundleName, {
-                userId: 100,
-                installFlag: 1,
-                isKeepData: false
-            }, OnReceiveUninstallEvent);
-        }
-        function OnReceiveUninstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            done();
-        };
+                done();
+            }).catch((err) => {
+                expect(err).assertFail();
+                done();
+            });
     });
-    
+
     /**
      * @tc.number bms_AccessTokenId_0500
      * @tc.name BUNDLE::getBundleInfos
      * @tc.desc Test getBundleInfos interfaces with with a flag
      */
-     it("bms_AccessTokenId_0500", 0, async function (done) {
-        console.info("bms_AccessTokenId_0500 start");
-        var bundlePath = ["/data/test/bmsAccessTokenTest1.hap"];
-        var bundleName = "com.example.bmsaccesstoken1";
-        let installer = await bundle.getBundleInstaller();
-        installer.install(
-            bundlePath,
-            {
-              userId: 100,
-              installFlag: INSTALL_FLAG,
-              isKeepData: false,
-            },
-            OnReceiveInstallEvent
-        );
-
-        async function OnReceiveInstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            bundle.getApplicationInfo(bundleName, bundle.BundleFlag.GET_BUNDLE_DEFAULT).then((applicationInfo) => {
-              console.info("accessTokenId: " + applicationInfo.accessTokenId);
-              expect(applicationInfo.name).assertEqual(bundleName);
-              expect(applicationInfo.reqPermissionStates.length).assertEqual(0);
+    it("bms_AccessTokenId_0500", 0, async function (done) {
+        await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT)
+            .then((applicationInfo) => {
+                console.info("bms_AccessTokenId_0500 accessTokenId: " + applicationInfo.accessTokenId);
+                expect(applicationInfo.name).assertEqual(BUNDLE_NAME1);
+                expect(applicationInfo.accessTokenId).assertLarger(0);
+                done();
+            }).catch((err) => {
+                expect(err).assertFail();
+                done();
             });
-            installer.uninstall(
-                    bundleName,
-                    {
-                          userId: 100,
-                          installFlag: INSTALL_FLAG,
-                          isKeepData: false,
-                    },
-                    OnReceiveUninstallEvent
-            );    
-        }   
-        function OnReceiveUninstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            done();
-        }
     });
 
     /**
@@ -280,47 +147,17 @@ describe('ActsBmsAccessTokenTest', function () {
      * @tc.desc Test getBundleInfos interfaces with a flag
      */
     it("bms_AccessTokenId_0600", 0, async function (done) {
-        console.info("bms_AccessTokenId_0600 start");
-        var bundlePath = ["/data/test/bmsAccessTokenTest1.hap"];
-        var bundleName = "com.example.bmsaccesstoken1";
-        let installer = await bundle.getBundleInstaller();
-        installer.install(
-            bundlePath,
-            {
-                userId: 100,
-                installFlag: INSTALL_FLAG,
-                isKeepData: false,
-            },
-            OnReceiveInstallEvent
-        );
-
-        async function OnReceiveInstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            bundle.getApplicationInfo(bundleName, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
+        await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES)
             .then((applicationInfo) => {
-                  console.info("accessTokenId: " + applicationInfo.accessTokenId);
-                  expect(applicationInfo.name).assertEqual(bundleName);
-                  expect(applicationInfo.reqPermissionStates.length).assertLarger(0);
+                console.info("bms_AccessTokenId_0600 accessTokenId: " + applicationInfo.accessTokenId);
+                expect(applicationInfo.name).assertEqual(BUNDLE_NAME1);
+                expect(applicationInfo.accessTokenId).assertLarger(0);
+                done();
+            }).catch((err) => {
+                expect(err).assertFail();
+                done();
             });
-            installer.uninstall(
-                    bundleName,
-                    {
-                          userId: 100,
-                          installFlag: INSTALL_FLAG,
-                          isKeepData: false,
-                    },
-                    OnReceiveUninstallEvent
-            );    
-        }
-        function OnReceiveUninstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            done();
-        }
-    })  ;
+    });
 
     /**
      * @tc.number bms_AccessTokenId_0700
@@ -328,95 +165,16 @@ describe('ActsBmsAccessTokenTest', function () {
      * @tc.desc Test getBundleInfos interfaces with a flag
      */
     it("bms_AccessTokenId_0700", 0, async function (done) {
-        console.info("bms_AccessTokenId_0700 start");
-        var bundlePath = ["/data/test/bmsAccessTokenTest1.hap"];
-        var bundleName = "com.example.bmsaccesstoken1";
-        let installer = await bundle.getBundleInstaller();
-        installer.install(
-              bundlePath,
-              {
-                  userId: 100,
-                  installFlag: INSTALL_FLAG,
-                  isKeepData: false,
-              },
-              OnReceiveInstallEvent
-        );
-
-        async function OnReceiveInstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            bundle.getApplicationInfo(bundleName, bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION)
+        await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION)
             .then((applicationInfo) => {
-                console.info("accessTokenId: " + applicationInfo.accessTokenId);
-                expect(applicationInfo.name).assertEqual(bundleName);
-                expect(applicationInfo.reqPermissionStates.length).assertLarger(0);
+                console.info("bms_AccessTokenId_0700 accessTokenId: " + applicationInfo.accessTokenId);
+                expect(applicationInfo.name).assertEqual(BUNDLE_NAME1);
+                expect(applicationInfo.accessTokenId).assertLarger(0);
+                done();
+            }).catch((err) => {
+                expect(err).assertFail();
+                done();
             });
-            installer.uninstall(
-                bundleName,
-                {
-                    userId: 100,
-                    installFlag: INSTALL_FLAG,
-                    isKeepData: false,
-                },
-                OnReceiveUninstallEvent
-            );
-        }
-        function OnReceiveUninstallEvent(err, data) {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual("SUCCESS");
-            done();
-        }
     });
 
-    /**
-     * @tc.number bms_AccessTokenId_0800
-     * @tc.name BUNDLE::getBundleInfos
-     * @tc.desc Test getBundleInfos interfaces with a flag
-     */
-    it("bms_AccessTokenId_0800", 0, async function (done) {
-        console.info("bms_AccessTokenId_0800 start");
-        var bundlePath = ["/data/test/bmsAccessTokenTest1.hap"];
-        var bundleName = "com.example.bmsaccesstoken1";
-        let installer = await bundle.getBundleInstaller();
-        installer.install(
-              bundlePath,
-              {
-                  userId: 100,
-                  installFlag: INSTALL_FLAG,
-                  isKeepData: false,
-              },
-              OnReceiveInstallEvent
-          );
-
-        async function OnReceiveInstallEvent(err, data) {
-          expect(err.code).assertEqual(0);
-          expect(data.status).assertEqual(0);
-          expect(data.statusMessage).assertEqual("SUCCESS");
-          bundle.getApplicationInfo(bundleName, bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION)
-          .then((applicationInfo) => {
-              console.info("accessTokenId: " + applicationInfo.accessTokenId);
-              expect(applicationInfo.name).assertEqual(bundleName);
-              expect(data.reqPermissionStates.length).assertLarger(0);
-              expect(data.reqPermissionStates[0]).assertEqual(0);
-              expect(data.reqPermissionStates[1]).assertEqual(0);
-          });
-          installer.uninstall(
-              bundleName,
-              {
-                  userId: 100,
-                  installFlag: INSTALL_FLAG,
-                  isKeepData: false,
-              },
-              OnReceiveUninstallEvent
-          );
-        }
-          function OnReceiveUninstallEvent(err, data) {
-              expect(err.code).assertEqual(0);
-              expect(data.status).assertEqual(0);
-              expect(data.statusMessage).assertEqual("SUCCESS");
-              done();
-          } 
-    });
-})
+});
