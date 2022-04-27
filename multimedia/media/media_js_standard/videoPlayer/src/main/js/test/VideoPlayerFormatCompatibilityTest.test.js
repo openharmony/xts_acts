@@ -77,10 +77,10 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         } 
     }
 
-    async function playVideoSource(VIDEO_SOURCE, done) {
-        console.info(`case media source VIDEO_SOURCE: ${VIDEO_SOURCE}`)
+    async function playVideoSource(videoSource, done) {
+        console.info(`case media source videoSource: ${videoSource}`)
 
-        await getFileDescriptor(VIDEO_SOURCE).then((res) => {
+        await getFileDescriptor(videoSource).then((res) => {
             fileDescriptor = res;
         });
         isFileOpen(fileDescriptor, done);
@@ -91,6 +91,7 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
             if (typeof (video) != 'undefined') {
                 console.info('case createVideoPlayer success');
                 videoPlayer = video;
+                expect(videoPlayer.state).assertEqual('idle');
             } else {
                 console.error('case createVideoPlayer failed');
                 expect().assertFail();
@@ -108,6 +109,7 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
 
         await videoPlayer.prepare().then(() => {
             console.info('case prepare called');
+            expect(videoPlayer.state).assertEqual('prepared');
         }, failureCallback).catch(catchCallback);
 
         await videoPlayer.getTrackDescription().then((arrayList) => {
@@ -125,6 +127,7 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         let startTime = videoPlayer.currentTime;
         await videoPlayer.play().then(() => {
             console.info('case play called');
+            expect(videoPlayer.state).assertEqual('playing');
             sleep(PLAY_TIME);
         }, failureCallback).catch(catchCallback);
         let endTime = videoPlayer.currentTime;
@@ -132,41 +135,49 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
 
         await videoPlayer.seek(SEEK_TIME).then((seekDoneTime) => {
             console.info('case seek called and seekDoneTime is ' + seekDoneTime);
+            expect(videoPlayer.state).assertEqual('playing');
             sleep(DELTA_TIME);
         }, failureCallback).catch(catchCallback);
         
         await videoPlayer.pause().then(() => {
             console.info('case pause called');
+            expect(videoPlayer.state).assertEqual('paused');
             sleep(DELTA_TIME);
         }, failureCallback).catch(catchCallback);
 
         await videoPlayer.play().then(() => {
             console.info('case play called');
+            expect(videoPlayer.state).assertEqual('playing');
             sleep(PLAY_TIME);
         }, failureCallback).catch(catchCallback);
 
         await videoPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X).then((speedMode) => {
             console.info('case setSpeed called and speedMode is ' + speedMode);
+            expect(videoPlayer.state).assertEqual('playing');
+            expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
             sleep(DELTA_TIME);
         }, failureCallback).catch(catchCallback);
 
         await videoPlayer.setVolume(1).then(() => {
             console.info('case setVolume called');
+            expect(videoPlayer.state).assertEqual('playing');
         }, failureCallback).catch(catchCallback);  
 
         await videoPlayer.stop().then(() => {
             console.info('case stop called');
+            expect(videoPlayer.state).assertEqual('stopped');
         }, failureCallback).catch(catchCallback);
 
         await videoPlayer.reset().then(() => {
             console.info('case reset called');
+            expect(videoPlayer.state).assertEqual('idle');
         }, failureCallback).catch(catchCallback);
 
         await videoPlayer.release().then(() => {
             console.info('case release called');
         }, failureCallback).catch(catchCallback);
 
-        await closeFileDescriptor(VIDEO_SOURCE);
+        await closeFileDescriptor(videoSource);
     }
 
     /* *
@@ -178,8 +189,9 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_0900', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_none_audio.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        console.info('1')
+        let videoSource = 'h264_none_audio.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -192,8 +204,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_1100', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg2_none_audio.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg2_none_audio.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -206,8 +218,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_1200', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_none_audio.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_none_audio.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -220,8 +232,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_1300', 0, async function (done) {
-        let VIDEO_SOURCE = 'none_video_aac.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'none_video_aac.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -234,8 +246,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_1400', 0, async function (done) {
-        let VIDEO_SOURCE = 'none_video_mp3.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'none_video_mp3.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -248,8 +260,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_1600', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_aac_720p_30r.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_aac_720p_30r.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -262,8 +274,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_1700', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_mp3_480p_25r.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_mp3_480p_25r.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -276,8 +288,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_1800', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_mp3_270p_10r.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_mp3_270p_10r.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -290,8 +302,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_2500', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_aac_320x240_30r.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_aac_320x240_30r.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -304,8 +316,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_3000', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_mp3_480x320_30r.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_mp3_480x320_30r.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -318,8 +330,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_3700', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_aac_640x480_30r.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_aac_640x480_30r.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -332,8 +344,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_3800', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_mp3_640x480_25r.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_mp3_640x480_25r.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -346,8 +358,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_7800', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_none_audio_640x480_30r.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_none_audio_640x480_30r.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -360,8 +372,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_7900', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg2_none_audio_640x480_30r.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg2_none_audio_640x480_30r.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -374,8 +386,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MP4_8000', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_none_audio_640x480_30r.mp4';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_none_audio_640x480_30r.mp4';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -388,8 +400,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_0900', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_none_audio.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_none_audio.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -402,8 +414,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_1100', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg2_none_audio.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg2_none_audio.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -416,8 +428,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_1200', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_none_audio.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_none_audio.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -430,8 +442,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_1300', 0, async function (done) {
-        let VIDEO_SOURCE = 'none_video_aac.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'none_video_aac.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -444,8 +456,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_1400', 0, async function (done) {
-        let VIDEO_SOURCE = 'none_video_mp3.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'none_video_mp3.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -458,8 +470,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_1600', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_aac_720p_30r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_aac_720p_30r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -472,8 +484,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_1700', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_aac_480p_25r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_aac_480p_25r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -486,8 +498,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_1800', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_aac_270p_10r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_aac_270p_10r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -500,8 +512,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_2000', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_mp3_720p_30r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_mp3_720p_30r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -514,8 +526,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_2100', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_mp3_480p_25r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_mp3_480p_25r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -528,8 +540,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_2200', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_mp3_270p_10r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_mp3_270p_10r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -542,8 +554,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_2400', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg2_aac_720p_30r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg2_aac_720p_30r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -556,8 +568,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_2500', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg2_aac_480p_25r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg2_aac_480p_25r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -570,8 +582,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_2600', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg2_aac_270p_10r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg2_aac_270p_10r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -584,8 +596,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_2800', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg2_mp3_720p_30r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg2_mp3_720p_30r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -598,8 +610,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_2900', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg2_mp3_480p_25r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg2_mp3_480p_25r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -612,8 +624,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_3000', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg2_mp3_270p_10r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg2_mp3_270p_10r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -626,8 +638,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_3200', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_aac_720p_30r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_aac_720p_30r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -640,8 +652,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_3300', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_aac_480p_25r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_aac_480p_25r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -654,8 +666,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_3400', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_aac_270p_10r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_aac_270p_10r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -668,8 +680,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_3600', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_mp3_720p_30r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_mp3_720p_30r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -682,8 +694,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_3700', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_mp3_480p_25r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_mp3_480p_25r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -696,8 +708,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_3800', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_mp3_270p_10r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_mp3_270p_10r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -710,8 +722,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_3900', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_none_audio_640x480_30r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_none_audio_640x480_30r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -724,8 +736,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_4000', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg2_none_audio_640x480_30r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg2_none_audio_640x480_30r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -738,8 +750,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_4100', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_none_audio_640x480_30r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_none_audio_640x480_30r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -752,8 +764,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_4200', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_aac_640x480_30r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_aac_640x480_30r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -766,8 +778,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
    it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_4300', 0, async function (done) {
-       let VIDEO_SOURCE = 'h264_mp3_640x480_25r.ts';
-       await playVideoSource(VIDEO_SOURCE, done);
+       let videoSource = 'h264_mp3_640x480_25r.ts';
+       await playVideoSource(videoSource, done);
        done();
    })
 
@@ -780,8 +792,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_4400', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg2_aac_640x480_30r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg2_aac_640x480_30r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -794,8 +806,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_4500', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg2_mp3_640x480_25r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg2_mp3_640x480_25r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -808,8 +820,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_4600', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_aac_640x480_30r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_aac_640x480_30r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -822,8 +834,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_TS_4700', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_mp3_640x480_25r.ts';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_mp3_640x480_25r.ts';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -836,8 +848,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_WEBM_0200', 0, async function (done) {
-        let VIDEO_SOURCE = 'vp8_none_audio.webm';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'vp8_none_audio.webm';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -850,8 +862,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_WEBM_0300', 0, async function (done) {
-        let VIDEO_SOURCE = 'none_video_vorbis.webm';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'none_video_vorbis.webm';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -864,8 +876,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_WEBM_0500', 0, async function (done) {
-        let VIDEO_SOURCE = 'vp8_vorbis_720p_30r.webm';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'vp8_vorbis_720p_30r.webm';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -878,8 +890,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_WEBM_0600', 0, async function (done) {
-        let VIDEO_SOURCE = 'vp8_vorbis_480p_25r.webm';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'vp8_vorbis_480p_25r.webm';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -892,8 +904,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_WEBM_0700', 0, async function (done) {
-        let VIDEO_SOURCE = 'vp8_vorbis_270p_10r.webm';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'vp8_vorbis_270p_10r.webm';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -906,8 +918,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_WEBM_0800', 0, async function (done) {
-        let VIDEO_SOURCE = 'vp8_none_audio_640x480_30r.webm';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'vp8_none_audio_640x480_30r.webm';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -920,8 +932,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_WEBM_0900', 0, async function (done) {
-        let VIDEO_SOURCE = 'vp8_vorbis_640x480_25r.webm';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'vp8_vorbis_640x480_25r.webm';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -934,8 +946,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_0900', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_none_audio.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_none_audio.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -948,8 +960,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_1100', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg2_none_audio.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg2_none_audio.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -962,8 +974,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_1200', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_none_audio.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_none_audio.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -976,8 +988,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_1300', 0, async function (done) {
-        let VIDEO_SOURCE = 'none_video_aac.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'none_video_aac.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -990,8 +1002,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_1400', 0, async function (done) {
-        let VIDEO_SOURCE = 'none_video_mp3.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'none_video_mp3.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -1004,8 +1016,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_2000', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_aac_720p_30r.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_aac_720p_30r.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -1018,8 +1030,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_2100', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_aac_480p_25r.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_aac_480p_25r.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -1032,8 +1044,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_2200', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_aac_270p_10r.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_aac_270p_10r.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -1046,8 +1058,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_2300', 0, async function (done) {
-        let VIDEO_SOURCE = 'h264_none_audio_640x480_30r.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h264_none_audio_640x480_30r.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -1060,8 +1072,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_2400', 0, async function (done) {
-        let VIDEO_SOURCE = 'h263_none_audio_640x480_30r.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h263_none_audio_640x480_30r.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -1074,8 +1086,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_2500', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg2_none_audio_640x480_30r.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg2_none_audio_640x480_30r.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -1088,8 +1100,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_2600', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_none_audio_640x480_30r.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_none_audio_640x480_30r.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -1102,8 +1114,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_2700', 0, async function (done) {
-        let VIDEO_SOURCE = 'h263_aac_640x480_30r.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'h263_aac_640x480_30r.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -1116,8 +1128,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_3100', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_aac_640x480_30r.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_aac_640x480_30r.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
@@ -1130,8 +1142,8 @@ describe('VideoPlayerFormatCompatibilityTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_PLAYER_FORMAT_MKV_3200', 0, async function (done) {
-        let VIDEO_SOURCE = 'mpeg4_aac_270p_25r.mkv';
-        await playVideoSource(VIDEO_SOURCE, done);
+        let videoSource = 'mpeg4_aac_270p_25r.mkv';
+        await playVideoSource(videoSource, done);
         done();
     })
 
