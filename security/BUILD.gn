@@ -20,7 +20,7 @@ group("security") {
       "access_token/AccessTokenTest_NoPermission_js:ActsAccessTokenJSApiTestNoPermission",
       "access_token/AccessTokenTest_Normal_js:ActsAccessTokenJSApiTestNormal",
       "huks_standard",
-      "security_huks",
+      "security_huks_basic",
     ]
   }
 }
