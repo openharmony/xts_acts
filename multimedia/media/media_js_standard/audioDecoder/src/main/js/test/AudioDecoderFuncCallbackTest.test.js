@@ -748,10 +748,11 @@ describe('AudioDecoderFuncCallback', function () {
             })
         });
         eventEmitter.on('start', () => {
-            audioDecodeProcessor.start((err) => {
+            audioDecodeProcessor.start(async(err) => {
                 expect(err).assertUndefined();
                 console.info(`case start 1`);
-                setTimeout(() => {eventEmitter.emit('flush')},2000)
+                await sleep(2000);
+                eventEmitter.emit('flush');
             })
         });
         eventEmitter.on('flush', () => {
@@ -759,7 +760,7 @@ describe('AudioDecoderFuncCallback', function () {
             outputQueue = [];
             audioDecodeProcessor.flush((err) => {
                 expect(err).assertUndefined();
-                console.info(`case flush after 2s`);
+                console.info(`case flush after 2s success`);
             })
         });
         media.createAudioDecoderByMime('audio/mp4a-latm', (err, processor) => {
