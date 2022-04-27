@@ -12,9 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+
 import notification from '@system.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-
 describe('ActsNotificationShowTest', function () {
     console.info("===========ActsNotificationShowTest start====================>");
 
@@ -243,6 +244,4 @@ describe('ActsNotificationShowTest', function () {
         console.log('===========ActsNotificationShowTest_1000 success====================>' + con.contentTitle + con.clickAction.bundleName + con.clickAction.abilityName + con.clickAction.uri);
         done();
     })
-
-
 })
