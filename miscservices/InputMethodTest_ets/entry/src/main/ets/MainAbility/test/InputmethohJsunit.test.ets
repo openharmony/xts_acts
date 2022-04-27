@@ -76,5 +76,19 @@ export default function settingUiJsunit() {
       expect(promise).assertEqual(true)
       done();
     });
+
+    /*
+     * @tc.number    : inputmethod_test_MAX_TYPE_NUM_001
+     * @tc.name      : inputMethod::MAX_TYPE_NUM
+     * @tc.desc      : Verify Max_ TYPE_ NUM
+     */
+    it('inputmethod_test_MAX_TYPE_NUM_001', 0, async function (done) {
+      console.log("************* inputmethod_test_MAX_TYPE_NUM_001 Test start*************");
+      let inputMethodSetting = inputmeth.MAX_TYPE_NUM;
+      console.log("inputmethod_test_001 result:" + inputMethodSetting);
+      expect(inputMethodSetting != null).assertTrue();
+      done();
+      console.log("************* inputmethod_test_MAX_TYPE_NUM_001 Test end*************");
+    });
   })
 }
