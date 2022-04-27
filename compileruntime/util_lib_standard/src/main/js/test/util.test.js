@@ -4871,7 +4871,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAnyArrayBuffer(new ArrayBuffer([]));
         expect(result).assertEqual(true);
     })
@@ -4883,7 +4883,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAnyArrayBuffer(true);
         expect(result).assertEqual(false);
     })
@@ -4895,7 +4895,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAnyArrayBuffer(false);
         expect(result).assertEqual(false);
     })
@@ -4907,7 +4907,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var buf = new ArrayBuffer();
         var result = proc.isAnyArrayBuffer(buf);
         expect(result).assertEqual(true);
@@ -4920,7 +4920,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAnyArrayBuffer(new Boolean(false));
         expect(result).assertEqual(false);
     })
@@ -4934,7 +4934,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBufferView(new Int8Array([]));
         expect(result).assertEqual(true);
     })
@@ -4948,7 +4948,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBufferView(new Int32Array([]));
         expect(result).assertEqual(true);
     })
@@ -4962,7 +4962,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBufferView(new DataView(new ArrayBuffer(16)));
         expect(result).assertEqual(true);
     })
@@ -4976,7 +4976,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBufferView(false);
         expect(result).assertEqual(false);
     })
@@ -4990,7 +4990,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBufferView(new Int16Array());
         expect(result).assertEqual(true);
     })
@@ -5002,7 +5002,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         function foo() {
             var result = proc.isArgumentsObject(arguments);
             expect(result).assertEqual(true);
@@ -5017,7 +5017,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArgumentsObject(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5029,7 +5029,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArgumentsObject(true);
         expect(result).assertEqual(false);
     })
@@ -5041,7 +5041,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArgumentsObject(false);
         expect(result).assertEqual(false);
     })
@@ -5053,7 +5053,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArgumentsObject(new Boolean());
         expect(result).assertEqual(false);
     })
@@ -5065,7 +5065,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBuffer(new ArrayBuffer([]));
         expect(result).assertEqual(true);
     })
@@ -5077,7 +5077,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBuffer(true);
         expect(result).assertEqual(false);
     })
@@ -5089,7 +5089,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBuffer(false);
         expect(result).assertEqual(false);
     })
@@ -5101,7 +5101,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBuffer(new Int8Array());
         expect(result).assertEqual(false);
     })
@@ -5113,7 +5113,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBuffer(new Int16Array());
         expect(result).assertEqual(false);
     })
@@ -5125,7 +5125,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAsyncFunction001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAsyncFunction(false);
         expect(result).assertEqual(false);
     })
@@ -5137,7 +5137,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAsyncFunction002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAsyncFunction(function foo() {});
         expect(result).assertEqual(false);
     })
@@ -5149,7 +5149,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAsyncFunction003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAsyncFunction(new Int8Array());
         expect(result).assertEqual(false);
     })
@@ -5161,7 +5161,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAsyncFunction004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAsyncFunction(true);
         expect(result).assertEqual(false);
     })
@@ -5173,7 +5173,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBigInt64Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBigInt64Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5185,7 +5185,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBigUint64Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBigUint64Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5197,7 +5197,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBooleanObject(new Boolean(false));
         expect(result).assertEqual(true);
     })
@@ -5209,7 +5209,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBooleanObject(new Boolean(true));
         expect(result).assertEqual(true);
     })
@@ -5221,7 +5221,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBooleanObject(true);
         expect(result).assertEqual(false);
     })
@@ -5233,7 +5233,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBooleanObject(false);
         expect(result).assertEqual(false);
     })
@@ -5245,7 +5245,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBooleanObject(Boolean(true));
         expect(result).assertEqual(false);
     })
@@ -5257,7 +5257,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBoxedPrimitive(false);
         expect(result).assertEqual(false);
     })
@@ -5269,7 +5269,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBoxedPrimitive(new Boolean(false));
         expect(result).assertEqual(true);
     })
@@ -5281,7 +5281,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBoxedPrimitive(Symbol('foo'));
         expect(result).assertEqual(false);
     })
@@ -5293,7 +5293,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBoxedPrimitive(Object(Symbol('foo')));
         expect(result).assertEqual(true);
     })
@@ -5305,7 +5305,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBoxedPrimitive(new Boolean(true));
         expect(result).assertEqual(true);
     })
@@ -5317,7 +5317,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDataView001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const ab = new ArrayBuffer(20);
         var result = proc.isDataView(new DataView(ab));
         expect(result).assertEqual(true);
@@ -5330,7 +5330,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDataView002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDataView(new Int8Array());
         expect(result).assertEqual(false);
     })
@@ -5342,7 +5342,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDataView003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDataView(new Float64Array());
         expect(result).assertEqual(false);
     })
@@ -5354,7 +5354,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDataView004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDataView(true);
         expect(result).assertEqual(false);
     })
@@ -5366,7 +5366,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDataView005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDataView(false);
         expect(result).assertEqual(false);
     })
@@ -5378,7 +5378,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDate001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDate(new Date());
         expect(result).assertEqual(true);
     })
@@ -5390,7 +5390,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDate002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDate(new Int8Array());
         expect(result).assertEqual(false);
     })
@@ -5402,7 +5402,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDate003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDate(true);
         expect(result).assertEqual(false);
     })
@@ -5414,7 +5414,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDate004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDate(new Int16Array());
         expect(result).assertEqual(false);
     })
@@ -5426,7 +5426,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDate005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDate(new Float64Array());
         expect(result).assertEqual(false);
     })
@@ -5438,7 +5438,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsExternal001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const data = util.createExternalType();
         var result = proc.isExternal(data);
         expect(result).assertEqual(true);
@@ -5451,7 +5451,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsExternal002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isExternal(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5463,7 +5463,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsExternal003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isExternal(true);
         expect(result).assertEqual(false);
     })
@@ -5475,7 +5475,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsExternal004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isExternal(false);
         expect(result).assertEqual(false);
     })
@@ -5487,7 +5487,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsExternal005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isExternal(new Int16Array());
         expect(result).assertEqual(false);
     })
@@ -5499,7 +5499,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat32Array(new Float32Array());
         expect(result).assertEqual(true);
     })
@@ -5511,7 +5511,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat32Array(new Int8Array());
         expect(result).assertEqual(false);
     })
@@ -5523,7 +5523,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat32Array(new Int16Array());
         expect(result).assertEqual(false);
     })
@@ -5535,7 +5535,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat32Array(new Float64Array());
         expect(result).assertEqual(false);
     })
@@ -5547,7 +5547,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat32Array(new Uint8Array());
         expect(result).assertEqual(false);
     })
@@ -5559,7 +5559,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat64Array(new Float64Array());
         expect(result).assertEqual(true);
     })
@@ -5571,7 +5571,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat64Array(new Int8Array());
         expect(result).assertEqual(false);
     })
@@ -5583,7 +5583,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat64Array(new Float32Array());
         expect(result).assertEqual(false);
     })
@@ -5595,7 +5595,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat64Array(new Uint8Array());
         expect(result).assertEqual(false);
     })
@@ -5607,7 +5607,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat64Array(new Int16Array([]));
         expect(result).assertEqual(false);
     })
@@ -5619,7 +5619,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsGeneratorFunction001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorFunction(new Int8Array());
         expect(result).assertEqual(false);
     })
@@ -5631,7 +5631,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsGeneratorFunction002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorFunction(function foo() {});
         expect(result).assertEqual(false);
     })
@@ -5643,7 +5643,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsGeneratorFunction003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorFunction(true);
         expect(result).assertEqual(false);
     })
@@ -5655,7 +5655,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsGeneratorFunction004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorFunction(false);
         expect(result).assertEqual(false);
     })
@@ -5667,7 +5667,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsGeneratorObject001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorObject(false);
         expect(result).assertEqual(false);
     })
@@ -5679,7 +5679,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsGeneratorObject002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorObject(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5691,7 +5691,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsGeneratorObject003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorObject(new Int16Array([]));
         expect(result).assertEqual(false);
     })
@@ -5703,7 +5703,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsGeneratorObject004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorObject(true);
         expect(result).assertEqual(false);
     })
@@ -5715,7 +5715,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt8Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt8Array(new Int8Array([]));
         expect(result).assertEqual(true);
     })
@@ -5727,7 +5727,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt8Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt8Array(new ArrayBuffer([]));
         expect(result).assertEqual(false);
     })
@@ -5739,7 +5739,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt8Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt8Array(new Int32Array([]));
         expect(result).assertEqual(false);
     })
@@ -5751,7 +5751,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt8Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt8Array(new Float64Array([]));
         expect(result).assertEqual(false);
     })
@@ -5763,7 +5763,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt8Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt8Array(new Uint8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5775,7 +5775,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt16Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt16Array(new Int16Array([]));
         expect(result).assertEqual(true);
     })
@@ -5787,7 +5787,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt16Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt16Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5799,7 +5799,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt16Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt16Array(new Int32Array([]));
         expect(result).assertEqual(false);
     })
@@ -5811,7 +5811,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt16Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt16Array(new Uint8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5823,7 +5823,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt16Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt16Array(new Float64Array([]));
         expect(result).assertEqual(false);
     })
@@ -5835,7 +5835,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt32Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt32Array(new Int32Array([]));
         expect(result).assertEqual(true);
     })
@@ -5847,7 +5847,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt32Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt32Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5859,7 +5859,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt32Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt32Array(new Int16Array([]));
         expect(result).assertEqual(false);
     })
@@ -5871,7 +5871,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt32Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt32Array(new Float64Array([]));
         expect(result).assertEqual(false);
     })
@@ -5883,7 +5883,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt32Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt32Array(new Uint8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5895,7 +5895,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMap001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isMap(new Map());
         expect(result).assertEqual(true);
     })
@@ -5907,7 +5907,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMap002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isMap(new Set());
         expect(result).assertEqual(false);
     })
@@ -5919,7 +5919,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMap003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isMap(new String());
         expect(result).assertEqual(false);
     })
@@ -5931,7 +5931,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMap004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isMap(new Object());
         expect(result).assertEqual(false);
     })
@@ -5943,7 +5943,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMap005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isMap(new Boolean());
         expect(result).assertEqual(false);
     })
@@ -5955,7 +5955,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMapIterator001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const map = new Map();
         var result = proc.isMapIterator(map.keys());
         expect(result).assertEqual(true);
@@ -5968,7 +5968,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMapIterator002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const map = new Map();
         var result = proc.isMapIterator(map.values());
         expect(result).assertEqual(true);
@@ -5981,7 +5981,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMapIterator003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const map = new Map();
         var result = proc.isMapIterator(map.entries());
         expect(result).assertEqual(true);
@@ -5994,7 +5994,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMapIterator004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const map = new Map();
         var result = proc.isMapIterator(map[Symbol.iterator]());
         expect(result).assertEqual(true);
@@ -6007,7 +6007,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMapIterator005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const map = new Map();
         var result = proc.isMapIterator(map);
         expect(result).assertEqual(false);
@@ -6020,7 +6020,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isModuleNamespaceObject(util);
         expect(result).assertEqual(false);
     })
@@ -6032,7 +6032,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isModuleNamespaceObject(url);
         expect(result).assertEqual(false);
     })
@@ -6044,7 +6044,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isModuleNamespaceObject(file);
         expect(result).assertEqual(false);
     })
@@ -6056,7 +6056,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isModuleNamespaceObject(process);
         expect(result).assertEqual(false);
     })
@@ -6068,7 +6068,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isModuleNamespaceObject(app);
         expect(result).assertEqual(false);
     })
@@ -6080,7 +6080,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNativeError001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNativeError(new TypeError());
         expect(result).assertEqual(true);
     })
@@ -6092,7 +6092,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNativeError002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNativeError(new Error());
         expect(result).assertEqual(true);
     })
@@ -6104,7 +6104,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNativeError003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNativeError(new RangeError());
         expect(result).assertEqual(true);
     })
@@ -6116,7 +6116,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNativeError004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNativeError(true);
         expect(result).assertEqual(false);
     })
@@ -6128,7 +6128,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNativeError005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNativeError(false);
         expect(result).assertEqual(false);
     })
@@ -6140,7 +6140,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNumberObject001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNumberObject(new Number(0));
         expect(result).assertEqual(true);
     })
@@ -6152,7 +6152,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNumberObject002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNumberObject(new Number(10));
         expect(result).assertEqual(true);
     })
@@ -6164,7 +6164,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNumberObject003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNumberObject(new Number(200));
         expect(result).assertEqual(true);
     })
@@ -6176,7 +6176,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNumberObject004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNumberObject(0);
         expect(result).assertEqual(false);
     })
@@ -6188,7 +6188,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNumberObject005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNumberObject(100);
         expect(result).assertEqual(false);
     })
@@ -6200,7 +6200,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsPromise001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isPromise(Promise.resolve(42));
         expect(result).assertEqual(true);
     })
@@ -6212,7 +6212,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsPromise002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isPromise(Promise.resolve(33));
         expect(result).assertEqual(true);
     })
@@ -6224,7 +6224,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsPromise003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isPromise(Promise.resolve(44));
         expect(result).assertEqual(true);
     })
@@ -6236,7 +6236,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsPromise004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var err = Error(33);
         var result = proc.isPromise(Promise.reject(err));
         expect(result).assertEqual(true);
@@ -6249,7 +6249,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsPromise005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
 		var err = Error(23);
         var result = proc.isPromise(Promise.reject(err));
         expect(result).assertEqual(true);
@@ -6262,7 +6262,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsProxy001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const target = {};
         const proxy = new Proxy(target, {});
         var result = proc.isProxy(proxy);
@@ -6276,7 +6276,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsProxy002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const target = {};
         const proxy = new Proxy(target, {});
         var result = proc.isProxy(target);
@@ -6290,7 +6290,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsProxy003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const handler = {
             get: function(obj, prop) {
                 return prop in obj ? obj[prop] : 37;
@@ -6308,7 +6308,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsProxy004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const handler = {
             get: function(obj, prop) {
                 return prop in obj ? obj[prop] : 121;
@@ -6326,7 +6326,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsProxy005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const handler = {
             get: function(obj, prop) {
                 return prop in obj ? obj[prop] : 121;
@@ -6344,7 +6344,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsRegExp001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isRegExp(new RegExp('abc'));
         expect(result).assertEqual(true);
     })
@@ -6356,7 +6356,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsRegExp002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isRegExp(/abc/);
         expect(result).assertEqual(true);
     })
@@ -6368,7 +6368,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsRegExp003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isRegExp(new RegExp('fgd'));
         expect(result).assertEqual(true);
     })
@@ -6380,7 +6380,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsRegExp004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isRegExp(new RegExp('123'));
         expect(result).assertEqual(true);
     })
@@ -6392,7 +6392,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsRegExp005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isRegExp(new RegExp(/ab+c/, 'i'));
         expect(result).assertEqual(true);
     })
@@ -6404,7 +6404,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSet001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSet(new Set());
         expect(result).assertEqual(true);
     })
@@ -6416,7 +6416,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSet002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSet(new Map());
         expect(result).assertEqual(false);
     })
@@ -6428,7 +6428,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSet003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSet(new String());
         expect(result).assertEqual(false);
     })
@@ -6440,7 +6440,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSet004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSet(new Boolean());
         expect(result).assertEqual(false);
     })
@@ -6452,7 +6452,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSet005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSet(new WeakSet());
         expect(result).assertEqual(false);
     })
@@ -6464,7 +6464,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSetIterator001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set.keys());
         expect(result).assertEqual(true);
@@ -6477,7 +6477,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSetIterator002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set.values());
         expect(result).assertEqual(true);
@@ -6490,7 +6490,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSetIterator003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set.entries());
         expect(result).assertEqual(true);
@@ -6503,7 +6503,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSetIterator004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set[Symbol.iterator]());
         expect(result).assertEqual(true);
@@ -6516,7 +6516,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSetIterator005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set);
         expect(result).assertEqual(false);
@@ -6529,7 +6529,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6541,7 +6541,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new Int16Array([]));
         expect(result).assertEqual(false);
     })
@@ -6553,7 +6553,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new Int32Array([]));
         expect(result).assertEqual(false);
     })
@@ -6565,7 +6565,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new ArrayBuffer([]));
         expect(result).assertEqual(false);
     })
@@ -6577,7 +6577,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new Uint8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6589,7 +6589,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsStringObject001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isStringObject(new String('foo'));
         expect(result).assertEqual(true);
     })
@@ -6601,7 +6601,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsStringObject002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isStringObject(new String('twoo'));
         expect(result).assertEqual(true);
     })
@@ -6613,7 +6613,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsStringObject003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isStringObject(new String('fdfsfd'));
         expect(result).assertEqual(true);
     })
@@ -6625,7 +6625,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsStringObject004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isStringObject('ffds111');
         expect(result).assertEqual(false);
     })
@@ -6637,7 +6637,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsStringObject005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isStringObject('foo');
         expect(result).assertEqual(false);
     })
@@ -6649,7 +6649,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSymbolObject001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const symbols = Symbol('foo');
         var result = proc.isSymbolObject(Object(symbols));
         expect(result).assertEqual(true);
@@ -6662,7 +6662,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSymbolObject002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const symbols = Symbol('s12');
         var result = proc.isSymbolObject(Object(symbols));
         expect(result).assertEqual(true);
@@ -6675,7 +6675,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSymbolObject003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const symbols = Symbol('sads');
         var result = proc.isSymbolObject(Object(symbols));
         expect(result).assertEqual(true);
@@ -6688,7 +6688,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSymbolObject004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const symbols = Symbol('asdd');
         var result = proc.isSymbolObject(symbols);
         expect(result).assertEqual(false);
@@ -6701,7 +6701,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSymbolObject005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const symbols = Symbol('foo');
         var result = proc.isSymbolObject(symbols);
         expect(result).assertEqual(false);
@@ -6714,7 +6714,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsTypedArray001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isTypedArray(new Float64Array([]));
         expect(result).assertEqual(true);
     })
@@ -6726,7 +6726,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsTypedArray002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isTypedArray(new Uint8Array([]));
         expect(result).assertEqual(true);
     })
@@ -6738,7 +6738,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsTypedArray003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isTypedArray(new Uint16Array([]));
         expect(result).assertEqual(true);
     })
@@ -6750,7 +6750,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsTypedArray004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isTypedArray(new Uint32Array([]));
         expect(result).assertEqual(true);
     })
@@ -6762,7 +6762,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsTypedArray005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isTypedArray(new ArrayBuffer());
         expect(result).assertEqual(false);
     })
@@ -6774,7 +6774,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8Array(new Uint8Array([]));
         expect(result).assertEqual(true);
     })
@@ -6786,7 +6786,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8Array(new Uint16Array([]));
         expect(result).assertEqual(false);
     })
@@ -6798,7 +6798,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8Array(new Uint32Array([]));
         expect(result).assertEqual(false);
     })
@@ -6810,7 +6810,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6822,7 +6822,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8Array(new Int16Array([]));
         expect(result).assertEqual(false);
     })
@@ -6834,7 +6834,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Uint8ClampedArray([]));
         expect(result).assertEqual(true);
     })
@@ -6846,7 +6846,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6858,7 +6858,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Int16Array([]));
         expect(result).assertEqual(false);
     })
@@ -6870,7 +6870,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Int32Array([]));
         expect(result).assertEqual(false);
     })
@@ -6882,7 +6882,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Uint32Array([]));
         expect(result).assertEqual(false);
     })
@@ -6894,7 +6894,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint16Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint16Array(new Uint16Array([]));
         expect(result).assertEqual(true);
     })
@@ -6906,7 +6906,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint16Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint16Array(new Uint8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6918,7 +6918,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint16Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint16Array(new Uint32Array([]));
         expect(result).assertEqual(false);
     })
@@ -6930,7 +6930,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint16Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint16Array(new Uint8ClampedArray([]));
         expect(result).assertEqual(false);
     })
@@ -6942,7 +6942,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint16Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint16Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6954,7 +6954,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint32Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint32Array(new Uint32Array([]));
         expect(result).assertEqual(true);
     })
@@ -6966,7 +6966,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint32Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint32Array(new Uint8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6978,7 +6978,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint32Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint32Array(new Uint16Array([]));
         expect(result).assertEqual(false);
     })
@@ -6990,7 +6990,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint32Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint32Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -7002,7 +7002,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint32Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint32Array(new Uint8ClampedArray([]));
         expect(result).assertEqual(false);
     })
@@ -7014,7 +7014,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakMap001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakMap(new WeakMap());
         expect(result).assertEqual(true);
     })
@@ -7026,7 +7026,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakMap002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakMap(new Map());
         expect(result).assertEqual(false);
     })
@@ -7038,7 +7038,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakMap003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakMap(new Set());
         expect(result).assertEqual(false);
     })
@@ -7050,7 +7050,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakMap004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakMap(new String());
         expect(result).assertEqual(false);
     })
@@ -7062,7 +7062,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakMap005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakMap(new WeakSet());
         expect(result).assertEqual(false);
     })
@@ -7074,7 +7074,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakSet001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakSet(new WeakSet());
         expect(result).assertEqual(true);
     })
@@ -7086,7 +7086,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakSet002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakSet(new WeakMap());
         expect(result).assertEqual(false);
     })
@@ -7098,7 +7098,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakSet003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakSet(new String());
         expect(result).assertEqual(false);
     })
@@ -7110,7 +7110,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakSet004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakSet(new Set());
         expect(result).assertEqual(false);
     })
@@ -7122,7 +7122,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakSet005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakSet(new Map());
         expect(result).assertEqual(false);
     })
