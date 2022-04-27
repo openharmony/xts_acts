@@ -37,10 +37,5 @@ require('./mediaLibraryTestPromise.test.js')
 require('./albumTestCallBack.test.js')
 require('./albumTestPromise.test.js')
 require('./mediaLibraryTestPromiseOnOff.test.js')
-require('./getAllPeersDeviceTestCallback.test.js')
-require('./getAllPeersDeviceTestPromise.test.js')
-require('./getAllPeersTestCallback.test.js')
-require('./getAllPeersTestPromise.test.js')
-require('./distributedCallback.test.js')
-require('./distributedPromise.test.js')
+
 
