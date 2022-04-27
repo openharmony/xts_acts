@@ -14,5 +14,4 @@
  */
 require('./publishIcon.js')
 require('./publishImage.js')
-require('./ActsAnsPublishInput.js')
 require('./ActiveButton.js')
