@@ -116,13 +116,11 @@ export default function httpRequestJsunit() {
       }
     });
 
-
     /**
      * @tc.number Telephony_http_HttpRequest_destroy_0100
      * @tc.name httprequest::destroy
      * @tc.desc Test Test httprequest property.
      */
-
     it("Telephony_http_HttpRequest_destroy_0100", 0, async function (done) {
       var casename = "Telephony_http_HttpRequest_0200"
       console.log("-----------------------HttpRequest_destroy Test is starting-----------------------");
@@ -163,7 +161,6 @@ export default function httpRequestJsunit() {
      * @tc.name httprequest::on_headerReceive
      * @tc.desc Test Test httprequest property.
      */
-
     it("Telephony_http_HttpRequest_on_headerReceive_0100", 0, async function (done) {
       var casename = "Telephony_http_HttpRequest_0300"
       console.log("-----------------------HttpRequest_on_headerReceive Test is starting-----------------------");

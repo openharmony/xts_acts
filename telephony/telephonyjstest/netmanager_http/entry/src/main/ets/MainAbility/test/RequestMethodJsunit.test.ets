@@ -417,11 +417,6 @@ export default function requestMethodJsunit() {
       }
     });
 
-
-
-
-
-
   })
 
 };

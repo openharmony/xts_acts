@@ -56,83 +56,7 @@ describe("ActsCellularDataAbnormalTest", function () {
             done();
         })
     })
-
-    /*
-     * @tc.number   Telephony_CellularData_enableCellularData_Async_0100
-     * @tc.name     Open the data switch and query the switch status and data status
-     * @tc.desc     Function test
-     */
-    it("Telephony_CellularData_enableCellularData_Async_0100", 0, async function (done) {
-        cellular.enableCellularData((err) => {
-            if (err) {
-                console.log("Telephony_CellularData_enableCellularData_Async_0100 enableCellularData finish");
-                done();
-                return;
-            }
-            expect().assertFail();
-            console.log("Telephony_CellularData_enableCellularData_Async_0100 enableCellularData fail");
-            done();
-        })
-    })
-
-    /*
-     * @tc.number   Telephony_CellularData_disableCellularData_Async_0100
-     * @tc.name     Turn off the data switch and query the switch status and data status
-     * @tc.desc     Function test
-     */
-    it("Telephony_CellularData_disableCellularData_Async_0100", 0, async function (done) {
-        cellular.disableCellularData((err) => {
-            if (err) {
-                console.log("Telephony_CellularData_disableCellularData_Async_0100 disableCellularData finish");
-                done();
-                return;
-            }
-            expect().assertFail();
-            console.log("Telephony_CellularData_disableCellularData_Async_0100 disableCellularData fail");
-            done();
-        })
-    })
-
-    /*
-     * @tc.number   Telephony_CellularData_enableCellularDataRoaming_Async_0300
-     * @tc.name     Call enableCellularDataRoaming interface, setting parameters as slotId error value (3),
-     *              to check the correction results
-     * @tc.desc     Function test
-     */
-    it("Telephony_CellularData_enableCellularDataRoaming_Async_0300", 0, async function (done) {
-        cellular.enableCellularDataRoaming(ERR_SLOT_ID, (err) => {
-            if (err) {
-                console.log("Telephony_CellularData_enableCellularDataRoaming_Async_0300 enableCellularData finish");
-                done();
-                return;
-            }
-            expect().assertFail();
-            console.log("Telephony_CellularData_enableCellularDataRoaming_Async_0300 enableCellularData fail");
-            done();
-        })
-    })
-
-    /*
-     * @tc.number   Telephony_CellularData_disableCellularDataRoaming_Async_0300
-     * @tc.name     Call enableCellularDataRoaming interface, setting parameters as slotId error value (3), to check the
-     *              correction results
-     * @tc.desc     Function test
-     */
-    it("Telephony_CellularData_disableCellularDataRoaming_Async_0300", 0, async function (done) {
-        cellular.disableCellularDataRoaming(ERR_SLOT_ID, (err) => {
-            if (err) {
-                console.log(
-                    "Telephony_CellularData_disableCellularDataRoaming_Async_0300 disableCellularDataRoaming finish"
-                );
-                done();
-                return;
-            }
-            expect().assertFail();
-            console.log("Telephony_CellularData_disableCellularDataRoaming_Async_0300 disableCellularDataRoaming fail");
-            done();
-        })
-    })
-
+  
     /*
      * @tc.number   Telephony_CellularData_getCellularDataFlowType_Async_0100
      * @tc.name     When cellular data is turned on, call getCellularDataFlowType() to get the data stream type and
@@ -170,26 +94,7 @@ describe("ActsCellularDataAbnormalTest", function () {
             done();
         })
     })
-
-    /*
-     * @tc.number   Telephony_CellularData_setDefaultCellularDataSlotId_Async_0500
-     * @tc.name     Call setDefaultCellularDataSlotId() interface, set the default card slot to the number of exceptions
-     *              (-1), and verify whether the setting failed (Async)
-     * @tc.desc     Function test
-     */
-    it("Telephony_CellularData_setDefaultCellularDataSlotId_Async_0500", 0, async function (done) {
-        cellular.setDefaultCellularDataSlotId(ERR_SLOT_ID, (err) => {
-            if (err) {
-                console.log("Telephony_CellularData_setDefaultCellularDataSlotId_Async_0500 finish");
-                done();
-                return;
-            }
-            expect().assertFail();
-            console.log("Telephony_CellularData_setDefaultCellularDataSlotId_Async_0500 fail");
-            done();
-        })
-    })
-
+   
     /*
      * @tc.number   Telephony_CellularData_getDefaultCellularDataSlotId_Async_0500
      * @tc.name     Call getDefaultCellularDataSlotId() interface and verify whether the setting failed (Async)
@@ -245,76 +150,6 @@ describe("ActsCellularDataAbnormalTest", function () {
     })
 
     /*
-     * @tc.number   Telephony_CellularData_enableCellularData_Promise_0100
-     * @tc.name     Open the data switch and query the switch status and data status
-     * @tc.desc     Function test
-     */
-    it("Telephony_CellularData_enableCellularData_Promise_0100", 0, async function (done) {
-        try {
-            await cellular.enableCellularData();
-            expect().assertFail();
-            console.log("Telephony_CellularData_enableCellularData_Promise_0100 fail");
-            done();
-        } catch (err) {
-            console.log("Telephony_CellularData_enableCellularData_Promise_0100 finish");
-            done();
-        }
-    })
-
-    /*
-     * @tc.number   Telephony_CellularData_disableCellularData_Promise_0100
-     * @tc.name     Turn off the data switch and query the switch status and data status
-     * @tc.desc     Function test
-     */
-    it("Telephony_CellularData_disableCellularData_Promise_0100", 0, async function (done) {
-        try {
-            await cellular.disableCellularData();
-            expect().assertFail();
-            console.log("Telephony_CellularData_disableCellularData_Promise_0100 fail");
-            done();
-        } catch (err) {
-            console.log("Telephony_CellularData_disableCellularData_Promise_0100 finish");
-            done();
-        }
-    })
-
-    /*
-     * @tc.number   Telephony_CellularData_enableCellularDataRoaming_Promise_0300
-     * @tc.name     Call enableCellularDataRoaming interface, setting parameters as slotId error value (3),
-     *              to check the correction results
-     * @tc.desc     Function test
-     */
-    it("Telephony_CellularData_enableCellularDataRoaming_Promise_0300", 0, async function (done) {
-        try {
-            await cellular.enableCellularDataRoaming(ERR_SLOT_ID);
-            expect().assertFail();
-            console.log("Telephony_CellularData_enableCellularDataRoaming_Promise_0300 fail");
-            done();
-        } catch (err) {
-            console.log("Telephony_CellularData_enableCellularDataRoaming_Promise_0300 finish");
-            done();
-        }
-    })
-
-    /*
-     * @tc.number   Telephony_CellularData_disableCellularDataRoaming_Promise_0300
-     * @tc.name     Call enableCellularDataRoaming interface, setting parameters as slotId error value (3), to check the
-     *              correction results
-     * @tc.desc     Function test
-     */
-    it("Telephony_CellularData_disableCellularDataRoaming_Promise_0300", 0, async function (done) {
-        try {
-            await cellular.disableCellularDataRoaming(ERR_SLOT_ID);
-            expect().assertFail();
-            console.log("Telephony_CellularData_disableCellularDataRoaming_Promise_0300 fail");
-            done();
-        } catch (err) {
-            console.log("Telephony_CellularData_disableCellularDataRoaming_Promise_0300 finish");
-            done();
-        }
-    })
-
-    /*
      * @tc.number   Telephony_CellularData_getCellularDataFlowType_Promise_0100
      * @tc.name     When cellular data is turned on, call getCellularDataFlowType() to get the data stream type and
      *              verify that the callback value is within the enumeration value range
@@ -346,24 +181,6 @@ describe("ActsCellularDataAbnormalTest", function () {
             done();
         } catch (err) {
             console.log("Telephony_CellularData_isCellularDataRoamingEnabled_Promise_0200 finish");
-            done();
-        }
-    })
-
-    /*
-     * @tc.number   Telephony_CellularData_setDefaultCellularDataSlotId_Promise_0500
-     * @tc.name     Call setDefaultCellularDataSlotId() interface, set the default card slot to the number of exceptions
-     *              (-1), and verify whether the setting failed (Async)
-     * @tc.desc     Function test
-     */
-    it("Telephony_CellularData_setDefaultCellularDataSlotId_Promise_0500", 0, async function (done) {
-        try {
-            await cellular.setDefaultCellularDataSlotId(ERR_SLOT_ID);
-            expect().assertFail();
-            console.log("Telephony_CellularData_setDefaultCellularDataSlotId_Promise_0500 fail");
-            done();
-        } catch (err) {
-            console.log("Telephony_CellularData_setDefaultCellularDataSlotId_Promise_0500 finish");
             done();
         }
     })

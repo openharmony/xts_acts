@@ -331,15 +331,11 @@ export default function httpResponseJsunit() {
       }
     });
 
-
-
-
     /**
      * @tc.number Telephony_Http_HttpResponse_cookies_0100
      * @tc.name HttpResponse::cookies
      * @tc.desc Test Test HttpResponse property.
      */
-
 
     it("Telephony_Http_HttpResponse_cookies_0100", 0, async function (done) {
       var casename = 'Telephony_Http_HttpResponse_0400';
@@ -378,7 +374,6 @@ export default function httpResponseJsunit() {
      * @tc.desc Test Test HttpResponse property.
      */
 
-
     it("Telephony_Http_HttpResponse_cookies_0200", 0, async function (done) {
       var casename = 'Telephony_Http_HttpResponse_0400';
       console.log("-----------------------HttpResponse cookies_01 Test is starting-----------------------");
@@ -402,14 +397,11 @@ export default function httpResponseJsunit() {
     });
 
 
-
-
     /**
      * @tc.number Telephony_Http_HttpResponse_cookies_0300
      * @tc.name HttpResponse::cookies
      * @tc.desc Test Test HttpResponse property.
      */
-
 
     it("Telephony_Http_HttpResponse_cookies_0300", 0, async function (done) {
       var casename = 'Telephony_Http_HttpResponse_0400';
