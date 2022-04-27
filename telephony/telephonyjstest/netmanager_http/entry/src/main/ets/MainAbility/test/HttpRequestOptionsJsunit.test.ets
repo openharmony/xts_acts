@@ -55,8 +55,6 @@ export default function HttpRequestOptionsJsunit() {
       }
     });
 
-
-
     /**
      * @tc.number Telephony_http_HttpRequestOptions_method_0200
      * @tc.name HttpRequestOptions::method
@@ -93,7 +91,6 @@ export default function HttpRequestOptionsJsunit() {
         done();
       }
     });
-
 
     /**
      * @tc.number Telephony_Http_HttpRequestOptions_extraData_0100
@@ -136,8 +133,6 @@ export default function HttpRequestOptionsJsunit() {
         done();
       }
     });
-
-
 
     /**
      * @tc.number Telephony_Http_HttpRequestOptions_extraData_0200
@@ -184,13 +179,11 @@ export default function HttpRequestOptionsJsunit() {
       }
     });
 
-
     /**
      * @tc.number Telephony_Http_HttpRequestOptions_header_0100
      * @tc.name HttpRequestOptions::header
      * @tc.desc Test Test HttpRequestOptions property.
      */
-
     it("Telephony_Http_HttpRequestOptions_header_0100", 0, async function (done) {
       var casename = 'Telephony_Http_HttpRequestOptions_0300';
       console.log("-----------------------HttpRequestOptions_header Test is starting-----------------------");
@@ -232,7 +225,6 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.name HttpRequestOptions::header
      * @tc.desc Test Test HttpRequestOptions property.
      */
-
     it("Telephony_Http_HttpRequestOptions_header_0200", 0, async function (done) {
       var casename = 'Telephony_Http_HttpRequestOptions_0300';
       console.log("-----------------------HttpRequestOptions_header_01 Test is starting-----------------------");
@@ -281,7 +273,6 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.name HttpRequestOptions::header
      * @tc.desc Test Test HttpRequestOptions property.
      */
-
     it("Telephony_Http_HttpRequestOptions_header_0300", 0, async function (done) {
       var casename = 'Telephony_Http_HttpRequestOptions_0300';
       console.log("-----------------------HttpRequestOptions_header_02 Test is starting-----------------------");
@@ -323,7 +314,6 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.name HttpRequestOptions::header
      * @tc.desc Test Test HttpRequestOptions property.
      */
-
     it("Telephony_Http_HttpRequestOptions_header_0400", 0, async function (done) {
       var casename = 'Telephony_Http_HttpRequestOptions_0300';
       console.log("-----------------------HttpRequestOptions_header_03 Test is starting-----------------------");
@@ -363,10 +353,6 @@ export default function HttpRequestOptionsJsunit() {
         done();
       }
     });
-
-
-
-
 
     /**
      * @tc.number Telephony_Http_HttpRequestOptions_readTimeout_0100
@@ -408,7 +394,6 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.name HttpRequestOptions::readTimeout
      * @tc.desc Test Test HttpRequestOptions property.
      */
-
     it("Telephony_Http_HttpRequestOptions_readTimeout_0200", 0, async function (done) {
       var casename = 'Telephony_Http_HttpRequestOptions_0400';
       console.log("-----------------------HttpRequestOptions_readTimeout_01 Test is starting-----------------------");
@@ -441,13 +426,11 @@ export default function HttpRequestOptionsJsunit() {
       }
     });
 
-
     /**
      * @tc.number Telephony_Http_HttpRequestOptions_connectTimeout_0100
      * @tc.name HttpRequestOptions::connectTimeout
      * @tc.desc Test Test HttpRequestOptions property.
      */
-
     it("Telephony_Http_HttpRequestOptions_connectTimeout_0100", 0, async function (done) {
       var casename = 'Telephony_Http_HttpRequestOptions_0500';
       console.log("-----------------------HttpRequestOptions_connectTimeout Test is starting-----------------------");
@@ -483,7 +466,6 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.name HttpRequestOptions::connectTimeout
      * @tc.desc Test Test HttpRequestOptions property.
      */
-
     it("Telephony_Http_HttpRequestOptions_connectTimeout_0200", 0, async function (done) {
       var casename = 'Telephony_Http_HttpRequestOptions_0500';
       console.log("-----------------------HttpRequestOptions_connectTimeout_01 Test is starting-----------------------");
