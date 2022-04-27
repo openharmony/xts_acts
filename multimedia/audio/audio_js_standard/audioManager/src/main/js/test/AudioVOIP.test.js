@@ -16,15 +16,35 @@
 
 import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
-
+import ability_featureAbility from '@ohos.ability.featureAbility';
+import app from '@system.app';
+import bundle from '@ohos.bundle';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+import featureAbility from '@ohos.ability.featureAbility'
+import resourceManager from '@ohos.resourceManager';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
 describe('audioRenderer', function () {
-
-    var dateTime = new Date().getTime();
-    const dirPath = '/data/media/RecTest'+dateTime;
-    var fpath = dirPath+'/capture_js.pcm';
-    console.info('AudioFrameworkRecLog: Recording files Path: '+dirPath);
+    var mediaDir;
+    let fdRead;
+    let readpath;
+    /*async function getPathName(){
+        var path1 = '/data/app/el1/bundle/public/';
+        var packageName;
+        var context = ability_featureAbility.getContext();
+        await context.getBundleName()
+            .then((data) => {
+                console.info('AudioFrameworkRenderLog: Cache directory obtained. Data: ' + data);
+                packageName = data;
+            }).catch((error) => {
+                console.error('AudioFrameworkRenderLog: Failed to obtain the cache directory. Cause:' + error.message);
+            });
+        await sleep(200);
+        var mediaDirTemp = path1 + packageName + '/ohos.acts.multimedia.audio.audiomanager.filedescriptor/assets/entry/resources/rawfile';
+        //var mediaDirTemp = path1+packageName+'/files'
+        console.info('AudioFrameworkRenderLog: Resource DIR Path : '+mediaDirTemp);
+        return mediaDirTemp;
+    }*/
 
     const audioManager = audio.getAudioManager();
     console.info('AudioFrameworkRenderLog: Create AudioManger Object JS Framework');
@@ -32,18 +52,19 @@ describe('audioRenderer', function () {
     const audioManagerRec = audio.getAudioManager();
     console.info('AudioFrameworkRecLog: Create AudioManger Object JS Framework');
 
-    beforeAll(function () {
+    beforeAll(async function () {
+        await applyPermission();
         console.info('AudioFrameworkTest: beforeAll: Prerequisites at the test suite level');
-        fileio.mkdirSync(dirPath);
+        mediaDir = '/data/storage/el2/base/haps/entry/cache';
     })
 
     beforeEach(async function () {
         console.info('AudioFrameworkTest: beforeEach: Prerequisites at the test case level');
+        await sleep(1000);
     })
 
-    afterEach(async function () {
+    afterEach(function () {
         console.info('AudioFrameworkTest: afterEach: Test case-level clearance conditions');
-        await sleep(1000);
     })
 
     afterAll(async function () {
@@ -54,39 +75,94 @@ describe('audioRenderer', function () {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
+    async function getFileDescriptor(fileName) {
+        let fileDescriptor = undefined;
+        await resourceManager.getResourceManager().then(async (mgr) => {
+            await mgr.getRawFileDescriptor(fileName).then(value => {
+                fileDescriptor = { fd: value.fd, offset: value.offset, length: value.length };
+            }).catch(error => {
+                console.log('AudioFrameworkRenderLog:case getRawFileDescriptor err: ' + error);
+            });
+        });
+        return fileDescriptor;
+    }
 
-    async function playbackPromise (audioParams, fpath, streamType) {
+    async function closeFileDescriptor(fileName) {
+        await resourceManager.getResourceManager().then(async (mgr) => {
+            await mgr.closeRawFileDescriptor(fileName).then(value => {
+                console.log('AudioFrameworkRenderLog:case closeRawFileDescriptor success for file:' + fileName);
+            }).catch(error => {
+                console.log('AudioFrameworkRenderLog:case closeRawFileDescriptor err: ' + error);
+            });
+        });
+    }
+    async function getFdRead(pathName, done) {
+        await getFileDescriptor(pathName).then((res) => {
+            if (res == undefined) {
+                expect().assertFail();
+                console.info('AudioFrameworkRenderLog:case error fileDescriptor undefined, open file fail');
+                done();
+            } else {
+                fdRead = res.fd;
+                console.info("AudioFrameworkRenderLog:case 0 fdRead is: " + fdRead);
+            }
+        })
+    }
+
+    async function applyPermission() {
+        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.audiomanager', 0, 100);
+        let atManager = abilityAccessCtrl.createAtManager();
+        if (atManager != null) {
+            let tokenID = appInfo.accessTokenId;
+            console.info('AudioFrameworkRenderLog:[permission] case accessTokenID is ' + tokenID);
+            let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
+            let permissionName2 = 'ohos.permission.READ_MEDIA';
+            let permissionName3 = 'ohos.permission.WRITE_MEDIA';
+            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
+                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission success :' + result);
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission failed :' + err);
+            });
+            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
+                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission success :' + result);
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission failed :' + err);
+            });
+            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
+                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission success :' + result);
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission failed :' + err);
+            });
+        } else {
+            console.info('AudioFrameworkRenderLog:[permission] case apply permission failed, createAtManager failed');
+        }
+    }
+
+    async function playbackPromise (AudioRendererOptions, pathName, AudioScene) {
         var resultFlag = 'new';
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-        const audioRen = audio.createAudioRenderer(streamType);
-        console.info('AudioFrameworkRenderLog: AudioRenderer instance created: Success : Stream Type: '+streamType);
-
-        await audioRen.setParams(audioParams).then(async function () {
-            console.info('AudioFrameworkRenderLog: setParams Success ');
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: setParams failed : ERROR : '+err.message);
-            resultFlag = false;
-        });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
             return resultFlag;
-        }
+        });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : Path : '+fpath);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : Path : '+pathName);
 
-        await audioRen.getParams().then(async function (audioParamsGet) {
-            console.info('AudioFrameworkRenderLog: Renderer GetParams:');
-            console.info('AudioFrameworkRenderLog: Renderer format:' + audioParamsGet.format);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+
+        await audioRen.getStreamInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer sampleFormat:' + audioParamsGet.sampleFormat);
             console.info('AudioFrameworkRenderLog: Renderer samplingRate:' + audioParamsGet.samplingRate);
             console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
-            console.info('AudioFrameworkRenderLog: Renderer encoding:' + audioParamsGet.encoding);
-            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.contentType);
-            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-            console.info('AudioFrameworkRenderLog: Renderer device role:' + audioParamsGet.deviceRole);
-            console.info('AudioFrameworkRenderLog: Renderer device type:' + audioParamsGet.deviceType);
+            console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
         }).catch((err) => {
-            console.log('AudioFrameworkRenderLog: getParams :ERROR: '+err.message);
+            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: '+err.message);
             resultFlag = false;
         });
         if (resultFlag == false){
@@ -94,10 +170,24 @@ describe('audioRenderer', function () {
             return resultFlag;
         }
 
-        await audioRen.start().then(async function (started) {
-            console.info('AudioFrameworkRenderLog: renderInstant started '+started);
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start failed : '+err.message);
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
+            resultFlag = false;
+        });
+        if (resultFlag == false){
+            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+            return resultFlag;
+        }
+
+        await audioRen.start().then(async function () {
+            console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
             resultFlag=false;
         });
         if (resultFlag == false){
@@ -105,23 +195,14 @@ describe('audioRenderer', function () {
             return resultFlag;
         }
 
-        await audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT).then(async function () {
-            console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-        }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: setAudioScene : ERROR : '+err.message);
-            resultFlag=false;
-        });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-            return resultFlag;
-        }
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
 
         var bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
-            bufferSize = data;
-            console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
+            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS '+data);
+            bufferSize=data;
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: buffer size: ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : '+err.message);
             resultFlag=false;
         });
         if (resultFlag == false){
@@ -129,88 +210,102 @@ describe('audioRenderer', function () {
             return resultFlag;
         }
 
-        let ss = fileio.createStreamSync(fpath, 'r');
-        console.info('AudioFrameworkRenderLog: File Path: ' + fpath);
+        let ss = fileio.fdopenStreamSync(fdRead, 'r');
+        console.info('AudioFrameworkRenderLog:case2: File Path: ' + ss);
         let discardHeader = new ArrayBuffer(44);
         ss.readSync(discardHeader);
-        let totalSize = fileio.statSync(fpath).size;
-        console.info('AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
+        let totalSize = fileio.fstatSync(fdRead).size;
+        console.info('AudioFrameworkRenderLog:case3: File totalSize size: ' +totalSize);
         totalSize = totalSize-44;
         console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
         let rlen = 0;
-        while (rlen < (totalSize/3)) {
+        while (rlen < totalSize/4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
-            console.info('BufferAudioFramework: bytes read from file: ' +rlen);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
             await audioRen.write(buf);
-            if(rlen > (totalSize/4) && rlen < (totalSize/3.5)) {
+            if (rlen > (totalSize/2)){
                 await audioManager.getAudioScene().then(async function (data) {
-                    if (data == audio.AudioScene.AUDIO_SCENE_VOICE_CHAT) {
-                        console.info('AudioFrameworkRenderLog: getAudioScene : PASS : ' + data);
-                        resultFlag=true;
-                    }
-                    else {
-                        console.info('AudioFrameworkRenderLog: getAudioScene : FAIL : ' + data);
-                        resultFlag=false;
-                    }
+                    console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : Value : '+data);
                 }).catch((err) => {
-                    console.info('AudioFrameworkRenderLog: getAudioScene : ERROR : ' + err.message);
-                    resultFlag = false;
+                    console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : ERROR : '+err.message);
+                    resultFlag=false;
                 });
             }
         }
         console.info('AudioFrameworkRenderLog: Renderer after read');
 
-        await audioRen.drain().then(async function (drained) {
-            console.info('AudioFrameworkRenderLog: Renderer drained : '+drained);
+        await audioRen.drain().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
         }).catch((err) => {
-            console.error('AudioFrameworkRenderLog: Renderer drain failed : '+err.message);
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
+            resultFlag=false;
+        });
+        if (resultFlag == false){
+            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+            return resultFlag;
+        }
+
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+
+        await audioRen.stop().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
+            resultFlag=true;
+            console.info('AudioFrameworkRenderLog: resultFlagRen : '+resultFlag);
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
             resultFlag=false;
         });
 
-        await audioRen.stop().then(async function (stopped) {
-            console.info('AudioFrameworkRenderLog: Renderer stopped : '+stopped);
-        }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop failed : '+err.message);
-            resultFlag=false;
-        });
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
 
-        await audioRen.release().then(async function (data) {
-            console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS : '+data);
+        await audioRen.release().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
             console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
             resultFlag=false;
         });
 
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+
+        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+
         return resultFlag;
     }
 
-    async function recPromise (audioParams, fpath, streamType) {
+    async function recPromise (AudioCapturerOptions, fpath, AudioScene) {
 
         var resultFlag = 'new';
         console.info('AudioFrameworkRecLog: Promise : Audio Recording Function');
 
-        var audioCapturer = audio.createAudioCapturer(streamType);
-        console.info('AudioFrameworkRecLog: capturer instance created as : '+streamType);
+        var audioCap;
 
-        console.info('AudioFrameworkRecLog: audio param object created');
-        await audioCapturer.setParams(audioParams);
-        console.info('AudioFrameworkRecLog: setParams Success ');
-
-        console.info('AudioFrameworkRecLog: Capturer : Path : '+fpath);
-
-        await audioCapturer.getParams().then(async function (audioParamsGet) {
-            console.info('AudioFrameworkRecLog: Capturer GetParams:');
-            console.info('AudioFrameworkRecLog: Capturer format:' + audioParamsGet.format);
-            console.info('AudioFrameworkRecLog: Capturer samplingRate:' + audioParamsGet.samplingRate);
-            console.info('AudioFrameworkRecLog: Capturer channels:' + audioParamsGet.channels);
-            console.info('AudioFrameworkRecLog: Capturer encoding:' + audioParamsGet.encoding);
-            console.info('AudioFrameworkRecLog: Capturer contentType:' + audioParamsGet.contentType);
-            console.info('AudioFrameworkRecLog: Capturer usage:' + audioParamsGet.usage);
-            console.info('AudioFrameworkRecLog: Capturer deviceRole:' + audioParamsGet.deviceRole);
-            console.info('AudioFrameworkRecLog: Capturer deviceType:' + audioParamsGet.deviceType);
+        await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
+            audioCap = data;
+            console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.log('AudioFrameworkRecLog: getParams :ERROR: '+err.message);
+            console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : '+err.message);
+            return resultFlag;
+        });
+
+        console.info('AudioFrameworkRecLog: AudioCapturer : Path : '+fpath);
+
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
+
+        await audioCap.getStreamInfo().then(async function (audioParamsGet) {
+            if (audioParamsGet != undefined) {
+                console.info('AudioFrameworkRecLog: Capturer getStreamInfo:');
+                console.info('AudioFrameworkRecLog: Capturer sampleFormat:' + audioParamsGet.sampleFormat);
+                console.info('AudioFrameworkRecLog: Capturer samplingRate:' + audioParamsGet.samplingRate);
+                console.info('AudioFrameworkRecLog: Capturer channels:' + audioParamsGet.channels);
+                console.info('AudioFrameworkRecLog: Capturer encodingType:' + audioParamsGet.encodingType);
+            } else {
+                console.info('AudioFrameworkRecLog: audioParamsGet is : '+audioParamsGet);
+                console.info('AudioFrameworkRecLog: audioParams getStreamInfo are incorrect: ');
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRecLog: getStreamInfo  :ERROR: '+err.message);
             resultFlag = false;
         });
         if (resultFlag == false){
@@ -218,10 +313,29 @@ describe('audioRenderer', function () {
             return resultFlag;
         }
 
-        await audioCapturer.start().then(async function (started) {
-            console.info('AudioFrameworkRecLog: Capturer started '+started);
+        await audioCap.getCapturerInfo().then(async function (audioParamsGet) {
+            if (audioParamsGet != undefined) {
+                console.info('AudioFrameworkRecLog: Capturer CapturerInfo:');
+                console.info('AudioFrameworkRecLog: Capturer SourceType:' + audioParamsGet.source);
+                console.info('AudioFrameworkRecLog: Capturer capturerFlags:' + audioParamsGet.capturerFlags);
+            }else {
+                console.info('AudioFrameworkRecLog: audioParamsGet is : '+audioParamsGet);
+                console.info('AudioFrameworkRecLog: audioParams getCapturerInfo are incorrect: ');
+                resultFlag = false;
+            }
         }).catch((err) => {
-            console.info('AudioFrameworkRecLog Capturer started failed : '+err.message);
+            console.log('AudioFrameworkRecLog: CapturerInfo :ERROR: '+err.message);
+            resultFlag = false;
+        });
+        if (resultFlag == false){
+            console.info('AudioFrameworkRecLog: resultFlag : '+resultFlag);
+            return resultFlag;
+        }
+
+        await audioCap.start().then(async function () {
+            console.info('AudioFrameworkRecLog: Capturer started :SUCCESS ');
+        }).catch((err) => {
+            console.info('AudioFrameworkRecLog: Capturer start :ERROR : '+err.message);
             resultFlag=false;
         });
         if (resultFlag == false){
@@ -229,7 +343,9 @@ describe('audioRenderer', function () {
             return resultFlag;
         }
 
-        var bufferSize = await audioCapturer.getBufferSize();
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
+
+        var bufferSize = await audioCap.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
 
         var fd = fileio.openSync(fpath, 0o102, 0o777);
@@ -237,19 +353,8 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRecLog: file fd created');
         }
         else{
-            console.info('AudioFrameworkRecLog: file fd create : FAILED');
-            expect(false).assertTrue();
-            return;
-        }
-
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT).then(async function () {
-            console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-        }).catch((err) => {
-            console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
+            console.info('AudioFrameworkRecLog: Capturer start :ERROR : ');
             resultFlag=false;
-        });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
             return resultFlag;
         }
 
@@ -259,512 +364,177 @@ describe('audioRenderer', function () {
         }
         else{
             console.info('AudioFrameworkRecLog: file fd Open: Append Mode : FAILED');
-            expect(false).assertTrue();
-            return;
+            resultFlag=false;
+            return resultFlag;
         }
-
-        var numBuffersToCapture = 370;
+        await sleep(100);
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
-            var buffer = await audioCapturer.read(bufferSize, true);
-            if (typeof(buffer) == undefined) {
-                console.info('BufferRecLog: read buffer failed : '+buffer);
-            } else {
-                var number = fileio.writeSync(fd, buffer);
-                console.info('BufferRecLog: data written: ' + number);
-                numBuffersToCapture--;
-            }
-            if(numBuffersToCapture > 250 && numBuffersToCapture < 255) {
-                await audioManagerRec.getAudioScene().then(async function (data) {
-                    if (data == audio.AudioScene.AUDIO_SCENE_VOICE_CHAT) {
-                        console.info('AudioFrameworkRenderLog: getAudioScene : PASS : ' + data);
-                        resultFlag=true;
-                    }
-                    else {
-                        console.info('AudioFrameworkRenderLog: getAudioScene : FAIL : ' + data);
-                        resultFlag=false;
-                    }
-                }).catch((err) => {
-                    console.info('AudioFrameworkRenderLog: getAudioScene : ERROR : ' + err.message);
-                    resultFlag = false;
-                });
-            }
+            console.info('AudioFrameworkRecLog: ---------READ BUFFER---------');
+            var buffer = await audioCap.read(bufferSize, true);
+            await sleep(50);
+            console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+            var number = fileio.writeSync(fd, buffer);
+            console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+            await sleep(50);
+            numBuffersToCapture--;
         }
-        console.info('AudioFrameworkRecLog: Capturer after read');
+        await sleep(1000);
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
 
-        await audioCapturer.stop().then(async function (data) {
-            console.info('AudioFrameworkRecLog: Capturer stopped : SUCCESS : '+data);
+        await audioCap.stop().then(async function () {
+            console.info('AudioFrameworkRecLog: Capturer stopped : SUCCESS');
+            resultFlag=true;
+            console.info('AudioFrameworkRecLog: resultFlag : '+resultFlag);
         }).catch((err) => {
             console.info('AudioFrameworkRecLog: Capturer stop:ERROR : '+err.message);
             resultFlag=false;
         });
 
-        await audioCapturer.release().then(async function (data) {
-            console.info('AudioFrameworkRecLog: Capturer release : SUCCESS : '+data);
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
+
+        await audioCap.release().then(async function () {
+            console.info('AudioFrameworkRecLog: Capturer release : SUCCESS');
         }).catch((err) => {
             console.info('AudioFrameworkRecLog: Capturer release :ERROR : '+err.message);
             resultFlag=false;
         });
 
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
+
         return resultFlag;
 
     }
 
-
     /* *
                * @tc.number    : SUB_AUDIO_VOIP_Play_001
-               * @tc.name      : SetAudioScene during playback
-               * @tc.desc      : SetAudioScene during playback
+               * @tc.name      : AudioRenderer-Set1-Media
+               * @tc.desc      : AudioRenderer with parameter set 1
                * @tc.size      : MEDIUM
                * @tc.type      : Function
                * @tc.level     : Level 0
            */
     it('SUB_AUDIO_VOIP_Play_001', 0, async function (done) {
 
-        var audioParams = {
-            format: audio.AudioSampleFormat.SAMPLE_S16LE,
-            channels: audio.AudioChannel.STEREO,
+        var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
-            encoding: audio.AudioEncodingType.ENCODING_PCM,
-        };
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
 
-        var resultFlag = await playbackPromise(audioParams, '/data/Believer60s.wav', audio.AudioVolumeType.VOICE_CALL);
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        readpath = 'StarWars10s-1C-44100-2SW.wav';
+        await getFdRead(readpath,done);
+        var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-
         expect(resultFlag).assertTrue();
-
+        await closeFileDescriptor(readpath);
         done();
     })
 
     /* *
                * @tc.number    : SUB_AUDIO_VOIP_Rec_001
-               * @tc.name      : SetAudioScene during Recording
-               * @tc.desc      : SetAudioScene during Recording
+               * @tc.name      : AudioCapturer-Set1-Media
+               * @tc.desc      : AudioCapturer with parameter set 1
                * @tc.size      : MEDIUM
                * @tc.type      : Function
                * @tc.level     : Level 0
            */
     it('SUB_AUDIO_VOIP_Rec_001', 0, async function (done) {
 
-        var audioParams = {
-            format: audio.AudioSampleFormat.SAMPLE_S32LE,
-            channels: audio.AudioChannel.STEREO,
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-            encoding: audio.AudioEncodingType.ENCODING_PCM,
-            contentType: audio.ContentType.CONTENT_TYPE_SPEECH,
-            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            deviceRole: audio.DeviceRole.INPUT_DEVICE,
-            deviceType: audio.DeviceType.MIC
-        };
- 
-        
-        var resultFlag = await recPromise(audioParams, dirPath+'/capture_js-48000-2C-32B.pcm', audio.AudioVolumeType.VOICE_CALL);
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+
+        var AudioCapturerInfo = {
+            source: audio.SourceType.SOURCE_TYPE_MIC,
+            capturerFlags: 1
+        }
+
+        var AudioCapturerOptions = {
+            streamInfo: AudioStreamInfo,
+            capturerInfo: AudioCapturerInfo
+        }
+
+        var resultFlag = await recPromise(AudioCapturerOptions, mediaDir+'/capture_js-44100-2C-16B.pcm', audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
- 
         expect(resultFlag).assertTrue();
- 
         done();
     })
 
+    /* *
+               * @tc.number    : SUB_AUDIO_VOIP_RecPlay_001
+               * @tc.name      : AudioCapturer-Set1-Media
+               * @tc.desc      : AudioCapturer with parameter set 1
+               * @tc.size      : MEDIUM
+               * @tc.type      : Function
+               * @tc.level     : Level 0
+           */
+    it('SUB_AUDIO_VOIP_RecPlay_001', 0, async function (done) {
 
-   /* *
-              * @tc.number    : SUB_AUDIO_VOIP_RecPlay_001
-              * @tc.name      : Record & play at same time - setAudioScene
-              * @tc.desc      : Record & play at same time - setAudioScene
-              * @tc.size      : MEDIUM
-              * @tc.type      : Function
-              * @tc.level     : Level 0
-          */
-   it('SUB_AUDIO_VOIP_RecPlay_001', 0, async function (done) {
+        var AudioStreamInfoCap = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-       var audioParamsRen = {
-           format: audio.AudioSampleFormat.SAMPLE_S16LE,
-           channels: audio.AudioChannel.STEREO,
-           samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
-           encoding: audio.AudioEncodingType.ENCODING_PCM,
-       };
+        var AudioCapturerInfo = {
+            source: audio.SourceType.SOURCE_TYPE_MIC,
+            capturerFlags: 1
+        }
 
-        var audioParamsRec = {
-            format: audio.AudioSampleFormat.SAMPLE_S32LE,
-            channels: audio.AudioChannel.STEREO,
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-            encoding: audio.AudioEncodingType.ENCODING_PCM,
-            contentType: audio.ContentType.CONTENT_TYPE_SPEECH,
+        var AudioCapturerOptions = {
+            streamInfo: AudioStreamInfoCap,
+            capturerInfo: AudioCapturerInfo
+        }
+
+        var AudioStreamInfoRen = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            deviceRole: audio.DeviceRole.INPUT_DEVICE,
-            deviceType: audio.DeviceType.MIC
-        };
-
-        var resultFlagRec = recPromise(audioParamsRec, dirPath+'/capture_js-48000-2C-32B-2.pcm', audio.AudioVolumeType.VOICE_CALL);
-
-        var resultFlagRen = await playbackPromise(audioParamsRen, '/data/Believer60s.wav', audio.AudioVolumeType.VOICE_CALL);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : Renderer : '+resultFlagRec);
-        console.info('AudioFrameworkRenderLog: resultFlag : Capturer : '+resultFlagRen);
-
-        if (resultFlagRec = true){
-            expect(resultFlagRen).assertTrue();
-        }
-        else{
-            expect(false).assertTrue();
+            rendererFlags: 1
         }
 
-        done();
-   })
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfoRen,
+            rendererInfo: AudioRendererInfo
+        }
 
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_AudioScene_001
-               * @tc.name      : setAudioScene as VOIP - Promise - ENUM
-               * @tc.desc      : setAudioScene as VOIP - ENAME
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_VOIP_AudioScene_001', 0, async function (done) {
+        recPromise(AudioCapturerOptions, mediaDir+'/capture_js-44100-2C-16B-2.pcm', audio.AudioScene.AUDIO_SCENE_PHONE_CHAT);
+        await sleep(500);
 
-        await audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT).then(async function () {
-            console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-            expect(true).assertTrue();
-        }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: setAudioScene : ERROR : '+err.message);
-            expect(false).assertTrue();
-        });
-
-        done();
-    })
-
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_AudioScene_002
-               * @tc.name      : getAudioScene as VOIP - Promise - ENUM
-               * @tc.desc      : getAudioScene as VOIP - ENAME
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_VOIP_AudioScene_002', 0, async function (done) {
-
-        await audioManager.getAudioScene().then(async function (data) {
-            if (data == audio.AudioScene.AUDIO_SCENE_VOICE_CHAT){
-                console.info('AudioFrameworkRenderLog: getAudioScene : PASS : '+data);
-                expect(true).assertTrue();
-            }
-            else{
-                console.info('AudioFrameworkRenderLog: getAudioScene : FAIL : '+data);
-                expect(false).assertTrue();
-            }
-        }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: getAudioScene : ERROR : '+err.message);
-            resultFlag=false;
-        });
-        done();
-    })
-
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_AudioScene_003
-               * @tc.name      : getAudioScene as VOIP to Ringtone - Promise - ENUM
-               * @tc.desc      : getAudioScene as VOIP to Ringtone - ENAME
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_VOIP_AudioScene_003', 0, async function (done) {
-        await audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_RINGING).then(async function () {
-            console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-            await audioManager.getAudioScene().then(async function (data) {
-                if (data == audio.AudioScene.AUDIO_SCENE_RINGING){
-                    console.info('AudioFrameworkRenderLog: getAudioScene : PASS : '+data);
-                    expect(true).assertTrue();
-                }
-                else{
-                    console.info('AudioFrameworkRenderLog: getAudioScene : FAIL : '+data);
-                    expect(false).assertTrue();
-                }
-            }).catch((err) => {
-                console.info('AudioFrameworkRenderLog: getAudioScene : ERROR : '+err.message);
-                resultFlag=false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: setAudioScene : ERROR : '+err.message);
-            expect(false).assertTrue();
-        });
-
-        done();
-    })
-
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_AudioScene_004
-               * @tc.name      : setAudioScene as VOIP - Promise - ENUM
-               * @tc.desc      : setAudioScene as VOIP - ENUM
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_VOIP_AudioScene_004', 0, async function (done) {
-
-        await audioManager.setAudioScene(3).then(async function () {
-            console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-            expect(true).assertTrue();
-        }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: setAudioScene : ERROR : '+err.message);
-            expect(false).assertTrue();
-        });
-
-        done();
-    })
-
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_AudioScene_005
-               * @tc.name      : getAudioScene as VOIP - Promise - ENUM
-               * @tc.desc      : getAudioScene as VOIP - ENUM
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_VOIP_AudioScene_005', 0, async function (done) {
-
-        await audioManager.getAudioScene().then(async function (data) {
-            if (data == 3){
-                console.info('AudioFrameworkRenderLog: getAudioScene : PASS : '+data);
-                expect(true).assertTrue();
-            }
-            else{
-                console.info('AudioFrameworkRenderLog: getAudioScene : FAIL : '+data);
-                expect(false).assertTrue();
-            }
-        }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: getAudioScene : ERROR : '+err.message);
-            resultFlag=false;
-        });
-        done();
-    })
-
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_AudioScene_006
-               * @tc.name      : getAudioScene as VOIP to Ringtone - Promise - ENUM
-               * @tc.desc      : getAudioScene as VOIP to Ringtone - ENUM
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_VOIP_AudioScene_006', 0, async function (done) {
-        await audioManager.setAudioScene(1).then(async function () {
-            console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-            await audioManager.getAudioScene().then(async function (data) {
-                if (data == 1){
-                    console.info('AudioFrameworkRenderLog: getAudioScene : PASS : '+data);
-                    expect(true).assertTrue();
-                }
-                else{
-                    console.info('AudioFrameworkRenderLog: getAudioScene : FAIL : '+data);
-                    expect(false).assertTrue();
-                }
-            }).catch((err) => {
-                console.info('AudioFrameworkRenderLog: getAudioScene : ERROR : '+err.message);
-                resultFlag=false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: setAudioScene : ERROR : '+err.message);
-            expect(false).assertTrue();
-        });
-
-        done();
-    })
-
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_AudioScene_007
-               * @tc.name      : setAudioScene as VOIP - Callback - ENAME
-               * @tc.desc      : setAudioScene as VOIP - ENAME
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_VOIP_AudioScene_007', 0, async function (done) {
-
-        audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkRenderLog: setAudioScene : ERROR : ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else
-            {
-                console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-                expect(true).assertTrue();
-            }
-        });
-
+        readpath = 'StarWars10s-1C-44100-2SW.wav';
+        await getFdRead(readpath,done);
+        var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
+        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readpath,done);
         done();
     })
 
-    /* *
-           * @tc.number    : SUB_AUDIO_VOIP_AudioScene_008
-           * @tc.name      : getAudioScene as VOIP - Callback - ENAME
-           * @tc.desc      : getAudioScene as VOIP - ENAME
-           * @tc.size      : MEDIUM
-           * @tc.type      : Function
-           * @tc.level     : Level 0
-       */
-    it('SUB_AUDIO_VOIP_AudioScene_008', 0, async function (done) {
-
-        audioManager.getAudioScene((err, data) => {
-            if (err) {
-                console.error(`AudioFrameworkRenderLog: setAudioScene : ERROR : ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else {
-                if (data == audio.AudioScene.AUDIO_SCENE_VOICE_CHAT){
-                    console.info('AudioFrameworkRenderLog: getAudioScene : PASS : '+data);
-                    expect(true).assertTrue();
-                }
-                else{
-                    console.info('AudioFrameworkRenderLog: getAudioScene : FAIL : '+data);
-                    expect(false).assertTrue();
-                }
-            }
-        });
-        await sleep(100);
-
-        done();
-    })
-
-    /* *
-           * @tc.number    : SUB_AUDIO_VOIP_AudioScene_009
-           * @tc.name      : getAudioScene as VOIP to Ringtone - Callback - ENAME
-           * @tc.desc      : getAudioScene as VOIP to Ringtone - ENAME
-           * @tc.size      : MEDIUM
-           * @tc.type      : Function
-           * @tc.level     : Level 0
-       */
-    it('SUB_AUDIO_VOIP_AudioScene_009', 0, async function (done) {
-        audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_RINGING,async (err) => {
-            if (err) {
-                console.error(`AudioFrameworkRenderLog: setAudioScene : ERROR : ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else
-            {
-                await sleep(100);
-                console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-                audioManager.getAudioScene((err, data) => {
-                    if (err) {
-                        console.error(`AudioFrameworkRenderLog: setAudioScene : ERROR : ${err.message}`);
-                        expect(false).assertTrue();
-                    }
-                    else {
-                        if (data == audio.AudioScene.AUDIO_SCENE_RINGING){
-                            console.info('AudioFrameworkRenderLog: getAudioScene : PASS : '+data);
-                            expect(true).assertTrue();
-                        }
-                        else{
-                            console.info('AudioFrameworkRenderLog: getAudioScene : FAIL : '+data);
-                            expect(false).assertTrue();
-                        }
-                    }
-                });
-                await sleep(100);
-            }
-        });
-
-        done();
-    })
-
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_AudioScene_010
-               * @tc.name      : setAudioScene as VOIP - Callback - ENUM
-               * @tc.desc      : setAudioScene as VOIP - ENUM
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_VOIP_AudioScene_010', 0, async function (done) {
-
-        audioManager.setAudioScene(3, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkRenderLog: setAudioScene : ERROR : ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else
-            {
-                console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-                expect(true).assertTrue();
-            }
-        });
-
-        await sleep(100);
-        done();
-    })
-
-    /* *
-           * @tc.number    : SUB_AUDIO_VOIP_AudioScene_011
-           * @tc.name      : getAudioScene as VOIP - Callback - ENUM
-           * @tc.desc      : getAudioScene as VOIP - ENUM
-           * @tc.size      : MEDIUM
-           * @tc.type      : Function
-           * @tc.level     : Level 0
-       */
-    it('SUB_AUDIO_VOIP_AudioScene_011', 0, async function (done) {
-
-        audioManager.getAudioScene((err, data) => {
-            if (err) {
-                console.error(`AudioFrameworkRenderLog: setAudioScene : ERROR : ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else {
-                if (data == 3){
-                    console.info('AudioFrameworkRenderLog: getAudioScene : PASS : '+data);
-                    expect(true).assertTrue();
-                }
-                else{
-                    console.info('AudioFrameworkRenderLog: getAudioScene : FAIL : '+data);
-                    expect(false).assertTrue();
-                }
-            }
-        });
-        await sleep(100);
-
-        done();
-    })
-
-    /* *
-           * @tc.number    : SUB_AUDIO_VOIP_AudioScene_012
-           * @tc.name      : getAudioScene as VOIP to Ringtone - Callback - ENUM
-           * @tc.desc      : getAudioScene as VOIP to Ringtone - ENUM
-           * @tc.size      : MEDIUM
-           * @tc.type      : Function
-           * @tc.level     : Level 0
-       */
-    it('SUB_AUDIO_VOIP_AudioScene_012', 0, async function (done) {
-        audioManager.setAudioScene(1,async (err) => {
-            if (err) {
-                console.error(`AudioFrameworkRenderLog: setAudioScene : ERROR : ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else
-            {
-                await sleep(100);
-                console.info('AudioFrameworkRenderLog: setAudioScene : SUCCESS ');
-                audioManager.getAudioScene((err, data) => {
-                    if (err) {
-                        console.error(`AudioFrameworkRenderLog: setAudioScene : ERROR : ${err.message}`);
-                        expect(false).assertTrue();
-                    }
-                    else {
-                        if (data == 1){
-                            console.info('AudioFrameworkRenderLog: getAudioScene : PASS : '+data);
-                            expect(true).assertTrue();
-                        }
-                        else{
-                            console.info('AudioFrameworkRenderLog: getAudioScene : FAIL : '+data);
-                            expect(false).assertTrue();
-                        }
-                    }
-                });
-                await sleep(100);
-            }
-        });
-        done();
-    })
 
 })

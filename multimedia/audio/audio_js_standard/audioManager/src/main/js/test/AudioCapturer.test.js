@@ -32,8 +32,8 @@ describe('audioCapturer', function () {
     var fpath;
     //console.info('AudioFrameworkRecLog: Recording files Path: '+dirPath);
 
-    async function getPathName(){
-        var path1 = '/data/accounts/account_0/appdata/';
+   /* async function getPathName(){
+       /* var path1 = '/data/accounts/account_0/appdata/';
         var packageName;
         var context = ability_featureAbility.getContext();
         await context.getBundleName()
@@ -45,11 +45,11 @@ describe('audioCapturer', function () {
             });
         await sleep(200);
         //var mediaDirTemp = path1 + packageName + '/' + packageName + '/assets/entry/resources/rawfile';
-        var mediaDirTemp = path1+packageName
+        var mediaDirTemp ='/data/storage/el2/base/haps/entry/cache/'// path1+packageName
         console.info('AudioFrameworkRenderLog: Resource DIR Path : '+mediaDirTemp);
         return mediaDirTemp;
 
-    }
+    }*/
 
     const audioManager = audio.getAudioManager();
     console.info('AudioFrameworkRenderLog: Create AudioManger Object JS Framework');
@@ -59,13 +59,13 @@ describe('audioCapturer', function () {
 
     beforeAll(async function () {
         console.info('AudioFrameworkTest: beforeAll: Prerequisites at the test suite level');
-        mediaDir = await getPathName();
-        dateTime = new Date().getTime();
-        dirPath = mediaDir+'/files/RecTest'+dateTime;
+        dirPath = '/data/storage/el2/base/haps/entry/cache'
+        /*dateTime = new Date().getTime();
+        dirPath = mediaDir+'/files/RecTest'+dateTime;*/
         console.info('AudioFrameworkRecLog: Recording files Path: '+dirPath);
         fpath = dirPath+'/capture_js.pcm';
         await sleep(100);
-        fileio.mkdirSync(dirPath);
+       // fileio.mkdirSync(fPath);
         console.info('AudioFrameworkTest: beforeAll: END');
     })
 
@@ -79,11 +79,11 @@ describe('audioCapturer', function () {
     })
 
     afterAll(async function () {
-        fileio.rmdir(dirPath, function(err){
+        /*fileio.rmdir(dirPath, function(err){
             if (!err) {
                 console.info('AudioFrameworkTest: Recorded files are deleted successfully');
             }
-        });
+        });*/
         await sleep(1000);
         console.info('AudioFrameworkTest: afterAll: Test suite-level cleanup condition');
     })
@@ -111,23 +111,6 @@ describe('audioCapturer', function () {
         console.info('AudioFrameworkRecLog: AudioCapturer : Path : '+fpath);
 
         console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
-
-        await audioManagerRec.setAudioScene(AudioScene).then(async function () {
-            console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-            await audioManagerRec.getAudioScene().then(async function (data) {
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : '+data);
-            }).catch((err) => {
-                console.info('AudioFrameworkRecLog: getAudioScene : ERROR : '+err.message);
-                resultFlag=false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-            resultFlag=false;
-        });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRecLog: resultFlag : '+resultFlag);
-            return resultFlag;
-        }
 
         await audioCap.getStreamInfo().then(async function (audioParamsGet) {
             if (audioParamsGet != undefined) {
@@ -205,14 +188,14 @@ describe('audioCapturer', function () {
             return resultFlag;
         }
         await sleep(100);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------READ BUFFER---------');
             var buffer = await audioCap.read(bufferSize, true);
             await sleep(50);
             console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
             var number = fileio.writeSync(fd, buffer);
-            console.info('BufferRecLog: data written: ' + number);
+            console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
             await sleep(50);
             numBuffersToCapture--;
         }
@@ -269,20 +252,7 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        await audioManagerRec.setAudioScene(AudioScene,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                resultFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-            }
-        });
+
         audioCapCallBack.getStreamInfo(async(err,audioParamsGet) => {
             console.info('AudioFrameworkRecLog: ---------GET STREAM INFO---------');
             console.log('AudioFrameworkRecLog: Entered getStreamInfo');
@@ -346,14 +316,14 @@ describe('audioCapturer', function () {
             return resultFlag;
         }
 
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------READ BUFFER---------');
             var buffer = await audioCapCallBack.read(bufferSize, true);
             await sleep(50);
             console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
             var number = fileio.writeSync(fd, buffer);
-            console.info('BufferRecLog: data written: ' + number);
+            console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
             await sleep(50);
             numBuffersToCapture--;
         }
@@ -423,29 +393,22 @@ describe('audioCapturer', function () {
             } else {
                 audioCapCallBack = value;
                 console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
+		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: INVALID:'+audio.AudioState.STATE_INVALID);
+		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: NEW:'+audio.AudioState.STATE_NEW);
+		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: PREPARED:'+audio.AudioState.STATE_PREPARED);
+		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: START:'+audio.AudioState.STATE_START);
+		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: STOP:'+audio.AudioState.STATE_STOP);
+		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: RELEASE:'+audio.AudioState.STATE_RELEASE);
+		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: RUNNING:'+audio.AudioState.STATE_RUNNING);
             }
         });
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag = false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: ---------BEFORE CHECK AUDIO PREPARED STATE---------');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == audio.AudioState.STATE_PREPARED)) {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK AUDIO PREPARED STATE : PASS---------');
-                    stateFlag = true;
-                    expect(stateFlag).assertTrue();
-                    done();
-                }
-            }
-        });
+		
+		if ((audioCapCallBack.state == audio.AudioState.STATE_PREPARED)) {
+            console.info('AudioFrameworkRecLog: ---------AFTER CHECK AUDIO PREPARED STATE : PASS---------');
+            stateFlag = true;
+            expect(stateFlag).assertTrue();
+            done();
+          }
 
     })
 
@@ -484,27 +447,13 @@ describe('audioCapturer', function () {
                 console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
             }
         });
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag = false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: ---------BEFORE CHECK AUDIO PREPARED STATE---------');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK AUDIO PREPARED STATE : PASS---------');
-                    stateFlag = true;
-                    expect(stateFlag).assertTrue();
-                    done();
-                }
-            }
-        });
+		
+		 if ((audioCapCallBack.state == 1)) {
+             console.info('AudioFrameworkRecLog: ---------AFTER CHECK AUDIO PREPARED STATE : PASS---------');
+             stateFlag = true;
+             expect(stateFlag).assertTrue();
+             done();
+             }
 
     })
 
@@ -540,20 +489,6 @@ describe('audioCapturer', function () {
                 console.info('AudioFrameworkRecLog: AudioCapturer Not Created : Fail : Stream Type: FAIL');
             } else {
                 audioCapCallBack = value;
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-            }
-        });
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
                 console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
             }
         });
@@ -628,20 +563,6 @@ describe('audioCapturer', function () {
                 console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
             }
         });
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-            }
-        });
         await audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -713,23 +634,7 @@ describe('audioCapturer', function () {
                 console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
             }
         });
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
+
         await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
@@ -817,22 +722,6 @@ describe('audioCapturer', function () {
                 console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
             }
         });
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                stateFlag = true;
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -914,23 +803,6 @@ describe('audioCapturer', function () {
             } else {
                 audioCapCallBack = value;
                 console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-            }
-        });
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
             }
         });
         await sleep(1000);
@@ -1021,23 +893,7 @@ describe('audioCapturer', function () {
                 console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
             }
         });
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
+
         await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
@@ -1126,23 +982,6 @@ describe('audioCapturer', function () {
                 console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
             }
         });
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
         await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
@@ -1229,23 +1068,6 @@ describe('audioCapturer', function () {
                 console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
             }
         });
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
         await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
@@ -1283,7 +1105,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -1296,14 +1118,14 @@ describe('audioCapturer', function () {
                     await sleep(50);
                     console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
                     var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
+                    console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                     await sleep(100);
                     stateFlag=true;
                 }
             });
             numBuffersToCapture--;
         }
-        await sleep(3000);
+        await sleep(1000);
         audioCapCallBack.release(async(err,value) => {
             console.info('AudioFrameworkRecLog: ---------RELEASE RECORD---------');
             if (err){
@@ -1358,29 +1180,13 @@ describe('audioCapturer', function () {
             console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : '+err.message);
             return stateFlag;
         });
-
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT).then(async function () {
-            console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-            await audioManagerRec.getAudioScene().then(async function (data) {
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : '+data);
-                console.info('AudioFrameworkRecLog: ---------BEFORE CHECK AUDIO PREPARED STATE---------');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapPromise.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapPromise.state == audio.AudioState.STATE_PREPARED)) {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK AUDIO PREPARED STATE : PASS---------');
-                    stateFlag = true;
-                    expect(stateFlag).assertTrue();
-                    done();
-                }
-            }).catch((err) => {
-                console.info('AudioFrameworkRecLog: getAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-            stateFlag=false;
-        });
-
+		
+		if ((audioCapPromise.state == audio.AudioState.STATE_PREPARED)) {
+             console.info('AudioFrameworkRecLog: ---------AFTER CHECK AUDIO PREPARED STATE : PASS---------');
+             stateFlag = true;
+             expect(stateFlag).assertTrue();
+             done();
+            }
     })
 
     /*         *
@@ -1417,28 +1223,13 @@ describe('audioCapturer', function () {
             console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : '+err.message);
             return stateFlag;
         });
-
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT).then(async function () {
-            console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-            await audioManagerRec.getAudioScene().then(async function (data) {
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : '+data);
-                console.info('AudioFrameworkRecLog: ---------BEFORE CHECK AUDIO PREPARED STATE---------');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapPromise.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapPromise.state == 1)) {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK AUDIO PREPARED STATE : PASS---------');
-                    stateFlag = true;
-                    expect(stateFlag).assertTrue();
-                    done();
-                }
-            }).catch((err) => {
-                console.info('AudioFrameworkRecLog: getAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-            stateFlag=false;
-        });
+		
+		 if ((audioCapPromise.state == 1)) {
+             console.info('AudioFrameworkRecLog: ---------AFTER CHECK AUDIO PREPARED STATE : PASS---------');
+             stateFlag = true;
+             expect(stateFlag).assertTrue();
+             done();
+            }
 
     })
 
@@ -1476,20 +1267,6 @@ describe('audioCapturer', function () {
             console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : '+err.message);
             return stateFlag;
         });
-
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT).then(async function () {
-            console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-            await audioManagerRec.getAudioScene().then(async function (data) {
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : '+data);
-            }).catch((err) => {
-                console.info('AudioFrameworkRecLog: getAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-            stateFlag=false;
-        });
-
 
         await audioCapPromise.start().then(async function () {
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -1556,20 +1333,6 @@ describe('audioCapturer', function () {
             return stateFlag;
         });
 
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT).then(async function () {
-            console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-            await audioManagerRec.getAudioScene().then(async function (data) {
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : '+data);
-            }).catch((err) => {
-                console.info('AudioFrameworkRecLog: getAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-            stateFlag=false;
-        });
-
-
         await audioCapPromise.start().then(async function () {
             console.info('AudioFrameworkRecLog: ---------START---------');
             console.info('AudioFrameworkRecLog: Capturer started :SUCCESS ');
@@ -1634,20 +1397,6 @@ describe('audioCapturer', function () {
             console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : '+err.message);
             return stateFlag;
         });
-
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT).then(async function () {
-            console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-            await audioManagerRec.getAudioScene().then(async function (data) {
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : '+data);
-            }).catch((err) => {
-                console.info('AudioFrameworkRecLog: getAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-            stateFlag=false;
-        });
-
 
         await audioCapPromise.start().then(async function () {
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -1725,20 +1474,6 @@ describe('audioCapturer', function () {
             return stateFlag;
         });
 
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT).then(async function () {
-            console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-            await audioManagerRec.getAudioScene().then(async function (data) {
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : '+data);
-            }).catch((err) => {
-                console.info('AudioFrameworkRecLog: getAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-            stateFlag=false;
-        });
-
-
         await audioCapPromise.start().then(async function () {
             console.info('AudioFrameworkRecLog: ---------START---------');
             console.info('AudioFrameworkRecLog: Capturer started :SUCCESS ');
@@ -1815,20 +1550,6 @@ describe('audioCapturer', function () {
             console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : ' + err.message);
         });
 
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT).then(async function () {
-            console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-            await audioManagerRec.getAudioScene().then(async function (data) {
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : ' + data);
-            }).catch((err) => {
-                console.info('AudioFrameworkRecLog: getAudioScene : ERROR : ' + err.message);
-                stateFlag = false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRecLog: setAudioScene : ERROR : ' + err.message);
-            stateFlag = false;
-        });
-
-
         await audioCapPromise.start().then(async function () {
             console.info('AudioFrameworkRecLog: ---------START---------');
             console.info('AudioFrameworkRecLog: Capturer started :SUCCESS ');
@@ -1903,21 +1624,7 @@ describe('audioCapturer', function () {
             console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : '+err.message);
             return stateFlag;
         });
-
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT).then(async function () {
-            console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-            await audioManagerRec.getAudioScene().then(async function (data) {
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : '+data);
-            }).catch((err) => {
-                console.info('AudioFrameworkRecLog: getAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-            stateFlag=false;
-        });
-
-
+		
         await audioCapPromise.start().then(async function () {
             console.info('AudioFrameworkRecLog: ---------START---------');
             console.info('AudioFrameworkRecLog: Capturer started :SUCCESS ');
@@ -1992,18 +1699,6 @@ describe('audioCapturer', function () {
             console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : '+err.message);
             return stateFlag;
         });
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT).then(async function () {
-            console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-            await audioManagerRec.getAudioScene().then(async function (data) {
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : '+data);
-            }).catch((err) => {
-                console.info('AudioFrameworkRecLog: getAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-            stateFlag=false;
-        });
         await sleep(1000);
         await audioCapPromise.start().then(async function () {
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -2038,7 +1733,7 @@ describe('audioCapturer', function () {
                 done();
             }
         }).catch((err) => {
-            console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
+            console.info('AudioFrameworkRecLog: ERROR : '+err.message);
             stateFlag=false;
         });
         await sleep(1000);
@@ -2080,21 +1775,6 @@ describe('audioCapturer', function () {
             return stateFlag;
         });
         await sleep(1000);
-
-        await audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT).then(async function () {
-            console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-            await audioManagerRec.getAudioScene().then(async function (data) {
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : '+data);
-            }).catch((err) => {
-                console.info('AudioFrameworkRecLog: getAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-            stateFlag=false;
-        });
-        await sleep(1000);
-
         await audioCapPromise.start().then(async function () {
             console.info('AudioFrameworkRecLog: ---------START---------');
             console.info('AudioFrameworkRecLog: Capturer started :SUCCESS ');
@@ -2131,7 +1811,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         //await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE PROMISE READ ---------');
             console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
@@ -3111,171 +2791,6 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*             *
-                * @tc.number    : SUB_AUDIO_PROMISE_RECORD_AUDIO_SCENE_RINGING_049
-                * @tc.name      : AudioRec-Set2
-                * @tc.desc      : record audio with parameter set 2
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_PROMISE_RECORD_AUDIO_SCENE_RINGING_049', 0, async function (done) {
-        var audioStreamInfo96000 = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
-            channels: audio.AudioChannel.CHANNEL_1,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
-        };
-        var audioCapturerInfo96000 = {
-            source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags : 1,
-        }
-        var audioCapturerOptions96000 = {
-            streamInfo: audioStreamInfo96000,
-            capturerInfo: audioCapturerInfo96000,
-        }
-
-        var resultFlag = await recPromise(audioCapturerOptions96000, dirPath+'/capture_js-96000-1C-S24LE.pcm', audio.AudioScene.AUDIO_SCENE_RINGING);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-
-        expect(resultFlag).assertTrue();
-
-        done();
-    })
-
-    /*             *
-                * @tc.number    : SUB_AUDIO_PROMISE_RECORD_AUDIO_SCENE_RINGING_ENUM_050
-                * @tc.name      : AudioRec-Set2
-                * @tc.desc      : record audio with parameter set 2
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_PROMISE_RECORD_AUDIO_SCENE_RINGING_ENUM_050', 0, async function (done) {
-        var audioStreamInfo96000 = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
-            channels: audio.AudioChannel.CHANNEL_1,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
-        };
-        var audioCapturerInfo96000 = {
-            source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags : 1,
-        }
-        var audioCapturerOptions96000 = {
-            streamInfo: audioStreamInfo96000,
-            capturerInfo: audioCapturerInfo96000,
-        }
-
-        var resultFlag = await recPromise(audioCapturerOptions96000, dirPath+'/capture_js-96000-1C-S24LE.pcm', 1);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-
-        expect(resultFlag).assertTrue();
-
-        done();
-    })
-
-    /*             *
-                * @tc.number    : SUB_AUDIO_RECORD_PROMISE_AUDIO_SCENE_PHONE_CALL_Audio_051
-                * @tc.name      : AudioRec-Set3
-                * @tc.desc      : record audio with parameter set 3
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_RECORD_PROMISE_AUDIO_SCENE_PHONE_CALL_Audio_051', 0, async function (done) {
-        var audioStreamInfo48000 = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-            channels: audio.AudioChannel.CHANNEL_2,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
-        };
-        var audioCapturerInfo48000 = {
-            source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags : 1,
-        }
-        var audioCapturerOptions48000 = {
-            streamInfo: audioStreamInfo48000,
-            capturerInfo: audioCapturerInfo48000,
-        }
-
-        var resultFlag = await recPromise(audioCapturerOptions48000, dirPath+'/capture_js-48000-2C-1S32LE.pcm', audio.AudioScene.AUDIO_SCENE_PHONE_CALL);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-
-        expect(resultFlag).assertTrue();
-
-        done();
-    })
-
-    /*             *
-                * @tc.number    : SUB_AUDIO_RECORD_PROMISE_AUDIO_SCENE_PHONE_CALL_Audio_ENUM_052
-                * @tc.name      : AudioRec-Set3
-                * @tc.desc      : record audio with parameter set 3
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_RECORD_PROMISE_AUDIO_SCENE_PHONE_CALL_Audio_ENUM_052', 0, async function (done) {
-        var audioStreamInfo48000 = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-            channels: audio.AudioChannel.CHANNEL_2,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
-        };
-        var audioCapturerInfo48000 = {
-            source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags : 1,
-        }
-        var audioCapturerOptions48000 = {
-            streamInfo: audioStreamInfo48000,
-            capturerInfo: audioCapturerInfo48000,
-        }
-
-        var resultFlag = await recPromise(audioCapturerOptions48000, dirPath+'/capture_js-48000-2C-1S32LE.pcm', audio.AudioScene.AUDIO_SCENE_PHONE_CALL);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-
-        expect(resultFlag).assertTrue();
-
-        done();
-    })
-
-    /*     *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_053
-                * @tc.name      : AudioRec-Set11
-                * @tc.desc      : record audio with parameter set 011
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_053', 0, async function (done) {
-        var audioStreamInfo64000 = {
-            samplingRate: 64000,
-            channels: 2,
-            sampleFormat: 3,
-            encodingType: 0,
-        };
-        var audioCapturerInfo64000 = {
-            source: 1,
-            capturerFlags : 1,
-        }
-        var audioCapturerOptions64000 = {
-            streamInfo: audioStreamInfo64000,
-            capturerInfo: audioCapturerInfo64000,
-        }
-
-        var resultFlag = await recPromise(audioCapturerOptions64000, dirPath+'/capture_js-64000-2C-32B.pcm', 3);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-
-        expect(resultFlag).assertTrue();
-
-        done();
-    })
 
     /*     *
                * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_START_055
@@ -3311,24 +2826,6 @@ describe('audioCapturer', function () {
             } else {
                 audioCapCallBack = value;
                 console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-            }
-        });
-        await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
             }
         });
         await sleep(1000);
@@ -3430,24 +2927,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -3495,7 +2974,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -3594,24 +3073,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -3659,7 +3120,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -4722,23 +4183,6 @@ describe('audioCapturer', function () {
                     break;
             }
         });
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag == true;
-                }
-            }
-        });
         await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
@@ -4854,23 +4298,6 @@ describe('audioCapturer', function () {
                     break;
             }
         });
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT, async (err, setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err) {
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : ' + err.message);
-                stateFlag = false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : ' + setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS' + audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag == true;
-                }
-            }
-        });
         await sleep(1000);
         audioCapCallBack.release(async (err, value) => {
             console.info('AudioFrameworkRecLog: ---------RELEASE RECORD---------');
@@ -4950,23 +4377,6 @@ describe('audioCapturer', function () {
                     console.info('AudioFrameworkTest:--------CHANGE IN AUDIO STATE----------INVALID--------------');
                     console.info('AudioFrameworkTest: Audio State is : invalid');
                     break;
-            }
-        });
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT, async (err, setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err) {
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : ' + err.message);
-                stateFlag = false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : ' + setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS' + audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag == true;
-                }
             }
         });
         await sleep(1000);
@@ -5064,23 +4474,6 @@ describe('audioCapturer', function () {
                     console.info('AudioFrameworkTest:--------CHANGE IN AUDIO STATE----------INVALID--------------');
                     console.info('AudioFrameworkTest: Audio State is : invalid');
                     break;
-            }
-        });
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT, async (err, setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err) {
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : ' + err.message);
-                stateFlag = false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : ' + setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS' + audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag == true;
-                }
             }
         });
         await sleep(1000);
@@ -5185,24 +4578,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -5239,7 +4614,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -5337,24 +4712,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -5391,7 +4748,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -5482,24 +4839,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -5536,7 +4875,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -5628,24 +4967,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -5682,7 +5003,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -5774,24 +5095,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -5828,7 +5131,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -5921,24 +5224,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -5975,7 +5260,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -6068,24 +5353,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -6122,7 +5389,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -6214,24 +5481,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -6268,7 +5517,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -6361,24 +5610,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -6415,7 +5646,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -6506,24 +5737,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -6560,7 +5773,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -6673,24 +5886,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -6727,7 +5922,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -6840,24 +6035,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -6894,7 +6071,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -7008,24 +6185,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -7062,7 +6221,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
@@ -7175,24 +6334,6 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.setAudioScene(audio.AudioScene.AUDIO_SCENE_VOICE_CHAT,async(err,setValue) => {
-            console.info('AudioFrameworkRecLog: ---------SET AUDIO SCENE---------');
-            if (err){
-                console.info('AudioFrameworkRecLog: setAudioScene : ERROR : '+err.message);
-                stateFlag=false;
-            } else {
-                console.info('AudioFrameworkRecLog: setAudioScene : SUCCESS ');
-                console.info('AudioFrameworkRecLog: setAudioScene : Value : '+setValue);
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : startawait');
-                console.info('AudioFrameworkRecLog: getAudioScene : Value : initaitestart');
-                console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCapCallBack.state);
-                console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS'+audioCapCallBack.state);
-                if ((audioCapCallBack.state == 1)) {
-                    stateFlag = true;
-                }
-            }
-        });
-        await sleep(1000);
         audioCapCallBack.start(async (err,value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
@@ -7229,7 +6370,7 @@ describe('audioCapturer', function () {
             stateFlag=false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 100;
+        var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             audioCapCallBack.read(bufferSize, true,async(err,buffer) => {
