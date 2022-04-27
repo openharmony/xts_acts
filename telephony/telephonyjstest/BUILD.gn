@@ -23,7 +23,8 @@ group("telephonyjstest") {
     "netmanager_http:ActsNetManagerHttpEtsTest",
     "netmanager_socket:ActsNetManagerSocketEtsTest",
     "network_search:network_search",
-    "new_add:ActsNewAddEtsTest",
+    "observer:ActsObserverEtsTest",
+    "radiostatistic:ActsRadiostatisticEtsTest",
     "sim:sim",
     "sms_mms:sms_mms",
   ]

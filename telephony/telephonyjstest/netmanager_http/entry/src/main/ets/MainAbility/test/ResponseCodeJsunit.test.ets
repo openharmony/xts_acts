@@ -544,7 +544,6 @@ export default function responseCodeJsunit() {
     });
 
 
-
     /**
      * @tc.number Telephony_Http_ResponseCode_CONFLICT_0100
      * @tc.name ResponseCode::CONFLICT
@@ -562,8 +561,6 @@ export default function responseCodeJsunit() {
         done();
       }
     });
-
-
 
 
     /**

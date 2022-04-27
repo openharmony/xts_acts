@@ -52,7 +52,7 @@
         "launchType": "standard"
       }
     ],
-	  "reqPermissions": [
+    "reqPermissions": [
       {
         "name": "ohos.permission.LOCATION",
         "reason": "need use ohos.permission.LOCATION"
