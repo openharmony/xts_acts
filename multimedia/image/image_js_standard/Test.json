@@ -2,38 +2,50 @@
     "description": "Configuration for Image Tests",
     "driver": {
         "type": "JSUnitTest",
-        "test-timeout": "120000",
+        "test-timeout": "1500000",
         "package": "ohos.acts.multimedia.image",
 		"shell-timeout": "120000"
     },
     "kits": [
+		{
+            "type": "PushKit",
+            "pre-push": [
+            ],
+            "push": [
+                "./resource/image/test.tiff ->/storage/media/100/local/files",
+				"./resource/image/test.123 ->/storage/media/100/local/files",
+				"./resource/image/test.bmp ->/storage/media/100/local/files",
+                "./resource/image/test.png ->/storage/media/100/local/files",
+				"./resource/image/test.gif ->/storage/media/100/local/files",
+				"./resource/image/test.jpg ->/storage/media/100/local/files",
+				"./resource/image/test_exif.jpg ->/storage/media/100/local/files",
+				"./resource/image/moving_test.gif ->/storage/media/100/local/files"
+				
+            ]
+        },
    
 		{
             "type": "ShellKit",
             "run-command": [
-                "mkdir /data/accounts/account_0/appdata/image",
+                "mkdir /storage/media/100/local/files/cjh",
+				"cp /storage/media/100/local/files/test.tiff /storage/media/100/local/files/cjh/",
+				"cp /storage/media/100/local/files/test.123 /storage/media/100/local/files/cjh/",
+				"cp /storage/media/100/local/files/test.bmp /storage/media/100/local/files/cjh/",
+				"cp /storage/media/100/local/files/test.png /storage/media/100/local/files/cjh/",
+				"cp /storage/media/100/local/files/test.gif /storage/media/100/local/files/cjh/",
+				"cp /storage/media/100/local/files/test.jpg /storage/media/100/local/files/cjh/",
+				"cp /storage/media/100/local/files/test_exif.jpg /storage/media/100/local/files/cjh/",
+				"cp /storage/media/100/local/files/moving_test.gif /storage/media/100/local/files/cjh/",
                 "chmod -R 666 /data/media/*",
-                "chmod -R 666 /data/accounts/account_0/appdata/image/*"
+                "chmod -R 666 /storage/media/100/local/files/cjh/*",
+				"killall com.ohos.medialibrary.MediaScannerAbilityA",
+                "aa start  -a MediaScannerAbility -b com.ohos.medialibrary.MediaScannerAbilityA"
             ],
             "teardown-command":[
               
             ]
         },
-        {
-            "type": "PushKit",
-            "pre-push": [
-            ],
-            "push": [
-                "./resource/image/test.tiff ->/data/accounts/account_0/appdata/image",
-				"./resource/image/test.123 ->/data/accounts/account_0/appdata/image",
-				"./resource/image/test.bmp ->/data/accounts/account_0/appdata/image",
-                "./resource/image/test.png ->/data/accounts/account_0/appdata/image",
-				"./resource/image/test.gif ->/data/accounts/account_0/appdata/image",
-				"./resource/image/test.jpg ->/data/accounts/account_0/appdata/image",
-				"./resource/image/test_exif.jpg ->/data/accounts/account_0/appdata/image",
-				"./resource/image/moving_test.gif ->/data/accounts/account_0/appdata/image"
-            ]
-        },
+        
         {
             "test-file-name": [
                 "ActsImageJsTest.hap"
