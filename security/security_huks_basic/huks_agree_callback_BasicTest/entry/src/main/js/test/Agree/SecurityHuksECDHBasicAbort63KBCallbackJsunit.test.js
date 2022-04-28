@@ -35,7 +35,7 @@ let HuksOptions63kb = {
 };
 
 describe('SecurityHuksAgreeECDHCallbackJsunit', function () {
-  it('testAgreeECDHAbort63KB001', 0, async function (done) {
+  it('testAgreeEDCH102', 0, async function (done) {
     const srcKeyAliesFirst =
       'testAgreeECDHSize224Abort63KBAgreeKeyAlias_01_001';
     const srcKeyAliesSecond =

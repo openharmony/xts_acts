@@ -50,7 +50,6 @@ function generateKey(srcKeyAlies, HuksOptions) {
 async function publicImportKey(keyAlias, HuksOptions) {
   let _InData = HuksOptions.inData;
   HuksOptions.inData = finishOutData;
-  console.log(`test ImportKey HuksOptions: ${JSON.stringify(HuksOptions)}`);
   await importKey(keyAlias, HuksOptions)
     .then((data) => {
       console.log(`test ImportKey data: ${JSON.stringify(data)}`);
@@ -143,11 +142,6 @@ async function publicUpdateFunc(HuksOptions, isBigData) {
   } else {
     let count = Math.floor(uint8ArrayToString(inDataArray).length / dateSize);
     let remainder = uint8ArrayToString(inDataArray).length % dateSize;
-    console.log(
-      `test before update length: ${uint8ArrayToString(inDataArray).length}`
-    );
-    console.log(`test before update count: ${count}`);
-    console.log(`test before update remainder: ${remainder}`);
     for (let i = 0; i < count; i++) {
       HuksOptions.inData = stringToUint8Array(
         uint8ArrayToString(tempHuksOptionsInData).slice(
@@ -172,7 +166,6 @@ async function publicUpdateFunc(HuksOptions, isBigData) {
 }
 
 async function update(handle, HuksOptions) {
-  console.log(`test update data ${JSON.stringify(HuksOptions)}`);
   await updateCallback(handle, HuksOptions)
     .then(async (data) => {
       console.log(`test update data ${JSON.stringify(data)}`);
@@ -305,7 +298,6 @@ async function publicSignVerifyFunc(
       keyAlias = newSrcKeyAlies;
       await publicImportKey(keyAlias, HuksOptions);
     }
-    console.log(`test init HuksOptions: ${JSON.stringify(HuksOptions)}`);
     await publicInitFunc(keyAlias, HuksOptions);
     await publicUpdateFunc(HuksOptions, isBigData);
     if (thirdInderfaceName == 'finish') {
@@ -316,11 +308,6 @@ async function publicSignVerifyFunc(
           1,
           1,
           HuksSignVerifyDSA.HuksKeyRSAPurposeSINGVERIFY
-        );
-        console.log(
-          `test before exportKey Gen_HuksOptions: ${JSON.stringify(
-            HuksOptions
-          )}`
         );
         await publicExportKey(keyAlias, HuksOptions);
       } else {

@@ -39,7 +39,7 @@ describe('SecurityHuksAgreeECDHPromiseJsunit', function () {
     };
     console.info('test beforeEach called');
   });
-  it('testAgreeECDHAbort63KBAgree101', 0, async function (done) {
+  it('testAgreeECDH102', 0, async function (done) {
     const srcKeyAliesFirst =
       'testAgreeECDHSize224Abort63KBAgreeKeyAlias_01_101';
     const srcKeyAliesSecond =

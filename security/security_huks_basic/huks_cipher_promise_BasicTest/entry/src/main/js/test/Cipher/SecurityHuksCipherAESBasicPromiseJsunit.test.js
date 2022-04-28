@@ -38,9 +38,6 @@ let genHuksOptions = {
 };
 
 async function publicGenerateKeyFunc(srcKeyAlies, genHuksOptionsNONECBC) {
-  console.log(
-    `test GenerateHuksOptions: ${JSON.stringify(genHuksOptionsNONECBC)}`
-  );
   await huks
     .generateKey(srcKeyAlies, genHuksOptionsNONECBC)
     .then((data) => {
@@ -54,7 +51,6 @@ async function publicGenerateKeyFunc(srcKeyAlies, genHuksOptionsNONECBC) {
 }
 
 async function publicInitFunc(srcKeyAlies, HuksOptions) {
-  console.log(`test init HuksOptions: ${JSON.stringify(HuksOptions)}`);
   await huks
     .init(srcKeyAlies, HuksOptions)
     .then((data) => {
@@ -69,17 +65,9 @@ async function publicInitFunc(srcKeyAlies, HuksOptions) {
 }
 
 async function publicUpdateFunc(HuksOptions, thirdInderfaceName, isEncrypt) {
-  console.log(
-    `test update before handle: ${JSON.stringify(
-      handle
-    )} HuksOptions: ${JSON.stringify(HuksOptions)}`
-  );
   let dateSize = 64;
   let huksOptionsInData = HuksOptions.inData;
   let inDataArray = HuksOptions.inData;
-  console.log(
-    'test update finish HuksOptions inData: ' + Array.from(inDataArray).length
-  );
   if (Array.from(inDataArray).length < dateSize) {
     await update(handle, HuksOptions);
     HuksOptions.inData = new Uint8Array(new Array());
@@ -87,21 +75,9 @@ async function publicUpdateFunc(HuksOptions, thirdInderfaceName, isEncrypt) {
   } else {
     let count = Math.floor(Array.from(inDataArray).length / dateSize);
     let remainder = Array.from(inDataArray).length % dateSize;
-    console.log('test count ' + count + 'remainder ' + remainder);
     for (let i = 0; i < count; i++) {
       HuksOptions.inData = new Uint8Array(
         Array.from(huksOptionsInData).slice(dateSize * i, dateSize * (i + 1))
-      );
-      console.log(
-        'test ' +
-          uint8ArrayToString(
-            new Uint8Array(
-              Array.from(huksOptionsInData).slice(
-                dateSize * i,
-                dateSize * (i + 1)
-              )
-            )
-          )
       );
       await update(handle, HuksOptions);
     }
@@ -112,17 +88,6 @@ async function publicUpdateFunc(HuksOptions, thirdInderfaceName, isEncrypt) {
           dateSize * count,
           uint8ArrayToString(inDataArray).length
         )
-      );
-      console.log(
-        'test ' +
-          uint8ArrayToString(
-            new Uint8Array(
-              Array.from(huksOptionsInData).slice(
-                dateSize * count,
-                uint8ArrayToString(inDataArray).length
-              )
-            )
-          )
       );
     } else {
       HuksOptions.inData = new Uint8Array(new Array());
@@ -137,8 +102,6 @@ async function publicUpdateFunc(HuksOptions, thirdInderfaceName, isEncrypt) {
 }
 
 async function update(handle, HuksOptions) {
-  console.log(`test update data ${JSON.stringify(HuksOptions)}`);
-  console.log(`test update data ${JSON.stringify(HuksOptions.inData.length)}`);
   await huks
     .update(handle, HuksOptions)
     .then(async (data) => {
@@ -146,11 +109,9 @@ async function update(handle, HuksOptions) {
       if (updateResult.length !== 0) {
         console.log(`test update outDatalength ${updateResult.length}`);
         updateResult = updateResult.concat(Array.from(data.outData));
-        console.log(`test update outDatalength ${updateResult.length}`);
       } else {
         console.log(`test update outDatalength ${updateResult.length}`);
         updateResult = Array.from(data.outData);
-        console.log(`test update outDatalength ${updateResult.length}`);
       }
       expect(data.errorCode == 0).assertTrue();
     })
@@ -167,11 +128,8 @@ async function publicFinishAbortFunc(
   remainder
 ) {
   if (thirdInderfaceName == 'finish') {
-    HuksOptions.outData = new Uint8Array(new Array(encryptedData.length * 2));
-    console.log(`test remainder ${remainder}`);
     await finish(HuksOptions, isEncrypt);
   } else if (thirdInderfaceName == 'abort') {
-    HuksOptions.outData = new Uint8Array(new Array(encryptedData.length * 2));
     await abort(HuksOptions);
   }
 }
@@ -192,39 +150,15 @@ async function finish(HuksOptions, isEncrypt) {
       }
       if (isEncrypt) {
         if (finishData === uint8ArrayToString(encryptedData)) {
-          console.log(
-            `test finish Encrypt fail ${uint8ArrayToString(encryptedData)}`
-          );
-          console.log(
-            `test finish Encrypt fail ${uint8ArrayToString(finishData)}`
-          );
           expect(null).assertFail();
         } else {
-          console.log(
-            `test finish Encrypt success ${uint8ArrayToString(encryptedData)}`
-          );
-          console.log(
-            `test finish Encrypt success ${uint8ArrayToString(finishData)}`
-          );
           expect(data.errorCode == 0).assertTrue();
         }
       }
       if (!isEncrypt) {
         if (finishData === uint8ArrayToString(encryptedData)) {
-          console.log(
-            `test finish Decrypt success ${uint8ArrayToString(encryptedData)}`
-          );
-          console.log(
-            `test finish Decrypt success ${uint8ArrayToString(finishData)}`
-          );
           expect(data.errorCode == 0).assertTrue();
         } else {
-          console.log(
-            `test finish Decrypt fail ${uint8ArrayToString(encryptedData)}`
-          );
-          console.log(
-            `test finish Decrypt fail ${uint8ArrayToString(finishData)}`
-          );
           expect(null).assertFail();
         }
       }
@@ -301,7 +235,6 @@ describe('SecurityHuksCipherAESPromiseJsunit', function () {
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
       inData: srcData63Kb,
-      outData: stringToUint8Array('0'),
     };
     await publicCipherFunc(
       srcKeyAlies,
@@ -321,7 +254,6 @@ describe('SecurityHuksCipherAESPromiseJsunit', function () {
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
       inData: new Uint8Array(updateResult),
-      outData: stringToUint8Array('0'),
     };
     await publicCipherFunc(
       srcKeyAlies,
@@ -346,7 +278,6 @@ describe('SecurityHuksCipherAESPromiseJsunit', function () {
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
       inData: new Uint8Array(updateResult),
-      outData: stringToUint8Array('0'),
     };
     await publicCipherFunc(
       srcKeyAlies,
@@ -371,7 +302,6 @@ describe('SecurityHuksCipherAESPromiseJsunit', function () {
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
       inData: srcData63Kb,
-      outData: stringToUint8Array('0'),
     };
     await publicCipherFunc(
       srcKeyAlies,
@@ -391,7 +321,6 @@ describe('SecurityHuksCipherAESPromiseJsunit', function () {
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
       inData: new Uint8Array(updateResult),
-      outData: stringToUint8Array('0'),
     };
     await publicCipherFunc(
       srcKeyAlies,
@@ -416,7 +345,6 @@ describe('SecurityHuksCipherAESPromiseJsunit', function () {
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
       inData: new Uint8Array(updateResult),
-      outData: stringToUint8Array('0'),
     };
     await publicCipherFunc(
       srcKeyAlies,

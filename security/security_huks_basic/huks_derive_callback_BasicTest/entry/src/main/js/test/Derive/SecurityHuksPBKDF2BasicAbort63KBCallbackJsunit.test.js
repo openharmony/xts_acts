@@ -33,7 +33,7 @@ let HuksOptions63kb = {
 };
 
 describe('SecurityHuksDerivePBKDF2CallbackJsunit', function () {
-  it('testDerivePBKDF2Abort63KB001', 0, async function (done) {
+  it('testDerivePBKDF2002', 0, async function (done) {
     const srcKeyAliesFirst =
       'testDerivePBKDF2Size128SHA256Abort63KBDeriveKeyAlias_01_001';
     let huksOptionsFinish = {

@@ -35,7 +35,7 @@ let HuksOptions63kb = {
 };
 
 describe('SecurityHuksAgreeX25519CallbackJsunit', function () {
-  it('testAgreeX25519Finish63KB001', 0, async function (done) {
+  it('testAgreeX25519001', 0, async function (done) {
     const srcKeyAliesFirst =
       'testAgreeX25519Size256Finish63KBAgreeKeyAlias_01_001';
     const srcKeyAliesSecond =

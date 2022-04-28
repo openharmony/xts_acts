@@ -37,8 +37,6 @@ async function publicGenerateKeyFunc(keyAlias, HuksOptions) {
 async function publicImportKey(keyAlias, HuksOptions) {
   let _InData = HuksOptions.inData;
   HuksOptions.inData = finishOutData;
-  console.log(`test ImportKey keyAlias: ${keyAlias}`);
-  console.log(`test ImportKey HuksOptions: ${JSON.stringify(HuksOptions)}`);
   await huks
     .importKey(keyAlias, HuksOptions)
     .then((data) => {
@@ -93,11 +91,6 @@ async function publicUpdateFunc(HuksOptions, isBigData) {
   } else {
     let count = Math.floor(uint8ArrayToString(inDataArray).length / dateSize);
     let remainder = uint8ArrayToString(inDataArray).length % dateSize;
-    console.log(
-      `test before update length: ${uint8ArrayToString(inDataArray).length}`
-    );
-    console.log(`test before update count: ${count}`);
-    console.log(`test before update remainder: ${remainder}`);
     for (let i = 0; i < count; i++) {
       HuksOptions.inData = stringToUint8Array(
         uint8ArrayToString(tempHuksOptionsInData).slice(
@@ -122,7 +115,6 @@ async function publicUpdateFunc(HuksOptions, isBigData) {
 }
 
 async function update(handle, HuksOptions) {
-  console.log(`test update data ${JSON.stringify(HuksOptions)}`);
   await huks
     .update(handle, HuksOptions)
     .then(async (data) => {
@@ -207,30 +199,20 @@ async function publicSignVerifyFunc(
       keyAlias = newSrcKeyAlies;
       await publicImportKey(keyAlias, HuksOptions);
     }
-    console.log(`test init HuksOptions: ${JSON.stringify(HuksOptions)}`);
     await publicInitFunc(keyAlias, HuksOptions);
     await publicUpdateFunc(HuksOptions, isBigData);
     if (thirdInderfaceName == 'finish') {
       if (isSING) {
         HuksOptions.outData = new Uint8Array(new Array(1024).fill(''));
-        console.log(`test before finish HuksOptions: ${HuksOptions.inData}`);
-        console.log(`test before finish HuksOptions: ${HuksOptions.outData}`);
         await publicFinishFunc(HuksOptions);
         HuksOptions.properties.splice(
           1,
           1,
           HuksSignVerifyDSA.HuksKeyRSAPurposeSINGVERIFY
         );
-        console.log(
-          `test before exportKey Gen_HuksOptions: ${JSON.stringify(
-            HuksOptions
-          )}`
-        );
         await publicExportKey(keyAlias, HuksOptions);
       } else {
         HuksOptions.outData = exportKey;
-        console.log(`test before finish HuksOptions: ${HuksOptions.inData}`);
-        console.log(`test before finish HuksOptions: ${HuksOptions.outData}`);
         await publicFinishFunc(HuksOptions);
       }
     } else {

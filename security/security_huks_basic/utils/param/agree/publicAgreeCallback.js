@@ -140,9 +140,6 @@ async function publicAgreeFinishAbortFunc(
   thirdInderfaceName
 ) {
   if (thirdInderfaceName == 'finish') {
-    console.log(
-      `test befor finish HuksOptionsFinish ${JSON.stringify(HuksOptionsFinish)}`
-    );
     await finish(handle, HuksOptionsFinish)
       .then((data) => {
         console.log(`test finish data ${JSON.stringify(data)}`);

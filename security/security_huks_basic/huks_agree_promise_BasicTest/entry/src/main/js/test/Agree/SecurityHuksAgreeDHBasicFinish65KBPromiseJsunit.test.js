@@ -32,7 +32,7 @@ let HuksOptions65kb = {
 };
 
 describe('SecurityHuksAgreeDHPromiseJsunit', function () {
-  it('testAgreeDHSize2048Finish65KBAgree101', 0, async function (done) {
+  it('testAgreeDH103', 0, async function (done) {
     const srcKeyAliesFirst =
       'testAgreeDHSize2048Finish65KBAgreeKeyAlias_01_101';
     const srcKeyAliesSecond =

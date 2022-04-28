@@ -134,7 +134,6 @@ async function publicHmacFunc(srcKeyAlies, HuksOptions, thirdInderfaceName) {
 }
 
 async function update(handle, HuksOptions) {
-  console.log(`test update data ${JSON.stringify(HuksOptions)}`);
   await huks
     .update(handle, HuksOptions)
     .then(async (data) => {
