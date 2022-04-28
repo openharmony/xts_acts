@@ -188,9 +188,6 @@ async function publicHmacUpdate(HuksOptions) {
 
 async function publicHmacGenFunc(srcKeyAlies, HuksOptions, thirdInderfaceName) {
   HuksOptions.properties.splice(1, 0, HuksHmac.HuksKeySIZE);
-  console.log(
-    'test before generateKey HuksOptions = ' + JSON.stringify(HuksOptions)
-  );
   await generateKey(srcKeyAlies, HuksOptions)
     .then((data) => {
       console.log('test generateKey data = ' + JSON.stringify(data));
@@ -201,7 +198,6 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions, thirdInderfaceName) {
     });
 
   HuksOptions.properties.splice(1, 1);
-  console.log('test before init HuksOptions = ' + JSON.stringify(HuksOptions));
   await init(srcKeyAlies, HuksOptions)
     .then((data) => {
       console.log(`test init data: ${JSON.stringify(data)}`);
@@ -210,16 +206,10 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions, thirdInderfaceName) {
       console.log(`test init err: " + ${JSON.stringify(err)}`);
       expect(null).assertFail();
     });
-  console.log(
-    'test before Update HuksOptions = ' + JSON.stringify(HuksOptions)
-  );
   await publicHmacUpdate(HuksOptions);
 
   if (thirdInderfaceName == 'finish') {
     HuksOptions.inData = new Uint8Array(stringToArray('0'));
-    console.log(
-      'test before finish HuksOptions = ' + JSON.stringify(HuksOptions)
-    );
     await finish(handle, HuksOptions)
       .then((data) => {
         console.log(`test update data: ${data}`);
@@ -229,9 +219,6 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions, thirdInderfaceName) {
         expect(null).assertFail();
       });
   } else {
-    console.log(
-      'test before abort HuksOptions = ' + JSON.stringify(HuksOptions)
-    );
     await abort(handle, HuksOptions)
       .then((data) => {
         console.log(`test abort data: ${data}`);
@@ -242,9 +229,6 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions, thirdInderfaceName) {
       });
   }
   HuksOptions.properties.splice(1, 0, HuksHmac.HuksKeySIZE);
-  console.log(
-    'test before deleteKey HuksOptions = ' + JSON.stringify(HuksOptions)
-  );
   await deleteKey(srcKeyAlies, HuksOptions)
     .then((data) => {
       console.log(`test deleteKey data: ${data}`);

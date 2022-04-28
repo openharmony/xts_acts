@@ -101,9 +101,6 @@ async function publicDeriveFinishAbortFunc(
   thirdInderfaceName
 ) {
   if (thirdInderfaceName == 'finish') {
-    console.log(
-      `test befor finish huksOptionsFinish ${JSON.stringify(huksOptionsFinish)}`
-    );
     await finish(handle, huksOptionsFinish)
       .then((data) => {
         console.log(`test finish data ${JSON.stringify(data)}`);
@@ -157,9 +154,6 @@ function finish(handle, huksOptionsFinish) {
 }
 
 async function publicDeriveDeleteFunc(srcKeyAlies, HuksOptions) {
-  console.log(
-    'test before deleteKey HuksOptions: ' + JSON.stringify(HuksOptions)
-  );
   await deleteKey(srcKeyAlies, HuksOptions)
     .then((data) => {
       console.log(`test deleteKey data ${JSON.stringify(data)}`);

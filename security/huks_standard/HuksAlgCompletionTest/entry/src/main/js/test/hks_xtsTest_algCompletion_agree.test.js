@@ -608,26 +608,17 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
 
   function exportKeyB(alg, size, done, caseId) {
     huks.exportKey(defaultAliasB, emptyOption, function (err, data) {
-      if (useLib == 'openssl' && alg == huks.HuksKeyAlg.HUKS_ALG_X25519) {
-        expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ARGUMENT);
-        done();
-      } else {
         expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
         publicKeyB = data.outData;
         agreeKeyA(alg, size, done, caseId);
-      }
     });
   };
 
   function exportKeyA(alg, size, done, caseId) {
     huks.exportKey(defaultAliasA, emptyOption, function (err, data) {
-      if (useLib == 'openssl' && alg == huks.HuksKeyAlg.HUKS_ALG_X25519) {
-        expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ARGUMENT);
-      } else {
-        expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
-        publicKeyA = data.outData;
-      }
-      exportKeyB(alg, size, done, caseId);
+		expect(data.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
+		publicKeyA = data.outData;
+        exportKeyB(alg, size, done, caseId);
     });
   };
 
@@ -679,11 +670,6 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
 
     var exportKeyARet = await huks.exportKey(defaultAliasA, emptyOption);
     var exportKeyBRet = await huks.exportKey(defaultAliasB, emptyOption);
-    if (useLib == 'openssl' && alg == huks.HuksKeyAlg.HUKS_ALG_X25519) {
-      expect(exportKeyARet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ARGUMENT);
-      expect(exportKeyBRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_ARGUMENT);
-      done();
-    } else {
       expect(exportKeyARet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       expect(exportKeyBRet.errorCode).assertEqual(huks.HuksErrorCode.HUKS_SUCCESS);
       publicKeyA = exportKeyARet.outData;
@@ -708,6 +694,5 @@ describe('Hks_XtsTest_AlgCompletion_Agree', function () {
       expect(isKeyBExist).assertEqual(false);
       console.info(caseId + ' end');
       done();
-    }
   };
 });

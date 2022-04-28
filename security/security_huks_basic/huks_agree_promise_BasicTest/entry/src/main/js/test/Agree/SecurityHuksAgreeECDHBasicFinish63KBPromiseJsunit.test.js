@@ -51,7 +51,7 @@ describe('SecurityHuksAgreeECDHPromiseJsunit', function () {
     console.info('test beforeEach called');
   });
 
-  it('testAgreeECDHFinish63KBAgree101', 0, async function (done) {
+  it('testAgreeECDH101', 0, async function (done) {
     const srcKeyAliesFirst =
       'testAgreeECDHSize224Finish63KBAgreeKeyAlias_01_101';
     const srcKeyAliesSecond =
