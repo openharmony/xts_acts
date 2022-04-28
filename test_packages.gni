@@ -30,7 +30,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/distributeddatamgr:distributeddatamgr",
   "${ACTS_ROOT}/updater:update",
   "${ACTS_ROOT}/graphic:graphic",
-  "${ACTS_ROOT}/ace:ace",
+  "${ACTS_ROOT}/arkui:arkui",
   "${ACTS_ROOT}/storage:storage",
   "${ACTS_ROOT}/compileruntime:compileruntime",
   "${ACTS_ROOT}/usb:usb",
