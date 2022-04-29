@@ -19,189 +19,144 @@ import Bundle from '@ohos.bundle';
 const BUNDLE_NAME = 'com.open.harmony.packagemag';
 const ABILITY_NAME = 'com.open.harmony.packagemag.MainAbility';
 const SERVICE_ABILITY_NAME = 'com.open.harmony.packagemag.ServiceAbility';
-const OTHER_BUNDLE_NAME = 'com.ohos.acepackage';
-const OTHER_ABILITY_NAME = 'com.ohos.acepackage.MainAbility';
+const OTHER_BUNDLE_NAME = 'com.example.l3jsdemo';
+const OTHER_ABILITY_NAME = 'com.example.l3jsdemo.MainAbility';
 const BUNDLE_NAME_ERROR = 'com.ohos.acepackage.error';
 const ABILITY_NAME_ERROR = 'com.ohos.acepackage.error.MainAbility';
 
-export default function getAbilityLabelJsUnit() {
+export default function getAbilityLabel() {
 
-    describe('context_getAbilityLabel_test', function () {
+    describe('getAbilityLabel_test', function () {
+
 
         /*
-         * @tc.number: context_getAbilityLabel_test_0100
-         * @tc.name: getAbilityLabel : Gets the specified ability label
-         * @tc.desc: Check the return value of the interface (by promise)
-         * @tc.level   0
+         * @tc.number: getAbilityLabel_test_0100
+         * @tc.name: Test getAbilityLabel : Gets the specified ability label
+         * @tc.desc: Check the return value of the interface
          */
-        it('context_getAbilityLabel_test_0100', 0, async function (done) {
-            let mData;
-            let timeOldStamp = await Utils.getNowTime();
+        it('getAbilityLabel_test_0100', 0, async function (done) {
             await Bundle.getAbilityLabel(BUNDLE_NAME, ABILITY_NAME).then((data) => {
-                let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_getAbilityLabel_test_0100]', timeOldStamp, timeNewStamp);
-                mData = data;
-                console.info('[context_getAbilityLabel_test_0100]  promise data is: ' + JSON.stringify(data));
+                expect(data).assertEqual("entry_MainAbility");
             }).catch((error) => {
-                console.info('[context_getAbilityLabel_test_0100]  promise error is: ' + error);
                 expect(error).assertFail();
             });
-            getAbilityLabelSuccess('[context_getAbilityLabel_test_0100]', mData);
-            done();
-        });
-
-        /*
-         * @tc.number: context_getAbilityLabel_test_0200
-         * @tc.name: getAbilityLabel : Gets the specified ability label
-         * @tc.desc: Check the return value of the interface (by callback)
-         * @tc.level   0
-         */
-        it('context_getAbilityLabel_test_0200', 0, async function (done) {
-            let timeOldStamp = await Utils.getNowTime();
-            let mData;
             Bundle.getAbilityLabel(BUNDLE_NAME, ABILITY_NAME, (error, data) => {
-                if (error) {
-                    console.error('[context_getAbilityLabel_test_0200]Operation failed. Cause: ' + JSON.stringify(error));
-                    expect(error).assertFail();
-                }
-                let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_getAbilityLabel_test_0200]', timeOldStamp, timeNewStamp);
-                mData = data;
-                console.info('[context_getAbilityLabel_test_0200]  callBack error: ' + error);
-                console.info('[context_getAbilityLabel_test_0200]  callBack data is:' + JSON.stringify(data));
+                expect(error).assertEqual(0);
+                expect(data).assertEqual("entry_MainAbility");
+                done();
             });
-            await Utils.sleep(2000);
-            getAbilityLabelSuccess('[context_getAbilityLabel_test_0200]', mData);
-            done();
         });
 
         /*
-         * @tc.number: context_getAbilityLabel_test_0300
+         * @tc.number: getAbilityLabel_test_0200
          * @tc.name: getAbilityLabel : Gets the specified ability label
-         * @tc.desc: Check the return value of the interface (by promise)
-         * @tc.level   0
+         * @tc.desc: Check the return value of the interface
          */
-        it('context_getAbilityLabel_test_0300', 0, async function (done) {
-            let timeOldStamp = await Utils.getNowTime();
-            let mError;
-            await Bundle.getAbilityLabel(BUNDLE_NAME_ERROR, ABILITY_NAME_ERROR).then((data) => {
-                let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_getAbilityLabel_test_0300]', timeOldStamp, timeNewStamp);
-                console.info('[context_getAbilityLabel_test_0300]  promise data is: ' + JSON.stringify(data));
-            }).catch((error) => {
-                let timeNewStamp = Utils.getNowTime();
-                mError = error;
-                Utils.getDurationTime('[context_getAbilityLabel_test_0300]', timeOldStamp, timeNewStamp);
-                console.info('[context_getAbilityLabel_test_0300]  promise error is: ' + error);
-                expect(mError).assertEqual(1);
-            });
-            await Utils.sleep(2000);
-            getAbilityLabelFailure('[context_getAbilityLabel_test_0300]', mError);
-            done();
-        });
-
-        /*
-         * @tc.number: context_getAbilityLabel_test_0400
-         * @tc.name: getAbilityLabel : Gets the specified ability label
-         * @tc.desc: Check the return value of the interface (by callback)
-         * @tc.level   0
-         */
-        it('context_getAbilityLabel_test_0400', 0, async function (done) {
-            let timeOldStamp = await Utils.getNowTime();
-            let mError;
-            Bundle.getAbilityLabel(BUNDLE_NAME_ERROR, ABILITY_NAME_ERROR, (error, data) => {
-                if (error !== null) {
-                    console.info('[context_getAbilityLabel_test_0400]  callBack error: ' + error);
-                    expect(error).assertEqual(1);
-                }
-                let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_getAbilityLabel_test_0400]', timeOldStamp, timeNewStamp);
-                mError = error;
-                console.info('[context_getAbilityLabel_test_0400]  callBack data is:' + JSON.stringify(data));
-            });
-            await Utils.sleep(2000);
-            getAbilityLabelFailure('[context_getAbilityLabel_test_0400]', mError);
-            done();
-        });
-
-        /*
-         * @tc.number: context_getAbilityLabel_test_0500
-         * @tc.name: getAbilityLabel : Gets the specified ability label
-         * @tc.desc: Check the return value of the interface (by promise)
-         * @tc.level   0
-         */
-        it('context_getAbilityLabel_test_0500', 0, async function (done) {
-            let mData;
-            let mError = null;
+        it('getAbilityLabel_test_0200', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             await Bundle.getAbilityLabel(OTHER_BUNDLE_NAME, OTHER_ABILITY_NAME).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_getAbilityLabel_test_0500]', timeOldStamp, timeNewStamp);
-                mData = data;
-                expect(mData).assertFail();
-                console.info('[context_getAbilityLabel_test_0500]  promise data is: ' + JSON.stringify(data));
+                Utils.getDurationTime('[getAbilityLabel_test_0200]', timeOldStamp, timeNewStamp);
+                expect(data).assertEqual("bmsfirstright");
             }).catch((error) => {
-                mError = error;
-                console.info('[context_getAbilityLabel_test_0500]  promise error is: ' + error);
-                getAbilityLabelFailure('[context_getAbilityLabel_test_0500]', mError);
+                expect(error).assertFail();
             });
-            done();
-        });
-
-        /*
-         * @tc.number: context_getAbilityLabel_test_0600
-         * @tc.name: getAbilityLabel : Gets the specified ability label
-         * @tc.desc: Check the return value of the interface (by callback)
-         * @tc.level   0
-         */
-        it('context_getAbilityLabel_test_0600', 0, async function (done) {
-            let timeOldStamp = await Utils.getNowTime();
+            timeOldStamp = await Utils.getNowTime();
             Bundle.getAbilityLabel(OTHER_BUNDLE_NAME, OTHER_ABILITY_NAME, (error, data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_getAbilityLabel_test_0600]', timeOldStamp, timeNewStamp);
-                console.info('[context_getAbilityLabel_test_0600]  callBack error: ' + error);
-                getAbilityLabelFailure('[context_getAbilityLabel_test_0600]', error);
-                expect(data).assertEqual(undefined);
+                Utils.getDurationTime('[context_getAbilityLabel_test_0200]', timeOldStamp, timeNewStamp);
+                expect(data).assertEqual("bmsfirstright");
+                expect(error).assertEqual(0);
+                done();
             });
-            done();
         });
 
         /*
-         * @tc.number: context_getAbilityLabel_test_0700
+         * @tc.number: getAbilityLabel_test_0300
          * @tc.name: getAbilityLabel : Gets the specified ability label
-         * @tc.desc: Check the return value of the interface (by callback)
-         * @tc.level   0
+         * @tc.desc: Check the return value of the interface
          */
-        it('context_getAbilityLabel_test_0700', 0, async function (done) {
-            let timeOldStamp = await Utils.getNowTime();
-            let mError;
-            Bundle.getAbilityLabel(BUNDLE_NAME, SERVICE_ABILITY_NAME, (error, data) => {
-                let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[context_getAbilityLabel_test_0700]', timeOldStamp, timeNewStamp);
-                mError = error;
-                if (mError !== null) {
-                    console.info('[context_getAbilityLabel_test_0600]  callBack error: ' + error);
-                }
-                console.info('[context_getAbilityLabel_test_0700]  callBack data is:' + JSON.stringify(data));
+        it('getAbilityLabel_test_0300', 0, async function (done) {
+            await Bundle.getAbilityLabel(BUNDLE_NAME, SERVICE_ABILITY_NAME).then((data) => {
+                expect(error).assertFail();
+            }).catch((error) => {
+                expect(error).assertEqual(1);
             });
-            await Utils.sleep(2000);
-            getAbilityLabelFailure('[context_getAbilityLabel_test_0700]', mError);
-            done();
+            Bundle.getAbilityLabel(BUNDLE_NAME, SERVICE_ABILITY_NAME, (error, data) => {
+                expect(error).assertEqual(1);
+                expect(data).assertEqual(undefined);
+                done();
+            });
         });
 
-        function getAbilityLabelSuccess(msg, data) {
-            console.log(msg + ' start  ' + JSON.stringify(data));
-            console.log(msg + ' result  ' + data);
-            expect(typeof (data)).assertEqual('string');
-            expect(data).assertEqual("entry_MainAbility");
-        }
+        /*
+         * @tc.number: getAbilityLabel_test_0400
+         * @tc.name: getAbilityLabel : Gets the specified ability label
+         * @tc.desc: Check the return value of the interface
+         */
+        it('getAbilityLabel_test_0400', 0, async function (done) {
+            let timeOldStamp = await Utils.getNowTime();
+            await Bundle.getAbilityLabel(BUNDLE_NAME_ERROR, ABILITY_NAME_ERROR).then((data) => {
+                expect(error).assertFail();
+            }).catch((error) => {
+                let timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime('[getAbilityLabel_test_0400]', timeOldStamp, timeNewStamp);
+                expect(error).assertEqual(1);
+            });
+            await Bundle.getAbilityLabel("", "").then((data) => {
+                expect(error).assertFail();
+            }).catch((error) => {
+                expect(error).assertEqual(1);
+            });
+            timeOldStamp = await Utils.getNowTime();
+            Bundle.getAbilityLabel(BUNDLE_NAME_ERROR, ABILITY_NAME_ERROR, (error, data) => {
+                let timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime('[getAbilityLabel_test_0400]', timeOldStamp, timeNewStamp);
+                expect(error).assertEqual(1);
+                expect(data).assertEqual(undefined);
+                Bundle.getAbilityLabel("", "", (error, data) => {
+                    expect(error).assertEqual(1);
+                    expect(data).assertEqual(undefined);
+                    done();
+                });
+            });
+        });
 
-        function getAbilityLabelFailure(msg, error) {
-            console.log(msg + ' Failure  ');
-            console.log(msg + ' error  ' + JSON.stringify(error));
-            expect(typeof (error)).assertEqual('number');
-            expect(error).assertEqual(1)
-        }
+        /*
+         * @tc.number: getAbilityLabel_test_0500
+         * @tc.name: getAbilityLabel : Gets the specified ability label
+         * @tc.desc: Check the return value of the interface
+         */
+        it('getAbilityLabel_test_0500', 0, async function (done) {
+            await Bundle.getAbilityLabel(undefined, OTHER_ABILITY_NAME).then((data) => {
+                expect(error).assertFail();
+            }).catch((error) => {
+                expect(error).assertEqual(2);
+            });
+            await Bundle.getAbilityLabel(OTHER_BUNDLE_NAME, undefined).then((data) => {
+                expect(error).assertFail();
+            }).catch((error) => {
+                expect(error).assertEqual(2);
+            });
+            await Bundle.getAbilityLabel(undefined, undefined).then((data) => {
+                expect(error).assertFail();
+            }).catch((error) => {
+                expect(error).assertEqual(2);
+            });
+            Bundle.getAbilityLabel(undefined, OTHER_ABILITY_NAME, (error, data) => {
+                expect(error).assertEqual(2);
+                expect(data).assertEqual(undefined);
+                Bundle.getAbilityLabel(OTHER_BUNDLE_NAME, undefined, (error, data) => {
+                    expect(error).assertEqual(2);
+                    expect(data).assertEqual(undefined);
+                    Bundle.getAbilityLabel(undefined, undefined, (error, data) => {
+                        expect(error).assertEqual(2);
+                        expect(data).assertEqual(undefined);
+                        done();
+                    });
+                });
+            });
+        });
 
     })
 

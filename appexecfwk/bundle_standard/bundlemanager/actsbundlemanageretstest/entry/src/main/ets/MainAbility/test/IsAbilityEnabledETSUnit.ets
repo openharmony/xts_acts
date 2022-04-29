@@ -17,17 +17,47 @@ import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 
 const BUNDLE_NAME = 'com.open.harmony.packagemag';
+const BUNDLE_NAME_OTHER = 'com.example.l3jsdemo';
 const BUNDLE_NAME_ERROR = 'com.ohos.acepackage.error';
 const ABILITY_NAME = 'com.open.harmony.packagemag.MainAbility';
+const ABILITY_NAME_OTHER = 'com.example.l3jsdemo.MainAbility';
 const ABILITY_NAME_ERROR = 'com.ohos.acepackage.error.MainAbility';
 const ABILITY = {
     bundleName: BUNDLE_NAME,
     name: ABILITY_NAME
-}
-const ABILITY_ERROR = {
+};
+const OTHER_ABILITY = {
+    bundleName: BUNDLE_NAME_OTHER,
+    name: ABILITY_NAME_OTHER
+};
+const ABILITY_ERROR1 = {
     bundleName: BUNDLE_NAME_ERROR,
     name: ABILITY_NAME_ERROR
-}
+};
+const ABILITY_ERROR2 = {
+    bundleName: "",
+    name: ABILITY_NAME
+};
+const ABILITY_ERROR3 = {
+    bundleName: BUNDLE_NAME,
+    name: ""
+};
+const ABILITY_ERROR4 = {
+    bundleName: undefined,
+    name: ABILITY_NAME
+};
+const ABILITY_ERROR5 = {
+    bundleName: BUNDLE_NAME,
+    name: undefined
+};
+const ABILITY_ERROR6 = {
+    bundleName: undefined,
+    name: undefined
+};
+const ABILITY_ERROR7 = {
+    bundleName: "",
+    name: ""
+};
 
 export default function isAbilityEnabledETSUnit() {
 
@@ -36,114 +66,126 @@ export default function isAbilityEnabledETSUnit() {
         /*
          * @tc.number: isAbilityEnabled_test_0100
          * @tc.name: isAbilityEnabled : Get whether to enable a specified ability
-         * @tc.desc: Check the return value of the interface (by promise)
-         * @tc.level   0
+         * @tc.desc: Check the return value of the interface
          */
         it('isAbilityEnabled_test_0100', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
-            let mData;
             await Bundle.isAbilityEnabled(ABILITY).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
                 Utils.getDurationTime('[isAbilityEnabled_test_0100]', timeOldStamp, timeNewStamp);
-                mData = data;
-                console.info('[isAbilityEnabled_test_0100]  promise data is: ' + JSON.stringify(data));
+                expect(data).assertTrue();
             }).catch((error) => {
-                console.info('[isAbilityEnabled_test_0100]  promise error is: ' + error);
                 expect(error).assertFail();
             });
-            getAbilityEnabledTrue('[isAbilityEnabled_test_0100]', mData);
-            done();
+            timeOldStamp = await Utils.getNowTime();
+            Bundle.isAbilityEnabled(ABILITY, (error, data) => {
+                if (error) {
+                    expect(error).assertFail();
+                }
+                let timeNewStamp = Utils.getNowTime();
+                Utils.getDurationTime('[isAbilityEnabled_test_0100]', timeOldStamp, timeNewStamp);
+                expect(data).assertTrue();
+                done();
+            });
         });
 
         /*
          * @tc.number: isAbilityEnabled_test_0200
          * @tc.name: isAbilityEnabled : Get whether to enable a specified ability
-         * @tc.desc: Check the return value of the interface (by callback)
-         * @tc.level   0
+         * @tc.desc: Check the return value of the interface when bundleName and ability error
          */
         it('isAbilityEnabled_test_0200', 0, async function (done) {
-            let timeOldStamp = await Utils.getNowTime();
-            let mData;
-            Bundle.isAbilityEnabled(ABILITY, (error, data) => {
-                if (error) {
-                    console.error('[isAbilityEnabled_test_0200]Operation failed. Cause: ' + JSON.stringify(error));
-                    expect(error).assertFail();
-                }
-                let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[isAbilityEnabled_test_0200]', timeOldStamp, timeNewStamp);
-                mData = data;
-                console.info('[isAbilityEnabled_test_0200]  callBack data is:' + JSON.stringify(data));
+            await Bundle.isAbilityEnabled(ABILITY_ERROR1).then((data) => {
+                expect(data).assertFalse();
+            }).catch((error) => {
+                expect(error).assertFail();
             });
-            await Utils.sleep(2000);
-            getAbilityEnabledTrue('[isAbilityEnabled_test_0200]', mData);
-            done();
+            await Bundle.isAbilityEnabled(ABILITY_ERROR2).then((data) => {
+                expect(data).assertFalse();
+            }).catch((error) => {
+                expect(error).assertFail();
+            });
+            await Bundle.isAbilityEnabled(ABILITY_ERROR3).then((data) => {
+                expect(data).assertFalse();
+            }).catch((error) => {
+                expect(error).assertFail();
+            });
+            await Bundle.isAbilityEnabled(ABILITY_ERROR7).then((data) => {
+                expect(data).assertFalse();
+            }).catch((error) => {
+                expect(error).assertFail();
+            });
+            Bundle.isAbilityEnabled(ABILITY_ERROR1, (error, data) => {
+                expect(error).assertEqual(0);
+                expect(data).assertFalse();
+                Bundle.isAbilityEnabled(ABILITY_ERROR2, (error, data) => {
+                    expect(error).assertEqual(0);
+                    expect(data).assertFalse();
+                    Bundle.isAbilityEnabled(ABILITY_ERROR3, (error, data) => {
+                        expect(error).assertEqual(0);
+                        expect(data).assertFalse();
+                        Bundle.isAbilityEnabled(ABILITY_ERROR7, (error, data) => {
+                            expect(error).assertEqual(0);
+                            expect(data).assertFalse();
+                            done();
+                        });
+                    });
+                });
+            });
         });
 
         /*
          * @tc.number: isAbilityEnabled_test_0300
          * @tc.name: isAbilityEnabled : Get whether to enable a specified ability
-         * @tc.desc: Check the return value of the interface (by promise)
-         * @tc.level   0
+         * @tc.desc: Check the return value of the interface when bundleName and ability error
          */
         it('isAbilityEnabled_test_0300', 0, async function (done) {
-            let timeOldStamp = await Utils.getNowTime();
-            let mData;
-            await Bundle.isAbilityEnabled(ABILITY_ERROR).then((data) => {
-                let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[isAbilityEnabled_test_0300]', timeOldStamp, timeNewStamp);
-                mData = data;
-                console.info('[isAbilityEnabled_test_0300]  promise data is: ' + JSON.stringify(data));
+            await Bundle.isAbilityEnabled(ABILITY_ERROR4).then((data) => {
+                expect(data).assertFail();
             }).catch((error) => {
-                let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[isAbilityEnabled_test_0300]', timeOldStamp, timeNewStamp);
-                console.info('[isAbilityEnabled_test_0300]  promise error is: ' + error);
-                expect(error).assertFail();
+                expect(error).assertEqual(2);
             });
-            getAbilityEnabledFalse('[isAbilityEnabled_test_0300]', mData);
-            done();
+            await Bundle.isAbilityEnabled(ABILITY_ERROR5).then((data) => {
+                expect(data).assertFail();
+            }).catch((error) => {
+                expect(error).assertEqual(2);
+            });
+            await Bundle.isAbilityEnabled(ABILITY_ERROR6).then((data) => {
+                expect(data).assertFail();
+            }).catch((error) => {
+                expect(error).assertEqual(2);
+            });
+            Bundle.isAbilityEnabled(ABILITY_ERROR4, (error, data) => {
+                expect(error).assertEqual(2);
+                expect(data).assertEqual(undefined);
+                Bundle.isAbilityEnabled(ABILITY_ERROR5, (error, data) => {
+                    expect(error).assertEqual(2);
+                    expect(data).assertEqual(undefined);
+                    Bundle.isAbilityEnabled(ABILITY_ERROR6, (error, data) => {
+                        expect(error).assertEqual(2);
+                        expect(data).assertEqual(undefined);
+                        done();
+                    });
+                });
+            });
         });
 
         /*
          * @tc.number: isAbilityEnabled_test_0400
          * @tc.name: isAbilityEnabled : Get whether to enable a specified ability
-         * @tc.desc: Check the return value of the interface (by callback)
-         * @tc.level   0
+         * @tc.desc: Check the return value of the interface
          */
         it('isAbilityEnabled_test_0400', 0, async function (done) {
-            let timeOldStamp = await Utils.getNowTime();
-            let mData;
-            Bundle.isAbilityEnabled(ABILITY_ERROR, (error, data) => {
-                if (error) {
-                    console.error('[isAbilityEnabled_test_0400]Operation failed. Cause: ' + JSON.stringify(error));
-                    expect(error).assertFail();
-                }
-                let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('[isAbilityEnabled_test_0300]', timeOldStamp, timeNewStamp);
-                mData = data;
-                console.info('[isAbilityEnabled_test_0400]  callBack data is:' + JSON.stringify(data));
+            await Bundle.isAbilityEnabled(OTHER_ABILITY).then((data) => {
+                expect(data).assertTrue();
+            }).catch((error) => {
+                expect(error).assertFail();
             });
-            await Utils.sleep(2000);
-            console.info('[isAbilityEnabled_test_0400]  Failure ');
-            getAbilityEnabledFalse('[isAbilityEnabled_test_0300]', mData);
-            done();
+            Bundle.isAbilityEnabled(OTHER_ABILITY, (error, data) => {
+                expect(error).assertEqual(0);
+                expect(data).assertTrue();
+                done();
+            });
         });
-
-
-        function getAbilityEnabledSuccess(msg, data) {
-            console.log(msg + ' start  ' + JSON.stringify(data));
-            expect(typeof (data)).assertEqual('boolean');
-        }
-
-        function getAbilityEnabledTrue(msg, data) {
-            getAbilityEnabledSuccess(msg, data);
-            expect(data).assertEqual(true);
-        }
-
-        function getAbilityEnabledFalse(msg, data) {
-            getAbilityEnabledSuccess(msg, data);
-            expect(data).assertEqual(false);
-        }
-
     })
-
 }
