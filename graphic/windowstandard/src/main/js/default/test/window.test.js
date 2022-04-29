@@ -95,11 +95,17 @@ describe('window_test', function () {
             wnd.getProperties().then((data) => {
                 console.log('windowTest getPropertiesTest1 wnd.getProperties success, data : ' + JSON.stringify(data));
                 expect(data.type != null).assertTrue();
-                expect(data.windowRect != null).assertTrue();
+                expect(data.windowRect.height != null).assertTrue();
+                expect(data.windowRect.left != null).assertTrue();
+                expect(data.windowRect.top != null).assertTrue();
+                expect(data.windowRect.width != null).assertTrue();
                 expect(!data.isFullScreen).assertTrue();
                 expect(!data.isLayoutFullScreen).assertTrue();
                 expect(data.focusable).assertTrue();
                 expect(data.touchable).assertTrue();
+                expect(!data.isKeepScreenOn).assertTrue();
+                expect(!data.isTransparent).assertTrue();
+                expect(data.brightness != null).assertTrue();
                 done();
             }, (err) => {
                 console.log('windowTest getPropertiesTest1 wnd.getProperties failed, err : ' + JSON.stringify(err));
@@ -130,11 +136,17 @@ describe('window_test', function () {
                     done();
                 } else {
                     expect(data.type != null).assertTrue();
-                    expect(data.windowRect != null).assertTrue();
+                    expect(data.windowRect.height != null).assertTrue();
+                    expect(data.windowRect.left != null).assertTrue();
+                    expect(data.windowRect.top != null).assertTrue();
+                    expect(data.windowRect.width != null).assertTrue();
                     expect(!data.isFullScreen).assertTrue();
                     expect(!data.isLayoutFullScreen).assertTrue();
                     expect(data.focusable).assertTrue();
                     expect(data.touchable).assertTrue();
+                    expect(!data.isKeepScreenOn).assertTrue();
+                    expect(!data.isTransparent).assertTrue();
+                    expect(data.brightness != null).assertTrue();
                     done();
                 }
             })
@@ -997,6 +1009,7 @@ describe('window_test', function () {
                 wnd.show().then(() => {
                     wnd.isShowing().then(res => {
                         expect(res).assertTrue();
+                        wnd.destroy();
                         done();
                     }, (err) => {
                         console.log('windowTest IsShowingTest1 wnd.isShowing failed, err :' + JSON.stringify(err));
@@ -1050,6 +1063,7 @@ describe('window_test', function () {
                                         done();
                                     } else {
                                         expect(res2).assertTrue();
+                                        data.destroy();
                                         done();
                                     }
                                 })
@@ -1443,11 +1457,11 @@ describe('window_test', function () {
 
 
     /**
-     * @tc.number    SUB_WMS_MOVETO_JSAPI_007
+     * @tc.number    SUB_WMS_MOVETO_JSAPI_001
      * @tc.name      Test move_Test_001
      * @tc.desc      Verify the scene where the window moves
      */
-    it('move_Test_001', 0, function () {
+    it('move_Test_001', 0, function (done) {
         console.log('windowTest moveTest1 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest moveTest1 getTopWindow wnd' + wnd);
@@ -1556,7 +1570,7 @@ describe('window_test', function () {
             for (var i = 1; i <= 5; i++) {
                 wnd.moveTo(100, 100).then(() => {
                     expect(TRUE_WINDOW).assertTrue();
-                },(err) => {
+                }, (err) => {
                     console.log('windowTest moveTest5 wnd.moveTo failed, err :' + JSON.stringify(err));
                     expect().assertFail();
                     done();
@@ -1572,23 +1586,24 @@ describe('window_test', function () {
     })
 
     /**
-    * @tc.number     SUB_WMS_MOVETO_JSAPI_001
+    * @tc.number     SUB_WMS_MOVETO_JSAPI_006
     * @tc.name       Test move_Test_006
-    * @tc.desc       Verify that the window is moved into the normal scene
+    * @tc.desc       Verify the scene where the window moves
     */
     it('move_Test_006', 0, async function (done) {
         console.log('windowTest moveTest6 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest moveTest6 getTopWindow wnd: ' + wnd);
             expect(wnd != null).assertTrue();
-            wnd.moveTo(200, 200).then(() => {
-                console.log('windowTest moveTest6 wnd.moveTo success');
-                expect(TRUE_WINDOW).assertTrue();
-                done();
-            }, (err) => {
-                console.log('windowTest moveTest6 wnd.moveTo failed, err :' + JSON.stringify(err));
-                expect().assertFail();
-                done();
+            wnd.moveTo(-200, -200, (err) => {
+                if (err) {
+                    console.log('windowTest moveTest6 wnd.moveTo failed, err :' + JSON.stringify(err));
+                    done();
+                } else {
+                    console.log('windowTest moveTest6 wnd.moveTo success');
+                    expect(TRUE_WINDOW).assertTrue();
+                    done();
+                }
             })
         }, (err) => {
             console.log('windowTest moveTest6 getTopWindow failed, err :' + JSON.stringify(err));
@@ -1791,7 +1806,7 @@ describe('window_test', function () {
      * @tc.name      Test resetSize_Test_006
      * @tc.desc      Verify the scene where the window resets size
      */
-    it('resetSize_Test_006', 0, function () {
+    it('resetSize_Test_006', 0, function (done) {
         console.log('windowTest ResetSizeTest6 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest ResetSizeTest6 getTopWindow wnd: ' + wnd);
@@ -1926,6 +1941,752 @@ describe('window_test', function () {
         } catch (err) {
             console.log('test enum value of windowStageEventType error ' + JSON.stringify(err));
         }
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETFOCUSABLE_JSAPI_001
+     * @tc.name			Test setFocusable_Test_001
+     * @tc.desc			Setting window focus acquisition and defocus
+     */
+    it('setFocusable_Test_001', 0, function (done) {
+        console.log('windowTest setFocusableTest1 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setFocusableTest1 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.getProperties().then(data => {
+                expect(data.focusable).assertTrue();
+                wnd.setFocusable(false).then(() => {
+                    console.log('windowTest setFocusableTest1 setFocusable(false) success ');
+                    wnd.getProperties().then(data => {
+                        expect(!data.focusable).assertTrue();
+                        wnd.setFocusable(true).then(() => {
+                            console.log('windowTest setFocusableTest1 setFocusable(true) success ');
+                            expect(TRUE_WINDOW).assertTrue();
+                            done();
+                        })
+                    }, (err) => {
+                        console.log('windowTest setFocusableTest1 getProperties failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }, (err) => {
+                    console.log('windowTest setFocusableTest1 setFocusable failed: err' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err) => {
+                console.log('windowTest setFocusableTest1 getProperties failed: err' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setFocusableTest1 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETFOCUSABLE_JSAPI_002
+     * @tc.name			Test setFocusable_Test_002
+     * @tc.desc			The setting window loses focus and cannot be touched
+     */
+    it('setFocusable_Test_002', 0, function (done) {
+        console.log('windowTest setFocusableTest2 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setFocusableTest2 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setFocusable(false).then(() => {
+                console.log('windowTest setFocusableTest2 setFocusable(false) success ');
+                wnd.getProperties().then(data => {
+                    expect(!data.focusable).assertTrue();
+                    wnd.setTouchable(false).then(() => {
+                        console.log('windowTest setFocusableTest2 setTouchable(false) success ');
+                        wnd.getProperties().then(data => {
+                            expect(!data.touchable).assertTrue();
+                            done();
+                        }, (err) => {
+                            console.log('windowTest setFocusableTest2 getProperties failed: err' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        })
+                    }, (err) => {
+                        console.log('windowTest setFocusableTest2 setTouchable failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }, (err) => {
+                    console.log('windowTest setFocusableTest2 getProperties failed: err' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err) => {
+                console.log('windowTest setFocusableTest2 setFocusable failed: err' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setFocusableTest2 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETFOCUSABLE_JSAPI_003
+     * @tc.name			Test setFocusable_Test_003
+     * @tc.desc			Set the window to lose focus and be touchable
+     */
+    it('setFocusable_Test_003', 0, function (done) {
+        console.log('windowTest setFocusableTest3 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setFocusableTest3 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setFocusable(false).then(() => {
+                console.log('windowTest setFocusableTest3 setFocusable(false) success ');
+                wnd.getProperties().then(data => {
+                    expect(!data.focusable).assertTrue();
+                    wnd.setTouchable(true).then(() => {
+                        console.log('windowTest setFocusableTest3 setTouchable(true) success ');
+                        wnd.getProperties().then(data => {
+                            expect(data.touchable).assertTrue();
+                            done();
+                        }, (err) => {
+                            console.log('windowTest setFocusableTest3 getProperties failed: err' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        })
+                    }, (err) => {
+                        console.log('windowTest setFocusableTest3 setTouchable failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }, (err) => {
+                    console.log('windowTest setFocusableTest3 getProperties failed: err' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err) => {
+                console.log('windowTest setFocusableTest3 setFocusable failed: err' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setFocusableTest3 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETFOCUSABLE_JSAPI_004
+     * @tc.name			Test setFocusable_Test_004
+     * @tc.desc			Setting the window to get focus is not touchable
+     */
+    it('setFocusable_Test_004', 0, function (done) {
+        console.log('windowTest setFocusableTest4 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setFocusableTest4 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setFocusable(true).then(() => {
+                console.log('windowTest setFocusableTest4 setFocusable(true) success ');
+                wnd.getProperties().then(data => {
+                    expect(data.focusable).assertTrue();
+                    wnd.setTouchable(false).then(() => {
+                        console.log('windowTest setFocusableTest4 setTouchable(false) success ');
+                        wnd.getProperties().then(data => {
+                            expect(!data.touchable).assertTrue();
+                            done();
+                        }, (err) => {
+                            console.log('windowTest setFocusableTest4 getProperties failed: err' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        })
+                    }, (err) => {
+                        console.log('windowTest setFocusableTest4 setTouchable failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }, (err) => {
+                    console.log('windowTest setFocusableTest4 getProperties failed: err' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err) => {
+                console.log('windowTest setFocusableTest4 setFocusable failed: err' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setFocusableTest4 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETFOCUSABLE_JSAPI_005
+     * @tc.name			Test setFocusable_Test_005
+     * @tc.desc			Set the window to get focus and touch
+     */
+    it('setFocusable_Test_005', 0, function (done) {
+        console.log('windowTest setFocusableTest5 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setFocusableTest5 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setFocusable(true).then(() => {
+                console.log('windowTest setFocusableTest5 setFocusable(true) success ');
+                wnd.getProperties().then(data => {
+                    expect(data.focusable).assertTrue();
+                    wnd.setTouchable(true).then(() => {
+                        console.log('windowTest setFocusableTest5 setTouchable(true) success ');
+                        wnd.getProperties().then(data => {
+                            expect(data.touchable).assertTrue();
+                            done();
+                        }, (err) => {
+                            console.log('windowTest setFocusableTest5 getProperties failed: err' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        })
+                    }, (err) => {
+                        console.log('windowTest setFocusableTest5 setTouchable failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }, (err) => {
+                    console.log('windowTest setFocusableTest5 getProperties failed: err' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err) => {
+                console.log('windowTest setFocusableTest5 setFocusable failed: err' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setFocusableTest4 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETTOUCHABLE_JSAPI_001
+     * @tc.name			Test setTouchable_Test_001
+     * @tc.desc			Set whether the window can be touched or not
+     */
+    it('setTouchable_Test_001', 0, function (done) {
+        console.log('windowTest setTouchableTest1 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setTouchableTest1 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.getProperties().then(data => {
+                expect(data.touchable).assertTrue();
+                wnd.setTouchable(false).then(() => {
+                    console.log('windowTest setTouchableTest1 setTouchable(false) success ');
+                    wnd.getProperties().then(data => {
+                        expect(!data.touchable).assertTrue();
+                        wnd.setTouchable(true).then(() => {
+                            console.log('windowTest setTouchableTest2 setTouchable(true) success ');
+                            wnd.getProperties().then(data => {
+                                expect(data.touchable).assertTrue();
+                                done();
+                            }, (err) => {
+                                console.log('windowTest setTouchableTest2 getProperties failed: err' + JSON.stringify(err));
+                                expect().assertFail();
+                                done();
+                            })
+                        }, (err) => {
+                            console.log('windowTest setTouchableTest2 setTouchable failed: err' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        })
+                    }, (err) => {
+                        console.log('windowTest setTouchableTest1 getProperties failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }, (err) => {
+                    console.log('windowTest setTouchableTest1 setTouchable failed: err' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err) => {
+                console.log('windowTest setTouchableTest1 getProperties failed: err' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setTouchableTest1 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETKEEPSCREENON_JSAPI_001
+     * @tc.name			Test setKeepScreenOn_Test_001
+     * @tc.desc			Set whether the window can be touched or not
+     */
+    it('setKeepScreenOn_Test_001', 0, function (done) {
+        console.log('windowTest setKeepScreenOnTest1 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setKeepScreenOnTest1 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.getProperties().then(data => {
+                expect(!data.isKeepScreenOn).assertTrue();
+                wnd.setKeepScreenOn(true).then(() => {
+                    console.log('windowTest setKeepScreenOnTest1 setKeepScreenOn(true) success ');
+                    wnd.getProperties().then(data => {
+                        expect(data.isKeepScreenOn).assertTrue();
+                        wnd.setKeepScreenOn(false).then(() => {
+                            console.log('windowTest setKeepScreenOnTest1 setKeepScreenOn(false) success ');
+                            wnd.getProperties().then(data => {
+                                expect(!data.isKeepScreenOn).assertTrue();
+                                done();
+                            }, (err) => {
+                                console.log('windowTest setKeepScreenOnTest1 getProperties failed: err' + JSON.stringify(err));
+                                expect().assertFail();
+                                done();
+                            })
+                        }, (err) => {
+                            console.log('windowTest setKeepScreenOnTest1 setKeepScreenOn failed: err' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        })
+                    }, (err) => {
+                        console.log('windowTest setKeepScreenOnTest1 getProperties failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }, (err) => {
+                    console.log('windowTest setKeepScreenOnTest1 setKeepScreenOn failed: err' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err) => {
+                console.log('windowTest setKeepScreenOnTest1 getProperties failed: err' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setKeepScreenOnTest1 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETKEEPSCREENON_JSAPI_002
+     * @tc.name			Test setKeepScreenOn_Test_002
+     * @tc.desc			Set whether the window can be touched or not
+     */
+    it('setKeepScreenOn_Test_002', 0, function (done) {
+        console.log('windowTest setKeepScreenOnTest2 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setKeepScreenOnTest2 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            for (let i = 0; i < 5; i++) {
+                wnd.getProperties().then(data => {
+                    expect(!data.isKeepScreenOn).assertTrue();
+                    wnd.setKeepScreenOn(true).then(() => {
+                        console.log('windowTest setKeepScreenOnTest2 setKeepScreenOn(true) success ');
+                        wnd.getProperties().then(data => {
+                            expect(data.touchable).assertTrue();
+                            wnd.setKeepScreenOn(false).then(() => {
+                                console.log('windowTest setKeepScreenOnTest2 setKeepScreenOn(false) success ');
+                                wnd.getProperties().then(data => {
+                                    expect(!data.touchable).assertTrue();
+                                }, (err) => {
+                                    console.log('windowTest setKeepScreenOnTest2 getProperties failed: err' + JSON.stringify(err));
+                                    expect().assertFail();
+                                    done();
+                                })
+                            }, (err) => {
+                                console.log('windowTest setKeepScreenOnTest2 setKeepScreenOn failed: err' + JSON.stringify(err));
+                                expect().assertFail();
+                                done();
+                            })
+                        }, (err) => {
+                            console.log('windowTest setKeepScreenOnTest2 getProperties failed: err' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        })
+                    }, (err) => {
+                        console.log('windowTest setKeepScreenOnTest2 setKeepScreenOn failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }, (err) => {
+                    console.log('windowTest setKeepScreenOnTest2 getProperties failed: err' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }
+            done();
+        }, (err) => {
+            console.log('windowTest setKeepScreenOnTest1 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBACKGROUNDCOLOR_JSAPI_001
+     * @tc.name			Test setBackgroundColor_Test_001
+     * @tc.desc			Set the window background color to red and Default opacity
+     */
+    it('setBackgroundColor_Test_001', 0, function (done) {
+        console.log('windowTest setBackgroundColorTest1 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBackgroundColorTest1 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBackgroundColor("#ffff00").then(() => {
+                console.log('windowTest setBackgroundColorTest1 setBrightness(#ffff00) success ');
+                wnd.getProperties().then(data => {
+                    expect(!data.isTransparent).assertTrue();
+                    done();
+                }, (err) => {
+                    console.log('windowTest setBackgroundColorTest1 getProperties failed: err' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err) => {
+                console.log('windowTest setBackgroundColorTest1 setBackgroundColor failed: err' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setBackgroundColorTest1 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBACKGROUNDCOLOR_JSAPI_002
+     * @tc.name			Test setBackgroundColor_Test_002
+     * @tc.desc			Set the window background color to red opaque
+     */
+    it('setBackgroundColor_Test_002', 0, function (done) {
+        console.log('windowTest setBackgroundColorTest2 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBackgroundColorTest2 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBackgroundColor("#ffffff00").then(() => {
+                console.log('windowTest setBackgroundColorTest2 setBrightness(#ffffff00) success ');
+                wnd.getProperties().then(data => {
+                    expect(!data.isTransparent).assertTrue();
+                    done();
+                }, (err) => {
+                    console.log('windowTest setBackgroundColorTest2 getProperties failed: err' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err) => {
+                console.log('windowTest setBackgroundColorTest2 setBackgroundColor failed: err' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setBackgroundColorTest2 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBACKGROUNDCOLOR_JSAPI_003
+     * @tc.name			Test setBackgroundColor_Test_003
+     * @tc.desc			Set the window background color to red transparent
+     */
+    it('setBackgroundColor_Test_003', 0, function (done) {
+        console.log('windowTest setBackgroundColorTest3 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBackgroundColorTest3 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBackgroundColor("#00ffff00").then(() => {
+                console.log('windowTest setBackgroundColorTest3 setBrightness(#00ffff00) success ');
+                wnd.getProperties().then(data => {
+                    expect(data.isTransparent).assertTrue();
+                    done();
+                }, (err) => {
+                    console.log('windowTest setBackgroundColorTest3 getProperties failed: err' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err) => {
+                console.log('windowTest setBackgroundColorTest3 setBackgroundColor failed: err' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setBackgroundColorTest3 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBACKGROUNDCOLOR_JSAPI_004
+     * @tc.name			Test setBackgroundColor_Test_004
+     * @tc.desc			Set the background color input parameter as an outlier
+     */
+    it('setBackgroundColor_Test_004', 0, function (done) {
+        console.log('windowTest setBackgroundColorTest4 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBackgroundColorTest4 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBackgroundColor("ff00").then(() => {
+                console.log('windowTest setBackgroundColorTest4 setBrightness(#ff00) success ');
+                expect().assertFail();
+                done();
+            }, (err) => {
+                console.log('windowTest setBackgroundColorTest4 setBackgroundColor failed: err' + JSON.stringify(err));
+                expect(err.code).assertEqual(130);
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setBackgroundColorTest4 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBACKGROUNDCOLOR_JSAPI_005
+     * @tc.name			Test setBackgroundColor_Test_005
+     * @tc.desc			Setting window background color input exception ARGB
+     */
+    it('setBackgroundColor_Test_005', 0, function (done) {
+        console.log('windowTest setBackgroundColorTest5 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBackgroundColorTest5 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBackgroundColor("#hhgghhgg").then(() => {
+                console.log('windowTest setBackgroundColorTest5 setBrightness(#hhgghhgg) success ');
+                expect().assertFail();
+                done();
+            }, (err) => {
+                console.log('windowTest setBackgroundColorTest5 setBackgroundColor failed: err' + JSON.stringify(err));
+                expect(err.code).assertEqual(130);
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setBackgroundColorTest5 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBACKGROUNDCOLOR_JSAPI_006
+     * @tc.name			Test setBackgroundColor_Test_006
+     * @tc.desc			Setting window background color input exception RGB
+     */
+    it('setBackgroundColor_Test_006', 0, function (done) {
+        console.log('windowTest setBackgroundColorTest6 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBackgroundColorTest6 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBackgroundColor("#gghhkk").then(() => {
+                console.log('windowTest setBackgroundColorTest6 setBrightness(#gghhkk) success ');
+                expect().assertFail();
+                done();
+            }, (err) => {
+                console.log('windowTest setBackgroundColorTest6 setBackgroundColor failed: err' + JSON.stringify(err));
+                expect(err.code).assertEqual(130);
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setBackgroundColorTest6 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBRIGHTNESS_JSAPI_001
+     * @tc.name			Test setBrightness_Test_001
+     * @tc.desc			Setting the brightness bar input parameter is normal
+     */
+    it('setBrightness_Test_001', 0, function (done) {
+        console.log('windowTest setBrightnessTest1 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBrightnessTest1 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBrightness(0).then(() => {
+                console.log('windowTest setBrightnessTest1 setBrightness(0) success ');
+                wnd.getProperties().then(data => {
+                    console.log('windowTest setBrightnessTest1 getProperties data ' + data);
+                    expect(data.brightness).assertEqual(0);
+                    wnd.setBrightness(0.5).then(() => {
+                        console.log('windowTest setBrightnessTest1 setBrightness(0.5) success ');
+                        wnd.getProperties().then(data => {
+                            console.log('windowTest setBrightnessTest1 getProperties data ' + data);
+                            expect(data.brightness).assertEqual(0.5);
+                            wnd.setBrightness(1).then(() => {
+                                console.log('windowTest setBrightnessTest1 setBrightness(1) success ');
+                                wnd.getProperties().then(data => {
+                                    console.log('windowTest setBrightnessTest1 getProperties data ' + data);
+                                    expect(data.brightness).assertEqual(1);
+                                    done();
+                                }, (err) => {
+                                    console.log('windowTest setBrightnessTest1 getProperties failed: err' + JSON.stringify(err));
+                                    expect().assertFail();
+                                    done();
+                                })
+                            }, (err) => {
+                                console.log('windowTest setBrightnessTest1 setBrightness failed: err' + JSON.stringify(err));
+                                expect().assertFail();
+                                done();
+                            })
+                        }, (err) => {
+                            console.log('windowTest setBrightnessTest1 getProperties failed: err' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        })
+
+                    }, (err) => {
+                        console.log('windowTest setBrightnessTest1 setBrightness failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }, (err) => {
+                    console.log('windowTest setBrightnessTest1 getProperties failed: err' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+
+            }, (err) => {
+                console.log('windowTest setBrightnessTest1 setBrightness failed: err' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setBrightnessTest1 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBRIGHTNESS_JSAPI_002
+     * @tc.name			Test setBrightness_Test_002
+     * @tc.desc			Set the brightness bar input parameter to decimal
+     */
+    it('setBrightness_Test_002', 0, function (done) {
+        console.log('windowTest setBrightnessTest2 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBrightnessTest2 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBrightness(0.564789).then(() => {
+                console.log('windowTest setBrightnessTest2 setBrightness(0.564789) success ');
+                wnd.getProperties().then(data => {
+                    console.log('windowTest setBrightnessTest2 getProperties data ' + data);
+                    expect(TRUE_WINDOW).assertTrue();
+                    done();
+                }, (err) => {
+                    console.log('windowTest setBrightnessTest2 getProperties failed: err' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }, (err) => {
+                console.log('windowTest setBrightnessTest2 setBrightness failed: err' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setBrightnessTest2 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBRIGHTNESS_JSAPI_003
+     * @tc.name			Test setBrightness_Test_003
+     * @tc.desc			Set the brightness bar input parameter to number max
+     */
+    it('setBrightness_Test_003', 0, function (done) {
+        console.log('windowTest setBrightnessTest3 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBrightnessTest3 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBrightness(Number.MAX_VALUE).then(() => {
+                console.log('windowTest setBrightnessTest3 setBrightness(Number.MAX_VALUE) success ');
+                expect().assertFail();
+                done();
+            }, (err) => {
+                console.log('windowTest setBrightnessTest3 setBrightness failed: err' + JSON.stringify(err));
+                expect(err.code).assertEqual(130);
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setBrightnessTest3 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBRIGHTNESS_JSAPI_004
+     * @tc.name			Test setBrightness_Test_004
+     * @tc.desc			Set the brightness bar input parameter to number min
+     */
+    it('setBrightness_Test_004', 0, function (done) {
+        console.log('windowTest setBrightnessTest4 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBrightnessTest4 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBrightness(Number.MIN_VALUE).then(() => {
+                console.log('windowTest setBrightnessTest4 setBrightness(Number.MIN_VALUE) success ');
+                expect(TRUE_WINDOW).assertTrue();
+                done();
+            }, (err) => {
+                console.log('windowTest setBrightnessTest4 setBrightness failed: err' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setBrightnessTest4 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBRIGHTNESS_JSAPI_005
+     * @tc.name			Test setBrightness_Test_005
+     * @tc.desc			Setting brightness bar input parameter exception
+     */
+    it('setBrightness_Test_005', 0, function (done) {
+        console.log('windowTest setBrightnessTest5 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBrightnessTest5 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBrightness(1.1).then(() => {
+                console.log('windowTest setBrightnessTest5 setBrightness(1.1) success ');
+                expect().assertFail();
+                done();
+            }, (err) => {
+                console.log('windowTest setBrightnessTest5 setBrightness failed: err' + JSON.stringify(err));
+                expect(err.code).assertEqual(130);
+                wnd.setBrightness(-0.1).then(() => {
+                    console.log('windowTest setBrightnessTest5 setBrightness(-0.1) success ');
+                    expect().assertFail();
+                    done();
+                }, (err) => {
+                    console.log('windowTest setBrightnessTest5 setBrightness failed: err' + JSON.stringify(err));
+                    expect(err.code).assertEqual(130);
+                    done();
+                })
+            })
+        }, (err) => {
+            console.log('windowTest setBrightnessTest5 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
     })
 
 })
