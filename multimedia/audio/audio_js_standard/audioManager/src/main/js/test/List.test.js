@@ -14,7 +14,8 @@
  */
 
 require('./AudioFramework.test.js')
-require('./AudioRenderer.test.js')
-require('./SR000GHLLV.test.js')
+require('./AudioVOIP.test.js')
 require('./AudioCall.test.js')
-require('./SR000GHQBN.test.js')
+require('./AudioCapturer.test.js')
+require('./AudioRenderer.test.js')
+require('./AudioEventManagement.test.js')
