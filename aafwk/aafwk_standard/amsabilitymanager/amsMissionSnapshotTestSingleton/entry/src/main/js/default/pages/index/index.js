@@ -15,7 +15,7 @@
 import commonEvent from '@ohos.commonEvent'
 export default {
     data: {
-        title: ""
+        title: ''
     },
     onInit() {
         this.title = this.$t('strings.world');

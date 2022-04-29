@@ -31,7 +31,7 @@ export default {
     },
     async onShow() {
         commonEvent.publish("ACTS_FinishWithResult_0100_CommonEvent", PublishCallBack);
-        var promise = await featureAbility.terminateSelfWithResult(
+        await featureAbility.terminateSelfWithResult(
             {
                 resultCode: 1,
                 want:
@@ -68,20 +68,10 @@ export default {
                     // install the specified ability with background mode if it's not installed.
                         installWithBackgroundMode: true
                     },
-                    deviceId: "deviceId",
-                    bundleName: "com.example.finishwithresultpromiseparameterstest",
-                    abilityName: "com.example.finishwithresultpromiseparameterstest.MainAbility",
-                    uri:"",
-                    parameters: {
-                        mykey0: 2222,
-                        mykey1: [1, 2, 3],
-                        mykey2: "[1, 2, 3]",
-                        mykey3: "ssssssssssssssssssssssssss",
-                        mykey4: [1, 15],
-                        mykey5: [false, true, false],
-                        mykey6: ["qqqqq", "wwwwww", "aaaaaaaaaaaaaaaaa"],
-                        mykey7: true,
-                    }
+                    deviceId: 'deviceId',
+                    bundleName: 'com.example.finishwithresultpromiseparameterstest',
+                    abilityName: 'com.example.finishwithresultpromiseparameterstest.MainAbility',
+                    uri: '',
                 },
             }
         )
@@ -91,5 +81,6 @@ export default {
         });
     },
     onReady() {
+        console.info('onReady');
     },
 }

@@ -93,40 +93,4 @@ describe('AbilityDisableTests', function () {
             })
             done();
         });
-        
-        /*
-         * @tc.number  SUB_AA_OpenHarmony_EqueryAbilityByWant_0300
-         * @tc.name    Call AbilityStateData to get abilityType
-         * @tc.desc    Function test
-         * @tc.level   0
-         */
-        it("SUB_AA_OpenHarmony_EqueryAbilityByWant_0400", 0, async function (done) {
-            console.log("------------start SUB_AA_OpenHarmony_EqueryAbilityByWant_0400-------------");
-            var registerId = appManager.registerApplicationStateObserver({
-                onForegroundApplicationChanged: (data) => {
-                    console.log("SUB_onForegroundApplicationChanged")
-                },
-                onAbilityStateChanged: (data) => {
-                    console.log("SUB_onAbilityStateChanged")
-                },
-                onProcessCreated: (data) => {
-                    console.log("SUB_onProcessCreated")
-                },
-                onProcessDied: (data) => {
-                    console.log("SUB_onProcessDied")
-                }
-            })
-            console.log('SUB_AA_OpenHarmony_EqueryAbilityByWant_0400 registerId  : ' + JSON.stringify(registerId));
-            console.log('SUB_AA_OpenHarmony_EqueryAbilityByWant_0400 registerId  : ' + typeof registerId);
-            expect(typeof(registerId) == "number").assertTrue();
-
-            await appManager.unregisterApplicationStateObserver(parseInt(registerId), async(err, data) => {
-                console.log("SUB_AA_OpenHarmony_StateListener_0200 err1:"
-                + JSON.stringify(err) + ",data: " + JSON.stringify(data));
-                expect(err["code"] == "1").assertTrue();
-            })
-            done();
-        })
-
-
 })

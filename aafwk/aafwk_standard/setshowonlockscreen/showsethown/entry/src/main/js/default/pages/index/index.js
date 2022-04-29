@@ -15,33 +15,16 @@
 import featureAbility from '@ohos.ability.featureAbility'
 export default {
     data: {
-        title: ""
+        title: ''
     },
     onInit() {
-        this.title = this.$t('strings.world');
-
-        featureAbility.setShowOnLockScreen(true,(error, data) => {
-            console.log('FeatureAbilityTestCallBack ACTS_setShowOnLockScreen_0100 Called.' + ' error ' + error.code )
-        });
-        console.log('ZLM-----onClick1 end');
-        },
-
+        console.info('onInit');
+    },
     onStart(want){
-
-        this.title = this.$t('strings.world');
-
-        featureAbility.setShowOnLockScreen(true,(error, data) => {
-            console.log('FeatureAbilityTestCallBack ACTS_setShowOnLockScreen_0100 Called.' + ' error ' + error.code )
-        });
-        console.log('ZLM-----onClick1 end');
+        console.info('onStart');
     },
     onShow(){
-        this.title = this.$t('strings.world');
-
-        featureAbility.setShowOnLockScreen(true,(error, data) => {
-            console.log('FeatureAbilityTestCallBack ACTS_setShowOnLockScreen_0100 Called.' + ' error ' + error.code )
-        });
-        console.log('ZLM-----onClick1 end');
+        console.info('onShow');
     }
     }
 

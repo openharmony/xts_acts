@@ -22,6 +22,8 @@ describe('ActsGetWantTest', function () {
         done();
     })
 
+    var TIMEOUT_NUMBER = 2500;
+
     //  @tc.number: ACTS_GetWant_0100
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
@@ -45,11 +47,6 @@ describe('ActsGetWantTest', function () {
             }
         },
             (err, data) => {
-                if (err.code != 0) {
-                    console.info('error: ' + JSON.stringify(err));
-                    done();
-                    return;
-                }
                 console.info('====> ACTS_StartAbilityForResult_0100 start ability=====>' + JSON.stringify(data))
                 expect(data.want.deviceId).assertEqual("");
                 expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -67,7 +64,9 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[0]).assertEqual("str");
                 expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
-                done();
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
             })
     })
 
@@ -99,11 +98,6 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
-                if (err.code != 0) {
-                    console.info('error: ' + JSON.stringify(err));
-                    done();
-                    return;
-                }
                 console.info('====> ACTS_StartAbilityForResult_0400 start ability=====>' + JSON.stringify(data))
                 expect(data.want.deviceId).assertEqual("");
                 expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -127,7 +121,9 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[1]).assertEqual("!@#$%");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
                 console.info('====> before done=====>')
-                done();
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
             })
     })
 
@@ -159,11 +155,6 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
-                if (err.code != 0) {
-                    console.info('error: ' + JSON.stringify(err));
-                    done();
-                    return;
-                }
                 console.info('====> ACTS_StartAbilityForResult_0500 start ability=====>' + JSON.stringify(data))
                 expect(data.want.deviceId).assertEqual("");
                 expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -186,7 +177,9 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                 console.info('====> before done=====>')
-                done();
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
             })
     })
     //  @tc.number: ACTS_GetWant_0600
@@ -217,11 +210,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_0600 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -244,7 +232,9 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                     console.info('====> before done=====>')
-                    done();
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_0700
@@ -275,11 +265,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_0700 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -302,7 +287,9 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                     console.info('====> before done=====>')
-                    done();
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_0800
@@ -332,11 +319,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_0800 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -358,7 +340,9 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                     console.info('====> before done=====>')
-                    done();
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_0900
@@ -389,11 +373,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_0900 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -416,7 +395,9 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                     console.info('====> before done=====>')
-                    done();
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1000
@@ -434,7 +415,6 @@ describe('ActsGetWantTest', function () {
                     entities: ["entity1"],
                     type: "MIMETYPE",
                     uri: "key={true,true,false}",
-                    flags: wantConstant.Flags.FLAG_AUTH_PERSISTABLE_URI_PERMISSION  ,
                     parameters:
                     {
                         mykey0: 0.1,
@@ -447,11 +427,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1000 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -460,7 +435,6 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
                     expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_PERSISTABLE_URI_PERMISSION );
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
@@ -474,7 +448,9 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
                     console.info('====> before done=====>')
-                    done();
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1100
@@ -492,7 +468,6 @@ describe('ActsGetWantTest', function () {
                     entities: ["entity1"],
                     type: "MIMETYPE",
                     uri: "key={true,true,false}",
-                    flags: wantConstant.Flags.FLAG_AUTH_PREFIX_URI_PERMISSION  ,
                     parameters:
                     {
                         mykey0: 0.1,
@@ -505,11 +480,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1100 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -518,7 +488,6 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
                     expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_PREFIX_URI_PERMISSION );
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
@@ -531,8 +500,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    console.info('====> before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1200
@@ -563,11 +534,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1200 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -589,8 +555,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1300
@@ -621,11 +589,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1300 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -647,8 +610,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1400
@@ -666,7 +631,6 @@ describe('ActsGetWantTest', function () {
                     entities: ["entity1"],
                     type: "MIMETYPE",
                     uri: "key={true,true,false}",
-                    flags: wantConstant.Flags.FLAG_ABILITY_CONTINUATION_REVERSIBLE,
                     parameters:
                     {
                         mykey0: 0.1,
@@ -679,11 +643,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1400 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -692,7 +651,6 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.entities[0]).assertEqual("entity1");
                     expect(data.want.type).assertEqual("MIMETYPE");
                     expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_CONTINUATION_REVERSIBLE);
                     expect(data.want.parameters.mykey0).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
                     expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
@@ -705,68 +663,13 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
-                })
-        })
-    //  @tc.number: ACTS_GetWant_1500
-    //  @tc.name: getWant : get want in current ability
-    //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
-    it('ACTS_GetWant_1500', 0, async function (done) {
-            featureAbility.startAbilityForResult({
-                want:
-                {
-                    deviceId: "",
-                    bundleName: "com.example.actsgetwantalltesthap",
-                    abilityName: "com.example.actsgetwantalltesthap.MainAbility",
-                    action: "action1",
-                    entities: ["entity1"],
-                    type: "MIMETYPE",
-                    uri: "key={true,true,false}",
-                    flags: wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
-                    parameters:
-                    {
-                        mykey0: 0.1,
-                        mykey1: [0.1, 0.2, 0.0000000003],
-                        mykey2: "[a, b, c]",
-                        mykey3: "str",
-                        mykey4: [false, true, false],
-                        mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
-                    },
-                },
-            },
-                (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
                         done();
-                        return;
-                    }
-                    console.info('====> ACTS_StartAbilityForResult_1500 start ability=====>' + JSON.stringify(data))
-                    expect(data.want.deviceId).assertEqual("");
-                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                    expect(data.want.action).assertEqual("action1");
-                    expect(data.want.entities[0]).assertEqual("entity1");
-                    expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_INSTALL_ON_DEMAND);
-                    expect(data.want.parameters.mykey0).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                    expect(data.want.parameters.mykey3).assertEqual("str");
-                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
+
     //  @tc.number: ACTS_GetWant_1600
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
@@ -795,11 +698,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1600 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -821,8 +719,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1700
@@ -853,11 +753,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1700 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -879,8 +774,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
     //  @tc.number: ACTS_GetWant_1800
@@ -911,11 +808,6 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     console.info('====> ACTS_StartAbilityForResult_1800 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
@@ -937,66 +829,10 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
-                })
-        })
-    //  @tc.number: ACTS_GetWant_1900
-    //  @tc.name: getWant : get want in current ability
-    //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
-    it('ACTS_GetWant_1900', 0, async function (done) {
-            featureAbility.startAbilityForResult({
-                want:
-                {
-                    deviceId: "",
-                    bundleName: "com.example.actsgetwantalltesthap",
-                    abilityName: "com.example.actsgetwantalltesthap.MainAbility",
-                    action: "action1",
-                    entities: ["entity1"],
-                    type: "MIMETYPE",
-                    uri: "key={true,true,false}",
-                    flags: wantConstant.Flags.FLAG_ABILITY_MISSION_TOP ,
-                    parameters:
-                    {
-                        mykey0: 0.1,
-                        mykey1: [0.1, 0.2, 0.0000000003],
-                        mykey2: "[a, b, c]",
-                        mykey3: "str",
-                        mykey4: [false, true, false],
-                        mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
-                    },
-                },
-            },
-                (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
                         done();
-                        return;
-                    }
-                    console.info('====> ACTS_StartAbilityForResult_1900 start ability=====>' + JSON.stringify(data))
-                    expect(data.want.deviceId).assertEqual("");
-                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                    expect(data.want.action).assertEqual("action1");
-                    expect(data.want.entities[0]).assertEqual("entity1");
-                    expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_MISSION_TOP );
-                    expect(data.want.parameters.mykey0).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                    expect(data.want.parameters.mykey3).assertEqual("str");
-                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    done();
+                    }, TIMEOUT_NUMBER);
                 })
         })
         
@@ -1032,13 +868,11 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    if (err.code != 0) {
-                        console.info('error: ' + JSON.stringify(err));
-                        done();
-                        return;
-                    }
                     checkOnAbilityResult(data);
-                    done();
+                    console.info('====> setTimeout before done.=====>')
+                    setTimeout(()=>{
+                        done();
+                    }, TIMEOUT_NUMBER);
                 })
         }catch(error){
             console.log("ACTS_GetWant_2000 : error = " + error);

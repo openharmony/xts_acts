@@ -22,27 +22,19 @@ import {Core, ExpectExtend, ReportExtend} from "deccjsunit/index.ets";
 struct MyComponent {
   aboutToAppear() {
     console.info("start run testcase2!!!!")
-    featureAbility.getWant()
-      .then((Want) => {
-        const core = Core.getInstance();
-        const expectExtend = new ExpectExtend({
-          'id': 'extend'
-        });
-        core.addService('expect', expectExtend);
-        const reportExtend = new ReportExtend(file);
-        core.addService('report', reportExtend);
-        core.init();
-        core.subscribeEvent('task', reportExtend);
-        const configService = core.getDefaultService('config');
-        console.info('parameters2---->' + JSON.stringify(Want.parameters));
-        configService.setConfig(Want.parameters);
-        testsuite2();
-        core.execute();
-        console.info('Operation successful2. Data: ' + JSON.stringify(Want));
-      })
-      .catch((error) => {
-        console.error('Operation failed2. Cause: ' + JSON.stringify(error));
-      })
+    const core = Core.getInstance();
+    const expectExtend = new ExpectExtend({
+      'id': 'extend'
+    });
+    core.addService('expect', expectExtend);
+    const reportExtend = new ReportExtend(file);
+    core.addService('report', reportExtend);
+    core.init();
+    core.subscribeEvent('task', reportExtend);
+    const configService = core.getDefaultService('config');
+    configService.setConfig(this)
+    testsuite2();
+    core.execute();
   }
 
   build() {

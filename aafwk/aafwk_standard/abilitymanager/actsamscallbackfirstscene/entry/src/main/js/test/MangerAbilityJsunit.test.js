@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -150,21 +150,6 @@ describe('ActsAmsCallBackFirstScene', function () {
                     expect(typeof (info[i].label)).assertEqual("string");
                     expect(typeof (info[i].iconPath)).assertEqual("string");
                 }
-                done();
-            });
-    })
-
-    /*
-    * @tc.number    : Acts_Ams_test_1600
-    * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
-    * @tc.desc      : Kill Processes By BundleName(by CallBack)
-    */
-    it('Acts_Ams_test_1600', 0, async function (done) {
-        appManager.killProcessesByBundleName('com.ix.simulate.feature',
-            (error, info) => {
-                console.info('Acts_Ams_test_1600 killProcessesByBundleName error.code: \
-                    ' + error.code + ',data  [' + info + ']');
-                expect(error.code).assertEqual(0);
                 done();
             });
     })
