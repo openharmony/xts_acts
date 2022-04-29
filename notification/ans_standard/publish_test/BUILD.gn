@@ -16,8 +16,8 @@ group("publish_test") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsanspublishcontroltest:ActsAnsPublishControlTest",
-      "actsanspublishconversation:ActsAnsConversationTest",
+      #"actsanspublishcontroltest:ActsAnsPublishControlTest",
+      #"actsanspublishconversation:ActsAnsConversationTest",
       "badgedisplayed:badgedisplayed",
       "enablenotification:enablenotification",
       "getactive:getactive",
@@ -32,7 +32,7 @@ group("publish_test") {
       "ansactscancelgroup:ActsAnsCancelGroupTest",
       "ansactsremovegroup:ActsAnsRemoveGroupTest",
       "donotdisturbmode:ActsAnsDoNotDisturbTest",
-      "publish:ActsAnsNotificationPublishXts",
+      #"publish:ActsAnsNotificationPublishXts",
       "publishsound:ActsAnsPublishSoundTest",
 
       #"publishvibra:ActsAnsPublishVibraTest",
