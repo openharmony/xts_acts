@@ -19,193 +19,18 @@ import {
   it,
   expect
 }
-  from 'deccjsunit/index'
+from 'deccjsunit/index'
 import {
   FILE_CONTENT,
   prepareFile,
   fileName,
   nextFileName,
-  appName,
   randomString,
+  isIntNum
 }
-  from './Common'
+from './Common'
 
 describe('FileIOError', function () {
-
-  /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_0000
-   * @tc.name FileIo_test_error_000
-   * @tc.desc Function of API, Copy files when disk space is full
-   *  Create the file (fileio_test_error) in advance and give 777 permission,
-   *  path:/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/cache/fileio_test_error
-   */
-  it('FileIo_test_error_000', 0, function () {
-    let fpath = nextFileName('fileio_test_error');
-    let fpathTarget = appName('fileio_test_error');
-    try {
-      expect(fileio.copyFileSync(fpath, fpathTarget) !== null).assertTrue();
-      expect(null).assertFail();
-    } 
-    catch (e) {
-      console.log('fileio_test_error_000 has failed for ' + e);
-    }
-  });
-
-  /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_0100
-   * @tc.name FileIo_test_error_001
-   * @tc.desc Function of API, mkdir files when disk space is full
-   */
-  it('FileIo_test_error_001', 0, function () {
-    let dpath = nextFileName('fileio_test_error_001d');
-    try {
-      expect(fileio.mkdirSync(dpath) !== null).assertTrue();
-      expect(null).assertFail();
-    } 
-    catch (e) {
-      console.log('fileio_test_error_001 has failed for ' + e);
-    }
-  });
-
-  /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_0200
-   * @tc.name FileIo_test_error_002
-   * @tc.desc Function of API, When inode is full, verify the folder creation function
-   */
-  it('FileIo_test_error_002', 0, function () {
-    let dpath = fileName('fileio_test_error_002d');
-    try {
-      expect(fileio.mkdirSync(dpath) !== null).assertTrue();
-      expect(null).assertFail();
-    } 
-    catch (e) {
-      console.log('fileio_test_error_002 has failed for ' + e);
-    }
-  });
-
-  /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_0300
-   * @tc.name FileIo_test_error_003
-   * @tc.desc Function of API, When the disk space is full, verify the synchronous write file data function
-   */
-  it('FileIo_test_error_003', 0, function () {
-    let fpath = nextFileName('fileio_test_error_003');
-    try {
-      let fd = fileio.openSync(fpath, 0o102, 0o777);
-      expect(fd !== null).assertTrue();
-      expect(fileio.writeSync(fd, FILE_CONTENT) !== null).assertTrue();
-      expect(fileio.closeSync(fd) !== null).assertTrue();
-      expect(null).assertFail();
-    } 
-    catch (e) {
-      console.log('fileio_test_error_003 has failed for ' + e);
-    }
-  });
-
-  /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_0400
-   * @tc.name FileIo_test_error_004
-   * @tc.desc Function of API, When the disk space is full,
-   * verify synchronization and write the buffer data back to the disk for data synchronization
-   */
-  it('FileIo_test_error_004', 0, function () {
-    let fpath = nextFileName('fileio_test_error_004');
-    try {
-      let fd = fileio.openSync(fpath, 0o102, 0o777);
-      expect(fd !== null).assertTrue();
-      expect(fileio.fsyncSync(fd) !== null).assertTrue();
-      expect(fileio.closeSync(fd) !== null).assertTrue();
-      expect(null).assertFail();
-    } 
-    catch (e) {
-      console.log('fileio_test_error_004 has failed for ' + e);
-    }
-  });
-
-  /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_0500
-   * @tc.name FileIo_test_error_005
-   * @tc.desc Function of API, Open 200m file function when there is 100m left in RAM
-   *  Create a 200m file (fileio_test_error_005) and grant 777 permissions,
-   *  path:/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/cache/fileio_test_error_005
-   */
-  it('FileIo_test_error_005', 0, function () {
-    let fpath = nextFileName('fileio_test_error_005');
-    try {
-      let fd = fileio.openSync(fpath);
-      expect(fd !== null).assertTrue();
-      expect(fileio.closeSync(fd) !== null).assertTrue();
-      expect(null).assertFail();
-    } 
-    catch (e) {
-      console.log('fileio_test_error_005 has failed for ' + e);
-    }
-  });
-
-  /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_0600
-   * @tc.name FileIo_test_error_006
-   * @tc.desc Function of API, Read 200m file function when there is 100m left in RAM
-   *  Create a 200m file (fileio_test_error_005) and grant 777 permissions,
-   *  path:/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/cache/fileio_test_error_005
-   */
-  it('FileIo_test_error_006', 0, function () {
-    let fpath = nextFileName('fileio_test_error_005');
-    try {
-      let fd = fileio.openSync(fpath);
-      expect(fd !== null).assertTrue();
-      let rlen = fileio.readSync(fd, new ArrayBuffer(209715200));
-      expect(rlen == 209715200).assertTrue();
-      expect(fileio.closeSync(fd) !== null).assertTrue();
-      expect(null).assertFail();
-    } 
-    catch (e) {
-      console.log('fileio_test_error_006 has failed for ' + e);
-    }
-  });
-
-  /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_0700
-   * @tc.name FileIo_test_error_007
-   * @tc.desc Function of API, Verify the function of obtaining
-   * 200m file stream synchronously when 100m ram is left
-   *  Create a 200m file (fileio_test_error_005) and grant 777 permissions,
-   *  path:/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/cache/fileio_test_error_005
-   */
-  it('FileIo_test_error_007', 0, function () {
-    let fpath = nextFileName('fileio_test_error_005');
-    try {
-      let ss = fileio.createStreamSync(fpath, 'r+');
-      expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(null).assertFail();
-    } 
-    catch (e) {
-      console.log('fileio_test_error_007 has failed for ' + e);
-    }
-  });
-
-  /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_0800
-   * @tc.name FileIo_test_error_008
-   * @tc.desc Function of API, Read 200m file function when there is 100m left in RAM
-   *  Create a 200m file (fileio_test_error_005) and grant 777 permissions,
-   *  path:/data/accounts/account_0/appdata/ohos.acts.stroage.fileio/cache/fileio_test_error_005
-   */
-  it('FileIo_test_error_008', 0, function () {
-    let fpath = nextFileName('fileio_test_error_005');
-    try {
-      let ss = fileio.createStreamSync(fpath, 'r+');
-      expect(ss !== null).assertTrue();
-      let rlen = ss.readSync(new ArrayBuffer(209715200));
-      expect(rlen == 209715200).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(null).assertFail();
-    } 
-    catch (e) {
-      console.log('fileio_test_error_008 has failed for ' + e);
-    }
-  });
 
   /**
    * @tc.number SUB_STORAGE_FileIo_test_error_0900
@@ -218,8 +43,9 @@ describe('FileIOError', function () {
     fileio.mkdirSync(dpath);
     expect(prepareFile(fpath, 'hello')).assertTrue();
     try {
-      expect(fileio.rmdirSync(dpath) !== null).assertTrue();
-      expect(null).assertFail();
+      let fd = fileio.openSync(dpath);
+      expect(isIntNum(fd)).assertTrue();
+      fileio.rmdirSync(dpath);
     } 
     catch (e) {
       console.log('fileio_test_error_009 has failed for ' + e);
@@ -229,7 +55,7 @@ describe('FileIOError', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIo_test_error1000
+   * @tc.number SUB_STORAGE_FileIo_test_error_1000
    * @tc.name FileIo_test_error_010
    * @tc.desc Function of API, delete file
    */
@@ -237,7 +63,9 @@ describe('FileIOError', function () {
     let fpath = fileName('fileio_test_error_010f');
     expect(prepareFile(fpath, 'hello')).assertTrue();
     try {
-      expect(fileio.rmdirSync(fpath) !== null).assertTrue();
+      let fd = fileio.openSync(fpath);
+      expect(isIntNum(fd)).assertTrue();
+      fileio.rmdirSync(fpath);
       expect(null).assertFail();
     } 
     catch (e) {
@@ -254,30 +82,30 @@ describe('FileIOError', function () {
    */
   it('FileIo_test_error_011', 0, function () {
     let fpath = nextFileName('fileio_test_error_011');
-    fileio.openSync(fpath, 0o102, 0o777);
+    let fd = fileio.openSync(fpath, 0o102, 0o777);
+    expect(isIntNum(fd)).assertTrue();
     let dpath = nextFileName('fileio_error_011d');
     fileio.mkdirSync(dpath);
     try {
       for (let i = 0; i < 16; i++) {
         if (i == 15) {
           let fpathTarget = dpath + '/f' + randomString(248);
-          expect(fileio.copyFileSync(fpath, fpathTarget) !== null).assertTrue();
-          console.log((i + 1) + ' copy success');
+          fileio.copyFileSync(fpath, fpathTarget);
           expect(null).assertFail();
         } else {
           dpath = dpath + '/d' + randomString(248);
           fileio.mkdirSync(dpath);
-          console.log((i + 1) + ' mkdir success');
         }
       }
     } 
     catch (e) {
       console.log('fileio_test_error_011 has failed for ' + e);
+      fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_0120
+   * @tc.number SUB_STORAGE_FileIo_test_error_1200
    * @tc.name FileIo_test_error_012
    * @tc.desc Function of API, flags=0o102. The test file is exist.
    */
@@ -290,12 +118,12 @@ describe('FileIOError', function () {
     } 
     catch (e) {
       console.log('FileIo_test_error_012 has failed for ' + e);
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_0130
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_1300
    * @tc.name FileIo_test_error_013
    * @tc.desc Function of API, flags=0o102
    */
@@ -311,7 +139,7 @@ describe('FileIOError', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_0140
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_1400
    * @tc.name FileIo_test_error_014
    * @tc.desc Function of API,  flags=0o202. The test file is exist.
    */
@@ -324,12 +152,12 @@ describe('FileIOError', function () {
     } 
     catch (e) {
       console.log('FileIo_test_error_014 has failed for ' + e);
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_0150
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_1500
    * @tc.name FileIo_test_error_015
    * @tc.desc Function of API,  flags=0o302. The test file is exist.
    */
@@ -337,17 +165,16 @@ describe('FileIOError', function () {
     let fpath = nextFileName('FileIo_test_error_015');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
-      fileio.openSync(fpath, 0o302);
-      expect(null).assertFail();
+      fileio.openSync(fpath, 0o302, 0o666);
     } 
     catch (e) {
       console.log('FileIo_test_error_015 has failed for ' + e);
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_0160
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_1600
    * @tc.name FileIo_test_error_016
    * @tc.desc Function of API,  flags=0o100002. The test file is exist.
    */
@@ -360,30 +187,30 @@ describe('FileIOError', function () {
     } 
     catch (e) {
       console.log('FileIo_test_error_016 has failed for ' + e);
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_0170
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_1700
    * @tc.name FileIo_test_error_017
    * @tc.desc Function of API, flags=0o40002 The test file is exist.
    */
   it('FileIo_test_error_017', 0, function () {
     let dpath = nextFileName('FileIo_test_error_017');
-    expect(fileio.mkdirSync(dpath) !== null).assertTrue();
+    fileio.mkdirSync(dpath);
     try {
       fileio.openSync(dpath, 0o40002);
       expect(null).assertFail();
     } 
     catch (e) {
       console.log('FileIo_test_error_017 has failed for ' + e);
-      expect(fileio.rmdirSync(dpath) !== null).assertTrue();
+      fileio.rmdirSync(dpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_0180
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_1800
    * @tc.name FileIo_test_error_018
    * @tc.desc Function of API, flags=0o20040002. The test file is exist.
    */
@@ -399,7 +226,7 @@ describe('FileIOError', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_0190
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_1900
    * @tc.name FileIo_test_error_019
    * @tc.desc Function of API, flags=0o400002. The test file is exist.
    */
@@ -413,12 +240,12 @@ describe('FileIOError', function () {
     } 
     catch (e) {
       console.log('FileIo_test_error_019 has failed for ' + e);
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_0200
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_2000
    * @tc.name FileIo_test_error_020
    * @tc.desc Function of API, flags=0o400002. The test file is exist.
    */
@@ -432,12 +259,12 @@ describe('FileIOError', function () {
     } 
     catch (e) {
       console.log('FileIo_test_error_020 has failed for ' + e);
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_0210
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_2100
    * @tc.name FileIo_test_error_021
    * @tc.desc Function of API, flags=0o10000102. The test file is exist.
    */
@@ -453,7 +280,7 @@ describe('FileIOError', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_0220
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_2200
    * @tc.name FileIo_test_error_022
    * @tc.desc Function of API,mode=1 The test file is exist.
    */
@@ -466,8 +293,9 @@ describe('FileIOError', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('FileIo_test_error_021 has failed for ' + e);
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      console.log('FileIo_test_error_022 has failed for ' + e);
+      fileio.unlinkSync(fpath);
+      fileio.unlinkSync(fpathTarget);
     }
   });
 
