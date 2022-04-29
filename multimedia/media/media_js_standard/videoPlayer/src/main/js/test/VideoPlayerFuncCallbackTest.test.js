@@ -14,7 +14,7 @@
  */
 
 import media from '@ohos.multimedia.media'
-import {toNewPage, clearRouter} from './VideoPlayerTestBase.js';
+import {toNewPage, clearRouter} from '../../../../../VideoPlayerTestBase.js';
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
@@ -52,7 +52,9 @@ describe('VideoPlayerFuncCallbackTest', function () {
     let surfaceID = '';
     let fdHead = 'fd://';
     let fileDescriptor = undefined;
-    let page = 0;
+    const pagePath1 = 'pages/surfaceTest/surfaceTest';
+    const pagePath2 = 'pages/surfaceTest2/surfaceTest2';
+    let pageId = 0;
     let events = require('events');
     let eventEmitter = new events.EventEmitter();
 
@@ -64,8 +66,8 @@ describe('VideoPlayerFuncCallbackTest', function () {
     })
 
     beforeEach(async function() {
-        await toNewPage(page);
-        page = (page + 1) % 2;
+        await toNewPage(pagePath1, pagePath2, pageId);
+        pageId = (pageId + 1) % 2;
         await mediaTestBase.msleepAsync(1000).then(
             () => {}, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         surfaceID = globalThis.value;
