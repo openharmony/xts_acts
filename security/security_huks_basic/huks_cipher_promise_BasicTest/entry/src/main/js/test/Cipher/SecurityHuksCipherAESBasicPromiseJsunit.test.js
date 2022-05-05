@@ -92,12 +92,7 @@ async function publicUpdateFunc(HuksOptions, thirdInderfaceName, isEncrypt) {
     } else {
       HuksOptions.inData = new Uint8Array(new Array());
     }
-    await publicFinishAbortFunc(
-      HuksOptions,
-      thirdInderfaceName,
-      isEncrypt,
-      remainder
-    );
+    await publicFinishAbortFunc(HuksOptions, thirdInderfaceName, isEncrypt);
   }
 }
 
@@ -124,8 +119,7 @@ async function update(handle, HuksOptions) {
 async function publicFinishAbortFunc(
   HuksOptions,
   thirdInderfaceName,
-  isEncrypt,
-  remainder
+  isEncrypt
 ) {
   if (thirdInderfaceName == 'finish') {
     await finish(HuksOptions, isEncrypt);

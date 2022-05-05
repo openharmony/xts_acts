@@ -19,6 +19,7 @@ import { stringToUint8Array } from '../../../../../../../utils/param/publicFunc'
 import { publicSignVerifyFunc } from '../../../../../../../utils/param/signverify/publicSignverifyPromise.js';
 let srcData63 = Data.Data63b;
 let srcData63Kb = stringToUint8Array(srcData63);
+let finishOutData;
 describe('SecurityHuksSignVerifyRSACallbackJsunit', function () {
   it('testSignVerifyRSA001', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyRSASize512SIGNPKCS1MD5KeyAlias001';
@@ -32,12 +33,13 @@ describe('SecurityHuksSignVerifyRSACallbackJsunit', function () {
       ),
       inData: srcData63Kb,
     };
-    await publicSignVerifyFunc(
+    finishOutData = await publicSignVerifyFunc(
       srcKeyAlies,
       srcKeyAlies + 'New',
       HuksOptions,
       'finish',
-      true
+      true,
+      srcData63Kb
     );
     HuksOptions = {
       properties: new Array(
@@ -47,14 +49,15 @@ describe('SecurityHuksSignVerifyRSACallbackJsunit', function () {
         HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
         HuksSignVerifyRSA.HuksKeyRSASize512
       ),
-      inData: srcData63Kb,
+      inData: finishOutData,
     };
     await publicSignVerifyFunc(
       srcKeyAlies,
       srcKeyAlies + 'New',
       HuksOptions,
       'finish',
-      false
+      false,
+      srcData63Kb
     );
     done();
   });

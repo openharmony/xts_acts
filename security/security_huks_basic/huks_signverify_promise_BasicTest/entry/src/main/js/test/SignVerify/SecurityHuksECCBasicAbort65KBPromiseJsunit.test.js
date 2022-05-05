@@ -36,7 +36,8 @@ describe('SecurityHuksSignVerifyECCPromiseJsunit', function () {
       srcKeyAlies + 'New',
       HuksOptions,
       'abort',
-      true
+      true,
+      srcData65Kb
     );
     done();
   });
