@@ -2344,7 +2344,7 @@ describe("DeviceUsageStatisticsJsTest", function () {
 	
 	/*
      * @tc.name: DeviceUsageStatisticsJsTest096
-     * @tc.desc: test bundleState getRecentlyUsedModules BundleActiveFormInfo formId promise.
+     * @tc.desc: test bundleState getRecentlyUsedModules BundleActiveFormInfo count promise.
      * @tc.type: FUNC
      * @tc.require:
      */
@@ -2354,10 +2354,10 @@ describe("DeviceUsageStatisticsJsTest", function () {
             console.info('test bundle DeviceUsageStatisticsJsTest096 promise success');
 			let BundleActiveFormInfo = res[0].formRecords;
             if(BundleActiveFormInfo.length === 0) {
-				BundleActiveFormInfo = [{ formId: 'formId'}];
+				BundleActiveFormInfo = [{ count: 'count'}];
 			} 
-			console.info('test bundle promise BundleActiveFormInfo formId: ' + 
-			BundleActiveFormInfo[0].formId);
+			console.info('test bundle promise BundleActiveFormInfo count: ' + 
+			BundleActiveFormInfo[0].count);
 			expect(BundleActiveFormInfo).assertInstanceOf('Array');
         }).catch((err) => {
             console.info('test bundle DeviceUsageStatisticsJsTest096 promise failed, because: ' + 

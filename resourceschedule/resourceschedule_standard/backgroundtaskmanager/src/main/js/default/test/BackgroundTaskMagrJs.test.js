@@ -170,9 +170,9 @@ describe("TransientTaskJsTest", function () {
         console.info('----------------------TransientTaskJsTest005---------------------------');
         function callback() {}
         let info = backgroundTaskManager.requestSuspendDelay("test", callback);
-        if (info.actualDealyTime != -1) {
-            console.info('TransientTaskJsTest005  backgroundTaskManager success, actualDealyTime:' + 
-            info.actualDealyTime);
+        if (info.actualDelayTime != -1) {
+            console.info('TransientTaskJsTest005  backgroundTaskManager success, actualDelayTime:' + 
+            info.actualDelayTime);
             expect(true).assertTrue();
             backgroundTaskManager.cancelSuspendDelay(info.requestId)
         } else {
@@ -183,7 +183,7 @@ describe("TransientTaskJsTest", function () {
 	
 	/*
      * @tc.name: TransientTaskJsTest006
-     * @tc.desc: test DelaySuspendInfo actualDealyTime
+     * @tc.desc: test DelaySuspendInfo actualDelayTime
      * @tc.type: FUNC
      * @tc.require: 
      */
@@ -192,8 +192,8 @@ describe("TransientTaskJsTest", function () {
         function callback() {}
         let info = backgroundTaskManager.requestSuspendDelay("123456", callback);
         if (info.requestId != -1) {
-            console.info('TransientTaskJsTest006  DelaySuspendInfo actualDealyTime:' + 
-            info.actualDealyTime);
+            console.info('TransientTaskJsTest006  DelaySuspendInfo actualDelayTime:' + 
+            info.actualDelayTime);
 			backgroundTaskManager.cancelSuspendDelay(info.requestId);
             expect(true).assertTrue();
         } else {
