@@ -259,20 +259,6 @@ describe('ActsAmsCallBackFourthScene', function () {
     })
 
     /*
-     * @tc.number    : Acts_Ams_test_6400
-     * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
-     * @tc.desc      : Kill Processes By BundleName(by CallBack)
-     */
-    it('Acts_Ams_test_6400', 0, async function (done) {
-        appManager.killProcessesByBundleName('xxxxxxxxx',
-            (error) => {
-                console.info('Acts_Ams_test_6400 killProcessesByBundleName error.code ' + error.code);
-                expect(error.code).assertEqual(2097183);
-                done();
-            });
-    })
-
-    /*
      * @tc.number    : Acts_Ams_test_11900
      * @tc.name      : clearMissions : delete Missions
      * @tc.desc      : delete Missions(by CallBack)
@@ -281,12 +267,11 @@ describe('ActsAmsCallBackFourthScene', function () {
         let maxnum = 30;
         let result = await missionManager.getMissionInfos("", maxnum);
         for (let i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_11900 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
+            console.info('getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
         }
         missionManager.clearAllMissions(
             (error, info) => {
-                console.info('Acts_Ams_test_11900 clearAllMissions error.code: \
-                ' + error.code + ',data  [' + info + ']');
+                console.info('clearAllMissions error.code: \ ' + error.code + ',data  [' + info + ']');
                 expect(error.code).assertEqual(0);
                 done();
             });

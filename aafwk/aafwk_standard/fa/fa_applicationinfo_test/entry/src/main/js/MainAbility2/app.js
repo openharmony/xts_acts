@@ -13,36 +13,10 @@
  * limitations under the License.
  */
 
-import featureAbility from '@ohos.ability.featureability'
-import commonEvent from '@ohos.commonevent'
 export default {
 
     onCreate() {
         console.info("Application onCreate");
-
-        featureAbility.getWant((err,data) =>{
-            console.log("---data: " +JSON.stringify(data) )
-            console.log("---uri: " + data.uri)
-            if(data.uri != ""){
-                console.log("want.uri" + JSON.stringify(data.uri));
-                commonEvent.publish("uri", {
-                    parameters:{
-                        uri: data.uri
-                    }
-                }, () => {
-                    console.log("MainAbility2 Publish CallBack data.uri")
-                });
-            }else if(data.type != ""){
-                console.log("want.type" + JSON.stringify(data.type));
-                commonEvent.publish("type", {
-                    parameters:{
-                        type: data.type
-                    }
-                }, () => {
-                    console.log("MainAbility2 Publish CallBack data.type")
-                });
-            }
-        })
     },
 
     onDestroy() {

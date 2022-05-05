@@ -216,22 +216,4 @@ describe('ActsAmsCallBackFifthScene', function () {
         );
         setTimeout(timeout, 5000);
     })
-
-    /*
-     * @tc.number    : Acts_Ams_test_8000
-     * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
-     * @tc.desc      : Kill Processes By BundleName(by CallBack)
-     */
-    it('Acts_Ams_test_8000', 0, async function (done) {
-        appManager.killProcessesByBundleName('com.ix.verify.io',
-            (error, info) => {
-                console.info('Acts_Ams_test_8000 killProcessesByBundleName error.code: \
-                ' + error.code + ',data  [' + info + ']');
-                expect(typeof (info)).assertEqual("number");
-                expect(info).assertEqual(0);
-                done();
-            }
-        );
-        setTimeout(timeout, 5000);
-    })
 })

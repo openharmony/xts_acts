@@ -155,21 +155,6 @@ describe('ActsAmsCallBackFirstScene', function () {
     })
 
     /*
-    * @tc.number    : Acts_Ams_test_1600
-    * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
-    * @tc.desc      : Kill Processes By BundleName(by CallBack)
-    */
-    it('Acts_Ams_test_1600', 0, async function (done) {
-        appManager.killProcessesByBundleName('com.ix.simulate.feature',
-            (error, info) => {
-                console.info('Acts_Ams_test_1600 killProcessesByBundleName error.code: \
-                    ' + error.code + ',data  [' + info + ']');
-                expect(error.code).assertEqual(0);
-                done();
-            });
-    })
-
-    /*
      * @tc.number    : Acts_Ams_test_1200
      * @tc.name      : moveMissionToFront : Move Mission To Top
      * @tc.desc      : Move Mission To Top(by CallBack)

@@ -63,52 +63,6 @@ describe('ConnectAbilityTest', function () {
     })
 
     /*
-    * @tc.number: SUB_AA_JsApi_StartAbility_0300
-    * @tc.name: testAbility0300.
-    * @tc.desc: StartAbility-want only configure the bundleName and abilityName-abilityName
-    *           values to be wrong values.
-    */
-    it("SUB_AA_JsApi_StartAbility_0300", 0, async function (done) {
-        let parameter = {
-            'want': {
-                'bundleName': bundleName,
-                'abilityName': 'com.example.mytestw.TwoAbility1111'
-            }
-        }
-        await featureAbility.startAbility(parameter).then((data) => {
-            console.log('testAbility0300 data: ' + JSON.stringify(data))
-            expect().assertFail()
-        }).catch((error) => {
-            console.log('testAbility0300 error: ' + JSON.stringify(error))
-            expect(errCode1).assertEqual(error.code)
-        })
-        done()
-    })
-
-    /*
-    * @tc.number: SUB_AA_JsApi_StartAbility_0400
-    * @tc.name: testAbility0400.
-    * @tc.desc: StartAbility-want only configure the bundleName and abilityName-bundleName
-    *           values to be wrong values.
-    */
-    it("SUB_AA_JsApi_StartAbility_0400", 0, async function (done) {
-        let parameter = {
-            'want': {
-                'bundleName': 'com.example.mytestw.TwoAbility1111',
-                'abilityName': mainAbilityName
-            }
-        }
-        await featureAbility.startAbility(parameter).then((data) => {
-            console.log('testAbility0400 data: ' + JSON.stringify(data))
-            expect().assertFail()
-        }).catch((error) => {
-            console.log('testAbility0400 error: ' + JSON.stringify(error))
-            expect(errCode1).assertEqual(error.code)
-        })
-        done()
-    })
-
-    /*
     * @tc.number: SUB_AA_JsApi_StartAbility_0500
     * @tc.name: testAbility0500.
     * @tc.desc: startAbility-want-configuration bundleName and abilityName+deviceId error.

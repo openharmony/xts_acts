@@ -224,21 +224,4 @@ describe('ActsAmsTestFifthScene', function () {
             console.log('Acts_Ams_test_0300 getMissionInfos failed: ' + err);
         });
     })
-
-    /*
-    * @tc.number    : Acts_Ams_test_1500
-    * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
-    * @tc.desc      : Kill Processes By BundleName(by Promise)
-    */
-    it('Acts_Ams_test_1500', 0, async function (done) {
-        console.info('Acts_test_1500 killProcessesByBundleName data');
-        appManager.killProcessesByBundleName('com.ix.simulate.feature').then(data => {
-            console.log('Acts_test_1500 success: ' + data);
-            done();
-        }).catch(err => {
-            console.log('Acts_test_1500 failed: ' + err.code);
-            expect(err.code).assertEqual(2097182);
-            done();
-        });
-    })
 })

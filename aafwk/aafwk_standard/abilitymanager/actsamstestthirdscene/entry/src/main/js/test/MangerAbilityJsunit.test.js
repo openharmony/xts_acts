@@ -195,20 +195,4 @@ describe('ActsAmsTestThirdScene', function () {
         console.info('Acts_Ams_test_4300 moveMissionToFront data  [' + info + ']');
         done();
     })
-
-    /*
-     * @tc.number    : Acts_Ams_test_4700
-     * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
-     * @tc.desc      : Kill Processes By BundleName(by Promise)
-     */
-    it('Acts_Ams_test_4700', 0, async function (done) {
-        console.info('Acts_test_4700 killProcessesByBundleName data');
-        appManager.killProcessesByBundleName('XXXXXXXX').then(data => {
-            console.log('Acts_test_4700 success: ' + data);
-        }).catch(err => {
-            console.log('Acts_test_4700 failed: ' + err.code);
-            expect(err.code).assertEqual(2097183);
-            done();
-        });
-    })
 })
