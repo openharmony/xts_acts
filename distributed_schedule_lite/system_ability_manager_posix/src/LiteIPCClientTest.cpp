@@ -22,7 +22,6 @@
 
 using namespace testing::ext;
 
-static const int MAX_IO_SIZE = 8192;
 static const int NORMAL_IO_SIZE = 250;
 
 static IClientProxy *GetRemoteIUnknown(const char *serviceName, const char *featureName)
@@ -48,7 +47,7 @@ static int CurrentCallback(IOwner owner, int code, IpcIo *reply)
 {
     printf("[hcpptest]CurrentCallback run \n");
     size_t len = 0;
-    char *response = (char *)IpcIoPopString(reply, &len);
+    char *response = (char *)ReadString(reply, &len);
     printf("[hcpptest]response %s \n", response);
     return 0;
 }
@@ -130,7 +129,7 @@ HWTEST_F(LiteIPCClientTest, testIPCClient0040, Function | MediumTest | Level1)
     char data[NORMAL_IO_SIZE];
     IpcIoInit(&request, data, sizeof(data), 0);
     char *buff = (char*)"test xxxx";
-    IpcIoPushString(&request, buff);
+    WriteString(&request, buff);
 
     char data2[NORMAL_IO_SIZE];
     int funcId = 0;
@@ -154,7 +153,7 @@ HWTEST_F(LiteIPCClientTest, testIPCClient0050, Function | MediumTest | Level2)
     int funcId = 0;
     int result = remoteApi->Invoke(remoteApi, funcId, nullptr, data2, CurrentCallback);
     printf("[hcpptest]result is: %d \n", result);
-    ASSERT_EQ(result, EC_SUCCESS);
+    ASSERT_EQ(result, EC_INVALID);
 
     ReleaseIUnknown((IUnknown *)remoteApi);
 };
@@ -173,7 +172,7 @@ HWTEST_F(LiteIPCClientTest, testIPCClient0060, Function | MediumTest | Level2)
     char data[NORMAL_IO_SIZE];
     IpcIoInit(&request, data, sizeof(data), 0);
     char *buff = (char*)"test xxxx";
-    IpcIoPushString(&request, buff);
+    WriteString(&request, buff);
 
     int funcId = 0;
     int result = remoteApi->Invoke(remoteApi, funcId, &request, nullptr, nullptr);
@@ -197,13 +196,13 @@ HWTEST_F(LiteIPCClientTest, testIPCClient0070, Function | MediumTest | Level2)
     char data[MAX_IO_SIZE + 1];
     IpcIoInit(&request, data, sizeof(data), 0);
     char *buff = (char*)"test xxxx";
-    IpcIoPushString(&request, buff);
+    WriteString(&request, buff);
 
     char data2[NORMAL_IO_SIZE];
     int funcId = 0;
     int result = remoteApi->Invoke(remoteApi, funcId, &request, data2, CurrentCallback);
     printf("[hcpptest]result is: %d \n", result);
-    ASSERT_EQ(result, EC_FAILURE);
+    ASSERT_EQ(result, EC_INVALID);
 
     ReleaseIUnknown((IUnknown *)remoteApi);
 };

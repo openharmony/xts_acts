@@ -36,7 +36,7 @@ hcpptest_suite("ActsBundleMgrTest") {
   deps = [
     "${appexecfwk_lite_path}/frameworks/bundle_lite:bundle",
     "//base/hiviewdfx/hilog_lite/frameworks/featured:hilog_shared",
-    "//foundation/communication/ipc_lite:liteipc_adapter",
+    "//foundation/communication/ipc/interfaces/innerkits/c/ipc:ipc_single",
     "//foundation/distributedschedule/samgr_lite/samgr:samgr",
   ]
 

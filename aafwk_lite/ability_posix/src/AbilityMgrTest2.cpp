@@ -89,13 +89,13 @@ static void OnAbilityConnectDone(ElementName *elementName, SvcIdentity *serviceS
     IpcIoInit(&request, data, IPC_IO_DATA_MAX, 0);
     int32_t data1 = 10;
     int32_t data2 = 6;
-    IpcIoPushInt32(&request, data1);
-    IpcIoPushInt32(&request, data2);
+    WreitInt32(&request, data1);
+    WriteInt32(&request, data2);
     // send and getReply
     IpcIo reply = {nullptr};
     uintptr_t ptr = 0;
     Transact(NULL, *serviceSid, 0, &request, &reply, LITEIPC_FLAG_DEFAULT, &ptr);
-    g_errorCode = IpcIoPopInt32(&reply);
+    ReadInt32(&reply, &g_errorCode);
     if (g_errorCode != 0) {
         printf("execute add method, result is %d\n", g_errorCode);
     }

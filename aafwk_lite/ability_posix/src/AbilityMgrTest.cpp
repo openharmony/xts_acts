@@ -85,22 +85,24 @@ static void OnAbilityConnectDone(ElementName *elementName, SvcIdentity *serviceS
     printf("ipc callback success \n");
     // push data
     IpcIo request;
-    char data[IPC_IO_DATA_MAX];
-    IpcIoInit(&request, data, IPC_IO_DATA_MAX, 0);
+    char data[MAX_IO_SIZE];
+    IpcIoInit(&request, data, MAX_IO_SIZE, 0);
     int32_t data1 = 10;
     int32_t data2 = 6;
-    IpcIoPushInt32(&request, data1);
-    IpcIoPushInt32(&request, data2);
+    WriteInt32(&request, data1);
+    WriteInt32(&request, data2);
     // send and getReply
     IpcIo reply = {nullptr};
     uintptr_t ptr = 0;
-    Transact(NULL, *serviceSid, 0, &request, &reply, LITEIPC_FLAG_DEFAULT, &ptr);
-    g_errorCode = IpcIoPopInt32(&reply);
+    MessageOption option;
+    MessageOptionInit(&option);
+    SendRequest(*serviceSid, 0, &request, &reply, option, &ptr);
+    ReadInt32(&reply, &g_errorCode);
     if (g_errorCode != 0) {
         printf("execute add method, result is %d\n", g_errorCode);
     }
     if (ptr != 0) {
-        FreeBuffer(nullptr, reinterpret_cast<void *>(ptr));
+        FreeBuffer(reinterpret_cast<void *>(ptr));
     }
     sem_post(&g_sem);
 }
@@ -709,10 +711,10 @@ HWTEST_F(AbilityMgrTest, testDisConnectAbilityIllegal, Function | MediumTest | L
     ts.tv_sec += WAIT_TIMEOUT;
     sem_timedwait(&g_sem, &ts);
     printf("sem exit \n");
-    printf("ret is of connect is %d \n ", g_errorCode);
+    printf("ret of connect is %d \n ", result);
     EXPECT_EQ(result, 0);
     g_errorCode = DisconnectAbility(nullptr);
-    int expect = -10;
+    int expect = -2;
     EXPECT_EQ(g_errorCode, expect);
     printf("ret of disconnect is %d \n ", g_errorCode);
     ClearElement(&element);
