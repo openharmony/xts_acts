@@ -21,6 +21,7 @@ let srcData63 = Data.Data63b;
 let srcData63Kb = stringToUint8Array(srcData63);
 let srcData65 = Data.Data65b;
 let srcData65Kb = stringToUint8Array(srcData65);
+let finishOutData;
 describe('SecurityHuksSignVerifyED25519CallbackJsunit', function () {
   it('testSignVerifyED25519001', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyED25519Size256SIGNKeyAlias001';
@@ -33,12 +34,13 @@ describe('SecurityHuksSignVerifyED25519CallbackJsunit', function () {
       ),
       inData: srcData63Kb,
     };
-    await publicSignVerifyFunc(
+    finishOutData = await publicSignVerifyFunc(
       srcKeyAlies,
       srcKeyAlies + 'New',
       HuksOptions,
       'finish',
-      true
+      true,
+      srcData63Kb
     );
 
     HuksOptions = {
@@ -48,14 +50,15 @@ describe('SecurityHuksSignVerifyED25519CallbackJsunit', function () {
         HuksSignVerifyED25519.HuksKeyED25519Size256,
         HuksSignVerifyED25519.HuksTagDigestSHA1
       ),
-      inData: srcData63Kb,
+      inData: finishOutData,
     };
     await publicSignVerifyFunc(
       srcKeyAlies,
       srcKeyAlies + 'New',
       HuksOptions,
       'finish',
-      false
+      false,
+      srcData63Kb
     );
     done();
   });
@@ -76,7 +79,8 @@ describe('SecurityHuksSignVerifyED25519CallbackJsunit', function () {
       srcKeyAlies + 'New',
       HuksOptions,
       'abort',
-      true
+      true,
+      srcData63Kb
     );
     done();
   });
@@ -92,12 +96,13 @@ describe('SecurityHuksSignVerifyED25519CallbackJsunit', function () {
       ),
       inData: srcData65Kb,
     };
-    await publicSignVerifyFunc(
+    finishOutData = await publicSignVerifyFunc(
       srcKeyAlies,
       srcKeyAlies + 'New',
       HuksOptions,
       'finish',
-      true
+      true,
+      srcData65Kb
     );
     HuksOptions = {
       properties: new Array(
@@ -106,14 +111,15 @@ describe('SecurityHuksSignVerifyED25519CallbackJsunit', function () {
         HuksSignVerifyED25519.HuksKeyED25519Size256,
         HuksSignVerifyED25519.HuksTagDigestSHA1
       ),
-      inData: srcData65Kb,
+      inData: finishOutData,
     };
     await publicSignVerifyFunc(
       srcKeyAlies,
       srcKeyAlies + 'New',
       HuksOptions,
       'finish',
-      false
+      false,
+      srcData65Kb
     );
     done();
   });
@@ -134,7 +140,8 @@ describe('SecurityHuksSignVerifyED25519CallbackJsunit', function () {
       srcKeyAlies + 'New',
       HuksOptions,
       'abort',
-      true
+      true,
+      srcData63Kb
     );
     done();
   });

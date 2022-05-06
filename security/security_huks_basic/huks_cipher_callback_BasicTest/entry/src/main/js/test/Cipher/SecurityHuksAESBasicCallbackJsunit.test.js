@@ -96,7 +96,6 @@ async function publicUpdateFunc(HuksOptions, thirdInderfaceName, isEncrypt) {
   let inDataArray = HuksOptions.inData;
   if (Array.from(inDataArray).length < dateSize) {
     await update(handle, HuksOptions);
-    //        HuksOptions.inData = new Uint8Array(new Array());
     await publicFinishAbortFunc(HuksOptions, thirdInderfaceName, isEncrypt, 0);
   } else {
     let count = Math.floor(Array.from(inDataArray).length / dateSize);
@@ -116,12 +115,7 @@ async function publicUpdateFunc(HuksOptions, thirdInderfaceName, isEncrypt) {
         )
       );
     }
-    await publicFinishAbortFunc(
-      HuksOptions,
-      thirdInderfaceName,
-      isEncrypt,
-      remainder
-    );
+    await publicFinishAbortFunc(HuksOptions, thirdInderfaceName, isEncrypt);
   }
 }
 
@@ -158,8 +152,7 @@ function updateCallback(handle, HuksOptions) {
 async function publicFinishAbortFunc(
   HuksOptions,
   thirdInderfaceName,
-  isEncrypt,
-  remainder
+  isEncrypt
 ) {
   if (thirdInderfaceName == 'finish') {
     await finish(HuksOptions, isEncrypt);
