@@ -18,6 +18,7 @@ group("graphic") {
     deps = [
       "webGL:webGL_hap_test",
       "windowstandard:window_hap_test",
+      "windowStage:window_stage_hap_test",
     ]
   } else {
     deps = [
