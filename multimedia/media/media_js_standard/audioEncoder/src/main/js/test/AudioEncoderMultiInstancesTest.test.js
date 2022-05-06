@@ -17,7 +17,7 @@ import media from '@ohos.multimedia.media'
 import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-describe('AudioEncoderFuncPromise', function () {
+describe('AudioEncoderMultiInstances', function () {
     const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/'
     const AUDIOPATH = RESOURCEPATH + 'S16LE.pcm';
     let readStreamSync;
@@ -246,7 +246,6 @@ describe('AudioEncoderFuncPromise', function () {
                 }
             }
             else{
-                writeHead(savepath, outputobject.length);
                 writeFile(savepath, outputobject.data, outputobject.length);
                 console.info("write to file success");
             }

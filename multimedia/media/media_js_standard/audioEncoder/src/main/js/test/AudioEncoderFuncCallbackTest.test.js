@@ -350,7 +350,6 @@ describe('AudioEncoderFuncCallback', function () {
                 }
             }
             else{
-                writeHead(savepath, outputobject.length);
                 writeFile(savepath, outputobject.data, outputobject.length);
                 console.info("write to file success");
             }
