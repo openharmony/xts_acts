@@ -1,9 +1,9 @@
 {
-    "description": "Configuration for powermgr battery Tests",
+    "description": "Configuration for powermgr power Tests",
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "60000",
-        "package": "com.example.mybatteryapp",
+        "package": "com.example.mypowerapp",
         "shell-timeout": "60000"
     },
     "kits": [
@@ -15,7 +15,7 @@
         },
         {
             "test-file-name": [
-                "ActsPowerMgrBatteryTest.hap"
+                "ActsPowerMgrPowerTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

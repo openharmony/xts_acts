@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.example.mybatteryapp",
+    "bundleName": "com.example.mypowerapp",
     "vendor": "example",
     "version": {
       "code": 1,
@@ -13,7 +13,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.mybatteryapp",
+    "package": "com.example.mypowerapp",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -36,7 +36,7 @@
             ]
           }
         ],
-        "name": "com.example.mybatteryapp.MainAbility",
+        "name": "com.example.mypowerapp.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
