@@ -131,6 +131,5 @@ generate_notice_file("acts_notice_file") {
     "//third_party/googletest",
     "//third_party/unity",
     "//third_party/bounds_checking_function",
-    "//third_party/iniparser",
   ]
 }
