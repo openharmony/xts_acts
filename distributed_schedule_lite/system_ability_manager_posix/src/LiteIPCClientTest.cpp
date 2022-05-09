@@ -153,7 +153,7 @@ HWTEST_F(LiteIPCClientTest, testIPCClient0050, Function | MediumTest | Level2)
     int funcId = 0;
     int result = remoteApi->Invoke(remoteApi, funcId, nullptr, data2, CurrentCallback);
     printf("[hcpptest]result is: %d \n", result);
-    ASSERT_EQ(result, EC_INVALID);
+    ASSERT_EQ(result, EC_SUCCESS);
 
     ReleaseIUnknown((IUnknown *)remoteApi);
 };

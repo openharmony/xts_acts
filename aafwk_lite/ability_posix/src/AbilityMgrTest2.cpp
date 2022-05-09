@@ -94,7 +94,7 @@ static void OnAbilityConnectDone(ElementName *elementName, SvcIdentity *serviceS
     // send and getReply
     IpcIo reply = {nullptr};
     uintptr_t ptr = 0;
-    Transact(NULL, *serviceSid, 0, &request, &reply, LITEIPC_FLAG_DEFAULT, &ptr);
+    SendRequest(*serviceSid, 0, &request, &reply, LITEIPC_FLAG_DEFAULT, &ptr);
     ReadInt32(&reply, &g_errorCode);
     if (g_errorCode != 0) {
         printf("execute add method, result is %d\n", g_errorCode);
