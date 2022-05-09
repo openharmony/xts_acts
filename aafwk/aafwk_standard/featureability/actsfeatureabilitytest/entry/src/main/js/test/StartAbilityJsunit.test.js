@@ -63,29 +63,6 @@ describe('ConnectAbilityTest', function () {
     })
 
     /*
-    * @tc.number: SUB_AA_JsApi_StartAbility_0500
-    * @tc.name: testAbility0500.
-    * @tc.desc: startAbility-want-configuration bundleName and abilityName+deviceId error.
-    */
-    it("SUB_AA_JsApi_StartAbility_0500", 0, async function (done) {
-        let parameter = {
-            'want': {
-                'deviceId': '123123',
-                'bundleName': bundleName,
-                'abilityName': mainAbilityName
-            }
-        }
-        await featureAbility.startAbility(parameter).then((data) => {
-            console.log('testAbility0500 data: ' + JSON.stringify(data))
-            expect().assertFail()
-        }).catch((error) => {
-            console.log('testAbility0500 error: ' + JSON.stringify(error))
-            expect(errCode2).assertEqual(error.code)
-        })
-        done()
-    })
-
-    /*
     * @tc.number: SUB_AA_JsApi_Ability_0400
     * @tc.name: testAbility0400.
     * @tc.desc: StartAbility-want only configure action (implicit start) - Ability
