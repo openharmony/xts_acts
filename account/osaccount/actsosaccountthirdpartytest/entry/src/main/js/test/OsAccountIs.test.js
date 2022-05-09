@@ -30,7 +30,7 @@ describe('ActsOsAccountThirdPartyTest', function () {
         console.debug("====>ActsOsAccountDeviceId_0100 start====");
         var AccountManager = osAccount.getAccountManager();
         console.debug("====>get os AccountManager finish====");
-        const deviceId = '169C610CEF7F8310D78763C7DD8D28F0668D9FB8B1A3659CEF8F6BC3D9B39E17';
+        const deviceId = '5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5';
         const accountAbility = distributedAccount.getDistributedAccountAbility();
         accountAbility.updateOsAccountDistributedInfo(
         {
@@ -59,7 +59,7 @@ describe('ActsOsAccountThirdPartyTest', function () {
         console.debug("====>ActsOsAccountDeviceId_0200 start====");
         var AccountManager = osAccount.getAccountManager();
         console.debug("====>get os AccountManager finish====");
-        const deviceId = '169C610CEF7F8310D78763C7DD8D28F0668D9FB8B1A3659CEF8F6BC3D9B39E17';
+        const deviceId = '5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5';
         const accountAbility = distributedAccount.getDistributedAccountAbility();
         accountAbility.updateOsAccountDistributedInfo(
         {
