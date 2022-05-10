@@ -27,8 +27,8 @@ hcpptest_suite("ActsAbilityMgrTest") {
     "${appexecfwk_lite_path}/frameworks/bundle_lite:bundle",
     "//base/hiviewdfx/hilog_lite/frameworks/featured:hilog_shared",
     "//foundation/communication/ipc_lite:liteipc_adapter",
+    "//foundation/distributeddatamgr/appdatamgr/frameworks/native/kv_store:kv_store",
     "//foundation/distributedschedule/samgr_lite/samgr:samgr",
-    "//utils/native/lite/kv_store:kv_store",
   ]
   if (enable_ohos_appexecfwk_feature_ability == true) {
     deps += [

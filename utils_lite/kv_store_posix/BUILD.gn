@@ -19,11 +19,11 @@ hcpptest_suite("ActsKvStoreTest") {
 
   include_dirs = [
     "src",
-    "//utils/native/lite/include",
-    "//utils/native/lite/kv_store/innerkits",
+    "//foundation/distributeddatamgr/appdatamgr/frameworks/native/kv_store/innerkits",
     "//third_party/bounds_checking_function/include",
+    "//utils/native/lite/include",
   ]
-  deps = [ "//utils/native/lite/kv_store:kv_store" ]
+  deps = [ "//foundation/distributeddatamgr/appdatamgr/frameworks/native/kv_store:kv_store" ]
   cflags = [ "-Wno-error" ]
   ldflags = [
     "-lstdc++",
