@@ -14,3 +14,4 @@
  */
 require('./power_manager_running_lock.test.js')
 require('./power_manager_power.test.js')
+require('./power_performance_test.js')

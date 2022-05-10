@@ -38,7 +38,7 @@ export async function clearRouter() {
     await router.clear();
 }
 
-export async function playVideoSource(url, width, height, duration, playTime) {
+export async function playVideoSource(url, width, height, duration, playTime, done) {
     console.info(`case media source url: ${url}`)
     let videoPlayer = null;
     let surfaceID = globalThis.value;
@@ -49,6 +49,7 @@ export async function playVideoSource(url, width, height, duration, playTime) {
         } else {
             console.error('case createVideoPlayer failed');
             expect().assertFail();
+            done();
         }
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 
@@ -59,13 +60,14 @@ export async function playVideoSource(url, width, height, duration, playTime) {
     videoPlayer.on('error', (err) => {
         console.error(`case error called, errMessage is ${err.message}`);
         expect().assertFail();
+        videoPlayer.release();
+        done();
     });
     videoPlayer.url = url;
-    if (width != null & height != null) {
-        await videoPlayer.setDisplaySurface(surfaceID).then(() => {
-            console.info('case setDisplaySurface success, surfaceID: ' + surfaceID);
-        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-    }
+    await videoPlayer.setDisplaySurface(surfaceID).then(() => {
+        console.info('case setDisplaySurface success, surfaceID: ' + surfaceID);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    
 
     await videoPlayer.prepare().then(() => {
         console.info('case prepare called');

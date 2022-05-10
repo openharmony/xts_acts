@@ -160,7 +160,7 @@ export default function ContextJsunit() {
       }
       var data1 = await context.getOrCreateDistributedDir();
       expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/distributedfiles/entry");
+      expect(data1).assertEqual("/data/storage/el2/distributedfiles");
       done();
       console.log("------------------end context_getOrCreateDistributedDir_0100-------------------");
     });
@@ -187,7 +187,7 @@ export default function ContextJsunit() {
       }
       var data1 = await context.getOrCreateDistributedDir();
       expect(typeof (data1)).assertEqual("string");
-      expect(data1).assertEqual("/data/storage/el2/distributedfiles/entry");
+      expect(data1).assertEqual("/data/storage/el2/distributedfiles");
       done();
       console.log("------------------end context_getOrCreateDistributedDir_0200-------------------");
     });

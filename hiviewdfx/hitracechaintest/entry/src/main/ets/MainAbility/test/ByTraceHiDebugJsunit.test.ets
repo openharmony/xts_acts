@@ -115,7 +115,7 @@ export default function byTraceHiDebugJsunit() {
     it('DFX_HiLog_LogLevel_WARN_0100', 0, async function (done) {
       console.log("************* DFX_HiLog_LogLevel_WARN_0100 Test start*************");
       try {
-        expect(5).assertEqual(hiLog.WARN);
+        expect(5).assertEqual(hiLog.LogLevel.WARN);
       } catch (error) {
         expect().assertFail();
       }
@@ -131,7 +131,7 @@ export default function byTraceHiDebugJsunit() {
     it('DFX_HiLog_LogLevel_ERROR_0100', 0, async function (done) {
       console.log("************* DFX_HiLog_LogLevel_ERROR_0100 Test start*************");
       try {
-        expect(6).assertEqual(hiLog.ERROR);
+        expect(6).assertEqual(hiLog.LogLevel.ERROR);
       } catch (error) {
         expect().assertFail();
       }
@@ -147,7 +147,7 @@ export default function byTraceHiDebugJsunit() {
     it('DFX_HiLog_LogLevel_FATAL_0100', 0, async function (done) {
       console.log("************* DFX_HiLog_LogLevel_FATAL_0100 Test start*************");
       try {
-        expect(7).assertEqual(hiLog.FATAL);
+        expect(7).assertEqual(hiLog.LogLevel.FATAL);
       } catch (error) {
         expect().assertFail();
       }

@@ -37,7 +37,8 @@ describe('SecurityHuksSignVerifyDSACallbackJsunit', function () {
       NewSrcKeyAlies,
       HuksOptions,
       'abort',
-      true
+      true,
+      srcData65Kb
     );
     done();
   });

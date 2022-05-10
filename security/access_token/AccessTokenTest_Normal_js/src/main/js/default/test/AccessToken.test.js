@@ -185,7 +185,7 @@ describe('AccessTokenTest', function () {
         console.log("Test_grantUserGrantedPermission_003 start");
         var atManager = abilityAccessCtrl.createAtManager();
         atManager.grantUserGrantedPermission(tokenID, permissionNameUser, PermissionFlag.PERMISSION_USER_SET,
-            function (result) {
+            function (err, result) {
                 console.log("Test_grantUserGrantedPermission_003 tokenID" + tokenID + "-" + result)
                 expect(result).assertEqual(RESULT_SUCCESS);
 
@@ -292,7 +292,7 @@ describe('AccessTokenTest', function () {
         console.log("Test_revokeUserGrantedPermission_003 start");
         var atManager = abilityAccessCtrl.createAtManager();
         atManager.revokeUserGrantedPermission(tokenID, permissionNameUser, PermissionFlag.PERMISSION_USER_SET,
-            function (result) {
+            function (err, result) {
                 console.log("Test_revokeUserGrantedPermission_003 tokenID" + tokenID + "-" + result)
                 expect(result).assertEqual(RESULT_SUCCESS);
 

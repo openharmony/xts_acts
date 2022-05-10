@@ -63,7 +63,6 @@
       {
         "srcPath": "ServiceAbility",
         "name": ".ServiceAbility",
-        "icon": "$media:icon",
         "srcLanguage": "ets",
         "description": "$string:description_serviceability",
         "type": "service"
