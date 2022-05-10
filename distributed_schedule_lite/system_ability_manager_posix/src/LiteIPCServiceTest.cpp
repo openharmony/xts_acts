@@ -79,7 +79,7 @@ static int32 Invoke(IServerProxy *iProxy, int funcId, void *origin, IpcIo *req, 
            pthread_self(), iProxy, funcId, origin, req, reply);
 
     size_t len = 0;
-    char *requestStr = (char *)IpcIoPopString(req, &len);
+    char *requestStr = (char *)ReadString(req, &len);
     if (requestStr != nullptr) {
         printf("[hcpptest]requestStr is %s", requestStr);
     } else {
@@ -91,7 +91,7 @@ static int32 Invoke(IServerProxy *iProxy, int funcId, void *origin, IpcIo *req, 
         defaultApi->SyncCall((IUnknown *)iProxy);
     }
 
-    IpcIoPushString(reply, "Yes, you did!");
+    WriteString(reply, "Yes, you did!");
     return EC_SUCCESS;
 }
 static DemoService g_service = {

@@ -130,7 +130,7 @@ static int32 Invoke(IServerProxy *iProxy, int funcId, void *origin, IpcIo *req, 
 {
     printf("[hcpptest][TID:0x%lx]Feature Remote Invoke is called! <%p, %d, %p, %p, %p>",
            pthread_self(), iProxy, funcId, origin, req, reply);
-    IpcIoPushBool(reply, TRUE);
+    WriteBool(reply, TRUE);
     return EC_SUCCESS;
 }
 

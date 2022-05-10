@@ -47,8 +47,7 @@ hcpptest_suite("ActsSamgrTest") {
       "src/FeatureApiTest.cpp",
       "src/FeatureTest.cpp",
       "src/IUnknownTest.cpp",
-
-      #   "src/LiteIPCClientTest.cpp",
+      "src/LiteIPCClientTest.cpp",
       "src/LiteIPCFeatureTest.cpp",
       "src/LiteIPCServiceTest.cpp",
       "src/SendRequestTest.cpp",
@@ -76,7 +75,7 @@ hcpptest_suite("ActsSamgrTest") {
   ]
   deps = [
     "//base/hiviewdfx/hilog_lite/frameworks/featured:hilog_shared",
-    "//foundation/communication/ipc_lite:liteipc_adapter",
+    "//foundation/communication/ipc/interfaces/innerkits/c/ipc:ipc_single",
     "//foundation/distributedschedule/samgr_lite/communication/broadcast:broadcast",
     "//foundation/distributedschedule/samgr_lite/samgr:samgr",
     "//third_party/bounds_checking_function:libsec_shared",
