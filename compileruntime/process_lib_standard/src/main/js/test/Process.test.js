@@ -17,72 +17,6 @@ import process from '@ohos.process'
 describe('ChildProcessTest', function () {
 
     /**
-     * @tc.name: testKill001
-     * @tc.desc: return boolean is whether the current process signal is sent successfully.
-     * @tc.require: AR000GFB2S
-     * @tc.author: wangben
-     */
-    it('testKill001', 0, function () {
-        let child =  process.runCmd('ls; sleep 5s;')
-        let result = child.kill(13)
-        let temp = child.killed
-        expect(temp).assertEqual(true)
-    })
-
-    /**
-     * @tc.name: testKill002
-     * @tc.desc: return boolean is whether the current process signal is sent successfully.
-     * @tc.require: AR000GFB2S
-     * @tc.author: wangben
-     */
-    it('testKill002', 0, function () {
-        let child =  process.runCmd('ls; sleep 5s;')
-        let result = child.kill(1)
-        let temp = child.killed
-        expect(temp).assertEqual(true)
-    })
-
-    /**
-     * @tc.name: testKill003
-     * @tc.desc: return boolean is whether the current process signal is sent successfully.
-     * @tc.require: AR000GFB2S
-     * @tc.author: wangben
-     */
-    it('testKill003', 0, function () {
-        let child =  process.runCmd('ls; sleep 5s;')
-        let result = child.kill('SIGHUP')
-        let temp = child.killed
-        expect(temp).assertEqual(true)
-    })
-
-    /**
-     * @tc.name: testKill004
-     * @tc.desc: return boolean is whether the current process signal is sent successfully.
-     * @tc.require: AR000GFB2S
-     * @tc.author: wangben
-     */
-    it('testKill004', 0, function () {
-        let child =  process.runCmd('ls; sleep 5s;')
-        let result = child.kill('ABC')
-        let temp = child.killed
-        expect(temp).assertEqual(true)
-    })
-
-    /**
-     * @tc.name: testKill005
-     * @tc.desc: return boolean is whether the current process signal is sent successfully.
-     * @tc.require: AR000GFB2S
-     * @tc.author: wangben
-     */
-    it('testKill005', 0, function () {
-        let child =  process.runCmd('ls')
-        child.wait()
-        let result = child.kill(9)
-        let temp = child.killed
-        expect(temp).assertEqual(false)
-    })
-
-    /**
      * @tc.name: testGetUid001
      * @tc.desc: returns the digital user id of the process.
      * @tc.require: AR000GFB2S
@@ -123,7 +57,7 @@ describe('ChildProcessTest', function () {
     it('testGetUid003', 0, function () {
         for(let i = 0; i < 6; i++){
             let result = process.uid
-            if(result != null) {
+            if (result != null) {
                 if(result > 0) {
                     var flag = true
                 }
@@ -139,10 +73,10 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetUid004', 0, function () {
-        for(let i = 0; i < 8; i++){
+        for (let i = 0; i < 8; i++){
             let result = process.uid
-            if(result != null) {
-                if(result > 0) {
+            if (result != null) {
+                if (result > 0) {
                     var flag = true
                 }
                 expect(flag).assertEqual(true)
@@ -157,15 +91,73 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testGetUid005', 0, function () {
-        for(let i = 0; i < 5; i++){
+        for (let i = 0; i < 5; i++){
             let result = process.uid
-            if(result != null) {
-                if(result > 0) {
+            if (result != null) {
+                if (result > 0) {
                     var flag = true
                 }
                 expect(flag).assertEqual(true)
             }
         }
+    })
+
+    /**
+     * @tc.name: testKill001
+     * @tc.desc: Return whether the signal was sent successfully.
+     * @tc.require: AR000GFB2S
+     * @tc.author: wangben
+     */
+    it('testKill001', 0, function () {
+        let result = process.kill(3, 123)
+        expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testKill002
+     * @tc.desc: Return whether the signal was sent successfully.
+     * @tc.require: AR000GFB2S
+     * @tc.author: wangben
+     */
+    it('testKill002', 0, function () {
+        let pres = process.pid
+        let result = process.kill(23, pres)
+        expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testKill003
+     * @tc.desc: Return whether the signal was sent successfully.
+     * @tc.require: AR000GFB2S
+     * @tc.author: wangben
+     */
+    it('testKill003', 0, function () {
+        let pres = process.pid
+        let result = process.kill(28, pres)
+        expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testKill004
+     * @tc.desc: Return whether the signal was sent successfully.
+     * @tc.require: AR000GFB2S
+     * @tc.author: wangben
+     */
+    it('testKill004', 0, function () {
+        let pres = process.pid
+        let result = process.kill(17, pres)
+        expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testKill005
+     * @tc.desc: Return whether the signal was sent successfully.
+     * @tc.require: AR000GFB2S
+     * @tc.author: wangben
+     */
+    it('testKill005', 0, function () {
+        let result = process.kill(3, 113)
+        expect(result).assertEqual(false)
     })
 
     /**
@@ -182,8 +174,7 @@ describe('ChildProcessTest', function () {
         sleep(6);
         let result2 = process.uptime()
         var flag = false
-        if ((result2 - result1) >= 6)
-        {
+        if ((result2 - result1) >= 6) {
             flag = true
         }
         expect(flag).assertEqual(true)
@@ -198,13 +189,12 @@ describe('ChildProcessTest', function () {
     it('testUptime002', 0, function () {
         let result1 = process.uptime()
         function sleep(d){
-            while(process.uptime() - result1 <= d);
+            while (process.uptime() - result1 <= d);
         }
         sleep(8);
         let result2 = process.uptime()
         var flag = false
-        if ((result2 - result1) >= 8)
-        {
+        if ((result2 - result1) >= 8) {
             flag = true
         }
         expect(flag).assertEqual(true)
@@ -219,13 +209,12 @@ describe('ChildProcessTest', function () {
     it('testUptime003', 0, function () {
         let result1 = process.uptime()
         function sleep(d){
-            while(process.uptime() - result1 <= d);
+            while (process.uptime() - result1 <= d);
         }
         sleep(10);
         let result2 = process.uptime()
         var flag = false
-        if ((result2 - result1) >= 10)
-        {
+        if ((result2 - result1) >= 10) {
             flag = true
         }
         expect(flag).assertEqual(true)
@@ -240,13 +229,12 @@ describe('ChildProcessTest', function () {
     it('testUptime004', 0, function () {
         let result1 = process.uptime()
         function sleep(d){
-            while(process.uptime() - result1 <= d);
+            while (process.uptime() - result1 <= d);
         }
         sleep(7);
         let result2 = process.uptime()
         var flag = false
-        if ((result2 - result1) >= 7)
-        {
+        if ((result2 - result1) >= 7) {
             flag = true
         }
         expect(flag).assertEqual(true)
@@ -261,13 +249,12 @@ describe('ChildProcessTest', function () {
     it('testUptime005', 0, function () {
         let result1 = process.uptime()
         function sleep(d){
-            while(process.uptime() - result1 <= d);
+            while (process.uptime() - result1 <= d);
         }
         sleep(11);
         let result2 = process.uptime()
         var flag = false
-        if ((result2 - result1) >= 11)
-        {
+        if ((result2 - result1) >= 11) {
             flag = true
         }
         expect(flag).assertEqual(true)
@@ -281,7 +268,7 @@ describe('ChildProcessTest', function () {
      */
     it('testPid001', 0, function () {
         let result = process.pid
-        if(result > 0) {
+        if (result > 0) {
             var flag = true
         }
         expect(flag).assertEqual(true)
@@ -294,10 +281,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid002', 0, function () {
-        for(let i = 0; i < 3; i++)
-        {
+        for (let i = 0; i < 3; i++) {
             let result = process.pid
-            if(result > 0) {
+            if (result > 0) {
                 var flag = true
             }
             expect(flag).assertEqual(true)
@@ -311,10 +297,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid003', 0, function () {
-        for(let i = 0; i < 5; i++)
-        {
+        for (let i = 0; i < 5; i++) {
             let result = process.pid
-            if(result > 0) {
+            if (result > 0) {
                 var flag = true
             }
             expect(flag).assertEqual(true)
@@ -328,10 +313,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid004', 0, function () {
-        for(let i = 0; i < 6; i++)
-        {
+        for (let i = 0; i < 6; i++) {
             let result = process.pid
-            if(result > 0) {
+            if (result > 0) {
                 var flag = true
             }
             expect(flag).assertEqual(true)
@@ -345,10 +329,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: wangben
      */
     it('testPid005', 0, function () {
-        for(let i = 0; i < 8; i++)
-        {
+        for (let i = 0; i < 8; i++) {
             let result = process.pid
-            if(result > 0) {
+            if (result > 0) {
                 var flag = true
             }
             expect(flag).assertEqual(true)
@@ -363,8 +346,7 @@ describe('ChildProcessTest', function () {
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-001', 0, function () {
         let pres = process.tid
-        if(pres > 0)
-        {
+        if (pres > 0) {
             var flag = new Boolean(true)
         }
         expect(Boolean(flag)).assertEqual(true)
@@ -377,11 +359,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-002', 0, function () {
-        for(let i=0; i < 5; i++)
-        {
+        for (let i=0; i < 5; i++) {
             let pres = process.tid
-            if(pres > 0)
-            {
+            if (pres > 0) {
                 var flag = new Boolean(true)
             }
             expect(Boolean(flag)).assertEqual(true)
@@ -395,11 +375,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-003', 0, function () {
-        for(let i=0; i < 3; i++)
-        {
+        for (let i=0; i < 3; i++) {
             let pres = process.tid
-            if(pres > 0)
-            {
+            if (pres > 0) {
                 var flag = new Boolean(true)
             }
             expect(Boolean(flag)).assertEqual(true)
@@ -425,9 +403,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-005', 0, function () {
-        for(let i=0; i < 3; i++)
-        {
-            let pres =process.isIsolatedProcess()
+        for (let i=0; i < 3; i++) {
+            let pres = process.isIsolatedProcess()
             expect(pres).assertEqual(true)
         }
     })
@@ -439,9 +416,8 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-006', 0, function () {
-        for(let i=0; i < 5; i++)
-        {
-            let pres =process.isIsolatedProcess()
+        for (let i=0; i < 5; i++) {
+            let pres = process.isIsolatedProcess()
             expect(pres).assertEqual(true)
         }
     })
@@ -510,10 +486,11 @@ describe('ChildProcessTest', function () {
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-009', 0, function () {
         let isorno = process.is64Bit()
-        if(isorno) {
-            expect(isorno).assertEqual(ture)
+        if (isorno) {
+            expect(isorno).assertEqual(true)
+        } else {
+            expect(isorno).assertEqual(false)
         }
-        expect(isorno).assertEqual(false)
     })
 
     /**
@@ -523,13 +500,13 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-010', 0, function () {
-        for(let i=0; i<3; i++)
-        {
+        for (let i=0; i<3; i++) {
             let isorno = process.is64Bit()
-            if(isorno) {
-                expect(isorno).assertEqual(ture)
-            }
+            if (isorno) {
+                expect(isorno).assertEqual(true)
+            } else {
             expect(isorno).assertEqual(false)
+         }
         }
     })
 
@@ -540,13 +517,13 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-011', 0, function () {
-        for(let i=0; i<5; i++)
-        {
+        for (let i=0; i<5; i++) {
             let isorno = process.is64Bit()
-            if(isorno) {
-                expect(isorno).assertEqual(ture)
-            }
+            if (isorno) {
+                expect(isorno).assertEqual(true)
+            } else {
             expect(isorno).assertEqual(false)
+            }
         }
     })
 
@@ -559,8 +536,7 @@ describe('ChildProcessTest', function () {
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-012',0, function () {
         let pres = process.getUidForName("root")
-        if(pres != -1)
-        {
+        if (pres != -1) {
             let flag = new Boolean(true)
             expect(Boolean(flag)).assertEqual(true)
         }
@@ -573,8 +549,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-013', 0, function () {
-        for(let i=0; i<3; i++)
-        {
+        for (let i=0; i<3; i++) {
             let pres = process.getUidForName("12356")
             expect(pres).assertEqual(-1)
         }
@@ -587,8 +562,7 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-014', 0, function () {
-        for(let i=0; i<5; i++)
-        {
+        for (let i=0; i<5; i++) {
             let pres = process.getUidForName("12356")
             expect(pres).assertEqual(-1)
         }
@@ -604,8 +578,7 @@ describe('ChildProcessTest', function () {
     it('SUB_Runtime_JSAPI_SR000GGR3G-015', 0, function () {
         let pres = process.tid
         let pri = process.getThreadPriority(pres)
-        if(pri)
-        {
+        if (pri) {
             let flag = new Boolean(true)
             expect(Boolean(flag)).assertEqual(true)
         }
@@ -619,11 +592,9 @@ describe('ChildProcessTest', function () {
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-016', 0, function () {
         let pres = process.tid
-        for(let i=0; i<3; i++)
-        {
+        for (let i=0; i<3; i++) {
             let pri = process.getThreadPriority(pres)
-            if(pri > 0)
-            {
+            if (pri > 0) {
                 let flag = new Boolean(true)
                 expect(Boolean(flag)).assertEqual(true)
             }
@@ -638,11 +609,9 @@ describe('ChildProcessTest', function () {
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-017', 0, function () {
         let pres = process.tid
-        for(let i=0; i<5; i++)
-        {
+        for (let i=0; i<5; i++) {
             let pri = process.getThreadPriority(pres)
-            if(pri > 0)
-            {
+            if (pri > 0) {
                 let flag = new Boolean(true)
                 expect(Boolean(flag)).assertEqual(true)
             }
@@ -657,11 +626,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-019', 0, function () {
-        for(let i=0; i<3; i++)
-        {
+        for (let i=0; i<3; i++) {
             let pri = process.getStartRealtime()
-            if(pri !== null)
-            {
+            if (pri !== null) {
                 var flag = new Boolean(true)
             }
             expect(Boolean(flag)).assertEqual(true)
@@ -677,8 +644,7 @@ describe('ChildProcessTest', function () {
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-018', 0, function () {
         let pri = process.getStartRealtime()
-        if(pri !== null)
-        {
+        if (pri !== null) {
             var flag = new Boolean(true)
         }
         expect(Boolean(flag)).assertEqual(true)
@@ -692,11 +658,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-020', 0, function () {
-        for(let i=0; i<5; i++)
-        {
+        for (let i=0; i<5; i++) {
             let pri = process.getStartRealtime()
-            if(pri !== null)
-            {
+            if (pri !== null) {
                 var flag = new Boolean(true)
             }
             expect(Boolean(flag)).assertEqual(true)
@@ -711,9 +675,13 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-021', 0, function () {
-            let priOne = process.getStartRealtime()
-            let priTwo = process.getStartRealtime()
-            expect(priOne - priTwo).assertEqual(0)       
+        for (let i=0; i<8; i++) {
+            let pri = process.getStartRealtime()
+            if (pri !== null) {
+                var flag = new Boolean(true)
+            }
+            expect(Boolean(flag)).assertEqual(true)
+        }  
     })
 
     /**
@@ -724,11 +692,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetstartrealtime004', 0, function () {
-        for(let i=0; i<6; i++)
-        {
+        for (let i=0; i<6; i++) {
             let pri = process.getStartRealtime()
-            if(pri !== null)
-            {
+            if (pri !== null) {
                 var flag = new Boolean(true)
             }
             expect(Boolean(flag)).assertEqual(true)
@@ -742,11 +708,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetpastCpuTime001', 0, function () {
-        for(let i=0; i<3; i++)
-        {
+        for (let i=0; i<3; i++) {
             let pri = process.getPastCpuTime()
-            if(pri > 0)
-            {
+            if (pri > 0) {
                 var flag = new Boolean(true)
             }
             expect(Boolean(flag)).assertEqual(true)
@@ -761,8 +725,7 @@ describe('ChildProcessTest', function () {
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-022', 0, function () {
         let pri = process.getPastCpuTime()
-        if(pri > 0)
-        {
+        if (pri > 0) {
             var flag = new Boolean(true)
         }
         expect(Boolean(flag)).assertEqual(true)
@@ -775,11 +738,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-023', 0, function () {
-        for(let i=0; i<5; i++)
-        {
+        for (let i=0; i<5; i++) {
             let pri = process.getPastCpuTime()
-            if(pri > 0)
-            {
+            if (pri > 0) {
                 var flag = new Boolean(true)
             }
             expect(Boolean(flag)).assertEqual(true)
@@ -793,11 +754,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-024', 0, function () {
-        for(let i=0; i<8; i++)
-        {
+        for (let i=0; i<8; i++) {
             let pri = process.getPastCpuTime()
-            if(pri > 0)
-            {
+            if (pri > 0) {
                 var flag = new Boolean(true)
             }
             expect(Boolean(flag)).assertEqual(true)
@@ -813,8 +772,7 @@ describe('ChildProcessTest', function () {
     it('SUB_Runtime_JSAPI_SR000GGR3G-025', 0, function () {
         let _SC_ARG_MAX = 0
         let pri = process.getSystemConfig(_SC_ARG_MAX)
-        if(pri > 0)
-        {
+        if (pri > 0) {
             var flag = new Boolean(true)
         }
         expect(Boolean(flag)).assertEqual(true)
@@ -828,11 +786,9 @@ describe('ChildProcessTest', function () {
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-026', 0, function () {
         let _SC_ARG_MAX = 0
-        for(let i=0; i<3; i++)
-        {
+        for (let i=0; i<3; i++) {
             let pri = process.getSystemConfig(_SC_ARG_MAX)
-            if(pri > 0)
-            {
+            if (pri > 0) {
                 var flag = new Boolean(true)
             }
             expect(Boolean(flag)).assertEqual(true)
@@ -847,11 +803,9 @@ describe('ChildProcessTest', function () {
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-027', 0, function () {
         let _SC_ARG_MAX = 0
-        for(let i=0; i<5; i++)
-        {
+        for (let i=0; i<5; i++) {
             let pri = process.getSystemConfig(_SC_ARG_MAX)
-            if(pri > 0)
-            {
+            if (pri > 0) {
                 var flag = new Boolean(true)
             }
             expect(Boolean(flag)).assertEqual(true)
@@ -867,8 +821,7 @@ describe('ChildProcessTest', function () {
     it('SUB_Runtime_JSAPI_SR000GGR3G-028', 0, function () {
         let _SC_OPEN_MAX = 4
         let pri = process.getSystemConfig(_SC_OPEN_MAX)
-        if(pri > 0)
-        {
+        if (pri > 0) {
             var flag = new Boolean(true)
         }
         expect(Boolean(flag)).assertEqual(true)
@@ -883,8 +836,7 @@ describe('ChildProcessTest', function () {
     it('SUB_Runtime_JSAPI_SR000GGR3G-029', 0, function () {
         let _SC_PAGESIZE = 8
         let pri = process.getSystemConfig(_SC_PAGESIZE)
-        if(pri > 0)
-        {
+        if (pri > 0) {
             var flag = new Boolean(true)
         }
         expect(Boolean(flag)).assertEqual(true)
@@ -898,7 +850,7 @@ describe('ChildProcessTest', function () {
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-033', 0, function () {
         let pri = process.getEnvironmentVar("USER")
-        if(pri != null) {
+        if (pri != null) {
             var flag = new Boolean(true)
             expect(Boolean(flag)).assertEqual(true)
         }
@@ -911,11 +863,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-036', 0, function () {
-        for(let i=0; i<3; i++)
-        {
+        for (let i=0; i<3; i++) {
             let pri = process.getEnvironmentVar("PATH")
-            if(pri != null)
-            {
+            if (pri != null) {
                 var flag = new Boolean(true)
                 expect(Boolean(flag)).assertEqual(true)
             }
@@ -929,11 +879,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('testGetEnvironmentVar003', 0, function () {
-        for(let i=0; i<5; i++)
-        {
+        for (let i=0; i<5; i++) {
             let pri = process.getEnvironmentVar("PATH")
-            if(pri != null)
-            {
+            if (pri != null) {
                 var flag = new Boolean(true)
                 expect(Boolean(flag)).assertEqual(true)
             }
@@ -947,11 +895,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-034', 0, function () {
-        for(let i=0; i<6; i++)
-        {
+        for (let i=0; i<6; i++) {
             let pri = process.getEnvironmentVar("USER")
-            if(pri != null)
-            {
+            if (pri != null) {
                 var flag = new Boolean(true)
                 expect(Boolean(flag)).assertEqual(true)
             }
@@ -965,11 +911,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-035', 0, function () {
-        for(let i=0; i<8; i++)
-        {
+        for (let i=0; i<8; i++) {
             let pri = process.getEnvironmentVar("USER")
-            if(pri != null)
-            {
+            if (pri != null) {
                 var flag = new Boolean(true)
                 expect(Boolean(flag)).assertEqual(true)
             }
@@ -983,11 +927,9 @@ describe('ChildProcessTest', function () {
      * @tc.author: liwenqiang
      */
     it('SUB_Runtime_JSAPI_SR000GGR3G-037', 0, function () {
-        for(let i=0; i<100; i++)
-        {
+        for (let i=0; i<100; i++) {
             let pri = process.getEnvironmentVar("i123")
-            if(pri == null)
-            {
+            if (pri == null) {
                 var flag = new Boolean(true)
                 expect(Boolean(flag)).assertEqual(true)
             }
