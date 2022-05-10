@@ -684,7 +684,7 @@ Windows工作台下安装python3.7及以上版本，确保工作台和测试设�
 
 ## 相关仓<a name="section1371113476307"></a>
 
-xts\_acts
+**xts\_acts**
 
-xts\_tools
+[xts\_tools](https://gitee.com/openharmony/xts_tools)
 
