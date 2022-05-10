@@ -182,6 +182,7 @@ describe('appInfoTest', function () {
         })
     })
     it('power_is_screen_on_promise_test', 0, async function (done) {//isScreenOn(): Promise<boolean>
+        power.wakeupDevice("power_is_screen_on_promise_test");
         power.isScreenOn()
             .then(screenOn => {
                 console.info('power_is_screen_on_promise_test screenOn is ' + screenOn);
@@ -196,6 +197,7 @@ describe('appInfoTest', function () {
             })
     })
     it('power_is_screen_on_callback_test', 0, async function (done) {//isScreenOn(callback: AsyncCallback<boolean>)
+        power.wakeupDevice("power_is_screen_on_callback_test");
         power.isScreenOn((error, screenOn) => {
             if (typeof error === "undefined") {
                 console.info('power_is_screen_on_callback_test screenOn is ' + screenOn);
