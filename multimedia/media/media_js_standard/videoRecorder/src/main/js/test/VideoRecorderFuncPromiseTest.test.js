@@ -124,11 +124,9 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await captureSession.addInput(cameraInput);
         await captureSession.addOutput(videoOutPut);
         await captureSession.commitConfig();
-        await captureSession.start();
     }
 
     async function stopCaptureSession() {
-        await captureSession.stop();
         await captureSession.release();
     }
 
