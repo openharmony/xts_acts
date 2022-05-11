@@ -429,10 +429,9 @@ describe('bluetoothhostTest', function() {
      */
     it('SUB_COMMUNACATION_bluetooth_SET_LOCAL_NAME_0001', 0, async function (done) {
         await tryToEnableBt();
-        let state = bluetooth.getState();
-        expect(true).assertTrue(JSON.stringify(bluetooth.BluetoothState.STATE_ON)==state);
-        let name = bluetooth.setLocalName('');
-        expect(name).assertFalse();
+        let name = bluetooth.getLocalName();
+        let set = bluetooth.setLocalName('');
+        expect(set).assertFalse();
         let localName = bluetooth.getLocalName();
         expect(true).assertTrue(localName==name);
         console.info('[bluetooth_js] getLocalName result1 = ' + JSON.stringify(localName));
