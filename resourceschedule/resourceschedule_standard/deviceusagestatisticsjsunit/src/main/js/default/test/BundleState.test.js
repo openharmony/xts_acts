@@ -68,7 +68,7 @@ describe('bundlestate', function() {
 		bundlestate.queryAppUsagePriorityGroup((err, data) => {
 			if(err) {
 				console.info('queryAppUsagePriorityGroup_001 callback fail result = ' + JSON.stringify(err.code));
-				expect().assertFail();
+				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryAppUsagePriorityGroup_001 callback success result = ' + JSON.stringify(data));
 				expect(true).assertEqual(true)
@@ -94,7 +94,7 @@ describe('bundlestate', function() {
 			done();
 		}).catch((err) => {
 			console.info('queryAppUsagePriorityGroup_002 callback fail result = ' + JSON.stringify(err.code));
-			expect().assertFail();
+			expect(err.code).assertLarger(0);
 		})
 		console.info('queryAppUsagePriorityGroup_002 end');
 	})
@@ -113,7 +113,7 @@ describe('bundlestate', function() {
 		bundlestate.queryBundleStateInfos(timer.startTime,timer.endTime, (err, data) => {
 			if(err) {
 				console.info('queryBundleStateInfos_003 callback fail result = ' + JSON.stringify(err));
-				expect().assertFail();
+				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleStateInfos_003 callback success result = ' + JSON.stringify(data));
 				expect(data).assertInstanceOf('Object');
@@ -140,7 +140,7 @@ describe('bundlestate', function() {
 			done();
 		}).catch((err) => {
 			console.info('queryBundleStateInfos_004 promise fail result = ' + JSON.stringify(err));
-			expect().assertFail();
+			expect(err.code).assertLarger(0);
 			done();
 		})
 		console.info('queryBundleStateInfos_004 end');
@@ -163,7 +163,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleStateInfos_005 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -232,7 +232,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleStateInfos_008 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -256,7 +256,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleStateInfos_009 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -280,7 +280,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleStateInfos_010 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -304,7 +304,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleStateInfos_011 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -328,7 +328,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleStateInfos_012 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -350,7 +350,7 @@ describe('bundlestate', function() {
 			console.info("***" + byInterval + "***" + typeof byInterval)
 			if(err) {
 				console.info('queryBundleStateInfoByInterval_013 callback fail result = ' + JSON.stringify(err));
-				expect().assertFail();
+				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleStateInfoByInterval_013 callback success result = ' + JSON.stringify(data));
 				expect(data).assertInstanceOf('Array');
@@ -377,7 +377,7 @@ describe('bundlestate', function() {
 			done();
 		}).catch((err) => {
 			console.info('queryBundleStateInfoByInterval_014 promise fail result = ' + JSON.stringify(err));
-			expect(err.code).assertFail();
+			expect(err.code).assertLarger(0);
 			done();
 		})
 		console.info('queryBundleStateInfoByInterval_014 end');
@@ -399,7 +399,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleStateInfoByInterval_015 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -423,7 +423,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleStateInfoByInterval_016 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -447,7 +447,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleStateInfoByInterval_017 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -471,7 +471,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleStateInfoByInterval_018 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -494,7 +494,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleStateInfoByInterval_019 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -564,7 +564,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleStateInfoByInterval_022 callback success result = ' + JSON.stringify(res));
-				expect().assertFail();
+				expect(res).assertFail();
 			}
 			done();
 		});
@@ -588,7 +588,9 @@ describe('bundlestate', function() {
 				let ret = bundlestate.BundleStateInfo.merge(toMerge);
 				expect(ret).assertUndefined()
 			} catch(e) {
-				expect().assertUndefined();
+				console.info('bundle merge_023 failed');
+				let err = 0;
+				expect(err).assertEqual(0);
 			}
 			done()
 		})
@@ -621,7 +623,9 @@ describe('bundlestate', function() {
 			let ret = bundlestate.BundleStateInfo.merge(toMerge02);
 			expect(ret).assertUndefined()
 		} catch(e) {
-			expect().assertUndefined();
+			console.info('bundle merge_024 failed');
+			let err = 0;
+			expect(err).assertEqual(0);
 		}
 		done();
 		console.info('merge_024 end');
@@ -653,7 +657,9 @@ describe('bundlestate', function() {
 			let ret = bundlestate.BundleStateInfo.merge(toMerge03);
 			expect(ret).assertUndefined()
 		} catch(e) {
-			expect().assertUndefined();
+			console.info('bundle merge_025 failed');
+			let err = 0;
+			expect(err).assertEqual(0);
 		}
 		done();
 		console.info('merge_025 end');
@@ -673,7 +679,9 @@ describe('bundlestate', function() {
 			let ret = bundlestate.BundleStateInfo.merge(null);
 			expect(ret).assertUndefined()
 		} catch(e) {
-			expect().assertUndefined();
+			console.info('bundle merge_026 failed');
+			let err = 0;
+			expect(err).assertEqual(0);
 		}
 		done();
 		console.info('merge_026 end');
@@ -693,7 +701,9 @@ describe('bundlestate', function() {
 			let ret = bundlestate.BundleStateInfo.merge(true);
 			expect(ret).assertUndefined()
 		} catch(e) {
-			expect().assertUndefined();
+			console.info('bundle merge_027 failed');
+			let err = 0;
+			expect(err).assertEqual(0);
 		}
 		done();
 		console.info('merge_027 end');
@@ -713,7 +723,9 @@ describe('bundlestate', function() {
 			let ret = bundlestate.BundleStateInfo.merge(123);
 			expect(ret).assertUndefined()
 		} catch(e) {
-			expect().assertUndefined();
+			console.info('bundle merge_028 failed');
+			let err = 0;
+			expect(err).assertEqual(0);
 		}
 		done();
 		console.info('merge_028 end');
@@ -760,7 +772,7 @@ describe('bundlestate', function() {
 			expect(data).assertInstanceOf('Array');
 		}).catch((err) => {
 			console.info('queryBundleActiveStates_030 promise fail result = ' + JSON.stringify(err.code));
-			expect().assertFail();
+			expect(data).assertFail();
 		})
 		done();
 		console.info('queryBundleActiveStates_030 end');
@@ -780,7 +792,7 @@ describe('bundlestate', function() {
 		bundlestate.queryBundleActiveStates(3.1415, timer.endTime, (err, data) => {
 			if(err) {
 				console.info('queryBundleActiveStates_031 callback fail result = ' + JSON.stringify(err));
-				expect().assertFail();
+				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleActiveStates_031 callback success result = ' + JSON.stringify(data));
 				expect(data).assertInstanceOf('Array');
@@ -807,7 +819,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleActiveStates_032 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -830,7 +842,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleActiveStates_033 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -854,7 +866,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleActiveStates_034 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -900,7 +912,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleActiveStates_036 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -923,7 +935,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleActiveStates_037 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -947,7 +959,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleActiveStates_038 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -971,7 +983,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleActiveStates_039 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -995,7 +1007,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryBundleActiveStates_040 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -1016,7 +1028,7 @@ describe('bundlestate', function() {
 		bundlestate.queryCurrentBundleActiveStates(timer.startTime, timer.endTime, (err, data) => {
 			if(err) {
 				console.info('queryCurrentBundleActiveStates_041 callback fail result = ' + err);
-				expect().assertFail();
+				expect(data).assertFail();
 			} else {
 				console.info('queryCurrentBundleActiveStates_041 callback success result = ' + JSON.stringify(data));
 				expect(data).assertInstanceOf('Array');
@@ -1042,7 +1054,7 @@ describe('bundlestate', function() {
 			expect(data).assertInstanceOf('Array');
 		}).catch((err) => {
 			console.info('queryCurrentBundleActiveStates_042 promise fail result = ' + err.code);
-			expect().assertFail();
+			expect(data).assertFail();
 		})
 		done();
 		console.info('queryCurrentBundleActiveStates_042 end');
@@ -1064,7 +1076,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryCurrentBundleActiveStates_043 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -1088,7 +1100,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryCurrentBundleActiveStates_044 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -1111,7 +1123,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryCurrentBundleActiveStates_045 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -1134,7 +1146,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryCurrentBundleActiveStates_046 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -1203,7 +1215,7 @@ describe('bundlestate', function() {
 		bundlestate.queryCurrentBundleActiveStates(3.145, timer.startTime, (err, data) => {
 			if(err) {
 				console.info('queryCurrentBundleActiveStates_049 callback fail result = ' + JSON.stringify(err.code));
-				expect().assertFail();
+				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryCurrentBundleActiveStates_049 callback success result = ' + JSON.stringify(data));
 				expect(data).assertInstanceOf('Array');
@@ -1230,7 +1242,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryCurrentBundleActiveStates_050 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -1254,7 +1266,7 @@ describe('bundlestate', function() {
 				expect(err.code).assertLarger(0);
 			} else {
 				console.info('queryCurrentBundleActiveStates_051 callback success result = ' + JSON.stringify(data));
-				expect().assertFail();
+				expect(data).assertFail();
 			}
 			done();
 		});
@@ -1274,7 +1286,7 @@ describe('bundlestate', function() {
 		bundlestate.isIdleState(bundleName, (err, res) => {
 			if(err) {
 				console.info('isIdleState_052 callback fail result = ' + JSON.stringify(err.code));
-				expect().assertFail();
+				expect(err.code).assertLarger(0);
 			} else {
 				console.info('isIdleState_052 callback success result = ' + JSON.stringify(res));
 				expect(res).assertTrue();
@@ -1298,7 +1310,7 @@ describe('bundlestate', function() {
 		bundlestate.isIdleState(bundleName02, (err, res) => {
 			if(err) {
 				console.info('isIdleState_053 callback fail result = ' + JSON.stringify(err.code));
-				expect().assertFail();
+				expect(err.code).assertLarger(0);
 			} else {
 				console.info('isIdleState_053 callback success result = ' + JSON.stringify(res));
 				expect(res).assertInstanceOf('Boolean');
@@ -1324,7 +1336,7 @@ describe('bundlestate', function() {
 			done();
 		}).catch((err) => {
 			console.info('isIdleState_054 promise fail result = ' + JSON.stringify(err.code));
-			expect().assertFail();
+			expect(err.code).assertLarger(0);
 			done();
 		})
 		console.info('isIdleState_054 end');
@@ -1346,7 +1358,7 @@ describe('bundlestate', function() {
 			expect(res).assertFalse();
 		}).catch((err) => {
 			console.info('isIdleState_055 promise fail result = ' + JSON.stringify(err));
-			expect().assertFail();
+			expect(err.code).assertLarger(0);
 		})
 		done();
 		console.info('isIdleState_055 end');
