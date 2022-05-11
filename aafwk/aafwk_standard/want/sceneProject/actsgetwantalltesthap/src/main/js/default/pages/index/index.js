@@ -23,6 +23,39 @@ export default {
     },
     onShow() {
         console.info('============Start Ability onShow finish');
+
+        featureAbility.getWant(
+            (err, data) => {
+                data = data;
+                console.debug("==========data=" + JSON.stringify(data));
+                if (data.parameters.mykey5[1] == 'test123'){
+                    featureAbility.getWant().then((data) =>{
+                        data = data
+                        setTimeout(function(){
+                            console.debug("==========data2 bundleName is==========="
+                                           + JSON.stringify(data.bundleName));
+                            featureAbility.terminateSelfWithResult(
+                                {
+                                    resultCode: 1,
+                                    want: data
+                                }
+                            );
+                        },1000);
+                    })
+                }else{
+                    setTimeout(function(){
+                        console.debug("==========data1 bundleName is==========="
+                                       + JSON.stringify(data.bundleName));
+                        featureAbility.terminateSelfWithResult(
+                            {
+                                resultCode: 1,
+                                want: data
+                            }
+                        );
+                    },1000);
+                }
+            }
+        )
     },
     onReady() {
         console.info('onReady');

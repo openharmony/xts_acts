@@ -123,6 +123,62 @@ describe('ActsStServiceAbilityTest', function () {
     })
 
     /**
+     * @tc.number: ACTS_AAACommand_0100
+     * @tc.name: Hide this for inner system use.
+     * @tc.desc: VHide this for inner system use successfully.
+     */
+    it('ACTS_AAACommand_0100', 0, async function (done) {
+        console.log("ACTS_AAACommand_0100 --- start")
+        var currentAlertTimeout = 0;
+        try {
+            currentAlertTimeout = setTimeout(mySetTimeout, gSetTimeout);
+            function mySetTimeout() {
+                console.log('ACTS_AAACommand_0100====<end mySetTimeout')
+                done();
+            }
+            var AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
+            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            AbilityDelegator.finishTest(msg, 1, () => {
+                console.log("ACTS_AAACommand_0100 finishTest  test  end ========> callback ")
+                done()
+            })
+        } catch (error) {
+            clearTimeout(currentAlertTimeout);
+            console.log("ACTS_AAACommand_0100 : error = " + error);
+            console.debug('ACTS_AAACommand_0100====<end catch (error)');
+            done();
+        }
+    })
+
+    /**
+     * @tc.number: ACTS_AAACommand_1200
+     * @tc.name: Hide this for inner system use.
+     * @tc.desc: VHide this for inner system use successfully.
+     */
+    it('ACTS_AAACommand_1200', 0, async function (done) {
+        console.log("ACTS_AAACommand_1200 --- start")
+        var currentAlertTimeout = 0;
+        try {
+            currentAlertTimeout = setTimeout(mySetTimeout, gSetTimeout);
+            function mySetTimeout() {
+                console.log('ACTS_AAACommand_1200====<end mySetTimeout')
+                done();
+            }
+            var AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
+            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            AbilityDelegator.finishTest(msg, Number.MAX_VALUE).then(() => {
+                console.log("ACTS_AAACommand_1200 finishTest  test  end ========> callback ")
+                done()
+            })
+        } catch (error) {
+            clearTimeout(currentAlertTimeout);
+            console.log("ACTS_AAACommand_1200 : error = " + error);
+            console.debug('ACTS_AAACommand_1200====<end catch (error)');
+            done();
+        }
+    })
+
+    /**
       * @tc.number: ACTS_AGetDisplayOrientation_0100
       * @tc.name: GetDisplayOrientation
       * @tc.desc: Check the return value of the interface (by AsyncCallback)
