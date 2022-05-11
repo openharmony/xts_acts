@@ -1,0 +1,119 @@
+{
+    "description": "Configuration for audio codec format Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "2000000",
+        "package": "ohos.acts.multimedia.audio.codecformat",
+        "shell-timeout": "600000"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsAudioCodecFormatJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "rm -rf /storage/media/100/local/files/*",
+                "mkdir -p /data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "chmod 777 -R /data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/"
+            ],
+            "teardown-command":[
+            ]
+        },
+        {
+            "type": "PushKit",
+            "pre-push": [
+            ],
+            "push": [
+                "./resource/audio/codecFormat/HEv2_AAC_2_96000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/LC_AAC_2_96000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/LC_AAC_1_96000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/LC_AAC_2_8000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/LC_AAC_1_8000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/LC_AAC_2_11025.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/LC_AAC_1_11025.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/LC_AAC_2_12000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/LC_AAC_1_12000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/LC_AAC_2_16000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/LC_AAC_1_16000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/LC_AAC_2_22050.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/LC_AAC_1_22050.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/HE_AAC_1_24000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/HE_AAC_2_24000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/HE_AAC_1_32000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/HE_AAC_2_32000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/HE_AAC_1_44100.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/HE_AAC_2_44100.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/HE_AAC_1_48000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/HE_AAC_2_48000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/HE_AAC_1_64000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/HE_AAC_2_64000.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/HE_AAC_1_88200.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/HE_AAC_2_88200.aac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_1_96000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_2_8000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_1_8000.flac  ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_2_11025.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_1_11025.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_2_12000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_1_12000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_2_16000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_2_22050.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_1_16000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_1_22050.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_2_24000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_1_24000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_2_32000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_1_32000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_2_44100.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_1_44100.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_2_48000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_1_48000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_2_64000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_1_64000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_2_88200.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_1_88200.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/FLAC_2_96000.flac ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_2_96000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_1_96000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_1_8000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_1_12000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_1_16000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_1_22050.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_1_24000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_1_32000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_1_44100.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_1_48000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_1_64000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_1_88200.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_2_8000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_2_12000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_2_16000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_2_22050.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_2_24000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_2_32000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_2_44100.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_2_48000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_2_64000.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "./resource/audio/codecFormat/S16LE_2_88200.pcm ->/data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "chmod 777 -R /data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/",
+                "chmod 777 /data/app/el1/bundle/public/ohos.acts.multimedia.audio.codecformat/ohos.acts.multimedia.audio.codecformat/assets/entry/resources/rawfile/*",
+                "chmod 777 -R /storage/media/100/local/files/",
+                "chmod 777 /storage/media/100/local/files/*",
+                "killall com.ohos.medialibrary.MediaScannerAbilityA",
+                "aa start  -a MediaScannerAbility -b com.ohos.medialibrary.MediaScannerAbilityA"
+            ],
+            "teardown-command":[
+            ]
+        }
+    ]
+}
