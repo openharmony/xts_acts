@@ -521,66 +521,6 @@ describe('mediaLibraryTestPromise.test.js', function () {
     });
 
     /**
-     * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_DELETEASSET_001
-     * @tc.name      : deleteAsset
-     * @tc.desc      : Delete File by Asset uri
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB__MEDIA_MIDIALIBRARY_PROMISE_DELETEASSET_001', 0, async function (done) {
-        try {
-            const fetchFileResult = await media.getFileAssets(imagesfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset1 = dataList[0];
-            const delUri = asset1.uri;
-
-            await media.deleteAsset(asset1.uri);
-
-            const fetchFileResult1 = await media.getFileAssets(imagesfetchOp);
-            const dataList1 = await fetchFileResult1.getAllObject();
-
-            let passed = true;
-            for (let i = 0; i < dataList1.length; i++) {
-                const asset = dataList1[i];
-                if (asset.uri == delUri) {
-                    passed = false;
-                }
-            }
-            expect(passed).assertTrue();
-            done();
-        } catch (error) {
-            console.info(`MediaLibraryTest : deleteAsset 001 failed, error: ${error}`);
-            expect(false).assertTrue();
-            done();
-        }
-    });
-
-    /**
-     * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_DELETEASSET_002
-     * @tc.name      : deleteAsset
-     * @tc.desc      : Delete File Asset by aaaa + uri + aaaaa
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB__MEDIA_MIDIALIBRARY_PROMISE_DELETEASSET_002', 0, async function (done) {
-        try {
-            const fetchFileResult = await media.getFileAssets(imagesfetchOp);
-            const dataList = await fetchFileResult.getAllObject();
-            const asset1 = dataList[0];
-            await media.deleteAsset('aaaa' + asset1.uri + 'aaaa');
-            console.info('MediaLibraryTest : deleteAsset 002 failed');
-            expect(false).assertTrue();
-            done();
-        } catch (error) {
-            console.info('MediaLibraryTest : deleteAsset 002 passed');
-            expect(true).assertTrue();
-            done();
-        }
-    });
-
-    /**
      * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_001
      * @tc.name      : createAsset
      * @tc.desc      : Create File Asset image (does not exist)
