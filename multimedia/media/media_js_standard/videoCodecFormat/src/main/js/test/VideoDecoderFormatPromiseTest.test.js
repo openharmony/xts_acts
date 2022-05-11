@@ -31,8 +31,8 @@ describe('VideoDecoderFormatPromise', function () {
     let isCodecData = false;
     let inputEosFlag = false;
     let surfaceID = '';
-    let fd_read;
-    let readpath;
+    let fdRead;
+    let readPath;
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
     let ES_FRAME_SIZE = [];
@@ -261,7 +261,7 @@ describe('VideoDecoderFormatPromise', function () {
             }, failCallback).catch(failCatch);
             videoDecodeProcessor = null;
         }
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(readPath);
         await router.clear().then(() => {
         }, failCallback).catch(failCatch);
     })
@@ -302,8 +302,8 @@ describe('VideoDecoderFormatPromise', function () {
                 console.info('case error fileDescriptor undefined, open file fail');
                 done();
             } else {
-                fd_read = res.fd;
-                console.info("case fd_read is: " + fd_read);
+                fdRead = res.fd;
+                console.info("case fdRead is: " + fdRead);
             }
         })
     }
@@ -312,7 +312,7 @@ describe('VideoDecoderFormatPromise', function () {
         console.info('case read file start execution');
         try{
             console.info('case filepath: ' + path);
-            readStreamSync = fileio.fdopenStreamSync(fd_read, 'rb');
+            readStreamSync = fileio.fdopenStreamSync(fdRead, 'rb');
         }catch(e) {
             console.info(e);
         }
@@ -448,8 +448,8 @@ describe('VideoDecoderFormatPromise', function () {
     async function decoderSource(config, name, srcPath, done){
         let mediaDescription = config;
         console.info('start test case');
-        readpath = srcPath;
-        await getFdRead(readpath, done);
+        readPath = srcPath;
+        await getFdRead(readPath, done);
         await media.createVideoDecoderByName(name).then((processor) => {
             if (typeof (processor) != 'undefined') {
                 videoDecodeProcessor = processor;

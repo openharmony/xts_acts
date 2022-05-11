@@ -34,7 +34,7 @@ describe('VideoEncoderFormatPromise', function () {
     let flushAtEOS = false;
     let sawOutputEOS = false;
     let needGetMediaDes = false;
-    let fd_write;
+    let fdWrite;
     let fileAsset;
     const context = featureAbility.getContext();
     const mediaLibraryTest = mediaLibrary.getMediaLibrary(context);
@@ -144,17 +144,17 @@ describe('VideoEncoderFormatPromise', function () {
             console.info('[mediaLibrary] case getFdWrite getFileAssets() success');
             fileAsset = await fetchWriteFileResult.getAllObject();
             console.info('[mediaLibrary] case getFdWrite getAllObject() success');
-            fd_write = await fileAsset[0].open('Rw');
-            console.info('[mediaLibrary] case getFdWrite fd_write is ' + fd_write);
+            fdWrite = await fileAsset[0].open('Rw');
+            console.info('[mediaLibrary] case getFdWrite fdWrite is ' + fdWrite);
         }
     }
 
     async function closeFdWrite() {
         if (fileAsset != null) {
-            await fileAsset[0].close(fd_write).then(() => {
-                console.info('[mediaLibrary] case close fd_write success, fd is ' + fd_write);
+            await fileAsset[0].close(fdWrite).then(() => {
+                console.info('[mediaLibrary] case close fdWrite success, fd is ' + fdWrite);
             }).catch((err) => {
-                console.info('[mediaLibrary] case close fd_write failed');
+                console.info('[mediaLibrary] case close fdWrite failed');
             });
         } else {
             console.info('[mediaLibrary] case fileAsset is null');
@@ -163,7 +163,7 @@ describe('VideoEncoderFormatPromise', function () {
 
     function writeFile(buf, len) {
         try{
-            let res = fileio.writeSync(fd_write, buf, {length: len});
+            let res = fileio.writeSync(fdWrite, buf, {length: len});
             console.info('case fileio.write buffer success');
         } catch(e) {
             console.info('case fileio.write buffer error is ' + e);
@@ -386,7 +386,7 @@ describe('VideoEncoderFormatPromise', function () {
     */ 
     it('SUB_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_COMPATIBILITY_MPEG4_PROMISE_01_0100', 0, async function (done) {
         console.info("case test MPEG4 format-resolution 640*480-frame rate 30 FPS");
-        let savepath = 'rk_mpeg4_video_software_640_480_30.es';
+        let savePath = 'rk_mpeg4_video_software_640_480_30.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
             "codec_mime": 'video/mp4v-es',
@@ -396,7 +396,7 @@ describe('VideoEncoderFormatPromise', function () {
             "frame_rate" : 30
         }
         
-        await encodeSource(mediaDescription, savepath, name, done);
+        await encodeSource(mediaDescription, savePath, name, done);
     })
 
     /* *
@@ -409,7 +409,7 @@ describe('VideoEncoderFormatPromise', function () {
     */ 
     it('SUB_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_COMPATIBILITY_MPEG4_PROMISE_01_0200', 0, async function (done) {
         console.info("case test MPEG4 format-resolution 352*288-frame rate 30 FPS");
-        let savepath = 'rk_mpeg4_video_software_352_288_30.es';
+        let savePath = 'rk_mpeg4_video_software_352_288_30.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
             "codec_mime": 'video/mp4v-es',
@@ -419,7 +419,7 @@ describe('VideoEncoderFormatPromise', function () {
             "frame_rate" : 30,
         }
         
-        await encodeSource(mediaDescription, savepath, name, done);
+        await encodeSource(mediaDescription, savePath, name, done);
     })
 
     /* *
@@ -432,7 +432,7 @@ describe('VideoEncoderFormatPromise', function () {
     */ 
     it('SUB_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_COMPATIBILITY_MPEG4_PROMISE_02_0100', 0, async function (done) {
         console.info("case test MPEG4 format-resolution 640*480-frame rate 25 FPS");
-        let savepath = 'rk_mpeg4_video_software_640_480_25.es';
+        let savePath = 'rk_mpeg4_video_software_640_480_25.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
             "codec_mime": 'video/mp4v-es',
@@ -442,7 +442,7 @@ describe('VideoEncoderFormatPromise', function () {
             "frame_rate" : 25,
         }
         
-        await encodeSource(mediaDescription, savepath, name, done);
+        await encodeSource(mediaDescription, savePath, name, done);
     })
 
     /* *
@@ -455,7 +455,7 @@ describe('VideoEncoderFormatPromise', function () {
     */ 
     it('SUB_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_COMPATIBILITY_MPEG4_PROMISE_02_0200', 0, async function (done) {
         console.info("case test MPEG4 format-resolution 640*480-frame rate 10 FPS");
-        let savepath = 'rk_mpeg4_video_software_640_480_10.es';
+        let savePath = 'rk_mpeg4_video_software_640_480_10.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
             "codec_mime": 'video/mp4v-es',
@@ -465,7 +465,7 @@ describe('VideoEncoderFormatPromise', function () {
             "frame_rate" : 10,
         }
         
-        await encodeSource(mediaDescription, savepath, name, done);
+        await encodeSource(mediaDescription, savePath, name, done);
     })
 
 })
