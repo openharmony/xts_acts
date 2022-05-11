@@ -91,7 +91,6 @@ describe('ActsStServiceAbilityTest', function () {
      * @tc.desc: Verify that the interface executes the Shell command successfully.
      */
     it('ACTS_AExecuteShellCommand_Promise_0100', 0, async function (done) {
-        console.log("ACTS_AExecuteShellCommand_Promise_0100 --- start")
         var currentAlertTimeout = 0;
         try {
             currentAlertTimeout = setTimeout(mySetTimeout, gSetTimeout);
@@ -208,7 +207,6 @@ describe('ActsStServiceAbilityTest', function () {
             );
         } catch (error) {
             clearTimeout(currentAlertTimeout);
-            console.log("ACTS_AGetDisplayOrientation_0100 : error = " + error);
             console.debug('ACTS_AGetDisplayOrientation_0100====<end catch (error)');
             done();
         }
@@ -225,14 +223,11 @@ describe('ActsStServiceAbilityTest', function () {
         try {
             currentAlertTimeout = setTimeout(mySetTimeout, gSetTimeout);
             function mySetTimeout() {
-                console.log('ACTS_AGetDisplayOrientation_0200====<end mySetTimeout')
                 done();
             }
             var context = featureAbility.getContext()
             var result = await context.getDisplayOrientation().then((data) => {
                 clearTimeout(currentAlertTimeout);
-                console.debug("ACTS_AGetDisplayOrientation_0200====DisplayOrientation>"
-                    + JSON.stringify(DisplayOrientation) + " , err= " + err);
                 expect(DisplayOrientation == bundle.DisplayOrientation.UNSPECIFIED
                     || (DisplayOrientation != bundle.DisplayOrientation.LANDSCAPE
                         || DisplayOrientation != bundle.DisplayOrientation.PORTRAIT
@@ -267,8 +262,6 @@ describe('ActsStServiceAbilityTest', function () {
             var result = context.setDisplayOrientation(bundle.DisplayOrientation.UNSPECIFIED,
                 (err) => {
                     clearTimeout(currentAlertTimeout);
-                    console.debug("ACTS_ASetDisplayOrientation_0100====err>"
-                        + JSON.stringify(err) + " , err= " + err);
                     done()
                 }
             );
@@ -291,7 +284,6 @@ describe('ActsStServiceAbilityTest', function () {
         try {
             currentAlertTimeout = setTimeout(mySetTimeout, gSetTimeout);
             function mySetTimeout() {
-                console.log('ACTS_ASetDisplayOrientation_0200====<end mySetTimeout')
                 done();
             }
             var context = featureAbility.getContext()
@@ -326,8 +318,6 @@ describe('ActsStServiceAbilityTest', function () {
             var result = context.setShowOnLockScreen(true,
                 (err) => {
                     clearTimeout(currentAlertTimeout);
-                    console.debug("ACTS_ASetShowOnLockScreen_0100====err>"
-                        + JSON.stringify(err) + " , err= " + err);
                     done()
                 }
             );
@@ -350,7 +340,6 @@ describe('ActsStServiceAbilityTest', function () {
         try {
             currentAlertTimeout = setTimeout(mySetTimeout, gSetTimeout);
             function mySetTimeout() {
-                console.log('ACTS_ASetShowOnLockScreen_0200====<end mySetTimeout')
                 done();
             }
             var context = featureAbility.getContext()
@@ -362,7 +351,6 @@ describe('ActsStServiceAbilityTest', function () {
             );
         } catch (error) {
             clearTimeout(currentAlertTimeout);
-            console.log("ACTS_ASetShowOnLockScreen_0200 : error = " + error);
             console.debug('ACTS_ASetShowOnLockScreen_0200====<end catch (error)');
             done();
         }
@@ -386,8 +374,6 @@ describe('ActsStServiceAbilityTest', function () {
             var result = context.setWakeUpScreen(true,
                 (err) => {
                     clearTimeout(currentAlertTimeout);
-                    console.debug("ACTS_ASetWakeUpScreen_0100====err>"
-                        + JSON.stringify(err) + " , err= " + err);
                     done()
                 }
             );
@@ -440,18 +426,14 @@ describe('ActsStServiceAbilityTest', function () {
             console.debug("ACTS_ATestRunner_0200====>getArguments is====>" + JSON.stringify(AbilityDelegatorArgs));
             console.debug("ACTS_ATestRunner_0200====bundleName>" + JSON.stringify(AbilityDelegatorArgs.bundleName));
             expect(AbilityDelegatorArgs.bundleName).assertEqual(undefined)
-            console.debug("ACTS_ATestRunner_0200====parameters>" + JSON.stringify(AbilityDelegatorArgs.parameters));
             expect(AbilityDelegatorArgs.parameters).assertEqual(undefined)
             console.debug("ACTS_ATestRunner_0200====testCaseNames>"
                  + JSON.stringify(AbilityDelegatorArgs.testCaseNames));
             expect(AbilityDelegatorArgs.testCaseNames).assertEqual(undefined)
-            console.debug("ACTS_ATestRunner_0200====testRunnerClassName>"
-                + JSON.stringify(AbilityDelegatorArgs.testRunnerClassName));
             expect(AbilityDelegatorArgs.testRunnerClassName).assertEqual(undefined)
             console.debug('ACTS_ATestRunner_0200====<end');
             done();
         } catch (error) {
-            console.log("ACTS_ATestRunner_0200 : error = " + error);
             console.debug('ACTS_ATestRunner_0200====<end catch (error)');
             done();
         }
