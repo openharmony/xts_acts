@@ -13,4 +13,3 @@
  * limitations under the License.
  */
 require('./power_manager_running_lock.test.js')
-require('./power_manager_power.test.js')
