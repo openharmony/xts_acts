@@ -34,7 +34,13 @@ function checkWifiPowerOn(){
     console.info("wifi_test/wifi status:" + wifi.isWifiActive());
     expect(wifi.isWifiActive()).assertTrue();
 }
-
+let WifiDeviceConfig = {
+    "ssid": "TEST",
+    "bssid": "",
+    "preSharedKey": "",
+    "isHiddenSsid": false,
+    "securityType":WifiSecurityType.WIFI_SEC_TYPE_OPEN ,
+}
 let ConnState = {
     SCANNING: 0,
     CONNECTING: 1,
@@ -44,13 +50,6 @@ let ConnState = {
     DISCONNECTING: 5,
     DISCONNECTED: 6,
     UNKNOWN: 7,
-}
-
-let ipConfig = {
-    "ipAddress": 1284752956,
-    "gateway": 17017024,
-    "dnsServers": 12345678,
-    "domains": ["aaa"],
 }
 
 describe('ACTS_WifiTest', function() {
@@ -211,25 +210,7 @@ describe('ACTS_WifiTest', function() {
         let isSupport = wifi.isFeatureSupported(WifiUtils.WIFI_FEATURE_OWE);
         expect(isSupport).assertFalse();
     })
-
-    /**
-     * @tc.number SUB_Communication_WiFi_Sta_info_0005
-     * @tc.name testHotspotDualBandSupported
-     * @tc.desc Test HotspotDualBandSupported api.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 3
-     */
-    it('SUB_Communication_WiFi_Sta_Info_0005', 0,  function() {
-        console.info(" [wifi_test] isHotspotDualBandSupported start ... ");
-        expect(wifi.isWifiActive()).assertTrue();
-        let DualBand = wifi.isHotspotDualBandSupported();
-        console.info("[wifi_test] isHotspotDualBandSupported -> " + JSON.stringify(DualBand));
-        expect(DualBand).assertFalse();
-        
-    })
-
-    
+ 
     /**
      * @tc.number     conn_Config_0002
      * @tc.name       SUB_Communication_WiFi_Sta_Conn_Info_0002
@@ -267,11 +248,11 @@ describe('ACTS_WifiTest', function() {
                 console.info("[wifi_test] getLinkedInfo callback result: " + JSON.stringify(result));
                 console.info("ssid: " + result.ssid + "bssid:"+ result.bssid +"band: " + result.band+
                 "isHidden: " + result.isHidden + "isRestricted: " + result.isRestricted +
-                "chload: " + result.chload + "rssi " + result.rssi + "netWorkId: " + result.netWorkId+ 
+                "rssi " + result.rssi + 
                 "linkSpeed: " + result.linkSpeed + "frequency:" 
-                 + result.frequency +"snr:" + result.snr+
+                 + result.frequency +
                 "macAddress: " + result.macAddress + "ipAddress: " + result.ipAddress + 
-                "suppState: " + result.suppState + "connState: " + result.connState);
+                 "connState: " + result.connState);
                 done();
             });   
     })
@@ -366,23 +347,23 @@ describe('ACTS_WifiTest', function() {
     * @tc.name       SUB_Communication_WiFi_Sta_wifiRssiChange_0004
     * @tc.desc       Test wifiRssiChange callback
     */
-        it('SUB_Communication_WiFi_Sta_wifiRssiChange_0004', 0, async function (done) {
-            wifi.on('wifiRssiChange', async result => {
-                 console.info("wifiRssiChange callback, result:" + JSON.stringify(result));
-                 expect(true).assertEqual(result !=null);
-                 let promise = new Promise((resolve) => {
-                    console.info('[wifi_test] offwifiRssiChange test start ...');
-                    wifi.off('wifiRssiChange', result => {
-                        console.info("offwifiRssiChange callback, result:  " + JSON.stringify(result));
-                        expect(true).assertEqual(result !=null);
-                        resolve()
-                    });
-                })
-                 await promise.then(done)
-             });  
-            done();  
+   it('SUB_Communication_WiFi_Sta_wifiRssiChange_0004', 0, async function (done) {
+        wifi.on('wifiRssiChange', async result => {
+             console.info("wifiRssiChange callback, result:" + JSON.stringify(result));
+             expect(true).assertEqual(result !=null);
+             let promise = new Promise((resolve) => {
+                console.info('[wifi_test] offwifiRssiChange test start ...');
+                wifi.off('wifiRssiChange', result => {
+                    console.info("offwifiRssiChange callback, result:  " + JSON.stringify(result));
+                    expect(true).assertEqual(result !=null);
+                    resolve()
+                });
+            })
+            await promise.then(done)
+         });  
+         done();  
            
-        })
+    })
  
     /**
      * @tc.number SUB_Communication_WiFi_Hotspot_ON_0001
