@@ -86,45 +86,6 @@ describe('ActsStServiceAbilityTest', function () {
     })
 
     /**
-     * @tc.number: ACTS_AExecuteShellCommand_0200
-     * @tc.name: Execute a shell command with arguments (AsyncCallback).
-     * @tc.desc: Verify that the interface executes the Shell command successfully.
-     */
-    it('ACTS_AExecuteShellCommand_Callback_0200', 0, async function (done) {
-        console.log("ACTS_AExecuteShellCommand_Callback_0200 --- start")
-        var currentAlertTimeout = 0;
-        try {
-            currentAlertTimeout = setTimeout(mySetTimeout, gSetTimeout);
-            function mySetTimeout() {
-                console.log('ACTS_AExecuteShellCommand_Callback_0200====<end mySetTimeout')
-                done();
-            }
-            var cmd = 'aa start -d 0 -a com.example.actskillProcessWithAccountclosetest.MainAbility'
-                + ' -b com.example.actskillProcessWithAccountclosetest'
-            var AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
-            AbilityDelegator.executeShellCommand(cmd, 1000, (err, data) => {
-                clearTimeout(currentAlertTimeout);
-                console.log('ACTS_AExecuteShellCommand_Callback_0200 - executeShellCommand: start ')
-
-                console.log('ACTS_AExecuteShellCommand_Callback_0200 stdResult = ' + data.stdResult)
-                var i = data.stdResult.indexOf('start ability successfully.');
-                console.log('ACTS_AExecuteShellCommand_Callback_0200 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-
-                console.log('ACTS_AExecuteShellCommand_Callback_0200 exitCode = ' + data.exitCode)
-                expect(data.exitCode).assertEqual(0);
-
-                done()
-            })
-        } catch (error) {
-            clearTimeout(currentAlertTimeout);
-            console.log("ACTS_AExecuteShellCommand_Callback_0200 : error = " + error);
-            console.debug('ACTS_AExecuteShellCommand_Callback_0200====<end catch (error)');
-            done();
-        }
-    })
-
-    /**
      * @tc.number: ACTS_AExecuteShellCommand_Promise_0100
      * @tc.name: Execute a shell command without arguments (Promise).
      * @tc.desc: Verify that the interface executes the Shell command successfully.
