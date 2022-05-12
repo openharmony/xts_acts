@@ -55,3 +55,7 @@ export function randomString(num) {
 export function isIntNum(val) {
   return typeof val === 'number' && val % 1 === 0;
 }
+
+export function isInclude(error, message) {
+  return error.toString().indexOf(message) != -1;
+}
