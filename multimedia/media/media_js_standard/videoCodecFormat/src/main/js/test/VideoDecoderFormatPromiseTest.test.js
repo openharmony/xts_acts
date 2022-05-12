@@ -262,8 +262,7 @@ describe('VideoDecoderFormatPromise', function () {
             videoDecodeProcessor = null;
         }
         await closeFileDescriptor(readPath);
-        await router.clear().then(() => {
-        }, failCallback).catch(failCatch);
+        await router.clear();
     })
 
     afterAll(function() {
