@@ -15,9 +15,8 @@
 
 import media from '@ohos.multimedia.media'
 import camera from '@ohos.multimedia.camera'
-import mediaLibrary from '@ohos.multimedia.mediaLibrary'
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
+import * as videoRecorderBase from '../../../../../VideoRecorderTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoRecorderFuncCallbackTest', function () {
@@ -34,33 +33,40 @@ describe('VideoRecorderFuncCallbackTest', function () {
     const STOP_EVENT = 'stop';
     const RESET_EVENT = 'reset';
     const RELEASE_EVENT = 'release';
+    const CHECK_EVENT = "check";
+    const ONLYVIDEO_TYPE = 'only_video';
+    const AUDIO_VIDEO_TYPE = 'audio_video';
+    const pagePath1 = 'pages/surfaceTest/surfaceTest';
+    const pagePath2 = 'pages/surfaceTest2/surfaceTest2';
     let cameraManager;
     let cameras;
     let captureSession;
     let videoOutput;
     let surfaceID;
+    let playerSurfaceId = '';
     let fdPath;
-    let fileAsset;
-    let fdNumber;
+    let fdObject;
+    let cameraID = 0;
+    let pageId = 0;
     let configFile = {
         audioBitrate : 48000,
         audioChannels : 2,
-        audioCodec : 'audio/mp4a-latm',
+        audioCodec : media.CodecMimeType.AUDIO_AAC,
         audioSampleRate : 48000,
         durationTime : 1000,
-        fileFormat : 'mp4',
+        fileFormat : media.ContainerFormatType.CFT_MPEG_4,
         videoBitrate : 48000,
-        videoCodec : 'video/mp4v-es',
+        videoCodec : media.CodecMimeType.VIDEO_MPEG4,
         videoFrameWidth : 640,
         videoFrameHeight : 480,
         videoFrameRate : 10
     }
     // rotation 0, 90, 180, 270
     let videoConfig = {
-        audioSourceType : 1,
-        videoSourceType : 0,
+        audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
+        videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
         profile : configFile,
-        url : 'file:///data/media/01.mp4',
+        url : 'fd://',
         rotation : 0,
         location : { latitude : 30, longitude : 130 },
         maxSize : 100,
@@ -69,122 +75,25 @@ describe('VideoRecorderFuncCallbackTest', function () {
 
     let onlyVideoProfile = {
         durationTime : 1000,
-        fileFormat : 'mp4',
+        fileFormat : media.ContainerFormatType.CFT_MPEG_4,
         videoBitrate : 48000,
-        videoCodec : 'video/mp4v-es',
+        videoCodec : media.CodecMimeType.VIDEO_MPEG4,
         videoFrameWidth : 640,
         videoFrameHeight : 480,
         videoFrameRate : 10
     }
 
     let onlyVideoConfig = {
-        videoSourceType : 0,
+        videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
         profile : onlyVideoProfile,
-        url : 'file:///data/media/01.mp4',
+        url : 'fd://',
         rotation : 0,
         location : { latitude : 30, longitude : 130 },
         maxSize : 100,
         maxDuration : 500
     }
 
-    function sleep(time) {
-        for(let t = Date.now();Date.now() - t <= time;);
-    }
-
     beforeAll(async function () {
-        await initCamera();
-        await applyPermission();
-        console.info('beforeAll case');
-    })
-
-    beforeEach(function () {
-        sleep(5000);
-        console.info('beforeEach case');
-    })
-
-    afterEach(async function () {
-        await closeFd();
-        console.info('afterEach case');
-    })
-
-    afterAll(function () {
-        console.info('afterAll case');
-    })
-
-    async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.video.videorecorder', 0, 100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info('[permission] case accessTokenID is ' + tokenID);
-            let permissionName1 = 'ohos.permission.CAMERA';
-            let permissionName2 = 'ohos.permission.MICROPHONE';
-            let permissionName3 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName4 = 'ohos.permission.READ_MEDIA';
-            let permissionName5 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName4, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName5, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-        } else {
-            console.info('[permission] case apply permission failed, createAtManager failed');
-        }
-    }
-
-    async function getFd(pathName) {
-        let displayName = pathName;
-        const mediaTest = mediaLibrary.getMediaLibrary();
-        let fileKeyObj = mediaLibrary.FileKey;
-        let mediaType = mediaLibrary.MediaType.VIDEO;
-        let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
-        let dataUri = await mediaTest.createAsset(mediaType, displayName, publicPath);
-        if (dataUri != undefined) {
-            let args = dataUri.id.toString();
-            let fetchOp = {
-                selections : fileKeyObj.ID + "=?",
-                selectionArgs : [args],
-            }
-            let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
-            fileAsset = await fetchFileResult.getAllObject();
-            fdNumber = await fileAsset[0].open('Rw');
-            fdPath = "fd://" + fdNumber.toString();
-        }
-    }
-
-    async function closeFd() {
-        if (fileAsset != null) {
-            await fileAsset[0].close(fdNumber).then(() => {
-                console.info('[mediaLibrary] case close fd success');
-            }).catch((err) => {
-                console.info('[mediaLibrary] case close fd failed');
-            });
-        } else {
-            console.info('[mediaLibrary] case fileAsset is null');
-        }
-    }
-
-    async function initCamera() {
         cameraManager = await camera.getCameraManager(null);
         if (cameraManager != null) {
             console.info('[camera] case getCameraManager success');
@@ -198,26 +107,27 @@ describe('VideoRecorderFuncCallbackTest', function () {
         } else {
             console.info('[camera] case getCameras failed');
         }
-    }
+        console.info('beforeAll case');
+    })
 
-    async function initCaptureSession(videoOutPut) {
-        let cameraInput = await cameraManager.createCameraInput(cameras[0].cameraId);
-        if (cameraInput != null) {
-            console.info('[camera] case createCameraInput success');
-        } else {
-            console.info('[camera] case createCameraInput failed');
-            return;
-        }
-        captureSession = await camera.createCaptureSession(null);
-        await captureSession.beginConfig();
-        await captureSession.addInput(cameraInput);
-        await captureSession.addOutput(videoOutPut);
-        await captureSession.commitConfig();
-    }
+    beforeEach(async function () {
+        await mediaTestBase.toNewPage(pagePath1, pagePath2, pageId);
+        pageId = (pageId + 1) % 2;
+        await mediaTestBase.msleepAsync(1000).then(
+            () => {}, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+        playerSurfaceId = globalThis.value;
+        cameraID = 0;
+        console.info('beforeEach case');
+    })
 
-    async function stopCaptureSession() {
-        await captureSession.release();
-    }
+    afterEach(async function () {
+        await mediaTestBase.clearRouter();
+        console.info('afterEach case');
+    })
+
+    afterAll(function () {
+        console.info('afterAll case');
+    })
 
     function printfError(error, done) {
         expect().assertFail();
@@ -228,11 +138,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
     let events = require('events');
     let eventEmitter = new events.EventEmitter();
 
-    function toNextStep(videoRecorder, steps, done) {
+    async function toNextStep(videoRecorder, steps, done) {
         if (steps[0] == END_EVENT) {
             console.info('case success!!');
+            await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
             done();
         } else {
+            console.info('case toNextStep is ' + steps[0]);
             eventEmitter.emit(steps[0], videoRecorder, steps, done);
         }
     }
@@ -312,7 +224,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
         } else {
             console.info('case createVideoOutput success');
         }
-        await initCaptureSession(videoOutput);
+        captureSession = await videoRecorderBase.initCaptureSession(videoOutput, cameraManager, cameras, cameraID);
         await videoOutput.start().then(() => {
             console.info('case videoOutput start success');
         });
@@ -320,7 +232,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
             if (typeof (err) == 'undefined') {
                 console.info('case start success');
                 expect(videoRecorder.state).assertEqual('playing');
-                sleep(RECORDER_TIME);
+                mediaTestBase.msleep(RECORDER_TIME);
                 toNextStep(videoRecorder, steps, done);
             } else {
                 printfError(err, done);
@@ -334,7 +246,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
             if (typeof (err) == 'undefined') {
                 console.info('case pause success');
                 expect(videoRecorder.state).assertEqual('paused');
-                sleep(PAUSE_TIME);
+                mediaTestBase.msleep(PAUSE_TIME);
                 toNextStep(videoRecorder, steps, done);
             } else {
                 printfError(err, done);
@@ -347,7 +259,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
         videoRecorder.resume((err) => {
             if (typeof (err) == 'undefined') {
                 console.info('case resume success');
-                sleep(RECORDER_TIME);
+                mediaTestBase.msleep(RECORDER_TIME);
                 expect(videoRecorder.state).assertEqual('playing');
                 toNextStep(videoRecorder, steps, done);
             } else {
@@ -392,7 +304,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
                 console.info('case videoOutput release success');
             });
             videoOutput = undefined;
-            await stopCaptureSession();
+            await videoRecorderBase.stopCaptureSession(captureSession);
             if (typeof (err) == 'undefined') {
                 expect(videoRecorder.state).assertEqual('idle');
                 console.info('case release success');
@@ -401,6 +313,16 @@ describe('VideoRecorderFuncCallbackTest', function () {
                 printfError(err, done);
             }
         });
+    });
+
+    eventEmitter.on(CHECK_EVENT, async (videoRecorder, steps, done) => {
+        steps.shift();
+        let trackArray = steps[0];
+        let recorderTime = steps[1];
+        steps.shift();
+        steps.shift();
+        await videoRecorderBase.checkVideos(fdPath, recorderTime, trackArray, playerSurfaceId);
+        toNextStep(videoRecorder, steps, done);
     });
 
     /* *
@@ -412,10 +334,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0100', 0, async function (done) {
-        await getFd('19.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_01.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
-        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
+        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, CHECK_EVENT,
+            trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -428,11 +353,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0200', 0, async function (done) {
-        await getFd('20.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_02.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT,
-            PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
+            PAUSE_EVENT, RELEASE_EVENT, CHECK_EVENT,
+            trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -445,11 +373,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0300', 0, async function (done) {
-        await getFd('21.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_03.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT,
-            PAUSE_EVENT, RESUME_EVENT, RELEASE_EVENT, END_EVENT);
+            PAUSE_EVENT, RESUME_EVENT, RELEASE_EVENT, CHECK_EVENT,
+            trackArray, RECORDER_TIME * 2, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -462,11 +393,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0400', 0, async function (done) {
-        await getFd('22.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_04.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT,
-            STOP_EVENT, RELEASE_EVENT, END_EVENT);
+            STOP_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);    
     })
 
@@ -479,11 +412,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0500', 0, async function (done) {
-        await getFd('23.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_05.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT,
-            RESET_EVENT, RELEASE_EVENT, END_EVENT);
+            RESET_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done); 
     })
 
@@ -496,11 +431,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0600', 0, async function (done) {
-        await getFd('24.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_06.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, PAUSE_EVENT,
-            STOP_EVENT, RELEASE_EVENT, END_EVENT);
+            STOP_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done); 
     })
 
@@ -513,11 +450,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0700', 0, async function (done) {
-        await getFd('25.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_07.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, PAUSE_EVENT,
-            RESET_EVENT, RELEASE_EVENT, END_EVENT);
+            RESET_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done); 
     })
 
@@ -530,11 +469,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0800', 0, async function (done) {
-        await getFd('26.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_08.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, PAUSE_EVENT,
-            RESUME_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
+            RESUME_EVENT, STOP_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME * 2, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done); 
     })
 
@@ -547,11 +488,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0900', 0, async function (done) {
-        await getFd('27.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_09.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, PAUSE_EVENT,
-            RESUME_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
+            RESUME_EVENT, RESET_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME * 2, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done); 
     })
 
@@ -568,11 +511,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         configFile.audioBitrate = 8000;
         configFile.audioSampleRate = 8000;
         configFile.videoBitrate = 8000;
-        await getFd('28.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_10.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT,
-            STOP_EVENT, RELEASE_EVENT, END_EVENT);
+            STOP_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done); 
     })
 
@@ -589,11 +534,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         configFile.audioBitrate = 16000;
         configFile.audioSampleRate = 32000;
         configFile.videoBitrate = 16000;
-        await getFd('29.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_11.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT,
-            STOP_EVENT, RELEASE_EVENT, END_EVENT);
+            STOP_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done); 
     })
 
@@ -610,11 +557,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         configFile.audioBitrate = 32000;
         configFile.audioSampleRate = 44100;
         configFile.videoBitrate = 32000;
-        await getFd('30.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_12.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT,
-            STOP_EVENT, RELEASE_EVENT, END_EVENT);
+            STOP_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done); 
     })
 
@@ -631,11 +580,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         configFile.audioBitrate = 112000;
         configFile.audioSampleRate = 96000;
         configFile.videoBitrate = 112000;
-        await getFd('31.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_13.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT,
-            STOP_EVENT, RELEASE_EVENT, END_EVENT);
+            STOP_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done); 
     })
 
@@ -648,11 +599,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1400', 0, async function (done) {
-        await getFd('32.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_14.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         onlyVideoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(ONLYVIDEO_TYPE, onlyVideoProfile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_OLNYVIDEO_EVENT, GETSURFACE_EVENT,
-            START_EVENT, RELEASE_EVENT, END_EVENT);
+            START_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -665,11 +618,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1500', 0, async function (done) {
-        await getFd('33.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_15.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         onlyVideoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(ONLYVIDEO_TYPE, onlyVideoProfile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_OLNYVIDEO_EVENT, GETSURFACE_EVENT, START_EVENT,
-            PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
+            PAUSE_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -682,11 +637,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1600', 0, async function (done) {
-        await getFd('34.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_16.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         onlyVideoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(ONLYVIDEO_TYPE, onlyVideoProfile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_OLNYVIDEO_EVENT, GETSURFACE_EVENT, START_EVENT,
-            PAUSE_EVENT, RESUME_EVENT, RELEASE_EVENT, END_EVENT);
+            PAUSE_EVENT, RESUME_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME * 2, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -699,11 +656,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1700', 0, async function (done) {
-        await getFd('35.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_17.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         onlyVideoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(ONLYVIDEO_TYPE, onlyVideoProfile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_OLNYVIDEO_EVENT, GETSURFACE_EVENT, START_EVENT,
-            STOP_EVENT, RELEASE_EVENT, END_EVENT);
+            STOP_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -716,11 +675,13 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1800', 0, async function (done) {
-        await getFd('36.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_18.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         onlyVideoConfig.url = fdPath;
+        let trackArray = videoRecorderBase.getTrackArray(ONLYVIDEO_TYPE, onlyVideoProfile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_OLNYVIDEO_EVENT, GETSURFACE_EVENT, START_EVENT,
-            RESET_EVENT, RELEASE_EVENT, END_EVENT);
+            RESET_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -733,12 +694,15 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1900', 0, async function (done) {
-        await getFd('37.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_19.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
+        configFile.audioSampleRate = 48000;
         videoConfig.rotation = 90;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT,
-            START_EVENT, RELEASE_EVENT, END_EVENT);
+            START_EVENT, RELEASE_EVENT, CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -751,11 +715,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2000', 0, async function (done) {
-        await getFd('38.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_20.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
         videoConfig.rotation = 180;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
-        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
+        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT,
+            CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -768,11 +735,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2100', 0, async function (done) {
-        await getFd('39.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_21.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
         videoConfig.rotation = 270;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
-        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
+        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT,
+            CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -785,11 +755,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2200', 0, async function (done) {
-        await getFd('46.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_22.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
         videoConfig.videoFrameRate = 20;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
-        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
+        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT,
+            CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -802,11 +775,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2300', 0, async function (done) {
-        await getFd('47.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_23.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
         videoConfig.videoFrameRate = 30;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
-        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
+        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT,
+            CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
@@ -819,11 +795,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2400', 0, async function (done) {
-        await getFd('48.mp4');
+        fdObject = await mediaTestBase.getFd('recorder_callback_24.mp4');
+        fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
         videoConfig.videoFrameRate = 60;
+        let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
-        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
+        let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT,
+            CHECK_EVENT, trackArray, RECORDER_TIME, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 })

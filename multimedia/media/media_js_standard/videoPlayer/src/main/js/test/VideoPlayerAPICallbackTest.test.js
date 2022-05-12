@@ -14,7 +14,6 @@
  */
 
 import media from '@ohos.multimedia.media'
-import {toNewPage, clearRouter} from '../../../../../VideoPlayerTestBase.js';
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
@@ -64,7 +63,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         await mediaTestBase.getFileDescriptor(VIDEO_SOURCE).then((res) => {
             fileDescriptor = res;
         });
-        await toNewPage(pagePath1, pagePath2, pageId);
+        await mediaTestBase.toNewPage(pagePath1, pagePath2, pageId);
         pageId = (pageId + 1) % 2;
         await mediaTestBase.msleepAsync(1000).then(
             () => {}, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -74,7 +73,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     })
 
     afterEach(async function() {
-        await clearRouter();
+        await mediaTestBase.clearRouter();
         await mediaTestBase.closeFileDescriptor(VIDEO_SOURCE);
         console.info('afterEach case');
     })

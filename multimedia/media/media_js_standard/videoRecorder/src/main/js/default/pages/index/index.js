@@ -14,7 +14,7 @@
  */
 
 import {Core, ExpectExtend} from 'deccjsunit/index'
-
+import * as mediaTestBase from '../../../../../../../MediaTestBase.js';
 export default {
     data: {
         title: ""
@@ -22,8 +22,17 @@ export default {
     onInit() {
         this.title = this.$t('strings.world');
     },
-    onShow() {
+    async onShow() {
         console.info('onShow finish')
+        let applictionName = 'ohos.acts.multimedia.video.videorecorder';
+        let permissionName1 = 'ohos.permission.CAMERA';
+        let permissionName2 = 'ohos.permission.MICROPHONE';
+        let permissionName3 = 'ohos.permission.MEDIA_LOCATION';
+        let permissionName4 = 'ohos.permission.READ_MEDIA';
+        let permissionName5 = 'ohos.permission.WRITE_MEDIA';
+        let permissionNames = new Array(permissionName1, permissionName2, permissionName3,
+                                        permissionName4, permissionName5);
+        await mediaTestBase.applyPermission(applictionName, permissionNames);
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({
             'id': 'extend'
