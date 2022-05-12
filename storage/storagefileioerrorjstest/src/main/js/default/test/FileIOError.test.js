@@ -78,37 +78,6 @@ describe('FileIOError', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_1100
-   * @tc.name FileIo_test_error_011
-   * @tc.desc Function of API, Pass in a
-   * path that exceeds 4096 bytes to copy the file
-   */
-  it('FileIo_test_error_011', 0, function () {
-    let fpath = nextFileName('FileIo_test_error_011');
-    let fd = fileio.openSync(fpath, 0o102, 0o777);
-    expect(isIntNum(fd)).assertTrue();
-    let dpath = nextFileName('fileio_error_011d');
-    fileio.mkdirSync(dpath);
-    try {
-      for (let i = 0; i < 17; i++) {
-        if (i == 16) {
-          let fpathTarget = dpath + '/f' + randomString(248);
-          fileio.copyFileSync(fpath, fpathTarget);
-          expect(null).assertFail();
-        } else {
-          dpath = dpath + '/d' + randomString(248);
-          fileio.mkdirSync(dpath);
-        }
-      }
-    } 
-    catch (err) {
-      console.log('FileIo_test_error_011 has failed for ' + err);
-      expect(isInclude(err.message, 'Filename too long')).assertTrue();
-      fileio.unlinkSync(fpath);
-    }
-  });
-
-  /**
    * @tc.number SUB_STORAGE_FileIo_test_error_1200
    * @tc.name FileIo_test_error_012
    * @tc.desc Function of API, flags=0o102. missing mode parameter.

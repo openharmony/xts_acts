@@ -34,7 +34,7 @@ export function prepareFile(fpath, content) {
 
 export function nextFileName(testName) {
   const BASE_PATH = '/data/storage/el2/base/haps/entry/cache/'
-  return BASE_PATH + testName + '_' + randomString(testName.length);
+  return BASE_PATH + testName
 }
 export function fileName(testName) {
   const BASE_PATH = '/data/storage/el2/base/haps/entry/files/'
