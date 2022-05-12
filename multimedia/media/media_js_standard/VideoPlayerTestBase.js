@@ -20,9 +20,9 @@ import * as mediaTestBase from './MediaTestBase.js';
 export async function toNewPage(pagePath1, pagePath2, page) {
     let path = '';
     if (page == 0) {
-        path = 'pages/surfaceTest/surfaceTest';
+        path = pagePath1;
     } else {
-        path = 'pages/surfaceTest2/surfaceTest2';
+        path = pagePath2;
     }
     let options = {
         uri: path,
