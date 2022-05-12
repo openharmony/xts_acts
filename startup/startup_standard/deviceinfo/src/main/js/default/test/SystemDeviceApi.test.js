@@ -202,14 +202,6 @@ describe('SystemDeviceTest', function () {
           ret = true;
       }
       expect(ret).assertTrue();
-
-      let str = /^[A-Za-z]+$/g;
-      let arr = apiVersionInfo.toString().match(str);
-      let substr = arr.join('');
-      let numstr = parseInt(substr);
-      console.info('the value of the bufferstr is :' + numstr);
-      expect(apiVersionInfo).assertEqual(numstr);
-
       console.info('testDeviceApiVersion01 ：end');
   })  
 
