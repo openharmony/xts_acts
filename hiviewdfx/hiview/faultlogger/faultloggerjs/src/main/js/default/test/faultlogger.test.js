@@ -89,7 +89,7 @@ describe("FaultlogJsTest", function () {
             const loopTimes = 10;
             for (let i = 0; i < loopTimes; i++) {
                 console.info("--------FaultlogJsTest_002 3 + " + i + "----------");
-                faultlogger.addFaultLog(i + 100, 
+                faultlogger.addFaultLog(i - 400, 
                     faultlogger.FaultType.CPP_CRASH, module, "faultloggertestsummary02 " + i);
                 await msleep(300);
             }
@@ -195,7 +195,7 @@ describe("FaultlogJsTest", function () {
             const loopTimes = 10;
             for (let i = 0; i < loopTimes; i++) {
                 console.info("--------FaultlogJsTest_004 3 + " + i + "----------");
-                faultlogger.addFaultLog(i + 300, 
+                faultlogger.addFaultLog(i - 200, 
                     faultlogger.FaultType.APP_FREEZE, module, "faultloggertestsummary04 " + i);
                 await msleep(300);
             }
@@ -241,7 +241,7 @@ describe("FaultlogJsTest", function () {
             const loopTimes = 10;
             for (let i = 0; i < loopTimes; i++) {
                 console.info("--------FaultlogJsTest_005 + " + i + "----------");
-                faultlogger.addFaultLog(i + 400,
+                faultlogger.addFaultLog(i - 100,
                     faultlogger.FaultType.CPP_CRASH, module, "faultloggertestsummary05 " + i);
                 await msleep(300);
             }
