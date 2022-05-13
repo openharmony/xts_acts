@@ -1155,12 +1155,12 @@ describe('audioRenderer', function () {
         totalSize = totalSize-44;
         console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
         let rlen = 0;
-        while (rlen < totalSize) {
+        while (rlen < totalSize/4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
             console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
             await audioRen.write(buf);
-            if (rlen > (totalSize/2)){
+            if (rlen > (totalSize/8)){
                 await audioManager.getAudioScene().then(async function (data) {
                     console.info('AudioFrameworkAudioScene: getAudioScene : Value : '+data);
                 }).catch((err) => {
@@ -1168,7 +1168,7 @@ describe('audioRenderer', function () {
                     resultFlag=false;
                 });
             }
-            if (rlen > (totalSize/2)){
+            if (rlen > (totalSize/8)){
 
                 audioRen.setRenderRate(audio.AudioRendererRate.RENDER_RATE_DOUBLE, (err) => {
                     if (err) {
@@ -6299,12 +6299,12 @@ describe('audioRenderer', function () {
      totalSize = totalSize-44;
      console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
      let rlen = 0;
-     while (rlen < totalSize) {
+     while (rlen < totalSize/4) {
          let buf = new ArrayBuffer(bufferSize);
          rlen += ss.readSync(buf);
          console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
          await audioRen.write(buf);
-         if (rlen > (totalSize/2)){
+         if (rlen > (totalSize/8)){
              await audioManager.getAudioScene().then(async function (data) {
                  console.info('AudioFrameworkAudioScene: getAudioScene : Value : '+data);
              }).catch((err) => {
@@ -6312,7 +6312,7 @@ describe('audioRenderer', function () {
                  resultFlag=false;
              });
          }
-         if (rlen > (totalSize/2)){
+         if (rlen > (totalSize/8)){
              await audioRen.setRenderRate(audio.AudioRendererRate.RENDER_RATE_DOUBLE).then(async function () {
                  console.info('AudioFrameworkRenderLog: setRenderRate : RENDER_RATE_DOUBLE : SUCCESS');
              }).catch((err) => {
@@ -6381,12 +6381,12 @@ describe('audioRenderer', function () {
     */
     it('SUB_AUDIO_RENDERER_Play_audio_079', 0,async function (done) {
 
-     var AudioStreamInfo = {
-         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-         channels: audio.AudioChannel.CHANNEL_2,
-         sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-     }
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
      var AudioRendererInfo = {
          content: audio.ContentType.CONTENT_TYPE_RINGTONE,
@@ -6400,7 +6400,7 @@ describe('audioRenderer', function () {
      }
 
      //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
-     readpath = 'StarWars10s-2C-48000-4SW.wav';
+     readpath='StarWars10s-2C-24000-3SW.wav'
      await getFdRead(readpath,done);
      var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
 
@@ -6463,12 +6463,12 @@ describe('audioRenderer', function () {
      totalSize = totalSize-44;
      console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
      let rlen = 0;
-     while (rlen < totalSize) {
+     while (rlen < totalSize/4) {
          let buf = new ArrayBuffer(bufferSize);
          rlen += ss.readSync(buf);
          console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
          await audioRen.write(buf);
-         if (rlen > (totalSize / 2)) {
+         if (rlen > (totalSize / 8)) {
              await audioManager.getAudioScene().then(async function (data) {
                  console.info('AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
              }).catch((err) => {
@@ -6476,7 +6476,7 @@ describe('audioRenderer', function () {
                  resultFlag = false;
              });
          }
-         if (rlen > (totalSize/2)){
+         if (rlen > (totalSize/8)){
              await audioRen.setRenderRate(audio.AudioRendererRate.RENDER_RATE_HALF).then(async function () {
                  console.info('AudioFrameworkRenderLog: setRenderRate : RENDER_RATE_HALF : SUCCESS');
              }).catch((err) => {
@@ -6544,12 +6544,12 @@ describe('audioRenderer', function () {
     */
     it('SUB_AUDIO_RENDERER_Play_audio_080', 0,async function (done) {
 
-     var AudioStreamInfo = {
-         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-         channels: audio.AudioChannel.CHANNEL_2,
-         sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-     }
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
      var AudioRendererInfo = {
          content: audio.ContentType.CONTENT_TYPE_RINGTONE,
@@ -6563,7 +6563,7 @@ describe('audioRenderer', function () {
      }
 
      //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
-     readpath = 'StarWars10s-2C-48000-4SW.wav';
+     readpath='StarWars10s-1C-44100-2SW.wav'
      await getFdRead(readpath,done);
      var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
 
@@ -6618,7 +6618,7 @@ describe('audioRenderer', function () {
          rlen += ss.readSync(buf);
          console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
          await audioRen.write(buf);
-         if (rlen > (totalSize / 2)) {
+         if (rlen > (totalSize / 8)) {
              await audioManager.getAudioScene().then(async function (data) {
                  console.info('AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
              }).catch((err) => {
@@ -6626,7 +6626,7 @@ describe('audioRenderer', function () {
                  resultFlag = false;
              });
          }
-         if (rlen > (totalSize/2)){
+         if (rlen > (totalSize/8)){
              await audioRen.setRenderRate(audio.AudioRendererRate.RENDER_RATE_DOUBLE).then(async function () {
                  console.info('AudioFrameworkRenderLog: setRenderRate : RENDER_RATE_DOUBLE : SUCCESS');
              }).catch((err) => {
@@ -6700,12 +6700,12 @@ describe('audioRenderer', function () {
     */
     it('SUB_AUDIO_RENDERER_Play_audio_081', 0,async function (done) {
 
-     var AudioStreamInfo = {
-         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-         channels: audio.AudioChannel.CHANNEL_2,
-         sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-     }
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
      var AudioRendererInfo = {
          content: audio.ContentType.CONTENT_TYPE_RINGTONE,
@@ -6719,7 +6719,7 @@ describe('audioRenderer', function () {
      }
 
     // var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
-     readpath='StarWars10s-2C-48000-4SW.wav';
+     readpath='StarWars10s-1C-96000-4SW.wav'
      await getFdRead(readpath, done);
      var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
 
@@ -6857,9 +6857,9 @@ describe('audioRenderer', function () {
     it('SUB_AUDIO_RENDERER_Play_audio_113', 0,async function (done) {
 
         var AudioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-            channels: audio.AudioChannel.CHANNEL_2,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_U8,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
@@ -6875,7 +6875,7 @@ describe('audioRenderer', function () {
         }
 
         //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
-        readpath = 'StarWars10s-2C-48000-4SW.wav';
+        readpath='StarWars10s-1C-32000-1SW.wav'
         await getFdRead(readpath,done);
         var resultFlag = await playbackPromise_113 (AudioRendererOptions , readpath );
         await sleep(100)

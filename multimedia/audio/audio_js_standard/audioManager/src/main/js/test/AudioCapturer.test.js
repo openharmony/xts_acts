@@ -397,18 +397,17 @@ describe('audioCapturer', function () {
 		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: NEW:'+audio.AudioState.STATE_NEW);
 		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: PREPARED:'+audio.AudioState.STATE_PREPARED);
 		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: START:'+audio.AudioState.STATE_START);
-		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: STOP:'+audio.AudioState.STATE_STOP);
-		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: RELEASE:'+audio.AudioState.STATE_RELEASE);
+		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: STOP:'+audio.AudioState.STATE_STOPPED);
+		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: RELEASE:'+audio.AudioState.STATE_RELEASED);
 		console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: RUNNING:'+audio.AudioState.STATE_RUNNING);
+		if ((audioCapCallBack.state == audio.AudioState.STATE_PREPARED)) {
+            		console.info('AudioFrameworkRecLog: ---------AFTER CHECK AUDIO PREPARED STATE : PASS---------');
+           		stateFlag = true;
+            		expect(stateFlag).assertTrue();
+            		done();
+          	}
             }
         });
-		
-		if ((audioCapCallBack.state == audio.AudioState.STATE_PREPARED)) {
-            console.info('AudioFrameworkRecLog: ---------AFTER CHECK AUDIO PREPARED STATE : PASS---------');
-            stateFlag = true;
-            expect(stateFlag).assertTrue();
-            done();
-          }
 
     })
 
