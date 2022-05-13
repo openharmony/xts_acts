@@ -63,28 +63,6 @@ describe('ConnectAbilityTest', function () {
     })
 
     /*
-    * @tc.number: SUB_AA_JsApi_Ability_0400
-    * @tc.name: testAbility0400.
-    * @tc.desc: StartAbility-want only configure action (implicit start) - Ability
-    *            without corresponding action (custom action).
-    */
-    it("SUB_AA_JsApi_Ability_0400", 0, async function (done) {
-        let parameter = {
-            'want': {
-                'action': 'action.com.example.mytestw.TwoAbility123'
-            }
-        }
-        await featureAbility.startAbility(parameter).then((data) => {
-            console.log('testAbility0600 data: ' + JSON.stringify(data))
-            expect().assertFail()
-        }).catch((error) => {
-            console.log('testAbility0600 error: ' + JSON.stringify(error))
-            expect(errCode1).assertEqual(error.code)
-        })
-        done()
-    })
-
-    /*
     * @tc.number: SUB_AA_JsApi_Ability_0500
     * @tc.name: testAblity0500.
     * @tc.desc: startAbility-want configure action+entities- there is no Ability corresponding to entities.

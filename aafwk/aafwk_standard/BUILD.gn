@@ -32,7 +32,6 @@ group("aafwk_standard") {
       "context:context",
       "featureability:featureability",
       "formmanager:formmanager",
-      "setshowonlockscreen:setshowonlockscreen",
       "want:want",
     ]
   }
