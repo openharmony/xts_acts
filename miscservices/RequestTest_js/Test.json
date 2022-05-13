@@ -15,8 +15,8 @@
 		{
             "type": "ShellKit",
             "run-command": [
-                "mkdir -p /data/accounts/account_0/appdata/com.example.myapplication.hmservice/cache",
-                "echo \"123456\" > /data/accounts/account_0/appdata/com.example.myapplication.hmservice/cache/test.txt"
+                "mkdir -p /data/app/el2/100/base/com.example.myapplication.hmservice/haps/entry/cache",
+                "echo \"123456\" > /data/app/el2/100/base/com.example.myapplication.hmservice/haps/entry/cache/test.txt"
             ]
         }
 	]
