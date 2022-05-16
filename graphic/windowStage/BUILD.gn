@@ -13,16 +13,16 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("window_stage_hap_test") {
+ohos_js_hap_suite("ActsWindowStageTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
     ":windowStage_js_assets",
-    ":windowStage_resources",
+    ":windowStage_resources"
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "window_stage_hap_test"
+  hap_name = "ActsWindowStageTest"
 }
 
 ohos_app_scope("windowStage_app_profile") {
