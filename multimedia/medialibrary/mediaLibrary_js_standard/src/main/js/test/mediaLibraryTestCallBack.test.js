@@ -54,57 +54,37 @@ let filesfetchOp = {
 
 let imageRelativefetchOp = {
     selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: ['Pictures/MediaLibraryTest/', imageType.toString()],
+    selectionArgs: ['Pictures/Static01/', imageType.toString()],
 };
 let videoRelativefetchOp = {
     selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: ['Pictures/MediaLibraryTest/', videoType.toString()],
+    selectionArgs: ['Videos/Static01/', videoType.toString()],
 };
 let audioRelativefetchOp = {
     selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: ['Pictures/MediaLibraryTest/', audioType.toString()],
+    selectionArgs: ['Audios/Static01/', audioType.toString()],
 };
 let fileRelativefetchOp = {
     selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: ['Pictures/MediaLibraryTest/', fileType.toString()],
+    selectionArgs: ['Documents/Static01/', fileType.toString()],
     order: fileKeyObj.DATE_ADDED + " DESC",
 };
 
 let imageAndVideofetchOp = {
-    selections: fileKeyObj.RELATIVE_PATH + '= ? AND (' + 
-                fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?)',
-    selectionArgs: ['Pictures/MediaLibraryTest/', imageType.toString(), videoType.toString()],
+    selections: '(' + fileKeyObj.RELATIVE_PATH + '= ? or ' + fileKeyObj.RELATIVE_PATH + '= ?' + ') AND (' +
+        fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?)',
+    selectionArgs: ['Videos/Static01/', 'Pictures/Static01/', imageType.toString(), videoType.toString()],
 };
 let imageAndVideoAndfilefetchOp = {
-    selections:
-        fileKeyObj.RELATIVE_PATH + '= ? AND (' +
-        fileKeyObj.MEDIA_TYPE +
-        '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
-        '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
-        '= ?)',
-    selectionArgs: ['Pictures/MediaLibraryTest/', imageType.toString(), videoType.toString(), fileType.toString()],
+    selections: '(' + fileKeyObj.RELATIVE_PATH + '= ? or ' + fileKeyObj.RELATIVE_PATH + '= ? or ' + fileKeyObj.RELATIVE_PATH + '= ?' + ') AND (' +
+        fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?)',
+    selectionArgs: ['Documents/Static01/', 'Videos/Static01/', 'Pictures/Static01/', imageType.toString(), videoType.toString(), fileType.toString()],
     order: fileKeyObj.DATE_ADDED + " DESC",
 };
 let imageAndVideoAndfileAndAudiofetchOp = {
-    selections:
-        fileKeyObj.RELATIVE_PATH + '= ? AND (' +
-        fileKeyObj.MEDIA_TYPE +
-        '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
-        '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
-        '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
-        '= ?)',
-    selectionArgs: [
-        'Pictures/MediaLibraryTest/',
-        imageType.toString(),
-        videoType.toString(),
-        fileType.toString(),
-        audioType.toString(),
-    ],
+    selections: '(' + fileKeyObj.RELATIVE_PATH + '= ? or ' + fileKeyObj.RELATIVE_PATH + '= ? or ' + fileKeyObj.RELATIVE_PATH + '= ? or ' + fileKeyObj.RELATIVE_PATH + '= ?' + ') AND (' +
+        fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?)',
+    selectionArgs: ['Documents/Static01/', 'Videos/Static01/', 'Pictures/Static01/', 'Audios/Static01/', imageType.toString(), videoType.toString(), fileType.toString(), audioType.toString(),],
     order: fileKeyObj.DATE_ADDED + " DESC",
 };
 
@@ -125,7 +105,7 @@ const props = {
     image: {
         mimeType: 'image/*',
         displayName: '01.jpg',
-        relativePath: 'Pictures/MediaLibraryTest/',
+        relativePath: 'Pictures/Static01/',
         size: '348113',
         mediaType: '3',
         title: '01',
@@ -135,12 +115,12 @@ const props = {
         orientation: '0',
         duration: '0',
         albumId: '1118',
-        albumName: 'MediaLibraryTest'
+        albumName: 'Static01'
     },
     video: {
         mimeType: 'video/mp4',
         displayName: '01.mp4',
-        relativePath: 'Pictures/MediaLibraryTest/',
+        relativePath: 'Videos/Static01/',
         size: '4853005',
         mediaType: '4',
         title: '01',
@@ -149,12 +129,12 @@ const props = {
         height: '720',
         orientation: '0',
         duration: '10100',
-        albumName: 'MediaLibraryTest'
+        albumName: 'Static01'
     },
     audio: {
         mimeType: 'audio/mpeg',
         displayName: '01.mp3',
-        relativePath: 'Pictures/MediaLibraryTest/',
+        relativePath: 'Audios/Static01/',
         size: '4113874',
         mediaType: '5',
         title: '01',
@@ -164,22 +144,21 @@ const props = {
         height: '0',
         orientation: '0',
         duration: '169697',
-        albumName: 'MediaLibraryTest'
+        albumName: 'Static01'
     },
     file: {
         mimeType: 'file/*',
-        displayName: 'test.dat',
-        relativePath: 'Pictures/MediaLibraryTest/',
+        displayName: '01.dat',
+        relativePath: 'Documents/Static01/',
         size: '10',
-        displayName: 'test.dat',
         mediaType: '1',
-        title: 'test',
+        title: '01',
         dateTaken: '0',
         width: '0',
         height: '0',
         orientation: '0',
         duration: '0',
-        albumName: 'MediaLibraryTest'
+        albumName: 'Static01'
     }
 
 }
@@ -189,7 +168,7 @@ async function checkFileAssetAttr(done, fetchFileResult, type, count, typesArr) 
     expect(fetchFileResult.getCount() == count).assertTrue();
     let asset = await fetchFileResult.getFirstObject();
     if (count > 1) {
-        type = asset.mimeType.match(/[a-z]+/g)[0]
+        type = asset.mimeType.match(/[a-z]+/g)[0];
     }
     if (type == 'audio' && asset.artist != props[type].artist) {
         expect(false).assertTrue();

@@ -48,8 +48,8 @@ describe('fileAssetTestCallback.test.js', async function () {
         try {
             let fileType = mediaLibrary.MediaType.FILE;
             let fileFetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [fileType.toString()],
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Documents/Dynamic01/', fileType.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fileFetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -118,8 +118,8 @@ describe('fileAssetTestCallback.test.js', async function () {
         try {
             let type = mediaLibrary.MediaType.FILE;
             let fetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [type.toString()],
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Documents/Dynamic01/', type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -182,8 +182,8 @@ describe('fileAssetTestCallback.test.js', async function () {
         try {
             let type = mediaLibrary.MediaType.FILE;
             let fetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [type.toString()],
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Documents/Dynamic01/', type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -363,12 +363,12 @@ describe('fileAssetTestCallback.test.js', async function () {
             write: 4096,
         }
         try {
-            let fileType = mediaLibrary.MediaType.IMAGE;
-            let fileFetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [fileType.toString()],
+            let type = mediaLibrary.MediaType.IMAGE;
+            let fetchOp = {
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Pictures/Dynamic01/', type.toString()],
             };
-            let fetchFileResult = await media.getFileAssets(fileFetchOp);
+            let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
             asset = dataList[0];
 
@@ -429,8 +429,8 @@ describe('fileAssetTestCallback.test.js', async function () {
         try {
             let type = mediaLibrary.MediaType.IMAGE;
             let fetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [type.toString()],
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Pictures/Dynamic01/', type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -493,8 +493,8 @@ describe('fileAssetTestCallback.test.js', async function () {
         try {
             let type = mediaLibrary.MediaType.IMAGE;
             let fetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [type.toString()],
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Pictures/Dynamic01/', type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -568,10 +568,10 @@ describe('fileAssetTestCallback.test.js', async function () {
             write: 4096,
         }
         try {
-            let fileType = mediaLibrary.MediaType.AUDIO;
+            let type = mediaLibrary.MediaType.AUDIO;
             let fileFetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [fileType.toString()],
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Audios/Dynamic01/', type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fileFetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -635,8 +635,8 @@ describe('fileAssetTestCallback.test.js', async function () {
         try {
             let type = mediaLibrary.MediaType.AUDIO;
             let fetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [type.toString()],
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Audios/Dynamic01/', type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -702,8 +702,8 @@ describe('fileAssetTestCallback.test.js', async function () {
         try {
             let type = mediaLibrary.MediaType.AUDIO;
             let fetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [type.toString()],
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Audios/Dynamic01/', type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -777,12 +777,12 @@ describe('fileAssetTestCallback.test.js', async function () {
             write: 4096,
         }
         try {
-            let fileType = mediaLibrary.MediaType.VIDEO;
-            let fileFetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [fileType.toString()],
+            let type = mediaLibrary.MediaType.VIDEO;
+            let fetchOp = {
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Videos/Dynamic01/', type.toString()],
             };
-            let fetchFileResult = await media.getFileAssets(fileFetchOp);
+            let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
             asset = dataList[0];
             asset.open('rw', async (error, fd) => {
@@ -852,8 +852,8 @@ describe('fileAssetTestCallback.test.js', async function () {
         try {
             let type = mediaLibrary.MediaType.VIDEO;
             let fetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [type.toString()],
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Videos/Dynamic01/', type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();
@@ -917,8 +917,8 @@ describe('fileAssetTestCallback.test.js', async function () {
         try {
             let type = mediaLibrary.MediaType.VIDEO;
             let fetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [type.toString()],
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Videos/Dynamic01/', type.toString()],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
             const dataList = await fetchFileResult.getAllObject();

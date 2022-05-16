@@ -8,76 +8,46 @@
     },
     "kits": [
         {
+            "type": "ShellKit",
+            "pre-push": [
+            ],
+            "run-command": [
+                "rm -rf /storage/media/100/local/files/*",
+                "rm -rf /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/*",
+                "mkdir -pv /storage/media/100/local/files/{Pictures,Videos,Audios,Documents}",
+                "mkdir -p /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA"
+            ]
+        },
+        {
             "type": "PushKit",
             "pre-push": [
             ],
             "push": [
-                "./resource/medialibrary/01.jpg ->/storage/media/100/local/files",
-                "./resource/medialibrary/01.mp3 ->/storage/media/100/local/files",
-                "./resource/medialibrary/01.mp4 ->/storage/media/100/local/files",
-                "./resource/medialibrary/test.dat ->/storage/media/100/local/files",
-                "./resource/medialibrary/test2.dat ->/storage/media/100/local/files"
+                "./resource/medialibrary/01.jpg ->/data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA",
+                "./resource/medialibrary/01.mp3 ->/data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA",
+                "./resource/medialibrary/01.mp4 ->/data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA",
+                "./resource/medialibrary/01.dat ->/data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA"
             ]
         },
         {
             "type": "ShellKit",
             "run-command": [
-                "mkdir /storage/media/100/local/files/Pictures",
-                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/",
-                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/02.jpg",
-                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/03.jpg",
-                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/",
-                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/02.mp3",
-                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/03.mp3",
-                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/",
-                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/02.mp4",
-                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/03.mp4",
-                "mkdir /storage/media/100/local/files/Pictures/weixin",
-                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/weixin",
-                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/weixin",
-                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/weixin",
-                "mkdir /storage/media/100/local/files/Camera",
-                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Camera/01.jpg",
-                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Camera/02.jpg",
-                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Camera/01.mp3",
-                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Camera/02.mp3",
-                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Camera/01.mp4",
-                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Camera/02.mp4",
-                "mkdir /storage/media/100/local/files/Documents",
-                "cp /storage/media/100/local/files/test.dat /storage/media/100/local/files/Documents/test.dat",
-                "cp /storage/media/100/local/files/test2.dat /storage/media/100/local/files/Documents/test2.dat",
-                "mkdir /storage/media/100/local/files/Pictures/DeleteAlbumPro",
-                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/DeleteAlbumPro",
-                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/DeleteAlbumPro",
-                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/DeleteAlbumPro",
-                "mkdir /storage/media/100/local/files/Pictures/DeleteAlbumCallback",
-                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/DeleteAlbumCallback",
-                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/DeleteAlbumCallback",
-                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/DeleteAlbumCallback",
-                "mkdir /storage/media/100/local/files/Pictures/AblumInfo",
-                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/AblumInfo",
-                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/AblumInfo",
-                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/AblumInfo",
-                "mkdir /storage/media/100/local/files/Pictures/FileAssetTest",
-                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/FileAssetTest",
-                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/FileAssetTest/02.jpg",
-                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/FileAssetTest",
-                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/FileAssetTest/02.mp3",
-                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/FileAssetTest",
-                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/FileAssetTest/02.mp4",
-                "mkdir /storage/media/100/local/files/Pictures/MediaLibraryTest",
-                "cp /storage/media/100/local/files/01.jpg /storage/media/100/local/files/Pictures/MediaLibraryTest",
-                "cp /storage/media/100/local/files/01.mp3 /storage/media/100/local/files/Pictures/MediaLibraryTest",
-                "cp /storage/media/100/local/files/01.mp4 /storage/media/100/local/files/Pictures/MediaLibraryTest",
-                "cp /storage/media/100/local/files/test.dat /storage/media/100/local/files/Pictures/MediaLibraryTest",
+                "mkdir -pv /storage/media/100/local/files/{Pictures/{Static,Static01,Album/Static,SR001PRO,SR001CB,Dynamic,Dynamic01,Dynamic02,Dynamic022,DeleteCb01,AblumInfo,DeletePro01,Delete01,Temp},Videos/{Static,Static01,Album/Static,SR001PRO,SR001CB,Dynamic,Dynamic01,Dynamic02,DeleteCb01,AblumInfo,DeletePro01,Delete01},Audios/{Static,Static01,Album/Static,SR001PRO,SR001CB,Dynamic,Dynamic01,Dynamic02,DeleteCb01,AblumInfo,DeletePro01,Delete01},Documents/{Static,Static01,Album/Static,SR001PRO,SR001CB,Dynamic,Dynamic01,Dynamic02,DeleteCb01,AblumInfo,DeletePro01,Delete01}}",
+                "for d in Static Album/Static Dynamic Dynamic01 Dynamic022 AblumInfo; do for i in $$(seq 3); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/01.jpg /storage/media/100/local/files/Pictures/$$d/0$$i.jpg; done;done;",
+                "for d in Static Album/Static Dynamic Dynamic01 Dynamic02 AblumInfo; do for i in $$(seq 3); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/01.mp3 /storage/media/100/local/files/Audios/$$d/0$$i.mp3; done;done;",
+                "for d in Static Album/Static Dynamic Dynamic01 Dynamic02 AblumInfo; do for i in $$(seq 3); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/01.mp4 /storage/media/100/local/files/Videos/$$d/0$$i.mp4; done;done;",
+                "for d in Static Album/Static Dynamic Dynamic01 Dynamic02 AblumInfo; do for i in $$(seq 3); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/01.dat /storage/media/100/local/files/Documents/$$d/0$$i.dat; done;done;",
+               
+                "for d in SR001PRO SR001CB DeleteCb01 DeletePro01 Static01;  do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/01.jpg /storage/media/100/local/files/Pictures/$$d ;done;",
+                "for d in SR001PRO SR001CB DeleteCb01 DeletePro01 Static01;  do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/01.mp3 /storage/media/100/local/files/Audios/$$d ;done;",
+                "for d in SR001PRO SR001CB DeleteCb01 DeletePro01 Static01;  do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/01.mp4 /storage/media/100/local/files/Videos/$$d ;done;",
+                "for d in SR001PRO SR001CB DeleteCb01 DeletePro01 Static01;  do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/01.dat /storage/media/100/local/files/Documents/$$d ;done;",
+
                 "chmod -R 777 /storage/media/100/local/files/*",
                 "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
                 "killall com.ohos.medialibrary.MediaScannerAbilityA",
-                "aa start  -a MediaScannerAbility -b com.ohos.medialibrary.MediaScannerAbilityA"
-            ],
-            "teardown-command":[
-                "rm -rf /storage/media/100/local/files/*",
-                "rm -rf /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/*"
+                "aa start  -a MediaScannerAbility -b com.ohos.medialibrary.MediaScannerAbilityA",
+                "sleep 20"
             ]
         },
         {

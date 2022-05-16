@@ -32,7 +32,7 @@ let albumDeletefetchOp = {
 };
 let albumCoverUrifetchOp = {
     selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.ALBUM_NAME + '= ?',
-    selectionArgs: ['Pictures/', 'weixin'],
+    selectionArgs: ['Pictures/', 'AblumInfo'],
 };
 let allTypeInfofetchOp = {
     selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.ALBUM_NAME + '= ?',
@@ -40,43 +40,46 @@ let allTypeInfofetchOp = {
 };
 
 let imageAlbumInfofetchOp = {
-    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + 
-                fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' +
+        fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
     selectionArgs: ['Pictures/', 'AblumInfo', imageType.toString()],
 };
 
 let videoAlbumInfofetchOp = {
     selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' +
-                fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: ['Pictures/', 'AblumInfo', videoType.toString()],
+        fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: ['Videos/', 'AblumInfo', videoType.toString()],
 };
 
 let audioAlbumInfofetchOp = {
     selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' +
-                fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs: ['Pictures/', 'AblumInfo', audioType.toString()],
+        fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selectionArgs: ['Audios/', 'AblumInfo', audioType.toString()],
 };
 
 let imageAndVideoAlbumInfofetchOp = {
-    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + 
-                fileKeyObj.ALBUM_NAME + '= ? AND (' + 
-                fileKeyObj.MEDIA_TYPE +'= ? or ' + 
-                fileKeyObj.MEDIA_TYPE + '= ?)',
-    selectionArgs: ['Pictures/', 'AblumInfo', imageType.toString(), videoType.toString()],
+    selections: '(' + fileKeyObj.RELATIVE_PATH + '= ? or ' + fileKeyObj.RELATIVE_PATH + '= ? ) AND ' +
+        fileKeyObj.ALBUM_NAME + '= ? AND (' +
+        fileKeyObj.MEDIA_TYPE + '= ? or ' +
+        fileKeyObj.MEDIA_TYPE + '= ?)',
+    selectionArgs: ['Pictures/', 'Videos/', 'AblumInfo', imageType.toString(), videoType.toString()],
+    order: fileKeyObj.DATE_ADDED + " DESC",
 };
 let imageAndAudioAlbumInfofetchOp = {
-    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + 
-                fileKeyObj.ALBUM_NAME + '= ? AND (' + 
-                fileKeyObj.MEDIA_TYPE + '= ? or ' + 
-                fileKeyObj.MEDIA_TYPE + '= ?)',
-    selectionArgs: ['Pictures/', 'AblumInfo', imageType.toString(), audioType.toString()],
+    selections: '(' + fileKeyObj.RELATIVE_PATH + '= ? or ' + fileKeyObj.RELATIVE_PATH + '= ? ) AND ' +
+        fileKeyObj.ALBUM_NAME + '= ? AND (' +
+        fileKeyObj.MEDIA_TYPE + '= ? or ' +
+        fileKeyObj.MEDIA_TYPE + '= ?)',
+    selectionArgs: ['Pictures/', 'Audios/', 'AblumInfo', imageType.toString(), videoType.toString()],
+    order: fileKeyObj.DATE_ADDED + " DESC",
 };
 let videoAndAudioAlbumInfofetchOp = {
-    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + 
-                fileKeyObj.ALBUM_NAME + '= ? AND (' + 
-                fileKeyObj.MEDIA_TYPE + '= ? or ' + 
-                fileKeyObj.MEDIA_TYPE + '= ?)',
-    selectionArgs: ['Pictures/', 'AblumInfo', videoType.toString(), audioType.toString()],
+    selections: '(' + fileKeyObj.RELATIVE_PATH + '= ? or ' + fileKeyObj.RELATIVE_PATH + '= ? ) AND ' +
+        fileKeyObj.ALBUM_NAME + '= ? AND (' +
+        fileKeyObj.MEDIA_TYPE + '= ? or ' +
+        fileKeyObj.MEDIA_TYPE + '= ?)',
+    selectionArgs: ['Videos/', 'Audios/', 'AblumInfo', imageType.toString(), videoType.toString()],
+    order: fileKeyObj.DATE_ADDED + " DESC",
 };
 function printAlbumMessage(testNum, album) {
     console.info(`ALBUM_CALLBACK getAlbum ${testNum} album.albumId: ${album.albumId}`);
@@ -91,16 +94,15 @@ function printAlbumMessage(testNum, album) {
 const props = {
     albumName: 'AblumInfo',
     albumUri: 'dataability:///media/album/',
-    relativePath: 'Pictures/',
-    count: 1
+    count: 3
 }
-function checkAlbumAttr(done, album) {
+function checkAlbumAttr(done, album, relativePaths) {
     if (
         album.albumId == undefined ||
         album.albumName != props.albumName ||
         album.albumUri != props.albumUri + album.albumId ||
         album.count != props.count ||
-        album.relativePath != props.relativePath ||
+        !relativePaths.includes(album.relativePath) ||
         album.coverUri == undefined
     ) {
         expect(false).assertTrue();
@@ -135,7 +137,7 @@ describe('albumTestCallBack.test.js', async function () {
                 } else {
                     const album = albumList[0];
                     printAlbumMessage('001_01', album);
-                    checkAlbumAttr(done, album);
+                    checkAlbumAttr(done, album, ['Pictures/']);
 
                     console.info('ALBUM_CALLBACK getAlbum 001_01 success');
                     expect(true).assertTrue();
@@ -168,7 +170,7 @@ describe('albumTestCallBack.test.js', async function () {
                 } else {
                     const album = albumList[0];
                     printAlbumMessage('001_02', album);
-                    checkAlbumAttr(done, album);
+                    checkAlbumAttr(done, album, ['Pictures/']);
 
                     console.info('ALBUM_CALLBACK getAlbum 001_02 success');
                     expect(true).assertTrue();
@@ -201,7 +203,7 @@ describe('albumTestCallBack.test.js', async function () {
                 } else {
                     const album = albumList[0];
                     printAlbumMessage('001_03', album);
-                    checkAlbumAttr(done, album);
+                    checkAlbumAttr(done, album, ['Videos/']);
 
                     console.info('ALBUM_CALLBACK getAlbum 001_03 passed');
                     expect(true).assertTrue();
@@ -234,7 +236,7 @@ describe('albumTestCallBack.test.js', async function () {
                 } else {
                     const album = albumList[0];
                     printAlbumMessage('001_04', album);
-                    checkAlbumAttr(done, album);
+                    checkAlbumAttr(done, album, ['Audios/']);
 
                     console.info('ALBUM_CALLBACK getAlbum 001_04 passed');
                     expect(true).assertTrue();
@@ -268,7 +270,7 @@ describe('albumTestCallBack.test.js', async function () {
                     const album = albumList[0];
 
                     printAlbumMessage('001_05', album);
-                    checkAlbumAttr(done, album);
+                    checkAlbumAttr(done, album, ['Videos/', 'Pictures/']);
 
                     console.info('ALBUM_CALLBACK getAlbum 001_05 passed');
                     expect(true).assertTrue();
@@ -302,7 +304,7 @@ describe('albumTestCallBack.test.js', async function () {
                 } else {
                     const album = albumList[0];
                     printAlbumMessage('001_06', album);
-                    checkAlbumAttr(done, album);
+                    checkAlbumAttr(done, album, ['Audios/', 'Pictures/']);
 
                     console.info('ALBUM_CALLBACK getAlbum 001_06 passed');
                     expect(true).assertTrue();
@@ -336,7 +338,7 @@ describe('albumTestCallBack.test.js', async function () {
                 } else {
                     const album = albumList[0];
                     printAlbumMessage('001_07', album);
-                    checkAlbumAttr(done, album);
+                    checkAlbumAttr(done, album, ['Videos/', 'Audios/']);
                     console.info('ALBUM_CALLBACK getAlbum 001_07 passed');
                     expect(true).assertTrue();
                     done();

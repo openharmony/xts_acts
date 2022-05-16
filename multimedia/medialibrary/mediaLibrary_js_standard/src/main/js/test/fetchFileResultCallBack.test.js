@@ -16,88 +16,55 @@
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import featureAbility from '@ohos.ability.featureAbility';
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 let fileKeyObj = mediaLibrary.FileKey;
 let fileType = mediaLibrary.MediaType.FILE;
 let imageType = mediaLibrary.MediaType.IMAGE;
 let videoType = mediaLibrary.MediaType.VIDEO;
 let audioType = mediaLibrary.MediaType.AUDIO;
 
-let getFileCountOneOp = {
-    selections : fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs : [ fileType.toString() ],
-    order : fileKeyObj.DATE_ADDED + " DESC LIMIT 0,1",
-    extendArgs : "",
-};
-
-let getFileCountTwoOp = {
-    selections : fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs : [ fileType.toString() ],
-    order : fileKeyObj.DATE_ADDED + " DESC LIMIT 0,2",
-    extendArgs : "",
-};
-
-let getFileCountTenOp = {
-    selections : fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs : [ fileType.toString() ],
-    order : fileKeyObj.DATE_ADDED + " DESC LIMIT 0,10",
-    extendArgs : "",
-};
-
-let getFileCountOneHundredOp = {
-    selections : fileKeyObj.MEDIA_TYPE + '= ?',
-    selectionArgs : [ fileType.toString() ],
-    order : fileKeyObj.DATE_ADDED + " DESC LIMIT 0,100",
-    extendArgs : "",
-};
-
 let getFirstObjectOp = {
-    selections : fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ 'Camera/' ],
-    order : fileKeyObj.ID + " DESC LIMIT 0,5",
-    extendArgs : "",
+    selections: fileKeyObj.RELATIVE_PATH + '= ?',
+    selectionArgs: ['Pictures/Static/'],
+    order: fileKeyObj.ID + " DESC LIMIT 0,5",
+    extendArgs: "",
 }
 
 let getAllObjectLimitOneOp = {
-    selections : fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ 'Camera/' ],
-    order : fileKeyObj.ID + " DESC LIMIT 0,1",
-    extendArgs : "",
+    selections: fileKeyObj.RELATIVE_PATH + '= ?',
+    selectionArgs: ['Pictures/Static/'],
+    order: fileKeyObj.ID + " DESC LIMIT 0,1",
+    extendArgs: "",
 }
 
 let getAllObjectLimitTwoOp = {
-    selections : fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ 'Camera/' ],
-    order : fileKeyObj.ID + " DESC LIMIT 0,1",
-    extendArgs : "",
+    selections: fileKeyObj.RELATIVE_PATH + '= ?',
+    selectionArgs: ['Pictures/Static/'],
+    order: fileKeyObj.ID + " DESC LIMIT 0,1",
+    extendArgs: "",
 }
 
 let getAllObjectLimitOneHundredOp = {
-    selections : fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ 'Camera/' ],
-    order : fileKeyObj.ID + " DESC LIMIT 0,100",
-    extendArgs : "",
+    selections: fileKeyObj.RELATIVE_PATH + '= ?',
+    selectionArgs: ['Pictures/Static/'],
+    order: fileKeyObj.ID + " DESC LIMIT 0,100",
+    extendArgs: "",
 }
-
-let getFileCountZeroOp = {
-    selections : fileKeyObj.DISPLAY_NAME + '=?',
-    selectionArgs : [ 'The world has kissed my soul with its pain, asking for its return in songs.' ],
-};
 
 let getFileOp = {
-    selections : fileKeyObj.DISPLAY_NAME + '= ? AND ' + fileKeyObj.RELATIVE_PATH + '= ?',
-    selectionArgs : [ '01.jpg', 'Camera/' ],
-    order : fileKeyObj.ID + " DESC LIMIT 0,100",
-    extendArgs : "",
+    selections: fileKeyObj.DISPLAY_NAME + '= ? AND ' + fileKeyObj.RELATIVE_PATH + '= ?',
+    selectionArgs: ['01.jpg', 'Pictures/Static/'],
+    order: fileKeyObj.ID + " DESC LIMIT 0,100",
+    extendArgs: "",
 }
 
-describe('fetchFileResultCallback.test.js', async function() {
+describe('fetchFileResultCallback.test.js', async function () {
     var context = featureAbility.getContext();
     var media = mediaLibrary.getMediaLibrary(context);
-    beforeAll(function() {});
-    beforeEach(function() {});
-    afterEach(function() {});
-    afterAll(function() {});
+    beforeAll(function () { });
+    beforeEach(function () { });
+    afterEach(function () { });
+    afterAll(function () { });
 
     // ------------------------------ 004 test start -------------------------
     /**
@@ -108,7 +75,7 @@ describe('fetchFileResultCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETFIRSTOBJECT_CALLBACK_004', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETFIRSTOBJECT_CALLBACK_004', 0, async function (done) {
         try {
             console.info('MediaLibraryTest : FETCHRESULT getFirstObject begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
@@ -118,7 +85,7 @@ describe('fetchFileResultCallback.test.js', async function() {
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 004  fail');
                     done();
                 } else {
-                    expect(firstObject.relativePath == 'Camera/').assertTrue();
+                    expect(firstObject.relativePath == 'Pictures/Static/').assertTrue();
                     fetchFileResult.close();
                     console.info('MediaLibraryTest : FETCHRESULT getFirstObject 004 end');
                     done();
@@ -142,12 +109,12 @@ describe('fetchFileResultCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETNEXTOBJECT_CALLBACK_005', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETNEXTOBJECT_CALLBACK_005', 0, async function (done) {
         try {
             console.info('MediaLibraryTest : FETCHRESULT getNextObject 005 begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
             let firstObject = await fetchFileResult.getFirstObject();
-            expect(firstObject.relativePath == 'Camera/').assertTrue();
+            expect(firstObject.relativePath == 'Pictures/Static/').assertTrue();
             fetchFileResult.getNextObject(async (error, nextObject) => {
                 if (nextObject == undefined) {
                     expect(false).assertTrue();
@@ -155,7 +122,7 @@ describe('fetchFileResultCallback.test.js', async function() {
                     done();
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 005  fail');
                 } else {
-                    expect(nextObject.relativePath == 'Camera/').assertTrue();
+                    expect(nextObject.relativePath == 'Pictures/Static/').assertTrue();
                     fetchFileResult.close();
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 005  end');
                     done();
@@ -178,7 +145,7 @@ describe('fetchFileResultCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETLASTOBJECT_CALLBACK_006', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETLASTOBJECT_CALLBACK_006', 0, async function (done) {
         try {
             console.info('MediaLibraryTest : FETCHRESULT getLastObject begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
@@ -189,7 +156,7 @@ describe('fetchFileResultCallback.test.js', async function() {
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 006  fail');
                     done();
                 } else {
-                    expect(lastObject.relativePath == 'Camera/').assertTrue();
+                    expect(lastObject.relativePath == 'Pictures/Static/').assertTrue();
                     fetchFileResult.close();
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 006  end');
                     done();
@@ -212,7 +179,7 @@ describe('fetchFileResultCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_CALLBACK_007_01', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_CALLBACK_007_01', 0, async function (done) {
         try {
             console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_01 begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
@@ -223,7 +190,7 @@ describe('fetchFileResultCallback.test.js', async function() {
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 007_01  fail');
                     done();
                 } else {
-                    expect(targetObject.relativePath == 'Camera/').assertTrue();
+                    expect(targetObject.relativePath == 'Pictures/Static/').assertTrue();
                     fetchFileResult.close();
                     console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_01 end');
                     done();
@@ -244,7 +211,7 @@ describe('fetchFileResultCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_CALLBACK_007_02', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_CALLBACK_007_02', 0, async function (done) {
         try {
             console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_02 begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
@@ -255,7 +222,7 @@ describe('fetchFileResultCallback.test.js', async function() {
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 007_02  fail');
                     done();
                 } else {
-                    expect(targetObject.relativePath == 'Camera/').assertTrue();
+                    expect(targetObject.relativePath == 'Pictures/Static/').assertTrue();
                     fetchFileResult.close();
                     console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_02 end');
                     done();
@@ -276,7 +243,7 @@ describe('fetchFileResultCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_CALLBACK_007_03', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_CALLBACK_007_03', 0, async function (done) {
         try {
             console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_03 begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
@@ -288,7 +255,7 @@ describe('fetchFileResultCallback.test.js', async function() {
                     console.info('MediaLibraryTest : FETCHRESULT getNextObject 007_03  fail');
                     done();
                 } else {
-                    expect(targetObject.relativePath == 'Camera/').assertTrue();
+                    expect(targetObject.relativePath == 'Pictures/Static/').assertTrue();
                     fetchFileResult.close();
                     console.info('MediaLibraryTest : FETCHRESULT getPositionObject 007_03 end');
                     done();
@@ -309,7 +276,7 @@ describe('fetchFileResultCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_CALLBACK_007_04', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_CALLBACK_007_04', 0, async function (done) {
         try {
             console.info('MediaLibraryTest :  FETCHRESULT getPositionObject 007_04 begin');
             let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
@@ -351,7 +318,7 @@ describe('fetchFileResultCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_CALLBACK_008_01', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_CALLBACK_008_01', 0, async function (done) {
         try {
             console.info('MediaLibraryTest : FETCHRESULT getAllObject 008_01 begin');
             let fetchFileResult = await media.getFileAssets(getAllObjectLimitOneOp);
@@ -382,7 +349,7 @@ describe('fetchFileResultCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_CALLBACK_008_02', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_CALLBACK_008_02', 0, async function (done) {
         try {
             console.info('MediaLibraryTest :  FETCHRESULT getAllObject 008_02 begin');
             let fetchFileResult = await media.getFileAssets(getAllObjectLimitTwoOp);
@@ -395,7 +362,7 @@ describe('fetchFileResultCallback.test.js', async function() {
                 } else {
                     expect(0 < targetObjects.length <= 2).assertTrue();
                     console.info('MediaLibraryTest :  FETCHRESULT getAllObject 008_02 targetObjects.length:'
-                                 + targetObjects.length);
+                        + targetObjects.length);
                     console.info('MediaLibraryTest :  FETCHRESULT getAllObject 008_02 end');
                     done();
                 }
@@ -415,7 +382,7 @@ describe('fetchFileResultCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_CALLBACK_008_03', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETALLOBJECT_CALLBACK_008_03', 0, async function (done) {
         try {
             console.info('MediaLibraryTest : FETCHRESULT getAllObject 008_03 begin');
             let fetchFileResult = await media.getFileAssets(getAllObjectLimitOneHundredOp);
@@ -447,7 +414,7 @@ describe('fetchFileResultCallback.test.js', async function() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_getFirstObject_CALLBACK_009_01', 0, async function(done) {
+    it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_getFirstObject_CALLBACK_009_01', 0, async function (done) {
         try {
             console.info('MediaLibraryTest : FETCHRESULT getAllObject 009_01 begin');
             let fetchFileResult = await media.getFileAssets(getFileOp);
@@ -487,8 +454,8 @@ describe('fetchFileResultCallback.test.js', async function() {
                         console.info('MediaLibraryTest :firstObject.title:' + firstObject.title);
                     }
 
-                    expect(firstObject.relativePath == 'Camera/').assertTrue();
-                    if (firstObject.relativePath != 'Camera/') {
+                    expect(firstObject.relativePath == 'Pictures/Static/').assertTrue();
+                    if (firstObject.relativePath != 'Pictures/Static/') {
                         console.info('MediaLibraryTest :firstObject.relativePath:' + firstObject.relativePath);
                     }
 
@@ -547,8 +514,8 @@ describe('fetchFileResultCallback.test.js', async function() {
                         console.info('MediaLibraryTest :firstObject.albumUri:' + firstObject.albumUri);
                     }
 
-                    expect(firstObject.albumName == 'Camera').assertTrue();
-                    if (firstObject.albumName != 'Camera') {
+                    expect(firstObject.albumName == 'Static').assertTrue();
+                    if (firstObject.albumName != 'Static') {
                         console.info('MediaLibraryTest :firstObject.albumName:' + firstObject.albumName);
                     }
 
