@@ -6,13 +6,11 @@
         "package": "com.example.myapplication",
         "shell-timeout": "600000"
     },
-    "kits": [
-        {
-            "test-file-name": [
-                "window_stage_hap_test.hap"
-            ],
-            "type": "AppInstallKit",
-            "cleanup-apps": true
-        }
-    ] 
+    "kits": [{
+        "test-file-name": [
+            "ActsWindowStageTest.hap"
+        ],
+        "type": "AppInstallKit",
+        "cleanup-apps": true
+    }]
 }

@@ -18,11 +18,11 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 
-export default function windoCallbackTest(context, windowStage, abilityStorage) {
+export default function windowCallbackTest(context, windowStage, abilityStorage) {
 
   console.log('testets context 1: ' + JSON.stringify(context))
   console.log('testets context 1 windowStage 2 : ' + JSON.stringify(windowStage));
-  describe('windowApiCallback_test', function () {
+  describe('windowCallback_test', function () {
     console.log('describe testets start!!')
     const TRUE_FLAG = true;
     console.log('describe window_api_test start!!!');
@@ -120,7 +120,7 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
      * @tc.name       Test setSystemBarEnableTest10
      * @tc.desc       Verify the scene where illegal values are entered when the navigation bar and status bar are displayed or hidden
      */
-    it('setSystemBarEnableTest10', 0, done => {
+    it('setSystemBarEnableTest10', 0, function(done) {
       let caseName = 'setSystemBarEnableTest10';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let [flagStatus, flagNav] = [false, false];
@@ -182,7 +182,7 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
      * @tc.name       Test setSystemBarPropertiesTest1
      * @tc.desc       TVerify the scene where the colors of the status bar and navigation bar are set in RGB
      */
-    it('setSystemBarPropertiesTest4', 0, done => {
+    it('setSystemBarPropertiesTest4', 0, function(done) {
       let caseName = 'setSystemBarPropertiesTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = JSON.parse(JSON.stringify(commonRGBColorArr));
@@ -272,7 +272,7 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
      * @tc.name       Test setSystemBarPropertiesTest5
      * @tc.desc       Verify the scene where the status bar and navigation bar colors are set in hexadecimal form
      */
-    it('setSystemBarPropertiesTest5', 0, done => {
+    it('setSystemBarPropertiesTest5', 0, function(done) {
       let caseName = 'setSystemBarPropertiesTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = {
@@ -387,7 +387,7 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
      * @tc.name       Test setSystemBarPropertiesTest6
      * @tc.desc       TVerify the scene where the status bar and navigation bar colors are set as keywords
      */
-    it('setSystemBarPropertiesTest6', 0, done => {
+    it('setSystemBarPropertiesTest6', 0, function(done) {
       let caseName = 'setSystemBarPropertiesTest6';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = JSON.parse(JSON.stringify(commonKEYColorArr));
@@ -477,7 +477,7 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
      * @tc.name       Test create5
      * @tc.desc       Verify the scenario of creating the application type window
      */
-    it('createTest5', 0, done => {
+    it('createTest5', 0, function(done) {
       let caseName = 'createTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
@@ -507,7 +507,7 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
      * @tc.name       Test createTest6
      * @tc.desc       Verify the scenario of creating the system type window
      */
-    it('createTest6', 0, done => {
+    it('createTest6', 0, function(done) {
       let caseName = 'createTest6';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -550,7 +550,7 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
      * @tc.name       Test createTest7
      * @tc.desc       Verify the scenario of creating a window of a type that does not exist
      */
-    it('createTest7', 0, done => {
+    it('createTest7', 0, function(done) {
       let caseName = 'createTest7';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -573,7 +573,7 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
      * @tc.name       Test createTest8
      * @tc.desc       Verify the scenario of creating a window with duplicate IDs
      */
-    it('createTest8', 0, done => {
+    it('createTest8', 0, function(done) {
       let caseName = 'createTest8';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -602,7 +602,7 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
      * @tc.name       Test listenerTest5
      * @tc.desc       Verify whether the change of avoidance area and change monitoring can be turned on normally
      */
-    it('listenerTest5', 0, done => {
+    it('listenerTest5', 0, function(done) {
       let caseName = 'listenerTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let listenerOnFlag = listenerStatus.ready;
@@ -629,6 +629,15 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
             }
             expect(!data).assertTrue();
             console.log(msgStr + 'tempWnd.setFullScreen(true) success');
+
+            tempWnd.on('systemAvoidAreaChange', avoidAreaData => {
+              console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, avoidAreaData : ' + JSON.stringify(avoidAreaData));
+              if (listenerOnFlag === listenerStatus.pending) {
+                listenerOnFlag = listenerStatus.finished;
+                expect(!!avoidAreaData).assertTrue();
+              }
+              done();
+            })
             tempWnd.setSystemBarEnable([], (err,data) => {
               if (err && err.code) {
                 unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([])', done);
@@ -636,32 +645,24 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
               expect(!data).assertTrue();
               console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
               listenerOnFlag = listenerStatus.pending;
-              tempWnd.on('systemAvoidAreaChange', avoidAreaData => {
-                console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, avoidAreaData : ' + JSON.stringify(avoidAreaData));
-                if (listenerOnFlag === listenerStatus.pending) {
-                  listenerOnFlag = listenerStatus.finished;
-                  expect(!!avoidAreaData).assertTrue();
-                  done();
-                  tempWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
-                    if (err && err.code) {
-                      unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
-                    }
-                    console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-                  })
-                }
-              })
-              console.log(msgStr + 'tempWnd.on systemAvoidAreaChange finished');
             })
+            tempWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
+              if (err && err.code) {
+                unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
+              }
+              console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
+            })
+            console.log(msgStr + 'tempWnd.on systemAvoidAreaChange finished');
           })
         })
       })
     })
     /**
-* @tc.number     SUB_WINDOW_SETWINDOWTYPE_JSAPI_003
-* @tc.name       Test setWindowTypeTest3
-* @tc.desc       Verify the scenario where the normal window type is set
-*/
-    it('setWindowTypeTest3', 0, done => {
+    * @tc.number     SUB_WINDOW_SETWINDOWTYPE_JSAPI_003
+    * @tc.name       Test setWindowTypeTest3
+    * @tc.desc       Verify the scenario where the normal window type is set
+    */
+    it('setWindowTypeTest3', 0, function(done) {
       let caseName = 'setWindowTypeTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -722,7 +723,7 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
 * @tc.name       Test setWindowTypeTest4
 * @tc.desc       Verify the scene of setting illegal window type
 */
-    it('setWindowTypeTest4', 0, done => {
+    it('setWindowTypeTest4', 0, function(done) {
       let caseName = 'setWindowTypeTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -758,7 +759,7 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
 * @tc.name       Test destroyTest2
 * @tc.desc       Verification window destruction scenario
 */
-    it('destroyTest2', 0, done => {
+    it('destroyTest2', 0, function(done) {
       let caseName = 'destroyTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -803,7 +804,7 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
 	  * @tc.name       Test loadContentTest3
 	  * @tc.desc       Verify the scenario of loading an existing page
 	  */
-    it('loadContentTest3', 0, done => {
+    it('loadContentTest3', 0, function(done) {
       let caseName = 'loadContentTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -838,7 +839,7 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
 * @tc.name       Test loadContentTest4
 * @tc.desc       Verify the scenario of loading a page that does not exist
 */
-    it('loadContentTest4', 0, done => {
+    it('loadContentTest4', 0, function(done) {
       let caseName = 'loadContentTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let baseWndType = 1;
@@ -867,6 +868,86 @@ export default function windoCallbackTest(context, windowStage, abilityStorage) 
           unexpectedError(err, caseName, 'ohosWindow.create', done);
         }
       })
+    })
+    /**
+    * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_007
+    * @tc.name       Test loadContentTest7
+    * @tc.desc       Verify the scenario of loading an existing page
+    */
+    it('loadContentTest7', 0, async function (done) {
+      let caseName = 'loadContentTest7';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      windowStage.loadContent('pages/index/index.ets',(err,data) => {
+        if(err&&err.code){
+          unexpectedError(err, caseName, 'windowStage.loadContent', done);
+          console.log(msgStr+'windowStage.loadContent(pages/index/index.ets)'+JSON.stringify(err));
+        }else{
+          expect(!data).assertTrue();
+          console.log(msgStr + 'windowStage.loadContent end data='+JSON.stringify(data));
+        }
+        done();
+      });
+    })
+    /**
+    * @tc.number     SUB_WINDOW_CREATESUBWINDOW_JSAPI_003
+    * @tc.name       Test createSubWindowTest3
+    * @tc.desc       Verify the scenario of creating an auxiliary window
+    */
+    it('createSubWindowTest3', 0, function (done) {
+      let caseName = 'createSubWindowTest3';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      windowStage.createSubWindow('createSubWindowTest3',(err,data)=> {
+        if(err&&err.code){
+          unexpectedError(err, caseName, 'windowStage.createSubWindow', done);
+          console.log(msgStr+'windowStage.createSubWindow(createSubWindowTest3) err='+JSON.stringify(err));
+        }else{
+          expect(!!data).assertTrue();
+          console.log(msgStr + 'windowStage.createSubWindow end data='+JSON.stringify(data));
+        }
+        done();
+      });
+    })
+    /**
+    * @tc.number     SUB_WINDOW_CREATESUBWINDOW_JSAPI_004
+    * @tc.name       Test createSubWindowTest4
+    * @tc.desc       Verify the scene of entering illegal values to create an auxiliary window
+    */
+    it('createSubWindowTest4', 0, function (done) {
+      let caseName = 'createSubWindowTest4';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      windowStage.createSubWindow(null,(err,data)=> {
+        if(err&&err.code){
+          expectedError(err, caseName, 'windowStage.createSubWindow', done,130);
+          console.log(msgStr+'windowStage.createSubWindow(null) err='+JSON.stringify(err));
+        }else{
+          expect(false).assertTrue();
+          console.log(msgStr + 'windowStage.createSubWindow end data='+JSON.stringify(data));
+        }
+        done();
+      });
+    })
+    /**
+    * @tc.number     SUB_WINDOW_GETSUBWINDOW_JSAPI_002
+    * @tc.name       Test getSubWindowTest2
+    * @tc.desc       Verify the scene of obtaining all auxiliary sub windows
+    */
+    it('getSubWindowTest2', 0, async function (done) {
+      let caseName = 'getSubWindowTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      windowStage.getSubWindow((err,data)=> {
+        if(err&&err.code){
+          unexpectedError(err, caseName, 'windowStage.getSubWindow', done);
+          console.log(msgStr+'windowStage.getSubWindow(null) err='+JSON.stringify(err));
+        }else{
+          expect(!!data).assertTrue();
+          console.log(msgStr + 'windowStage.getSubWindow end data='+JSON.stringify(data));
+        }
+        done();
+      });
     })
   })
 }

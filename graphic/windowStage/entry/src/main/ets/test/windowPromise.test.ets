@@ -19,7 +19,7 @@ import ohosWindow from '@ohos.window';
 
 export default function windowPromiseTest(context, windowStage) {
   console.log('windowTest context: ' + JSON.stringify(context))
-  describe('window_api_test', function () {
+  describe('windowPromise_test', function () {
     console.log('describe window_api_test start!!!')
     const TRUE_FLAG = true;
     var commonRGBColorArr = ['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(255,255,255)', 'rgb(0,0,0)', 'rgb(249,0,230)', 'rgb(102,102,102)', 'rgb(255,247,0)'];
@@ -34,6 +34,7 @@ export default function windowPromiseTest(context, windowStage) {
     };
     var systemWindowValueArr = [];
     var systemWindowTypeArr = [];
+    var systemWindowTypeDicArr = [];
     var systemWindowTypeDic = {
       'TYPE_SYSTEM_ALERT': 1,
       'TYPE_INPUT_METHOD': 2,
@@ -64,7 +65,7 @@ export default function windowPromiseTest(context, windowStage) {
 
     beforeAll(function () {
       console.log('jsunittest beforeall ohosWindow.WindowType='+JSON.stringify(ohosWindow.WindowType));
-      appWindowTypeArr = Object.keys(appWindowTypeDic);
+      systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
       systemWindowValueArr = Object.keys(systemWindowTypeDic);
       systemWindowTypeArr = Object.keys(systemWindowTypeDic);
       for(i in ohosWindow.WindowType){
@@ -90,10 +91,12 @@ export default function windowPromiseTest(context, windowStage) {
     afterAll(function () {
     })
 
-    function expectedError(error, caseName, apiName, done) {
+    function expectedError(error, caseName, apiName, done,code) {
       let msgStr = 'jsunittest ' + caseName + ' ' + apiName + ' failed, err: ';
       console.log(msgStr + JSON.stringify(error));
-      expect(TRUE_FLAG).assertTrue();
+      if(error.code === code){
+        expect(TRUE_FLAG).assertTrue();
+      }
       done();
     }
 
@@ -142,11 +145,9 @@ export default function windowPromiseTest(context, windowStage) {
               navigationFlag = listenerStatus.finished;
               expect(!tempData.isEnable).assertTrue();
             }
-            if (statusFlag === listenerStatus.finished && navigationFlag === listenerStatus.finished) {
-              done();
-            }
           }
         }
+        done();
       })
       console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -211,11 +212,12 @@ export default function windowPromiseTest(context, windowStage) {
               navigationFlag = listenerStatus.finished;
               expect(tempData.isEnable).assertTrue();
             }
-            if (statusFlag === listenerStatus.finished && navigationFlag === listenerStatus.finished) {
-              done();
-            }
+//            if (statusFlag === listenerStatus.finished && navigationFlag === listenerStatus.finished) {
+//              done();
+//            }
           }
         }
+        done();
       })
       console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -280,11 +282,12 @@ export default function windowPromiseTest(context, windowStage) {
               navigationFlag = listenerStatus.finished;
               expect(tempData.isEnable).assertTrue();
             }
-            if (statusFlag === listenerStatus.finished && navigationFlag === listenerStatus.finished) {
-              done();
-            }
+//            if (statusFlag === listenerStatus.finished && navigationFlag === listenerStatus.finished) {
+//              done();
+//            }
           }
         }
+        done();
       })
       console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -310,13 +313,13 @@ export default function windowPromiseTest(context, windowStage) {
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
-      console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      setTimeout(() => {
-        if (statusFlag !== listenerStatus.finished || navigationFlag !== listenerStatus.finished) {
-          let apiStr = 'tempWnd.on systemBarTintChange time wait';
-          unexpectedError(null, caseName, apiStr, done);
-        }
-      }, 5000)
+      console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success .');
+//      setTimeout(() => {
+//        if (statusFlag !== listenerStatus.finished || navigationFlag !== listenerStatus.finished) {
+//          let apiStr = 'tempWnd.on systemBarTintChange time wait';
+//          unexpectedError(null, caseName, apiStr, done);
+//        }
+//      }, 5000)
     })
 
     /**
@@ -349,11 +352,12 @@ export default function windowPromiseTest(context, windowStage) {
               navigationFlag = listenerStatus.finished;
               expect(!tempData.isEnable).assertTrue();
             }
-            if (statusFlag === listenerStatus.finished && navigationFlag === listenerStatus.finished) {
-              done();
-            }
+//            if (statusFlag === listenerStatus.finished && navigationFlag === listenerStatus.finished) {
+//              done();
+//            }
           }
         }
+        done();
       })
       console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -400,7 +404,7 @@ export default function windowPromiseTest(context, windowStage) {
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
         unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
       });
-      console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
+      console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + JSON.stringify(tempWnd));
       expect(!!tempWnd).assertTrue();
       await tempWnd.show().catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.show', done);
@@ -408,6 +412,7 @@ export default function windowPromiseTest(context, windowStage) {
       console.log(msgStr + 'tempWnd.show success');
       await tempWnd.setFullScreen(true).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setFullScreen(true)', done);
+        console.log(msgStr + 'tempWnd.setFullScreen(true) err'+JSON.stringify(err));
       });
       console.log(msgStr + 'tempWnd.setFullScreen(true) success');
       await tempWnd.setSystemBarEnable([]).catch((err) => {
@@ -415,7 +420,9 @@ export default function windowPromiseTest(context, windowStage) {
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
       await tempWnd.setSystemBarEnable([null, '123']).catch((err) => {
-        expectedError(err, caseName, 'tempWnd.setSystemBarEnable([null, 123])', done);
+        console.log(msgStr + 'tempWnd.setSystemBarEnable([null, 123]) err='+JSON.stringify(err));
+        expect(err.code === 130).assertTrue();
+        done();
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([null, 123]) finished');
     })
@@ -452,6 +459,7 @@ export default function windowPromiseTest(context, windowStage) {
             }
           }
         }
+        done();
       })
       console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -555,6 +563,7 @@ export default function windowPromiseTest(context, windowStage) {
             }
           }
         }
+        done();
       })
       console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -592,7 +601,6 @@ export default function windowPromiseTest(context, windowStage) {
         }, (err) => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties failed, err : ' + JSON.stringify(err));
           expect(TRUE_FLAG).assertFail();
-          done();
         })
       }
       setTimeout(() => {
@@ -629,6 +637,7 @@ export default function windowPromiseTest(context, windowStage) {
           let arrLength = systemBarData.regionTint.length;
           for (let i = 0; i < arrLength; i++) {
             let tempData = systemBarData.regionTint[i];
+            console.log(msgStr +'i='+i+ '   , ohosWindow.on for='+JSON.stringify(tempData));
             if (tempData.type === 2108 || tempData.type === 2112) {
               console.log(msgStr + 'systemBarTintChange compare start!');
               compareCount++;
@@ -639,6 +648,7 @@ export default function windowPromiseTest(context, windowStage) {
             }
           }
         }
+        done();
       })
       console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
@@ -698,17 +708,15 @@ export default function windowPromiseTest(context, windowStage) {
       let loopCount = appWindowTypeArr.length;
       console.log('jsunittest loopCount: ' + loopCount);
       for (let i = 0; i < loopCount; i++) {
-        let tempType = appWindowTypeDic[appWindowTypeArr[i]];
+        let tempType = systemWindowTypeDic[systemWindowTypeDicArr[i]];
         let windId = 'createTest1' + i;
         console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
         let tempWnd = await ohosWindow.create(context, windId, tempType).catch((err) => {
             console.log(msgStr + 'ohosWindow.create ' + tempType + 'catched, err: ' + JSON.stringify(err));
-              expectedError(err, caseName, 'ohosWindow.create ' + tempType, done);
+            unexpectedError(err, caseName, 'ohosWindow.create ' + tempType, done);
         });
         console.log(msgStr + 'ohosWindow.create ' + tempType + 'finished, wnd: ' + tempWnd);
         expect(!tempWnd).assertTrue();
-        if (i === loopCount - 1) {
-        }
       }
       console.log(msgStr + 'done ');
       done();
@@ -730,6 +738,146 @@ export default function windowPromiseTest(context, windowStage) {
         expect(err.code === 130).assertTrue();
         done();
       });
+    })
+    /**
+    * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_001
+    * @tc.name       Test loadContentTest1
+    * @tc.desc       Verify the scenario of loading an existing page
+    */
+    it('loadContentTest1', 0, async function (done) {
+      let caseName = 'loadContentTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let baseWndType = 1;
+      let windowId = 'loadContentTest1';
+      console.log(msgStr + 'begin');
+      let tempWnd = await ohosWindow.create(context, windowId, baseWndType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create', done);
+      });
+      console.log(msgStr + 'ohosWindow.create ' + baseWndType + '  , wnd: ' + tempWnd);
+      expect(!!tempWnd).assertTrue();
+      console.log(msgStr + 'tempWnd.loadContent start');
+      let load =  await tempWnd.loadContent('pages/second/second').catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.loadContent', done);
+        console.log(msgStr+'tempWnd.loadContent(pages/second/second) err='+JSON.stringify(err));
+      });
+      console.log(msgStr+'tempWnd.loadContent(pages/second/second) load='+JSON.stringify(load));
+      expect(!load).assertTrue();
+      done();
+    })
+
+    /**
+    * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_002
+    * @tc.name       Test loadContentTest2
+    * @tc.desc       Verify the scene of loading the page with illegal values
+    */
+    it('loadContentTest2', 0, async function (done) {
+      let caseName = 'loadContentTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let baseWndType = 1;
+      let windowId = 'loadContentTest2';
+      console.log(msgStr + 'begin');
+      let tempWnd = await ohosWindow.create(context, windowId, baseWndType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create', done);
+      });
+      console.log(msgStr + 'ohosWindow.create ' + baseWndType + ' wnd: ' + tempWnd);
+      expect(!!tempWnd).assertTrue();
+      console.log(msgStr + 'tempWnd.loadContent start');
+      let errFlag = false;
+      await tempWnd.loadContent(null).catch((err) => {
+        errFlag = true;
+        expectedError(err, caseName, 'tempWnd.loadContent', done, 130);
+        console.log(msgStr+'tempWnd.loadContent(null)'+JSON.stringify(err));
+      });
+      console.log(msgStr + 'tempWnd.loadContent end');
+      if (!errFlag) {
+        console.log(msgStr + 'should report err');
+        expect(TRUE_FLAG).assertFail();
+        done();
+      }
+    })
+
+    /**
+    * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_005
+    * @tc.name       Test loadContentTest5
+    * @tc.desc       Verify the scenario of loading an existing page
+    */
+    it('loadContentTest5', 0, async function (done) {
+      let caseName = 'loadContentTest5';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let load5 =  await windowStage.loadContent('pages/index/index.ets').catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.loadContent', done);
+        console.log(msgStr+'tempWnd.loadContent(pages/index/index.ets)'+JSON.stringify(err));
+      });
+      expect(!load5).assertTrue();
+      console.log(msgStr + 'tempWnd.loadContent end load='+JSON.stringify(load5));
+      done();
+    })
+    /**
+    * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_006
+    * @tc.name       Test loadContentTest6
+    * @tc.desc       Verify the scenario of loading an existing page
+    */
+    it('loadContentTest6', 0, async function (done) {
+      let caseName = 'loadContentTest6';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let load6 =  await windowStage.loadContent(null).catch((err) => {
+        expectedError(err, caseName, 'tempWnd.loadContent', done, 130);
+        console.log(msgStr+'tempWnd.loadContent(null)'+JSON.stringify(err));
+      });
+      console.log(msgStr + 'tempWnd.loadContent end load='+JSON.stringify(load6));
+      done();
+    })
+    /**
+    * @tc.number     SUB_WINDOW_CREATESUBWINDOW_JSAPI_001
+    * @tc.name       Test createSubWindowTest1
+    * @tc.desc       Verify the scenario of creating an auxiliary window
+    */
+    it('createSubWindowTest1', 0, async function (done) {
+      let caseName = 'createSubWindowTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWindow =  await windowStage.createSubWindow('createSubWindowTest1').catch((err) => {
+        unexpectedError(err, caseName, 'windowStage.createSubWindow', done);
+        console.log(msgStr+'windowStage.createSubWindow(createSubWindowTest1)='+JSON.stringify(err));
+      });
+      expect(!!subWindow).assertTrue();
+      console.log(msgStr + 'windowStage.createSubWindow end subWindow='+JSON.stringify(subWindow));
+      done();
+    })
+    /**
+    * @tc.number     SUB_WINDOW_CREATESUBWINDOW_JSAPI_002
+    * @tc.name       Test createSubWindowTest2
+    * @tc.desc       Verify the scene of entering illegal values to create an auxiliary window
+    */
+    it('createSubWindowTest2', 0, async function (done) {
+      let caseName = 'createSubWindowTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWindow =  await windowStage.createSubWindow(null).catch((err) => {
+        expectedError(err, caseName, 'windowStage.createSubWindow', done,130);
+        console.log(msgStr+'windowStage.createSubWindow(null) err='+JSON.stringify(err));
+      });
+      console.log(msgStr + 'windowStage.createSubWindow end subWindow='+JSON.stringify(subWindow));
+      done();
+    })
+    /**
+    * @tc.number     SUB_WINDOW_GETSUBWINDOW_JSAPI_001
+    * @tc.name       Test getSubWindowTest1
+    * @tc.desc       Verify the scene of obtaining all auxiliary sub windows
+    */
+    it('getSubWindowTest1', 0, async function (done) {
+      let caseName = 'getSubWindowTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let subWindow =  await windowStage.getSubWindow().catch((err) => {
+        unexpectedError(err, caseName, 'windowStage.getSubWindow', done);
+        console.log(msgStr+'windowStage.getSubWindow(null) err='+JSON.stringify(err));
+      });
+      expect(!!subWindow).assertTrue();
+      console.log(msgStr + 'windowStage.getSubWindow end subWindow='+JSON.stringify(subWindow));
+      done();
     })
   })
 }
