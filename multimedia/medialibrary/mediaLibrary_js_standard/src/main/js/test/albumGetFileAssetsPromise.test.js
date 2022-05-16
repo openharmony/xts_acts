@@ -33,7 +33,10 @@ describe('albumGetFileAssetsPromise.test.js', async function () {
     let audioType = mediaLibrary.MediaType.AUDIO;
     const count = 3;
     const countOne = 1;
-
+    let allTypefetchOp = {
+        selections: '',
+        selectionArgs: [],
+    };
     /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_001_01
      * @tc.name      : getFileAssets
@@ -45,8 +48,8 @@ describe('albumGetFileAssetsPromise.test.js', async function () {
     it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_001_01', 0, async function (done) {
         try {
             let allTypefetchOp = {
-                selections: '',
-                selectionArgs: [],
+                selections: fileKeyObj.ALBUM_NAME + '= ? ',
+                selectionArgs: ['AblumInfo'],
                 order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(allTypefetchOp);
@@ -72,14 +75,14 @@ describe('albumGetFileAssetsPromise.test.js', async function () {
     it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_001_02', 0, async function (done) {
         try {
             let imageAlbumfetchOp = {
-                selections: fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: ['Pictures', imageType.toString()],
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Pictures/', 'Static', imageType.toString()],
                 order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(imageAlbumfetchOp);
 
             const album = albumList[0];
-            const fetchFileResult = await album.getFileAssets(imageAlbumfetchOp);
+            const fetchFileResult = await album.getFileAssets();
             expect(fetchFileResult.getCount() == count).assertTrue();
             done();
         } catch (error) {
@@ -99,14 +102,14 @@ describe('albumGetFileAssetsPromise.test.js', async function () {
     it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_001_03', 0, async function (done) {
         try {
             let audioAlbumfetchOp = {
-                selections: fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: ['Pictures', audioType.toString()],
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Audios/', 'Static', audioType.toString()],
                 order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(audioAlbumfetchOp);
 
             const album = albumList[0];
-            const fetchFileResult = await album.getFileAssets(audioAlbumfetchOp);
+            const fetchFileResult = await album.getFileAssets();
 
             expect(fetchFileResult.getCount() == count).assertTrue();
             done();
@@ -127,13 +130,13 @@ describe('albumGetFileAssetsPromise.test.js', async function () {
     it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_001_04', 0, async function (done) {
         try {
             let videoAlbumfetchOp = {
-                selections: fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: ['Pictures', videoType.toString()],
+                selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.ALBUM_NAME + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+                selectionArgs: ['Videos/', 'Static', videoType.toString()],
                 order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(videoAlbumfetchOp);
             const album = albumList[0];
-            const fetchFileResult = await album.getFileAssets(videoAlbumfetchOp);
+            const fetchFileResult = await album.getFileAssets();
 
             expect(fetchFileResult.getCount() == count).assertTrue();
             done();
@@ -154,13 +157,16 @@ describe('albumGetFileAssetsPromise.test.js', async function () {
     it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_001_05', 0, async function (done) {
         try {
             let imageAndVideoAlbumfetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [imageType.toString(), videoType.toString()],
+                selections: '(' + fileKeyObj.RELATIVE_PATH + '= ? or ' + fileKeyObj.RELATIVE_PATH + '= ? ) AND ' +
+                    fileKeyObj.ALBUM_NAME + '= ? AND (' +
+                    fileKeyObj.MEDIA_TYPE + '= ? or ' +
+                    fileKeyObj.MEDIA_TYPE + '= ?)',
+                selectionArgs: ['Pictures/', 'Videos/', 'AblumInfo', imageType.toString(), videoType.toString()],
                 order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(imageAndVideoAlbumfetchOp);
             const album = albumList[0];
-            const fetchFileResult = await album.getFileAssets(imageAndVideoAlbumfetchOp);
+            const fetchFileResult = await album.getFileAssets(allTypefetchOp);
             expect(fetchFileResult.getCount() == count).assertTrue();
             done();
         } catch (error) {
@@ -180,13 +186,16 @@ describe('albumGetFileAssetsPromise.test.js', async function () {
     it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_001_06', 0, async function (done) {
         try {
             let imageAndAudioAlbumfetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [imageType.toString(), audioType.toString()],
+                selections: '(' + fileKeyObj.RELATIVE_PATH + '= ? or ' + fileKeyObj.RELATIVE_PATH + '= ? ) AND ' +
+                    fileKeyObj.ALBUM_NAME + '= ? AND (' +
+                    fileKeyObj.MEDIA_TYPE + '= ? or ' +
+                    fileKeyObj.MEDIA_TYPE + '= ?)',
+                selectionArgs: ['Pictures/', 'Audios/', 'AblumInfo', imageType.toString(), audioType.toString()],
                 order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(imageAndAudioAlbumfetchOp);
             const album = albumList[0];
-            const fetchFileResult = await album.getFileAssets(imageAndAudioAlbumfetchOp);
+            const fetchFileResult = await album.getFileAssets(allTypefetchOp);
             expect(fetchFileResult.getCount() == count).assertTrue();
             done();
         } catch (error) {
@@ -206,13 +215,16 @@ describe('albumGetFileAssetsPromise.test.js', async function () {
     it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_001_07', 0, async function (done) {
         try {
             let videoAndAudioAlbumfetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [videoType.toString(), audioType.toString()],
+                selections: '(' + fileKeyObj.RELATIVE_PATH + '= ? or ' + fileKeyObj.RELATIVE_PATH + '= ? ) AND ' +
+                    fileKeyObj.ALBUM_NAME + '= ? AND (' +
+                    fileKeyObj.MEDIA_TYPE + '= ? or ' +
+                    fileKeyObj.MEDIA_TYPE + '= ?)',
+                selectionArgs: ['Videos/', 'Audios/', 'AblumInfo', audioType.toString(), videoType.toString()],
                 order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(videoAndAudioAlbumfetchOp);
             const album = albumList[0];
-            const fetchFileResult = await album.getFileAssets(videoAndAudioAlbumfetchOp);
+            const fetchFileResult = await album.getFileAssets(allTypefetchOp);
             expect(fetchFileResult.getCount() == count).assertTrue();
             done();
         } catch (error) {
@@ -232,14 +244,17 @@ describe('albumGetFileAssetsPromise.test.js', async function () {
     it('SUB_MEDIA_MEDIALIBRARY_ALBUM_GET_ASSETS_PROMISE_001_08', 0, async function (done) {
         try {
             let imgAndVideoAndAudioAlbumfetchOp = {
-                selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ? or '
-                    + fileKeyObj.MEDIA_TYPE + '= ?',
-                selectionArgs: [imageType.toString(), videoType.toString(), audioType.toString()],
+                selections: '(' + fileKeyObj.RELATIVE_PATH + '= ? or ' + fileKeyObj.RELATIVE_PATH + '= ? or ' + fileKeyObj.RELATIVE_PATH + '= ? ) AND ' +
+                    fileKeyObj.ALBUM_NAME + '= ? AND (' +
+                    fileKeyObj.MEDIA_TYPE + '= ? or ' +
+                    fileKeyObj.MEDIA_TYPE + '= ? or ' +
+                    fileKeyObj.MEDIA_TYPE + '= ?)',
+                selectionArgs: ['Pictures/', 'Videos/', 'Audios/', 'AblumInfo', imageType.toString(), videoType.toString(), audioType.toString()],
                 order: 'date_added DESC LIMIT 0,3',
             };
             const albumList = await media.getAlbums(imgAndVideoAndAudioAlbumfetchOp);
             const album = albumList[0];
-            const fetchFileResult = await album.getFileAssets(imgAndVideoAndAudioAlbumfetchOp);
+            const fetchFileResult = await album.getFileAssets(allTypefetchOp);
             expect(fetchFileResult.getCount() == count).assertTrue();
             done();
         } catch (error) {

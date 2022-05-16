@@ -47,8 +47,8 @@ describe('fileAssetCallBack2.test.js', async function () {
     let videoType = mediaLibrary.MediaType.VIDEO;
     let audioType = mediaLibrary.MediaType.AUDIO;
     let imagesfetchOp = {
-        selections: fileKeyObj.MEDIA_TYPE + '= ?',
-        selectionArgs: [imageType.toString()],
+        selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.MEDIA_TYPE + '= ?',
+        selectionArgs: ['Pictures/Dynamic/', imageType.toString()],
     };
 
     let videosfetchOp = {
@@ -66,10 +66,10 @@ describe('fileAssetCallBack2.test.js', async function () {
     };
     const context = featureAbility.getContext();
     const media = mediaLibrary.getMediaLibrary(context);
-    beforeAll(function () {});
-    beforeEach(function () {});
-    afterEach(function () {});
-    afterAll(function () {});
+    beforeAll(function () { });
+    beforeEach(function () { });
+    afterEach(function () { });
+    afterAll(function () { });
 
     /**
      * @tc.number    : SUB_MEDIA_FILEASSET_commitModify_callback_001
@@ -83,25 +83,19 @@ describe('fileAssetCallBack2.test.js', async function () {
         try {
             const fetchFileResult = await media.getFileAssets(imagesfetchOp);
             const asset = await fetchFileResult.getFirstObject();
-            const newName = 'newName';
+            const newName = 'newName' + new Date().getTime();
             asset.displayName = newName;
             const id = asset.id;
-            asset.commitModify(async ()=>{
-                const fetchFileResult2 = await media.getFileAssets(imagesfetchOp);
-                const dataList = await fetchFileResult2.getAllObject();
-                let passed = false;
-                for (let i = 0; i < dataList.length; i++) {
-                    const asset = dataList[i];
-                    if (asset.id == id && asset.displayName == newName) {
-                        passed = true;
-                        break;
-                    }
-                }
-                expect(passed).assertTrue();
+            asset.commitModify(async () => {
+                let currentfetchOp = {
+                    selections: fileKeyObj.ID + '= ?',
+                    selectionArgs: [id + ''],
+                };
+                const fetchFileResult2 = await media.getFileAssets(currentfetchOp);
+                const currentAsset = await fetchFileResult2.getFirstObject();
+                expect(currentAsset.displayName == newName).assertTrue();
                 done();
             });
-
-            
         } catch (error) {
             console.info('FileAsset commitModify 001 failed, message = ' + error);
             expect(false).assertTrue();
@@ -121,21 +115,17 @@ describe('fileAssetCallBack2.test.js', async function () {
         try {
             const fetchFileResult = await media.getFileAssets(imagesfetchOp);
             const asset = await fetchFileResult.getFirstObject();
-            const newTitle = 'newTitle';
+            const newTitle = 'newTitle' + new Date().getTime();
             asset.title = newTitle;
             const id = asset.id;
             asset.commitModify(async () => {
-                const fetchFileResult2 = await media.getFileAssets(imagesfetchOp);
-                const dataList = await fetchFileResult2.getAllObject();
-                let passed = false;
-                for (let i = 0; i < dataList.length; i++) {
-                    const asset = dataList[i];
-                    if (asset.id == id && asset.title == newTitle) {
-                        passed = true;
-                        break;
-                    }
-                }
-                expect(passed).assertTrue();
+                let currentfetchOp = {
+                    selections: fileKeyObj.ID + '= ?',
+                    selectionArgs: [id + ''],
+                };
+                const fetchFileResult2 = await media.getFileAssets(currentfetchOp);
+                const currentAsset = await fetchFileResult2.getFirstObject();
+                expect(currentAsset.title == newTitle).assertTrue();
                 done();
             });
         } catch (error) {
@@ -155,32 +145,20 @@ describe('fileAssetCallBack2.test.js', async function () {
      */
     it('SUB_MEDIA_FILEASSET_commitModify_callback_003', 0, async function (done) {
         try {
-            const path1 = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE);
-
-            const path2 = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
-
             const fetchFileResult = await media.getFileAssets(imagesfetchOp);
             const asset = await fetchFileResult.getFirstObject();
-            let relativePath = asset.relativePath;
-            let newrelativePath = path1;
-            if (relativePath == path1) {
-                newrelativePath = path2;
-            }
+            let newrelativePath = 'Pictures/Temp/';
 
             asset.relativePath = newrelativePath;
             const id = asset.id;
             asset.commitModify(async () => {
-                const fetchFileResult2 = await media.getFileAssets(imagesfetchOp);
-                const dataList = await fetchFileResult2.getAllObject();
-                let passed = false;
-                for (let i = 0; i < dataList.length; i++) {
-                    const asset = dataList[i];
-                    if (asset.id == id && asset.relativePath == newrelativePath) {
-                        passed = true;
-                        break;
-                    }
-                }
-                expect(passed).assertTrue();
+                let currentfetchOp = {
+                    selections: fileKeyObj.ID + '= ?',
+                    selectionArgs: [id + ''],
+                };
+                const fetchFileResult2 = await media.getFileAssets(currentfetchOp);
+                const currentAsset = await fetchFileResult2.getFirstObject();
+                expect(currentAsset.relativePath == newrelativePath).assertTrue();
                 done();
             });
         } catch (error) {
@@ -209,17 +187,13 @@ describe('fileAssetCallBack2.test.js', async function () {
             asset.orientation = neworientation;
             const id = asset.id;
             asset.commitModify(async () => {
-                const fetchFileResult2 = await media.getFileAssets(imagesfetchOp);
-                const dataList = await fetchFileResult2.getAllObject();
-                let passed = false;
-                for (let i = 0; i < dataList.length; i++) {
-                    const asset = dataList[i];
-                    if (asset.id == id && asset.orientation == neworientation) {
-                        passed = true;
-                        break;
-                    }
-                }
-                expect(passed).assertTrue();
+                let currentfetchOp = {
+                    selections: fileKeyObj.ID + '= ?',
+                    selectionArgs: [id + ''],
+                };
+                const fetchFileResult2 = await media.getFileAssets(currentfetchOp);
+                const currentAsset = await fetchFileResult2.getFirstObject();
+                expect(currentAsset.orientation == neworientation).assertTrue();
                 done();
             });
         } catch (error) {
@@ -247,9 +221,9 @@ describe('fileAssetCallBack2.test.js', async function () {
             asset.uri = newUri;
 
             asset.commitModify(async (err) => {
-                if(err) {
+                if (err) {
                     expect(true).assertTrue();
-                    done(); 
+                    done();
                 } else {
                     console.info('FileAsset commitModify 005 failed');
                     expect(false).assertTrue();
@@ -257,7 +231,7 @@ describe('fileAssetCallBack2.test.js', async function () {
                 }
             });
 
-            
+
         } catch (error) {
             console.info('FileAsset commitModify 005 passed');
             expect(true).assertTrue();
@@ -283,7 +257,7 @@ describe('fileAssetCallBack2.test.js', async function () {
             asset.mediaType = newMediaType;
 
             asset.commitModify(async (err) => {
-                if(err) {
+                if (err) {
                     expect(true).assertTrue();
                     done();
                 } else {
@@ -312,7 +286,7 @@ describe('fileAssetCallBack2.test.js', async function () {
             const fetchFileResult = await media.getFileAssets(imagesfetchOp);
             const asset = await fetchFileResult.getFirstObject();
             asset.isDirectory((err, isDir) => {
-                if(isDir == undefined) {
+                if (isDir == undefined) {
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -339,7 +313,7 @@ describe('fileAssetCallBack2.test.js', async function () {
         try {
             const fetchFileResult = await media.getFileAssets(imagesfetchOp);
             fetchFileResult.getFirstObject((err, asset) => {
-                if(asset == undefined) {
+                if (asset == undefined) {
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -366,7 +340,7 @@ describe('fileAssetCallBack2.test.js', async function () {
         try {
             const fetchFileResult = await media.getFileAssets(videosfetchOp);
             fetchFileResult.getFirstObject((err, asset) => {
-                if(asset == undefined) {
+                if (asset == undefined) {
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -392,8 +366,8 @@ describe('fileAssetCallBack2.test.js', async function () {
     it('SUB_MEDIA_FILEASSET_checkAttr_callback_003', 0, async function (done) {
         try {
             const fetchFileResult = await media.getFileAssets(audiosfetchOp);
-            fetchFileResult.getFirstObject((err, asset)=>{
-                if(asset == undefined) {
+            fetchFileResult.getFirstObject((err, asset) => {
+                if (asset == undefined) {
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -421,8 +395,8 @@ describe('fileAssetCallBack2.test.js', async function () {
             const albumList = await media.getAlbums(allTypefetchOp);
             const album = albumList[0];
             const fetchFileResult = await album.getFileAssets(allTypefetchOp);
-             fetchFileResult.getFirstObject((err, asset) => {
-                if(asset == undefined) {
+            fetchFileResult.getFirstObject((err, asset) => {
+                if (asset == undefined) {
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -430,7 +404,7 @@ describe('fileAssetCallBack2.test.js', async function () {
                     checkAttrs(done, asset, '004');
                 }
             });
-            
+
         } catch (error) {
             console.info('FileAsset checkAttr 003 failed, message = ' + error);
             expect(false).assertTrue();
