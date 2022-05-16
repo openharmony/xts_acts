@@ -18,7 +18,7 @@ ohos_js_hap_suite("ActsWindowStageTest") {
   js_build_mode = "debug"
   deps = [
     ":windowStage_js_assets",
-    ":windowStage_resources"
+    ":windowStage_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
