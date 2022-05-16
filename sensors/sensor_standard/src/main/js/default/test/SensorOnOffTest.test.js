@@ -45,18 +45,20 @@ describe('SystemParameterTest', function () {
     afterEach(function () {
         console.info('afterEach caled')
     })
-
-    let testSensorId = 0;
+	
+	let testSensorId = 0; 
     let testNullSensorId = -1;
 
-    /**
+
+	/**
      * @tc.number    SUB_SENSORS_Sensor_JSTest_0010
      * @tc.name      testRegisterSensortest001
      * @tc.desc      test get sensor data by sensor id.
      */
     it('SUB_SENSORS_Sensor_JSTest_0010', 0, async function (done) {
         console.info('SUB_SENSORS_Sensor_JSTest_0010 start');
-        await sensor.on(testSensorId, function (data) {
+        try{
+		sensor.on(testSensorId, function (data) {
             if (data) {
                 console.info('testRegisterSensortest001  on success');
                 expect(data.x).assertInstanceOf('Number');
@@ -68,10 +70,15 @@ describe('SystemParameterTest', function () {
                 done();
             }
         });
+		} catch (error) {
+            console.info(error);
+            expect(true).assertTrue();
+            done();
+        }
         console.info('SUB_SENSORS_Sensor_JSTest_0010 end');
     })
-
-    /**
+  
+      /**
      * @tc.number    SUB_SENSORS_Sensor_JSTest_0020
      * @tc.name      testRegisterSensortest002
      * @tc.desc      test get sensor data by wrong sensor id.
@@ -92,5 +99,4 @@ describe('SystemParameterTest', function () {
         }
         console.info('SUB_SENSORS_Sensor_JSTest_0020 end'); 
     })
-
 })
