@@ -18,6 +18,7 @@ group("bundlemanager") {
   if (is_standard_system) {
     deps = [
       "actsbmsaccesstokentest:ActsBmsAccessTokenTest",
+      "actsbmsetsmodulenametest:ActsBmsEtsModuleNameTest",
       "actsbmsetsunpermissiontest:ActsBmsEtsUnPermissionTest",
       "actsbmsgetinfostest:ActsBmsGetInfosTest",
       "actsbmshapmoduletest:ActsBmsHapModuleTest",
@@ -46,6 +47,8 @@ group("bundlemanager") {
       "sceneProject/bmsgetinfosthirdscene:bmsThirdBundleTest3",
       "sceneProject/bmsmainabilityfirstscene:bmsMainAbilityFirstScene",
       "sceneProject/bmsmainabilitysecondscene:bmsMainAbilitySecondScene",
+      "sceneProject/bmsmodulenameone:bmsModuleNameTest1",
+      "sceneProject/bmsmodulenametwo:bmsModuleNameTest2",
       "sceneProject/bmsscenefive:bmsJstest5",
       "sceneProject/bmsscenefour:bmsJstest4",
       "sceneProject/bmssceneone:bmsJstest1",
