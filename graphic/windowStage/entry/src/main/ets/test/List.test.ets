@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 import windowPromiseTest from './windowPromise.test.ets'
-import windoCallbackTest from './windowCallback.test.ets'
+import windowCallbackTest from './windowCallback.test.ets'
 
 export default function testsuite(context, windowStage, abilityStorage) {
-  windoCallbackTest(context, windowStage, abilityStorage)
+  windowCallbackTest(context, windowStage, abilityStorage)
   windowPromiseTest(context, windowStage, abilityStorage)
 }
