@@ -106,6 +106,9 @@ describe('window_test', function () {
                 expect(!data.isKeepScreenOn).assertTrue();
                 expect(!data.isTransparent).assertTrue();
                 expect(data.brightness != null).assertTrue();
+                expect(data.dimBehindValue).assertEqual(undefined);
+                expect(!data.isRoundCorner).assertTrue();
+                expect(!data.isPrivacyMode).assertTrue();
                 done();
             }, (err) => {
                 console.log('windowTest getPropertiesTest1 wnd.getProperties failed, err : ' + JSON.stringify(err));
@@ -147,6 +150,9 @@ describe('window_test', function () {
                     expect(!data.isKeepScreenOn).assertTrue();
                     expect(!data.isTransparent).assertTrue();
                     expect(data.brightness != null).assertTrue();
+                    expect(data.dimBehindValue).assertEqual(undefined);
+                    expect(!data.isRoundCorner).assertTrue();
+                    expect(!data.isPrivacyMode).assertTrue();
                     done();
                 }
             })
@@ -1883,7 +1889,7 @@ describe('window_test', function () {
      */
     it('setScreenActiveMode_Test_001', 0, async function (done) {
         console.log('screenshotTest setScreenActiveModeTest1 begin');
-        screen.getAllScreen().then(src => {
+        screen.getAllScreens().then(src => {
             console.log('screenshotTest setScreenActiveModeTest1 getAllScreen src' + src);
             expect(src[0] != null).assertTrue();
             let screenIndex = src[0];
@@ -1909,7 +1915,7 @@ describe('window_test', function () {
      */
     it('setScreenActiveMode_Test_002', 0, async function (done) {
         console.log('screenshotTest setScreenActiveModeTest2 begin');
-        screen.getAllScreen().then(src => {
+        screen.getAllScreens().then(src => {
             console.log('screenshotTest setScreenActiveModeTest2 getAllScreen src' + src);
             expect(src[0] != null).assertTrue();
             let screenIndex = src[0];
@@ -1940,6 +1946,22 @@ describe('window_test', function () {
             done();
         } catch (err) {
             console.log('test enum value of windowStageEventType error ' + JSON.stringify(err));
+        }
+    })
+
+    /**
+     * @tc.number		SUB_WMS_ENUM_WINDOWTYPE_JSAPI_001
+     * @tc.name			Test enumWindowType_Test_001.
+     * @tc.desc			To test the enum value of WindowType.
+     */
+    it('enumWindowType_Test_001', 0, async function (done) {
+        console.log('windowTest the enum value of Window begin');
+        try {
+            expect(0).assertEqual(window.WindowType.TYPE_APP);
+            expect(1).assertEqual(window.WindowType.TYPE_SYSTEM_ALERT);
+            done();
+        } catch (err) {
+            console.log('windowTest enum value of WindowType error ' + JSON.stringify(err));
         }
     })
 
@@ -2164,7 +2186,7 @@ describe('window_test', function () {
                 done();
             })
         }, (err) => {
-            console.log('windowTest setFocusableTest4 getTopWindow failed: err' + JSON.stringify(err));
+            console.log('windowTest setFocusableTest5 getTopWindow failed: err' + JSON.stringify(err));
             expect().assertFail();
             done();
         })
@@ -2187,17 +2209,17 @@ describe('window_test', function () {
                     wnd.getProperties().then(data => {
                         expect(!data.touchable).assertTrue();
                         wnd.setTouchable(true).then(() => {
-                            console.log('windowTest setTouchableTest2 setTouchable(true) success ');
+                            console.log('windowTest setTouchableTest1 setTouchable(true) success ');
                             wnd.getProperties().then(data => {
                                 expect(data.touchable).assertTrue();
                                 done();
                             }, (err) => {
-                                console.log('windowTest setTouchableTest2 getProperties failed: err' + JSON.stringify(err));
+                                console.log('windowTest setTouchableTest1 getProperties failed: err' + JSON.stringify(err));
                                 expect().assertFail();
                                 done();
                             })
                         }, (err) => {
-                            console.log('windowTest setTouchableTest2 setTouchable failed: err' + JSON.stringify(err));
+                            console.log('windowTest setTouchableTest1 setTouchable failed: err' + JSON.stringify(err));
                             expect().assertFail();
                             done();
                         })
@@ -2325,7 +2347,7 @@ describe('window_test', function () {
             }
             done();
         }, (err) => {
-            console.log('windowTest setKeepScreenOnTest1 getTopWindow failed: err' + JSON.stringify(err));
+            console.log('windowTest setKeepScreenOnTest2 getTopWindow failed: err' + JSON.stringify(err));
             expect().assertFail();
             done();
         })
