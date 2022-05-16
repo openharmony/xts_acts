@@ -17,7 +17,7 @@ group("graphic") {
   if (is_standard_system) {
     deps = [
       "webGL:webGL_hap_test",
-      "windowStage:window_stage_hap_test",
+      "windowStage:ActsWindowStageTest",
       "windowstandard:window_hap_test",
     ]
   } else {
