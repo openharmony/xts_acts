@@ -9,23 +9,11 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsEdmJsTest.hap"
+                "ActsEdmJsTest.hap",
+                "edmJstest1.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
-            "type": "PushKit",
-            "push": [
-                "edmJstest1.hap->/data/edmJstest1.hap"
-            ]
-            
-        },
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "chmod 644 /data/*.hap"
-            ]
         }
     ]
 }
