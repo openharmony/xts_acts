@@ -16,8 +16,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import bundle from '@ohos.bundle'
 import enterpriseDeviceManager from '@ohos.enterpriseDeviceManager'
 
-const PATH = "/data/"
-const EDMJSTEST1 = "edmJstest1.hap"
 const WANT1 = {
     bundleName: "com.example.myapplication1",
     abilityName: "com.example.myapplication1.MainAbility"
@@ -27,7 +25,6 @@ const SELFWANT = {
     bundleName: "ohos.edm.test",
     abilityName: "ohos.edm.test.MainAbility"
 };
-const HAPNAME1 = "com.example.myapplication1"
 const SELFHAPNAME = "ohos.edm.test"
 const COMPANYNAME2 = "company2"
 const DESCRIPTION2 = "edm demo2"
@@ -50,29 +47,39 @@ describe('EnterpriseDeviceManagerTest', function () {
      * @tc.desc activate admin in promise mode
      */
     it('activateAdmin_test_001', 0, async function (done) {
-        let installData = await bundle.getBundleInstaller()
-        installData.install([PATH + EDMJSTEST1], {
-            userId: 100,
-            installFlag: 0,
-            isKeepData: false
-        }, async (err, data) => {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            await bundle.getBundleInfo(HAPNAME1, 
-                bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION).then(datainfo => {
-                    console.info("getBundleInfo success:" + JSON.stringify(datainfo));
-            });
-            activateAdmin();
-        });
-        async function activateAdmin() {
-            var retValue = await enterpriseDeviceManager.activateAdmin(WANT1, ENTINFO1,
-                enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL);
-            console.log('enterpriseDeviceManager.activateAdmin ADMIN_TYPE_NORMAL : ' + retValue);
-            expect(retValue).assertTrue();
+        var retValue = await enterpriseDeviceManager.activateAdmin(WANT1, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL);
+        console.log('enterpriseDeviceManager.activateAdmin ADMIN_TYPE_NORMAL : ' + retValue);
+        expect(retValue).assertTrue();
+
+        var isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1);
+        console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
+        expect(isActive).assertTrue();
+
+        retValue = await enterpriseDeviceManager.deactivateAdmin(WANT1);
+        console.log('enterpriseDeviceManager.deactivateAdmin : ' + retValue);
+        expect(retValue).assertTrue();
+
+        isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1);
+        console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
+        expect(isActive).assertFalse();
+        done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0200
+     * @tc.name test activateAdmin method in callback mode
+     * @tc.desc activate admin in callback mode
+     */
+    it('activateAdmin_test_002', 0, async function (done) {
+        var retValue = await enterpriseDeviceManager.activateAdmin(WANT1, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, OnReceiveEvent);
+        async function OnReceiveEvent(err, datainfo) {
+            console.log('enterpriseDeviceManager.activateAdmin ADMIN_TYPE_NORMAL :' + datainfo);
+            expect(datainfo).assertTrue();
 
             var isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1);
-            console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
+            console.log('enterpriseDeviceManager.isAdminAppActive :' + isActive);
             expect(isActive).assertTrue();
 
             retValue = await enterpriseDeviceManager.deactivateAdmin(WANT1);
@@ -82,68 +89,7 @@ describe('EnterpriseDeviceManagerTest', function () {
             isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1);
             console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
             expect(isActive).assertFalse();
-
-            installData.uninstall(HAPNAME1, {
-                userId: 100,
-                installFlag: 0,
-                isKeepData: false
-            }, (err, data) => {
-                expect(err.code).assertEqual(0);
-                expect(data.status).assertEqual(0);
-                expect(data.statusMessage).assertEqual('SUCCESS');
-                done();
-            });
-        }
-    })
-
-    /**
-     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0200
-     * @tc.name test activateAdmin method in callback mode
-     * @tc.desc activate admin in callback mode
-     */
-    it('activateAdmin_test_002', 0, async function (done) {
-        let installData = await bundle.getBundleInstaller()
-        installData.install([PATH + EDMJSTEST1], {
-            userId: 100,
-            installFlag: 0,
-            isKeepData: false
-        }, async (err, data) => {
-            expect(err.code).assertEqual(0);
-            expect(data.status).assertEqual(0);
-            expect(data.statusMessage).assertEqual('SUCCESS');
-            activateAdmin();
-        });
-        async function activateAdmin() {
-            console.log('activateAdmin()');
-            var retValue = await enterpriseDeviceManager.activateAdmin(WANT1, ENTINFO1,
-                enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, OnReceiveEvent);
-            async function OnReceiveEvent(err, datainfo) {
-                console.log('enterpriseDeviceManager.activateAdmin ADMIN_TYPE_NORMAL :' + datainfo);
-                expect(datainfo).assertTrue();
-
-                var isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1);
-                console.log('enterpriseDeviceManager.isAdminAppActive :' + isActive);
-                expect(isActive).assertTrue();
-
-                retValue = await enterpriseDeviceManager.deactivateAdmin(WANT1);
-                console.log('enterpriseDeviceManager.deactivateAdmin : ' + retValue);
-                expect(retValue).assertTrue();
-
-                isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1);
-                console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
-                expect(isActive).assertFalse();
-
-                installData.uninstall(HAPNAME1, {
-                    userId: 100,
-                    installFlag: 0,
-                    isKeepData: false
-                }, (err, data) => {
-                    expect(err.code).assertEqual(0);
-                    expect(data.status).assertEqual(0);
-                    expect(data.statusMessage).assertEqual('SUCCESS');
-                    done();
-                });
-            }
+            done();
         }
     })
 
@@ -154,10 +100,10 @@ describe('EnterpriseDeviceManagerTest', function () {
      * @tc.desc activate super admin in promise mode
      */
     it('activateAdmin_test_003', 0, async function (done) {
-        await bundle.getBundleInfo(SELFHAPNAME, 
+        await bundle.getBundleInfo(SELFHAPNAME,
             bundle.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION).then(datainfo => {
                 console.info("getBundleInfo success:" + JSON.stringify(datainfo));
-        });
+            });
 
         console.log('enterpriseDeviceManager.activateAdmin ADMIN_TYPE_SUPER');
         var retValue = await enterpriseDeviceManager.activateAdmin(SELFWANT, ENTINFO1,
@@ -369,7 +315,7 @@ describe('EnterpriseDeviceManagerTest', function () {
         expect(dsmgr !== null).assertTrue();
         console.log('before setDateTime');
         var setSuccess = await dsmgr.setDateTime(SELFWANT, 1526003846000);
-        expect(setSuccess).assertTrue();  
+        expect(setSuccess).assertTrue();
         await enterpriseDeviceManager.deactivateSuperAdmin(SELFHAPNAME);
         done();
     })
@@ -379,19 +325,19 @@ describe('EnterpriseDeviceManagerTest', function () {
      * @tc.name test setDateTime method in callback mode
      * @tc.desc set system date time in callback mode
      */
-     it('setDateTime_test_002', 0, async function (done) {
-      await enterpriseDeviceManager.activateAdmin(SELFWANT, ENTINFO1,
-          enterpriseDeviceManager.AdminType.ADMIN_TYPE_SUPER);
-      let dsmgr = await enterpriseDeviceManager.getDeviceSettingsManager();
-      expect(dsmgr !== null).assertTrue();
-      console.log('before setDateTime');
-      await dsmgr.setDateTime(SELFWANT, 1526003846000, (error, data) => {
-        console.log("setDateTime ===data: " + data);
-        console.log("setDateTime ===error: " + error);
-      });
-      await enterpriseDeviceManager.deactivateSuperAdmin(SELFHAPNAME);
-      done();
-  })
+    it('setDateTime_test_002', 0, async function (done) {
+        await enterpriseDeviceManager.activateAdmin(SELFWANT, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_SUPER);
+        let dsmgr = await enterpriseDeviceManager.getDeviceSettingsManager();
+        expect(dsmgr !== null).assertTrue();
+        console.log('before setDateTime');
+        await dsmgr.setDateTime(SELFWANT, 1526003846000, (error, data) => {
+            console.log("setDateTime ===data: " + data);
+            console.log("setDateTime ===error: " + error);
+        });
+        await enterpriseDeviceManager.deactivateSuperAdmin(SELFHAPNAME);
+        done();
+    })
 
     console.log('*************end EnterpriseDeviceManagerTest*************');
 }) 
