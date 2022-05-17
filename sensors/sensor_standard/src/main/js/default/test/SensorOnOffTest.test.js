@@ -45,58 +45,60 @@ describe('SystemParameterTest', function () {
     afterEach(function () {
         console.info('afterEach caled')
     })
-	
-	let testSensorId = 0; 
+
+    let testSensorId = 0;
     let testNullSensorId = -1;
 
 
-	/**
+    /**
      * @tc.number    SUB_SENSORS_Sensor_JSTest_0010
      * @tc.name      testRegisterSensortest001
      * @tc.desc      test get sensor data by sensor id.
      */
     it('SUB_SENSORS_Sensor_JSTest_0010', 0, async function (done) {
         console.info('SUB_SENSORS_Sensor_JSTest_0010 start');
-        try{
-		sensor.on(testSensorId, function (data) {
-            if (data) {
-                console.info('testRegisterSensortest001  on success');
-                expect(data.x).assertInstanceOf('Number');
-                expect(data.timestamp).assertInstanceOf('Number');
-                done();
-            } else {
-                console.info('testRegisterSensortest001  on error');
-                expect(false).assertTrue();
-                done();
-            }
-        });
-		} catch (error) {
+        try {
+            sensor.on(testSensorId, function (data) {
+                if (data) {
+                    console.info('testRegisterSensortest001  on success');
+                    expect(data.x).assertInstanceOf('Number');
+                    expect(data.timestamp).assertInstanceOf('Number');
+                    done();
+                } else {
+                    console.info('testRegisterSensortest001  on error');
+                    expect(false).assertTrue();
+                    done();
+                }
+            });
+        } catch (error) {
             console.info(error);
             expect(true).assertTrue();
             done();
         }
         console.info('SUB_SENSORS_Sensor_JSTest_0010 end');
     })
-  
-      /**
-     * @tc.number    SUB_SENSORS_Sensor_JSTest_0020
-     * @tc.name      testRegisterSensortest002
-     * @tc.desc      test get sensor data by wrong sensor id.
-     */
+
+   /**
+   * @tc.number    SUB_SENSORS_Sensor_JSTest_0020
+   * @tc.name      testRegisterSensortest002
+   * @tc.desc      test get sensor data by wrong sensor id.
+   */
     it('SUB_SENSORS_Sensor_JSTest_0020', 0, async function (done) {
         console.info('SUB_SENSORS_Sensor_JSTest_0020 start');
-       function onSensorCallback(data) {
+
+        function onSensorCallback(data) {
             console.info('SensorJsTest002  on error');
             expect(false).assertTrue();
             done();
         }
-		 try {
+
+        try {
             sensor.on(testNullSensorId, onSensorCallback);
         } catch (error) {
             console.info(error);
             expect(true).assertTrue();
             done();
         }
-        console.info('SUB_SENSORS_Sensor_JSTest_0020 end'); 
+        console.info('SUB_SENSORS_Sensor_JSTest_0020 end');
     })
 })
