@@ -1,9 +1,9 @@
 {
-    "description": "Configuration for storage file and fileio Tests",
+    "description": "Configuration for storage fileio Tests",
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "60000",
-        "package": "ohos.acts.stroage.fileio",
+        "package": "ohos.acts.storage.fileioerror",
         "shell-timeout": "60000"
     },
     "kits": [
