@@ -38,12 +38,16 @@ const ENTINFO2 = {
     description: "edm demo2"
 };
 
+const DEFAULT_USER_ID = 100;
+const TEST_USER_ID = 101;
+const ERR_USER_ID = 102;
+
 describe('EnterpriseDeviceManagerTest', function () {
     console.log('*************start EnterpriseDeviceManagerTest*************');
 
     /**
-     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0100
-     * @tc.name test activateAdmin method in promise mode
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0001
+     * @tc.name test activateAdmin method in promise mode without user id
      * @tc.desc activate admin in promise mode
      */
     it('activateAdmin_test_001', 0, async function (done) {
@@ -67,8 +71,8 @@ describe('EnterpriseDeviceManagerTest', function () {
     })
 
     /**
-     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0200
-     * @tc.name test activateAdmin method in callback mode
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0001
+     * @tc.name test activateAdmin method in callback mode without user id
      * @tc.desc activate admin in callback mode
      */
     it('activateAdmin_test_002', 0, async function (done) {
@@ -95,8 +99,8 @@ describe('EnterpriseDeviceManagerTest', function () {
 
 
     /**
-     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0300
-     * @tc.name test activateAdmin method in promise mode with ADMIN_TYPE_SUPER param
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0003
+     * @tc.name test activateAdmin method in promise mode with ADMIN_TYPE_SUPER param without user id
      * @tc.desc activate super admin in promise mode
      */
     it('activateAdmin_test_003', 0, async function (done) {
@@ -126,8 +130,8 @@ describe('EnterpriseDeviceManagerTest', function () {
     })
 
     /**
-     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0400
-     * @tc.name test activateAdmin method in callback mode with ADMIN_TYPE_SUPER param
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0004
+     * @tc.name test activateAdmin method in callback mode with ADMIN_TYPE_SUPER param without user id
      * @tc.desc activate super admin in callback mode
      */
     it('activateAdmin_test_004', 0, async function (done) {
@@ -153,8 +157,8 @@ describe('EnterpriseDeviceManagerTest', function () {
     })
 
     /**
-     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0500
-     * @tc.name test activateAdmin method in promise mode
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0005
+     * @tc.name test activateAdmin method in promise mode without user id
      * @tc.desc activate admin in promise mode
      */
     it('activateAdmin_test_005', 0, async function (done) {
@@ -180,8 +184,8 @@ describe('EnterpriseDeviceManagerTest', function () {
     })
 
     /**
-     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0600
-     * @tc.name test activateAdmin method in callback mode
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0006
+     * @tc.name test activateAdmin method in callback mode without user id
      * @tc.desc activate admin in callback mode
      */
     it('activateAdmin_test_006', 0, async function (done) {
@@ -208,9 +212,261 @@ describe('EnterpriseDeviceManagerTest', function () {
         }
     })
 
+    /**
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0007
+     * @tc.name test activateAdmin method in promise mode with default user id
+     * @tc.desc activate admin in multi-user
+     */
+    it('activateAdmin_test_007', 0, async function (done) {
+        var retValue = await enterpriseDeviceManager.activateAdmin(WANT1, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
+        console.log('enterpriseDeviceManager.activateAdmin ADMIN_TYPE_NORMAL : ' + retValue);
+        expect(retValue).assertTrue();
+
+        var isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, DEFAULT_USER_ID);
+        console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
+        expect(isActive).assertTrue();
+
+
+        retValue = await enterpriseDeviceManager.deactivateAdmin(WANT1, DEFAULT_USER_ID);
+        console.log('enterpriseDeviceManager.deactivateAdmin : ' + retValue);
+        expect(retValue).assertTrue();
+
+        isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, DEFAULT_USER_ID);
+        console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
+        expect(isActive).assertFalse();
+        done();
+    })
 
     /**
-     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0700
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0008
+     * @tc.name test activateAdmin method with user id in callback mode with default user id
+     * @tc.desc activate admin in multi-user
+     */
+    it('activateAdmin_test_008', 0, async function (done) {
+        var retValue = await enterpriseDeviceManager.activateAdmin(WANT1, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID, OnReceiveEvent);
+        async function OnReceiveEvent(err, datainfo) {
+            console.log('enterpriseDeviceManager.activateAdmin ADMIN_TYPE_NORMAL :' + datainfo);
+            expect(datainfo).assertTrue();
+
+            var isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, DEFAULT_USER_ID);
+            console.log('enterpriseDeviceManager.isAdminAppActive :' + isActive);
+            expect(isActive).assertTrue();
+
+            retValue = await enterpriseDeviceManager.deactivateAdmin(WANT1, DEFAULT_USER_ID);
+            console.log('enterpriseDeviceManager.deactivateAdmin : ' + retValue);
+            expect(retValue).assertTrue();
+
+            isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, DEFAULT_USER_ID);
+            console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
+            expect(isActive).assertFalse();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0009
+     * @tc.name test activateAdmin method with user id in callback mode with error user id
+     * @tc.desc activate admin in multi-user
+     */
+    it('activateAdmin_test_009', 0, async function (done) {
+        var retValue = await enterpriseDeviceManager.activateAdmin(SELFWANT, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_SUPER, TEST_USER_ID, OnReceiveEvent);
+        async function OnReceiveEvent(err, datainfo) {
+            expect(err != null).assertTrue();
+            if (err) {
+                // user exsit but super admin can only be activated in user 100
+                console.log("activateAdmin_test_009 throw error code : " + err.code + "message :" + err.message);
+            }
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0010
+     * @tc.name test activateAdmin method with user id in callback mode with error user id
+     * @tc.desc activate admin in multi-user
+     */
+    it('activateAdmin_test_010', 0, async function (done) {
+        var retValue = await enterpriseDeviceManager.activateAdmin(SELFWANT, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_SUPER, ERR_USER_ID, OnReceiveEvent);
+        async function OnReceiveEvent(err, datainfo) {
+            expect(err != null).assertTrue();
+            if (err) {
+                // user does not exsit
+                console.log("activateAdmin_test_010 throw error code : " + err.code + "message :" + err.message);
+            }
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0011
+     * @tc.name test activateAdmin method in promise mode with test user id
+     * @tc.desc activate admin in multi-user
+     */
+    it('activateAdmin_test_011', 0, async function (done) {
+        var retValue = await enterpriseDeviceManager.activateAdmin(WANT1, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, TEST_USER_ID);
+        console.log('enterpriseDeviceManager.activateAdmin ADMIN_TYPE_NORMAL : ' + retValue);
+        expect(retValue).assertTrue();
+
+        var isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, TEST_USER_ID);
+        console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
+        expect(isActive).assertTrue();
+
+
+        retValue = await enterpriseDeviceManager.deactivateAdmin(WANT1, TEST_USER_ID);
+        console.log('enterpriseDeviceManager.deactivateAdmin : ' + retValue);
+        expect(retValue).assertTrue();
+
+        isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, TEST_USER_ID);
+        console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
+        expect(isActive).assertFalse();
+        done();
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0012
+     * @tc.name test activateAdmin method in callback mode with test user id
+     * @tc.desc activate admin in multi-user
+     */
+    it('activateAdmin_test_012', 0, async function (done) {
+        var retValue = await enterpriseDeviceManager.activateAdmin(WANT1, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, TEST_USER_ID, OnReceiveEvent);
+        async function OnReceiveEvent(err, datainfo) {
+            console.log('enterpriseDeviceManager.activateAdmin ADMIN_TYPE_NORMAL :' + datainfo);
+            expect(datainfo).assertTrue();
+
+            var isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, TEST_USER_ID);
+            console.log('enterpriseDeviceManager.isAdminAppActive :' + isActive);
+            expect(isActive).assertTrue();
+
+            retValue = await enterpriseDeviceManager.deactivateAdmin(WANT1, TEST_USER_ID);
+            console.log('enterpriseDeviceManager.deactivateAdmin : ' + retValue);
+            expect(retValue).assertTrue();
+
+            isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, TEST_USER_ID);
+            console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
+            expect(isActive).assertFalse();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0013
+     * @tc.name test activateAdmin method in promise mode and query with error user id
+     * @tc.desc activate admin in multi-user
+     */
+    it('activateAdmin_test_013', 0, async function (done) {
+        var retValue = await enterpriseDeviceManager.activateAdmin(WANT1, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID, OnReceiveEvent);
+        async function OnReceiveEvent(err, datainfo) {
+            console.log('enterpriseDeviceManager.activateAdmin ADMIN_TYPE_NORMAL :' + datainfo);
+            expect(datainfo).assertTrue();
+
+            var isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, TEST_USER_ID);
+            console.log('enterpriseDeviceManager.isAdminAppActive :' + isActive);
+            expect(isActive).assertFalse();
+
+            retValue = await enterpriseDeviceManager.deactivateAdmin(WANT1, DEFAULT_USER_ID);
+            console.log('enterpriseDeviceManager.deactivateAdmin : ' + retValue);
+            expect(retValue).assertTrue();
+
+            isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, DEFAULT_USER_ID);
+            console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
+            expect(isActive).assertFalse();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0014
+     * @tc.name test activateAdmin method in callback mode and deactive with error user id
+     * @tc.desc activate and deactive admin in multi-user
+     */
+    it('activateAdmin_test_014', 0, async function (done) {
+        var retValue = await enterpriseDeviceManager.activateAdmin(WANT1, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, TEST_USER_ID, OnReceiveEvent);
+        async function OnReceiveEvent(err, datainfo) {
+            console.log('enterpriseDeviceManager.activateAdmin ADMIN_TYPE_NORMAL :' + datainfo);
+            expect(datainfo).assertTrue();
+
+            var isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, TEST_USER_ID);
+            console.log('enterpriseDeviceManager.isAdminAppActive :' + isActive);
+            expect(isActive).assertTrue();
+
+            try {
+                retValue = await enterpriseDeviceManager.deactivateAdmin(WANT1, DEFAULT_USER_ID);
+                console.log('enterpriseDeviceManager.deactivateAdmin over');
+            } catch (error) {
+                expect(error != null).assertTrue();
+                console.log("activateAdmin_test_014 throw error code : " + error.code + "message :" + error.message);
+            }
+
+            isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, TEST_USER_ID);
+            console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
+            expect(isActive).assertTrue();
+
+            retValue = await enterpriseDeviceManager.deactivateAdmin(WANT1, TEST_USER_ID);
+            console.log('enterpriseDeviceManager.deactivateAdmin : ' + retValue);
+            expect(retValue).assertTrue();
+
+            isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, TEST_USER_ID);
+            console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
+            expect(isActive).assertFalse();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0015
+     * @tc.name test activateAdmin method in promise mode and deactive with test user id
+     * @tc.desc activate admin in multi-user
+     */
+    it('activateAdmin_test_015', 0, async function (done) {
+        var retValue = await enterpriseDeviceManager.activateAdmin(WANT1, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
+        var retValue = await enterpriseDeviceManager.activateAdmin(WANT1, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, TEST_USER_ID, OnReceiveEvent);
+        async function OnReceiveEvent(err, datainfo) {
+            console.log('enterpriseDeviceManager.activateAdmin ADMIN_TYPE_NORMAL :' + datainfo);
+            expect(datainfo).assertTrue();
+
+            var isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, DEFAULT_USER_ID);
+            console.log('enterpriseDeviceManager.isAdminAppActive :' + isActive);
+            expect(isActive).assertTrue();
+
+            isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, TEST_USER_ID);
+            console.log('enterpriseDeviceManager.isAdminAppActive :' + isActive);
+            expect(isActive).assertTrue();
+
+            retValue = await enterpriseDeviceManager.deactivateAdmin(WANT1, DEFAULT_USER_ID);
+            console.log('enterpriseDeviceManager.deactivateAdmin : ' + retValue);
+            expect(retValue).assertTrue();
+
+            isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, DEFAULT_USER_ID);
+            console.log('enterpriseDeviceManager.isAdminAppActive : ' + isActive);
+            expect(isActive).assertFalse();
+
+            isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, TEST_USER_ID);
+            console.log('enterpriseDeviceManager.isAdminAppActive :' + isActive);
+            expect(isActive).assertTrue();
+
+            retValue = await enterpriseDeviceManager.deactivateAdmin(WANT1, TEST_USER_ID);
+            console.log('enterpriseDeviceManager.deactivateAdmin : ' + retValue);
+            expect(retValue).assertTrue();
+
+            isActive = await enterpriseDeviceManager.isAdminAppActive(WANT1, TEST_USER_ID);
+            console.log('enterpriseDeviceManager.isAdminAppActive :' + isActive);
+            expect(isActive).assertFalse();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0016
      * @tc.name test setEnterpriseInfo method in promise mode
      * @tc.desc set enterprise info in promise mode
      */
@@ -244,7 +500,7 @@ describe('EnterpriseDeviceManagerTest', function () {
     })
 
     /**
-     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0800
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0017
      * @tc.name test setEnterpriseInfo method in callback mode
      * @tc.desc set enterprise info in callback mode
      */
@@ -278,7 +534,7 @@ describe('EnterpriseDeviceManagerTest', function () {
     })
 
     /**
-     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0900
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0018
      * @tc.name test getDeviceSettingsManager method in callback mode
      * @tc.desc get the device settings manager in callback mode
      */
@@ -291,7 +547,7 @@ describe('EnterpriseDeviceManagerTest', function () {
     })
 
     /**
-     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_1000
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0019
      * @tc.name test getDeviceSettingsManager method in promise mode
      * @tc.desc get the device settings manager in promise mode
      */
@@ -304,7 +560,7 @@ describe('EnterpriseDeviceManagerTest', function () {
     })
 
     /**
-     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_1100
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0020
      * @tc.name test setDateTime method in promise mode
      * @tc.desc set system date time in promise mode
      */
@@ -321,7 +577,7 @@ describe('EnterpriseDeviceManagerTest', function () {
     })
 
     /**
-     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_1200
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0021
      * @tc.name test setDateTime method in callback mode
      * @tc.desc set system date time in callback mode
      */
