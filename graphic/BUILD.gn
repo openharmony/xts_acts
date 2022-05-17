@@ -15,10 +15,10 @@ import("//build/ohos_var.gni")
 group("graphic") {
   testonly = true
   if (is_standard_system) {
-    deps = [ 
+    deps = [
       "webGL:webGL_hap_test",
+      "windowStage:ActsWindowStageTest",
       "windowstandard:window_hap_test",
-      "windowStage:ActsWindowStageTest" 
     ]
   } else {
     deps = [
