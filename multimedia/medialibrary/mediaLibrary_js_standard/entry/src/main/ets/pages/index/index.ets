@@ -38,10 +38,10 @@ struct Index {
     console.info('parameters---->' + JSON.stringify(globalThis.abilityWant.parameters))
     globalThis.abilityWant.parameters.timeout = 70000;
     configService.setConfig(globalThis.abilityWant.parameters)
-	console.info('testsuite()---->')
+    console.info('testsuite()---->')
     testsuite(globalThis.abilityContext)
     core.execute()
-	console.info('core.execute()---->')
+    console.info('core.execute()---->')
   }
 
   build() {
