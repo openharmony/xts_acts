@@ -43,7 +43,7 @@ parse_cmdline()
     BUILD_TARGET=""
     TARGET_PLATFORM=all
     GN_ARGS="is_dbt_test=true include_all=false"
-    TARGET_ARCH=arm64
+    TARGET_ARCH=arm
     BUILD_VARIANT=release
     UPLOAD_API_INFO=False
     SYSTEM_SIZE=large
@@ -102,7 +102,7 @@ do_make()
         if [ "$PRODUCT_NAME" = "m40" ]; then
             MUSL_ARGS="--gn-args use_musl=false --gn-args use_custom_libcxx=true --gn-args use_custom_clang=true"
         fi
-       ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools" --gn-args is_standard_system=true $MUSL_ARGS
+       ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools" --gn-args is_standard_system=true $MUSL_ARGS --target_cpu $TARGET_ARCH
     else
        if [ "$BUILD_TARGET" = "acts acts_ivi acts_intellitv acts_wearable" ]; then
          ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target "acts" --build-target "acts_ivi" --build-target "acts_intellitv" --build-target "acts_wearable" --build-target "deploy_testtools"
