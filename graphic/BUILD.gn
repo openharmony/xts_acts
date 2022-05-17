@@ -10,14 +10,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#      "webGL:webGL_hap_test",
-#      "windowstandard:window_hap_test",
 
 import("//build/ohos_var.gni")
 group("graphic") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "windowStage:ActsWindowStageTest" ]
+    deps = [
+      "webGL:webGL_hap_test",
+      "windowStage:ActsWindowStageTest",
+      "windowstandard:window_hap_test",
+    ]
   } else {
     deps = [
       "appaccount:appaccount_hap",
