@@ -45,17 +45,17 @@ describe('SystemParameterTest', function () {
      * @tc.name      testWaitPromise01
      * @tc.desc      Waits the value of the attribute with the specified key.
      */
-    it('system_parameter_test_0801', 0, async function (done) {
-        console.info('system_parameter_test_0801 start');
+    it('testWaitPromise01', 0, async function (done) {
+        console.info('testWaitPromise01 start');
         let ret = false;
         try {
             var parameterInfo = systemparameter.wait("test.wait_param.101", "100", 1);
             parameterInfo.then(function (result) { // timeout
-                console.info("system_parameter_test_0801 test.wait_param.101 success: " + result);
+                console.info("testWaitPromise01 test.wait_param.101 success: " + result);
                 expect(ret).assertTrue();
             }).catch(function (err) {
                 ret = true;
-                console.info("system_parameter_test_0801 test.wait_param.101 error: " + err.code);
+                console.info("testWaitPromise01 test.wait_param.101 error: " + err.code);
                 expect(ret).assertTrue();
                 done();
             });
@@ -63,7 +63,7 @@ describe('SystemParameterTest', function () {
             expect(ret).assertTrue();
             console.info("promise get input error: " + e);
         }
-        console.info('system_parameter_test_0801 end');
+        console.info('testWaitPromise01 end');
     })
 
     /**
@@ -71,18 +71,18 @@ describe('SystemParameterTest', function () {
      * @tc.name      testWaitPromise02
      * @tc.desc      Waits the value of the attribute with the specified key.
      */
-    it('system_parameter_test_0802', 0, async function (done) {
-        console.info('system_parameter_test_0802 start');
+    it('testWaitPromise02', 0, async function (done) {
+        console.info('testWaitPromise02 start');
         let ret = false;
         try {
             var parameterInfo = systemparameter.wait("test.wait_param.102", "", 1);
             parameterInfo.then(function (result) {  // timeout
-                console.info("system_parameter_test_0802 test.wait_param.102 success: ");
+                console.info("testWaitPromise02 test.wait_param.102 success: ");
                 expect(ret).assertTrue();
                 done();
             }).catch(function (err) {
                 ret = true;
-                console.info("system_parameter_test_0802 test.wait_param.102 error: " + err.code);
+                console.info("testWaitPromise02 test.wait_param.102 error: " + err.code);
                 expect(ret).assertTrue();
                 done();
             });
@@ -90,7 +90,7 @@ describe('SystemParameterTest', function () {
             expect(ret).assertTrue();
             console.info("promise get input error: " + e);
         }
-        console.info('system_parameter_test_0802 end');
+        console.info('testWaitPromise02 end');
     })
 
     /**
@@ -98,26 +98,26 @@ describe('SystemParameterTest', function () {
      * @tc.name      testWaitPromise03
      * @tc.desc      Waits the value of the attribute with the specified key.
      */
-    it('system_parameter_test_0803', 0, async function (done) {
-        console.info('system_parameter_test_0803 start');
+    it('testWaitPromise03', 0, async function (done) {
+        console.info('testWaitPromise03 start');
         let ret = false;
         SetParameter("test.wait_param.103", "103");
         try {
             var parameterInfo = systemparameter.wait("test.wait_param.103", "103", 1);
             parameterInfo.then(function (result) { // ok
                 ret = true;
-                console.info("system_parameter_test_0803 test.wait_param.103 success: ");
+                console.info("testWaitPromise03 test.wait_param.103 success: ");
                 expect(ret).assertTrue();
                 done();
             }).catch(function (err) {
                 expect(ret).assertTrue();
-                console.info("system_parameter_test_0803 test.wait_param.103 error: " + err.code);
+                console.info("testWaitPromise03 test.wait_param.103 error: " + err.code);
             });
         } catch (e) {
             expect(ret).assertTrue();
             console.info("promise get input error: " + e);
         }
-        console.info('system_parameter_test_0803 end');
+        console.info('testWaitPromise03 end');
     })
 
     /**
@@ -125,26 +125,26 @@ describe('SystemParameterTest', function () {
      * @tc.name      testWaitPromise04
      * @tc.desc      Waits the value of the attribute with the specified key.
      */
-    it('system_parameter_test_0804', 0, async function (done) {
-        console.info('system_parameter_test_0804 start');
+    it('testWaitPromise04', 0, async function (done) {
+        console.info('testWaitPromise04 start');
         let ret = false;
         SetParameter("test.wait_param.104", "104");
         try {
             var parameterInfo = systemparameter.wait("test.wait_param.104", "*", 1);
             parameterInfo.then(function (result) { // ok
                 ret = true;
-                console.info("system_parameter_test_0804 test.wait_param.104 success");
+                console.info("testWaitPromise04 test.wait_param.104 success");
                 expect(ret).assertTrue();
                 done();
             }).catch(function (err) {
-                console.info("system_parameter_test_0804 test.wait_param.104 error: " + err.code);
+                console.info("testWaitPromise04 test.wait_param.104 error: " + err.code);
                 expect(ret).assertTrue();
             });
         } catch (e) {
             expect(ret).assertTrue();
             console.info("promise get input error: " + e);
         }
-        console.info('system_parameter_test_0804 end');
+        console.info('testWaitPromise04 end');
     })
 
     /**
@@ -152,26 +152,26 @@ describe('SystemParameterTest', function () {
      * @tc.name      testWaitPromise05
      * @tc.desc      Waits the value of the attribute with the specified key.
      */
-    it('system_parameter_test_0805', 0, async function (done) {
-        console.info('system_parameter_test_0805 start');
+    it('testWaitPromise05', 0, async function (done) {
+        console.info('testWaitPromise05 start');
         let ret = false;
         SetParameter("test.wait_param.105", "105");
         try {
             var parameterInfo = systemparameter.wait("test.wait_param.105", "*", -1);
             parameterInfo.then(function (result) {
                 ret = true;
-                console.info("system_parameter_test_0805 test.wait_param.105 success");
+                console.info("testWaitPromise05 test.wait_param.105 success");
                 expect(ret).assertTrue();
                 done();
             }).catch(function (err) {
-                console.info("system_parameter_test_0805 test.wait_param.105 error: " + err.code);
+                console.info("testWaitPromise05 test.wait_param.105 error: " + err.code);
                 expect(ret).assertTrue();
             });
         } catch (e) {
             expect(ret).assertTrue();
             console.info("promise get input error: " + e);
         }
-        console.info('system_parameter_test_0805 end');
+        console.info('testWaitPromise05 end');
     })
 
     /**
@@ -179,28 +179,28 @@ describe('SystemParameterTest', function () {
      * @tc.name      testWait01
      * @tc.desc      Waits the value of the attribute with the specified key.
      */
-    it('system_parameter_test_0806', 0, async function (done) {
-        console.info('system_parameter_test_0806 start');
+    it('testWait01', 0, async function (done) {
+        console.info('testWait01 start');
         let ret = false;
         try {
             systemparameter.wait("test.wait_param.201", "100", 1, function (err, data) {
                 if (err == undefined || err.code === 0) {
-                    console.info("system_parameter_test_0806 test.wait_param.201 success")
+                    console.info("testWait01 test.wait_param.201 success")
                 } else {
                     ret = true; // wait timeout
-                    console.info("system_parameter_test_0806 test.wait_param.201 err:" + err.code);
+                    console.info("testWait01 test.wait_param.201 err:" + err.code);
                     expect(ret).assertTrue();
                 }
             });
         } catch (e) {
             expect(ret).assertTrue();
-            console.info("system_parameter_test_0806 get input error: " + e);
+            console.info("testWait01 get input error: " + e);
         }
         setTimeout(function () {
             expect(ret).assertTrue();
             done();
         }, '2000');
-        console.info('system_parameter_test_0806 end');
+        console.info('testWait01 end');
     })
 
     /**
@@ -208,17 +208,17 @@ describe('SystemParameterTest', function () {
      * @tc.name      testWait02
      * @tc.desc      Waits the value of the attribute with the specified key.
      */
-    it('system_parameter_test_0807', 0, async function (done) {
-        console.info('system_parameter_test_0807 start');
+    it('testWait02', 0, async function (done) {
+        console.info('testWait02 start');
         let ret = false;
         try {
             ret = true;
             systemparameter.wait("test.wait_param.202", "", 1, function (err, data) {
                 if (err == undefined || err.code === 0) { // timeout
                     ret = false;
-                    console.info("system_parameter_test_0807 test.wait_param.202 success");
+                    console.info("testWait02 test.wait_param.202 success");
                 } else {
-                    console.info("system_parameter_test_0807 callback test.wait_param.202 err:" + err.code);
+                    console.info("testWait02 callback test.wait_param.202 err:" + err.code);
                 }
                 expect(ret).assertTrue();
                 done();
@@ -228,7 +228,7 @@ describe('SystemParameterTest', function () {
             console.info("get input error: " + e);
         }
         expect(ret).assertTrue();
-        console.info('system_parameter_test_0807 end');
+        console.info('testWait02 end');
     })
 
     /**
@@ -236,17 +236,17 @@ describe('SystemParameterTest', function () {
      * @tc.name      testWait03
      * @tc.desc      Waits the value of the attribute with the specified key.
      */
-    it('system_parameter_test_0808', 0, async function (done) {
-        console.info('system_parameter_test_0808 start');
+    it('testWait03', 0, async function (done) {
+        console.info('testWait03 start');
         let ret = false;
         SetParameter("test.wait_param.203", "103");
         try {
             systemparameter.wait("test.wait_param.203", "103", 1, function (err, data) {
                 if (err == undefined || err.code === 0) {
                     ret = true;
-                    console.info("system_parameter_test_0808 test.wait_param.203 success")
+                    console.info("testWait03 test.wait_param.203 success")
                 } else {
-                    console.info("system_parameter_test_0808 test.wait_param.203 err:" + err.code)
+                    console.info("testWait03 test.wait_param.203 err:" + err.code)
                 }
                 expect(ret).assertTrue();
             });
@@ -258,7 +258,7 @@ describe('SystemParameterTest', function () {
             expect(ret).assertTrue();
             done();
         }, '1000');
-        console.info('system_parameter_test_0808 end');
+        console.info('testWait03 end');
     })
 
     /**
@@ -266,18 +266,18 @@ describe('SystemParameterTest', function () {
      * @tc.name      testWait04
      * @tc.desc      Waits the value of the attribute with the specified key.
      */
-    it('system_parameter_test_0809', 0, async function (done) {
-        console.info('system_parameter_test_0809 start');
+    it('testWait04', 0, async function (done) {
+        console.info('testWait04 start');
         let ret = false;
         SetParameter("test.wait_param.204", "104");
         try {
             systemparameter.wait("test.wait_param.204", "*", 1, function (err, data) {
                 if (err == undefined || err.code === 0) {
                     ret = true;
-                    console.info("system_parameter_test_0809 test.wait_param.204 success")
+                    console.info("testWait04 test.wait_param.204 success")
                 } else {
                     ret = false;
-                    console.info("system_parameter_test_0809 callback test.wait_param.204 err:" + err.code)
+                    console.info("testWait04 callback test.wait_param.204 err:" + err.code)
                 }
                 expect(ret).assertTrue();
             });
@@ -289,7 +289,7 @@ describe('SystemParameterTest', function () {
             expect(ret).assertTrue();
             done();
         }, '1000');
-        console.info('system_parameter_test_0809 end');
+        console.info('testWait04 end');
     })
 
     /**
@@ -297,17 +297,17 @@ describe('SystemParameterTest', function () {
      * @tc.name      testWait05
      * @tc.desc      Waits the value of the attribute with the specified key.
      */
-    it('system_parameter_test_0810', 0, async function (done) {
-        console.info('system_parameter_test_0810 start');
+    it('testWait05', 0, async function (done) {
+        console.info('testWait05 start');
         let ret = false;
         SetParameter("test.wait_param.205", "105");
         try {
             systemparameter.wait("test.wait_param.205", "*", 1, function (err, data) {
                 if (err == undefined || err.code === 0) {
                     ret = true;
-                    console.info("system_parameter_test_0810 test.wait_param.205 success:" + data)
+                    console.info("testWait05 test.wait_param.205 success:" + data)
                 } else {
-                    console.info("system_parameter_test_0810 test.wait_param.205 err:" + err.code)
+                    console.info("testWait05 test.wait_param.205 err:" + err.code)
                 }
                 expect(ret).assertTrue();
             });
@@ -319,6 +319,6 @@ describe('SystemParameterTest', function () {
             expect(ret).assertTrue();
             done();
         }, '1000');
-        console.info('system_parameter_test_0810 end');
+        console.info('testWait05 end');
     })
 })
