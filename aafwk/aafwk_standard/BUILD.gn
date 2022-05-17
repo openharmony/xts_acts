@@ -24,15 +24,17 @@ group("aafwk_standard") {
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
       "actsdataabilityjs:ActsDataAbilityJsTest",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
-      "amsabilitymanager/amsMissionSnapshotTest:ActsAmsMissionSnapshotTest",
-      "amsabilitymanager/amsMissionSnapshotTestSingleton:ActsAmsMissionSnapshotTestSingleton",
-      "amsabilitymanager/amsMissionSnapshotTestSingletonS:ActsAmsMissionSnapshotTestSingletonS",
+      "amsabilitymanager:amsabilitymanager",
       "amsdatauriutils:ActsAmsDataUriUtilsTest",
       "amsgetabilityprocessinfo:amsgetabilityprocessinfo",
       "context:context",
       "featureability:featureability",
       "formmanager:formmanager",
       "want:want",
+      "windowStage:ActsWindowStageTest",
+      "stage:stage",
+      "actsserviceabilityclienttest:serviceability",
+      "actsfwkdataaccessortest:dataability",
     ]
   }
 }
