@@ -206,6 +206,7 @@ describe('videoSoftwareEncoderFuncPromise', function () {
                 }
             } else {
                 console.info('not last frame, continue');
+                writeFile(outputObject.data, outputObject.length);
                 videoEncodeProcessor.freeOutputBuffer(outputObject).then(() => {
                     console.info('release output success');
                 });
