@@ -244,7 +244,7 @@ describe('VideoDecoderSoftwareReliPromiseTest', function () {
         videoDecodeProcessor.start().then(() => {
             console.info(`case start success`);
             if (mySteps[0] == DECODE_STEP.FLUSH) {
-                timeDelay = 500;
+                timeDelay = 50;
             }
             setTimeout(() => {
                 toNextStep(mySteps, done);

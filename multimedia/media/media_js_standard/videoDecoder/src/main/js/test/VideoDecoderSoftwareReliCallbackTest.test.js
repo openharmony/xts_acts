@@ -239,7 +239,7 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
             console.info(`case start callback`);
             printError(err, expectFail);
             if (mySteps[0] == DECODE_STEP.FLUSH) {
-                timeDelay = 500;
+                timeDelay = 50;
             }
             setTimeout(() => {
                 toNextStep(mySteps, done);
