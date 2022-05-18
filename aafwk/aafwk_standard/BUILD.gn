@@ -23,6 +23,8 @@ group("aafwk_standard") {
       "actsabilitylifecyclestatenew:ActsAbilityLifecycleStateNewTest",
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
       "actsdataabilityjs:ActsDataAbilityJsTest",
+      "actsfwkdataaccessortest:dataability",
+      "actsserviceabilityclienttest:serviceability",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
       "amsabilitymanager:amsabilitymanager",
       "amsdatauriutils:ActsAmsDataUriUtilsTest",
@@ -31,10 +33,6 @@ group("aafwk_standard") {
       "featureability:featureability",
       "formmanager:formmanager",
       "want:want",
-      "windowStage:ActsWindowStageTest",
-      "stage:stage",
-      "actsserviceabilityclienttest:serviceability",
-      "actsfwkdataaccessortest:dataability",
     ]
   }
 }
