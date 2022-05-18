@@ -26,7 +26,7 @@ ohos_js_hap_suite("http_player_js_hap") {
   #    "//third_party/libpng:libpng",
   #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "HttpPlayerJsTest"
+  hap_name = "ActsHTTPPlayerJsTest"
 
   #  part_name = "prebuilt_hap"
   #  subsystem_name = "xts"

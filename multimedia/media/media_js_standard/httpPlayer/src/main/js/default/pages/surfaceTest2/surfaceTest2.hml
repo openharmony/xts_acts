@@ -15,6 +15,12 @@
 
 <div class="container">
     <text class="title">
-        {{ $t('strings.hello') }} {{ title }}
+        VideoPlayer Test
     </text>
+
+    <Xcomponent id = 'XcomponentId3'
+                type = 'surface'
+                onload = 'LoadXcomponent3'
+                style = "width:720px;height:480px;border-color:red;border-width:5px">
+    </Xcomponent>
 </div>
