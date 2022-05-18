@@ -147,22 +147,16 @@ describe('userauthTest', function () {
                         publicFC.publicaddCredential(UserIDM,CredentialInfoface2d, function (onresult) {
                             console.info('Face_AddCred_Func_0101 addCredential Result2=' + JSON.stringify(onresult));
                             addfaceresult = onresult;
-                            expect(ResultCode.SUCCESS).assertEqual(addfaceresult.addCredresult);
+                            expect(ResultCode.FAIL).assertEqual(addfaceresult.addCredresult);
                             publicFC.publicauth(UserAuth,challenge,AuthType.FACE,AuthTurstLevel.ATL1, function (data) {
                                 console.info('testFace Face_AddCred_Func_0101 onResult = ' + JSON.stringify(data));
                                 let faceauth101 = data;
-                                expect(ResultCode.SUCCESS).assertEqual(faceauth101.authresult);
+                                expect(ResultCode.FAIL).assertEqual(faceauth101.authresult);
                                 publicFC.publicauthUser(
                                     UserAuth,userID.User1,challenge,AuthType.FACE,AuthTurstLevel.ATL1,function (data) {
                                     console.info('testFace Face_AddCred_Func_0101 onResult= ' + JSON.stringify(data));
                                     faceauth101 = data;
-                                    expect(ResultCode.SUCCESS).assertEqual(faceauth101.authresult);
-                                    let credentialId = addfaceresult.credentialId;
-                                    let delcredresult ;
-                                    publicFC.publicdelCred(UserIDM,credentialId,token, function (data) {
-                                        console.info('testFace Face_AddCred_Func_0101 del=' + JSON.stringify(data));
-                                        delcredresult = data;
-                                        expect(ResultCode.SUCCESS).assertEqual(delcredresult.delCredresult);
+                                    expect(ResultCode.FAIL).assertEqual(faceauth101.authresult);
                                         publicFC.publicdelUser(UserIDM,token, function (data) {
                                             console.info('Face_AddCred_Func_0101 delUser= ' + JSON.stringify(data));
                                             publicFC.publicCloseSession(UserIDM, function (data) {
@@ -174,8 +168,6 @@ describe('userauthTest', function () {
                                             })
                                         }, function (data) {
                                         })
-                                    }, function (onacquireinfo) {
-                                    })
                                 }, function (onacquireinfo) {
                                 })
                             }, function (onacquireinfo) {
@@ -225,7 +217,7 @@ describe('userauthTest', function () {
                         await sleep(2500);
                         if(cancelresult == 1){
                             console.info('Face_AddCred_Func_0103 cancel1 authresult = ' + addfaceresult.addCredresult);
-                            expect(ResultCode.SUCCESS).assertEqual(addfaceresult.addCredresult);
+                            expect(ResultCode.FAIL).assertEqual(addfaceresult.addCredresult);
                         }else if(cancelresult == 0){
                             console.info('Face_AddCred_Func_0103 cancel0 authresult = ' + addfaceresult.addCredresult);
                             expect(ResultCode.CANCELED).assertEqual(addfaceresult.addCredresult);
@@ -284,7 +276,7 @@ describe('userauthTest', function () {
                             publicFC.publicdelCred(UserIDM,credentialId,token1, function (data) {
                                 console.info('testFace Face_AddCred_Func_0102 publicdelCred=' + JSON.stringify(data));
                                 delcredresult = data;
-                                expect(ResultCode.Authfail).assertEqual(delcredresult.delCredresult);
+                                expect(ResultCode.GENERAL_ERROR).assertEqual(delcredresult.delCredresult);
                                 publicFC.publicdelUser(UserIDM,token, function (data) {
                                     console.info('testFace Face_AddCred_Func_0102 delUser= ' + JSON.stringify(data));
                                     publicFC.publicCloseSession(UserIDM, function (data) {
