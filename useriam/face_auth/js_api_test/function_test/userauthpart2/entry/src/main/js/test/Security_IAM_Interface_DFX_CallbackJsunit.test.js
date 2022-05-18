@@ -390,7 +390,7 @@ function delcrederror(inputer,done){
                         publicFC.publicdelCred(UserIDM, inputer, inputer, function (data) {
                             console.info('testFace delcrederror del=' + JSON.stringify(data));
                             delcredresult = data;
-                            expect(ResultCode.Authfail).assertEqual(delcredresult.delCredresult);
+                            expect(ResultCode.GENERAL_ERROR).assertEqual(delcredresult.delCredresult);
                             publicFC.publicdelUser(UserIDM,token, function (data) {
                                 console.info('delcrederror delUser= ' + JSON.stringify(data));
                                 publicFC.publicCloseSession(UserIDM, function (data) {

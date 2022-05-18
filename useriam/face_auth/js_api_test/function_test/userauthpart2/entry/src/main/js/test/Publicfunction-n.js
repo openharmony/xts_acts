@@ -31,11 +31,16 @@ function publicRegisterInputer(PinAuth,AuthSubType,Inputerdata){
     try {
         console.info('testFace publicRegisterInputer in try');
         console.info('testFace publicRegisterInputer PinAuth = ' + PinAuth);
+        let GetAuthSubType = 0;
         let registerresult = PinAuth.registerInputer({
-            onGetData: (AuthSubType, IInputData) => {
-                console.info('testFace faceDemo registerInputer AuthSubType');
-                console.info('testFace faceDemo registerInputer AuthSubType111');
-                IInputData.onSetData(AuthSubType, Inputerdata)
+            onGetData: (GetAuthSubType, IInputData) => {
+                if (GetAuthSubType == 0) {
+                    console.info('testFace faceDemo registerInputer AuthSubType');
+                    console.info('testFace faceDemo registerInputer AuthSubType111');
+                    IInputData.onSetData(AuthSubType, Inputerdata)
+                } else {
+                    IInputData.onSetData(GetAuthSubType, Inputerdata)
+                }
             }
         })
         console.log("testFace publicRegisterInputer result is: " + registerresult);
