@@ -85,14 +85,7 @@ describe('AudioRecorderFormatCompatibilityTest', function () {
             let permissionName2 = 'ohos.permission.MEDIA_LOCATION';
             let permissionName3 = 'ohos.permission.READ_MEDIA';
             let permissionName4 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermissi
-            
-            
-            
-            
-            
-            
-            on(tokenID, permissionName1, 1).then((result) => {
+            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
                 console.info('[permission] case grantUserGrantedPermission success :' + result);
             }).catch((err) => {
                 console.error('[permission] case grantUserGrantedPermission failed :' + err);
