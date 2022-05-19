@@ -204,15 +204,15 @@ export default function actsBmsJsUnPermissionTest() {
             expect(data.descriptionId).assertLarger(0);
             expect(data.formEnabled).assertEqual(false);
             expect(data.iconId).assertLarger(0);
-            except(data.labelId).assertLarger(0);
+            expect(data.labelId).assertLarger(0);
             expect(data.subType).assertEqual(0);
-            except(data.enabled).assertEqual(true);
+            expect(data.enabled).assertEqual(true);
             expect(data.readPermission).assertEqual("");
             expect(data.writePermission).assertEqual("");
             expect(data.targetAbility).assertEqual("");
             expect(data.theme).assertEqual("");
-            expect(data.metaData).assertEqual([]);
-            expect(data.metadata).assertEqual([]);
+            expect(data.metaData.length).assertEqual(0);
+            expect(data.metadata.length).assertEqual(0);
             checkApplicationInfo(data.applicationInfo);
             console.log("---checkAbilityInfo_other End---  ");
         }
@@ -233,10 +233,10 @@ export default function actsBmsJsUnPermissionTest() {
             expect(info.supportedModes).assertEqual(0);
             expect(info.process).assertEqual("");
             expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/com.example.actsbmsetsunpermissiontest/com.example.actsbmsetsunpermissiontest");
-            expect(info.metaData).expect({});
-            expect(info.metadata).expect({});
-            expect(info.enabled).expect(true);
-            expect(info.flags).expect(0);
+            expect(JSON.stringify(info.metadata)).assertEqual("{}");
+            expect(JSON.stringify(info.metadata)).assertEqual("{}");
+            expect(info.enabled).assertEqual(true);
+            expect(info.flags).assertEqual(0);
             expect(info.uid).assertLarger(0);
             expect(info.entityType).assertEqual("unspecified");
             expect(info.removable).assertEqual(true);

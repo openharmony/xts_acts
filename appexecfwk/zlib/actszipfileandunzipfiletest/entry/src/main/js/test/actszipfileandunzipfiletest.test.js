@@ -122,7 +122,7 @@ it('ACTS_ZipFile_0300', 0, async function (done) {
 /*
 * @tc.number: ACTS_ZipFile_0400
 * @tc.name: zipFile
-* @tc.desc: The ouput file is a directory that does not exist
+* @tc.desc: The output file is a directory that does not exist
 */
 it('ACTS_ZipFile_0400', 0, async function (done) {
     console.log("==================ACTS_ZipFile_0400 start==================");
