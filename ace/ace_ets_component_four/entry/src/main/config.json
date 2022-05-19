@@ -59,7 +59,6 @@
         },
         "pages": [
           "pages/index",
-          "pages/calendar",
           "pages/customDialogController",
           "pages/dragEvent",
           "pages/dragEvent2",

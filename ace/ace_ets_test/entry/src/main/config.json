@@ -70,7 +70,6 @@
           "pages/Row",
           "pages/Swiper",
           "pages/Tab",
-          "pages/Calendar",
           "pages/AlertDialog",
           "pages/Prop",
           "pages/Link",
@@ -86,8 +85,6 @@
           "pages/components/Select",
           "pages/components/Shape",
           "pages/components/Sidebar",
-          "pages/components/FormComponentPage",
-          "pages/components/XComponentPage",
           "pages/components/WebPage"
         ],
         "name": ".MainAbility",
