@@ -176,59 +176,6 @@ describe('userauthTest', function () {
     })
 
     /*
-        * @tc.number    : Security_IAM_Face_AddCred_DFX_0104
-        * @tc.name      : Can't add face with no pin
-        * @tc.size      : MediumTest
-        * @tc.type      : Function
-        * @tc.level     : Level 2
-    */
-    it('Security_IAM_Face_AddCred_DFX_0104', 2, async function (done) {
-        try {
-            publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
-            publicFC.publicOpenSession(UserIDM, function (data) {
-                let challenge = data;
-                console.info("Security_IAM_Face_AddCred_DFX_0104 challenge = " + challenge)
-                publicFC.publicaddCredential(UserIDM, CredentialInfopinsix, function (data) {
-                    publicFC.publicauth(UserAuth, challenge, AuthType.PIN, AuthTurstLevel.ATL1, function (data) {
-                        console.info("Security_IAM_Face_AddCred_DFX_0104 info101 = " + JSON.stringify(data))
-                        let token = data.authextr.token
-                        CredentialInfoface2d.token = token
-                        console.info("Security_IAM_Face_AddCred_DFX_0104 token = " + token)
-                        publicFC.publicaddCredential(UserIDM, CredentialInfoface2d, function (data) {
-                            console.info("Face_AddCred_DFX_0104 addfaceresult1 = " + JSON.stringify(data))
-                            expect(ResultCode.SUCCESS).assertEqual(data.addCredresult);
-                            publicFC.publicaddCredential(UserIDM, CredentialInfoface2d, function (data) {
-                                console.info("Face_AddCred_DFX_0104 addfaceresult2 = " + JSON.stringify(data))
-                                expect(ResultCode.FAIL).assertEqual(data.addCredresult);
-                                publicFC.publicdelUser(UserIDM, token, function (data) {
-                                    let deluserresult = data.delUserresult
-                                    console.info("Security_IAM_Face_AddCred_DFX_0104 deluserresult =" + deluserresult)
-                                    publicFC.publicCloseSession(UserIDM, function (data) {
-                                        console.info("Security_IAM_Face_AddCred_DFX_0104 closesession = " + data)
-                                        publicFC.publicunRegisterInputer(PinAuth, function (data) {
-                                            console.info("Security_IAM_Face_AddCred_DFX_0104 unRegist = " + data)
-                                            done();
-                                        })
-                                    })
-                                }, function (data) {
-                                })
-                            }, function (data) {
-                            })
-                        }, function (data) {
-                        })
-                    }, function (data) {
-                    })
-                }, function (data) {
-                })
-            })
-
-        } catch (e) {
-            console.log("Security_IAM_Face_AddCred_DFX_0104 fail " + e);
-            expect(null).assertFail();
-        }
-    })
-
-    /*
         * @tc.number    : Security_IAM_Face_Delet_DFX_0104
         * @tc.name      : Delete face with no pin
         * @tc.size      : MediumTest
@@ -245,8 +192,8 @@ describe('userauthTest', function () {
                 publicFC.publicdelCred(UserIDM, "credentialId", "token", function (data) {
                     console.info("Security_IAM_Face_Delet_DFX_0104 info101 = " + JSON.stringify(data))
                     console.info("Security_IAM_Face_Delet_DFX_0104 delCredresult = " + data.delCredresult)
-                    console.info("Security_IAM_Face_Delet_DFX_0104 ResultCode.FAIL = " + ResultCode.FAIL)
-                    expect(ResultCode.Authfail).assertEqual(data.delCredresult);
+                    console.info("Security_IAM_Face_Delet_DFX_0104 ResultCode.FAIL = " + ResultCode.GENERAL_ERROR)
+                    expect(ResultCode.GENERAL_ERROR).assertEqual(data.delCredresult);
                     publicFC.publicCloseSession(UserIDM, function (data) {
                         console.info("Security_IAM_Face_Delet_DFX_0104 closesession = " + data)
                         publicFC.publicunRegisterInputer(PinAuth, function (data) {
@@ -283,8 +230,8 @@ describe('userauthTest', function () {
                         let info102 = data
                         console.info("testFace Security_IAM_Face_Delet_DFX_0105 info102 = " + JSON.stringify(data))
                         console.info("testFace Security_IAM_Face_Delet_DFX_0105 delCredresult ="+ data.delCredresult);
-                        console.info("testFace Face_Delet_DFX_0105 ResultCode.FAIL = " + ResultCode.Authfail);
-                        expect(ResultCode.Authfail).assertEqual(info102.delCredresult);
+                        console.info("testFace Face_Delet_DFX_0105 ResultCode.FAIL = " + ResultCode.GENERAL_ERROR);
+                        expect(ResultCode.GENERAL_ERROR).assertEqual(info102.delCredresult);
                         publicFC.publicauth(UserAuth, challenge, AuthType.FACE, AuthTurstLevel.ATL1, function (data){
                             let info101 = data
                             console.info("testFace Security_IAM_Face_Delet_DFX_0105 info101 = " + JSON.stringify(data))
@@ -407,62 +354,6 @@ describe('userauthTest', function () {
     })
 
     /*
-        * @tc.number    : Security_IAM_Face_Auth_DFX_0104
-        * @tc.name      : Auth face after delete pin
-        * @tc.size      : MediumTest
-        * @tc.type      : Function
-        * @tc.level     : Level 4
-    */
-    it('Security_IAM_Face_Auth_DFX_0104', 4, async function (done) {
-        try {
-            publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
-            publicFC.publicOpenSession(UserIDM, function (data) {
-                let challenge = data
-                console.info("Security_IAM_Face_Auth_DFX_0104 challenge = " + challenge)
-                publicFC.publicaddCredential(UserIDM, CredentialInfopinsix, function (data) {
-                    publicFC.publicauth(UserAuth, challenge, AuthType.PIN, AuthTurstLevel.ATL1, function (data) {
-                        let info101 = data
-                        console.info("Security_IAM_Face_Auth_DFX_0104 info101 = " + JSON.stringify(data))
-                        let token = info101.authextr.token
-                        CredentialInfoface2d.token = token
-                        console.info("Security_IAM_Face_Auth_DFX_0104 token = " + token)
-                        publicFC.publicaddCredential(UserIDM, CredentialInfoface2d, function (data) {
-                            let addfaceresult = data
-                            console.info("Security_IAM_Face_Auth_DFX_0104 addfaceresult = " + JSON.stringify(data))
-                            expect(ResultCode.SUCCESS).assertEqual(addfaceresult.addCredresult);
-                            publicFC.publicdelUser(UserIDM, token, function (data) {
-                                let deluserresult = data.delUserresult
-                                console.info("Security_IAM_Face_Auth_DFX_0104 deluserresult = " + deluserresult)
-                                publicFC.publicauth(UserAuth, challenge, AuthType.FACE, AuthTurstLevel.ATL1,
-                                function (data) {
-                                    let info102 = data;
-                                    console.info("Security_IAM_Face_Auth_DFX_0104 info102 = " + JSON.stringify(data))
-                                    expect(ResultCode.FAIL).assertEqual(info102.authresult);
-                                    publicFC.publicCloseSession(UserIDM, function (data) {
-                                        console.info("Security_IAM_Face_Auth_DFX_0104 closesession = " + data)
-                                        publicFC.publicunRegisterInputer(PinAuth, function (data) {
-                                            console.info("Security_IAM_Face_Auth_DFX_0104 unRegist = " + data)
-                                            done();
-                                        })
-                                    })
-                                }, function (data) {
-                                })
-                            }, function (data) {
-                            })
-                        }, function (data) {
-                        })
-                    }, function (data) {
-                    })
-                }, function (data) {
-                })
-            })
-        } catch (e) {
-            console.log("Security_IAM_Face_Auth_DFX_0104 fail " + e);
-            expect(null).assertFail();
-        }
-    })
-
-    /*
         * @tc.number    : Security_IAM_Face_AddCred_DFX_0101
         * @tc.name      : Can't add face by old token
         * @tc.size      : MediumTest
@@ -558,9 +449,9 @@ describe('userauthTest', function () {
                                 let wrongtoken = token + 'wrong';
                                 publicFC.publicdelCred(UserIDM,credentialId,wrongtoken, function (data) {
                                     console.info('testFace Face_Delet_DFX_0101 del=' + JSON.stringify(data));
-                                    console.info('testFace Face_Delet_DFX_0101 ResultCode.FAIL=' + ResultCode.FAIL);
+                                    console.info('testFace Face_Delet_DFX_0101 ResultCode.FAIL=' + ResultCode.GENERAL_ERROR);
                                     delcredresult = data;
-                                    expect(ResultCode.Authfail).assertEqual(delcredresult.delCredresult);
+                                    expect(ResultCode.GENERAL_ERROR).assertEqual(delcredresult.delCredresult);
                                     publicFC.publicdelUser(UserIDM,token, function (data) {
                                         console.info('Face_Delet_DFX_0101 delUser= ' + JSON.stringify(data));
                                         publicFC.publicCloseSession(UserIDM, function (data) {
