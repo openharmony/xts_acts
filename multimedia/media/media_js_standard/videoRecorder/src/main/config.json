@@ -91,7 +91,9 @@
       "js": [
           {
               "pages": [
-                  "pages/index/index"
+                "pages/index/index",
+                "pages/surfaceTest/surfaceTest",
+                "pages/surfaceTest2/surfaceTest2"
               ],
               "name": "default",
               "window": {

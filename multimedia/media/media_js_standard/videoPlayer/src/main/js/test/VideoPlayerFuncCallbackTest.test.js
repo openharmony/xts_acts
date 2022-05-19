@@ -14,8 +14,8 @@
  */
 
 import media from '@ohos.multimedia.media'
-import {toNewPage, clearRouter} from '../../../../../VideoPlayerTestBase.js';
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
+import * as videoPlayerBase from '../../../../../VideoPlayerTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoPlayerFuncCallbackTest', function () {
@@ -66,7 +66,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     })
 
     beforeEach(async function() {
-        await toNewPage(pagePath1, pagePath2, pageId);
+        await mediaTestBase.toNewPage(pagePath1, pagePath2, pageId);
         pageId = (pageId + 1) % 2;
         await mediaTestBase.msleepAsync(1000).then(
             () => {}, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -76,7 +76,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     })
 
     afterEach(async function() {
-        await clearRouter();
+        await mediaTestBase.clearRouter();
         console.info('afterEach case');
     })
 
@@ -221,10 +221,18 @@ describe('VideoPlayerFuncCallbackTest', function () {
 
     eventEmitter.on(GETDESCRIPTION, (videoPlayer, steps, done) => {
         steps.shift();
+        let videoTrackKey = new Array('bitrate', 'codec_mime', 'frame_rate', 'height',
+        'track_index', 'track_type', 'width');
+        let audioTrackKey = new Array('bitrate', 'channel_count', 'codec_mime', 'sample_rate',
+                'track_index', 'track_type');
+        let videoTrackValue = new Array(1366541, 'video/x-h264', 6000, 480, 0, 1, 720);
+        let audioTrackValue = new Array(129207, 2, 'audio/mpeg', 44100, 1, 0);
+        let descriptionKey = new Array(videoTrackKey, audioTrackKey);
+        let descriptionValue = new Array(videoTrackValue, audioTrackValue);
         videoPlayer.getTrackDescription((err, arrlist) => {
             if (typeof (err) == 'undefined') {
                 for (let i = 0; i < arrlist.length; i++) {
-                    mediaTestBase.printDescription(arrlist[i]);
+                    videoPlayerBase.checkDescription(arrlist[i], descriptionKey[i], descriptionValue[i]);
                 }
                 toNextStep(videoPlayer, steps, done);
             } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {

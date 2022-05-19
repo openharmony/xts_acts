@@ -13,29 +13,18 @@
  * limitations under the License.
  */
 
-import router from '@system.router'
+
 import media from '@ohos.multimedia.media'
 import * as mediaTestBase from './MediaTestBase.js';
 
-export async function toNewPage(pagePath1, pagePath2, page) {
-    let path = '';
-    if (page == 0) {
-        path = pagePath1;
-    } else {
-        path = pagePath2;
+export function checkDescription(actualDescription, descriptionKey, descriptionValue) {
+    for (let i = 0; i < descriptionKey.length; i++) {
+        let property = actualDescription[descriptionKey[i]];
+        console.info('case key is  '+ descriptionKey[i]);
+        console.info('case actual value is  '+ property);
+        console.info('case hope value is  '+ descriptionValue[i]);
+        expect(property).assertEqual(descriptionValue[i]);
     }
-    let options = {
-        uri: path,
-    }
-    try {
-        await router.push(options);
-    } catch {
-        console.info('case route failed');
-    }
-}
-
-export async function clearRouter() {
-    await router.clear();
 }
 
 export async function playVideoSource(url, width, height, duration, playTime, done) {
@@ -186,3 +175,4 @@ export async function playVideoSource(url, width, height, duration, playTime, do
         console.info('case release called');
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 }
+
