@@ -18,7 +18,7 @@
   "module": {
     "package": "com.example.third1.entry",
     "name": "com.example.third1.BmsThirdBundle1",
-    "mainAbility": "com.example.third1.AMainAbility",
+    "mainAbility": "com.example.third1.MainAbility",
     "colorMode": "dark",
     "deviceType": [
       "phone"
@@ -40,7 +40,7 @@
             ]
           }
         ],
-        "name": "com.example.third1.AMainAbility",
+        "name": "com.example.third1.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
@@ -128,7 +128,7 @@
           "voip",
           "taskKeeping"
         ],
-        "name": "com.example.third1.AMainAbilityA",
+        "name": "com.example.third1.MainAbilityA",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",
@@ -144,7 +144,7 @@
         "label": "$string:shortcut",
         "intents": [
           {
-            "targetClass": "com.example.third1.AMainAbility",
+            "targetClass": "com.example.third1.MainAbility",
             "targetBundle": "com.example.third1"
           }
         ]

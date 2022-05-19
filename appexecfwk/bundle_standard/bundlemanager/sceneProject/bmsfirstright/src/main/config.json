@@ -39,7 +39,16 @@
                 "label": "$string:app_name",
                 "type": "page",
                 "homeAbility": true,
-                "launchType": "standard"
+                "launchType": "standard",
+                "metaData": {
+                    "customizeData": [
+                        {
+                            "name": "Data3",
+                            "value": "float",
+                            "extra": "$string:mainability_description"
+                        }
+                    ]
+                }
             }
         ],
         "deviceType": [

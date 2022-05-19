@@ -22,6 +22,8 @@ const INVALID_CODE = 1;
 const LAUNCHER_BUNDLE_NAME = "com.ohos.launcher";
 const SELF_BUNDLENAME = "com.example.actsbmsetsunpermissiontest";
 const SELF_ABILITYNAME = "com.example.actsbmsetsunpermissiontest.MainAbility";
+const BUNDLE_SETTINGS = "com.ohos.settings";
+const ABILITIY_SETTINGS = "com.ohos.settings.MainAbility";
 
 export default function actsBmsJsUnPermissionTest() {
     describe('actsBmsJsUnPermissionTest', function () {
@@ -34,10 +36,8 @@ export default function actsBmsJsUnPermissionTest() {
         it('getApplicationInfos_1300', 0, async function (done) {
             await bundle.getAllApplicationInfo(DEFAULT_FLAG).then(data => {
                 expect().assertFail();
-                done();
             }).catch(err => {
                 expect(err).assertEqual(INVALID_CODE);
-                done();
             });
             bundle.getAllApplicationInfo(DEFAULT_FLAG, (err, data) => {
                 expect(err).assertEqual(INVALID_CODE);
@@ -54,10 +54,8 @@ export default function actsBmsJsUnPermissionTest() {
         it('getBundleInfo_2000', 0, async function (done) {
             await bundle.getBundleInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, { userId: 100 }).then(data => {
                 expect().assertFail();
-                done();
             }).catch(err => {
                 expect(err).assertEqual(INVALID_CODE);
-                done();
             });
             bundle.getBundleInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, { userId: 100 }, (err, data) => {
                 expect(err).assertEqual(INVALID_CODE);
@@ -74,10 +72,8 @@ export default function actsBmsJsUnPermissionTest() {
         it('getApplicationInfo_1800', 0, async function (done) {
             await bundle.getApplicationInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG).then(data => {
                 expect().assertFail();
-                done();
             }).catch(err => {
                 expect(err).assertEqual(INVALID_CODE);
-                done();
             });
             bundle.getApplicationInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, (err, data) => {
                 expect(err).assertEqual(INVALID_CODE);
@@ -136,6 +132,23 @@ export default function actsBmsJsUnPermissionTest() {
                     done();
                 }
             })
+        });
+
+        /*
+         * @tc.number: SUB_BMS_APPINFO_GETABILITYICON_0006
+         * @tc.name: test getAbilityIcon
+         * @tc.desc: test getAbilityIcon without permission
+        */
+        it('SUB_BMS_APPINFO_GETABILITYICON_0006', 0, async function (done) {
+            await bundle.getAbilityIcon(BUNDLE_SETTINGS, ABILITIY_SETTINGS).then(pixelmap => {
+                expect(pixelmap).assertFail();
+            }).catch(err => {
+                expect(err).assertEqual(1);
+            });
+            bundle.getAbilityIcon(BUNDLE_SETTINGS, ABILITIY_SETTINGS, (err, pixelmap) => {
+                expect(err).assertEqual(1);
+                done();
+            });
         });
 
         /*

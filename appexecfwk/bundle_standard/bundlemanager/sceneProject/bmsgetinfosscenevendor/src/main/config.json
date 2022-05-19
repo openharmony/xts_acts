@@ -106,8 +106,13 @@
             "type": "float",
             "description": "$string:mainability_description"
           }],
-          "customizeData": [{  
-          }]
+          "customizeData": [
+            {
+              "name": "vendorName",
+              "value": "vendorValue",
+              "extra": "vendorcustomizeData"
+            }
+          ]
         }
       }
     ],

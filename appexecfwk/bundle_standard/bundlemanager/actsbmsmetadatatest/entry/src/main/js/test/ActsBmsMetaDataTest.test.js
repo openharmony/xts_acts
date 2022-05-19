@@ -21,11 +21,13 @@ const BUNDLE_NAME2 = 'com.example.third5';
 const BUNDLE_NAME3 = 'com.example.noexist';
 const BUNDLE_NAME4 = 'com.example.system1';
 const BUNDLE_NAME5 = 'com.example.vendor1';
+const BUNDLE_NAME6 = 'com.example.l3jsdemo';
 const ABILITY_NAME1 = 'com.example.third1.MainAbility';
-const ABILITY_NAME3 = 'com.example.third5.AMainAbility';
-const ABILITY_NAME4 = 'com.example.noexist.MainAbility';
-const ABILITY_NAME5 = 'com.example.system1.MainAbility';
-const ABILITY_NAME6 = 'com.example.vendor1.MainAbility';
+const ABILITY_NAME2 = 'com.example.third5.AMainAbility';
+const ABILITY_NAME3 = 'com.example.noexist.MainAbility';
+const ABILITY_NAME4 = 'com.example.system1.MainAbility';
+const ABILITY_NAME5 = 'com.example.vendor1.MainAbility';
+const ABILITY_NAME6 = 'com.example.l3jsdemo.MainAbility';
 const USERID = 100;
 
 describe('ActsBmsMetaDataTest', function () {
@@ -33,7 +35,7 @@ describe('ActsBmsMetaDataTest', function () {
     /*
     * @tc.number: bms_getMetaData_0100
     * @tc.name: test to get meta data for an application.
-    * @tc.desc: get an application's meta data which contains two HAP packages.
+    * @tc.desc: get an ability's meta data when update.
     */
     it('bms_getMetaData_0100', 0, async function (done) {
         await bundle.queryAbilityByWant(
@@ -41,105 +43,173 @@ describe('ActsBmsMetaDataTest', function () {
                 "bundleName": BUNDLE_NAME1,
                 "abilityName": ABILITY_NAME1
             }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID).then(dataInfos => {
-                console.info("dataInfos[0].metaData" + JSON.stringify(dataInfos[0].metaData));
-                let metaData = dataInfos[0].metaData;
-                expect(metaData[0].name).assertEqual("Data1");
-                expect(metaData[0].value).assertEqual("float");
-                expect(metaData[0].extra).assertEqual("$string:mainability_description");
-                done();
-            }).catch(err => {
-                expect(err).assertFail();
-                done();
-            });
+            let metaData = dataInfos[0].metaData;
+            expect(metaData[0].name).assertEqual("DataA1");
+            expect(metaData[0].value).assertEqual("float");
+            expect(metaData[0].extra).assertEqual("$string:mainability_description");
+        }).catch(err => {
+            expect(err).assertFail();
+        });
+        bundle.queryAbilityByWant(
+            {
+                "bundleName": BUNDLE_NAME1,
+                "abilityName": ABILITY_NAME1
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID, (err, dataInfos) => {
+            let metaData = dataInfos[0].metaData;
+            expect(metaData[0].name).assertEqual("DataA1");
+            expect(metaData[0].value).assertEqual("float");
+            expect(metaData[0].extra).assertEqual("$string:mainability_description");
+            done();
+        });
+    });
+
+    /*
+    * @tc.number: bms_getMetaData_0200
+    * @tc.name: test to get meta data for an application.
+    * @tc.desc: get an ability's meta data which contains two HAP packages.
+    */
+    it('bms_getMetaData_0200', 0, async function (done) {
+        await bundle.queryAbilityByWant(
+            {
+                "bundleName": BUNDLE_NAME6,
+                "abilityName": ABILITY_NAME6
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID).then(dataInfos => {
+            let metaDataInfo = dataInfos[0].metaData;
+            expect(metaDataInfo[0].name).assertEqual("Data3");
+            expect(metaDataInfo[0].value).assertEqual("float");
+            expect(metaDataInfo[0].extra).assertEqual("$string:mainability_description");
+        }).catch(err => {
+            expect(err).assertFail();
+        });
+        bundle.queryAbilityByWant(
+            {
+                "bundleName": BUNDLE_NAME6,
+                "abilityName": ABILITY_NAME6
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID, (err, dataInfos) => {
+            let metaData = dataInfos[0].metaData;
+            expect(metaData[0].name).assertEqual("Data3");
+            expect(metaData[0].value).assertEqual("float");
+            expect(metaData[0].extra).assertEqual("$string:mainability_description");
+            done();
+        });
     });
 
     /*
     * @tc.number: bms_getMetaData_0400
     * @tc.name: test to get meta data for an application.
-    * @tc.desc: get an application's meta data which has one ability.
+    * @tc.desc: get an ability's meta data which has two ability.
     */
     it('bms_getMetaData_0400', 0, async function (done) {
         await bundle.queryAbilityByWant(
             {
                 bundleName: BUNDLE_NAME2,
-                abilityName: ABILITY_NAME3,
+                abilityName: ABILITY_NAME2,
             }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID).then(dataInfos => {
-                console.info("dataInfos[0].metaData" + JSON.stringify(dataInfos[0].metaData));
-                let metaData = dataInfos[0].metaData;
-                expect(metaData[0].name).assertEqual("Data5A");
-                expect(metaData[0].value).assertEqual("float");
-                expect(metaData[0].extra).assertEqual("$string:mainability_description");
-                done();
-            }).catch(err => {
-                expect(err).assertFail();
-                done();
-            });
+            let metaData = dataInfos[0].metaData;
+            expect(metaData[0].name).assertEqual("Data5A");
+            expect(metaData[0].value).assertEqual("float");
+            expect(metaData[0].extra).assertEqual("$string:mainability_description");
+        }).catch(err => {
+            expect(err).assertFail();
+        });
+        bundle.queryAbilityByWant(
+            {
+                "bundleName": BUNDLE_NAME2,
+                "abilityName": ABILITY_NAME2
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID, (err, dataInfos) => {
+            let metaData = dataInfos[0].metaData;
+            expect(metaData[0].name).assertEqual("Data5A");
+            expect(metaData[0].value).assertEqual("float");
+            expect(metaData[0].extra).assertEqual("$string:mainability_description");
+            done();
+        });
     });
 
     /*
     * @tc.number: bms_getMetaData_0500
     * @tc.name: test to get meta data for an application that does not exist.
-    * @tc.desc: get an application's meta data which does not exist.
+    * @tc.desc: get an ability's meta data which does not exist.
     */
     it('bms_getMetaData_0500', 0, async function (done) {
         await bundle.queryAbilityByWant(
             {
                 bundleName: BUNDLE_NAME3,
-                abilityName: ABILITY_NAME4,
+                abilityName: ABILITY_NAME3,
             }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID).then(dataInfos => {
-                expect(dataInfos.length).assertEqual(0);
-                done();
-            }).catch(err => {
-                console.info("err====: " + err);
-                expect(err).assertEqual(1);
-                done();
-            });
+            expect(dataInfos).assertFail();
+        }).catch(err => {
+            expect(err).assertEqual(1);
+        });
+        bundle.queryAbilityByWant(
+            {
+                "bundleName": BUNDLE_NAME3,
+                "abilityName": ABILITY_NAME3
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID, (err, dataInfos) => {
+            expect(err).assertEqual(1);
+            expect(dataInfos).assertEqual("QueryAbilityInfos failed");
+            done();
+        });
     });
 
     /*
     * @tc.number: bms_getMetaData_0600
     * @tc.name: test to get meta data for a system application.
-    * @tc.desc: get a system application's meta data.
+    * @tc.desc: get a system ability's meta data.
     */
     it('bms_getMetaData_0600', 0, async function (done) {
         await bundle.queryAbilityByWant(
             {
                 bundleName: BUNDLE_NAME4,
-                abilityName: ABILITY_NAME5,
+                abilityName: ABILITY_NAME4,
             }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID).then(dataInfos => {
-                console.info("dataInfos[0].metaData" + JSON.stringify(dataInfos[0].metaData));
-                let metaData = dataInfos[0].metaData;
-                expect(metaData[0].name).assertEqual("Data1S");
-                expect(metaData[0].value).assertEqual("float");
-                expect(metaData[0].extra).assertEqual("$string:mainability_description");
-                done();
-            }).catch(err => {
-                expect(err).assertFail();
-                done();
-            });
+            let metaData = dataInfos[0].metaData;
+            expect(metaData[0].name).assertEqual("Data1S");
+            expect(metaData[0].value).assertEqual("float");
+            expect(metaData[0].extra).assertEqual("$string:mainability_description");
+        }).catch(err => {
+            expect(err).assertFail();
+        });
+        bundle.queryAbilityByWant(
+            {
+                "bundleName": BUNDLE_NAME4,
+                "abilityName": ABILITY_NAME4
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID, (err, dataInfos) => {
+            let metaData = dataInfos[0].metaData;
+            expect(metaData[0].name).assertEqual("Data1S");
+            expect(metaData[0].value).assertEqual("float");
+            expect(metaData[0].extra).assertEqual("$string:mainability_description");
+            done();
+        });
     });
 
     /*
     * @tc.number: bms_getMetaData_0700
     * @tc.name: test to get meta data for a vendor application.
-    * @tc.desc: get a vendor application's meta data.
+    * @tc.desc: get a vendor ability's meta data.
     */
     it('bms_getMetaData_0700', 0, async function (done) {
         await bundle.queryAbilityByWant(
             {
                 bundleName: BUNDLE_NAME5,
-                abilityName: ABILITY_NAME6,
+                abilityName: ABILITY_NAME5,
             }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID).then(dataInfos => {
-                console.info("dataInfos[0].metaData" + JSON.stringify(dataInfos[0].metaData));
-                let metaData = dataInfos[0].metaData;
-                expect(metaData[0].name).assertEqual("");
-                expect(metaData[0].value).assertEqual("");
-                expect(metaData[0].extra).assertEqual("");
-                done();
-            }).catch(err => {
-                expect(err).assertFail();
-                done();
-            });
+            let metaData = dataInfos[0].metaData;
+            expect(metaData[0].name).assertEqual("vendorName");
+            expect(metaData[0].value).assertEqual("vendorValue");
+            expect(metaData[0].extra).assertEqual("vendorcustomizeData");
+        }).catch(err => {
+            expect(err).assertFail();
+        });
+        bundle.queryAbilityByWant(
+            {
+                "bundleName": BUNDLE_NAME5,
+                "abilityName": ABILITY_NAME5
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID, (err, dataInfos) => {
+            let metaData = dataInfos[0].metaData;
+            expect(metaData[0].name).assertEqual("vendorName");
+            expect(metaData[0].value).assertEqual("vendorValue");
+            expect(metaData[0].extra).assertEqual("vendorcustomizeData");
+            done();
+        });
     });
-
 })
