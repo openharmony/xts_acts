@@ -16,8 +16,6 @@ import("//test/xts/tools/build/suite.gni")
 group("formmanager") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "formsystemtest_ets/formfuzztest:FormFuzzTest",
-    ]
+    deps = [ "formsystemtest_ets/formfuzztest:FormFuzzTest" ]
   }
 }
