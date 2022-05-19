@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -36,7 +36,7 @@ describe('AudioRecorderFormatCompatibilityTest', function () {
     let audioRecorder;
     let audioConfig = {
         audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
-        audioEncoder : media.AudioSourceType.AAC_LC,
+        audioEncoder : media.AudioEncoder.AAC_LC,
         audioEncodeBitRate : 22050,
         audioSampleRate : 22050,
         numberOfChannels : 2,
