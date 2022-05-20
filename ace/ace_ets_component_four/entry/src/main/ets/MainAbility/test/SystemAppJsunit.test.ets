@@ -47,18 +47,6 @@ export default function systemAppJsunit() {
       done();
     });
 
-    it('systemAppTest_0400', 0, async function (done) {
-      console.info('systemAppTest_0400 START');
-      try {
-        var a = 2000;
-        app.requestFullWindow(a);
-      } catch (err) {
-        console.log("systemAppTest_0400 error: " + err);
-      }
-      console.info('systemAppTest_0400 END');
-      done();
-    });
-
     it('systemAppTest_0500', 0, async function (done) {
       console.info('systemAppTest_0500 START');
       try {

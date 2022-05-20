@@ -68,36 +68,6 @@ export default function AppStorageJsunit() {
     });
 
     /**
-    * @tc.number  stateManagement_Storage_setOrCreate_0100
-    * @tc.name    stateManagement Storage  validation
-    * @tc.desc    Function test
-    */
-    it('stateManagement_Storage_set_0100', 0, function (done) {
-      done();
-      return;
-
-      console.info('[stateManagement_Storage_set_0100] START');
-      let storage = new Storage();
-      console.info('[stateManagement_Storage_set_0100] 0000');
-      storage.set("key5", "value5");
-      storage.set("key6", "value6");
-      console.info('[stateManagement_Storage_set_0100] 1111');
-      let key5 = storage.get("key5");
-      let key6 = storage.get("key6");
-      console.info('[stateManagement_Storage_set_0100] 2222' + key5);
-      storage.delete("key5");
-      key5 = storage.get("key5");
-      console.info('[stateManagement_Storage_set_0100] 3333');
-      console.info('[stateManagement_Storage_set_0100] key5 =' + key5);
-      console.info('[stateManagement_Storage_set_0100] key6 =' + key6);
-      storage.clear();
-      key6 = storage.get("key6");
-      console.info('[stateManagement_Storage_set_0100] key6 =' + key6);
-      console.info('[stateManagement_Storage_set_0100] END');
-      done();
-    });
-
-    /**
     * @tc.number  stateManagement_Environment_EnvProp_0100
     * @tc.name    stateManagement Environment  validation
     * @tc.desc    Function test
