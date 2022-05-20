@@ -22,6 +22,8 @@ const INVALID_CODE = 1;
 const LAUNCHER_BUNDLE_NAME = "com.ohos.launcher";
 const SELF_BUNDLENAME = "com.example.actsbmsetsunpermissiontest";
 const SELF_ABILITYNAME = "com.example.actsbmsetsunpermissiontest.MainAbility";
+const BUNDLE_SETTINGS = "com.ohos.settings";
+const ABILITIY_SETTINGS = "com.ohos.settings.MainAbility";
 
 export default function actsBmsJsUnPermissionTest() {
     describe('actsBmsJsUnPermissionTest', function () {
@@ -34,10 +36,8 @@ export default function actsBmsJsUnPermissionTest() {
         it('getApplicationInfos_1300', 0, async function (done) {
             await bundle.getAllApplicationInfo(DEFAULT_FLAG).then(data => {
                 expect().assertFail();
-                done();
             }).catch(err => {
                 expect(err).assertEqual(INVALID_CODE);
-                done();
             });
             bundle.getAllApplicationInfo(DEFAULT_FLAG, (err, data) => {
                 expect(err).assertEqual(INVALID_CODE);
@@ -54,10 +54,8 @@ export default function actsBmsJsUnPermissionTest() {
         it('getBundleInfo_2000', 0, async function (done) {
             await bundle.getBundleInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, { userId: 100 }).then(data => {
                 expect().assertFail();
-                done();
             }).catch(err => {
                 expect(err).assertEqual(INVALID_CODE);
-                done();
             });
             bundle.getBundleInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, { userId: 100 }, (err, data) => {
                 expect(err).assertEqual(INVALID_CODE);
@@ -74,10 +72,8 @@ export default function actsBmsJsUnPermissionTest() {
         it('getApplicationInfo_1800', 0, async function (done) {
             await bundle.getApplicationInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG).then(data => {
                 expect().assertFail();
-                done();
             }).catch(err => {
                 expect(err).assertEqual(INVALID_CODE);
-                done();
             });
             bundle.getApplicationInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, (err, data) => {
                 expect(err).assertEqual(INVALID_CODE);
@@ -139,6 +135,23 @@ export default function actsBmsJsUnPermissionTest() {
         });
 
         /*
+         * @tc.number: SUB_BMS_APPINFO_GETABILITYICON_0006
+         * @tc.name: test getAbilityIcon
+         * @tc.desc: test getAbilityIcon without permission
+        */
+        it('SUB_BMS_APPINFO_GETABILITYICON_0006', 0, async function (done) {
+            await bundle.getAbilityIcon(BUNDLE_SETTINGS, ABILITIY_SETTINGS).then(pixelmap => {
+                expect(pixelmap).assertFail();
+            }).catch(err => {
+                expect(err).assertEqual(1);
+            });
+            bundle.getAbilityIcon(BUNDLE_SETTINGS, ABILITIY_SETTINGS, (err, pixelmap) => {
+                expect(err).assertEqual(1);
+                done();
+            });
+        });
+
+        /*
          * @tc.number: getAbilityInfo_100
          * @tc.name: test getAbilityInfo
          * @tc.desc: test getAbilityInfo
@@ -191,15 +204,15 @@ export default function actsBmsJsUnPermissionTest() {
             expect(data.descriptionId).assertLarger(0);
             expect(data.formEnabled).assertEqual(false);
             expect(data.iconId).assertLarger(0);
-            except(data.labelId).assertLarger(0);
+            expect(data.labelId).assertLarger(0);
             expect(data.subType).assertEqual(0);
-            except(data.enabled).assertEqual(true);
+            expect(data.enabled).assertEqual(true);
             expect(data.readPermission).assertEqual("");
             expect(data.writePermission).assertEqual("");
             expect(data.targetAbility).assertEqual("");
             expect(data.theme).assertEqual("");
-            expect(data.metaData).assertEqual([]);
-            expect(data.metadata).assertEqual([]);
+            expect(data.metaData.length).assertEqual(0);
+            expect(data.metadata.length).assertEqual(0);
             checkApplicationInfo(data.applicationInfo);
             console.log("---checkAbilityInfo_other End---  ");
         }
@@ -220,10 +233,10 @@ export default function actsBmsJsUnPermissionTest() {
             expect(info.supportedModes).assertEqual(0);
             expect(info.process).assertEqual("");
             expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/com.example.actsbmsetsunpermissiontest/com.example.actsbmsetsunpermissiontest");
-            expect(info.metaData).expect({});
-            expect(info.metadata).expect({});
-            expect(info.enabled).expect(true);
-            expect(info.flags).expect(0);
+            expect(JSON.stringify(info.metadata)).assertEqual("{}");
+            expect(JSON.stringify(info.metadata)).assertEqual("{}");
+            expect(info.enabled).assertEqual(true);
+            expect(info.flags).assertEqual(0);
             expect(info.uid).assertLarger(0);
             expect(info.entityType).assertEqual("unspecified");
             expect(info.removable).assertEqual(true);

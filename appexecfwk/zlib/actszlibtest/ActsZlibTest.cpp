@@ -455,7 +455,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestSync, Function | MediumTest | Level2)
     inflateSync(&d_stream);
     inflate(&d_stream, Z_FINISH);
     inflateEnd(&d_stream);
-    printf("after inflateSync: hel%s\n", reinterpret_cast<char *>(uncompr));
+    printf("after inflateSync: help%s\n", reinterpret_cast<char *>(uncompr));
     free(compr);
     free(uncompr);
 }
