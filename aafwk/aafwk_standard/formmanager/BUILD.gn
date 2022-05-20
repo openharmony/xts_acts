@@ -16,6 +16,21 @@ import("//test/xts/tools/build/suite.gni")
 group("formmanager") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "formsystemtest_ets/formfuzztest:FormFuzzTest" ]
+    deps = [
+      "formhostst_ets/formsystemhostk:FormSystemHostK",
+      "formproviderst_ets/formsupplyapplicationF:FormSupplyAppF",
+      "formproviderst_ets/formsupplyapplicationG:FormSupplyAppG",
+      "formproviderst_ets/formsystemprovidera:FormSystemProviderA",
+      "formproviderst_ets/formsystemproviderb:FormSystemProviderB",
+      "formproviderst_ets/formsystemproviderc:FormSystemProviderC",
+      "formproviderst_ets/formsystemproviderd:FormSystemProviderD",
+      "formsystemtest_ets/formfuzztest:FormFuzzTest",
+      "formsystemtest_ets/formgetformsinfotest/formsoneandonetest:FormsOneAndOneTest",
+      "formsystemtest_ets/formgetformsinfotest/formsoneandtwotest:FormsOneAndTwoTest",
+      "formsystemtest_ets/formgetformsinfotest/formsoneandzerotest:FormsOneAndZeroTest",
+      "formsystemtest_ets/formgetformsinfotest/formswithoutpermtest:FormsWithoutPermTest",
+      "formsystemtest_ets/formgetformsinfotest/formszerotest:FormsZeroTest",
+      "formsystemtest_ets/formstresstest:FormStressTest",
+    ]
   }
 }
