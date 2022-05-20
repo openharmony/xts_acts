@@ -42,7 +42,10 @@ describe('AudioRecorderEnumTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_AUDIO_RECORDER_ENUM_AUDIO_OUTPUT_FORMAT_00_0100', 0, async function (done) {
+        expect(media.AudioOutputFormat.DEFAULT).assertEqual(0);
         expect(media.AudioOutputFormat.MPEG_4).assertEqual(2);
+        expect(media.AudioOutputFormat.AMR_NB).assertEqual(3);
+        expect(media.AudioOutputFormat.AMR_WB).assertEqual(4);
         expect(media.AudioOutputFormat.AAC_ADTS).assertEqual(6);
         done();
     })
@@ -56,7 +59,11 @@ describe('AudioRecorderEnumTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_AUDIO_RECORDER_ENUM_AUDIO_ENCODER_00_0100', 0, async function (done) {
+        expect(media.AudioEncoder.DEFAULT).assertEqual(0);
+        expect(media.AudioEncoder.AMR_NB).assertEqual(1);
+        expect(media.AudioEncoder.AMR_WB).assertEqual(2);
         expect(media.AudioEncoder.AAC_LC).assertEqual(3);
+        expect(media.AudioEncoder.HE_AAC).assertEqual(4);
         done();
     })
 })
