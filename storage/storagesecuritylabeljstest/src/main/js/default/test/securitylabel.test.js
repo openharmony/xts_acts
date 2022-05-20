@@ -37,7 +37,7 @@ describe('securitylabel', function () {
                 securityLabel.setSecurityLabelSync(fpath, dataLevel[i]);
                 let level = securityLabel.getSecurityLabelSync(fpath);
                 expect(level == dataLevel[i]).assertTrue();
-                expect(fileio.unlinkSync(fpath) == null).assertTrue();
+                fileio.unlinkSync(fpath);
             }
             
         } catch (e) {
@@ -63,7 +63,7 @@ describe('securitylabel', function () {
         } catch (err) {
             console.log('securitylabel_test_set_security_label_sync_001 has failed for ' + err);
             expect(err.message == "Invalid Argument of dataLevelEnum").assertTrue();
-            expect(fileio.unlinkSync(fpath) == null).assertTrue();
+            fileio.unlinkSync(fpath);
         }
     });
 
@@ -103,7 +103,7 @@ describe('securitylabel', function () {
         } catch (err) {
             console.log('securitylabel_test_set_security_label_sync_003 has failed for ' + err);
             expect(err.message == "Invalid dataLevel").assertTrue();
-            expect(fileio.unlinkSync(fpath) == null).assertTrue();
+            fileio.unlinkSync(fpath);
         }
     });
 
@@ -124,7 +124,7 @@ describe('securitylabel', function () {
         } catch (err) {
             console.log('securitylabel_test_set_security_label_sync_004 has failed for ' + err);
             expect(err.message == "Number of arguments unmatched").assertTrue();
-            expect(fileio.unlinkSync(fpath) == null).assertTrue();
+            fileio.unlinkSync(fpath);
         }
     });
 
@@ -145,7 +145,7 @@ describe('securitylabel', function () {
             securityLabel.setSecurityLabel(fpath, 's0', function (err) {
                 securityLabel.getSecurityLabel(fpath, function (err, dataLevel) {
                     expect(dataLevel == 's0').assertTrue();
-                    expect(fileio.unlinkSync(fpath) == null).assertTrue();
+                    fileio.unlinkSync(fpath);
                     done();
                 })
             })
@@ -172,7 +172,7 @@ describe('securitylabel', function () {
             securityLabel.setSecurityLabel(fpath, 's1', async function (err) {
                 let dataLevel = await securityLabel.getSecurityLabel(fpath);
                 expect(dataLevel == 's1').assertTrue();
-                expect(fileio.unlinkSync(fpath) == null).assertTrue();
+                fileio.unlinkSync(fpath);
                 done();
             })
         } catch (e) {
@@ -198,7 +198,7 @@ describe('securitylabel', function () {
             await securityLabel.setSecurityLabel(fpath, 's2');
             securityLabel.getSecurityLabel(fpath, function (err, dataLevel) {
                 expect(dataLevel == 's2').assertTrue();
-                expect(fileio.unlinkSync(fpath) == null).assertTrue();
+                fileio.unlinkSync(fpath);
                 done();
             })
         } catch (e) {
@@ -224,7 +224,7 @@ describe('securitylabel', function () {
             await securityLabel.setSecurityLabel(fpath, 's3');
             let dataLevel = await securityLabel.getSecurityLabel(fpath);
             expect(dataLevel == 's3').assertTrue();
-            expect(fileio.unlinkSync(fpath) == null).assertTrue();
+            fileio.unlinkSync(fpath);
             done();
         } catch (e) {
             console.log('securitylabel_test_set_security_label_async_003 has failed for ' + e);
@@ -249,7 +249,7 @@ describe('securitylabel', function () {
             await securityLabel.setSecurityLabel(fpath, 's4');
             let dataLevel = await securityLabel.getSecurityLabel(fpath);
             expect(dataLevel == 's4').assertTrue();
-            expect(fileio.unlinkSync(fpath) == null).assertTrue();
+            fileio.unlinkSync(fpath));
             done();
         } catch (e) {
             console.log('securitylabel_test_set_security_label_async_004 has failed for ' + e);
@@ -375,7 +375,7 @@ describe('securitylabel', function () {
             await securityLabel.setSecurityLabel(fpath);
         } catch (err) {
             console.log('securitylabel_test_set_security_label_async_010 has failed for ' + err);
-            expect(fileio.unlinkSync(fpath) == null).assertTrue();
+            fileio.unlinkSync(fpath);
             expect(err.message == "Number of arguments unmatched").assertTrue();
             done();
         }
@@ -400,7 +400,7 @@ describe('securitylabel', function () {
             })
         } catch (err) {
             console.log('securitylabel_test_set_security_label_async_011 has failed for ' + err);
-            expect(fileio.unlinkSync(fpath) == null).assertTrue();
+            fileio.unlinkSync(fpath);
             expect(err.message == "Number of arguments unmatched").assertTrue();
             done();
         }
@@ -558,7 +558,7 @@ describe('securitylabel', function () {
             });
         } catch (err) {
             console.log('securitylabel_test_get_security_label_async_003 has failed for ' + err);
-            expect(fileio.unlinkSync(fpath) == null).assertTrue();
+            fileio.unlinkSync(fpath);
             expect(err.message == "Number of arguments unmatched").assertTrue();
             done();
         }
