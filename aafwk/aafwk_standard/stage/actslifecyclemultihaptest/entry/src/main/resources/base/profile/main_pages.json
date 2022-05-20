@@ -1,0 +1,11 @@
+{
+  "src": [
+    "pages/MainAbility_pages",
+    "pages/MainAbility1_pages",
+    "pages/MainAbility2_pages",
+    "pages/MainAbility3_pages",
+    "pages/MainAbility4_pages",
+    "pages/MainAbility5_pages",
+    "pages/MainAbility6_pages"
+  ]
+}
