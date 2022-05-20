@@ -1,10 +1,11 @@
 {
     "description": "Configuration for actsbundleetsgetinfotest Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "600000",
-        "package": "com.open.harmony.packagemag",
-        "shell-timeout": "60000"
+        "bundle-name": "com.open.harmony.packagemag",
+        "package-name": "com.open.harmony.packagemag",
+        "shell-timeout": "600000"
     },
     "kits": [
         {

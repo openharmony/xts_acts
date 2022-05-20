@@ -1,10 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "1800000",
-        "package": "com.ohos.netmanagerhttp",
-        "shell-timeout": "60000"
+        "bundle-name": "com.ohos.netmanagerhttp",
+        "package-name": "com.ohos.netmanagerhttp",
+        "shell-timeout": "1800000"
     },
     "kits": [
         {

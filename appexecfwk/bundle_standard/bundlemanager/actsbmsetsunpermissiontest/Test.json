@@ -1,10 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "120000",
-        "package": "com.example.actsbmsetsunpermissiontest",
-        "shell-timeout": "60000"
+        "bundle-name": "com.example.actsbmsetsunpermissiontest",
+        "package-name": "com.example.actsbmsetsunpermissiontest",
+        "shell-timeout": "120000"
     },
     "kits": [
         {

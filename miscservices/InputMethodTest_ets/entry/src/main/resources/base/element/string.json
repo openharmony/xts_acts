@@ -19,6 +19,14 @@
     {
       "name":"message_arrive",
       "value":"We will arrive at %s."
+    },
+    {
+      "name": "TestAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "TestAbility_label",
+      "value": "label"
     }
   ]
 }
