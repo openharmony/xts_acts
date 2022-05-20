@@ -27,8 +27,6 @@ ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"
 }
 ohos_resources("hjs_demo_resources") {
-  sources = [
-    "./entry/src/main/resources",
-  ]
+  sources = [ "./entry/src/main/resources" ]
   hap_profile = "./entry/src/main/config.json"
 }

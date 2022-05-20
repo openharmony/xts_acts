@@ -16,8 +16,8 @@ import("//test/xts/tools/build/suite.gni")
 ohos_js_hap_suite("FormSupplyAppG") {
   hap_profile = "entry/src/main/config.json"
   deps = [
-    ":FormOfFaEts_js_assets",
     ":FormOfFaEts_form_js_assets",
+    ":FormOfFaEts_js_assets",
     ":FormOfFaEts_resources",
   ]
   certificate_profile = "signature/openharmony_sx.p7b"
@@ -39,8 +39,6 @@ ohos_js_assets("FormOfFaEts_form_js_assets") {
 }
 
 ohos_resources("FormOfFaEts_resources") {
-  sources = [
-    "entry/src/main/resources",
-  ]
+  sources = [ "entry/src/main/resources" ]
   hap_profile = "entry/src/main/config.json"
 }
