@@ -18,7 +18,8 @@ import {Core, ExpectExtend} from 'deccjsunit/index'
 
 export default {
     data: {
-        title: ""
+        title: "",
+        myTimeout:75000
     },
     onInit() {
         this.title = this.$t('strings.world');
@@ -36,6 +37,7 @@ export default {
         core.init()
 
         const configService = core.getDefaultService('config')
+        this.timeout = this.myTimeout
         configService.setConfig(this)
 
         require('../../test/List.test')

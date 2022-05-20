@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
-ohos_js_hap_suite("ActsBluetoothHidJsTest") {
+ohos_js_hap_suite("ActsBluetoothProFileJsTest") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":bluetooth_js_assets",
@@ -20,7 +20,7 @@ ohos_js_hap_suite("ActsBluetoothHidJsTest") {
   ]
 
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsBluetoothHidHapTest"
+  hap_name = "ActsBluetoothProFileJsTest"
 }
 ohos_js_assets("bluetooth_js_assets") {
   source_dir = "./src/main/js/default"

@@ -13,4 +13,5 @@
  * limitations under the License.
  */
 
-require('./BluetoothHid.test.js')
+require('./BluetoothHfp.test.js')
+require('./BluetoothA2dp.test.js')
