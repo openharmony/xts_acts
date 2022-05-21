@@ -156,6 +156,39 @@ describe('fileIOTestDir', function () {
   });
 
   /**
+   * @tc.number SUB_STORAGE_FileIO_dir_OpenASync_001
+   * @tc.name fileio_test_dir_open_async_001
+   * @tc.desc Function of API, file name contain special character.
+   */
+   it('fileio_test_dir_open_async_001', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dir_open_async_001') + 'd'
+    expect(fileio.mkdirSync(dpath) !== null).assertTrue();
+    fileio.opendir(dpath, function (err, dir) {
+      expect(dir !== null).assertTrue();
+      expect(dir.closeSync() == null).assertTrue();
+      expect(fileio.rmdirSync(dpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_FileIO_dir_OpenASync_001
+   * @tc.name fileio_test_dir_open_async_001
+   * @tc.desc Function of API, file name contain special character.
+   */
+  it('fileio_test_dir_open_async_002', 0, async function () {
+    let dpath = await nextFileName('fileio_test_dir_open_async_002') + 'd'
+    expect(fileio.mkdirSync(dpath) !== null).assertTrue();
+    let dir = await fileio.opendir(dpath).then(()=> {
+      expect(dir !== null).assertTrue();
+      expect(dir.closeSync() == null).assertTrue();
+      expect(fileio.rmdirSync(dpath) !== null).assertTrue();
+      console.log('fileio opendir Success');
+    }).catch((err) => {
+        console.log("fileio opendir err: "  + JSON.stringify(err));
+    });
+  });
+
+  /**
    * @tc.number SUB_STORAGE_FileIO_dir_ReadSync_0000
    * @tc.name fileio_test_dir_read_sync_000
    * @tc.desc Function of API, readSync. The dir contains 1 file.
