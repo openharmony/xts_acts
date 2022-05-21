@@ -80,9 +80,9 @@ describe('storageTest', function () {
     })
 
     /**
-     * @tc.name removeStorageFromCache interface test
+     * @tc.name removeStorageFromCache promise interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_Helper_0040
-     * @tc.desc removeStorageFromCache interface test
+     * @tc.desc removeStorageFromCache promise interface test
      */
     it('testRemoveStorageFromCache002', 0, async function (done) {
         let perf = storage.getStorageSync('/data/test_storage2');
@@ -94,6 +94,27 @@ describe('storageTest', function () {
         });
         await promise;
         done();
+    })
+
+    /**
+     * @tc.name removeStorageFromCache callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_Helper_0041
+     * @tc.desc removeStorageFromCache callback interface test
+     */
+    it('testRemoveStorageFromCache003', 0, function (done) {
+        let perf = storage.getStorageSync('/data/test_storage2');
+        storage.removeStorageFromCache(perf, function (err) {
+            if (err) {
+                console.info("removeStorageFromCache callback interface test failed.");
+                expect(null).assertFail();
+                done();
+                return
+            }
+            console.info("removeStorageFromCache callback interface test successfully.");
+            expect(true).assertTrue();
+            done();
+        })
+
     })
 
     /**
