@@ -68,28 +68,19 @@ export default {
     },
 
     onShow(){
-        this.getCommonStyleValues();
+        this.getCommonStyleValuesOne();
+        this.getCommonStyleValuesTwo()
         globalThis.value = {
-            styleOne : this.styleOne,
-            styleTwo : this.styleTwo,
-            styleThree : this.styleThree,
-            styleFour : this.styleFour,
-            styleFive : this.styleFive,
-            styleSix : this.styleSix,
-            styleSeven : this.styleSeven,
-            styleEight : this.styleEight,
-            styleNine : this.styleNine,
-            styleTen : this.styleTen,
-            styleEleven : this.styleEleven,
-            styleTwelve : this.styleTwelve,
-            styleThirteen : this.styleThirteen,
-            styleFourteen : this.styleFourteen,
-            styleFifteen : this.styleFifteen,
-            styleSixteen : this.styleSixteen,
-            styleSeventeen : this.styleSeventeen,
-            styleEighteen : this.styleEighteen,
-            styleNineteen : this.styleNineteen,
-            styleTwenty : this.styleTwenty,
+            styleOne : this.styleOne, styleTwo : this.styleTwo,
+            styleThree : this.styleThree, styleFour : this.styleFour,
+            styleFive : this.styleFive, styleSix : this.styleSix,
+            styleSeven : this.styleSeven, styleEight : this.styleEight,
+            styleNine : this.styleNine, styleTen : this.styleTen,
+            styleEleven : this.styleEleven, styleTwelve : this.styleTwelve,
+            styleThirteen : this.styleThirteen, styleFourteen : this.styleFourteen,
+            styleFifteen : this.styleFifteen, styleSixteen : this.styleSixteen,
+            styleSeventeen : this.styleSeventeen, styleEighteen : this.styleEighteen,
+            styleNineteen : this.styleNineteen, styleTwenty : this.styleTwenty,
             styleTwentyOne : this.styleTwentyOne,
             styleTwentyTwo : this.styleTwentyTwo,
             styleTwentyThree : this.styleTwentyThree,
@@ -102,18 +93,10 @@ export default {
             styleThirtyOne : this.styleThirtyOne,
             styleThirtyTwo : this.styleThirtyTwo,
 
-            addOne : this.addOne,
-            addTwo : this.addTwo,
-            addThree : this.addThree,
-            addFour : this.addFour,
-            addFive : this.addFive,
-            addSix : this.addSix,
-            addSeven : this.addSeven,
-            addEight : this.addEight,
-            addNine : this.addNine,
-            addTen : this.addTen,
-            addEleven : this.addEleven,
-            addTwelve : this.addTwelve,
+            addOne : this.addOne, addTwo : this.addTwo, addThree : this.addThree,
+            addFour : this.addFour, addFive : this.addFive, addSix : this.addSix,
+            addSeven : this.addSeven, addEight : this.addEight, addNine : this.addNine,
+            addTen : this.addTen, addEleven : this.addEleven, addTwelve : this.addTwelve,
             addThirteen : this.addThirteen,
             addFourteen : this.addFourteen,
             addFifteen : this.addFifteen,
@@ -123,7 +106,7 @@ export default {
         }
     },
 
-    getCommonStyleValues(){
+    getCommonStyleValuesOne(){
         this.styleOne = this.$element("styleOne").getInspector()
         this.styleTwo = this.$element("styleTwo").getInspector()
         this.styleThree = this.$element("styleThree").getInspector()
@@ -155,7 +138,9 @@ export default {
         this.styleThirty = this.$element("styleThirty").getInspector()
         this.styleThirtyOne = this.$element("styleThirtyOne").getInspector()
         this.styleThirtyTwo = this.$element("styleThirtyTwo").getInspector()
+    },
 
+    getCommonStyleValuesTwo(){
         this.addOne = this.$element("addOne").getInspector()
         this.addTwo = this.$element("addTwo").getInspector()
         this.addThree = this.$element("addThree").getInspector()
