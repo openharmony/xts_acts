@@ -21,7 +21,7 @@ import wantAgent from '@ohos.wantAgent';
 import particleAbility from '@ohos.ability.particleAbility'
 import backgroundTaskManager from '@ohos.backgroundTaskManager'
 
-const START_ABILITY_TIMEOUT = 4000;
+const START_ABILITY_TIMEOUT = 1000;
 const TERMINATE_ABILITY_TIMEOUT = 1000;
 const TIMEOUT = 1000;
 var subscriberInfo_ACTS_StartAbility_0100 = {
