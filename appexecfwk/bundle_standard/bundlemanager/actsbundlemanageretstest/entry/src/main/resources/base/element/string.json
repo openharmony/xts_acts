@@ -15,6 +15,14 @@
     {
       "name": "description_serviceability",
       "value": "hap sample empty service"
+    },
+    {
+      "name": "TestAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "TestAbility_label",
+      "value": "label"
     }
   ]
 }

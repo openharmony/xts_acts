@@ -13,28 +13,10 @@
  * limitations under the License.
  */
 
-import testsuite2 from "../test/List.test.ets";
-import file from '@system.file';
-import {Core, ExpectExtend, ReportExtend} from "deccjsunit/index.ets";
-
 @Entry
 @Component
 struct MyComponent {
   aboutToAppear() {
-    console.info("start run testcase2!!!!")
-    const core = Core.getInstance();
-    const expectExtend = new ExpectExtend({
-      'id': 'extend'
-    });
-    core.addService('expect', expectExtend);
-    const reportExtend = new ReportExtend(file);
-    core.addService('report', reportExtend);
-    core.init();
-    core.subscribeEvent('task', reportExtend);
-    const configService = core.getDefaultService('config');
-    configService.setConfig(this)
-    testsuite2();
-    core.execute();
   }
 
   build() {

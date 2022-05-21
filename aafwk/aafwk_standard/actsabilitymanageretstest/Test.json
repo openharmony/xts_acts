@@ -1,10 +1,11 @@
 {
     "description": "Configuration for aceceshi Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "600000",
-        "package": "com.ohos.acecollaboration",
-        "shell-timeout": "60000"
+        "bundle-name": "com.ohos.acecollaboration",
+        "package-name": "com.ohos.acecollaboration",
+        "shell-timeout": "600000"
     },
     "kits": [
         {

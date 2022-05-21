@@ -1,10 +1,11 @@
 {
     "description": "Configuration for inputMethod Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "600000",
-        "package": "com.open.harmony.inputMethodtest",
-        "shell-timeout": "60000"
+        "bundle-name": "com.open.harmony.inputMethodtest",
+        "package-name": "com.open.harmony.inputMethodtest",
+        "shell-timeout": "600000"
     },
     "kits": [
         {

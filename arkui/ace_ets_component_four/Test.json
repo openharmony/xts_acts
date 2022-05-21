@@ -1,10 +1,11 @@
 {
     "description": "Configuration for aceceshi Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "600000",
-        "package": "com.open.harmony.acetestfour",
-        "shell-timeout": "60000"
+	    "bundle-name": "com.open.harmony.acetestfour",
+        "package-name": "com.open.harmony.acetestfour",
+        "shell-timeout": "600000"
     },
     "kits": [
         {

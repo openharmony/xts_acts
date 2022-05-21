@@ -1,10 +1,11 @@
 {
     "description": "Configuration for ActsHiTraceChainTest Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "1800000",
-        "package": "ohos.hitracechain.test",
-        "shell-timeout": "60000"
+	"bundle-name": "ohos.hitracechain.test",
+        "package-name": "ohos.hitracechain.test",
+        "shell-timeout": "1800000"
     },
     "kits": [
         {
