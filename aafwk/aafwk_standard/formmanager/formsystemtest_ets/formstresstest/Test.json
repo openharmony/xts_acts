@@ -1,0 +1,21 @@
+{
+    "description": "Configuration for hjunit demo Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "360000",
+        "package": "com.ohos.st.formstresstest",
+        "shell-timeout": "60000"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "FormStressTest.hap",
+                "FormSystemHostK.hap",
+                "FormSupplyAppF.hap",
+                "FormSupplyAppG.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}
