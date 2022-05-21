@@ -14,6 +14,28 @@
  */
 
 export default {
+    data:{
+        styleOne : null,
+        styleTwo : null,
+        styleThree : null,
+        styleFour : null,
+    },
 
+    onShow(){
+        this.getCommonStyleValues();
+        globalThis.value = {
+            styleOne : this.styleOne,
+            styleTwo : this.styleTwo,
+            styleThree : this.styleThree,
+            styleFour : this.styleFour,
+        }
+    },
+
+    getCommonStyleValues(){
+        this.styleOne = this.$element("styleOne").getInspector()
+        this.styleTwo = this.$element("styleTwo").getInspector()
+        this.styleThree = this.$element("styleThree").getInspector()
+        this.styleFour = this.$element("styleFour").getInspector()
+    },
 
 }

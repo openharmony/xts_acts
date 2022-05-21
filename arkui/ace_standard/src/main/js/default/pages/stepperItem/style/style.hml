@@ -20,7 +20,7 @@
         </text>
 
         <text class="sub-title">
-            通用样式 1-8 \n width height padding margin border opacity align-self
+            通用样式 1-8 \n padding margin border opacity align-self
         </text>
         <stepper class="style-box color-grey">
             <stepper-item id="styleOne">
@@ -56,7 +56,7 @@
         </stepper>
 
         <text class="sub-title">
-            通用样式9-20 \n display flex z-index position
+            通用样式9-20 \n display flex z-index
         </text>
         <stepper class="style-box color-violet">
             <stepper-item id="styleNine">
@@ -177,9 +177,81 @@
         <text class="title">
             stepper特有样式
         </text>
-
-        <stepper class="style-box color-violet">
-            <stepper-item id="styleThirtyThree">
+        <text class="sub-title">
+            特有样式 color
+        </text>
+        <stepper class="stepper-itemTextTitle">
+            <stepper-item id="specificOne1">
+                <text class="text">stepper-item1</text>
+            </stepper-item>
+            <stepper-item id="specificOne2">
+                <text class="text">stepper-item2</text>
+            </stepper-item>
+        </stepper>
+        <text class="sub-title">
+            特有样式 font-size
+        </text>
+        <stepper class="stepper-itemTextTitle">
+            <stepper-item id="specificTwo1">
+                <text class="text">stepper-item1</text>
+            </stepper-item>
+            <stepper-item id="specificTwo2">
+                <text class="text">stepper-item2</text>
+            </stepper-item>
+        </stepper>
+        <text class="sub-title">
+            特有样式 allow-scale
+        </text>
+        <stepper class="stepper-itemTextTitle">
+            <stepper-item id="specificThree1">
+                <text class="text">stepper-item1</text>
+            </stepper-item>
+            <stepper-item id="specificThree2">
+                <text class="text">stepper-item2</text>
+            </stepper-item>
+        </stepper>
+        <text class="sub-title">
+            特有样式 font-style
+        </text>
+        <stepper class="stepper-itemTextTitle">
+            <stepper-item id="specificFour1">
+                <text class="text">stepper-item1</text>
+            </stepper-item>
+            <stepper-item id="specificFour2">
+                <text class="text">stepper-item2</text>
+            </stepper-item>
+        </stepper>
+        <text class="sub-title">
+            特有样式 font-weight
+        </text>
+        <stepper class="stepper-itemTextTitle">
+            <stepper-item id="specificFive1">
+                <text class="text">stepper-item1</text>
+            </stepper-item>
+            <stepper-item id="specificFive2">
+                <text class="text">stepper-item2</text>
+            </stepper-item>
+        </stepper>
+        <text class="sub-title">
+            特有样式 text-decoration
+        </text>
+        <stepper class="stepper-itemTextTitle">
+            <stepper-item id="specificSix1">
+                <text class="text">stepper-item1</text>
+            </stepper-item>
+            <stepper-item id="specificSix2">
+                <text class="text">stepper-item2</text>
+            </stepper-item>
+        </stepper>
+        <text class="sub-title">
+            特有样式 font-family
+        </text>
+        <stepper class="stepper-itemTextTitle">
+            <stepper-item id="specificSeven1">
+                <text class="text">stepper-item1</text>
+            </stepper-item>
+            <stepper-item id="specificSeven2">
+                <text class="text">stepper-item2</text>
             </stepper-item>
         </stepper>
     </div>

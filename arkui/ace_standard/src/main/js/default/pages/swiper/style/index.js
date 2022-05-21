@@ -45,7 +45,21 @@ export default {
         styleTwentyNine : null,
         styleThirty : null,
         styleThirtyOne : null,
-        styleThirtyTwo : null
+        styleThirtyTwo : null,
+        specificOne1 : null,
+        specificOne2 : null,
+        specificTwo1 : null,
+        specificTwo2 : null,
+        specificThree1 : null,
+        specificThree2 : null,
+        specificFour1 : null,
+        specificFour2 : null,
+        specificFour3 : null,
+        specificFour4 : null,
+        specificFive1 : null,
+        specificFive2 : null,
+        specificSix1 : null,
+        specificSix2 : null
     },
 
     onShow(){
@@ -77,9 +91,25 @@ export default {
             styleTwentyFour : this.styleTwentyFour,
             styleTwentyFive : this.styleTwentyFive,
             styleTwentySix : this.styleTwentySix,
+            styleTwentySeven : this.styleTwentySeven,
+            styleTwentyNine : this.styleTwentyNine,
             styleThirty : this.styleThirty,
             styleThirtyOne : this.styleThirtyOne,
-            styleThirtyTwo : this.styleThirtyTwo
+            styleThirtyTwo : this.styleThirtyTwo,
+            specificOne1 : this.specificOne1,
+            specificOne2 : this.specificOne2,
+            specificTwo1 : this.specificTwo1,
+            specificTwo2 : this.specificTwo2,
+            specificThree1 : this.specificThree1,
+            specificThree2 : this.specificThree2,
+            specificFour1 : this.specificFour1,
+            specificFour2 : this.specificFour2,
+            specificFour3 : this.specificFour3,
+            specificFour4 : this.specificFour4,
+            specificFive1 : this.specificFive1,
+            specificFive2 : this.specificFive2,
+            specificSix1 : this.specificSix1,
+            specificSix2 : this.specificSix2
         }
     },
 
@@ -110,8 +140,24 @@ export default {
         this.styleTwentyFour = this.$element("styleTwentyFour").getInspector()
         this.styleTwentyFive = this.$element("styleTwentyFive").getInspector()
         this.styleTwentySix = this.$element("styleTwentySix").getInspector()
+        this.styleTwentySeven = this.$element("styleTwentySeven").getInspector()
+        this.styleTwentyNine = this.$element("styleTwentyNine").getInspector()
         this.styleThirty = this.$element("styleThirty").getInspector()
         this.styleThirtyOne = this.$element("styleThirtyOne").getInspector()
         this.styleThirtyTwo = this.$element("styleThirtyTwo").getInspector()
+        this.specificOne1 = this.$element("specificOne1").getInspector()
+        this.specificOne2 = this.$element("specificOne2").getInspector()
+        this.specificTwo1 = this.$element("specificTwo1").getInspector()
+        this.specificTwo2 = this.$element("specificTwo2").getInspector()
+        this.specificThree1 = this.$element("specificThree1").getInspector()
+        this.specificThree2 = this.$element("specificThree2").getInspector()
+        this.specificFour1 = this.$element("specificFour1").getInspector()
+        this.specificFour2 = this.$element("specificFour2").getInspector()
+        this.specificFour3 = this.$element("specificFour3").getInspector()
+        this.specificFour4 = this.$element("specificFour4").getInspector()
+        this.specificFive1 = this.$element("specificFive1").getInspector()
+        this.specificFive2 = this.$element("specificFive2").getInspector()
+        this.specificSix1 = this.$element("specificSix1").getInspector()
+        this.specificSix2 = this.$element("specificSix2").getInspector()
     },
 }

@@ -353,6 +353,32 @@
   mask-position: center;
 }
 
+#styleThirtyThree{
+  width: 150px;
+  height: 20px;
+  background: linear-gradient(pink,#fff000);
+  clip-path: margin-box;
+  image-fill: #000fff;
+  mask-image: url('common/images/icon.png');
+  mask-size: cover;
+  mask-position: center;
+  flex-direction : row;
+}
+
+#styleThirtyFour{
+  width: 150px;
+  height: 20px;
+  background: linear-gradient(pink,#fff000);
+  clip-path: margin-box;
+  image-fill: #000fff;
+  mask-image: url('common/images/icon.png');
+  mask-size: cover;
+  mask-position: center;
+  justify-content : center;
+}
+
+
+
 .top-list-item {
   width:100%;
   background-color:#D4F2E7;

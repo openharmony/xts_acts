@@ -117,42 +117,10 @@
         <text class="sub-title">
             特有样式 font-family
         </text>
-        <select id="specificFontFamily1" class="font-family1">
+        <select id="specificOne" class="font-family1">
             <option value="1">1</option>
             <option value="2">2</option>
         </select>
-        <text class="sub-title">
-            特有样式 color
-        </text>
-        <select id="specificColor1" class="color1">
-            <option value="1">1</option>
-            <option value="2">2</option>
-        </select>
-        <select id="specificColor2" class="color2">
-            <option value="1">1</option>
-            <option value="2">2</option>
-        </select>
-
-        <div style="width: 100%;flex-weight: 1;overflow: scroll;flex-direction: column;">
-            <text class="sub-title">
-                补充样式
-            </text>
-            <select id="addOne">
-            </select>
-            <select id="addTwo">
-            </select>
-            <select id="addThree">
-            </select>
-            <select id="addFour">
-            </select>
-            <select id="addFive">
-            </select>
-            <select id="addSix">
-            </select>
-            <select id="addSeven">
-            </select>
-        </div>
-
     </div>
 </div>
 

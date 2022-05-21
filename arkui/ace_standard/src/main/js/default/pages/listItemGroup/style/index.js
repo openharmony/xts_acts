@@ -15,44 +15,118 @@
 
 import prompt from '@system.prompt';
 export default {
-    data: {
-        direction: 'column',
-        list: []
+    data:{
+        styleOne : null,
+        styleTwo : null,
+        styleThree : null,
+        styleFour : null,
+        styleFive : null,
+        styleSix : null,
+        styleSeven : null,
+        styleEight : null,
+        styleNine : null,
+        styleTen : null,
+        styleEleven : null,
+        styleTwelve : null,
+        styleThirteen : null,
+        styleFourteen : null,
+        styleFifteen : null,
+        styleSixteen : null,
+        styleSeventeen : null,
+        styleEighteen : null,
+        styleNineteen : null,
+        styleTwenty : null,
+        styleTwentyOne : null,
+        styleTwentyTwo : null,
+        styleTwentyThree : null,
+        styleTwentyFour : null,
+        styleTwentyFive : null,
+        styleTwentySix : null,
+        styleTwentySeven : null,
+        styleTwentyNine : null,
+        styleThirty : null,
+        styleThirtyOne : null,
+        styleThirtyTwo : null,
+        styleThirtyThree : null,
+        styleThirtyFour : null,
     },
-    onInit() {
-        this.list = []
-        this.listAdd = []
-        for (var i = 1; i <= 7; i++) {
-            var dataItem = {
-                value: 'GROUP' + i,
-            };
-            this.list.push(dataItem);
+
+    onShow(){
+        this.getCommonStyleValues();
+        this.getSpecialStyleValues();
+        globalThis.value = {
+            styleOne : this.styleOne,
+            styleTwo : this.styleTwo,
+            styleThree : this.styleThree,
+            styleFour : this.styleFour,
+            styleFive : this.styleFive,
+            styleSix : this.styleSix,
+            styleSeven : this.styleSeven,
+            styleEight : this.styleEight,
+            styleNine : this.styleNine,
+            styleTen : this.styleTen,
+            styleEleven : this.styleEleven,
+            styleTwelve : this.styleTwelve,
+            styleThirteen : this.styleThirteen,
+            styleFourteen : this.styleFourteen,
+            styleFifteen : this.styleFifteen,
+            styleSixteen : this.styleSixteen,
+            styleSeventeen : this.styleSeventeen,
+            styleEighteen : this.styleEighteen,
+            styleNineteen : this.styleNineteen,
+            styleTwenty : this.styleTwenty,
+            styleTwentyOne : this.styleTwentyOne,
+            styleTwentyTwo : this.styleTwentyTwo,
+            styleTwentyThree : this.styleTwentyThree,
+            styleTwentyFour : this.styleTwentyFour,
+            styleTwentyFive : this.styleTwentyFive,
+            styleTwentySix : this.styleTwentySix,
+            styleTwentySeven : this.styleTwentySeven,
+            styleTwentyNine : this.styleTwentyNine,
+            styleThirty : this.styleThirty,
+            styleThirtyOne : this.styleThirtyOne,
+            styleThirtyTwo : this.styleThirtyTwo,
+            styleThirtyThree : this.styleThirtyThree,
+            styleThirtyFour : this.styleThirtyFour,
         }
     },
-    collapseOne(e) {
-        this.$element('mylist').collapseGroup({
-            groupid: 'GROUP1'
-        })
+
+    getCommonStyleValues(){
+        this.styleOne = this.$element("styleOne").getInspector()
+        this.styleTwo = this.$element("styleTwo").getInspector()
+        this.styleThree = this.$element("styleThree").getInspector()
+        this.styleFour = this.$element("styleFour").getInspector()
+        this.styleFive = this.$element("styleFive").getInspector()
+        this.styleSix = this.$element("styleSix").getInspector()
+        this.styleSeven = this.$element("styleSeven").getInspector()
+        this.styleEight = this.$element("styleEight").getInspector()
+        this.styleNine = this.$element("styleNine").getInspector()
+        this.styleTen = this.$element("styleTen").getInspector()
+        this.styleEleven = this.$element("styleEleven").getInspector()
+        this.styleTwelve = this.$element("styleTwelve").getInspector()
+        this.styleThirteen = this.$element("styleThirteen").getInspector()
+        this.styleFourteen = this.$element("styleFourteen").getInspector()
+        this.styleFifteen = this.$element("styleFifteen").getInspector()
+        this.styleSixteen = this.$element("styleSixteen").getInspector()
+        this.styleSeventeen = this.$element("styleSeventeen").getInspector()
+        this.styleEighteen = this.$element("styleEighteen").getInspector()
+        this.styleNineteen = this.$element("styleNineteen").getInspector()
+        this.styleTwenty = this.$element("styleTwenty").getInspector()
+        this.styleTwentyOne = this.$element("styleTwentyOne").getInspector()
+        this.styleTwentyTwo = this.$element("styleTwentyTwo").getInspector()
+        this.styleTwentyThree = this.$element("styleTwentyThree").getInspector()
+        this.styleTwentyFour = this.$element("styleTwentyFour").getInspector()
+        this.styleTwentyFive = this.$element("styleTwentyFive").getInspector()
+        this.styleTwentySix = this.$element("styleTwentySix").getInspector()
+        this.styleTwentySeven = this.$element("styleTwentySeven").getInspector()
+        this.styleTwentyNine = this.$element("styleTwentyNine").getInspector()
+        this.styleThirty = this.$element("styleThirty").getInspector()
+        this.styleThirtyOne = this.$element("styleThirtyOne").getInspector()
+        this.styleThirtyTwo = this.$element("styleThirtyTwo").getInspector()
     },
-    expandOne(e) {
-        this.$element('mylist').expandGroup({
-            groupid: 'GROUP1'
-        })
-    },
-    collapseAll(e) {
-        this.$element('mylist').collapseGroup()
-    },
-    expandAll(e) {
-        this.$element('mylist').expandGroup()
-    },
-    collapse(e) {
-        prompt.showToast({
-            message: 'Close ' + e.groupid
-        })
-    },
-    expand(e) {
-        prompt.showToast({
-            message: 'Open ' + e.groupid
-        })
+
+    getSpecialStyleValues() {
+        this.styleThirtyThree = this.$element("styleThirtyThree").getInspector()
+        this.styleThirtyFour = this.$element("styleThirtyFour").getInspector()
     }
 }

@@ -40,7 +40,7 @@
             通用属性 -- style
         </text>
         <div id="styleProp"
-             style="width:10%;height:20px;background-color:red">
+             style="width:10%">
         </div>
 
         <text class="sub-title">
