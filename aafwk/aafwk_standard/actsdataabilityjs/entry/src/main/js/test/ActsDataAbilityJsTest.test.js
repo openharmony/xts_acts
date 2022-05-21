@@ -62,7 +62,7 @@ afterAll((done) => {
         done();
     }, gSetTimeout);
 })
-    
+
 /*
 * @tc.number: ACTS_AfeatureAbilityEnum_0100
 * @tc.name: Enum the client resource of the Data ability.
@@ -74,7 +74,7 @@ it('ACTS_AfeatureAbilityEnum_0100', 0, async function (done) {
         expect(featureAbility.ContinuationState.LOCAL_RUNNING).assertEqual(0);
         expect(featureAbility.ContinuationState.REMOTE_RUNNING).assertEqual(1);
         expect(featureAbility.ContinuationState.REPLICA_RUNNING).assertEqual(2);
-        
+
         expect(abilityManager.ProcessErrCode.NO_ERROR).assertEqual(0);
         expect(abilityManager.ProcessErrCode.CRASHED).assertEqual(1);
         expect(abilityManager.ProcessErrCode.NO_RESPONSE).assertEqual(2);
@@ -750,11 +750,10 @@ it("ACTS_Call_0100", 0, async function (done) {
     console.log('ACTS_Call_0100 end......');
 })
 
-
 /*
  * @tc.number: ACTS_Call_0200
  * @tc.name: call : Queries data in the database.
- * @tc.desc: Check the return value of the interface
+ * @tc.desc: Check the return value of the interface (by promise)
  * @tc.level  0
  */
 it("ACTS_Call_0200", 0, async function (done) {
@@ -768,13 +767,12 @@ it("ACTS_Call_0200", 0, async function (done) {
     try {
         rDAHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri);
         console.debug('ACTS_AbeforeAll rDAHelper ====>: ' + rDAHelper + " ,JSON. " + JSON.stringify(rDAHelper));
-        rDAHelper.call(dataAbilityUri, 'query', arg, pacMap, (err, data) => {
-            if (err) {
-                console.error('ACTS_Call_0200 error: ' + JSON.stringify(err));
-            } else {
-                console.info('ACTS_Call_0200 succeeded: ' + JSON.stringify(data));
-            }
+        rDAHelper.call(dataAbilityUri, 'query', arg, pacMap).then((data) => {
+            console.info('ACTS_Call_0200 succeeded   data: ' + JSON.stringify(data));
+        }).catch((error) => {
+            console.error('ACTS_Call_0200 error: ' + JSON.stringify(error));
         });
+        done();
     } catch (err) {
         console.error('ACTS_Call_0200 catch(err)====>:' + err);
         console.log('ACTS_Call_0200====<end catch(err)');
@@ -786,7 +784,7 @@ it("ACTS_Call_0200", 0, async function (done) {
 /*
  * @tc.number: ACTS_Call_0300
  * @tc.name: call : Updates data records in the database.
- * @tc.desc: Check the return value of the interface
+ * @tc.desc: Check the return value of the interface (by promise)
  * @tc.level   0
  */
 it("ACTS_Call_0300", 0, async function (done) {
@@ -800,13 +798,12 @@ it("ACTS_Call_0300", 0, async function (done) {
     try {
         rDAHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri);
         console.debug('ACTS_AbeforeAll rDAHelper ====>: ' + rDAHelper + " ,JSON. " + JSON.stringify(rDAHelper));
-        rDAHelper.call(dataAbilityUri, 'update', arg, pacMap, (err, data) => {
-            if (err) {
-                console.error('ACTS_Call_0300 error: ' + JSON.stringify(err));
-            } else {
-                console.info('ACTS_Call_0300 succeeded: ' + JSON.stringify(data));
-            }
+        rDAHelper.call(dataAbilityUri, 'update', arg, pacMap).then((data) => {
+            console.info('ACTS_Call_0300 succeeded   data: ' + JSON.stringify(data));
+        }).catch((error) => {
+            console.error('ACTS_Call_0300 error: ' + JSON.stringify(error));
         });
+        done();
     } catch (err) {
         console.error('ACTS_Call_0300 catch(err)====>:' + err);
         console.log('ACTS_Call_0300====<end catch(err)');
@@ -818,7 +815,7 @@ it("ACTS_Call_0300", 0, async function (done) {
 /*
  * @tc.number: ACTS_Call_0400
  * @tc.name: call : Deletes one or more data records from the database.
- * @tc.desc: Check the return value of the interface
+ * @tc.desc: Check the return value of the interface (by promise)
  * @tc.level   0
  */
 it("ACTS_Call_0400", 0, async function (done) {
@@ -831,12 +828,10 @@ it("ACTS_Call_0400", 0, async function (done) {
     try {
         rDAHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri);
         console.debug('ACTS_AbeforeAll rDAHelper ====>: ' + rDAHelper + " ,JSON. " + JSON.stringify(rDAHelper));
-        rDAHelper.call(dataAbilityUri, 'delete', arg, pacMap, (err, data) => {
-            if (err) {
-                console.error('ACTS_Call_0400 error: ' + JSON.stringify(err));
-            } else {
-                console.info('ACTS_Call_0400 succeeded: ' + JSON.stringify(data));
-            }
+        rDAHelper.call(dataAbilityUri, 'delete', arg, pacMap).then((data) => {
+            console.info('ACTS_Call_0400 succeeded   data: ' + JSON.stringify(data));
+        }).catch((error) => {
+            console.error('ACTS_Call_0400 error: ' + JSON.stringify(error));
         });
         done();
     } catch (err) {
@@ -845,6 +840,138 @@ it("ACTS_Call_0400", 0, async function (done) {
         done();
     }
     console.log('ACTS_Call_0400 end......');
+})
+
+/*
+ * @tc.number: ACTS_Call_0500
+ * @tc.name: call : Inserts a single data record into the database.
+ * @tc.desc: Check the return value of the interface (by callback)
+ * @tc.level   0
+ */
+it("ACTS_Call_0500", 0, async function (done) {
+    console.log('ACTS_Call_0500  start......');
+    var pacMap = {
+        'groupName': 'test1',
+        'ringtone_modify_time': 28
+    };
+    var rDAHelper
+    try {
+        rDAHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri);
+        console.debug('ACTS_AbeforeAll rDAHelper ====>: ' + rDAHelper + " ,JSON. " + JSON.stringify(rDAHelper));
+        expect(typeof (rDAHelper)).assertEqual("object");
+        pacMap.groupName = 'test2';
+        rDAHelper.call(dataAbilityUri, 'insert', '', pacMap, (err, data) => {
+            if (err) {
+                console.error('ACTS_Call_0500 error: ' + JSON.stringify(err));
+            } else {
+                console.info('ACTS_Call_0500 succeeded: ' + JSON.stringify(data));
+            }
+        });
+        done();
+    } catch (err) {
+        console.error('ACTS_Call_0500 catch(err)====>:' + err);
+        console.log('ACTS_Call_0500====<end catch(err)');
+        done();
+    }
+    console.log('ACTS_Call_0500 end......');
+})
+
+/*
+ * @tc.number: ACTS_Call_0600
+ * @tc.name: call : Queries data in the database.
+ * @tc.desc: Check the return value of the interface (by callback)
+ * @tc.level  0
+ */
+it("ACTS_Call_0600", 0, async function (done) {
+    console.log('ACTS_Call_0600 start......');
+    var arg = "{\"equalTo\": \"groupName\"}";
+    var pacMap = {
+        "groupName": "test1",
+        "columns": "groupName,ringtone_modify_time"
+    };
+    var rDAHelper
+    try {
+        rDAHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri);
+        console.debug('ACTS_AbeforeAll rDAHelper ====>: ' + rDAHelper + " ,JSON. " + JSON.stringify(rDAHelper));
+        rDAHelper.call(dataAbilityUri, 'query', arg, pacMap, (err, data) => {
+            if (err) {
+                console.error('ACTS_Call_0600 error: ' + JSON.stringify(err));
+            } else {
+                console.info('ACTS_Call_0600 succeeded: ' + JSON.stringify(data));
+            }
+        });
+        done();
+    } catch (err) {
+        console.error('ACTS_Call_0600 catch(err)====>:' + err);
+        console.log('ACTS_Call_0600====<end catch(err)');
+        done();
+    }
+    console.log('ACTS_Call_0600 end......');
+})
+
+/*
+ * @tc.number: ACTS_Call_0700
+ * @tc.name: call : Updates data records in the database.
+ * @tc.desc: Check the return value of the interface (by callback)
+ * @tc.level   0
+ */
+it("ACTS_Call_0700", 0, async function (done) {
+    console.log('ACTS_Call_0700 start......');
+    var arg = "{\"equalTo\": \"ringtone_modify_time\"}";
+    var pacMap = {
+        'ringtone_modify_time': 28,
+        'groupName': 'testupdata1'
+    };
+    var rDAHelper
+    try {
+        rDAHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri);
+        console.debug('ACTS_AbeforeAll rDAHelper ====>: ' + rDAHelper + " ,JSON. " + JSON.stringify(rDAHelper));
+        rDAHelper.call(dataAbilityUri, 'update', arg, pacMap, (err, data) => {
+            if (err) {
+                console.error('ACTS_Call_0700 error: ' + JSON.stringify(err));
+            } else {
+                console.info('ACTS_Call_0700 succeeded: ' + JSON.stringify(data));
+            }
+        });
+        done();
+    } catch (err) {
+        console.error('ACTS_Call_0700 catch(err)====>:' + err);
+        console.log('ACTS_Call_0700====<end catch(err)');
+        done();
+    }
+    console.log('ACTS_Call_0700 end......');
+})
+
+/*
+ * @tc.number: ACTS_Call_0800
+ * @tc.name: call : Deletes one or more data records from the database.
+ * @tc.desc: Check the return value of the interface (by promise)
+ * @tc.level   0
+ */
+it("ACTS_Call_0800", 0, async function (done) {
+    console.log('ACTS_Call_0800 start......');
+    var arg = "{\"lessThan\": \"ringtone_modify_time\"}";
+    var pacMap = {
+        'ringtone_modify_time': 32,
+    };
+    var rDAHelper
+    try {
+        rDAHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri);
+        console.debug('ACTS_AbeforeAll rDAHelper ====>: ' + rDAHelper + " ,JSON. " + JSON.stringify(rDAHelper));
+        rDAHelper.call(dataAbilityUri, 'delete', arg, pacMap, (err, data) => {
+            if (err) {
+                console.error('ACTS_Call_0800 error: ' + JSON.stringify(err));
+            } else {
+                console.info('ACTS_Call_0800 succeeded: ' + JSON.stringify(data));
+            }
+        });
+        done();
+    } catch (err) {
+        console.error('ACTS_Call_0800 catch(err)====>:' + err);
+        console.log('ACTS_Call_0800====<end catch(err)');
+        done();
+    }
+    console.log('ACTS_Call_0800 end......');
 })
 
 })
