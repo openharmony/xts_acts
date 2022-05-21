@@ -87,8 +87,114 @@ describe('appInfoTest', function () {
         done();
     })
 
+    /**
+     * @tc.number BatteryCommonEventTest_008
+     * @tc.name subscribe battery completed common event
+     * @tc.desc Battery acquisition kit
+     */
+    it('BatteryCommonEventTest_008', 0, function (done) {
+        createBootCompletedSubscriber();
+        done();
+    })
+
+    /**
+     * @tc.number BatteryCommonEventTest_009
+     * @tc.name subscribe battery completed common event
+     * @tc.desc Battery acquisition kit
+     */
+    it('BatteryCommonEventTest_009', 0, function (done) {
+        createLockedBootCompletedSubscriber();
+        done();
+    })
+
     console.log("*************Battery commonEvent Test End*************");
 })
+
+function createLockedBootCompletedSubscriber() {
+    var commonEventSubscribeInfo = {
+        events: [commonEvent.Support.COMMON_EVENT_LOCKED_BOOT_COMPLETED],
+    };
+    commonEvent.createSubscriber(commonEventSubscribeInfo)
+        .then(subscriber => {
+            console.info('createLockedBootCompletedSubscriber success');
+            var mySubscriber = subscriber;
+            console.log(subscriber);
+
+            if (subscriber == "" || subscriber == undefined || subscriber == null) {
+                console.info("createSubscriber failed");
+            }
+            mySubscriber.getCode()
+                .then((data) => {
+                    console.info('Subscriber getCode success : ' + JSON.stringify(data));
+                }).catch((error) => {
+                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+            })
+            mySubscriber.getData()
+                .then((data) => {
+                    console.info('Subscriber getData success : ' + JSON.stringify(data));
+                }).catch((error) => {
+                console.error('Subscriber getData error because: ' + JSON.stringify(error));
+            })
+            console.info('subscribe locked_boot_completed begin ');
+
+            commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
+                console.error('err code: ' + JSON.stringify(error));
+                console.info('subscribe callback: ' + JSON.stringify(commonEventData));
+                console.info("commonEventData event: " + commonEventData.event);
+                console.info("commonEventData bundleName: " + commonEventData.bundleName);
+                console.info("commonEventData data: " + commonEventData.data);
+                console.info("commonEventData parameter: " + commonEventData.parameters[0]);
+                var capacity = commonEventData.parameters['0'];
+                console.info("capacity is:" + capacity);
+                expect(capacity >= 0 && capacity <= 100).assertTrue();
+            });
+        }).catch((error) => {
+        console.error('Operation failed. Cause: ' + JSON.stringify(error));
+    });
+}
+
+function createBootCompletedSubscriber() {
+    var commonEventSubscribeInfo = {
+        events: [commonEvent.Support.COMMON_EVENT_BOOT_COMPLETED],
+    };
+    commonEvent.createSubscriber(commonEventSubscribeInfo)
+        .then(subscriber => {
+            console.info('createBootCompletedSubscriber success');
+            var mySubscriber = subscriber;
+            console.log(subscriber);
+
+            if (subscriber == "" || subscriber == undefined || subscriber == null) {
+                console.info("createSubscriber failed");
+            }
+            mySubscriber.getCode()
+                .then((data) => {
+                    console.info('Subscriber getCode success : ' + JSON.stringify(data));
+                }).catch((error) => {
+                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
+            })
+            mySubscriber.getData()
+                .then((data) => {
+                    console.info('Subscriber getData success : ' + JSON.stringify(data));
+                }).catch((error) => {
+                console.error('Subscriber getData error because: ' + JSON.stringify(error));
+            })
+            console.info('subscribe boot_completed begin ');
+
+            commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
+                console.error('err code: ' + JSON.stringify(error));
+                console.info('subscribe callback: ' + JSON.stringify(commonEventData));
+                console.info("commonEventData event: " + commonEventData.event);
+                console.info("commonEventData bundleName: " + commonEventData.bundleName);
+                console.info("commonEventData data: " + commonEventData.data);
+                console.info("commonEventData parameter: " + commonEventData.parameters[0]);
+                var capacity = commonEventData.parameters['0'];
+                console.info("capacity is:" + capacity);
+                expect(capacity >= 0 && capacity <= 100).assertTrue();
+            });
+        }).catch((error) => {
+        console.error('Operation failed. Cause: ' + JSON.stringify(error));
+    });
+}
 
 function createBatteryChangedSubscriber() {
      var commonEventSubscribeInfo = {
