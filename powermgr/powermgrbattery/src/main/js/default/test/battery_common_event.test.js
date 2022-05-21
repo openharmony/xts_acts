@@ -151,7 +151,7 @@ function createLockedBootCompletedSubscriber() {
         }).catch((error) => {
         console.error('Operation failed. Cause: ' + JSON.stringify(error));
     });
-}
+}    
 
 function createBootCompletedSubscriber() {
     var commonEventSubscribeInfo = {
