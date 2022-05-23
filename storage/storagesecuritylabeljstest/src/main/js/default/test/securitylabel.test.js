@@ -249,7 +249,7 @@ describe('securitylabel', function () {
             await securityLabel.setSecurityLabel(fpath, 's4');
             let dataLevel = await securityLabel.getSecurityLabel(fpath);
             expect(dataLevel == 's4').assertTrue();
-            fileio.unlinkSync(fpath));
+            fileio.unlinkSync(fpath);
             done();
         } catch (e) {
             console.log('securitylabel_test_set_security_label_async_004 has failed for ' + e);
