@@ -511,4 +511,44 @@ describe('SimManagerTest', function () {
     }
     done();
   });
+
+  /**
+   * @tc.number Telephony_Sim_getDefaultVoiceSlotld_Async_0400
+   * @tc.name   Test getDefaultVoiceSlotld interface,
+   *            check the callback result
+   * @tc.desc   Function test
+   */
+   it('Telephony_Sim_getDefaultVoiceSlotld_Async_0400', 0, function (done) {
+    const CASE_NAME = 'Telephony_Sim_getDefaultVoiceSlotld_Async_0400';
+    sim.getDefaultVoiceSlotld((error, result) => {
+      if (error) {
+        console.log(`${CASE_NAME} getDefaultVoiceSlotld error: ${error.message}`);
+        expect().assertFail();
+        done();
+        return;
+      }
+      expect(result).assertFalse();
+      console.log(`${CASE_NAME} test finish.`);
+      done();
+    });
+  });
+
+  /**
+   * @tc.number Telephony_Sim_getDefaultVoiceSlotld_Promise_0400
+   * @tc.name   Test getDefaultVoiceSlotld interface,
+   *            check the returned result
+   * @tc.desc   Function test
+   */
+  it('Telephony_Sim_getDefaultVoiceSlotld_Promise_0400', 0, async function (done) {
+    const CASE_NAME = 'Telephony_Sim_getDefaultVoiceSlotld_Promise_0400';
+    try {
+      const result = await sim.getDefaultVoiceSlotld();
+      expect(result).assertFalse();
+      console.log(`${CASE_NAME} test finish.`);
+    } catch (error) {
+      console.log(`${CASE_NAME} getDefaultVoiceSlotld error: ${error.message}`);
+      expect().assertFail();
+    }
+    done();
+  });
 })
