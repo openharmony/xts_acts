@@ -4012,9 +4012,99 @@ describe('fileIOTest', function () {
    it('fileio_test_stat_promise_007', 0, async function () {
     let fpath = await nextFileName('fileio_test_stat_promise_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    expect(fileio.chmodSync(fpath, 0o666) !== null).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o664) !== null).assertTrue();
     let stat = await fileio.stat(fpath).then(()=> {
-      expect((stat.mode & 0o777) == 0o666).assertTrue();
+      expect((stat.mode & 0o777) == 0o664).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      console.log('file stat Success');
+    }).catch((err) => {
+        console.log("file stat err: "  + JSON.stringify(err));
+    });
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_FileIO_stat_promise_008
+   * @tc.name fileio_test_stat_promise_008
+   * @tc.desc obtain file propertys by stat promise
+   */
+   it('fileio_test_stat_promise_008', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_promise_008');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o662) !== null).assertTrue();
+    let stat = await fileio.stat(fpath).then(()=> {
+      expect((stat.mode & 0o777) == 0o662).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      console.log('file stat Success');
+    }).catch((err) => {
+        console.log("file stat err: "  + JSON.stringify(err));
+    });
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_FileIO_stat_promise_009
+   * @tc.name fileio_test_stat_promise_009
+   * @tc.desc obtain file propertys by stat promise
+   */
+   it('fileio_test_stat_promise_009', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_promise_009');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o661) !== null).assertTrue();
+    let stat = await fileio.stat(fpath).then(()=> {
+      expect((stat.mode & 0o777) == 0o661).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      console.log('file stat Success');
+    }).catch((err) => {
+        console.log("file stat err: "  + JSON.stringify(err));
+    });
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_FileIO_stat_promise_009
+   * @tc.name fileio_test_stat_promise_009
+   * @tc.desc obtain file propertys by stat promise
+   */
+   it('fileio_test_stat_promise_010', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_promise_010');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o660) !== null).assertTrue();
+    let stat = await fileio.stat(fpath).then(()=> {
+      expect((stat.mode & 0o777) == 0o660).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      console.log('file stat Success');
+    }).catch((err) => {
+        console.log("file stat err: "  + JSON.stringify(err));
+    });
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_FileIO_stat_promise_011
+   * @tc.name fileio_test_stat_promise_011
+   * @tc.desc obtain file propertys by stat promise
+   */
+   it('fileio_test_stat_promise_011', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_promise_011');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o640) !== null).assertTrue();
+    let stat = await fileio.stat(fpath).then(()=> {
+      expect((stat.mode & 0o777) == 0o640).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      console.log('file stat Success');
+    }).catch((err) => {
+        console.log("file stat err: "  + JSON.stringify(err));
+    });
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_FileIO_stat_promise_012
+   * @tc.name fileio_test_stat_promise_012
+   * @tc.desc obtain file propertys by stat promise
+   */
+   it('fileio_test_stat_promise_012', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_promise_012');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o600) !== null).assertTrue();
+    let stat = await fileio.stat(fpath).then(()=> {
+      expect((stat.mode & 0o777) == 0o600).assertTrue();
       expect(fileio.unlinkSync(fpath) !== null).assertTrue();
       console.log('file stat Success');
     }).catch((err) => {
@@ -4033,6 +4123,201 @@ describe('fileIOTest', function () {
     expect(fileio.chmodSync(fpath, 0o660) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
       expect((stat.mode & 0o777) == 0o660).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number fileio_test_stat_async_001
+   * @tc.name fileio_test_stat_async_001
+   * @tc.desc Function of API, obtain file propertys by stat async
+   */
+   it('fileio_test_stat_async_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_001');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o777) !== null).assertTrue();
+    fileio.stat(fpath, function (err, stat) {
+      expect((stat.mode & 0o777) == 0o777).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number fileio_test_stat_async_002
+   * @tc.name fileio_test_stat_async_002
+   * @tc.desc Function of API, obtain file propertys by stat async
+   */
+   it('fileio_test_stat_async_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_001');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o777) !== null).assertTrue();
+    fileio.stat(fpath, function (err, stat) {
+      expect((stat.mode & 0o777) == 0o777).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number fileio_test_stat_async_003
+   * @tc.name fileio_test_stat_async_003
+   * @tc.desc Function of API, obtain file propertys by stat async
+   */
+   it('fileio_test_stat_async_003', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_003');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o774) !== null).assertTrue();
+    fileio.stat(fpath, function (err, stat) {
+      expect((stat.mode & 0o777) == 0o777).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number fileio_test_stat_async_004
+   * @tc.name fileio_test_stat_async_004
+   * @tc.desc Function of API, obtain file propertys by stat async
+   */
+   it('fileio_test_stat_async_004', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_004');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o772) !== null).assertTrue();
+    fileio.stat(fpath, function (err, stat) {
+      expect((stat.mode & 0o777) == 0o772).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number fileio_test_stat_async_005
+   * @tc.name fileio_test_stat_async_005
+   * @tc.desc Function of API, obtain file propertys by stat async
+   */
+   it('fileio_test_stat_async_005', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_005');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o771) !== null).assertTrue();
+    fileio.stat(fpath, function (err, stat) {
+      expect((stat.mode & 0o777) == 0o771).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number fileio_test_stat_async_006
+   * @tc.name fileio_test_stat_async_006
+   * @tc.desc Function of API, obtain file propertys by stat async
+   */
+   it('fileio_test_stat_async_006', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_006');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o770) !== null).assertTrue();
+    fileio.stat(fpath, function (err, stat) {
+      expect((stat.mode & 0o777) == 0o770).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number fileio_test_stat_async_007
+   * @tc.name fileio_test_stat_async_007
+   * @tc.desc Function of API, obtain file propertys by stat async
+   */
+   it('fileio_test_stat_async_007', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_007');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o666) !== null).assertTrue();
+    fileio.stat(fpath, function (err, stat) {
+      expect((stat.mode & 0o777) == 0o666).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number fileio_test_stat_async_008
+   * @tc.name fileio_test_stat_async_008
+   * @tc.desc Function of API, obtain file propertys by stat async
+   */
+   it('fileio_test_stat_async_008', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_008');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o664) !== null).assertTrue();
+    fileio.stat(fpath, function (err, stat) {
+      expect((stat.mode & 0o777) == 0o664).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number fileio_test_stat_async_009
+   * @tc.name fileio_test_stat_async_009
+   * @tc.desc Function of API, obtain file propertys by stat async
+   */
+   it('fileio_test_stat_async_008', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_008');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o662) !== null).assertTrue();
+    fileio.stat(fpath, function (err, stat) {
+      expect((stat.mode & 0o777) == 0o662).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number fileio_test_stat_async_010
+   * @tc.name fileio_test_stat_async_010
+   * @tc.desc Function of API, obtain file propertys by stat async
+   */
+   it('fileio_test_stat_async_009', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_009');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o640) !== null).assertTrue();
+    fileio.stat(fpath, function (err, stat) {
+      expect((stat.mode & 0o777) == 0o640).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number fileio_test_stat_async_011
+   * @tc.name fileio_test_stat_async_011
+   * @tc.desc Function of API, obtain file propertys by stat async
+   */
+   it('fileio_test_stat_async_010', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_010');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o600) !== null).assertTrue();
+    fileio.stat(fpath, function (err, stat) {
+      expect((stat.mode & 0o777) == 0o600).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number fileio_test_stat_async_012
+   * @tc.name fileio_test_stat_async_012
+   * @tc.desc Function of API, obtain file propertys by stat async
+   */
+   it('fileio_test_stat_async_011', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_011');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o400) !== null).assertTrue();
+    fileio.stat(fpath, function (err, stat) {
+      expect((stat.mode & 0o777) == 0o400).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number fileio_test_stat_async_013
+   * @tc.name fileio_test_stat_async_013
+   * @tc.desc Function of API, obtain file propertys by stat async
+   */
+   it('fileio_test_stat_async_011', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_011');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(fileio.chmodSync(fpath, 0o200) !== null).assertTrue();
+    fileio.stat(fpath, function (err, stat) {
+      expect((stat.mode & 0o777) == 0o200).assertTrue();
       expect(fileio.unlinkSync(fpath) !== null).assertTrue();
     });
   });
