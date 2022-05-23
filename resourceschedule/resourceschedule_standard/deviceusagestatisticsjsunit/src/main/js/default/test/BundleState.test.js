@@ -301,6 +301,30 @@ describe('bundlestate', function() {
 		});
 		console.info('queryCurrentBundleActiveStates_043 end');
 	})
+
+	/*
+	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0066
+     * @tc.name: queryCurrentBundleActiveStates_066.
+     * @tc.desc: Execute queryCurrentBundleActiveStates with promise.
+	 * @tc.size: MEDIUM
+     * @tc.type: Function
+     * @tc.level: level 0
+     */
+	it('queryCurrentBundleActiveStates_066', 0, async function(done) {
+		console.info('queryCurrentBundleActiveStates_066 start');
+		bundlestate.queryCurrentBundleActiveStates(true, false).then((res) => {
+			console.info('queryCurrentBundleActiveStates_066 promise success result = ' + JSON.stringify(res));
+			expect(res).assertFail();
+		}).catch((err) => {
+			console.info('queryCurrentBundleActiveStates_066 promise fail result = ' + JSON.stringify(err));
+			expect(err.code).assertLarger(0);
+		})
+		done();
+	});
+	console.info('queryCurrentBundleActiveStates_066 end');
+})
+
+
 	
 	/*
 	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0044
@@ -325,6 +349,28 @@ describe('bundlestate', function() {
 		});
 		console.info('queryCurrentBundleActiveStates_044 end');
 	})
+
+	/*
+	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0067
+	 * @tc.name: queryCurrentBundleActiveStates_067.
+	 * @tc.desc: Execute queryCurrentBundleActiveStates with promise.
+	 * @tc.size: MEDIUM
+	 * @tc.type: Function
+	 * @tc.level: level 0
+	 */
+	it('queryCurrentBundleActiveStates_067', 0, async function(done) {
+		console.info('queryCurrentBundleActiveStates_067 start');
+		let timer = onInit();
+		bundlestate.queryCurrentBundleActiveStates(timer.startTime, '').then((data) => {
+			console.info('queryCurrentBundleActiveStates_067 promise success result = ' + JSON.stringify(data));
+			expect(data).assertFail();
+		}).catch((err) => {
+			console.info('queryCurrentBundleActiveStates_067 promise fail result = ' + JSON.stringify(err.code));
+			expect(err.code).assertLarger(0);
+		});
+		done();
+		console.info('queryCurrentBundleActiveStates_067 end');
+	})
 	
 	/*
 	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0045
@@ -348,6 +394,27 @@ describe('bundlestate', function() {
 		});
 		console.info('queryCurrentBundleActiveStates_045 end');
 	})
+
+	/*
+	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0068
+	 * @tc.name: queryCurrentBundleActiveStates_068.
+	 * @tc.desc: Execute queryCurrentBundleActiveStates with promise.
+	 * @tc.size: MEDIUM
+	 * @tc.type: Function
+	 * @tc.level: level 0
+	 */
+	it('queryCurrentBundleActiveStates_068', 0, async function(done) {
+		console.info('queryCurrentBundleActiveStates_068 start');
+		bundlestate.queryCurrentBundleActiveStates(true, -1).then((data) => {
+			console.info('queryCurrentBundleActiveStates_068 promise success result = ' + JSON.stringify(data));
+			expect(data).assertFail();
+		}).catch((err) => {
+			console.info('queryCurrentBundleActiveStates_068 promise fail result = ' + err.code);
+			expect(err.code).assertLarger(0);
+		});
+		done();
+		console.info('queryCurrentBundleActiveStates_068 end');
+	})
 	
 	/*
 	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0046
@@ -370,6 +437,27 @@ describe('bundlestate', function() {
 			done();
 		});
 		console.info('queryCurrentBundleActiveStates_046 end');
+	})
+
+	/*
+	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0069
+	 * @tc.name: queryCurrentBundleActiveStates_069.
+	 * @tc.desc: Execute queryCurrentBundleActiveStates with promise.
+	 * @tc.size: MEDIUM
+	 * @tc.type: Function
+	 * @tc.level: level 0
+	 */
+	it('queryCurrentBundleActiveStates_069', 0, async function(done) {
+		console.info('queryCurrentBundleActiveStates_069 start');
+		bundlestate.queryCurrentBundleActiveStates(10001, 'timer.endTime').then((data) => {
+			console.info('queryCurrentBundleActiveStates_069 promise success result = ' + JSON.stringify(data));
+			expect(data).assertFail()
+		}).catch((err) => {
+			console.info('queryCurrentBundleActiveStates_069 promise fail result = ' + JSON.stringify(err.code));
+			expect(err.code).assertLarger(0);
+		});
+		done();
+		console.info('queryCurrentBundleActiveStates_069 end');
 	})
 	
 	/*
@@ -395,6 +483,28 @@ describe('bundlestate', function() {
 		});
 		console.info('queryCurrentBundleActiveStates_047 end');
 	})
+
+	/*
+	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0070
+	 * @tc.name: queryCurrentBundleActiveStates_070.
+	 * @tc.desc: Execute queryCurrentBundleActiveStates with promise.
+	 * @tc.size: MEDIUM
+	 * @tc.type: Function
+	 * @tc.level: level 0
+	 */
+	it('queryCurrentBundleActiveStates_070', 0, async function(done) {
+		console.info('queryCurrentBundleActiveStates_070 start');
+		let timer = onInit();
+		bundlestate.queryCurrentBundleActiveStates(timer.startTime, timer.startTime).then((data) => {
+			console.info('queryCurrentBundleActiveStates_070 promise success result = ' + JSON.stringify(data));
+			expect(data).assertFail();
+		}).catch((err) => {
+			console.info('queryCurrentBundleActiveStates_070 promise fail result = ' + JSON.stringify(err.code));
+			expect(err.code).assertLarger(0);
+		});
+		done();
+		console.info('queryCurrentBundleActiveStates_070 end');
+	})
 	
 	/*
 	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0048
@@ -418,6 +528,28 @@ describe('bundlestate', function() {
 			done();
 		});
 		console.info('queryCurrentBundleActiveStates_048 end');
+	})
+
+	/*
+	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0071
+	 * @tc.name: queryCurrentBundleActiveStates_071.
+	 * @tc.desc: Execute queryCurrentBundleActiveStates with promise.
+	 * @tc.size: MEDIUM
+	 * @tc.type: Function
+	 * @tc.level: level 0
+	 */
+	it('queryCurrentBundleActiveStates_071', 0, async function(done) {
+		console.info('queryCurrentBundleActiveStates_071 start');
+		let timer = onInit();
+		bundlestate.queryCurrentBundleActiveStates(timer.endTime, timer.startTime).then((data) => {
+			console.info('queryCurrentBundleActiveStates_071 promise success result = ' + JSON.stringify(data));
+			expect(data).assertFail();
+		}).catch((err) => {
+			console.info('queryCurrentBundleActiveStates_071 promise fail result = ' + JSON.stringify(err.code));
+			expect(err.code).assertLarger(0);
+		});
+		done();
+		console.info('queryCurrentBundleActiveStates_071 end');
 	})
 	
 	/*
@@ -443,6 +575,28 @@ describe('bundlestate', function() {
 		});
 		console.info('queryCurrentBundleActiveStates_049 end');
 	})
+
+	/*
+	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0072
+	 * @tc.name: queryCurrentBundleActiveStates_072.
+	 * @tc.desc: Execute queryCurrentBundleActiveStates with promise.
+	 * @tc.size: MEDIUM
+	 * @tc.type: Function
+	 * @tc.level: level 0
+	 */
+	it('queryCurrentBundleActiveStates_072', 0, async function(done) {
+		console.info('queryCurrentBundleActiveStates_072 start');
+		let timer = onInit();
+		bundlestate.queryCurrentBundleActiveStates(3.145, timer.startTime).then((data) => {
+			console.info('queryCurrentBundleActiveStates_072 promise success result = ' + JSON.stringify(data));
+			expect(data).assertInstanceOf('Array');
+		}).catch((err) => {
+			console.info('queryCurrentBundleActiveStates_072 promise fail result = ' + JSON.stringify(err.code));
+			expect(err.code).assertLarger(0);
+		});
+		done();
+		console.info('queryCurrentBundleActiveStates_072 end');
+	})
 	
 	/*
 	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0050
@@ -467,6 +621,28 @@ describe('bundlestate', function() {
 		});
 		console.info('queryCurrentBundleActiveStates_050 end');
 	})
+
+	/*
+	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0073
+	 * @tc.name: queryCurrentBundleActiveStates_073.
+	 * @tc.desc: Execute queryCurrentBundleActiveStates with promise.
+	 * @tc.size: MEDIUM
+	 * @tc.type: Function
+	 * @tc.level: level 0
+	 */
+	it('queryCurrentBundleActiveStates_073', 0, async function(done) {
+		console.info('queryCurrentBundleActiveStates_073 start');
+		let timer = onInit();
+		bundlestate.queryCurrentBundleActiveStates('', '').then((data) => {
+			console.info('queryCurrentBundleActiveStates_073 promise success result = ' + JSON.stringify(data));
+			expect(data).assertFail();
+		}).catch((err) => {
+			console.info('queryCurrentBundleActiveStates_073 promise fail result = ' + JSON.stringify(err.code));
+			expect(err.code).assertLarger(0);
+		});
+		done();
+		console.info('queryCurrentBundleActiveStates_073 end');
+	})
 	
 	/*
 	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0051
@@ -490,6 +666,28 @@ describe('bundlestate', function() {
 			done();
 		});
 		console.info('queryCurrentBundleActiveStates_051 end');
+	})
+
+	/*
+	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0074
+	 * @tc.name: queryCurrentBundleActiveStates_074.
+	 * @tc.desc: Execute queryCurrentBundleActiveStates with promise.
+	 * @tc.size: MEDIUM
+	 * @tc.type: Function
+	 * @tc.level: level 0
+	 */
+	it('queryCurrentBundleActiveStates_074', 0, async function(done) {
+		console.info('queryCurrentBundleActiveStates_074 start');
+		let timer = onInit();
+		bundlestate.queryCurrentBundleActiveStates(null, null).then((data) => {
+			console.info('queryCurrentBundleActiveStates_074 promise success result = ' + JSON.stringify(data));
+			expect(data).assertFail();
+		}).catch((err) => {
+			console.info('queryCurrentBundleActiveStates_074 promise fail result = ' + JSON.stringify(err.code));
+			expect(err.code).assertLarger(0);
+		});
+		done();
+		console.info('queryCurrentBundleActiveStates_074 end');
 	})
 	
 	/*
@@ -605,6 +803,27 @@ describe('bundlestate', function() {
 		});
 		console.info('isIdleState_056 end');
 	})
+
+	/*
+	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0062
+     * @tc.name: isIdleState_062.
+     * @tc.desc: Execute isIdleState with Promise.
+	 * @tc.size: MEDIUM
+     * @tc.type: Function
+     * @tc.level: level 0
+     */
+	it('isIdleState_062', 0, async function(done) {
+		console.info('isIdleState_062 start');
+		bundlestate.isIdleState(123).then((res) => {
+			console.info('isIdleState_062 promise success result = ' + JSON.stringify(res));
+			expect(res).assertFail();
+		}).catch((err) => {
+			console.info('isIdleState_062 promise fail result = ' + JSON.stringify(err));
+			expect(err.code).assertLarger(0);
+		})
+		done();
+		console.info('isIdleState_062 end');
+	})
 	
 	/*
 	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0057
@@ -627,6 +846,27 @@ describe('bundlestate', function() {
 			done();
 		});
 		console.info('isIdleState_057 end');
+	})
+
+	/*
+	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0063
+     * @tc.name: isIdleState_063.
+     * @tc.desc: Execute isIdleState with Promise.
+	 * @tc.size: MEDIUM
+     * @tc.type: Function
+     * @tc.level: level 0
+     */
+	it('isIdleState_063', 0, async function(done) {
+		console.info('isIdleState_063 start');
+		bundlestate.isIdleState(null).then((res) => {
+			console.info('isIdleState_063 promise success result = ' + JSON.stringify(res));
+			expect(res).assertFail();
+		}).catch((err) => {
+			console.info('isIdleState_063 promise fail result = ' + JSON.stringify(err));
+			expect(err.code).assertLarger(0);
+		})
+		done();
+		console.info('isIdleState_063 end');
 	})
 	
 	/*
@@ -674,6 +914,27 @@ describe('bundlestate', function() {
 		});
 		console.info('isIdleState_059 end');
 	})
+
+	/*
+	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0064
+     * @tc.name: isIdleState_064.
+     * @tc.desc: Execute isIdleState with Promise.
+	 * @tc.size: MEDIUM
+     * @tc.type: Function
+     * @tc.level: level 0
+     */
+	it('isIdleState_064', 0, async function(done) {
+		console.info('isIdleState_064 start');
+		bundlestate.isIdleState(false).then((res) => {
+			console.info('isIdleState_064 promise success result = ' + JSON.stringify(res));
+			expect(res).assertFail();
+		}).catch((err) => {
+			console.info('isIdleState_064 promise fail result = ' + JSON.stringify(err));
+			expect(err.code).assertLarger(0);
+		})
+		done();
+		console.info('isIdleState_064 end');
+	})
 	
 	/*
 	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0060
@@ -697,4 +958,47 @@ describe('bundlestate', function() {
 		});
 		console.info('isIdleState_060 end');
 	})
+
+	/*
+	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_0061
+     * @tc.name: isIdleState_061.
+     * @tc.desc: Execute isIdleState with Promise.
+	 * @tc.size: MEDIUM
+     * @tc.type: Function
+     * @tc.level: level 0
+     */
+	it('isIdleState_061', 0, async function(done) {
+		console.info('isIdleState_061 start');
+		bundlestate.isIdleState('').then((res) => {
+			console.info('isIdleState_061 promise success result = ' + JSON.stringify(res));
+			expect(res).assertFail();
+		}).catch((err) => {
+			console.info('isIdleState_061 promise fail result = ' + JSON.stringify(err));
+			expect(err.code).assertLarger(0);
+		})
+		done();
+		console.info('isIdleState_061 end');
+	})
+
+	/*
+	 * @tc.number: SUB_INTELLITV_JS_BUNDLE_065
+     * @tc.name: isIdleState_065.
+     * @tc.desc: Execute isIdleState with Promise.
+	 * @tc.size: MEDIUM
+     * @tc.type: Function
+     * @tc.level: level 0
+     */
+	it('isIdleState_065', 0, async function(done) {
+		console.info('isIdleState_065 start');
+		bundlestate.isIdleState(true).then((res) => {
+			console.info('isIdleState_065 promise success result = ' + JSON.stringify(res));
+			expect(res).assertFail();
+		}).catch((err) => {
+			console.info('isIdleState_065 promise fail result = ' + JSON.stringify(err));
+			expect(err.code).assertLarger(0);
+		})
+		done();
+		console.info('isIdleState_065 end');
+	})
+
 })
