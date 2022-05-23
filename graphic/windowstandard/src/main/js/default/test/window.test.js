@@ -2161,7 +2161,6 @@ describe('window_test', function () {
             done();
         })
     })
-
     /**
      * @tc.number		SUB_WMS_SETFOCUSABLE_JSAPI_005
      * @tc.name			Test setFocusable_Test_005
