@@ -17,8 +17,11 @@ import factory from '@ohos.data.distributedData';
 
 const TEST_BUNDLE_NAME = 'ohos.acts.distributeddatamgr';
 const TEST_STORE_ID = 'storeId';
+const STORE_KEY = 'key_test_string';
+const STORE_VALUE = 'value-test-string';
 var kvManager = null;
 var kvStore = null;
+var kvStoreNew = null;
 
 describe('KVManagerCallbackTest', function () {
     const config = {
@@ -43,7 +46,10 @@ describe('KVManagerCallbackTest', function () {
         console.log('beforeAll');
         await factory.createKVManager(config, function (err, manager) {
             kvManager = manager;
-            done();
+            kvManager.getKVStore(TEST_STORE_ID, options, function (err, store) {
+                kvStoreNew = store;
+                done();
+            });
         });
         console.log('beforeAll end');
     })
@@ -125,9 +131,9 @@ describe('KVManagerCallbackTest', function () {
             encrypt : false,
             backup : false,
             autoSync : true,
-            kvStoreType : factory.KVStoreType.SINGLE_VERSION,
+            kvStoreType : factory.KVStoreType.DEVICE_COLLABORATION,
             schema : '',
-            securityLevel : factory.SecurityLevel.S2,
+            securityLevel : factory.SecurityLevel.NO_LEVEL,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
@@ -156,9 +162,9 @@ describe('KVManagerCallbackTest', function () {
             encrypt : false,
             backup : false,
             autoSync : true,
-            kvStoreType : factory.KVStoreType.SINGLE_VERSION,
+            kvStoreType : factory.KVStoreType.DEVICE_COLLABORATION,
             schema : '',
-            securityLevel : factory.SecurityLevel.S2,
+            securityLevel : factory.SecurityLevel.S0,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
@@ -188,9 +194,9 @@ describe('KVManagerCallbackTest', function () {
             encrypt : true,
             backup : false,
             autoSync : true,
-            kvStoreType : factory.KVStoreType.SINGLE_VERSION,
+            kvStoreType : factory.KVStoreType.DEVICE_COLLABORATION,
             schema : '',
-            securityLevel : factory.SecurityLevel.S2,
+            securityLevel : factory.SecurityLevel.S1,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
@@ -218,7 +224,7 @@ describe('KVManagerCallbackTest', function () {
             encrypt : false,
             backup : false,
             autoSync : true,
-            kvStoreType : factory.KVStoreType.SINGLE_VERSION,
+            kvStoreType : factory.KVStoreType.DEVICE_COLLABORATION,
             schema : '',
             securityLevel : factory.SecurityLevel.S2,
         }
@@ -248,9 +254,9 @@ describe('KVManagerCallbackTest', function () {
             encrypt : false,
             backup : true,
             autoSync : true,
-            kvStoreType : factory.KVStoreType.SINGLE_VERSION,
+            kvStoreType : factory.KVStoreType.DEVICE_COLLABORATION,
             schema : '',
-            securityLevel : factory.SecurityLevel.S2,
+            securityLevel : factory.SecurityLevel.S3,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
@@ -278,9 +284,9 @@ describe('KVManagerCallbackTest', function () {
             encrypt : false,
             backup : false,
             autoSync : true,
-            kvStoreType : factory.KVStoreType.SINGLE_VERSION,
+            kvStoreType : factory.KVStoreType.DEVICE_COLLABORATION,
             schema : '',
-            securityLevel : factory.SecurityLevel.S2,
+            securityLevel : factory.SecurityLevel.S4,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
@@ -310,7 +316,7 @@ describe('KVManagerCallbackTest', function () {
             autoSync : true,
             kvStoreType : factory.KVStoreType.SINGLE_VERSION,
             schema : '',
-            securityLevel : factory.SecurityLevel.S2,
+            securityLevel : factory.SecurityLevel.NO_LEVEL,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
@@ -340,7 +346,7 @@ describe('KVManagerCallbackTest', function () {
             autoSync : false,
             kvStoreType : factory.KVStoreType.SINGLE_VERSION,
             schema : '',
-            securityLevel : factory.SecurityLevel.S2,
+            securityLevel : factory.SecurityLevel.S0,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
@@ -370,7 +376,7 @@ describe('KVManagerCallbackTest', function () {
             autoSync : true,
             kvStoreType : factory.KVStoreType.SINGLE_VERSION,
             schema : '',
-            securityLevel : factory.SecurityLevel.S2,
+            securityLevel : factory.SecurityLevel.S1,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
@@ -398,7 +404,7 @@ describe('KVManagerCallbackTest', function () {
             encrypt : false,
             backup : false,
             autoSync : true,
-            kvStoreType : factory.KVStoreType.DEVICE_COLLABORATION,
+            kvStoreType : factory.KVStoreType.SINGLE_VERSION,
             schema : '',
             securityLevel : factory.SecurityLevel.S2,
         }
@@ -428,9 +434,9 @@ describe('KVManagerCallbackTest', function () {
             encrypt : false,
             backup : false,
             autoSync : true,
-            kvStoreType : factory.KVStoreType.MULTI_VERSION,
+            kvStoreType : factory.KVStoreType.SINGLE_VERSION,
             schema : '',
-            securityLevel : factory.SecurityLevel.S2,
+            securityLevel : factory.SecurityLevel.S3,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
@@ -462,7 +468,7 @@ describe('KVManagerCallbackTest', function () {
             autoSync : true,
             kvStoreType : factory.KVStoreType.SINGLE_VERSION,
             schema : '',
-            securityLevel : factory.SecurityLevel.NO_LEVEL,
+            securityLevel : factory.SecurityLevel.S4,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
@@ -490,9 +496,9 @@ describe('KVManagerCallbackTest', function () {
             encrypt : false,
             backup : false,
             autoSync : true,
-            kvStoreType : factory.KVStoreType.SINGLE_VERSION,
+            kvStoreType : factory.KVStoreType.MULTI_VERSION,
             schema : '',
-            securityLevel : factory.SecurityLevel.S0,
+            securityLevel : factory.SecurityLevel.NO_LEVEL,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
@@ -520,9 +526,9 @@ describe('KVManagerCallbackTest', function () {
             encrypt : false,
             backup : false,
             autoSync : true,
-            kvStoreType : factory.KVStoreType.SINGLE_VERSION,
+            kvStoreType : factory.KVStoreType.MULTI_VERSION,
             schema : '',
-            securityLevel : factory.SecurityLevel.S1,
+            securityLevel : factory.SecurityLevel.S0,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
@@ -550,9 +556,9 @@ describe('KVManagerCallbackTest', function () {
             encrypt : false,
             backup : false,
             autoSync : true,
-            kvStoreType : factory.KVStoreType.SINGLE_VERSION,
+            kvStoreType : factory.KVStoreType.MULTI_VERSION,
             schema : '',
-            securityLevel : factory.SecurityLevel.S2,
+            securityLevel : factory.SecurityLevel.S1,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
@@ -580,9 +586,9 @@ describe('KVManagerCallbackTest', function () {
             encrypt : false,
             backup : false,
             autoSync : true,
-            kvStoreType : factory.KVStoreType.SINGLE_VERSION,
+            kvStoreType : factory.KVStoreType.MULTI_VERSION,
             schema : '',
-            securityLevel : factory.SecurityLevel.S3,
+            securityLevel : factory.SecurityLevel.S2,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
@@ -610,13 +616,43 @@ describe('KVManagerCallbackTest', function () {
             encrypt : false,
             backup : false,
             autoSync : true,
-            kvStoreType : factory.KVStoreType.SINGLE_VERSION,
+            kvStoreType : factory.KVStoreType.MULTI_VERSION,
+            schema : '',
+            securityLevel : factory.SecurityLevel.S3,
+        }
+        try {
+            await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
+                console.log('testKVManagerGetKVStore119 getKVStore success');
+                expect((err == undefined) && (store != null)).assertTrue();
+                kvStore = store;
+                done();
+            });
+        } catch (e) {
+            console.log('testKVManagerGetKVStore119 getKVStore e ' + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_1200
+     * @tc.name [JS-API8]KVManager.GetKVStore.
+     * @tc.desc Test Js Api KVManager.GetKVStore testcase 120
+     */
+    it('testKVManagerGetKVStore120', 0, async function (done) {
+        console.log('testKVManagerGetKVStore120');
+        const optionsInfo = {
+            createIfMissing : true,
+            encrypt : false,
+            backup : false,
+            autoSync : true,
+            kvStoreType : factory.KVStoreType.MULTI_VERSION,
             schema : '',
             securityLevel : factory.SecurityLevel.S4,
         }
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
-                console.log('testKVManagerGetKVStore119 getKVStore success');
+                console.log('testKVManagerGetKVStore120 getKVStore success');
                 expect((err == undefined) && (store != null)).assertTrue();
                 kvStore = store;
                 done();
@@ -877,5 +913,112 @@ describe('KVManagerCallbackTest', function () {
             expect(null).assertFail();
             done();
         }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_PUT_1000
+     * @tc.name [JS-API8]KVStore.Put
+     * @tc.desc Test Js Api KVManager.Put testcase 100
+     */
+    it('testKVStorePut100', 0, async function (done) {
+        console.log('testKVStorePut100');
+        try {
+            await kvStoreNew.put(STORE_KEY, STORE_VALUE, function (err, data) {
+                if (err != undefined){
+                    console.log('testKVStorePut100 put callback fail');
+                } else {
+                    console.log('testKVStorePut100 put callback success');
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        } catch (e) {
+            console.log('testKVStorePut100 callback e ' + e);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_DELETE_1000
+     * @tc.name [JS-API8]KVStore.Delete
+     * @tc.desc Test Js Api KVManager.Delete testcase 100
+     */
+    it('testKVStoreDelete100', 0, async function (done) {
+        console.log('testKVStoreDelete100');
+        try {
+            await KVStoreNew.put(STORE_KEY, STORE_VALUE, async function (err,data) {
+                console.log('testKVStoreDelete100 put success');
+                try {
+                    kvStore.delete(STORE_KEY, function (err, data) {
+                        if (err == undefined) {
+                            console.log('testKVStoreDelete100 callback delete success');
+                            expect(null).assertFail();
+                        } else {
+                            console.log('testKVStoreDelete100 callback delete fail');
+                        }
+                        done();
+                    });
+                } catch (e) {
+                    console.log('testKVStoreDelete100 callback delete e ' + e);
+                    done();
+                }
+            });
+        } catch (ee) {
+            console.log('testKVStoreDelete100 callback delete ee ' + ee);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_ON_1000
+     * @tc.name [JS-API8]KVStore.On
+     * @tc.desc Test Js Api KVManager.On testcase 100
+     */
+    it('testKVStoreOn100', 0, async function (done) {
+        kvStoreNew.on('dataChange', 0, function (data) {
+            console.log("testKVStoreOn100 callback call data: " + JSON.stringify(data));
+            expect(true).assertTrue();
+        });
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_ON_1100
+     * @tc.name [JS-API8]KVStore.On
+     * @tc.desc Test Js Api KVManager.On testcase 101
+     */
+    it('testKVStoreOn101', 0, async function (done) {
+        kvStoreNew.on('dataChange', 1, function (data) {
+            console.log("testKVStoreOn101 callback call data: " + JSON.stringify(data));
+            expect(true).assertTrue();
+        });
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_ON_1200
+     * @tc.name [JS-API8]KVStore.On
+     * @tc.desc Test Js Api KVManager.On testcase 102
+     */
+    it('testKVStoreOn102', 0, async function (done) {
+        kvStoreNew.on('dataChange', 2, function (data) {
+            console.log("testKVStoreOn102 callback call data: " + JSON.stringify(data));
+            expect(true).assertTrue();
+        });
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_ON_1300
+     * @tc.name [JS-API8]KVStore.On
+     * @tc.desc Test Js Api KVManager.On testcase 103
+     */
+    it('testKVStoreOn103', 0, async function (done) {
+        kvStoreNew.on('syncComplete', function (data) {
+            console.log("testKVStoreOn103 callback call data: " + data);
+            expect(true).assertTrue();
+        });
+        done();
     })
 })

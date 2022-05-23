@@ -36,7 +36,7 @@ describe('ActsBundleManagerTest', function () {
     /**
      * @tc.number getBundleInfo_0100
      * @tc.name BUNDLEMGR::getBundleInfo
-     * @tc.desc Test getBundleInfo interfaces with one hap.
+     * @tc.desc Test getBundleInfo interfaces with one hap.(by promise)
      */
     it('getBundleInfo_0100', 0, async function (done) {
         let datainfo = await demo.getBundleInfo(NAME1,
@@ -89,9 +89,159 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
+     * @tc.number getBundleInfo_0200
+     * @tc.name BUNDLEMGR::getBundleInfo
+     * @tc.desc Test getBundleInfo interfaces with one hap.(by callback)
+     */
+    it('getBundleInfo_0200', 0, async function (done) {
+        await demo.getBundleInfo(NAME1,
+            demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES | demo.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION, OnReceiveEvent);
+        function OnReceiveEvent(err, datainfo) {
+            console.info("getBundleInfo_0200 dataInfo ====" + datainfo);
+            expect(datainfo.name).assertEqual(NAME1);
+            expect(datainfo.vendor).assertEqual("example");
+            expect(datainfo.versionCode).assertEqual(VERSIONCODE1);
+            expect(datainfo.versionName).assertEqual("1.0");
+            expect(datainfo.entryModuleName).assertEqual("entry");
+            expect(datainfo.compatibleVersion).assertEqual(5);
+            expect(datainfo.targetVersion).assertEqual(5);
+            expect(datainfo.uid).assertLarger(0);
+            expect(datainfo.appId).assertContain(NAME1);
+            expect(datainfo.type).assertEqual("");
+            expect(datainfo.cpuAbi).assertEqual("");
+            expect(datainfo.appInfo.name).assertEqual(NAME1);
+            expect(datainfo.appInfo.description).assertEqual(DESCRIPTION);
+            expect(datainfo.appInfo.descriptionId >= 0).assertTrue();
+            expect(datainfo.appInfo.icon).assertEqual("$media:icon");
+            expect(datainfo.appInfo.iconId >= 0).assertTrue();
+            expect(datainfo.appInfo.label).assertEqual("$string:app_name");
+            expect(datainfo.appInfo.labelId >= 0).assertTrue();
+            expect(datainfo.appInfo.systemApp).assertEqual(true);
+            expect(datainfo.appInfo.supportedModes).assertEqual(0);
+            expect(datainfo.installTime).assertLarger(0);
+            expect(datainfo.updateTime).assertLarger(0);
+            expect(datainfo.reqPermissions[0]).assertEqual("com.permission.PERMISSION_A");
+            expect(datainfo.reqPermissionDetails[0].name).assertEqual("com.permission.PERMISSION_A");
+            expect(datainfo.reqPermissionDetails[0].reason).assertEqual("Need PERMISSION_A");
+            expect(datainfo.reqPermissionDetails[0].usedScene.abilities[0]).assertEqual(NAME1 + ".MainAbility");
+            expect(datainfo.reqPermissionDetails[0].usedScene.when).assertEqual("always");
+            expect(datainfo.compatibleVersion).assertEqual(5);
+            expect(datainfo.targetVersion).assertEqual(5);
+            expect(datainfo.isCompressNativeLibs).assertEqual(false);
+            for (let s = 0; s < datainfo.hapModuleInfos; s++) {
+                expect(datainfo.moduleInfos[s].name).assertEqual("com.example.myapplication1");
+                expect(datainfo.moduleInfos[s].moduleName).assertEqual("entry");
+            }
+            expect(datainfo.entryModuleName).assertEqual("entry");
+            expect(datainfo.isSilentInstallation.length).assertEqual(0);
+            expect(datainfo.minCompatibleVersionCode).assertEqual(0);
+            expect(datainfo.entryInstallationFree).assertEqual(false);
+            for (let j = 0; j < datainfo.appInfo.moduleInfos; j++) {
+                expect(datainfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
+                expect(datainfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1);
+            }
+            expect(datainfo.appInfo.enabled).assertEqual(true);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number getBundleInfo_0300
+     * @tc.name BUNDLE::getBundleInfo
+     * @tc.desc Test getBundleInfo interfaces with two haps.(by promise)
+     */
+    it('getBundleInfo_0300', 0, async function (done) {
+        let datainfo = await demo.getBundleInfo(NAME2, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+        console.info("getBundleInfo_0300 dataInfo ====" + datainfo);
+        expect(datainfo.name).assertEqual(NAME2);
+        expect(datainfo.vendor).assertEqual("example");
+        expect(datainfo.versionCode).assertEqual(1);
+        expect(datainfo.versionName).assertLarger(0);
+        expect(datainfo.entryModuleName).assertEqual("entry");
+        expect(datainfo.appInfo.name).assertEqual(NAME2);
+        expect(datainfo.appInfo.description).assertEqual(DESCRIPTION);
+        expect(datainfo.appInfo.descriptionId >= 0).assertTrue();
+        expect(datainfo.appInfo.icon).assertEqual("$media:icon");
+        expect(datainfo.appInfo.iconId >= 0).assertTrue();
+        expect(datainfo.appInfo.label).assertEqual("$string:app_name");
+        expect(datainfo.appInfo.labelId >= 0).assertTrue();
+        expect(datainfo.appInfo.systemApp).assertEqual(true);
+        done();
+    })
+
+    /**
+     * @tc.number getBundleInfo_0400
+     * @tc.name BUNDLE::getBundleInfo
+     * @tc.desc Test getBundleInfo interfaces with two haps.(by callback)
+     */
+    it('getBundleInfo_0400', 0, async function (done) {
+        await demo.getBundleInfo(NAME2, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent);
+        function OnReceiveEvent(err, datainfo) {
+            console.info("getBundleInfo_0400 dataInfo ====" + datainfo);
+            expect(datainfo.name).assertEqual(NAME2);
+            expect(datainfo.vendor).assertEqual("example");
+            expect(datainfo.versionCode).assertEqual(1);
+            expect(datainfo.versionName).assertLarger(0);
+            expect(datainfo.entryModuleName).assertEqual("entry");
+            expect(datainfo.appInfo.name).assertEqual(NAME2);
+            expect(datainfo.appInfo.description).assertEqual(DESCRIPTION);
+            expect(datainfo.appInfo.descriptionId >= 0).assertTrue();
+            expect(datainfo.appInfo.icon).assertEqual("$media:icon");
+            expect(datainfo.appInfo.iconId >= 0).assertTrue();
+            expect(datainfo.appInfo.label).assertEqual("$string:app_name");
+            expect(datainfo.appInfo.labelId >= 0).assertTrue();
+            expect(datainfo.appInfo.systemApp).assertEqual(true);
+            done();
+        }
+    })
+
+    /**
+      * @tc.number getBundleInfo_0500
+      * @tc.name BUNDLE::getBundleInfo
+      * @tc.desc Test getBundleInfo interfaces with one hap. (by promise)
+      */
+    it('getBundleInfo_0500', 0, async function (done) {
+        let datainfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+        console.info("getBundleInfo_0500 dataInfo ====" + datainfo);
+        expect(datainfo.name).assertEqual(NAME1);
+        expect(datainfo.vendor).assertEqual("example");
+        expect(datainfo.versionCode).assertEqual(VERSIONCODE1);
+        expect(datainfo.versionName).assertEqual("1.0");
+        expect(datainfo.type).assertEqual("");
+        expect(datainfo.cpuAbi).assertEqual("");
+        expect(datainfo.compatibleVersion).assertEqual(5);
+        expect(datainfo.targetVersion).assertEqual(5);
+        expect(datainfo.installTime).assertLarger(0);
+        expect(datainfo.updateTime).assertLarger(0);
+        expect(datainfo.uid).assertLarger(0);
+        expect(datainfo.entryModuleName).assertEqual("entry");
+        expect(datainfo.minCompatibleVersionCode).assertEqual(0);
+        expect(datainfo.entryInstallationFree).assertEqual(false);
+        expect(datainfo.reqPermissions.length).assertEqual(0);
+        expect(datainfo.reqPermissionStates.length).assertEqual(0);
+        expect(datainfo.reqPermissionDetails.length).assertEqual(0);
+        expect(datainfo.extensionAbilityInfo.length).assertEqual(0);
+        expect(datainfo.appInfo.name).assertEqual(NAME1);
+        expect(datainfo.appInfo.description).assertEqual(DESCRIPTION);
+        expect(datainfo.appInfo.descriptionId >= 0).assertTrue();
+        expect(datainfo.appInfo.icon).assertEqual("$media:icon");
+        expect(datainfo.appInfo.iconId >= 0).assertTrue();
+        expect(datainfo.appInfo.label).assertEqual("$string:app_name");
+        expect(datainfo.appInfo.labelId >= 0).assertTrue();
+        expect(datainfo.appInfo.systemApp).assertEqual(true);
+        expect(datainfo.appInfo.supportedModes).assertEqual(0);
+        for (let j = 0; j < datainfo.appInfo.moduleInfos; j++) {
+            expect(datainfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
+            expect(datainfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1);
+        }
+        expect(datainfo.appInfo.enabled).assertEqual(true);
+        done();
+    })
+
+    /**
      * @tc.number getBundleInfo_0600
      * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interfaces with one hap.
+     * @tc.desc Test getBundleInfo interfaces with one hap. (by callback)
      */
     it('getBundleInfo_0600', 0, async function (done) {
         await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent);
@@ -131,7 +281,80 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.enabled).assertEqual(true);
             done();
         }
+    })
 
+    /**
+    * @tc.number getBundleInfo_0700
+    * @tc.name BUNDLE::getBundleInfo
+    * @tc.desc Test getBundleInfo interfaces with error hap. (by promise)
+    */
+    it('getBundleInfo_0700', 0, async function (done) {
+        await demo.getBundleInfo('error', demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
+            console.info("getBundleInfo_0700 success:" + JSON.stringify(datainfo));
+            expect(datainfo).assertFail();
+            done();
+        }).catch(err => {
+            console.info("getBundleInfo_0700 err:" + JSON.stringify(err));
+            expect(err).assertEqual(1);
+            done();
+        });
+    })
+
+    /**
+    * @tc.number getBundleInfo_0800
+    * @tc.name BUNDLE::getBundleInfo
+    * @tc.desc Test getBundleInfo interfaces with error hap. (by callback)
+    */
+    it('getBundleInfo_0800', 0, async function (done) {
+        await demo.getBundleInfo('error', demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent);
+        function OnReceiveEvent(err, datainfo) {
+            if (err) {
+                console.info("getBundleInfo_0800 err" + JSON.stringify(err));
+                expect(err).assertEqual(1);
+                done();
+                return;
+            }
+            console.info("getBundleInfo_0800 success" + JSON.stringify(datainfo));
+            expect(datainfo).assertFail();
+            done();
+        }
+    })
+
+    /**
+   * @tc.number getBundleInfo_0900
+   * @tc.name BUNDLE::getBundleInfo
+   * @tc.desc Test getBundleInfo interfaces with none hap.
+   */
+    it('getBundleInfo_0900', 0, async function (done) {
+        demo.getBundleInfo(' ', demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
+            console.info("getBundleInfo_0900 success" + JSON.stringify(datainfo));
+            expect(datainfo).assertFail();
+            done();
+        }).catch(err => {
+            console.info("getBundleInfo_0900 fail" + JSON.stringify(err));
+            expect(err).assertEqual(1);
+            done();
+        });
+    })
+
+    /**
+     * @tc.number getBundleInfo_1000
+     * @tc.name BUNDLE::getBundleInfo
+     * @tc.desc Test getBundleInfo interfaces with none hap.
+     */
+    it('getBundleInfo_1000', 0, async function (done) {
+        await demo.getBundleInfo(' ', demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent);
+        function OnReceiveEvent(err, datainfo) {
+            if (err) {
+                console.info("getBundleInfo_1000 err" + JSON.stringify(err));
+                expect(err).assertEqual(1);
+                done();
+                return;
+            }
+            console.info("getBundleInfo_1000 success" + JSON.stringify(datainfo));
+            expect(datainfo).assertFail();
+            done();
+        }
     })
 
     /**
@@ -190,6 +413,198 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.enabled).assertEqual(true);
             done();
         }
+    })
+
+    /**
+     * @tc.number getBundleInfo_1300
+     * @tc.name BUNDLE::getBundleInfo
+     * @tc.desc Test getBundleInfo interfaces with LAUNCHER hap. (by promise)
+     */
+    it('getBundleInfo_1300', 0, async function (done) {
+        demo.getBundleInfo(LAUNCHER, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
+            console.info("getBundleInfo_1300 success:" + JSON.stringify(datainfo));
+            expect(datainfo.name).assertEqual(LAUNCHER);
+            expect(datainfo.vendor).assertEqual("ohos");
+            expect(datainfo.versionCode).assertEqual(1000000);
+            expect(datainfo.versionName.length).assertLarger(0);
+            expect(datainfo.uid).assertLarger(2099);
+            expect(datainfo.appInfo.name).assertEqual(LAUNCHER);
+            expect(datainfo.appInfo.systemApp).assertEqual(true);
+            expect(datainfo.appInfo.supportedModes).assertEqual(0);
+            expect(datainfo.appInfo.moduleInfos.length).assertLarger(0);
+            expect(datainfo.appInfo.enabled).assertEqual(true);
+            done();
+        }).catch(err => {
+            console.info("getBundleInfo_1300 fail:" + JSON.stringify(err));
+            expect(err).assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number getBundleInfo_1400
+     * @tc.name BUNDLE::getBundleInfo
+     * @tc.desc Test getBundleInfo interfaces with LAUNCHER hap.(by callback)
+     */
+    it('getBundleInfo_1400', 0, async function (done) {
+        demo.getBundleInfo(LAUNCHER, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions, (err, dataInfo) => {
+            if (err) {
+                console.info("getBundleInfo_1400 fail:" + JSON.stringify(err));
+                expect(err).assertFail();
+                done();
+                return;
+            }
+            console.info("getBundleInfo_1400 success:" + JSON.stringify(datainfo));
+            expect(datainfo.name).assertEqual(LAUNCHER);
+            expect(datainfo.vendor).assertEqual("ohos");
+            expect(datainfo.versionCode).assertEqual(1000000);
+            expect(datainfo.versionName.length).assertLarger(0);
+            expect(datainfo.uid).assertLarger(2099);
+            expect(datainfo.appInfo.name).assertEqual(LAUNCHER);
+            expect(datainfo.appInfo.systemApp).assertEqual(true);
+            expect(datainfo.appInfo.supportedModes).assertEqual(0);
+            expect(datainfo.appInfo.moduleInfos.length).assertLarger(0);
+            expect(datainfo.appInfo.enabled).assertEqual(true);
+            done();
+        })
+    })
+
+    /**
+     * @tc.number getBundleInfo_1500
+     * @tc.name BUNDLEMGR::getBundleInfo
+     * @tc.desc Test getBundleInfo interface with current userId(by promise).
+     */
+    it('getBundleInfo_1500', 0, async function (done) {
+        let bundleOptions = {
+            userId: USERID
+        };
+        let dataInfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions);
+        console.info("getBundleInfo_1500 start --------");
+        console.info("getBundleInfo_1500 dataInfo ====" + datainfo);
+        expect(dataInfo.name).assertEqual(NAME1);
+        expect(dataInfo.vendor).assertEqual("example");
+        expect(dataInfo.versionCode).assertEqual(VERSIONCODE1);
+        expect(dataInfo.versionName).assertLarger(0);
+        expect(dataInfo.entryModuleName).assertEqual("entry");
+        expect(dataInfo.appInfo.name).assertEqual(NAME1);
+        expect(dataInfo.appInfo.description).assertEqual(DESCRIPTION);
+        expect(dataInfo.appInfo.descriptionId >= 0).assertTrue();
+        expect(dataInfo.appInfo.icon).assertEqual("$media:icon");
+        expect(dataInfo.appInfo.iconId >= 0).assertTrue();
+        expect(dataInfo.appInfo.label).assertEqual("$string:app_name");
+        expect(dataInfo.appInfo.labelId >= 0).assertTrue();
+        expect(dataInfo.appInfo.systemApp).assertEqual(true);
+        expect(dataInfo.appInfo.supportedModes).assertEqual(0);
+        expect(dataInfo.updateTime).assertLarger(0);
+        expect(dataInfo.reqPermissions.length).assertEqual(0);
+        expect(dataInfo.reqPermissionDetails.length).assertEqual(0);
+        expect(dataInfo.compatibleVersion).assertEqual(5);
+        expect(dataInfo.targetVersion).assertEqual(5);
+        expect(dataInfo.isCompressNativeLibs).assertEqual(false);
+        for (let s = 0; s < dataInfo.hapModuleInfos; s++) {
+            expect(dataInfo.moduleInfos[s].name).assertEqual("com.example.myapplication1");
+            expect(dataInfo.moduleInfos[s].moduleName).assertEqual("entry");
+        }
+        expect(dataInfo.entryModuleName).assertEqual("entry");
+        expect(dataInfo.isSilentInstallation.length).assertEqual(0);
+        expect(dataInfo.minCompatibleVersionCode).assertEqual(0);
+        expect(dataInfo.entryInstallationFree).assertEqual(false);
+        for (let j = 0; j < dataInfo.appInfo.moduleInfos; j++) {
+            expect(dataInfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
+            expect(dataInfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1);
+        }
+        expect(dataInfo.appInfo.enabled).assertEqual(true);
+        console.info("getBundleInfo_1500 end  --------");
+        done();
+    })
+
+    /**
+     * @tc.number getBundleInfo_1600
+     * @tc.name BUNDLE::getBundleInfo
+     * @tc.desc Test getBundleInfo interface with current userId(by callback).
+     */
+    it('getBundleInfo_1600', 0, async function (done) {
+        let bundleOptions = {
+            userId: USERID
+        };
+        demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions, (err, dataInfo) => {
+            console.info("getBundleInfo_1600 start --------");
+            console.info("getBundleInfo_1600 dataInfo ====" + datainfo);
+            expect(dataInfo.name).assertEqual(NAME1);
+            expect(dataInfo.vendor).assertEqual("example");
+            expect(dataInfo.versionCode).assertEqual(VERSIONCODE1);
+            expect(dataInfo.versionName).assertLarger(0);
+            expect(dataInfo.entryModuleName).assertEqual("entry");
+            expect(dataInfo.appInfo.name).assertEqual(NAME1);
+            expect(dataInfo.appInfo.description).assertEqual(DESCRIPTION);
+            expect(dataInfo.appInfo.descriptionId >= 0).assertTrue();
+            expect(dataInfo.appInfo.icon).assertEqual("$media:icon");
+            expect(dataInfo.appInfo.iconId >= 0).assertTrue();
+            expect(dataInfo.appInfo.label).assertEqual("$string:app_name");
+            expect(dataInfo.appInfo.labelId >= 0).assertTrue();
+            expect(dataInfo.appInfo.systemApp).assertEqual(true);
+            expect(dataInfo.appInfo.supportedModes).assertEqual(0);
+            expect(dataInfo.updateTime).assertLarger(0);
+            expect(dataInfo.reqPermissions.length).assertEqual(0);
+            expect(dataInfo.reqPermissionDetails.length).assertEqual(0);
+            expect(dataInfo.compatibleVersion).assertEqual(5);
+            expect(dataInfo.targetVersion).assertEqual(5);
+            expect(dataInfo.isCompressNativeLibs).assertEqual(false);
+            for (let s = 0; s < dataInfo.hapModuleInfos; s++) {
+                expect(dataInfo.moduleInfos[s].name).assertEqual("com.example.myapplication1");
+                expect(dataInfo.moduleInfos[s].moduleName).assertEqual("entry");
+            }
+            expect(dataInfo.entryModuleName).assertEqual("entry");
+            expect(dataInfo.isSilentInstallation.length).assertEqual(0);
+            expect(dataInfo.minCompatibleVersionCode).assertEqual(0);
+            expect(dataInfo.entryInstallationFree).assertEqual(false);
+            for (let j = 0; j < dataInfo.appInfo.moduleInfos; j++) {
+                expect(dataInfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
+                expect(dataInfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1);
+            }
+            console.info("getBundleInfo_1600 end  --------");
+            done();
+        });
+    })
+
+    /**
+     * @tc.number getBundleInfo_1700
+     * @tc.name BUNDLEMGR::getBundleInfo
+     * @tc.desc Test getBundleInfo interface with other userId(by promise).
+     */
+    it('getBundleInfo_1700', 0, async function (done) {
+        demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, {
+            userId: 1
+        }).then(data => {
+            console.info("getBundleInfo_1700 success" + JSON.stringify(data));
+            expect(data).assertFail();
+            done();
+        }).catch(err => {
+            console.info("getBundleInfo_1700 err" + JSON.stringify(err));
+            expect(err).assertEqual(1);
+            done();
+        });
+    })
+
+    /**
+     * @tc.number getBundleInfo_1800
+     * @tc.name BUNDLE::getBundleInfo
+     * @tc.desc Test getBundleInfo interface with other userId(by callback).
+     */
+    it('getBundleInfo_1800', 0, async function (done) {
+        demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, {
+            userId: 1
+        }, (err, dataInfo) => {
+            if (err) {
+                console.info("getBundleInfo_1800 err" + JSON.stringify(err));
+                expect(err).assertEqual(1);
+                done();
+                return;
+            }
+            console.info("getBundleInfo_1800 success" + JSON.stringify(datainfo));
+            expect(dataInfo).assertFail();
+            done();
+        });
     })
 
     /**
@@ -419,54 +834,6 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.supportedModes).assertEqual(0);
             done();
         })
-    })
-
-    /**
-     * @tc.number getBundleInfo_0200
-     * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interfaces with two haps.
-     */
-    it('getBundleInfo_0200', 0, async function (done) {
-        let datainfo = await demo.getBundleInfo(NAME2, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
-        expect(datainfo.name).assertEqual(NAME2);
-        expect(datainfo.vendor).assertEqual("example");
-        expect(datainfo.versionCode).assertEqual(1);
-        expect(datainfo.versionName).assertLarger(0);
-        expect(datainfo.entryModuleName).assertEqual("entry");
-        expect(datainfo.appInfo.name).assertEqual(NAME2);
-        expect(datainfo.appInfo.description).assertEqual(DESCRIPTION);
-        expect(datainfo.appInfo.descriptionId >= 0).assertTrue();
-        expect(datainfo.appInfo.icon).assertEqual("$media:icon");
-        expect(datainfo.appInfo.iconId >= 0).assertTrue();
-        expect(datainfo.appInfo.label).assertEqual("$string:app_name");
-        expect(datainfo.appInfo.labelId >= 0).assertTrue();
-        expect(datainfo.appInfo.systemApp).assertEqual(true);
-        done();
-    })
-
-    /**
-     * @tc.number getBundleInfo_0700
-     * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interfaces with two haps.
-     */
-    it('getBundleInfo_0700', 0, async function (done) {
-        await demo.getBundleInfo(NAME2, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent);
-        function OnReceiveEvent(err, datainfo) {
-            expect(datainfo.name).assertEqual(NAME2);
-            expect(datainfo.vendor).assertEqual("example");
-            expect(datainfo.versionCode).assertEqual(1);
-            expect(datainfo.versionName).assertLarger(0);
-            expect(datainfo.entryModuleName).assertEqual("entry");
-            expect(datainfo.appInfo.name).assertEqual(NAME2);
-            expect(datainfo.appInfo.description).assertEqual(DESCRIPTION);
-            expect(datainfo.appInfo.descriptionId >= 0).assertTrue();
-            expect(datainfo.appInfo.icon).assertEqual("$media:icon");
-            expect(datainfo.appInfo.iconId >= 0).assertTrue();
-            expect(datainfo.appInfo.label).assertEqual("$string:app_name");
-            expect(datainfo.appInfo.labelId >= 0).assertTrue();
-            expect(datainfo.appInfo.systemApp).assertEqual(true);
-            done();
-        }
     })
 
     /**
@@ -834,43 +1201,6 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfo_0400
-     * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interfaces with error hap.
-     */
-    it('getBundleInfo_0400', 0, async function (done) {
-        await demo.getBundleInfo('error', demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
-            console.info("getBundleInfo success:" + JSON.stringify(datainfo));
-            expect(datainfo).assertFail();
-            done();
-        }).catch(err => {
-            console.info("getBundleInfo err:" + JSON.stringify(err));
-            expect(err).assertEqual(1);
-            done();
-        });
-    })
-
-    /**
-     * @tc.number getBundleInfo_0900
-     * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interfaces with error hap.
-     */
-    it('getBundleInfo_0900', 0, async function (done) {
-        await demo.getBundleInfo('error', demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent);
-        function OnReceiveEvent(err, datainfo) {
-            if (err) {
-                console.info("getBundleInfo err" + JSON.stringify(err));
-                expect(err).assertEqual(1);
-                done();
-                return;
-            }
-            console.info("getBundleInfo success" + JSON.stringify(datainfo));
-            expect(datainfo).assertFail();
-            done();
-        }
-    })
-
-    /**
      * @tc.number getApplicationInfo_0400
      * @tc.name BUNDLE::getApplicationInfo
      * @tc.desc Test getApplicationInfo interfaces with error hap.
@@ -912,26 +1242,6 @@ describe('ActsBundleManagerTest', function () {
     })
 
     /**
-     * @tc.number getBundleInfo_1000
-     * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interfaces with none hap.
-     */
-    it('getBundleInfo_1000', 0, async function (done) {
-        await demo.getBundleInfo(' ', demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent);
-        function OnReceiveEvent(err, datainfo) {
-            if (err) {
-                console.info("getBundleInfo err" + JSON.stringify(err));
-                expect(err).assertEqual(1);
-                done();
-                return;
-            }
-            console.info("getBundleInfo success" + JSON.stringify(datainfo));
-            expect(datainfo).assertFail();
-            done();
-        }
-    })
-
-    /**
      * @tc.number getApplicationInfo_0500
      * @tc.name BUNDLE::getApplicationInfo
      * @tc.desc Test getApplicationInfo interfaces with none hap.
@@ -949,23 +1259,6 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo).assertFail();
                 done();
             })
-    })
-
-    /**
-     * @tc.number getBundleInfo_0500
-     * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interfaces with none hap.
-     */
-    it('getBundleInfo_0500', 0, async function (done) {
-        demo.getBundleInfo(' ', demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
-            console.info("getBundleInfo success" + JSON.stringify(datainfo));
-            expect(datainfo).assertFail();
-            done();
-        }).catch(err => {
-            console.info("getBundleInfo fail" + JSON.stringify(err));
-            expect(err).assertEqual(1);
-            done();
-        });
     })
 
     /**
@@ -1153,159 +1446,6 @@ describe('ActsBundleManagerTest', function () {
                 expect(err).assertEqual(1);
                 done();
             })
-    })
-
-    /**
-     * @tc.number getBundleInfo_1300
-     * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interfaces with LAUNCHER hap.
-     */
-    it('getBundleInfo_1300', 0, async function (done) {
-        demo.getBundleInfo(LAUNCHER, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
-            console.info("getBundleInfo success:" + JSON.stringify(datainfo));
-            expect(datainfo.name).assertEqual(LAUNCHER);
-            expect(datainfo.vendor).assertEqual("ohos");
-            expect(datainfo.versionCode).assertEqual(1000000);
-            expect(datainfo.versionName.length).assertLarger(0);
-            expect(datainfo.uid).assertLarger(2099);
-            expect(datainfo.appInfo.name).assertEqual(LAUNCHER);
-            expect(datainfo.appInfo.systemApp).assertEqual(true);
-            expect(datainfo.appInfo.supportedModes).assertEqual(0);
-            expect(datainfo.appInfo.moduleInfos.length).assertLarger(0);
-            expect(datainfo.appInfo.enabled).assertEqual(true);
-            done();
-        }).catch(err => {
-            console.info("getBundleInfo fail:" + JSON.stringify(err));
-            expect(err).assertFail();
-            done();
-        })
-
-    })
-
-    /**
-     * @tc.number getBundleInfo_1400
-     * @tc.name BUNDLEMGR::getBundleInfo
-     * @tc.desc Test getBundleInfo interface with current userId(by promise).
-     */
-    it('getBundleInfo_1400', 0, async function (done) {
-        let bundleOptions = {
-            userId: USERID
-        };
-        let dataInfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions);
-        console.info("getBundleInfo_1400 start --------");
-        expect(dataInfo.name).assertEqual(NAME1);
-        expect(dataInfo.vendor).assertEqual("example");
-        expect(dataInfo.versionCode).assertEqual(VERSIONCODE1);
-        expect(dataInfo.versionName).assertLarger(0);
-        expect(dataInfo.entryModuleName).assertEqual("entry");
-        expect(dataInfo.appInfo.name).assertEqual(NAME1);
-        expect(dataInfo.appInfo.description).assertEqual(DESCRIPTION);
-        expect(dataInfo.appInfo.descriptionId >= 0).assertTrue();
-        expect(dataInfo.appInfo.icon).assertEqual("$media:icon");
-        expect(dataInfo.appInfo.iconId >= 0).assertTrue();
-        expect(dataInfo.appInfo.label).assertEqual("$string:app_name");
-        expect(dataInfo.appInfo.labelId >= 0).assertTrue();
-        expect(dataInfo.appInfo.systemApp).assertEqual(true);
-        expect(dataInfo.appInfo.supportedModes).assertEqual(0);
-        expect(dataInfo.updateTime).assertLarger(0);
-        expect(dataInfo.reqPermissions.length).assertEqual(0);
-        expect(dataInfo.reqPermissionDetails.length).assertEqual(0);
-        expect(dataInfo.compatibleVersion).assertEqual(5);
-        expect(dataInfo.targetVersion).assertEqual(5);
-        expect(dataInfo.isCompressNativeLibs).assertEqual(false);
-        for (let s = 0; s < dataInfo.hapModuleInfos; s++) {
-            expect(dataInfo.moduleInfos[s].name).assertEqual("com.example.myapplication1");
-            expect(dataInfo.moduleInfos[s].moduleName).assertEqual("entry");
-        }
-        expect(dataInfo.entryModuleName).assertEqual("entry");
-        expect(dataInfo.isSilentInstallation.length).assertEqual(0);
-        expect(dataInfo.minCompatibleVersionCode).assertEqual(0);
-        expect(dataInfo.entryInstallationFree).assertEqual(false);
-        for (let j = 0; j < dataInfo.appInfo.moduleInfos; j++) {
-            expect(dataInfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
-            expect(dataInfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1);
-        }
-        expect(dataInfo.appInfo.enabled).assertEqual(true);
-        console.info("getBundleInfo_1400 end  --------");
-        done();
-    })
-
-    /**
-     * @tc.number getBundleInfo_1500
-     * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interface with current userId(by callback).
-     */
-    it('getBundleInfo_1500', 0, async function (done) {
-        let bundleOptions = {
-            userId: USERID
-        };
-        demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, bundleOptions, (err, dataInfo) => {
-            expect(dataInfo.name).assertEqual(NAME1);
-            expect(dataInfo.vendor).assertEqual("example");
-            expect(dataInfo.versionCode).assertEqual(VERSIONCODE1);
-            expect(dataInfo.versionName).assertLarger(0);
-            expect(dataInfo.entryModuleName).assertEqual("entry");
-            expect(dataInfo.appInfo.name).assertEqual(NAME1);
-            expect(dataInfo.appInfo.description).assertEqual(DESCRIPTION);
-            expect(dataInfo.appInfo.descriptionId >= 0).assertTrue();
-            expect(dataInfo.appInfo.icon).assertEqual("$media:icon");
-            expect(dataInfo.appInfo.iconId >= 0).assertTrue();
-            expect(dataInfo.appInfo.label).assertEqual("$string:app_name");
-            expect(dataInfo.appInfo.labelId >= 0).assertTrue();
-            expect(dataInfo.appInfo.systemApp).assertEqual(true);
-            expect(dataInfo.appInfo.supportedModes).assertEqual(0);
-            expect(dataInfo.updateTime).assertLarger(0);
-            expect(dataInfo.reqPermissions.length).assertEqual(0);
-            expect(dataInfo.reqPermissionDetails.length).assertEqual(0);
-            expect(dataInfo.compatibleVersion).assertEqual(5);
-            expect(dataInfo.targetVersion).assertEqual(5);
-            expect(dataInfo.isCompressNativeLibs).assertEqual(false);
-            for (let s = 0; s < dataInfo.hapModuleInfos; s++) {
-                expect(dataInfo.moduleInfos[s].name).assertEqual("com.example.myapplication1");
-                expect(dataInfo.moduleInfos[s].moduleName).assertEqual("entry");
-            }
-            expect(dataInfo.entryModuleName).assertEqual("entry");
-            expect(dataInfo.isSilentInstallation.length).assertEqual(0);
-            expect(dataInfo.minCompatibleVersionCode).assertEqual(0);
-            expect(dataInfo.entryInstallationFree).assertEqual(false);
-            for (let j = 0; j < dataInfo.appInfo.moduleInfos; j++) {
-                expect(dataInfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
-                expect(dataInfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1);
-            }
-            done();
-        });
-    })
-
-    /**
-     * @tc.number getBundleInfo_1600
-     * @tc.name BUNDLEMGR::getBundleInfo
-     * @tc.desc Test getBundleInfo interface with other userId(by promise).
-     */
-    it('getBundleInfo_1600', 0, async function (done) {
-        demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, {
-            userId: 1
-        }).then(data => {
-            expect().assertFail();
-            done();
-        }).catch(err => {
-            expect(err).assertEqual(1);
-            done();
-        });
-    })
-
-    /**
-     * @tc.number getBundleInfo_1700
-     * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interface with other userId(by callback).
-     */
-    it('getBundleInfo_1700', 0, async function (done) {
-        demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, {
-            userId: 1
-        }, (err, dataInfo) => {
-            expect(err).assertEqual(1);
-            expect(dataInfo).assertEqual(undefined);
-            done();
-        });
     })
 
     /**
