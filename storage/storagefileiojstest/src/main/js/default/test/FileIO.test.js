@@ -1302,6 +1302,38 @@ describe('fileIOTest', function () {
   });
 
   /**
+   * @tc.number SUB_STORAGE_FileIO_Access_Promise_001
+   * @tc.name fileio_test_access_promise_001
+   * @tc.desc Function of API, access(mode=4).
+   */
+  it('fileio_test_access_promise_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_access_promise_001');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    let fd = fileio.access(fpath).then(() => {
+      expect(fd !== null).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      console.log('file access Success');
+    }).catch(function(err) {
+        console.log("file access err: "  + JSON.stringify(err));
+    });
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_FileIO_Access_Async_001
+   * @tc.name fileio_test_access_async_001
+   * @tc.desc Function of API, access(mode=4).
+   */
+  it('fileio_test_access_async_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_access_async_001');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let fd = fileio.access(fpath, function (err) {
+      expect(fd !== null).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
    * @tc.number SUB_STORAGE_FileIO_UnlinkSync_0000
    * @tc.name fileio_test_unlink_sync_000
    * @tc.desc Function of API,unlinkSync. The test file is exist.
@@ -2401,6 +2433,25 @@ describe('fileIOTest', function () {
       console.log('fileio_test_copy_file_sync_012 has failed for ' + e);
       expect(null).assertFail();
     }
+  });
+
+  /**
+   * @tc.number SUB_STORAGE_FileIO_copyFileSync_1200
+   * @tc.name fileio_test_copy_file_async_001
+   * @tc.desc Function of API, copy. fpatch is vaild, fpathTarget is vaild, same path, file not same, mode is 0.
+   */
+   it('fileio_test_copy_file_async_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_copy_file_async_001');
+    let fpathTarget = fpath + 'tgt'
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    await fileio.copyFile(fpath, fpathTarget).then(()=> {
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      expect(fileio.unlinkSync(fpathTarget) !== null).assertTrue();
+      console.log('fileio_test_copy_file_async_001 Success');
+    }).catch((err) => {
+        console.log("fileio_test_copy_file_async_001 err: "  + JSON.stringify(err));
+    });
   });
 
   /**
@@ -3856,6 +3907,34 @@ describe('fileIOTest', function () {
     expect(fileio.chmodSync(fpath, 0o660) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
       expect((stat.mode & 0o777) == 0o660).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+    });
+  });
+
+  /**
+   * @tc.number fileio_test_close_promise_000
+   * @tc.name fileio_test_close_promise_000
+   * @tc.desc Function of API close
+   */
+   it('fileio_test_close_promise_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_close_promise_000');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let fd = fileio.openSync(fpath);
+    expect(fd !== null).assertTrue();
+    await fileio.close(fd);
+    expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+  });
+
+  /**
+   * @tc.number fileio_test_close_async_000
+   * @tc.name fileio_test_close_async_000
+   * @tc.desc Function of API close
+   */
+   it('fileio_test_close_async_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_close_async_000');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let fd = fileio.openSync(fpath);
+    await fileio.close(fd, function (err) {
       expect(fileio.unlinkSync(fpath) !== null).assertTrue();
     });
   });
