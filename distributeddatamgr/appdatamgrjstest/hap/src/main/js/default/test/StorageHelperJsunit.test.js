@@ -105,7 +105,7 @@ describe('storageTest', function () {
         let perf = storage.getStorageSync('/data/test_storage2');
         storage.removeStorageFromCache(perf, function (err) {
             if (err) {
-                console.info("removeStorageFromCache callback interface test failed.");
+                console.info("removeStorageFromCache callback interface test failed" + err);
                 expect(null).assertFail();
                 done();
                 return
