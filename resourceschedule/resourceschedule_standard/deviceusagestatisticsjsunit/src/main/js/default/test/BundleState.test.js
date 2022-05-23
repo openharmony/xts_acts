@@ -67,8 +67,7 @@ describe('bundlestate', function() {
 		console.info('queryAppUsagePriorityGroup_001 start');
 		bundlestate.queryAppUsagePriorityGroup((err, data) => {
 			if(err) {
-				console.info('queryAppUsagePriorityGroup_001 callback fail result = ' + JSON.stringify(err.code));
-				expect(err.code).assertLarger(0);
+				console.info('queryAppUsagePriorityGroup_001 callback fail result = ' + err);
 			} else {
 				console.info('queryAppUsagePriorityGroup_001 callback success result = ' + JSON.stringify(data));
 				expect(true).assertEqual(true)
@@ -243,8 +242,15 @@ describe('bundlestate', function() {
      */
 	it('queryCurrentBundleActiveStates_041', 0, async function(done) {
 		console.info('queryCurrentBundleActiveStates_041 start');
-		let timer = onInit();
-		bundlestate.queryCurrentBundleActiveStates(timer.startTime, timer.endTime, (err, data) => {
+		let time = { 'begin': 0, 'end': 0};
+		let initTime = function ()
+		{
+			var now = new Date().getTime();
+			time.begin = now - 86400000;
+			time.end = now;
+		};
+		initTime();
+		bundlestate.queryCurrentBundleActiveStates(time.begin, time.end, (err, data) => {
 			if(err) {
 				console.info('queryCurrentBundleActiveStates_041 callback fail result = ' + err);
 				expect(data).assertFail();
@@ -701,8 +707,7 @@ describe('bundlestate', function() {
 		console.info('isIdleState_052 start');
 		bundlestate.isIdleState(bundleName, (err, res) => {
 			if(err) {
-				console.info('isIdleState_052 callback fail result = ' + JSON.stringify(err.code));
-				expect(err.code).assertLarger(0);
+				console.info('isIdleState_052 callback fail result = ' + err);
 			} else {
 				console.info('isIdleState_052 callback success result = ' + JSON.stringify(res));
 				expect(res).assertTrue();
@@ -725,8 +730,7 @@ describe('bundlestate', function() {
 		let bundleName02 = 'ohos.plrdtest.resourceschedule'
 		bundlestate.isIdleState(bundleName02, (err, res) => {
 			if(err) {
-				console.info('isIdleState_053 callback fail result = ' + JSON.stringify(err.code));
-				expect(err.code).assertLarger(0);
+				console.info('isIdleState_053 callback fail result = ' + err);
 			} else {
 				console.info('isIdleState_053 callback success result = ' + JSON.stringify(res));
 				expect(res).assertInstanceOf('Boolean');
