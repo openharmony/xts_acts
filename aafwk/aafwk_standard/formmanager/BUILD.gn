@@ -24,7 +24,7 @@ group("formmanager") {
       "formproviderst_ets/formsystemproviderb:FormSystemProviderB",
       "formproviderst_ets/formsystemproviderc:FormSystemProviderC",
       "formproviderst_ets/formsystemproviderd:FormSystemProviderD",
-      "formsystemtest_ets/formfuzztest:FormFuzzTest",
+      "formsystemtest_ets/formfuzztest:ActsFormFuzzTest",
       "formsystemtest_ets/formgetformsinfotest/formsoneandonetest:FormsOneAndOneTest",
       "formsystemtest_ets/formgetformsinfotest/formsoneandtwotest:FormsOneAndTwoTest",
       "formsystemtest_ets/formgetformsinfotest/formsoneandzerotest:FormsOneAndZeroTest",
