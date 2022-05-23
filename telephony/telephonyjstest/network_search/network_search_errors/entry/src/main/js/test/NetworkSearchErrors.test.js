@@ -337,7 +337,43 @@ describe('ActsNetworkSearchTest', function () {
         }
     })
 
-    
+    /**
+     * @tc.number  Telephony_NetworkSearch_getOperatorName_Async_0500
+     * @tc.name    Verify the abnormal input of "slotId", test getOperatorName() to view the callback result
+     * @tc.desc    Function test
+     */
+     it('Telephony_NetworkSearch_getOperatorName_Async_0500', 0, async function (done) {
+        radio.getOperatorName(0, (err, data) => {
+            if (err) {
+                console.log(`Telephony_NetworkSearch_getOperatorName_Async_0500 fail err: ${err}`);
+                expect().assertFail();
+                done();
+                return;
+            }
+            console.log(`Telephony_NetworkSearch_getOperatorName_Async_0500 finish  data: ${data}`);
+            expect(true).assertTrue();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number  Telephony_NetworkSearch_getOperatorName_Promise_0500
+     * @tc.name    Verify the abnormal input of "slotId", test getOperatorName() to view the callback result
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_getOperatorName_Promise_0500', 0, async function (done) {
+        try {
+            let data = await radio.getOperatorName(0);
+            console.log(`Telephony_NetworkSearch_getOperatorName_Promise_0500 finish data: ${data}`);
+            expect(true).assertTrue();
+            done();
+        } catch (err) {
+            console.log(`Telephony_NetworkSearch_getOperatorName_Promise_0500 fail err: ${err}`);
+            expect().assertFail();
+            done();
+        }
+    })
+
     /**
      * @tc.number  Telephony_NetworkSearch_isRadioOn_Async_0200
      * @tc.name    Test The function isRadioOn
@@ -367,6 +403,39 @@ describe('ActsNetworkSearchTest', function () {
             done();
         } catch (err) {
             console.log(`Telephony_NetworkSearch_isRadioOn_Promise_0200 fail ${err}`);
+            done();
+        }
+    });
+
+    /**
+     * @tc.number  Telephony_NetworkSearch_isRadioOn_Async_0300
+     * @tc.name    Test The function isRadioOn
+     * @tc.desc    Function test
+     */
+     it('Telephony_NetworkSearch_isRadioOn_Async_0300', 0, async function (done) {
+        radio.isRadioOn(0, (err) => {
+            if (err) {
+                console.log(`Telephony_NetworkSearch_isRadioOn_Async_0300  fail: ${err}`);
+                done();
+                return;
+            }
+            console.log('Telephony_NetworkSearch_isRadioOn_Async_0300  finish');
+            done();
+        });
+    });
+
+    /**
+     * @tc.number  Telephony_NetworkSearch_isRadioOn_Promise_0300
+     * @tc.name    Test The function isRadioOn
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_isRadioOn_Promise_0300', 0, async function (done) {
+        try {
+            await radio.isRadioOn(0);
+            console.log('Telephony_NetworkSearch_isRadioOn_Promise_0300 success');
+            done();
+        } catch (err) {
+            console.log(`Telephony_NetworkSearch_isRadioOn_Promise_0300 fail ${err}`);
             done();
         }
     });

@@ -995,11 +995,12 @@ describe('CallManageImsCall', function () {
         call.isEmergencyPhoneNumber('110', (err) => {
             if (err) {
                 console.log(`Telephony_CallManager_isEmergencyPhoneNumber_Async_1400 finish err = ${err}`);
+                expect().assertFail();
                 done();
                 return;
             }
-            expect().assertFail();
-            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Async_1400 fail ');
+            expect(true).assertTrue();
+            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Async_1400 PASSED ');
             done();
         });
     });
@@ -1013,11 +1014,12 @@ describe('CallManageImsCall', function () {
     it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1400', 0, async function (done) {
         try {
             var data = await call.isEmergencyPhoneNumber('120');
-            expect().assertFail();
-            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1400 fail ');
+            expect(true).assertTrue();
+            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1400 PASSED ');
             done();
         } catch (err) {
             console.log(`Telephony_CallManager_isEmergencyPhoneNumber_Promise_1400 finish err = ${err}`);
+            expect().assertFail();
             done();
         }
     });

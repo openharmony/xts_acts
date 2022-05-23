@@ -527,7 +527,7 @@ describe('SimManagerTest', function () {
         done();
         return;
       }
-      expect(result).assertFalse();
+      expect(true).assertTrue();
       console.log(`${CASE_NAME} test finish.`);
       done();
     });
@@ -543,7 +543,7 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_getDefaultVoiceSlotld_Promise_0400';
     try {
       const result = await sim.getDefaultVoiceSlotld();
-      expect(result).assertFalse();
+      expect(true).assertTrue();
       console.log(`${CASE_NAME} test finish.`);
     } catch (error) {
       console.log(`${CASE_NAME} getDefaultVoiceSlotld error: ${error.message}`);
