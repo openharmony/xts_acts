@@ -6753,49 +6753,6 @@ function createTimezoneChangedSubscriber() {
     });
 }
 
-function createTimezoneChangedSubscriber() {
-    var commonEventSubscribeInfo = {
-        events: [commonEvent.Support.COMMON_EVENT_TIMEZONE_CHANGED],
-    };
-    commonEvent.createSubscriber(commonEventSubscribeInfo)
-        .then(subscriber => {
-            console.info('createTimezoneChangedSubscriber success');
-            var mySubscriber = subscriber;
-            console.log(subscriber);
-
-            if (subscriber == "" || subscriber == undefined || subscriber == null) {
-                console.info("createSubscriber failed");
-            }
-            mySubscriber.getCode()
-                .then((data) => {
-                    console.info('Subscriber getCode success : ' + JSON.stringify(data));
-                }).catch((error) => {
-                console.error('Subscriber getCode error because: ' + JSON.stringify(error));
-            })
-            mySubscriber.getData()
-                .then((data) => {
-                    console.info('Subscriber getData success : ' + JSON.stringify(data));
-                }).catch((error) => {
-                console.error('Subscriber getData error because: ' + JSON.stringify(error));
-            })
-            console.info('subscribe Timezone_Changed begin ');
-
-            commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
-                console.error('err code: ' + JSON.stringify(error));
-                console.info('subscribe callback: ' + JSON.stringify(commonEventData));
-                console.info("commonEventData event: " + commonEventData.event);
-                console.info("commonEventData bundleName: " + commonEventData.bundleName);
-                console.info("commonEventData data: " + commonEventData.data);
-                console.info("commonEventData parameter: " + commonEventData.parameters[0]);
-                var capacity = commonEventData.parameters['0'];
-                console.info("capacity is:" + capacity);
-                expect(capacity >= 0 && capacity <= 100).assertTrue();
-            });
-        }).catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-    });
-}
-
 function createDateChangedSubscriber() {
     var commonEventSubscribeInfo = {
         events: [commonEvent.Support.COMMON_EVENT_DATE_CHANGED],
