@@ -21,7 +21,6 @@ const STORE_KEY = 'key_test_string';
 const STORE_VALUE = 'value-test-string';
 var kvManager = null;
 var kvStore = null;
-var kvStoreNew = null;
 
 describe('KVManagerCallbackTest', function () {
     const config = {
@@ -46,10 +45,7 @@ describe('KVManagerCallbackTest', function () {
         console.log('beforeAll');
         await factory.createKVManager(config, function (err, manager) {
             kvManager = manager;
-            kvManager.getKVStore(TEST_STORE_ID, options, function (err, store) {
-                kvStoreNew = store;
-                done();
-            });
+            done();
         });
         console.log('beforeAll end');
     })
@@ -442,9 +438,10 @@ describe('KVManagerCallbackTest', function () {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
                 if (err == undefined) {
                     console.log('testKVManagerGetKVStore113 getKVStore success');
-                    expect(null).assertFail();
+                    expect((err == undefined) && (store != null)).assertTrue();
                 } else {
                     console.log('testKVManagerGetKVStore113 getKVStore fail');
+                    expect(null).assertFail();
                 }
                 done();
             });
@@ -483,7 +480,7 @@ describe('KVManagerCallbackTest', function () {
             done();
         }
     })
-
+F
     /**
      * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_1150
      * @tc.name [JS-API8]KVManager.GetKVStore.
@@ -503,13 +500,12 @@ describe('KVManagerCallbackTest', function () {
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
                 console.log('testKVManagerGetKVStore115 getKVStore success');
-                expect((err == undefined) && (store != null)).assertTrue();
-                kvStore = store;
+                expect(null).assertFail();
                 done();
             });
         } catch (e) {
             console.log('testKVManagerGetKVStore115 getKVStore e ' + e);
-            expect(null).assertFail();
+            expect(true).assertTrue();
             done();
         }
     })
@@ -533,13 +529,12 @@ describe('KVManagerCallbackTest', function () {
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
                 console.log('testKVManagerGetKVStore116 getKVStore success');
-                expect((err == undefined) && (store != null)).assertTrue();
-                kvStore = store;
+                expect(null).assertFail();
                 done();
             });
         } catch (e) {
             console.log('testKVManagerGetKVStore116 getKVStore e ' + e);
-            expect(null).assertFail();
+            expect(true).assertTrue();
             done();
         }
     })
@@ -563,13 +558,12 @@ describe('KVManagerCallbackTest', function () {
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
                 console.log('testKVManagerGetKVStore117 getKVStore success');
-                expect((err == undefined) && (store != null)).assertTrue();
-                kvStore = store;
+                expect(null).assertFail();
                 done();
             });
         } catch (e) {
             console.log('testKVManagerGetKVStore117 getKVStore e ' + e);
-            expect(null).assertFail();
+            expect(true).assertTrue();
             done();
         }
     })
@@ -593,13 +587,12 @@ describe('KVManagerCallbackTest', function () {
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
                 console.log('testKVManagerGetKVStore118 getKVStore success');
-                expect((err == undefined) && (store != null)).assertTrue();
-                kvStore = store;
+                expect(null).assertFail();
                 done();
             });
         } catch (e) {
             console.log('testKVManagerGetKVStore118 getKVStore e ' + e);
-            expect(null).assertFail();
+            expect(true).assertTrue();
             done();
         }
     })
@@ -623,13 +616,12 @@ describe('KVManagerCallbackTest', function () {
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
                 console.log('testKVManagerGetKVStore119 getKVStore success');
-                expect((err == undefined) && (store != null)).assertTrue();
-                kvStore = store;
+                expect(null).assertFail();
                 done();
             });
         } catch (e) {
             console.log('testKVManagerGetKVStore119 getKVStore e ' + e);
-            expect(null).assertFail();
+            expect(true).assertTrue();
             done();
         }
     })
@@ -653,13 +645,12 @@ describe('KVManagerCallbackTest', function () {
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
                 console.log('testKVManagerGetKVStore120 getKVStore success');
-                expect((err == undefined) && (store != null)).assertTrue();
-                kvStore = store;
+                expect(null).assertFail();
                 done();
             });
         } catch (e) {
             console.log('testKVManagerGetKVStore119 getKVStore e ' + e);
-            expect(null).assertFail();
+            expect(true).assertTrue();
             done();
         }
     })
@@ -923,64 +914,24 @@ describe('KVManagerCallbackTest', function () {
     it('testKVStorePut100', 0, async function (done) {
         console.log('testKVStorePut100');
         try {
-            await kvStoreNew.put(STORE_KEY, STORE_VALUE, function (err, data) {
-                if (err != undefined){
-                    console.log('testKVStorePut100 put callback fail');
-                } else {
-                    console.log('testKVStorePut100 put callback success');
-                    expect(null).assertFail();
-                }
-                done();
-            });
+            await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
+                console.log('testKVStorePut100 getKVStore success');
+                kvStore = store;
+                    await kvStore.put(STORE_KEY, STORE_VALUE, function (err, data) {
+                        if (err != undefined){
+                            console.log('testKVStorePut100 put callback fail');
+                        } else {
+                            console.log('testKVStorePut100 put callback success');
+                            expect(null).assertFail();
+                        }
+                        done();
+                    });
+                });
+
         } catch (e) {
             console.log('testKVStorePut100 callback e ' + e);
             done();
         }
-    })
-
-    /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_DELETE_1000
-     * @tc.name [JS-API8]KVStore.Delete
-     * @tc.desc Test Js Api KVManager.Delete testcase 100
-     */
-    it('testKVStoreDelete100', 0, async function (done) {
-        console.log('testKVStoreDelete100');
-        try {
-            await KVStoreNew.put(STORE_KEY, STORE_VALUE, async function (err,data) {
-                console.log('testKVStoreDelete100 put success');
-                try {
-                    kvStore.delete(STORE_KEY, function (err, data) {
-                        if (err == undefined) {
-                            console.log('testKVStoreDelete100 callback delete success');
-                            expect(null).assertFail();
-                        } else {
-                            console.log('testKVStoreDelete100 callback delete fail');
-                        }
-                        done();
-                    });
-                } catch (e) {
-                    console.log('testKVStoreDelete100 callback delete e ' + e);
-                    done();
-                }
-            });
-        } catch (ee) {
-            console.log('testKVStoreDelete100 callback delete ee ' + ee);
-            expect(null).assertFail();
-            done();
-        }
-    })
-
-    /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_ON_1000
-     * @tc.name [JS-API8]KVStore.On
-     * @tc.desc Test Js Api KVManager.On testcase 100
-     */
-    it('testKVStoreOn100', 0, async function (done) {
-        kvStoreNew.on('dataChange', 0, function (data) {
-            console.log("testKVStoreOn100 callback call data: " + JSON.stringify(data));
-            expect(true).assertTrue();
-        });
-        done();
     })
 
     /**
@@ -989,34 +940,8 @@ describe('KVManagerCallbackTest', function () {
      * @tc.desc Test Js Api KVManager.On testcase 101
      */
     it('testKVStoreOn101', 0, async function (done) {
-        kvStoreNew.on('dataChange', 1, function (data) {
-            console.log("testKVStoreOn101 callback call data: " + JSON.stringify(data));
-            expect(true).assertTrue();
-        });
-        done();
-    })
-
-    /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_ON_1200
-     * @tc.name [JS-API8]KVStore.On
-     * @tc.desc Test Js Api KVManager.On testcase 102
-     */
-    it('testKVStoreOn102', 0, async function (done) {
-        kvStoreNew.on('dataChange', 2, function (data) {
-            console.log("testKVStoreOn102 callback call data: " + JSON.stringify(data));
-            expect(true).assertTrue();
-        });
-        done();
-    })
-
-    /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_ON_1300
-     * @tc.name [JS-API8]KVStore.On
-     * @tc.desc Test Js Api KVManager.On testcase 103
-     */
-    it('testKVStoreOn103', 0, async function (done) {
         kvStoreNew.on('syncComplete', function (data) {
-            console.log("testKVStoreOn103 callback call data: " + data);
+            console.log("testKVStoreOn101 callback call data: " + data);
             expect(true).assertTrue();
         });
         done();

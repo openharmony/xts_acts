@@ -441,11 +441,10 @@ describe('KVManagerPromiseTest', function () {
         }
         await kvManager.getKVStore(TEST_STORE_ID, optionsInfo).then((store) => {
             console.log('testKVManagerGetKVStore014 getKVStore success');
-            kvStore = store;
-            expect(store != null).assertTrue();
+            expect(null).assertFail();
         }).catch((err) => {
             console.log('testKVManagerGetKVStore014 getKVStore err ' + err);
-            expect(null).assertFail();
+            expect(true).assertTrue();
         });
         done();
     })
@@ -468,11 +467,10 @@ describe('KVManagerPromiseTest', function () {
         }
         await kvManager.getKVStore(TEST_STORE_ID, optionsInfo).then((store) => {
             console.log('testKVManagerGetKVStore015 getKVStore success');
-            kvStore = store;
-            expect(store != null).assertTrue();
+            expect(null).assertFail();
         }).catch((err) => {
             console.log('testKVManagerGetKVStore015 getKVStore err ' + err);
-            expect(null).assertFail();
+            expect(true).assertTrue();
         });
         done();
     })
@@ -495,11 +493,10 @@ describe('KVManagerPromiseTest', function () {
         }
         await kvManager.getKVStore(TEST_STORE_ID, optionsInfo).then((store) => {
             console.log('testKVManagerGetKVStore016 getKVStore success');
-            kvStore = store;
-            expect(store != null).assertTrue();
+            expect(null).assertFail();
         }).catch((err) => {
             console.log('testKVManagerGetKVStore016 getKVStore err ' + err);
-            expect(null).assertFail();
+            expect(true).assertTrue();
         });
         done();
     })
@@ -522,11 +519,10 @@ describe('KVManagerPromiseTest', function () {
         }
         await kvManager.getKVStore(TEST_STORE_ID, optionsInfo).then((store) => {
             console.log('testKVManagerGetKVStore017 getKVStore success');
-            kvStore = store;
-            expect(store != null).assertTrue();
+            expect(null).assertFail();
         }).catch((err) => {
             console.log('testKVManagerGetKVStore017 getKVStore err ' + err);
-            expect(null).assertFail();
+            expect(true).assertTrue();
         });
         done();
     })
@@ -549,11 +545,10 @@ describe('KVManagerPromiseTest', function () {
         }
         await kvManager.getKVStore(TEST_STORE_ID, optionsInfo).then((store) => {
             console.log('testKVManagerGetKVStore018 getKVStore success');
-            kvStore = store;
-            expect(store != null).assertTrue();
+            expect(null).assertFail();
         }).catch((err) => {
             console.log('testKVManagerGetKVStore018 getKVStore err ' + err);
-            expect(null).assertFail();
+            expect(true).assertTrue();
         });
         done();
     })
@@ -576,11 +571,10 @@ describe('KVManagerPromiseTest', function () {
         }
         await kvManager.getKVStore(TEST_STORE_ID, optionsInfo).then((store) => {
             console.log('testKVManagerGetKVStore019 getKVStore success');
-            kvStore = store;
-            expect(store != null).assertTrue();
+            expect(null).assertFail();
         }).catch((err) => {
             console.log('testKVManagerGetKVStore019 getKVStore err ' + err);
-            expect(null).assertFail();
+            expect(true).assertTrue();
         });
         done();
     })
@@ -591,95 +585,18 @@ describe('KVManagerPromiseTest', function () {
      * @tc.desc Test Js Api KVManager.CloseKVStore testcase 001
      */
     it('testKVManagerCloseKVStore001', 0, async function (done) {
-        console.log('testKVManagerCloseKVStore001');
-        await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
-            console.log('testKVManagerCloseKVStore001 getKVStore success');
-            kvStore = store;
-            await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore).then(() => {
-                console.log('testKVManagerCloseKVStore001 closeKVStore success');
-            }).catch((err) => {
-                console.log('testKVManagerCloseKVStore001 closeKVStore err ' + err);
-                expect(null).assertFail();
-            });
-        }).catch((err) => {
-            console.log('testKVManagerCloseKVStore001 getKVStore err ' + err);
-            expect(null).assertFail();
-        });
-        done();
-    })
-
-    /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_CLOSEKVSTORE_0200
-     * @tc.name [JS-API8]KVManager.CloseKVStore.
-     * @tc.desc Test Js Api KVManager.CloseKVStore testcase 002
-     */
-    it('testKVManagerCloseKVStore002', 0, async function (done) {
-        console.log('testKVManagerCloseKVStore002');
-        await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
-            console.log('testKVManagerCloseKVStore002 getKVStore success');
-            kvStore = store;
-            try {
-                await kvManager.closeKVStore(TEST_BUNDLE_NAME).then(() => {
-                    console.log('testKVManagerCloseKVStore002 closeKVStore success');
-                    expect(null).assertFail();
-                }).catch((err) => {
-                    console.log('testKVManagerCloseKVStore002 closeKVStore err ' + err);
-                });
-            } catch (e) {
-                console.log('testKVManagerCloseKVStore002 closeKVStore e ' + e);
-            }
-        }).catch((err) => {
-            console.log('testKVManagerCloseKVStore002 getKVStore err ' + err);
-            expect(null).assertFail();
-        });
-        done();
-    })
-
-    /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_CLOSEKVSTORE_0300
-     * @tc.name [JS-API8]KVManager.CloseKVStore.
-     * @tc.desc Test Js Api KVManager.CloseKVStore testcase 003
-     */
-    it('testKVManagerCloseKVStore003', 0, async function (done) {
-        console.log('testKVManagerCloseKVStore003');
-        await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
-            console.log('testKVManagerCloseKVStore003 getKVStore success');
-            kvStore = store;
-            try {
-                await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
-                    console.log('testKVManagerCloseKVStore003 closeKVStore success');
-                    expect(null).assertFail();
-                }).catch((err) => {
-                    console.log('testKVManagerCloseKVStore003 closeKVStore err ' + err);
-                });
-            } catch (e) {
-                console.log('testKVManagerCloseKVStore003 closeKVStore e ' + e);
-            }
-        }).catch((err) => {
-            console.log('testKVManagerCloseKVStore003 getKVStore err ' + err);
-            expect(null).assertFail();
-        });
-        done();
-    })
-
-    /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_CLOSEKVSTORE_0400
-     * @tc.name [JS-API8]KVManager.CloseKVStore.
-     * @tc.desc Test Js Api KVManager.CloseKVStore testcase 004
-     */
-    it('testKVManagerCloseKVStore004', 0, async function (done) {
         console.log('testKVManagerCloseKVStore004');
         await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
-            console.log('testKVManagerCloseKVStore004 getKVStore success');
+            console.log('testKVManagerCloseKVStore001 getKVStore success');
             kvStore = store;
             await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore);
         });
-        console.log('testKVManagerCloseKVStore104 closeKVStore redo.');
+        console.log('testKVManagerCloseKVStore001 closeKVStore redo.');
         await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore).then(() => {
-            console.log('testKVManagerCloseKVStore004 closeKVStore twice');
+            console.log('testKVManagerCloseKVStore001 closeKVStore twice');
             expect(null).assertFail();
         }).catch((err) => {
-            console.log('testKVManagerCloseKVStore004 closeKVStore twice err ' + err);
+            console.log('testKVManagerCloseKVStore001 closeKVStore twice err ' + err);
         });
         done();
     })
@@ -691,61 +608,11 @@ describe('KVManagerPromiseTest', function () {
      */
     it('testKVManagerDeleteKVStore001', 0, async function (done) {
         console.log('testKVManagerDeleteKVStore001');
-        await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
-            console.log('testKVManagerDeleteKVStore001 getKVStore success');
-            kvStore = store;
-            await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
-                console.log('testKVManagerDeleteKVStore001 deleteKVStore success');
-            }).catch((err) => {
-                console.log('testKVManagerDeleteKVStore001 deleteKVStore err ' + err);
-                expect(null).assertFail();
-            });
-        }).catch((err) => {
-            console.log('testKVManagerDeleteKVStore001 getKVStore err ' + err);
-            expect(null).assertFail();
-        });
-        done();
-    })
-
-    /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_DELETEKVSTORE_0200
-     * @tc.name [JS-API8]KVManager.DeleteKVStore.
-     * @tc.desc Test Js Api KVManager.DeleteKVStore testcase 002
-     */
-    it('testKVManagerDeleteKVStore002', 0, async function (done) {
-        console.log('testKVManagerDeleteKVStore002');
-        await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
-            console.log('testKVManagerDeleteKVStore002 getKVStore success');
-            kvStore = store;
-            try {
-                await kvManager.deleteKVStore(TEST_BUNDLE_NAME).then(() => {
-                    console.log('testKVManagerDeleteKVStore002 deleteKVStore success');
-                    expect(null).assertFail();
-                }).catch((err) => {
-                    console.log('testKVManagerDeleteKVStore002 deleteKVStore err ' + err);
-                });
-            } catch (e) {
-                console.log('testKVManagerDeleteKVStore002 deleteKVStore e ' + e);
-            }
-        }).catch((err) => {
-            console.log('testKVManagerDeleteKVStore002 getKVStore err ' + err);
-            expect(null).assertFail();
-        });
-        done();
-    })
-
-    /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_DELETEKVSTORE_0300
-     * @tc.name [JS-API8]KVManager.DeleteKVStore.
-     * @tc.desc Test Js Api KVManager.DeleteKVStore testcase 003
-     */
-    it('testKVManagerDeleteKVStore003', 0, async function (done) {
-        console.log('testKVManagerDeleteKVStore003');
         await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
-            console.log('testKVManagerDeleteKVStore003 deleteKVStore success');
+            console.log('testKVManagerDeleteKVStore001 deleteKVStore success');
             expect(null).assertFail();
         }).catch((err) => {
-            console.log('testKVManagerDeleteKVStore003 deleteKVStore err ' + err);
+            console.log('testKVManagerDeleteKVStore001 deleteKVStore err ' + err);
         });
         done();
     })
