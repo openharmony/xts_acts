@@ -320,7 +320,6 @@ describe('bundlestate', function() {
 			expect(err.code).assertLarger(0);
 		})
 		done();
-	});
 	console.info('queryCurrentBundleActiveStates_066 end');
 })
 
