@@ -344,20 +344,23 @@ export default function actsBmsJsModuleNameTest() {
                 abilityName: ABILITY_NAME,
                 moduleName: MODULE_NAME1
             }, DEFAULT_FLAG, DEFAULT_USER_ID).then(data => {
-                expect(data).assertFail();
+                checkDataInfo(data[0]);
+                console.info("'[QueryAbilityByWant_0100]Return data : " + JSON.stringify(data));
             }).catch(err => {
-                console.error('[QueryAbilityByWant_0100]Operation failed. Err: ' + JSON.stringify(err));
-                expect(err).assertEqual(INVALID_CODE);
+                console.info("[QueryAbilityByWant_0100]Operation failed. Err: " + JSON.stringify(err));
+                expect(err).assertFail();
             });
             bundle.queryAbilityByWant({
                 bundleName: BUNDLE_NAME,
                 abilityName: ABILITY_NAME,
                 moduleName: MODULE_NAME1
             }, DEFAULT_FLAG, DEFAULT_USER_ID, (err, data) => {
-                console.info("'[QueryAbilityByWant_0100]Return data " + JSON.stringify(data));
-                expect(data).assertEqual("type mismatch");
-                console.error('[QueryAbilityByWant_0100]Operation failed. Err: ' + JSON.stringify(err));
-                expect(err).assertEqual(INVALID_CODE);
+                expect(err).assertEqual(SUCCESS_CODE);
+                if (err) {
+                    console.error('[QueryAbilityByWant_0100]Operation failed. Err: ' + JSON.stringify(err));
+                }
+                checkDataInfo(data[0]);
+                console.info("'[QueryAbilityByWant_0100]Return data : " + JSON.stringify(data));
                 done();
             });
         });
