@@ -62,7 +62,7 @@ export default function radioJsunit() {
 
       try {
             let data = await radio.getPrimarySlotId();
-            console.log(Telephony_NetworkSearch_getPrimarySlotId_Promise_0200 pass data: ${data}`);
+            console.log(`Telephony_NetworkSearch_getPrimarySlotId_Promise_0200 pass data: ${data}`);
             expect(true).assertTrue();
         } catch (err) {
             console.log(`Telephony_NetworkSearch_getPrimarySlotId_Promise_0200 fail err: ${err}`);
