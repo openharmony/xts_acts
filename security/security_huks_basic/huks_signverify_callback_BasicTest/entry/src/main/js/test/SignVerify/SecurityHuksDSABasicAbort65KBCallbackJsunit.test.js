@@ -23,7 +23,6 @@ let srcData65Kb = stringToUint8Array(srcData65);
 describe('SecurityHuksSignVerifyDSACallbackJsunit', function () {
   it('testSignVerifyDSA004', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAlias004';
-    const NewSrcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAliasNew004';
     let HuksOptions = {
       properties: new Array(
         HuksSignVerifyDSA.HuksKeyAlgDSA,
@@ -32,14 +31,7 @@ describe('SecurityHuksSignVerifyDSACallbackJsunit', function () {
       ),
       inData: srcData65Kb,
     };
-    await publicSignVerifyFunc(
-      srcKeyAlies,
-      NewSrcKeyAlies,
-      HuksOptions,
-      'abort',
-      true,
-      srcData65Kb
-    );
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'abort', true, srcData65Kb);
     done();
   });
 });

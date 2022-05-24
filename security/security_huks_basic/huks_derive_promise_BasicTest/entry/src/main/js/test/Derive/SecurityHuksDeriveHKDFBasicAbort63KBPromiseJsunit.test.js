@@ -35,8 +35,7 @@ let HuksOptions63kb = {
 
 describe('SecurityHuksDeriveHKDFPromiseJsunit', function () {
   it('testDeriveHKDF102', 0, async function (done) {
-    const srcKeyAliesFirst =
-      'testDeriveHKDFSize128SHA256Abort63KBDeriveKeyAlias_01_101';
+    const srcKeyAliesFirst = 'testDeriveHKDFSize128SHA256Abort63KBDeriveKeyAlias_01_101';
     let huksOptionsFinish = {
       properties: new Array(
         HuksDeriveHKDF.HuksKeySTORAGE,
@@ -54,12 +53,7 @@ describe('SecurityHuksDeriveHKDFPromiseJsunit', function () {
       ),
       inData: srcData63Kb,
     };
-    await publicDeriveFunc(
-      srcKeyAliesFirst,
-      HuksOptions63kb,
-      huksOptionsFinish,
-      'abort'
-    );
+    await publicDeriveFunc(srcKeyAliesFirst, HuksOptions63kb, huksOptionsFinish, 'abort');
     done();
   });
 });

@@ -114,9 +114,7 @@ let HuksAgreeDH = {
   },
   HuksKeyPurposeENCRYPTDECRYPT: {
     tag: param.HksTag.HKS_TAG_PURPOSE,
-    value:
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT |
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT | param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
   },
   HuksKeyPurposeDH: {
     tag: param.HksTag.HKS_TAG_PURPOSE,
@@ -276,9 +274,7 @@ let HuksAgreeECDH = {
   },
   HuksKeyPurposeENCRYPTDECRYPT: {
     tag: param.HksTag.HKS_TAG_PURPOSE,
-    value:
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT |
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT | param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
   },
 };
 
@@ -406,9 +402,7 @@ let HuksKeyAlgX25519 = {
   },
   HuksKeyPurposeENCRYPTDECRYPT: {
     tag: param.HksTag.HKS_TAG_PURPOSE,
-    value:
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT |
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT | param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
   },
   HuksKeyPurposeX25519: {
     tag: param.HksTag.HKS_TAG_PURPOSE,

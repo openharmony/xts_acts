@@ -95,9 +95,7 @@ let HuksDeriveHKDF = {
   },
   HuksKeyPurposeENCRYPTDECRYPT: {
     tag: param.HksTag.HKS_TAG_PURPOSE,
-    value:
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT |
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT | param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
   },
   HuksKeyPADDINGNONE: {
     tag: param.HksTag.HKS_TAG_PADDING,
@@ -234,9 +232,7 @@ let HuksDerivePBKDF2 = {
   },
   HuksKeyPurposeENCRYPTDECRYPT: {
     tag: param.HksTag.HKS_TAG_PURPOSE,
-    value:
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT |
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT | param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
   },
   HuksKeyPADDINGNONE: {
     tag: param.HksTag.HKS_TAG_PADDING,
