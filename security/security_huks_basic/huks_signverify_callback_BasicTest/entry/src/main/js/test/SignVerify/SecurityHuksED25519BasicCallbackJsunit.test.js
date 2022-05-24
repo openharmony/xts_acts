@@ -34,14 +34,7 @@ describe('SecurityHuksSignVerifyED25519CallbackJsunit', function () {
       ),
       inData: srcData63Kb,
     };
-    finishOutData = await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'finish',
-      true,
-      srcData63Kb
-    );
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData63Kb);
 
     HuksOptions = {
       properties: new Array(
@@ -52,14 +45,7 @@ describe('SecurityHuksSignVerifyED25519CallbackJsunit', function () {
       ),
       inData: finishOutData,
     };
-    await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'finish',
-      false,
-      srcData63Kb
-    );
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData63Kb);
     done();
   });
 
@@ -74,14 +60,7 @@ describe('SecurityHuksSignVerifyED25519CallbackJsunit', function () {
       ),
       inData: srcData63Kb,
     };
-    await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'abort',
-      true,
-      srcData63Kb
-    );
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'abort', true, srcData63Kb);
     done();
   });
 
@@ -96,14 +75,7 @@ describe('SecurityHuksSignVerifyED25519CallbackJsunit', function () {
       ),
       inData: srcData65Kb,
     };
-    finishOutData = await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'finish',
-      true,
-      srcData65Kb
-    );
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
     HuksOptions = {
       properties: new Array(
         HuksSignVerifyED25519.HuksKeyAlgED25519,
@@ -113,14 +85,7 @@ describe('SecurityHuksSignVerifyED25519CallbackJsunit', function () {
       ),
       inData: finishOutData,
     };
-    await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'finish',
-      false,
-      srcData65Kb
-    );
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
     done();
   });
 
@@ -135,14 +100,7 @@ describe('SecurityHuksSignVerifyED25519CallbackJsunit', function () {
       ),
       inData: srcData65Kb,
     };
-    await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'abort',
-      true,
-      srcData63Kb
-    );
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'abort', true, srcData63Kb);
     done();
   });
 });

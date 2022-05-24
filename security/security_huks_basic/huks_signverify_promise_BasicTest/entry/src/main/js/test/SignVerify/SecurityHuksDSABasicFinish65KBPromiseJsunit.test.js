@@ -23,7 +23,6 @@ let finishOutData;
 describe('SecurityHuksSignVerifyDSAPromiseJsunit', function () {
   it('testSignVerifyDSA103', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAlias103';
-    const newSrcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAliasNew103';
     let HuksOptions = {
       properties: new Array(
         HuksSignVerifyDSA.HuksKeyAlgDSA,
@@ -32,14 +31,7 @@ describe('SecurityHuksSignVerifyDSAPromiseJsunit', function () {
       ),
       inData: srcData65Kb,
     };
-    finishOutData = await publicSignVerifyFunc(
-      srcKeyAlies,
-      newSrcKeyAlies,
-      HuksOptions,
-      'finish',
-      true,
-      srcData65Kb
-    );
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
     HuksOptions = {
       properties: new Array(
         HuksSignVerifyDSA.HuksKeyAlgDSA,
@@ -49,14 +41,7 @@ describe('SecurityHuksSignVerifyDSAPromiseJsunit', function () {
       ),
       inData: finishOutData,
     };
-    await publicSignVerifyFunc(
-      srcKeyAlies,
-      newSrcKeyAlies,
-      HuksOptions,
-      'finish',
-      false,
-      srcData65Kb
-    );
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
     done();
   });
 });

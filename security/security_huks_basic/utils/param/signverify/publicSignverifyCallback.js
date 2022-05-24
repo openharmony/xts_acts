@@ -139,20 +139,14 @@ async function publicUpdateFunc(HuksOptions) {
     let remainder = uint8ArrayToString(inDataArray).length % dateSize;
     for (let i = 0; i < count; i++) {
       HuksOptions.inData = stringToUint8Array(
-        uint8ArrayToString(tempHuksOptionsInData).slice(
-          dateSize * i,
-          dateSize * (i + 1)
-        )
+        uint8ArrayToString(tempHuksOptionsInData).slice(dateSize * i, dateSize * (i + 1))
       );
       await update(handle, HuksOptions);
       HuksOptions.inData = tempHuksOptionsInData;
     }
     if (remainder !== 0) {
       HuksOptions.inData = stringToUint8Array(
-        uint8ArrayToString(tempHuksOptionsInData).slice(
-          dateSize * count,
-          uint8ArrayToString(inDataArray).length
-        )
+        uint8ArrayToString(tempHuksOptionsInData).slice(dateSize * count, uint8ArrayToString(inDataArray).length)
       );
       await update(handle, HuksOptions);
       HuksOptions.inData = tempHuksOptionsInData;
@@ -261,14 +255,7 @@ function deleteKey(srcKeyAlies, HuksOptions) {
   });
 }
 
-async function publicSignVerifyFunc(
-  srcKeyAlies,
-  newSrcKeyAlies,
-  HuksOptions,
-  thirdInderfaceName,
-  isSING,
-  rawData
-) {
+async function publicSignVerifyFunc(srcKeyAlies, HuksOptions, thirdInderfaceName, isSING, rawData) {
   try {
     let keyAlias = srcKeyAlies;
     let purposeSignVerigy = HuksSignVerifyDSA.HuksKeyRSAPurposeSINGVERIFY;
@@ -285,7 +272,7 @@ async function publicSignVerifyFunc(
         HuksOptions.properties.splice(2, 1);
       }
     } else {
-      keyAlias = newSrcKeyAlies;
+      keyAlias = srcKeyAlies + 'New';
       finishOutData = HuksOptions.inData;
       await publicImportKey(keyAlias, HuksOptions);
     }
@@ -307,11 +294,10 @@ async function publicSignVerifyFunc(
     }
     if (isSING && thirdInderfaceName == 'abort') {
       HuksOptions.properties.splice(1, 1, purposeSignVerigy);
-      await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
     } else if (!isSING) {
       HuksOptions.properties.splice(1, 1, PurposeVerify);
-      await publicDeleteKeyFunc(newSrcKeyAlies, HuksOptions);
     }
+    await publicDeleteKeyFunc(keyAlias, HuksOptions);
     return finishOutData;
   } catch (e) {
     expect(null).assertFail();

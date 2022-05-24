@@ -61,9 +61,7 @@ let HuksSignVerifyDSA = {
   },
   HuksKeyRSAPurposeSINGVERIFY: {
     tag: param.HksTag.HKS_TAG_PURPOSE,
-    value:
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN |
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | param.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
   },
 };
 
@@ -126,9 +124,7 @@ let HuksSignVerifyECC = {
   },
   HuksKeyECCPurposeSINGVERIFY: {
     tag: param.HksTag.HKS_TAG_PURPOSE,
-    value:
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN |
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | param.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
   },
 };
 
@@ -155,9 +151,7 @@ let HuksSignVerifyED25519 = {
   },
   HuksKeyRSAPurposeSINGVERIFY: {
     tag: param.HksTag.HKS_TAG_PURPOSE,
-    value:
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN |
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | param.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
   },
   HuksTagDigestSHA1: {
     tag: param.HksTag.HKS_TAG_DIGEST,
@@ -208,9 +202,7 @@ let HuksSignVerifyRSA = {
   },
   HuksKeyRSAPurposeSINGVERIFY: {
     tag: param.HksTag.HKS_TAG_PURPOSE,
-    value:
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN |
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN | param.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
   },
   HuksKeyRSAPADDINGPKCS1V15: {
     tag: param.HksTag.HKS_TAG_PADDING,
@@ -269,9 +261,4 @@ let HuksSignVerifyRSA = {
     value: param.HksKeyDigest.HKS_DIGEST_SHA512,
   },
 };
-export {
-  HuksSignVerifyRSA,
-  HuksSignVerifyDSA,
-  HuksSignVerifyECC,
-  HuksSignVerifyED25519,
-};
+export { HuksSignVerifyRSA, HuksSignVerifyDSA, HuksSignVerifyECC, HuksSignVerifyED25519 };

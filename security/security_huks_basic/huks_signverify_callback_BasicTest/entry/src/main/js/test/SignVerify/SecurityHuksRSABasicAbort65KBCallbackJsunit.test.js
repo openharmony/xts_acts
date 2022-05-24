@@ -32,14 +32,7 @@ describe('SecurityHuksSignVerifyRSACallbackJsunit', function () {
       ),
       inData: srcData65Kb,
     };
-    await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'abort',
-      true,
-      srcData65Kb
-    );
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'abort', true, srcData65Kb);
     done();
   });
 });

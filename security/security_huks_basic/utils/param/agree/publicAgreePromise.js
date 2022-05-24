@@ -85,10 +85,7 @@ async function publicAgreeUpdateFunc(HuksOptions, exportKey) {
   HuksOptions.inData = _inData;
 }
 
-async function publicAgreeFinishAbortFunc(
-  HuksOptionsFinish,
-  thirdInderfaceName
-) {
+async function publicAgreeFinishAbortFunc(HuksOptionsFinish, thirdInderfaceName) {
   if (thirdInderfaceName == 'finish') {
     await huks
       .finish(handle, HuksOptionsFinish)
@@ -164,10 +161,7 @@ async function publicAgreeFunc(
 
     await publicAgreeInitFunc(srcKeyAliesSecond, HuksOptions);
     await publicAgreeUpdateFunc(HuksOptions, 2);
-    await publicAgreeFinishAbortFunc(
-      HuksOptionsFinishSecond,
-      thirdInderfaceName
-    );
+    await publicAgreeFinishAbortFunc(HuksOptionsFinishSecond, thirdInderfaceName);
 
     await publicAgreeDeleteFunc(srcKeyAliesFrist, HuksOptions);
     if (thirdInderfaceName == 'finish') {

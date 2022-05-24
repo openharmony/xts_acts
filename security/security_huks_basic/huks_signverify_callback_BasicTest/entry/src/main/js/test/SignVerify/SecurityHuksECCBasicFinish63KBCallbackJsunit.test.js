@@ -32,14 +32,7 @@ describe('SecurityHuksSignVerifyECCCallbackJsunit', function () {
       ),
       inData: srcData63Kb,
     };
-    finishOutData = await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'finish',
-      true,
-      srcData63Kb
-    );
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData63Kb);
     HuksOptions = {
       properties: new Array(
         HuksSignVerifyECC.HuksKeyAlgECC,
@@ -49,14 +42,7 @@ describe('SecurityHuksSignVerifyECCCallbackJsunit', function () {
       ),
       inData: finishOutData,
     };
-    await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'finish',
-      false,
-      srcData63Kb
-    );
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData63Kb);
     done();
   });
 });
