@@ -8,6 +8,15 @@
     },
     "kits": [
         {
+            "type": "ShellKit",
+            "pre-push": [
+            ],
+            "run-command": [
+                "rm -rf /storage/media/100/local/files/*",
+                "rm -rf /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/*"
+            ]
+        },
+        {
             "type": "PushKit",
             "pre-push": [
             ],
