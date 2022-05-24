@@ -28,15 +28,15 @@
         </list-item-group>
         <list-item-group id="styleThree">
         </list-item-group>
-        <list-item-group id="styleFour">
+        <list-item-group id="styleFour" >
         </list-item-group>
-        <list-item-group id="styleFive">
+        <list-item-group id="styleFive" >
         </list-item-group>
-        <list-item-group id="styleSix">
+        <list-item-group id="styleSix" >
         </list-item-group>
-        <list-item-group id="styleSeven">
+        <list-item-group id="styleSeven" >
         </list-item-group>
-        <list-item-group id="styleEight">
+        <list-item-group id="styleEight" >
         </list-item-group>
 
         <text class="sub-title">

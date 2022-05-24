@@ -43,8 +43,6 @@
 }
 
 #styleOne{
-    width: 150px;
-    height: 20px;
     padding-top: 1px;
     padding-left: 2px;
     padding-right: 3px;
@@ -74,8 +72,6 @@
 }
 
 #styleTwo{
-    width: 150px;
-    height: 20px;
     padding-start: 1px;
     padding-end: 2px;
     margin-start: 1px;
@@ -89,8 +85,6 @@
 }
 
 #styleThree{
-    width: 50px;
-    height: 20px;
     padding: 2px;
     margin:1px;
     border-left: 1px solid #ff0000;
@@ -102,22 +96,16 @@
 }
 
 #styleFour{
-    width: 50px;
-    height: 20px;
     align-self:center;
     border: 2px solid #00ff00;
 }
 
 #styleFourNew{
-    width: 50px;
-    height: 20px;
     align-self:stretch;
     border: 2px solid #00ff00;
 }
 
 #styleFive{
-    width: 150px;
-    height: 40px;
     border: 5px;
     border-image-source: url('/common/images/image.png');
     border-image-slice: 5px 10px 10px 5px;
@@ -138,8 +126,6 @@
 /*}*/
 
 #styleSix{
-    width: 100%;
-    height: 2%;
     background-color: #ff0000;
     padding-top: 1%;
     padding-left: 2%;
@@ -152,8 +138,6 @@
 }
 
 #styleSeven{
-    width: 70%;
-    height: 1%;
     padding-start: 1%;
     padding-end: 2%;
     margin-start: 1%;
@@ -162,44 +146,34 @@
 }
 
 #styleEight{
-    width: 60%;
-    height: 1%;
     margin: 1%;
     padding: 2%;
     background-color: #0000ff;
 }
 
 #styleNine{
-    width: 100%;
-    height: 20px;
     display:flex;
     background-color: #0000ff;
 }
 
 #styleNineNew{
-    width: 100%;
-    height: 20px;
     display:grid;
     background-color: #0000ff;
 }
 
 
 #styleTen{
-    width: 100%;
-    height: 400%;
     display: none;
     background-color: #ff0000;
 }
 
 #styleEleven{
-    height: 40%;
     background-color: #00ff00;
     flex:1 1 20px;
     z-index:10;
 }
 
 #styleTwelve{
-    height: 50%;
     background-color: #ff00ff;
     flex-grow:2;
     flex-shrink: 3;
@@ -208,83 +182,46 @@
 }
 
 #styleThirteen{
-    position: absolute;
-    left: 10px;
-    top: 20px;
-    width: 10px;
-    height: 10px;
     background-color: #00ff00;
     z-index:12;
 }
 
 #styleFourteen{
-    position: absolute;
-    right: 10px;
-    bottom: 20px;
-    width: 10px;
-    height: 10px;
     background-color: #0000ff;
     z-index:3;
 }
 
 #styleFifteen{
-    position: absolute;
-    left: 10%;
-    top: 20%;
-    width: 10px;
-    height: 10px;
     background-color: #fff000;
     z-index:5;
 }
 
 #styleSixteen{
-    position: absolute;
-    right: 10%;
-    bottom: 20%;
-    width: 10px;
-    height: 10px;
     background-color: #00ffff;
     z-index:15;
 }
 
 #styleSeventeen{
-    position: absolute;
-    start: 50px;
-    width: 10px;
-    height: 10px;
     background-color: #ffff00;
     z-index:7;
 }
 
 #styleEighteen{
-    position: absolute;
-    end: 20px;
-    width: 10px;
-    height: 10px;
     background-color: #00ffff;
     z-index:4;
 }
 
 #styleNineteen{
-    position: relative;
-    start: 20%;
-    width: 10px;
-    height: 10px;
     background-color: #ffff00;
     z-index:1;
 }
 
 #styleTwenty{
-    position: fixed;
-    end: 20%;
-    width: 10px;
-    height: 10px;
     background-color: #00ffff;
     z-index:17;
 }
 
 #styleTwentyOne{
-    height: 20px;
     box-shadow: 2px 4px;
     flex-weight: 1;
     margin:5px;
@@ -292,48 +229,36 @@
 
 #styleTwentyTwo{
     flex-weight: 1;
-    height: 20px;
     box-shadow: 2px 4px 6px 8px;
     margin:5px;
 }
 
 #styleTwentyThree{
     flex-weight: 1;
-    height: 20px;
     box-shadow: 1px 2px 3px 4px #ff0000;
     margin:5px;
 }
 
 #styleTwentyFour{
-    width: 150px;
-    height: 20px;
     background-color: #00ffff;
     clip-path:inset(2 23);
     visibility: visible;
 }
 
 #styleTwentyFive{
-    width: 150px;
-    height: 20px;
     background-color: #00ffff;
     visibility: hidden;
 }
 
 #styleTwentySix{
-    width: 150px;
-    height: 20px;
     background-color: #999999;
 }
 
 #styleTwentySeven{
-    width: 150px;
-    height: 20px;
     background: linear-gradient(pink,#fff000);
 }
 
 #styleTwentyNine{
-    width: 150px;
-    height: 20px;
     background-image:url('common/images/image.png');
     background-size:contain;
     background-repeat: repeat-x;
@@ -341,8 +266,6 @@
 }
 
 #styleThirty{
-    width: 150px;
-    height: 20px;
     background-image:url('common/images/image.png');
     background-size:50px 10px;
     background-repeat: no-repeat;
@@ -350,8 +273,6 @@
 }
 
 #styleThirtyOne{
-    width: 150px;
-    height: 20px;
     background-image:url('common/images/image.png');
     background-size:10% 20%;
     background-repeat: repeat;
@@ -359,8 +280,6 @@
 }
 
 #styleThirtyTwo{
-    width: 150px;
-    height: 20px;
     background-image:url('common/images/image.png');
     background-size: auto;
     background-repeat: repeat;
@@ -368,8 +287,6 @@
 }
 
 #styleThirtyThree{
-    width: 150px;
-    height: 20px;
     background: linear-gradient(pink,#fff000);
     clip-path: margin-box;
     image-fill: #000fff;
@@ -379,8 +296,6 @@
 }
 
 #styleThirtyFour{
-    width: 150px;
-    height: 20px;
     background: linear-gradient(pink,#fff000);
     clip-path: margin-box;
     image-fill: #000fff;
@@ -390,122 +305,82 @@
 }
 
 #styleThirtyFive{
-    width: 150px;
-    height: 20px;
     background-color: #000fff;
     transform: none;
 }
 #styleThirtySix{
-    width: 150px;
-    height: 20px;
     background-color: #ff0fff;
     transform: translate3d(10,2,2);
 }
 #styleThirtySeven{
-    width: 150px;
-    height: 20px;
     background-color: #f0000f;
     transform: translateY(5);
 }
 #styleThirtyEight{
-    width: 150px;
-    height: 20px;
     background-color: #fff00f;
     transform: translateZ(5);
 }
 #styleThirtyNine{
-    width: 150px;
-    height: 20px;
     background-color: #ff000f;
     transform: scale(1.2);
 }
 #styleForty{
-    width: 150px;
-    height: 20px;
     background-color: #ff0fff;
     transform: scale3d(1.2,1.2,1.2);
 }
 #styleFortyOne{
-    width: 150px;
-    height: 20px;
     background-color: #000fff;
     transform: scaleX(1.2);
 }
 #styleFortyTwo{
-    width: 150px;
-    height: 20px;
     background-color: #ff80ff;
     transform: scaleY(1.5);
 }
 #styleFortyThree{
-    width: 150px;
-    height: 20px;
     background-color: #ff30ff;
     transform: scaleZ(1.5);
 }
 #styleFortyFour{
-    width: 150px;
-    height: 20px;
     background-color: #f0000f;
     transform: rotate3d(1.5,1.5,1.5,10);
 }
 #styleFortyFive{
-    width: 150px;
-    height: 20px;
     background-color: #f0f00f;
     transform: rotateX(20);
 }
 #styleFortySix{
-    width: 150px;
-    height: 20px;
     background-color: #f00fff;
     transform: rotateY(30);
 }
 #styleFortySeven{
-    width: 150px;
-    height: 20px;
     background-color: #f0000f;
     transform: rotateZ(5);
 }
 #styleFortyEight{
-    width: 150px;
-    height: 20px;
     background-color: #f00fff;
     transform: skew(10,10);
 }
 #styleFortyNine{
-    width: 150px;
-    height: 20px;
     background-color: #f0000f;
     transform: skewX(10);
 }
 #styleFifty{
-    width: 150px;
-    height: 20px;
     background-color: #f00fff;
     transform: skewY(10);
 }
 #styleFiftyOne{
-    width: 150px;
-    height: 20px;
     background-color: #ff88ff;
     transform: perspective(20);
 }
 #styleFiftyTwo{
-    width: 150px;
-    height: 20px;
     background-color: #ff11ff;
     shared-transition-effect:exchange;
 }
 #styleFiftyThree{
-    width: 150px;
-    height: 20px;
     background-color: #ffff0f;
     shared-transition-effect:static;
 }
 #styleFiftyFour{
-    width: 150px;
-    height: 20px;
     background-color: #f00f0f;
     shared-transition-name: shared-transition;
 }
@@ -515,8 +390,6 @@
 }
 
 #styleFiftyFive{
-    width: 150px;
-    height: 20px;
     background-color: #00ff00;
     shared-transition-timing-function: friction;
 }
@@ -549,4 +422,65 @@
 }
 .color-violet{
     background-color: violet;
+}
+
+.stepper-itemTextTitle {
+    height: 20px;
+    font-size: 15px;
+    margin-bottom: 2px;
+    background-color:#0FFFFFF;
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-start: 10px;
+    padding-end: 10px;
+}
+
+#specificOne1{
+    color: yellow;
+}
+#specificOne2{
+    color: yellowgreen;
+}
+
+#specificTwo1{
+    font-size: 10px;
+}
+#specificTwo2{
+    font-size: 40px;
+}
+
+#specificThree1{
+    allow-scale: true;
+}
+#specificThree2{
+    allow-scale: false;
+}
+
+#specificFour1{
+    font-style: normal;
+}
+#specificFour2{
+    font-style: italic;
+}
+
+#specificFive1{
+    font-weight: bold;
+}
+#specificFive2{
+    font-weight: lighter;
+}
+
+#specificSix1{
+    text-decoration: underline;
+}
+#specificSix2{
+    text-decoration: line-through;
+}
+
+#specificSeven1{
+    font-family: monospace;
+}
+#specificSeven2{
+    font-family: sans-serif;
 }

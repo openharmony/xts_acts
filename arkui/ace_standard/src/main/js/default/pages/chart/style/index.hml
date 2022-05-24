@@ -124,29 +124,42 @@
             特有样式 color
         </text>
         <div id="specificOne">
-            <chart id="addOne">
+            <chart id="addOne" type="gauge">
             </chart>
-            <chart id="addTwo">
+            <chart id="addTwo" type="gauge">
             </chart>
-            <chart id="addThree">
+            <chart id="addThree" type="gauge">
             </chart>
-            <chart id="addFour">
+            <chart id="addFour" type="gauge">
             </chart>
-            <chart id="addFive">
+            <chart id="addFive" type="gauge">
             </chart>
-            <chart id="addSix">
+            <chart id="addSix" type="gauge">
             </chart>
-            <chart id="addSeven">
+            <chart id="addSeven" type="gauge">
             </chart>
-            <chart id="addSeven:disabled">
+            <chart id="addEight" type="gauge">
             </chart>
-            <chart id="addSeven:active">
+            <chart id="addNine" type="gauge">
             </chart>
-            <chart id="addSeven:focus">
+            <chart id="addTen" type="gauge">
             </chart>
-            <chart id="addFive">
+            <chart id="addEleven" type="gauge">
             </chart>
-            <chart id="addFive">
+            <chart id="addTwelve" type="gauge">
+            </chart>
+
+            <chart id="addThirteen" type="rainbow">
+            </chart>
+            <chart id="addFourteen" type="rainbow">
+            </chart>
+            <chart id="addFifteen" type="rainbow">
+            </chart>
+            <chart id="addSixteen" type="rainbow">
+            </chart>
+            <chart id="addSeventeen" type="rainbow">
+            </chart>
+            <chart id="addEighteen" type="rainbow">
             </chart>
         </div>
     </div>

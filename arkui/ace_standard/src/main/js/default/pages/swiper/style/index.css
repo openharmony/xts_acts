@@ -352,3 +352,68 @@
   mask-size: cover;
   mask-position: center;
 }
+
+.spanTextTitle {
+  height: 20px;
+  font-size: 15px;
+  margin-bottom: 2px;
+  background-color:#0FFFFF;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-start: 10px;
+  padding-end: 10px;
+}
+
+#specificOne1{
+  indicator-color: yellow;
+}
+#specificOne2{
+  indicator-color: yellowgreen;
+}
+
+#specificTwo1{
+  indicator-selected-color: red;
+}
+#specificTwo2{
+  indicator-selected-color: purple;
+}
+
+#specificThree1{
+  indicator-size: 3px;
+}
+#specificThree2{
+  indicator-size: 6px;
+}
+
+#specificFour1{
+  indicator-top: 10%;
+  indicator-left: 10%;
+
+}
+#specificFour2{
+  indicator-bottom: 10px;
+  indicator-right: 10%;
+}
+#specificFour3{
+  indicator-top: 5px;
+  indicator-right: 10px;
+}
+#specificFour4{
+  indicator-bottom: 10%;
+  indicator-left: 5px;
+}
+
+#specificFive1{
+  next-margin: 10px;
+}
+#specificFive2{
+  next-margin: 20%;
+}
+
+#specificSix1{
+  previous-margin: 5px;
+}
+#specificSix2{
+  previous-margin: 10%;
+}

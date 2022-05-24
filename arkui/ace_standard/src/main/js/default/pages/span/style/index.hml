@@ -12,3 +12,75 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */-->
+
+<div class="container">
+    <div class="style-container">
+        <text class="title">
+            span通用样式
+        </text>
+    </div>
+    <div style="background-color: #000000; width: 2px; height: 100%;">
+    </div>
+    <div class="specific-container">
+        <text class="title">
+            span特有样式
+        </text>
+        <text class="sub-title">
+            特有样式 color
+        </text>
+        <text class="spanTextTitle">
+            <span id="specificOne1">
+                span1
+            </span>
+        </text>
+        <text class="sub-title">
+            特有样式 font-size
+        </text>
+        <text class="spanTextTitle">
+            <span id="specificTwo1">
+                span1
+            </span>
+        </text>
+        <text class="sub-title">
+            特有样式 allow-scale
+        </text>
+        <text class="spanTextTitle">
+            <span id="specificThree1">
+                span1
+            </span>
+        </text>
+        <text class="sub-title">
+            特有样式 font-style
+        </text>
+        <text class="spanTextTitle">
+            <span id="specificFour1">
+                span1
+            </span>
+        </text>
+        <text class="sub-title">
+            特有样式 font-weight
+        </text>
+        <text class="spanTextTitle">
+            <span id="specificFive1">
+                span1
+            </span>
+        </text>
+        <text class="sub-title">
+            特有样式 text-decoration
+        </text>
+        <text class="spanTextTitle">
+            <span id="specificSix1">
+                span1
+            </span>
+        </text>
+        <text class="sub-title">
+            特有样式 font-family
+        </text>
+        <text class="spanTextTitle">
+            <span id="specificSeven1">
+                span1
+            </span>
+        </text>
+    </div>
+</div>
+
