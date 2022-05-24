@@ -863,42 +863,42 @@ describe('CallManageImsCall', function () {
     });
 
     /**
-     * @tc.number  Telephony_CallManager_formatPhoneNumber_Async_0120
+     * @tc.number  Telephony_CallManager_formatPhoneNumber_Async_0200
      * @tc.name    PhoneNumber is 13900000000, options: CN, Call formatPhoneNumber() to format the number.
-     *             The return value is 10 000 000 0000
+     *             The return value is 139 0000 0000
      * @tc.desc    Function test
      */
-    it('Telephony_CallManager_formatPhoneNumber_Async_0120', 0, async function (done) {
+    it('Telephony_CallManager_formatPhoneNumber_Async_0200', 0, async function (done) {
         let numberFormatOptions = new NumberFormatOptions('CN');
         call.formatPhoneNumber('13900000000', numberFormatOptions, (err, data) => {
             if (err) {
-                console.log(`Telephony_CallManager_formatPhoneNumber_Async_0120 err = ${err.message}`);
-                console.log('Telephony_CallManager_formatPhoneNumber_Async_0120 fail');
+                console.log(`Telephony_CallManager_formatPhoneNumber_Async_0200 err = ${err.message}`);
+                console.log('Telephony_CallManager_formatPhoneNumber_Async_0200 fail');
                 expect().assertFail();
                 done();
                 return;
             }
-            expect(data === '139 0000 0000"').assertTrue();
-            console.log(`Telephony_CallManager_formatPhoneNumber_Async_0120 finish data = ${data}`);
+            expect(data === '139 0000 0000').assertTrue();
+            console.log(`Telephony_CallManager_formatPhoneNumber_Async_0200 finish data = ${data}`);
             done();
         });
     });
 
     /**
-     * @tc.number  Telephony_CallManager_formatPhoneNumber_Promise_0120
+     * @tc.number  Telephony_CallManager_formatPhoneNumber_Promise_0200
      * @tc.name    PhoneNumber is 13900000000, options: US, Call formatPhoneNumber() to format the number.
-     *             The return value is 200 0000
+     *             The return value is '1 390-000-0000'
      * @tc.desc    Function test
      */
-    it('Telephony_CallManager_formatPhoneNumber_Promise_0120', 0, async function (done) {
+    it('Telephony_CallManager_formatPhoneNumber_Promise_0200', 0, async function (done) {
         let numberFormatOptions = new NumberFormatOptions('US');
         try {
             var data = await call.formatPhoneNumber('13900000000', numberFormatOptions);
             expect(data === '1 390-000-0000').assertTrue();
-            console.log(`Telephony_CallManager_formatPhoneNumber_Promise_0120 finish data = ${data}`);
+            console.log(`Telephony_CallManager_formatPhoneNumber_Promise_0200 finish data = ${data}`);
             done();
         } catch (err) {
-            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0120 fail');
+            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0200 fail');
             expect().assertFail();
             done();
         }

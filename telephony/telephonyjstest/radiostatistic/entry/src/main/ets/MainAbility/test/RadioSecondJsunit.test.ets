@@ -238,6 +238,11 @@ export default function radioSecondJsunit() {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_getNetworkSelectionMode_Async_0600', 0, async function (done) {
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
         radio.getNetworkSelectionMode(0, (err, res) => {
             if (err) {
                 console.log(`Telephony_NetworkSearch_getNetworkSelectionMode_Async_0600 err: ${err}`);
@@ -258,12 +263,17 @@ export default function radioSecondJsunit() {
      * @tc.desc    Function test
      */
     it('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0600', 0, async function (done) {
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
         try {
             await radio.getNetworkSelectionMode(0);
             console.log('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0600 pass');
             expect(true).assertTrue();
         } catch (err) {
-            console.log('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0600 fail');
+            console.log('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0600 fail: ${err}');
             expect().assertFail();
             done();
             return;
@@ -296,7 +306,7 @@ export default function radioSecondJsunit() {
      * @tc.name    SlotId parameter input is 0, test getISOCountryCodeForNetwork() query function
      * @tc.desc    Function test
      */
-    it('Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0400', 0, async function (done) {
+    it('Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0500', 0, async function (done) {
         try {
             let data = await radio.getISOCountryCodeForNetwork(0);
             console.log(
