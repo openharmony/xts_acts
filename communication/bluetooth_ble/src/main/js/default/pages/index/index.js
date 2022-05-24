@@ -19,16 +19,13 @@ import {Core, ExpectExtend} from 'deccjsunit/index'
 export default {
     data: {
         title: "",
-        myTimeout:60000
+        myTimeout:70000
     },
     onInit() {
         this.title = this.$t('strings.world');
     },
     onShow() {
         console.info('onShow finish')
-    },
-    onReady() {
-        console.info('onReady finish')
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({
             'id': 'extend'
@@ -43,6 +40,9 @@ export default {
         require('../../test/List.test')
         core.execute()
 
+    },
+    onReady() {
+        console.info('onReady finish')
     },
 }
 

@@ -27,9 +27,6 @@ export default {
     },
     onShow() {
         console.info('onShow finish')
-    },
-    onReady() {
-        console.info('onReady finish')
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({
             'id': 'extend'
@@ -38,13 +35,17 @@ export default {
         core.init()
 
         const configService = core.getDefaultService('config')
-     
+
         this.timeout = this.myTimeout
         configService.setConfig(this)
 
         require('../../test/List.test')
         core.execute()
 
+
+    },
+    onReady() {
+        console.info('onReady finish')
     },
 }
 
