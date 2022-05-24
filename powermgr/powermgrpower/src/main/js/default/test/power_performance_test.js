@@ -16,13 +16,13 @@
 import runningLock from '@ohos.runningLock';
 import power from '@ohos.power';
 import brightness from '@ohos.brightness';
-import {describe, it, expect} from 'deccjsunit/index';
+import { describe, it, expect } from 'deccjsunit/index';
 
 describe('appInfoTest', function () {
 
     console.log("*************Power Performance Test Begin*************");
     const MAXNUM = 1000;
-    const MIDNUM =100;
+    const MIDNUM = 100;
     const MS_TO_US = 1000;
     const LIMIT_TIME = 1500;
     const LIMIT_TIME_LONG = 4000;
@@ -45,32 +45,6 @@ describe('appInfoTest', function () {
     })
 
     /**
-     * @tc.number PowerPerformance_002
-     * @tc.name isUsed_test
-     * @tc.desc Interface is called normally
-     */
-    it('PowerPerformance_002', 0, async function (done) {
-        let avgTime = 0;
-        runningLock.createRunningLock("test", runningLock.RunningLockType.BACKGROUND, (error, runningLock) => {
-            if (typeof error === "undefined") {
-                let startTime = new Date().getTime();
-                for (let i = 0; i < MAXNUM; i++) {
-                    runningLock.isUsed();
-                }
-                let waitTime = new Date().getTime() - startTime;
-                avgTime = waitTime / MAXNUM * MS_TO_US; //us
-                console.info(`PowerPerformance_002: Promise: runningLock.isUsed Wait Time : ${waitTime}`);
-                avgTime < LIMIT_TIME ? expect(true).assertTrue() : expect(false).assertTrue();
-                done();
-            } else {
-                console.log('PowerPerformance_002: ' + error);
-                console.info('PowerPerformance_002: isUsed is ' + runningLock);
-                done();
-            }
-        })
-    })
-
-    /**
      * @tc.number PowerPerformance_003
      * @tc.name lock_test
      * @tc.desc Interface is called normally
@@ -87,8 +61,8 @@ describe('appInfoTest', function () {
                 avgTime = avgTime + waitTime; //us
                 console.info(`PowerPerformance_003: Promise: runningLock.lock Wait Time : ${waitTime}`);
                 avgTime < LIMIT_TIME ? expect(true).assertTrue() : expect(false).assertTrue();
-                    runningLock.unlock();
-                    done();
+                runningLock.unlock();
+                done();
             } else {
                 console.log('PowerPerformance_003: ' + error);
                 console.info('PowerPerformance_003: lock is ' + runningLock);
