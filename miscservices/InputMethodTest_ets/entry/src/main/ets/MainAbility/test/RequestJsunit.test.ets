@@ -196,7 +196,44 @@ export default function requestJsunit() {
       console.log("-----------------------request_upload_0006 end-----------------------");
       done();
     })
-  })
+  });
+
+    /**
+     * @tc.name: ohos.request_request_upload_0007
+     * @tc.desc: request_upload Method detection
+     */
+    it('request_upload_0007', 0, async function (done) {
+      console.log("-----------------------request_upload_0007 is starting-----------------------");
+      try {
+        console.log("request_upload_0007 getUploadConfig() " + getUploadConfig());
+        request.upload(getUploadConfig(), (err, uploadTask) => {
+          if (err) {
+            expect().assertFail();
+          } else {
+            console.log("request_upload_0007 progress uploadTask =" + JSON.stringify(uploadTask));
+            uploadTask.on('headerReceive', function (data1, data2) {
+              console.log("request_upload_0007 headerReceive on data1 =" + data1);
+              console.log("request_upload_0007 headerReceive on data2 =" + data2);
+            })
+            uploadTask.off('headerReceive', function (data1, data2) {
+              console.log("request_upload_0007 headerReceive off data1 =" + data1);
+              console.log("request_upload_0007 headerReceive off data2 =" + data2);
+            })
+            uploadTask.remove().then((result) => {
+              console.log("request_upload_0006 remove =" + result);
+            }).catch((err) => {
+              console.error('Failed to remove the upload task. Cause: ' + JSON.stringify(err));
+            });
+          }
+        })
+      } catch (err) {
+        expect(true).assertEqual(true);
+        console.error("request_upload_0007 error: " + err);
+      }
+      console.log("-----------------------request_upload_0007 end-----------------------");
+      done();
+    })
+  });
 
   function getUploadConfig() {
     let file = {

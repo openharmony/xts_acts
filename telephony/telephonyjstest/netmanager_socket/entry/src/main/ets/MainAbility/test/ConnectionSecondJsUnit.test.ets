@@ -114,6 +114,47 @@ export default function connectionSecondJsUnit() {
     });
 
     /**
+     * @tc.name: 'Telephony_connection_getConnectionProperties_Promise_0200
+     * @tc.desc: getConnectionProperties  detection
+     */
+    it('Telephony_connection_getConnectionProperties_Promise_0200', 0, function (done) {
+      console.log("----------Telephony_connection_getConnectionProperties_Promise_0200 Test is starting------");
+      if(false){
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      let caseName = 'Telephony_connection_getConnectionProperties_Promise_0200';
+      connection.getAllNets((error, data) => {
+        if (error) {
+          console.log(`${caseName}  get data fail: ${error}`);
+          expect().assertTrue();
+          done();
+        } else {
+          console.log(`${caseName} get netID value : ${JSON.stringify(data[0])}`);
+          connection.getConnectionProperties(data[0]).then((value) => {
+            console.log(`${caseName}  get value success: ${JSON.stringify(value)}`);
+            console.log(caseName + " ifaceName: " + value.ifaceName);
+            console.log(caseName + " mtu: " + value.mtu);
+            console.log(caseName + " netAddrList.length: " + value.netAddrList.length);
+            expect(value.ifaceName == "").assertTrue();
+            expect(value.domain == "").assertTrue();
+            expect(value.mtu == 0).assertTrue();
+            expect(value.netAddrList.length == 0).assertTrue();
+            expect(value.dnsList.length == 0).assertTrue();
+            expect(value.routeList.length == 0).assertTrue();
+            done();
+          }).catch((error) => {
+            console.log(`${caseName}  getConnectionProperties fail: ${error}`);
+            expect().assertFail();
+            done();
+          });
+        }
+      console.log("-----------------------Telephony getConnectionProperties Test end-----------------------");
+	  done();
+    });
+
+    /**
      * @tc.name: Telephony_connection_RouteInfo_0300
      * @tc.desc: RouteInfo Properties  detection
      * @tc.author: kangyuntao
