@@ -32,7 +32,7 @@
               "entity.system.home"
             ],
             "actions": [
-              "action.system.home"
+              "action.system.homeability"
             ]
           }
         ],
