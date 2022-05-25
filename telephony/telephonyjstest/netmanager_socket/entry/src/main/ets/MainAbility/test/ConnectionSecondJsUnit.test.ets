@@ -134,15 +134,12 @@ export default function connectionSecondJsUnit() {
           console.log(`${caseName} get netID value : ${JSON.stringify(data[0])}`);
           connection.getConnectionProperties(data[0]).then((value) => {
             console.log(`${caseName}  get value success: ${JSON.stringify(value)}`);
-            console.log(caseName + " ifaceName: " + value.ifaceName);
+            console.log(caseName + " interfaceName: " + value.interfaceName);
             console.log(caseName + " mtu: " + value.mtu);
-            console.log(caseName + " netAddrList.length: " + value.netAddrList.length);
-            expect(value.ifaceName == "").assertTrue();
-            expect(value.domain == "").assertTrue();
+            console.log(caseName + " domains " + value.domains);
+            expect(value.interfaceName == "").assertTrue();
+            expect(value.domains == "").assertTrue();
             expect(value.mtu == 0).assertTrue();
-            expect(value.netAddrList.length == 0).assertTrue();
-            expect(value.dnsList.length == 0).assertTrue();
-            expect(value.routeList.length == 0).assertTrue();
             done();
           }).catch((error) => {
             console.log(`${caseName}  getConnectionProperties fail: ${error}`);
