@@ -135,14 +135,8 @@ function update(handle, HuksOptions) {
   });
 }
 
-async function publicAgreeFinishAbortFunc(
-  HuksOptionsFinish,
-  thirdInderfaceName
-) {
+async function publicAgreeFinishAbortFunc(HuksOptionsFinish, thirdInderfaceName) {
   if (thirdInderfaceName == 'finish') {
-    console.log(
-      `test befor finish HuksOptionsFinish ${JSON.stringify(HuksOptionsFinish)}`
-    );
     await finish(handle, HuksOptionsFinish)
       .then((data) => {
         console.log(`test finish data ${JSON.stringify(data)}`);
@@ -253,10 +247,7 @@ async function publicAgreeFunc(
 
     await publicAgreeInitFunc(srcKeyAliesSecond, HuksOptions);
     await publicAgreeUpdateFunc(HuksOptions, 2);
-    await publicAgreeFinishAbortFunc(
-      HuksOptionsFinishSecond,
-      thirdInderfaceName
-    );
+    await publicAgreeFinishAbortFunc(HuksOptionsFinishSecond, thirdInderfaceName);
 
     await publicAgreeDeleteFunc(srcKeyAliesFrist, HuksOptions);
     if (thirdInderfaceName == 'finish') {

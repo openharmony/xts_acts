@@ -35,11 +35,9 @@ let HuksOptions63kb = {
 };
 
 describe('SecurityHuksAgreeX25519CallbackJsunit', function () {
-  it('testAgreeX25519Abort63KB001', 0, async function (done) {
-    const srcKeyAliesFirst =
-      'testAgreeX25519Size256Abort63KBAgreeKeyAlias_01_001';
-    const srcKeyAliesSecond =
-      'testAgreeX25519Size256Abort63KBAgreeKeyAlias_02_001';
+  it('testAgreeX25519102', 0, async function (done) {
+    const srcKeyAliesFirst = 'testAgreeX25519Size256Abort63KBAgreeKeyAlias_01_001';
+    const srcKeyAliesSecond = 'testAgreeX25519Size256Abort63KBAgreeKeyAlias_02_001';
     let huksOptionsFinish = {
       properties: new Array(
         HuksKeyAlgX25519.HuksKeySTORAGE,
@@ -57,13 +55,7 @@ describe('SecurityHuksAgreeX25519CallbackJsunit', function () {
       ),
       inData: srcData63Kb,
     };
-    await publicAgreeFunc(
-      srcKeyAliesFirst,
-      srcKeyAliesSecond,
-      HuksOptions63kb,
-      huksOptionsFinish,
-      'abort'
-    );
+    await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'abort');
     done();
   });
 });
