@@ -1887,9 +1887,9 @@ describe('window_test', function () {
             console.log('screenshotTest setScreenActiveModeTest1 getAllScreen src' + src);
             expect(src[0] != null).assertTrue();
             let screenIndex = src[0];
-            screenIndex.setScreenActiveMode(0).then(res => {
-                console.log('screenshotTest setScreenActiveModeTest1 setScreenActiveMode 0 res: ' + res);
-                expect(res).assertTrue();
+            screenIndex.setScreenActiveMode(0).then(() => {
+                console.log('screenshotTest setScreenActiveModeTest1 setScreenActiveMode 0 success ');
+                expect(TRUE_WINDOW).assertTrue()
                 done();
             },(err) => {
                 console.log('screenshotTest setScreenActiveModeTest1 setScreenActiveMode 0 failed: err' + JSON.stringify(err));
@@ -1919,7 +1919,7 @@ describe('window_test', function () {
                 done();
             },(err) => {
                 console.log('screenshotTest setScreenActiveModeTest2 setScreenActiveMode -5 failed: err' + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err.code).assertEqual(-1);
                 done();
             })
         })
