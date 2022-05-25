@@ -480,7 +480,7 @@ describe('KVManagerCallbackTest', function () {
             done();
         }
     })
-F
+
     /**
      * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_1150
      * @tc.name [JS-API8]KVManager.GetKVStore.
