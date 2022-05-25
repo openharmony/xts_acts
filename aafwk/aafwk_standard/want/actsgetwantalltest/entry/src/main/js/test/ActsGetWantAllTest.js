@@ -27,8 +27,57 @@ describe('ActsGetWantTest', function () {
     //  @tc.number: ACTS_GetWant_0100
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
+    //           and then use terminateselfwithresult to return the data (by promise)
     it('ACTS_GetWant_0100', 0, async function (done) {
+        featureAbility.startAbilityForResult({
+            want: {
+                deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                action: "action1",
+                parameters:
+                {
+                    mykey0: 1,
+                    mykey1: [1, 2, 3],
+                    mykey2: "[1, 2, 3]",
+                    mykey3: "str",
+                    mykey4: [false, true, false],
+                    mykey5: ["str", "STR", "helloopenharmony"],
+                },
+            }
+        }).then((data) => {
+            console.info('====> ACTS_GetWant_0100 start ability=====>' + JSON.stringify(data))
+            expect(data.want.deviceId).assertEqual("");
+            expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+            expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+            expect(data.want.action).assertEqual("action1");
+            expect(data.want.parameters.mykey0).assertEqual(1);
+            expect(data.want.parameters.mykey1[0]).assertEqual(1);
+            expect(data.want.parameters.mykey1[1]).assertEqual(2);
+            expect(data.want.parameters.mykey1[2]).assertEqual(3);
+            expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
+            expect(data.want.parameters.mykey3).assertEqual("str");
+            expect(data.want.parameters.mykey4[0]).assertEqual(false);
+            expect(data.want.parameters.mykey4[1]).assertEqual(true);
+            expect(data.want.parameters.mykey4[2]).assertEqual(false);
+            expect(data.want.parameters.mykey5[0]).assertEqual("str");
+            expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+            expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
+            setTimeout(()=>{
+                done();
+            }, TIMEOUT_NUMBER);
+        }).catch((error) => {
+            console.log('ACTS_GetWant_0100 error: ' + JSON.stringify(error))
+            expect.assertFail()
+            done();
+        })
+    })
+
+    //  @tc.number: ACTS_GetWant_0200
+    //  @tc.name: getWant : get want in current ability
+    //  @tc.desc:Start the ability through startabilityforresult,
+    //           and then use terminateselfwithresult to return the data (by callback)
+    it('ACTS_GetWant_0200', 0, async function (done) {
         featureAbility.startAbilityForResult({
             want: {
                 deviceId: "",
@@ -47,7 +96,7 @@ describe('ActsGetWantTest', function () {
             }
         },
             (err, data) => {
-                console.info('====> ACTS_StartAbilityForResult_0100 start ability=====>' + JSON.stringify(data))
+                console.info('====> ACTS_GetWant_0200 start ability=====>' + JSON.stringify(data))
                 expect(data.want.deviceId).assertEqual("");
                 expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
                 expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
@@ -70,10 +119,70 @@ describe('ActsGetWantTest', function () {
             })
     })
 
+    //  @tc.number: ACTS_GetWant_0300
+    //  @tc.name: getWant : get want in current ability
+    //  @tc.desc:Start the ability through startabilityforresult,
+    //           and then use terminateselfwithresult to return the data (by promise)
+    it('ACTS_GetWant_0300', 0, async function (done) {
+        featureAbility.startAbilityForResult({
+            want:
+            {
+                deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                action: "action2",
+                entities: ["entity1", "entity2"],
+                type: "MIMETYPE",
+                uri: "key={true,true,false}",
+                flags: wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT,
+                parameters:
+                {
+                    mykey0: 0.1,
+                    mykey1: [0.1, 0.2, 0.3],
+                    mykey2: "[1, 2, 3]",
+                    mykey3: "str",
+                    mykey4: [false, true, false],
+                    mykey5: ["str", "!@#$%", "helloopenharmony"],
+                },
+            },
+        }).then((data) => {
+            console.info('====> ACTS_GetWant_0300 start ability=====>' + JSON.stringify(data))
+            expect(data.want.deviceId).assertEqual("");
+            expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+            expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+            expect(data.want.action).assertEqual("action2");
+            expect(data.want.entities[0]).assertEqual("entity1");
+            expect(data.want.entities[1]).assertEqual("entity2");
+            expect(data.want.type).assertEqual("MIMETYPE");
+            expect(data.want.uri).assertEqual("key={true,true,false}");
+            expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT);
+            expect(data.want.parameters.mykey0).assertEqual(0.1);
+            expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+            expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+            expect(data.want.parameters.mykey1[2]).assertEqual(0.3);
+            expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
+            expect(data.want.parameters.mykey3).assertEqual("str");
+            expect(data.want.parameters.mykey4[0]).assertEqual(false);
+            expect(data.want.parameters.mykey4[1]).assertEqual(true);
+            expect(data.want.parameters.mykey4[2]).assertEqual(false);
+            expect(data.want.parameters.mykey5[0]).assertEqual("str");
+            expect(data.want.parameters.mykey5[1]).assertEqual("!@#$%");
+            expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
+            console.info('====> ACTS_GetWant_0300 before done=====>')
+            setTimeout(()=>{
+                done();
+            }, TIMEOUT_NUMBER);
+        }).catch((error) => {
+            console.log('ACTS_GetWant_0300 error: ' + JSON.stringify(error))
+            expect.assertFail()
+            done();
+        })
+    })
+
     //  @tc.number: ACTS_GetWant_0400
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
+    //           and then use terminateselfwithresult to return the data (by callback)
     it('ACTS_GetWant_0400', 0, async function (done) {
         featureAbility.startAbilityForResult({
             want:
@@ -98,7 +207,7 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
-                console.info('====> ACTS_StartAbilityForResult_0400 start ability=====>' + JSON.stringify(data))
+                console.info('====> ACTS_GetWant_0400 start ability=====>' + JSON.stringify(data))
                 expect(data.want.deviceId).assertEqual("");
                 expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
                 expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
@@ -120,7 +229,7 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[0]).assertEqual("str");
                 expect(data.want.parameters.mykey5[1]).assertEqual("!@#$%");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
-                console.info('====> before done=====>')
+                console.info('====> ACTS_GetWant_0400 before done=====>')
                 setTimeout(()=>{
                     done();
                 }, TIMEOUT_NUMBER);
@@ -130,8 +239,67 @@ describe('ActsGetWantTest', function () {
     //  @tc.number: ACTS_GetWant_0500
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
+    //           and then use terminateselfwithresult to return the data (by promise)
     it('ACTS_GetWant_0500', 0, async function (done) {
+        featureAbility.startAbilityForResult({
+            want:
+            {
+                deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                action: "action1",
+                entities: ["entity1"],
+                type: "MIMETYPE",
+                uri: "key={true,true,false}",
+                flags: wantConstant.Flags.FLAG_ABILITY_FORM_ENABLED,
+                parameters:
+                {
+                    mykey0: 0.1,
+                    mykey1: [0.1, 0.2, 0.0000000003],
+                    mykey2: "[a, b, c]",
+                    mykey3: "str",
+                    mykey4: [false, true, false],
+                    mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
+                },
+            },
+        }).then((data) => {
+            console.info('====> ACTS_GetWant_0500 start ability=====>' + JSON.stringify(data))
+            expect(data.want.deviceId).assertEqual("");
+            expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+            expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+            expect(data.want.action).assertEqual("action1");
+            expect(data.want.entities[0]).assertEqual("entity1");
+            expect(data.want.type).assertEqual("MIMETYPE");
+            expect(data.want.uri).assertEqual("key={true,true,false}");
+            expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORM_ENABLED);
+            expect(data.want.parameters.mykey0).assertEqual(0.1);
+            expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+            expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+            expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+            expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+            expect(data.want.parameters.mykey3).assertEqual("str");
+            expect(data.want.parameters.mykey4[0]).assertEqual(false);
+            expect(data.want.parameters.mykey4[1]).assertEqual(true);
+            expect(data.want.parameters.mykey4[2]).assertEqual(false);
+            expect(data.want.parameters.mykey5[0]).assertEqual("str");
+            expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+            expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+            console.info('====> ACTS_GetWant_0500 before done=====>')
+            setTimeout(()=>{
+                done();
+            }, TIMEOUT_NUMBER);
+        }).catch((error) => {
+            console.log('ACTS_GetWant_0500 error: ' + JSON.stringify(error))
+            expect.assertFail()
+            done();
+        })
+    })
+
+    //  @tc.number: ACTS_GetWant_0600
+    //  @tc.name: getWant : get want in current ability
+    //  @tc.desc:Start the ability through startabilityforresult,
+    //           and then use terminateselfwithresult to return the data (by callback)
+    it('ACTS_GetWant_0600', 0, async function (done) {
         featureAbility.startAbilityForResult({
             want:
             {
@@ -155,7 +323,7 @@ describe('ActsGetWantTest', function () {
             },
         },
             (err, data) => {
-                console.info('====> ACTS_StartAbilityForResult_0500 start ability=====>' + JSON.stringify(data))
+                console.info('====> ACTS_GetWant_0600 start ability=====>' + JSON.stringify(data))
                 expect(data.want.deviceId).assertEqual("");
                 expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
                 expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
@@ -176,17 +344,77 @@ describe('ActsGetWantTest', function () {
                 expect(data.want.parameters.mykey5[0]).assertEqual("str");
                 expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                 expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                console.info('====> before done=====>')
+                console.info('====> ACTS_GetWant_0600 before done=====>')
                 setTimeout(()=>{
                     done();
                 }, TIMEOUT_NUMBER);
             })
     })
-    //  @tc.number: ACTS_GetWant_0600
+
+    //  @tc.number: ACTS_GetWant_0700
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
-    it('ACTS_GetWant_0600', 0, async function (done) {
+    //           and then use terminateselfwithresult to return the data (by promise)
+    it('ACTS_GetWant_0700', 0, async function (done) {
+        featureAbility.startAbilityForResult({
+            want:
+            {
+                deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                action: "action1",
+                entities: ["entity1"],
+                type: "MIMETYPE",
+                uri: "key={true,true,false}",
+                flags: wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
+                parameters:
+                {
+                    mykey0: 0.1,
+                    mykey1: [0.1, 0.2, 0.0000000003],
+                    mykey2: "[a, b, c]",
+                    mykey3: "str",
+                    mykey4: [false, true, false],
+                    mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
+                },
+            },
+        }).then((data) => {
+            console.info('====> ACTS_GetWant_0700 start ability=====>' + JSON.stringify(data))
+            expect(data.want.deviceId).assertEqual("");
+            expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+            expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+            expect(data.want.action).assertEqual("action1");
+            expect(data.want.entities[0]).assertEqual("entity1");
+            expect(data.want.type).assertEqual("MIMETYPE");
+            expect(data.want.uri).assertEqual("key={true,true,false}");
+            expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION);
+            expect(data.want.parameters.mykey0).assertEqual(0.1);
+            expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+            expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+            expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+            expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+            expect(data.want.parameters.mykey3).assertEqual("str");
+            expect(data.want.parameters.mykey4[0]).assertEqual(false);
+            expect(data.want.parameters.mykey4[1]).assertEqual(true);
+            expect(data.want.parameters.mykey4[2]).assertEqual(false);
+            expect(data.want.parameters.mykey5[0]).assertEqual("str");
+            expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+            expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+            console.info('====> ACTS_GetWant_0700 before done=====>')
+            setTimeout(()=>{
+                done();
+            }, TIMEOUT_NUMBER);
+        }).catch((error) => {
+            console.log('ACTS_GetWant_0700 error: ' + JSON.stringify(error))
+            expect.assertFail()
+            done();
+        })
+    })
+
+    //  @tc.number: ACTS_GetWant_0800
+    //  @tc.name: getWant : get want in current ability
+    //  @tc.desc:Start the ability through startabilityforresult,
+    //           and then use terminateselfwithresult to return the data (by callback)
+    it('ACTS_GetWant_0800', 0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
                 {
@@ -197,7 +425,7 @@ describe('ActsGetWantTest', function () {
                     entities: ["entity1"],
                     type: "MIMETYPE",
                     uri: "key={true,true,false}",
-                    flags: wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION ,
+                    flags: wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
                     parameters:
                     {
                         mykey0: 0.1,
@@ -210,7 +438,7 @@ describe('ActsGetWantTest', function () {
                 },
             },
                 (err, data) => {
-                    console.info('====> ACTS_StartAbilityForResult_0600 start ability=====>' + JSON.stringify(data))
+                    console.info('====> ACTS_GetWant_0800 start ability=====>' + JSON.stringify(data))
                     expect(data.want.deviceId).assertEqual("");
                     expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
                     expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
@@ -231,124 +459,17 @@ describe('ActsGetWantTest', function () {
                     expect(data.want.parameters.mykey5[0]).assertEqual("str");
                     expect(data.want.parameters.mykey5[1]).assertEqual("STR");
                     expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
+                    console.info('====> ACTS_GetWant_0800 before done=====>')
                     setTimeout(()=>{
                         done();
                     }, TIMEOUT_NUMBER);
                 })
         })
-    //  @tc.number: ACTS_GetWant_0700
-    //  @tc.name: getWant : get want in current ability
-    //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
-    it('ACTS_GetWant_0700', 0, async function (done) {
-            featureAbility.startAbilityForResult({
-                want:
-                {
-                    deviceId: "",
-                    bundleName: "com.example.actsgetwantalltesthap",
-                    abilityName: "com.example.actsgetwantalltesthap.MainAbility",
-                    action: "action1",
-                    entities: ["entity1"],
-                    type: "MIMETYPE",
-                    uri: "key={true,true,false}",
-                    flags: wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION ,
-                    parameters:
-                    {
-                        mykey0: 0.1,
-                        mykey1: [0.1, 0.2, 0.0000000003],
-                        mykey2: "[a, b, c]",
-                        mykey3: "str",
-                        mykey4: [false, true, false],
-                        mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
-                    },
-                },
-            },
-                (err, data) => {
-                    console.info('====> ACTS_StartAbilityForResult_0700 start ability=====>' + JSON.stringify(data))
-                    expect(data.want.deviceId).assertEqual("");
-                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                    expect(data.want.action).assertEqual("action1");
-                    expect(data.want.entities[0]).assertEqual("entity1");
-                    expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION);
-                    expect(data.want.parameters.mykey0).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                    expect(data.want.parameters.mykey3).assertEqual("str");
-                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    setTimeout(()=>{
-                        done();
-                    }, TIMEOUT_NUMBER);
-                })
-        })
-    //  @tc.number: ACTS_GetWant_0800
-    //  @tc.name: getWant : get want in current ability
-    //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
-    it('ACTS_GetWant_0800', 0, async function (done) {
-            featureAbility.startAbilityForResult({
-                want:
-                {
-                    deviceId: "",
-                    bundleName: "com.example.actsgetwantalltesthap",
-                    abilityName: "com.example.actsgetwantalltesthap.MainAbility",
-                    action: "action1",
-                    entities: ["entity1"],
-                    type: "MIMETYPE",
-                    uri: "key={true,true,false}",
-                    parameters:
-                    {
-                        mykey0: 0.1,
-                        mykey1: [0.1, 0.2, 0.0000000003],
-                        mykey2: "[a, b, c]",
-                        mykey3: "str",
-                        mykey4: [false, true, false],
-                        mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
-                    },
-                },
-            },
-                (err, data) => {
-                    console.info('====> ACTS_StartAbilityForResult_0800 start ability=====>' + JSON.stringify(data))
-                    expect(data.want.deviceId).assertEqual("");
-                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                    expect(data.want.action).assertEqual("action1");
-                    expect(data.want.entities[0]).assertEqual("entity1");
-                    expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.parameters.mykey0).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                    expect(data.want.parameters.mykey3).assertEqual("str");
-                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    setTimeout(()=>{
-                        done();
-                    }, TIMEOUT_NUMBER);
-                })
-        })
+
     //  @tc.number: ACTS_GetWant_0900
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
+    //           and then use terminateselfwithresult to return the data (by promise)
     it('ACTS_GetWant_0900', 0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
@@ -360,7 +481,7 @@ describe('ActsGetWantTest', function () {
                     entities: ["entity1"],
                     type: "MIMETYPE",
                     uri: "key={true,true,false}",
-                    flags: wantConstant.Flags.FLAG_NOT_OHOS_COMPONENT ,
+                    flags: wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION,
                     parameters:
                     {
                         mykey0: 0.1,
@@ -371,92 +492,99 @@ describe('ActsGetWantTest', function () {
                         mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
                     },
                 },
-            },
-                (err, data) => {
-                    console.info('====> ACTS_StartAbilityForResult_0900 start ability=====>' + JSON.stringify(data))
-                    expect(data.want.deviceId).assertEqual("");
-                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                    expect(data.want.action).assertEqual("action1");
-                    expect(data.want.entities[0]).assertEqual("entity1");
-                    expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_NOT_OHOS_COMPONENT);
-                    expect(data.want.parameters.mykey0).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                    expect(data.want.parameters.mykey3).assertEqual("str");
-                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    setTimeout(()=>{
-                        done();
-                    }, TIMEOUT_NUMBER);
-                })
+            }).then((data) => {
+                console.info('====> ACTS_GetWant_0900 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION);
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_0900 before done=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            }).catch((error) => {
+                console.log('ACTS_GetWant_0900 error: ' + JSON.stringify(error))
+                expect.assertFail()
+                done();
+            })
         })
+
     //  @tc.number: ACTS_GetWant_1000
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
+    //           and then use terminateselfwithresult to return the data (by callback)
     it('ACTS_GetWant_1000', 0, async function (done) {
-            featureAbility.startAbilityForResult({
-                want:
+        featureAbility.startAbilityForResult({
+            want:
+            {
+                deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                action: "action1",
+                entities: ["entity1"],
+                type: "MIMETYPE",
+                uri: "key={true,true,false}",
+                flags: wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION,
+                parameters:
                 {
-                    deviceId: "",
-                    bundleName: "com.example.actsgetwantalltesthap",
-                    abilityName: "com.example.actsgetwantalltesthap.MainAbility",
-                    action: "action1",
-                    entities: ["entity1"],
-                    type: "MIMETYPE",
-                    uri: "key={true,true,false}",
-                    parameters:
-                    {
-                        mykey0: 0.1,
-                        mykey1: [0.1, 0.2, 0.0000000003],
-                        mykey2: "[a, b, c]",
-                        mykey3: "str",
-                        mykey4: [false, true, false],
-                        mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
-                    },
+                    mykey0: 0.1,
+                    mykey1: [0.1, 0.2, 0.0000000003],
+                    mykey2: "[a, b, c]",
+                    mykey3: "str",
+                    mykey4: [false, true, false],
+                    mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
                 },
             },
-                (err, data) => {
-                    console.info('====> ACTS_StartAbilityForResult_1000 start ability=====>' + JSON.stringify(data))
-                    expect(data.want.deviceId).assertEqual("");
-                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                    expect(data.want.action).assertEqual("action1");
-                    expect(data.want.entities[0]).assertEqual("entity1");
-                    expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.parameters.mykey0).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                    expect(data.want.parameters.mykey3).assertEqual("str");
-                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done=====>')
-                    setTimeout(()=>{
-                        done();
-                    }, TIMEOUT_NUMBER);
-                })
-        })
+        },
+            (err, data) => {
+                console.info('====> ACTS_GetWant_1000 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION);
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_1000 before done=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            })
+    })
+
     //  @tc.number: ACTS_GetWant_1100
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
+    //           and then use terminateselfwithresult to return the data (by promise)
     it('ACTS_GetWant_1100', 0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
@@ -478,93 +606,96 @@ describe('ActsGetWantTest', function () {
                         mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
                     },
                 },
-            },
-                (err, data) => {
-                    console.info('====> ACTS_StartAbilityForResult_1100 start ability=====>' + JSON.stringify(data))
-                    expect(data.want.deviceId).assertEqual("");
-                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                    expect(data.want.action).assertEqual("action1");
-                    expect(data.want.entities[0]).assertEqual("entity1");
-                    expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.parameters.mykey0).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                    expect(data.want.parameters.mykey3).assertEqual("str");
-                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> before done.=====>')
-                    setTimeout(()=>{
-                        done();
-                    }, TIMEOUT_NUMBER);
-                })
+            }).then((data) => {
+                console.info('====> ACTS_GetWant_1100 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_1100 before done=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            }).catch((error) => {
+                console.log('ACTS_GetWant_1100 error: ' + JSON.stringify(error))
+                expect.assertFail()
+                done();
+            })
         })
+
     //  @tc.number: ACTS_GetWant_1200
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
+    //           and then use terminateselfwithresult to return the data (by callback)
     it('ACTS_GetWant_1200', 0, async function (done) {
-            featureAbility.startAbilityForResult({
-                want:
+        featureAbility.startAbilityForResult({
+            want:
+            {
+                deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                action: "action1",
+                entities: ["entity1"],
+                type: "MIMETYPE",
+                uri: "key={true,true,false}",
+                parameters:
                 {
-                    deviceId: "",
-                    bundleName: "com.example.actsgetwantalltesthap",
-                    abilityName: "com.example.actsgetwantalltesthap.MainAbility",
-                    action: "action1",
-                    entities: ["entity1"],
-                    type: "MIMETYPE",
-                    uri: "key={true,true,false}",
-                    flags: wantConstant.Flags.FLAG_ABILITYSLICE_MULTI_DEVICE   ,
-                    parameters:
-                    {
-                        mykey0: 0.1,
-                        mykey1: [0.1, 0.2, 0.0000000003],
-                        mykey2: "[a, b, c]",
-                        mykey3: "str",
-                        mykey4: [false, true, false],
-                        mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
-                    },
+                    mykey0: 0.1,
+                    mykey1: [0.1, 0.2, 0.0000000003],
+                    mykey2: "[a, b, c]",
+                    mykey3: "str",
+                    mykey4: [false, true, false],
+                    mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
                 },
             },
-                (err, data) => {
-                    console.info('====> ACTS_StartAbilityForResult_1200 start ability=====>' + JSON.stringify(data))
-                    expect(data.want.deviceId).assertEqual("");
-                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                    expect(data.want.action).assertEqual("action1");
-                    expect(data.want.entities[0]).assertEqual("entity1");
-                    expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITYSLICE_MULTI_DEVICE  );
-                    expect(data.want.parameters.mykey0).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                    expect(data.want.parameters.mykey3).assertEqual("str");
-                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> setTimeout before done.=====>')
-                    setTimeout(()=>{
-                        done();
-                    }, TIMEOUT_NUMBER);
-                })
-        })
+        },
+            (err, data) => {
+                console.info('====> ACTS_GetWant_1200 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_1200 before done=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            })
+    })
+
     //  @tc.number: ACTS_GetWant_1300
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
+    //           and then use terminateselfwithresult to return the data (by promise)
     it('ACTS_GetWant_1300', 0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
@@ -576,7 +707,7 @@ describe('ActsGetWantTest', function () {
                     entities: ["entity1"],
                     type: "MIMETYPE",
                     uri: "key={true,true,false}",
-                    flags: wantConstant.Flags.FLAG_START_FOREGROUND_ABILITY   ,
+                    flags: wantConstant.Flags.FLAG_NOT_OHOS_COMPONENT,
                     parameters:
                     {
                         mykey0: 0.1,
@@ -587,40 +718,100 @@ describe('ActsGetWantTest', function () {
                         mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
                     },
                 },
-            },
-                (err, data) => {
-                    console.info('====> ACTS_StartAbilityForResult_1300 start ability=====>' + JSON.stringify(data))
-                    expect(data.want.deviceId).assertEqual("");
-                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                    expect(data.want.action).assertEqual("action1");
-                    expect(data.want.entities[0]).assertEqual("entity1");
-                    expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_START_FOREGROUND_ABILITY );
-                    expect(data.want.parameters.mykey0).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                    expect(data.want.parameters.mykey3).assertEqual("str");
-                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> setTimeout before done.=====>')
-                    setTimeout(()=>{
-                        done();
-                    }, TIMEOUT_NUMBER);
-                })
+            }).then((data) => {
+                console.info('====> ACTS_GetWant_1300 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_NOT_OHOS_COMPONENT);
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_1300 before done=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            }).catch((error) => {
+                console.log('ACTS_GetWant_1300 error: ' + JSON.stringify(error))
+                expect.assertFail()
+                done();
+            })
         })
+
     //  @tc.number: ACTS_GetWant_1400
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
+    //           and then use terminateselfwithresult to return the data (by callback)
     it('ACTS_GetWant_1400', 0, async function (done) {
+        featureAbility.startAbilityForResult({
+            want:
+            {
+                deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                action: "action1",
+                entities: ["entity1"],
+                type: "MIMETYPE",
+                uri: "key={true,true,false}",
+                flags: wantConstant.Flags.FLAG_NOT_OHOS_COMPONENT,
+                parameters:
+                {
+                    mykey0: 0.1,
+                    mykey1: [0.1, 0.2, 0.0000000003],
+                    mykey2: "[a, b, c]",
+                    mykey3: "str",
+                    mykey4: [false, true, false],
+                    mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
+                },
+            },
+        },
+            (err, data) => {
+                console.info('====> ACTS_GetWant_1400 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_NOT_OHOS_COMPONENT);
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_1400 before done=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            })
+    })
+
+    //  @tc.number: ACTS_GetWant_1500
+    //  @tc.name: getWant : get want in current ability
+    //  @tc.desc:Start the ability through startabilityforresult,
+    //           and then use terminateselfwithresult to return the data (by promise)
+    it('ACTS_GetWant_1500', 0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
                 {
@@ -631,6 +822,7 @@ describe('ActsGetWantTest', function () {
                     entities: ["entity1"],
                     type: "MIMETYPE",
                     uri: "key={true,true,false}",
+                    flags: wantConstant.Flags.FLAG_ABILITYSLICE_MULTI_DEVICE,
                     parameters:
                     {
                         mykey0: 0.1,
@@ -641,40 +833,215 @@ describe('ActsGetWantTest', function () {
                         mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
                     },
                 },
-            },
-                (err, data) => {
-                    console.info('====> ACTS_StartAbilityForResult_1400 start ability=====>' + JSON.stringify(data))
-                    expect(data.want.deviceId).assertEqual("");
-                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                    expect(data.want.action).assertEqual("action1");
-                    expect(data.want.entities[0]).assertEqual("entity1");
-                    expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.parameters.mykey0).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                    expect(data.want.parameters.mykey3).assertEqual("str");
-                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> setTimeout before done.=====>')
-                    setTimeout(()=>{
-                        done();
-                    }, TIMEOUT_NUMBER);
-                })
+            }).then((data) => {
+                console.info('====> ACTS_GetWant_1500 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITYSLICE_MULTI_DEVICE  );
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_1500 setTimeout before done.=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            }).catch((error) => {
+                console.log('ACTS_GetWant_1500 error: ' + JSON.stringify(error))
+                expect.assertFail()
+                done();
+            })
         })
 
     //  @tc.number: ACTS_GetWant_1600
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
+    //           and then use terminateselfwithresult to return the data (by callback)
     it('ACTS_GetWant_1600', 0, async function (done) {
+        featureAbility.startAbilityForResult({
+            want:
+            {
+                deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                action: "action1",
+                entities: ["entity1"],
+                type: "MIMETYPE",
+                uri: "key={true,true,false}",
+                flags: wantConstant.Flags.FLAG_ABILITYSLICE_MULTI_DEVICE,
+                parameters:
+                {
+                    mykey0: 0.1,
+                    mykey1: [0.1, 0.2, 0.0000000003],
+                    mykey2: "[a, b, c]",
+                    mykey3: "str",
+                    mykey4: [false, true, false],
+                    mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
+                },
+            },
+        },
+            (err, data) => {
+                console.info('====> ACTS_GetWant_1600 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITYSLICE_MULTI_DEVICE  );
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_1600 setTimeout before done.=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            })
+    })
+
+    //  @tc.number: ACTS_GetWant_1700
+    //  @tc.name: getWant : get want in current ability
+    //  @tc.desc:Start the ability through startabilityforresult,
+    //           and then use terminateselfwithresult to return the data (by promise)
+    it('ACTS_GetWant_1700', 0, async function (done) {
+            featureAbility.startAbilityForResult({
+                want:
+                {
+                    deviceId: "",
+                    bundleName: "com.example.actsgetwantalltesthap",
+                    abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                    action: "action1",
+                    entities: ["entity1"],
+                    type: "MIMETYPE",
+                    uri: "key={true,true,false}",
+                    flags: wantConstant.Flags.FLAG_START_FOREGROUND_ABILITY,
+                    parameters:
+                    {
+                        mykey0: 0.1,
+                        mykey1: [0.1, 0.2, 0.0000000003],
+                        mykey2: "[a, b, c]",
+                        mykey3: "str",
+                        mykey4: [false, true, false],
+                        mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
+                    },
+                },
+            }).then((data) => {
+                console.info('====> ACTS_GetWant_1700 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_START_FOREGROUND_ABILITY );
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_1700 setTimeout before done.=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            }).catch((error) => {
+                console.log('ACTS_GetWant_1700 error: ' + JSON.stringify(error))
+                expect.assertFail()
+                done();
+            })
+        })
+
+    //  @tc.number: ACTS_GetWant_1800
+    //  @tc.name: getWant : get want in current ability
+    //  @tc.desc:Start the ability through startabilityforresult,
+    //           and then use terminateselfwithresult to return the data (by callback)
+    it('ACTS_GetWant_1800', 0, async function (done) {
+        featureAbility.startAbilityForResult({
+            want:
+            {
+                deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                action: "action1",
+                entities: ["entity1"],
+                type: "MIMETYPE",
+                uri: "key={true,true,false}",
+                flags: wantConstant.Flags.FLAG_START_FOREGROUND_ABILITY,
+                parameters:
+                {
+                    mykey0: 0.1,
+                    mykey1: [0.1, 0.2, 0.0000000003],
+                    mykey2: "[a, b, c]",
+                    mykey3: "str",
+                    mykey4: [false, true, false],
+                    mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
+                },
+            },
+        },
+            (err, data) => {
+                console.info('====> ACTS_GetWant_1800 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_START_FOREGROUND_ABILITY );
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_1800 setTimeout before done.=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            })
+    })
+
+    //  @tc.number: ACTS_GetWant_1900
+    //  @tc.name: getWant : get want in current ability
+    //  @tc.desc:Start the ability through startabilityforresult,
+    //           and then use terminateselfwithresult to return the data (by promise)
+    it('ACTS_GetWant_1900', 0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
                 {
@@ -696,40 +1063,100 @@ describe('ActsGetWantTest', function () {
                         mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
                     },
                 },
-            },
-                (err, data) => {
-                    console.info('====> ACTS_StartAbilityForResult_1600 start ability=====>' + JSON.stringify(data))
-                    expect(data.want.deviceId).assertEqual("");
-                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                    expect(data.want.action).assertEqual("action1");
-                    expect(data.want.entities[0]).assertEqual("entity1");
-                    expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_INSTALL_WITH_BACKGROUND_MODE);
-                    expect(data.want.parameters.mykey0).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                    expect(data.want.parameters.mykey3).assertEqual("str");
-                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> setTimeout before done.=====>')
-                    setTimeout(()=>{
-                        done();
-                    }, TIMEOUT_NUMBER);
-                })
+            }).then((data) => {
+                console.info('====> ACTS_GetWant_1900 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_INSTALL_WITH_BACKGROUND_MODE);
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_1900 setTimeout before done.=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            }).catch((error) => {
+                console.log('ACTS_GetWant_1900 error: ' + JSON.stringify(error))
+                expect.assertFail()
+                done();
+            })
         })
-    //  @tc.number: ACTS_GetWant_1700
+
+    //  @tc.number: ACTS_GetWant_2000
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
-    it('ACTS_GetWant_1700', 0, async function (done) {
+    //           and then use terminateselfwithresult to return the data (by callback)
+    it('ACTS_GetWant_2000', 0, async function (done) {
+        featureAbility.startAbilityForResult({
+            want:
+            {
+                deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                action: "action1",
+                entities: ["entity1"],
+                type: "MIMETYPE",
+                uri: "key={true,true,false}",
+                flags: wantConstant.Flags.FLAG_INSTALL_WITH_BACKGROUND_MODE,
+                parameters:
+                {
+                    mykey0: 0.1,
+                    mykey1: [0.1, 0.2, 0.0000000003],
+                    mykey2: "[a, b, c]",
+                    mykey3: "str",
+                    mykey4: [false, true, false],
+                    mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
+                },
+            },
+        },
+            (err, data) => {
+                console.info('====> ACTS_GetWant_2000 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_INSTALL_WITH_BACKGROUND_MODE);
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_2000 setTimeout before done.=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            })
+    })
+
+    //  @tc.number: ACTS_GetWant_2100
+    //  @tc.name: getWant : get want in current ability
+    //  @tc.desc:Start the ability through startabilityforresult,
+    //           and then use terminateselfwithresult to return the data (by promise)
+    it('ACTS_GetWant_2100', 0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
                 {
@@ -751,40 +1178,100 @@ describe('ActsGetWantTest', function () {
                         mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
                     },
                 },
-            },
-                (err, data) => {
-                    console.info('====> ACTS_StartAbilityForResult_1700 start ability=====>' + JSON.stringify(data))
-                    expect(data.want.deviceId).assertEqual("");
-                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                    expect(data.want.action).assertEqual("action1");
-                    expect(data.want.entities[0]).assertEqual("entity1");
-                    expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_CLEAR_MISSION);
-                    expect(data.want.parameters.mykey0).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                    expect(data.want.parameters.mykey3).assertEqual("str");
-                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> setTimeout before done.=====>')
-                    setTimeout(()=>{
-                        done();
-                    }, TIMEOUT_NUMBER);
-                })
+            }).then((data) => {
+                console.info('====> ACTS_GetWant_2100 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_CLEAR_MISSION);
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_2100 setTimeout before done.=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            }).catch((error) => {
+                console.log('ACTS_GetWant_2100 error: ' + JSON.stringify(error))
+                expect.assertFail()
+                done();
+            })
         })
-    //  @tc.number: ACTS_GetWant_1800
+
+    //  @tc.number: ACTS_GetWant_2200
     //  @tc.name: getWant : get want in current ability
     //  @tc.desc:Start the ability through startabilityforresult,
-    //           and then use terminateselfwithresult to return the data
-    it('ACTS_GetWant_1800', 0, async function (done) {
+    //           and then use terminateselfwithresult to return the data (by callback)
+    it('ACTS_GetWant_2200', 0, async function (done) {
+        featureAbility.startAbilityForResult({
+            want:
+            {
+                deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                action: "action1",
+                entities: ["entity1"],
+                type: "MIMETYPE",
+                uri: "key={true,true,false}",
+                flags: wantConstant.Flags.FLAG_ABILITY_CLEAR_MISSION,
+                parameters:
+                {
+                    mykey0: 0.1,
+                    mykey1: [0.1, 0.2, 0.0000000003],
+                    mykey2: "[a, b, c]",
+                    mykey3: "str",
+                    mykey4: [false, true, false],
+                    mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
+                },
+            },
+        },
+            (err, data) => {
+                console.info('====> ACTS_GetWant_2200 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_CLEAR_MISSION);
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_2200 setTimeout before done.=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            })
+    })
+
+    //  @tc.number: ACTS_GetWant_2300
+    //  @tc.name: getWant : get want in current ability
+    //  @tc.desc:Start the ability through startabilityforresult,
+    //           and then use terminateselfwithresult to return the data (by promise)
+    it('ACTS_GetWant_2300', 0, async function (done) {
             featureAbility.startAbilityForResult({
                 want:
                 {
@@ -806,78 +1293,212 @@ describe('ActsGetWantTest', function () {
                         mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
                     },
                 },
-            },
-                (err, data) => {
-                    console.info('====> ACTS_StartAbilityForResult_1800 start ability=====>' + JSON.stringify(data))
-                    expect(data.want.deviceId).assertEqual("");
-                    expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-                    expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-                    expect(data.want.action).assertEqual("action1");
-                    expect(data.want.entities[0]).assertEqual("entity1");
-                    expect(data.want.type).assertEqual("MIMETYPE");
-                    expect(data.want.uri).assertEqual("key={true,true,false}");
-                    expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_NEW_MISSION);
-                    expect(data.want.parameters.mykey0).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-                    expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-                    expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
-                    expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
-                    expect(data.want.parameters.mykey3).assertEqual("str");
-                    expect(data.want.parameters.mykey4[0]).assertEqual(false);
-                    expect(data.want.parameters.mykey4[1]).assertEqual(true);
-                    expect(data.want.parameters.mykey4[2]).assertEqual(false);
-                    expect(data.want.parameters.mykey5[0]).assertEqual("str");
-                    expect(data.want.parameters.mykey5[1]).assertEqual("STR");
-                    expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
-                    console.info('====> setTimeout before done.=====>')
-                    setTimeout(()=>{
-                        done();
-                    }, TIMEOUT_NUMBER);
-                })
+            }).then((data) => {
+                console.info('====> ACTS_GetWant_2300 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_NEW_MISSION);
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_2300 setTimeout before done.=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            }).catch((error) => {
+                console.log('ACTS_GetWant_2300 error: ' + JSON.stringify(error))
+                expect.assertFail()
+                done();
+            })
         })
-        
-     /*
-     * @tc.number  ACTS_GetWant_2000
-     * @tc.name    Misconfigured bundlename validation
-     * @tc.desc    Function test
-     * @tc.level   0
-     */
-    it("ACTS_GetWant_2000",0, async function(done){
-        console.info("------------------start ACTS_GetWant_2000-------------------");
-        try{
-            featureAbility.startAbilityForResult({
-                want:
+
+    //  @tc.number: ACTS_GetWant_2400
+    //  @tc.name: getWant : get want in current ability
+    //  @tc.desc:Start the ability through startabilityforresult,
+    //           and then use terminateselfwithresult to return the data (by callback)
+    it('ACTS_GetWant_2400', 0, async function (done) {
+        featureAbility.startAbilityForResult({
+            want:
+            {
+                deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                action: "action1",
+                entities: ["entity1"],
+                type: "MIMETYPE",
+                uri: "key={true,true,false}",
+                flags: wantConstant.Flags.FLAG_ABILITY_NEW_MISSION,
+                parameters:
                 {
-                    deviceId: "",
-                    bundleName: "com.example.actsgetwantalltesthap",
-                    abilityName: "com.example.actsgetwantalltesthap.MainAbility",
-                    action: "action2",
-                    entities: ["entity1", "entity2"],
-                    type: "MIMETYPE",
-                    uri: "key={true,true,false}",
-                    flags: wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT,
-                    parameters:
-                    {
-                        mykey0: 0.1,
-                        mykey1: [0.1, 0.2, 0.3],
-                        mykey2: "[1, 2, 3]",
-                        mykey3: "str",
-                        mykey4: [false, true, false],
-                        mykey5: ["str", "test123", "helloopenharmony"],
-                    },
+                    mykey0: 0.1,
+                    mykey1: [0.1, 0.2, 0.0000000003],
+                    mykey2: "[a, b, c]",
+                    mykey3: "str",
+                    mykey4: [false, true, false],
+                    mykey5: ["str", "STR", "helloopenharmonyhelloopenharmonyhelloopenharmony"],
                 },
             },
-                (err, data) => {
-                    checkOnAbilityResult(data);
-                    console.info('====> setTimeout before done.=====>')
-                    setTimeout(()=>{
-                        done();
-                    }, TIMEOUT_NUMBER);
-                })
-        }catch(error){
-            console.log("ACTS_GetWant_2000 : error = " + error);
-        }
-        console.log('ACTS_GetWant_2000 end');
+        },
+            (err, data) => {
+                console.info('====> ACTS_GetWant_2400 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action1");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_NEW_MISSION);
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.0000000003);
+                expect(data.want.parameters.mykey2).assertEqual("[a, b, c]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("STR");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmonyhelloopenharmonyhelloopenharmony");
+                console.info('====> ACTS_GetWant_2400 setTimeout before done.=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            })
+    })
+        
+     /*
+     * @tc.number  ACTS_GetWant_2500
+     * @tc.name    Misconfigured bundlename validation
+     * @tc.desc    Function test (by promise)
+     * @tc.level   0
+     */
+    it("ACTS_GetWant_2500",0, async function(done){
+        featureAbility.startAbilityForResult({
+            want:
+            {
+                deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                action: "action2",
+                entities: ["entity1", "entity2"],
+                type: "MIMETYPE",
+                uri: "key={true,true,false}",
+                flags: wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT,
+                parameters:
+                {
+                    mykey0: 0.1,
+                    mykey1: [0.1, 0.2, 0.3],
+                    mykey2: "[1, 2, 3]",
+                    mykey3: "str",
+                    mykey4: [false, true, false],
+                    mykey5: ["str", "test123", "helloopenharmony"],
+                },
+            },
+        }).then((data) => {
+            console.info('====> ACTS_GetWant_2500 start ability=====>' + JSON.stringify(data))
+            expect(data.want.deviceId).assertEqual("");
+            expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+            expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+            expect(data.want.action).assertEqual("action2");
+            expect(data.want.entities[0]).assertEqual("entity1");
+            expect(data.want.type).assertEqual("MIMETYPE");
+            expect(data.want.uri).assertEqual("key={true,true,false}");
+            expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT );
+            expect(data.want.parameters.mykey0).assertEqual(0.1);
+            expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+            expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+            expect(data.want.parameters.mykey1[2]).assertEqual(0.3);
+            expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
+            expect(data.want.parameters.mykey3).assertEqual("str");
+            expect(data.want.parameters.mykey4[0]).assertEqual(false);
+            expect(data.want.parameters.mykey4[1]).assertEqual(true);
+            expect(data.want.parameters.mykey4[2]).assertEqual(false);
+            expect(data.want.parameters.mykey5[0]).assertEqual("str");
+            expect(data.want.parameters.mykey5[1]).assertEqual("test123");
+            expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
+            console.info('====> ACTS_GetWant_2500 before done=====>')
+            setTimeout(()=>{
+                done();
+            }, TIMEOUT_NUMBER);
+        }).catch((error) => {
+            console.log('ACTS_GetWant_2500 error: ' + JSON.stringify(error))
+            expect.assertFail()
+            done();
+        })
+    });
+
+    /*
+     * @tc.number  ACTS_GetWant_2600
+     * @tc.name    Misconfigured bundlename validation
+     * @tc.desc    Function test (by callback)
+     * @tc.level   0
+     */
+    it("ACTS_GetWant_2600",0, async function(done){
+        featureAbility.startAbilityForResult({
+            want:
+            {
+                deviceId: "",
+                bundleName: "com.example.actsgetwantalltesthap",
+                abilityName: "com.example.actsgetwantalltesthap.MainAbility",
+                action: "action2",
+                entities: ["entity1", "entity2"],
+                type: "MIMETYPE",
+                uri: "key={true,true,false}",
+                flags: wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT,
+                parameters:
+                {
+                    mykey0: 0.1,
+                    mykey1: [0.1, 0.2, 0.3],
+                    mykey2: "[1, 2, 3]",
+                    mykey3: "str",
+                    mykey4: [false, true, false],
+                    mykey5: ["str", "test123", "helloopenharmony"],
+                },
+            },
+        },
+            (err, data) => {
+                console.info('====> ACTS_GetWant_2600 start ability=====>' + JSON.stringify(data))
+                expect(data.want.deviceId).assertEqual("");
+                expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
+                expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
+                expect(data.want.action).assertEqual("action2");
+                expect(data.want.entities[0]).assertEqual("entity1");
+                expect(data.want.type).assertEqual("MIMETYPE");
+                expect(data.want.uri).assertEqual("key={true,true,false}");
+                expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT );
+                expect(data.want.parameters.mykey0).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
+                expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
+                expect(data.want.parameters.mykey1[2]).assertEqual(0.3);
+                expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
+                expect(data.want.parameters.mykey3).assertEqual("str");
+                expect(data.want.parameters.mykey4[0]).assertEqual(false);
+                expect(data.want.parameters.mykey4[1]).assertEqual(true);
+                expect(data.want.parameters.mykey4[2]).assertEqual(false);
+                expect(data.want.parameters.mykey5[0]).assertEqual("str");
+                expect(data.want.parameters.mykey5[1]).assertEqual("test123");
+                expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
+                console.info('====> ACTS_GetWant_2600 before done=====>')
+                setTimeout(()=>{
+                    done();
+                }, TIMEOUT_NUMBER);
+            })
     });
 
     /**
@@ -918,29 +1539,4 @@ describe('ActsGetWantTest', function () {
         console.log("SUB_AA_OpenHarmony_wantConstantEnumeration_0300 --- end")
         done()
         })
-    
-    function checkOnAbilityResult(data) {
-        console.info('====> ACTS_StartAbilityForResult_2000 start ability=====>' + JSON.stringify(data))
-        expect(data.want.deviceId).assertEqual("");
-        expect(data.want.bundleName).assertEqual("com.example.actsgetwantalltesthap");
-        expect(data.want.abilityName).assertEqual("com.example.actsgetwantalltesthap.MainAbility");
-        expect(data.want.action).assertEqual("action2");
-        expect(data.want.entities[0]).assertEqual("entity1");
-        expect(data.want.type).assertEqual("MIMETYPE");
-        expect(data.want.uri).assertEqual("key={true,true,false}");
-        expect(data.want.flags).assertEqual(wantConstant.Flags.FLAG_ABILITY_FORWARD_RESULT );
-        expect(data.want.parameters.mykey0).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[0]).assertEqual(0.1);
-        expect(data.want.parameters.mykey1[1]).assertEqual(0.2);
-        expect(data.want.parameters.mykey1[2]).assertEqual(0.3);
-        expect(data.want.parameters.mykey2).assertEqual("[1, 2, 3]");
-        expect(data.want.parameters.mykey3).assertEqual("str");
-        expect(data.want.parameters.mykey4[0]).assertEqual(false);
-        expect(data.want.parameters.mykey4[1]).assertEqual(true);
-        expect(data.want.parameters.mykey4[2]).assertEqual(false);
-        expect(data.want.parameters.mykey5[0]).assertEqual("str");
-        expect(data.want.parameters.mykey5[1]).assertEqual("test123");
-        expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
-        console.info('====> before done=====>')
-    }
 })
