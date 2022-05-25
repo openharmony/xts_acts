@@ -386,16 +386,14 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_UNSPECIFIED, cameraObj.CameraType.CAMERA_TYPE_WIDE_ANGLE, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_TC_152 success");
-          if (data == undefined) {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_TC_152 data is null || undefined");
-            var camInput = data;
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_TC_152 camInput: " + JSON.stringify(camInput));
-            expect(true).assertTrue();
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_TC_152 PASSED");
-          }
-        } else {
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_TC_152 FAILED: " + err.message);
+          var camInput = data;
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_TC_152 camInput: " + JSON.stringify(camInput));
           expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_TC_152 FAILED");
+        }
+        else {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_TC_152 PASSED: " + err.message);
+          expect(true).assertTrue();
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_TC_152 ends here");
         await sleep(1000);
@@ -415,16 +413,15 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     */
     it('CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_PROMISE_TC_153', 0, async function (done) {
       console.info("--------------CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_PROMISE_TC_153--------------");
-      var camInputPromise = await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_UNSPECIFIED, cameraObj.CameraType.CAMERA_TYPE_WIDE_ANGLE);
-      console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_PROMISE_TC_153 camInputPromise: " + JSON.stringify(camInputPromise));
-      if (camInputPromise == undefined) {
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_PROMISE_TC_153 camInputPromise is null || undefined");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_PROMISE_TC_153 PASSED");
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_PROMISE_TC_153 FAILED");
-      }
+      await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_UNSPECIFIED, cameraObj.CameraType.CAMERA_TYPE_WIDE_ANGLE)
+        .then(function () {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_PROMISE_TC_153 FAILED");
+          expect().assertFail();
+        })
+        .catch((err) => {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_PROMISE_TC_153 PASSED : " + err.message);
+          expect(true).assertTrue();
+        });
       console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_WIDE_ANGLE_PROMISE_TC_153 ends here");
       await sleep(1000);
       done();
@@ -444,16 +441,14 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_UNSPECIFIED, cameraObj.CameraType.CAMERA_TYPE_ULTRA_WIDE, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_TC_154 success");
-          if (data == undefined) {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_TC_154 data null || undefined");
-            var camInput = data;
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_TC_154 camInput: " + JSON.stringify(camInput));
-            expect(true).assertTrue();
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_TC_154 PASSED");
-          }
-        } else {
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_TC_154 FAILED: " + err.message);
+          var camInput = data;
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_TC_154 camInput: " + JSON.stringify(camInput));
           expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_TC_154 FAILED");
+        }
+        else {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_TC_154 PASSED: " + err.message);
+          expect(true).assertTrue();
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_TC_154 ends here");
         await sleep(1000);
@@ -473,16 +468,15 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     */
     it('CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_PROMISE_TC_155', 0, async function (done) {
       console.info("--------------CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_PROMISE_TC_155--------------");
-      var camInputPromise = await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_UNSPECIFIED, cameraObj.CameraType.CAMERA_TYPE_ULTRA_WIDE);
-      console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_PROMISE_TC_155 camInputPromise: " + JSON.stringify(camInputPromise));
-      if (camInputPromise == undefined) {
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_PROMISE_TC_155 camInputPromise is null || undefined");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_PROMISE_TC_155 PASSED");
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_PROMISE_TC_155 FAILED");
-      }
+      await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_UNSPECIFIED, cameraObj.CameraType.CAMERA_TYPE_ULTRA_WIDE)
+        .then(function () {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_PROMISE_TC_155 FAILED");
+          expect().assertFail();
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_PROMISE_TC_155 PASSED : " + err.message);
+        });
       console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_ULTRA_WIDE_PROMISE_TC_155 ends here");
       await sleep(1000);
       done();
@@ -502,16 +496,14 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_UNSPECIFIED, cameraObj.CameraType.CAMERA_TYPE_TELEPHOTO, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_TC_156 success");
-          if (data == undefined) {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_TC_156 data is null || undefined");
-            var camInput = data;
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_TC_156 camInput: " + JSON.stringify(camInput));
-            expect(true).assertTrue();
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_TC_156 PASSED");
-          }
-        } else {
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_TC_156 FAILED: " + err.message);
+          var camInput = data;
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_TC_156 camInput: " + JSON.stringify(camInput));
           expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_TC_156 FAILED");
+        }
+        else {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_TC_156 PASSED: " + err.message);
+          expect(true).assertTrue();
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_TC_156 ends here");
         await sleep(1000);
@@ -531,16 +523,15 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     */
     it('CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_PROMISE_TC_157', 0, async function (done) {
       console.info("--------------CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_PROMISE_TC_157--------------");
-      var camInputPromise = await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_UNSPECIFIED, cameraObj.CameraType.CAMERA_TYPE_TELEPHOTO);
-      console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_PROMISE_TC_157 camInputPromise: " + JSON.stringify(camInputPromise));
-      if (camInputPromise == undefined) {
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_PROMISE_TC_157 camInputPromise is null || undefined");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_PROMISE_TC_157 PASSED");
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_PROMISE_TC_157 FAILED");
-      }
+      await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_UNSPECIFIED, cameraObj.CameraType.CAMERA_TYPE_TELEPHOTO)
+        .then(function () {
+          expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_PROMISE_TC_157 FAILED");
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_PROMISE_TC_157 PASSED : " + err.message);
+        });
       console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TELEPHOTO_PROMISE_TC_157 ends here");
       await sleep(1000);
       done();
@@ -560,16 +551,14 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_UNSPECIFIED, cameraObj.CameraType.CAMERA_TYPE_TRUE_DEPTH, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_TC_158 success");
-          if (data == undefined) {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_TC_158 data is null || undefined");
-            var camInput = data;
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_TC_158 camInput: " + JSON.stringify(camInput));
-            expect(true).assertTrue();
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_TC_158 PASSED");
-          }
-        } else {
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_TC_158 FAILED: " + err.message);
+          var camInput = data;
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_TC_158 camInput: " + JSON.stringify(camInput));
           expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_TC_158 FAILED");
+        }
+        else {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_TC_158 PASSED: " + err.message);
+          expect(true).assertTrue();
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_TC_158 ends here");
         await sleep(1000);
@@ -589,16 +578,15 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     */
     it('CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_PROMISE_TC_159', 0, async function (done) {
       console.info("--------------CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_PROMISE_TC_159--------------");
-      var camInputPromise = await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_UNSPECIFIED, cameraObj.CameraType.CAMERA_TYPE_TRUE_DEPTH);
-      console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_PROMISE_TC_159 camInputPromise: " + JSON.stringify(camInputPromise));
-      if (camInputPromise == undefined) {
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_PROMISE_TC_159 camInputPromise is null || undefined");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_PROMISE_TC_159 PASSED");
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_PROMISE_TC_159 FAILED");
-      }
+      await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_UNSPECIFIED, cameraObj.CameraType.CAMERA_TYPE_TRUE_DEPTH)
+        .then(function () {
+          expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_PROMISE_TC_159 FAILED");
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_PROMISE_TC_159 PASSED : " + err.message);
+        });
       console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_UNSPECIFIED_TYPE_TRUE_DEAPTH_PROMISE_TC_159 ends here");
       await sleep(1000);
       done();
@@ -618,16 +606,14 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_BACK, cameraObj.CameraType.CAMERA_TYPE_WIDE_ANGLE, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_TC_160 success");
-          if (data == undefined) {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_TC_160 data is null || undefined");
-            var camInput = data;
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_TC_160 camInput: " + JSON.stringify(camInput));
-            expect(true).assertTrue();
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_TC_160 PASSED");
-          }
-        } else {
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_TC_160 FAILED: " + err.message);
+          var camInput = data;
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_TC_160 camInput: " + JSON.stringify(camInput));
           expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_TC_160 FAILED");
+        }
+        else {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_TC_160 PASSED: " + err.message);
+          expect(true).assertTrue();
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_TC_160 ends here");
         await sleep(1000);
@@ -647,16 +633,15 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     */
     it('CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_PROMISE_TC_161', 0, async function (done) {
       console.info("--------------CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_PROMISE_TC_161--------------");
-      var camInputPromise = await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_BACK, cameraObj.CameraType.CAMERA_TYPE_WIDE_ANGLE);
-      console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_PROMISE_TC_161 camInputPromise: " + JSON.stringify(camInputPromise));
-      if (camInputPromise == undefined) {
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_PROMISE_TC_161 camInputPromise is null || undefined");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_PROMISE_TC_161 PASSED");
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_PROMISE_TC_161 FAILED");
-      }
+      await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_BACK, cameraObj.CameraType.CAMERA_TYPE_WIDE_ANGLE)
+        .then(function () {
+          expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_PROMISE_TC_161 FAILED");
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_PROMISE_TC_161 PASSED : " + err.message);
+        });
       console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_WIDE_ANGLE_PROMISE_TC_161 ends here");
       await sleep(1000);
       done();
@@ -676,16 +661,14 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_BACK, cameraObj.CameraType.CAMERA_TYPE_ULTRA_WIDE, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_TC_162 success");
-          if (data == undefined) {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_TC_162 data is null || undefined");
-            var camInput = data;
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_TC_162 camInput: " + JSON.stringify(camInput));
-            expect(true).assertTrue();
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_TC_162 PASSED");
-          }
-        } else {
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_TC_162 FAILED: " + err.message);
+          var camInput = data;
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_TC_162 camInput: " + JSON.stringify(camInput));
           expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_TC_162 FAILED");
+        }
+        else {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_TC_162 PASSED: " + err.message);
+          expect(true).assertTrue();
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_TC_162 ends here");
         await sleep(1000);
@@ -705,16 +688,15 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     */
     it('CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_PROMISE_TC_163', 0, async function (done) {
       console.info("--------------CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_PROMISE_TC_163--------------");
-      var camInputPromise = await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_BACK, cameraObj.CameraType.CAMERA_TYPE_ULTRA_WIDE);
-      console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_PROMISE_TC_163 camInputPromise: " + JSON.stringify(camInputPromise));
-      if (camInputPromise == undefined) {
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_PROMISE_TC_163 camInputPromise isnull || undefined");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_PROMISE_TC_163 PASSED");
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_PROMISE_TC_163 FAILED");
-      }
+      await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_BACK, cameraObj.CameraType.CAMERA_TYPE_ULTRA_WIDE)
+        .then(function () {
+          expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_PROMISE_TC_163 FAILED");
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_PROMISE_TC_163 PASSED : " + err.message);
+        });
       console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_ULTRA_WIDE_PROMISE_TC_163 ends here");
       await sleep(1000);
       done();
@@ -734,16 +716,14 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_BACK, cameraObj.CameraType.CAMERA_TYPE_TELEPHOTO, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_TC_164 success");
-          if (data == undefined) {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_TC_164 data is null || undefined");
-            var camInput = data;
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_TC_164 camInput: " + JSON.stringify(camInput));
-            expect(true).assertTrue();
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_TC_164 PASSED");
-          }
-        } else {
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_TC_164 FAILED: " + err.message);
+          var camInput = data;
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_TC_164 camInput: " + JSON.stringify(camInput));
           expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_TC_164 FAILED");
+        }
+        else {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_TC_164 PASSED: " + err.message);
+          expect(true).assertTrue();
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_TC_164 ends here");
         await sleep(1000);
@@ -763,16 +743,15 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     */
     it('CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_PROMISE_TC_165', 0, async function (done) {
       console.info("--------------CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_PROMISE_TC_165--------------");
-      var camInputPromise = await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_BACK, cameraObj.CameraType.CAMERA_TYPE_TELEPHOTO);
-      console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_PROMISE_TC_165 camInputPromise: " + JSON.stringify(camInputPromise));
-      if (camInputPromise == undefined) {
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_PROMISE_TC_165 camInputPromise is null || undefined");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_PROMISE_TC_165 PASSED");
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_PROMISE_TC_165 FAILED");
-      }
+      await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_BACK, cameraObj.CameraType.CAMERA_TYPE_TELEPHOTO)
+        .then(function () {
+          expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_PROMISE_TC_165 FAILED");
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_PROMISE_TC_165 PASSED : " + err.message);
+        });
       console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TELEPHOTO_PROMISE_TC_165 ends here");
       await sleep(1000);
       done();
@@ -792,16 +771,14 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_BACK, cameraObj.CameraType.CAMERA_TYPE_TRUE_DEPTH, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_TC_166 success");
-          if (data == undefined) {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_TC_166 data is null || undefined");
-            var camInput = data;
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_TC_166 camInput: " + JSON.stringify(camInput));
-            expect(true).assertTrue();
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_TC_166 PASSED");
-          }
-        } else {
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_TC_166 FAILED: " + err.message);
+          var camInput = data;
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_TC_166 camInput: " + JSON.stringify(camInput));
           expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_TC_166 FAILED");
+        }
+        else {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_TC_166 PASSED: " + err.message);
+          expect(true).assertTrue();
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_TC_166 ends here");
         await sleep(1000);
@@ -821,16 +798,15 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     */
     it('CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_PROMISE_TC_167', 0, async function (done) {
       console.info("--------------CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_PROMISE_TC_167--------------");
-      var camInputPromise = await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_BACK, cameraObj.CameraType.CAMERA_TYPE_TRUE_DEPTH);
-      console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_PROMISE_TC_167 camInputPromise: " + JSON.stringify(camInputPromise));
-      if (camInputPromise == undefined) {
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_PROMISE_TC_167 camInputPromise is null || undefined");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_PROMISE_TC_167 PASSED");
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_PROMISE_TC_167 FAILED");
-      }
+      await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_BACK, cameraObj.CameraType.CAMERA_TYPE_TRUE_DEPTH)
+        .then(function () {
+          expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_PROMISE_TC_167 FAILED");
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_PROMISE_TC_167 PASSED : " + err.message);
+        });
       console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_TRUE_DEAPTH_PROMISE_TC_167 ends here");
       await sleep(1000);
       done();
@@ -850,16 +826,13 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_FRONT, cameraObj.CameraType.CAMERA_TYPE_WIDE_ANGLE, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_TC_168 success");
-          if (data == undefined) {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_TC_168 data is null || undefined");
-            var camInput = data;
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_TC_168 camInput: " + JSON.stringify(camInput));
-            expect(true).assertTrue();
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_TC_168 PASSED");
-          }
-        } else {
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_TC_168 FAILED: " + err.message);
+          var camInput = data;
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_TC_168 camInput: " + JSON.stringify(camInput));
           expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_TC_168 FAILED");
+        } else {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_TC_168 PASSED: " + err.message);
+          expect(true).assertTrue();
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_TC_168 ends here");
         await sleep(1000);
@@ -879,16 +852,15 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     */
     it('CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_PROMISE_TC_169', 0, async function (done) {
       console.info("--------------CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_PROMISE_TC_169--------------");
-      var camInputPromise = await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_FRONT, cameraObj.CameraType.CAMERA_TYPE_WIDE_ANGLE);
-      console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_PROMISE_TC_169 camInputPromise: " + JSON.stringify(camInputPromise));
-      if (camInputPromise == undefined) {
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_PROMISE_TC_169 camInputPromise is null || undefined");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_PROMISE_TC_169 PASSED");
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_PROMISE_TC_169 FAILED");
-      }
+      await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_FRONT, cameraObj.CameraType.CAMERA_TYPE_WIDE_ANGLE)
+        .then(function () {
+          expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_PROMISE_TC_169 FAILED");
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_PROMISE_TC_169 PASSED : " + err.message);
+        });
       console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_WIDE_ANGLE_PROMISE_TC_169 ends here");
       await sleep(1000);
       done();
@@ -908,16 +880,14 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_FRONT, cameraObj.CameraType.CAMERA_TYPE_ULTRA_WIDE, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_TC_170 success");
-          if (data == undefined) {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_TC_170 data is null || undefined");
-            var camInput = data;
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_TC_170 camInput: " + JSON.stringify(camInput));
-            expect(true).assertTrue();
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_TC_170 PASSED");
-          }
-        } else {
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_TC_170 FAILED: " + err.message);
+          var camInput = data;
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_TC_170 camInput: " + JSON.stringify(camInput));
           expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_TC_170 FAILED");
+        }
+        else {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_TC_170 PASSED: " + err.message);
+          expect(true).assertTrue();
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_TC_170 ends here");
         await sleep(1000);
@@ -937,16 +907,15 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     */
     it('CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_PROMISE_TC_171', 0, async function (done) {
       console.info("--------------CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_PROMISE_TC_171--------------");
-      var camInputPromise = await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_FRONT, cameraObj.CameraType.CAMERA_TYPE_ULTRA_WIDE);
-      console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_PROMISE_TC_171 camInputPromise: " + JSON.stringify(camInputPromise));
-      if (camInputPromise == undefined) {
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_PROMISE_TC_171 camInputPromise is null || undefined");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_PROMISE_TC_171 PASSED");
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_PROMISE_TC_171 FAILED");
-      }
+      await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_FRONT, cameraObj.CameraType.CAMERA_TYPE_ULTRA_WIDE)
+        .then(function () {
+          expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_PROMISE_TC_171 FAILED");
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_PROMISE_TC_171 PASSED : " + err.message);
+        });
       console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_ULTRA_WIDE_PROMISE_TC_171 ends here");
       await sleep(1000);
       done();
@@ -966,16 +935,13 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_FRONT, cameraObj.CameraType.CAMERA_TYPE_TELEPHOTO, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_TC_172 success");
-          if (data == undefined) {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_TC_172 data is null || undefined");
-            var camInput = data;
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_TC_172 camInput: " + JSON.stringify(camInput));
-            expect(true).assertTrue();
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_TC_172 PASSED");
-          }
-        } else {
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_TC_172 FAILED: " + err.message);
+          var camInput = data;
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_TC_172 camInput: " + JSON.stringify(camInput));
           expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_TC_172 FAILED");
+        } else {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_TC_172 PASSED: " + err.message);
+          expect(true).assertTrue();
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_TC_172 ends here");
         await sleep(1000);
@@ -995,16 +961,15 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     */
     it('CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_PROMISE_TC_173', 0, async function (done) {
       console.info("--------------CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_PROMISE_TC_173--------------");
-      var camInputPromise = await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_FRONT, cameraObj.CameraType.CAMERA_TYPE_TELEPHOTO);
-      console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_PROMISE_TC_173 camInputPromise: " + JSON.stringify(camInputPromise));
-      if (camInputPromise == undefined) {
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_PROMISE_TC_173 camInputPromise is null || undefined");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_PROMISE_TC_173 PASSED");
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_PROMISE_TC_173 FAILED");
-      }
+      await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_FRONT, cameraObj.CameraType.CAMERA_TYPE_TELEPHOTO)
+        .then(function () {
+          expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_PROMISE_TC_173 FAILED");
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_PROMISE_TC_173 PASSED : " + err.message);
+        });
       console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TELEPHOTO_PROMISE_TC_173 ends here");
       await sleep(1000);
       done();
@@ -1024,16 +989,14 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_FRONT, cameraObj.CameraType.CAMERA_TYPE_TRUE_DEPTH, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_TC_174 success");
-          if (data == undefined) {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_TC_174 data is null || undefined");
-            var camInput = data;
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_TC_174 camInput: " + JSON.stringify(camInput));
-            expect(true).assertTrue();
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_TC_174 PASSED");
-          }
-        } else {
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_TC_174 FAILED: " + err.message);
+          var camInput = data;
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_TC_174 camInput: " + JSON.stringify(camInput));
           expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_TC_174 FAILED");
+        }
+        else {
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_TC_174 PASSED: " + err.message);
+          expect(true).assertTrue();
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_TC_174 ends here");
         await sleep(1000);
@@ -1053,16 +1016,15 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     */
     it('CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_PROMISE_TC_175', 0, async function (done) {
       console.info("--------------CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_PROMISE_TC_175--------------");
-      var camInputPromise = await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_FRONT, cameraObj.CameraType.CAMERA_TYPE_TRUE_DEPTH);
-      console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_PROMISE_TC_175 camInputPromise: " + JSON.stringify(camInputPromise));
-      if (camInputPromise == undefined) {
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_PROMISE_TC_175 camInputPromise is null || undefined");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_PROMISE_TC_175 PASSED");
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_PROMISE_TC_175 FAILED");
-      }
+      await cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_FRONT, cameraObj.CameraType.CAMERA_TYPE_TRUE_DEPTH)
+        .then(function () {
+          expect().assertFail();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_PROMISE_TC_175 FAILED");
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_PROMISE_TC_175 PASSED : " + err.message);
+        });
       console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_TRUE_DEAPTH_PROMISE_TC_175 ends here");
       await sleep(1000);
       done();
