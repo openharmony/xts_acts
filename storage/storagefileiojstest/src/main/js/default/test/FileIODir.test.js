@@ -14,12 +14,7 @@
  */
 
 import fileio from '@ohos.fileio';
-import {
-  describe,
-  it,
-  expect
-}
-  from 'deccjsunit/index'
+import { describe,it,expect}from 'deccjsunit/index'
 import {
   FILE_CONTENT,
   prepareFile,
