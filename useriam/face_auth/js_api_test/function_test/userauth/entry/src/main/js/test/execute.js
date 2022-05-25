@@ -537,7 +537,7 @@ describe('userAuthTest', function () {
         console.log("JSAPI_Function_Cancel_0100 start");
         const auth = userAuth.getAuthenticator();
         let cancelCode = authenticator.cancel();
-        if (cancelCode == userIAM_userAuth.Result.SUCCESS) {
+        if (cancelCode == userAuth.Result.SUCCESS) {
             console.info("cancel auth success");
             expect(true).assertTrue();
         } else {
