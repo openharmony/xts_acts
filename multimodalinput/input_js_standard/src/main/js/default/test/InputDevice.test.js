@@ -71,7 +71,7 @@ describe('MultimodalInput_test', function () {
         console.log(data);
       });
     } catch (error) {
-      expect(error.message).assertEqual("GetDeviceIds: \"The first parameter type is wrong\"");
+      expect(error.message).assertEqual("GetDeviceIds: \"too many parameters\"");
     }
     console.log(`inputDevice::getDeviceIds_test-04 exit`);
   })
