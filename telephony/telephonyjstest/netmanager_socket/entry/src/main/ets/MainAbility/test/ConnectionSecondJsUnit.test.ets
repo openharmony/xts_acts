@@ -140,15 +140,16 @@ export default function connectionSecondJsUnit() {
             expect(value.interfaceName == "").assertTrue();
             expect(value.domains == "").assertTrue();
             expect(value.mtu == 0).assertTrue();
+            expect(true).assertTrue();
+            console.log("-----Telephony_connection_getConnectionProperties_Promise_0200 Test end---------");
             done();
           }).catch((error) => {
             console.log(`${caseName}  getConnectionProperties fail: ${error}`);
             expect().assertFail();
+            console.log("-----Telephony_connection_getConnectionProperties_Promise_0200 Test end---------");
             done();
           });
         }
-      console.log("-----------------------Telephony getConnectionProperties Test end-----------------------");
-	  done();
     });
 
     /**
