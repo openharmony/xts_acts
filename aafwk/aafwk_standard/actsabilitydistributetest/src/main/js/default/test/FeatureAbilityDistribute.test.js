@@ -25,26 +25,6 @@ describe('DistributedTest', function () {
     }
 
     /**
-     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0100(by promise)
-     * @tc.name      testContinueAbility0100
-     * @tc.desc      T
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testContinueAbility0100', 0, async function (done) {
-        console.log('testContinueAbility0100 run start');
-        abilityFeatureAbility.continueAbility(undefined).then((data) => {
-            console.log('testContinueAbility0100 value is :' + JSON.stringify(data));
-        }).catch((error) => {
-            console.log('testContinueAbility0100 err is :' + JSON.stringify(error));
-        })
-        await sleep(timeSleep);
-        console.log('testContinueAbility0100 run end');
-        done();
-    })
-
-    /**
      * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0200(by callback)
      * @tc.name      testContinueAbility0200
      * @tc.desc      T
@@ -64,26 +44,6 @@ describe('DistributedTest', function () {
     })
 
     /**
-     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0300(by promise)
-     * @tc.name      testContinueAbility0300
-     * @tc.desc      T
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testContinueAbility0300', 0, async function (done) {
-        console.log('testContinueAbility0300 run start');
-        abilityFeatureAbility.continueAbility("").then((data) => {
-            console.log('testContinueAbility0300 value is :' + JSON.stringify(data));
-        }).catch((error) => {
-            console.log('testContinueAbility0300 err is :' + JSON.stringify(error));
-        })
-        await sleep(timeSleep);
-        console.log('testContinueAbility0300 run end');
-        done();
-    })
-
-    /**
      * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0400(by callback)
      * @tc.name      testContinueAbility0400
      * @tc.desc      T
@@ -99,30 +59,6 @@ describe('DistributedTest', function () {
         })
         await sleep(timeSleep);
         console.log('testContinueAbility0400 run end');
-        done();
-    })
-
-    /**
-     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0500(by promise)
-     * @tc.name      testContinueAbility0500
-     * @tc.desc      T
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testContinueAbility0500', 0, async function (done) {
-        let options = {
-            deviceId: undefined,
-            reversible: false,
-        }
-        console.log('testContinueAbility0500 run start');
-        abilityFeatureAbility.continueAbility(options).then((data) => {
-            console.log('testContinueAbility0500 value is :' + JSON.stringify(data));
-        }).catch((error) => {
-            console.log('testContinueAbility0500 err is :' + JSON.stringify(error));
-        })
-        await sleep(timeSleep);
-        console.log('testContinueAbility0500 run end');
         done();
     })
 
@@ -193,29 +129,6 @@ describe('DistributedTest', function () {
         })
         await sleep(timeSleep);
         console.log('testContinueAbility0800 run end');
-        done();
-    })
-
-    /**
-     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0900(by promise)
-     * @tc.name      testContinueAbility0900
-     * @tc.desc      T
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('testContinueAbility0900', 0, async function (done) {
-        let options = {
-            reversible: false,
-        }
-        console.log('testContinueAbility0900 run start');
-        abilityFeatureAbility.continueAbility(options).then((data) => {
-            console.log('testContinueAbility0900 value is :' + JSON.stringify(data));
-        }).catch((error) => {
-            console.log('testContinueAbility0900 err is :' + JSON.stringify(error));
-        })
-        await sleep(timeSleep);
-        console.log('testContinueAbility0900 run end');
         done();
     })
 
