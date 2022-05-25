@@ -19,6 +19,8 @@ const BUNDLE_NAME1 = 'com.example.third1';
 const SYSTEM_NAME = 'com.example.system2';
 const ABILITIY_NAME8 = 'com.example.system2.MainAbility';
 const USERID = 100;
+const ACTION_NAME = 'action.system.home';
+const ENTITY_NAME = 'entity.system.home';
 
 describe('ActsBmsQueryAbilityByWant', function () {
 
@@ -30,8 +32,8 @@ describe('ActsBmsQueryAbilityByWant', function () {
     */
     it('bms_queryAbilityByWant_0100', 0, async function (done) {
         await bundle.queryAbilityByWant({
-            action: ['action.system.home'],
-            entities: ['entity.system.home'],
+            action: [ACTION_NAME],
+            entities: [ENTITY_NAME],
             bundleName: BUNDLE_NAME1
         }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
             USERID).then(data => {
@@ -40,8 +42,8 @@ describe('ActsBmsQueryAbilityByWant', function () {
                 expect(err).assertEqual(1);
             });
         bundle.queryAbilityByWant({
-            action: ['action.system.home'],
-            entities: ['entity.system.home'],
+            action: [ACTION_NAME],
+            entities: [ENTITY_NAME],
             bundleName: BUNDLE_NAME1
         }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
             USERID, (err, data) => {
@@ -60,8 +62,8 @@ describe('ActsBmsQueryAbilityByWant', function () {
     it('bms_queryAbilityByWant_0200', 0, async function (done) {
         await bundle.queryAbilityByWant(
             {
-                action: ['action.system.home'],
-                entities: ['entity.system.home']
+                action: [ACTION_NAME],
+                entities: [ENTITY_NAME]
             },
             bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
             USERID).then(data => {
@@ -75,8 +77,8 @@ describe('ActsBmsQueryAbilityByWant', function () {
             });
         bundle.queryAbilityByWant(
             {
-                action: ['action.system.home'],
-                entities: ['entity.system.home']
+                action: [ACTION_NAME],
+                entities: [ENTITY_NAME]
             },
             bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
             USERID, (err, data) => {
@@ -98,7 +100,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
     */
     it('bms_queryAbilityByEntities_0300', 0, async function (done) {
         let dataInfos = await bundle.queryAbilityByWant({
-            action: 'action.system.home',
+            action: ACTION_NAME,
             entities: ["entity.app.music",
                 "entity.app.email",
                 "entity.app.contacts",
@@ -117,7 +119,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
         expect(dataInfos.length).assertEqual(1);
         cheackAbilityInfos(dataInfos[0]);
         bundle.queryAbilityByWant({
-            action: 'action.system.home',
+            action: ACTION_NAME,
             entities: ["entity.app.music",
                 "entity.app.email",
                 "entity.app.contacts",
