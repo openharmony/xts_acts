@@ -34,13 +34,13 @@ from './Common'
 describe('FileIOError', function () {
 
   /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_0900
-   * @tc.name FileIo_test_error_009
+   * @tc.number SUB_STORAGE_FileIo_test_error_0000
+   * @tc.name fileio_test_error_000
    * @tc.desc Function of API, Delete directories with files
    */
-  it('FileIo_test_error_009', 0, function () {
-    let dpath = fileName('fileio_test_error_009d');
-    let fpath = dpath + '/fileio_test_error_009f';
+  it('fileio_test_error_000', 0, function () {
+    let dpath = fileName('fileio_test_error_000d');
+    let fpath = dpath + '/fileio_test_error_000f';
     fileio.mkdirSync(dpath);
     expect(prepareFile(fpath, 'hello')).assertTrue();
     try {
@@ -49,7 +49,7 @@ describe('FileIOError', function () {
       fileio.rmdirSync(dpath);
     } 
     catch (err) {
-      console.log('fileio_test_error_009 has failed for ' + err);
+      console.log('fileio_test_error_000 has failed for ' + err);
       expect(isInclude(err.message, 'Directory not empty')).assertTrue();
       fileio.unlinkSync(fpath);
       fileio.rmdirSync(dpath);
@@ -57,12 +57,12 @@ describe('FileIOError', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_1000
-   * @tc.name FileIo_test_error_010
+   * @tc.number SUB_STORAGE_FileIo_test_error_0100
+   * @tc.name fileio_test_error_001
    * @tc.desc Function of API, delete file
    */
-  it('FileIo_test_error_010', 0, function () {
-    let fpath = fileName('fileio_test_error_010f');
+  it('fileio_test_error_001', 0, function () {
+    let fpath = fileName('fileio_test_error_001f');
     expect(prepareFile(fpath, 'hello')).assertTrue();
     try {
       let fd = fileio.openSync(fpath);
@@ -71,110 +71,110 @@ describe('FileIOError', function () {
       expect(null).assertFail();
     } 
     catch (err) {
-      console.log('fileio_test_error_010 has failed for ' + err);
+      console.log('fileio_test_error_001 has failed for ' + err);
       expect(isInclude(err.message, 'Not a directory')).assertTrue();
       fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_1200
-   * @tc.name FileIo_test_error_012
+   * @tc.number SUB_STORAGE_FileIo_test_error_0200
+   * @tc.name fileio_test_error_002
    * @tc.desc Function of API, flags=0o102. missing mode parameter.
    */
-  it('FileIo_test_error_012', 0, function () {
-    let fpath = nextFileName('FileIo_test_error_012');
+  it('fileio_test_error_002', 0, function () {
+    let fpath = nextFileName('fileio_test_error_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       fileio.openSync(fpath, 0o102);
       expect(null).assertFail();
     } 
     catch (err) {
-      console.log('FileIo_test_error_012 has failed for ' + err);
+      console.log('fileio_test_error_002 has failed for ' + err);
       expect(isInclude(err.message, 'called with O_CREAT/O_TMPFILE but no mode')).assertTrue();
       fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_1300
-   * @tc.name FileIo_test_error_013
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_0300
+   * @tc.name fileio_test_error_003
    * @tc.desc Function of API, flags=0o102, missing mode parameter.
    */
-  it('FileIo_test_error_013', 0, function () {
-    let fpath = nextFileName('FileIo_test_error_013');
+  it('fileio_test_error_003', 0, function () {
+    let fpath = nextFileName('fileio_test_error_003');
     try {
       fileio.openSync(fpath, 0o102);
       expect(null).assertFail();
     } 
     catch (err) {
-      console.log('FileIo_test_error_013 has failed for ' + err);
+      console.log('fileio_test_error_003 has failed for ' + err);
       expect(isInclude(err.message, 'called with O_CREAT/O_TMPFILE but no mode')).assertTrue();
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_1500
-   * @tc.name FileIo_test_error_015
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_0400
+   * @tc.name fileio_test_error_004
    * @tc.desc Function of API,  flags=0o302. The test file is exist.
    */
-  it('FileIo_test_error_015', 0, function () {
-    let fpath = nextFileName('FileIo_test_error_015');
+  it('fileio_test_error_004', 0, function () {
+    let fpath = nextFileName('fileio_test_error_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       fileio.openSync(fpath, 0o302, 0o666);
     } 
     catch (err) {
-      console.log('FileIo_test_error_015 has failed for ' + err);
+      console.log('fileio_test_error_004 has failed for ' + err);
       expect(isInclude(err.message, 'File exists')).assertTrue();
       fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_1600
-   * @tc.name FileIo_test_error_016
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_0500
+   * @tc.name fileio_test_error_005
    * @tc.desc Function of API,  flags=0o100002. The test file is exist.
    */
-  it('FileIo_test_error_016', 0, function () {
-    let fpath = nextFileName('FileIo_test_error_016');
+  it('fileio_test_error_005', 0, function () {
+    let fpath = nextFileName('fileio_test_error_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       fileio.openSync(fpath, 0o100002);
       expect(null).assertFail();
     } 
     catch (err) {
-      console.log('FileIo_test_error_016 has failed for ' + err);
+      console.log('fileio_test_error_005 has failed for ' + err);
       fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_1700
-   * @tc.name FileIo_test_error_017
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_0600
+   * @tc.name fileio_test_error_006
    * @tc.desc Function of API, flags=0o40002 The test file is exist.
    */
-  it('FileIo_test_error_017', 0, function () {
-    let dpath = nextFileName('FileIo_test_error_017');
+  it('fileio_test_error_006', 0, function () {
+    let dpath = nextFileName('fileio_test_error_006');
     fileio.mkdirSync(dpath);
     try {
       fileio.openSync(dpath, 0o40002);
       expect(null).assertFail();
     } 
     catch (err) {
-      console.log('FileIo_test_error_017 has failed for ' + err);
+      console.log('fileio_test_error_006 has failed for ' + err);
       expect(isInclude(err.message, 'called with O_CREAT/O_TMPFILE but no mode')).assertTrue();
       fileio.rmdirSync(dpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_1900
-   * @tc.name FileIo_test_error_019
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_0700
+   * @tc.name fileio_test_error_007
    * @tc.desc Function of API, flags=0o400002. The test file is exist.
    */
-  it('FileIo_test_error_019', 0, function () {
-    let fpath = nextFileName('FileIo_test_error_019');
+  it('fileio_test_error_007', 0, function () {
+    let fpath = nextFileName('fileio_test_error_007');
     let txt = 'h'
     expect(prepareFile(fpath, txt)).assertTrue();
     try {
@@ -182,18 +182,18 @@ describe('FileIOError', function () {
       expect(null).assertFail();
     } 
     catch (err) {
-      console.log('FileIo_test_error_019 has failed for ' + err);
+      console.log('fileio_test_error_007 has failed for ' + err);
       fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_2000
-   * @tc.name FileIo_test_error_020
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_0800
+   * @tc.name fileio_test_error_008
    * @tc.desc Function of API, flags=0o400002. The test file is exist.
    */
-  it('FileIo_test_error_020', 0, function () {
-    let fpath = nextFileName('FileIo_test_error_020');
+  it('fileio_test_error_008', 0, function () {
+    let fpath = nextFileName('fileio_test_error_008');
     let txt = randomString(5000);
     expect(prepareFile(fpath, txt)).assertTrue();
     try {
@@ -201,42 +201,42 @@ describe('FileIOError', function () {
       expect(null).assertFail();
     } 
     catch (err) {
-      console.log('FileIo_test_error_020 has failed for ' + err);
+      console.log('fileio_test_error_008 has failed for ' + err);
       fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_2100
-   * @tc.name FileIo_test_error_021
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_0900
+   * @tc.name fileio_test_error_009
    * @tc.desc Function of API, flags=0o10000102. The test file is exist.
    */
-  it('FileIo_test_error_021', 0, function () {
-    let fpath = nextFileName('FileIo_test_error_021');
+  it('fileio_test_error_009', 0, function () {
+    let fpath = nextFileName('fileio_test_error_009');
     try {
       fileio.openSync(fpath, 0o10000102);
       expect(null).assertFail();
     } 
     catch (err) {
-      console.log('FileIo_test_error_021 has failed for ' + err);
+      console.log('fileio_test_error_009 has failed for ' + err);
       expect(isInclude(err.message, 'called with O_CREAT/O_TMPFILE but no mode')).assertTrue();
     }
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_OpenSync_2300
-   * @tc.name FileIo_test_error_023
+   * @tc.number SUB_STORAGE_FileIO_OpenSync_1000
+   * @tc.name fileio_test_error_010
    * @tc.desc Function of API, flags=0o200000. Invalid argument.
    */
-  it('FileIo_test_error_023', 0, function () {
-    let dpath = fileName('FileIo_test_error_023d');
+  it('fileio_test_error_010', 0, function () {
+    let dpath = fileName('fileio_test_error_010d');
     fileio.mkdirSync(dpath);
     try {
       fileio.openSync(dpath, 0o200000);
       expect(null).assertFail();
     } 
     catch (err) {
-      console.log('FileIo_test_error_023 has failed for ' + err);
+      console.log('fileio_test_error_010 has failed for ' + err);
       expect(isInclude(err.message, 'Invalid argument')).assertTrue();
       fileio.rmdirSync(dpath);
     }
