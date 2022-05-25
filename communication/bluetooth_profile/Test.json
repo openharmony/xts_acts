@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsBluetoothHidHapTest.hap"
+                "ActsBluetoothProFileJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
