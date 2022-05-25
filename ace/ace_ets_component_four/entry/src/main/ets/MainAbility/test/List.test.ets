@@ -65,9 +65,9 @@ export default function testsuite() {
   focusJsunit();
   textAreaJsunit();
   textInputJsunit();
-  polylineJsunit();
   PanDirectionJsunit();
   geometryTransitionJsunit();
+  polylineJsunit();
   systemRouterJsunit();
   systemAppJsunit();
 }
