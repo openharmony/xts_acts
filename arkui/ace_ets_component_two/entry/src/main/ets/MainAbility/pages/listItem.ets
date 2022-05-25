@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -27,15 +27,15 @@ struct ListItemExample {
     console.info('[ListItem] page show called');
     var stateChangeEvent = {
       eventId: 122,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
 
     var stateChangeEventOne = {
       eventId: 123,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventOne, this.stateChangCallBack);
+    emitter.on(stateChangeEventOne, this.stateChangCallBack);
   }
 
   private stateChangCallBack = (eventData) => {

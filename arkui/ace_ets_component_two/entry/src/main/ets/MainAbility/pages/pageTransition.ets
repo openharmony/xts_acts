@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -44,10 +44,10 @@ struct PageTransitionExample1 {
           }
           var backEvent = {
             eventId: 144,
-            priority: events_emitter.EventPriority.LOW
+            priority: emitter.EventPriority.LOW
           }
           console.info("pageTransition start to emit action state")
-          events_emitter.emit(backEvent, backData)
+          emitter.emit(backEvent, backData)
         } catch (err) {
           console.info("pageTransition emit action state err: " + JSON.stringify(err.message))
         }
@@ -70,13 +70,13 @@ struct PageTransitionExample1 {
 
   onPageShow() {
     console.info('active page show called');
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+    emitter.on(stateChangeEvent, this.stateChangCallBack)
 
     var stateChangeEventOne = {
       eventId: 145,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
+    emitter.on(stateChangeEventOne, this.stateChangCallBack)
   }
 
   private stateChangCallBack = (eventData) => {

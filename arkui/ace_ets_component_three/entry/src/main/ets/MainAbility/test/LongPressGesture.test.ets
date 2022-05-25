@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function longPressGestureJsunit() {
@@ -55,13 +55,13 @@ export default function longPressGestureJsunit() {
       }
       let innerEvent = {
         eventId: 125,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        console.info("testLongPressGesture01 on events_emitter on");
-        events_emitter.on(innerEvent, callback)
+        console.info("testLongPressGesture01 on emitter on");
+        emitter.on(innerEvent, callback)
       } catch (err) {
-        console.info("testLongPressGesture01 on events_emitter err : " + JSON.stringify(err));
+        console.info("testLongPressGesture01 on emitter err : " + JSON.stringify(err));
       }
       console.info("testLongPressGesture01 sendEventByKey result: " + JSON.stringify(sendEventByKey('flex', 11, "")));
       await Utils.sleep(1000);
@@ -78,13 +78,13 @@ export default function longPressGestureJsunit() {
       }
       let innerEvent = {
         eventId: 126,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        console.info("testLongPressGesture02 on events_emitter on");
-        events_emitter.on(innerEvent, callback)
+        console.info("testLongPressGesture02 on emitter on");
+        emitter.on(innerEvent, callback)
       } catch (err) {
-        console.info("testLongPressGesture02 on events_emitter err : " + JSON.stringify(err));
+        console.info("testLongPressGesture02 on emitter err : " + JSON.stringify(err));
       }
       console.info("testLongPressGesture02 sendEventByKey result: " + JSON.stringify(sendEventByKey('flex', 11, "")));
       await Utils.sleep(1000);

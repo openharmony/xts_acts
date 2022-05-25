@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -24,15 +24,15 @@ struct VisibilityExample {
   onPageShow() {
     let hiddenChangeEvent = {
       eventId: 47,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(hiddenChangeEvent, this.hiddenChangCallBack)
+    emitter.on(hiddenChangeEvent, this.hiddenChangCallBack)
 
     let noneChangeEvent = {
       eventId: 48,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(noneChangeEvent, this.noneChangCallBack)
+    emitter.on(noneChangeEvent, this.noneChangCallBack)
   }
 
   private hiddenChangCallBack = (eventData) => {

@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function gridSettingsJsunit() {
@@ -77,10 +77,10 @@ export default function gridSettingsJsunit() {
         }
         let indexEvent = {
           eventId: 9,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGridSettings002] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testGridSettings002] change component data error: " + err.message);
       }
@@ -105,10 +105,10 @@ export default function gridSettingsJsunit() {
         }
         let indexEvent = {
           eventId: 9,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGridSettings003] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testGridSettings003] change component data error: " + err.message);
       }
@@ -133,10 +133,10 @@ export default function gridSettingsJsunit() {
         }
         let indexEvent = {
           eventId: 9,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGridSettings004] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testGridSettings004] change component data error: " + err.message);
       }
@@ -161,10 +161,10 @@ export default function gridSettingsJsunit() {
         }
         let indexEvent = {
           eventId: 9,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGridSettings005] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testGridSettings005] change component data error: " + err.message);
       }
@@ -199,10 +199,10 @@ export default function gridSettingsJsunit() {
         }
         let indexEvent = {
           eventId: 10,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGridSettings007] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testGridSettings007] change component data error: " + err.message);
       }
@@ -225,10 +225,10 @@ export default function gridSettingsJsunit() {
         }
         let indexEvent = {
           eventId: 10,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGridSettings008] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testGridSettings008] change component data error: " + err.message);
       }
@@ -251,10 +251,10 @@ export default function gridSettingsJsunit() {
         }
         let indexEvent = {
           eventId: 10,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGridSettings009] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testGridSettings009] change component data error: " + err.message);
       }
@@ -277,10 +277,10 @@ export default function gridSettingsJsunit() {
         }
         let indexEvent = {
           eventId: 10,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGridSettings010] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testGridSettings010] change component data error: " + err.message);
       }
@@ -314,10 +314,10 @@ export default function gridSettingsJsunit() {
         }
         let indexEvent = {
           eventId: 11,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGridSettings012] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testGridSettings012] change component data error: " + err.message);
       }
@@ -340,10 +340,10 @@ export default function gridSettingsJsunit() {
         }
         let indexEvent = {
           eventId: 11,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGridSettings013] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testGridSettings013] change component data error: " + err.message);
       }
@@ -366,10 +366,10 @@ export default function gridSettingsJsunit() {
         }
         let indexEvent = {
           eventId: 11,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGridSettings014] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testGridSettings014] change component data error: " + err.message);
       }
@@ -392,10 +392,10 @@ export default function gridSettingsJsunit() {
         }
         let indexEvent = {
           eventId: 11,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGridSettings015] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testGridSettings015] change component data error: " + err.message);
       }

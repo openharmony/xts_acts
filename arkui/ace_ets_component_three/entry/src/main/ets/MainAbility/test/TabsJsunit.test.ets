@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function tabsJsunit() {
   describe('tabsTest', function () {
@@ -134,10 +134,10 @@ export default function tabsJsunit() {
         }
         let indexEvent = {
           eventId: 213,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testTabs_0800 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testTabs_0800 change component data error: " + err.message);
       }
@@ -160,10 +160,10 @@ export default function tabsJsunit() {
         }
         let indexEvent = {
           eventId: 213,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testTabs_0900 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testTabs_0900 change component data error: " + err.message);
       }
@@ -186,10 +186,10 @@ export default function tabsJsunit() {
         }
         let indexEvent = {
           eventId: 213,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testTabs_1000 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testTabs_1000 change component data error: " + err.message);
       }
@@ -212,10 +212,10 @@ export default function tabsJsunit() {
         }
         let indexEvent = {
           eventId: 213,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testTabs_1100 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testTabs_1100 change component data error: " + err.message);
       }
@@ -238,10 +238,10 @@ export default function tabsJsunit() {
         }
         let indexEvent = {
           eventId: 214,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testTabs_1200 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testTabs_1200 change component data error: " + err.message);
       }
@@ -264,10 +264,10 @@ export default function tabsJsunit() {
         }
         let indexEvent = {
           eventId: 215,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testTabs_1300 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testTabs_1300 change component data error: " + err.message);
       }
@@ -289,12 +289,12 @@ export default function tabsJsunit() {
       }
       let indexEvent = {
         eventId: 212,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("testTabs_1400 on events_emitter err : " + JSON.stringify(err));
+        console.info("testTabs_1400 on emitter err : " + JSON.stringify(err));
       }
       console.info("testTabs_1400 click result is: " + JSON.stringify(sendEventByKey('tabContent1', 10, "")));
       await Utils.sleep(1000);

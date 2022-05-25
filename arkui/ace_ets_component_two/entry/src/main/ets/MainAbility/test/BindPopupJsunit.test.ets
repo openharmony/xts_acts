@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function customPopupOptionJsunit(){
   describe('bindPopupTest', function (){
@@ -55,12 +55,12 @@ export default function customPopupOptionJsunit(){
       }
       let indexEvent = {
         eventId: 67,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("bindPopupTest_0100 on events_emitter err : " + JSON.stringify(err));
+        console.info("bindPopupTest_0100 on emitter err : " + JSON.stringify(err));
       }
       console.info("bindPopupTest_0100 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
       await Utils.sleep(1000);
@@ -81,10 +81,10 @@ export default function customPopupOptionJsunit(){
         }
         let indexEvent = {
           eventId: 68,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("bindPopupTest_0200 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("bindPopupTest_0200 change component data error: " + err.message);
       }
@@ -96,12 +96,12 @@ export default function customPopupOptionJsunit(){
       }
       let indexEventOne = {
         eventId: 66,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEventOne, callbackOne);
+        emitter.on(indexEventOne, callbackOne);
       } catch (err) {
-        console.info("bindPopupTest_0200 on events_emitter err : " + JSON.stringify(err));
+        console.info("bindPopupTest_0200 on emitter err : " + JSON.stringify(err));
       }
       console.info("bindPopupTest_0200 click result is: " + JSON.stringify(sendEventByKey('button1',10,"")));
       await Utils.sleep(1000);
@@ -118,12 +118,12 @@ export default function customPopupOptionJsunit(){
       }
       let indexEvent = {
         eventId: 65,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("bindPopupTest_0300 on events_emitter err : " + JSON.stringify(err));
+        console.info("bindPopupTest_0300 on emitter err : " + JSON.stringify(err));
       }
       console.info("bindPopupTest_0300 click result is: " + JSON.stringify(sendEventByKey('button2',10,"")));
       await Utils.sleep(1000);

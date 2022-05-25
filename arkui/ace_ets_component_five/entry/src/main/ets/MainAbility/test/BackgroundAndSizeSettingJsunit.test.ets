@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter'
+import emitter from '@ohos.events.emitter'
 import Utils from './Utils.ets';
 
 export default function backgroundAndSizeSettingJsunit() {
@@ -69,10 +69,10 @@ export default function backgroundAndSizeSettingJsunit() {
         }
         var innerEvent = {
           eventId: 2,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testBackgroundAndSizeSetting_0200 start pages");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testBackgroundAndSizeSetting_0200 change component data error: " + err.message);
       }
@@ -136,10 +136,10 @@ export default function backgroundAndSizeSettingJsunit() {
         }
         let indexEvent = {
           eventId: 34,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testBackgroundAndSizeSetting_0600] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testBackgroundAndSizeSetting_0600] change component data error: " + err.message);
       }
@@ -167,10 +167,10 @@ export default function backgroundAndSizeSettingJsunit() {
         }
         let indexEvent = {
           eventId: 35,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testBackgroundAndSizeSetting_0700] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testBackgroundAndSizeSetting_0700] change component data error: " + err.message);
       }
@@ -206,10 +206,10 @@ export default function backgroundAndSizeSettingJsunit() {
         }
         let indexEvent = {
           eventId: 36,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testBackgroundAndSizeSetting_0900] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testBackgroundAndSizeSetting_0900] change component data error: " + err.message);
       }

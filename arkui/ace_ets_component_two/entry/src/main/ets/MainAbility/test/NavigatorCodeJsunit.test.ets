@@ -16,7 +16,7 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function navigatorCodeJsunit() {
@@ -69,10 +69,10 @@ export default function navigatorCodeJsunit() {
         }
         var innerEvent = {
           eventId: 138,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[test_NavigatorClick_002] start to publish emit" + JSON.stringify(eventData));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[test_NavigatorClick_002] change component error: " + err.message);
       }
@@ -92,12 +92,12 @@ export default function navigatorCodeJsunit() {
       }
       var innerEvent = {
         eventId: 139,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(innerEvent, callback)
+        emitter.on(innerEvent, callback)
       } catch (err) {
-        console.info("[test_NavigatorClick_003] on events_emitter err : " + JSON.stringify(err));
+        console.info("[test_NavigatorClick_003] on emitter err : " + JSON.stringify(err));
       }
       console.info('[test_NavigatorClick_003] sendEventByKey ' + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1000)

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -94,23 +94,23 @@ struct gridPage {
     console.info('button page show called');
     var stateChangeEvent = {
       eventId: 110,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+    emitter.on(stateChangeEvent, this.stateChangCallBack)
     var stateChangeEvent2 = {
       eventId: 111,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent2, this.stateChangCallBack)
+    emitter.on(stateChangeEvent2, this.stateChangCallBack)
     var stateChangeEvent3 = {
       eventId: 112,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent3, this.stateChangCallBack)
+    emitter.on(stateChangeEvent3, this.stateChangCallBack)
     var stateChangeEvent4 = {
       eventId: 113,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent4, this.stateChangCallBack)
+    emitter.on(stateChangeEvent4, this.stateChangCallBack)
   }
 }

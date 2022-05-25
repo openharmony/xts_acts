@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 import Matrix4 from '@ohos.matrix4'
 import prompt from '@system.prompt'
 
@@ -67,9 +67,9 @@ struct ohosMatrix4 {
 
     var stateChangeEvent = {
       eventId: 140,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
   build() {
@@ -119,10 +119,10 @@ struct ohosMatrix4 {
             }
             var backEvent = {
               eventId: 141,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("click to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("click action state err: " + JSON.stringify(err.message))
           }

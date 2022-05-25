@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function ToggleJsunit() {
@@ -90,10 +90,10 @@ export default function ToggleJsunit() {
         }
         let indexEvent = {
           eventId: 231,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testToggle04 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testToggle04 change component data error: " + err.message);
       }
@@ -116,10 +116,10 @@ export default function ToggleJsunit() {
         }
         let indexEvent = {
           eventId: 232,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testToggle05 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testToggle05 change component data error: " + err.message);
       }
@@ -142,10 +142,10 @@ export default function ToggleJsunit() {
         }
         let indexEvent = {
           eventId: 1033,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testToggle06 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testToggle06 change component data error: " + err.message);
       }
@@ -168,10 +168,10 @@ export default function ToggleJsunit() {
         }
         let indexEvent = {
           eventId: 1034,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testToggle07 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testToggle07 change component data error: " + err.message);
       }
@@ -194,10 +194,10 @@ export default function ToggleJsunit() {
         }
         let indexEvent = {
           eventId: 1035,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testToggle04 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testToggle04 change component data error: " + err.message);
       }
@@ -220,10 +220,10 @@ export default function ToggleJsunit() {
         }
         let indexEvent = {
           eventId: 1036,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testToggle04 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testToggle04 change component data error: " + err.message);
       }

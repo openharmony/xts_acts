@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -25,9 +25,9 @@ struct ResponseRegionExample {
   onPageShow() {
     let ChangeEvent = {
       eventId: 30,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(ChangeEvent, this.ChangCallBack)
+    emitter.on(ChangeEvent, this.ChangCallBack)
   }
 
   private ChangCallBack = (eventData) => {
@@ -76,10 +76,10 @@ struct ResponseRegionExample {
         }
         var backEvent = {
           eventId: 31,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[ResponseRegion] start to emit action state")
-        events_emitter.emit(backEvent, backData)
+        emitter.emit(backEvent, backData)
       } catch (err) {
         console.info("[ResponseRegion] emit action state err: " + JSON.stringify(err.message))
       }

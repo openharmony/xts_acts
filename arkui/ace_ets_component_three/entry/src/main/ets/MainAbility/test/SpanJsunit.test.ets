@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function spanJsunit() {
@@ -78,10 +78,10 @@ export default function spanJsunit() {
         }
         let indexEvent = {
           eventId: 200,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testSpan003] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testSpan003] change component data error: " + err.message);
       }
@@ -115,10 +115,10 @@ export default function spanJsunit() {
         }
         let indexEvent = {
           eventId: 201,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testSpan005] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testSpan005] change component data error: " + err.message);
       }
@@ -141,10 +141,10 @@ export default function spanJsunit() {
         }
         let indexEvent = {
           eventId: 1029,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testSpan006] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testSpan006] change component data error: " + err.message);
       }
@@ -167,10 +167,10 @@ export default function spanJsunit() {
         }
         let indexEvent = {
           eventId: 1030,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testSpan007] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testSpan007] change component data error: " + err.message);
       }
@@ -193,10 +193,10 @@ export default function spanJsunit() {
         }
         let indexEvent = {
           eventId: 1031,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testSpan008] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testSpan008] change component data error: " + err.message);
       }
@@ -219,10 +219,10 @@ export default function spanJsunit() {
         }
         let indexEvent = {
           eventId: 1032,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testSpan009] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testSpan009] change component data error: " + err.message);
       }

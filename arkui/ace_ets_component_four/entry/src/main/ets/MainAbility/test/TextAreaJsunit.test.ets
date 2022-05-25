@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function textAreaJsunit() {
@@ -68,10 +68,10 @@ export default function textAreaJsunit() {
         }
         var innerEvent = {
           eventId: 215,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[textAreaTest02] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[textAreaTest02] change component data error: " + err.message);
       }
@@ -105,10 +105,10 @@ export default function textAreaJsunit() {
         }
         var innerEvent = {
           eventId: 216,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[textAreaTest04] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[textAreaTest04] change component data error: " + err.message);
       }
@@ -142,10 +142,10 @@ export default function textAreaJsunit() {
         }
         var innerEvent = {
           eventId: 217,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[textAreaTest06] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[textAreaTest06] change component data error: " + err.message);
       }
@@ -179,10 +179,10 @@ export default function textAreaJsunit() {
         }
         var innerEvent = {
           eventId: 218,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[textAreaTest08] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[textAreaTest08] change component data error: " + err.message);
       }
@@ -216,10 +216,10 @@ export default function textAreaJsunit() {
         }
         var innerEvent = {
           eventId: 218,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[textAreaTest10] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[textAreaTest10] change component data error: " + err.message);
       }

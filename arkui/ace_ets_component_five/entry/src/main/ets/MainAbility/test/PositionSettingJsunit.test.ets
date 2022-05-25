@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function positionSettingJsunit() {
@@ -80,10 +80,10 @@ export default function positionSettingJsunit() {
         }
         let indexEvent = {
           eventId: 25,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testPositionSetting003] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testPositionSetting003] change component data error: " + err.message);
       }
@@ -108,10 +108,10 @@ export default function positionSettingJsunit() {
         }
         let indexEvent = {
           eventId: 26,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testPositionSetting004] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testPositionSetting004] change component data error: " + err.message);
       }
@@ -162,10 +162,10 @@ export default function positionSettingJsunit() {
         }
         let indexEvent = {
           eventId: 27,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testPositionSetting006] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testPositionSetting006] change component data error: " + err.message);
       }
@@ -212,10 +212,10 @@ export default function positionSettingJsunit() {
         }
         let indexEvent = {
           eventId: 28,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testPositionSetting008] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testPositionSetting008] change component data error: " + err.message);
       }
@@ -257,10 +257,10 @@ export default function positionSettingJsunit() {
         }
         let indexEvent = {
           eventId: 29,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testPositionSetting010] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testPositionSetting010] change component data error: " + err.message);
       }
@@ -296,10 +296,10 @@ export default function positionSettingJsunit() {
         }
         var innerEvent = {
           eventId: 25,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testPositionSetting012] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testPositionSetting012] change component data error: " + err.message);
       }

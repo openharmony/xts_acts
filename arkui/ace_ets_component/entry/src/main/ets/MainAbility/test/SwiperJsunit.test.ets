@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils.ets';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function swiperJsunit() {
   describe('swiperTest', function () {
@@ -116,10 +116,10 @@ export default function swiperJsunit() {
         }
         let indexEvent = {
           eventId: 207,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("swiperTest_0600 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("swiperTest_0600 change component data error: " + err.message);
       }
@@ -142,10 +142,10 @@ export default function swiperJsunit() {
         }
         let indexEvent = {
           eventId: 207,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("swiperTest_0700 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("swiperTest_0700 change component data error: " + err.message);
       }
@@ -167,12 +167,12 @@ export default function swiperJsunit() {
       }
       let indexEvent = {
         eventId: 205,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("swiperTest_0800 on events_emitter err : " + JSON.stringify(err));
+        console.info("swiperTest_0800 on emitter err : " + JSON.stringify(err));
       }
       console.info("swiperTest_0800 click result is: " + JSON.stringify(sendEventByKey('button1', 10, "")));
       await Utils.sleep(1000);
@@ -189,12 +189,12 @@ export default function swiperJsunit() {
       }
       let indexEvent = {
         eventId: 206,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("swiperTest_0900 on events_emitter err : " + JSON.stringify(err));
+        console.info("swiperTest_0900 on emitter err : " + JSON.stringify(err));
       }
       console.info("swiperTest_0900 click result is: " + JSON.stringify(sendEventByKey('button2', 10, "")));
       await Utils.sleep(1000);
@@ -211,12 +211,12 @@ export default function swiperJsunit() {
       }
       let indexEventOne = {
         eventId: 206,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEventOne, callbackOne);
+        emitter.on(indexEventOne, callbackOne);
       } catch (err) {
-        console.info("swiperTest_1000 on events_emitter err : " + JSON.stringify(err));
+        console.info("swiperTest_1000 on emitter err : " + JSON.stringify(err));
       }
       console.info("swiperTest_1000 click result is: " + JSON.stringify(sendEventByKey('button2', 10, "")));
       await Utils.sleep(1500);
@@ -226,12 +226,12 @@ export default function swiperJsunit() {
       }
       let indexEvent = {
         eventId: 204,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("swiperTest_1000 on events_emitter err : " + JSON.stringify(err));
+        console.info("swiperTest_1000 on emitter err : " + JSON.stringify(err));
       }
       console.info('swiperTest_1000 END');
       done();
@@ -247,10 +247,10 @@ export default function swiperJsunit() {
         }
         let indexEvent = {
           eventId: 208,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("swiperTest_1100 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("swiperTest_1100 change component data error: " + err.message);
       }
@@ -273,10 +273,10 @@ export default function swiperJsunit() {
         }
         let indexEvent = {
           eventId: 208,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("swiperTest_1200 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("swiperTest_1200 change component data error: " + err.message);
       }
@@ -299,10 +299,10 @@ export default function swiperJsunit() {
         }
         let indexEvent = {
           eventId: 209,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("swiperTest_1300 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("swiperTest_1300 change component data error: " + err.message);
       }
@@ -325,10 +325,10 @@ export default function swiperJsunit() {
         }
         let indexEvent = {
           eventId: 209,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("swiperTest_1400 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("swiperTest_1400 change component data error: " + err.message);
       }
@@ -351,10 +351,10 @@ export default function swiperJsunit() {
         }
         let indexEvent = {
           eventId: 210,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("swiperTest_1500 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("swiperTest_1500 change component data error: " + err.message);
       }
@@ -377,10 +377,10 @@ export default function swiperJsunit() {
         }
         let indexEvent = {
           eventId: 210,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("swiperTest_1600 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("swiperTest_1600 change component data error: " + err.message);
       }
@@ -403,10 +403,10 @@ export default function swiperJsunit() {
         }
         let indexEvent = {
           eventId: 208,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("swiperTest_1700 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("swiperTest_1700 change component data error: " + err.message);
       }
@@ -429,10 +429,10 @@ export default function swiperJsunit() {
         }
         let indexEvent = {
           eventId: 207,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("swiperTest_1800 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("swiperTest_1800 change component data error: " + err.message);
       }
@@ -455,10 +455,10 @@ export default function swiperJsunit() {
         }
         let indexEvent = {
           eventId: 210,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("swiperTest_1900 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("swiperTest_1900 change component data error: " + err.message);
       }

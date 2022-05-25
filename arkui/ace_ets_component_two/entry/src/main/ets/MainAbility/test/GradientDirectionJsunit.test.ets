@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function gridJsunit() {
@@ -67,10 +67,10 @@ export default function gridJsunit() {
         }
         let indexEvent = {
           eventId: 106,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("GradientDirectionTest_0200 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("GradientDirectionTest_0200 change component data error: " + err.message);
       }
@@ -94,10 +94,10 @@ export default function gridJsunit() {
         }
         let indexEvent = {
           eventId: 107,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("GradientDirectionTest_0300 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("GradientDirectionTest_0300 change component data error: " + err.message);
       }
@@ -121,10 +121,10 @@ export default function gridJsunit() {
         }
         let indexEvent = {
           eventId: 108,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("GradientDirectionTest_0400 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("GradientDirectionTest_0400 change component data error: " + err.message);
       }

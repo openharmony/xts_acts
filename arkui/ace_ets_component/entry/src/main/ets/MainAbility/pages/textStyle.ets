@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -74,29 +74,29 @@ struct TextStyle {
   onPageShow() {
     let fontColorChangeEvent = {
       eventId: 37,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(fontColorChangeEvent, this.textStyleChangCallBack);
+    emitter.on(fontColorChangeEvent, this.textStyleChangCallBack);
     let fontSizeChangeEvent = {
       eventId: 38,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(fontSizeChangeEvent, this.textStyleChangCallBack);
+    emitter.on(fontSizeChangeEvent, this.textStyleChangCallBack);
     let fontStyleChangeEvent = {
       eventId: 39,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(fontStyleChangeEvent, this.textStyleChangCallBack);
+    emitter.on(fontStyleChangeEvent, this.textStyleChangCallBack);
     let fontWeightChangeEvent = {
       eventId: 40,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(fontWeightChangeEvent, this.textStyleChangCallBack);
+    emitter.on(fontWeightChangeEvent, this.textStyleChangCallBack);
     let fontFamilyChangeEvent = {
       eventId: 41,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(fontFamilyChangeEvent, this.textStyleChangCallBack);
+    emitter.on(fontFamilyChangeEvent, this.textStyleChangCallBack);
   }
 
   textStyleChangCallBack = (eventData) => {

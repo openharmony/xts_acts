@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter'
+import emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function pageTransitionJsunit() {
@@ -90,10 +90,10 @@ export default function pageTransitionJsunit() {
         }
         let indexEvent = {
           eventId: 145,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("pageTransitionTest_0400 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("pageTransitionTest_0400 change component data error: " + err.message);
       }
@@ -105,12 +105,12 @@ export default function pageTransitionJsunit() {
       }
       let indexEventOne = {
         eventId: 144,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEventOne, callback);
+        emitter.on(indexEventOne, callback);
       } catch (err) {
-        console.info("pageTransitionTest_0400 on events_emitter err : " + JSON.stringify(err));
+        console.info("pageTransitionTest_0400 on emitter err : " + JSON.stringify(err));
       }
       console.info("pageTransitionTest_0400 click result is: " + JSON.stringify(sendEventByKey('Navigator',10,"")));
       await Utils.sleep(2000);

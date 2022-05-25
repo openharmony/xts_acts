@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 export default function zIndexJsunit() {
   describe('zIndexTest', function () {
@@ -66,10 +66,10 @@ export default function zIndexJsunit() {
         }
         var innerEvent = {
           eventId: 236,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testZIndex02] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testZIndex02] change component data error: " + err.message);
       }
@@ -92,10 +92,10 @@ export default function zIndexJsunit() {
         }
         var innerEvent = {
           eventId: 236,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testZIndex03] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testZIndex03] change component data error: " + err.message);
       }
@@ -118,10 +118,10 @@ export default function zIndexJsunit() {
         }
         var innerEvent = {
           eventId: 1113,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testZIndex04] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testZIndex04] change component data error: " + err.message);
       }

@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function panelJsunit() {
   describe('panelTest', function () {
@@ -56,10 +56,10 @@ export default function panelJsunit() {
         }
         var innerEvent = {
           eventId: 147,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testPanel_100 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testPanel_100 change component data error: " + err.message);
       }
@@ -84,10 +84,10 @@ export default function panelJsunit() {
         }
         var innerEvent = {
           eventId: 148,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testPanel_200 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testPanel_200 change component data error: " + err.message);
       }
@@ -112,10 +112,10 @@ export default function panelJsunit() {
         }
         var innerEvent = {
           eventId: 149,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testPanel_300 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testPanel_300 change component data error: " + err.message);
       }

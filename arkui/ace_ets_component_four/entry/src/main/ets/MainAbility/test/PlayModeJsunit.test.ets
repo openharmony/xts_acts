@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter'
+import emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function playModeJsunit(){
@@ -51,16 +51,16 @@ export default function playModeJsunit(){
       await Utils.sleep(1500);
       let indexEvent = {
         eventId: 161,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       let callback= (indexEvent) => {
         console.info("playModeTest_0100 get state result is: " + JSON.stringify(indexEvent))
         except(indexEvent.data.playMode).assertEqual(PlayMode.AlternateReverse)
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("playModeTest_0100 on events_emitter err : " + JSON.stringify(err));
+        console.info("playModeTest_0100 on emitter err : " + JSON.stringify(err));
       }
       console.info("playModeTest_0100 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
       await Utils.sleep(2000);

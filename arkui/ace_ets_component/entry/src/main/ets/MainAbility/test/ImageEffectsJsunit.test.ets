@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function imageEffectsJsunit() {
@@ -67,10 +67,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 12,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects002] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects002] change component data error: " + err.message);
       }
@@ -93,10 +93,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 12,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects003] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects003] change component data error: " + err.message);
       }
@@ -119,10 +119,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 12,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects004] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects004] change component data error: " + err.message);
       }
@@ -145,10 +145,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 12,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects005] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects005] change component data error: " + err.message);
       }
@@ -187,10 +187,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 13,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects007] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects007] change component data error: " + err.message);
       }
@@ -217,10 +217,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 13,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects008] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects008] change component data error: " + err.message);
       }
@@ -247,10 +247,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 13,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects009] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects009] change component data error: " + err.message);
       }
@@ -277,10 +277,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 13,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects010] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects010] change component data error: " + err.message);
       }
@@ -316,10 +316,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 15,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects012] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects012] change component data error: " + err.message);
       }
@@ -342,10 +342,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 15,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects013] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects013] change component data error: " + err.message);
       }
@@ -368,10 +368,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 15,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects014] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects014] change component data error: " + err.message);
       }
@@ -394,10 +394,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 15,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects015] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects015] change component data error: " + err.message);
       }
@@ -431,10 +431,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 16,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects017] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects017] change component data error: " + err.message);
       }
@@ -457,10 +457,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 16,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects018] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects018] change component data error: " + err.message);
       }
@@ -483,10 +483,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 16,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects019] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects019] change component data error: " + err.message);
       }
@@ -509,10 +509,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 16,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects020] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects020] change component data error: " + err.message);
       }
@@ -545,10 +545,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 17,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects022] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects022] change component data error: " + err.message);
       }
@@ -571,10 +571,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 17,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects023] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects023] change component data error: " + err.message);
       }
@@ -597,10 +597,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 17,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects024] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects024] change component data error: " + err.message);
       }
@@ -623,10 +623,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 17,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects025] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects025] change component data error: " + err.message);
       }
@@ -659,10 +659,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 18,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects027] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects027] change component data error: " + err.message);
       }
@@ -685,10 +685,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 18,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects028] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects028] change component data error: " + err.message);
       }
@@ -711,10 +711,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 18,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects029] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects029] change component data error: " + err.message);
       }
@@ -737,10 +737,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 18,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects030] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects030] change component data error: " + err.message);
       }
@@ -774,10 +774,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 19,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects032] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects032] change component data error: " + err.message);
       }
@@ -800,10 +800,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 19,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects033] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects033] change component data error: " + err.message);
       }
@@ -826,10 +826,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 19,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects034] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects034] change component data error: " + err.message);
       }
@@ -852,10 +852,10 @@ export default function imageEffectsJsunit() {
         }
         var innerEvent = {
           eventId: 19,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testImageEffects035] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testImageEffects035] change component data error: " + err.message);
       }

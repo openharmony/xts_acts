@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -109,33 +109,33 @@ struct PositionSetting {
   onPageShow() {
     let stateChangeEvent = {
       eventId: 25,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
 
     let directionChangeEvent = {
       eventId: 26,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(directionChangeEvent, this.stateChangCallBack);
+    emitter.on(directionChangeEvent, this.stateChangCallBack);
 
     let positionChangeEvent = {
       eventId: 27,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(positionChangeEvent, this.stateChangCallBack);
+    emitter.on(positionChangeEvent, this.stateChangCallBack);
 
     let markAnchorChangeEvent = {
       eventId: 28,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(markAnchorChangeEvent, this.stateChangCallBack);
+    emitter.on(markAnchorChangeEvent, this.stateChangCallBack);
 
     let offsetChangeEvent = {
       eventId: 29,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(offsetChangeEvent, this.stateChangCallBack);
+    emitter.on(offsetChangeEvent, this.stateChangCallBack);
   }
   stateChangCallBack = (eventData) => {
     console.info("position page stateChangCallBack" + JSON.stringify(eventData));

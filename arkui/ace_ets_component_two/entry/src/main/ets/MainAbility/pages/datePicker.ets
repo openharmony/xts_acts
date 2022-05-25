@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -41,10 +41,10 @@ struct DatePickerExample01 {
             }
             var backEvent = {
               eventId: 80,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("DatePicker start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("DatePicker emit action state err: " + JSON.stringify(err.message))
           }
@@ -56,9 +56,9 @@ struct DatePickerExample01 {
     console.info('DatePicker page show called');
     var stateChangeEvent = {
       eventId: 81,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+    emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
   private stateChangCallBack = (eventData) => {

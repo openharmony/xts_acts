@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function scrollBarJsunit() {
@@ -69,10 +69,10 @@ export default function scrollBarJsunit() {
         }
         var innerEvent = {
           eventId: 183,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testScrollBar002] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testScrollBar002] change component data error: " + err.message);
       }
@@ -106,10 +106,10 @@ export default function scrollBarJsunit() {
         }
         let indexEvent = {
           eventId: 184,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testScrollBar004] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testScrollBar004] change component data error: " + err.message);
       }
@@ -132,10 +132,10 @@ export default function scrollBarJsunit() {
         }
         let indexEvent = {
           eventId: 184,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testScrollBar005] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testScrollBar005] change component data error: " + err.message);
       }

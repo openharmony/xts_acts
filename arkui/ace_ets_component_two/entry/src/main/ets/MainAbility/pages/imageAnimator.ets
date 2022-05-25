@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -82,10 +82,10 @@ struct ImageAnimatorExample {
             }
             var backEvent = {
               eventId: 114,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("emit action state err: " + JSON.stringify(err.message))
           }
@@ -107,10 +107,10 @@ struct ImageAnimatorExample {
             }
             var backEvent = {
               eventId: 115,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button emit action state err: " + JSON.stringify(err.message))
           }
@@ -126,10 +126,10 @@ struct ImageAnimatorExample {
             }
             var backEvent = {
               eventId: 116,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button1 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button1 emit action state err: " + JSON.stringify(err.message))
           }
@@ -145,10 +145,10 @@ struct ImageAnimatorExample {
             }
             var backEvent = {
               eventId: 117,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button2 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button2 emit action state err: " + JSON.stringify(err.message))
           }
@@ -165,10 +165,10 @@ struct ImageAnimatorExample {
             }
             var backEvent = {
               eventId: 118,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button3 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button3 emit action state err: " + JSON.stringify(err.message))
           }
@@ -183,10 +183,10 @@ struct ImageAnimatorExample {
             }
             var backEvent = {
               eventId: 119,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button4 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button4 emit action state err: " + JSON.stringify(err.message))
           }
@@ -201,10 +201,10 @@ struct ImageAnimatorExample {
             }
             var backEvent = {
               eventId: 120,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button5 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button5 emit action state err: " + JSON.stringify(err.message))
           }
@@ -216,9 +216,9 @@ struct ImageAnimatorExample {
     console.info('imageAnimator page show called');
     var stateChangeEvent = {
       eventId: 121,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+    emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
   private stateChangCallBack = (eventData) => {

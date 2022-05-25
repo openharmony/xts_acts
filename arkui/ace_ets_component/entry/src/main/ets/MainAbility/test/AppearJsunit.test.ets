@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter'
+import emitter from '@ohos.events.emitter'
 import Utils from './Utils.ets';
 
 export default function appearJsunit() {
@@ -57,9 +57,9 @@ export default function appearJsunit() {
         }
         var appearEvent = {
           eventId: 58,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
-        events_emitter.on(appearEvent, callBackAppear);
+        emitter.on(appearEvent, callBackAppear);
       } catch (err) {
         console.info("testAppear01 on appearEvent err : " + JSON.stringify(err));
       }
@@ -78,9 +78,9 @@ export default function appearJsunit() {
         }
         var appearEvent = {
           eventId: 59,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
-        events_emitter.on(appearEvent, callBackAppear);
+        emitter.on(appearEvent, callBackAppear);
       } catch (err) {
         console.info("testAppear02 on appearEvent err : " + JSON.stringify(err));
       }
@@ -93,9 +93,9 @@ export default function appearJsunit() {
         }
         var disAppearEvent = {
           eventId: 60,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
-        events_emitter.on(disAppearEvent, callBackDisAppear);
+        emitter.on(disAppearEvent, callBackDisAppear);
       } catch (err) {
         console.info("testAppear02 on disAppearEvent err : " + JSON.stringify(err));
       }

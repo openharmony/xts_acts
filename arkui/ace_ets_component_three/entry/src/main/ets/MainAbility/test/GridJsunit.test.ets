@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function gridJsunit() {
@@ -61,10 +61,10 @@ export default function gridJsunit() {
         }
         var innerEvent = {
           eventId: 110,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info('gridTest01 start to publish emit')
-        events_emitter.emit(innerEvent, eventData)
+        emitter.emit(innerEvent, eventData)
       } catch (err) {
         console.log('gridTest01 change component data error: ' + err.message)
       }
@@ -92,10 +92,10 @@ export default function gridJsunit() {
         }
         var innerEvent = {
           eventId: 111,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info('[ gridTest02 ] start to publish emit')
-        events_emitter.emit(innerEvent, eventData)
+        emitter.emit(innerEvent, eventData)
       } catch (err) {
         console.log('[ gridTest02 ] change component data error: ' + err.message)
       }
@@ -123,10 +123,10 @@ export default function gridJsunit() {
         }
         var innerEvent = {
           eventId: 112,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info('[ gridTest03 ] start to publish emit')
-        events_emitter.emit(innerEvent, eventData)
+        emitter.emit(innerEvent, eventData)
       } catch (err) {
         console.log('[ gridTest03 ] change component data error: ' + err.message)
       }
@@ -154,10 +154,10 @@ export default function gridJsunit() {
         }
         var innerEvent = {
           eventId: 113,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info('[ gridTest04 ] start to publish emit')
-        events_emitter.emit(innerEvent, eventData)
+        emitter.emit(innerEvent, eventData)
       } catch (err) {
         console.log('[ gridTest04 ] change component data error: ' + err.message)
       }

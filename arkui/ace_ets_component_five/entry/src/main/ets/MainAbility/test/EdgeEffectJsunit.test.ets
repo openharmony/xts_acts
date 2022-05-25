@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function edgeEffectJsunit(){
   describe('edgeEffectTest', function (){
@@ -65,10 +65,10 @@ export default function edgeEffectJsunit(){
         }
         let indexEvent = {
           eventId: 91,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("edgeEffectTest_0200 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("edgeEffectTest_0200 change component data error: " + err.message);
       }

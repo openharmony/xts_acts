@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function directionJsunit(){
   describe('directionTest', function (){
@@ -65,10 +65,10 @@ export default function directionJsunit(){
         }
         let indexEvent = {
           eventId: 84,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("directionTest_0200 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("directionTest_0200 change component data error: " + err.message);
       }
@@ -91,10 +91,10 @@ export default function directionJsunit(){
         }
         let indexEvent = {
           eventId: 84,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("directionTest_0300 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("directionTest_0300 change component data error: " + err.message);
       }

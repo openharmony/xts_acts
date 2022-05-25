@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function ohosMatrix4Jsunit() {
@@ -102,10 +102,10 @@ export default function ohosMatrix4Jsunit() {
         }
         var innerEvent = {
           eventId: 140,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[test_OhosMatrix4_004] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[test_OhosMatrix4_004] change component data error: " + err.message);
       }
@@ -126,12 +126,12 @@ export default function ohosMatrix4Jsunit() {
       }
       var innerEvent = {
         eventId: 141,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(innerEvent, callback)
+        emitter.on(innerEvent, callback)
       } catch (err) {
-        console.info("[test_OhosMatrix4_005] on events_emitter err : " + JSON.stringify(err));
+        console.info("[test_OhosMatrix4_005] on emitter err : " + JSON.stringify(err));
       }
       console.info('[test_OhosMatrix4_005] sendEventByKey ' + JSON.stringify(sendEventByKey('rotate5', 10, "")));
       await Utils.sleep(1000)
@@ -157,10 +157,10 @@ export default function ohosMatrix4Jsunit() {
         }
         var innerEvent = {
           eventId: 140,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[test_OhosMatrix4_006] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[test_OhosMatrix4_006] change component data error: " + err.message);
       }

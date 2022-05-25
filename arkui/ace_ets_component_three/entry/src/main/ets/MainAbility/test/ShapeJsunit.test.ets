@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function shapeJsunit() {
   describe('shapeTest', function () {
@@ -155,10 +155,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_1000 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_1000 change component color error: " + err.message);
       }
@@ -181,10 +181,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_1100 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_1100 change component color error: " + err.message);
       }
@@ -207,10 +207,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_1200 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_1200 change component color error: " + err.message);
       }
@@ -233,10 +233,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_1300 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_1300 change component color error: " + err.message);
       }
@@ -259,10 +259,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_1400 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_1400 change component color error: " + err.message);
       }
@@ -285,10 +285,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_1500 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_1500 change component color error: " + err.message);
       }
@@ -311,10 +311,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_1600 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_1600 change component color error: " + err.message);
       }
@@ -337,10 +337,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_1700 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_1700 change component color error: " + err.message);
       }
@@ -363,10 +363,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_1800 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_1800 change component color error: " + err.message);
       }
@@ -389,10 +389,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_1900 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_1900 change component color error: " + err.message);
       }
@@ -415,10 +415,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_2000 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_2000 change component color error: " + err.message);
       }
@@ -441,10 +441,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_2100 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_2100 change component color error: " + err.message);
       }
@@ -467,10 +467,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_2200 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_2200 change component color error: " + err.message);
       }
@@ -493,10 +493,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_2300 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_2300 change component color error: " + err.message);
       }
@@ -519,10 +519,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_2400 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_2400 change component color error: " + err.message);
       }
@@ -545,10 +545,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_2500 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_2500 change component color error: " + err.message);
       }
@@ -571,10 +571,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_2600 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_2600 change component color error: " + err.message);
       }
@@ -597,10 +597,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_2700 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_2700 change component color error: " + err.message);
       }
@@ -623,10 +623,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_2800 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_2800 change component color error: " + err.message);
       }
@@ -649,10 +649,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_2900 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_2900 change component color error: " + err.message);
       }
@@ -686,10 +686,10 @@ export default function shapeJsunit() {
         }
         var innerEvent = {
           eventId: 192,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("shapeTest_3100 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("shapeTest_3100 change component color error: " + err.message);
       }

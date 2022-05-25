@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -64,19 +64,19 @@ struct GridSetting {
   onPageShow() {
     let smChangeEvent = {
       eventId: 9,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(smChangeEvent, this.stateChangCallBack);
+    emitter.on(smChangeEvent, this.stateChangCallBack);
     let offsetChangeEvent = {
       eventId: 10,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(offsetChangeEvent, this.stateChangCallBack);
+    emitter.on(offsetChangeEvent, this.stateChangCallBack);
     let spanChangeEvent = {
       eventId: 11,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(spanChangeEvent, this.stateChangCallBack);
+    emitter.on(spanChangeEvent, this.stateChangCallBack);
   }
 
   stateChangCallBack = (eventData) => {

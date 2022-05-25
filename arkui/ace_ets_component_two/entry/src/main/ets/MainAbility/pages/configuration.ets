@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import Configuration from '@system.configuration';
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -40,10 +40,10 @@ struct promptExample {
             console.log("backData is" + JSON.stringify(backData.data));
             var backEvent = {
               eventId: 78,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("confituration start to emit action state");
-            events_emitter.emit(backEvent, backData);
+            emitter.emit(backEvent, backData);
           }catch{
             console.info("confituration emit action state err: " + JSON.stringify(err.message));
           }

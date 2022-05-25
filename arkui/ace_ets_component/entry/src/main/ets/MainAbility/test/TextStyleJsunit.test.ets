@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function textStyleJsunit() {
@@ -66,10 +66,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 37,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle002] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle002] change component data error: " + err.message);
       }
@@ -92,10 +92,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 37,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle003] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle003] change component data error: " + err.message);
       }
@@ -118,10 +118,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 37,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle004] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle004] change component data error: " + err.message);
       }
@@ -144,10 +144,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 37,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle005] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle005] change component data error: " + err.message);
       }
@@ -181,10 +181,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 38,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle007] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle007] change component data error: " + err.message);
       }
@@ -207,10 +207,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 38,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle008] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle008] change component data error: " + err.message);
       }
@@ -233,10 +233,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 38,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle009] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle009] change component data error: " + err.message);
       }
@@ -259,10 +259,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 38,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle010] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle010] change component data error: " + err.message);
       }
@@ -296,10 +296,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 39,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle012] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle012] change component data error: " + err.message);
       }
@@ -322,10 +322,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 39,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle013] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle013] change component data error: " + err.message);
       }
@@ -348,10 +348,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 39,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle014] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle014] change component data error: " + err.message);
       }
@@ -374,10 +374,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 39,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle015] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle015] change component data error: " + err.message);
       }
@@ -411,10 +411,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 40,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle017] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle017] change component data error: " + err.message);
       }
@@ -437,10 +437,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 40,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle018] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle018] change component data error: " + err.message);
       }
@@ -463,10 +463,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 40,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle019] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle019] change component data error: " + err.message);
       }
@@ -489,10 +489,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 40,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle020] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle020] change component data error: " + err.message);
       }
@@ -526,10 +526,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 41,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle022] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle022] change component data error: " + err.message);
       }
@@ -552,10 +552,10 @@ export default function textStyleJsunit() {
         }
         let indexEvent = {
           eventId: 41,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testTextStyle023] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testTextStyle023] change component data error: " + err.message);
       }

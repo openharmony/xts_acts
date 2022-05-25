@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function priorityGestureJsunit() {
   describe('priorityGestureTest', function () {
@@ -61,12 +61,12 @@ export default function priorityGestureJsunit() {
       }
       var innerEvent = {
         eventId: 162,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(innerEvent, callback)
+        emitter.on(innerEvent, callback)
       } catch (err) {
-        console.info("priorityGestureTest_0100 on events_emitter err : " + JSON.stringify(err));
+        console.info("priorityGestureTest_0100 on emitter err : " + JSON.stringify(err));
       }
       console.info('priorityGestureTest_0100 sendTouchEvent one:' + sendTouchEvent(point));
       await Utils.sleep(1000)

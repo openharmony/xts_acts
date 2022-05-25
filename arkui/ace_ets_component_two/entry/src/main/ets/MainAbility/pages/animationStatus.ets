@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -94,10 +94,10 @@ struct ImageAnimatorExample {
             }
             var backEvent = {
               eventId: 56,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button2 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button2 emit action state err: " + JSON.stringify(err.message))
           }
@@ -113,10 +113,10 @@ struct ImageAnimatorExample {
             }
             var backEvent = {
               eventId: 57,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button3 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button3 emit action state err: " + JSON.stringify(err.message))
           }

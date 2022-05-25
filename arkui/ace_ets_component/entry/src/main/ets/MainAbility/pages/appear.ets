@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 import prompt from '@system.prompt'
 
 @Entry
@@ -31,9 +31,9 @@ struct AppearExample {
     console.info('[appear] page show called');
     var stateChangeEvent = {
       eventId: 58,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
   private stateChangCallBack = (eventData) => {
@@ -68,10 +68,10 @@ struct AppearExample {
               }
               var backEvent = {
                 eventId: 59,
-                priority: events_emitter.EventPriority.LOW
+                priority: emitter.EventPriority.LOW
               }
               console.info("appearFlag start to emit action state")
-              events_emitter.emit(backEvent, backData)
+              emitter.emit(backEvent, backData)
             } catch {
               console.info("appearFlag emit action state err: " + JSON.stringify(err.message))
             }
@@ -89,10 +89,10 @@ struct AppearExample {
               }
               var backEvent = {
                 eventId: 60,
-                priority: events_emitter.EventPriority.LOW
+                priority: emitter.EventPriority.LOW
               }
               console.info("disAppearFlag start to emit action state")
-              events_emitter.emit(backEvent, backData)
+              emitter.emit(backEvent, backData)
             } catch {
               console.info("disAppearFlag emit action state err: " + JSON.stringify(err.message))
             }

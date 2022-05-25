@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 export default function visibilityJsunit() {
   describe('appInfoTest', function () {
@@ -66,10 +66,10 @@ export default function visibilityJsunit() {
         }
         var innerEvent = {
           eventId: 47,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testVisibility02] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testVisibility02] change component data error: " + err.message);
       }
@@ -92,10 +92,10 @@ export default function visibilityJsunit() {
         }
         var innerEvent = {
           eventId: 48,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testVisibility03] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testVisibility03] change component data error: " + err.message);
       }

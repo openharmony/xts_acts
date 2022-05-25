@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils.ets';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function stepperJsunit() {
   describe('stepperTest', function () {
@@ -72,10 +72,10 @@ export default function stepperJsunit() {
         }
         let indexEvent = {
           eventId: 202,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("stepperTest_0200 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("stepperTest_0200 change component data error: " + err.message);
       }
@@ -102,10 +102,10 @@ export default function stepperJsunit() {
         }
         let indexEvent = {
           eventId: 909,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("stepperTest_0300 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("stepperTest_0300 change component data error: " + err.message);
       }
@@ -132,10 +132,10 @@ export default function stepperJsunit() {
         }
         let indexEvent = {
           eventId: 909,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("stepperTest_0400 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("stepperTest_0400 change component data error: " + err.message);
       }
@@ -158,10 +158,10 @@ export default function stepperJsunit() {
         }
         var innerEvent = {
           eventId: 910,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[stepperTest_0500] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[stepperTest_0500] change component data error: " + err.message);
       }

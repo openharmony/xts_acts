@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -29,69 +29,69 @@ struct AnimationExample {
     console.info('animate page show called');
     var stateChangeEvent = {
       eventId: 50,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+    emitter.on(stateChangeEvent, this.stateChangCallBack)
 
     var stateChangeEventa = {
       eventId: 1011,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventa, this.stateChangCallBack)
+    emitter.on(stateChangeEventa, this.stateChangCallBack)
 
     var stateChangeEventb = {
       eventId: 1012,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventb, this.stateChangCallBack)
+    emitter.on(stateChangeEventb, this.stateChangCallBack)
 
     var stateChangeEventc = {
       eventId: 1013,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventc, this.stateChangCallBack)
+    emitter.on(stateChangeEventc, this.stateChangCallBack)
 
     var stateChangeEventd = {
       eventId: 1014,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventd, this.stateChangCallBack)
+    emitter.on(stateChangeEventd, this.stateChangCallBack)
 
     var stateChangeEvente = {
       eventId: 1015,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvente, this.stateChangCallBack)
+    emitter.on(stateChangeEvente, this.stateChangCallBack)
 
     var stateChangeEventf = {
       eventId: 1016,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventf, this.stateChangCallBack)
+    emitter.on(stateChangeEventf, this.stateChangCallBack)
 
     var stateChangeEventg = {
       eventId: 1017,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventg, this.stateChangCallBack)
+    emitter.on(stateChangeEventg, this.stateChangCallBack)
 
     var stateChangeEventh = {
       eventId: 1018,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventh, this.stateChangCallBack)
+    emitter.on(stateChangeEventh, this.stateChangCallBack)
 
     var stateChangeEventi = {
       eventId: 1019,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventi, this.stateChangCallBack)
+    emitter.on(stateChangeEventi, this.stateChangCallBack)
 
     var stateChangeEventj = {
       eventId: 1020,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventj, this.stateChangCallBack)
+    emitter.on(stateChangeEventj, this.stateChangCallBack)
   }
 
   private stateChangCallBack = (eventData) => {
@@ -132,10 +132,10 @@ struct AnimationExample {
             }
             var backEvent = {
               eventId: 51,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button1 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button1 emit action state err: " + JSON.stringify(err.message))
           }
@@ -160,10 +160,10 @@ struct AnimationExample {
             }
             var backEventOne = {
               eventId: 52,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button2 start to emit action state")
-            events_emitter.emit(backEventOne, backDataOne)
+            emitter.emit(backEventOne, backDataOne)
           } catch (err) {
             console.info("button2 emit action state err: " + JSON.stringify(err.message))
           }
@@ -188,10 +188,10 @@ struct AnimationExample {
             }
             var backEventTwo = {
               eventId: 53,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button3 start to emit action state")
-            events_emitter.emit(backEventTwo, backDataTwo)
+            emitter.emit(backEventTwo, backDataTwo)
           } catch (err) {
             console.info("button3 emit action state err: " + JSON.stringify(err.message))
           }
@@ -216,10 +216,10 @@ struct AnimationExample {
             }
             var backEventThree = {
               eventId: 54,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button4 start to emit action state")
-            events_emitter.emit(backEventThree, backDataThree)
+            emitter.emit(backEventThree, backDataThree)
           } catch (err) {
             console.info("button4 emit action state err: " + JSON.stringify(err.message))
           }
@@ -244,10 +244,10 @@ struct AnimationExample {
             }
             var backEventFour = {
               eventId: 55,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button5 start to emit action state")
-            events_emitter.emit(backEventFour, backDataFour)
+            emitter.emit(backEventFour, backDataFour)
           } catch (err) {
             console.info("button5 emit action state err: " + JSON.stringify(err.message))
           }
@@ -272,10 +272,10 @@ struct AnimationExample {
             }
             var backEvent = {
               eventId: 1001,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button6 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button6 emit action state err: " + JSON.stringify(err.message))
           }
@@ -300,10 +300,10 @@ struct AnimationExample {
             }
             var backEvent = {
               eventId: 1002,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button7 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button7 emit action state err: " + JSON.stringify(err.message))
           }
@@ -328,10 +328,10 @@ struct AnimationExample {
             }
             var backEvent = {
               eventId: 1003,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button8 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button8 emit action state err: " + JSON.stringify(err.message))
           }
@@ -356,10 +356,10 @@ struct AnimationExample {
             }
             var backEvent = {
               eventId: 1004,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button9 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button9 emit action state err: " + JSON.stringify(err.message))
           }
@@ -384,10 +384,10 @@ struct AnimationExample {
             }
             var backEvent = {
               eventId: 1005,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button10 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button10 emit action state err: " + JSON.stringify(err.message))
           }
@@ -412,10 +412,10 @@ struct AnimationExample {
             }
             var backEvent = {
               eventId: 1006,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button11 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button11 emit action state err: " + JSON.stringify(err.message))
           }
@@ -440,10 +440,10 @@ struct AnimationExample {
             }
             var backEvent = {
               eventId: 1007,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button12 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button12 emit action state err: " + JSON.stringify(err.message))
           }
@@ -468,10 +468,10 @@ struct AnimationExample {
             }
             var backEvent = {
               eventId: 1008,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button13 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button13 emit action state err: " + JSON.stringify(err.message))
           }
@@ -496,10 +496,10 @@ struct AnimationExample {
             }
             var backEvent = {
               eventId: 1009,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button14 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button14 emit action state err: " + JSON.stringify(err.message))
           }
@@ -524,10 +524,10 @@ struct AnimationExample {
             }
             var backEvent = {
               eventId: 1010,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button15 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button15 emit action state err: " + JSON.stringify(err.message))
           }

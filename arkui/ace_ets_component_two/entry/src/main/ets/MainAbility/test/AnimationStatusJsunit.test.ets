@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function  animationStatusJsunit() {
   describe('animationStatus', function () {
@@ -77,12 +77,12 @@ export default function  animationStatusJsunit() {
       }
       let indexEvent = {
         eventId: 56,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("animationStatus03 on events_emitter err : " + JSON.stringify(err));
+        console.info("animationStatus03 on emitter err : " + JSON.stringify(err));
       }
       console.info("animationStatus03 click result is: " + JSON.stringify(sendEventByKey('button2',10,"")));
       await Utils.sleep(1000);
@@ -99,12 +99,12 @@ export default function  animationStatusJsunit() {
       }
       let indexEvent = {
         eventId: 57,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("animationStatus04 on events_emitter err : " + JSON.stringify(err));
+        console.info("animationStatus04 on emitter err : " + JSON.stringify(err));
       }
       console.info("animationStatus04 click result is: " + JSON.stringify(sendEventByKey('button3',10,"")));
       await Utils.sleep(1000);

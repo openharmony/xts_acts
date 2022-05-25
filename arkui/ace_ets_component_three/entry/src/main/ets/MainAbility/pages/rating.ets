@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -35,51 +35,51 @@ struct RatingExample {
     console.info('rating page show called');
     var stateChangeEvent = {
       eventId: 173,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+    emitter.on(stateChangeEvent, this.stateChangCallBack)
 
     var stateChangeEventTwo = {
       eventId: 174,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
+    emitter.on(stateChangeEventTwo, this.stateChangCallBack)
 
     var stateChangeEventThree = {
       eventId: 175,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventThree, this.stateChangCallBack)
+    emitter.on(stateChangeEventThree, this.stateChangCallBack)
 
     var stateChangeEventFour = {
       eventId: 176,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventFour, this.stateChangCallBack)
+    emitter.on(stateChangeEventFour, this.stateChangCallBack)
 
     var stateChangeEventSix = {
       eventId: 177,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventSix, this.stateChangCallBack)
+    emitter.on(stateChangeEventSix, this.stateChangCallBack)
 
     var stateChangeEventSeven = {
       eventId: 178,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventSeven, this.stateChangCallBack)
+    emitter.on(stateChangeEventSeven, this.stateChangCallBack)
 
     var stateChangeEventSeven = {
       eventId: 1027,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventSeven, this.stateChangCallBack)
+    emitter.on(stateChangeEventSeven, this.stateChangCallBack)
 
     var stateChangeEventSeven = {
       eventId: 1028,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventSeven, this.stateChangCallBack)
+    emitter.on(stateChangeEventSeven, this.stateChangCallBack)
   }
 
   build() {

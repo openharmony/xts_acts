@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter'
+import emitter from '@ohos.events.emitter'
 import Utils from './Utils.ets';
 export default function enableJsunit() {
   describe('enableTest', function () {
@@ -67,10 +67,10 @@ export default function enableJsunit() {
         }
         var innerEvent = {
           eventId: 93,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testEnable02] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testEnable02] change component data error: " + err.message);
       }
@@ -93,10 +93,10 @@ export default function enableJsunit() {
         }
         var innerEvent = {
           eventId: 1111,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testEnable03] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testEnable03] change component data error: " + err.message);
       }
@@ -119,10 +119,10 @@ export default function enableJsunit() {
         }
         let indexEvent = {
           eventId: 1111,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testEnable04 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testEnable04 change component data error: " + err.message);
       }

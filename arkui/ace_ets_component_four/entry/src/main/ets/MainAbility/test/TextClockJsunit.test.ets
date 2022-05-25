@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function textClockJsunit() {
@@ -68,10 +68,10 @@ export default function textClockJsunit() {
         }
         var innerEvent = {
           eventId: 219,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[textClockTest02] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[textClockTest02] change component data error: " + err.message);
       }
@@ -104,10 +104,10 @@ export default function textClockJsunit() {
         }
         let indexEvent = {
           eventId: 220,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[textClockTest04] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[textClockTest04] change component data error: " + err.message);
       }
@@ -141,10 +141,10 @@ export default function textClockJsunit() {
         }
         var innerEvent = {
           eventId: 221,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[textClockTest06] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[textClockTest06] change component data error: " + err.message);
       }

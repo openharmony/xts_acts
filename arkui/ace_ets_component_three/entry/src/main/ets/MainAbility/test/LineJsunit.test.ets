@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function LineJsunit() {
   describe('LineTest', function () {
@@ -98,10 +98,10 @@ export default function LineJsunit() {
         }
         var innerEvent = {
           eventId: 131,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("lineTest_0500 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("lineTest_0500 change component error: " + err.message);
       }
@@ -127,10 +127,10 @@ export default function LineJsunit() {
         }
         var innerEvent = {
           eventId: 131,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("lineTest_0600 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("lineTest_0600 change component error: " + err.message);
       }
@@ -156,10 +156,10 @@ export default function LineJsunit() {
         }
         var innerEvent = {
           eventId: 131,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("lineTest_0700 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("lineTest_0700 change component error: " + err.message);
       }
@@ -185,10 +185,10 @@ export default function LineJsunit() {
         }
         var innerEvent = {
           eventId: 131,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("lineTest_0800 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("lineTest_0800 change component error: " + err.message);
       }

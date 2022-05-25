@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -26,39 +26,39 @@ struct ToggleExample {
     console.info('[toggle] page show called');
     var stateChangeEvent = {
       eventId: 231,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
 
     var stateChangeEventOne = {
       eventId: 232,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventOne, this.stateChangCallBack);
+    emitter.on(stateChangeEventOne, this.stateChangCallBack);
 
     var stateChangeEventthree = {
       eventId: 1033,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventthree, this.stateChangCallBack);
+    emitter.on(stateChangeEventthree, this.stateChangCallBack);
 
     var stateChangeEventfour = {
       eventId: 1034,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventfour, this.stateChangCallBack);
+    emitter.on(stateChangeEventfour, this.stateChangCallBack);
 
     var stateChangeEventfive = {
       eventId: 1035,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventfive, this.stateChangCallBack);
+    emitter.on(stateChangeEventfive, this.stateChangCallBack);
 
     var stateChangeEventsix = {
       eventId: 1036,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventsix, this.stateChangCallBack);
+    emitter.on(stateChangeEventsix, this.stateChangCallBack);
   }
 
   private stateChangCallBack = (eventData) => {

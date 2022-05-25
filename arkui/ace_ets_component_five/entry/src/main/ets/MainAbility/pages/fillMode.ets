@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -92,10 +92,10 @@ struct fillModeExample {
             }
             var backEvent = {
               eventId: 94,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button emit action state err: " + JSON.stringify(err.message))
           }
@@ -111,10 +111,10 @@ struct fillModeExample {
             }
             var backEvent = {
               eventId: 95,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button1 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button1 emit action state err: " + JSON.stringify(err.message))
           }
@@ -130,10 +130,10 @@ struct fillModeExample {
             }
             var backEvent = {
               eventId: 96,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button2 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button2 emit action state err: " + JSON.stringify(err.message))
           }

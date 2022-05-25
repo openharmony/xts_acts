@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter'
+import emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function videoJsunit() {
@@ -66,10 +66,10 @@ export default function videoJsunit() {
         }
         var innerEvent = {
           eventId: 235,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testVideo02] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testVideo02] change component data error: " + err.message);
       }
@@ -91,10 +91,10 @@ export default function videoJsunit() {
         }
         var innerEvent = {
           eventId: 235,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testVideo03] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testVideo03] change component data error: " + err.message);
       }
@@ -116,10 +116,10 @@ export default function videoJsunit() {
         }
         var innerEvent = {
           eventId: 235,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testVideo04] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testVideo04] change component data error: " + err.message);
       }
@@ -141,10 +141,10 @@ export default function videoJsunit() {
         }
         var innerEvent = {
           eventId: 235,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testVideo05] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testVideo05] change component data error: " + err.message);
       }
@@ -166,10 +166,10 @@ export default function videoJsunit() {
         }
         var innerEvent = {
           eventId: 235,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testVideo06] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testVideo06] change component data error: " + err.message);
       }
@@ -191,10 +191,10 @@ export default function videoJsunit() {
         }
         var innerEvent = {
           eventId: 235,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testVideo07] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testVideo07] change component data error: " + err.message);
       }
