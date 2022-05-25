@@ -86,6 +86,7 @@
                 "metadata": [
                     {
                         "name": "ohos.extension.form",
+                        "value": "testExtensionAbilities",
                         "resource": "$profile:form_config"
                     }
                 ],

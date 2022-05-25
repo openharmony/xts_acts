@@ -340,7 +340,7 @@ export default function QueryExtensionAbilityInfos() {
         expect(data[0].readPermission).assertEqual("");
         expect(data[0].writePermission).assertEqual("");
         expect(data[0].metadata[0].name).assertEqual("ohos.extension.form");
-        expect(data[0].metadata[0].value).assertEqual("");
+        expect(data[0].metadata[0].value).assertEqual("testExtensionAbilities");
         expect(data[0].metadata[0].resource).assertEqual("$profile:form_config");
       }).catch(err => {
         expect(err).assertFail();
@@ -367,7 +367,7 @@ export default function QueryExtensionAbilityInfos() {
         expect(data[0].readPermission).assertEqual("");
         expect(data[0].writePermission).assertEqual("");
         expect(data[0].metadata[0].name).assertEqual("ohos.extension.form");
-        expect(data[0].metadata[0].value).assertEqual("");
+        expect(data[0].metadata[0].value).assertEqual("testExtensionAbilities");
         expect(data[0].metadata[0].resource).assertEqual("$profile:form_config");
         done();
       })
@@ -536,7 +536,7 @@ export default function QueryExtensionAbilityInfos() {
           expect(data[0].enabled).assertTrue();
           expect(data[0].readPermission).assertEqual("");
           expect(data[0].metadata[0].name).assertEqual("ohos.extension.form");
-          expect(data[0].metadata[0].value).assertEqual("");
+          expect(data[0].metadata[0].value).assertEqual("testExtensionAbilities");
           expect(data[0].metadata[0].resource).assertEqual("$profile:form_config");
         }).catch(err => {
           expect(err).assertFail();
@@ -563,7 +563,7 @@ export default function QueryExtensionAbilityInfos() {
           expect(data[0].enabled).assertTrue();
           expect(data[0].writePermission).assertEqual("");
           expect(data[0].metadata[0].name).assertEqual("ohos.extension.form");
-          expect(data[0].metadata[0].value).assertEqual("");
+          expect(data[0].metadata[0].value).assertEqual("testExtensionAbilities");
           expect(data[0].metadata[0].resource).assertEqual("$profile:form_config");
           done();
         })
