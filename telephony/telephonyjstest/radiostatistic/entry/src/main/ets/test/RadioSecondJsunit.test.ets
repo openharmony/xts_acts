@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'hypium/index';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import radio from '@ohos.telephony.radio';
 import utils from './Utils.ets'
 
@@ -101,6 +101,76 @@ export default function radioSecondJsunit() {
     })
 
     /**
+     * @tc.number  Telephony_NetworkSearch_NetworkState_Promise_0100
+     * @tc.name    Test getNetworkState() to check the callback result
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_NetworkState_Promise_0100', 0, async function (done) {
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      try {
+        const result = await radio.getNetworkState();
+        expect(true).assertTrue();
+        console.log(`Telephony_NetworkSearch_NetworkState_Promise_0100 test finish.`);
+      } catch (error) {
+        console.log(`Telephony_NetworkSearch_NetworkState_Promise_0100 error: ${error.message}`);
+        expect().assertFail();
+      }
+      done();
+    })
+
+   /**
+     * @tc.number  Telephony_NetworkSearch_NetworkState_Async_0200
+     * @tc.name    Test getNetworkState() , slotId is 0, to check the callback result
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_NetworkState_Async_0200', 0, async function (done) {
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      radio.getNetworkState(0, (err, data) => {
+        if (err) {
+          console.log(`Telephony_NetworkSearch_NetworkState_Async_0200 get fail err: ${err}`);
+          expect().assertFail();
+          done();
+          return;
+        }
+        console.log(`Telephony_NetworkSearch_NetworkState_Async_0200 end data: ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+        done();
+        return;
+      });
+    })
+
+    /**
+     * @tc.number  Telephony_NetworkSearch_NetworkState_Promise_0200
+     * @tc.name    Test getNetworkState() , slotId is 0, to check the callback result
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_NetworkState_Promise_0200', 0, async function (done) {
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      try {
+        const result = await radio.getNetworkState(0);
+        expect(true).assertTrue();
+        console.log(`Telephony_NetworkSearch_NetworkState_Promise_0200 test finish.`);
+      } catch (error) {
+        console.log(`Telephony_NetworkSearch_NetworkState_Promise_0200 error: ${error.message}`);
+        expect().assertFail();
+      }
+      done();
+    })
+
+
+    /**
      * @tc.number  Telephony_Radio_CdmaCellInformation_sid_0100
      * @tc.name    sid
      * @tc.desc    sid test
@@ -124,8 +194,172 @@ export default function radioSecondJsunit() {
       console.log("-----------------------Telephony_Radio_CdmaCellInformation_sid_0100 end-----------------------");
     })
 
+        /**
+     * @tc.number  Telephony_NetworkSearch_getRadioTech_Async_0500
+     * @tc.name    SlotId parameter input is 0, test getRadioTech() query function
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_getRadioTech_Async_0500', 0, async function (done) {
+        radio.getRadioTech(0, (err, data) => {
+            if (err) {
+                console.log(`Telephony_NetworkSearch_getRadioTech_Async_0500 fail err: ${err}`);
+                expect().assertFail();
+                done();
+                return;
+            }
+            console.log(`Telephony_NetworkSearch_getRadioTech_Async_0500 success ${data}`);
+            expect(true).assertTrue();
+            done();
+        });
+    });
 
-    
+        /**
+     * @tc.number  Telephony_NetworkSearch_getRadioTech_Promise_0500
+     * @tc.name    SlotId parameter input is 0, test getRadioTech() query function
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_getRadioTech_Promise_0500', 0, async function (done) {
+        try {
+            let data = await radio.getRadioTech(0);
+            console.log('Telephony_NetworkSearch_getRadioTech_Promise_0500 success');
+            expect(true).assertTrue();
+        } catch (err) {
+            console.log(`Telephony_NetworkSearch_getRadioTech_Promise_0500 fail err: ${err}`);
+            expect().assertFail();
+            done();
+            return;
+        }
+        done();
+    });
+
+    /**
+     * @tc.number  Telephony_NetworkSearch_getNetworkSelectionMode_Async_0600
+     * @tc.name    SlotId parameter input is 0, test getNetworkSelectionMode() query function go to the error
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_getNetworkSelectionMode_Async_0600', 0, async function (done) {
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
+        radio.getNetworkSelectionMode(0, (err, res) => {
+            if (err) {
+                console.log(`Telephony_NetworkSearch_getNetworkSelectionMode_Async_0600 err: ${err}`);
+                expect().assertFail();
+                done();
+            } else {
+                console.log('Telephony_NetworkSearch_getNetworkSelectionMode_Async_0600 pass ${res}');
+                expect(true).assertTrue();
+                done();
+            }
+
+        });
+    });
+
+    /**
+     * @tc.number  Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0600
+     * @tc.name    SlotId parameter input is 0, test getNetworkSelectionMode() query function go to the error
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0600', 0, async function (done) {
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
+        try {
+            await radio.getNetworkSelectionMode(0);
+            console.log('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0600 pass');
+            expect(true).assertTrue();
+        } catch (err) {
+            console.log('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0600 fail: ${err}');
+            expect().assertFail();
+            done();
+            return;
+        }
+        done();
+    });
+
+    /**
+     * @tc.number  Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0500
+     * @tc.name    SlotId parameter input is 0, test getISOCountryCodeForNetwork() query function
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0500', 0, async function (done) {
+        radio.getISOCountryCodeForNetwork(0, (err, data) => {
+            if (err) {
+                console.log(`Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0500 fail err: ${err}`);
+                expect().assertFail();
+                done();
+                return;
+            }
+            console.log(
+                `Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0500 finish data: ${JSON.stringify(data)}`);
+            expect(true).assertTrue();
+            done();
+        });
+    });
+
+    /**
+     * @tc.number  Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0500
+     * @tc.name    SlotId parameter input is 0, test getISOCountryCodeForNetwork() query function
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0500', 0, async function (done) {
+        try {
+            let data = await radio.getISOCountryCodeForNetwork(0);
+            console.log(
+                `Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0500 finish data:${JSON.stringify(data)}`);
+            expect(true).assertTrue();
+        } catch (err) {
+            console.log(`Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0500 fail err: ${err}`);
+            expect().assertFail();
+            done();
+            return;
+        }
+        done();
+    });
+
+    /**
+     * @tc.number  Telephony_NetworkSearch_getSignalInformation_Async_0500
+     * @tc.name    SlotId parameter input is 0, test getSignalInformation() query function go to the error
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_getSignalInformation_Async_0500', 0, async function (done) {
+        radio.getSignalInformation(0, (err, data) => {
+            if (err) {
+                console.log(`Telephony_NetworkSearch_getSignalInformation_Async_0500 fail err: ${err}`);
+                expect().assertFail();
+                done();
+                return;
+            }
+            console.log(`Telephony_NetworkSearch_getSignalInformation_Async_0500 finish data: ${JSON.stringify(data)}`);
+            expect(true).assertTrue();
+            done();
+        });
+    });
+
+    /**
+     * @tc.number  Telephony_NetworkSearch_getSignalInformation_Promise_0500
+     * @tc.name    SlotId parameter input is -1, test getSignalInformation() query function return the datalength is 0
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_getSignalInformation_Promise_0500', 0, async function (done) {
+        try {
+            let data = await radio.getSignalInformation(0);
+            console.log(
+                `Telephony_NetworkSearch_getSignalInformation_Promise_0500 pass data: ${JSON.stringify(data)}`);
+            expect(true).assertTrue();
+        } catch (err) {
+            console.log(`Telephony_NetworkSearch_getSignalInformation_Promise_0500 fail err: ${err}`);
+            expect().assertFail();
+            done();
+            return;
+        }
+        done();
+    });
+
     console.log("************* radio Test end*************");
     function assertCellInformation(data) {
       expect(data !== '' && data != undefined && data != null).assertTrue();

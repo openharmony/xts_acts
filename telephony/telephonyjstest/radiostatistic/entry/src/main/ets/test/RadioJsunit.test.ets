@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'hypium/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import radio from '@ohos.telephony.radio';
 import utils from './Utils.ets'
 
@@ -49,7 +49,30 @@ export default function radioJsunit() {
       });
     });
 
-    
+    /**
+     * @tc.number  Telephony_NetworkSearch_getPrimarySlotId_Promise_0200
+     * @tc.name    Test getPrimarySlotId() to check the callback result
+     * @tc.desc    Function test
+     */
+    it('Telephony_NetworkSearch_getPrimarySlotId_Promise_0200', 0, async function (done) {
+      if(utils.notCheck){
+        done();
+        return;
+      }
+
+      try {
+            let data = await radio.getPrimarySlotId();
+            console.log(`Telephony_NetworkSearch_getPrimarySlotId_Promise_0200 pass data: ${data}`);
+            expect(true).assertTrue();
+        } catch (err) {
+            console.log(`Telephony_NetworkSearch_getPrimarySlotId_Promise_0200 fail err: ${err}`);
+            expect().assertFail();
+            done();
+            return;
+        }
+        done();
+    });
+
     /**
      * @tc.number  Telephony_NetworkSearch_isNrSupported_Promise_0400
      * @tc.name    Test The function setPrimarySlotId(0)

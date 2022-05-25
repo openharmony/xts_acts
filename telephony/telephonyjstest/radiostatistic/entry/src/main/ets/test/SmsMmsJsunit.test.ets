@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'hypium/index';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import mms from '@ohos.telephony.sms';
 import utils from './Utils.ets'
 export default function smsUiJsunit() {
@@ -73,7 +73,40 @@ export default function smsUiJsunit() {
       });
     });
 
-    
+  /*
+   * @tc.number  Telephony_SmsMms_createMessage_Promise_0100
+   * @tc.name    Call interface CreateMessage,
+   *             pass in the PDU(rawArray) in line with the coding specification, the specification is 3GPP,
+   *             shortMessage Don't empty
+   * @tc.desc    Function test
+   */
+    it('Telephony_SmsMms_createMessage_Promise_0100', 0, async function (done) {
+      if (true) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      sms.createMessage(rawArray, '3gpp').then(shortMessage => {
+        expect(shortMessage.visibleMessageBody === MESSAGEBODY).assertTrue();
+        expect(shortMessage.visibleRawAddress.length === ADDR_LENGTH).assertTrue();
+        expect(shortMessage.messageClass === sms.FORWARD_MESSAGE).assertTrue();
+        expect(shortMessage.protocolId === 0).assertTrue();
+        expect(shortMessage.scAddress.length === ADDR_LENGTH).assertTrue();
+        expect(shortMessage.scTimestamp === SC_TIMESTAMP).assertTrue();
+        expect(shortMessage.isReplaceMessage).assertFalse();
+        expect(shortMessage.hasReplyPath).assertFalse();
+        expect(shortMessage.pdu.length > 0).assertTrue();
+        expect(shortMessage.status === 0).assertTrue();
+        expect(shortMessage.isSmsStatusReportMessage).assertTrue();
+        console.log('Telephony_SmsMms_createMessage_Promise_0100 finish');
+        done();
+      }).catch(err => {
+          expect().assertFail();
+          console.log('Telephony_SmsMms_createMessage_Promise_0100 fail');
+          done();
+          return;
+      });
+    });
   
 
     /*

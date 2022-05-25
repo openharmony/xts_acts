@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from 'hypium/index';
+import {describe, it, expect} from "deccjsunit/index.ets";
 import request from '@ohos.request';
 
 export default function requestDownloadJsunit() {
@@ -335,5 +335,178 @@ export default function requestDownloadJsunit() {
       done();
     });
 
+    /**
+     * @tc.number  requestDownload_test_015
+     * @tc.name    Test The  request DownloadTask
+     * @tc.desc    Function test
+     */
+    it('requestDownload_test_015', 0, async function (done) {
+      try {
+        request.download(downloadConfig, (downloadTask) => {
+          console.log("downloadConfig result:" + JSON.stringify(downloadTask))
+          downloadTask.remove().then((result) => {
+            console.info('requestDownload_test_015 Download task removed result=' + result);
+            expect(true).assertTrue();
+          }).catch ((err) => {
+            console.log("requestDownload_test_015 downloadTask remove err:" + err);
+            expect(true).assertTrue();
+          });
+        });
+      } catch (exception) {
+        console.log("requestDownload_test_015 failed due to execute timeout 5s");
+        expect(true).assertTrue();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number  requestDownload_test_016
+     * @tc.name    Test The  request DownloadTask
+     * @tc.desc    Function test
+     */
+    it('requestDownload_test_016', 0, async function (done) {
+      try {
+        request.download(downloadConfig, (downloadTask) => {
+          console.log("downloadConfig result:" + JSON.stringify(downloadTask))
+          downloadTask.query().then((downloadInfo) => {
+            console.info('requestDownload_test_016 Data:' + JSON.stringify(downloadInfo));
+            expect(true).assertTrue();
+          }) .catch((err) => {
+            console.log("downloadTask query err:" + err);
+            expect(true).assertTrue();
+          });
+        });
+      } catch (err) {
+        console.log("requestDownload_test_016 invoke download error : " + JSON.stringify(err));
+        expect(true).assertTrue();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number  requestDownload_test_017
+     * @tc.name    Test The  request DownloadTask
+     * @tc.desc    Function test
+     */
+    it('requestDownload_test_017', 0, async function (done) {
+      try {
+        request.download(downloadConfig, (downloadTask) => {
+          console.log("downloadConfig result:" + JSON.stringify(downloadTask))
+          downloadTask.queryMimeType().then((data) => {
+            console.info('requestDownload_test_017. Data:' + JSON.stringify(data));
+            expect(true).assertTrue();
+          }).catch((err) => {
+            console.log("downloadTask queryMimeType err:" + err);
+            expect(true).assertTrue();
+          });
+        });
+      } catch (exception) {
+        console.log("requestDownload_test_017 failed due to execute timeout 5s");
+        expect(true).assertTrue();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number  requestDownload_test_018
+     * @tc.name    Test The  request DownloadTask
+     * @tc.desc    Function test
+     */
+    it('requestDownload_test_018', 0, async function (done) {
+      try {
+        request.download(downloadConfig, (downloadTask) => {
+          console.log("downloadConfig result:" + JSON.stringify(downloadTask))
+          downloadTask.pause().then((data) => {
+            console.info('requestDownload_test_018. Data:' + JSON.stringify(data));
+            expect(true).assertTrue();
+          }).catch((err) => {
+            console.log("requestDownload_test_018 err:" + err);
+            expect(true).assertTrue();
+          });
+        });
+      } catch (exception) {
+        console.log("requestDownload_test_018 failed due to execute timeout 5s");
+        expect(true).assertTrue();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number  requestDownload_test_019
+     * @tc.name    Test The  request DownloadTask
+     * @tc.desc    Function test
+     */
+    it('requestDownload_test_019', 0, async function (done) {
+      try {
+        request.download(downloadConfig, (downloadTask) => {
+          console.log("downloadConfig result:" + JSON.stringify(downloadTask))
+          downloadTask.pause((err, result)=>{
+            if(err) {
+              console.error('requestDownload_test_019 error:' + JSON.stringify(err));
+              expect(true).assertTrue();
+            } else {
+              console.info('requestDownload_test_019. result:' + JSON.stringify(result));
+              expect(true).assertTrue();
+            }
+         });
+        });
+      } catch (exception) {
+        console.log("requestDownload_test_019 failed due to execute timeout 5s");
+        expect(true).assertTrue();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number  requestDownload_test_020
+     * @tc.name    Test The  request DownloadTask
+     * @tc.desc    Function test
+     */
+    it('requestDownload_test_020', 0, async function (done) {
+      try {
+        request.download(downloadConfig, (downloadTask) => {
+          console.log("downloadConfig result:" + JSON.stringify(downloadTask))
+          downloadTask.resume().then((data) => {
+            console.info('requestDownload_test_020. Data:' + JSON.stringify(data));
+            expect(true).assertTrue();
+          }).catch((err) => {
+            console.log("requestDownload_test_020 err:" + err);
+            expect(true).assertTrue();
+          });
+        });
+      } catch (exception) {
+        console.log("requestDownload_test_020 failed due to execute timeout 5s");
+        expect(true).assertTrue();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number  requestDownload_test_021
+     * @tc.name    Test The  request DownloadTask
+     * @tc.desc    Function test
+     */
+    it('requestDownload_test_021', 0, async function (done) {
+      try {
+        request.download(downloadConfig, (downloadTask) => {
+          console.log("downloadConfig result:" + JSON.stringify(downloadTask))
+          downloadTask.resume((err, result)=>{
+            if(err) {
+              console.error('requestDownload_test_021 error:' + JSON.stringify(err));
+              expect(true).assertTrue();
+            } else {
+              console.info('requestDownload_test_021. result:' + JSON.stringify(result));
+              expect(true).assertTrue();
+            }
+         });
+        });
+      } catch (exception) {
+        console.log("requestDownload_test_021 failed due to execute timeout 5s");
+        expect(true).assertTrue();
+      }
+      done();
+    });
+
   })
+}
 }
