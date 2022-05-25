@@ -16,12 +16,8 @@
 import { describe, it, expect } from 'deccjsunit/index';
 import huks from '@ohos.security.huks';
 import { HuksCipherRSA } from '../../../../../../../utils/param/cipher/publicCipherParam';
-import {
-  stringToUint8Array,
-  uint8ArrayToString,
-} from '../../../../../../../utils/param/publicFunc';
-let gInData64 =
-  'RSA_64_ttttttttttttttttttttttttttttttttttttttttttttttttttttttttt';
+import { stringToUint8Array, uint8ArrayToString } from '../../../../../../../utils/param/publicFunc';
+let gInData64 = 'RSA_64_ttttttttttttttttttttttttttttttttttttttttttttttttttttttttt';
 
 let defaultData = '0';
 
@@ -34,18 +30,11 @@ let updateResult = new Array();
 let exportKey;
 
 let genHuksOptions = {
-  properties: new Array(
-    HuksCipherRSA.HuksKeyAlgRSA,
-    HuksCipherRSA.HuksKeyPurpose,
-    HuksCipherRSA.HuksKeyRSASize512
-  ),
+  properties: new Array(HuksCipherRSA.HuksKeyAlgRSA, HuksCipherRSA.HuksKeyPurpose, HuksCipherRSA.HuksKeyRSASize512),
   inData: new Uint8Array(defaultData),
 };
 
 async function publicGenerateKeyFunc(srcKeyAlies, genHuksOptionsNONC) {
-  console.log(
-    `test Generate HuksOptions: ${JSON.stringify(genHuksOptionsNONC)}`
-  );
   await huks
     .generateKey(srcKeyAlies, genHuksOptionsNONC)
     .then((data) => {
@@ -59,9 +48,6 @@ async function publicGenerateKeyFunc(srcKeyAlies, genHuksOptionsNONC) {
 }
 
 async function publicExportKeyFunc(srcKeyAlies, genHuksOptionsNONC) {
-  console.log(
-    `test ExportKey HuksOptions: ${JSON.stringify(genHuksOptionsNONC)}`
-  );
   await huks
     .exportKey(srcKeyAlies, genHuksOptionsNONC)
     .then((data) => {
@@ -77,7 +63,6 @@ async function publicExportKeyFunc(srcKeyAlies, genHuksOptionsNONC) {
 
 async function publicImportKeyFunc(srcKeyAlies, HuksOptions) {
   HuksOptions.inData = exportKey;
-  console.log(`test importKey HuksOptions: ${JSON.stringify(HuksOptions)}`);
   await huks
     .importKey(srcKeyAlies, HuksOptions)
     .then((data) => {
@@ -106,17 +91,9 @@ async function publicInitFunc(srcKeyAlies, HuksOptions) {
 }
 
 async function publicUpdateFunc(HuksOptions) {
-  console.log(
-    `test update before handle: ${JSON.stringify(
-      handle
-    )} HuksOptions: ${JSON.stringify(HuksOptions)}`
-  );
   let dateSize = 64;
   let huksOptionsInData = HuksOptions.inData;
   let inDataArray = HuksOptions.inData;
-  console.log(
-    'test update finish HuksOptions inData: ' + Array.from(inDataArray).length
-  );
   if (Array.from(inDataArray).length < dateSize) {
     await update(handle, HuksOptions);
     HuksOptions.inData = stringToUint8Array('0');
@@ -124,48 +101,20 @@ async function publicUpdateFunc(HuksOptions) {
     let count = Math.floor(Array.from(inDataArray).length / dateSize);
     let remainder = Array.from(inDataArray).length % dateSize;
     for (let i = 0; i < count; i++) {
-      HuksOptions.inData = new Uint8Array(
-        Array.from(huksOptionsInData).slice(dateSize * i, dateSize * (i + 1))
-      );
-      console.log(
-        'test ' +
-          uint8ArrayToString(
-            new Uint8Array(
-              Array.from(huksOptionsInData).slice(
-                dateSize * i,
-                dateSize * (i + 1)
-              )
-            )
-          )
-      );
+      HuksOptions.inData = new Uint8Array(Array.from(huksOptionsInData).slice(dateSize * i, dateSize * (i + 1)));
       await update(handle, HuksOptions);
       HuksOptions.inData = huksOptionsInData;
     }
     if (remainder !== 0) {
       HuksOptions.inData = new Uint8Array(
-        Array.from(huksOptionsInData).slice(
-          dateSize * count,
-          uint8ArrayToString(inDataArray).length
-        )
+        Array.from(huksOptionsInData).slice(dateSize * count, uint8ArrayToString(inDataArray).length)
       );
       await update(handle, HuksOptions);
-      console.log(
-        'test ' +
-          uint8ArrayToString(
-            new Uint8Array(
-              Array.from(huksOptionsInData).slice(
-                dateSize * count,
-                uint8ArrayToString(inDataArray).length
-              )
-            )
-          )
-      );
     }
   }
 }
 
 async function update(handle, HuksOptions) {
-  console.log(`test update data ${JSON.stringify(HuksOptions)}`);
   await huks
     .update(handle, HuksOptions)
     .then(async (data) => {
@@ -178,13 +127,8 @@ async function update(handle, HuksOptions) {
     });
 }
 
-async function publicFinishAbortFunc(
-  HuksOptions,
-  thirdInderfaceName,
-  isEncrypt
-) {
+async function publicFinishAbortFunc(HuksOptions, thirdInderfaceName, isEncrypt) {
   if (thirdInderfaceName == 'finish') {
-    HuksOptions.outData = new Uint8Array(new Array(1024));
     HuksOptions.inData = new Uint8Array(new Array());
     await finish(HuksOptions, isEncrypt);
   } else if (thirdInderfaceName == 'abort') {
@@ -193,60 +137,22 @@ async function publicFinishAbortFunc(
 }
 
 async function finish(HuksOptions, isEncrypt) {
-  console.log('test before finish HuksOptions inData: ' + HuksOptions.inData);
-  console.log('test before finish HuksOptions outData: ' + HuksOptions.outData);
-  console.log(
-    'test before finish HuksOptions outData: ' + HuksOptions.outData.length
-  );
-  console.log(
-    'test before finish HuksOptions properties: ' +
-      JSON.stringify(HuksOptions.properties)
-  );
-
   await huks
     .finish(handle, HuksOptions)
     .then((data) => {
       console.log(`test finish data: ${JSON.stringify(data)}`);
       if (isEncrypt) {
         updateResult = Array.from(data.outData);
-        if (
-          uint8ArrayToString(data.outData) === uint8ArrayToString(encryptedData)
-        ) {
-          console.log(
-            `test finish Encrypt fail ${uint8ArrayToString(encryptedData)}`
-          );
-          console.log(
-            `test finish Encrypt fail ${uint8ArrayToString(data.outData)}`
-          );
+        if (uint8ArrayToString(data.outData) === uint8ArrayToString(encryptedData)) {
           expect(null).assertFail();
         } else {
-          console.log(
-            `test finish Encrypt success ${uint8ArrayToString(encryptedData)}`
-          );
-          console.log(
-            `test finish Encrypt success ${uint8ArrayToString(data.outData)}`
-          );
           expect(data.errorCode == 0).assertTrue();
         }
       }
       if (!isEncrypt) {
-        if (
-          uint8ArrayToString(data.outData) === uint8ArrayToString(encryptedData)
-        ) {
-          console.log(
-            `test finish Decrypt success ${uint8ArrayToString(encryptedData)}`
-          );
-          console.log(
-            `test finish Decrypt success ${uint8ArrayToString(data.outData)}`
-          );
+        if (uint8ArrayToString(data.outData) === uint8ArrayToString(encryptedData)) {
           expect(data.errorCode == 0).assertTrue();
         } else {
-          console.log(
-            `test finish Encrypt fail ${uint8ArrayToString(encryptedData)}`
-          );
-          console.log(
-            `test finish Encrypt fail ${uint8ArrayToString(data.outData)}`
-          );
           expect(null).assertFail();
         }
       }
@@ -318,19 +224,10 @@ async function publicCipherFunc(
 describe('SecurityHuksCipherRSAPromiseJsunit', function () {
   it('testCipherRSA101', 0, async function (done) {
     const srcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256KeyAlias101';
-    const newSrcKeyAlies =
-      'testCipherRSASize512PADDINGNONESHA256NewKeyAlias101';
-    genHuksOptions.properties.splice(
-      3,
-      1,
-      HuksCipherRSA.HuksKeyRSABLOCKMODEECB
-    );
+    const newSrcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256NewKeyAlias101';
+    genHuksOptions.properties.splice(3, 1, HuksCipherRSA.HuksKeyRSABLOCKMODEECB);
     genHuksOptions.properties.splice(4, 1, HuksCipherRSA.HuksKeyRSAPADDINGNONE);
-    genHuksOptions.properties.splice(
-      5,
-      1,
-      HuksCipherRSA.HuksKeyRSADIGESTSHA256
-    );
+    genHuksOptions.properties.splice(5, 1, HuksCipherRSA.HuksKeyRSADIGESTSHA256);
 
     let HuksOptions = {
       properties: new Array(
@@ -342,16 +239,8 @@ describe('SecurityHuksCipherRSAPromiseJsunit', function () {
         HuksCipherRSA.HuksKeyRSADIGESTSHA256
       ),
       inData: gInData64Array,
-      outData: stringToUint8Array('0'),
     };
-    await publicCipherFunc(
-      srcKeyAlies,
-      newSrcKeyAlies,
-      genHuksOptions,
-      HuksOptions,
-      'finish',
-      true
-    );
+    await publicCipherFunc(srcKeyAlies, newSrcKeyAlies, genHuksOptions, HuksOptions, 'finish', true);
     HuksOptions = {
       properties: new Array(
         HuksCipherRSA.HuksKeyAlgRSA,
@@ -362,23 +251,14 @@ describe('SecurityHuksCipherRSAPromiseJsunit', function () {
         HuksCipherRSA.HuksKeyRSADIGESTSHA256
       ),
       inData: new Uint8Array(updateResult),
-      outData: stringToUint8Array('0'),
     };
-    await publicCipherFunc(
-      srcKeyAlies,
-      newSrcKeyAlies,
-      genHuksOptions,
-      HuksOptions,
-      'finish',
-      false
-    );
+    await publicCipherFunc(srcKeyAlies, newSrcKeyAlies, genHuksOptions, HuksOptions, 'finish', false);
     done();
   });
 
   it('testCipherRSA102', 0, async function (done) {
     const srcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256KeyAlias102';
-    const newSrcKeyAlies =
-      'testCipherRSASize512PADDINGNONESHA256NewKeyAlias101';
+    const newSrcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256NewKeyAlias101';
     let HuksOptions = {
       properties: new Array(
         HuksCipherRSA.HuksKeyAlgRSA,
@@ -389,23 +269,14 @@ describe('SecurityHuksCipherRSAPromiseJsunit', function () {
         HuksCipherRSA.HuksKeyRSADIGESTSHA256
       ),
       inData: gInData64Array,
-      outData: stringToUint8Array('0'),
     };
-    await publicCipherFunc(
-      srcKeyAlies,
-      newSrcKeyAlies,
-      genHuksOptions,
-      HuksOptions,
-      'abort',
-      true
-    );
+    await publicCipherFunc(srcKeyAlies, newSrcKeyAlies, genHuksOptions, HuksOptions, 'abort', true);
     done();
   });
 
   it('testCipherRSA103', 0, async function (done) {
     const srcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256KeyAlias103';
-    const newSrcKeyAlies =
-      'testCipherRSASize512PADDINGNONESHA256NewKeyAlias103';
+    const newSrcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256NewKeyAlias103';
     let HuksOptions = {
       properties: new Array(
         HuksCipherRSA.HuksKeyAlgRSA,
@@ -416,16 +287,8 @@ describe('SecurityHuksCipherRSAPromiseJsunit', function () {
         HuksCipherRSA.HuksKeyRSADIGESTSHA256
       ),
       inData: gInData64Array,
-      outData: stringToUint8Array('0'),
     };
-    await publicCipherFunc(
-      srcKeyAlies,
-      newSrcKeyAlies,
-      genHuksOptions,
-      HuksOptions,
-      'finish',
-      true
-    );
+    await publicCipherFunc(srcKeyAlies, newSrcKeyAlies, genHuksOptions, HuksOptions, 'finish', true);
     HuksOptions = {
       properties: new Array(
         HuksCipherRSA.HuksKeyAlgRSA,
@@ -436,23 +299,14 @@ describe('SecurityHuksCipherRSAPromiseJsunit', function () {
         HuksCipherRSA.HuksKeyRSADIGESTSHA256
       ),
       inData: new Uint8Array(updateResult),
-      outData: stringToUint8Array('0'),
     };
-    await publicCipherFunc(
-      srcKeyAlies,
-      newSrcKeyAlies,
-      genHuksOptions,
-      HuksOptions,
-      'finish',
-      false
-    );
+    await publicCipherFunc(srcKeyAlies, newSrcKeyAlies, genHuksOptions, HuksOptions, 'finish', false);
     done();
   });
 
   it('testCipherRSA104', 0, async function (done) {
     const srcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256KeyAlias104';
-    const newSrcKeyAlies =
-      'testCipherRSASize512PADDINGNONESHA256NewKeyAlias104';
+    const newSrcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256NewKeyAlias104';
     let HuksOptions = {
       properties: new Array(
         HuksCipherRSA.HuksKeyAlgRSA,
@@ -463,16 +317,8 @@ describe('SecurityHuksCipherRSAPromiseJsunit', function () {
         HuksCipherRSA.HuksKeyRSADIGESTSHA256
       ),
       inData: gInData64Array,
-      outData: stringToUint8Array('0'),
     };
-    await publicCipherFunc(
-      srcKeyAlies,
-      newSrcKeyAlies,
-      genHuksOptions,
-      HuksOptions,
-      'abort',
-      true
-    );
+    await publicCipherFunc(srcKeyAlies, newSrcKeyAlies, genHuksOptions, HuksOptions, 'abort', true);
     done();
   });
 });

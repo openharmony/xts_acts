@@ -23,19 +23,14 @@ let srcData65 = Data.Date65KB;
 let srcData65Kb = stringToUint8Array(srcData65);
 
 let HuksOptions65kb = {
-  properties: new Array(
-    HuksAgreeDH.HuksKeyAlgDH,
-    HuksAgreeDH.HuksKeyPurposeDH,
-    HuksAgreeDH.HuksKeyDHSize2048
-  ),
+  properties: new Array(HuksAgreeDH.HuksKeyAlgDH, HuksAgreeDH.HuksKeyPurposeDH, HuksAgreeDH.HuksKeyDHSize2048),
   inData: srcData65Kb,
 };
 
 describe('SecurityHuksAgreeDHCallbackJsunit', function () {
-  it('testAgreeDHAbort65KB001', 0, async function (done) {
+  it('testAgreeDH004', 0, async function (done) {
     const srcKeyAliesFirst = 'testAgreeDHSize2048Abort65KBAgreeKeyAlias_01_001';
-    const srcKeyAliesSecond =
-      'testAgreeDHSize2048Abort65KBAgreeKeyAlias_02_001';
+    const srcKeyAliesSecond = 'testAgreeDHSize2048Abort65KBAgreeKeyAlias_02_001';
     let huksOptionsFinish = {
       properties: new Array(
         HuksAgreeDH.HuksKeySTORAGE,
@@ -53,13 +48,7 @@ describe('SecurityHuksAgreeDHCallbackJsunit', function () {
       ),
       inData: srcData65Kb,
     };
-    await publicAgreeFunc(
-      srcKeyAliesFirst,
-      srcKeyAliesSecond,
-      HuksOptions65kb,
-      huksOptionsFinish,
-      'abort'
-    );
+    await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions65kb, huksOptionsFinish, 'abort');
     done();
   });
 });

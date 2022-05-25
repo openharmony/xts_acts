@@ -40,11 +40,9 @@ describe('SecurityHuksAgreeECDHPromiseJsunit', function () {
     console.info('test beforeEach called');
   });
 
-  it('testAgreeECDHAbort65KBAgree101', 0, async function (done) {
-    const srcKeyAliesFirst =
-      'testAgreeECDHSize224Abort65KBAgreeKeyAlias_01_101';
-    const srcKeyAliesSecond =
-      'testAgreeECDHSize224Abort65KBAgreeKeyAlias_02_101';
+  it('testAgreeECDH104', 0, async function (done) {
+    const srcKeyAliesFirst = 'testAgreeECDHSize224Abort65KBAgreeKeyAlias_01_101';
+    const srcKeyAliesSecond = 'testAgreeECDHSize224Abort65KBAgreeKeyAlias_02_101';
     let huksOptionsFinish = {
       properties: new Array(
         HuksAgreeECDH.HuksKeySTORAGE,
@@ -62,13 +60,7 @@ describe('SecurityHuksAgreeECDHPromiseJsunit', function () {
       ),
       inData: srcData65Kb,
     };
-    await publicAgreeFunc(
-      srcKeyAliesFirst,
-      srcKeyAliesSecond,
-      HuksOptions65kb,
-      huksOptionsFinish,
-      'abort'
-    );
+    await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions65kb, huksOptionsFinish, 'abort');
     done();
   });
 });

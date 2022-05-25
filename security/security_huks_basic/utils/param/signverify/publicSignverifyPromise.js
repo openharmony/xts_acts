@@ -36,9 +36,7 @@ async function publicGenerateKeyFunc(keyAlias, HuksOptions) {
 
 async function publicImportKey(keyAlias, HuksOptions) {
   let _InData = HuksOptions.inData;
-  HuksOptions.inData = finishOutData;
-  console.log(`test ImportKey keyAlias: ${keyAlias}`);
-  console.log(`test ImportKey HuksOptions: ${JSON.stringify(HuksOptions)}`);
+  HuksOptions.inData = exportKey;
   await huks
     .importKey(keyAlias, HuksOptions)
     .then((data) => {
@@ -56,7 +54,7 @@ async function publicExportKey(keyAlias, HuksOptions) {
     .exportKey(keyAlias, HuksOptions)
     .then((data) => {
       console.log(`test exportKey data: ${JSON.stringify(data)}`);
-      finishOutData = data.outData;
+      exportKey = data.outData;
     })
     .catch((err) => {
       console.log('test exportKey err information: ' + JSON.stringify(err));
@@ -78,13 +76,8 @@ async function publicInitFunc(keyAlias, HuksOptions) {
     });
 }
 
-async function publicUpdateFunc(HuksOptions, isBigData) {
-  let dateSize = 0;
-  if (isBigData) {
-    dateSize = 64 * 1024;
-  } else {
-    dateSize = 64;
-  }
+async function publicUpdateFunc(HuksOptions) {
+  let dateSize = 64;
   let tempHuksOptionsInData = HuksOptions.inData;
   let inDataArray = HuksOptions.inData;
   if (uint8ArrayToString(inDataArray).length < dateSize) {
@@ -93,27 +86,16 @@ async function publicUpdateFunc(HuksOptions, isBigData) {
   } else {
     let count = Math.floor(uint8ArrayToString(inDataArray).length / dateSize);
     let remainder = uint8ArrayToString(inDataArray).length % dateSize;
-    console.log(
-      `test before update length: ${uint8ArrayToString(inDataArray).length}`
-    );
-    console.log(`test before update count: ${count}`);
-    console.log(`test before update remainder: ${remainder}`);
     for (let i = 0; i < count; i++) {
       HuksOptions.inData = stringToUint8Array(
-        uint8ArrayToString(tempHuksOptionsInData).slice(
-          dateSize * i,
-          dateSize * (i + 1)
-        )
+        uint8ArrayToString(tempHuksOptionsInData).slice(dateSize * i, dateSize * (i + 1))
       );
       await update(handle, HuksOptions);
       HuksOptions.inData = tempHuksOptionsInData;
     }
     if (remainder !== 0) {
       HuksOptions.inData = stringToUint8Array(
-        uint8ArrayToString(tempHuksOptionsInData).slice(
-          dateSize * count,
-          uint8ArrayToString(inDataArray).length
-        )
+        uint8ArrayToString(tempHuksOptionsInData).slice(dateSize * count, uint8ArrayToString(inDataArray).length)
       );
       await update(handle, HuksOptions);
       HuksOptions.inData = tempHuksOptionsInData;
@@ -122,7 +104,6 @@ async function publicUpdateFunc(HuksOptions, isBigData) {
 }
 
 async function update(handle, HuksOptions) {
-  console.log(`test update data ${JSON.stringify(HuksOptions)}`);
   await huks
     .update(handle, HuksOptions)
     .then(async (data) => {
@@ -140,7 +121,7 @@ async function publicFinishFunc(HuksOptions) {
     .finish(handle, HuksOptions)
     .then((data) => {
       console.log(`test finish data: ${JSON.stringify(data)}`);
-      exportKey = data.outData;
+      finishOutData = data.outData;
       expect(data.errorCode == 0).assertTrue();
     })
     .catch((err) => {
@@ -175,82 +156,50 @@ async function publicDeleteKeyFunc(KeyAlias, HuksOptions) {
     });
 }
 
-async function publicSignVerifyFunc(
-  srcKeyAlies,
-  newSrcKeyAlies,
-  HuksOptions,
-  thirdInderfaceName,
-  isSING,
-  isBigData
-) {
+async function publicSignVerifyFunc(srcKeyAlies, HuksOptions, thirdInderfaceName, isSING, rawData) {
   try {
     let keyAlias = srcKeyAlies;
+    let purposeSignVerigy = HuksSignVerifyDSA.HuksKeyRSAPurposeSINGVERIFY;
+    let purposeSign = HuksSignVerifyDSA.HuksKeyDSAPurposeSIGN;
+    let PurposeVerify = HuksSignVerifyDSA.HuksKeyDSAPurposeVERIFY;
     if (isSING) {
-      HuksOptions.properties.splice(
-        1,
-        1,
-        HuksSignVerifyDSA.HuksKeyRSAPurposeSINGVERIFY
-      );
+      HuksOptions.properties.splice(1, 1, purposeSignVerigy);
       if (HuksOptions.properties[0].value == HksKeyAlg.HKS_ALG_DSA) {
         HuksOptions.properties.splice(2, 0, HuksSignVerifyDSA.HuksKeySIZE1024);
       }
       await publicGenerateKeyFunc(keyAlias, HuksOptions);
-      HuksOptions.properties.splice(
-        1,
-        1,
-        HuksSignVerifyDSA.HuksKeyDSAPurposeSIGN
-      );
+      HuksOptions.properties.splice(1, 1, purposeSign);
       if (HuksOptions.properties[0].value == HksKeyAlg.HKS_ALG_DSA) {
         HuksOptions.properties.splice(2, 1);
       }
     } else {
-      keyAlias = newSrcKeyAlies;
+      keyAlias = srcKeyAlies + 'New';
+      finishOutData = HuksOptions.inData;
       await publicImportKey(keyAlias, HuksOptions);
     }
-    console.log(`test init HuksOptions: ${JSON.stringify(HuksOptions)}`);
     await publicInitFunc(keyAlias, HuksOptions);
-    await publicUpdateFunc(HuksOptions, isBigData);
+    HuksOptions.inData = rawData;
+    await publicUpdateFunc(HuksOptions);
     if (thirdInderfaceName == 'finish') {
       if (isSING) {
-        HuksOptions.outData = new Uint8Array(new Array(1024).fill(''));
-        console.log(`test before finish HuksOptions: ${HuksOptions.inData}`);
-        console.log(`test before finish HuksOptions: ${HuksOptions.outData}`);
+        HuksOptions.inData = new Uint8Array(new Array());
         await publicFinishFunc(HuksOptions);
-        HuksOptions.properties.splice(
-          1,
-          1,
-          HuksSignVerifyDSA.HuksKeyRSAPurposeSINGVERIFY
-        );
-        console.log(
-          `test before exportKey Gen_HuksOptions: ${JSON.stringify(
-            HuksOptions
-          )}`
-        );
+        HuksOptions.properties.splice(1, 1, purposeSignVerigy);
         await publicExportKey(keyAlias, HuksOptions);
       } else {
-        HuksOptions.outData = exportKey;
-        console.log(`test before finish HuksOptions: ${HuksOptions.inData}`);
-        console.log(`test before finish HuksOptions: ${HuksOptions.outData}`);
+        HuksOptions.inData = finishOutData;
         await publicFinishFunc(HuksOptions);
       }
     } else {
       await publicAbortFucn(HuksOptions);
     }
     if (isSING && thirdInderfaceName == 'abort') {
-      HuksOptions.properties.splice(
-        1,
-        1,
-        HuksSignVerifyDSA.HuksKeyRSAPurposeSINGVERIFY
-      );
-      await publicDeleteKeyFunc(srcKeyAlies, HuksOptions);
+      HuksOptions.properties.splice(1, 1, purposeSignVerigy);
     } else if (!isSING) {
-      HuksOptions.properties.splice(
-        1,
-        1,
-        HuksSignVerifyDSA.HuksKeyDSAPurposeVERIFY
-      );
-      await publicDeleteKeyFunc(newSrcKeyAlies, HuksOptions);
+      HuksOptions.properties.splice(1, 1, PurposeVerify);
     }
+    await publicDeleteKeyFunc(keyAlias, HuksOptions);
+    return finishOutData;
   } catch (e) {
     expect(null).assertFail();
   }

@@ -57,14 +57,8 @@ async function publicDeriveUpdateFunc(HuksOptions) {
     });
 }
 
-async function publicDeriveFinishAbortFunc(
-  huksOptionsFinish,
-  thirdInderfaceName
-) {
+async function publicDeriveFinishAbortFunc(huksOptionsFinish, thirdInderfaceName) {
   if (thirdInderfaceName == 'finish') {
-    console.log(
-      `test befor finish huksOptionsFinish ${JSON.stringify(huksOptionsFinish)}`
-    );
     await huks
       .finish(handle, huksOptionsFinish)
       .then((data) => {
@@ -94,9 +88,6 @@ async function publicDeriveFinishAbortFunc(
 }
 
 async function publicDeriveDeleteFunc(srcKeyAlies, HuksOptions) {
-  console.log(
-    'test before deleteKey HuksOptions: ' + JSON.stringify(HuksOptions)
-  );
   await huks
     .deleteKey(srcKeyAlies, HuksOptions)
     .then((data) => {
@@ -109,39 +100,18 @@ async function publicDeriveDeleteFunc(srcKeyAlies, HuksOptions) {
     });
 }
 
-async function publicDeriveFunc(
-  srcKeyAlies,
-  HuksOptions,
-  huksOptionsFinish,
-  thirdInderfaceName
-) {
+async function publicDeriveFunc(srcKeyAlies, HuksOptions, huksOptionsFinish, thirdInderfaceName) {
   try {
     await publicDeriveGenFunc(srcKeyAlies, HuksOptions);
-    HuksOptions.properties.splice(
-      0,
-      1,
-      paramPublic.HuksDeriveHKDF.HuksKeyAlgHKDF
-    );
-    HuksOptions.properties.splice(
-      3,
-      1,
-      paramPublic.HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE
-    );
+    HuksOptions.properties.splice(0, 1, paramPublic.HuksDeriveHKDF.HuksKeyAlgHKDF);
+    HuksOptions.properties.splice(3, 1, paramPublic.HuksDeriveHKDF.HuksKeyDERIVEKEYSIZE);
 
     await publicDeriveInitFunc(srcKeyAlies, HuksOptions);
     await publicDeriveUpdateFunc(HuksOptions);
     await publicDeriveFinishAbortFunc(huksOptionsFinish, thirdInderfaceName);
 
-    HuksOptions.properties.splice(
-      0,
-      1,
-      paramPublic.HuksDeriveHKDF.HuksKeyAlgAES
-    );
-    HuksOptions.properties.splice(
-      3,
-      1,
-      paramPublic.HuksDeriveHKDF.HuksKeyHKDFSize128
-    );
+    HuksOptions.properties.splice(0, 1, paramPublic.HuksDeriveHKDF.HuksKeyAlgAES);
+    HuksOptions.properties.splice(3, 1, paramPublic.HuksDeriveHKDF.HuksKeyHKDFSize128);
     await publicDeriveDeleteFunc(srcKeyAlies, HuksOptions);
   } catch (e) {
     expect(null).assertFail();

@@ -19,6 +19,7 @@ import { stringToUint8Array } from '../../../../../../../utils/param/publicFunc'
 import { publicSignVerifyFunc } from '../../../../../../../utils/param/signverify/publicSignverifyPromise.js';
 let srcData65 = Data.Data65b;
 let srcData65Kb = stringToUint8Array(srcData65);
+let finishOutData;
 describe('SecurityHuksSignVerifyRSACallbackJsunit', function () {
   it('testSignVerifyRSA003', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyRSASize512SIGNPKCS1MD5KeyAlias003';
@@ -32,13 +33,7 @@ describe('SecurityHuksSignVerifyRSACallbackJsunit', function () {
       ),
       inData: srcData65Kb,
     };
-    await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'finish',
-      true
-    );
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
     HuksOptions = {
       properties: new Array(
         HuksSignVerifyRSA.HuksKeyAlgRSA,
@@ -47,15 +42,9 @@ describe('SecurityHuksSignVerifyRSACallbackJsunit', function () {
         HuksSignVerifyRSA.HuksKeyRSAPADDINGPKCS1V15,
         HuksSignVerifyRSA.HuksKeyRSASize512
       ),
-      inData: srcData65Kb,
+      inData: finishOutData,
     };
-    await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'finish',
-      true
-    );
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
     done();
   });
 });

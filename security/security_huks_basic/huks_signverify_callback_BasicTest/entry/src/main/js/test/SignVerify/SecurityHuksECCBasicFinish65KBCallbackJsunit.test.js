@@ -19,6 +19,7 @@ import { stringToUint8Array } from '../../../../../../../utils/param/publicFunc'
 import { publicSignVerifyFunc } from '../../../../../../../utils/param/signverify/publicSignverifyPromise.js';
 let srcData65 = Data.Data65b;
 let srcData65Kb = stringToUint8Array(srcData65);
+let finishOutData;
 describe('SecurityHuksSignVerifyECCCallbackJsunit', function () {
   it('testSignVerifyECC003', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyECCSize224SIGNNONEKeyAlias003';
@@ -31,13 +32,7 @@ describe('SecurityHuksSignVerifyECCCallbackJsunit', function () {
       ),
       inData: srcData65Kb,
     };
-    await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'finish',
-      true
-    );
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
     HuksOptions = {
       properties: new Array(
         HuksSignVerifyECC.HuksKeyAlgECC,
@@ -45,15 +40,9 @@ describe('SecurityHuksSignVerifyECCCallbackJsunit', function () {
         HuksSignVerifyECC.HuksTagECCDigestNONE,
         HuksSignVerifyECC.HuksKeyECCSize224
       ),
-      inData: srcData65Kb,
+      inData: finishOutData,
     };
-    await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'finish',
-      false
-    );
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
     done();
   });
 });

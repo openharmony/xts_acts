@@ -35,11 +35,9 @@ let HuksOptions63kb = {
 };
 
 describe('SecurityHuksAgreeECDHCallbackJsunit', function () {
-  it('testAgreeECDHAbort63KB001', 0, async function (done) {
-    const srcKeyAliesFirst =
-      'testAgreeECDHSize224Abort63KBAgreeKeyAlias_01_001';
-    const srcKeyAliesSecond =
-      'testAgreeECDHSize224Abort63KBAgreeKeyAlias_02_001';
+  it('testAgreeEDCH102', 0, async function (done) {
+    const srcKeyAliesFirst = 'testAgreeECDHSize224Abort63KBAgreeKeyAlias_01_001';
+    const srcKeyAliesSecond = 'testAgreeECDHSize224Abort63KBAgreeKeyAlias_02_001';
     let huksOptionsFinish = {
       properties: new Array(
         HuksAgreeECDH.HuksKeySTORAGE,
@@ -57,13 +55,7 @@ describe('SecurityHuksAgreeECDHCallbackJsunit', function () {
       ),
       inData: srcData63Kb,
     };
-    await publicAgreeFunc(
-      srcKeyAliesFirst,
-      srcKeyAliesSecond,
-      HuksOptions63kb,
-      huksOptionsFinish,
-      'abort'
-    );
+    await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'abort');
     done();
   });
 });
