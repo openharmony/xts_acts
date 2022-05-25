@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter'
+import emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function badgeJsunit() {
@@ -70,10 +70,10 @@ export default function badgeJsunit() {
         }
         var innerEvent = {
           eventId: 63,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testBadge02] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testBadge02] change component data error: " + err.message);
       }
@@ -97,10 +97,10 @@ export default function badgeJsunit() {
         }
         var innerEvent = {
           eventId: 63,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testBadge03] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testBadge03] change component data error: " + err.message);
       }
@@ -124,10 +124,10 @@ export default function badgeJsunit() {
         }
         var innerEvent = {
           eventId: 63,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testBadge04] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testBadge04] change component data error: " + err.message);
       }
@@ -151,10 +151,10 @@ export default function badgeJsunit() {
         }
         var innerEvent = {
           eventId: 63,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testBadge05] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testBadge05] change component data error: " + err.message);
       }
@@ -202,10 +202,10 @@ export default function badgeJsunit() {
         }
         var innerEvent = {
           eventId: 63,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testBadge08] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testBadge08] change component data error: " + err.message);
       }
@@ -229,10 +229,10 @@ export default function badgeJsunit() {
         }
         var innerEvent = {
           eventId: 63,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testBadge09] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testBadge09] change component data error: " + err.message);
       }
@@ -255,10 +255,10 @@ export default function badgeJsunit() {
         }
         var innerEvent = {
           eventId: 64,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testBadge10] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testBadge10] change component data error: " + err.message);
       }
@@ -282,10 +282,10 @@ export default function badgeJsunit() {
         }
         var innerEvent = {
           eventId: 65,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testBadge11] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testBadge11] change component data error: " + err.message);
       }

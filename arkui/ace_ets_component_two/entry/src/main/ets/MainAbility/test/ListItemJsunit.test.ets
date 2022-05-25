@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function listItemJsunit() {
@@ -67,10 +67,10 @@ export default function listItemJsunit() {
         }
         var innerEvent = {
           eventId: 122,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testListItem02] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testListItem02] change component data error: " + err.message);
       }
@@ -104,10 +104,10 @@ export default function listItemJsunit() {
         }
         var innerEvent = {
           eventId: 123,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testListItem04] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testListItem04] change component data error: " + err.message);
       }

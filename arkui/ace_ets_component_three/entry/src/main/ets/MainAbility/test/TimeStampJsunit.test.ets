@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function timeStampJsunit() {
   describe('timeStampTest', function () {
@@ -54,12 +54,12 @@ export default function timeStampJsunit() {
       }
       let indexEvent = {
         eventId: 230,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("timeStampTest_0100 on events_emitter err : " + JSON.stringify(err));
+        console.info("timeStampTest_0100 on emitter err : " + JSON.stringify(err));
       }
       console.info("timeStampTest_0100 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1500);

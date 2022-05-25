@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -33,9 +33,9 @@ struct PatternLockExample {
     console.info('[PatternLock] page show called');
     var stateChangeEvent = {
       eventId: 152,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
 
   }
 
@@ -107,10 +107,10 @@ struct PatternLockExample {
           }
           var backEvent = {
             eventId: 153,
-            priority: events_emitter.EventPriority.LOW
+            priority: emitter.EventPriority.LOW
           }
           console.info("reset button start to emit action state")
-          events_emitter.emit(backEvent, backData)
+          emitter.emit(backEvent, backData)
         } catch (err) {
           console.info("reset button emit action state err: " + JSON.stringify(err.message))
         }

@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 export default function listJsunit() {
   describe('listTest', function () {
@@ -73,10 +73,10 @@ export default function listJsunit() {
         }
         var innerEvent = {
           eventId: 124,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testList02] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testList02] change component data error: " + err.message);
       }
@@ -99,10 +99,10 @@ export default function listJsunit() {
         }
         var innerEvent = {
           eventId: 124,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testList03] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testList03] change component data error: " + err.message);
       }
@@ -125,10 +125,10 @@ export default function listJsunit() {
         }
         var innerEvent = {
           eventId: 124,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testList04] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testList04] change component data error: " + err.message);
       }
@@ -151,10 +151,10 @@ export default function listJsunit() {
         }
         var innerEvent = {
           eventId: 124,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testList05] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testList05] change component data error: " + err.message);
       }
@@ -177,10 +177,10 @@ export default function listJsunit() {
         }
         var innerEvent = {
           eventId: 125,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testList06] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testList06] change component data error: " + err.message);
       }
@@ -203,10 +203,10 @@ export default function listJsunit() {
         }
         var innerEvent = {
           eventId: 125,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testList07] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testList07] change component data error: " + err.message);
       }
@@ -229,10 +229,10 @@ export default function listJsunit() {
         }
         var innerEvent = {
           eventId: 125,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testList08] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testList08] change component data error: " + err.message);
       }
@@ -255,10 +255,10 @@ export default function listJsunit() {
         }
         var innerEvent = {
           eventId: 125,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testList09] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testList09] change component data error: " + err.message);
       }
@@ -281,10 +281,10 @@ export default function listJsunit() {
         }
         var innerEvent = {
           eventId: 901,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testList10] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testList10] change component data error: " + err.message);
       }
@@ -307,10 +307,10 @@ export default function listJsunit() {
         }
         var innerEvent = {
           eventId: 902,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testList11] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testList11] change component data error: " + err.message);
       }
@@ -333,10 +333,10 @@ export default function listJsunit() {
         }
         var innerEvent = {
           eventId: 903,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testList12] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testList12] change component data error: " + err.message);
       }

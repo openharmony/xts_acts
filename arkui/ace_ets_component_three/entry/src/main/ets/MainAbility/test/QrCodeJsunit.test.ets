@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function qrCodeJsunit() {
@@ -68,10 +68,10 @@ export default function qrCodeJsunit() {
         }
         var innerEvent = {
           eventId: 170,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[test_qrCode_002] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[test_qrCode_002] change component color error: " + err.message);
       }
@@ -94,10 +94,10 @@ export default function qrCodeJsunit() {
         }
         var innerEvent = {
           eventId: 171,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[test_qrCode_003] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[test_qrCode_003] change component color error: " + err.message);
       }
@@ -120,10 +120,10 @@ export default function qrCodeJsunit() {
         }
         var innerEvent = {
           eventId: 1023,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[test_qrCode_004] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[test_qrCode_004] change component color error: " + err.message);
       }
@@ -146,10 +146,10 @@ export default function qrCodeJsunit() {
         }
         var innerEvent = {
           eventId: 1024,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[test_qrCode_005] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[test_qrCode_005] change component color error: " + err.message);
       }
@@ -172,10 +172,10 @@ export default function qrCodeJsunit() {
         }
         var innerEvent = {
           eventId: 1025,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[test_qrCode_006] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[test_qrCode_006] change component color error: " + err.message);
       }
@@ -198,10 +198,10 @@ export default function qrCodeJsunit() {
         }
         var innerEvent = {
           eventId: 1026,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[test_qrCode_007] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[test_qrCode_007] change component color error: " + err.message);
       }

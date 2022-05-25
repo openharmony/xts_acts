@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function PanGestureJsunit() {
@@ -59,10 +59,10 @@ export default function PanGestureJsunit() {
         }
         var innerEvent = {
           eventId: 23,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testPanGesture01] start to publish emit:" + JSON.stringify(eventData.data));
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testPanGesture01] change component data error: " + err.message);
       }
@@ -90,12 +90,12 @@ export default function PanGestureJsunit() {
       }
       var innerEventTwo = {
         eventId: 24,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(innerEventTwo, callbackTwo)
+        emitter.on(innerEventTwo, callbackTwo)
       } catch (err) {
-        console.info("[testPanGesture02] on events_emitter err : " + JSON.stringify(err));
+        console.info("[testPanGesture02] on emitter err : " + JSON.stringify(err));
       }
       console.info('[testPanGesture02] testSendTouchEvent ' + sendTouchEvent(point));
       await Utils.sleep(1000)

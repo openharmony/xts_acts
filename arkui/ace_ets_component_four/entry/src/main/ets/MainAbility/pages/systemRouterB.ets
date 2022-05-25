@@ -15,7 +15,7 @@
  */
 
 import router from '@system.router';
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -43,10 +43,10 @@ struct SystemRouterB {
       }
       let paramsEvent = {
         eventId: 211,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       console.info("[SystemRouterB] start to emit params");
-      events_emitter.emit(paramsEvent, paramsData);
+      emitter.emit(paramsEvent, paramsData);
     } catch (err) {
       console.info("[SystemRouterB] emit params err: " + JSON.stringify(err.message));
     }

@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function OhosRouterJsunit() {
   describe('ohosRouterTest', function () {
@@ -83,12 +83,12 @@ export default function OhosRouterJsunit() {
       }
       let paramsEvent = {
         eventId: 142,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(paramsEvent, callback);
+        emitter.on(paramsEvent, callback);
       } catch (err) {
-        console.info("[ohosRouterTest002] on events_emitter err : " + JSON.stringify(err));
+        console.info("[ohosRouterTest002] on emitter err : " + JSON.stringify(err));
       }
       console.info("[ohosRouterTest002] click push button result is: "
       + JSON.stringify(sendEventByKey('pushButtonA', 10, "")));
@@ -160,12 +160,12 @@ export default function OhosRouterJsunit() {
       }
       let paramsEvent = {
         eventId: 142,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(paramsEvent, callback);
+        emitter.on(paramsEvent, callback);
       } catch (err) {
-        console.info("[ohosRouterTest005] on events_emitter err : " + JSON.stringify(err));
+        console.info("[ohosRouterTest005] on emitter err : " + JSON.stringify(err));
       }
       console.info("[ohosRouterTest005] click replace button result is: "
       + JSON.stringify(sendEventByKey('ReplaceButtonA', 10, "")));

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -46,10 +46,10 @@ struct PopupExample {
             }
             var backEvent = {
               eventId: 65,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button2 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button2 emit action state err: " + JSON.stringify(err.message))
           }
@@ -78,10 +78,10 @@ struct PopupExample {
             }
             var backEvent = {
               eventId: 66,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button1 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button1 emit action state err: " + JSON.stringify(err.message))
           }
@@ -101,10 +101,10 @@ struct PopupExample {
             }
             var backEvent = {
               eventId: 67,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button emit action state err: " + JSON.stringify(err.message))
           }
@@ -129,9 +129,9 @@ struct PopupExample {
     console.info('customPopupOption page show called');
     var stateChangeEvent = {
       eventId: 68,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+    emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
   private stateChangCallBack = (eventData) => {

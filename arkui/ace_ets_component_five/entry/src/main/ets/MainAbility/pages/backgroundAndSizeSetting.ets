@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -96,33 +96,33 @@ struct BackgroundExample {
     console.info('background page show called');
     var stateChangeEvent = {
       eventId: 1,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
 
     var stateChangeEventTwo = {
       eventId: 2,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventTwo, this.stateChangCallBackTwo);
+    emitter.on(stateChangeEventTwo, this.stateChangCallBackTwo);
 
     let stateChangeEventOne = {
       eventId: 34,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventOne, this.stateChangCallBackOne)
+    emitter.on(stateChangeEventOne, this.stateChangCallBackOne)
 
     let sizeChangeEvent = {
       eventId: 35,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(sizeChangeEvent, this.sizeChangCallBack)
+    emitter.on(sizeChangeEvent, this.sizeChangCallBack)
 
     let weightChangeEvent = {
       eventId: 36,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(weightChangeEvent, this.weightChangCallBack)
+    emitter.on(weightChangeEvent, this.weightChangCallBack)
   }
 
   build() {

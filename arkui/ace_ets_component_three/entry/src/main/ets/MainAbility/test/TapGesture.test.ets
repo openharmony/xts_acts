@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function longPressGestureJsunit() {
@@ -67,12 +67,12 @@ export default function longPressGestureJsunit() {
       }
       var innerEvent = {
         eventId: 214,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(innerEvent, callback)
+        emitter.on(innerEvent, callback)
       } catch (err) {
-        console.info("[testTapGesture01] on events_emitter err : " + JSON.stringify(err));
+        console.info("[testTapGesture01] on emitter err : " + JSON.stringify(err));
       }
       console.info('testTapGesture01 sendTouchEvent one:' + sendTouchEvent(point));
       console.info('testTapGesture01 sendTouchEvent two:' + sendTouchEvent(point2));

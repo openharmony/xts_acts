@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter'
+import emitter from '@ohos.events.emitter'
 import Utils from './Utils.ets';
 
 export default function overLayJsunit() {
@@ -70,10 +70,10 @@ export default function overLayJsunit() {
         }
         var innerEvent = {
           eventId: 143,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testOverlay02] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testOverlay02] change component data error: " + err.message);
       }
@@ -98,10 +98,10 @@ export default function overLayJsunit() {
         }
         var innerEvent = {
           eventId: 143,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testOverlay03] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testOverlay03] change component data error: " + err.message);
       }
@@ -127,10 +127,10 @@ export default function overLayJsunit() {
         }
         var innerEvent = {
           eventId: 143,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testOverlay04] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testOverlay04] change component data error: " + err.message);
       }
@@ -153,10 +153,10 @@ export default function overLayJsunit() {
         }
         var innerEvent = {
           eventId: 1110,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testOverlay05] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testOverlay05] change component data error: " + err.message);
       }
@@ -180,10 +180,10 @@ export default function overLayJsunit() {
         }
         var innerEvent = {
           eventId: 1110,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testOverlay06] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testOverlay06] change component data error: " + err.message);
       }
@@ -207,10 +207,10 @@ export default function overLayJsunit() {
         }
         var innerEvent = {
           eventId: 1110,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testOverlay07] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testOverlay07] change component data error: " + err.message);
       }
@@ -233,10 +233,10 @@ export default function overLayJsunit() {
         }
         var innerEvent = {
           eventId: 1110,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testOverlay08] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testOverlay08] change component data error: " + err.message);
       }

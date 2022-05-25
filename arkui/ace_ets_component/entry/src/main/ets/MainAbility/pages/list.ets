@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -33,33 +33,33 @@ struct ListExample {
     console.info('[list] page show called');
     var stateChangeEvent = {
       eventId: 124,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
 
     var stateChangeEventTwo = {
       eventId: 125,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventTwo, this.stateChangCallBackTwo);
+    emitter.on(stateChangeEventTwo, this.stateChangCallBackTwo);
 
     var stateChangeEvent3 = {
       eventId: 901,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent3, this.stateChangCallBackTwo);
+    emitter.on(stateChangeEvent3, this.stateChangCallBackTwo);
 
     var stateChangeEvent4 = {
       eventId: 902,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent4, this.stateChangCallBackTwo);
+    emitter.on(stateChangeEvent4, this.stateChangCallBackTwo);
 
     var stateChangeEvent5 = {
       eventId: 903,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent5, this.stateChangCallBackTwo);
+    emitter.on(stateChangeEvent5, this.stateChangCallBackTwo);
   }
 
   private stateChangCallBack = (eventData) => {

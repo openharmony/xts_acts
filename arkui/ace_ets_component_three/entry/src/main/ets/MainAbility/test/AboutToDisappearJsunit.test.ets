@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function aboutToDisappearJsunit() {
@@ -55,12 +55,12 @@ export default function aboutToDisappearJsunit() {
       }
       let indexEvent = {
         eventId: 49,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("aboutToDisappearTest_0100 on events_emitter err : " + JSON.stringify(err));
+        console.info("aboutToDisappearTest_0100 on emitter err : " + JSON.stringify(err));
       }
       console.info("aboutToDisappearTest_0100 click result is: " + JSON.stringify(sendEventByKey('button1', 10, "")));
       await Utils.sleep(1000);

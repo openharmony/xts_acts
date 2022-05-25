@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -37,19 +37,19 @@ struct PanelExample {
     console.info('rating page show called');
     var stateChangeEvent = {
       eventId: 147,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+    emitter.on(stateChangeEvent, this.stateChangCallBack)
     var stateChangeEventTwo = {
       eventId: 148,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
+    emitter.on(stateChangeEventTwo, this.stateChangCallBack)
     var stateChangeEventThree = {
       eventId: 149,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventThree, this.stateChangCallBack)
+    emitter.on(stateChangeEventThree, this.stateChangCallBack)
   }
 
   build() {

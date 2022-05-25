@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function sourceTypeJsunit() {
@@ -63,12 +63,12 @@ export default function sourceTypeJsunit() {
       }
       var innerEvent = {
         eventId: 198,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(innerEvent, callback)
+        emitter.on(innerEvent, callback)
       } catch (err) {
-        console.info("sourceTypeTest_0100 on events_emitter err : " + JSON.stringify(err));
+        console.info("sourceTypeTest_0100 on emitter err : " + JSON.stringify(err));
       }
       console.info('sourceTypeTest_0100 sendTouchEvent :' + sendTouchEvent(point));
       await Utils.sleep(1000)

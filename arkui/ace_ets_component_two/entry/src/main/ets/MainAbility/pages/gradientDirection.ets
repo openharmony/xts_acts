@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -40,21 +40,21 @@ struct linearGradientExample {
     console.info('gradientDirection page show called');
     var stateChangeEventOne = {
       eventId: 106,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
+    emitter.on(stateChangeEventOne, this.stateChangCallBack)
     console.info('gradientDirection page show called');
     var stateChangeEventTwo = {
       eventId: 107,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
+    emitter.on(stateChangeEventTwo, this.stateChangCallBack)
     console.info('gradientDirection page show called');
     var stateChangeEventThree = {
       eventId: 108,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventThree, this.stateChangCallBack)
+    emitter.on(stateChangeEventThree, this.stateChangCallBack)
   }
 
   private stateChangCallBack = (eventData) => {

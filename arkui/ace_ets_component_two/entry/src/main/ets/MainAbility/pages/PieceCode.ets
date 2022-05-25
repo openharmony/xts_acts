@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -31,9 +31,9 @@ struct PieceCode {
     console.info('piece page show called');
     var stateChangeEvent = {
       eventId: 154,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
   private stateChangCallBack = (eventData) => {
     if (eventData != null) {
@@ -76,10 +76,10 @@ struct PieceCode {
             }
             var backEvent = {
               eventId: 155,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("piece onClose start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("piece onClose emit action state err: " + JSON.stringify(err.message))
           }
@@ -98,10 +98,10 @@ struct PieceCode {
           }
           var backEvent = {
             eventId: 156,
-            priority: events_emitter.EventPriority.LOW
+            priority: emitter.EventPriority.LOW
           }
           console.info("close to emit action state")
-          events_emitter.emit(backEvent, backData)
+          emitter.emit(backEvent, backData)
         } catch (err) {
           console.info("close action state err: " + JSON.stringify(err.message))
         }

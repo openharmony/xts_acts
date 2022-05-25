@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function layoutConstraintsJsunit() {
@@ -67,10 +67,10 @@ export default function layoutConstraintsJsunit() {
         }
         let indexEvent = {
           eventId: 20,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testLayoutConstraints002] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testLayoutConstraints002] change component data error: " + err.message);
       }
@@ -104,10 +104,10 @@ export default function layoutConstraintsJsunit() {
         }
         let indexEvent = {
           eventId: 21,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testLayoutConstraints004] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testLayoutConstraints004] change component data error: " + err.message);
       }
@@ -130,10 +130,10 @@ export default function layoutConstraintsJsunit() {
         }
         let indexEvent = {
           eventId: 1112,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testLayoutConstraints005] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testLayoutConstraints005] change component data error: " + err.message);
       }
@@ -156,10 +156,10 @@ export default function layoutConstraintsJsunit() {
         }
         let indexEvent = {
           eventId: 1112,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testLayoutConstraints006] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[testLayoutConstraints006] change component data error: " + err.message);
       }

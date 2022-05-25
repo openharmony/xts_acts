@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -55,39 +55,39 @@ struct QrCode {
     console.info('qrCode page show called');
     var stateChangeEvent = {
       eventId: 170,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
 
     var stateChangeEvent = {
       eventId: 171,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBackTwo);
+    emitter.on(stateChangeEvent, this.stateChangCallBackTwo);
 
     var stateChangeEvent = {
       eventId: 1023,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
 
     var stateChangeEvent = {
       eventId: 1024,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
 
     var stateChangeEvent = {
       eventId: 1025,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBackTwo);
+    emitter.on(stateChangeEvent, this.stateChangCallBackTwo);
 
     var stateChangeEvent = {
       eventId: 1026,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBackTwo);
+    emitter.on(stateChangeEvent, this.stateChangCallBackTwo);
   }
 
   build() {

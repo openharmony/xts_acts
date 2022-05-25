@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function pieceJsunit() {
@@ -54,12 +54,12 @@ export default function pieceJsunit() {
       }
       let indexEvent = {
         eventId: 156,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("test_pieceCode_01 on events_emitter err : " + JSON.stringify(err));
+        console.info("test_pieceCode_01 on emitter err : " + JSON.stringify(err));
       }
       console.info("test_pieceCode_01 click result is: " + JSON.stringify(sendEventByKey('button1',10,"")));
       await Utils.sleep(1000);
@@ -69,12 +69,12 @@ export default function pieceJsunit() {
       }
       var innerEventOne = {
         eventId: 155,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(innerEventOne, callback1);
+        emitter.on(innerEventOne, callback1);
       } catch (err) {
-        console.info("test_pieceCode_01 on events_emitter err : " + JSON.stringify(err));
+        console.info("test_pieceCode_01 on emitter err : " + JSON.stringify(err));
       }
       console.info('test_pieceCode_01 END');
       done();

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -34,10 +34,10 @@ struct PlayModeExample {
             }
             var backEvent = {
               eventId: 161,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button emit action state err: " + JSON.stringify(err.message))
           }

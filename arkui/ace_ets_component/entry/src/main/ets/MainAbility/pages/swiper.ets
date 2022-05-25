@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 class MyDataSource implements IDataSource {
   private list: number[] = []
@@ -106,10 +106,10 @@ struct SwiperExample {
           }
           var backEvent = {
             eventId: 204,
-            priority: events_emitter.EventPriority.LOW
+            priority: emitter.EventPriority.LOW
           }
           console.info("onChange start to emit action state")
-          events_emitter.emit(backEvent, backData)
+          emitter.emit(backEvent, backData)
         } catch (err) {
           console.info("onChange emit action state err: " + JSON.stringify(err.message))
         }
@@ -130,10 +130,10 @@ struct SwiperExample {
               }
               var backEvent = {
                 eventId: 205,
-                priority: events_emitter.EventPriority.LOW
+                priority: emitter.EventPriority.LOW
               }
               console.info("button1 start to emit action state")
-              events_emitter.emit(backEvent, backData)
+              emitter.emit(backEvent, backData)
             } catch (err) {
               console.info("button1 emit action state err: " + JSON.stringify(err.message))
             }
@@ -152,10 +152,10 @@ struct SwiperExample {
               }
               var backEvent = {
                 eventId: 206,
-                priority: events_emitter.EventPriority.LOW
+                priority: emitter.EventPriority.LOW
               }
               console.info("button2 start to emit action state")
-              events_emitter.emit(backEvent, backData)
+              emitter.emit(backEvent, backData)
             } catch (err) {
               console.info("button2 emit action state err: " + JSON.stringify(err.message))
             }
@@ -168,27 +168,27 @@ struct SwiperExample {
     console.info('swiper page show called');
     var stateChangeEvent = {
       eventId: 207,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+    emitter.on(stateChangeEvent, this.stateChangCallBack)
 
     var stateChangeEventOne = {
       eventId: 208,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
+    emitter.on(stateChangeEventOne, this.stateChangCallBack)
 
     var stateChangeEventTwo = {
       eventId: 209,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
+    emitter.on(stateChangeEventTwo, this.stateChangCallBack)
 
     var stateChangeEventTwo = {
       eventId: 210,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
+    emitter.on(stateChangeEventTwo, this.stateChangCallBack)
   }
 
   private stateChangCallBack = (eventData) => {

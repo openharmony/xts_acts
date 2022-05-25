@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter'
+import emitter from '@ohos.events.emitter'
 import Utils from './Utils.ets';
 
 export default function imageAnimatorJsunit(){
@@ -56,12 +56,12 @@ export default function imageAnimatorJsunit(){
       }
       let indexEvent = {
         eventId: 115,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("imageAnimatorTest_0100 on events_emitter err : " + JSON.stringify(err));
+        console.info("imageAnimatorTest_0100 on emitter err : " + JSON.stringify(err));
       }
       console.info("imageAnimatorTest_0100 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
       await Utils.sleep(1000);
@@ -79,12 +79,12 @@ export default function imageAnimatorJsunit(){
       }
       let indexEvent = {
         eventId: 116,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("imageAnimatorTest_0200 on events_emitter err : " + JSON.stringify(err));
+        console.info("imageAnimatorTest_0200 on emitter err : " + JSON.stringify(err));
       }
       console.info("imageAnimatorTest_0200 click result is: " + JSON.stringify(sendEventByKey('button1',10,"")));
       await Utils.sleep(1000);
@@ -102,12 +102,12 @@ export default function imageAnimatorJsunit(){
       }
       let indexEvent = {
         eventId: 117,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("imageAnimatorTest_0300 on events_emitter err : " + JSON.stringify(err));
+        console.info("imageAnimatorTest_0300 on emitter err : " + JSON.stringify(err));
       }
       console.info("imageAnimatorTest_0300 click result is: " + JSON.stringify(sendEventByKey('button2',10,"")));
       await Utils.sleep(1000);
@@ -124,12 +124,12 @@ export default function imageAnimatorJsunit(){
       }
       let indexEvent = {
         eventId: 118,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("imageAnimatorTest_0400 on events_emitter err : " + JSON.stringify(err));
+        console.info("imageAnimatorTest_0400 on emitter err : " + JSON.stringify(err));
       }
       console.info("imageAnimatorTest_0400 click result is: " + JSON.stringify(sendEventByKey('button3',10,"")));
       await Utils.sleep(1000);
@@ -146,12 +146,12 @@ export default function imageAnimatorJsunit(){
       }
       let indexEvent = {
         eventId: 119,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("imageAnimatorTest_0500 on events_emitter err : " + JSON.stringify(err));
+        console.info("imageAnimatorTest_0500 on emitter err : " + JSON.stringify(err));
       }
       console.info("imageAnimatorTest_0500 click result is: " + JSON.stringify(sendEventByKey('button4',10,"")));
       await Utils.sleep(1000);
@@ -168,12 +168,12 @@ export default function imageAnimatorJsunit(){
       }
       let indexEvent = {
         eventId: 114,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("imageAnimatorTest_0600 on events_emitter err : " + JSON.stringify(err));
+        console.info("imageAnimatorTest_0600 on emitter err : " + JSON.stringify(err));
       }
       console.info("imageAnimatorTest_0600 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
       await Utils.sleep(1000);
@@ -191,10 +191,10 @@ export default function imageAnimatorJsunit(){
         }
         let indexEvent = {
           eventId: 121,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("imageAnimatorTest_0700 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("imageAnimatorTest_0700 change component data error: " + err.message);
       }
@@ -205,12 +205,12 @@ export default function imageAnimatorJsunit(){
       }
       let indexEventOne = {
         eventId: 120,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEventOne, callbackOne);
+        emitter.on(indexEventOne, callbackOne);
       } catch (err) {
-        console.info("imageAnimatorTest_0700 on events_emitter err : " + JSON.stringify(err));
+        console.info("imageAnimatorTest_0700 on emitter err : " + JSON.stringify(err));
       }
       console.info("imageAnimatorTest_0700 click result is: " + JSON.stringify(sendEventByKey('button5',10,"")));
       await Utils.sleep(1000);

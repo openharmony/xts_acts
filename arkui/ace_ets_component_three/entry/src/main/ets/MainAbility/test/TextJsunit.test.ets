@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function textJsunit() {
@@ -84,10 +84,10 @@ export default function textJsunit() {
         }
         let indexEvent = {
           eventId: 226,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testText_0300 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testText_0300 change component data error: " + err.message);
       }
@@ -122,10 +122,10 @@ export default function textJsunit() {
         }
         let indexEvent = {
           eventId: 227,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testText_0500 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testText_0500 change component data error: " + err.message);
       }
@@ -159,10 +159,10 @@ export default function textJsunit() {
         }
         let indexEvent = {
           eventId: 228,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testText_0700 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testText_0700 change component data error: " + err.message);
       }
@@ -196,10 +196,10 @@ export default function textJsunit() {
         }
         let indexEvent = {
           eventId: 229,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testText_0900 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testText_0900 change component data error: " + err.message);
       }
@@ -233,10 +233,10 @@ export default function textJsunit() {
         }
         let indexEvent = {
           eventId: 230,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testText_1100 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testText_1100 change component data error: " + err.message);
       }
@@ -259,10 +259,10 @@ export default function textJsunit() {
         }
         let indexEvent = {
           eventId: 231,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testText_1200 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testText_1200 change component data error: " + err.message);
       }
@@ -285,10 +285,10 @@ export default function textJsunit() {
         }
         let indexEvent = {
           eventId: 232,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testText_1300 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testText_1300 change component data error: " + err.message);
       }
@@ -311,10 +311,10 @@ export default function textJsunit() {
         }
         let indexEvent = {
           eventId: 233,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testText_1400 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("testText_1400 change component data error: " + err.message);
       }

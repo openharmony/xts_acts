@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function ratingJsunit() {
   describe('ratingTest', function () {
@@ -56,10 +56,10 @@ export default function ratingJsunit() {
         }
         var innerEvent = {
           eventId: 173,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testRating_100 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testRating_100 change component data error: " + err.message);
       }
@@ -94,11 +94,11 @@ export default function ratingJsunit() {
         }
         var innerEvent = {
           eventId: 174,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testRating_300 start to publish emit");
         console.info("eventData.data.rating value" + eventData.data.rating);
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testRating_300 change component data error: " + err.message);
       }
@@ -122,10 +122,10 @@ export default function ratingJsunit() {
         }
         var innerEvent = {
           eventId: 175,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testRating_400 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testRating_400 change component data error: " + err.message);
       }
@@ -149,10 +149,10 @@ export default function ratingJsunit() {
         }
         var innerEvent = {
           eventId: 176,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testRating_500 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testRating_500 change component data error: " + err.message);
       }
@@ -176,10 +176,10 @@ export default function ratingJsunit() {
         }
         var innerEvent = {
           eventId: 177,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testRating_600 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testRating_600 change component data error: " + err.message);
       }
@@ -203,10 +203,10 @@ export default function ratingJsunit() {
         }
         var innerEvent = {
           eventId: 178,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testRating_700 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testRating_700 change component data error: " + err.message);
       }
@@ -230,10 +230,10 @@ export default function ratingJsunit() {
         }
         var innerEvent = {
           eventId: 1027,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testRating_800 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testRating_800 change component data error: " + err.message);
       }
@@ -257,10 +257,10 @@ export default function ratingJsunit() {
         }
         var innerEvent = {
           eventId: 1028,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testRating_900 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testRating_900 change component data error: " + err.message);
       }

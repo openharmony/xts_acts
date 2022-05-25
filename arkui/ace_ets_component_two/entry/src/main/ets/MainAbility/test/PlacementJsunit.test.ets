@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function placementJsunit(){
   describe('placementTest', function (){
@@ -54,12 +54,12 @@ export default function placementJsunit(){
       }
       let indexEvent = {
         eventId: 157,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("placementTest_0100 on events_emitter err : " + JSON.stringify(err));
+        console.info("placementTest_0100 on emitter err : " + JSON.stringify(err));
       }
       console.info("placementTest_0100 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
       await Utils.sleep(1500);
@@ -77,12 +77,12 @@ export default function placementJsunit(){
       }
       let indexEventOne = {
         eventId: 158,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEventOne, callbackOne);
+        emitter.on(indexEventOne, callbackOne);
       } catch (err) {
-        console.info("placementTest_0200 on events_emitter err : " + JSON.stringify(err));
+        console.info("placementTest_0200 on emitter err : " + JSON.stringify(err));
       }
       console.info("placementTest_0200 click result is: " + JSON.stringify(sendEventByKey('button1',10,"")));
       await Utils.sleep(1500);
@@ -100,12 +100,12 @@ export default function placementJsunit(){
       }
       let indexEventTwo = {
         eventId: 159,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEventTwo, callbackTwo);
+        emitter.on(indexEventTwo, callbackTwo);
       } catch (err) {
-        console.info("placementTest_0300 on events_emitter err : " + JSON.stringify(err));
+        console.info("placementTest_0300 on emitter err : " + JSON.stringify(err));
       }
       console.info("placementTest_0300 click result is: " + JSON.stringify(sendEventByKey('button2',10,"")));
       await Utils.sleep(1500);
@@ -123,12 +123,12 @@ export default function placementJsunit(){
       }
       let indexEventThree = {
         eventId: 160,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEventThree, callbackThree);
+        emitter.on(indexEventThree, callbackThree);
       } catch (err) {
-        console.info("placementTest_0400 on events_emitter err : " + JSON.stringify(err));
+        console.info("placementTest_0400 on emitter err : " + JSON.stringify(err));
       }
       console.info("placementTest_0400 click result is: " + JSON.stringify(sendEventByKey('button3',10,"")));
       await Utils.sleep(1500);

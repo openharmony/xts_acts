@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -56,10 +56,10 @@ struct MarqueeExample {
             }
             var backEvent = {
               eventId: 127,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("Onstart start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("Onstart emit action state err: " + JSON.stringify(err.message))
           }
@@ -75,10 +75,10 @@ struct MarqueeExample {
             }
             var backEvent = {
               eventId: 128,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("Onbounce start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("Onbounce emit action state err: " + JSON.stringify(err.message))
           }
@@ -95,10 +95,10 @@ struct MarqueeExample {
             }
             var backEvent = {
               eventId: 129,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("Onfinish start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("Onfinish emit action state err: " + JSON.stringify(err.message))
           }
@@ -115,10 +115,10 @@ struct MarqueeExample {
             }
             var backEvent = {
               eventId: 130,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("emit action state err: " + JSON.stringify(err.message))
           }

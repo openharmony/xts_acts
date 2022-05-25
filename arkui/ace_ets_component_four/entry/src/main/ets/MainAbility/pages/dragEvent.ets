@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -61,10 +61,10 @@ struct DragExample {
               }
               var backEvent = {
                 eventId: 86,
-                priority: events_emitter.EventPriority.LOW
+                priority: emitter.EventPriority.LOW
               }
               console.info("apple start to emit action state")
-              events_emitter.emit(backEvent, backData)
+              emitter.emit(backEvent, backData)
             } catch (err) {
               console.info("apple emit action state err: " + JSON.stringify(err.message))
             }
@@ -143,10 +143,10 @@ struct DragExample {
           }
           var backEvent = {
             eventId: 87,
-            priority: events_emitter.EventPriority.LOW
+            priority: emitter.EventPriority.LOW
           }
           console.info("onDragEnter start to emit action state")
-          events_emitter.emit(backEvent, backData)
+          emitter.emit(backEvent, backData)
         } catch (err) {
           console.info("onDragEnter emit action state err: " + JSON.stringify(err.message))
         }
@@ -161,10 +161,10 @@ struct DragExample {
           }
           var backEvent = {
             eventId: 88,
-            priority: events_emitter.EventPriority.LOW
+            priority: emitter.EventPriority.LOW
           }
           console.info("onDragMove start to emit action state")
-          events_emitter.emit(backEvent, backData)
+          emitter.emit(backEvent, backData)
         } catch (err) {
           console.info("onDragMove emit action state err: " + JSON.stringify(err.message))
         }
@@ -179,10 +179,10 @@ struct DragExample {
           }
           var backEvent = {
             eventId: 89,
-            priority: events_emitter.EventPriority.LOW
+            priority: emitter.EventPriority.LOW
           }
           console.info("onDragLeave start to emit action state")
-          events_emitter.emit(backEvent, backData)
+          emitter.emit(backEvent, backData)
         } catch (err) {
           console.info("onDragLeave emit action state err: " + JSON.stringify(err.message))
         }
@@ -197,10 +197,10 @@ struct DragExample {
           }
           var backEvent = {
             eventId: 90,
-            priority: events_emitter.EventPriority.LOW
+            priority: emitter.EventPriority.LOW
           }
           console.info("onDrop start to emit action state")
-          events_emitter.emit(backEvent, backData)
+          emitter.emit(backEvent, backData)
         } catch (err) {
           console.info("onDrop emit action state err: " + JSON.stringify(err.message))
         }

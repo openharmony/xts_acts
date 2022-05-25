@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter'
+import emitter from '@ohos.events.emitter'
 import Utils from './Utils.ets';
 
 export default function areaChangeJsunit() {
@@ -54,17 +54,17 @@ export default function areaChangeJsunit() {
       }
       let indexEvent = {
         eventId: 61,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("areaChangeTest_0300 on events_emitter err : " + JSON.stringify(err));
+        console.info("areaChangeTest_0300 on emitter err : " + JSON.stringify(err));
       }
       console.info("areaChangeTest_0300 click result is: " + JSON.stringify(sendEventByKey('text1', 10, "")));
       var innerEventOne = {
         eventId: 62,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       await Utils.sleep(1500);
       var callback1 = (eventData) => {
@@ -72,9 +72,9 @@ export default function areaChangeJsunit() {
         expect(eventData.data.ACTION).assertEqual(true);
       }
       try {
-        events_emitter.on(innerEventOne, callback1);
+        emitter.on(innerEventOne, callback1);
       } catch (err) {
-        console.info("areaChangeTest_0300 on events_emitter err : " + JSON.stringify(err));
+        console.info("areaChangeTest_0300 on emitter err : " + JSON.stringify(err));
       }
       console.info('areaChangeTest_0300 END');
       done();
@@ -89,12 +89,12 @@ export default function areaChangeJsunit() {
       }
       let indexEvent = {
         eventId: 62,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("areaChangeTest_0400 on events_emitter err : " + JSON.stringify(err));
+        console.info("areaChangeTest_0400 on emitter err : " + JSON.stringify(err));
       }
       console.info("areaChangeTest_0400 click result is: " + JSON.stringify(sendEventByKey('text1', 10, "")));
       console.info('areaChangeTest_0400 END');

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -42,24 +42,24 @@ struct ButtonExample {
     console.info('Button page show called');
     var stateChangeEvent = {
       eventId: 70,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
     var stateChangeEventOne = {
       eventId: 74,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventOne, this.stateChangCallBack);
+    emitter.on(stateChangeEventOne, this.stateChangCallBack);
     var stateChangeEventTwo = {
       eventId: 75,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack);
+    emitter.on(stateChangeEventTwo, this.stateChangCallBack);
     var stateChangeEventThree = {
       eventId: 76,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventThree, this.stateChangCallBack);
+    emitter.on(stateChangeEventThree, this.stateChangCallBack);
   }
 
   build() {
@@ -84,10 +84,10 @@ struct ButtonExample {
             }
             var backEvent = {
               eventId: 71,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button2 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button2 emit action state err: " + JSON.stringify(err.message))
           }
@@ -107,10 +107,10 @@ struct ButtonExample {
             }
             var backEvent = {
               eventId: 72,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button3 start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("button3 emit action state err: " + JSON.stringify(err.message))
           }
@@ -135,10 +135,10 @@ struct ButtonExample {
             }
             var backEvent = {
               eventId: 4,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("click to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("click action state err: " + JSON.stringify(err.message))
           }

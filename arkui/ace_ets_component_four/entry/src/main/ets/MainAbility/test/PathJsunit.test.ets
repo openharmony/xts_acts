@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter'
+import emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function enableJsunit() {
@@ -70,10 +70,10 @@ export default function enableJsunit() {
         }
         var innerEvent = {
           eventId: 151,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testPath02] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testPath02] change component data error: " + err.message);
       }

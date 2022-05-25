@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils.ets';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function marqueeJsunit() {
   describe('marqueeTest', function () {
@@ -55,12 +55,12 @@ export default function marqueeJsunit() {
       }
       let indexEvent = {
         eventId: 130,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("testMarquee_0100 on events_emitter err : " + JSON.stringify(err));
+        console.info("testMarquee_0100 on emitter err : " + JSON.stringify(err));
       }
       console.info("testMarquee_0100 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1000);
@@ -70,12 +70,12 @@ export default function marqueeJsunit() {
       }
       var innerEventOne = {
         eventId: 127,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(innerEventOne, callback1);
+        emitter.on(innerEventOne, callback1);
       } catch (err) {
-        console.info("testMarquee_0100 on events_emitter err : " + JSON.stringify(err));
+        console.info("testMarquee_0100 on emitter err : " + JSON.stringify(err));
       }
       console.info('testMarquee_0100 END');
       done();
@@ -90,12 +90,12 @@ export default function marqueeJsunit() {
       }
       let indexEvent = {
         eventId: 130,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("testMarquee_0200 on events_emitter err : " + JSON.stringify(err));
+        console.info("testMarquee_0200 on emitter err : " + JSON.stringify(err));
       }
       console.info("testMarquee_0200 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1000);
@@ -105,12 +105,12 @@ export default function marqueeJsunit() {
       }
       var innerEventOne = {
         eventId: 128,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(innerEventOne, callback1)
+        emitter.on(innerEventOne, callback1)
       } catch (err) {
-        console.info("testMarquee_0200 on events_emitter err : " + JSON.stringify(err));
+        console.info("testMarquee_0200 on emitter err : " + JSON.stringify(err));
       }
       console.info('testMarquee_0200 END');
       done();
@@ -125,12 +125,12 @@ export default function marqueeJsunit() {
       }
       let indexEvent = {
         eventId: 130,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("testMarquee_0300 on events_emitter err : " + JSON.stringify(err));
+        console.info("testMarquee_0300 on emitter err : " + JSON.stringify(err));
       }
       console.info("testMarquee_0300 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1000);
@@ -140,12 +140,12 @@ export default function marqueeJsunit() {
       }
       var innerEventOne = {
         eventId: 129,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(innerEventOne, callback1)
+        emitter.on(innerEventOne, callback1)
       } catch (err) {
-        console.info("testMarquee_0300 on events_emitter err : " + JSON.stringify(err));
+        console.info("testMarquee_0300 on emitter err : " + JSON.stringify(err));
       }
       console.info('testMarquee_0300 END');
       done();

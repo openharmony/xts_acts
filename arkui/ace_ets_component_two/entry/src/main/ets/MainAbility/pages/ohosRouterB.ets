@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import router from '@system.router';
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -42,10 +42,10 @@ struct OhosRouterB {
       }
       let paramsEvent = {
         eventId: 142,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       console.info("[OhosRouterB] start to emit params");
-      events_emitter.emit(paramsEvent, paramsData);
+      emitter.emit(paramsEvent, paramsData);
     } catch (err) {
       console.info("[OhosRouterB] emit params err: " + JSON.stringify(err.message));
     }

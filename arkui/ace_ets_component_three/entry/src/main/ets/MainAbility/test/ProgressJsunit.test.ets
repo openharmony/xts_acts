@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function progressJsunit() {
   describe('progressTest', function () {
@@ -59,10 +59,10 @@ export default function progressJsunit() {
         }
         var innerEvent = {
           eventId: 164,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testProgress_100 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testProgress_100 change component data error: " + err.message);
       }
@@ -100,10 +100,10 @@ export default function progressJsunit() {
         }
         var innerEvent = {
           eventId: 165,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testProgress_300 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testProgress_300 change component data error: " + err.message);
       }
@@ -141,10 +141,10 @@ export default function progressJsunit() {
         }
         var innerEvent = {
           eventId: 166,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testProgress_500 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testProgress_500 change component data error: " + err.message);
       }
@@ -182,10 +182,10 @@ export default function progressJsunit() {
         }
         var innerEvent = {
           eventId: 167,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testProgress_700 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testProgress_700 change component data error: " + err.message);
       }
@@ -212,10 +212,10 @@ export default function progressJsunit() {
         }
         var innerEvent = {
           eventId: 168,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testProgress_800 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testProgress_800 change component data error: " + err.message);
       }
@@ -242,10 +242,10 @@ export default function progressJsunit() {
         }
         var innerEvent = {
           eventId: 169,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testProgress_900 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testProgress_900 change component data error: " + err.message);
       }
@@ -272,10 +272,10 @@ export default function progressJsunit() {
         }
         var innerEvent = {
           eventId: 1021,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testProgress_1000 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testProgress_1000 change component data error: " + err.message);
       }
@@ -302,10 +302,10 @@ export default function progressJsunit() {
         }
         var innerEvent = {
           eventId: 1022,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("testProgress_1100 start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("testProgress_1100 change component data error: " + err.message);
       }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -62,10 +62,10 @@ struct PlacementExample {
             }
             var backEvent = {
               eventId: 157,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           }catch(err){
             console.info("button emit action state err: " + JSON.stringify(err.message))
           }
@@ -96,10 +96,10 @@ struct PlacementExample {
             }
             var backEventOne = {
               eventId: 158,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button1 start to emit action state")
-            events_emitter.emit(backEventOne, backDataOne)
+            emitter.emit(backEventOne, backDataOne)
           }catch(err){
             console.info("button1 emit action state err: " + JSON.stringify(err.message))
           }
@@ -130,10 +130,10 @@ struct PlacementExample {
             }
             var backEventTwo = {
               eventId: 159,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button2 start to emit action state")
-            events_emitter.emit(backEventTwo, backDataTwo)
+            emitter.emit(backEventTwo, backDataTwo)
           }catch(err){
             console.info("button2 emit action state err: " + JSON.stringify(err.message))
           }
@@ -164,10 +164,10 @@ struct PlacementExample {
             }
             var backEventThree = {
               eventId: 160,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("button3 start to emit action state")
-            events_emitter.emit(backEventThree, backDataThree)
+            emitter.emit(backEventThree, backDataThree)
           }catch(err){
             console.info("button3 emit action state err: " + JSON.stringify(err.message))
           }

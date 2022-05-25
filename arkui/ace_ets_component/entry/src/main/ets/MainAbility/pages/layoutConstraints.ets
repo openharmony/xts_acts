@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 class ContainerInfo {
   label: string = ''
@@ -111,21 +111,21 @@ struct LayoutConstraints {
   onPageShow() {
     let aspectRatioChangeEvent = {
       eventId: 20,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(aspectRatioChangeEvent, this.stateChangCallBack);
+    emitter.on(aspectRatioChangeEvent, this.stateChangCallBack);
 
     let priorityChangeEvent = {
       eventId: 21,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(priorityChangeEvent, this.stateChangCallBack);
+    emitter.on(priorityChangeEvent, this.stateChangCallBack);
 
     let priorityChangeEvent2 = {
       eventId: 1112,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(priorityChangeEvent2, this.stateChangCallBack);
+    emitter.on(priorityChangeEvent2, this.stateChangCallBack);
   }
 
   stateChangCallBack = (eventData) => {

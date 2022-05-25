@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function scrollCodeJsunit() {
@@ -70,10 +70,10 @@ export default function scrollCodeJsunit() {
         }
         var innerEvent = {
           eventId: 185,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[test_scrollCode_002] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[test_scrollCode_002] change scrollable error: " + err.message);
       }
@@ -96,10 +96,10 @@ export default function scrollCodeJsunit() {
         }
         var innerEvent = {
           eventId: 186,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[test_scrollCode_003] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[test_scrollCode_003] change scrollBar error: " + err.message);
       }
@@ -122,10 +122,10 @@ export default function scrollCodeJsunit() {
         }
         var innerEvent = {
           eventId: 187,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[test_scrollCode_004] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[test_scrollCode_004] change scrollBar error: " + err.message);
       }
@@ -148,10 +148,10 @@ export default function scrollCodeJsunit() {
         }
         var innerEvent = {
           eventId: 188,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[test_scrollCode_005] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[test_scrollCode_005] change scrollBar error: " + err.message);
       }
@@ -172,12 +172,12 @@ export default function scrollCodeJsunit() {
       }
       var innerEvent = {
         eventId: 189,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(innerEvent, callback)
+        emitter.on(innerEvent, callback)
       } catch (err) {
-        console.info("[test_scrollCode_06] on events_emitter err : " + JSON.stringify(err));
+        console.info("[test_scrollCode_06] on emitter err : " + JSON.stringify(err));
       }
       console.info('[test_scrollCode_006] sendEventByKey ' + JSON.stringify(sendEventByKey('button', 10, "")));
       await Utils.sleep(1000)

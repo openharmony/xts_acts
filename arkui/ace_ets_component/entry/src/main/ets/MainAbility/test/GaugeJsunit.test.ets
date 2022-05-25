@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 export default function gaugeJsunit() {
   describe('gaugeTest', function () {
@@ -69,10 +69,10 @@ export default function gaugeJsunit() {
         }
         var innerEvent = {
           eventId: 102,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGauge002] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testGauge002] change component data error: " + err.message);
       }
@@ -95,10 +95,10 @@ export default function gaugeJsunit() {
         }
         var innerEvent = {
           eventId: 102,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGauge003] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testGauge003] change component data error: " + err.message);
       }
@@ -121,10 +121,10 @@ export default function gaugeJsunit() {
         }
         var innerEvent = {
           eventId: 102,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGauge004] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testGauge004] change component data error: " + err.message);
       }
@@ -147,10 +147,10 @@ export default function gaugeJsunit() {
         }
         var innerEvent = {
           eventId: 102,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGauge005] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testGauge005] change component data error: " + err.message);
       }
@@ -173,10 +173,10 @@ export default function gaugeJsunit() {
         }
         var innerEvent = {
           eventId: 103,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGauge006] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testGauge006] change component data error: " + err.message);
       }
@@ -194,10 +194,10 @@ export default function gaugeJsunit() {
         }
         var innerEvent = {
           eventId: 904,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGauge007] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testGauge007] change component data error: " + err.message);
       }
@@ -220,10 +220,10 @@ export default function gaugeJsunit() {
         }
         var innerEvent = {
           eventId: 904,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGauge008] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testGauge008] change component data error: " + err.message);
       }
@@ -246,10 +246,10 @@ export default function gaugeJsunit() {
         }
         var innerEvent = {
           eventId: 904,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGauge009] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testGauge009] change component data error: " + err.message);
       }
@@ -272,10 +272,10 @@ export default function gaugeJsunit() {
         }
         var innerEvent = {
           eventId: 905,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGauge010] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testGauge010] change component data error: " + err.message);
       }
@@ -298,10 +298,10 @@ export default function gaugeJsunit() {
         }
         var innerEvent = {
           eventId: 905,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGauge011] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testGauge011] change component data error: " + err.message);
       }
@@ -324,10 +324,10 @@ export default function gaugeJsunit() {
         }
         var innerEvent = {
           eventId: 906,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGauge012] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testGauge012] change component data error: " + err.message);
       }
@@ -350,10 +350,10 @@ export default function gaugeJsunit() {
         }
         var innerEvent = {
           eventId: 906,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGauge013] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testGauge013] change component data error: " + err.message);
       }
@@ -376,10 +376,10 @@ export default function gaugeJsunit() {
         }
         var innerEvent = {
           eventId: 905,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[testGauge014] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[testGauge014] change component data error: " + err.message);
       }

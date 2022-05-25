@@ -15,7 +15,7 @@
  */
 
 
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -27,15 +27,15 @@ struct EnabledExample {
     console.info('[enabled] page show called ');
     var stateChangeEvent = {
       eventId: 93,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
 
     var stateChangeEvent2 = {
       eventId: 1111,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
+    emitter.on(stateChangeEvent2, this.stateChangCallBack);
 
   }
 

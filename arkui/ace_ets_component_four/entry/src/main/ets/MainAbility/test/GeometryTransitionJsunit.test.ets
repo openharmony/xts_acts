@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter'
+import emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function geometryTransitionJsunit() {
@@ -49,7 +49,7 @@ export default function geometryTransitionJsunit() {
       console.info('geometryTransitionTest_0100 START');
       let indexEvent = {
         eventId: 104,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       await Utils.sleep(1000);
       let callback = (indexEvent) => {
@@ -57,9 +57,9 @@ export default function geometryTransitionJsunit() {
         expect(indexEvent.data.btn1).assertEqual(false);
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("geometryTransitionTest_0100 on events_emitter err : " + JSON.stringify(err));
+        console.info("geometryTransitionTest_0100 on emitter err : " + JSON.stringify(err));
       }
       console.info("geometryTransitionTest_0100 click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
       await Utils.sleep(1000);

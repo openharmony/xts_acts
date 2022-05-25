@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -41,19 +41,19 @@ struct BadgeExample {
     console.info('Badge page show called');
     var stateChangeEvent = {
       eventId: 63,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
     var stateChangeEventOne = {
       eventId: 64,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventOne, this.stateChangCallBack);
+    emitter.on(stateChangeEventOne, this.stateChangCallBack);
     var stateChangeEventTwo = {
       eventId: 65,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEventTwo, this.stateChangCallBack);
+    emitter.on(stateChangeEventTwo, this.stateChangCallBack);
   }
 
   build() {

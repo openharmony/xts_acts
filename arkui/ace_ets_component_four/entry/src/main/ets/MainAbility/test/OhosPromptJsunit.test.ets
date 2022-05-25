@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function ohosPromptJsunit() {
@@ -54,12 +54,12 @@ export default function ohosPromptJsunit() {
       }
       var innerEvent = {
         eventId: 142,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(innerEvent, callback)
+        emitter.on(innerEvent, callback)
       } catch (err) {
-        console.info("[test_OhosPrompt_001] on events_emitter err : " + JSON.stringify(err));
+        console.info("[test_OhosPrompt_001] on emitter err : " + JSON.stringify(err));
       }
       console.info('[test_OhosPrompt_001] sendEventByKey ' + JSON.stringify(sendEventByKey('rotate5', 10, "")));
       await Utils.sleep(1000)

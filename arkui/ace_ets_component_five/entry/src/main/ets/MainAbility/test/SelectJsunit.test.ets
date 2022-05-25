@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function selectJsunit() {
@@ -67,10 +67,10 @@ export default function selectJsunit() {
         }
         var innerEvent = {
           eventId: 191,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[selectTest_0200] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[selectTest_0200] change component data error: " + err.message);
       }
@@ -111,10 +111,10 @@ export default function selectJsunit() {
         }
         var innerEvent = {
           eventId: 191,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[selectTest_0400] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[selectTest_0400] change component data error: " + err.message);
       }
@@ -152,10 +152,10 @@ export default function selectJsunit() {
         }
         let indexEvent = {
           eventId: 191,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[selectTest_0600] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[selectTest_0600] change component data error: " + err.message);
       }
@@ -179,10 +179,10 @@ export default function selectJsunit() {
         }
         var innerEvent = {
           eventId: 191,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[selectTest_0700] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[selectTest_0700] change component data error: " + err.message);
       }
@@ -205,10 +205,10 @@ export default function selectJsunit() {
         }
         var innerEvent = {
           eventId: 191,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[selectTest_0800] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[selectTest_0800] change component data error: " + err.message);
       }
@@ -231,10 +231,10 @@ export default function selectJsunit() {
         }
         var innerEvent = {
           eventId: 191,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[selectTest_0900] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
+        emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[selectTest_0900] change component data error: " + err.message);
       }
@@ -256,10 +256,10 @@ export default function selectJsunit() {
         }
         let indexEvent = {
           eventId: 191,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
         console.info("[selectTest_1000] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
+        emitter.emit(indexEvent, eventData);
       } catch (err) {
         console.log("[selectTest_1000] change component data error: " + err.message);
       }

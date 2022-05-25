@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
 import Utils from './Utils.ets';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 
 export default function touchAbleJsunit() {
   describe('touchAbleTest', function () {
@@ -63,12 +63,12 @@ export default function touchAbleJsunit() {
       }
       var innerEventTwo = {
         eventId: 237,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(innerEventTwo, callbackTwo)
+        emitter.on(innerEventTwo, callbackTwo)
       } catch (err) {
-        console.info("[testTouchAble002] on events_emitter err : " + JSON.stringify(err));
+        console.info("[testTouchAble002] on emitter err : " + JSON.stringify(err));
       }
       console.info('[testClickEvent001] sendEventByKey ' + JSON.stringify(sendEventByKey('ellipse', 10, "")));
       await Utils.sleep(1000)

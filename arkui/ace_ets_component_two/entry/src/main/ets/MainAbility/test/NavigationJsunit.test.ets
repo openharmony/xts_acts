@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter';
+import emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function navigationJsunit() {
@@ -66,12 +66,12 @@ export default function navigationJsunit() {
       }
       let indexEvent = {
         eventId: 136,
-        priority: events_emitter.EventPriority.LOW
+        priority: emitter.EventPriority.LOW
       }
       try {
-        events_emitter.on(indexEvent, callback);
+        emitter.on(indexEvent, callback);
       } catch (err) {
-        console.info("testNavigation_200 on events_emitter err : " + JSON.stringify(err));
+        console.info("testNavigation_200 on emitter err : " + JSON.stringify(err));
       }
       console.info("testNavigation_200 click result is: " + JSON.stringify(sendEventByKey('NavigationContent1',10,"")));
       await Utils.sleep(2000);

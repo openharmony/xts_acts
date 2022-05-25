@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter'
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -66,19 +66,19 @@ struct flexDirectionExample {
     console.info('flexDirection page show called');
     var stateChangeEvent1 = {
       eventId: 97,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent1, this.stateChangCallBack)
+    emitter.on(stateChangeEvent1, this.stateChangCallBack)
     var stateChangeEvent2 = {
       eventId: 98,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent2, this.stateChangCallBack)
+    emitter.on(stateChangeEvent2, this.stateChangCallBack)
     var stateChangeEvent3 = {
       eventId: 99,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent3, this.stateChangCallBack)
+    emitter.on(stateChangeEvent3, this.stateChangCallBack)
   }
 
   private stateChangCallBack = (eventData) => {

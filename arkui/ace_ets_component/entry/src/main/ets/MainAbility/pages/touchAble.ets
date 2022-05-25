@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -37,9 +37,9 @@ struct TouchAbleExample {
     console.info('[TouchAble] page show called');
     var stateChangeEvent = {
       eventId: 44,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
   build() {
@@ -69,10 +69,10 @@ struct TouchAbleExample {
             }
             var backEvent = {
               eventId: 237,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("[TouchAble] start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("[TouchAble] emit action state err: " + JSON.stringify(err.message))
           }

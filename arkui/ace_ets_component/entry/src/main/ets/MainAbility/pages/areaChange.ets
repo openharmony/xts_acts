@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -40,10 +40,10 @@ struct AreaExample {
             }
             var backEvent = {
               eventId: 61,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("onClick start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("onClick emit action state err: " + JSON.stringify(err.message))
           }
@@ -61,10 +61,10 @@ struct AreaExample {
             }
             var backEvent = {
               eventId: 62,
-              priority: events_emitter.EventPriority.LOW
+              priority: emitter.EventPriority.LOW
             }
             console.info("onAreaChange start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("onAreaChange emit action state err: " + JSON.stringify(err.message))
           }

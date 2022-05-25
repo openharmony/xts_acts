@@ -15,7 +15,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 import router from '@system.router';
-import events_emitter from '@ohos.events.emitter'
+import emitter from '@ohos.events.emitter'
 import Utils from './Utils.ets';
 
 export default function touchJsunit() {
@@ -58,9 +58,9 @@ export default function touchJsunit() {
         }
         var backEvent = {
           eventId: 43,
-          priority: events_emitter.EventPriority.LOW
+          priority: emitter.EventPriority.LOW
         }
-        events_emitter.on(backEvent, callBackTouch);
+        emitter.on(backEvent, callBackTouch);
       } catch (err) {
         console.info("testTouch01 on touchEvent err : " + JSON.stringify(err));
       }

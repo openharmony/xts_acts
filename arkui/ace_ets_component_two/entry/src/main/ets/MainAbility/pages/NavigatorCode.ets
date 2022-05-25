@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter';
+import emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -41,15 +41,15 @@ struct NavigatorCode {
     console.info('navigatorCode page show called');
     var stateChangeEvent = {
       eventId: 137,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    emitter.on(stateChangeEvent, this.stateChangCallBack);
 
     var stateChangeEvent = {
       eventId: 138,
-      priority: events_emitter.EventPriority.LOW
+      priority: emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack)
+    emitter.on(stateChangeEvent, this.stateChangCallBack)
   }
 
   build() {
