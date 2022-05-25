@@ -2034,7 +2034,7 @@ describe('ActsFeatureAbilityTest', function () {
 
             id = setTimeout(timeout, START_ABILITY_TIMEOUT);
             let Want = {
-                action: "action.system.home",
+                action: "action.system.homeability",
                 entities: []
             }
             var StartAbilityParameter = {
@@ -2045,7 +2045,6 @@ describe('ActsFeatureAbilityTest', function () {
                 console.log('ACTS_StartAbility_1300 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
                 expect(err.code == 0).assertTrue();
-                done();
             });
         }catch(error){
             console.log("ACTS_StartAbility_1300 : error = " + error);
