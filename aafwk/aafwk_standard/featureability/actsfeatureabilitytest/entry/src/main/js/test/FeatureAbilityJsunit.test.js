@@ -596,7 +596,6 @@ describe('ActsFeatureAbilityTest', function () {
                 console.log('ACTS_StartAbility_1000 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
                 expect(err.code == 0).assertTrue();
-                done();
             });
         }catch(error){
             console.log("ACTS_StartAbility_1000 : error = " + error);
@@ -643,7 +642,7 @@ describe('ActsFeatureAbilityTest', function () {
             {
                 want:
                 {
-                    action: "action.system.home",
+                    action: "action.system.homeability",
                     entities: ["entity.system.home"],
                     type: "MIMETYPE",
                     options: {
@@ -726,7 +725,7 @@ describe('ActsFeatureAbilityTest', function () {
             {
                 want:
                 {
-                    action: "action.system.home",
+                    action: "action.system.homeability",
                     entities: ["entity.system.home"],
                     type: "MIMETYPE",
                     options: {
@@ -901,7 +900,7 @@ describe('ActsFeatureAbilityTest', function () {
             {
                 want:
                 {
-                    action: "action.system.home",
+                    action: "action.system.homeability",
                     entities: ["entity.system.home"],
                     type: "MIMETYPE",
                     options: {
@@ -986,7 +985,7 @@ describe('ActsFeatureAbilityTest', function () {
             {
                 want:
                 {
-                    action: "action.system.home",
+                    action: "action.system.homeability",
                     entities: ["entity.system.home"],
                     type: "MIMETYPE",
                     options: {
