@@ -2161,7 +2161,6 @@ describe('window_test', function () {
             done();
         })
     })
-
     /**
      * @tc.number		SUB_WMS_SETFOCUSABLE_JSAPI_005
      * @tc.name			Test setFocusable_Test_005
@@ -2854,5 +2853,124 @@ describe('window_test', function () {
             done();
         }
     })
-
+    /**
+    * @tc.number     SUB_WINDOW_SETPRIVACYMODE_JSAPI_002
+    * @tc.name       Test setPrivacyModeTest2
+    * @tc.desc       Verify the scene where the application sub window is set as a security layer
+    */
+    it('setPrivacyModeTest2', 0, async function (done) {
+        let caseName = 'setPrivacyModeTest2';
+        let msgStr = 'jsunittest ' + caseName + ' ';
+        console.log(msgStr + 'begin window =' + JSON.stringify(window));
+        let mainWnd = null;
+        window.create('setPrivacyModeTest2', window.WindowType.TYPE_APP, (err, data) => {
+            if (err.code != 0) {
+                console.log(msgStr + 'windowTest CreateTest2 create callback fail err:' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            } else {
+                expect(data != null).assertTrue();
+                console.log(msgStr + 'windowTest CreateTest2 callback create success data' + data);
+                mainWnd = data;
+                mainWnd.getProperties((err, data) => {
+                    if (err.code != 0) {
+                        console.log(msgStr + 'mainWnd.getProperties first data.isPrivacyMode=false err: ' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    } else {
+                        console.log(msgStr + 'mainWnd.getProperties first data.isPrivacyMode=fasle data:' + JSON.stringify(data));
+                        expect(!data.isPrivacyMode).assertTrue();
+                        mainWnd.setPrivacyMode(true, (err, data) => {
+                            if (err && err.code) {
+                                unexpectedError(err, caseName, 'mainWnd.setPrivacyMode', done);
+                                console.log(msgStr + 'mainWnd.setPrivacyMode(true) err=' + JSON.stringify(err));
+                            } else {
+                                expect(!data).assertTrue();
+                                console.log(msgStr + 'mainWnd.setPrivacyMode true data=' + JSON.stringify(data));
+                                mainWnd.getProperties((err, data) => {
+                                    if (err.code != 0) {
+                                        console.log(msgStr + 'mainWnd.getProperties second isPrivacyMode=true fail err: ' + JSON.stringify(err));
+                                        expect().assertFail();
+                                        done();
+                                    } else {
+                                        console.log(msgStr + 'mainWnd.getProperties second isPrivacyMode=true callback data:' + JSON.stringify(data));
+                                        expect(data.isPrivacyMode).assertTrue();
+                                        mainWnd.setPrivacyMode(false, (err, data) => {
+                                            if (err && err.code) {
+                                                unexpectedError(err, caseName, 'mainWnd.setPrivacyMode', done);
+                                                console.log(msgStr + 'mainWnd.setPrivacyMode(false) err=' + JSON.stringify(err));
+                                            } else {
+                                                expect(!data).assertTrue();
+                                                console.log(msgStr + 'mainWnd.setPrivacyMode(false) end data=' + JSON.stringify(data));
+                                                mainWnd.getProperties((err, data) => {
+                                                    if (err.code != 0) {
+                                                        console.log(msgStr + 'mainWnd.getProperties data.isPrivacyMode=fasle callback fail err: ' + JSON.stringify(err));
+                                                        expect().assertFail();
+                                                        done();
+                                                    } else {
+                                                        console.log(msgStr + 'mainWnd.getProperties data.isPrivacyMode=fasle callback data:' + JSON.stringify(data));
+                                                        expect(!data.isPrivacyMode).assertTrue();
+                                                    }
+                                                    done();
+                                                })
+                                            }
+                                        });
+                                    }
+                                })
+                            }
+                        });
+                    }
+                })
+            }
+        })
+    })
+    /**
+    * @tc.number     SUB_WINDOW_SETPRIVACYMODE_JSAPI_001
+    * @tc.name       Test setPrivacyModeTest1
+    * @tc.desc       Verify the scene where the application sub window is set as a security layer
+    */
+    it('setPrivacyModeTest1', 0, async function (done) {
+        let caseName = 'setPrivacyModeTest1';
+        let msgStr = 'jsunittest ' + caseName + ' ';
+        console.log(msgStr + 'begin ');
+        let mainWnd = null;
+        let windowData = await window.create('setPrivacyModeTest1', window.WindowType.TYPE_APP).catch((err) => {
+            unexpectedError(err, caseName, 'window.create', done);
+            done();
+        })
+        expect(!!windowData).assertTrue();
+        console.log(msgStr + 'window.create success windowData' + windowData);
+        mainWnd = windowData;
+        let firstPro = await mainWnd.getProperties().catch((err, data) => {
+            unexpectedError(err, caseName, 'mainWnd.getProperties', done);
+            done();
+        })
+        expect(!firstPro.isPrivacyMode).assertTrue();
+        console.log(msgStr + 'mainWnd.getProperties firstPro=' + JSON.stringify(firstPro));
+        let firstPrivacyMode = await mainWnd.setPrivacyMode(true).catch((err, data) => {
+            unexpectedError(err, caseName, 'mainWnd.setPrivacyMode', done);
+            console.log(msgStr + 'mainWnd.setPrivacyMode(true) err=' + JSON.stringify(err));
+        })
+        expect(!firstPrivacyMode).assertTrue();
+        console.log(msgStr + 'mainWnd.setPrivacyMode true firstPrivacyMode=' + JSON.stringify(firstPrivacyMode));
+        let secondPro = await mainWnd.getProperties().catch((err, data) => {
+            unexpectedError(err, caseName, 'mainWnd.getProperties', done);
+            done();
+        })
+        console.log(msgStr + 'mainWnd.getProperties secondPro:' + JSON.stringify(secondPro.isPrivacyMode));
+        expect(secondPro.isPrivacyMode).assertTrue();
+        let secondPrivacyMode = await mainWnd.setPrivacyMode(false).catch((err, data) => {
+            unexpectedError(err, caseName, 'mainWnd.setPrivacyMode', done);
+            console.log(msgStr + 'mainWnd.setPrivacyMode(false) err=' + JSON.stringify(err));
+        })
+        expect(!secondPrivacyMode).assertTrue();
+        console.log(msgStr + 'mainWnd.setPrivacyMode(false) secondPrivacyMode=' + JSON.stringify(secondPrivacyMode));
+        let lastPro = await mainWnd.getProperties().catch((err, data) => {
+            unexpectedError(err, caseName, 'mainWnd.getProperties', done);
+            done();
+        })
+        console.log(msgStr + 'mainWnd.getProperties lastPro:' + JSON.stringify(lastPro.isPrivacyMode));
+        expect(!lastPro.isPrivacyMode).assertTrue();
+        done();
+    })
 })
