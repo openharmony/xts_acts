@@ -18,6 +18,7 @@ group("formmanager") {
   if (is_standard_system) {
     deps = [
       "formhostst_ets/formsystemhostk:FormSystemHostK",
+      "formhostst_ets/formsystemhostl:FormSystemHostL",
       "formproviderst_ets/formsupplyapplicationF:FormSupplyAppF",
       "formproviderst_ets/formsupplyapplicationG:FormSupplyAppG",
       "formproviderst_ets/formsystemprovidera:FormSystemProviderA",
@@ -30,6 +31,8 @@ group("formmanager") {
       "formsystemtest_ets/formgetformsinfotest/formsoneandzerotest:FormsOneAndZeroTest",
       "formsystemtest_ets/formgetformsinfotest/formswithoutpermtest:FormsWithoutPermTest",
       "formsystemtest_ets/formgetformsinfotest/formszerotest:FormsZeroTest",
+      "formsystemtest_ets/formhostdeathrecipienttest:FormHostDeathRecipientTest",
+      "formsystemtest_ets/formperformancetest:FormPerformanceTest",
       "formsystemtest_ets/formstresstest:FormStressTest",
     ]
   }

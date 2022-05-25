@@ -57,6 +57,9 @@ struct Index {
   private subscriberFormDeleteEvent = {
     events: ["FMS_FormDelete_commonEvent"]
   };
+  private subscriberFormTerminateEvent = {
+    events: ["FMS_FormTerminate_commonEvent"]
+  };
   private TAG = `[FormComponent.hostk]`;
 
   private formOnAcquiredEvent = "FMS_FormOnAcquired_commonEvent";
@@ -86,12 +89,17 @@ struct Index {
 
   async private aboutToAppear() {
     const onDeleteEventSubscriber = await commonEvent.createSubscriber(this.subscriberFormDeleteEvent);
+    const onTerminateEventSubscriber = await commonEvent.createSubscriber(this.subscriberFormTerminateEvent);
     commonEvent.subscribe(onDeleteEventSubscriber, async (err, data) => {
       const formIds = data.parameters.formIds;
       console.info(`${this.TAG} deleteCallback data: ${JSON.stringify(data)}, error: ${JSON.stringify(err)}`);
       console.info(`${this.TAG} deleteCallback formIds: ${JSON.stringify(formIds)}`);
 
+      commonEvent.unsubscribe(onDeleteEventSubscriber, () => this.unsubscribeDeleteCallback());
       let deletedFormAmount = 0;
+      if (formIds.length == 0) {
+        return;
+      }
       formIds.forEach(async (formId, index) => {
         try {
           const res = await formHost.deleteForm(formId);
@@ -102,8 +110,6 @@ struct Index {
         }
 
         if (index >= formIds.length - 1) {
-          commonEvent.unsubscribe(onDeleteEventSubscriber, () => this.unsubscribeDeleteCallback());
-
           const commonEventPublishData = {
             parameters: {
               deletedFormAmount: deletedFormAmount,
@@ -118,7 +124,7 @@ struct Index {
 
     featureAbility.getWant()
       .then(async (want: any) => {
-        console.info(`${this.TAG} getWant: ${JSON.stringify(want)}`);
+        console.info(`${this.TAG} ===> getWant: ${JSON.stringify(want)}`);
         this.formId = want.parameters.formId;
         this.name = want.parameters.name;
         this.bundle = want.parameters.bundle;
@@ -186,8 +192,7 @@ struct Index {
           this.disableUpdate = want.parameters.disableUpdate;
         }
         if (want.parameters.subscribeTerminate) {
-          let onTerminateEventSubscriber;
-          const onTerminateCallback = async (err, data) => {
+          commonEvent.subscribe(onTerminateEventSubscriber, async (err, data) => {
             console.info(`${this.TAG} onTerminateCallback data: ${JSON.stringify(data)}, error: ${JSON.stringify(err)}`);
             commonEvent.unsubscribe(onTerminateEventSubscriber, () => { });
             console.info(`${this.TAG} onTerminateCallback end`);
@@ -196,11 +201,7 @@ struct Index {
               featureAbility.terminateSelf();
               console.info(`${this.TAG} featureAbility.terminateSelf`);
             }, 1000);
-          }
-          onTerminateEventSubscriber = await commonEvent.createSubscriber({
-            events: [`FMS_FormTerminate_commonEvent`],
           });
-          commonEvent.subscribe(onTerminateEventSubscriber, () => onTerminateCallback);
         }
         if (want.parameters.isCreate) {
           this.canCreateForm = want.parameters.isCreate;
