@@ -175,29 +175,29 @@ describe('rdbStoreTest', function () {
      * @tc.number SUB_DDM_AppDataFWK_JSRDB_RdbStore_0060
      * @tc.desc rdb store deleteRdbStore
      */
-    it('testRdbStore0006', 0, async function (done) {
-        console.log(TAG + "************* testRdbStore0006 start *************");
-
-        let storePromise = dataRdb.getRdbStore(STORE_CONFIG, 4);
-        storePromise.then(async (store) => {
-            try {
-                await store.executeSql(CREATE_TABLE_TEST);
-                let deletePromise = dataRdb.deleteRdbStore("rdbstore.db")
-                deletePromise.then(()=>{
-                    console.log(TAG + "deleteRdbStore promise done" + store);
-                    expect(true).assertTrue();
-                })
-            } catch (e) {
-                expect(null).assertFail();
-            }
-        }).catch((err) => {
-            expect(null).assertFail();
-        })
-        await storePromise
-        storePromise = null
-        done();
-        console.log(TAG + "************* testRdbStore0006 end   *************");
-    })
+//    it('testRdbStore0006', 0, async function (done) {
+//        console.log(TAG + "************* testRdbStore0006 start *************");
+//
+//        let storePromise = dataRdb.getRdbStore(STORE_CONFIG, 4);
+//        storePromise.then(async (store) => {
+//            try {
+//                await store.executeSql(CREATE_TABLE_TEST);
+//                let deletePromise = dataRdb.deleteRdbStore("rdbstore.db")
+//                deletePromise.then(()=>{
+//                    console.log(TAG + "deleteRdbStore promise done" + store);
+//                    expect(true).assertTrue();
+//                })
+//            } catch (e) {
+//                expect(null).assertFail();
+//            }
+//        }).catch((err) => {
+//            expect(null).assertFail();
+//        })
+//        await storePromise
+//        storePromise = null
+//        done();
+//        console.log(TAG + "************* testRdbStore0006 end   *************");
+//    })
 
     /**
      * @tc.name rdb store deleteRdbStore
