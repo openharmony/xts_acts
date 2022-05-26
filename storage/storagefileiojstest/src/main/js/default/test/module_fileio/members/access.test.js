@@ -58,7 +58,7 @@ describe('fileio_access', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      fileio.accessSync(fpath, 0x2);
+      fileio.accessSync(fpath, 2);
       fileio.unlinkSync(fpath);
     } catch (err) {
       console.info('fileio_test_access_sync_001 has failed for ' + err);
@@ -81,7 +81,7 @@ describe('fileio_access', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      fileio.accessSync(fpath, 0x4);
+      fileio.accessSync(fpath, 4);
       fileio.unlinkSync(fpath);
     } catch (err) {
       console.info('fileio_test_access_sync_002 has failed for ' + err);
@@ -104,7 +104,7 @@ describe('fileio_access', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      fileio.accessSync(fpath, 0x2 | 0x4);
+      fileio.accessSync(fpath, 2 | 4);
       fileio.unlinkSync(fpath);
     } catch (err) {
       console.info('fileio_test_access_sync_003 has failed for ' + err);
