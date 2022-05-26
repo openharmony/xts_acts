@@ -1384,7 +1384,7 @@ describe('audioRenderer', function () {
 
      await sleep(100);
      console.info('AudioFrameworkRenderLog: waitTime : ' +waitTime);
-     while (rlen < totalSize/4) {
+     while (rlen < totalSize/10) {
          let buf = new ArrayBuffer(bufferSize);
          rlen += ss.readSync(buf);
          console.info('BufferAudioFramework: bytes read from file: ' +rlen);
