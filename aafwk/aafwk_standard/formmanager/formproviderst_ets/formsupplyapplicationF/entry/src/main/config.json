@@ -62,7 +62,6 @@
           {
             "jsComponentName": "Form_Js001",
             "isDefault": true,
-            "scheduledUpdateTime": "10:30",
             "formVisibleNotify": true,
             "defaultDimension": "1*2",
             "name": "Form_Js001",
@@ -70,10 +69,27 @@
             "colorMode": "auto",
             "type": "JS",
             "supportDimensions": [
-              "1*2", "2*2"
+              "1*2",
+              "2*2"
             ],
             "updateEnabled": true,
             "updateDuration": 1
+          },
+          {
+            "jsComponentName": "Form_Js002",
+            "isDefault": false,
+            "scheduledUpdateTime": "10:30",
+            "formVisibleNotify": true,
+            "defaultDimension": "1*2",
+            "name": "Form_Js002",
+            "description": "This is a form widget",
+            "colorMode": "auto",
+            "type": "JS",
+            "supportDimensions": [
+              "1*2",
+              "2*2"
+            ],
+            "updateEnabled": true
           }
         ],
         "srcLanguage": "ets"
@@ -99,7 +115,7 @@
         "pages": [
           "pages/index/index"
         ],
-        "name": "Form_Js001",
+        "name": "widget",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": true
