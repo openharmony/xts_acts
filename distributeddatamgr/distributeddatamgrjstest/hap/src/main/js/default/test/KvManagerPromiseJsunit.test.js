@@ -314,7 +314,7 @@ describe('KVManagerPromiseTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_PROMISE_1000
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_1000
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 010
      */
@@ -341,7 +341,7 @@ describe('KVManagerPromiseTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_PROMISE_1100
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_1100
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 011
      */
@@ -368,7 +368,7 @@ describe('KVManagerPromiseTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_PROMISE_1200
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_1200
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 012
      */
@@ -395,7 +395,7 @@ describe('KVManagerPromiseTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_PROMISE_1300
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_1300
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 013
      */
@@ -424,7 +424,7 @@ describe('KVManagerPromiseTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_PROMISE_1400
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_1400
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 014
      */
@@ -450,7 +450,7 @@ describe('KVManagerPromiseTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_PROMISE_1500
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_1500
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 015
      */
@@ -476,7 +476,7 @@ describe('KVManagerPromiseTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_PROMISE_1600
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_1600
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 016
      */
@@ -502,7 +502,7 @@ describe('KVManagerPromiseTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_PROMISE_1700
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_1700
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 017
      */
@@ -528,7 +528,7 @@ describe('KVManagerPromiseTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_PROMISE_1800
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_1800
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 018
      */
@@ -554,7 +554,7 @@ describe('KVManagerPromiseTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_PROMISE_1900
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_GETKVSTORE_1900
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 019
      */
