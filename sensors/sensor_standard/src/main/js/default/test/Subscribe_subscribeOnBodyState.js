@@ -50,31 +50,32 @@ describe("SensorJsTest", function () {
 
     let errMessages = ['The number of parameters is not valid', 'UnsubscribeSensor failed',
     'Wrong argument type, should be object'];
+
     let errMessage;
 
     /*
-    * @tc.name:subscribeHeartRate_SensorJsTest001
+    * @tc.name:subscribeOnBodyState_SensorJsTest001
     * @tc.desc:verify app info is not null
     * @tc.type: FUNC
     * @tc.require: SR000H0ALK, AR000H0ALM
     */
-    it("subscribeHeartRate_SensorJsTest001", 0, async function (done) {
-        console.info('----------------------subscribeHeartRate_SensorJsTest001---------------------------');
-        sensor.subscribeHeartRate({
+    it("subscribeOnBodyState_SensorJsTest001", 0, async function (done) {
+        console.info('----------------------subscribeOnBodyState_SensorJsTest001---------------------------');
+        sensor.subscribeOnBodyState({
             success: function (data) {
-                console.info("subscribeHeartRate_SensorJsTest001 success" + JSON.stringify(data));
-                expect(typeof (data.heartRate)).assertEqual("number");
+                console.info("subscribeOnBodyState_SensorJsTest001 success" + JSON.stringify(data));
+                expect(typeof (data.value)).assertEqual("boolean");
             },
             fail: function (data, code) {
-                console.error('subscribeHeartRate_SensorJsTest001 failed. Code: ' + code + '; Data: ' + data);
+                console.error('subscribeOnBodyState_SensorJsTest001 failed. Code: ' + code + '; Data: ' + data);
                 expect(code).assertEqual(1001);
             },
         });
         setTimeout(() => {
             try {
-                sensor.unsubscribeHeartRate();
+                sensor.unsubscribeOnBodyState();
             } catch (error) {
-                console.info('subscribeHeartRate_SensorJsTest001_unsubscribeHeartRate error ' + error);
+                console.info('subscribeOnBodyState_SensorJsTest001_unsubscribeOnBodyState error ' + error);
             }
             setTimeout(() => {
                 expect(true).assertTrue();
@@ -84,148 +85,147 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeHeartRate_SensorJsTest002
+     * @tc.name:subscribeOnBodyState_SensorJsTest002
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeHeartRate_SensorJsTest002", 0, function (done) {
-        console.info('----------------------subscribeHeartRate_SensorJsTest002---------------------------');
+    it("subscribeOnBodyState_SensorJsTest002", 0, function (done) {
+        console.info('----------------------subscribeOnBodyState_SensorJsTest002---------------------------');
         try {
-            sensor.subscribeHeartRate({
+            sensor.subscribeOnBodyState({
                 success: function (data) {
-                    console.info("subscribeHeartRate_SensorJsTest002 success:" + JSON.stringify(data));
-                    expect(typeof (data.heartRate)).assertEqual("number");
+                    console.info("subscribeOnBodyState_SensorJsTest002 success:" + JSON.stringify(data));
+                    expect(typeof (data.value)).assertEqual("boolean");
                 },
                 fail: function (data, code) {
-                    console.error('subscribeHeartRate_SensorJsTest002 failed. Code: ' + code + '; Data: ' + data);
+                    console.error('subscribeOnBodyState_SensorJsTest002 failed. Code: ' + code + '; Data: ' + data);
                     expect(code).assertEqual(1001);
                 },
             }, 25);
         } catch (error) {
             errMessage = error.toString().slice(19, 56);
-            console.info('subscribeHeartRate_SensorJsTest002 error:' + error);
+            console.info('subscribeOnBodyState_SensorJsTest002 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })
 
     /*
-     * @tc.name:subscribeHeartRate_SensorJsTest003
+     * @tc.name:subscribeOnBodyState_SensorJsTest003
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeHeartRate_SensorJsTest003", 0, function (done) {
-        console.info('----------------------subscribeHeartRate_SensorJsTest003---------------------------');
+    it("subscribeOnBodyState_SensorJsTest003", 0, function (done) {
+        console.info('----------------------subscribeOnBodyState_SensorJsTest003---------------------------');
         try {
-            sensor.subscribeHeartRate({
+            sensor.subscribeOnBodyState({
                 success: function (data) {
-                    console.info("subscribeHeartRate_SensorJsTest003 success:" + JSON.stringify(data));
-                    expect(typeof (data.heartRate)).assertEqual("number");
+                    console.info("subscribeOnBodyState_SensorJsTest003 success:" + JSON.stringify(data));
+                    expect(typeof (data.value)).assertEqual("boolean");
                 },
                 fail: function (data, code) {
-                    console.error('subscribeHeartRate_SensorJsTest003 failed. Code: ' + code + '; Data: ' + data);
+                    console.error('subscribeOnBodyState_SensorJsTest003 failed. Code: ' + code + '; Data: ' + data);
                     expect(code).assertEqual(1001);
                 },
             }, function () {
             }, 25);
         } catch (error) {
-            errMessage = error.toString().slice(19, 56);
-            console.info('subscribeHeartRate_SensorJsTest003 error:' + error);
+            var errMessage = error.toString().slice(19, 56);
+            console.info('subscribeOnBodyState_SensorJsTest003 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })
 
     /*
-     * @tc.name:subscribeHeartRate_SensorJsTest004
+     * @tc.name:subscribeOnBodyState_SensorJsTest004
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeHeartRate_SensorJsTest004", 0, async function (done) {
-        console.info('----------------------subscribeHeartRate_SensorJsTest004---------------------------');
+    it("subscribeOnBodyState_SensorJsTest004", 0, async function (done) {
+        console.info('----------------------subscribeOnBodyState_SensorJsTest004---------------------------');
         try {
-            sensor.unsubscribeHeartRate('xxx');
+            sensor.unsubscribeOnBodyState('xxx');
         } catch (error) {
             errMessage = error.toString().slice(21, 58);
-            console.info('subscribeHeartRate_SensorJsTest004 error:' + error);
+            console.info('subscribeOnBodyState_SensorJsTest004 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })
 
     /*
-     * @tc.name:subscribeHeartRate_SensorJsTest005
+     * @tc.name:subscribeOnBodyState_SensorJsTest005
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeHeartRate_SensorJsTest005", 0, async function (done) {
-        console.info('----------------------subscribeHeartRate_SensorJsTest005---------------------------');
+    it("subscribeOnBodyState_SensorJsTest005", 0, async function (done) {
+        console.info('----------------------subscribeOnBodyState_SensorJsTest005---------------------------');
         try {
-            sensor.subscribeHeartRate();
+            sensor.subscribeOnBodyState();
         } catch (error) {
             errMessage = error.toString().slice(19, 56);
-            console.info('subscribeHeartRate_SensorJsTest005 error:' + error);
+            console.info('subscribeOnBodyState_SensorJsTest005 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })
 
     /*
-     * @tc.name:subscribeHeartRate_SensorJsTest006
+     * @tc.name:subscribeOnBodyState_SensorJsTest006
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeHeartRate_SensorJsTest006", 0, async function (done) {
-        console.info('----------------------subscribeHeartRate_SensorJsTest006---------------------------');
+    it("subscribeOnBodyState_SensorJsTest006", 0, async function (done) {
+        console.info('----------------------subscribeOnBodyState_SensorJsTest006---------------------------');
         try {
-            sensor.subscribeHeartRate('xxx');
+            sensor.subscribeOnBodyState('xxx');
         } catch (error) {
             errMessage = error.toString().slice(19, 56);
-            console.info('subscribeHeartRate_SensorJsTest006 error:' + error);
+            console.info('subscribeOnBodyState_SensorJsTest006 error:' + error);
             expect(errMessage).assertEqual(errMessages[2]);
             done();
         }
     })
 
     /*
-     * @tc.name:subscribeHeartRate_SensorJsTest007
+     * @tc.name:subscribeOnBodyState_SensorJsTest007
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeHeartRate_SensorJsTest007", 0, function (done) {
-        console.info('----------------------subscribeHeartRate_SensorJsTest007---------------------------');
-        sensor.subscribeHeartRate({
+    it("subscribeOnBodyState_SensorJsTest007", 0, function (done) {
+        console.info('----------------------subscribeOnBodyState_SensorJsTest007---------------------------');
+        sensor.subscribeOnBodyState({
             success: function (data) {
-                console.info("subscribeHeartRate_SensorJsTest007 success:" + JSON.stringify(data));
-                expect(typeof (data.heartRate)).assertEqual("number");
+                console.info("subscribeOnBodyState_SensorJsTest007 success:" + JSON.stringify(data));
+                expect(typeof (data.value)).assertEqual("boolean");
             },
             fail: function (data, code) {
-                console.error('subscribeHeartRate_SensorJsTest007 failed. Code: ' + code + '; Data: ' + data);
+                console.error('subscribeOnBodyState_SensorJsTest007 failed. Code: ' + code + '; Data: ' + data);
                 expect(code).assertEqual(1001);
             },
         });
-        sensor.subscribeHeartRate({
+        sensor.subscribeOnBodyState({
             success: function (data) {
-                console.info("subscribeHeartRate_SensorJsTest007_1 success:" + JSON.stringify(data));
-                expect(typeof (data.heartRate)).assertEqual("number");
+                console.info("subscribeOnBodyState_SensorJsTest007_1 success:" + JSON.stringify(data));
+                expect(typeof (data.value)).assertEqual("boolean");
             },
             fail: function (data, code) {
-                console.error('subscribeHeartRate_SensorJsTest007_1 failed. Code: ' + code + '; Data: ' + data);
+                console.error('subscribeOnBodyState_SensorJsTest007_1 failed. Code: ' + code + '; Data: ' + data);
                 expect(code).assertEqual(1001);
             },
         });
-
         setTimeout(() => {
             try {
-                sensor.unsubscribeHeartRate();
+                sensor.unsubscribeOnBodyState();
             } catch (error) {
-                console.info('subscribeHeartRate_SensorJsTest007_unsubscribeHeartRate error' + error);
+                console.info('subscribeOnBodyState_SensorJsTest007_unsubscribeOnBodyState error' + error);
             }
             setTimeout(() => {
                 expect(true).assertTrue();
@@ -235,46 +235,45 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeHeartRate_SensorJsTest008
+     * @tc.name:subscribeOnBodyState_SensorJsTest008
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeHeartRate_SensorJsTest008", 0, async function (done) {
-        console.info('----------------------subscribeHeartRate_SensorJsTest008---------------------------');
+    it("subscribeOnBodyState_SensorJsTest008", 0, async function (done) {
+        console.info('----------------------subscribeOnBodyState_SensorJsTest008---------------------------');
         try {
-            sensor.unsubscribeHeartRate();
+            sensor.unsubscribeOnBodyState();
         } catch (error) {
             errMessage = error.toString().slice(21, 45);
-            console.info('subscribeHeartRate_SensorJsTest008 error:' + error);
+            console.info('subscribeOnBodyState_SensorJsTest008 error:' + error);
             expect(errMessage).assertEqual(errMessages[1]);
             done();
         }
     })
 
     /*
-     * @tc.name:subscribeHeartRate_SensorJsTest009
+     * @tc.name:subscribeOnBodyState_SensorJsTest009
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeHeartRate_SensorJsTest009", 0, function (done) {
-        console.info('----------------------subscribeHeartRate_SensorJsTest009---------------------------');
-        sensor.subscribeHeartRate({
+    it("subscribeOnBodyState_SensorJsTest009", 0, function (done) {
+        console.info('----------------------subscribeOnBodyState_SensorJsTest009---------------------------');
+        sensor.subscribeOnBodyState({
             success: function (data) {
-                console.info("subscribeHeartRate_SensorJsTest009 success:" + JSON.stringify(data));
+                console.info("subscribeOnBodyState_SensorJsTest009 success:" + JSON.stringify(data));
                 expect(typeof (data.heartRate)).assertEqual("number");
             },
             fail: function (data, code) {
-                console.error('subscribeHeartRate_SensorJsTest009 failed. Code: ' + code + '; Data: ' + data);
+                console.error('subscribeOnBodyState_SensorJsTest009 failed. Code: ' + code + '; Data: ' + data);
                 expect(code).assertEqual(1001);
             },
         });
-
         try {
-            sensor.unsubscribeHeartRate();
+            sensor.unsubscribeOnBodyState();
         } catch (error) {
-            console.info('subscribeHeartRate_SensorJsTest009_unsubscribeHeartRate error' + error);
+            console.info('subscribeOnBodyState_SensorJsTest009_unsubscribeOnBodyState error' + error);
         }
         setTimeout(() => {
             expect(true).assertTrue();

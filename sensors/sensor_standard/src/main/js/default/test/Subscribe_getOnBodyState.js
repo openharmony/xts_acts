@@ -50,6 +50,7 @@ describe("SensorJsTest", function () {
 
     let errMessages = ['The number of parameters is not valid', 'Wrong argument type, function expected',
     'Wrong argument type, should be object']
+
     let errMessage;
 
     /*

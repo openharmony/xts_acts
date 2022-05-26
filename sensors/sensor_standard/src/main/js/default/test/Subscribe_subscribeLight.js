@@ -48,7 +48,10 @@ describe("SensorJsTest", function () {
         console.info('afterEach caled')
     })
 
-    var errMessages = ['The number of parameters is not valid', 'UnsubscribeSensor failed', 'Wrong argument type, should be object'];
+    let errMessages = ['The number of parameters is not valid', 'UnsubscribeSensor failed',
+    'Wrong argument type, should be object'];
+
+    let errMessage;
 
     /*
      * @tc.name:subscribeLight_SensorJsTest001
@@ -57,7 +60,7 @@ describe("SensorJsTest", function () {
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
     it("subscribeLight_SensorJsTest001", 0, function (done) {
-		console.info('----------------------subscribeLight_SensorJsTest001---------------------------');
+        console.info('----------------------subscribeLight_SensorJsTest001---------------------------');
         sensor.subscribeLight({
             success: function (data) {
                 console.info("subscribeLight_SensorJsTest001 success:" + JSON.stringify(data));
@@ -68,7 +71,6 @@ describe("SensorJsTest", function () {
                 expect(false).assertTrue();
             },
         });
-
         setTimeout(() => {
             try {
                 sensor.unsubscribeLight();
@@ -90,7 +92,7 @@ describe("SensorJsTest", function () {
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
     it("subscribeLight_SensorJsTest002", 0, function (done) {
-		console.info('----------------------subscribeLight_SensorJsTest002---------------------------');
+        console.info('----------------------subscribeLight_SensorJsTest002---------------------------');
         try {
             sensor.subscribeLight({
                 success: function (data) {
@@ -103,28 +105,27 @@ describe("SensorJsTest", function () {
                 },
             }, 25);
         } catch (error) {
-            var errMessage = error.toString().slice(19, 56);
+            errMessage = error.toString().slice(19, 56);
             console.info('subscribeLight_SensorJsTest002 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })
 
-     /*
-     * @tc.name:subscribeLight_SensorJsTest003
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
-     */
+    /*
+    * @tc.name:subscribeLight_SensorJsTest003
+    * @tc.desc:verify app info is not null
+    * @tc.type: FUNC
+    * @tc.require: SR000H0ALK, AR000H0ALM
+    */
     it("subscribeLight_SensorJsTest003", 0, function (done) {
-		console.info('----------------------subscribeLight_SensorJsTest003---------------------------');
+        console.info('----------------------subscribeLight_SensorJsTest003---------------------------');
         sensor.subscribeLight({
             success: function (data) {
                 console.info("subscribeLight_SensorJsTest003 success:" + JSON.stringify(data));
                 expect(typeof (data.intensity)).assertEqual("number");
             },
         });
-
         setTimeout(() => {
             try {
                 sensor.unsubscribeLight();
@@ -146,7 +147,7 @@ describe("SensorJsTest", function () {
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
     it("subscribeLight_SensorJsTest004", 0, function (done) {
-		console.info('----------------------subscribeLight_SensorJsTest004---------------------------');
+        console.info('----------------------subscribeLight_SensorJsTest004---------------------------');
         try {
             sensor.subscribeLight({
                 success: function (data) {
@@ -160,7 +161,7 @@ describe("SensorJsTest", function () {
             }, function () {
             }, 25);
         } catch (error) {
-            var errMessage = error.toString().slice(19, 56);
+            errMessage = error.toString().slice(19, 56);
             console.info('subscribeLight_SensorJsTest004 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
@@ -178,7 +179,7 @@ describe("SensorJsTest", function () {
         try {
             sensor.unsubscribeLight('xxx');
         } catch (error) {
-            var errMessage = error.toString().slice(21, 58);
+            errMessage = error.toString().slice(21, 58);
             console.info('subscribeLight_SensorJsTest005 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
@@ -196,7 +197,7 @@ describe("SensorJsTest", function () {
         try {
             sensor.subscribeLight();
         } catch (error) {
-            var errMessage = error.toString().slice(19, 56);
+            errMessage = error.toString().slice(19, 56);
             console.info('subscribeLight_SensorJsTest006 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
@@ -214,7 +215,7 @@ describe("SensorJsTest", function () {
         try {
             sensor.subscribeLight('xxx');
         } catch (error) {
-            var errMessage = error.toString().slice(19, 56);
+            errMessage = error.toString().slice(19, 56);
             console.info('subscribeLight_SensorJsTest007 error:' + error);
             expect(errMessage).assertEqual(errMessages[2]);
             done();
@@ -228,7 +229,7 @@ describe("SensorJsTest", function () {
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
     it("subscribeLight_SensorJsTest008", 0, function (done) {
-		console.info('----------------------subscribeLight_SensorJsTest008---------------------------');
+        console.info('----------------------subscribeLight_SensorJsTest008---------------------------');
         sensor.subscribeLight({
             success: function (data) {
                 console.info("subscribeLight_SensorJsTest008 success:" + JSON.stringify(data));
@@ -249,7 +250,6 @@ describe("SensorJsTest", function () {
                 expect(false).assertTrue();
             },
         });
-
         setTimeout(() => {
             try {
                 sensor.unsubscribeLight();
@@ -275,7 +275,7 @@ describe("SensorJsTest", function () {
         try {
             sensor.unsubscribeLight();
         } catch (error) {
-            var errMessage = error.toString().slice(21,45);
+            errMessage = error.toString().slice(21, 45);
             console.info('subscribeLight_SensorJsTest009 error:' + error);
             expect(errMessage).assertEqual(errMessages[1]);
             done();
@@ -289,7 +289,7 @@ describe("SensorJsTest", function () {
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
     it("subscribeLight_SensorJsTest010", 0, function (done) {
-		console.info('----------------------subscribeLight_SensorJsTest010---------------------------');
+        console.info('----------------------subscribeLight_SensorJsTest010---------------------------');
         sensor.subscribeLight({
             success: function (data) {
                 console.info("subscribeLight_SensorJsTest010 success:" + JSON.stringify(data));
@@ -300,12 +300,10 @@ describe("SensorJsTest", function () {
                 expect(false).assertTrue();
             },
         });
-
         try {
             sensor.unsubscribeLight();
         } catch (error) {
             console.info('subscribeLight_SensorJsTest008_unsubscribeLight error' + error);
-            expect(true).assertTrue();
         }
         setTimeout(() => {
             expect(true).assertTrue();

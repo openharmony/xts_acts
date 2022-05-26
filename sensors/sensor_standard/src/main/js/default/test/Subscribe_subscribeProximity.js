@@ -49,34 +49,35 @@ describe("SensorJsTest", function () {
     })
 
     let errMessages = ['The number of parameters is not valid', 'UnsubscribeSensor failed',
-	'Wrong argument type, should be object'];
+    'Wrong argument type, should be object'];
+
     let errMessage;
 
-     /*
-     * @tc.name:subscribeProximity_SensorJsTest001
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
-     */
+    /*
+    * @tc.name:subscribeProximity_SensorJsTest001
+    * @tc.desc:verify app info is not null
+    * @tc.type: FUNC
+    * @tc.require: SR000H0ALK, AR000H0ALM
+    */
     it("subscribeProximity_SensorJsTest001", 0, async function (done) {
-		console.info('----------------------subscribeProximity_SensorJsTest001---------------------------');		
+        console.info('----------------------subscribeProximity_SensorJsTest001---------------------------');
         sensor.subscribeProximity({
-            success: function(data) {
+            success: function (data) {
                 console.info("subscribeProximity_SensorJsTest001 success" + JSON.stringify(data));
-				expect(typeof(data.distance)).assertEqual("number");
+                expect(typeof (data.distance)).assertEqual("number");
             },
-            fail: function(data, code) {
+            fail: function (data, code) {
                 console.error('subscribeProximity_SensorJsTest001 failed. Code: ' + code + '; Data: ' + data);
                 expect(code).assertEqual(1001);
             },
-          });
-        setTimeout(()=>{
+        });
+        setTimeout(() => {
             try {
                 sensor.unsubscribeProximity();
             } catch (error) {
                 console.info(error);
             }
-            setTimeout(()=>{
+            setTimeout(() => {
                 expect(true).assertTrue();
                 done();
             }, 500);
@@ -90,7 +91,7 @@ describe("SensorJsTest", function () {
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
     it("subscribeProximity_SensorJsTest002", 0, function (done) {
-		console.info('----------------------subscribeProximity_SensorJsTest002---------------------------');
+        console.info('----------------------subscribeProximity_SensorJsTest002---------------------------');
         try {
             sensor.subscribeProximity({
                 success: function (data) {
@@ -117,7 +118,7 @@ describe("SensorJsTest", function () {
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
     it("subscribeProximity_SensorJsTest003", 0, function (done) {
-		console.info('----------------------subscribeProximity_SensorJsTest003---------------------------');
+        console.info('----------------------subscribeProximity_SensorJsTest003---------------------------');
         try {
             sensor.subscribeProximity({
                 success: function (data) {
@@ -199,7 +200,7 @@ describe("SensorJsTest", function () {
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
     it("subscribeProximity_SensorJsTest007", 0, function (done) {
-		console.info('----------------------subscribeProximity_SensorJsTest007---------------------------');
+        console.info('----------------------subscribeProximity_SensorJsTest007---------------------------');
         sensor.subscribeProximity({
             success: function (data) {
                 console.info("subscribeProximity_SensorJsTest007 success:" + JSON.stringify(data));
@@ -220,7 +221,6 @@ describe("SensorJsTest", function () {
                 expect(code).assertEqual(1001);
             },
         });
-
         setTimeout(() => {
             try {
                 sensor.unsubscribeProximity();
@@ -245,7 +245,7 @@ describe("SensorJsTest", function () {
         try {
             sensor.unsubscribeProximity();
         } catch (error) {
-            errMessage = error.toString().slice(21,45);
+            errMessage = error.toString().slice(21, 45);
             console.info('subscribeProximity_SensorJsTest008 error:' + error);
             expect(errMessage).assertEqual(errMessages[1]);
             done();
@@ -259,7 +259,7 @@ describe("SensorJsTest", function () {
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
     it("subscribeProximity_SensorJsTest009", 0, function (done) {
-		console.info('----------------------subscribeProximity_SensorJsTest009---------------------------');
+        console.info('----------------------subscribeProximity_SensorJsTest009---------------------------');
         sensor.subscribeProximity({
             success: function (data) {
                 console.info("subscribeProximity_SensorJsTest009 success:" + JSON.stringify(data));
@@ -270,7 +270,6 @@ describe("SensorJsTest", function () {
                 expect(code).assertEqual(1001);
             },
         });
-
         try {
             sensor.unsubscribeProximity();
         } catch (error) {

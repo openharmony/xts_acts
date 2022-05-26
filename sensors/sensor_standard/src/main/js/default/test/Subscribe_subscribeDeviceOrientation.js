@@ -49,9 +49,10 @@ describe("SensorJsTest", function () {
     })
 
     let errMessages = ['The number of parameters is not valid', 'Wrong argument type, should be object',
-	'UnsubscribeSensor failed'];
+    'UnsubscribeSensor failed'];
+
     let errMessage;
-	
+
     /*
      * @tc.name:subscribeDeviceOrientation_SensorJsTest001
      * @tc.desc:verify app info is not null
@@ -437,7 +438,6 @@ describe("SensorJsTest", function () {
             sensor.unsubscribeDeviceOrientation();
         } catch (error) {
             console.info('subscribeDeviceOrientation_SensorJsTest014_unsubscribeDeviceOrientation error' + error);
-            expect(true).assertTrue();
         }
         setTimeout(() => {
             expect(true).assertTrue();

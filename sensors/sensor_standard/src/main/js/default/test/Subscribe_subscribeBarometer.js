@@ -50,31 +50,32 @@ describe("SensorJsTest", function () {
 
     let errMessages = ['The number of parameters is not valid', 'UnsubscribeSensor failed',
     'Wrong argument type, should be object'];
+
     let errMessage;
 
     /*
-    * @tc.name:subscribeOnBodyState_SensorJsTest001
+    * @tc.name:subscribeBarometer_SensorJsTest001
     * @tc.desc:verify app info is not null
     * @tc.type: FUNC
     * @tc.require: SR000H0ALK, AR000H0ALM
     */
-    it("subscribeOnBodyState_SensorJsTest001", 0, async function (done) {
-        console.info('----------------------subscribeOnBodyState_SensorJsTest001---------------------------');
-        sensor.subscribeOnBodyState({
+    it("subscribeBarometer_SensorJsTest001", 0, async function (done) {
+        console.info('----------------------subscribeBarometer_SensorJsTest001---------------------------');
+        sensor.subscribeBarometer({
             success: function (data) {
-                console.info("subscribeOnBodyState_SensorJsTest001 success" + JSON.stringify(data));
-                expect(typeof (data.value)).assertEqual("boolean");
+                console.info("subscribeBarometer_SensorJsTest001 success" + JSON.stringify(data));
+                expect(typeof (data.pressure)).assertEqual("number");
             },
             fail: function (data, code) {
-                console.error('subscribeOnBodyState_SensorJsTest001 failed. Code: ' + code + '; Data: ' + data);
+                console.error('subscribeBarometer_SensorJsTest001 failed. Code: ' + code + '; Data: ' + data);
                 expect(code).assertEqual(1001);
             },
         });
         setTimeout(() => {
             try {
-                sensor.unsubscribeOnBodyState();
+                sensor.unsubscribeBarometer();
             } catch (error) {
-                console.info('subscribeOnBodyState_SensorJsTest001_unsubscribeOnBodyState error ' + error);
+                console.info('subscribeBarometer_SensorJsTest001_unsubscribeBarometer error ' + error);
             }
             setTimeout(() => {
                 expect(true).assertTrue();
@@ -84,149 +85,147 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeOnBodyState_SensorJsTest002
+     * @tc.name:subscribeBarometer_SensorJsTest002
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeOnBodyState_SensorJsTest002", 0, function (done) {
-        console.info('----------------------subscribeOnBodyState_SensorJsTest002---------------------------');
+    it("subscribeBarometer_SensorJsTest002", 0, function (done) {
+        console.info('----------------------subscribeBarometer_SensorJsTest002---------------------------');
         try {
-            sensor.subscribeOnBodyState({
+            sensor.subscribeBarometer({
                 success: function (data) {
-                    console.info("subscribeOnBodyState_SensorJsTest002 success:" + JSON.stringify(data));
-                    expect(typeof (data.value)).assertEqual("boolean");
+                    console.info("subscribeBarometer_SensorJsTest002 success:" + JSON.stringify(data));
+                    expect(typeof (data.pressure)).assertEqual("number");
                 },
                 fail: function (data, code) {
-                    console.error('subscribeOnBodyState_SensorJsTest002 failed. Code: ' + code + '; Data: ' + data);
+                    console.error('subscribeBarometer_SensorJsTest002 failed. Code: ' + code + '; Data: ' + data);
                     expect(code).assertEqual(1001);
                 },
             }, 25);
         } catch (error) {
             errMessage = error.toString().slice(19, 56);
-            console.info('subscribeOnBodyState_SensorJsTest002 error:' + error);
+            console.info('subscribeBarometer_SensorJsTest002 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })
 
     /*
-     * @tc.name:subscribeOnBodyState_SensorJsTest003
+     * @tc.name:subscribeBarometer_SensorJsTest003
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeOnBodyState_SensorJsTest003", 0, function (done) {
-        console.info('----------------------subscribeOnBodyState_SensorJsTest003---------------------------');
+    it("subscribeBarometer_SensorJsTest003", 0, function (done) {
+        console.info('----------------------subscribeBarometer_SensorJsTest003---------------------------');
         try {
-            sensor.subscribeOnBodyState({
+            sensor.subscribeBarometer({
                 success: function (data) {
-                    console.info("subscribeOnBodyState_SensorJsTest003 success:" + JSON.stringify(data));
-                    expect(typeof (data.value)).assertEqual("boolean");
+                    console.info("subscribeBarometer_SensorJsTest003 success:" + JSON.stringify(data));
+                    expect(typeof (data.pressure)).assertEqual("number");
                 },
                 fail: function (data, code) {
-                    console.error('subscribeOnBodyState_SensorJsTest003 failed. Code: ' + code + '; Data: ' + data);
+                    console.error('subscribeBarometer_SensorJsTest003 failed. Code: ' + code + '; Data: ' + data);
                     expect(code).assertEqual(1001);
                 },
             }, function () {
             }, 25);
         } catch (error) {
-            var errMessage = error.toString().slice(19, 56);
-            console.info('subscribeOnBodyState_SensorJsTest003 error:' + error);
+            errMessage = error.toString().slice(19, 56);
+            console.info('subscribeBarometer_SensorJsTest003 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })
 
     /*
-     * @tc.name:subscribeOnBodyState_SensorJsTest004
+     * @tc.name:subscribeBarometer_SensorJsTest004
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeOnBodyState_SensorJsTest004", 0, async function (done) {
-        console.info('----------------------subscribeOnBodyState_SensorJsTest004---------------------------');
+    it("subscribeBarometer_SensorJsTest004", 0, async function (done) {
+        console.info('----------------------subscribeBarometer_SensorJsTest004---------------------------');
         try {
-            sensor.unsubscribeOnBodyState('xxx');
+            sensor.unsubscribeBarometer('xxx');
         } catch (error) {
             errMessage = error.toString().slice(21, 58);
-            console.info('subscribeOnBodyState_SensorJsTest004 error:' + error);
+            console.info('subscribeBarometer_SensorJsTest004 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })
 
     /*
-     * @tc.name:subscribeOnBodyState_SensorJsTest005
+     * @tc.name:subscribeBarometer_SensorJsTest005
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeOnBodyState_SensorJsTest005", 0, async function (done) {
-        console.info('----------------------subscribeOnBodyState_SensorJsTest005---------------------------');
+    it("subscribeBarometer_SensorJsTest005", 0, async function (done) {
+        console.info('----------------------subscribeBarometer_SensorJsTest005---------------------------');
         try {
-            sensor.subscribeOnBodyState();
+            sensor.subscribeBarometer();
         } catch (error) {
             errMessage = error.toString().slice(19, 56);
-            console.info('subscribeOnBodyState_SensorJsTest005 error:' + error);
+            console.info('subscribeBarometer_SensorJsTest005 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })
 
     /*
-     * @tc.name:subscribeOnBodyState_SensorJsTest006
+     * @tc.name:subscribeBarometer_SensorJsTest006
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeOnBodyState_SensorJsTest006", 0, async function (done) {
-        console.info('----------------------subscribeOnBodyState_SensorJsTest006---------------------------');
+    it("subscribeBarometer_SensorJsTest006", 0, async function (done) {
+        console.info('----------------------subscribeBarometer_SensorJsTest006---------------------------');
         try {
-            sensor.subscribeOnBodyState('xxx');
+            sensor.subscribeBarometer('xxx');
         } catch (error) {
             errMessage = error.toString().slice(19, 56);
-            console.info('subscribeOnBodyState_SensorJsTest006 error:' + error);
+            console.info('subscribeBarometer_SensorJsTest006 error:' + error);
             expect(errMessage).assertEqual(errMessages[2]);
             done();
         }
     })
 
     /*
-     * @tc.name:subscribeOnBodyState_SensorJsTest007
+     * @tc.name:subscribeBarometer_SensorJsTest007
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeOnBodyState_SensorJsTest007", 0, function (done) {
-        console.info('----------------------subscribeOnBodyState_SensorJsTest007---------------------------');
-        sensor.subscribeOnBodyState({
+    it("subscribeBarometer_SensorJsTest007", 0, function (done) {
+        console.info('----------------------subscribeBarometer_SensorJsTest007---------------------------');
+        sensor.subscribeBarometer({
             success: function (data) {
-                console.info("subscribeOnBodyState_SensorJsTest007 success:" + JSON.stringify(data));
-                expect(typeof (data.value)).assertEqual("boolean");
+                console.info("subscribeBarometer_SensorJsTest007 success:" + JSON.stringify(data));
+                expect(typeof (data.pressure)).assertEqual("number");
             },
             fail: function (data, code) {
-                console.error('subscribeOnBodyState_SensorJsTest007 failed. Code: ' + code + '; Data: ' + data);
+                console.error('subscribeBarometer_SensorJsTest007 failed. Code: ' + code + '; Data: ' + data);
                 expect(code).assertEqual(1001);
             },
         });
-
-        sensor.subscribeOnBodyState({
+        sensor.subscribeBarometer({
             success: function (data) {
-                console.info("subscribeOnBodyState_SensorJsTest007_1 success:" + JSON.stringify(data));
-                expect(typeof (data.value)).assertEqual("boolean");
+                console.info("subscribeBarometer_SensorJsTest007_1 success:" + JSON.stringify(data));
+                expect(typeof (data.pressure)).assertEqual("number");
             },
             fail: function (data, code) {
-                console.error('subscribeOnBodyState_SensorJsTest007_1 failed. Code: ' + code + '; Data: ' + data);
+                console.error('subscribeBarometer_SensorJsTest007_1 failed. Code: ' + code + '; Data: ' + data);
                 expect(code).assertEqual(1001);
             },
         });
-
         setTimeout(() => {
             try {
-                sensor.unsubscribeOnBodyState();
+                sensor.unsubscribeBarometer();
             } catch (error) {
-                console.info('subscribeOnBodyState_SensorJsTest007_unsubscribeOnBodyState error' + error);
+                console.info('subscribeBarometer_SensorJsTest007_unsubscribeBarometer error' + error);
             }
             setTimeout(() => {
                 expect(true).assertTrue();
@@ -236,46 +235,45 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeOnBodyState_SensorJsTest008
+     * @tc.name:subscribeBarometer_SensorJsTest008
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeOnBodyState_SensorJsTest008", 0, async function (done) {
-        console.info('----------------------subscribeOnBodyState_SensorJsTest008---------------------------');
+    it("subscribeBarometer_SensorJsTest008", 0, async function (done) {
+        console.info('----------------------subscribeBarometer_SensorJsTest008---------------------------');
         try {
-            sensor.unsubscribeOnBodyState();
+            sensor.unsubscribeBarometer();
         } catch (error) {
             errMessage = error.toString().slice(21, 45);
-            console.info('subscribeOnBodyState_SensorJsTest008 error:' + error);
+            console.info('subscribeBarometer_SensorJsTest008 error:' + error);
             expect(errMessage).assertEqual(errMessages[1]);
             done();
         }
     })
 
     /*
-     * @tc.name:subscribeOnBodyState_SensorJsTest009
+     * @tc.name:subscribeBarometer_SensorJsTest009
      * @tc.desc:verify app info is not null
      * @tc.type: FUNC
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
-    it("subscribeOnBodyState_SensorJsTest009", 0, function (done) {
-        console.info('----------------------subscribeOnBodyState_SensorJsTest009---------------------------');
-        sensor.subscribeOnBodyState({
+    it("subscribeBarometer_SensorJsTest009", 0, function (done) {
+        console.info('----------------------subscribeBarometer_SensorJsTest009---------------------------');
+        sensor.subscribeBarometer({
             success: function (data) {
-                console.info("subscribeOnBodyState_SensorJsTest009 success:" + JSON.stringify(data));
-                expect(typeof (data.heartRate)).assertEqual("number");
+                console.info("subscribeBarometer_SensorJsTest009 success:" + JSON.stringify(data));
+                expect(typeof (data.pressure)).assertEqual("number");
             },
             fail: function (data, code) {
-                console.error('subscribeOnBodyState_SensorJsTest009 failed. Code: ' + code + '; Data: ' + data);
+                console.error('subscribeBarometer_SensorJsTest009 failed. Code: ' + code + '; Data: ' + data);
                 expect(code).assertEqual(1001);
             },
         });
-
         try {
-            sensor.unsubscribeOnBodyState();
+            sensor.unsubscribeBarometer();
         } catch (error) {
-            console.info('subscribeOnBodyState_SensorJsTest009_unsubscribeOnBodyState error' + error);
+            console.info('subscribeBarometer_SensorJsTest009_unsubscribeBarometer error' + error);
         }
         setTimeout(() => {
             expect(true).assertTrue();
