@@ -3879,8 +3879,8 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_stat_promise_000
-   * @tc.name fileio_test_stat_promise_000
+   * @tc.number SUB_STORAGE_FileIO_stat_async_000
+   * @tc.name fileio_test_stat_async_000
    * @tc.desc obtain file propertys by stat promise
    */
   it('fileio_test_stat_promise_000', 0, async function () {
@@ -3897,8 +3897,8 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_stat_promise_001
-   * @tc.name fileio_test_stat_promise_001
+   * @tc.number SUB_STORAGE_FileIO_stat_async_001
+   * @tc.name fileio_test_stat_async_001
    * @tc.desc obtain file propertys by stat promise
    */
    it('fileio_test_stat_promise_001', 0, async function () {
@@ -3915,8 +3915,8 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_stat_promise_002
-   * @tc.name fileio_test_stat_promise_002
+   * @tc.number SUB_STORAGE_FileIO_stat_async_002
+   * @tc.name fileio_test_stat_async_002
    * @tc.desc obtain file propertys by stat promise
    */
    it('fileio_test_stat_promise_002', 0, async function () {
@@ -3933,8 +3933,8 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_stat_promise_003
-   * @tc.name fileio_test_stat_promise_003
+   * @tc.number SUB_STORAGE_FileIO_stat_async_003
+   * @tc.name fileio_test_stat_async_003
    * @tc.desc obtain file propertys by stat promise
    */
    it('fileio_test_stat_promise_003', 0, async function () {
@@ -3951,8 +3951,8 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_stat_promise_004
-   * @tc.name fileio_test_stat_promise_004
+   * @tc.number SUB_STORAGE_FileIO_stat_async_004
+   * @tc.name fileio_test_stat_async_004
    * @tc.desc obtain file propertys by stat promise
    */
    it('fileio_test_stat_promise_004', 0, async function () {
@@ -3969,8 +3969,8 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_stat_promise_005
-   * @tc.name fileio_test_stat_promise_005
+   * @tc.number SUB_STORAGE_FileIO_stat_async_005
+   * @tc.name fileio_test_stat_async_005
    * @tc.desc obtain file propertys by stat promise
    */
    it('fileio_test_stat_promise_005', 0, async function () {
@@ -3987,8 +3987,8 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_stat_promise_006
-   * @tc.name fileio_test_stat_promise_006
+   * @tc.number SUB_STORAGE_FileIO_stat_async_006
+   * @tc.name fileio_test_stat_async_006
    * @tc.desc obtain file propertys by stat promise
    */
    it('fileio_test_stat_promise_006', 0, async function () {
@@ -4005,8 +4005,8 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_stat_promise_007
-   * @tc.name fileio_test_stat_promise_007
+   * @tc.number SUB_STORAGE_FileIO_stat_async_007
+   * @tc.name fileio_test_stat_async_007
    * @tc.desc obtain file propertys by stat promise
    */
    it('fileio_test_stat_promise_007', 0, async function () {
@@ -4023,8 +4023,8 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_stat_promise_008
-   * @tc.name fileio_test_stat_promise_008
+   * @tc.number SUB_STORAGE_FileIO_stat_async_008
+   * @tc.name fileio_test_stat_async_008
    * @tc.desc obtain file propertys by stat promise
    */
    it('fileio_test_stat_promise_008', 0, async function () {
@@ -4041,8 +4041,8 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_stat_promise_009
-   * @tc.name fileio_test_stat_promise_009
+   * @tc.number SUB_STORAGE_FileIO_stat_async_009
+   * @tc.name fileio_test_stat_async_009
    * @tc.desc obtain file propertys by stat promise
    */
    it('fileio_test_stat_promise_009', 0, async function () {
@@ -4059,8 +4059,8 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_stat_promise_009
-   * @tc.name fileio_test_stat_promise_010
+   * @tc.number SUB_STORAGE_FileIO_stat_async_010
+   * @tc.name fileio_test_stat_async_010
    * @tc.desc obtain file propertys by stat promise
    */
    it('fileio_test_stat_promise_010', 0, async function () {
@@ -4077,8 +4077,8 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_stat_promise_011
-   * @tc.name fileio_test_stat_promise_011
+   * @tc.number SUB_STORAGE_FileIO_stat_async_011
+   * @tc.name fileio_test_stat_async_011
    * @tc.desc obtain file propertys by stat promise
    */
    it('fileio_test_stat_promise_011', 0, async function () {
@@ -4095,8 +4095,8 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number SUB_STORAGE_FileIO_stat_promise_012
-   * @tc.name fileio_test_stat_promise_012
+   * @tc.number SUB_STORAGE_FileIO_stat_async_012
+   * @tc.name fileio_test_stat_async_012
    * @tc.desc obtain file propertys by stat promise
    */
    it('fileio_test_stat_promise_012', 0, async function () {
@@ -4113,12 +4113,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_stat_async_000
-   * @tc.name fileio_test_stat_async_000
+   * @tc.number fileio_test_stat_async_013
+   * @tc.name fileio_test_stat_async_013
    * @tc.desc Function of API, obtain file propertys by stat async
    */
-  it('fileio_test_stat_async_000', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stat_async_000');
+  it('fileio_test_stat_async_013', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_013');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     expect(fileio.chmodSync(fpath, 0o660) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
@@ -4128,12 +4128,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_stat_async_001
-   * @tc.name fileio_test_stat_async_001
+   * @tc.number fileio_test_stat_async_014
+   * @tc.name fileio_test_stat_async_014
    * @tc.desc Function of API, obtain file propertys by stat async
    */
-  it('fileio_test_stat_async_001', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stat_async_001');
+  it('fileio_test_stat_async_014', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_014');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     expect(fileio.chmodSync(fpath, 0o777) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
@@ -4143,12 +4143,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_stat_async_002
-   * @tc.name fileio_test_stat_async_002
+   * @tc.number fileio_test_stat_async_015
+   * @tc.name fileio_test_stat_async_015
    * @tc.desc Function of API, obtain file propertys by stat async
    */
-  it('fileio_test_stat_async_002', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stat_async_002');
+  it('fileio_test_stat_async_015', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_015');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     expect(fileio.chmodSync(fpath, 0o776) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
@@ -4158,12 +4158,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_stat_async_003
-   * @tc.name fileio_test_stat_async_003
+   * @tc.number fileio_test_stat_async_016
+   * @tc.name fileio_test_stat_async_016
    * @tc.desc Function of API, obtain file propertys by stat async
    */
-  it('fileio_test_stat_async_003', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stat_async_003');
+  it('fileio_test_stat_async_016', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_016');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     expect(fileio.chmodSync(fpath, 0o774) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
@@ -4173,12 +4173,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_stat_async_004
-   * @tc.name fileio_test_stat_async_004
+   * @tc.number fileio_test_stat_async_017
+   * @tc.name fileio_test_stat_async_017
    * @tc.desc Function of API, obtain file propertys by stat async
    */
-  it('fileio_test_stat_async_004', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stat_async_004');
+  it('fileio_test_stat_async_017', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_017');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     expect(fileio.chmodSync(fpath, 0o772) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
@@ -4188,12 +4188,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_stat_async_005
-   * @tc.name fileio_test_stat_async_005
+   * @tc.number fileio_test_stat_async_018
+   * @tc.name fileio_test_stat_async_018
    * @tc.desc Function of API, obtain file propertys by stat async
    */
-  it('fileio_test_stat_async_005', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stat_async_005');
+  it('fileio_test_stat_async_018', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_018');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     expect(fileio.chmodSync(fpath, 0o771) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
@@ -4203,12 +4203,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_stat_async_006
-   * @tc.name fileio_test_stat_async_006
+   * @tc.number fileio_test_stat_async_019
+   * @tc.name fileio_test_stat_async_019
    * @tc.desc Function of API, obtain file propertys by stat async
    */
-  it('fileio_test_stat_async_006', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stat_async_006');
+  it('fileio_test_stat_async_019', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_019');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     expect(fileio.chmodSync(fpath, 0o770) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
@@ -4218,12 +4218,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_stat_async_007
-   * @tc.name fileio_test_stat_async_007
+   * @tc.number fileio_test_stat_async_020
+   * @tc.name fileio_test_stat_async_020
    * @tc.desc Function of API, obtain file propertys by stat async
    */
-  it('fileio_test_stat_async_007', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stat_async_007');
+  it('fileio_test_stat_async_020', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_020');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     expect(fileio.chmodSync(fpath, 0o666) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
@@ -4233,12 +4233,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_stat_async_008
-   * @tc.name fileio_test_stat_async_008
+   * @tc.number fileio_test_stat_async_021
+   * @tc.name fileio_test_stat_async_021
    * @tc.desc Function of API, obtain file propertys by stat async
    */
-  it('fileio_test_stat_async_008', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stat_async_008');
+  it('fileio_test_stat_async_021', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_021');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     expect(fileio.chmodSync(fpath, 0o664) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
@@ -4248,12 +4248,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_stat_async_009
-   * @tc.name fileio_test_stat_async_009
+   * @tc.number fileio_test_stat_async_022
+   * @tc.name fileio_test_stat_async_022
    * @tc.desc Function of API, obtain file propertys by stat async
    */
-  it('fileio_test_stat_async_009', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stat_async_009');
+  it('fileio_test_stat_async_022', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_022');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     expect(fileio.chmodSync(fpath, 0o662) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
@@ -4263,12 +4263,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_stat_async_010
-   * @tc.name fileio_test_stat_async_010
+   * @tc.number fileio_test_stat_async_023
+   * @tc.name fileio_test_stat_async_023
    * @tc.desc Function of API, obtain file propertys by stat async
    */
-  it('fileio_test_stat_async_010', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stat_async_010');
+  it('fileio_test_stat_async_023', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_023');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     expect(fileio.chmodSync(fpath, 0o640) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
@@ -4278,12 +4278,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_stat_async_011
-   * @tc.name fileio_test_stat_async_011
+   * @tc.number fileio_test_stat_async_024
+   * @tc.name fileio_test_stat_async_024
    * @tc.desc Function of API, obtain file propertys by stat async
    */
-  it('fileio_test_stat_async_011', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stat_async_011');
+  it('fileio_test_stat_async_024', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_024');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     expect(fileio.chmodSync(fpath, 0o600) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
@@ -4293,12 +4293,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_stat_async_012
-   * @tc.name fileio_test_stat_async_012
+   * @tc.number fileio_test_stat_async_025
+   * @tc.name fileio_test_stat_async_025
    * @tc.desc Function of API, obtain file propertys by stat async
    */
-  it('fileio_test_stat_async_012', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stat_async_012');
+  it('fileio_test_stat_async_025', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_025');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     expect(fileio.chmodSync(fpath, 0o400) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
@@ -4308,12 +4308,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_stat_async_013
-   * @tc.name fileio_test_stat_async_013
+   * @tc.number fileio_test_stat_async_026
+   * @tc.name fileio_test_stat_async_026
    * @tc.desc Function of API, obtain file propertys by stat async
    */
-  it('fileio_test_stat_async_013', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stat_async_013');
+  it('fileio_test_stat_async_026', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stat_async_026');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     expect(fileio.chmodSync(fpath, 0o200) !== null).assertTrue();
     fileio.stat(fpath, function (err, stat) {
@@ -4323,12 +4323,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_close_promise_000
-   * @tc.name fileio_test_close_promise_000
-   * @tc.desc Function of API close
+   * @tc.number fileio_test_close_async_000
+   * @tc.name fileio_test_close_async_000
+   * @tc.desc Function of API close promise
    */
-  it('fileio_test_close_promise_000', 0, async function () {
-    let fpath = await nextFileName('fileio_test_close_promise_000');
+  it('fileio_test_close_async_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_close_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let fd = fileio.openSync(fpath);
     expect(fd !== null).assertTrue();
@@ -4337,12 +4337,12 @@ describe('fileIOTest', function () {
   });
 
   /**
-   * @tc.number fileio_test_close_async_000
-   * @tc.name fileio_test_close_async_000
+   * @tc.number fileio_test_close_async_001
+   * @tc.name fileio_test_close_async_001
    * @tc.desc Function of API close
    */
-   it('fileio_test_close_async_000', 0, async function () {
-    let fpath = await nextFileName('fileio_test_close_async_000');
+   it('fileio_test_close_async_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_close_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let fd = fileio.openSync(fpath);
     await fileio.close(fd, function (err) {
