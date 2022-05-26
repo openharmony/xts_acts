@@ -21,7 +21,7 @@ import wantAgent from '@ohos.wantAgent';
 import particleAbility from '@ohos.ability.particleAbility'
 import backgroundTaskManager from '@ohos.backgroundTaskManager'
 
-const START_ABILITY_TIMEOUT = 1000;
+const START_ABILITY_TIMEOUT = 4000;
 const TERMINATE_ABILITY_TIMEOUT = 1000;
 const TIMEOUT = 1000;
 var subscriberInfo_ACTS_StartAbility_0100 = {
@@ -596,7 +596,6 @@ describe('ActsFeatureAbilityTest', function () {
                 console.log('ACTS_StartAbility_1000 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
                 expect(err.code == 0).assertTrue();
-                done();
             });
         }catch(error){
             console.log("ACTS_StartAbility_1000 : error = " + error);
@@ -643,7 +642,7 @@ describe('ActsFeatureAbilityTest', function () {
             {
                 want:
                 {
-                    action: "action.system.home",
+                    action: "action.system.homeability",
                     entities: ["entity.system.home"],
                     type: "MIMETYPE",
                     options: {
@@ -726,7 +725,7 @@ describe('ActsFeatureAbilityTest', function () {
             {
                 want:
                 {
-                    action: "action.system.home",
+                    action: "action.system.homeability",
                     entities: ["entity.system.home"],
                     type: "MIMETYPE",
                     options: {
@@ -901,7 +900,7 @@ describe('ActsFeatureAbilityTest', function () {
             {
                 want:
                 {
-                    action: "action.system.home",
+                    action: "action.system.homeability",
                     entities: ["entity.system.home"],
                     type: "MIMETYPE",
                     options: {
@@ -986,7 +985,7 @@ describe('ActsFeatureAbilityTest', function () {
             {
                 want:
                 {
-                    action: "action.system.home",
+                    action: "action.system.homeability",
                     entities: ["entity.system.home"],
                     type: "MIMETYPE",
                     options: {
@@ -2035,7 +2034,7 @@ describe('ActsFeatureAbilityTest', function () {
 
             id = setTimeout(timeout, START_ABILITY_TIMEOUT);
             let Want = {
-                action: "action.system.home",
+                action: "action.system.homeability",
                 entities: []
             }
             var StartAbilityParameter = {
@@ -2046,7 +2045,6 @@ describe('ActsFeatureAbilityTest', function () {
                 console.log('ACTS_StartAbility_1300 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
                 expect(err.code == 0).assertTrue();
-                done();
             });
         }catch(error){
             console.log("ACTS_StartAbility_1300 : error = " + error);
