@@ -61,7 +61,7 @@ describe('Image', function () {
         let fileKeyObj = mediaLibrary.FileKey;
         let getFileOp = {
             selections : fileKeyObj.DISPLAY_NAME + '= ? AND ' + fileKeyObj.RELATIVE_PATH + '= ?',
-            selectionArgs : [ fileName, 'cjh/' ],
+            selectionArgs : [ fileName, 'img/' ],
             order : fileKeyObj.ID + " DESC LIMIT 0,100",
             extendArgs : "",
         }
@@ -852,55 +852,57 @@ describe('Image', function () {
          * @tc.level     : Level 1
         */
         it('TC_022-1', 0, async function (done) {
-            const color = new ArrayBuffer(96);
-            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
-            image.createPixelMap(color, opts, (err, pixelmap) => {
-                if (pixelmap == undefined) {
-                    console.info('TC_022-1 createPixelMap failed');
-                    expect(false).assertTrue()
-                    done();
-                }
-                const area = { pixels: new ArrayBuffer(8),
+        const color = new ArrayBuffer(96);
+        let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+        image.createPixelMap(color, opts, (err, pixelmap) => {
+            if (pixelmap == undefined) {
+                console.info('TC_022-1 createPixelMap failed');
+                expect(false).assertTrue()
+                done();
+            }
+            const area = {
+                pixels: new ArrayBuffer(8),
+                offset: 0,
+                stride: 8,
+                region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+            }
+            var bufferArr = new Uint8Array(area.pixels);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            pixelmap.writePixels(area, () => {
+                const readArea = {
+                    pixels: new ArrayBuffer(8),
                     offset: 0,
                     stride: 8,
                     region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
                 }
-                var bufferArr = new Uint8Array(area.pixels);
-                for (var i = 0; i < bufferArr.length; i++) {
-                    bufferArr[i] = i + 1;
-                }
-                pixelmap.writePixels(area, () => {
-                    const readArea = { pixels: new ArrayBuffer(8),
-                        offset: 0,
-                        stride: 8,
-                        region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
-                    }
-                    pixelmap.readPixels(readArea,() => {
-                        var readArr = new Uint8Array(readArea.pixels);
-                        var res = true;
-                        for (var i = 0; i < readArr.length; i++) {
-                            if (readArr[i] == 0) {
-                                res = false;
-                                console.info('TC_022-1 failed');
-                                expect(false).assertTrue();
-                                done();
-                                break;
-                            }
-                        }
-                        if (res) {
-                            console.info('TC_022-1 success');
-                            expect(true).assertTrue()
+                pixelmap.readPixels(readArea, () => {
+                    var readArr = new Uint8Array(readArea.pixels);
+                    var res = true;
+                    for (var i = 0; i < readArr.length; i++) {
+                        if (readArr[i] != tc_022buf[i]) {
+                            res = false;
+                            console.info('TC_022-1 failed');
+                            expect(false).assertTrue();
                             done();
+                            break;
                         }
-                    })
+                    }
+                    if (res) {
+                        console.info('TC_022-1 success');
+                        expect(true).assertTrue()
+                        done();
+                    }
                 })
             })
+        })
             .catch(error => {
                 console.log('TC_022-1 error: ' + error);
                 expect().assertFail();
                 done();
             })
-        })
+    })
 
         /**
          * @tc.number    : TC_023
@@ -1345,7 +1347,6 @@ describe('Image', function () {
      */
     it('TC_042', 0, async function (done) {
         await getFd("test.jpg");
-
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_042 create image source failed');
@@ -1353,9 +1354,24 @@ describe('Image', function () {
             done();
         } else {
             imageSourceApi.getImageInfo((err,imageInfo) => {
-                console.info('TC_042 success');
-                expect(imageInfo != undefined).assertTrue();
-                done();
+                if (err){
+                    expect(false).assertTrue();
+                    console.info('TC_042 err: ' + err);
+                    done();
+                    return
+                }
+                if (imageInfo != undefined){
+                    console.info('TC_042 success');
+                    console.info('TC_042 imageInfo height: ' + imageInfo.size.height);
+                    console.info('TC_042 imageInfo width: ' + imageInfo.size.width);
+                    expect(true).assertTrue();
+                    done();
+                }else{
+                    console.info('TC_042 failed');
+                    expect(false).assertTrue();
+                    done();
+                }
+                
             })
         }
     })
@@ -1435,7 +1451,6 @@ describe('Image', function () {
      */
     it('TC_044', 0, async function (done) {
         await getFd("test.jpg");
-
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_044 create image source failed');
@@ -1466,7 +1481,6 @@ describe('Image', function () {
      */
     it('TC_044-1', 0, async function (done) {
         await getFd("test.jpg");
-
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_044-1 create image source failed');
@@ -1476,35 +1490,6 @@ describe('Image', function () {
             imageSourceApi.release(() => {
                 console.info('TC_044-1 Success');
                 expect(true).assertTrue();
-                done();
-            })
-        }
-    })
-
-    /**
-     * @tc.number    : TC_045
-     * @tc.name      : getImageInfo(callback: AsyncCallback<ImageInfo>)-jpg
-     * @tc.desc      : 1.create imageSource
-     *                 2.imageSourcecall getImageInfo(ImageInfo)
-     *                 3.callback return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('TC_045', 0, async function (done) {
-        await getFd("test.jpg");
-
-        const imageSourceApi = image.createImageSource(fdNumber);
-        if (imageSourceApi == undefined) {
-            console.info('TC_045 create image source failed');
-            expect(false).assertTrue();
-            done();
-        } else {
-            imageSourceApi.getImageInfo((err,imageInfo) => {
-                console.info('TC_045 imageInfo');
-                console.info('imageInfo.size.height:'+imageInfo.size.height);
-                console.info('imageInfo.size.width:'+imageInfo.size.width);
-                expect(imageInfo != undefined).assertTrue();
                 done();
             })
         }
@@ -1577,7 +1562,6 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_045-3', 0, async function (done) {
-        console.info('TC_045-3');
         await getFd("test.gif");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
@@ -1586,11 +1570,23 @@ describe('Image', function () {
             done();
         } else {
             imageSourceApi.getImageInfo((err,imageInfo) => {
-                expect(imageInfo != undefined).assertTrue();
-                console.info('TC_045-3 imageInfo');
-                console.info('imageInfo.size.height:'+imageInfo.size.height);
-                console.info('imageInfo.size.width:'+imageInfo.size.width);
-                done();
+                if (err){
+                    expect(false).assertTrue();
+                    console.info('TC_045-3 error' + err);
+                    done();
+                    return
+                }
+                if (imageInfo != undefined && imageInfo != null){
+                    expect(true).assertTrue();
+                    console.info('TC_045-3 imageInfo.size.height:' + imageInfo.size.height);
+                    console.info('TC_045-3 imageInfo.size.width:'+imageInfo.size.width);
+                    console.info('TC_045-3 success')
+                    done();
+                }else{
+                    expect(false).assertTrue();
+                    console.info('TC_045-3 failed')
+                    done();
+                }
             })
         }
     })
@@ -1607,7 +1603,6 @@ describe('Image', function () {
      */
     it('TC_046', 0, async function (done) {
         await getFd("test.jpg");
-
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_046 create image source failed');
@@ -1644,9 +1639,8 @@ describe('Image', function () {
         } else {
             imageSourceApi.getImageInfo(0, (err, imageInfo) => {
                 expect(imageInfo != undefined).assertTrue();
-                console.info('TC_046-1 imageInfo');
-                console.info('imageInfo.size.height:'+imageInfo.size.height);
-                console.info('imageInfo.size.width:'+imageInfo.size.width);
+                console.info('TC_046-1 imageInfo.size.height:'+imageInfo.size.height);
+                console.info('TC_046-1 imageInfo.size.width:'+imageInfo.size.width);
                 done();
             })
         }
@@ -1699,11 +1693,23 @@ describe('Image', function () {
             done();
         } else {
             imageSourceApi.getImageInfo(0,(err, imageInfo) => {
-                expect(imageInfo != undefined).assertTrue();
-                console.info('TC_046-3 imageInfo');
-                console.info('imageInfo.size.height:'+imageInfo.size.height);
-                console.info('imageInfo.size.width:'+imageInfo.size.width);
-                done();
+                if (err){
+                    expect(false).assertTrue();
+                    console.info('TC_046-3 error' + err);
+                    done();
+                    return
+                }
+                if (imageInfo != undefined && imageInfo != null){
+                    expect(true).assertTrue();
+                    console.info('TC_046-3 imageInfo.size.height:' + imageInfo.size.height);
+                    console.info('TC_046-3 imageInfo.size.width:'+imageInfo.size.width);
+                    console.info('TC_046-3 success')
+                    done();
+                }else{
+                    expect(false).assertTrue();
+                    console.info('TC_046-3 failed')
+                    done();
+                }
             })
         }
     })
@@ -1774,7 +1780,6 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_047', 0, async function (done) {
-
         await getFd("test.jpg");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
@@ -1883,11 +1888,16 @@ describe('Image', function () {
         } else {
             imageSourceApi.getImageInfo(0)
                 .then(imageInfo => {
-                    expect(imageInfo != undefined).assertTrue();
-                    console.info('TC_047-3  ');
-                    console.info('imageInfo.size.height:'+imageInfo.size.height);
-                    console.info('imageInfo.size.width:'+imageInfo.size.width);
-                    done();
+                    if (imageInfo != undefined && imageInfo != null){
+                        expect(true).assertTrue();
+                        console.info('TC_047-3 imageInfo.size.height:'+imageInfo.size.height);
+                        console.info('TC_047-3 imageInfo.size.width:'+imageInfo.size.width);
+                        done();
+                    }else{
+                        expect(false).assertTrue();
+                        console.info('TC_047-3 failed');
+                        done();
+                    }
                 }).catch(error => {
                 console.log('TC_047-3 error: ' + error);
                 expect().assertFail();
@@ -2519,7 +2529,7 @@ describe('Image', function () {
     })
 
     /**
-     * @tc.number    : TC_050-14
+     * @tc.number    : TC_05s0-14
      * @tc.name      : createPixelMap-promise-jpg
      * @tc.desc      : 1.create imagesource
      *                 2.set index and DecodeOptions
@@ -2695,10 +2705,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062', 0, async function (done) {
-        await getFd("test.Png");
-        console.log('start~~~');
-        console.log('fdPng0~~~~~~~~' + fdNumber);
-        console.log('fdPng1~~~~~~~~' + JSON.stringify(fdPng));
+        await getFd("test00.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_062 create image source failed');
@@ -2738,7 +2745,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062-1', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test01.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_062-1 create image source failed');
@@ -2773,7 +2780,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062-2', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test02.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_062-2 create image source failed');
@@ -2809,7 +2816,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062-3', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test03.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_062-3 create image source failed');
@@ -2822,7 +2829,7 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                let packOpts = { format:["image/jpg"], quality:101 }
+                let packOpts = { format:["image/jpeg"], quality:101 }
                 imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                     console.info('TC_062-3 success');
                     expect(data == undefined).assertTrue();
@@ -2845,7 +2852,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062-4', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test04.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_062-4 create image source failed');
@@ -2876,9 +2883,9 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
+     
     it('TC_062-5', 0, async function (done) {
-        //        await getFd("test.png");
-        await getFd("test.Png");
+        await getFd("test05.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_062-5 create image source failed');
@@ -2891,7 +2898,7 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                let packOpts = { format:["image/jpg"] }
+                let packOpts = { format:["image/jpeg"] }
                 imagePackerApi.packing(imageSourceApi, packOpts)
                     .then( data => {
                         console.info('TC_062-5 failed');
@@ -2906,6 +2913,7 @@ describe('Image', function () {
             }
         }
     })
+    
 
     /**
      * @tc.number    : TC_062-6
@@ -2919,7 +2927,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062-6', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test06.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_062-6 create image source failed');
@@ -2949,41 +2957,6 @@ describe('Image', function () {
     })
 
     /**
-     * @tc.number    : TC_062-7 
-     * @tc.name      : packing ImageSource - callback - quality 100
-     * @tc.desc      : 1.create ImageSource
-     *                 2.call packing
-     *                 3.return array
-     *                 4.callbackcall return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    it('TC_062-7', 0, async function (done) {
-        await getFd("test.png");
-        const imageSourceApi = image.createImageSource(fdNumber);
-        if (imageSourceApi == undefined) {
-            console.info('TC_062-7 create image source failed');
-            expect(false).assertTrue();
-            done();
-        } else {
-            const imagePackerApi = image.createImagePacker();
-            if (imagePackerApi == undefined) {
-                console.info('TC_062-7 create image packer failed');
-                expect(false).assertTrue();
-                done();
-            } else {
-                let packOpts = { format:["image/jpeg"], quality:100 }
-                imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
-                    console.info('TC_062-7 success');
-                    expect(data != undefined).assertTrue();
-                    done();
-                })
-            }
-        }
-    })
-
-    /**
      * @tc.number    : TC_062-8 
      * @tc.name      : packing ImageSource - callback - quality 0
      * @tc.desc      : 1.create ImageSource
@@ -2995,7 +2968,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062-8', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test08.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_062-8 create image source failed');
@@ -3030,7 +3003,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062-9', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test09.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_062-9 create image source failed');
@@ -3155,8 +3128,15 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            imageSourceApi.release(() => {
+            imageSourceApi.release(async(err) => {
+                if (err){
+                    console.info('TC_064-1 err:' + err);
+                    expect(false).assertTrue();
+                    done();
+                    return
+                }
                 console.info('TC_064-1 Success');
+                expect(true).assertTrue();
                 expect(true).assertTrue();
                 done();
             })
@@ -3211,7 +3191,7 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            imageSourceApi.release(() => {
+            imageSourceApi.release(async() => {
                 console.info('TC_065-1 Success');
                 expect(true).assertTrue();
                 done();
@@ -3886,7 +3866,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test0.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068 create image source failed');
@@ -3921,7 +3901,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-1', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test1.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068-1 create image source failed');
@@ -3956,7 +3936,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-2', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test2.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068-2 create image source failed');
@@ -3991,7 +3971,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-3', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test3.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068-3 create image source failed');
@@ -4032,7 +4012,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-4', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test4.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068-4 create image source failed');
@@ -4073,7 +4053,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-5', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test5.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068-5 create image source failed');
@@ -4114,7 +4094,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-6', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test6.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068-6 create image source failed');
@@ -4155,7 +4135,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-7', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test7.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068-7 create image source failed');
@@ -4196,7 +4176,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-8', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test8.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068-8 create image source failed');
@@ -4232,7 +4212,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-9', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test9.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068-9 create image source failed');
@@ -4268,7 +4248,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-10', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test10.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info(' TC_068-10 create image source failed');
@@ -4309,7 +4289,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-11', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test11.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068-11 create image source failed');
@@ -4350,7 +4330,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-12', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test12.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068-12 create image source failed');
@@ -4390,7 +4370,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-13', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test13.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068-13 create image source failed');
@@ -4430,7 +4410,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-14', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test14.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068-14 create image source failed');
@@ -4461,7 +4441,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-15', 0, async function (done) {
-        await getFd("test.bmp");
+        await getFd("test15.bmp");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_068-15 create image source failed');
@@ -4487,7 +4467,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test0.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163 create image source failed');
@@ -4522,7 +4502,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-1', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test1.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163-1 create image source failed');
@@ -4557,7 +4537,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-2', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test2.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163-2 create image source failed');
@@ -4592,7 +4572,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-3', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test3.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163-3 create image source failed');
@@ -4634,7 +4614,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-4', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test4.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163-4 create image source failed');
@@ -4676,7 +4656,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-5', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test5.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163-5 create image source failed');
@@ -4718,7 +4698,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-6', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test6.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163-6 create image source failed');
@@ -4760,7 +4740,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-7', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test7.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163-7 create image source failed');
@@ -4802,7 +4782,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-8', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test8.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163-8 create image source failed');
@@ -4838,8 +4818,9 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
+   
     it('TC_163-9', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test9.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163-9 create image source failed');
@@ -4849,7 +4830,7 @@ describe('Image', function () {
             let decodingOptions = {
                 sampleSize:1,
                 editable: true,
-                desiredSize:{ width:10000, height:10000},
+                desiredSize:{ width:500, height:500},
                 rotate:10,
                 desiredPixelFormat:2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
@@ -4876,7 +4857,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-10', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test10.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info(' TC_163-10 create image source failed');
@@ -4918,7 +4899,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-11', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test11.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163-11 create image source failed');
@@ -4960,7 +4941,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-12', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test12.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163-12 create image source failed');
@@ -5000,7 +4981,7 @@ describe('Image', function () {
          * @tc.level     : Level 1
          */
     it('TC_163-13', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test13.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163-13 create image source failed');
@@ -5040,7 +5021,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-14', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test14.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163-14 create image source failed');
@@ -5071,7 +5052,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-15', 0, async function (done) {
-        await getFd("test.png");
+        await getFd("test15.png");
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_163-15 create image source failed');
@@ -5256,7 +5237,7 @@ describe('Image', function () {
             imageSourceApi.getImageProperty("BitsPerSample")
                 .then(data => {
                     console.info('TC_171 BitsPerSample ' + data);
-                    expect(data != undefined  && data != '' ).assertTrue();
+                    expect(data != undefined).assertTrue();
                     done();
                 })
                 .catch(error => {
@@ -5556,7 +5537,7 @@ describe('Image', function () {
                     done();
                 }else{
                     console.info('TC_172 BitsPerSample ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined).assertTrue();
                     done();
                 }
             })
@@ -5846,7 +5827,7 @@ describe('Image', function () {
                     done();
                 }else{
                     console.info('TC_173 BitsPerSample ' + data);
-                    expect(data != '9999' && data != undefined && data != '').assertTrue();
+                    expect(data != '9999' && data != undefined).assertTrue();
                     done();
                 }
             })
