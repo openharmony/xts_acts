@@ -18,7 +18,7 @@ ohos_hap("bmsStageDemo1") {
   hap_name = "bmsStageDemo1"
   subsystem_name = XTS_SUITENAME
   final_hap_path =
-    "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
   testonly = true
   deps = [
     ":hjs_demo_js_assets",
