@@ -32,7 +32,7 @@ describe('RecorderLocalTestAudioAPI', function () {
     const SOURCE_TYPE = 1;
     const ENCORDER_AACLC = 3;
     const CHANNEL_TWO = 2;
-    const RECORDER_TIME = 3000;
+    const RECORDER_TIME = 1000;
     let fdPath;
     let fileAsset;
     let fdNumber;
@@ -125,6 +125,7 @@ describe('RecorderLocalTestAudioAPI', function () {
 
         audioRecorder.on('resume', () => {
             console.info('setCallback resume() case callback is called');
+            sleep(RECORDER_TIME);
             mySteps.shift();
             nextStep(mySteps,done);
         });
@@ -614,7 +615,7 @@ describe('RecorderLocalTestAudioAPI', function () {
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_RECORDER_AudioRecorder_Pause_API_0500', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_AudioRecorder_Pause_API_0600', 0, async function (done) {
         initAudioRecorder();
         let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, PAUSE_STATE, ERROR_STATE,
             RELEASE_STATE, END_STATE);
@@ -646,7 +647,7 @@ describe('RecorderLocalTestAudioAPI', function () {
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_RECORDER_AudioRecorder_Pause_API_0800', 0, async function (done) {
+    it('SUB_MEDIA_RECORDER_AudioRecorder_Pause_API_0900', 0, async function (done) {
         initAudioRecorder();
         let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, PAUSE_STATE, PAUSE_STATE,
             RELEASE_STATE, END_STATE);
