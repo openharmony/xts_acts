@@ -29,7 +29,5 @@ export default function cameraKit(surfaceId: any) {
   cameraJSUnitEnum(surfaceId)
   cameraJSUnitCameraFormat(surfaceId)
   cameraJSUnitPhotoAsync(surfaceId)
-  cameraJSUnitPhotoPromise(surfaceId)
   cameraJSUnitVideoAsync(surfaceId)
-  cameraJSUnitVideoPromise(surfaceId)
 }
