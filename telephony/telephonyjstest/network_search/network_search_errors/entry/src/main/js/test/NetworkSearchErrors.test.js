@@ -339,8 +339,8 @@ describe('ActsNetworkSearchTest', function () {
 
     /**
      * @tc.number  Telephony_NetworkSearch_getOperatorName_Async_0500
-     * @tc.name    Verify the abnormal input of "slotId", test getOperatorName() to view the callback result
-     * @tc.desc    Function test
+     * @tc.name    testGetOperatorName_0500
+     * @tc.desc    Test getOperatorName api by callback.
      */
      it('Telephony_NetworkSearch_getOperatorName_Async_0500', 0, async function (done) {
         radio.getOperatorName(0, (err, data) => {
@@ -357,9 +357,9 @@ describe('ActsNetworkSearchTest', function () {
     })
 
     /**
-     * @tc.number  Telephony_NetworkSearch_getOperatorName_Promise_0500
-     * @tc.name    Verify the abnormal input of "slotId", test getOperatorName() to view the callback result
-     * @tc.desc    Function test
+     * @tc.number  Telephony_NetworkSearch_getOperatorName_Async_0600
+     * @tc.name    testGetOperatorName_0600
+     * @tc.desc    Test getOperatorName api by promise.
      */
     it('Telephony_NetworkSearch_getOperatorName_Promise_0500', 0, async function (done) {
         try {
@@ -409,8 +409,8 @@ describe('ActsNetworkSearchTest', function () {
 
     /**
      * @tc.number  Telephony_NetworkSearch_isRadioOn_Async_0300
-     * @tc.name    Test The function isRadioOn
-     * @tc.desc    Function test
+     * @tc.name    testIsRadioOn_0300
+     * @tc.desc    Test isRadioOn api by callback.
      */
      it('Telephony_NetworkSearch_isRadioOn_Async_0300', 0, async function (done) {
         radio.isRadioOn(0, (err) => {
@@ -425,9 +425,9 @@ describe('ActsNetworkSearchTest', function () {
     });
 
     /**
-     * @tc.number  Telephony_NetworkSearch_isRadioOn_Promise_0300
-     * @tc.name    Test The function isRadioOn
-     * @tc.desc    Function test
+     * @tc.number  Telephony_NetworkSearch_isRadioOn_Async_0400
+     * @tc.name    testIsRadioOn_0400
+     * @tc.desc    Test isRadioOn api by promise.
      */
     it('Telephony_NetworkSearch_isRadioOn_Promise_0300', 0, async function (done) {
         try {

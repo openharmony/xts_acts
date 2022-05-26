@@ -101,9 +101,9 @@ export default function radioSecondJsunit() {
     })
 
     /**
-     * @tc.number  Telephony_NetworkSearch_NetworkState_Promise_0100
-     * @tc.name    Test getNetworkState() to check the callback result
-     * @tc.desc    Function test
+     * @tc.number  Telephony_NetworkSearch_NetworkState_Async_0300
+     * @tc.name    testGetNetworkState_0300
+     * @tc.desc    Test getNetworkState api by promise.
      */
     it('Telephony_NetworkSearch_NetworkState_Promise_0100', 0, async function (done) {
       if (utils.notCheck) {
@@ -124,8 +124,8 @@ export default function radioSecondJsunit() {
 
    /**
      * @tc.number  Telephony_NetworkSearch_NetworkState_Async_0200
-     * @tc.name    Test getNetworkState() , slotId is 0, to check the callback result
-     * @tc.desc    Function test
+     * @tc.name    testGetNetworkState_0200
+     * @tc.desc    Test getNetworkState() api by callback, slotId is 0, to check the callback result
      */
     it('Telephony_NetworkSearch_NetworkState_Async_0200', 0, async function (done) {
       if (utils.notCheck) {
@@ -148,9 +148,9 @@ export default function radioSecondJsunit() {
     })
 
     /**
-     * @tc.number  Telephony_NetworkSearch_NetworkState_Promise_0200
-     * @tc.name    Test getNetworkState() , slotId is 0, to check the callback result
-     * @tc.desc    Function test
+     * @tc.number  Telephony_NetworkSearch_NetworkState_Async_0400
+     * @tc.name    testGetNetworkState_0400
+     * @tc.desc    Test getNetworkState() api by promise, slotId is 0, to check the callback result
      */
     it('Telephony_NetworkSearch_NetworkState_Promise_0200', 0, async function (done) {
       if (utils.notCheck) {
@@ -196,8 +196,8 @@ export default function radioSecondJsunit() {
 
         /**
      * @tc.number  Telephony_NetworkSearch_getRadioTech_Async_0500
-     * @tc.name    SlotId parameter input is 0, test getRadioTech() query function
-     * @tc.desc    Function test
+     * @tc.name    TestGetRadioTech_500
+     * @tc.desc    Test getRadioTech() api by callback, SlotId parameter input is 0
      */
     it('Telephony_NetworkSearch_getRadioTech_Async_0500', 0, async function (done) {
         radio.getRadioTech(0, (err, data) => {
@@ -214,9 +214,9 @@ export default function radioSecondJsunit() {
     });
 
         /**
-     * @tc.number  Telephony_NetworkSearch_getRadioTech_Promise_0500
-     * @tc.name    SlotId parameter input is 0, test getRadioTech() query function
-     * @tc.desc    Function test
+     * @tc.number  Telephony_NetworkSearch_getRadioTech_Async_0600
+     * @tc.name    testGetRadioTech_0600
+     * @tc.desc    SlotId parameter input is 0, test getRadioTech() api by promise.
      */
     it('Telephony_NetworkSearch_getRadioTech_Promise_0500', 0, async function (done) {
         try {
@@ -234,8 +234,8 @@ export default function radioSecondJsunit() {
 
     /**
      * @tc.number  Telephony_NetworkSearch_getNetworkSelectionMode_Async_0600
-     * @tc.name    SlotId parameter input is 0, test getNetworkSelectionMode() query function go to the error
-     * @tc.desc    Function test
+     * @tc.name    testGetNetworkSelectionMode_0600
+     * @tc.desc    SlotId parameter input is 0, test getNetworkSelectionMode() api by callback.
      */
     it('Telephony_NetworkSearch_getNetworkSelectionMode_Async_0600', 0, async function (done) {
         if (utils.notCheck) {
@@ -258,9 +258,9 @@ export default function radioSecondJsunit() {
     });
 
     /**
-     * @tc.number  Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0600
-     * @tc.name    SlotId parameter input is 0, test getNetworkSelectionMode() query function go to the error
-     * @tc.desc    Function test
+     * @tc.number  Telephony_NetworkSearch_getNetworkSelectionMode_Async_0700
+     * @tc.name    testGetNetworkSelectionMode_0700
+     * @tc.desc    SlotId parameter input is 0, test getNetworkSelectionMode() api by promise.
      */
     it('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0600', 0, async function (done) {
         if (utils.notCheck) {
@@ -283,8 +283,8 @@ export default function radioSecondJsunit() {
 
     /**
      * @tc.number  Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0500
-     * @tc.name    SlotId parameter input is 0, test getISOCountryCodeForNetwork() query function
-     * @tc.desc    Function test
+     * @tc.name    testGetISOCountryCodeForNetwork_0500
+     * @tc.desc    SlotId parameter input is 0, test getISOCountryCodeForNetwork() api by callback.
      */
     it('Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0500', 0, async function (done) {
         radio.getISOCountryCodeForNetwork(0, (err, data) => {
@@ -302,9 +302,9 @@ export default function radioSecondJsunit() {
     });
 
     /**
-     * @tc.number  Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0500
-     * @tc.name    SlotId parameter input is 0, test getISOCountryCodeForNetwork() query function
-     * @tc.desc    Function test
+     * @tc.number  Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0600
+     * @tc.name    testGetISOCountryCodeForNetwork_0600
+     * @tc.desc    SlotId parameter input is 0, test getISOCountryCodeForNetwork() api by promise.
      */
     it('Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0500', 0, async function (done) {
         try {
@@ -323,8 +323,8 @@ export default function radioSecondJsunit() {
 
     /**
      * @tc.number  Telephony_NetworkSearch_getSignalInformation_Async_0500
-     * @tc.name    SlotId parameter input is 0, test getSignalInformation() query function go to the error
-     * @tc.desc    Function test
+     * @tc.name    testGetSignalInformation_0500
+     * @tc.desc    SlotId parameter input is 0, test getSignalInformation() api by callback.
      */
     it('Telephony_NetworkSearch_getSignalInformation_Async_0500', 0, async function (done) {
         radio.getSignalInformation(0, (err, data) => {
@@ -341,9 +341,9 @@ export default function radioSecondJsunit() {
     });
 
     /**
-     * @tc.number  Telephony_NetworkSearch_getSignalInformation_Promise_0500
-     * @tc.name    SlotId parameter input is -1, test getSignalInformation() query function return the datalength is 0
-     * @tc.desc    Function test
+     * @tc.number  Telephony_NetworkSearch_getSignalInformation_Async_0600
+     * @tc.name    testGetSignalInformation_0600
+     * @tc.desc    SlotId parameter input is 0, test getSignalInformation() api by promise.
      */
     it('Telephony_NetworkSearch_getSignalInformation_Promise_0500', 0, async function (done) {
         try {

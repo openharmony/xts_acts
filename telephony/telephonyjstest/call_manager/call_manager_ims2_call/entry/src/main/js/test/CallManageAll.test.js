@@ -864,9 +864,9 @@ describe('CallManageImsCall', function () {
 
     /**
      * @tc.number  Telephony_CallManager_formatPhoneNumber_Async_0200
-     * @tc.name    PhoneNumber is 13900000000, options: CN, Call formatPhoneNumber() to format the number.
+     * @tc.name    testFormatPhoneNumber_0200
+     * @tc.desc    PhoneNumber is 13900000000, options: CN, test formatPhoneNumber() api by callback.
      *             The return value is 139 0000 0000
-     * @tc.desc    Function test
      */
     it('Telephony_CallManager_formatPhoneNumber_Async_0200', 0, async function (done) {
         let numberFormatOptions = new NumberFormatOptions('CN');
@@ -885,10 +885,10 @@ describe('CallManageImsCall', function () {
     });
 
     /**
-     * @tc.number  Telephony_CallManager_formatPhoneNumber_Promise_0200
-     * @tc.name    PhoneNumber is 13900000000, options: US, Call formatPhoneNumber() to format the number.
+     * @tc.number  Telephony_CallManager_formatPhoneNumber_Async_0300
+     * @tc.name    testFormatPhoneNumber_0300
+     * @tc.desc    PhoneNumber is 13900000000, options: US, test formatPhoneNumber() api by promise.
      *             The return value is '1 390-000-0000'
-     * @tc.desc    Function test
      */
     it('Telephony_CallManager_formatPhoneNumber_Promise_0200', 0, async function (done) {
         let numberFormatOptions = new NumberFormatOptions('US');
@@ -987,9 +987,9 @@ describe('CallManageImsCall', function () {
 
     /**
      * @tc.number  Telephony_CallManager_isEmergencyPhoneNumber_Async_1400
-     * @tc.name    PhoneNumber: 110, no options. Call isEmergencyPhoneNumber() to check whether it is an emergency
-     *             number. The return value is false
-     * @tc.desc    Function test
+     * @tc.name    testIsEmergencyPhoneNumber_1400
+     * @tc.desc    PhoneNumber: 110, no options. Call isEmergencyPhoneNumber() api by callback.
+     *             The return value is true
      */
     it('Telephony_CallManager_isEmergencyPhoneNumber_Async_1400', 0, async function (done) {
         call.isEmergencyPhoneNumber('110', (err) => {
@@ -1006,10 +1006,10 @@ describe('CallManageImsCall', function () {
     });
 
     /**
-     * @tc.number  Telephony_CallManager_isEmergencyPhoneNumber_Promise_1400
-     * @tc.name    PhoneNumber: 120, no options. Call isEmergencyPhoneNumber() to check whether it is an emergency
-     *             number. The return value is false
-     * @tc.desc    Function test
+     * @tc.number  Telephony_CallManager_isEmergencyPhoneNumber_Async_1500
+     * @tc.name    testIsEmergencyPhoneNumber_1500
+     * @tc.desc    PhoneNumber: 120, no options. Call isEmergencyPhoneNumber() api by promise.
+     *             The return value is true
      */
     it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1400', 0, async function (done) {
         try {

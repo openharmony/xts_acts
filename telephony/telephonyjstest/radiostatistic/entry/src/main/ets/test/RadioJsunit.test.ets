@@ -50,9 +50,9 @@ export default function radioJsunit() {
     });
 
     /**
-     * @tc.number  Telephony_NetworkSearch_getPrimarySlotId_Promise_0200
-     * @tc.name    Test getPrimarySlotId() to check the callback result
-     * @tc.desc    Function test
+     * @tc.number  Telephony_NetworkSearch_getPrimarySlotId_Async_0300
+     * @tc.name    testGetPrimarySlotId_0300
+     * @tc.desc    Test getPrimarySlotId api by promise.
      */
     it('Telephony_NetworkSearch_getPrimarySlotId_Promise_0200', 0, async function (done) {
       if(utils.notCheck){

@@ -199,7 +199,8 @@ export default function requestJsunit() {
   });
 
     /**
-     * @tc.name: ohos.request_request_upload_0007
+     * @tc.number request_upload_0007
+     * @tc.name: test_request_upload_0007
      * @tc.desc: request_upload Method detection
      */
     it('request_upload_0007', 0, async function (done) {

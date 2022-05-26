@@ -74,11 +74,11 @@ export default function smsUiJsunit() {
     });
 
   /*
-   * @tc.number  Telephony_SmsMms_createMessage_Promise_0100
-   * @tc.name    Call interface CreateMessage,
+   * @tc.number  Telephony_SmsMms_createMessage_Async_0300
+   * @tc.name    testCreateMessage_0300
+   * @tc.desc    Call interface CreateMessage,
    *             pass in the PDU(rawArray) in line with the coding specification, the specification is 3GPP,
    *             shortMessage Don't empty
-   * @tc.desc    Function test
    */
     it('Telephony_SmsMms_createMessage_Promise_0100', 0, async function (done) {
       if (true) {

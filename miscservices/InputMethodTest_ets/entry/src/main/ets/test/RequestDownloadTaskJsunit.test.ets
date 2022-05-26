@@ -337,7 +337,7 @@ export default function requestDownloadJsunit() {
 
     /**
      * @tc.number  requestDownload_test_015
-     * @tc.name    Test The  request DownloadTask
+     * @tc.name    testRequestDownloadTask_015
      * @tc.desc    Function test
      */
     it('requestDownload_test_015', 0, async function (done) {
@@ -361,7 +361,7 @@ export default function requestDownloadJsunit() {
 
     /**
      * @tc.number  requestDownload_test_016
-     * @tc.name    Test The  request DownloadTask
+     * @tc.name    testRequestDownloadTask_016
      * @tc.desc    Function test
      */
     it('requestDownload_test_016', 0, async function (done) {
@@ -385,7 +385,7 @@ export default function requestDownloadJsunit() {
 
     /**
      * @tc.number  requestDownload_test_017
-     * @tc.name    Test The  request DownloadTask
+     * @tc.name    testRequestDownloadTask_017
      * @tc.desc    Function test
      */
     it('requestDownload_test_017', 0, async function (done) {
@@ -409,7 +409,7 @@ export default function requestDownloadJsunit() {
 
     /**
      * @tc.number  requestDownload_test_018
-     * @tc.name    Test The  request DownloadTask
+     * @tc.name    testRequestDownloadTask_018
      * @tc.desc    Function test
      */
     it('requestDownload_test_018', 0, async function (done) {
@@ -433,7 +433,7 @@ export default function requestDownloadJsunit() {
 
     /**
      * @tc.number  requestDownload_test_019
-     * @tc.name    Test The  request DownloadTask
+     * @tc.name    testRequestDownloadTask_019
      * @tc.desc    Function test
      */
     it('requestDownload_test_019', 0, async function (done) {
@@ -459,7 +459,7 @@ export default function requestDownloadJsunit() {
 
     /**
      * @tc.number  requestDownload_test_020
-     * @tc.name    Test The  request DownloadTask
+     * @tc.name    testRequestDownloadTask_020
      * @tc.desc    Function test
      */
     it('requestDownload_test_020', 0, async function (done) {
@@ -483,7 +483,7 @@ export default function requestDownloadJsunit() {
 
     /**
      * @tc.number  requestDownload_test_021
-     * @tc.name    Test The  request DownloadTask
+     * @tc.name    testRequestDownloadTask_021
      * @tc.desc    Function test
      */
     it('requestDownload_test_021', 0, async function (done) {
