@@ -25,9 +25,9 @@ describe('DistributedTest', function () {
     }
 
     /**
-     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0200(by callback)
+     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0200
      * @tc.name      testContinueAbility0200
-     * @tc.desc      T
+     * @tc.desc      T (by callback)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -44,9 +44,9 @@ describe('DistributedTest', function () {
     })
 
     /**
-     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0400(by callback)
+     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0400
      * @tc.name      testContinueAbility0400
-     * @tc.desc      T
+     * @tc.desc      T (by callback)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -63,9 +63,9 @@ describe('DistributedTest', function () {
     })
 
     /**
-     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0600(by callback)
+     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0600
      * @tc.name      testContinueAbility0600
-     * @tc.desc      T
+     * @tc.desc      T (by callback)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -86,9 +86,9 @@ describe('DistributedTest', function () {
     })
 
     /**
-     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0700(by promise)
+     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0700
      * @tc.name      testContinueAbility0700
-     * @tc.desc      T
+     * @tc.desc      T (by promise)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -110,9 +110,9 @@ describe('DistributedTest', function () {
     })
 
     /**
-     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0800(by callback)
+     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_0800
      * @tc.name      testContinueAbility0800
-     * @tc.desc      T
+     * @tc.desc      T (by callback)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -133,9 +133,9 @@ describe('DistributedTest', function () {
     })
 
     /**
-     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_1000(by callback)
+     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_1000
      * @tc.name      testContinueAbility1000
-     * @tc.desc      T
+     * @tc.desc      T (by callback)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -155,9 +155,9 @@ describe('DistributedTest', function () {
     })
 
     /**
-     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_1100(by promise)
+     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_1100
      * @tc.name      testContinueAbility1100
-     * @tc.desc      T
+     * @tc.desc      T (by promise)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -179,9 +179,9 @@ describe('DistributedTest', function () {
     })
 
     /**
-     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_1200(by callback)
+     * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_1200
      * @tc.name      testContinueAbility1200
-     * @tc.desc      T
+     * @tc.desc      T (by callback)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
@@ -202,9 +202,9 @@ describe('DistributedTest', function () {
     })
 
     /**
-    * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_1300(by promise)
+    * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_1300
     * @tc.name      testContinueAbility1300
-    * @tc.desc      T
+    * @tc.desc      T (by promise)
     * @tc.size      : MEDIUM
     * @tc.type      : Function
     * @tc.level     : Level 3
@@ -227,9 +227,9 @@ describe('DistributedTest', function () {
     })
 
     /**
-    * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_1400(by callback)
+    * @tc.number    SUB_AA_OpenHarmony_ContinueAbility_1400
     * @tc.name      testContinueAbility1400
-    * @tc.desc      T
+    * @tc.desc      T (by callback)
     * @tc.size      : MEDIUM
     * @tc.type      : Function
     * @tc.level     : Level 3

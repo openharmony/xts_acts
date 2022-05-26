@@ -328,7 +328,7 @@ describe('ActsBundleManagerTest', function () {
     /**
    * @tc.number getBundleInfo_0900
    * @tc.name BUNDLE::getBundleInfo
-   * @tc.desc Test getBundleInfo interfaces with none hap.
+   * @tc.desc Test getBundleInfo interfaces with none hap. (by promise)
    */
     it('getBundleInfo_0900', 0, async function (done) {
         await demo.getBundleInfo(' ', demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
@@ -345,7 +345,7 @@ describe('ActsBundleManagerTest', function () {
     /**
      * @tc.number getBundleInfo_1000
      * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interfaces with none hap.
+     * @tc.desc Test getBundleInfo interfaces with none hap. (by callback)
      */
     it('getBundleInfo_1000', 0, async function (done) {
         await demo.getBundleInfo(' ', demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent);
@@ -365,7 +365,7 @@ describe('ActsBundleManagerTest', function () {
     /**
      * @tc.number getBundleInfo_1100
      * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interfaces with one hap and different param.
+     * @tc.desc Test getBundleInfo interfaces with one hap and different param. (by promise)
      */
     it('getBundleInfo_1100', 0, async function (done) {
         let datainfo = await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT)
@@ -391,7 +391,7 @@ describe('ActsBundleManagerTest', function () {
     /**
      * @tc.number getBundleInfo_1200
      * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interfaces with one hap and different param.
+     * @tc.desc Test getBundleInfo interfaces with one hap and different param. (by callback)
      */
     it('getBundleInfo_1200', 0, async function (done) {
         await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT, OnReceiveEvent)
@@ -452,7 +452,7 @@ describe('ActsBundleManagerTest', function () {
     /**
      * @tc.number getBundleInfo_1500
      * @tc.name BUNDLEMGR::getBundleInfo
-     * @tc.desc Test getBundleInfo interface with current userId(by promise).
+     * @tc.desc Test getBundleInfo interface with current userId (by promise).
      */
     it('getBundleInfo_1500', 0, async function (done) {
         let bundleOptions = {
@@ -501,7 +501,7 @@ describe('ActsBundleManagerTest', function () {
     /**
      * @tc.number getBundleInfo_1600
      * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interface with current userId(by callback).
+     * @tc.desc Test getBundleInfo interface with current userId (by callback).
      */
     it('getBundleInfo_1600', 0, async function (done) {
         let bundleOptions = {
@@ -550,7 +550,7 @@ describe('ActsBundleManagerTest', function () {
     /**
      * @tc.number getBundleInfo_1700
      * @tc.name BUNDLEMGR::getBundleInfo
-     * @tc.desc Test getBundleInfo interface with other userId(by promise).
+     * @tc.desc Test getBundleInfo interface with other userId (by promise).
      */
     it('getBundleInfo_1700', 0, async function (done) {
         await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, {
@@ -569,7 +569,7 @@ describe('ActsBundleManagerTest', function () {
     /**
      * @tc.number getBundleInfo_1800
      * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interface with other userId(by callback).
+     * @tc.desc Test getBundleInfo interface with other userId (by callback).
      */
     it('getBundleInfo_1800', 0, async function (done) {
         await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, {
