@@ -16,7 +16,7 @@ import sensor from '@system.sensor'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 describe("SensorJsTest", function () {
-     beforeAll(function () {
+    beforeAll(function () {
 
         /*
          * @tc.setup: setup invoked before all testcases
@@ -48,7 +48,10 @@ describe("SensorJsTest", function () {
         console.info('afterEach caled')
     })
 
-    var errMessages = ['The number of parameters is not valid', 'Wrong argument type, should be object', 'UnsubscribeSensor failed'];
+    let errMessages = ['The number of parameters is not valid', 'Wrong argument type, should be object',
+    'UnsubscribeSensor failed'];
+
+    let errMessage;
 
     /*
      * @tc.name:subscribeAccelerometer_SensorJsTest001
@@ -71,7 +74,6 @@ describe("SensorJsTest", function () {
                 expect(false).assertTrue();
             },
         });
-
         setTimeout(() => {
             try {
                 sensor.unsubscribeAccelerometer();
@@ -107,7 +109,6 @@ describe("SensorJsTest", function () {
                 expect(false).assertTrue();
             },
         });
-
         setTimeout(() => {
             try {
                 sensor.unsubscribeAccelerometer();
@@ -181,7 +182,7 @@ describe("SensorJsTest", function () {
                 },
             }, 25);
         } catch (error) {
-            var errMessage = error.toString().slice(19, 56);
+            errMessage = error.toString().slice(19, 56);
             console.info('subscribeAccelerometer_SensorJsTest004 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
@@ -212,7 +213,7 @@ describe("SensorJsTest", function () {
             }, function () {
             }, 25);
         } catch (error) {
-            var errMessage = error.toString().slice(19, 56);
+            errMessage = error.toString().slice(19, 56);
             console.info('subscribeAccelerometer_SensorJsTest005 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
@@ -280,7 +281,7 @@ describe("SensorJsTest", function () {
         try {
             sensor.subscribeAccelerometer();
         } catch (error) {
-            var errMessage = error.toString().slice(19, 56);
+            errMessage = error.toString().slice(19, 56);
             console.info('subscribeAccelerometer_SensorJsTest007 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
@@ -298,7 +299,7 @@ describe("SensorJsTest", function () {
         try {
             sensor.subscribeAccelerometer('xxx');
         } catch (error) {
-            var errMessage = error.toString().slice(19, 56);
+            errMessage = error.toString().slice(19, 56);
             console.info('subscribeAccelerometer_SensorJsTest008 error:' + error);
             expect(errMessage).assertEqual(errMessages[1]);
             done();
@@ -316,7 +317,7 @@ describe("SensorJsTest", function () {
         try {
             sensor.unsubscribeAccelerometer('xxx');
         } catch (error) {
-            var errMessage = error.toString().slice(21, 58);
+            errMessage = error.toString().slice(21, 58);
             console.info('subscribeAccelerometer_SensorJsTest009 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
@@ -358,7 +359,7 @@ describe("SensorJsTest", function () {
         try {
             sensor.unsubscribeAccelerometer();
         } catch (error) {
-            var errMessage = error.toString().slice(21, 45);
+            errMessage = error.toString().slice(21, 45);
             console.info('subscribeAccelerometer_SensorJsTest011 error:' + error);
             expect(errMessage).assertEqual(errMessages[2]);
             done();
@@ -430,12 +431,10 @@ describe("SensorJsTest", function () {
                 expect(false).assertTrue();
             },
         });
-
         try {
             sensor.unsubscribeAccelerometer();
         } catch (error) {
             console.info('subscribeAccelerometer_SensorJsTest014_unsubscribeAccelerometer error' + error);
-            expect(true).assertTrue();
         }
         setTimeout(() => {
             expect(true).assertTrue();
