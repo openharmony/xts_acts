@@ -31,7 +31,7 @@ executable("ActsKitFwkApiTest") {
   ]
 
   deps = [
-    "//base/startup/syspara_lite/frameworks/token:token_shared",
+    "//base/startup/init_lite/interfaces/kits/token:token_shared",
     "//build/lite/config/component/cJSON:cjson_shared",
     "//test/xts/tools/lite/hcpptest:hcpptest_main",
     "//third_party/bounds_checking_function:libsec_shared",
