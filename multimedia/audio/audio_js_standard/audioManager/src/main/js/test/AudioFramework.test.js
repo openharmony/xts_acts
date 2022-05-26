@@ -886,7 +886,7 @@ describe('audioManger', function () {
     /* *
             * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_030
             * @tc.name      : setVolume - Media - Promise - Change Ringtone vol
-            * @tc.desc      : Setvol to 5
+            * @tc.desc      : Setvol to 20
             * @tc.size      : MEDIUM
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -976,7 +976,7 @@ describe('audioManger', function () {
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_029
                 * @tc.name      : setVolume - Ringtone - Promise - Change Media vol
-                * @tc.desc      : Setvol to 14
+                * @tc.desc      : Setvol to 20
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
