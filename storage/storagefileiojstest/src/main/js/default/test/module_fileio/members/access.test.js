@@ -25,7 +25,7 @@ describe('fileio_access', function () {
    * @tc.name fileio_test_access_sync_000
    * @tc.desc Test accessSync() interface.
    * This interface shall work properly in normal case
-   * @tc.size MEDIUM(中型)
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -47,8 +47,8 @@ describe('fileio_access', function () {
    * @tc.number SUB_DF_FILEIO_ACCESSSYNC_0100
    * @tc.name fileio_test_access_sync_001
    * @tc.desc Test accessSync() interface.
-   * The test file exists and the current process has write permission.
-   * @tc.size MEDIUM(中型)
+   * Test that the current process has write permission.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -70,8 +70,8 @@ describe('fileio_access', function () {
    * @tc.number SUB_DF_FILEIO_ACCESSSYNC_0200
    * @tc.name fileio_test_access_sync_002
    * @tc.desc Test accessSync() interface.
-   * The test file exists and the current process has read permission.
-   * @tc.size MEDIUM(中型)
+   * Test that the current process has read permission.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -93,8 +93,8 @@ describe('fileio_access', function () {
    * @tc.number SUB_DF_FILEIO_ACCESSSYNC_0300
    * @tc.name fileio_test_access_sync_003
    * @tc.desc Test accessSync() interface.
-   * The test file exists and the current process has read and write permissions.
-   * @tc.size MEDIUM(中型)
+   * Test that the current process has read and write permissions.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -116,19 +116,42 @@ describe('fileio_access', function () {
    * @tc.number SUB_DF_FILEIO_ACCESSSYNC_0400
    * @tc.name fileio_test_access_sync_004
    * @tc.desc Test accessSync() interface.
-   * The test file is not exist.
-   * @tc.size MEDIUM(中型)
+   * Test that the current process has executable permissions.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
   it('fileio_test_access_sync_004', 0, async function () {
     let fpath = await nextFileName('fileio_test_access_sync_004');
+    fileio.openSync(fpath, 0o102, 0o777);
+
+    try {
+      fileio.accessSync(fpath, 1);
+      fileio.unlinkSync(fpath);
+    } catch (err) {
+      console.info('fileio_test_access_sync_004 has failed for ' + err);
+      expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_ACCESSSYNC_0500
+   * @tc.name fileio_test_access_sync_005
+   * @tc.desc Test accessSync() interface.
+   * The test file is not exist.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_test_access_sync_005', 0, async function () {
+    let fpath = await nextFileName('fileio_test_access_sync_005');
 
     try {
       fileio.accessSync(fpath);
     } catch (err) {
-      console.info('fileio_test_access_sync_004 has failed for ' + err);
+      console.info('fileio_test_access_sync_005 has failed for ' + err);
       expect(err.message == 'No such file or directory').assertTrue();
     }
   });
@@ -138,7 +161,7 @@ describe('fileio_access', function () {
    * @tc.name fileio_test_access_async_000
    * @tc.desc Test accessAsync() interface.
    * This interface shall work properly in normal case.
-   * @tc.size MEDIUM(中型)
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -162,7 +185,7 @@ describe('fileio_access', function () {
    * @tc.name fileio_test_access_async_001
    * @tc.desc Test accessAsync() interface.
    * Use promise to test that the current process has read permission. Async method reads data from file.
-   * @tc.size MEDIUM(中型)
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -190,7 +213,7 @@ describe('fileio_access', function () {
    * @tc.name fileio_test_access_async_002
    * @tc.desc Test accessAsync() interface.
    * Test file exists.
-   * @tc.size MEDIUM(中型)
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -214,8 +237,8 @@ describe('fileio_access', function () {
    * @tc.number SUB_DF_FILEIO_ACCESSASYNC_0300
    * @tc.name fileio_test_access_async_003
    * @tc.desc Test accessAsync() interface.
-   * Use promises to test that the current process has read permission. Async method reads data from file.
-   * @tc.size MEDIUM(中型)
+   * Use callback to test that the current process has read permission. Async method reads data from file.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -244,7 +267,7 @@ describe('fileio_access', function () {
    * @tc.name fileio_test_access_async_004
    * @tc.desc Test accessAsync() interface.
    * Use promises to test that the current process has executable permissions.
-   * @tc.size MEDIUM(中型)
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -267,8 +290,8 @@ describe('fileio_access', function () {
    * @tc.number SUB_DF_FILEIO_ACCESSASYNC_0500
    * @tc.name fileio_test_access_async_005
    * @tc.desc Test accessAsync() interface.
-   * Use promises to test that the current process has write permission.
-   * @tc.size MEDIUM(中型)
+   * Use callback to test that the current process has write permission.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -293,7 +316,7 @@ describe('fileio_access', function () {
    * @tc.name fileio_test_access_async_006
    * @tc.desc Test accessAsync() interface.
    * Async test file does not exist.
-   * @tc.size MEDIUM(中型)
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
