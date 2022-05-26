@@ -272,7 +272,7 @@ export default function httpRequestJsunit() {
 
     /**
      * @tc.number Telephony_http_HttpRequest_off_headersReceive_0200
-     * @tc.name httprequest::off_headersReceive
+     * @tc.name httprequest::off_headersReceive_0200
      * @tc.desc Test Test httprequest property.
      */
     it("Telephony_http_HttpRequest_off_headersReceive_0200", 0, function (done) {
@@ -297,7 +297,7 @@ export default function httpRequestJsunit() {
 
     /**
      * @tc.number Telephony_http_HttpRequest_once_headersReceive_0100
-     * @tc.name httprequest::once_headersReceive
+     * @tc.name httprequest::once_headersReceive_0100
      * @tc.desc Test Test httprequest property.
      */
     it("Telephony_http_HttpRequest_once_headersReceive_0100", 0, function (done) {
