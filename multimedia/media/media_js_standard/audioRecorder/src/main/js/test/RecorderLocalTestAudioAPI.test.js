@@ -32,8 +32,7 @@ describe('RecorderLocalTestAudioAPI', function () {
     const SOURCE_TYPE = 1;
     const ENCORDER_AACLC = 3;
     const CHANNEL_TWO = 2;
-    const RECORDER_TIME = 3000;
-    const PAUSE_TIME = 1000;
+    const RECORDER_TIME = 1000;
     let fdPath;
     let fileAsset;
     let fdNumber;
@@ -120,7 +119,6 @@ describe('RecorderLocalTestAudioAPI', function () {
 
         audioRecorder.on('pause', () => {
             console.info('setCallback pause() case callback is called');
-            sleep(PAUSE_TIME);
             mySteps.shift();
             nextStep(mySteps,done);
         });
