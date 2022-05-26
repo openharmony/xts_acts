@@ -12,14 +12,14 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("HitsSecurityCipherTest") {
+ohos_js_hap_suite("ActsSecurityCipherTest") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":huks_js_assets",
     ":huks_js_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "HitsSecurityCipherTest"
+  hap_name = "ActsSecurityCipherTest"
 }
 ohos_js_assets("huks_js_assets") {
   source_dir = "./entry/src/main/js/MainAbility"

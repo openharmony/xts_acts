@@ -19,7 +19,7 @@ ohos_js_hap_suite("huksagree_callback_basic_js_test") {
     ":huks_js_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "huksAgreeBasicCallbackJSApiTest"
+  hap_name = "ActsHuksAgreeBasicCallbackJSApiTest"
 }
 ohos_js_assets("huks_js_assets") {
   source_dir = "./entry/src/main/js/MainAbility"

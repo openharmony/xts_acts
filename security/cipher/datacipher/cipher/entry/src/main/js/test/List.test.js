@@ -14,3 +14,5 @@
  */
 
 require('./Agree/hitscipher.test.js');
+require('./Agree/cipher1.test.js');
+require('./Agree/cipher2.test.js');

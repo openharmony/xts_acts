@@ -1,4 +1,4 @@
-/*
+/*plainTextAes
  * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ describe('hitscipher.test.js', function () {
   let cipherTextRsa;
   let rsaPublicKey;
   let rsaPrivateKey;
-  let plainTestAes;
+  let plainTextAes;
   let cipherTextAes;
   let aesKey;
   let cipherResultFail;
@@ -44,7 +44,7 @@ describe('hitscipher.test.js', function () {
 	'Zt8MkPdAh87mD8jdlsSzh3v2RxkbJTgzFmRotsd2dCfNdykYtRN5EBmbYM54GhBh\n' +
 	'dYZlnX92HHBDLRCL8y0CQQDuKZNoBooqVUwcrCFqpeAX/bGYiVmFxcIqyu5vYzVJ\n' +
 	'Ff5Fpkxm4FLmrjhiGwL1CKIm5RRL9kT6tsv4do6ALylb';
-	plainTestAes = '%%%%Hello,World! 123 aes key2###(^^^)';
+	plainTextAes = '%%%%Hello,World! 123 aes key2###(^^^)';
 	cipherTextAes = 'IclkeCOt6pPODqNyprSZizYdJLBFLwXsEFJo34IJwZp7JmfQJXDbqGpexINBMke4';
 	aesKey = 'MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjMONTY3ODkwMzI=';
 	cipherResultFail = false;
