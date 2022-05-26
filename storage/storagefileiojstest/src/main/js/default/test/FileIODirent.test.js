@@ -14,18 +14,12 @@
  */
 
 import fileio from '@ohos.fileio';
-import {
-  describe,
-  it,
-  expect
-}
-  from 'deccjsunit/index';
+import { describe,it,expect}from 'deccjsunit/index'
 import {
   FILE_CONTENT,
   prepareFile,
   nextFileName
-}
-  from './Common';
+}from './Common';
 
 describe('fileIOTestDirent', function () {
 
