@@ -15,7 +15,7 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
 import abilityManager from '@ohos.application.AbilityManager'
-import appManager from '@ohos.application.AppManager'
+import appManager from '@ohos.application.appManager'
 
 describe('ActsAbilityRunningInfosTest', function () {
 

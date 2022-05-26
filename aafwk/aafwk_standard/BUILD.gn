@@ -19,7 +19,6 @@ group("aafwk_standard") {
     deps = [
       "abilitymanager:actsabilitymanagertest",
       "actsabilitydelegatorcase:ActsAbilityDelegatorCaseTest",
-      "actsabilitydistributetest:ActsAbilityDistributeTest",
       "actsabilitylifecyclestatenew:ActsAbilityLifecycleStateNewTest",
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
       "actsdataabilityjs:ActsDataAbilityJsTest",
