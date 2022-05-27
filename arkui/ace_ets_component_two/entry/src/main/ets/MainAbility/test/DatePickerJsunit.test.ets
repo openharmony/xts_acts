@@ -55,52 +55,5 @@ export default function datePickerJsunit() {
       console.info('datePickerTest_0200 END');
       done();
     });
-
-    it('datePickerTest_0200', 0, async function (done) {
-      console.info('datePickerTest_0200 START');
-      let strJson = getInspectorByKey('datePicker');
-      console.info("datePickerTest_0200 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("datePickerTest_0200 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.useMilitaryTime).assertEqual('true');
-      console.info('datePickerTest_0200 END');
-      done();
-    });
-
-    it('datePickerTest_0300', 0, async function (done) {
-      console.info('datePickerTest_0300 START');
-      try {
-        let eventData = {
-          data: {
-            "useMilitaryTime": "false",
-          }
-        }
-        let indexEvent = {
-          eventId: 81,
-          priority: emitter.EventPriority.LOW
-        }
-        console.info("datePickerTest_0300 start to publish emit");
-        emitter.emit(indexEvent, eventData);
-      } catch (err) {
-        console.log("datePickerTest_0300 change component data error: " + err.message);
-      }
-      let callback = (indexEventOne) => {
-        console.info("datePickerTest_0300 get state result is: " + JSON.stringify(indexEventOne));
-        expect(obj.$attrs.useMilitaryTime).assertEqual('false');
-      }
-      let indexEventOne = {
-        eventId: 80,
-        priority: emitter.EventPriority.LOW
-      }
-      try {
-        emitter.on(indexEventOne, callback);
-      } catch (err) {
-        console.info("datePickerTest_0300 on emitter err : " + JSON.stringify(err));
-      }
-      console.info("datePickerTest_0300 click result is: " + JSON.stringify(sendEventByKey('datePicker',10,"")));
-      await Utils.sleep(2000);
-      console.info('datePickerTest_0300 END');
-      done();
-    });
   })
 }
