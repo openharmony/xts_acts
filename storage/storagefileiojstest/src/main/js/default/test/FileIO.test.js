@@ -2257,7 +2257,7 @@ describe('fileIOTest', function () {
       fileio.copyFileSync(-1, -1);
     } catch (err) {
       console.info('fileio_test_copy_file_sync_007 has failed for ' + err);
-      expect(err.message == "Invalid argument").assertTrue();
+      expect(err.message == "Invalid argument" || err.message == "Bad file descriptor").assertTrue();
     }
   });
 
