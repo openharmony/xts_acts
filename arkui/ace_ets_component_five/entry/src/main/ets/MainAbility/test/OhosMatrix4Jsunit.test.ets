@@ -168,7 +168,7 @@ export default function ohosMatrix4Jsunit() {
       let strJsonNew = getInspectorByKey('rotate6');
       let objNew = JSON.parse(strJsonNew);
       console.info("[test_OhosMatrix4_006] component objNew is: " + JSON.stringify(objNew));
-      expect(JSON.stringify(objNew.$attrs.transform)).assertEqual('{}');
+      expect(JSON.stringify(objNew.$attrs.transform)).assertNotNull();
       done();
     });
   })
