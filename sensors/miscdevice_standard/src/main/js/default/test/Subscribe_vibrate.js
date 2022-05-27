@@ -48,7 +48,10 @@ describe("VibratorJsTest", function () {
         console.info('afterEach caled')
     })
 
-    var errMessages = ['Param number is invalid', 'Wrong argument type. function expected', 'Wrong argument type', 'Wrong argument number']
+    let errMessages = ['Param number is invalid', 'Wrong argument type. function expected',
+    'Wrong argument type', 'Wrong argument number']
+
+     let errMessage;
 	
     /*
      * @tc.name:VibratorJsTest0001
@@ -62,7 +65,6 @@ describe("VibratorJsTest", function () {
             mode: 'long',
             success: function () {
                 console.info("VibratorJsTest0001 success");
-                expect(true).assertTrue();
                 done();
             },
             fail: function (data, code) {
@@ -87,7 +89,6 @@ describe("VibratorJsTest", function () {
             mode: 'short',
             success: function () {
                 console.info("VibratorJsTest0002 success");
-                expect(true).assertTrue();
                 done();
             },
             fail: function (data, code) {
@@ -112,7 +113,6 @@ describe("VibratorJsTest", function () {
             mode: 'short',
             success: function () {
                 console.info("VibratorJsTest0003 success");
-                expect(true).assertTrue();
                 done();
             },
             fail: function (data, code) {
@@ -134,7 +134,6 @@ describe("VibratorJsTest", function () {
             mode: 'short',
             success: function () {
                 console.info("VibratorJsTest0004 success");
-                expect(true).assertTrue();
                 done();
             },
         });
@@ -151,7 +150,6 @@ describe("VibratorJsTest", function () {
         vibrator.vibrate({
             success: function () {
                 console.info("VibratorJsTest0005 success");
-                expect(true).assertTrue();
                 done();
             },
             fail: function (data, code) {
@@ -174,7 +172,6 @@ describe("VibratorJsTest", function () {
             inInvalid: 2,
             success: function () {
                 console.info("VibratorJsTest0006 success");
-                expect(true).assertTrue();
                 done();
             },
             fail: function (data, code) {
@@ -202,7 +199,7 @@ describe("VibratorJsTest", function () {
                 },
             }, 25);
         } catch (error) {
-            var errMessage = error.toString().slice(39);
+            errMessage = error.toString().slice(39);
             console.info('VibratorJsTest0007 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
@@ -221,26 +218,22 @@ describe("VibratorJsTest", function () {
             mode: 'short',
             success: function () {
                 console.info("VibratorJsTest0008 success");
-                expect(true).assertTrue();
             },
             fail: function (data, code) {
                 console.error('VibratorJsTest0008 failed. Code: ' + code + '; Data: ' + data);
                 expect(false).assertTrue();
             },
         });
-
         vibrator.vibrate({
             mode: 'short',
             success: function () {
                 console.info("VibratorJsTest0008_1 success");
-                expect(true).assertTrue();
             },
             fail: function (data, code) {
                 console.error('VibratorJsTest0008_1 failed. Code: ' + code + '; Data: ' + data);
                 expect(false).assertTrue();
             },
         });
-
         setTimeout(() => {
             done();
         }, 500);
@@ -258,7 +251,7 @@ describe("VibratorJsTest", function () {
             vibrator.vibrate('xxx', done);
         } catch (error) {
             console.info('VibratorJsTest0009 error：' + error);
-            var errMessage = error.toString().slice(68);
+            errMessage = error.toString().slice(68);
             expect(errMessage).assertEqual(errMessages[1]);
             done();
         }
@@ -275,7 +268,7 @@ describe("VibratorJsTest", function () {
         try {
             vibrator.vibrate(done);
         } catch (error) {
-            var errMessage = error.toString().slice(7);
+            errMessage = error.toString().slice(7);
             console.info('VibratorJsTest0010 error:' + error);
             expect(errMessage).assertEqual(errMessages[2]);
             done();
@@ -301,7 +294,7 @@ describe("VibratorJsTest", function () {
             }, function () {
             }, 25);
         } catch (error) {
-            var errMessage = error.toString().slice(39);
+            errMessage = error.toString().slice(39);
             console.info('VibratorJsTest0011 error:' + error);
             expect(errMessage).assertEqual(errMessages[3]);
             done();
