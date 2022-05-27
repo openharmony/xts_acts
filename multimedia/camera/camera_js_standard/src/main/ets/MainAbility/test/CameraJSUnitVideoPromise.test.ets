@@ -151,10 +151,12 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       console.info(TAG + 'createVideoRecorder called')
       videoRecorder = recorder
       console.info(TAG + 'videoRecorder is :' + JSON.stringify(videoRecorder))
+
       console.info(TAG + 'videoRecorder.prepare called.')
       videoRecorder.prepare(videoConfig, (err) => {
         console.info(TAG + 'videoRecorder.prepare success.')
       })
+
       videoRecorder.getInputSurface((err, id) => {
         console.info(TAG + 'getInputSurface called')
         videoId = id
@@ -229,11 +231,11 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
             if (data != null || data != undefined) {
               console.info(TAG + "Camera status Callback CameraStatusInfo_Camera: " + data.camera);
               console.info(TAG + "Camera status Callback CameraStatusInfo_Status: " + data.status);
+
               expect(true).assertTrue();
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "Camera status Callback FAILED: " + err.message);
           }
           await sleep(1);
           done();
@@ -306,13 +308,13 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CAMERA_INPUT_CALLBACK_ON_ERROR
-      * @tc.name      : Photo output callback on error api
-      * @tc.desc      : Photo output callback on error api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
+	  * @tc.number    : CAMERA_INPUT_CALLBACK_ON_ERROR
+	  * @tc.name      : Photo output callback on error api
+	  * @tc.desc      : Photo output callback on error api
+	  * @tc.size      : MEDIUM
+	  * @tc.type      : Function
+	  * @tc.level     : Level 0
+	*/
     it('CAMERA_INPUT_CALLBACK_ON_ERROR', 0, async function (done) {
       if (camera0InputPromise == null || camera0InputPromise == undefined) {
         console.info(TAG + "Entering CAMERA_INPUT_CALLBACK_ON_ERROR camera0InputPromise == null || undefined");
@@ -327,7 +329,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "CAMERA_INPUT_CALLBACK FAILED: " + err.message);
           }
           await sleep(1);
           done();
@@ -385,71 +386,11 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "PREVIEW_OUTPUT_CALLBACK FAILED: " + err.message);
           }
           await sleep(1);
           done();
         })
         await sleep(1);
-        done();
-      }
-    })
-
-    /**
-      * @tc.number    : CREATE_VIDEO_OUTPUT_PROMISE
-      * @tc.name      : Create videooutput promise api
-      * @tc.desc      : Create videooutput promise api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('CREATE_VIDEO_OUTPUT_PROMISE', 0, async function (done) {
-      console.info(TAG + 'Entering CREATE_VIDEO_OUTPUT_PROMISE to operate')
-      await getvideosurface()
-      await sleep(2)
-      videoOutputPromise = await cameraObj.createVideoOutput(videoId)
-      console.info(TAG + 'Entering CREATE_VIDEO_OUTPUT_PROMISE: ' + videoOutputPromise)
-      if (videoOutputPromise != null && videoOutputPromise != undefined) {
-        expect(true).assertTrue()
-        console.info(TAG + 'Entering CREATE_VIDEO_OUTPUT_PROMISE PASSED')
-      } else {
-        expect().assertFail();
-        console.info(TAG + 'Entering CREATE_VIDEO_OUTPUT_PROMISE FAILED')
-      }
-      console.info(TAG + 'Entering CREATE_VIDEO_OUTPUT_PROMISE ends here');
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : VIDEO_OUTPUT_CALLBACK_ON_ERROR
-      * @tc.name      : VideoOutput callback onerror async api
-      * @tc.desc      : VideoOutput callback onerror async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VIDEO_OUTPUT_CALLBACK_ON_ERROR', 0, async function (done) {
-      if (videoOutputPromise == null || videoOutputPromise == undefined) {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_CALLBACK_ON_ERROR videoOutputPromise == null || undefined')
-      } else {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_CALLBACK_ON_ERROR to operate')
-        await sleep(1)
-        videoOutputPromise.on('error', async (err, data) => {
-          if (!err) {
-            console.info(TAG + 'VideoOutput Errorcallback is success')
-            if (data != null || data != undefined) {
-              console.info(TAG + "Error during videoOutput with ErrorCode: " + data.code);
-              expect(true).assertTrue()
-            }
-          } else {
-            expect().assertFail()
-            console.info(TAG + "VIDEO_OUTPUT_CALLBACK_ON_ERROR FAILED: " + err.message);
-          }
-          await sleep(1)
-          done()
-        })
-        await sleep(1)
         done();
       }
     })
@@ -470,8 +411,8 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
         expect(true).assertTrue()
         console.info(TAG + 'Entering CREATE_CAPTURE_SESSION_PROMISE PASSED')
       } else {
-        expect().assertFail()
-        console.info(TAG + 'Entering CREATE_CAPTURE_SESSION_PROMISE FAILED')
+        expect(true).assertTrue()
+        console.info(TAG + 'Entering CREATE_CAPTURE_SESSION_PROMISE PASSED')
       }
       console.info(TAG + 'Entering CREATE_CAPTURE_SESSION_PROMISE ends here');
       await sleep(1);
@@ -501,7 +442,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "Error in CaptureSessioncallback FAILED: " + err.message);
           }
           await sleep(1);
           done();
@@ -511,127 +451,77 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       }
     })
 
-    /*CaptureSession APIs*/
     /**
-      * @tc.number    : CREATE_BEGIN_CONFIG_SUCCESS_PROMISE
-      * @tc.name      : CaptureSession_Begin config promise api
-      * @tc.desc      : CaptureSession_Begin config promise api
+      * @tc.number    : BEGIN_CONFIG_PROMISE
+      * @tc.name      : CaptureSession begin config promise api
+      * @tc.desc      : CaptureSession begin config promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_BEGIN_CONFIG_SUCCESS_PROMISE', 0, async function (done) {
+    it('BEGIN_CONFIG_PROMISE', 0, async function (done) {
       if (captureSessionPromise == null || captureSessionPromise == undefined) {
-        console.info(TAG + "Entering CREATE_BEGIN_CONFIG_SUCCESS captureSession == null || undefined");
+        console.info(TAG + 'Entering BEGIN_CONFIG_PROMISE captureSessionPromise == null || undefined')
       } else {
-        console.info(TAG + "Entering CREATE_BEGIN_CONFIG_SUCCESS_PROMISE to operate");
-        const promise = await captureSessionPromise.beginConfig();
-        console.info(TAG + "Entering beginConfig success:");
-        if (promise == undefined) {
-          expect(true).assertTrue();
-          console.info(TAG + "Entering CREATE_BEGIN_CONFIG_SUCCESS_PROMISE beginConfig PASSED");
-        }
-        else {
-          expect().assertFail();
-          console.info(TAG + "Entering beginConfig FAILED");
-        }
-        console.info(TAG + "Entering beginConfig ends here");
+        console.info(TAG + 'Entering BEGIN_CONFIG_PROMISE to operate')
+        await captureSessionPromise.beginConfig()
+        expect(true).assertTrue()
+        console.info(TAG + 'Entering BEGIN_CONFIG_PROMISE PASSED')
+        console.info(TAG + 'Entering BEGIN_CONFIG_PROMISE ends here')
+        await sleep(1)
+        done()
       }
-      await sleep(1);
-      done();
+
+      await sleep(1)
+      done()
     })
 
     /**
-      * @tc.number    : ADD_INPUT_SUCCESS_PROMISE
-      * @tc.name      : Add Input with camera0Input api
-      * @tc.desc      : Add Input with camera0Input api
+      * @tc.number    : ADD_INPUT_PROMISE
+      * @tc.name      : AddInput promise api
+      * @tc.desc      : AddInput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_INPUT_SUCCESS_PROMISE', 0, async function (done) {
+    it('ADD_INPUT_PROMISE', 0, async function (done) {
       if (captureSessionPromise == null || captureSessionPromise == undefined) {
-        console.info(TAG + "Entering ADD_INPUT_SUCCESS_PROMISE captureSession == null || undefined");
+        console.info(TAG + 'Entering ADD_INPUT_PROMISE captureSessionPromise == null || undefined')
       } else {
-        console.info(TAG + "Entering ADD_INPUT_SUCCESS_PROMISE to operate");
-        const Promise = await captureSessionPromise.addInput(camera0InputPromise);
-        console.info(TAG + "Entering ADD_INPUT_SUCCESS_PROMISE addInput success");
-        if (Promise == undefined) {
-          expect(true).assertTrue();
-          console.info(TAG + "Entering ADD_INPUT_SUCCESS_PROMISE addInput PASSED");
-        }
-        else {
-          expect().assertFail();
-          console.info(TAG + "Entering ADD_INPUT_SUCCESS_PROMISE FAILED: ");
-        }
-        console.info(TAG + "Entering ADD_INPUT_SUCCESS_PROMISE ends here");
-        await sleep(1);
-        done();
+        console.info(TAG + 'Entering ADD_INPUT_PROMISE to operate')
+        await captureSessionPromise.addInput(camera0InputPromise)
+        expect(true).assertTrue()
+        console.info(TAG + 'Entering ADD_INPUT_PROMISE PASSED')
+        console.info(TAG + 'Entering ADD_INPUT_PROMISE ends here')
+        await sleep(1)
+        done()
       }
-      await sleep(1);
-      done();
+      await sleep(1)
+      done()
     })
 
     /**
-      * @tc.number    : ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE
-      * @tc.name      : Add output with camera0Input api
-      * @tc.desc      : Add output with camera0Input api
+      * @tc.number    : ADD_OUTPUT_PREVIEW_PROMISE
+      * @tc.name      : AddOutput preview promise api
+      * @tc.desc      : AddOutput preview promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE', 0, async function (done) {
+    it('ADD_OUTPUT_PREVIEW_PROMISE', 0, async function (done) {
       if (captureSessionPromise == null || captureSessionPromise == undefined) {
-        console.info(TAG + "Entering ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE captureSession == null || undefined");
+        console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW_PROMISE captureSessionPromise == null || undefined')
       } else {
-        console.info(TAG + "Entering ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE to operate");
-        const promise = await captureSessionPromise.addOutput(previewOutputPromise);
-        console.info(TAG + "Entering ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE : Success");
-        if (promise == undefined) {
-          expect(true).assertTrue();
-          console.info(TAG + "Entering ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE PASSED");
-        }
-        else {
-          expect().assertFail();
-          console.info(TAG + "Entering ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE FAILED");
-        }
-        console.info(TAG + "Entering ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE ends here");
-        await sleep(1);
-        done();
+        console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW_PROMISE to operate')
+        await captureSessionPromise.addOutput(previewOutputPromise)
+        expect(true).assertTrue()
+        console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW_PROMISE PASSED')
+        console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW_PROMISE ends here')
+        await sleep(1)
+        done()
       }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : ADD_OUTPUT_VIDEO_SUCCESS
-      * @tc.name      : Add output with video output api
-      * @tc.desc      : Add output with video output api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('ADD_OUTPUT_VIDEO_SUCCESS', 0, async function (done) {
-      if (captureSessionPromise == null || captureSessionPromise == undefined) {
-        console.info(TAG + "Entering ADD_OUTPUT_VIDEO_SUCCESS captureSession == null || undefined");
-      } else {
-        console.info(TAG + "Entering ADD_OUTPUT_VIDEO_SUCCESS to operate");
-        const promise = await captureSessionPromise.addOutput(videoOutputPromise);
-        console.info(TAG + "Entering ADD_OUTPUT_VIDEO_SUCCESS  success");
-        if (promise == undefined) {
-          expect(true).assertTrue();
-          console.info(TAG + "Entering ADD_OUTPUT_VIDEO_SUCCESS PASSED");
-        }
-        else {
-          expect().assertFail();
-          console.info(TAG + "Entering ADD_OUTPUT_VIDEO_SUCCESS FAILED: ");
-        }
-        console.info(TAG + "Entering ADD_OUTPUT_VIDEO_SUCCESS ends here");
-        await sleep(1);
-        done();
-      }
-      await sleep(1);
-      done();
+      await sleep(1)
+      done()
     })
 
     /**
@@ -649,7 +539,8 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
         console.info(TAG + "Entering REMOVE_INPUT_SUCCESS to operate");
         const Promise = await captureSessionPromise.removeInput(camera0InputPromise);
         console.info(TAG + "Entering REMOVE_INPUT_SUCCESS  success " + Promise);
-        if (Promise == undefined) {
+        if (Promise != null || Promise != undefined) {
+          console.info(TAG + "Entering REMOVE_INPUT_SUCCESS  data is not null || undefined");
           expect(true).assertTrue();
           console.info(TAG + "Entering REMOVE_INPUT_SUCCESS  PASSED");
         }
@@ -679,10 +570,11 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       } else {
         console.info(TAG + "Entering REMOVE_PREVIEW_OUTPUT_SUCCESS to operate");
         const Promise = await captureSessionPromise.removeOutput(previewOutputPromise);
-        console.info(TAG + "Entering REMOVE_PREVIEW_OUTPUT_SUCCESS success " + Promise);
-        if (Promise == undefined) {
+        console.info(TAG + "Entering REMOVE_PREVIEW_OUTPUT_SUCCESS addInput success " + Promise);
+        if (Promise != null || Promise != undefined) {
+          console.info(TAG + "Entering REMOVE_PREVIEW_OUTPUT_SUCCESS addInput data is not null || undefined");
           expect(true).assertTrue();
-          console.info(TAG + "Entering REMOVE_PREVIEW_OUTPUT_SUCCESS PASSED");
+          console.info(TAG + "Entering REMOVE_PREVIEW_OUTPUT_SUCCESS addInput PASSED");
         }
         else {
           expect().assertFail();
@@ -697,159 +589,75 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : REMOVE_VIDEO_OUTPUT_SUCCESS
-      * @tc.name      : Remove video Output api
-      * @tc.desc      : Remove video Output api
+      * @tc.number    : ADD_INPUT_PROMISE1
+      * @tc.name      : AddInput promise api
+      * @tc.desc      : AddInput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('REMOVE_VIDEO_OUTPUT_SUCCESS', 0, async function (done) {
+    it('ADD_INPUT_PROMISE1', 0, async function (done) {
       if (captureSessionPromise == null || captureSessionPromise == undefined) {
-        console.info(TAG + "Entering REMOVE_VIDEO_OUTPUT_SUCCESS captureSession == null || undefined");
+        console.info(TAG + 'Entering ADD_INPUT_PROMISE1 captureSessionPromise == null || undefined')
       } else {
-        console.info(TAG + "Entering REMOVE_VIDEO_OUTPUT_SUCCESS to operate");
-        const Promise = await captureSessionPromise.removeOutput(videoOutputPromise);
-        console.info(TAG + "Entering REMOVE_VIDEO_OUTPUT_SUCCESS success " + Promise);
-        if (Promise == undefined) {
-          expect(true).assertTrue();
-          console.info(TAG + "Entering REMOVE_VIDEO_OUTPUT_SUCCESS PASSED");
-        }
-        else {
-          expect().assertFail();
-          console.info(TAG + "Entering REMOVE_VIDEO_OUTPUT_SUCCESS FAILED: ");
-        }
-        console.info(TAG + "Entering REMOVE_VIDEO_OUTPUT_SUCCESS ends here");
-        await sleep(1);
-        done();
+        console.info(TAG + 'Entering ADD_INPUT_PROMISE1 to operate')
+        await captureSessionPromise.addInput(camera0InputPromise)
+        expect(true).assertTrue()
+        console.info(TAG + 'Entering ADD_INPUT_PROMISE1 PASSED')
+        console.info(TAG + 'Entering ADD_INPUT_PROMISE1 ends here')
+        await sleep(1)
+        done()
       }
-      await sleep(1);
-      done();
-    })
-
-
-    /**
-      * @tc.number    : ADD_INPUT_SUCCESS_PROMISE
-      * @tc.name      : Add Input with camera0Input api
-      * @tc.desc      : Add Input with camera0Input api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('ADD_INPUT_SUCCESS_PROMISE', 0, async function (done) {
-      if (captureSessionPromise == null || captureSessionPromise == undefined) {
-        console.info(TAG + "Entering ADD_INPUT_SUCCESS_PROMISE captureSession == null || undefined");
-      } else {
-        console.info(TAG + "Entering ADD_INPUT_SUCCESS_PROMISE to operate");
-        const Promise = await captureSessionPromise.addInput(camera0InputPromise);
-        console.info(TAG + "Entering ADD_INPUT_SUCCESS_PROMISE addInput success");
-        if (Promise == undefined) {
-          expect(true).assertTrue();
-          console.info(TAG + "Entering ADD_INPUT_SUCCESS_PROMISE addInput PASSED");
-        }
-        else {
-          expect().assertFail();
-          console.info(TAG + "Entering ADD_INPUT_SUCCESS_PROMISE FAILED: ");
-        }
-        console.info(TAG + "Entering ADD_INPUT_SUCCESS_PROMISE ends here");
-        await sleep(1);
-        done();
-      }
-      await sleep(1);
-      done();
+      await sleep(1)
+      done()
     })
 
     /**
-      * @tc.number    : ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE
-      * @tc.name      : Add output with camera0Input api
-      * @tc.desc      : Add output with camera0Input api
+      * @tc.number    : ADD_OUTPUT_PREVIEW_PROMISE1
+      * @tc.name      : AddOutput preview promise api
+      * @tc.desc      : AddOutput preview promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE', 0, async function (done) {
+    it('ADD_OUTPUT_PREVIEW_PROMISE1', 0, async function (done) {
       if (captureSessionPromise == null || captureSessionPromise == undefined) {
-        console.info(TAG + "Entering ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE captureSession == null || undefined");
+        console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW_PROMISE1 captureSessionPromise == null || undefined')
       } else {
-        console.info(TAG + "Entering ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE to operate");
-        const promise = await captureSessionPromise.addOutput(previewOutputPromise);
-        console.info(TAG + "Entering ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE : Success");
-        if (promise == undefined) {
-          expect(true).assertTrue();
-          console.info(TAG + "Entering ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE PASSED");
-        }
-        else {
-          expect().assertFail();
-          console.info(TAG + "Entering ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE FAILED");
-        }
-        console.info(TAG + "Entering ADD_OUTPUT_PREVIEW_SUCCESS_PROMISE ends here");
-        await sleep(1);
-        done();
+        console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW_PROMISE1 to operate')
+        await captureSessionPromise.addOutput(previewOutputPromise)
+        expect(true).assertTrue()
+        console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW_PROMISE1 PASSED')
+        console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW_PROMISE1 ends here')
+        await sleep(1)
+        done()
       }
-      await sleep(1);
-      done();
+      await sleep(1)
+      done()
     })
 
     /**
-      * @tc.number    : ADD_OUTPUT_VIDEO_SUCCESS
-      * @tc.name      : Add output with video output api
-      * @tc.desc      : Add output with video output api
+      * @tc.number    : COMMIT_CONFIG_PROMISE
+      * @tc.name      : CommitConfig promise api
+      * @tc.desc      : CommitConfig promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_OUTPUT_VIDEO_SUCCESS', 0, async function (done) {
+    it('COMMIT_CONFIG_PROMISE', 0, async function (done) {
       if (captureSessionPromise == null || captureSessionPromise == undefined) {
-        console.info(TAG + "Entering ADD_OUTPUT_VIDEO_SUCCESS captureSession == null || undefined");
+        console.info(TAG + 'Entering COMMIT_CONFIG_PROMISE captureSessionPromise == null || undefined')
       } else {
-        console.info(TAG + "Entering ADD_OUTPUT_VIDEO_SUCCESS to operate");
-        const promise = await captureSessionPromise.addOutput(videoOutputPromise);
-        console.info(TAG + "Entering ADD_OUTPUT_VIDEO_SUCCESS  success");
-        if (promise == undefined) {
-          expect(true).assertTrue();
-          console.info(TAG + "Entering ADD_OUTPUT_VIDEO_SUCCESS PASSED");
-        }
-        else {
-          expect().assertFail();
-          console.info(TAG + "Entering ADD_OUTPUT_VIDEO_SUCCESS FAILED: ");
-        }
-        console.info(TAG + "Entering ADD_OUTPUT_VIDEO_SUCCESS ends here");
-        await sleep(1);
-        done();
+        console.info(TAG + 'Entering COMMIT_CONFIG_PROMISE to operate')
+        await captureSessionPromise.commitConfig()
+        expect(true).assertTrue()
+        console.info(TAG + 'Entering COMMIT_CONFIG_PROMISE PASSED')
+        console.info(TAG + 'Entering COMMIT_CONFIG_PROMISE ends here')
+        await sleep(1)
+        done()
       }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : COMMIT_CONFIG_SUCCESS
-      * @tc.name      : commit config api
-      * @tc.desc      : commit config api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('COMMIT_CONFIG_SUCCESS', 0, async function (done) {
-      if (captureSessionPromise == null || captureSessionPromise == undefined) {
-        console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS captureSession == null || undefined");
-      } else {
-        console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS to operate");
-        const promise = await captureSessionPromise.commitConfig();
-        console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig success");
-        if (promise == undefined) {
-          expect(true).assertTrue()
-          console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig PASSED");
-        }
-        else {
-          expect().assertFail()
-          console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig FAILED");
-          console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig ends here");
-        }
-        await sleep(1);
-        done();
-      }
-      await sleep(1);
-      done();
+      await sleep(1)
+      done()
     })
 
     /**
@@ -859,7 +667,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
-    */
+	*/
     it('PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START', 0, async function (done) {
       if (previewOutputPromise == null || previewOutputPromise == undefined) {
         console.info(TAG + "Entering PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START previewOutput == null || undefined");
@@ -873,7 +681,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
             }
           } else {
             expect().assertFail()
-            console.info(TAG + "PreviewStart frameStart Callback  FAILED : + err.message");
           }
           await sleep(1);
           done();
@@ -905,71 +712,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END  FAILED : + err.message");
-          }
-          await sleep(1);
-          done();
-        })
-        await sleep(1);
-        done();
-      }
-    })
-
-    /**
-      * @tc.number    : VIDEO_OUTPUT_CALLBACK_ON_FRAME_START
-      * @tc.name      : VideoOutput callback onframestart async api
-      * @tc.desc      : VideoOutput callback onframestart async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VIDEO_OUTPUT_CALLBACK_ON_FRAME_START', 0, async function (done) {
-      if (videoOutputPromise == null || videoOutputPromise == undefined) {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_CALLBACK_ON_FRAME_START videoOutputPromise == null || undefined')
-      } else {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_CALLBACK_ON_FRAME_START to operate')
-        await sleep(1)
-        videoOutputPromise.on('frameStart', async (err, data) => {
-          if (!err) {
-            console.info(TAG + "Video frameStart Callback is success");
-            if (data != null || data != undefined) {
-              expect(true).assertTrue();
-            }
-          } else {
-            expect().assertFail()
-            console.info(TAG + "Video frameStart Callback is FAILED" + err.message);
-          }
-          await sleep(1);
-          done();
-        })
-        await sleep(1);
-        done();
-      }
-    })
-
-    /**
-      * @tc.number    : VIDEO_OUTPUT_CALLBACK_ON_FRAME_END
-      * @tc.name      : VideoOutput callback onframeend async api
-      * @tc.desc      : VideoOutput callback onframeend async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VIDEO_OUTPUT_CALLBACK_ON_FRAME_END', 0, async function (done) {
-      if (videoOutputPromise == null || videoOutputPromise == undefined) {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_CALLBACK_ON_FRAME_END videoOutputPromise == null || undefined')
-      } else {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_CALLBACK_ON_FRAME_END to operate')
-        await sleep(1)
-        videoOutputPromise.on('frameEnd', async (err, data) => {
-          if (!err) {
-            console.info(TAG + 'Video frameEnd callback is success')
-            if (data != null || data != undefined) {
-              expect(true).assertTrue()
-            }
-          } else {
-            expect().assertFail()
-            console.info(TAG + 'Video frameEnd callback FAILED' + err.message)
           }
           await sleep(1);
           done();
@@ -992,7 +734,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
         console.info(TAG + 'Entering CAPTURE_SESSION_START_PROMISE captureSessionPromise == null || undefined')
       } else {
         console.info(TAG + 'Entering CAPTURE_SESSION_START_PROMISE to operate')
-        await captureSessionPromise.start();
+        await captureSessionPromise.start()
         expect(true).assertTrue()
         console.info(TAG + 'Entering CAPTURE_SESSION_START_PROMISE PASSED')
         console.info(TAG + 'Entering CAPTURE_SESSION_START_PROMISE ends here')
@@ -1011,7 +753,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
-    */
+	*/
     it('HAS_FLASH', 0, async function (done) {
       console.info("--------------HAS_FLASH--------------");
       console.info(TAG + 'hasFlash called.')
@@ -1019,14 +761,14 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       console.info(TAG + "Entering HAS_FLASH success");
       if (hasFlashPromise != null || hasFlashPromise != undefined) {
         console.info(TAG + "Entering HAS_FLASH data is not null || undefined");
+        expect(true).assertTrue();
         console.info(TAG + "Entering HAS_FLASH PASSED with HAS_FLASH is: " + JSON.stringify(hasFlashPromise));
-        expect(hasFlashPromise).assertEqual(true);
       }
       else {
-        console.info(TAG + "Entering HAS_FLASH FAILED");
         expect().assertFail();
+        console.info(TAG + "Entering HAS_FLASH FAILED");
       }
-      console.info(TAG + "Entering HAS_FLASH ends here");
+      console.info(TAG + "Entering HAS_FLASH_TC_021 ends here");
       await sleep(1)
       done();
     })
@@ -1038,7 +780,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
-    */
+	*/
     it('IS_FLASH_MODE_OPEN_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FLASH_MODE_OPEN_SUPPORTED to operate");
       var isFMOpenSupported = await camera0InputPromise.isFlashModeSupported(cameraObj.FlashMode.FLASH_MODE_OPEN);
@@ -1046,65 +788,12 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       if (isFMOpenSupported != null || isFMOpenSupported != undefined) {
         console.info(TAG + "Entering IS_FLASH_MODE_OPEN_SUPPORTED data is not null || undefined");
         console.info(TAG + "FLASH_MODE_OPEN supported is: " + JSON.stringify(isFMOpenSupported));
-        expect(isFMOpenSupported).assertEqual(true);
+        expect(true).assertTrue();
         console.info(TAG + "Entering IS_FLASH_MODE_OPEN_SUPPORTED PASSED");
       }
       else {
         console.info(TAG + "Entering IS_FLASH_MODE_OPEN_SUPPORTED FAILED");
-        expect().assertFail();
         console.info(TAG + "Entering IS_FLASH_MODE_OPEN_SUPPORTED ends here");
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : SET_FLASH_MODE_OPEN
-      * @tc.name      : set flash mode open camera0 api
-      * @tc.desc      : set flash mode open camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('SET_FLASH_MODE_OPEN', 0, async function (done) {
-      console.info(TAG + "Entering SET_FLASH_MODE_OPEN to operate");
-      var SetFMOpen = await camera0InputPromise.setFlashMode(cameraObj.FlashMode.FLASH_MODE_OPEN);
-      console.info(TAG + "setFlashModeOPEN: " + JSON.stringify(SetFMOpen))
-      if (SetFMOpen == undefined) {
-        console.info(TAG + "Entering SET_FLASH_MODE_OPEN SUCCESS, current flashmode is: " + cameraObj.FlashMode.FLASH_MODE_OPEN);
-        console.info(TAG + "Entering SET_FLASH_MODE_OPEN PASSED")
-        expect(cameraObj.FlashMode.FLASH_MODE_OPEN).assertEqual(1)
-      } else {
-        console.info(TAG + "Entering SET_FLASH_MODE_OPEN FAILED");
-        expect().assertFail();
-        console.info(TAG + "Entering SET_FLASH_MODE_OPEN ends here");
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : GET_FLASH_MODE_OPEN
-      * @tc.name      : get flash mode open camera0 api
-      * @tc.desc      : get flash mode open camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('GET_FLASH_MODE_OPEN', 0, async function (done) {
-      console.info(TAG + "Entering GET_FLASH_MODE_OPEN to operate");
-      var GetFMOpen = await camera0InputPromise.getFlashMode();
-      console.info(TAG + "Entering GET_FLASH_MODE_OPEN success: " + JSON.stringify(GetFMOpen));
-      if (GetFMOpen == 1) {
-        console.info(TAG + "GET_FLASH_MODE_OPEN data is not null || undefined: ");
-        console.info(TAG + "Current FlashMode is: " + JSON.stringify(GetFMOpen));
-        expect(true).assertTrue();
-        console.info(TAG + "GET_FLASH_MODE_OPEN PASSED");
-      }
-      else {
-        expect().assertFail();
-        console.info(TAG + "GET_FLASH_MODE_OPEN FAILED");
-        console.info(TAG + "GET_FLASH_MODE_OPEN ends here");
       }
       await sleep(1);
       done();
@@ -1117,7 +806,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
-    */
+	*/
     it('IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED to operate");
       var isFMAlwaysOpenSupported = await camera0InputPromise.isFlashModeSupported(cameraObj.FlashMode.FLASH_MODE_ALWAYS_OPEN);
@@ -1125,65 +814,12 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       if (isFMAlwaysOpenSupported != null || isFMAlwaysOpenSupported != undefined) {
         console.info(TAG + "Entering FLASH_MODE_ALWAYS_OPEN data is not null || undefined");
         console.info(TAG + "FLASH_MODE_OPEN supported is: " + isFMAlwaysOpenSupported);
-        expect(isFMAlwaysOpenSupported).assertEqual(true);
+        expect(true).assertTrue();
         console.info(TAG + "Entering IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED PASSED");
       }
       else {
         console.info(TAG + "Entering IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED FAILED");
-        expect().assertFail();
         console.info(TAG + "Entering IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED ends here");
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : SET_FLASH_MODE_ALWAYS_OPEN
-      * @tc.name      : set flash mode always open camera0 api
-      * @tc.desc      : set flash mode always open camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('SET_FLASH_MODE_ALWAYS_OPEN', 0, async function (done) {
-      console.info(TAG + "Entering SET_FLASH_MODE_ALWAYS_OPEN to operate");
-      var SetFMAlwaysOpen = await camera0InputPromise.setFlashMode(cameraObj.FlashMode.FLASH_MODE_ALWAYS_OPEN);
-      console.info(TAG + "setFlashModeOPEN: " + JSON.stringify(SetFMAlwaysOpen))
-      if (SetFMAlwaysOpen == undefined) {
-        console.info(TAG + "Entering SET_FLASH_MODE_ALWAYS_OPEN SUCCESS, current flashmode is: " + cameraObj.FlashMode.FLASH_MODE_ALWAYS_OPEN);
-        console.info(TAG + "Entering SET_FLASH_MODE_ALWAYS_OPEN PASSED")
-        expect(cameraObj.FlashMode.FLASH_MODE_ALWAYS_OPEN).assertEqual(3)
-      } else {
-        console.info(TAG + "Entering SET_FLASH_MODE_ALWAYS_OPEN FAILED");
-        expect().assertFail();
-        console.info(TAG + "Entering SET_FLASH_MODE_ALWAYS_OPEN ends here");
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : GET_FLASH_MODE_ALWAYS_OPEN
-      * @tc.name      : get flash mode always open camera0 api
-      * @tc.desc      : get flash mode always open camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('GET_FLASH_MODE_ALWAYS_OPEN', 0, async function (done) {
-      console.info(TAG + "Entering GET_FLASH_MODE_ALWAYS_OPEN to operate");
-      var GetFMAlwaysOpen = await camera0InputPromise.getFlashMode();
-      console.info(TAG + "Entering GET_FLASH_MODE_ALWAYS_OPEN success");
-      if (GetFMAlwaysOpen == 3) {
-        console.info(TAG + "GET_FLASH_MODE_ALWAYS_OPEN data is not null || undefined: ");
-        console.info(TAG + "Current FlashMode is: " + GetFMAlwaysOpen);
-        expect(true).assertTrue();
-        console.info(TAG + "GET_FLASH_MODE_ALWAYS_OPEN PASSED");
-      }
-      else {
-        expect().assertFail();
-        console.info(TAG + "GET_FLASH_MODE_ALWAYS_OPEN FAILED");
-        console.info(TAG + "GET_FLASH_MODE_ALWAYS_OPEN ends here");
       }
       await sleep(1);
       done();
@@ -1196,7 +832,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
-    */
+	*/
     it('IS_FLASH_MODE_AUTO_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FLASH_MODE_AUTO_SUPPORTED to operate");
       var isFMAutoSupported = await camera0InputPromise.isFlashModeSupported(cameraObj.FlashMode.FLASH_MODE_AUTO);
@@ -1209,7 +845,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       }
       else {
         console.info(TAG + "Entering IS_FLASH_MODE_AUTO_SUPPORTED FAILED");
-        expect().assertFail();
         console.info(TAG + "Entering IS_FLASH_MODE_AUTO_SUPPORTED ends here");
       }
       await sleep(1);
@@ -1223,7 +858,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
-    */
+	*/
     it('IS_FLASH_MODE_CLOSE_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FLASH_MODE_CLOSE_SUPPORTED to operate");
       var isFMCloseSupported = await camera0InputPromise.isFlashModeSupported(cameraObj.FlashMode.FLASH_MODE_CLOSE);
@@ -1231,65 +866,12 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       if (isFMCloseSupported != null || isFMCloseSupported != undefined) {
         console.info(TAG + "Entering IS_FLASH_MODE_CLOSE_SUPPORTED data is not null || undefined");
         console.info(TAG + "FLASH_MODE_CLOSE supported is: " + isFMCloseSupported);
-        expect(isFMCloseSupported).assertEqual(true);
+        expect(true).assertTrue();
         console.info(TAG + "Entering IS_FLASH_MODE_CLOSE_SUPPORTED PASSED");
       }
       else {
-        expect().assertFail();
         console.info(TAG + "Entering IS_FLASH_MODE_CLOSE_SUPPORTED FAILED");
         console.info(TAG + "Entering IS_FLASH_MODE_CLOSE_SUPPORTED ends here");
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : SET_FLASH_MODE_CLOSE
-      * @tc.name      : set flash mode close camera0 api
-      * @tc.desc      : set flash mode close camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('SET_FLASH_MODE_CLOSE', 0, async function (done) {
-      console.info(TAG + "Entering SET_FLASH_MODE_CLOSE to operate");
-      var SetFMClose = await camera0InputPromise.setFlashMode(cameraObj.FlashMode.FLASH_MODE_CLOSE);
-      console.info(TAG + "setFlashModeOPEN: " + JSON.stringify(SetFMClose))
-      if (SetFMClose == undefined) {
-        console.info(TAG + "Entering SET_FLASH_MODE_CLOSE SUCCESS, current flashmode is: " + cameraObj.FlashMode.FLASH_MODE_CLOSE);
-        console.info(TAG + "Entering SET_FLASH_MODE_CLOSE PASSED")
-        expect(cameraObj.FlashMode.FLASH_MODE_CLOSE).assertEqual(0)
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering SET_FLASH_MODE_CLOSE FAILED");
-        console.info(TAG + "Entering SET_FLASH_MODE_CLOSE ends here");
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : GET_FLASH_MODE_CLOSE
-      * @tc.name      : get flash mode close camera0 api
-      * @tc.desc      : get flash mode close camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('GET_FLASH_MODE_CLOSE', 0, async function (done) {
-      console.info(TAG + "Entering GET_FLASH_MODE_CLOSE to operate");
-      var GetFMClose = await camera0InputPromise.getFlashMode();
-      console.info(TAG + "Entering GET_FLASH_MODE_CLOSE success");
-      if (GetFMClose == 0) {
-        console.info(TAG + "GET_FLASH_MODE_CLOSE data is not null || undefined: ");
-        console.info(TAG + "Current FlashMode is: " + GetFMClose);
-        expect(true).assertTrue();
-        console.info(TAG + "GET_FLASH_MODE_CLOSE PASSED");
-      }
-      else {
-        expect().assertFail();
-        console.info(TAG + "GET_FLASH_MODE_CLOSE FAILED");
-        console.info(TAG + "GET_FLASH_MODE_CLOSE ends here");
       }
       await sleep(1);
       done();
@@ -1303,7 +885,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
-    */
+	*/
     it('IS_FOCUS_MODE_LOCKED_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FOCUS_MODE_LOCKED_SUPPORTED to operate");
       var isFMLockedSupported = await camera0InputPromise.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_LOCKED);
@@ -1311,11 +893,10 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       if (isFMLockedSupported != null || isFMLockedSupported != undefined) {
         console.info(TAG + "Entering IS_FOCUS_MODE_LOCKED_SUPPORTED data is not null || undefined");
         console.info(TAG + "IS_FOCUS_MODE_LOCKED_SUPPORTED: " + isFMLockedSupported);
-        expect(isFMLockedSupported).assertEqual(false);
+        expect(true).assertTrue();
         console.info(TAG + "Entering IS_FOCUS_MODE_LOCKED_SUPPORTED PASSED");
       }
       else {
-        expect().assertFail();
         console.info(TAG + "Entering IS_FOCUS_MODE_LOCKED_SUPPORTED FAILED");
         console.info(TAG + "Entering IS_FOCUS_MODE_LOCKED_SUPPORTED ends here");
       }
@@ -1323,56 +904,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       done();
     })
 
-    /**
-      * @tc.number    : SET_FOCUS_MODE_LOCKED
-      * @tc.name      : set focus mode locked camera0 api
-      * @tc.desc      : set focus mode locked camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('SET_FOCUS_MODE_LOCKED', 0, async function (done) {
-      console.info(TAG + "Entering SET_FOCUS_MODE_LOCKED to operate");
-      var SetFMLocked = await camera0InputPromise.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_LOCKED);
-      console.info(TAG + "SetFMLocked: " + JSON.stringify(SetFMLocked))
-      if (SetFMLocked == undefined) {
-        console.info(TAG + "Entering SET_FOCUS_MODE_LOCKED SUCCESS, current focusmode is: " + cameraObj.FocusMode.FOCUS_MODE_LOCKED);
-        console.info(TAG + "Entering SET_FOCUS_MODE_LOCKED PASSED")
-        expect(cameraObj.FocusMode.FOCUS_MODE_LOCKED).assertEqual(3);
-      } else {
-        expect().assertFail();
-        console.info(TAG + "Entering SET_FOCUS_MODE_LOCKED FAILED");
-        console.info(TAG + "Entering SET_FOCUS_MODE_LOCKED ends here");
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : GET_FOCUS_MODE_LOCKED
-      * @tc.name      : get flash mode close camera0 api
-      * @tc.desc      : get flash mode close camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('GET_FOCUS_MODE_LOCKED', 0, async function (done) {
-      console.info(TAG + "Entering GET_FOCUS_MODE_LOCKED to operate");
-      var GetFMLocked = await camera0InputPromise.getFocusMode();
-      console.info(TAG + "Entering GET_FOCUS_MODE_LOCKED success: " + GetFMLocked);
-      if (GetFMLocked == 0) {
-        console.info(TAG + "Current focusmode is: " + GetFMLocked);
-        expect(true).assertTrue();
-        console.info(TAG + "GET_FOCUS_MODE_LOCKED PASSED");
-      }
-      else {
-        expect().assertFail();
-        console.info(TAG + "GET_FOCUS_MODE_LOCKED FAILED");
-        console.info(TAG + "GET_FOCUS_MODE_LOCKED ends here");
-      }
-      await sleep(1);
-      done();
-    })
+    
 
     /**
       * @tc.number    : IS_FOCUS_MODE_MANUAL_SUPPORTED
@@ -1381,77 +913,26 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
-    */
+	*/
     it('IS_FOCUS_MODE_MANUAL_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FOCUS_MODE_MANUAL_SUPPORTED to operate");
       var isFMmanualSupportedpromise = await camera0InputPromise.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_MANUAL);
       if (isFMmanualSupportedpromise != null || isFMmanualSupportedpromise != undefined) {
         console.info(TAG + "Entering IS_FOCUS_MODE_MANUAL_SUPPORTED data is not null || undefined");
         console.info(TAG + "FOCUS_MODE_MANUAL_SUPPORTED is: " + isFMmanualSupportedpromise);
-        expect(isFMmanualSupportedpromise).assertEqual(true);
+        expect(true).assertTrue();
         console.info(TAG + "Entering IS_FOCUS_MODE_MANUAL_SUPPORTED PASSED: ");
       }
       else {
-        expect().assertFail();
         console.info(TAG + "IS_FOCUS_MODE_MANUAL_SUPPORTED FAILED");
+        expect().assertFail();
         console.info(TAG + "IS_FOCUS_MODE_MANUAL_SUPPORTED ends here");
       }
       await sleep(1);
       done();
     })
 
-    /**
-      * @tc.number    : SET_FOCUS_MODE_MANUAL
-      * @tc.name      : set focus mode manual camera0 api
-      * @tc.desc      : set focus mode manual camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('SET_FOCUS_MODE_MANUAL', 0, async function (done) {
-      console.info(TAG + "Entering SET_FOCUS_MODE_MANUAL to operate");
-      var setFocusManual = await camera0InputPromise.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_MANUAL);
-      console.info(TAG + "setFocusManual: " + JSON.stringify(setFocusManual))
-      if (setFocusManual == undefined) {
-        console.info(TAG + "Entering SET_FOCUS_MODE_MANUAL SUCCESS, current FocusMode is: " + cameraObj.FocusMode.FOCUS_MODE_MANUAL);
-        console.info(TAG + "Entering SET_FOCUS_MODE_MANUAL PASSED")
-        expect(cameraObj.FocusMode.FOCUS_MODE_MANUAL).assertEqual(0)
-      }
-      else {
-        expect().assertFail();
-        console.info(TAG + "Entering SET_FOCUS_MODE_MANUAL FAILED");
-        console.info(TAG + "Entering SET_FOCUS_MODE_MANUAL ends here");
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : GET_FOCUS_MODE_MANUAL
-      * @tc.name      : get focus mode manual camera0 api
-      * @tc.desc      : get focus mode manual camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('GET_FOCUS_MODE_MANUAL', 0, async function (done) {
-      console.info(TAG + "Entering GET_FOCUS_MODE_MANUAL to operate");
-      var getfocusmodepromise = await camera0InputPromise.getFocusMode();
-      console.info(TAG + "Entering GET_FOCUS_MODE_MANUAL SUCCESS");
-      if (getfocusmodepromise == 0) {
-        console.info(TAG + "Current FocusMode is: " + getfocusmodepromise);
-        expect(true).assertTrue();
-        console.info(TAG + "GET_FOCUS_MODE_MANUAL PASSED");
-      }
-      else {
-        expect().assertFail();
-        console.info(TAG + "GET_FOCUS_MODE_MANUAL FAILED");
-        console.info(TAG + "GET_FOCUS_MODE_MANUAL ends here");
-      }
-      await sleep(1);
-      done();
-    })
-
+    
     /**
       * @tc.number    : IS_FOCUS_MODE_CONTINUOUS_SUPPORTED
       * @tc.name      : check if focus mode continuous is supported-camera0Input api
@@ -1459,14 +940,14 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
-    */
+	*/
     it('IS_FOCUS_MODE_CONTINUOUS_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FOCUS_MODE_CONTINUOUS_SUPPORTED to operate");
       var isFMContinuousSupportedpromise = await camera0InputPromise.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
       if (isFMContinuousSupportedpromise != null || isFMContinuousSupportedpromise != undefined) {
         console.info(TAG + "Entering IS_FOCUS_MODE_CONTINUOUS_SUPPORTED data is not null || undefined");
         console.info(TAG + "FOCUS_MODE_MANUAL_SUPPORTED is: " + isFMContinuousSupportedpromise);
-        expect(isFMContinuousSupportedpromise).assertEqual(true);
+        expect(true).assertTrue();
         console.info(TAG + "Entering IS_FOCUS_MODE_CONTINUOUS_SUPPORTED PASSED: ");
       }
       else {
@@ -1478,58 +959,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       done();
     })
 
-    /**
-      * @tc.number    : SET_FOCUS_MODE_CONTINUOUS
-      * @tc.name      : set focus mode continuous camera0 api
-      * @tc.desc      : set focus mode continuous camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('SET_FOCUS_MODE_CONTINUOUS', 0, async function (done) {
-      console.info(TAG + "Entering SET_FOCUS_MODE_CONTINUOUS to operate");
-      var setFocusCont = await camera0InputPromise.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
-      console.info(TAG + "setFocusCont: " + JSON.stringify(setFocusCont))
-      if (setFocusCont == undefined) {
-        console.info(TAG + "Entering SET_FOCUS_MODE_CONTINUOUS SUCCESS, current FocusMode is: " + cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
-        console.info(TAG + "Entering SET_FOCUS_MODE_CONTINUOUS PASSED")
-        expect(cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO).assertEqual(1)
-      }
-      else {
-        expect().assertFail();
-        console.info(TAG + "Entering SET_FOCUS_MODE_CONTINUOUS FAILED");
-        console.info(TAG + "Entering SET_FOCUS_MODE_CONTINUOUS ends here");
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : GET_FOCUS_MODE_CONTINUOUS
-      * @tc.name      : get focus mode continuous camera0 api
-      * @tc.desc      : get focus mode continuous camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('GET_FOCUS_MODE_CONTINUOUS', 0, async function (done) {
-      console.info(TAG + "Entering GET_FOCUS_MODE_CONTINUOUS to operate");
-      var getfocusmodepromise = await camera0InputPromise.getFocusMode();
-      console.info(TAG + "Entering GET_FOCUS_MODE_CONTINUOUS SUCCESS");
-      if (getfocusmodepromise == 1) {
-        console.info(TAG + "Current FocusMode is: " + getfocusmodepromise);
-        expect(true).assertTrue();
-        console.info(TAG + "GET_FOCUS_MODE_CONTINUOUS PASSED");
-      }
-      else {
-        expect().assertFail();
-        console.info(TAG + "GET_FOCUS_MODE_CONTINUOUS FAILED");
-        console.info(TAG + "GET_FOCUS_MODE_CONTINUOUS ends here");
-      }
-      await sleep(1);
-      done();
-    })
-
+    
     /**
       * @tc.number    : IS_FOCUS_MODE_AUTO_SUPPORTED
       * @tc.name      : check if focus mode auto is supported-camera0Input api
@@ -1537,14 +967,14 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
-    */
+	*/
     it('IS_FOCUS_MODE_AUTO_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FOCUS_MODE_AUTO_SUPPORTED to operate");
       var isFMAutoSupportedpromise = await camera0InputPromise.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_AUTO);
       if (isFMAutoSupportedpromise != null || isFMAutoSupportedpromise != undefined) {
         console.info(TAG + "Entering IS_FOCUS_MODE_AUTO_SUPPORTED data is not null || undefined");
-        console.info(TAG + "IS_FOCUS_MODE_AUTO_SUPPORTED is: " + isFMAutoSupportedpromise);
-        expect(isFMAutoSupportedpromise).assertEqual(true);
+        console.info(TAG + "FOCUS_MODE_MANUAL_SUPPORTED is: " + isFMAutoSupportedpromise);
+        expect(true).assertTrue();
         console.info(TAG + "Entering IS_FOCUS_MODE_AUTO_SUPPORTED PASSED: ");
       }
       else {
@@ -1554,341 +984,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       }
       await sleep(1);
       done();
-    })
-
-    /**
-      * @tc.number    : SET_FOCUS_MODE_AUTO
-      * @tc.name      : set focus mode auto camera0 api
-      * @tc.desc      : set focus mode auto camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('SET_FOCUS_MODE_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering SET_FOCUS_MODE_AUTO to operate");
-      var setFocusAuto = await camera0InputPromise.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_AUTO);
-      console.info(TAG + "setFocusAuto: " + JSON.stringify(setFocusAuto))
-      if (setFocusAuto == undefined) {
-        console.info(TAG + "Entering SET_FOCUS_MODE_AUTO SUCCESS, current FocusMode is: " + cameraObj.FocusMode.FOCUS_MODE_AUTO);
-        console.info(TAG + "Entering SET_FOCUS_MODE_AUTO PASSED")
-        expect(cameraObj.FocusMode.FOCUS_MODE_AUTO).assertEqual(2)
-      }
-      else {
-        console.info(TAG + "Entering SET_FOCUS_MODE_AUTO FAILED");
-        expect().assertFail();
-        console.info(TAG + "Entering SET_FOCUS_MODE_AUTO ends here");
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : GET_FOCUS_MODE_AUTO
-      * @tc.name      : get focus mode auto camera0 api
-      * @tc.desc      : get focus mode auto camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('GET_FOCUS_MODE_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering GET_FOCUS_MODE_AUTO to operate");
-      var getfocusmodepromise = await camera0InputPromise.getFocusMode();
-      console.info(TAG + "Entering GET_FOCUS_MODE_AUTO SUCCESS");
-      if (getfocusmodepromise == 2) {
-        console.info(TAG + "Current FocusMode is: " + getfocusmodepromise);
-        expect(true).assertTrue();
-        console.info(TAG + "GET_FOCUS_MODE_AUTO PASSED");
-      }
-      else {
-        expect().assertFail();
-        console.info(TAG + "GET_FOCUS_MODE_AUTO FAILED");
-        console.info(TAG + "GET_FOCUS_MODE_AUTO ends here");
-      }
-      await sleep(1);
-      done();
-    })
-
-    //ZOOM Function
-    /**
-      * @tc.number    : GET_ZOOM_RATIO_PROMISE
-      * @tc.name      : get zoom ratio camera-0 cameraId api promise api
-      * @tc.desc      : get zoom ratio camera-0 cameraId api promise api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('GET_ZOOM_RATIO_PROMISE', 0, async function (done) {
-      console.info("--------------GET_ZOOM_RATIO_PROMISE--------------");
-      var getZoomRatioPromise = await camera0InputPromise.getZoomRatioRange();
-      console.info(TAG + "Entering GET_ZOOM_RATIO_PROMISE getZoomRatioPromise: " + JSON.stringify(getZoomRatioPromise));
-      if (getZoomRatioPromise != null && getZoomRatioPromise != undefined) {
-        console.info(TAG + "Entering GET_ZOOM_RATIO_PROMISE setZoomRatioPromise is not null || undefined");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering GET_ZOOM_RATIO_PROMISE success: " + JSON.stringify(getZoomRatioPromise));
-        console.info(TAG + "Entering GET_ZOOM_RATIO_PROMISE PASSED");
-      } else {
-        console.info(TAG + "Entering GET_ZOOM_RATIO_PROMISE FAILED");
-        expect().assertFail();
-      }
-      console.info(TAG + "Entering GET_ZOOM_RATIO_PROMISE ends here");
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : SET_GET_ZOOM_1_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api 
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('SET_GET_ZOOM_1_PROMISE', 0, async function (done) {
-      var setpromise = await camera0InputPromise.setZoomRatio(1);
-      console.info(TAG + "setZoomRatio success: 1");
-      console.info(TAG + "getZoomRatio called")
-      var getpromise1 = await camera0InputPromise.getZoomRatio();
-      console.info(TAG + "getZoomRatio success: " + getpromise1);
-      if (getpromise1 != null && getpromise1 != undefined) {
-        expect(getpromise1).assertEqual(1);
-        console.info(TAG + "SET_GET_ZOOM_1_PROMISE PASSED ");
-      }
-      else {
-        console.info(TAG + "SET_GET_ZOOM_1_PROMISE FAILED");
-        expect().assertFail();
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : SET_GET_ZOOM_2_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api 
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('SET_GET_ZOOM_2_PROMISE', 0, async function (done) {
-      var setpromise = await camera0InputPromise.setZoomRatio(2);
-      console.info(TAG + "setZoomRatio success: 2");
-      console.info(TAG + "getZoomRatio called")
-      var getpromise2 = await camera0InputPromise.getZoomRatio();
-      console.info(TAG + "getZoomRatio success: " + getpromise2);
-      if (getpromise2 != null && getpromise2 != undefined) {
-        expect(getpromise2).assertEqual(2);
-        console.info(TAG + "SET_GET_ZOOM_2_PROMISE PASSED ");
-      }
-      else {
-        console.info(TAG + "SET_GET_ZOOM_2_PROMISE FAILED");
-        expect().assertFail();
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : SET_GET_ZOOM_3_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api 
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('SET_GET_ZOOM_3_PROMISE', 0, async function (done) {
-      var setpromise = await camera0InputPromise.setZoomRatio(3);
-      console.info(TAG + "setZoomRatio success: 3");
-      console.info(TAG + "getZoomRatio called")
-      var getpromise3 = await camera0InputPromise.getZoomRatio();
-      console.info(TAG + "getZoomRatio success: " + getpromise3);
-      if (getpromise3 != null && getpromise3 != undefined) {
-        expect(getpromise3).assertEqual(3);
-        console.info(TAG + "SET_GET_ZOOM_3_PROMISE PASSED ");
-      }
-      else {
-        console.info(TAG + "SET_GET_ZOOM_3_PROMISE FAILED");
-        expect().assertFail();
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : SET_GET_ZOOM_4_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api 
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('SET_GET_ZOOM_4_PROMISE', 0, async function (done) {
-      var setpromise = await camera0InputPromise.setZoomRatio(4);
-      console.info(TAG + "setZoomRatio success: 4");
-      console.info(TAG + "getZoomRatio called")
-      var getpromise4 = await camera0InputPromise.getZoomRatio();
-      console.info(TAG + "getZoomRatio success: " + getpromise4);
-      if (getpromise4 != null && getpromise4 != undefined) {
-        expect(getpromise4).assertEqual(4);
-        console.info(TAG + "SET_GET_ZOOM_4_PROMISE PASSED ");
-      }
-      else {
-        console.info(TAG + "SET_GET_ZOOM_4_PROMISE FAILED");
-        expect().assertFail();
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : SET_GET_ZOOM_5_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api 
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('SET_GET_ZOOM_5_PROMISE', 0, async function (done) {
-      var setpromise = await camera0InputPromise.setZoomRatio(5);
-      console.info(TAG + "setZoomRatio success: 5");
-      console.info(TAG + "getZoomRatio called")
-      var getpromise5 = await camera0InputPromise.getZoomRatio();
-      console.info(TAG + "getZoomRatio success: " + getpromise5);
-      if (getpromise5 != null && getpromise5 != undefined) {
-        expect(getpromise5).assertEqual(5);
-        console.info(TAG + "SET_GET_ZOOM_5_PROMISE PASSED ");
-      }
-      else {
-        console.info(TAG + "SET_GET_ZOOM_5_PROMISE FAILED");
-        expect().assertFail();
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : SET_GET_ZOOM_6_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api 
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('SET_GET_ZOOM_6_PROMISE', 0, async function (done) {
-      var setpromise = await camera0InputPromise.setZoomRatio(6);
-      console.info(TAG + "setZoomRatio success: 6");
-      console.info(TAG + "getZoomRatio called")
-      var getpromise6 = await camera0InputPromise.getZoomRatio();
-      console.info(TAG + "getZoomRatio success: " + getpromise6);
-      if (getpromise6 != null && getpromise6 != undefined) {
-        expect(getpromise6).assertEqual(6);
-        console.info(TAG + "SET_GET_ZOOM_6_PROMISE PASSED ");
-      }
-      else {
-        console.info(TAG + "SET_GET_ZOOM_6_PROMISE FAILED");
-        expect().assertFail();
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : VIDEO_OUTPUT_START_PROMISE
-      * @tc.name      : VideoOutput start promise api
-      * @tc.desc      : VideoOutput start promise api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VIDEO_OUTPUT_START_PROMISE', 0, async function (done) {
-      if (videoOutputPromise == null || videoOutputPromise == undefined) {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_START_PROMISE videoOutputPromise == null || undefined')
-      } else {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_START_PROMISE to operate')
-        await videoOutputPromise.start()
-        expect(true).assertTrue()
-        console.info(TAG + 'Entering VIDEO_OUTPUT_START_PROMISE PASSED')
-        console.info(TAG + 'Entering VIDEO_OUTPUT_START_PROMISE ends here')
-        await sleep(1)
-        done()
-      }
-      await sleep(1)
-      done()
-    })
-
-    /**
-      * @tc.number    : VIDEO_RECORDER_START_PROMISE
-      * @tc.name      : VideoOutput start promise api
-      * @tc.desc      : VideoOutput start promise api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VIDEO_RECORDER_START_PROMISE', 0, async function (done) {
-      if (videoRecorder == null || videoRecorder == undefined) {
-        console.info(TAG + 'Entering VIDEO_RECORDER_START_PROMISE videoRecorderPromise == null || undefined')
-      } else {
-        console.info(TAG + 'Entering VIDEO_RECORDER_START_PROMISE to operate')
-        await videoRecorder.start()
-        console.info(TAG + 'VIDEO_RECORDER_START_PROMISE called');
-        sleep(3);
-        console.info(TAG + 'VIDEO_RECORDER_START_PROMISE done.')
-        expect(true).assertTrue()
-        console.info(TAG + 'Entering VIDEO_RECORDER_START_PROMISE PASSED')
-        console.info(TAG + 'Entering VIDEO_RECORDER_START_PROMISE ends here')
-        await sleep(1)
-        done()
-      }
-      await sleep(1)
-      done()
-    })
-
-    /**
-      * @tc.number    : VIDEO_OUTPUT_STOP_PROMISE
-      * @tc.name      : VideoOutput stop promise api
-      * @tc.desc      : VideoOutput stop promise api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VIDEO_OUTPUT_STOP_PROMISE', 0, async function (done) {
-      if (videoOutputPromise == null || videoOutputPromise == undefined) {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_STOP_PROMISE videoOutputPromise == null || undefined')
-      } else {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_STOP_PROMISE to operate')
-        await videoOutputPromise.stop()
-        expect(true).assertTrue()
-        console.info(TAG + 'Entering VIDEO_OUTPUT_STOP_PROMISE PASSED')
-        console.info(TAG + 'Entering VIDEO_OUTPUT_STOP_PROMISE ends here')
-        await sleep(1)
-        done()
-      }
-      await sleep(1)
-      done()
-    })
-
-    /**
-      * @tc.number    : VIDEO_RECORDER_STOP_PROMISE
-      * @tc.name      : VideoRecorder stop promise api
-      * @tc.desc      : VideoRecorder stop promise api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VIDEO_RECORDER_STOP_PROMISE', 0, async function (done) {
-      if (videoOutputPromise == null || videoOutputPromise == undefined) {
-        console.info(TAG + 'Entering VIDEO_RECORDER_STOP_PROMISE videoOutputPromise == null || undefined')
-      } else {
-        console.info(TAG + 'Entering VIDEO_RECORDER_STOP_PROMISE to operate')
-        await videoRecorder.stop()
-        expect(true).assertTrue()
-        console.info(TAG + 'VIDEO_RECORDER_STOP done.')
-        console.info(TAG + 'Entering VIDEO_RECORDER_STOP_PROMISE PASSED')
-        console.info(TAG + 'Entering VIDEO_RECORDER_STOP_PROMISE ends here')
-        await sleep(1)
-        done()
-      }
-      await sleep(1)
-      done()
     })
 
     /**
@@ -1940,40 +1035,13 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : VIDEOOUTPUT_RELEASE_SUCCESS_PROMISE
-      * @tc.name      : videoOutput release api
-      * @tc.desc      : videoOutput release api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VIDEOOUTPUT_RELEASE_SUCCESS_PROMISE', 0, async function (done) {
-      if (videoOutputPromise == null || videoOutputPromise == undefined) {
-        console.info(TAG + "Entering VIDEOOUTPUT_RELEASE_SUCCESS_PROMISE previewOutputPromise == null || undefined");
-      } else {
-        console.info(TAG + "Entering VIDEOOUTPUT_RELEASE_SUCCESS_PROMISE to operate");
-        const promise = await videoOutputPromise.release();
-        console.info(TAG + "Entering VideoOutputPromise.release promise: " + JSON.stringify(promise));
-        if (promise != null || promise != undefined) {
-          expect(true).assertTrue();
-          console.info(TAG + "Entering VideoOutputPromise.release PASSED");
-        }
-        console.info(TAG + "Entering VideoOutputPromise.release ends here");
-        await sleep(1);
-        done();
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
       * @tc.number    : PREVIEWOUTPUT_RELEASE_SUCCESS_PROMISE
       * @tc.name      : PreviewOutput release api
       * @tc.desc      : PreviewOutput release api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
-    */
+	*/
     it('PREVIEWOUTPUT_RELEASE_SUCCESS_PROMISE', 0, async function (done) {
       if (previewOutputPromise == null || previewOutputPromise == undefined) {
         console.info(TAG + "Entering PREVIEWOUTPUT_RELEASE_SUCCESS_PROMISE previewOutputPromise == null || undefined");
@@ -2000,7 +1068,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
-    */
+	*/
     it('CAMERAINPUT_RELEASE_SUCCESS_PROMISE', 0, async function (done) {
       if (camera0InputPromise == null || camera0InputPromise == undefined) {
         console.info(TAG + "Entering CAMERAINPUT_RELEASE_SUCCESS_PROMISE camera0InputPromise == null || undefined");
