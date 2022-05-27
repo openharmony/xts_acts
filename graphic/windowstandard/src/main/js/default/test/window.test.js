@@ -1883,7 +1883,7 @@ describe('window_test', function () {
      */
     it('setScreenActiveMode_Test_001', 0, async function (done) {
         console.log('screenshotTest setScreenActiveModeTest1 begin');
-        screen.getAllScreen().then(src => {
+        screen.getAllScreens().then(src => {
             console.log('screenshotTest setScreenActiveModeTest1 getAllScreen src' + src);
             expect(src[0] != null).assertTrue();
             let screenIndex = src[0];
@@ -1909,7 +1909,7 @@ describe('window_test', function () {
      */
     it('setScreenActiveMode_Test_002', 0, async function (done) {
         console.log('screenshotTest setScreenActiveModeTest2 begin');
-        screen.getAllScreen().then(src => {
+        screen.getAllScreens().then(src => {
             console.log('screenshotTest setScreenActiveModeTest2 getAllScreen src' + src);
             expect(src[0] != null).assertTrue();
             let screenIndex = src[0];
