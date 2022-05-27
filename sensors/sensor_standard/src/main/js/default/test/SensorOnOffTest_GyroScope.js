@@ -64,6 +64,7 @@ describe("SensorJsTest", function () {
 
     let errMessages = ['The number of parameters is not valid', 'Should subscribe first',
     'string is not defined'];
+
     let errMessage;
 
     /*
@@ -106,13 +107,11 @@ describe("SensorJsTest", function () {
      */
     it("GYROSCOPE_SensorJsTest003", 0, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest003---------------------------');
-
         function onSensorCallback(data) {
             console.info('GYROSCOPE_SensorJsTest003  on error');
             expect(false).assertTrue();
             done();
         }
-
         try {
             sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, onSensorCallback, { 'interval': 100000000 }, 5);
         } catch (error) {
@@ -146,13 +145,11 @@ describe("SensorJsTest", function () {
      */
     it("GYROSCOPE_SensorJsTest005", 0, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest005---------------------------');
-
         function onceSensorCallback(data) {
             console.info('GYROSCOPE_SensorJsTest005  on error');
             expect(false).assertTrue();
             done();
         }
-
         try {
             sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, onceSensorCallback, 5);
         } catch (error) {

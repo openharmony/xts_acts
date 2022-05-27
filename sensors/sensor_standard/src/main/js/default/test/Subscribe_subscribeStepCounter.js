@@ -49,34 +49,35 @@ describe("SensorJsTest", function () {
     })
 
     let errMessages = ['The number of parameters is not valid', 'UnsubscribeSensor failed',
-	'Wrong argument type, should be object'];
+    'Wrong argument type, should be object'];
+
     let errMessage;
 
-     /*
-     * @tc.name:subscribeStepCounter_SensorJsTest001
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
-     */
+    /*
+    * @tc.name:subscribeStepCounter_SensorJsTest001
+    * @tc.desc:verify app info is not null
+    * @tc.type: FUNC
+    * @tc.require: SR000H0ALK, AR000H0ALM
+    */
     it("subscribeStepCounter_SensorJsTest001", 0, async function (done) {
-	    console.info('----------------------subscribeStepCounter_SensorJsTest001---------------------------');		
+        console.info('----------------------subscribeStepCounter_SensorJsTest001---------------------------');
         sensor.subscribeStepCounter({
-            success: function(data) {
+            success: function (data) {
                 console.info("subscribeStepCounter_SensorJsTest001 success" + JSON.stringify(data));
-				expect(typeof(data.steps)).assertEqual("number");
+                expect(typeof (data.steps)).assertEqual("number");
             },
-            fail: function(data, code) {
+            fail: function (data, code) {
                 console.error('subscribeStepCounter_SensorJsTest001 failed. Code: ' + code + '; Data: ' + data);
                 expect(code).assertEqual(1001);
             },
-          });
-        setTimeout(()=>{
+        });
+        setTimeout(() => {
             try {
                 sensor.unsubscribeStepCounter();
             } catch (error) {
                 console.info('subscribeStepCounter_SensorJsTest001_unsubscribeStepCounter error ' + error);
             }
-            setTimeout(()=>{
+            setTimeout(() => {
                 expect(true).assertTrue();
                 done();
             }, 500);
@@ -90,7 +91,7 @@ describe("SensorJsTest", function () {
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
     it("subscribeStepCounter_SensorJsTest002", 0, function (done) {
-		console.info('----------------------subscribeStepCounter_SensorJsTest002---------------------------');
+        console.info('----------------------subscribeStepCounter_SensorJsTest002---------------------------');
         try {
             sensor.subscribeStepCounter({
                 success: function (data) {
@@ -117,7 +118,7 @@ describe("SensorJsTest", function () {
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
     it("subscribeStepCounter_SensorJsTest003", 0, function (done) {
-		console.info('----------------------subscribeStepCounter_SensorJsTest003---------------------------');
+        console.info('----------------------subscribeStepCounter_SensorJsTest003---------------------------');
         try {
             sensor.subscribeStepCounter({
                 success: function (data) {
@@ -128,7 +129,8 @@ describe("SensorJsTest", function () {
                     console.error('subscribeStepCounter_SensorJsTest003 failed. Code: ' + code + '; Data: ' + data);
                     expect(code).assertEqual(1001);
                 },
-            }, function () {}, 25);
+            }, function () {
+            }, 25);
         } catch (error) {
             errMessage = error.toString().slice(19, 56);
             console.info('subscribeStepCounter_SensorJsTest003 error:' + error);
@@ -198,7 +200,7 @@ describe("SensorJsTest", function () {
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
     it("subscribeStepCounter_SensorJsTest007", 0, function (done) {
-		console.info('----------------------subscribeStepCounter_SensorJsTest007---------------------------');
+        console.info('----------------------subscribeStepCounter_SensorJsTest007---------------------------');
         sensor.subscribeStepCounter({
             success: function (data) {
                 console.info("subscribeStepCounter_SensorJsTest007 success:" + JSON.stringify(data));
@@ -219,7 +221,6 @@ describe("SensorJsTest", function () {
                 expect(code).assertEqual(1001);
             },
         });
-
         setTimeout(() => {
             try {
                 sensor.unsubscribeStepCounter();
@@ -244,7 +245,7 @@ describe("SensorJsTest", function () {
         try {
             sensor.unsubscribeStepCounter();
         } catch (error) {
-            errMessage = error.toString().slice(21,45);
+            errMessage = error.toString().slice(21, 45);
             console.info('subscribeStepCounter_SensorJsTest008 error:' + error);
             expect(errMessage).assertEqual(errMessages[1]);
             done();
@@ -258,7 +259,7 @@ describe("SensorJsTest", function () {
      * @tc.require: SR000H0ALK, AR000H0ALM
      */
     it("subscribeStepCounter_SensorJsTest009", 0, function (done) {
-		console.info('----------------------subscribeStepCounter_SensorJsTest009---------------------------');
+        console.info('----------------------subscribeStepCounter_SensorJsTest009---------------------------');
         sensor.subscribeStepCounter({
             success: function (data) {
                 console.info("subscribeStepCounter_SensorJsTest009 success:" + JSON.stringify(data));
@@ -269,7 +270,6 @@ describe("SensorJsTest", function () {
                 expect(code).assertEqual(1001);
             },
         });
-
         try {
             sensor.unsubscribeStepCounter();
         } catch (error) {

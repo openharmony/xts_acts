@@ -50,6 +50,7 @@ describe("SensorJsTest", function () {
 
     let errMessages = ['The number of parameters is not valid', 'UnsubscribeSensor failed',
     'Wrong argument type, should be object'];
+
     let errMessage;
 
     /*
@@ -125,7 +126,6 @@ describe("SensorJsTest", function () {
                 expect(typeof (data.direction)).assertEqual("number");
             },
         });
-
         setTimeout(() => {
             try {
                 sensor.unsubscribeCompass();
@@ -250,7 +250,6 @@ describe("SensorJsTest", function () {
                 expect(false).assertTrue();
             },
         });
-
         setTimeout(() => {
             try {
                 sensor.unsubscribeCompass();
@@ -301,12 +300,10 @@ describe("SensorJsTest", function () {
                 expect(false).assertTrue();
             },
         });
-
         try {
             sensor.unsubscribeCompass();
         } catch (error) {
             console.info('subscribeLight_SensorJsTest010_unsubscribeLight error' + error);
-            expect(true).assertTrue();
         }
         setTimeout(() => {
             expect(true).assertTrue();

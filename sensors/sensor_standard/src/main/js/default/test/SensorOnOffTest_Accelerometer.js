@@ -31,7 +31,7 @@ describe("SensorJsTest", function () {
     }
 
     beforeAll(function () {
-        
+
         /*
          * @tc.setup: setup invoked before all testcases
          */
@@ -64,6 +64,7 @@ describe("SensorJsTest", function () {
 
     let errMessages = ['The number of parameters is not valid', 'Should subscribe first',
     'string is not defined'];
+
     let errMessage;
 
     /*
@@ -106,13 +107,11 @@ describe("SensorJsTest", function () {
      */
     it("Accelerometer_SensorJsTest003", 0, async function (done) {
         console.info('----------------------Accelerometer_SensorJsTest003---------------------------');
-
         function onSensorCallback(data) {
             console.info('Accelerometer_SensorJsTest003  on error');
             expect(false).assertTrue();
             done();
         }
-
         try {
             sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, onSensorCallback, { 'interval': 100000000 }, 5);
         } catch (error) {
@@ -146,13 +145,11 @@ describe("SensorJsTest", function () {
      */
     it("Accelerometer_SensorJsTest005", 0, async function (done) {
         console.info('----------------------Accelerometer_SensorJsTest005---------------------------');
-
         function onceSensorCallback(data) {
             console.info('Accelerometer_SensorJsTest005  on error');
             expect(false).assertTrue();
             done();
         }
-
         try {
             sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, onceSensorCallback, 5);
         } catch (error) {
@@ -189,13 +186,11 @@ describe("SensorJsTest", function () {
      */
     it("Accelerometer_SensorJsTest007", 0, async function (done) {
         console.info('----------------------Accelerometer_SensorJsTest007---------------------------');
-
         function onSensorCallback(data) {
             console.info('Accelerometer_SensorJsTest007  on error');
             expect(false).assertTrue();
             done();
         }
-
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, onSensorCallback);
         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, onSensorCallback);
         setTimeout(() => {
@@ -212,13 +207,11 @@ describe("SensorJsTest", function () {
      */
     it("Accelerometer_SensorJsTest008", 0, async function (done) {
         console.info('----------------------Accelerometer_SensorJsTest008---------------------------');
-
         function onSensorCallback(data) {
             console.info('Accelerometer_SensorJsTest008  on error');
             expect(false).assertTrue();
             done();
         }
-
         try {
             sensor.off(1000000, onSensorCallback);
         } catch (error) {

@@ -60,6 +60,7 @@ describe("SensorJsTest", function () {
 
     let errMessages = ['The number of parameters is not valid', 'Should subscribe first',
     'string is not defined'];
+
     let errMessage;
 
     /*
@@ -102,13 +103,11 @@ describe("SensorJsTest", function () {
      */
     it("Hall_SensorJsTest003", 0, async function (done) {
         console.info('----------------------Hall_SensorJsTest003---------------------------');
-
         function onSensorCallback(data) {
             console.info('Hall_SensorJsTest003  on error');
             expect(false).assertTrue();
             done();
         }
-
         try {
             sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, onSensorCallback, { 'interval': 100000000 }, 5);
         } catch (error) {
@@ -204,7 +203,6 @@ describe("SensorJsTest", function () {
             expect(false).assertTrue();
             done();
         }
-
         try {
             sensor.off(1000000, onSensorCallback);
         } catch (error) {
