@@ -21,6 +21,7 @@ const CREATE_TABLE_TEST = 'CREATE TABLE IF NOT EXISTS test (' + 'id INTEGER PRIM
 const STORE_CONFIG = {
     name: 'Resultset.db',
 }
+const COLOUNM_NAMES = ["id","data1","data2","data3","data4"];
 var rdbStore = undefined;
 
 describe('rdbResultSetTest', function () {
@@ -1746,5 +1747,26 @@ describe('rdbResultSetTest', function () {
         }
     })
 
+    /**
+     * @tc.name resultSet columnNames test
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0240
+     * @tc.desc resultSet columnNames test
+     */
+     it('testcolumnNames0001', 0, async function (done) {
+        console.log(TAG + '************* testcolumnNames0001 start *************');
+        {
+            let predicates = await new dataRdb.RdbPredicates('test')
+            let resultSet = await rdbStore.query(predicates)
+            if (COLOUNM_NAMES == resultSet.columnNames){
+                expect(1).assertEqual(0);
+            }else{
+                expect(0).assertEqual(0);
+            }
+            resultSet = null;
+            done();
+            console.log(TAG + '************* testcolumnNames0001 end *************');
+        }
+    })
+    
     console.log(TAG + '*************Unit Test End*************');
 })

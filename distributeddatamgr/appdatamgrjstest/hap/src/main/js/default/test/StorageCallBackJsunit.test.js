@@ -276,7 +276,7 @@ describe('storageTest', function () {
 
     /**
      * @tc.name clear、put、get、flush String callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0120
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0172
      * @tc.desc flush String callback interface test
      */
      it('testCallback0172', 0, function (done) {
@@ -316,5 +316,20 @@ describe('storageTest', function () {
                 })
             });
         });
+    })
+    
+        /**
+     * @tc.name delete callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0180
+     * @tc.desc delete callback interface test
+     */
+
+    it('testDelete0182', 0, async function (done) {
+        mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
+        expect("abc").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
+        mPref.delete(KEY_TEST_STRING_ELEMENT,(err,ret)=>{
+            expect("default").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"))
+        });
+        done();
     })
 })
