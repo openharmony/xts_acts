@@ -2,14 +2,14 @@
   "description": "Configuration for huksHmacBasicPromise js api Tests",
   "driver": {
     "type": "JSUnitTest",
-    "test-timeout": "600000",
+    "test-timeout": "180000",
     "package": "com.example.huksHmacbasicpromise",
     "shell-timeout": "60000"
   },
   "kits": [
     {
       "test-file-name": [
-        "huksHmacBasicPromiseJSApiTest.hap"
+        "ActsHuksHmacBasicPromiseJSApiTest.hap"
       ],
       "type": "AppInstallKit",
       "cleanup-apps": true
