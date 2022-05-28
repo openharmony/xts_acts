@@ -99,19 +99,6 @@ describe('VideoPlayerHLSTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HLS_VARIANT_A
-        * @tc.name      : 001.test hls variant
-        * @tc.desc      : HLS Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_HLS_VARIANT_A', 0, async function (done) {
-        await playVideoSource(HTTP_PATH + 'cts_resource/assets/hls_variant/index.m3u8', null, null, 120000, PLAY_TIME, done);
-        done();
-    })
-
-    /* *
         * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HLS_AUDIOOFF
         * @tc.name      : 001.test hls variant
         * @tc.desc      : HLS Video playback control test
