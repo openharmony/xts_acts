@@ -87,16 +87,6 @@ export default function commonJsunit() {
       done();
     });
 
-    it('commonTest_0800', 0, async function (done) {
-      console.info('commonTest_0800 START');
-      var a = -7000000000000;
-      var b = fp2px(a);
-      console.info('commonTest_0800 fp2px result:' + b);
-      expect(b == -2147483648).assertTrue();
-      console.info('commonTest_0800 END');
-      done();
-    });
-
     it('commonTest_0900', 0, async function (done) {
       console.info('commonTest_0900 START');
       var a = '70';
