@@ -23,6 +23,7 @@ export function playAudioSource(src, duration, playTime, checkSeekTime, done) {
     let pauseCount = 0;
     let stopCount = 0;
     let seekCount = 0;
+    let seekEOS = false;
     let audioPlayer = media.createAudioPlayer();
     if (audioPlayer == null) {
         console.error('case createAudioPlayer failed');
@@ -104,7 +105,7 @@ export function playAudioSource(src, duration, playTime, checkSeekTime, done) {
             // step 2: seek duration/3 -> pause
             expect(audioPlayer.state).assertEqual('playing');
             if (checkSeekTime) {
-                expect(audioPlayer.duration / 3).assertEqual(seekDoneTime);
+                expect(audioPlayer.duration / 3).assertClose(seekDoneTime, 1);
             }
             mediaTestBase.msleep(playTime);
             audioPlayer.pause();
@@ -125,13 +126,13 @@ export function playAudioSource(src, duration, playTime, checkSeekTime, done) {
             audioPlayer.loop = false;
             audioPlayer.setVolume(0.5);
             audioPlayer.seek(audioPlayer.duration);
-        } else if (seekCount == 4){
-            // step 7: seek duration -> setVolume + seek duration when loop is false
+            seekEOS = true;
+        } else if (seekEOS && seekDoneTime != 0){
+            // step 7: wait for finish
             if (checkSeekTime) {
                 expect(audioPlayer.duration).assertEqual(seekDoneTime);
             }
             mediaTestBase.msleep(playTime);
-            expect(audioPlayer.state).assertEqual('stopped');
         } 
     });
     audioPlayer.on('volumeChange', () => {
@@ -141,6 +142,7 @@ export function playAudioSource(src, duration, playTime, checkSeekTime, done) {
     audioPlayer.on('finish', () => {
         console.info('case play end');
         expect(audioPlayer.state).assertEqual('stopped');
+        expect(seekEOS).assertTrue();
         // step 8: play when stream is end
         audioPlayer.play();
     });

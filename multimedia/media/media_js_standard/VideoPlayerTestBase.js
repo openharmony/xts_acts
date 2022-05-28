@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 import media from '@ohos.multimedia.media'
 import * as mediaTestBase from './MediaTestBase.js';
 
@@ -120,17 +119,20 @@ export async function playVideoSource(url, width, height, duration, playTime, do
         console.info('case setVolume called');
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 
-    await videoPlayer.seek(duration, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
+    await videoPlayer.seek(videoPlayer.duration, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
         console.info('case seek called and seekDoneTime is ' + seekDoneTime);
-        mediaTestBase.msleep(duration - seekDoneTime);
+        mediaTestBase.msleep(videoPlayer.duration - seekDoneTime);
+        videoPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_00_X);
         expect(videoPlayer.state).assertEqual('playing');
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 
     videoPlayer.loop = false;
-    await videoPlayer.seek(duration, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
+    await videoPlayer.seek(videoPlayer.duration, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
         console.info('case seek called and seekDoneTime is ' + seekDoneTime);
-        mediaTestBase.msleep(duration - seekDoneTime);
-        expect(videoPlayer.state).assertEqual('stopped');
+        if (seekDoneTime != 0){
+            mediaTestBase.msleep((videoPlayer.duration - seekDoneTime) + playTime);
+            expect(videoPlayer.state).assertEqual('stopped');
+        }
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 
     await videoPlayer.play().then(() => {
@@ -148,9 +150,6 @@ export async function playVideoSource(url, width, height, duration, playTime, do
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 
     videoPlayer.url = url;
-    await videoPlayer.setDisplaySurface(surfaceID).then(() => {
-        console.info('case setDisplaySurface success, surfaceID: ' + surfaceID);
-    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 
     await videoPlayer.prepare().then(() => {
         console.info('case prepare called');
@@ -175,4 +174,3 @@ export async function playVideoSource(url, width, height, duration, playTime, do
         console.info('case release called');
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 }
-

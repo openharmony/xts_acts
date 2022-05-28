@@ -16,7 +16,7 @@
 import media from '@ohos.multimedia.media'
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {playAudioSource} from '../../../../../AudioPlayerTestBase.js';
-import {toNewPage, clearRouter, playVideoSource} from '../../../../../VideoPlayerTestBase.js';
+import {playVideoSource} from '../../../../../VideoPlayerTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('HttpPlayerCompatibilityTest', function () {
@@ -35,7 +35,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     beforeEach(async function() {
-        await toNewPage(pagePath1, pagePath2, pageId);
+        await mediaTestBase.toNewPage(pagePath1, pagePath2, pageId);
         pageId = (pageId + 1) % 2;
         await mediaTestBase.msleepAsync(1000).then(
             () => {}, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -43,7 +43,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     afterEach(async function() {
-        await clearRouter();
+        await mediaTestBase.clearRouter();
         console.info('afterEach case');
     })
 
@@ -61,7 +61,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0100', 0, async function (done) {
         let path = VIDEOPLAYER_PATH + 'mp4/h264_aac_640x320_30r.mp4';
-        await playVideoSource(path, 640, 320, 10034, PLAY_TIME, done);
+        await playVideoSource(path, 640, 320, 10100, PLAY_TIME, done);
         done();
     })
 
@@ -75,7 +75,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     */
     it('SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0200', 0, async function (done) {
         let path = VIDEOPLAYER_PATH + 'mp4/h264_mp3_640x480_25r.mp4';
-        await playVideoSource(path, 640, 480, 10034, PLAY_TIME, done);
+        await playVideoSource(path, 640, 480, 10080, PLAY_TIME, done);
         done();
     })
 
