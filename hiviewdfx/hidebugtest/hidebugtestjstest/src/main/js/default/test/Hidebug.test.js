@@ -348,7 +348,7 @@ describe('HidebugJsTest', function () {
         try {
             let temp = hidebug.getServiceDump(10);
             console.info("ServiceDump is " + temp);
-            expect(temp.indexof('Success')!=-1).assertTrue();
+            expect(temp.indexOf('Success')!=-1).assertTrue();
         } catch (error) {
             expect().assertFail();
         }
