@@ -2365,5 +2365,73 @@ describe('dataAbilityPredicatesTest', function () {
         done();
         console.log(TAG + "************* testNotIn0003 end *************");
     })
+
+    /**
+     * @tc.name predicates in normal test
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_DataAbilityPredicates_0253
+     * @tc.desc predicates in normal test
+     */
+    it('testIn0001', 0, async function (done) {
+        console.log(TAG + "************* testIn0001 start *************");
+        var values = [Number.MIN_VALUE.toString()];
+        let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
+        dataAbilityPredicates.in("doubleValue", values);
+        let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
+        let result = await rdbStore.query(predicates);
+        expect(1).assertEqual(result.rowCount);
+        done();
+        console.log(TAG + "************* testIn0001 end *************");
+    })
+
+    /**
+     * @tc.name predicates in normal test
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_DataAbilityPredicates_0254
+     * @tc.desc predicates in normal test
+     */
+    it('testIn0002', 0, async function (done) {
+        console.log(TAG + "************* testIn0002 start *************");
+        var values = ["1.0"];
+        let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
+        dataAbilityPredicates.in("doubleValue", values);
+        let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
+        let result = await rdbStore.query(predicates);
+        expect(1).assertEqual(result.rowCount);
+        done();
+        console.log(TAG + "************* testIn0002 end *************");
+    })
+
+    /**
+     * @tc.name predicates in normal test
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_DataAbilityPredicates_0255
+     * @tc.desc predicates in normal test
+     */
+    it('testIn0003', 0, async function (done) {
+        console.log(TAG + "************* testIn0003 start *************");
+        var values = [DOUBLE_MAX.toString()];
+        let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
+        dataAbilityPredicates.in("doubleValue", values);
+        let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
+        let result = await rdbStore.query(predicates);
+        expect(1).assertEqual(result.rowCount);
+        done();
+        console.log(TAG + "************* testIn0003 end *************");
+    })
+
+    /**
+     * @tc.name predicates in normal test
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_DataAbilityPredicates_0256
+     * @tc.desc predicates in normal test
+     */
+    it('testIn0004', 0, async function (done) {
+        console.log(TAG + "************* testIn0004 start *************");
+        var values = [Number.MIN_VALUE.toString(), "1.0", DOUBLE_MAX.toString()];
+        let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
+        dataAbilityPredicates.in("doubleValue", values);
+        let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        done();
+        console.log(TAG + "************* testIn0004 end *************");
+    })
     console.log(TAG + "*************Unit Test End*************");
 })
