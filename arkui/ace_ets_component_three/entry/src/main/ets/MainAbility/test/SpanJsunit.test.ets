@@ -231,7 +231,7 @@ export default function spanJsunit() {
       console.info("[testSpan009] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testSpan009] fontColor:" + obj);
-      expect(obj.$attrs.fontColor).assertEqual('#FFFFFFFF');
+      expect(obj.$attrs.fontColor).assertEqual('#FF000000');
       done();
     });
   })
