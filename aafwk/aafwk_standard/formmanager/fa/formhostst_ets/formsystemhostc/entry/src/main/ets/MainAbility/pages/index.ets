@@ -228,7 +228,7 @@ struct Index {
           .then((data) => {
           console.info('[FormComponent] deleteForm result:' + data);
           let commonEventPublishData = {
-            data: data.toString(),
+            data: "0",
             parameters: {
               "formId" : this.deleteId
             }
@@ -254,7 +254,7 @@ struct Index {
         .then((data) => {
           console.info('[FormComponent] releaseForm result:' + data);
           let commonEventPublishData = {
-            data: data.toString(),
+            data: "0",
             parameters: {
               "formId" : this.releaseId
             }
@@ -307,7 +307,7 @@ struct Index {
                     console.info('[FormComponent] castTempForm result:' + data);
                      setTimeout(() => {
                       let commonEventPublishData = {
-                        data: data.toString(),
+                        data: "0",
                         parameters: {
                           "formId" : this.formId.toString()
                         }
@@ -338,7 +338,7 @@ struct Index {
                     .then((data) => {
                     console.info('[FormComponent] deleteForm result:' + data);
                     var commonEventPublishData = {
-                      data: data.toString(),
+                      data: "0",
                       parameters: {
                         "formId" : this.deleteId
                       }
@@ -368,7 +368,7 @@ struct Index {
                     .then((data) => {
                     console.info('[FormComponent] releaseForm result:' + data);
                     var commonEventPublishData = {
-                      data: data.toString(),
+                      data: "0",
                       parameters: {
                         "formId" : this.releaseId
                       }
