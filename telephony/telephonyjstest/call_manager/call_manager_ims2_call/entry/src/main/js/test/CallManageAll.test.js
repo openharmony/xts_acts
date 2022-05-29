@@ -863,6 +863,48 @@ describe('CallManageImsCall', function () {
     });
 
     /**
+     * @tc.number  Telephony_CallManager_formatPhoneNumber_Async_0200
+     * @tc.name    testFormatPhoneNumber_0200
+     * @tc.desc    PhoneNumber is 13900000000, options: CN, test formatPhoneNumber() api by callback.
+     *             The return value is 139 0000 0000
+     */
+    it('Telephony_CallManager_formatPhoneNumber_Async_0200', 0, async function (done) {
+        let numberFormatOptions = new NumberFormatOptions('CN');
+        call.formatPhoneNumber('13900000000', numberFormatOptions, (err, data) => {
+            if (err) {
+                console.log(`Telephony_CallManager_formatPhoneNumber_Async_0200 err = ${err.message}`);
+                console.log('Telephony_CallManager_formatPhoneNumber_Async_0200 fail');
+                expect().assertFail();
+                done();
+                return;
+            }
+            expect(data === '139 0000 0000').assertTrue();
+            console.log(`Telephony_CallManager_formatPhoneNumber_Async_0200 finish data = ${data}`);
+            done();
+        });
+    });
+
+    /**
+     * @tc.number  Telephony_CallManager_formatPhoneNumber_Async_0300
+     * @tc.name    testFormatPhoneNumber_0300
+     * @tc.desc    PhoneNumber is 13900000000, options: US, test formatPhoneNumber() api by promise.
+     *             The return value is '1 390-000-0000'
+     */
+    it('Telephony_CallManager_formatPhoneNumber_Promise_0200', 0, async function (done) {
+        let numberFormatOptions = new NumberFormatOptions('US');
+        try {
+            var data = await call.formatPhoneNumber('13900000000', numberFormatOptions);
+            expect(data === '1 390-000-0000').assertTrue();
+            console.log(`Telephony_CallManager_formatPhoneNumber_Promise_0200 finish data = ${data}`);
+            done();
+        } catch (err) {
+            console.log('Telephony_CallManager_formatPhoneNumber_Promise_0200 fail');
+            expect().assertFail();
+            done();
+        }
+    });
+
+    /**
      * @tc.number  Telephony_CallManager_formatPhoneNumberToE164_Async_0100
      * @tc.name    PhoneNumber is 010-0000-0000, options: CN, call formatPhoneNumberToE164() to format the number,
      *             and return +861000000000
@@ -939,6 +981,45 @@ describe('CallManageImsCall', function () {
             done();
         } catch (err) {
             console.log(`Telephony_CallManager_isEmergencyPhoneNumber_Promise_1300 finish err = ${err}`);
+            done();
+        }
+    });
+
+    /**
+     * @tc.number  Telephony_CallManager_isEmergencyPhoneNumber_Async_1400
+     * @tc.name    testIsEmergencyPhoneNumber_1400
+     * @tc.desc    PhoneNumber: 110, no options. Call isEmergencyPhoneNumber() api by callback.
+     *             The return value is true
+     */
+    it('Telephony_CallManager_isEmergencyPhoneNumber_Async_1400', 0, async function (done) {
+        call.isEmergencyPhoneNumber('110', (err) => {
+            if (err) {
+                console.log(`Telephony_CallManager_isEmergencyPhoneNumber_Async_1400 finish err = ${err}`);
+                expect().assertFail();
+                done();
+                return;
+            }
+            expect(true).assertTrue();
+            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Async_1400 PASSED ');
+            done();
+        });
+    });
+
+    /**
+     * @tc.number  Telephony_CallManager_isEmergencyPhoneNumber_Async_1500
+     * @tc.name    testIsEmergencyPhoneNumber_1500
+     * @tc.desc    PhoneNumber: 120, no options. Call isEmergencyPhoneNumber() api by promise.
+     *             The return value is true
+     */
+    it('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1400', 0, async function (done) {
+        try {
+            var data = await call.isEmergencyPhoneNumber('120');
+            expect(true).assertTrue();
+            console.log('Telephony_CallManager_isEmergencyPhoneNumber_Promise_1400 PASSED ');
+            done();
+        } catch (err) {
+            console.log(`Telephony_CallManager_isEmergencyPhoneNumber_Promise_1400 finish err = ${err}`);
+            expect().assertFail();
             done();
         }
     });

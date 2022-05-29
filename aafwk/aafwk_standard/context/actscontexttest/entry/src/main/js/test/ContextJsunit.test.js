@@ -229,15 +229,39 @@ describe('ActsContextTest', function () {
     it('ACTS_RequestPermissionForUser_0100', 0, async function (done) {
         var ret = false
         var context = await featureAbility.getContext();
-        console.log("RequestPermissionForUser ----------1");
+        console.log("ACTS_RequestPermissionForUser_0100 ----------1");
 
         context.requestPermissionsFromUser([], 1,
             (err, data)=>{
-                console.log("====>requestdata====>" + JSON.stringify(data));
-                console.log("====>requesterrcode====>" + JSON.stringify(err.code));
+                console.log("====>ACTS_RequestPermissionForUser_0100 data====>" + JSON.stringify(data));
+                console.log("====>ACTS_RequestPermissionForUser_0100 err====>" + JSON.stringify(err.code));
                 expect(err.code).assertEqual(-104)
             });
-        console.log("RequestPermissionForUser ----------2");
+        console.log("ACTS_RequestPermissionForUser_0100 ----------2");
+        ret = true
+        done();
+        setTimeout(function(){
+            expect(ret).assertEqual(true)
+        },1000)
+    })
+
+    //  @tc.number: ACTS_RequestPermissionForUser_0200
+    //  @tc.name: requestPermissionsFromUser : Requests certain permissions from the system.
+    //  permission: The list of permissions to be requested.
+    //  @tc.desc: Requests certain permissions from the system.
+    //  process is the current process. (by promise)
+    it('ACTS_RequestPermissionForUser_0200', 0, async function (done) {
+        var ret = false
+        var context = await featureAbility.getContext();
+        console.log("ACTS_RequestPermissionForUser_0200 ----------1");
+
+        context.requestPermissionsFromUser([], 1).then((data) => {
+            console.log("====>ACTS_RequestPermissionForUser_0200 data====>" + JSON.stringify(data));
+        }).catch((err) => {
+            console.log("====>ACTS_RequestPermissionForUser_0200 err====>" + JSON.stringify(err.code));
+            expect(err.code).assertEqual(-104)
+        })
+        console.log("ACTS_RequestPermissionForUser_0200 ----------2");
         ret = true
         done();
         setTimeout(function(){
