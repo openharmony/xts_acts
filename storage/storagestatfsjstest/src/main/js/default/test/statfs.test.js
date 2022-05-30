@@ -32,6 +32,7 @@ describe('statfs', function () {
       let context = featureAbility.getContext();
       let data = await context.getFilesDir();
       let number = await statfs.getFreeBytes(data);
+      console.info("getFreeBytes getFilesDir===>" + (number / 1024));
       expect(isIntNum(number)).assertTrue();
       done();
     } catch (e) {
