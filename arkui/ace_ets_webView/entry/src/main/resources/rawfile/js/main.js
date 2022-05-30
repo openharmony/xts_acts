@@ -251,12 +251,14 @@ $(document).ready(function(){
             });
         }
     });
+
     /*点击回到顶部*/
     $('#backToTop-up').click(function(){
         $('html, body').animate({
             scrollTop: 0
         }, 500);
     });
+
     /*点击到底部*/
     $('#backToTop-down').click(function(){
         $('html, body').animate({

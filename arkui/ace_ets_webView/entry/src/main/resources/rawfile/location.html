@@ -1713,7 +1713,7 @@
     /*根据所选的省份来显示城市列表*/
     function showCity(obj) {
         var val = obj.options[obj.selectedIndex].value;
-        current_prov = val;
+        var current_prov = val;
         if (val >= 0) {
             city.style.display = 'inline-block';
             country.style.display = 'none';
@@ -1742,7 +1742,7 @@
         } else {
             country.style.display = 'none';
         }
-        current_city = val;
+        var current_city = val;
         if (val != null) {
             country.length = 1;
             if (province[current_prov]["city"][val]) {
@@ -1762,7 +1762,7 @@
     };
 
     function selectCountry(obj) {
-        current_country = obj.options[obj.selectedIndex].value;
+        var current_country = obj.options[obj.selectedIndex].value;
         showAddr()
     };
     function showAddr() {

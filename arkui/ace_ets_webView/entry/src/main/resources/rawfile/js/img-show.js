@@ -68,7 +68,6 @@ $(document).ready(function(){
     $('.control').hover(function(){
         clearInterval(clc);
         $('.control').show();
-//        return false;允许传播
     });
     //向右边前进
     $('.to-right').click(function(){
@@ -112,7 +111,6 @@ $(document).ready(function(){
             }, moveTime);
         }
     });
-
 
     clc = setInterval(moveImg, setTime);
 });
@@ -175,7 +173,6 @@ $(document).ready(function(){
     $('.control1').hover(function(){
         clearInterval(clc);
         $('.control1').show();
-//        return false;允许传播
     });
 
     //向右边前进
@@ -283,7 +280,6 @@ $(document).ready(function(){
     $('.control2').hover(function(){
         clearInterval(clc);
         $('.control2').show();
-//        return false;允许传播
     });
     //向右边前进
     $('.to-right2').click(function(){
