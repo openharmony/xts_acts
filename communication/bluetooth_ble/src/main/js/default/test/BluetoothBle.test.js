@@ -317,6 +317,30 @@ describe('bluetoothhostTest', function() {
     })
 
     /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_GET_DEVICE_NAME_CALLBACK_0001
+     * @tc.name testGetDeviceName
+     * @tc.desc Test GetDeviceName api by callback.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNACATION_bluetooth_GET_DEVICE_NAME_CALLBACK_0001', 0, async function (done) {
+        console.info('[bluetooth_js] BLE get device name callback start');
+        await tryToEnableBt();
+        let promise = new Promise((resolve) => {
+            let gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
+            gattClient.getDeviceName((err, data)=> {
+                console.info('[bluetooth_js] device name' + JSON.stringify(data))
+                expect(data).assertNull();
+                done();
+            })
+            resolve()
+        })
+        await promise.then(done)
+        done();
+    })
+
+    /**
      * @tc.number SUB_COMMUNACATION_bluetooth_GATT_GETSERVICES_CALLBACK_0001
      * @tc.name testGetServices
      * @tc.desc Test GetServices api by callback.
@@ -381,7 +405,7 @@ describe('bluetoothhostTest', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNACATION_bluetooth_GATT_READ_CHARA_VALUE_0001', 0, async function (done) {
-        console.info('[bluetooth_js] readCharacteristicValue start');
+        console.info('[bluetooth_js] readCharacteristicValue promise start');
         await tryToEnableBt();
         let promise = new Promise((resolve) => {
             let descriptors = [];
@@ -402,15 +426,62 @@ describe('bluetoothhostTest', function() {
                 if (object != null) {
                     expect(true).assertEqual(true);
                 } else {
-                    console.info('[bluetooth_js] readCharacValue data:' + JSON.stringify(data));
+                    console.info('[bluetooth_js] readCharacValue promise data:' + JSON.stringify(data));
                     expect(null).assertFail();
                 }
                 done();
             }).catch(err => {
-                console.error(`bluetooth readCharacteristicValue has error: ${err}`);
+                console.error(`bluetooth readCharacteristicValue promise has error: ${err}`);
                 expect(true).assertEqual(true);
                 done();
             });
+            resolve()
+        })
+        await promise.then(done)
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_GATT_READ_CHARA_VALUE_0002
+     * @tc.name testReadCharacteristicValue
+     * @tc.desc Test ReadCharacteristicValue api by callback.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNACATION_bluetooth_GATT_READ_CHARA_VALUE_0002', 0, async function (done) {
+        console.info('[bluetooth_js] readCharacteristicValue callback start');
+        await tryToEnableBt();
+        let promise = new Promise((resolve) => {
+            let descriptors = [];
+            let arrayBuffer = new ArrayBuffer(8);
+            let desValue =  new Uint8Array(arrayBuffer);
+            desValue[0] = 11;
+            let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+                descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
+            descriptors[0] = descriptor;
+            let arrayBufferCCC = new ArrayBuffer(8);
+            let cccValue = new Uint8Array(arrayBufferCCC);
+            cccValue[0] = 32;
+            let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+                characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
+                characteristicValue: arrayBufferCCC, descriptors:descriptors};
+            let gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
+            gattClient.readCharacteristicValue(characteristic,(err, data)=> {
+                if (err) {
+                    console.error(`bluetooth readCharacteristicValue callback has error: ${err}`);
+                    expect(true).assertEqual(true);
+                    done();
+                    return;
+                }
+                if (object != null) {
+                    expect(true).assertEqual(true);
+                } else {
+                    console.info('[bluetooth_js] readCharacValue callback data:' + JSON.stringify(data));
+                    expect(null).assertFail();
+                }
+                done();
+            })
             resolve()
         })
         await promise.then(done)
@@ -426,7 +497,7 @@ describe('bluetoothhostTest', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNACATION_bluetooth_GATT_READ_DESCRI_VALUE_0001', 0, async function (done) {
-        console.info('[bluetooth_js] readDescriptorValue start');
+        console.info('[bluetooth_js] readDescriptorValue promise start');
         await tryToEnableBt();
         let promise = new Promise((resolve) => {
             let arrayBuffer = new ArrayBuffer(8);
@@ -439,12 +510,12 @@ describe('bluetoothhostTest', function() {
                 if (object != null) {
                     expect(true).assertEqual(true);
                 } else {
-                    console.info('[bluetooth_js] BLEDescriptor data:' + JSON.stringify(object));
+                    console.info('[bluetooth_js] BLEDescriptor promise data:' + JSON.stringify(object));
                     expect(null).assertFail();
                 }
                 done();
             }).catch(err => {
-                console.error(`bluetooth readDescriptorValue has error: ${err}`);
+                console.error(`bluetooth readDescriptorValue promise has error: ${err}`);
                 expect(true).assertEqual(true);
                 done();
             });
@@ -454,6 +525,44 @@ describe('bluetoothhostTest', function() {
         done();
     })
 
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_GATT_READ_DESCRI_VALUE_0002
+     * @tc.name testReadDescriptorValue
+     * @tc.desc Test ReadDescriptorValue api by callback.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNACATION_bluetooth_GATT_READ_DESCRI_VALUE_0002', 0, async function (done) {
+        console.info('[bluetooth_js] readDescriptorValue callback start');
+        await tryToEnableBt();
+        let promise = new Promise((resolve) => {
+            let arrayBuffer = new ArrayBuffer(8);
+            let desValue =  new Uint8Array(arrayBuffer);
+            desValue[0] = 11;
+            let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+                descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
+            let gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
+            gattClient.readDescriptorValue(descriptor,(err, data)=> {
+                if (err) {
+                    console.error(`bluetooth readDescriptorValue callback has error: ${err}`);
+                    expect(true).assertEqual(true);
+                    done();
+                    return;
+                }
+                if (object != null) {
+                    expect(true).assertEqual(true);
+                } else {
+                    console.info('[bluetooth_js] BLEDescriptor callback data:' + JSON.stringify(object));
+                    expect(null).assertFail();
+                }
+                done();
+            })
+            resolve()
+        })
+        await promise.then(done)
+        done();
+    })
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_GATT_WRITE_CHARACT_VALUE_0001

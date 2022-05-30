@@ -511,4 +511,5 @@ describe('SimManagerTest', function () {
     }
     done();
   });
+
 })
