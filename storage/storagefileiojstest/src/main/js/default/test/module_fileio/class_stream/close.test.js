@@ -55,7 +55,7 @@ describe('fileio_stream_close', function () {
    * @tc.require
    */
   it('fileio_test_stream_close_sync_001', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stream_close_sync_000');
+    let fpath = await nextFileName('fileio_test_stream_close_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let fd = fileio.openSync(fpath, 0o2);
@@ -64,6 +64,7 @@ describe('fileio_stream_close', function () {
       ss.closeSync(1);
     } catch (err) {
       console.info('fileio_test_stream_close_sync_001 has failed for ' + err);
+      expect(err.message == "Number of arguments unmatched").assertTrue();
       fileio.unlinkSync(fpath);
     }
   })
