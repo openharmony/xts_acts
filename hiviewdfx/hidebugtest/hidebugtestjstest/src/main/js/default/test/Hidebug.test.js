@@ -323,8 +323,8 @@ describe('HidebugJsTest', function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0014 Test start*************');
         try {
             let temp = -1;
-            for(let i=0;i<101;i++){
-                for(let j=0;j<101;j++){
+            for(let i=0;i<=101;i++){
+                for(let j=0;j<=101;j++){
                     if(i+j == 202){
                         temp = hidebug.getCpuUsage();
                         console.info("CpuUsage is " + temp);
