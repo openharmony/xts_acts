@@ -227,10 +227,6 @@ export default function GetabilityInfo() {
             expect(typeof (data.description)).assertEqual("string");
             expect(data.icon).assertEqual("$media:icon");
             expect(typeof (data.icon)).assertEqual("string");
-            expect(data.srcPath).assertEqual("MainAbility");
-            expect(typeof (data.srcPath)).assertEqual("string");
-            expect(data.srcLanguage).assertEqual("ets");
-            expect(typeof (data.srcLanguage)).assertEqual("string");
             expect(data.isVisible).assertEqual(true);
             expect(Array.isArray(data.permissions)).assertEqual(true);
             expect(Array.isArray(data.deviceCapabilities)).assertEqual(true);
@@ -284,8 +280,6 @@ export default function GetabilityInfo() {
             expect(data.label).assertEqual("$string:app_name");
             expect(data.description).assertEqual("$string:mainability_description");
             expect(data.icon).assertEqual("$media:icon");
-            expect(data.srcPath).assertEqual("");
-            expect(data.srcLanguage).assertEqual("js");
             expect(data.isVisible).assertEqual(true);
             expect(data.deviceTypes[0]).assertEqual("phone");
             expect(data.process).assertEqual("");
@@ -304,7 +298,6 @@ export default function GetabilityInfo() {
             expect(data.readPermission).assertEqual("");
             expect(data.writePermission).assertEqual("");
             expect(data.targetAbility).assertEqual("");
-            expect(data.theme).assertEqual("");
             expect(data.metaData.length).assertEqual(0);
             expect(data.metadata.length).assertEqual(0);
             checkApplicationInfo_other(data.applicationInfo);

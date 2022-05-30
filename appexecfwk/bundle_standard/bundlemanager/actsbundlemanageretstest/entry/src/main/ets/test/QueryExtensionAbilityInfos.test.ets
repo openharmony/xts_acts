@@ -18,6 +18,7 @@ import { describe, it, expect } from 'hypium/index';
 
 const BUNDLE_NAME1 = "ohos.acts.bundle.stage";
 const BUNDLE_NAME2 = "com.noexit.com";
+const BUNDLE_NAME3 = 'com.example.third1';
 const ABILITY_NAME1 = "ExtensionAbility1";
 const ABILITY_NAME2 = "noexitAbility";
 const ABILITY_NAME3 = "ServiceAbility";
@@ -113,7 +114,6 @@ export default function QueryExtensionAbilityInfos() {
   * @tc.name: test queryExtensionAbilityInfos api
   * @tc.desc: test queryExtensionAbilityInfos with default flag
   */
-
     it('SUB_BMS_APPINFO_EXTENSION_0003', 0, async function (done) {
       await bundle.queryExtensionAbilityInfos(
         {
@@ -170,7 +170,6 @@ export default function QueryExtensionAbilityInfos() {
   * @tc.name: test queryExtensionAbilityInfos api
   * @tc.desc: test queryExtensionAbilityInfos with get application flag
   */
-
     it('SUB_BMS_APPINFO_EXTENSION_0004', 0, async function (done) {
       await bundle.queryExtensionAbilityInfos({
         "bundleName": BUNDLE_NAME1,
@@ -572,7 +571,7 @@ export default function QueryExtensionAbilityInfos() {
     /*
     * @tc.number: SUB_BMS_APPINFO_EXTENSION_0013
     * @tc.name: test queryExtensionAbilityInfos api
-    * @tc.desc: test queryExtensionAbilityInfos of Implicit query with get permission flag
+    * @tc.desc: test queryExtensionAbilityInfos of Implicit query with uri get failed 
     */
     it('SUB_BMS_APPINFO_EXTENSION_0013', 0, async function (done) {
       await bundle.queryExtensionAbilityInfos(
@@ -603,7 +602,61 @@ export default function QueryExtensionAbilityInfos() {
         })
     })
 
-
+    /*
+    * @tc.number: SUB_BMS_APPINFO_EXTENSION_0014
+    * @tc.name: test queryExtensionAbilityInfos api
+    * @tc.desc: test queryExtensionAbilityInfos of Implicit query with entities
+    */
+    it('SUB_BMS_APPINFO_EXTENSION_0014', 0, async function (done) {
+      await bundle.queryExtensionAbilityInfos({
+        "bundleName": BUNDLE_NAME1,
+        "action": "",
+        "entities": ["entitiesCommon"],
+      }, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
+        100).then(data => {
+          expect(data[0].bundleName).assertEqual("ohos.acts.bundle.stage");
+          expect(data[0].moduleName).assertEqual("myfeature");
+          expect(data[0].name).assertEqual("ExtensionAbilityW");
+          expect(data[0].labelId).assertLarger(0);
+          expect(data[0].descriptionId).assertLarger(0);
+          expect(data[0].iconId).assertEqual(0);
+          expect(data[0].isVisible).assertFalse();
+          expect(data[0].extensionAbilityType).assertEqual(3);
+          expect(data[0].permissions.length).assertEqual(0);
+          expect(data[0].enabled).assertTrue();
+          expect(data[0].readPermission).assertEqual("");
+          expect(data[0].writePermission).assertEqual("");
+          expect(data[0].metadata.length).assertEqual(0);
+        }).catch(err => {
+          expect(err).assertFail();
+        });
+      bundle.queryExtensionAbilityInfos({
+        "bundleName": BUNDLE_NAME1,
+        "action": "",
+        "entities": ["entitiesCommon"]
+      }, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
+        100, (err, data) => {
+          if (err) {
+            expect(err).assertFail();
+            done();
+            return;
+          }
+          expect(data[0].bundleName).assertEqual("ohos.acts.bundle.stage");
+          expect(data[0].moduleName).assertEqual("myfeature");
+          expect(data[0].name).assertEqual("ExtensionAbilityW");
+          expect(data[0].labelId).assertLarger(0);
+          expect(data[0].descriptionId).assertLarger(0);
+          expect(data[0].iconId).assertEqual(0);
+          expect(data[0].isVisible).assertFalse();
+          expect(data[0].extensionAbilityType).assertEqual(3);
+          expect(data[0].permissions.length).assertEqual(0);
+          expect(data[0].enabled).assertTrue();
+          expect(data[0].readPermission).assertEqual("");
+          expect(data[0].writePermission).assertEqual("");
+          expect(data[0].metadata.length).assertEqual(0);
+          done();
+        })
+    })
     /*
     * @tc.number: SUB_BMS_APPINFO_EXTENSION_0015
     * @tc.name: test queryExtensionAbilityInfos api
@@ -630,6 +683,152 @@ export default function QueryExtensionAbilityInfos() {
         })
     })
 
+    /*
+    * @tc.number: SUB_BMS_APPINFO_EXTENSION_0016
+    * @tc.name: test queryExtensionAbilityInfos api
+    * @tc.desc: test queryExtensionAbilityInfos of Implicit query with entities 
+    */
+    it('SUB_BMS_APPINFO_EXTENSION_0016', 0, async function (done) {
+      await bundle.queryExtensionAbilityInfos({
+        "bundleName": BUNDLE_NAME1,
+        "action": "",
+        "entities": ["entitiesCommon"],
+      }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
+        100).then(data => {
+          expect(data[0].bundleName).assertEqual("ohos.acts.bundle.stage");
+          expect(data[0].moduleName).assertEqual("phone");
+          expect(data[0].name).assertEqual("FormAbility");
+          expect(data[0].labelId).assertLarger(0);
+          expect(data[0].descriptionId).assertLarger(0);
+          expect(data[0].iconId).assertEqual(0);
+          expect(data[0].isVisible).assertFalse();
+          expect(data[0].extensionAbilityType).assertEqual(0);
+          expect(data[0].permissions.length).assertEqual(0);
+          expect(data[0].enabled).assertTrue();
+          expect(data[0].readPermission).assertEqual("");
+          expect(data[0].writePermission).assertEqual("");
+          expect(data[0].metadata.length).assertEqual(0);
+        }).catch(err => {
+          expect(err).assertFail();
+        });
+      bundle.queryExtensionAbilityInfos({
+        "bundleName": BUNDLE_NAME1,
+        "action": "",
+        "entities": ["entitiesCommon"]
+      }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
+        100, (err, data) => {
+          if (err) {
+            expect(err).assertFail();
+            done();
+            return;
+          }
+          expect(data[0].bundleName).assertEqual("ohos.acts.bundle.stage");
+          expect(data[0].moduleName).assertEqual("phone");
+          expect(data[0].name).assertEqual("FormAbility");
+          expect(data[0].labelId).assertLarger(0);
+          expect(data[0].descriptionId).assertLarger(0);
+          expect(data[0].iconId).assertEqual(0);
+          expect(data[0].isVisible).assertFalse();
+          expect(data[0].extensionAbilityType).assertEqual(0);
+          expect(data[0].permissions.length).assertEqual(0);
+          expect(data[0].enabled).assertTrue();
+          expect(data[0].readPermission).assertEqual("");
+          expect(data[0].writePermission).assertEqual("");
+          expect(data[0].metadata.length).assertEqual(0);
+          done();
+        })
+    })
+
+    /*
+    * @tc.number: SUB_BMS_APPINFO_EXTENSION_0017
+    * @tc.name: test queryExtensionAbilityInfos api
+    * @tc.desc: test queryExtensionAbilityInfos of Implicit query with uri get failed 
+    */
+    it('SUB_BMS_APPINFO_EXTENSION_0017', 0, async function (done) {
+      await bundle.queryExtensionAbilityInfos(
+        {
+          "type": "",
+          "uri": "https://www.test.com/abbc"
+        }, bundle.ExtensionAbilityType.WINDOW, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
+        100).then(data => {
+          expect(data).assertFail();
+        }).catch(err => {
+          expect(err).assertEqual(1);
+        });
+      bundle.queryExtensionAbilityInfos(
+        {
+          "type": "",
+          "uri": "https://www.test.com/abbc"
+        }, bundle.ExtensionAbilityType.WINDOW, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
+        100, (err, data) => {
+          if (err) {
+            expect(err).assertEqual(1);
+            done();
+            return;
+          }
+          expect(data).assertFail();
+          done();
+        })
+    })
+
+    /*
+    * @tc.number: SUB_BMS_APPINFO_EXTENSION_0020
+    * @tc.name: test getBundleInfo api
+    * @tc.desc: test getBundleInfo get extensionAbilityInfos success 
+    */
+    it('SUB_BMS_APPINFO_EXTENSION_0020', 0, async function (done) {
+      await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_EXTENSION_ABILITY).then(data => {
+        expect(data.extensionAbilityInfo.length).assertEqual(7);
+        expect(data.extensionAbilityInfo[0].name).assertEqual("ExtensionAbilityA");
+        expect(data.extensionAbilityInfo[1].name).assertEqual("ExtensionAbilityB");
+        expect(data.extensionAbilityInfo[2].name).assertEqual("ExtensionAbilityQ");
+        expect(data.extensionAbilityInfo[3].name).assertEqual("ExtensionAbilityW");
+        expect(data.extensionAbilityInfo[4].name).assertEqual("ExtensionAbility1");
+        expect(data.extensionAbilityInfo[5].name).assertEqual("FormAbility");
+        expect(data.extensionAbilityInfo[6].name).assertEqual("ServiceAbility");
+      }).catch(err => {
+        expect(err).assertFail();
+      });
+      bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_WITH_EXTENSION_ABILITY, (err, data) => {
+        if (err) {
+          expect(err).assertFail();
+          done();
+          return;
+        }
+        expect(data.extensionAbilityInfo.length).assertEqual(7);
+        expect(data.extensionAbilityInfo[0].name).assertEqual("ExtensionAbilityA");
+        expect(data.extensionAbilityInfo[1].name).assertEqual("ExtensionAbilityB");
+        expect(data.extensionAbilityInfo[2].name).assertEqual("ExtensionAbilityQ");
+        expect(data.extensionAbilityInfo[3].name).assertEqual("ExtensionAbilityW");
+        expect(data.extensionAbilityInfo[4].name).assertEqual("ExtensionAbility1");
+        expect(data.extensionAbilityInfo[5].name).assertEqual("FormAbility");
+        expect(data.extensionAbilityInfo[6].name).assertEqual("ServiceAbility");
+        done();
+      })
+    })
+
+    /*
+    * @tc.number: SUB_BMS_APPINFO_EXTENSION_0021
+    * @tc.name: test getBundleInfo api
+    * @tc.desc: test getBundleInfo with extensionAbilityInfos flag  get failed 
+    */
+    it('SUB_BMS_APPINFO_EXTENSION_0021', 0, async function (done) {
+      await bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_EXTENSION_ABILITY).then(data => {
+        expect(data.extensionAbilityInfo.length).assertEqual(0);
+      }).catch(err => {
+        expect(err).assertEqual(1);
+      });
+      bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_EXTENSION_ABILITY, (err, data) => {
+        if (err) {
+          expect(err).assertEqual(1);
+          done();
+          return;
+        }
+        expect(data.extensionAbilityInfo.length).assertEqual(0);
+        done();
+      })
+    })
+
     function checkApplication(data) {
       expect(data[0].applicationInfo.name).assertEqual("ohos.acts.bundle.stage");
       expect(data[0].applicationInfo.codePath).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage");
@@ -645,9 +844,9 @@ export default function QueryExtensionAbilityInfos() {
       expect(data[0].applicationInfo.process).assertEqual("");
       expect(data[0].applicationInfo.entryDir).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage/phone");
       expect(data[0].applicationInfo.permissions.length).assertEqual(0);
-      expect(data[0].applicationInfo.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage/phone");
-      expect(data[0].applicationInfo.moduleInfos[0].moduleName).assertEqual("phone");
-      expect(data[0].applicationInfo.moduleInfos[0].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage/phone");
+      expect(data[0].applicationInfo.moduleSourceDirs[1]).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage/phone");
+      expect(data[0].applicationInfo.moduleInfos[1].moduleName).assertEqual("phone");
+      expect(data[0].applicationInfo.moduleInfos[1].moduleSourceDir).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage/phone");
       expect(JSON.stringify(data[0].applicationInfo.metaData)).assertEqual("{}");
       expect(JSON.stringify(data[0].applicationInfo.metadata)).assertEqual("{}");
       expect(data[0].applicationInfo.enabled).assertTrue();
