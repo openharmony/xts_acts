@@ -2788,7 +2788,7 @@ describe('Image', function () {
             let decodingOptions = {
                 sampleSize:1,
                 editable: true,
-                desiredSize:{ width:1300, height:1700},
+                desiredSize:{ width:1500, height:1500},
                 rotate:10,
                 desiredPixelFormat:2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
