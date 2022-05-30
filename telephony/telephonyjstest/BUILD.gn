@@ -16,12 +16,13 @@ group("telephonyjstest") {
   deps = [
     "call_manager:call_manager",
     "cellular_data:cellular_data",
+    "netmanager_base:netmanager_base",
+    "netmanager_http:ActsNetManagerHttpEtsTest",
 
     #"contact_function:ActsContactFunctionEtsTest",
     #"contact_function_merge:ActsContactFunctionMergeEtsTest",
     #"contact_performance:ActsContactPerformanceEtsTest",
     #"contact_stability:ActsContactStabilityEtsTest",
-    "netmanager_http:ActsNetManagerHttpEtsTest",
     "netmanager_socket:ActsNetManagerSocketEtsTest",
     "network_search:network_search",
     "observer:ActsObserverEtsTest",
