@@ -57,6 +57,38 @@
         }
       }
     ],
+    "defPermissions": [
+      {
+        "availableScope": [],
+        "grantMode": "user_grant",
+        "name": "ohos.permission.ACCESS_LOCATION",
+        "availableLevel": "system_basic",
+          "provisionEnable": true,
+          "distributedSceneEnable": true,
+          "label": "ACCESS_LOCATION label",
+          "description": "ACCESS_LOCATION description"
+      },
+    {
+        "availableScope": [],
+        "grantMode": "system_grant",
+        "name": "ohos.permission.MANAGE_SECURE_SETTINGS",
+        "availableLevel": "system_basic",
+          "provisionEnable": true,
+          "distributedSceneEnable": false,
+          "label": "MANAGE_SECURE_SETTINGS label",
+          "description": "MANAGE_SECURE_SETTINGS description"
+      },
+      {
+        "availableScope": [],
+        "grantMode": "user_grant",
+        "name": "ohos.permission.LOCATION",
+       "availableLevel": "system_basic",
+          "provisionEnable": true,
+          "distributedSceneEnable": true,
+          "label": "LOCATION label",
+          "description": "LOCATION description"
+      }
+    ],
     "reqPermissions": [
       {
         "name" : "ohos.permission.GET_WIFI_INFO",
@@ -82,9 +114,13 @@
         "name" : "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
         "reason" : "use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
       },
-      {
+       {
         "name" : "ohos.permission.GET_WIFI_LOCAL_MAC",
         "reason" : "use ohos.permission.GET_WIFI_LOCAL_MAC"
+      },
+      {
+        "name" : "ohos.permission.GET_WIFI_PEERS_MAC",
+        "reason" : "use ohos.permission.GET_WIFI_PEERS_MAC"
       },
       {
         "name" : "ohos.permission.MANAGE_WIFI_HOTSPOT",
@@ -93,6 +129,60 @@
       {
         "name" : "ohos.permission.GET_WIFI_INFO_INTERNAL",
         "reason" : "use ohos.permission.GET_WIFI_INFO_INTERNAL"
+      },
+       {
+        "name": "ohos.permission.LOCATION",
+        "reason": "need use ohos.permission.LOCATION",
+        "usedScene": {
+          "ability": [
+            "ohos.acts.location.geolocation.function.MainAbility"
+          ],
+          "when": "inuse"
+        }
+      },
+      {
+        "name":"ohos.permission.ACCESS_LOCATION",
+        "reason":"need use ohos.permission.ACCESS_LOCATION",
+        "usedScene": {
+          "ability": [
+            "ohos.acts.location.geolocation.function.MainAbility"
+          ],
+          "when": "inuse"
+        }
+      },
+      {
+        "name":"ohos.permission.LOCATION_IN_BACKGROUND",
+        "reason":"need use ohos.permission.LOCATION_IN_BACKGROUND",
+        "usedScene": {
+          "ability": [
+            "ohos.acts.location.geolocation.function.MainAbility"
+          ],
+          "when": "inuse"
+        }
+      },
+   {
+        "name":"ohos.permission.MANAGE_SECURE_SETTINGS",
+        "reason":"need use ohos.permission.MANAGE_SECURE_SETTINGS",
+        "usedScene": {
+          "ability": [
+            "ohos.acts.location.geolocation.function.MainAbility"
+          ],
+          "when": "inuse"
+        }
+      },
+     {
+        "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+        "reason": "use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
+      },
+      {
+        "name": "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS",
+        "reason": "use ohos.permission.REVOKE_SENSITIVE_PERMISSIONS"
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO"
       }
     ]
   }
