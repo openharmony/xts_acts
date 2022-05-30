@@ -126,24 +126,6 @@ describe('bluetoothhostTest', function() {
     })
 
 
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetoothble_CREATE_GATT_SERVER_0001
-     * @tc.name testCreateGattServer
-     * @tc.desc Test CreateGattServer api .
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('SUB_COMMUNACATION_bluetoothble_CREATE_GATT_SERVER_0001', 0, async function (done) {
-        console.info('[bluetooth_js] createGattServer test start ...');
-        await tryToEnableBt();
-        let result = bluetooth.BLE.createGattServer();
-        let resultLength = Object.keys(result).length;
-        console.info("[bluetooth_js] createGattServer:" + JSON.stringify(result) + "length:" + resultLength);
-        expect(resultLength).assertEqual(1);
-        done();
-    })
-
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_START_ADVERTISING_0001
