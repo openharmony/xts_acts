@@ -27,7 +27,7 @@ describe('Telephony_NETSTACK_HTTPTest',function(){
     it('Telephony_NETSTACK_HttpTestBasicGet_0100', 0, function(done){
         let http = netHttp.createHttp()
         http.request("https://httpbin.org/anything").then(function(data){
-            expect(data.responseCode === net_http.ResponseCode.OK).assertTrue();
+            expect(data.responseCode === netHttp.ResponseCode.OK).assertTrue();
             done();
         })
     });
@@ -41,7 +41,7 @@ describe('Telephony_NETSTACK_HTTPTest',function(){
     it('Telephony_NETSTACK_HttpTestUserAgent_0100', 0, function(done){
         let http = netHttp.createHttp()
         http.request("https://httpbin.org/user-agent").then(function(data){
-            expect(data.responseCode === net_http.ResponseCode.OK).assertTrue();
+            expect(data.responseCode === netHttp.ResponseCode.OK).assertTrue();
             expect(JSON.parse(data.result)["user-agent"] === "libcurl-agent/1.0").assertTrue();
             done();
         })
@@ -56,7 +56,7 @@ describe('Telephony_NETSTACK_HTTPTest',function(){
     it('Telephony_NETSTACK_HttpTestHeader_0100', 0, function(done){
         let http = netHttp.createHttp();
         http.request("https://httpbin.org/headers").then(function(data){
-            expect(data.responseCode === net_http.ResponseCode.OK).assertTrue()
+            expect(data.responseCode === netHttp.ResponseCode.OK).assertTrue()
             console.info("NETSTACK ####" + JSON.stringify(JSON.parse(data.result)))
             expect(JSON.parse(data.result)["headers"]["Content-Type"] === "application/json").assertTrue()
             done()
@@ -72,10 +72,10 @@ describe('Telephony_NETSTACK_HTTPTest',function(){
     it('Telephony_NETSTACK_HttpTestPost_0100', 0, function(done){
         let http = netHttp.createHttp()
         http.request("https://httpbin.org/post" ,{
-            method : net_http.RequestMethod.POST,
+            method : netHttp.RequestMethod.POST,
             extraData : "MineMine"
         }).then(function(data){
-            expect(data.responseCode === net_http.ResponseCode.OK).assertTrue()
+            expect(data.responseCode === netHttp.ResponseCode.OK).assertTrue()
             expect(JSON.parse(data.result)["data"] === "MineMine").assertTrue()
             done();
         })
@@ -90,10 +90,10 @@ describe('Telephony_NETSTACK_HTTPTest',function(){
     it('Telephony_NETSTACK_HttpTestPut_0100', 0, function(done){
         let http = netHttp.createHttp()
         http.request("https://httpbin.org/put" ,{
-            method : net_http.RequestMethod.PUT,
+            method : netHttp.RequestMethod.PUT,
             extraData : "MineMine"
         }).then(function(data){
-            expect(data.responseCode === net_http.ResponseCode.OK).assertTrue()
+            expect(data.responseCode === netHttp.ResponseCode.OK).assertTrue()
             expect(JSON.parse(data.result)["data"] === "MineMine").assertTrue()
             done();
         })
@@ -108,7 +108,7 @@ describe('Telephony_NETSTACK_HTTPTest',function(){
     it('Telephony_NETSTACK_HttpTestCookies_0100', 0, function(done){
         let http = netHttp.createHttp()
         http.request("https://httpbin.org/cookies/set/name/value").then(function(data){
-            expect(data.responseCode === net_http.ResponseCode.OK).assertTrue()
+            expect(data.responseCode === netHttp.ResponseCode.OK).assertTrue()
             expect(data.cookies !== "").assertTrue()
             done();
         })
@@ -128,7 +128,7 @@ describe('Telephony_NETSTACK_HTTPTest',function(){
                 "name2" : "mine2",
             }
         }).then(function(data){
-            expect(data.responseCode === net_http.ResponseCode.OK).assertTrue()
+            expect(data.responseCode === netHttp.ResponseCode.OK).assertTrue()
             expect(JSON.parse(data.result)["key1"] === "val1").assertTrue()
             expect(JSON.parse(data.result)["key2"] === "val2").assertTrue()
             expect(JSON.parse(data.result)["name1"] === "mine1").assertTrue()
