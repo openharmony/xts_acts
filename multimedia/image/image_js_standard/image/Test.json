@@ -7,6 +7,13 @@
 		"shell-timeout": "120000"
     },
     "kits": [
+		{
+            "test-file-name": [
+                "ActsImageJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
         {
             "type": "ShellKit",
             "run-command": [
@@ -42,14 +49,6 @@
             "teardown-command":[
               
             ]
-        },
-        
-        {
-            "test-file-name": [
-                "ActsImageJsTest.hap"
-            ],
-            "type": "AppInstallKit",
-            "cleanup-apps": true
         }
     ]
     
