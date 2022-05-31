@@ -122,7 +122,7 @@ describe('window_test', function () {
                 expect(!data.isKeepScreenOn).assertTrue();
                 expect(!data.isTransparent).assertTrue();
                 expect(data.brightness != null).assertTrue();
-                expect(data.dimBehindValue).assertEqual(undefined);
+                expect(data.dimBehindValue).assertEqual(0);
                 expect(!data.isRoundCorner).assertTrue();
                 expect(!data.isPrivacyMode).assertTrue();
                 done();
@@ -166,7 +166,7 @@ describe('window_test', function () {
                     expect(!data.isKeepScreenOn).assertTrue();
                     expect(!data.isTransparent).assertTrue();
                     expect(data.brightness != null).assertTrue();
-                    expect(data.dimBehindValue).assertEqual(undefined);
+                    expect(data.dimBehindValue).assertEqual(0);
                     expect(!data.isRoundCorner).assertTrue();
                     expect(!data.isPrivacyMode).assertTrue();
                     done();
