@@ -144,6 +144,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                     }
                 }
             }
+            done();
         });
         bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, (err, data3) => {
             expect(data3.abilityInfos[1].backgroundModes).assertEqual(AUDIOPLAYBACK | AUDIORECORDING | LOCATION
