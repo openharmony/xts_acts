@@ -116,270 +116,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     }
     /**
-    * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_006
-    * @tc.name       Test setSystemBarEnableTest6
-    * @tc.desc       Test ohosWindow.setSystemBarEnable API function test1.
-    */
-    it('setSystemBarEnableTest6', 0, done => {
-      let caseName = 'setSystemBarEnableTest6';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      let [flagStatus, flagNav] = [false, false];
-      console.log(msgStr + 'begin');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', systembartintstate => {
-        console.log(msgStr + 'ohosWindow.on  systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
-        if (flagStatus || flagNav) {
-          expect(!!systembartintstate).assertTrue();
-          expect(!!systembartintstate.regionTint).assertTrue();
-          console.log(msgStr + 'flagStatus || flagNav' + msgStr + 'ohosWindow.on systemBarTintChange regionTint:' + JSON.stringify(systembartintstate.regionTint));
-          done();
-        }
-      })
-      let mainWnd = null;
-      console.log(msgStr + 'mainWnd = null');
-      console.log(msgStr + 'windowStage = ' + JSON.stringify(windowStage));
-      windowStage.getMainWindow((err, data) => {
-        console.log(msgStr + 'getMainWindow data2' + JSON.stringify(data));
-        if (err && err.code) {
-          unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
-        }
-        expect(!!data).assertTrue();
-        mainWnd = data;
-        console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
-        mainWnd.show((err, data) => {
-          console.log(msgStr + 'mainWnd.show err' + JSON.stringify(err));
-          console.log(msgStr + 'mainWnd.show data' + JSON.stringify(data));
-          if (err && err.code) {
-            unexpectedError(data, caseName, 'mainWnd.show', done);
-          }
-          expect(!data).assertTrue();
-          console.log(msgStr + 'mainWnd.show success');
-          mainWnd.setFullScreen(true, (err, data) => {
-            console.log(msgStr + 'mainWnd.setFullScreen data:' + JSON.stringify(data));
-            if (err && err.code) {
-              unexpectedError(data, caseName, 'mainWnd.setFullScreen true', done);
-            }
-            expect(!data).assertTrue();
-            console.log(msgStr + 'mainWnd.setFullScreen success');
-            flagNav = true;
-            mainWnd.setSystemBarEnable(['navigation'], (err, data) => {
-              console.log(msgStr + 'mainWnd.setSystemBarEnable navigation JSON.stringify(data)==' + JSON.stringify(data));
-              if (err && err.code) {
-                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [navigation]', done);
-              }
-              expect(!data).assertTrue();
-              console.log(msgStr + 'mainWnd.setSystemBarEnable success flagNav==' + flagNav);
-              flagStatus = true;
-              mainWnd.setSystemBarEnable(['status'], (err, data) => {
-                console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(data)===' + JSON.stringify(data));
-                if (err && err.code) {
-                  console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(err)===' + JSON.stringify(err));
-                  unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status]', done);
-                }
-                expect(!data).assertTrue();
-              })
-            })
-          })
-        })
-
-      })
-      console.log(msgStr + 'finished!!');
-    });
-    /**
-    * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_007
-    * @tc.name       Test setSystemBarEnableTest7
-    * @tc.desc       Verify that the scene hides the status bar and displays the navigation bar.
-    */
-    it('setSystemBarEnableTest7', 0, function (done) {
-      let caseName = 'setSystemBarEnableTest7';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      let [flagStatus, flagNav] = [false, false];
-      console.log(msgStr + 'begin');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', systembartintstate => {
-        console.log(msgStr + 'ohosWindow.on systembartintstate ：' + JSON.stringify(systembartintstate));
-        console.log(msgStr + 'ohosWindow.on systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
-        if (flagStatus || flagNav) {
-          console.log(msgStr + 'ohosWindow.on flagStatus || flagNav：');
-          expect(!!systembartintstate).assertTrue();
-          done();
-        }
-      })
-      let mainWnd = null;
-      console.log(msgStr + 'mainWnd = null')
-      windowStage.getMainWindow((err, data) => {
-        if (err && err.code) {
-          unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
-        }
-        expect(!!data).assertTrue();
-        mainWnd = data;
-        console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
-        mainWnd.show((err, data) => {
-          if (err && err.code) {
-            unexpectedError(data, caseName, 'mainWnd.show', done);
-          }
-          console.log(msgStr + 'mainWnd.show success');
-          expect(!data).assertTrue();
-          mainWnd.setFullScreen(true, (err, data) => {
-            console.log(msgStr + 'mainWnd.setFullScreen' + JSON.stringify(data));
-            if (err && err.code) {
-              unexpectedError(data, caseName, 'mainWnd.setFullScreen true', done);
-            }
-            expect(!data).assertTrue();
-            mainWnd.setSystemBarEnable(['status'], (err, data) => {
-              console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(data)==' + JSON.stringify(data));
-              if (err && err.code) {
-                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status]', done);
-              }
-              flagStatus = true;
-              expect(!data).assertTrue();
-              mainWnd.setSystemBarEnable(['navigation'], (err, data) => {
-                if (err && err.code) {
-                  unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [navitgation]', done);
-                }
-                flagNav = true;
-                expect(!data).assertTrue();
-              })
-            })
-          })
-        })
-      })
-      console.log(msgStr + 'finished!!');
-    });
-    /**
-    * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_008
-    * @tc.name       Test setSystemBarEnableTest8
-    * @tc.desc       Verify that the scene displays both the status bar and the navigation bar.
-    */
-    it('setSystemBarEnableTest8', 0, function (done) {
-      let caseName = 'setSystemBarEnableTest8';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      let [flagStatus, flagNav] = [false, false];
-      console.log(msgStr + 'begin');
-      let mainWnd = null;
-      console.log(msgStr + 'mainWnd = null');
-      windowStage.getMainWindow((err, data) => {
-        if (err && err.code) {
-          unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
-        }
-        expect(!!data).assertTrue();
-        mainWnd = data;
-        console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
-        mainWnd.show((err, data) => {
-          if (err && err.code) {
-            unexpectedError(data, caseName, 'mainWnd.show', done);
-          }
-          console.log(msgStr + 'mainWnd.show success');
-          expect(!data).assertTrue();
-          mainWnd.setFullScreen(true, (err, data) => {
-            console.log(msgStr + 'mainWnd.setFullScreen' + JSON.stringify(data));
-            if (err && err.code) {
-              unexpectedError(data, caseName, 'mainWnd.setFullScreen true', done);
-            }
-            expect(!data).assertTrue();
-            mainWnd.setSystemBarEnable([], (err, data) => {
-              console.log(msgStr + 'mainWnd.setSystemBarEnable [] JSON.stringify(data)==' + JSON.stringify(data));
-              if (err && err.code) {
-                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable []', done);
-              }
-              expect(!data).assertTrue();
-              listenerData.on = true;
-              listenerData.typeStr = 'systemBarTintChange';
-              setTimeout(() => {
-                ohosWindow.on('systemBarTintChange', systembartintstate => {
-                  console.log(msgStr + 'ohosWindow.on systemBarTintChange ：' + JSON.stringify(systembartintstate));
-                  console.log(msgStr + 'ohosWindow.on systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
-                  setTimeout(() => {
-                    if (flagStatus || flagNav) {
-                      let enable = systembartintstate.regionTint[0].isEnable
-                      let numType = systembartintstate.regionTint[0].type
-                      console.log(msgStr + 'ohosWindow.on isEnable : ' + JSON.stringify(enable));
-                      console.log(msgStr + 'ohosWindow.on numType : ' + JSON.stringify(numType));
-
-                      expect(numType === 2112 || enable).assertTrue();
-                    }
-                    done();
-                  }, 3000)
-                })
-              }, 2300)
-              mainWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
-                if (err && err.code) {
-                  unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status,navigation]', done);
-                }
-                flagStatus = true;
-                flagNav = true;
-                expect(!data).assertTrue();
-              })
-            })
-          })
-        })
-      })
-    });
-    /**
-    * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_009
-    * @tc.name       Test setSystemBarEnableTest9
-    * @tc.desc       Verify that the scene hides both the status bar and the navigation bar.
-    */
-//    it('setSystemBarEnableTest9', 0, function (done) {
-//      let caseName = 'setSystemBarEnableTest9';
-//      let msgStr = 'jsunittest ' + caseName + ' ';
-//      let [flagStatus, flagNav] = [false, false];
-//      console.log(msgStr + 'begin');
-//      let mainWnd = null;
-//      console.log(msgStr + 'mainWnd = null');
-//      windowStage.getMainWindow((err, data) => {
-//        if (err && err.code) {
-//          unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
-//        }
-//        expect(!!data).assertTrue();
-//        mainWnd = data;
-//        console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
-//        mainWnd.show((err, data) => {
-//          if (err && err.code) {
-//            unexpectedError(data, caseName, 'mainWnd.show', done);
-//          }
-//          console.log(msgStr + 'mainWnd.show success');
-//          expect(!data).assertTrue();
-//          mainWnd.setFullScreen(true, (err, data) => {
-//            console.log(msgStr + 'mainWnd.setFullScreen' + JSON.stringify(data));
-//            if (err && err.code) {
-//              unexpectedError(data, caseName, 'mainWnd.setFullScreen', done);
-//            }
-//            expect(!data).assertTrue();
-//            mainWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
-//              console.log(msgStr + 'mainWnd.setSystemBarEnable status,navigation JSON.stringify(data)==' + JSON.stringify(data));
-//              if (err && err.code) {
-//                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status,navigation]', done);
-//              }
-//              flagStatus = true;
-//              flagNav = true;
-//              expect(!data).assertTrue();
-//              listenerData.on = true;
-//              listenerData.typeStr = 'systemBarTintChange';
-//              ohosWindow.on('systemBarTintChange', (systembartintstate) => {
-//                console.log(msgStr + 'ohosWindow.on systemBarTintChange ：' + JSON.stringify(systembartintstate));
-//                console.log(msgStr + 'ohosWindow.on systemBarTintChange systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
-//                if (flagStatus || flagNav) {
-//                  expect(!!systembartintstate).assertTrue();
-//                  done();
-//                }
-//              })
-//              mainWnd.setSystemBarEnable([], (err, data) => {
-//                if (err && err.code) {
-//                  unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable []', done);
-//                }
-//                expect(!data).assertTrue();
-//                done();
-//              })
-//            })
-//          })
-//        })
-//      })
-//    });
-
-    /**
      * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_010
      * @tc.name       Test setSystemBarEnableTest10
      * @tc.desc       Verify the scene where illegal values are entered when the navigation bar and status bar are displayed or hidden
@@ -1157,6 +893,23 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         } else {
           expect(!data).assertTrue();
           console.log(msgStr + 'windowStage.loadContent end data=' + JSON.stringify(data));
+        }
+        done();
+      });
+    })
+    /**
+    * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_012
+    * @tc.name       Test loadContentTest12
+    * @tc.desc       Verify the scenario of loading an existing page
+    */
+    it('loadContentTest12', 0, function (done) {
+      let caseName = 'loadContentTest12';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      windowStage.loadContent(null, abilityStorage, (err, data) => {
+        if (err && err.code) {
+          expectedError(err, caseName, 'windowStage.loadContent', done,130);
+          console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
         }
         done();
       });

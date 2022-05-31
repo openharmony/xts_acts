@@ -95,7 +95,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     function expectedError(error, caseName, apiName, done, code) {
       let msgStr = 'jsunittest ' + caseName + ' ' + apiName + ' failed, err: ';
       console.log(msgStr + JSON.stringify(error));
-      console.log(msgStr + 'code:'+code);
+      console.log(msgStr + 'code:' + code);
       if (error.code === code) {
         expect(TRUE_FLAG).assertTrue();
       }
@@ -234,9 +234,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       listenerData.typeStr = 'systemAvoidAreaChange';
       tempWnd.on('systemAvoidAreaChange', (avoidAreaData) => {
         console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, systemBatData : ' + JSON.stringify(avoidAreaData));
-        setTimeout(()=>{
+        setTimeout(() => {
           console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, systemBatData 1100 : ' + JSON.stringify(avoidAreaData));
-        },1100)
+        }, 1100)
         done();
       })
       console.log(msgStr + 'tempWnd.on systemAvoidAreaChange finished');
@@ -994,7 +994,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         expectedError(err, caseName, 'tempWnd.loadContent', done, 130);
         console.log(msgStr + 'tempWnd.loadContent(null)' + JSON.stringify(err));
       });
-      console.log(msgStr + 'tempWnd.loadContent loadContentData:'+JSON.stringify(loadContentData));
+      console.log(msgStr + 'tempWnd.loadContent loadContentData:' + JSON.stringify(loadContentData));
       if (!errFlag) {
         console.log(msgStr + 'should report err');
         expect(TRUE_FLAG).assertFail();
@@ -1029,10 +1029,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let load5 = await windowStage.loadContent(null, abilityStorage).catch((err) => {
-        expectedError(err, caseName, 'tempWnd.loadContent', done,130);
+        expectedError(err, caseName, 'tempWnd.loadContent', done, 130);
         console.log(msgStr + 'tempWnd.loadContent(pages/index/index.ets)' + JSON.stringify(err));
       });
-//      expect(!load5).assertTrue();
       console.log(msgStr + 'tempWnd.loadContent end load5=' + JSON.stringify(load5));
       done();
     })
@@ -1113,19 +1112,18 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin ');
       let mainWnd = null;
-      let windowData = await ohosWindow.create(context,'setPrivacyModeTest1', ohosWindow.WindowType.TYPE_SYSTEM_ALERT).catch((err) => {
-        unexpectedError(err, caseName, 'ohosWindow.create', done);
-        done();
-      })
+      let windowData = await ohosWindow.create(context, 'setPrivacyModeTest1', ohosWindow.WindowType.TYPE_SYSTEM_ALERT)
+        .catch((err) => {
+          unexpectedError(err, caseName, 'ohosWindow.create', done);
+        })
       expect(!!windowData).assertTrue();
       console.log(msgStr + 'window.create success windowData' + windowData);
       mainWnd = windowData;
       let firstPro = await mainWnd.getProperties().catch((err, data) => {
         unexpectedError(err, caseName, 'mainWnd.getProperties', done);
-        done();
       })
-      expect(!firstPro.isPrivacyMode).assertTrue();
       console.log(msgStr + 'mainWnd.getProperties firstPro=' + JSON.stringify(firstPro));
+      expect(!firstPro.isPrivacyMode).assertTrue();
       let firstPrivacyMode = await mainWnd.setPrivacyMode(true).catch((err, data) => {
         unexpectedError(err, caseName, 'mainWnd.setPrivacyMode', done);
         console.log(msgStr + 'mainWnd.setPrivacyMode(true) err=' + JSON.stringify(err));
@@ -1134,7 +1132,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'mainWnd.setPrivacyMode true firstPrivacyMode=' + JSON.stringify(firstPrivacyMode));
       let secondPro = await mainWnd.getProperties().catch((err, data) => {
         unexpectedError(err, caseName, 'mainWnd.getProperties', done);
-        done();
       })
       console.log(msgStr + 'mainWnd.getProperties secondPro:' + JSON.stringify(secondPro.isPrivacyMode));
       expect(secondPro.isPrivacyMode).assertTrue();
@@ -1146,38 +1143,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'mainWnd.setPrivacyMode(false) secondPrivacyMode=' + JSON.stringify(secondPrivacyMode));
       let lastPro = await mainWnd.getProperties().catch((err, data) => {
         unexpectedError(err, caseName, 'mainWnd.getProperties', done);
-        done();
       })
       console.log(msgStr + 'mainWnd.getProperties lastPro:' + JSON.stringify(lastPro.isPrivacyMode));
       expect(!lastPro.isPrivacyMode).assertTrue();
-      done();
-    })
-    /**
-    * @tc.number     SUB_WINDOW_DESTROY_JSAPI_001
-    * @tc.name       Test destroyTest1
-    * @tc.desc       Verification window destruction scenario.
-    */
-    it('destroyTest1', 0, async function (done) {
-      let caseName = 'destroyTest1';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
-      let windowId = 'destroyTest1';
-      console.log(msgStr + 'begin');
-      let tempWnd = await ohosWindow.create(context, windowId, baseWndType).catch((err) => {
-        unexpectedError(err, caseName, 'ohosWindow.create', done);
-      });
-      console.log(msgStr + 'ohosWindow.create ' + baseWndType + ' wnd: ' + tempWnd);
-      expect(!!tempWnd).assertTrue();
-      console.log(msgStr + 'tempWnd.destroy start');
-      await tempWnd.destroy().catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.destroy', done);
-      });
-      console.log(msgStr + 'tempWnd.destroy end');
-      let findWnd = await ohosWindow.find(windowId).catch((err) => {
-        expectedError(err, caseName, 'ohosWindow.find', done);
-      });
-      console.log(msgStr + 'find findWnd:'+JSON.stringify(findWnd));
-      expect(!findWnd).assertTrue();
       done();
     })
   })
