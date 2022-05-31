@@ -18,13 +18,13 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-describe('fileio_stream', function () {
+describe('fileio_stream_flush', function () {
 
   /**
    * @tc.number SUB_DF_FILEIO_STREAM_FLUSHSYNC_0000
    * @tc.name fileio_test_stream_flush_sync_000
-   * @tc.desc Test flushSync() interface
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test flushSync() interface, refresh file stream.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -37,20 +37,46 @@ describe('fileio_stream', function () {
       let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
       expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(ss.flushSync() == null).assertTrue();
-      expect(ss.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-    } catch (e) {
-      console.log('fileio_test_stream_flush_sync_000 has failed for ' + e);
+      ss.flushSync();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
+    } catch (err) {
+      console.info('fileio_test_stream_flush_sync_000 has failed for ' + err);
       expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STREAM_FLUSHSYNC_0100
+   * @tc.name fileio_test_stream_flush_sync_001
+   * @tc.desc Test flushSync() interface, When there are parameters.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+   it('fileio_test_stream_flush_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_flush_sync_001');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    let ss = fileio.createStreamSync(fpath, 'r+');
+    expect(ss !== null).assertTrue();
+    expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
+    try {
+      ss.flushSync(1);
+    } catch (err) {
+      console.info('fileio_test_stream_flush_sync_001 has failed for ' + err);
+      expect(err.message == "Number of arguments unmatched").assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
   });
 
   /**
    * @tc.number SUB_DF_FILEIO_STREAM_FLUSHASYNC_0000
    * @tc.name fileio_test_stream_flush_async_000
-   * @tc.desc Test flushSync() interface
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test flush() interface, refresh the file stream and return in promise mode.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -62,25 +88,24 @@ describe('fileio_stream', function () {
     try {
       let ss = await fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
+      expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
       ss.flush().then(
         function (err) {
-          expect(!err).assertTrue();
-          expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-          expect(ss.closeSync() == null).assertTrue();
-          expect(fileio.unlinkSync(fpath) == null).assertTrue();
+          ss.closeSync();
+          fileio.unlinkSync(fpath);
         })
       done();
-    } catch (e) {
-      console.log('fileio_test_stream_flush_async_000 has failed for ' + e);
+    } catch (err) {
+      console.info('fileio_test_stream_flush_async_000 has failed for ' + err);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_FLUSHASYNC_0010
+   * @tc.number SUB_DF_FILEIO_STREAM_FLUSHASYNC_0100
    * @tc.name fileio_test_stream_flush_async_001
-   * @tc.desc Test flushSync() interface
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test flush() interface, refresh the file stream and return in callback mode.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -94,13 +119,14 @@ describe('fileio_stream', function () {
       expect(ss !== null).assertTrue();
       expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
       ss.flush(function (err) {
-        expect(ss.closeSync() == null).assertTrue();
-        expect(fileio.unlinkSync(fpath) == null).assertTrue();
+        ss.closeSync();
+        fileio.unlinkSync(fpath);
         done();
       })
-    } catch (e) {
-      console.log('fileio_test_stream_flush_async_001 has failed for ' + e);
+    } catch (err) {
+      console.info('fileio_test_stream_flush_async_001 has failed for ' + err);
       expect(null).assertFail();
     }
   });
+
 });
