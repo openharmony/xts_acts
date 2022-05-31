@@ -18,101 +18,106 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-describe('fileio_stream', function () {
+describe('fileio_stream_close', function () {
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_FDOPENSTREAMSYNC_0000
-   * @tc.name fileio_test_stream_fdopen_stream_sync_000
-   * @tc.desc Test fdopenStreamSync() interface
-   * @tc.size MEDIUM(中型)
+   * @tc.number SUB_DF_FILEIO_STREAM_CLOSESYNC_0000
+   * @tc.name fileio_test_stream_close_sync_000
+   * @tc.desc Test closeSync() interface,Close file stream.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_fdopen_stream_sync_000', 0, async function () {
-    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_sync_000');
+  it('fileio_test_stream_close_sync_000', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_close_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       let fd = fileio.openSync(fpath, 0o2);
       let ss = fileio.fdopenStreamSync(fd, 'r+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-    } catch (e) {
-      console.log('fileio_test_stream_fdopen_stream_sync_000 has failed for ' + e);
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
+    } catch (err) {
+      console.info('fileio_test_stream_close_sync_000 has failed for ' + err);
       expect(null).assertFail();
     }
   })
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_FDOPENSTREAMSYNC_0010
-   * @tc.name fileio_test_stream_fdopen_stream_sync_001
-   * @tc.desc Test fdopenStreamSync() interface
-   * @tc.size MEDIUM(中型)
+   * @tc.number SUB_DF_FILEIO_STREAM_CLOSESYNC_0100
+   * @tc.name fileio_test_stream_close_sync_001
+   * @tc.desc Test closeSync() interface,When there are parameters.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_fdopen_stream_sync_001', 0, function () {
-
+  it('fileio_test_stream_close_sync_001', 0, async function () {
+    let fpath = await nextFileName('fileio_test_stream_close_sync_001');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
-      let ss = fileio.fdopenStreamSync(-1, 'r+');
-      expect(null).assertFail();
-    } catch (e) {
-      console.log('fileio_test_stream_fdopen_stream_sync_001 has failed for ' + e);
+      let fd = fileio.openSync(fpath, 0o2);
+      let ss = fileio.fdopenStreamSync(fd, 'r+');
+      expect(ss !== null).assertTrue();
+      ss.closeSync(1);
+    } catch (err) {
+      console.info('fileio_test_stream_close_sync_001 has failed for ' + err);
+      expect(err.message == "Number of arguments unmatched").assertTrue();
+      fileio.unlinkSync(fpath);
     }
   })
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_FDOPENSTREAMASYNC_0000
-   * @tc.name fileio_test_stream_fdopen_stream_async_000
-   * @tc.desc Test fdopenStreamSync() interface
-   * @tc.size MEDIUM(中型)
+   * @tc.number SUB_DF_FILEIO_STREAM_CLOSEASYNC_0000
+   * @tc.name fileio_test_stream_close_async_000
+   * @tc.desc Test close() interface,return in promise mode.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_fdopen_stream_async_000', 0, async function (done) {
-    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_async_000');
+  it('fileio_test_stream_close_async_000', 0, async function (done) {
+    let fpath = await nextFileName('fileio_test_stream_close_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       let fd = await fileio.openSync(fpath, 0o2);
       let ss = await fileio.fdopenStreamSync(fd, 'r+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
+      await ss.close();
+      fileio.unlinkSync(fpath);
       done();
-    } catch (e) {
-      console.log('fileio_test_stream_fdopen_stream_async_000 has failed for ' + e);
+    } catch (err) {
+      console.info('fileio_test_stream_close_async_000 has failed for ' + err);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_FDOPENSTREAMASYNC_0010
-   * @tc.name fileio_test_stream_fdopen_stream_async_001
-   * @tc.desc Test fdopenStreamSync() interface
-   * @tc.size MEDIUM(中型)
+   * @tc.number SUB_DF_FILEIO_STREAM_CLOSEASYNC_0100
+   * @tc.name fileio_test_stream_close_async_001
+   * @tc.desc Test close() interface,return in callback mode.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_test_stream_fdopen_stream_async_001', 0, async function (done) {
-    let fpath = await nextFileName('fileio_test_stream_fdopen_stream_async_001');
+  it('fileio_test_stream_close_async_001', 0, async function (done) {
+    let fpath = await nextFileName('fileio_test_stream_close_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       let fd = await fileio.openSync(fpath, 0o2);
       let ss = await fileio.fdopenStreamSync(fd, 'r+');
       expect(ss !== null).assertTrue();
-      ss.close(function (err, stream) {
-        expect(fileio.unlinkSync(fpath) == null).assertTrue();
+      ss.close(function (err) {
+        fileio.unlinkSync(fpath);
       })
       done();
-    } catch (e) {
-      console.log('fileio_test_stream_fdopen_stream_async_001 has failed for ' + e);
+    } catch (err) {
+      console.info('fileio_test_stream_close_async_001 has failed for ' + err);
       expect(null).assertFail();
     }
   });
