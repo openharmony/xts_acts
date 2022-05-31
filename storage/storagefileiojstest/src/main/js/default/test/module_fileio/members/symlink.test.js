@@ -35,11 +35,11 @@ describe('fileio_symlink', function () {
 
     try {
       fileio.symlinkSync(fpath, fpath + 'aaaa');
-      expect(fileio.accessSync(fpath + 'aaaa') == null).assertTrue();
-      fileio.unlinkSync(fpath + 'aaaa');
+      fileio.accessSync(fpath + 'aaaa');
       expect(null).assertFail();
     } catch (e) {
-      console.log('fileio_test_symlink_sync_000 has failed for ' + e);
+      console.info('fileio_test_symlink_sync_000 has failed for ' + e);
+      fileio.unlinkSync(fpath + 'aaaa');
     }
   });
 
@@ -58,18 +58,14 @@ describe('fileio_symlink', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      fileio
-        .symlink(fpath, fpath + '1067')
-        .then(function (err) {
-          expect(fileio.accessSync(fpath + '1067') == null).assertTrue();
-          fileio.unlinkSync(fpath + '1067');
-          expect(err == null).assertTrue();
-        })
-        .catch(function (e) {
-          expect(e == null).assertTrue();
-        });
+      fileio.symlink(fpath, fpath + '1067').then(function (err) {
+        fileio.accessSync(fpath + '1067');
+        fileio.unlinkSync(fpath);
+        fileio.unlinkSync(fpath + '1067');
+      })
       done();
     } catch (e) {
+      console.info('fileio_test_symlink_async_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
@@ -85,16 +81,18 @@ describe('fileio_symlink', function () {
    * @tc.require
    */
   it('fileio_test_symlink_async_001', 0, async function (done) {
-    let fpath = await nextFileName('fileio_test_symlink_async_010');
+    let fpath = await nextFileName('fileio_test_symlink_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       await fileio.symlink(fpath, fpath + 'pass2', function (err) {
-        expect(fileio.accessSync(fpath + 'pass2') == null).assertTrue();
+        fileio.accessSync(fpath + 'pass2');
+        fileio.unlinkSync(fpath);
         fileio.unlinkSync(fpath + 'pass2');
         done();
       });
     } catch (e) {
+      console.info('fileio_test_symlink_async_001 has failed for ' + e);
       expect(null).assertFail();
     }
   });

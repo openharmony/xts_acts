@@ -40,7 +40,7 @@ describe('fileIOTestDir', function () {
       fileio.rmdirSync(dpath);
     }
     catch (e) {
-      console.log('fileio_test_dir_open_sync_000 has failed for ' + e);
+      console.info('fileio_test_dir_open_sync_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
@@ -56,7 +56,7 @@ describe('fileIOTestDir', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_dir_open_sync_001 has failed for ' + e);
+      console.info('fileio_test_dir_open_sync_001 has failed for ' + e);
     }
   });
 
@@ -72,7 +72,7 @@ describe('fileIOTestDir', function () {
       expect(null).assertFail();
     }
     catch (e) {
-      console.log('fileio_test_dir_open_sync_002 has failed for ' + e);
+      console.info('fileio_test_dir_open_sync_002 has failed for ' + e);
       expect(e.message == 'No such file or directory').assertTrue();
     }
   });
@@ -87,14 +87,20 @@ describe('fileIOTestDir', function () {
     fileio.mkdirSync(dpath);
     try {
       for (let i = 0; i < 16; i++) {
-        console.log('time' + i);
-        dpath = dpath + '/f' + randomString(248);
+        console.info('time' + i);
+        dpath = dpath + '/d' + i;
         fileio.mkdirSync(dpath);
       }
       expect(null).assertFail();
     }
     catch (e) {
-      console.log('fileio_test_dir_open_sync_003 has failed for ' + e);
+      console.info('fileio_test_dir_open_sync_003 has failed for ' + e);
+      for (let i = 16; i >= 0; i--) {
+        if (i < 16) {
+          dpath = dpath.replace(`/d${i}`, "");
+        }
+        fileio.rmdirSync(dpath);
+      }
     }
   });
 
@@ -110,7 +116,7 @@ describe('fileIOTestDir', function () {
       expect(null).assertFail();
     }
     catch (e) {
-      console.log('fileio_test_dir_open_sync_004 has failed for ' + e);
+      console.info('fileio_test_dir_open_sync_004 has failed for ' + e);
     }
   });
 
@@ -123,15 +129,21 @@ describe('fileIOTestDir', function () {
     let dpath = await nextFileName('fileio_test_dir_open_sync_005');
     fileio.mkdirSync(dpath);
     try {
-      for (let i = 0; i < 1024; i++) {
-        console.log('time' + i);
-        dpath = dpath + '/' + i
+      for (let i = 0; i < 113; i++) {
+        console.info('time' + i);
+        dpath = dpath + '/d' + i
         fileio.mkdirSync(dpath);
       }
       expect(null).assertFail();
     }
     catch (e) {
-      console.log('fileio_test_dir_open_sync_005 has failed for ' + e);
+      console.info('fileio_test_dir_open_sync_005 has failed for ' + e);
+      for (let i = 113; i >= 0; i--) {
+        if (i < 113) {
+          dpath = dpath.replace(`/d${i}`, "");
+        }
+        fileio.rmdirSync(dpath);
+      }
     }
   });
 
@@ -147,7 +159,7 @@ describe('fileIOTestDir', function () {
       expect(null).assertFail();
     }
     catch (e) {
-      console.log('fileio_test_dir_open_sync_006 has failed for ' + e);
+      console.info('fileio_test_dir_open_sync_006 has failed for ' + e);
       expect(e.message == 'No such file or directory').assertTrue();
     }
   });
@@ -157,13 +169,13 @@ describe('fileIOTestDir', function () {
    * @tc.name fileio_test_dir_open_async_001
    * @tc.desc Function of API, file name contain special character.
    */
-   it('fileio_test_dir_open_async_001', 0, async function () {
+  it('fileio_test_dir_open_async_001', 0, async function () {
     let dpath = await nextFileName('fileio_test_dir_open_async_001') + 'd'
-    expect(fileio.mkdirSync(dpath) !== null).assertTrue();
+    fileio.mkdirSync(dpath);
     fileio.opendir(dpath, function (err, dir) {
       expect(dir !== null).assertTrue();
-      expect(dir.closeSync() == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) !== null).assertTrue();
+      dir.closeSync();
+      fileio.rmdirSync(dpath);
     });
   });
 
@@ -174,14 +186,14 @@ describe('fileIOTestDir', function () {
    */
   it('fileio_test_dir_open_async_002', 0, async function () {
     let dpath = await nextFileName('fileio_test_dir_open_async_002') + 'd'
-    expect(fileio.mkdirSync(dpath) !== null).assertTrue();
-    let dir = await fileio.opendir(dpath).then(()=> {
+    fileio.mkdirSync(dpath);
+    fileio.opendir(dpath).then((dir)=> {
       expect(dir !== null).assertTrue();
-      expect(dir.closeSync() == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) !== null).assertTrue();
-      console.log('fileio opendir Success');
+      dir.closeSync();
+      fileio.rmdirSync(dpath);
+      console.info('fileio opendir Success');
     }).catch((err) => {
-        console.log("fileio opendir err: "  + JSON.stringify(err));
+      console.info("fileio opendir err: "  + JSON.stringify(err));
     });
   });
 
@@ -204,7 +216,7 @@ describe('fileIOTestDir', function () {
       fileio.rmdirSync(dpath);
     }
     catch (e) {
-      console.log('fileio_test_dir_read_sync_000 has failed for ' + e);
+      console.info('fileio_test_dir_read_sync_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
@@ -231,7 +243,7 @@ describe('fileIOTestDir', function () {
       for (let i = 0; i < 3; i++) {
         let bool = typeof (dd.readSync());
         expect(bool == 'object').assertTrue();
-        console.log('---bool=' + bool);
+        console.info('---bool=' + bool);
       }
       dd.closeSync();
       for (let i = 0; i < 3; i++) {
@@ -244,7 +256,7 @@ describe('fileIOTestDir', function () {
       fileio.rmdirSync(dpath);
     }
     catch (e) {
-      console.log('fileio_test_dir_read_sync_001 has failed for ' + e);
+      console.info('fileio_test_dir_read_sync_001 has failed for ' + e);
       expect(null).assertFail();
     }
   });
@@ -283,7 +295,7 @@ describe('fileIOTestDir', function () {
       fileio.rmdirSync(dpath);
     }
     catch (e) {
-      console.log('fileio_test_dir_read_sync_002 has failed for ' + e);
+      console.info('fileio_test_dir_read_sync_002 has failed for ' + e);
       expect(null).assertFail();
     }
   });
@@ -305,7 +317,7 @@ describe('fileIOTestDir', function () {
       fileio.rmdirSync(dpath);
     }
     catch (e) {
-      console.log('fileio_test_dir_read_sync_003 has failed for ' + e);
+      console.info('fileio_test_dir_read_sync_003 has failed for ' + e);
       expect(null).assertFail();
     }
   });
@@ -328,7 +340,7 @@ describe('fileIOTestDir', function () {
       expect(null).assertFail();
     }
     catch (e) {
-      console.log('fileio_test_dir_read_sync_004 has failed for ' + e);
+      console.info('fileio_test_dir_read_sync_004 has failed for ' + e);
       expect(e.message == 'Number of arguments unmatched').assertTrue();
       dd.closeSync();
       fileio.unlinkSync(fpath);
@@ -359,7 +371,7 @@ describe('fileIOTestDir', function () {
       fileio.rmdirSync(dpath);
     }
     catch (e) {
-      console.log('fileio_test_dir_read_sync_005 has failed for ' + e);
+      console.info('fileio_test_dir_read_sync_005 has failed for ' + e);
       expect(null).assertFail();
     }
   });
@@ -379,7 +391,7 @@ describe('fileIOTestDir', function () {
       fileio.rmdirSync(dpath);
     }
     catch (e) {
-      console.log('fileio_test_dir_close_sync_000 has failed for ' + e);
+      console.info('fileio_test_dir_close_sync_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
@@ -399,7 +411,7 @@ describe('fileIOTestDir', function () {
       expect(null).assertFail();
     }
     catch (e) {
-      console.log('fileio_test_dir_close_sync_001 has failed for ' + e);
+      console.info('fileio_test_dir_close_sync_001 has failed for ' + e);
       expect(e.message == 'Dir has been closed yet').assertTrue();
       fileio.rmdirSync(dpath);
     }
