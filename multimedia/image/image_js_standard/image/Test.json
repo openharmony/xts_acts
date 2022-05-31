@@ -1,0 +1,55 @@
+{
+    "description": "Configuration for Image Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "300000",
+        "package": "ohos.acts.multimedia.image",
+		"shell-timeout": "120000"
+    },
+    "kits": [
+		{
+            "test-file-name": [
+                "ActsImageJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir   /data/app/el2/100/base/ohos.acts.multimedia.image/files",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image/files"
+            ]
+        },
+		{
+            "type": "PushKit",
+            "pre-push": [
+            ],
+            "push": [
+                "./resource/image/test.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.image/files",
+                "./resource/image/test.png ->/data/app/el2/100/base/ohos.acts.multimedia.image/files",
+				"./resource/image/test.123 ->/data/app/el2/100/base/ohos.acts.multimedia.image/files",
+				"./resource/image/test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image/files",
+                "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image/files",
+				"./resource/image/moving_test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image/files"
+            ]
+        },
+   
+		{
+            "type": "ShellKit",
+            "run-command": [
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image/files/test.bmp",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image/files/test.png",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image/files/test.123",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image/files/test.gif",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image/files/test.jpg",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image/files/moving_test.gif"
+
+            ],
+            "teardown-command":[
+              
+            ]
+        }
+    ]
+    
+}
