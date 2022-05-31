@@ -10,17 +10,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import("//build/ohos_var.gni")
 import("//test/xts/tools/build/suite.gni")
 
-group("security") {
+group("datacipher") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "access_token/AccessTokenTest_Normal_js:ActsAccessTokenJSApiTestNormal",
-      "cipher/datacipher:datacipher",
-      "huks_standard",
-      "security_huks_basic",
-    ]
+    deps = [ "cipher:ActsSecurityCipherTest" ]
   }
 }
