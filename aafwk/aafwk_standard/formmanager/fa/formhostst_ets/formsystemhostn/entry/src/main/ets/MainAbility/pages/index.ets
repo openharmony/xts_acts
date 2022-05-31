@@ -13,9 +13,10 @@
  * limitations under the License.
  */
 
+import commonEvent from '@ohos.commonEvent';
 import featureAbility from "@ohos.ability.featureAbility";
 import formManager from '@ohos.application.formHost';
-import commonEvent from '@ohos.commonEvent';
+
 @Entry
 @Component
 struct Index {
@@ -23,17 +24,10 @@ struct Index {
   @State ability: string = "com.form.formsystemtestservicea.hmservice.MainAbility";
   @State moduleName: string = "entry";
   @State name: string = "Form_Js001";
-  @State width: number = 300;
-  @State height: number = 200;
   @State allowUpate: boolean = true;
-  @State onAcquireResult: string = "";
   @State isShowing: boolean = true;
   @State optType: number = 0;
   private dimension: FormDimension = FormDimension.Dimension_1_2;
-  private isTemporary = false;
-  private isVisible = false;
-  private mMargin = 15;
-  private BTN_BG_COLOR: string = '#0D9FFB';
 
   private normal = 0;
   private temporary = 0;
@@ -99,6 +93,7 @@ struct Index {
       console.info(`[FormComponent] formsystemhostn featureAbility.startAbility error: ${JSON.stringify(err)}`);
     });
   }
+
   private publishOnSendCastForm(err, data) {
     console.info("!!!====>[FormComponent] formsystemhostn OnSendCastForm start:====>" + JSON.stringify(data));
     if (data.bundleName && data.bundleName != "com.ohos.st.formsystemhostn") {
@@ -159,8 +154,6 @@ struct Index {
   }
 
   private aboutToAppear() {
-    const TAG = "[FormComponent.hostn]";
-
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
       console.info("====>[FormComponent] formsystemhostn Subscriber FormDelete data:====>", JSON.stringify(data));
       this.subscriberDel = data;

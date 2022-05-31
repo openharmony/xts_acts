@@ -13,18 +13,14 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index.ets"
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
+import { beforeAll, beforeEach, describe, expect, it } from "deccjsunit/index.ets";
 
-var onErrorForm_Event = {
-    events: ["FMS_FormOnError_commonEvent"],
-};
 var onAcquiredForm_Event = {
     events: ["FMS_FormOnAcquired_commonEvent"],
 };
-
-var onDetetedFormEvent = {
+var onDeletedFormEvent = {
     events: ["FMS_FormOnDeleted_commonEvent"],
 };
 var onUpdateRefreshEvent = {
@@ -36,11 +32,24 @@ var onRequestFormEvent = {
 
 var deleteForm_Event = "FMS_FormDelete_commonEvent";
 
+
+var subscriberOnAcquired;
+var subscriberOnDeleted;
+var subscriberOnRefresh;
+var subscriberOnRequest;
+
 export default function test() {
     describe(`FmsUpdateRefreshFormTest`, () => {
 
         beforeAll(async (done) => {
             done();
+        })
+
+        beforeEach(async () => {
+            subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
+            subscriberOnDeleted = await commonEvent.createSubscriber(onDeletedFormEvent);
+            subscriberOnRefresh = await commonEvent.createSubscriber(onUpdateRefreshEvent);
+            subscriberOnRequest = await commonEvent.createSubscriber(onRequestFormEvent);
         })
 
         /**
@@ -51,39 +60,19 @@ export default function test() {
          */
         it(`FMS_updateForm_0100`, 0, async (done) => {
             console.log(`FMS_updateForm_0100 start`);
-            let subscriberOnRefresh;
-            let formId;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_updateForm_0100 delPublishCallBack====>");
-                setTimeout(function () {
-                    console.info('FMS_updateForm_0100 delPublishCallBack end');
-                    console.log(`FMS_updateForm_0100 end`);
-                    done();
-                }, 1000)
-            }          
-            
-            function onRefreshCallBack(err, data) {
+            function onRefreshCallBack(_, data) {
                 console.info("!!!====>FMS_updateForm_0100 onRefreshCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormUpdateRefresh_commonEvent");
-                // expect(data.data).assertEqual("8585224");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnRefresh, unSubscribeOnRefreshCallback)
+                commonEvent.unsubscribe(subscriberOnRefresh, () => unsubscribeOnRefreshCallback("FMS_updateForm_0100"));
 
                 let commonEventPublishData = {
                     data: data.parameters.formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_updateForm_0100", done));
             }
-            function unSubscribeOnRefreshCallback() {
-                console.debug("====>FMS_updateForm_0100 unSubscribeOnRefreshCallback CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onUpdateRefreshEvent).then(async (data) => {
-                console.debug("====>FMS_updateForm_0100 onUpdateRefreshEvent Subscriber====>");
-                subscriberOnRefresh = data;
-                await commonEvent.subscribe(subscriberOnRefresh, onRefreshCallBack);
-            });
+            commonEvent.subscribe(subscriberOnRefresh, onRefreshCallBack);
             console.log(`FMS_updateForm_0100 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -116,39 +105,19 @@ export default function test() {
          */
         it(`FMS_updateForm_0200`, 0, async (done) => {
             console.log(`FMS_updateForm_0200 start`);
-            let subscriberOnRefresh;
-            let formId;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_updateForm_0200 delPublishCallBack====>");
-                setTimeout(function () {
-                    console.info('FMS_updateForm_0200 delPublishCallBack end');
-                    console.log(`FMS_updateForm_0200 end`);
-                    done();
-                }, 1000)
-            }          
-            
-            function onRefreshCallBack(err, data) {
+            function onRefreshCallBack(_, data) {
                 console.info("!!!====>FMS_updateForm_0200 onRefreshCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormUpdateRefresh_commonEvent");
-                // expect(data.data).assertEqual("8585224");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnRefresh, unSubscribeOnRefreshCallback)
+                commonEvent.unsubscribe(subscriberOnRefresh, () => unsubscribeOnRefreshCallback("FMS_updateForm_0200"));
 
                 let commonEventPublishData = {
                     data: data.parameters.formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_updateForm_0200", done));
             }
-            function unSubscribeOnRefreshCallback() {
-                console.debug("====>FMS_updateForm_0200 unSubscribeOnRefreshCallback CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onUpdateRefreshEvent).then(async (data) => {
-                console.debug("====>FMS_updateForm_0200 onUpdateRefreshEvent Subscriber====>");
-                subscriberOnRefresh = data;
-                await commonEvent.subscribe(subscriberOnRefresh, onRefreshCallBack);
-            });
+            commonEvent.subscribe(subscriberOnRefresh, onRefreshCallBack);
             console.log(`FMS_updateForm_0200 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -182,44 +151,24 @@ export default function test() {
         */
         it(`FMS_updateForm_0300`, 0, async (done) => {
             console.log(`FMS_updateForm_0300 start`);
-            let subscriberOnRefresh;
-            let subscriberOnAcquired;
             let formId;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_updateForm_0300 delPublishCallBack====>");
-                setTimeout(function () {
-                    console.info('FMS_updateForm_0300 delPublishCallBack end');
-                    console.log(`FMS_updateForm_0300 end`);
-                    done();
-                }, 1000)
-            }
-
-            function onRefreshCallBack(err, data) {
+            function onRefreshCallBack(_, data) {
                 console.info("!!!====>FMS_updateForm_0300 onRefreshCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormUpdateRefresh_commonEvent");
-                // expect(data.data).assertEqual("8585223");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnRefresh, unsubscribeOnRefreshCallback);
+                commonEvent.unsubscribe(subscriberOnRefresh, () => unsubscribeOnRefreshCallback("FMS_updateForm_0300"));
                 let commonEventPublishData = {
                     data: formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_updateForm_0300", done));
             }
-            function unsubscribeOnRefreshCallback() {
-                console.debug("====>FMS_updateForm_0300 unsubscribeOnRefreshCallback====>");
-            }            
-            
-            function onAcquiredCallBack(err, data) {
+            function onAcquiredCallBack(_, data) {
                 console.info("!!!====>FMS_updateForm_0300 onAcquiredCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnAcquired_commonEvent");
-                commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallback)
+                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_updateForm_0300"));
                 formId = data.data;
-                commonEvent.createSubscriber(onUpdateRefreshEvent).then(async (data) => {
-                    console.debug("====>FMS_updateForm_0300 onUpdateRefreshEvent Subscriber====>");
-                    subscriberOnRefresh = data;
-                    await commonEvent.subscribe(subscriberOnRefresh, onRefreshCallBack);
-                });
+                commonEvent.subscribe(subscriberOnRefresh, onRefreshCallBack);
 
                 console.log(`FMS_updateForm_0300 featureAbility.startAbility again start`);
                 featureAbility.startAbility({
@@ -245,15 +194,7 @@ export default function test() {
                 });
                 console.log(`FMS_updateForm_0300 featureAbility.startAbility again end`);
             }
-            function unSubscribeOnAcquiredCallback() {
-                console.debug("====>FMS_updateForm_0300 OnAcquired UnSubscribe CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onAcquiredForm_Event).then(async (data) => {
-                console.debug("====>FMS_updateForm_0300 Create OnAcquired Subscriber====>");
-                subscriberOnAcquired = data;
-                await commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
-            });
+            commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             console.log(`FMS_updateForm_0300 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -284,37 +225,26 @@ export default function test() {
          */
         it(`FMS_updateForm_0400`, 0, async (done) => {
             console.log(`FMS_updateForm_0400 start`);
-            let subscriberOnRefresh;
-            let subscriberOnDeleted;
             let formId;
 
-            function onRefreshCallBack(err, data) {
+            function onRefreshCallBack(_, data) {
                 console.info("!!!====>FMS_updateForm_0400 onRefreshCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormUpdateRefresh_commonEvent");
-                // expect(data.data).assertEqual("8585236");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnRefresh, unSubscribeOnRefreshCallback);
+                commonEvent.unsubscribe(subscriberOnRefresh, () => unsubscribeOnRefreshCallback("FMS_updateForm_0400"));
                 setTimeout(function () {
-                    console.info('FMS_updateForm_0400 delPublishCallBack end');
+                    console.info('FMS_updateForm_0400 onRefreshCallBack end');
                     console.log(`FMS_updateForm_0400 end`);   
                     done();
                 }, 1000);  
             }
-            function unSubscribeOnRefreshCallback() {
-                console.debug("====>FMS_updateForm_0400 unSubscribeOnRefreshCallback CallBack====>");
-            }            
-            
-            function onDeletedCallBack(err, data) {
+            function onDeletedCallBack(_, data) {
                 console.info("!!!====>FMS_updateForm_0400 onDeletedCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnDeleted_commonEvent");
                 expect(data.data).assertEqual("0");
-                commonEvent.unsubscribe(subscriberOnDeleted, unSubscribeDeletedCallback)
+                commonEvent.unsubscribe(subscriberOnDeleted, () => unsubscribeDeletedCallback("FMS_updateForm_0400"));
                 formId = data.parameters.formId;
-                commonEvent.createSubscriber(onUpdateRefreshEvent).then(async (data) => {
-                    console.debug("====>FMS_updateForm_0400 B onUpdateRefreshEvent Subscriber====>");
-                    subscriberOnRefresh = data;
-                    await commonEvent.subscribe(subscriberOnRefresh, onRefreshCallBack);
-                });
+                commonEvent.subscribe(subscriberOnRefresh, onRefreshCallBack);
 
                 console.log(`FMS_updateForm_0400 featureAbility.startAbility again start`);
                 featureAbility.startAbility({
@@ -340,14 +270,7 @@ export default function test() {
                 });
                 console.log(`FMS_updateForm_0400 featureAbility.startAbility again end`);
             }
-            function unSubscribeDeletedCallback() {
-                console.debug("====>FMS_updateForm_0400 unSubscribeDeletedCallback====>");
-            }
-           commonEvent.createSubscriber(onDetetedFormEvent).then(async (data) => {
-                console.debug("====>FMS_releaseForm_1400 onDetetedFormEvent Subscriber====>");
-                subscriberOnDeleted = data;
-                await commonEvent.subscribe(subscriberOnDeleted, onDeletedCallBack);
-            });
+            commonEvent.subscribe(subscriberOnDeleted, onDeletedCallBack);
             console.log(`FMS_updateForm_0400 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -379,39 +302,19 @@ export default function test() {
          */
         it(`FMS_updateForm_0500`, 0, async (done) => {
             console.log(`FMS_updateForm_0500 start`);
-            let subscriberOnRefresh;
-            let formId;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_updateForm_0500 delPublishCallBack====>");
-                setTimeout(function () {
-                    console.info('FMS_updateForm_0500 delPublishCallBack end');
-                    console.log(`FMS_updateForm_0500 end`);
-                    done();
-                }, 1000)
-            }          
-            
-            function onRefreshCallBack(err, data) {
+            function onRefreshCallBack(_, data) {
                 console.info("!!!====>FMS_updateForm_0500 onRefreshCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormUpdateRefresh_commonEvent");
-                // expect(data.data).assertEqual("8585225");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnRefresh, unSubscribeOnRefreshCallback)
+                commonEvent.unsubscribe(subscriberOnRefresh, () => unsubscribeOnRefreshCallback("FMS_updateForm_0500"));
 
                 let commonEventPublishData = {
                     data: data.parameters.formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_updateForm_0500", done));
             }
-            function unSubscribeOnRefreshCallback() {
-                console.debug("====>FMS_updateForm_0500 unSubscribeOnRefreshCallback CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onUpdateRefreshEvent).then(async (data) => {
-                console.debug("====>FMS_updateForm_0500 onUpdateRefreshEvent Subscriber====>");
-                subscriberOnRefresh = data;
-                await commonEvent.subscribe(subscriberOnRefresh, onRefreshCallBack);
-            });
+            commonEvent.subscribe(subscriberOnRefresh, onRefreshCallBack);
             console.log(`FMS_updateForm_0500 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -445,39 +348,19 @@ export default function test() {
          */
         it(`FMS_hostRefresh_0100`, 0, async (done) => {
             console.log(`FMS_hostRefresh_0100 start`);
-            let subscriberOnReQuest;
-            let formId;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_hostRefresh_0100 delPublishCallBack====>");
-                setTimeout(function () {
-                    console.info('FMS_hostRefresh_0100 delPublishCallBack end');
-                    console.log(`FMS_hostRefresh_0100 end`);
-                    done();
-                }, 1000)
-            }          
-            
-            function onRequestCallBack(err, data) {
+            function onRequestCallBack(_, data) {
                 console.info("!!!====>FMS_hostRefresh_0100 onRequestCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnRequest_commonEvent");
-                // expect(data.data).assertEqual("8585224");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnReQuest, unSubscribeOnRequestCallback)
+                commonEvent.unsubscribe(subscriberOnRequest, () => unsubscribeOnRequestCallback("FMS_hostRefresh_0100"));
 
                 let commonEventPublishData = {
                     data: data.parameters.formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_hostRefresh_0100", done));
             }
-            function unSubscribeOnRequestCallback() {
-                console.debug("====>FMS_hostRefresh_0100 unSubscribeOnRequestCallback CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onRequestFormEvent).then(async (data) => {
-                console.debug("====>FMS_hostRefresh_0100 onRequestFormEvent Subscriber====>");
-                subscriberOnReQuest = data;
-                await commonEvent.subscribe(subscriberOnReQuest, onRequestCallBack);
-            });
+            commonEvent.subscribe(subscriberOnRequest, onRequestCallBack);
             console.log(`FMS_hostRefresh_0100 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -510,39 +393,19 @@ export default function test() {
          */
         it(`FMS_hostRefresh_0200`, 0, async (done) => {
             console.log(`FMS_hostRefresh_0200 start`);
-            let subscriberOnReQuest;
-            let formId;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_hostRefresh_0200 delPublishCallBack====>");
-                setTimeout(function () {
-                    console.info('FMS_hostRefresh_0200 delPublishCallBack end');
-                    console.log(`FMS_hostRefresh_0200 end`);
-                    done();
-                }, 1000)
-            }          
-            
-            function onRequestCallBack(err, data) {
+            function onRequestCallBack(_, data) {
                 console.info("!!!====>FMS_hostRefresh_0200 onRequestCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnRequest_commonEvent");
-                // expect(data.data).assertEqual("8585224");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnReQuest, unSubscribeOnRequestCallback)
+                commonEvent.unsubscribe(subscriberOnRequest, () => unsubscribeOnRequestCallback("FMS_hostRefresh_0200"));
 
                 let commonEventPublishData = {
                     data: data.parameters.formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_hostRefresh_0200", done));
             }
-            function unSubscribeOnRequestCallback() {
-                console.debug("====>FMS_hostRefresh_0200 unSubscribeOnRequestCallback CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onRequestFormEvent).then(async (data) => {
-                console.debug("====>FMS_hostRefresh_0200 onRequestFormEvent Subscriber====>");
-                subscriberOnReQuest = data;
-                await commonEvent.subscribe(subscriberOnReQuest, onRequestCallBack);
-            });
+            commonEvent.subscribe(subscriberOnRequest, onRequestCallBack);
             console.log(`FMS_hostRefresh_0200 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -576,43 +439,25 @@ export default function test() {
         */
         it(`FMS_hostRefresh_0300`, 0, async (done) => {
             console.log(`FMS_hostRefresh_0300 start`);
-            let subscriberOnReQuest;
-            let subscriberOnAcquired;
             let formId;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_hostRefresh_0300 delPublishCallBack====>");
-                setTimeout(function () {
-                    console.info('FMS_hostRefresh_0300 delPublishCallBack end');
-                    console.log(`FMS_hostRefresh_0300 end`);
-                    done();
-                }, 1000)
-            }
-
-            function onRequestCallBack(err, data) {
+            function onRequestCallBack(_, data) {
                 console.info("!!!====>FMS_hostRefresh_0300 onRequestCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnRequest_commonEvent");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnReQuest, unsubscribeOnRefreshCallback);
+                commonEvent.unsubscribe(subscriberOnRequest, () => unsubscribeOnRefreshCallback("FMS_hostRefresh_0300"));
                 let commonEventPublishData = {
                     data: formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_hostRefresh_0300", done));
             }
-            function unsubscribeOnRefreshCallback() {
-                console.debug("====>FMS_hostRefresh_0300 unsubscribeOnRefreshCallback====>");
-            }            
-            
-            function onAcquiredCallBack(err, data) {
+
+            function onAcquiredCallBack(_, data) {
                 console.info("!!!====>FMS_hostRefresh_0300 onAcquiredCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnAcquired_commonEvent");
-                commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallback)
+                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_hostRefresh_0300"));
                 formId = data.data;
-                commonEvent.createSubscriber(onRequestFormEvent).then(async (data) => {
-                    console.debug("====>FMS_hostRefresh_0300 onRequestFormEvent Subscriber====>");
-                    subscriberOnReQuest = data;
-                    await commonEvent.subscribe(subscriberOnReQuest, onRequestCallBack);
-                });
+                commonEvent.subscribe(subscriberOnRequest, onRequestCallBack);
 
                 console.log(`FMS_hostRefresh_0300 featureAbility.startAbility again start`);
                 featureAbility.startAbility({
@@ -638,15 +483,7 @@ export default function test() {
                 });
                 console.log(`FMS_hostRefresh_0300 featureAbility.startAbility again end`);
             }
-            function unSubscribeOnAcquiredCallback() {
-                console.debug("====>FMS_hostRefresh_0300 OnAcquired UnSubscribe CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onAcquiredForm_Event).then(async (data) => {
-                console.debug("====>FMS_hostRefresh_0300 Create OnAcquired Subscriber====>");
-                subscriberOnAcquired = data;
-                await commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
-            });
+            commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             console.log(`FMS_hostRefresh_0300 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -677,38 +514,26 @@ export default function test() {
         */
         it(`FMS_hostRefresh_0400`, 0, async (done) => {
             console.log(`FMS_hostRefresh_0400 start`);
-            let subscriberOnReQuest;
-            let subscriberOnDeleted;
             let formId;
 
-            function onRequestCallBack(err, data) {
+            function onRequestCallBack(_, data) {
                 console.info("!!!====>FMS_hostRefresh_0400 onRequestCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnRequest_commonEvent");
-                // expect(data.data).assertEqual("8585236");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnReQuest, unSubscribeOnRequestCallback);
+                commonEvent.unsubscribe(subscriberOnRequest, () => unsubscribeOnRequestCallback("FMS_hostRefresh_0400"));
                 setTimeout(function () {
                     console.info('FMS_hostRefresh_0400 onRequestCallBack end');
                     console.log(`FMS_hostRefresh_0400 end`);   
                     done();
                 }, 10);
-
             }
-            function unSubscribeOnRequestCallback() {
-                console.debug("====>FMS_hostRefresh_0400 unSubscribeOnRequestCallback CallBack====>");
-            }            
-            
-            function onDeletedCallBack(err, data) {
+            function onDeletedCallBack(_, data) {
                 console.info("!!!====>FMS_hostRefresh_0400 onDeletedCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnDeleted_commonEvent");
                 expect(data.data).assertEqual("0");
-                commonEvent.unsubscribe(subscriberOnDeleted, unSubscribeDeletedCallback)
+                commonEvent.unsubscribe(subscriberOnDeleted, () => unsubscribeDeletedCallback("FMS_hostRefresh_0400"));
                 formId = data.parameters.formId;
-                commonEvent.createSubscriber(onRequestFormEvent).then(async (data) => {
-                    console.debug("====>FMS_hostRefresh_0400 onRequestFormEvent Subscriber====>");
-                    subscriberOnReQuest = data;
-                    await commonEvent.subscribe(subscriberOnReQuest, onRequestCallBack);
-                });
+                commonEvent.subscribe(subscriberOnRequest, onRequestCallBack);
 
                 console.log(`FMS_hostRefresh_0400 featureAbility.startAbility again start`);
                 featureAbility.startAbility({
@@ -734,14 +559,7 @@ export default function test() {
                 });
                 console.log(`FMS_hostRefresh_0400 featureAbility.startAbility again end`);
             }
-            function unSubscribeDeletedCallback() {
-                console.debug("====>FMS_hostRefresh_0400 unSubscribeDeletedCallback====>");
-            }
-           commonEvent.createSubscriber(onDetetedFormEvent).then(async (data) => {
-                console.debug("====>FMS_hostRefresh_0400 onDetetedFormEvent Subscriber====>");
-                subscriberOnDeleted = data;
-                await commonEvent.subscribe(subscriberOnDeleted, onDeletedCallBack);
-            });
+            commonEvent.subscribe(subscriberOnDeleted, onDeletedCallBack);
             console.log(`FMS_hostRefresh_0400 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -774,29 +592,21 @@ export default function test() {
         */
         it(`FMS_hostRefresh_0600`, 0, async (done) => {
             console.log(`FMS_hostRefresh_0600 start`);
-            let subscriberOnReQuest;
 
-            function onRequestCallBack(err, data) {
+            function onRequestCallBack(_, data) {
                 console.info("!!!====>FMS_hostRefresh_0600 onRequestCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnRequest_commonEvent");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnReQuest, unSubscribeOnRequestCallback)
+                commonEvent.unsubscribe(subscriberOnRequest, () => unsubscribeOnRequestCallback("FMS_hostRefresh_0600"));
 
                 setTimeout(function () {
-                    console.info('FMS_hostRefresh_0600 delPublishCallBack end');
+                    console.info('FMS_hostRefresh_0600 onRequestCallBack end');
                     console.log(`FMS_hostRefresh_0600 end`);
                     done();
                 }, 1000)
             }
-            function unSubscribeOnRequestCallback() {
-                console.debug("====>FMS_hostRefresh_0600 unSubscribeOnRequestCallback CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onRequestFormEvent).then(async (data) => {
-                console.debug("====>FMS_hostRefresh_0600 onRequestFormEvent Subscriber====>");
-                subscriberOnReQuest = data;
-                await commonEvent.subscribe(subscriberOnReQuest, onRequestCallBack);
-            });
+
+            commonEvent.subscribe(subscriberOnRequest, onRequestCallBack);
             console.log(`FMS_hostRefresh_0600 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -829,38 +639,21 @@ export default function test() {
         */
         it(`FMS_hostRefresh_0700`, 0, async (done) => {
             console.log(`FMS_hostRefresh_0700 start`);
-            let subscriberOnReQuest;
             let formId;
-
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_hostRefresh_0700 delPublishCallBack====>");
-                setTimeout(function () {
-                    console.info('FMS_hostRefresh_0700 delPublishCallBack end');
-                    console.log(`FMS_hostRefresh_0700 end`);
-                    done();
-                }, 1000)
-            }          
             
-            function onRequestCallBack(err, data) {
+            function onRequestCallBack(_, data) {
                 console.info("!!!====>FMS_hostRefresh_0700 onRequestCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnRequest_commonEvent");
                 expect(data.data).assertEqual("0");
-                commonEvent.unsubscribe(subscriberOnReQuest, unSubscribeOnRequestCallback)
+                commonEvent.unsubscribe(subscriberOnRequest, () => unsubscribeOnRequestCallback("FMS_hostRefresh_0700"));
                 formId = data.parameters.formId;
                 let commonEventPublishData = {
                     data: formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_hostRefresh_0700", done));
             }
-            function unSubscribeOnRequestCallback() {
-                console.debug("====>FMS_hostRefresh_0700 unSubscribeOnRequestCallback CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onRequestFormEvent).then(async (data) => {
-                console.debug("====>FMS_hostRefresh_0700 onRequestFormEvent Subscriber====>");
-                subscriberOnReQuest = data;
-                await commonEvent.subscribe(subscriberOnReQuest, onRequestCallBack);
-            });
+
+            commonEvent.subscribe(subscriberOnRequest, onRequestCallBack);
  
             console.log(`FMS_hostRefresh_0700 featureAbility.startAbility start`);
             await featureAbility.startAbility({
@@ -887,4 +680,28 @@ export default function test() {
             console.log(`FMS_hostRefresh_0700 featureAbility.startAbility end`);
         });
     });
+}
+
+const delPublishCallBack = async (tcNumber, done) => {
+    console.info(`${tcNumber} delPublishCallBack start`);
+    setTimeout(function () {
+        console.info(`${tcNumber} delPublishCallBack end`);
+        done();
+    }, 1000)
+}
+
+const unsubscribeOnRequestCallback = (tcNumber) => {
+    console.debug(`====>${tcNumber} unsubscribeOnRequestCallback CallBack====>`);
+}
+
+const unsubscribeOnRefreshCallback = (tcNumber) => {
+    console.debug(`====>${tcNumber} unsubscribeOnRefreshCallback CallBack====>`);
+}
+
+const unsubscribeDeletedCallback = (tcNumber) => {
+    console.debug(`====>${tcNumber} unsubscribeDeletedCallback====>`);
+}
+
+const unsubscribeOnAcquiredCallback = (tcNumber) => {
+    console.debug(`====>${tcNumber} unsubscribeOnAcquiredCallback CallBack====>`);
 }

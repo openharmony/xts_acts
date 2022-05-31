@@ -13,13 +13,11 @@
  * limitations under the License.
  */
 
-import FormViewModel from './FormViewModel.ets';
-import router from '@system.router';
+import commonEvent from '@ohos.commonEvent';
 import featureAbility from '@ohos.ability.featureAbility';
+import formBindingData from '@ohos.application.formBindingData';
 import formManager from '@ohos.application.formHost';
 import formProvider from '@ohos.application.formProvider';
-import commonEvent from '@ohos.commonEvent';
-import formBindingData from '@ohos.application.formBindingData';
 
 @Entry
 @Component
@@ -28,11 +26,8 @@ struct Index {
   @State bundle: string = "com.form.formsystemtestservicea.hmservice";
   @State ability: string = "com.form.formsystemtestservicea.hmservice.MainAbility";
   @State moduleName: string = "entry";
-  @State name: string = "Form_Js001";  
-  @State width: number = 300;
-  @State height: number = 200;
+  @State name: string = "Form_Js001";
   @State allowUpate: boolean = true;
-  @State onAcquireResult: string = "";
   @State isShowing: boolean = true;
   @State canCreateForm: boolean = false;
 
@@ -47,11 +42,6 @@ struct Index {
   private deleteId = "-1";
   private temporaryId="-1";
   private temporary = false;
-  private mFormViewModel: FormViewModel;
-  private isVisible = false;
-  private mMargin = 15;
-  private BTN_BG_COLOR: string = '#0D9FFB';
-  private tempFormId: number = 0;
 
   private isStartOtherApp = false;
   private otherAppState = "visible";
@@ -100,16 +90,7 @@ struct Index {
     console.info("!!!====>formsystemhost deleteCallBack end ====>");
   }
 
-  private unSubscribeDeleteCallback() {
-      console.debug("====>formsystemhost unSubscribeDeleteCallback_1100 CallBack====>");
-  }
-
   private aboutToAppear() {
-
-    const TAG = "[FormComponent.host]"
-
-    this.mFormViewModel = FormViewModel.getInstance();  
-
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
         console.info("====>formsystemhost Subscriber FormDelete data:====>", JSON.stringify(data)); 
         this.subscriberDel = data;     
@@ -421,9 +402,6 @@ struct Index {
             .onError((error) => {
               console.log("[FormComponent.host] error code:" + error.errcode);
               console.log("[FormComponent.host] error msg:" + error.msg);
-              this.onAcquireResult += error.errcode;
-              this.onAcquireResult += " ";
-              this.onAcquireResult += error.msg;
               if(this.deleteForm && this.deleteId) {
                 let commonEventPublishData = {
                     data: error.msg,

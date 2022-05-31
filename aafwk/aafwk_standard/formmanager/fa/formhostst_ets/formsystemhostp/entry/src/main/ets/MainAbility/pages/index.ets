@@ -16,24 +16,18 @@
 import featureAbility from "@ohos.ability.featureAbility";
 import formManager from '@ohos.application.formHost';
 import commonEvent from '@ohos.commonEvent';
+
 @Entry
 @Component
 struct Index {
   @State bundle: string = "com.form.formsystemtestservicea.hmservice";
-  @State ability: string = "com.form.formsystemtestservicea.hmservice.MainAbility";
+  @State ability: string = "com.form.formsystemtestservicea.hmservice.FormAbility";
   @State moduleName: string = "entry";
   @State name: string = "Form_Js001";
-  @State width: number = 300;
-  @State height: number = 200;
   @State allowUpate: boolean = true;
-  @State onAcquireResult: string = "";
   @State isShowing: boolean = true;
   @State optType: number = 0;
   private dimension: FormDimension = FormDimension.Dimension_1_2;
-  private isTemporary = false;
-  private isVisible = false;
-  private mMargin = 15;
-  private BTN_BG_COLOR: string = '#0D9FFB';
 
   private normal = 0;
   private temporary = 0;
@@ -85,7 +79,7 @@ struct Index {
           "formId": "0",
           "name": "Form_Js001",
           "bundle": "com.form.formsystemtestservicea.hmservice",
-          "ability": "com.form.formsystemtestservicea.hmservice.MainAbility",
+          "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
           "moduleName": "entry",
           "temporary": false,
           "sendCastForm": true,
@@ -150,17 +144,7 @@ struct Index {
     console.info("!!!====> [FormComponent] formsystemhostp optType deleteCallBack end ====>");
   }
 
-  private unSubscribeDeleteCallback() {
-    console.debug("====> [FormComponent] formsystemhostp optType unSubscribeDeleteCallback CallBack====>");
-  }
-
-  private unSubscribeCastFormCallback() {
-    console.debug("====> [FormComponent] formsystemhostp optType unSubscribeCastFormCallback CallBack====>");
-  }
-
   private aboutToAppear() {
-    const TAG = "[FormComponent.hostp]";
-
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
       console.info("====>[FormComponent] formsystemhostp Subscriber FormDelete data:====>", JSON.stringify(data));
       this.subscriberDel = data;
@@ -239,25 +223,33 @@ struct Index {
 
         if (this.castFormId != "-1" && want.parameters.optType == 3) {
           console.info("[FormComponent.host] castTempForm start");
+          commonEvent.unsubscribe(this.subscriberDel, () => {
+            console.info("====> [FormComponent] formsystemhostp optType unSubscribeDeleteCallback CallBack====>");
+          });
+          commonEvent.unsubscribe(this.subscriberSendCastForm, () => {
+            console.info("====> [FormComponent] formsystemhostp optType unSubscribeCastFormCallback CallBack====>");
+          });
+
           formManager.castTempForm(this.castFormId)
             .then((data) => {
               console.info('[FormComponent] castTempForm result:' + data);
               let commonEventPublishData = {
-                data: data.toString(),
+                data: data || `0`,
                 bundleName: "com.ohos.st.formsystemhostp",
                 parameters: {
-                  "formId": this.castFormId.toString()
+                  formId: this.castFormId.toString()
                 }
               };
               commonEvent.publish(this.formCastEvent, commonEventPublishData, this.publishCastCallBack);
             })
             .catch((error) => {
-              console.info('[FormComponent] castTempForm error:' + error.code);
+              console.info('[FormComponent] castTempForm error:' + JSON.stringify(error));
               let commonEventPublishData = {
                 data: error.code.toString(),
                 bundleName: "com.ohos.st.formsystemhostp",
                 parameters: {
-                  "formId": this.castFormId.toString()
+                  errMsg: error.message,
+                  formId: this.castFormId.toString()
                 }
               };
               commonEvent.publish(this.formCastEvent, commonEventPublishData, this.publishCastCallBack);

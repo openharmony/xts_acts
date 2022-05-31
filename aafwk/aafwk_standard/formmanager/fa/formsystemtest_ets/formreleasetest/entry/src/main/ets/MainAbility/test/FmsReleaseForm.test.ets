@@ -13,35 +13,36 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index.ets"
 import featureAbility from "@ohos.ability.featureAbility";
-import commonEvent from '@ohos.commonEvent'
+import commonEvent from '@ohos.commonEvent';
+import { beforeAll, beforeEach, describe, expect, it } from "deccjsunit/index.ets";
 
-var onErrorForm_Event = {
-    events: ["FMS_FormOnError_commonEvent"],
-};
 var onAcquiredForm_Event = {
     events: ["FMS_FormOnAcquired_commonEvent"],
 };
-
-var onDetetedFormEvent = {
+var onDeletedFormEvent = {
     events: ["FMS_FormOnDeleted_commonEvent"],
 };
 var onReleasedFormEvent = {
     events: ["FMS_FormOnReleased_commonEvent"],
 };
-
-var onSupplyEvent = {
-    events: ["FMS_FormSupply_commonEvent"],
-};
-
 var deleteForm_Event = "FMS_FormDelete_commonEvent";
 
+var subscriberOnAcquired;
+var subscriberOnDeleted;
+var subscriberOnReleased;
+
 export default function test() {
-    describe(`FmsDeleteFormTest`, () => {
+    describe(`FmsReleaseFormTest`, () => {
 
         beforeAll(async (done) => {
             done();
+        })
+
+        beforeEach(async () => {
+            subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
+            subscriberOnDeleted = await commonEvent.createSubscriber(onDeletedFormEvent);
+            subscriberOnReleased = await commonEvent.createSubscriber(onReleasedFormEvent);
         })
 
         /**
@@ -52,43 +53,25 @@ export default function test() {
          */
         it(`FMS_releaseForm_0200`, 0, async (done) => {
             console.log(`FMS_releaseForm_0200 start`);
-            let subscriberOnReleased;
-            let subscriberOnAcquired;
             let formId;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_releaseForm_0200 delPublishCallBack====>");
-                setTimeout(function () {                    
-                    console.info('FMS_releaseForm_0200 delPublishCallBack end');
-                    console.log(`FMS_releaseForm_0200 end`);
-                    done();
-                }, 1000)
-            }
-
-            function onReleasedCallBack(err, data) {
+            function onReleasedCallBack(_, data) {
                 console.info("!!!====>FMS_releaseForm_0200 onReleasedCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnReleased_commonEvent");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnReleased, unSubscribeOnReleasedCallback);
+                commonEvent.unsubscribe(subscriberOnReleased, () => unsubscribeOnReleasedCallback("FMS_releaseForm_0200"));
                 let commonEventPublishData = {
                     data: formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_releaseForm_0200", done));
             }
-            function unSubscribeOnReleasedCallback() {
-                console.debug("====>FMS_releaseForm_0200 unSubscribeOnReleasedCallback====>");
-            }            
-            
-            function onAcquiredCallBack(err, data) {
+
+            function onAcquiredCallBack(_, data) {
                 console.info("!!!====>FMS_releaseForm_0200 onAcquiredCallBack data:====>" + JSON.stringify(data));
-                expect(data.event).assertEqual("FMS_FormOnAcquired_commonEvent");                
-                commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallback)
+                expect(data.event).assertEqual("FMS_FormOnAcquired_commonEvent");
+                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_releaseForm_0200"))
                 formId = data.data;
-                commonEvent.createSubscriber(onReleasedFormEvent).then(async (data) => {
-                    console.debug("====>FMS_releaseForm_0200 onReleasedFormEvent Subscriber====>");
-                    subscriberOnReleased = data;
-                    await commonEvent.subscribe(subscriberOnReleased, onReleasedCallBack);
-                });
+                commonEvent.subscribe(subscriberOnReleased, onReleasedCallBack);
 
                 console.log(`FMS_releaseForm_0200 featureAbility.startAbility again start`);
                 featureAbility.startAbility({
@@ -114,15 +97,8 @@ export default function test() {
                 });
                 console.log(`FMS_releaseForm_0200 featureAbility.startAbility again end`);
             }
-            function unSubscribeOnAcquiredCallback() {
-                console.debug("====>FMS_releaseForm_0200 OnAcquired UnSubscribe CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onAcquiredForm_Event).then(async (data) => {
-                console.debug("====>FMS_releaseForm_0200 Create OnAcquired Subscriber====>");
-                subscriberOnAcquired = data;
-                await commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
-            });
+            commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
+
             console.log(`FMS_releaseForm_0200 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -153,28 +129,19 @@ export default function test() {
          */
         it(`FMS_releaseForm_0300`, 0, async (done) => {
             console.log(`FMS_releaseForm_0300 start`);
-            let subscriberOnReleased;
-            let subscriberOnAcquired;
 
-            function onReleasedCallBack(err, data) {
+            function onReleasedCallBack(_, data) {
                 console.info("!!!====>FMS_releaseForm_0300 onReleasedCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnReleased_commonEvent");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnReleased, unSubscribeOnReleasedCallback);
-                setTimeout(function () {                    
-                    console.info('FMS_releaseForm_0300 delPublishCallBack end');
+                commonEvent.unsubscribe(subscriberOnReleased, () => unsubscribeOnReleasedCallback("FMS_releaseForm_0300"));
+                setTimeout(function () {
+                    console.info('FMS_releaseForm_0300 onReleasedCallBack end');
                     console.log(`FMS_releaseForm_0300 end`);
                     done();
                 }, 100);
             }
-            function unSubscribeOnReleasedCallback() {
-                console.debug("====>FMS_releaseForm_0300 unSubscribeOnReleasedCallback CallBack====>");
-            }            
-            commonEvent.createSubscriber(onReleasedFormEvent).then(async (data) => {
-                console.debug("====>FMS_releaseForm_0300 onReleasedFormEvent Subscriber====>");
-                subscriberOnReleased = data;
-                await commonEvent.subscribe(subscriberOnReleased, onReleasedCallBack);
-            });
+            commonEvent.subscribe(subscriberOnReleased, onReleasedCallBack);
 
             console.log(`FMS_releaseForm_0300 featureAbility.startAbility start`);
             await featureAbility.startAbility({
@@ -208,29 +175,19 @@ export default function test() {
         */
         it(`FMS_releaseForm_0400`, 0, async (done) => {
             console.log(`FMS_releaseForm_0400 start`);
-            let subscriberOnReleased;
-            let subscriberOnAcquired;
 
-            function onReleaseCallBack(err, data) {
+            function onReleaseCallBack(_, data) {
                 console.info("!!!====>FMS_releaseForm_0400 onReleaseCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnReleased_commonEvent");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnReleased, unSubscribeOnReleasedCallback);
+                commonEvent.unsubscribe(subscriberOnReleased, () => unsubscribeOnReleasedCallback("FMS_releaseForm_0400"));
                 setTimeout(function () {                    
-                    console.info('FMS_releaseForm_0400 delPublishCallBack end');
+                    console.info('FMS_releaseForm_0400 onReleaseCallBack end');
                     console.log(`FMS_releaseForm_0400 end`);
                     done();
                 }, 100);
             }
-            function unSubscribeOnReleasedCallback() {
-                console.debug("====>FMS_releaseForm_0400 unSubscribeOnReleasedCallback CallBack====>");
-            }            
-            commonEvent.createSubscriber(onReleasedFormEvent).then(async (data) => {
-                console.debug("====>FMS_releaseForm_0400 onReleasedFormEvent Subscriber====>");
-                subscriberOnReleased = data;
-                await commonEvent.subscribe(subscriberOnReleased, onReleaseCallBack);
-            });
-
+            commonEvent.subscribe(subscriberOnReleased, onReleaseCallBack);
             console.log(`FMS_releaseForm_0400 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -264,44 +221,24 @@ export default function test() {
         */
         it(`FMS_releaseForm_0500`, 0, async (done) => {
             console.log(`FMS_releaseForm_0500 start`);
-            let subscriberOnReleased;
-            let subscriberOnAcquired;
             let formId;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_releaseForm_0500 delPublishCallBack====>");
-                setTimeout(function () {                    
-                    console.info('FMS_releaseForm_0500 delPublishCallBack end');
-                    console.log(`FMS_releaseForm_0500 end`);
-                    done();
-                }, 1000)
-            }
-
-            function onReleasedCallBack(err, data) {
+            function onReleasedCallBack(_, data) {
                 console.info("!!!====>FMS_releaseForm_0500 onReleasedCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnReleased_commonEvent");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnReleased, unSubscribeOnReleasedCallback);
+                commonEvent.unsubscribe(subscriberOnReleased, () => unsubscribeOnReleasedCallback("FMS_releaseForm_0500"));
                 let commonEventPublishData = {
                     data: formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_releaseForm_0500", done));
             }
-            function unSubscribeOnReleasedCallback() {
-                console.debug("====>FMS_releaseForm_0500 unSubscribeOnReleasedCallback CallBack====>");
-            }            
-            
-            function onAcquiredCallBack(err, data) {
+            function onAcquiredCallBack(_, data) {
                 console.info("!!!====>FMS_releaseForm_0500 onAcquiredCallBack data:====>" + JSON.stringify(data));
-                expect(data.event).assertEqual("FMS_FormOnAcquired_commonEvent");                
-                commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallback)
+                expect(data.event).assertEqual("FMS_FormOnAcquired_commonEvent");
+                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_releaseForm_0500"));
                 formId = data.data;
-                commonEvent.createSubscriber(onReleasedFormEvent).then(async (data) => {
-                    console.debug("====>FMS_releaseForm_0500 onReleasedFormEvent Subscriber====>");
-                    subscriberOnReleased = data;
-                    await commonEvent.subscribe(subscriberOnReleased, onReleasedCallBack);
-                });
-
+                commonEvent.subscribe(subscriberOnReleased, onReleasedCallBack);
                 console.log(`FMS_releaseForm_0500 featureAbility.startAbility again start`);
                 featureAbility.startAbility({
                     want: {
@@ -326,15 +263,7 @@ export default function test() {
                 });
                 console.log(`FMS_releaseForm_0500 featureAbility.startAbility again end`);
             }
-            function unSubscribeOnAcquiredCallback() {
-                console.debug("====>FMS_releaseForm_0500 OnAcquired UnSubscribe CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onAcquiredForm_Event).then(async (data) => {
-                console.debug("====>FMS_releaseForm_0500 Create OnAcquired Subscriber====>");
-                subscriberOnAcquired = data;
-                await commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
-            });
+            commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             console.log(`FMS_releaseForm_0500 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -366,45 +295,26 @@ export default function test() {
         */
         it(`FMS_releaseForm_0600`, 0, async (done) => {
             console.log(`FMS_releaseForm_0600 start`);
-            let subscriberOnReleased;
-            let subscriberOnDeleted;
             let formId;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_releaseForm_0600 delPublishCallBack====>");
-                setTimeout(function () {
-                    console.info('FMS_releaseForm_0600 delPublishCallBack end');
-                    console.log(`FMS_releaseForm_0600 end`);   
-                    done();
-                }, 1000);                
-            }
-
-            function onReleasedCallBack(err, data) {
+            function onReleasedCallBack(_, data) {
                 console.info("!!!====>FMS_releaseForm_0600 onReleasedCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnReleased_commonEvent");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnReleased, unSubscribeOnReleasedCallback);
+                commonEvent.unsubscribe(subscriberOnReleased, () => unsubscribeOnReleasedCallback("FMS_releaseForm_0600"));
                 let commonEventPublishData = {
                     bundleName: "com.ohos.st.formsystemhostc",
                     data: formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_releaseForm_0600", done));
             }
-            function unSubscribeOnReleasedCallback() {
-                console.debug("====>FMS_releaseForm_0600 unSubscribeOnReleasedCallback CallBack====>");
-            }            
-            
-            function onDeletedCallBack(err, data) {
+            function onDeletedCallBack(_, data) {
                 console.info("!!!====>FMS_releaseForm_0600 onDeletedCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnDeleted_commonEvent");
                 expect(data.data).assertEqual("0");
-                commonEvent.unsubscribe(subscriberOnDeleted, unSubscribeDeletedCallback)
+                commonEvent.unsubscribe(subscriberOnDeleted, unsubscribeDeletedCallback)
                 formId = data.parameters.formId;
-                commonEvent.createSubscriber(onReleasedFormEvent).then(async (data) => {
-                    console.debug("====>FMS_releaseForm_0600 B onReleasedFormEvent Subscriber====>");
-                    subscriberOnReleased = data;
-                    await commonEvent.subscribe(subscriberOnReleased, onReleasedCallBack);
-                });
+                commonEvent.subscribe(subscriberOnReleased, onReleasedCallBack);
 
                 console.log(`FMS_releaseForm_0600 featureAbility.startAbility again start`);
                 featureAbility.startAbility({
@@ -430,14 +340,10 @@ export default function test() {
                 });
                 console.log(`FMS_releaseForm_0600 featureAbility.startAbility again end`);
             }
-            function unSubscribeDeletedCallback() {
-                console.debug("====>FMS_releaseForm_0600 unSubscribeDeletedCallback====>");
+            function unsubscribeDeletedCallback() {
+                console.debug("====>FMS_releaseForm_0600 unsubscribeDeletedCallback====>");
             }
-           commonEvent.createSubscriber(onDetetedFormEvent).then(async (data) => {
-                console.debug("====>FMS_releaseForm_0600 onDetetedFormEvent Subscriber====>");
-                subscriberOnDeleted = data;
-                await commonEvent.subscribe(subscriberOnDeleted, onDeletedCallBack);
-            });
+            commonEvent.subscribe(subscriberOnDeleted, onDeletedCallBack);
             console.log(`FMS_releaseForm_0600 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -470,8 +376,6 @@ export default function test() {
         */
         it(`FMS_releaseForm_1300`, 0, async (done) => {
             console.log(`FMS_releaseForm_1300 start`);
-            let subscriberOnReleased;
-            let subscriberOnAcquired;
             let formIdList = [];
             let releasedIdList = [];
             let formCount = 2;
@@ -483,13 +387,13 @@ export default function test() {
                 if(delCount == formCount) {
                     setTimeout(function () {
                         console.info('FMS_releaseForm_1300 delPublishCallBack end');
-                        console.log(`FMS_releaseForm_1300 end`);   
+                        console.log(`FMS_releaseForm_1300 end`);
                         done();
                     }, 1000);
                 }
             }
 
-            function onReleasedCallBack(err, data) {
+            function onReleasedCallBack(_, data) {
                 console.info("!!!====>FMS_releaseForm_1300 onReleasedCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnReleased_commonEvent");
                 expect(data.data).assertEqual("0");
@@ -500,7 +404,7 @@ export default function test() {
                     }
                 });
                 if(releasedIdList.length == formCount) {
-                    commonEvent.unsubscribe(subscriberOnReleased, unSubscribeOnReleasedCallback);
+                    commonEvent.unsubscribe(subscriberOnReleased, () => unsubscribeOnReleasedCallback("FMS_releaseForm_1300"));
                     for(var iIndex = 0; iIndex < releasedIdList.length; iIndex++) {
                         let commonEventPublishData = {
                             bundleName: "com.ohos.st.formsystemhostc",
@@ -510,16 +414,9 @@ export default function test() {
                     }
                 }
             }
-            function unSubscribeOnReleasedCallback() {
-                console.debug("====>FMS_releaseForm_1300 unSubscribeOnReleasedCallback CallBack====>");
-            }            
             function releaseForms() {
                 console.debug("====>FMS_releaseForm_1300 releaseForms====>");
-                commonEvent.createSubscriber(onReleasedFormEvent).then(async (data) => {
-                    console.debug("====>FMS_releaseForm_1300 B onReleasedFormEvent Subscriber====>");
-                    subscriberOnReleased = data;
-                    await commonEvent.subscribe(subscriberOnReleased, onReleasedCallBack);
-                });
+                commonEvent.subscribe(subscriberOnReleased, onReleasedCallBack);
                 for(var iIndex = 0; iIndex < formIdList.length; iIndex++) {
                     console.log(`FMS_releaseForm_1300 featureAbility.startAbility start`);
                     featureAbility.startAbility({
@@ -546,29 +443,25 @@ export default function test() {
                     console.log(`FMS_releaseForm_1300 featureAbility.startAbility end`);
                 }
             }
-            function onAcquiredCallBack1(err, data) {
+            function onAcquiredCallBack1(_, data) {
                 console.info("!!!====>FMS_releaseForm_1300 onAcquiredCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnAcquired_commonEvent");
-                commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallback);
+                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_releaseForm_1300"));
                 formIdList.push(data.data);
 
                 releaseForms();
             }
 
-            function onAcquiredCallBack(err, data) {
+            async function onAcquiredCallBack(_, data) {
                 console.info("!!!====>FMS_releaseForm_1300 onAcquiredCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnAcquired_commonEvent");
-                commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallback);
+                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_releaseForm_1300"));
                 formIdList.push(data.data);
+                subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
+                commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack1);
 
-                commonEvent.createSubscriber(onAcquiredForm_Event).then(async (data) => {
-                    console.debug("====>FMS_releaseForm_1300 Create OnAcquired Subscriber====>");
-                    subscriberOnAcquired = data;
-                    await commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack1);
-                });
-                
                 console.log(`FMS_releaseForm_1300 featureAbility.startAbility start`);
-                featureAbility.startAbility({
+                await featureAbility.startAbility({
                     want: {
                         bundleName: "com.ohos.st.formsystemhostc",
                         abilityName: "com.ohos.st.formsystemhostc.MainAbility",
@@ -589,15 +482,8 @@ export default function test() {
                 });
                 console.log(`FMS_releaseForm_1300 featureAbility.startAbility end`);
             }
-            function unSubscribeOnAcquiredCallback() {
-                console.debug("====>FMS_releaseForm_1300 OnAcquired UnSubscribe CallBack====>");
-            }
-            commonEvent.createSubscriber(onAcquiredForm_Event).then(async (data) => {
-                console.debug("====>FMS_releaseForm_1300 Create OnAcquired Subscriber====>");
-                subscriberOnAcquired = data;
-                await commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
-            });
-            
+            commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
+
             console.log(`FMS_releaseForm_1300 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -629,38 +515,20 @@ export default function test() {
         */
         it(`FMS_releaseForm_1400`, 0, async (done) => {
             console.log(`FMS_releaseForm_1400 start`);
-            let subscriberOnReleased;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_releaseForm_1400 delPublishCallBack====>");
-                setTimeout(function () {
-                    console.info('FMS_releaseForm_1400 delPublishCallBack end');
-                    console.log(`FMS_releaseForm_1400 end`);   
-                    done();
-                }, 1000);                
-            }
-     
-            function unSubscribeOnReleasedCallback() {
-                console.debug("====>FMS_releaseForm_1400 unSubscribeOnReleasedCallback CallBack====>");
-            }            
-            
-            function onReleasedCallBack(err, data) {
+            function onReleasedCallBack(_, data) {
                 console.info("!!!====>FMS_releaseForm_1400 onReleasedCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnReleased_commonEvent");
                 expect(data.data).assertEqual("0");
-                commonEvent.unsubscribe(subscriberOnReleased, unSubscribeOnReleasedCallback);
+                commonEvent.unsubscribe(subscriberOnReleased, () => unsubscribeOnReleasedCallback("FMS_releaseForm_1400"));
 
                 let commonEventPublishData = {
                     bundleName: "com.ohos.st.formsystemhostc",
                     data: data.parameters.formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);                
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, (delPublishCallBack("FMS_releaseForm_1400", done)));
             }
-            commonEvent.createSubscriber(onReleasedFormEvent).then(async (data) => {
-                console.debug("====>FMS_releaseForm_1400 onReleasedFormEvent Subscriber====>");
-                subscriberOnReleased = data;
-                await commonEvent.subscribe(subscriberOnReleased, onReleasedCallBack);
-            });
+            commonEvent.subscribe(subscriberOnReleased, onReleasedCallBack);
 
             console.log(`FMS_releaseForm_1400 featureAbility.startAbility start`);
             await featureAbility.startAbility({
@@ -687,4 +555,20 @@ export default function test() {
             console.log(`FMS_releaseForm_1400 featureAbility.startAbility end`);
         });
     });
+}
+
+const delPublishCallBack = async (tcNumber, done) {
+    console.info(`${tcNumber} delPublishCallBack start`);
+    setTimeout(function () {
+        console.info(`${tcNumber} delPublishCallBack end`);
+        done();
+    }, 1000);
+}
+
+const unsubscribeOnReleasedCallback = (tcNumber) {
+    console.debug(`====>${tcNumber} unsubscribeOnReleasedCallback====>`);
+}
+
+const unsubscribeOnAcquiredCallback = (tcNumber) {
+    console.debug(`====>${tcNumber} unsubscribeOnAcquiredCallback====>`);
 }
