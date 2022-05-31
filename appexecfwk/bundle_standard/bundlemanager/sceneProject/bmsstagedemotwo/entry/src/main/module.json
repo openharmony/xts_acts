@@ -1,10 +1,10 @@
 {
     "module": {
-        "name": "phone",
-        "type": "entry",
+        "name": "myfeature",
+        "type": "feature",
         "srcEntrance": "./ets/Application/AbilityStage.ts",
         "description": "$string:phone_entry_dsc",
-        "mainElement": "MainAbility",
+        "mainElement": "MainAbility1",
         "deviceTypes": [
             "phone"
         ],
@@ -14,7 +14,7 @@
         "pages": "$profile:main_pages",
         "abilities": [
             {
-                "name": "ohos.acts.bundle.stage.MainAbility",
+                "name": "ohos.acts.bundle.stage.MainAbility1",
                 "srcEntrance": "./ets/MainAbility/MainAbility.ts",
                 "description": "$string:phone_entry_main",
                 "icon": "$media:icon",
@@ -35,38 +35,15 @@
         ],
         "extensionAbilities": [
             {
-                "name": "FormAbility",
+                "name": "ExtensionAbilityQ",
                 "srcEntrance": "./ets/FormAbility/FormAbility.ts",
                 "label": "$string:form_FormAbility_label",
                 "description": "$string:form_FormAbility_desc",
                 "type": "form",
                 "skills": [
                     {
-                        "actions": ["actionZ"]
-                    },
-                    {
-                        "actions": ["actionZ12"],
-                        "uris": [
-                            {
-                                "scheme": "https",
-                                "host": "www.test.com",
-                                "pathStartWith": "query/teacher"
-                            }
-                        ]
-                    },
-                    {
-                        "actions": ["action_1"],
-                        "uris": [
-                            {
-                                "scheme": "https",
-                                "host": "www.test.com",
-                                "path": "query/student/name"
-                            }
-                        ]
-                    },
-                    {
-                        "actions": ["actionZ14"],
-                        "entities": ["entitiesZ14","entitiesCommon","entitiesZZ"]
+                        "actions": ["actionQ"],
+                        "entities": ["entitiesQ"]
                     }
                 ],
                 "metadata": [
@@ -77,61 +54,77 @@
                 ]
             },
             {
-                "name": "ExtensionAbility1",
+                "name": "ExtensionAbilityW",
                 "srcEntrance": "./ets/FormAbility/FormAbility.ts",
                 "label": "$string:form_FormAbility_label",
                 "description": "$string:form_FormAbility_desc",
-                "type": "form",
+                "type": "service",
                 "skills": [
                     {
-                        "actions": ["actionY"]
-                    },
-                    {
-                        "actions": ["actionY12"],
-                        "uris": [
-                            {
-                                "scheme": "https",
-                                "host": "www.test.com",
-                                "path": "query/student/name"
-                            }
-                        ]
-                    },
-                    {
-                        "actions": ["action_2"],
-                        "uris": [
-                            {
-                                "scheme": "https",
-                                "host": "www.test.com",
-                                "pathStartWith": "query/teacher"
-                            }
-                        ]
-                    },
-                    {
-                        "actions": ["actionY14"],
-                        "entities": ["entitiesY14"]
+                        "actions": ["actionW"],
+                        "entities": ["entitiesW","entitiesCommon"]
                     }
                 ],
                 "metadata": [
                     {
                         "name": "ohos.extension.form",
-                        "value": "testExtensionAbilities",
                         "resource": "$profile:form_config"
                     }
                 ],
                 "permissions": ["ohos.permission.GET_BUNDLE_INFO"]
             },
             {
-                "name": "ServiceAbility",
-                "srcEntrance": "./ets/ServiceAbility/FormAbility.ts",
+                "name": "ExtensionAbilityA",
+                "srcEntrance": "./ets/FormAbility/FormAbility.ts",
                 "label": "$string:form_FormAbility_label",
                 "description": "$string:form_FormAbility_desc",
-                "type": "service",
+                "type": "wallpaper",
+                "skills": [
+                    {
+                        "actions": ["action_3"],
+                        "uris": [
+                            {
+                                "scheme": "https",
+                                "host": "www.test.com",
+                                "pathRegex": "ab*c"
+                            }
+                        ]
+                    }
+                ],
                 "metadata": [
                     {
                         "name": "ohos.extension.form",
                         "resource": "$profile:form_config"
                     }
                 ]
+            },
+            {
+                "name": "ExtensionAbilityB",
+                "srcEntrance": "./ets/FormAbility/FormAbility.ts",
+                "label": "$string:form_FormAbility_label",
+                "description": "$string:form_FormAbility_desc",
+                "type": "workScheduler",
+                "skills": [
+                    {
+                        "actions": ["action_4"],
+                        "uris": [
+                            {
+                                "scheme": "https",
+                                "host": "www.test.com",
+                                "path": "query/student/name",
+                                "pathRegex": "ab*c",
+                                "pathStartWith": "query/teacher"
+                            }
+                        ]
+                    }
+                ],
+                "metadata": [
+                    {
+                        "name": "ohos.extension.form",
+                        "resource": "$profile:form_config"
+                    }
+                ],
+                "permissions": ["ohos.permission.GET_BUNDLE_INFO"]
             }
         ]
 
