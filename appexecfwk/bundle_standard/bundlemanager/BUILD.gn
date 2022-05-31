@@ -57,6 +57,7 @@ group("bundlemanager") {
       "sceneProject/bmsscenetwo:bmsJstest2",
       "sceneProject/bmssecondright:second_right",
       "sceneProject/bmsstagedemoone:bmsStageDemo1",
+      "sceneProject/bmsstagedemotwo:bmsStageDemo2",
     ]
   }
 }

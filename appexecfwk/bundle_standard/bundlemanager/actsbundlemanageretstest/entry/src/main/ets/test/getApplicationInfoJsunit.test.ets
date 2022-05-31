@@ -30,10 +30,13 @@ const TAG_TEST_0600_001 = ' bundle_getApplicationInfo_test_0600_0011 ';
 const TAG_TEST_0600_002 = ' bundle_getApplicationInfo_test_0600_0012 ';
 const TAG_TEST_0600_003 = ' bundle_getApplicationInfo_test_0600_0013 ';
 const BUNDLE_NAME = 'com.open.harmony.packagemag';
-const BUNDLE_NAME_OTHER = 'com.ohos.acepackage';
+const BUNDLE_OTHER = 'com.example.third1';
+const BUNDLE_NOTEXIST = 'com.ohos.package';
+const FLAG_DEFAULT = Bundle.BundleFlag.GET_BUNDLE_DEFAULT;
+const PATH = "/data/app/el1/bundle/public";
 const USER_ID_100 = 100;
 
-export default function getApplicationInfoJsunit() {
+export default function applicationBundleJsunit() {
 
     describe('appInfoTest', function () {
 
@@ -223,26 +226,6 @@ export default function getApplicationInfoJsunit() {
         });
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0500_001
-         * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
-         * @tc.desc: Check the return value of the interface (by promise)
-         * @tc.level 0
-         */
-        it(TAG_TEST_0500_001, 0, async function (done) {
-            let startTime = await Utils.getNowTime();
-            await Bundle.getApplicationInfo('', Bundle.BundleFlag.GET_BUNDLE_DEFAULT).then((data) => {
-                console.info(TAG_TEST_0500_001 + 'noUserId promise data is: ' + data);
-                expect(data).assertFail();
-            }).catch((error) => {
-                console.info(TAG_TEST_0500_001 + 'noUserId promise error is: ' + error);
-                expect(error).assertEqual(1);
-            });
-            let endTime = Utils.getNowTime();
-            Utils.getDurationTime(TAG_TEST_0500_001, startTime, endTime);
-            done();
-        });
-
-        /**
          * @tc.number: bundle_getApplicationInfo_test_0500_002
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface (by promise)
@@ -263,29 +246,6 @@ export default function getApplicationInfoJsunit() {
         });
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0600_001
-         * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
-         * @tc.desc: Check the return value of the interface (by promise)
-         * @tc.level 0
-         */
-        it(TAG_TEST_0600_001, 0, async function (done) {
-            let errors
-            let startTime = await Utils.getNowTime();
-            await Bundle.getApplicationInfo(BUNDLE_NAME_OTHER,
-                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION).then((data) => {
-                    console.info(TAG_TEST_0600_001 + 'other bundleName noUserId promise data is: ' + data);
-                    expect(data).assertFail();
-                }).catch((error) => {
-                    console.info(TAG_TEST_0600_001 + 'other bundleName noUserId promise error is: ' + error);
-                    errors = error
-                    expect(errors).assertEqual(1);
-                });
-            let endTime = Utils.getNowTime();
-            Utils.getDurationTime(TAG_TEST_0600_001, startTime, endTime);
-            done();
-        });
-
-        /**
          * @tc.number: bundle_getApplicationInfo_test_0600_002
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface (by promise)
@@ -294,7 +254,7 @@ export default function getApplicationInfoJsunit() {
         it(TAG_TEST_0600_002, 0, async function (done) {
             let startTime = await Utils.getNowTime();
             let errors
-            await Bundle.getApplicationInfo(BUNDLE_NAME_OTHER,
+            await Bundle.getApplicationInfo(BUNDLE_NOTEXIST,
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USER_ID_100).then((data) => {
                     console.info(TAG_TEST_0600_002 + 'other bundleName UserId promise data is: ' + data);
                     expect(data).assertFail();
@@ -309,25 +269,111 @@ export default function getApplicationInfoJsunit() {
         });
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0600_003
+         * @tc.number: getApplicationInfo_1300
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
-         * @tc.desc: Check the return value of the interface (by promise)
-         * @tc.level 0
+         * @tc.desc: Check the return value of the interface
          */
-        it(TAG_TEST_0600_003, 0, async function (done) {
+        it('getApplicationInfo_1300', 0, async function (done) {
             let startTime = await Utils.getNowTime();
-            await Bundle.getApplicationInfo(BUNDLE_NAME, Bundle.BundleFlag.GET_BUNDLE_DEFAULT).then((data) => {
+            await Bundle.getApplicationInfo(BUNDLE_NAME, FLAG_DEFAULT).then((data) => {
                 let endTime = Utils.getNowTime();
                 Utils.getDurationTime(TAG_TEST_0600_003, startTime, endTime);
-                console.info(TAG_TEST_0600_003 + 'noUserId promise data is: ' + data);
-                expect(typeof (data)).assertEqual("object");
                 expectData(TAG_TEST_0600_003, data);
                 getApplicationInfoSuccess_plus(TAG_TEST_0600_003, data);
             }).catch((error) => {
                 console.info(TAG_TEST_0600_003 + 'noUserId promise error is: ' + error);
                 expect(error).assertFail();
             });
+            startTime = await Utils.getNowTime();
+            Bundle.getApplicationInfo(BUNDLE_NAME, FLAG_DEFAULT, (err, data) => {
+                let endTime = Utils.getNowTime();
+                Utils.getDurationTime(TAG_TEST_0600_003, startTime, endTime);
+                console.info(TAG_TEST_0600_003 + 'noUserId promise data is: ' + data);
+                expectData(TAG_TEST_0600_003, data);
+                getApplicationInfoSuccess_plus(TAG_TEST_0600_003, data);
+                expect(err).assertEqual(0);
+                done();
+            });
+        });
+
+        /**
+         * @tc.number: getApplicationInfo_1400
+         * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
+         * @tc.desc: Check the return value of the interface
+         */
+        it('getApplicationInfo_1400', 0, async function (done) {
+          await Bundle.getApplicationInfo(BUNDLE_OTHER, FLAG_DEFAULT).then((data) => {
+              console.info('noUserId promise data is: ' + data);
+              getApplicationInfoSuccessOther(data);
+          }).catch((error) => {
+            expect(error).assertFail();
+          });
+          Bundle.getApplicationInfo(BUNDLE_OTHER, FLAG_DEFAULT, (err, data) => {
+            console.info('noUserId promise data is: ' + data);
+            expect(err).assertEqual(0);
+            getApplicationInfoSuccessOther(data);
             done();
+          });
+        });
+
+        /**
+         * @tc.number: getApplicationInfo_1500
+         * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
+         * @tc.desc: Check the return value of the interface
+         */
+        it('getApplicationInfo_1500', 0, async function (done) {
+            let startTime = await Utils.getNowTime();
+            await Bundle.getApplicationInfo(BUNDLE_NOTEXIST, FLAG_DEFAULT).then((data) => {
+                expect(data).assertFail();
+            }).catch((error) => {
+                expect(error).assertEqual(1);
+                let endTime = Utils.getNowTime();
+                Utils.getDurationTime(TAG_TEST_0600_001, startTime, endTime);
+            });
+            startTime = await Utils.getNowTime();
+            await Bundle.getApplicationInfo(BUNDLE_NOTEXIST, FLAG_DEFAULT, (err, data) => {
+                let endTime = Utils.getNowTime();
+                Utils.getDurationTime(TAG_TEST_0600_001, startTime, endTime);
+                expect(err).assertEqual(1);
+                expect(JSON.stringify(data)).assertEqual(undefined);
+                done();
+            });
+        });
+
+        /**
+         * @tc.number: getApplicationInfo_1700
+         * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
+         * @tc.desc: Check the return value of the interface
+         */
+        it('getApplicationInfo_1700', 0, async function (done) {
+            await Bundle.getApplicationInfo('', FLAG_DEFAULT).then((data) => {
+                expect(data).assertFail();
+            }).catch((error) => {
+                expect(error).assertEqual(1);
+            });
+            await Bundle.getApplicationInfo(null, FLAG_DEFAULT).then((data) => {
+                expect(data).assertFail();
+            }).catch((error) => {
+                expect(error).assertEqual(1);
+            });
+            await Bundle.getApplicationInfo(BUNDLE_NAME, null).then((data) => {
+                expect(data).assertFail();
+            }).catch((error) => {
+                expect(error).assertEqual(1);
+            });
+            Bundle.getApplicationInfo('', FLAG_DEFAULT, (err, data) => {
+                expect(err).assertEqual(1);
+                expect(JSON.stringify(data)).assertEqual(undefined);
+                Bundle.getApplicationInfo(null, FLAG_DEFAULT, (err, data) => {
+                    expect(err).assertEqual(1);
+                    expect(data).assertEqual("type mismatch");
+                    Bundle.getApplicationInfo(BUNDLE_NAME, null, (err, data) => {
+                        expect(err).assertEqual(1);
+                        expect(data).assertEqual("type mismatch");
+                        done();
+                    });
+                });
+            });
         });
 
         function expectData(msg, data) {
@@ -358,8 +404,8 @@ export default function getApplicationInfoJsunit() {
         }
 
         function getApplicationInfoSuccess(msg, data) {
-            expect(data.name).assertEqual('com.open.harmony.packagemag');
-            expect(data.codePath).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag');
+            expect(data.name).assertEqual(BUNDLE_NAME);
+            expect(data.codePath).assertEqual(PATH + '/' + BUNDLE_NAME);
             expect(data.accessTokenId > 0).assertEqual(true);
             expect(data.description).assertEqual('$string:mainability_description');
             expect(data.descriptionId > 0).assertEqual(true);
@@ -372,16 +418,13 @@ export default function getApplicationInfoJsunit() {
             expect(data.supportedModes).assertEqual(0);
             expect(data.flags).assertEqual(0);
             expect(data.process).assertEqual("");
-            expect(data.entryDir).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag' +
-                '/com.open.harmony.packagemag');
+            expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
             expect(data.enabled).assertEqual(true);
             expect(data.entityType).assertEqual('unspecified');
             expect(data.removable).assertEqual(true);
             expect(data.moduleInfos[0].moduleName).assertEqual('entry');
-            expect(data.moduleInfos[0].moduleSourceDir).assertEqual('/data/app/el1/bundle/public/' +
-                'com.open.harmony.packagemag/com.open.harmony.packagemag');
-            expect(data.moduleSourceDirs[0]).assertEqual('/data/app/el1/bundle/public/' +
-                'com.open.harmony.packagemag/com.open.harmony.packagemag');
+            expect(data.moduleInfos[0].moduleSourceDir).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
+            expect(data.moduleSourceDirs[0]).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
             expect(data.permissions[0]).assertEqual("ohos.permission.CHANGE_ABILITY_ENABLED_STATE");
             expect(data.permissions[1]).assertEqual("ohos.permission.GET_BUNDLE_INFO");
             expect(data.permissions[2]).assertEqual("ohos.permission.GET_BUNDLE_INFO_PRIVILEGED");
@@ -389,31 +432,67 @@ export default function getApplicationInfoJsunit() {
         }
 
         function getApplicationInfoSuccess_plus(msg, data) {
-            expect(data.name).assertEqual('com.open.harmony.packagemag');
-            expect(data.codePath).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag');
-            expect(data.accessTokenId > 0).assertEqual(true);
+            expect(data.name).assertEqual(BUNDLE_NAME);
+            expect(data.codePath).assertEqual(PATH + '/' + BUNDLE_NAME);
+            expect(data.accessTokenId).assertLarger(0);
             expect(data.description).assertEqual('$string:mainability_description');
-            expect(data.descriptionId > 0).assertEqual(true);
+            expect(data.descriptionId).assertLarger(0);
             expect(data.icon).assertEqual('$media:icon');
-            expect(data.iconId > 0).assertEqual(true);
-            expect(data.uid > 0).assertEqual(true);
+            expect(data.iconId).assertLarger(0);
             expect(data.label).assertEqual('$string:entry_MainAbility');
-            expect(data.labelId > 0).assertEqual(true);
-            expect(data.systemApp).assertEqual(true);
+            expect(data.labelId).assertLarger(0);
+            expect(data.systemApp).assertTrue();
             expect(data.supportedModes).assertEqual(0);
-            expect(data.flags).assertEqual(0);
             expect(data.process).assertEqual("");
-            expect(data.entryDir).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag' +
-                '/com.open.harmony.packagemag');
-            expect(data.enabled).assertEqual(true);
-            expect(data.entityType).assertEqual('unspecified');
-            expect(data.removable).assertEqual(true);
+            expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
+            expect(data.permissions.length).assertEqual(0);
+            expect(data.moduleSourceDirs.length).assertEqual(1);
+            expect(data.moduleSourceDirs[0]).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
+            expect(data.moduleInfos.length).assertEqual(1);
             expect(data.moduleInfos[0].moduleName).assertEqual('entry');
-            expect(data.moduleInfos[0].moduleSourceDir).assertEqual('/data/app/el1/bundle/public/' +
-                'com.open.harmony.packagemag/com.open.harmony.packagemag');
-            expect(data.moduleSourceDirs[0]).assertEqual('/data/app/el1/bundle/public/' +
-                'com.open.harmony.packagemag/com.open.harmony.packagemag');
-            console.log(msg + ' end  ' + JSON.stringify(data));
+            expect(data.moduleInfos[0].moduleSourceDir).assertEqual(PATH + '/' +
+            BUNDLE_NAME + '/' + BUNDLE_NAME);
+            expect(JSON.stringify(data.metaData)).assertEqual("{}");
+            expect(JSON.stringify(data.metadata)).assertEqual("{}");
+            expect(data.enabled).assertTrue();
+            expect(data.flags).assertEqual(0);
+            expect(data.uid).assertLarger(0);
+            expect(data.entityType).assertEqual('unspecified');
+            expect(data.removable).assertTrue();
+            expect(data.fingerprint).assertEqual("");
+            console.info(msg + ' end  ');
+        }
+
+        function getApplicationInfoSuccessOther(data) {
+          expect(data.name).assertEqual(BUNDLE_OTHER);
+          expect(data.codePath).assertEqual(PATH + '/' + BUNDLE_OTHER);
+          expect(data.accessTokenId).assertLarger(0);
+          expect(data.description).assertEqual('$string:mainability_description');
+          expect(data.descriptionId).assertLarger(0);
+          expect(data.icon).assertEqual('$media:icon');
+          expect(data.iconId).assertLarger(0);
+          expect(data.label).assertEqual('$string:app_name');
+          expect(data.labelId).assertLarger(0);
+          expect(data.systemApp).assertFalse();
+          expect(data.supportedModes).assertEqual(0);
+          expect(data.process).assertEqual("");
+          expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+          expect(data.permissions.length).assertEqual(0);
+          expect(data.moduleSourceDirs.length).assertEqual(1);
+          expect(data.moduleSourceDirs[0]).assertEqual(PATH + '/' + BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+          expect(data.moduleInfos.length).assertEqual(1);
+          expect(data.moduleInfos[0].moduleName).assertEqual('entry');
+          expect(data.moduleInfos[0].moduleSourceDir).assertEqual(PATH + '/' +
+          BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+          expect(JSON.stringify(data.metaData)).assertEqual("{}");
+          expect(JSON.stringify(data.metadata)).assertEqual("{}");
+          expect(data.enabled).assertTrue();
+          expect(data.flags).assertEqual(0);
+          expect(data.uid).assertLarger(0);
+          expect(data.entityType).assertEqual('unspecified');
+          expect(data.removable).assertTrue();
+          expect(data.fingerprint).assertEqual("");
+          console.info('check end');
         }
 
     });

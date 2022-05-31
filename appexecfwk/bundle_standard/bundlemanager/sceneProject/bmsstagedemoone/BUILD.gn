@@ -13,16 +13,18 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("bmsStageDemo1") {
+ohos_hap("bmsStageDemo1") {
   hap_profile = "entry/src/main/module.json"
-  deps = [
-    ":bmsstagedemoone_js_assets",
-    ":bmsstagedemoone_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "bmsStageDemo1"
+  subsystem_name = XTS_SUITENAME
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
   testonly = true
+  deps = [
+    ":hjs_demo_js_assets",
+    ":hjs_demo_resources",
+  ]
+  certificate_profile = "signature/openharmony_sx.p7b"
 }
 
 ohos_app_scope("bmsstagedemoone_app_profile") {
@@ -30,11 +32,11 @@ ohos_app_scope("bmsstagedemoone_app_profile") {
   sources = [ "AppScope/resources" ]
 }
 
-ohos_js_assets("bmsstagedemoone_js_assets") {
+ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "entry/src/main/ets"
 }
 
-ohos_resources("bmsstagedemoone_resources") {
+ohos_resources("hjs_demo_resources") {
   sources = [ "entry/src/main/resources" ]
   deps = [ ":bmsstagedemoone_app_profile" ]
   hap_profile = "entry/src/main/module.json"

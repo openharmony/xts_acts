@@ -24,6 +24,8 @@ const SELF_BUNDLENAME = "com.example.actsbmsetsunpermissiontest";
 const SELF_ABILITYNAME = "com.example.actsbmsetsunpermissiontest.MainAbility";
 const BUNDLE_SETTINGS = "com.ohos.settings";
 const ABILITIY_SETTINGS = "com.ohos.settings.MainAbility";
+const BUNDLE_NAME1 = "ohos.acts.bundle.stage";
+const ABILITY_NAME1 = "ExtensionAbility1";
 
 export default function actsBmsJsUnPermissionTest() {
     describe('actsBmsJsUnPermissionTest', function () {
@@ -182,6 +184,38 @@ export default function actsBmsJsUnPermissionTest() {
                 done();
             });
         });
+
+        /*
+        * @tc.number: SUB_BMS_APPINFO_EXTENSION_0019
+        * @tc.name: test queryExtensionAbilityInfos api
+        * @tc.desc: test queryExtensionAbilityInfos no permission
+        */
+        it('SUB_BMS_APPINFO_EXTENSION_0019', 0, async function (done) {
+            await bundle.queryExtensionAbilityInfos(
+                {
+                    "bundleName": BUNDLE_NAME1,
+                    "abilityName": ABILITY_NAME1
+                }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
+                100).then(data => {
+                    expect(data).assertFail();
+                }).catch(err => {
+                    expect(err).assertEqual(1);
+                });
+            bundle.queryExtensionAbilityInfos(
+                {
+                    "bundleName": BUNDLE_NAME1,
+                    "abilityName": ABILITY_NAME1
+                }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
+                100, (err, data) => {
+                    if (err) {
+                        expect(err).assertEqual(1);
+                        done();
+                        return;
+                    }
+                    expect(data).assertFail();
+                    done();
+                })
+        })
 
         async function checkAbilityInfo(data) {
             console.info("checkAbilityInfo start !!!");
