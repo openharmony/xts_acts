@@ -813,23 +813,34 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name BUNDLE::getApplicationInfo
      * @tc.desc Test getApplicationInfo interfaces with three haps.
      */
-    it('getApplicationInfo_0300', 0, async function (done) {
-        demo.getApplicationInfo(NAME3, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION,
-            demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
-                expect(datainfo.name).assertEqual(NAME3);
-                expect(datainfo.label).assertEqual("$string:app_name");
-                expect(datainfo.description).assertEqual(DESCRIPTION);
-                expect(datainfo.icon).assertEqual("$media:icon");
-                expect(datainfo.name).assertEqual(NAME3);
-                expect(datainfo.description).assertEqual(DESCRIPTION);
-                expect(datainfo.descriptionId >= 0).assertTrue();
-                expect(datainfo.icon).assertEqual("$media:icon");
-                expect(datainfo.iconId >= 0).assertTrue();
-                expect(datainfo.label).assertEqual("$string:app_name");
-                expect(datainfo.labelId >= 0).assertTrue();
-                expect(datainfo.systemApp).assertEqual(true);
-                expect(datainfo.supportedModes).assertEqual(0);
-            });
+     it('getApplicationInfo_0300', 0, async function (done) {
+        let datainfo = await demo.getApplicationInfo(NAME2,
+            demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USERID);
+        console.info("getApplicationInfo_0300 result" + JSON.stringify(datainfo));
+        expect(typeof datainfo).assertEqual(OBJECT);
+        expect(datainfo.name.length).assertLarger(0);
+        expect(datainfo.description.length).assertLarger(0);
+        expect(datainfo.icon.length).assertLarger(0);
+        expect(datainfo.label.length).assertLarger(0);
+        expect(datainfo.moduleSourceDirs.length).assertLarger(0);
+        expect(datainfo.moduleInfos.length).assertLarger(0);
+        expect(datainfo.name).assertEqual(NAME2);
+        expect(datainfo.description).assertEqual(DESCRIPTION);
+        expect(datainfo.icon).assertEqual("$media:icon");
+        expect(datainfo.label).assertEqual("$string:app_name");
+        expect(datainfo.systemApp).assertEqual(true);
+        expect(datainfo.descriptionId >= 0).assertTrue();
+        expect(datainfo.iconId >= 0).assertTrue();
+        expect(datainfo.labelId >= 0).assertTrue();
+        expect(datainfo.supportedModes).assertEqual(0);
+        expect(datainfo.process).assertEqual("");
+        expect(datainfo.enabled).assertEqual(true);
+        expect(datainfo.flags).assertEqual(0);
+        expect(datainfo.moduleSourceDirs.length).assertLarger(0);
+        for (let j = 0; j < datainfo.moduleInfos; j++) {
+            expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry");
+            expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0);
+        }
         done();
     })
 
