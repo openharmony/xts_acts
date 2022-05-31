@@ -95,6 +95,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     function expectedError(error, caseName, apiName, done, code) {
       let msgStr = 'jsunittest ' + caseName + ' ' + apiName + ' failed, err: ';
       console.log(msgStr + JSON.stringify(error));
+      console.log(msgStr + 'code:'+code);
       if (error.code === code) {
         expect(TRUE_FLAG).assertTrue();
       }
@@ -115,7 +116,211 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         }, time);
       })
     }
+    /**
+	 * @tc.number     SUB_WINDOW_ON_OFF_JSAPI_001
+	 * @tc.name       Test listenerTest1
+	 * @tc.desc       Verify whether the change monitoring of avoidance area can be started normally.
+	 */
+    it('listenerTest1', 0, async function (done) {
+      let caseName = 'listenerTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let listenerOnFlag = listenerStatus.ready;
+      console.log(msgStr + 'begin');
+      let tempWnd = await windowStage.getMainWindow().catch((err) => {
+        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
+      });
+      console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
+      listenerData.on = true;
+      listenerData.typeStr = 'systemAvoidAreaChange';
+      tempWnd.on('systemAvoidAreaChange', (avoidAreaData) => {
+        console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, systemBatData : ' + JSON.stringify(avoidAreaData));
+        if (listenerOnFlag === listenerStatus.pending) {
+          listenerOnFlag = listenerStatus.finished;
+          expect(!!avoidAreaData).assertTrue();
+          done();
+        }
+      })
+      expect(!!tempWnd).assertTrue();
+      await tempWnd.show().catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.show', done);
+      });
+      console.log(msgStr + 'tempWnd.show success');
+      await tempWnd.setFullScreen(true).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.setFullScreen(true)', done);
+      });
+      console.log(msgStr + 'tempWnd.setFullScreen(true) success');
+      await tempWnd.setSystemBarEnable([]).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([])', done);
+      });
+      console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
 
+      console.log(msgStr + 'tempWnd.on systemAvoidAreaChange finished');
+      await sleep(1000);
+      listenerOnFlag = listenerStatus.pending;
+      await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
+      });
+      console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
+    })
+
+    /**
+	 * @tc.number     SUB_WINDOW_ON_OFF_JSAPI_002
+	 * @tc.name       Test listenerTest2
+	 * @tc.desc       Verify that the window size avoidance area changes and monitor whether it can be opened normally.
+	 */
+    it('listenerTest2', 0, async function (done) {
+      let caseName = 'listenerTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let wndId = 'listenerTest2';
+      let baseType = 2;
+      let changedModel = 102;
+      let baseValue = 100;
+      let resizeValue = 200;
+      let listenerOnFlag = listenerStatus.ready;
+      console.log(msgStr + 'begin');
+      let tempWnd = await ohosWindow.create(context, wndId, baseType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+      });
+      console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + tempWnd);
+      expect(!!tempWnd).assertTrue();
+      listenerData.on = true;
+      listenerData.typeStr = 'windowSizeChange';
+      tempWnd.on('windowSizeChange', (sizeData) => {
+        console.log(msgStr + 'tempWnd.on windowSizeChange, systemBatData : ' + JSON.stringify(sizeData));
+        if (listenerOnFlag === listenerStatus.pending) {
+          listenerOnFlag = listenerStatus.finished;
+          expect(!!sizeData).assertTrue();
+          expect(sizeData.width === resizeValue).assertTrue();
+          expect(sizeData.height === resizeValue).assertTrue();
+          done();
+        }
+      })
+      await tempWnd.show().catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.show', done);
+      });
+      console.log(msgStr + 'tempWnd.show success');
+      await tempWnd.setWindowMode(changedModel).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.setWindowMode ' + changedModel, done);
+      });
+      console.log(msgStr + 'tempWnd.setWindowMode ' + changedModel + ' success');
+      await tempWnd.resetSize(baseValue, baseValue).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize(' + baseValue + ', ' + baseValue + ')', done);
+      });
+      console.log(msgStr + 'tempWnd.resetSize(' + baseValue + ', ' + baseValue + ') success');
+      console.log(msgStr + 'tempWnd.on windowSizeChange finished');
+      await sleep(1000);
+      listenerOnFlag = listenerStatus.pending;
+      await tempWnd.resetSize(resizeValue, resizeValue).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize(' + resizeValue + ', ' + resizeValue + ')', done);
+      });
+      console.log(msgStr + 'tempWnd.resetSize(' + resizeValue + ', ' + resizeValue + ') success');
+    })
+    /**
+    * @tc.number     SUB_WINDOW_ON_OFF_JSAPI_003
+    * @tc.name       Test listenerTest3
+    * @tc.desc       Verify whether the change monitoring of avoidance area can be started normally.
+    */
+    it('listenerTest3', 0, async function (done) {
+      let caseName = 'listenerTest3';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let listenerOffFlag = listenerStatus.ready;
+      console.log(msgStr + 'begin');
+      let tempWnd = await windowStage.getMainWindow().catch((err) => {
+        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
+      });
+      console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
+      expect(!!tempWnd).assertTrue();
+      listenerData.on = true;
+      listenerData.typeStr = 'systemAvoidAreaChange';
+      tempWnd.on('systemAvoidAreaChange', (avoidAreaData) => {
+        console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, systemBatData : ' + JSON.stringify(avoidAreaData));
+        setTimeout(()=>{
+          console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, systemBatData 1100 : ' + JSON.stringify(avoidAreaData));
+        },1100)
+        done();
+      })
+      console.log(msgStr + 'tempWnd.on systemAvoidAreaChange finished');
+      await tempWnd.show().catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.show', done);
+      });
+      console.log(msgStr + 'tempWnd.show success');
+      await tempWnd.setFullScreen(true).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.setFullScreen(true)', done);
+      });
+      console.log(msgStr + 'tempWnd.setFullScreen(true) success');
+      await tempWnd.setSystemBarEnable([]).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([])', done);
+      });
+      console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
+      await sleep(1000);
+      tempWnd.off('systemAvoidAreaChange');
+      console.log(msgStr + 'tempWnd.off systemAvoidAreaChange finished');
+      await sleep(1200);
+      listenerOffFlag = listenerStatus.pending;
+      await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
+      });
+      console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
+    })
+    /**
+	 * @tc.number     SUB_WINDOW_ON_OFF_JSAPI_004
+	 * @tc.name       Test listenerTest4
+	 * @tc.desc       Verify whether the window size change monitoring can be closed normally.
+	 */
+    it('listenerTest4', 0, async function (done) {
+      let caseName = 'listenerTest4';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let wndId = 'listenerTest4';
+      let baseType = 2;
+      let changedModel = 102;
+      let listenerOffFlag = listenerStatus.ready;
+      console.log(msgStr + 'begin');
+      let tempWnd = await ohosWindow.create(context, wndId, baseType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+      });
+      console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + tempWnd);
+      expect(!!tempWnd).assertTrue();
+      listenerData.on = true;
+      listenerData.typeStr = 'windowSizeChange';
+      tempWnd.on('windowSizeChange', (sizeData) => {
+        console.log(msgStr + 'tempWnd.on windowSizeChange, sizeData : ' + JSON.stringify(sizeData));
+        if (listenerOffFlag === listenerStatus.pending) {
+          listenerOffFlag = listenerStatus.finished;
+          unexpectedError(null, caseName, 'off windowSizeChange', done)
+        }
+      })
+      await tempWnd.show().catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.show', done);
+      });
+      console.log(msgStr + 'tempWnd.show success');
+      await tempWnd.setWindowMode(changedModel).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.setWindowMode ' + changedModel, done);
+      });
+      console.log(msgStr + 'tempWnd.setWindowMode ' + changedModel + ' success');
+      await tempWnd.resetSize(100, 100).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize(100, 100)', done);
+      });
+      console.log(msgStr + 'tempWnd.resetSize(100, 100) success');
+      console.log(msgStr + 'tempWnd.on windowSizeChange finished');
+      await sleep(1000);
+      tempWnd.off('windowSizeChange');
+      console.log(msgStr + 'tempWnd.off windowSizeChange finished');
+      sleep(1000);
+      listenerOffFlag = listenerStatus.pending;
+      await tempWnd.resetSize(200, 200).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize(200, 200)', done);
+      });
+      console.log(msgStr + 'tempWnd.resetSize(200, 200) success');
+      setTimeout(() => {
+        if (listenerOffFlag === listenerStatus.finished) {
+          let apiStr = 'tempWnd.off windowSizeChange time wait';
+          unexpectedError(null, caseName, apiStr, done);
+        } else {
+          console.log(msgStr + 'tempWnd.off windowSizeChange time wait');
+          done();
+        }
+      }, 5000)
+    })
     /**
 	  * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_001
 	  * @tc.name       Test setSystemBarEnableTest1
@@ -784,12 +989,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       expect(!!tempWnd).assertTrue();
       console.log(msgStr + 'tempWnd.loadContent start');
       let errFlag = false;
-      await tempWnd.loadContent(null).catch((err) => {
+      let loadContentData = await tempWnd.loadContent(null).catch((err) => {
         errFlag = true;
         expectedError(err, caseName, 'tempWnd.loadContent', done, 130);
         console.log(msgStr + 'tempWnd.loadContent(null)' + JSON.stringify(err));
       });
-      console.log(msgStr + 'tempWnd.loadContent end');
+      console.log(msgStr + 'tempWnd.loadContent loadContentData:'+JSON.stringify(loadContentData));
       if (!errFlag) {
         console.log(msgStr + 'should report err');
         expect(TRUE_FLAG).assertFail();
@@ -823,12 +1028,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'loadContentTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let load5 = await windowStage.loadContent('pages/index/index.ets', abilityStorage).catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.loadContent', done);
+      let load5 = await windowStage.loadContent(null, abilityStorage).catch((err) => {
+        expectedError(err, caseName, 'tempWnd.loadContent', done,130);
         console.log(msgStr + 'tempWnd.loadContent(pages/index/index.ets)' + JSON.stringify(err));
       });
-      expect(!load5).assertTrue();
-      console.log(msgStr + 'tempWnd.loadContent end load=' + JSON.stringify(load5));
+//      expect(!load5).assertTrue();
+      console.log(msgStr + 'tempWnd.loadContent end load5=' + JSON.stringify(load5));
       done();
     })
     /**
@@ -945,6 +1150,34 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       })
       console.log(msgStr + 'mainWnd.getProperties lastPro:' + JSON.stringify(lastPro.isPrivacyMode));
       expect(!lastPro.isPrivacyMode).assertTrue();
+      done();
+    })
+    /**
+    * @tc.number     SUB_WINDOW_DESTROY_JSAPI_001
+    * @tc.name       Test destroyTest1
+    * @tc.desc       Verification window destruction scenario.
+    */
+    it('destroyTest1', 0, async function (done) {
+      let caseName = 'destroyTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let baseWndType = 1;
+      let windowId = 'destroyTest1';
+      console.log(msgStr + 'begin');
+      let tempWnd = await ohosWindow.create(context, windowId, baseWndType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create', done);
+      });
+      console.log(msgStr + 'ohosWindow.create ' + baseWndType + ' wnd: ' + tempWnd);
+      expect(!!tempWnd).assertTrue();
+      console.log(msgStr + 'tempWnd.destroy start');
+      await tempWnd.destroy().catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.destroy', done);
+      });
+      console.log(msgStr + 'tempWnd.destroy end');
+      let findWnd = await ohosWindow.find(windowId).catch((err) => {
+        expectedError(err, caseName, 'ohosWindow.find', done);
+      });
+      console.log(msgStr + 'find findWnd:'+JSON.stringify(findWnd));
+      expect(!findWnd).assertTrue();
       done();
     })
   })
