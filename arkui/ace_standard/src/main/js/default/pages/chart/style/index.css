@@ -77,7 +77,6 @@
 #styleTwo{
     width: 150px;
     height: 20px;
-    font-size:10px;
     padding-start: 1px;
     padding-end: 2px;
     margin-start: 1px;
@@ -357,6 +356,11 @@
     mask-size: cover;
     mask-position: center;
 }
+#styleThirtyThree{
+    filter:blur(10px);
+    backdrop-filter:blur(10px);
+    window-filter:blur(10%);
+}
 
 .specific-container{
     flex-direction: column;
@@ -545,6 +549,11 @@
 #addTwo{
     width: 100px;
     height: 15px;
+    font-size:14px;
+    stroke-width:34px;
+    start-angle:100;
+    total-angle:200;
+    allow-scale:true;
     background-image:url('common/images/image.png');
     background-size:auto;
     position:relative;
@@ -560,6 +569,11 @@
 #addThree{
     width: 100px;
     height: 15px;
+    font-size:13px;
+    stroke-width:24px;
+    start-angle:150;
+    total-angle:250;
+    allow-scale:false;
     background-color:#000000;
     transform: matrix3d(1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2);
     clip-path:content-box;
@@ -570,6 +584,15 @@
 #addFour{
     width: 100px;
     height: 15px;
+    stroke-width:30px;
+    start-angle:0;
+    total-angle:360;
+    center-x:38px;
+    center-y:8px;
+    colors: #ff0000, #00ff00;
+    radius:6px;
+    weights:1,1;
+    font-style:normal;
     background-color:#000000;
     transform: translate3d(1px,2px,1px) scale3d(1,2,1) rotate3d(10,10,10,10deg) skew(1deg,2deg) perspective(10px);
     clip-path:circle(1);
@@ -580,6 +603,14 @@
 #addFive{
     width: 100px;
     height: 15px;
+    start-angle:0;
+    total-angle:90;
+    center-x:30px;
+    center-y:7.5px;
+    radius:7.5px;
+    colors: #ff0000, #00ff00;
+    weights:2,2;
+    font-style:italic;
     background-color:#000000;
     transform: translateY(1px) translateZ(10px)
     scale(1,2) scaleZ(0.4)
@@ -593,6 +624,13 @@
 #addSix{
     width: 100px;
     height: 15px;
+    start-angle:0;
+    total-angle:180;
+    center-x:35px;
+    center-y:7px;
+    radius:7px;
+    weights:3,1;
+    colors: #ff0000, #00ff00;
     background-color:#000000;
     transform: scaleX(1) scaleY(0.4);
     clip-path:ellipse(1);
@@ -602,43 +640,97 @@
 #addSeven{
     width: 100px;
     height: 15px;
+    start-angle:90;
+    total-angle:180;
+    text-color:#ff0000;
+    font-family:sans-serif;
     background-color:#000000;
     clip-path:path(1);
     aspect-ratio:2;
     font-weight:400;
 }
 
-#addSeven:disabled{
+#addEight{
     width: 100px;
     height: 15px;
     background-color:#ff0000;
     font-weight:500;
 }
 
-#addSeven:active{
+#addNine{
     width: 100px;
     height: 15px;
     background-color:#ff0000;
     font-weight:600;
 }
 
-#addSeven:focus{
-    width: 100px;
-    height: 15px;
+#addTen{
+    width: 90px;
+    height: 16px;
     background-color:#ff0000;
     font-weight:700;
 }
 
-@font-face {
-    font-family: SimSunfont;
-    src: url('/common/simsun.ttf');
+#addEleven{
+    width: 91px;
+    height: 17px;
+    background-color:#ff0000;
+    font-weight:500;
 }
 
-@media (device-type: tv) {
-    .addSeven {
-        width: 500px;
-        height: 500px;
-        background-color: #fa8072;
-    }
+#addTwelve{
+    width: 93px;
+    height: 18px;
+    background-color:#ff0000;
+    font-weight:600;
 }
+
+#addThirteen{
+    width: 93px;
+    height: 18px;
+    background-color:#ff0000;
+    font-weight:600;
+}
+
+#addFourteen{
+    width: 93px;
+    height: 18px;
+    background-color:#ff0000;
+    font-weight:600;
+}
+
+#addFifteen{
+    width: 93px;
+    height: 18px;
+    background-color:#ff0000;
+    font-weight:600;
+}
+
+#addSixteen{
+    width: 93px;
+    height: 18px;
+    start-angle:80;
+    total-angle:90;
+    background-color:#ff0000;
+    font-weight:600;
+}
+
+#addSeventeen{
+    width: 93px;
+    height: 18px;
+    start-angle:120;
+    total-angle:180;
+    background-color:#ff0000;
+    font-weight:600;
+}
+
+#addEighteen{
+    width: 93px;
+    height: 18px;
+    start-angle:20;
+    total-angle:80;
+    background-color:#ff0000;
+    font-weight:600;
+}
+
 

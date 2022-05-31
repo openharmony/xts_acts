@@ -549,6 +549,8 @@
 #addTwo{
   width: 100px;
   height: 15px;
+  font-size:14px;
+  allow-scale:true;
   background-image:url('common/images/image.png');
   background-size:auto;
   position:relative;
@@ -564,6 +566,7 @@
 #addThree{
   width: 100px;
   height: 15px;
+  allow-scale:false;
   background-color:#000000;
   transform: matrix3d(1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2);
   clip-path:content-box;
@@ -574,6 +577,7 @@
 #addFour{
   width: 100px;
   height: 15px;
+  font-style:normal;
   background-color:#000000;
   transform: translate3d(1px,2px,1px) scale3d(1,2,1) rotate3d(10,10,10,10deg) skew(1deg,2deg) perspective(10px);
   clip-path:circle(1);
@@ -584,6 +588,7 @@
 #addFive{
   width: 100px;
   height: 15px;
+  font-style:italic;
   background-color:#000000;
   transform: translateY(1px) translateZ(10px)
   scale(1,2) scaleZ(0.4)
@@ -606,38 +611,59 @@
 #addSeven{
   width: 100px;
   height: 15px;
+  text-color:#ff0000;
+  font-family:sans-serif;
   background-color:#000000;
   clip-path:path(1);
   aspect-ratio:2;
   font-weight:400;
 }
 
-#addSeven:disabled{
+#addEight{
   width: 100px;
   height: 15px;
+  icon-width:100px;
+  icon-height:15px;
   background-color:#ff0000;
   font-weight:500;
 }
 
-#addSeven:active{
+#addNine{
   width: 100px;
   height: 15px;
+  radius:5px;
   background-color:#ff0000;
   font-weight:600;
 }
 
-#addSeven:focus{
-  width: 100px;
-  height: 15px;
+#addTen{
+  width: 90px;
+  height: 16px;
+  icon-width:90px;
+  icon-height:16px;
+  radius:3px;
   background-color:#ff0000;
   font-weight:700;
 }
 
-#addSeven:waiting{
-  width: 100px;
-  height: 15px;
+#addEleven{
+  width: 91px;
+  height: 17px;
+  icon-width:91px;
+  icon-height:17px;
+  radius:4px;
   background-color:#ff0000;
-  font-weight:700;
+  font-weight:500;
+}
+
+#addTwelve{
+  width: 93px;
+  height: 18px;
+  icon-width:93px;
+  icon-height:18px;
+  radius:6px;
+  background-color:#ff0000;
+  font-weight:600;
 }
 
 @font-face {

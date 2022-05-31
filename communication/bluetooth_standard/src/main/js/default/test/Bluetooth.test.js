@@ -453,7 +453,7 @@ describe('bluetoothhostTest', function() {
         let name = bluetooth.setLocalName();
         console.info('[bluetooth_js] getName result2 = '+ JSON.stringify(localName) +
         'setName result2 =' + JSON.stringify(name));
-        expect(name).assertNull();
+        expect(name).assertFalse();
         done();
     })
 

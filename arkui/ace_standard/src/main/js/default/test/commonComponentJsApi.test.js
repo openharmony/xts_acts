@@ -104,6 +104,30 @@ describe('aceJsTest', function () {
             done();
         });
 
+    /**
+         * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+         * @tc.name      testCameraComponent
+         * @tc.desc      ACE
+         */
+    it('testCameraComponent', 0, async function (done) {
+        console.info('testCameraComponent START');
+        let result;
+        let options = {
+            uri: 'pages/camera/router/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push camera page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push camera page error " + JSON.stringify(result));
+        }
+        await sleep(1000)
+        let pages = router.getState();
+        console.info("[router.camera] getState" + JSON.stringify(pages));
+        expect("pages/camera/router/").assertEqual(pages.path);
+        done();
+    });
+
         /**
          * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0300
          * @tc.name      testInputComponent
@@ -1168,6 +1192,52 @@ describe('aceJsTest', function () {
         let pages = router.getState();
         console.info("[router.obj_Path2D] getState" + JSON.stringify(pages));
         expect("pages/obj_Path2D/router/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testCameraComponent
+     * @tc.desc      ACE
+     */
+    it('testCameraComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/camera/router/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push camera page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push camera page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.camera] getState" + JSON.stringify(pages));
+        expect("pages/camera/router/").assertEqual(pages.path);
+        done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
+     * @tc.name      testCameraComponent
+     * @tc.desc      ACE
+     */
+    it('testWebComponent', 0, async function (done) {
+        let result;
+        let options = {
+            uri: 'pages/web/router/index'
+        }
+        try {
+            result = router.push(options)
+            console.info("push web page success " + JSON.stringify(result));
+        } catch (err) {
+            console.error("push web page error " + JSON.stringify(result));
+        }
+        await sleep(5000)
+        let pages = router.getState();
+        console.info("[router.web] getState" + JSON.stringify(pages));
+        expect("pages/web/router/").assertEqual(pages.path);
         done();
     });
 

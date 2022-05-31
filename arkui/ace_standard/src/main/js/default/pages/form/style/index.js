@@ -45,7 +45,8 @@ export default {
         styleTwentyNine : null,
         styleThirty : null,
         styleThirtyOne : null,
-        styleThirtyTwo : null
+        styleThirtyTwo : null,
+        styleThirtyThree : null,
     },
 
     onShow(){
@@ -77,9 +78,12 @@ export default {
             styleTwentyFour : this.styleTwentyFour,
             styleTwentyFive : this.styleTwentyFive,
             styleTwentySix : this.styleTwentySix,
+            styleTwentySeven : this.styleTwentySeven,
+            styleTwentyNine : this.styleTwentyNine,
             styleThirty : this.styleThirty,
             styleThirtyOne : this.styleThirtyOne,
-            styleThirtyTwo : this.styleThirtyTwo
+            styleThirtyTwo : this.styleThirtyTwo,
+            styleThirtyThree : this.styleThirtyTwo,
         }
     },
 
@@ -110,8 +114,11 @@ export default {
         this.styleTwentyFour = this.$element("styleTwentyFour").getInspector()
         this.styleTwentyFive = this.$element("styleTwentyFive").getInspector()
         this.styleTwentySix = this.$element("styleTwentySix").getInspector()
+        this.styleTwentySeven = this.$element("styleTwentySeven").getInspector()
+        this.styleTwentyNine = this.$element("styleTwentyNine").getInspector()
         this.styleThirty = this.$element("styleThirty").getInspector()
         this.styleThirtyOne = this.$element("styleThirtyOne").getInspector()
         this.styleThirtyTwo = this.$element("styleThirtyTwo").getInspector()
+        this.styleThirtyThree = this.$element("styleThirtyThree").getInspector()
     },
 }

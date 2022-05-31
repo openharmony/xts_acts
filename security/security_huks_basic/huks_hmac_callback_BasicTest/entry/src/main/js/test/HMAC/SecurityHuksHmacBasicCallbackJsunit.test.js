@@ -28,9 +28,7 @@ function generateKey(srcKeyAlies, HuksOptions) {
     huks.generateKey(srcKeyAlies, HuksOptions, function (err, data) {
       try {
         if (err.code !== 0) {
-          console.log(
-            'test generateKey err information: ' + JSON.stringify(err)
-          );
+          console.log('test generateKey err information: ' + JSON.stringify(err));
           reject(err);
         } else {
           resolve(data);
@@ -154,9 +152,7 @@ async function publicHmacUpdate(HuksOptions) {
     let count = Math.floor(inDataArray.length / dateSize);
     let remainder = inDataArray.length % dateSize;
     for (let i = 0; i < count; i++) {
-      HuksOptions.inData = new Uint8Array(
-        stringToArray(huksOptionsInData).slice(dateSize * i, dateSize * (i + 1))
-      );
+      HuksOptions.inData = new Uint8Array(stringToArray(huksOptionsInData).slice(dateSize * i, dateSize * (i + 1)));
       await update(handle, HuksOptions)
         .then((data) => {
           console.log(`test update data: ${data}`);
@@ -167,12 +163,7 @@ async function publicHmacUpdate(HuksOptions) {
         });
     }
     if (remainder !== 0) {
-      HuksOptions.inData = new Uint8Array(
-        stringToArray(huksOptionsInData).slice(
-          dateSize * count,
-          inDataArray.length
-        )
-      );
+      HuksOptions.inData = new Uint8Array(stringToArray(huksOptionsInData).slice(dateSize * count, inDataArray.length));
       console.log(`test update HuksOptions.inData ${HuksOptions.inData}`);
       await update(handle, HuksOptions)
         .then((data) => {
@@ -244,11 +235,7 @@ describe('SecurityHuksHmacCallbackJsunit', function () {
   it('testHmacSHA1001', 0, async function (done) {
     let srcKeyAlies = 'testHmacDigestSHA1KeyAlias001';
     let HuksOptions = {
-      properties: new Array(
-        HuksHmac.HuksKeyAlg,
-        HuksHmac.HuksKeyPurpose,
-        HuksHmac.HuksTagDigestSHA1
-      ),
+      properties: new Array(HuksHmac.HuksKeyAlg, HuksHmac.HuksKeyPurpose, HuksHmac.HuksTagDigestSHA1),
       inData: srcData63Kb,
     };
 
@@ -259,11 +246,7 @@ describe('SecurityHuksHmacCallbackJsunit', function () {
   it('testHmacSHA1002', 0, async function (done) {
     let srcKeyAlies = 'testHmacDigestSHA1KeyAlias002';
     let HuksOptions = {
-      properties: new Array(
-        HuksHmac.HuksKeyAlg,
-        HuksHmac.HuksKeyPurpose,
-        HuksHmac.HuksTagDigestSHA1
-      ),
+      properties: new Array(HuksHmac.HuksKeyAlg, HuksHmac.HuksKeyPurpose, HuksHmac.HuksTagDigestSHA1),
       inData: srcData63Kb,
     };
     await publicHmacGenFunc(srcKeyAlies, HuksOptions, 'abort');
@@ -272,11 +255,7 @@ describe('SecurityHuksHmacCallbackJsunit', function () {
   it('testHmacSHA1003', 0, async function (done) {
     let srcKeyAlies = 'testHmacDigestSHA1KeyAlias003';
     let HuksOptions = {
-      properties: new Array(
-        HuksHmac.HuksKeyAlg,
-        HuksHmac.HuksKeyPurpose,
-        HuksHmac.HuksTagDigestSHA1
-      ),
+      properties: new Array(HuksHmac.HuksKeyAlg, HuksHmac.HuksKeyPurpose, HuksHmac.HuksTagDigestSHA1),
       inData: srcData65Kb,
     };
     await publicHmacGenFunc(srcKeyAlies, HuksOptions, 'finish');
@@ -285,11 +264,7 @@ describe('SecurityHuksHmacCallbackJsunit', function () {
   it('testHmacSHA1004', 0, async function (done) {
     let srcKeyAlies = 'testHmacDigestSHA1KeyAlias004';
     let HuksOptions = {
-      properties: new Array(
-        HuksHmac.HuksKeyAlg,
-        HuksHmac.HuksKeyPurpose,
-        HuksHmac.HuksTagDigestSHA1
-      ),
+      properties: new Array(HuksHmac.HuksKeyAlg, HuksHmac.HuksKeyPurpose, HuksHmac.HuksTagDigestSHA1),
       inData: srcData65Kb,
     };
     await publicHmacGenFunc(srcKeyAlies, HuksOptions, 'abort');

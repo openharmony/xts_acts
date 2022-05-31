@@ -390,4 +390,15 @@ describe('appInfoTest', function () {
         console.info('batteryLevelState = ' + batteryLevelState);
         expect(batteryLevelState == 5).assertTrue();
     })
+
+    /**
+     * @tc.number battery_manager_js_3400
+     * @tc.name remainingChargeTime_test
+     * @tc.desc Battry Present Interface Test
+     */
+    it('remainingChargeTime_test', 0, function () {
+        let remainingChargeTime = batteryInfo.estimatedRemainingChargeTime;
+        console.info('remainingChargeTime = ' + remainingChargeTime);
+        expect(remainingChargeTime >= 0).assertTrue();
+      })
 })

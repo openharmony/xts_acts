@@ -1005,6 +1005,595 @@ describe('geolocationTest', function () {
         done()
     })
 
+    /**
+     * @tc.number SingleLoc_0010
+     * @tc.name SUB_HSS_LocationSystem_SingleLoc_0010
+     * @tc.desc Test getCurrentLocation api .
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_HSS_LocationSystem_SingleLoc_0010', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0200, "scenario": 0x0300, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+     * @tc.number SingleLoc_0011
+     * @tc.name SUB_HSS_LocationSystem_SingleLoc_0011
+     * @tc.desc Test getCurrentLocation api .
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_HSS_LocationSystem_SingleLoc_0011', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0201, "scenario": 0x0300, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+    * @tc.number SingleLoc_0012
+    * @tc.name SUB_HSS_LocationSystem_SingleLoc_0012
+    * @tc.desc Test getCurrentLocation api .
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_0012', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0201, "scenario": 0x0301, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+    * @tc.number SingleLoc_0013
+    * @tc.name SUB_HSS_LocationSystem_SingleLoc_0013
+    * @tc.desc Test getCurrentLocation api .
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_0013', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0201, "scenario": 0x0302, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+    * @tc.number SingleLoc_0014
+    * @tc.name SUB_HSS_LocationSystem_SingleLoc_0014
+    * @tc.desc Test getCurrentLocation api .
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_0014', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0201, "scenario": 0x0303, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+    * @tc.number SingleLoc_0015
+    * @tc.name SUB_HSS_LocationSystem_SingleLoc_0015
+    * @tc.desc Test getCurrentLocation api .
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_0015', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0201, "scenario": 0x0304, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+    * @tc.number SingleLoc_0016
+    * @tc.name SUB_HSS_LocationSystem_SingleLoc_0016
+    * @tc.desc Test getCurrentLocation api .
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_0016', 0, async function(done) {
+        let currentLocationRequest1 = { "priority": 0x201, "scenario": 0x305, "timeoutMs": 10, "maxAccuracy": 0 };
+        let currentLocationRequest2= { "priority": 0x201, "scenario": 0x301, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest1,
+            async(err, result) => {
+                if (err){
+                    console.info("getCurrentLocation callback1 err:  " + err)
+                    geolocation.getCurrentLocation(currentLocationRequest2,
+                        async(err, result) => {
+                            if (err){
+                                return console.info("getCurrentLocation callback2 err:  " + err)
+                            }else{
+                                console.info("getCurrentLocation callback, result2:  " + JSON.stringify(result));
+                                let resultLength = Object.keys(result).length;
+                                expect(true).assertEqual(resultLength >= 0);
+                                done()
+                            }
+                        });
+                }
+                console.info("getCurrentLocation callback, result1:  " + JSON.stringify(result));
+                let resultLength = Object.keys(result).length;
+                expect(true).assertEqual(resultLength == 0);
+            });
+        done()
+    })
+
+    /**
+     * @tc.number SingleLoc_0017
+     * @tc.name SUB_HSS_LocationSystem_SingleLoc_0017
+     * @tc.desc Test getCurrentLocation api .
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_HSS_LocationSystem_SingleLoc_0017', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0202, "scenario": 0x0300, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+    * @tc.number SingleLoc_0018
+    * @tc.name SUB_HSS_LocationSystem_SingleLoc_0018
+    * @tc.desc Test getCurrentLocation api .
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_0018', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0202, "scenario": 0x0301, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+    * @tc.number SingleLoc_0019
+    * @tc.name SUB_HSS_LocationSystem_SingleLoc_0019
+    * @tc.desc Test getCurrentLocation api .
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_0019', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0202, "scenario": 0x0302, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+    * @tc.number SingleLoc_0020
+    * @tc.name SUB_HSS_LocationSystem_SingleLoc_0020
+    * @tc.desc Test getCurrentLocation api .
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_0020', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0202, "scenario": 0x0303, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+    * @tc.number SingleLoc_0021
+    * @tc.name SUB_HSS_LocationSystem_SingleLoc_0021
+    * @tc.desc Test getCurrentLocation api .
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_0021', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0202, "scenario": 0x0304, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+    * @tc.number SingleLoc_0022
+    * @tc.name SUB_HSS_LocationSystem_SingleLoc_0022
+    * @tc.desc Test getCurrentLocation api .
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_0022', 0, async function(done) {
+        let currentLocationRequest1 = { "priority": 0x202, "scenario": 0x305, "timeoutMs": 10, "maxAccuracy": 0 };
+        let currentLocationRequest2= { "priority": 0x202, "scenario": 0x301, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest1,
+            async(err, result) => {
+                if (err){
+                    console.info("getCurrentLocation callback1 err:  " + err)
+                    geolocation.getCurrentLocation(currentLocationRequest2,
+                        async(err, result) => {
+                            if (err){
+                                return console.info("getCurrentLocation callback2 err:  " + err)
+                            }else{
+                                console.info("getCurrentLocation callback, result2:  " + JSON.stringify(result));
+                                let resultLength = Object.keys(result).length;
+                                expect(true).assertEqual(resultLength >= 0);
+                                done()
+                            }
+                        });
+                }
+                console.info("getCurrentLocation callback, result1:  " + JSON.stringify(result));
+                let resultLength = Object.keys(result).length;
+                expect(true).assertEqual(resultLength == 0);
+            });
+        done()
+    })
+
+    /**
+     * @tc.number SingleLoc_0023
+     * @tc.name SUB_HSS_LocationSystem_SingleLoc_0023
+     * @tc.desc Test getCurrentLocation api .
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_HSS_LocationSystem_SingleLoc_0023', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0203, "scenario": 0x0300, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+    * @tc.number SingleLoc_0024
+    * @tc.name SUB_HSS_LocationSystem_SingleLoc_0024
+    * @tc.desc Test getCurrentLocation api .
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_0024', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0203, "scenario": 0x0302, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+    * @tc.number SingleLoc_0025
+    * @tc.name SUB_HSS_LocationSystem_SingleLoc_0025
+    * @tc.desc Test getCurrentLocation api .
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_0025', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0203, "scenario": 0x0303, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+    * @tc.number SingleLoc_0026
+    * @tc.name SUB_HSS_LocationSystem_SingleLoc_0026
+    * @tc.desc Test getCurrentLocation api .
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_0026', 0, async function(done) {
+        let currentLocationRequest = { "priority": 0x0203, "scenario": 0x0304, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest,
+            (err, result) => {
+                if (err){
+                    return console.info("getCurrentLocation callback err:  " + err)
+                }else{
+                    console.info("getCurrentLocation callback, result:  " + JSON.stringify(result));
+                    let resultLength = Object.keys(result).length;
+                    expect(true).assertEqual(resultLength >= 0);
+                }
+            });
+        done()
+    })
+
+    /**
+    * @tc.number SingleLoc_0027
+    * @tc.name SUB_HSS_LocationSystem_SingleLoc_0027
+    * @tc.desc Test getCurrentLocation api .
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_0027', 0, async function(done) {
+        let currentLocationRequest1 = { "priority": 0x203, "scenario": 0x305, "timeoutMs": 10, "maxAccuracy": 0 };
+        let currentLocationRequest2= { "priority": 0x203, "scenario": 0x301, "timeoutMs": 10, "maxAccuracy": 0 };
+        geolocation.getCurrentLocation(currentLocationRequest1,
+            async(err, result) => {
+                if (err){
+                    console.info("getCurrentLocation callback1 err:  " + err)
+                    geolocation.getCurrentLocation(currentLocationRequest2,
+                        async(err, result) => {
+                            if (err){
+                                return console.info("getCurrentLocation callback2 err:  " + err)
+                            }else{
+                                console.info("getCurrentLocation callback, result2:  " + JSON.stringify(result));
+                                let resultLength = Object.keys(result).length;
+                                expect(true).assertEqual(resultLength >= 0);
+                                done()
+                            }
+                        });
+                }
+                console.info("getCurrentLocation callback, result1:  " + JSON.stringify(result));
+                let resultLength = Object.keys(result).length;
+                expect(true).assertEqual(resultLength == 0);
+            });
+        done()
+    })
+
+
+
+
+    /**
+     * @tc.number LastLocation_0001
+     * @tc.name SUB_HSS_LocationSystem_LastLocation_0001
+     * @tc.desc Test getLastLocation api .
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_HSS_LocationSystem_LastLocation_0001', 0, async function (done) {
+        geolocation.getLastLocation(async(err, data) => {
+            if (err) {
+                console.info('[lbs_js]  getLastLocation callback err is : ' + err );
+            }else {
+                console.info('[lbs_js] getLastLocation callback result: ' + data);
+                expect(data).assertTrue();
+            }
+            done()
+        })
+    });
+
+    /**
+     * @tc.number LastLocation_0002
+     * @tc.name SUB_HSS_LocationSystem_LastLocation_0002
+     * @tc.desc Test getLastLocation api .
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_HSS_LocationSystem_LastLocation_0002', 0, async function (done) {
+        await geolocation.getLastLocation().then((result) => {
+            console.info('[lbs_js] getLastLocation promise result: ' + result);
+            expect(result).assertTrue();
+        }).catch((error) => {
+            console.info('[lbs_js] getLastLocation promise then err: ' + result);
+            expect().assertFail();
+        });
+        done();
+    })
+
+    /**
+     * @tc.number SingleLoc_0028
+     * @tc.name SUB_HSS_LocationSystem_SingleLoc_0028
+     * @tc.desc Test getCurrentLocation api .
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_HSS_LocationSystem_SingleLoc_0028', 0, async function (done) {
+        let currentLocationRequest = { "priority": 0x0200, "scenario": 0x0300, "timeoutMs": 10, "maxAccuracy": 0 };
+        await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
+            console.info("[lbs_js] getCurrentLocation promise data is: " + JSON.stringify(result));
+            expect(true).assertEqual((JSON.stringify(result)) !=null);
+        }).catch((error) => {
+            console.info("[lbs_js] getCurrentLocation promise then error." + error);
+            expect().assertFail();
+        });
+        done();
+    })
+
+    /**
+         * @tc.number SingleLoc_0029
+         * @tc.name SUB_HSS_LocationSystem_SingleLoc_0029
+         * @tc.desc Test getCurrentLocation api .
+         * @tc.size MEDIUM
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+    it('SUB_HSS_LocationSystem_SingleLoc_0029', 0, async function (done) {
+        let currentLocationRequest = { "priority": 0x0200, "scenario": 0x0301, "timeoutMs": 10, "maxAccuracy": 0 };
+        await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
+            console.info("[lbs_js] getCurrentLocation promise result is: " + JSON.stringify(result));
+            expect(true).assertEqual((JSON.stringify(result)) !=null);
+        }).catch((error) => {
+            console.info("[lbs_js] getCurrentLocation promise then error." + error);
+            expect().assertFail();
+        });
+        done();
+    })
+
+    /**
+     * @tc.number SingleLoc_0030
+     * @tc.name SUB_HSS_LocationSystem_SingleLoc_0030
+     * @tc.desc Test getCurrentLocation api .
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_HSS_LocationSystem_SingleLoc_0030', 0, async function (done) {
+        let currentLocationRequest = { "priority": 0x0200, "scenario": 0x0302, "timeoutMs": 10, "maxAccuracy": 0 };
+        await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
+            console.info("[lbs_js] getCurrentLocation promise result is: " + JSON.stringify(result));
+            expect(true).assertEqual((JSON.stringify(result)) !=null);
+        }).catch((error) => {
+            console.info("[lbs_js] getCurrentLocation promise then error." + error);
+            expect().assertFail();
+        });
+        done();
+    })
+
+    /**
+     * @tc.number SingleLoc_0031
+     * @tc.name SUB_HSS_LocationSystem_SingleLoc_0031
+     * @tc.desc Test getCurrentLocation api .
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_HSS_LocationSystem_SingleLoc_0031', 0, async function (done) {
+        let currentLocationRequest = { "priority": 0x0200, "scenario": 0x0303, "timeoutMs": 10, "maxAccuracy": 0 };
+        await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
+            console.info("[lbs_js] getCurrentLocation promise result is: " + JSON.stringify(result));
+            expect(true).assertEqual((JSON.stringify(result)) !=null);
+        }).catch((error) => {
+            console.info("[lbs_js] getCurrentLocation promise then error." + error);
+            expect().assertFail();
+        });
+        done();
+    })
+
+    /**
+     * @tc.number SingleLoc_0032
+     * @tc.name SUB_HSS_LocationSystem_SingleLoc_0032
+     * @tc.desc Test getCurrentLocation api .
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_HSS_LocationSystem_SingleLoc_0032', 0, async function (done) {
+        let currentLocationRequest = { "priority": 0x0200, "scenario": 0x0304, "timeoutMs": 10, "maxAccuracy": 0 };
+        await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
+            console.info("[lbs_js] getCurrentLocation promise result is: " + JSON.stringify(result));
+            expect(true).assertEqual((JSON.stringify(result)) !=null);
+        }).catch((error) => {
+            console.info("[lbs_js] getCurrentLocation promise then error." + error);
+            expect().assertFail();
+        });
+        done();
+    })
+
 })
 
 

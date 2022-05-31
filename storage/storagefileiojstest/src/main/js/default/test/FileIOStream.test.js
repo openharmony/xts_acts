@@ -14,12 +14,7 @@
  */
 
 import fileio from '@ohos.fileio';
-import {
-  describe,
-  it,
-  expect
-}
-  from 'deccjsunit/index'
+import { describe,it,expect}from 'deccjsunit/index'
 import {
   FILE_CONTENT,
   prepareFile,
@@ -44,8 +39,8 @@ describe('fileIOTestStream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'r');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
       console.log('fileio_test_stream_create_stream_sync_000 is passed!');
     } 
     catch (e) {
@@ -85,13 +80,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_002 has failed for ' + e);
@@ -109,8 +104,8 @@ describe('fileIOTestStream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'w');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_003 has failed for ' + e);
@@ -133,17 +128,16 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length + 1).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_004 has failed for ' + e);
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
       expect(null).assertFail();
     }
   });
@@ -158,8 +152,8 @@ describe('fileIOTestStream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'a');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_005 has failed for ' + e);
@@ -178,8 +172,8 @@ describe('fileIOTestStream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_006 has failed for ' + e);
@@ -217,13 +211,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_008 has failed for ' + e);
@@ -241,8 +235,8 @@ describe('fileIOTestStream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'w+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_009 has failed for ' + e);
@@ -264,13 +258,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length + 1).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_010 has failed for ' + e);
@@ -288,8 +282,8 @@ describe('fileIOTestStream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'a+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_011 has failed for ' + e);
@@ -309,8 +303,8 @@ describe('fileIOTestStream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'rb');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_012 has failed for ' + e);
@@ -349,13 +343,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_014 has failed for ' + e);
@@ -373,8 +367,8 @@ describe('fileIOTestStream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'wb');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_015 has failed for ' + e);
@@ -397,13 +391,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length + 1).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
       console.log('fileio_test_stream_create_stream_sync_016 is passed!');
     } 
     catch (e) {
@@ -422,8 +416,8 @@ describe('fileIOTestStream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'ab');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_017 has failed for ' + e);
@@ -442,8 +436,8 @@ describe('fileIOTestStream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'rb+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_018 has failed for ' + e);
@@ -481,13 +475,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_020 has failed for ' + e);
@@ -505,8 +499,8 @@ describe('fileIOTestStream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'wb+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_021 has failed for ' + e);
@@ -528,13 +522,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length + 1).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_022 has failed for ' + e);
@@ -552,8 +546,8 @@ describe('fileIOTestStream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'ab+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_create_stream_sync_023 has failed for ' + e);
@@ -572,7 +566,7 @@ describe('fileIOTestStream', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_stream_create_stream_sync_024 is passed!' + e);
+      console.log('fileio_test_stream_create_stream_sync_024 has failed for ' + e);
     }
   });
 
@@ -589,8 +583,8 @@ describe('fileIOTestStream', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('fileio_test_stream_create_stream_sync_025 is passed!' + e);
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      console.log('fileio_test_stream_create_stream_sync_025 has failed for ' + e);
+      fileio.unlinkSync(fpath);
     }
   });
 
@@ -689,8 +683,8 @@ describe('fileIOTestStream', function () {
       let fd = fileio.openSync(fpath, 0o0);
       let ss = fileio.fdopenStreamSync(fd, 'r');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_000 has failed for ' + e);
@@ -733,13 +727,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_002 has failed for ' + e);
@@ -758,8 +752,8 @@ describe('fileIOTestStream', function () {
       let fd = fileio.openSync(fpath, 0o101, 0o222);
       let ss = fileio.fdopenStreamSync(fd, 'w');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_003 has failed for ' + e);
@@ -784,13 +778,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length + 1).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_004 has failed for ' + e);
@@ -809,8 +803,8 @@ describe('fileIOTestStream', function () {
       let fd = fileio.openSync(fpath, 0o101, 0o222);
       let ss = fileio.fdopenStreamSync(fd, 'a');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_005 has failed for ' + e);
@@ -830,8 +824,8 @@ describe('fileIOTestStream', function () {
       let fd = fileio.openSync(fpath, 0o2);
       let ss = fileio.fdopenStreamSync(fd, 'r+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_006 has failed for ' + e);
@@ -870,13 +864,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_008 has failed for ' + e);
@@ -895,8 +889,8 @@ describe('fileIOTestStream', function () {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       let ss = fileio.fdopenStreamSync(fd, 'w+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_009 has failed for ' + e);
@@ -920,13 +914,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length + 1).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_010 has failed for ' + e);
@@ -945,8 +939,8 @@ describe('fileIOTestStream', function () {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       let ss = fileio.fdopenStreamSync(fd, 'a+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_011 has failed for ' + e);
@@ -967,8 +961,8 @@ describe('fileIOTestStream', function () {
       let fd = fileio.openSync(fpath, 0o0);
       let ss = fileio.fdopenStreamSync(fd, 'rb');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_012 has failed for ' + e);
@@ -1008,13 +1002,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_014 has failed for ' + e);
@@ -1033,8 +1027,8 @@ describe('fileIOTestStream', function () {
       let fd = fileio.openSync(fpath, 0o101, 0o222);
       let ss = fileio.fdopenStreamSync(fd, 'wb');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_015 has failed for ' + e);
@@ -1059,13 +1053,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length + 1).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_016 has failed for ' + e);
@@ -1084,8 +1078,8 @@ describe('fileIOTestStream', function () {
       let fd = fileio.openSync(fpath, 0o101, 0o222);
       let ss = fileio.fdopenStreamSync(fd, 'ab');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_017 has failed for ' + e);
@@ -1105,8 +1099,8 @@ describe('fileIOTestStream', function () {
       let fd = fileio.openSync(fpath, 0o2);
       let ss = fileio.fdopenStreamSync(fd, 'rb+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_018 has failed for ' + e);
@@ -1145,13 +1139,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_020 has failed for ' + e);
@@ -1170,8 +1164,8 @@ describe('fileIOTestStream', function () {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       let ss = fileio.fdopenStreamSync(fd, 'wb+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_021 has failed for ' + e);
@@ -1195,13 +1189,13 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length + 1).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_022 has failed for ' + e);
@@ -1220,8 +1214,8 @@ describe('fileIOTestStream', function () {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
       let ss = fileio.fdopenStreamSync(fd, 'ab+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_fdopen_stream_sync_023 has failed for ' + e);
@@ -1236,11 +1230,11 @@ describe('fileIOTestStream', function () {
    */
   it('fileio_test_stream_fdopen_stream_sync_024', 0, async function () {
     try {
-      expect(fileio.fdopenStreamSync(null, 'r') == null).assertTrue();
+      fileio.fdopenStreamSync(null, 'r')
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('---fileio_test_stream_fdopen_stream_sync_024 is passed!' + e);
+      console.log('fileio_test_stream_fdopen_stream_sync_024 has failed for ' + e);
     }
   });
 
@@ -1258,8 +1252,8 @@ describe('fileIOTestStream', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      console.log('---fileio_test_stream_fdopen_stream_sync_025 is passed!' + e);
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      console.log('fileio_test_stream_fdopen_stream_sync_025 has failed for ' + e);
+      fileio.unlinkSync(fpath);
     }
   });
 
@@ -1277,8 +1271,8 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let len = ss.readSync(new ArrayBuffer(4096));
       expect(len == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_read_sync_000 has failed for ' + e);
@@ -1302,8 +1296,8 @@ describe('fileIOTestStream', function () {
         position: 1
       });
       expect(len == text.length - 1).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_read_sync_001 has failed for ' + e);
@@ -1327,8 +1321,8 @@ describe('fileIOTestStream', function () {
         offset: 1
       });
       expect(len == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_read_sync_002 has failed for ' + e);
@@ -1351,8 +1345,8 @@ describe('fileIOTestStream', function () {
         length: 1
       });
       expect(len == 1).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_read_sync_003 has failed for ' + e);
@@ -1377,8 +1371,8 @@ describe('fileIOTestStream', function () {
     } 
     catch (e) {
       console.log('fileio_test_stream_read_sync_004 has failed for ' + e);
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
   });
 
@@ -1398,8 +1392,8 @@ describe('fileIOTestStream', function () {
         position: -1
       });
       expect(len == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('---fileio_test_stream_read_sync_005 has failed for ' + e);
@@ -1426,8 +1420,8 @@ describe('fileIOTestStream', function () {
     } 
     catch (e) {
       console.log('fileio_test_stream_read_sync_006 has failed for ' + e);
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
   });
 
@@ -1444,8 +1438,8 @@ describe('fileIOTestStream', function () {
       let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
       expect(ss.writeSync(text) == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
       console.log('---fileio_test_stream_write_sync_000 is passed!');
     } 
     catch (e) {
@@ -1473,8 +1467,8 @@ describe('fileIOTestStream', function () {
     } 
     catch (e) {
       console.log('fileio_test_stream_write_sync_001 has failed for ' + e);
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
   });
 
@@ -1493,13 +1487,13 @@ describe('fileIOTestStream', function () {
       let ss = fileio.fdopenStreamSync(fd, 'w');
       expect(ss !== null).assertTrue();
       expect(ss.writeSync('aaa') !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == 3).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_write_sync_002 has failed for ' + e);
@@ -1522,13 +1516,13 @@ describe('fileIOTestStream', function () {
       let ss = fileio.fdopenStreamSync(fd, 'w');
       expect(ss !== null).assertTrue();
       expect(ss.writeSync('aaa') !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == 3).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_write_sync_003 has failed for ' + e);
@@ -1550,12 +1544,12 @@ describe('fileIOTestStream', function () {
       expect(ss !== null).assertTrue();
       let wlen = ss.writeSync(text);
       expect(wlen == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       ss = fileio.createStreamSync(fpath, 'r+');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_write_sync_004 has failed for ' + e);
@@ -1580,17 +1574,16 @@ describe('fileIOTestStream', function () {
         expect(ss.writeSync(writeStrArray[i], {
           encoding: encodingArray[i]
         }) !== null).assertTrue();
-        expect(ss.closeSync() !== null).assertTrue();
+        ss.closeSync();
         ss = fileio.createStreamSync(fpath, 'r+');
         let rlen = ss.readSync(new ArrayBuffer(4096));
         expect(rlen !== null).assertTrue();
-        expect(ss.closeSync() !== null).assertTrue();
+        ss.closeSync();
       }
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      fileio.unlinkSync(fpath);
     }
     catch (e) {
       console.log('fileio_test_stream_write_sync_005 has failed for ' + e);
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
       expect(null).assertFail();
     }
   });
@@ -1612,13 +1605,13 @@ describe('fileIOTestStream', function () {
       expect(ss.writeSync('aaa', {
         position: 1
       }) !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == 4).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_write_sync_006 has failed for ' + e);
@@ -1643,13 +1636,13 @@ describe('fileIOTestStream', function () {
       expect(ss.writeSync('aaa', {
         offset: 1
       }) !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == 2).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_write_sync_007 has failed for ' + e);
@@ -1673,12 +1666,12 @@ describe('fileIOTestStream', function () {
         length: text.length
       });
       expect(wlen == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       ss = fileio.createStreamSync(fpath, 'r+');
       let rlen = ss.readSync(new ArrayBuffer(4096));
       expect(rlen == text.length).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_write_sync_008 has failed for ' + e);
@@ -1701,7 +1694,7 @@ describe('fileIOTestStream', function () {
       expect(null).assertFail();
     } 
     catch (e) {
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      fileio.unlinkSync(fpath);
       console.log('fileio_test_stream_write_sync_009 has failed for ' + e);
     }
   });
@@ -1724,8 +1717,8 @@ describe('fileIOTestStream', function () {
     } 
     catch (e) {
       console.log('fileio_test_stream_write_sync_010 has failed for ' + e);
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
   });
 
@@ -1747,8 +1740,8 @@ describe('fileIOTestStream', function () {
     } 
     catch (e) {
       console.log('fileio_test_stream_write_sync_011 has failed for ' + e);
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
   });
 
@@ -1770,8 +1763,8 @@ describe('fileIOTestStream', function () {
     } 
     catch (e) {
       console.log('fileio_test_stream_write_sync_012 has failed for ' + e);
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
   });
 
@@ -1793,8 +1786,8 @@ describe('fileIOTestStream', function () {
         offset: 1,
         length: 1,
       }) == 1).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
       console.log('---fileio_test_stream_write_sync_013 is passed!');
     } 
     catch (e) {
@@ -1819,8 +1812,8 @@ describe('fileIOTestStream', function () {
         offset: 2,
         length: 2,
       }) == 2).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
       console.log('---fileio_test_stream_write_sync_014 is passed!');
     } 
     catch (e) {
@@ -1844,12 +1837,12 @@ describe('fileIOTestStream', function () {
       let ss = fileio.fdopenStreamSync(fd, 'w');
       expect(ss !== null).assertTrue();
       expect(ss.writeSync(randomString(4096)) !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       expect(fileToReadOnly(fpath)).assertTrue();
       ss = fileio.createStreamSync(fpath, 'r');
       let rlen = ss.readSync(new ArrayBuffer(4096));
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_write_read_4k_sync has failed for ' + e);
@@ -1870,9 +1863,9 @@ describe('fileIOTestStream', function () {
       let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
       expect(ss.writeSync(text) == text.length).assertTrue();
-      expect(ss.flushSync() !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.flushSync();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_flush_sync_001 has failed for ' + e);
@@ -1891,13 +1884,13 @@ describe('fileIOTestStream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() !== null).assertTrue();
+      ss.closeSync();
       ss.flushSync();
       expect(null).assertFail();
     } 
     catch (e) {
       console.log('fileio_test_stream_flush_sync_001 has failed for ' + e);
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      fileio.unlinkSync(fpath);
     }
   });
 
@@ -1911,8 +1904,8 @@ describe('fileIOTestStream', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let ss = fileio.createStreamSync(fpath, 'r+');
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     } 
     catch (e) {
       console.log('fileio_test_stream_close_sync_000 has failed for ' + e);
@@ -1931,12 +1924,12 @@ describe('fileIOTestStream', function () {
     let ss;
     try {
       ss = fileio.createStreamSync(fpath, 'r+');
-      expect(ss.closeSync() !== null).assertTrue();
-      expect(ss.closeSync() == null).assertTrue();
+      ss.closeSync();
+      ss.closeSync();
       expect(null).assertFail();
     } 
     catch (e) {
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
+      fileio.unlinkSync(fpath);
       console.log('fileio_test_stream_close_sync_001 has failed for ' + e);
     }
   });

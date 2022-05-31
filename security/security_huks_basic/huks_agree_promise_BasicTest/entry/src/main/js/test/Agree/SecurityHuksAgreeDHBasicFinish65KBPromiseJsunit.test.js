@@ -23,20 +23,14 @@ let srcData65 = Data.Date65KB;
 let srcData65Kb = stringToUint8Array(srcData65);
 
 let HuksOptions65kb = {
-  properties: new Array(
-    HuksAgreeDH.HuksKeyAlgDH,
-    HuksAgreeDH.HuksKeyPurposeDH,
-    HuksAgreeDH.HuksKeyDHSize2048
-  ),
+  properties: new Array(HuksAgreeDH.HuksKeyAlgDH, HuksAgreeDH.HuksKeyPurposeDH, HuksAgreeDH.HuksKeyDHSize2048),
   inData: srcData65Kb,
 };
 
 describe('SecurityHuksAgreeDHPromiseJsunit', function () {
   it('testAgreeDH103', 0, async function (done) {
-    const srcKeyAliesFirst =
-      'testAgreeDHSize2048Finish65KBAgreeKeyAlias_01_101';
-    const srcKeyAliesSecond =
-      'testAgreeDHSize2048Finish65KBAgreeKeyAlias_02_101';
+    const srcKeyAliesFirst = 'testAgreeDHSize2048Finish65KBAgreeKeyAlias_01_101';
+    const srcKeyAliesSecond = 'testAgreeDHSize2048Finish65KBAgreeKeyAlias_02_101';
     let huksOptionsFinish = {
       properties: new Array(
         HuksAgreeDH.HuksKeySTORAGE,
@@ -54,13 +48,7 @@ describe('SecurityHuksAgreeDHPromiseJsunit', function () {
       ),
       inData: srcData65Kb,
     };
-    await publicAgreeFunc(
-      srcKeyAliesFirst,
-      srcKeyAliesSecond,
-      HuksOptions65kb,
-      huksOptionsFinish,
-      'finish'
-    );
+    await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions65kb, huksOptionsFinish, 'finish');
     done();
   });
 });

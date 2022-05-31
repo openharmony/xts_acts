@@ -14,7 +14,7 @@
  */
 
 import batteryInfo from '@ohos.batteryInfo';
-import {describe, it, expect} from 'deccjsunit/index';
+import { describe, it, expect } from 'deccjsunit/index';
 
 describe('appInfoTest', function () {
 
@@ -42,40 +42,6 @@ describe('appInfoTest', function () {
     })
 
     /**
-     * @tc.number BatteryPerformance_002
-     * @tc.name battery_chargingstatus_test
-     * @tc.desc Battery acquisition kit
-     */
-    it('BatteryPerformance_002', 0, function () {
-        let startTime = new Date().getTime();
-        for (let i = 0; i < MAXNUM; i++) {
-            batteryInfo.chargingStatus;
-        }
-
-        let waitTime = new Date().getTime() - startTime;
-        let avgTime = waitTime / MAXNUM * MS_TO_US; //us
-        console.info(`BATTERY_Performance_002: Promise: batteryInfo.chargingStatus Average Time : ${waitTime}`);
-        avgTime < LIMIT_TIME ? expect(true).assertTrue() : expect(false).assertTrue();
-    })
-
-    /**
-     * @tc.number BatteryPerformance_003
-     * @tc.name battery_healthstatus_test
-     * @tc.desc Battery acquisition kit
-     */
-    it('BatteryPerformance_003', 0, function () {
-        let startTime = new Date().getTime();
-        for (let i = 0; i < MAXNUM; i++) {
-            batteryInfo.healthStatus;
-        }
-
-        let waitTime = new Date().getTime() - startTime;
-        let avgTime = waitTime / MAXNUM * MS_TO_US; //us
-        console.info(`BatteryPerformance_003: Promise: batteryInfo.healthStatus Average Time : ${waitTime}`);
-        avgTime < HEALTH_LIMIT_TIME ? expect(true).assertTrue() : expect(false).assertTrue();
-    })
-
-    /**
      * @tc.number BatteryPerformance_004
      * @tc.name battery_pluggedtype_test
      * @tc.desc Battery acquisition kit
@@ -92,7 +58,7 @@ describe('appInfoTest', function () {
         avgTime < LIMIT_TIME ? expect(true).assertTrue() : expect(false).assertTrue();
     })
 
-	/**
+    /**
      * @tc.number BatteryPerformance_005
      * @tc.name battery_technology_test
      * @tc.desc Battery acquisition kit

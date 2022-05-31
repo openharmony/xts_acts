@@ -33,7 +33,7 @@ const BUNDLE_NAME = 'com.open.harmony.packagemag';
 const BUNDLE_NAME_OTHER = 'com.ohos.acepackage';
 const USER_ID_100 = 100;
 
-export default function applicationBundleJsunit() {
+export default function getApplicationInfoJsunit() {
 
     describe('appInfoTest', function () {
 

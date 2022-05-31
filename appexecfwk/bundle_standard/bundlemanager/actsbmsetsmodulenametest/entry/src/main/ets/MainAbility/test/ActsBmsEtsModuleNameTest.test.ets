@@ -22,6 +22,7 @@ const BUNDLE_NAME = 'com.example.bmsmodulename';
 const MODULE_NAME1 = '';
 const MODULE_NAME2 = 'noModule';
 const MODULE_NAME3 = 'entry';
+const MODULE_NAME4 = undefined;
 const DEFAULT_FLAG = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
 const DEFAULT_USER_ID = 100;
 const SUCCESS_CODE = 0;
@@ -40,6 +41,11 @@ const ABILITY_INFO_TWO = {
 const ABILITY_INFO_THREE = {
     bundleName: BUNDLE_NAME,
     moduleName: MODULE_NAME3,
+    name: ABILITY_NAME
+};
+const ABILITY_INFO_FOUR = {
+    bundleName: BUNDLE_NAME,
+    moduleName: MODULE_NAME4,
     name: ABILITY_NAME
 };
 
@@ -268,17 +274,18 @@ export default function actsBmsJsModuleNameTest() {
         it('IsAbilityEnabled_0100', 0, async function (done) {
             await bundle.isAbilityEnabled(ABILITY_INFO_ONE)
                 .then(data => {
-                    expect(data).assertFail();
+                    console.info('[IsAbilityEnabled_0100]Return data successful: ' + JSON.stringify(data));
+                    expect(data).assertTrue();
                 }).catch((err) => {
                     console.error('[IsAbilityEnabled_0100]Operation failed. Err: ' + JSON.stringify(err));
-                    expect(err).assertEqual(INVALID_PARAM);
+                    expect(err).assertFail();
                 });
             bundle.isAbilityEnabled(ABILITY_INFO_ONE, (err, data) => {
-                expect(data).assertEqual(undefined);
+                expect(err).assertEqual(SUCCESS_CODE);
                 if (err) {
                     console.error('[IsAbilityEnabled_0100]Operation failed. Err: ' + JSON.stringify(err));
                 }
-                expect(err).assertEqual(INVALID_PARAM);
+                expect(data).assertTrue();
                 console.info("'[IsAbilityEnabled_0100]Return data: " + JSON.stringify(data));
                 done();
             });
@@ -320,7 +327,7 @@ export default function actsBmsJsModuleNameTest() {
                         expect(data).assertTrue();
                     }).catch((err) => {
                         console.error('[IsAbilityEnabled_0300]Operation failed. Err: ' + JSON.stringify(err));
-                        expect(err).assertEqual(SUCCESS_CODE);
+                        expect(err).assertFail();
                     });
                 bundle.isAbilityEnabled(ABILITY_INFO_THREE, (err, data) => {
                     expect(err).assertEqual(SUCCESS_CODE);
@@ -334,6 +341,30 @@ export default function actsBmsJsModuleNameTest() {
             });
 
         /*
+        * @tc.number: IsAbilityEnabled_0400
+        * @tc.name: test isAbilityEnabled
+        * @tc.desc: test empty moduleName
+        */
+        it('IsAbilityEnabled_0400', 0, async function (done) {
+            await bundle.isAbilityEnabled(ABILITY_INFO_FOUR)
+                .then(data => {
+                    expect(data).assertFail();
+                }).catch((err) => {
+                    console.error('[IsAbilityEnabled_0400]Operation failed. Err: ' + JSON.stringify(err));
+                    expect(err).assertEqual(INVALID_PARAM);
+                });
+            bundle.isAbilityEnabled(ABILITY_INFO_FOUR, (err, data) => {
+                expect(data).assertEqual(undefined);
+                if (err) {
+                    console.error('[IsAbilityEnabled_0400]Operation failed. Err: ' + JSON.stringify(err));
+                }
+                expect(err).assertEqual(INVALID_PARAM);
+                console.info("'[IsAbilityEnabled_0400]Return data: " + JSON.stringify(data));
+                done();
+            });
+        });
+
+        /*
         * @tc.number: QueryAbilityByWant_0100
         * @tc.name: test queryAbilityByWant
         * @tc.desc: test empty moduleName
@@ -344,20 +375,23 @@ export default function actsBmsJsModuleNameTest() {
                 abilityName: ABILITY_NAME,
                 moduleName: MODULE_NAME1
             }, DEFAULT_FLAG, DEFAULT_USER_ID).then(data => {
-                expect(data).assertFail();
+                checkDataInfo(data[0]);
+                console.info("'[QueryAbilityByWant_0100]Return data : " + JSON.stringify(data));
             }).catch(err => {
-                console.error('[QueryAbilityByWant_0100]Operation failed. Err: ' + JSON.stringify(err));
-                expect(err).assertEqual(INVALID_CODE);
+                console.info("[QueryAbilityByWant_0100]Operation failed. Err: " + JSON.stringify(err));
+                expect(err).assertFail();
             });
             bundle.queryAbilityByWant({
                 bundleName: BUNDLE_NAME,
                 abilityName: ABILITY_NAME,
                 moduleName: MODULE_NAME1
             }, DEFAULT_FLAG, DEFAULT_USER_ID, (err, data) => {
-                console.info("'[QueryAbilityByWant_0100]Return data " + JSON.stringify(data));
-                expect(data).assertEqual("type mismatch");
-                console.error('[QueryAbilityByWant_0100]Operation failed. Err: ' + JSON.stringify(err));
-                expect(err).assertEqual(INVALID_CODE);
+                expect(err).assertEqual(SUCCESS_CODE);
+                if (err) {
+                    console.error('[QueryAbilityByWant_0100]Operation failed. Err: ' + JSON.stringify(err));
+                }
+                checkDataInfo(data[0]);
+                console.info("'[QueryAbilityByWant_0100]Return data : " + JSON.stringify(data));
                 done();
             });
         });

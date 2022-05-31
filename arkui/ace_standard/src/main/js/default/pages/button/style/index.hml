@@ -123,32 +123,30 @@
         <text class="sub-title">
             特有样式
         </text>
-        <div id="specificOne">
-            <button id="addOne">
-            </button>
-            <button id="addTwo">
-            </button>
-            <button id="addThree">
-            </button>
-            <button id="addFour">
-            </button>
-            <button id="addFive">
-            </button>
-            <button id="addSix">
-            </button>
-            <button id="addSeven">
-            </button>
-            <button id="addSeven:disabled">
-            </button>
-            <button id="addSeven:active">
-            </button>
-            <button id="addSeven:focus">
-            </button>
-            <button id="addFive">
-            </button>
-            <button id="addFive">
-            </button>
-        </div>
+        <button id="addOne">
+        </button>
+        <button id="addTwo">
+        </button>
+        <button id="addThree">
+        </button>
+        <button id="addFour">
+        </button>
+        <button id="addFive">
+        </button>
+        <button id="addSix">
+        </button>
+        <button id="addSeven">
+        </button>
+        <button id="addEight">
+        </button>
+        <button id="addNine">
+        </button>
+        <button id="addTen">
+        </button>
+        <button id="addEleven">
+        </button>
+        <button id="addTwelve">
+        </button>
     </div>
 </div>
 

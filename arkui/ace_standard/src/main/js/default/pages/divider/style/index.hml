@@ -22,7 +22,71 @@
         <text class="sub-title">
             仅支持如下样式
         </text>
-        <divider id="style1" class="style1"></divider>
+
+        <text class="sub-title">
+            样式1
+        </text>
+        <divider id="styleOne"></divider>
+
+        <text class="sub-title">
+            样式2
+        </text>
+        <divider id="styleTwo"></divider>
+
+        <text class="sub-title">
+            样式3
+        </text>
+        <divider id="styleThree"></divider>
+
+        <text class="sub-title">
+            样式4
+        </text>
+        <divider id="styleFour"></divider>
+
+        <text class="sub-title">
+            样式5
+        </text>
+        <divider id="styleFive"></divider>
+
+        <text class="sub-title">
+            样式6
+        </text>
+        <divider id="styleSix"></divider>
+
+        <text class="sub-title">
+            样式7
+        </text>
+        <divider id="styleSeven"></divider>
+
+        <text class="sub-title">
+            样式8
+        </text>
+        <divider id="styleEight"></divider>
+
+        <text class="sub-title">
+            样式9
+        </text>
+        <divider id="styleNine"></divider>
+
+        <text class="sub-title">
+            样式10
+        </text>
+        <divider id="styleTen"></divider>
+
+        <text class="sub-title">
+            样式11
+        </text>
+        <divider id="styleEleven"></divider>
+
+        <text class="sub-title">
+            样式12
+        </text>
+        <divider id="styleTwelve"></divider>
+
+        <text class="sub-title">
+            样式13
+        </text>
+        <divider id="styleThirteen"></divider>
     </div>
 </div>
 

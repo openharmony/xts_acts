@@ -22,9 +22,7 @@ let HuksCipherAES = {
   },
   HuksKeyPurpose: {
     tag: param.HksTag.HKS_TAG_PURPOSE,
-    value:
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT |
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT | param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
   },
   HuksKeyPurposeENCRYPT: {
     tag: param.HksTag.HKS_TAG_PURPOSE,
@@ -79,9 +77,7 @@ let HuksCipherRSA = {
   },
   HuksKeyPurpose: {
     tag: param.HksTag.HKS_TAG_PURPOSE,
-    value:
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT |
-      param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT | param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
   },
   HuksKeyPurposeENCRYPT: {
     tag: param.HksTag.HKS_TAG_PURPOSE,

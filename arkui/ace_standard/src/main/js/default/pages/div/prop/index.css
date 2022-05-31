@@ -61,6 +61,16 @@
   padding-end: 10px;
 }
 
+#styleProp {
+  flex-weight: 1;
+  background-color:#0f0000;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-start: 10px;
+  padding-end: 10px;
+}
+
 #classPropNone {
   flex-weight: 1;
   background-color:#0000e0;

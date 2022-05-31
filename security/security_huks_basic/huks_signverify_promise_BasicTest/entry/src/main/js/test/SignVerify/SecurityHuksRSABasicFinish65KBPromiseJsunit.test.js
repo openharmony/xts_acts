@@ -33,14 +33,7 @@ describe('SecurityHuksSignVerifyRSAPromiseJsunit', function () {
       ),
       inData: srcData65Kb,
     };
-    finishOutData = await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'finish',
-      true,
-      srcData65Kb
-    );
+    finishOutData = await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', true, srcData65Kb);
 
     HuksOptions = {
       properties: new Array(
@@ -52,14 +45,7 @@ describe('SecurityHuksSignVerifyRSAPromiseJsunit', function () {
       ),
       inData: finishOutData,
     };
-    await publicSignVerifyFunc(
-      srcKeyAlies,
-      srcKeyAlies + 'New',
-      HuksOptions,
-      'finish',
-      false,
-      srcData65Kb
-    );
+    await publicSignVerifyFunc(srcKeyAlies, HuksOptions, 'finish', false, srcData65Kb);
     done();
   });
 });
