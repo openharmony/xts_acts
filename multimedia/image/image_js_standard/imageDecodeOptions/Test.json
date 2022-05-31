@@ -1,0 +1,52 @@
+{
+    "description": "Configuration for Image Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "1200000",
+        "package": "ohos.acts.multimedia.image.DecodeOptions",
+		"shell-timeout": "120000"
+    },
+    "kits": [
+		{
+            "test-file-name": [
+                "ActsImageDecodeOptionsJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir   /data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/files",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/files"
+            ]
+        },
+		{
+            "type": "PushKit",
+            "pre-push": [
+            ],
+            "push": [
+                "./resource/image/test.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/files",
+                "./resource/image/test.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/files",
+				"./resource/image/test.tiff ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/files",
+                "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/files",
+				"./resource/image/moving_test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/files"
+            ]
+        },
+   
+		{
+            "type": "ShellKit",
+            "run-command": [
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/files/test.bmp",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/files/test.png",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/files/test.tiff",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/files/test.jpg",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/files/moving_test.gif"
+            ],
+            "teardown-command":[
+              
+            ]
+        }
+    ]
+    
+}
