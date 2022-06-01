@@ -17,9 +17,9 @@ group("amsdisplayIdtest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsamsstartabilitytest:ActsAmsStartAbilityTest",
       "actsamsspecifytesthap:ActsAmsSpecifyTestRelyHap",
       "actsamsstartabilityforresulttest:ActsAmsStartAbilityForResultTest",
+      "actsamsstartabilitytest:ActsAmsStartAbilityTest",
     ]
   }
 }

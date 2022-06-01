@@ -18,7 +18,7 @@ group("non_concurrent") {
   if (is_standard_system) {
     deps = [
       "acts_systemappa_test:ActsSystemAppATest",
-      "acts_systemappone_rely_test:ActsSystemAppOneRelyHap"
+      "acts_systemappone_rely_test:ActsSystemAppOneRelyHap",
     ]
   }
 }
