@@ -14,6 +14,7 @@
  */
 
 import bundle from '@ohos.bundle'
+import account from '@ohos.account.osAccount'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 const BUNDLE_NAME1 = 'com.example.third1';
@@ -26,9 +27,21 @@ const ABILITY_NAME3 = 'com.example.third5.AMainAbility';
 const ABILITY_NAME4 = 'com.example.noexist.MainAbility';
 const ABILITY_NAME5 = 'com.example.system1.MainAbility';
 const ABILITY_NAME6 = 'com.example.vendor1.MainAbility';
-const USERID = 100;
+let userId = 0;
 
 describe('ActsBmsMetaDataTest', function () {
+
+    beforeAll(async function (done) {
+        await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
+            console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
+            userId = account;
+            done();
+            return;
+          }).catch(err=>{
+            console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
+            done();
+          })
+    });
 
     /*
     * @tc.number: bms_getMetaData_0100
@@ -40,7 +53,7 @@ describe('ActsBmsMetaDataTest', function () {
             {
                 "bundleName": BUNDLE_NAME1,
                 "abilityName": ABILITY_NAME1
-            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID).then(dataInfos => {
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, userId).then(dataInfos => {
                 console.info("dataInfos[0].metaData" + JSON.stringify(dataInfos[0].metaData));
                 let metaData = dataInfos[0].metaData;
                 expect(metaData[0].name).assertEqual("Data1");
@@ -63,7 +76,7 @@ describe('ActsBmsMetaDataTest', function () {
             {
                 bundleName: BUNDLE_NAME2,
                 abilityName: ABILITY_NAME3,
-            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID).then(dataInfos => {
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, userId).then(dataInfos => {
                 console.info("dataInfos[0].metaData" + JSON.stringify(dataInfos[0].metaData));
                 let metaData = dataInfos[0].metaData;
                 expect(metaData[0].name).assertEqual("Data5A");
@@ -86,7 +99,7 @@ describe('ActsBmsMetaDataTest', function () {
             {
                 bundleName: BUNDLE_NAME3,
                 abilityName: ABILITY_NAME4,
-            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID).then(dataInfos => {
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, userId).then(dataInfos => {
                 expect(dataInfos.length).assertEqual(0);
                 done();
             }).catch(err => {
@@ -106,7 +119,7 @@ describe('ActsBmsMetaDataTest', function () {
             {
                 bundleName: BUNDLE_NAME4,
                 abilityName: ABILITY_NAME5,
-            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID).then(dataInfos => {
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, userId).then(dataInfos => {
                 console.info("dataInfos[0].metaData" + JSON.stringify(dataInfos[0].metaData));
                 let metaData = dataInfos[0].metaData;
                 expect(metaData[0].name).assertEqual("Data1S");
@@ -129,7 +142,7 @@ describe('ActsBmsMetaDataTest', function () {
             {
                 bundleName: BUNDLE_NAME5,
                 abilityName: ABILITY_NAME6,
-            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, USERID).then(dataInfos => {
+            }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_METADATA, userId).then(dataInfos => {
                 console.info("dataInfos[0].metaData" + JSON.stringify(dataInfos[0].metaData));
                 let metaData = dataInfos[0].metaData;
                 expect(metaData[0].name).assertEqual("");

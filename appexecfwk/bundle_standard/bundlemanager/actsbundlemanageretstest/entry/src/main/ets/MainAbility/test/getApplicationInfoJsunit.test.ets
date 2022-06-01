@@ -12,9 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from 'deccjsunit/index.ets';
+import { describe, it, beforeAll, expect } from 'deccjsunit/index.ets';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
+import account from '@ohos.account.osAccount';
 
 const TAG_TEST_0100_001 = ' bundle_getApplicationInfo_test_0100_001 ';
 const TAG_TEST_0100_002 = ' bundle_getApplicationInfo_test_0100_002 ';
@@ -31,11 +32,23 @@ const TAG_TEST_0600_002 = ' bundle_getApplicationInfo_test_0600_0012 ';
 const TAG_TEST_0600_003 = ' bundle_getApplicationInfo_test_0600_0013 ';
 const BUNDLE_NAME = 'com.open.harmony.packagemag';
 const BUNDLE_NAME_OTHER = 'com.ohos.acepackage';
-const USER_ID_100 = 100;
+let userId = 0;
 
 export default function applicationBundleJsunit() {
 
     describe('appInfoTest', function () {
+
+        beforeAll(async function (done) {
+            await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
+                console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
+                userId = account;
+                done();
+                return;
+              }).catch(err=>{
+                console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
+                done();
+              })
+        });
 
         /**
          * @tc.number: bundle_getApplicationInfo_test_0100_001
@@ -46,7 +59,7 @@ export default function applicationBundleJsunit() {
         it(TAG_TEST_0100_001, 0, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getApplicationInfo(BUNDLE_NAME,
-                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USER_ID_100).catch((error) => {
+                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, userId).catch((error) => {
                     console.info(TAG_TEST_0100_001 + 'UserId promise error is: ' + error);
                     expect(error).assertFail();
                 });
@@ -67,7 +80,7 @@ export default function applicationBundleJsunit() {
         it(TAG_TEST_0100_002, 0, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getApplicationInfo(BUNDLE_NAME,
-                Bundle.BundleFlag.GET_ALL_APPLICATION_INFO, USER_ID_100).catch((error) => {
+                Bundle.BundleFlag.GET_ALL_APPLICATION_INFO, userId).catch((error) => {
                     console.info(TAG_TEST_0100_002 + 'UserId promise error is: ' + error);
                     expect(error).assertFail();
                 });
@@ -88,7 +101,7 @@ export default function applicationBundleJsunit() {
         it(TAG_TEST_0100_003, 0, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getApplicationInfo(BUNDLE_NAME,
-                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE, USER_ID_100).catch((error) => {
+                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE, userId).catch((error) => {
                     console.info(TAG_TEST_0100_003 + 'UserId promise error is: ' + error);
                     expect(error).assertFail();
                 });
@@ -175,7 +188,7 @@ export default function applicationBundleJsunit() {
             let datas;
             let startTime = await Utils.getNowTime();
             Bundle.getApplicationInfo(BUNDLE_NAME,
-                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USER_ID_100, (error, data) => {
+                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, userId, (error, data) => {
                     let endTime = Utils.getNowTime();
                     Utils.getDurationTime(TAG_TEST_0300_001, startTime, endTime);
                     errors = error;
@@ -250,7 +263,7 @@ export default function applicationBundleJsunit() {
          */
         it(TAG_TEST_0500_002, 0, async function (done) {
             let startTime = await Utils.getNowTime();
-            await Bundle.getApplicationInfo('', 'Bundle.BundleFlag.GET_BUNDLE_DEFAULT', USER_ID_100).then((data) => {
+            await Bundle.getApplicationInfo('', 'Bundle.BundleFlag.GET_BUNDLE_DEFAULT', userId).then((data) => {
                 console.info(TAG_TEST_0500_002 + 'UserId promise data is: ' + data);
                 expect(data).assertFail();
             }).catch((error) => {
@@ -295,7 +308,7 @@ export default function applicationBundleJsunit() {
             let startTime = await Utils.getNowTime();
             let errors
             await Bundle.getApplicationInfo(BUNDLE_NAME_OTHER,
-                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USER_ID_100).then((data) => {
+                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, userId).then((data) => {
                     console.info(TAG_TEST_0600_002 + 'other bundleName UserId promise data is: ' + data);
                     expect(data).assertFail();
                 }).catch((error) => {
@@ -348,7 +361,6 @@ export default function applicationBundleJsunit() {
             expect(typeof (data.metaData)).assertEqual('object');
             expect(typeof (data.metadata)).assertEqual('object');
             expect(typeof (data.enabled)).assertEqual('boolean');
-            expect(typeof (data.flags)).assertEqual('number');
             expect(typeof (data.uid)).assertEqual('number');
             expect(typeof (data.entityType)).assertEqual('string');
             expect(typeof (data.removable)).assertEqual('boolean');
@@ -370,7 +382,6 @@ export default function applicationBundleJsunit() {
             expect(data.labelId > 0).assertEqual(true);
             expect(data.systemApp).assertEqual(true);
             expect(data.supportedModes).assertEqual(0);
-            expect(data.flags).assertEqual(0);
             expect(data.process).assertEqual("");
             expect(data.entryDir).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag' +
                 '/com.open.harmony.packagemag');
@@ -401,7 +412,6 @@ export default function applicationBundleJsunit() {
             expect(data.labelId > 0).assertEqual(true);
             expect(data.systemApp).assertEqual(true);
             expect(data.supportedModes).assertEqual(0);
-            expect(data.flags).assertEqual(0);
             expect(data.process).assertEqual("");
             expect(data.entryDir).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag' +
                 '/com.open.harmony.packagemag');

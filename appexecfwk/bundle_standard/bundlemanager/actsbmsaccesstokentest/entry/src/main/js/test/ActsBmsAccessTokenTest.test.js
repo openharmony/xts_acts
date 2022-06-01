@@ -14,14 +14,27 @@
  */
 
 import bundle from '@ohos.bundle'
-import { describe, it, expect } from 'deccjsunit/index'
+import account from '@ohos.account.osAccount'
+import { describe,beforeAll, it, expect } from 'deccjsunit/index'
 
 const BUNDLE_NAME1 = 'com.example.bmsaccesstoken1';
 const BUNDLE_NAME2 = 'com.example.bmsaccesstoken2';
 const BUNDLE_NAME3 = 'com.example.bmsaccesstoken3';
-const USERID = 100;
+let userId = 0;
 
 describe('ActsBmsAccessTokenTest', function () {
+
+    beforeAll(async function (done) {
+        await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
+            console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
+            userId = account;
+            done();
+            return;
+          }).catch(err=>{
+            console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
+            done();
+          })
+    });
 
     /*
      * @tc.number: bms_AccessTokenId_0100
@@ -29,7 +42,7 @@ describe('ActsBmsAccessTokenTest', function () {
      * @tc.desc: get the accessTokenId
      */
     it('bms_AccessTokenId_0100', 0, async function (done) {
-        await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT, USERID)
+        await bundle.getApplicationInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId)
             .then(applicationInfo => {
                 console.info('accessTokenId: ' + applicationInfo.accessTokenId);
                 expect(applicationInfo.name).assertEqual(BUNDLE_NAME1);

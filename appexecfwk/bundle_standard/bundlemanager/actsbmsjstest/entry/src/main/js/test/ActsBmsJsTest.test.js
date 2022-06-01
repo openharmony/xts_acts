@@ -48,8 +48,6 @@ describe('ActsBmsJsTest', function () {
             let abilityInfo2 = result.abilityInfos[1];
             expect(abilityInfo1.name).assertEqual(ABILITIY_NAME1);
             expect(abilityInfo2.name).assertEqual(ABILITIY_NAME6);
-            expect(abilityInfo1.srcLanguage).assertEqual('js');
-            expect(abilityInfo1.srcPath).assertEqual('');
             expect(abilityInfo1.label).assertEqual("$string:app_name");
             expect(abilityInfo1.description).assertEqual("$string:mainability_description");
             expect(abilityInfo1.icon).assertEqual("$media:icon");
@@ -75,7 +73,6 @@ describe('ActsBmsJsTest', function () {
             expect(abilityInfo1.readPermission).assertEqual("");
             expect(abilityInfo1.writePermission).assertEqual("");
             expect(abilityInfo1.targetAbility).assertEqual("");
-            expect(abilityInfo1.theme).assertEqual("");
             expect(abilityInfo1.metaData.length).assertEqual(0);
             expect(abilityInfo1.metadata.length).assertEqual(0);
             expect(abilityInfo1.enabled).assertEqual(true);
@@ -127,8 +124,6 @@ describe('ActsBmsJsTest', function () {
             console.info("getBundleIno result" + JSON.stringify(result));
             let abilityInfo1 = result.abilityInfos[0];
             expect(abilityInfo1.name).assertEqual(ABILITIY_NAME4);
-            expect(abilityInfo1.srcLanguage).assertEqual('js');
-            expect(abilityInfo1.srcPath).assertEqual('default');
             expect(abilityInfo1.label).assertEqual("$string:app_name");
             expect(abilityInfo1.description).assertEqual("$string:mainability_description");
             expect(abilityInfo1.icon).assertEqual("$media:icon");
@@ -152,7 +147,6 @@ describe('ActsBmsJsTest', function () {
             expect(abilityInfo1.readPermission).assertEqual("");
             expect(abilityInfo1.writePermission).assertEqual("");
             expect(abilityInfo1.targetAbility).assertEqual("");
-            expect(abilityInfo1.theme).assertEqual("");
             expect(abilityInfo1.metaData.length).assertEqual(0);
             expect(abilityInfo1.metadata.length).assertEqual(0);
             expect(abilityInfo1.enabled).assertEqual(true);
@@ -173,8 +167,6 @@ describe('ActsBmsJsTest', function () {
             console.info("getBundleIno result" + JSON.stringify(result));
             let abilityInfo1 = result.abilityInfos[0];
             expect(abilityInfo1.name).assertEqual(ABILITIY_NAME5);
-            expect(abilityInfo1.srcLanguage).assertEqual('c++');
-            expect(abilityInfo1.srcPath).assertEqual('default/c++/');
             expect(abilityInfo1.label).assertEqual("$string:app_name");
             expect(abilityInfo1.description).assertEqual("$string:mainability_description");
             expect(abilityInfo1.icon).assertEqual("$media:icon");
@@ -198,7 +190,6 @@ describe('ActsBmsJsTest', function () {
             expect(abilityInfo1.readPermission).assertEqual("");
             expect(abilityInfo1.writePermission).assertEqual("");
             expect(abilityInfo1.targetAbility).assertEqual("");
-            expect(abilityInfo1.theme).assertEqual("");
             expect(abilityInfo1.metaData.length).assertEqual(0);
             expect(abilityInfo1.metadata.length).assertEqual(0);
             expect(abilityInfo1.enabled).assertEqual(true);
@@ -208,8 +199,6 @@ describe('ActsBmsJsTest', function () {
 
     function checkAbilityInfos(info) {
         expect(info.name).assertEqual(ABILITIY_NAME2);
-        expect(info.srcLanguage).assertEqual('js');
-        expect(info.srcPath).assertEqual('');
         expect(info.label).assertEqual("$string:app_name");
         expect(info.description).assertEqual("$string:mainability_description");
         expect(info.icon).assertEqual("$media:icon");
@@ -233,7 +222,6 @@ describe('ActsBmsJsTest', function () {
         expect(info.readPermission).assertEqual("");
         expect(info.writePermission).assertEqual("");
         expect(info.targetAbility).assertEqual("");
-        expect(info.theme).assertEqual("");
         expect(info.metaData.length).assertEqual(1);
         expect(info.metaData[0].name).assertEqual("Data5A");
         expect(info.metaData[0].value).assertEqual("float");

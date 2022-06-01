@@ -12,9 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from 'deccjsunit/index.ets';
+import { describe, beforeAll ,it, expect } from 'deccjsunit/index.ets';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
+import account from '@ohos.account.osAccount';
 
 const TAG_TEST_0100_001 = ' bundle_getAllApplicationInfo_test_0100_001 ';
 const TAG_TEST_0100_002 = ' bundle_getAllApplicationInfo_test_0100_002 ';
@@ -26,12 +27,24 @@ const TAG_TEST_0300_001 = ' bundle_getAllApplicationInfo_test_0300_007 ';
 const TAG_TEST_0400_001 = ' bundle_getAllApplicationInfo_test_0400_008 ';
 const TAG_TEST_0500_001 = ' bundle_getAllApplicationInfo_test_0500_009 ';
 const TAG_TEST_0500_002 = ' bundle_getAllApplicationInfo_test_0500_0010 ';
-const USER_ID_100 = 100;
+let userId = 0;
 
 export default function applicationBundleJsunit() {
 
     describe('appInfoTest', function () {
 
+        beforeAll(async function (done) {
+            await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
+                console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
+                userId = account;
+                done();
+                return;
+              }).catch(err=>{
+                console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
+                done();
+              })
+        });
+        
         /**
          * @tc.number: bundle_getApplicationInfo_test_0100_001
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
@@ -41,7 +54,7 @@ export default function applicationBundleJsunit() {
         it(TAG_TEST_0100_001, 0, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getAllApplicationInfo(
-                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USER_ID_100).catch((error) => {
+                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, userId).catch((error) => {
                     console.info(TAG_TEST_0100_001 + 'UserId promise error is: ' + error);
                     expect(error).assertFail();
                 });
@@ -62,7 +75,7 @@ export default function applicationBundleJsunit() {
         it(TAG_TEST_0100_002, 0, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getAllApplicationInfo(
-                Bundle.BundleFlag.GET_ALL_APPLICATION_INFO, USER_ID_100).catch((error) => {
+                Bundle.BundleFlag.GET_ALL_APPLICATION_INFO, userId).catch((error) => {
                     console.info(TAG_TEST_0100_002 + 'UserId promise error is: ' + error);
                     expect(error).assertFail();
                 });
@@ -83,7 +96,7 @@ export default function applicationBundleJsunit() {
         it(TAG_TEST_0100_003, 0, async function (done) {
             let startTime = await Utils.getNowTime();
             let data = await Bundle.getAllApplicationInfo(
-                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE, USER_ID_100).catch((error) => {
+                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_DISABLE, userId).catch((error) => {
                     console.info(TAG_TEST_0100_003 + 'UserId promise error is: ' + error);
                     expect(error).assertFail();
                 });
@@ -169,7 +182,7 @@ export default function applicationBundleJsunit() {
             let datas;
             let startTime = await Utils.getNowTime();
             Bundle.getAllApplicationInfo(
-                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, USER_ID_100, (error, data) => {
+                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, userId, (error, data) => {
                     let endTime = Utils.getNowTime();
                     Utils.getDurationTime(TAG_TEST_0300_001, startTime, endTime);
                     if (error) {
@@ -245,7 +258,7 @@ export default function applicationBundleJsunit() {
         it(TAG_TEST_0500_002, 0, async function (done) {
             let errors;
             let startTime = await Utils.getNowTime();
-            await Bundle.getAllApplicationInfo('Bundle.BundleFlag.GET_BUNDLE_DEFAULT', USER_ID_100).then((data) => {
+            await Bundle.getAllApplicationInfo('Bundle.BundleFlag.GET_BUNDLE_DEFAULT', userId).then((data) => {
                 console.info(TAG_TEST_0500_002 + 'noUserId promise data is: ' + data);
                 expect(data).assertFail();
             }).catch((error) => {
@@ -277,7 +290,6 @@ export default function applicationBundleJsunit() {
                 expect(typeof (data[i].metaData)).assertEqual('object');
                 expect(typeof (data[i].metadata)).assertEqual('object');
                 expect(typeof (data[i].enabled)).assertEqual('boolean');
-                expect(typeof (data[i].flags)).assertEqual('number');
                 expect(typeof (data[i].uid)).assertEqual('number');
                 expect(typeof (data[i].entityType)).assertEqual('string');
                 expect(typeof (data[i].removable)).assertEqual('boolean');
@@ -314,7 +326,6 @@ export default function applicationBundleJsunit() {
                     expect(data[i].entryDir).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag' +
                         '/com.open.harmony.packagemag');
                     expect(data[i].enabled).assertEqual(true);
-                    expect(data[i].flags).assertEqual(0);
                     expect(data[i].entityType).assertEqual('unspecified');
                     expect(data[i].removable).assertEqual(true);
                     expect(data[i].moduleInfos[0].moduleName).assertEqual('entry');
