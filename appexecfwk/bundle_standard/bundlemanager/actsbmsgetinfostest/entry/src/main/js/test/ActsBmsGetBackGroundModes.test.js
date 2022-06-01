@@ -50,7 +50,6 @@ describe('ActsBmsGetBackGroundModes', function () {
             console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
             userId = account;
             done();
-            return;
         }).catch(err => {
             console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
             done();
