@@ -15,7 +15,7 @@
 
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
-import { describe, expect, it } from "deccjsunit/index.ets";
+import { describe, beforeEach, expect, it } from "deccjsunit/index.ets";
 
 var onAcquiredForm_Event = {
     events: ["FMS_FormOnAcquired_commonEvent"],
@@ -35,8 +35,20 @@ var onSupplyEvent = {
 
 var deleteForm_Event = "FMS_FormDelete_commonEvent";
 
+var subscriberOnAcquired;
+var subscriberDel;
+var subscriberOnState;
+var subscriberSupply;
+
 export default function test() {
     describe(`FmsStateFormTest`, () => {
+
+        beforeEach(async () => {
+            subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
+            subscriberDel = await commonEvent.createSubscriber(onDeletedFormEvent);
+            subscriberOnState = await commonEvent.createSubscriber(onStateFormEvent);
+            subscriberSupply = await commonEvent.createSubscriber(onSupplyEvent);
+        })
 
         /**
          * @tc.number: FMS_notifyInvisibleForms_0200
@@ -46,29 +58,20 @@ export default function test() {
          */
         it(`FMS_notifyInvisibleForms_0200`, 0, async (done) => {
             console.log(`FMS_notifyInvisibleForms_0200 start`);
-            let subscriberOnState;
 
-            function onStateCallBack(err, data) {
+            function onStateCallBack(_, data) {
                 console.info("!!!====>FMS_notifyInvisibleForms_0200 onStateCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnState_commonEvent");
                 expect(data.data).assertEqual("2");
-                commonEvent.unsubscribe(subscriberOnState, unsubscribeOnStateCallBack);
-                setTimeout(function () {                    
+                commonEvent.unsubscribe(subscriberOnState, () => unsubscribeOnStateCallback("FMS_notifyInvisibleForms_0200"));
+                setTimeout(function () {
                     console.info('FMS_notifyInvisibleForms_0200 onStateCallBack end');
                     console.log(`FMS_notifyInvisibleForms_0200 end`);
                     done();
                 }, 1000)
             }
-            function unsubscribeOnStateCallBack() {
-                console.debug("====>FMS_notifyInvisibleForms_0200 unsubscribeOnStateCallBack====>");
-            }
 
-            commonEvent.createSubscriber(onStateFormEvent).then(async (data) => {
-                console.debug("====>FMS_notifyInvisibleForms_0200 onStateFormEvent Subscriber====>");
-                subscriberOnState = data;
-                await commonEvent.subscribe(subscriberOnState, onStateCallBack);
-            });
-
+            commonEvent.subscribe(subscriberOnState, onStateCallBack);
             console.log(`FMS_notifyInvisibleForms_0200 featureAbility.startAbility again start`);
             featureAbility.startAbility({
                 want: {
@@ -101,29 +104,21 @@ export default function test() {
          */
         it(`FMS_notifyInvisibleForms_0300`, 0, async (done) => {
             console.log(`FMS_notifyInvisibleForms_0300 start`);
-            let subscriberOnState;
             
-            function onStateCallBack(err, data) {
+            function onStateCallBack(_, data) {
                 console.info("!!!====>FMS_notifyInvisibleForms_0300 onStateCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnState_commonEvent");
                 expect(data.data).assertEqual("7");
-                commonEvent.unsubscribe(subscriberOnState, unSubscribeOnStateCallback)
+                commonEvent.unsubscribe(subscriberOnState, () => unsubscribeOnStateCallback("FMS_notifyInvisibleForms_0300"))
 
-                setTimeout(function () {                    
+                setTimeout(function () {
                     console.info('FMS_notifyInvisibleForms_0300 delPublishCallBack end');
                     console.log(`FMS_notifyInvisibleForms_0300 end`);
                     done();
                 }, 100)
             }
-            function unSubscribeOnStateCallback() {
-                console.debug("====>FMS_notifyInvisibleForms_0300 unSubscribeOnStateCallback CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onStateFormEvent).then(async (data) => {
-                console.debug("====>FMS_notifyInvisibleForms_0300 onStateFormEvent Subscriber====>");
-                subscriberOnState = data;
-                await commonEvent.subscribe(subscriberOnState, onStateCallBack);
-            });
+
+            commonEvent.subscribe(subscriberOnState, onStateCallBack);
             console.log(`FMS_notifyInvisibleForms_0300 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -156,29 +151,21 @@ export default function test() {
          */
         it(`FMS_notifyInvisibleForms_0400`, 0, async (done) => {
             console.log(`FMS_notifyInvisibleForms_0400 start`);
-            let subscriberOnState;
-            
-            function onStateCallBack(err, data) {
+
+            function onStateCallBack(_, data) {
                 console.info("!!!====>FMS_notifyInvisibleForms_0400 onStateCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnState_commonEvent");
                 expect(data.data).assertEqual("0");
-                commonEvent.unsubscribe(subscriberOnState, unSubscribeOnStateCallback)
+                commonEvent.unsubscribe(subscriberOnState, () => unsubscribeOnStateCallback("FMS_notifyInvisibleForms_0400"))
 
-                setTimeout(function () {                    
+                setTimeout(function () {
                     console.info('FMS_notifyInvisibleForms_0400 delPublishCallBack end');
                     console.log(`FMS_notifyInvisibleForms_0400 end`);
                     done();
                 }, 100)
             }
-            function unSubscribeOnStateCallback() {
-                console.debug("====>FMS_notifyInvisibleForms_0400 unSubscribeOnStateCallback CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onStateFormEvent).then(async (data) => {
-                console.debug("====>FMS_notifyInvisibleForms_0400 onStateFormEvent Subscriber====>");
-                subscriberOnState = data;
-                await commonEvent.subscribe(subscriberOnState, onStateCallBack);
-            });
+
+            commonEvent.subscribe(subscriberOnState, onStateCallBack);
             console.log(`FMS_notifyInvisibleForms_0400 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -211,29 +198,21 @@ export default function test() {
          */
         it(`FMS_notifyInvisibleForms_0500`, 0, async (done) => {
             console.log(`FMS_notifyInvisibleForms_0500 start`);
-            let subscriberOnState;
 
-            function onStateCallBack(err, data) {
+            function onStateCallBack(_, data) {
                 console.info("!!!====>FMS_notifyInvisibleForms_0500 onStateCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnState_commonEvent");
                 expect(data.data).assertEqual("0");
-                commonEvent.unsubscribe(subscriberOnState, unSubscribeOnStateCallback)
+                commonEvent.unsubscribe(subscriberOnState, () => unsubscribeOnStateCallback("FMS_notifyInvisibleForms_0500"))
 
-                setTimeout(function () {                    
+                setTimeout(function () {
                     console.info('FMS_notifyInvisibleForms_0500 delPublishCallBack end');
                     console.log(`FMS_notifyInvisibleForms_0500 end`);
                     done();
                 }, 100)
             }
-            function unSubscribeOnStateCallback() {
-                console.debug("====>FMS_notifyInvisibleForms_0500 unSubscribeOnStateCallback CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onStateFormEvent).then(async (data) => {
-                console.debug("====>FMS_notifyInvisibleForms_0500 onStateFormEvent Subscriber====>");
-                subscriberOnState = data;
-                await commonEvent.subscribe(subscriberOnState, onStateCallBack);
-            });
+
+            commonEvent.subscribe(subscriberOnState, onStateCallBack);
             console.log(`FMS_notifyInvisibleForms_0500 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -266,44 +245,25 @@ export default function test() {
          */
         it(`FMS_notifyInvisibleForms_0600`, 0, async (done) => {
             console.log(`FMS_notifyInvisibleForms_0600 start`);
-            let subscriberOnState;
-            let subscriberOnAcquired;
             let formId;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_notifyInvisibleForms_0600 delPublishCallBack====>");
-                setTimeout(function () {                    
-                    console.info('FMS_notifyInvisibleForms_0600 delPublishCallBack end');
-                    console.log(`FMS_notifyInvisibleForms_0600 end`);
-                    done();
-                }, 1000);
-            }
-
-            function onStateCallBack(err, data) {
+            function onStateCallBack(_, data) {
                 console.info("!!!====>FMS_notifyInvisibleForms_0600 onStateCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnState_commonEvent");
                 expect(data.data).assertEqual("0");
-                commonEvent.unsubscribe(subscriberOnState, unsubscribeOnStateCallback);
+                commonEvent.unsubscribe(subscriberOnState, () => unsubscribeOnStateCallback("FMS_notifyInvisibleForms_0600"));
                 let commonEventPublishData = {
                     data: formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallback("FMS_notifyInvisibleForms_0600", done));
             }
-            function unsubscribeOnStateCallback() {
-                console.debug("====>FMS_notifyInvisibleForms_0600 unsubscribeOnStateCallback====>");
-            }            
-            
-            async function onAcquiredCallBack(err, data) {
-                console.info("!!!====>FMS_notifyInvisibleForms_0600 onAcquiredCallBack data:====>" + JSON.stringify(data));
-                expect(data.event).assertEqual("FMS_FormOnAcquired_commonEvent");                
-                commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallback)
-                formId = data.data;
-                commonEvent.createSubscriber(onStateFormEvent).then(async (data) => {
-                    console.debug("====>FMS_notifyInvisibleForms_0600 onStateFormEvent Subscriber====>");
-                    subscriberOnState = data;
-                    await commonEvent.subscribe(subscriberOnState, onStateCallBack);
-                });
 
+            async function onAcquiredCallBack(_, data) {
+                console.info("!!!====>FMS_notifyInvisibleForms_0600 onAcquiredCallBack data:====>" + JSON.stringify(data));
+                expect(data.event).assertEqual("FMS_FormOnAcquired_commonEvent");
+                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_notifyInvisibleForms_0600"))
+                formId = data.data;
+                commonEvent.subscribe(subscriberOnState, onStateCallBack);
                 console.log(`FMS_notifyInvisibleForms_0600 featureAbility.startAbility again start`);
                 await featureAbility.startAbility({
                     want: {
@@ -328,15 +288,8 @@ export default function test() {
                 });
                 console.log(`FMS_notifyInvisibleForms_0600 featureAbility.startAbility again end`);
             }
-            function unSubscribeOnAcquiredCallback() {
-                console.debug("====>FMS_notifyInvisibleForms_0600 OnAcquired UnSubscribe CallBack====>");
-            }
-            
-            commonEvent.createSubscriber(onAcquiredForm_Event).then(async (data) => {
-                console.debug("====>FMS_notifyInvisibleForms_0600 Create OnAcquired Subscriber====>");
-                subscriberOnAcquired = data;
-                await commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
-            });
+
+            commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             console.log(`FMS_notifyInvisibleForms_0600 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -367,12 +320,9 @@ export default function test() {
          */
         it(`FMS_notifyInvisibleForms_0700`, 0, async (done) => {
             console.info(`FMS_notifyInvisibleForms_0700 start`);
-            let subscriberInvisible;
-            let subscriberDel;
-            let subscriberSupply;
             let hostFormId;
 
-            const onSupplyCallback = (err, data) => {
+            const onSupplyCallback = (_, data) => {
                 if (data.parameters.kind != "onVisibilityChange") {
                     return;
                 }
@@ -380,7 +330,7 @@ export default function test() {
                 expect().assertFail();
             }
 
-            const onInvisibleCallback = (err, data) => {
+            const onInvisibleCallback = (_, data) => {
                 if (data.parameters.kind != "invisible") {
                     return;
                 }
@@ -388,18 +338,14 @@ export default function test() {
 
                 expect(data.data).assertEqual("0");
                 expect(data.parameters.formId).assertEqual(hostFormId);
-                commonEvent.unsubscribe(subscriberInvisible, () => {
-                    console.info("====>FMS_notifyInvisibleForms_0700 unSubscribeOnInvisibleCallback====>");
-                });
+                commonEvent.unsubscribe(subscriberOnState, () => unsubscribeOnStateCallback("FMS_notifyInvisibleForms_0700"));
                 setTimeout(() => {
-                    commonEvent.unsubscribe(subscriberSupply, () => {
-                        console.info("====>FMS_notifyInvisibleForms_0700 unSubscribeSupplyCallback====>");
-                    });
+                    commonEvent.unsubscribe(subscriberSupply, () => unsubscribeSupplyCallback("FMS_notifyInvisibleForms_0700"));
                     done();
                 }, 2000);
             }
 
-            const onDeleteCallback = async (err, data) => {
+            const onDeleteCallback = async (_, data) => {
                 console.debug("====>FMS_notifyInvisibleForms_0700 onDeleteCallback data:====>" + JSON.stringify(data));
                 hostFormId = data.parameters.formId;
 
@@ -430,22 +376,9 @@ export default function test() {
                 });
             }
 
-            commonEvent.createSubscriber(onDeletedFormEvent).then(async (data) => {
-                console.info("====>FMS_notifyInvisibleForms_0700 onDeletedFormEvent Invisible Subscriber====>");
-                subscriberDel = data;
-                await commonEvent.subscribe(subscriberDel, onDeleteCallback);
-            });
-            commonEvent.createSubscriber(onStateFormEvent).then(async (data) => {
-                console.info("====>FMS_notifyInvisibleForms_0700 onStateFormEvent Invisible Subscriber====>");
-                subscriberInvisible = data;
-                await commonEvent.subscribe(subscriberInvisible, onInvisibleCallback);
-            });
-            commonEvent.createSubscriber(onSupplyEvent).then(async (data) => {
-                console.info("====>FMS_notifyInvisibleForms_0700 onSupplyEvent Subscriber====>");
-                subscriberSupply = data;
-                await commonEvent.subscribe(subscriberSupply, onSupplyCallback);
-            });
-
+            commonEvent.subscribe(subscriberDel, onDeleteCallback);
+            commonEvent.subscribe(subscriberOnState, onInvisibleCallback);
+            commonEvent.subscribe(subscriberSupply, onSupplyCallback);
             console.info(`FMS_notifyInvisibleForms_0700 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -478,74 +411,49 @@ export default function test() {
          */
         it(`FMS_notifyInvisibleForms_0800`, 0, async (done) => {
             console.log(`FMS_notifyInvisibleForms_0800 start`);
-            let subscriberInvisible;
-            let subscriberVisible;
-            let subscriberSupply;
             let formIdInvisible;
             let formIdVisible;
             let onSupplyCount = 0;
-            
-            function unSubscribeSupplyCallback() {
-                console.debug("====>FMS_notifyInvisibleForms_0800 unSubscribeSupplyCallback====>");
-            }
-            function delPublishCallBack(err, data) {
-                console.info("!!!====>FMS_notifyInvisibleForms_0800 delPublishCallBack====>");                
-                setTimeout(function () {                    
-                    console.info('FMS_notifyInvisibleForms_0800 delPublishCallBack end');
-                    console.log(`FMS_notifyInvisibleForms_0800 end`);
-                    done();
-                }, 1000);
-            }
 
-            function onSupplyCallBack(err, data) {
+            function onSupplyCallBack(_, data) {
                 if (data.parameters.kind == "onVisibilityChange") {
                     expect(data.event).assertEqual("FMS_FormSupply_commonEvent");
                     console.debug("====>FMS_notifyInvisibleForms_0800 onSupplyCallBack====>" + JSON.stringify(data));
                     onSupplyCount++;
                     if (onSupplyCount == 2) {
-                        commonEvent.unsubscribe(subscriberSupply, unSubscribeSupplyCallback);
+                        commonEvent.unsubscribe(subscriberSupply, () => unsubscribeSupplyCallback("FMS_notifyInvisibleForms_0800"));
                     }
-                    if (formIdInvisible && formIdVisible) {                        
+                    if (formIdInvisible && formIdVisible) {
                         let commonEventPublishData = {
                             data: formIdInvisible
                         };
-                        commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                        commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallback("FMS_notifyInvisibleForms_0800", done));
                     }
                 }
             }
 
-            function OnInvisibleCallBack(err, data) {
+            function OnInvisibleCallBack(_, data) {
                 console.info("!!!====>FMS_notifyInvisibleForms_0800 OnInvisibleCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnState_commonEvent");
                 expect(data.data).assertEqual("0");
                 formIdInvisible = data.parameters.formId;
-                commonEvent.unsubscribe(subscriberInvisible, unSubscribeOnInvisibleCallback);
+                commonEvent.unsubscribe(subscriberOnState, () => unsubscribeOnStateCallback("FMS_notifyInvisibleForms_0800"));
                 if (formIdInvisible && formIdVisible && onSupplyCount == 2) {
                     let commonEventPublishData = {
                         data: formIdInvisible
                     };
-                    commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                    commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallback("FMS_notifyInvisibleForms_0800", done));
                 }
             }
-            function unSubscribeOnVisibleCallback() {
-                console.debug("====>FMS_notifyInvisibleForms_0800 unSubscribeOnVisibleCallback CallBack====>");
-            }            
-            function unSubscribeOnInvisibleCallback() {
-                console.debug("====>FMS_notifyInvisibleForms_0800 unSubscribeOnInvisibleCallback CallBack====>");
-            }            
-            async function onVisibleCallBack(err, data) {
+            async function onVisibleCallBack(_, data) {
                 console.info("!!!====>FMS_notifyInvisibleForms_0800 onVisibleCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnState_commonEvent");
                 expect(data.data).assertEqual("0");
-                commonEvent.unsubscribe(subscriberVisible, unSubscribeOnVisibleCallback);
+                commonEvent.unsubscribe(subscriberOnState, () => unsubscribeOnStateCallback("FMS_notifyInvisibleForms_0800"));
                 formIdVisible = data.parameters.formId;
                 
-                commonEvent.createSubscriber(onStateFormEvent).then(async (data) => {
-                    console.debug("====>FMS_notifyInvisibleForms_0800 onStateFormEvent Invisible Subscriber====>");
-                    subscriberInvisible = data;
-                    await commonEvent.subscribe(subscriberInvisible, OnInvisibleCallBack);
-                });
-
+                subscriberOnState = await commonEvent.createSubscriber(onStateFormEvent);
+                commonEvent.subscribe(subscriberOnState, OnInvisibleCallBack);
                 console.log(`FMS_notifyInvisibleForms_0800 featureAbility.startAbility again start`);
                 await featureAbility.startAbility({
                     want: {
@@ -570,17 +478,9 @@ export default function test() {
                 });
                 console.log(`FMS_notifyInvisibleForms_0800 featureAbility.startAbility again end`);
             }
-            
-            commonEvent.createSubscriber(onStateFormEvent).then(async (data) => {
-                console.debug("====>FMS_notifyInvisibleForms_0800 onStateFormEvent Subscriber====>");
-                subscriberVisible = data;
-                await commonEvent.subscribe(subscriberVisible, onVisibleCallBack);
-            });
-            commonEvent.createSubscriber(onSupplyEvent).then(async (data) => {
-                console.debug("====>FMS_notifyInvisibleForms_0800 onSupplyEvent Subscriber====>");
-                subscriberSupply = data;
-                await commonEvent.subscribe(subscriberSupply, onSupplyCallBack);
-            });
+
+            commonEvent.subscribe(subscriberOnState, onVisibleCallBack);
+            commonEvent.subscribe(subscriberSupply, onSupplyCallBack);
             console.log(`FMS_notifyInvisibleForms_0800 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -606,4 +506,24 @@ export default function test() {
             console.log(`FMS_notifyInvisibleForms_0800 featureAbility.startAbility end`);
         });
     });
+}
+
+const delPublishCallback = async (tcNumber, done) => {
+    console.info(`${tcNumber} delPublishCallBack start`);
+    setTimeout(function () {
+        console.info(`${tcNumber} delPublishCallBack end`);
+        done();
+    }, 1000);
+}
+
+const unsubscribeOnStateCallback = (tcNumber) => {
+    console.debug(`====>${tcNumber} unsubscribeOnStateCallback====>`);
+}
+
+const unsubscribeOnAcquiredCallback = (tcNumber) => {
+    console.info(`====>${tcNumber} unsubscribeOnAcquiredCallback====>`);
+}
+
+const unsubscribeSupplyCallback = (tcNumber) => {
+    console.debug(`====>${tcNumber} unSubscribeSupplyCallback====>`);
 }

@@ -15,7 +15,7 @@
 
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
-import { describe, expect, it } from "deccjsunit/index.ets";
+import { beforeEach, describe, expect, it } from "deccjsunit/index.ets";
 
 var onErrorForm_Event = {
     events: ["FMS_FormOnError_commonEvent"],
@@ -32,8 +32,20 @@ var onSupplyEvent = {
 
 var deleteForm_Event = "FMS_FormDelete_commonEvent";
 
+var subscriberOnError;
+var subscriberOnAcquired;
+var subscriberCast;
+var subscriberSupply;
+
 export default function test() {
     describe(`FmsAcquiredFormTest2`, () => {
+
+        beforeEach(async () => {
+            subscriberOnError = await commonEvent.createSubscriber(onErrorForm_Event);
+            subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
+            subscriberCast = await commonEvent.createSubscriber(subscriberFormCastEvent);
+            subscriberSupply = await commonEvent.createSubscriber(onSupplyEvent);
+        })
 
         /**
          * @tc.number: FMS_acquireForm_3800
@@ -42,23 +54,15 @@ export default function test() {
          */
         it(`FMS_acquireForm_3800`, 0, async (done) => {
             console.info(`FMS_acquireForm_3800 start`);
-            var subscriberOnError;
-            function onErrorCallBack(err, data) {
+            function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_3800 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
                 expect(data.data).assertEqual("invalid params received on operating form.");
-                commonEvent.unsubscribe(subscriberOnError, unSubscribeOnErrorCallback);
+                commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_3800"));
                 console.info(`FMS_acquireForm_3800 end`);
                 done();
             }
-            function unSubscribeOnErrorCallback() {
-                console.info("====>FMS_acquireForm_3800 unSubscribeOnErrorCallback CallBack====>");
-            }
-            commonEvent.createSubscriber(onErrorForm_Event).then(async (data) => {
-                console.info("====>FMS_acquireForm_3800 onErrorForm_Event Subscriber====>");
-                subscriberOnError = data;
-                await commonEvent.subscribe(subscriberOnError, onErrorCallBack);
-            });
+            commonEvent.subscribe(subscriberOnError, onErrorCallBack);
             console.info(`FMS_acquireForm_3800 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -88,23 +92,15 @@ export default function test() {
          */
         it(`FMS_acquireForm_3900`, 0, async (done) => {
             console.info(`FMS_acquireForm_3900 start`);
-            var subscriberOnError;
-            function onErrorCallBack(err, data) {
+            function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_3900 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
                 expect(data.data).assertEqual("invalid params received on operating form.");
-                commonEvent.unsubscribe(subscriberOnError, unSubscribeOnErrorCallback);
+                commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_3900"));
                 console.info(`FMS_acquireForm_3900 end`);
                 done();
             }
-            function unSubscribeOnErrorCallback() {
-                console.info("====>FMS_acquireForm_3900 unSubscribeOnErrorCallback CallBack====>");
-            }
-            commonEvent.createSubscriber(onErrorForm_Event).then(async (data) => {
-                console.info("====>FMS_acquireForm_3900 onErrorForm_Event Subscriber====>");
-                subscriberOnError = data;
-                await commonEvent.subscribe(subscriberOnError, onErrorCallBack);
-            });
+            commonEvent.subscribe(subscriberOnError, onErrorCallBack);
             console.info(`FMS_acquireForm_3900 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -135,44 +131,26 @@ export default function test() {
          */
         it(`FMS_acquireForm_4000`, 0, async (done) => {
             console.info(`FMS_acquireForm_4000 start`);
-            var subscriberOnAcquired;
-            var subscriberOnError;
             var formId;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_acquireForm_4000 delPublishCallBack====>");
-                setTimeout(function () {
-                    console.info('FMS_acquireForm_4000 delPublishCallBack end');
-                    console.info(`FMS_acquireForm_4000 end`);
-                    done();
-                }, 1000)
-            }
-            function unSubscribeOnErrorCallback() {
-                console.info("!!!====>FMS_acquireForm_4000 unSubscribeOnErrorCallback====>");
-            }
-            function onErrorCallBack(err, data) {
+            function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_4000 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                commonEvent.unsubscribe(subscriberOnError, unSubscribeOnErrorCallback);
+                commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_4000"));
                 expect(data.data).assertEqual("the form id and form config are not matched.");
 
                 console.info(`FMS_acquireForm_4000 end`);
                 var commonEventPublishData = {
                     data: formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_acquireForm_4000", done));
             }
-            function onAcquiredCallBack(err, data) {
+            function onAcquiredCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_4000 onAcquiredCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnAcquired_commonEvent");
-                commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallback)
+                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_acquireForm_4000"))
                 formId = data.data;
-
-                commonEvent.createSubscriber(onErrorForm_Event).then(async (data) => {
-                    console.info("====>FMS_acquireForm_4000 onErrorForm_Event Subscriber====>");
-                    subscriberOnError = data;
-                    await commonEvent.subscribe(subscriberOnError, onErrorCallBack);
-                });
+                commonEvent.subscribe(subscriberOnError, onErrorCallBack);
 
                 console.info(`FMS_acquireForm_4000 featureAbility.startAbility again start`);
                 featureAbility.startAbility({
@@ -201,12 +179,7 @@ export default function test() {
                 console.info("====>FMS_acquireForm_4000 OnAcquired UnSubscribe CallBack====>");
             }
 
-            commonEvent.createSubscriber(onAcquiredForm_Event).then(async (data) => {
-                console.info("====>FMS_acquireForm_4000 Create OnAcquired Subscriber====>");
-                subscriberOnAcquired = data;
-                await commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
-            });
-
+            commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             console.info(`FMS_acquireForm_4000 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -238,23 +211,15 @@ export default function test() {
          */
         it(`FMS_acquireForm_4100`, 0, async (done) => {
             console.info(`FMS_acquireForm_4100 start`);
-            var subscriberOnError;
-            function onErrorCallBack(err, data) {
+            function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_4100 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
                 expect(data.data).assertEqual("invalid params received on operating form.");
-                commonEvent.unsubscribe(subscriberOnError, unSubscribeOnErrorCallback);
+                commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_4100"));
                 console.info(`FMS_acquireForm_4100 end`);
                 done();
             }
-            function unSubscribeOnErrorCallback() {
-                console.info("====>FMS_acquireForm_4100 unSubscribeOnErrorCallback CallBack====>");
-            }
-            commonEvent.createSubscriber(onErrorForm_Event).then(async (data) => {
-                console.info("====>FMS_acquireForm_4100 onErrorForm_Event Subscriber====>");
-                subscriberOnError = data;
-                await commonEvent.subscribe(subscriberOnError, onErrorCallBack);
-            });
+            commonEvent.subscribe(subscriberOnError, onErrorCallBack);
             console.info(`FMS_acquireForm_4100 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -286,23 +251,13 @@ export default function test() {
          */
         it(`FMS_acquireForm_4200`, 0, async (done) => {
             console.info(`FMS_acquireForm_4200 start`);
-            let subscriberOnAcquired;
-            let subscriberSupply;
             let formId1;
             let formId2;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_acquireForm_4200 delPublishCallBack====>");
-                setTimeout(function () {
-                    console.info('FMS_acquireForm_4200 delPublishCallBack end');
-                    console.info(`FMS_acquireForm_4200 end`);
-                    done();
-                }, 500);
-            }
-            function onAcquiredCallBack(err, data) {
+            function onAcquiredCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_4200 onAcquiredCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnAcquired_commonEvent");
-                commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallBack)
+                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_acquireForm_4200"))
                 formId1 = data.data;
 
                 if (formId1 && formId2) {
@@ -310,23 +265,15 @@ export default function test() {
                     let commonEventPublishData = {
                         data: formId1
                     };
-                    commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                    commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_acquireForm_4200", done));
                 }
             }
-            function unSubscribeOnAcquiredCallBack() {
-                console.info("====>FMS_acquireForm_4200 unSubscribeOnAcquiredCallBack====>");
-            }
+            commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
 
-            commonEvent.createSubscriber(onAcquiredForm_Event).then(async (data) => {
-                console.info("====>FMS_acquireForm_4200 Create OnAcquired Subscriber====>");
-                subscriberOnAcquired = data;
-                await commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
-            });
-
-            function onSupplyCallBack(err, data) {
+            function onSupplyCallBack(_, data) {
                 if (data.parameters.kind == "onCreate") {
                     console.info("====>FMS_acquireForm_4200 onSupplyCallBack====>" + JSON.stringify(data));
-                    commonEvent.unsubscribe(subscriberSupply, unSubscribeSupplyCallback);
+                    commonEvent.unsubscribe(subscriberSupply, () => unsubscribeSupplyCallback("FMS_acquireForm_4200"));
                     let retData = JSON.parse(data.parameters.parameters);
 
                     let formName = retData.parameters['ohos.extra.param.key.form_name'];
@@ -338,22 +285,13 @@ export default function test() {
                         let commonEventPublishData = {
                             data: formId1
                         };
-                        commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                        commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_acquireForm_4200", done));
                     }
                 }
             }
-            function unSubscribeSupplyCallback() {
-                console.info("====>FMS_acquireForm_4200 unSubscribeSupplyCallback====>");
-            }
-
-            commonEvent.createSubscriber(onSupplyEvent).then(async (data) => {
-                console.info("====>FMS_acquireForm_4200 onSupplyEvent Subscriber====>");
-                subscriberSupply = data;
-                await commonEvent.subscribe(subscriberSupply, onSupplyCallBack);
-            });
-
+            commonEvent.subscribe(subscriberSupply, onSupplyCallBack);
             console.info(`FMS_acquireForm_4200 featureAbility.startAbility start`);
-            featureAbility.startAbility({
+            await featureAbility.startAbility({
                 want: {
                     bundleName: "com.ohos.st.formsystemhost",
                     abilityName: "com.ohos.st.formsystemhost.MainAbility",
@@ -383,23 +321,15 @@ export default function test() {
          */
         it(`FMS_acquireForm_4300`, 0, async (done) => {
             console.info(`FMS_acquireForm_4300 start`);
-            let subscriberOnAcquired;
-            function onAcquiredCallBack(err, data) {
+            function onAcquiredCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_4300 onAcquiredCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnAcquired_commonEvent");
                 expect(data.data != "0").assertEqual(true);
-                commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallBack);
+                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_acquireForm_4300"));
                 console.info(`FMS_acquireForm_4300 end`);
                 done();
             }
-            function unSubscribeOnAcquiredCallBack() {
-                console.info("====>FMS_acquireForm_4300 unSubscribeOnAcquiredCallBack CallBack====>");
-            }
-            commonEvent.createSubscriber(onAcquiredForm_Event).then(async (data) => {
-                console.info("====>FMS_acquireForm_4300 onAcquiredForm_Event Subscriber====>");
-                subscriberOnAcquired = data;
-                await commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
-            });
+            commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             console.info(`FMS_acquireForm_4300 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -430,24 +360,15 @@ export default function test() {
          */
         it(`FMS_acquireForm_4400`, 0, async (done) => {
             console.info(`FMS_acquireForm_4400 start`);
-            var subscriberOnError;
-            function onErrorCallBack(err, data) {
+            function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_4400 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                commonEvent.unsubscribe(subscriberOnError, unSubscribeOnErrorCallback);
+                commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_4400"));
                 expect(data.data).assertEqual("the dimension not exist in the form.");
-
                 console.info(`FMS_acquireForm_4400 end`);
                 done();
             }
-            function unSubscribeOnErrorCallback() {
-                console.info("====>FMS_acquireForm_4400 unSubscribeOnErrorCallback CallBack====>");
-            }
-            commonEvent.createSubscriber(onErrorForm_Event).then(async (data) => {
-                console.info("====>FMS_acquireForm_4400 onErrorForm_Event Subscriber====>");
-                subscriberOnError = data;
-                await commonEvent.subscribe(subscriberOnError, onErrorCallBack);
-            });
+            commonEvent.subscribe(subscriberOnError, onErrorCallBack);
             console.info(`FMS_acquireForm_4400 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -479,41 +400,22 @@ export default function test() {
          */
         it(`FMS_acquireForm_4900`, 0, async (done) => {
             console.info(`FMS_acquireForm_4900 start`);
-            var subscriberOnAcquired;
-            var subscriberCast;
 
-            function delPublishCallBack() {
-                console.info("!!!====>FMS_acquireForm_4900 delPublishCallBack====>");
-                setTimeout(function () {
-                    console.info('FMS_acquireForm_4900 delPublishCallBack end');
-                    console.info(`FMS_acquireForm_4900 end`);
-                    done();
-                }, 1000)
-            }
-
-            function onCastCallBack(err, data) {
+            function onCastCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_4900 onCastCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormCast_commonEvent");
                 expect(data.data).assertEqual("9");
-                commonEvent.unsubscribe(subscriberCast, unSubscribeOnCastCallback)
+                commonEvent.unsubscribe(subscriberCast, () => unsubscribeOnCastCallback("FMS_acquireForm_4900"))
                 var commonEventPublishData = {
                     data: data.parameters.formId
                 };
-                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack);
+                commonEvent.publish(deleteForm_Event, commonEventPublishData, delPublishCallBack("FMS_acquireForm_4900", done));
             }
-            function unSubscribeOnCastCallback() {
-                console.info("====>FMS_acquireForm_4900 unSubscribeOnCastCallback====>");
-            }
-            function onAcquiredCallBack(err, data) {
+            function onAcquiredCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_4900 onAcquiredCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnAcquired_commonEvent");
-                commonEvent.unsubscribe(subscriberOnAcquired, unSubscribeOnAcquiredCallback)
-
-                commonEvent.createSubscriber(subscriberFormCastEvent).then(async (data) => {
-                    console.info("====>FMS_acquireForm_4900 subscriberFormCastEvent Subscriber====>");
-                    subscriberCast = data;
-                    await commonEvent.subscribe(subscriberCast, onCastCallBack);
-                });
+                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_acquireForm_4900"))
+                commonEvent.subscribe(subscriberCast, onCastCallBack);
 
                 console.info(`FMS_acquireForm_4900 featureAbility.startAbility again start`);
                 featureAbility.startAbility({
@@ -539,16 +441,8 @@ export default function test() {
                 });
                 console.info(`FMS_acquireForm_4900 featureAbility.startAbility again end`);
             }
-            function unSubscribeOnAcquiredCallback() {
-                console.info("====>FMS_acquireForm_4900 OnAcquired UnSubscribe CallBack====>");
-            }
 
-            commonEvent.createSubscriber(onAcquiredForm_Event).then(async (data) => {
-                console.info("====>FMS_acquireForm_4900 Create OnAcquired Subscriber====>");
-                subscriberOnAcquired = data;
-                await commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
-            });
-
+            commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             console.info(`FMS_acquireForm_4900 featureAbility.startAbility start`);
             await featureAbility.startAbility({
                 want: {
@@ -573,4 +467,29 @@ export default function test() {
         });
 
     });
+}
+
+
+const delPublishCallBack = async (tcNumber, done) => {
+    console.info(`${tcNumber} delPublishCallBack start`);
+    setTimeout(function () {
+        console.info(`${tcNumber} delPublishCallBack end`);
+        done();
+    }, 1000);
+}
+
+const unsubscribeOnErrorCallback = (tcNumber) => {
+    console.debug(`====>${tcNumber} unsubscribeOnErrorCallback====>`);
+}
+
+const unsubscribeOnAcquiredCallback = (tcNumber) => {
+    console.info(`====>${tcNumber} unSubscribeOnAcquiredCallback====>`);
+}
+
+const unsubscribeSupplyCallback = (tcNumber) => {
+    console.info(`====>${tcNumber} unSubscribeSupplyCallback====>`);
+}
+
+const unsubscribeOnCastCallback = (tcNumber) => {
+    console.info(`====>${tcNumber} unsubscribeOnCastCallback====>`);
 }

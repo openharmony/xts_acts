@@ -557,7 +557,7 @@ export default function test() {
     });
 }
 
-const delPublishCallBack = async (tcNumber, done) {
+const delPublishCallBack = async (tcNumber, done) => {
     console.info(`${tcNumber} delPublishCallBack start`);
     setTimeout(function () {
         console.info(`${tcNumber} delPublishCallBack end`);
@@ -565,10 +565,10 @@ const delPublishCallBack = async (tcNumber, done) {
     }, 1000);
 }
 
-const unsubscribeOnReleasedCallback = (tcNumber) {
+const unsubscribeOnReleasedCallback = (tcNumber) => {
     console.debug(`====>${tcNumber} unsubscribeOnReleasedCallback====>`);
 }
 
-const unsubscribeOnAcquiredCallback = (tcNumber) {
+const unsubscribeOnAcquiredCallback = (tcNumber) => {
     console.debug(`====>${tcNumber} unsubscribeOnAcquiredCallback====>`);
 }
