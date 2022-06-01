@@ -320,7 +320,7 @@ describe('storageTest', function () {
     
         /**
      * @tc.name delete callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0180
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0180
      * @tc.desc delete callback interface test
      */
 
