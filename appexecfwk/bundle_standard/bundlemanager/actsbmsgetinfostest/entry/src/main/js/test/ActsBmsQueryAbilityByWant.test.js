@@ -13,15 +13,27 @@
  * limitations under the License.
  */
 import bundle from '@ohos.bundle'
+import account from '@ohos.account.osAccount'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit'
 
 const BUNDLE_NAME1 = 'com.example.third1';
 const SYSTEM_NAME = 'com.example.system2';
 const ABILITIY_NAME8 = 'com.example.system2.MainAbility';
-const USERID = 100;
+let userId = 0;
 
 describe('ActsBmsQueryAbilityByWant', function () {
 
+    beforeAll(async function (done) {
+        await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
+            console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
+            userId = account;
+            done();
+          }).catch(err=>{
+            console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
+            done();
+          })
+    });
+    
     /*
     * @tc.number: bms_queryAbilityByWant_0100
     * @tc.name:  queryAbilityByWant callback by other callback
@@ -34,7 +46,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
             entities: ['entity.system.home'],
             bundleName: BUNDLE_NAME1
         }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
-            USERID).then(data => {
+            userId).then(data => {
                 expect(data).assertFail();
             }).catch(err => {
                 expect(err).assertEqual(1);
@@ -44,7 +56,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
             entities: ['entity.system.home'],
             bundleName: BUNDLE_NAME1
         }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
-            USERID, (err, data) => {
+            userId, (err, data) => {
                 expect(err).assertEqual(1);
                 expect(data).assertEqual("QueryAbilityInfos failed");
                 done();
@@ -64,7 +76,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
                 entities: ['entity.system.home']
             },
             bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
-            USERID).then(data => {
+            userId).then(data => {
                 expect(data.length).assertLarger(0);
                 for (let i = 0; i < data.length; ++i) {
                     expect(data[i].applicationInfo.systemApp).assertEqual(true);
@@ -79,7 +91,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
                 entities: ['entity.system.home']
             },
             bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
-            USERID, (err, data) => {
+            userId, (err, data) => {
                 if (err) {
                     expect(err).assertFail();
                 }
@@ -113,7 +125,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
                 bundleName: '',
                 abilityName: '',
             },
-        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, USERID);
+        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId);
         expect(dataInfos.length).assertEqual(1);
         cheackAbilityInfos(dataInfos[0]);
         bundle.queryAbilityByWant({
@@ -132,7 +144,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
                 bundleName: '',
                 abilityName: '',
             },
-        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, USERID, (err, data) => {
+        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId, (err, data) => {
             expect(data.length).assertEqual(1);
             cheackAbilityInfos(data[0]);
             done();
@@ -144,8 +156,6 @@ describe('ActsBmsQueryAbilityByWant', function () {
         expect(data.label).assertEqual('$string:app_name');
         expect(data.description).assertEqual('$string:mainability_description');
         expect(data.icon).assertEqual("$media:icon");
-        expect(data.srcPath).assertEqual("");
-        expect(data.srcLanguage).assertEqual("js");
         expect(data.isVisible).assertEqual(false);
         expect(data.permissions.length).assertEqual(0);
         expect(data.deviceCapabilities.length).assertEqual(0);
@@ -167,7 +177,6 @@ describe('ActsBmsQueryAbilityByWant', function () {
         expect(data.readPermission).assertEqual("");
         expect(data.writePermission).assertEqual("");
         expect(data.targetAbility).assertEqual("");
-        expect(data.theme).assertEqual("");
         expect(data.metaData.length).assertEqual(0);
         expect(data.metadata.length).assertEqual(0);
         expect(data.enabled).assertEqual(true);

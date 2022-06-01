@@ -14,6 +14,7 @@
  */
 
 import bundle from '@ohos.bundle'
+import account from '@ohos.account.osAccount'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit'
 
 const BUNDLE_NAME1 = 'com.example.third1';
@@ -31,7 +32,6 @@ const NUM_TWO = 2;
 const NUM_THREE = 3;
 const NUM_FOUR = 4;
 const NUM_NINE = 9;
-const USERID = 100;
 const DATATRANSFER = 1;
 const AUDIOPLAYBACK = 2;
 const AUDIORECORDING = 4;
@@ -41,8 +41,20 @@ const MULTIDEVICECONNECTION = 32;
 const WIFIINTERACTION = 64;
 const VOIP = 128;
 const TASKKEEPING = 256;
+let userId = 0;
 
 describe('ActsBmsGetBackGroundModes', function () {
+
+    beforeAll(async function (done) {
+        await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
+            console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
+            userId = account;
+            done();
+        }).catch(err => {
+            console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
+            done();
+        })
+    });
 
     /*
     * @tc.number: bms_backGroundModes_0100
@@ -58,7 +70,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                 bundleName: BUNDLE_NAME5,
                 abilityName: '',
             },
-        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, USERID);
+        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId);
         expect(dataInfos.length).assertEqual(NUM_FOUR);
         if (dataInfos.length == NUM_FOUR) {
             expect(dataInfos[NUM_TWO].name).assertEqual(ABILITIY_NAME1);
@@ -67,7 +79,7 @@ describe('ActsBmsGetBackGroundModes', function () {
             expect(dataInfos[NUM_THREE].name).assertEqual(ABILITIY_NAME2);
             expect(dataInfos[NUM_THREE].backgroundModes).assertEqual(DATATRANSFER | VOIP);
         }
-        let bundleInfos = await bundle.getAllBundleInfo(bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, USERID);
+        let bundleInfos = await bundle.getAllBundleInfo(bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, userId);
         for (let i = 0; i < bundleInfos.length; i++) {
             if (bundleInfos[i].name == BUNDLE_NAME5) {
                 for (let j = 0; j < bundleInfos[i].abilityInfos.length; j++) {
@@ -103,7 +115,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                 bundleName: BUNDLE_NAME6,
                 abilityName: '',
             },
-        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, USERID);
+        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId);
         expect(dataInfos.length).assertEqual(NUM_NINE);
         for (let i = 0, len = dataInfos.length; i < len; i++) {
             expect(dataInfos[i].backgroundModes).assertEqual(1 << i);
@@ -125,14 +137,14 @@ describe('ActsBmsGetBackGroundModes', function () {
                 bundleName: BUNDLE_NAME2,
                 abilityName: '',
             },
-        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, USERID);
+        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId);
         expect(dataInfos.length).assertEqual(NUM_TWO);
         if (dataInfos.length == NUM_TWO) {
             expect(dataInfos[1].name).assertEqual(ABILITIY_NAME3)
             expect(dataInfos[1].backgroundModes).assertEqual(AUDIOPLAYBACK | AUDIORECORDING | LOCATION
                 | BLUETOOTHINTERACTION | MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING)
         }
-        bundle.getAllBundleInfo(bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, USERID, (err, bundleInfos) => {
+        bundle.getAllBundleInfo(bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, userId, (err, bundleInfos) => {
             for (let i = 0; i < bundleInfos.length; i++) {
                 if (bundleInfos[i].name == BUNDLE_NAME2) {
                     for (let j = 0; j < bundleInfos[i].abilityInfos.length; j++) {
@@ -144,12 +156,12 @@ describe('ActsBmsGetBackGroundModes', function () {
                     }
                 }
             }
+            bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, (err, data3) => {
+                expect(data3.abilityInfos[1].backgroundModes).assertEqual(AUDIOPLAYBACK | AUDIORECORDING | LOCATION
+                    | BLUETOOTHINTERACTION | MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING);
+                done();
+            });
         });
-        bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES, (err, data3) => {
-            expect(data3.abilityInfos[1].backgroundModes).assertEqual(AUDIOPLAYBACK | AUDIORECORDING | LOCATION
-                | BLUETOOTHINTERACTION | MULTIDEVICECONNECTION | WIFIINTERACTION | VOIP | TASKKEEPING)
-        });
-        done();
     });
 
     /*
@@ -166,7 +178,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                 bundleName: BUNDLE_NAME4,
                 abilityName: '',
             },
-        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, USERID);
+        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId);
         expect(dataInfos.length).assertEqual(1);
         if (dataInfos.length == 1) {
             expect(dataInfos[0].name).assertEqual(ABILITIY_NAME4)
@@ -189,7 +201,7 @@ describe('ActsBmsGetBackGroundModes', function () {
                 bundleName: BUNDLE_NAME1,
                 abilityName: '',
             },
-        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, USERID);
+        }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId);
         expect(dataInfos.length).assertEqual(NUM_FOUR);
         if (dataInfos.length == NUM_FOUR) {
             expect(dataInfos[1].name).assertEqual(ABILITIY_NAME5)
