@@ -106,7 +106,6 @@ describe("ActsCellularDataAbnormalTest", function () {
                 expect(true).assertTrue();
                 console.info("Telephony_CellularData_getDefaultCellularDataSlotId_Async_0500 finish");
                 done();
-                return;
             } else {
                 console.info("Telephony_CellularData_getDefaultCellularDataSlotId_Async_0500 finish");
                 done();
