@@ -18,7 +18,6 @@ import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 
 export default function windowCallbackTest(context, windowStage, abilityStorage) {
-
   console.log('testets context: ' + JSON.stringify(context))
   console.log('testets context windowStage: ' + JSON.stringify(windowStage));
   console.log('testets context abilityStorage: ' + JSON.stringify(abilityStorage));
@@ -147,15 +146,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             }
             expect(!data).assertTrue();
             mainWnd.setSystemBarEnable([], (err, data) => {
-              console.log(msgStr + 'mainWnd.setSystemBarEnable [] JSON.stringfy(data)==' + JSON.stringify(data));
+              console.log(msgStr + 'mainWnd.setSystemBarEnable [] JSON.stringify(data)==' + JSON.stringify(data));
               if (err && err.code) {
                 unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable []', done);
               }
 
               expect(!data).assertTrue();
               mainWnd.setSystemBarEnable([null, '123'], (err, data) => {
-                console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringfy(data)==' + JSON.stringify(data));
-                console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringfy(err)==' + JSON.stringify(err));
+                console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(data)==' + JSON.stringify(data));
+                console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(err)==' + JSON.stringify(err));
                 if (err && err.code) {
                   expect(err.code === 130).assertTrue();
                   done();
@@ -744,10 +743,10 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-* @tc.number     SUB_WINDOW_DESTROY_JSAPI_002
-* @tc.name       Test destroyTest2
-* @tc.desc       Verification window destruction scenario
-*/
+    * @tc.number     SUB_WINDOW_DESTROY_JSAPI_002
+    * @tc.name       Test destroyTest2
+    * @tc.desc       Verification window destruction scenario
+    */
     it('destroyTest2', 0, function (done) {
       let caseName = 'destroyTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
@@ -824,10 +823,10 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-* @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_008
-* @tc.name       Test loadContentTest8
-* @tc.desc       Verify the scenario of loading a page that does not exist
-*/
+    * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_008
+    * @tc.name       Test loadContentTest8
+    * @tc.desc       Verify the scenario of loading a page that does not exist
+    */
     it('loadContentTest8', 0, function (done) {
       let caseName = 'loadContentTest8';
       let msgStr = 'jsunittest ' + caseName + ' ';
@@ -894,6 +893,23 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         } else {
           expect(!data).assertTrue();
           console.log(msgStr + 'windowStage.loadContent end data=' + JSON.stringify(data));
+        }
+        done();
+      });
+    })
+    /**
+    * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_012
+    * @tc.name       Test loadContentTest12
+    * @tc.desc       Verify the scenario of loading an existing page
+    */
+    it('loadContentTest12', 0, function (done) {
+      let caseName = 'loadContentTest12';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      windowStage.loadContent(null, abilityStorage, (err, data) => {
+        if (err && err.code) {
+          expectedError(err, caseName, 'windowStage.loadContent', done,130);
+          console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
         }
         done();
       });
@@ -968,8 +984,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin ohosWindow =' + JSON.stringify(ohosWindow));
       let mainWnd = null;
-      ohosWindow.create(context,'setPrivacyModeTest2', ohosWindow.WindowType.TYPE_SYSTEM_ALERT, (err, data) => {
-        if (err&&err.code) {
+      ohosWindow.create(context, 'setPrivacyModeTest2', ohosWindow.WindowType.TYPE_SYSTEM_ALERT, (err, data) => {
+        if (err && err.code) {
           console.log(msgStr + 'ohosWindow.create fail err:' + JSON.stringify(err));
           expect().assertFail();
           done();
@@ -1040,7 +1056,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'begin ohosWindow =' + JSON.stringify(ohosWindow));
       let mainWnd = null;
       windowStage.createSubWindow('setPrivacyModeTest3', (err, data) => {
-        if (err&&err.code) {
+        if (err && err.code) {
           console.log(msgStr + 'windowStage.createSubWindow fail err:' + JSON.stringify(err));
           expect().assertFail();
           done();
