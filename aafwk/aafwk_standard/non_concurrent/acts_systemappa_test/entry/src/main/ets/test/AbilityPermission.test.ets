@@ -16,7 +16,6 @@
 import osaccount from '@ohos.account.osaccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
 import commonEvent from '@ohos.commonevent'
-
 var AbilityPermission1 = {
   events: ["ACTS_AbilityPermission_0100_Start_CommonEvent"]
 }
@@ -33,13 +32,25 @@ const START_ABILITY_TIMEOUT = 3000;
 export default function abilityPermissionTest(abilityContext) {
   describe('ActsAbilityPermissionTest', function () {
     var osAccountManager = osaccount.getAccountManager();
+    var userA;
+    var userB; 
+    beforeAll(async function(done){
+      osAccountManager.getOsAccountLocalIdFromProcess().then((data)=>{
+       userA = data
+       userB=userA+1
+       console.log("userA=====>"+userA)
+       done()
+      });
+     
+    })
     afterAll(async function(done){
-      await osAccountManager.removeOsAccount(101, (err)=>{
-        console.debug("====>remove localId: " + 101 + " err:" + JSON.stringify(err));
+      await osAccountManager.removeOsAccount(userB, (err)=>{
+        console.debug("====>remove localId: " + userB + " err:" + JSON.stringify(err));
         expect(err.code).assertEqual(0);
         done();
       })
     })
+
     /*
      * @tc.number: ACTS_AbilityPermission_0100
      * @tc.name: In non-concurrent mode, if the target application is not the current user, it is forbidden to start
@@ -65,7 +76,7 @@ export default function abilityPermissionTest(abilityContext) {
           {
             bundleName: 'com.example.actsabilitypermissiontest',
             abilityName: 'com.example.actsabilitypermissiontest.MainAbility2'
-          }, 100, () => {
+          }, userA, () => {
           console.debug("====>startAbility end_100====>");
         })
       })
@@ -111,7 +122,7 @@ export default function abilityPermissionTest(abilityContext) {
           {
             bundleName: 'com.example.actssystemappuonehundredonerelytest',
             abilityName: 'com.example.actssystemappuonehundredonerelytest.MainAbility'
-          }, 101 ).then().catch((err) => {
+          }, userA ).then().catch((err) => {
           console.debug("ACTS_AbilityPermission_0300====>" + err)
 
           console.debug("====>startAbility end_0300====>");
@@ -185,7 +196,7 @@ export default function abilityPermissionTest(abilityContext) {
             bundleName: 'com.example.actsabilitypermissiontest',
             abilityName: 'com.example.actsabilitypermissiontest.ServiceAbility',
             action: "StartAbilityPromise"
-          }, 100, {
+          }, userA, {
           onConnect: onConnectCallback,
           onDisconnect: onDisconnectCallback,
           onFailed: onFailedCallback
@@ -247,7 +258,7 @@ export default function abilityPermissionTest(abilityContext) {
           bundleName: 'com.example.actssystemappuonehundredonerelytest',
           abilityName: 'com.example.actssystemappuonehundredonerelytest.ServiceAbility',
           action: "StartAbilityPromise"
-        }, 101, {
+        }, userA, {
         onConnect: onConnectCallbackC,
         onDisconnect: onDisconnectCallbackC,
         onFailed: onFailedCallbackC

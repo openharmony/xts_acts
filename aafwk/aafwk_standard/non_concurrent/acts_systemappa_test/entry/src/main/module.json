@@ -111,7 +111,11 @@
       {
         "name":"ohos.permission.INTERACT_ACROSS)LOCAL_ACCOUNTS_EXTENSION",
         "reason":"need use ohos.permission.INTERACT_ACROSS)LOCAL_ACCOUNTS_EXTENSION"
-      }     
+      },
+      {
+        "name":"ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS",
+        "reason":"need use ohos.permission.GET_RUNNING_INFO"
+      }   
     ]
   }
 }

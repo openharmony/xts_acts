@@ -17,7 +17,6 @@ group("non_concurrent") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "acts_thirdappa_test:ActsThirdAppATest",
       "acts_systemappa_test:ActsSystemAppATest",
       "acts_systemappone_rely_test:ActsSystemAppOneRelyHap"
     ]

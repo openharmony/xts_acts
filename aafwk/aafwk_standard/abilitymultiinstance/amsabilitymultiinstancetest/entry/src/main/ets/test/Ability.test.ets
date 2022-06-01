@@ -382,66 +382,6 @@ export default function abilityTest(abilityContext) {
     })
 
     /*
-    * @tc.number: ACTS_AbilityMultiInstance_Single_0500
-    * @tc.name: Connects a service ability, which is used to start a cloned page ability.
-    * @tc.desc: Check the event data of executor page ability publishes
-    */
-    it('ACTS_AbilityMultiInstance_Single_0500', 0, async function (done) {
-      console.log('ACTS_AbilityMultiInstance_Single_0500====<begin');
-      var subscriber;
-      let id;
-      var result;
-      var checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId1",
-      "AppA:onForegroundonAcceptWantCalledId1"];
-      var checkIndex = 0;
-
-      function subscribeCallBack(err, data) {
-        console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
-
-        if (data.event == "MultiInstanceStartFinish") {
-          clearTimeout(id);
-          console.log('ACTS_AbilityMultiInstance_Single_0500 finish callBackSeq = ' + data.data);
-          expect(data.data).assertEqual(checkEventResults[checkIndex++]);
-          expect(checkIndex).assertEqual(2);
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-          console.log('ACTS_AbilityMultiInstance_Single_0500 finish');
-        } else if (data.event == "MultiInstanceStartNext") {
-          console.log('ACTS_AbilityMultiInstance_Single_0500 callBackSeq = ' + data.data);
-          expect(data.data).assertEqual(checkEventResults[checkIndex++]);
-        }
-      }
-
-      commonEvent.createSubscriber(subscriberInfoMultiInstance).then(async (data) => {
-        console.debug("====>Create Subscriber====>");
-        subscriber = data;
-        commonEvent.subscribe(subscriber, subscribeCallBack);
-      })
-
-      function unSubscribeCallback() {
-        console.debug("====>UnSubscribe CallBack====>");
-        setTimeout(function () {
-          done();
-        }, UNSUBSCRIBE_TIMEOUT)
-      }
-
-      function timeout() {
-        expect().assertFail();
-        console.log('ACTS_AbilityMultiInstance_Single_0500 timeout');
-        commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-      }
-
-      id = setTimeout(timeout, START_ABILITY_TIMEOUT);
-      console.log('Start AbilityMultiInstanceTester ACTS_AbilityMultiInstance_Single_0500 timer id : ' + id);
-
-      startAbilityProcess(abilityContext, {
-        startId: 0,
-        stepNum: 2,
-        nextStep: 0,
-        step: ["StartA1", "StartA1"]
-      });
-    })
-
-    /*
     * @tc.number: ACTS_AbilityMultiInstance_Single_0600
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
     * @tc.desc: Check the event data of executor page ability publishes

@@ -18,22 +18,33 @@ group("aafwk_standard") {
   if (is_standard_system) {
     deps = [
       "abilitymanager:actsabilitymanagertest",
+      "abilitymultiinstance:abilitymultiinstance",
       "actsabilitydelegatorcase:ActsAbilityDelegatorCaseTest",
       "actsabilitydistributetest:ActsAbilityDistributeTest",
       "actsabilitylifecyclestatenew:ActsAbilityLifecycleStateNewTest",
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
+      "actscalltest:actscalltest",
       "actsdataabilityjs:ActsDataAbilityJsTest",
+      "actsstartcomponenttest:actsstartcomponenttest",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
       "amsabilitymanager/amsMissionSnapshotTest:ActsAmsMissionSnapshotTest",
       "amsabilitymanager/amsMissionSnapshotTestSingleton:ActsAmsMissionSnapshotTestSingleton",
       "amsabilitymanager/amsMissionSnapshotTestSingletonS:ActsAmsMissionSnapshotTestSingletonS",
+      "amscontextualinforquery:amscontextualinforquery",
       "amsdatauriutils:ActsAmsDataUriUtilsTest",
+      "amsdisplayIdtest:amsdisplayIdtest",
       "amsgetabilityprocessinfo:amsgetabilityprocessinfo",
       "context:context",
       "featureability:featureability",
       "formmanager:formmanager",
+      "newwant:newwant",
+      "non_concurrent:non_concurrent",
+      "processmultiinstance:processmultiinstance",
       "stage:stage",
       "want:want",
+      "zidltest:zidltest",
+      "actsusers:actsusers",
+      "killprocesswithaccountstage:killprocesswithaccountstage"
     ]
   }
 }
