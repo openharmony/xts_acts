@@ -235,7 +235,7 @@ describe('appInfoTest', function () {
         brightness.getMode({
             success: (data) => {
                 execSucc = true;
-                expect(data.mode === !modeVal).assertTrue()     ;   
+                expect(data.mode === (modeVal ? 0 : 1)).assertTrue();   
             },
             fail: (data, code) => {
                 console.log("get_mode_success, data: " + data + ", code: " + code);
@@ -295,7 +295,7 @@ describe('appInfoTest', function () {
                 brightness.getMode({
                     success: (data) => {
                         console.log("set_mode_success, data: " + data.mode);
-                        expect(data.mode === !modeVal).assertTrue();
+                        expect(data.mode === (modeVal ? 0 : 1)).assertTrue();
                     }
                 });
             },
