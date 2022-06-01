@@ -64,7 +64,8 @@ describe('HiTraceJsTest', function () {
     it('testHiAppEventApi02', 1, async function (done) {
         console.info('testHitraceApi02 start');
         try{
-            let traceId = hiTraceChain.begin("hitrace02", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC | hiTraceChain.HiTraceFlag.DONOT_CREATE_SPAN);
+            let traceId = hiTraceChain.begin("hitrace02", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC |
+            hiTraceChain.HiTraceFlag.DONOT_CREATE_SPAN);
             let traceIdIsvalid = hiTraceChain.isValid(traceId);
             if(!traceIdIsvalid){
                 expect().assertFail();
@@ -164,7 +165,8 @@ describe('HiTraceJsTest', function () {
         try{
             let traceId = hiTraceChain.begin("hitrace06");
             hiTraceChain.enable(asyncTraceId, hiTraceChain.HiTraceFlag.FAILURE_TRIGGER);
-            let enabledDoNotCreateSpanFlag = hiTraceChain.isFlagEnabled(traceId, hiTraceChain.HiTraceFlag.FAILURE_TRIGGER);
+            let enabledDoNotCreateSpanFlag = hiTraceChain.isFlagEnabled(traceId,
+            hiTraceChain.HiTraceFlag.FAILURE_TRIGGER);
             if(!enabledDoNotCreateSpanFlag){
                 expect().assertFail();
                 console.log(`testHitraceApi06 got an error: ${JSON.stringify(error)}`);
@@ -188,7 +190,7 @@ describe('HiTraceJsTest', function () {
         console.info('testHitraceApi07 start');
         try{
             let traceId = hiTraceChain.begin("hitrace07", hiTraceChain.HiTraceFlag.D2D_TP_INFO);
-            let enabledDoNotCreateSpanFlag = hiTraceChain.isFlagEnabled(traceId, hiTraceChain.HiTraceFlag.D2D_TP_INFO);
+            let enabledDoNotCreateSpanFlag = hiTraceChain.isFlagEnabled(traceId, hiTraceChain.HiTraceFlag.D2D_TP_INFO)
             if(!enabledDoNotCreateSpanFlag){
                 expect().assertFail();
                 console.log(`testHitraceApi07 got an error: ${JSON.stringify(error)}`);
