@@ -1,0 +1,63 @@
+{
+    "description": "Configuration for hjunit demo Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "300000",
+        "package": "com.example.actsspecifieduseractiononetest",
+        "shell-timeout": "300000"
+    },
+    "kits": [
+	  {
+            "type": "ShellKit",
+            "run-command": [
+                "acm create -n 101 -t normal",
+                "acm create -n 102 -t normal",
+                "acm switch -i 101"
+            ]
+        },
+        {
+            "test-file-name": [
+                "ActsSpecifiedUserActiononeTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "remount"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                "ActsSpecifiedUserActiononeTest.hap->/system/app/ActsSpecifiedUserActiononeTest.hap"
+            ]
+        },
+		{
+            "type": "ShellKit",
+            "run-command": [
+                "acm switch -i 100"
+            ]
+        },
+      
+        {
+            "type": "PushKit",
+            "push": [
+                "ActsSpecifiedUserActionZeroTest.hap->/system/app/ActsSpecifiedUserActionZeroTest.hap"
+            ]
+        },
+		{
+		     "type": "ShellKit",
+            "run-command": [
+                "acm switch -i 101"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "chmod 644 /data/*.hap"
+            ]
+        }
+    ]
+}

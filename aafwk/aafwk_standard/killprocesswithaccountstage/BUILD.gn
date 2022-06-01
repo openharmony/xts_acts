@@ -17,8 +17,8 @@ group("killprocesswithaccountstage") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ActsKillProcessWithAccountTest:ActsKillProcessWithAccountTest",
       "ActsKillProcessWithAccountRelyHap:ActsKillProcessWithAccountRelyHap",
+      "ActsKillProcessWithAccountTest:ActsKillProcessWithAccountTest",
     ]
   }
 }
