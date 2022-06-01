@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-import FormViewModel from './FormViewModel.ets';
 import commonEvent from '@ohos.commonEvent';
 import featureAbility from '@ohos.ability.featureAbility';
 import formManager from '@ohos.application.formHost';
@@ -32,7 +31,6 @@ struct Index {
   @State isShowing: boolean = true;
   @State dimension: FormDimension = FormDimension.Dimension_1_2;
   @State temporary: boolean = false;
-  private mFormViewModel: FormViewModel;
   private requestForm = false;
   private requestId = `-1`;
   private subscriberDel;
@@ -57,8 +55,6 @@ struct Index {
   }
 
   async private aboutToAppear() {
-    this.mFormViewModel = FormViewModel.getInstance();
-
     const onDeleteEventSubscriber = await commonEvent.createSubscriber(this.subscriberFormDeleteEvent);
     commonEvent.subscribe(onDeleteEventSubscriber, async (err, data) => {
       console.info(`${this.TAG} deleteCallBack start:====> ${JSON.stringify(data)}`);

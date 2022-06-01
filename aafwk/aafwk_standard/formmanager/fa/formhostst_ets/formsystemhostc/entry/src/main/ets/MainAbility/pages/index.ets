@@ -13,11 +13,9 @@
  * limitations under the License.
  */
 
-import FormViewModel from './FormViewModel.ets';
-import router from '@system.router';
-import featureAbility from "@ohos.ability.featureAbility";
-import formManager from '@ohos.application.formHost'
 import commonEvent from '@ohos.commonEvent';
+import featureAbility from "@ohos.ability.featureAbility";
+import formManager from '@ohos.application.formHost';
 import systemTime from '@ohos.systemTime';
 
 @Entry
@@ -27,11 +25,8 @@ struct Index {
   @State bundle: string = "com.form.formsystemtestservicea.hmservice";
   @State ability: string = "com.form.formsystemtestservicea.hmservice.MainAbility";
   @State moduleName: string = "entry";
-  @State name: string = "Form_Js001";  
-  @State width: number = 300;
-  @State height: number = 200;
+  @State name: string = "Form_Js001";
   @State allowUpate: boolean = true;
-  @State onAcquireResult: string = "";
   @State isShowing: boolean = true;
   @State canCreateForm: boolean = false;
 
@@ -43,12 +38,7 @@ struct Index {
   private deleteId = "-1";
   private temporaryId="-1";
   private temporary = false;
-  private mFormViewModel: FormViewModel;
-  private isVisible = false;
-  private mMargin = 15;
-  private BTN_BG_COLOR: string = '#0D9FFB';
   private castForm = false;
-  private tempFormId: number = 0;
   private sendCastForm = false;
   private sendCastFormMsg;
 
@@ -99,10 +89,6 @@ struct Index {
     this.canCreateForm = false;
     console.info("!!!====>[FormComponent] deleteCallBack end ====>");
   }
-
-  private unSubscribeDeleteCallback() {
-      console.debug("====>[FormComponent] unSubscribeDeleteCallback_1100 CallBack====>");
-  }
   
   private timeChangeCallBack(err, data) {
     console.info("!!!====>[FormComponent] timeChangeCallBack start:====>" + JSON.stringify(data));
@@ -113,9 +99,6 @@ struct Index {
     console.info("!!!====>[FormComponent] timeChangeCallBack end ====>");
   }
 
-  private unSubscribeTimeChangeCallback() {
-      console.debug("====>[FormComponent] unSubscribeTimeChangeCallback CallBack====>");
-  }
   /**
   *
   * @param hour hour of 24H clock
@@ -142,11 +125,6 @@ struct Index {
     return (value > 9 ? "" : "0") + value;
   }
   private aboutToAppear() {
-
-    const TAG = "[FormComponent.host]"
-
-    this.mFormViewModel = FormViewModel.getInstance();  
-
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
         console.info("====>[FormComponent] Subscriber FormDelete data:====>", JSON.stringify(data)); 
         this.subscriberDel = data;     
@@ -228,7 +206,7 @@ struct Index {
           .then((data) => {
           console.info('[FormComponent] deleteForm result:' + data);
           let commonEventPublishData = {
-            data: data.toString(),
+            data: "0",
             parameters: {
               "formId" : this.deleteId
             }
@@ -254,7 +232,7 @@ struct Index {
         .then((data) => {
           console.info('[FormComponent] releaseForm result:' + data);
           let commonEventPublishData = {
-            data: data.toString(),
+            data: "0",
             parameters: {
               "formId" : this.releaseId
             }
@@ -307,7 +285,7 @@ struct Index {
                     console.info('[FormComponent] castTempForm result:' + data);
                      setTimeout(() => {
                       let commonEventPublishData = {
-                        data: data.toString(),
+                        data: "0",
                         parameters: {
                           "formId" : this.formId.toString()
                         }
@@ -338,7 +316,7 @@ struct Index {
                     .then((data) => {
                     console.info('[FormComponent] deleteForm result:' + data);
                     var commonEventPublishData = {
-                      data: data.toString(),
+                      data: "0",
                       parameters: {
                         "formId" : this.deleteId
                       }
@@ -368,7 +346,7 @@ struct Index {
                     .then((data) => {
                     console.info('[FormComponent] releaseForm result:' + data);
                     var commonEventPublishData = {
-                      data: data.toString(),
+                      data: "0",
                       parameters: {
                         "formId" : this.releaseId
                       }
@@ -401,9 +379,6 @@ struct Index {
             .onError((error) => {
               console.log("[FormComponent.host] error code:" + error.errcode);
               console.log("[FormComponent.host] error msg:" + error.msg);
-              this.onAcquireResult += error.errcode;
-              this.onAcquireResult += " ";
-              this.onAcquireResult += error.msg;
               if(this.deleteForm && this.deleteId) {
                 let commonEventPublishData = {
                     data: error.msg,

@@ -13,11 +13,9 @@
  * limitations under the License.
  */
 
-import FormViewModel from './FormViewModel.ets';
-import router from '@system.router';
-import featureAbility from "@ohos.ability.featureAbility";
-import formManager from '@ohos.application.formHost'
 import commonEvent from '@ohos.commonEvent';
+import featureAbility from "@ohos.ability.featureAbility";
+import formManager from '@ohos.application.formHost';
 
 @Entry
 @Component
@@ -26,11 +24,8 @@ struct Index {
   @State bundle: string = "com.form.formsystemtestservicea.hmservice";
   @State ability: string = "com.form.formsystemtestservicea.hmservice.MainAbility";
   @State moduleName: string = "entry";
-  @State name: string = "Form_Js001";  
-  @State width: number = 300;
-  @State height: number = 200;
+  @State name: string = "Form_Js001";
   @State allowUpate: boolean = true;
-  @State onAcquireResult: string = "";
   @State isShowing: boolean = true;
   @State canCreateForm: boolean = false;
 
@@ -45,12 +40,7 @@ struct Index {
   private deleteForm = false;
   private deleteId = "-1";
   private temporary = false;
-  private mFormViewModel: FormViewModel;
-  private isVisible = false;
-  private mMargin = 15;
-  private BTN_BG_COLOR: string = '#0D9FFB'; 
   private castForm = false;
-  private tempFormId: number = 0;
 
   private formOnErrorEvent = "FMS_FormOnError_commonEvent";
   private formOnDeletedEvent = "FMS_FormOnDeleted_commonEvent";
@@ -63,11 +53,6 @@ struct Index {
   }
 
   private aboutToAppear() {
-
-    const TAG = "[FormComponent.host]"
-
-    this.mFormViewModel = FormViewModel.getInstance();  
-
     console.error('[FormComponent] getWant');
     featureAbility.getWant()
     .then((want: any) => {
@@ -335,10 +320,6 @@ struct Index {
             .onError((error) => {
               console.log("[FormComponent.host] error code:" + error.errcode);
               console.log("[FormComponent.host] error msg:" + error.msg);
-              this.onAcquireResult += error.errcode;
-              this.onAcquireResult += " ";
-              this.onAcquireResult += error.msg;
-             
               let commonEventPublishData = {
                 data: error.msg                 
               };
