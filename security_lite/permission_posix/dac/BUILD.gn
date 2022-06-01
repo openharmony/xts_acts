@@ -12,8 +12,5 @@
 # limitations under the License.
 
 group("ActsDacTest") {
-  deps = [
-    "./jffs:ActsJFFS2DACTest",
-    "./vfat:ActsVFATDACTest",
-  ]
+  deps = [ "./vfat:ActsVFATDACTest" ]
 }

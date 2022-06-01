@@ -25,7 +25,7 @@
 using namespace std;
 using namespace testing::ext;
 
-#if defined(LITE_FS_JFFS2) || defined(LITE_FS_VFAT)
+#if defined(LITE_FS_VFAT)
 static int TestSetUid()
 {
     // Test the 'setuid' interface
