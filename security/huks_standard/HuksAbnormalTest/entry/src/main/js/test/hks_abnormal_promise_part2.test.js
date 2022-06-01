@@ -1354,18 +1354,6 @@ describe('Hks_Abnormal_Promise_Part2', function () {
   });
 
   /**
-   * @tc.number   HUKS_ABNORMAL_CALLBACK_21200
-   * @tc.name     InvalidPurposeUnwrapAlgEccForGenerateGKeyPromise
-   * @tc.desc     Invalid purpose unwrap alg ecc for generate key promise.
-   */
-  it('HUKS_ABNORMAL_PROMISE_21200', 0, async function (done) {
-    var option = eccGenerateKeyInvalidPurposeOption(hks.HuksKeyPurpose.HUKS_KEY_PURPOSE_UNWRAP);
-    var result = await hks.generateKey(alias, option);
-    expect(result.errorCode).assertEqual(hks.HuksErrorCode.HUKS_ERROR_INVALID_PURPOSE);
-    done();
-  });
-
-  /**
    * @tc.number   HUKS_ABNORMAL_CALLBACK_21300
    * @tc.name     InvalidPurposeencryptAlgEccForGenerateGKeyPromise
    * @tc.desc     Invalid purpose encrypt alg ecc for generate key promise.
@@ -1804,18 +1792,6 @@ describe('Hks_Abnormal_Promise_Part2', function () {
    */
   it('HUKS_ABNORMAL_PROMISE_24900', 0, async function (done) {
     var option = dhGenerateKeyInvalidPurposeOption(hks.HuksKeyPurpose.HUKS_KEY_PURPOSE_WRAP);
-    var result = await hks.generateKey(alias, option);
-    expect(result.errorCode).assertEqual(hks.HuksErrorCode.HUKS_ERROR_INVALID_PURPOSE);
-    done();
-  });
-
-  /**
-   * @tc.number   HUKS_ABNORMAL_CALLBACK_25000
-   * @tc.name     InvalidPurposeUnwrapAlgDhForGenerateKeyPromise
-   * @tc.desc     Invalid purpose unwrap alg dh for generate key promise.
-   */
-  it('HUKS_ABNORMAL_PROMISE_25000', 0, async function (done) {
-    var option = dhGenerateKeyInvalidPurposeOption(hks.HuksKeyPurpose.HUKS_KEY_PURPOSE_UNWRAP);
     var result = await hks.generateKey(alias, option);
     expect(result.errorCode).assertEqual(hks.HuksErrorCode.HUKS_ERROR_INVALID_PURPOSE);
     done();
