@@ -27,6 +27,7 @@ group("aafwk_standard") {
       "actsdataabilityjs:ActsDataAbilityJsTest",
       "actsstartcomponenttest:actsstartcomponenttest",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
+      "actsusers:actsusers",
       "amsabilitymanager/amsMissionSnapshotTest:ActsAmsMissionSnapshotTest",
       "amsabilitymanager/amsMissionSnapshotTestSingleton:ActsAmsMissionSnapshotTestSingleton",
       "amsabilitymanager/amsMissionSnapshotTestSingletonS:ActsAmsMissionSnapshotTestSingletonS",
@@ -37,14 +38,13 @@ group("aafwk_standard") {
       "context:context",
       "featureability:featureability",
       "formmanager:formmanager",
+      "killprocesswithaccountstage:killprocesswithaccountstage",
       "newwant:newwant",
       "non_concurrent:non_concurrent",
       "processmultiinstance:processmultiinstance",
       "stage:stage",
       "want:want",
       "zidltest:zidltest",
-      "actsusers:actsusers",
-      "killprocesswithaccountstage:killprocesswithaccountstage"
     ]
   }
 }
