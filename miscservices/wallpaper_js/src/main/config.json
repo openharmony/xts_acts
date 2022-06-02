@@ -1,0 +1,76 @@
+{
+  "app": {
+    "bundleName": "com.xts.wpxts",
+    "vendor": "xts",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    },    
+    "apiVersion": {
+      "compatible": 8,
+      "target": 8,
+      "releaseType": "Release"
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "package": "com.xts.wpxts",
+    "name": ".MyApplication",
+    "deviceType": [
+      "phone",
+      "tablet",
+      "tv",
+      "wearable"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry",
+      "installationFree": false
+    },
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "visible": true,
+        "name": "com.xts.wpxts.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:entry_MainAbility",
+        "type": "page",
+        "launchType": "standard"
+      }
+    ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.SET_WALLPAPER"
+      },
+      {
+        "name": "ohos.permission.GET_WALLPAPER"
+      },
+      {
+        "name": "ohos.permission.READ_USER_STORAGE"
+      }
+    ],
+    "js": [
+      {
+        "pages": [
+          "pages/index/index"
+        ],
+        "name": "default",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": true
+        }
+      }
+    ]
+  }
+}
