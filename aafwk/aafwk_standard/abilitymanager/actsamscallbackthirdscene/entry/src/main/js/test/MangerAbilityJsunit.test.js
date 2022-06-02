@@ -13,48 +13,12 @@
  * limitations under the License.
  */
 import featureAbility from '@ohos.ability.featureability'
-import missionManager from '@ohos.application.missionManager'
 import appManager from "@ohos.application.appManager"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-let abilityNameList = [
-    "com.ohos.launcher.MainAbility",
-    "com.ohos.callui.ServiceAbility",
-    "com.example.SimulateFeatureAbilityFir",
-    "com.example.VerifyIoThirdAbility",
-    "com.example.actsamscallbackthirdscene.MainAbility"
-]
-
-let bundleNameList = [
-    "com.ohos.launcher",
-    "com.ohos.systemui",
-    "com.ohos.callui",
-    "com.ohos.contacts",
-    "com.ohos.mms",
-    "com.ohos.telephonydataability",
-    "com.ohos.contactsdataability",
-    "com.ix.simulate.feature",
-    "com.ix.verify.io",
-    "com.example.actsamscallbackthirdscene"
-]
 describe('ActsAmsCallBackThirdScene', function () {
     console.info('----ActsAmsCallBackThirdScene----');
     beforeAll(async function (done) {
-        let maxnum = 10;
-        let data = await missionManager.getMissionInfos("", maxnum);
-        console.log('ActsAmsCallBackThirdScene beforeAll getMissionInfos data: ' + JSON.stringify(data));
-        for (let i = 0; i < data.length; i++) {
-            if (data[i].want.bundleName != 'com.example.actsamscallbackthirdscene') {
-                console.log("ActsAmsCallBackThirdScene, missionId: " + data[i].missionId)
-                missionManager.clearMission(data[i].missionId,
-                    (error, info) => {
-                        console.info('ActsAmsCallBackThirdScene beforeAll clearMission error.code \
-                        ' + error.code + ', want.bundleName:' + data[i].want.bundleName);
-                    }
-                );
-            }
-        }
-
         await featureAbility.startAbility(
             {
                 want:
@@ -130,60 +94,5 @@ describe('ActsAmsCallBackThirdScene', function () {
                 }
                 done();
             });
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_3600
-     * @tc.name      : getMissionInfos : Query Running Ability Mission Infos
-     * @tc.desc      : Query Running Ability Mission Infos(by CallBack)
-     */
-    it('Acts_Ams_test_3600', 0, async function (done) {
-        let maxnum = 20;
-        missionManager.getMissionInfos("", maxnum,
-            (error, info) => {
-                console.info('Acts_Ams_test_3600 getMissionInfos error.code : \
-                ' + error.code + ',data length [' + info.length + ']');
-                expect(Array.isArray(info)).assertEqual(true);
-                expect(info.length).assertEqual(3);
-                for (let i = 0; i < info.length; i++) {
-                    console.info('Acts_Ams_test_3600 getMissionInfos info[' + i + "]: " + JSON.stringify(info[i]));
-                    expect(typeof (info[i].missionId)).assertEqual("number");
-                    expect(info[i].missionId).assertLarger(0);
-
-                    expect(typeof (info[i].want)).assertEqual("object");
-                    expect(typeof (info[i].want.deviceId)).assertEqual("string");
-                    expect(typeof (info[i].want.bundleName)).assertEqual("string");
-                    expect(info[i].want.bundleName.length).assertLarger(0);
-                    expect(bundleNameList.indexOf(info[i].want.bundleName)).assertLarger(-1);
-                    expect(typeof (info[i].want.abilityName)).assertEqual("string");
-                    expect(info[i].want.abilityName.length).assertLarger(0);
-                    expect(abilityNameList.indexOf(info[i].want.abilityName)).assertLarger(-1);
-
-                    expect(typeof (info[i].label)).assertEqual("string");
-                    expect(typeof (info[i].iconPath)).assertEqual("string");
-                }
-                done();
-            });
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_4400
-     * @tc.name      : moveMissionToFront : Move Mission To Top
-     * @tc.desc      : Move Mission To Top(by CallBack)
-     */
-    it('Acts_Ams_test_4400', 0, async function (done) {
-        let maxnum = 20;
-        let result = await missionManager.getMissionInfos("", maxnum);
-        for (let i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_4400 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        missionManager.moveMissionToFront(result[0].missionId,
-            (error, info) => {
-                console.info('Acts_Ams_test_4400 moveMissionToFront error.code \
-                ' + error.code + ',data  [' + info + ']');
-                expect(error.code).assertEqual(0);
-                done();
-            }
-        );
     })
 })
