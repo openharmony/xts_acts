@@ -11,16 +11,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
-group("miscservices") {
-  testonly = true
+import("//test/xts/tools/build/suite.gni")
+
+ohos_js_hap_suite("ActsScreenLockJSApiTest") {
+  hap_profile = "./src/main/config.json"
   deps = [
-    "InputMethodTest_ets:ActsInputMethodEtsTest",
-    "RequestTest_js:ActsMiscservicesRequestJSApiTest",
-    "TimeTest_js:ActsTimeJSApiTest",
-    "TimerTest_js:ActsTimerJSApiTest",
-    "actspasteboardjsapitest:ActsPasteBoardJSApiTest",
-    "screenlock_js:ActsScreenLockJSApiTest",
-    "wallpaper_js:ActsWallpaperJSApiTest",
+    ":hjs_demo_js_assets",
+    ":hjs_demo_resources",
   ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsScreenLockJSApiTest"
+}
+ohos_js_assets("hjs_demo_js_assets") {
+  source_dir = "./src/main/js/default"
+}
+ohos_resources("hjs_demo_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }
