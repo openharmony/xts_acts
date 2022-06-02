@@ -48,6 +48,7 @@ export default function test() {
             subscriberDel = await commonEvent.createSubscriber(onDeletedFormEvent);
             subscriberOnState = await commonEvent.createSubscriber(onStateFormEvent);
             subscriberSupply = await commonEvent.createSubscriber(onSupplyEvent);
+            await sleep(1000);
         })
 
         /**
@@ -507,6 +508,14 @@ export default function test() {
         });
     });
 }
+
+const sleep = async delay => {
+    return new Promise((resolve, _) => {
+        setTimeout(async () => {
+            resolve(0);
+        }, delay);
+    });
+};
 
 const delPublishCallback = async (tcNumber, done) => {
     console.info(`${tcNumber} delPublishCallBack start`);

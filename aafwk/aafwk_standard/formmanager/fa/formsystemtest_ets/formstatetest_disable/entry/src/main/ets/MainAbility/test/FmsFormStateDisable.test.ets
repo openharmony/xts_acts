@@ -52,6 +52,7 @@ export default function test() {
             subscriberDel = await commonEvent.createSubscriber(onDeletedFormEvent);
             subscriberOnState = await commonEvent.createSubscriber(onStateFormEvent);
             subscriberSupply = await commonEvent.createSubscriber(onSupplyEvent);
+            await sleep(1000);
         })
 
         /**
@@ -570,17 +571,18 @@ export default function test() {
                 }, 10000);
             }
 
-            function onAcquiredCallBack(_, data) {
+            async function onAcquiredCallBack(_, data) {
                 expect(data.event).assertEqual("FMS_FormOnState_commonEvent");
-                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeSupplyCallback("FMS_disableFormsUpdate_1000"));
+                commonEvent.unsubscribe(subscriberOnState, () => unsubscribeSupplyCallback("FMS_disableFormsUpdate_1000"));
                 console.debug("====>FMS_disableFormsUpdate_1000 onAcquiredCallBack====>" + JSON.stringify(data));
                 expect(data.parameters.kind).assertEqual("visible");
                 expect(data.data).assertEqual("0");
                 formId = data.parameters.formId;
 
+                subscriberOnState = await commonEvent.createSubscriber(onStateFormEvent);
                 commonEvent.subscribe(subscriberOnState, onFormDisableCallBack);
                 console.log(`FMS_disableFormsUpdate_1000 featureAbility.startAbility notify disable start`);
-                featureAbility.startAbility({
+                await featureAbility.startAbility({
                     want: {
                         bundleName: "com.ohos.st.formsystemhostg",
                         abilityName: "com.ohos.st.formsystemhostg.MainAbility",
@@ -604,7 +606,7 @@ export default function test() {
                 console.log(`FMS_disableFormsUpdate_1000 featureAbility.startAbility notify disable end`);
             }
 
-            commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
+            commonEvent.subscribe(subscriberOnState, onAcquiredCallBack);
             console.log(`FMS_disableFormsUpdate_1000 featureAbility.startAbility servicea start`);
             await featureAbility.startAbility({
                 want: {
@@ -681,17 +683,18 @@ export default function test() {
                 }, 10000);
             }
 
-            function onAcquiredCallBack(_, data) {
+            async function onAcquiredCallBack(_, data) {
                 expect(data.event).assertEqual("FMS_FormOnState_commonEvent");
-                commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeSupplyCallback("FMS_disableFormsUpdate_1100"));
+                commonEvent.unsubscribe(subscriberOnState, () => unsubscribeSupplyCallback("FMS_disableFormsUpdate_1100"));
                 console.debug("====>FMS_disableFormsUpdate_1100 onAcquiredCallBack====>" + JSON.stringify(data));
                 expect(data.parameters.kind).assertEqual("visible");
                 expect(data.data).assertEqual("0");
                 formId = data.parameters.formId;
 
+                subscriberOnState = await commonEvent.createSubscriber(onStateFormEvent);
                 commonEvent.subscribe(subscriberOnState, onFormDisableCallBack);
                 console.log(`FMS_disableFormsUpdate_1100 featureAbility.startAbility notify disable start`);
-                featureAbility.startAbility({
+                await featureAbility.startAbility({
                     want: {
                         bundleName: "com.ohos.st.formsystemhostg",
                         abilityName: "com.ohos.st.formsystemhostg.MainAbility",
@@ -715,7 +718,7 @@ export default function test() {
                 console.log(`FMS_disableFormsUpdate_1100 featureAbility.startAbility notify disable end`);
             }
 
-            commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
+            commonEvent.subscribe(subscriberOnState, onAcquiredCallBack);
             console.log(`FMS_disableFormsUpdate_1100 featureAbility.startAbility servicea start`);
             await featureAbility.startAbility({
                 want: {
@@ -742,6 +745,14 @@ export default function test() {
         });
     });
 }
+
+const sleep = async delay => {
+    return new Promise((resolve, _) => {
+        setTimeout(async () => {
+            resolve(0);
+        }, delay);
+    });
+};
 
 const delPublishCallback = async (tcNumber, done) => {
     console.info(`${tcNumber} delPublishCallBack start`);

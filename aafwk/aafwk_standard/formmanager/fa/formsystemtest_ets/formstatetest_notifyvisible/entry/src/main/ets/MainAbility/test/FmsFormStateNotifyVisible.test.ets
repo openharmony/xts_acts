@@ -46,6 +46,7 @@ export default function test() {
             subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
             subscriberOnState = await commonEvent.createSubscriber(onStateFormEvent);
             subscriberSupply = await commonEvent.createSubscriber(onSupplyEvent);
+            await sleep(1000);
         })
 
 
@@ -495,7 +496,7 @@ export default function test() {
                 expect(data.data).assertEqual("0");
                 assertFormId = data.parameters.formId;
 
-                commonEvent.unsubscribe(subscriberSupply, () => unsubscribeOnStateCallback("FMS_notifyVisibleForms_1100"));
+                commonEvent.unsubscribe(subscriberOnState, () => unsubscribeOnStateCallback("FMS_notifyVisibleForms_1100"));
             }
 
             commonEvent.subscribe(subscriberOnState, onVisibleCallBack);
@@ -924,7 +925,6 @@ export default function test() {
                 formIds.push(data.data);
                 console.debug("====>FMS_notifyVisibleForms_1500 formIds====>" + formIds);
 
-                subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
                 commonEvent.subscribe(subscriberSupply, onVisibleSupplyCallBack);
                 console.log(`FMS_notifyVisibleForms_1500 featureAbility.startAbility notifyVisible start`);
                 for (var i = 0; i < 3; i++) {
@@ -1346,6 +1346,14 @@ export default function test() {
         });
     });
 }
+
+const sleep = async delay => {
+    return new Promise((resolve, _) => {
+        setTimeout(async () => {
+            resolve(0);
+        }, delay);
+    });
+};
 
 const delPublishCallback = async (tcNumber, done) => {
     console.info(`${tcNumber} delPublishCallBack start`);
