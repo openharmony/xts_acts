@@ -140,6 +140,5 @@ describe('ActsAmsCallBackFifthScene', function () {
                 done();
             }
         );
-        setTimeout(timeout, 5000);
     })
 })
