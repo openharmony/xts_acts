@@ -93,7 +93,7 @@ function printAlbumMessage(testNum, album) {
 
 const props = {
     albumName: 'AblumInfo',
-    albumUri: 'dataability:///media/album/',
+    albumUri: 'datashare:///media/album/',
     count: 3
 }
 function checkAlbumAttr(done, album, relativePaths) {
