@@ -14,15 +14,27 @@
  */
 
 import bundle from '@ohos.bundle'
-import { describe, it, expect } from 'deccjsunit/index'
+import account from '@ohos.account.osAccount'
+import { describe, beforeAll, it, expect } from 'deccjsunit/index'
 
 const LAUNCHER_BUNDLE_NAME = 'com.ohos.launcher';
 const LAUNCHER_MAIN_ABILITY = 'com.ohos.launcher.MainAbility';
 const DEFAULT_FLAG = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
-const DEFAULT_USER_ID = 100;
 const INVALID_CODE = 1;
+let userId = 0;
 
 describe('ActsBmsJsUnPermissionTest', function () {
+
+    beforeAll(async function (done) {
+        await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
+            console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
+            userId = account;
+            done();
+          }).catch(err=>{
+            console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
+            done();
+          })
+    });
 
     /*
      * @tc.number: getApplicationInfoTest_100
@@ -30,12 +42,12 @@ describe('ActsBmsJsUnPermissionTest', function () {
      * @tc.desc: test getApplicationInfo
      */
     it('getApplicationInfoTest_100', 0, async function (done) {
-        await bundle.getApplicationInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, DEFAULT_USER_ID).then(data => {
+        await bundle.getApplicationInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, userId).then(data => {
             expect().assertFail();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
         });
-        bundle.getApplicationInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, DEFAULT_USER_ID, (err, data) => {
+        bundle.getApplicationInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, userId, (err, data) => {
             expect(err).assertEqual(INVALID_CODE);
             expect(data).assertEqual(undefined);
             done();
@@ -48,12 +60,12 @@ describe('ActsBmsJsUnPermissionTest', function () {
      * @tc.desc: test getAllApplicationInfo
      */
     it('getAllApplicationInfoTest_100', 0, async function (done) {
-        await bundle.getAllApplicationInfo(DEFAULT_FLAG, DEFAULT_USER_ID).then(data => {
+        await bundle.getAllApplicationInfo(DEFAULT_FLAG, userId).then(data => {
             expect().assertFail();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
         });
-        bundle.getAllApplicationInfo(DEFAULT_FLAG, DEFAULT_USER_ID, (err, data) => {
+        bundle.getAllApplicationInfo(DEFAULT_FLAG, userId, (err, data) => {
             expect(err).assertEqual(INVALID_CODE);
             expect(data).assertEqual(undefined);
             done();
@@ -66,12 +78,12 @@ describe('ActsBmsJsUnPermissionTest', function () {
      * @tc.desc: test getBundleInfo
      */
     it('getBundleInfoTest_100', 0, async function (done) {
-        await bundle.getBundleInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_USER_ID).then(data => {
+        await bundle.getBundleInfo(LAUNCHER_BUNDLE_NAME, userId).then(data => {
             expect().assertFail();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
         });
-        bundle.getBundleInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_USER_ID, (err, data) => {
+        bundle.getBundleInfo(LAUNCHER_BUNDLE_NAME, userId, (err, data) => {
             expect(err).assertEqual(INVALID_CODE);
             expect(data).assertEqual(undefined);
             done();
@@ -105,7 +117,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
         await bundle.queryAbilityByWant({
             bundleName: LAUNCHER_BUNDLE_NAME,
             abilityName: LAUNCHER_MAIN_ABILITY
-        }, DEFAULT_FLAG, DEFAULT_USER_ID).then(data => {
+        }, DEFAULT_FLAG, userId).then(data => {
             expect().assertFail();
         }).catch(err => {
             expect(err).assertEqual(INVALID_CODE);
@@ -113,7 +125,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
         bundle.queryAbilityByWant({
             bundleName: LAUNCHER_BUNDLE_NAME,
             abilityName: LAUNCHER_MAIN_ABILITY
-        }, DEFAULT_FLAG, DEFAULT_USER_ID, (err, data) => {
+        }, DEFAULT_FLAG, userId, (err, data) => {
             console.info("data ===================:" + data);
             expect(err).assertEqual(INVALID_CODE);
             expect(data).assertEqual("QueryAbilityInfos failed");

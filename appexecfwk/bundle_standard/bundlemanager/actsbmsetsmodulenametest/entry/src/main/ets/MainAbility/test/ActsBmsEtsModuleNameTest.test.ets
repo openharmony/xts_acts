@@ -15,6 +15,7 @@
 
 import bundle from '@ohos.bundle'
 import image from '@ohos.multimedia.image'
+import account from '@ohos.account.osAccount'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 const ABILITY_NAME = 'com.example.bmsmodulename.MainAbility';
@@ -24,7 +25,6 @@ const MODULE_NAME2 = 'noModule';
 const MODULE_NAME3 = 'entry';
 const MODULE_NAME4 = undefined;
 const DEFAULT_FLAG = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
-const DEFAULT_USER_ID = 100;
 const SUCCESS_CODE = 0;
 const INVALID_CODE = 1;
 const INVALID_PARAM = 2;
@@ -48,9 +48,21 @@ const ABILITY_INFO_FOUR = {
     moduleName: MODULE_NAME4,
     name: ABILITY_NAME
 };
+let userId = 0;
 
 export default function actsBmsJsModuleNameTest() {
     describe('actsBmsJsModuleNameTest', function () {
+
+        beforeAll(async function (done) {
+            await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
+                console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
+                userId = account;
+                done();
+              }).catch(err=>{
+                console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
+                done();
+              })
+        });
 
         /*
         * @tc.number: GetabilityInfo_0100
@@ -374,7 +386,7 @@ export default function actsBmsJsModuleNameTest() {
                 bundleName: BUNDLE_NAME,
                 abilityName: ABILITY_NAME,
                 moduleName: MODULE_NAME1
-            }, DEFAULT_FLAG, DEFAULT_USER_ID).then(data => {
+            }, DEFAULT_FLAG, userId).then(data => {
                 checkDataInfo(data[0]);
                 console.info("'[QueryAbilityByWant_0100]Return data : " + JSON.stringify(data));
             }).catch(err => {
@@ -385,7 +397,7 @@ export default function actsBmsJsModuleNameTest() {
                 bundleName: BUNDLE_NAME,
                 abilityName: ABILITY_NAME,
                 moduleName: MODULE_NAME1
-            }, DEFAULT_FLAG, DEFAULT_USER_ID, (err, data) => {
+            }, DEFAULT_FLAG, userId, (err, data) => {
                 expect(err).assertEqual(SUCCESS_CODE);
                 if (err) {
                     console.error('[QueryAbilityByWant_0100]Operation failed. Err: ' + JSON.stringify(err));
@@ -406,7 +418,7 @@ export default function actsBmsJsModuleNameTest() {
                     bundleName: BUNDLE_NAME,
                     abilityName: ABILITY_NAME,
                     moduleName: MODULE_NAME2
-                }, DEFAULT_FLAG, DEFAULT_USER_ID).then(data => {
+                }, DEFAULT_FLAG, userId).then(data => {
                     expect(data).assertFail();
                 }).catch(err => {
                     console.error('[QueryAbilityByWant_0200]Operation failed. Err: ' + JSON.stringify(err));
@@ -416,7 +428,7 @@ export default function actsBmsJsModuleNameTest() {
                     bundleName: BUNDLE_NAME,
                     abilityName: ABILITY_NAME,
                     moduleName: MODULE_NAME2
-                }, DEFAULT_FLAG, DEFAULT_USER_ID, (err, data) => {
+                }, DEFAULT_FLAG, userId, (err, data) => {
                     console.info("'[QueryAbilityByWant_0200]Return data " + JSON.stringify(data));
                     expect(data).assertEqual("QueryAbilityInfos failed");
                     console.error('[QueryAbilityByWant_0200]Operation failed. Err: ' + JSON.stringify(err));
@@ -435,7 +447,7 @@ export default function actsBmsJsModuleNameTest() {
                     bundleName: BUNDLE_NAME,
                     abilityName: ABILITY_NAME,
                     moduleName: MODULE_NAME3
-                }, DEFAULT_FLAG, DEFAULT_USER_ID).then(data => {
+                }, DEFAULT_FLAG, userId).then(data => {
                     checkDataInfo(data[0]);
                     console.info("'[QueryAbilityByWant_0300]Return data : " + JSON.stringify(data));
                 }).catch(err => {
@@ -446,7 +458,7 @@ export default function actsBmsJsModuleNameTest() {
                     bundleName: BUNDLE_NAME,
                     abilityName: ABILITY_NAME,
                     moduleName: MODULE_NAME3
-                }, DEFAULT_FLAG, DEFAULT_USER_ID, (err, data) => {
+                }, DEFAULT_FLAG, userId, (err, data) => {
                     expect(err).assertEqual(SUCCESS_CODE);
                     if (err) {
                         console.error('[QueryAbilityByWant_0300]Operation failed. Err: ' + JSON.stringify(err));
@@ -468,10 +480,6 @@ export default function actsBmsJsModuleNameTest() {
                 expect(typeof (data.description)).assertEqual("string");
                 expect(data.icon).assertEqual("$media:icon");
                 expect(typeof (data.icon)).assertEqual("string");
-                expect(data.srcPath).assertEqual("");
-                expect(typeof (data.srcPath)).assertEqual("string");
-                expect(data.srcLanguage).assertEqual("js");
-                expect(typeof (data.srcLanguage)).assertEqual("string");
                 expect(data.isVisible).assertEqual(false);
                 expect(data.deviceTypes[0]).assertEqual("phone");
                 expect(typeof (data.process)).assertEqual("string");
