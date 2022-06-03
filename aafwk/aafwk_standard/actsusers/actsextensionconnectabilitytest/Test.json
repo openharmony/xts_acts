@@ -1,0 +1,42 @@
+
+{
+    "description": "Configuration for hjunit demo Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "120000",
+        "package": "com.example.actsextensionconnectabilitytest",
+        "shell-timeout": "60000"
+    },
+    "kits": [
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "acm create -n 101 -t normal",
+                "acm switch -i 101"
+            ],
+            "teardown-command":[
+                "acm delete -i 101"
+            ]
+        },
+        {
+            "test-file-name": [
+                "ActsExtensionConnectAbilityTest.hap",
+                "actsServiceAbilityRelyHap.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                "actsServiceAbilityRelyHap.hap->/data/app/actsServiceAbilityRelyHap.hap"]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "chmod 777 /data/app/*.hap"
+            ]
+        }
+    ]
+}
+
