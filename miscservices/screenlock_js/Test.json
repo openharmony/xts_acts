@@ -3,7 +3,7 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "600000",
-        "package": "com.ohos.screenlock",
+        "package": "com.ohos.miscscreenlock",
         "shell-timeout": "600000"
     },
     "kits": [

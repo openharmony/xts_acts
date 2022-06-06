@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.ohos.screenlock",
+    "bundleName": "com.ohos.miscscreenlock",
     "vendor": "ohos",
     "version": {
       "code": 1000000,
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.ohos.screenlock",
+    "package": "com.ohos.miscscreenlock",
     "name": ".MyApplication",
     "deviceType": [
       "phone",
@@ -41,7 +41,7 @@
           }
         ],
         "visible": true,
-        "name": "com.ohos.screenlock.MainAbility",
+        "name": "com.ohos.miscscreenlock.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:entry_MainAbility",
