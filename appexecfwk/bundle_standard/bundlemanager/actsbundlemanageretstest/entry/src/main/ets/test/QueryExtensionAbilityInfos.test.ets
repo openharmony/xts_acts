@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 
-import bundle from '@ohos.bundle'
-import { describe, it, expect } from 'hypium/index';
+import bundle from '@ohos.bundle';
+import account from '@ohos.account.osAccount';
+import { describe,beforeAll, it, expect } from 'hypium/index';
 
 const BUNDLE_NAME1 = "ohos.acts.bundle.stage";
 const BUNDLE_NAME2 = "com.noexit.com";
@@ -22,10 +23,22 @@ const BUNDLE_NAME3 = 'com.example.third1';
 const ABILITY_NAME1 = "ExtensionAbility1";
 const ABILITY_NAME2 = "noexitAbility";
 const ABILITY_NAME3 = "ServiceAbility";
+let userId = 0;
 
 export default function QueryExtensionAbilityInfos() {
 
   describe('QueryExtensionAbilityInfos', function () {
+
+    beforeAll(async function (done) {
+      await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
+          console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
+          userId = account;
+          done();
+        }).catch(err=>{
+          console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
+          done();
+        })
+  });
 
     /*
   * @tc.number: SUB_BMS_APPINFO_EXTENSION_0001
@@ -66,7 +79,7 @@ export default function QueryExtensionAbilityInfos() {
       await bundle.queryExtensionAbilityInfos({
         "bundleName": BUNDLE_NAME1,
         "abilityName": ABILITY_NAME1
-      }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_WITH_PERMISSION, 100).then(data => {
+      }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_WITH_PERMISSION, userId).then(data => {
         expect(data[0].bundleName).assertEqual("ohos.acts.bundle.stage");
         expect(data[0].moduleName).assertEqual("phone");
         expect(data[0].name).assertEqual("ExtensionAbility1");
@@ -86,7 +99,7 @@ export default function QueryExtensionAbilityInfos() {
       bundle.queryExtensionAbilityInfos({
         "bundleName": BUNDLE_NAME1,
         "abilityName": ABILITY_NAME1
-      }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_WITH_PERMISSION, 100, (err, data) => {
+      }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_WITH_PERMISSION, userId, (err, data) => {
         if (err) {
           expect(err).assertFail();
           done();
@@ -120,7 +133,7 @@ export default function QueryExtensionAbilityInfos() {
           "bundleName": BUNDLE_NAME1,
           "abilityName": ABILITY_NAME1
         }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-        100).then(data => {
+        userId).then(data => {
           expect(data[0].bundleName).assertEqual("ohos.acts.bundle.stage");
           expect(data[0].moduleName).assertEqual("phone");
           expect(data[0].name).assertEqual("ExtensionAbility1");
@@ -142,7 +155,7 @@ export default function QueryExtensionAbilityInfos() {
           "bundleName": BUNDLE_NAME1,
           "abilityName": ABILITY_NAME1
         }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-        100, (err, data) => {
+        userId, (err, data) => {
           if (err) {
             expect(err).assertFail();
             done();
@@ -175,7 +188,7 @@ export default function QueryExtensionAbilityInfos() {
         "bundleName": BUNDLE_NAME1,
         "abilityName": ABILITY_NAME1
       }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_WITH_APPLICATION,
-        100).then(data => {
+        userId).then(data => {
           expect(data[0].bundleName).assertEqual("ohos.acts.bundle.stage");
           expect(data[0].moduleName).assertEqual("phone");
           expect(data[0].name).assertEqual("ExtensionAbility1");
@@ -197,7 +210,7 @@ export default function QueryExtensionAbilityInfos() {
         "bundleName": BUNDLE_NAME1,
         "abilityName": ABILITY_NAME1
       }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_WITH_APPLICATION,
-        100, (err, data) => {
+        userId, (err, data) => {
           if (err) {
             expect(err).assertFail();
             done();
@@ -231,7 +244,7 @@ export default function QueryExtensionAbilityInfos() {
         {
           "bundleName": BUNDLE_NAME2,
           "abilityName": ABILITY_NAME1
-        }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT, 100).then(data => {
+        }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT, userId).then(data => {
           expect(data).assertFail();
         }).catch(err => {
           expect(err).assertEqual(1);
@@ -240,7 +253,7 @@ export default function QueryExtensionAbilityInfos() {
         {
           "bundleName": BUNDLE_NAME2,
           "abilityName": ABILITY_NAME1
-        }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT, 100, (err, data) => {
+        }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT, userId, (err, data) => {
           if (err) {
             expect(err).assertEqual(1);
             done();
@@ -261,7 +274,7 @@ export default function QueryExtensionAbilityInfos() {
         {
           "bundleName": BUNDLE_NAME1,
           "abilityName": ABILITY_NAME2
-        }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT, 100).then(data => {
+        }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT, userId).then(data => {
           expect(data).assertFail();
         }).catch(err => {
           expect(err).assertEqual(1);
@@ -270,7 +283,7 @@ export default function QueryExtensionAbilityInfos() {
         {
           "bundleName": BUNDLE_NAME1,
           "abilityName": ABILITY_NAME2
-        }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT, 100, (err, data) => {
+        }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT, userId, (err, data) => {
           if (err) {
             expect(err).assertEqual(1);
             done();
@@ -291,7 +304,7 @@ export default function QueryExtensionAbilityInfos() {
         {
           "bundleName": BUNDLE_NAME1,
           "abilityName": ABILITY_NAME1
-        }, bundle.ExtensionAbilityType.FORM, null, 100).then(data => {
+        }, bundle.ExtensionAbilityType.FORM, null, userId).then(data => {
           expect(data).assertFail();
         }).catch(err => {
           expect(err).assertEqual(1);
@@ -309,7 +322,7 @@ export default function QueryExtensionAbilityInfos() {
         {
           "bundleName": BUNDLE_NAME1,
           "abilityName": ABILITY_NAME1
-        }, bundle.ExtensionAbilityType.FORM, null, 100, (err, data) => {
+        }, bundle.ExtensionAbilityType.FORM, null, userId, (err, data) => {
           expect(err).assertEqual(1);
           expect(data).assertEqual("type mismatch");
           done();
@@ -383,7 +396,7 @@ export default function QueryExtensionAbilityInfos() {
           "bundleName": BUNDLE_NAME1,
           "abilityName": ABILITY_NAME3
         }, bundle.ExtensionAbilityType.SERVICE, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-        100).then(data => {
+        userId).then(data => {
           expect(data[0].bundleName).assertEqual("ohos.acts.bundle.stage");
           expect(data[0].moduleName).assertEqual("phone");
           expect(data[0].name).assertEqual(ABILITY_NAME3);
@@ -405,7 +418,7 @@ export default function QueryExtensionAbilityInfos() {
           "bundleName": BUNDLE_NAME1,
           "abilityName": ABILITY_NAME3
         }, bundle.ExtensionAbilityType.SERVICE, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-        100, (err, data) => {
+        userId, (err, data) => {
           if (err) {
             expect(err).assertEqual(1);
             done();
@@ -437,7 +450,7 @@ export default function QueryExtensionAbilityInfos() {
       await bundle.queryExtensionAbilityInfos(
         {
           "bundleName": BUNDLE_NAME2
-        }, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT, 100).then(data => {
+        }, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT, userId).then(data => {
           expect(data).assertFail();
         }).catch(err => {
           expect(err).assertEqual(1);
@@ -445,7 +458,7 @@ export default function QueryExtensionAbilityInfos() {
       bundle.queryExtensionAbilityInfos(
         {
           "bundleName": BUNDLE_NAME2
-        }, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT, 100, (err, data) => {
+        }, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT, userId, (err, data) => {
           if (err) {
             expect(err).assertEqual(1);
             done();
@@ -467,7 +480,7 @@ export default function QueryExtensionAbilityInfos() {
           "bundleName": BUNDLE_NAME1,
           "action": "actionY"
         }, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_WITH_PERMISSION,
-        100).then(data => {
+        userId).then(data => {
           expect(data[0].bundleName).assertEqual("ohos.acts.bundle.stage");
           expect(data[0].moduleName).assertEqual("phone");
           expect(data[0].name).assertEqual("ExtensionAbility1");
@@ -489,7 +502,7 @@ export default function QueryExtensionAbilityInfos() {
           "bundleName": BUNDLE_NAME1,
           "action": "actionY"
         }, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_WITH_PERMISSION,
-        100, (err, data) => {
+        userId, (err, data) => {
           if (err) {
             expect(err).assertFail();
             done();
@@ -522,7 +535,7 @@ export default function QueryExtensionAbilityInfos() {
         "bundleName": BUNDLE_NAME1,
         "action": "actionY12", "uri": "https://www.test.com/query/student/name"
       }, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_WITH_METADATA,
-        100).then(data => {
+        userId).then(data => {
           expect(data[0].bundleName).assertEqual("ohos.acts.bundle.stage");
           expect(data[0].moduleName).assertEqual("phone");
           expect(data[0].name).assertEqual("ExtensionAbility1");
@@ -544,7 +557,7 @@ export default function QueryExtensionAbilityInfos() {
         "bundleName": BUNDLE_NAME1,
         "action": "actionY12", "uri": "https://www.test.com/query/student/name"
       }, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_WITH_METADATA,
-        100, (err, data) => {
+        userId, (err, data) => {
           if (err) {
             expect(err).assertFail();
             done();
@@ -580,7 +593,7 @@ export default function QueryExtensionAbilityInfos() {
           "action": "actionY12",
           "uri": "https://www.test.com/query/teacher/name"
         }, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-        100).then(data => {
+        userId).then(data => {
           expect(data).assertFail();
         }).catch(err => {
           expect(err).assertEqual(1);
@@ -591,7 +604,7 @@ export default function QueryExtensionAbilityInfos() {
           "action": "actionY12",
           "uri": "https://www.test.com/query/teacher/name"
         }, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-        100, (err, data) => {
+        userId, (err, data) => {
           if (err) {
             expect(err).assertEqual(1);
             done();
@@ -613,7 +626,7 @@ export default function QueryExtensionAbilityInfos() {
         "action": "",
         "entities": ["entitiesCommon"],
       }, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-        100).then(data => {
+        userId).then(data => {
           expect(data[0].bundleName).assertEqual("ohos.acts.bundle.stage");
           expect(data[0].moduleName).assertEqual("myfeature");
           expect(data[0].name).assertEqual("ExtensionAbilityW");
@@ -635,7 +648,7 @@ export default function QueryExtensionAbilityInfos() {
         "action": "",
         "entities": ["entitiesCommon"]
       }, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-        100, (err, data) => {
+        userId, (err, data) => {
           if (err) {
             expect(err).assertFail();
             done();
@@ -665,14 +678,14 @@ export default function QueryExtensionAbilityInfos() {
     it('SUB_BMS_APPINFO_EXTENSION_0015', 0, async function (done) {
       await bundle.queryExtensionAbilityInfos(
         null, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-        100).then(data => {
+        userId).then(data => {
           expect(data).assertFail();
         }).catch(err => {
           expect(err).assertEqual(1);
         });
       bundle.queryExtensionAbilityInfos(
         {}, bundle.ExtensionAbilityType.UNSPECIFIED, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-        100, (err, data) => {
+        userId, (err, data) => {
           if (err) {
             expect(err).assertEqual(1);
             done();
@@ -694,7 +707,7 @@ export default function QueryExtensionAbilityInfos() {
         "action": "",
         "entities": ["entitiesCommon"],
       }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-        100).then(data => {
+        userId).then(data => {
           expect(data[0].bundleName).assertEqual("ohos.acts.bundle.stage");
           expect(data[0].moduleName).assertEqual("phone");
           expect(data[0].name).assertEqual("FormAbility");
@@ -716,7 +729,7 @@ export default function QueryExtensionAbilityInfos() {
         "action": "",
         "entities": ["entitiesCommon"]
       }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-        100, (err, data) => {
+        userId, (err, data) => {
           if (err) {
             expect(err).assertFail();
             done();
@@ -750,7 +763,7 @@ export default function QueryExtensionAbilityInfos() {
           "type": "",
           "uri": "https://www.test.com/abbc"
         }, bundle.ExtensionAbilityType.WINDOW, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-        100).then(data => {
+        userId).then(data => {
           expect(data).assertFail();
         }).catch(err => {
           expect(err).assertEqual(1);
@@ -760,7 +773,7 @@ export default function QueryExtensionAbilityInfos() {
           "type": "",
           "uri": "https://www.test.com/abbc"
         }, bundle.ExtensionAbilityType.WINDOW, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-        100, (err, data) => {
+        userId, (err, data) => {
           if (err) {
             expect(err).assertEqual(1);
             done();
@@ -850,7 +863,6 @@ export default function QueryExtensionAbilityInfos() {
       expect(JSON.stringify(data[0].applicationInfo.metaData)).assertEqual("{}");
       expect(JSON.stringify(data[0].applicationInfo.metadata)).assertEqual("{}");
       expect(data[0].applicationInfo.enabled).assertTrue();
-      expect(data[0].applicationInfo.flags).assertEqual(0);
       expect(data[0].applicationInfo.uid).assertLarger(0);
       expect(data[0].applicationInfo.entityType).assertEqual("unspecified");
       expect(data[0].applicationInfo.removable).assertTrue();

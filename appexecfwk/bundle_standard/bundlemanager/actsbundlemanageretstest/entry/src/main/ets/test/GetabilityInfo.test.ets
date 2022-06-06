@@ -322,7 +322,6 @@ export default function GetabilityInfo() {
             expect(JSON.stringify(info.metaData)).assertEqual("{}");
             expect(JSON.stringify(info.metadata)).assertEqual("{}");
             expect(info.enabled).assertEqual(true);
-            expect(info.flags).assertEqual(0);
             expect(info.uid).assertLarger(0);
             expect(info.entityType).assertEqual("unspecified");
             expect(info.removable).assertEqual(true);
