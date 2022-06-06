@@ -14,9 +14,9 @@ import("//build/ohos_var.gni")
 group("powermgr") {
   testonly = true
   deps = [
-    "powermgrbattery:powermgr_battery_test",
-    "powermgrdisplay:powermgr_display_test",
-    "powermgrpower:powermgr_power_test",
-    "powermgrthermal:powermgr_thermal_test",
+    "battery_manager:powermgr_battery_test",
+    "display_manager:powermgr_display_test",
+    "power_manager:powermgr_power_test",
+    "thermal_manager:powermgr_thermal_test",
   ]
 }
