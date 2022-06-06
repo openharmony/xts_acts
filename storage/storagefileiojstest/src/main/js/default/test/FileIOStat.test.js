@@ -19,7 +19,8 @@ import {
   FILE_CONTENT,
   prepareFile,
   nextFileName,
-  randomString
+  randomString,
+  forceRemoveDir
 }
   from './Common'
 
@@ -86,20 +87,23 @@ describe('fileIOTestStat', function () {
    * @tc.desc Function of API, statSync. The file path is greater than 4096.
    */
   it('fileio_test_stat_stat_sync_003', 0, async function () {
-    let dpath = await nextFileName('fileio_stat1');
+    let dpath = await nextFileName('fileio_test_stat_stat_sync_003');
+    fileio.mkdirSync(dpath);
     try {
       for (let i = 0; i < 16; i++) {
         if (i == 15) {
-          let fpath = dpath + '/f' + randomString(252);
+          let fpath = dpath + '/f' + i;
           fileio.statSync(fpath);
         } else {
-          dpath = dpath + '/d' + randomString(252);
+          dpath = dpath + '/d' + i;
+          fileio.mkdirSync(dpath);
         }
       }
       expect(null).assertFail();
     }
     catch (e) {
-      console.log('fileio_test_stat_stat_sync_003 has failed for ' + e);
+      console.info('fileio_test_stat_stat_sync_003 has failed for ' + e);
+      forceRemoveDir(dpath, 15);
     }
   });
 

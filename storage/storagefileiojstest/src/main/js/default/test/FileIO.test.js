@@ -21,7 +21,8 @@ import {
   nextFileName,
   prepareEmptyFile,
   randomString,
-  fileName
+  fileName,
+  forceRemoveDir
 }
 from './Common'
 describe('fileIOTest', function () {
@@ -572,7 +573,7 @@ describe('fileIOTest', function () {
       expect(fd !== null).assertTrue();
       fileio.closeSync(fd);
       fileio.unlinkSync(fpath);
-    } 
+    }
     catch (err) {
       console.info('fileio_test_open_024 has failed for ' + err);
       expect(null).assertFail();
@@ -592,7 +593,7 @@ describe('fileIOTest', function () {
       expect(fd !== null).assertTrue();
       fileio.closeSync(fd);
       fileio.unlinkSync(fpath);
-    } 
+    }
     catch (err) {
       console.info('fileio_test_open_025 has failed for ' + err);
       expect(null).assertFail();
@@ -1057,12 +1058,7 @@ describe('fileIOTest', function () {
     } 
     catch (err) {
       console.info('fileio_test_open_sync_007 has failed for ' + err);
-      for (let i = 15; i >= 0; i--) {
-        if (i < 15) {
-          dpath = dpath.replace(`/d${i}`, "");
-        }
-        fileio.rmdirSync(dpath);
-      }
+      forceRemoveDir(dpath, 15);
     }
   });
 
@@ -1104,12 +1100,7 @@ describe('fileIOTest', function () {
     } 
     catch (err) {
       console.info('fileio_test_open_sync_009 has failed for ' + err);
-      for (let i = 112; i >= 0; i--) {
-        if (i < 112) {
-          dpath = dpath.replace(`/d${i}`, "");
-        }
-        fileio.rmdirSync(dpath);
-      }
+      forceRemoveDir(dpath, 112);
     }
   });
 
@@ -2303,7 +2294,7 @@ describe('fileIOTest', function () {
       fileio.copyFileSync(-1, -1);
     } catch (err) {
       console.info('fileio_test_copy_file_sync_007 has failed for ' + err);
-      expect(err.message == "Invalid argument").assertTrue();
+      expect(err.message == "Invalid argument" || err.message == "Bad file descriptor").assertTrue();
     }
   });
 
@@ -2333,12 +2324,7 @@ describe('fileIOTest', function () {
     } 
     catch (err) {
       console.info('fileio_test_copy_file_sync_008 has failed for ' + err);
-      for (let i = 15; i >= 0; i--) {
-        if (i < 15) {
-          dpath = dpath.replace(`/d${i}`, "");
-        }
-        fileio.rmdirSync(dpath);
-      }
+      forceRemoveDir(dpath, 15);
     }
   });
 
@@ -2387,12 +2373,7 @@ describe('fileIOTest', function () {
     } 
     catch (err) {
       console.info('fileio_test_copy_file_sync_010 has failed for ' + err);
-      for (let i = 112; i >= 0; i--) {
-        if (i < 112) {
-          dpath = dpath.replace(`/d${i}`, "");
-        }
-        fileio.rmdirSync(dpath);
-      }
+      forceRemoveDir(dpath, 112);
     }
   });
 
@@ -2541,7 +2522,7 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_RenameSync_0100
    * @tc.name fileio_test_rename_sync_001
-   * @tc.desc Function of API, renameSync. The test file is not exist,
+   * @tc.desc Function of API, renameSync. The test file is not exist, 
    * fpathTarget is not same with fpatch, file name are same.
    */
   it('fileio_test_rename_sync_001', 0, async function () {

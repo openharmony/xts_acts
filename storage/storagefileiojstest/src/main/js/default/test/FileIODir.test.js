@@ -19,7 +19,8 @@ import {
   FILE_CONTENT,
   prepareFile,
   nextFileName,
-  randomString
+  randomString,
+  forceRemoveDir
 }
   from './Common'
 
@@ -95,12 +96,7 @@ describe('fileIOTestDir', function () {
     }
     catch (e) {
       console.info('fileio_test_dir_open_sync_003 has failed for ' + e);
-      for (let i = 16; i >= 0; i--) {
-        if (i < 16) {
-          dpath = dpath.replace(`/d${i}`, "");
-        }
-        fileio.rmdirSync(dpath);
-      }
+      forceRemoveDir(dpath, 16);
     }
   });
 
@@ -138,12 +134,7 @@ describe('fileIOTestDir', function () {
     }
     catch (e) {
       console.info('fileio_test_dir_open_sync_005 has failed for ' + e);
-      for (let i = 113; i >= 0; i--) {
-        if (i < 113) {
-          dpath = dpath.replace(`/d${i}`, "");
-        }
-        fileio.rmdirSync(dpath);
-      }
+      forceRemoveDir(dpath, 113);
     }
   });
 
