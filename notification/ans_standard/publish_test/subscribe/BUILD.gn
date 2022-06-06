@@ -18,7 +18,7 @@ group("subscribe") {
   if (is_standard_system) {
     deps = [
       "publish:ActsAnsPublishTest",
-      "subscribe:ActsAnsSubscriberTest",
+      #"subscribe:ActsAnsSubscriberTest",
     ]
   }
 }
