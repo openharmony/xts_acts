@@ -16,7 +16,7 @@
 import bundle from '@ohos.bundle'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
 
-const BUNDLE_NAME1 = 'com.ohos.launcher';
+const BUNDLE_NAME1 = 'com.example.l3jsdemo';
 const BUNDLE_NAME2 = 'com.open.harmony.packagemag';
 
 export default function getNameForUid() {

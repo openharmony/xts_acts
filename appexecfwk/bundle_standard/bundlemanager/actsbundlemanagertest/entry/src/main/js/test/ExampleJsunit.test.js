@@ -24,7 +24,6 @@ const NAME2 = "com.example.myapplication2"
 const NAME3 = "com.example.myapplication4"
 const NAME4 = "com.example.myapplication5"
 const NAME5 = "com.example.myapplication6"
-const LAUNCHER = "com.ohos.launcher"
 const VERSIONCODE1 = 1
 const OBJECT = "object"
 const DIR1 = "/data/app/el1/bundle/public/com.example.myapplication1/com.example.myapplication1"
@@ -436,13 +435,13 @@ describe('ActsBundleManagerTest', function () {
     /**
      * @tc.number getBundleInfo_1400
      * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interfaces with LAUNCHER hap.(by callback)
+     * @tc.desc Test getBundleInfo interfaces with systemApp.(by callback)
      */
     it('getBundleInfo_1400', 0, async function (done) {
         let bundleOptions = {
             userId: userId
         };
-        demo.getBundleInfo(LAUNCHER, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES,
+        demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES,
             bundleOptions, (err, datainfo) => {
                 if (err) {
                     console.info("getBundleInfo_1400 fail:" + JSON.stringify(err));
@@ -451,12 +450,12 @@ describe('ActsBundleManagerTest', function () {
                     return;
                 }
                 console.info("getBundleInfo_1400 success:" + JSON.stringify(datainfo));
-                expect(datainfo.name).assertEqual(LAUNCHER);
-                expect(datainfo.vendor).assertEqual("ohos");
-                expect(datainfo.versionCode).assertEqual(1000000);
+                expect(datainfo.name).assertEqual(NAME1);
+                expect(datainfo.vendor).assertEqual("example");
+                expect(datainfo.versionCode).assertEqual(1);
                 expect(datainfo.versionName.length).assertLarger(0);
                 expect(datainfo.uid).assertLarger(2099);
-                expect(datainfo.appInfo.name).assertEqual(LAUNCHER);
+                expect(datainfo.appInfo.name).assertEqual(NAME1);
                 expect(datainfo.appInfo.systemApp).assertEqual(true);
                 expect(datainfo.appInfo.supportedModes).assertEqual(0);
                 expect(datainfo.appInfo.moduleInfos.length).assertLarger(0);
@@ -597,7 +596,7 @@ describe('ActsBundleManagerTest', function () {
                 done();
                 return;
             }
-            console.info("getBundleInfo_1800 success" + JSON.stringify(datainfo));
+            console.info("getBundleInfo_1800 success" + JSON.stringify(dataInfo));
             expect(dataInfo).assertFail();
             done();
         });
