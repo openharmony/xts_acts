@@ -843,7 +843,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext){
                 const fileAssets = await media.getFileAssets(filesfetchOp);
                 const dataList = await fileAssets.getAllObject();
                 const asset1 = dataList[0];
-                const creatAsset1 = await media.createAsset(fileType, fileName, path);
+                const creatAsset1 = await media.createAsset(audioType, fileName, path);
                 const fd1 = await asset1.open('rw');
                 const creatAssetFd1 = await creatAsset1.open('rw');
                 await copyFile(fd1, creatAssetFd1);
