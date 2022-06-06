@@ -85,7 +85,7 @@ describe('ActsAnsActionButtonTest', function () {
                         }
                     }
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: WantAgent.OperationType.START_ABILITY,
             requestCode: 0,
             wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
         };
@@ -170,7 +170,7 @@ describe('ActsAnsActionButtonTest', function () {
                         }
                     }
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: WantAgent.OperationType.START_ABILITY,
             requestCode: 0,
             wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
         };
