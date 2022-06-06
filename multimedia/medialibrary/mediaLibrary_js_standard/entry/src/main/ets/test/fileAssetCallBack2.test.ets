@@ -84,7 +84,7 @@ export default function fileAssetCallBack2Test(abilityContext){
             try {
                 const fetchFileResult = await media.getFileAssets(imagesfetchOp);
                 const asset = await fetchFileResult.getFirstObject();
-                const newName = 'newName' + new Date().getTime();
+                const newName = 'newName' + new Date().getTime() + '.jpg';
                 asset.displayName = newName;
                 const id = asset.id;
                 asset.commitModify(async () => {
