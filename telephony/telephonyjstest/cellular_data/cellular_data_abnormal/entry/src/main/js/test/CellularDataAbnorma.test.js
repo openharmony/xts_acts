@@ -56,7 +56,7 @@ describe("ActsCellularDataAbnormalTest", function () {
             done();
         })
     })
-  
+
     /*
      * @tc.number   Telephony_CellularData_getCellularDataFlowType_Async_0100
      * @tc.name     When cellular data is turned on, call getCellularDataFlowType() to get the data stream type and
@@ -94,24 +94,25 @@ describe("ActsCellularDataAbnormalTest", function () {
             done();
         })
     })
-   
+
     /*
      * @tc.number   Telephony_CellularData_getDefaultCellularDataSlotId_Async_0500
      * @tc.name     Call getDefaultCellularDataSlotId() interface and verify whether the setting failed (Async)
      * @tc.desc     Function test
      */
     it("Telephony_CellularData_getDefaultCellularDataSlotId_Async_0500", 0, async function (done) {
-        cellular.getDefaultCellularDataSlotId((err) => {
-            if (err) {
-                console.log("Telephony_CellularData_setDefaultCellularDataSlotId_Async_0500 finish");
+        cellular.getDefaultCellularDataSoltId((err) => {
+            if (!err) {
+                expect(true).assertTrue();
+                console.info("Telephony_CellularData_getDefaultCellularDataSlotId_Async_0500 finish");
                 done();
-                return;
+            } else {
+                console.info("Telephony_CellularData_getDefaultCellularDataSlotId_Async_0500 finish");
+                done();
             }
-            expect().assertFail();
-            console.log("Telephony_CellularData_setDefaultCellularDataSlotId_Async_0500 fail");
-            done();
         })
     })
+
 
     /*
      * @tc.number   Telephony_CellularData_isCellularDataEnabled_Promise_0100
@@ -192,12 +193,12 @@ describe("ActsCellularDataAbnormalTest", function () {
      */
     it("Telephony_CellularData_getDefaultCellularDataSlotId_Promise_0500", 0, async function (done) {
         try {
-            await cellular.getDefaultCellularDataSlotId();
-            expect().assertFail();
-            console.log("Telephony_CellularData_getDefaultCellularDataSlotId_Promise_0500 fail");
+            await cellular.getDefaultCellularDataSoltId();
+            console.info("Telephony_CellularData_getDefaultCellularDataSlotId_Promise_0500 finish");
             done();
         } catch (err) {
-            console.log("Telephony_CellularData_getDefaultCellularDataSlotId_Promise_0500 finish");
+            expect(true).assertTrue();
+            console.info("Telephony_CellularData_getDefaultCellularDataSlotId_Promise_0500 finish");
             done();
         }
     })
