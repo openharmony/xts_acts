@@ -24,11 +24,11 @@ const NAME2 = "com.example.myapplication2"
 const NAME3 = "com.example.myapplication4"
 const NAME4 = "com.example.myapplication5"
 const NAME5 = "com.example.myapplication6"
-const LAUNCHER = "com.ohos.launcher"
 const VERSIONCODE1 = 1
 const OBJECT = "object"
-const DIR1 = "/data/accounts/account_0/applications/com.example.myapplication1/com.example.myapplication1"
-const DIR2 = "/data/accounts/account_0/applications/com.example.myapplication2/com.example.myapplication2"
+const DIR1 = "/data/app/el1/bundle/public/com.example.myapplication1/com.example.myapplication1"
+const DIR2 = "/data/app/el1/bundle/public/com.example.myapplication2/com.example.myapplication2"
+const DIR3 = "/data/app/el1/bundle/public/com.example.myapplication2/com.example.myapplication1"
 const DESCRIPTION = "$string:mainability_description"
 let userId = 0;
 
@@ -39,12 +39,12 @@ describe('ActsBundleManagerTest', function () {
             console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
             userId = account;
             done();
-          }).catch(err=>{
+        }).catch(err => {
             console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
             done();
-          })
+        })
     });
-    
+
     /**
      * @tc.number getBundleInfo_0100
      * @tc.name BUNDLEMGR::getBundleInfo
@@ -84,15 +84,15 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.compatibleVersion).assertEqual(5);
         expect(datainfo.targetVersion).assertEqual(5);
         expect(datainfo.isCompressNativeLibs).assertEqual(false);
-        for (let s = 0; s < datainfo.hapModuleInfos; s++) {
-            expect(datainfo.moduleInfos[s].name).assertEqual("com.example.myapplication1");
-            expect(datainfo.moduleInfos[s].moduleName).assertEqual("entry");
+        for (let s = 0; s < datainfo.hapModuleInfos.length; s++) {
+            expect(datainfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1");
+            expect(datainfo.hapModuleInfos[s].moduleName).assertEqual("entry");
         }
         expect(datainfo.entryModuleName).assertEqual("entry");
         expect(datainfo.isSilentInstallation.length).assertEqual(0);
         expect(datainfo.minCompatibleVersionCode).assertEqual(0);
         expect(datainfo.entryInstallationFree).assertEqual(false);
-        for (let j = 0; j < datainfo.appInfo.moduleInfos; j++) {
+        for (let j = 0; j < datainfo.appInfo.moduleInfos.length; j++) {
             expect(datainfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
             expect(datainfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1);
         }
@@ -136,7 +136,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.labelId >= 0).assertTrue();
             expect(datainfo.appInfo.systemApp).assertEqual(true);
             expect(datainfo.appInfo.supportedModes).assertEqual(0);
-            for (let j = 0; j < datainfo.appInfo.moduleInfos; j++) {
+            for (let j = 0; j < datainfo.appInfo.moduleInfos.length; j++) {
                 expect(datainfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
                 expect(datainfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1);
             }
@@ -195,7 +195,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.appInfo.labelId >= 0).assertTrue();
             expect(datainfo.appInfo.systemApp).assertEqual(true);
             expect(datainfo.appInfo.supportedModes).assertEqual(0);
-            for (let j = 0; j < datainfo.appInfo.moduleInfos; j++) {
+            for (let j = 0; j < datainfo.appInfo.moduleInfos.length; j++) {
                 expect(datainfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
                 expect(datainfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1);
             }
@@ -228,7 +228,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo[i].moduleSourceDirs.length).assertLarger(0);
             expect(datainfo[i].moduleInfos.length).assertLarger(0);
             expect(datainfo[i].supportedModes).assertEqual(0);
-            for (let j = 0; j < datainfo[i].moduleInfos; j++) {
+            for (let j = 0; j < datainfo[i].moduleInfos.length; j++) {
                 expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0);
                 expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0);
             }
@@ -250,7 +250,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo[i].moduleSourceDirs.length).assertLarger(0);
                     expect(datainfo[i].moduleInfos.length).assertLarger(0);
                     expect(datainfo[i].supportedModes).assertEqual(0);
-                    for (let j = 0; j < datainfo[i].moduleInfos; j++) {
+                    for (let j = 0; j < datainfo[i].moduleInfos.length; j++) {
                         expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0);
                         expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0);
                     }
@@ -311,7 +311,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.metaData.entry[0].value).assertEqual("metaDataValue");
                 expect(datainfo.metaData.entry[0].extra).assertEqual("$string:app_name");
                 expect(datainfo.moduleSourceDirs.length).assertLarger(0);
-                for (let j = 0; j < datainfo.moduleInfos; j++) {
+                for (let j = 0; j < datainfo.moduleInfos.length; j++) {
                     expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry");
                     expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0);
                 }
@@ -371,7 +371,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.systemApp).assertEqual(true);
                 expect(datainfo.supportedModes).assertEqual(0);
                 expect(datainfo.enabled).assertEqual(true);
-                for (let j = 0; j < datainfo.moduleInfos; j++) {
+                for (let j = 0; j < datainfo.moduleInfos.length; j++) {
                     expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry");
                     expect(datainfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1);
                 }
@@ -521,7 +521,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo[i].moduleSourceDirs.length).assertLarger(0);
                     expect(datainfo[i].moduleInfos.length).assertLarger(0);
                     expect(datainfo[i].supportedModes).assertEqual(0);
-                    for (let j = 0; j < datainfo[i].moduleInfos; j++) {
+                    for (let j = 0; j < datainfo[i].moduleInfos.length; j++) {
                         expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0);
                         expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0);
                     }
@@ -548,7 +548,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo[i].moduleSourceDirs.length).assertLarger(0);
                 expect(datainfo[i].moduleInfos.length).assertLarger(0);
                 expect(datainfo[i].supportedModes).assertEqual(0);
-                for (let j = 0; j < datainfo[i].moduleInfos; j++) {
+                for (let j = 0; j < datainfo[i].moduleInfos.length; j++) {
                     expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0);
                     expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0);
                 }
@@ -575,7 +575,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo[i].moduleSourceDirs.length).assertLarger(0);
                 expect(datainfo[i].moduleInfos.length).assertLarger(0);
                 expect(datainfo[i].supportedModes).assertEqual(0);
-                for (let j = 0; j < datainfo[i].moduleInfos; j++) {
+                for (let j = 0; j < datainfo[i].moduleInfos.length; j++) {
                     expect(datainfo[i].moduleInfos[j].moduleName.length).assertLarger(0);
                     expect(datainfo[i].moduleInfos[j].moduleSourceDir.length).assertLarger(0);
                 }
@@ -658,7 +658,7 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.process).assertEqual("");
         expect(datainfo.enabled).assertEqual(true);
         expect(datainfo.moduleSourceDirs.length).assertLarger(0);
-        for (let j = 0; j < datainfo.moduleInfos; j++) {
+        for (let j = 0; j < datainfo.moduleInfos.length; j++) {
             expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry");
             expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0);
         }
@@ -818,7 +818,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.name BUNDLE::getApplicationInfo
      * @tc.desc Test getApplicationInfo interfaces with three haps.
      */
-     it('getApplicationInfo_0300', 0, async function (done) {
+    it('getApplicationInfo_0300', 0, async function (done) {
         let datainfo = await demo.getApplicationInfo(NAME2,
             demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, userId);
         console.info("getApplicationInfo_0300 result" + JSON.stringify(datainfo));
@@ -841,7 +841,7 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.process).assertEqual("");
         expect(datainfo.enabled).assertEqual(true);
         expect(datainfo.moduleSourceDirs.length).assertLarger(0);
-        for (let j = 0; j < datainfo.moduleInfos; j++) {
+        for (let j = 0; j < datainfo.moduleInfos.length; j++) {
             expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry");
             expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0);
         }
@@ -1042,7 +1042,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.applicationInfo.supportedModes).assertEqual(0);
                     expect(datainfo.applicationInfo.enabled).assertEqual(true);
                     expect(datainfo.metaData.length).assertLarger(0);
-                    for (let j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
+                    for (let j = 0; j < datainfo.applicationInfo.moduleInfos.length; j++) {
                         expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry");
                         expect(datainfo.applicationInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1);
                     }
@@ -1086,10 +1086,10 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.applicationInfo.systemApp).assertEqual(true);
             expect(datainfo.applicationInfo.supportedModes).assertEqual(0);
             expect(datainfo.applicationInfo.enabled).assertEqual(true);
-            for (let j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
-                expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry");
-                expect(datainfo.applicationInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR2);
-            }
+            expect(datainfo.applicationInfo.moduleInfos[0].moduleName).assertEqual("entry");
+            expect(datainfo.applicationInfo.moduleInfos[0].moduleSourceDir).assertEqual(DIR3);
+            expect(datainfo.applicationInfo.moduleInfos[1].moduleName).assertEqual("entry");
+            expect(datainfo.applicationInfo.moduleInfos[1].moduleSourceDir).assertEqual(DIR2);
         }
         done();
     })
@@ -1124,7 +1124,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.applicationInfo.supportedModes).assertEqual(0);
                     expect(datainfo.orientation).assertEqual(2);
                     expect(datainfo.applicationInfo.enabled).assertEqual(true);
-                    for (let j = 0; j < datainfo.applicationInfo.moduleInfos; j++) {
+                    for (let j = 0; j < datainfo.applicationInfo.moduleInfos.length; j++) {
                         expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry");
                     }
                     queryResultCount++;
@@ -1173,17 +1173,17 @@ describe('ActsBundleManagerTest', function () {
     /**
      * @tc.number getBundleInfo_1300
      * @tc.name BUNDLE::getBundleInfo
-     * @tc.desc Test getBundleInfo interfaces with LAUNCHER hap.
+     * @tc.desc Test getBundleInfo interfaces with systemApp.
      */
     it('getBundleInfo_1300', 0, async function (done) {
-        demo.getBundleInfo(LAUNCHER, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
+        demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES).then(datainfo => {
             console.info("getBundleInfo success:" + JSON.stringify(datainfo));
-            expect(datainfo.name).assertEqual(LAUNCHER);
-            expect(datainfo.vendor).assertEqual("ohos");
-            expect(datainfo.versionCode).assertEqual(1000000);
+            expect(datainfo.name).assertEqual(NAME1);
+            expect(datainfo.vendor).assertEqual("example");
+            expect(datainfo.versionCode).assertEqual(1);
             expect(datainfo.versionName.length).assertLarger(0);
             expect(datainfo.uid).assertLarger(2099);
-            expect(datainfo.appInfo.name).assertEqual(LAUNCHER);
+            expect(datainfo.appInfo.name).assertEqual(NAME1);
             expect(datainfo.appInfo.systemApp).assertEqual(true);
             expect(datainfo.appInfo.supportedModes).assertEqual(0);
             expect(datainfo.appInfo.moduleInfos.length).assertLarger(0);
@@ -1228,15 +1228,15 @@ describe('ActsBundleManagerTest', function () {
         expect(dataInfo.compatibleVersion).assertEqual(5);
         expect(dataInfo.targetVersion).assertEqual(5);
         expect(dataInfo.isCompressNativeLibs).assertEqual(false);
-        for (let s = 0; s < dataInfo.hapModuleInfos; s++) {
-            expect(dataInfo.moduleInfos[s].name).assertEqual("com.example.myapplication1");
-            expect(dataInfo.moduleInfos[s].moduleName).assertEqual("entry");
+        for (let s = 0; s < dataInfo.hapModuleInfos.length; s++) {
+            expect(dataInfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1");
+            expect(dataInfo.hapModuleInfos[s].moduleName).assertEqual("entry");
         }
         expect(dataInfo.entryModuleName).assertEqual("entry");
         expect(dataInfo.isSilentInstallation.length).assertEqual(0);
         expect(dataInfo.minCompatibleVersionCode).assertEqual(0);
         expect(dataInfo.entryInstallationFree).assertEqual(false);
-        for (let j = 0; j < dataInfo.appInfo.moduleInfos; j++) {
+        for (let j = 0; j < dataInfo.appInfo.moduleInfos.length; j++) {
             expect(dataInfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
             expect(dataInfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1);
         }
@@ -1275,15 +1275,15 @@ describe('ActsBundleManagerTest', function () {
             expect(dataInfo.compatibleVersion).assertEqual(5);
             expect(dataInfo.targetVersion).assertEqual(5);
             expect(dataInfo.isCompressNativeLibs).assertEqual(false);
-            for (let s = 0; s < dataInfo.hapModuleInfos; s++) {
-                expect(dataInfo.moduleInfos[s].name).assertEqual("com.example.myapplication1");
-                expect(dataInfo.moduleInfos[s].moduleName).assertEqual("entry");
+            for (let s = 0; s < dataInfo.hapModuleInfos.length; s++) {
+                expect(dataInfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1");
+                expect(dataInfo.hapModuleInfos[s].moduleName).assertEqual("entry");
             }
             expect(dataInfo.entryModuleName).assertEqual("entry");
             expect(dataInfo.isSilentInstallation.length).assertEqual(0);
             expect(dataInfo.minCompatibleVersionCode).assertEqual(0);
             expect(dataInfo.entryInstallationFree).assertEqual(false);
-            for (let j = 0; j < dataInfo.appInfo.moduleInfos; j++) {
+            for (let j = 0; j < dataInfo.appInfo.moduleInfos.length; j++) {
                 expect(dataInfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
                 expect(dataInfo.appInfo.moduleInfos[j].moduleSourceDir).assertEqual(DIR1);
             }
