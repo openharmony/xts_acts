@@ -31,12 +31,14 @@ group("publish_test") {
       "actsansgetallactive:ActsAnsGetAllActiveTestXts",
       "ansactscancelgroup:ActsAnsCancelGroupTest",
       "ansactsremovegroup:ActsAnsRemoveGroupTest",
-      "donotdisturbmode:ActsAnsDoNotDisturbTest",
+
+      #"donotdisturbmode:ActsAnsDoNotDisturbTest",
+
       #"publish:ActsAnsNotificationPublishXts",
       "publishsound:ActsAnsPublishSoundTest",
 
       #"publishvibra:ActsAnsPublishVibraTest",
-      "sub:ActsAnsSubTestXts",
+      #"sub:ActsAnsSubTestXts",
       "unsubscribe:ActsAnsUnSubscriberTest",
       "wantagent:wantagent",
     ]
