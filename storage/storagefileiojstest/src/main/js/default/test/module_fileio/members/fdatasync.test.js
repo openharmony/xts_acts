@@ -85,17 +85,13 @@ describe('fileio_fdatasync', async function () {
    * @tc.require
    */
    it('fileio_test_fdatasync_async_002', 0, async function (done) {
-    let fpath = await nextFileName('fileio_test_fdatasync_async_002');
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
     try {
       let fd = -1;
       await fileio.fdatasync(fd);
       expect(null).assertFail();
       done()
     } catch (e) {
-      expect(!!e).assertTrue();
-      console.log('fileio_test_fdatasync_async_002 has failed for ' + e);
+      console.info('fileio_test_fdatasync_async_002 has failed for ' + e);
       done();
     }
   });

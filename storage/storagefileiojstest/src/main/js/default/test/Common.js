@@ -99,6 +99,15 @@ export function randomString(num) {
   return pwd;
 }
 
+export function forceRemoveDir(path, num) {
+  for (let i = num; i >= 0; i--) {
+    if (i < num) {
+      path = path.replace(`/d${i}`, "");
+    }
+    fileio.rmdirSync(path);
+  }
+}
+
 function isIntNum(val) {
   return typeof val === 'number' && val % 1 === 0;
 }

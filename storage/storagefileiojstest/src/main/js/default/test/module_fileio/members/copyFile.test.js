@@ -170,6 +170,7 @@ describe('fileio_copyfile', function () {
       fileio
         .copyFile(1, fpath)
         .then(function (err) {
+          fileio.unlinkSync(fpath);
           done();
         })
     } catch (e) {

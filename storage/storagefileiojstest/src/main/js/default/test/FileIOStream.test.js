@@ -21,7 +21,8 @@ import {
   fileToReadOnly,
   fileToWriteOnly,
   nextFileName,
-  randomString
+  randomString,
+  forceRemoveDir
 }
   from './Common'
 
@@ -594,22 +595,24 @@ describe('fileIOTestStream', function () {
    * @tc.desc Function of API, fpath too long.
    */
   it('fileio_test_stream_create_stream_sync_026', 0, async function () {
-    let dpath = await nextFileName('fileio_stream');
+    let dpath = await nextFileName('fileio_test_stream_create_stream_sync_026');
     fileio.mkdirSync(dpath);
     try {
       for (let i = 0; i < 16; i++) {
         if (i == 15) {
-          let fpath = dpath + '/f' + randomString(248);
+          let fpath = dpath + '/f' + i;
           fileio.createStreamSync(fpath, 'w+');
+          fileio.unlinkSync(fpath);
         } else {
-          dpath = dpath + '/d' + randomString(248);
+          dpath = dpath + '/d' + i;
           fileio.mkdirSync(dpath);
         }
       }
       expect(null).assertFail();
     }
     catch (e) {
-      console.log('fileio_test_stream_create_stream_sync_026 has failed for ' + e);
+      console.info('fileio_test_stream_create_stream_sync_026 has failed for ' + e);
+      forceRemoveDir(dpath, 15);
     }
   });
 
@@ -634,23 +637,25 @@ describe('fileIOTestStream', function () {
    * @tc.name fileio_test_stream_create_stream_sync_028
    * @tc.desc Function of API, path too deep.
    */
-  it('fileio_test_stream_create_stream_sync_028', 0, async function () {
-    let dpath = await nextFileName('stream');
+   it('fileio_test_stream_create_stream_sync_028', 0, async function () {
+    let dpath = await nextFileName('fileio_test_stream_create_stream_sync_028');
     fileio.mkdirSync(dpath);
     try {
       for (let i = 0; i < 113; i++) {
         if (i == 112) {
           let fpath = dpath + '/f' + i
           fileio.createStreamSync(fpath, 'w+');
+          fileio.unlinkSync(fpath);
         } else {
-          dpath = dpath + '/' + i
+          dpath = dpath + '/d' + i
           fileio.mkdirSync(dpath);
         }
       }
       expect(null).assertFail();
     }
     catch (e) {
-      console.log('fileio_test_stream_create_stream_sync_028 has failed for ' + e);
+      console.info('fileio_test_stream_create_stream_sync_028 has failed for ' + e);
+      forceRemoveDir(dpath, 112);
     }
   });
 

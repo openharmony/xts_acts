@@ -508,18 +508,11 @@ describe('fileio_read', function () {
    * @tc.require
    */
   it('fileio_test_read_async_008', 0, async function (done) {
-    let fpath = await nextFileName('fileio_test_read_async_008');
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
     try {
-      let err = await fileio.read(-1, new ArrayBuffer(4096));
-      expect(!!err).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
+      await fileio.read(-1, new ArrayBuffer(4096));
       expect(null).assertFail();
-      done();
     } catch (e) {
-      console.log('fileio_test_read_async_008 has failed for ' + e);
-      expect(!!e).assertTrue();
+      console.info('fileio_test_read_async_008 has failed for ' + e);
       done();
     }
   });
