@@ -17,8 +17,8 @@ import bundle from '@ohos.bundle'
 import account from '@ohos.account.osAccount'
 import { describe, beforeAll, it, expect } from 'deccjsunit/index'
 
-const LAUNCHER_BUNDLE_NAME = 'com.ohos.launcher';
-const LAUNCHER_MAIN_ABILITY = 'com.ohos.launcher.MainAbility';
+const LAUNCHER_BUNDLE_NAME = 'com.example.myapplication1';
+const LAUNCHER_MAIN_ABILITY = 'com.example.myapplication1.MainAbility';
 const DEFAULT_FLAG = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
 const INVALID_CODE = 1;
 let userId = 0;

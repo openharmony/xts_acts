@@ -20,8 +20,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 const BUNDLE_NAME = "com.open.harmony.packagemag";
 const ABILITIY_NAME = "com.open.harmony.packagemag.MainAbility";
 const SERVICE_NAME = "com.open.harmony.packagemag.ServiceAbility";
-const BUNDLE_NAME_OTHER = "com.ohos.settings";
-const ABILITIY_NAME_OTHER = "com.ohos.settings.MainAbility";
+const BUNDLE_NAME_OTHER = "com.example.l3jsdemo";
+const ABILITIY_NAME_OTHER = "com.example.l3jsdemo.MainAbility";
 const BUNDLE_NAME_ERROR = "com.ohos.packagemag";
 const ABILITIY_NAME_ERROR = "com.ohos.packagemag.MainAbility";
 

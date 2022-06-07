@@ -20,11 +20,10 @@ import account from '@ohos.account.osAccount'
 
 const DEFAULT_FLAG = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
 const INVALID_CODE = 1;
-const LAUNCHER_BUNDLE_NAME = "com.ohos.launcher";
 const SELF_BUNDLENAME = "com.example.actsbmsetsunpermissiontest";
 const SELF_ABILITYNAME = "com.example.actsbmsetsunpermissiontest.MainAbility";
-const BUNDLE_SETTINGS = "com.ohos.settings";
-const ABILITIY_SETTINGS = "com.ohos.settings.MainAbility";
+const BUNDLE_NAME_OTHER = "com.example.myapplication1";
+const ABILITIY_NAME_OTHER = "com.example.myapplication1.MainAbility";
 const BUNDLE_NAME1 = "ohos.acts.bundle.stage";
 const ABILITY_NAME1 = "ExtensionAbility1";
 let userId = 0;
@@ -67,12 +66,12 @@ export default function actsBmsJsUnPermissionTest() {
         * @tc.desc      test getBundleInfo
         */
         it('getBundleInfo_2000', 0, async function (done) {
-            await bundle.getBundleInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, { userId: userId }).then(data => {
+            await bundle.getBundleInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG, { userId: userId }).then(data => {
                 expect().assertFail();
             }).catch(err => {
                 expect(err).assertEqual(INVALID_CODE);
             });
-            bundle.getBundleInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, { userId: userId }, (err, data) => {
+            bundle.getBundleInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG, { userId: userId }, (err, data) => {
                 expect(err).assertEqual(INVALID_CODE);
                 expect(data).assertEqual(undefined);
                 done();
@@ -85,12 +84,12 @@ export default function actsBmsJsUnPermissionTest() {
         * @tc.desc      test getApplicationInfo 
         */
         it('getApplicationInfo_1800', 0, async function (done) {
-            await bundle.getApplicationInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG).then(data => {
+            await bundle.getApplicationInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG).then(data => {
                 expect().assertFail();
             }).catch(err => {
                 expect(err).assertEqual(INVALID_CODE);
             });
-            bundle.getApplicationInfo(LAUNCHER_BUNDLE_NAME, DEFAULT_FLAG, (err, data) => {
+            bundle.getApplicationInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG, (err, data) => {
                 expect(err).assertEqual(INVALID_CODE);
                 expect(data).assertEqual(undefined);
                 done();
@@ -130,7 +129,7 @@ export default function actsBmsJsUnPermissionTest() {
         */
         it('SUB_BMS_HAP_STATUS_0012', 0, async function (done) {
             pkg.hasInstalled({
-                bundleName: LAUNCHER_BUNDLE_NAME,
+                bundleName: BUNDLE_NAME_OTHER,
                 success: function success(data) {
                     console.info("get hasInstalled success" + JSON.stringify(data));
                     expect(data.result).assertFalse();
@@ -155,12 +154,12 @@ export default function actsBmsJsUnPermissionTest() {
          * @tc.desc: test getAbilityIcon without permission
         */
         it('SUB_BMS_APPINFO_GETABILITYICON_0006', 0, async function (done) {
-            await bundle.getAbilityIcon(BUNDLE_SETTINGS, ABILITIY_SETTINGS).then(pixelmap => {
+            await bundle.getAbilityIcon(BUNDLE_NAME_OTHER, ABILITIY_NAME_OTHER).then(pixelmap => {
                 expect(pixelmap).assertFail();
             }).catch(err => {
                 expect(err).assertEqual(1);
             });
-            bundle.getAbilityIcon(BUNDLE_SETTINGS, ABILITIY_SETTINGS, (err, pixelmap) => {
+            bundle.getAbilityIcon(BUNDLE_NAME_OTHER, ABILITIY_NAME_OTHER, (err, pixelmap) => {
                 expect(err).assertEqual(1);
                 done();
             });
