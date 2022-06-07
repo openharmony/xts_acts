@@ -1997,6 +1997,14 @@ describe('webgl1Test', function() {
 			return;
 		}
 
+		const indexBuffer = gl.createBuffer();
+		gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+		gl.bufferData(
+			gl.ELEMENT_ARRAY_BUFFER,
+			indices,
+			gl.STATIC_DRAW
+		);
+
 		var viewPortParameter = gl.getParameter(gl.MAX_VIEWPORT_DIMS);
 		console.log('viewPortParameter: ' + viewPortParameter);
 
