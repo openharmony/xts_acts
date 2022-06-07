@@ -17,8 +17,7 @@ group("startup_standard") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "deviceinfo:startup_deviceinfo_js_test",
-      "systemparamter:startup_sysparam_js_test",
+      "deviceinfo:startup_deviceinfo_js_test"
     ]
   }
 }
