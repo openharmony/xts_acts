@@ -34,40 +34,6 @@ describe('PerfTest', function () {
     }
 
     /* *
-    * clear the preferred language list if exists
-    */
-    function clearLang(langList){
-        let len = langList.length;
-        while(len > 0){
-            console.log('i18n_test_preferredlanguage_clearLang ' + len);
-            let par = len - 1;
-            console.log('i18n_test_preferredlanguage_clearLang ' + par);
-            let value = I18n.removePreferredLanguage(par);
-            console.log('i18n_test_preferredlanguage_clearLang ' + value);
-            len--;
-        }
-        console.log('i18n_test_preferredlanguage_clearLang ' + I18n.getPreferredLanguageList());
-    }
-
-    /* *
-    * execute this step after every testcase
-    */
-    function restoreLang(){
-        for(let j = 0; j < initLen; j++){
-            let value = I18n.addPreferredLanguage(initPreferredLang[j], j);
-            console.log('i18n_test_preferredlanguage_restoreLang ' + value);
-            expect(value).assertTrue();
-        }
-        let currLen = getCurrentPreferredLang().length;
-        while(currLen > initLen) {
-            let rem = I18n.removePreferredLanguage(currLen - 1);
-            console.log('i18n_test_preferredlanguage_restoreLang ' + rem);
-            currLen--;
-        }
-        console.log('i18n_test_preferredlanguage_restoreLang ' + I18n.getPreferredLanguageList());
-    }
-
-    /* *
     * execute this step before all testcases
     */
     beforeAll(function(){
@@ -92,8 +58,6 @@ describe('PerfTest', function () {
         console.log('step after every case in perf.');
         let currLang = getCurrentPreferredLang();
         console.log('i18n_test_preferredlanguage_afterEach ' + currLang);
-        clearLang(currLang);
-        restoreLang();
     })
 
     /* *
@@ -1355,33 +1319,6 @@ describe('PerfTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_PERF_JS_5400
-    * @tc.name test the performance of set24HourClock
-    * @tc.desc check the performance of set24HourClock
-    */
-    it('perf_test_5400', 0, function () {
-        console.log('perf_test_5400 ' + 'start');
-        let value = false;
-        let startTime = new Date().getTime();
-        for(let i = 0; i < EXETIME; i++){
-            value = I18n.set24HourClock(true);
-        }
-        let exeTime = new Date().getTime() - startTime;
-        let avgTime = exeTime/EXETIME;
-        console.log('perf_test_5400--'
-                    + 'value: ' + value
-                    + ' exeTime: ' + exeTime
-                    + ' avgTime: ' + avgTime);
-        if(avgTime < 10){
-            expect(true).assertTrue();
-        }
-        else{
-            expect(false).assertTrue();
-        }
-        I18n.set24HourClock(hour);
-    })
-
-    /* *
     * @tc.number SUB_GLOBAL_PERF_JS_5500
     * @tc.name test the performance of getPreferredLanguageList
     * @tc.desc check the performance of getPreferredLanguageList
@@ -1426,58 +1363,6 @@ describe('PerfTest', function () {
                     + ' exeTime: ' + exeTime
                     + ' avgTime: ' + avgTime);
         if(avgTime < 20){
-            expect(true).assertTrue();
-        }
-        else{
-            expect(false).assertTrue();
-        }
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_PERF_JS_5700
-    * @tc.name test the performance of addPreferredLanguage
-    * @tc.desc check the performance of addPreferredLanguage
-    */
-    it('perf_test_5700', 0, function () {
-        console.log('perf_test_5700 ' + 'start');
-        let value = false;
-        let startTime = new Date().getTime();
-        for(let i = 0; i < EXETIME; i++){
-            value = I18n.addPreferredLanguage('it');
-        }
-        let exeTime = new Date().getTime() - startTime;
-        let avgTime = exeTime/EXETIME;
-        console.log('perf_test_5700--'
-                    + 'value: ' + value
-                    + ' exeTime: ' + exeTime
-                    + ' avgTime: ' + avgTime);
-        if(avgTime < 10){
-            expect(true).assertTrue();
-        }
-        else{
-            expect(false).assertTrue();
-        }
-    })
-
-    /* *
-    * @tc.number SUB_GLOBAL_PERF_JS_5800
-    * @tc.name test the performance of removePreferredLanguage
-    * @tc.desc check the performance of removePreferredLanguage
-    */
-    it('perf_test_5800', 0, function () {
-        console.log('perf_test_5800 ' + 'start');
-        let value = false;
-        let startTime = new Date().getTime();
-        for(let i = 0; i < EXETIME; i++){
-            value = I18n.removePreferredLanguage(0);
-        }
-        let exeTime = new Date().getTime() - startTime;
-        let avgTime = exeTime/EXETIME;
-        console.log('perf_test_5800--'
-                    + 'value: ' + value
-                    + ' exeTime: ' + exeTime
-                    + ' avgTime: ' + avgTime);
-        if(avgTime < 10){
             expect(true).assertTrue();
         }
         else{
