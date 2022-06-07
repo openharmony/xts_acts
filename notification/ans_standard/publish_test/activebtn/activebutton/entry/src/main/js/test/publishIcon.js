@@ -80,7 +80,7 @@ describe('ActsAnsPublishIconTest', function () {
     it('ACTS_PublishIconTest_0300', 0,async function (done) {
         largeBufferC = new ArrayBuffer(4*1024*50);
         smallBufferC = new ArrayBuffer(4*2*25);
-        largeOptsC = {alphaType: 0, editable: true, pixelFormat: 4, scaleMode: 1, size: {height: 50, width: 1024}}
+        largeOptsC = {alphaType: 0, editable: true, pixelFormat: 0, scaleMode: 1, size: {height: 50, width: 1024}}
         smallOptsC = {alphaType: 0, editable: true, pixelFormat: 4, scaleMode: 1, size: {height: 25, width: 2}}
         const promise_Large = image.createPixelMap(largeBufferC, largeOptsC);
         promise_Large.then((data) => {
