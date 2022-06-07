@@ -19,15 +19,18 @@ const NAMELIMIT = 512;
 const TIMEOUT = 5000;
 describe('ActsAccountDeleteAccount', function () {
     function sleep(delay) {
-        var start = (new Date()).getTime();
-        while((new Date()).getTime() - start < delay) {
-            continue;
-        }
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve()
+            }, delay)
+        }).then(() => {
+            console.info(`sleep #{time} over ...`)
+        })
     }
 
     beforeAll(async function (done) {
         console.debug("====>beforeAll start====");
-        sleep(TIMEOUT);
+        await sleep(TIMEOUT);
         console.debug("====>beforeAll end====");
         done();
     });
