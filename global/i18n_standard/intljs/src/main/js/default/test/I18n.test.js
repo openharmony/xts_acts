@@ -43,9 +43,7 @@ describe('I18nTest', function () {
     * execute this step after every testcase
     */
     afterEach(function(){
-        let afterValue = I18n.set24HourClock(hour);
-        console.log('step after every cases.' + afterValue);
-        console.log('24 hour clock after every cases ' + I18n.is24HourClock());
+        console.log('step after every case in I18n.');
     })
 
     /* *
@@ -708,7 +706,7 @@ describe('I18nTest', function () {
         expect(name).assertEqual('和暦');
         let timezone = calendar.getTimeZone();
         console.log('i18n_test_7920 ' + timezone);
-        expect(timezone).assertEqual('Coordinated Universal Time');
+        expect(timezone).assertContain('Time');
         let firstday = calendar.getFirstDayOfWeek();
         console.log('i18n_test_7920 ' + firstday);
         expect(firstday).assertEqual(1);
