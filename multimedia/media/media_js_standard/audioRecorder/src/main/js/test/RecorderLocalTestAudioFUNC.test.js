@@ -21,7 +21,6 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('RecorderLocalTestAudioFUNC', function () {
     let audioRecorder = media.createAudioRecorder();
-    const BASIC_PATH = 'file:///data/accounts/account_0/appdata/recorder/'
     const END_STATE = 0;
     const PRE_STATE = 1;
     const START_STATE = 2;
@@ -34,15 +33,13 @@ describe('RecorderLocalTestAudioFUNC', function () {
     const RECORDER_TIME = 1000;
     const CHANNEL_ONE = 1;
     const CHANNEL_TWO = 2;
-    const FORMAT_MP4 = 2;
-    const FORMAT_M4A = 6;
-    const SOURCE_TYPE = 1;
-    const ENCORDER_AACLC = 3;
+    const FORMAT_MP4 = media.AudioOutputFormat.MPEG_4;
+    const FORMAT_M4A = media.AudioOutputFormat.AAC_ADTS;
+    const ENCORDER_AACLC = media.AudioEncoder.AAC_LC;
     let fdPath;
     let fileAsset;
     let fdNumber;
     let audioConfig = {
-        audioSourceType : SOURCE_TYPE,
         audioEncoder : ENCORDER_AACLC,
         audioEncodeBitRate : 22050,
         audioSampleRate : 22050,
@@ -784,7 +781,6 @@ describe('RecorderLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1400', 0, async function (done) {
         await getFd('test28.mp4');
         let newAudioConfig = {
-            audioSourceType : SOURCE_TYPE,
             audioEncodeBitRate : 22050,
             audioSampleRate : 22050,
             numberOfChannels : CHANNEL_TWO,
@@ -812,7 +808,6 @@ describe('RecorderLocalTestAudioFUNC', function () {
     it('SUB_MEDIA_RECORDER_AUDIO_FUNCTION_06_1500', 0, async function (done) {
         await getFd('test29.mp4');
         let newAudioConfig = {
-            audioSourceType : SOURCE_TYPE,
             audioEncodeBitRate : 22050,
             audioSampleRate : 22050,
             numberOfChannels : CHANNEL_TWO,

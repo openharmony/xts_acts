@@ -28,21 +28,17 @@ describe('RecorderLocalTestAudioAPI', function () {
     const RESET_STATE = 6;
     const RELEASE_STATE = 7;
     const ERROR_STATE = 8;
-    const FORMAT_M4A = 6;
-    const SOURCE_TYPE = 1;
-    const ENCORDER_AACLC = 3;
     const CHANNEL_TWO = 2;
     const RECORDER_TIME = 1000;
     let fdPath;
     let fileAsset;
     let fdNumber;
     let audioConfig = {
-        audioSourceType : SOURCE_TYPE,
-        audioEncoder : ENCORDER_AACLC,
+        audioEncoder : media.AudioEncoder.AAC_LC,
         audioEncodeBitRate : 22050,
         audioSampleRate : 22050,
         numberOfChannels : CHANNEL_TWO,
-        format : FORMAT_M4A,
+        format : media.AudioOutputFormat.AAC_ADTS,
         uri : 'file:///data/accounts/account_0/appdata/recorder/testAPI.m4a',
         location : { latitude : 1, longitude : 1 },
     }
