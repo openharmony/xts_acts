@@ -20,22 +20,25 @@ const STRCOUNT = 1025;
 const EACHTIMEOUT = 500;
 describe('ActsAccountAppAccess', function () {
     function sleep(delay) {
-        var start = (new Date()).getTime();
-        while((new Date()).getTime() - start < delay) {
-            continue;
-        }
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve()
+            }, delay)
+        }).then(() => {
+            console.info(`sleep #{time} over ...`)
+        })
     }
 
     beforeAll(async function (done) {
         console.debug("====>beforeAll start====");
-        sleep(TIMEOUT);
+        await sleep(TIMEOUT);
         console.debug("====>beforeAll end====");
         done();
     })
 
     beforeEach(async function (done) {
         console.debug("====>beforeEach enter====");
-        sleep(EACHTIMEOUT);
+        await sleep(EACHTIMEOUT);
         done();
     })
 
@@ -223,7 +226,14 @@ describe('ActsAccountAppAccess', function () {
         console.debug("====>creat finish====");
         var enableBundle = "com.example.actsaccountsceneappaccess";
         console.debug("====>add account ActsAccountAppAccess_0800 start====");
-        await appAccountManager.addAccount("AppAccess_promise_account");
+        try{
+            await appAccountManager.addAccount("AppAccess_promise_account");
+        }
+        catch(err){
+            console.error("====>addAccount ActsAccountAppAccess_0800 fail err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
         console.debug("====>enableAppAccess ActsAccountAppAccess_0800 start====");
         try{
             await appAccountManager.enableAppAccess("AppAccess_promise_account", enableBundle);
@@ -435,7 +445,14 @@ describe('ActsAccountAppAccess', function () {
         console.debug("====>creat finish====");
         var enableBundle = "com.example.actsaccountsceneappaccess";
         console.debug("====>add account ActsAccountAppAccess_1600 start====");
-        await appAccountManager.addAccount("AppAccess_promise_account");
+        try{
+            await appAccountManager.addAccount("AppAccess_promise_account");
+        }
+        catch(err){
+            console.error("====>addAccount ActsAccountAppAccess_1600 fail err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
         console.debug("====>disableAppAccess ActsAccountAppAccess_1600 start====");
         try{
             await appAccountManager.disableAppAccess("AppAccess_promise_account", enableBundle);

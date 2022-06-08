@@ -19,22 +19,25 @@ const TIMEOUT = 5000;
 const EACHTIMEOUT = 500;
 describe('ActsAccountAssociatedData', function () {
     function sleep(delay) {
-        var start = (new Date()).getTime();
-        while((new Date()).getTime() - start < delay) {
-            continue;
-        }
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve()
+            }, delay)
+        }).then(() => {
+            console.info(`sleep #{time} over ...`)
+        })
     }
 
     beforeAll(async function (done) {
         console.debug("====>beforeAll start====");
-        sleep(TIMEOUT);
+        await sleep(TIMEOUT);
         console.debug("====>beforeAll end====");
         done();
     })
 
     beforeEach(async function (done) {
         console.debug("====>beforeEach enter====");
-        sleep(EACHTIMEOUT);
+        await sleep(EACHTIMEOUT);
         done();
     })
 
@@ -86,7 +89,7 @@ describe('ActsAccountAssociatedData', function () {
         }
         catch(err){
             console.error("====>add Account ActsAccountAssociatedData_0200 err:" + JSON.stringify(err));
-            expect().asserFail();
+            expect().assertFail();
             done();
         }
         console.debug("====>setAssociatedData ActsAccountAssociatedData_0200 start====");
@@ -95,7 +98,7 @@ describe('ActsAccountAssociatedData', function () {
         }
         catch(err){
             console.error("====>setAssociatedData ActsAccountAssociatedData_0200 err:" + JSON.stringify(err));
-            expect().asserFail();
+            expect().assertFail();
             done();
         }
         console.debug("====>getAssociatedData ActsAccountAssociatedData_0200 start====");
@@ -104,7 +107,7 @@ describe('ActsAccountAssociatedData', function () {
         }
         catch(err){
             console.error("====>getAssociatedData ActsAccountAssociatedData_0200 err:" + JSON.stringify(err));
-            expect().asserFail();
+            expect().assertFail();
             done();
         }
         console.debug("====>getAssociatedData ActsAccountAssociatedData_0200 data:" + JSON.stringify(data));
@@ -164,7 +167,7 @@ describe('ActsAccountAssociatedData', function () {
         }
         catch(err){
             console.error("====>add Account ActsAccountAssociatedData_0400 err:" + JSON.stringify(err));
-            expect().asserFail();
+            expect().assertFail();
             done();
         }
         try{
@@ -237,7 +240,7 @@ describe('ActsAccountAssociatedData', function () {
         }
         catch(err){
             console.error("====>add Account ActsAccountAssociatedData_0600 fail err:" + JSON.stringify(err));
-            expect().asserFail();
+            expect().assertFail();
             done();
         }
         await appAccountManager.setAssociatedData("account_name_0600", "key6", "value6");

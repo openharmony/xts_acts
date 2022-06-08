@@ -191,6 +191,8 @@ describe('ActsAccountAddAccount', function () {
         var appAccountManager = account.createAppAccountManager();
         try{
             await appAccountManager.addAccount(limitAccountName, "account_extraInfo_promise_fourth");
+            expect().assertFail();
+            done();
         }
         catch(err){
             console.debug("====>add account ActsAccountAddAccount_0800 err:" + JSON.stringify(err));
