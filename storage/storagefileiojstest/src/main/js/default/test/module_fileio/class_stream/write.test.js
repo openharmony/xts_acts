@@ -130,7 +130,9 @@ describe('fileio_stream_write', function () {
       let bytesWritten = await ss.write(content, {offset:1, position:5, encoding: 'utf-8' });
       expect(bytesWritten == content.length-1).assertTrue();
       let readOut = await ss.read(new ArrayBuffer(4096), {offset:0,position: 0});
-      let result = String.fromCharCode.apply(null, new Uint8Array(readOut.buffer.slice(readOut.offset,readOut.offset+readOut.bytesRead)));
+      let start = readOut.offset;
+      let end = readOut.offset+readOut.bytesRead;
+      let result = String.fromCharCode.apply(null, new Uint8Array(readOut.buffer.slice(start,end)));
       expect(result == "helloestrld").assertTrue();
       fileio.unlinkSync(fpath);
       ss.closeSync();
