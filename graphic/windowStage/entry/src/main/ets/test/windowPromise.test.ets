@@ -263,65 +263,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
     })
     /**
-	 * @tc.number     SUB_WINDOW_ON_OFF_JSAPI_004
-	 * @tc.name       Test listenerTest4
-	 * @tc.desc       Verify whether the window size change monitoring can be closed normally.
-	 */
-    it('listenerTest4', 0, async function (done) {
-      let caseName = 'listenerTest4';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      let wndId = 'listenerTest4';
-      let baseType = 2;
-      let changedModel = 102;
-      let listenerOffFlag = listenerStatus.ready;
-      console.log(msgStr + 'begin');
-      let tempWnd = await ohosWindow.create(context, wndId, baseType).catch((err) => {
-        unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
-      });
-      console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + tempWnd);
-      expect(!!tempWnd).assertTrue();
-      listenerData.on = true;
-      listenerData.typeStr = 'windowSizeChange';
-      tempWnd.on('windowSizeChange', (sizeData) => {
-        console.log(msgStr + 'tempWnd.on windowSizeChange, sizeData : ' + JSON.stringify(sizeData));
-        if (listenerOffFlag === listenerStatus.pending) {
-          listenerOffFlag = listenerStatus.finished;
-          unexpectedError(null, caseName, 'off windowSizeChange', done)
-        }
-      })
-      await tempWnd.show().catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.show', done);
-      });
-      console.log(msgStr + 'tempWnd.show success');
-      await tempWnd.setWindowMode(changedModel).catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.setWindowMode ' + changedModel, done);
-      });
-      console.log(msgStr + 'tempWnd.setWindowMode ' + changedModel + ' success');
-      await tempWnd.resetSize(100, 100).catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.resetSize(100, 100)', done);
-      });
-      console.log(msgStr + 'tempWnd.resetSize(100, 100) success');
-      console.log(msgStr + 'tempWnd.on windowSizeChange finished');
-      await sleep(1000);
-      tempWnd.off('windowSizeChange');
-      console.log(msgStr + 'tempWnd.off windowSizeChange finished');
-      sleep(1000);
-      listenerOffFlag = listenerStatus.pending;
-      await tempWnd.resetSize(200, 200).catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.resetSize(200, 200)', done);
-      });
-      console.log(msgStr + 'tempWnd.resetSize(200, 200) success');
-      setTimeout(() => {
-        if (listenerOffFlag === listenerStatus.finished) {
-          let apiStr = 'tempWnd.off windowSizeChange time wait';
-          unexpectedError(null, caseName, apiStr, done);
-        } else {
-          console.log(msgStr + 'tempWnd.off windowSizeChange time wait');
-          done();
-        }
-      }, 5000)
-    })
-    /**
 	  * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_001
 	  * @tc.name       Test setSystemBarEnableTest1
 	  * @tc.desc       Verify that the scene shows the status bar and hides the navigation bar
@@ -463,12 +404,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([navigation]) success');
-      setTimeout(() => {
-        if (statusFlag !== listenerStatus.finished || navigationFlag !== listenerStatus.finished) {
-          let apiStr = 'tempWnd.on systemBarTintChange time wait';
-          unexpectedError(null, caseName, apiStr, done);
-        }
-      }, 5000)
     })
 
     /**
@@ -591,12 +526,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-      setTimeout(() => {
-        if (statusFlag !== listenerStatus.finished || navigationFlag !== listenerStatus.finished) {
-          let apiStr = 'tempWnd.on systemBarTintChange time wait';
-          unexpectedError(null, caseName, apiStr, done);
-        }
-      }, 5000)
     })
 
     /**
@@ -706,11 +635,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           expect(TRUE_FLAG).assertFail();
         })
       }
-      setTimeout(() => {
-        console.log(msgStr + 'time wait finished. compareCount: ' + compareCount);
-        listenerFlag = listenerStatus.finished;
-        done();
-      }, 10000)
     })
 
     /**
@@ -809,16 +733,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           expect(TRUE_FLAG).assertFail();
         })
       }
-      setTimeout(() => {
-        console.log(msgStr + 'time wait finished. compareCount: ' + compareCount);
-        listenerFlag = listenerStatus.finished;
-        let ca = cloneColorArr;
-        if (ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length) {
-          unexpectedError(null, caseName, ' something compaer failed', done);
-        } else {
-          done();
-        }
-      }, 10000)
     })
 
     /**
@@ -928,6 +842,53 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
+    * @tc.number     SUB_WINDOW_CREATE_JSAPI_002
+    * @tc.name       Test createTest2
+    * @tc.desc       Verify the scenario of creating the system type window
+    */
+    it('createTest2', 0, async function (done) {
+      let caseName = 'createTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let loopCount = systemWindowTypeArr.length;
+      console.log(msgStr + ' loopCount: ' + loopCount);
+      let n = 0
+      for (let i = 0; i < loopCount; i++) {
+        //      for (let i = 0; i < 5; i++) {
+        let tempType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
+        let windId = 'createTest2' + i;
+        console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
+        let createData = await ohosWindow.create(context, windId, tempType).catch((err) => {
+          console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
+          unexpectedError(err, caseName, 'ohosWindow.create ' + tempType, done);
+          return;
+        })
+        expect(!!createData).assertTrue();
+        let tempWnd = createData
+        console.log(msgStr + 'ohosWindow.create ' + tempType + ' wnd: ' + tempWnd);
+        let proData = await tempWnd.getProperties().catch((err) => {
+          console.log(msgStr + 'tempWnd.getProperties err' + JSON.stringify(err));
+          unexpectedError(err, caseName, 'tempWnd.getProperties', done);
+          console.log(msgStr + 'tempWnd.getProperties err&&err.code' + JSON.stringify(err));
+          console.log(msgStr + 'tempWnd.getProperties success, !!data : ' + !!data);
+        })
+        expect(!!proData).assertTrue();
+        expect(proData.type == tempType).assertTrue();
+        console.log(msgStr + 'n：' + n);
+        if (proData.type == tempType) n++
+        console.log(msgStr + 'n++：' + n);
+        console.log(msgStr + 'i：' + i);
+        if (i + 1 == loopCount) {
+          if (n === loopCount) {
+            expect(true).assertTrue();
+          } else {
+            unexpectedError(err, caseName, 'tempWnd.getProperties', done);
+          }
+        }
+      }
+      done();
+    })
+    /**
 	 * @tc.number     SUB_WINDOW_CREATE_JSAPI_003
 	 * @tc.name       Test createTest3
 	 * @tc.desc       Verify the scenario of creating a window of a type that does not exist
@@ -944,6 +905,28 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         expect(err.code === 130).assertTrue();
         done();
       });
+    })
+    /**
+    * @tc.number     SUB_WINDOW_CREATE_JSAPI_004
+    * @tc.name       Test createTest4
+    * @tc.desc       Verify the scenario of creating a window with duplicate IDs
+    */
+    it('createTest4', 0, async function (done) {
+      let caseName = 'createTest4';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowId = 'sameids'
+      let ohosData = await ohosWindow.create(context, windowId, 1).catch((err) => {
+        console.log(msgStr + 'ohosWindow.create 1 once err: ' + JSON.stringify(err));
+        unexpectedError(err, caseName, 'ohosWindow.create', done);
+      })
+      expect(!!ohosData).assertTrue();
+      let ohosDataError = await ohosWindow.create(context, windowId, 1).catch((err) => {
+        console.log(msgStr + 'ohosWindow.create 1 twice err: ' + JSON.stringify(err));
+        expect(err.code).assertEqual(120)
+        done();
+      })
+      console.log(msgStr + 'ohosWindow.create 1 twice ohosDataError: ' + JSON.stringify(ohosDataError));
     })
     /**
     * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_001
@@ -1020,6 +1003,22 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
+    * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_004
+    * @tc.name       Test loadContentTest4
+    * @tc.desc       Verify the scenario of loading an existing page
+    */
+    it('loadContentTest4', 0, async function (done) {
+      let caseName = 'loadContentTest4';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let load4 = await windowStage.loadContent(null).catch((err) => {
+        expectedError(err, caseName, 'tempWnd.loadContent', done, 130);
+        console.log(msgStr + 'tempWnd.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+      });
+      console.log(msgStr + 'tempWnd.loadContent end load5=' + JSON.stringify(load4));
+      done();
+    })
+    /**
     * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_005
     * @tc.name       Test loadContentTest5
     * @tc.desc       Verify the scenario of loading an existing page
@@ -1083,7 +1082,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         console.log(msgStr + 'windowStage.createSubWindow(null) err=' + JSON.stringify(err));
       });
       console.log(msgStr + 'windowStage.createSubWindow end subWindow=' + JSON.stringify(subWindow));
-      done();
     })
     /**
     * @tc.number     SUB_WINDOW_GETSUBWINDOW_JSAPI_001
@@ -1146,6 +1144,35 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       })
       console.log(msgStr + 'mainWnd.getProperties lastPro:' + JSON.stringify(lastPro.isPrivacyMode));
       expect(!lastPro.isPrivacyMode).assertTrue();
+      done();
+    })
+    /**
+    * @tc.number     SUB_WINDOW_DESTROY_JSAPI_001
+    * @tc.name       Test destroyTest1
+    * @tc.desc       Verification window destruction scenario.
+    */
+    it('destroyTest1', 0, async function (done) {
+      let caseName = 'destroyTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let baseWndType = 1;
+      let windowId = 'destroyTest1';
+      console.log(msgStr + 'begin');
+      let tempWnd = await ohosWindow.create(context, windowId, baseWndType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create', done);
+      });
+      console.log(msgStr + 'ohosWindow.create ' + baseWndType + ' wnd: ' + tempWnd);
+      expect(!!tempWnd).assertTrue();
+      console.log(msgStr + 'tempWnd.destroy start');
+      await tempWnd.destroy().catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.destroy', done);
+        console.log(msgStr + 'destroy err : ' + JSON.stringify(err));
+      });
+      console.log(msgStr + 'tempWnd.destroy end');
+      let findWnd = await ohosWindow.find(windowId).catch((err) => {
+        expectedError(err, caseName, 'ohosWindow.find', done, 120);
+      });
+      console.log(msgStr + 'find findWnd: ' + JSON.stringify(findWnd));
+      expect(!findWnd).assertTrue();
       done();
     })
   })
