@@ -157,7 +157,9 @@ describe('fileio_stream_read', function () {
       let readout = await ss.read(new ArrayBuffer(4096),options);
       expect(readout.bytesRead == FILE_CONTENT.length-6).assertTrue();
       expect(readout.offset == 1).assertTrue();
-      let result = String.fromCharCode.apply(null, new Uint8Array(readout.buffer.slice(readout.offset,readout.offset+readout.bytesRead)));
+      let start = readout.offset;
+      let end = readout.offset+readout.bytesRead;
+      let result = String.fromCharCode.apply(null, new Uint8Array(readout.buffer.slice(start,end)));
       expect(result== "world").assertTrue();
       ss.closeSync();
       fileio.unlinkSync(fpath);
