@@ -203,7 +203,7 @@ export default function radioSecondJsunit() {
         radio.getRadioTech(0, (err, data) => {
             if (err) {
                 console.log(`Telephony_NetworkSearch_getRadioTech_Async_0500 fail err: ${err}`);
-                expect().assertFail();
+                expect(err.code === '-1').assertTrue();
                 done();
                 return;
             }
