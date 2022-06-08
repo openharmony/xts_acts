@@ -270,6 +270,58 @@ export default function httpRequestJsunit() {
       }
     });
 
+    /**
+     * @tc.number Telephony_http_HttpRequest_off_headersReceive_0200
+     * @tc.name httprequest::off_headersReceive_0200
+     * @tc.desc Test Test httprequest property.
+     */
+    it("Telephony_http_HttpRequest_off_headersReceive_0200", 0, function (done) {
+      var casename = "Telephony_http_HttpRequest_off_headersReceive_0200"
+      console.log("-----------------------HttpRequest_off_headersReceive Test is starting-----------------------");
+      try {
+        var httpRequest = http.createHttp();
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
+        httpRequest.off('headersReceive');
+        expect(true).assertTrue();
+        console.log("-----------------------HttpRequest_off_headersReceive_0200 Test end-----------------------");
+        done();
+      } catch (error) {
+        console.log("Telephony_http_HttpRequest_off_headersReceive_0200 : error = " + error);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number Telephony_http_HttpRequest_once_headersReceive_0100
+     * @tc.name httprequest::once_headersReceive_0100
+     * @tc.desc Test Test httprequest property.
+     */
+    it("Telephony_http_HttpRequest_once_headersReceive_0100", 0, function (done) {
+      var casename = "Telephony_http_HttpRequest_once_headersReceive_0100"
+      console.log("-----------------------HttpRequest_once_headersReceive Test is starting-----------------------");
+      try {
+        var httpRequest = http.createHttp();
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
+        httpRequest.once('headersReceive', (data) => {
+          console.log(casename + " data: " + JSON.stringify(data));
+          expect(true).assertTrue();
+          console.log("-----------------------HttpRequest_on_headersReceive Test end-----------------------");
+          done();
+        });
+
+      } catch (error) {
+        console.log("Telephony_http_HttpRequest_once_headersReceive_010 : error = " + error);
+        done();
+      }
+    });
 
   })
 

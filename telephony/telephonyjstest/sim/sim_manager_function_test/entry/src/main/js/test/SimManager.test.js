@@ -258,11 +258,6 @@ describe('SimManagerTest', function () {
     done();
   });
 
-  
- 
-
-  
-
   /**
     * @tc.number  Telephony_Sim_getDefaultVoiceSlotId_Async_0200
     * @tc.name    The test first sets the default card number and then calls
@@ -278,7 +273,7 @@ describe('SimManagerTest', function () {
         done();
         return;
       }
-      expect().assertFail();
+      expect(data === 0 || data === 1).assertTrue();
       done();
     });
   });
@@ -294,24 +289,13 @@ describe('SimManagerTest', function () {
     try {
       let data = await sim.getDefaultVoiceSlotId();
       console.log(`${CASE_NAME}, data = ${data}`);
-      expect().assertFail();
+      expect(data === 0 || data === 1).assertTrue();
     } catch (err) {
       console.log(`${CASE_NAME} expect err: ${err.message}`);
       console.log(`${CASE_NAME} finish`);
     }
     done();
   });
-
-  
-
- 
-
-  
-
-  
-
-
- 
 
   /**
    * @tc.number  Telephony_Sim_isSimActive_Async_0700
@@ -355,10 +339,6 @@ describe('SimManagerTest', function () {
     done();
   });
 
-  
-
- 
-
   /**
      * @tc.number  Telephony_Sim_hasSimCard_Async_0600
      * @tc.name    Test the slotId exception input parameter 2 of the hasSimCard interface,
@@ -401,19 +381,6 @@ describe('SimManagerTest', function () {
     done();
   });
 
-  
-
-  
-
-  
-
- 
-
- 
-
- 
-
-
   /**
    * @tc.number Telephony_Sim_getMaxSimCount_0100
    * @tc.name   Test the getMaxSimCount interface and view the callback result
@@ -426,7 +393,6 @@ describe('SimManagerTest', function () {
     console.log(`${CASE_NAME} test finish.`);
     done();
   });
-
 
   /**
    * @tc.number Telephony_Sim_GetCardType_Async_0400
@@ -468,10 +434,6 @@ describe('SimManagerTest', function () {
     done();
   });
 
-
-
- 
-
   /**
    * @tc.number Telephony_Sim_hasOperatorPrivileges_Async_0400
    * @tc.name   Test hasOperatorPrivileges interface slotId exception enter parameter 2,
@@ -511,4 +473,5 @@ describe('SimManagerTest', function () {
     }
     done();
   });
+
 })

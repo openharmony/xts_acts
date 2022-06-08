@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from "deccjsunit/index";
+import {describe, it, expect} from 'hypium/index';
 import connection from '@ohos.net.connection'
 import utils from './Utils.ets'
 
