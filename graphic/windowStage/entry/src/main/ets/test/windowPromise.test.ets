@@ -263,6 +263,159 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
     })
     /**
+    * @tc.number     SUB_WINDOW_ON_OFF_JSAPI_004
+    * @tc.name       Test listenerTest4
+    * @tc.desc       Verify whether the window size change monitoring can be closed normally.
+    */
+    it('listenerTest4', 0, async function (done) {
+      let caseName = 'listenerTest4';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let wndId = 'listenerTest4';
+      let baseType = 2;
+      let changedModel = 102;
+      let listenerOffFlag = listenerStatus.ready;
+      console.log(msgStr + 'begin');
+      let tempWnd = await ohosWindow.create(context, wndId, baseType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+      });
+      console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + tempWnd);
+      expect(!!tempWnd).assertTrue();
+      listenerData.on = true;
+      listenerData.typeStr = 'windowSizeChange';
+      tempWnd.on('windowSizeChange', (sizeData) => {
+        console.log(msgStr + 'tempWnd.on windowSizeChange, sizeData : ' + JSON.stringify(sizeData));
+        if (listenerOffFlag === listenerStatus.pending) {
+          listenerOffFlag = listenerStatus.finished;
+          unexpectedError(null, caseName, 'off windowSizeChange', done)
+        }
+      })
+      await tempWnd.show().catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.show', done);
+      });
+      console.log(msgStr + 'tempWnd.show success');
+      await tempWnd.setWindowMode(changedModel).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.setWindowMode ' + changedModel, done);
+      });
+      console.log(msgStr + 'tempWnd.setWindowMode ' + changedModel + ' success');
+      await tempWnd.resetSize(100, 100).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize(100, 100)', done);
+      });
+      console.log(msgStr + 'tempWnd.resetSize(100, 100) success');
+      console.log(msgStr + 'tempWnd.on windowSizeChange finished');
+      await sleep(1000);
+      tempWnd.off('windowSizeChange');
+      console.log(msgStr + 'tempWnd.off windowSizeChange finished');
+      sleep(1000);
+      listenerOffFlag = listenerStatus.pending;
+      await tempWnd.resetSize(200, 200).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize(200, 200)', done);
+        console.log(msgStr + 'tempWnd.resetSize(200, 200) err: ' + JSON.stringify(err));
+      });
+      console.log(msgStr + 'tempWnd.resetSize(200, 200) success');
+      setTimeout(() => {
+        if (listenerOffFlag === listenerStatus.finished) {
+          let apiStr = 'tempWnd.off windowSizeChange time wait';
+          unexpectedError(null, caseName, apiStr, done);
+        } else {
+          console.log(msgStr + 'tempWnd.off windowSizeChange time wait');
+          done();
+        }
+      }, 5000)
+    })
+    /**
+    * @tc.number     SUB_WINDOW_SETWINDOWTYPE_JSAPI_001
+    * @tc.name       Test setWindowTypeTest1
+    * @tc.desc       Test window.setWindowType API function test.
+    */
+    it('setWindowTypeTest1', 0, async function (done) {
+      let caseName = 'setWindowTypeTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let baseWndType = 1;
+      let windowId = 'setWindowTypeTest1';
+      console.log(msgStr + 'begin');
+      let tempWnd = null
+      let tempTypeArr = [];
+      tempWnd = await ohosWindow.create(context, windowId, baseWndType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create', done);
+      })
+      console.log(msgStr + 'ohosWindow.create ' + baseWndType + '   ,tempWnd: ' + tempWnd);
+      expect(!!tempWnd).assertTrue();
+      let loopCount1 = systemWindowTypeArr;
+      console.log(msgStr + 'ohosWindow.windowType' + JSON.stringify(loopCount1))
+      for (let i = 1; i < loopCount1.length; i++) {
+        let tempType = ohosWindow.WindowType[loopCount1[i]];
+        console.log(msgStr + 'tempWnd.setWindowType: ' + tempType + ' ,start');
+        tempTypeArr.push(tempType);
+        console.log(msgStr + 'tempTypeArr: ' + JSON.stringify(tempTypeArr));
+        let windowTypeData = await tempWnd.setWindowType(tempType).catch((err) => {
+          console.log(msgStr + 'tempWnd.setWindowType err' + JSON.stringify(err));
+        })
+        console.log(msgStr + 'tempWnd.setWindowType windowTypeData' + JSON.stringify(windowTypeData));
+        console.log(msgStr + 'tempWnd.setWindowType !windowTypeData' + !windowTypeData);
+        console.log(msgStr + 'tempWnd.setWindowType ' + tempType + ' end');
+        if (!windowTypeData) {
+          expect(!windowTypeData).assertTrue();
+          let prodata = await tempWnd.getProperties().catch((err) => {
+            console.log(msgStr + 'tempWnd.getProperties err' + JSON.stringify(err));
+            unexpectedError(err, caseName, 'tempWnd.getProperties', done);
+          })
+          console.log(msgStr + 'tempWnd.getProperties prodata' + JSON.stringify(prodata));
+          console.log(msgStr + 'tempWnd.getProperties !!prodata' + !!prodata);
+          expect(!!prodata).assertTrue();
+          if (!!prodata) {
+            tempTypeArr.splice(tempTypeArr.findIndex(item => item === prodata.type), 1);
+            console.log(msgStr + '(loopCount1.length - i): ' + (loopCount1.length - i));
+            console.log(msgStr + '(tempTypeArr.length + 1): ' + (tempTypeArr.length + 1));
+            if (i == loopCount1.length - 1) {
+              expect((loopCount1.length - i) == (tempTypeArr.length + 1)).assertTrue();
+              console.log(msgStr + 'tempWnd.getProperties i=' + i + '   ,    loopCount1.length-1==' + loopCount1.length);
+              done();
+            }
+          } else {
+            unexpectedError(err, caseName, 'tempWnd.getProperties', done);
+          }
+        } else {
+          unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+        }
+      }
+    })
+    /**
+    * @tc.number     SUB_WINDOW_SETWINDOWTYPE_JSAPI_002
+    * @tc.name       Test setWindowTypeTest2
+    * @tc.desc       Test window.setWindowType API function test.
+    */
+    it('setWindowTypeTest2', 0, async function (done) {
+      let caseName = 'setWindowTypeTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let baseWndType = 1;
+      let changedWndType = null;
+      let windowId = 'setWindowTypeTest2';
+      console.log(msgStr + 'begin');
+      let tempWnd = null
+      tempWnd = await ohosWindow.create(context, windowId, baseWndType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create', done);
+      })
+      console.log(msgStr + 'ohosWindow.create tempWnd' + JSON.stringify(tempWnd));
+      console.log(msgStr + 'ohosWindow.create !!tempWnd' + !!tempWnd);
+      if (!!tempWnd) {
+        expect(!!tempWnd).assertTrue();
+        let windowTypeData = await tempWnd.setWindowType(changedWndType).catch((err) => {
+          console.log(msgStr + 'tempWnd.setWindowType err: ' + JSON.stringify(err));
+          expectedError(err, caseName, 'tempWnd.setWindowType', done, 130);
+        })
+        console.log(msgStr + 'tempWnd.setWindowType windowTypeData' + JSON.stringify(windowTypeData));
+        console.log(msgStr + 'tempWnd.setWindowType !windowTypeData' + !windowTypeData);
+        if (!!windowTypeData) {
+          unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
+        } else {
+          expect(err.code == 130).assertTrue();
+          done();
+        }
+      } else {
+        unexpectedError(err, caseName, 'ohosWindow.create', done);
+      }
+    })
+    /**
 	  * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_001
 	  * @tc.name       Test setSystemBarEnableTest1
 	  * @tc.desc       Verify that the scene shows the status bar and hides the navigation bar
@@ -854,7 +1007,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + ' loopCount: ' + loopCount);
       let n = 0
       for (let i = 0; i < loopCount; i++) {
-        //      for (let i = 0; i < 5; i++) {
         let tempType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
         let windId = 'createTest2' + i;
         console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
