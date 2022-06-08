@@ -31,6 +31,7 @@ group("aafwk_standard") {
       "amsdisplayIdtest:amsdisplayIdtest",
       "amsgetabilityprocessinfo:amsgetabilityprocessinfo",
       "context:context",
+      "fa:fa",
       "featureability:featureability",
       "formmanager:formmanager",
       "killprocesswithaccountstage:killprocesswithaccountstage",
