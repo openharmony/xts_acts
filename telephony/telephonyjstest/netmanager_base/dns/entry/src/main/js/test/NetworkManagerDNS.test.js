@@ -25,7 +25,7 @@ describe('Telephony_NETMANAGER_TestDNSTest',function(){
         netConnection.getDefaultNet().then(function(netHandle){
             netHandle.getAddressesByName("www.zhihu.com").then(function(addresses){
                 if(addresses === undefined || addresses.length == 0 ){
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0100 addresses id undefined '+addresses);
+                    console.log('Telephony_NETMANAGER_TestDNS_Test0100 addresses is '+addresses);
                     expect(false).assertFail();
                 }else{
                     console.log('Telephony_NETMANAGER_TestDNS_Test0100 is success');
@@ -41,7 +41,7 @@ describe('Telephony_NETMANAGER_TestDNSTest',function(){
         netConnection.getDefaultNet().then(function(netHandle){
             netHandle.getAddressesByName("www.zhihu.com", function(err, addresses){
                 if(addresses === undefined || addresses.length == 0 ){
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0200 addresses id undefined '+addresses);
+                    console.log('Telephony_NETMANAGER_TestDNS_Test0200 addresses is '+addresses);
                     expect(false).assertFail();
                 }else{
                     console.log('Telephony_NETMANAGER_TestDNS_Test0200 is success');
@@ -58,7 +58,7 @@ describe('Telephony_NETMANAGER_TestDNSTest',function(){
         netConnection.getDefaultNet().then(function(netHandle){
             netHandle.getAddressByName("www.zhihu.com").then(function(address){
                 if(address === undefined){
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0300 addresses id undefined '+address);
+                    console.log('Telephony_NETMANAGER_TestDNS_Test0300 addresses is '+address);
                     expect(false).assertFail();
                 }else{
                     console.log('Telephony_NETMANAGER_TestDNS_Test0300 is success');
@@ -72,9 +72,9 @@ describe('Telephony_NETMANAGER_TestDNSTest',function(){
     it('Telephony_NETMANAGER_TestDNS_Test0400', 0, function(done){
 
         netConnection.getDefaultNet().then(function(netHandle){
-            netHandle.getAddressByName("www.baidu.com", function(err, address){
+            netHandle.getAddressByName("www.baisu.com", function(err, address){
                 if(address === undefined ){
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0400 addresses id undefined '+address);
+                    console.log('Telephony_NETMANAGER_TestDNS_Test0400 addresses is '+address);
                     expect(false).assertFail();
                 }else{
                     console.log('Telephony_NETMANAGER_TestDNS_Test0400 is success');
@@ -88,11 +88,13 @@ describe('Telephony_NETMANAGER_TestDNSTest',function(){
     it('Telephony_NETMANAGER_TestDNS_Test0500', 0, function(done){
 
         netConnection.getDefaultNet().then(function(netHandle){
-            netHandle.getAddressesByName("www.askjdbaksjnhd.com").catch(function(error){
+            netHandle.getAddressesByName("www.askjdbaksjnhd.com").then(function(error){
                 if(error === undefined){
+                    console.log('Telephony_NETMANAGER_TestDNS_Test0500 addresses is '+address);
                     expect(false).assertTrue();
                 }else{
-                    expect(true).assertTrue()
+                    console.log('Telephony_NETMANAGER_TestDNS_Test0500 is success');
+                    expect(true).assertTrue();
                 }
                 done();
             })
@@ -104,7 +106,7 @@ describe('Telephony_NETMANAGER_TestDNSTest',function(){
         netConnection.getDefaultNet().then(function(netHandle){
             netHandle.getAddressesByName("www.askjdbaksjnhd.com", function(err, addresses){
                 if(addresses instanceof Array && addresses.length !== 0 ){
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0600 addresses id undefined '+addresses);
+                    console.log('Telephony_NETMANAGER_TestDNS_Test0600 addresses is '+addresses);
                     expect(false).assertFail();
                 }else{
                     console.log('Telephony_NETMANAGER_TestDNS_Test0600 is success');
@@ -119,11 +121,13 @@ describe('Telephony_NETMANAGER_TestDNSTest',function(){
     it('Telephony_NETMANAGER_TestDNS_Test0700', 0, function(done){
 
         netConnection.getDefaultNet().then(function(netHandle){
-            netHandle.getAddressesByName("www.askjdbaksjnhd.com").catch(function(error){
-                if(error === undefined){
+            netHandle.getAddressByName("www.askjdbaksjnhd.com").then(function(error){
+                if(error !== undefined){
+                    console.log('Telephony_NETMANAGER_TestDNS_Test0700 error is '+error);
                     expect(false).assertTrue();
                 }else{
-                    expect(true).assertTrue()
+                    console.log('Telephony_NETMANAGER_TestDNS_Test0700 is success');
+                    expect(true).assertTrue();
                 }
                 done();
             })
@@ -133,9 +137,9 @@ describe('Telephony_NETMANAGER_TestDNSTest',function(){
     it('Telephony_NETMANAGER_TestDNS_Test0800', 0, function(done){
 
         netConnection.getDefaultNet().then(function(netHandle){
-            netHandle.getAddressesByName("www.askjdbaksjnhd.com", function(err, address){
+            netHandle.getAddressByName("www.askjdbaksjnhd.com", function(err, address){
                 if(address !== undefined ){
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0800 addresses id undefined '+address);
+                    console.log('Telephony_NETMANAGER_TestDNS_Test0800 address is undefined '+address);
                     expect(false).assertFail();
                 }else{
                     console.log('Telephony_NETMANAGER_TestDNS_Test0800 is success');

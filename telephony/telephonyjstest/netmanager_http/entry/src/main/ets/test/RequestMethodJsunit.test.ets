@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, afterAll, it, expect, afterEach} from 'deccjsunit/index.ets';
+import {describe, beforeAll, afterAll, it, expect, afterEach} from 'hypium/index';
 import http from '@ohos.net.http';
 import utils from './Utils.ets'
 
