@@ -89,7 +89,7 @@ describe('ActsAccountAssociatedData', function () {
         }
         catch(err){
             console.error("====>add Account ActsAccountAssociatedData_0200 err:" + JSON.stringify(err));
-            expect().asserFail();
+            expect().assertFail();
             done();
         }
         console.debug("====>setAssociatedData ActsAccountAssociatedData_0200 start====");
@@ -98,7 +98,7 @@ describe('ActsAccountAssociatedData', function () {
         }
         catch(err){
             console.error("====>setAssociatedData ActsAccountAssociatedData_0200 err:" + JSON.stringify(err));
-            expect().asserFail();
+            expect().assertFail();
             done();
         }
         console.debug("====>getAssociatedData ActsAccountAssociatedData_0200 start====");
@@ -107,7 +107,7 @@ describe('ActsAccountAssociatedData', function () {
         }
         catch(err){
             console.error("====>getAssociatedData ActsAccountAssociatedData_0200 err:" + JSON.stringify(err));
-            expect().asserFail();
+            expect().assertFail();
             done();
         }
         console.debug("====>getAssociatedData ActsAccountAssociatedData_0200 data:" + JSON.stringify(data));
@@ -167,7 +167,7 @@ describe('ActsAccountAssociatedData', function () {
         }
         catch(err){
             console.error("====>add Account ActsAccountAssociatedData_0400 err:" + JSON.stringify(err));
-            expect().asserFail();
+            expect().assertFail();
             done();
         }
         try{
@@ -240,7 +240,7 @@ describe('ActsAccountAssociatedData', function () {
         }
         catch(err){
             console.error("====>add Account ActsAccountAssociatedData_0600 fail err:" + JSON.stringify(err));
-            expect().asserFail();
+            expect().assertFail();
             done();
         }
         await appAccountManager.setAssociatedData("account_name_0600", "key6", "value6");
