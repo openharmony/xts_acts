@@ -101,7 +101,7 @@ describe("ActsCellularDataAbnormalTest", function () {
      * @tc.desc     Function test
      */
     it("Telephony_CellularData_getDefaultCellularDataSlotId_Async_0500", 0, async function (done) {
-        cellular.getDefaultCellularDataSoltId((err) => {
+        cellular.getDefaultCellularDataSlotId((err) => {
             if (!err) {
                 expect(true).assertTrue();
                 console.info("Telephony_CellularData_getDefaultCellularDataSlotId_Async_0500 finish");
@@ -193,7 +193,7 @@ describe("ActsCellularDataAbnormalTest", function () {
      */
     it("Telephony_CellularData_getDefaultCellularDataSlotId_Promise_0500", 0, async function (done) {
         try {
-            await cellular.getDefaultCellularDataSoltId();
+            await cellular.getDefaultCellularDataSlotId();
             console.info("Telephony_CellularData_getDefaultCellularDataSlotId_Promise_0500 finish");
             done();
         } catch (err) {
