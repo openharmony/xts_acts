@@ -71,14 +71,14 @@ describe('ApplicationInfoTest', function () {
         }
 
         function UnSubscribeCallback() {
-            console.debug("====>SUB_AA_OpenHarmony_Want_0200 UnSubscribe CallBack====>");
+            console.debug(TAG + "====>UnSubscribe CallBack====>");
             done();
         }
 
         commonEvent.createSubscriber(getCallingBundleUri).then(async (data) => {
-            console.info(TAG + '====>SUB_AA_OpenHarmony_Want_0200 Create Subscriber====');
+            console.info(TAG + '====>Create Subscriber====');
             Subscriber = data;
-            console.info(TAG + '====>SUB_AA_OpenHarmony_Want_0200 Create Subscriber111111111====' + JSON.stringify(data) );
+            console.info(TAG + '====>Create Subscriber====' + JSON.stringify(data) );
             await commonEvent.subscribe(Subscriber, SubscribeCallBackUri);
         });
 

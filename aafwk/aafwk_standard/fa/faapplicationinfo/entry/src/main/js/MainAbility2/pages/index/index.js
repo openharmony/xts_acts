@@ -39,9 +39,8 @@ export default {
         console.info('======Start MainAbility2 onShow======');
         featureAbility.getWant(
             (err, data) => {
-                console.info("==========data=" + JSON.stringify(data));
-                console.info("========== zxf data123 =" + JSON.stringify(data) + JSON.stringify(err));
                 if (data.uri == '{true,true,false}'){
+                    console.info("SUB_AA_OpenHarmony_Want_0200_StartAbility" + JSON.stringify(data) + JSON.stringify(err));
                     event = data.uri
                     commonEventPublishData = {
                         data: event,
@@ -49,7 +48,7 @@ export default {
                     commonEvent.publish('SUB_AA_OpenHarmony_Want_0200_CommonEvent', commonEventPublishData, PublishCallBackOne);
                 } 
                 if (data.type == 'MIMETYPE'){
-                    console.info("========== zxf data124 =" + JSON.stringify(data) + JSON.stringify(err));
+                    console.info("SUB_AA_OpenHarmony_Want_0300_StartAbility" + JSON.stringify(data) + JSON.stringify(err));
                     event = data.type
                     commonEventPublishData = {
                         data: event,
