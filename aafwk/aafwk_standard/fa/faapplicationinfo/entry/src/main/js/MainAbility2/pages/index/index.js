@@ -40,20 +40,24 @@ export default {
         featureAbility.getWant(
             (err, data) => {
                 if (data.uri == '{true,true,false}'){
-                    console.info("SUB_AA_OpenHarmony_Want_0200_StartAbility" + JSON.stringify(data) + JSON.stringify(err));
+                    console.info("SUB_AA_OpenHarmony_Want_0200_StartAbility" + JSON
+                    .stringify(data) + JSON.stringify(err));
                     event = data.uri
                     commonEventPublishData = {
                         data: event,
                     }
-                    commonEvent.publish('SUB_AA_OpenHarmony_Want_0200_CommonEvent', commonEventPublishData, PublishCallBackOne);
+                    commonEvent.publish('SUB_AA_OpenHarmony_Want_0200_CommonEvent',
+                    commonEventPublishData, PublishCallBackOne);
                 } 
                 if (data.type == 'MIMETYPE'){
-                    console.info("SUB_AA_OpenHarmony_Want_0300_StartAbility" + JSON.stringify(data) + JSON.stringify(err));
+                    console.info("SUB_AA_OpenHarmony_Want_0300_StartAbility" + JSON
+                    .stringify(data) + JSON.stringify(err));
                     event = data.type
                     commonEventPublishData = {
                         data: event,
                     }
-                    commonEvent.publish('SUB_AA_OpenHarmony_Want_0300_CommonEvent', commonEventPublishData, PublishCallBackTwo);
+                    commonEvent.publish('SUB_AA_OpenHarmony_Want_0300_CommonEvent',
+                    commonEventPublishData, PublishCallBackTwo);
 
                 }
             }
@@ -63,5 +67,3 @@ export default {
         console.info('ApplicationInfo MainAbility2 onReady');
     },
 }
-
-

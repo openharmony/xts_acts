@@ -25,7 +25,6 @@ ohos_js_hap_suite("ActsApplicationinfoTest") {
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./entry/src/main/js"
   hap_profile = "entry/src/main/config.json"
-  js2abc = true
 }
 ohos_resources("hjs_demo_resources") {
   sources = [ "./entry/src/main/js/resources" ]

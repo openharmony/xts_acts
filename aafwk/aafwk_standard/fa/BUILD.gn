@@ -17,10 +17,8 @@ group("fa") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "faapplicationinfo:ActsApplicationinfoTest",
       "faconfigurationconstant:ActsConfigurationconstantTest",
       "facoverapi:ActsCoverapiTest",
-      "faequeryabilitybywant:ActsEqueryabilitybywantTest",
     ]
   }
 }
