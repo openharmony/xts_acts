@@ -533,8 +533,8 @@ describe("ArraylistTest", function () {
     arrayList.removeByRange(0, 9);
     let res = arrayList.length;
     let res1 = arrayList.getLastIndexOf(1);
-    expect(res).assertEqual(1);
-    expect(res1).assertEqual(0);
+    expect(res).assertEqual(0);
+    expect(res1).assertEqual(-1);
   });
   it("SR000GGR44_testSubArrayList040", 0, function () {
     let arrayList = new ArrayList();
@@ -701,5 +701,21 @@ describe("ArraylistTest", function () {
     for (let i = 0; i < a.length; i++) {
       expect(arr[i]).assertEqual(a[i]);
     }
+  });
+  it("SR000GGR44_testRemoveByRange052", 0, function () {
+    let arrayList = new ArrayList();
+    arrayList.add("四");
+    arrayList.add("三");
+    arrayList.add(1);
+    arrayList.add("a");
+    arrayList.add(1);
+    arrayList.add("b");
+    arrayList.add("c");
+    arrayList.add(1);
+    arrayList.removeByRange(0, 8);
+    let res = arrayList.length;
+    let res1 = arrayList.getLastIndexOf(1);
+    expect(res).assertEqual(1);
+    expect(res1).assertEqual(0);
   });
 });
