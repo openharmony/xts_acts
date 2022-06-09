@@ -113,7 +113,7 @@ describe('fileio_stream_write', function () {
   /**
    * @tc.number SUB_DF_FILEIO_STREAM_WRITEASYNC_0300
    * @tc.name fileio_test_stream_write_async_003
-   * @tc.desc Test write() interface,When the length is 1.
+   * @tc.desc Test write() interface,When the offset is 1 and position is 5.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -126,9 +126,14 @@ describe('fileio_stream_write', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
-      let content = "hello, world";
-      let bytesWritten = await ss.write(content, { length: 1, encoding: 'utf-8' });
-      expect(bytesWritten == 1).assertTrue();
+      let content = "test";
+      let bytesWritten = await ss.write(content, {offset:1, position:5, encoding: 'utf-8' });
+      expect(bytesWritten == content.length-1).assertTrue();
+      let readOut = await ss.read(new ArrayBuffer(4096), {offset:0,position: 0});
+      let start = readOut.offset;
+      let end = readOut.offset+readOut.bytesRead;
+      let result = String.fromCharCode.apply(null, new Uint8Array(readOut.buffer.slice(start,end)));
+      expect(result == "helloestrld").assertTrue();
       fileio.unlinkSync(fpath);
       ss.closeSync();
       done();
@@ -330,7 +335,7 @@ describe('fileio_stream_write', function () {
   /**
    * @tc.number SUB_DF_FILEIO_STREAM_WRITEASYNC_1100
    * @tc.name fileio_test_stream_write_async_011
-   * @tc.desc Test write() interface,When the length is negative.
+   * @tc.desc Test write() interface,When the length is negative,equivalent to omitting the parameter.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -343,15 +348,13 @@ describe('fileio_stream_write', function () {
     expect(ss !== null).assertTrue();
     try {
       let content = "hello, world";
-      let number = await ss.write(content, {length:-1});
-      console.info("====>"+number);
-      done();
-    } catch (err) {
-      console.info('fileio_test_stream_write_async_011 has failed for ' + err);
-      expect(err.message == "Invalid option.length, positive integer is desired").assertTrue();
+      let number = await ss.write(content, {offset:1 ,length:-1});
+      expect(number == content.length-1).assertTrue();
       fileio.unlinkSync(fpath);
       ss.closeSync();
       done();
+    } catch (err) {
+      console.info('fileio_test_stream_write_async_011 has failed for ' + err);
     }
   });
 
@@ -427,6 +430,32 @@ describe('fileio_stream_write', function () {
     } catch (err) {
       console.info('fileio_test_stream_write_async_014 has failed for ' + err);
       expect(err.message == "Invalid option.length, buffer limit exceeded").assertTrue();
+      fileio.unlinkSync(fpath);
+      ss.closeSync();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_STREAM_WRITEASYNC_1500
+   * @tc.name fileio_test_stream_write_async_015
+   * @tc.desc Test write() interface,When the position is negative.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+   it('fileio_test_stream_write_async_015', 0, async function (done) {
+    let fpath = await nextFileName('fileio_test_stream_write_async_015');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let ss = fileio.createStreamSync(fpath, 'r+');
+    expect(ss !== null).assertTrue();
+    try {
+      let content = "hello, world";
+      await ss.write(content, {position:-1});
+    } catch (err) {
+      console.info('fileio_test_stream_write_async_015 has failed for ' + err);
+      expect(err.message == "option.position shall be positive number").assertTrue();
       fileio.unlinkSync(fpath);
       ss.closeSync();
       done();
