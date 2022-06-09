@@ -96,7 +96,6 @@ export default function textJsunit() {
       console.log("cd text visibility" + JSON.stringify(obj.$attrs.visibility));
       console.log("cd text fontSize" + JSON.stringify(obj.$attrs.fontSize));
       console.log("cd text minFontSize" + JSON.stringify(obj.$attrs.minFontSize));
-      console.log("cd text letterSpacing" + JSON.stringify(obj.$attrs.letterSpacing));
       console.log("cd text maxFontSize" + JSON.stringify(obj.$attrs.maxFontSize));
       console.log("cd text fontWeight" + JSON.stringify(obj.$attrs.fontWeight));
       console.log("cd text fontStyle" + JSON.stringify(obj.$attrs.fontStyle));

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 // @ts-nocheck
 import router from '@system.router'
 
@@ -126,10 +126,9 @@ struct text_textcase {
         .enabled(this.enabled)
         .zIndex(this.zIndex)
         .fontColor(this.fontColor)
-        .fontSize(this.fontSize)
-        .minFontSize(this.minFontSize)
-        .letterSpacing(this.letterSpacing)
-        .maxFontSize(this.maxFontSize)
+        .fontSize(15)
+        .minFontSize(15)
+        .maxFontSize(15)
         .fontWeight(this.fontWeight)
         .fontStyle(this.fontStyle)
         .fontFamily("sans-serif")

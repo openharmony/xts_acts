@@ -115,7 +115,7 @@ export default function ellipseJsunit() {
       try {
         var eventData = {
           data: {
-            "width": '1111111111111'
+            "width": '1111111111111.00px'
           }
         }
         var innerEvent = {
@@ -141,7 +141,7 @@ export default function ellipseJsunit() {
       try {
         var eventData = {
           data: {
-            "height": '12111111111111'
+            "height": '12111111111111.00px'
           }
         }
         var innerEvent = {
@@ -167,7 +167,7 @@ export default function ellipseJsunit() {
       try {
         var eventData = {
           data: {
-            "height": '-40'
+            "height": '-40.00px'
           }
         }
         var innerEvent = {
@@ -193,7 +193,7 @@ export default function ellipseJsunit() {
       try {
         var eventData = {
           data: {
-            "width": '-10'
+            "width": '-10.00px'
           }
         }
         var innerEvent = {
