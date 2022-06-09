@@ -17,6 +17,7 @@ import ConfigurationConstant from '@ohos.application.ConfigurationConstant'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 describe('ConfigurationTest', function () {
+
     /*
      * @tc.number  SUB_AA_OpenHarmony_ConfigurationConstant_colorMode_0100
      * @tc.name    colorMode is "ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT"

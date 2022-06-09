@@ -19,6 +19,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 let userId;
 describe('AbilityDisable', function () {
+
      /*
          * @tc.number  SUB_AA_OpenHarmony_EqueryAbilityByWant_0100
          * @tc.name    Call queryAbilityByWant to get moduleName
