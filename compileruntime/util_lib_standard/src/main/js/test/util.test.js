@@ -541,6 +541,42 @@ describe('TextEncoderTest', function () {
     })
 
     /**
+     * @tc.name: testFatal006
+     * @tc.desc: Returns `true` if error mode is "fatal", and `false` otherwise.
+     * @tc.require: AR000GFB4U
+     * @tc.author: wangben
+     */
+     it('testFatal006', 0, function () {
+        var that = new util.TextDecoder('gbk')
+        var fatalStr = that.fatal
+        expect(fatalStr).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testFatal007
+     * @tc.desc: Returns `true` if error mode is "fatal", and `false` otherwise.
+     * @tc.require: AR000GFB4U
+     * @tc.author: wangben
+     */
+     it('testFatal007', 0, function () {
+        var that = new util.TextDecoder('gb18030')
+        var fatalStr = that.fatal
+        expect(fatalStr).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testFatal008
+     * @tc.desc: Returns `true` if error mode is "fatal", and `false` otherwise.
+     * @tc.require: AR000GFB4U
+     * @tc.author: wangben
+     */
+     it('testFatal008', 0, function () {
+        var that = new util.TextDecoder('gb2312')
+        var fatalStr = that.fatal
+        expect(fatalStr).assertEqual(false)
+    })
+
+    /**
      * @tc.name: testIgnoreBOM001
      * @tc.desc: Returns `true` if ignore BOM flag is set, and `false` otherwise.
      * @tc.require: AR000GFB4U
@@ -600,6 +636,41 @@ describe('TextEncoderTest', function () {
         expect(ignoreBOMStr).assertEqual(false)
     })
 
+    /**
+     * @tc.name: testIgnoreBOM006
+     * @tc.desc: Returns `true` if ignore BOM flag is set, and `false` otherwise.
+     * @tc.require: AR000GFB4U
+     * @tc.author: wangben
+     */
+     it('testIgnoreBOM006', 0, function () {
+        var that = new util.TextDecoder('gbk')
+        var ignoreBOMStr = that.ignoreBOM
+        expect(ignoreBOMStr).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIgnoreBOM006
+     * @tc.desc: Returns `true` if ignore BOM flag is set, and `false` otherwise.
+     * @tc.require: AR000GFB4U
+     * @tc.author: wangben
+     */
+     it('testIgnoreBOM006', 0, function () {
+        var that = new util.TextDecoder('gb18030')
+        var ignoreBOMStr = that.ignoreBOM
+        expect(ignoreBOMStr).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIgnoreBOM008
+     * @tc.desc: Returns `true` if ignore BOM flag is set, and `false` otherwise.
+     * @tc.require: AR000GFB4U
+     * @tc.author: wangben
+     */
+     it('testIgnoreBOM008', 0, function () {
+        var that = new util.TextDecoder('gb2312')
+        var ignoreBOMStr = that.ignoreBOM
+        expect(ignoreBOMStr).assertEqual(false)
+    })
 
     /**
      * @tc.name: testDecode001
@@ -702,6 +773,72 @@ describe('TextEncoderTest', function () {
         var rel = 'abc'
         var re = BOM + rel
         expect(retStr).assertEqual(re)
+    })
+
+    /**
+     * @tc.name: testDecode006
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.require: AR000GFB4U
+     * @tc.author: wangben
+     */
+     it('testDecode006', 0, function () {
+        var that = new util.TextDecoder('gbk')
+        var arr = new Uint8Array(8)
+        arr[0] = 0xC4;
+        arr[1] = 0xE3;
+        arr[2] = 0xBA;
+        arr[3] = 0xC3;
+        arr[4] = 0xCA;
+        arr[5] = 0xC0;
+        arr[6] = 0xBD;
+        arr[7] = 0xE7;
+        var retStr = that.decode(arr)
+        var rel = '你好世界'
+        expect(retStr).assertEqual(rel)
+    })
+
+    /**
+     * @tc.name: testDecode007
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.require: AR000GFB4U
+     * @tc.author: wangben
+     */
+     it('testDecode007', 0, function () {
+        var that = new util.TextDecoder('gb18030')
+        var arr = new Uint8Array(8)
+        arr[0] = 0xC4;
+        arr[1] = 0xE3;
+        arr[2] = 0xBA;
+        arr[3] = 0xC3;
+        arr[4] = 0xCA;
+        arr[5] = 0xC0;
+        arr[6] = 0xBD;
+        arr[7] = 0xE7;
+        var retStr = that.decode(arr)
+        var rel = '你好世界'
+        expect(retStr).assertEqual(rel)
+    })
+
+    /**
+     * @tc.name: testDecode008
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.require: AR000GFB4U
+     * @tc.author: wangben
+     */
+     it('testDecode008', 0, function () {
+        var that = new util.TextDecoder('gb2312')
+        var arr = new Uint8Array(8)
+        arr[0] = 0xC4;
+        arr[1] = 0xE3;
+        arr[2] = 0xBA;
+        arr[3] = 0xC3;
+        arr[4] = 0xCA;
+        arr[5] = 0xC0;
+        arr[6] = 0xBD;
+        arr[7] = 0xE7;
+        var retStr = that.decode(arr)
+        var rel = '你好世界'
+        expect(retStr).assertEqual(rel)
     })
 
     /**
