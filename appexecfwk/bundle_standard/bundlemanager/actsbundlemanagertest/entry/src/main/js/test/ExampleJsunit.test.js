@@ -712,7 +712,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.moduleSourceDirs.length).assertLarger(0);
                 for (let j = 0; j < datainfo.moduleInfos.length; j++) {
                     expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry");
-                expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0);
+                    expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0);
                 }
                 done();
             }).catch(err => {
