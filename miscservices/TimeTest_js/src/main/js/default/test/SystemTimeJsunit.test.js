@@ -23,7 +23,7 @@ import {
     it,
     expect,
   } from "deccjsunit/index";
-  import systemTime from "@ohos.systemtime";
+  import systemTime from "@ohos.systemTime";
   
   describe("TimeTest", function () {
     console.log("start################################start");  
