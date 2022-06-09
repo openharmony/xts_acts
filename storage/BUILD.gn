@@ -19,7 +19,6 @@ group("storage") {
       "storagefileioerrorjstest:storagefileioerror_js_test",
       "storagefileiojstest:storagefileio_js_test",
       "storagefilejstest:storagefile_js_test",
-      "storagesecuritylabeljstest:storagesecuritylabel_js_test",
       "storagestatfsjstest:storagestatfs_js_test",
     ]
   }
