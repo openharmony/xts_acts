@@ -17,10 +17,6 @@ import fileio from '@ohos.fileio';
 import file from '@system.file';
 import {
   describe,
-  beforeAll,
-  beforeEach,
-  afterEach,
-  afterAll,
   it,
   expect
 }

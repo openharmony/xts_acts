@@ -19,7 +19,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 export const FILE_CONTENT = 'hello world';
 
 import {
-  describe, beforeAll, beforeEach, afterEach, afterAll, it, expect
+  describe, it, expect
 }
 from 'deccjsunit/index'
 
@@ -80,8 +80,8 @@ export function nextFileName1(testName) {
 }
 export async function nextFileName(testName) {
   let context = featureAbility.getContext();
-  let data = await context.getFilesDir();
-  let BASE_PATH = data.substring(0, data.length - 5) + 'cache/';
+  let data = await context.getCacheDir();
+  let BASE_PATH = data + '/';
   return BASE_PATH + testName + '_' + randomString(testName.length);
 }
 export async function fileName(testName) {
@@ -120,10 +120,6 @@ export {
   isString,
   isBoolean,
   describe,
-  beforeAll,
-  beforeEach,
-  afterEach,
-  afterAll,
   it,
   expect
 };
