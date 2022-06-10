@@ -1,5 +1,5 @@
 import Ability from '@ohos.application.Ability'
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 function publishCallBackOne () {
     console.log("========Publish CallBack AMS_ConnectAbility_0200_commonEvent========");
 }

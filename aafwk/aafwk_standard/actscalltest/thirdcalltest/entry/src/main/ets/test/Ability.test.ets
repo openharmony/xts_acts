@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 import missionManager from '@ohos.application.missionManager'
 
 const MAX_MISSION_NUM = 1024;

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import Ability from '@ohos.application.Ability'
-import commonEvent from "@ohos.commonevent"
+import commonEvent from "@ohos.commonEvent"
 
 export default class MainAbility2 extends Ability {
 

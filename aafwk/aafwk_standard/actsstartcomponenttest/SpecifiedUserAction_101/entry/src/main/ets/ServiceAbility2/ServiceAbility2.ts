@@ -14,7 +14,7 @@
  */
 
 import ServiceExtension from '@ohos.application.ServiceExtensionAbility'
-import commonEvent from "@ohos.commonevent"
+import commonEvent from "@ohos.commonEvent"
 import rpc from '@ohos.rpc';
 class Stub extends rpc.RemoteObject {
   constructor(des) {

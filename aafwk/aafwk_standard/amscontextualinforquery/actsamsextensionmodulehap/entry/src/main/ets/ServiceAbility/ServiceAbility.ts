@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import Extension from '@ohos.application.ServiceExtensionAbility'
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 
 
 export default class ServiceExtAbility extends Extension {

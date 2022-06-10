@@ -14,7 +14,7 @@
  */
 
 import Ability from '@ohos.application.Ability'
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 
 export default class SecondAbility extends Ability {
 

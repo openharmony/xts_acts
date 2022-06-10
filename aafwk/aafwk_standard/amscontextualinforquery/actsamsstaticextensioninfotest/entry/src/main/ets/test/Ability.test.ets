@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import commonEvent from "@ohos.commonevent"
+import commonEvent from "@ohos.commonEvent"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 const START_ABILITY_TIMEOUT = 5000;

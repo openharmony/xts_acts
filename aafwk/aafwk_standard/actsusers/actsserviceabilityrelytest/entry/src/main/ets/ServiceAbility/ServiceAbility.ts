@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import ServiceExtensionAbility from '@ohos.application.ServiceExtensionAbility'
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 function publishCallBackOne () {
     console.log("========Publish CallBack AMS_ConnectAbility_0100_commonEvent========");
 }
