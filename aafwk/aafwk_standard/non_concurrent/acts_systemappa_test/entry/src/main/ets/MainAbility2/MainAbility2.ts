@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import Ability from '@ohos.application.Ability'
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 function PublishCallBackOne1() {
   console.debug("====>Publish CallBack ACTS_ThirdPartyAbilityPermission_0100_CommonEvent====>");
   globalThis.ability2Context.terminateSelf();

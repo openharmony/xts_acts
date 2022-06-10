@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 
 var subscriberInfo_MainAbility = {
   events: ["ACTS_ConnectAbility_0100_CommonEvent", "ACTS_TerminateSelf_CommonEvent", "ACTS_TerminateSelf_CommonEvent9"]

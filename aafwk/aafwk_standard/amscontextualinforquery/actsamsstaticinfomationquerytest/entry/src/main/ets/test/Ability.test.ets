@@ -14,7 +14,7 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 
 
 var subscriberInfo_MainAbility_ability = {

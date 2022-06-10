@@ -14,7 +14,7 @@
  */
 
 import ServiceExtension from '@ohos.application.ServiceExtensionAbility'
-import commonEvent from "@ohos.commonevent"
+import commonEvent from "@ohos.commonEvent"
 
 export default class ServiceAbility extends ServiceExtension {
     onCreate(want,startId) {

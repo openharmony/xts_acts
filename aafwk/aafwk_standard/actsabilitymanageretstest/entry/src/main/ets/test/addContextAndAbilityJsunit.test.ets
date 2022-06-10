@@ -16,7 +16,7 @@ import {describe, it, expect} from 'hypium/index';
 import Utils from './Utils';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import ability_particleAbility from '@ohos.ability.particleAbility';
-import abilityManager from "@ohos.app.abilitymanager"
+import abilityManager from "@ohos.app.abilityManager"
 
 const TAG_TEST_0100 = ' context_isUpdatingConfigurations_test_0100 ';
 const TAG_TEST_0200 = ' context_isUpdatingConfigurations_test_0200 ';
