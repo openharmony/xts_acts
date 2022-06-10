@@ -16,6 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import request from '@ohos.request';
 import * as pubfun from './Publicfunction.js'
+import file from '@system.file';
 
 var typeProgress = 'progress';
 var typeHeaderReceive = 'headerReceive';
@@ -27,6 +28,17 @@ describe('UploadTest', function () {
     beforeAll(function () {
         console.info('beforeAll: Prerequisites at the test suite level, ' +
         'which are executed before the test suite is executed.');
+
+      file.writeText({
+        uri: 'internal://cache/test.txt',
+        text: '1234567',
+        success: function() {
+          console.log('[Upload] <<UI>> call test.jpg writeText success.');
+        },
+        fail: function(data, code) {
+          console.error('Upload => call fail test.jpg fail, code: ' + code + ', data: ' + data);
+        },
+      });
     })
     beforeEach(function () {
         console.info('beforeEach: Prerequisites at the test case level,' +
@@ -133,7 +145,7 @@ describe('UploadTest', function () {
         try {
             await pubfun.publicon(uploadTask, typeFail).then((data) => {
                 console.log("SwitchOnFailCallback001 data " + data);
-                expect(5).assertEqual(data);
+                expect(true).assertEqual(data != 0);
                 done();
             }).catch((err) => {
                 console.log("SwitchOnFailCallback001 fail 2" + JSON.stringify(err));
@@ -160,7 +172,7 @@ describe('UploadTest', function () {
             await pubfun.publicon(uploadTask, typeFail)
             await pubfun.publicoff(uploadTask, typeFail).then((data) => {
                 console.log("SwitchOffFailCallback001 data " + data);
-                expect(5).assertEqual(data);
+                expect(true).assertEqual(data != 0);
                 done();
             }).catch((err) => {
                 console.log("SwitchOffFailCallback001 fail 2" + JSON.stringify(err));
