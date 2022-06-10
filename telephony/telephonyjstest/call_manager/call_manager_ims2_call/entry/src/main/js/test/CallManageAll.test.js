@@ -135,7 +135,8 @@ describe('CallManageImsCall', function () {
             await call.setCallPreferenceMode(DEFAULT_SLOT_ID, CALL_MODE_IMS);
             console.log('Telephony_CallManager setCallPreferenceMode success');
         } catch (error) {
-            console.log(`Telephony_CallManager setCallPreferenceMode or enableImsSwitch error,error:${toString(error)}`);
+            console.log(`Telephony_CallManager setCallPreferenceMode`+ 
+            `or enableImsSwitch error,error:${toString(error)}`);
         }
         done();
     });
