@@ -299,6 +299,8 @@ export default function buttonJsunit() {
         console.info("[testButton12] get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual(true)
         let event = JSON.parse(eventData.data.event);
+        console.info("[testButton12] get event state result is: " + Math.trunc(event.screenY));
+        console.info("[testButton12] get event state result is: " + Math.trunc(event.screenX));
         expect(event.screenX).assertEqual(135)
         expect(event.screenY).assertEqual(368.80340576171875)
         expect(event.x).assertEqual(100)
