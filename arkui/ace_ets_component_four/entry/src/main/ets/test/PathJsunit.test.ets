@@ -63,9 +63,9 @@ export default function enableJsunit() {
       try {
         var eventData = {
           data: {
-            "height": 200,
+            "height": '200.00px',
             "commands": "M0 110 L900 0",
-            "width": 200,
+            "width": '200.00px',
           }
         }
         var innerEvent = {
