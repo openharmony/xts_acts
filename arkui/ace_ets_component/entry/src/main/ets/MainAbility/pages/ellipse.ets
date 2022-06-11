@@ -19,8 +19,8 @@ import emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct EllipseExample {
-  @State width: string = "200px";
-  @State height: string = "200px";
+  @State width: string = "200.00px";
+  @State height: string = "200.00px";
 
   onPageShow() {
     console.info('[ellipse] page show called');

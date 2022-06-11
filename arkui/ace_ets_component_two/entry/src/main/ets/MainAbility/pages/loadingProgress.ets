@@ -44,6 +44,7 @@ struct LoadingProgressExample {
       Text('Orbital LoadingProgress ')
         .fontSize(19)
         .fontColor(0xCCCCCC)
+        .height(50)
         .width('90%')
         .key('LP')
       LoadingProgress()
