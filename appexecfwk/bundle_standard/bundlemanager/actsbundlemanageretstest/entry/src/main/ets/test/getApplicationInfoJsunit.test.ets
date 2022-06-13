@@ -388,6 +388,28 @@ export default function applicationBundleJsunit() {
             });
         });
 
+        /**
+         * @tc.number: getApplicationInfo_1800
+         * @tc.name: getApplicationInfo : Obtains based on a given bundle name and flag.
+         * @tc.desc: Check whether fingerprint gets
+         */
+        it('getApplicationInfo_1800', 0, async function (done) {
+            await Bundle.getApplicationInfo(BUNDLE_NAME,
+                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_CERTIFICATE_FINGERPRINT).then((data) => {
+                expect(data.fingerprint).assertFail("8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5");
+            }).catch((error) => {
+                expect(error).assertEqual(1);
+            });
+            Bundle.getApplicationInfo(BUNDLE_NAME,
+                Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_CERTIFICATE_FINGERPRINT, (error, data) => {
+                    expect(data.fingerprint).assertFail("8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5");
+                    if(error){
+                        expect(err).assertEqual(1);
+                    }
+                done();
+                });
+        });
+
         function expectData(msg, data) {
             expect(typeof (data)).assertEqual('object');
             expect(typeof (data.name)).assertEqual('string');
@@ -408,6 +430,7 @@ export default function applicationBundleJsunit() {
             expect(typeof (data.enabled)).assertEqual('boolean');
             expect(typeof (data.uid)).assertEqual('number');
             expect(typeof (data.entityType)).assertEqual('string');
+            expect(typeof (data.fingerprint)).assertEqual('string');
             expect(typeof (data.removable)).assertEqual('boolean');
             expect(Array.isArray(data.permissions)).assertEqual(true);
             expect(Array.isArray(data.moduleSourceDirs)).assertEqual(true);

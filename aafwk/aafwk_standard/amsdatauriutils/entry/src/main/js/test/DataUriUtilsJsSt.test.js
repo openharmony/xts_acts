@@ -24,7 +24,7 @@ describe('ActsDataUriUtilsTest', function () {
 */
     it('ACTS_GetIdSync_0100', 0, function (done) {
         console.log('dataUriUtils getIdSync start1');
-        var result = dataUriUtils.getIdSync("com.ix.dataUriUtils/1221");
+        var result = dataUriUtils.getId("com.ix.dataUriUtils/1221");
         console.log('dataUriUtils getIdSync URI : ' + result);
 
         expect(typeof(result)).assertEqual("number");
@@ -40,7 +40,7 @@ describe('ActsDataUriUtilsTest', function () {
 */
     it('ACTS_GetIdSync_0200', 0, function (done) {
         console.log('dataUriUtils getIdSync start2 ');
-        var result = dataUriUtils.getIdSync("com.ix.dataUriUtils1221");
+        var result = dataUriUtils.getId("com.ix.dataUriUtils1221");
         console.log('dataUriUtils getIdSync URI : ' + result);
 
         expect(typeof(result)).assertEqual("number");
@@ -57,7 +57,7 @@ describe('ActsDataUriUtilsTest', function () {
 */
     it('ACTS_GetIdSync_0300', 0, function (done) {
         console.log('dataUriUtils getIdSync start3 ');
-        var result = dataUriUtils.getIdSync("com.ix.dataUriUtils/11234567890");
+        var result = dataUriUtils.getId("com.ix.dataUriUtils/11234567890");
         console.log('dataUriUtils getIdSync URI : ' + result);
 
         expect(typeof(result)).assertEqual("number");
@@ -74,7 +74,7 @@ describe('ActsDataUriUtilsTest', function () {
 */
     it('ACTS_GetIdSync_0400', 0, function (done) {
         console.log('dataUriUtils getIdSync start4 ');
-        var result = dataUriUtils.getIdSync("com.ix.dataUriUtils");
+        var result = dataUriUtils.getId("com.ix.dataUriUtils");
         console.log('dataUriUtils getIdSync URI : ' + result);
 
         expect(typeof(result)).assertEqual("number");
@@ -91,7 +91,7 @@ describe('ActsDataUriUtilsTest', function () {
 */
     it('ACTS_GetIdSync_0500', 0, function (done) {
         console.log('dataUriUtils getIdSync start5 ');
-        var result = dataUriUtils.getIdSync("com.ix.dataUriUtils/-777");
+        var result = dataUriUtils.getId("com.ix.dataUriUtils/-777");
         console.log('dataUriUtils getIdSync URI : ' + result);//-777
 
         expect(typeof(result)).assertEqual("number");
@@ -109,7 +109,7 @@ describe('ActsDataUriUtilsTest', function () {
     it('ACTS_AttachIdSync_0100',0, function (done) {
         console.log('dataUriUtils attachIdSync start1 ');
         var idint = 1122;
-        var result = dataUriUtils.attachIdSync("com.ix.dataUriUtils",idint);
+        var result = dataUriUtils.attachId("com.ix.dataUriUtils",idint);
         console.log('dataUriUtils attachIdSync URI :' + result)
 
         expect(typeof(result)).assertEqual("string");
@@ -127,7 +127,7 @@ describe('ActsDataUriUtilsTest', function () {
     it('ACTS_AttachIdSync_0200',0, function (done) {
         console.log('dataUriUtils attachIdSync start2 ');
         var idint = 0;
-        var result = dataUriUtils.attachIdSync("com.ix.dataUriUtils/777",idint);
+        var result = dataUriUtils.attachId("com.ix.dataUriUtils/777",idint);
         console.log('dataUriUtils attachIdSync URI :' + result)
 
         expect(typeof(result)).assertEqual("string");
@@ -145,7 +145,7 @@ describe('ActsDataUriUtilsTest', function () {
     it('ACTS_AttachIdSync_0300',0, function (done) {
         console.log('dataUriUtils attachIdSync start3 ');
         var idint = 456789;
-        var result = dataUriUtils.attachIdSync("com.ix.dataUriUtils/123",idint);
+        var result = dataUriUtils.attachId("com.ix.dataUriUtils/123",idint);
         console.log('dataUriUtils attachIdSync URI :' + result)
 
         expect(typeof(result)).assertEqual("string");
@@ -163,7 +163,7 @@ describe('ActsDataUriUtilsTest', function () {
     it('ACTS_AttachIdSync_0400',0, function (done) {
         console.log('dataUriUtils attachIdSync start4 ');
         var idint = 123456789011;
-        var result = dataUriUtils.attachIdSync("com.ix.dataUriUtils",idint);
+        var result = dataUriUtils.attachId("com.ix.dataUriUtils",idint);
         console.log('dataUriUtils attachIdSync URI :' + result)
 
         expect(typeof(result)).assertEqual("string");
@@ -181,7 +181,7 @@ describe('ActsDataUriUtilsTest', function () {
     it('ACTS_AttachIdSync_0500',0, function (done) {
         console.log('dataUriUtils attachIdSync start5 ');
         var idint = -1;
-        var result = dataUriUtils.attachIdSync("com.ix.dataUriUtils",idint);
+        var result = dataUriUtils.attachId("com.ix.dataUriUtils",idint);
         console.log('dataUriUtils attachIdSync URI :' + result)
 
         expect(typeof(result)).assertEqual("string");
@@ -198,7 +198,7 @@ describe('ActsDataUriUtilsTest', function () {
 */
     it('ACTS_DeleteIdSync_0100',0, function (done) {
         console.log('dataUriUtils deleteIdSync start1 ');
-        var result = dataUriUtils.deleteIdSync("com.ix.dataUriUtils");
+        var result = dataUriUtils.deleteId("com.ix.dataUriUtils");
         console.log('dataUriUtils deleteIdSync URI : ' + result);
 
         expect(typeof(result)).assertEqual("string");
@@ -215,7 +215,7 @@ describe('ActsDataUriUtilsTest', function () {
 */
     it('ACTS_DeleteIdSync_0200',0, function (done) {
         console.log('dataUriUtils deleteIdSync start2 ');
-        var result = dataUriUtils.deleteIdSync("com.ix.dataUriUtils/1122");
+        var result = dataUriUtils.deleteId("com.ix.dataUriUtils/1122");
         console.log('dataUriUtils deleteIdSync URI : ' + result);
 
         expect(typeof(result)).assertEqual("string");
@@ -232,7 +232,7 @@ describe('ActsDataUriUtilsTest', function () {
 */
     it('ACTS_DeleteIdSync_0300',0, function (done) {
         console.log('dataUriUtils deleteIdSync start3 ');
-        var result = dataUriUtils.deleteIdSync("com.ix.dataUriUtils1122");
+        var result = dataUriUtils.deleteId("com.ix.dataUriUtils1122");
         console.log('dataUriUtils deleteIdSync URI : ' + result);
 
         expect(typeof(result)).assertEqual("string");
@@ -249,7 +249,7 @@ describe('ActsDataUriUtilsTest', function () {
 */
     it('ACTS_DeleteIdSync_0400',0, function (done) {
         console.log('dataUriUtils deleteIdSync start4 ');
-        var result = dataUriUtils.deleteIdSync("com.ix.dataUriUtils/-1");
+        var result = dataUriUtils.deleteId("com.ix.dataUriUtils/-1");
         console.log('dataUriUtils deleteIdSync URI : ' + result);
 
         expect(typeof(result)).assertEqual("string");
@@ -266,7 +266,7 @@ describe('ActsDataUriUtilsTest', function () {
 */
     it('ACTS_DeleteIdSync_0500',0, function (done) {
         console.log('dataUriUtils deleteIdSync start5 ');
-        var result = dataUriUtils.deleteIdSync("com.ix.dataUriUtils/1122/2211");
+        var result = dataUriUtils.deleteId("com.ix.dataUriUtils/1122/2211");
         console.log('dataUriUtils deleteIdSync URI : ' + result);
 
         expect(typeof(result)).assertEqual("string");
@@ -284,7 +284,7 @@ describe('ActsDataUriUtilsTest', function () {
     it('ACTS_UpdateIdSync_0100',0, function (done) {
         console.log('dataUriUtils updateIdSync start1 ');
         var idint = 1122;
-        var result = dataUriUtils.updateIdSync("com.ix.dataUriUtils",idint);
+        var result = dataUriUtils.updateId("com.ix.dataUriUtils",idint);
         console.log('updateIdSync updateIdSync URI : ' + result);
 
         expect(typeof(result)).assertEqual("string");
@@ -302,7 +302,7 @@ describe('ActsDataUriUtilsTest', function () {
     it('ACTS_UpdateIdSync_0200',0, function (done) {
         console.log('dataUriUtils updateIdSync start2 ');
         var idint = 1122;
-        var result = dataUriUtils.updateIdSync("com.ix.dataUriUtils/",idint)
+        var result = dataUriUtils.updateId("com.ix.dataUriUtils/",idint)
         console.log('updateIdSync updateIdSync URI : ' + result);
 
         expect(typeof(result)).assertEqual("string");
@@ -320,7 +320,7 @@ describe('ActsDataUriUtilsTest', function () {
     it('ACTS_UpdateIdSync_0300',0, function (done) {
         console.log('dataUriUtils updateIdSync start3 ');
         var idint = 3344;
-        var result = dataUriUtils.updateIdSync("com.ix.dataUriUtils/-1",idint)
+        var result = dataUriUtils.updateId("com.ix.dataUriUtils/-1",idint)
         console.log('updateIdSync updateIdSync URI : ' + result);
 
         expect(typeof(result)).assertEqual("string");
@@ -338,7 +338,7 @@ describe('ActsDataUriUtilsTest', function () {
     it('ACTS_UpdateIdSync_0400',0, function (done) {
         console.log('dataUriUtils updateIdSync start4 ');
         var idint = 5566;
-        var result = dataUriUtils.updateIdSync("com.ix.dataUriUtils/123456789011",idint)
+        var result = dataUriUtils.updateId("com.ix.dataUriUtils/123456789011",idint)
         console.log('updateIdSync updateIdSync URI : ' + result);
 
         expect(typeof(result)).assertEqual("string");
@@ -360,7 +360,7 @@ describe('ActsDataUriUtilsTest', function () {
         expect(typeof(idint)).assertEqual("number");
         console.log('dataUriUtils updateIdSync start666 ');
 
-        var result = dataUriUtils.updateIdSync("com.ix.dataUriUtils/1122",idint)
+        var result = dataUriUtils.updateId("com.ix.dataUriUtils/1122",idint)
         console.log('updateIdSync updateIdSync URI : ' + result);
         expect(typeof(result)).assertEqual("string");
         expect(result).assertEqual("com.ix.dataUriUtils/0");

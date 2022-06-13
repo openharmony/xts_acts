@@ -53,7 +53,7 @@
         "launchType": "singleton",
         "process": "processTestAbility",
         "permissions": ["ohos.permission.ACCELEROMETER"],
-        "deviceCapability": ["screen_support","audio_support"],
+        "deviceCapability": ["ability_base","ability_runtime"],
         "uri": "uriTest",
         "visible": true
       }
