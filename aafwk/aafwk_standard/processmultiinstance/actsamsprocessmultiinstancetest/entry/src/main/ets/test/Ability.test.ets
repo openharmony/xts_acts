@@ -14,7 +14,7 @@
 */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
 import commonEvent from '@ohos.commonEvent'
-import abilityManager from '@ohos.application.abilitymanager';
+import abilityManager from '@ohos.application.abilityManager';
 import appManager from '@ohos.application.appManager'
 import missionManager from '@ohos.application.missionManager'
 
