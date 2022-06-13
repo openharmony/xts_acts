@@ -19,7 +19,7 @@ hcpptest_suite("ActsKvStoreTest") {
 
   include_dirs = [
     "src",
-    "//foundation/distributeddatamgr/appdatamgr/kv_store/frameworks/native/kv_store/innerkits",
+    "//foundation/distributeddatamgr/appdatamgr/kv_store/interfaces/inner_api/kv_store/include",
     "//third_party/bounds_checking_function/include",
     "//utils/native/lite/include",
   ]
