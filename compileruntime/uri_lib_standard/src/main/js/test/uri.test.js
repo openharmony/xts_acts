@@ -17,12 +17,11 @@ import  uri from '@ohos.uri'
 describe('UriTest', function () {
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_012
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_012', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         try {
             let that = new uri.URI('#http://username:password@host:8080/directory/file?foo=1&bar=2');
         } catch (err) {
@@ -31,12 +30,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_010
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_010', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         try {
             let that = new uri.URI({name: 'gaogao'});
         } catch (err) {
@@ -45,12 +43,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_032
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_032', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         try {
             let that = new uri.URI('ht/tp://username:pas sword@host:8080/directory/file?foo=1&bar=2');
         } catch (err) {
@@ -59,12 +56,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_030
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_030', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         try {
             let that = new uri.URI('http://username:password@[::]:8080/directory/file?Query#gaogao faofao');
         } catch (err) {
@@ -73,12 +69,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_028
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_028', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         try {
             let that = new uri.URI('http://username:password@host:8080/directory/file?foo^=1&bar=2#gaogaofaofao');
         } catch (err) {
@@ -87,12 +82,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_013
+     * @tc.name: SUB_Runtime_JSAPI_006
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_013', 0, function () {
+    it('SUB_Runtime_JSAPI_006', 0, function () {
         try {
             let that = new uri.URI('1http://username:password@host:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
@@ -101,12 +95,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_014
+     * @tc.name: SUB_Runtime_JSAPI_007
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_014', 0, function () {
+    it('SUB_Runtime_JSAPI_007', 0, function () {
         try {
             let that = new uri.URI('ht@tp://username:password@host:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
@@ -115,12 +108,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_026
+     * @tc.name: SUB_Runtime_JSAPI_008
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_026', 0, function () {
+    it('SUB_Runtime_JSAPI_008', 0, function () {
         try {
             let that = new uri.URI('http://username:password@[::]:80r80/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
@@ -129,12 +121,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_021
+     * @tc.name: SUB_Runtime_JSAPI_009
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_021', 0, function () {
+    it('SUB_Runtime_JSAPI_009', 0, function () {
         try {
             let that = new uri.URI('http://username:password@[::12:55:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
@@ -143,12 +134,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_018
+     * @tc.name: SUB_Runtime_JSAPI_010
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_018', 0, function () {
+    it('SUB_Runtime_JSAPI_010', 0, function () {
         try {
             let that = new uri.URI('http://username:pa^ssword@[::12:55]:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
@@ -157,12 +147,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_020
+     * @tc.name: SUB_Runtime_JSAPI_011
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_020', 0, function () {
+    it('SUB_Runtime_JSAPI_011', 0, function () {
         try {
             let that = new uri.URI('http://username:password@[::1你2:55]:8080/directory/file?foo=1&bar=2#gaogaofaofao');
         } catch (err) {
@@ -171,12 +160,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_001
+     * @tc.name: SUB_Runtime_JSAPI_012
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_001', 0, function () {
+    it('SUB_Runtime_JSAPI_012', 0, function () {
         let gaogao = new uri.URI('http://gg:gaogao@www.baidu.com:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@www.baidu.com:99");
@@ -192,7 +180,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testConstructor013
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testConstructor013', 0, function () {
@@ -209,12 +196,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_002
+     * @tc.name: SUB_Runtime_JSAPI_014
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_002', 0, function () {
+    it('SUB_Runtime_JSAPI_014', 0, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[::]:88/path/path66?foooo#gaogao');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[::]:88");
@@ -230,7 +216,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testConstructor015
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testConstructor015', 0, function () {
@@ -247,12 +232,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_003
+     * @tc.name: SUB_Runtime_JSAPI_016
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_003', 0, function () {
+    it('SUB_Runtime_JSAPI_016', 0, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[::FFFF:129.144.52.38]:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@[::FFFF:129.144.52.38]:99");
@@ -268,7 +252,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testConstructor017
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testConstructor017', 0, function () {
@@ -287,7 +270,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testConstructor018
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testConstructor018', 0, function () {
@@ -306,7 +288,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testConstructor019
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testConstructor019', 0, function () {
@@ -326,7 +307,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testConstructor020
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testConstructor020', 0, function () {
@@ -343,12 +323,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_004
+     * @tc.name: SUB_Runtime_JSAPI_021
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_004', 0, function () {
+    it('SUB_Runtime_JSAPI_021', 0, function () {
         let gaogao = new uri.URI('http://gg:gaogao@199.98.55.44:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("gg:gaogao@199.98.55.44:99");
@@ -362,12 +341,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_005
+     * @tc.name: SUB_Runtime_JSAPI_022
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_005', 0, function () {
+    it('SUB_Runtime_JSAPI_022', 0, function () {
         let gaogao = new uri.URI('http://16.9.5.4:99/path/path?query#fagment');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("16.9.5.4:99");
@@ -383,7 +361,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testConstructor023
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testConstructor023', 0, function () {
@@ -400,12 +377,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_006
+     * @tc.name: SUB_Runtime_JSAPI_024
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_006', 0, function () {
+    it('SUB_Runtime_JSAPI_024', 0, function () {
         let gaogao = new uri.URI('http://user@49.10pe8.54.12:80/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("user@49.10pe8.54.12:80");
@@ -419,12 +395,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_007
+     * @tc.name: SUB_Runtime_JSAPI_025
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_007', 0, function () {
+    it('SUB_Runtime_JSAPI_025', 0, function () {
         let gaogao = new uri.URI('http://user@www.baidu.com/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("user@www.baidu.com");
@@ -438,12 +413,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_008
+     * @tc.name: SUB_Runtime_JSAPI_026
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_008', 0, function () {
+    it('SUB_Runtime_JSAPI_026', 0, function () {
         let gaogao = new uri.URI('http://user@www.hw.com:77/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("http");
         expect(gaogao.authority).assertEqual("user@www.hw.com:77");
@@ -457,12 +431,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_009
+     * @tc.name: SUB_Runtime_JSAPI_027
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_009', 0, function () {
+    it('SUB_Runtime_JSAPI_027', 0, function () {
         let gaogao = new uri.URI('ht2tp://user@www.h12343w.com:77/path/path23?query#qwer');
         expect(gaogao.scheme).assertEqual("ht2tp");
         expect(gaogao.authority).assertEqual("user@www.h12343w.com:77");
@@ -478,7 +451,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testConstructor028
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testConstructor028', 0, function () {
@@ -497,7 +469,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testConstructor029
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testConstructor029', 0, function () {
@@ -516,7 +487,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testConstructor030
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testConstructor030', 0, function () {
@@ -535,7 +505,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testConstructor031
      * @tc.desc: Constructs a URI by parsing the given string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testConstructor031', 0, function () {
@@ -554,7 +523,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testEquals001
      * @tc.desc: Tests this URI for equality with another object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testEquals001', 0, function () {
@@ -565,12 +533,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_034
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Tests this URI for equality with another object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_034', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let gaogao1 = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let res = gaogao.equals(gaogao1);
@@ -578,12 +545,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_035
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Tests this URI for equality with another object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_035', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment');
         let gaogao1 = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path1?query#fagment123');
         let res = gaogao.equals(gaogao1);
@@ -593,7 +559,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testEquals004
      * @tc.desc: Tests this URI for equality with another object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testEquals004', 0, function () {
@@ -606,7 +571,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testEquals005
      * @tc.desc: Tests this URI for equality with another object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testEquals005', 0, function () {
@@ -617,12 +581,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_036
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Normalizes this URI's path.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_036', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/path/66./../././mm/.././path1?query#fagment');
         let res = gaogao.normalize();
         expect(res.path).assertEqual("/path/path1");
@@ -630,12 +593,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_037
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Normalizes this URI's path.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_037', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path?query#fagment');
         let res = gaogao.normalize();
         expect(res.path).assertEqual("/../../path");
@@ -645,7 +607,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testNormalize003
      * @tc.desc: Normalizes this URI's path.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testNormalize003', 0, function () {
@@ -656,12 +617,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_038
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Normalizes this URI's path.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_038', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../path/.././../aa/bb/cc?query');
         let res = gaogao.normalize();
         expect(res.path).assertEqual("/../../aa/bb/cc");
@@ -669,12 +629,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_039
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Normalizes this URI's path.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_039', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/./path/./aa/bb/cc?query#fagment');
         let res = gaogao.normalize();
         expect(res.path).assertEqual("/path/aa/bb/cc");
@@ -682,12 +641,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_042
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Returns the content of this URI as a US-ASCII string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_042', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         let gaogao = new uri.URI('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path/.././../aa/bb/cc?query#fagment');
         let res = gaogao.toString();
         expect(res).assertEqual('http://gg:gaogao@[1:0:0:1:2:1:2:1]:99/../../path/.././../aa/bb/cc?query#fagment');
@@ -696,7 +654,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testToString002
      * @tc.desc: Returns the content of this URI as a US-ASCII string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testToString002', 0, function () {
@@ -708,7 +665,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testToString003
      * @tc.desc: Returns the content of this URI as a US-ASCII string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testToString003', 0, function () {
@@ -718,12 +674,11 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_043
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Returns the content of this URI as a US-ASCII string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_043', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         let gaogao = new uri.URI('http://gg:gao你好gao@199.98.55.44:99/path/p你好ath?qu你好ery#fag你好ment');
         let res = gaogao.toString();
         expect(res).assertEqual('http://gg:gao%E4%BD%A0%E5%A5%BDgao@199.98.55.44:99/path/' +
@@ -733,7 +688,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testToString005
      * @tc.desc: Returns the content of this URI as a US-ASCII string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testToString005', 0, function () {
@@ -743,24 +697,22 @@ describe('UriTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_041
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Tells whether or not this URI is absolute.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_041', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         let gaogao = new uri.URI('f/tp://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.checkIsAbsolute();
         expect(res).assertEqual(false);
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR34_040
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Tells whether or not this URI is absolute.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
-    it('SUB_Runtime_JSAPI_SR000GGR34_040', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         let gaogao = new uri.URI('ftp://username:password@www.baidu.com:88/path?query#fagment');
         let res = gaogao.checkIsAbsolute();
         expect(res).assertEqual(true);
@@ -769,7 +721,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testCheckIsAbsolute003
      * @tc.desc: Tells whether or not this URI is absolute.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testCheckIsAbsolute003', 0, function () {
@@ -781,7 +732,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testCheckIsAbsolute004
      * @tc.desc: Tells whether or not this URI is absolute.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testCheckIsAbsolute004', 0, function () {
@@ -793,7 +743,6 @@ describe('UriTest', function () {
     /**
      * @tc.name: testCheckIsAbsolute005
      * @tc.desc: Tells whether or not this URI is absolute.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testCheckIsAbsolute005', 0, function () {

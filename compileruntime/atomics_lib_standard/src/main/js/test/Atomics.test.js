@@ -18,7 +18,7 @@ import app from '@system.app'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import worker from "@ohos.worker"
 
-describe('workerTest', function () {
+describe('WaitTest', function () {
 
     afterAll(function () {
         console.info('total case over')
@@ -34,6 +34,11 @@ describe('workerTest', function () {
         return p
     }
 
+     /**
+     * @tc.name: testNotify001
+     * @tc.desc: returns a string which is either "ok", "not-equal", or "timed-out".
+     * @tc.author: jiangkai
+     */
     it('testNotify001', 0, async function (done) {
         var sab = new SharedArrayBuffer(20);
         var int32 = new Int32Array(sab);
@@ -118,11 +123,16 @@ describe('workerTest', function () {
         done()
     })
 
+    /**
+     * @tc.name: testWait001
+     * @tc.desc: returns a string which is either "ok", "not-equal", or "timed-out".
+     * @tc.author: jiangkai
+     */
     it('testWait001', 0, async function (done) {
         var sab = new SharedArrayBuffer(20);
         var flag = false;
         var int32 = new Int32Array(sab);
-		var res = 0;
+        var res = 0;
         const ss = new worker.Worker("workers/worker020.js")
 
         ss.onmessage = function(e){
@@ -159,6 +169,11 @@ describe('workerTest', function () {
         done()
     })
 
+    /**
+     * @tc.name: testAdd001
+     * @tc.desc: returns a string which is either "ok", "not-equal", or "timed-out".
+     * @tc.author: jiangkai
+     */
     it('testAdd001', 0, async function (done) {
         var sab = new SharedArrayBuffer(20);
         var int32 = new Uint32Array(sab);

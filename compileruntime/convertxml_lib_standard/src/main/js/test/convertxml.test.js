@@ -19,7 +19,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert001
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert001', 0, function () {
@@ -61,7 +60,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert002
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert002', 0, function () {
@@ -103,7 +101,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert003
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert003', 0, function () {
@@ -143,7 +140,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert004
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert004', 0, function () {
@@ -187,7 +183,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert005
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert005', 0, function () {
@@ -227,7 +222,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert006
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert006', 0, function () {
@@ -270,7 +264,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert007
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert007', 0, function () {
@@ -313,7 +306,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert008
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert008', 0, function () {
@@ -356,7 +348,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert09
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert09', 0, function () {
@@ -399,7 +390,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert010
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert010', 0, function () {
@@ -435,7 +425,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert011
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert011', 0, function () {
@@ -477,7 +466,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert012
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert012', 0, function () {
@@ -523,7 +511,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert013
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert013', 0, function () {
@@ -569,7 +556,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert014
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert014', 0, function () {
@@ -611,7 +597,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert015
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert015', 0, function () {
@@ -656,7 +641,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert016
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert016', 0, function () {
@@ -701,7 +685,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert017
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert017', 0, function () {
@@ -748,7 +731,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert018
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert018', 0, function () {
@@ -790,7 +772,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert019
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert019', 0, function () {
@@ -832,7 +813,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert020
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert020', 0, function () {
@@ -874,7 +854,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert021
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert021', 0, function () {
@@ -893,7 +872,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert022
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert022', 0, function () {
@@ -913,7 +891,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert023
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert023', 0, function () {
@@ -932,7 +909,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert024
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert024', 0, function () {
@@ -953,7 +929,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert025
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert025', 0, function () {
@@ -977,7 +952,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert026
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert026', 0, function () {
@@ -1001,7 +975,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert027
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert027', 0, function () {
@@ -1028,7 +1001,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert028
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert028', 0, function () {
@@ -1051,7 +1023,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert029
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert029', 0, function () {
@@ -1080,7 +1051,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert030
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert030', 0, function () {
@@ -1100,7 +1070,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert031
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert031', 0, function () {
@@ -1122,7 +1091,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert032
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert032', 0, function () {
@@ -1144,7 +1112,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert033
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert033', 0, function () {
@@ -1165,7 +1132,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert034
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert034', 0, function () {
@@ -1187,7 +1153,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert035
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert035', 0, function () {
@@ -1210,7 +1175,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert036
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert036', 0, function () {
@@ -1233,7 +1197,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert037
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert037', 0, function () {
@@ -1255,7 +1218,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert038
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
     it('testConvert038', 0, function () {
@@ -1279,7 +1241,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert039
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
         it('testConvert039', 0, function () {
