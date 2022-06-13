@@ -19,6 +19,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 const BUNDLE_NAME1 = 'com.example.third1';
 const SYSTEM_NAME = 'com.example.system2';
 const ABILITIY_NAME8 = 'com.example.system2.MainAbility';
+const ACTION_NAME = 'action.system.home';
+const ENTITY_NAME = 'entity.system.home';
 let userId = 0;
 
 describe('ActsBmsQueryAbilityByWant', function () {
@@ -28,12 +30,12 @@ describe('ActsBmsQueryAbilityByWant', function () {
             console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
             userId = account;
             done();
-          }).catch(err=>{
+        }).catch(err => {
             console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
             done();
-          })
+        })
     });
-    
+
     /*
     * @tc.number: bms_queryAbilityByWant_0100
     * @tc.name:  queryAbilityByWant callback by other callback
@@ -42,8 +44,8 @@ describe('ActsBmsQueryAbilityByWant', function () {
     */
     it('bms_queryAbilityByWant_0100', 0, async function (done) {
         await bundle.queryAbilityByWant({
-            action: ['action.system.home'],
-            entities: ['entity.system.home'],
+            action: ACTION_NAME,
+            entities: [ENTITY_NAME],
             bundleName: BUNDLE_NAME1
         }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
             userId).then(data => {
@@ -52,8 +54,8 @@ describe('ActsBmsQueryAbilityByWant', function () {
                 expect(err).assertEqual(1);
             });
         bundle.queryAbilityByWant({
-            action: ['action.system.home'],
-            entities: ['entity.system.home'],
+            action: ACTION_NAME,
+            entities: [ENTITY_NAME],
             bundleName: BUNDLE_NAME1
         }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
             userId, (err, data) => {
@@ -72,8 +74,8 @@ describe('ActsBmsQueryAbilityByWant', function () {
     it('bms_queryAbilityByWant_0200', 0, async function (done) {
         await bundle.queryAbilityByWant(
             {
-                action: ['action.system.home'],
-                entities: ['entity.system.home']
+                action: ACTION_NAME,
+                entities: [ENTITY_NAME]
             },
             bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
             userId).then(data => {
@@ -87,8 +89,8 @@ describe('ActsBmsQueryAbilityByWant', function () {
             });
         bundle.queryAbilityByWant(
             {
-                action: ['action.system.home'],
-                entities: ['entity.system.home']
+                action: ACTION_NAME,
+                entities: [ENTITY_NAME]
             },
             bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
             userId, (err, data) => {
@@ -110,7 +112,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
     */
     it('bms_queryAbilityByEntities_0300', 0, async function (done) {
         let dataInfos = await bundle.queryAbilityByWant({
-            action: 'action.system.home',
+            action: ACTION_NAME,
             entities: ["entity.app.music",
                 "entity.app.email",
                 "entity.app.contacts",
@@ -120,16 +122,14 @@ describe('ActsBmsQueryAbilityByWant', function () {
                 "entity.app.messaging",
                 "entity.app.files",
                 "entity.app.gallery"],
-            elementName: {
-                deviceId: '0',
-                bundleName: '',
-                abilityName: '',
-            },
+            deviceId: '0',
+            bundleName: '',
+            abilityName: ''
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId);
         expect(dataInfos.length).assertEqual(1);
         cheackAbilityInfos(dataInfos[0]);
         bundle.queryAbilityByWant({
-            action: 'action.system.home',
+            action: ACTION_NAME,
             entities: ["entity.app.music",
                 "entity.app.email",
                 "entity.app.contacts",
@@ -139,11 +139,9 @@ describe('ActsBmsQueryAbilityByWant', function () {
                 "entity.app.messaging",
                 "entity.app.files",
                 "entity.app.gallery"],
-            elementName: {
-                deviceId: '0',
-                bundleName: '',
-                abilityName: '',
-            },
+            deviceId: '0',
+            bundleName: '',
+            abilityName: ''
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId, (err, data) => {
             expect(data.length).assertEqual(1);
             cheackAbilityInfos(data[0]);
