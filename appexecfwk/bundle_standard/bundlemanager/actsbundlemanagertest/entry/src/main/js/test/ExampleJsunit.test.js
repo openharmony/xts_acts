@@ -90,7 +90,7 @@ describe('ActsBundleManagerTest', function () {
         }
         expect(datainfo.entryModuleName).assertEqual("entry");
         expect(datainfo.isSilentInstallation.length).assertEqual(0);
-        expect(datainfo.minCompatibleVersionCode).assertEqual(1);
+        expect(datainfo.minCompatibleVersionCode).assertEqual(0);
         expect(datainfo.entryInstallationFree).assertEqual(false);
         for (let j = 0; j < datainfo.appInfo.moduleInfos.length; j++) {
             expect(datainfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
@@ -153,7 +153,7 @@ describe('ActsBundleManagerTest', function () {
         }
         expect(datainfo.entryModuleName).assertEqual("entry");
         expect(datainfo.isSilentInstallation.length).assertEqual(0);
-        expect(datainfo.minCompatibleVersionCode).assertEqual(1);
+        expect(datainfo.minCompatibleVersionCode).assertEqual(0);
         expect(datainfo.entryInstallationFree).assertEqual(false);
         for (let j = 0; j < datainfo.appInfo.moduleInfos.length; j++) {
             expect(datainfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
@@ -232,7 +232,7 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.updateTime).assertLarger(0);
         expect(datainfo.uid).assertLarger(0);
         expect(datainfo.entryModuleName).assertEqual("entry");
-        expect(datainfo.minCompatibleVersionCode).assertEqual(1);
+        expect(datainfo.minCompatibleVersionCode).assertEqual(0);
         expect(datainfo.entryInstallationFree).assertEqual(false);
         expect(datainfo.reqPermissions.length).assertEqual(0);
         expect(datainfo.reqPermissionStates.length).assertEqual(0);
@@ -276,7 +276,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.updateTime).assertLarger(0);
             expect(datainfo.uid).assertLarger(0);
             expect(datainfo.entryModuleName).assertEqual("entry");
-            expect(datainfo.minCompatibleVersionCode).assertEqual(1);
+            expect(datainfo.minCompatibleVersionCode).assertEqual(0);
             expect(datainfo.entryInstallationFree).assertEqual(false);
             expect(datainfo.reqPermissions.length).assertEqual(0);
             expect(datainfo.reqPermissionStates.length).assertEqual(0);
@@ -502,7 +502,7 @@ describe('ActsBundleManagerTest', function () {
         }
         expect(dataInfo.entryModuleName).assertEqual("entry");
         expect(dataInfo.isSilentInstallation.length).assertEqual(0);
-        expect(dataInfo.minCompatibleVersionCode).assertEqual(1);
+        expect(dataInfo.minCompatibleVersionCode).assertEqual(0);
         expect(dataInfo.entryInstallationFree).assertEqual(false);
         for (let j = 0; j < dataInfo.appInfo.moduleInfos.length; j++) {
             expect(dataInfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
@@ -551,7 +551,7 @@ describe('ActsBundleManagerTest', function () {
             }
             expect(dataInfo.entryModuleName).assertEqual("entry");
             expect(dataInfo.isSilentInstallation.length).assertEqual(0);
-            expect(dataInfo.minCompatibleVersionCode).assertEqual(1);
+            expect(dataInfo.minCompatibleVersionCode).assertEqual(0);
             expect(dataInfo.entryInstallationFree).assertEqual(false);
             for (let j = 0; j < dataInfo.appInfo.moduleInfos.length; j++) {
                 expect(dataInfo.appInfo.moduleInfos[j].moduleName).assertEqual("entry");
