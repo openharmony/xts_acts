@@ -37,7 +37,7 @@ function test14() {
             setTimeout(() => {
                 let level = thermal.getThermalLevel();
                 console.info("level is: " + level);
-                expect(level == -1).assertTrue();
+                expect(level >= 0 && level <= 6).assertTrue();
                 resolve();
                 done();
             }, MSEC_1000 * 4);
@@ -54,7 +54,7 @@ function test15() {
     it('Thermal_015', 0, async function (done) {
         thermal.subscribeThermalLevel((level) => {
             console.info("level is: " + level);
-            expect(level == -1).assertTrue();
+              expect(level >= 0 && level <= 6).assertTrue();
             done();
         })
         await new Promise((resolve, reject) => {
