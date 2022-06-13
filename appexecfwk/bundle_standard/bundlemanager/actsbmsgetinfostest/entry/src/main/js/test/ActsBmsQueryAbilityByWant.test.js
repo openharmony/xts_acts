@@ -30,10 +30,10 @@ describe('ActsBmsQueryAbilityByWant', function () {
             console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
             userId = account;
             done();
-          }).catch(err=>{
+        }).catch(err => {
             console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
             done();
-          })
+        })
     });
 
     /*
@@ -44,7 +44,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
     */
     it('bms_queryAbilityByWant_0100', 0, async function (done) {
         await bundle.queryAbilityByWant({
-            action: [ACTION_NAME],
+            action: ACTION_NAME,
             entities: [ENTITY_NAME],
             bundleName: BUNDLE_NAME1
         }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
@@ -54,7 +54,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
                 expect(err).assertEqual(1);
             });
         bundle.queryAbilityByWant({
-            action: [ACTION_NAME],
+            action: ACTION_NAME,
             entities: [ENTITY_NAME],
             bundleName: BUNDLE_NAME1
         }, bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
@@ -74,7 +74,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
     it('bms_queryAbilityByWant_0200', 0, async function (done) {
         await bundle.queryAbilityByWant(
             {
-                action: [ACTION_NAME],
+                action: ACTION_NAME,
                 entities: [ENTITY_NAME]
             },
             bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
@@ -89,7 +89,7 @@ describe('ActsBmsQueryAbilityByWant', function () {
             });
         bundle.queryAbilityByWant(
             {
-                action: [ACTION_NAME],
+                action: ACTION_NAME,
                 entities: [ENTITY_NAME]
             },
             bundle.BundleFlag.GET_ABILITY_INFO_WITH_APPLICATION | bundle.BundleFlag.GET_ABILITY_INFO_SYSTEMAPP_ONLY,
@@ -122,11 +122,9 @@ describe('ActsBmsQueryAbilityByWant', function () {
                 "entity.app.messaging",
                 "entity.app.files",
                 "entity.app.gallery"],
-            elementName: {
-                deviceId: '0',
-                bundleName: '',
-                abilityName: '',
-            },
+            deviceId: '0',
+            bundleName: '',
+            abilityName: ''
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId);
         expect(dataInfos.length).assertEqual(1);
         cheackAbilityInfos(dataInfos[0]);
@@ -141,11 +139,9 @@ describe('ActsBmsQueryAbilityByWant', function () {
                 "entity.app.messaging",
                 "entity.app.files",
                 "entity.app.gallery"],
-            elementName: {
-                deviceId: '0',
-                bundleName: '',
-                abilityName: '',
-            },
+            deviceId: '0',
+            bundleName: '',
+            abilityName: ''
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId, (err, data) => {
             expect(data.length).assertEqual(1);
             cheackAbilityInfos(data[0]);

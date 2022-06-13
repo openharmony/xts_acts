@@ -65,11 +65,9 @@ describe('ActsBmsGetBackGroundModes', function () {
         let dataInfos = await bundle.queryAbilityByWant({
             action: 'action.system.home',
             entities: ['entity.system.home'],
-            elementName: {
-                deviceId: '0',
-                bundleName: BUNDLE_NAME5,
-                abilityName: '',
-            },
+            deviceId: '0',
+            bundleName: BUNDLE_NAME5,
+            abilityName: ''
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId);
         expect(dataInfos.length).assertEqual(NUM_FOUR);
         if (dataInfos.length == NUM_FOUR) {
@@ -110,11 +108,9 @@ describe('ActsBmsGetBackGroundModes', function () {
         let dataInfos = await bundle.queryAbilityByWant({
             action: 'action.system.home',
             entities: ['entity.system.home'],
-            elementName: {
-                deviceId: '0',
-                bundleName: BUNDLE_NAME6,
-                abilityName: '',
-            },
+            deviceId: '0',
+            bundleName: BUNDLE_NAME6,
+            abilityName: ''
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId);
         expect(dataInfos.length).assertEqual(NUM_NINE);
         for (let i = 0, len = dataInfos.length; i < len; i++) {
@@ -132,11 +128,9 @@ describe('ActsBmsGetBackGroundModes', function () {
         let dataInfos = await bundle.queryAbilityByWant({
             action: 'action.system.home',
             entities: ['entity.system.home'],
-            elementName: {
-                deviceId: '0',
-                bundleName: BUNDLE_NAME2,
-                abilityName: '',
-            },
+            deviceId: '0',
+            bundleName: BUNDLE_NAME2,
+            abilityName: ''
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId);
         expect(dataInfos.length).assertEqual(NUM_TWO);
         if (dataInfos.length == NUM_TWO) {
@@ -173,11 +167,9 @@ describe('ActsBmsGetBackGroundModes', function () {
         let dataInfos = await bundle.queryAbilityByWant({
             action: 'action.system.home',
             entities: ['entity.system.home'],
-            elementName: {
-                deviceId: '0',
-                bundleName: BUNDLE_NAME4,
-                abilityName: '',
-            },
+            deviceId: '0',
+            bundleName: BUNDLE_NAME4,
+            abilityName: ''
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId);
         expect(dataInfos.length).assertEqual(1);
         if (dataInfos.length == 1) {
@@ -196,11 +188,9 @@ describe('ActsBmsGetBackGroundModes', function () {
         let dataInfos = await bundle.queryAbilityByWant({
             action: 'action.system.home',
             entities: ['entity.system.home'],
-            elementName: {
-                deviceId: '0',
-                bundleName: BUNDLE_NAME1,
-                abilityName: '',
-            },
+            deviceId: '0',
+            bundleName: BUNDLE_NAME1,
+            abilityName: ''
         }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId);
         expect(dataInfos.length).assertEqual(NUM_FOUR);
         if (dataInfos.length == NUM_FOUR) {
