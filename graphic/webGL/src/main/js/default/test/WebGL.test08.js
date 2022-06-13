@@ -305,7 +305,8 @@ describe('webgl1Test', function() {
 		gl2.framebufferTextureLayer(-gl.FRAMEBUFFER, -gl.COLOR_ATTACHMENT0, shader, -0, -8)
 		const framebufferTextureLayerError = gl.getError();
 		console.info("framebufferTextureLayerError: " + framebufferTextureLayerError);
-		expect(framebufferTextureLayerError).assertEqual(gl.INVALID_OPERATION);
+		expect(framebufferTextureLayerError).assertLarger(gl.NO_ERROR);
+		for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
 		done();
 	})
 
@@ -490,7 +491,8 @@ describe('webgl1Test', function() {
 		gl2.texStorage2D(-gl.TEXTURE_2D, -1, -gl.RGB8, -256, -256);
 		const texStorage2DError = gl.getError();
 		console.info("texStorage2DError: " + texStorage2DError);
-		expect(texStorage2DError).assertEqual(gl.INVALID_VALUE);
+		expect(texStorage2DError).assertLarger(gl.NO_ERROR);
+		for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
 		done();
 	})
 
@@ -505,7 +507,8 @@ describe('webgl1Test', function() {
 		gl2.texStorage2D(-gl.SRC_ALPHA_SATURATE, -0, -gl.RGB8, 256, -256);
 		const texStorage2DError = gl.getError();
 		console.info("texStorage2DError: " + texStorage2DError);
-		expect(texStorage2DError).assertEqual(gl.INVALID_VALUE);
+		expect(texStorage2DError).assertLarger(gl.NO_ERROR);
+		for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
 		done();
 	})
 
@@ -1248,8 +1251,8 @@ describe('webgl1Test', function() {
 		gl.copyTexSubImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_X, 0, 0, 0, 0, 0, 16, 16);
 		let errorCode = gl.getError();
 		console.info("webgltest copyTexSubImage2D getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_OPERATION);
-
+		expect(errorCode).assertLarger(gl.NO_ERROR);
+		for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
 		//deleteContext();
 		done();
 	});
@@ -1267,8 +1270,8 @@ describe('webgl1Test', function() {
 		gl.copyTexSubImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, 0, 0, 0, 0, 16, 16);
 		let errorCode = gl.getError();
 		console.info("webgltest copyTexSubImage2D getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_OPERATION);
-
+		expect(errorCode).assertLarger(gl.NO_ERROR);
+		for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
 		//deleteContext();
 		done();
 	});
@@ -1286,8 +1289,8 @@ describe('webgl1Test', function() {
 		gl.copyTexSubImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_Z, 0, 0, 0, 0, 0, 16, 16);
 		let errorCode = gl.getError();
 		console.info("webgltest copyTexSubImage2D getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_OPERATION);
-
+		expect(errorCode).assertLarger(gl.NO_ERROR);
+		for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}	
 		//deleteContext();
 		done();
 	});
@@ -2239,6 +2242,7 @@ describe('webgl1Test', function() {
 		let errorCode = gl.getError();
 		console.info("webgltest webgl_test_clearBufferfv getError: " + errorCode);
 		expect(errorCode).assertEqual(gl.NO_ERROR);
+		for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
 		//deleteContext();
 		done();
 	});
@@ -2257,7 +2261,8 @@ describe('webgl1Test', function() {
 
 		let errorCode = gl.getError();
 		console.info("webgltest webgl_test_clearBufferfv getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_ENUM);
+		expect(errorCode).assertLarger(gl.NO_ERROR);
+		for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
 		//deleteContext();
 		done();
 	});

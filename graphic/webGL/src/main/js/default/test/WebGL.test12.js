@@ -1305,7 +1305,8 @@ describe('webgl1Test', function() {
 			view, 0);
 		const errorCode = gl.getError();
 		console.info("webgl2test texImage2D getError: " + errorCode);
-		expect(errorCode).assertEqual(gl.INVALID_OPERATION);
+		expect(errorCode).assertLarger(gl.NO_ERROR);
+		for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
 		done();
 	});
 
