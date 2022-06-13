@@ -26,3 +26,7 @@ require('./SignVerify/SecurityHuksRSABasicAbort63KBCallbackJsunit.test.js');
 require('./SignVerify/SecurityHuksRSABasicFinish65KBCallbackJsunit.test.js');
 require('./SignVerify/SecurityHuksRSABasicAbort65KBCallbackJsunit.test.js');
 require('./SignVerify/SecurityHuksED25519BasicCallbackJsunit.test.js');
+require('./SignVerify/SecurityHuksSM2BasicAbort63KBCallbackJsunit.test.js');
+require('./SignVerify/SecurityHuksSM2BasicAbort65KBCallbackJsunit.test.js');
+require('./SignVerify/SecurityHuksSM2BasicFinish63KBCallbackJsunit.test.js');
+require('./SignVerify/SecurityHuksSM2BasicFinish65KBCallbackJsunit.test.js');
