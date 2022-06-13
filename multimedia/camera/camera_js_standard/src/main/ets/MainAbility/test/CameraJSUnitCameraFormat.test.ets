@@ -386,7 +386,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       camera0InputPromise.getSupportedPreviewFormats(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_011 success");
-          if (data != null || data.length > 0) {
+          if (data != null && data.length > 0) {
             console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_011 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
               console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_011 cameraFormat: " + data[i]);
@@ -396,6 +396,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_011 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_011 ends here");
         await sleep(1000);
@@ -426,6 +427,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_012 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_012 ends here");
       await sleep(1000);
@@ -445,7 +447,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       camera0InputPromise.getSupportedVideoFormats(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering GET_SUPPORTED_VIDEO_FORMATS_TC_013 success");
-          if (data != null || data.length > 0) {
+          if (data != null && data.length > 0) {
             console.info(TAG + "Entering GET_SUPPORTED_VIDEO_FORMATS_TC_013 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
               console.info(TAG + "Entering GET_SUPPORTED_VIDEO_FORMATS_TC_013 cameraFormat: " + data[i]);
@@ -455,6 +457,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_VIDEO_FORMATS_TC_013 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_VIDEO_FORMATS_TC_013 ends here");
         await sleep(1000);
@@ -485,6 +488,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_VIDEO_FORMATS_PROMISE_TC_014 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_VIDEO_FORMATS_PROMISE_TC_014 ends here");
       await sleep(1000);
@@ -492,30 +496,31 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_015
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_015
       * @tc.name      : Get supported sizes using camera-0 cameraformat & camerainput async api
       * @tc.desc      : Get supported sizes using camera-0 cameraformat & camerainput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_015', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_015--------------");
-      camera0InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP, async (err, data) => {
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_015', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_015--------------");
+      camera0InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_015 success");
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_015 success");
           if (data != null || data.length > 0) {
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_015 data is not null || undefined");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_015 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
-              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_015 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
+              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_015 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
             }
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_015 PASSED");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_015 PASSED");
           }
         } else {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_015 FAILED: " + err.message);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_015 FAILED: " + err.message);
+          expect().assertFail();
         }
-        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_015 ends here");
+        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_015 ends here");
         await sleep(1000);
         done();
       })
@@ -524,28 +529,29 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_016
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_016
       * @tc.name      : Get supported sizes using camera-0 cameraformat & camerainput promise api
       * @tc.desc      : Get supported sizes using camera-0 cameraformat & camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_016', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_016--------------");
-      var sizeArrayPromise = await camera0InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP);
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_016 sizeArrayPromise");
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_016', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_016--------------");
+      var sizeArrayPromise = await camera0InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_016 sizeArrayPromise");
       if (sizeArrayPromise != null && sizeArrayPromise.length > 0) {
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_016 size0ArrayPromise is not null || undefined");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_016 size0ArrayPromise is not null || undefined");
         for (var i = 0; i < sizeArrayPromise.length; i++) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_016 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_016 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
         }
         expect(true).assertTrue();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_016 PASSED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_016 PASSED");
       } else {
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_016 FAILED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_016 FAILED");
+        expect().assertFail();
       }
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_016 ends here");
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_016 ends here");
       await sleep(1000);
       done();
     })
@@ -573,6 +579,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_017 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_017 ends here");
         await sleep(1000);
@@ -603,6 +610,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_018 FAILED");
+        expect().assertFail();
       }
       console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_018 ends here");
       await sleep(1000);
@@ -753,6 +761,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_023 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_023 ends here");
         await sleep(1000);
@@ -783,6 +792,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_024 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_024 ends here");
       await sleep(1000);
@@ -790,31 +800,31 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_025
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_025
       * @tc.name      : Get supported sizes using camera-0 cameraformat & camerainput async api
       * @tc.desc      : Get supported sizes using camera-0 cameraformat & camerainput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_025', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_025--------------");
-      camera0InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP, async (err, data) => {
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_025', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_025--------------");
+      camera0InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_025 success");
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_025 success");
           if (data != null || data.length > 0) {
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_025 data is not null || undefined");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_025 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
-              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_025 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
+              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_025 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
             }
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_025 PASSED");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_025 PASSED");
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_025 FAILED: " + err.message);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_025 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_025 ends here");
+        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_025 ends here");
         await sleep(1000);
         done();
       })
@@ -823,29 +833,29 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_026
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_026
       * @tc.name      : Get supported sizes using camera-0 cameraformat & camerainput promise api
       * @tc.desc      : Get supported sizes using camera-0 cameraformat & camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_026', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_026--------------");
-      var sizeArrayPromise = await camera0InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP);
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_026 sizeArrayPromise: ");
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_026', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_026--------------");
+      var sizeArrayPromise = await camera0InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_026 sizeArrayPromise: ");
       if (sizeArrayPromise != null && sizeArrayPromise.length > 0) {
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_026 size0ArrayPromise is not null || undefined");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_026 size0ArrayPromise is not null || undefined");
         for (var i = 0; i < sizeArrayPromise.length; i++) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_026 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_026 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
         }
         expect(true).assertTrue();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_026 PASSED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_026 PASSED");
       } else {
         expect().assertFail();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_026 FAILED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_026 FAILED");
       }
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_026 ends here");
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_026 ends here");
       await sleep(1000);
       done();
     })
@@ -873,6 +883,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_027 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_027 ends here");
         await sleep(1000);
@@ -903,6 +914,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_028 FAILED");
+        expect().assertFail();
       }
       console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_028 ends here");
       await sleep(1000);
@@ -1052,6 +1064,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_033 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_033 ends here");
         await sleep(1000);
@@ -1082,6 +1095,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_034 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_034 ends here");
       await sleep(1000);
@@ -1089,31 +1103,31 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_035
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_035
       * @tc.name      : Get supported sizes using camera-0 cameraformat & camerainput async api
       * @tc.desc      : Get supported sizes using camera-0 cameraformat & camerainput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_035', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_035--------------");
-      camera0InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP, async (err, data) => {
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_035', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_035--------------");
+      camera0InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_035 success");
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_035 success");
           if (data != null || data.length > 0) {
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_035 data is not null || undefined");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_035 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
-              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_035 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
+              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_035 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
             }
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_035 PASSED");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_035 PASSED");
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_035 FAILED: " + err.message);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_035 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_035 ends here");
+        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_035 ends here");
         await sleep(1000);
         done();
       })
@@ -1122,29 +1136,29 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_036
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_036
       * @tc.name      : Get supported sizes using camera-0 cameraformat & camerainput promise api
       * @tc.desc      : Get supported sizes using camera-0 cameraformat & camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_036', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_036--------------");
-      var sizeArrayPromise = await camera0InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP);
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_036 sizeArrayPromise: ");
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_036', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_036--------------");
+      var sizeArrayPromise = await camera0InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_036 sizeArrayPromise: ");
       if (sizeArrayPromise != null && sizeArrayPromise.length > 0) {
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_036 size0ArrayPromise is not null || undefined");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_036 size0ArrayPromise is not null || undefined");
         for (var i = 0; i < sizeArrayPromise.length; i++) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_036 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_036 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
         }
         expect(true).assertTrue();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_036 PASSED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_036 PASSED");
       } else {
         expect().assertFail();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_036 FAILED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_036 FAILED");
       }
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_036 ends here");
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_036 ends here");
       await sleep(1000);
       done();
     })
@@ -1172,6 +1186,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_037 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_037 ends here");
         await sleep(1000);
@@ -1202,6 +1217,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_038 FAILED");
+        expect().assertFail();
       }
       console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_038 ends here");
       await sleep(1000);
@@ -1483,6 +1499,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_047 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_047 ends here");
         await sleep(1000);
@@ -1513,6 +1530,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_048 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_048 ends here");
       await sleep(1000);
@@ -1542,6 +1560,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_VIDEO_FORMATS_CAMINPUT1_TC_049 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_VIDEO_FORMATS_CAMINPUT1_TC_049 ends here");
         await sleep(1000);
@@ -1572,6 +1591,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_VIDEO_FORMATS_PROMISE_CAMINPUT1_TC_050 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_VIDEO_FORMATS_PROMISE_CAMINPUT1_TC_050 ends here");
       await sleep(1000);
@@ -1579,31 +1599,31 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_051
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_051
       * @tc.name      : Get supported sizes using camera-1 cameraformat & camerainput async api
       * @tc.desc      : Get supported sizes using camera-1 cameraformat & camerainput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_051', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_051--------------");
-      camera1InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP, async (err, data) => {
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_051', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_051--------------");
+      camera1InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_051 success");
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_051 success");
           if (data != null || data.length > 0) {
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_051 data is not null || undefined");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_051 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
-              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_051 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
+              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_051 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
             }
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_051 PASSED");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_051 PASSED");
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_051 FAILED: " + err.message);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_051 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_051 ends here");
+        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_051 ends here");
         await sleep(1000);
         done();
       })
@@ -1612,29 +1632,29 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_052
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_052
       * @tc.name      : Get supported sizes using camera-1 cameraformat & camerainput promise api
       * @tc.desc      : Get supported sizes using camera-1 cameraformat & camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_052', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_052--------------");
-      var sizeArrayPromise = await camera1InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP);
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_052 sizeArrayPromise: ");
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_052', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_052--------------");
+      var sizeArrayPromise = await camera1InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_052 sizeArrayPromise: ");
       if (sizeArrayPromise != null && sizeArrayPromise.length > 0) {
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_052 size0ArrayPromise is not null || undefined");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_052 size0ArrayPromise is not null || undefined");
         for (var i = 0; i < sizeArrayPromise.length; i++) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_052 sizeArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_052 sizeArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
         }
         expect(true).assertTrue();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_052 PASSED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_052 PASSED");
       } else {
         expect().assertFail();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_052 FAILED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_052 FAILED");
       }
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_052 ends here");
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_052 ends here");
       await sleep(1000);
       done();
     })
@@ -1662,6 +1682,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_053 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_053 ends here");
         await sleep(1000);
@@ -1692,6 +1713,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_054 FAILED");
+        expect().assertFail();
       }
       console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_054 ends here");
       await sleep(1000);
@@ -1840,6 +1862,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_059 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_059 ends here");
         await sleep(1000);
@@ -1870,6 +1893,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_060 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_060 ends here");
       await sleep(1000);
@@ -1877,31 +1901,31 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_061
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_061
       * @tc.name      : Get supported sizes using camera-1 cameraformat & camerainput async api
       * @tc.desc      : Get supported sizes using camera-1 cameraformat & camerainput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_061', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_061--------------");
-      camera1InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP, async (err, data) => {
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_061', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_061--------------");
+      camera1InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_061 success");
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_061 success");
           if (data != null || data.length > 0) {
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_061 data is not null || undefined");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_061 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
-              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_061 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
+              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_061 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
             }
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_061 PASSED");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_061 PASSED");
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_061 FAILED: " + err.message);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_061 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_061 ends here");
+        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_061 ends here");
         await sleep(1000);
         done();
       })
@@ -1910,29 +1934,29 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_062
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_062
       * @tc.name      : Get supported sizes using camera-1 cameraformat & camerainput promise api
       * @tc.desc      : Get supported sizes using camera-1 cameraformat & camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_062', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_062--------------");
-      var sizeArrayPromise = await camera1InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP);
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_062 sizeArrayPromise: ");
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_062', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_062--------------");
+      var sizeArrayPromise = await camera1InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_062 sizeArrayPromise: ");
       if (sizeArrayPromise != null && sizeArrayPromise.length > 0) {
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_062 size0ArrayPromise is not null || undefined");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_062 size0ArrayPromise is not null || undefined");
         for (var i = 0; i < sizeArrayPromise.length; i++) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_062 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_062 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
         }
         expect(true).assertTrue();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_062 PASSED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_062 PASSED");
       } else {
         expect().assertFail();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_062 FAILED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_062 FAILED");
       }
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_062 ends here");
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_062 ends here");
       await sleep(1000);
       done();
     })
@@ -1960,6 +1984,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_063 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_063 ends here");
         await sleep(1000);
@@ -1990,6 +2015,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_064 FAILED");
+        expect().assertFail();
       }
       console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_064 ends here");
       await sleep(1000);
@@ -2138,6 +2164,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_069 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_069 ends here");
         await sleep(1000);
@@ -2168,6 +2195,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_070 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_070 ends here");
       await sleep(1000);
@@ -2175,31 +2203,31 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_071
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_071
       * @tc.name      : Get supported sizes using camera-1 cameraformat & camerainput async api
       * @tc.desc      : Get supported sizes using camera-1 cameraformat & camerainput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_071', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_071--------------");
-      camera1InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP, async (err, data) => {
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_071', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_071--------------");
+      camera1InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_071 success");
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_071 success");
           if (data != null || data.length > 0) {
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_071 data is not null || undefined");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_071 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
-              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_071 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
+              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_071 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
             }
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_071 PASSED");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_071 PASSED");
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_071 FAILED: " + err.message);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_071 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_071 ends here");
+        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_071 ends here");
         await sleep(1000);
         done();
       })
@@ -2208,29 +2236,29 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_072
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_072
       * @tc.name      : Get supported sizes using camera-1 cameraformat & camerainput promise api
       * @tc.desc      : Get supported sizes using camera-1 cameraformat & camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_072', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_072--------------");
-      var sizeArrayPromise = await camera1InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP);
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_072 sizeArrayPromise: ");
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_072', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_072--------------");
+      var sizeArrayPromise = await camera1InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_072 sizeArrayPromise: ");
       if (sizeArrayPromise != null && sizeArrayPromise.length > 0) {
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_072 size0ArrayPromise is not null || undefined");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_072 size0ArrayPromise is not null || undefined");
         for (var i = 0; i < sizeArrayPromise.length; i++) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_072 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_072 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
         }
         expect(true).assertTrue();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_072 PASSED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_072 PASSED");
       } else {
         expect().assertFail();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_072 FAILED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_072 FAILED");
       }
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_072 ends here");
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_072 ends here");
       await sleep(1000);
       done();
     })
@@ -2258,6 +2286,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_073 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_073 ends here");
         await sleep(1000);
@@ -2288,6 +2317,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_074 FAILED");
+        expect().assertFail();
       }
       console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_074 ends here");
       await sleep(1000);
@@ -2545,6 +2575,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_083 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_083 ends here");
         await sleep(1000);
@@ -2575,6 +2606,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_084 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_084 ends here");
       await sleep(1000);
@@ -2604,6 +2636,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_VIDEO_FORMATS_CAMINPUT2_TC_85 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_VIDEO_FORMATS_CAMINPUT2_TC_85 ends here");
         await sleep(1000);
@@ -2634,6 +2667,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_VIDEO_FORMATS_PROMISE_CAMINPUT2_TC_086 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_VIDEO_FORMATS_PROMISE_CAMINPUT2_TC_086 ends here");
       await sleep(1000);
@@ -2641,31 +2675,31 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_087
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_087
       * @tc.name      : Get supported sizes using camera-2 cameraformat & camerainput async api
       * @tc.desc      : Get supported sizes using camera-2 cameraformat & camerainput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_087', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_087--------------");
-      camera2InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP, async (err, data) => {
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_087', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_087--------------");
+      camera2InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_087 success");
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_087 success");
           if (data != null || data.length > 0) {
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_087 data is not null || undefined");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_087 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
-              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_087 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
+              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_087 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
             }
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_087 PASSED");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_087 PASSED");
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_087 FAILED: " + err.message);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_087 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_087 ends here");
+        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_087 ends here");
         await sleep(1000);
         done();
       })
@@ -2674,29 +2708,29 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_088
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_088
       * @tc.name      : Get supported sizes using camera-2 cameraformat & camerainput promise api
       * @tc.desc      : Get supported sizes using camera-2 cameraformat & camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_088', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_088--------------");
-      var sizeArrayPromise = await camera2InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP);
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_088 sizeArrayPromise: ");
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_088', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_088--------------");
+      var sizeArrayPromise = await camera2InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_088 sizeArrayPromise: ");
       if (sizeArrayPromise != null && sizeArrayPromise.length > 0) {
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_088 size0ArrayPromise is not null || undefined");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_088 size0ArrayPromise is not null || undefined");
         for (var i = 0; i < sizeArrayPromise.length; i++) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_088 sizeArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_088 sizeArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
         }
         expect(true).assertTrue();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_088 PASSED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_088 PASSED");
       } else {
         expect().assertFail();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_088 FAILED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_088 FAILED");
       }
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_088 ends here");
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_088 ends here");
       await sleep(1000);
       done();
     })
@@ -2724,6 +2758,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_089 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_089 ends here");
         await sleep(1000);
@@ -2754,6 +2789,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_090 FAILED");
+        expect().assertFail();
       }
       console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_090 ends here");
       await sleep(1000);
@@ -2902,6 +2938,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_095 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_095 ends here");
         await sleep(1000);
@@ -2932,6 +2969,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_096 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_096 ends here");
       await sleep(1000);
@@ -2939,31 +2977,31 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_097
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_097
       * @tc.name      : Get supported sizes using camera-2 cameraformat & camerainput async api
       * @tc.desc      : Get supported sizes using camera-2 cameraformat & camerainput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_097', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_097--------------");
-      camera2InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP, async (err, data) => {
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_097', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_097--------------");
+      camera2InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_097 success");
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_097 success");
           if (data != null || data.length > 0) {
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_097 data is not null || undefined");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_097 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
-              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_097 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
+              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_097 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
             }
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_097 PASSED");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_097 PASSED");
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_097 FAILED: " + err.message);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_097 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_097 ends here");
+        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_097 ends here");
         await sleep(1000);
         done();
       })
@@ -2972,29 +3010,29 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_098
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_098
       * @tc.name      : Get supported sizes using camera-2 cameraformat & camerainput promise api
       * @tc.desc      : Get supported sizes using camera-2 cameraformat & camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_098', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_098--------------");
-      var sizeArrayPromise = await camera2InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP);
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_098 sizeArrayPromise: ");
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_098', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_098--------------");
+      var sizeArrayPromise = await camera2InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_098 sizeArrayPromise: ");
       if (sizeArrayPromise != null && sizeArrayPromise.length > 0) {
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_098 size0ArrayPromise is not null || undefined");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_098 size0ArrayPromise is not null || undefined");
         for (var i = 0; i < sizeArrayPromise.length; i++) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_098 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_098 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
         }
         expect(true).assertTrue();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_098 PASSED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_098 PASSED");
       } else {
         expect().assertFail();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_098 FAILED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_098 FAILED");
       }
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_098 ends here");
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_098 ends here");
       await sleep(1000);
       done();
     })
@@ -3022,6 +3060,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_099 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_099 ends here");
         await sleep(1000);
@@ -3052,6 +3091,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_100 FAILED");
+        expect().assertFail();
       }
       console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_100 ends here");
       await sleep(1000);
@@ -3200,6 +3240,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_105 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_105 ends here");
         await sleep(1000);
@@ -3230,6 +3271,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_106 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_106 ends here");
       await sleep(1000);
@@ -3237,31 +3279,31 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_107
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_107
       * @tc.name      : Get supported sizes using camera-2 cameraformat & camerainput async api
       * @tc.desc      : Get supported sizes using camera-2 cameraformat & camerainput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_107', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_107--------------");
-      camera2InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP, async (err, data) => {
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_107', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_107--------------");
+      camera2InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_107 success");
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_107 success");
           if (data != null || data.length > 0) {
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_107 data is not null || undefined");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_107 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
-              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_107 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
+              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_107 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
             }
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_107 PASSED");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_107 PASSED");
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_107 FAILED: " + err.message);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_107 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_107 ends here");
+        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_107 ends here");
         await sleep(1000);
         done();
       })
@@ -3270,29 +3312,29 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_108
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_108
       * @tc.name      : Get supported sizes using camera-2 cameraformat & camerainput promise api
       * @tc.desc      : Get supported sizes using camera-2 cameraformat & camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_108', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_108--------------");
-      var sizeArrayPromise = await camera2InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP);
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_108 sizeArrayPromise: ");
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_108', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_108--------------");
+      var sizeArrayPromise = await camera2InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_108 sizeArrayPromise: ");
       if (sizeArrayPromise != null && sizeArrayPromise.length > 0) {
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_108 size0ArrayPromise is not null || undefined");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_108 size0ArrayPromise is not null || undefined");
         for (var i = 0; i < sizeArrayPromise.length; i++) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_108 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_108 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
         }
         expect(true).assertTrue();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_108 PASSED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_108 PASSED");
       } else {
         expect().assertFail();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_108 FAILED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_108 FAILED");
       }
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_108 ends here");
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_108 ends here");
       await sleep(1000);
       done();
     })
@@ -3320,6 +3362,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_109 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_109 ends here");
         await sleep(1000);
@@ -3350,6 +3393,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_110 FAILED");
+        expect().assertFail();
       }
       console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_110 ends here");
       await sleep(1000);
@@ -3607,6 +3651,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_119 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_119 ends here");
         await sleep(1000);
@@ -3637,6 +3682,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_120 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_120 ends here");
       await sleep(1000);
@@ -3644,31 +3690,31 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121
       * @tc.name      : Get supported sizes using camera-3 cameraformat & camerainput async api
       * @tc.desc      : Get supported sizes using camera-3 cameraformat & camerainput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121--------------");
-      camera3InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP, async (err, data) => {
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121--------------");
+      camera3InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121 success");
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121 success");
           if (data != null || data.length > 0) {
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121 data is not null || undefined");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
-              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
+              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
             }
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121 PASSED");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121 PASSED");
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121 FAILED: " + err.message);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121 ends here");
+        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121 ends here");
         await sleep(1000);
         done();
       })
@@ -3699,6 +3745,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_VIDEO_FORMATS_CAMINPUT3_TC_122 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_VIDEO_FORMATS_CAMINPUT3_TC_122 ends here");
         await sleep(1000);
@@ -3729,6 +3776,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_VIDEO_FORMATS_PROMISE_CAMINPUT3_TC_123 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_VIDEO_FORMATS_PROMISE_CAMINPUT3_TC_123 ends here");
       await sleep(1000);
@@ -3736,31 +3784,31 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121
       * @tc.name      : Get supported sizes using camera-3 cameraformat & camerainput async api
       * @tc.desc      : Get supported sizes using camera-3 cameraformat & camerainput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121--------------");
-      camera3InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP, async (err, data) => {
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121--------------");
+      camera3InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121 success");
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121 success");
           if (data != null || data.length > 0) {
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121 data is not null || undefined");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
-              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
+              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
             }
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121 PASSED");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121 PASSED");
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121 FAILED: " + err.message);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_121 ends here");
+        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121 ends here");
         await sleep(1000);
         done();
       })
@@ -3769,29 +3817,29 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_125
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_125
       * @tc.name      : Get supported sizes using camera-3 cameraformat & camerainput promise api
       * @tc.desc      : Get supported sizes using camera-3 cameraformat & camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_125', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_125--------------");
-      var sizeArrayPromise = await camera3InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP);
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_125 sizeArrayPromise: ");
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_125', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_125--------------");
+      var sizeArrayPromise = await camera3InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_125 sizeArrayPromise: ");
       if (sizeArrayPromise != null && sizeArrayPromise.length > 0) {
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_125 size0ArrayPromise is not null || undefined");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_125 size0ArrayPromise is not null || undefined");
         for (var i = 0; i < sizeArrayPromise.length; i++) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_125 sizeArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_125 sizeArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
         }
         expect(true).assertTrue();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_125 PASSED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_125 PASSED");
       } else {
         expect().assertFail();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_125 FAILED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_125 FAILED");
       }
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_125 ends here");
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_125 ends here");
       await sleep(1000);
       done();
     })
@@ -3819,6 +3867,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_126 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_126 ends here");
         await sleep(1000);
@@ -3849,6 +3898,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_127 FAILED");
+        expect().assertFail();
       }
       console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_127 ends here");
       await sleep(1000);
@@ -3997,6 +4047,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_132 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_132 ends here");
         await sleep(1000);
@@ -4027,6 +4078,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_133 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_133 ends here");
       await sleep(1000);
@@ -4034,31 +4086,31 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_134
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_134
       * @tc.name      : Get supported sizes using camera-3 cameraformat & camerainput async api
       * @tc.desc      : Get supported sizes using camera-3 cameraformat & camerainput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_134', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_134--------------");
-      camera3InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP, async (err, data) => {
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_134', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_134--------------");
+      camera3InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_134 success");
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_134 success");
           if (data != null || data.length > 0) {
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_134 data is not null || undefined");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_134 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
-              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_134 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
+              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_134 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
             }
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_134 PASSED");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_134 PASSED");
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_134 FAILED: " + err.message);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_134 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_134 ends here");
+        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_134 ends here");
         await sleep(1000);
         done();
       })
@@ -4067,29 +4119,29 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_135
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_135
       * @tc.name      : Get supported sizes using camera-3 cameraformat & camerainput promise api
       * @tc.desc      : Get supported sizes using camera-3 cameraformat & camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_135', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_135--------------");
-      var sizeArrayPromise = await camera3InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP);
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_135 sizeArrayPromise: ");
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_135', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_135--------------");
+      var sizeArrayPromise = await camera3InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_135 sizeArrayPromise: ");
       if (sizeArrayPromise != null && sizeArrayPromise.length > 0) {
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_135 size0ArrayPromise is not null || undefined");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_135 size0ArrayPromise is not null || undefined");
         for (var i = 0; i < sizeArrayPromise.length; i++) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_135 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_135 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
         }
         expect(true).assertTrue();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_135 PASSED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_135 PASSED");
       } else {
         expect().assertFail();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_135 FAILED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_135 FAILED");
       }
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_135 ends here");
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_135 ends here");
       await sleep(1000);
       done();
     })
@@ -4117,6 +4169,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_136 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_136 ends here");
         await sleep(1000);
@@ -4147,6 +4200,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_137 FAILED");
+        expect().assertFail();
       }
       console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_137 ends here");
       await sleep(1000);
@@ -4295,6 +4349,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_142 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PREVIEW_FORMATS_TC_142 ends here");
         await sleep(1000);
@@ -4325,6 +4380,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_143 FAILED");
+        expect().assertFail();
       }
       console.info("CameraModuleTest: Entering GET_SUPPORTED_PREVIEW_FORMATS_PROMISE_TC_143 ends here");
       await sleep(1000);
@@ -4332,31 +4388,31 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_144
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_144
       * @tc.name      : Get supported sizes using camera-3 cameraformat & camerainput async api
       * @tc.desc      : Get supported sizes using camera-3 cameraformat & camerainput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_144', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_144--------------");
-      camera3InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP, async (err, data) => {
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_144', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_144--------------");
+      camera3InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_144 success");
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_144 success");
           if (data != null || data.length > 0) {
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_144 data is not null || undefined");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_144 data is not null || undefined");
             for (var i = 0; i < data.length; i++) {
-              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_144 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
+              console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_144 sizeArray: width * height - " + data[i].width + " * " + data[i].height);
             }
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_144 PASSED");
+            console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_144 PASSED");
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_144 FAILED: " + err.message);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_144 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_TC_144 ends here");
+        console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_144 ends here");
         await sleep(1000);
         done();
       })
@@ -4365,29 +4421,29 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_145
+      * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_145
       * @tc.name      : Get supported sizes using camera-3 cameraformat & camerainput promise api
       * @tc.desc      : Get supported sizes using camera-3 cameraformat & camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_145', 0, async function (done) {
-      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_145--------------");
-      var sizeArrayPromise = await camera3InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YCRCb_420_SP);
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_145 sizeArrayPromise: ");
+    it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_145', 0, async function (done) {
+      console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_145--------------");
+      var sizeArrayPromise = await camera3InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_145 sizeArrayPromise: ");
       if (sizeArrayPromise != null && sizeArrayPromise.length > 0) {
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_145 size0ArrayPromise is not null || undefined");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_145 size0ArrayPromise is not null || undefined");
         for (var i = 0; i < sizeArrayPromise.length; i++) {
-          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_145 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
+          console.info(TAG + "Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_145 size0ArrayPromise: width * height - " + sizeArrayPromise[i].width + " * " + sizeArrayPromise[i].height);
         }
         expect(true).assertTrue();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_145 PASSED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_145 PASSED");
       } else {
         expect().assertFail();
-        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_145 FAILED");
+        console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_145 FAILED");
       }
-      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YCRCb_420_SP_PROMISE_TC_145 ends here");
+      console.info("CameraModuleTest: Entering GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_145 ends here");
       await sleep(1000);
       done();
     })
@@ -4415,6 +4471,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           }
         } else {
           console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_146 FAILED: " + err.message);
+          expect().assertFail();
         }
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_TC_146 ends here");
         await sleep(1000);
@@ -4445,6 +4502,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
         }
       } else {
         console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_147 FAILED");
+        expect().assertFail();
       }
       console.info(TAG + "Entering GET_SUPPORTED_PHOTO_FORMATS_PROMISE_TC_147 ends here");
       await sleep(1000);
