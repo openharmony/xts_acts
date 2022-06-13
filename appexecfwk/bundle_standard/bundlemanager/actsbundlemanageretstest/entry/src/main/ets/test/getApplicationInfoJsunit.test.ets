@@ -396,13 +396,13 @@ export default function applicationBundleJsunit() {
         it('getApplicationInfo_1800', 0, async function (done) {
             await Bundle.getApplicationInfo(BUNDLE_NAME,
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_CERTIFICATE_FINGERPRINT).then((data) => {
-                expect(data.fingerprint).assertFail("8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5");
+                expect(data.fingerprint).assertEqual("8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5");
             }).catch((error) => {
                 expect(error).assertEqual(1);
             });
             Bundle.getApplicationInfo(BUNDLE_NAME,
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_CERTIFICATE_FINGERPRINT, (error, data) => {
-                    expect(data.fingerprint).assertFail("8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5");
+                    expect(data.fingerprint).assertEqual("8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5");
                     if(error){
                         expect(err).assertEqual(1);
                     }
