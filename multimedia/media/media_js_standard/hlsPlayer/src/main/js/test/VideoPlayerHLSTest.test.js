@@ -94,7 +94,7 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.level     : Level0
     */
      it('SUB_MEDIA_VIDEO_PLAYER_HLS_VARIANT', 0, async function (done) {
-        await playVideoSource(HTTP_PATH + '05.hls/hls_variant/index.m3u8', null, null, 120000, PLAY_TIME, done);
+        await playVideoSource(HTTP_PATH + '05.hls/hls_variant/index.m3u8', null, null, 10033, PLAY_TIME, done);
         done();
     })
 
@@ -120,7 +120,7 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_PLAYER_HLS_CODEC_CHAGNGE', 0, async function (done) {
-        await playVideoSource(HTTP_PATH + '05.hls/hls_variant3/index.m3u8', null, null, 120000, PLAY_TIME, done);
+        await playVideoSource(HTTP_PATH + '05.hls/hls_variant3/index.m3u8', null, null, 10080, PLAY_TIME, done);
         done();
     })
 
