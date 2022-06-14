@@ -24,71 +24,71 @@ let videoType = mediaLibrary.MediaType.VIDEO;
 let audioType = mediaLibrary.MediaType.AUDIO;
 
 let getFileCountOneOp = {
-    selections : fileKeyObj.MEDIA_TYPE + '= ?',
+    selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs : [ fileType.toString() ],
-    order : fileKeyObj.DATE_ADDED + " DESC LIMIT 0,1",
-    extendArgs : "",
+    order : mediaLibrary.FileKey.DATE_ADDED + " DESC LIMIT 0,1",
+      
 };
 
 let getFileCountTwoOp = {
-    selections : fileKeyObj.MEDIA_TYPE + '= ?',
+    selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs : [ fileType.toString() ],
-    order : fileKeyObj.DATE_ADDED + " DESC LIMIT 0,2",
-    extendArgs : "",
+    order : mediaLibrary.FileKey.DATE_ADDED + " DESC LIMIT 0,2",
+      
 };
 
 let getFileCountTenOp = {
-    selections : fileKeyObj.MEDIA_TYPE + '= ?',
+    selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs : [ fileType.toString() ],
-    order : fileKeyObj.DATE_ADDED + " DESC LIMIT 0,10",
-    extendArgs : "",
+    order : mediaLibrary.FileKey.DATE_ADDED + " DESC LIMIT 0,10",
+      
 };
 
 let getFileCountOneHundredOp = {
-    selections : fileKeyObj.MEDIA_TYPE + '= ?',
+    selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs : [ fileType.toString() ],
-    order : fileKeyObj.DATE_ADDED + " DESC LIMIT 0,100",
-    extendArgs : "",
+    order : mediaLibrary.FileKey.DATE_ADDED + " DESC LIMIT 0,100",
+      
 };
 
 let getFirstObjectOp = {
-    selections : fileKeyObj.RELATIVE_PATH + '= ?',
+    selections : mediaLibrary.FileKey.RELATIVE_PATH + '= ?',
     selectionArgs : [ 'Camera/' ],
-    order : fileKeyObj.ID + " DESC LIMIT 0,5",
-    extendArgs : "",
+    order : mediaLibrary.FileKey.ID + " DESC LIMIT 0,5",
+      
 }
 
 let getAllObjectLimitOneOp = {
-    selections : fileKeyObj.RELATIVE_PATH + '= ?',
+    selections : mediaLibrary.FileKey.RELATIVE_PATH + '= ?',
     selectionArgs : [ 'Camera/' ],
-    order : fileKeyObj.ID + " DESC LIMIT 0,1",
-    extendArgs : "",
+    order : mediaLibrary.FileKey.ID + " DESC LIMIT 0,1",
+      
 }
 
 let getAllObjectLimitTwoOp = {
-    selections : fileKeyObj.RELATIVE_PATH + '= ?',
+    selections : mediaLibrary.FileKey.RELATIVE_PATH + '= ?',
     selectionArgs : [ 'Camera/' ],
-    order : fileKeyObj.ID + " DESC LIMIT 0,1",
-    extendArgs : "",
+    order : mediaLibrary.FileKey.ID + " DESC LIMIT 0,1",
+      
 }
 
 let getAllObjectLimitOneHundredOp = {
-    selections : fileKeyObj.RELATIVE_PATH + '= ?',
+    selections : mediaLibrary.FileKey.RELATIVE_PATH + '= ?',
     selectionArgs : [ 'Camera/' ],
-    order : fileKeyObj.ID + " DESC LIMIT 0,100",
-    extendArgs : "",
+    order : mediaLibrary.FileKey.ID + " DESC LIMIT 0,100",
+      
 }
 
 let getFileCountZeroOp = {
-    selections : fileKeyObj.DISPLAY_NAME + '=?',
+    selections : mediaLibrary.FileKey.DISPLAY_NAME + '=?',
     selectionArgs : [ 'The world has kissed my soul with its pain, asking for its return in songs.' ],
 };
 
 let getFileOp = {
-    selections : fileKeyObj.DISPLAY_NAME + '= ? AND ' + fileKeyObj.RELATIVE_PATH + '= ?',
+    selections : mediaLibrary.FileKey.DISPLAY_NAME + '= ? AND ' + mediaLibrary.FileKey.RELATIVE_PATH + '= ?',
     selectionArgs : [ '01.jpg', 'Camera/' ],
-    order : fileKeyObj.ID + " DESC LIMIT 0,100",
-    extendArgs : "",
+    order : mediaLibrary.FileKey.ID + " DESC LIMIT 0,100",
+      
 }
 
 describe('fetchFileResultPromise.test.js', async function() {

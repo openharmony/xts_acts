@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import mediaLibrary from '@ohos.multimedia.medialibrary';
+import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import featureAbility from '@ohos.ability.featureAbility';
 import fileio from '@ohos.fileio';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
@@ -42,7 +42,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let fileType = mediaLibrary.MediaType.FILE;
             let fileFetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ fileType.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fileFetchOp);
@@ -95,7 +95,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.FILE;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -136,7 +136,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.FILE;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -180,7 +180,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.ALBUM;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -212,7 +212,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.ALBUM;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -244,7 +244,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.ALBUM;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -281,7 +281,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let fileType = mediaLibrary.MediaType.IMAGE;
             let fileFetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ fileType.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fileFetchOp);
@@ -332,7 +332,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.IMAGE;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -373,7 +373,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.IMAGE;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -419,7 +419,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let fileType = mediaLibrary.MediaType.AUDIO;
             let fileFetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ fileType.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fileFetchOp);
@@ -470,7 +470,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.AUDIO;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -511,7 +511,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.AUDIO;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -557,7 +557,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let fileType = mediaLibrary.MediaType.VIDEO;
             let fileFetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ fileType.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fileFetchOp);
@@ -616,7 +616,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.VIDEO;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -660,7 +660,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.VIDEO;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -709,7 +709,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.FILE;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -753,7 +753,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.IMAGE;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -797,7 +797,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.AUDIO;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);
@@ -841,7 +841,7 @@ describe('fileAssetTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.VIDEO;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             let fetchFileResult = await media.getFileAssets(fetchOp);

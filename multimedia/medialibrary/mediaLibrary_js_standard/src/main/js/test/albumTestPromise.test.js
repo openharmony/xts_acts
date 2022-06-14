@@ -27,35 +27,35 @@ let allTypefetchOp = {
     selectionArgs: [],
 };
 let albumDeletefetchOp = {
-    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.ALBUM_NAME + '= ?',
-    selectionArgs: ['Pictures/','DeleteAlbumPro'],
+    selections: mediaLibrary.FileKey.RELATIVE_PATH + '= ? AND ' + mediaLibrary.FileKey.ALBUM_NAME + '= ?',
+    selectionArgs: ['Pictures/', 'DeleteAlbumPro'],
 };
 let albumCoverUrifetchOp = {
-    selections: fileKeyObj.RELATIVE_PATH + '= ? AND ' + fileKeyObj.ALBUM_NAME + '= ?',
-    selectionArgs: ['Pictures/','weixin'],
+    selections: mediaLibrary.FileKey.RELATIVE_PATH + '= ? AND ' + mediaLibrary.FileKey.ALBUM_NAME + '= ?',
+    selectionArgs: ['Pictures/', 'weixin'],
 };
 let imageAlbumfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [imageType.toString()],
 };
 let videoAlbumfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [videoType.toString()],
 };
 let audioAlbumfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [audioType.toString()],
 };
 let imageAndVideoAlbumfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? or ' + mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [imageType.toString(), videoType.toString()],
 };
 let imageAndAudioAlbumfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? or ' + mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [imageType.toString(), audioType.toString()],
 };
 let videoAndAudioAlbumfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? or ' + mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [videoType.toString(), audioType.toString()],
 };
 function printAlbumMessage(testNum, album) {
@@ -85,10 +85,10 @@ function checkAlbumAttr(done, album) {
 describe('albumTestPromise.test.js', async function () {
     var context = featureAbility.getContext();
     var media = mediaLibrary.getMediaLibrary(context);
-    beforeAll(function () {});
-    beforeEach(function () {});
-    afterEach(function () {});
-    afterAll(function () {});
+    beforeAll(function () { });
+    beforeEach(function () { });
+    afterEach(function () { });
+    afterAll(function () { });
 
     // ------------------------------ 001 test start -------------------------
     /**
@@ -394,7 +394,7 @@ describe('albumTestPromise.test.js', async function () {
      */
     it('SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_06', 0, async function (done) {
         let fileHasArgsfetchOp3 = {
-            selections: fileKeyObj.MEDIA_TYPE + ' = ?',
+            selections: mediaLibrary.FileKey.MEDIA_TYPE + ' = ?',
             selectionArgs: ['666'],
         };
         try {

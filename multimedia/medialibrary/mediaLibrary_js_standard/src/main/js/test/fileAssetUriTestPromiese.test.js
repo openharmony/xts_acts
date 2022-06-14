@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import mediaLibrary from '@ohos.multimedia.medialibrary';
+import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import featureAbility from '@ohos.ability.featureAbility'
 import fileio from '@ohos.fileio';
 import {describe, it, expect} from 'deccjsunit/index';
@@ -41,7 +41,7 @@ describe('fileAssetUriTestPromise.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.IMAGE;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             const fetchFileResult = await media.getFileAssets(fetchOp);
@@ -56,7 +56,7 @@ describe('fileAssetUriTestPromise.test.js', async function() {
 
             let serchfetchOp = {
                 uri : serachUri.toString(),
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
 

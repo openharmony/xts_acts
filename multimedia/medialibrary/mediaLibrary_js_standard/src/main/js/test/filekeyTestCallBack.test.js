@@ -25,17 +25,17 @@ let videoType = mediaLibrary.MediaType.VIDEO;
 let audioType = mediaLibrary.MediaType.AUDIO;
 
 let imagesfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [imageType.toString()],
 };
 
 let videosfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [videoType.toString()],
 };
 
 let audiosfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [audioType.toString()],
 };
 let allsfetchOp = {
@@ -72,7 +72,7 @@ async function getFileAssetsBy(done, type) {
     const fetchFileResult = await media.getFileAssets(assetOp);
     const asset = await fetchFileResult.getFirstObject();
     let Op = {
-        selections: fileKeyObj[filekeys[type]] + '= ?',
+        selections: mediaLibrary.FileKey[filekeys[type]] + '= ?',
         selectionArgs: [asset[type] + ''],
     };
 
