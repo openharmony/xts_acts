@@ -36,16 +36,19 @@ describe('fileio_stream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
-      ss.write(new ArrayBuffer(4096), {
+      let length = 4096;
+      ss.write(new ArrayBuffer(length), {
         position: 1
       }).then(function (len) {
-        expect(len == (FILE_CONTENT.length - 1)).assertTrue();
-        expect(fileio.unlinkSync(fpath) == null).assertTrue();
+        expect(len == length).assertTrue();
+        fileio.unlinkSync(fpath);
+        ss.closeSync();
+        done();
       })
-      done();
-    } catch (e) {
-      console.log('fileio_test_stream_write_async_000 has failed for ' + e);
+    } catch (err) {
+      console.info('fileio_test_stream_write_async_000 has failed for ' + err);
       expect(null).assertFail();
+      done();
     }
   });
 
