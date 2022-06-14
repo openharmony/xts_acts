@@ -134,7 +134,7 @@ describe('VideoPlayerHLSBitrateTest.test', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-     it('SUB_MEDIA_VIDEO_PLAYER_HLS_SET_BITRATE_0100', 0, async function (done) {
+    it('testHlsVideoPlayerSelectBitrate_0100', 0, async function (done) {
         await initVideoPlayer(done);
         await setVideoUrl(HTTP_PATH + '05.hls/hls_variant/index.m3u8');
         await playAndSetLoop(PLAY_TIME * 2);
@@ -156,7 +156,7 @@ describe('VideoPlayerHLSBitrateTest.test', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HLS_SET_BITRATE_0200', 0, async function (done) {
+    it('testHlsVideoPlayerSelectBitrate_0200', 0, async function (done) {
         await initVideoPlayer(done);
         await setVideoUrl(HTTP_PATH + '05.hls/hls_variant/index.m3u8');
         await playAndSetLoop(PLAY_TIME);
