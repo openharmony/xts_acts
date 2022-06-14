@@ -169,14 +169,12 @@ describe('fileio_copyfile', function () {
       fileio
         .copyFile(1, fpath)
         .then(function (err) {
-        })
-        .catch(function (e) {
-          expect(!!e).assertTrue();
+          fileio.unlinkSync(fpath);
           done();
         });
     } catch (e) {
-      expect(!!e).assertTrue();
-      done();
+      console.log('fileio_copy_file_async_003 has failed for ' + e);
+      expect(null).assertFail();
     }
   });
 
