@@ -59,20 +59,22 @@ describe('fileio_stream', function () {
    * @tc.require
    */
   it('fileio_test_stream_write_async_001', 0, async function (done) {
-    let fpath = nextFileName1('fileio_test_stream_write_async_001');
+    let fpath = await nextFileName('fileio_test_stream_write_async_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
       ss.write(new ArrayBuffer(4096), { offset: 1, encoding: 'utf-8' }, function (err, bytesWritten) {
-        expect(bytesWritten == (FILE_CONTENT.length - 1)).assertTrue();
-        expect(fileio.unlinkSync(fpath) == null).assertTrue();
+        expect(bytesWritten == 4095).assertTrue();
+        fileio.unlinkSync(fpath);
+        ss.closeSync();
+        done();
       });
-      done();
-    } catch (e) {
-      console.log('fileio_test_stream_write_async_001 has failed for ' + e);
+    } catch (err) {
+      console.info('fileio_test_stream_write_async_001 has failed for ' + err);
       expect(null).assertFail();
+      done();
     }
   });
 });
