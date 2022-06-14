@@ -399,7 +399,7 @@ export default function applicationBundleJsunit() {
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_CERTIFICATE_FINGERPRINT).then((data) => {
                 expect(data.fingerprint).assertEqual(TEST_DEMO);
             }).catch((error) => {
-                expect(data).assertFail();
+                expect(error).assertFail();
             });
             done()
         });
