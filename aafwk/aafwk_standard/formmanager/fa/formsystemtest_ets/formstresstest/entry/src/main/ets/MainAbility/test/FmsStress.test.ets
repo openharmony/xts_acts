@@ -637,7 +637,7 @@ export default function test() {
             console.info(`${tcNumber} before filter size: ${JSON.stringify(allFormsInfo.length)}`);
             allFormsInfo = allFormsInfo.filter((formsInfo) => providerBundleNameList.includes(formsInfo.bundleName));
             console.info(`${tcNumber} after filter size: ${JSON.stringify(allFormsInfo.length)}`);
-            expect(allFormsInfo.length).assertEqual(2);
+            expect(allFormsInfo.length).assertEqual(3);
 
             allFormsInfo.forEach(async (formsInfo, index) => {
                 const providerFormsInfo1 = await formHost.getFormsInfo(formsInfo.bundleName);

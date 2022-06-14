@@ -17,7 +17,7 @@ import app from '@system.app'
 import device from '@system.device'
 import router from '@system.router'
 import { Core, ExpectExtend } from 'deccjsunit/index'
-import featureAbility from '@ohos.ability.featureability'
+import featureAbility from '@ohos.ability.featureAbility'
 
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
