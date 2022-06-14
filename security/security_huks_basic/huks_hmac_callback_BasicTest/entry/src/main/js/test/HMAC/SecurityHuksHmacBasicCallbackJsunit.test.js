@@ -271,3 +271,113 @@ describe('SecurityHuksHmacCallbackJsunit', function () {
     done();
   });
 });
+describe('SecurityHuksHmacCallbackJsunit', function () {
+  it('testHmacSHA1001', 0, async function (done) {
+    let srcKeyAlies = 'testHmacDigestSHA1KeyAlias001';
+    let HuksOptions = {
+      properties: new Array(
+        HuksHmac.HuksKeyAlg,
+        HuksHmac.HuksKeyPurpose,
+        HuksHmac.HuksTagDigestSHA1
+      ),
+      inData: srcData63Kb,
+    };
+
+    await publicHmacGenFunc(srcKeyAlies, HuksOptions, 'finish');
+    done();
+  });
+
+  it('testHmacSHA1002', 0, async function (done) {
+    let srcKeyAlies = 'testHmacDigestSHA1KeyAlias002';
+    let HuksOptions = {
+      properties: new Array(
+        HuksHmac.HuksKeyAlg,
+        HuksHmac.HuksKeyPurpose,
+        HuksHmac.HuksTagDigestSHA1
+      ),
+      inData: srcData63Kb,
+    };
+    await publicHmacGenFunc(srcKeyAlies, HuksOptions, 'abort');
+    done();
+  });
+  it('testHmacSHA1003', 0, async function (done) {
+    let srcKeyAlies = 'testHmacDigestSHA1KeyAlias003';
+    let HuksOptions = {
+      properties: new Array(
+        HuksHmac.HuksKeyAlg,
+        HuksHmac.HuksKeyPurpose,
+        HuksHmac.HuksTagDigestSHA1
+      ),
+      inData: srcData65Kb,
+    };
+    await publicHmacGenFunc(srcKeyAlies, HuksOptions, 'finish');
+    done();
+  });
+  it('testHmacSHA1004', 0, async function (done) {
+    let srcKeyAlies = 'testHmacDigestSHA1KeyAlias004';
+    let HuksOptions = {
+      properties: new Array(
+        HuksHmac.HuksKeyAlg,
+        HuksHmac.HuksKeyPurpose,
+        HuksHmac.HuksTagDigestSHA1
+      ),
+      inData: srcData65Kb,
+    };
+    await publicHmacGenFunc(srcKeyAlies, HuksOptions, 'abort');
+    done();
+  });
+  it('testHmacSM3001', 0, async function (done) {
+    let srcKeyAlies = 'testHmacDigestSM3KeyAlias001';
+    let HuksOptions = {
+      properties: new Array(
+        HuksHmac.HuksKeyAlg,
+        HuksHmac.HuksKeyPurpose,
+        HuksHmac.HuksTagDigestSM3
+      ),
+      inData: srcData63Kb,
+    };
+
+    await publicHmacGenFunc(srcKeyAlies, HuksOptions, 'finish');
+    done();
+  });
+
+  it('testHmacSM3002', 0, async function (done) {
+    let srcKeyAlies = 'testHmacDigestSM3KeyAlias002';
+    let HuksOptions = {
+      properties: new Array(
+        HuksHmac.HuksKeyAlg,
+        HuksHmac.HuksKeyPurpose,
+        HuksHmac.HuksTagDigestSM3
+      ),
+      inData: srcData63Kb,
+    };
+    await publicHmacGenFunc(srcKeyAlies, HuksOptions, 'abort');
+    done();
+  });
+  it('testHmacSM3003', 0, async function (done) {
+    let srcKeyAlies = 'testHmacDigestSM3KeyAlias003';
+    let HuksOptions = {
+      properties: new Array(
+        HuksHmac.HuksKeyAlg,
+        HuksHmac.HuksKeyPurpose,
+        HuksHmac.HuksTagDigestSM3
+      ),
+      inData: srcData65Kb,
+    };
+    await publicHmacGenFunc(srcKeyAlies, HuksOptions, 'finish');
+    done();
+  });
+  it('testHmacSM3004', 0, async function (done) {
+    let srcKeyAlies = 'testHmacDigestSM3KeyAlias004';
+    let HuksOptions = {
+      properties: new Array(
+        HuksHmac.HuksKeyAlg,
+        HuksHmac.HuksKeyPurpose,
+        HuksHmac.HuksTagDigestSM3
+      ),
+      inData: srcData65Kb,
+    };
+    await publicHmacGenFunc(srcKeyAlies, HuksOptions, 'abort');
+    done();
+  });
+});

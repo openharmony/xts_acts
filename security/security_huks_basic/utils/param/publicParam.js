@@ -24,6 +24,9 @@ let HksKeyAlg = {
   HKS_ALG_HKDF: 51,
   HKS_ALG_DSA: 3,
   HKS_ALG_ED25519: 102,
+  HKS_ALG_SM2: 150,
+  HKS_ALG_SM3: 151,
+  HKS_ALG_SM4: 152,
 };
 let HksKeyPurpose = {
   HKS_KEY_PURPOSE_AGREE: 256,
@@ -67,6 +70,8 @@ let HksKeySize = {
   HKS_DSA_KEY_SIZE_2048: 2048,
   HKS_DSA_KEY_SIZE_3072: 3072,
   HKS_DSA_KEY_SIZE_4096: 4096,
+  HKS_SM2_KEY_SIZE_256: 256,
+  HKS_SM4_KEY_SIZE_128: 128,
 };
 let HksKeyStorageType = {
   HKS_STORAGE_TEMP: 0,
@@ -85,6 +90,7 @@ let HksKeyDigest = {
   HKS_DIGEST_SHA256: 12,
   HKS_DIGEST_SHA384: 13,
   HKS_DIGEST_SHA512: 14,
+  HKS_DIGEST_SM3: 2,
 };
 let HksKeyPadding = {
   HKS_PADDING_NONE: 0,
