@@ -166,11 +166,15 @@ describe('fileio_copyfile', function () {
   it('fileio_copy_file_async_003', 0, async function (done) {
     let fpath = await nextFileName('fileio_copy_file_async_003');
     try {
-      await fileio.copyFile(1, fpath);
+      fileio
+        .copyFile(1, fpath)
+        .then(function (err) {
+          fileio.unlinkSync(fpath);
+          done();
+        });
     } catch (e) {
       console.log('fileio_copy_file_async_003 has failed for ' + e);
-      expect(e.message == "Invalid argument").assertTrue();
-      done();
+      expect(null).assertFail();
     }
   });
 
