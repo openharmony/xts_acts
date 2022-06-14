@@ -18,9 +18,9 @@ import fileio from '@ohos.fileio';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 let fileKeyObj = mediaLibrary.FileKey;
 let fetchOp = {
-    selections: fileKeyObj.PATH + ' LIKE ? ',
+    selections: mediaLibrary.FileKey.PATH + ' LIKE ? ',
     selectionArgs: ['/data/media/%'],
-    order: fileKeyObj.PATH,
+    order: mediaLibrary.FileKey.PATH,
 };
 // let directoryTypeObj = mediaLibrary.DirectoryType;
 
@@ -36,45 +36,45 @@ let audioType = mediaLibrary.MediaType.AUDIO;
 let fileType = mediaLibrary.MediaType.FILE;
 
 let imagesfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [imageType.toString()],
 };
 let videosfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [videoType.toString()],
 };
 let audiosfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [audioType.toString()],
 };
 let filesfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [fileType.toString()],
 };
 
 let imageAndVideofetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? or ' + mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [imageType.toString(), videoType.toString()],
 };
 let imageAndVideoAndfilefetchOp = {
     selections:
-        fileKeyObj.MEDIA_TYPE +
+        mediaLibrary.FileKey.MEDIA_TYPE +
         '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
+        mediaLibrary.FileKey.MEDIA_TYPE +
         '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
+        mediaLibrary.FileKey.MEDIA_TYPE +
         '= ?',
     selectionArgs: [imageType.toString(), videoType.toString(), fileType.toString()],
 };
 let imageAndVideoAndfileAndAudiofetchOp = {
     selections:
-        fileKeyObj.MEDIA_TYPE +
+        mediaLibrary.FileKey.MEDIA_TYPE +
         '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
+        mediaLibrary.FileKey.MEDIA_TYPE +
         '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
+        mediaLibrary.FileKey.MEDIA_TYPE +
         '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
+        mediaLibrary.FileKey.MEDIA_TYPE +
         '= ?',
     selectionArgs: [
         imageType.toString(),
@@ -267,7 +267,7 @@ describe('mediaLibraryTestCallBack.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_008', 0, async function (done) {
         let fetchOp = {
-            selections: fileKeyObj.MEDIA_TYPE + 'abc= ?',
+            selections: mediaLibrary.FileKey.MEDIA_TYPE + 'abc= ?',
             selectionArgs: ['abc'],
         };
         try {
@@ -292,7 +292,7 @@ describe('mediaLibraryTestCallBack.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_009', 0, async function (done) {
         let fetchOp = {
-            selections: fileKeyObj.MEDIA_TYPE + 'abc= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+            selections: mediaLibrary.FileKey.MEDIA_TYPE + 'abc= ? or ' + mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
             selectionArgs: ['abc', audioType.toString()],
         };
         try {
@@ -318,11 +318,11 @@ describe('mediaLibraryTestCallBack.test.js', function () {
     it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_010', 0, async function (done) {
         let fetchOp = {
             selections:
-                fileKeyObj.MEDIA_TYPE +
+                mediaLibrary.FileKey.MEDIA_TYPE +
                 'abc= ? or ' +
-                fileKeyObj.MEDIA_TYPE +
+                mediaLibrary.FileKey.MEDIA_TYPE +
                 '= ? or ' +
-                fileKeyObj.MEDIA_TYPE +
+                mediaLibrary.FileKey.MEDIA_TYPE +
                 '= ?',
             selectionArgs: ['abc', videoType.toString(), fileType.toString()],
         };
@@ -349,13 +349,13 @@ describe('mediaLibraryTestCallBack.test.js', function () {
     it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_011', 0, async function (done) {
         let fetchOp = {
             selections:
-                fileKeyObj.MEDIA_TYPE +
+                mediaLibrary.FileKey.MEDIA_TYPE +
                 'abc= ? or ' +
-                fileKeyObj.MEDIA_TYPE +
+                mediaLibrary.FileKey.MEDIA_TYPE +
                 '= ? or ' +
-                fileKeyObj.MEDIA_TYPE +
+                mediaLibrary.FileKey.MEDIA_TYPE +
                 '= ? or ' +
-                fileKeyObj.MEDIA_TYPE +
+                mediaLibrary.FileKey.MEDIA_TYPE +
                 '= ?',
             selectionArgs: ['abc', videoType.toString(), fileType.toString(), audioType.toString()],
         };

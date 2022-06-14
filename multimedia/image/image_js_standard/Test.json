@@ -12,7 +12,6 @@
             "type": "ShellKit",
             "run-command": [
                 "mkdir /data/accounts/account_0/appdata/image",
-                "chmod -R 666 /data/media/*",
                 "chmod -R 666 /data/accounts/account_0/appdata/image/*"
             ],
             "teardown-command":[

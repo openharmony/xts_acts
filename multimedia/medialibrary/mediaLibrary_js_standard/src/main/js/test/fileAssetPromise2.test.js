@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import mediaLibrary from '@ohos.multimedia.medialibrary';
+import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import featureAbility from '@ohos.ability.featureAbility';
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
@@ -47,16 +47,16 @@ describe('fileAssetPromise2.test.js', async function () {
     let videoType = mediaLibrary.MediaType.VIDEO;
     let audioType = mediaLibrary.MediaType.AUDIO;
     let imagesfetchOp = {
-        selections: fileKeyObj.MEDIA_TYPE + '= ?',
+        selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
         selectionArgs: [imageType.toString()],
     };
 
     let videosfetchOp = {
-        selections: fileKeyObj.MEDIA_TYPE + '= ?',
+        selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
         selectionArgs: [videoType.toString()],
     };
     let audiosfetchOp = {
-        selections: fileKeyObj.MEDIA_TYPE + '= ?',
+        selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
         selectionArgs: [audioType.toString()],
     };
 
@@ -66,10 +66,10 @@ describe('fileAssetPromise2.test.js', async function () {
     };
     const context = featureAbility.getContext();
     const media = mediaLibrary.getMediaLibrary(context);
-    beforeAll(function () {});
-    beforeEach(function () {});
-    afterEach(function () {});
-    afterAll(function () {});
+    beforeAll(function () { });
+    beforeEach(function () { });
+    afterEach(function () { });
+    afterAll(function () { });
 
     /**
      * @tc.number    : SUB_MEDIA_FILEASSET_commitModify_promise_001

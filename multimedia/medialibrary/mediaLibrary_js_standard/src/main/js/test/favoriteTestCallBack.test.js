@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import mediaLibrary from '@ohos.multimedia.medialibrary';
+import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import featureAbility from '@ohos.ability.featureAbility';
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
@@ -23,19 +23,19 @@ const imageType = mediaLibrary.MediaType.IMAGE;
 const videoType = mediaLibrary.MediaType.VIDEO;
 const audioType = mediaLibrary.MediaType.AUDIO;
 const fileFetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [fileType.toString()],
 };
 const imageFetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [imageType.toString()],
 };
 const videoFetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [videoType.toString()],
 };
 const audioFetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [audioType.toString()],
 };
 

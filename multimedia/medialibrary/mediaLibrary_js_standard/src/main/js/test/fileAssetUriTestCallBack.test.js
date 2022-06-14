@@ -41,7 +41,7 @@ describe('fileAssetUriTestCallback.test.js', async function() {
         try {
             let type = mediaLibrary.MediaType.IMAGE;
             let fetchOp = {
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString() ],
             };
             const fetchFileResult = await media.getFileAssets(fetchOp);
@@ -57,7 +57,7 @@ describe('fileAssetUriTestCallback.test.js', async function() {
 
             let serchfetchOp = {
                 uri:serachUri.toString(),
-                selections : fileKeyObj.MEDIA_TYPE + '= ?',
+                selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString()],
             };
 

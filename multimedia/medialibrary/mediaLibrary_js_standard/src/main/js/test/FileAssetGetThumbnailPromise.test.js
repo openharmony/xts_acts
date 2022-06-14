@@ -29,19 +29,19 @@ describe('FileAssetGetThumbnailPromise.test.js', function () {
     let videoType = mediaLibrary.MediaType.VIDEO;
     let audioType = mediaLibrary.MediaType.AUDIO;
     let imageFetchOp = {
-        selections: fileKeyObj.MEDIA_TYPE + '=?',
+        selections: mediaLibrary.FileKey.MEDIA_TYPE + '=?',
         selectionArgs: [imagetype.toString()],
-        order: fileKeyObj.DATE_ADDED,
+        order: mediaLibrary.FileKey.DATE_ADDED,
     };
     let videoFetchOp = {
-        selections: fileKeyObj.MEDIA_TYPE + '=?',
+        selections: mediaLibrary.FileKey.MEDIA_TYPE + '=?',
         selectionArgs: [videoType.toString()],
-        order: fileKeyObj.DATE_ADDED,
+        order: mediaLibrary.FileKey.DATE_ADDED,
     };
     let audioFetchOp = {
-        selections: fileKeyObj.MEDIA_TYPE + '=?',
+        selections: mediaLibrary.FileKey.MEDIA_TYPE + '=?',
         selectionArgs: [audioType.toString()],
-        order: fileKeyObj.DATE_ADDED,
+        order: mediaLibrary.FileKey.DATE_ADDED,
     };
     beforeAll(function () {});
     beforeEach(function () {});

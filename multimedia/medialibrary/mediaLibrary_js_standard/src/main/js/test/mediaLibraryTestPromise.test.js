@@ -12,15 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import mediaLibrary from '@ohos.multimedia.medialibrary';
+import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import featureAbility from '@ohos.ability.featureAbility';
 import fileio from '@ohos.fileio';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 let fileKeyObj = mediaLibrary.FileKey;
 let fetchOp = {
-    selections: fileKeyObj.PATH + ' LIKE ? ',
+    selections: mediaLibrary.FileKey.PATH + ' LIKE ? ',
     selectionArgs: ['/data/media/%'],
-    order: fileKeyObj.PATH,
+    order: mediaLibrary.FileKey.PATH,
 };
 // let directoryTypeObj = mediaLibrary.DirectoryType;
 
@@ -36,45 +36,45 @@ let audioType = mediaLibrary.MediaType.AUDIO;
 let fileType = mediaLibrary.MediaType.FILE;
 
 let imagesfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [imageType.toString()],
 };
 let videosfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [videoType.toString()],
 };
 let audiosfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [audioType.toString()],
 };
 let filesfetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [fileType.toString()],
 };
 
 let imageAndVideofetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? or ' + mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [imageType.toString(), videoType.toString()],
 };
 let imageAndVideoAndfilefetchOp = {
     selections:
-        fileKeyObj.MEDIA_TYPE +
+        mediaLibrary.FileKey.MEDIA_TYPE +
         '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
+        mediaLibrary.FileKey.MEDIA_TYPE +
         '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
+        mediaLibrary.FileKey.MEDIA_TYPE +
         '= ?',
     selectionArgs: [imageType.toString(), videoType.toString(), fileType.toString()],
 };
 let imageAndVideoAndfileAndAudiofetchOp = {
     selections:
-        fileKeyObj.MEDIA_TYPE +
+        mediaLibrary.FileKey.MEDIA_TYPE +
         '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
+        mediaLibrary.FileKey.MEDIA_TYPE +
         '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
+        mediaLibrary.FileKey.MEDIA_TYPE +
         '= ? or ' +
-        fileKeyObj.MEDIA_TYPE +
+        mediaLibrary.FileKey.MEDIA_TYPE +
         '= ?',
     selectionArgs: [
         imageType.toString(),
@@ -100,10 +100,10 @@ describe('mediaLibraryTestPromise.test.js', function () {
     const context = featureAbility.getContext();
     const media = mediaLibrary.getMediaLibrary(context);
 
-    beforeAll(function () {});
-    beforeEach(function () {});
-    afterEach(function () {});
-    afterAll(function () {});
+    beforeAll(function () { });
+    beforeEach(function () { });
+    afterEach(function () { });
+    afterAll(function () { });
 
     var timestamp = new Date().getTime();
     var jpgName = timestamp + '.jpg';
@@ -280,7 +280,7 @@ describe('mediaLibraryTestPromise.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_008', 0, async function (done) {
         let fetchOp = {
-            selections: fileKeyObj.MEDIA_TYPE + 'abc= ?',
+            selections: mediaLibrary.FileKey.MEDIA_TYPE + 'abc= ?',
             selectionArgs: ['abc'],
         };
         try {
@@ -305,7 +305,7 @@ describe('mediaLibraryTestPromise.test.js', function () {
      */
     it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_009', 0, async function (done) {
         let fetchOp = {
-            selections: fileKeyObj.MEDIA_TYPE + 'abc= ? or ' + fileKeyObj.MEDIA_TYPE + '= ?',
+            selections: mediaLibrary.FileKey.MEDIA_TYPE + 'abc= ? or ' + mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
             selectionArgs: ['abc', audioType.toString()],
         };
         try {
@@ -331,11 +331,11 @@ describe('mediaLibraryTestPromise.test.js', function () {
     it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_010', 0, async function (done) {
         let fetchOp = {
             selections:
-                fileKeyObj.MEDIA_TYPE +
+                mediaLibrary.FileKey.MEDIA_TYPE +
                 'abc= ? or ' +
-                fileKeyObj.MEDIA_TYPE +
+                mediaLibrary.FileKey.MEDIA_TYPE +
                 '= ? or ' +
-                fileKeyObj.MEDIA_TYPE +
+                mediaLibrary.FileKey.MEDIA_TYPE +
                 '= ?',
             selectionArgs: ['abc', videoType.toString(), fileType.toString()],
         };
@@ -362,13 +362,13 @@ describe('mediaLibraryTestPromise.test.js', function () {
     it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_011', 0, async function (done) {
         let fetchOp = {
             selections:
-                fileKeyObj.MEDIA_TYPE +
+                mediaLibrary.FileKey.MEDIA_TYPE +
                 'abc= ? or ' +
-                fileKeyObj.MEDIA_TYPE +
+                mediaLibrary.FileKey.MEDIA_TYPE +
                 '= ? or ' +
-                fileKeyObj.MEDIA_TYPE +
+                mediaLibrary.FileKey.MEDIA_TYPE +
                 '= ? or ' +
-                fileKeyObj.MEDIA_TYPE +
+                mediaLibrary.FileKey.MEDIA_TYPE +
                 '= ?',
             selectionArgs: ['abc', videoType.toString(), fileType.toString(), audioType.toString()],
         };
@@ -769,18 +769,18 @@ describe('mediaLibraryTestPromise.test.js', function () {
         }
     });
 
-      /**
-     * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_001
-     * @tc.name      : createAsset
-     * @tc.desc      : Create File Asset image (does not exist)
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-       it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_009', 0, async function (done) {
+    /**
+   * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_001
+   * @tc.name      : createAsset
+   * @tc.desc      : Create File Asset image (does not exist)
+   * @tc.size      : MEDIUM
+   * @tc.type      : Function
+   * @tc.level     : Level 0
+   */
+    it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_009', 0, async function (done) {
         try {
             const path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE);
-            const filePath = path  + "image/";
+            const filePath = path + "image/";
             const fileAssets = await media.getFileAssets(videosfetchOp);
             const dataList = await fileAssets.getAllObject();
             const asset1 = dataList[0];

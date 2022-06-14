@@ -23,19 +23,19 @@ const imageType = mediaLibrary.MediaType.IMAGE;
 const videoType = mediaLibrary.MediaType.VIDEO;
 const audioType = mediaLibrary.MediaType.AUDIO;
 const fileFetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [fileType.toString()],
 };
 const imageFetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [imageType.toString()],
 };
 const videoFetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [videoType.toString()],
 };
 const audioFetchOp = {
-    selections: fileKeyObj.MEDIA_TYPE + '= ?',
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs: [audioType.toString()],
 };
 
