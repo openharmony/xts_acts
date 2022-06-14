@@ -14,7 +14,6 @@
  */
 
 import media from '@ohos.multimedia.media'
-import {toNewPage, clearRouter} from '../../../../../VideoPlayerTestBase.js';
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
@@ -67,7 +66,8 @@ describe('VideoPlayerHLSBitrateTest.test', function () {
             console.info('case videoSizeChanged  width: ' + w + ' height: ' + h + 'videoSizeId: ' + videoSizeId);
             width = w;
             height = h;
-            if (w == videoSizeArray[videoSizeId][0] && h == videoSizeArray[videoSizeId][1]) {
+            if (videoSizeId >= 0 && videoSizeId < videoSizeArray.length && 
+                  w == videoSizeArray[videoSizeId][0] && h == videoSizeArray[videoSizeId][1]) {
                 releaseVideoPlayer(done);
             }
         });
@@ -134,7 +134,7 @@ describe('VideoPlayerHLSBitrateTest.test', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-     it('SUB_MEDIA_VIDEO_PLAYER_HLS_SET_BITRATE_0100', 0, async function (done) {
+    it('testHlsVideoPlayerSelectBitrate_0100', 0, async function (done) {
         await initVideoPlayer(done);
         await setVideoUrl(HTTP_PATH + '05.hls/hls_variant/index.m3u8');
         await playAndSetLoop(PLAY_TIME * 2);
@@ -142,7 +142,6 @@ describe('VideoPlayerHLSBitrateTest.test', function () {
         videoSizeArray = [ [256, 144], [426, 240], [640, 360], [854, 480], [1280, 720] ];
         checkArray(bitrateArray, expectBitrateArray);
         videoSizeId = 1;
-        console.info('case selectBitRate aaa' + expectBitrateArray[videoSizeId]);
         videoPlayer.selectBitrate(expectBitrateArray[videoSizeId]).then((bitrate) => {
             console.info('case selectBitrate called');
             expect(bitrate).assertEqual(expectBitrateArray[videoSizeId]);
@@ -157,15 +156,14 @@ describe('VideoPlayerHLSBitrateTest.test', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HLS_SET_BITRATE_0200', 0, async function (done) {
+    it('testHlsVideoPlayerSelectBitrate_0200', 0, async function (done) {
         await initVideoPlayer(done);
         await setVideoUrl(HTTP_PATH + '05.hls/hls_variant/index.m3u8');
         await playAndSetLoop(PLAY_TIME);
         expectBitrateArray = [165340, 344388, 387360, 765178, 1676816];
         videoSizeArray = [ [256, 144], [426, 240], [640, 360], [854, 480], [1280, 720] ];
         checkArray(bitrateArray, expectBitrateArray);
-        videoSizeId = videoSizeArray.length - 1;
-        console.info('case selectBitRate' + expectBitrateArray[videoSizeId]);
+        videoSizeId = videoSizeArray.length - 2;
         videoPlayer.selectBitrate(expectBitrateArray[videoSizeId], (err, bitrate) => {
             console.info('case selectBitrate called');
             if (typeof (err) == 'undefined') {
