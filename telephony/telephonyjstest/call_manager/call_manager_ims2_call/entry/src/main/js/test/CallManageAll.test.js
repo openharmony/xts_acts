@@ -15,7 +15,7 @@
 
 import call from '@ohos.telephony.call';
 import observer from '@ohos.telephony.observer';
-import {describe, afterAll, it, expect, beforeAll, afterEach} from 'deccjsunit/index';
+import { describe, afterAll, it, expect, beforeAll, afterEach } from 'deccjsunit/index';
 import {
     AUTO_ACCEPT_NUMBER,
     AUTO_ACCEPT_NUMBER2,
@@ -64,7 +64,7 @@ import {
     EVENT_OTT_FUNCTION_UNSUPPORTED,
     TEL_CONFERENCE_IDLE
 } from './lib/Const.js';
-import {toString} from './lib/ApiToPromise.js';
+import { toString } from './lib/ApiToPromise.js';
 import {
     scenceInCalling,
     hangupCall2,
@@ -87,22 +87,22 @@ const WAITING_TIME = 200;
 
 let callId = null;
 class RejectMessageOptions {
-    constructor (str) {
+    constructor(str) {
         this.messageContent = str;
     }
 }
 class EmergencyNumberOptions {
-    constructor (num) {
+    constructor(num) {
         this.slotId = num;
     }
 }
 class NumberFormatOptions {
-    constructor (str) {
+    constructor(str) {
         this.countryCode = str;
     }
 }
 class CallAttributeOptions {
-    constructor (accountNumber, speakerphoneOn, accountId, videoState, startTime,
+    constructor(accountNumber, speakerphoneOn, accountId, videoState, startTime,
         isEcc, callType, callId, callState, conferenceState) {
         this.accountNumber = accountNumber;
         this.speakerphoneOn = speakerphoneOn;
@@ -129,16 +129,17 @@ var callState = -1;
 var timing = 0;
 var endTime = 0;
 describe('CallManageImsCall', function () {
-   beforeAll(async function (done) {
-		try {
-			console.log('Telephony_CallManager enableImsSwitch success');
-			await call.setCallPreferenceMode(DEFAULT_SLOT_ID, CALL_MODE_IMS);
-			console.log('Telephony_CallManager setCallPreferenceMode success');
-		} catch (error) {
-			console.log(`Telephony_CallManager setCallPreferenceMode or enableImsSwitch error,error:${toString(error)}`);
-		}
-		done();
-	});
+    beforeAll(async function (done) {
+        try {
+            console.log('Telephony_CallManager enableImsSwitch success');
+            await call.setCallPreferenceMode(DEFAULT_SLOT_ID, CALL_MODE_IMS);
+            console.log('Telephony_CallManager setCallPreferenceMode success');
+        } catch (error) {
+            console.log(`Telephony_CallManager setCallPreferenceMode`+ 
+            `or enableImsSwitch error,error:${toString(error)}`);
+        }
+        done();
+    });
 
     afterEach(async function () {
         try {
@@ -183,195 +184,6 @@ describe('CallManageImsCall', function () {
         callDetailsChangeOff();
         console.log('Telephony_CallManager all 54 case is over for callmanager CallManageImsCall');
     });
-  
-    /**
-     * @tc.number  Telephony_CallManager_IMS_enableLteEnhanceMode_Async_0400
-     * @tc.name    Run the function enableLteEnhanceMode by args slotId SLOT_ID_INVALID,
-     *             by callback,the function return error
-     * @tc.desc    Function test
-     */
-    it('Telephony_CallManager_IMS_enableLteEnhanceMode_Async_0400', 0, function (done) {
-        let caseName = 'Telephony_CallManager_IMS_enableLteEnhanceMode_Async_0400';
-        call.enableLteEnhanceMode(SLOT_ID_INVALID, (error, data) => {
-            if (error) {
-                console.log(`${caseName} enableLteEnhanceMode error,case success,error:${toString(error)}`);
-                done();
-                return;
-            }
-            expect().assertFail();
-            console.log(`${caseName} enableLteEnhanceMode success,case failed,data:${toString(data)}`);
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_CallManager_IMS_enableLteEnhanceMode_Promise_0400
-     * @tc.name    Run the function enableLteEnhanceMode by args slotId SLOT_ID_INVALID by promise,
-     *             the function return error
-     * @tc.desc    Function test
-     */
-    it('Telephony_CallManager_IMS_enableLteEnhanceMode_Promise_0400', 0, function (done) {
-        let caseName = 'Telephony_CallManager_IMS_enableLteEnhanceMode_Promise_0400';
-        call.enableLteEnhanceMode(SLOT_ID_INVALID).then(data => {
-            expect().assertFail();
-            console.log(`${caseName} enableLteEnhanceMode success,case failed,data:${toString(data)}`);
-            done();
-        }).catch(error => {
-            console.log(`${caseName} enableLteEnhanceMode error,case success,error:${toString(error)}`);
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_CallManager_IMS_disableLteEnhanceMode_Async_0400
-     * @tc.name    Run the function disableLteEnhanceMode by args slotId SLOT_ID_INVALID,
-     *             by callback,the function return error
-     * @tc.desc    Function test
-     */
-    it('Telephony_CallManager_IMS_disableLteEnhanceMode_Async_0400', 0, function (done) {
-        let caseName = 'Telephony_CallManager_IMS_disableLteEnhanceMode_Async_0400';
-        call.disableLteEnhanceMode(SLOT_ID_INVALID, (error, data) => {
-            if (error) {
-                console.log(`${caseName} disableLteEnhanceMode error,case success,error:${toString(error)}`);
-                done();
-                return;
-            }
-            expect().assertFail();
-            console.log(`${caseName} disableLteEnhanceMode success,case failed,data:${toString(data)}`);
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_CallManager_IMS_disableLteEnhanceMode_Promise_0400
-     * @tc.name    Run the function disableLteEnhanceMode by args slotId SLOT_ID_INVALID by promise,
-     *             the function return error
-     * @tc.desc    Function test
-     */
-    it('Telephony_CallManager_IMS_disableLteEnhanceMode_Promise_0400', 0, function (done) {
-        let caseName = 'Telephony_CallManager_IMS_disableLteEnhanceMode_Promise_0400';
-        call.disableLteEnhanceMode(SLOT_ID_INVALID).then(data => {
-            expect().assertFail();
-            console.log(`${caseName} disableLteEnhanceMode success,case failed,data:${toString(data)}`);
-            done();
-        }).catch(error => {
-            console.log(`${caseName} disableLteEnhanceMode error,case success,error:${toString(error)}`);
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_CallManager_IMS_isLteEnhanceModeEnabled_Async_0400
-     * @tc.name    Run the function isLteEnhanceModeEnabled by args slotId SLOT_ID_INVALID by callback,
-     *             the function return error
-     * @tc.desc    Function test
-     */
-    it('Telephony_CallManager_IMS_isLteEnhanceModeEnabled_Async_0400', 0, function (done) {
-        let caseName = 'Telephony_CallManager_IMS_isLteEnhanceModeEnabled_Async_0400';
-        call.isLteEnhanceModeEnabled(SLOT_ID_INVALID, (error, data) => {
-            if (error) {
-                console.log(`${caseName} isLteEnhanceModeEnabled error,case success,error:${toString(error)}`);
-                done();
-                return;
-            }
-            expect().assertFail();
-            console.log(`${caseName} isLteEnhanceModeEnabled success,case failed,data:${toString(data)}`);
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_CallManager_IMS_isLteEnhanceModeEnabled_Promise_0400
-     * @tc.name    Run the function isLteEnhanceModeEnabled by args slotId SLOT_ID_INVALID by promise,
-     *             the function return error
-     * @tc.desc    Function test
-     */
-    it('Telephony_CallManager_IMS_isLteEnhanceModeEnabled_Promise_0400', 0, function (done) {
-        let caseName = 'Telephony_CallManager_IMS_isLteEnhanceModeEnabled_Promise_0400';
-        call.isLteEnhanceModeEnabled(SLOT_ID_INVALID).then(data => {
-            expect().assertFail();
-            console.log(`${caseName} isLteEnhanceModeEnabled success,case failed,data:${toString(data)}`);
-            done();
-        }).catch(error => {
-            console.log(`${caseName} isLteEnhanceModeEnabled error,case success,error:${toString(error)}`);
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_CallManager_IMS_startRTT_Async_0200
-     * @tc.name    Run function startRTT by args callId CALL_ID_NOT_EXIST,msg RTT_MSG by callback,
-     *             the function return error
-     * @tc.desc    Function test
-     */
-    it('Telephony_CallManager_IMS_startRTT_Async_0200', 0, function (done) {
-        let caseName = 'Telephony_CallManager_IMS_startRTT_Async_0200';
-        call.startRTT(CALL_ID_NOT_EXIST, RTT_MSG, (error, data) => {
-            if (error) {
-                console.log(`${caseName} startRTT ${callId} error,case success,error:${toString(error)}`);
-                done();
-                return;
-            }
-            expect().assertFail();
-            console.log(`${caseName} startRTT success,case failed,data:${toString(data)}`);
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_CallManager_IMS_startRTT_Promise_0200
-     * @tc.name    Run function startRTT by args callId CALL_ID_NOT_EXIST,msg RTT_MSG by callback,
-     *             the function return error
-     * @tc.desc    Function test
-     */
-    it('Telephony_CallManager_IMS_startRTT_Promise_0200', 0, function (done) {
-        let caseName = 'Telephony_CallManager_IMS_startRTT_Promise_0200';
-        call.startRTT(CALL_ID_NOT_EXIST, RTT_MSG).then(data => {
-            expect().assertFail();
-            console.log(`${caseName} startRTT success,case failed,data:${toString(data)}`);
-            done();
-        }).catch(error => {
-            console.log(`${caseName} startRTT ${callId} error,case success,error:${toString(error)}`);
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_CallManager_IMS_stopRTT_Async_0200
-     * @tc.name    Run function stopRTT by args callId CALL_ID_NOT_EXIST by callback,the function return error
-     * @tc.desc    Function test
-     */
-    it('Telephony_CallManager_IMS_stopRTT_Async_0200', 0, function (done) {
-        let caseName = 'Telephony_CallManager_IMS_stopRTT_Async_0200';
-        call.stopRTT(CALL_ID_NOT_EXIST, (error, data) => {
-            if (error) {
-                console.log(`${caseName} stopRTT ${callId} error,case success,error:${toString(error)}`);
-                done();
-                return;
-            }
-            expect().assertFail();
-            console.log(`${caseName} stopRTT success,case failed,data:${toString(data)}`);
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_CallManager_IMS_stopRTT_Promise_0200
-     * @tc.name    Run function stopRTT by args callId CALL_ID_NOT_EXIST by callback,the function return error
-     * @tc.desc    Function test
-     */
-    it('Telephony_CallManager_IMS_stopRTT_Promise_0200', 0, function (done) {
-        let caseName = 'Telephony_CallManager_IMS_stopRTT_Promise_0200';
-        call.stopRTT(CALL_ID_NOT_EXIST).then(data => {
-            expect().assertFail();
-            console.log(`${caseName} stopRTT success,case failed,data:${toString(data)}`);
-            done();
-        }).catch(error => {
-            console.log(`${caseName} stopRTT ${callId} error,case success,error:${toString(error)}`);
-            done();
-        });
-    });
-
 
     /**
      * @tc.number  Telephony_CallManager_controlCamera_Async_0200
@@ -383,9 +195,9 @@ describe('CallManageImsCall', function () {
     it('Telephony_CallManager_controlCamera_Async_0200', 0, function (done) {
         let caseName = 'Telephony_CallManager_controlCamera_Async_0200';
         scenceInCalling({
-            caseName:caseName,
-            phoneNumber:AUTO_ACCEPT_NUMBER2,
-            checkState:CALL_STATUS_DIALING
+            caseName: caseName,
+            phoneNumber: AUTO_ACCEPT_NUMBER2,
+            checkState: CALL_STATUS_DIALING
         }).then(data => {
             callId = data.callId;
             let cameraId = CARMER_ID_NOT_EXIT;
@@ -416,9 +228,9 @@ describe('CallManageImsCall', function () {
         let cameraId = CARMER_ID_NOT_EXIT;
         try {
             let data = await scenceInCalling({
-                caseName:caseName,
-                phoneNumber:AUTO_ACCEPT_NUMBER2,
-                checkState:CALL_STATUS_DIALING
+                caseName: caseName,
+                phoneNumber: AUTO_ACCEPT_NUMBER2,
+                checkState: CALL_STATUS_DIALING
             });
             callId = data.callId;
         } catch (error) {
@@ -446,12 +258,12 @@ describe('CallManageImsCall', function () {
     it('Telephony_CallManager_setPreviewWindow_Async_0300', 0, function (done) {
         let caseName = 'Telephony_CallManager_setPreviewWindow_Async_0300';
         scenceInCalling({
-            caseName:caseName,
-            phoneNumber:AUTO_ACCEPT_NUMBER,
-            checkState:CALL_STATUS_DIALING
+            caseName: caseName,
+            phoneNumber: AUTO_ACCEPT_NUMBER,
+            checkState: CALL_STATUS_DIALING
         }).then(data => {
             callId = data.callId;
-            let info = {x: POS_700, y: POS_10, z: POS_Z_ERROR, width: POS_LENGTH_300, height:  POS_LENGTH_600};
+            let info = { x: POS_700, y: POS_10, z: POS_Z_ERROR, width: POS_LENGTH_300, height: POS_LENGTH_600 };
             call.setPreviewWindow(info, (error) => {
                 if (error) {
                     console.log(`${caseName} error,case success,error:${toString(error)}`);
@@ -479,9 +291,9 @@ describe('CallManageImsCall', function () {
         let caseName = 'Telephony_CallManager_setPreviewWindow_Promise_0300';
         try {
             let data = await scenceInCalling({
-                caseName:caseName,
-                phoneNumber:AUTO_ACCEPT_NUMBER,
-                checkState:CALL_STATUS_DIALING
+                caseName: caseName,
+                phoneNumber: AUTO_ACCEPT_NUMBER,
+                checkState: CALL_STATUS_DIALING
             });
             callId = data.callId;
         } catch (error) {
@@ -490,7 +302,7 @@ describe('CallManageImsCall', function () {
             return;
         }
         try {
-            let info = {x: POS_700, y: POS_10, z: POS_Z_ERROR, width: POS_LENGTH_300, height:  POS_LENGTH_600};
+            let info = { x: POS_700, y: POS_10, z: POS_Z_ERROR, width: POS_LENGTH_300, height: POS_LENGTH_600 };
             await call.setPreviewWindow(info);
             console.log(`${caseName} case faild`);
             expect().assertFail();
@@ -511,9 +323,9 @@ describe('CallManageImsCall', function () {
         let caseName = 'Telephony_CallManager_setDisplayWindow_Async_0300';
         try {
             let data = await scenceInCalling({
-                caseName:caseName,
-                phoneNumber:AUTO_ACCEPT_NUMBER,
-                checkState:CALL_STATUS_DIALING
+                caseName: caseName,
+                phoneNumber: AUTO_ACCEPT_NUMBER,
+                checkState: CALL_STATUS_DIALING
             });
             callId = data.callId;
         } catch (error) {
@@ -522,7 +334,7 @@ describe('CallManageImsCall', function () {
             return;
         }
         try {
-            let info = {x: POS_700, y: POS_10, z: POS_Z_ERROR, width: POS_LENGTH_300, height:  POS_LENGTH_600};
+            let info = { x: POS_700, y: POS_10, z: POS_Z_ERROR, width: POS_LENGTH_300, height: POS_LENGTH_600 };
             await call.setDisplayWindow(info);
             console.log(`${caseName} case faild`);
             expect().assertFail();
@@ -543,9 +355,9 @@ describe('CallManageImsCall', function () {
         let caseName = 'Telephony_CallManager_setDisplayWindow_Promise_0300';
         try {
             let data = await scenceInCalling({
-                caseName:caseName,
-                phoneNumber:AUTO_ACCEPT_NUMBER,
-                checkState:CALL_STATUS_DIALING
+                caseName: caseName,
+                phoneNumber: AUTO_ACCEPT_NUMBER,
+                checkState: CALL_STATUS_DIALING
             });
             callId = data.callId;
         } catch (error) {
@@ -554,7 +366,7 @@ describe('CallManageImsCall', function () {
             return;
         }
         try {
-            let info = {x: POS_700, y: POS_10, z: POS_Z_ERROR, width: POS_LENGTH_300, height:  POS_LENGTH_600};
+            let info = { x: POS_700, y: POS_10, z: POS_Z_ERROR, width: POS_LENGTH_300, height: POS_LENGTH_600 };
             await call.setDisplayWindow(info);
             console.log(`${caseName} case faild`);
             expect().assertFail();
@@ -573,9 +385,9 @@ describe('CallManageImsCall', function () {
     it('Telephony_CallManager_setCameraZoom_Async_0400', 0, function (done) {
         let caseName = 'Telephony_CallManager_setCameraZoom_Async_0400';
         scenceInCalling({
-            caseName:caseName,
-            phoneNumber:AUTO_ACCEPT_NUMBER2,
-            checkState:CALL_STATUS_DIALING
+            caseName: caseName,
+            phoneNumber: AUTO_ACCEPT_NUMBER2,
+            checkState: CALL_STATUS_DIALING
         }).then(data => {
             callId = data.callId;
             call.setCameraZoom(ZOOM_RATIO_MINUS_1_0, (error) => {
@@ -604,9 +416,9 @@ describe('CallManageImsCall', function () {
         let caseName = 'Telephony_CallManager_setCameraZoom_Promise_0400';
         try {
             let data = await scenceInCalling({
-                caseName:caseName,
-                phoneNumber:AUTO_ACCEPT_NUMBER,
-                checkState:CALL_STATUS_DIALING
+                caseName: caseName,
+                phoneNumber: AUTO_ACCEPT_NUMBER,
+                checkState: CALL_STATUS_DIALING
             });
             callId = data.callId;
         } catch (error) {
@@ -633,9 +445,9 @@ describe('CallManageImsCall', function () {
     it('Telephony_CallManager_setPausePicture_Async_0500', 0, function (done) {
         let caseName = 'Telephony_CallManager_setPausePicture_Async_0500';
         scenceInCalling({
-            caseName:caseName,
-            phoneNumber:AUTO_ACCEPT_NUMBER,
-            checkState:CALL_STATUS_DIALING
+            caseName: caseName,
+            phoneNumber: AUTO_ACCEPT_NUMBER,
+            checkState: CALL_STATUS_DIALING
         }).then(data => {
             callId = data.callId;
             call.setPausePicture(IMAGE_LOCAL_ERROR_PATH, (error) => {
@@ -664,9 +476,9 @@ describe('CallManageImsCall', function () {
         let caseName = 'Telephony_CallManager_setPausePicture_Promise_0500';
         try {
             let data = await scenceInCalling({
-                caseName:caseName,
-                phoneNumber:AUTO_ACCEPT_NUMBER,
-                checkState:CALL_STATUS_DIALING
+                caseName: caseName,
+                phoneNumber: AUTO_ACCEPT_NUMBER,
+                checkState: CALL_STATUS_DIALING
             });
             callId = data.callId;
         } catch (error) {
@@ -692,9 +504,9 @@ describe('CallManageImsCall', function () {
     it('Telephony_CallManager_setDeviceDirection_Async_0500', 0, function (done) {
         let caseName = 'Telephony_CallManager_setDeviceDirection_Async_0500';
         scenceInCalling({
-            caseName:caseName,
-            phoneNumber:AUTO_ACCEPT_NUMBER,
-            checkState:CALL_STATUS_DIALING
+            caseName: caseName,
+            phoneNumber: AUTO_ACCEPT_NUMBER,
+            checkState: CALL_STATUS_DIALING
         }).then(data => {
             callId = data.callId;
             call.setDeviceDirection(ROTATION_MINUS_1, (error) => {
@@ -723,9 +535,9 @@ describe('CallManageImsCall', function () {
         let caseName = 'Telephony_CallManager_setDeviceDirection_Promise_0500';
         try {
             let data = await scenceInCalling({
-                caseName:caseName,
-                phoneNumber:AUTO_ACCEPT_NUMBER2,
-                checkState:CALL_STATUS_DIALING
+                caseName: caseName,
+                phoneNumber: AUTO_ACCEPT_NUMBER2,
+                checkState: CALL_STATUS_DIALING
             });
             callId = data.callId;
         } catch (error) {
@@ -757,9 +569,9 @@ describe('CallManageImsCall', function () {
                 done();
                 return;
             }
-            expect(data == call.CALL_STATE_IDLE || 
-                data == call.CALL_STATE_UNKNOWN || 
-                data == call.CALL_STATE_RINGING || 
+            expect(data == call.CALL_STATE_IDLE ||
+                data == call.CALL_STATE_UNKNOWN ||
+                data == call.CALL_STATE_RINGING ||
                 data == call.CALL_STATE_OFFHOOK).assertTrue();
             console.log(`Telephony_CallManager_getCallState_Async_0100 finish data = ${data}`);
             done();
@@ -775,9 +587,9 @@ describe('CallManageImsCall', function () {
     it('Telephony_CallManager_getCallState_Promise_0100', 0, async function (done) {
         try {
             var data = await call.getCallState();
-            expect(data == call.CALL_STATE_IDLE || 
-                data == call.CALL_STATE_UNKNOWN || 
-                data == call.CALL_STATE_RINGING || 
+            expect(data == call.CALL_STATE_IDLE ||
+                data == call.CALL_STATE_UNKNOWN ||
+                data == call.CALL_STATE_RINGING ||
                 data == call.CALL_STATE_OFFHOOK).assertTrue();
             console.log(`Telephony_CallManager_getCallState_Promise_0100 finish data = ${data}`);
             done();
