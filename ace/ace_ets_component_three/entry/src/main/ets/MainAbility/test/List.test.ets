@@ -25,7 +25,6 @@ import qrCodeJsunit from './QrCodeJsunit.test.ets';
 import tapGesture from './TapGesture.test.ets';
 import progressJsunit from './ProgressJsunit.test.ets';
 import animateJsunit from './AnimateJsunit.test.ets';
-import commonJsunit from './CommonJsunit.test.ets';
 import spanJsunit from './SpanJsunit.test.ets';
 import ratingJsunit from './RatingJsunit.test.ets';
 import canvas2Jsunit from './Canvas2Jsunit.test.ets';
@@ -60,7 +59,6 @@ export default function testsuite() {
   longPressGestureJsUnit();
   responseRegionJsunit();
   animateJsunit();
-  commonJsunit();
   spanJsunit();
   ratingJsunit();
   toggleJsunit();
