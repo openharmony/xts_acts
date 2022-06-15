@@ -19,7 +19,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlAppend001
      * @tc.desc: Appends a specified key/value pair as a new search parameter.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlAppend001', 0, function () {
@@ -33,7 +32,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlAppend002
      * @tc.desc: Appends a specified key/value pair as a new search parameter.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlAppend002', 0, function () {
@@ -47,7 +45,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlAppend003
      * @tc.desc: Appends a specified key/value pair as a new search parameter.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlAppend003', 0, function () {
@@ -61,7 +58,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlAppend004
      * @tc.desc: Appends a specified key/value pair as a new search parameter.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlAppend004', 0, function () {
@@ -75,7 +71,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlAppend005
      * @tc.desc: Appends a specified key/value pair as a new search parameter.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlAppend005', 0, function () {
@@ -89,7 +84,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlDelete001
      * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlDelete001', 0, function () {
@@ -103,7 +97,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlDelete002
      * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlDelete002', 0, function () {
@@ -117,7 +110,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlDelete003
      * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlDelete003', 0, function () {
@@ -131,7 +123,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlDelete004
      * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlDelete004', 0, function () {
@@ -145,7 +136,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlDelete005
      * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlDelete005', 0, function () {
@@ -159,7 +149,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlEntries001
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlEntries001', 0, function () {
@@ -179,7 +168,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlEntries002
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlEntries002', 0, function () {
@@ -198,7 +186,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlEntries003
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlEntries003', 0, function () {
@@ -218,7 +205,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlEntries004
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlEntries004', 0, function () {
@@ -237,7 +223,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlEntries005
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlEntries005', 0, function () {
@@ -257,7 +242,6 @@ describe('UrlFunTest', function () {
    /**
     * @tc.name: testUrlForEach001
     * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
-    * @tc.require: AR000GFB2S
     * @tc.author: jiangkai
     */
     it('testUrlForEach001', 0, function () {
@@ -276,7 +260,6 @@ describe('UrlFunTest', function () {
    /**
     * @tc.name: testUrlForEach002
     * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
-    * @tc.require: AR000GFB2S
     * @tc.author: jiangkai
     */
     it('testUrlForEach002', 0, function () {
@@ -295,7 +278,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlForEach003
      * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlForEach003', 0, function () {
@@ -315,7 +297,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlForEach004
      * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlForEach004', 0, function () {
@@ -334,7 +315,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlForEach005
      * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
-     * @tc.require: AR000GFB2S
      * @tc.author: jiangkai
      */
     it('testUrlForEach005', 0, function () {
@@ -354,7 +334,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGet001
      * @tc.desc: Returns the first value associated to the given search parameter.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlGet001', 0, function () {
@@ -366,7 +345,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlForEach002
      * @tc.desc: Returns the first value associated to the given search parameter.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlForEach002', 0, function () {
@@ -378,7 +356,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlForEach003
      * @tc.desc: Returns the first value associated to the given search parameter.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlForEach003', 0, function () {
@@ -391,7 +368,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlForEach004
      * @tc.desc: Returns the first value associated to the given search parameter.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlForEach004', 0, function () {
@@ -403,7 +379,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlForEach005
      * @tc.desc: Returns the first value associated to the given search parameter.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlForEach005', 0, function () {
@@ -416,7 +391,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGetAll001
      * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlGetAll001', 0, function () {
@@ -429,7 +403,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGetAll002
      * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlGetAll002', 0, function () {
@@ -442,7 +415,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGetAll003
      * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlGetAll003', 0, function () {
@@ -455,7 +427,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGetAll004
      * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlGetAll004', 0, function () {
@@ -468,7 +439,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGetAll005
      * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlGetAll005', 0, function () {
@@ -481,7 +451,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHas001
      * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlHas001', 0, function () {
@@ -493,7 +462,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHas002
      * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlHas002', 0, function () {
@@ -505,7 +473,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHas003
      * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlHas003', 0, function () {
@@ -518,7 +485,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHas004
      * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlHas004', 0, function () {
@@ -530,7 +496,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHas005
      * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlHas005', 0, function () {
@@ -543,7 +508,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlKeys001
      * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlKeys001', 0, function () {
@@ -560,7 +524,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlKeys002
      * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlKeys002', 0, function () {
@@ -577,7 +540,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlKeys003
      * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlKeys003', 0, function () {
@@ -594,7 +556,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlKeys004
      * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlKeys004', 0, function () {
@@ -611,7 +572,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlKeys005
      * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlKeys005', 0, function () {
@@ -630,7 +590,6 @@ describe('UrlFunTest', function () {
      * @tc.desc: Sets the value associated with a given search parameter to the given value.
      * If there were several matching values, this method deletes the others.
      * If the search parameter doesn't exist, this method creates it.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlSet001', 0, function () {
@@ -646,7 +605,6 @@ describe('UrlFunTest', function () {
      * @tc.desc: Sets the value associated with a given search parameter to the given value.
      * If there were several matching values, this method deletes the others.
      * If the search parameter doesn't exist, this method creates it.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlSet002', 0, function () {
@@ -661,7 +619,6 @@ describe('UrlFunTest', function () {
      * @tc.desc: Sets the value associated with a given search parameter to the given value.
      * If there were several matching values, this method deletes the others.
      * If the search parameter doesn't exist, this method creates it.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlSet003', 0, function () {
@@ -676,7 +633,6 @@ describe('UrlFunTest', function () {
      * @tc.desc: Sets the value associated with a given search parameter to the given value.
      * If there were several matching values, this method deletes the others.
      * If the search parameter doesn't exist, this method creates it.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlSet004', 0, function () {
@@ -692,7 +648,6 @@ describe('UrlFunTest', function () {
      * @tc.desc: Sets the value associated with a given search parameter to the given value.
      * If there were several matching values, this method deletes the others.
      * If the search parameter doesn't exist, this method creates it.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlSet005', 0, function () {
@@ -705,7 +660,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSort001
      * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlSort001', 0, function () {
@@ -718,7 +672,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSort002
      * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlSort002', 0, function () {
@@ -731,7 +684,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSort003
      * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlSort003', 0, function () {
@@ -745,7 +697,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSort004
      * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlSort004', 0, function () {
@@ -758,7 +709,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSort005
      * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlSort005', 0, function () {
@@ -771,7 +721,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlValues001
      * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlValues001', 0, function () {
@@ -788,7 +737,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlValues002
      * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlValues002', 0, function () {
@@ -805,7 +753,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlValues003
      * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlValues003', 0, function () {
@@ -823,7 +770,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlValues004
      * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlValues004', 0, function () {
@@ -840,7 +786,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlValues005
      * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlValues005', 0, function () {
@@ -857,7 +802,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString001
      * @tc.desc: Returns a query string suitable for use in a URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlToString001', 0, function () {
@@ -869,7 +813,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString002
      * @tc.desc: Returns a query string suitable for use in a URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlToString002', 0, function () {
@@ -882,7 +825,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString003
      * @tc.desc: Returns a query string suitable for use in a URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlToString003', 0, function () {
@@ -895,7 +837,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString004
      * @tc.desc: Returns a query string suitable for use in a URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlToString004', 0, function () {
@@ -907,7 +848,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString005
      * @tc.desc: Returns a query string suitable for use in a URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: maxiaodong
      */
     it('testUrlToString005', 0, function () {
@@ -920,7 +860,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsConstruction001
      * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhangyouyou
      */
     it('testUrlSearchParamsConstruction001', 0, function () {
@@ -932,7 +871,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsConstruction002
      * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhangyouyou
      */
     it('testUrlSearchParamsConstruction002', 0, function () {
@@ -947,7 +885,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsConstruction003
      * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhangyouyou
      */
     it('testUrlSearchParamsConstruction003', 0, function () {
@@ -963,7 +900,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsConstruction004
      * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhangyouyou
      */
     it('testUrlSearchParamsConstruction004', 0, function () {
@@ -978,7 +914,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsConstruction005
      * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhangyouyou
      */
     it('testUrlSearchParamsConstruction005', 0, function () {
@@ -995,7 +930,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsConstruction006
      * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhangyouyou
      */
     it('testUrlSearchParamsConstruction006', 0, function () {
@@ -1008,7 +942,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsConstruction007
      * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhangyouyou
      */
     it('testUrlSearchParamsConstruction007', 0, function () {
@@ -1022,7 +955,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString001
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlToString001', 0, function () {
@@ -1034,7 +966,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString002
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlToString002', 0, function () {
@@ -1046,7 +977,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString003
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlToString003', 0, function () {
@@ -1058,7 +988,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString004
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlToString004', 0, function () {
@@ -1070,7 +999,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString005
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlToString005', 0, function () {
@@ -1082,7 +1010,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHref001
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHref001', 0, function () {
@@ -1094,7 +1021,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHref002
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHref002', 0, function () {
@@ -1106,7 +1032,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHref003
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHref003', 0, function () {
@@ -1118,7 +1043,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHref004
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHref004', 0, function () {
@@ -1131,7 +1055,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHref005
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHref005', 0, function () {
@@ -1144,7 +1067,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlOrigin001
      * @tc.desc: Gets the read-only serialization of the URL's origin.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlOrigin001', 0, function () {
@@ -1156,7 +1078,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlOrigin002
      * @tc.desc: Gets the read-only serialization of the URL's origin.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlOrigin002', 0, function () {
@@ -1168,7 +1089,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlOrigin003
      * @tc.desc: Gets the read-only serialization of the URL's origin.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlOrigin003', 0, function () {
@@ -1180,7 +1100,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlOrigin004
      * @tc.desc: Gets the read-only serialization of the URL's origin.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlOrigin004', 0, function () {
@@ -1192,7 +1111,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlOrigin005
      * @tc.desc: Gets the read-only serialization of the URL's origin.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlOrigin005', 0, function () {
@@ -1204,7 +1122,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlProtocol001
      * @tc.desc: Gets and sets the protocol portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlProtocol001', 0, function () {
@@ -1216,7 +1133,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlProtocol002
      * @tc.desc: Gets and sets the protocol portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlProtocol002', 0, function () {
@@ -1228,7 +1144,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlProtocol003
      * @tc.desc: Gets and sets the protocol portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlProtocol003', 0, function () {
@@ -1240,7 +1155,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlProtocol004
      * @tc.desc: Gets and sets the protocol portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlProtocol004', 0, function () {
@@ -1253,7 +1167,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlProtocol005
      * @tc.desc: Gets and sets the protocol portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlProtocol005', 0, function () {
@@ -1266,7 +1179,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlUsername001
      * @tc.desc: Gets and sets the username portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlUsername001', 0, function () {
@@ -1278,7 +1190,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlUsername002
      * @tc.desc: Gets and sets the username portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlUsername002', 0, function () {
@@ -1290,7 +1201,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlUsername003
      * @tc.desc: Gets and sets the username portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlUsername003', 0, function () {
@@ -1303,7 +1213,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlUsername004
      * @tc.desc: Gets and sets the username portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlUsername004', 0, function () {
@@ -1316,7 +1225,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlUsername005
      * @tc.desc: Gets and sets the username portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlUsername005', 0, function () {
@@ -1328,7 +1236,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPassword001
      * @tc.desc: Gets and sets the password portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPassword001', 0, function () {
@@ -1340,7 +1247,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPassword002
      * @tc.desc: Gets and sets the password portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPassword002', 0, function () {
@@ -1352,7 +1258,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPassword003
      * @tc.desc: Gets and sets the password portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPassword003', 0, function () {
@@ -1364,7 +1269,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPassword004
      * @tc.desc: Gets and sets the password portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPassword004', 0, function () {
@@ -1377,7 +1281,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPassword005
      * @tc.desc: Gets and sets the password portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPassword005', 0, function () {
@@ -1390,7 +1293,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHost001
      * @tc.desc: Gets and sets the host portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHost001', 0, function () {
@@ -1402,7 +1304,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHost002
      * @tc.desc: Gets and sets the host portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHost002', 0, function () {
@@ -1414,7 +1315,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHost003
      * @tc.desc: Gets and sets the host portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHost003', 0, function () {
@@ -1426,7 +1326,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHost004
      * @tc.desc: Gets and sets the host portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHost004', 0, function () {
@@ -1439,7 +1338,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHost005
      * @tc.desc: Gets and sets the host portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHost005', 0, function () {
@@ -1452,7 +1350,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHostname001
      * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHostname001', 0, function () {
@@ -1464,7 +1361,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHostname002
      * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHostname002', 0, function () {
@@ -1476,7 +1372,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHostname003
      * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHostname003', 0, function () {
@@ -1488,7 +1383,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHostname004
      * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHostname004', 0, function () {
@@ -1501,7 +1395,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHostname005
      * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHostname005', 0, function () {
@@ -1514,7 +1407,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPort001
      * @tc.desc: Gets and sets the port portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPort001', 0, function () {
@@ -1526,7 +1418,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPort002
      * @tc.desc: Gets and sets the port portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPort002', 0, function () {
@@ -1538,7 +1429,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPort003
      * @tc.desc: Gets and sets the port portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPort003', 0, function () {
@@ -1550,7 +1440,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPort004
      * @tc.desc: Gets and sets the port portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPort004', 0, function () {
@@ -1563,7 +1452,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPort005
      * @tc.desc: Gets and sets the port portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPort005', 0, function () {
@@ -1576,7 +1464,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPathname001
      * @tc.desc: Gets and sets the path portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPathname001', 0, function () {
@@ -1588,7 +1475,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPathname002
      * @tc.desc: Gets and sets the path portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPathname002', 0, function () {
@@ -1600,7 +1486,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPathname003
      * @tc.desc: Gets and sets the path portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPathname003', 0, function () {
@@ -1612,7 +1497,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPathname004
      * @tc.desc: Gets and sets the path portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPathname004', 0, function () {
@@ -1625,7 +1509,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPathname005
      * @tc.desc: Gets and sets the path portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlPathname005', 0, function () {
@@ -1638,7 +1521,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearch001
      * @tc.desc: Gets and sets the serialized query portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlSearch001', 0, function () {
@@ -1650,7 +1532,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearch002
      * @tc.desc: Gets and sets the serialized query portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlSearch002', 0, function () {
@@ -1662,7 +1543,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearch003
      * @tc.desc: Gets and sets the serialized query portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlSearch003', 0, function () {
@@ -1674,7 +1554,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearch004
      * @tc.desc: Gets and sets the serialized query portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlSearch004', 0, function () {
@@ -1687,7 +1566,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearch005
      * @tc.desc: Gets and sets the serialized query portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlSearch005', 0, function () {
@@ -1700,7 +1578,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHash001
      * @tc.desc: Gets and sets the fragment portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHash001', 0, function () {
@@ -1712,7 +1589,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHash002
      * @tc.desc: Gets and sets the fragment portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHash002', 0, function () {
@@ -1725,7 +1601,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHash003
      * @tc.desc: Gets and sets the fragment portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHash003', 0, function () {
@@ -1737,7 +1612,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHash004
      * @tc.desc: Gets and sets the fragment portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHash004', 0, function () {
@@ -1749,7 +1623,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHash005
      * @tc.desc: Gets and sets the fragment portion of the URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlHash005', 0, function () {
@@ -1762,7 +1635,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToJson001
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlToJson001', 0, function () {
@@ -1774,7 +1646,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToJson002
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlToJson002', 0, function () {
@@ -1786,7 +1657,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToJson003
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlToJson003', 0, function () {
@@ -1798,7 +1668,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToJson004
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlToJson004', 0, function () {
@@ -1810,7 +1679,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToJson005
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlToJson005', 0, function () {
@@ -1822,7 +1690,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlIPv6001
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlIPv6001', 0, function () {
@@ -1834,7 +1701,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlIPv6002
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlIPv6002', 0, function () {
@@ -1846,7 +1712,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlIPv6003
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlIPv6003', 0, function () {
@@ -1858,7 +1723,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlIPv4001
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlIPv4001', 0, function () {
@@ -1870,7 +1734,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlIPv4002
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlIPv4002', 0, function () {
@@ -1882,7 +1745,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlIPv4003
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlIPv4003', 0, function () {
@@ -1894,7 +1756,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction001
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlConstruction001', 0, function () {
@@ -1906,7 +1767,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction002
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlConstruction002', 0, function () {
@@ -1918,7 +1778,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction003
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlConstruction003', 0, function () {
@@ -1930,7 +1789,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction004
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlConstruction004', 0, function () {
@@ -1942,7 +1800,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction005
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlConstruction005', 0, function () {
@@ -1954,7 +1811,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction006
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlConstruction006', 0, function () {
@@ -1966,7 +1822,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction007
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlConstruction007', 0, function () {
@@ -1978,7 +1833,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction008
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlConstruction008', 0, function () {
@@ -1990,7 +1844,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction009
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlConstruction009', 0, function () {
@@ -2002,7 +1855,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction010
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlConstruction010', 0, function () {
@@ -2014,7 +1866,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction011
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlConstruction011', 0, function () {
@@ -2027,7 +1878,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction012
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlConstruction012', 0, function () {
@@ -2040,7 +1890,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction013
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlConstruction013', 0, function () {
@@ -2053,7 +1902,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction014
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.require: AR000GFB2S
      * @tc.author: zhaoduwei
      */
     it('testUrlConstruction014', 0, function () {
