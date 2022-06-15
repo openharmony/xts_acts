@@ -15,7 +15,7 @@
 // @ts-nocheck
 import osaccount from '@ohos.account.osaccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 var AbilityPermission1 = {
   events: ["ACTS_AbilityPermission_0100_Start_CommonEvent"]
 }

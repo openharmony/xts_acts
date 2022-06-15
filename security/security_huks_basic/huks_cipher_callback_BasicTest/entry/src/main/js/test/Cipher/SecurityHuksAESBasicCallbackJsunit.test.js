@@ -360,3 +360,5 @@ describe('SecurityHuksCipherAESCallbackJsunit', function () {
     done();
   });
 });
+
+export {publicCipherFunc, IV, updateResult};

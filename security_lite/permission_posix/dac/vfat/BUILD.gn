@@ -17,9 +17,6 @@ hcpptest_suite("ActsVFATDACTest") {
   suite_name = "acts"
   sources = [
     "../src/ActsDacPreTest.cpp",
-    "../src/ActsDacTest.cpp",
-    "../src/ActsSystemDevDacTest.cpp",
-    "../src/ActsSystemJffsDacTest.cpp",
     "../src/DACFileSystemTest.cpp",
   ]
 

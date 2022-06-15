@@ -261,4 +261,32 @@ let HuksSignVerifyRSA = {
     value: param.HksKeyDigest.HKS_DIGEST_SHA512,
   },
 };
-export { HuksSignVerifyRSA, HuksSignVerifyDSA, HuksSignVerifyECC, HuksSignVerifyED25519 };
+let HuksSignVerifySM2 = {
+  HuksKeySize256: {
+    tag: param.HksTag.HKS_TAG_KEY_SIZE,
+    value: param.HksKeySize.HKS_SM2_KEY_SIZE_256,
+  },
+  HuksKeyAlgSM2: {
+    tag: param.HksTag.HKS_TAG_ALGORITHM,
+    value: param.HksKeyAlg.HKS_ALG_SM2,
+  },
+  HuksKeySM2PurposeSIGN: {
+    tag: param.HksTag.HKS_TAG_PURPOSE,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN,
+  },
+  HuksKeySM2PurposeVERIFY: {
+    tag: param.HksTag.HKS_TAG_PURPOSE,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
+  },
+  HuksTagSM2DigestSM3: {
+    tag: param.HksTag.HKS_TAG_DIGEST,
+    value: param.HksKeyDigest.HKS_DIGEST_SM3,
+  },
+  HuksKeySM2PurposeSINGVERIFY: {
+    tag: param.HksTag.HKS_TAG_PURPOSE,
+    value:
+    param.HksKeyPurpose.HKS_KEY_PURPOSE_SIGN |
+    param.HksKeyPurpose.HKS_KEY_PURPOSE_VERIFY,
+  },
+};
+export { HuksSignVerifyRSA, HuksSignVerifyDSA, HuksSignVerifyECC, HuksSignVerifyED25519 ,HuksSignVerifySM2};

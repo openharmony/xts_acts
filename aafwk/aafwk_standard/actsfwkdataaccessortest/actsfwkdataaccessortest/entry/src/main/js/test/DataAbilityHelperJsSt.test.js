@@ -14,7 +14,6 @@
  */
 import featureAbility from '@ohos.ability.featureAbility'
 import ohosDataAbility from '@ohos.data.dataability'
-
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 describe('ActsDataAbilityHelperTest', function () {

@@ -15,3 +15,4 @@
 
 require('./Cipher/SecurityHuksCipherAESBasicPromiseJsunit.test.js');
 require('./Cipher/SecurityHuksCipherRSABasicPromiseJsunit.test.js');
+require('./Cipher/SecurityHuksCipherSM4BasicPromiseJsunit.test.js');

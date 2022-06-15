@@ -459,7 +459,6 @@ describe("PlainArrayTest", function () {
   });
   it("SR000GGR45_testAdd039", 0, function () {
     let plainArray = new PlainArray();
-    plainArray.add(1.23, "a");
     plainArray.add(-2, "b");
     try {
       plainArray.add("a", "c");
@@ -500,5 +499,17 @@ describe("PlainArrayTest", function () {
       }
     }
     expect(flag).assertEqual(true);
+  });
+  it("SR000GGR45_testAdd042", 0, function () {
+    let plainArray = new PlainArray();
+    plainArray.add(-2, "b");
+    try {
+      plainArray.add(1.23, "a");
+    } catch (err) {
+      expect(err.name).assertEqual("TypeError");
+      expect(err.message).assertEqual("the index is not integer");
+    }
+    let res = plainArray.get(-2);
+    expect(res).assertEqual("b");
   });
 });

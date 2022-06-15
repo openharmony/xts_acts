@@ -22,8 +22,10 @@ import isApplicationEnabledETSUnit from "./IsApplicationEnabledETSUnit.ets";
 import getAbilityIcon from "./GetAbilityIcon.test.ets";
 import getNameForUid from "./GetNameForUid.test.ets";
 import queryExtensionAbilityInfos from "./QueryExtensionAbilityInfos.test.ets";
+import getBundleArchiveInfo from "./getBundleArchiveInfo.test.ets";
 
 export default function testsuite() {
+  getBundleArchiveInfo();
   queryExtensionAbilityInfos();
   getAbilityIcon();
   getLaunchWantForBundle();

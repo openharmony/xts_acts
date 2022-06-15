@@ -119,7 +119,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi06', 2, function () {
         console.info('testHilogJsApi06 start');
         const res = hilog.isLoggable(0xD001400, "HILOGTEST", 3);
-        expect(res).assertEqual(true);
+        expect(res).assertEqual(false);
         console.info('testHilogJsApi06 end');
     })
 
@@ -135,7 +135,7 @@ describe('HilogJsTest', function () {
         for (var i = 0; i < 1000; i++){
             tag += "HILOGTEST"
         }
-        expect(res).assertEqual(true);
+        expect(res).assertEqual(false);
         console.info('testHilogJsApi07 end');
     })
 
@@ -147,7 +147,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi08', 2, function () {
         console.info('testHilogJsApi08 start');
         const res = hilog.isLoggable(0xD001400, "", 3);
-        expect(res).assertEqual(true);
+        expect(res).assertEqual(false);
         console.info('testHilogJsApi08 end');
     })
 
@@ -243,7 +243,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi16', 2, function () {
         console.info('testHilogJsApi16 start');
         try{
-            hilog.debug(0xD001400, "HILOGTEST", "%{public}", ['hilogJs1800'])
+            hilog.debug(0xD001400, "HILOGTEST", "%{public}s", ['hilogJs1800'])
         }catch(error){
             console.log(`testHilogJsApi16 got an error: ${JSON.stringify(error)}`)
             expect().assertFail();

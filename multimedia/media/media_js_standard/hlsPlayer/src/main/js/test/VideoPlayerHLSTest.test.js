@@ -54,7 +54,7 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HLS', 0, async function (done) {
+    it('testHlsVideoPlayer', 0, async function (done) {
         await playVideoSource(HTTP_PATH + '05.hls/1/index.m3u8', 640, 320, 10033, PLAY_TIME, done);
         done();
     })
@@ -65,9 +65,9 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.desc      : HLS Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
-        * @tc.level     : Level0
+        * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HLS_SEPARATE', 0, async function (done) {
+    it('testHlsVideoPlayerSeparate', 0, async function (done) {
         await playVideoSource(HTTP_PATH + '05.hls/2/index.m3u8', 640, 320, 10033, PLAY_TIME, done);
         done();
     })
@@ -78,9 +78,9 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.desc      : HLS Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
-        * @tc.level     : Level0
+        * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HLS_AUDIOONLY', 0, async function (done) {
+    it('testHlsVideoPlayerAudioOnly', 0, async function (done) {
         await playVideoSource(HTTP_PATH + '05.hls/audio_only/index.m3u8', 0, 0, 10033, PLAY_TIME, done);
         done();
     })
@@ -93,8 +93,8 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-     it('SUB_MEDIA_VIDEO_PLAYER_HLS_VARIANT', 0, async function (done) {
-        await playVideoSource(HTTP_PATH + '05.hls/hls_variant/index.m3u8', null, null, 120000, PLAY_TIME, done);
+    it('testHlsVideoPlayerVariant', 0, async function (done) {
+        await playVideoSource(HTTP_PATH + '05.hls/hls_variant/index.m3u8', null, null, 10033, PLAY_TIME, done);
         done();
     })
 
@@ -104,10 +104,10 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.desc      : HLS Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
-        * @tc.level     : Level0
+        * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HLS_VARIANT_AUDIOOFF', 0, async function (done) {
-        await playVideoSource(HTTP_PATH + '05.hls/hls_variant2/index.m3u8', null, null, 120000, PLAY_TIME, done);
+    it('testHlsVideoPlayerVariantAudioOff', 0, async function (done) {
+        await playVideoSource(HTTP_PATH + '05.hls/hls_variant2/index.m3u8', null, null, 10080, PLAY_TIME, done);
         done();
     })
 
@@ -117,10 +117,10 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.desc      : HLS Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
-        * @tc.level     : Level0
+        * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HLS_CODEC_CHAGNGE', 0, async function (done) {
-        await playVideoSource(HTTP_PATH + '05.hls/hls_variant3/index.m3u8', null, null, 120000, PLAY_TIME, done);
+    it('testHlsVideoPlayerCodecChange', 0, async function (done) {
+        await playVideoSource(HTTP_PATH + '05.hls/hls_variant3/index.m3u8', null, null, 10080, PLAY_TIME, done);
         done();
     })
 

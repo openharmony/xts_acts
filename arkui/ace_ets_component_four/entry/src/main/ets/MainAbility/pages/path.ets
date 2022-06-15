@@ -20,8 +20,8 @@ import events_emitter from '@ohos.emitter'
 @Component
 struct PathExample {
   @State commandsOne: string = 'M0 0 L900 0'
-  @State widthOne: number = 300
-  @State heightOne: number = 10
+  @State widthOne: string = '300.00px'
+  @State heightOne: string = '10.00px'
 
 
   onPageShow() {

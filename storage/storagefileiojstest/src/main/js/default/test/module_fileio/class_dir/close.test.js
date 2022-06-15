@@ -66,10 +66,9 @@ describe('fileio_dir_close_read', function () {
       let dd = await fileio.opendir(dpath);
       expect(dd !== null).assertTrue();
       dd.close(function (err) {
-        expect(!!err).assertTrue();
+        expect(fileio.rmdirSync(dpath) == null).assertTrue();
+        done();
       });
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
     } catch (e) {
       console.log('fileio_test_dir_close_async_001 has failed for ' + e);
       expect(null).assertFail();

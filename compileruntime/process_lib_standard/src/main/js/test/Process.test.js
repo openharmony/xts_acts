@@ -19,7 +19,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetUid001
      * @tc.desc: returns the digital user id of the process.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testGetUid001', 0, function () {
@@ -33,7 +32,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetUid002
      * @tc.desc: returns the digital user id of the process.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testGetUid002', 0, function () {
@@ -51,7 +49,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetUid003
      * @tc.desc: returns the digital user id of the process.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testGetUid003', 0, function () {
@@ -69,7 +66,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetUid004
      * @tc.desc: returns the digital user id of the process.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testGetUid004', 0, function () {
@@ -87,7 +83,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetUid005
      * @tc.desc: returns the digital user id of the process.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testGetUid005', 0, function () {
@@ -105,7 +100,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testKill001
      * @tc.desc: Return whether the signal was sent successfully.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testKill001', 0, function () {
@@ -116,7 +110,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testKill002
      * @tc.desc: Return whether the signal was sent successfully.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testKill002', 0, function () {
@@ -128,7 +121,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testKill003
      * @tc.desc: Return whether the signal was sent successfully.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testKill003', 0, function () {
@@ -140,7 +132,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testKill004
      * @tc.desc: Return whether the signal was sent successfully.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testKill004', 0, function () {
@@ -152,7 +143,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testKill005
      * @tc.desc: Return whether the signal was sent successfully.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testKill005', 0, function () {
@@ -163,7 +153,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testUptime001
      * @tc.desc: Returns the running time of the system.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testUptime001', 0, function () {
@@ -183,7 +172,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testUptime002
      * @tc.desc: Returns the running time of the system.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testUptime002', 0, function () {
@@ -203,7 +191,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testUptime003
      * @tc.desc: Returns the running time of the system.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testUptime003', 0, function () {
@@ -223,7 +210,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testUptime004
      * @tc.desc: Returns the running time of the system.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testUptime004', 0, function () {
@@ -243,7 +229,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testUptime005
      * @tc.desc: Returns the running time of the system.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testUptime005', 0, function () {
@@ -263,7 +248,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testPid001
      * @tc.desc: Return pid is the pid of the current process.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testPid001', 0, function () {
@@ -277,7 +261,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testPid002
      * @tc.desc: Return pid is the pid of the current process.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testPid002', 0, function () {
@@ -293,7 +276,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testPid003
      * @tc.desc: Return pid is the pid of the current process.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testPid003', 0, function () {
@@ -309,7 +291,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testPid004
      * @tc.desc: Return pid is the pid of the current process.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testPid004', 0, function () {
@@ -325,7 +306,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testPid005
      * @tc.desc: Return pid is the pid of the current process.
-     * @tc.require: AR000GFB2S
      * @tc.author: wangben
      */
     it('testPid005', 0, function () {
@@ -339,12 +319,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-001
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Returns the tid of the current thread.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-001', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         let pres = process.tid
         if (pres > 0) {
             var flag = new Boolean(true)
@@ -353,12 +332,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-002
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Returns the tid of the current thread.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-002', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         for (let i=0; i < 5; i++) {
             let pres = process.tid
             if (pres > 0) {
@@ -369,12 +347,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-003
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Returns the tid of the current thread.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-003', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         for (let i=0; i < 3; i++) {
             let pres = process.tid
             if (pres > 0) {
@@ -386,23 +363,21 @@ describe('ChildProcessTest', function () {
 
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-004
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Returns a boolean whether the process is isolated.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-004', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         let pres = process.isIsolatedProcess()
         expect(pres).assertEqual(true)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-005
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Returns a boolean whether the process is isolated.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-005', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         for (let i=0; i < 3; i++) {
             let pres = process.isIsolatedProcess()
             expect(pres).assertEqual(true)
@@ -410,12 +385,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-006
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Returns a boolean whether the process is isolated.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-006', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         for (let i=0; i < 5; i++) {
             let pres = process.isIsolatedProcess()
             expect(pres).assertEqual(true)
@@ -424,23 +398,21 @@ describe('ChildProcessTest', function () {
 
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-007
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-007', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         let isorno = process.isAppUid(167)
         expect(isorno).assertEqual(false)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-008
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-008', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         let isorno = process.isAppUid(123)
         expect(isorno).assertEqual(false)
     })
@@ -448,7 +420,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testIsappuid003
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
     it('testIsappuid003', 0, function () {
@@ -459,7 +430,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testIsappuid004
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
     it('testIsappuid004', 0, function () {
@@ -470,7 +440,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testIsappuid005
      * @tc.desc: Returns a boolean whether the specified uid belongs to a particular application.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
     it('testIsappuid005', 0, function () {
@@ -479,12 +448,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-009
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Returns a boolean whether the process is running in a 64-bit environment.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-009', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         let isorno = process.is64Bit()
         if (isorno) {
             expect(isorno).assertEqual(true)
@@ -494,12 +462,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-010
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Returns a boolean whether the process is running in a 64-bit environment.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-010', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         for (let i=0; i<3; i++) {
             let isorno = process.is64Bit()
             if (isorno) {
@@ -511,12 +478,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-011
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Returns a boolean whether the process is running in a 64-bit environment.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-011', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         for (let i=0; i<5; i++) {
             let isorno = process.is64Bit()
             if (isorno) {
@@ -529,12 +495,11 @@ describe('ChildProcessTest', function () {
 
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-012
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Returns the uid based on the specified user name.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-012',0, function () {
+    it('SUB_Runtime_JSAPI_001',0, function () {
         let pres = process.getUidForName("root")
         if (pres != -1) {
             let flag = new Boolean(true)
@@ -543,12 +508,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-013
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Returns the uid based on the specified user name.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-013', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         for (let i=0; i<3; i++) {
             let pres = process.getUidForName("12356")
             expect(pres).assertEqual(-1)
@@ -556,12 +520,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-014
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Returns the uid based on the specified user name.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-014', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         for (let i=0; i<5; i++) {
             let pres = process.getUidForName("12356")
             expect(pres).assertEqual(-1)
@@ -570,12 +533,11 @@ describe('ChildProcessTest', function () {
 
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-015
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Returns the thread priority based on the specified tid.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-015', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         let pres = process.tid
         let pri = process.getThreadPriority(pres)
         if (pri) {
@@ -585,12 +547,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-016
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Returns the thread priority based on the specified tid.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-016', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         let pres = process.tid
         for (let i=0; i<3; i++) {
             let pri = process.getThreadPriority(pres)
@@ -602,12 +563,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-017
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Returns the thread priority based on the specified tid.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-017', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         let pres = process.tid
         for (let i=0; i<5; i++) {
             let pri = process.getThreadPriority(pres)
@@ -619,13 +579,12 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-019
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
      * @the system to the start of the process.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-019', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         for (let i=0; i<3; i++) {
             let pri = process.getStartRealtime()
             if (pri !== null) {
@@ -636,13 +595,12 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-018
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
      * @the system to the start of the process.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-018', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         let pri = process.getStartRealtime()
         if (pri !== null) {
             var flag = new Boolean(true)
@@ -651,13 +609,12 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-020
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
      * @the system to the start of the process.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-020', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         for (let i=0; i<5; i++) {
             let pri = process.getStartRealtime()
             if (pri !== null) {
@@ -668,13 +625,12 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-021
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Returns the elapsed real time (in milliseconds)
      * @taken from the start of the system to the start of the process.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-021', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         for (let i=0; i<8; i++) {
             let pri = process.getStartRealtime()
             if (pri !== null) {
@@ -685,13 +641,12 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: testGetstartrealtime004
+     * @tc.name: testGetstartrealtime005
      * @tc.desc: Returns the elapsed real time (in milliseconds) taken from the start of
      * @the system to the start of the process.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('testGetstartrealtime004', 0, function () {
+    it('testGetstartrealtime005', 0, function () {
         for (let i=0; i<6; i++) {
             let pri = process.getStartRealtime()
             if (pri !== null) {
@@ -704,7 +659,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetpastCpuTime001
      * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
     it('testGetpastCpuTime001', 0, function () {
@@ -718,12 +672,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-022
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-022', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         let pri = process.getPastCpuTime()
         if (pri > 0) {
             var flag = new Boolean(true)
@@ -732,12 +685,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-023
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-023', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         for (let i=0; i<5; i++) {
             let pri = process.getPastCpuTime()
             if (pri > 0) {
@@ -748,12 +700,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-024
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Returns the cpu time (in milliseconds) from the time when the process starts to the current time.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-024', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         for (let i=0; i<8; i++) {
             let pri = process.getPastCpuTime()
             if (pri > 0) {
@@ -764,12 +715,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-025
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Returns the system configuration at runtime.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-025', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         let _SC_ARG_MAX = 0
         let pri = process.getSystemConfig(_SC_ARG_MAX)
         if (pri > 0) {
@@ -779,12 +729,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-026
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Returns the system configuration at runtime.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-026', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         let _SC_ARG_MAX = 0
         for (let i=0; i<3; i++) {
             let pri = process.getSystemConfig(_SC_ARG_MAX)
@@ -796,12 +745,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-027
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Returns the system configuration at runtime.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-027', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         let _SC_ARG_MAX = 0
         for (let i=0; i<5; i++) {
             let pri = process.getSystemConfig(_SC_ARG_MAX)
@@ -813,12 +761,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-028
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Returns the system configuration at runtime.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-028', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         let _SC_OPEN_MAX = 4
         let pri = process.getSystemConfig(_SC_OPEN_MAX)
         if (pri > 0) {
@@ -828,12 +775,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-029
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Returns the system configuration at runtime.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-029', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         let _SC_PAGESIZE = 8
         let pri = process.getSystemConfig(_SC_PAGESIZE)
         if (pri > 0) {
@@ -843,12 +789,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-033
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Returns the system value for environment variables.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-033', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         let pri = process.getEnvironmentVar("USER")
         if (pri != null) {
             var flag = new Boolean(true)
@@ -857,12 +802,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-036
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Returns the system value for environment variables.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-036', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         for (let i=0; i<3; i++) {
             let pri = process.getEnvironmentVar("PATH")
             if (pri != null) {
@@ -875,7 +819,6 @@ describe('ChildProcessTest', function () {
     /**
      * @tc.name: testGetEnvironmentVar003
      * @tc.desc: Returns the system value for environment variables.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
     it('testGetEnvironmentVar003', 0, function () {
@@ -889,12 +832,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-034
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Returns the system value for environment variables.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-034', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         for (let i=0; i<6; i++) {
             let pri = process.getEnvironmentVar("USER")
             if (pri != null) {
@@ -905,12 +847,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-035
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Returns the system value for environment variables.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-035', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         for (let i=0; i<8; i++) {
             let pri = process.getEnvironmentVar("USER")
             if (pri != null) {
@@ -921,12 +862,11 @@ describe('ChildProcessTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR3G-037
+     * @tc.name: SUB_Runtime_JSAPI_006
      * @tc.desc: Returns the system value for environment variables.
-     * @tc.require: AR000GFB04
      * @tc.author: liwenqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR3G-037', 0, function () {
+    it('SUB_Runtime_JSAPI_006', 0, function () {
         for (let i=0; i<100; i++) {
             let pri = process.getEnvironmentVar("i123")
             if (pri == null) {

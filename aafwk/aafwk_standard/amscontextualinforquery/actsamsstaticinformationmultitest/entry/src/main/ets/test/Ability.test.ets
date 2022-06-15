@@ -14,7 +14,7 @@
  */
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index";
-import commonEvent from '@ohos.commonevent';
+import commonEvent from '@ohos.commonEvent';
 import bundle from '@ohos.bundle';
 import missionManager from '@ohos.application.missionManager';
 
