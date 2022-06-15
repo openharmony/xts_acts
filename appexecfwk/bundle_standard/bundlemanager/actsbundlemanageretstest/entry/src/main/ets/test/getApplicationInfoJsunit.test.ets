@@ -388,6 +388,31 @@ export default function applicationBundleJsunit() {
             });
         });
 
+        /**
+         * @tc.number: getApplicationInfo_1800
+         * @tc.name: Test getApplicationInfo
+         * @tc.desc: Test whether the iconResource, labelResource and descriptionResource
+         *          in the getApplicationInfo of the case meet the expectations
+         */
+         it('testGetApplicationInfo', 0, async function (done) {
+            await Bundle.getApplicationInfo(BUNDLE_NAME, 0)
+            .then((applicationInfo) => {
+                expect(applicationInfo.iconResource.bundleName).assertEqual('com.open.harmony.packagemag')
+                expect(applicationInfo.iconResource.moduleName).assertEqual('entry')
+                expect(applicationInfo.iconResource.id).assertEqual(16777218)
+                expect(applicationInfo.labelResource.bundleName).assertEqual('com.open.harmony.packagemag')
+                expect(applicationInfo.labelResource.moduleName).assertEqual('entry')
+                expect(applicationInfo.labelResource.id).assertEqual(16777216)
+                expect(applicationInfo.descriptionResource.bundleName).assertEqual('com.open.harmony.packagemag')
+                expect(applicationInfo.descriptionResource.moduleName).assertEqual('entry')
+                expect(applicationInfo.descriptionResource.id).assertEqual(16777217)
+                done();
+            }).catch((err) => {
+                expect(err).assertFail();
+                done();
+            });
+         })
+
         function expectData(msg, data) {
             expect(typeof (data)).assertEqual('object');
             expect(typeof (data.name)).assertEqual('string');
