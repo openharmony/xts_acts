@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import commonEvent from '@ohos.commonevent'
-import featureAbility from '@ohos.ability.featureability'
+import commonEvent from '@ohos.commonEvent'
+import featureAbility from '@ohos.ability.featureAbility'
 import formBindingData from '@ohos.application.formBindingData'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 

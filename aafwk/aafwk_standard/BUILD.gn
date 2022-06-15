@@ -23,6 +23,8 @@ group("aafwk_standard") {
       "actsabilitylifecyclestatenew:ActsAbilityLifecycleStateNewTest",
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
       "actscalltest:actscalltest",
+      "actsfwkdataaccessortest:dataability",
+      "actsserviceabilityclienttest:serviceability",
       "actsstartcomponenttest:actsstartcomponenttest",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
       "actsusers:actsusers",
