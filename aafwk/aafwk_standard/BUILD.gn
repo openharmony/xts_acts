@@ -21,7 +21,6 @@ group("aafwk_standard") {
       "actsabilitydelegatorcase:ActsAbilityDelegatorCaseTest",
       "actsabilitylifecyclestatenew:ActsAbilityLifecycleStateNewTest",
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
-      "actsfwkdataaccessortest:dataability",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
       "amsdatauriutils:ActsAmsDataUriUtilsTest",
       "amsgetabilityprocessinfo:amsgetabilityprocessinfo",
