@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "FormsOneAndTwoTest.hap",
+                "ActsFormsOneAndTwoTest.hap",
                 "FormSystemProviderA.hap",
                 "FormSystemProviderB.hap"
             ],

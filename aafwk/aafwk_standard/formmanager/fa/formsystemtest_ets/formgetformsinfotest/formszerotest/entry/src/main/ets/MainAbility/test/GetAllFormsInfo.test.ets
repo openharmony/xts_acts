@@ -14,7 +14,7 @@
  */
 
 import formHost from '@ohos.application.formHost';
-import { describe, expect, it } from 'deccjsunit/index.ets';
+import { describe, expect, it } from 'deccjsunit/index';
 
 export const getAllFormsInfoTest = (describeName, filterParameter) => {
   const ERR_OK_CODE = 0;

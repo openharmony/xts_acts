@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "FormStateNotifyInvisibleTest2.hap",
+                "ActsFormStateNotifyInvisibleTest2.hap",
                 "FormSystemHostG.hap",
                 "FormSupplyAppA.hap",
                 "FormSupplyAppB.hap",

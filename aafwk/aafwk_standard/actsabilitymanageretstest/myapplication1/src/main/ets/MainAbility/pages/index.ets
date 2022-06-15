@@ -14,7 +14,7 @@
  */
 
 import file from '@system.file';
-import {Core, ExpectExtend, InstrumentLog, ReportExtend} from "deccjsunit/index.ets";
+import {Core, ExpectExtend, InstrumentLog, ReportExtend} from "deccjsunit/index";
 import testsuite_app1 from "../test/List.test.ets";
 import featureAbility from "@ohos.ability.featureAbility";
 

@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "FormStateDisableTest.hap",
+                "ActsFormStateDisableTest.hap",
                 "FormSystemHostF.hap",
                 "FormSystemHostG.hap",
                 "FormSupplyAppA.hap",

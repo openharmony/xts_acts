@@ -16,7 +16,7 @@
 // @ts-nocheck
 import featureAbility from "@ohos.ability.featureAbility";
 import file from '@system.file';
-import { Core, ExpectExtend, ReportExtend } from "deccjsunit/index.ets";
+import { Core, ExpectExtend, ReportExtend } from "deccjsunit/index";
 import testsuite from "../test/List.test.ets";
 
 @Entry

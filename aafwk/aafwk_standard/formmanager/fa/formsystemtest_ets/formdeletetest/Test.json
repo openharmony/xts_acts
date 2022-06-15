@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "FormDeleteTest.hap",
+                "ActsFormDeleteTest.hap",
                 "FormSystemHostC.hap",
                 "FormSystemHostD.hap",
                 "FormSystemHostNoPerm.hap",
