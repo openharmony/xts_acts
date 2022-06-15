@@ -142,7 +142,7 @@ describe('fileio_dir_read', function () {
   /**
    * @tc.number SUB_DF_FILEIO_DIR_READ_SYNC_0100
    * @tc.name fileio_dir_read_sync_001
-   * @tc.desc Test Dir.readSync() interface.
+   * @tc.desc Test Dir.readSync() interface,there are multiple parameters.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
