@@ -476,8 +476,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           let arrLength = systemBarData.regionTint.length;
           for (let i = 0; i < arrLength; i++) {
             let tempData = systemBarData.regionTint[i];
-            if (tempData.type === 2108) {
-              console.log(msgStr + 'systemBarTintChange compare start!');
+            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR) {
+              console.log(msgStr + 'systemBarTintChange compare start! arrLength= ' + arrLength);
               compareCount++;
               let backgroundIndex = cloneColorArr.SBC.indexOf(tempData.backgroundColor);
               let contentColorIndex = cloneColorArr.SCC.indexOf(tempData.contentColor);
@@ -487,7 +487,9 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               if (contentColorIndex >= 0) {
                 cloneColorArr.SCC.splice(contentColorIndex, 1);
               }
-            } else if (tempData.type === 2112) {
+              console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.SBC));
+              console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '    ,cloneColorArr.SCC' + JSON.stringify(cloneColorArr.SCC));
+            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
               console.log(msgStr + 'systemBarTintChange compare start!');
               compareCount++;
               let backgroundIndex = cloneColorArr.NBC.indexOf(tempData.backgroundColor);
@@ -498,6 +500,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               if (contentColorIndex >= 0) {
                 cloneColorArr.NCC.splice(contentColorIndex, 1);
               }
+              let ca = cloneColorArr;
+              let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
+              if (compareCount === 18 && !flag) {
+                expect(true).assertTrue();
+              } else {
+                console.log(msgStr + 'compareCount: ' + compareCount + ' ,flag:' + flag);
+              }
+              console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.NBC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.NBC));
+              console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.NCC.length) + '    ,cloneColorArr.SCC' + JSON.stringify(cloneColorArr.NCC));
             }
           }
         }
@@ -549,16 +560,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                   }
                 })
               }
-              setTimeout(() => {
-                console.log(msgStr + 'time wait finished. compareCount: ' + compareCount);
-                listenerFlag = listenerStatus.finished;
-                let ca = cloneColorArr;
-                if (ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length) {
-                  unexpectedError(null, caseName, ' something compaer failed', done);
-                } else {
-                  done();
-                }
-              }, 10000)
             })
           })
         })
