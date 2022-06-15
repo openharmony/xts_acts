@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import featureAbility from '@ohos.ability.featureAbility'
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
