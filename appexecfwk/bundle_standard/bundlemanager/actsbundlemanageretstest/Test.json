@@ -35,7 +35,8 @@
                 "bmsJstest3.hap -> /data/test/bmsJstest3.hap",
                 "bmsJstest4.hap -> /data/test/bmsJstest4.hap",
                 "bmsJstest5.hap -> /data/test/bmsJstest5.hap",
-                "bmsJstest6.hap -> /data/test/bmsJstest6.hap"
+                "bmsJstest6.hap -> /data/test/bmsJstest6.hap",
+                "bmsThirdBundleTest7.hap->/data/test/bmsThirdBundleTest7.hap"
             ]
         },
         {
@@ -51,7 +52,8 @@
                 "bm install -p /data/test/bmsJstest3.hap",
                 "bm install -p /data/test/bmsJstest4.hap",
                 "bm install -p /data/test/bmsJstest5.hap",
-                "bm install -p /data/test/bmsJstest6.hap"
+                "bm install -p /data/test/bmsJstest6.hap",
+                "bm install -p /data/test/bmsThirdBundleTest7.hap"
             ],
             "teardown-command":[
                 "bm uninstall -n com.example.third1",
@@ -61,6 +63,7 @@
                 "bm uninstall -n com.example.myapplication4",
                 "bm uninstall -n com.example.myapplication5",
                 "bm uninstall -n com.example.myapplication6",
+                "bm uninstall -n com.example.third7",
                 "bm uninstall -n ohos.acts.bundle.stage"
             ]
         }

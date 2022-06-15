@@ -23,6 +23,7 @@ import getAbilityIcon from "./GetAbilityIcon.test.ets";
 import getNameForUid from "./GetNameForUid.test.ets";
 import queryExtensionAbilityInfos from "./QueryExtensionAbilityInfos.test.ets";
 import getBundleArchiveInfo from "./getBundleArchiveInfo.test.ets";
+import getQueryAbilityByWant from './GetQueryAbilityByWant.test.ets';
 
 export default function testsuite() {
   getBundleArchiveInfo();
@@ -30,6 +31,7 @@ export default function testsuite() {
   getAbilityIcon();
   getLaunchWantForBundle();
   getNameForUid();
+  getQueryAbilityByWant();
   //RM.007
   getApplicationInfoJsunit();
   getAllAppInfoJsunit();
