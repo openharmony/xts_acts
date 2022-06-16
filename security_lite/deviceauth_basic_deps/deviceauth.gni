@@ -35,10 +35,10 @@ DEVICEAUTH_BASIC_DEPS_INC = [
   "//utils/native/lite/include",  # utils_file.h ohos_types.h
 
   # alg test
-  "//base/security/deviceauth/deps_adapter/key_management_adapter/interfaces",
-  "//base/security/deviceauth/deps_adapter/os_adapter/interfaces",
-  "//base/security/deviceauth/common_lib/interfaces",
-  "//base/security/deviceauth/interfaces/innerkits",
+  "//base/security/device_auth/deps_adapter/key_management_adapter/interfaces",
+  "//base/security/device_auth/deps_adapter/os_adapter/interfaces",
+  "//base/security/device_auth/common_lib/interfaces",
+  "//base/security/device_auth/interfaces/innerkits",
 ]
 
 DEVICEAUTH_BASIC_DEPS_ALGORITHM_DEFINES = [

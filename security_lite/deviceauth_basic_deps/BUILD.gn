@@ -55,7 +55,7 @@ hctest_suite("ActsSecurityHichainBasicDeps") {
 
   if (defined(ohos_lite)) {
     include_dirs += [
-      "//base/security/deviceauth/deps_adapter/os_adapter/interfaces/liteos",
+      "//base/security/device_auth/deps_adapter/os_adapter/interfaces/liteos",
     ]
     if (ohos_kernel_type == "liteos_m") {
       # liteos m
@@ -143,7 +143,7 @@ hctest_suite("ActsSecurityHichainBasicDeps") {
     include_dirs += [
       "//base/startup/syspara_lite/interfaces/innerkits/native/syspara/include",
 
-      "//base/security/deviceauth/deps_adapter/os_adapter/interfaces/linux",
+      "//base/security/device_auth/deps_adapter/os_adapter/interfaces/linux",
     ]
     deps += [
       "//base/startup/syspara_lite/interfaces/innerkits/native/syspara:syspara",

@@ -669,7 +669,7 @@ static const uint32_t TEST_SIGN_MSG_LENGTHES[] = {
 static const char TEST_EXPORT_DIFFERENT_ERROR_MESSAGE[] = "two different public keys are exported";
 
 // g_largePrimeNumberHex384 and g_largePrimeNumberHex256 are from
-// base/security/deviceauth/services/protocol/src/pake_protocol/pake_protocol_dl_common/pake_protocol_dl_common.c
+// base/security/device_auth/services/protocol/src/pake_protocol/pake_protocol_dl_common/pake_protocol_dl_common.c
 static const char LARGE_PRIME_NUM_HEX_384[] =
     "FFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD129024E088A67CC74"
     "020BBEA63B139B22514A08798E3404DDEF9519B3CD3A431B302B0A6DF25F1437"
