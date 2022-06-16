@@ -16,7 +16,7 @@
 import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-import {testPng, testJpg} from './testImg'
+import { testPng, testJpg } from './testImg'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 
@@ -26,7 +26,7 @@ describe('Image', function () {
     var pathGif = '/data/storage/el2/base/files/test.gif';
     var pathPng = '/data/storage/el2/base/files/test.png';
     var pathMovingGif = '/data/storage/el2/base/files/moving_test.gif';
-
+    let globalpixelmap;
     beforeAll(async function () {
         await applyPermission();
         console.info('beforeAll case');
@@ -37,6 +37,14 @@ describe('Image', function () {
     })
 
     afterEach(async function () {
+        if (globalpixelmap != undefined) {
+            console.info('globalpixelmap release start');
+            try {
+                await globalpixelmap.release();
+            } catch (error) {
+                console.info('globalpixelmap release fail');
+            }
+        }
         console.info('afterEach case');
     })
 
@@ -44,36 +52,36 @@ describe('Image', function () {
         console.info('afterAll case');
     })
 
-    async function applyPermission(){
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.image',0,100);
+    async function applyPermission() {
+        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.image', 0, 100);
         let atManager = abilityAccessCtrl.createAtManager();
-        if(atManager != null){
+        if (atManager != null) {
             let tokenID = appInfo.accessTokenId;
             console.info('[permission]case accessTokenId is' + tokenID);
             let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
             let permissionName2 = 'ohos.permission.READ_MEDIA';
             let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID,permissionName1).then((result)=>{
+            await atManager.grantUserGrantedPermission(tokenID, permissionName1).then((result) => {
                 console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.info('[permission]case grantUserGrantedPermission failed:' + err);
             });
-            await atManager.grantUserGrantedPermission(tokenID,permissionName2).then((result)=>{
+            await atManager.grantUserGrantedPermission(tokenID, permissionName2).then((result) => {
                 console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.info('[permission]case grantUserGrantedPermission failed:' + err);
             });
-            await atManager.grantUserGrantedPermission(tokenID,permissionName3).then((result)=>{
+            await atManager.grantUserGrantedPermission(tokenID, permissionName3).then((result) => {
                 console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.info('[permission]case grantUserGrantedPermission failed:' + err);
             });
-        }else{
+        } else {
             console.info('[permission]case apply permission failed,createAtManager failed');
         }
     }
 
-        
+
 
     /**
      * @tc.number    : TC_041
@@ -86,14 +94,14 @@ describe('Image', function () {
      * @tc.level     : Level 0
      */
     it('TC_041', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             expect(imageSourceApi != undefined).assertTrue();
             console.info('TC_041 success');
             fileio.closeSync(fdNumber);
             done();
-        }catch(error){
+        } catch (error) {
             console.info('TC_041 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -111,13 +119,13 @@ describe('Image', function () {
      * @tc.level     : Level 0
      */
     it('TC_041-1', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathBmp);
             const imageSourceApi = image.createImageSource(fdNumber);
             expect(imageSourceApi != undefined).assertTrue();
             console.info('TC_041-1 success');
             done();
-        }catch(error){
+        } catch (error) {
             console.info('TC_041-1 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -135,18 +143,18 @@ describe('Image', function () {
      * @tc.level     : Level 0
      */
     it('TC_041-2', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathGif);
             const imageSourceApi = image.createImageSource(fdNumber);
             expect(imageSourceApi != undefined).assertTrue();
             console.info('TC_041-2 success');
             done();
-        }catch(error){
+        } catch (error) {
             console.info('TC_041-2 error: ' + error);
             expect(false).assertTrue();
             done();
         }
-      
+
     })
 
     /**
@@ -160,18 +168,18 @@ describe('Image', function () {
      * @tc.level     : Level 0
      */
     it('TC_041-3', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             expect(imageSourceApi != undefined).assertTrue();
             console.info('TC_041-3 success');
             done();
-        }catch(error){
+        } catch (error) {
             console.info('TC_041-3 error: ' + error);
             expect(false).assertTrue();
             done();
         }
-        
+
     })
 
     /**
@@ -202,12 +210,12 @@ describe('Image', function () {
      * @tc.level     : Level 0
      */
     it('TC_041-5', 0, async function (done) {
-        try{
+        try {
             const imageSourceApi = image.createImageSource('file:///multimedia/test.jpg');
             expect(imageSourceApi == undefined).assertTrue();
             console.info('TC_041-5 success');
             done();
-        }catch(error){
+        } catch (error) {
             console.info('TC_041-5 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -225,7 +233,7 @@ describe('Image', function () {
      * @tc.level     : Level 0
      */
     it('TC_042', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -233,26 +241,26 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                imageSourceApi.getImageInfo((err,imageInfo) => {
-                    if (err){
+                imageSourceApi.getImageInfo((err, imageInfo) => {
+                    if (err) {
                         expect(false).assertTrue();
                         console.info('TC_042 err: ' + err);
                         done();
                         return
                     }
-                    if (imageInfo != undefined){
+                    if (imageInfo != undefined) {
                         expect(true).assertTrue();
                         fileio.closeSync(fdNumber);
                         done();
-                    }else{
+                    } else {
                         console.info('TC_042 failed');
                         expect(false).assertTrue();
                         done();
                     }
-                    
+
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_042 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -294,7 +302,7 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            imageSourceApi.getImageInfo((err,imageInfo) => {
+            imageSourceApi.getImageInfo((err, imageInfo) => {
                 console.info('TC_043 imageInfo');
                 expect(imageInfo != undefined).assertTrue();
                 done();
@@ -331,7 +339,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_044', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -339,7 +347,7 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                imageSourceApi.release().then(()=>{
+                imageSourceApi.release().then(() => {
                     console.info('TC_044 success');
                     expect(true).assertTrue();
                     done();
@@ -349,7 +357,7 @@ describe('Image', function () {
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_044 err:' + error);
             expect(false).assertTrue();
             done();
@@ -367,7 +375,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_044-1', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -381,7 +389,7 @@ describe('Image', function () {
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_044-1 err:' + error);
             expect(false).assertTrue();
             done();
@@ -398,9 +406,9 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-     
+
     it('TC_045', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -408,30 +416,30 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                imageSourceApi.getImageInfo((err,imageInfo) => {
-                    if(err){
+                imageSourceApi.getImageInfo((err, imageInfo) => {
+                    if (err) {
                         expect(false).assertTrue();
                         console.info('TC_045 err:' + err);
                         done();
                         return
                     }
-                    if (imageInfo != undefined){
-                        console.info('TC_045 imageInfo.size.height:'+imageInfo.size.height);
-                        console.info('TC_045 imageInfo.size.width:'+imageInfo.size.width);
+                    if (imageInfo != undefined) {
+                        console.info('TC_045 imageInfo.size.height:' + imageInfo.size.height);
+                        console.info('TC_045 imageInfo.size.width:' + imageInfo.size.width);
                         expect(true).assertTrue();
                         fileio.closeSync(fdNumber);
                         done();
-                    }else{
+                    } else {
                         console.info('TC_045 failed');
                         expect(false).assertTrue();
                         done();
                     }
                 })
             }
-        }catch(error){
-                console.info('TC_045 error: ' + error);
-                expect(false).assertTrue();
-                done();
+        } catch (error) {
+            console.info('TC_045 error: ' + error);
+            expect(false).assertTrue();
+            done();
         }
     })
 
@@ -447,7 +455,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_045-1', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathBmp);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -455,14 +463,14 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                imageSourceApi.getImageInfo((err,imageInfo) => {
+                imageSourceApi.getImageInfo((err, imageInfo) => {
                     expect(imageInfo != undefined).assertTrue();
-                    console.info('TC_045-1 imageInfo.size.height:'+imageInfo.size.height);
-                    console.info('TC_045-1 imageInfo.size.width:'+imageInfo.size.width);
+                    console.info('TC_045-1 imageInfo.size.height:' + imageInfo.size.height);
+                    console.info('TC_045-1 imageInfo.size.width:' + imageInfo.size.width);
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_045-1 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -480,7 +488,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_045-2', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -488,14 +496,14 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                imageSourceApi.getImageInfo((err,imageInfo) => {
+                imageSourceApi.getImageInfo((err, imageInfo) => {
                     expect(imageInfo != undefined).assertTrue();
-                    console.info('TC_045-2 imageInfo.size.height:'+imageInfo.size.height);
-                    console.info('TC_045-2 imageInfo.size.width:'+imageInfo.size.width);
+                    console.info('TC_045-2 imageInfo.size.height:' + imageInfo.size.height);
+                    console.info('TC_045-2 imageInfo.size.width:' + imageInfo.size.width);
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_045-2 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -513,7 +521,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_045-3', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathGif);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -521,31 +529,31 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                imageSourceApi.getImageInfo((err,imageInfo) => {
-                    if (err){
+                imageSourceApi.getImageInfo((err, imageInfo) => {
+                    if (err) {
                         expect(false).assertTrue();
                         console.info('TC_045-3 error' + err);
                         done();
                         return
                     }
-                    if (imageInfo != undefined && imageInfo != null){
+                    if (imageInfo != undefined && imageInfo != null) {
                         expect(true).assertTrue();
                         console.info('TC_045-3 imageInfo.size.height:' + imageInfo.size.height);
-                        console.info('TC_045-3 imageInfo.size.width:'+imageInfo.size.width);
+                        console.info('TC_045-3 imageInfo.size.width:' + imageInfo.size.width);
                         console.info('TC_045-3 success')
                         done();
-                    }else{
+                    } else {
                         expect(false).assertTrue();
                         console.info('TC_045-3 failed')
                         done();
                     }
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_045-3 error: ' + error);
             expect(false).assertTrue();
             done();
-        }  
+        }
     })
 
     /**
@@ -559,7 +567,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_046', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -569,12 +577,12 @@ describe('Image', function () {
             } else {
                 imageSourceApi.getImageInfo(0, (err, imageInfo) => {
                     expect(imageInfo != undefined).assertTrue();
-                    console.info('TC_046 imageInfo.size.height:'+imageInfo.size.height);
-                    console.info('TC_046 imageInfo.size.width:'+imageInfo.size.width);
+                    console.info('TC_046 imageInfo.size.height:' + imageInfo.size.height);
+                    console.info('TC_046 imageInfo.size.width:' + imageInfo.size.width);
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_046 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -592,7 +600,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_046-1', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathBmp);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -602,12 +610,12 @@ describe('Image', function () {
             } else {
                 imageSourceApi.getImageInfo(0, (err, imageInfo) => {
                     expect(imageInfo != undefined).assertTrue();
-                    console.info('TC_046-1 imageInfo.size.height:'+imageInfo.size.height);
-                    console.info('TC_046-1 imageInfo.size.width:'+imageInfo.size.width);
+                    console.info('TC_046-1 imageInfo.size.height:' + imageInfo.size.height);
+                    console.info('TC_046-1 imageInfo.size.width:' + imageInfo.size.width);
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_046-1 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -625,7 +633,7 @@ describe('Image', function () {
      * @tc.level : Level 1
      */
     it('TC_046-2', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -635,17 +643,17 @@ describe('Image', function () {
             } else {
                 imageSourceApi.getImageInfo(0, (err, imageInfo) => {
                     expect(imageInfo != undefined).assertTrue();
-                    console.info('TC_046-2 imageInfo.size.height:'+imageInfo.size.height);
-                    console.info('TC_046-2 imageInfo.size.width:'+imageInfo.size.width);
+                    console.info('TC_046-2 imageInfo.size.height:' + imageInfo.size.height);
+                    console.info('TC_046-2 imageInfo.size.width:' + imageInfo.size.width);
                     done();
                 })
             }
-        }catch{
+        } catch {
             console.info('TC_046-2 error: ' + error);
             expect(false).assertTrue();
             done();
         }
-        
+
     })
 
     /**
@@ -659,7 +667,7 @@ describe('Image', function () {
      * @tc.level : Level 1
      */
     it('TC_046-3', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathGif);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -667,27 +675,27 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                imageSourceApi.getImageInfo(0,(err, imageInfo) => {
-                    if (err){
+                imageSourceApi.getImageInfo(0, (err, imageInfo) => {
+                    if (err) {
                         expect(false).assertTrue();
                         console.info('TC_046-3 error' + err);
                         done();
                         return
                     }
-                    if (imageInfo != undefined && imageInfo != null){
+                    if (imageInfo != undefined && imageInfo != null) {
                         expect(true).assertTrue();
                         console.info('TC_046-3 imageInfo.size.height:' + imageInfo.size.height);
-                        console.info('TC_046-3 imageInfo.size.width:'+imageInfo.size.width);
+                        console.info('TC_046-3 imageInfo.size.width:' + imageInfo.size.width);
                         console.info('TC_046-3 success')
                         done();
-                    }else{
+                    } else {
                         expect(false).assertTrue();
                         console.info('TC_046-3 failed')
                         done();
                     }
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_046-3 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -705,7 +713,7 @@ describe('Image', function () {
      * @tc.level : Level 1
      */
     it('TC_046-4', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathGif);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -714,7 +722,7 @@ describe('Image', function () {
                 done();
             } else {
                 imageSourceApi.getImageInfo(1, (err, imageInfo) => {
-                    if(imageInfo == undefined) {
+                    if (imageInfo == undefined) {
                         expect(true).assertTrue();
                         done();
                     } else {
@@ -723,11 +731,11 @@ describe('Image', function () {
                     }
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_046-4 error: ' + error);
             expect(false).assertTrue();
             done();
-        } 
+        }
     })
 
     /**
@@ -741,7 +749,7 @@ describe('Image', function () {
      * @tc.level : Level 1
      */
     it('TC_046-5', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathGif);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -754,7 +762,7 @@ describe('Image', function () {
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_046-5 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -772,7 +780,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_047', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -784,20 +792,20 @@ describe('Image', function () {
                     .then(imageInfo => {
                         expect(imageInfo != undefined).assertTrue();
                         console.info('TC_047 imageInfo');
-                        console.info('imageInfo.size.height:'+imageInfo.size.height);
-                        console.info('imageInfo.size.width:'+imageInfo.size.width);
+                        console.info('imageInfo.size.height:' + imageInfo.size.height);
+                        console.info('imageInfo.size.width:' + imageInfo.size.width);
                         done();
                     }).catch(error => {
-                    console.log('TC_047 error: ' + error);
-                    expect().assertFail();
-                    done();
-                })
+                        console.log('TC_047 error: ' + error);
+                        expect().assertFail();
+                        done();
+                    })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_047 error: ' + error);
             expect(false).assertTrue();
             done();
-        }   
+        }
     })
 
     /**
@@ -811,7 +819,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_047-1', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathBmp);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -823,16 +831,16 @@ describe('Image', function () {
                     .then(imageInfo => {
                         expect(imageInfo != undefined).assertTrue();
                         console.info('TC_047-1 imageInfo');
-                        console.info('imageInfo.size.height:'+imageInfo.size.height);
-                        console.info('imageInfo.size.width:'+imageInfo.size.width);
+                        console.info('imageInfo.size.height:' + imageInfo.size.height);
+                        console.info('imageInfo.size.width:' + imageInfo.size.width);
                         done();
                     }).catch(error => {
-                    console.log('TC_047-1 error: ' + error);
-                    expect().assertFail();
-                    done();
-                })
+                        console.log('TC_047-1 error: ' + error);
+                        expect().assertFail();
+                        done();
+                    })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_047-1 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -850,7 +858,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_047-2', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -862,16 +870,16 @@ describe('Image', function () {
                     .then(imageInfo => {
                         expect(imageInfo != undefined).assertTrue();
                         console.info('TC_047-2 imageInfo');
-                        console.info('imageInfo.size.height:'+imageInfo.size.height);
-                        console.info('imageInfo.size.width:'+imageInfo.size.width);
+                        console.info('imageInfo.size.height:' + imageInfo.size.height);
+                        console.info('imageInfo.size.width:' + imageInfo.size.width);
                         done();
                     }).catch(error => {
-                    console.log('TC_047-2 error: ' + error);
-                    expect().assertFail();
-                    done();
-                })
+                        console.log('TC_047-2 error: ' + error);
+                        expect().assertFail();
+                        done();
+                    })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_047-2 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -889,7 +897,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_047-3', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathGif);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -899,23 +907,23 @@ describe('Image', function () {
             } else {
                 imageSourceApi.getImageInfo(0)
                     .then(imageInfo => {
-                        if (imageInfo != undefined && imageInfo != null){
+                        if (imageInfo != undefined && imageInfo != null) {
                             expect(true).assertTrue();
-                            console.info('TC_047-3 imageInfo.size.height:'+imageInfo.size.height);
-                            console.info('TC_047-3 imageInfo.size.width:'+imageInfo.size.width);
+                            console.info('TC_047-3 imageInfo.size.height:' + imageInfo.size.height);
+                            console.info('TC_047-3 imageInfo.size.width:' + imageInfo.size.width);
                             done();
-                        }else{
+                        } else {
                             expect(false).assertTrue();
                             console.info('TC_047-3 failed');
                             done();
                         }
                     }).catch(error => {
-                    console.log('TC_047-3 error: ' + error);
-                    expect().assertFail();
-                    done();
-                })
+                        console.log('TC_047-3 error: ' + error);
+                        expect().assertFail();
+                        done();
+                    })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_047-3 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -933,7 +941,7 @@ describe('Image', function () {
      * @tc.level : Level 1
      */
     it('TC_047-4', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathGif);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -947,12 +955,12 @@ describe('Image', function () {
                         expect().assertFail();
                         done();
                     }).catch(error => {
-                    console.log('TC_047-4 success');
-                    expect(true).assertTrue();
-                    done();
-                })
+                        console.log('TC_047-4 success');
+                        expect(true).assertTrue();
+                        done();
+                    })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_047-4 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -970,7 +978,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_047-5', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathGif);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -984,12 +992,12 @@ describe('Image', function () {
                         expect().assertFail();
                         done();
                     }).catch(error => {
-                    console.log('TC_047-5 success');
-                    expect(true).assertTrue();
-                    done();
-                })
+                        console.log('TC_047-5 success');
+                        expect(true).assertTrue();
+                        done();
+                    })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_047-5 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1008,7 +1016,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-14', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1017,8 +1025,9 @@ describe('Image', function () {
                 done();
             } else {
                 imageSourceApi.createPixelMap().then(pixelmap => {
+                    globalpixelmap = pixelmap;
                     console.info('TC_050-14 success ');
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 }).catch(error => {
                     console.log('TC_050-14 error: ' + error);
@@ -1026,7 +1035,7 @@ describe('Image', function () {
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-14 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1045,7 +1054,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-15', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1054,12 +1063,13 @@ describe('Image', function () {
                 done();
             } else {
                 imageSourceApi.createPixelMap((err, pixelmap) => {
+                    globalpixelmap = pixelmap;
                     console.info('TC_050-15 success ');
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-15 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1076,7 +1086,7 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-     it('TC_053', 0, async function (done) {
+    it('TC_053', 0, async function (done) {
         try {
             let testimagebuffer = testPng;
             console.info('TC_053 0003 ' + testimagebuffer.length);
@@ -1104,11 +1114,11 @@ describe('Image', function () {
             if (ret) {
                 console.info('TC_053 updateData success ');
                 let decodingOptions = {
-                    sampleSize:1
+                    sampleSize: 1
                 };
                 incSouce.createPixelMap(decodingOptions, (err, pixelmap) => {
                     console.info('TC_053 0014' + pixelmap);
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 })
             } else {
@@ -1157,10 +1167,10 @@ describe('Image', function () {
             if (ret) {
                 console.info('TC_053-1 updateData success ');
                 let decodingOptions = {
-                    sampleSize:1
+                    sampleSize: 1
                 };
                 incSouce.createPixelMap(decodingOptions, (err, pixelmap) => {
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 })
             } else {
@@ -1182,7 +1192,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_064', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1190,7 +1200,7 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                imageSourceApi.release().then(()=>{
+                imageSourceApi.release().then(() => {
                     console.info('TC_064 success');
                     expect(true).assertTrue();
                     done();
@@ -1200,7 +1210,7 @@ describe('Image', function () {
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_064 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1218,7 +1228,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_064-1', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1226,8 +1236,8 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                imageSourceApi.release(async(err) => {
-                    if (err){
+                imageSourceApi.release(async (err) => {
+                    if (err) {
                         console.info('TC_064-1 err:' + err);
                         expect(false).assertTrue();
                         done();
@@ -1239,7 +1249,7 @@ describe('Image', function () {
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_064-1 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1257,7 +1267,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_065', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathBmp);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1265,7 +1275,7 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                imageSourceApi.release().then(()=>{
+                imageSourceApi.release().then(() => {
                     console.info('TC_065 success');
                     expect(true).assertTrue();
                     done();
@@ -1275,7 +1285,7 @@ describe('Image', function () {
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_065 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1293,7 +1303,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_065-1', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathBmp);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1301,13 +1311,13 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                imageSourceApi.release(async() => {
+                imageSourceApi.release(async () => {
                     console.info('TC_065-1 Success');
                     expect(true).assertTrue();
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_065-1 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1325,7 +1335,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_066', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathGif);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1333,7 +1343,7 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                imageSourceApi.release().then(()=>{
+                imageSourceApi.release().then(() => {
                     console.info('TC_066 success');
                     expect(true).assertTrue();
                     done();
@@ -1343,7 +1353,7 @@ describe('Image', function () {
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_066 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1361,7 +1371,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_066-1', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathGif);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1375,7 +1385,7 @@ describe('Image', function () {
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_066-1 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1394,7 +1404,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_067-14', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathMovingGif);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1403,8 +1413,9 @@ describe('Image', function () {
                 done();
             } else {
                 imageSourceApi.createPixelMap().then(pixelmap => {
+                    globalpixelmap = pixelmap;
                     console.info('TC_067-14 success ');
-                    expect(pixelmap !== undefined ).assertTrue();
+                    expect(pixelmap !== undefined).assertTrue();
                     done();
                 }).catch(error => {
                     console.log('TC_067-14 error: ' + error);
@@ -1412,7 +1423,7 @@ describe('Image', function () {
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_067-14 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1431,7 +1442,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_067-15', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathMovingGif);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1440,12 +1451,13 @@ describe('Image', function () {
                 done();
             } else {
                 imageSourceApi.createPixelMap((err, pixelmap) => {
+                    globalpixelmap = pixelmap;
                     console.info('TC_067-15 success ');
-                    expect(pixelmap !== undefined ).assertTrue();
+                    expect(pixelmap !== undefined).assertTrue();
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_067-15 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1464,7 +1476,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-14', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathBmp);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1473,8 +1485,9 @@ describe('Image', function () {
                 done();
             } else {
                 imageSourceApi.createPixelMap().then(pixelmap => {
+                    globalpixelmap = pixelmap;
                     console.info('TC_068-14 success ');
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 }).catch(error => {
                     console.log('TC_068-14 error: ' + error);
@@ -1482,7 +1495,7 @@ describe('Image', function () {
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_068-14 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1501,7 +1514,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_068-15', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathBmp);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1510,18 +1523,19 @@ describe('Image', function () {
                 done();
             } else {
                 imageSourceApi.createPixelMap((err, pixelmap) => {
+                    globalpixelmap = pixelmap;
                     console.info('TC_068-15 success ');
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_068-15 error: ' + error);
             expect(false).assertTrue();
             done();
         }
     })
-    
+
     /**
      * @tc.number    : TC_163-14
      * @tc.name      : createPixelMap-promise-png
@@ -1534,7 +1548,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-14', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1543,8 +1557,9 @@ describe('Image', function () {
                 done();
             } else {
                 imageSourceApi.createPixelMap().then(pixelmap => {
+                    globalpixelmap = pixelmap;
                     console.info('TC_163-14 success');
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 }).catch(error => {
                     console.log('TC_163-14 error: ' + error);
@@ -1552,7 +1567,7 @@ describe('Image', function () {
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_163-14 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1571,7 +1586,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_163-15', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1580,12 +1595,13 @@ describe('Image', function () {
                 done();
             } else {
                 imageSourceApi.createPixelMap((err, pixelmap) => {
+                    globalpixelmap = pixelmap;
                     console.info('TC_163-15 success');
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_163-15 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1602,7 +1618,7 @@ describe('Image', function () {
      * @tc.level     : Level 0
      */
     it('TC_164', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1614,8 +1630,8 @@ describe('Image', function () {
                 console.info(imageSourceApi.supportedFormats);
                 console.info('TC_164 success ');
                 done();
-            }    
-        }catch(error){
+            }
+        } catch (error) {
             console.info('TC_164 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1658,12 +1674,12 @@ describe('Image', function () {
     it('TC_168', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
-        image.createPixelMap(Color, opts, (error,pixelmap) => {
-            if(pixelmap == undefined){
+        image.createPixelMap(Color, opts, (error, pixelmap) => {
+            if (pixelmap == undefined) {
                 console.info('TC_168 create pixelmap failed');
                 expect(false).assertTrue();
                 done();
-            }else {
+            } else {
                 expect(pixelmap.isEditable == true).assertTrue();
                 console.info('TC_168 success ');
                 done();

@@ -45,7 +45,7 @@ describe('AudioPlayerHLSTest', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_PLAYER_HLS', 0, async function (done) {
+    it('testHlsAudioPlayer', 0, async function (done) {
         playAudioSource(HTTP_PATH + '05.hls/audio_only/index.m3u8', 219600, PLAY_TIME, false, done);
     })
 
@@ -55,9 +55,9 @@ describe('AudioPlayerHLSTest', function () {
         * @tc.desc      : HLS Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
-        * @tc.level     : Level0
+        * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_PLAYER_HLS_VARIANT', 0, async function (done) {
+    it('testHlsAudioPlayerVariant', 0, async function (done) {
         playAudioSource(HTTP_PATH + '05.hls/hls_variant_audio/index.m3u8', 219600, PLAY_TIME, false, done);
     })
 })
