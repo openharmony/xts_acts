@@ -194,12 +194,12 @@ export default function radioSecondJsunit() {
       console.log("-----------------------Telephony_Radio_CdmaCellInformation_sid_0100 end-----------------------");
     })
 
-        /**
-     * @tc.number  Telephony_NetworkSearch_getRadioTech_Async_0500
-     * @tc.name    TestGetRadioTech_500
-     * @tc.desc    Test getRadioTech() api by callback, SlotId parameter input is 0
-     */
-    it('Telephony_NetworkSearch_getRadioTech_Async_0500', 0, async function (done) {
+    /**
+    * @tc.number Telephony_NetworkSearch_getRadioTech_Async_0500
+    * @tc.name   TestGetRadioTech_0500
+    * @tc.desc   Test getRadioTech() api by callback .SlotId parameter input is 0
+    */
+    it("Telephony_NetworkSearch_getRadioTech_Async_0500", 0, async function(done){
         radio.getRadioTech(0, (err, data) => {
             if (err) {
                 console.log(`Telephony_NetworkSearch_getRadioTech_Async_0500 fail err: ${err}`);
@@ -213,23 +213,22 @@ export default function radioSecondJsunit() {
         });
     });
 
-        /**
-     * @tc.number  Telephony_NetworkSearch_getRadioTech_Async_0600
-     * @tc.name    testGetRadioTech_0600
-     * @tc.desc    SlotId parameter input is 0, test getRadioTech() api by promise.
-     */
-    it('Telephony_NetworkSearch_getRadioTech_Promise_0500', 0, async function (done) {
+    /**
+    * @tc.number Telephony_NetworkSearch_getRadioTech_Promise_0500
+    * @tc.name   TestGetRadioTech_0500
+    * @tc.desc   SlotId parameter input is 0 ,Test getRadioTech() api by promise
+    */
+    it("Telephony_NetworkSearch_getRadioTech_Promise_0500", 0, async function(done){
         try {
             let data = await radio.getRadioTech(0);
-            console.log('Telephony_NetworkSearch_getRadioTech_Promise_0500 success');
+            console.log(`Telephony_NetworkSearch_getRadioTech_Promise_0500 success`);
             expect(true).assertTrue();
         } catch (err) {
             console.log(`Telephony_NetworkSearch_getRadioTech_Promise_0500 fail err: ${err}`);
-            expect().assertFail();
+            expect(err.code === '-1').assertTrue();
             done();
             return;
         }
-        done();
     });
 
     /**
