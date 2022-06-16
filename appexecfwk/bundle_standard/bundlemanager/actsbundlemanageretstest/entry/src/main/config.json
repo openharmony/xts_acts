@@ -112,6 +112,7 @@
           "autoDesignWidth": false
         }
       }
-    ]
+    ],
+    "description":"$string:entry_description"
   }
 }

@@ -30,6 +30,7 @@ const NAME3 = "com.example.myapplication4"
 const NAME4 = "com.example.myapplication5"
 const NAME5 = "com.example.myapplication6"
 const DESCRIPTION = "$string:mainability_description"
+const APPLICATION_DESCRIPTION = "$string:entry_description"
 
 export default function getBundleArchiveInfo() {
 
@@ -47,7 +48,7 @@ export default function getBundleArchiveInfo() {
       expect(datainfo.versionCode).assertEqual(1)
       expect(datainfo.versionName).assertLarger(0)
       expect(datainfo.entryModuleName).assertEqual("entry")
-      expect(datainfo.appInfo.description).assertEqual(DESCRIPTION)
+      expect(datainfo.appInfo.description).assertEqual(APPLICATION_DESCRIPTION)
       expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
       expect(datainfo.appInfo.icon).assertEqual("$media:icon")
       expect(datainfo.appInfo.iconId >= 0).assertTrue()
@@ -69,7 +70,7 @@ export default function getBundleArchiveInfo() {
       expect(datainfo.versionCode).assertEqual(1)
       expect(datainfo.versionName).assertLarger(0)
       expect(datainfo.entryModuleName).assertEqual("entry")
-      expect(datainfo.appInfo.description).assertEqual(DESCRIPTION)
+      expect(datainfo.appInfo.description).assertEqual(APPLICATION_DESCRIPTION)
       expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
       expect(datainfo.appInfo.icon).assertEqual("$media:icon")
       expect(datainfo.appInfo.iconId >= 0).assertTrue()
@@ -91,7 +92,7 @@ export default function getBundleArchiveInfo() {
       expect(datainfo.versionCode).assertEqual(1)
       expect(datainfo.versionName).assertLarger(0)
       expect(datainfo.entryModuleName).assertEqual("entry")
-      expect(datainfo.appInfo.description).assertEqual(DESCRIPTION)
+      expect(datainfo.appInfo.description).assertEqual(APPLICATION_DESCRIPTION)
       expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
       expect(datainfo.appInfo.icon).assertEqual("$media:icon")
       expect(datainfo.appInfo.iconId >= 0).assertTrue()
@@ -149,7 +150,7 @@ export default function getBundleArchiveInfo() {
         expect(datainfo.versionName).assertEqual("1.0")
         expect(datainfo.entryModuleName).assertEqual("entry")
         expect(datainfo.appInfo.name).assertEqual(NAME1)
-        expect(datainfo.appInfo.description).assertEqual(DESCRIPTION)
+        expect(datainfo.appInfo.description).assertEqual(APPLICATION_DESCRIPTION)
         expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
         expect(datainfo.appInfo.icon).assertEqual("$media:icon")
         expect(datainfo.appInfo.iconId >= 0).assertTrue()
@@ -186,7 +187,7 @@ export default function getBundleArchiveInfo() {
         expect(datainfo.versionCode).assertEqual(1)
         expect(datainfo.versionName).assertLarger(0)
         expect(datainfo.entryModuleName).assertEqual("entry")
-        expect(datainfo.appInfo.description).assertEqual(DESCRIPTION)
+        expect(datainfo.appInfo.description).assertEqual(APPLICATION_DESCRIPTION)
         expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
         expect(datainfo.appInfo.icon).assertEqual("$media:icon")
         expect(datainfo.appInfo.iconId >= 0).assertTrue()
@@ -210,7 +211,7 @@ export default function getBundleArchiveInfo() {
         expect(datainfo.versionCode).assertEqual(1)
         expect(datainfo.versionName).assertLarger(0)
         expect(datainfo.entryModuleName).assertEqual("entry")
-        expect(datainfo.appInfo.description).assertEqual(DESCRIPTION)
+        expect(datainfo.appInfo.description).assertEqual(APPLICATION_DESCRIPTION)
         expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
         expect(datainfo.appInfo.icon).assertEqual("$media:icon")
         expect(datainfo.appInfo.iconId >= 0).assertTrue()
@@ -275,7 +276,7 @@ export default function getBundleArchiveInfo() {
         expect(datainfo.versionName).assertEqual("1.0")
         expect(datainfo.entryModuleName).assertEqual("entry")
         expect(datainfo.appInfo.name).assertEqual(NAME1)
-        expect(datainfo.appInfo.description).assertEqual(DESCRIPTION)
+        expect(datainfo.appInfo.description).assertEqual(APPLICATION_DESCRIPTION)
         expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
         expect(datainfo.appInfo.icon).assertEqual("$media:icon")
         expect(datainfo.appInfo.iconId >= 0).assertTrue()
@@ -313,7 +314,7 @@ export default function getBundleArchiveInfo() {
         expect(datainfo.versionName).assertEqual("1.0")
         expect(datainfo.entryModuleName).assertEqual("entry")
         expect(datainfo.appInfo.name).assertEqual(NAME1)
-        expect(datainfo.appInfo.description).assertEqual(DESCRIPTION)
+        expect(datainfo.appInfo.description).assertEqual(APPLICATION_DESCRIPTION)
         expect(datainfo.appInfo.descriptionId >= 0).assertTrue()
         expect(datainfo.appInfo.icon).assertEqual("$media:icon")
         expect(datainfo.appInfo.iconId >= 0).assertTrue()

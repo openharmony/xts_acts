@@ -483,7 +483,7 @@ export default function actsBmsJsModuleNameTest() {
                 expect(data.isVisible).assertEqual(false);
                 expect(data.deviceTypes[0]).assertEqual("phone");
                 expect(typeof (data.process)).assertEqual("string");
-                expect(data.process).assertEqual("");
+                expect(data.process).assertEqual("com.example.bmsmodulename");
                 expect(typeof (data.uri)).assertEqual("string");
                 expect(data.uri).assertEqual("");
                 expect(data.moduleName).assertEqual("entry");
@@ -498,9 +498,9 @@ export default function actsBmsJsModuleNameTest() {
                 expect(typeof (info.accessTokenId)).assertEqual("number");
                 expect(info.accessTokenId > 0).assertTrue();
                 expect(typeof (info.description)).assertEqual("string");
-                expect(info.description).assertEqual("$string:mainability_description");
+                expect(info.description).assertEqual("");
                 expect(typeof (info.descriptionId)).assertEqual("number");
-                expect(info.descriptionId > 0).assertTrue();
+                expect(info.descriptionId).assertEqual(0);
                 expect(typeof (info.icon)).assertEqual("string");
                 expect(info.icon).assertEqual("$media:icon");
                 expect(typeof (info.iconId)).assertEqual("number");
@@ -513,7 +513,7 @@ export default function actsBmsJsModuleNameTest() {
                 expect(typeof (info.entryDir)).assertEqual("string");
                 expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/com.example.bmsmodulename/com.example.bmsmodulenamedentry");
                 expect(typeof (info.process)).assertEqual("string");
-                expect(info.process).assertEqual("");
+                expect(info.process).assertEqual("com.example.bmsmodulename");
                 expect(Array.isArray(info.permissions)).assertEqual(true);
                 console.log("---checkDataInfo End---  ");
             }
