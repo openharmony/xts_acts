@@ -463,7 +463,7 @@ describe('audioRenderer', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -497,7 +497,7 @@ describe('audioRenderer', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {

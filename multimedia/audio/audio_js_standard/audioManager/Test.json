@@ -13,8 +13,6 @@
             ],
             "type": "AppInstallKit",
             "run-command": [
-                "chmod 777 /data/*",
-                "chmod 777 /data -R",
                 "mkdir /data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiomanager/files/media"
             ],
             "cleanup-apps": true
