@@ -118,8 +118,8 @@ describe('fileio_close', function () {
 
     try {
       let fd = fileio.openSync(fpath, 0o102, 0o666);
-      expect(await fileio.close(fd) == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
+      await fileio.close(fd);
+      fileio.unlinkSync(fpath);
       done();
     } catch (e) {
       console.info('fileio_test_close_async_001 has failed for ' + e);
@@ -148,6 +148,7 @@ describe('fileio_close', function () {
     } catch (e) {
       console.info('fileio_test_close_async_002 has failed for ' + e);
       expect(e.message == "Number of arguments unmatched").assertTrue();
+      fileio.unlinkSync(fpath);
       done();
     }
   })
