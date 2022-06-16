@@ -34,14 +34,13 @@ describe('fileio_dir_read', function () {
     let fpath = dpath + '/f1';
 
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = fileio.opendirSync(dpath);
-      expect(dd !== null).assertTrue();
-      expect(await dd.read() != null).assertTrue();
-      expect(dd.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      let dir = await dd.read();
+      dd.closeSync();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     }
     catch (e) {
@@ -64,14 +63,13 @@ describe('fileio_dir_read', function () {
     let fpath = dpath + '/f1';
 
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = fileio.opendirSync(dpath);
-      expect(dd !== null).assertTrue();
       dd.read(function (err, dirent) {
-        expect(dd.closeSync() == null).assertTrue();
-        expect(fileio.unlinkSync(fpath) == null).assertTrue();
-        expect(fileio.rmdirSync(dpath) == null).assertTrue();
+        dd.closeSync();
+        fileio.unlinkSync(fpath);
+        fileio.rmdirSync(dpath);
         done();
       });
     } catch (e) {
@@ -94,19 +92,18 @@ describe('fileio_dir_read', function () {
     let fpath = dpath + '/f1';
     let dd  = null
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       dd = fileio.opendirSync(dpath);
-      expect(dd !== null).assertTrue();
       dd.read(-1,function (err, dirent) {
 
       });
     } catch (e) {
       console.info('fileio_test_dir_read_async_002 has failed for ' + e);
       expect(e.message == "Number of arguments unmatched").assertTrue();
-      expect(dd.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      dd.closeSync();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     }
   });
@@ -125,14 +122,13 @@ describe('fileio_dir_read', function () {
     let fpath = dpath + '/f1';
 
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = fileio.opendirSync(dpath);
-      expect(dd !== null).assertTrue();
-      expect(dd.readSync() != null).assertTrue();
-      expect(dd.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      dd.readSync();
+      dd.closeSync();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
     } catch (e) {
       console.info('fileio_dir_read_sync_000 has failed for ' + e);
       expect(null).assertFail();
@@ -153,17 +149,16 @@ describe('fileio_dir_read', function () {
     let fpath = dpath + '/f1';
     let dd = null;
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       dd = fileio.opendirSync(dpath);
-      expect(dd !== null).assertTrue();
       dd.readSync(-1);
     } catch (e) {
       console.info('fileio_dir_read_sync_001 has failed for ' + e);
       expect(e.message == "Number of arguments unmatched").assertTrue();
-      expect(dd.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      dd.closeSync();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
     }
   });
 
@@ -180,16 +175,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_sync_name_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isString(dir.name)).assertTrue();
       expect(fpath.indexOf(dir.name) > -1).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_sync_name_000 has failed for ' + e);
@@ -210,16 +203,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_sync_isBlockDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isBlockDevice())).assertTrue();
       expect(dir.isBlockDevice() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_sync_isBlockDevice_000 has failed for ' + e);
@@ -240,16 +231,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_sync_isCharacterDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isCharacterDevice())).assertTrue();
       expect(dir.isCharacterDevice() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_sync_isCharacterDevice_000 has failed for ' + e);
@@ -269,16 +258,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_sync_isDirectory_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isDirectory())).assertTrue();
       expect(dir.isDirectory() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_sync_isDirectory_000 has failed for ' + e);
@@ -299,16 +286,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_sync_isFIFO_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isFIFO())).assertTrue();
       expect(dir.isFIFO() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_sync_isFIFO_000 has failed for ' + e);
@@ -329,16 +314,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_sync_isFile_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isFile())).assertTrue();
       expect(dir.isFile()).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_sync_isFile_000 has failed for ' + e);
@@ -359,16 +342,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_sync_isSocket_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isSocket())).assertTrue();
       expect(dir.isSocket() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_sync_isSocket_000 has failed for ' + e);
@@ -389,16 +370,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_sync_isSymbolicLink_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isSymbolicLink())).assertTrue();
       expect(dir.isSymbolicLink() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_sync_isSymbolicLink_000 has failed for ' + e);
@@ -419,16 +398,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_async_name_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(isString(dir.name)).assertTrue();
       expect(fpath.indexOf(dir.name) > -1).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_async_name_000 has failed for ' + e);
@@ -450,16 +427,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_async_isBlockDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isBlockDevice())).assertTrue();
       expect(dir.isBlockDevice() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_async_isBlockDevice_000 has failed for ' + e);
@@ -481,16 +456,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_async_isCharacterDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isCharacterDevice())).assertTrue();
       expect(dir.isCharacterDevice() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_async_isCharacterDevice_000 has failed for ' + e);
@@ -510,16 +483,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_async_isDirectory_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isDirectory())).assertTrue();
       expect(dir.isDirectory() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_async_isDirectory_000 has failed for ' + e);
@@ -540,16 +511,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_async_isFIFO_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isFIFO())).assertTrue();
       expect(dir.isFIFO() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_async_isFIFO_000 has failed for ' + e);
@@ -570,16 +539,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_async_isFile_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isFile())).assertTrue();
       expect(dir.isFile()).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_async_isFile_000 has failed for ' + e);
@@ -600,16 +567,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_async_isSocket_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = await dd.read();
-      expect(dir != null).assertTrue();
+      let dd = await fileio.opendir(dpath);;
+      let dir = await dd.read();;
       expect(isBoolean(dir.isSocket())).assertTrue();
       expect(dir.isSocket() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_async_isSocket_000 has failed for ' + e);
@@ -630,16 +595,14 @@ describe('fileio_dir_read', function () {
     let dpath = await nextFileName('fileio_dir_read_async_isSymbolicLink_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isSymbolicLink())).assertTrue();
       expect(dir.isSymbolicLink() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_dir_read_async_isSymbolicLink_000 has failed for ' + e);

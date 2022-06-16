@@ -36,11 +36,10 @@ describe('fileio_dir_close', function () {
     let dpath = await nextFileName('fileio_test_dir_close_async_000') + 'd';
 
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      expect((await dd.close()) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      await dd.close();
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
       console.info('fileio_test_dir_close_async_000 has failed for ' + e);
@@ -61,11 +60,10 @@ describe('fileio_dir_close', function () {
     let dpath = await nextFileName('fileio_test_dir_close_async_001') + 'd';
 
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       dd.close(function (err) {
-        expect(fileio.rmdirSync(dpath) == null).assertTrue();
+        fileio.rmdirSync(dpath);
         done();
       });
     } catch (e) {
@@ -85,18 +83,15 @@ describe('fileio_dir_close', function () {
    */
    it('fileio_test_dir_close_async_002', 0, async function (done) {
     let dpath = await nextFileName('fileio_test_dir_close_async_002') + 'd';
-
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       dd.close(-1,function (err) {
-        
       });
     } catch (e) {
       console.info('fileio_test_dir_close_async_002 has failed for ' + e);
       expect(e.message == "Number of arguments unmatched").assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.rmdirSync(dpath);
       done(); 
     }
   });
