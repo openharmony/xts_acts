@@ -80,9 +80,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_CLOCK_0100
-    * @tc.name test the is24HourClock interface
-    * @tc.desc check the value of is24HourClock method
+    * @tc.number  SUB_GLOBAL_I18N_JS_CLOCK_0100
+    * @tc.name    test the is24HourClock interface
+    * @tc.desc    check the value of is24HourClock method
     */
     it('i18n_test_clock_0100', 0, function () {
         console.log('i18n_test_clock_0100 ' + 'start');
@@ -99,9 +99,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0100
-    * @tc.name test the getPreferredLanguageList interface with default value
-    * @tc.desc check the value of getPreferredLanguageList method
+    * @tc.number  SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0100
+    * @tc.name    test the getPreferredLanguageList interface with default value
+    * @tc.desc    check the value of getPreferredLanguageList method
     */
     it('i18n_test_preferredlanguage_0100', 0, function () {
         console.log('i18n_test_preferredlanguage_0100 ' + 'start');
@@ -111,9 +111,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_1000
-    * @tc.name test the getFirstPreferredLanguage interface
-    * @tc.desc check the value of getFirstPreferredLanguage method
+    * @tc.number  SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_1000
+    * @tc.name    test the getFirstPreferredLanguage interface
+    * @tc.desc    check the value of getFirstPreferredLanguage method
     */
     it('i18n_test_preferredlanguage_1000', 0, function () {
         console.log('i18n_test_preferredlanguage_1000 ' + 'start');
@@ -131,9 +131,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_INTL_JS_TRANSFER_0100
-    * @tc.name transfer from lower to upper
-    * @tc.desc check the transfer result
+    * @tc.number  SUB_GLOBAL_INTL_JS_TRANSFER_0100
+    * @tc.name    transfer from lower to upper
+    * @tc.desc    check the transfer result
     */
     it('transfer_test_0100', 0, function () {
         let date = 'hello';
@@ -143,9 +143,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_INTL_JS_TRANSFER_0200
-    * @tc.name transfer from upper to lower
-    * @tc.desc check the transfer result
+    * @tc.number  SUB_GLOBAL_INTL_JS_TRANSFER_0200
+    * @tc.name    transfer from upper to lower
+    * @tc.desc    check the transfer result
     */
     it('transfer_test_0200', 0, function () {
         let date = 'WORLD';
@@ -155,9 +155,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_INTL_JS_TRANSFER_0300
-    * @tc.name transfer to upper
-    * @tc.desc check the transfer result
+    * @tc.number  SUB_GLOBAL_INTL_JS_TRANSFER_0300
+    * @tc.name    transfer to upper
+    * @tc.desc    check the transfer result
     */
     it('transfer_test_0300', 0, function () {
         let date = 'My name is Jack.';
@@ -167,9 +167,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_INTL_JS_TRANSFER_0400
-    * @tc.name transfer to lower
-    * @tc.desc check the transfer result
+    * @tc.number  SUB_GLOBAL_INTL_JS_TRANSFER_0400
+    * @tc.name    transfer to lower
+    * @tc.desc    check the transfer result
     */
     it('transfer_test_0400', 0, function () {
         let date = 'The sky is in BLUE-STYLE!';
@@ -179,9 +179,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0100
-    * @tc.name test getTimeZone method
-    * @tc.desc get the getTimeZone value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_0100
+    * @tc.name    test getTimeZone method
+    * @tc.desc    get the getTimeZone value
     */
     it('timezone_test_0100', 0, function () {
         console.log('timezone_test_0100 ' + 'start');
@@ -192,9 +192,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0200
-    * @tc.name test getDisplayName method
-    * @tc.desc get the getDisplayName value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_0200
+    * @tc.name    test getDisplayName method
+    * @tc.desc    get the getDisplayName value
     */
     it('timezone_test_0200', 0, function () {
         console.log('timezone_test_0200 ' + 'start');
@@ -205,9 +205,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0300
-    * @tc.name test getDisplayName method with zh-CN param
-    * @tc.desc get the getDisplayName value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_0300
+    * @tc.name    test getDisplayName method with zh-CN param
+    * @tc.desc    get the getDisplayName value
     */
     it('timezone_test_0300', 0, function () {
         console.log('timezone_test_0300 ' + 'start');
@@ -218,9 +218,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0400
-    * @tc.name test getDisplayName method with true param
-    * @tc.desc get the getDisplayName value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_0400
+    * @tc.name    test getDisplayName method with true param
+    * @tc.desc    get the getDisplayName value
     */
     it('timezone_test_0400', 0, function () {
         console.log('timezone_test_0400 ' + 'start');
@@ -231,9 +231,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0500
-    * @tc.name test getDisplayName method with false param
-    * @tc.desc get the getDisplayName value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_0500
+    * @tc.name    test getDisplayName method with false param
+    * @tc.desc    get the getDisplayName value
     */
     it('timezone_test_0500', 0, function () {
         console.log('timezone_test_0500 ' + 'start');
@@ -244,9 +244,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0600
-    * @tc.name test getRawOffset method
-    * @tc.desc get the getRawOffset value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_0600
+    * @tc.name    test getRawOffset method
+    * @tc.desc    get the getRawOffset value
     */
     it('timezone_test_0600', 0, function () {
         console.log('timezone_test_0600 ' + 'start');
@@ -257,9 +257,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0700
-    * @tc.name test getOffset method
-    * @tc.desc get the getOffset value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_0700
+    * @tc.name    test getOffset method
+    * @tc.desc    get the getOffset value
     */
     it('timezone_test_0700', 0, function () {
         console.log('timezone_test_0700 ' + 'start');
@@ -270,9 +270,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0800
-    * @tc.name test getOffset method with date param
-    * @tc.desc get the getOffset value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_0800
+    * @tc.name    test getOffset method with date param
+    * @tc.desc    get the getOffset value
     */
     it('timezone_test_0800', 0, function () {
         console.log('timezone_test_0800 ' + 'start');
@@ -283,9 +283,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_0900
-    * @tc.name test getID
-    * @tc.desc get the getID value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_0900
+    * @tc.name    test getID
+    * @tc.desc    get the getID value
     */
     it('timezone_test_0900', 0, function () {
         console.log('timezone_test_0900 ' + 'start');
@@ -296,9 +296,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1000
-    * @tc.name test getDisplayName with timezone id
-    * @tc.desc get the getID value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_1000
+    * @tc.name    test getDisplayName with timezone id
+    * @tc.desc    get the getID value
     */
     it('timezone_test_1000', 0, function () {
         console.log('timezone_test_1000 ' + 'start');
@@ -309,9 +309,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1100
-    * @tc.name test getDisplayName with locale
-    * @tc.desc get the getID value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_1100
+    * @tc.name    test getDisplayName with locale
+    * @tc.desc    get the getID value
     */
     it('timezone_test_1100', 0, function () {
         console.log('timezone_test_1100 ' + 'start');
@@ -322,9 +322,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1200
-    * @tc.name test getDisplayName with locale
-    * @tc.desc get the getID value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_1200
+    * @tc.name    test getDisplayName with locale
+    * @tc.desc    get the getID value
     */
     it('timezone_test_1200', 0, function () {
         console.log('timezone_test_1200 ' + 'start');
@@ -335,9 +335,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1300
-    * @tc.name test getDisplayName with en-US and true param
-    * @tc.desc get the getID value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_1300
+    * @tc.name    test getDisplayName with en-US and true param
+    * @tc.desc    get the getID value
     */
     it('timezone_test_1300', 0, function () {
         console.log('timezone_test_1300 ' + 'start');
@@ -348,9 +348,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1400
-    * @tc.name test getDisplayName with zh-CN and false param
-    * @tc.desc get the getID value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_1400
+    * @tc.name    test getDisplayName with zh-CN and false param
+    * @tc.desc    get the getID value
     */
     it('timezone_test_1400', 0, function () {
         console.log('timezone_test_1400 ' + 'start');
@@ -361,9 +361,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1500
-    * @tc.name test getRawOffset method with timezone id
-    * @tc.desc get the getRawOffset value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_1500
+    * @tc.name    test getRawOffset method with timezone id
+    * @tc.desc    get the getRawOffset value
     */
     it('timezone_test_1500', 0, function () {
         console.log('timezone_test_1500 ' + 'start');
@@ -374,9 +374,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1600
-    * @tc.name test getOffset method with timezone id
-    * @tc.desc get the getOffset value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_1600
+    * @tc.name    test getOffset method with timezone id
+    * @tc.desc    get the getOffset value
     */
     it('timezone_test_1600', 0, function () {
         console.log('timezone_test_1600 ' + 'start');
@@ -387,9 +387,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1700
-    * @tc.name test getOffset method with date and timezone id param
-    * @tc.desc get the getOffset value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TIMEZONE_1700
+    * @tc.name    test getOffset method with date and timezone id param
+    * @tc.desc    get the getOffset value
     */
     it('timezone_test_1700', 0, function () {
         console.log('timezone_test_1700 ' + 'start');
@@ -400,9 +400,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATEORDER_0100
-    * @tc.name test getDateOrder method with zh param
-    * @tc.desc get the DateOrder value
+    * @tc.number  SUB_GLOBAL_I18N_JS_DATEORDER_0100
+    * @tc.name    test getDateOrder method with zh param
+    * @tc.desc    get the DateOrder value
     */
     it('dateorder_test_0100', 0, function () {
         console.log('dateorder_test_0100 ' + 'start');
@@ -412,9 +412,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATEORDER_0200
-    * @tc.name test getDateOrder method with en param
-    * @tc.desc get the DateOrder value
+    * @tc.number  SUB_GLOBAL_I18N_JS_DATEORDER_0200
+    * @tc.name    test getDateOrder method with en param
+    * @tc.desc    get the DateOrder value
     */
     it('dateorder_test_0200', 0, function () {
         console.log('dateorder_test_0200 ' + 'start');
@@ -424,9 +424,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATEORDER_0300
-    * @tc.name test getDateOrder method with th param
-    * @tc.desc get the DateOrder value
+    * @tc.number  SUB_GLOBAL_I18N_JS_DATEORDER_0300
+    * @tc.name    test getDateOrder method with th param
+    * @tc.desc    get the DateOrder value
     */
     it('dateorder_test_0300', 0, function () {
         console.log('dateorder_test_0300 ' + 'start');
@@ -436,9 +436,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_DATEORDER_0400
-    * @tc.name test getDateOrder method with jp param
-    * @tc.desc get the DateOrder value
+    * @tc.number  SUB_GLOBAL_I18N_JS_DATEORDER_0400
+    * @tc.name    test getDateOrder method with jp param
+    * @tc.desc    get the DateOrder value
     */
     it('dateorder_test_0400', 0, function () {
         console.log('dateorder_test_0400 ' + 'start');
@@ -448,9 +448,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0100
-    * @tc.name test getAvailableIDs
-    * @tc.desc get the ID value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0100
+    * @tc.name    test getAvailableIDs
+    * @tc.desc    get the ID value
     */
     it('transliterator_test_0100', 0, function () {
         console.log('transliterator_test_0100 ' + 'start');
@@ -468,9 +468,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0200
-    * @tc.name test getInstance with a param
-    * @tc.desc get the instance value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0200
+    * @tc.name    test getInstance with a param
+    * @tc.desc    get the instance value
     */
     it('transliterator_test_0200', 0, function () {
         console.log('transliterator_test_0200 ' + 'start');
@@ -480,9 +480,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0300
-    * @tc.name test transform with 中国 param
-    * @tc.desc get the transform value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0300
+    * @tc.name    test transform with 中国 param
+    * @tc.desc    get the transform value
     */
     it('transliterator_test_0300', 0, function () {
         console.log('transliterator_test_0300 ' + 'start');
@@ -493,9 +493,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0400
-    * @tc.name test transform with Any-Latn param
-    * @tc.desc get the transform value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0400
+    * @tc.name    test transform with Any-Latn param
+    * @tc.desc    get the transform value
     */
     it('transliterator_test_0400', 0, function () {
         console.log('transliterator_test_0400 ' + 'start');
@@ -506,9 +506,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0500
-    * @tc.name test transform with Any-Thai param
-    * @tc.desc get the transform value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0500
+    * @tc.name    test transform with Any-Thai param
+    * @tc.desc    get the transform value
     */
     it('transliterator_test_0500', 0, function () {
         console.log('transliterator_test_0500 ' + 'start');
@@ -519,9 +519,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0600
-    * @tc.name test transform with Any-zh param
-    * @tc.desc get the transform value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0600
+    * @tc.name    test transform with Any-zh param
+    * @tc.desc    get the transform value
     */
     it('transliterator_test_0600', 0, function () {
         console.log('transliterator_test_0600 ' + 'start');
@@ -532,9 +532,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0700
-    * @tc.name test transform with Any-Hant param
-    * @tc.desc get the transform value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0700
+    * @tc.name    test transform with Any-Hant param
+    * @tc.desc    get the transform value
     */
     it('transliterator_test_0700', 0, function () {
         console.log('transliterator_test_0700 ' + 'start');
@@ -545,9 +545,9 @@ describe('LangTest', function () {
     })
 
     /* *
-    * @tc.number SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0800
-    * @tc.name test transform with Any-Kannada param
-    * @tc.desc get the transform value
+    * @tc.number  SUB_GLOBAL_I18N_JS_TRANSLITERATOR_0800
+    * @tc.name    test transform with Any-Kannada param
+    * @tc.desc    get the transform value
     */
     it('transliterator_test_0800', 0, function () {
         console.log('transliterator_test_0800 ' + 'start');
