@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-import wallpaper from '@ohos.app.wallpaperability'
+import wallpaper from '@ohos.wallpaper'
 
 const WALLPAPER_SYSTEM = 0;
 const WALLPAPER_LOCKSCREEN = 1;
@@ -44,8 +44,8 @@ describe('WallpaperJsunitTest', function () {
      * @tc.level   0
      */
     it('testWALLPAPER_SYSTEM', 0, async function (done) {
-        console.info('wallpaperXTS ===> testWALLPAPER_SYSTEM : ' + JSON.stringify(wallpaper.WALLPAPER_SYSTEM));
-        expect(wallpaper.WALLPAPER_SYSTEM == 0).assertTrue();
+        console.info('wallpaperXTS ===> testWALLPAPER_SYSTEM : ' + JSON.stringify(wallpaper.WallpaperType.WALLPAPER_SYSTEM));
+        expect(wallpaper.WallpaperType.WALLPAPER_SYSTEM == 0).assertTrue();
         done();
     })
 
@@ -56,8 +56,8 @@ describe('WallpaperJsunitTest', function () {
      * @tc.level   0
      */
     it('testWALLPAPER_LOCKSCREEN', 0, async function (done) {
-        console.info('wallpaperXTS ===> testWALLPAPER_LOCKSCREEN : ' + JSON.stringify(wallpaper.WALLPAPER_LOCKSCREEN));
-        expect(wallpaper.WALLPAPER_LOCKSCREEN == 1).assertTrue();
+        console.info('wallpaperXTS ===> testWALLPAPER_LOCKSCREEN : ' + JSON.stringify(wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN));
+        expect(wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN == 1).assertTrue();
         done();
     })
 
