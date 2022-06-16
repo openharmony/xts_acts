@@ -758,7 +758,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
         fdObject = await mediaTestBase.getFd('recorder_callback_22.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
-        videoConfig.videoFrameRate = 20;
+        configFile.videoFrameRate = 20;
         let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT,
@@ -778,7 +778,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
         fdObject = await mediaTestBase.getFd('recorder_callback_23.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
-        videoConfig.videoFrameRate = 30;
+        configFile.videoFrameRate = 30;
         let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT,
@@ -798,7 +798,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
         fdObject = await mediaTestBase.getFd('recorder_callback_24.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
-        videoConfig.videoFrameRate = 60;
+        configFile.videoFrameRate = 60;
         let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT,

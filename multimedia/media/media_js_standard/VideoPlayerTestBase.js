@@ -16,16 +16,6 @@
 import media from '@ohos.multimedia.media'
 import * as mediaTestBase from './MediaTestBase.js';
 
-export function checkDescription(actualDescription, descriptionKey, descriptionValue) {
-    for (let i = 0; i < descriptionKey.length; i++) {
-        let property = actualDescription[descriptionKey[i]];
-        console.info('case key is  '+ descriptionKey[i]);
-        console.info('case actual value is  '+ property);
-        console.info('case hope value is  '+ descriptionValue[i]);
-        expect(property).assertEqual(descriptionValue[i]);
-    }
-}
-
 export async function playVideoSource(url, width, height, duration, playTime, done) {
     console.info(`case media source url: ${url}`)
     let videoPlayer = null;

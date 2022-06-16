@@ -22,7 +22,6 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 describe('VideoRecorderFuncPromiseTest', function () {
     const RECORDER_TIME = 3000;
     const PAUSE_TIME = 1000;
-    const DELTA_TIME = 1000;
     const ONLYVIDEO_TYPE = 'only_video';
     const AUDIO_VIDEO_TYPE = 'audio_video';
     let cameraManager;
@@ -189,7 +188,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
             await videoOutput.release().then(() => {
                 console.info('[camera] case videoOutput release success');
             });
-            videoOutPut = undefined;
+            videoOutput = undefined;
             await videoRecorderBase.stopCaptureSession(captureSession);
             await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
             await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -250,7 +249,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -315,7 +314,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -389,7 +388,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME * 2, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -453,7 +452,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -517,7 +516,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -589,7 +588,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -660,7 +659,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -739,7 +738,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME * 2, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -817,7 +816,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME * 2, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -886,7 +885,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -955,7 +954,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -1024,7 +1023,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -1093,7 +1092,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -1151,7 +1150,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -1218,7 +1217,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -1291,7 +1290,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME * 2, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -1355,7 +1354,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -1419,7 +1418,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -1478,7 +1477,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -1536,7 +1535,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -1594,7 +1593,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -1616,7 +1615,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         fdObject = await mediaTestBase.getFd('recorder_promise_22.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
-        videoConfig.videoFrameRate = 20;
+        configFile.videoFrameRate = 20;
         let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
@@ -1652,7 +1651,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -1674,7 +1673,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         fdObject = await mediaTestBase.getFd('recorder_promise_23.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
-        videoConfig.videoFrameRate = 30;
+        configFile.videoFrameRate = 30;
         let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
@@ -1710,7 +1709,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
@@ -1732,7 +1731,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         fdObject = await mediaTestBase.getFd('recorder_promise_24.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
-        videoConfig.videoFrameRate = 60;
+        configFile.videoFrameRate = 60;
         let trackArray = videoRecorderBase.getTrackArray(AUDIO_VIDEO_TYPE, configFile);
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
@@ -1768,7 +1767,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutput.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         await videoRecorderBase.checkVideos(fdPath, RECORDER_TIME, trackArray, playerSurfaceId);
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
