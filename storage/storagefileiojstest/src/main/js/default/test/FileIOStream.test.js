@@ -1441,18 +1441,19 @@ describe('fileIOTestStream', function () {
     let fpath = await nextFileName('fileio_test_stream_read_sync_005');
     let text = '0123456789abcdefg';
     expect(prepareFile(fpath, text)).assertTrue();
-    let ss = fileio.createStreamSync(fpath, 'r+');
-    expect(ss !== null).assertTrue();
     try {
-      ss.readSync(new ArrayBuffer(4096), {
+      var ss = fileio.createStreamSync(fpath, 'r+');
+      expect(ss !== null).assertTrue();
+      let len = ss.readSync(new ArrayBuffer(4096), {
         position: -1
       });
+      expect(len == text.length).assertTrue();
+      expect(ss.closeSync() !== null).assertTrue();
+      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
     } 
     catch (e) {
-      console.info('fileio_test_stream_read_sync_005 has failed for ' + e);
-      expect(e.message == "option.position shall be positive number").assertTrue();
-      ss.closeSync();
-      fileio.unlinkSync(fpath);
+      console.info('---fileio_test_stream_read_sync_005 has failed for ' + e);
+      expect(null).assertFail();
     }
   });
 
