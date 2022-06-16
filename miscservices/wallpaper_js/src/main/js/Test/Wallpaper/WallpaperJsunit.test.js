@@ -44,7 +44,8 @@ describe('WallpaperJsunitTest', function () {
      * @tc.level   0
      */
     it('testWALLPAPER_SYSTEM', 0, async function (done) {
-        console.info('wallpaperXTS ===> testWALLPAPER_SYSTEM : ' + JSON.stringify(wallpaper.WallpaperType.WALLPAPER_SYSTEM));
+        console.info('wallpaperXTS ===> testWALLPAPER_SYSTEM : ' +
+        JSON.stringify(wallpaper.WallpaperType.WALLPAPER_SYSTEM));
         expect(wallpaper.WallpaperType.WALLPAPER_SYSTEM == 0).assertTrue();
         done();
     })
@@ -56,7 +57,8 @@ describe('WallpaperJsunitTest', function () {
      * @tc.level   0
      */
     it('testWALLPAPER_LOCKSCREEN', 0, async function (done) {
-        console.info('wallpaperXTS ===> testWALLPAPER_LOCKSCREEN : ' + JSON.stringify(wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN));
+        console.info('wallpaperXTS ===> testWALLPAPER_LOCKSCREEN : ' +
+        JSON.stringify(wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN));
         expect(wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN == 1).assertTrue();
         done();
     })
