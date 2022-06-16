@@ -30,7 +30,13 @@ export function playAudioSource(src, duration, playTime, checkSeekTime, done) {
         expect().assertFail();
         done();
     }
-    audioPlayer.src = src;
+    if (typeof (src) == 'string') {
+        console.error('case src test');
+        audioPlayer.src = src;
+    } else {
+        console.error('case fdsrc test');
+        audioPlayer.fdSrc = src;
+    }
     audioPlayer.on('dataLoad', () => {
         console.info('case set source success');
         expect(audioPlayer.state).assertEqual('paused');
@@ -89,7 +95,13 @@ export function playAudioSource(src, duration, playTime, checkSeekTime, done) {
         console.info('case reset success');
         expect(audioPlayer.state).assertEqual('idle');
         // step 11: reset -> dataLoad
-        audioPlayer.src = src;
+        if (typeof (src) == 'string') {
+            console.error('case src test');
+            audioPlayer.src = src;
+        } else {
+            console.error('case fdsrc test');
+            audioPlayer.fdSrc = src;
+        }
     });
     audioPlayer.on('timeUpdate', (seekDoneTime) => {
         seekCount++;
