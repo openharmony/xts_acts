@@ -14,7 +14,7 @@
  */
 
 import {
-  fileio, FILE_CONTENT, prepareFile, nextFileName, isIntNum, isString, isBoolean,
+  fileio, FILE_CONTENT, prepareFile, nextFileName, isString, isBoolean,
   describe, it, expect,
 } from '../../Common';
 
