@@ -1570,8 +1570,8 @@ describe('ActsFeatureAbilityTest', function () {
 
         expect(data.permissions[0]).assertEqual("ohos.permission.ACCELEROMETER");
         expect(data.deviceTypes[0]).assertEqual("phone");
-        expect(data.deviceCapabilities[0]).assertEqual("screen_support");
-        expect(data.deviceCapabilities[1]).assertEqual("audio_support");
+        expect(data.deviceCapabilities[0]).assertEqual("ability_base");
+        expect(data.deviceCapabilities[1]).assertEqual("ability_runtime");
 
         expect(data.readPermission).assertEqual("");
         expect(data.writePermission).assertEqual("");
