@@ -813,6 +813,48 @@ describe('TextEncoderTest', function () {
     })
 
     /**
+     * @tc.name: testEncoding002
+     * @tc.desc: Encoding format test gb18030.
+     * @tc.author: wangben
+     */
+    it('testEncoding002', 0, function () {
+        let that = new util.TextEncoder('gb18030')
+        let str = that.encoding
+        expect(str).assertEqual('gb18030')
+        that = new util.TextEncoder('GB18030')
+        str = that.encoding;
+        expect(str).assertEqual('GB18030')
+    })
+
+    /**
+     * @tc.name: testEncoding003
+     * @tc.desc: Encoding format test gbk.
+     * @tc.author: wangben
+     */
+     it('testEncoding003', 0, function () {
+        let that = new util.TextEncoder('gbk')
+        let str = that.encoding
+        expect(str).assertEqual('gbk')
+        that = new util.TextEncoder('GBK')
+        str = that.encoding;
+        expect(str).assertEqual('GBK')
+    })
+
+    /**
+     * @tc.name: testEncoding004
+     * @tc.desc: Encoding format test gb2313.
+     * @tc.author: wangben
+     */
+    it('testEncoding004', 0, function () {
+        let that = new util.TextEncoder('gb2312')
+        let str = that.encoding
+        expect(str).assertEqual('gb2312')
+        that = new util.TextEncoder('GB2312')
+        str = that.encoding;
+        expect(str).assertEqual('GB2312')
+    })
+
+    /**
      * @tc.name: testEncode002
      * @tc.desc: Returns the result of encoder.
      * @tc.author: wangben
@@ -902,6 +944,125 @@ describe('TextEncoderTest', function () {
         var result = new Uint8Array(buffer)
         result = that.encode('$$')
         expect(result[0]).assertEqual(0x24)
+    })
+
+    /**
+     * @tc.name: testEncode009
+     * @tc.desc: Returns the result of encoder for gb18030.
+     * @tc.author: wangben
+     */
+     it('testEncode009', 0, function () {
+        let that = new util.TextEncoder('gb18030')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encode('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(185)
+        expect(result[4]).assertEqual(254)
+        expect(result[7]).assertEqual(236)
+        expect(result[8]).assertEqual(218)
+    })
+
+    /**
+     * @tc.name: testEncode010
+     * @tc.desc: Returns the result of encoder for GB18030.
+     * @tc.author: wangben
+     */
+    it('testEncode0010', 0, function () {
+        let that = new util.TextEncoder('GB18030')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encode('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(185)
+        expect(result[4]).assertEqual(254)
+        expect(result[7]).assertEqual(236)
+        expect(result[8]).assertEqual(218)
+    })
+
+    /**
+     * @tc.name: testEncode011
+     * @tc.desc: Returns the result of encoder for GB18030.
+     * @tc.author: wangben
+     */
+     it('testEncode0011', 0, function () {
+        let that = new util.TextEncoder('GBK')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encode('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(185)
+        expect(result[4]).assertEqual(254)
+        expect(result[7]).assertEqual(236)
+        expect(result[8]).assertEqual(218)
+    })
+
+    /**
+     * @tc.name: testEncode012
+     * @tc.desc: Returns the result of encoder for gbk.
+     * @tc.author: wangben
+     */
+    it('testEncode012', 0, function () {
+        let that = new util.TextEncoder('gbk')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encode('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(185)
+        expect(result[4]).assertEqual(254)
+        expect(result[7]).assertEqual(236)
+        expect(result[8]).assertEqual(218)
+    })
+
+    /**
+     * @tc.name: testEncode013
+     * @tc.desc: Returns the result of encoder for gb2312.
+     * @tc.author: wangben
+     */
+    it('testEncode013', 0, function () {
+        let that = new util.TextEncoder('gb2312')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encode('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(185)
+        expect(result[4]).assertEqual(254)
+        expect(result[7]).assertEqual(236)
+        expect(result[8]).assertEqual(218)
+    })
+
+    /**
+     * @tc.name: testEncode014
+     * @tc.desc: Returns the result of encoder for gb2312.
+     * @tc.author: wangben
+     */
+     it('testEncode014', 0, function () {
+        let that = new util.TextEncoder('GB2312')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encode('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(185)
+        expect(result[4]).assertEqual(254)
+        expect(result[7]).assertEqual(236)
+        expect(result[8]).assertEqual(218)
+    })
+
+    /**
+     * @tc.name: testEncode015
+     * @tc.desc: Returns the result of encoder for gb2312, input long string.
+     * @tc.author: wangben
+     */
+     it('testEncode015', 0, function () {
+        let that = new util.TextEncoder('GB18030')
+        let buffer = new ArrayBuffer(900)
+        let result = new Uint8Array(buffer)
+        result = that.encode('abcd哈哈哈哈哈哈哈哈哈哈哈哈哈abcd哈哈哈哈哈哈哈哈哈哈哈哈哈abcd哈哈哈哈哈哈哈哈哈哈哈哈哈abcd哈哈哈哈哈哈哈哈哈哈哈哈哈')
+        expect(result[6]).assertEqual(185)
+        expect(result[30]).assertEqual(97)
+        expect(result[57]).assertEqual(254)
+        expect(result[98]).assertEqual(185)
+        expect(result[119]).assertEqual(254)
     })
 
     /**
