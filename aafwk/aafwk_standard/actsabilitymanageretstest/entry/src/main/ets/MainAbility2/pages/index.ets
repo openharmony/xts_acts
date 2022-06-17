@@ -15,7 +15,7 @@
 import featureAbility from "@ohos.ability.featureAbility";
 import testsuite2 from "../test/List.test.ets";
 import file from '@system.file';
-import {Core, ExpectExtend, ReportExtend} from "deccjsunit/index.ets";
+import {Core, ExpectExtend, ReportExtend} from "deccjsunit/index";
 
 @Entry
 @Component
