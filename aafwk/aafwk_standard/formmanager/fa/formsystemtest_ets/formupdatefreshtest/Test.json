@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "FormUpdateRefreshTest.hap",
+                "ActsFormUpdateRefreshTest.hap",
                 "FormSystemHostE.hap",
                 "FormSystemHostF.hap",
                 "FormSystemHostNoPerm.hap",

@@ -14,7 +14,7 @@
  */
 
 import formHost from '@ohos.application.formHost';
-import { describe, expect, it } from 'deccjsunit/index.ets';
+import { describe, expect, it } from 'deccjsunit/index';
 import { DATA_TYPE_LIST, getFuzzData } from './getParam.ets';
 
 export const releaseFormFuzzTest = (describeName, filterParameter) => {

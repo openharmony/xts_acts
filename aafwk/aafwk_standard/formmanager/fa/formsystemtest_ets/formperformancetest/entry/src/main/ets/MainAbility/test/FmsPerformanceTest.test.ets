@@ -17,7 +17,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 import formHost from '@ohos.application.formHost';
 import commonEvent from '@ohos.commonEvent';
 import { getCurrentTime } from '@ohos.systemTime';
-import { beforeEach, describe, expect, it } from 'deccjsunit/index.ets';
+import { beforeEach, describe, expect, it } from 'deccjsunit/index';
 
 const onAcquiredEvent = {
     events: [`FMS_FormOnAcquired_commonEvent`],

@@ -707,10 +707,11 @@ describe('bundlestate', function() {
 		console.info('isIdleState_052 start');
 		bundlestate.isIdleState(bundleName, (err, res) => {
 			if(err) {
-				console.info('isIdleState_052 callback fail result = ' + err);
+				console.info('isIdleState_052 callback fail result = ' + JSON.stringify(err.code));
+				expect(err.code).assertLarger(0);
 			} else {
 				console.info('isIdleState_052 callback success result = ' + JSON.stringify(res));
-				expect(res).assertTrue();
+				expect(res).assertFalse();
 			}
 			done();
 		});
@@ -752,7 +753,7 @@ describe('bundlestate', function() {
 		console.info('isIdleState_054 start');
 		bundlestate.isIdleState(bundleName).then((data) => {
 			console.info('isIdleState_054 promise success result = ' + JSON.stringify(data));
-			expect(data).assertTrue();
+			expect(data).assertFalse();
 			done();
 		}).catch((err) => {
 			console.info('isIdleState_054 promise fail result = ' + JSON.stringify(err.code));

@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "FormStressTest.hap",
+                "ActsFormStressTest.hap",
                 "FormSystemHostK.hap",
                 "FormSupplyAppF.hap",
                 "FormSupplyAppG.hap"

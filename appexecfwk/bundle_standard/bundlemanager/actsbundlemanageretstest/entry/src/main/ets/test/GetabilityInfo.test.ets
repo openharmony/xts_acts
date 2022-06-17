@@ -232,7 +232,7 @@ export default function GetabilityInfo() {
             expect(Array.isArray(data.deviceCapabilities)).assertEqual(true);
             expect(data.deviceTypes[0]).assertEqual("phone");
             expect(typeof (data.process)).assertEqual("string");
-            expect(data.process).assertEqual("");
+            expect(data.process).assertEqual("com.open.harmony.packagemag");
             expect(typeof (data.uri)).assertEqual("string");
             expect(data.uri).assertEqual("");
             expect(data.moduleName).assertEqual("entry");
@@ -251,7 +251,7 @@ export default function GetabilityInfo() {
             expect(typeof (info.accessTokenId)).assertEqual("number");
             expect(info.accessTokenId > 0).assertTrue();
             expect(typeof (info.description)).assertEqual("string");
-            expect(info.description).assertEqual("$string:mainability_description");
+            expect(info.description).assertEqual("$string:entry_description");
             expect(typeof (info.descriptionId)).assertEqual("number");
             expect(info.descriptionId > 0).assertTrue();
             expect(typeof (info.icon)).assertEqual("string");
@@ -268,7 +268,7 @@ export default function GetabilityInfo() {
             expect(typeof (info.supportedModes)).assertEqual("number");
             expect(info.supportedModes).assertEqual(0);
             expect(typeof (info.process)).assertEqual("string");
-            expect(info.process).assertEqual("");
+            expect(info.process).assertEqual("com.open.harmony.packagemag");
             expect(Array.isArray(info.moduleSourceDirs)).assertEqual(true);
             expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/com.open.harmony.packagemag/com.open.harmony.packagemag");
             expect(Array.isArray(info.permissions)).assertEqual(true);
@@ -282,7 +282,7 @@ export default function GetabilityInfo() {
             expect(data.icon).assertEqual("$media:icon");
             expect(data.isVisible).assertEqual(true);
             expect(data.deviceTypes[0]).assertEqual("phone");
-            expect(data.process).assertEqual("");
+            expect(data.process).assertEqual("com.example.third1");
             expect(data.uri).assertEqual("");
             expect(data.moduleName).assertEqual("entry");
             expect(data.type).assertEqual(1);
@@ -308,7 +308,7 @@ export default function GetabilityInfo() {
             expect(info.name).assertEqual("com.example.third1");
             expect(info.codePath).assertEqual("/data/app/el1/bundle/public/com.example.third1");
             expect(info.accessTokenId > 0).assertTrue();
-            expect(info.description).assertEqual("$string:mainability_description");
+            expect(info.description).assertEqual("$string:entry_description");
             expect(info.descriptionId > 0).assertTrue();
             expect(info.icon).assertEqual("$media:icon");
             expect(info.iconId > 0).assertTrue();
@@ -317,7 +317,7 @@ export default function GetabilityInfo() {
             expect(info.systemApp).assertEqual(false);
             expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/com.example.third1/com.example.third1.entry");
             expect(info.supportedModes).assertEqual(0);
-            expect(info.process).assertEqual("");
+            expect(info.process).assertEqual("com.example.third1");
             expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/com.example.third1/com.example.third1.entry");
             expect(JSON.stringify(info.metaData)).assertEqual("{}");
             expect(JSON.stringify(info.metadata)).assertEqual("{}");

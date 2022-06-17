@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "FormsZeroTest.hap",
+                "ActsFormsZeroTest.hap",
                 "FormSystemProviderD.hap"
             ],
             "type": "AppInstallKit",

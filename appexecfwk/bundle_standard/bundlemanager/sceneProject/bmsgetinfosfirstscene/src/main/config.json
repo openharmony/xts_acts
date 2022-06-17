@@ -171,6 +171,7 @@
         "grantMode": "system_grant",
         "availableScope": ["signature"]
       }
-    ]
+    ],
+    "description":"$string:entry_description"
   }
 }

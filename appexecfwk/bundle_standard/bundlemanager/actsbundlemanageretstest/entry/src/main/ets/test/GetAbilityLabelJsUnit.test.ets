@@ -78,7 +78,7 @@ export default function getAbilityLabel() {
          */
         it('getAbilityLabel_test_0300', 0, async function (done) {
             await Bundle.getAbilityLabel(BUNDLE_NAME, SERVICE_ABILITY_NAME).then((data) => {
-                expect(error).assertFail();
+                expect(data).assertFail();
             }).catch((error) => {
                 expect(error).assertEqual(1);
             });
@@ -97,14 +97,14 @@ export default function getAbilityLabel() {
         it('getAbilityLabel_test_0400', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             await Bundle.getAbilityLabel(BUNDLE_NAME_ERROR, ABILITY_NAME_ERROR).then((data) => {
-                expect(error).assertFail();
+                expect(data).assertFail();
             }).catch((error) => {
                 let timeNewStamp = Utils.getNowTime();
                 Utils.getDurationTime('[getAbilityLabel_test_0400]', timeOldStamp, timeNewStamp);
                 expect(error).assertEqual(1);
             });
             await Bundle.getAbilityLabel("", "").then((data) => {
-                expect(error).assertFail();
+                expect(data).assertFail();
             }).catch((error) => {
                 expect(error).assertEqual(1);
             });
@@ -129,17 +129,17 @@ export default function getAbilityLabel() {
          */
         it('getAbilityLabel_test_0500', 0, async function (done) {
             await Bundle.getAbilityLabel(undefined, OTHER_ABILITY_NAME).then((data) => {
-                expect(error).assertFail();
+                expect(data).assertFail();
             }).catch((error) => {
                 expect(error).assertEqual(2);
             });
             await Bundle.getAbilityLabel(OTHER_BUNDLE_NAME, undefined).then((data) => {
-                expect(error).assertFail();
+                expect(data).assertFail();
             }).catch((error) => {
                 expect(error).assertEqual(2);
             });
             await Bundle.getAbilityLabel(undefined, undefined).then((data) => {
-                expect(error).assertFail();
+                expect(data).assertFail();
             }).catch((error) => {
                 expect(error).assertEqual(2);
             });

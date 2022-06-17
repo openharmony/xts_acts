@@ -21,9 +21,10 @@ import * as mediaTestBase from './MediaTestBase.js';
 const VIDEO_TRACK = 'video_track';
 const AUDIO_TRACK = 'audio_track';
 const AUDIO_VIDEO_TYPE = 'audio_video';
+const ONLYVIDEO_TYPE = 'only_video';
 const DELTA_TIME = 1000;
 const PLAY_TIME = 1000;
-let tarckType = new Array(VIDEO_TRACK, AUDIO_TRACK);
+
 
 export async function initCaptureSession(videoOutPut, cameraManager, cameras, cameraID) {
     let cameraInput = await cameraManager.createCameraInput(cameras[cameraID].cameraId);
@@ -53,10 +54,15 @@ export function getTrackArray(videoType, recorderConfigFile) {
                                    recorderConfigFile.videoFrameWidth);
         let trackArray = new Array(videoTrack, audioTrack);
         return trackArray;
-    } else {
+    } else if (videoType == ONLYVIDEO_TYPE) {
         let videoTrack = new Array('video/mpeg',
                                    recorderConfigFile.videoFrameHeight, recorderConfigFile.videoFrameWidth);
         let trackArray = new Array(videoTrack);
+        return trackArray;
+    } else {
+        let audioTrack = new Array(recorderConfigFile.audioEncodeBitRate, recorderConfigFile.numberOfChannels,
+            'audio/mpeg', recorderConfigFile.audioSampleRate);
+        let trackArray = new Array(audioTrack);
         return trackArray;
     }
 }
@@ -90,18 +96,23 @@ export async function checkVideos(playFdPath, duration, trackArray, playerSurfac
             videoPlayer = video;
             expect(videoPlayer.state).assertEqual('idle');
         } else {
-            console.info('case createVideoPlayer is failed');
+            console.info('case createVideoPlayer is failed'); 
             expect().assertFail();
         }
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
     console.info('[checkVideos] case checkVideos fdPath is :' + playFdPath);
 
     videoPlayer.url = playFdPath;
-    await videoPlayer.setDisplaySurface(playerSurfaceId).then(() => {
-        console.info('case setDisplaySurface success');
-        expect(videoPlayer.state).assertEqual('idle');
-    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-
+    let tarckType = undefined;
+    if (playerSurfaceId != null) {
+        tarckType = new Array(VIDEO_TRACK, AUDIO_TRACK);
+        await videoPlayer.setDisplaySurface(playerSurfaceId).then(() => {
+            console.info('case setDisplaySurface success');
+            expect(videoPlayer.state).assertEqual('idle');
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    } else {
+        tarckType = new Array(AUDIO_TRACK);
+    }
     await videoPlayer.prepare().then(() => {
         expect(videoPlayer.state).assertEqual('prepared');
         expect(videoPlayer.duration).assertClose(duration, DELTA_TIME);

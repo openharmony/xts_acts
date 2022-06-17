@@ -466,6 +466,43 @@ describe('EnterpriseDeviceManagerTest', function () {
     })
 
     /**
+     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0022
+     * @tc.name test enable super admin method in callback mode and enable twice with test user id
+     * @tc.desc enable and disable admin in multi-user
+     */
+    it('enableAdmin_test_0016', 0, async function (done) {
+        var retValue = await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_SUPER);
+        console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_SUPER : ' + retValue);
+        expect(retValue).assertTrue();
+
+        var isEnabled = await enterpriseDeviceManager.isSuperAdmin(SELFHAPNAME);
+        console.log('enterpriseDeviceManager.isSuperAdmin :' + isEnabled);
+        expect(isEnabled).assertTrue();
+
+        try {
+            retValue = await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
+                enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, TEST_USER_ID);
+        } catch (error) {
+            expect(error != null).assertTrue();
+            console.log("enableAdmin_test_016 throw error code : " + error.code + "message :" + error.message);
+        }
+
+        isEnabled = await enterpriseDeviceManager.isAdminEnabled(SELFWANT, TEST_USER_ID);
+        console.log('enterpriseDeviceManager.isAdminEnabled : ' + isEnabled);
+        expect(isEnabled).assertFalse();
+
+        retValue = await enterpriseDeviceManager.disableSuperAdmin(SELFHAPNAME);
+        console.log('enterpriseDeviceManager.disableSuperAdmin : ' + retValue);
+        expect(retValue).assertTrue();
+
+        isEnabled = await enterpriseDeviceManager.isSuperAdmin(SELFHAPNAME);
+        console.log('enterpriseDeviceManager.isSuperAdmin : ' + isEnabled);
+        expect(isEnabled).assertFalse();
+        done();
+    })
+
+    /**
      * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0016
      * @tc.name test setEnterpriseInfo method in promise mode
      * @tc.desc set enterprise info in promise mode

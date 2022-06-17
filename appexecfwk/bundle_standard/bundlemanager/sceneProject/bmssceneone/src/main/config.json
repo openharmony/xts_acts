@@ -102,6 +102,7 @@
         "value":"metaDataValue",
         "extra":"$string:app_name"
       }]
-    }
+    },
+    "description":"$string:entry_description"
   }
 }
