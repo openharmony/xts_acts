@@ -13,19 +13,15 @@
  * limitations under the License.
  */
 
-
+#include <gtest/gtest.h>
 #include "hilog/hilog.h"
 #include "file_utils.h"
-#include <gtest/gtest.h>
-
 
 #undef LOG_DOMAIN
 #undef LOG_TAG
 #define LOG_DOMAIN 0xD003e00
-#define LOG_TAG "testtag0testtag0testtag0testta"
 
 using namespace std;
-using namespace testing:ext;
 
 class hilogndktest : public testing::Test {
 public:
@@ -57,6 +53,7 @@ HWTEST_F(hilogndktest, OH_LOG_Print_CHECK, Function | MediumTest | Level1)
 HWTEST_F(hilogndktest, OH_LOG_IsLoggable_CHECK, Function | MediumTest | Level1)
 {
     LogLevel level = LOG_DEBUG;
+    string LOG_TAG = "testtag0testtag0testtag0testta";
     bool res = OH_LOG_IsLoggable(0xD003e00, LOG_TAG, level);
     ASSERT_TRUE(res == false);
 }
