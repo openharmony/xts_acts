@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "FormHostDeathRecipientTest.hap",
+                "ActsFormHostDeathRecipientTest.hap",
                 "FormSystemHostK.hap",
                 "FormSystemHostL.hap",
                 "FormSupplyAppF.hap"

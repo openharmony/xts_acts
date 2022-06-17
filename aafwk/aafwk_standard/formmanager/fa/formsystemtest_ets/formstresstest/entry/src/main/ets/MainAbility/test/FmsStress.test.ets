@@ -16,7 +16,7 @@
 import featureAbility from '@ohos.ability.featureAbility';
 import formHost from '@ohos.application.formHost';
 import commonEvent from '@ohos.commonEvent';
-import { beforeEach, describe, expect, it } from 'deccjsunit/index.ets';
+import { beforeEach, describe, expect, it } from 'deccjsunit/index';
 
 const onDeletedEvent = {
     events: [`FMS_FormOnDeleted_commonEvent`]

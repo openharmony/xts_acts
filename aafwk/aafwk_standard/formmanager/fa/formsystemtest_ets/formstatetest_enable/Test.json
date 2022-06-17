@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "FormStateEnableTest.hap",
+                "ActsFormStateEnableTest.hap",
                 "FormSystemHostF.hap",
                 "FormSystemHostG.hap",
                 "FormSystemHostNoPerm.hap",

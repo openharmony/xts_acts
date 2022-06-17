@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "FormDynamicRefreshTest.hap",
+                "ActsFormDynamicRefreshTest.hap",
                 "FormSystemHostE.hap",
                 "FormSystemHostF.hap",
                 "FormSupplyAppA.hap",
