@@ -238,7 +238,7 @@ export default function actsBmsJsUnPermissionTest() {
             expect(data.icon).assertEqual("$media:icon");
             expect(data.isVisible).assertEqual(true);
             expect(data.deviceTypes[0]).assertEqual("phone");
-            expect(data.process).assertEqual("");
+            expect(data.process).assertEqual("com.example.actsbmsetsunpermissiontest");
             expect(data.uri).assertEqual("");
             expect(data.moduleName).assertEqual("entry");
             expect(data.type).assertEqual(1);
@@ -265,8 +265,8 @@ export default function actsBmsJsUnPermissionTest() {
             expect(info.name).assertEqual("com.example.actsbmsetsunpermissiontest");
             expect(info.codePath).assertEqual("/data/app/el1/bundle/public/com.example.actsbmsetsunpermissiontest");
             expect(info.accessTokenId > 0).assertTrue();
-            expect(info.description).assertEqual("$string:description_mainability");
-            expect(info.descriptionId > 0).assertTrue();
+            expect(info.description).assertEqual("");
+            expect(info.descriptionId).assertEqual(0);
             expect(info.icon).assertEqual("$media:icon");
             expect(info.iconId > 0).assertTrue();
             expect(info.label).assertEqual("$string:entry_MainAbility");
@@ -274,7 +274,7 @@ export default function actsBmsJsUnPermissionTest() {
             expect(info.systemApp).assertEqual(true);
             expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/com.example.actsbmsetsunpermissiontest/com.example.actsbmsetsunpermissiontest");
             expect(info.supportedModes).assertEqual(0);
-            expect(info.process).assertEqual("");
+            expect(info.process).assertEqual("com.example.actsbmsetsunpermissiontest");
             expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/com.example.actsbmsetsunpermissiontest/com.example.actsbmsetsunpermissiontest");
             expect(JSON.stringify(info.metadata)).assertEqual("{}");
             expect(JSON.stringify(info.metadata)).assertEqual("{}");
