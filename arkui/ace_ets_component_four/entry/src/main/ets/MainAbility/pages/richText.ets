@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import eventsEmitter from '@ohos.emitter';
+import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -24,9 +24,9 @@ struct RichTextCreateComponent {
     console.info('[list] page show called');
     var stateChangeEvent = {
       eventId: 181,
-      priority: eventsEmitter.EventPriority.LOW
+      priority: events_emitter.EventPriority.LOW
     }
-    eventsEmitter.on(stateChangeEvent, this.stateChangCallBack);
+    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
   private stateChangCallBack = (eventData) => {
