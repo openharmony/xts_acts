@@ -16,13 +16,13 @@
 import media from '@ohos.multimedia.media'
 import router from '@system.router'
 import fileIO from '@ohos.fileio'
+import featureAbility from '@ohos.ability.featureAbility'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoPlayerAPICallbackTest', function () {
-    const AUDIO_SOURCE = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoplayer/H264_AAC.mp4';
+    const VIDEO_SOURCE = 'H264_AAC.mp4';
     const PLAY_TIME = 1000;
     const SEEK_TIME = 5000;
-    const SEEK_CLOSEST = 3;
     const WIDTH_VALUE = 720;
     const HEIGHT_VALUE = 480;
     const DURATION_TIME = 10034;
@@ -51,6 +51,8 @@ describe('VideoPlayerAPICallbackTest', function () {
     let temp = 0;
     let events = require('events');
     let eventEmitter = new events.EventEmitter();
+    let context = featureAbility.getContext();
+    let videoPath = '';
 
     beforeAll(function() {
         console.info('beforeAll case');
@@ -90,8 +92,13 @@ describe('VideoPlayerAPICallbackTest', function () {
     }
 
     async function getFd() {
+        await context.getFilesDir().then((data) => {
+            console.info("case file path is" + JSON.stringify(data));
+            videoPath = data + '/' + VIDEO_SOURCE;
+            console.info("case audioPath is" + videoPath);
+        });
         fdPath = 'fd://';
-        await fileIO.open(AUDIO_SOURCE).then((fdNumber) => {
+        await fileIO.open(videoPath).then((fdNumber) => {
             fdPath = fdPath + '' + fdNumber;
             fdValue = fdNumber;
             console.info('[fileIO]case open fd success,fdPath is ' + fdPath);
