@@ -15,7 +15,6 @@
 
 import media from '@ohos.multimedia.media'
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
-import * as videoPlayerBase from '../../../../../VideoPlayerTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoPlayerFuncPromiseTest', function () {
@@ -485,7 +484,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 
         for (let i = 0; i < arrayDescription.length; i++) {
-            videoPlayerBase.checkDescription(arrayDescription[i], descriptionKey[i], descriptionValue[i]);
+            mediaTestBase.checkDescription(arrayDescription[i], descriptionKey[i], descriptionValue[i]);
         }
 
         await videoPlayer.release().then(() => {
