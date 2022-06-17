@@ -139,7 +139,7 @@ describe('fileio_fchown', async function () {
       await fileio.fchown(fd, null, stat.gid);
     } catch (e) {
       console.info('fileio_test_fchown_async_004 has failed for ' + e);
-      expect(e.message == "Operation not permitted").assertTrue();
+      expect(e.message == "Operation not permitted" || e.message == "Invalid owner").assertTrue();
       fileio.unlinkSync(fpath);
       done();
     }
@@ -257,29 +257,6 @@ describe('fileio_fchown', async function () {
       fileio.fchownSync(fd, null, stat.gid);
     } catch (e) {
       console.info('fileio_test_fchown_sync_003 has failed for ' + e);
-      expect(e.message == "Operation not permitted").assertTrue();
-      fileio.unlinkSync(fpath);
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FILEIO_FCHOWN_SYNC_0400
-   * @tc.name fileio_test_fchown_sync_004
-   * @tc.desc Test fchownSync() interface, wrong group. Test file modification failed.
-   * @tc.size MEDIUM
-   * @tc.type Function
-   * @tc.level Level 0
-   * @tc.require
-   */
-  it('fileio_test_fchown_sync_004', 0, async function () {
-    let fpath = await nextFileName('fileio_test_fchown_sync_004');
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-    try {
-      let fd = fileio.openSync(fpath);
-      let stat = fileio.statSync(fpath);
-      fileio.fchownSync(fd, stat.uid, null);
-    } catch (e) {
-      console.info('fileio_test_fchown_sync_004 has failed for ' + e);
       expect(e.message == "Operation not permitted").assertTrue();
       fileio.unlinkSync(fpath);
     }
