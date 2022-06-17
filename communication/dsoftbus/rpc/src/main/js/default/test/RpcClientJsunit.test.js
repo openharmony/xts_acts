@@ -15,7 +15,7 @@
 
 import rpc from '@ohos.rpc'
 import fileio from '@ohos.fileio';
-import FA from '@ohos.ability.featureability'
+import FA from '@ohos.ability.featureAbility'
 import {describe, expect, beforeAll, it} from 'deccjsunit/index'
 
 var gIRemoteObject = undefined;
