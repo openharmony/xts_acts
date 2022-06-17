@@ -25,6 +25,9 @@ parentPort.onmessage = function(e) {
   switch(data.type) {
     case "new":
       ss = new worker.Worker("workers/worker_0152.js");
+      ss.onexit = function() {
+        parentPort.postMessage(backValue); // 16
+      }
       ss.onmessage = function(ee) {
         backValue = ee.data;
         flag = true;
@@ -33,7 +36,7 @@ parentPort.onmessage = function(e) {
       break;
     case "wait":
       if (flag) {
-        parentPort.postMessage(backValue); // 16
+        ss.terminate();
       }
       break;
     default:
