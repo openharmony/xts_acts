@@ -44,10 +44,7 @@ async function changedLocationMode(){
                 expect().assertFail();
             });
         }
-    });
-    await geolocation.isLocationEnabled().then(async(result) => {
-        console.info('[lbs_js] check LocationSwitchState result: ' + result);
-    });
+    })
 }
 
 async function applyPermission() {
@@ -1487,13 +1484,15 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_LastLocation_0002', 0, async function (done) {
-        await geolocation.getLastLocation().then((result) => {
-            console.info('[lbs_js] getLastLocation promise result: ' + result);
-            expect(result).assertTrue();
-        }).catch((error) => {
-            console.info('[lbs_js] getLastLocation promise then err: ' + result);
-            expect().assertFail();
-        });
+        setTimeout(async ()=>{
+            await geolocation.getLastLocation().then((result) => {
+                console.info('[lbs_js] getLastLocation promise result: ' + result);
+                expect(result).assertTrue();
+            }).catch((error) => {
+                console.info('[lbs_js] getLastLocation promise then err: ' + result);
+                expect().assertFail();
+            });
+        },2000);
         done();
     })
 
@@ -1507,13 +1506,15 @@ describe('geolocationTest', function () {
      */
     it('SUB_HSS_LocationSystem_SingleLoc_0028', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x0200, "scenario": 0x0300, "timeoutMs": 10, "maxAccuracy": 0 };
-        await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
-            console.info("[lbs_js] getCurrentLocation promise data is: " + JSON.stringify(result));
-            expect(true).assertEqual((JSON.stringify(result)) !=null);
-        }).catch((error) => {
-            console.info("[lbs_js] getCurrentLocation promise then error." + error);
-            expect().assertFail();
-        });
+        setTimeout(async ()=>{
+            await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
+                console.info("[lbs_js] getCurrentLocation promise data is: " + JSON.stringify(result));
+                expect(true).assertEqual((JSON.stringify(result)) !=null);
+            }).catch((error) => {
+                console.info("[lbs_js] getCurrentLocation promise then error." + error);
+                expect().assertFail();
+            });
+        },2000);
         done();
     })
 
@@ -1527,13 +1528,15 @@ describe('geolocationTest', function () {
          */
     it('SUB_HSS_LocationSystem_SingleLoc_0029', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x0200, "scenario": 0x0301, "timeoutMs": 10, "maxAccuracy": 0 };
-        await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
-            console.info("[lbs_js] getCurrentLocation promise result is: " + JSON.stringify(result));
-            expect(true).assertEqual((JSON.stringify(result)) !=null);
-        }).catch((error) => {
-            console.info("[lbs_js] getCurrentLocation promise then error." + error);
-            expect().assertFail();
-        });
+        setTimeout(async ()=>{
+            await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
+                console.info("[lbs_js] getCurrentLocation promise result is: " + JSON.stringify(result));
+                expect(true).assertEqual((JSON.stringify(result)) !=null);
+            }).catch((error) => {
+                console.info("[lbs_js] getCurrentLocation promise then error." + error);
+                expect().assertFail();
+            });
+        },2000);
         done();
     })
 
@@ -1547,13 +1550,15 @@ describe('geolocationTest', function () {
      */
     it('SUB_HSS_LocationSystem_SingleLoc_0030', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x0200, "scenario": 0x0302, "timeoutMs": 10, "maxAccuracy": 0 };
-        await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
-            console.info("[lbs_js] getCurrentLocation promise result is: " + JSON.stringify(result));
-            expect(true).assertEqual((JSON.stringify(result)) !=null);
-        }).catch((error) => {
-            console.info("[lbs_js] getCurrentLocation promise then error." + error);
-            expect().assertFail();
-        });
+        setTimeout(async ()=>{
+            await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
+                console.info("[lbs_js] getCurrentLocation promise result is: " + JSON.stringify(result));
+                expect(true).assertEqual((JSON.stringify(result)) !=null);
+            }).catch((error) => {
+                console.info("[lbs_js] getCurrentLocation promise then error." + error);
+                expect().assertFail();
+            });
+        },2000);
         done();
     })
 
@@ -1566,14 +1571,17 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
      */
     it('SUB_HSS_LocationSystem_SingleLoc_0031', 0, async function (done) {
+
         let currentLocationRequest = { "priority": 0x0200, "scenario": 0x0303, "timeoutMs": 10, "maxAccuracy": 0 };
-        await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
-            console.info("[lbs_js] getCurrentLocation promise result is: " + JSON.stringify(result));
-            expect(true).assertEqual((JSON.stringify(result)) !=null);
-        }).catch((error) => {
-            console.info("[lbs_js] getCurrentLocation promise then error." + error);
-            expect().assertFail();
-        });
+        setTimeout(async ()=>{
+            await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
+                console.info("[lbs_js] getCurrentLocation promise result is: " + JSON.stringify(result));
+                expect(true).assertEqual((JSON.stringify(result)) !=null);
+            }).catch((error) => {
+                console.info("[lbs_js] getCurrentLocation promise then error." + error);
+                expect().assertFail();
+            });
+        },2000);
         done();
     })
 
@@ -1587,13 +1595,15 @@ describe('geolocationTest', function () {
      */
     it('SUB_HSS_LocationSystem_SingleLoc_0032', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x0200, "scenario": 0x0304, "timeoutMs": 10, "maxAccuracy": 0 };
-        await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
-            console.info("[lbs_js] getCurrentLocation promise result is: " + JSON.stringify(result));
-            expect(true).assertEqual((JSON.stringify(result)) !=null);
-        }).catch((error) => {
-            console.info("[lbs_js] getCurrentLocation promise then error." + error);
-            expect().assertFail();
-        });
+        setTimeout(async ()=>{
+            await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
+                console.info("[lbs_js] getCurrentLocation promise result is: " + JSON.stringify(result));
+                expect(true).assertEqual((JSON.stringify(result)) !=null);
+            }).catch((error) => {
+                console.info("[lbs_js] getCurrentLocation promise then error." + error);
+                expect().assertFail();
+            });
+        },2000);
         done();
     })
 
