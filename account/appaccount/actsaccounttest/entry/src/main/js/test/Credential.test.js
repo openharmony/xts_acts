@@ -41,6 +41,28 @@ describe('ActsAccountCredential', function () {
         done();
     })
 
+    afterEach(async function (done) {
+        console.info("====>afterEach enter====");
+        var selfBundle = "com.example.actsaccounttest";
+        var appAccountManager = account.createAppAccountManager();
+        console.info("====>getAllAccounts for clean====");
+        try{
+            var acclist = await appAccountManager.getAllAccounts(selfBundle);
+        }
+        catch(err){
+            console.error("====>getAllAccounts err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+        console.info("====>account list length: " + acclist.length);
+        if(acclist.length > 0){
+            for(var i = 0;i < acclist.length; i++){
+                await appAccountManager.deleteAccount(acclist[i].name);
+            }
+        }
+        done();
+    })
+
     /*
      * @tc.number    : ActsAccountCredential_0100
      * @tc.name      : The correct calls setAssociatedData and getAccountCredential get the credential

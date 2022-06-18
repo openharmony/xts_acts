@@ -3385,4 +3385,14 @@ describe('ActsAccountOAuthToken', function () {
             });
             done();
         });
+it('ActsAccountOAuthToken_28500', 0, async function (done) {
+            console.debug("====>ActsAccountOAuthToken_28500 start====");
+            var appAccountManager = account.createAppAccountManager();
+            var dataInfo = await appAccountManager.getAuthenticatorInfo("com.example.actsaccountOauthtoken").catch((err)=>{
+                console.debug("====>ActsAccountOAuthToken_28500 getAuthenticatorInfo err:" + JSON.stringify(err));
+                    expect(err.code).assertEqual(0);
+            });
+                console.debug("====>ActsAccountOAuthToken_28500 getAuthenticatorInfo dataInfo:" + JSON.stringify(dataInfo));
+            done();
+        });
 })
