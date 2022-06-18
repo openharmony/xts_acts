@@ -305,7 +305,7 @@ export default function applicationBundleJsunit() {
                     console.info(msg + JSON.stringify(data[i]));
                     expect(data[i].name).assertEqual('com.open.harmony.packagemag');
                     expect(data[i].codePath).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag');
-                    expect(data[i].description).assertEqual('$string:mainability_description');
+                    expect(data[i].description).assertEqual('$string:entry_description');
                     if (data[i].descriptionId !== 0) {
                         expect(data[i].descriptionId > 0).assertEqual(true);
                     }
@@ -321,7 +321,7 @@ export default function applicationBundleJsunit() {
                     };
                     expect(data[i].systemApp).assertEqual(true);
                     expect(data[i].supportedModes).assertEqual(0);
-                    expect(data[i].process).assertEqual("");
+                    expect(data[i].process).assertEqual('com.open.harmony.packagemag');
                     expect(data[i].entryDir).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag' +
                         '/com.open.harmony.packagemag');
                     expect(data[i].enabled).assertEqual(true);

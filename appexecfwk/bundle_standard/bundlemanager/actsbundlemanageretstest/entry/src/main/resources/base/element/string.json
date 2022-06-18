@@ -15,6 +15,10 @@
     {
       "name": "description_serviceability",
       "value": "hap sample empty service"
+    },
+    {
+      "name": "entry_description",
+      "value": "entry_description"
     }
   ]
 }
