@@ -57,7 +57,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
                 expect(hapModuleInfo.metadata.length).assertEqual(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
-                expect(hapModuleInfo.colorMode).assertEqual(-1);
+                expect(hapModuleInfo.colorMode).assertEqual(bundle.ColorMode.AUTO_MODE);
                 done();
             }
         }
@@ -122,7 +122,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
                 expect(hapModuleInfo.metadata.length).assertEqual(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
-                expect(hapModuleInfo.colorMode).assertEqual(0);
+                expect(hapModuleInfo.colorMode).assertEqual(bundle.ColorMode.DARK_MODE);
                 done();
             }
         });
@@ -158,7 +158,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
                 expect(hapModuleInfo.metadata.length).assertEqual(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
-                expect(hapModuleInfo.colorMode).assertEqual(1);
+                expect(hapModuleInfo.colorMode).assertEqual(bundle.ColorMode.LIGHT_MODE);
                 done();
             }
         });
