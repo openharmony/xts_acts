@@ -17,7 +17,8 @@ import wallpaper from '@ohos.wallpaper'
 
 const WALLPAPER_SYSTEM = 0;
 const WALLPAPER_LOCKSCREEN = 1;
-var imageSource = '/data/accounts/account_0/appdata/com.test.testApp/wallpaper';
+var imageSource_system = '/data/service/el1/public/wallpaper/0/system/wallpaper';
+var imageSource_lockscreen = '/data/service/el1/public/wallpaper/0/lockscreen/wallpaper_lock';
 
 describe('WallpaperJsunitTest', function () {
     beforeAll(async function () {
@@ -479,7 +480,7 @@ describe('WallpaperJsunitTest', function () {
      * @tc.level   0
      */
     it('testSetWallpaperURLPromiseLock104', 0, async function (done) {
-        await wallpaper.setWallpaper(imageSource, WALLPAPER_LOCKSCREEN).then((data) => {
+        await wallpaper.setWallpaper(imageSource_lockscreen, WALLPAPER_LOCKSCREEN).then((data) => {
             console.info('wallpaperXTS ===> testSetWallpaperURLPromiseLock data : ' + JSON.stringify(data));
             if ((data != undefined) && (data != null) && (data != '')) {
                 expect(true).assertTrue();
@@ -500,7 +501,7 @@ describe('WallpaperJsunitTest', function () {
      * @tc.level   0
      */
     it('testSetWallpaperURLCallbackSystem103', 0, async function (done) {
-        await wallpaper.setWallpaper(imageSource, WALLPAPER_SYSTEM, function (err, data) {
+        await wallpaper.setWallpaper(imageSource_system, WALLPAPER_SYSTEM, function (err, data) {
             console.info('wallpaperXTS ===> testSetWallpaperURLCallbackSystem err : ' + JSON.stringify(err));
             console.info('wallpaperXTS ===> testSetWallpaperURLCallbackSystem data : ' + JSON.stringify(data));
             if (err) {
@@ -526,7 +527,7 @@ describe('WallpaperJsunitTest', function () {
             done();
             return;
         }
-        wallpaper.setWallpaper(imageSource, WALLPAPER_SYSTEM).then((data) => {
+        wallpaper.setWallpaper(imageSource_system, WALLPAPER_SYSTEM).then((data) => {
             console.info('wallpaperXTS ===> testSetWallpaperURLPromiseSystem data : ' + JSON.stringify(data));
             if ((data != undefined) && (data != null) && (data != '')) {
                 expect(true).assertTrue();
@@ -547,7 +548,7 @@ describe('WallpaperJsunitTest', function () {
      * @tc.level   0
      */
     it('testSetWallpaperURLCallbackLock104', 0, async function (done) {
-        await wallpaper.setWallpaper(imageSource, WALLPAPER_LOCKSCREEN, function (err, data) {
+        await wallpaper.setWallpaper(imageSource_lockscreen, WALLPAPER_LOCKSCREEN, function (err, data) {
             console.info('wallpaperXTS ===> testSetWallpaperURLCallbackLock err : ' + JSON.stringify(err));
             console.info('wallpaperXTS ===> testSetWallpaperURLCallbackLock data : ' + JSON.stringify(data));
             if (err) {
