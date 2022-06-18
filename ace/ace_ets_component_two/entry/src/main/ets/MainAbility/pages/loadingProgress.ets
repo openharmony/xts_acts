@@ -19,6 +19,7 @@ import events_emitter from '@ohos.emitter';
 @Component
 struct LoadingProgressExample {
   @State color: color = Color.Blue
+  @State loadingHeight: string = '50px'
 
   private stateChangCallBack = (eventData) => {
     console.info("LoadingProgress page stateChangCallBack");
@@ -46,8 +47,9 @@ struct LoadingProgressExample {
         .fontColor(0xCCCCCC)
         .height(50)
         .width('90%')
-        .key('LP')
       LoadingProgress()
+        .key('LP')
+        .height(this.loadingHeight)
         .color(Color.Black)
     }.width('100%').margin({ top: 6 })
   }

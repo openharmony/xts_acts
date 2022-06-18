@@ -127,7 +127,6 @@ struct text_textcase {
         .zIndex(this.zIndex)
         .fontColor(this.fontColor)
         .fontSize(15)
-        .minFontSize(15)
         .maxFontSize(15)
         .fontWeight(this.fontWeight)
         .fontStyle(this.fontStyle)

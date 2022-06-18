@@ -71,7 +71,7 @@ export default function buttonJsunit() {
       expect(obj.$attrs.type).assertEqual('ButtonType.Circle')
       expect(obj.$attrs.stateEffect).assertEqual('true')
       expect(obj.$attrs.label).assertEqual('1.value')
-      expect(obj.$attrs.fontSize).assertEqual('12')
+      expect(obj.$attrs.fontSize).assertEqual('12.00px')
       console.info('cd buttonInspectorByKey END');
       done();
     });
