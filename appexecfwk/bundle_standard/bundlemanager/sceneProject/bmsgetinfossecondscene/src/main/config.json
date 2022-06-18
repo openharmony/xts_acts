@@ -14,6 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
+    "colorMode": "dark",
     "package": "com.example.third2",
     "name": ".MyApplication",
     "deviceType": [

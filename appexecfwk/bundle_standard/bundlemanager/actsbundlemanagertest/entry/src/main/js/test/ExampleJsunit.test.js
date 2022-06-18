@@ -106,7 +106,7 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getBundleInfo interfaces with one hap.
      */
     it('getBundleInfo_0600', 0, async function (done) {
-        await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES, OnReceiveEvent);
+        await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES|demo.BundleFlag.GET_ABILITY_INFO_WITH_DISABLE , OnReceiveEvent);
         function OnReceiveEvent(err, datainfo) {
             console.info("getBundleInfo_0600 dataInfo ====" + datainfo);
             expect(datainfo.name).assertEqual(NAME1);
@@ -1074,7 +1074,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.icon).assertEqual("$media:icon");
             expect(datainfo.moduleName).assertEqual("entry");
             expect(datainfo.bundleName).assertEqual(NAME2);
-            expect(datainfo.orientation).assertEqual(1);
+            expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.LANDSCAPE);
             expect(datainfo.launchMode).assertEqual(demo.LaunchMode.SINGLETON);
             expect(datainfo.applicationInfo.name).assertEqual(NAME2);
             expect(datainfo.applicationInfo.description).assertEqual(DESCRIPTION);
@@ -1113,6 +1113,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.icon).assertEqual("$media:icon");
                     expect(datainfo.moduleName).assertEqual("entry");
                     expect(datainfo.bundleName).assertEqual(NAME3);
+                    expect(datainfo.type).assertEqual(demo.AbilityType.PAGE);
                     expect(datainfo.applicationInfo.name).assertEqual(NAME3);
                     expect(datainfo.applicationInfo.description).assertEqual(DESCRIPTION);
                     expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue();
@@ -1122,7 +1123,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.applicationInfo.labelId >= 0).assertTrue();
                     expect(datainfo.applicationInfo.systemApp).assertEqual(true);
                     expect(datainfo.applicationInfo.supportedModes).assertEqual(0);
-                    expect(datainfo.orientation).assertEqual(2);
+                    expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.PORTRAIT);
                     expect(datainfo.applicationInfo.enabled).assertEqual(true);
                     for (let j = 0; j < datainfo.applicationInfo.moduleInfos.length; j++) {
                         expect(datainfo.applicationInfo.moduleInfos[j].moduleName).assertEqual("entry");
@@ -1131,14 +1132,16 @@ describe('ActsBundleManagerTest', function () {
                 }
                 if (datainfo.bundleName == NAME4) {
                     expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
+                    expect(datainfo.type).assertEqual(demo.AbilityType.DATA);
                     expect(datainfo.bundleName).assertEqual(NAME4);
-                    expect(datainfo.orientation).assertEqual(3);
+                    expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.FOLLOW_RECENT);
                     queryResultCount++;
                 }
                 if (datainfo.bundleName == NAME5) {
                     expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
+                    expect(datainfo.type).assertEqual(demo.AbilityType.PAGE);
                     expect(datainfo.bundleName).assertEqual(NAME5);
-                    expect(datainfo.orientation).assertEqual(0);
+                    expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.UNSPECIFIED);
                     queryResultCount++;
                 }
             }
@@ -1347,8 +1350,25 @@ describe('ActsBundleManagerTest', function () {
     * @tc.desc Test install errcode STATUS_FAILED_NO_SPACE_LEFT.
     */
     it('installErrCodeTest_0100', 0, async function (done) {
+        expect(demo.InstallErrorCode.SUCCESS).assertEqual(0);
+        expect(demo.InstallErrorCode.STATUS_INSTALL_FAILURE).assertEqual(1);
+        expect(demo.InstallErrorCode.STATUS_INSTALL_FAILURE_ABORTED).assertEqual(2);
+        expect(demo.InstallErrorCode.STATUS_INSTALL_FAILURE_INVALID).assertEqual(3);
+        expect(demo.InstallErrorCode.STATUS_INSTALL_FAILURE_CONFLICT).assertEqual(4);
+        expect(demo.InstallErrorCode.STATUS_INSTALL_FAILURE_STORAGE).assertEqual(5);
+        expect(demo.InstallErrorCode.STATUS_INSTALL_FAILURE_INCOMPATIBLE).assertEqual(6);
+        expect(demo.InstallErrorCode.STATUS_UNINSTALL_FAILURE).assertEqual(7);
+        expect(demo.InstallErrorCode.STATUS_UNINSTALL_FAILURE_BLOCKED).assertEqual(8);
+        expect(demo.InstallErrorCode.STATUS_UNINSTALL_FAILURE_ABORTED).assertEqual(9);
+        expect(demo.InstallErrorCode.STATUS_UNINSTALL_FAILURE_CONFLICT).assertEqual(10);
+        expect(demo.InstallErrorCode.STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT).assertEqual(11);
+        expect(demo.InstallErrorCode.STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED).assertEqual(12);
+        expect(demo.InstallErrorCode.STATUS_ABILITY_NOT_FOUND).assertEqual(64);
+        expect(demo.InstallErrorCode.STATUS_BMS_SERVICE_ERROR).assertEqual(65);
         expect(demo.InstallErrorCode.STATUS_FAILED_NO_SPACE_LEFT).assertEqual(66);
-        expect(demo.AbilitySubType.CA).assertEqual(1);
+        expect(demo.InstallErrorCode.STATUS_GRANT_REQUEST_PERMISSIONS_FAILED).assertEqual(67);
+        expect(demo.InstallErrorCode.STATUS_INSTALL_PERMISSION_DENIED).assertEqual(68);
+        expect(demo.InstallErrorCode.STATUS_UNINSTALL_PERMISSION_DENIED).assertEqual(69);
         done();
     })
 
@@ -1357,8 +1377,9 @@ describe('ActsBundleManagerTest', function () {
     * @tc.name InstallErrorCode::STATUS_FAILED_NO_SPACE_LEFT
     * @tc.desc Test install errcode STATUS_FAILED_NO_SPACE_LEFT.
     */
-    it('installErrCodeTest_0200', 0, async function (done) {
-        expect(demo.InstallErrorCode.STATUS_GRANT_REQUEST_PERMISSIONS_FAILED).assertEqual(67);
+    it('AbilityTypeTest_0100', 0, async function (done) {
+        expect(demo.AbilitySubType.CA).assertEqual(1);
+        expect(demo.AbilityType.UNKNOWN).assertEqual(0);
         done();
     })
 })
