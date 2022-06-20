@@ -67,9 +67,9 @@ describe('ActsBmsAccessTokenTest', function () {
                 expect(bundleInfo.reqPermissions[1]).assertEqual("ohos.permission.BETA");
                 expect(bundleInfo.reqPermissions[2]).assertEqual("ohos.permission.KEEP_BACKGROUND_RUNNING");
                 expect(bundleInfo.reqPermissionStates.length).assertEqual(3);
-                expect(bundleInfo.reqPermissionStates[0]).assertEqual(-1);
-                expect(bundleInfo.reqPermissionStates[1]).assertEqual(-1);
-                expect(bundleInfo.reqPermissionStates[2]).assertEqual(0);
+                expect(bundleInfo.reqPermissionStates[0]).assertEqual(bundle.GrantStatus.PERMISSION_DENIED);
+                expect(bundleInfo.reqPermissionStates[1]).assertEqual(bundle.GrantStatus.PERMISSION_DENIED);
+                expect(bundleInfo.reqPermissionStates[2]).assertEqual(bundle.GrantStatus.PERMISSION_GRANTED);
                 done();
             }).catch((err) => {
                 expect(err).assertFail();
@@ -93,11 +93,11 @@ describe('ActsBmsAccessTokenTest', function () {
                 expect(bundleInfo.reqPermissions[3]).assertEqual("ohos.permission.SYSTEM_FLOAT_WINDOW");
                 expect(bundleInfo.reqPermissions[4]).assertEqual("ohos.permission.USE_BLUETOOTH");
                 expect(bundleInfo.reqPermissionStates.length).assertEqual(5);
-                expect(bundleInfo.reqPermissionStates[0]).assertEqual(-1);
-                expect(bundleInfo.reqPermissionStates[1]).assertEqual(0);
-                expect(bundleInfo.reqPermissionStates[2]).assertEqual(-1);
-                expect(bundleInfo.reqPermissionStates[3]).assertEqual(0);
-                expect(bundleInfo.reqPermissionStates[4]).assertEqual(0);
+                expect(bundleInfo.reqPermissionStates[0]).assertEqual(bundle.GrantStatus.PERMISSION_DENIED);
+                expect(bundleInfo.reqPermissionStates[1]).assertEqual(bundle.GrantStatus.PERMISSION_GRANTED);
+                expect(bundleInfo.reqPermissionStates[2]).assertEqual(bundle.GrantStatus.PERMISSION_DENIED);
+                expect(bundleInfo.reqPermissionStates[3]).assertEqual(bundle.GrantStatus.PERMISSION_GRANTED);
+                expect(bundleInfo.reqPermissionStates[4]).assertEqual(bundle.GrantStatus.PERMISSION_GRANTED);
                 done();
             }).catch((err) => {
                 expect(err).assertFail();
@@ -122,12 +122,12 @@ describe('ActsBmsAccessTokenTest', function () {
                 expect(bundleInfo.reqPermissions[4]).assertEqual("ohos.permission.SYSTEM_FLOAT_WINDOW");
                 expect(bundleInfo.reqPermissions[5]).assertEqual("ohos.permission.USE_BLUETOOTH");
                 expect(bundleInfo.reqPermissionStates.length).assertEqual(6);
-                expect(bundleInfo.reqPermissionStates[0]).assertEqual(-1);
-                expect(bundleInfo.reqPermissionStates[1]).assertEqual(-1);
-                expect(bundleInfo.reqPermissionStates[2]).assertEqual(0);
-                expect(bundleInfo.reqPermissionStates[3]).assertEqual(-1);
-                expect(bundleInfo.reqPermissionStates[4]).assertEqual(0);
-                expect(bundleInfo.reqPermissionStates[5]).assertEqual(0);
+                expect(bundleInfo.reqPermissionStates[0]).assertEqual(bundle.GrantStatus.PERMISSION_DENIED);
+                expect(bundleInfo.reqPermissionStates[1]).assertEqual(bundle.GrantStatus.PERMISSION_DENIED);
+                expect(bundleInfo.reqPermissionStates[2]).assertEqual(bundle.GrantStatus.PERMISSION_GRANTED);
+                expect(bundleInfo.reqPermissionStates[3]).assertEqual(bundle.GrantStatus.PERMISSION_DENIED);
+                expect(bundleInfo.reqPermissionStates[4]).assertEqual(bundle.GrantStatus.PERMISSION_GRANTED);
+                expect(bundleInfo.reqPermissionStates[5]).assertEqual(bundle.GrantStatus.PERMISSION_GRANTED);
                 done();
             }).catch((err) => {
                 expect(err).assertFail();
