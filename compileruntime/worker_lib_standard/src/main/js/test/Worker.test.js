@@ -1015,6 +1015,10 @@ describe('workerTest', function () {
         let res = 0
         let flag = false
 
+        ss.onexit = function() {
+            flag = true
+        }
+
         ss.onmessageerror = function (e) {
             flag = true
             res++
@@ -1022,6 +1026,12 @@ describe('workerTest', function () {
         function foo() {
         }
         ss.postMessage(foo)
+        while (!flag) {
+            await promiseCase()
+        }
+
+        flag = false
+        ss.postMessage("terminate")
         while (!flag) {
             await promiseCase()
         }
@@ -1264,12 +1274,15 @@ describe('workerTest', function () {
         let ss = new worker.Worker("workers/worker_015.js")
         let flag = false
         let res = undefined
+        let isTerminate = false
 
-        ss.onmessage = function (e) {
+        ss.onexit = function() {
+            isTerminate = true
+        }
+        ss.onmessage = function(e) {
             flag = true
             res = e.data
         }
-
         ss.onerror = function(ee) {
             console.log("worker:: " + ee.message)
         }
@@ -1279,6 +1292,11 @@ describe('workerTest', function () {
             ss.postMessage({type: "wait"})
             await promiseCase()
         }
+        ss.terminate()
+        while (!isTerminate) {
+            await promiseCase()
+        }
+
         expect(res).assertEqual(16)
 
         done()
@@ -1294,8 +1312,13 @@ describe('workerTest', function () {
         let ss = new worker.Worker("workers/worker_011.js")
         let flag = false
         let res = undefined
+        let isTerminate = false
 
-        ss.onmessage = function (e) {
+        ss.onexit = function() {
+            isTerminate = true
+        }
+
+        ss.onmessage = function(e) {
             flag = true
             res = e.data
         }
@@ -1314,6 +1337,11 @@ describe('workerTest', function () {
         ss.postMessage({type: "terminate"})
         while (!flag) {
             ss.postMessage({type: "wait"})
+            await promiseCase()
+        }
+
+        ss.terminate()
+        while (!isTerminate) {
             await promiseCase()
         }
 
