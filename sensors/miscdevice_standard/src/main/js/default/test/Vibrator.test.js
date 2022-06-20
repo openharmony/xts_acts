@@ -16,7 +16,7 @@ import vibrator from '@ohos.vibrator'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("VibratorJsTest", function () {
+describe("VibratorJsTest_misc_2", function () {
     beforeAll(function () {
 
         /*

@@ -16,7 +16,7 @@ import sensor from '@ohos.sensor'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("SensorJsTest", function () {
+describe("SensorJsTest_sensor_11", function () {
     beforeAll(function () {
 
         /*

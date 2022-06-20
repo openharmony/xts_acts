@@ -23,7 +23,7 @@ const KEY_TEST_BOOLEAN_ELEMENT = 'key_test_boolean';
 const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 var mPref;
 
-describe('storageTest', function () {
+describe('storageTest_storage4', function () {
     beforeAll(function () {
         console.info('beforeAll')
         mPref = storage.getStorageSync(PATH);

@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function textAreaJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_four_10', function () {
     beforeEach(async function (done) {
       console.info("textArea beforeEach start");
       let options = {

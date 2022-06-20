@@ -25,7 +25,7 @@ const STORE_CONFIG = {
 
 var rdbStore = undefined;
 
-describe('rdbStoreInsertTest', function () {
+describe('rdbStoreInsertTest_insert4', function () {
     beforeAll(function () {
         console.info(TAG + 'beforeAll')
     })

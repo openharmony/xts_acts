@@ -32,7 +32,7 @@ const TAG_TEST_0011 = ' context_featureAbility_test_0300 ';
 const TAG_TEST_0012 = ' context_featureAbility_test_0400 ';
 
 export default function addContextAndAbilityJsunit() {
-    describe('appInfoTest', function () {
+    describe('appInfoTest_ability_1', function () {
         /*
      * @tc.number: context_isUpdatingConfigurations_test_0100
      * @tc.name: isUpdatingConfigurations : Obtains whether the configuration of the current ability is changing.

@@ -15,7 +15,7 @@
 import sensor from '@ohos.sensor'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("SensorJsTest", function () {
+describe("SensorJsTest_sensor_4", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
         expect(typeof (data.intensity)).assertEqual("number");

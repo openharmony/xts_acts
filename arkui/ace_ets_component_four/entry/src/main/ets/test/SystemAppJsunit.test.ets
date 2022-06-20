@@ -18,7 +18,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 import app from '@system.app';
 
 export default function systemAppJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_four_9', function () {
 
     it('systemAppTest_0100', 0, async function (done) {
       console.info('systemAppTest_0100 START');

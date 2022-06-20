@@ -17,7 +17,7 @@ import power from '@ohos.power';
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe('appInfoTest', function () {
+describe('appInfoTest_power_1', function () {
     console.log("*************Power Unit Test Begin*************");
 
     /**

@@ -19,7 +19,7 @@ import router from '@system.router'
 import {getFileDescriptor, closeFileDescriptor} from './VideoDecoderTestBase.test.js'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-describe('VideoDecoderFuncCallbackTest', function () {
+describe('VideoDecoderFuncCallbackTest_video1', function () {
     let videoDecodeProcessor = null;
     let readStreamSync = undefined;
     let frameCountIn = 0;

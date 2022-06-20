@@ -25,7 +25,7 @@ const STORE_CONFIG = {
 
 var rdbStore = undefined;
 
-describe('rdbStoreInsertTest', function () {
+describe('rdbStoreInsertTest_insert2', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
         rdbStore = await dataRdb.getRdbStore(STORE_CONFIG, 1);

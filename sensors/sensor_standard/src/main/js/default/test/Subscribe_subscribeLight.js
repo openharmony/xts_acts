@@ -15,7 +15,7 @@
 import sensor from '@system.sensor'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("SensorJsTest", function () {
+describe("SensorJsTest_sensor_31", function () {
     beforeAll(function () {
 
         /*

@@ -20,7 +20,7 @@ import {getFileDescriptor, closeFileDescriptor} from './VideoDecoderTestBase.tes
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 
-describe('VideoDecoderFuncPromiseTest', function () {
+describe('VideoDecoderFuncPromiseTest_video1', function () {
     let videoDecodeProcessor = null;
     let readStreamSync = undefined;
     let frameCountIn = 0;

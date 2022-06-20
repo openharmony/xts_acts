@@ -34,7 +34,7 @@ var i = 1;
 
 var rdbStore = undefined;
 
-describe('rdbStoreInsertTest', function () {
+describe('rdbStoreInsertTest_insert1', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
      })

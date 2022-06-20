@@ -119,7 +119,7 @@ function sleep(ms) {
 
 
 
-describe('userauthTest', function () {
+describe('userauthTest_two_2', function () {
 	
     /*
         * @tc.number    : Security_IAM_Coauth_Func_0102

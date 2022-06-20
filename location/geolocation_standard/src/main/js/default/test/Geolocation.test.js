@@ -61,7 +61,7 @@ async function applyPermission() {
    }
 }
 
-describe('geolocationTest', function () {
+describe('geolocationTest_geo2', function () {
     beforeAll(async function (done) {
         console.info('beforeAll case');
         await applyPermission();

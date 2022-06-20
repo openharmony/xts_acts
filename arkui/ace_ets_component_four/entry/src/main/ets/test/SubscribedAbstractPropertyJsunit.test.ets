@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
 
 export default function subscribedAbstractPropertyJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_four_8', function () {
     it('subscribedAbstractProperty0100', 0, async function (done) {
       console.info('[subscribedAbstractProperty0100] START');
       if(true){

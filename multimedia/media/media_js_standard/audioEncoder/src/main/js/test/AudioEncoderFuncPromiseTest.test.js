@@ -22,7 +22,7 @@ import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import {getFileDescriptor, closeFileDescriptor} from './AudioEncoderTestBase.test.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-describe('AudioEncoderFuncPromise', function () {
+describe('AudioEncoderFuncPromise_audio_1', function () {
     const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/'
     const AUDIOPATH = 'S16LE.pcm';
     const BASIC_PATH = RESOURCEPATH + 'results/encode_func_promise_';

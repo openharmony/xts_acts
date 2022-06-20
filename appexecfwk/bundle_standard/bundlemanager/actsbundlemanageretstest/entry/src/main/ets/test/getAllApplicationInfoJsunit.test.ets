@@ -34,7 +34,7 @@ let userId = 0;
 
 export default function getAllApplicationBundleTest() {
 
-    describe('appInfoTest', function () {
+    describe('appInfoTest_bms_1', function () {
 
         beforeAll(async function (done) {
             await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {

@@ -18,7 +18,7 @@ import router from '@system.router';
 import Utils from './Utils';
 
 export default function curvesJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_two_2', function () {
     beforeEach(async function (done) {
       console.info("curves beforeEach start");
       let options = {

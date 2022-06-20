@@ -18,7 +18,7 @@ import router from '@system.router';
 import Utils from './Utils';
 
 export default function transFormJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_two_11', function () {
     beforeEach(async function (done) {
       console.info("prompt beforeEach start");
       let options = {
