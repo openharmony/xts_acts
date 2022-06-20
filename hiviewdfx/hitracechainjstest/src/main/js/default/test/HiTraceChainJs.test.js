@@ -95,7 +95,8 @@ describe('HiTraceJsTest', function () {
                 expect().assertFail();
                 console.log(`testHitraceApi03 got an error: ${JSON.stringify(error)}`);
             }
-            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.THREAD, hiTraceChain.HiTraceTracepointType.SS, traceId, "hitrace api test.");
+            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.THREAD,
+                                    hiTraceChain.HiTraceTracepointType.SS, traceId, "hitrace api test.");
             hiTraceChain.end(traceId);
         } catch (error){
             console.log(`testHitraceApi03 got an error: ${JSON.stringify(error)}`);
@@ -196,7 +197,8 @@ describe('HiTraceJsTest', function () {
                 expect().assertFail();
                 console.log(`testHitraceApi07 got an error: ${JSON.stringify(error)}`);
             }
-            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.PROCESS, hiTraceChain.HiTraceTracepointType.CS, traceId, "hitrace test");
+            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.PROCESS,
+                                    hiTraceChain.HiTraceTracepointType.CS, traceId, "hitrace test");
             hiTraceChain.end(traceId);
         } catch (error){
             console.log(`testHitraceApi07 got an error: ${JSON.stringify(error)}`);
@@ -273,7 +275,8 @@ describe('HiTraceJsTest', function () {
                 expect().assertFail();
                 console.log(`testHitraceApi10 got an error: ${JSON.stringify(error)}`);
             }
-            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.DEVICE, hiTraceChain.HiTraceTracepointType.CR, traceId, "hitrace test");
+            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.DEVICE,
+                                    hiTraceChain.HiTraceTracepointType.CR,traceId, "hitrace test");
             hiTraceChain.end(traceId);
         } catch (error) {
             console.log(`testHitraceApi10 got an error: ${JSON.stringify(error)}`);
@@ -307,7 +310,8 @@ describe('HiTraceJsTest', function () {
                 expect().assertFail();
                 console.log(`testHitraceApi11 got an error: ${JSON.stringify(error)}`);
             }
-            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.DEFAULT, hiTraceChain.HiTraceTracepointType.SR, traceId, "hitrace test");
+            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.DEFAULT,
+                                    hiTraceChain.HiTraceTracepointType.SR, traceId, "hitrace test");
             hiTraceChain.end(traceId);
         } catch (error) {
             console.log(`testHitraceApi11 got an error: ${JSON.stringify(error)}`);
@@ -336,7 +340,8 @@ describe('HiTraceJsTest', function () {
                 expect().assertFail();
                 console.log(`testHitraceApi12 got an error: ${JSON.stringify(error)}`);
             }
-            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.DEVICE, hiTraceChain.HiTraceTracepointType.GENERAL, traceId, "hitrace test");
+            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.DEVICE,
+                                    hiTraceChain.HiTraceTracepointType.GENERAL, traceId, "hitrace test");
             hiTraceChain.end(traceId);
         } catch (error) {
             console.log(`testHitraceApi12 got an error: ${JSON.stringify(error)}`);
