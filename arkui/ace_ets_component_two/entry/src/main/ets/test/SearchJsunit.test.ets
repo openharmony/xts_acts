@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function searchJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_two_10', function () {
     beforeEach(async function (done) {
       let options = {
         uri: 'pages/search',

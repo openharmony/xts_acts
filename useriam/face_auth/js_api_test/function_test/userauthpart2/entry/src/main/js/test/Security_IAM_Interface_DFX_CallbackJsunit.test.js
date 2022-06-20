@@ -549,7 +549,7 @@ function getPropertyerror(inputer,done){
     }
 }
 
-describe('userauthTest', function () {
+describe('userauthTest_two_5', function () {
 
     /*
         * @tc.number    : Security_IAM_PIN_Interface_DFX_0101

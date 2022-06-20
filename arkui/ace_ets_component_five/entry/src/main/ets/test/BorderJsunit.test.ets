@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils.ets';
 
 export default function borderJsunit() {
-  describe('borderTest', function () {
+  describe('borderTest_five_1', function () {
     beforeEach(async function (done) {
       console.info("border beforeEach start");
       let options = {

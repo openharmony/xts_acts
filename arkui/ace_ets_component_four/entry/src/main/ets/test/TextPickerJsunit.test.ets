@@ -18,7 +18,7 @@ import router from '@system.router';
 import Utils from './Utils';
 
 export default function textPickerJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_four_13', function () {
     beforeEach(async function (done) {
       console.info("button beforeEach start");
       let options = {

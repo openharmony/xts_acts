@@ -52,7 +52,7 @@ let ProfId = {
 }
 
 
-describe('bluetoothhostTest', function () {
+describe('bluetoothhostTest_host_2', function () {
     beforeAll(function () {
         console.info('beforeAll called')
     })

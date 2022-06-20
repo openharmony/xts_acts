@@ -125,7 +125,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-describe('userauthTest', function () {
+describe('userauthTest_two_8', function () {
 
     /*
         * @tc.number    : Security_IAM_PIN_AddCred_DFX_0102

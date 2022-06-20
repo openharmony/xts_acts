@@ -18,7 +18,7 @@ import router from '@system.router';
 import Utils from './Utils';
 
 export default function polylineJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_four_7', function () {
     beforeEach(async function (done) {
       console.info("polyline beforeEach start");
       let options = {

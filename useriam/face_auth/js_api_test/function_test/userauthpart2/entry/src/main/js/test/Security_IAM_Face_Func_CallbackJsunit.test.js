@@ -119,7 +119,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-describe('userauthTest', function () {
+describe('userauthTest_two_4', function () {
 
     /*
         * @tc.number    : Security_IAM_Face_AddCred_DFX_0101

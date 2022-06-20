@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function transFormJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_two_1', function () {
     beforeEach(async function (done) {
       console.info("prompt beforeEach start");
       let options = {

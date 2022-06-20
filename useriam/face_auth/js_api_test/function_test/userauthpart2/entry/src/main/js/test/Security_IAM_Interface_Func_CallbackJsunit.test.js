@@ -20,7 +20,7 @@ import pinAuth from '@ohos.pinAuth'
 import * as publicFC from './Publicfunction-n.js'
 
 
-describe('userauthTest', function () {
+describe('userauthTest_two_6', function () {
 	
     /*
         * @tc.number    : Security_IAM_Face_Interface_check_IDMAuthSubType_0101

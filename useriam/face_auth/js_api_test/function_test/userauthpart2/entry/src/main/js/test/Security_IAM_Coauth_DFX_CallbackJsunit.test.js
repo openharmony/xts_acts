@@ -119,7 +119,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-describe('userauthTest', function () {
+describe('userauthTest_two_1', function () {
 
 	/**
     * @tc.name      the token from old session is not available in the new session

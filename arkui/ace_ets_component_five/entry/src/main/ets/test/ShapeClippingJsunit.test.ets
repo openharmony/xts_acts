@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function shapeClippingJsunit() {
-  describe('borderTest', function () {
+  describe('borderTest_five_4', function () {
     beforeEach(async function (done) {
       console.info("shapeClipping beforeEach start");
       let options = {

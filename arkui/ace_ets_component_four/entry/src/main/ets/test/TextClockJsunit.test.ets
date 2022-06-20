@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function textClockJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_four_11', function () {
     beforeEach(async function (done) {
       console.info("text beforeEach start");
       let options = {

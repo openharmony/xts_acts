@@ -18,7 +18,7 @@ import {describe, beforeEach, afterEach, it, expect} from 'hypium/index';
 import Utils from './Utils';
 
 export default function ContextJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_ability_2', function () {
     beforeEach(async function (done) {
       console.info("context before each called");
       done()

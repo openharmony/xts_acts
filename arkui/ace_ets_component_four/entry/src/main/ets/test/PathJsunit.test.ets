@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function enableJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_four_4', function () {
     beforeEach(async function (done) {
       console.info("path beforeEach start");
       let options = {
