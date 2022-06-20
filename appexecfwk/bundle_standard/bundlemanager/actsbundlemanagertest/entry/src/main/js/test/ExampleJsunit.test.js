@@ -1366,6 +1366,7 @@ describe('ActsBundleManagerTest', function () {
         expect(demo.InstallErrorCode.STATUS_UNINSTALL_FAILURE_CONFLICT).assertEqual(10);
         expect(demo.InstallErrorCode.STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT).assertEqual(11);
         expect(demo.InstallErrorCode.STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED).assertEqual(12);
+        expect(demo.InstallErrorCode.STATUS_RECOVER_FAILURE_INVALID ).assertEqual(13);
         expect(demo.InstallErrorCode.STATUS_ABILITY_NOT_FOUND).assertEqual(64);
         expect(demo.InstallErrorCode.STATUS_BMS_SERVICE_ERROR).assertEqual(65);
         expect(demo.InstallErrorCode.STATUS_FAILED_NO_SPACE_LEFT).assertEqual(66);
