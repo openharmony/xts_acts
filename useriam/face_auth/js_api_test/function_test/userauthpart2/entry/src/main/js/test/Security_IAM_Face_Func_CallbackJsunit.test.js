@@ -119,7 +119,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-describe('userauthTest', function () {
+describe('userauthTest_two4', function () {
 
     it('Security_IAM_Face_AddCred_Func_0101', 0, async function (done) {
         try {

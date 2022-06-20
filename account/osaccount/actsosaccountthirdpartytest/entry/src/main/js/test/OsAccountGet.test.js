@@ -17,7 +17,7 @@ import bundle from '@ohos.bundle'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const ERR_OS_ACCOUNT_SERVICE_MANAGER_BAD_UID_ERR = 4653057;
-describe('ActsOsAccountThirdPartyTest', function () {
+describe('ActsOsAccountThirdPartyTest_third1', function () {
 
     /*
      * @tc.number  : ActsOsAccountGetIdFormUid_0100

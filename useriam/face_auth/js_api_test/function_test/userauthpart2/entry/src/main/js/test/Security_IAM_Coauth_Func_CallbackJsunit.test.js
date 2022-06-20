@@ -119,7 +119,7 @@ function sleep(ms) {
 
 
 
-describe('userauthTest', function () {
+describe('userauthTest_two2', function () {
 	
     /*
         * @tc.number    : testGetEntriesString101

@@ -19,7 +19,7 @@ import storage from '@ohos.data.storage'
 const PATH = '/data/test_storage';
 var mPref;
 
-describe('storageTest', function () {
+describe('storageTest_test3', function () {
     beforeAll(function () {
         console.info('beforeAll')
         mPref = storage.getStorageSync(PATH);

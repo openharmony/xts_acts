@@ -21,7 +21,7 @@ import '@ohos.permission.RUNNING_LOCK'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe('appInfoTest', function () {
+describe('appInfoTest_battery2', function () {
     console.log("*************Power Unit Test Begin*************");
     it('power_reboot_device_test', 0, function () {//rebootDevice(reason: string): void
         power.rebootDevice("power_js_test_reboot");

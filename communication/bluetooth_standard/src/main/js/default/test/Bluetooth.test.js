@@ -38,7 +38,7 @@ let Btname = {
     +'345678901234567890123456789012345678901234567890123456789012367890123456789012345568'
 }
 
-describe('bluetoothhostTest', function() {
+describe('bluetoothhostTest_standard1', function() {
 
     beforeAll(function () {
         console.info('beforeAll called')

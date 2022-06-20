@@ -20,7 +20,7 @@ import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 
 export default function inputMethodEngineJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_input1', function () {
     var mKeyboardDelegate = null;
     var inputMethodEngineObject = inputMethodEngine.getInputMethodEngine();
     var textInputClient = null;
