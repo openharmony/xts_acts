@@ -57,8 +57,8 @@ function statusCallback3(sessionId, networkId, status) {
 }
 function sleep(delay) {
     var start = (new Date()).getTime();
-    while((new Date()).getTime() - start < delay) {
-        continue;
+    while((new Date()).getTime() - start >= delay) {
+        break;
     }
 }
 
@@ -72,10 +72,10 @@ describe('objectStoreTest', function () {
         console.info("====>beforeAll start====");
         var appInfo = await bundle.getApplicationInfo('ohos.acts.distributeddataObject', 0, 100);
         tokenID = appInfo.accessTokenId;
-        console.info("accessTokenId" + appInfo.accessTokenId + " bundleName:" + appInfo.name);
+        console.info(" bundleName:" + appInfo.name);
         var atManager = abilityAccessCtrl.createAtManager();
         var result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME, PERMISSION_USER_SET);
-        console.info("tokenId" + tokenID + " result:" + result);
+        console.info(" result:" + result);
         sleep(TIMEOUT);
         console.debug("====>beforeAll end====");
         done();
