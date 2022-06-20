@@ -27,56 +27,56 @@ let getFileCountOneOp = {
     selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs : [ fileType.toString() ],
     order : mediaLibrary.FileKey.DATE_ADDED + " DESC LIMIT 0,1",
-     
+    extendArgs: "",
 };
 
 let getFileCountTwoOp = {
     selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs : [ fileType.toString() ],
     order : mediaLibrary.FileKey.DATE_ADDED + " DESC LIMIT 0,2",
-     
+    extendArgs: "",
 };
 
 let getFileCountTenOp = {
     selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs : [ fileType.toString() ],
     order : mediaLibrary.FileKey.DATE_ADDED + " DESC LIMIT 0,10",
-     
+    extendArgs: "",
 };
 
 let getFileCountOneHundredOp = {
     selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
     selectionArgs : [ fileType.toString() ],
     order : mediaLibrary.FileKey.DATE_ADDED + " DESC LIMIT 0,100",
-     
+    extendArgs: "",
 };
 
 let getFirstObjectOp = {
     selections : mediaLibrary.FileKey.RELATIVE_PATH + '= ?',
     selectionArgs : [ 'Camera/' ],
     order : mediaLibrary.FileKey.ID + " DESC LIMIT 0,5",
-     
+    extendArgs: "",
 }
 
 let getAllObjectLimitOneOp = {
     selections : mediaLibrary.FileKey.RELATIVE_PATH + '= ?',
     selectionArgs : [ 'Camera/' ],
     order : mediaLibrary.FileKey.ID + " DESC LIMIT 0,1",
-     
+    extendArgs: "",
 }
 
 let getAllObjectLimitTwoOp = {
     selections : mediaLibrary.FileKey.RELATIVE_PATH + '= ?',
     selectionArgs : [ 'Camera/' ],
     order : mediaLibrary.FileKey.ID + " DESC LIMIT 0,1",
-     
+    extendArgs: "",
 }
 
 let getAllObjectLimitOneHundredOp = {
     selections : mediaLibrary.FileKey.RELATIVE_PATH + '= ?',
     selectionArgs : [ 'Camera/' ],
     order : mediaLibrary.FileKey.ID + " DESC LIMIT 0,100",
-     
+    extendArgs: "",
 }
 
 let getFileCountZeroOp = {
@@ -88,7 +88,7 @@ let getFileOp = {
     selections : mediaLibrary.FileKey.DISPLAY_NAME + '= ? AND ' + mediaLibrary.FileKey.RELATIVE_PATH + '= ?',
     selectionArgs : [ '01.jpg', 'Camera/' ],
     order : mediaLibrary.FileKey.ID + " DESC LIMIT 0,100",
-     
+    extendArgs: "",
 }
 
 describe('fetchFileResultCallback.test.js', async function() {
