@@ -42,7 +42,6 @@ hcpptest_suite("ActsVFATCapabilityTest") {
 
   if (enable_ohos_appexecfwk_feature_ability == true) {
     defines = [
-      "_BOARD_HI3516_",
       "LITE_FS_VFAT",
       "TOP_DIR=\"/sdcard\"",
       "TOP_DIR_MOUNT_INFO=\"/sdcard vfat\"",
