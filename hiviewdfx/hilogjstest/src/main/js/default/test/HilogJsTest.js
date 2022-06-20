@@ -207,7 +207,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi13', 2, function () {
         console.info('testHilogJsApi13 start');
         const res = hilog.isLoggable(0xD001400, "HILOGTEST", 100);
-        expect(res).assertEqual(true);
+        expect(res).assertEqual(false);
         console.info('testHilogJsApi13 end');
     })
 
