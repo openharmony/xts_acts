@@ -372,7 +372,7 @@ export default function applicationBundleJsunit() {
             expect(data.name).assertEqual('com.open.harmony.packagemag');
             expect(data.codePath).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag');
             expect(data.accessTokenId > 0).assertEqual(true);
-            expect(data.description).assertEqual('$string:mainability_description');
+            expect(data.description).assertEqual('$string:entry_description');
             expect(data.descriptionId > 0).assertEqual(true);
             expect(data.icon).assertEqual('$media:icon');
             expect(data.iconId > 0).assertEqual(true);
@@ -381,7 +381,7 @@ export default function applicationBundleJsunit() {
             expect(data.labelId > 0).assertEqual(true);
             expect(data.systemApp).assertEqual(true);
             expect(data.supportedModes).assertEqual(0);
-            expect(data.process).assertEqual("");
+            expect(data.process).assertEqual('com.open.harmony.packagemag');
             expect(data.entryDir).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag' +
                 '/com.open.harmony.packagemag');
             expect(data.enabled).assertEqual(true);
@@ -402,7 +402,7 @@ export default function applicationBundleJsunit() {
             expect(data.name).assertEqual('com.open.harmony.packagemag');
             expect(data.codePath).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag');
             expect(data.accessTokenId > 0).assertEqual(true);
-            expect(data.description).assertEqual('$string:mainability_description');
+            expect(data.description).assertEqual('$string:entry_description');
             expect(data.descriptionId > 0).assertEqual(true);
             expect(data.icon).assertEqual('$media:icon');
             expect(data.iconId > 0).assertEqual(true);
@@ -411,7 +411,7 @@ export default function applicationBundleJsunit() {
             expect(data.labelId > 0).assertEqual(true);
             expect(data.systemApp).assertEqual(true);
             expect(data.supportedModes).assertEqual(0);
-            expect(data.process).assertEqual("");
+            expect(data.process).assertEqual('com.open.harmony.packagemag');
             expect(data.entryDir).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag' +
                 '/com.open.harmony.packagemag');
             expect(data.enabled).assertEqual(true);

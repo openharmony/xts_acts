@@ -14,7 +14,7 @@
  */
 
 import featureAbility from '@ohos.ability.featureAbility'
-import {describe, beforeEach, afterEach, it, expect} from "deccjsunit/index.ets";
+import {describe, beforeEach, afterEach, it, expect} from "deccjsunit/index";
 import Utils from './Utils';
 
 export default function ContextJsunit() {

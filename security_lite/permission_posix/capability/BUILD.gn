@@ -12,10 +12,7 @@
 # limitations under the License.
 
 group("ActsCapabilityTest") {
-  deps = [
-    "./jffs:ActsJFFS2CapabilityTest",
-    "./vfat:ActsVFATCapabilityTest",
-  ]
+  deps = [ "./vfat:ActsVFATCapabilityTest" ]
 }
 
 shared_library("capability_shared") {
