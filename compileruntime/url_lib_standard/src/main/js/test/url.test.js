@@ -239,6 +239,98 @@ describe('UrlFunTest', function () {
         expect(arr[4]).assertEqual("jss")
     })
 
+    /**
+     * @tc.name: testUrl[Symbol.iterator]()001
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     * @tc.author: zhangyouyou
+     */
+    it('testUrl[Symbol.iterator]001', 0, function () {
+        let params = new Url.URLSearchParams("key1=value1&key2=value2");
+        var i=0;
+        var arr={};
+        for(var pair of params[Symbol.iterator]()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[1]).assertEqual("value1");
+    })
+
+    /**
+     * @tc.name: testUrl[Symbol.iterator]()002
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     * @tc.author: zhangyouyou
+     */
+    it('testUrl[Symbol.iterator]()002', 0, function () {
+        let params = new Url.URLSearchParams("key1=value1&key2=value2")
+        var i=0;
+        var arr={};
+        for(var pair of params[Symbol.iterator]()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[2]).assertEqual("key2")
+    })
+
+    /**
+     * @tc.name: testUrl[Symbol.iterator]()003
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     * @tc.author: zhangyouyou
+     */
+    it('testUrl[Symbol.iterator]()003', 0, function () {
+        let params = new Url.URLSearchParams("key1=value1&key2=value2")
+        params.append("foo","jk")
+        var i=0;
+        var arr={};
+        for(var pair of params[Symbol.iterator]()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[5]).assertEqual("jk")
+    })
+
+    /**
+     * @tc.name: testUrl[Symbol.iterator]()004
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     * @tc.author: zhangyouyou
+     */
+    it('testUrl[Symbol.iterator]()004', 0, function () {
+        let params = new Url.URLSearchParams("key1=value1&key2=value2")
+        var i=0;
+        var arr={};
+        for(var pair of params[Symbol.iterator]()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[3]).assertEqual("value2")
+    })
+
+    /**
+     * @tc.name: testUrl[Symbol.iterator]()005
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     * @tc.author: zhangyouyou
+     */
+    it('testUrl[Symbol.iterator]()005', 0, function () {
+        let params = new Url.URLSearchParams("key1=value1&key2=value2")
+        params.append("jss","txt")
+        var i=0;
+        var arr={};
+        for(var pair of params[Symbol.iterator]()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[4]).assertEqual("jss")
+    })
+
    /**
     * @tc.name: testUrlForEach001
     * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
@@ -1630,6 +1722,68 @@ describe('UrlFunTest', function () {
         params.hash = 'qwer'
         var result= params.hash
         expect(result).assertEqual('#qwer')
+    })
+
+    /**
+     * @tc.name: testUrlSearchParams001
+     * @tc.desc: Gets the SearchParams portion of the URL
+     * @tc.author: zhaoduwei
+     */
+     it('testUrlSearchParams001', 0, function () {
+        var that = new Url.URL('http://username:password@host:8080/directory/file?foo=1&bar=2');
+        var params = that.searchParams
+        var result = params.toString()
+        expect(result).assertEqual('foo=1&bar=2')
+    })
+
+    /**
+     * @tc.name: testUrlSearchParams002
+     * @tc.desc: Gets the SearchParams portion of the URL
+     * @tc.author: zhaoduwei
+     */
+    it('testUrlSearchParams002', 0, function () {
+        let that = new Url.URL('https://example.com?foo=1&bar=2')
+        let params = that.searchParams
+        params.append("ma 大","jk￥")
+        var result = params.toString()
+        expect(result).assertEqual("foo=1&bar=2&ma+%E5%A4%A7=jk%EF%BF%A5")
+    })
+
+    /**
+     * @tc.name: testUrlSearchParams003
+     * @tc.desc: Gets the SearchParams portion of the URL
+     * @tc.author: zhaoduwei
+     */
+    it('testUrlSearchParams003', 0, function () {
+        let that = new Url.URL('https://example.com?d=value1&c=value2&b=大&4=key4')
+        let params = that.searchParams
+        var result = params.toString()
+        expect(result).assertEqual("d=value1&c=value2&b=%E5%A4%A7&4=key4")
+    })
+
+    /**
+     * @tc.name: testUrlSearchParams004
+     * @tc.desc: Gets the SearchParams portion of the URL
+     * @tc.author: zhaoduwei
+     */
+    it('testUrlSearchParams004', 0, function () {
+        let that = new Url.URL('https://example.com?foo=1&bar=2')
+        let params = that.searchParams
+        params.append("foo~!@#$%^&*()_+-=","jk")
+        var result = params.toString()
+        expect(result).assertEqual("foo=1&bar=2&foo%7E%21%40%23%24%25%5E%26*%28%29_%2B-%3D=jk")
+    })
+
+    /**
+     * @tc.name: testUrlSearchParams005
+     * @tc.desc: Gets the SearchParams portion of the URL
+     * @tc.author: zhaoduwei
+     */
+    it('testUrlSearchParams005', 0, function () {
+        let that = new Url.URL('http://username:password@host:8080/directory/file?你好=china#qwer=da')
+        let params = that.searchParams
+        var result = params.toString()
+        expect(result).assertEqual("%E4%BD%A0%E5%A5%BD=china")
     })
 
     /**
