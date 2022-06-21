@@ -58,7 +58,8 @@ describe('CoverApiTest', function () {
             var result = formBindingData.createFormBindingData(dataObj)
             console.log(TAG + " result is : " + JSON.stringify(result))
             expect(JSON.stringify(result)).
-            assertEqual(JSON.stringify({"data":"{\"temperature\":\"11c\",\"time\":\"11:00\",\"test\":11,\"test3\":true}"}));
+            assertEqual(JSON.stringify(
+                {"data":"{\"temperature\":\"11c\",\"time\":\"11:00\",\"test\":11,\"test3\":true}"}));
             done();
             console.info('------------end SUB_AA_OpenHarmony_FormBase_1000-------------');
         });
