@@ -18,9 +18,8 @@
 #include <vector>
 #include <map>
 #include <sstream>
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
+#include <cstdlib.h>
+#include <cstdio.h>
 #include <ctime>
 #include "hiappevent.h"
 #include "hiappevent_config.h"
@@ -33,7 +32,8 @@ using namespace testing;
 using namespace testing::ext;
 using namespace OHOS::HiviewDFX;
 
-namespace{
+namespace
+{
     const char* TEST_DOMAIN_NAME = "test_domain";
     const char* TEST_EVENT_NAME = "test_event";
     string g_reDiRectTimeout = "5";
@@ -41,10 +41,11 @@ namespace{
     string delelogPath = "/data/test/hiappevent/*";
 }
 
-class HiAppEventCPPTest : public testing::Test{
-public:
-    void TearDown();
-private:
+class HiAppEventCPPTest : public testing::Test
+{
+    public:
+        void TearDown();
+    private:
 };
 void HiAppEventCPPTest::TearDown()
 {
@@ -78,7 +79,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0100, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"bool_key\":false"};
+    std::vector<std::string> para = {"test_event","\"type_\":1","\"bool_key\":false"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -113,7 +114,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0200, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"bool_key\":true"};
+    std::vector<std::string> para = {"test_event","\"type_\":1","\"bool_key\":true"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -147,7 +148,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0300, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"bool_arr_key\":[true,true]"};
+    std::vector<std::string> para = {"test_event","\"type_\":1","\"bool_arr_key\":[true,true]"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -181,7 +182,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0400, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":4", "\"str_key\":\"hello\""};
+    std::vector<std::string> para = {"test_event","\"type_\":4","\"str_key\":\"hello\""};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -217,7 +218,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0500, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":4", "\"str_arr_key\":[\"hello\",\"world\"]"};
+    std::vector<std::string> para = {"test_event","\"type_\":4","\"str_arr_key\":[\"hello\",\"world\"]"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -251,7 +252,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0800, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"double_key\":30949.374"};
+    std::vector<std::string> para = {"test_event","\"type_\":1","\"double_key\":30949.374"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -285,7 +286,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_0900, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":2", "\"double_arr_key\":[123.22,30949.374,131312.46464]"};
+    std::vector<std::string> para = {"test_event","\"type_\":2","\"double_arr_key\":[123.22,30949.374,131312.46464]"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -319,7 +320,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1000, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":2", "\"float_key\":234.5"};
+    std::vector<std::string> para = {"test_event","\"type_\":2","\"float_key\":234.5"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -353,7 +354,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1100, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":2", "\"float_arr_key\":[123.22", "234.5", "131312.46"};
+    std::vector<std::string> para = {"test_event","\"type_\":2","\"float_arr_key\":[123.22", "234.5", "131312.46"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -421,7 +422,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1300, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":3", "\"int8_arr_key\":[1,10,100]"};
+    std::vector<std::string> para = {"test_event","\"type_\":3","\"int8_arr_key\":[1,10,100]"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -509,7 +510,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1500, Function|M
 HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1600, Function|MediumTest|Level3){
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_1600 start" << endl;
     bool result = false;
-     int32_t num = 1;
+    int32_t num = 1;
     string getlogFile;
     string path;
     OHOS::HiviewDFX::HiAppEventConfig::GetInstance().SetStorageDir("/data/test/hiappevent/");
@@ -557,7 +558,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1700, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":3", "\"int32_arr_key\":[1,100000,500000]"};
+    std::vector<std::string> para = {"test_event","\"type_\":3","\"int32_arr_key\":[1,100000,500000]"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -625,7 +626,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_1900, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":3", "\"int64_arr_key\":[1,10000000,50000000]"};
+    std::vector<std::string> para = {"test_event","\"type_\":3","\"int64_arr_key\":[1,10000000,50000000]"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -646,7 +647,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2100, Function|M
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_2100 start" << endl;
     bool result = false;
     char* strs[100];
-    for(int i=0;i<100;i++){
+    for (int i = 0; i < 100; i++){
         strs[i] = new char[32];
         sprintf(strs[i],"hello_world_%d",i);
     }
@@ -684,7 +685,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2200, Function|M
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_2200 start" << endl;
     bool result = false;
     string strs = "";
-    for(int i=0;i<1024;i++){
+    for (int i = 0; i < 1024; i++){
         strs.append("abcdefgh");
     }
     string getlogFile;
@@ -797,7 +798,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_2700, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"key31\":\"value31\"", "\"key15\":\"value15\""};
+    std::vector<std::string> para = {"test_event","\"type_\":1","\"key31\":\"value31\"","\"key15\":\"value15\""};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -921,7 +922,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3100, Function|M
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_3100 start" << endl;
     bool result = false;
     string strs = "";
-    for(int i=0;i<1024;i++){
+    for (int i = 0; i < 1024; i++){
         strs.append("abcdefgh");
     }
     strs.append("a");
@@ -994,9 +995,9 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3300, Function|M
     GTEST_LOG_(INFO) << "DFX_DFT_HiviewKit_HiAppEvent_Native_3300 start" << endl;
     bool result = false;
     char* strs[101];
-    for(int i=0;i<101;i++){
+    for (int i = 0; i < 101; i++){
         strs[i] = new char[32];
-        sprintf(strs[i],"hello_world_%d",i);
+        sprintf(strs[i], "hello_world_%d", i);
     }
     string getlogFile;
     string path;
@@ -1011,7 +1012,8 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3300, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":4", "\"str_arr_key\":[\"hello_world_0\",\"hello_world_1\",\"hello_world_2\"", "hello_world_99"};
+    std::vector<std::string> para = {"test_event", "\"type_\":4", "\"str_arr_key\":[\"hello_world_0\",
+                                                               \"hello_world_1\",\"hello_world_2\"", "hello_world_99"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -1052,7 +1054,8 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3400, Function|M
     path = logPath + getlogFile;
     string fileinfo = "";
     fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"key31\":\"value31\"","\"key15\":\"value15\"","\"key0\":\"value0\""};
+    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"key31\":\"value31\"","\"key15\":\"value15\"",
+                                         "\"key0\":\"value0\""};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
@@ -1103,7 +1106,8 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3500, Function|M
     path = logPath + getlogFile;
     bool result = false;
     string fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"key31\":\"value31\"","\"key15\":\"value15\"","\"key0\":\"value0\""};
+    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"key31\":\"value31\"","\"key15\":\"value15\"",
+                                        "\"key0\":\"value0\""};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     }
@@ -1151,7 +1155,8 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3600, Function|M
     path = logPath + getlogFile;
     bool result = false;
     string fileinfo = ReadFile(path);
-    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"key31\":\"value31\"","\"key15\":\"value15\"","\"key0\":\"value0\""};
+    std::vector<std::string> para = {"test_event", "\"type_\":1", "\"key31\":\"value31\"","\"key15\":\"value15\"",
+                                         "\"key0\":\"value0\""};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     }
