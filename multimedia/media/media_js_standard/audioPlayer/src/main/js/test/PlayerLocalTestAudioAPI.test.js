@@ -15,13 +15,14 @@
 
 import media from '@ohos.multimedia.media'
 import fileIO from '@ohos.fileio'
+import featureAbility from '@ohos.ability.featureAbility'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('PlayerLocalTestAudioAPI', function () {
     let audioPlayer = media.createAudioPlayer();
     let loopValue = false;
     let isTimeOut = false;
-    const AUDIO_SOURCE = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioplayer/01.mp3';
+    const AUDIO_SOURCE = '01.mp3';
     const PLAY_TIME = 3000;
     const END_STATE = 0;
     const SRC_STATE = 1;
@@ -39,11 +40,11 @@ describe('PlayerLocalTestAudioAPI', function () {
     const SEEK_TIME = 5000;
     const DELTA_TIME  = 1000;
     const SECOND_INDEX = 1;
-    const TIME_OUT = 20000;
     const VOLUME_VALUE = 0.5;
     let fdPath;
     let fdValue;
-
+    let context = featureAbility.getContext();
+    let audioPath = '';
     beforeAll(async function() {
         await getFd();
         console.info('beforeAll case');
@@ -68,8 +69,13 @@ describe('PlayerLocalTestAudioAPI', function () {
     }
 
     async function getFd() {
+        await context.getFilesDir().then((data) => {
+            console.info("case file path is" + JSON.stringify(data));
+            audioPath = data + '/' + AUDIO_SOURCE;
+            console.info("case audioPath is" + audioPath);
+        });
         fdPath = 'fd://';
-        await fileIO.open(AUDIO_SOURCE).then((fdNumber) => {
+        await fileIO.open(audioPath).then((fdNumber) => {
             fdPath = fdPath + '' + fdNumber;
             fdValue = fdNumber;
             console.info('[fileIO]case open fd success,fdPath is ' + fdPath);

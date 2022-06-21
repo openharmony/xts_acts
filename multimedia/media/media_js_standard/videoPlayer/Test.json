@@ -19,7 +19,7 @@
           "pre-push": [
           ],
           "push": [
-            "./resource/audio/H264_AAC.mp4 ->/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoplayer/"
+            "./resource/audio/H264_AAC.mp4 ->/data/app/el2/100/base/ohos.acts.multimedia.video.videoplayer/haps/entry/files/"
           ]
         },
         {
