@@ -429,13 +429,13 @@ export default function applicationBundleJsunit() {
             .then((applicationInfo) => {
                 expect(applicationInfo.iconResource.bundleName).assertEqual('com.open.harmony.packagemag')
                 expect(applicationInfo.iconResource.moduleName).assertEqual('entry')
-                expect(applicationInfo.iconResource.id).assertEqual(16777218)
+                expect(applicationInfo.iconResource.id).assertLarger(0)
                 expect(applicationInfo.labelResource.bundleName).assertEqual('com.open.harmony.packagemag')
                 expect(applicationInfo.labelResource.moduleName).assertEqual('entry')
-                expect(applicationInfo.labelResource.id).assertEqual(16777216)
+                expect(applicationInfo.labelResource.id).assertLarger(0)
                 expect(applicationInfo.descriptionResource.bundleName).assertEqual('com.open.harmony.packagemag')
                 expect(applicationInfo.descriptionResource.moduleName).assertEqual('entry')
-                expect(applicationInfo.descriptionResource.id).assertEqual(16777217)
+                expect(applicationInfo.descriptionResource.id).assertLarger(0)
                 done();
             }).catch((err) => {
                 expect(err).assertFail();
