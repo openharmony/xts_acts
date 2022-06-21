@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-describe('fileio_stream', function () {
+describe('fileio_stream_io4', function () {
 
   /**
    * @tc.number SUB_DF_FILEIO_STREAM_READASYNC_0000

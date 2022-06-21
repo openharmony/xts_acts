@@ -15,7 +15,7 @@
 import vibrator from '@system.vibrator';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("VibratorJsTest", function () {
+describe("VibratorJsTest_miscdevice1", function () {
      beforeAll(function () {
 
         /*

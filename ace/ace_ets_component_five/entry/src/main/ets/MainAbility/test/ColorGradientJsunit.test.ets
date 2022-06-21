@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function colorGradientJsunit() {
-  describe('borderTest', function () {
+  describe('borderTest_five_2', function () {
     beforeEach(async function (done) {
       console.info("colorGradient beforeEach start");
       let options = {

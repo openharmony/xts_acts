@@ -19,7 +19,7 @@ import batteryInfo from '@ohos.batteryInfo';
 import brightness from '@ohos.brightness';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe('appInfoTest', function () {
+describe('appInfoTest_battery1', function () {
   console.log("*************Battery Unit Test Begin*************");
 
   /**

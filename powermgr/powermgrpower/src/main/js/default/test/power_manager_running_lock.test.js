@@ -18,7 +18,7 @@ import '@ohos.permission.RUNNING_LOCK'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe('appInfoTest', function () {
+describe('appInfoTest_power1', function () {
     console.log("*************RunningLock Unit Test Begin*************");
 
     /**

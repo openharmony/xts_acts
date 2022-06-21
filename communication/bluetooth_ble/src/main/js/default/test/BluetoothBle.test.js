@@ -41,7 +41,7 @@ let MajorClass = {
 }
 
 
-describe('bluetoothhostTest', function() {
+describe('bluetoothhostTest_ble1', function() {
 
     let gattServer = null;
     let gattClient = null;

@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function positionSettingJsunit() {
-  describe('borderTest', function () {
+  describe('borderTest_five_3', function () {
     beforeEach(async function (done) {
       console.info("positionSetting beforeEach start");
       let options = {

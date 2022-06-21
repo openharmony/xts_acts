@@ -28,7 +28,7 @@ function sleep(time){
     return new Promise((resolve) => setTimeout(resolve, time));
 }
 
-describe('appInfoTest', function () {
+describe('appInfoTest_doisplay1', function () {
   console.log("*************System SystemDisplay Unit Test Begin*************");
 
     /**

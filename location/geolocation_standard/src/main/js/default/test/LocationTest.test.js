@@ -79,7 +79,7 @@ async function applyPermission() {
    }
 }
 
-describe('geolocationTest', function () {
+describe('geolocationTest_geo3', function () {
     let data = {
         title: "",
         locationChange: null,

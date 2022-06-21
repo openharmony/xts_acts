@@ -31,7 +31,7 @@ let userId = 0;
 
 export default function applicationBundleJsunit() {
 
-    describe('appInfoTest', function () {
+    describe('appInfoTest_bms1', function () {
 
         beforeAll(async function (done) {
             await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {

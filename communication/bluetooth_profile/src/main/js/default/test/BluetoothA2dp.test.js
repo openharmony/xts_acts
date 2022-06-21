@@ -62,7 +62,7 @@ function off(OFF_VALUE_TEST_ELEMENT) {
 }
 
 
-describe('bluetoothhostTest', function () {
+describe('bluetoothhostTest_host1', function () {
     beforeAll(function () {
         console.info('beforeAll called')
     })

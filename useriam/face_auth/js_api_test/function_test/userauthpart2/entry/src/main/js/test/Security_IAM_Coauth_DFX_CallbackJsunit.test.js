@@ -119,7 +119,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-describe('userauthTest', function () {
+describe('userauthTest_two1', function () {
 
     it('Security_IAM_Coauth_DFX_0105', 1, async function (done) {
         console.info('testFace Security_IAM_Coauth_DFX_0105 start');
