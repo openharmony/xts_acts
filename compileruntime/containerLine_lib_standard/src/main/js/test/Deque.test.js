@@ -16,7 +16,13 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import Deque from "@ohos.util.Deque";
 
 describe("DequeTest", function () {
-  it("SR000GGR3K_testConstructor001", 0, function () {
+
+  /**
+   * @tc.name: testConstructor001
+   * @tc.desc: Create an Deque instance. For example: let deque = new Deque().
+   * @tc.author: wangyong
+   */
+  it("testConstructor001", 0, function () {
     try {
       let deque = new Deque();
     } catch (err) {
@@ -24,86 +30,165 @@ describe("DequeTest", function () {
       expect(err.message).assertEqual("Cannot create new deque");
     }
   });
-  it("SR000GGR3K_testInsertFront001", 0, function () {
+  
+  /**
+   * @tc.name: testInsertFront002
+   * @tc.desc: Add element to deque instance header. For example: deque.insertFront("一").
+   * @tc.author: wangyong
+   */
+  it("testInsertFront002", 0, function () {
     let deque = new Deque();
     deque.insertFront("一");
     let res = deque.getFirst();
     expect(res).assertEqual("一");
   });
-  it("SR000GGR3K_testInsertFront002", 0, function () {
+  
+  /**
+   * @tc.name: testInsertFront003
+   * @tc.desc: Add element to deque instance header. For example: deque.insertFront(8).
+   * @tc.author: wangyong
+   */
+  it("testInsertFront003", 0, function () {
     let deque = new Deque();
     deque.insertFront(8);
     let res = deque.getFirst();
     expect(res).assertEqual(8);
   });
-  it("SR000GGR3K_testInsertFront003", 0, function () {
+  
+  /**
+   * @tc.name: testInsertFront004
+   * @tc.desc: Add element to deque instance header. 
+   * For example: let a = {name: "lala", age: "15"}; deque.insertFront(a).
+   * @tc.author: wangyong
+   */
+  it("testInsertFront004", 0, function () {
     let deque = new Deque();
     let a = {name: "lala", age: "15"};
     deque.insertFront(a);
     let res = deque.getFirst();
     expect(res).assertEqual(a);
   });
-  it("SR000GGR3K_testInsertFront004", 0, function () {
+  
+  /**
+   * @tc.name: testInsertFront005
+   * @tc.desc: Add element to deque instance header. For example: let a = [1, 2, 3, 4]; deque.insertFront(a).
+   * @tc.author: wangyong
+   */
+  it("testInsertFront005", 0, function () {
     let deque = new Deque();
     let a = [1, 2, 3, 4];
     deque.insertFront(a);
     let res = deque.getFirst();
     expect(res).assertEqual(a);
   });
-  it("SR000GGR3K_testInsertEnd005", 0, function () {
+  
+  /**
+   * @tc.name: testInsertEnd006
+   * @tc.desc: Add element to deque instance end. For example: deque.insertEnd(8).
+   * @tc.author: wangyong
+   */
+  it("testInsertEnd006", 0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     let res = deque.getLast();
     expect(res).assertEqual(8);
   });
-  it("SR000GGR3K_testInsertEnd006", 0, function () {
+  
+  /**
+   * @tc.name: testInsertEnd007
+   * @tc.desc: Add element to deque instance end. For example: let a = ["a", "b", "c"];deque.insertEnd(a).
+   * @tc.author: wangyong
+   */
+  it("testInsertEnd007", 0, function () {
     let deque = new Deque();
     let a = ["a", "b", "c"];
     deque.insertEnd(a);
     let res = deque.getLast();
     expect(res).assertEqual(a);
   });
-  it("SR000GGR3K_testInsertEnd007", 0, function () {
+  
+  /**
+   * @tc.name: testInsertEnd008
+   * @tc.desc: Add element to deque instance end. For example: let a = {class: "6班", say: "we"};deque.insertEnd(a).
+   * @tc.author: wangyong
+   */
+  it("testInsertEnd008", 0, function () {
     let deque = new Deque();
     let a = {class: "6班", say: "we"};
     deque.insertEnd(a);
     let res = deque.getLast();
     expect(res).assertEqual(a);
   });
-  it("SR000GGR3K_testGetFirst007", 0, function () {
+  
+  /**
+   * @tc.name: testGetFirst009
+   * @tc.desc: Get the header element of the deque instance. For example: deque.getFirst().
+   * @tc.author: wangyong
+   */
+  it("testGetFirst009", 0, function () {
     let deque = new Deque();
     deque.insertEnd("四");
     deque.insertEnd("三");
     let res = deque.getFirst();
     expect(res).assertEqual("四");
   });
-  it("SR000GGR3K_testGetLast008", 0, function () {
+  
+  /**
+   * @tc.name: testGetLast010
+   * @tc.desc: Get the end element of the deque instance. For example: deque.getLast().
+   * @tc.author: wangyong
+   */
+  it("testGetLast010", 0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     deque.insertEnd("三");
     let res = deque.getLast();
     expect(res).assertEqual("三");
   });
-  it("SR000GGR3K_testHas009", 0, function () {
+  
+  /**
+   * @tc.name: testHas011
+   * @tc.desc: Determine whether the deque instance contains the specified element. For example: deque.has(6).
+   * @tc.author: wangyong
+   */
+  it("testHas011", 0, function () {
     let deque = new Deque();
     deque.insertEnd(6);
     let res = deque.has(6);
     expect(res).assertEqual(true);
   });
-  it("SR000GGR3K_testHas010", 0, function () {
+  
+  /**
+   * @tc.name: testHas012
+   * @tc.desc: Determine whether the deque instance contains the specified element. For example: deque.has(6).
+   * @tc.author: wangyong
+   */
+  it("testHas012", 0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     let res = deque.has(6);
     expect(res).assertEqual(false);
   });
-  it("SR000GGR3K_testPopFirst011", 0, function () {
+  
+  /**
+   * @tc.name: testPopFirst013
+   * @tc.desc: Delete the header element of a deque instance. For example: deque.popFirst().
+   * @tc.author: wangyong
+   */
+  it("testPopFirst013", 0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     deque.insertFront("一");
     let res = deque.popFirst();
     expect(res).assertEqual("一");
   });
-  it("SR000GGR3K_testPopLast012", 0, function () {
+  
+  /**
+   * @tc.name: testPopLast014
+   * @tc.desc: Delete the end element of a deque instance. For example: deque.popLast().
+   * @tc.author: wangyong
+   */
+  it("testPopLast014", 0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     deque.insertFront("一");
@@ -111,7 +196,13 @@ describe("DequeTest", function () {
     let res = deque.popLast();
     expect(res).assertEqual(8);
   });
-  it("SR000GGR3K_testForEach013", 0, function () {
+  
+  /**
+   * @tc.name: testForEach015
+   * @tc.desc: Traversing elements in deque instances. For example: deque.forEach((item, index) => {arr.push(item);}).
+   * @tc.author: wangyong
+   */
+  it("testForEach015", 0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     deque.insertFront("一");
@@ -133,7 +224,13 @@ describe("DequeTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR3K_testIterator014", 0, function () {
+  
+  /**
+   * @tc.name: testIterator016
+   * @tc.desc: Iterate over all elements in the deque instance. For example: for (let item of deque) { arr.push(item);}.
+   * @tc.author: wangyong
+   */
+  it("testIterator016", 0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     deque.insertFront("一");
@@ -151,31 +248,61 @@ describe("DequeTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR3K_testInsertFront015", 0, function () {
+  
+  /**
+   * @tc.name: testInsertFront017
+   * @tc.desc: Add element to deque instance header. For example: deque.insertFront("$").
+   * @tc.author: wangyong
+   */
+  it("testInsertFront017", 0, function () {
     let deque = new Deque();
     deque.insertFront("$");
     let res = deque.getFirst();
     expect(res).assertEqual("$");
   });
-  it("SR000GGR3K_testInsertFront016", 0, function () {
+    
+  /**
+   * @tc.name: testInsertFront018
+   * @tc.desc: Add element to deque instance header. For example: deque.insertFront(" ").
+   * @tc.author: wangyong
+   */
+  it("testInsertFront018", 0, function () {
     let deque = new Deque();
     deque.insertFront(" ");
     let res = deque.getFirst();
     expect(res).assertEqual(" ");
   });
-  it("SR000GGR3K_testInsertFront017", 0, function () {
+  
+  /**
+   * @tc.name: testInsertFront019
+   * @tc.desc: Add element to deque instance header. For example: deque.insertFront(null).
+   * @tc.author: wangyong
+   */
+  it("testInsertFront019", 0, function () {
     let deque = new Deque();
     deque.insertFront(null);
     let res = deque.getFirst();
     expect(res).assertEqual(null);
   });
-  it("SR000GGR3K_testInsertFront018", 0, function () {
+  
+  /**
+   * @tc.name: testInsertFront020
+   * @tc.desc: Add element to deque instance header. For example: deque.insertFront(undefined).
+   * @tc.author: wangyong
+   */
+  it("testInsertFront020", 0, function () {
     let deque = new Deque();
     deque.insertFront(undefined);
     let res = deque.getFirst();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3K_testInsertFront019", 0, function () {
+  
+  /**
+   * @tc.name: testInsertFront021
+   * @tc.desc: Add element to deque instance header. For example: for (let i = 0; i < 100; i++) {deque.insertFront(i)}.
+   * @tc.author: wangyong
+   */
+  it("testInsertFront021", 0, function () {
     let deque = new Deque();
     for (let i = 0; i < 100; i++) {
       deque.insertFront(i);
@@ -185,31 +312,61 @@ describe("DequeTest", function () {
     let res1 = deque.length;
     expect(res1).assertEqual(100);
   });
-  it("SR000GGR3K_testInsertEnd020", 0, function () {
+  
+  /**
+   * @tc.name: testInsertEnd022
+   * @tc.desc: Add element to deque instance end. For example: deque.insertEnd("$").
+   * @tc.author: wangyong
+   */
+  it("testInsertEnd022", 0, function () {
     let deque = new Deque();
     deque.insertEnd("$");
     let res = deque.getLast();
     expect(res).assertEqual("$");
   });
-  it("SR000GGR3K_testInsertEnd021", 0, function () {
+  
+  /**
+   * @tc.name: testInsertEnd023
+   * @tc.desc: Add element to deque instance end. For example: deque.insertEnd(" ").
+   * @tc.author: wangyong
+   */
+  it("testInsertEnd023", 0, function () {
     let deque = new Deque();
     deque.insertEnd(" ");
     let res = deque.getLast();
     expect(res).assertEqual(" ");
   });
-  it("SR000GGR3K_testInsertEnd022", 0, function () {
+  
+  /**
+   * @tc.name: testInsertEnd024
+   * @tc.desc: Add element to deque instance end. For example: deque.insertEnd(null).
+   * @tc.author: wangyong
+   */
+  it("testInsertEnd024", 0, function () {
     let deque = new Deque();
     deque.insertEnd(null);
     let res = deque.getLast();
     expect(res).assertEqual(null);
   });
-  it("SR000GGR3K_testInsertEnd023", 0, function () {
+  
+  /**
+   * @tc.name: testInsertEnd025
+   * @tc.desc: Add element to deque instance end. For example: deque.insertEnd(undefined).
+   * @tc.author: wangyong
+   */
+  it("testInsertEnd025", 0, function () {
     let deque = new Deque();
     deque.insertEnd(undefined);
     let res = deque.getLast();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3K_testInsertFront024", 0, function () {
+  
+  /**
+   * @tc.name: testInsertFront026
+   * @tc.desc: Add element to deque instance end. For example: for (let i = 0; i < 100; i++) {deque.insertEnd(i);}.
+   * @tc.author: wangyong
+   */
+  it("testInsertFront026", 0, function () {
     let deque = new Deque();
     for (let i = 0; i < 100; i++) {
       deque.insertEnd(i);
@@ -219,32 +376,68 @@ describe("DequeTest", function () {
     let res1 = deque.length;
     expect(res1).assertEqual(100);
   });
-  it("SR000GGR3K_testHas025", 0, function () {
+  
+  /**
+   * @tc.name: testHas027
+   * @tc.desc: Determine whether the deque instance contains the specified element. For example: deque.has(6).
+   * @tc.author: wangyong
+   */
+  it("testHas027", 0, function () {
     let deque = new Deque();
     let res = deque.has(6);
     expect(res).assertEqual(false);
   });
-  it("SR000GGR3K_testPopFirst026", 0, function () {
+  
+  /**
+   * @tc.name: testPopFirst028
+   * @tc.desc: Delete the header element of a deque instance. For example: deque.popFirst().
+   * @tc.author: wangyong
+   */
+  it("testPopFirst028", 0, function () {
     let deque = new Deque();
     let res = deque.popFirst();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3K_testGetFirst027", 0, function () {
+  
+  /**
+   * @tc.name: testGetFirst029
+   * @tc.desc: Get the header element of the deque instance. For example: deque.getFirst().
+   * @tc.author: wangyong
+   */
+  it("testGetFirst029", 0, function () {
     let deque = new Deque();
     let res = deque.getFirst();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3K_testPopLast028", 0, function () {
+  
+  /**
+   * @tc.name: testPopLast030
+   * @tc.desc: Delete the end element of a deque instance. For example: deque.popLast().
+   * @tc.author: wangyong
+   */
+  it("testPopLast030", 0, function () {
     let deque = new Deque();
     let res = deque.popLast();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3K_testGetLast029", 0, function () {
+  
+  /**
+   * @tc.name: testGetLast031
+   * @tc.desc: Get the end element of the deque instance. For example: deque.getLast().
+   * @tc.author: wangyong
+   */
+  it("testGetLast031", 0, function () {
     let deque = new Deque();
     let res = deque.getLast();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3K_testForEach030", 0, function () {
+  
+  /**
+   * @tc.name: testForEach032
+   * @tc.desc: Traversing elements in deque instances. For example: deque.forEach((item, index) => {arr.push(item);}).
+   * @tc.author: wangyong
+   */
+  it("testForEach032", 0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     deque.insertEnd(1);
@@ -267,7 +460,13 @@ describe("DequeTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR3K_testIterator031", 0, function () {
+  
+  /**
+   * @tc.name: testIterator033
+   * @tc.desc: Iterate over all elements in the deque instance. For example: for (let item of deque) { arr.push(item);}.
+   * @tc.author: wangyong
+   */
+  it("testIterator033", 0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     deque.insertFront("一");
@@ -289,7 +488,13 @@ describe("DequeTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR3K_testIterator032", 0, function () {
+  
+  /**
+   * @tc.name: testIterator034
+   * @tc.desc: Iterate over all elements in the deque instance. For example: deque[Symbol.iterator]().
+   * @tc.author: wangyong
+   */
+  it("testIterator034", 0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     deque.insertFront("a");
@@ -313,7 +518,13 @@ describe("DequeTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR3K_testLength033", 0, function () {
+  
+  /**
+   * @tc.name: testLength035
+   * @tc.desc: Get the number of elements in the deque instance. For example: deque.length.
+   * @tc.author: wangyong
+   */
+  it("testLength035", 0, function () {
     let deque = new Deque();
     deque.insertEnd(8);
     deque.insertFront("a");

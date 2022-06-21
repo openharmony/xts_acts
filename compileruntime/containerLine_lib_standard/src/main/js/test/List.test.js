@@ -16,7 +16,13 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import List from "@ohos.util.List";
 
 describe("ListTest", function () {
-  it("SR000GGR4A_testConstructor001", 0, function () {
+
+  /**
+   * @tc.name: testConstructor001
+   * @tc.desc: Create an List instance. For example: let list = new List().
+   * @tc.author: wangyong
+   */
+  it("testConstructor001", 0, function () {
     try {
       let list = new List();
       expect(list != undefined).assertEqual(true);
@@ -25,33 +31,65 @@ describe("ListTest", function () {
       expect(err.message).assertEqual("cannot create new list");
     }
   });
-  it("SR000GGR4A_testGet002", 0, function () {
+  
+  /**
+   * @tc.name: testGet002
+   * @tc.desc: Gets the element corresponding to the specified index. For example: list.get(0).
+   * @tc.author: wangyong
+   */
+  it("testGet002", 0, function () {
     let list = new List();
     list.add("四");
     let res = list.get(0);
     expect(res).assertEqual("四");
   });
-  it("SR000GGR4A_testAdd002", 0, function () {
+    
+  /**
+   * @tc.name: testAdd003
+   * @tc.desc: Add a element to the end of the List instance. For example: list.add(8).
+   * @tc.author: wangyong
+   */
+  it("testAdd003", 0, function () {
     let list = new List();
     list.add(8);
     let res = list.get(0);
     expect(res).assertEqual(8);
   });
-  it("SR000GGR4A_testAdd003", 0, function () {
+    
+  /**
+   * @tc.name: testAdd004
+   * @tc.desc: Add a element to the end of the List instance. 
+   * For example: let a = [1, 2, 3, 4]; list.add(a).
+   * @tc.author: wangyong
+   */
+  it("testAdd004", 0, function () {
     let list = new List();
     let a = [1, 2, 3, 4];
     list.add(a);
     let res = list.get(0);
     expect(res).assertEqual(a);
   });
-  it("SR000GGR4A_testAdd004", 0, function () {
+    
+  /**
+   * @tc.name: testAdd005
+   * @tc.desc: Add a element to the end of the List instance. 
+   * For example: let a = {name: "lala", age: "13"}; list.add(a).
+   * @tc.author: wangyong
+   */
+  it("testAdd005", 0, function () {
     let list = new List();
     let a = {name: "lala", age: "13"};
     list.add(a);
     let res = list.get(0);
     expect(res).assertEqual(a);
   });
-  it("SR000GGR4A_testHas005", 0, function () {
+    
+  /**
+   * @tc.name: testHas006
+   * @tc.desc: Check whether the List contains a specified element. For example: list.has("a").
+   * @tc.author: wangyong
+   */
+  it("testHas006", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -59,7 +97,13 @@ describe("ListTest", function () {
     let res = list.has("a");
     expect(res).assertEqual(true);
   });
-  it("SR000GGR4A_testHas006", 0, function () {
+    
+  /**
+   * @tc.name: testHas007
+   * @tc.desc: Check whether the List contains a specified element. For example: list.has("d").
+   * @tc.author: wangyong
+   */
+  it("testHas007", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -67,7 +111,13 @@ describe("ListTest", function () {
     let res = list.has("d");
     expect(res).assertEqual(false);
   });
-  it("SR000GGR4A_testEqual007", 0, function () {
+    
+  /**
+   * @tc.name: testEqual008
+   * @tc.desc: Judge whether two List instances are equal. For example: let res = list.equal(list1).
+   * @tc.author: wangyong
+   */
+  it("testEqual008", 0, function () {
     let list = new List();
     let list1 = new List();
     list.add("a");
@@ -79,7 +129,13 @@ describe("ListTest", function () {
     let res = list.equal(list1);
     expect(res).assertEqual(false);
   });
-  it("SR000GGR4A_testEqual008", 0, function () {
+    
+  /**
+   * @tc.name: testEqual009
+   * @tc.desc: Judge whether two List instances are equal. For example: let res = list.equal(list1).
+   * @tc.author: wangyong
+   */
+  it("testEqual009", 0, function () {
     let list = new List();
     let list1 = new List();
     list.add("a");
@@ -91,7 +147,13 @@ describe("ListTest", function () {
     let res = list.equal(list1);
     expect(res).assertEqual(true);
   });
-  it("SR000GGR4A_testEqual009", 0, function () {
+    
+  /**
+   * @tc.name: testEqual010
+   * @tc.desc: Judge whether two List instances are equal. For example: let res = list.equal(list1).
+   * @tc.author: wangyong
+   */
+  it("testEqual010", 0, function () {
     let list = new List();
     let list1 = new List();
     list.add("a");
@@ -102,7 +164,13 @@ describe("ListTest", function () {
     let res = list.equal(list1);
     expect(res).assertEqual(false);
   });
-  it("SR000GGR4A_testGet010", 0, function () {
+    
+  /**
+   * @tc.name: testGet011
+   * @tc.desc: Gets the element corresponding to the specified index. For example: list.get(2).
+   * @tc.author: wangyong
+   */
+  it("testGet010", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -113,7 +181,14 @@ describe("ListTest", function () {
     let res = list.get(2);
     expect(res).assertEqual("c");
   });
-  it("SR000GGR4A_testGetLastIndexOf011", 0, function () {
+    
+  /**
+   * @tc.name: testGetLastIndexOf012
+   * @tc.desc:  In the List instance, find the index of a specified element from brack to front, 
+   * and return the index found for the first time. If not found, return -1. For example: list.getLastIndexOf("a").
+   * @tc.author: wangyong
+   */
+  it("testGetLastIndexOf012", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -124,7 +199,14 @@ describe("ListTest", function () {
     let res = list.getLastIndexOf("a");
     expect(res).assertEqual(3);
   });
-  it("SR000GGR4A_testGetIndexOf012", 0, function () {
+    
+  /**
+   * @tc.name: testGetIndexOf013
+   * @tc.desc:  In the List instance, find the index of a specified element from front to back, 
+   * and return the index found for the first time. If not found, return -1. For example: list.getIndexOf("b").
+   * @tc.author: wangyong
+   */
+  it("testGetIndexOf013", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -135,7 +217,13 @@ describe("ListTest", function () {
     let res = list.getIndexOf("b");
     expect(res).assertEqual(1);
   });
-  it("SR000GGR4A_testRemoveByIndex013", 0, function () {
+    
+  /**
+   * @tc.name: testRemoveByIndex014
+   * @tc.desc: In the List instance, delete the element based on its index. For example: list.removeByIndex(2).
+   * @tc.author: wangyong
+   */
+  it("testRemoveByIndex014", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -152,7 +240,13 @@ describe("ListTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR4A_testRemove014", 0, function () {
+    
+  /**
+   * @tc.name: testRemove015
+   * @tc.desc: Delete the specified element. For example: list.remove("a").
+   * @tc.author: wangyong
+   */
+  it("testRemove015", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -169,7 +263,14 @@ describe("ListTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR4A_testConstructor015", 0, function () {
+    
+  /**
+   * @tc.name: testReplaceAllElements016
+   * @tc.desc: Perform some operation on the elements in the List instance and return the List instance 
+   * after the operation. For example: list.replaceAllElements((item, index) => {return (item = 2 * item);}).
+   * @tc.author: wangyong
+   */
+  it("testReplaceAllElements016", 0, function () {
     let list = new List();
     list.add(1);
     list.add(2);
@@ -187,7 +288,13 @@ describe("ListTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR4A_testGetFirst016", 0, function () {
+    
+  /**
+   * @tc.name: testGetFirst017
+   * @tc.desc: Get the header element of the List instance. For example: list.getFirst().
+   * @tc.author: wangyong
+   */
+  it("testGetFirst017", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -197,7 +304,13 @@ describe("ListTest", function () {
     let res = list.getFirst();
     expect(res).assertEqual("a");
   });
-  it("SR000GGR4A_testGetLast017", 0, function () {
+    
+  /**
+   * @tc.name: testGetLast018
+   * @tc.desc: Get the end element of the List instance. For example: list.getLast().
+   * @tc.author: wangyong
+   */
+  it("testGetLast018", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -207,7 +320,13 @@ describe("ListTest", function () {
     let res = list.getLast();
     expect(res).assertEqual("b");
   });
-  it("SR000GGR4A_testInsert018", 0, function () {
+    
+  /**
+   * @tc.name: testInsert019
+   * @tc.desc: Insert an element into the middle of the List instance. For example: list.insert("d", 3).
+   * @tc.author: wangyong
+   */
+  it("testInsert019", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -224,7 +343,13 @@ describe("ListTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR4A_testSet019", 0, function () {
+    
+  /**
+   * @tc.name: testSet020
+   * @tc.desc: Modify the element corresponding to the specified index. For example: list.set(2, "d").
+   * @tc.author: wangyong
+   */
+  it("testSet020", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -234,7 +359,13 @@ describe("ListTest", function () {
     let res1 = list.get(2);
     expect(res1).assertEqual("d");
   });
-  it("SR000GGR4A_testSort020", 0, function () {
+    
+  /**
+   * @tc.name: testSort021
+   * @tc.desc: Arrange the elements in the List instance in descending order. For example: list.sort((a, b) => a - b).
+   * @tc.author: wangyong
+   */
+  it("testSort021", 0, function () {
     let list = new List();
     list.add(4);
     list.add(3);
@@ -251,7 +382,14 @@ describe("ListTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR4A_testGetSubList021", 0, function () {
+    
+  /**
+   * @tc.name: testGetSubList022
+   * @tc.desc: Intercepts an element within the specified range, including the element with the 
+   * starting index but not the element with the ending index. For example: list.getSubList(2, 4).
+   * @tc.author: wangyong
+   */
+  it("testGetSubList022", 0, function () {
     let list = new List();
     list.add(4);
     list.add(3);
@@ -268,7 +406,13 @@ describe("ListTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR4A_testConvertToArray022", 0, function () {
+    
+  /**
+   * @tc.name: testConvertToArray023
+   * @tc.desc: Convert an List instance to an array. For example: list.convertToArray().
+   * @tc.author: wangyong
+   */
+  it("testConvertToArray023", 0, function () {
     let list = new List();
     list.add(4);
     list.add(3);
@@ -282,7 +426,13 @@ describe("ListTest", function () {
       expect(res[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR4A_testLength023", 0, function () {
+    
+  /**
+   * @tc.name: testLength024
+   * @tc.desc: Get the number of elements contained in the List instance. For example: list.length.
+   * @tc.author: wangyong
+   */
+  it("testLength024", 0, function () {
     let list = new List();
     list.add(4);
     list.add(3);
@@ -292,7 +442,13 @@ describe("ListTest", function () {
     let res = list.length;
     expect(res).assertEqual(5);
   });
-  it("SR000GGR4A_testConstructor024", 0, function () {
+    
+  /**
+   * @tc.name: testIterator025
+   * @tc.desc: Iterates over all elements in an List instance. For example: for (let item of list) {arr.push(item);}.
+   * @tc.author: wangyong
+   */
+  it("testIterator025", 0, function () {
     let list = new List();
     list.add(8);
     list.add("一");
@@ -312,7 +468,13 @@ describe("ListTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR4A_testForEach025", 0, function () {
+    
+  /**
+   * @tc.name: testForEach026
+   * @tc.desc: Traversing elements in an List instance. For example: list.forEach((item, index) => {arr.push(item);}).
+   * @tc.author: wangyong
+   */
+  it("testForEach026", 0, function () {
     let list = new List();
     list.add(8);
     list.add("一");
@@ -332,7 +494,13 @@ describe("ListTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR4A_testIsEmpty026", 0, function () {
+    
+  /**
+   * @tc.name: testIsEmpty027
+   * @tc.desc: Determine whether the List instance is empty. For example: list.isEmpty().
+   * @tc.author: wangyong
+   */
+  it("testIsEmpty027", 0, function () {
     let list = new List();
     list.add(8);
     list.add("一");
@@ -346,7 +514,13 @@ describe("ListTest", function () {
     let res = list.isEmpty();
     expect(res).assertEqual(false);
   });
-  it("SR000GGR4A_testClear027", 0, function () {
+    
+  /**
+   * @tc.name: testClear028
+   * @tc.desc: Clear all elements in the List instance. For example: list.clear().
+   * @tc.author: wangyong
+   */
+  it("testClear028", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -356,7 +530,13 @@ describe("ListTest", function () {
     let res = list.length;
     expect(res).assertEqual(0);
   });
-  it("SR000GGR4A_testGet028", 0, function () {
+    
+  /**
+   * @tc.name: testGet029
+   * @tc.desc: Gets the element corresponding to the specified index. For example: list.get(6).
+   * @tc.author: wangyong
+   */
+  it("testGet029", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -367,7 +547,14 @@ describe("ListTest", function () {
     let res = list.get(6);
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR4A_testGetLastIndexOf029", 0, function () {
+    
+  /**
+   * @tc.name: testGetLastIndexOf030
+   * @tc.desc:  In the List instance, find the index of a specified element from brack to front, 
+   * and return the index found for the first time. If not found, return -1. For example: list.getLastIndexOf("F").
+   * @tc.author: wangyong
+   */
+  it("testGetLastIndexOf030", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -378,7 +565,13 @@ describe("ListTest", function () {
     let res = list.getLastIndexOf("F");
     expect(res).assertEqual(-1);
   });
-  it("SR000GGR4A_testRemoveByIndex030", 0, function () {
+    
+  /**
+   * @tc.name: testRemoveByIndex031
+   * @tc.desc: In the List instance, delete the element based on its index. For example: list.removeByIndex(5).
+   * @tc.author: wangyong
+   */
+  it("testRemoveByIndex031", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -392,13 +585,25 @@ describe("ListTest", function () {
       expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
-  it("SR000GGR4A_testRemove031", 0, function () {
+    
+  /**
+   * @tc.name: testRemove032
+   * @tc.desc: Delete the specified element. For example: list.remove().
+   * @tc.author: wangyong
+   */
+  it("testRemove032", 0, function () {
     let list = new List();
     list.add();
     let res = list.remove();
     expect(res).assertEqual(true);
   });
-  it("SR000GGR4A_testInsert032", 0, function () {
+    
+  /**
+   * @tc.name: testInsert033
+   * @tc.desc: Insert an element into the middle of the List instance. For example: list.insert("d", 8).
+   * @tc.author: wangyong
+   */
+  it("testInsert033", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -412,7 +617,13 @@ describe("ListTest", function () {
       expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
-  it("SR000GGR4A_testSort033", 0, function () {
+    
+  /**
+   * @tc.name: testSort034
+   * @tc.desc: Arrange the elements in the List instance in descending order. For example: list.sort((a, b) => a - b).
+   * @tc.author: wangyong
+   */
+  it("testSort034", 0, function () {
     let list = new List();
     list.add(";");
     list.add("一");
@@ -430,7 +641,14 @@ describe("ListTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR4A_testGetSubList034", 0, function () {
+    
+  /**
+   * @tc.name: testGetSubList035
+   * @tc.desc: Intercepts an element within the specified range, including the element with the 
+   * starting index but not the element with the ending index. For example: list.getSubList(2, 8).
+   * @tc.author: wangyong
+   */
+  it("testGetSubList035", 0, function () {
     let list = new List();
     list.add("4");
     list.add("3");
@@ -444,7 +662,14 @@ describe("ListTest", function () {
       expect(err.message).assertEqual("the fromIndex or the toIndex is out-of-bounds");
     }
   });
-  it("SR000GGR4A_testGetSubList035", 0, function () {
+    
+  /**
+   * @tc.name: testGetSubList036
+   * @tc.desc: Intercepts an element within the specified range, including the element with the 
+   * starting index but not the element with the ending index. For example: list.getSubList(6, 8).
+   * @tc.author: wangyong
+   */
+  it("testGetSubList036", 0, function () {
     let list = new List();
     list.add("4");
     list.add("3");
@@ -458,7 +683,14 @@ describe("ListTest", function () {
       expect(err.message).assertEqual("the fromIndex or the toIndex is out-of-bounds");
     }
   });
-  it("SR000GGR4A_testGetSubList036", 0, function () {
+    
+  /**
+   * @tc.name: testGetSubList037
+   * @tc.desc: Intercepts an element within the specified range, including the element with the 
+   * starting index but not the element with the ending index. For example: list.getSubList(6, 2).
+   * @tc.author: wangyong
+   */
+  it("testGetSubList037", 0, function () {
     let list = new List();
     list.add("4");
     list.add("3");
@@ -472,7 +704,13 @@ describe("ListTest", function () {
       expect(err.message).assertEqual("the toIndex cannot be less than or equal to fromIndex");
     }
   });
-  it("SR000GGR4A_testAdd037", 0, function () {
+    
+  /**
+   * @tc.name: testAdd038
+   * @tc.desc: Add a element to the end of the List instance. For example: list.add("*").
+   * @tc.author: wangyong
+   */
+  it("testAdd038", 0, function () {
     let list = new List();
     list.add(".");
     list.add("*");
@@ -480,7 +718,13 @@ describe("ListTest", function () {
     let res = list.get(0);
     expect(res).assertEqual(".");
   });
-  it("SR000GGR4A_testAdd038", 0, function () {
+    
+  /**
+   * @tc.name: testAdd039
+   * @tc.desc: Add a element to the end of the List instance. For example: list.add("*").
+   * @tc.author: wangyong
+   */
+  it("testAdd039", 0, function () {
     let list = new List();
     list.add(".");
     list.add("*");
@@ -494,13 +738,25 @@ describe("ListTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR4A_testAdd039", 0, function () {
+    
+  /**
+   * @tc.name: testAdd040
+   * @tc.desc: Add a element to the end of the List instance. For example: list.add(" ").
+   * @tc.author: wangyong
+   */
+  it("testAdd040", 0, function () {
     let list = new List();
     list.add(" ");
     let res = list.get(0);
     expect(res).assertEqual(" ");
   });
-  it("SR000GGR4A_testAdd040", 0, function () {
+    
+  /**
+   * @tc.name: testAdd041
+   * @tc.desc: Add a element to the end of the List instance. For example: list.add("a").
+   * @tc.author: wangyong
+   */
+  it("testAdd041", 0, function () {
     let list = new List();
     list.add("a");
     list.add("a");
@@ -509,14 +765,26 @@ describe("ListTest", function () {
     expect(res).assertEqual("a");
     expect(res1).assertEqual("a");
   });
-  it("SR000GGR4A_testListGet041", 0, function () {
+    
+  /**
+   * @tc.name: testListGet042
+   * @tc.desc: Gets the element corresponding to the specified index. For example: list[0].
+   * @tc.author: wangyong
+   */
+  it("testListGet042", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
     let res = list[0];
     expect(res).assertEqual("a");
   });
-  it("SR000GGR4A_testListSet042", 0, function () {
+    
+  /**
+   * @tc.name: testListSet043
+   * @tc.desc: Modify the element corresponding to the specified index. For example: list[1] = "c".
+   * @tc.author: wangyong
+   */
+  it("testListSet043", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
@@ -527,7 +795,13 @@ describe("ListTest", function () {
       console.log(item);
     });
   });
-  it("SR000GGR4A_testAdd043", 0, function () {
+    
+  /**
+   * @tc.name: testAdd044
+   * @tc.desc: Add a element to the end of the List instance. For example: for (let i = 0; i < 100; i++) {list.add(i);}.
+   * @tc.author: wangyong
+   */
+  it("testAdd044", 0, function () {
     let list = new List();
     for (let i = 0; i < 100; i++) {
       list.add(i);
@@ -537,38 +811,74 @@ describe("ListTest", function () {
     expect(res).assertEqual(99);
     expect(res1).assertEqual(100);
   });
-  it("SR000GGR4A_testAdd044", 0, function () {
+    
+  /**
+   * @tc.name: testAdd045
+   * @tc.desc: Add a element to the end of the List instance. For example: list.add(null).
+   * @tc.author: wangyong
+   */
+  it("testAdd045", 0, function () {
     let list = new List();
     list.add(null);
     let res = list.get(0);
     expect(res).assertEqual(null);
   });
-  it("SR000GGR4A_testAdd045", 0, function () {
+    
+  /**
+   * @tc.name: testAdd046
+   * @tc.desc: Add a element to the end of the List instance. For example: list.add(0.1111).
+   * @tc.author: wangyong
+   */
+  it("testAdd046", 0, function () {
     let list = new List();
     list.add(0.1111);
     let res = list.get(0);
     expect(res).assertEqual(0.1111);
   });
-  it("SR000GGR4A_testAdd046", 0, function () {
+    
+  /**
+   * @tc.name: testAdd047
+   * @tc.desc: Add a element to the end of the List instance. For example: list.add(-1).
+   * @tc.author: wangyong
+   */
+  it("testAdd047", 0, function () {
     let list = new List();
     list.add(-1);
     let res = list.get(0);
     expect(res).assertEqual(-1);
   });
-  it("SR000GGR4A_testAdd047", 0, function () {
+    
+  /**
+   * @tc.name: testAdd048
+   * @tc.desc: Add a element to the end of the List instance. For example: const obj = {}; list.add(obj).
+   * @tc.author: wangyong
+   */
+  it("testAdd048", 0, function () {
     let list = new List();
     const obj = {};
     list.add(obj);
     let res = list.get(0);
     expect(res).assertEqual(obj);
   });
-  it("SR000GGR4A_testSort048", 0, function () {
+    
+  /**
+   * @tc.name: testSort049
+   * @tc.desc: Arrange the elements in the List instance in descending order. For example: list.sort((a, b) => a - b).
+   * @tc.author: wangyong
+   */
+  it("testSort049", 0, function () {
     let list = new List();
     list.sort((a, b) => a - b);
     let res1 = list.length;
     expect(res1).assertEqual(0);
   });
-  it("SR000GGR4A_testRemoveByIndex049", 0, function () {
+    
+  /**
+   * @tc.name: testRemoveByIndex050
+   * @tc.desc: In the List instance, delete the element based on its index. For example: list.removeByIndex(1).
+   * @tc.author: wangyong
+   */
+  it("testRemoveByIndex050", 0, function () {
     let list = new List();
     try {
       let res = list.removeByIndex(1);
@@ -577,18 +887,37 @@ describe("ListTest", function () {
       expect(err.message).assertEqual("the index is out-of-bounds");
     }
   });
-  it("SR000GGR4A_testEqual050", 0, function () {
+    
+  /**
+   * @tc.name: testEqual051
+   * @tc.desc: Judge whether two List instances are equal. For example: let res = list.equal(list1).
+   * @tc.author: wangyong
+   */
+  it("testEqual051", 0, function () {
     let list = new List();
     let list1 = new List();
     let res = list.equal(list1);
     expect(res).assertEqual(true);
   });
-  it("SR000GGR4A_testGetIndexOf051", 0, function () {
+    
+  /**
+   * @tc.name: testGetIndexOf052
+   * @tc.desc:  In the List instance, find the index of a specified element from front to back, 
+   * and return the index found for the first time. If not found, return -1. For example: list.getIndexOf("b").
+   * @tc.author: wangyong
+   */
+  it("testGetIndexOf052", 0, function () {
     let list = new List();
     let res = list.getIndexOf(1);
     expect(res).assertEqual(-1);
   });
-  it("SR000GGR4A_testForEach052", 0, function () {
+    
+  /**
+   * @tc.name: testForEach053
+   * @tc.desc: Traversing elements in an List instance. For example: list.forEach((item, index) => {num++;}).
+   * @tc.author: wangyong
+   */
+  it("testForEach053", 0, function () {
     let list = new List();
     let num = 0;
     list.forEach((item, index) => {
@@ -596,33 +925,70 @@ describe("ListTest", function () {
     });
     expect(num).assertEqual(0);
   });
-  it("SR000GGR4A_testIsEmpty053", 0, function () {
+    
+  /**
+   * @tc.name: testIsEmpty054
+   * @tc.desc: Determine whether the List instance is empty. For example: list.isEmpty().
+   * @tc.author: wangyong
+   */
+  it("testIsEmpty054", 0, function () {
     let list = new List();
     let res = list.isEmpty();
     expect(res).assertEqual(true);
   });
-  it("SR000GGR4A_testHas054", 0, function () {
+    
+  /**
+   * @tc.name: testHas055
+   * @tc.desc: Check whether the List contains a specified element. For example: list.has(1).
+   * @tc.author: wangyong
+   */
+  it("testHas055", 0, function () {
     let list = new List();
     let res = list.has(1);
     expect(res).assertEqual(false);
   });
-  it("SR000GGR4A_testGet055", 0, function () {
+    
+  /**
+   * @tc.name: testGet056
+   * @tc.desc: Gets the element corresponding to the specified index. For example: list.get(1).
+   * @tc.author: wangyong
+   */
+  it("testGet056", 0, function () {
     let list = new List();
     let res = list.get(1);
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR4A_testClear056", 0, function () {
+    
+  /**
+   * @tc.name: testClear057
+   * @tc.desc: Clear all elements in the List instance. For example: list.clear().
+   * @tc.author: wangyong
+   */
+  it("testClear057", 0, function () {
     let list = new List();
     list.clear();
     let res1 = list.length;
     expect(res1).assertEqual(0);
   });
-  it("SR000GGR4A_testGetLast057", 0, function () {
+    
+  /**
+   * @tc.name: testGetLast058
+   * @tc.desc: Get the end element of the List instance. For example: list.getLast().
+   * @tc.author: wangyong
+   */
+  it("testGetLast058", 0, function () {
     let list = new List();
     let res = list.getLast();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR4A_testReplaceAllElements058", 0, function () {
+    
+  /**
+   * @tc.name: testReplaceAllElements059"
+   * @tc.desc: Perform some operation on the elements in the List instance and return the List instance 
+   * after the operation. For example: list.replaceAllElements((item, index) => {num++;}).
+   * @tc.author: wangyong
+   */
+  it("testReplaceAllElements059", 0, function () {
     let list = new List();
     let num = 0;
     list.replaceAllElements((item, index) => {
@@ -630,17 +996,35 @@ describe("ListTest", function () {
     });
     expect(num).assertEqual(0);
   });
-  it("SR000GGR4A_testConvertToArray059", 0, function () {
+    
+  /**
+   * @tc.name: testConvertToArray060
+   * @tc.desc: Convert an List instance to an array. For example: list.convertToArray().
+   * @tc.author: wangyong
+   */
+  it("testConvertToArray060", 0, function () {
     let list = new List();
     const res = list.convertToArray();
     expect(res.length).assertEqual(0);
   });
-  it("SR000GGR4A_testConvertToArray060", 0, function () {
+    
+  /**
+   * @tc.name: testConvertToArray061
+   * @tc.desc: Convert an List instance to an array. For example: list.convertToArray().
+   * @tc.author: wangyong
+   */
+  it("testConvertToArray061", 0, function () {
     let list = new List();
     const res = list.convertToArray();
     expect(res.length).assertEqual(0);
   });
-  it("SR000GGR4A_testlterator061", 0, function () {
+    
+  /**
+   * @tc.name: testlterator062
+   * @tc.desc: Iterates over all elements in an List instance. For example: for (const iterator of list) { num++;}.
+   * @tc.author: wangyong
+   */
+  it("testlterator062", 0, function () {
     let list = new List();
     for (let index = 0; index < 10; index++) {
       list.add(index);
@@ -651,12 +1035,24 @@ describe("ListTest", function () {
       num++;
     }
   });
-  it("SR000GGR4A_testGetFirst062", 0, function () {
+    
+  /**
+   * @tc.name: testlterator063
+   * @tc.desc: Get the header element of the List instance. For example: list.getFirst().
+   * @tc.author: wangyong
+   */
+  it("testGetFirst063", 0, function () {
     let list = new List();
     let res = list.getFirst();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR4A_testIterator063", 0, function () {
+    
+  /**
+   * @tc.name: testIterator064
+   * @tc.desc: Iterates over all elements in an List instance. For example: List[Symbol.iterator]().
+   * @tc.author: wangyong
+   */
+  it("testIterator064", 0, function () {
     let list = new List();
     list.add("a");
     list.add("b");
