@@ -1745,23 +1745,6 @@ describe('VideoPlayerAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1100
-        * @tc.name      : 11.seek 3 times
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function
-        * @tc.level     : Level2
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1100', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
-            PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, SEEK_EVENT, SEEK_TIME,
-            SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
-    })
-
-    /* *
         * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1300
         * @tc.name      : 13.seek(-1)
         * @tc.desc      : Video playback control test
