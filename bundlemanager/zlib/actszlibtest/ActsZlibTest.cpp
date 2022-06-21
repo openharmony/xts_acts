@@ -38,7 +38,6 @@ static int SIX = 6;
 static int EIGHT = 8;
 static int GARBAGE_LEN = strlen(GARBAGE);
 static unsigned BUFFER_SIZE = 8192;
-}
 
 static unsigned pull(void *desc, unsigned char **buf)
 {
@@ -1746,4 +1745,5 @@ HWTEST_F(ActsZlibTest, ActsZlibTestzlibVersion, Function | MediumTest | Level2)
     static const char* err;
     err = zlibVersion();
     ASSERT_EQ(err, myVersion);
+}
 }
