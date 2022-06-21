@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'hypium/index';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 import socket from '@ohos.net.socket'
 import utils from './Utils.ets'
 
@@ -655,7 +655,7 @@ export default function socketJsunit() {
         broadcast: true
       }
 	  try{
-		udp.setExtraOptions(udpExtraOptions, funtion(error,data) {
+		udp.setExtraOptions(udpExtraOptions, function(error,data) {
 		  if (error) {
 			expect().assertFail();
 			console.log(`${caseName} error, case failed,error: ` + JSON.stringify(error));
@@ -901,10 +901,11 @@ export default function socketJsunit() {
     it('Telephony_Socket_UDPSocket_off_error_0100', 0, function (done) {
       console.log("************* Telephony_Socket_UDPSocket_off_error_0100 Test start*************");
       let caseName = "Telephony_Socket_UDPSocket_off_error_0100"      
-      udp.off("error", error => {
-        console.log(`${caseName} fail, error:${toString(error)}`);
-        expect().assertFail();
-      });
+      let callback = err =>{
+        console.log(caseName +" on error, err:" + JSON.stringify(err));
+      }
+      udp.on('error', callback);
+      udp.off('error', callback);
       expect(true).assertTrue();
       console.log("************* Telephony_Socket_UDPSocket_off_error_0100 Test end*************");
       done();
@@ -1611,10 +1612,11 @@ export default function socketJsunit() {
     it('Telephony_Socket_TCPSocket_off_error_0100', 0, function (done) {
       console.log("************* Telephony_Socket_TCPSocket_off_error_0100 Test start*************");
       let caseName = "Telephony_Socket_TCPSocket_off_error_0100"      
-      tcp.off("error", error => {
-        console.log(`${caseName} fail, error:${toString(error)}`);
-        expect().assertFail();
-      });
+      let callback = err =>{
+        console.log(caseName +" on error, err:" + JSON.stringify(err));
+      }
+      tcp.on('error', callback);
+      tcp.off('error', callback);
       expect(true).assertTrue();
       console.log("************* Telephony_Socket_TCPSocket_off_error_0100 Test end*************");
       done();
