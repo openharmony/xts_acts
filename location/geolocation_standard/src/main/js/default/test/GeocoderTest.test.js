@@ -44,7 +44,10 @@ async function changedLocationMode(){
                 expect().assertFail();
             });
         }
-    })
+    });
+    await geolocation.isLocationEnabled().then(async(result) => {
+        console.info('[lbs_js] check LocationSwitchStatu result: ' + result);
+    });
 }
 
 async function applyPermission() {
@@ -1607,7 +1610,48 @@ describe('geolocationTest_geo1', function () {
         done();
     })
 
+    /**
+     * @tc.number SendCommand 
+     * @tc.name SUB_HSS_Location_SendCommand_callback
+     * @tc.desc Test sendCommand api .
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+     it('SUB_HSS_Location_SendCommand_callback', 0, async function (done) {
+        let requestInfo = {"scenario":0x301,"command":"command_1"};
+        geolocation.sendCommand(requestInfo,(err,result) =>{
+            if(err){
+                return console.info("[lbs_js] sendCommand callback err" + err);
+            }
+            console.info('[LBS_js] sendCommand callback result:' + result)
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SendCommand 
+     * @tc.name SUB_HSS_Location_SendCommand_promise
+     * @tc.desc Test sendCommand api .
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+     it('SUB_HSS_Location_SendCommand_promise', 0, async function (done) {
+        let requestInfo = {"scenario":0x301,"command":"command_1"};
+        geolocation.sendCommand(requestInfo).then((result) =>{
+            console.info('[LBS_js] sendCommand promise result:' + result); 
+            done();
+        }).catch(error =>{
+            console.info("[lbs_js] sendCommand promise err:" + err);
+            expect.assertFail();
+            done();
+        })
+    })
+
+
 })
+
 
 
 
