@@ -16,7 +16,7 @@
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
 import router from '@system.router'
-import {getFileDescriptor, closeFileDescriptor} from './VideoDecoderTestBase.test.js'
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const DECODE_STEP = {
@@ -47,7 +47,6 @@ describe('VideoDecoderSoftwareReliPromiseTest', function () {
     let inputEosFlag = false;
     let workdoneAtEOS = false;
     let surfaceID = '';
-    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/';
     const SRCPATH = 'out_320_240_10s.h264';
     let mediaDescription = {
         'track_type': 1,
@@ -110,12 +109,10 @@ describe('VideoDecoderSoftwareReliPromiseTest', function () {
         }
         await router.clear().then(() => {
         }, failCallback).catch(failCatch);
-        await closeFileDescriptor(SRCPATH);
     })
 
     afterAll(async function() {
         console.info('afterAll case');
-        await closeFileDescriptor(SRCPATH);
     })
     let caseCallback = function(err) {
         console.info(`in case caseCallback called, caseMessage is ${err.message}`);
@@ -376,11 +373,14 @@ describe('VideoDecoderSoftwareReliPromiseTest', function () {
                 break;
             case DECODE_STEP.WAIT_FOR_EOS:
                 mySteps.shift();
-                setTimeout(() =>{
+                setTimeout(async() =>{
                     expect(inputEosFlag).assertTrue();
                     if (inputEosFlag == false) {
                         console.info(`in case error inputEosFlag == false`);
                     }
+                    await mediaTestBase.getFdRead(SRCPATH, done).then((fdNumber) => {
+                        fdRead = fdNumber;
+                    })
                     toNextStep(mySteps, done);
                 }, 7000);   // wait 7000 ms for eos
                 break;
@@ -422,17 +422,10 @@ describe('VideoDecoderSoftwareReliPromiseTest', function () {
         }, failCallback).catch(failCatch);
     }
     async function toCreateVideoDecoderByName(name, mySteps, done) {
-        await getFileDescriptor(SRCPATH).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("case fdRead is: " + fdRead);
-            }
+        await mediaTestBase.getFdRead(SRCPATH, done).then((fdNumber) => {
+            fdRead = fdNumber;
         })
-        media.createVideoDecoderByName(name).then((processor) => {
+        await media.createVideoDecoderByName(name).then((processor) => {
             console.info(`case createVideoDecoderByName success`);
             videoDecodeProcessor = processor;
             setCallback(done);
