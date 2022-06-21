@@ -256,46 +256,7 @@ describe('SimManagerTest', function () {
     expect().assertFail();
     console.log(`${CASE_NAME} fail, data = ${data}`);
     done();
-  });
-
-  /**
-    * @tc.number  Telephony_Sim_getDefaultVoiceSlotId_Async_0200
-    * @tc.name    The test first sets the default card number and then calls
-    *             the getDefaultVoiceLotid interface to get the SIM ID.
-    * @tc.desc    Function test
-    */
-  it('Telephony_Sim_getDefaultVoiceSlotId_Async_0200', 0, async function (done) {
-    const CASE_NAME = 'Telephony_Sim_getDefaultVoiceSlotId_Async_0200';
-    sim.getDefaultVoiceSlotId((err, data) => {
-      if (err) {
-        console.log(`${CASE_NAME} expect err: ${err.message}`);
-        console.log(`${CASE_NAME} finish`);
-        done();
-        return;
-      }
-      expect(data === 0 || data === 1).assertTrue();
-      done();
-    });
-  });
-
-  /**
-    * @tc.number  Telephony_Sim_getDefaultVoiceSlotId_Promise_0200
-    * @tc.name    The test first sets the default card number and then calls
-    *             the getDefaultVoiceLotid interface to get the default SIM ID.
-    * @tc.desc    Function test
-    */
-  it('Telephony_Sim_getDefaultVoiceSlotId_Promise_0200', 0, async function (done) {
-    const CASE_NAME = 'Telephony_Sim_getDefaultVoiceSlotId_Promise_0200';
-    try {
-      let data = await sim.getDefaultVoiceSlotId();
-      console.log(`${CASE_NAME}, data = ${data}`);
-      expect(data === 0 || data === 1).assertTrue();
-    } catch (err) {
-      console.log(`${CASE_NAME} expect err: ${err.message}`);
-      console.log(`${CASE_NAME} finish`);
-    }
-    done();
-  });
+  });  
 
   /**
    * @tc.number  Telephony_Sim_isSimActive_Async_0700
