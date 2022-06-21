@@ -18,7 +18,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/security:security",
   "${ACTS_ROOT}/useriam:useriam",
   "${ACTS_ROOT}/multimedia:multimedia",
-  "${ACTS_ROOT}/appexecfwk:appexecfwk",
+  "${ACTS_ROOT}/bundlemanager:appexecfwk",
   "${ACTS_ROOT}/account:account",
   "${ACTS_ROOT}/communication:communication",
   "${ACTS_ROOT}/notification:notification",
