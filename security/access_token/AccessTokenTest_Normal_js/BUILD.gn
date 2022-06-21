@@ -13,14 +13,14 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAccessTokenJSApiTestNormal") {
+ohos_js_hap_suite("ActsAccessTokenApiJSNormalTest") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":accesstoken_js_assets",
     ":accesstoken_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAccessTokenJSApiTestNormal"
+  hap_name = "ActsAccessTokenApiJSNormalTest"
 }
 ohos_js_assets("accesstoken_js_assets") {
   source_dir = "./src/main/js/default"
