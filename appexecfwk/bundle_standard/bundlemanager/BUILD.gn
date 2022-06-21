@@ -43,6 +43,7 @@ group("bundlemanager") {
       "sceneProject/bmsgetinfosscenesystemtwo:bmsSystemBundleTest2",
       "sceneProject/bmsgetinfosscenevendor:bmsVendorBundleTest1",
       "sceneProject/bmsgetinfossecondscene:bmsThirdBundleTest2",
+      "sceneProject/bmsgetinfosseventhscene:bmsThirdBundleTest7",
       "sceneProject/bmsgetinfossixthscene:bmsThirdBundleTest6",
       "sceneProject/bmsgetinfosthirdscene:bmsThirdBundleTest3",
       "sceneProject/bmsmainabilityfirstscene:bmsMainAbilityFirstScene",
