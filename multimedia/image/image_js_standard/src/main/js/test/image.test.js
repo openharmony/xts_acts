@@ -31,7 +31,7 @@ describe('Image', function () {
             console.info('filePath is ' + filePath);
         })
     }
-    async function releasePixelma() {
+    async function releasePixelmap() {
         if (globalpixelmap != undefined) {
             globalpixelmap.release().then((data) => {
                 console.info('globalpixelmap release start' + data);
@@ -51,7 +51,7 @@ describe('Image', function () {
     })
 
     afterEach(async function () {
-        await releasePixelma();
+        await releasePixelmap();
         console.info('afterEach case');
     })
 
