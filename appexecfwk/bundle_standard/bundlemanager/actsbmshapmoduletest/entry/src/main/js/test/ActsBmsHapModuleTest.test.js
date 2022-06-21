@@ -60,6 +60,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
                 expect(hapModuleInfo.metadata.length).assertEqual(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
+                expect(hapModuleInfo.hashValue).assertEqual("");
                 done();
             }
         }
@@ -124,6 +125,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
                 expect(hapModuleInfo.metadata.length).assertEqual(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
+                expect(hapModuleInfo.hashValue).assertEqual("");
                 done();
             }
         });
@@ -159,6 +161,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
                 expect(hapModuleInfo.metadata.length).assertEqual(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
+                expect(hapModuleInfo.hashValue).assertEqual("");
                 done();
             }
         });
@@ -195,6 +198,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
                 expect(hapModuleInfo.metadata.length).assertEqual(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
+                expect(hapModuleInfo.hashValue).assertEqual("");
             }
             done();
         }
@@ -214,5 +218,7 @@ describe('ActsBmsHapModuleTest', function () {
         expect(info.extensionAbilityInfo.length).assertEqual(0);
         expect(info.metadata.length).assertEqual(0);
         expect(info.installationFree).assertEqual(false);
+        expect(info.hashValue).assertEqual("");
+
     }
 })

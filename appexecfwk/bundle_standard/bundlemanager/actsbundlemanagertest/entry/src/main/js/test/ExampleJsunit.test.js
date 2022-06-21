@@ -54,7 +54,6 @@ describe('ActsBundleManagerTest', function () {
     it('getBundleInfo_0100', 0, async function (done) {
         let datainfo = await demo.getBundleInfo(NAME1,
             demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES | demo.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION);
-        console.info("getBundleInfo_0100 dataInfo ====" + datainfo);
         expect(datainfo.name).assertEqual(NAME1);
         expect(datainfo.vendor).assertEqual("example");
         expect(datainfo.versionCode).assertEqual(VERSIONCODE1);
@@ -82,6 +81,7 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.reqPermissionDetails[0].reason).assertEqual("Need PERMISSION_A");
         expect(datainfo.reqPermissionDetails[0].usedScene.abilities[0]).assertEqual(NAME1 + ".MainAbility");
         expect(datainfo.reqPermissionDetails[0].usedScene.when).assertEqual("always");
+        expect(datainfo.reqPermissionDetails[0].reasonId).assertEqual(0);
         expect(datainfo.compatibleVersion).assertEqual(5);
         expect(datainfo.targetVersion).assertEqual(5);
         expect(datainfo.isCompressNativeLibs).assertEqual(true);
@@ -145,6 +145,7 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.reqPermissionDetails[0].reason).assertEqual("Need PERMISSION_A");
         expect(datainfo.reqPermissionDetails[0].usedScene.abilities[0]).assertEqual(NAME1 + ".MainAbility");
         expect(datainfo.reqPermissionDetails[0].usedScene.when).assertEqual("always");
+        expect(datainfo.reqPermissionDetails[0].reasonId).assertEqual(0);
         expect(datainfo.compatibleVersion).assertEqual(5);
         expect(datainfo.targetVersion).assertEqual(5);
         expect(datainfo.isCompressNativeLibs).assertEqual(true);
@@ -262,8 +263,8 @@ describe('ActsBundleManagerTest', function () {
      * @tc.desc Test getBundleInfo interfaces with one hap. (by callback)
      */
     it('getBundleInfo_0600', 0, async function (done) {
-        await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES|
-            demo.BundleFlag.GET_ABILITY_INFO_WITH_DISABLE , OnReceiveEvent);
+        await demo.getBundleInfo(NAME1, demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES |
+            demo.BundleFlag.GET_ABILITY_INFO_WITH_DISABLE, OnReceiveEvent);
         function OnReceiveEvent(err, datainfo) {
             console.info("getBundleInfo_0600 dataInfo ====" + datainfo);
             expect(datainfo.name).assertEqual(NAME1);
@@ -1788,7 +1789,7 @@ describe('ActsBundleManagerTest', function () {
     * @tc.name InstallErrorCode::STATUS_FAILED_NO_SPACE_LEFT
     * @tc.desc Test install errcode STATUS_FAILED_NO_SPACE_LEFT.
     */
-     it('installErrCodeTest_0100', 0, async function (done) {
+    it('installErrCodeTest_0100', 0, async function (done) {
         expect(demo.InstallErrorCode.SUCCESS).assertEqual(0);
         expect(demo.InstallErrorCode.STATUS_INSTALL_FAILURE).assertEqual(1);
         expect(demo.InstallErrorCode.STATUS_INSTALL_FAILURE_ABORTED).assertEqual(2);
@@ -1802,7 +1803,7 @@ describe('ActsBundleManagerTest', function () {
         expect(demo.InstallErrorCode.STATUS_UNINSTALL_FAILURE_CONFLICT).assertEqual(10);
         expect(demo.InstallErrorCode.STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT).assertEqual(11);
         expect(demo.InstallErrorCode.STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED).assertEqual(12);
-        expect(demo.InstallErrorCode.STATUS_RECOVER_FAILURE_INVALID ).assertEqual(13);
+        expect(demo.InstallErrorCode.STATUS_RECOVER_FAILURE_INVALID).assertEqual(13);
         expect(demo.InstallErrorCode.STATUS_ABILITY_NOT_FOUND).assertEqual(64);
         expect(demo.InstallErrorCode.STATUS_BMS_SERVICE_ERROR).assertEqual(65);
         expect(demo.InstallErrorCode.STATUS_FAILED_NO_SPACE_LEFT).assertEqual(66);
@@ -1817,7 +1818,7 @@ describe('ActsBundleManagerTest', function () {
     * @tc.name InstallErrorCode::STATUS_FAILED_NO_SPACE_LEFT
     * @tc.desc Test install errcode STATUS_FAILED_NO_SPACE_LEFT.
     */
-     it('AbilityTypeTest_0100', 0, async function (done) {
+    it('AbilityTypeTest_0100', 0, async function (done) {
         expect(demo.AbilitySubType.CA).assertEqual(1);
         expect(demo.AbilityType.UNKNOWN).assertEqual(0);
         expect(demo.ExtensionAbilityType.WORK_SCHEDULER).assertEqual(1);
@@ -1831,6 +1832,7 @@ describe('ActsBundleManagerTest', function () {
         expect(demo.ColorMode.AUTO_MODE).assertEqual(-1);
         expect(demo.ColorMode.DARK_MODE).assertEqual(0);
         expect(demo.ColorMode.LIGHT_MODE).assertEqual(1);
+        expect(demo.BundleFlag.GET_BUNDLE_WITH_HASH_VALUE).assertEqual(48);
         done();
     })
 })
