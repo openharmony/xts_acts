@@ -1123,7 +1123,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.bundleName).assertEqual(NAME3);
                 expect(datainfo.type).assertEqual(demo.AbilityType.PAGE);
                 expect(datainfo.applicationInfo.name).assertEqual(NAME3);
-                expect(datainfo.applicationInfo.description).assertEqual(DESCRIPTION);
+                expect(datainfo.applicationInfo.description).assertEqual(APPLICATION_DESCRIPTION);
                 expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue();
                 expect(datainfo.applicationInfo.icon).assertEqual("$media:icon");
                 expect(datainfo.applicationInfo.iconId >= 0).assertTrue();
@@ -1384,6 +1384,9 @@ describe('ActsBundleManagerTest', function () {
     it('AbilityTypeTest_0100', 0, async function (done) {
         expect(demo.AbilitySubType.CA).assertEqual(1);
         expect(demo.AbilityType.UNKNOWN).assertEqual(0);
+        expect(demo.ColorMode.AUTO_MODE).assertEqual(-1);
+        expect(demo.ColorMode.DARK_MODE).assertEqual(0);
+        expect(demo.ColorMode.LIGHT_MODE).assertEqual(1);
         done();
     })
 })
