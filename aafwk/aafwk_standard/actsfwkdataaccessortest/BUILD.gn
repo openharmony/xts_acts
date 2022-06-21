@@ -17,7 +17,6 @@ group("dataability") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsdataabilityrelyhap:ActsDataAbilityRelyHap",
       "actsfwkdataaccessortest:ActsFWKDataAccessorTest",
     ]
   }

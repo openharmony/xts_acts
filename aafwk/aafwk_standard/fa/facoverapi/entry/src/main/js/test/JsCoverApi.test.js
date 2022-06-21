@@ -14,9 +14,11 @@
  */
 
 import appManager from '@ohos.application.appManager';
+import formBindingData from '@ohos.application.formBindingData';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index";
 
 describe('CoverApiTest', function () {
+    let TAG = '';
 
     /*
      * @tc.number  SUB_AA_OpenHarmony_CoverApi_0500
@@ -37,4 +39,28 @@ describe('CoverApiTest', function () {
             done();
         })
     });
+    
+        /*
+         * @tc.number  SUB_AA_OpenHarmony_FormBase_1000
+         * @tc.name    Validate formbindingdata creation data
+         * @tc.desc    Function test
+         * @tc.level   0
+         */
+        it('SUB_AA_OpenHarmony_FormBase_1000', 0, async function (done) {
+            console.info('------------start SUB_AA_OpenHarmony_FormBase_1000-------------');
+            TAG = 'SUB_AA_OpenHarmony_FormBase_1000';
+            var dataObj = {
+                temperature:"11c",
+                "time":"11:00",
+                "test":11,
+                "test3":true
+            }
+            var result = formBindingData.createFormBindingData(dataObj)
+            console.log(TAG + " result is : " + JSON.stringify(result))
+            expect(JSON.stringify(result)).
+            assertEqual(JSON.stringify(
+                {"data":"{\"temperature\":\"11c\",\"time\":\"11:00\",\"test\":11,\"test3\":true}"}));
+            done();
+            console.info('------------end SUB_AA_OpenHarmony_FormBase_1000-------------');
+        });
 })

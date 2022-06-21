@@ -9,8 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsFWKDataAccessorTest.hap",
-                "ActsDataAbilityRelyHap.hap"
+                "ActsFWKDataAccessorTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
