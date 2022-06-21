@@ -2397,4 +2397,328 @@ describe("DeviceUsageStatisticsJsTest", function () {
             done();
         }, 500);
     })
+
+    /*
+     * @tc.name: DeviceUsageStatisticsJsTest098
+     * @tc.desc: test bundleState setBundleGroup bundleName newGroup promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+	it("DeviceUsageStatisticsJsTest098", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest098---------------------------');
+        let bundleName = "ohos.sample.shopping";
+		let newGroup = bundleState.GroupType.ACTIVE_GROUP_DAILY;
+		
+        bundleState.setBundleGroup(bundleName, newGroup).then( () => {
+		    console.log('test DeviceUsageStatisticsJsTest098 promise succeeded. ' );
+			expect(true).assertEqual(true);
+		 }).catch( err => {
+			console.log('test DeviceUsageStatisticsJsTest098 promise failed. because: ' + err.code);
+		 	expect(false).assertEqual(true);
+	    });
+        
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest099
+     * @tc.desc: test bundleState setBundleGroup bundleName newGroup callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+	it("DeviceUsageStatisticsJsTest099", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest099---------------------------');
+		let bundleName = "ohos.sample.shopping";
+		let newGroup = bundleState.GroupType.ACTIVE_GROUP_FIXED;
+
+		bundleState.setBundleGroup(bundleName, newGroup, (err) => {
+			if(err) {
+				console.log('test DeviceUsageStatisticsJsTest099 callback failed. because: ' + err.code);
+				expect(err.code).assertEqual(true);
+			} else {
+				console.log('test DeviceUsageStatisticsJsTest099 callback succeeded. result: ' );
+				expect(true).assertEqual(true);
+			}
+		});
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest0100
+     * @tc.desc: test bundleState onBundleGroupChanged callback promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+	it("DeviceUsageStatisticsJsTest0100", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest0100---------------------------');
+        let onBundleGroupChanged = (err,res) =>{
+		console.log('test DeviceUsageStatisticsJsTest0100 callback success.');
+		console.log('test DeviceUsageStatisticsJsTest0100 result oldGroup is : ' + res.oldGroup);
+		console.log('test DeviceUsageStatisticsJsTest0100 result newGroup is : ' + res.newGroup);
+		console.log('test DeviceUsageStatisticsJsTest0100 result changeReason is : ' + res.newGroup);
+		console.log('test DeviceUsageStatisticsJsTest0100 result userId is : ' + res.userId);
+		console.log('test DeviceUsageStatisticsJsTest0100 result bundleName is : ' + res.bundleName);
+};
+		bundleState.registerGroupCallBack(onBundleGroupChanged).then( ()=> {
+			console.log('test DeviceUsageStatisticsJsTest0100 promise succeeded. ' );
+			expect(true).assertEqual(true);
+		}).catch( err => {
+			console.log('test DeviceUsageStatisticsJsTest0100 promise failed. ' );
+			expect(false).assertEqual(true);
+		});
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+
+    /*
+     * @tc.name: DeviceUsageStatisticsJsTest0102
+     * @tc.desc: test bundleState unRegisterGroupCallBack  promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+	it("DeviceUsageStatisticsJsTest0102", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest0102---------------------------');
+		bundleState.unRegisterGroupCallBack().then( () => {
+			console.log('test DeviceUsageStatisticsJsTest0102 promise succeeded. ' );
+			expect(true).assertEqual(true);
+		}).catch( err => {
+			console.log('test DeviceUsageStatisticsJsTest0102 promise failed. because: ' + err.code);
+			expect(false).assertEqual(true);
+		});
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest0101
+     * @tc.desc: test bundleState setBundleGroup callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+	it("DeviceUsageStatisticsJsTest0101", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest0101---------------------------');
+        let onBundleGroupChanged = (err,res) =>{
+		console.log('test DeviceUsageStatisticsJsTest0101 callback success.');
+		console.log('test DeviceUsageStatisticsJsTest0101 result oldGroup is : ' + res.oldGroup);
+		console.log('test DeviceUsageStatisticsJsTest0101 result newGroup is : ' + res.newGroup);
+		console.log('test DeviceUsageStatisticsJsTest0101 result changeReason is : ' + res.newGroup);
+		console.log('test DeviceUsageStatisticsJsTest0101 result userId is : ' + res.userId);
+		console.log('test DeviceUsageStatisticsJsTest0101 result bundleName is : ' + res.bundleName);
+};
+		bundleState.registerGroupCallBack(onBundleGroupChanged, (err)=>{
+			if(err) {
+				console.log('test DeviceUsageStatisticsJsTest0101 callback failed, ' );
+				expect(false).assertEqual(true);
+			} else {
+				console.log('test DeviceUsageStatisticsJsTest0101 callback success.');
+				expect(true).assertEqual(true);
+			}
+		});
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest0103
+     * @tc.desc: test bundleState unRegisterGroupCallBack  callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+	it("DeviceUsageStatisticsJsTest0103", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest0103---------------------------');
+		bundleState.unRegisterGroupCallBack((err) => {
+			if(err) {
+				console.log('test DeviceUsageStatisticsJsTest0103 callback failed. because: ' + err.code);
+				expect(false).assertEqual(false);
+			} else {
+				console.log('test DeviceUsageStatisticsJsTest0103 callback success.');
+				expect(true).assertEqual(true);
+			}
+		});
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest0104
+     * @tc.desc: test bundleState queryBundleActiveEventStates  promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+	it("DeviceUsageStatisticsJsTest0104", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest0104---------------------------');
+		bundleState.queryBundleActiveEventStates(0, 20000000000000).then( res => {
+			console.log('test DeviceUsageStatisticsJsTest0104 promise success.');
+			console.log('test DeviceUsageStatisticsJsTest0104 promise result ' + JSON.stringify(res));
+			expect(res).assertInstanceOf('Array');
+		}).catch( err=> {
+			console.log('test DeviceUsageStatisticsJsTest0104 promise failed, because: ' + err.code);
+			expect(err.code).assertFalse();
+		});
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest0105
+     * @tc.desc: test bundleState queryBundleActiveEventStates  callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+	it("DeviceUsageStatisticsJsTest0105", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest0105---------------------------');
+		bundleState.queryBundleActiveEventStates(0, 20000000000000, (err, res) => {
+			if(err) {
+				console.log('test DeviceUsageStatisticsJsTest0105 callback failed, because: ' + err.code);
+				expect(err.code).assertFalse();
+			} else {
+				console.log('test DeviceUsageStatisticsJsTest0105 callback success.');
+				console.log('test DeviceUsageStatisticsJsTest0105 callback result ' + JSON.stringify(res));
+				expect(res).assertInstanceOf('Array');
+			}
+		});
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest0106
+     * @tc.desc: test bundleState queryAppNotificationNumber  promise.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+	it("DeviceUsageStatisticsJsTest0106", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest0106---------------------------');
+		bundleState.queryAppNotificationNumber(0, 20000000000000).then( res => {
+			console.log('test DeviceUsageStatisticsJsTest0106 promise success.');
+			console.log('test DeviceUsageStatisticsJsTest0106 promise result ' + JSON.stringify(res));
+			expect(res).assertInstanceOf('Array');
+		}).catch( err=> {
+			console.log('test DeviceUsageStatisticsJsTest0106 promise failed, because: ' + err.code);
+			expect(err.code).assertFalse();
+		});
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+	
+	/*
+     * @tc.name: DeviceUsageStatisticsJsTest0107
+     * @tc.desc: test bundleState queryAppNotificationNumber  callback.
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+	it("DeviceUsageStatisticsJsTest0107", 0, async function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest0107---------------------------');
+		bundleState.queryAppNotificationNumber(0, 20000000000000, (err, res) => {
+			if(err) {
+				console.log('test DeviceUsageStatisticsJsTest0107 callback failed, because: ' + err.code);
+				expect(err.code).assertFalse();
+			} else {
+				console.log('test DeviceUsageStatisticsJsTest0107 callback success.');
+				console.log('test DeviceUsageStatisticsJsTest0107 callback result ' + JSON.stringify(res));
+				expect(res).assertInstanceOf('Array');
+			}
+		});
+
+        setTimeout(()=>{
+            done();
+        }, 500);
+    })
+
+    /*
+    * @tc.name: DeviceUsageStatisticsJsTest0108
+    * @tc.desc: test bundleState GroupType constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("DeviceUsageStatisticsJsTest0108", 0, function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest0108---------------------------');
+        let value1 = bundleState.GroupType.ACTIVE_GROUP_ALIVE;
+        expect(value1).assertEqual(10)
+        done();
+    })
+
+    /*
+    * @tc.name: DeviceUsageStatisticsJsTest0109
+    * @tc.desc: test bundleState GroupType constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("DeviceUsageStatisticsJsTest0109", 0, function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest0109---------------------------');
+        let value1 = bundleState.GroupType.ACTIVE_GROUP_DAILY;
+        expect(value1).assertEqual(20)
+        done();
+    })
+
+    /*
+    * @tc.name: DeviceUsageStatisticsJsTest0110
+    * @tc.desc: test bundleState GroupType constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("DeviceUsageStatisticsJsTest0110", 0, function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest0110---------------------------');
+        let value1 = bundleState.GroupType.ACTIVE_GROUP_FIXED;
+        expect(value1).assertEqual(30)
+        done();
+    })
+
+    /*
+    * @tc.name: DeviceUsageStatisticsJsTest0111
+    * @tc.desc: test bundleState GroupType constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("DeviceUsageStatisticsJsTest0111", 0, function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest0111---------------------------');
+        let value1 = bundleState.GroupType.ACTIVE_GROUP_RARE;
+        expect(value1).assertEqual(40)
+        done();
+    })
+
+    /*
+    * @tc.name: DeviceUsageStatisticsJsTest0112
+    * @tc.desc: test bundleState GroupType constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("DeviceUsageStatisticsJsTest0112", 0, function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest0112---------------------------');
+        let value1 = bundleState.GroupType.ACTIVE_GROUP_LIMIT;
+        expect(value1).assertEqual(50)
+        done();
+    })
+
+    /*
+    * @tc.name: DeviceUsageStatisticsJsTest0113
+    * @tc.desc: test bundleState GroupType constant
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("DeviceUsageStatisticsJsTest0113", 0, function (done) {
+        console.info('----------------------DeviceUsageStatisticsJsTest0113---------------------------');
+        let value1 = bundleState.GroupType.ACTIVE_GROUP_NEVER;
+        expect(value1).assertEqual(60)
+        done();
+    })
 })
