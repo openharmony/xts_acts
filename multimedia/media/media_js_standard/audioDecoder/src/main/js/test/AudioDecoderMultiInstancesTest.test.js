@@ -14,11 +14,10 @@
  */
 
 import media from '@ohos.multimedia.media'
-import Fileio from '@ohos.fileio'
+import fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('AudioDecoderMultiInstances', function () {
-    const RESOURCEPATH = '/data/app/el1/bundle/resources/'
     const AUDIOPATH = 'AAC_48000_32_1.aac';
     let readStreamSync;
     let eosframenum = 0;
@@ -84,7 +83,7 @@ describe('AudioDecoderMultiInstances', function () {
 
     function writeFile(path, buf, len) {
         try{
-            let writestream = Fileio.createStreamSync(path, "ab+");
+            let writestream = fileio.createStreamSync(path, "ab+");
             let num = writestream.writeSync(buf, {length:len});
             writestream.flushSync();
             writestream.closeSync();
@@ -97,7 +96,7 @@ describe('AudioDecoderMultiInstances', function () {
         console.info('read file start execution');
         try{
             console.info('filepath: ' + path);
-            readStreamSync = Fileio.createStreamSync(path, 'rb');
+            readStreamSync = fileio.createStreamSync(path, 'rb');
         }catch(e) {
             console.info(e);
         }

@@ -16,7 +16,7 @@
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
 import router from '@system.router'
-import {getFileDescriptor, closeFileDescriptor} from './VideoDecoderTestBase.test.js'
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const DECODE_STEP = {
@@ -47,7 +47,6 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
     let inputEosFlag = false;
     let workdoneAtEOS = false;
     let surfaceID = '';
-    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/';
     const SRCPATH = 'out_320_240_10s.h264';
     let mediaDescription = {
         'track_type': 1,
@@ -110,12 +109,10 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
         }
         await router.clear().then(() => {
         }, failCallback).catch(failCatch);
-        await closeFileDescriptor(SRCPATH);
     })
 
     afterAll(async function() {
         console.info('afterAll case');
-        await closeFileDescriptor(SRCPATH);
     })
     let failCallback = function(err) {
         console.info(`in case error failCallback called, errMessage is ${err.message}`);
@@ -425,17 +422,10 @@ describe('VideoDecoderSoftwareReliCallbackTest', function () {
         })
     }
     async function toCreateVideoDecoderByName(name, mySteps, done) {
-        await getFileDescriptor(SRCPATH).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("case fdRead is: " + fdRead);
-            }
+        await mediaTestBase.getFdRead(SRCPATH, done).then((fdNumber) => {
+            fdRead = fdNumber;
         })
-        media.createVideoDecoderByName(name, (err, processor) => {
+        await media.createVideoDecoderByName(name, (err, processor) => {
             printError(err, false);
             console.info(`case createVideoDecoderByName callback`);
             videoDecodeProcessor = processor;

@@ -19,6 +19,10 @@ import router from '@system.router'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
+import fileio from '@ohos.fileio'
+import featureAbility from '@ohos.ability.featureAbility'
+
+const context = featureAbility.getContext();
 
 // File operation
 export async function getFileDescriptor(fileName) {
@@ -50,6 +54,21 @@ export function isFileOpen(fileDescriptor, done) {
         console.info('case error fileDescriptor undefined, open file fail');
         done();
     }
+}
+
+export async function getFdRead(pathName, done) {
+    let fdReturn;
+    await context.getFilesDir().then((fileDir) => {
+        console.info("case file dir is" + JSON.stringify(fileDir));
+        pathName = fileDir + '/' + pathName;
+        console.info("case pathName is" + pathName);
+    });
+    await fileio.open(pathName).then((fdNumber) => {
+        isFileOpen(fdNumber, done)
+        fdReturn = fdNumber;
+        console.info('[fileio]case open fd success, fd is ' + fdReturn);
+    })
+    return fdReturn;
 }
 
 // wait synchronously 
