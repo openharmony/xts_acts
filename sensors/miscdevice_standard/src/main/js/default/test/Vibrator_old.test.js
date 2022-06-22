@@ -16,7 +16,7 @@ import vibrator from '@ohos.vibrator'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("VibratorJsTest_misc_2", function () {
+describe("VibratorJsTest_misc_1", function () {
     beforeAll(function () {
 
         /*
@@ -52,10 +52,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest001
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0010
      */
-    it("VibratorJsTest001", 0, async function (done) {
+    it("VibratorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
         function vibrateCallback(error) {
             if (error) {
                 console.info('VibratorJsTest001  vibrator error');
@@ -74,10 +73,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest002
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0020
      */
-    it("VibratorJsTest002", 0, async function (done) {
+    it("VibratorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function vibrateCallback(error) {
             if (error) {
                 console.info('VibratorJsTest002  vibrator success');
@@ -96,10 +94,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest003
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0030
      */
-    it("VibratorJsTest003", 0, async function (done) {
+    it("VibratorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function vibrateCallback(error) {
             if (error) {
                 console.info('VibratorJsTest003  vibrator success');
@@ -118,10 +115,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest004
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0040
      */
-    it("VibratorJsTest004", 0, async function (done) {
+    it("VibratorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function vibrateCallback(error) {
             if (error) {
                 console.info('VibratorJsTest004  vibrator error');
@@ -140,10 +136,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest005
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0050
      */
-    it("VibratorJsTest005", 0, async function (done) {
+    it("VibratorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function vibrateCallback(error) {
             if (error) {
                 console.info('VibratorJsTest005  vibrator success');
@@ -162,10 +157,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest006
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0060
      */
-    it("VibratorJsTest006", 0, async function (done) {
+    it("VibratorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function vibrateCallback(error) {
             if (error) {
                 console.info('VibratorJsTest006  vibrator success');
@@ -184,10 +178,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest007
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0070
      */
-    it("VibratorJsTest007", 0, async function (done) {
+    it("VibratorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function vibrateCallback(error) {
             if (error) {
                 console.info('VibratorJsTest007  vibrator error');
@@ -206,10 +199,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest008
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0080
      */
-    it("VibratorJsTest008", 0, async function (done) {
+    it("VibratorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function vibrateCallback(error) {
             if (error) {
                 console.info('VibratorJsTest008  stop error');
@@ -228,10 +220,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest009
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0090
      */
-    it("VibratorJsTest009", 0, async function (done) {
+    it("VibratorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------VibratorJsTest001---------------------------');
         function stopPromise() {
             return new Promise((resolve, reject) => {
@@ -282,10 +273,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest010
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0100
      */
-    it("VibratorJsTest010", 0, async function (done) {
+    it("VibratorJsTest010", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function vibrateCallback(error) {
             if (error) {
                 console.info('VibratorJsTest010  stop success');
@@ -304,10 +294,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest011
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0110
      */
-    it("VibratorJsTest011", 0, async function (done) {
+    it("VibratorJsTest011", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         vibrator.vibrate(1000).then(() => {
             console.log("VibratorJsTest011  vibrate success");
             expect(true).assertTrue();
@@ -326,10 +315,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest012
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0120
      */
-    it("VibratorJsTest012", 0, async function (done) {
+    it("VibratorJsTest012", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         vibrator.vibrate(-1).then(() => {
             console.log("VibratorJsTest012  vibrate error");
             expect(false).assertTrue();
@@ -348,10 +336,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest013
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0130
      */
-    it("VibratorJsTest013", 0, async function (done) {
+    it("VibratorJsTest013", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         vibrator.vibrate(1800000 + 1).then(() => {
             console.log("VibratorJsTest013  vibrate error");
             expect(false).assertTrue();
@@ -370,10 +357,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest014
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0140
      */
-    it("VibratorJsTest014", 0, async function (done) {
+    it("VibratorJsTest014", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         vibrator.vibrate(vibrator.EffectId.EFFECT_CLOCK_TIMER).then(() => {
             console.log("VibratorJsTest014  vibrate success");
             expect(true).assertTrue();
@@ -392,10 +378,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest015
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0150
      */
-    it("VibratorJsTest015", 0, async function (done) {
+    it("VibratorJsTest015", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         vibrator.vibrate("").then(() => {
             console.log("VibratorJsTest015  vibrate error");
             expect(false).assertTrue();
@@ -414,10 +399,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest016
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0160
      */
-    it("VibratorJsTest016", 0, async function (done) {
+    it("VibratorJsTest016", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         vibrator.stop("").then(() => {
             console.log("VibratorJsTest016  stop error");
             expect(false).assertTrue();
@@ -436,10 +420,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest017
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0170
      */
-    it("VibratorJsTest017", 0, async function (done) {
+    it("VibratorJsTest017", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         vibrator.stop("preset").then(() => {
             console.log("VibratorJsTest017  off success");
             expect(true).assertTrue();
@@ -458,10 +441,9 @@ describe("VibratorJsTest_misc_2", function () {
     /*
      * @tc.name:VibratorJsTest018
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0180
      */
-    it("VibratorJsTest018", 0, async function (done) {
+    it("VibratorJsTest018", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function stopPromise() {
             return new Promise((resolve, reject) => {
                 vibrator.stop(vibrator.VibratorStopMode.VIBRATOR_STOP_MODE_TIME).then(() => {
