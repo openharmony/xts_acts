@@ -167,7 +167,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
             }
             let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
             fileAsset = await fetchFileResult.getAllObject();
-            fdNumber = await fileAsset[0].open('Rw');
+            fdNumber = await fileAsset[0].open('rw');
             fdPath = "fd://" + fdNumber.toString();
         }
     }
@@ -789,7 +789,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2200', 0, async function (done) {
         await getFd('46.mp4');
         videoConfig.url = fdPath;
-        videoConfig.videoFrameRate = 20;
+        configFile.videoFrameRate = 20;
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
@@ -806,7 +806,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2300', 0, async function (done) {
         await getFd('47.mp4');
         videoConfig.url = fdPath;
-        videoConfig.videoFrameRate = 30;
+        configFile.videoFrameRate = 30;
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
@@ -823,7 +823,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2400', 0, async function (done) {
         await getFd('48.mp4');
         videoConfig.url = fdPath;
-        videoConfig.videoFrameRate = 60;
+        configFile.videoFrameRate = 60;
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);

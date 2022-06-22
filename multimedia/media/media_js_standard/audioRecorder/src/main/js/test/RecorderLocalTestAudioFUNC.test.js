@@ -129,7 +129,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
             }
             let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
             fileAsset = await fetchFileResult.getAllObject();
-            fdNumber = await fileAsset[0].open('Rw');
+            fdNumber = await fileAsset[0].open('rw');
             fdPath = "fd://" + fdNumber.toString();
         }
     }
