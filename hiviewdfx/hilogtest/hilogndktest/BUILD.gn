@@ -18,14 +18,12 @@ config("hilogndktest_config") {
   visibility = [ ":*" ]
   include_dirs = [
     "//base/hiviewdfx/hilog/interface/native/kits/include",
-    "../../../utils/native",
   ]
 }
 ohos_moduletest_suite("hilogndktest") {
   module_out_path = module_output_path
   sources = [ "hilogndktest.cpp" ]
   deps = [
-    "../../../utils/native:utilskit",
     "//base/hiviewdfx/hilog/frameworks/hilog_ndk:hilog_ndk",
     "//base/hiviewdfx/hilog/interface/native/kits:libhilog_ndk",
     "//utils/native/base:utils",
