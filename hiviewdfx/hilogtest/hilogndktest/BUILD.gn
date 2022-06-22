@@ -18,6 +18,7 @@ config("hilogndktest_config") {
   visibility = [ ":*" ]
   include_dirs = [
     "//base/hiviewdfx/hilog/interface/native/kits/include",
+    "//base/hiviewdfx/hilog/interface/native/kits",
   ]
 }
 ohos_moduletest_suite("hilogndktest") {
