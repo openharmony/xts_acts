@@ -1,6 +1,5 @@
-// @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index";
 import radio from '@ohos.telephony.radio';
 import utils from './Utils.ets'
 
@@ -65,10 +64,8 @@ export default function radioSecondJsunit() {
     const CELL_INFO_MIN = 0;
     const TIME_RADIO_TURNON = 10000;
     console.log("************* radio Test start*************");
-    
-
-    
-   /**
+  
+    /**
      * @tc.number  Telephony_NetworkSearch_NetworkState_Async_0100
      * @tc.name    Test getNrOptionMode() to check the callback result
      * @tc.desc    Function test
@@ -195,34 +192,35 @@ export default function radioSecondJsunit() {
     })
 
     /**
-    * @tc.number Telephony_NetworkSearch_getRadioTech_Async_0500
-    * @tc.name   TestGetRadioTech_0500
-    * @tc.desc   Test getRadioTech() api by callback .SlotId parameter input is 0
-    */
+     * @tc.number  Telephony_NetworkSearch_getRadioTech_Async_0500
+     * @tc.name    TestGetRadioTech_0500
+     * @tc.desc    Test getRadioTech() api by callback, SlotId parameter input is 0
+     */
     it("Telephony_NetworkSearch_getRadioTech_Async_0500", 0, async function(done){
         radio.getRadioTech(0, (err, data) => {
             if (err) {
-                console.log(`Telephony_NetworkSearch_getRadioTech_Async_0500 fail err: ${err}`);
+                console.info(`Telephony_NetworkSearch_getRadioTech_Async_0500 fail err: ${err}`);           
                 expect(err.code === '-1').assertTrue();
                 done();
                 return;
             }
-            console.log(`Telephony_NetworkSearch_getRadioTech_Async_0500 success ${data}`);
+            console.info(`Telephony_NetworkSearch_getRadioTech_Async_0500 success ${data}`);
             expect(true).assertTrue();
             done();
         });
     });
 
     /**
-    * @tc.number Telephony_NetworkSearch_getRadioTech_Promise_0500
-    * @tc.name   TestGetRadioTech_0500
-    * @tc.desc   SlotId parameter input is 0 ,Test getRadioTech() api by promise
-    */
+     * @tc.number  Telephony_NetworkSearch_getRadioTech_Promise_0500
+     * @tc.name    testGetRadioTech_0500
+     * @tc.desc    SlotId parameter input is 0, test getRadioTech() api by promise.
+     */
     it("Telephony_NetworkSearch_getRadioTech_Promise_0500", 0, async function(done){
         try {
             let data = await radio.getRadioTech(0);
             console.log(`Telephony_NetworkSearch_getRadioTech_Promise_0500 success`);
             expect(true).assertTrue();
+            done();
         } catch (err) {
             console.log(`Telephony_NetworkSearch_getRadioTech_Promise_0500 fail err: ${err}`);
             expect(err.code === '-1').assertTrue();
@@ -358,6 +356,10 @@ export default function radioSecondJsunit() {
         }
         done();
     });
+
+    
+
+
 
     console.log("************* radio Test end*************");
     function assertCellInformation(data) {
