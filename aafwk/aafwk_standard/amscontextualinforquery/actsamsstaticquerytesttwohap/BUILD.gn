@@ -13,15 +13,19 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAmsStaticQueryTestTwoRelyHap") {
+ohos_hap("ActsAmsStaticQueryTestTwoRelyHap") {
   hap_profile = "entry/src/main/module.json"
+  hap_name = "ActsAmsStaticQueryTestTwoRelyHap"
+  subsystem_name = XTS_SUITENAME
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  testonly = true
   deps = [
     ":actsamsstaticquerytesttworelyhap_js_assets",
     ":actsamsstaticquerytesttworelyhap_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsAmsStaticQueryTestTwoRelyHap"
 }
 
 ohos_app_scope("actsamsstaticquerytesttworelyhap_app_profile") {

@@ -13,15 +13,19 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAmsUsersKillProcessAppC") {
+ohos_hap("ActsAmsUsersKillProcessAppC") {
   hap_profile = "entry/src/main/module.json"
+  hap_name = "ActsAmsUsersKillProcessAppC"
+  subsystem_name = XTS_SUITENAME
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  testonly = true
   deps = [
     ":actsamsuserskillprocessappc_js_assets",
     ":actsamsuserskillprocessappc_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsAmsUsersKillProcessAppC"
 }
 
 ohos_app_scope("actsamsuserskillprocessappc_app_profile") {

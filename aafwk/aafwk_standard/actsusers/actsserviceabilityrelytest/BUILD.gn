@@ -13,15 +13,19 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("actsServiceAbilityRelyHap") {
+ohos_hap("actsServiceAbilityRelyHap") {
   hap_profile = "entry/src/main/module.json"
+  hap_name = "actsServiceAbilityRelyHap"
+  subsystem_name = XTS_SUITENAME
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  testonly = true
   deps = [
     ":actsserviceabilityrelytest_js_assets",
     ":actsserviceabilityrelytest_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "actsServiceAbilityRelyHap"
 }
 
 ohos_app_scope("actsserviceabilityrelytest_app_profile") {

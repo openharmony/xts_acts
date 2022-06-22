@@ -13,15 +13,19 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAmsExtensionModuleRelyHap") {
+ohos_hap("ActsAmsExtensionModuleRelyHap") {
   hap_profile = "entry/src/main/module.json"
+  hap_name = "ActsAmsExtensionModuleRelyHap"
+  subsystem_name = XTS_SUITENAME
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  testonly = true
   deps = [
     ":actsamsextensionmodulerelyhap_js_assets",
     ":actsamsextensionmodulerelyhap_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsAmsExtensionModuleRelyHap"
 }
 
 ohos_app_scope("actsamsextensionmodulerelyhap_app_profile") {
