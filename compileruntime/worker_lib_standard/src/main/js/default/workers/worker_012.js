@@ -29,12 +29,20 @@ parentPort.onmessage = function(e) {
         backValue = ee.data;
         flag = true;
       }
+      ss.onexit = function() {
+        backValue = "terminate";
+        flag = true;
+      }
       ss.postMessage({type: "new"});
       break;
     case "wait":
       if (flag) {
         parentPort.postMessage(backValue);
       }
+      break;
+    case "terminate":
+      flag = false;
+      ss.terminate();
       break;
     default:
       break;
