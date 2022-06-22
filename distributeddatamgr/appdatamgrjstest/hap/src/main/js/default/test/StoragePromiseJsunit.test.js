@@ -21,6 +21,8 @@ const KEY_TEST_LONG_ELEMENT = 'key_test_long';
 const KEY_TEST_FLOAT_ELEMENT = 'key_test_float';
 const KEY_TEST_BOOLEAN_ELEMENT = 'key_test_boolean';
 const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+const MAX_KEY_LENGTH = 'X'.repeat(32)
+const MAX_VALUE_LENGTH = 'y'.repeat(8191)
 var mPref;
 
 describe('storageTest_storage2', function () {
@@ -380,7 +382,7 @@ describe('storageTest_storage2', function () {
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0200
      * @tc.desc Maximum length of key test
      */
-    it('testMaxLengthofKety0200', 0, async function(done){
+    it('testMaxLengthofKey0200', 0, async function(done){
         mPref.clearSync();
         const promise = mPref.put(MAX_KEY_LENGTH,"value1")
         promise.then((ret)=>{
@@ -447,6 +449,45 @@ describe('storageTest_storage2', function () {
             expect('').assertFail();
         });
         await promise;
+        done();
+    })
+
+    /**
+     * @tc.name Maximum length of key test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0240
+     * @tc.desc Maximum length of key test
+     */
+     it('testMaxLengthofKey0240', 0, async function(done){
+        mPref.putSync(MAX_KEY_LENGTH, "value1");
+        expect("value1").assertEqual(mPref.getSync(MAX_KEY_LENGTH, "default"));
+        const promise = mPref.delete(MAX_KEY_LENGTH);
+        promise.then((ret)=>{
+            expect("default").assertEqual(mPref.getSync(MAX_KEY_LENGTH,"default"));
+        }).catch((err)=>{
+            expect(null).assertFail();
+        });
+        await promise;
+        done();
+    })
+
+    /**
+     * @tc.name Maximum length of value test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0250
+     * @tc.desc Maximum length of value test
+     */
+
+    it('testMaxLengthofValue0250', 0, async function (done) {
+        mPref.clearSync();
+        mPref.putSync("test",MAX_VALUE_LENGTH)
+        const promise = mPref.put("test", "y".repeat(8192));
+        promise.then((ret) => {
+            expect(MAX_VALUE_LENGTH).assertEqual(mPref.getSync("test", "defaultvalue"));
+        }).catch((err) => {
+            expect(null).assertFail();
+        });
+        await promise;
+        mPref.putSync("test",MAX_VALUE_LENGTH)
+        expect(MAX_VALUE_LENGTH).assertEqual(mPref.getSync("test", "defaultvalue"));
         done();
     })
 })
