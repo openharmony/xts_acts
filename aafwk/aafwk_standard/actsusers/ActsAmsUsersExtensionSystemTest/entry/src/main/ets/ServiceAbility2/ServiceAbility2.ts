@@ -15,6 +15,7 @@
 
 import ServiceExtensionAbility from '@ohos.application.ServiceExtensionAbility'
 import commonEvent from "@ohos.commonEvent"
+import rpc from '@ohos.rpc';
 
 export default class ServiceAbility2 extends ServiceExtensionAbility {
   onCreate(want) {
@@ -39,6 +40,7 @@ export default class ServiceAbility2 extends ServiceExtensionAbility {
 
   onConnect(want) {
     console.log('ServiceAbility2 onConnect');
+    return new rpc.RemoteObject('connect');
   }
 
   onDisconnect(want) {

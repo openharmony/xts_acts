@@ -12,7 +12,8 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import ServiceExtension from '@ohos.application.ServiceExtensionAbility'
+import ServiceExtension from '@ohos.application.ServiceExtensionAbility';
+import Want from '@ohos.application.Want';
 import ZidlTestServiceStubOneway from './zidlToolOneWay/interface_attribute_declaratoin_oneway_stub';
 import {voidVoidFirstCallback} from './zidlToolOneWay/i_interface_attribute_declaratoin_oneway'
 import {voidVoidSecondCallback} from './zidlToolOneWay/i_interface_attribute_declaratoin_oneway'
@@ -39,7 +40,7 @@ class ZidlTestImpOneway extends ZidlTestServiceStubOneway {
 }
 
 export default class ServiceAbility2 extends ServiceExtension {
-    onCreate(want,startId) {
+    onCreate(want: Want) {
         globalThis.abilityWant = want;
         console.log('ZidlClientTest ServiceAbility2 onCreate, want: ' + want.abilityName);
     }

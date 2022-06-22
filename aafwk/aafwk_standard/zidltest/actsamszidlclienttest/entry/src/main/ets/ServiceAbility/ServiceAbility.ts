@@ -12,7 +12,8 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import ServiceExtension from '@ohos.application.ServiceExtensionAbility'
+import ServiceExtension from '@ohos.application.ServiceExtensionAbility';
+import Want from '@ohos.application.Want';
 import {voidOutStringCallback} from "./zidlTool/i_zidl_tool_test";
 import {voidOutIntCallback} from "./zidlTool/i_zidl_tool_test";
 import {voidOutMapStringIntCallback} from "./zidlTool/i_zidl_tool_test";
@@ -408,7 +409,7 @@ class ZidlTestImp extends ZidlTestServiceStub {
 }
 
 export default class ServiceAbility extends ServiceExtension {
-    onCreate(want,startId) {
+    onCreate(want: Want) {
         globalThis.abilityWant = want;
         console.log('ZidlClientTest ServiceAbility onCreate, want: ' + want.abilityName);
     }
