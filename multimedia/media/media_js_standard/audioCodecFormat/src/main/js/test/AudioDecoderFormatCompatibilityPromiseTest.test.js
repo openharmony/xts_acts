@@ -15,11 +15,9 @@
 
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
 import featureAbility from '@ohos.ability.featureAbility'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
-import {getFileDescriptor, closeFileDescriptor} from './AudioFormatTestBase.test.js';
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('AudioDecoderFormatCompatibilityPromise', function () {
@@ -2107,7 +2105,12 @@ describe('AudioDecoderFormatCompatibilityPromise', function () {
 
     beforeAll(async function() {
         console.info('beforeAll case 1');
-        await applyPermission();
+        let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
+        let permissionName2 = 'ohos.permission.READ_MEDIA';
+        let permissionName3 = 'ohos.permission.WRITE_MEDIA';
+        permissionNameList = [permissionName1, permissionName2, permissionName3];
+        let appName = 'ohos.acts.multimedia.audio.codecformat';
+        await mediaTestBase.applyPermission(appName, permissionNameList);
         console.info('beforeAll case after get permission');
     })
 
@@ -2142,7 +2145,6 @@ describe('AudioDecoderFormatCompatibilityPromise', function () {
                 audioDecodeProcessor = null;
             }, failCallback).catch(failCatch);
         }
-        await closeFileDescriptor(readPath);
         await closeFdWrite();
     })
 
@@ -2187,37 +2189,7 @@ describe('AudioDecoderFormatCompatibilityPromise', function () {
                 audioDecodeProcessor = null;
             }, failCallback).catch(failCatch);
         }
-        await closeFileDescriptor(readPath);
         await closeFdWrite();
-    }
-
-    async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.codecformat', 0, 100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info('[permission] case accessTokenID is ' + tokenID);
-            let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName2 = 'ohos.permission.READ_MEDIA';
-            let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-        } else {
-            console.info('[permission] case apply permission failed, createAtManager failed');
-        }
     }
 
     async function getFdWrite(pathName) {
@@ -2243,19 +2215,11 @@ describe('AudioDecoderFormatCompatibilityPromise', function () {
         }
     }
 
-    async function getFdRead(pathName, done) {
-        await getFileDescriptor(pathName).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("case fdRead is: " + fdRead);
-            }
+    async function getFdRead(readPath, done) {
+        await mediaTestBase.getFdRead(readPath, done).then((fdNumber) => {
+            fdRead = fdNumber;
         })
     }
-    
 
     async function closeFdWrite() {
         if (fileAssetWrite != null) {
