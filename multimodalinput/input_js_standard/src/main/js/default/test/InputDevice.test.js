@@ -143,4 +143,50 @@ describe('MultimodalInput_test', function () {
     }
     console.log(`inputDevice::supportKeys_test-02 exit`);
   })
+
+  // 参数正常
+  it("inputDevice::getKeyboardType_test-01", 0, function () {
+    console.log(`inputDevice::getKeyboardType_test-01 enter`);
+    inputDevice.getDeviceIds((data, err) => {
+      if (err) {
+        expect(false).assertTrue();
+      } else {
+        for (let i = 0; i < data.length; ++i) {
+          inputDevice.getKeyboardType(data[i], (res, err) => {
+            expect(res).assertInstanceOf('number');
+          });
+        }
+      }
+      console.log(`inputDevice::getKeyboardType_test-01 exit`);
+    });
+  })
+
+  //参数异常
+  it("inputDevice::getKeyboardType_test-02", 0, function () {
+    console.log(`inputDevice::getKeyboardType_test-02 enter`);
+    try {
+      inputDevice.getKeyboardType(-1);
+    } catch (error) {
+      expect(error.message).assertEqual("getKeyboardType: \"The second parameter type is wrong\"");
+    }
+    console.log(`inputDevice::getKeyboardType_test-02 exit`);
+  });
+
+  // 参数正常
+  it("inputDevice::getKeyboardType_test-03", 0, function () {
+    console.log(`inputDevice::getKeyboardType_test-03 enter`);
+    inputDevice.getDeviceIds((data, err) => {
+      if (err) {
+        expect(false).assertTrue();
+      } else {
+        for (let i = 0; i < data.length; ++i) {
+          inputDevice.getKeyboardType(data[i]).then((res) => {
+            expect(res).assertInstanceOf('number');
+            done();
+          });
+        }
+      }
+      console.log(`inputDevice::getKeyboardType_test-03 exit`);
+    });
+  })
 })
