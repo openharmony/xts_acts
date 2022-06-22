@@ -15,17 +15,13 @@
 
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
 import featureAbility from '@ohos.ability.featureAbility'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
-import {getFileDescriptor, closeFileDescriptor} from './AudioEncoderTestBase.test.js';
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('AudioEncoderFuncPromise', function () {
-    const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/'
     const AUDIOPATH = 'S16LE.pcm';
-    const BASIC_PATH = RESOURCEPATH + 'results/encode_func_promise_';
     let audioEncodeProcessor;
     let readStreamSync;
     let eosframenum = 0;
@@ -54,7 +50,12 @@ describe('AudioEncoderFuncPromise', function () {
 
     beforeAll(async function() {
         console.info('beforeAll case 1');
-        await applyPermission();
+        let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
+        let permissionName2 = 'ohos.permission.READ_MEDIA';
+        let permissionName3 = 'ohos.permission.WRITE_MEDIA';
+        permissionNameList = [permissionName1, permissionName2, permissionName3];
+        let appName = 'ohos.acts.multimedia.audio.audioencoder';
+        await mediaTestBase.applyPermission(appName, permissionNameList);
         console.info('beforeAll case after get permission');
     })
 
@@ -86,13 +87,10 @@ describe('AudioEncoderFuncPromise', function () {
                 audioEncodeProcessor = null;
             }, failCallback).catch(failCatch);
         }
-        await closeFileDescriptor(AUDIOPATH);
-        await closeFdWrite();
     })
 
     afterAll(async function() {
         console.info('afterAll case');
-        await closeFileDescriptor(AUDIOPATH);
     })
 
     let failCallback = function(err) {
@@ -122,47 +120,10 @@ describe('AudioEncoderFuncPromise', function () {
         outputQueue = [];
     }
 
-    async function getFdRead(pathName, done) {
-        await getFileDescriptor(pathName).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("case pathName is: " + pathName);
-                console.info("case fdRead is: " + fdRead);
-            }
+    async function getFdRead(readPath, done) {
+        await mediaTestBase.getFdRead(readPath, done).then((fdNumber) => {
+            fdRead = fdNumber;
         })
-    }
-
-    async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.audioencoder', 0, 100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info('[permission] case accessTokenID is ' + tokenID);
-            let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName2 = 'ohos.permission.READ_MEDIA';
-            let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-        } else {
-            console.info('[permission] case apply permission failed, createAtManager failed');
-        }
     }
 
     async function getFdWrite(pathName) {
@@ -183,7 +144,7 @@ describe('AudioEncoderFuncPromise', function () {
             console.info('[mediaLibrary] case getFdWrite getFileAssets() success');
             fileAsset = await fetchWriteFileResult.getAllObject();
             console.info('[mediaLibrary] case getFdWrite getAllObject() success');
-            fdWrite = await fileAsset[0].open('Rw');
+            fdWrite = await fileAsset[0].open('rw');
             console.info('[mediaLibrary] case getFdWrite fdWrite is ' + fdWrite);
         }
     }
@@ -275,7 +236,6 @@ describe('AudioEncoderFuncPromise', function () {
     async function flushWork(done) {
         inputQueue = [];
         outputQueue = [];
-        await closeFileDescriptor(readpath);
         await getFdRead(readpath, done);
         await audioEncodeProcessor.flush().then(() => {
             console.info("case flush at inputeos success");
@@ -346,7 +306,6 @@ describe('AudioEncoderFuncPromise', function () {
                     await flushWork(done);
                 } else if (workdoneAtEOS) {
                     await doneWork();
-                    await closeFileDescriptor(AUDIOPATH);
                     await closeFdWrite();
                     done();
                 } else {
@@ -640,7 +599,6 @@ describe('AudioEncoderFuncPromise', function () {
             console.info("case release success");
         }, failCallback).catch(failCatch);
         audioEncodeProcessor = null;
-        await closeFileDescriptor(AUDIOPATH);
         await closeFdWrite();
         done();
     })
@@ -694,7 +652,6 @@ describe('AudioEncoderFuncPromise', function () {
             console.info("restart encoding after 2s");
         });
         resetParam();
-        await closeFileDescriptor(readpath);
         await getFdRead(readpath, done);
         readFile(readpath);
         await audioEncodeProcessor.start().then(() => {
@@ -753,7 +710,6 @@ describe('AudioEncoderFuncPromise', function () {
             console.info("start configure 2");
         });
         resetParam();
-        await closeFileDescriptor(readpath);
         await closeFdWrite();
         await audioEncodeProcessor.configure(mediaDescription2).then(() => {
             console.info("configure 2 success");

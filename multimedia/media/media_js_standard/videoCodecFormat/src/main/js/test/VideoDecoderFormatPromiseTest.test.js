@@ -16,7 +16,7 @@
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
 import router from '@system.router'
-import {getFileDescriptor, closeFileDescriptor} from './VideoFormatTestBase.test.js'
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 
@@ -261,7 +261,6 @@ describe('VideoDecoderFormatPromise', function () {
             }, failCallback).catch(failCatch);
             videoDecodeProcessor = null;
         }
-        await closeFileDescriptor(readPath);
         await router.clear();
     })
 
@@ -294,16 +293,9 @@ describe('VideoDecoderFormatPromise', function () {
         }
     }
 
-    async function getFdRead(pathName, done) {
-        await getFileDescriptor(pathName).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("case fdRead is: " + fdRead);
-            }
+    async function getFdRead(readPath, done) {
+        await mediaTestBase.getFdRead(readPath, done).then((fdNumber) => {
+            fdRead = fdNumber;
         })
     }
     

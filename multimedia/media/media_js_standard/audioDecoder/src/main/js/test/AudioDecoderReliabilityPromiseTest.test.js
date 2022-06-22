@@ -15,13 +15,12 @@
 
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
-import {getFileDescriptor, closeFileDescriptor} from './AudioDecoderTestBase.test.js'
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('AudioDecoderReliabilityPromise', function () {
-    const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audiodecoder/'
     const AUDIOPATH = 'AAC_48000_32_1.aac';
-    const BASIC_PATH = RESOURCEPATH + 'results/decode_reliability_promise';
+    const BASIC_PATH = 'results/decode_reliability_promise';
     const END = 0;
     const CONFIGURE = 1;
     const PREPARE = 2;
@@ -272,12 +271,10 @@ describe('AudioDecoderReliabilityPromise', function () {
                 audioDecodeProcessor = null;
             }, failCallback).catch(failCatch);
         }
-        await closeFileDescriptor(AUDIOPATH);
     })
 
     afterAll(async function() {
         console.info('afterAll case');
-        await closeFileDescriptor(AUDIOPATH);
     })
 
     let failCallback = function(err) {
@@ -324,16 +321,9 @@ describe('AudioDecoderReliabilityPromise', function () {
         })
     }
 
-    async function getFdRead(pathName, done) {
-        await getFileDescriptor(pathName).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("case fdRead is: " + fdRead);
-            }
+    async function getFdRead(readPath, done) {
+        await mediaTestBase.getFdRead(readPath, done).then((fdNumber) => {
+            fdRead = fdNumber;
         })
     }
 
@@ -408,7 +398,6 @@ describe('AudioDecoderReliabilityPromise', function () {
                 console.info(`case to start`);
                 if (sawOutputEOS) {
                     resetParam();
-                    await closeFileDescriptor(AUDIOPATH);
                     await getFdRead(AUDIOPATH, done);
                     readFile(AUDIOPATH);
                     workdoneAtEOS = true;
@@ -427,7 +416,6 @@ describe('AudioDecoderReliabilityPromise', function () {
                 audioDecodeProcessor.flush().then(async() => {
                     console.info(`case flush 1`);
                     if (flushAtEOS) {
-                        await closeFileDescriptor(AUDIOPATH);
                         await getFdRead(AUDIOPATH, done);
                         resetParam();
                         readFile(AUDIOPATH);
