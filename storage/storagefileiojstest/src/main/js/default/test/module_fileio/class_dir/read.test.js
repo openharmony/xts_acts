@@ -14,1028 +14,598 @@
  */
 
 import {
-  fileio, FILE_CONTENT, prepareFile, nextFileName, isIntNum, isString, isBoolean,
+  fileio, FILE_CONTENT, prepareFile, nextFileName, isString, isBoolean,
   describe, it, expect,
 } from '../../Common';
 
 describe('fileio_dir_read', function () {
 
   /**
-   * @tc.number SUB_DF_FileIO_ReadSync_0000
-   * @tc.name fileio_test_dir_read_file_sync_000
-   * @tc.desc Test Dir.readSync() interface.
-   * @tc.size MEDIUM(中型)
+   * @tc.number SUB_DF_FILEIO_DIR_READ_ASYNC_0000
+   * @tc.name fileio_test_dir_read_async_000
+   * @tc.desc Test Dir read() interface,return in promise mode.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
-   */
-  it('fileio_test_dir_read_file_sync_000', 0, async function () {
-    let fpath = await nextFileName('fileio_test_dir_read_file_sync_000');
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
-    try {
-      let stat = fileio.statSync(fpath);
-      expect(isIntNum(stat.size)).assertTrue();
-      let fd = fileio.openSync(fpath, 0o2);
-      expect(isIntNum(fd)).assertTrue();
-      let len = fileio.readSync(fd, new ArrayBuffer(stat.size));
-      expect(len == FILE_CONTENT.length).assertTrue();
-      expect(fileio.closeSync(fd) == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-    } catch (e) {
-      console.log('fileio_test_dir_read_file_sync_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_open_close_ASync_0000
-   * @tc.name fileio_test_dir_open_close_async_000
-   * @tc.desc Test Dir.readSync() interface.
-   */
-  it('fileio_test_dir_open_close_async_000', 0, async function (done) {
-    let dpath = await nextFileName('fileio_test_dir_open_close_async_000') + 'd';
-
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      expect(dd.closeSync() == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_test_dir_open_close_async_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_open_close_ASync_0010
-   * @tc.name fileio_test_dir_open_close_async_001
-   * @tc.desc Test Dir.readSync() interface.
-   */
-  it('fileio_test_dir_open_close_async_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_test_dir_open_close_async_001') + 'd';
-
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      fileio.opendir(dpath, function (error, dd) {
-        expect(dd !== null).assertTrue();
-        expect(dd.closeSync() == null).assertTrue();
-        expect(fileio.rmdirSync(dpath) == null).assertTrue();
-        done();
-      });
-    } catch (e) {
-      console.log('fileio_test_dir_open_close_async_001 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_open_close_ASync_0000
-   * @tc.name fileio_test_dir_open_close_async_000
-   * @tc.desc Test Dir.readSync() interface.
    */
   it('fileio_test_dir_read_async_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_test_dir_read_async_000') + 'd';
     let fpath = dpath + '/f1';
 
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = fileio.opendirSync(dpath);
-      expect(dd !== null).assertTrue();
-      expect(await dd.read() != null).assertTrue();
-      expect(dd.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      let dir = await dd.read();
+      dd.closeSync();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     }
     catch (e) {
-      console.log('fileio_test_dir_read_async_000 has failed for ' + e);
+      console.info('fileio_test_dir_read_async_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_open_close_ASync_0010
-   * @tc.name fileio_test_dir_open_close_async_001
-   * @tc.desc Test Dir.readSync() interface.
+   * @tc.number SUB_DF_FILEIO_DIR_READ_ASYNC_0100
+   * @tc.name fileio_test_dir_read_async_001
+   * @tc.desc Test Dir read() interface,return in callback mode.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_dir_read_async_001', 0, async function (done) {
     let dpath = await nextFileName('fileio_test_dir_read_async_001') + 'd';
     let fpath = dpath + '/f1';
 
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = fileio.opendirSync(dpath);
-      expect(dd !== null).assertTrue();
       dd.read(function (err, dirent) {
-        expect(dd.closeSync() == null).assertTrue();
-        expect(fileio.unlinkSync(fpath) == null).assertTrue();
-        expect(fileio.rmdirSync(dpath) == null).assertTrue();
+        dd.closeSync();
+        fileio.unlinkSync(fpath);
+        fileio.rmdirSync(dpath);
         done();
       });
     } catch (e) {
-      console.log('fileio_test_dir_read_async_001 has failed for ' + e);
+      console.info('fileio_test_dir_read_async_001 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_0000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_ASYNC_0200
+   * @tc.name fileio_test_dir_read_async_002
+   * @tc.desc Test Dir read() interface,there are multiple parameters.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+   it('fileio_test_dir_read_async_002', 0, async function (done) {
+    let dpath = await nextFileName('fileio_test_dir_read_async_002') + 'd';
+    let fpath = dpath + '/f1';
+    let dd  = null
+    try {
+      fileio.mkdirSync(dpath);
+      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+      dd = fileio.opendirSync(dpath);
+      dd.read(-1,function (err, dirent) {
+
+      });
+    } catch (e) {
+      console.info('fileio_test_dir_read_async_002 has failed for ' + e);
+      expect(e.message == "Number of arguments unmatched").assertTrue();
+      dd.closeSync();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_DIR_READ_SYNC_0000
    * @tc.name fileio_dir_read_sync_000
-   * @tc.desc Test Dir.readSync() interface.
+   * @tc.desc Test Dir readSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_read_sync_000', 0, async function () {
     let dpath = await nextFileName('fileio_dir_read_sync_000') + 'd';
     let fpath = dpath + '/f1';
 
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = fileio.opendirSync(dpath);
-      expect(dd !== null).assertTrue();
-      expect(dd.readSync() != null).assertTrue();
-      expect(dd.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      dd.readSync();
+      dd.closeSync();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
     } catch (e) {
-      console.log('fileio_dir_read_sync_000 has failed for ' + e);
+      console.info('fileio_dir_read_sync_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_0010
+   * @tc.number SUB_DF_FILEIO_DIR_READ_SYNC_0100
    * @tc.name fileio_dir_read_sync_001
-   * @tc.desc Test Dir.readSync() interface.
+   * @tc.desc Test Dir.readSync() interface,there are multiple parameters.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_read_sync_001', 0, async function () {
     let dpath = await nextFileName('fileio_dir_read_sync_001') + 'd';
     let fpath = dpath + '/f1';
-    let dd;
-
+    let dd = null;
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       dd = fileio.opendirSync(dpath);
-      expect(dd !== null).assertTrue();
-      expect(dd.readSync(-1) != null).assertTrue();
-      expect(null).assertFail();
+      dd.readSync(-1);
     } catch (e) {
-      expect(dd.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      console.info('fileio_dir_read_sync_001 has failed for ' + e);
+      expect(e.message == "Number of arguments unmatched").assertTrue();
+      dd.closeSync();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_Name_0000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_SYNC_NAME_0000
    * @tc.name fileio_dir_read_sync_name_000
    * @tc.desc Test Dir.readSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_read_sync_name_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_name_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isString(dir.name)).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_sync_name_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_Name_0010
-   * @tc.name fileio_dir_read_sync_name_001
-   * @tc.desc Test Dir.readSync() interface.
-   */
-  it('fileio_dir_read_sync_name_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_sync_name_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(fpath.indexOf(dir.name) > -1).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_sync_name_001 has failed for ' + e);
+      console.info('fileio_dir_read_sync_name_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_isBlockDevice_0000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_SYNC_ISBLOCKDEVICE_0000
    * @tc.name fileio_dir_read_sync_isBlockDevice_000
    * @tc.desc Test Dir.readSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_read_sync_isBlockDevice_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_isBlockDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isBlockDevice())).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_sync_isBlockDevice_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_isBlockDevice_0010
-   * @tc.name fileio_dir_read_sync_isBlockDevice_001
-   * @tc.desc Test Dir.readSync() interface.
-   */
-  it('fileio_dir_read_sync_isBlockDevice_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_sync_isBlockDevice_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(dir.isBlockDevice() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_sync_isBlockDevice_001 has failed for ' + e);
+      console.info('fileio_dir_read_sync_isBlockDevice_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_isCharacterDevice_0000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_SYNC_ISCHARACTERDEVICE_0000
    * @tc.name fileio_dir_read_sync_isCharacterDevice_000
    * @tc.desc Test Dir.readSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_read_sync_isCharacterDevice_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_isCharacterDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isCharacterDevice())).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_sync_isCharacterDevice_000 has failed for ' + e);
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_isCharacterDevice_0010
-   * @tc.name fileio_dir_read_sync_isCharacterDevice_001
-   * @tc.desc Test Dir.readSync() interface.
-   */
-  it('fileio_dir_read_sync_isCharacterDevice_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_sync_isCharacterDevice_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(dir.isCharacterDevice() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_sync_isCharacterDevice_001 has failed for ' + e);
-      expect(null).assertFail();
+      console.info('fileio_dir_read_sync_isCharacterDevice_000 has failed for ' + e);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_isDirectory_0000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_SYNC_ISDIRECTORY_0000
    * @tc.name fileio_dir_read_sync_isDirectory_000
    * @tc.desc Test Dir.readSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_read_sync_isDirectory_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_isDirectory_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isDirectory())).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_sync_isDirectory_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_isDirectory_0010
-   * @tc.name fileio_dir_read_sync_isDirectory_001
-   * @tc.desc Test Dir.readSync() interface.
-   */
-  it('fileio_dir_read_sync_isDirectory_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_sync_isDirectory_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(dir.isDirectory() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_sync_isDirectory_001 has failed for ' + e);
+      console.info('fileio_dir_read_sync_isDirectory_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_isFIFO_0000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_SYNC_ISFIFO_0000
    * @tc.name fileio_dir_read_sync_isFIFO_000
    * @tc.desc Test Dir.readSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_read_sync_isFIFO_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_isFIFO_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isFIFO())).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_sync_isFIFO_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_isFIFO_0010
-   * @tc.name fileio_dir_read_sync_isFIFO_001
-   * @tc.desc Test Dir.readSync() interface.
-   */
-  it('fileio_dir_read_sync_isFIFO_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_sync_isFIFO_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(dir.isFIFO() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_sync_isFIFO_001 has failed for ' + e);
+      console.info('fileio_dir_read_sync_isFIFO_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_isFile_0000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_SYNC_ISFILE_0000
    * @tc.name fileio_dir_read_sync_isFile_000
    * @tc.desc Test Dir.readSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_read_sync_isFile_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_isFile_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isFile())).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_sync_isFile_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_isFile_0010
-   * @tc.name fileio_dir_read_sync_isFile_001
-   * @tc.desc Test Dir.readSync() interface.
-   */
-  it('fileio_dir_read_sync_isFile_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_sync_isFile_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(dir.isFile()).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_sync_isFile_001 has failed for ' + e);
+      console.info('fileio_dir_read_sync_isFile_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_isSocket_0000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_SYNC_ISCOCKET_0000
    * @tc.name fileio_dir_read_sync_isSocket_000
    * @tc.desc Test Dir.readSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_read_sync_isSocket_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_isSocket_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isSocket())).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_sync_isSocket_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_isSocket_0010
-   * @tc.name fileio_dir_read_sync_isSocket_001
-   * @tc.desc Test Dir.readSync() interface.
-   */
-  it('fileio_dir_read_sync_isSocket_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_sync_isSocket_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(dir.isSocket() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_sync_isSocket_001 has failed for ' + e);
+      console.info('fileio_dir_read_sync_isSocket_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_isSymbolicLink_0000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_SYNC_ISSYMBOLICLINK_0000
    * @tc.name fileio_dir_read_sync_isSymbolicLink_000
    * @tc.desc Test Dir.readSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_read_sync_isSymbolicLink_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_sync_isSymbolicLink_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = dd.readSync();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isSymbolicLink())).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      expect(dir.isSymbolicLink() === false).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_sync_isSymbolicLink_000 has failed for ' + e);
+      console.info('fileio_dir_read_sync_isSymbolicLink_000 has failed for ' + e);
       expect(null);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadSync_isSymbolicLink_0010
-   * @tc.name fileio_dir_read_sync_isSymbolicLink_001
-   * @tc.desc Test Dir.readSync() interface.
-   */
-  it('fileio_dir_read_sync_isSymbolicLink_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_sync_isSymbolicLink_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = dd.readSync();
-      expect(dir != null).assertTrue();
-      expect(dir.isSymbolicLink() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_sync_isSymbolicLink_001 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_0000
-   * @tc.name fileio_dir_read_async_000
-   * @tc.desc Test Dir.readAsync() interface.
-   */
-  it('fileio_dir_read_async_000', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_async_000') + 'd';
-    let fpath = dpath + '/f1';
-
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = fileio.opendirSync(dpath);
-      expect(dd !== null).assertTrue();
-      expect(await dd.read() != null).assertTrue();
-      expect(dd.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_async_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_0010
-   * @tc.name fileio_dir_read_async_001
-   * @tc.desc Test Dir.readAsync() interface.
-   */
-  it('fileio_dir_read_async_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_async_001') + 'd';
-    let fpath = dpath + '/f1';
-
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = fileio.opendirSync(dpath);
-      expect(dd !== null).assertTrue();
-      dd.read(function (err, dirent) {
-        expect(dd.closeSync() == null).assertTrue();
-        expect(fileio.unlinkSync(fpath) == null).assertTrue();
-        expect(fileio.rmdirSync(dpath) == null).assertTrue();
-        done();
-      })
-    } catch (e) {
-      console.log('fileio_dir_read_async_001 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_Name_0000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_ASYNC_NAME_0000
    * @tc.name fileio_dir_read_async_name_000
    * @tc.desc Test Dir.readAsync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_read_async_name_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_async_name_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(isString(dir.name)).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_async_name_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_Name_0010
-   * @tc.name fileio_dir_read_async_name_001
-   * @tc.desc Test Dir.readAsync() interface.
-   */
-  it('fileio_dir_read_async_name_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_async_name_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(fpath.indexOf(dir.name) > -1).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_async_name_001 has failed for ' + e);
+      console.info('fileio_dir_read_async_name_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
+  
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_IsBlockDevice_0000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_ASYNC_ISBLOCKDEVICE_0000
    * @tc.name fileio_dir_read_async_isBlockDevice_000
    * @tc.desc Test Dir.readAsync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_read_async_isBlockDevice_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_async_isBlockDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isBlockDevice())).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_async_isBlockDevice_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_IsBlockDevice_0010
-   * @tc.name fileio_dir_read_async_isBlockDevice_001
-   * @tc.desc Test Dir.readAsync() interface.
-   */
-  it('fileio_dir_read_async_isBlockDevice_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_async_isBlockDevice_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(dir.isBlockDevice() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_async_isBlockDevice_001 has failed for ' + e);
+      console.info('fileio_dir_read_async_isBlockDevice_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_IsCharacterDevice_0000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_ASYNC_ISCHARACTERDEVICE_0000
    * @tc.name fileio_dir_read_async_isCharacterDevice_000
    * @tc.desc Test Dir.readAsync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
 
   it('fileio_dir_read_async_isCharacterDevice_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_async_isCharacterDevice_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isCharacterDevice())).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_async_isCharacterDevice_000 has failed for ' + e);
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_IsCharacterDevice_0010
-   * @tc.name fileio_dir_read_async_isCharacterDevice_001
-   * @tc.desc Test Dir.readAsync() interface.
-   */
-  it('fileio_dir_read_async_isCharacterDevice_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_async_isCharacterDevice_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(dir.isCharacterDevice() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_async_isCharacterDevice_001 has failed for ' + e);
+      console.info('fileio_dir_read_async_isCharacterDevice_000 has failed for ' + e);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_IsDirectory_0000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_ASYNC_ISDIRECTORY_0000
    * @tc.name fileio_dir_read_async_isDirectory_000
    * @tc.desc Test Dir.readAsync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_read_async_isDirectory_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_async_isDirectory_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isDirectory())).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_async_isDirectory_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_IsDirectory_0010
-   * @tc.name fileio_dir_read_async_isDirectory_001
-   * @tc.desc Test Dir.readAsync() interface.
-   */
-  it('fileio_dir_read_async_isDirectory_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(dir.isDirectory() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_async_isDirectory_001 has failed for ' + e);
+      console.info('fileio_dir_read_async_isDirectory_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_IsFIFO_0000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_ASYNC_ISFIFO_0000
    * @tc.name fileio_dir_read_async_isFIFO_000
    * @tc.desc Test Dir.readAsync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_dir_read_async_isFIFO_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_dir_read_async_isFIFO_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isFIFO())).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_async_isFIFO_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_IsFIFO_0010
-   * @tc.name fileio_dir_read_async_isFIFO_001
-   * @tc.desc Test Dir.readAsync() interface.
-   */
-  it('fileio_dir_read_async_isFIFO_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_async_isFIFO_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(dir.isFIFO() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_async_isFIFO_001 has failed for ' + e);
+      console.info('fileio_dir_read_async_isFIFO_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_IsFile_0000
-   * @tc.name fileio_dir_read_async_isDirectory_000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_ASYNC_ISFILE_0000
+   * @tc.name fileio_dir_read_async_isFile_000
    * @tc.desc Test Dir.readAsync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_dir_read_async_isDirectory_000', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_000') + 'd';
+  it('fileio_dir_read_async_isFile_000', 0, async function (done) {
+    let dpath = await nextFileName('fileio_dir_read_async_isFile_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isFile())).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_async_isDirectory_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_IsFile_0010
-   * @tc.name fileio_dir_read_async_isDirectory_001
-   * @tc.desc Test Dir.readAsync() interface.
-   */
-  it('fileio_dir_read_async_isDirectory_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(dir.isFile()).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_async_isDirectory_001 has failed for ' + e);
+      console.info('fileio_dir_read_async_isFile_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_IsSocket_0000
-   * @tc.name fileio_dir_read_async_isDirectory_000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_ASYNC_ISSOCKET_0000
+   * @tc.name fileio_dir_read_async_isSocket_000
    * @tc.desc Test Dir.readAsync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_dir_read_async_isDirectory_000', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_000') + 'd';
+  it('fileio_dir_read_async_isSocket_000', 0, async function (done) {
+    let dpath = await nextFileName('fileio_dir_read_async_isSocket_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = await dd.read();
-      expect(dir != null).assertTrue();
+      let dd = await fileio.opendir(dpath);;
+      let dir = await dd.read();;
       expect(isBoolean(dir.isSocket())).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_async_isDirectory_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_IsSocket_0010
-   * @tc.name fileio_dir_read_async_isDirectory_001
-   * @tc.desc Test Dir.readAsync() interface.
-   */
-  it('fileio_dir_read_async_isDirectory_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(dir.isSocket() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_async_isDirectory_001 has failed for ' + e);
+      console.info('fileio_dir_read_async_isSocket_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_IsSymbolicLink_0000
-   * @tc.name fileio_dir_read_async_isDirectory_000
+   * @tc.number SUB_DF_FILEIO_DIR_READ_ASYNC_ISSYMBOLICLINK_0000
+   * @tc.name fileio_dir_read_async_isSymbolicLink_000
    * @tc.desc Test Dir.readAsync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
-  it('fileio_dir_read_async_isDirectory_000', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_000') + 'd';
+  it('fileio_dir_read_async_isSymbolicLink_000', 0, async function (done) {
+    let dpath = await nextFileName('fileio_dir_read_async_isSymbolicLink_000') + 'd';
     let fpath = dpath + '/f1';
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(isBoolean(dir.isSymbolicLink())).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
-    } catch (e) {
-      console.log('fileio_dir_read_async_isDirectory_000 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_FileIO_Dir_ReadAsync_IsSymbolicLink_0010
-   * @tc.name fileio_dir_read_async_isDirectory_001
-   * @tc.desc Test Dir.readAsync() interface.
-   */
-  it('fileio_dir_read_async_isDirectory_001', 0, async function (done) {
-    let dpath = await nextFileName('fileio_dir_read_async_isDirectory_001') + 'd';
-    let fpath = dpath + '/f1';
-    try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-      let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      let dir = await dd.read();
-      expect(dir != null).assertTrue();
       expect(dir.isSymbolicLink() === false).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_dir_read_async_isDirectory_001 has failed for ' + e);
+      console.info('fileio_dir_read_async_isSymbolicLink_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
