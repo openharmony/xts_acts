@@ -16,13 +16,13 @@
 import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-import {tc_020buf, tc_020_1buf, tc_021buf, tc_021_1buf, tc_022buf} from './testImg'
+import { tc_020buf, tc_020_1buf, tc_021buf, tc_021_1buf, tc_022buf } from './testImg'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 
 describe('Image', function () {
     var pathExifJpg = '/data/storage/el2/base/files/test_exif.jpg';
-
+    let globalpixelmap;
     beforeAll(async function () {
         await applyPermission();
         console.info('beforeAll case');
@@ -33,6 +33,9 @@ describe('Image', function () {
     })
 
     afterEach(async function () {
+        if (globalpixelmap != undefined) {
+            await globalpixelmap.release();
+        }
         console.info('afterEach case');
     })
 
@@ -40,35 +43,35 @@ describe('Image', function () {
         console.info('afterAll case');
     })
 
-    async function applyPermission(){
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.image.Exif',0,100);
+    async function applyPermission() {
+        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.image.Exif', 0, 100);
         let atManager = abilityAccessCtrl.createAtManager();
-        if(atManager != null){
+        if (atManager != null) {
             let tokenID = appInfo.accessTokenId;
             console.info('[permission]case accessTokenId is' + tokenID);
             let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
             let permissionName2 = 'ohos.permission.READ_MEDIA';
             let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID,permissionName1).then((result)=>{
+            await atManager.grantUserGrantedPermission(tokenID, permissionName1).then((result) => {
                 console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.info('[permission]case grantUserGrantedPermission failed:' + err);
             });
-            await atManager.grantUserGrantedPermission(tokenID,permissionName2).then((result)=>{
+            await atManager.grantUserGrantedPermission(tokenID, permissionName2).then((result) => {
                 console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.info('[permission]case grantUserGrantedPermission failed:' + err);
             });
-            await atManager.grantUserGrantedPermission(tokenID,permissionName3).then((result)=>{
+            await atManager.grantUserGrantedPermission(tokenID, permissionName3).then((result) => {
                 console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.info('[permission]case grantUserGrantedPermission failed:' + err);
             });
-        }else{
+        } else {
             console.info('[permission]case apply permission failed,createAtManager failed');
         }
     }
-    
+
     /**
          * @tc.number    : TC_001
          * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer)
@@ -80,11 +83,12 @@ describe('Image', function () {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-     it('TC_001', 0, async function (done) {
+    it('TC_001', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
         image.createPixelMap(Color, opts)
-            .then( pixelmap => {
+            .then(pixelmap => {
+                globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 console.info('TC_001 success');
                 done();
@@ -94,7 +98,7 @@ describe('Image', function () {
                 expect().assertFail();
                 done();
             })
-        })
+    })
 
     /**
      * @tc.number    : TC_001-1
@@ -111,6 +115,7 @@ describe('Image', function () {
         const Color = new ArrayBuffer(96);
         let opts = { editable: false, pixelFormat: 3, size: { height: 4, width: 6 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
             expect(pixelmap != undefined).assertTrue();
             console.info('TC_001-1 success');
             done();
@@ -127,11 +132,12 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-     it('TC_001-2', 0, async function (done) {
+    it('TC_001-2', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 2, size: { height: 6, width: 8 } }
         image.createPixelMap(Color, opts)
-            .then( pixelmap => {
+            .then(pixelmap => {
+                globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 console.info('TC_001-2 success');
                 done();
@@ -141,7 +147,7 @@ describe('Image', function () {
                 expect().assertFail();
                 done();
             })
-        })
+    })
 
     /**
      * @tc.number    : TC_001-3
@@ -158,6 +164,7 @@ describe('Image', function () {
         const Color = new ArrayBuffer(96);
         let opts = { editable: false, pixelFormat: 2, size: { height: 6, width: 8 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
             expect(pixelmap != undefined).assertTrue();
             console.info('TC_001-3 success');
             done();
@@ -175,11 +182,12 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-     it('TC_001-4', 0, async function (done) {
+    it('TC_001-4', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 0, size: { height: 6, width: 8 } }
         image.createPixelMap(Color, opts)
-            .then( pixelmap => {
+            .then(pixelmap => {
+                globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 console.info('TC_001-4 success');
                 done();
@@ -202,10 +210,11 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-     it('TC_001-5', 0, async function (done) {
+    it('TC_001-5', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: false, pixelFormat: 0, size: { height: 6, width: 8 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
             expect(pixelmap != undefined).assertTrue();
             console.info('TC_001-5 success');
             done();
@@ -225,7 +234,8 @@ describe('Image', function () {
     it('TC_001-6', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 3, size: { height: 6, width: 8 } }
-         image.createPixelMap(Color, opts, (err, pixelmap) => {
+        image.createPixelMap(Color, opts, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
             expect(pixelmap != undefined).assertTrue();
             console.info('TC_001-6 success');
             done();
@@ -246,7 +256,8 @@ describe('Image', function () {
     it('TC_001-7', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 2, size: { height: 2, width: 3 } }
-         image.createPixelMap(Color, opts, (err, pixelmap) => {
+        image.createPixelMap(Color, opts, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
             expect(pixelmap != undefined).assertTrue();
             console.info('TC_001-7 success');
             done();
@@ -268,6 +279,7 @@ describe('Image', function () {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 0, size: { height: -1, width: -1 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
             expect(pixelmap == undefined).assertTrue();
             console.info('TC_001-8 success');
             done();
@@ -278,7 +290,7 @@ describe('Image', function () {
      * @tc.number    : TC_001-9
      * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: unsupported format, size: { height: 6, width: 8 })
      * @tc.desc      : 1.create InitializationOptions object
-     *                 2.set editable,pixeFormat,size
+     *                 2.set editable,pixeFormat,size(Unsupported formats are converted to RGBA_8888)
      *                 3.using color and opts create newPixelMap
      *                 4.return newpixelmap empty
      * @tc.size      : MEDIUM
@@ -287,9 +299,10 @@ describe('Image', function () {
      */
     it('TC_001-9', 0, async function (done) {
         const Color = new ArrayBuffer(96);
-        let opts = { editable: true, pixelFormat: 1, size: { height: 6, width: 8 } }
+        let opts = { editable: true, pixelFormat: 21, size: { height: 6, width: 8 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
-            expect(pixelmap == undefined).assertTrue();
+            globalpixelmap = pixelmap;
+            expect(pixelmap != undefined).assertTrue();
             console.info('TC_001-9 success');
             done();
         })
@@ -316,7 +329,8 @@ describe('Image', function () {
 
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
         image.createPixelMap(color, opts)
-            .then( pixelmap => {
+            .then(pixelmap => {
+                globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
                     console.info('TC_020 createPixelMap failed');
                     expect(false).assertTrue()
@@ -327,15 +341,15 @@ describe('Image', function () {
                     var bufferArr2 = new Uint8Array(readBuffer);
                     var res = true;
                     for (var i = 0; i < bufferArr2.length; i++) {
-                             if (bufferArr2[i] != tc_020buf[i]) {
-                                res = false;
-                                console.info('TC_20_buffer'+ bufferArr2[i]);
-                                console.info('TC_020 failed');
-                                expect(false).assertTrue();
-                                done();
-                                break;
-                            }
+                        if (bufferArr2[i] != tc_020buf[i]) {
+                            res = false;
+                            console.info('TC_20_buffer' + bufferArr2[i]);
+                            console.info('TC_020 failed');
+                            expect(false).assertTrue();
+                            done();
+                            break;
                         }
+                    }
                     if (res) {
                         console.info('TC_020 success');
                         expect(true).assertTrue()
@@ -345,12 +359,12 @@ describe('Image', function () {
                     console.log('TC_020 read error: ' + error);
                     expect().assertFail();
                     done();
+                })
+            }).catch(error => {
+                console.log('TC_020 error: ' + error);
+                expect().assertFail();
+                done();
             })
-        }).catch(error => {
-            console.log('TC_020 error: ' + error);
-            expect().assertFail();
-            done();
-        })
     })
 
     /**
@@ -374,13 +388,14 @@ describe('Image', function () {
 
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
         image.createPixelMap(color, opts, (err, pixelmap) => {
-            if(pixelmap == undefined){
+            globalpixelmap = pixelmap;
+            if (pixelmap == undefined) {
                 console.info('TC_020-1 createPixelMap failed');
                 expect(false).assertTrue();
                 done();
-            }else{
+            } else {
                 const readBuffer = new ArrayBuffer(96);
-                pixelmap.readPixelsToBuffer(readBuffer,() => {
+                pixelmap.readPixelsToBuffer(readBuffer, () => {
                     var bufferArr = new Uint8Array(readBuffer);
                     var res = true;
                     for (var i = 0; i < bufferArr.length; i++) {
@@ -422,14 +437,15 @@ describe('Image', function () {
         }
 
         let opts = { editable: true, pixelFormat: 2, size: { height: 6, width: 8 } }
-        image.createPixelMap(color, opts, (err,pixelmap) => {
-            if(pixelmap == undefined){
+        image.createPixelMap(color, opts, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
+            if (pixelmap == undefined) {
                 console.info('TC_020-2 createPixelMap failed');
                 expect(false).assertTrue();
                 done();
-            }else{
+            } else {
                 const readBuffer = new ArrayBuffer(0);
-                pixelmap.readPixelsToBuffer(readBuffer,() => {
+                pixelmap.readPixelsToBuffer(readBuffer, () => {
                     var bufferArr = new Uint8Array(readBuffer);
                     var res = true;
                     for (var i = 0; i < bufferArr.length; i++) {
@@ -470,13 +486,15 @@ describe('Image', function () {
         }
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
         image.createPixelMap(color, opts)
-            .then( pixelmap => {
+            .then(pixelmap => {
+                globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
                     console.info('TC_021 createPixelMap failed');
                     expect(false).assertTrue()
                     done();
                 }
-                const area = { pixels: new ArrayBuffer(8),
+                const area = {
+                    pixels: new ArrayBuffer(8),
                     offset: 0,
                     stride: 8,
                     region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
@@ -526,21 +544,24 @@ describe('Image', function () {
         }
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
         image.createPixelMap(color, opts, (err, pixelmap) => {
-            if(pixelmap == undefined){
+            globalpixelmap = pixelmap;
+            if (pixelmap == undefined) {
                 console.info('TC_020-1 createPixelMap failed');
                 expect(false).assertTrue();
                 done();
-            }else{
-                const area = { pixels: new ArrayBuffer(8),
+            } else {
+                const area = {
+                    pixels: new ArrayBuffer(8),
                     offset: 0,
                     stride: 8,
-                    region: { size: { height: 1, width: 2 }, x: 0, y: 0 }}
+                    region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+                }
                 pixelmap.readPixels(area, () => {
                     var bufferArr = new Uint8Array(area.pixels);
                     var res = true;
                     for (var i = 0; i < bufferArr.length; i++) {
                         console.info('TC_021-1 buffer ' + bufferArr[i]);
-                        if(bufferArr[i] != tc_021_1buf[i]) {
+                        if (bufferArr[i] != tc_021_1buf[i]) {
                             res = false;
                             console.info('TC_021-1 failed');
                             expect(false).assertTrue();
@@ -576,21 +597,24 @@ describe('Image', function () {
             bufferArr[i] = i + 1;
         }
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
-        image.createPixelMap(color, opts, (err,pixelmap) => {
-            if(pixelmap == undefined){
+        image.createPixelMap(color, opts, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
+            if (pixelmap == undefined) {
                 expect(false).assertTrue();
                 console.info('TC_021-2 create pixelmap fail');
                 done();
-            }else{
-                const area = { pixels: new ArrayBuffer(20),
+            } else {
+                const area = {
+                    pixels: new ArrayBuffer(20),
                     offset: 0,
                     stride: 8,
-                    region: { size: { height: 1, width: 2 }, x: -1, y: -1 }}
-                pixelmap.readPixels(area).then(()=>{
+                    region: { size: { height: 1, width: 2 }, x: -1, y: -1 }
+                }
+                pixelmap.readPixels(area).then(() => {
                     console.info('TC_021-2 failed');
                     expect(false).assertTrue();
                     done();
-                }).catch(()=>{
+                }).catch(() => {
                     expect(true).assertTrue();
                     console.info('TC_021-2 success');
                     done();
@@ -617,21 +641,24 @@ describe('Image', function () {
             bufferArr[i] = i + 1;
         }
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
-        image.createPixelMap(color, opts, (err,pixelmap) => {
-            if(pixelmap == undefined){
+        image.createPixelMap(color, opts, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
+            if (pixelmap == undefined) {
                 expect(false).assertTrue();
                 console.info('TC_021-3 create pixelmap failed');
                 done();
-            }else{
-                const area = { pixels: new ArrayBuffer(0),
+            } else {
+                const area = {
+                    pixels: new ArrayBuffer(0),
                     offset: 0,
                     stride: 8,
-                    region: { size: { height: 1, width: 2 }, x: 0, y: 0 }}
-                pixelmap.readPixels(area).then(()=>{
+                    region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+                }
+                pixelmap.readPixels(area).then(() => {
                     console.info('TC_021-3 failed');
                     expect(false).assertTrue();
                     done();
-                }).catch(()=>{
+                }).catch(() => {
                     expect(true).assertTrue();
                     console.info('TC_021-3 success');
                     done();
@@ -659,20 +686,23 @@ describe('Image', function () {
         }
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
         image.createPixelMap(color, opts, (err, pixelmap) => {
-            if(pixelmap == undefined){
+            globalpixelmap = pixelmap;
+            if (pixelmap == undefined) {
                 expect(false).assertTrue();
                 console.info('TC_021-4 createPixelMap success');
                 done();
             }
-            const area = { pixels: new ArrayBuffer(20),
+            const area = {
+                pixels: new ArrayBuffer(20),
                 offset: 21,
                 stride: 8,
-                region: { size: { height: 1, width: 2 }, x: 0, y: 0 }}
-            pixelmap.readPixels(area).then(()=>{
+                region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+            }
+            pixelmap.readPixels(area).then(() => {
                 console.info('TC_021-4 failed');
                 expect(false).assertTrue();
                 done();
-            }).catch(()=>{
+            }).catch(() => {
                 expect(true).assertTrue();
                 console.info('TC_021-4 success');
                 done();
@@ -698,21 +728,24 @@ describe('Image', function () {
             bufferArr[i] = i + 1;
         }
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
-        image.createPixelMap(color, opts, (err,pixelmap) => {
-            if(pixelmap == undefined){
+        image.createPixelMap(color, opts, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
+            if (pixelmap == undefined) {
                 expect(false).assertTrue();
                 console.info('TC_021-5 createPixelMap success');
                 done();
             }
-            const area = { pixels: new ArrayBuffer(20),
+            const area = {
+                pixels: new ArrayBuffer(20),
                 offset: 0,
                 stride: 8,
-                region: { size: { height: -1, width:-1}, x: 0, y: 0 }}
-            pixelmap.readPixels(area).then(()=>{
+                region: { size: { height: -1, width: -1 }, x: 0, y: 0 }
+            }
+            pixelmap.readPixels(area).then(() => {
                 console.info('TC_021-5 failed');
                 expect(false).assertTrue();
                 done();
-            }).catch(()=>{
+            }).catch(() => {
                 expect(true).assertTrue();
                 console.info('TC_021-5 success');
                 done();
@@ -735,14 +768,16 @@ describe('Image', function () {
         const color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
         image.createPixelMap(color, opts)
-            .then( pixelmap => {
+            .then(pixelmap => {
+                globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
                     console.info('TC_022 createPixelMap failed');
                     expect(false).assertTrue()
                     done();
                 }
 
-                const area = { pixels: new ArrayBuffer(8),
+                const area = {
+                    pixels: new ArrayBuffer(8),
                     offset: 0,
                     stride: 8,
                     region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
@@ -753,7 +788,8 @@ describe('Image', function () {
                 }
 
                 pixelmap.writePixels(area).then(() => {
-                    const readArea = { pixels: new ArrayBuffer(8),
+                    const readArea = {
+                        pixels: new ArrayBuffer(8),
                         offset: 0,
                         stride: 8,
                         region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
@@ -797,57 +833,58 @@ describe('Image', function () {
      * @tc.level     : Level 1
     */
     it('TC_022-1', 0, async function (done) {
-    const color = new ArrayBuffer(96);
-    let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
-    image.createPixelMap(color, opts, (err, pixelmap) => {
-        if (pixelmap == undefined) {
-            console.info('TC_022-1 createPixelMap failed');
-            expect(false).assertTrue()
-            done();
-        }
-        const area = {
-            pixels: new ArrayBuffer(8),
-            offset: 0,
-            stride: 8,
-            region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
-        }
-        var bufferArr = new Uint8Array(area.pixels);
-        for (var i = 0; i < bufferArr.length; i++) {
-            bufferArr[i] = i + 1;
-        }
-        pixelmap.writePixels(area, () => {
-            const readArea = {
+        const color = new ArrayBuffer(96);
+        let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+        image.createPixelMap(color, opts, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
+            if (pixelmap == undefined) {
+                console.info('TC_022-1 createPixelMap failed');
+                expect(false).assertTrue()
+                done();
+            }
+            const area = {
                 pixels: new ArrayBuffer(8),
                 offset: 0,
                 stride: 8,
                 region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
             }
-            pixelmap.readPixels(readArea, () => {
-                var readArr = new Uint8Array(readArea.pixels);
-                var res = true;
-                for (var i = 0; i < readArr.length; i++) {
-                    if (readArr[i] != tc_022buf[i]) {
-                        res = false;
-                        console.info('TC_022-1 failed');
-                        expect(false).assertTrue();
-                        done();
-                        break;
+            var bufferArr = new Uint8Array(area.pixels);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            pixelmap.writePixels(area, () => {
+                const readArea = {
+                    pixels: new ArrayBuffer(8),
+                    offset: 0,
+                    stride: 8,
+                    region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+                }
+                pixelmap.readPixels(readArea, () => {
+                    var readArr = new Uint8Array(readArea.pixels);
+                    var res = true;
+                    for (var i = 0; i < readArr.length; i++) {
+                        if (readArr[i] != tc_022buf[i]) {
+                            res = false;
+                            console.info('TC_022-1 failed');
+                            expect(false).assertTrue();
+                            done();
+                            break;
+                        }
                     }
-                }
-                if (res) {
-                    console.info('TC_022-1 success');
-                    expect(true).assertTrue()
-                    done();
-                }
+                    if (res) {
+                        console.info('TC_022-1 success');
+                        expect(true).assertTrue()
+                        done();
+                    }
+                })
             })
         })
+            .catch(error => {
+                console.log('TC_022-1 error: ' + error);
+                expect().assertFail();
+                done();
+            })
     })
-        .catch(error => {
-            console.log('TC_022-1 error: ' + error);
-            expect().assertFail();
-            done();
-        })
-})
 
     /**
      * @tc.number    : TC_023
@@ -862,9 +899,10 @@ describe('Image', function () {
      */
     it('TC_023', 0, async function (done) {
         const color = new ArrayBuffer(96);
-        let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }}
+        let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
         image.createPixelMap(color, opts)
-            .then( pixelmap => {
+            .then(pixelmap => {
+                globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
                     console.info('TC_023 createPixelMap failed');
                     expect(false).assertTrue()
@@ -872,7 +910,7 @@ describe('Image', function () {
                 }
 
                 const writeColor = new ArrayBuffer(96);
-         var bufferArr = new Uint8Array(writeColor);
+                var bufferArr = new Uint8Array(writeColor);
                 for (var i = 0; i < bufferArr.length; i++) {
                     bufferArr[i] = i + 1;
                 }
@@ -923,20 +961,21 @@ describe('Image', function () {
             bufferArr[i] = i + 1;
         }
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
-        image.createPixelMap(color, opts).then( pixelmap => {
-            if(pixelmap == undefined){
+        image.createPixelMap(color, opts).then(pixelmap => {
+            globalpixelmap = pixelmap;
+            if (pixelmap == undefined) {
                 expect(false).assertTrue()
                 console.info('TC_023-1 failed');
                 done();
             }
             const writeColor = new ArrayBuffer(96);
-            pixelmap.writeBufferToPixels(writeColor,() => {
+            pixelmap.writeBufferToPixels(writeColor, () => {
                 const readBuffer = new ArrayBuffer(96);
-                pixelmap.readPixelsToBuffer(readBuffer,() => {
+                pixelmap.readPixelsToBuffer(readBuffer, () => {
                     var bufferArr = new Uint8Array(readBuffer);
                     var res = true;
                     for (var i = 0; i < bufferArr.length; i++) {
-                        if(res) {
+                        if (res) {
                             if (bufferArr[i] == 0) {
                                 res = false;
                                 console.info('TC_023-1 Success');
@@ -971,36 +1010,37 @@ describe('Image', function () {
         const color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 2, size: { height: 6, width: 8 } }
         image.createPixelMap(color, opts)
-        .then( pixelmap => {
-            if (pixelmap == undefined) {
-                console.info('TC_024 createPixelMap failed');
-                expect(false).assertTrue()
-                done();
-            }
-            pixelmap.getImageInfo().then( imageInfo => {
-                if (imageInfo == undefined) {
-                    console.info('TC_024 imageInfo is empty');
+            .then(pixelmap => {
+                globalpixelmap = pixelmap;
+                if (pixelmap == undefined) {
+                    console.info('TC_024 createPixelMap failed');
                     expect(false).assertTrue()
                     done();
                 }
-                if(imageInfo.size.height == 4 && imageInfo.size.width == 6){
-                    console.info('TC_024 success ');
-                    expect(true).assertTrue()
+                pixelmap.getImageInfo().then(imageInfo => {
+                    if (imageInfo == undefined) {
+                        console.info('TC_024 imageInfo is empty');
+                        expect(false).assertTrue()
+                        done();
+                    }
+                    if (imageInfo.size.height == 4 && imageInfo.size.width == 6) {
+                        console.info('TC_024 success ');
+                        expect(true).assertTrue()
+                        done();
+                    }
                     done();
-                }
+                }).catch(error => {
+                    console.log('TC_024 getimageinfo error: ' + error);
+                    expect().assertFail();
+                    done();
+                })
                 done();
-            }).catch(error => {
-                console.log('TC_024 getimageinfo error: ' + error);
+            })
+            .catch(error => {
+                console.log('TC_024 error: ' + error);
                 expect().assertFail();
                 done();
             })
-            done();
-        })
-        .catch(error => {
-            console.log('TC_024 error: ' + error);
-            expect().assertFail();
-            done();
-        })
     })
 
     /**
@@ -1017,19 +1057,20 @@ describe('Image', function () {
     it('TC_024-1', 0, async function (done) {
         const color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
-        image.createPixelMap(color, opts, (err,pixelmap) => {
-            if(pixelmap == undefined){
+        image.createPixelMap(color, opts, (err, pixelmap) => {
+            if (pixelmap == undefined) {
+                globalpixelmap = pixelmap;
                 expect(false).assertTrue()
                 console.info('TC_024-1 create pixelmap fail');
                 done();
             }
-            pixelmap.getImageInfo( (err,imageInfo) => {
+            pixelmap.getImageInfo((err, imageInfo) => {
                 if (imageInfo == undefined) {
                     console.info('TC_024-1 imageInfo is empty');
                     expect(false).assertTrue()
                     done();
                 }
-                if(imageInfo.size.height == 4 && imageInfo.size.width == 6){
+                if (imageInfo.size.height == 4 && imageInfo.size.width == 6) {
                     console.info('TC_024-1 imageInfo success');
                     expect(true).assertTrue()
                     done();
@@ -1055,8 +1096,9 @@ describe('Image', function () {
         const color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
         const expectNum = 4 * opts.size.width;
-        image.createPixelMap(color, opts, (err,pixelmap) => {
-            if(pixelmap == undefined){
+        image.createPixelMap(color, opts, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
+            if (pixelmap == undefined) {
                 expect(false).assertTrue()
                 console.info('TC_25-1 create pixelmap fail');
                 done();
@@ -1064,7 +1106,7 @@ describe('Image', function () {
                 const num = pixelmap.getBytesNumberPerRow();
                 console.info('TC_025-1 num is ' + num);
                 expect(num == expectNum).assertTrue();
-                if(num == expectNum) {
+                if (num == expectNum) {
                     console.info('TC_25-1 success');
                 } else {
                     console.info('TC_25-1 fail');
@@ -1090,8 +1132,9 @@ describe('Image', function () {
         const color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
         const expectNum = 4 * opts.size.width * opts.size.height;
-        image.createPixelMap(color, opts,(err,pixelmap) => {
-            if(pixelmap == undefined){
+        image.createPixelMap(color, opts, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
+            if (pixelmap == undefined) {
                 expect(false).assertTrue()
                 console.info('TC_026-1 create pixelmap fail');
                 done();
@@ -1099,7 +1142,7 @@ describe('Image', function () {
                 const num = pixelmap.getPixelBytesNumber();
                 console.info('TC_026-1 num is ' + num);
                 expect(num == expectNum).assertTrue();
-                if(num == expectNum) {
+                if (num == expectNum) {
                     console.info('TC_026-1 success');
                 } else {
                     console.info('TC_026-1 fail');
@@ -1124,6 +1167,7 @@ describe('Image', function () {
         const color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
         image.createPixelMap(color, opts).then(pixelmap => {
+            globalpixelmap = pixelmap;
             if (pixelmap == undefined) {
                 console.info('TC_027 createPixelMap failed');
                 expect(false).assertTrue()
@@ -1160,19 +1204,20 @@ describe('Image', function () {
         const color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
         image.createPixelMap(color, opts, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
             if (pixelmap == undefined) {
                 console.info('TC_027-1 createPixelMap failed');
                 expect(false).assertTrue()
                 done();
             }
-            pixelmap.release(()=>{
+            pixelmap.release(() => {
                 expect(true).assertTrue();
                 console.log('TC_027-1 success');
                 done();
             })
         })
     })
-    
+
     /**
      * @tc.number    : TC_171
      * @tc.name      : getImageProperty(BitsPerSample)-promise
@@ -1184,7 +1229,7 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-     it('TC_171', 0, async function (done) {
+    it('TC_171', 0, async function (done) {
         let fdNumber = fileio.openSync(pathExifJpg);
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
@@ -1228,7 +1273,7 @@ describe('Image', function () {
             imageSourceApi.getImageProperty("Orientation")
                 .then(data => {
                     console.info('TC_171-1 Orientation ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
@@ -1261,7 +1306,7 @@ describe('Image', function () {
             imageSourceApi.getImageProperty("ImageLength")
                 .then(data => {
                     console.info('TC_171-2 ImageLength ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
@@ -1294,7 +1339,7 @@ describe('Image', function () {
             imageSourceApi.getImageProperty("ImageWidth")
                 .then(data => {
                     console.info('TC_171-3 ImageWidth ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
@@ -1327,7 +1372,7 @@ describe('Image', function () {
             imageSourceApi.getImageProperty("GPSLatitude")
                 .then(data => {
                     console.info('TC_171-4 GPSLatitude ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
@@ -1360,7 +1405,7 @@ describe('Image', function () {
             imageSourceApi.getImageProperty("GPSLongitude")
                 .then(data => {
                     console.info('TC_171-5 GPSLongitude ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
@@ -1393,7 +1438,7 @@ describe('Image', function () {
             imageSourceApi.getImageProperty("GPSLatitudeRef")
                 .then(data => {
                     console.info('TC_171-6 GPSLatitudeRef ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
@@ -1426,7 +1471,7 @@ describe('Image', function () {
             imageSourceApi.getImageProperty("GPSLongitudeRef")
                 .then(data => {
                     console.info('TC_171-7 GPSLongitudeRef ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
@@ -1459,7 +1504,7 @@ describe('Image', function () {
             imageSourceApi.getImageProperty("DateTimeOriginal")
                 .then(data => {
                     console.info('TC_171-8 DateTimeOriginal ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
@@ -1488,12 +1533,12 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            imageSourceApi.getImageProperty("BitsPerSample",(error,data) => {
-                if (error){
+            imageSourceApi.getImageProperty("BitsPerSample", (error, data) => {
+                if (error) {
                     console.info('TC_172 getImageProperty BitsPerSample error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_172 BitsPerSample ' + data);
                     expect(data != undefined).assertTrue();
                     done();
@@ -1520,12 +1565,12 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            imageSourceApi.getImageProperty("Orientation",(error,data) => {
-                if (error){
+            imageSourceApi.getImageProperty("Orientation", (error, data) => {
+                if (error) {
                     console.info('TC_172-1 getImageProperty Orientation error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_172-1 Orientation ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
@@ -1552,14 +1597,14 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            imageSourceApi.getImageProperty("ImageLength",(error,data) => {
-                if (error){
+            imageSourceApi.getImageProperty("ImageLength", (error, data) => {
+                if (error) {
                     console.info('TC_172-2 getImageProperty ImageLength error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_172-2 ImageLength ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 }
             })
@@ -1584,14 +1629,14 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            imageSourceApi.getImageProperty("ImageWidth",(error,data) => {
-                if (error){
+            imageSourceApi.getImageProperty("ImageWidth", (error, data) => {
+                if (error) {
                     console.info('TC_172-3 getImageProperty ImageWidth error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_172-3 ImageWidth ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 }
             })
@@ -1616,14 +1661,14 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            imageSourceApi.getImageProperty("GPSLatitude",(error,data) => {
-                if (error){
+            imageSourceApi.getImageProperty("GPSLatitude", (error, data) => {
+                if (error) {
                     console.info('TC_172-4 getImageProperty GPSLatitude error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_172-4 GPSLatitude ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 }
             })
@@ -1648,14 +1693,14 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            imageSourceApi.getImageProperty("GPSLongitude",(error,data) => {
-                if (error){
+            imageSourceApi.getImageProperty("GPSLongitude", (error, data) => {
+                if (error) {
                     console.info('TC_172-5 getImageProperty GPSLongitude error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_172-5 GPSLongitude ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 }
             })
@@ -1680,14 +1725,14 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            imageSourceApi.getImageProperty("GPSLatitudeRef",(error,data) => {
-                if (error){
+            imageSourceApi.getImageProperty("GPSLatitudeRef", (error, data) => {
+                if (error) {
                     console.info('TC_172-6 getImageProperty GPSLatitudeRef error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_172-6 GPSLatitudeRef ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 }
             })
@@ -1712,14 +1757,14 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            imageSourceApi.getImageProperty("GPSLongitudeRef",(error,data) => {
-                if (error){
+            imageSourceApi.getImageProperty("GPSLongitudeRef", (error, data) => {
+                if (error) {
                     console.info('TC_172-7 getImageProperty GPSLongitudeRef error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_172-7 GPSLongitudeRef ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 }
             })
@@ -1744,14 +1789,14 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            imageSourceApi.getImageProperty("DateTimeOriginal",(error,data) => {
-                if (error){
+            imageSourceApi.getImageProperty("DateTimeOriginal", (error, data) => {
+                if (error) {
                     console.info('TC_172-8 getImageProperty DateTimeOriginal error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_172-8 DateTimeOriginal ' + data);
-                    expect(data != undefined && data != '' ).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 }
             })
@@ -1777,13 +1822,13 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            let property = {index:0,defaultValue:'9999'}
-            imageSourceApi.getImageProperty("BitsPerSample",property,(error,data) => {
-                if (error){
+            let property = { index: 0, defaultValue: '9999' }
+            imageSourceApi.getImageProperty("BitsPerSample", property, (error, data) => {
+                if (error) {
                     console.info('TC_173 getImageProperty BitsPerSample error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_173 BitsPerSample ' + data);
                     expect(data != '9999' && data != undefined).assertTrue();
                     done();
@@ -1811,13 +1856,13 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            let property = {index:0,defaultValue:'9999'}
-            imageSourceApi.getImageProperty("Orientation",property,(error,data) => {
-                if (error){
+            let property = { index: 0, defaultValue: '9999' }
+            imageSourceApi.getImageProperty("Orientation", property, (error, data) => {
+                if (error) {
                     console.info('TC_173-1 getImageProperty Orientation error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_173-1 Orientation ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
@@ -1845,13 +1890,13 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            let property = {index:0,defaultValue:'9999'}
-            imageSourceApi.getImageProperty("ImageLength",property,(error,data) => {
-                if (error){
+            let property = { index: 0, defaultValue: '9999' }
+            imageSourceApi.getImageProperty("ImageLength", property, (error, data) => {
+                if (error) {
                     console.info('TC_173-2 getImageProperty ImageLength error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_173-2 ImageLength ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
@@ -1879,13 +1924,13 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            let property = {index:0,defaultValue:'9999'}
-            imageSourceApi.getImageProperty("ImageWidth",property,(error,data) => {
-                if (error){
+            let property = { index: 0, defaultValue: '9999' }
+            imageSourceApi.getImageProperty("ImageWidth", property, (error, data) => {
+                if (error) {
                     console.info('TC_173-3 getImageProperty ImageWidth error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_173-3 ImageWidth ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
@@ -1913,13 +1958,13 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            let property = {index:0,defaultValue:'9999'}
-            imageSourceApi.getImageProperty("GPSLatitude",property,(error,data) => {
-                if (error){
+            let property = { index: 0, defaultValue: '9999' }
+            imageSourceApi.getImageProperty("GPSLatitude", property, (error, data) => {
+                if (error) {
                     console.info('TC_173-4 getImageProperty GPSLatitude error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_173-4 GPSLatitude ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
@@ -1947,13 +1992,13 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            let property = {index:0,defaultValue:'9999'}
-            imageSourceApi.getImageProperty("GPSLongitude",property,(error,data) => {
-                if (error){
+            let property = { index: 0, defaultValue: '9999' }
+            imageSourceApi.getImageProperty("GPSLongitude", property, (error, data) => {
+                if (error) {
                     console.info('TC_173-5 getImageProperty GPSLongitude error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_173-5 GPSLongitude ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
@@ -1981,13 +2026,13 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            let property = {index:0,defaultValue:'9999'}
-            imageSourceApi.getImageProperty("GPSLatitudeRef",property,(error,data) => {
-                if (error){
+            let property = { index: 0, defaultValue: '9999' }
+            imageSourceApi.getImageProperty("GPSLatitudeRef", property, (error, data) => {
+                if (error) {
                     console.info('TC_173-6 getImageProperty GPSLatitudeRef error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_173-6 GPSLatitudeRef ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
@@ -2015,13 +2060,13 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            let property = {index:0,defaultValue:'9999'}
-            imageSourceApi.getImageProperty("GPSLongitudeRef",property,(error,data) => {
-                if (error){
+            let property = { index: 0, defaultValue: '9999' }
+            imageSourceApi.getImageProperty("GPSLongitudeRef", property, (error, data) => {
+                if (error) {
                     console.info('TC_173-7 getImageProperty GPSLongitudeRef error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_173-7 GPSLongitudeRef ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
@@ -2049,13 +2094,13 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            let property = {index:0,defaultValue:'9999'}
-            imageSourceApi.getImageProperty("DateTimeOriginal",property,(error,data) => {
-                if (error){
+            let property = { index: 0, defaultValue: '9999' }
+            imageSourceApi.getImageProperty("DateTimeOriginal", property, (error, data) => {
+                if (error) {
                     console.info('TC_173-8 getImageProperty DateTimeOriginal error');
                     expect(false).assertTrue();
                     done();
-                }else{
+                } else {
                     console.info('TC_173-8 DateTimeOriginal ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
