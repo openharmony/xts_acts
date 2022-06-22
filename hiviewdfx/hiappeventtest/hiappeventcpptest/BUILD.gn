@@ -19,7 +19,6 @@ module_output_path = "hit/HiAppEventCPPTest"
 config("hilogtest_config") {
   visibility = [ ":*" ]
   include_dirs = [
-    "../../utils/native",
     "//utils/native/base/include/",
     "//base/hiviewdfx/hilog/interfaces/native/innerkits/include",
     "//base/hiviewdfx/hiappevent/interfaces/native/kits/include/hiappevent",
@@ -30,7 +29,6 @@ ohos_moduletest_suite("HiAppEventCPPTest") {
   module_out_path = module_output_path
   sources = [ "HiAppEventCPPTest.cpp" ]
   deps = [
-    "../../utils/native:utilskit",
     "//base/hiviewdfx/hiappevent/frameworks/native/libhiappevent:libhiappevent_base",
     "//base/hiviewdfx/hiappevent/frameworks/native/ndk:hiappevent_ndk",
     "//base/hiviewdfx/hilog/interfaces/native/innerkits:libhilog",
