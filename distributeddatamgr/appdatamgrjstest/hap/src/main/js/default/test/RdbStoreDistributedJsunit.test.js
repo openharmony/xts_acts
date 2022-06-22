@@ -309,6 +309,27 @@ describe('rdbStoreDistributedTest', function () {
         done();
         console.log(TAG + "************* testRdbStoreDistributed0011 end *************");
     })
+	
+	/**
+     * @tc.name sync Callback test
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_Callback_011
+     * @tc.desc sync Callback test
+     */
+    it('testRdbStoreDistributedCallback0011', 0, async function (done) {
+        console.log(TAG + "************* testRdbStoreDistributedCallback0011 start *************");
+        let predicates = new dataRdb.RdbPredicates("employee")
+        predicates = predicates.inDevices("12345678abcd");
+        rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates,(err,ret)=>{
+            console.log(TAG + "sync push success");
+            expect(rdbStore).assertEqual(rdbStore);
+        });
+        rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates,(err,ret)=>{
+            console.log(TAG + "sync push success");
+            expect(rdbStore).assertEqual(rdbStore);
+        });
+        done();
+        console.log(TAG + "************* testRdbStoreDistributedCallback0011 end *************");
+    })
 
     /**
      * @tc.name subscribe test
@@ -341,5 +362,41 @@ describe('rdbStoreDistributedTest', function () {
         done()
         console.log(TAG + "************* testRdbStoreDistributed0013 end *************");
     })
+	
+	    /**
+     * @tc.name obtainDistributedTableName Callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_014
+     * @tc.desc obtainDistributedTableName test
+     */
+    it('testRdbStoreDistributed0014', 0, async function (done){
+        await rdbStore.obtainDistributedTableName("deviceId", "EMPLOYEE", function (err, tableName) {
+            expect(err != null).assertTrue();
+            console.info('ObtainDistributedTableName failed, Unauthorized.' + err)
+        })
+        done();
+    })
+
+    /**
+     * @tc.name obtainDistributedTableName Promise interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Distributed_015
+     * @tc.desc obtainDistributedTableName test
+     */
+     it('testRdbStoreDistributed0015',0,async function (done){
+        await dataRdb.deleteRdbStore(STORE_NAME);
+        const config = {
+            "name": STORE_NAME,
+        }
+        rdbStore = await dataRdb.getRdbStore(config, 1);
+        let promise = rdbStore.obtainDistributedTableName("deviceId", "EMPLOYEE")
+        promise.then((tableName)=>{
+            expect(tableName != "EMPLOYEE").assertTrue();
+            console.info('ObtainDistributedTableName')
+        }).catch((err)=>{
+            expect(null).assertFail();
+            console.info('ObtainDistributedTableName failed, Unauthorized.' + err)
+        })
+        done();
+    })
+	
     console.log(TAG + "*************Unit Test End*************");
 })
