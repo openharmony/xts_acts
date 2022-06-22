@@ -18,7 +18,6 @@ config("hilogndktest_config") {
   visibility = [ ":*" ]
   include_dirs = [
     "//base/hiviewdfx/hilog/interface/native/kits/include",
-    "//base/hiviewdfx/hilog/interface/native/kits",
   ]
 }
 ohos_moduletest_suite("hilogndktest") {
@@ -26,7 +25,7 @@ ohos_moduletest_suite("hilogndktest") {
   sources = [ "hilogndktest.cpp" ]
   deps = [
     "//base/hiviewdfx/hilog/frameworks/hilog_ndk:hilog_ndk",
-    "//base/hiviewdfx/hilog/interface/native/kits:libhilog_ndk",
+    "//base/hiviewdfx/hilog/interfaces/native/kits:libhilog_ndk",
     "//utils/native/base:utils",
   ]
   configs = [ ":hilogndktest_config" ]
