@@ -263,6 +263,7 @@ describe('bluetoothhostTest', function() {
             });
         }
         bluetooth.BLE.startBLEScan([{deviceId:"00:00:00:00:00:00"}]);
+        done();
     })
 
 
@@ -291,6 +292,7 @@ describe('bluetoothhostTest', function() {
             });
         }
         bluetooth.BLE.startBLEScan([{name:"bluetooth_test"}]);
+        done();
     })
 
 
@@ -319,6 +321,7 @@ describe('bluetoothhostTest', function() {
             });
         }
         bluetooth.BLE.startBLEScan([{serviceUuid:"00001888-0000-1000-8000-00805f9b34fb"}]);
+        done();
     })
 
 
