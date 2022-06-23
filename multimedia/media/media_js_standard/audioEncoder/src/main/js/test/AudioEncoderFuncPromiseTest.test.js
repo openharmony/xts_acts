@@ -498,7 +498,7 @@ describe('AudioEncoderFuncPromise', function () {
         await audioEncodeProcessor.start().then(() => {
             console.info("case start success")
         }, failCallback).catch(failCatch);
-        await sleep(5000).then(() => {
+        await sleep(500).then(() => {
             inputQueue = [];
             outputQueue = [];
             audioEncodeProcessor.flush().then(() => {
