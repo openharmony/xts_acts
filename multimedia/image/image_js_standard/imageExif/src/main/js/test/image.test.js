@@ -290,7 +290,7 @@ describe('Image', function () {
      * @tc.number    : TC_001-9
      * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: unsupported format, size: { height: 6, width: 8 })
      * @tc.desc      : 1.create InitializationOptions object
-     *                 2.set editable,pixeFormat,size
+     *                 2.set editable,pixeFormat,size(Unsupported formats are converted to RGBA_8888)
      *                 3.using color and opts create newPixelMap
      *                 4.return newpixelmap empty
      * @tc.size      : MEDIUM
@@ -302,7 +302,7 @@ describe('Image', function () {
         let opts = { editable: true, pixelFormat: 21, size: { height: 6, width: 8 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
             globalpixelmap = pixelmap;
-            expect(pixelmap == undefined).assertTrue();
+            expect(pixelmap != undefined).assertTrue();
             console.info('TC_001-9 success');
             done();
         })
