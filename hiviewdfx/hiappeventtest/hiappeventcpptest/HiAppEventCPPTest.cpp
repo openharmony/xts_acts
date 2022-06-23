@@ -18,12 +18,11 @@
 #include <vector>
 #include <map>
 #include <sstream>
-#include <cstdlib.h>
-#include <cstdio.h>
+#include <cstdlib>
+#include <cstdio>
 #include <ctime>
 #include "hiappevent.h"
 #include "hiappevent_config.h"
-#include "file_utils.h"
 #include "hilog/log.h"
 
 
