@@ -17,7 +17,7 @@ import { describe, it } from 'deccjsunit/index';
 import { HuksCipherSM4 } from '../../../../../../../utils/param/cipher/publicCipherParam';
 import { HksTag } from '../../../../../../../utils/param/publicParam';
 import { stringToUint8Array } from '../../../../../../../utils/param/publicFunc';
-import { publicCipherFunc, IV, encryptedResult } from './SecurityHuksCipherAESBasicPromiseJsunit.test';
+import { publicCipherFunc, IV, updateResult } from './SecurityHuksCipherAESBasicPromiseJsunit.test';
 
 const plainString48Bytes = 'Hks_SM4_Cipher_Test_000000000000000000000_string';
 const plainData48Bytes = stringToUint8Array(plainString48Bytes);
@@ -70,7 +70,7 @@ describe('SecurityHuksCipherSM4PromiseJsunit', function () {
         HuksCipherSM4.HuksKeySM4BLOCKMODECBC,
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
-      inData: new Uint8Array(encryptedResult),
+      inData: new Uint8Array(updateResult),
     };
     await publicCipherFunc(
       srcKeyAlias,
@@ -114,7 +114,7 @@ describe('SecurityHuksCipherSM4PromiseJsunit', function () {
         HuksCipherSM4.HuksKeySM4BLOCKMODECBC,
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
-      inData: new Uint8Array(encryptedResult),
+      inData: new Uint8Array(updateResult),
     };
     await publicCipherFunc(
       srcKeyAlias,
@@ -211,7 +211,7 @@ describe('SecurityHuksCipherSM4PromiseJsunit', function () {
         HuksCipherSM4.HuksKeySM4BLOCKMODECBC,
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
-      inData: new Uint8Array(encryptedResult),
+      inData: new Uint8Array(updateResult),
     };
     await publicCipherFunc(
       srcKeyAlias,
@@ -255,7 +255,7 @@ describe('SecurityHuksCipherSM4PromiseJsunit', function () {
         HuksCipherSM4.HuksKeySM4BLOCKMODECBC,
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
-      inData: new Uint8Array(encryptedResult),
+      inData: new Uint8Array(updateResult),
     };
     await publicCipherFunc(
       srcKeyAlias,
@@ -352,7 +352,7 @@ describe('SecurityHuksCipherSM4PromiseJsunit', function () {
         HuksCipherSM4.HuksKeySM4BLOCKMODECTR,
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
-      inData: new Uint8Array(encryptedResult),
+      inData: new Uint8Array(updateResult),
     };
     await publicCipherFunc(
       srcKeyAlias,
@@ -396,7 +396,7 @@ describe('SecurityHuksCipherSM4PromiseJsunit', function () {
         HuksCipherSM4.HuksKeySM4BLOCKMODECTR,
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
-      inData: new Uint8Array(encryptedResult),
+      inData: new Uint8Array(updateResult),
     };
     await publicCipherFunc(
       srcKeyAlias,
@@ -493,7 +493,7 @@ describe('SecurityHuksCipherSM4PromiseJsunit', function () {
         HuksCipherSM4.HuksKeySM4BLOCKMODEECB,
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
-      inData: new Uint8Array(encryptedResult),
+      inData: new Uint8Array(updateResult),
     };
     await publicCipherFunc(
       srcKeyAlias,
@@ -537,7 +537,7 @@ describe('SecurityHuksCipherSM4PromiseJsunit', function () {
         HuksCipherSM4.HuksKeySM4BLOCKMODEECB,
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
-      inData: new Uint8Array(encryptedResult),
+      inData: new Uint8Array(updateResult),
     };
     await publicCipherFunc(
       srcKeyAlias,
@@ -634,7 +634,7 @@ describe('SecurityHuksCipherSM4PromiseJsunit', function () {
         HuksCipherSM4.HuksKeySM4BLOCKMODEECB,
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
-      inData: new Uint8Array(encryptedResult),
+      inData: new Uint8Array(updateResult),
     };
     await publicCipherFunc(
       srcKeyAlias,
@@ -678,7 +678,7 @@ describe('SecurityHuksCipherSM4PromiseJsunit', function () {
         HuksCipherSM4.HuksKeySM4BLOCKMODEECB,
         { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) }
       ),
-      inData: new Uint8Array(encryptedResult),
+      inData: new Uint8Array(updateResult),
     };
     await publicCipherFunc(
       srcKeyAlias,
