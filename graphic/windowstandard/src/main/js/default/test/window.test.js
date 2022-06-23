@@ -1137,7 +1137,7 @@ describe('window_test', function () {
                 done();
             },(err) => {
                 console.log('windowTest SetColorSpaceTest2 wnd.setColorSpace failed, err :' + JSON.stringify(err));
-                expect(err.code).assertEqual(130);
+                expect(err.code).assertEqual(1003);
                 done();
             })
         },(err) => {
@@ -1205,7 +1205,7 @@ describe('window_test', function () {
                 console.log('windowTest SetColorSpaceTest4 setColorSpace callback begin' + JSON.stringify(err));
                 if (err.code != 0) {
                     console.log('windowTest SetColorSpaceTest4 setColorSpace callback fail' + JSON.stringify(err.code));
-                    expect(err.code).assertEqual(130);
+                    expect(err.code).assertEqual(1003);
                     done();
                 } else {
                     expect().assertFail();
@@ -1274,7 +1274,7 @@ describe('window_test', function () {
                     done();
                 }, (err) => {
                     console.log('windowTest DestroyTest1 find failed, err :' + JSON.stringify(err));
-                    expect(err.code).assertEqual(120);
+                    expect(err.code).assertEqual(1001);
                     done();
                 })
             }, (err) => {
@@ -1314,7 +1314,7 @@ describe('window_test', function () {
                             console.log('windowTest DestroyTest2 find callback begin' + JSON.stringify(data));
                             if (err.code != 0) {
                                 console.log('windowTest DestroyTest2 find callback fail' + JSON.stringify(err.code));
-                                expect(err.code).assertEqual(120);
+                                expect(err.code).assertEqual(1001);
                                 done();
                             } else {
                                 console.log('windowTest DestroyTest2 find suceess,err : ' + JSON.stringify(err));
@@ -1475,7 +1475,7 @@ describe('window_test', function () {
             wnd.moveTo(200, 200, (err) => {
                 if (err.code) {
                     console.log('windowTest moveTest1 moveTo callback fail' + JSON.stringify(err.code));
-                    expect().assertFail();
+                    expect(err.code).assertEqual(6);
                     done();
                 } else {
                     console.log('windowTest moveTest1 moveTo callback success');
@@ -1501,7 +1501,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest moveTest2 wnd.moveTo failed, err :' + JSON.stringify(err));
-                expect().assertFail();
+                expect(err.code).assertEqual(6);
                 done();
             })
         }, (err) => {
@@ -1527,7 +1527,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest moveTest3 wnd.moveTo failed, err :' + JSON.stringify(err));
-                expect().assertFail();
+                expect(err.code).assertEqual(6);
                 done();
             })
         }, (err) => {
@@ -1553,7 +1553,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest moveTest4 wnd.moveTo failed, err :' + JSON.stringify(err));
-                expect().assertFail();
+                expect(err.code).assertEqual(6);
                 done();
             })
         }, (err) => {
@@ -1576,14 +1576,13 @@ describe('window_test', function () {
             for (var i = 1; i <= 5; i++) {
                 wnd.moveTo(100, 100).then(() => {
                     expect(TRUE_WINDOW).assertTrue();
+                    done();
                 }, (err) => {
                     console.log('windowTest moveTest5 wnd.moveTo failed, err :' + JSON.stringify(err));
-                    expect().assertFail();
+                    expect(err.code).assertEqual(6);
                     done();
                 })
             }
-            console.log('windowTest moveTest5 end');
-            done();
         }, (err) => {
             console.log('windowTest moveTest5 getTopWindow failed, err :' + JSON.stringify(err));
             expect().assertFail();
@@ -1604,6 +1603,7 @@ describe('window_test', function () {
             wnd.moveTo(-200, -200, (err) => {
                 if (err) {
                     console.log('windowTest moveTest6 wnd.moveTo failed, err :' + JSON.stringify(err));
+                    expect(err.code).assertEqual(6);
                     done();
                 } else {
                     console.log('windowTest moveTest6 wnd.moveTo success');
@@ -1634,7 +1634,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest moveTestNegative moveTo failed, err :' + JSON.stringify(err));
-                expect().assertFail();
+                expect(err.code).assertEqual(6);
                 done();
             })
         }, (err) => {
@@ -1660,12 +1660,12 @@ describe('window_test', function () {
                     done();
                 }, (err) => {
                     console.log('windowTest moveTest8 create failed, err :' + JSON.stringify(err));
-                    expect().assertFail();
+                    expect(err.code).assertEqual(6);
                     done();
                 })
             }, (err) => {
                 console.log('windowTest moveTest8 create failed, err :' + JSON.stringify(err));
-                expect().assertFail();
+                expect(err.code).assertEqual(6);
                 done();
             })
         }, (err) => {
@@ -1691,7 +1691,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest resetSizeTest1 wnd.resetSize failed, err :' + JSON.stringify(err));
-                expect().assertFail();
+                expect(err.code).assertEqual(6);
                 done();
             })
         }, (err) => {
@@ -1717,7 +1717,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest resetSizeTest2 wnd.resetSize failed, err :' + JSON.stringify(err));
-                expect().assertFail();
+                expect(err.code).assertEqual(6);
                 done();
             })
         }, (err) => {
@@ -1743,7 +1743,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest resetSizeTest3 wnd.resetSize failed, err :' + JSON.stringify(err));
-                expect().assertFail();
+                expect(err.code).assertEqual(6);
                 done();
             })
         }, (err) => {
@@ -1769,7 +1769,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest resetSizeTest4 wnd.resetSize failed, err :' + JSON.stringify(err));
-                expect().assertFail();
+                expect(err.code).assertEqual(6);
                 done();
             })
         }, (err) => {
@@ -1793,13 +1793,13 @@ describe('window_test', function () {
                 wnd.resetSize(100, 100).then(() => {
                     console.log('windowTest resetSizeTest5 wnd.resetSize(100, 100) success, count:"%d\n"', i);
                     expect(TRUE_WINDOW).assertTrue();
+                    done();
                 },(err) => {
                     console.log('windowTest resetSizeTest5 wnd.resetSize failed, err :' + JSON.stringify(err));
-                    expect().assertFail();
+                    expect(err.code).assertEqual(6);
+                    done();
                 })
             }
-            console.log('windowTest resetSizeTest5 end');
-            done();
         }, (err) => {
             console.log('windowTest resetSizeTest5 getTopWindow failed, err :' + JSON.stringify(err));
             expect().assertFail();
@@ -1820,7 +1820,7 @@ describe('window_test', function () {
             wnd.resetSize(200, 200, (err) => {
                 if (err.code) {
                     console.log('windowTest ResetSizeTest6 resetSize callback fail' + JSON.stringify(err.code));
-                    expect().assertFail();
+                    expect(err.code).assertEqual(6);
                     done();
                 } else {
                     console.log('windowTest ResetSizeTest6 resetSize callback success');
@@ -1849,14 +1849,13 @@ describe('window_test', function () {
                 wnd.resetSize(width, height).then(() => {
                     console.log('windowTest  resetSizeTestLoop success');
                     expect(TRUE_WINDOW).assertTrue();
+                    done();
                 },(err) => {
                     console.log('windowTest resetSizeLoop resetSize failed, err :' + JSON.stringify(err));
-                    expect().assertFail();
+                    expect(err.code).assertEqual(6);
                     done();
                 })
             }
-            console.log('windowTest resetSizeLoop end');
-            done();
         },(err) => {
             console.log('windowTest resetSizeLoop getTopWindow failed, err :' + JSON.stringify(err));
             expect().assertFail();
@@ -1946,6 +1945,22 @@ describe('window_test', function () {
             done();
         } catch (err) {
             console.log('test enum value of windowStageEventType error ' + JSON.stringify(err));
+        }
+    })
+
+    /**
+    * @tc.number		SUB_WMS_ENUM_WINDOWCOLORSPACE_JSAPI_001
+    * @tc.name			Test enumWindowCOLORSPACE_Test_001.
+    * @tc.desc			To test the enum value of WindowCOLORSPACE.
+    */
+    it('enumWindowCOLORSPACE_Test_001', 0, async function (done) {
+        console.log('test the enum value of Window colorspace begin');
+        try {
+            expect(0).assertEqual(window.ColorSpace.DEFAULT);
+            expect(1).assertEqual(window.ColorSpace.WIDE_GAMUT);
+            done();
+        } catch (err) {
+            console.log('test enum value of window colorspace error ' + JSON.stringify(err));
         }
     })
 
@@ -2465,7 +2480,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest setBackgroundColorTest4 setBackgroundColor failed: err' + JSON.stringify(err));
-                expect(err.code).assertEqual(130);
+                expect(err.code).assertEqual(1003);
                 done();
             })
         }, (err) => {
@@ -2491,7 +2506,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest setBackgroundColorTest5 setBackgroundColor failed: err' + JSON.stringify(err));
-                expect(err.code).assertEqual(130);
+                expect(err.code).assertEqual(1003);
                 done();
             })
         }, (err) => {
@@ -2517,7 +2532,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest setBackgroundColorTest6 setBackgroundColor failed: err' + JSON.stringify(err));
-                expect(err.code).assertEqual(130);
+                expect(err.code).assertEqual(1003);
                 done();
             })
         }, (err) => {
@@ -2641,7 +2656,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest setBrightnessTest3 setBrightness failed: err' + JSON.stringify(err));
-                expect(err.code).assertEqual(130);
+                expect(err.code).assertEqual(1003);
                 done();
             })
         }, (err) => {
@@ -2693,14 +2708,14 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest setBrightnessTest5 setBrightness failed: err' + JSON.stringify(err));
-                expect(err.code).assertEqual(130);
+                expect(err.code).assertEqual(1003);
                 wnd.setBrightness(-0.1).then(() => {
                     console.log('windowTest setBrightnessTest5 setBrightness(-0.1) success ');
                     expect().assertFail();
                     done();
                 }, (err) => {
                     console.log('windowTest setBrightnessTest5 setBrightness failed: err' + JSON.stringify(err));
-                    expect(err.code).assertEqual(130);
+                    expect(err.code).assertEqual(1003);
                     done();
                 })
             })
