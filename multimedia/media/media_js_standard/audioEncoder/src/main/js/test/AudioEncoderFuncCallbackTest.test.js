@@ -543,7 +543,7 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.start(async(err) => {
                 expect(err).assertUndefined();
                 console.info(`case start 1`);
-                await sleep(2000);
+                await sleep(500);
                 eventEmitter.emit('flush');
             })
         });
