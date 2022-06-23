@@ -199,7 +199,7 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
-     * @tc.name: ContinuousTaskJsTest009
+     * @tc.name: ContinuousTaskJsTest010
      * @tc.desc: test work scheduler constant
      * @tc.type: FUNC
      * @tc.require: 
@@ -212,7 +212,7 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
-     * @tc.name: ContinuousTaskJsTest010
+     * @tc.name: ContinuousTaskJsTest011
      * @tc.desc: test work scheduler constant
      * @tc.type: FUNC
      * @tc.require: 
@@ -225,7 +225,7 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
-     * @tc.name: ContinuousTaskJsTest011
+     * @tc.name: ContinuousTaskJsTest012
      * @tc.desc: test work scheduler constant
      * @tc.type: FUNC
      * @tc.require: 
@@ -238,7 +238,7 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
-     * @tc.name: ContinuousTaskJsTest012
+     * @tc.name: ContinuousTaskJsTest013
      * @tc.desc: test work scheduler constant
      * @tc.type: FUNC
      * @tc.require: 
@@ -251,7 +251,7 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
-     * @tc.name: ContinuousTaskJsTest013
+     * @tc.name: ContinuousTaskJsTest014
      * @tc.desc: test work scheduler constant
      * @tc.type: FUNC
      * @tc.require: 
@@ -264,7 +264,7 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
-     * @tc.name: ContinuousTaskJsTest014
+     * @tc.name: ContinuousTaskJsTest015
      * @tc.desc: test work scheduler constant
      * @tc.type: FUNC
      * @tc.require: 
@@ -277,7 +277,7 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
-     * @tc.name: ContinuousTaskJsTest017
+     * @tc.name: ContinuousTaskJsTest016
      * @tc.desc: test work scheduler constant
      * @tc.type: FUNC
      * @tc.require: 
