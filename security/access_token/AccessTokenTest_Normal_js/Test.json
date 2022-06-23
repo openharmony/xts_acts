@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAccessTokenJSApiTestNormal.hap"
+                "ActsAccessTokenApiJSNormalTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
