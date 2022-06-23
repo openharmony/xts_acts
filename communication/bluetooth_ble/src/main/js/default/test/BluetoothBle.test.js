@@ -708,23 +708,7 @@ describe('bluetoothhostTest', function() {
         done();
     })
 
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_GATT_REMOVE_SERVICE_0001
-     * @tc.name testRemoveService
-     * @tc.desc Test RemoveService api.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('SUB_COMMUNACATION_bluetooth_GATT_REMOVE_SERVICE_0001', 0, async function (done) {
-        console.info('[bluetooth_js] removeService start');
-        await tryToEnableBt();
-        let gattServer = bluetooth.BLE.createGattServer();
-        let ret = gattServer.removeService('00001810-0000-1000-8000-008000000000');
-        console.info('[bluetooth_js] removeService ret : ' + ret);
-        expect(ret).assertEqual(false);
-        done();
-    })
+
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_GATT_NOTIFY_CHARA_CHANGED_0001
