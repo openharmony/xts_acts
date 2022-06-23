@@ -372,7 +372,7 @@ export default function getAllApplicationBundleTest() {
                     };
                     expect(data[i].systemApp).assertEqual(true);
                     expect(data[i].supportedModes).assertEqual(0);
-                    expect(data[i].process).assertEqual("");
+                    expect(data[i].process).assertEqual('com.open.harmony.packagemag');
                     expect(data[i].entryDir).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag' +
                         '/com.open.harmony.packagemag');
                     expect(data[i].enabled).assertEqual(true);
@@ -399,7 +399,7 @@ export default function getAllApplicationBundleTest() {
             expect(data.labelId).assertLarger(0);
             expect(data.systemApp).assertFalse();
             expect(data.supportedModes).assertEqual(0);
-            expect(data.process).assertEqual("");
+            expect(data.process).assertEqual(BUNDLE_OTHER);
             expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
             expect(data.permissions.length).assertEqual(0);
             expect(data.moduleSourceDirs.length).assertEqual(1);
