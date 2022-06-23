@@ -21,5 +21,5 @@ var backValue = undefined;
 var flag = false;
 
 parentPort.onmessage = function(e) {
-  console.log("worker:: thrid worker onmessage")
+  console.info("worker:: thrid worker onmessage")
 }
