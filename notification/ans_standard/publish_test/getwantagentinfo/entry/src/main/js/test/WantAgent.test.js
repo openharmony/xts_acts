@@ -14,7 +14,7 @@
  */
 
 import wantAgent from '@ohos.wantAgent';
-import { OperationType, WantAgentFlags } from '@ohos.wantagent';
+//import { OperationType, WantAgentFlags } from '@ohos.wantagent';
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
@@ -54,9 +54,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         wantAgent.getWantAgent(agentInfoa,
             (err, data) => {
@@ -103,7 +103,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                 done();
             }),
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_0100====>");
+            console.debug("====>time out ACTS_SetWantInfo_0100====>");
         }, time);
             console.info('----getWantAgenta after----');
     })
@@ -134,9 +134,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         wantAgent.getWantAgent(agentInfod).then(
             (data) => {
@@ -167,7 +167,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             })
         done();
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_0200====>");
+            console.debug("====>time out ACTS_SetWantInfo_0200====>");
         }, time)
     })
     /*
@@ -197,9 +197,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         wantAgent.getWantAgent(agentInfob,(err,data)=>{
             WantAgentb = data
@@ -226,17 +226,17 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
 		setTimeout(function(){
 			wantAgent.getWantAgent(agentInfoc,
             (err, data) => {
                 if (err.code == 0) {
                     WantAgentc = data;
-                    console.info("=======WantAgentb======="+JSON.stringify(WantAgentb))
-                    console.info("=======WantAgentc======="+JSON.stringify(WantAgentc))
+                    console.log("=======WantAgentb======="+JSON.stringify(WantAgentb))
+                    console.log("=======WantAgentc======="+JSON.stringify(WantAgentc))
                     expect(typeof(data)).assertEqual("object");
                     wantAgent.equal(WantAgentb,WantAgentc,
                         (error,data) => {
@@ -269,7 +269,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                     expect(typeof(data)).assertEqual("object");
                 }
                 setTimeout(function(){
-                    console.info("====>time out ACTS_SetWantInfo_0300====>");
+                    console.debug("====>time out ACTS_SetWantInfo_0300====>");
 					done();
                 }, time);
             });
@@ -304,12 +304,12 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         wantAgent.getWantAgent(agentInfoe,(err,data)=>{
-            console.info("=======agentInfoe======="+err.code+JSON.stringify(data))
+            console.log("=======agentInfoe======="+err.code+JSON.stringify(data))
             WantAgentd = data
         })
 
@@ -334,18 +334,18 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
 		setTimeout(function(){
 			wantAgent.getWantAgent(agentInfof,
             (err, data) => {
-                console.info("=======agentInfof======="+err.code+JSON.stringify(data))
+                console.log("=======agentInfof======="+err.code+JSON.stringify(data))
                 if (err.code == 0) {
                     WantAgente = data;
-                    console.info("=======WantAgente======="+JSON.stringify(WantAgentd))
-                    console.info("=======WantAgentf======="+JSON.stringify(WantAgente))
+                    console.log("=======WantAgente======="+JSON.stringify(WantAgentd))
+                    console.log("=======WantAgentf======="+JSON.stringify(WantAgente))
                     wantAgent.equal(WantAgentd,WantAgente).then(
                         (data) => {
                             console.info('----equalc success!----'+data)
@@ -366,7 +366,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                 }
                 
                 setTimeout(function(){
-                    console.info("====>time out ACTS_SetWantInfo_0400====>");
+                    console.debug("====>time out ACTS_SetWantInfo_0400====>");
 					done();
                 }, time);
             });
@@ -399,9 +399,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         wantAgent.getWantAgent(agentInfoe,(err,data)=>{
             WantAgentd = data
@@ -428,17 +428,17 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
 		setTimeout(function(){
 			wantAgent.getWantAgent(agentInfof,
             (err, data) => {
                 if (err.code == 0) {
                     WantAgente = data;
-                    console.info("=======WantAgente======="+JSON.stringify(WantAgentd))
-                    console.info("=======WantAgentf======="+JSON.stringify(WantAgente))
+                    console.log("=======WantAgente======="+JSON.stringify(WantAgentd))
+                    console.log("=======WantAgentf======="+JSON.stringify(WantAgente))
                     expect(typeof(data)).assertEqual("object");
                     wantAgent.equal(WantAgentd,WantAgente).then(
                         (data) => {
@@ -467,7 +467,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                 }
                 done();
                 setTimeout(function(){
-                    console.info("====>time out ACTS_SetWantInfo_0500====>");
+                    console.debug("====>time out ACTS_SetWantInfo_0500====>");
                 }, time);
             });
 		}, 1000);
@@ -491,7 +491,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         )
         done();
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_0600====>");
+            console.debug("====>time out ACTS_SetWantInfo_0600====>");
         }, time);
     });
     /*
@@ -505,7 +505,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         expect(promise).assertEqual(undefined);
         done();
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_0700====>");
+            console.debug("====>time out ACTS_SetWantInfo_0700====>");
         }, time);
     });
     /*
@@ -522,7 +522,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         )
         done();
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_0800====>");
+            console.debug("====>time out ACTS_SetWantInfo_0800====>");
         }, time);
     });
     /*
@@ -536,7 +536,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         expect(promise).assertEqual(null);
         done();
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_0900====>");
+            console.debug("====>time out ACTS_SetWantInfo_0900====>");
         }, time);
     });
     /*
@@ -553,7 +553,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         )
         done();
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_1000====>");
+            console.debug("====>time out ACTS_SetWantInfo_1000====>");
         }, time);
     });
     /*
@@ -567,7 +567,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         expect(promise).assertEqual(undefined);
         done();
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_1100====>");
+            console.debug("====>time out ACTS_SetWantInfo_1100====>");
         }, time);
     });
     /*
@@ -576,14 +576,12 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of getWantAgent("")callback
     */
     it('ACTS_SetWantInfo_1200', 0, async function (done) {
-        console.info('----ACTS_SetWantInfo_1200 begin----');
+        console.info('----ACTS_SetWantInfo_0300 begin----');
         wantAgent.getWantAgent("",(err,data) => {
-            console.info("===getWantAgenta==="+err.code+data)
-            expect().assertFail()
-        })
+            console.log("===getWantAgenta==="+err.code+data)})
+        done();
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_1200====>");
-            done();
+            console.debug("====>time out ACTS_SetWantInfo_1200====>");
         }, time);
     })
     /*
@@ -594,11 +592,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     it('ACTS_SetWantInfo_1300', 0, async function (done) {
         console.info('----ACTS_SetWantInfo_0300 begin----');
         var promise = wantAgent.getWantAgent("")
-        console.info("===getWantAgentb==="+promise)
+        console.log("===getWantAgentb==="+promise)
         expect(promise).assertEqual(null);
         done();
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_1300====>");
+            console.debug("====>time out ACTS_SetWantInfo_1300====>");
         }, time);
     })
     /*
@@ -608,12 +606,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     */
     it('ACTS_SetWantInfo_1400', 0, async function (done) {
         wantAgent.getBundleName("",(err,data) => {
-            console.info('----getBundleNamea success!----'+err.code+data);
-            expect().assertFail()
-        });
+                console.info('----getBundleNamea success!----'+err.code+data);
+                expect(typeof(data)).assertEqual('string')});
+        done();
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_1400====>");
-            done();
+            console.debug("====>time out ACTS_SetWantInfo_1400====>");
         }, time);
     })
     /*
@@ -627,7 +624,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         expect(promise).assertEqual(undefined)
         done();
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_1500====>");
+            console.debug("====>time out ACTS_SetWantInfo_1500====>");
         }, time);
     })
     /*
@@ -637,11 +634,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     */
     it('ACTS_SetWantInfo_1600', 0, async function (done) {
         wantAgent.getUid("",(err,data) => {
-            console.info('----getUida success!----'+err.code+data);
-            expect(typeof(data)).assertEqual('number')});
-            done()
+                console.info('----getUida success!----'+err.code+data);
+                expect(typeof(data)).assertEqual('number')});
+                done()
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_1600====>");
+            console.debug("====>time out ACTS_SetWantInfo_1600====>");
         }, time);
     })
     /*
@@ -655,7 +652,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         expect(promise).assertEqual(undefined)
         done()
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_1700====>");
+            console.debug("====>time out ACTS_SetWantInfo_1700====>");
         }, time);
     })
     /*
@@ -666,11 +663,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     it('ACTS_SetWantInfo_1800', 0, async function (done) {
         wantAgent.getWant("",(err,data) => {
             console.info('----getWanta success!----'+err.code+data);
-            expect().assertFail()
+            expect(typeof(data)).assertEqual('object')
         });
+        done()
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_1800====>");
-            done()
+            console.debug("====>time out ACTS_SetWantInfo_1800====>");
         }, time);
     })
     /*
@@ -684,7 +681,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         expect(promise).assertEqual(undefined)
         done()
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_1900====>");
+            console.debug("====>time out ACTS_SetWantInfo_1900====>");
         }, time);
     })
     /*
@@ -693,14 +690,13 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of getWantAgent(100)callback
     */
     it('ACTS_SetWantInfo_2000', 0, async function (done) {
-        console.info('----ACTS_SetWantInfo_2000 begin----');
+        console.info('----ACTS_SetWantInfo_1000 begin----');
         wantAgent.getWantAgent(100,(err,data) => {
-            console.info('----getWantAgenta success!----'+err.code+data)
-            expect().assertFail()
-        })
+                console.log('----getWantAgenta success!----'+err.code+data)
+            })
+        done();
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_2000====>");
-            done();
+            console.debug("====>time out ACTS_SetWantInfo_2000====>");
         }, time);
     })
     /*
@@ -710,11 +706,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     */
     it('ACTS_SetWantInfo_2100', 0, async function (done) {
         var promise = wantAgent.getWantAgent(100)
-        console.info("----getWantAgentb success!----"+promise)
+        console.log("----getWantAgentb success!----"+promise)
         expect(promise).assertEqual(null)
         done();
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_2100====>");
+            console.debug("====>time out ACTS_SetWantInfo_2100====>");
         }, time);
     })
     /*
@@ -724,12 +720,12 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     */
     it('ACTS_SetWantInfo_2200', 0, async function (done) {
         wantAgent.getBundleName(100,(err,data) => {
-            console.info('----getBundleNamec success!----'+err.code+data);
-            expect().assertFail()
-        });
+                console.info('----getBundleNamec success!----'+err.code+data);
+                expect(typeof(data)).assertEqual('string')
+            });
+        done()
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_2200====>");
-            done()
+            console.debug("====>time out ACTS_SetWantInfo_2200====>");
         }, time);
     })
     /*
@@ -743,7 +739,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         expect(promise).assertEqual(undefined)
         done()
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_2300====>");
+            console.debug("====>time out ACTS_SetWantInfo_2300====>");
         }, time);
     })
     /*
@@ -753,12 +749,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     */
     it('ACTS_SetWantInfo_2400', 0, async function (done) {
         wantAgent.getUid(100,(err,data) => {
-            console.info('----getUidc success!----'+err.code+data);
-            expect().assertFail()
-        });
+                console.info('----getUidc success!----'+err.code+data);
+            });
+        done()
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_2400====>");
-            done()
+            console.debug("====>time out ACTS_SetWantInfo_2400====>");
         }, time);
     })
     /*
@@ -772,7 +767,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         expect(promise).assertEqual(undefined)
         done()
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_2500====>");
+            console.debug("====>time out ACTS_SetWantInfo_2500====>");
         }, time);
     })
     /*
@@ -783,11 +778,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     it('ACTS_SetWantInfo_2600', 0, async function (done) {
         wantAgent.getWant(100,(err,data) => {
             console.info('----getWantc success!----'+err.code+data);
-            expect().assertFail()
+            expect(typeof(data)).assertEqual('object')
         });
+        done()
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_2600====>");
-            done()
+            console.debug("====>time out ACTS_SetWantInfo_2600====>");
         }, time);
     })
     /*
@@ -801,7 +796,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         expect(promise).assertEqual(undefined)
         done()
         setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_2700====>");
+            console.debug("====>time out ACTS_SetWantInfo_2700====>");
         }, time);
     })
     /*
@@ -812,10 +807,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     it('ACTS_SetWantInfo_2800', 0, async function (done) {
         console.info('----ACTS_SetWantInfo_2800 begin----');
         wantAgent.getWantAgent({},(err,data) => {
-            console.info("----getWantAgentc success!----"+err.code+data)
-            expect(err.code).assertEqual(0)
-            done();
-        })
+                console.log("----getWantAgentc success!----"+err.code+data)
+            })
+        done();
     })
     /*
     * @tc.number: ACTS_SetWantInfo_2900
@@ -825,10 +819,10 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     it('ACTS_SetWantInfo_2900', 0, async function (done) {
         console.info('----ACTS_SetWantInfo_2900 begin----');
         wantAgent.getWantAgent({}).then((data)=>{
-            console.info("----getWantAgentd success!----"+data)
-            expect(typeof(data)).assertEqual("object")
-            done();
-        })
+            console.log("----getWantAgentd success!----"+data)
+            expect(data).assertEqual("object")
+           })
+        done();
     })
     /*
     * @tc.number: ACTS_SetWantInfo_3000
@@ -837,13 +831,10 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     */
     it('ACTS_SetWantInfo_3000', 0, async function (done) {
         wantAgent.getBundleName({},(err,data) => {
-            console.info('----getBundleNamee success!----'+err.code+data);
-            expect().assertFail()
-        });
-        setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_3000====>");
-            done()
-        }, time);
+                console.info('----getBundleNamee success!----'+err.code+data);
+                expect(typeof(data)).assertEqual('string')
+            });
+        done()
     })
     /*
     * @tc.number: ACTS_SetWantInfo_3100
@@ -863,13 +854,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     */
     it('ACTS_SetWantInfo_3200', 0, async function (done) {
         wantAgent.getUid({},(err,data) => {
-            console.info('----getUide success!----'+err.code+data);
-            expect().assertFail()
-        });
-        setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_3200====>");
-            done()
-        }, time);
+                console.info('----getUide success!----'+err.code+data);
+            });
+        done()
     })
     /*
     * @tc.number: ACTS_SetWantInfo_3300
@@ -878,9 +865,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     */
     it('ACTS_SetWantInfo_3300', 0, async function (done) {
         var promise = wantAgent.getUid({})
-        console.info('----getUidf success!----'+promise);
-        expect(promise).assertEqual(null)
-        done()
+            console.info('----getUidf success!----'+promise);
+            expect(promise).assertEqual(null)
+            done()
     })
     /*
     * @tc.number: ACTS_SetWantInfo_3400
@@ -890,12 +877,8 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     it('ACTS_SetWantInfo_3400', 0, async function (done) {
         wantAgent.getWant({},(err,data) => {
             console.info('----getWante success!----'+err.code+data);
-            expect().assertFail()
         });
-        setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_3400====>");
-            done()
-        }, time);
+        done()
     })
     /*
     * @tc.number: ACTS_SetWantInfo_3500
@@ -904,9 +887,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     */
     it('ACTS_SetWantInfo_3500', 0, async function (done) {
        var promise = wantAgent.getWant({})
-        console.info('----getWantf success!----'+promise);
-        expect(promise).assertEqual(null)
-        done()
+            console.info('----getWantf success!----'+promise);
+            expect(promise).assertEqual(null)
+            done()
     })
     /*
     * @tc.number: ACTS_SetWantInfo_3600
@@ -916,12 +899,8 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     it('ACTS_SetWantInfo_3600', 0, async function (done) {
         wantAgent.cancel({},(err,data) => {
             console.info('----cancela success!----'+err.code+data);
-            expect().assertFail()
         });
-        setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_3600====>");
-            done()
-        }, time);
+        done()
     })
     /*
     * @tc.number: ACTS_SetWantInfo_3700
@@ -930,9 +909,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     */
     it('ACTS_SetWantInfo_3700', 0, async function (done) {
         var promise = await wantAgent.cancel({})
-        console.info('----cancelb success!----'+promise);
-        expect(promise).assertEqual(null)
-        done()
+            console.info('----cancelb success!----'+promise);
+            expect(promise).assertEqual(null)
+            done()
     })
     /*
     * @tc.number: ACTS_SetWantInfo_3800
@@ -942,12 +921,8 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     it('ACTS_SetWantInfo_3800', 0, async function (done) {
         wantAgent.cancel(100,(err) => {
             console.info('----cancelc success!----'+err.code);
-            expect().assertFail()
         });
-        setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_3800====>");
-            done()
-        }, time);
+        done()
     })
     /*
     * @tc.number: ACTS_SetWantInfo_3900
@@ -956,8 +931,8 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     */
     it('ACTS_SetWantInfo_3900', 0, async function (done) {
         var promise =await wantAgent.cancel(100)
-        console.info('----canceld success!----'+promise);
-        expect(promise).assertEqual(undefined)
+            console.info('----canceld success!----'+promise);
+            expect(promise).assertEqual(undefined)
         done()
     })
     /*
@@ -968,12 +943,8 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     it('ACTS_SetWantInfo_4000', 0, async function (done) {
         wantAgent.cancel("",(err) => {
             console.info('----cancele success!----'+err.code);
-            expect().assertFail()
         });
-        setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_4000====>");
-            done()
-        }, time);
+        done()
     })
     /*
     * @tc.number: ACTS_SetWantInfo_4100
@@ -982,7 +953,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     */
     it('ACTS_SetWantInfo_4100', 0, async function (done) {
         var promise = await wantAgent.cancel("")
-        console.info('----cancelf success!----'+promise);
+            console.info('----cancelf success!----'+promise);
         expect(promise).assertEqual(undefined)
         done()
     })
@@ -992,14 +963,10 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of cancel("%^%^%^")callback
     */
     it('ACTS_SetWantInfo_4200', 0, async function (done) {
-        wantAgent.cancel("%^%^%^",(err, data) => {
+        wantAgent.cancel("%^%^%^",(err) => {
             console.info('----cancelg success!----'+err.code);
-            expect().assertFail()
         });
-        setTimeout(function(){
-            console.info("====>time out ACTS_SetWantInfo_4200====>");
-            done()
-        }, time);
+        done()
     })
     /*
     * @tc.number: ACTS_SetWantInfo_4300
@@ -1008,8 +975,10 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     */
     it('ACTS_SetWantInfo_4300', 0, async function (done) {
         var promise =await wantAgent.cancel("%^%^%^")
-        console.info('----cancelh success!----'+promise);
+            console.info('----cancelh success!----'+promise);
         expect(promise).assertEqual(undefined)
         done()
     })
 })
+
+
