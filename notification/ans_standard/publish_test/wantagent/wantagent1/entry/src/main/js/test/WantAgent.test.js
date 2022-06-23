@@ -14,7 +14,7 @@
  */
 
 import wantAgent from '@ohos.wantAgent';
-import { OperationType, WantAgentFlags } from '@ohos.wantagent';
+//import { OperationType, WantAgentFlags } from '@ohos.wantagent';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 var time = 1000
 var WantAgent;
@@ -50,9 +50,9 @@ describe('ActsAnsWantAgentOneTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         console.info('----getWantAgent before----');
        await wantAgent.getWantAgent(agentInfo,
@@ -130,9 +130,9 @@ describe('ActsAnsWantAgentOneTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.ONE_TIME_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.ONE_TIME_FLAG]
         }
         console.info('----getWantAgent before----');
         await wantAgent.getWantAgent(agentInfo,
@@ -183,9 +183,9 @@ describe('ActsAnsWantAgentOneTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.NO_BUILD_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.NO_BUILD_FLAG]
         }
         console.info('----getWantAgent before----');
         await wantAgent.getWantAgent(agentInfo,
@@ -236,9 +236,9 @@ describe('ActsAnsWantAgentOneTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.CANCEL_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.CANCEL_PRESENT_FLAG]
         }
         console.info('----getWantAgent before----');
         await wantAgent.getWantAgent(agentInfo,
@@ -289,9 +289,9 @@ describe('ActsAnsWantAgentOneTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.CONSTANT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.CONSTANT_FLAG]
         }
         console.info('----getWantAgent before----');
         await wantAgent.getWantAgent(agentInfo,
