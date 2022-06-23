@@ -24,6 +24,7 @@
 #include "hiappevent.h"
 #include "hiappevent_config.h"
 #include "hilog/log.h"
+#include "file_utils.h"
 
 
 using namespace std;
