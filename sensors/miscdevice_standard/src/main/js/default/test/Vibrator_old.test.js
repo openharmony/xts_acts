@@ -13,9 +13,10 @@
  * limitations under the License.
  */
 import vibrator from '@system.vibrator';
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("VibratorJsTest", function () {
+describe("VibratorJsTest_misc_1", function () {
      beforeAll(function () {
 
         /*
@@ -54,183 +55,175 @@ describe("VibratorJsTest", function () {
      let errMessage;
 	
     /*
-     * @tc.name:VibratorJsTest0001
+     * @tc.name:SubVibratorJsTest0001
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0190
      */
-    it("VibratorJsTest0001", 0, async function (done) {
-        console.info('----------------------VibratorJsTest0001---------------------------');
+    it("SubVibratorJsTest0001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
+        console.info('----------------------SubVibratorJsTest0001---------------------------');
         vibrator.vibrate({
             mode: 'long',
             success: function () {
-                console.info("VibratorJsTest0001 success");
+                console.info("SubVibratorJsTest0001 success");
                 done();
             },
             fail: function (data, code) {
-                console.log("VibratorJsTest0001 is failed, data: " + data + ", code: " + code);
+                console.log("SubVibratorJsTest0001 is failed, data: " + data + ", code: " + code);
                 expect(false).assertTrue();
             },
             complete: function () {
-                console.log('VibratorJsTest0001 is completed');
+                console.log('SubVibratorJsTest0001 is completed');
             }
         });
     })
 
     /*
-     * @tc.name:VibratorJsTest0002
+     * @tc.name:SubVibratorJsTest0002
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0200
      */
-    it("VibratorJsTest0002", 0, async function (done) {
-        console.info('----------------------VibratorJsTest0002---------------------------');
+    it("SubVibratorJsTest0002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('----------------------SubVibratorJsTest0002---------------------------');
         vibrator.vibrate({
             mode: 'short',
             success: function () {
-                console.info("VibratorJsTest0002 success");
+                console.info("SubVibratorJsTest0002 success");
                 done();
             },
             fail: function (data, code) {
-                console.log("VibratorJsTest0002 is failed, data: " + data + ", code: " + code);
+                console.log("SubVibratorJsTest0002 is failed, data: " + data + ", code: " + code);
                 expect(false).assertTrue();
             },
             complete: function () {
-                console.log('VibratorJsTest0002 is completed');
+                console.log('SubVibratorJsTest0002 is completed');
             }
         });
     })
 
     /*
-    * @tc.name:VibratorJsTest0003
+    * @tc.name:SubVibratorJsTest0003
     * @tc.desc:verify app info is not null
-    * @tc.type: FUNC
-    * @tc.require: SR000H0ALK, AR000H0ALM
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0210
     */
-    it("VibratorJsTest0003", 0, async function (done) {
-        console.info('----------------------VibratorJsTest0003---------------------------');
+    it("SubVibratorJsTest0003", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('----------------------SubVibratorJsTest0003---------------------------');
         vibrator.vibrate({
             mode: 'short',
             success: function () {
-                console.info("VibratorJsTest0003 success");
+                console.info("SubVibratorJsTest0003 success");
                 done();
             },
             fail: function (data, code) {
-                console.error('VibratorJsTest0003 failed. Code: ' + code + '; Data: ' + data);
+                console.error('SubVibratorJsTest0003 failed. Code: ' + code + '; Data: ' + data);
                 expect(false).assertTrue();
             },
         });
     })
 
     /*
-    * @tc.name:VibratorJsTest0004
+    * @tc.name:SubVibratorJsTest0004
     * @tc.desc:verify app info is not null
-    * @tc.type: FUNC
-    * @tc.require: SR000H0ALK, AR000H0ALM
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0220
     */
-    it("VibratorJsTest0004", 0, async function (done) {
-        console.info('----------------------VibratorJsTest0004---------------------------');
+    it("SubVibratorJsTest0004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('----------------------SubVibratorJsTest0004---------------------------');
         vibrator.vibrate({
             mode: 'short',
             success: function () {
-                console.info("VibratorJsTest0004 success");
+                console.info("SubVibratorJsTest0004 success");
                 done();
             },
         });
     })
 
     /*
-     * @tc.name:VibratorJsTest0005
+     * @tc.name:SubVibratorJsTest0005
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0230
      */
-    it("VibratorJsTest0005", 0, async function (done) {
-        console.info('----------------------VibratorJsTest0005---------------------------');
+    it("SubVibratorJsTest0005", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('----------------------SubVibratorJsTest0005---------------------------');
         vibrator.vibrate({
             success: function () {
-                console.info("VibratorJsTest0005 success");
+                console.info("SubVibratorJsTest0005 success");
                 done();
             },
             fail: function (data, code) {
-                console.error('VibratorJsTest0005 failed. Code: ' + code + '; Data: ' + data);
+                console.error('SubVibratorJsTest0005 failed. Code: ' + code + '; Data: ' + data);
                 expect(false).assertTrue();
             },
         });
     })
 
     /*
-     * @tc.name:VibratorJsTest0006
+     * @tc.name:SubVibratorJsTest0006
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0240
      */
-    it("VibratorJsTest0006", 0, async function (done) {
-        console.info('----------------------VibratorJsTest0006---------------------------');
+    it("SubVibratorJsTest0006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('----------------------SubVibratorJsTest0006---------------------------');
         vibrator.vibrate({
             mode: 'long',
             inInvalid: 2,
             success: function () {
-                console.info("VibratorJsTest0006 success");
+                console.info("SubVibratorJsTest0006 success");
                 done();
             },
             fail: function (data, code) {
-                console.error('VibratorJsTest0006 failed. Code: ' + code + '; Data: ' + data);
+                console.error('SubVibratorJsTest0006 failed. Code: ' + code + '; Data: ' + data);
                 expect(false).assertTrue();
             },
         });
     })
 
     /*
-     * @tc.name:VibratorJsTest0007
+     * @tc.name:SubVibratorJsTest0007
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0250
      */
-    it("VibratorJsTest0007", 0, async function (done) {
-        console.info('----------------------VibratorJsTest0007---------------------------');
+    it("SubVibratorJsTest0007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('----------------------SubVibratorJsTest0007---------------------------');
         try {
             vibrator.vibrate({
                 mode: 'short',
                 success: function () {
-                    console.info("VibratorJsTest0007 success");
+                    console.info("SubVibratorJsTest0007 success");
                     expect(false).assertTrue();
                     done();
                 },
             }, 25);
         } catch (error) {
             errMessage = error.toString().slice(39);
-            console.info('VibratorJsTest0007 error:' + error);
+            console.info('SubVibratorJsTest0007 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })
 
     /*
-     * @tc.name:VibratorJsTest0008
+     * @tc.name:SubVibratorJsTest0008
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0260
      */
-    it("VibratorJsTest0008", 0, async function (done) {
-        console.info('----------------------VibratorJsTest0008---------------------------');
+    it("SubVibratorJsTest0008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('----------------------SubVibratorJsTest0008---------------------------');
         vibrator.vibrate({
             mode: 'short',
             success: function () {
-                console.info("VibratorJsTest0008 success");
+                console.info("SubVibratorJsTest0008 success");
             },
             fail: function (data, code) {
-                console.error('VibratorJsTest0008 failed. Code: ' + code + '; Data: ' + data);
+                console.error('SubVibratorJsTest0008 failed. Code: ' + code + '; Data: ' + data);
                 expect(false).assertTrue();
             },
         });
         vibrator.vibrate({
             mode: 'short',
             success: function () {
-                console.info("VibratorJsTest0008_1 success");
+                console.info("SubVibratorJsTest0008_1 success");
             },
             fail: function (data, code) {
-                console.error('VibratorJsTest0008_1 failed. Code: ' + code + '; Data: ' + data);
+                console.error('SubVibratorJsTest0008_1 failed. Code: ' + code + '; Data: ' + data);
                 expect(false).assertTrue();
             },
         });
@@ -240,54 +233,34 @@ describe("VibratorJsTest", function () {
     })
 
     /*
-     * @tc.name:VibratorJsTest0009
+     * @tc.name:SubVibratorJsTest0009
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0270
      */
-    it("VibratorJsTest0009", 0, async function (done) {
-        console.info('----------------------VibratorJsTest0009---------------------------');
+    it("SubVibratorJsTest0009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('----------------------SubVibratorJsTest0009---------------------------');
         try {
-            vibrator.vibrate('xxx', done);
-        } catch (error) {
-            console.info('VibratorJsTest0009 error：' + error);
-            errMessage = error.toString().slice(68);
-            expect(errMessage).assertEqual(errMessages[1]);
-            done();
-        }
-    })
-
-    /*
-     * @tc.name:VibratorJsTest0010
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
-     */
-    it("VibratorJsTest0010", 0, async function (done) {
-        console.info('----------------------VibratorJsTest0010---------------------------');
-        try {
-            vibrator.vibrate(done);
+            vibrator.vibrate();
         } catch (error) {
             errMessage = error.toString().slice(7);
-            console.info('VibratorJsTest0010 error:' + error);
+            console.info('SubVibratorJsTest0009 error:' + error);
             expect(errMessage).assertEqual(errMessages[2]);
             done();
         }
     })
 
     /*
-     * @tc.name:VibratorJsTest0011
+     * @tc.name:SubVibratorJsTest0010
      * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0280
      */
-    it("VibratorJsTest0011", 0, async function (done) {
-        console.info('----------------------VibratorJsTest0011---------------------------');
+    it("SubVibratorJsTest0010", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('----------------------SubVibratorJsTest0010---------------------------');
         try {
             vibrator.vibrate({
                 mode: 'short',
                 success: function () {
-                    console.info("VibratorJsTest0011 success");
+                    console.info("SubVibratorJsTest0010 success");
                     expect(false).assertTrue();
                     done();
                 },
@@ -295,7 +268,7 @@ describe("VibratorJsTest", function () {
             }, 25);
         } catch (error) {
             errMessage = error.toString().slice(39);
-            console.info('VibratorJsTest0011 error:' + error);
+            console.info('SubVibratorJsTest0010 error:' + error);
             expect(errMessage).assertEqual(errMessages[3]);
             done();
         }
