@@ -74,8 +74,6 @@ export default function abilityTest(abilityContext) {
   describe('ActsGetDisplayIdStartAbilityTest', function () {
 
     afterEach(async (done) => {
-      let installer = await bundle.getBundleInstaller();
-      var count = 0;
       var testMissionId;
 
       testMissionId = await getMissionId();

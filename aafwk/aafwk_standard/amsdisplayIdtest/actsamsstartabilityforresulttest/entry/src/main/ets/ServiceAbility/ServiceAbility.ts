@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import ServiceExtension from '@ohos.application.ServiceExtensionAbility'
+import ServiceExtension from '@ohos.application.ServiceExtensionAbility';
+import Want from '@ohos.application.Want';
+import rpc from '@ohos.rpc';
 
 export default class ServiceAbility extends ServiceExtension {
-    onCreate(want,startId) {
+    onCreate(want:Want) {
         globalThis.abilityWant = want;
         console.log('ServiceAbility onCreate, want: ' + want.abilityName);
     }
@@ -43,7 +45,7 @@ export default class ServiceAbility extends ServiceExtension {
             })
             console.log('stub SerivceAbilityServer OnConnect start 2');
         }
-
+        return new rpc.RemoteObject('connect');
     }
 
     onDisconnect(want) {

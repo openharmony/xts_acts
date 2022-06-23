@@ -14,7 +14,8 @@
  */
 import Extension from '@ohos.application.ServiceExtensionAbility'
 import commonEvent from '@ohos.commonEvent'
-
+import Want from '@ohos.application.Want';
+import rpc from '@ohos.rpc';
 
 export default class ServiceExtAbility extends Extension {
     onCreate(want) {
@@ -26,7 +27,7 @@ export default class ServiceExtAbility extends Extension {
         console.info('mxh ServiceAbility onRequest**');
     }
 
-    onConnect(want) {
+    onConnect(want:Want) {
         console.info('mxh ServiceAbility onConnect**');
         commonEvent.publish("ACTS_ConnectAbility_0100_CommonEvent", {
             parameters: {
@@ -36,6 +37,7 @@ export default class ServiceExtAbility extends Extension {
             console.log("Demo Publish CallBack MainAbility_Start_CommonEvent")
         });
         console.log('Demo SerivceAbilityServer OnConnect start 1');
+        return new rpc.RemoteObject('connect');
     }
 
     onDisconnect(want) {

@@ -12,20 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {Core} from 'deccjsunit/index'
 
 @Entry
 @Component
 struct Index {
-  aboutToAppear() {
-    console.info('onShow finish')
-    const core = Core.getInstance()
-    core.init()
-    const configService = core.getDefaultService('config')
-    configService.setConfig(this)
-    core.execute()
-  }
-
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('Hello World')

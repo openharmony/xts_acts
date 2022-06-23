@@ -64,7 +64,7 @@ function testCall(data) {
     commonEvent.publish('CallTest', commonEventData, (err) => {
         console.log('======>CallTestSysA ThirdAbility Call_Finish<======')
     })
-    return;
+    return recvSequence;
 }
 
 function testCallWithResult(data) {

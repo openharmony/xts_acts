@@ -237,7 +237,7 @@ export default function abilityTest(abilityContext) {
       commonEvent.createSubscriber(subscriberInfoStartAbility_0200).then(async (data) => {
         console.debug("====>ACTS_getExtensionInfo_0200_Create Subscriber====>");
         subscriber = data;
-        await commonEvent.subscribe(subscriber, subscribeCallBack);.
+        await commonEvent.subscribe(subscriber, subscribeCallBack);
         connId = await abilityContext.connectAbility(
           {
             bundleName: "com.example.staticextensioninfotest",

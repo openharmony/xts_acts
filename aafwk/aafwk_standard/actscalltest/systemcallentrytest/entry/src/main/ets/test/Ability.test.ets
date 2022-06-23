@@ -45,6 +45,7 @@ var subscriberInfo = {
   events: ["CallTest"],
 };
 var caseDepBundles = [];
+var subscriber = null;
 
 class MySequenceable {
   num: number = 0;
@@ -134,6 +135,13 @@ export default function abilityTest(abilityContext) {
     afterEach(async (done) => {
       var testMissionId;
 
+      if (subscriber != null) {
+        commonEvent.unsubscribe(subscriber, () => {
+          console.log('======>afterEach unsubscribe<=======');
+        });
+        subscriber = null;
+      }
+
       testMissionId = await getMissionId(sysAMainAbilityName, 0);
       console.log('======>afterEach test missionId<=======' + testMissionId);
       if (testMissionId != -1) {
@@ -158,10 +166,10 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_CommonComponent_Call_0100', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_0100 begin');
-      var subscriber;
 
       function unSubscribeCallBack() {
         console.log('ACTS_CommonComponent_Call_0100 unSubscribeCallBack')
+        subscriber = null;
         done();
       }
 
@@ -241,11 +249,11 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_CommonComponent_Call_0300', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_0300 begin');
-      var subscriber;
       caseDepBundles = [systemAppCalleeABundleName];
 
       function unSubscribeCallBack() {
         console.log('ACTS_CommonComponent_Call_0300 unSubscribeCallBack')
+        subscriber = null;
         done();
       }
 
@@ -327,13 +335,13 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_CommonComponent_Call_0500', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_0500 begin');
-      var subscriber;
       var caller1;
       var caller2;
       caseDepBundles = [systemAppCalleeABundleName];
 
       function unSubscribeCallBack() {
         console.log('ACTS_CommonComponent_Call_0500 unSubscribeCallBack')
+        subscriber = null;
         caller1.release();
         done();
       }
@@ -426,12 +434,12 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_CommonComponent_Call_0700', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_0700 begin');
-      var subscriber;
       var caller;
       caseDepBundles = [systemAppCalleeABundleName];
 
       function unSubscribeCallBack() {
         console.log('ACTS_CommonComponent_Call_0700 unSubscribeCallBack')
+        subscriber = null;
         done();
       }
 
@@ -549,12 +557,12 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_CommonComponent_Call_0900', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_0900 begin');
-      var subscriber;
       caseDepBundles = [thirdAppABundleName];
       var caller;
 
       function unSubscribeCallBack() {
         console.log('ACTS_CommonComponent_Call_0900 unSubscribeCallBack')
+        subscriber = null;
         done();
       }
 
@@ -660,7 +668,6 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_CommonComponent_Call_1900', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_1900 begin');
-      var subscriber;
       var callBackCnt = 0;
 
       function checkFinish() {
@@ -672,6 +679,7 @@ export default function abilityTest(abilityContext) {
 
       function unSubscribeCallBack() {
         console.log('ACTS_CommonComponent_Call_1900 unSubscribeCallBack')
+        subscriber = null;
         done();
       }
 

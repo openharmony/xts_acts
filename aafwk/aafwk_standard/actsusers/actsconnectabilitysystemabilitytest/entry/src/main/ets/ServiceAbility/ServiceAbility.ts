@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import commonEvent from '@ohos.commonEvent'
+import rpc from '@ohos.rpc';
 import ServiceExtensionAbility from '@ohos.application.ServiceExtensionAbility'
 
 var conn = -1;
@@ -40,6 +41,51 @@ function publishCallBackzero () {
 function publishCallBackttwo () {
     console.log("========Publish CallBack AMSc_disonnectAbility_0200_commonEvent========");
 }
+
+class Stub extends rpc.RemoteObject {
+    constructor(des) {
+    super(des);
+    }
+    onRemoteRequest(code, data, reply, option) {
+    reply.writeNoException();
+    reply.writeString("success");
+    return true;
+    }
+}
+
+function onConnectCallback(element) {
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onConnect element.bundleName : ' + element.bundleName)
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onConnect element.abilityName : ' + element.abilityName)
+}
+
+function onDisconnectCallback1(element) {
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onDisconnect element.bundleName : ' + element.bundleName)
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onDisconnect element.abilityName : ' + element.abilityName)
+}
+function onDisconnectCallback2(element) {
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onDisconnect element.bundleName : ' + element.bundleName)
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onDisconnect element.abilityName : ' + element.abilityName)
+}
+function onDisconnectCallback3(element) {
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onDisconnect element.bundleName : ' + element.bundleName)
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onDisconnect element.abilityName : ' + element.abilityName)
+}
+function onDisconnectCallback4(element) {
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onDisconnect element.bundleName : ' + element.bundleName)
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onDisconnect element.abilityName : ' + element.abilityName)
+}
+function onDisconnectCallback5(element) {
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onDisconnect element.bundleName : ' + element.bundleName)
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onDisconnect element.abilityName : ' + element.abilityName)
+}
+function onDisconnectCallback6(element) {
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onDisconnect element.bundleName : ' + element.bundleName)
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onDisconnect element.abilityName : ' + element.abilityName)
+}
+function onFailedCallback(code) {
+    console.log('ACTS_ConnectAbility_0100 ConnectAbility onFailed errCode : ' + code)
+}
+
 
 export default class ServiceAbility extends ServiceExtensionAbility {
     onCreate(want) {
@@ -85,16 +131,30 @@ export default class ServiceAbility extends ServiceExtensionAbility {
                 {
                     bundleName: "com.example.actsconnectabilitysystemabilitytest",
                     abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility2",
-                }
+                },
+                {
+                    onConnect: onConnectCallback,
+                    onDisconnect: onDisconnectCallback1,
+                    onFailed: onFailedCallback,
+                },
             );
+            var myStub4 = new Stub("com.example.actsconnectabilitysystemabilitytest.MainAbility");
+            return myStub4;
         };
         if (want.action == "Eight") {
             extensionContext.connectAbility(
                 {
                     bundleName: "com.example.actsconnectabilitysystemabilitytest",
                     abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility3",
-                }
+                },
+                {
+                    onConnect: onConnectCallback,
+                    onDisconnect: onDisconnectCallback6,
+                    onFailed: onFailedCallback,
+                },
             );
+            var myStub1 = new Stub("com.example.actsconnectabilitysystemabilitytest.MainAbility");
+            return myStub1;
         };
         if (want.action == "Nine") {
             console.log('connectAbility 111');
@@ -102,12 +162,19 @@ export default class ServiceAbility extends ServiceExtensionAbility {
                 {
                     bundleName: 'com.example.actsconnectabilitysystemabilitytest',
                     abilityName: 'com.example.actsconnectabilitysystemabilitytest.ServiceAbility2'
-                })
+                },
+                {
+                    onConnect: onConnectCallback,
+                    onDisconnect: onDisconnectCallback2,
+                    onFailed: onFailedCallback,
+                },)
             setTimeout(()=>{
                 extensionContext.disconnectAbility(num).then(()=>{
                     console.log('in disconnectAbility');
                 })
             },1000)
+            var myStub2 = new Stub("com.example.actsconnectabilitysystemabilitytest.MainAbility");
+            return myStub2;
 
         };
         if (want.action == "Ten") {
@@ -116,12 +183,19 @@ export default class ServiceAbility extends ServiceExtensionAbility {
                 {
                     bundleName: 'com.example.actsconnectabilitysystemabilitytest',
                     abilityName: 'com.example.actsconnectabilitysystemabilitytest.ServiceAbility2'
-                })
+                },
+                {
+                    onConnect: onConnectCallback,
+                    onDisconnect: onDisconnectCallback3,
+                    onFailed: onFailedCallback,
+                },)
             setTimeout(()=>{
                 extensionContext.disconnectAbility(num).then(()=>{
                     console.log('in disconnectAbility2');
                 })
             },1000)
+            var myStub3 = new Stub("com.example.actsconnectabilitysystemabilitytest.MainAbility");
+            return myStub3;
 
         };
         if (want.action == "Ten one") {
@@ -130,12 +204,19 @@ export default class ServiceAbility extends ServiceExtensionAbility {
                 {
                     bundleName: 'com.example.actsconnectabilitysystemabilitytest',
                     abilityName: 'com.example.actsconnectabilitysystemabilitytest.ServiceAbility2'
-                })
+                },
+                {
+                    onConnect: onConnectCallback,
+                    onDisconnect: onDisconnectCallback4,
+                    onFailed: onFailedCallback,
+                },)
             setTimeout(()=>{
                 extensionContext.disconnectAbility(2222).then(()=>{
                     console.log('in disconnectAbility3');
                 })
             },1000)
+            var myStub5 = new Stub("com.example.actsconnectabilitysystemabilitytest.MainAbility");
+            return myStub5;
 
         };
         if (want.action == "Ten two") {
@@ -144,12 +225,19 @@ export default class ServiceAbility extends ServiceExtensionAbility {
                 {
                     bundleName: 'com.example.actsconnectabilitysystemabilitytest',
                     abilityName: 'com.example.actsconnectabilitysystemabilitytest.ServiceAbility2'
-                })
+                },
+                {
+                    onConnect: onConnectCallback,
+                    onDisconnect: onDisconnectCallback5,
+                    onFailed: onFailedCallback,
+                },)
             setTimeout(()=>{
                 extensionContext.disconnectAbility(2222).then(()=>{
                     console.log('in disconnectAbility4');
                 })
             },1000)
+            var myStub6 = new Stub("com.example.actsconnectabilitysystemabilitytest.MainAbility");
+            return myStub6;
 
         };
     }
