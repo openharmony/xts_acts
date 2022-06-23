@@ -14,7 +14,7 @@
  */
 
 #include <gtest/gtest.h>
-#include "hilog/hilog.h"
+#include "hilog/log.h"
 #include "file_utils.h"
 
 #undef LOG_DOMAIN
