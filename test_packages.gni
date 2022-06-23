@@ -22,7 +22,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/account:account",
   "${ACTS_ROOT}/communication:communication",
   "${ACTS_ROOT}/notification:notification",
-  "${ACTS_ROOT}/aafwk:aafwk",
+  "${ACTS_ROOT}/ability:ability",
   "${ACTS_ROOT}/miscservices:miscservices",
   "${ACTS_ROOT}/powermgr:powermgr",
   "${ACTS_ROOT}/startup:startup",
