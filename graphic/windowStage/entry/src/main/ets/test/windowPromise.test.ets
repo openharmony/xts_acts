@@ -12,9 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 // @ts-nocheck
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
 import ohosWindow from '@ohos.window';
 import screenManager from '@ohos.screen';
 import display from '@ohos.display';
@@ -69,9 +68,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     beforeAll(function () {
       console.log('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType));
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
+      console.log('jsunittest beforeall systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr)+'   ,length='+systemWindowTypeDicArr.length);
       systemWindowValueArr = Object.keys(systemWindowTypeDic);
       systemWindowTypeArr = Object.keys(systemWindowTypeDic);
       for (i in ohosWindow.WindowType) {
+        console.log('jsunittest beforeall i=' + i);
         windowTypeArr.push(ohosWindow.WindowType[i])
       }
     })
@@ -254,7 +255,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       await sleep(1000);
       tempWnd.off('systemAvoidAreaChange');
       console.log(msgStr + 'tempWnd.off systemAvoidAreaChange finished');
-      await sleep(1200);
+      await sleep(10010);
       listenerOffFlag = listenerStatus.pending;
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
@@ -394,14 +395,14 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         expect(!!tempWnd).assertTrue();
         let windowTypeData = await tempWnd.setWindowType(changedWndType).catch((err) => {
           console.log(msgStr + 'tempWnd.setWindowType err: ' + JSON.stringify(err));
-          expectedError(err, caseName, 'tempWnd.setWindowType', done, 130);
+          expectedError(err, caseName, 'tempWnd.setWindowType', done, 1003);
         })
         console.log(msgStr + 'tempWnd.setWindowType windowTypeData' + JSON.stringify(windowTypeData));
         console.log(msgStr + 'tempWnd.setWindowType !windowTypeData' + !windowTypeData);
         if (!!windowTypeData) {
           unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
         } else {
-          expect(err.code == 130).assertTrue();
+          expect(err.code == 1003).assertTrue();
           done();
         }
       } else {
@@ -703,7 +704,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
       await tempWnd.setSystemBarEnable([null, '123']).catch((err) => {
         console.log(msgStr + 'tempWnd.setSystemBarEnable([null, 123]) err=' + JSON.stringify(err));
-        expect(err.code === 130).assertTrue();
+        expect(err.code === 1003).assertTrue();
         done();
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([null, 123]) finished');
@@ -966,8 +967,8 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'createTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let loopCount = appWindowTypeArr.length;
-      console.log('jsunittest loopCount: ' + loopCount);
+      let loopCount = systemWindowTypeDicArr.length;
+      console.log(msgStr + 'loopCount: ' + loopCount);
       for (let i = 0; i < loopCount; i++) {
         let tempType = systemWindowTypeDic[systemWindowTypeDicArr[i]];
         let windId = 'createTest1' + i;
@@ -977,7 +978,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           unexpectedError(err, caseName, 'ohosWindow.create ' + tempType, done);
         });
         console.log(msgStr + 'ohosWindow.create ' + tempType + 'finished, wnd: ' + tempWnd);
-        expect(!tempWnd).assertTrue();
+        expect(!!tempWnd).assertTrue();
       }
       console.log(msgStr + 'done ');
       done();
@@ -1042,7 +1043,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'ohosWindow.create ' + tempType + ' start');
       let nonExistWnd = await ohosWindow.create(context, windId, tempType).catch((err) => {
         console.log(msgStr + 'ohosWindow.create err: ' + JSON.stringify(err));
-        expect(err.code === 130).assertTrue();
+        expect(err.code === 1003).assertTrue();
         done();
       });
     })
@@ -1063,7 +1064,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       expect(!!ohosData).assertTrue();
       let ohosDataError = await ohosWindow.create(context, windowId, 1).catch((err) => {
         console.log(msgStr + 'ohosWindow.create 1 twice err: ' + JSON.stringify(err));
-        expect(err.code).assertEqual(120)
+        expect(err.code).assertEqual(1001)
         done();
       })
       console.log(msgStr + 'ohosWindow.create 1 twice ohosDataError: ' + JSON.stringify(ohosDataError));
@@ -1114,7 +1115,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let errFlag = false;
       let loadContentData = await tempWnd.loadContent(null).catch((err) => {
         errFlag = true;
-        expectedError(err, caseName, 'tempWnd.loadContent', done, 130);
+        expectedError(err, caseName, 'tempWnd.loadContent', done, 1003);
         console.log(msgStr + 'tempWnd.loadContent(null)' + JSON.stringify(err));
       });
       console.log(msgStr + 'tempWnd.loadContent loadContentData:' + JSON.stringify(loadContentData));
@@ -1152,7 +1153,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let load4 = await windowStage.loadContent(null).catch((err) => {
-        expectedError(err, caseName, 'tempWnd.loadContent', done, 130);
+        expectedError(err, caseName, 'tempWnd.loadContent', done, 1003);
         console.log(msgStr + 'tempWnd.loadContent(pages/index/index.ets)' + JSON.stringify(err));
       });
       console.log(msgStr + 'tempWnd.loadContent end load5=' + JSON.stringify(load4));
@@ -1168,7 +1169,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let load5 = await windowStage.loadContent(null, abilityStorage).catch((err) => {
-        expectedError(err, caseName, 'tempWnd.loadContent', done, 130);
+        expectedError(err, caseName, 'tempWnd.loadContent', done, 1003);
         console.log(msgStr + 'tempWnd.loadContent(pages/index/index.ets)' + JSON.stringify(err));
       });
       console.log(msgStr + 'tempWnd.loadContent end load5=' + JSON.stringify(load5));
@@ -1218,7 +1219,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let subWindow = await windowStage.createSubWindow(null).catch((err) => {
-        expectedError(err, caseName, 'windowStage.createSubWindow', done, 130);
+        expectedError(err, caseName, 'windowStage.createSubWindow', done, 1003);
         console.log(msgStr + 'windowStage.createSubWindow(null) err=' + JSON.stringify(err));
       });
       console.log(msgStr + 'windowStage.createSubWindow end subWindow=' + JSON.stringify(subWindow));
@@ -1310,7 +1311,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       console.log(msgStr + 'tempWnd.destroy end');
       let findWnd = await ohosWindow.find(windowId).catch((err) => {
-        expectedError(err, caseName, 'ohosWindow.find', done, 120);
+        expectedError(err, caseName, 'ohosWindow.find', done, 1001);
       });
       console.log(msgStr + 'find findWnd: ' + JSON.stringify(findWnd));
       expect(!findWnd).assertTrue();
