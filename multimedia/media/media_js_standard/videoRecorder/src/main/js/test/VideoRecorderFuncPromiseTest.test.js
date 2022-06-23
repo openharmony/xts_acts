@@ -167,7 +167,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
             }
             let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
             fileAsset = await fetchFileResult.getAllObject();
-            fdNumber = await fileAsset[0].open('Rw');
+            fdNumber = await fileAsset[0].open('rw');
             fdPath = "fd://" + fdNumber.toString();
         }
     }
@@ -1422,7 +1422,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         let videoOutput;
         await getFd('43.mp4');
         videoConfig.url = fdPath;
-        videoConfig.videoFrameRate = 20;
+        configFile.videoFrameRate = 20;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -1471,7 +1471,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         let videoOutput;
         await getFd('44.mp4');
         videoConfig.url = fdPath;
-        videoConfig.videoFrameRate = 30;
+        configFile.videoFrameRate = 30;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {
@@ -1520,7 +1520,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         let videoOutput;
         await getFd('45.mp4');
         videoConfig.url = fdPath;
-        videoConfig.videoFrameRate = 60;
+        configFile.videoFrameRate = 60;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
             if (typeof (recorder) != 'undefined') {

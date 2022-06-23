@@ -15,6 +15,14 @@
             "cleanup-apps": true
         },
         {
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audioplayer/haps/entry/files"
+            ],
+            "teardown-command":[
+            ]
+        },
+        {
             "type": "PushKit",
             "pre-push": [
             ],
@@ -43,13 +51,6 @@
                 "./resource/audio/96.mp4 ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audioplayer/haps/entry/files/",
                 "./resource/audio/97.mp4 ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audioplayer/haps/entry/files/",
                 "./resource/audio/98.mp4 ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audioplayer/haps/entry/files/"
-            ]
-        },
-		{
-            "type": "ShellKit",
-            "run-command": [
-            ],
-            "teardown-command":[
             ]
         }
     ]
