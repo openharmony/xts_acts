@@ -17,7 +17,7 @@ module_output_path = "hits/hilogndktest"
 config("hilogndktest_config") {
   visibility = [ ":*" ]
   include_dirs = [
-    "//base/hiviewdfx/hilog/interface/native/kits/include",
+    "//base/hiviewdfx/hilog/interfaces/native/kits/include",
   ]
 }
 ohos_moduletest_suite("hilogndktest") {
