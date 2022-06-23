@@ -43,27 +43,7 @@ namespace {
 class HiAppEventCPPTest : public testing::Test {
 public:
     void TearDown();
-    int ExecCmdWithRet(string cmd, vector<string> &resvec);
 };
-
-int ExecCmdWithRet(string cmd, vector<string> &resvec)
-{
-    cout << "cmd is " + cmd <<endl;
-    resvec.clear();
-    FILE *pp = popen(cmd.c_str(), "r");
-    if (pp == nullptr) {
-        return -1;
-    }
-    char tmp[1024];
-    while (fgets(tmp, sizeof(tmp), pp) != nullptr) {
-        if (tmp[strlen(tmp) - 1] == '\n') {
-            tmp[strlen[tmp] - 1] = '\0';
-        }
-        resvec.push_back(tmp);
-    }
-    pclose(pp);
-    return resvec.size();
-}
 
 void HiAppEventCPPTest::TearDown()
 {
