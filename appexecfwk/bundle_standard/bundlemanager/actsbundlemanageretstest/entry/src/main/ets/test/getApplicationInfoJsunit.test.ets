@@ -40,7 +40,7 @@ let userId = 0;
 
 export default function applicationBundleJsunit() {
 
-    describe('appInfoTest', function () {
+    describe('appInfoTest_bms_2', function () {
 
         beforeAll(async function (done) {
             await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
@@ -449,7 +449,7 @@ export default function applicationBundleJsunit() {
             expect(data.name).assertEqual(BUNDLE_NAME);
             expect(data.codePath).assertEqual(PATH + '/' + BUNDLE_NAME);
             expect(data.accessTokenId > 0).assertEqual(true);
-            expect(data.description).assertEqual('$string:mainability_description');
+            expect(data.description).assertEqual('$string:entry_description');
             expect(data.descriptionId > 0).assertEqual(true);
             expect(data.icon).assertEqual('$media:icon');
             expect(data.iconId > 0).assertEqual(true);
@@ -476,7 +476,7 @@ export default function applicationBundleJsunit() {
             expect(data.name).assertEqual(BUNDLE_NAME);
             expect(data.codePath).assertEqual(PATH + '/' + BUNDLE_NAME);
             expect(data.accessTokenId).assertLarger(0);
-            expect(data.description).assertEqual('$string:mainability_description');
+            expect(data.description).assertEqual('$string:entry_description');
             expect(data.descriptionId).assertLarger(0);
             expect(data.icon).assertEqual('$media:icon');
             expect(data.iconId).assertLarger(0);
@@ -507,7 +507,7 @@ export default function applicationBundleJsunit() {
           expect(data.name).assertEqual(BUNDLE_OTHER);
           expect(data.codePath).assertEqual(PATH + '/' + BUNDLE_OTHER);
           expect(data.accessTokenId).assertLarger(0);
-          expect(data.description).assertEqual('$string:mainability_description');
+          expect(data.description).assertEqual('$string:entry_description');
           expect(data.descriptionId).assertLarger(0);
           expect(data.icon).assertEqual('$media:icon');
           expect(data.iconId).assertLarger(0);

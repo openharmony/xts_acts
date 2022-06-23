@@ -23,6 +23,10 @@
     {
       "name": "TestAbility_label",
       "value": "label"
+    },
+    {
+      "name": "entry_description",
+      "value": "entry_description"
     }
   ]
 }

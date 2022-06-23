@@ -38,7 +38,6 @@ static int SIX = 6;
 static int EIGHT = 8;
 static int GARBAGE_LEN = strlen(GARBAGE);
 static unsigned BUFFER_SIZE = 8192;
-}
 
 static unsigned pull(void *desc, unsigned char **buf)
 {
@@ -643,8 +642,8 @@ HWTEST_F(ActsZlibTest, ActsZlibTestDeflateState, Function | MediumTest | Level2)
     c_stream.zalloc = nullptr;
     c_stream.zfree = nullptr;
     c_stream.opaque = nullptr;
-    err = deflateInit2(
-         &c_stream, Z_BEST_COMPRESSION, Z_DEFLATED, windowBits, memLevel, Z_FILTERED);
+    err = deflateInit2_(&c_stream, Z_BEST_COMPRESSION, Z_DEFLATED, windowBits,
+        memLevel, Z_FILTERED, ZLIB_VERSION, static_cast<int>(sizeof(z_stream)));
     ASSERT_EQ(err, Z_OK);
     deflateSetHeader(&c_stream, headerp);
     deflateTune(&c_stream, ONE, FOUR, EIGHT, ONE);
@@ -707,8 +706,9 @@ HWTEST_F(ActsZlibTest, ActsZlibTestDeflateBound, Function | MediumTest | Level2)
     defstream.next_in = reinterpret_cast<Bytef *>(inBuf);
     defstream.avail_out = static_cast<uInt>(outLen);
     defstream.next_out = reinterpret_cast<Bytef *>(outBuf);
-    err = deflateInit(&defstream, Z_DEFAULT_COMPRESSION);
-    fprintf(stderr, "deflateInit result: %d\n", err);
+    err = deflateInit_(&defstream, Z_DEFAULT_COMPRESSION,
+        ZLIB_VERSION, static_cast<int>(sizeof(z_stream)));
+    fprintf(stderr, "deflateInit_ result: %d\n", err);
     ASSERT_EQ(err, Z_OK);
     uint32_t  estimateLen = deflateBound(&defstream, inLen);
     outBuf = reinterpret_cast<uint8_t *>(malloc(estimateLen));
@@ -742,14 +742,18 @@ HWTEST_F(ActsZlibTest, ActsZlibTestCRC, Function | MediumTest | Level2)
     fprintf(stderr, "crc32_z result: %lu\n", err);
     ASSERT_NE(err, Z_ERRNO);
 #ifdef Z_SOLO
-#ifndef Z_LARGE64
+#ifdef Z_LARGE64
     err = crc32_combine64(crc1, crc2, 0);
     fprintf(stderr, "crc32_combine64 result: %lu\n", err);
+    ASSERT_NE(err, Z_ERRNO);
+#else
+    err = crc32_combine(crc1, crc2, 0);
+    fprintf(stderr, "crc32_combine result: %lu\n", err);
     ASSERT_NE(err, Z_ERRNO);
 #endif
 #else
     err = adler32_combine(crc1, crc2, 0);
-    fprintf(stderr, "crc32_combine result: %lu\n", err);
+    fprintf(stderr, "adler32_combine result: %lu\n", err);
     ASSERT_NE(err, Z_ERRNO);
 #endif
 }
@@ -1206,7 +1210,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzTell, Function | MediumTest | Level2)
     ASSERT_TRUE(file != NULL);
     z_off64_t pos;
     pos = gzseek(file, -8L, SEEK_CUR);
-    ASSERT_FALSE(gztell(file) == pos); /* define gztell gztell64 in zlib.h */
+    ASSERT_FALSE(gztell(file) == pos); /* define gztell gztell in zlib.h */
     gzclose(file);
 #else
     gzFile file;
@@ -1218,7 +1222,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzTell, Function | MediumTest | Level2)
     ASSERT_TRUE(file != NULL);
     z_off_t pos;
     pos = gzseek(file, -8L, SEEK_CUR);
-    ASSERT_FALSE(pos != SIX || gztell(file) != pos);
+    ASSERT_FALSE(pos != SIX || gztell64(file) != pos);
     gzclose(file);
 #endif
 }
@@ -1305,7 +1309,8 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzInflateBack, Function | MediumTest | Level2
     strm.zalloc = nullptr;
     strm.zfree = nullptr;
     strm.opaque = nullptr;
-    err = inflateBackInit(&strm, 15, window);
+    err = inflateBackInit_(
+        &strm, 15, window, ZLIB_VERSION, static_cast<int>(sizeof(z_stream)));
     ASSERT_EQ(err, Z_OK);
     if (err != Z_OK) {
         fprintf(stderr, "gun out of memory error--aborting\n");
@@ -1393,6 +1398,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateGetDictionary, Function | MediumTest |
     err = inflate(&d_stream, Z_NO_FLUSH);
     err = inflateGetDictionary(&d_stream, uncompr, nullptr);
     ASSERT_EQ(err, Z_OK);
+    inflateMark(&d_stream);
     err = inflateEnd(&d_stream);
     ASSERT_EQ(err, Z_OK);
     free(compr);
@@ -1746,4 +1752,26 @@ HWTEST_F(ActsZlibTest, ActsZlibTestzlibVersion, Function | MediumTest | Level2)
     static const char* err;
     err = zlibVersion();
     ASSERT_EQ(err, myVersion);
+}
+
+/**
+ * @tc.number    : ActsZlibTest_5200
+ * @tc.name      : Test gzdopen
+ * @tc.desc      : [C- SOFTWARE -0200]
+ */
+HWTEST_F(ActsZlibTest, ActsZlibTestGzdopen, Function | MediumTest | Level2)
+{
+#ifdef Z_SOLO
+    fprintf(stderr, "*********ActsZlibTestGzdopen Z_SOLO**********\n");
+#else
+    FILE *fp = fopen(TESTFILE, "r");
+    int fd = fileno(fp);
+    gzFile file = gzdopen(fd, "r");
+    ASSERT_TRUE(file != NULL);
+
+    int err = gzeof(file);
+    fprintf(stderr, "gzeof result: %d\n", err);
+    gzclose(file);
+#endif
+}
 }

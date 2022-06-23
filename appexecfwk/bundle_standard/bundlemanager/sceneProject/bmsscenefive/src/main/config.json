@@ -71,6 +71,7 @@
         "description": "BMS_PERMISSION_MUSIC permission in detail",
         "label": "BMS_PERMISSION_MUSIC permission"
       }
-    ]
+    ],
+    "description":"$string:entry_description"
   }
 }

@@ -34,7 +34,7 @@ let userId = 0;
 
 export default function getAllApplicationBundleTest() {
 
-    describe('appInfoTest', function () {
+    describe('appInfoTest_bms_1', function () {
 
         beforeAll(async function (done) {
             await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
@@ -356,7 +356,7 @@ export default function getAllApplicationBundleTest() {
                     console.info(msg + JSON.stringify(data[i]));
                     expect(data[i].name).assertEqual('com.open.harmony.packagemag');
                     expect(data[i].codePath).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag');
-                    expect(data[i].description).assertEqual('$string:mainability_description');
+                    expect(data[i].description).assertEqual('$string:entry_description');
                     if (data[i].descriptionId !== 0) {
                         expect(data[i].descriptionId > 0).assertEqual(true);
                     }
@@ -391,7 +391,7 @@ export default function getAllApplicationBundleTest() {
             expect(data.name).assertEqual(BUNDLE_OTHER);
             expect(data.codePath).assertEqual(PATH + '/' + BUNDLE_OTHER);
             expect(data.accessTokenId).assertLarger(0);
-            expect(data.description).assertEqual('$string:mainability_description');
+            expect(data.description).assertEqual('$string:entry_description');
             expect(data.descriptionId).assertLarger(0);
             expect(data.icon).assertEqual('$media:icon');
             expect(data.iconId).assertLarger(0);
