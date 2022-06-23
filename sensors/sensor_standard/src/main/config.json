@@ -55,6 +55,16 @@
           "autoDesignWidth": false
         }
       }
+    ],
+	 "reqPermissions": [
+      {
+        "name": "ohos.permission.ACCELEROMETER", 
+        "reason": "need use ohos.permission.ACCELEROMETER"
+      },
+      {
+        "name": "ohos.permission.GYROSCOPE",
+        "reason": "need use ohos.permission.GYROSCOPE"
+      }
     ]
   }
 }
