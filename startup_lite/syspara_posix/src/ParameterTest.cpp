@@ -21,7 +21,7 @@ using namespace testing::ext;
 
 namespace StartUpLite {
     static const int GET_DEF_PARA_FUN_MAX = 22;
-    static const int MAX_LEN = 128;
+    static const int MAX_LEN = 96;
     static const int WRONG_LEN = 2;
 
 class ParameterTest : public testing::Test {
@@ -92,14 +92,13 @@ HWTEST_F(ParameterTest, SUB_START_Para_Setting_Legal_0020, Function | MediumTest
 {
     int ret;
 
-    char key1[] = "rw.sys.version.version.version.";
+    char key1[] = "rw.sys.version.version.version";
     char value1[] = "set with key = 31";
     ret = SetParameter(key1, value1);
     EXPECT_EQ(ret, 0);
 
     char key2[] = "rw.sys.version.version";
-    char value2[] = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890\
-abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrs";
+    char value2[] = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuv";
     ret = SetParameter(key2, value2);
     EXPECT_EQ(ret, 0);
 }
@@ -135,20 +134,20 @@ HWTEST_F(ParameterTest, SUB_START_Para_Setting_ilLegal_0020, Function | MediumTe
 
 /**
  * @tc.number    : SUB_START_Para_Setting_ilLegal_key_0010 
- * @tc.name      : SetParameter legal test with key 32 or more than 32 bytes
+ * @tc.name      : SetParameter legal test with key 96 or more than 96 bytes
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 HWTEST_F(ParameterTest, SUB_START_Para_Setting_ilLegal_key_0010, Function | MediumTest | Level2)
 {
     int ret;
 
-    char key1[] = "rw.sys.version.version.version.v";
-    char value1[] = "set with key = 32";
+    char key1[] = "rw.sys.version.version.version.version.version.version.version.version.version.version.version.v";
+    char value1[] = "set with key = 96";
     ret = SetParameter(key1, value1);
     EXPECT_EQ(ret, -9);
 
-    char key2[] = "rw.sys.version.version.version.version";
-    char value2[] = "set with key > 32";
+    char key2[] = "rw.sys.version.version.version.version.version.version.version.version.version.version.version.v1";
+    char value2[] = "set with key > 96";
     ret = SetParameter(key2, value2);
     EXPECT_EQ(ret, -9);
 }
@@ -170,7 +169,7 @@ HWTEST_F(ParameterTest, SUB_START_Para_Setting_ilLegal_key_0030, Function | Medi
 
 /**
  * @tc.number    : SUB_START_Para_Setting_ilLegal_value_0010 
- * @tc.name      : SetParameter legal test with value is 128 or more than 128 bytes
+ * @tc.name      : SetParameter legal test with value is 96 or more than 96 bytes
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 HWTEST_F(ParameterTest, SUB_START_Para_Setting_ilLegal_value_0010, Function | MediumTest | Level2)
@@ -178,14 +177,12 @@ HWTEST_F(ParameterTest, SUB_START_Para_Setting_ilLegal_value_0010, Function | Me
     int ret;
 
     char key1[] = "rw.sys.version.version";
-    char value1[] = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890\
-abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrst";
+    char value1[] = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuv11";
     ret = SetParameter(key1, value1);
     EXPECT_EQ(ret, -9);
 
     char key2[] = "rw.sys.version.version";
-    char value2[] = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890\
-abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890";
+    char value2[] = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuv222";
     ret = SetParameter(key2, value2);
     EXPECT_EQ(ret, -9);
 }
@@ -228,14 +225,14 @@ HWTEST_F(ParameterTest, SUB_START_Para_Getting_Legal_0020, Function | MediumTest
 
 /**
  * @tc.number    : SUB_START_Para_Getting_Legal_0030 
- * @tc.name      : GetParameter legal test with length is 31 bytes, value is 127 bytes
+ * @tc.name      : GetParameter legal test with length is 95 bytes, value is 95 bytes
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 HWTEST_F(ParameterTest, SUB_START_Para_Getting_Legal_0030, Function | MediumTest | Level0)
 {
     int ret;
 
-    char key1[] = "rw.sys.version.version.version.";
+    char key1[] = "rw.sys.version.version.version";
     char rightVal1[] = "set with key = 31";
     char value1[StartUpLite::MAX_LEN] = {0};
     ret = GetParameter(key1, defSysParam.c_str(), value1, StartUpLite::MAX_LEN);
@@ -244,8 +241,7 @@ HWTEST_F(ParameterTest, SUB_START_Para_Getting_Legal_0030, Function | MediumTest
     EXPECT_STREQ(value1, rightVal1);
 
     char key2[] = "rw.sys.version.version";
-    char rightVal2[] = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890\
-abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrs";
+    char rightVal2[] = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuv";
     char value2[StartUpLite::MAX_LEN] = {0};
     ret = GetParameter(key2, defSysParam.c_str(), value2, StartUpLite::MAX_LEN);
     value2[MAX_LEN - 1] = '\0';
@@ -300,12 +296,12 @@ HWTEST_F(ParameterTest, SUB_START_Para_Getting_ilLegal_0030, Function | MediumTe
 
     char value2[StartUpLite::WRONG_LEN] = {0};
     ret = GetParameter(key1, defSysParam.c_str(), value2, StartUpLite::WRONG_LEN);
-    EXPECT_EQ(ret, -1);
+    EXPECT_EQ(ret, -9);
 }
 
 /**
  * @tc.number    : SUB_START_Para_Getting_ilLegal_0040 
- * @tc.name      : GetParameter legal test with key is 32 bytes
+ * @tc.name      : GetParameter legal test with key is 96 bytes
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 HWTEST_F(ParameterTest, SUB_START_Para_Getting_ilLegal_0040, Function | MediumTest | Level2)
@@ -315,7 +311,7 @@ HWTEST_F(ParameterTest, SUB_START_Para_Getting_ilLegal_0040, Function | MediumTe
     char key[] = "rw.sys.version.version.version.v";
     char value[StartUpLite::MAX_LEN] = {0};
     ret = GetParameter(key, defSysParam.c_str(), value, StartUpLite::MAX_LEN);
-    EXPECT_EQ(ret, -9);
+    EXPECT_STREQ(value, defSysParam.c_str());
 }
 
 /**
@@ -344,7 +340,7 @@ HWTEST_F(ParameterTest, SUB_START_Para_Getting_ilLegal_0060, Function | MediumTe
     char key[] = "rw.sys.version*%version";
     char value[StartUpLite::MAX_LEN] = {0};
     ret = GetParameter(key, defSysParam.c_str(), value, StartUpLite::MAX_LEN);
-    EXPECT_EQ(ret, -9);
+    EXPECT_STREQ(value, defSysParam.c_str());
 }
 
 /**
