@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("AceEtsComponentFourTest") {
+ohos_js_hap_suite("ActsAceEtsComponentFourTest") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":ace_ets_component_assets",
@@ -22,7 +22,7 @@ ohos_js_hap_suite("AceEtsComponentFourTest") {
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "AceEtsComponentFourTest"
+  hap_name = "ActsAceEtsComponentFourTest"
 }
 ohos_js_assets("ace_ets_component_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"
