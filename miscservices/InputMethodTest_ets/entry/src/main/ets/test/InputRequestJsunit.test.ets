@@ -29,11 +29,13 @@ export default function inputRequestJsunit() {
       let caseName: string = "inputRequest_DownloadConfig_Test_001";
       console.log(`==========> ${caseName} Test start ==========>`);
       let downloadConfig = {
+        header: "HTTP",
         url: "www.testdownload.com",
         enableMetered: false,
         enableRoaming: false,
         description: "test download",
-        title: ""
+        title: "",
+        networkType: "",
       };
       try {
         let promise = request.download(downloadConfig);
