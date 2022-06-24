@@ -47,6 +47,7 @@ LITE_TEST_SUIT(security, securityData, HksExistTest);
 
 static void ExecHksInitialize(void const *argument)
 {
+    (void)argument;
     LiteTestPrint("HksInitialize Begin!\n");
     TEST_ASSERT_TRUE(HksInitialize() == 0);
     LiteTestPrint("HksInitialize End!\n");
@@ -55,6 +56,7 @@ static void ExecHksInitialize(void const *argument)
 
 static void ExecHksExistTest001(void const *argument)
 {
+    (void)argument;
     int32_t ret;
     LiteTestPrint("HksExistTest001 Begin!\n");
     struct HksBlob *keyAlias = NULL;
@@ -86,7 +88,7 @@ static void ExecHksExistTest001(void const *argument)
  * @tc.setup: define a setup for test suit, format:"CalcMultiTest + SetUp"
  * @return: true——setup success
  */
-static BOOL HksExistTestSetUp()
+static BOOL HksExistTestSetUp(void)
 {
     LiteTestPrint("setup\n");
     IoTWatchDogDisable();
@@ -101,7 +103,10 @@ static BOOL HksExistTestSetUp()
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = g_setPriority;
     id = osThreadNew((osThreadFunc_t)ExecHksInitialize, NULL, &attr);
-    sleep(WAIT_TO_TEST_DONE);
+    if (id == NULL) {
+        printf("Failed to create thread ExecHksInitialize!\n");
+    }
+    osDelay(WAIT_TO_TEST_DONE);
     LiteTestPrint("HksGenerateKeyTestSetUp End2!\n");
     return TRUE;
 }
@@ -110,7 +115,7 @@ static BOOL HksExistTestSetUp()
  * @tc.teardown: define a setup for test suit, format:"CalcMultiTest + TearDown"
  * @return: true——teardown success
  */
-static BOOL HksExistTestTearDown()
+static BOOL HksExistTestTearDown(void)
 {
     LiteTestPrint("tearDown\n");
     IoTWatchDogEnable();
@@ -135,7 +140,10 @@ LITE_TEST_CASE(HksExistTest, HksExistTest001, Level1)
     attr.stack_size = TEST_TASK_STACK_SIZE;
     attr.priority = g_setPriority;
     id = osThreadNew((osThreadFunc_t)ExecHksExistTest001, NULL, &attr);
-    sleep(WAIT_TO_TEST_DONE);
+    if (id == NULL) {
+        printf("Failed to create thread ExecHksExistTest001!\n");
+    }
+    osDelay(WAIT_TO_TEST_DONE);
     LiteTestPrint("HksExistTest001 End2!\n");
 }
 RUN_TEST_SUITE(HksExistTest);
