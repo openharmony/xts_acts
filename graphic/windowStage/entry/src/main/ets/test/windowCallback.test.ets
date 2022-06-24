@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
+
 import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 
@@ -417,7 +418,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                 console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(data)==' + JSON.stringify(data));
                 console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(err)==' + JSON.stringify(err));
                 if (err && err.code) {
-                  expect(err.code === 130).assertTrue();
+                  expect(err.code === 1003).assertTrue();
                   done();
                 } else {
                   unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [null,123]', done);
@@ -745,7 +746,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
           console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
           if (err && err.code) {
-            expect(err.code === 130).assertTrue();
+            expect(err.code === 1003).assertTrue();
             console.log(msgStr + 'ohosWindow.create err.code==' + JSON.stringify(err.code))
             if (i === loopCount - 1) {
               done();
@@ -812,7 +813,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       ohosWindow.create(context, windId, tempType, (err, data) => {
         console.log(msgStr + 'ohosWindow.create  data' + JSON.stringify(data));
         if (err && err.code) {
-          expect(err.code === 130).assertTrue();
+          expect(err.code === 1003).assertTrue();
           done();
           return;
         }
@@ -840,7 +841,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           console.log(msgStr + 'ohosWindow.create 1 twice err: ' + JSON.stringify(err));
           if (err && err.code) {
             console.log(msgStr + 'ohosWindow.create 1 twice data: ' + JSON.stringify(data));
-            expect(err.code).assertEqual(120)
+            expect(err.code).assertEqual(1001)
             done();
           } else {
             unexpectedError(err, caseName, 'ohosWindow.create', done);
@@ -1003,7 +1004,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             if (!!data) {
               expectedError(err, caseName, 'tempWnd.setWindowType', done);
             } else {
-              expect(err.code == 130).assertTrue();
+              expect(err.code == 1003).assertTrue();
               done();
             }
           })
@@ -1044,7 +1045,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                 console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
                 console.log(msgStr + 'ohosWindow.find !!data' + !!data);
                 if (err && err.code) {
-                  expect(err.code == 120).assertTrue();
+                  expect(err.code == 1001).assertTrue();
                   done();
                 } else {
                   expectedError(err, caseName, 'tempWnd.setWindowType', done);
@@ -1116,7 +1117,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             console.log(msgStr + 'tempWnd.loadContent data' + JSON.stringify(data));
             console.log(msgStr + 'tempWnd.loadContent !!data' + !!data);
             if (err && err.code) {
-              expect(err.code === 130).assertTrue();
+              expect(err.code === 1003).assertTrue();
               done();
             } else {
               expectedError(err, caseName, 'tempWnd.loadContent', done);
@@ -1158,7 +1159,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'begin');
       windowStage.loadContent(null, (err, data) => {
         if (err && err.code) {
-          expectedError(err, caseName, 'windowStage.loadContent', done, 130);
+          expectedError(err, caseName, 'windowStage.loadContent', done, 1003);
           console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
         }
         done();
@@ -1196,7 +1197,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'begin');
       windowStage.loadContent(null, abilityStorage, (err, data) => {
         if (err && err.code) {
-          expectedError(err, caseName, 'windowStage.loadContent', done, 130);
+          expectedError(err, caseName, 'windowStage.loadContent', done, 1003);
           console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
         }
         done();
@@ -1233,7 +1234,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'begin');
       windowStage.createSubWindow(null, (err, data) => {
         if (err && err.code) {
-          expectedError(err, caseName, 'windowStage.createSubWindow', done, 130);
+          expectedError(err, caseName, 'windowStage.createSubWindow', done, 1003);
           console.log(msgStr + 'windowStage.createSubWindow(null) err=' + JSON.stringify(err));
         } else {
           expect(false).assertTrue();
