@@ -145,7 +145,7 @@ describe('AudioDecoderFuncCallback', function () {
         let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
         let permissionName2 = 'ohos.permission.READ_MEDIA';
         let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-        permissionNameList = [permissionName1, permissionName2, permissionName3];
+        let permissionNameList = [permissionName1, permissionName2, permissionName3];
         let appName = 'ohos.acts.multimedia.audio.audiodecoder';
         await mediaTestBase.applyPermission(appName, permissionNameList);
         console.info('beforeAll case after get permission');
