@@ -130,7 +130,8 @@ describe('FileIOError', function () {
     } 
     catch (err) {
       console.info('fileio_test_error_004 has failed for ' + err);
-      expect(isInclude(err.message, 'Symbolic link loop') || isInclude(err.message, 'Too many symbolic links encountered')).assertTrue();
+      expect(isInclude(err.message, 'Symbolic link loop') || 
+        isInclude(err.message, 'Too many symbolic links encountered')).assertTrue();
       fileio.unlinkSync(fpath);
       fileio.unlinkSync(ffpath);
       done();
