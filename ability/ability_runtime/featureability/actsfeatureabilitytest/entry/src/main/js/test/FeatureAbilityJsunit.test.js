@@ -25,22 +25,22 @@ const CREATELOCALDIR = "/data/storage/el2/base/haps/entry";
 const START_ABILITY_TIMEOUT = 4000;
 const TERMINATE_ABILITY_TIMEOUT = 1000;
 const TIMEOUT = 1000;
-var subscriberInfo_ACTS_StartAbility_0100 = {
+var subscriberInfoActsStartAbility0100 = {
     events: ["ACTS_StartAbility_0100_CommonEvent"],
 };
-var subscriberInfo_ACTS_StartAbility_0200 = {
+var subscriberInfoActsStartAbility0200 = {
     events: ["ACTS_StartAbility_0200_CommonEvent"],
 };
-var subscriberInfo_ACTS_StartAbility_0300 = {
+var subscriberInfoActsStartAbility0300 = {
     events: ["ACTS_StartAbility_0300_CommonEvent"],
 };
-var subscriberInfo_ACTS_StartAbility_0400 = {
+var subscriberInfoActsStartAbility0400 = {
     events: ["ACTS_StartAbility_0400_CommonEvent"],
 };
-var subscriberInfo_ACTS_StartAbility_0500 = {
+var subscriberInfoActsStartAbility0500 = {
     events: ["ACTS_StartAbility_0500_CommonEvent"],
 };
-var subscriberInfo_ACTS_StartAbility_0600 = {
+var subscriberInfoActsStartAbility0600 = {
     events: ["ACTS_StartAbility_0600_CommonEvent"],
 };
 var subscriberInfoStartAbilityTen = {
@@ -49,36 +49,11 @@ var subscriberInfoStartAbilityTen = {
 var subscriberInfoStartAbilityThirteen = {
     events: ["ACTS_StartAbility_1300_CommonEvent"],
 };
-var subscriberInfo_ACTS_StartAbilityForResult_0100 = {
-    events: ["ACTS_StartAbilityForResult_0100_CommonEvent"],
-};
-var subscriberInfo_ACTS_StartAbilityForResult_0200 = {
-    events: ["ACTS_StartAbilityForResult_0200_CommonEvent"],
-};
-var subscriberInfo_ACTS_StartAbilityForResult_0300 = {
-    events: ["ACTS_StartAbilityForResult_0300_CommonEvent"],
-};
-var subscriberInfo_ACTS_StartAbilityForResult_0400 = {
-    events: ["ACTS_StartAbilityForResult_0400_CommonEvent"],
-};
-var subscriberInfo_ACTS_StartAbilityForResult_0500 = {
-    events: ["ACTS_StartAbilityForResult_0500_CommonEvent"],
-};
-var subscriberInfoStartAbilityForResultSix = {
-    events: ["ACTS_StartAbilityForResult_0600_CommonEvent"],
-};
-var subscriberInfo_ACTS_TerminateAbility_0100 = {
-    events: ["ACTS_TerminateAbility_0100_CommonEvent",
-        "ACTS_TerminateAbility_0100_Return"],
-};
 var subscriberInfoTerminateAbilityTwo = {
     events: ["ACTS_TerminateAbility_0200_CommonEvent",
         "ACTS_TerminateAbility_0200_Return"],
 };
-var subscriberInfo_ACTS_FinishWithResult_0100 = {
-    events: ["ACTS_FinishWithResult_0100_CommonEvent"],
-};
-var subscriberInfo_ACTS_GetCallingBundle_0100 = {
+var subscriberInfoActsGetCallingBundle0100 = {
     events: ["ACTS_GetCallingBundle_0100_CommonEvent",
         "com.example.actsfeatureabilitytest.promise",
         "com.example.actsfeatureabilitytest.callback"],
@@ -470,8 +445,10 @@ describe('ActsFeatureAbilityTest', function () {
         expect(wantconstant.Action.ACTION_DIAL).assertEqual("ohos.want.action.dial");
         expect(wantconstant.Action.ACTION_SEARCH).assertEqual("ohos.want.action.search");
         expect(wantconstant.Action.ACTION_WIRELESS_SETTINGS).assertEqual("ohos.settings.wireless");
-        expect(wantconstant.Action.ACTION_MANAGE_APPLICATIONS_SETTINGS).assertEqual("ohos.settings.manage.applications");
-        expect(wantconstant.Action.ACTION_APPLICATION_DETAILS_SETTINGS).assertEqual("ohos.settings.application.details");
+        expect(wantconstant.Action.ACTION_MANAGE_APPLICATIONS_SETTINGS)
+        .assertEqual("ohos.settings.manage.applications");
+        expect(wantconstant.Action.ACTION_APPLICATION_DETAILS_SETTINGS)
+        .assertEqual("ohos.settings.application.details");
         expect(wantconstant.Action.ACTION_SET_ALARM).assertEqual("ohos.want.action.setAlarm");
         expect(wantconstant.Action.ACTION_SHOW_ALARMS).assertEqual("ohos.want.action.showAlarms");
         expect(wantconstant.Action.ACTION_SNOOZE_ALARM).assertEqual("ohos.want.action.snoozeAlarm");
@@ -620,7 +597,7 @@ describe('ActsFeatureAbilityTest', function () {
             done();
         }
 
-        commonEvent.createSubscriber(subscriberInfo_ACTS_StartAbility_0100).then(async (data) => {
+        commonEvent.createSubscriber(subscriberInfoActsStartAbility0100).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
@@ -702,7 +679,7 @@ describe('ActsFeatureAbilityTest', function () {
             done();
         }
 
-        commonEvent.createSubscriber(subscriberInfo_ACTS_StartAbility_0200).then(async (data) => {
+        commonEvent.createSubscriber(subscriberInfoActsStartAbility0200).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
@@ -796,7 +773,7 @@ describe('ActsFeatureAbilityTest', function () {
             done();
         }
 
-        commonEvent.createSubscriber(subscriberInfo_ACTS_StartAbility_0300).then(async (data) => {
+        commonEvent.createSubscriber(subscriberInfoActsStartAbility0300).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
@@ -878,7 +855,7 @@ describe('ActsFeatureAbilityTest', function () {
             done();
         }
 
-        commonEvent.createSubscriber(subscriberInfo_ACTS_StartAbility_0400).then(async (data) => {
+        commonEvent.createSubscriber(subscriberInfoActsStartAbility0400).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
@@ -963,7 +940,7 @@ describe('ActsFeatureAbilityTest', function () {
             done();
         }
 
-        commonEvent.createSubscriber(subscriberInfo_ACTS_StartAbility_0500).then(async (data) => {
+        commonEvent.createSubscriber(subscriberInfoActsStartAbility0500).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
@@ -1059,7 +1036,7 @@ describe('ActsFeatureAbilityTest', function () {
             done();
         }
 
-        commonEvent.createSubscriber(subscriberInfo_ACTS_StartAbility_0600).then(async (data) => {
+        commonEvent.createSubscriber(subscriberInfoActsStartAbility0600).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
@@ -1787,7 +1764,7 @@ describe('ActsFeatureAbilityTest', function () {
             }
         }
 
-        commonEvent.createSubscriber(subscriberInfo_ACTS_GetCallingBundle_0100).then(async (data) => {
+        commonEvent.createSubscriber(subscriberInfoActsGetCallingBundle0100).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
