@@ -14,14 +14,14 @@
  */
 
 #include <gtest/gtest.h>
-#include "hilog/hilog.h"
-#include "file_utils.h"
+#include "hilog/log.h"
 
 #undef LOG_DOMAIN
 #undef LOG_TAG
 #define LOG_DOMAIN 0xD003e00
 
 using namespace std;
+using namespace testing::ext;
 
 class hilogndktest : public testing::Test {
 public:
@@ -29,8 +29,20 @@ public:
     static void TearDownTestCase();
     void SetUp();
     void TearDown();
-}
+};
 
+void hilogndktest::SetUp()
+{
+}
+void hilogndktest::TearDown()
+{
+}
+void hilogndktest::SetUpTestCase()
+{
+}
+void hilogndktest::TearDownTestCase()
+{
+}
 
 /**
  * @tc.number    : DFX_DFT_HILOGNDK_0100
@@ -41,8 +53,8 @@ HWTEST_F(hilogndktest, OH_LOG_Print_CHECK, Function | MediumTest | Level1)
 {
     LogType type = LOG_APP;
     LogLevel level = LOG_ERROR;
-    int ret = OH_LOG_Print(type, level, 0xD003e00, "%s", "for test");
-    ASSERT_TRUE(ret == 0);
+    int ret = OH_LOG_Print(type, level, 0xD003e00, "testtag0testtag1testtag2", "string:for hilog test %{private}s", "name");
+    ASSERT_TRUE(ret == 85);
 }
 
 /**
@@ -53,7 +65,7 @@ HWTEST_F(hilogndktest, OH_LOG_Print_CHECK, Function | MediumTest | Level1)
 HWTEST_F(hilogndktest, OH_LOG_IsLoggable_CHECK, Function | MediumTest | Level1)
 {
     LogLevel level = LOG_DEBUG;
-    string LOG_TAG = "testtag0testtag0testtag0testta";
+    const char *LOG_TAG = "testtag0testtag0testtag0testta";
     bool res = OH_LOG_IsLoggable(0xD003e00, LOG_TAG, level);
     ASSERT_TRUE(res == false);
 }
