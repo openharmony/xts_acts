@@ -18,7 +18,7 @@ import {describe, beforeEach, afterEach, it, expect} from "deccjsunit/index";
 import Utils from './Utils';
 
 export default function ContextJsunit() {
-  describe('appInfoTest', function () {
+  describe('faContextTest', function () {
     beforeEach(async function (done) {
       console.info("context before each called");
       done()

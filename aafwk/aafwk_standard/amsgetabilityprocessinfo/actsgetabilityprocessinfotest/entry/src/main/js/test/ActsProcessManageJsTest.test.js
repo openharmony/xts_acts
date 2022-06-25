@@ -18,34 +18,17 @@ import appManager from '@ohos.application.appManager'
 
 describe('ActsAbilityRunningInfosTest', function () {
 
-
-    function checkRunningAbility(name, dataInfo) {
-        for (let i = 0, len = dataInfo.length; i < len; i++) {
-            if (dataInfo[i].ability.abilityName == name) {
-                expect(dataInfo[i].ability.deviceId).assertEqual("");
-                expect(dataInfo[i].ability.uri).assertEqual(undefined);
-                expect(dataInfo[i].ability.ability).assertEqual(undefined);
-                expect(dataInfo[i].uid).assertLarger(10000);
-                expect(dataInfo[i].pid).assertLarger(500);
-                expect(dataInfo[i].startTime).assertLarger(3000);
-                expect(dataInfo[i].abilityState).assertLarger(0);
-                return true;
-            }
-        }
-        return false;
-    }
-
     function checkRunningProcess(name, dataInfo) {
         for (let i = 0, len = dataInfo.length; i < len; i++) {
             if (dataInfo[i].processName == name) {
-                expect(dataInfo[i].uid).assertLarger(2000);
-                expect(dataInfo[i].pid).assertLarger(500);
+                expect(dataInfo[i].uid).assertLarger(0);
+                expect(dataInfo[i].pid).assertLarger(0);
                 return true;
             }
         }
         return false;
     }
-
+    
     /*
     * @tc.number: ACTS_getProcessRunningInfos_0100
     * @tc.name: Application running ability information query
@@ -70,7 +53,7 @@ describe('ActsAbilityRunningInfosTest', function () {
         console.log('ACTS_getProcessRunningInfos_0200====<begin');
         appManager.getProcessRunningInfos((err, data) => {
             console.info('====> ACTS_getProcessRunningInfos_0200 ====>' + JSON.stringify(data))
-            expect(checkRunningProcess('com.ohos.launcher', data)).assertTrue();
+            expect(checkRunningProcess('com.example.abilityrunninginfostest', data)).assertTrue();
             done();
         })
     })

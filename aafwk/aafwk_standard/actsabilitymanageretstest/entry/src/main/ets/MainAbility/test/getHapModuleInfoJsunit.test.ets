@@ -17,7 +17,7 @@ import Utils from './Utils';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 
 export default function getHapModuleInfoJsunit() {
-  describe('appInfoTest', function () {
+  describe('getHapModuleInfoTest', function () {
     /**
      * @tc.number: context_getHapModuleInfo_test_0100
      * @tc.name: getHapModuleInfo:Obtains the HapModuleInfo object of the application.
