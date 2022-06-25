@@ -10,8 +10,8 @@
         {
             "test-file-name": [
                 "ActsLifecycleMultiHapTest.hap",
-                "ActsLifecycleMultiHap2Test.hap",
-                "ActsLifecycleMultiHap3Test.hap"
+                "ActsLifecycleMultiHap2.hap",
+                "ActsLifecycleMultiHap3.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

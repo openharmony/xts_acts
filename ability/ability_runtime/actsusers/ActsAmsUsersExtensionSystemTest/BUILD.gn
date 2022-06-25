@@ -15,6 +15,7 @@ import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("ActsAmsUsersExtensionSystemTest") {
   hap_profile = "entry/src/main/module.json"
+  js_build_mode = "debug"
   deps = [
     ":actsamsusersextensionsystemtest_js_assets",
     ":actsamsusersextensionsystemtest_resources",

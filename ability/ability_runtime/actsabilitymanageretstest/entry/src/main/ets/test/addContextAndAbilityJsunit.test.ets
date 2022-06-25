@@ -32,7 +32,7 @@ const TAG_TEST_0011 = ' context_featureAbility_test_0300 ';
 const TAG_TEST_0012 = ' context_featureAbility_test_0400 ';
 
 export default function addContextAndAbilityJsunit() {
-    describe('appInfoTest_ability_1', function () {
+    describe('addContextTest', function () {
         /*
      * @tc.number: context_isUpdatingConfigurations_test_0100
      * @tc.name: isUpdatingConfigurations : Obtains whether the configuration of the current ability is changing.
@@ -163,7 +163,7 @@ export default function addContextAndAbilityJsunit() {
                 })
             await Utils.sleep(2000)
             expect(typeof (detailed)).assertEqual("number");
-            expect(detailed).assertEqual(512);
+            expect(detailed).assertLarger(0);
             done();
             console.log('------------------ ' + TAG_TEST_0500 + ' end -------------------');
         });
@@ -183,7 +183,7 @@ export default function addContextAndAbilityJsunit() {
                 console.info(TAG_TEST_0600 + ' callBack error is: ' + JSON.stringify(error));
                 console.info(TAG_TEST_0600 + ' callBack data is:' + JSON.stringify(data));
                 expect(typeof (data)).assertEqual("number");
-                expect(data).assertEqual(512);
+                expect(data).assertLarger(0);
                 console.log('------------------ ' + TAG_TEST_0600 + ' end -------------------');
                 done();
             })
