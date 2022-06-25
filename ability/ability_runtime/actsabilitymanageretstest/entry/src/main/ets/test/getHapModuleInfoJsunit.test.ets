@@ -16,8 +16,10 @@ import {describe, it, expect} from 'hypium/index';
 import Utils from './Utils';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 
+
+
 export default function getHapModuleInfoJsunit() {
-  describe('appInfoTest_ability_6', function () {
+  describe('getHapModuleInfoTest', function () {
     /**
      * @tc.number: context_getHapModuleInfo_test_0100
      * @tc.name: getHapModuleInfo:Obtains the HapModuleInfo object of the application.
@@ -124,7 +126,8 @@ export default function getHapModuleInfoJsunit() {
       expect(data.backgroundImg).assertEqual("");
       expect(data.supportedModes).assertEqual(0);
       expect(data.deviceTypes[0]).assertEqual("phone");
-      checkAbilityInfo(msg,data.abilityInfos[0]);
+      console.info(msg + ' data.abilityInfos.length ' + data.abilityInfos.length)
+      checkAbilityInfo(msg, data.abilityInfos[0]);
       expect(data.moduleName).assertEqual("entry")
       expect(data.mainAbilityName).assertEqual("");
       expect(data.installationFree).assertEqual(false);
@@ -203,9 +206,9 @@ export default function getHapModuleInfoJsunit() {
       expect(typeof (data.defaultFormWidth)).assertEqual("number");
       expect(typeof (data.uri)).assertEqual("string");
       expect(data.bundleName).assertEqual("com.ohos.acecollaboration");
-      expect(data.name).assertEqual("com.ohos.acecollaboration.MainAbility");
-      expect(data.label).assertEqual("$string:entry_MainAbility");
-      expect(data.description).assertEqual("$string:mainability_description");
+      expect(data.name).assertEqual("com.ohos.acecollaboration.TestAbility");
+      expect(data.label).assertEqual("$string:TestAbility_label");
+      expect(data.description).assertEqual("$string:TestAbility_desc");
       expect(data.icon).assertEqual("$media:icon");
       expect(data.moduleName).assertEqual("entry");
       expect(data.process).assertEqual("");
@@ -228,6 +231,6 @@ export default function getHapModuleInfoJsunit() {
       expect(data.subType).assertEqual(0);
       console.log(msg+ "---checkAbilityInfo End---  ");
     }
-
   })
 }
+
