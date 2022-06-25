@@ -899,6 +899,7 @@ describe('Image', function () {
     it('modify_01_020', 0, async function (done) {
         modifyImageProperty_err_promise(done, "modify_01_020", "buffer", "GPSLongitudeRef", "1234")
     })
+
     /**
      * @tc.number    : modify_02_011
      * @tc.name      : modifyImageProperty-callback
@@ -1038,6 +1039,7 @@ describe('Image', function () {
     it('modify_02_020', 0, async function (done) {
         modifyImageProperty_err_cb(done, "modify_02_020", "buffer", "GPSLatitudeRef", "456")
     })
+
     /**
      * @tc.number    : modify_03_011
      * @tc.name      : modifyImageProperty()-callback
