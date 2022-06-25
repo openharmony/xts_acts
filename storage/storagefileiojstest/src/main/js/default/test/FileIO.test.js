@@ -495,16 +495,15 @@ describe('fileIOTest', function () {
    * @tc.name fileio_test_open_019
    * @tc.desc Function of API, flags=0o40002. mode=0o700
    */
-  it('fileio_test_open_019', 0, async function () {
+   it('fileio_test_open_019', 0, async function () {
     let fpath = await nextFileName('fileio_test_open_019');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       fileio.openSync(fpath, 0o40002, 0o700);
+      fileio.unlinkSync(fpath);
+    }catch (err) {
+      console.info('fileio_test_open_019 has failed for ' + err);
       expect(null).assertFail();
-    } 
-    catch (e) {
-      console.log('fileio_test_open_019 has failed for ' + e);
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
     }
   });
 
@@ -531,19 +530,17 @@ describe('fileIOTest', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_OpenSync_2200
    * @tc.name fileio_test_open_022
-   * @tc.desc Function of API, flags=0o200002.
+   * @tc.desc Function of API, flags=0o200000.
    */
   it('fileio_test_open_022', 0, async function () {
-    let fpath = await nextFileName('fileio_test_open_022');
-    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let dpath = await nextFileName('fileio_test_open_022') + 'd';
+    fileio.mkdirSync(dpath);
     try {
-      let fd = fileio.openSync(fpath, 0o200002);
-      expect(fd !== null).assertTrue();
-      expect(fileio.closeSync(fd) !== null).assertTrue();
-      expect(fileio.unlinkSync(fpath) !== null).assertTrue();
-    } 
-    catch (e) {
-      console.log('fileio_test_open_022 has failed for ' + e);
+      fileio.openSync(dpath, 0o200000, 0o666);
+      fileio.rmdirSync(dpath);
+    }
+    catch (err) {
+      console.info('fileio_test_open_022 has failed for ' + err);
       expect(null).assertFail();
     }
   });
