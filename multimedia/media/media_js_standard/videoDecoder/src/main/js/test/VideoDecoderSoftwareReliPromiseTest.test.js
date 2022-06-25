@@ -109,6 +109,7 @@ describe('VideoDecoderSoftwareReliPromiseTest', function () {
         }
         await router.clear().then(() => {
         }, failCallback).catch(failCatch);
+        await fileio.close(fdRead);
     })
 
     afterAll(async function() {
@@ -165,11 +166,11 @@ describe('VideoDecoderSoftwareReliPromiseTest', function () {
         let lengthReal = -1;
         try {
             if (pos == -1) {
-                lengthReal = readStreamSync.readSync(buf, {
+                lengthReal = fileio.readSync(fdRead, buf, {
                     length: len,
                 });
             } else {
-                lengthReal = readStreamSync.readSync(buf, {
+                lengthReal = fileio.readSync(fdRead, buf, {
                     length: len,
                     position: pos,
                 });
@@ -330,7 +331,6 @@ describe('VideoDecoderSoftwareReliPromiseTest', function () {
                     toStart(mySteps, done, callbackExpectFail, failCatch);
                 } else {
                     readStreamSync = undefined;
-                    readFile(SRCPATH);
                     frameCountIn = 0;
                     frameCountOut = 0;
                     inputQueue = [];

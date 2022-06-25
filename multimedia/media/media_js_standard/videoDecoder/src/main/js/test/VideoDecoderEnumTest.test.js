@@ -99,7 +99,7 @@ describe('VideoDecoderEnum', function () {
     function getContent(buf, len) {
         console.info("case start get content");
         let lengthreal = -1;
-        lengthreal = readStreamSync.readSync(buf,{length:len});
+        lengthreal = fileio.readSync(fdRead, buf, {length:len});
         console.info('case lengthreal is :' + lengthreal);
     }
 
@@ -250,7 +250,6 @@ describe('VideoDecoderEnum', function () {
     async function toConfigure(mediaDescription, srcPath) {
         await videoDecodeProcessor.configure(mediaDescription).then(() =>{
             console.info('in case : configure success');
-            readFile(srcPath);
         }, failCallback).catch(failCatch);
     }
     async function setSurfaceID(done) {
