@@ -13,15 +13,20 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAmsNewWantARelyHap") {
+ohos_hap("ActsAmsNewWantARelyHap") {
   hap_profile = "entry/src/main/module.json"
+  js_build_mode = "debug"
+  hap_name = "ActsAmsNewWantARelyHap"
+  subsystem_name = XTS_SUITENAME
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  testonly = true
   deps = [
     ":actsnewwantarelyhap_js_assets",
     ":actsnewwantarelyhap_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsAmsNewWantARelyHap"
 }
 
 ohos_app_scope("actsnewwantarelyhap_app_profile") {
