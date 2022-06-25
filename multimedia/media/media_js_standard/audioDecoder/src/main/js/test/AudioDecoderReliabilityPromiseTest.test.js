@@ -271,6 +271,7 @@ describe('AudioDecoderReliabilityPromise', function () {
                 audioDecodeProcessor = null;
             }, failCallback).catch(failCatch);
         }
+        await fileio.close(fdRead);
     })
 
     afterAll(async function() {
@@ -327,6 +328,12 @@ describe('AudioDecoderReliabilityPromise', function () {
         })
     }
 
+    async function closeFdRead() {
+        await fileio.close(fdRead).then(() => {
+            console.info('[fileio] case close fdRead success, fd is ' + fdRead);
+        }, failCallback).catch(failCatch);
+    }
+
     function readFile(path) {
         console.info('case read file start execution');
         try{
@@ -340,7 +347,7 @@ describe('AudioDecoderReliabilityPromise', function () {
     function getContent(buf, len) {
         console.info("case start get content");
         let lengthreal = -1;
-        lengthreal = readStreamSync.readSync(buf,{length:len});
+        lengthreal = fileio.readSync(fdRead, buf, {length:len});
         console.info('case lengthreal is :' + lengthreal);
     }
 
@@ -381,7 +388,6 @@ describe('AudioDecoderReliabilityPromise', function () {
                 console.info(`case to configure`);
                 audioDecodeProcessor.configure(mediaDescription).then(() => {
                     console.info(`case configure 1`);
-                    readFile(AUDIOPATH);
                     nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
@@ -399,7 +405,6 @@ describe('AudioDecoderReliabilityPromise', function () {
                 if (sawOutputEOS) {
                     resetParam();
                     await getFdRead(AUDIOPATH, done);
-                    readFile(AUDIOPATH);
                     workdoneAtEOS = true;
                     enqueueAllInputs(inputQueue);
                 }
@@ -418,7 +423,6 @@ describe('AudioDecoderReliabilityPromise', function () {
                     if (flushAtEOS) {
                         await getFdRead(AUDIOPATH, done);
                         resetParam();
-                        readFile(AUDIOPATH);
                         workdoneAtEOS = true;
                         flushAtEOS = false;
                     }
