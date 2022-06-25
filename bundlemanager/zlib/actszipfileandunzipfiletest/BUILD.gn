@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("actszipfileandunzipfiletest") {
+ohos_hap_assist_suite("actszipfileandunzipfiletest") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":hjs_demo_js_assets",
@@ -21,6 +21,8 @@ ohos_js_hap_suite("actszipfileandunzipfiletest") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsZipFileAndUnzipFileTest"
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./entry/src/main/js/default"
