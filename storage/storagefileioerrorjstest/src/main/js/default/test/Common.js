@@ -46,17 +46,6 @@ export async function fileName(testName) {
   return BASE_PATH + testName
 }
 
-export function randomString(num) {
-  let len= num;
-  var $chars = 'aaaabbbbcccc';
-  var maxPos = $chars.length;
-  var pwd = '';
-  for (var i = 0; i < len; i++) {
-    pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-  }
-  return pwd;
-}
-
 export function isIntNum(val) {
   return typeof val === 'number' && val % 1 === 0;
 }
