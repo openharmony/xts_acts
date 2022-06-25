@@ -11,15 +11,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
+import("//test/xts/tools/build/suite.gni")
 
-group("startup_standard") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "deviceinfo:startup_deviceinfo_js_test",
-      "syscap_ndk:startup_syscapability_js_test",
-      "systemparamter:startup_sysparam_js_test",
-    ]
-  }
+ohos_js_hap_suite("startup_syscapability_js_test") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":startup_js_assets",
+    ":startup_js_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsStartupSysCapabilityTest"
+}
+ohos_js_assets("startup_js_assets") {
+  source_dir = "./src/main/js/default"
+}
+ohos_resources("startup_js_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }
