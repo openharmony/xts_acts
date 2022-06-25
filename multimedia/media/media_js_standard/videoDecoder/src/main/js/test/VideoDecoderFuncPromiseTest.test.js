@@ -125,6 +125,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
         }
         await router.clear().then(() => {
         }, failCallback).catch(failCatch);
+        await fileio.close(fdRead);
     })
 
     afterAll(function() {
@@ -174,7 +175,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
         console.info("case start get content");
         console.info("case start get content length is: " + len);
         let lengthreal = -1;
-        lengthreal = readStreamSync.readSync(buf,{length:len});
+        lengthreal = fileio.readSync(fdRead, buf, {length:len});
         console.info('case lengthreal is :' + lengthreal);
     }
 
@@ -288,7 +289,6 @@ describe('VideoDecoderFuncPromiseTest', function () {
     async function toConfigure(mediaDescription, srcPath) {
         await videoDecodeProcessor.configure(mediaDescription).then(() =>{
             console.info('in case : configure success');
-            readFile(srcPath);
         }, failCallback).catch(failCatch);
     }
     async function toSetOutputSurface(isDisplay) {
