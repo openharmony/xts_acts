@@ -467,6 +467,23 @@ export default function responseCodeJsunit() {
       }
     });
 
+    /**
+       * @tc.number Telephony_Http_ResponseCode_VERSION_0100
+       * @tc.name ResponseCode::VERSION
+       * @tc.desc Test Test ResponseCode property.
+       */
+
+    it("Telephony_Http_ResponseCode_VERSION_0100", 0, async function (done) {
+      console.log("-----------------------ResponseCode VERSION Test is starting-----------------------");
+      try {
+        expect(505).assertEqual(http.ResponseCode.VERSION);
+        console.log("-----------------------ResponseCode VERSION Test end-----------------------");
+        done();
+      } catch (error) {
+        console.log("Telephony_Http_ResponseCode_VERSION_0100 : error = " + error);
+        done();
+      }
+    });
 
     /**
      * @tc.number Telephony_Http_ResponseCode_CREATED_0100
@@ -486,6 +503,22 @@ export default function responseCodeJsunit() {
       }
     });
 
+    /**
+    * @tc.number Telephony_Http_ResponseCode_RESET_0100
+    * @tc.name ResponseCode::RESET
+    * @tc.desc Test Test ResponseCode property.
+    */
+    it("Telephony_Http_ResponseCode_RESET_0100", 0, async function (done) {
+      console.log("-----------------------ResponseCode RESET Test is starting-----------------------");
+      try {
+        expect(205).assertEqual(http.ResponseCode.RESET);
+        console.log("-----------------------ResponseCode RESET Test end-----------------------");
+        done();
+      } catch (error) {
+        console.log("Telephony_Http_ResponseCode_RESET_0100 : error = " + error);
+        done();
+      }
+    });
 
     /**
      * @tc.number Telephony_Http_ResponseCode_PARTIAL_0100
@@ -524,6 +557,23 @@ export default function responseCodeJsunit() {
       }
     });
 
+    /**
+     * @tc.number Telephony_Http_ResponseCode_FORBIDDEN_0100
+     * @tc.name ResponseCode::FORBIDDEN
+     * @tc.desc Test Test ResponseCode property.
+     */
+
+    it("Telephony_Http_ResponseCode_FORBIDDEN_0100", 0, async function (done) {
+      console.log("-----------------------ResponseCode FORBIDDEN Test is starting-----------------------");
+      try {
+        expect(403).assertEqual(http.ResponseCode.FORBIDDEN);
+        console.log("-----------------------ResponseCode FORBIDDEN Test end-----------------------");
+        done();
+      } catch (error) {
+        console.log("Telephony_Http_ResponseCode_FORBIDDEN_0100 : error = " + error);
+        done();
+      }
+    });
 
     /**
      * @tc.number Telephony_Http_ResponseCode_NOT_FOUND_0100
