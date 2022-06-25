@@ -262,6 +262,7 @@ describe('VideoDecoderFormatPromise', function () {
             videoDecodeProcessor = null;
         }
         await router.clear();
+        await fileio.close(fdRead);
     })
 
     afterAll(function() {
@@ -313,7 +314,7 @@ describe('VideoDecoderFormatPromise', function () {
         console.info("case start get content");
         console.info("case start get content length is: " + len);
         let lengthreal = -1;
-        lengthreal = readStreamSync.readSync(buf,{length:len});
+        lengthreal = fileio.readSync(fdRead, buf,{length:len});
         console.info('case lengthreal is :' + lengthreal);
     }
 
@@ -456,7 +457,6 @@ describe('VideoDecoderFormatPromise', function () {
 
         await videoDecodeProcessor.configure(mediaDescription).then(() =>{
             console.info('in case : configure success');
-            readFile(srcPath);
         }, failCallback).catch(failCatch);
 
         await videoDecodeProcessor.setOutputSurface(surfaceID, true).then(() => {
