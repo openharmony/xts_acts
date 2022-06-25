@@ -124,7 +124,7 @@ describe('ImageCreator', function () {
             creator.dequeueImage().then(img => {
                 if (img == undefined) {
                     expect(false).assertTrue();
-                    done()
+                    done();
                 } else {
                     img.getComponent(JPEG, (err, component) => {
                         if (err) {
@@ -343,7 +343,7 @@ describe('ImageCreator', function () {
         } else {
             expect(false).assertTrue();
             console.info('Creator_002 finished');
-            done()
+            done();
         }
     })
 
@@ -373,7 +373,7 @@ describe('ImageCreator', function () {
         } else {
             expect(false).assertTrue();
             console.info('Creator_003 finished');
-            done()
+            done();
         }
     })
 
@@ -402,7 +402,7 @@ describe('ImageCreator', function () {
         } else {
             expect(false).assertTrue();
             console.info('Creator_004 finished');
-            done()
+            done();
         }
     })
 
@@ -422,7 +422,7 @@ describe('ImageCreator', function () {
             creator.dequeueImage((err, img) => {
                 if (err) {
                     expect(false).assertTrue();
-                    done()
+                    done();
                 } else {
                     console.info('Creator_005 dequeueImage call back Success');
                     expect(img != undefined).assertTrue();
@@ -432,7 +432,7 @@ describe('ImageCreator', function () {
         } else {
             expect(false).assertTrue();
             console.info('Creator_005 finished');
-            done()
+            done();
         }
     })
 
@@ -453,13 +453,12 @@ describe('ImageCreator', function () {
             creator.dequeueImage().then(img => {
                 if (img == undefined) {
                     expect(false).assertTrue();
-                    done()
-                    return;
+                    done();
                 } else {
                     img.getComponent(JPEG, (err, component) => {
                         if (err) {
                             expect(false).assertTrue();
-                            done()
+                            done();
                         } else {
                             expect(component.componentType == JPEG).assertTrue();
                             expect(component.byteBuffer != undefined).assertTrue();
@@ -490,7 +489,7 @@ describe('ImageCreator', function () {
         } else {
             expect(false).assertTrue();
             console.info('Creator_006 createImageCreator failed');
-            done()
+            done();
         }
     })
 
@@ -563,7 +562,7 @@ describe('ImageCreator', function () {
             creator.dequeueImage((err, img) => {
                 if (img == undefined) {
                     expect(false).assertTrue();
-                    done()
+                    done();
                 } else {
                     img.getComponent(JPEG, (err, component) => {
                         if (err) {
@@ -672,7 +671,7 @@ describe('ImageCreator', function () {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY)
         expect(creator != undefined).assertTrue();
         if (creator == undefined) {
-            done()
+            done();
             return;
         }
         creator.on('imageRelease', () => {
@@ -685,13 +684,11 @@ describe('ImageCreator', function () {
             if (img == undefined) {
                 expect(false).assertTrue();
                 done();
-                return;
             }else{
                 img.getComponent(JPEG, (err, component) => {
                     if (component == undefined) {
                         expect(false).assertTrue();
                         done();
-                        return;
                     }else{
                         expect(component.componentType == JPEG).assertTrue();
                         expect(component.byteBuffer != undefined).assertTrue();
