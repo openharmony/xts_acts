@@ -17,7 +17,7 @@ import Utils from './Utils';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 
 export default function getHapModuleInfoJsunit() {
-  describe('appInfoTest', function () {
+  describe('getAppVersionInfoTest', function () {
     /**
      * @tc.number: context_getAppVersionInfo_test_0100
      * @tc.name: getAppVersionInfo:Gets the version information for the application.
@@ -83,7 +83,7 @@ export default function getHapModuleInfoJsunit() {
       expect(typeof (data.appName)).assertEqual("string");
       expect(typeof (data.versionCode)).assertEqual("number");
       expect(typeof (data.versionName)).assertEqual("string");
-      expect(data.appName).assertEqual("");
+      expect(data.appName).assertEqual("com.ohos.acecollaboration");
       expect(data.versionCode).assertEqual(1000000);
       expect(data.versionName).assertEqual("1.0.0");
       console.log(msg + "---checkAppVersionInfo End--- ");

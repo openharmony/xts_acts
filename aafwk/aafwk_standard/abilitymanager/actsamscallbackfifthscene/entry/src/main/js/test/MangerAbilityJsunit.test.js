@@ -16,28 +16,6 @@ import featureAbility from '@ohos.ability.featureAbility'
 import appManager from "@ohos.application.appManager"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-let abilityNameList = [
-    "com.ohos.launcher.MainAbility",
-    "com.ohos.callui.ServiceAbility",
-    "com.example.SimulateFeatureAbilityFir",
-    "com.example.VerifyIoThirdAbility",
-    "com.example.SimulateFeatureAbilitySed",
-    "com.example.actsamscallbackfifthscene.MainAbility"
-]
-
-let bundleNameList = [
-    "com.ohos.launcher",
-    "com.ohos.systemui",
-    "com.ohos.callui",
-    "com.ohos.contacts",
-    "com.ohos.mms",
-    "com.ohos.telephonydataability",
-    "com.ohos.contactsdataability",
-    "com.ix.simulate.feature",
-    "com.ix.verify.io",
-    "com.example.actsamscallbackfifthscene"
-]
-
 describe('ActsAmsCallBackFifthScene', function () {
     console.info('----ActsAmsCallBackFifthScene----');
     beforeAll(async function (done) {
