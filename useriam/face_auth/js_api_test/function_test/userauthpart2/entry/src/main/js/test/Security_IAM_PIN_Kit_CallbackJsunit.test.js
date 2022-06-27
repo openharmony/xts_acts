@@ -13,120 +13,11 @@
  * limitations under the License.
  */
 
-
 import {describe, it, expect} from 'deccjsunit/index'
-import userAuth from '@ohos.userAuth'
-import userIDM from '@ohos.userIDM'
-import pinAuth from '@ohos.pinAuth'
 import userAuthNorth from '@ohos.userIAM.userAuth'
-import * as publicFC from './Publicfunction-n'
 
-
-let UserIDM = new userIDM.UserIdentityManager();
-let PinAuth = new pinAuth.PINAuth();
-let UserAuth = new userAuth.UserAuth();
 let UserAuthKit = new userAuthNorth.UserAuth()
 
-let AuthType = {
-    PIN: 1,
-    FACE: 2
-}
-let AuthSubType = {
-    PIN_SIX: 10000,
-    PIN_NUMBER: 10001,
-    PIN_MIXED: 10002,
-    FACE_2D: 20000,
-    FACE_3D: 20001
-}
-let AuthTurstLevel = {
-    ATL1: 10000,
-    ATL2: 20000,
-    ATL3: 30000,
-    ATL4: 40000
-}
-
-let SetPropertyType = {
-    PROCESS_ALGORITHM: 1,
-}
-
-let userID = {
-    User1: 100,
-    User2: 2,
-    User3: 3,
-    User4: 4,
-    User5: 5
-}
-
-let ResultCode = {
-    SUCCESS: 0,
-    FAIL: 1,
-    GENERAL_ERROR: 2,
-    CANCELED: 3,
-    TIMEOUT: 4,
-    TYPE_NOT_SUPPORT: 5,
-    TRUST_LEVEL_NOT_SUPPORT: 6,
-    BUSY: 7,
-    INVALID_PARAMETERS: 8,
-    LOCKED: 9,
-    NOT_ENROLLED: 10,
-    Authfail: 14
-}
-
-let GetPropertyType = {
-    AUTH_SUB_TYPE: 1,
-    REMAIN_TIMES: 2,
-    FREEZING_TIME: 3
-}
-
-let Inputerdata = new Uint8Array([1, 2, 3, 4, 5, 6]);
-let Inputerdatan = new Uint8Array([1, 1, 1, 1, 1, 1]);
-let Inputerdatanum = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8]);
-let Inputerdatanumn = new Uint8Array([1, 1, 1, 1, 1, 1, 1, 1]);
-let Inputerdatamix = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-let Inputerdatamixn = new Uint8Array([1, 1, 1, 1, 1, 1, 1, 1, 1]);
-
-let GetPropertyTypearray = new Array();
-GetPropertyTypearray[0] = GetPropertyType.AUTH_SUB_TYPE;
-GetPropertyTypearray[1] = GetPropertyType.FREEZING_TIME;
-GetPropertyTypearray[2] = GetPropertyType.REMAIN_TIMES;
-
-let GetPropertyRequestpin = {
-    authType: AuthType.PIN,
-    keys: GetPropertyTypearray
-}
-
-let GetPropertyRequestface = {
-    authType: AuthType.FACE,
-    keys: GetPropertyTypearray
-}
-
-let CredentialInfopinsix = {
-    credType: AuthType.PIN,
-    credSubType: AuthSubType.PIN_SIX,
-    token: null
-}
-
-let CredentialInfopinnum = {
-    credType: AuthType.PIN,
-    credSubType: AuthSubType.PIN_NUMBER,
-    token: null
-}
-
-let CredentialInfopinmix = {
-    credType: AuthType.PIN,
-    credSubType: AuthSubType.PIN_MIXED,
-    token: null
-}
-
-let CredentialInfoface2d = {
-    credType: AuthType.FACE,
-    credSubType: AuthSubType.FACE_2D,
-    token: null
-}
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 describe('userauthTest', function () {
 
@@ -160,54 +51,60 @@ describe('userauthTest', function () {
     it('Security_IAM_PIN_Kit_Func_0102', 0, async function (done) {
         console.info('testFace GetAvailabeStatusTest0101 start');
         try {
-            publicFC.publicRegisterInputer(PinAuth,AuthSubType.PIN_SIX,Inputerdata)
-            publicFC.publicOpenSession(UserIDM,function(data){
-                let challenge = data
-                publicFC.publicaddCredential(UserIDM,CredentialInfopinsix,
-                    function(onresult) {
-                        console.info('testFace GetAvailabeStatusTest0101 addCredresult=' + onresult.addCredresult);
-                        console.log("testFace GetAvailabeStatusTest0101 authUser result = " + onresult.addCredresult);
-                        let Available;
-						Available = publicFC.publicgetAvailabeStatus(UserAuthKit,AuthType.PIN,AuthTurstLevel.ATL1)
-                        console.info('testFace GetAvailabeStatusTest0101 AvailabeStatus1 = ' + Available);
-                        console.info('testFace GetAvailabeStatusTest0101 ResultCode.SUCCESS = ' + ResultCode.SUCCESS);
-                        expect(ResultCode.SUCCESS).assertEqual(Available);
-                        Available = publicFC.publicgetAvailabeStatus(UserAuthKit,AuthType.PIN,AuthTurstLevel.ATL2)
-                        console.info('testFace GetAvailabeStatusTest0101 AvailabeStatus2 = ' + Available);
-                        console.info('testFace GetAvailabeStatusTest0101 ResultCode.SUCCESS = ' + ResultCode.SUCCESS);
-                        expect(ResultCode.SUCCESS).assertEqual(Available);
-                        Available = publicFC.publicgetAvailabeStatus(UserAuthKit,AuthType.PIN,AuthTurstLevel.ATL3)
-                        console.info('testFace GetAvailabeStatusTest0101 AvailabeStatus3 = ' + Available);
-                        console.info('testFace GetAvailabeStatusTest0101 ResultCode.SUCCESS = ' + ResultCode.SUCCESS);
-                        expect(ResultCode.SUCCESS).assertEqual(Available);
-                        Available = publicFC.publicgetAvailabeStatus(UserAuthKit,AuthType.PIN,AuthTurstLevel.ATL4)
-                        console.info('testFace GetAvailabeStatusTest0101 AvailabeStatus4 = ' + Available);
-                        console.info('testFace GetAvailabeStatusTest0101 ResultCode.SUCCESS = ' + ResultCode.SUCCESS);
-                        expect(ResultCode.SUCCESS).assertEqual(Available);
-                        publicFC.publicauth(UserAuth,challenge,AuthType.PIN,AuthTurstLevel.ATL1,
-                            function(onresult) {
-                                console.info('testFace GetAvailabeStatusTest0101 publicauth = ' + onresult.authresult);
-                                let token = onresult.authextr.token
-                                publicFC.publicdelUser(UserIDM,token,function(onresult){
-                                    console.log("testFace GetAvailabeStatusTest0101 delUser="+ onresult.delUserresult)
-                                    publicFC.publicCloseSession(UserIDM,function(data){
-                                        console.log("testFace GetAvailabeStatusTest0101 CloseSession= " + data)
-                                        publicFC.publicunRegisterInputer(PinAuth,function(data){
-                                            done();
-                                        })
-                                    })
-                                },function(onacquireinfo){
-                                })
-                            }, function(onAcquireInfo) {
-                            }
-                        );
-                    }, function(onAcquireInfo) {
-                    });
-            })
+            let AvailabeStatus = null
+            AvailabeStatus = UserAuthKit.getAvailableStatus(userAuthNorth.UserAuthType.FACE,
+                userAuthNorth.AuthTrustLevel.ATL1);
+            console.info('testFace publicgetAvailableStatus result = ' + JSON.stringify(AvailabeStatus));
+            expect(6).assertEqual(AvailabeStatus);
+            done();
         } catch (e) {
             console.log("GetAvailabeStatusTest0101 fail " + e);
             expect(null).assertFail();
         }
+    })
+
+    /*
+    * @tc.number    : Security_IAM_PIN_Kit_Func_0103
+    * @tc.name      : Kit interface auth & cancel auth
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+    */
+    it('Security_IAM_PIN_Kit_Func_0103', 0, async function (done) {
+        let contextID1 = null
+        let challenge = [253, 19, 58, 160, 67, 200, 247, 37]
+        let onresult = {
+            authresult: null,
+            authextr: null,
+        }
+        let onacquireinfo = {
+            authmodule : null,
+            authacquire : null,
+            authextr : null
+        }
+        contextID1 = UserAuthKit.auth(challenge, userAuthNorth.UserAuthType.FACE,userAuthNorth.AuthTrustLevel.ATL1, {
+            onResult: function(result,extraInfo){
+                console.log("testFace faceDemo auth result = " + result);
+                onresult.authresult = result;
+                console.log("testFace faceDemo auth extraInfo = " + JSON.stringify(extraInfo));
+                onresult.authextr = extraInfo;
+                console.info('testFace publicauth auth onResult = ' + JSON.stringify(onresult));
+                expect(1).assertEqual(result);
+                console.info('testFace publicauth auth contextID1 = ' + contextID1);
+                let cancelResult = UserAuthKit.cancelAuth(contextID1);
+                console.info('testFace publicauth cancelResult = ' + cancelResult);
+                done();
+            },
+            onAcquireInfo: function (modulea,acquire,extr){
+                console.info('faceTest publicauth auth onAcquireInfo in');
+                onacquireinfo.authmodule = modulea;
+                onacquireinfo.authacquire = acquire;
+                onacquireinfo.authextr = extr;
+                console.log("testFace faceDemo auth module = " + JSON.stringify(modulea));
+                console.info('testFace publicauth auth onAcquireInfo = ' + JSON.stringify(onacquireinfo));
+            }
+        });
+
     })
 
     /*
