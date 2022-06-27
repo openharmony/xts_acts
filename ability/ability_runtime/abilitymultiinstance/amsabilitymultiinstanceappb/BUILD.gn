@@ -13,8 +13,9 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAmsAbilityMultiinstanceHapBRelyHap") {
+ohos_hap("ActsAmsAbilityMultiinstanceHapBRelyHap") {
   hap_profile = "entry/src/main/module.json"
+  js_build_mode = "debug"
   deps = [
     ":actsamsabilitymultiinstancehapb_js_assets",
     ":actsamsabilitymultiinstancehapb_resources",
@@ -22,6 +23,10 @@ ohos_js_hap_suite("ActsAmsAbilityMultiinstanceHapBRelyHap") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAmsAbilityMultiinstanceHapBRelyHap"
+  subsystem_name = XTS_SUITENAME
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  testonly = true
 }
 
 ohos_app_scope("actsamsabilitymultiinstancehapb_app_profile") {

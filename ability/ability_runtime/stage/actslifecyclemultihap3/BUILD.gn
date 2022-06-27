@@ -13,28 +13,33 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsLifecycleMultiHap2Test") {
+ohos_hap("ActsLifecycleMultiHap3") {
+  hap_name = "ActsLifecycleMultiHap3"
+  js_build_mode = "debug"
   hap_profile = "entry/src/main/module.json"
+  subsystem_name = XTS_SUITENAME
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  testonly = true
   deps = [
-    ":actslifecyclemultihap2test_js_assets",
-    ":actslifecyclemultihap2test_resources",
+    ":actslifecyclemultihap3_js_assets",
+    ":actslifecyclemultihap3_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsLifecycleMultiHap2Test"
 }
 
-ohos_app_scope("actslifecyclemultihap2test_app_profile") {
+ohos_app_scope("actslifecyclemultihap3_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
 
-ohos_js_assets("actslifecyclemultihap2test_js_assets") {
+ohos_js_assets("actslifecyclemultihap3_js_assets") {
   source_dir = "entry/src/main/ets"
 }
 
-ohos_resources("actslifecyclemultihap2test_resources") {
+ohos_resources("actslifecyclemultihap3_resources") {
   sources = [ "entry/src/main/resources" ]
-  deps = [ ":actslifecyclemultihap2test_app_profile" ]
+  deps = [ ":actslifecyclemultihap3_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }

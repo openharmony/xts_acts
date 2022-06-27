@@ -17,8 +17,8 @@ group("stage") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actslifecyclemultihap2test:ActsLifecycleMultiHap2Test",
-      "actslifecyclemultihap3test:ActsLifecycleMultiHap3Test",
+      "actslifecyclemultihap2:ActsLifecycleMultiHap2",
+      "actslifecyclemultihap3:ActsLifecycleMultiHap3",
       "actslifecyclemultihaptest:ActsLifecycleMultiHapTest",
       "actslifecyclesinglehaptest:ActsLifecycleSingleHapTest",
     ]

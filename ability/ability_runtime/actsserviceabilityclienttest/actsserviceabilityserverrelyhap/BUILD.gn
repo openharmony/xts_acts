@@ -15,6 +15,7 @@ import("//test/xts/tools/build/suite.gni")
 
 ohos_hap("ActsServiceAbilityServerRelyHap") {
   hap_name = "ActsServiceAbilityServerRelyHap"
+  js_build_mode = "debug"
   hap_profile = "entry/src/main/config.json"
   subsystem_name = XTS_SUITENAME
   final_hap_path =
