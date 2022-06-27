@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,7 +16,7 @@
 import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-import {tc_184_buf2} from './modifyBuffer'
+import {modifyBuf} from './modifyBuffer'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 
@@ -72,7 +72,7 @@ describe('Image', function () {
     async function modifyPromise(done, testNum, type, key, value, checkProps){
         let imageSourceApi;
         if (type == 'buffer') {
-            const data = tc_184_buf2.buffer;
+            const data = modifyBuf.buffer;
             imageSourceApi = image.createImageSource(data);
         } else {
             let fdExifJpg = fileio.openSync(pathExifJpg, 0o2 | 0o100, 0o777);
@@ -104,7 +104,7 @@ describe('Image', function () {
     async function modifyCb(done, testNum, type, key, value, checkProps){
         let imageSourceApi;
         if (type == 'buffer') {
-            const data = tc_184_buf2.buffer;
+            const data = modifyBuf.buffer;
             imageSourceApi = image.createImageSource(data);
         } else {
             let fdExifJpg = fileio.openSync(pathExifJpg, 0o2 | 0o100, 0o777);
@@ -139,7 +139,7 @@ describe('Image', function () {
     async function modifyCb1(done, testNum, type, key, value, checkProps){
         let imageSourceApi;
         if (type == 'buffer') {
-            const data = tc_184_buf2.buffer;
+            const data = modifyBuf.buffer;
             imageSourceApi = image.createImageSource(data);
         } else {
             let fdExifJpg = fileio.openSync(pathExifJpg, 0o2 | 0o100, 0o777);
@@ -172,10 +172,10 @@ describe('Image', function () {
         }
     }
     
-    async function modifyImageProperty_err_cb(done, testNum, type, key, value) {
+    async function modifyErrCb(done, testNum, type, key, value) {
         let imageSourceApi;
         if (type == 'buffer') {
-            const data = tc_184_buf2.buffer;
+            const data = modifyBuf.buffer;
             imageSourceApi = image.createImageSource(data);
         } else {
             let fdExifJpg = fileio.openSync(pathExifJpg, 0o2 | 0o100, 0o777);
@@ -195,10 +195,10 @@ describe('Image', function () {
         }
     }
 
-    async function modifyImageProperty_err_cb1(done, testNum, type, key, value) {
+    async function modifyErrCb1(done, testNum, type, key, value) {
         let imageSourceApi;
         if (type == 'buffer') {
-            const data = tc_184_buf2.buffer;
+            const data = modifyBuf.buffer;
             imageSourceApi = image.createImageSource(data);
         }else {
             let fdExifJpg = fileio.openSync(pathExifJpg, 0o2 | 0o100, 0o777);
@@ -218,11 +218,11 @@ describe('Image', function () {
         }
     }
 
-    async function modifyImageProperty_err_promise(done, testNum, type, key, value) {
+    async function modifyImageErrPromise(done, testNum, type, key, value) {
         let imageSourceApi;
         try {
             if (type == 'buffer') {
-                const data = tc_184_buf2.buffer;
+                const data = modifyBuf.buffer;
                 imageSourceApi = image.createImageSource(data);
             } else {
                 let fdExifJpg = fileio.openSync(pathExifJpg, 0o2 | 0o100, 0o777);
@@ -250,7 +250,7 @@ describe('Image', function () {
         }
     }
 
-     /**
+    /**
      * @tc.number    : modify_01_001
      * @tc.name      : modifyImageProperty(Orientation)-promise
      * @tc.desc      : 1.create imagesource
@@ -260,7 +260,7 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-      it('modify_01_001', 0, async function (done) {
+    it('modify_01_001', 0, async function (done) {
         function checkProps(result){
             expect(result == 'Top-right').assertTrue();
         }
@@ -335,7 +335,7 @@ describe('Image', function () {
         modifyPromise(done, 'modify_01_005', 'buffer', "GPSLongitudeRef", "W", checkProps);
     })
 
-     /**
+    /**
      * @tc.number    : modify_01_006
      * @tc.name      : modifyImageProperty(Orientation)-promise
      * @tc.desc      : 1.create imagesource
@@ -430,7 +430,7 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-     it('modify_02_001', 0, async function (done) {
+    it('modify_02_001', 0, async function (done) {
         function checkProps(result){
             expect(result == 'Top-right').assertTrue();
         }
@@ -515,7 +515,7 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-     it('modify_02_006', 0, async function (done) {
+    it('modify_02_006', 0, async function (done) {
         function checkProps(result){
             expect(result == 'Top-right').assertTrue();
         }
@@ -600,7 +600,7 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-     it('modify_03_001', 0, async function (done) {
+    it('modify_03_001', 0, async function (done) {
         function checkProps(result){
             expect(result == 'Top-right').assertTrue();
         }
@@ -770,8 +770,8 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-     it('modify_01_011', 0, async function (done) {
-        modifyImageProperty_err_promise(done, 'modify_01_011', 'fd', "Orientation", "abcdef")
+    it('modify_01_011', 0, async function (done) {
+        modifyImageErrPromise(done, 'modify_01_011', 'fd', "Orientation", "abcdef")
     })
 
     /**
@@ -785,7 +785,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_01_012', 0, async function (done) {
-        modifyImageProperty_err_promise(done, 'modify_01_012', 'fd', "GPSLatitude", "abc,3")
+        modifyImageErrPromise(done, 'modify_01_012', 'fd', "GPSLatitude", "abc,3")
     })
 
     /**
@@ -799,7 +799,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_01_013', 0, async function (done) {
-        modifyImageProperty_err_promise(done, 'modify_01_013', 'fd', "GPSLongitude", "abc,2")
+        modifyImageErrPromise(done, 'modify_01_013', 'fd', "GPSLongitude", "abc,2")
     })
 
     /**
@@ -813,7 +813,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_01_014', 0, async function (done) {
-        modifyImageProperty_err_promise(done, 'modify_01_014', 'fd', "GPSLatitudeRef", "456")
+        modifyImageErrPromise(done, 'modify_01_014', 'fd', "GPSLatitudeRef", "456")
     })
 
     /**
@@ -827,7 +827,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_01_015', 0, async function (done) {
-        modifyImageProperty_err_promise(done, 'modify_01_015', 'fd', "GPSLongitudeRef", "1234")
+        modifyImageErrPromise(done, 'modify_01_015', 'fd', "GPSLongitudeRef", "1234")
     })
 
     /**
@@ -840,8 +840,8 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-     it('modify_01_016', 0, async function (done) {
-        modifyImageProperty_err_promise(done, "modify_01_016", "buffer", "Orientation", "abcdef")
+    it('modify_01_016', 0, async function (done) {
+        modifyImageErrPromise(done, "modify_01_016", "buffer", "Orientation", "abcdef")
     })
 
     /**
@@ -855,7 +855,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_01_017', 0, async function (done) {
-        modifyImageProperty_err_promise(done, "modify_01_017", "buffer", "GPSLatitude", "abc,3")
+        modifyImageErrPromise(done, "modify_01_017", "buffer", "GPSLatitude", "abc,3")
     })
 
     /**
@@ -869,7 +869,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_01_018', 0, async function (done) {
-        modifyImageProperty_err_promise(done, "modify_01_018", "buffer", "GPSLongitude", "abc,2")
+        modifyImageErrPromise(done, "modify_01_018", "buffer", "GPSLongitude", "abc,2")
     })
 
     /**
@@ -883,7 +883,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_01_019', 0, async function (done) {
-        modifyImageProperty_err_promise(done, "modify_01_019", "buffer", "GPSLatitudeRef", "456")
+        modifyImageErrPromise(done, "modify_01_019", "buffer", "GPSLatitudeRef", "456")
     })
 
     /**
@@ -897,7 +897,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_01_020', 0, async function (done) {
-        modifyImageProperty_err_promise(done, "modify_01_020", "buffer", "GPSLongitudeRef", "1234")
+        modifyImageErrPromise(done, "modify_01_020", "buffer", "GPSLongitudeRef", "1234")
     })
 
     /**
@@ -911,7 +911,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_02_011', 0, async function (done) {
-        modifyImageProperty_err_cb(done, "modify_02_011", "fd", "Orientation", "abcdef")
+        modifyErrCb(done, "modify_02_011", "fd", "Orientation", "abcdef")
     })
 
     /**
@@ -925,7 +925,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_02_012', 0, async function (done) {
-        modifyImageProperty_err_cb(done, "modify_02_012", "fd", "GPSLatitude", "abc,3")
+        modifyErrCb(done, "modify_02_012", "fd", "GPSLatitude", "abc,3")
     })
 
     /**
@@ -939,7 +939,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_02_013', 0, async function (done) {
-        modifyImageProperty_err_cb(done, "modify_02_013", "fd", "GPSLongitude", "abc,2")
+        modifyErrCb(done, "modify_02_013", "fd", "GPSLongitude", "abc,2")
     })
 
     /**
@@ -953,7 +953,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_02_014', 0, async function (done) {
-        modifyImageProperty_err_cb(done, "modify_02_014", "fd", "GPSLongitudeRef", "1234")
+        modifyErrCb(done, "modify_02_014", "fd", "GPSLongitudeRef", "1234")
     })
 
     /**
@@ -967,10 +967,10 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_02_015', 0, async function (done) {
-        modifyImageProperty_err_cb(done, "modify_02_015", "fd", "GPSLatitudeRef", "456")
+        modifyErrCb(done, "modify_02_015", "fd", "GPSLatitudeRef", "456")
     })
 
-     /**
+    /**
      * @tc.number    : modify_02_016
      * @tc.name      : modifyImageProperty-callback
      * @tc.desc      : 1.create imagesource
@@ -980,8 +980,8 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-      it('modify_02_016', 0, async function (done) {
-        modifyImageProperty_err_cb(done, "modify_02_016", "buffer", "Orientation", "abcdef")
+    it('modify_02_016', 0, async function (done) {
+        modifyErrCb(done, "modify_02_016", "buffer", "Orientation", "abcdef")
     })
 
     /**
@@ -995,7 +995,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_02_017', 0, async function (done) {
-        modifyImageProperty_err_cb(done, "modify_02_017", "buffer", "GPSLatitude", "abc,3")
+        modifyErrCb(done, "modify_02_017", "buffer", "GPSLatitude", "abc,3")
     })
 
     /**
@@ -1009,7 +1009,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_02_018', 0, async function (done) {
-        modifyImageProperty_err_cb(done, "modify_02_018", "buffer", "GPSLongitude", "abc,2")
+        modifyErrCb(done, "modify_02_018", "buffer", "GPSLongitude", "abc,2")
     })
 
     /**
@@ -1023,7 +1023,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_02_019', 0, async function (done) {
-        modifyImageProperty_err_cb(done, "modify_02_019", "buffer", "GPSLongitudeRef", "1234")
+        modifyErrCb(done, "modify_02_019", "buffer", "GPSLongitudeRef", "1234")
     })
 
     /**
@@ -1037,9 +1037,9 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_02_020', 0, async function (done) {
-        modifyImageProperty_err_cb(done, "modify_02_020", "buffer", "GPSLatitudeRef", "456")
+        modifyErrCb(done, "modify_02_020", "buffer", "GPSLatitudeRef", "456")
     })
-
+    
     /**
      * @tc.number    : modify_03_011
      * @tc.name      : modifyImageProperty()-callback
@@ -1051,7 +1051,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_03_011', 0, async function (done) {
-        modifyImageProperty_err_cb1(done, "modify_03_011", "fd", "Orientation", "abcdef")
+        modifyErrCb1(done, "modify_03_011", "fd", "Orientation", "abcdef")
     })
 
     /**
@@ -1065,7 +1065,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_03_012', 0, async function (done) {
-        modifyImageProperty_err_cb1(done, "modify_03_012", "fd", "GPSLatitude", "abc,3")
+        modifyErrCb1(done, "modify_03_012", "fd", "GPSLatitude", "abc,3")
     })
 
     /**
@@ -1079,7 +1079,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_03_013', 0, async function (done) {
-        modifyImageProperty_err_cb1(done, "modify_03_013", "fd", "GPSLongitude", "abc,2")
+        modifyErrCb1(done, "modify_03_013", "fd", "GPSLongitude", "abc,2")
     })
 
     /**
@@ -1093,7 +1093,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_03_014', 0, async function (done) {
-        modifyImageProperty_err_cb1(done, "modify_03_014", "fd", "GPSLatitudeRef", "1234")
+        modifyErrCb1(done, "modify_03_014", "fd", "GPSLatitudeRef", "1234")
     })
 
     /**
@@ -1107,7 +1107,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_03_015', 0, async function (done) {
-        modifyImageProperty_err_cb1(done, "modify_03_015", "fd", "GPSLongitudeRef", "567")
+        modifyErrCb1(done, "modify_03_015", "fd", "GPSLongitudeRef", "567")
     })
 
     /**
@@ -1121,7 +1121,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_03_016', 0, async function (done) {
-        modifyImageProperty_err_cb1(done, "modify_03_016", "buffer", "Orientation", "abcef")
+        modifyErrCb1(done, "modify_03_016", "buffer", "Orientation", "abcef")
     })
 
     /**
@@ -1135,7 +1135,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_03_017', 0, async function (done) {
-        modifyImageProperty_err_cb1(done, "modify_03_017", "buffer", "GPSLatitude", "abc,3")
+        modifyErrCb1(done, "modify_03_017", "buffer", "GPSLatitude", "abc,3")
     })
 
     /**
@@ -1149,7 +1149,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_03_018', 0, async function (done) {
-        modifyImageProperty_err_cb1(done, "modify_03_018", "buffer", "GPSLongitude", "abc,2")
+        modifyErrCb1(done, "modify_03_018", "buffer", "GPSLongitude", "abc,2")
     })
 
     /**
@@ -1163,7 +1163,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_03_019', 0, async function (done) {
-        modifyImageProperty_err_cb1(done, "modify_03_019", "buffer", "GPSLatitudeRef", "456")
+        modifyErrCb1(done, "modify_03_019", "buffer", "GPSLatitudeRef", "456")
     })
 
     /**
@@ -1177,6 +1177,6 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('modify_03_020', 0, async function (done) {
-        modifyImageProperty_err_cb1(done, "modify_03_020", "buffer", "GPSLongitudeRef", "1234")
+        modifyErrCb1(done, "modify_03_020", "buffer", "GPSLongitudeRef", "1234")
     })
 })
