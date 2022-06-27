@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {Core} from 'deccjsunit/lite'
+import {Core} from 'deccjsunit/index'
 const core = Core.getInstance()
 core.init()
 require('../../test/List.test.js')
