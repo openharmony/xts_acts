@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import HiTraceChain from '@ohos.HiTraceChain'
+import hiTraceChain from '@ohos.hiTraceChain'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import hilog from '@ohos.hilog'
 
@@ -37,7 +37,7 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHiAppEventApi01', 1, async function (done) {
+    it('testHitraceApi01', 1, async function (done) {
         console.info('testHitraceApi01 start');
         try{
             let traceId = hiTraceChain.begin("hitrace01");
@@ -61,7 +61,7 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHiAppEventApi02', 1, async function (done) {
+    it('testHitraceApi02', 1, async function (done) {
         console.info('testHitraceApi02 start');
         try{
             let traceId = hiTraceChain.begin("hitrace02", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC |
@@ -86,15 +86,17 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHiAppEventApi03', 1, async function (done) {
+    it('testHitraceApi03', 1, async function (done) {
         console.info('testHitraceApi03 start');
         try{
             let traceId = hiTraceChain.begin("hitrace03", hiTraceChain.HiTraceFlag.TP_INFO);
             let curTraceId = hiTraceChain.getId();
-            if(traceId !== curTraceId){
+            if(traceId.chainId != curTraceId.chainId){
                 expect().assertFail();
                 console.log(`testHitraceApi03 got an error: ${JSON.stringify(error)}`);
             }
+            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.THREAD,
+                                    hiTraceChain.HiTraceTracepointType.SS, traceId, "hitrace api test.");
             hiTraceChain.end(traceId);
         } catch (error){
             console.log(`testHitraceApi03 got an error: ${JSON.stringify(error)}`);
@@ -110,7 +112,7 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHiAppEventApi04', 1, async function (done) {
+    it('testHitraceApi04', 1, async function (done) {
         console.info('testHitraceApi04 start');
         try{
             let traceId = hiTraceChain.begin("hitrace04", hiTraceChain.HiTraceFlag.NO_BE_INFO);
@@ -135,11 +137,11 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHiAppEventApi05', 1, async function (done) {
+    it('testHitraceApi05', 1, async function (done) {
         console.info('testHitraceApi05 start');
         try{
             let traceId = hiTraceChain.begin("hitrace05");
-            hiTraceChain.enable(asyncTraceId, hiTraceChain.HiTraceFlag.DISABLE_LOG);
+            hiTraceChain.enableFlag(traceId, hiTraceChain.HiTraceFlag.DISABLE_LOG);
             let enabledDoNotCreateSpanFlag = hiTraceChain.isFlagEnabled(traceId, hiTraceChain.HiTraceFlag.DISABLE_LOG);
             if(!enabledDoNotCreateSpanFlag){
                 expect().assertFail();
@@ -160,11 +162,11 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHiAppEventApi06', 1, async function (done) {
+    it('testHitraceApi06', 1, async function (done) {
         console.info('testHitraceApi06 start');
         try{
             let traceId = hiTraceChain.begin("hitrace06");
-            hiTraceChain.enable(asyncTraceId, hiTraceChain.HiTraceFlag.FAILURE_TRIGGER);
+            hiTraceChain.enableFlag(traceId, hiTraceChain.HiTraceFlag.FAILURE_TRIGGER);
             let enabledDoNotCreateSpanFlag = hiTraceChain.isFlagEnabled(traceId,
             hiTraceChain.HiTraceFlag.FAILURE_TRIGGER);
             if(!enabledDoNotCreateSpanFlag){
@@ -186,7 +188,7 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHiAppEventApi07', 1, async function (done) {
+    it('testHitraceApi07', 1, async function (done) {
         console.info('testHitraceApi07 start');
         try{
             let traceId = hiTraceChain.begin("hitrace07", hiTraceChain.HiTraceFlag.D2D_TP_INFO);
@@ -195,6 +197,8 @@ describe('HiTraceJsTest', function () {
                 expect().assertFail();
                 console.log(`testHitraceApi07 got an error: ${JSON.stringify(error)}`);
             }
+            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.PROCESS,
+                                    hiTraceChain.HiTraceTracepointType.CS, traceId, "hitrace test");
             hiTraceChain.end(traceId);
         } catch (error){
             console.log(`testHitraceApi07 got an error: ${JSON.stringify(error)}`);
@@ -210,17 +214,17 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHiAppEventApi08', 1, async function (done) {
+    it('testHitraceApi08', 1, async function (done) {
         console.info('testHitraceApi08 start');
         hiTraceChain.clearId();
-        let traceId = hiTraceChain.begin("hitrace08", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC);
+        let traceId = hiTraceChain.begin("testHitraceApi08", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC);
         let curChainId = traceId.chainId;
         new Promise(function(resolve, reject){
             resolve()
         }).then(() => {
             console.info('in testHitraceApi08 then callback')
             console.info(`testHitraceApi08 ${hiTraceChain.getId().chainId} <> ${curChainId}`)
-            except(hiTraceChain.getId().chainId == curChainId).assertTrue()
+            expect(hiTraceChain.getId().chainId == curChainId).assertTrue()
             done()
         })
         hiTraceChain.end(traceId);
@@ -234,7 +238,7 @@ describe('HiTraceJsTest', function () {
      * @tc.name hitrace interface test
      * @tc.desc hitrace begin interface test.
      */
-    it('testHiAppEventApi09', 1, async function (done) {
+    it('testHitraceApi09', 1, async function (done) {
         console.info('testHitraceApi09 start');
         hiTraceChain.clearId();
         let traceId = hiTraceChain.begin("hitrace09", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC);
@@ -244,11 +248,108 @@ describe('HiTraceJsTest', function () {
         asyncTask().then(() => {
             console.info('in testhiTraceApi09 then callback')
             console.info(`testHitraceApi09 ${hiTraceChain.getId().chainId} <> ${curChainId}`)
-            except(hiTraceChain.getId().chainId == curChainId).assertTrue()
+            expect(hiTraceChain.getId().chainId == curChainId).assertTrue()
             done()
         })
         hiTraceChain.end(traceId);
         done()
         console.info('testHitraceApi09 end');
     })
+
+    /**
+     * @tc.name: 接口测试-hitrace接口支持跨设备跟踪
+     * @tc.number DFX_DFT_Hitrace_JS_010
+     * @tc.function A01010
+     * @tc.feature DFX_DFT_Hitrace
+     * @tc.level Level3
+     * @tc.type FUNC
+     * @tc.author chenxuhui
+     */
+    it('testHitraceApi10', 0, async function (done) {
+        console.info('testHitraceApi10 start')
+        hiTraceChain.clearId();
+        try {
+            let traceId = hiTraceChain.begin("hitrace10", hiTraceChain.HiTraceFlag.D2D_TP_INFO);
+            let enabledDoNotCreateSpanFlag = hiTraceChain.isFlagEnabled(traceId, hiTraceChain.HiTraceFlag.D2D_TP_INFO);
+            if(!enabledDoNotCreateSpanFlag){
+                expect().assertFail();
+                console.log(`testHitraceApi10 got an error: ${JSON.stringify(error)}`);
+            }
+            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.DEVICE,
+                                    hiTraceChain.HiTraceTracepointType.CR,traceId, "hitrace test");
+            hiTraceChain.end(traceId);
+        } catch (error) {
+            console.log(`testHitraceApi10 got an error: ${JSON.stringify(error)}`);
+            expect().assertFail();
+			done()
+        }
+        console.info('testHitraceApi10 end')
+		done()
+    });
+
+	/**
+     * @tc.name: 接口测试-hitrace接口支持跨设备跟踪
+     * @tc.number DFX_DFT_Hitrace_JS_011
+     * @tc.function A01011
+     * @tc.feature DFX_DFT_Hitrace
+     * @tc.level Level3
+     * @tc.type FUNC
+     * @tc.author chenxuhui
+     */
+    it('testHitraceApi11', 0, async function (done) {
+        console.info('testHitraceApi11 start')
+		hiTraceChain.setId(12345678);
+        hiTraceChain.clearId();
+        try {
+            let traceId = hiTraceChain.begin("hitrace11", hiTraceChain.HiTraceFlag.D2D_TP_INFO);
+			let flags = traceId.flags
+			let parentSpanId = traceId.parentSpanId
+			let spanId = traceId.spanId
+            let enabledDoNotCreateSpanFlag = hiTraceChain.isFlagEnabled(traceId, hiTraceChain.HiTraceFlag.D2D_TP_INFO);
+            if(!enabledDoNotCreateSpanFlag){
+                expect().assertFail();
+                console.log(`testHitraceApi11 got an error: ${JSON.stringify(error)}`);
+            }
+            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.DEFAULT,
+                                    hiTraceChain.HiTraceTracepointType.SR, traceId, "hitrace test");
+            hiTraceChain.end(traceId);
+        } catch (error) {
+            console.log(`testHitraceApi11 got an error: ${JSON.stringify(error)}`);
+            expect().assertFail();
+			done()
+        }
+        console.info('testHitraceApi11 end')
+		done()
+    });
+
+	/**
+     * @tc.name: 接口测试-hitrace接口支持跨设备跟踪
+     * @tc.number DFX_DFT_Hitrace_JS_012
+     * @tc.function A01010
+     * @tc.feature DFX_DFT_Hitrace
+     * @tc.level Level3
+     * @tc.type FUNC
+     * @tc.author chenxuhui
+     */
+    it('testHitraceApi12', 0, async function (done) {
+        console.info('testHitraceApi12 start')
+        try {
+            let traceId = hiTraceChain.begin("hitrace12", hiTraceChain.HiTraceFlag.D2D_TP_INFO);
+            let enabledDoNotCreateSpanFlag = hiTraceChain.isFlagEnabled(traceId, hiTraceChain.HiTraceFlag.D2D_TP_INFO);
+            if(!enabledDoNotCreateSpanFlag){
+                expect().assertFail();
+                console.log(`testHitraceApi12 got an error: ${JSON.stringify(error)}`);
+            }
+            hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.DEVICE,
+                                    hiTraceChain.HiTraceTracepointType.GENERAL, traceId, "hitrace test");
+            hiTraceChain.end(traceId);
+        } catch (error) {
+            console.log(`testHitraceApi12 got an error: ${JSON.stringify(error)}`);
+            expect().assertFail();
+			done()
+        }
+        console.info('testHitraceApi12 end')
+		done()
+    });
+
 })
