@@ -18,7 +18,6 @@
 struct slider {
   @State inSetValue: number= 40
   @State outSetValue: number= 40
-  @State direction: Axis= Axis.Horizontal
   @State Begin: number = SliderChangeMode.Begin
 
   onPageShow() {
