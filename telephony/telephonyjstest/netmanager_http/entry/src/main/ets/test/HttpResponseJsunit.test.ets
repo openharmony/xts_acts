@@ -14,7 +14,7 @@
  */
 import {describe, beforeAll, afterAll, it, expect, afterEach} from 'hypium/index';
 import http from '@ohos.net.http';
-import utils from './Utils.ets'
+import utils from './Utils'
 
 export default function httpResponseJsunit() {
   describe("HttpResponseJsunitTest", function () {
@@ -30,7 +30,7 @@ export default function httpResponseJsunit() {
       console.log("-----------------------HttpResponse result Test is starting-----------------------");
       try {
         let httpRequestOptions = {
-          method: 'GET',
+          method: http.RequestMethod.GET,
           extraData: null,
           header: "content-type': 'application/json",
           readTimeout: 60,
@@ -44,7 +44,7 @@ export default function httpResponseJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.getResult() != null).assertTrue();
+          expect(data.result != null).assertTrue();
           console.log("-----------------------HttpResponse result Test end-----------------------");
           done();
         });
@@ -73,7 +73,7 @@ export default function httpResponseJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.getResult() != null).assertTrue();
+          expect(data.result != null).assertTrue();
           console.log("-----------------------HttpResponse result_01 Test end-----------------------");
           done();
         });
@@ -95,7 +95,7 @@ export default function httpResponseJsunit() {
       console.log("-----------------------HttpResponse result_02 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
-          method: 'GET',
+          method: http.RequestMethod.GET,
           extraData: null,
           header: "content-type': 'application/json",
           readTimeout: 60,
@@ -109,7 +109,7 @@ export default function httpResponseJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.getResult() != null).assertTrue();
+          expect(data.result != null).assertTrue();
           console.log("-----------------------HttpResponse result_02 Test end-----------------------");
           done();
         }).catch(error => {
@@ -134,7 +134,7 @@ export default function httpResponseJsunit() {
       console.log("-----------------------HttpResponse responseCode Test is starting-----------------------");
       try {
         let httpRequestOptions = {
-          method: 'GET',
+          method: http.RequestMethod.GET,
           extraData: null,
           header: "content-type': 'application/json",
           readTimeout: 60,
@@ -148,7 +148,7 @@ export default function httpResponseJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.getResponseCode() != 0).assertTrue();
+          expect(data.responseCode != 0).assertTrue();
           console.log("-----------------------HttpResponse responseCode Test end-----------------------");
           done();
         });
@@ -177,7 +177,7 @@ export default function httpResponseJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.getResponseCode() != 0).assertTrue();
+          expect(data.responseCode != 0).assertTrue();
           console.log("-----------------------HttpResponse responseCode_01 Test end-----------------------");
           done();
         });
@@ -200,7 +200,7 @@ export default function httpResponseJsunit() {
       console.log("-----------------------HttpResponse responseCode_02 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
-          method: 'GET',
+          method: http.RequestMethod.GET,
           extraData: null,
           header: "content-type': 'application/json",
           readTimeout: 60,
@@ -214,7 +214,7 @@ export default function httpResponseJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.getResponseCode() != 0).assertTrue();
+          expect(data.responseCode != 0).assertTrue();
           console.log("-----------------------HttpResponse responseCode_02 Test end-----------------------");
           done();
         }).catch(error => {
@@ -238,7 +238,7 @@ export default function httpResponseJsunit() {
       console.log("-----------------------HttpResponse header Test is starting-----------------------");
       try {
         let httpRequestOptions = {
-          method: 'GET',
+          method: http.RequestMethod.GET,
           extraData: null,
           header: "content-type': 'application/json",
           readTimeout: 60,
@@ -252,7 +252,7 @@ export default function httpResponseJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.getHead() != null).assertTrue();
+          expect(data.header != null).assertTrue();
           console.log("-----------------------header result Test end-----------------------");
           done();
         });
@@ -281,7 +281,7 @@ export default function httpResponseJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.getHead() != null).assertTrue();
+          expect(data.header != null).assertTrue();
           console.log("-----------------------header header_01 Test end-----------------------");
           done();
         });
@@ -304,7 +304,7 @@ export default function httpResponseJsunit() {
       console.log("-----------------------HttpResponse header_02 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
-          method: 'GET',
+          method: http.RequestMethod.GET,
           extraData: null,
           header: "content-type': 'application/json",
           readTimeout: 60,
@@ -318,7 +318,7 @@ export default function httpResponseJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.getHead() != null).assertTrue();
+          expect(data.header != null).assertTrue();
           console.log("-----------------------HttpResponse header_02 Test end-----------------------");
           done();
         }).catch(error => {
@@ -342,7 +342,7 @@ export default function httpResponseJsunit() {
       console.log("-----------------------HttpResponse cookies Test is starting-----------------------");
       try {
         let httpRequestOptions = {
-          method: 'GET',
+          method: http.RequestMethod.GET,
           extraData: null,
           header: "content-type': 'application/json",
           readTimeout: 60,
@@ -356,7 +356,7 @@ export default function httpResponseJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.getCookies != null).assertTrue();
+          expect(data.cookies != null).assertTrue();
           console.log("-----------------------HttpResponse cookies Test end-----------------------");
           done();
         });
@@ -386,7 +386,7 @@ export default function httpResponseJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.getCookies != null).assertTrue();
+          expect(data.cookies != null).assertTrue();
           console.log("-----------------------HttpResponse cookies_01 Test end-----------------------");
           done();
         });
@@ -408,7 +408,7 @@ export default function httpResponseJsunit() {
       console.log("-----------------------HttpResponse cookies_02 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
-          method: 'GET',
+          method: http.RequestMethod.GET,
           extraData: null,
           header: "content-type': 'application/json",
           readTimeout: 60,
@@ -422,7 +422,7 @@ export default function httpResponseJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.getCookies() != null).assertTrue();
+          expect(data.cookies != null).assertTrue();
           console.log("-----------------------HttpResponse cookies_02 Test end-----------------------");
           done();
         }).catch(error => {
