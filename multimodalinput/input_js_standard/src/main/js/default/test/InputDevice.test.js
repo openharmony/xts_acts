@@ -189,4 +189,68 @@ describe('MultimodalInput_test', function () {
       console.log(`inputDevice::getKeyboardType_test-03 exit`);
     });
   })
+
+  /**
+   * @tc.number MultimodalInputDevice_js_0010
+   * @tc.name remainingChargeTime_test
+   * @tc.desc Battry Present Interface Test
+   */
+  it('MultimodalInputDevice_KeyboardType_NONE_test', 0, function () {
+    console.info('MultimodalInputDevice_KeyboardType_NONE_test = ' + inputDevice.KeyboardType.NONE);
+    expect(inputDevice.KeyboardType.NONE == 0).assertTrue();
+  })
+
+  /**
+   * @tc.number MultimodalInputDevice_js_0020
+   * @tc.name remainingChargeTime_test
+   * @tc.desc Battry Present Interface Test
+   */
+  it('MultimodalInputDevice_KeyboardType_UNKNOWN_test', 0, function () {
+    console.info('MultimodalInputDevice_KeyboardType_UNKNOWN_test = ' + inputDevice.KeyboardType.UNKNOWN);
+    expect(inputDevice.KeyboardType.UNKNOWN == 1).assertTrue();
+  })
+
+  /**
+   * @tc.number MultimodalInputDevice_js_0030
+   * @tc.name remainingChargeTime_test
+   * @tc.desc Battry Present Interface Test
+   */
+  it('MultimodalInputDevice_KeyboardType_ALPHABETIC_KEYBOARD_test', 0, function () {
+    console.info('MultimodalInputDevice_KeyboardType_ALPHABETIC_KEYBOARD_test = '
+      + inputDevice.KeyboardType.ALPHABETIC_KEYBOARD);
+    expect(inputDevice.KeyboardType.ALPHABETIC_KEYBOARD == 2).assertTrue();
+  })
+
+  /**
+   * @tc.number MultimodalInputDevice_js_0040
+   * @tc.name remainingChargeTime_test
+   * @tc.desc Battry Present Interface Test
+   */
+  it('MultimodalInputDevice_KeyboardType_ALPHABETIC_DIGITAL_KEYBOARD_test', 0, function () {
+    console.info('MultimodalInputDevice_KeyboardType_ALPHABETIC_DIGITAL_KEYBOARD_test = '
+      + inputDevice.KeyboardType.DIGITAL_KEYBOARD);
+    expect(inputDevice.KeyboardType.DIGITAL_KEYBOARD == 3).assertTrue();
+  })
+
+  /**
+   * @tc.number MultimodalInputDevice_js_0040
+   * @tc.name remainingChargeTime_test
+   * @tc.desc Battry Present Interface Test
+   */
+  it('MultimodalInputDevice_KeyboardType_ALPHABETIC_HANDWRITING_PEN_test', 0, function () {
+    console.info('MultimodalInputDevice_KeyboardType_ALPHABETIC_HANDWRITING_PEN_test = '
+      + inputDevice.KeyboardType.HANDWRITING_PEN);
+    expect(inputDevice.KeyboardType.HANDWRITING_PEN == 4).assertTrue();
+  })
+
+  /**
+   * @tc.number MultimodalInputDevice_js_0040
+   * @tc.name remainingChargeTime_test
+   * @tc.desc Battry Present Interface Test
+   */
+  it('MultimodalInputDevice_KeyboardType_ALPHABETIC_REMOTE_CONTROL_test', 0, function () {
+    console.info('MultimodalInputDevice_KeyboardType_ALPHABETIC_REMOTE_CONTROL_test = '
+      + inputDevice.KeyboardType.REMOTE_CONTROL);
+    expect(inputDevice.KeyboardType.REMOTE_CONTROL == 5).assertTrue();
+  })
 })
