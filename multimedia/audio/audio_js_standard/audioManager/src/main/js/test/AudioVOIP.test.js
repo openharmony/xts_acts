@@ -28,6 +28,8 @@ describe('audioRenderer_audo2', function () {
     var mediaDir;
     let fdRead;
     let readpath;
+    let fdPath;
+    let filePath;
     /*async function getPathName(){
         var path1 = '/data/app/el1/bundle/public/';
         var packageName;
@@ -55,7 +57,7 @@ describe('audioRenderer_audo2', function () {
     beforeAll(async function () {
         await applyPermission();
         console.info('AudioFrameworkTest: beforeAll: Prerequisites at the test suite level');
-        mediaDir = '/data/storage/el2/base/haps/entry/cache';
+        // mediaDir = '/data/storage/el2/base/haps/entry/cache';
     })
 
     beforeEach(async function () {
@@ -75,18 +77,15 @@ describe('audioRenderer_audo2', function () {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async function getFileDescriptor(fileName) {
-        let fileDescriptor = undefined;
-        await resourceManager.getResourceManager().then(async (mgr) => {
-            await mgr.getRawFileDescriptor(fileName).then(value => {
-                fileDescriptor = { fd: value.fd, offset: value.offset, length: value.length };
-            }).catch(error => {
-                console.log('AudioFrameworkRenderLog:case getRawFileDescriptor err: ' + error);
-            });
-        });
-        return fileDescriptor;
+    async function getAbilityInfo(fileName) {
+        let context = await featureAbility.getContext();
+        console.info("case0 context is  " + context);
+        await context.getFilesDir().then((data) => {
+            console.info("case1 getFilesDir is path " + data);
+            mediaDir = data + '/' + fileName;
+            console.info('case2 mediaDir is ' + mediaDir);
+        })
     }
-
     async function closeFileDescriptor(fileName) {
         await resourceManager.getResourceManager().then(async (mgr) => {
             await mgr.closeRawFileDescriptor(fileName).then(value => {
@@ -96,17 +95,39 @@ describe('audioRenderer_audo2', function () {
             });
         });
     }
-    async function getFdRead(pathName, done) {
-        await getFileDescriptor(pathName).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('AudioFrameworkRenderLog:case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("AudioFrameworkRenderLog:case 0 fdRead is: " + fdRead);
-            }
+    // async function getFdRead(pathName, done) {
+    //     await getFileDescriptor(pathName).then((res) => {
+    //         if (res == undefined) {
+    //             expect().assertFail();
+    //             console.info('AudioFrameworkRenderLog:case error fileDescriptor undefined, open file fail');
+    //             done();
+    //         } else {
+    //             fdRead = res.fd;
+    //             console.info("AudioFrameworkRenderLog:case 0 fdRead is: " + fdRead);
+    //         }
+    //     })
+    // }
+    async function getFdRead(pathName) {
+        let context = await featureAbility.getContext();
+        console.info("case0 context is  " + context);
+        await context.getFilesDir().then((data) => {
+            console.info("case1 getFilesDir is path " + data);
+            filePath = data + '/' + pathName;
+            console.info('case4 filePath is ' + filePath);
+            
         })
+        fdPath = 'fd://';
+        await fileio.open(filePath).then((fdNumber) => {
+            fdPath = fdPath + '' + fdNumber;
+            fdRead = fdNumber;
+            console.info('[fileIO]case open fd success,fdPath is ' + fdPath);
+            console.info('[fileIO]case open fd success,fdRead is ' + fdRead);
+            
+        }, (err) => {
+            console.info('[fileIO]case open fd failed');
+        }).catch((err) => {
+            console.info('[fileIO]case catch open fd failed');
+        });
     }
 
     async function applyPermission() {
@@ -434,13 +455,13 @@ describe('audioRenderer_audo2', function () {
             rendererInfo: AudioRendererInfo
         }
 
-        readpath = 'StarWars10s-1C-44100-2SW.wav';
-        await getFdRead(readpath,done);
-        var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        // readpath = 'StarWars10s-1C-44100-2SW.wav';
+        await getFdRead("StarWars10s-1C-44100-2SW.wav");
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(filePath);
         done();
     })
 
@@ -470,8 +491,9 @@ describe('audioRenderer_audo2', function () {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
-
-        var resultFlag = await recPromise(AudioCapturerOptions, mediaDir+'/capture_js-44100-2C-16B.pcm', audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await getAbilityInfo("capture_js-44100-2C-16B.pcm");
+        var resultFlag = await recPromise(AudioCapturerOptions, mediaDir, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        // var resultFlag = await recPromise(AudioCapturerOptions, mediaDir+'/capture_js-44100-2C-16B.pcm', audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
         expect(resultFlag).assertTrue();
@@ -522,17 +544,17 @@ describe('audioRenderer_audo2', function () {
             streamInfo: AudioStreamInfoRen,
             rendererInfo: AudioRendererInfo
         }
-
-        recPromise(AudioCapturerOptions, mediaDir+'/capture_js-44100-2C-16B-2.pcm', audio.AudioScene.AUDIO_SCENE_PHONE_CHAT);
+        await getAbilityInfo("capture_js-44100-2C-16B-2.pcm");
+        recPromise(AudioCapturerOptions, mediaDir, audio.AudioScene.AUDIO_SCENE_PHONE_CHAT);
         await sleep(500);
 
         readpath = 'StarWars10s-1C-44100-2SW.wav';
-        await getFdRead(readpath,done);
+        await getFdRead(readpath);
         var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath,done);
+        await closeFileDescriptor(readpath);
         done();
     })
 
