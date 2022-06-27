@@ -14,12 +14,12 @@
  */
 
 //other import
-import httpJsunit from './HttpJsunit.test.ets'
-import responseCodeJsunit from './ResponseCodeJsunit.test.ets';
-import requestMethodJsunit from './RequestMethodJsunit.test.ets';
-import httpResponseJsunit from './HttpResponseJsunit.test.ets';
-import HttpRequestOptionsJsunit from './HttpRequestOptionsJsunit.test.ets';
-import httpRequestJsunit from './HttpRequestJsunit.test.ets';
+import httpJsunit from './HttpJsunit.test'
+import responseCodeJsunit from './ResponseCodeJsunit.test';
+import requestMethodJsunit from './RequestMethodJsunit.test';
+import httpResponseJsunit from './HttpResponseJsunit.test';
+import HttpRequestOptionsJsunit from './HttpRequestOptionsJsunit.test';
+import httpRequestJsunit from './HttpRequestJsunit.test';
 
 export default function testsuite() {
   //other
