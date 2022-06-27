@@ -165,13 +165,18 @@ describe('ActsAnsDistributeTest', function () {
      * @tc.desc: isSupportTemplate(templateName: string, callback: AsyncCallback<boolean>): void
      */
     it('ActsDistribute_test_0600', 0, async function (done) {
-		
+        console.info("==>ActsDistribute_test_0600 start==>");
         var templateName = '/system/etc/notification_template/assets/js/downloadTemplate.js';
-		
-        await notify.isSupportTemplate(templateName,function(data){
-            console.log("===>isSupportTemplateCallback success===>"+JSON.stringify(data))
-            console.log("===>isSupportTemplateCallback success===>"+err.code)
-        })
+        function isSupportTemplateCallback(err, data) {
+            if(err) {
+                console.error("isSupportTemplateCallback" + err.code);
+            } else {
+                expect(true).assertTrue();
+                console.info("isSupportTemplateCallback" + JSON.stringify(data));
+                done();
+            }
+        }
+        notify.isSupportTemplate(templateName, isSupportTemplateCallback);
         done();
     })
 
@@ -181,12 +186,13 @@ describe('ActsAnsDistributeTest', function () {
      * @tc.desc: isSupportTemplate(templateName: string): Promise<boolean>
      */
     it('ActsDistribute_test_0700', 0, async function (done) {
-		
+        console.info("==>ActsDistribute_test_0700 start==>");
         var templateName = '/system/etc/notification_template/assets/js/downloadTemplate.js';
-		
-        await notify.isSupportTemplate(templateName).then ((data) => {
-            console.log("isSupportTemplatePromise")
-            console.log("==>ActsDistribute_test_0700 success==>" +JSON.stringify(data))
+        notify.isSupportTemplate(templateName).then ((data) => {
+            expect(data).assertEqual(false);
+            console.info("isSupportTemplatePromise");
+            console.info("==>ActsDistribute_test_0700 success==>" + JSON.stringify(data));
+            done();
         })
         done();
     })

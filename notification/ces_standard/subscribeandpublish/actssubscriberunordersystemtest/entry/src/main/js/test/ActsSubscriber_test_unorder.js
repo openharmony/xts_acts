@@ -287,7 +287,8 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
                 Subscriber.Support.COMMON_EVENT_ABILITY_UPDATED,
                 Subscriber.Support.COMMON_EVENT_VISIBLE_ACCOUNTS_UPDATED,
                 Subscriber.Support.COMMON_EVENT_ACCOUNT_DELETED,
-                Subscriber.Support.COMMON_EVENT_FOUNDATION_READY
+                Subscriber.Support.COMMON_EVENT_FOUNDATION_READY,
+                Subscriber.Support.COMMON_EVENT_BATTERY_CHANGED
             ],
         };
 
