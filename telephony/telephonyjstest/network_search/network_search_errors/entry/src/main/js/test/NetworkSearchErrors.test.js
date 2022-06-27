@@ -54,6 +54,7 @@ describe('ActsNetworkSearchTest', function () {
     afterEach(async function () {
         try {
             expect(radio.RADIO_TECHNOLOGY_UNKNOWN === 0).assertTrue();
+            expect(radio.RADIO_TECHNOLOGY_GSM === 1).assertTrue();
             expect(radio.RADIO_TECHNOLOGY_1XRTT === 2).assertTrue();
             expect(radio.RADIO_TECHNOLOGY_WCDMA === 3).assertTrue();
             expect(radio.RADIO_TECHNOLOGY_HSPA === 4).assertTrue();
@@ -117,6 +118,7 @@ describe('ActsNetworkSearchTest', function () {
             expect(data.regState != radio.REG_STATE_IN_SERVICE).assertTrue();
             expect(data.nsaState != radio.NSA_STATE_SA_ATTACHED).assertTrue();
             expect(data.isCaActive != true).assertTrue();
+            expect(data.isEmergency != true).assertTrue();
             expect().assertFail();
             done();
         });
