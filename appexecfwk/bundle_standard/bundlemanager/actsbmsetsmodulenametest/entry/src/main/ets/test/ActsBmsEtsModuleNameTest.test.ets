@@ -16,7 +16,7 @@
 import bundle from '@ohos.bundle'
 import image from '@ohos.multimedia.image'
 import account from '@ohos.account.osAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
 
 const ABILITY_NAME = 'com.example.bmsmodulename.MainAbility';
 const BUNDLE_NAME = 'com.example.bmsmodulename';
@@ -190,15 +190,14 @@ export default function actsBmsJsModuleNameTest() {
                 await bundle.getAbilityIcon(BUNDLE_NAME, MODULE_NAME3, ABILITY_NAME)
                     .then(data => {
                         console.info('[GetAbilityIcon_0300]Return data successful: ' + JSON.stringify(data));
-                        image = data;
-                        expect(image.getBytesNumberPerRow()).assertLarger(0);
+                        expect(data.getBytesNumberPerRow()).assertLarger(0);
                     }).catch((err) => {
                         console.error('[GetAbilityIcon_0300]Operation failed. Err: ' + JSON.stringify(err));
                         expect(err).assertFail();
                     });
                 bundle.getAbilityIcon(BUNDLE_NAME, MODULE_NAME3, ABILITY_NAME, (err, data) => {
                     expect(err).assertEqual(SUCCESS_CODE);
-                    expect(image.getBytesNumberPerRow()).assertLarger(0);
+                    expect(data.getBytesNumberPerRow()).assertLarger(0);
                     if (err) {
                         console.error('[GetAbilityIcon_0300]Operation failed. Err: ' + JSON.stringify(err));
                     }
