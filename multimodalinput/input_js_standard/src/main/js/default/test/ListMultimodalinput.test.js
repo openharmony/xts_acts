@@ -15,4 +15,4 @@
 
 
 require('./InputDevice.test.js')
-require('./MultimodalinputKey_Code.test.js')
+require('./MultimodalInputKey_Code.test.js')
