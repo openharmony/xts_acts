@@ -655,7 +655,7 @@ export default function socketJsunit() {
         broadcast: true
       }
 	  try{
-		udp.setExtraOptions(udpExtraOptions, funtion(error,data) {
+		udp.setExtraOptions(udpExtraOptions, function(error,data) {
 		  if (error) {
 			expect().assertFail();
 			console.log(`${caseName} error, case failed,error: ` + JSON.stringify(error));
