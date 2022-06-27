@@ -12,14 +12,14 @@
             "server": "NfsServer",
             "mount": [
                 {
-                    "source": "testcases/utils",
-                    "target": "/test_root/utils"
+                    "source": "testcases/distributeddatamgr",
+                    "target": "/test_root/distributeddatamgr"
                 }
             ]
         }
     ],
     "driver": {
         "type": "CppTestLite",
-        "execute": "/test_root/utils/ActsKvStoreTest.bin"
+        "execute": "/test_root/distributeddatamgr/ActsKvStoreTest.bin"
     }
 }

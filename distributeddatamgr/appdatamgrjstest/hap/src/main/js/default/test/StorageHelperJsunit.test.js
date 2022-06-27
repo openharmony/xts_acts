@@ -19,7 +19,7 @@ import storage from '@ohos.data.storage'
 const PATH = '/data/storage/el2/database/test_storage';
 var mPref;
 
-describe('storageTest', function () {
+describe('storageTest_storage3', function () {
     beforeAll(function () {
         console.info('beforeAll')
         mPref = storage.getStorageSync(PATH);
@@ -61,6 +61,21 @@ describe('storageTest', function () {
         await promise;
         done();
     })
+	
+	/**
+     * @tc.name getStorage callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_Callback_0020
+     * @tc.desc getStorage callback interface test
+     */
+    it('testGetStorageCallback0020', 0, async function (done) {
+        storage.getStorage(PATH,(err,pref)=>{
+            pref.putSync('test', 2);
+            pref.flushSync();
+            var value = mPref.getSync('test', 0);
+            expect(value).assertEqual(2);
+        });
+        done();
+    })
 
     /**
      * @tc.name removeStorageFromCacheSync interface test
@@ -93,6 +108,20 @@ describe('storageTest', function () {
             expect(null).assertFail();
         });
         await promise;
+        done();
+    })
+	
+    /**
+     * @tc.name removeStorageFromCache callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_Helper_0042
+     * @tc.desc removeStorageFromCache callback interface test
+     */
+    it('testRemoveStorageFromCache004', 0, async function (done) {
+        let perf = storage.getStorageSync('/data/test_storage2');
+        perf = null;
+        storage.removeStorageFromCache('/data/test_storage2',(err,pref)=>{
+			expect(err == null).assertTrue();
+		});
         done();
     })
 
@@ -150,6 +179,20 @@ describe('storageTest', function () {
             expect(null).assertFail();
         });
         await promise;
+        done();
+    })
+	
+	/**
+     * @tc.name deleteStorag callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_Callback_0070
+     * @tc.desc deleteStorage interface test
+     */
+    it('testDeleteStoragCallback0070', 0, async function (done) {
+        let perf = storage.getStorageSync('/data/test_storage4');
+        perf = null;
+        storage.deleteStorage('/data/test_storage4',(err)=>{
+			expect(err == null).assertTrue();
+		});
         done();
     })
 })
