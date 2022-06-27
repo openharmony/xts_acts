@@ -44,8 +44,6 @@ describe('VideoPlayerEnumTest', function () {
     it('SUB_MEDIA_VIDEO_PLAYER_ENUM_SEEK_MODE_00_0100', 0, async function (done) {
         expect(media.SeekMode.SEEK_NEXT_SYNC).assertEqual(0);
         expect(media.SeekMode.SEEK_PREV_SYNC).assertEqual(1);
-        expect(media.SeekMode.SEEK_CLOSEST_SYNC).assertEqual(2);
-        expect(media.SeekMode.SEEK_CLOSEST).assertEqual(3);
         done();
     })
 
@@ -68,20 +66,6 @@ describe('VideoPlayerEnumTest', function () {
         expect(media.MediaErrorCode.MSERR_SERVICE_DIED).assertEqual(7);
         expect(media.MediaErrorCode.MSERR_INVALID_STATE).assertEqual(8);
         expect(media.MediaErrorCode.MSERR_UNSUPPORTED).assertEqual(9);
-        done();
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_ENUM_AV_DATA_SOURCE_ERROR_00_0100
-        * @tc.name      : AVDataSourceError
-        * @tc.desc      : AVDataSourceError Enumeration test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_ENUM_AV_DATA_SOURCE_ERROR_00_0100', 0, async function (done) {
-        expect(media.AVDataSourceError.SOURCE_ERROR_IO).assertEqual(-2);
-        expect(media.AVDataSourceError.SOURCE_ERROR_EOF).assertEqual(-1);
         done();
     })
 
@@ -143,7 +127,6 @@ describe('VideoPlayerEnumTest', function () {
     it('SUB_MEDIA_VIDEO_PLAYER_ENUM_MEDIA_TYPE_00_0100', 0, async function (done) {
         expect(media.MediaType.MEDIA_TYPE_AUD).assertEqual(0);
         expect(media.MediaType.MEDIA_TYPE_VID).assertEqual(1);
-        expect(media.MediaType.MEDIA_TYPE_SUBTITLE).assertEqual(2);
         done();
     })
 
