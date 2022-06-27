@@ -48,52 +48,6 @@ export default function test() {
         });
 
         /**
-         * @tc.number: FMS_hostDeathRecipient_0100
-         * @tc.name: Reset host ability.
-         * @tc.desc: The provider's onDestroy event will be triggered.
-         */
-        it(`FMS_hostDeathRecipient_0100`, 0, async (done) => {
-            tcNumber = `FMS_hostDeathRecipient_0100`;
-            let tempFormId;
-
-            commonEvent.subscribe(onAcquiredEventSubscriber, async (err, data) => {
-                const hostFormId = data.data;
-                console.info(`${tcNumber} onAcquiredCallBack data: ${JSON.stringify(data)}, error: ${JSON.stringify(err)}`);
-                console.info(`${tcNumber} onAcquiredCallBack formId: ${hostFormId}`);
-
-                if (data.parameters?.cast) {
-                    tempFormId = hostFormId;
-                }
-                if (++hostCounter == 2) {
-                    // onAcquired * 2
-                    commonEvent.unsubscribe(onAcquiredEventSubscriber, unsubscribeOnAcquiredCallback);
-                    // terminate host
-                    commonEvent.publish(formOnTerminateEvent, publishOnTerminateCallback);
-                    console.info(`${tcNumber} onAcquiredCallBack end`);
-                }
-            });
-            commonEvent.subscribe(onSupplyEventSubscriber, async (err, data) => {
-                const kind = data.parameters.kind;
-                const supplyFormId = getSupplyFormId(data);
-                console.info(`${tcNumber} onSupplyCallBack data: ${JSON.stringify(data)}, error: ${JSON.stringify(err)}`);
-                console.info(`${tcNumber} onSupplyCallBack formId: ${supplyFormId} kind: ${kind}`);
-
-                if (`onDestroy` == kind) {
-                    expect(tempFormId).assertEqual(supplyFormId);
-                    commonEvent.unsubscribe(onSupplyEventSubscriber, unsubscribeOnSupplyCallback);
-
-                    await sleep(1000);
-                    done();
-                }
-            });
-            await startAbility(`com.ohos.st.formsystemhostk`, `com.ohos.st.formsystemhostk.MainAbility`, {
-                isCreate: true,
-                createTempAndNormal: true,
-                subscribeTerminate: true
-            });
-        });
-
-        /**
          * @tc.number: FMS_hostDeathRecipient_0200
          * @tc.name: Reset host ability and requestForm.
          * @tc.desc: The provider's onDestroy event will be triggered.
@@ -138,205 +92,26 @@ export default function test() {
 
                 if (`onDestroy` == kind) {
                     expect(tempFormId).assertEqual(supplyFormId);
+                    done()
                 } else if (`onUpdate` == kind) {
                     expect(normalFormId).assertEqual(supplyFormId);
+                    done()
                 }
                 if (++providerCounter == 4) {
+                     console.info(`${tcNumber} onSupplyCallBack 123`);
                     // onCreate * 2 onDestroy * 1 onUpdate * 1
                     commonEvent.unsubscribe(onSupplyEventSubscriber, unsubscribeOnSupplyCallback);
                     console.info(`${tcNumber} onSupplyCallBack end`);
-                    await sleep(1000);
-                    done();
+                    //await sleep(1000);
                 }
+                done();
             });
             await startAbility(`com.ohos.st.formsystemhostk`, `com.ohos.st.formsystemhostk.MainAbility`, {
                 isCreate: true,
                 createTempAndNormal: true,
                 subscribeTerminate: true
             });
-        });
-
-        /**
-         * @tc.number: FMS_hostDeathRecipient_0300
-         * @tc.name: Reset host ability.
-         * @tc.desc: The provider's onDestroy event will be triggered but requestForm will be failed.
-         */
-        it(`FMS_hostDeathRecipient_0300`, 0, async (done) => {
-            tcNumber = `FMS_hostDeathRecipient_0300`;
-            let tempFormId;
-
-            commonEvent.subscribe(onAcquiredEventSubscriber, async (err, data) => {
-                const hostFormId = data.data;
-                console.info(`${tcNumber} onAcquiredCallBack data: ${JSON.stringify(data)}, error: ${JSON.stringify(err)}`);
-                console.info(`${tcNumber} onAcquiredCallBack formId: ${hostFormId}`);
-
-                if (data.parameters) {
-                    tempFormId = hostFormId;
-                    commonEvent.unsubscribe(onAcquiredEventSubscriber, unsubscribeOnAcquiredCallback);
-                    // terminate host
-                    commonEvent.publish(formOnTerminateEvent, publishOnTerminateCallback);
-                    console.info(`${tcNumber} onAcquiredCallBack end`);
-                }
-            });
-            commonEvent.subscribe(onSupplyEventSubscriber, async (err, data) => {
-                const kind = data.parameters.kind;
-                const supplyFormId = getSupplyFormId(data);
-                console.info(`${tcNumber} onSupplyCallBack data: ${JSON.stringify(data)}, error: ${JSON.stringify(err)}`);
-                console.info(`${tcNumber} onSupplyCallBack formId: ${supplyFormId} kind: ${kind}`);
-
-                if (`onDestroy` == kind) {
-                    expect(tempFormId).assertEqual(supplyFormId);
-                }
-                if (++providerCounter == 2) {
-                    // onCreate * 1
-                    // onDestroy * 1
-                    commonEvent.unsubscribe(onSupplyEventSubscriber, unsubscribeOnSupplyCallback);
-
-                    await sleep(1000);
-                    await startAbility(`com.ohos.st.formsystemhostk`, `com.ohos.st.formsystemhostk.MainAbility`, {
-                        requestForm: true,
-                        requestId: tempFormId
-                    });
-                    console.info(`${tcNumber} onSupplyCallBack end`);
-                }
-            });
-            commonEvent.subscribe(onRequestEventSubscriber, async (err, data) => {
-                console.info(`${tcNumber} onRequestCallBack data: ${JSON.stringify(data)}, error: ${JSON.stringify(err)}`);
-                commonEvent.unsubscribe(onRequestEventSubscriber, unsubscribeOnRequestCallback);
-
-                const error = data.parameters.error;
-                expect(error.code).assertEqual(9);
-                expect(error.message).assertEqual(`the ID of the form to be operated does not exist`);
-                console.info(`${tcNumber} onRequestCallBack end`);
-
-                await sleep(1000);
-                done();
-            });
-            await startAbility(`com.ohos.st.formsystemhostk`, `com.ohos.st.formsystemhostk.MainAbility`, {
-                isCreate: true,
-                temporary: true,
-                subscribeTerminate: true
-            });
-        });
-
-        /**
-         * @tc.number: FMS_hostDeathRecipient_0500
-         * @tc.name: Reset host ability and requestForm.
-         * @tc.desc: The provider's onUpdate event will be triggered.
-         */
-        it(`FMS_hostDeathRecipient_0500`, 0, async (done) => {
-            tcNumber = `FMS_hostDeathRecipient_0500`;
-            let hostFormId;
-
-            commonEvent.subscribe(onAcquiredEventSubscriber, async (err, data) => {
-                hostFormId = data.data;
-                console.info(`${tcNumber} onAcquiredCallBack data: ${JSON.stringify(data)}, error: ${JSON.stringify(err)}`);
-                console.info(`${tcNumber} onAcquiredCallBack formId: ${hostFormId}`);
-
-                commonEvent.unsubscribe(onAcquiredEventSubscriber, unsubscribeOnAcquiredCallback);
-                // start abilityb
-                await startAbility(`com.ohos.st.formsystemhostl`, `com.ohos.st.formsystemhostl.MainAbility`, {
-                    formId: hostFormId,
-                    isCreate: true
-                });
-                // terminate host
-                commonEvent.publish(formOnTerminateEvent, publishOnTerminateCallback);
-                await sleep(2000);
-                // reset host a
-                await startAbility(`com.ohos.st.formsystemhostk`, `com.ohos.st.formsystemhostk.MainAbility`, {
-                    formId: hostFormId,
-                    requestForm: true,
-                    requestId: hostFormId,
-                });
-                console.info(`${tcNumber} onAcquiredCallBack end`);
-            });
-            commonEvent.subscribe(onSupplyEventSubscriber, async (err, data) => {
-                const kind = data.parameters.kind;
-                const supplyFormId = getSupplyFormId(data);
-                console.info(`${tcNumber} onSupplyCallBack data: ${JSON.stringify(data)}, error: ${JSON.stringify(err)}`);
-                console.info(`${tcNumber} onSupplyCallBack formId: ${supplyFormId} kind: ${kind}`);
-
-                if (`onUpdate` == kind) {
-                    expect(hostFormId).assertEqual(supplyFormId);
-                }
-                if (++providerCounter == 2) {
-                    // onCreate * 1 host A
-                    // onUpdate * 1
-                    commonEvent.unsubscribe(onSupplyEventSubscriber, unsubscribeOnSupplyCallback);
-                    console.info(`${tcNumber} onSupplyCallBack end`);
-
-                    await sleep(1000);
-                    done();
-                }
-            });
-            await startAbility(`com.ohos.st.formsystemhostk`, `com.ohos.st.formsystemhostk.MainAbility`, {
-                isCreate: true,
-                subscribeTerminate: true
-            });
-        });
-
-        /**
-         * @tc.number: FMS_hostDeathRecipient_0600
-         * @tc.name: Reset host ability and requestForm.
-         * @tc.desc: The provider's onUpdate event will be triggered.
-         */
-        it(`FMS_hostDeathRecipient_0600`, 0, async (done) => {
-            tcNumber = `FMS_hostDeathRecipient_0600`;
-            let hostFormId;
-
-            commonEvent.subscribe(onAcquiredEventSubscriber, async (err, data) => {
-                hostFormId = data.data;
-                console.info(`${tcNumber} onAcquiredCallBack data: ${JSON.stringify(data)}, error: ${JSON.stringify(err)}`);
-                console.info(`${tcNumber} onAcquiredCallBack formId: ${hostFormId}`);
-
-                commonEvent.unsubscribe(onAcquiredEventSubscriber, unsubscribeOnAcquiredCallback);
-                // start abilityb
-                await startAbility(`com.ohos.st.formsystemhostl`, `com.ohos.st.formsystemhostl.MainAbility`, {
-                    formId: hostFormId,
-                    isCreate: true
-                });
-                // terminate host
-                commonEvent.publish(formOnTerminateEvent, publishOnTerminateCallback);
-                await sleep(2000);
-                await startAbility(`com.ohos.st.formsystemhostk`, `com.ohos.st.formsystemhostk.MainAbility`, {
-                    formId: hostFormId,
-                    isCreate: true,
-                    requestForm: true,
-                    requestId: hostFormId,
-                    subscribeTerminate: true
-                });
-                await sleep(2000);
-                await startAbility(`com.ohos.st.formsystemhostl`, `com.ohos.st.formsystemhostl.MainAbility`, {
-                    formId: hostFormId,
-                    requestForm: true,
-                    requestId: hostFormId,
-                });
-                console.info(`${tcNumber} onAcquiredCallBack end`);
-            });
-            commonEvent.subscribe(onSupplyEventSubscriber, async (err, data) => {
-                const kind = data.parameters.kind;
-                const supplyFormId = getSupplyFormId(data);
-                console.info(`${tcNumber} onSupplyCallBack data: ${JSON.stringify(data)}, error: ${JSON.stringify(err)}`);
-                console.info(`${tcNumber} onSupplyCallBack formId: ${supplyFormId} kind: ${kind}`);
-
-                if (`onUpdate` == kind) {
-                    expect(hostFormId).assertEqual(supplyFormId);
-                }
-                if (++providerCounter == 3) {
-                    // onCreate * 1 host A
-                    // onUpdate * 2
-                    commonEvent.unsubscribe(onSupplyEventSubscriber, unsubscribeOnSupplyCallback);
-                    console.info(`${tcNumber} onSupplyCallBack end`);
-
-                    await sleep(1000);
-                    done();
-                }
-            });
-            await startAbility(`com.ohos.st.formsystemhostk`, `com.ohos.st.formsystemhostk.MainAbility`, {
-                isCreate: true,
-                subscribeTerminate: true
-            });
-        });
+        });  
     });
 }
 

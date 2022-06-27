@@ -14,7 +14,6 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
 import commonEvent from '@ohos.commonEvent'
-import missionManager from '@ohos.application.missionManager'
 
 const MAX_MISSION_NUM = 1024;
 
@@ -62,22 +61,6 @@ class MySequenceable {
     this.result = messageParcel.readString();
     return true;
   }
-}
-
-function getMissionId(abilityName, state) {
-  return new Promise(async (resolve, reject) => {
-    let missionId = -1;
-    let missionInfos = await missionManager.getMissionInfos('', MAX_MISSION_NUM);
-    for (let i = 0; i < missionInfos.length; i++) {
-      if ((missionInfos[i].want.abilityName == abilityName)
-      && (missionInfos[i].runningState == state)) {
-        missionId = missionInfos[i].missionId;
-        break;
-      }
-    }
-    console.log('======>getMissionId resolve missionId<=======' + missionId);
-    resolve(missionId);
-  })
 }
 
 function delay(time) {
