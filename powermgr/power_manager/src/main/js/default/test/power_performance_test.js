@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import runningLock from '@ohos.runningLock';
+import runningLock from '@ohos.runninglock';
 import power from '@ohos.power';
 import brightness from '@ohos.brightness';
 import { describe, it, expect } from 'deccjsunit/index';
