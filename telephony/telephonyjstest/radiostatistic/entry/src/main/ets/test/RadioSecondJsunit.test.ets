@@ -200,6 +200,11 @@ export default function radioSecondJsunit() {
      * @tc.desc    Test getRadioTech() api by callback, SlotId parameter input is 0
      */
     it('Telephony_NetworkSearch_getRadioTech_Async_0500', 0, async function (done) {
+      if (utils.notCheck) {
+        expect(true).assertTrue();
+        done();
+        return;
+      }
         radio.getRadioTech(0, (err, data) => {
             if (err) {
                 console.log(`Telephony_NetworkSearch_getRadioTech_Async_0500 fail err: ${err}`);
@@ -219,6 +224,11 @@ export default function radioSecondJsunit() {
      * @tc.desc    SlotId parameter input is 0, test getRadioTech() api by promise.
      */
     it('Telephony_NetworkSearch_getRadioTech_Promise_0500', 0, async function (done) {
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
         try {
             let data = await radio.getRadioTech(0);
             console.log('Telephony_NetworkSearch_getRadioTech_Promise_0500 success');
@@ -287,6 +297,11 @@ export default function radioSecondJsunit() {
      * @tc.desc    SlotId parameter input is 0, test getISOCountryCodeForNetwork() api by callback.
      */
     it('Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0500', 0, async function (done) {
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
         radio.getISOCountryCodeForNetwork(0, (err, data) => {
             if (err) {
                 console.log(`Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0500 fail err: ${err}`);
@@ -307,6 +322,11 @@ export default function radioSecondJsunit() {
      * @tc.desc    SlotId parameter input is 0, test getISOCountryCodeForNetwork() api by promise.
      */
     it('Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0500', 0, async function (done) {
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
         try {
             let data = await radio.getISOCountryCodeForNetwork(0);
             console.log(
@@ -327,6 +347,11 @@ export default function radioSecondJsunit() {
      * @tc.desc    SlotId parameter input is 0, test getSignalInformation() api by callback.
      */
     it('Telephony_NetworkSearch_getSignalInformation_Async_0500', 0, async function (done) {
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
         radio.getSignalInformation(0, (err, data) => {
             if (err) {
                 console.log(`Telephony_NetworkSearch_getSignalInformation_Async_0500 fail err: ${err}`);
@@ -346,6 +371,11 @@ export default function radioSecondJsunit() {
      * @tc.desc    SlotId parameter input is 0, test getSignalInformation() api by promise.
      */
     it('Telephony_NetworkSearch_getSignalInformation_Promise_0500', 0, async function (done) {
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
         try {
             let data = await radio.getSignalInformation(0);
             console.log(
