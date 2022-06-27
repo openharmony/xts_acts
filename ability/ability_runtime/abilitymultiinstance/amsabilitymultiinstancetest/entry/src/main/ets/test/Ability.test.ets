@@ -98,23 +98,6 @@ async function startAbilityProcess(abilityContext, parameters) {
   })
 }
 
-function getMissionId() {
-  return new Promise(async (resolve, reject) => {
-    var missionId = -1;
-    var missionInfos = await missionManager.getMissionInfos('', MAX_MISSION_NUM);
-    for (let i = 0; i < missionInfos.length; i++) {
-      console.log('getMissionId result: ' + i + '= ' + JSON.stringify(missionInfos[i]))
-      if ((missionInfos[i].want.abilityName == "com.example.amsabilitymultiinstancetest.MainAbility") &&
-      (missionInfos[i].runningState == 0)) {
-        missionId = missionInfos[i].missionId;
-        break;
-      }
-    }
-    console.log('======>getMissionId resolve missionId<=======' + missionId);
-    resolve(missionId);
-  })
-}
-
 export default function abilityTest(abilityContext) {
   describe('ActsAbilityTest', function () {
 
@@ -126,19 +109,6 @@ export default function abilityTest(abilityContext) {
     afterEach(async (done) => {
       let installer = await bundle.getBundleInstaller();
       var count = 0;
-      var testMissionId;
-
-      testMissionId = await getMissionId();
-      console.log('======>afterEach test missionId<=======' + testMissionId);
-      if (testMissionId != -1) {
-        await missionManager.moveMissionToFront(testMissionId);
-      }
-
-      await appManager.killProcessesByBundleName("com.example.amsabilitymultiinstanceappa");
-      await appManager.killProcessesByBundleName("com.example.amsabilitymultiinstanceappb");
-      await appManager.killProcessesByBundleName("com.example.amsabilitymultiinstanceappc");
-      await appManager.killProcessesByBundleName("com.example.amsabilitymultiinstanceappd");
-      await appManager.killProcessesByBundleName("com.example.amsabilitymultiinstanceappe");
       done();
     })
 

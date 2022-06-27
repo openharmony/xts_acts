@@ -18,6 +18,18 @@ import commonEvent from '@ohos.commonEvent'
 import missionManager from '@ohos.application.missionManager'
 import appManager from '@ohos.application.appManager'
 
+
+import formProvider from '@ohos.application.formProvider';
+import FormInfo from '@ohos.application.formInfo';
+import formError from '@ohos.application.formError';
+var EXTENSION_INFO_ERR = 2097152
+var USERID_ERR = 2097177
+var trueInfo;
+var array = new Array();
+function sleep(time) {
+  return new Promise((resolve)=>setTimeout(resolve,time));
+}
+
 const MAX_MISSION_NUM = 1024;
 var subscriberInfo = {
   events: ['onCreateMain_To_Test_CommonEvent',
@@ -31,41 +43,8 @@ var subscriberInfo = {
   ],
 };
 
-function getMissionId() {
-  return new Promise(async (resolve, reject) => {
-    var missionId = -1;
-    var missionInfos = await missionManager.getMissionInfos('', MAX_MISSION_NUM);
-    console.log('======>ACTS_NewWant_Test getMissionId missionInfos<=======' + missionInfos);
-    for (let i = 0; i < missionInfos.length; i++) {
-      console.log('getMissionId result: ' + i + '= ' + JSON.stringify(missionInfos[i]))
-      if ((missionInfos[i].want.abilityName == "com.example.newwanttest.MainAbility") &&
-        (missionInfos[i].runningState == 0)) {
-        missionId = missionInfos[i].missionId;
-        break;
-      }
-    }
-    console.log('======>ACTS_NewWant_Test getMissionId resolve missionId<=======' + missionId);
-    resolve(missionId);
-  })
-}
-
 export default function abilityTest(abilityContext) {
   describe('ActsNewWantTest', function () {
-
-    afterEach(async (done) => {
-
-      var testMissionId;
-      testMissionId = await getMissionId();
-      console.log('======>ACTS_NewWant_Test afterEach test missionId<=======' + testMissionId);
-      await missionManager.moveMissionToFront(testMissionId);
-      console.log('======>ACTS_NewWant_Test afterEach test move<=======');
-
-      await appManager.killProcessesByBundleName("com.example.newwanthapapi7");
-      await appManager.killProcessesByBundleName("com.example.newwanthapa");
-      await appManager.killProcessesByBundleName("com.example.newwanthap");
-
-      done();
-    })
 
     /**
      * @tc.number: ACTS_NewWant_Test_0100
@@ -80,6 +59,12 @@ export default function abilityTest(abilityContext) {
       var flagOnForeground = 0;
       var flagOnNewWant = 0;
 
+       commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+        console.debug("ACTS_NewWant_Test_0100====>Create Subscriber====>");
+        Subscriber = data;
+        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
+      })
+
       abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.MainAbility"
@@ -88,12 +73,7 @@ export default function abilityTest(abilityContext) {
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
 
-      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0100====>Create Subscriber====>");
-        Subscriber = data;
-        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-      })
-
+     
       function SubscribeCallBack(err, data) {
 
         console.debug("ACTS_NewWant_Test_0100====>Subscribe CallBack data:====>"
@@ -130,6 +110,7 @@ export default function abilityTest(abilityContext) {
           expect(flagOnNewWant).assertEqual(0);
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
+        done()
       }
 
       function UnSubscribeCallback() {
@@ -150,6 +131,12 @@ export default function abilityTest(abilityContext) {
       var flagOnWindowStageCreate = 0;
       var flagOnForeground = 0;
       var flagOnNewWant = 0;
+      
+      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+        console.debug("ACTS_NewWant_Test_0200====>Create Subscriber====>");
+        Subscriber = data;
+        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
+      })
 
       abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
@@ -157,12 +144,6 @@ export default function abilityTest(abilityContext) {
       }, (error, data) => {
         console.log('ACTS_NewWant_Test_0200 - startAbility start singleton: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
-      })
-
-      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0200====>Create Subscriber====>");
-        Subscriber = data;
-        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
       function SubscribeCallBack(err, data) {
@@ -201,6 +182,7 @@ export default function abilityTest(abilityContext) {
           expect(flagOnNewWant).assertEqual(0);
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
+        done()
       }
 
       function UnSubscribeCallback() {
@@ -222,6 +204,12 @@ export default function abilityTest(abilityContext) {
       var flagOnForeground = 0;
       var flagOnNewWant = 0;
 
+      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+        console.debug("ACTS_NewWant_Test_0300====>Create Subscriber====>");
+        Subscriber = data;
+        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
+      })
+
       abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.MainAbility",
@@ -229,12 +217,6 @@ export default function abilityTest(abilityContext) {
       }, (error, data) => {
         console.log('ACTS_NewWant_Test_0300 - startAbility start standard: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
-      })
-
-      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0300====>Create Subscriber====>");
-        Subscriber = data;
-        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
       function SubscribeCallBack(err, data) {
@@ -294,6 +276,12 @@ export default function abilityTest(abilityContext) {
       var flagOnForeground = 0;
       var flagOnNewWant = 0;
 
+      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+        console.debug("ACTS_NewWant_Test_0400====>Create Subscriber====>");
+        Subscriber = data;
+        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
+      })
+
       abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.SecondAbility",
@@ -301,13 +289,6 @@ export default function abilityTest(abilityContext) {
       }, (error, data) => {
         console.log('ACTS_NewWant_Test_0400 - startAbility start singleton: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
-      })
-
-
-      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0400====>Create Subscriber====>");
-        Subscriber = data;
-        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
       function SubscribeCallBack(err, data) {
@@ -348,6 +329,7 @@ export default function abilityTest(abilityContext) {
           expect(flagOnNewWant).assertEqual(1);
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
+        done()
       }
 
       function UnSubscribeCallback() {
@@ -369,6 +351,12 @@ export default function abilityTest(abilityContext) {
       var flagOnForeground = 0;
       var flagOnNewWant = 0;
 
+       commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+        console.debug("ACTS_NewWant_Test_0500====>Create Subscriber====>");
+        Subscriber = data;
+        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
+      })
+
       abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapb.MainAbility",
@@ -376,12 +364,6 @@ export default function abilityTest(abilityContext) {
       }, (error, data) => {
         console.log('ACTS_NewWant_Test_0500 - startAbility start HapB: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
-      })
-
-      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0500====>Create Subscriber====>");
-        Subscriber = data;
-        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
       function SubscribeCallBack(err, data) {
@@ -422,6 +404,7 @@ export default function abilityTest(abilityContext) {
           expect(flagOnNewWant).assertEqual(1);
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
+        done()
       }
 
       function UnSubscribeCallback() {
@@ -443,6 +426,12 @@ export default function abilityTest(abilityContext) {
       var flagOnForeground = 0;
       var flagOnNewWant = 0;
 
+       commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+        console.debug("ACTS_NewWant_Test_0600====>Create Subscriber====>");
+        Subscriber = data;
+        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
+      })
+
       abilityContext.startAbility({
         bundleName: "com.example.newwanthapa",
         abilityName: "com.example.newwanthapc.MainAbility",
@@ -450,12 +439,6 @@ export default function abilityTest(abilityContext) {
       }, (error, data) => {
         console.log('ACTS_NewWant_Test_0600 - startAbility start HapC: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
-      })
-
-      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0600====>Create Subscriber====>");
-        Subscriber = data;
-        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
       function SubscribeCallBack(err, data) {
@@ -496,6 +479,7 @@ export default function abilityTest(abilityContext) {
           expect(flagOnNewWant).assertEqual(1);
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
+        done()
       }
 
       function UnSubscribeCallback() {
@@ -517,6 +501,12 @@ export default function abilityTest(abilityContext) {
       var flagOnForeground = 0;
       var flagOnNewWant = 0;
 
+      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+        console.debug("ACTS_NewWant_Test_0700====>Create Subscriber====>");
+        Subscriber = data;
+        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
+      })
+
       abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.SecondAbility",
@@ -524,12 +514,6 @@ export default function abilityTest(abilityContext) {
       }, (error, data) => {
         console.log('ACTS_NewWant_Test_0700 - startAbility start SecondAbility: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
-      })
-
-      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0700====>Create Subscriber====>");
-        Subscriber = data;
-        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
       function SubscribeCallBack(err, data) {
@@ -570,6 +554,7 @@ export default function abilityTest(abilityContext) {
           expect(flagOnNewWant).assertEqual(1);
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
+        done()
       }
       function UnSubscribeCallback() {
         console.debug("ACTS_NewWant_Test_0700====>UnSubscribe CallBack====>");
@@ -590,6 +575,12 @@ export default function abilityTest(abilityContext) {
       var flagOnForeground = 0;
       var flagOnNewWant = 0;
 
+      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+        console.debug("ACTS_NewWant_Test_0800====>Create Subscriber====>");
+        Subscriber = data;
+        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
+      })
+
       abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.SecondAbility",
@@ -599,12 +590,7 @@ export default function abilityTest(abilityContext) {
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
 
-      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
-        console.debug("ACTS_NewWant_Test_0800====>Create Subscriber====>");
-        Subscriber = data;
-        await commonEvent.subscribe(Subscriber, SubscribeCallBack);
-      })
-
+      
       function SubscribeCallBack(err, data) {
 
         console.debug("ACTS_NewWant_Test_0800====>Subscribe CallBack data:====>"
@@ -643,11 +629,381 @@ export default function abilityTest(abilityContext) {
           expect(flagOnNewWant).assertEqual(1);
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
+        done()
       }
       function UnSubscribeCallback() {
         console.debug("ACTS_NewWant_Test_0800====>UnSubscribe CallBack====>");
         done();
       }
     })
+
+
+    /*
+     * @tc.number  SUB_AA_ABILITY_Extension_API_001
+     * @tc.name    StartServiceExtensionAbility with incorrect abilityName.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ABILITY_Extension_API_001', 0, async function (done) {
+      await sleep(2000);
+      let want = {
+        bundleName: "com.example.extensionapitest",
+        abilityName: "FirstExtension1"
+      };
+      await globalThis.AbilityContext.startServiceExtensionAbility(want).then((data) => {
+        console.log('Ability: startServiceExtensionAbility success:' + JSON.stringify(data));
+        expect("case execute failed").assertEqual(data);
+      }).catch((error) => {
+        console.error(`Ability: startServiceExtensionAbility failed: ${JSON.stringify(error)}`);
+        expect(EXTENSION_INFO_ERR).assertEqual(error.code);
+      })
+      done()
+    })
+
+    /*
+     * @tc.number  SUB_AA_ABILITY_Extension_API_002
+     * @tc.name    StopServiceExtensionAbility with incorrect bundleName.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ABILITY_Extension_API_002', 0, async function (done) {
+      await sleep(2000);
+      let want = {
+        bundleName: "com.example.extensionapitest1",
+        abilityName: "FirstExtension"
+      };
+      await globalThis.AbilityContext.stopServiceExtensionAbility(want).then((data) => {
+        console.log(`Ability: stopServiceExtensionAbility success: ${JSON.stringify(data)}`);
+        expect("case execute failed").assertEqual(data);
+      }).catch((error) => {
+        console.error(`Ability: stopServiceExtensionAbility failed: ${JSON.stringify(error)}`);
+        expect(EXTENSION_INFO_ERR).assertEqual(error.code);
+      })
+      done()
+    })
+
+    /*
+     * @tc.number  SUB_AA_ABILITY_Extension_API_003
+     * @tc.name    startServiceExtensionAbilityWithAccount with incorrect userId.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ABILITY_Extension_API_003', 0, async function (done) {
+      await sleep(2000);
+      let want = {
+        bundleName: "com.example.extensionapitest",
+        abilityName: "FirstExtension"
+      };
+      await globalThis.AbilityContext.startServiceExtensionAbilityWithAccount(want, 999).then((data) => {
+        console.log(`Ability: startServiceExtensionAbilityWithAccount success: ${JSON.stringify(data)}`);
+        expect("case execute failed").assertEqual("data");
+      }).catch((error) => {
+        console.error(`Ability: startServiceExtensionAbilityWithAccount failed: ${JSON.stringify(error)}`);
+        expect(USERID_ERR).assertEqual(error.code);
+      })
+      done()
+    })
+
+    /*
+     * @tc.number  SUB_AA_ABILITY_Extension_API_004
+     * @tc.name    stopServiceExtensionAbilityWithAccount with incorrect userId.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ABILITY_Extension_API_004', 0, async function (done) {
+      await sleep(2000);
+      let want = {
+        bundleName: "com.example.extensionapitest",
+        abilityName: "FirstExtension"
+      };
+      await globalThis.AbilityContext.stopServiceExtensionAbilityWithAccount(want, 999).then((data) => {
+        console.log(`Ability: stopServiceExtensionAbilityWithAccount success: ${JSON.stringify(data)}`);
+        expect("case execute failed").assertEqual(data);
+      }).catch((error) => {
+        console.error(`Ability: stopServiceExtensionAbilityWithAccount failed: ${JSON.stringify(error)}`);
+        expect(USERID_ERR).assertEqual(error.code);
+      })
+      done()
+    })
+
+    /*
+     * @tc.number  SUB_AA_ABILITY_Extension_API_005
+     * @tc.name    StartServiceExtensionAbility with incorrect abilityName.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ABILITY_Extension_API_005', 0, async function (done) {
+      await sleep(2000);
+      let want = {
+        bundleName: "com.example.extensionapitest",
+        abilityName: "FirstExtension1"
+      }
+      await globalThis.AbilityContext.startServiceExtensionAbility(want, (err, data) => {
+        if (err.code) {
+          console.error(`Ability: startServiceExtensionAbility failed: ${JSON.stringify(err)}`);
+          expect(EXTENSION_INFO_ERR).assertEqual(err.code);
+        } else {
+          console.log(`Ability: startServiceExtensionAbility success: ${JSON.stringify(data)}`);
+          expect("case execute failed").assertEqual(data);
+        }
+        done()
+      })
+    })
+
+    /*
+     * @tc.number  SUB_AA_ABILITY_Extension_API_006
+     * @tc.name    StopServiceExtensionAbility with incorrect bundleName.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ABILITY_Extension_API_006', 0, async function (done) {
+      await sleep(2000);
+      let want = {
+        bundleName: "com.example.extensionapitest1",
+        abilityName: "FirstExtension"
+      };
+      await globalThis.AbilityContext.stopServiceExtensionAbility(want, (err, data) => {
+        if (err.code) {
+          console.error(`Ability: stopServiceExtensionAbility failed: ${JSON.stringify(err)}`);
+          expect(EXTENSION_INFO_ERR).assertEqual(err.code);
+        } else {
+          console.log(`Ability: stopServiceExtensionAbility success: ${JSON.stringify(data)}`);
+          expect("case execute failed").assertEqual(data);
+        }
+        done()
+      })
+      done()
+    })
+
+    /*
+     * @tc.number  SUB_AA_ABILITY_Extension_API_007
+     * @tc.name    startServiceExtensionAbilityWithAccount with incorrect userId.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ABILITY_Extension_API_007', 0, async function (done) {
+      await sleep(2000);
+      let want = {
+        bundleName: "com.example.extensionapitest",
+        abilityName: "FirstExtension"
+      };
+      await globalThis.AbilityContext.startServiceExtensionAbilityWithAccount(want, 999, (err, data) => {
+        if (err.code) {
+          console.error(`Ability: startServiceExtensionAbilityWithAccount failed: ${JSON.stringify(err)}`);
+          expect(USERID_ERR).assertEqual(err.code);
+        } else {
+          console.log(`Ability: startServiceExtensionAbilityWithAccount success: ${JSON.stringify(data)}`);
+          expect("case execute failed").assertEqual(data);
+        }
+        done()
+      })
+    })
+
+    /*
+     * @tc.number  SUB_AA_ABILITY_Extension_API_008
+     * @tc.name    stopServiceExtensionAbilityWithAccount with incorrect userId.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ABILITY_Extension_API_008', 0, async function (done) {
+      await sleep(2000);
+      let want = {
+        bundleName: "com.example.extensionapitest",
+        abilityName: "FirstExtension"
+      };
+      globalThis.AbilityContext.stopServiceExtensionAbilityWithAccount(want, 999, (err, data) => {
+        if (err.code) {
+          console.error(`Ability: stopServiceExtensionAbilityWithAccount failed: ${JSON.stringify(err)}`);
+          expect(USERID_ERR).assertEqual(err.code);
+        } else {
+          console.log(`Ability: stopServiceExtensionAbilityWithAccount success: ${JSON.stringify(data)}`);
+          expect("case execute failed").assertEqual(data);
+        }
+        done()
+      })
+    })
+
+    /*
+     * @tc.number  SUB_AA_AMS_Context_0100
+     * @tc.name    Get the resource and path of the context.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_AMS_Context_0100', 0, async function (done) {
+      expect("/data/storage/el2/base/haps/entry_test/cache").assertEqual(globalThis.AbilityContext.cacheDir)
+      expect("/data/storage/el2/base/haps/entry_test/temp").assertEqual(globalThis.AbilityContext.tempDir)
+      expect("/data/storage/el2/base/haps/entry_test/files").assertEqual(globalThis.AbilityContext.filesDir)
+      expect("/data/storage/el2/database/entry_test").assertEqual(globalThis.AbilityContext.databaseDir)
+      expect("/data/storage/el2/base/haps/entry_test/preferences").assertEqual(globalThis.AbilityContext.preferencesDir)
+      expect("/data/storage/el1/bundle").assertEqual(globalThis.AbilityContext.bundleCodeDir)
+      expect("/data/storage/el2/distributedfiles").assertEqual(globalThis.AbilityContext.distributedFilesDir)
+      expect(1).assertEqual(globalThis.AbilityContext.area)
+      globalThis.AbilityContext.resourceManager.getConfiguration((err, data) => {
+        if (err.code != 0 ) {
+          console.error(`Ability: getConfiguration failed: ${JSON.stringify(err)}`);
+          expect(USERID_ERR).assertEqual(err.code);
+          done()
+        } else {
+          console.log(`Ability: getConfiguration success: ${JSON.stringify(data)}`);
+          expect(1).assertEqual(data.direction)
+          done()
+        }
+      })
+      let moduleContext = globalThis.AbilityContext.createModuleContext("module1")
+      expect("/data/storage/el2/base/cache").assertEqual(moduleContext.cacheDir)
+      done()
+    })
+
+    /*
+     * @tc.number  SUB_AA_Form_provider_getFormsInfo_0100
+     * @tc.name    The provider calls the getFormsInfo interface to obtain form information.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_Form_provider_getFormsInfo_0100', 0, async function (done) {
+      console.info("SUB_AA_Form_provider_getFormsInfo_0100");
+      formProvider.getFormsInfo((err, value) => {
+        console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
+        console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
+        if (err.code != 0) {
+          expect(0).assertEqual(2)
+        } else {
+          for(let i = 0; i < value.length; i++){
+            if(value[i].bundleName == "com.example.extensionapitest" && value[i].name == "widget"){
+              trueInfo = value[i]
+              console.info("formProvider::GetFormsInfoTest trueInfo: " + JSON.stringify(trueInfo));
+            }
+          }
+        }
+        checkFormInfo(trueInfo)
+        done()
+      })
+      done()
+    })
+
+    /*
+     * @tc.number  SUB_AA_Form_provider_getFormsInfo_0200
+     * @tc.name    The provider calls the getFormsInfo interface to obtain form information in the module1.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_Form_provider_getFormsInfo_0200', 0, async function (done) {
+      console.info("SUB_AA_Form_provider_getFormsInfo_0200");
+      const filter: formInfo.FormInfoFilter = {
+        moduleName: "module1"
+      };
+      formProvider.getFormsInfo(filter, (err, value) => {
+        console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
+        console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
+        if (err.code != 0) {
+          expect(0).assertEqual(2)
+        } else {
+          if(value.length == 0){
+            expect(1).assertEqual(0)
+          }else{
+            for(let i = 0; i < value.length; i++){
+              if(value[i].bundleName == "com.example.extensionapitest" && value[i].name == "widget1"){
+                trueInfo = value[i]
+                console.info("formProvider::GetFormsInfoTest trueInfo: " + JSON.stringify(trueInfo));
+              }
+            }
+          }
+        }
+        checkFormInfoModule1(trueInfo)
+        done();
+      })
+      done()
+    })
+
+    /*
+     * @tc.number  SUB_AA_Form_provider_TestFormErr_0100
+     * @tc.name    Get all FormError types.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_Form_provider_TestFormErr_0100', 0, async function (done) {
+      console.info("SUB_AA_Form_provider_TestFormErr_0100");
+      expect(7).assertEqual(formError.FormError.ERR_ADD_INVALID_PARAM)
+      expect(10).assertEqual(formError.FormError.ERR_BIND_PROVIDER_FAILED)
+      expect(8).assertEqual(formError.FormError.ERR_CFG_NOT_MATCH_ID)
+      expect(1).assertEqual(formError.FormError.ERR_COMMON)
+      expect(31).assertEqual(formError.FormError.ERR_FORM_DUPLICATE_ADDED)
+      expect(20).assertEqual(formError.FormError.ERR_FORM_FA_NOT_INSTALLED)
+      expect(18).assertEqual(formError.FormError.ERR_FORM_NO_SUCH_ABILITY)
+      expect(19).assertEqual(formError.FormError.ERR_FORM_NO_SUCH_DIMENSION)
+      expect(17).assertEqual(formError.FormError.ERR_FORM_NO_SUCH_MODULE)
+      expect(5).assertEqual(formError.FormError.ERR_GET_BUNDLE_FAILED)
+      expect(4).assertEqual(formError.FormError.ERR_GET_INFO_FAILED)
+      expect(6).assertEqual(formError.FormError.ERR_GET_LAYOUT_FAILED)
+      expect(36).assertEqual(formError.FormError.ERR_IN_RECOVERY)
+      expect(15).assertEqual(formError.FormError.ERR_MAX_FORMS_PER_CLIENT)
+      expect(12).assertEqual(formError.FormError.ERR_MAX_INSTANCES_PER_FORM)
+      expect(11).assertEqual(formError.FormError.ERR_MAX_SYSTEM_FORMS)
+      expect(16).assertEqual(formError.FormError.ERR_MAX_SYSTEM_TEMP_FORMS)
+      expect(9).assertEqual(formError.FormError.ERR_NOT_EXIST_ID)
+      expect(13).assertEqual(formError.FormError.ERR_OPERATION_FORM_NOT_SELF)
+      expect(2).assertEqual(formError.FormError.ERR_PERMISSION_DENY)
+      expect(14).assertEqual(formError.FormError.ERR_PROVIDER_DEL_FAIL)
+      expect(30).assertEqual(formError.FormError.ERR_SYSTEM_RESPONSES_FAILED)
+      done()
+    })
+
+    /*
+     * @tc.number  SUB_AA_Form_provider_TestFormInfo_0100
+     * @tc.name     Get all FormInfo types
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_Form_provider_TestFormInfo_0100', 0, async function (done) {
+      console.info("SUB_AA_Form_provider_TestFormInfo_0100");
+      expect("ohos.extra.param.key.form_dimension").assertEqual(FormInfo.FormParam.DIMENSION_KEY)
+      expect("ohos.extra.param.key.form_height").assertEqual(FormInfo.FormParam.HEIGHT_KEY)
+      expect("ohos.extra.param.key.module_name").assertEqual(FormInfo.FormParam.MODULE_NAME_KEY)
+      expect("ohos.extra.param.key.form_name").assertEqual(FormInfo.FormParam.NAME_KEY)
+      expect("ohos.extra.param.key.form_temporary").assertEqual(FormInfo.FormParam.TEMPORARY_KEY)
+      expect("ohos.extra.param.key.form_width").assertEqual(FormInfo.FormParam.WIDTH_KEY)
+      expect(0).assertEqual(FormInfo.FormState.DEFAULT)
+      expect(1).assertEqual(FormInfo.FormState.READY)
+      expect(-1).assertEqual(FormInfo.FormState.UNKNOWN)
+      expect(0).assertEqual(FormInfo.ColorMode.MODE_DARK)
+      expect(1).assertEqual(FormInfo.ColorMode.MODE_LIGHT)
+      done();
+    });
   })
+}
+function checkFormInfoModule1(formInfo){
+  console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(formInfo));
+  expect("com.example.extensionapitest").assertEqual(formInfo.bundleName)
+  expect("module1").assertEqual(formInfo.moduleName)
+  expect("FormAbility").assertEqual(formInfo.abilityName)
+  expect("widget1").assertEqual(formInfo.name)
+  expect("This is a service widget.").assertEqual(formInfo.description)
+  expect(FormInfo.FormType.JS).assertEqual(formInfo.type)
+  expect(FormInfo.ColorMode.MODE_DARK).assertEqual(formInfo.colorMode)
+  expect(1).assertEqual(formInfo.isDefault)
+  expect(1).assertEqual(formInfo.updateEnabled)
+  expect(0).assertEqual(formInfo.formVisibleNotify)
+  expect(undefined).assertEqual(formInfo.relatedBundleName)
+  expect("ability://xxxxx").assertEqual(formInfo.formConfigAbility)
+  expect(1).assertEqual(formInfo.updateDuration)
+  expect(2).assertEqual(formInfo.defaultDimension)
+  expect(2).assertEqual(formInfo.supportDimensions[0])
+}
+function checkFormInfo(formInfo){
+  console.info("formProvider::GetFormsInfoTest formInfo: " + JSON.stringify(formInfo));
+  expect("com.example.extensionapitest").assertEqual(formInfo.bundleName)
+  expect("entry").assertEqual(formInfo.moduleName)
+  expect("FormAbility").assertEqual(formInfo.abilityName)
+  expect("widget").assertEqual(formInfo.name)
+  expect("This is a service widget.").assertEqual(formInfo.description)
+  expect(FormInfo.FormType.JS).assertEqual(formInfo.type)
+  expect(FormInfo.ColorMode.MODE_AUTO).assertEqual(formInfo.colorMode)
+  expect(1).assertEqual(formInfo.isDefault)
+  expect(1).assertEqual(formInfo.updateEnabled)
+  expect(0).assertEqual(formInfo.formVisibleNotify)
+  expect(undefined).assertEqual(formInfo.relatedBundleName)
+  expect("ability://xxxxx").assertEqual(formInfo.formConfigAbility)
+  expect(1).assertEqual(formInfo.updateDuration)
+  expect(2).assertEqual(formInfo.defaultDimension)
+  expect(2).assertEqual(formInfo.supportDimensions[0])
 }
