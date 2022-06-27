@@ -56,7 +56,7 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
         let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
         let permissionName2 = 'ohos.permission.READ_MEDIA';
         let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-        permissionNameList = [permissionName1, permissionName2, permissionName3];
+        let permissionNameList = [permissionName1, permissionName2, permissionName3];
         let appName = 'ohos.acts.multimedia.audio.codecformat';
         await mediaTestBase.applyPermission(appName, permissionNameList);
         console.info('beforeAll case after get permission');
@@ -75,7 +75,6 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
                 audioEncodeProcessor = null;
             }, failCallback).catch(failCatch);
         }
-        await closeFdWrite();
     })
 
     afterAll(function() {
@@ -139,6 +138,7 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
                 audioEncodeProcessor = null;
             }, failCallback).catch(failCatch);
         }
+        await closeFdRead();
         await closeFdWrite();
     }
 
@@ -171,6 +171,12 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
         })
     }
 
+    async function closeFdRead() {
+        await fileio.close(fdRead).then(() => {
+            console.info('[fileio] case close fdRead success, fd is ' + fdRead);
+        }, failCallback).catch(failCatch);
+    }
+    
     async function closeFdWrite() {
         if (fileAssetWrite != null) {
             await fileAssetWrite[0].close(fdWrite).then(() => {
@@ -216,7 +222,7 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
     function getContent(buf, len) {
         console.info("case start get content");
         let lengthreal = -1;
-        lengthreal = readStreamSync.readSync(buf,{length:len});
+        lengthreal = fileio.readSync(fdRead, buf, {length:len});
         console.info('case lengthreal is :' + lengthreal);
     }
 
@@ -419,7 +425,6 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
         }, failCallback).catch(failCatch);
         await audioEncodeProcessor.configure(mediaDescription).then(() => {
             console.info("case configure success");
-            readFile(readPath);
         }, failCallback).catch(failCatch);
         setCallback(function(){eventEmitter.emit('nextStep', done);}, done);
         await audioEncodeProcessor.prepare().then(() => {

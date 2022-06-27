@@ -92,6 +92,7 @@ describe('AudioEncoderReliabilityPromise', function () {
             }, failCallback).catch(failCatch);
             audioEncodeProcessor = null;
         }
+        await fileio.close(fdRead);
     })
 
     afterAll(async function() {
@@ -159,7 +160,7 @@ describe('AudioEncoderReliabilityPromise', function () {
     function getContent(buf, len) {
         console.info("case start get content");
         let lengthreal = -1;
-        lengthreal = readStreamSync.readSync(buf,{length:len});
+        lengthreal = fileio.readSync(fdRead, buf, {length:len});
         console.info('case lengthreal is :' + lengthreal);
     }
 
@@ -200,7 +201,6 @@ describe('AudioEncoderReliabilityPromise', function () {
                 console.info(`case to configure`);
                 audioEncodeProcessor.configure(mediaDescription).then(() => {
                     console.info(`case configure 1`);
-                    readFile(AUDIOPATH);
                     nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
@@ -218,7 +218,6 @@ describe('AudioEncoderReliabilityPromise', function () {
                 if (sawOutputEOS) {
                     resetParam();
                     await getFdRead(AUDIOPATH, done);
-                    readFile(AUDIOPATH);
                     workdoneAtEOS = true;
                     enqueueInputs(inputQueue);
                 }
@@ -237,7 +236,6 @@ describe('AudioEncoderReliabilityPromise', function () {
                     if (flushAtEOS) {
                         await getFdRead(AUDIOPATH, done);
                         resetParam();
-                        readFile(AUDIOPATH);
                         workdoneAtEOS = true;
                         flushAtEOS = false;
                     }

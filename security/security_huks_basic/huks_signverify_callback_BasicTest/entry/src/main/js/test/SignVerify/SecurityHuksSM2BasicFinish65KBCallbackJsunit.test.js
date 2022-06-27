@@ -34,7 +34,6 @@ describe('SecurityHuksSignVerifySM2CallbackJsunit', function () {
         };
         finishOutData = await publicSignVerifyFunc(
             srcKeyAlies,
-            srcKeyAlies + 'New',
             HuksOptions,
             'finish',
             true,

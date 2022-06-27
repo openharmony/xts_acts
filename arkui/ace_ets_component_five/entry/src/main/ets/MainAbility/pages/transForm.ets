@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.emitter'
+import events_emitter from '@ohos.events.emitter'
 import Matrix4 from '@ohos.matrix4'
 
 @Entry

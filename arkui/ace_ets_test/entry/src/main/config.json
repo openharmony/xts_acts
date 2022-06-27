@@ -41,7 +41,7 @@
         ],
         "orientation": "unspecified",
         "visible": true,
-        "srcPath": "",
+        "srcPath": "MainAbility",
         "name": ".MainAbility",
         "srcLanguage": "ets",
         "icon": "$media:icon",

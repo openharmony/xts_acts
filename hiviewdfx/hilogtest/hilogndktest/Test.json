@@ -1,0 +1,18 @@
+{
+    "description": "Configuration for hilogndktest demo Tests",
+    "driver": {
+        "type": "CppTest",
+        "native-test-timeout": "120000",
+        "module-name": "hilogndktest",
+        "runtime-hint": "ls",
+        "native-test-device-path": "/data/local/tmp"
+    },
+    "kits": [
+        {
+          "push": [
+               "hilogndktest->/data/local/tmp/hilogndktest"
+           ],
+           "type": "PushKit"
+        }
+    ]
+}

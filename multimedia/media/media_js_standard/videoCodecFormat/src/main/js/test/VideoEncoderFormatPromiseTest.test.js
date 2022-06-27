@@ -18,6 +18,7 @@ import mediademo from '@ohos.multimedia.mediademo'
 import fileio from '@ohos.fileio'
 import featureAbility from '@ohos.ability.featureAbility'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
+import * as mediaTestBase from '../../../../../MediaTestBase.js'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('VideoEncoderFormatPromise', function () {
@@ -43,7 +44,7 @@ describe('VideoEncoderFormatPromise', function () {
         let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
         let permissionName2 = 'ohos.permission.READ_MEDIA';
         let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-        permissionNameList = [permissionName1, permissionName2, permissionName3];
+        let permissionNameList = [permissionName1, permissionName2, permissionName3];
         let appName = 'ohos.acts.multimedia.video.codecformat';
         await mediaTestBase.applyPermission(appName, permissionNameList);
         console.info('beforeAll case after get permission');

@@ -54,7 +54,7 @@ describe('AudioDecoderFormatCallback', function () {
         let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
         let permissionName2 = 'ohos.permission.READ_MEDIA';
         let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-        permissionNameList = [permissionName1, permissionName2, permissionName3];
+        let permissionNameList = [permissionName1, permissionName2, permissionName3];
         let appName = 'ohos.acts.multimedia.audio.audiodecoder';
         await mediaTestBase.applyPermission(appName, permissionNameList);
         console.info('beforeAll case after get permission');
@@ -155,7 +155,7 @@ describe('AudioDecoderFormatCallback', function () {
     function getContent(buf, len) {
         console.info("case start get content");
         let lengthreal = -1;
-        lengthreal = readStreamSync.readSync(buf,{length:len});
+        lengthreal = fileio.readSync(fdRead, buf, {length:len});
         console.info('case lengthreal is :' + lengthreal);
     }
 
@@ -213,6 +213,7 @@ describe('AudioDecoderFormatCallback', function () {
                             expect(err).assertUndefined();
                             console.log("case release success");
                             audioDecodeProcessor = null;
+                            await fileio.close(fdRead);
                             await closeFdWrite();
                             done();
                         })
@@ -349,7 +350,6 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH1);
                 eventEmitter.emit('prepare');
             })
         });
@@ -469,7 +469,6 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH1);
                 eventEmitter.emit('prepare');
             })
         });
@@ -546,7 +545,6 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH2);
                 eventEmitter.emit('prepare');
             })
         });
@@ -623,7 +621,6 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH2);
                 eventEmitter.emit('prepare');
             })
         });
@@ -687,7 +684,6 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH3);
                 eventEmitter.emit('prepare');
             })
         });
@@ -751,7 +747,6 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH3);
                 eventEmitter.emit('prepare');
             })
         });
@@ -858,7 +853,6 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH4);
                 eventEmitter.emit('prepare');
             })
         });
@@ -965,7 +959,6 @@ describe('AudioDecoderFormatCallback', function () {
             audioDecodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH4);
                 eventEmitter.emit('prepare');
             })
         });

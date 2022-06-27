@@ -53,7 +53,7 @@ describe('AudioEncoderFuncPromise', function () {
         let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
         let permissionName2 = 'ohos.permission.READ_MEDIA';
         let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-        permissionNameList = [permissionName1, permissionName2, permissionName3];
+        let permissionNameList = [permissionName1, permissionName2, permissionName3];
         let appName = 'ohos.acts.multimedia.audio.audioencoder';
         await mediaTestBase.applyPermission(appName, permissionNameList);
         console.info('beforeAll case after get permission');
@@ -174,7 +174,7 @@ describe('AudioEncoderFuncPromise', function () {
     function getContent(buf, len) {
         console.info("case start get content");
         let lengthreal = -1;
-        lengthreal = readStreamSync.readSync(buf,{length:len});
+        lengthreal = fileio.readSync(fdRead, buf, {length:len});
         console.info('case lengthreal is :' + lengthreal);
     }
 
@@ -240,7 +240,6 @@ describe('AudioEncoderFuncPromise', function () {
         await audioEncodeProcessor.flush().then(() => {
             console.info("case flush at inputeos success");
             resetParam();
-            readFile(AUDIOPATH);
             workdoneAtEOS =true;
         }, failCallback).catch(failCatch);
     }
@@ -306,6 +305,7 @@ describe('AudioEncoderFuncPromise', function () {
                     await flushWork(done);
                 } else if (workdoneAtEOS) {
                     await doneWork();
+                    await fileio.close(fdRead);
                     await closeFdWrite();
                     done();
                 } else {
@@ -406,7 +406,6 @@ describe('AudioEncoderFuncPromise', function () {
         }, failCallback).catch(failCatch);
         await audioEncodeProcessor.configure(mediaDescription).then(() => {
             console.info("case configure success");
-            readFile(AUDIOPATH);
         }, failCallback).catch(failCatch);
         setCallback(savepath, done);
         await audioEncodeProcessor.prepare().then(() => {
@@ -448,7 +447,6 @@ describe('AudioEncoderFuncPromise', function () {
         }, failCallback).catch(failCatch);
         await audioEncodeProcessor.configure(mediaDescription).then(() => {
             console.info("case configure success");
-            readFile(AUDIOPATH);
         }, failCallback).catch(failCatch);
         setCallback(savepath, done);
         await audioEncodeProcessor.prepare().then(() => {
@@ -489,7 +487,6 @@ describe('AudioEncoderFuncPromise', function () {
         }, failCallback).catch(failCatch);
         await audioEncodeProcessor.configure(mediaDescription).then(() => {
             console.info("case configure success");
-            readFile(AUDIOPATH)
         }, failCallback).catch(failCatch);
         setCallback(savepath, done);
         await audioEncodeProcessor.prepare().then(() => {
@@ -538,7 +535,6 @@ describe('AudioEncoderFuncPromise', function () {
         }, failCallback).catch(failCatch);
         await audioEncodeProcessor.configure(mediaDescription).then(() => {
             console.info("case configure success");
-            readFile(AUDIOPATH);
         }, failCallback).catch(failCatch);
         setCallback(savepath, done);
         await audioEncodeProcessor.prepare().then(() => {
@@ -578,7 +574,6 @@ describe('AudioEncoderFuncPromise', function () {
         }, failCallback).catch(failCatch);
         await audioEncodeProcessor.configure(mediaDescription).then(() => {
             console.info("case configure success");
-            readFile(AUDIOPATH);
         }, failCallback).catch(failCatch);
         setCallback(savepath, done);
         await audioEncodeProcessor.prepare().then(() => {
@@ -599,6 +594,7 @@ describe('AudioEncoderFuncPromise', function () {
             console.info("case release success");
         }, failCallback).catch(failCatch);
         audioEncodeProcessor = null;
+        await fileio.close(fdRead);
         await closeFdWrite();
         done();
     })
@@ -633,7 +629,6 @@ describe('AudioEncoderFuncPromise', function () {
         }, failCallback).catch(failCatch);
         await audioEncodeProcessor.configure(mediaDescription).then(() => {
             console.info("case configure success");
-            readFile(AUDIOPATH);
         }, failCallback).catch(failCatch);
         setCallback(savepath, done);
         await audioEncodeProcessor.prepare().then(() => {
@@ -653,7 +648,6 @@ describe('AudioEncoderFuncPromise', function () {
         });
         resetParam();
         await getFdRead(readpath, done);
-        readFile(readpath);
         await audioEncodeProcessor.start().then(() => {
             console.info("case restart after 3s success");
             workdoneAtEOS = true;
@@ -692,7 +686,6 @@ describe('AudioEncoderFuncPromise', function () {
         }, failCallback).catch(failCatch);
         await audioEncodeProcessor.configure(mediaDescription).then(() => {
             console.info("case configure success");
-            readFile(AUDIOPATH);
         }, failCallback).catch(failCatch);
         setCallback(savepath, done);
         await audioEncodeProcessor.prepare().then(() => {
@@ -710,6 +703,7 @@ describe('AudioEncoderFuncPromise', function () {
             console.info("start configure 2");
         });
         resetParam();
+        await fileio.close(fdRead);
         await closeFdWrite();
         await audioEncodeProcessor.configure(mediaDescription2).then(() => {
             console.info("configure 2 success");
@@ -719,7 +713,6 @@ describe('AudioEncoderFuncPromise', function () {
         savepath = 'audioEncode_function_promise_06_2.aac';
         await getFdWrite(savepath);
         await getFdRead(readpath, done);
-        readFile(AUDIOPATH);
         workdoneAtEOS = true;
         setCallback(savepath, done);
         await audioEncodeProcessor.prepare().then(() => {

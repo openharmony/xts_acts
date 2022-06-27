@@ -13,11 +13,16 @@
  * limitations under the License.
  */
 
-import { describe, it } from 'deccjsunit/index';
+import { describe, it, expect } from 'deccjsunit/index';
 import { HuksCipherSM4 } from '../../../../../../../utils/param/cipher/publicCipherParam';
 import { HksTag } from '../../../../../../../utils/param/publicParam';
-import { stringToUint8Array } from '../../../../../../../utils/param/publicFunc';
-import { publicCipherFunc, IV, encryptedResult } from './SecurityHuksCipherAESBasicPromiseJsunit.test';
+import {stringToUint8Array,arrayEqual} from '../../../../../../../utils/param/publicFunc';
+import huks from '@ohos.security.huks';
+
+let IV = '0000000000000000';
+let plainData;
+let encryptedResult;
+var handle;
 
 const plainString48Bytes = 'Hks_SM4_Cipher_Test_000000000000000000000_string';
 const plainData48Bytes = stringToUint8Array(plainString48Bytes);
@@ -35,6 +40,139 @@ let genHuksOptions = {
   ),
   inData: new Uint8Array(new Array()),
 };
+
+async function publicGenerateKeyFunc(srcKeyAlias, genHuksOptionsNONECBC) {
+  await huks
+    .generateKey(srcKeyAlias, genHuksOptionsNONECBC)
+    .then((data) => {
+      console.log(`test generateKey data: ${JSON.stringify(data)}`);
+      expect(data.errorCode == 0).assertTrue();
+    })
+    .catch((err) => {
+      console.log('test generateKey err information: ' + JSON.stringify(err));
+      expect(null).assertFail();
+    });
+}
+
+async function publicInitFunc(srcKeyAlias, HuksOptions) {
+  await huks
+    .init(srcKeyAlias, HuksOptions)
+    .then((data) => {
+      console.log(`test init data: ${JSON.stringify(data)}`);
+      handle = data.handle;
+      expect(data.errorCode == 0).assertTrue();
+    })
+    .catch((err) => {
+      console.log('test init err information: ' + JSON.stringify(err));
+      expect(null).assertFail();
+    });
+}
+
+async function publicUpdateFunc(HuksOptions, thirdInderfaceName, isEncrypt) {
+  const maxUpdateSize = 64;
+  const inData = HuksOptions.inData;
+  const lastInDataPosition = inData.length - 1;
+  let inDataSegSize = maxUpdateSize;
+  let inDataSegPosition = 0;
+  let isFinished = false;
+  let outData = [];
+
+  while (inDataSegPosition <= lastInDataPosition) {
+    if (inDataSegPosition + maxUpdateSize > lastInDataPosition) {
+      isFinished = true;
+      inDataSegSize = lastInDataPosition - inDataSegPosition + 1;
+      break;
+    }
+    HuksOptions.inData = new Uint8Array(
+      Array.from(inData).slice(inDataSegPosition, inDataSegPosition + inDataSegSize)
+    );
+    await huks.update(handle, HuksOptions)
+      .then((data) => {
+        console.log(`test update data ${JSON.stringify(data)}`);
+        outData = outData.concat(Array.from(data.outData));
+        expect(data.errorCode === 0).assertTrue();
+      })
+      .catch((err) => {
+        console.log('test update err information: ' + err);
+        expect(null).assertFail();
+      });
+    if ((!isFinished) && (inDataSegPosition + maxUpdateSize > lastInDataPosition)) {
+      console.log(`update size invalid isFinished = ${isFinished}`);
+      console.log(`inDataSegPosition = ${inDataSegPosition}`);
+      console.log(`lastInDataPosition = ${lastInDataPosition}`);
+      expect(null).assertFail();
+      return;
+    }
+    inDataSegPosition += maxUpdateSize;
+  }
+  if (thirdInderfaceName == 'finish') {
+    HuksOptions.inData = new Uint8Array(
+      Array.from(inData).slice(inDataSegPosition, inDataSegPosition + inDataSegSize)
+    );
+    await huks.finish(handle, HuksOptions)
+      .then((data) => {
+        console.log(`test finish data: ${JSON.stringify(data)}`);
+        outData = outData.concat(Array.from(data.outData));
+        expect(data.errorCode === 0).assertTrue();
+        if (isEncrypt) {
+          encryptedResult = outData;
+          console.log(`encrypted data: ${encryptedResult}`);
+        } else {
+          console.log(`decrypted data: ${outData}`);
+          expect(arrayEqual(outData, plainData)).assertTrue();
+        }
+      })
+      .catch((err) => {
+        console.log('test finish err information: ' + JSON.stringify(err));
+        expect(null).assertFail();
+      });
+  } else if (thirdInderfaceName == 'abort') {
+    await huks.abort(handle, HuksOptions)
+      .then((data) => {
+        console.log(`test abort data: ${JSON.stringify(data)}`);
+        expect(data.errorCode === 0).assertTrue();
+      })
+      .catch((err) => {
+        console.log('test abort err information: ' + JSON.stringify(err));
+        expect(null).assertFail();
+      });
+  }
+}
+
+async function publicDeleteKeyFunc(srcKeyAlias, genHuksOptionsNONECBC) {
+  await huks
+    .deleteKey(srcKeyAlias, genHuksOptionsNONECBC)
+    .then((data) => {
+      console.log(`test deleteKey data: ${JSON.stringify(data)}`);
+      expect(data.errorCode == 0).assertTrue();
+    })
+    .catch((err) => {
+      console.log('test deleteKey err information: ' + JSON.stringify(err));
+      expect(null).assertFail();
+    });
+}
+
+async function publicCipherFunc(
+  srcKeyAlias,
+  genHuksOptions,
+  HuksOptions,
+  thirdInderfaceName,
+  isEncrypt
+) {
+  try {
+    if (isEncrypt) {
+      plainData = HuksOptions.inData;
+      await publicGenerateKeyFunc(srcKeyAlias, genHuksOptions);
+    }
+    await publicInitFunc(srcKeyAlias, HuksOptions);
+    await publicUpdateFunc(HuksOptions, thirdInderfaceName, isEncrypt);
+    if (!isEncrypt || (isEncrypt && thirdInderfaceName == 'abort')) {
+      await publicDeleteKeyFunc(srcKeyAlias, genHuksOptions);
+    }
+  } catch (e) {
+    expect(null).assertFail();
+  }
+}
 
 describe('SecurityHuksCipherSM4PromiseJsunit', function () {
   // HKS_SUPPORT_SM4_CBC_NOPADDING
