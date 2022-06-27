@@ -16,8 +16,8 @@
 @Entry
 @Component
 struct image_textcase {
-  @State Width: number = 0
-  @State height: number = 0
+  @State myWidth: number = 0
+  @State myHeight: number = 0
 
   onPageShow() {
     console.info('Image page show called');
@@ -58,10 +58,10 @@ struct image_textcase {
             width: number,
             height: number
           }) => {
-            this.Width = msg.width
-            this.height = msg.height
-            console.info('Width ----' + this.Width)
-            console.info('height ----' + this.height)
+            this.myWidth = msg.width
+            this.myHeight = msg.height
+            console.info('Width ----' + this.myWidth)
+            console.info('height ----' + this.myHeight)
           })
           .onError(() => {
             console.info('load image fail')

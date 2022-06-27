@@ -18,8 +18,8 @@ import router from '@system.router'
 @Entry
 @Component
 struct dataPanel_testcase {
-  @State width: string= "200"
-  @State height: string= "100"
+  @State myWidth: string= "200"
+  @State myHeight: string= "100"
   @State active: boolean = false
   private content: string = "DataPanel Page"
 
@@ -36,8 +36,8 @@ struct dataPanel_testcase {
       Text(`${this.content}`)
         .fontSize(50)
       DataPanel({ values: [20, 40, 20], max: 100, type: DataPanelType.Line })
-        .width(this.width)
-        .height(this.height)
+        .width(this.myWidth)
+        .height(this.myHeight)
         .key('DataPanel')
         .onClick(() => {
           router.back()
@@ -45,16 +45,16 @@ struct dataPanel_testcase {
         .closeEffect(false)
 
       DataPanel({ values: [20, 40, 20], max: 100, type: DataPanelType.Circle})
-        .width(this.width)
-        .height(this.height)
+        .width(this.myWidth)
+        .height(this.myHeight)
         .key('DataPanel2')
         .onClick(() => {
           router.back()
         })
         .closeEffect(true)
       DataPanel({ values: [20, 40, 20], max: 100})
-        .width(this.width)
-        .height(this.height)
+        .width(this.myWidth)
+        .height(this.myHeight)
         .key('DataPanel3')
         .onClick(() => {
           router.back()
