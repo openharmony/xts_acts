@@ -28,7 +28,7 @@ export default function getNameForUid() {
      * @tc.desc Test getBundleInfo interfaces with other hap.
      */
     it('getNameForUid_0100', 0, async function (done) {
-        let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME1);
+        let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME1, bundle.BundleFlag.GET_BUNDLE_DEFAULT);
         await bundle.getNameForUid(dataInfo.uid).then(data => {
             expect(data).assertEqual(BUNDLE_NAME1);
         }).catch(err => {
@@ -49,7 +49,7 @@ export default function getNameForUid() {
      * @tc.desc Test getBundleInfo interfaces with hap.
      */
     it('getNameForUid_0200', 0, async function (done) {
-        let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME2);
+        let dataInfo = await bundle.getBundleInfo(BUNDLE_NAME2,bundle.BundleFlag.GET_BUNDLE_DEFAULT);
         await bundle.getNameForUid(dataInfo.uid).then(data => {
             expect(data).assertEqual(BUNDLE_NAME2);
         }).catch(err => {
