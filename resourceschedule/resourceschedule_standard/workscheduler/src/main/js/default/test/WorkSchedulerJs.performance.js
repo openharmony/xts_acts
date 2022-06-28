@@ -16,7 +16,7 @@ import workscheduler from '@ohos.workScheduler'
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-describe("WorkSchedulerJsTest", function () {
+describe("WorkSchedulerPerformanceTest", function () {
     console.log("**********WorkScheduler Performance Test Begin**********")
     performanceStartWork()
     performanceStopWork()
