@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
-import commonevent from '@ohos.commonevent'
+import commonevent from '@ohos.commonEvent'
 
 const ACCOUNT_TEST_ONOFF_EXTRA = 1
 const ACCOUNT_TEST_ONOFF_ASSOCIATEDDATA = 2
