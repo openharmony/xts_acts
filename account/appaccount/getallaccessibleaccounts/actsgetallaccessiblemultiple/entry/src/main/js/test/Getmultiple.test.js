@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
-import featureAbility from '@ohos.ability.featureability'
+import featureAbility from '@ohos.ability.featureAbility'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const TIMEOUT = 5000;
