@@ -56,17 +56,6 @@ export default function datePickerJsunit() {
       done();
     });
 
-    it('datePickerTest_0200', 0, async function (done) {
-      console.info('datePickerTest_0200 START');
-      let strJson = getInspectorByKey('datePicker');
-      console.info("datePickerTest_0200 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("datePickerTest_0200 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.useMilitaryTime).assertEqual('true');
-      console.info('datePickerTest_0200 END');
-      done();
-    });
-
     it('datePickerTest_0300', 0, async function (done) {
       console.info('datePickerTest_0300 START');
       try {

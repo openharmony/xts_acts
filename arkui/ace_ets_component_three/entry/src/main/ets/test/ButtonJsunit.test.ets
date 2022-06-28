@@ -75,7 +75,7 @@ export default function buttonJsunit() {
       let strJson = getInspectorByKey('button2');
       let obj = JSON.parse(strJson);
       console.info("[testButton03] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.fontSize).assertEqual('20');
+      expect(obj.$attrs.fontSize).assertEqual('20.00px');
       done();
     });
 
@@ -121,7 +121,7 @@ export default function buttonJsunit() {
       try {
         var eventData = {
           data: {
-            "fontSizeValue": 30,
+            "fontSizeValue": '30px',
           }
         }
         var innerEvent = {
@@ -137,7 +137,7 @@ export default function buttonJsunit() {
       let strJsonNew = getInspectorByKey('button2');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testButton05] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.fontSize).assertEqual('30');
+      expect(objNew.$attrs.fontSize).assertEqual('30.00px');
       done();
     });
 
@@ -163,7 +163,7 @@ export default function buttonJsunit() {
       let strJsonNew = getInspectorByKey('button2');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testButton07] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.fontSize).assertEqual('0');
+      expect(objNew.$attrs.fontSize).assertEqual('-1.00fp');
       done();
     });
 
@@ -173,7 +173,7 @@ export default function buttonJsunit() {
       try {
         var eventData = {
           data: {
-            "fontSizeValue": "121212121",
+            "fontSizeValue": "121212121px",
           }
         }
         var innerEvent = {
@@ -189,7 +189,7 @@ export default function buttonJsunit() {
       let strJsonNew = getInspectorByKey('button2');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testButton08] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.fontSize).assertEqual('121212121');
+      expect(objNew.$attrs.fontSize).assertEqual('121212121.00px');
       done();
     });
 
@@ -199,7 +199,7 @@ export default function buttonJsunit() {
       try {
         var eventData = {
           data: {
-            "fontSizeValue": "121212121vaas",
+            "fontSizeValue": "121212121px",
           }
         }
         var innerEvent = {
@@ -215,7 +215,7 @@ export default function buttonJsunit() {
       let strJsonNew = getInspectorByKey('button2');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testButton09] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.fontSize).assertEqual('121212121');
+      expect(objNew.$attrs.fontSize).assertEqual('121212121.00px');
       done();
     });
 
@@ -302,9 +302,9 @@ export default function buttonJsunit() {
         console.info("[testButton12] get event state result is: " + Math.trunc(event.screenY));
         console.info("[testButton12] get event state result is: " + Math.trunc(event.screenX));
         expect(event.screenX).assertEqual(135)
-        expect(event.screenY).assertEqual(368.80340576171875)
+        expect(event.screenY).assertEqual(350)
         expect(event.x).assertEqual(100)
-        expect(event.y).assertEqual(31.196568154881163)
+        expect(event.y).assertEqual(50)
       }
       var innerEvent = {
         eventId: 4,
