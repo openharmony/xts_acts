@@ -16,6 +16,7 @@
 // @ts-nocheck
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import reminderAgent from '@ohos.reminderAgent'
+import notification from '@ohos.notification'
 
 describe('ReminderAgentTest', function () {
 
@@ -2109,7 +2110,7 @@ describe('ReminderAgentTest', function () {
      */
     it("testReminderAgentRequest_079", 0, async function (done) {
         console.log('----------------------testReminderAgentRequest_079---------------------------');
-        let type = notification.SlotType.SERVICE.INFORMATION;
+        let type = notification.SlotType.SERVICE_INFORMATION;
         expect(type).assertEqual(2);
         done();
     })
@@ -2133,7 +2134,7 @@ describe('ReminderAgentTest', function () {
      */
     it("testReminderAgentRequest_081", 0, async function (done) {
         console.log('----------------------testReminderAgentRequest_081---------------------------');
-        let type = notificationId.SlotType.OTHER_TYPES;
+        let type = notification.SlotType.OTHER_TYPES;
         expect(type).assertEqual(65535);
         done();
     })
