@@ -95,7 +95,7 @@ export default function textJsunit() {
       expect(obj.$attrs.fontFamily).assertEqual("sans-serif")
       expect(obj.$attrs.textAlign).assertEqual("TextAlign.End")
       expect(obj.$attrs.textOverflow).assertEqual("TextOverflow.Ellipsis")
-      expect(obj.$attrs.lineHeight).assertEqual("15")
+      expect(obj.$attrs.lineHeight).assertEqual("15.00fp")
       expect(obj.$attrs.baselineOffset).assertEqual("0")
       expect(obj.$attrs.maxLines).assertEqual("2")
       expect(obj.$attrs.textCase).assertEqual("TextCase.Normal")

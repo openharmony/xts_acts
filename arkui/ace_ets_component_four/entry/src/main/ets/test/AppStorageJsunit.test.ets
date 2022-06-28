@@ -97,51 +97,6 @@ export default function AppStorageJsunit() {
       done();
     });
 
-    /**
-    * @tc.number  stateManagement_Environment_EnvProp_0100
-    * @tc.name    stateManagement Environment  validation
-    * @tc.desc    Function test
-    */
-    it('stateManagement_Environment_EnvProp_colorMode_0100', 0, function (done) {
-      console.info('[stateManagement_Environment_EnvProp_colorMode_0100] START');
-      Environment.EnvProp("colorMode", ColorMode.LIGHT);
-      let enable = AppStorage.Get("colorMode");
-      expect(enable == ColorMode.LIGHT)
-      .assertTrue;
-      console.info('[stateManagement_Environment_EnvProp_colorMode_0100] enable =' + enable);
-      Environment.EnvProp("colorMode", ColorMode.DARK);
-      let enable1 = AppStorage.Get("colorMode");
-      console.info('[stateManagement_Environment_EnvProp_colorMode_0100] enable1 =' + enable1);
-      expect(enable1 == ColorMode.DARK)
-      .assertTrue;
-      console.info('[stateManagement_Environment_EnvProp_colorMode_0100] END');
-      done();
-    });
-
-    /**
-    * @tc.number  stateManagement_Environment_EnvProp_0100
-    * @tc.name    stateManagement Environment  validation
-    * @tc.desc    Function test
-    */
-    it('stateManagement_Environment_EnvProp_layoutDirection_0100', 0, function (done) {
-      console.info('[stateManagement_Environment_EnvProp_layoutDirection_0100] START');
-      Environment.EnvProp("layoutDirection", LayoutDirection.LTR);
-      let enable = AppStorage.Get("layoutDirection");
-      expect(enable == LayoutDirection.LTR)
-      .assertTrue;
-      console.info('[stateManagement_Environment_EnvProp_layoutDirection_0100] enable =' + enable);
-      Environment.EnvProp("layoutDirection", LayoutDirection.RTL);
-      let enable1 = AppStorage.Get("layoutDirection");
-      expect(enable1 == LayoutDirection.RTL)
-      .assertTrue;
-      console.info('[stateManagement_Environment_EnvProp_layoutDirection_0100] enable1' + enable1);
-      Environment.EnvProp("layoutDirection", LayoutDirection.Auto);
-      let enable2 = AppStorage.Get("layoutDirection");
-      expect(enable2 == LayoutDirection.Auto)
-      .assertTrue;
-      console.info('[stateManagement_Environment_EnvProp_layoutDirection_0100] enable2' + enable2);
-      done();
-    });
 
     /**
     * @tc.number  stateManagement_Environment_EnvProps_0100
