@@ -63,7 +63,7 @@ export default function isAbilityEnabledETSUnit() {
          */
         it('isAbilityEnabled_test_0100', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
-            let abilityInfo = getAbilityInfoOne(BUNDLE_NAME,ABILITY_NAME);
+            let abilityInfo = generateAbilityInfoForTest(BUNDLE_NAME,ABILITY_NAME);
             await Bundle.isAbilityEnabled(abilityInfo).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
                 Utils.getDurationTime('[isAbilityEnabled_test_0100]', timeOldStamp, timeNewStamp);
@@ -89,10 +89,10 @@ export default function isAbilityEnabledETSUnit() {
          * @tc.desc: Check the return value of the interface when bundleName and ability error
          */
         it('isAbilityEnabled_test_0200', 0, async function (done) {
-            let abilityInfo1 = getAbilityInfoOne(ABILITY_ERROR1.bundleName,ABILITY_ERROR1.name);
-            let abilityInfo2 = getAbilityInfoOne(ABILITY_ERROR2.bundleName,ABILITY_ERROR2.name);
-            let abilityInfo3 = getAbilityInfoOne(ABILITY_ERROR3.bundleName,ABILITY_ERROR3.name);
-            let abilityInfo7 = getAbilityInfoOne(ABILITY_ERROR7.bundleName,ABILITY_ERROR7.name);
+            let abilityInfo1 = generateAbilityInfoForTest(ABILITY_ERROR1.bundleName,ABILITY_ERROR1.name);
+            let abilityInfo2 = generateAbilityInfoForTest(ABILITY_ERROR2.bundleName,ABILITY_ERROR2.name);
+            let abilityInfo3 = generateAbilityInfoForTest(ABILITY_ERROR3.bundleName,ABILITY_ERROR3.name);
+            let abilityInfo7 = generateAbilityInfoForTest(ABILITY_ERROR7.bundleName,ABILITY_ERROR7.name);
             Bundle.isAbilityEnabled(abilityInfo1).then((data) => {
                 expect(data).assertFalse();
             }).catch((error) => {
@@ -138,9 +138,9 @@ export default function isAbilityEnabledETSUnit() {
          * @tc.desc: Check the return value of the interface when bundleName and ability error
          */
         it('isAbilityEnabled_test_0300', 0, async function (done) {
-            let abilityInfo4 = getAbilityInfoOne(ABILITY_ERROR4.bundleName,ABILITY_ERROR4.name);
-            let abilityInfo5 = getAbilityInfoOne(ABILITY_ERROR5.bundleName,ABILITY_ERROR5.name);
-            let abilityInfo6 = getAbilityInfoOne(ABILITY_ERROR6.bundleName,ABILITY_ERROR6.name);
+            let abilityInfo4 = generateAbilityInfoForTest(ABILITY_ERROR4.bundleName,ABILITY_ERROR4.name);
+            let abilityInfo5 = generateAbilityInfoForTest(ABILITY_ERROR5.bundleName,ABILITY_ERROR5.name);
+            let abilityInfo6 = generateAbilityInfoForTest(ABILITY_ERROR6.bundleName,ABILITY_ERROR6.name);
             Bundle.isAbilityEnabled(abilityInfo4).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
@@ -177,7 +177,7 @@ export default function isAbilityEnabledETSUnit() {
          * @tc.desc: Check the return value of the interface
          */
         it('isAbilityEnabled_test_0400', 0, async function (done) {
-            let abilityInfo = getAbilityInfoOne(BUNDLE_NAME_OTHER,ABILITY_NAME_OTHER);
+            let abilityInfo = generateAbilityInfoForTest(BUNDLE_NAME_OTHER,ABILITY_NAME_OTHER);
             await Bundle.isAbilityEnabled(abilityInfo).then((data) => {
                 expect(data).assertTrue();
             }).catch((error) => {
@@ -190,7 +190,7 @@ export default function isAbilityEnabledETSUnit() {
             });
         });
 
-        function getAbilityInfoOne(bundleName, name) {
+        function generateAbilityInfoForTest(bundleName, name) {
             let map1 = new Map([
                 ["", [{
                     "name": "", "value": "", "extra": ""

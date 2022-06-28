@@ -284,7 +284,7 @@ export default function actsBmsJsModuleNameTest() {
         * @tc.desc: test empty moduleName
         */
         it('IsAbilityEnabled_0100', 0, async function (done) {
-            let abilityInfo = getAbilityInfoOne(ABILITY_INFO_ONE.bundleName, ABILITY_INFO_ONE.name, ABILITY_INFO_ONE.moduleName);
+            let abilityInfo = generateAbilityInfoForTest(ABILITY_INFO_ONE.bundleName, ABILITY_INFO_ONE.name, ABILITY_INFO_ONE.moduleName);
             await bundle.isAbilityEnabled(abilityInfo)
                 .then(data => {
                     console.info('[IsAbilityEnabled_0100]Return data successful: ' + JSON.stringify(data));
@@ -310,7 +310,7 @@ export default function actsBmsJsModuleNameTest() {
         * @tc.desc: test non-existent moduleName
         */
         it('IsAbilityEnabled_0200', 0, async function (done) {
-            let abilityInfo = getAbilityInfoOne(ABILITY_INFO_TWO.bundleName, ABILITY_INFO_TWO.name, ABILITY_INFO_TWO.moduleName);
+            let abilityInfo = generateAbilityInfoForTest(ABILITY_INFO_TWO.bundleName, ABILITY_INFO_TWO.name, ABILITY_INFO_TWO.moduleName);
             await bundle.isAbilityEnabled(abilityInfo)
                 .then(data => {
                     expect(data).assertEqual(false);
@@ -335,7 +335,7 @@ export default function actsBmsJsModuleNameTest() {
         * @tc.desc: test existent moduleName
         */
         it('IsAbilityEnabled_0300', 0, async function (done) {
-            let abilityInfo = getAbilityInfoOne(ABILITY_INFO_THREE.bundleName, ABILITY_INFO_THREE.name, ABILITY_INFO_THREE.moduleName);
+            let abilityInfo = generateAbilityInfoForTest(ABILITY_INFO_THREE.bundleName, ABILITY_INFO_THREE.name, ABILITY_INFO_THREE.moduleName);
             await bundle.isAbilityEnabled(abilityInfo)
                 .then(data => {
                     console.info('[IsAbilityEnabled_0300]Return data successful: ' + JSON.stringify(data));
@@ -361,7 +361,7 @@ export default function actsBmsJsModuleNameTest() {
         * @tc.desc: test empty moduleName
         */
         it('IsAbilityEnabled_0400', 0, async function (done) {
-            let abilityInfo = getAbilityInfoOne(ABILITY_INFO_FOUR.bundleName, ABILITY_INFO_FOUR.name, ABILITY_INFO_FOUR.moduleName);
+            let abilityInfo = generateAbilityInfoForTest(ABILITY_INFO_FOUR.bundleName, ABILITY_INFO_FOUR.name, ABILITY_INFO_FOUR.moduleName);
             await bundle.isAbilityEnabled(abilityInfo)
                 .then(data => {
                     expect(data).assertFail();
@@ -522,7 +522,7 @@ export default function actsBmsJsModuleNameTest() {
             console.log("---checkDataInfo End---  ");
         }
 
-        function getAbilityInfoOne(bundleName, name, moduleName) {
+        function generateAbilityInfoForTest(bundleName, name, moduleName) {
             let map1 = new Map([
                 ["", [{
                     "name": "", "value": "", "extra": ""
