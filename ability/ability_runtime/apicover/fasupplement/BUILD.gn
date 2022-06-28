@@ -21,8 +21,8 @@ ohos_hap("FaSupplement") {
       "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
   testonly = true
   deps = [
-    ":fasupplement_ts_assets",
     ":fasupplement_resources",
+    ":fasupplement_ts_assets",
   ]
   certificate_profile = "signature/openharmony_sx.p7b"
 }
