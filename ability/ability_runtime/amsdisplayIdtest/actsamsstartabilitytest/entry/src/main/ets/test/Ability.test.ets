@@ -28,7 +28,7 @@ const MAX_MISSION_NUM = 1024;
 function sleep(time) {
   return new Promise((resove, reject) => {
     setTimeout(() => {
-      resove();
+      resove("time arrived");
     }, time)
   })
 }
