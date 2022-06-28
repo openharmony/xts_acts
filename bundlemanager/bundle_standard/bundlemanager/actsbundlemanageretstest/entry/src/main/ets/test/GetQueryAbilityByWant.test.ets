@@ -14,7 +14,7 @@
  */
 import bundle from '@ohos.bundle'
 import account from '@ohos.account.osAccount'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
 
 const BUNDLE_NAME1 = 'com.example.third1';
 const SYSTEM_NAME = 'com.example.system2';

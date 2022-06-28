@@ -35,16 +35,15 @@ export default function getAbilityIcon() {
          */
         it('bms_getAbilityIcon_0100', 0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME_OTHER, ABILITIY_NAME_OTHER).then(pixelmap => {
-                image = pixelmap;
-                console.log('bms_getAbilityIcon_0100 success: ' + image.getBytesNumberPerRow());
-                expect(image.getBytesNumberPerRow()).assertLarger(0);
+                console.log('bms_getAbilityIcon_0100 success: ' + pixelmap.getBytesNumberPerRow());
+                expect(pixelmap.getBytesNumberPerRow()).assertLarger(0);
             }).catch(err => {
                 console.info("getAbilityIcon fail:" + JSON.stringify(err));
                 expect(err).assertFail();
             });
             bundle.getAbilityIcon(BUNDLE_NAME_OTHER, ABILITIY_NAME_OTHER, (err, pixelmap) => {
                 expect(err).assertEqual(0);
-                expect(image.getBytesNumberPerRow()).assertLarger(0);
+                expect(pixelmap.getBytesNumberPerRow()).assertLarger(0);
                 done();
             });
         });
@@ -56,16 +55,15 @@ export default function getAbilityIcon() {
          */
         it('bms_getAbilityIcon_0200', 0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME, ABILITIY_NAME).then(pixelmap => {
-                image = pixelmap;
-                console.log('bms_getAbilityIcon_0200 success: ' + image.getBytesNumberPerRow());
-                expect(image.getBytesNumberPerRow()).assertLarger(0);
+                console.log('bms_getAbilityIcon_0200 success: ' + pixelmap.getBytesNumberPerRow());
+                expect(pixelmap.getBytesNumberPerRow()).assertLarger(0);
             }).catch(err => {
                 console.info("getAbilityIcon fail:" + JSON.stringify(err));
                 expect(err).assertFail();
             });
             bundle.getAbilityIcon(BUNDLE_NAME, ABILITIY_NAME, (err, pixelmap) => {
                 expect(err).assertEqual(0);
-                expect(image.getBytesNumberPerRow()).assertLarger(0);
+                expect(pixelmap.getBytesNumberPerRow()).assertLarger(0);
                 done();
             });
         });
@@ -77,7 +75,7 @@ export default function getAbilityIcon() {
          */
         it('bms_getAbilityIcon_0300', 0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME, SERVICE_NAME).then(pixelmap => {
-                expect(err).assertFail();
+                expect().assertFail();
             }).catch(err => {
                 console.info("getAbilityIcon fail:" + JSON.stringify(err));
                 expect(err).assertEqual(1);
@@ -101,13 +99,13 @@ export default function getAbilityIcon() {
                 expect(err).assertEqual(1);
             });
             await bundle.getAbilityIcon(BUNDLE_NAME_ERROR, ABILITIY_NAME).then(pixelmap => {
-                expect(err).assertFail();
+                expect().assertFail();
             }).catch(err => {
                 console.info("getAbilityIcon fail:" + JSON.stringify(err))
                 expect(err).assertEqual(1);
             });
             await bundle.getAbilityIcon("", "").then(pixelmap => {
-                expect(err).assertFail();
+                expect().assertFail();
             }).catch(err => {
                 console.info("getAbilityIcon fail:" + JSON.stringify(err))
                 expect(err).assertEqual(1);

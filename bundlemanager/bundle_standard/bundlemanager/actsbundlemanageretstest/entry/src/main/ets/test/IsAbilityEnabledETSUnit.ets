@@ -22,14 +22,6 @@ const BUNDLE_NAME_ERROR = 'com.ohos.acepackage.error';
 const ABILITY_NAME = 'com.open.harmony.packagemag.MainAbility';
 const ABILITY_NAME_OTHER = 'com.example.l3jsdemo.MainAbility';
 const ABILITY_NAME_ERROR = 'com.ohos.acepackage.error.MainAbility';
-const ABILITY = {
-    bundleName: BUNDLE_NAME,
-    name: ABILITY_NAME
-};
-const OTHER_ABILITY = {
-    bundleName: BUNDLE_NAME_OTHER,
-    name: ABILITY_NAME_OTHER
-};
 const ABILITY_ERROR1 = {
     bundleName: BUNDLE_NAME_ERROR,
     name: ABILITY_NAME_ERROR
@@ -59,6 +51,7 @@ const ABILITY_ERROR7 = {
     name: ""
 };
 
+
 export default function isAbilityEnabledETSUnit() {
 
     describe('isAbilityEnabled_test', function () {
@@ -70,7 +63,8 @@ export default function isAbilityEnabledETSUnit() {
          */
         it('isAbilityEnabled_test_0100', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
-            await Bundle.isAbilityEnabled(ABILITY).then((data) => {
+            let abilityInfo = generateAbilityInfoForTest(BUNDLE_NAME,ABILITY_NAME);
+            await Bundle.isAbilityEnabled(abilityInfo).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
                 Utils.getDurationTime('[isAbilityEnabled_test_0100]', timeOldStamp, timeNewStamp);
                 expect(data).assertTrue();
@@ -78,7 +72,7 @@ export default function isAbilityEnabledETSUnit() {
                 expect(error).assertFail();
             });
             timeOldStamp = await Utils.getNowTime();
-            Bundle.isAbilityEnabled(ABILITY, (error, data) => {
+            Bundle.isAbilityEnabled(abilityInfo, (error, data) => {
                 if (error) {
                     expect(error).assertFail();
                 }
@@ -95,36 +89,40 @@ export default function isAbilityEnabledETSUnit() {
          * @tc.desc: Check the return value of the interface when bundleName and ability error
          */
         it('isAbilityEnabled_test_0200', 0, async function (done) {
-            await Bundle.isAbilityEnabled(ABILITY_ERROR1).then((data) => {
+            let abilityInfo1 = generateAbilityInfoForTest(ABILITY_ERROR1.bundleName,ABILITY_ERROR1.name);
+            let abilityInfo2 = generateAbilityInfoForTest(ABILITY_ERROR2.bundleName,ABILITY_ERROR2.name);
+            let abilityInfo3 = generateAbilityInfoForTest(ABILITY_ERROR3.bundleName,ABILITY_ERROR3.name);
+            let abilityInfo7 = generateAbilityInfoForTest(ABILITY_ERROR7.bundleName,ABILITY_ERROR7.name);
+            Bundle.isAbilityEnabled(abilityInfo1).then((data) => {
                 expect(data).assertFalse();
             }).catch((error) => {
                 expect(error).assertFail();
             });
-            await Bundle.isAbilityEnabled(ABILITY_ERROR2).then((data) => {
+            Bundle.isAbilityEnabled(abilityInfo2).then((data) => {
                 expect(data).assertFalse();
             }).catch((error) => {
                 expect(error).assertFail();
             });
-            await Bundle.isAbilityEnabled(ABILITY_ERROR3).then((data) => {
+            Bundle.isAbilityEnabled(abilityInfo3).then((data) => {
                 expect(data).assertFalse();
             }).catch((error) => {
                 expect(error).assertFail();
             });
-            await Bundle.isAbilityEnabled(ABILITY_ERROR7).then((data) => {
+            Bundle.isAbilityEnabled(abilityInfo7).then((data) => {
                 expect(data).assertFalse();
             }).catch((error) => {
                 expect(error).assertFail();
             });
-            Bundle.isAbilityEnabled(ABILITY_ERROR1, (error, data) => {
+            Bundle.isAbilityEnabled(abilityInfo1, (error, data) => {
                 expect(error).assertEqual(0);
                 expect(data).assertFalse();
-                Bundle.isAbilityEnabled(ABILITY_ERROR2, (error, data) => {
+                Bundle.isAbilityEnabled(abilityInfo2, (error, data) => {
                     expect(error).assertEqual(0);
                     expect(data).assertFalse();
-                    Bundle.isAbilityEnabled(ABILITY_ERROR3, (error, data) => {
+                    Bundle.isAbilityEnabled(abilityInfo3, (error, data) => {
                         expect(error).assertEqual(0);
                         expect(data).assertFalse();
-                        Bundle.isAbilityEnabled(ABILITY_ERROR7, (error, data) => {
+                        Bundle.isAbilityEnabled(abilityInfo7, (error, data) => {
                             expect(error).assertEqual(0);
                             expect(data).assertFalse();
                             done();
@@ -140,28 +138,31 @@ export default function isAbilityEnabledETSUnit() {
          * @tc.desc: Check the return value of the interface when bundleName and ability error
          */
         it('isAbilityEnabled_test_0300', 0, async function (done) {
-            await Bundle.isAbilityEnabled(ABILITY_ERROR4).then((data) => {
+            let abilityInfo4 = generateAbilityInfoForTest(ABILITY_ERROR4.bundleName,ABILITY_ERROR4.name);
+            let abilityInfo5 = generateAbilityInfoForTest(ABILITY_ERROR5.bundleName,ABILITY_ERROR5.name);
+            let abilityInfo6 = generateAbilityInfoForTest(ABILITY_ERROR6.bundleName,ABILITY_ERROR6.name);
+            Bundle.isAbilityEnabled(abilityInfo4).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
                 expect(error).assertEqual(2);
             });
-            await Bundle.isAbilityEnabled(ABILITY_ERROR5).then((data) => {
+            Bundle.isAbilityEnabled(abilityInfo5).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
                 expect(error).assertEqual(2);
             });
-            await Bundle.isAbilityEnabled(ABILITY_ERROR6).then((data) => {
+            Bundle.isAbilityEnabled(abilityInfo6).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
                 expect(error).assertEqual(2);
             });
-            Bundle.isAbilityEnabled(ABILITY_ERROR4, (error, data) => {
+            Bundle.isAbilityEnabled(abilityInfo4, (error, data) => {
                 expect(error).assertEqual(2);
                 expect(data).assertEqual(undefined);
-                Bundle.isAbilityEnabled(ABILITY_ERROR5, (error, data) => {
+                Bundle.isAbilityEnabled(abilityInfo5, (error, data) => {
                     expect(error).assertEqual(2);
                     expect(data).assertEqual(undefined);
-                    Bundle.isAbilityEnabled(ABILITY_ERROR6, (error, data) => {
+                    Bundle.isAbilityEnabled(abilityInfo6, (error, data) => {
                         expect(error).assertEqual(2);
                         expect(data).assertEqual(undefined);
                         done();
@@ -176,16 +177,67 @@ export default function isAbilityEnabledETSUnit() {
          * @tc.desc: Check the return value of the interface
          */
         it('isAbilityEnabled_test_0400', 0, async function (done) {
-            await Bundle.isAbilityEnabled(OTHER_ABILITY).then((data) => {
+            let abilityInfo = generateAbilityInfoForTest(BUNDLE_NAME_OTHER,ABILITY_NAME_OTHER);
+            await Bundle.isAbilityEnabled(abilityInfo).then((data) => {
                 expect(data).assertTrue();
             }).catch((error) => {
                 expect(error).assertFail();
             });
-            Bundle.isAbilityEnabled(OTHER_ABILITY, (error, data) => {
+            Bundle.isAbilityEnabled(abilityInfo, (error, data) => {
                 expect(error).assertEqual(0);
                 expect(data).assertTrue();
                 done();
             });
         });
+
+        function generateAbilityInfoForTest(bundleName, name) {
+            let map1 = new Map([
+                ["", [{
+                    "name": "", "value": "", "extra": ""
+                }]]
+            ]);
+            let map2 = new Map([
+                ["", [{
+                    "name": "", "value": "", "resource": ""
+                }]]
+            ]);
+            let abilityInfo = {
+                bundleName: bundleName,
+                name: name,
+                label: "",
+                description: "",
+                icon: "",
+                labelId: 0,
+                descriptionId: 0,
+                iconId: 0,
+                moduleName: "",
+                process: "",
+                targetAbility: "",
+                backgroundModes: 0,
+                isVisible: true,
+                formEnabled: true,
+                type: 0,
+                subType: 0,
+                orientation: 0,
+                launchMode: 0,
+                permissions: [],
+                deviceTypes: [],
+                deviceCapabilities: [],
+                readPermission: "",
+                writePermission: "",
+                applicationInfo: {
+                    name: "", description: "", descriptionId: 0, systemApp: true, enabled: true, label: "",
+                    labelId: "", icon: "", iconId: "", process: "", supportedModes: 0, moduleSourceDirs: [],
+                    permissions: [], moduleInfos: [], entryDir: "", codePath: "", metaData: map1, metadata: map2,
+                    removable: true, accessTokenId: 0, uid: 0, entityType: "", fingerprint: ""
+                },
+                uri: "", metaData: [], metadata: [], enabled: true, supportWindowMode: [],
+                maxWindowRatio: 0, minWindowRatio: 0, maxWindowWidth: 0, minWindowWidth: 0, maxWindowHeight: 0, minWindowHeight: 0
+            };
+            return abilityInfo;
+        }
+
+
+
     })
 }
