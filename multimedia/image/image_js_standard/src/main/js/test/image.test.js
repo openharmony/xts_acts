@@ -2412,7 +2412,7 @@ describe('Image', function () {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let packOpts = { format: ["image/jpeg"], quality: 99 }
+                    let packOpts = { format: "image/jpeg", quality: 99 }
                     imagePackerApi.packing(imageSourceApi, packOpts)
                         .then(data => {
                             console.info('TC_062 success');
@@ -2460,7 +2460,7 @@ describe('Image', function () {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let packOpts = { format: ["image/jpeg"], quality: 1 }
+                    let packOpts = { format: "image/jpeg", quality: 1 }
                     imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                         console.info('TC_062-1 success');
                         expect(data != undefined).assertTrue();
@@ -2692,7 +2692,7 @@ describe('Image', function () {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let packOpts = { format: ["image/jpeg"], quality: 100 }
+                    let packOpts = { format: "image/jpeg", quality: 100 }
                     imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                         if (err) {
                             expect(false).assertTrue();
@@ -2745,7 +2745,7 @@ describe('Image', function () {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let packOpts = { format: ["image/jpeg"], quality: 0 }
+                    let packOpts = { format: "image/jpeg", quality: 0 }
                     imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                         console.info('TC_062-8 success');
                         expect(data != undefined).assertTrue();
@@ -2785,7 +2785,7 @@ describe('Image', function () {
                 expect(false).assertTrue();
                 done();
             } else {
-                let packOpts = { format: ["image/jpeg"], quality: -1 }
+                let packOpts = { format: "image/jpeg", quality: -1 }
                 imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                     console.info('TC_062-9 success');
                     expect(data == undefined).assertTrue();

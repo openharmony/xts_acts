@@ -17,7 +17,7 @@
     {
       "type": "ShellKit",
       "run-command": [
-        "mkdir /data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/cache/",
+        "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/cache/",
         "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/cache/*"
       ],
       "teardown-command":[
