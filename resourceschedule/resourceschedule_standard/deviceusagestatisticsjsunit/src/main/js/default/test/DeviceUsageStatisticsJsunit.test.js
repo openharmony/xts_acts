@@ -83,11 +83,11 @@ describe("DeviceUsageStatisticsJsTest", function () {
         let bundleName = 'com.explace.deviceUsageStatistics';
         bundleState.isIdleState(bundleName, (err, res) => {
             if(err) {
-                console.info('BUNDLE_ACTIVE isIdleState callback success.');
-                expect(true).assertEqual(true);
-            } else {
                 expect(false).assertEqual(true);
                 console.info('BUNDLE_ACTIVE isIdleState callback failure.');
+            } else {
+                console.info('BUNDLE_ACTIVE isIdleState callback success.');
+                expect(true).assertEqual(true);
             }
         });
 
@@ -127,11 +127,11 @@ describe("DeviceUsageStatisticsJsTest", function () {
         console.info('----------------------DeviceUsageStatisticsJsTest004---------------------------');
         bundleState.queryAppUsagePriorityGroup((err, res) => {
             if(err) {
-               console.info('BUNDLE_ACTIVE queryAppUsagePriorityGroup callback success.');
-                expect(true).assertEqual(true)
-            } else {
                 expect(false).assertEqual(true)
                 console.info('BUNDLE_ACTIVE queryAppUsagePriorityGroup callback failure.');
+            } else {
+                console.info('BUNDLE_ACTIVE queryAppUsagePriorityGroup callback success.');
+                expect(true).assertEqual(true);
             }
         });
 
@@ -175,11 +175,11 @@ describe("DeviceUsageStatisticsJsTest", function () {
         let endTime = 20000000000000;
         bundleState.queryCurrentBundleActiveStates(beginTime, endTime, (err, res) => {
             if(err) {
-                console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback success.');
-                expect(true).assertEqual(true);
-            } else {
                 expect(false).assertEqual(true);
                 console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback failure.');
+            } else {
+                console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates callback success.');
+                expect(true).assertEqual(true);
             }
         });
 
