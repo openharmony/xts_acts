@@ -14,3 +14,5 @@
  */
 
 require('./HMAC/SecurityHuksHmacBasicCallbackJsunit.test.js');
+require('./HMAC/SecurityHuksAccessControlJsunit.test.js');
+require('./HMAC/SecurityHuksImportJsunit.test.js');
