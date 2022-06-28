@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
+
 import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 
@@ -116,6 +117,76 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     }
     /**
+    * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_006
+    * @tc.name       Test setSystemBarEnableTest6
+    * @tc.desc       Test ohosWindow.setSystemBarEnable API function test1.
+    */
+    it('setSystemBarEnableTest6', 0, function (done) {
+      let caseName = 'setSystemBarEnableTest6';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let [flagStatus, flagNav] = [false, false];
+      console.log(msgStr + 'begin');
+      listenerData.on = true;
+      listenerData.typeStr = 'systemBarTintChange';
+      ohosWindow.on('systemBarTintChange', systembartintstate => {
+        console.log(msgStr + 'ohosWindow.on  systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
+        if (flagStatus || flagNav) {
+          expect(!!systembartintstate).assertTrue();
+          expect(!!systembartintstate.regionTint).assertTrue();
+          console.log(msgStr + 'flagStatus || flagNav' + msgStr + 'ohosWindow.on systemBarTintChange regionTint:' + JSON.stringify(systembartintstate.regionTint));
+          done();
+        }
+      })
+      let mainWnd = null;
+      console.log(msgStr + 'mainWnd = null');
+      console.log(msgStr + 'windowStage = ' + JSON.stringify(windowStage));
+      windowStage.getMainWindow((err, data) => {
+        console.log(msgStr + 'getMainWindow data2' + JSON.stringify(data));
+        if (err && err.code) {
+          unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
+        }
+        expect(!!data).assertTrue();
+        mainWnd = data;
+        console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
+        mainWnd.show((err, data) => {
+          console.log(msgStr + 'mainWnd.show err' + JSON.stringify(err));
+          console.log(msgStr + 'mainWnd.show data' + JSON.stringify(data));
+          if (err && err.code) {
+            unexpectedError(data, caseName, 'mainWnd.show', done);
+          }
+          expect(!data).assertTrue();
+          console.log(msgStr + 'mainWnd.show success');
+          mainWnd.setFullScreen(true, (err, data) => {
+            console.log(msgStr + 'mainWnd.setFullScreen data:' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.setFullScreen true', done);
+            }
+            expect(!data).assertTrue();
+            console.log(msgStr + 'mainWnd.setFullScreen success');
+            flagNav = true;
+            mainWnd.setSystemBarEnable(['navigation'], (err, data) => {
+              console.log(msgStr + 'mainWnd.setSystemBarEnable navigation JSON.stringify(data)==' + JSON.stringify(data));
+              if (err && err.code) {
+                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [navigation]', done);
+              }
+              expect(!data).assertTrue();
+              console.log(msgStr + 'mainWnd.setSystemBarEnable success flagNav==' + flagNav);
+            })
+            flagStatus = true;
+            mainWnd.setSystemBarEnable(['status'], (err, data) => {
+              console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(data)===' + JSON.stringify(data));
+              if (err && err.code) {
+                console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(err)===' + JSON.stringify(err));
+                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status]', done);
+              }
+              expect(!data).assertTrue();
+            })
+          })
+        })
+      })
+      console.log(msgStr + 'finished!!');
+    });
+    /**
     * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_007
     * @tc.name       Test setSystemBarEnableTest7
     * @tc.desc       Verify that the scene hides the status bar and displays the navigation bar.
@@ -203,7 +274,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           console.log(msgStr + 'mainWnd.show success');
           expect(!data).assertTrue();
           mainWnd.setFullScreen(true, (err, data) => {
-            console.log(msgStr + 'mainWnd.setFullScreen: ' + JSON.stringify(data));
+            console.log(msgStr + 'mainWnd.setFullScreen' + JSON.stringify(data));
             if (err && err.code) {
               unexpectedError(data, caseName, 'mainWnd.setFullScreen true', done);
             }
@@ -227,7 +298,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                       console.log(msgStr + 'ohosWindow.on isEnable : ' + JSON.stringify(enable));
                       console.log(msgStr + 'ohosWindow.on numType : ' + JSON.stringify(numType));
 
-                      expect(numType === 2112 || enable).assertTrue();
+                      expect(numType === ohosWindow.WindowType.TYPE_NAVIGATION_BAR || enable).assertTrue();
                     }
                     done();
                   }, 3000)
@@ -272,7 +343,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           console.log(msgStr + 'mainWnd.show success');
           expect(!data).assertTrue();
           mainWnd.setFullScreen(true, (err, data) => {
-            console.log(msgStr + 'mainWnd.setFullScreen: ' + JSON.stringify(data));
+            console.log(msgStr + 'mainWnd.setFullScreen' + JSON.stringify(data));
             if (err && err.code) {
               unexpectedError(data, caseName, 'mainWnd.setFullScreen', done);
             }
@@ -300,7 +371,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                   unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable []', done);
                 }
                 expect(!data).assertTrue();
-                //                done();
               })
             })
           })
@@ -381,7 +451,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           let arrLength = systemBarData.regionTint.length;
           for (let i = 0; i < arrLength; i++) {
             let tempData = systemBarData.regionTint[i];
-            if (tempData.type === 2108 || tempData.type === 2112) {
+            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
               console.log(msgStr + 'systemBarTintChange compare start!');
               compareCount++;
               let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
@@ -476,8 +546,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           let arrLength = systemBarData.regionTint.length;
           for (let i = 0; i < arrLength; i++) {
             let tempData = systemBarData.regionTint[i];
-            if (tempData.type === 2108) {
-              console.log(msgStr + 'systemBarTintChange compare start!');
+            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR) {
+              console.log(msgStr + 'systemBarTintChange compare start! arrLength= '+ arrLength);
               compareCount++;
               let backgroundIndex = cloneColorArr.SBC.indexOf(tempData.backgroundColor);
               let contentColorIndex = cloneColorArr.SCC.indexOf(tempData.contentColor);
@@ -487,7 +557,9 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               if (contentColorIndex >= 0) {
                 cloneColorArr.SCC.splice(contentColorIndex, 1);
               }
-            } else if (tempData.type === 2112) {
+              console.log(msgStr+'compareCount: '+compareCount +' ,length: '+JSON.stringify(cloneColorArr.SCC.length)+ '   ,cloneColorArr.SBC:'+JSON.stringify(cloneColorArr.SBC));
+              console.log(msgStr+'compareCount: '+compareCount +' ,length: '+JSON.stringify(cloneColorArr.SCC.length)+'    ,cloneColorArr.SCC'+JSON.stringify(cloneColorArr.SCC));
+            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
               console.log(msgStr + 'systemBarTintChange compare start!');
               compareCount++;
               let backgroundIndex = cloneColorArr.NBC.indexOf(tempData.backgroundColor);
@@ -498,6 +570,17 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               if (contentColorIndex >= 0) {
                 cloneColorArr.NCC.splice(contentColorIndex, 1);
               }
+              let ca = cloneColorArr;
+              let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
+              if(compareCount===18&&!flag){
+                console.log(msgStr + 'compareCount: '+compareCount +' ,true flag:'+flag);
+                expect(true).assertTrue();
+                done();
+              }else{
+                console.log(msgStr + 'compareCount: '+compareCount +' ,flag:'+flag);
+              }
+              console.log(msgStr+'compareCount: '+compareCount +' ,length: '+JSON.stringify(cloneColorArr.NBC.length)+ '   ,cloneColorArr.SBC:'+JSON.stringify(cloneColorArr.NBC));
+              console.log(msgStr+'compareCount: '+compareCount +' ,length: '+JSON.stringify(cloneColorArr.NCC.length)+'    ,cloneColorArr.SCC'+JSON.stringify(cloneColorArr.NCC));
             }
           }
         }
@@ -549,16 +632,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                   }
                 })
               }
-              setTimeout(() => {
-                console.log(msgStr + 'time wait finished. compareCount: ' + compareCount);
-                listenerFlag = listenerStatus.finished;
-                let ca = cloneColorArr;
-                if (ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length) {
-                  unexpectedError(null, caseName, ' something compaer failed', done);
-                } else {
-                  done();
-                }
-              }, 10000)
             })
           })
         })
@@ -586,7 +659,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           let arrLength = systemBarData.regionTint.length;
           for (let i = 0; i < arrLength; i++) {
             let tempData = systemBarData.regionTint[i];
-            if (tempData.type === 2108 || tempData.type === 2112) {
+            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
               console.log(msgStr + 'systemBarTintChange compare start!');
               compareCount++;
               let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
@@ -882,7 +955,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                     console.log(msgStr + 'tempWnd.getProperties true  i: ' + i);
                     tempTypeArr.splice(tempTypeArr.findIndex(item => item === dataProper.type), 1);
                     console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr.length: ' + tempTypeArr.length);
-                    console.log(msgStr + 'tempWnd.getProperties true  loopCount1.length - i: ' + loopCount1.length - i);
+                    console.log(msgStr + 'tempWnd.getProperties true  loopCount1.length: ' + loopCount1.length);
+                    console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr.length + 1: ' + tempTypeArr.length + 1);
                     expect((loopCount1.length - i) == (tempTypeArr.length + 1)).assertTrue();
                     if (i == loopCount1.length - 1) {
                       console.log(msgStr + 'tempWnd.getProperties i=' + i + '   ,    loopCount1.length-1==' + loopCount1.length);
@@ -902,7 +976,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           unexpectedError(err, caseName, 'ohosWindow.create', done);
         }
       })
-
     })
     /**
     * @tc.number     SUB_WINDOW_SETWINDOWTYPE_JSAPI_004
