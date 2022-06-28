@@ -1,0 +1,39 @@
+{
+    "description": "Configuration for Image Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "1500000",
+        "package": "ohos.acts.multimedia.image",
+		"shell-timeout": "120000"
+    },
+    "kits": [
+		{
+            "type": "PushKit",
+            "pre-push": [
+            ],
+            "push": [		
+            ]
+        },
+   
+		{
+            "type": "ShellKit",
+            "run-command": [
+                "chmod -R 666 /data/media/*",
+                "setenforce 0",
+                "hilog -Q pidoff"
+            ],
+            "teardown-command":[
+                "setenforce 1"
+            ]
+        },
+        
+        {
+            "test-file-name": [
+                "ActsImagePixelMapJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+    
+}

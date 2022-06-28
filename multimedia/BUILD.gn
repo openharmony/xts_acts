@@ -22,6 +22,7 @@ group("multimedia") {
       "image/image_js_standard/image:image_js_hap",
       "image/image_js_standard/imageDecodeOptions:image_DecodeOptions_js_hap",
       "image/image_js_standard/imageExif:image_exif_js_hap",
+      "image/image_js_standard/imagePixelMap:image_pixelmap_js_hap",
       "media/media_js_standard/audioCodecFormat:audio_codec_format_js_hap",
       "media/media_js_standard/audioDecoder:audio_decoder_js_hap",
       "media/media_js_standard/audioEncoder:audio_encoder_js_hap",
