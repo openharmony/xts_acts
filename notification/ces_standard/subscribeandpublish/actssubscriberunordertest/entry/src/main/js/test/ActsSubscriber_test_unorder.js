@@ -227,6 +227,51 @@ describe('ActsSubscriberTestUnorder', async function (done) {
         })
     })
 
+     /*
+     * @tc.number    : ActsSubscriberTestUnorder_0600
+     * @tc.name      : verify subscribe and publish : Check whether the current public event is a sticky event              
+     * @tc.desc      : isStickyCommonEvent(callback: AsyncCallback<boolean>): void
+     */
+     it('ActsSubscriberTestUnorder_0600', 0, async function (done) {
+        console.info("===============ActsSubscriberTestUnorder_0600==========================>");
+        let commonEventSubscribeInfo = {
+            events: ["publish_event0600"]
+        };
+
+        let commonEventPublishData = {
+            isOrdered: false,
+            isSticky: false,
+        }
+
+        function isStickyCallback(err, data) {
+            console.info("==========================>isStickyCallback");
+            expect(data).assertEqual(false);
+            done();
+        }
+
+        function subscriberCallBack006(err, data) {
+            console.info("==========================>subscriberCallBack006");
+            commonEventSubscriber006.isStickyCommonEvent(isStickyCallback);
+        }
+
+        Subscriber.createSubscriber(
+            commonEventSubscribeInfo
+        ).then((data)=>{
+            console.info("===============ActsSubscriberTestUnorder_0600=========createSubscriber promise");
+            commonEventSubscriber006 = data;
+            data.getSubscribeInfo().then(()=>{
+                console.info("===============ActsSubscriberTestUnorder_0600=========getSubscribeInfo promise");
+                Subscriber.subscribe(commonEventSubscriber006, subscriberCallBack006);
+                Subscriber.unsubscribe(commonEventSubscriber006, unsubscriberCallBack);
+                setTimeout(function (){
+                    console.info("==========ActsSubscriberTestUnorder_0600 publish start============");
+                    Subscriber.publish("publish_event0600", commonEventPublishData, publishCallback);
+                }, 1000);
+            });
+        })
+    })
+
+
 
 })
 
