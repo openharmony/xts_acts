@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,9 +13,10 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
 import commonEvent from '@ohos.commonEvent'
-import bundle from '@ohos.bundle'
+import missionManager from '@ohos.application.missionManager'
+import appManager from '@ohos.application.appManager'
 
 
 var subscriberInfoMultiInstance = {
@@ -23,6 +24,14 @@ var subscriberInfoMultiInstance = {
 };
 const START_ABILITY_TIMEOUT = 5000;
 const MAX_MISSION_NUM = 1024;
+
+function sleep(time) {
+  return new Promise((resove, reject) => {
+    setTimeout(() => {
+      resove();
+    }, time)
+  })
+}
 
 async function startAbilityProcess(abilityContext, options, parameters) {
   let bundleName;
@@ -51,8 +60,37 @@ async function startAbilityProcess(abilityContext, options, parameters) {
   }
 }
 
+function getMissionId() {
+  return new Promise(async (resolve, reject) => {
+    var missionId = -1;
+    var missionInfos = await missionManager.getMissionInfos('', MAX_MISSION_NUM);
+    for (let i = 0; i < missionInfos.length; i++) {
+      console.log('getMissionId result: ' + i + '= ' + JSON.stringify(missionInfos[i]))
+      if ((missionInfos[i].want.abilityName == "com.example.actsgetdisplayidtest.MainAbility") &&
+        (missionInfos[i].runningState == 0)) {
+        missionId = missionInfos[i].missionId;
+        break;
+      }
+    }
+    console.log('======>getMissionId resolve missionId<=======' + missionId);
+    resolve(missionId);
+  })
+}
+
 export default function abilityTest(abilityContext) {
   describe('ActsGetDisplayIdStartAbilityTest', function () {
+
+    afterEach(async (done) => {
+      var testMissionId;
+
+      testMissionId = await getMissionId();
+      console.log('======>afterEach test missionId<=======' + testMissionId);
+      await missionManager.moveMissionToFront(testMissionId);
+      await sleep(1000)
+      await appManager.killProcessesByBundleName("com.example.actsspecifytesthap");
+      setTimeout(() => { done(); }, 1000)
+    })
+
 
     /*
     * @tc.number: ACTS_StartAbility_0100
