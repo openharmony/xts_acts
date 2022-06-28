@@ -21,15 +21,15 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003892, Function | MediumTest | Level2)
+static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003896, Function | MediumTest | Level2)
 {
-    GTEST_LOG_(INFO) << "TestCase_003892 start";
+    GTEST_LOG_(INFO) << "TestCase_003896 start";
     int argc = 3;
     const char *argv[3] = {
         ".",
         "--deqp-case="
-        "KHR-GLES3.packed_depth_stencil.ve"
-        "rify_read_pixels.depth24_stencil8",
+        "KHR-GLES3.packed_depth_stencil.verif"
+        "y_mixed_attachments.depth24_stencil8",
         "--deqp-archive-dir=/data/local/tmp/"
     };
     
@@ -40,23 +40,23 @@ static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003892, Function | MediumTes
     ActsKhrgles30004TestSuite::runResult.numWarnings += result.numWarnings;
     ActsKhrgles30004TestSuite::runResult.numWaived += result.numWaived;
     if (result.numNotSupported == 1) {
-        GTEST_LOG_(INFO) << "TestCase_003892 notsupport!";
+        GTEST_LOG_(INFO) << "TestCase_003896 notsupport!";
     } else if (result.isComplete) {
         EXPECT_TRUE(result.isComplete);
         EXPECT_TRUE(result.numPassed == 1);
     };
-    GTEST_LOG_(INFO) << "TestCase_003892 end";
+    GTEST_LOG_(INFO) << "TestCase_003896 end";
 }
 
-static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003893, Function | MediumTest | Level2)
+static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003897, Function | MediumTest | Level2)
 {
-    GTEST_LOG_(INFO) << "TestCase_003893 start";
+    GTEST_LOG_(INFO) << "TestCase_003897 start";
     int argc = 3;
     const char *argv[3] = {
         ".",
         "--deqp-case="
-        "KHR-GLES3.packed_depth_stencil.ve"
-        "rify_read_pixels.depth32f_stencil8",
+        "KHR-GLES3.packed_depth_stencil.verif"
+        "y_mixed_attachments.depth32f_stencil8",
         "--deqp-archive-dir=/data/local/tmp/"
     };
     
@@ -67,10 +67,10 @@ static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003893, Function | MediumTes
     ActsKhrgles30004TestSuite::runResult.numWarnings += result.numWarnings;
     ActsKhrgles30004TestSuite::runResult.numWaived += result.numWaived;
     if (result.numNotSupported == 1) {
-        GTEST_LOG_(INFO) << "TestCase_003893 notsupport!";
+        GTEST_LOG_(INFO) << "TestCase_003897 notsupport!";
     } else if (result.isComplete) {
         EXPECT_TRUE(result.isComplete);
         EXPECT_TRUE(result.numPassed == 1);
     };
-    GTEST_LOG_(INFO) << "TestCase_003893 end";
+    GTEST_LOG_(INFO) << "TestCase_003897 end";
 }
