@@ -13,8 +13,7 @@
  * limitations under the License.
  */
 
-import runningLock from '@ohos.runninglock';
-import '@ohos.permission.RUNNING_LOCK'
+import runningLock from '@ohos.runninglock'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
