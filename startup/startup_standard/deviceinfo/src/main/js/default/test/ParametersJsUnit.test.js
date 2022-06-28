@@ -321,7 +321,6 @@ describe('SystemParameterTest', function () {
                 } else {
                     console.info('testGet0410 set failed :' + err.code());
                 }
-                return p;
             })
             setTimeout(function () {
                 let parameterInfo = systemparameter.get('hw_sc.build.os.version');
