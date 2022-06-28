@@ -116,7 +116,7 @@ export default function actsBmsJsUnPermissionTest() {
                 },
                 complete: function complete() {
                     console.info("get hasInstalled complete");
-                    expect(data).assertFail();
+                    expect().assertFail();
                     done();
                 }
             })
@@ -142,7 +142,7 @@ export default function actsBmsJsUnPermissionTest() {
                 },
                 complete: function complete() {
                     console.info("get hasInstalled complete");
-                    expect(data).assertFail();
+                    expect().assertFail();
                     done();
                 }
             })
