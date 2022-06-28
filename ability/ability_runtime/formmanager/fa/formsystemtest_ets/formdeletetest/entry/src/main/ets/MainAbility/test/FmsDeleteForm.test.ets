@@ -1134,7 +1134,7 @@ const changeTime = async (hour, min, second) => {
     console.info(`FMS_deleteForm changeTime s: ${s}`);
 
     try {
-        await systemTiem.setTime(s);
+        await systemTime.setTime(s);
         console.info(`FMS_deleteForm set time success: ${formatTime}`);
     } catch (error) {
         console.info(`FMS_deleteForm set time failure: ${error}`);

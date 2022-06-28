@@ -15,7 +15,12 @@
 
 import formHost from '@ohos.application.formHost';
 import { describe, expect, it } from 'deccjsunit/index';
+import FormInfo from '@ohos.application.formInfo';
 
+
+function sleep(time) {
+  return new Promise((resolve)=>setTimeout(resolve,time));
+}
 export const getAllFormsInfoTest = (describeName, filterParameter) => {
   const ERR_OK_CODE = 0;
   const ERR_OK = `success`;
@@ -23,69 +28,9 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
   describe(`${describeName}`, () => {
     const callbackName = `FMS_getFormsInfo_0600 callback`;
     const promiseName = `FMS_getFormsInfo_0600 promise`;
-
-    const expectDataA01 = {
-      bundleName: 'com.ohos.st.formsystemprovidera',
-      moduleName: 'form_module_a',
-      abilityName: 'com.ohos.st.formsystemprovidera.MainAbility',
-      name: 'FormA_Js001',
-      description: 'form_description_FormA_Js001',
-      descriptionId: 0,
-      type: 1,
-      jsComponentName: 'card_a01',
-      colorMode: 0,
-      isDefault: 1,
-      updateEnabled: 1,
-      formVisibleNotify: 1,
-      formConfigAbility: 'abilitya01',
-      updateDuration: 1,
-      scheduledUpdateTime: '5:30',
-      defaultDimension: 1,
-      supportDimensions: [1, 3],
-      metaData: { customizeData: [{ name: 'originWidgetNameA01', value: 'valueA01' }] },
-    };
-
-    const expectDataA02 = {
-      bundleName: 'com.ohos.st.formsystemprovidera',
-      moduleName: 'form_module_a',
-      abilityName: 'com.ohos.st.formsystemprovidera.MainAbility',
-      name: 'FormA_Js002',
-      description: 'form_description_FormA_Js002',
-      descriptionId: 10,
-      type: 1,
-      jsComponentName: 'card_a02',
-      colorMode: 1,
-      isDefault: 0,
-      updateEnabled: 0,
-      formVisibleNotify: 0,
-      formConfigAbility: 'abilitya02',
-      updateDuration: 2,
-      scheduledUpdateTime: '20:30',
-      defaultDimension: 4,
-      supportDimensions: [1, 2, 3, 4],
-      metaData: { customizeData: [{ name: 'originWidgetNameA02', value: 'valueA02' }] },
-    };
-
-    const expectDataB = {
-      bundleName: 'com.ohos.st.formsystemproviderb',
-      moduleName: 'form_module_b',
-      abilityName: 'com.ohos.st.formsystemproviderb.MainAbility',
-      name: 'FormB_Js001',
-      description: 'form_description_FormB_Js001',
-      descriptionId: 20,
-      type: 1,
-      jsComponentName: 'card_b',
-      colorMode: -1,
-      isDefault: 1,
-      updateEnabled: 1,
-      formVisibleNotify: 1,
-      formConfigAbility: 'abilityb',
-      updateDuration: 3,
-      scheduledUpdateTime: '10:30',
-      defaultDimension: 2,
-      supportDimensions: [1, 2],
-      metaData: { customizeData: [{ name: 'originWidgetNameB', value: 'valueB' }] },
-    };
+    var tempDataA1 = undefined;
+    var tempDataA2 = undefined;
+    var tempDataB = undefined;
 
     /**
      * @tc.name: getFormsInfo
@@ -113,14 +58,18 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
 
           expect(dataA.length).assertEqual(2);
           expect(dataB.length).assertEqual(1);
-          expect(JSON.stringify(dataA[0])).assertEqual(JSON.stringify(expectDataA01));
-          expect(JSON.stringify(dataA[1])).assertEqual(JSON.stringify(expectDataA02));
-          expect(JSON.stringify(dataB[0])).assertEqual(JSON.stringify(expectDataB));
+          tempDataA1 = dataA[0]
+          tempDataA2 = dataA[1]
+          tempDataB = dataB[0]
           expect(error.code).assertEqual(ERR_OK_CODE);
           expect(error.message).assertEqual(ERR_OK);
-          done();
           console.log(`==========${callbackName} ${describeName} end==========`);
         });
+        await sleep(2000)
+        checkDataA1(tempDataA1)
+        checkDataA2(tempDataA2)
+        checkDataB(tempDataB)
+        done()
       } catch (error) {
         console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
         console.log(`${callbackName} should not reach here`);
@@ -154,9 +103,12 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
 
         expect(dataA.length).assertEqual(2);
         expect(dataB.length).assertEqual(1);
-        expect(JSON.stringify(dataA[0])).assertEqual(JSON.stringify(expectDataA01));
-        expect(JSON.stringify(dataA[1])).assertEqual(JSON.stringify(expectDataA02));
-        expect(JSON.stringify(dataB[0])).assertEqual(JSON.stringify(expectDataB));
+        tempDataA1 = dataA[0]
+        tempDataA2 = dataA[1]
+        tempDataB = dataB[0]
+        checkDataA1(tempDataA1)
+        checkDataA2(tempDataA2)
+        checkDataB(tempDataB)
         done();
         console.log(`==========${promiseName} ${describeName} end==========`);
       } catch (error) {
@@ -165,5 +117,76 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
         expect().assertFail();
       }
     });
+
+    function checkDataB(formInfo){
+         expect("com.ohos.st.formsystemproviderb").assertEqual(formInfo.bundleName)
+         expect("form_module_b").assertEqual(formInfo.moduleName)
+         expect("com.ohos.st.formsystemproviderb.MainAbility").assertEqual(formInfo.abilityName)
+         expect("FormB_Js001").assertEqual(formInfo.name)
+         expect("form_description_FormB_Js001").assertEqual(formInfo.description)
+         expect(FormInfo.FormType.JS).assertEqual(formInfo.type)
+         expect('card_b').assertEqual(formInfo.jsComponentName)
+         expect(FormInfo.ColorMode.MODE_AUTO).assertEqual(formInfo.colorMode)
+         expect(1).assertEqual(formInfo.isDefault)
+         expect(1).assertEqual(formInfo.updateEnabled)
+         expect(1).assertEqual(formInfo.formVisibleNotify)
+         expect(undefined).assertEqual(formInfo.relatedBundleName)
+         expect("abilityb").assertEqual(formInfo.formConfigAbility)
+         expect(3).assertEqual(formInfo.updateDuration)
+         expect(2).assertEqual(formInfo.defaultDimension)
+         expect('10:30').assertEqual(formInfo.scheduledUpdateTime)
+         expect(1).assertEqual(formInfo.supportDimensions[0])
+         expect(2).assertEqual(formInfo.supportDimensions[1])
+         expect('originWidgetNameB').assertEqual(formInfo.metaData.customizeData[0].name)
+         expect('valueB').assertEqual(formInfo.metaData.customizeData[0].value)
+      }
+
+      function checkDataA1(formInfo){
+         expect("com.ohos.st.formsystemprovidera").assertEqual(formInfo.bundleName)
+         expect("form_module_a").assertEqual(formInfo.moduleName)
+         expect("com.ohos.st.formsystemprovidera.MainAbility").assertEqual(formInfo.abilityName)
+         expect("FormA_Js001").assertEqual(formInfo.name)
+         expect("form_description_FormA_Js001").assertEqual(formInfo.description)
+         expect(FormInfo.FormType.JS).assertEqual(formInfo.type)
+         expect('card_a01').assertEqual(formInfo.jsComponentName)
+         expect(FormInfo.ColorMode.MODE_DARK).assertEqual(formInfo.colorMode)
+         expect(1).assertEqual(formInfo.isDefault)
+         expect(1).assertEqual(formInfo.updateEnabled)
+         expect(1).assertEqual(formInfo.formVisibleNotify)
+         expect(undefined).assertEqual(formInfo.relatedBundleName)
+         expect("abilitya01").assertEqual(formInfo.formConfigAbility)
+         expect(1).assertEqual(formInfo.updateDuration)
+         expect(1).assertEqual(formInfo.defaultDimension)
+         expect('5:30').assertEqual(formInfo.scheduledUpdateTime)
+         expect(1).assertEqual(formInfo.supportDimensions[0])
+         expect(3).assertEqual(formInfo.supportDimensions[1])
+         expect('originWidgetNameA01').assertEqual(formInfo.metaData.customizeData[0].name)
+         expect('valueA01').assertEqual(formInfo.metaData.customizeData[0].value)
+      }
+
+      function checkDataA2(formInfo){
+         expect("com.ohos.st.formsystemprovidera").assertEqual(formInfo.bundleName)
+         expect("form_module_a").assertEqual(formInfo.moduleName)
+         expect("com.ohos.st.formsystemprovidera.MainAbility").assertEqual(formInfo.abilityName)
+         expect("FormA_Js002").assertEqual(formInfo.name)
+         expect("form_description_FormA_Js002").assertEqual(formInfo.description)
+         expect(FormInfo.FormType.JS).assertEqual(formInfo.type)
+         expect('card_a02').assertEqual(formInfo.jsComponentName)
+         expect(FormInfo.ColorMode.MODE_LIGHT).assertEqual(formInfo.colorMode)
+         expect(0).assertEqual(formInfo.isDefault)
+         expect(0).assertEqual(formInfo.updateEnabled)
+         expect(0).assertEqual(formInfo.formVisibleNotify)
+         expect(undefined).assertEqual(formInfo.relatedBundleName)
+         expect("abilitya02").assertEqual(formInfo.formConfigAbility)
+         expect(2).assertEqual(formInfo.updateDuration)
+         expect(4).assertEqual(formInfo.defaultDimension)
+         expect('20:30').assertEqual(formInfo.scheduledUpdateTime)
+         expect(1).assertEqual(formInfo.supportDimensions[0])
+         expect(2).assertEqual(formInfo.supportDimensions[1])
+         expect(3).assertEqual(formInfo.supportDimensions[2])
+         expect(4).assertEqual(formInfo.supportDimensions[3])
+         expect('originWidgetNameA02').assertEqual(formInfo.metaData.customizeData[0].name)
+         expect('valueA02').assertEqual(formInfo.metaData.customizeData[0].value)
+      }
   });
 };
