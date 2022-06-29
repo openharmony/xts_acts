@@ -274,7 +274,7 @@ describe('ActsBundleManagerTest', function () {
             expect(data[i].appInfo.name.length).assertLarger(0);
             if (data[i].name == NAME1 || data[i].name == NAME2
                 || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
-                expect(datainfo[i].description.length >= 0).assertTrue();
+                expect(data[i].appInfo.description.length >= 0).assertTrue();
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
@@ -337,7 +337,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.name.length).assertLarger(0);
                 if (data[i].name == NAME1 || data[i].name == NAME2
                     || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
-                    expect(datainfo[i].description.length >= 0).assertTrue();
+                    expect(data[i].appInfo.description.length >= 0).assertTrue();
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
@@ -598,7 +598,7 @@ describe('ActsBundleManagerTest', function () {
             expect(data[i].appInfo.name.length).assertLarger(0);
             if (data[i].name == NAME1 || data[i].name == NAME2
                 || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
-                expect(datainfo[i].description.length >= 0).assertTrue();
+                expect(data[i].appInfo.description.length >= 0).assertTrue();
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
@@ -621,7 +621,7 @@ describe('ActsBundleManagerTest', function () {
             expect(data[i].appInfo.name.length).assertLarger(0);
             if (data[i].name == NAME1 || data[i].name == NAME2
                 || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
-                expect(datainfo[i].description.length >= 0).assertTrue();
+                expect(data[i].appInfo.description.length >= 0).assertTrue();
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
@@ -679,7 +679,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.name.length).assertLarger(0);
                 if (data[i].name == NAME1 || data[i].name == NAME2
                     || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
-                    expect(datainfo[i].description.length >= 0).assertTrue();
+                    expect(data[i].appInfo.description.length >= 0).assertTrue();
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
@@ -703,7 +703,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.name.length).assertLarger(0);
                 if (data[i].name == NAME1 || data[i].name == NAME2
                     || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
-                    expect(datainfo[i].description.length >= 0).assertTrue();
+                    expect(data[i].appInfo.description.length >= 0).assertTrue();
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
@@ -757,7 +757,7 @@ describe('ActsBundleManagerTest', function () {
             expect(data[i].appInfo.name.length).assertLarger(0);
             if (data[i].name == NAME1 || data[i].name == NAME2
                 || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
-                expect(datainfo[i].description.length >= 0).assertTrue();
+                expect(data[i].appInfo.description.length >= 0).assertTrue();
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
@@ -779,7 +779,7 @@ describe('ActsBundleManagerTest', function () {
             expect(data[i].appInfo.name.length).assertLarger(0);
             if (data[i].name == NAME1 || data[i].name == NAME2
                 || data[i].name == NAME3 || data[i].name == NAME4 || data[i].name == NAME5) {
-                expect(datainfo[i].description.length >= 0).assertTrue();
+                expect(data[i].appInfo.description.length >= 0).assertTrue();
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
