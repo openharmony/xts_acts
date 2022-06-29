@@ -1,3 +1,4 @@
+
 /*
  * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -679,6 +680,7 @@ describe('objectStoreTest', function () {
      */
     it('testSave001', 0, async function (done) {
             console.info(TAG + "************* testSave001 start *************");
+            
             var gObject = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             gObject.setSessionId("tmpsession1");
             let result = await gObject.save("local");
@@ -706,13 +708,15 @@ describe('objectStoreTest', function () {
      */
     it('testSave002', 0, function (done) {
         console.log(TAG + "************* testSave002 start *************");
+        let SaveSuccessResponse 
         var gObject = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         gObject.setSessionId("tmpsession1");
         gObject.save("local",(result)=>{
-            expect(result != null).assertTrue();
-            expect(result.sessionId == "tmpsession1").assertEqual(false);
-            expect(result.version == gObject.__version).assertEqual(false);
-            expect(result.deviceId == "local").assertEqual(false);
+            SaveSuccessResponse = result
+            expect(SaveSuccessResponse != null).assertTrue();
+            expect(SaveSuccessResponse.sessionId == "tmpsession1").assertEqual(false);
+            expect(SaveSuccessResponse.version == gObject.__version).assertEqual(false);
+            expect(SaveSuccessResponse.deviceId == "local").assertEqual(false);
         });
 
         gObject.setSessionId("");
@@ -761,9 +765,11 @@ describe('objectStoreTest', function () {
         expect(result.sessionId != "123456").assertEqual(true);
         expect(result.version != gObject.__version).assertEqual(true);
         expect(result.deviceId != "local").assertEqual(true);
-
+        let RevokeSaveSuccessResponse =undefined;
         gObject.revokeSave((err,ret) => {
+            RevokeSaveSuccessResponse = ret;
             expect(err == null).assertTrue();
+            expect(RevokeSaveSuccessResponse == undefined).assertTrue();
         });
         done();
         console.log(TAG + "************* testRevokeSave002 end *************");
