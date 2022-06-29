@@ -44,6 +44,10 @@ let HuksCipherAES = {
     tag: param.HksTag.HKS_TAG_KEY_SIZE,
     value: param.HksKeySize.HKS_AES_KEY_SIZE_256,
   },
+  HuksKeyAESSize512: {
+    tag: param.HksTag.HKS_TAG_KEY_SIZE,
+    value: param.HksKeySize.HKS_AES_KEY_SIZE_512,
+  },
   HuksKeyAESPADDINGNONE: {
     tag: param.HksTag.HKS_TAG_PADDING,
     value: param.HksKeyPadding.HKS_PADDING_NONE,
