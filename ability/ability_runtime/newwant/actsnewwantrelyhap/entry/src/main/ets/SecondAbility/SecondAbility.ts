@@ -142,5 +142,22 @@ export default class SecondAbility extends Ability {
         commonEvent.publish("onNewWantSecond_To_Test_CommonEvent", publishData,() => {
             console.log("ACTS_NewWant SecondAbility Publish CallBack onNewWantSecond_To_Test_CommonEvent")
         });
+        switch (want.action) {
+          case 'restartSingleton':
+            commonEvent.publish("onNewWantSecond1_To_Test_CommonEvent", publishData,() => {
+                console.log("ACTS_NewWant SecondAbility Publish CallBack onNewWantSecond1_To_Test_CommonEvent")
+            });
+            break;
+          case 'restartSecondAbility0700':
+            commonEvent.publish("onNewWantSecond2_To_Test_CommonEvent", publishData,() => {
+                console.log("ACTS_NewWant SecondAbility Publish CallBack onNewWantSecond2_To_Test_CommonEvent")
+            });
+            break;
+          case 'restartSecondAbility0800':
+            commonEvent.publish("onNewWantSecond3_To_Test_CommonEvent", publishData,() => {
+                console.log("ACTS_NewWant SecondAbility Publish CallBack onNewWantSecond3_To_Test_CommonEvent")
+            });
+            break;
+        }
     }
 };
