@@ -19,7 +19,7 @@ import ThermalLevel from "@ohos.thermal"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 const MSEC_1000 = 1000;
 
-describe('appInfoTest', function () {
+describe('appInfoTest_thermal_1', function () {
     console.log("*************Thermal API Test Begin*************");
     test14();
     test15();
