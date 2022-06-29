@@ -24,7 +24,6 @@ group("multimedia") {
       "image/image_js_standard/imageDecodeOptions:image_DecodeOptions_js_hap",
       "image/image_js_standard/imageExif:image_exif_js_hap",
       "image/image_js_standard/imageModifyProperty:image_modifyProperty_js_hap",
-      "image/image_js_standard/imagePixelMap:image_pixelmap_js_hap",
       "image/image_js_standard/imagePixelMapFramework:image_pixelmapframework_js_hap",
       "image/image_js_standard/imageReceiver:image_receiver_js_hap",
       "image/image_js_standard/imageWebp:image_webp_js_hap",
