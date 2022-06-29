@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import notification from '@ohos.notification'
-import Subscriber from '@ohos.commonevent'
+import Subscriber from '@ohos.commonEvent'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 var time = 5000
 var multiLineDataOne

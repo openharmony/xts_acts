@@ -14,7 +14,6 @@
  */
 import notify from '@ohos.notification'
 import WantAgent from '@ohos.wantAgent'
-//import { OperationType, WantAgentFlags } from '@ohos.wantagent'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('ActsAnsActionButtonTest', function () {
