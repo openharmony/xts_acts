@@ -37,6 +37,7 @@
         "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/cache",
         "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/cache",
         "./resource/image/test_exif.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/cache",
+        "./resource/image/test_exif1.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/cache",
         "./resource/image/moving_test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/cache"
       ]
     }
