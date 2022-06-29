@@ -18,12 +18,10 @@ group("actsusers") {
   if (is_standard_system) {
     deps = [
       "ActsAmsUsersApi7AppA:ActsAmsUsersApi7AppA",
-      "ActsAmsUsersExtensionSystemTest:ActsAmsUsersExtensionSystemTest",
       "ActsAmsUsersKillProcessAppA:ActsAmsUsersKillProcessAppA",
       "ActsAmsUsersKillProcessAppB:ActsAmsUsersKillProcessAppB",
       "ActsAmsUsersKillProcessAppC:ActsAmsUsersKillProcessAppC",
       "ActsAmsUsersSystemTest:ActsAmsUsersSystemTest",
-      "actsconnectabilitysystemabilitytest:ActsConnectAbilitySystemAbilityTest",
       "actsextensionconnectabilitytest:ActsExtensionConnectAbilityTest",
       "actsserviceabilityrelytest:actsServiceAbilityRelyHap",
     ]

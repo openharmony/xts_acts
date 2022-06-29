@@ -32,6 +32,7 @@ group("ability_runtime") {
       "amsdatauriutils:ActsAmsDataUriUtilsTest",
       "amsdisplayIdtest:amsdisplayIdtest",
       "amsgetabilityprocessinfo:amsgetabilityprocessinfo",
+      "apicover:apicover",
       "context:context",
       "fa:fa",
       "featureability:featureability",
