@@ -4661,7 +4661,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_171', 0, async function (done) {
-        await getAbilityInfo('test_exif.jpg');
+        await getAbilityInfo('test_exif1.jpg');
         let fdExifJpg = fileio.openSync(filePath);
         const imageSourceApi = image.createImageSource(fdExifJpg);
         if (imageSourceApi == undefined) {
@@ -4672,7 +4672,8 @@ describe('Image', function () {
             imageSourceApi.getImageProperty("BitsPerSample")
                 .then(data => {
                     console.info('TC_171 BitsPerSample ' + data);
-                    expect(data != undefined).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
+
                     done();
                 })
                 .catch(error => {
@@ -4966,7 +4967,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_172', 0, async function (done) {
-        await getAbilityInfo('test_exif.jpg');
+        await getAbilityInfo('test_exif1.jpg');
         let fdExifJpg = fileio.openSync(filePath);
         const imageSourceApi = image.createImageSource(fdExifJpg);
         if (imageSourceApi == undefined) {
@@ -4981,7 +4982,7 @@ describe('Image', function () {
                     done();
                 } else {
                     console.info('TC_172 BitsPerSample ' + data);
-                    expect(data != undefined).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 }
             })
@@ -5264,7 +5265,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_173', 0, async function (done) {
-        await getAbilityInfo('test_exif.jpg');
+        await getAbilityInfo('test_exif1.jpg');
         let fdExifJpg = fileio.openSync(filePath);
         const imageSourceApi = image.createImageSource(fdExifJpg);
         if (imageSourceApi == undefined) {
@@ -5280,7 +5281,7 @@ describe('Image', function () {
                     done();
                 } else {
                     console.info('TC_173 BitsPerSample ' + data);
-                    expect(data != '9999' && data != undefined).assertTrue();
+                    expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
                 }
             })
