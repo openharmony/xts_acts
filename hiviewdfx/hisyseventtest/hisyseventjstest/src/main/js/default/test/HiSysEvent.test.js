@@ -17,36 +17,21 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 describe('hiSysEventJsTest', function () {
     beforeAll(function() {
-
-        /**
-         * @tc.setup: setup invoked before all test cases
-         */
         console.info('hiSysEventJsTest beforeAll called')
     })
 
     afterAll(function() {
-
-        /**
-         * @tc.teardown: teardown invoked after all test cases
-         */
         console.info('hiSysEventJsTest afterAll called')
     })
 
     beforeEach(function() {
-
-        /**
-         * @tc.setup: setup invoked before each test case
-         */
         console.info('hiSysEventJsTest beforeEach called')
     })
 
     afterEach(function() {
-
-        /**
-         * @tc.teardown: teardown invoked after each test case
-         */
         console.info('hiSysEventJsTest afterEach called')
     })
+
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_0100
 	 * @tc.name testHiSysEventApi01
@@ -93,6 +78,7 @@ describe('hiSysEventJsTest', function () {
 		)
 		console.info('testHiSysEventApi02 end')
 	})
+
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_0400
 	 * @tc.name testHiSysEventApi04
@@ -197,11 +183,11 @@ describe('hiSysEventJsTest', function () {
 		console.info('testHiSysEventApi07 end')
 	})
 
-	/**
+    /**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_0800
 	 * @tc.name testHiSysEventApi08
 	 * @tc.desc 添加Js打点事件-添加成功后回调函数被调用(domain+eventName+params, eventType=FAULT)
-	 */
+     */
 	it('testHiSysEventApi08', 3, async function (done) {
 		console.info('testHiSysEventApi08 start')
 		hiSysEvent.write({
@@ -345,7 +331,8 @@ describe('hiSysEventJsTest', function () {
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi12: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi12: domain is : ${info.domain}, name is ${info.name}, eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi12: domain is : ${info.domain}, name is ${info.name},
+				                                               eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi12: ${key}: ${info.params[key]}`)
@@ -366,7 +353,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1300
 	 * @tc.name testHiSysEventApi13
 	 * @tc.desc HiSysEvent订阅接口测试-订阅成功回调函数被调用(domain+eventName, rule=REGULAR)
-	*/
+	 */
 	it('testHiSysEventApi13', 3, async function (done) {
 		console.info('testHiSysEventApi13 start')
 		let watcher = {
@@ -378,7 +365,8 @@ describe('hiSysEventJsTest', function () {
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi13: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi13: domain is : ${info.domain}, name is ${info.name}, eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi13: domain is : ${info.domain}, name is ${info.name},
+				                                                               eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi13: ${key}: ${info.params[key]}`)
@@ -399,7 +387,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1400
 	 * @tc.name testHiSysEventApi14
 	 * @tc.desc HiSysEvent订阅接口测试-订阅成功回调函数被调用(domain+eventName, rule=WHOLE_WORD)
-	*/
+	 */
 	it('testHiSysEventApi14', 3, async function (done) {
 		console.info('testHiSysEventApi14 start')
 		let watcher = {
@@ -411,7 +399,8 @@ describe('hiSysEventJsTest', function () {
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi14: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi14: domain is : ${info.domain}, name is ${info.name}, eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi14: domain is : ${info.domain}, name is ${info.name},
+				                                                               eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi14: ${key}: ${info.params[key]}`)
@@ -432,7 +421,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1500
 	 * @tc.name testHiSysEventApi15
 	 * @tc.desc HiSysEvent订阅接口测试-订阅成功回调函数被调用(domain+eventName+tag, rule=PREFIX)
-	*/
+	 */
 	it('testHiSysEventApi15', 3, async function (done) {
 		console.info('testHiSysEventApi15 start')
 		let watcher = {
@@ -445,7 +434,8 @@ describe('hiSysEventJsTest', function () {
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi15: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi15: domain is : ${info.domain}, name is ${info.name}, eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi15: domain is : ${info.domain}, name is ${info.name},
+				                                   eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi15: ${key}: ${info.params[key]}`)
@@ -466,7 +456,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1600
 	 * @tc.name testHiSysEventApi16
 	 * @tc.desc HiSysEvent订阅接口测试-订阅成功回调函数被调用(domain+eventName+tag, rule=REGULAR)
-	*/
+	 */
 	it('testHiSysEventApi16', 3, async function (done) {
 		console.info('testHiSysEventApi16 start')
 		let watcher = {
@@ -479,7 +469,8 @@ describe('hiSysEventJsTest', function () {
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi16: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi16: domain is : ${info.domain}, name is ${info.name}, eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi16: domain is : ${info.domain},
+				              name is ${info.name}, eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi16: ${key}: ${info.params[key]}`)
@@ -500,7 +491,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1700
 	 * @tc.name testHiSysEventApi17
 	 * @tc.desc HiSysEvent订阅接口测试-订阅成功回调函数被调用(domain+eventName+tag, rule=WHOLE_WORD)
-	*/
+	 */
 	it('testHiSysEventApi17', 3, async function (done) {
 		console.info('testHiSysEventApi17 start')
 		let watcher = {
@@ -513,7 +504,8 @@ describe('hiSysEventJsTest', function () {
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi17: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi17: domain is : ${info.domain}, name is ${info.name}, eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi17: domain is : ${info.domain}, name is ${info.name},
+				                                   eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi17: ${key}: ${info.params[key]}`)
@@ -529,7 +521,7 @@ describe('hiSysEventJsTest', function () {
 		console.info('testHiSysEventApi17 end')
 		done();
 	})
-	
+
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1800
 	 * @tc.name testHiSysEventApi18
@@ -546,7 +538,8 @@ describe('hiSysEventJsTest', function () {
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi18: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi18: domain is : ${info.domain}, name is ${info.name}, eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi18: domain is : ${info.domain}, name is ${info.name},
+				                                                               eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi18: ${key}: ${info.params[key]}`)
@@ -572,7 +565,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1900
 	 * @tc.name testHiSysEventApi19
 	 * @tc.desc HiSysEvent删除订阅接口测试-删除订阅成功回调函数被调用(domain+eventName, rule=REGULAR)
-	*/
+	 */
 	it('testHiSysEventApi19', 3, async function (done) {
 		console.info('testHiSysEventApi19 start')
 		let watcher = {
@@ -584,7 +577,8 @@ describe('hiSysEventJsTest', function () {
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi19: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi19: domain is : ${info.domain}, name is ${info.name}, eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi19: domain is : ${info.domain}, name is ${info.name},
+				                                                               eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi19: ${key}: ${info.params[key]}`)
@@ -610,7 +604,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.number DFX_DFT_HiSysEvent_JS_2000
 	 * @tc.name testHiSysEventApi20
 	 * @tc.desc HiSysEvent删除订阅接口测试-删除订阅成功回调函数被调用(domain+eventName, rule=WHOLE_WORD)
-	*/
+	 */
 	it('testHiSysEventApi20', 3, async function (done) {
 		console.info('testHiSysEventApi14 start')
 		let watcher = {
@@ -622,7 +616,8 @@ describe('hiSysEventJsTest', function () {
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi20: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi20: domain is : ${info.domain}, name is ${info.name}, eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi20: domain is : ${info.domain}, name is ${info.name},
+				                                                               eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi20: ${key}: ${info.params[key]}`)
@@ -648,7 +643,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.number DFX_DFT_HiSysEvent_JS_2100
 	 * @tc.name testHiSysEventApi21
 	 * @tc.desc HiSysEvent删除订阅接口测试-删除订阅成功回调函数被调用(domain+eventName+tag, rule=PREFIX)
-	*/
+	 */
 	it('testHiSysEventApi21', 3, async function (done) {
 		console.info('testHiSysEventApi21 start')
 		let watcher = {
@@ -661,7 +656,8 @@ describe('hiSysEventJsTest', function () {
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi21: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi21: domain is : ${info.domain}, name is ${info.name}, eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi21: domain is : ${info.domain}, name is ${info.name},
+				                                                               eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi21: ${key}: ${info.params[key]}`)
@@ -687,7 +683,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.number DFX_DFT_HiSysEvent_JS_2200
 	 * @tc.name testHiSysEventApi22
 	 * @tc.desc HiSysEvent删除订阅接口测试-删除订阅成功回调函数被调用(domain+eventName+tag, rule=REGULAR)
-	*/
+	 */
 	it('testHiSysEventApi22', 3, async function (done) {
 		console.info('testHiSysEventApi22 start')
 		let watcher = {
@@ -700,7 +696,8 @@ describe('hiSysEventJsTest', function () {
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi22: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi22: domain is : ${info.domain}, name is ${info.name}, eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi22: domain is : ${info.domain}, name is ${info.name},
+				                                                               eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi22: ${key}: ${info.params[key]}`)
@@ -726,7 +723,7 @@ describe('hiSysEventJsTest', function () {
 	 * @tc.number DFX_DFT_HiSysEvent_JS_2300
 	 * @tc.name testHiSysEventApi23
 	 * @tc.desc HiSysEvent删除订阅接口测试-删除订阅成功回调函数被调用(domain+eventName+tag, rule=WHOLE_WORD)
-	*/
+	 */
 	it('testHiSysEventApi23', 3, async function (done) {
 		console.info('testHiSysEventApi23 start')
 		let watcher = {
@@ -739,7 +736,8 @@ describe('hiSysEventJsTest', function () {
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi23: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi23: domain is : ${info.domain}, name is ${info.name}, eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi23: domain is : ${info.domain}, name is ${info.name},
+				                                                               eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi23: ${key}: ${info.params[key]}`)
@@ -760,7 +758,7 @@ describe('hiSysEventJsTest', function () {
         }, 1000)
 		done();
 	})
-	
+
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_2400
 	 * @tc.name testHiSysEventApi24
@@ -806,7 +804,8 @@ describe('hiSysEventJsTest', function () {
                     if (infos instanceof Array) {
                         for (let i = 0; i < infos.length; i++) {
                             let item = infos[i];
-                            console.info(`testHiSysEventApi24: domain is ${item.domain}, name is ${item.name}, eventType is ${item.eventType}`)
+                            console.info(`testHiSysEventApi24: domain is ${item.domain}, name is ${item.name},
+                                                               eventType is ${item.eventType}`)
                             if (item.params instanceof Object) {
                                 for (const key in item.params) {
                                     console.info(`testHiSysEventApi24: ${key}: ${item.params[key]}`)
@@ -831,7 +830,7 @@ describe('hiSysEventJsTest', function () {
             expect(ret).assertEqual(0)
         }, 1000);
 	})
-	
+
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_2500
 	 * @tc.name testHiSysEventApi25
@@ -884,7 +883,8 @@ describe('hiSysEventJsTest', function () {
                     if (infos instanceof Array) {
                         for (let i = 0; i < infos.length; i++) {
                             let item = infos[i];
-                            console.info(`testHiSysEventApi25: domain is ${item.domain}, name is ${item.name}, eventType is ${item.eventType}`)
+                            console.info(`testHiSysEventApi25: domain is ${item.domain}, name is ${item.name},
+                                                               eventType is ${item.eventType}`)
                             if (item.params instanceof Object) {
                                 for (const key in item.params) {
                                     console.info(`testHiSysEventApi25: ${key}: ${item.params[key]}`)
