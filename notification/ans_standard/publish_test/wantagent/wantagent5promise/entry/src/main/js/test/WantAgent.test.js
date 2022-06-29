@@ -14,7 +14,6 @@
  */
 
 import wantAgent from '@ohos.wantAgent';
-import { OperationType, WantAgentFlags } from '@ohos.wantagent';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 var time = 1000
 var WantAgent;
@@ -47,9 +46,9 @@ describe('ActsAnsWantAgentFiveProTest', function () {
                         }
                     },
             ],
-//            operationType: OperationType.START_ABILITY,
+//            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         console.info('----getWantAgent before----');
         wantAgent.getWantAgent(agentInfo).then(

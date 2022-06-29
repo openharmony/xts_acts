@@ -14,7 +14,6 @@
  */
 import notify from '@ohos.notification'
 import WantAgent from '@ohos.wantAgent'
-import { OperationType, WantAgentFlags } from '@ohos.wantagent'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('ActsAnsActionButtonTest', function () {
@@ -87,7 +86,7 @@ describe('ActsAnsActionButtonTest', function () {
             ],
             operationType: WantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         };
         var wantAgentData = await WantAgent.getWantAgent(agentInfoA);
 
@@ -172,7 +171,7 @@ describe('ActsAnsActionButtonTest', function () {
             ],
             operationType: WantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         };
         var wantAgentDataB = await WantAgent.getWantAgent(agentInfoB);
 
