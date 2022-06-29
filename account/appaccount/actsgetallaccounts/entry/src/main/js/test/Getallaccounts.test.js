@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
-import featureAbility from '@ohos.ability.featureability'
+import featureAbility from '@ohos.ability.featureAbility'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const TIMEOUT = 2000;
@@ -65,7 +65,22 @@ describe('ActsGetAllAccounts', function () {
         console.debug("====>ActsGetAllAccounts_0200 start====");
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat finish====");
+        console.debug("====>getAllAccounts for clean====");
         var selfBundle = "com.example.actsgetallaaccounts";
+        try{
+            var acclist = await appAccountManager.getAllAccounts(selfBundle);
+        }
+        catch(err){
+            console.error("====>getAllAccounts err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+        console.debug("====>account list length: " + acclist.length);
+        if(acclist.length > 0){
+            for(var i = 0;i < acclist.length; i++){
+                await appAccountManager.deleteAccount(acclist[i].name);
+            }
+        }
         console.debug("====>add account 0200 start====");
         await appAccountManager.addAccount("Account_this_application_promise");
         console.debug("====>getAllAccounts 0200 start====");
@@ -123,7 +138,22 @@ describe('ActsGetAllAccounts', function () {
         console.debug("====>ActsGetAllAccounts_0400 start====");
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat finish====");
+        console.debug("====>getAllAccounts for clean====");
         var selfBundle = "com.example.actsgetallaaccounts";
+        try{
+            var acclist = await appAccountManager.getAllAccounts(selfBundle);
+        }
+        catch(err){
+            console.error("====>getAllAccounts err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+        console.debug("====>account list length: " + acclist.length);
+        if(acclist.length > 0){
+            for(var i = 0;i < acclist.length; i++){
+                await appAccountManager.deleteAccount(acclist[i].name);
+            }
+        }
         var data = await appAccountManager.getAllAccounts(selfBundle);
         console.debug("====>getAllAccounts 0400 data:" + JSON.stringify(data));   
         expect(data.length).assertEqual(0);
@@ -481,7 +511,22 @@ describe('ActsGetAllAccounts', function () {
         console.debug("====>ActsGetAllAccounts_1600 start====");
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat finish====");
+        console.debug("====>getAllAccounts for clean====");
         var selfBundle = "com.example.actsgetallaaccounts";
+        try{
+            var acclist = await appAccountManager.getAllAccounts(selfBundle);
+        }
+        catch(err){
+            console.error("====>getAllAccounts err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+        console.debug("====>account list length: " + acclist.length);
+        if(acclist.length > 0){
+            for(var i = 0;i < acclist.length; i++){
+                await appAccountManager.deleteAccount(acclist[i].name);
+            }
+        }
         console.debug("====>add account 1600 start====");
         await appAccountManager.addAccount("account_promise_delete");
         console.debug("====>first getAllAccounts 1600 start====");
@@ -557,7 +602,22 @@ describe('ActsGetAllAccounts', function () {
         console.debug("====>ActsGetAllAccounts_1800 start====");
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat finish====");
+        console.debug("====>getAllAccounts for clean====");
         var selfBundle = "com.example.actsgetallaaccounts";
+        try{
+            var acclist = await appAccountManager.getAllAccounts(selfBundle);
+        }
+        catch(err){
+            console.error("====>getAllAccounts err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+        console.debug("====>account list length: " + acclist.length);
+        if(acclist.length > 0){
+            for(var i = 0;i < acclist.length; i++){
+                await appAccountManager.deleteAccount(acclist[i].name);
+            }
+        }
         console.debug("====>add account 1800 start====");
         await appAccountManager.addAccount("account_promise_additional", "account_extrainfo");
         console.debug("====>first getAllAccounts 1800 start====");

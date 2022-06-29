@@ -44,6 +44,10 @@ let HuksCipherAES = {
     tag: param.HksTag.HKS_TAG_KEY_SIZE,
     value: param.HksKeySize.HKS_AES_KEY_SIZE_256,
   },
+  HuksKeyAESSize512: {
+    tag: param.HksTag.HKS_TAG_KEY_SIZE,
+    value: param.HksKeySize.HKS_AES_KEY_SIZE_512,
+  },
   HuksKeyAESPADDINGNONE: {
     tag: param.HksTag.HKS_TAG_PADDING,
     value: param.HksKeyPadding.HKS_PADDING_NONE,
@@ -132,4 +136,49 @@ let HuksCipherRSA = {
     value: param.HksKeyDigest.HKS_DIGEST_SHA512,
   },
 };
-export { HuksCipherAES, HuksCipherRSA };
+
+let HuksCipherSM4 = {
+  HuksKeyAlgSM4: {
+    tag: param.HksTag.HKS_TAG_ALGORITHM,
+    value: param.HksKeyAlg.HKS_ALG_SM4,
+  },
+  HuksKeyPurpose: {
+    tag: param.HksTag.HKS_TAG_PURPOSE,
+    value:
+      param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT |
+      param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
+  },
+  HuksKeyPurposeENCRYPT: {
+    tag: param.HksTag.HKS_TAG_PURPOSE,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_ENCRYPT,
+  },
+  HuksKeyPurposeDECRYPT: {
+    tag: param.HksTag.HKS_TAG_PURPOSE,
+    value: param.HksKeyPurpose.HKS_KEY_PURPOSE_DECRYPT,
+  },
+  HuksKeySM4Size128: {
+    tag: param.HksTag.HKS_TAG_KEY_SIZE,
+    value: param.HksKeySize.HKS_SM4_KEY_SIZE_128,
+  },
+  HuksKeySM4PADDINGNONE: {
+    tag: param.HksTag.HKS_TAG_PADDING,
+    value: param.HksKeyPadding.HKS_PADDING_NONE,
+  },
+  HuksKeySM4PADDINGPKCS7: {
+    tag: param.HksTag.HKS_TAG_PADDING,
+    value: param.HksKeyPadding.HKS_PADDING_PKCS7,
+  },
+  HuksKeySM4BLOCKMODECBC: {
+    tag: param.HksTag.HKS_TAG_BLOCK_MODE,
+    value: param.HksCipherMode.HKS_MODE_CBC,
+  },
+  HuksKeySM4BLOCKMODECTR: {
+    tag: param.HksTag.HKS_TAG_BLOCK_MODE,
+    value: param.HksCipherMode.HKS_MODE_CTR,
+  },
+  HuksKeySM4BLOCKMODEECB: {
+    tag: param.HksTag.HKS_TAG_BLOCK_MODE,
+    value: param.HksCipherMode.HKS_MODE_ECB,
+  },
+};
+export { HuksCipherAES, HuksCipherRSA, HuksCipherSM4 };

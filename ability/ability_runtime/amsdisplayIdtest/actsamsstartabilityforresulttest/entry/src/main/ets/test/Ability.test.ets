@@ -1,0 +1,278 @@
+/*
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
+import commonEvent from '@ohos.commonEvent'
+
+var subscriberInfo_MainAbility = {
+  events: ["ACTS_ConnectAbility_0100_CommonEvent", "ACTS_TerminateSelf_CommonEvent", "ACTS_TerminateSelf_CommonEvent9"]
+};
+const START_ABILITY_TIMEOUT = 5000;
+console.debug("====>in Ability.test====>");
+
+export default function abilityTest(abilityContext) {
+  describe('ActsGetDisplayIdStartAbilityForResultTest', function () {
+    console.debug("====>in ActsGetDisplayIdStartAbilityForResultTest====>");
+
+    /*
+    * @tc.number: ACTS_startAbilityForResult_0100
+    * @tc.name: Get the specified displayId to start Ability
+    * @tc.desc: Verify Get displayId to startAbilityForResult Ability
+    */
+    it('ACTS_startAbilityForResult_0100', 0, async function (done) {
+      console.log('ACTS_startAbilityForResult_0100====<begin');
+      var subscriber;
+      let id;
+
+      function subscribeCallBack(err, data) {
+        console.debug("====>ACTS_startAbilityForResult_0100 Subscribe CallBack data:====>" + JSON.stringify(data));
+
+        async function processInfoCheck(data) {
+          console.info('====> ACTS_startAbilityForResult_0100=====>');
+          expect(data.parameters['displayId']).assertEqual(15);
+          expect(data.parameters['windowMode']).assertEqual(0);
+          done();
+        }
+
+        if (data.event == "ACTS_TerminateSelf_CommonEvent") {
+          console.info('====> ACTS_startAbilityForResult_0100 start success=====>');
+          clearTimeout(id);
+          processInfoCheck(data);
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback)
+        }
+      }
+
+      commonEvent.createSubscriber(subscriberInfo_MainAbility).then(async (data) => {
+        console.debug("====>ACTS_startAbilityForResult_0100 Create Subscriber====>");
+        subscriber = data;
+        commonEvent.subscribe(subscriber, subscribeCallBack);
+        await abilityContext.startAbilityForResult(
+          {
+            bundleName: 'com.example.startabilityforresult',
+            abilityName: 'com.example.startabilityforresult.MainAbility2',
+          }, {
+          windowMode: 0,
+          displayId: 15
+        }).then(() => {
+          console.debug("====>ACTS_startAbilityForResult_0100 end====>");
+        })
+      })
+
+      function unSubscribeCallback() {
+        console.debug("====>UnSubscribe0100 CallBack====>");
+      }
+
+      function timeout() {
+        expect().assertFail();
+        console.log('ACTS_startAbilityForResult_0100 timeout');
+      }
+
+      id = setTimeout(timeout, START_ABILITY_TIMEOUT);
+      console.log('Start  ACTS_startAbilityForResult_0100 timer id : ' + id);
+
+    })
+
+    /*
+    * @tc.number: ACTS_startAbilityForResult_0200
+    * @tc.name: Get the specified displayId to start Ability
+    * @tc.desc: Verify that the ability to startAbilityForResult when displayId is a string
+    */
+    it('ACTS_startAbilityForResult_0200', 0, async function (done) {
+      console.log('ACTS_startAbilityForResult_0200====<begin');
+      var subscriber;
+      let id;
+
+      function subscribeCallBack(err, data) {
+        console.debug("====>ACTS_startAbilityForResult_0200 Subscribe CallBack data:====>" + JSON.stringify(data));
+
+        async function processInfoCheck() {
+          console.info('====> ACTS_startAbilityForResult_0200=====>');
+          expect(data.parameters['displayId']).assertEqual(0);
+          expect(data.parameters['windowMode']).assertEqual(0);
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+          done();
+        }
+
+        if (data.event == "ACTS_TerminateSelf_CommonEvent") {
+          console.info('====> ACTS_startAbilityForResult_0200 start success=====>');
+          clearTimeout(id);
+          processInfoCheck();
+        }
+      }
+
+      commonEvent.createSubscriber(subscriberInfo_MainAbility).then(async (data) => {
+        console.debug("====>ACTS_startAbilityForResult_0200 Create Subscriber====>");
+        subscriber = data;
+        commonEvent.subscribe(subscriber, subscribeCallBack);
+        await abilityContext.startAbilityForResult(
+          {
+            bundleName: 'com.example.startabilityforresult',
+            abilityName: 'com.example.startabilityforresult.MainAbility2',
+          }, {
+          windowMode: 0,
+          displayId: undefined
+        }).then(() => {
+          console.debug("====>ACTS_startAbilityForResult_0200 end====>");
+        }).catch((err) => {
+          expect().assertFail();
+          console.debug("====>ACTS_startAbilityForResult_0200 err====>" + err);
+        })
+      })
+
+      function unSubscribeCallback() {
+        console.debug("====>ACTS_startAbilityForResult_0200 UnSubscribe CallBack====>");
+      }
+
+      function timeout() {
+        expect().assertFail();
+        console.log('ACTS_startAbilityForResult_0200 timeout');
+      }
+
+      id = setTimeout(timeout, START_ABILITY_TIMEOUT);
+      console.log('Start  ACTS_startAbilityForResult_0200 timer id : ' + id);
+
+    })
+
+    /*
+    * @tc.number: ACTS_startAbilityForResult_0300
+    * @tc.name: Get the specified displayId to start Ability
+    * @tc.desc: Validation parameters want to filter the DISPLAY_ID of parameters
+    */
+    it('ACTS_startAbilityForResult_0300', 0, async function (done) {
+      console.log('ACTS_startAbilityForResult_0300====<begin');
+      var subscriber;
+      let id;
+
+      function subscribeCallBack(err, data) {
+        console.debug("====>ACTS_startAbilityForResult_0300 Subscribe CallBack data:====>" + JSON.stringify(data));
+
+        async function processInfoCheck(data) {
+          console.info('====> ACTS_getDisplayIdTest_0600=====>');
+          expect(data.parameters['displayId']).assertEqual(0);
+          expect(data.parameters['windowMode']).assertEqual(0);
+          done();
+        }
+
+        if (data.event == "ACTS_TerminateSelf_CommonEvent") {
+          console.info('====> ACTS_startAbilityForResult_0300 start success=====>');
+          clearTimeout(id);
+          processInfoCheck(data);
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback)
+        }
+      }
+
+      commonEvent.createSubscriber(subscriberInfo_MainAbility).then(async (data) => {
+        console.debug("====>ACTS_startAbilityForResult_0300 Create Subscriber====>");
+        subscriber = data;
+        commonEvent.subscribe(subscriber, subscribeCallBack);
+        await abilityContext.startAbilityForResult(
+          {
+            bundleName: 'com.example.startabilityforresult',
+            abilityName: 'com.example.startabilityforresult.MainAbility2',
+            parameters:
+            {
+              "ohos.aafwk.param.displayId": 10,
+            }
+          }, {
+        }).then(() => {
+          console.debug("====>ACTS_startAbilityForResult_0300 end====>");
+        }).catch((err) => {
+          expect().assertFail();
+          console.debug("====>ACTS_startAbilityForResult_0300 err====>" + err);
+        })
+      })
+
+
+      function unSubscribeCallback() {
+        console.debug("====>ACTS_startAbilityForResult_0300 UnSubscribe CallBack====>");
+      }
+
+      function timeout() {
+        expect().assertFail();
+        console.log('ACTS_startAbilityForResult_0300 timeout');
+      }
+
+      id = setTimeout(timeout, START_ABILITY_TIMEOUT);
+      console.log('Start  ACTS_startAbilityForResult_0300 timer id : ' + id);
+
+    })
+
+    /*
+    * @tc.number: ACTS_startAbilityForResult_0400
+    * @tc.name: Get the specified displayId to start Ability
+    * @tc.desc: Verify the connection to the service application startup page to obtain the specified displayId
+    */
+    it('ACTS_startAbilityForResult_0400', 0, async function (done) {
+      console.log('ACTS_startAbilityForResult_0400====<begin');
+      console.log('========ACTS_startAbilityForResult_0400_StartConnect called');
+      var subscriber;
+      let id;
+      var connId;
+
+      function subscribeCallBack(err, data) {
+        console.debug("====>ACTS_startAbilityForResult_0400_Subscribe CallBack data:====>" + JSON.stringify(data));
+        if (data.event == "ACTS_TerminateSelf_CommonEvent") {
+          clearTimeout(id);
+          expect(data.parameters['displayId']).assertEqual(10);
+          expect(data.parameters['windowMode']).assertEqual(2);
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback)
+          expect(data.event).assertEqual("ACTS_TerminateSelf_CommonEvent");
+
+        }
+      }
+      commonEvent.createSubscriber(subscriberInfo_MainAbility).then(async (data) => {
+        console.debug("====>ACTS_startAbilityForResult_0400_Create Subscriber====>");
+        subscriber = data;
+        await commonEvent.subscribe(subscriber, subscribeCallBack);
+        connId = await abilityContext.connectAbility(
+          {
+            bundleName: "com.example.startabilityforresult",
+            abilityName: "com.example.startabilityforresult.ServiceAbility",
+            action: "getExtensionInfotwo"
+          }
+        );
+        console.log('ACTS_startAbilityForResult_0400 ConnectAbility connId : ' + connId);
+      })
+
+      function unSubscribeCallback() {
+        abilityContext.disconnectAbility(
+          connId,
+          (error, data) => {
+            console.log('startAbilityForResult_0400 Disconnect result errCode : ' + error.code + " data: " + data)
+            done();
+          },
+        );
+        console.debug("====>ACTS_startAbilityForResult_0400_UnSubscribe CallBack====>");
+      }
+
+      function timeout() {
+        expect().assertFail();
+        abilityContext.disconnectAbility(
+          connId,
+          (error, data) => {
+            console.log('DisconnectAbility_0400 result errCode : ' + error.code + " data: " + data)
+            done();
+          },
+        );
+        console.debug('ACTS_startAbilityForResult_0400 timeout');
+        done();
+      }
+
+      id = setTimeout(timeout, START_ABILITY_TIMEOUT);
+
+
+    })
+
+  })
+}

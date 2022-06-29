@@ -18,7 +18,7 @@ import router from '@system.router';
 import Utils from './Utils';
 
 export default function polygonJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_four_6', function () {
     beforeEach(async function (done) {
       console.info("polygon beforeEach start");
       let options = {

@@ -65,55 +65,6 @@ export default function textJsunit() {
       let strJson = getInspectorByKey('Text');
       let obj = JSON.parse(strJson);
       console.info("cd text component obj is: " + JSON.stringify(obj));
-      console.log("cd text type" + JSON.stringify(obj.$type));
-      console.log("cd text height" + JSON.stringify(obj.$attrs.height));
-      console.log("cd text width" + JSON.stringify(obj.$attrs.width));
-      console.log("cd text padding" + JSON.stringify(obj.$attrs.padding));
-      console.log("cd text constraintSize" + JSON.stringify(obj.$attrs.constraintSize));
-      console.log("cd text opacity" + JSON.stringify(obj.$attrs.opacity));
-      console.log("cd text align" + JSON.stringify(obj.$attrs.align));
-      console.log("cd text markAnchor type1" + typeof ({
-        "x": "50.00vp", "y": "50.00vp"
-      }));
-      console.log("cd text markAnchor1" + JSON.stringify({
-        "x": "50.00vp", "y": "50.00vp"
-      }));
-      console.log("cd text markAnchor type" + typeof (obj.$attrs.markAnchor));
-      console.log("cd text markAnchor" + JSON.stringify(obj.$attrs.markAnchor));
-      console.log("cd text offset" + JSON.stringify(obj.$attrs.offset));
-      console.log("cd text position" + JSON.stringify(obj.$attrs.position));
-      console.log("cd text flexGrow" + JSON.stringify(obj.$attrs.flexGrow));
-      console.log("cd text flexShrink" + JSON.stringify(obj.$attrs.flexShrink));
-      console.log("cd text alignSelf" + JSON.stringify(obj.$attrs.alignSelf));
-      console.log("cd text borderStyle" + JSON.stringify(obj.$attrs.borderStyle));
-      console.log("cd text borderRadius" + JSON.stringify(obj.$attrs.borderRadius));
-      console.log("cd text borderWidth" + JSON.stringify(obj.$attrs.borderWidth));
-      console.log("cd text borderColor" + JSON.stringify(obj.$attrs.borderColor));
-      console.log("cd text backgroundColor" + JSON.stringify(obj.$attrs.backgroundColor));
-      console.log("cd text enabled" + JSON.stringify(obj.$attrs.enabled));
-      console.log("cd text zIndex" + JSON.stringify(obj.$attrs.zIndex));
-      console.log("cd text fontColor" + JSON.stringify(obj.$attrs.fontColor));
-      console.log("cd text visibility" + JSON.stringify(obj.$attrs.visibility));
-      console.log("cd text fontSize" + JSON.stringify(obj.$attrs.fontSize));
-      console.log("cd text minFontSize" + JSON.stringify(obj.$attrs.minFontSize));
-      console.log("cd text letterSpacing" + JSON.stringify(obj.$attrs.letterSpacing));
-      console.log("cd text maxFontSize" + JSON.stringify(obj.$attrs.maxFontSize));
-      console.log("cd text fontWeight" + JSON.stringify(obj.$attrs.fontWeight));
-      console.log("cd text fontStyle" + JSON.stringify(obj.$attrs.fontStyle));
-      console.log("cd text fontFamily" + JSON.stringify(obj.$attrs.fontFamily));
-      console.log("cd text textAlign" + JSON.stringify(obj.$attrs.textAlign));
-      console.log("cd text textOverflow" + JSON.stringify(obj.$attrs.textOverflow));
-      console.log("cd text lineHeight" + JSON.stringify(obj.$attrs.lineHeight));
-      console.log("cd text baselineOffset" + JSON.stringify(obj.$attrs.baselineOffset));
-      console.log("cd text maxLines" + JSON.stringify(obj.$attrs.maxLines));
-      console.log("cd text textCase" + JSON.stringify(obj.$attrs.textCase));
-      console.log("cd text decoration" + JSON.stringify(obj.$attrs.decoration));
-      console.log("cd text decoration1" + JSON.stringify(JSON.stringify({
-        type: "TextDecorationType.Underline", color: "#FFFF0000"
-      })));
-      console.log("cd text direction" + JSON.stringify(obj.$attrs.direction));
-      console.log("cd text aspectRatio" + JSON.stringify(obj.$attrs.aspectRatio));
-      console.log("cd text fontColor" + JSON.stringify(obj.$attrs.fontColor));
       expect(obj.$type).assertEqual('Text')
       expect(obj.$attrs.width).assertEqual('200.00vp')
       expect(obj.$attrs.padding).assertEqual('5.00vp')
@@ -138,7 +89,7 @@ export default function textJsunit() {
       expect(obj.$attrs.zIndex).assertEqual(1)
       expect(obj.$attrs.fontColor).assertEqual("#FF000000")
       expect(obj.$attrs.visibility).assertEqual("Visibility.Visible")
-      expect(obj.$attrs.fontSize).assertEqual("15.00px")
+      expect(obj.$attrs.fontSize).assertEqual("15.00fp")
       expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Bold")
       expect(obj.$attrs.fontStyle).assertEqual("FontStyle.Italic")
       expect(obj.$attrs.fontFamily).assertEqual("sans-serif")
@@ -167,23 +118,6 @@ export default function textJsunit() {
       let strJson = getInspectorByKey('Text1');
       let obj = JSON.parse(strJson);
       console.info("cd text1 component obj is: " + JSON.stringify(obj));
-      console.log("cd text1 align" + JSON.stringify(obj.$attrs.align));
-      console.log("cd text1 alignSelf" + JSON.stringify(obj.$attrs.alignSelf));
-      console.log("cd text1 borderStyle" + JSON.stringify(obj.$attrs.borderStyle));
-      console.log("cd text1 enabled" + JSON.stringify(obj.$attrs.enabled));
-      console.log("cd text1 visibility" + JSON.stringify(obj.$attrs.visibility));
-      console.log("cd text1 fontWeight" + JSON.stringify(obj.$attrs.fontWeight));
-      console.log("cd text1 textAlign" + JSON.stringify(obj.$attrs.textAlign));
-      console.log("cd text1 textOverflow" + JSON.stringify(obj.$attrs.textOverflow));
-      console.log("cd text1 direction" + JSON.stringify(obj.$attrs.direction));
-      console.log("cd text1 textCase" + JSON.stringify(obj.$attrs.textCase));
-      console.log("cd text1 decoration" + JSON.stringify(obj.$attrs.decoration));
-      console.log("cd text1 decoration1" + JSON.stringify(JSON.stringify({
-        type: "TextDecorationType.LineThrough", color: "#FFFF0000"
-      })));
-      console.log("cd text1 fontColor" + JSON.stringify(obj.$attrs.fontColor));
-      console.log("cd text padding" + JSON.stringify(obj.$attrs.padding));
-      console.log("cd text margin" + JSON.stringify(obj.$attrs.margin))
       expect(obj.$attrs.direction).assertEqual("Direction.Ltr")
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
       expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Start")
@@ -210,20 +144,6 @@ export default function textJsunit() {
       let strJson = getInspectorByKey('Text2');
       let obj = JSON.parse(strJson);
       console.info("cd text2 component obj is: " + JSON.stringify(obj));
-      console.log("cd text2 align" + JSON.stringify(obj.$attrs.align));
-      console.log("cd text2 alignSelf" + JSON.stringify(obj.$attrs.alignSelf));
-      console.log("cd text2 borderStyle" + JSON.stringify(obj.$attrs.borderStyle));
-      console.log("cd text2 visibility" + JSON.stringify(obj.$attrs.visibility));
-      console.log("cd text2 fontWeight" + JSON.stringify(obj.$attrs.fontWeight));
-      console.log("cd text2 textAlign" + JSON.stringify(obj.$attrs.textAlign));
-      console.log("cd text2 textOverflow" + JSON.stringify(obj.$attrs.textOverflow));
-      console.log("cd text2 direction" + JSON.stringify(obj.$attrs.direction));
-      console.log("cd text2 textCase" + JSON.stringify(obj.$attrs.textCase));
-      console.log("cd text2 decoration" + JSON.stringify(obj.$attrs.decoration));
-      console.log("cd text2 decoration1" + JSON.stringify(JSON.stringify({
-        type: "TextDecorationType.Noneh", color: "#FFFF0000"
-      })));
-      console.log("cd text2 fontColor" + JSON.stringify(obj.$attrs.fontColor));
       expect(obj.$attrs.direction).assertEqual("Direction.Rtl")
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
       expect(obj.$attrs.alignSelf).assertEqual("ItemAlign.Center")

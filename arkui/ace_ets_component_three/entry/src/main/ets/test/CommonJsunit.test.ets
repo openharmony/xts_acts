@@ -14,25 +14,59 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import display from '@ohos.display';
+import Utils from './Utils';
+
 
 export default function commonJsunit() {
   describe('commonTest', function () {
+
+    var dpiValue;
+
+    beforeAll(async function (done) {
+      console.info("commonJsunit beforeEach start");
+      await display.getDefaultDisplay().then(dsp => {
+        console.info('getDefaultDisplay id : ' + JSON.stringify(dsp));
+        dpiValue = dsp.densityDPI;
+        console.info('getDefaultDisplay dpiValue is : ' + JSON.stringify(dpiValue));
+        Utils.sleep(2000);
+      }, (err) => {
+        console.info('getDefaultDisplay failed, err :' + JSON.stringify(err));
+      })
+      done()
+    });
+
     it('commonTest_0100', 0, async function (done) {
-      console.info('commonTest_0100 START');
+
+      display.getDefaultDisplay().then(dsp => {
+        console.info('getDefaultDisplay id : ' + JSON.stringify(dsp));
+        dpiValue = dsp.densityDPI;
+        setTimeout(() => {
+          console.info('commonTest_0100 START' + dpiValue);
+        }, 2000)
+      }, (err) => {
+        console.info('getDefaultDisplay failed, err :' + JSON.stringify(err));
+      })
+      console.info('commonTest_0100 START' + dpiValue);
+
       var a = 90;
+      var ret = a * (dpiValue/160);
       var b = vp2px(a);
       console.info('commonTest_0100 vp2px result:' + b);
-      expect(b == 90).assertTrue();
+      console.info('commonTest_0100 vp2px result:' + ret);
+      expect(b == ret).assertTrue();
       console.info('commonTest_0100 END');
       done();
     });
 
     it('commonTest_0200', 0, async function (done) {
-      console.info('commonTest_0200 START');
+      console.info('commonTest_0200 START' + dpiValue);
       var a = -90;
+      var ret = a * (dpiValue/160);
       var b = vp2px(a);
       console.info('commonTest_0200 vp2px result:' + b);
-      expect(b == -90).assertTrue();
+      console.info('commonTest_0200 vp2px result:' + ret);
+      expect(b == ret).assertTrue();
       console.info('commonTest_0200 END');
       done();
     });
@@ -50,9 +84,10 @@ export default function commonJsunit() {
     it('commonTest_0400', 0, async function (done) {
       console.info('commonTest_0400 START');
       var a = 80;
+      var ret = a / (dpiValue/160);
       var b = px2vp(a);
       console.info('commonTest_0400 px2vp result:' + b);
-      expect(b == 80).assertTrue();
+      expect(b == ret).assertTrue();
       console.info('commonTest_0400 END');
       done();
     });
@@ -60,9 +95,10 @@ export default function commonJsunit() {
     it('commonTest_0500', 0, async function (done) {
       console.info('commonTest_0500 START');
       var a = -800000000;
+      var ret = a / (dpiValue/160);
       var b = px2vp(a);
       console.info('commonTest_0500 px2vp result:' + b);
-      expect(b == -800000000).assertTrue();
+      expect(b == ret).assertTrue();
       console.info('commonTest_0500 END');
       done();
     });
@@ -80,19 +116,21 @@ export default function commonJsunit() {
     it('commonTest_0700', 0, async function (done) {
       console.info('commonTest_0700 START');
       var a = 70;
+      var ret = a * (dpiValue/160);
       var b = fp2px(a);
       console.info('commonTest_0700 fp2px result:' + b);
-      expect(b == 70).assertTrue();
+      expect(b == ret).assertTrue();
       console.info('commonTest_0700 END');
       done();
     });
 
     it('commonTest_0800', 0, async function (done) {
       console.info('commonTest_0800 START');
-      var a = -7000000000000;
+      var a = -70;
+      var ret = a * (dpiValue/160);
       var b = fp2px(a);
       console.info('commonTest_0800 fp2px result:' + b);
-      expect(b == -2147483648).assertTrue();
+      expect(b == ret).assertTrue();
       console.info('commonTest_0800 END');
       done();
     });
@@ -110,19 +148,21 @@ export default function commonJsunit() {
     it('commonTest_1000', 0, async function (done) {
       console.info('commonTest_1000 START');
       var a = 60;
+      var ret = a / (dpiValue/160);
       var b = px2fp(a);
       console.info('commonTest_1000 px2fp result:' + b);
-      expect(b == 60).assertTrue();
+      expect(b == ret).assertTrue();
       console.info('commonTest_1000 END');
       done();
     });
 
     it('commonTest_1100', 0, async function (done) {
       console.info('commonTest_1100 START');
-      var a = -6000000000;
+      var a = -60;
+      var ret = a / (dpiValue/160);
       var b = px2fp(a);
       console.info('commonTest_1100 px2fp result:' + b);
-      expect(b == -6000000000).assertTrue();
+      expect(b == ret).assertTrue();
       console.info('commonTest_1100 END');
       done();
     });
@@ -137,25 +177,6 @@ export default function commonJsunit() {
       done();
     });
 
-    it('commonTest_1300', 0, async function (done) {
-      console.info('commonTest_1300 START');
-      var a = 50;
-      var b = lpx2px(a);
-      console.info('commonTest_1300 lpx2px result:' + b);
-      expect(b == 50).assertTrue();
-      console.info('commonTest_1300 END');
-      done();
-    });
-
-    it('commonTest_1400', 0, async function (done) {
-      console.info('commonTest_1400 START');
-      var a = -500000000;
-      var b = lpx2px(a);
-      console.info('commonTest_1400 lpx2px result:' + b);
-      expect(b == -500000000).assertTrue();
-      console.info('commonTest_1400 END');
-      done();
-    });
 
     it('commonTest_1500', 0, async function (done) {
       console.info('commonTest_1500 START');
@@ -164,26 +185,6 @@ export default function commonJsunit() {
       console.info('commonTest_1500 lpx2px result:' + b);
       expect(b == undefined).assertTrue();
       console.info('commonTest_1500 END');
-      done();
-    });
-
-    it('commonTest_1600', 0, async function (done) {
-      console.info('commonTest_1600 START');
-      var a = 40;
-      var b = px2lpx(a);
-      console.info('commonTest_1600 px2lpx result:' + b);
-      expect(b == 40).assertTrue();
-      console.info('commonTest_1600 END');
-      done();
-    });
-
-    it('commonTest_1700', 0, async function (done) {
-      console.info('commonTest_1700 START');
-      var a = -400000;
-      var b = px2lpx(a);
-      console.info('commonTest_1700 px2lpx result:' + b);
-      expect(b == -400000).assertTrue();
-      console.info('commonTest_1700 END');
       done();
     });
 

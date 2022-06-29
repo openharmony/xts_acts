@@ -35,6 +35,11 @@ describe('workerTest', function () {
     }
 
     // check worker constructor is ok
+    /**
+     * @tc.name: worker_constructor_test_001
+     * @tc.desc: worker constructor to Creates a worker instance.
+     * @tc.author: hanyuqing
+     */
     it('worker_constructor_test_001', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
         let isTerminate = false
@@ -52,6 +57,11 @@ describe('workerTest', function () {
         done()
     })
 
+    /**
+     * @tc.name: worker_constructor_test_002
+     * @tc.desc: worker constructor to Creates a worker instance.
+     * @tc.author: hanyuqing
+     */
     it('worker_constructor_test_002', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js", {name:"second worker", shared:"False"})
         let isTerminate = false
@@ -69,6 +79,11 @@ describe('workerTest', function () {
         done()
     })
 
+    /**
+     * @tc.name: worker_constructor_test_003
+     * @tc.desc: worker constructor to Creates a worker instance.
+     * @tc.author: hanyuqing
+     */
     it('worker_constructor_test_003', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js", {type:"classic", name:"second worker", shared:"false"})
         let isTerminate = false
@@ -86,6 +101,11 @@ describe('workerTest', function () {
         done()
     })
 
+    /**
+     * @tc.name: worker_constructor_test_004
+     * @tc.desc: worker constructor to Creates a worker instance.
+     * @tc.author: hanyuqing
+     */
     it('worker_constructor_test_004', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js", {type:"classic", name:"third worker", shared:"true"})
         let isTerminate = false
@@ -105,6 +125,11 @@ describe('workerTest', function () {
 
     // check postMessage is ok
     // main post "hello world", will receive "hello world worker"
+    /**
+     * @tc.name: worker_postMessage_test_001
+     * @tc.desc: Sends a message to the worker thread.
+     * @tc.author: hanyuqing
+     */
     it('worker_postMessage_test_001', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_002.js")
 
@@ -136,6 +161,11 @@ describe('workerTest', function () {
 
     // check postMessage is ok
     // main post 12 , will receive 12 * 2 + 1
+    /**
+     * @tc.name: worker_postMessage_test_002
+     * @tc.desc: Sends a message to the worker thread.
+     * @tc.author: hanyuqing
+     */
     it('worker_postMessage_test_002', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_003.js")
 
@@ -167,6 +197,11 @@ describe('workerTest', function () {
 
     // check postMessage is ok
     // main post {message:"hello world"} , will receive {message:"hello world worker"}
+    /**
+     * @tc.name: worker_postMessage_test_003
+     * @tc.desc: Sends a message to the worker thread.
+     * @tc.author: hanyuqing
+     */
     it('worker_postMessage_test_003', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_004.js")
 
@@ -197,6 +232,11 @@ describe('workerTest', function () {
     })
 
     // check worker name is ok
+    /**
+     * @tc.name: worker_postMessage_test_004
+     * @tc.desc: Sends a message to the worker thread.
+     * @tc.author: hanyuqing
+     */
     it('worker_postMessage_test_004', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_005.js", {name: "zhangsan"})
 
@@ -227,6 +267,11 @@ describe('workerTest', function () {
     })
 
     // check worker transfer buffer is ok
+    /**
+     * @tc.name: worker_postMessage_test_005
+     * @tc.desc: Sends a message to the worker thread.
+     * @tc.author: hanyuqing
+     */
     it('worker_postMessage_test_005', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_006.js")
         let isTerminate = false
@@ -263,6 +308,11 @@ describe('workerTest', function () {
     })
 
     // check worker handle error is ok
+    /**
+     * @tc.name: worker_postMessage_test_006
+     * @tc.desc: Sends a message to the worker thread.
+     * @tc.author: hanyuqing
+     */
     it('worker_postMessage_test_006', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_007.js")
 
@@ -293,6 +343,11 @@ describe('workerTest', function () {
     })
 
     // check worker terminate is ok
+    /**
+     * @tc.name: worker_terminate_test_001
+     * @tc.desc: Terminates the worker thread to stop the worker from receiving messages.
+     * @tc.author: hanyuqing
+     */
     it('worker_terminate_test_001', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
         let res = 0
@@ -313,6 +368,11 @@ describe('workerTest', function () {
     })
 
     // check worker terminate is ok
+    /**
+     * @tc.name: worker_terminate_test_002
+     * @tc.desc: Terminates the worker thread to stop the worker from receiving messages.
+     * @tc.author: hanyuqing
+     */
     it('worker_terminate_test_002', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
         let res = 0
@@ -336,6 +396,11 @@ describe('workerTest', function () {
     })
 
     // check worker terminate is ok
+    /**
+     * @tc.name: worker_terminate_test_003
+     * @tc.desc: Terminates the worker thread to stop the worker from receiving messages.
+     * @tc.author: hanyuqing
+     */
     it('worker_terminate_test_003', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
         let res = 0
@@ -362,6 +427,11 @@ describe('workerTest', function () {
     })
 
     // check worker on function is ok
+    /**
+     * @tc.name: worker_on_test_001
+     * @tc.desc: Adds an event listener to the worker.
+     * @tc.author: hanyuqing
+     */
     it('worker_on_test_001', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
 
@@ -387,6 +457,11 @@ describe('workerTest', function () {
     })
 
     // check worker on function is ok
+    /**
+     * @tc.name: worker_on_test_002
+     * @tc.desc: Adds an event listener to the worker.
+     * @tc.author: hanyuqing
+     */
     it('worker_on_test_002', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
 
@@ -416,6 +491,11 @@ describe('workerTest', function () {
     })
 
     // check worker on function is ok
+    /**
+     * @tc.name: worker_on_test_003
+     * @tc.desc: Adds an event listener to the worker.
+     * @tc.author: hanyuqing
+     */
     it('worker_on_test_003', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
 
@@ -445,6 +525,12 @@ describe('workerTest', function () {
     })
 
     // check worker once function is ok
+    /**
+     * @tc.name: worker_once_test_001
+     * @tc.desc: Adds an event listener to the worker and removes the event listener automically
+       after it is invoked once.
+     * @tc.author: hanyuqing
+     */
     it('worker_once_test_001', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
 
@@ -469,6 +555,12 @@ describe('workerTest', function () {
     })
 
     // check worker once function is ok
+    /**
+     * @tc.name: worker_once_test_002
+     * @tc.desc: Adds an event listener to the worker and removes the event listener automically
+       after it is invoked once.
+     * @tc.author: hanyuqing
+     */
     it('worker_once_test_002', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
 
@@ -496,6 +588,12 @@ describe('workerTest', function () {
         done()
     })
 
+    /**
+     * @tc.name: worker_once_test_003
+     * @tc.desc: Adds an event listener to the worker and removes the event listener automically
+       after it is invoked once.
+     * @tc.author: hanyuqing
+     */
     it('worker_once_test_003', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
 
@@ -526,6 +624,11 @@ describe('workerTest', function () {
     })
 
     // check worker addEventListener function is ok
+    /**
+     * @tc.name: worker_addEventListener_test_001
+     * @tc.desc: Add an event listener to the Worker.
+     * @tc.author: hanyuqing
+     */
     it('worker_addEventListener_test_001', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
 
@@ -552,6 +655,11 @@ describe('workerTest', function () {
     })
 
     // check worker addEventListener function is ok
+    /**
+     * @tc.name: worker_addEventListener_test_002
+     * @tc.desc: Add an event listener to the Worker.
+     * @tc.author: hanyuqing
+     */
     it('worker_addEventListener_test_002', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
 
@@ -581,6 +689,11 @@ describe('workerTest', function () {
     })
 
     // check worker addEventListener function is ok
+    /**
+     * @tc.name: worker_addEventListener_test_003
+     * @tc.desc: Add an event listener to the Worker.
+     * @tc.author: hanyuqing
+     */
     it('worker_addEventListener_test_003', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
 
@@ -609,6 +722,11 @@ describe('workerTest', function () {
     })
 
     // check worker off function is ok
+    /**
+     * @tc.name: worker_off_test_001
+     * @tc.desc: Removes an event listener to the worker.
+     * @tc.author: hanyuqing
+     */
     it('worker_off_test_001', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
 
@@ -640,6 +758,11 @@ describe('workerTest', function () {
     })
 
     // check worker off function is ok
+    /**
+     * @tc.name: worker_off_test_002
+     * @tc.desc: Removes an event listener to the worker.
+     * @tc.author: hanyuqing
+     */
     it('worker_off_test_002', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
 
@@ -674,6 +797,11 @@ describe('workerTest', function () {
     })
 
     // check worker removeEventListener function is ok
+    /**
+     * @tc.name: worker_removeListener_test_001
+     * @tc.desc: Removes an event defined for the worker.
+     * @tc.author: hanyuqing
+     */
     it('worker_removeListener_test_001', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
 
@@ -705,6 +833,11 @@ describe('workerTest', function () {
     })
 
     // check worker removeEventListener function is ok
+    /**
+     * @tc.name: worker_removeListener_test_002
+     * @tc.desc: Removes an event defined for the worker.
+     * @tc.author: hanyuqing
+     */
     it('worker_removeListener_test_002', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
 
@@ -739,6 +872,11 @@ describe('workerTest', function () {
     })
 
     // check worker removeAllListener function is ok
+    /**
+     * @tc.name: worker_removeListener_test_003
+     * @tc.desc: Removes an event defined for the worker.
+     * @tc.author: hanyuqing
+     */
     it('worker_removeListener_test_003', 0, async function (done) {
         let ss = new worker.Worker("workers/worker.js")
 
@@ -783,6 +921,11 @@ describe('workerTest', function () {
     })
 
     // check parentPort.close is ok
+    /**
+     * @tc.name: worker_parentPortClose_test_001
+     * @tc.desc: Close the worker thread to stop the worker from receiving messages.
+     * @tc.author: hanyuqing
+     */
     it('worker_parentPortClose_test_001', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_008.js")
         let res = 0
@@ -803,6 +946,11 @@ describe('workerTest', function () {
     })
 
     // check parentPort.close is ok
+    /**
+     * @tc.name: worker_parentPortClose_test_002
+     * @tc.desc: Close the worker thread to stop the worker from receiving messages.
+     * @tc.author: hanyuqing
+     */
     it('worker_parentPortClose_test_002', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_008.js")
         let res = 0
@@ -828,6 +976,12 @@ describe('workerTest', function () {
     })
 
     // check onmessageerror is ok
+    /**
+     * @tc.name: worker_onmessageerror_test_001
+     * @tc.desc: The onmessage attribute of the worker specifies the event handler when the worker receives 
+       a message that cannot be serialized. The event handler is executed in the host thread
+     * @tc.author: hanyuqing
+     */
     it('worker_onmessageerror_test_001', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_008.js")
         let res = 0
@@ -850,10 +1004,20 @@ describe('workerTest', function () {
     })
 
     // check onmessageerror is ok
+    /**
+     * @tc.name: worker_onmessageerror_test_002
+     * @tc.desc: The onmessage attribute of the worker specifies the event handler when the worker receives 
+       a message that cannot be serialized. The event handler is executed in the host thread
+     * @tc.author: hanyuqing
+     */
     it('worker_onmessageerror_test_002', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_008.js")
         let res = 0
         let flag = false
+
+        ss.onexit = function() {
+            flag = true
+        }
 
         ss.onmessageerror = function (e) {
             flag = true
@@ -865,11 +1029,22 @@ describe('workerTest', function () {
         while (!flag) {
             await promiseCase()
         }
+
+        flag = false
+        ss.postMessage("terminate")
+        while (!flag) {
+            await promiseCase()
+        }
         expect(res).assertEqual(1)
         done()
     })
 
     // check new second worker is ok
+    /**
+     * @tc.name: worker_new_second_worker_test_001
+     * @tc.desc: Create a second worker.
+     * @tc.author: hanyuqing
+     */
     it('worker_new_second_worker_test_001', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_009.js")
         let flag = false
@@ -909,6 +1084,11 @@ describe('workerTest', function () {
     })
 
     // check new third worker is ok
+    /**
+     * @tc.name: worker_new_second_worker_test_002
+     * @tc.desc: Create a third worker.
+     * @tc.author: hanyuqing
+     */
     it('worker_new_second_worker_test_002', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_012.js")
         let flag = false
@@ -949,6 +1129,11 @@ describe('workerTest', function () {
     })
 
     // check second worker postMessage number is ok
+    /**
+     * @tc.name: worker_second_worker_postMessage_test_001
+     * @tc.desc: Check if the postMessage function of the second worker is ok.
+     * @tc.author: hanyuqing
+     */
     it('worker_second_worker_postMessage_test_001', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_010.js")
         let flag = false
@@ -989,6 +1174,11 @@ describe('workerTest', function () {
     })
 
     // check second worker postMessage string is ok
+    /**
+     * @tc.name: worker_second_worker_postMessage_test_002
+     * @tc.desc: Check if the postMessage function of the second worker is ok.
+     * @tc.author: hanyuqing
+     */
     it('worker_second_worker_postMessage_test_002', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_013.js")
         let flag = false
@@ -1029,6 +1219,11 @@ describe('workerTest', function () {
     })
 
     // check second worker postMessage array is ok
+    /**
+     * @tc.name: worker_second_worker_postMessage_test_003
+     * @tc.desc: Check if the postMessage function of the second worker is ok.
+     * @tc.author: hanyuqing
+     */
     it('worker_second_worker_postMessage_test_003', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_014.js")
         let flag = false
@@ -1070,16 +1265,24 @@ describe('workerTest', function () {
     })
 
     // check third worker postMessage is ok
+    /**
+     * @tc.name: worker_third_worker_postMessage_test_001
+     * @tc.desc: Check if the postMessage function of the third worker is ok.
+     * @tc.author: hanyuqing
+     */
     it('worker_third_worker_postMessage_test_001', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_015.js")
         let flag = false
         let res = undefined
+        let isTerminate = false
 
-        ss.onmessage = function (e) {
+        ss.onexit = function() {
+            isTerminate = true
+        }
+        ss.onmessage = function(e) {
             flag = true
             res = e.data
         }
-
         ss.onerror = function(ee) {
             console.log("worker:: " + ee.message)
         }
@@ -1089,18 +1292,33 @@ describe('workerTest', function () {
             ss.postMessage({type: "wait"})
             await promiseCase()
         }
+        ss.terminate()
+        while (!isTerminate) {
+            await promiseCase()
+        }
+
         expect(res).assertEqual(16)
 
         done()
     })
 
     // check second worker terminate is ok
+    /**
+     * @tc.name: worker_second_worker_terminate_test_001
+     * @tc.desc: Check if the terminate function of the second worker is ok.
+     * @tc.author: hanyuqing
+     */
     it('worker_second_worker_terminate_test_001', 0, async function (done) {
         let ss = new worker.Worker("workers/worker_011.js")
         let flag = false
         let res = undefined
+        let isTerminate = false
 
-        ss.onmessage = function (e) {
+        ss.onexit = function() {
+            isTerminate = true
+        }
+
+        ss.onmessage = function(e) {
             flag = true
             res = e.data
         }
@@ -1119,6 +1337,11 @@ describe('workerTest', function () {
         ss.postMessage({type: "terminate"})
         while (!flag) {
             ss.postMessage({type: "wait"})
+            await promiseCase()
+        }
+
+        ss.terminate()
+        while (!isTerminate) {
             await promiseCase()
         }
 

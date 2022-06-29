@@ -14,16 +14,15 @@
  */
 
 import media from '@ohos.multimedia.media'
+import {playAudioSource} from '../../../../../AudioPlayerTestBase.js';
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('PlayerLocalTestAudioFUNC', function () {
     let audioPlayer = media.createAudioPlayer();
-    let isTimeOut = false;
     const AUDIO_SOURCE = '01.mp3';
     const PLAY_TIME = 3000;
     const DURATION_TIME = 219600;
-    const SEEK_TIME = 5000;
     const DELTA_TIME  = 1000;
     const END_STATE = 0;
     const SRC_STATE = 1;
@@ -38,13 +37,18 @@ describe('PlayerLocalTestAudioFUNC', function () {
     const FINISH_STATE = 10;
     const LOOP_STATE = 11;
     const FDSRC_STATE = 12;
+    const GETDESCRIPTION_PROMISE = 13;
+    const GETDESCRIPTION_CALLBACK = 14;
     const SECOND_INDEX = 1;
-    const RAND_NUM = 5;
-    const TIME_OUT = 40000;
     const MAX_VOLUME = 1;
+    let bufferFlag = false;
     let fdHead = 'fd://';
     let fileDescriptor = undefined;
-
+    let audioTrackKey = new Array('channel_count', 'codec_mime', 'sample_rate', 'track_index',
+        'track_type');
+    let audioTrackValue = new Array(1, 'audio/mpeg', 48000, 0, 0);
+    let descriptionKey = new Array(audioTrackKey);
+    let descriptionValue = new Array(audioTrackValue);
     beforeAll(async function() {
         await mediaTestBase.getFileDescriptor(AUDIO_SOURCE).then((res) => {
             fileDescriptor = res;
@@ -53,7 +57,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     })
 
     beforeEach(function() {
-        isTimeOut = false;
+        bufferFlag = false; 
         console.info('beforeEach case');
     })
 
@@ -78,8 +82,9 @@ describe('PlayerLocalTestAudioFUNC', function () {
         }
     }
 
-    function nextStep(mySteps,done) {
+    function nextStep(mySteps, done) {
         if (mySteps[0] == END_STATE) {
+            expect(bufferFlag).assertEqual(true);
             done();
             console.info('case to done');
             return;
@@ -110,7 +115,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
                 audioPlayer.reset();
                 break;
             case SEEK_STATE:
-                console.info(`case seek to time is ${mySteps[SECOND_INDEX]}`);
+                console.info('case seek to time is ' + mySteps[SECOND_INDEX]);
                 audioPlayer.seek(mySteps[SECOND_INDEX]);
                 break;
             case VOLUME_STATE:
@@ -122,12 +127,42 @@ describe('PlayerLocalTestAudioFUNC', function () {
                 mySteps.shift();
                 audioPlayer.release();
                 audioPlayer = undefined;
+                nextStep(mySteps, done);
                 break;
             case LOOP_STATE:
                 audioPlayer.loop = mySteps[SECOND_INDEX];
                 mySteps.shift();
                 mySteps.shift();
                 nextStep(mySteps, done);
+                break;
+            case GETDESCRIPTION_PROMISE:
+                mySteps.shift();
+                audioPlayer.getTrackDescription().then((arrayList) => {
+                    console.info('case getTrackDescription called!!');
+                    if (typeof (arrayList) != 'undefined') {
+                        for (let i = 0; i < arrayList.length; i++) {
+                            mediaTestBase.checkDescription(arrayList[i], descriptionKey[i], descriptionValue[i]);
+                        }
+                    } else {
+                        console.info('case getTrackDescription is failed');
+                        expect().assertFail();
+                    }
+                    nextStep(mySteps, done);
+                }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                break;
+            case GETDESCRIPTION_CALLBACK:
+                mySteps.shift();
+                audioPlayer.getTrackDescription((err, arrayList) => {
+                    if (typeof (err) == 'undefined') {
+                        for (let i = 0; i < arrayList.length; i++) {
+                            mediaTestBase.checkDescription(arrayList[i], descriptionKey[i], descriptionValue[i]);
+                        }
+                        nextStep(mySteps, done);
+                    } else {
+                        expect().assertFail();
+                        mediaTestBase.printError(err, done);
+                    }
+                });
                 break;
             default:
                 break;
@@ -139,6 +174,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         audioPlayer.on('bufferingUpdate', (infoType, value) => {
             console.info('case bufferingUpdate success infoType is ' + infoType);
             console.info('case bufferingUpdate success value is ' + value);
+            bufferFlag = true;
         });
         audioPlayer.on('dataLoad', () => {
             mySteps.shift();
@@ -150,12 +186,11 @@ describe('PlayerLocalTestAudioFUNC', function () {
         });
         audioPlayer.on('play', () => {
             mySteps.shift();
-            console.info(`case play called`);
             mediaTestBase.msleep(PLAY_TIME);
-            console.info(`case play currentTime is ${audioPlayer.currentTime}`);
+            console.info('case play currentTime is ' + audioPlayer.currentTime);
             expect(audioPlayer.duration).assertEqual(DURATION_TIME);
             if (mySteps[0] == FINISH_STATE) {
-                console.info(`case wait for finish`);
+                console.info('case wait for finish');
                 return;
             }
             expect(audioPlayer.state).assertEqual('playing');
@@ -163,8 +198,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         });
         audioPlayer.on('pause', () => {
             mySteps.shift();
-            console.info(`case pause called`);
-            console.info(`case pause currentTime is ${audioPlayer.currentTime}`);
+            console.info('case pause currentTime is ' + audioPlayer.currentTime);
             expect(audioPlayer.duration).assertEqual(DURATION_TIME);
             expect(audioPlayer.state).assertEqual('paused');
             nextStep(mySteps, done);
@@ -189,7 +223,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
         });
         audioPlayer.on('timeUpdate', (seekDoneTime) => {
             if (typeof (seekDoneTime) == 'undefined') {
-                console.info(`case seek filed,errcode is ${seekDoneTime}`);
+                expect().assertFail();
+                console.info('case seek failed');
                 return;
             }
             if (mySteps[0] != SEEK_STATE) {
@@ -197,17 +232,14 @@ describe('PlayerLocalTestAudioFUNC', function () {
             }
             mySteps.shift();
             mySteps.shift();
-            console.info(`case seekDoneTime is ${seekDoneTime}`);
-            console.info(`case seek called`);
+            console.info('case seekDoneTime is' + seekDoneTime);
             expect(audioPlayer.currentTime + DELTA_TIME).assertClose(seekDoneTime + DELTA_TIME, DELTA_TIME);
-            console.info(`case loop is ${audioPlayer.loop}`);
+            console.info('case loop is' + audioPlayer.loop);
             if ((audioPlayer.loop == true) && (seekDoneTime == DURATION_TIME)) {
                 console.info('case loop is true');
                 mediaTestBase.msleep(PLAY_STATE);
             }
-            if ((seekDoneTime < audioPlayer.duration) || (audioPlayer.state == 'paused')) {
-                nextStep(mySteps, done);
-            }
+            nextStep(mySteps, done);
         });
         audioPlayer.on('volumeChange', () => {
             console.info(`case setvolume called`);
@@ -232,562 +264,78 @@ describe('PlayerLocalTestAudioFUNC', function () {
             if ((mySteps[0] == SEEK_STATE) || (mySteps[0] == VOLUME_STATE)) {
                 mySteps.shift();
                 mySteps.shift();
-                mySteps.shift();
             } else {
                 mySteps.shift();
-                mySteps.shift();
             }
+            expect(mySteps[0]).assertEqual(ERROR_STATE);
+            mySteps.shift();
             nextStep(mySteps, done);
         });
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0100
-        * @tc.name      : 001.play
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_SETSOURCE
+        * @tc.name      : 001.test setSorce ''
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0100', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_SETSOURCE', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, END_STATE);
+        bufferFlag = true;
+        let mySteps = new Array(SRC_STATE, ERROR_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = "";       
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0200
-        * @tc.name      : 002.play->pause
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTestTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0200', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0300
-        * @tc.name      : 003.play->pause->play->reset
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_SETVOLUME
+        * @tc.name      : 001.test SetVolume 0/0.5/1
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0300', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_SETVOLUME', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, RESET_STATE, END_STATE);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, VOLUME_STATE, 0, VOLUME_STATE, 0.5,
+            VOLUME_STATE, MAX_VOLUME, RESET_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdHead + fileDescriptor.fd;       
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0500
-        * @tc.name      : 005.play->reset
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_LOOP
+        * @tc.name      : 001.test loop
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0500', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0600
-        * @tc.name      : 006.play->pause->play->pause
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0600', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, PAUSE_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0700
-        * @tc.name      : 007.play->pause->stop
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0700', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, STOP_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0800
-        * @tc.name      : 008.play->pause->play->stop
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0800', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, STOP_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0900
-        * @tc.name      : 009.play->stop->reset->play->pause->play->reset
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_0900', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, RESET_STATE, SRC_STATE, PLAY_STATE,
-            PAUSE_STATE, PLAY_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1000
-        * @tc.name      : 010.play->pause->stop->reset->play->pause->reset
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1000', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, STOP_STATE, RESET_STATE, SRC_STATE, PLAY_STATE,
-            PAUSE_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1100
-        * @tc.name      : 011.play->stop->reset->play->reset
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1100', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, RESET_STATE,
-            SRC_STATE, PLAY_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1300
-        * @tc.name      : 013.play->stop->pause
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1300', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, PAUSE_STATE, ERROR_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1400
-        * @tc.name      : 014.play->seek->pause
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1400', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, PAUSE_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1500
-        * @tc.name      : 015.play->pause->seek(duration)
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1500', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, DURATION_TIME,
-            PLAY_STATE, FINISH_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1600
-        * @tc.name      : 016.play->pause->play->seek(0)->pause
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1600', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, SEEK_STATE, 0, PAUSE_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1700
-        * @tc.name      : 017.play->seek(0)->reset
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1700', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1800
-        * @tc.name      : 018.play->seek->stop->reset
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1800', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, STOP_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1900
-        * @tc.name      : 019.play->stop->seek
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_1900', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, SEEK_STATE, 0, ERROR_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2000
-        * @tc.name      : 020.play->pause->seek->reset
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2000', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, 0, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2100
-        * @tc.name      : 021.play->pause->seek->stop
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2100', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, DURATION_TIME / RAND_NUM,
-            STOP_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2200
-        * @tc.name      : 022.play->pause->play->seek(0)
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2200', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, SEEK_STATE, 0, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2300
-        * @tc.name      : 023.play->pause->play->seek(0)->stop
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2300', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, SEEK_STATE, 0, STOP_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2400
-        * @tc.name      : 024.play->stop->seek(0)->reset->play
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2400', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, SEEK_STATE, 0, ERROR_STATE,
-            RESET_STATE, SRC_STATE, PLAY_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2500
-        * @tc.name      : 025.play->seek(0)
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2500', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2600
-        * @tc.name      : 026.play->stop->seek->pause
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level 3
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2600', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, SEEK_STATE, SEEK_TIME, ERROR_STATE,
-            PAUSE_STATE, ERROR_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2700
-        * @tc.name      : 027.play->stop->seek->reset->play
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level 3
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2700', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, SEEK_STATE, SEEK_TIME, ERROR_STATE,
-            RESET_STATE, SRC_STATE, PLAY_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2800
-        * @tc.name      : 028.play->seek(duration)
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2800', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, DURATION_TIME, FINISH_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2900
-        * @tc.name      : 029.play->seek(out of duration)
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level 3
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_2900', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, DURATION_TIME + DELTA_TIME,
-            FINISH_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3000
-        * @tc.name      : 030.play->->seek(rand)
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3000', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, DURATION_TIME / RAND_NUM, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3200
-        * @tc.name      : 032.play->pause->seek(0)->play
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3200', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, 0, PLAY_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3300
-        * @tc.name      : 033.play->pause->seek(duration)->play
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3300', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, DURATION_TIME, PLAY_STATE,
-            FINISH_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3400
-        * @tc.name      : 034.play->pause->seek(out of duratin)->play
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level 3
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3400', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, DURATION_TIME + DELTA_TIME, PLAY_STATE,
-            FINISH_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3500
-        * @tc.name      : 035.play->seek(out of duratin)->play
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level 3
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3500', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, DURATION_TIME + DELTA_TIME,
-            FINISH_STATE, PLAY_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3600
-        * @tc.name      : 036.Loop Play
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3600', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_LOOP', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let playCount = 0;
         let seekCount = 0;
-        let isTimeDone = false;
+        let bufferFlag = false;
         let testAudioPlayer = media.createAudioPlayer();
+    
+        testAudioPlayer.on('bufferingUpdate', (infoType, value) => {
+            console.info('case bufferingUpdate success infoType is ' + infoType);
+            console.info('case bufferingUpdate success value is ' + value);
+            bufferFlag = true;
+        });
+
         testAudioPlayer.on('dataLoad', () => {
-            expect(testAudioPlayer.currentTime).assertEqual(0);
             expect(testAudioPlayer.duration).assertEqual(DURATION_TIME);
             expect(testAudioPlayer.state).assertEqual('paused');
-            testAudioPlayer.loop = true;
             testAudioPlayer.play();
         });
         testAudioPlayer.on('play', () => {
-            console.info(`case play currentTime is ${testAudioPlayer.currentTime}`);
+            console.info('case play currentTime is ' + testAudioPlayer.currentTime);
+            testAudioPlayer.loop = true;
             expect(testAudioPlayer.duration).assertEqual(DURATION_TIME);
             expect(testAudioPlayer.state).assertEqual('playing');
             mediaTestBase.msleep(PLAY_TIME);
@@ -795,199 +343,99 @@ describe('PlayerLocalTestAudioFUNC', function () {
                 return;
             }
             playCount++
+            console.info('case play to seek');
             testAudioPlayer.seek(DURATION_TIME);
         });
         testAudioPlayer.on('timeUpdate', (seekDoneTime) => {
             if (typeof (seekDoneTime) == 'undefined') {
-                console.info(`case seek filed,errcode is ${seekDoneTime}`);
+                expect().assertFail();
+                console.info('case seek failed');
                 return;
             }
-            if (seekCount > 0) {
-                testAudioPlayer.reset();
-                return;
-            }
-            seekCount++
             console.info(`case seekDoneTime is ${seekDoneTime}`);
+            if (seekDoneTime == DURATION_TIME) {
+                if (seekCount == 3) {
+                    console.info('case loop is false, seek time is ' + seekDoneTime);
+                    testAudioPlayer.loop = false;
+                    testAudioPlayer.seek(DURATION_TIME);
+                    seekCount++;
+                } else if (seekCount < 3) {
+                    seekCount++;
+                    console.info('case seek time is ' + seekDoneTime);
+                    console.info('case seek testAudioPlayer.loop is ' + testAudioPlayer.loop);
+                    expect(testAudioPlayer.loop).assertEqual(true);
+                    expect(testAudioPlayer.state).assertEqual('playing');
+                    mediaTestBase.msleep(PLAY_TIME);
+                    testAudioPlayer.seek(DURATION_TIME);
+                } else {
+                    console.info('case last seek time is ' + seekDoneTime);
+                }
+            } else if (seekDoneTime == 0) {
+                console.info('case seek time is ' + seekDoneTime);
+                expect(testAudioPlayer.state).assertEqual('playing');
+                if (seekCount == 4) {
+                    expect(testAudioPlayer.loop).assertEqual(false);
+                } else {
+                    expect(testAudioPlayer.loop).assertEqual(true);
+                }
+            }
         });
         testAudioPlayer.on('finish', () => {
-            expect(testAudioPlayer.state).assertEqual('playing');
+            console.info('case finish success seekCount is ' + seekCount);
+            expect(seekCount).assertEqual(4);
+            testAudioPlayer.reset();
         });
         testAudioPlayer.on('reset', () => {
+            console.info('case reset success bufferFlag is ' + bufferFlag);
+            expect(bufferFlag).assertEqual(true);
             expect(testAudioPlayer.state).assertEqual('idle');
             testAudioPlayer.release();
-            isTimeDone = true;
+            done();
         });
         testAudioPlayer.src = fdHead + fileDescriptor.fd;
-        setTimeout(function() {
-            if (!isTimeDone) {
-                expect(isTimeOut).assertTrue();
-            }
-            done();
-        }, TIME_OUT);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3700
-        * @tc.name      : 037.set volume 0 to 1
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_BASE_0100
+        * @tc.name      : 001.test audio player (src)
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_04_3700', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_BASE_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
-        
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, VOLUME_STATE, 0,
-            VOLUME_STATE, MAX_VOLUME, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        playAudioSource(fdHead + fileDescriptor.fd, DURATION_TIME, PLAY_TIME, true, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0100
-        * @tc.name      : 001.play
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_BASE_0200
+        * @tc.name      : 002.test audio player (fdsrc)
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0100', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_BASE_0200', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
-        console.info(`case update`);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.fdSrc = fileDescriptor;
+        playAudioSource(fileDescriptor, DURATION_TIME, PLAY_TIME, true, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0200
-        * @tc.name      : 002.play->pause
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTestTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0200', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.fdSrc = fileDescriptor;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0300
-        * @tc.name      : 003.play->pause->play->reset
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_MULTIPLE
+        * @tc.name      : 001.test two audio player
         * @tc.desc      : Audio playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0300', 0, async function (done) {
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_MULTIPLE', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.fdSrc = fileDescriptor;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0500
-        * @tc.name      : 005.play->reset
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0500', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.fdSrc = fileDescriptor;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0600
-        * @tc.name      : 006.play->pause->play->pause
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0600', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, PAUSE_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.fdSrc = fileDescriptor;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0700
-        * @tc.name      : 007.play->pause->stop
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0700', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, STOP_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.fdSrc = fileDescriptor;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0800
-        * @tc.name      : 008.play->pause->play->stop
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0800', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, STOP_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.fdSrc = fileDescriptor;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0900
-        * @tc.name      : 009.play->stop->reset->play->pause->play->reset
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_0900', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, RESET_STATE, SRC_STATE, PLAY_STATE,
-            PAUSE_STATE, PLAY_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.fdSrc = fileDescriptor;
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_1000
-        * @tc.name      : 010.play->pause->stop->reset->play->pause->reset
-        * @tc.desc      : Audio playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_05_1000', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, STOP_STATE, RESET_STATE, SRC_STATE, PLAY_STATE,
-            PAUSE_STATE, RESET_STATE, END_STATE);
-        initAudioPlayer();
-        setCallback(mySteps, done);
-        audioPlayer.fdSrc = fileDescriptor;
+        function waitForDone() {
+            console.info('case wait for next player');
+        }
+        playAudioSource(fdHead + fileDescriptor.fd, DURATION_TIME, PLAY_TIME, true, waitForDone);
+        mediaTestBase.msleep(1000);
+        playAudioSource(fdHead + fileDescriptor.fd, DURATION_TIME, PLAY_TIME, true, done);
     })
 })

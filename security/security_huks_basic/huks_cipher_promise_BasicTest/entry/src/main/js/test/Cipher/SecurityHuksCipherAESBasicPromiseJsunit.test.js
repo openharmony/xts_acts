@@ -291,3 +291,5 @@ describe('SecurityHuksCipherAESPromiseJsunit', function () {
     done();
   });
 });
+
+export {publicCipherFunc, IV, updateResult};

@@ -55,13 +55,21 @@ static void CreateTxt()
 static int CapsetOnlySETPCAP(int num)
 {
     struct __user_cap_header_struct capheader;
-    (void)memset_s(&capheader, sizeof(struct __user_cap_header_struct),
-        0, sizeof(struct __user_cap_header_struct));
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0,
+        sizeof(struct __user_cap_header_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     capheader.version = _LINUX_CAPABILITY_VERSION_3;
     capheader.pid = 0;
     struct __user_cap_data_struct capdata[CAP_NUM];
-    (void)memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
+    result = memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
         0, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     capdata[CAP_TO_INDEX(CAP_SETPCAP)].permitted |= CAP_TO_MASK(CAP_SETPCAP);
     capdata[CAP_TO_INDEX(CAP_SETPCAP)].effective |= CAP_TO_MASK(CAP_SETPCAP);
     capdata[CAP_TO_INDEX(CAP_SETPCAP)].inheritable |= CAP_TO_MASK(CAP_SETPCAP);
@@ -77,13 +85,21 @@ static int CapsetOnlySETPCAP(int num)
 static int AddCapUnauthorized(int num)
 {
     struct __user_cap_header_struct capheader;
-    (void)memset_s(&capheader, sizeof(struct __user_cap_header_struct),
-        0, sizeof(struct __user_cap_header_struct));
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0,
+        sizeof(struct __user_cap_header_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     capheader.version = _LINUX_CAPABILITY_VERSION_3;
     capheader.pid = 0;
     struct __user_cap_data_struct capdata[CAP_NUM];
-    (void)memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
+    result = memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
         0, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        return FALSE;
+    };
     capdata[0].permitted = LINUX_FULL_CAP;
     capdata[0].effective = LINUX_FULL_CAP;
     capdata[0].inheritable = LINUX_FULL_CAP;
@@ -99,8 +115,8 @@ static int AddCapUnauthorized(int num)
 static int CapgetWithAllCap(int num)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
-        0, sizeof(struct __user_cap_header_struct));
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0,
+        sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("CapgetWithAllCap memset_s failed");
         return FALSE;
@@ -132,8 +148,8 @@ static int CapgetWithAllCap(int num)
 static int CapgetWithNoCap(int num)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
-        0, sizeof(struct __user_cap_header_struct));
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0,
+        sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("CapgetWithAllCap memset_s failed");
         return FALSE;
@@ -165,8 +181,8 @@ static int CapgetWithNoCap(int num)
 static int CapgetOnlySETPCAP(int num)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
-        0, sizeof(struct __user_cap_header_struct));
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0,
+        sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("CapgetWithAllCap memset_s failed");
         return FALSE;
@@ -242,8 +258,8 @@ static int CapsetWithoutSETPCAP()
 static int CapsetWithVersion(pid_t pid, unsigned int version)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
-        0, sizeof(struct __user_cap_header_struct));
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0,
+        sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("CapgetWithAllCap memset_s failed");
         return FALSE;
@@ -269,8 +285,8 @@ static int CapsetWithVersion(pid_t pid, unsigned int version)
 static int CapgetWithVersion(pid_t pid, unsigned int version)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
-        0, sizeof(struct __user_cap_header_struct));
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0,
+        sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("CapgetWithAllCap memset_s failed");
         return FALSE;
@@ -292,14 +308,12 @@ static int CapgetWithVersion(pid_t pid, unsigned int version)
     }
     return 0;
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 static int CapgetWithCaps(pid_t pid, unsigned int caps)
 {
     struct __user_cap_header_struct capheader = { 0 };
-    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct),
-        0, sizeof(struct __user_cap_header_struct));
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0,
+        sizeof(struct __user_cap_header_struct));
     if (result != EOK) {
         LOG("CapgetWithAllCap memset_s failed");
         return FALSE;
@@ -321,9 +335,7 @@ static int CapgetWithCaps(pid_t pid, unsigned int caps)
     }
     return 0;
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_0600
  * @tc.name       : Processes with the CAP_KILL capability can invoke their management
@@ -383,9 +395,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest0600, Function | MediumTest | Level2
         }
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_0700
  * @tc.name       : Processes with the CAP_SETGID capability can invoke their management
@@ -435,9 +445,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest0700, Function | MediumTest | Level2
         EXPECT_EQ(WEXITSTATUS(status), 0) << "ErrInfo: The exitCode is wrong, please query logs, child_pid = " << pid;
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_0800
  * @tc.name       : Processes with the CAP_SETUID capability can invoke their management
@@ -505,9 +513,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest0800, Function | MediumTest | Level2
         EXPECT_EQ(WEXITSTATUS(status), 0) << "ErrInfo: The exitCode is wrong, please query logs, child_pid = " << pid;
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_0900
  * @tc.name       : Processes with the CAP_SETPCCAP capability can invoke their management
@@ -544,9 +550,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest0900, Security | MediumTest | Level2
         EXPECT_EQ(WEXITSTATUS(status), 0) << "ErrInfo: The exitCode is wrong, please query logs, child_pid = " << pid;
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_1000
  * @tc.name       : Processes with the CAP_SYS_NICE capability can invoke their management
@@ -610,9 +614,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1000, Function | MediumTest | Level2
         }
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_1100
  * @tc.name       : Processes with the CAP_SYS_TIME capability can call their management
@@ -661,9 +663,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1100, Function | MediumTest | Level2
         EXPECT_EQ(WEXITSTATUS(status), 0) << "ErrInfo: The exitCode is wrong, please query logs, child_pid = " << pid;
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_1200
  * @tc.name       : Processes without the CAP_SETPCAP capability cannot drop any capability
@@ -689,9 +689,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1200, Function | MediumTest | Level3
         EXPECT_EQ(WEXITSTATUS(status), 0) << "ErrInfo: The exitCode is wrong, please query logs, child_pid = " << pid;
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_1300
  * @tc.name       : Inheritance of process capabilities
@@ -726,9 +724,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1300, Function | MediumTest | Level1
         EXPECT_EQ(ret, 0) << "ErrInfo: CapgetWithAllCap error";
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_1400
  * @tc.name       : Invoke the capset interface to add and drop the process capabilities for 10000 times
@@ -765,9 +761,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1400, Reliability | MediumTest | Lev
         EXPECT_EQ(WEXITSTATUS(status), 0) << "ErrInfo: The exitCode is wrong, please query logs, child_pid = " << pid;
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_1500
  * @tc.name       : Invoke the capset interface to revoke the process capabilities which not exist for 10000 times
@@ -783,13 +777,21 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1500, Reliability | MediumTest | Lev
     if (pid == 0) {
         int exitCode = 0;
         struct __user_cap_header_struct capheader = { 0 };
-        (void)memset_s(&capheader, sizeof(struct __user_cap_header_struct),
-            0, sizeof(struct __user_cap_header_struct));
+        errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0,
+            sizeof(struct __user_cap_header_struct));
+        if (result != EOK) {
+            LOG("CapgetWithAllCap memset_s failed");
+            ASSERT_TRUE(false);
+        };
         capheader.version = _LINUX_CAPABILITY_VERSION_3;
         capheader.pid = 0;
         struct __user_cap_data_struct capdata[CAP_NUM] = { { 0 }, { 0 } };
-        (void)memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
+        result = memset_s(capdata, CAP_NUM * sizeof(struct __user_cap_data_struct),
             LINUX_FULL_CAP, CAP_NUM * sizeof(struct __user_cap_data_struct));
+        if (result != EOK) {
+            LOG("CapgetWithAllCap memset_s failed");
+            ASSERT_TRUE(false);
+        };
         capdata[CAP_TO_INDEX(INVALID_CAP_TO_INDEX)].permitted &= ~CAP_TO_MASK(INVALID_CAP_TO_INDEX);
         capdata[CAP_TO_INDEX(INVALID_CAP_TO_INDEX)].effective &= ~CAP_TO_MASK(INVALID_CAP_TO_INDEX);
         capdata[CAP_TO_INDEX(INVALID_CAP_TO_INDEX)].inheritable &= ~CAP_TO_MASK(INVALID_CAP_TO_INDEX);
@@ -811,9 +813,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1500, Reliability | MediumTest | Lev
         EXPECT_EQ(WEXITSTATUS(status), 0) << "ErrInfo: The exitCode is wrong, please query logs, child_pid = " << pid;
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_1600
  * @tc.name       : Enter the exception parameter for 10000 times when invoke the capset interface
@@ -876,9 +876,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1600, Reliability | MediumTest | Lev
         EXPECT_EQ(WEXITSTATUS(status), 0) << "ErrInfo: The exitCode is wrong, please query logs, child_pid = " << pid;
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_1700
  * @tc.name       : Invoke the capget interface to query the process capabilities for 10000 times
@@ -895,9 +893,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1700, Reliability | MediumTest | Lev
         }
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_1800
  * @tc.name       : Invoke the capget interface to query the process capabilities which not exist for 10000 times
@@ -935,9 +931,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1800, Reliability | MediumTest | Lev
         EXPECT_EQ(ret, 0) << "ErrInfo: CapgetWithAllCap error";
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_1900
  * @tc.name       : Enter the exception parameter for 10000 times when invoke the capget interface
@@ -1001,9 +995,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest1900, Reliability | MediumTest | Lev
         EXPECT_EQ(WEXITSTATUS(status), 0) << "ErrInfo: The exitCode is wrong, please query logs, child_pid = " << pid;
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_2100
  * @tc.name       : Five processes concurrently invoke APIs managed by the capability for 5000 times
@@ -1057,9 +1049,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2100, Reliability | MediumTest | Lev
         }
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_2200
  * @tc.name       : Check whether the default configuration of the system process capabilities
@@ -1075,31 +1065,29 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2200, Security | MediumTest | Level1
     // Step 2: Check the capability of process 'KProcess', pid = 2
     ret = CapgetWithCaps(KPROCESS_PID, KPROCESS_CAP);
     EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 2, process KProcess has wrong capability";
-    // Step 3: Check the capability of process 'shell', pid = 3
+    // Step 3: Check the capability of process 'shell', pid = 8
     ret = CapgetWithCaps(SHELL_PID, SHELL_CAP);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 3, process shell has wrong capability";
-    // Step 4: Check the capability of process 'apphilogcat', pid = 4
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 8, process shell has wrong capability";
+    // Step 4: Check the capability of process 'apphilogcat', pid = 10
     ret = CapgetWithCaps(HILOGCAT_PID, HILOGCAT_CAP);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 4, process apphilogcat has wrong capability";
-    // Step 5: Check the capability of process 'foundation', pid = 5
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 10, process apphilogcat has wrong capability";
+    // Step 5: Check the capability of process 'foundation', pid = 3
     ret = CapgetWithCaps(FOUNDATION_PID, FOUNDATION_CAP);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 5, process foundation has wrong capability";
-    // Step 6: Check the capability of process 'bundle_daemon', pid = 6
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 3, process foundation has wrong capability";
+    // Step 6: Check the capability of process 'bundle_daemon', pid = 4
     ret = CapgetWithCaps(BUNDLE_DAEMON_PID, BUNDLE_DAEMON_CAP);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 6, process bundle_daemon has wrong capability";
-    // Step 7: Check the capability of process 'appspawn', pid = 7
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 4, process bundle_daemon has wrong capability";
+    // Step 7: Check the capability of process 'appspawn', pid = 5
     ret = CapgetWithCaps(APPSPAWN_PID, APPSPAWN_CAP);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 7, process appspawn has wrong capability";
-    // Step 8: Check the capability of process 'media_server', pid = 8
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 5, process appspawn has wrong capability";
+    // Step 8: Check the capability of process 'media_server', pid = 6
     ret = CapgetWithCaps(MEDIA_SERVER_PID, MEDIA_SERVER_CAP);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 8, process media_server has wrong capability";
-    // Step 9: Check the capability of process 'wms_server' or 'ai_server', pid = 9
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 6, process media_server has wrong capability";
+    // Step 9: Check the capability of process 'wms_server' or 'ai_server', pid = 7
     ret = CapgetWithCaps(WMS_SERVER_OR_AI_SERVER_PID, WMS_SERVER_OR_AI_SERVER_CAP);
-    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 9, process wms_server or ai_server has wrong capability";
+    EXPECT_EQ(ret, 0) << "ErrInfo: Pid = 7, process wms_server or ai_server has wrong capability";
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_2300
  * @tc.name       : Check whether the default configuration of the capability of the third-party application process
@@ -1110,12 +1098,20 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2300, Security | MediumTest | Level1
 {
     int ret;
     struct __user_cap_header_struct capheader = { 0 };
-    (void)memset_s(&capheader, sizeof(struct __user_cap_header_struct),
-        0, sizeof(struct __user_cap_header_struct));
+    errno_t result = memset_s(&capheader, sizeof(struct __user_cap_header_struct), 0,
+        sizeof(struct __user_cap_header_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        ASSERT_TRUE(false);
+    };
     capheader.version = _LINUX_CAPABILITY_VERSION_3;
     struct __user_cap_data_struct capdataget[CAP_NUM] = { { 0 }, { 0 } };
-    (void)memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
-    0, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    result = memset_s(capdataget, CAP_NUM * sizeof(struct __user_cap_data_struct),
+        0, CAP_NUM * sizeof(struct __user_cap_data_struct));
+    if (result != EOK) {
+        LOG("CapgetWithAllCap memset_s failed");
+        ASSERT_TRUE(false);
+    };
     pid_t pid = getpid();
     for (int num = OTHER_PID; num <= pid; num++) {
         // Step 1: The current test process has all capabilities
@@ -1139,9 +1135,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2300, Security | MediumTest | Level1
         }
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_2400
  * @tc.name       : The process continuously invokes the capset and capget interfaces,
@@ -1206,9 +1200,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2400, Function | MediumTest | Level1
         }
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_2500
  * @tc.name       : Performance test of capset and capget interface
@@ -1253,9 +1245,7 @@ HWTEST_F(CapabilityTestSuite, CapabilityTest2500, Performance | MediumTest | Lev
         EXPECT_EQ(WEXITSTATUS(status), 0) << "ErrInfo: The exitCode is wrong, please query logs, child_pid = " << pid;
     }
 }
-#endif
 
-#if defined(LITE_FS_VFAT)
 /*
  * @tc.number     : SUB_SEC_AppSEC_PermissionMgmt_Capability_2600
  * @tc.name       : Performance test of the interface managed by Capability

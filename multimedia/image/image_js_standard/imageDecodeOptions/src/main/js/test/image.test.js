@@ -25,7 +25,8 @@ describe('Image', function () {
     var pathPng = '/data/storage/el2/base/files/test.png';
     var pathMovingGif = '/data/storage/el2/base/files/moving_test.gif';
     var pathTiff = '/data/storage/el2/base/files/test.tiff';
-    
+    let globalpixelmap;
+
     beforeAll(async function () {
         await applyPermission();
         console.info('beforeAll case');
@@ -36,6 +37,14 @@ describe('Image', function () {
     })
 
     afterEach(async function () {
+        if (globalpixelmap != undefined) {
+            console.info('globalpixelmap release start');
+            try {
+                await globalpixelmap.release();
+            } catch (error) {
+                console.info('globalpixelmap release fail');
+            }
+        }
         console.info('afterEach case');
     })
 
@@ -43,31 +52,31 @@ describe('Image', function () {
         console.info('afterAll case');
     })
 
-    async function applyPermission(){
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.image.DecodeOptions',0,100);
+    async function applyPermission() {
+        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.image.DecodeOptions', 0, 100);
         let atManager = abilityAccessCtrl.createAtManager();
-        if(atManager != null){
+        if (atManager != null) {
             let tokenID = appInfo.accessTokenId;
             console.info('[permission]case accessTokenId is' + tokenID);
             let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
             let permissionName2 = 'ohos.permission.READ_MEDIA';
             let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID,permissionName1).then((result)=>{
+            await atManager.grantUserGrantedPermission(tokenID, permissionName1).then((result) => {
                 console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.info('[permission]case grantUserGrantedPermission failed:' + err);
             });
-            await atManager.grantUserGrantedPermission(tokenID,permissionName2).then((result)=>{
+            await atManager.grantUserGrantedPermission(tokenID, permissionName2).then((result) => {
                 console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.info('[permission]case grantUserGrantedPermission failed:' + err);
             });
-            await atManager.grantUserGrantedPermission(tokenID,permissionName3).then((result)=>{
+            await atManager.grantUserGrantedPermission(tokenID, permissionName3).then((result) => {
                 console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.info('[permission]case grantUserGrantedPermission failed:' + err);
             });
-        }else{
+        } else {
             console.info('[permission]case apply permission failed,createAtManager failed');
         }
     }
@@ -83,8 +92,8 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-     it('TC_062', 0, async function (done) {
-        try{
+    it('TC_062', 0, async function (done) {
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -98,25 +107,25 @@ describe('Image', function () {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let packOpts = { format:["image/jpeg"], quality:99 }
+                    let packOpts = { format: ["image/jpeg"], quality: 99 }
                     imagePackerApi.packing(imageSourceApi, packOpts)
-                        .then( data => {
+                        .then(data => {
                             console.info('TC_062 success');
                             expect(data != undefined).assertTrue();
                             done();
                         }).catch(error => {
-                        console.log('TC_062 error: ' + error);
-                        expect(false).assertFail();
-                        done();
-                    })
+                            console.log('TC_062 error: ' + error);
+                            expect(false).assertFail();
+                            done();
+                        })
                 }
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_062 error: ' + error);
             expect(false).assertTrue();
             done();
         }
-        
+
     })
 
     /**
@@ -131,7 +140,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062-1', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -145,7 +154,7 @@ describe('Image', function () {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let packOpts = { format:["image/jpeg"], quality:1 }
+                    let packOpts = { format: ["image/jpeg"], quality: 1 }
                     imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                         console.info('TC_062-1 success');
                         expect(data != undefined).assertTrue();
@@ -153,7 +162,7 @@ describe('Image', function () {
                     })
                 }
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_062-1 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -172,7 +181,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062-2', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -186,7 +195,7 @@ describe('Image', function () {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let packOpts = { format:["image/gif"], quality:98 }
+                    let packOpts = { format: ["image/gif"], quality: 98 }
                     imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                         console.info('TC_062-2 success');
                         expect(data == undefined).assertTrue();
@@ -195,7 +204,7 @@ describe('Image', function () {
                     })
                 }
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_062-2 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -214,7 +223,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062-3', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -228,7 +237,7 @@ describe('Image', function () {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let packOpts = { format:["image/jpeg"], quality:101 }
+                    let packOpts = { format: ["image/jpeg"], quality: 101 }
                     imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                         console.info('TC_062-3 success');
                         expect(data == undefined).assertTrue();
@@ -237,7 +246,7 @@ describe('Image', function () {
                     })
                 }
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_062-3 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -256,7 +265,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062-4', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -275,7 +284,7 @@ describe('Image', function () {
                     done();
                 }
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_062-4 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -293,9 +302,9 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-     
+
     it('TC_062-5', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -309,27 +318,27 @@ describe('Image', function () {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let packOpts = { format:["image/jpeg"] }
+                    let packOpts = { format: ["image/jpeg"] }
                     imagePackerApi.packing(imageSourceApi, packOpts)
-                        .then( data => {
+                        .then(data => {
                             console.info('TC_062-5 failed');
                             expect(data == undefined).assertTrue();
                             done();
                         }).catch(error => {
-                        console.log('TC_062-5 error: ' + error);
-                        console.log('TC_062-5 success');
-                        expect(true).assertTrue();
-                        done();
-                    })
+                            console.log('TC_062-5 error: ' + error);
+                            console.log('TC_062-5 success');
+                            expect(true).assertTrue();
+                            done();
+                        })
                 }
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_062-5 error: ' + error);
             expect(false).assertTrue();
             done();
         }
     })
-    
+
 
     /**
      * @tc.number    : TC_062-6
@@ -343,7 +352,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062-6', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -357,40 +366,40 @@ describe('Image', function () {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let packOpts = { quality:50 }
+                    let packOpts = { quality: 50 }
                     imagePackerApi.packing(imageSourceApi, packOpts)
-                        .then( data => {
+                        .then(data => {
                             console.info('TC_062-6 failed');
                             expect(data == undefined).assertTrue();
                             done();
                         }).catch(error => {
-                        console.log('TC_062-6 error: ' + error);
-                        console.log('TC_062-6 success');
-                        expect(true).assertTrue();
-                        done();
-                    })
+                            console.log('TC_062-6 error: ' + error);
+                            console.log('TC_062-6 success');
+                            expect(true).assertTrue();
+                            done();
+                        })
                 }
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_062-6 error: ' + error);
             expect(false).assertTrue();
             done();
         }
     })
-/**
-     * @tc.number    : TC_062-7 
-     * @tc.name      : packing ImageSource - callback - quality 100
-     * @tc.desc      : 1.create ImageSource
-     *                 2.call packing
-     *                 3.return array
-     *                 4.callbackcall return undefined
-     * @tc.size      : MEDIUM 
-     * @tc.type      : Functional
-     * @tc.level     : Level 1
-     */
-    
+    /**
+         * @tc.number    : TC_062-7 
+         * @tc.name      : packing ImageSource - callback - quality 100
+         * @tc.desc      : 1.create ImageSource
+         *                 2.call packing
+         *                 3.return array
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM 
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+
     it('TC_062-7', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -404,19 +413,19 @@ describe('Image', function () {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let packOpts = { format:["image/jpeg"], quality:100 }
+                    let packOpts = { format: ["image/jpeg"], quality: 100 }
                     imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
-                        if (err){
+                        if (err) {
                             expect(false).assertTrue();
                             console.info('TC_062-7 error: ' + err);
                             done();
                             return
                         }
-                        if (data != undefined){
+                        if (data != undefined) {
                             console.info('TC_062-7 success');
                             expect(true).assertTrue();
                             done();
-                        }else{
+                        } else {
                             except(false).assertTrue();
                             console.info('TC_062-7 failed');
                             done();
@@ -424,7 +433,7 @@ describe('Image', function () {
                     })
                 }
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_062-7 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -442,7 +451,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062-8', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -456,7 +465,7 @@ describe('Image', function () {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let packOpts = { format:["image/jpeg"], quality:0 }
+                    let packOpts = { format: ["image/jpeg"], quality: 0 }
                     imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                         console.info('TC_062-8 success');
                         expect(data != undefined).assertTrue();
@@ -464,7 +473,7 @@ describe('Image', function () {
                     })
                 }
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_062-8 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -483,7 +492,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_062-9', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathPng);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -497,7 +506,7 @@ describe('Image', function () {
                     expect(false).assertTrue();
                     done();
                 } else {
-                    let packOpts = { format:["image/jpeg"], quality:-1 }
+                    let packOpts = { format: ["image/jpeg"], quality: -1 }
                     imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                         console.info('TC_062-9 success');
                         expect(data == undefined).assertTrue();
@@ -505,7 +514,7 @@ describe('Image', function () {
                     })
                 }
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_062-9 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -529,11 +538,11 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            imagePackerApi.release().then(()=>{
+            imagePackerApi.release().then(() => {
                 console.info('TC_063 success');
                 expect(true).assertTrue();
                 done();
-            }).catch(()=>{
+            }).catch(() => {
                 console.log('TC_063 error: ' + error);
                 expect(false).assertTrue();
                 done();
@@ -558,15 +567,15 @@ describe('Image', function () {
             expect(false).assertTrue();
             done();
         } else {
-            imagePackerApi.release(()=>{
+            imagePackerApi.release(() => {
                 console.info('TC_063-1 success');
                 expect(true).assertTrue();
                 done();
             })
         }
     })
- 
-  
+
+
     /**
      * @tc.number    : TC_050
      * @tc.name      : createPixelMap(decodingOptions)-pixelformat:RGBA_8888-jpg
@@ -579,7 +588,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -588,21 +597,23 @@ describe('Image', function () {
                 done();
             } else {
                 let decodingOptions = {
-                    sampleSize:1,
+                    sampleSize: 1,
                     editable: true,
-                    desiredSize:{ width:1, height:2},
-                    rotate:10,
-                    desiredPixelFormat:3,
+                    desiredSize: { width: 1, height: 2 },
+                    rotate: 10,
+                    desiredPixelFormat: 3,
                     desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                    index:0
+                    index: 0
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    globalpixelmap = pixelmap;
+
                     console.info('TC_050 success ');
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -620,7 +631,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-1', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -629,21 +640,22 @@ describe('Image', function () {
                 done();
             } else {
                 let decodingOptions = {
-                    sampleSize:1,
+                    sampleSize: 1,
                     editable: true,
-                    desiredSize:{ width:1, height:2},
-                    rotate:10,
-                    desiredPixelFormat:2,
+                    desiredSize: { width: 1, height: 2 },
+                    rotate: 10,
+                    desiredPixelFormat: 2,
                     desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                    index:0
+                    index: 0
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    globalpixelmap = pixelmap;
                     console.info('TC_050-1 success ');
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-1 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -661,7 +673,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-2', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -670,21 +682,23 @@ describe('Image', function () {
                 done();
             } else {
                 let decodingOptions = {
-                    sampleSize:1,
+                    sampleSize: 1,
                     editable: true,
-                    desiredSize:{ width:1, height:2},
-                    rotate:10,
-                    desiredPixelFormat:0,
+                    desiredSize: { width: 1, height: 2 },
+                    rotate: 10,
+                    desiredPixelFormat: 0,
                     desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                    index:0
+                    index: 0
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    globalpixelmap = pixelmap;
+
                     console.info('TC_050-2 success ');
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-2 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -702,7 +716,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-3', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -711,26 +725,28 @@ describe('Image', function () {
                 done();
             } else {
                 let decodingOptions = {
-                    sampleSize:1,
+                    sampleSize: 1,
                     editable: true,
-                    desiredSize:{ width:1, height:2},
-                    rotate:10,
-                    desiredPixelFormat:0,
+                    desiredSize: { width: 1, height: 2 },
+                    rotate: 10,
+                    desiredPixelFormat: 0,
                     desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                    index:1
+                    index: 1
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
-                    if(pixelmap == undefined){
+                    globalpixelmap = pixelmap;
+
+                    if (pixelmap == undefined) {
                         console.info('TC_050-3 success ');
                         expect(true).assertTrue();
                         done();
-                    }else{
+                    } else {
                         expect(false).assertTrue();
                         done();
                     }
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-3 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -749,7 +765,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-4', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -758,26 +774,28 @@ describe('Image', function () {
                 done();
             } else {
                 let decodingOptions = {
-                    sampleSize:1,
+                    sampleSize: 1,
                     editable: true,
-                    desiredSize:{ width:1, height:2},
-                    rotate:10,
-                    desiredPixelFormat:0,
+                    desiredSize: { width: 1, height: 2 },
+                    rotate: 10,
+                    desiredPixelFormat: 0,
                     desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                    index:-1
+                    index: -1
                 };
-                imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                    if(pixelmap == undefined){
+                imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    globalpixelmap = pixelmap;
+
+                    if (pixelmap == undefined) {
                         console.error('TC_050-4 success');
                         expect(true).assertTrue();
                         done();
-                    }else{
+                    } else {
                         expect(false).assertTrue();
                         done();
                     }
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-4 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -796,7 +814,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-5', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -805,26 +823,28 @@ describe('Image', function () {
                 done();
             } else {
                 let decodingOptions = {
-                    sampleSize:-1,
+                    sampleSize: -1,
                     editable: true,
-                    desiredSize:{ width:1, height:2},
-                    rotate:10,
-                    desiredPixelFormat:0,
+                    desiredSize: { width: 1, height: 2 },
+                    rotate: 10,
+                    desiredPixelFormat: 0,
                     desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                    index:0
+                    index: 0
                 };
-                imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                    if(pixelmap == undefined){
+                imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    globalpixelmap = pixelmap;
+
+                    if (pixelmap == undefined) {
                         console.info('TC_050-5 success ');
                         expect(true).assertTrue();
                         done();
-                    }else{
+                    } else {
                         expect(false).assertTrue();
                         done();
                     }
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-5 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -843,7 +863,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-6', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -852,26 +872,28 @@ describe('Image', function () {
                 done();
             } else {
                 let decodingOptions = {
-                    sampleSize:1,
+                    sampleSize: 1,
                     editable: true,
-                    desiredSize:{ width:1, height:2},
-                    rotate:-10,
-                    desiredPixelFormat:2,
+                    desiredSize: { width: 1, height: 2 },
+                    rotate: -10,
+                    desiredPixelFormat: 2,
                     desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                    index:0
+                    index: 0
                 };
-                imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                    if(pixelmap == undefined){
+                imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    globalpixelmap = pixelmap;
+
+                    if (pixelmap == undefined) {
                         console.info('TC_050-6 success ');
                         expect(true).assertTrue();
                         done();
-                    }else{
+                    } else {
                         expect(false).assertTrue();
                         done();
                     }
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-6 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -890,7 +912,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-7', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -899,26 +921,28 @@ describe('Image', function () {
                 done();
             } else {
                 let decodingOptions = {
-                    sampleSize:1,
+                    sampleSize: 1,
                     editable: true,
-                    desiredSize:{ width:1, height:2},
-                    rotate:10,
-                    desiredPixelFormat:60,
+                    desiredSize: { width: 1, height: 2 },
+                    rotate: 10,
+                    desiredPixelFormat: 60,
                     desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                    index:0
+                    index: 0
                 };
-                imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                    if(pixelmap == undefined){
+                imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    globalpixelmap = pixelmap;
+                    globalpixelmap = pixelmap;
+                    if (pixelmap == undefined) {
                         console.info('TC_050-7 success ');
                         expect(true).assertTrue();
                         done();
-                    }else{
+                    } else {
                         expect(false).assertTrue();
                         done();
                     }
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-7 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -937,7 +961,7 @@ describe('Image', function () {
      * @tc.level     : Level 1             
      */
     it('TC_050-8', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -946,21 +970,23 @@ describe('Image', function () {
                 done();
             } else {
                 let decodingOptions = {
-                    sampleSize:1,
+                    sampleSize: 1,
                     editable: false,
-                    desiredSize:{ width:1, height:2},
-                    rotate:10,
-                    desiredPixelFormat:2,
+                    desiredSize: { width: 1, height: 2 },
+                    rotate: 10,
+                    desiredPixelFormat: 2,
                     desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                    index:0
+                    index: 0
                 };
-                imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+                imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    globalpixelmap = pixelmap;
+
                     console.info('TC_050-8 success');
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-8 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -979,7 +1005,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-9', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -988,21 +1014,23 @@ describe('Image', function () {
                 done();
             } else {
                 let decodingOptions = {
-                    sampleSize:1,
+                    sampleSize: 1,
                     editable: true,
-                    desiredSize:{ width:10000, height:10000},
-                    rotate:10,
-                    desiredPixelFormat:2,
+                    desiredSize: { width: 10000, height: 10000 },
+                    rotate: 10,
+                    desiredPixelFormat: 2,
                     desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                    index:0
+                    index: 0
                 };
-                imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+                imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    globalpixelmap = pixelmap;
+
                     console.info('TC_050-9 success ');
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-9 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1021,7 +1049,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-10', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1030,26 +1058,28 @@ describe('Image', function () {
                 done();
             } else {
                 let decodingOptions = {
-                    sampleSize:1,
+                    sampleSize: 1,
                     editable: true,
-                    desiredSize:{ width:1, height:2},
-                    rotate:10,
-                    desiredPixelFormat:2,
+                    desiredSize: { width: 1, height: 2 },
+                    rotate: 10,
+                    desiredPixelFormat: 2,
                     desiredRegion: { size: { height: 10000, width: 10000 }, x: 0, y: 0 },
-                    index:0
+                    index: 0
                 };
-                imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                    if(pixelmap == undefined){
+                imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    globalpixelmap = pixelmap;
+
+                    if (pixelmap == undefined) {
                         console.info('TC_050-10 success ');
                         expect(true).assertTrue();
                         done();
-                    }else{
+                    } else {
                         expect(false).assertTrue();
                         done();
                     }
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-10 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1068,7 +1098,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-11', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1077,26 +1107,28 @@ describe('Image', function () {
                 done();
             } else {
                 let decodingOptions = {
-                    sampleSize:1,
+                    sampleSize: 1,
                     editable: true,
-                    desiredSize:{ width:1, height:2},
-                    rotate:10,
-                    desiredPixelFormat:2,
+                    desiredSize: { width: 1, height: 2 },
+                    rotate: 10,
+                    desiredPixelFormat: 2,
                     desiredRegion: { size: { height: 1, width: 2 }, x: -1, y: -1 },
-                    index:0
+                    index: 0
                 };
-                imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                    if(pixelmap == undefined){
+                imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    globalpixelmap = pixelmap;
+
+                    if (pixelmap == undefined) {
                         console.info('TC_050-11 success ');
                         expect(true).assertTrue();
                         done();
-                    }else{
+                    } else {
                         expect(false).assertTrue();
                         done();
                     }
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-11 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1115,7 +1147,7 @@ describe('Image', function () {
  * @tc.level     : Level 1
  */
     it('TC_050-12', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1124,26 +1156,28 @@ describe('Image', function () {
                 done();
             } else {
                 let decodingOptions = {
-                    sampleSize:1,
+                    sampleSize: 1,
                     editable: true,
-                    desiredSize:{ width:1, height:2},
-                    rotate:10,
-                    desiredPixelFormat:2,
+                    desiredSize: { width: 1, height: 2 },
+                    rotate: 10,
+                    desiredPixelFormat: 2,
                     desiredRegion: { size: { height: 1, width: 2 }, x: 10000, y: 10000 },
-                    index:0
+                    index: 0
                 };
-                imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                    if(pixelmap == undefined){
+                imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    globalpixelmap = pixelmap;
+
+                    if (pixelmap == undefined) {
                         console.info('TC_050-12 success ');
                         expect(true).assertTrue();
                         done();
-                    }else{
+                    } else {
                         expect(false).assertTrue();
                         done();
                     }
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-12 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1162,7 +1196,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-13', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1171,26 +1205,28 @@ describe('Image', function () {
                 done();
             } else {
                 let decodingOptions = {
-                    sampleSize:1,
+                    sampleSize: 1,
                     editable: true,
-                    desiredSize:{ width:1, height:2},
-                    rotate:500,
-                    desiredPixelFormat:2,
+                    desiredSize: { width: 1, height: 2 },
+                    rotate: 500,
+                    desiredPixelFormat: 2,
                     desiredRegion: { size: { height: 1, width: 2 }, x: 1, y: 2 },
-                    index:0
+                    index: 0
                 };
-                imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                    if(pixelmap == undefined){
+                imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    globalpixelmap = pixelmap;
+
+                    if (pixelmap == undefined) {
                         console.info('TC_050-13 success ');
                         expect(true).assertTrue();
                         done();
-                    }else{
+                    } else {
                         expect(false).assertTrue();
                         done();
                     }
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-13 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1209,7 +1245,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-14', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1218,8 +1254,10 @@ describe('Image', function () {
                 done();
             } else {
                 imageSourceApi.createPixelMap().then(pixelmap => {
+                    globalpixelmap = pixelmap;
+
                     console.info('TC_050-14 success ');
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 }).catch(error => {
                     console.log('TC_050-14 error: ' + error);
@@ -1227,7 +1265,7 @@ describe('Image', function () {
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-14 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1246,7 +1284,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_050-15', 0, async function (done) {
-        try{
+        try {
             let fdNumber = fileio.openSync(pathJpg);
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
@@ -1255,12 +1293,13 @@ describe('Image', function () {
                 done();
             } else {
                 imageSourceApi.createPixelMap((err, pixelmap) => {
+                    globalpixelmap = pixelmap;
                     console.info('TC_050-15 success ');
-                    expect(pixelmap != undefined ).assertTrue();
+                    expect(pixelmap != undefined).assertTrue();
                     done();
                 })
             }
-        }catch(error){
+        } catch (error) {
             console.info('TC_050-15 error: ' + error);
             expect(false).assertTrue();
             done();
@@ -1287,17 +1326,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:3,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 3,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions, (err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_067 createPixelMap ');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -1322,17 +1363,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions, (err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_067-1 success ');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -1357,17 +1400,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:0,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 0,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions, (err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_067-2 success ');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -1392,17 +1437,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:0,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 0,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:1
+                index: 1
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_067-3 success ');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -1428,20 +1475,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:0,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 0,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:-1
+                index: -1
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_067-4 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -1469,20 +1518,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:-1,
+                sampleSize: -1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:0,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 0,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_067-5 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -1510,20 +1561,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:-10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: -10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_067-6 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -1551,20 +1604,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:60,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 60,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_067-7 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -1591,17 +1646,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: false,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_067-8 success');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -1627,17 +1684,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:10000, height:10000},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 10000, height: 10000 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_067-9 success ');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -1663,20 +1722,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 10000, width: 10000 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_067-10 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -1704,20 +1765,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: -1, y: -1 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_067-11 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -1745,20 +1808,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 10000, y: 10000 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_067-12 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -1786,20 +1851,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:500,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 500,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 1, y: 2 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_067-13 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -1827,8 +1894,10 @@ describe('Image', function () {
             done();
         } else {
             imageSourceApi.createPixelMap().then(pixelmap => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_067-14 success ');
-                expect(pixelmap !== undefined ).assertTrue();
+                expect(pixelmap !== undefined).assertTrue();
                 done();
             }).catch(error => {
                 console.log('TC_067-14 error: ' + error);
@@ -1858,8 +1927,9 @@ describe('Image', function () {
             done();
         } else {
             imageSourceApi.createPixelMap((err, pixelmap) => {
+
                 console.info('TC_067-15 success ');
-                expect(pixelmap !== undefined ).assertTrue();
+                expect(pixelmap !== undefined).assertTrue();
                 done();
             })
         }
@@ -1886,17 +1956,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:3,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 3,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_068 success ');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -1921,17 +1993,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_068-1 success ');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -1957,17 +2031,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:0,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 0,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_068-2 success ');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -1993,20 +2069,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:0,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 0,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:1
+                index: 1
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_068-3 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2034,20 +2112,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:0,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 0,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:-1
+                index: -1
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_068-4 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2075,20 +2155,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:-1,
+                sampleSize: -1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:0,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 0,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_068-5 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2116,20 +2198,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:-10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: -10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_068-6 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2157,20 +2241,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:60,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 60,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_068-7 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2198,17 +2284,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: false,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_068-8 success');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -2234,17 +2322,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1500, height:1500},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1500, height: 1500 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_068-9 success ');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -2270,20 +2360,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 10000, width: 10000 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_068-10 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2311,20 +2403,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: -1, y: -1 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_068-11 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2352,20 +2446,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 10000, y: 10000 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_068-12 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2392,20 +2488,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:500,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 500,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 1, y: 2 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_068-13 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2433,17 +2531,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:3,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 3,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_163 success');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -2468,17 +2568,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_163-1 success');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -2503,17 +2605,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:0,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 0,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_163-2 success');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -2538,20 +2642,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:0,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 0,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:1
+                index: 1
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_163-3 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2580,20 +2686,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:0,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 0,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:-1
+                index: -1
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_163-4 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2622,20 +2730,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:-1,
+                sampleSize: -1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:0,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 0,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_163-5 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2664,20 +2774,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:-10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: -10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_163-6 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2706,20 +2818,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:60,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 60,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_163-7 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2748,17 +2862,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: false,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_163-8 success');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -2776,7 +2892,7 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-   
+
     it('TC_163-9', 0, async function (done) {
         let fdNumber = fileio.openSync(pathPng);
         const imageSourceApi = image.createImageSource(fdNumber);
@@ -2786,17 +2902,19 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1500, height:1500},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1500, height: 1500 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
                 console.info('TC_163-9 success');
-                expect(pixelmap != undefined ).assertTrue();
+                expect(pixelmap != undefined).assertTrue();
                 done();
             })
         }
@@ -2823,20 +2941,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 10000, width: 10000 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_163-10 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2865,20 +2985,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: -1, y: -1 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_163-11 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2907,20 +3029,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:10,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 10,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 10000, y: 10000 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_163-12 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2947,20 +3071,22 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:500,
-                desiredPixelFormat:2,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 500,
+                desiredPixelFormat: 2,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 1, y: 2 },
-                index:0
+                index: 0
             };
-            imageSourceApi.createPixelMap(decodingOptions,(err,pixelmap) => {
-                if(pixelmap == undefined){
+            imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+
+                if (pixelmap == undefined) {
                     console.info('TC_163-13 success ');
                     expect(true).assertTrue();
                     done();
-                }else{
+                } else {
                     expect(false).assertTrue();
                     done();
                 }
@@ -2983,17 +3109,19 @@ describe('Image', function () {
         let fdNumber = fileio.openSync(pathTiff);
         const imageSourceApi = image.createImageSource(fdNumber);
         let decodingOptions = {
-            sampleSize:1,
+            sampleSize: 1,
             editable: true,
-            desiredSize:{ width:1, height:2},
-            rotate:10,
-            desiredPixelFormat:3,
+            desiredSize: { width: 1, height: 2 },
+            rotate: 10,
+            desiredPixelFormat: 3,
             desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-            index:0
+            index: 0
         };
         imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
+            globalpixelmap = pixelmap;
+
             console.info('TC_167 success ');
-            expect(pixelmap == undefined ).assertTrue();
+            expect(pixelmap == undefined).assertTrue();
             done();
         })
     })
@@ -3018,22 +3146,24 @@ describe('Image', function () {
             done();
         } else {
             let decodingOptions = {
-                sampleSize:1,
+                sampleSize: 1,
                 editable: true,
-                desiredSize:{ width:1, height:2},
-                rotate:90,
-                desiredPixelFormat:3,
+                desiredSize: { width: 1, height: 2 },
+                rotate: 90,
+                desiredPixelFormat: 3,
                 desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
-                index:0
+                index: 0
             };
             imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
-                pixelmap.getImageInfo( (err,imageInfo) => {
+                globalpixelmap = pixelmap;
+
+                pixelmap.getImageInfo((err, imageInfo) => {
                     if (imageInfo != undefined) {
                         console.info('TC_169 success');
                         expect(imageInfo.size.height == 2).assertTrue();
                         expect(imageInfo.size.width == 1).assertTrue();
                         done();
-                    }else {
+                    } else {
                         console.info('TC_169 imageInfo is empty');
                         expect(false).assertTrue()
                         done();

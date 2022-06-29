@@ -23,8 +23,8 @@ describe('fileio_chmod', function () {
   /**
    * @tc.number SUB_DF_FILEIO_CHMODSYNC_0000
    * @tc.name fileio_test_chmod_sync_000
-   * @tc.desc Test chmodSync() interfaces
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test chmodSync() interfaces, mode = 0o660. Test file permissions modified successfully.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -34,20 +34,20 @@ describe('fileio_chmod', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      expect(fileio.chmodSync(fpath, 0o660) == null).assertTrue();
+      fileio.chmodSync(fpath, 0o660);
       expect((fileio.statSync(fpath).mode & 0o777) == 0o660).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
     } catch (e) {
-      console.log('fileio_test_chmod_sync_000 has failed for ' + e);
+      console.info('fileio_test_chmod_sync_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CHMODSYNC_0010
+   * @tc.number SUB_DF_FILEIO_CHMODSYNC_0100
    * @tc.name fileio_test_chmod_sync_001
-   * @tc.desc Test chmodSync() interfaces
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test chmodSync() interfaces, mode = 0o0700. Test file permissions modified successfully.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -57,52 +57,71 @@ describe('fileio_chmod', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      expect(fileio.chmodSync(fpath, 0o0700) == null).assertTrue();
+      fileio.chmodSync(fpath, 0o0700);
       expect((fileio.statSync(fpath).mode & 0o777) == 0o0700).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
+      fileio.unlinkSync(fpath);
     } catch (e) {
-      console.log('fileio_test_chmod_sync_001 has failed for ' + e);
+      console.info('fileio_test_chmod_sync_001 has failed for ' + e);
       expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_CHMODSYNC_0200
+   * @tc.name fileio_test_chmod_sync_002
+   * @tc.desc Test chmodSync() interfaces, invalid path. Test file modification failed.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_test_chmod_sync_002', 0, async function () {
+    let fpath = await nextFileName('fileio_test_chmod_sync_002');
+
+    try {
+      fileio.chmodSync(fpath, 0o0700);
+    } catch (e) {
+      console.info('fileio_test_chmod_sync_002 has failed for ' + e);
+      expect(e.message == "No such file or directory").assertTrue();
     }
   });
 
   /**
    * @tc.number SUB_DF_FILEIO_CHMODASYNC_0000
    * @tc.name fileio_test_chmod_async_000
-   * @tc.desc Test chmodAsync() interfaces
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test the chmodAsync() interface with promise, mode = 0o660. Test file permissions modified successfully.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
   it('fileio_test_chmod_async_000', 0, async function (done) {
-    let fpath = await nextFileName('fileio_test_chmod_async_001');
+    let fpath = await nextFileName('fileio_test_chmod_async_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       fileio
         .chmod(fpath, 0o660)
         .then(function (err) {
-          expect(!err).assertTrue();
           expect((fileio.statSync(fpath).mode & 0o777) == 0o660).assertTrue();
-          expect(fileio.unlinkSync(fpath) == null).assertTrue();
+          fileio.unlinkSync(fpath);
           done();
         })
         .catch(function (e) {
-          console.log(e);
+          console.info(e);
         });
       done();
     } catch (e) {
-      console.log('fileio_test_chmod_async_000 has failed for ' + e);
+      console.info('fileio_test_chmod_async_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CHMODASYNC_0010
+   * @tc.number SUB_DF_FILEIO_CHMODASYNC_0100
    * @tc.name fileio_test_chmod_async_001
-   * @tc.desc Test chmodAsync() interfaces
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test the chmodAsync() interface with promise, mode = 0o0700. Test file permissions modified successfully.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -115,68 +134,88 @@ describe('fileio_chmod', function () {
       fileio
         .chmod(fpath, 0o0700)
         .then(function (err) {
-          expect(!err).assertTrue();
           expect((fileio.statSync(fpath).mode & 0o777) == 0o0700).assertTrue();
-          expect(fileio.unlinkSync(fpath) == null).assertTrue();
+          fileio.unlinkSync(fpath);
           done();
         })
         .catch(function (e) {
-          console.log(e);
+          console.info(e);
         });
       done();
     } catch (e) {
-      console.log('fileio_test_chmod_async_001 has failed for ' + e);
+      console.info('fileio_test_chmod_async_001 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CHMODASYNC_0020
+   * @tc.number SUB_DF_FILEIO_CHMODASYNC_0200
    * @tc.name fileio_test_chmod_async_002
-   * @tc.desc Test chmodAsync() interfaces
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test the chmodAsync() interface with callback, mode = 0o660. Test file permissions modified successfully.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
   it('fileio_test_chmod_async_002', 0, async function (done) {
-    let fpath = await nextFileName('fileio_test_chmod_async_000');
+    let fpath = await nextFileName('fileio_test_chmod_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      await fileio.chmod(fpath, 0o660, function () {
+      fileio.chmod(fpath, 0o660, function () {
         expect((fileio.statSync(fpath).mode & 0o777) == 0o660).assertTrue();
         fileio.unlinkSync(fpath);
         done();
       });
     } catch (e) {
-      console.log('fileio_test_chmod_async_002 has failed for ' + e);
+      console.info('fileio_test_chmod_async_002 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CHMODASYNC_0030
+   * @tc.number SUB_DF_FILEIO_CHMODASYNC_0300
    * @tc.name fileio_test_chmod_async_003
-   * @tc.desc Test chmodAsync() interfaces
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test the chmodAsync() interface with callback, mode = 0o0700. Test file permissions modified successfully.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
   it('fileio_test_chmod_async_003', 0, async function (done) {
-    let fpath = await nextFileName('fileio_test_chmod_async_000');
+    let fpath = await nextFileName('fileio_test_chmod_async_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      await fileio.chmod(fpath, 0o0700, function () {
+      fileio.chmod(fpath, 0o0700, function () {
         expect((fileio.statSync(fpath).mode & 0o777) == 0o0700).assertTrue();
         fileio.unlinkSync(fpath);
         done();
       });
     } catch (e) {
-      console.log('fileio_test_chmod_async_003 has failed for ' + e);
+      console.info('fileio_test_chmod_async_003 has failed for ' + e);
       expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_CHMODASYNC_0400
+   * @tc.name fileio_test_chmod_async_004
+   * @tc.desc Test the chmodAsync() interface with promise, invalid path. Test file modification failed.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_test_chmod_async_004', 0, async function (done) {
+    let fpath = await nextFileName('fileio_test_chmod_async_004');
+
+    try {
+      await fileio.chmod(fpath, 0o660);
+    } catch (e) {
+      console.info('fileio_test_chmod_async_004 has failed for ' + e);
+      expect(e.message == "No such file or directory").assertTrue();
+      done();
     }
   });
 });

@@ -14,7 +14,7 @@
  */
 import * as param from '../publicParam';
 
-let HuksHmac = {
+let  HuksHmac = {
   HuksKeyAlg: {
     tag: param.HksTag.HKS_TAG_ALGORITHM,
     value: param.HksKeyAlg.HKS_ALG_HMAC,
@@ -46,6 +46,10 @@ let HuksHmac = {
   HuksTagDigestSHA512: {
     tag: param.HksTag.HKS_TAG_DIGEST,
     value: param.HksKeyDigest.HKS_DIGEST_SHA512,
+  },
+  HuksTagDigestSM3: {
+    tag: param.HksTag.HKS_TAG_DIGEST,
+    value: param.HksKeyDigest.HKS_DIGEST_SM3,
   },
 };
 export { HuksHmac };

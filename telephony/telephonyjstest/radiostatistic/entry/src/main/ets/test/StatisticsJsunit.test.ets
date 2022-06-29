@@ -17,7 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import statistics from '@ohos.net.statistics';
 import utils from './Utils.ets'
 export default function statisticsUiJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_redio2', function () {
     const DATA_0 = 0;
 
     /**

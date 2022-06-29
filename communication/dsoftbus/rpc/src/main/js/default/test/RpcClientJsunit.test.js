@@ -15,13 +15,13 @@
 
 import rpc from '@ohos.rpc'
 import fileio from '@ohos.fileio';
-import FA from '@ohos.ability.featureability'
+import FA from '@ohos.ability.featureAbility'
 import {describe, expect, beforeAll, it} from 'deccjsunit/index'
 
 var gIRemoteObject = undefined;
 
 describe('ActsRpcClientJsTest', function(){
-    console.log("-----------------------SUB_Softbus_IPC_MessageParce_Test is starting-----------------------");
+    console.info("-----------------------SUB_Softbus_IPC_MessageParce_Test is starting-----------------------");
 
     const CODE_WRITE_BYTEARRAY = 1;
     const CODE_WRITE_INTARRAY = 2;
@@ -61,24 +61,24 @@ describe('ActsRpcClientJsTest', function(){
         };
         let connect = {
             onConnect:function (elementName, remoteProxy) {
-                console.log('RpcClient: onConnect called, instance of proxy: '
+                console.info('RpcClient: onConnect called, instance of proxy: '
                              + (remoteProxy instanceof rpc.RemoteProxy))
                 gIRemoteObject = remoteProxy
 
             },
             onDisconnect:function (elementName) {
-                console.log("RpcClient: onDisconnect")
+                console.info("RpcClient: onDisconnect")
             },
             onFailed:function () {
-                console.log("RpcClient: onFailed")
+                console.info("RpcClient: onFailed")
                 gIRemoteObject = null
             }
         };
         FA.connectAbility(want, connect)
         return new Promise((resolve, reject) =>{
-            console.log("start connect local ability, wait 5 seconds")
+            console.info("start connect local ability, wait 5 seconds")
             setTimeout(()=>{
-                console.log("resolve proxy: " + gIRemoteObject)
+                console.info("resolve proxy: " + gIRemoteObject)
                 resolve(gIRemoteObject)
             }, 5000)
         })
@@ -194,10 +194,10 @@ describe('ActsRpcClientJsTest', function(){
         onRemoteRequest(code, data, reply, option) {
             let result = false
             if (code  == 1) {
-                console.log("onRemoteRequest called, descriptor: " + this.getInterfaceDescriptor())
+                console.info("onRemoteRequest called, descriptor: " + this.getInterfaceDescriptor())
                 result = true
             } else {
-                console.log("unknown code: " + code)
+                console.info("unknown code: " + code)
             }
             let _checkResult = this.checkResult
             let _num = data.readInt()
@@ -229,13 +229,13 @@ describe('ActsRpcClientJsTest', function(){
     class Stub extends rpc.RemoteObject {
         onRemoteRequest(code, data, reply, option) {
             let callerPid = rpc.IPCSkeleton.getCallingPid();
-            console.log("RpcServer: getCallingPid result: " + callerPid);
+            console.info("RpcServer: getCallingPid result: " + callerPid);
             let callerUid = rpc.IPCSkeleton.getCallingUid();
-            console.log("RpcServer: getCallingUid result: " + callerUid);
+            console.info("RpcServer: getCallingUid result: " + callerUid);
             let callerDeviceID  = rpc.IPCSkeleton.getCallingDeviceID();
-            console.log("RpcServer: getCallingUid result: " + callerDeviceID );
+            console.info("RpcServer: getCallingUid result: " + callerDeviceID );
             let localDeviceID = rpc.IPCSkeleton.getLocalDeviceID();
-            console.log("RpcServer: localDeviceID is: " + localDeviceID);
+            console.info("RpcServer: localDeviceID is: " + localDeviceID);
             return true;
         }
     }
@@ -250,12 +250,12 @@ describe('ActsRpcClientJsTest', function(){
     beforeAll(async function (done) {
         console.info('beforeAll called')
         await connectAbility().then((remote) => {
-            console.log("got remote proxy: " + remote)
+            console.info("got remote proxy: " + remote)
         }).catch((err) => {
-            console.log("got exception: " + err)
+            console.info("got exception: " + err)
         })
         done()
-        console.log("beforeAll done")
+        console.info("beforeAll done")
     })
 
     /*
@@ -266,28 +266,28 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_3600", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_3600---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_3600---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_3600: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_3600: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
-            let ByteArrayVar = new Int8Array([1, 2, 3, 4, 5]);
+            let ByteArrayVar = [1, 2, 3, 4, 5];
             var writeShortArrayResult = data.writeByteArray(ByteArrayVar);
-            console.log("SUB_Softbus_IPC_MessageParcel_3600: run writeShortArray success, result is "
+            console.info("SUB_Softbus_IPC_MessageParcel_3600: run writeShortArray success, result is "
             + writeShortArrayResult);
             expect(writeShortArrayResult == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_3600: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_3600: gIRemoteObject undefined");
             }
-            await gIRemoteObject.sendRequest(CODE_WRITE_BYTEARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_3600: sendRequest success, result is " + result.errCode);
+            gIRemoteObject.sendRequest(CODE_WRITE_BYTEARRAY, data, reply, option).then((result) => {
+                console.info("SUB_Softbus_IPC_MessageParcel_3600: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 var shortArryDataReply = result.reply.readByteArray();
-                console.log("SUB_Softbus_IPC_MessageParcel_3600: run readByteArray is success, result is "
+                console.info("SUB_Softbus_IPC_MessageParcel_3600: run readByteArray is success, result is "
                              + shortArryDataReply);
                 expect(shortArryDataReply[0] == ByteArrayVar[0]).assertTrue();
                 expect(shortArryDataReply[1] == ByteArrayVar[1]).assertTrue();
@@ -299,9 +299,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_3600: error " +error);
+            console.info("SUB_Softbus_IPC_MessageParcel_3600: error " +error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_3600---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_3600---------------------------");
     });
 
     /*
@@ -312,29 +312,29 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_3700", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_3700---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_3700---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_3700: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_3700: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
-            let ByteArrayVar = new Int8Array([1, 2, 3, 4, 5]);
+            let ByteArrayVar = [1, 2, 3, 4, 5];
             var writeShortArrayResult = data.writeByteArray(ByteArrayVar);
-            console.log("SUB_Softbus_IPC_MessageParcel_3700: run writeShortArray success, result is "
+            console.info("SUB_Softbus_IPC_MessageParcel_3700: run writeShortArray success, result is "
             + writeShortArrayResult);
             expect(writeShortArrayResult == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_3700: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_3700: gIRemoteObject undefined");
             }
-            await gIRemoteObject.sendRequest(CODE_WRITE_BYTEARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_3700: sendRequest success, result is " + result.errCode);
+            gIRemoteObject.sendRequest(CODE_WRITE_BYTEARRAY, data, reply, option).then((result) => {
+                console.info("SUB_Softbus_IPC_MessageParcel_3700: sendRequest success, result is " + result.errCode);
 
-                var newArr = new Int8Array(5)
+                var newArr = new Array(5)
                 result.reply.readByteArray(newArr);
-                console.log("SUB_Softbus_IPC_MessageParcel_3700: run readByteArray is success, result is "
+                console.info("SUB_Softbus_IPC_MessageParcel_3700: run readByteArray is success, result is "
                 + newArr);
                 expect(newArr[0] == ByteArrayVar[0]).assertTrue()
                 expect(newArr[1] == ByteArrayVar[1]).assertTrue()
@@ -347,9 +347,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_3700: error " +error);
+            console.info("SUB_Softbus_IPC_MessageParcel_3700: error " +error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_3700---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_3700---------------------------");
     });
 
     /*
@@ -359,29 +359,29 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_3800", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_3800---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_3800---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_3800: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_3800: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
-            let ByteArrayVar = new Int8Array([-128, 0, 1, 2, 127]);
+            let ByteArrayVar = [-128, 0, 1, 2, 127];
             var writeShortArrayResult = data.writeByteArray(ByteArrayVar);
-            console.log("SUB_Softbus_IPC_MessageParcel_3800: run writeShortArray success, result is "
+            console.info("SUB_Softbus_IPC_MessageParcel_3800: run writeShortArray success, result is "
             + writeShortArrayResult);
             expect(writeShortArrayResult == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_3800: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_3800: gIRemoteObject undefined");
             }
-            await gIRemoteObject.sendRequest(CODE_WRITE_BYTEARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_3800: sendRequest success, result is " + result.errCode);
+            gIRemoteObject.sendRequest(CODE_WRITE_BYTEARRAY, data, reply, option).then((result) => {
+                console.info("SUB_Softbus_IPC_MessageParcel_3800: sendRequest success, result is " + result.errCode);
 
-                var newArr = new Int8Array(5)
+                var newArr = new Array(5)
                 result.reply.readByteArray(newArr);
-                console.log("SUB_Softbus_IPC_MessageParcel_3800: run readByteArray is success, result is "
+                console.info("SUB_Softbus_IPC_MessageParcel_3800: run readByteArray is success, result is "
                 + newArr);
                 expect(newArr[0] == ByteArrayVar[0]).assertTrue()
                 expect(newArr[1] == ByteArrayVar[1]).assertTrue()
@@ -394,9 +394,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_3800: error " +error);
+            console.info("SUB_Softbus_IPC_MessageParcel_3800: error " +error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_3800---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_3800---------------------------");
     });
 
     /*
@@ -406,28 +406,28 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_3900", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_3900---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_3900---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_3900: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_3900: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
-            let ByteArrayVar = new Int8Array([-129, 0, 1, 2, 127]);
+            let ByteArrayVar = [-129, 0, 1, 2, 127];
             var writeShortArrayResult = data.writeByteArray(ByteArrayVar);
-            console.log("SUB_Softbus_IPC_MessageParcel_3900: run writeShortArray success, result is "
+            console.info("SUB_Softbus_IPC_MessageParcel_3900: run writeShortArray success, result is "
             + writeShortArrayResult);
             expect(writeShortArrayResult == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_3900: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_3900: gIRemoteObject undefined");
             }
-            await gIRemoteObject.sendRequest(CODE_WRITE_BYTEARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_3900: sendRequest success, result is " + result.errCode);
+            gIRemoteObject.sendRequest(CODE_WRITE_BYTEARRAY, data, reply, option).then((result) => {
+                console.info("SUB_Softbus_IPC_MessageParcel_3900: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 var shortArryDataReply = result.reply.readByteArray();
-                console.log("SUB_Softbus_IPC_MessageParcel_3900: run readByteArray is success, result is "
+                console.info("SUB_Softbus_IPC_MessageParcel_3900: run readByteArray is success, result is "
                 + shortArryDataReply);
                 expect(shortArryDataReply[0] == 127).assertTrue();
                 expect(shortArryDataReply[1] == ByteArrayVar[1]).assertTrue();
@@ -439,9 +439,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_3600: error " +error);
+            console.info("SUB_Softbus_IPC_MessageParcel_3900: error " +error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_3600---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_3900---------------------------");
     });
 
     /*
@@ -452,29 +452,29 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_4000", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_4000---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_4000---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_4000: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_4000: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             var intArryData = [100, 111, 112];
             var writeShortArrayResult = data.writeIntArray(intArryData);
-            console.log("SUB_Softbus_IPC_MessageParcel_4000: run writeShortArray success, result is "
+            console.info("SUB_Softbus_IPC_MessageParcel_4000: run writeShortArray success, result is "
             + writeShortArrayResult);
             expect(writeShortArrayResult == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_4000: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_4000: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_INTARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_4000: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_4000: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 var shortArryDataReply = result.reply.readIntArray();
-                console.log("SUB_Softbus_IPC_MessageParcel_4000: run readByteArray is success, result is "
+                console.info("SUB_Softbus_IPC_MessageParcel_4000: run readByteArray is success, result is "
                 + shortArryDataReply);
                 expect(shortArryDataReply[0] == intArryData[0]).assertTrue();
                 expect(shortArryDataReply[1] == intArryData[1]).assertTrue();
@@ -485,9 +485,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_4000: error " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_4000: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_4000---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_4000---------------------------");
     });
 
     /*
@@ -498,30 +498,30 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_4100", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_4100---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_4100---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_4100: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_4100: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             var intArryData = [100, 111, 112];
             var writeShortArrayResult = data.writeIntArray(intArryData);
-            console.log("SUB_Softbus_IPC_MessageParcel_4100: run writeShortArray success, result is "
+            console.info("SUB_Softbus_IPC_MessageParcel_4100: run writeShortArray success, result is "
             + writeShortArrayResult);
             expect(writeShortArrayResult == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_4100: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_4100: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_INTARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_4100: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_4100: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 var newArr = []
                 result.reply.readIntArray(newArr);
-                console.log("SUB_Softbus_IPC_MessageParcel_4100: run readIntArray is success, intArryDataReply is "
+                console.info("SUB_Softbus_IPC_MessageParcel_4100: run readIntArray is success, intArryDataReply is "
                 + newArr);
                 expect(newArr[0] == intArryData[0]).assertTrue();
                 expect(newArr[1] == intArryData[1]).assertTrue();
@@ -532,9 +532,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_4100: error " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_4100: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_4100---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_4100---------------------------");
     });
 
     /*
@@ -544,29 +544,29 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_4200", 0, async function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_4200---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_4200---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_4200: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_4200: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             var intArryData = [-2147483648, 0, 1, 2, 2147483647];
             var writeIntArrayResult = data.writeIntArray(intArryData);
-            console.log("SUB_Softbus_IPC_MessageParcel_4200: run writeShortArray success, result is "
+            console.info("SUB_Softbus_IPC_MessageParcel_4200: run writeShortArray success, result is "
             + writeIntArrayResult);
             expect(writeIntArrayResult == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_4200: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_4200: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_INTARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_4200: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_4200: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 var shortArryDataReply = result.reply.readIntArray();
-                console.log("SUB_Softbus_IPC_MessageParcel_4200: run readByteArray is success, result is "
+                console.info("SUB_Softbus_IPC_MessageParcel_4200: run readByteArray is success, result is "
                 + shortArryDataReply);
                 expect(shortArryDataReply[0] == intArryData[0]).assertTrue();
                 expect(shortArryDataReply[1] == intArryData[1]).assertTrue();
@@ -577,9 +577,9 @@ describe('ActsRpcClientJsTest', function(){
 
             data.reclaim();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_4200: error " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_4200: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_4200---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_4200---------------------------");
     });
 
     /*
@@ -589,29 +589,29 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_4300", 0, async function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_4300---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_4300---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_4300: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_4300: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             var intArryData = [-2147483649, 0, 1, 2, 2147483647];
             var writeIntArrayResult = data.writeIntArray(intArryData);
-            console.log("SUB_Softbus_IPC_MessageParcel_4300: run writeShortArray success, result is "
+            console.info("SUB_Softbus_IPC_MessageParcel_4300: run writeShortArray success, result is "
             + writeIntArrayResult);
             expect(writeIntArrayResult == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_4300: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_4300: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_INTARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_4300: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_4300: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 var shortArryDataReply = result.reply.readIntArray();
-                console.log("SUB_Softbus_IPC_MessageParcel_4300: run readByteArray is success, result is "
+                console.info("SUB_Softbus_IPC_MessageParcel_4300: run readByteArray is success, result is "
                 + shortArryDataReply);
                 expect(shortArryDataReply[0] == 2147483647).assertTrue();
                 expect(shortArryDataReply[1] == intArryData[1]).assertTrue();
@@ -622,9 +622,9 @@ describe('ActsRpcClientJsTest', function(){
 
             data.reclaim();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_4300: error " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_4300: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_4300---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_4300---------------------------");
     });
 
     /*
@@ -635,30 +635,30 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_4400", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_4400---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_4400---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_4400: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_4400: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             var floatArryData = [1.2, 1.3, 1.4];
             var writeShortArrayResult = data.writeFloatArray(floatArryData);
-            console.log("SUB_Softbus_IPC_MessageParcel_4400: run writeFloatArray success, result is "
+            console.info("SUB_Softbus_IPC_MessageParcel_4400: run writeFloatArray success, result is "
             + writeShortArrayResult);
             expect(writeShortArrayResult == true).assertTrue();
 
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_4400: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_4400: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_FLOATARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_4400: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_4400: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 var floatArryDataReply = result.reply.readFloatArray();
-                console.log("SUB_Softbus_IPC_MessageParcel_4400: run readFloatArray is success, floatArryDataReply is "
+                console.info("SUB_Softbus_IPC_MessageParcel_4400: run readFloatArray is success, floatArryDataReply is "
                 + floatArryDataReply);
                 expect(floatArryDataReply[0] == floatArryData[0]).assertTrue();
                 expect(floatArryDataReply[1] == floatArryData[1]).assertTrue();
@@ -669,9 +669,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_4400: error " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_4400: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_4400---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_4400---------------------------");
     });
 
     /*
@@ -682,30 +682,30 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_4500", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_4500---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_4500---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_4500: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_4500: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             var floatArryData = [1.2, 1.3, 1.4]
             var writeShortArrayResult = data.writeFloatArray(floatArryData);
-            console.log("SUB_Softbus_IPC_MessageParcel_4500: run writeFloatArray success, result is "
+            console.info("SUB_Softbus_IPC_MessageParcel_4500: run writeFloatArray success, result is "
             + writeShortArrayResult);
             expect(writeShortArrayResult == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_4500: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_4500: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_FLOATARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_4500: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_4500: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 var newArr = []
                 result.reply.readFloatArray(newArr);
-                console.log("SUB_Softbus_IPC_MessageParcel_4500: readFloatArray is success, floatArryDataReply is "
+                console.info("SUB_Softbus_IPC_MessageParcel_4500: readFloatArray is success, floatArryDataReply is "
                 + newArr);
                 expect(newArr[0] == floatArryData[0]).assertTrue();
                 expect(newArr[1] == floatArryData[1]).assertTrue();
@@ -716,9 +716,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_4500: error " +error);
+            console.info("SUB_Softbus_IPC_MessageParcel_4500: error " +error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_4500---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_4500---------------------------");
     });
 
     /*
@@ -728,29 +728,29 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_4600", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_4600---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_4600---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_4600: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_4600: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             var floatArryData = [-3.40E+38, 1.3, 3.40E+38];
             var writeShortArrayResult = data.writeFloatArray(floatArryData);
-            console.log("SUB_Softbus_IPC_MessageParcel_4600: run writeFloatArray success, result is "
+            console.info("SUB_Softbus_IPC_MessageParcel_4600: run writeFloatArray success, result is "
             + writeShortArrayResult);
             expect(writeShortArrayResult == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_4600: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_4600: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_FLOATARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_4600: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_4600: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 var newArr = result.reply.readFloatArray();
-                console.log("SUB_Softbus_IPC_MessageParcel_4600: run readFloatArray is success, floatArryDataReply is "
+                console.info("SUB_Softbus_IPC_MessageParcel_4600: run readFloatArray is success, floatArryDataReply is "
                 + newArr);
                 expect(newArr[0] == floatArryData[0]).assertTrue();
                 expect(newArr[1] == floatArryData[1]).assertTrue();
@@ -760,9 +760,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_4600: error " +error);
+            console.info("SUB_Softbus_IPC_MessageParcel_4600: error " +error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_4600---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_4600---------------------------");
     });
 
     /*
@@ -772,29 +772,29 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_4700", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_4600---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_4600---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_4700: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_4700: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             var floatArryData = [-4.40E+38, 1.3, 3.40E+38];
             var writeShortArrayResult = data.writeFloatArray(floatArryData);
-            console.log("SUB_Softbus_IPC_MessageParcel_4700: run writeFloatArray success, result is "
+            console.info("SUB_Softbus_IPC_MessageParcel_4700: run writeFloatArray success, result is "
             + writeShortArrayResult);
             expect(writeShortArrayResult == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_4700: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_4700: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_FLOATARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_4700: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_4700: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 var newArr = result.reply.readFloatArray();
-                console.log("SUB_Softbus_IPC_MessageParcel_4700: run readFloatArray is success, floatArryDataReply is "
+                console.info("SUB_Softbus_IPC_MessageParcel_4700: run readFloatArray is success, floatArryDataReply is "
                 + newArr);
                 expect(newArr[0] == floatArryData[0]).assertTrue();
                 expect(newArr[1] == floatArryData[1]).assertTrue();
@@ -804,9 +804,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_4600: error " +error);
+            console.info("SUB_Softbus_IPC_MessageParcel_4600: error " +error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_4600---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_4600---------------------------");
     });
 
 
@@ -818,29 +818,29 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_4800", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_4800---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_4800---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_4800: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_4800: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             var short = 8;
             var writeShor = data.writeShort(short);
-            console.log("SUB_Softbus_IPC_MessageParcel_4800: run writeShort success, writeShor is " + writeShor);
+            console.info("SUB_Softbus_IPC_MessageParcel_4800: run writeShort success, writeShor is " + writeShor);
             expect(writeShor == true).assertTrue();
 
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_4800: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_4800: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_SHORT, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_4800: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_4800: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 var readShort = result.reply.readShort();
-                console.log("SUB_Softbus_IPC_MessageParcel_4800: run readFloatArray is success, readShort is "
+                console.info("SUB_Softbus_IPC_MessageParcel_4800: run readFloatArray is success, readShort is "
                 + readShort);
                 expect(readShort == short).assertTrue();
             });
@@ -849,9 +849,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_4800: error " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_4800: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_4800---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_4800---------------------------");
     });
 
     /*
@@ -861,10 +861,10 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_4900", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_4900---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_4900---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_4900: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_4900: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
@@ -877,10 +877,10 @@ describe('ActsRpcClientJsTest', function(){
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_4900: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_4900: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_SHORT_MULTI, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_4900: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_4900: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 expect(result.reply.readShort() == -32768).assertTrue();
@@ -894,9 +894,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_4800: error " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_4800: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_4800---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_4800---------------------------");
     });
 
     /*
@@ -906,10 +906,10 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_5000", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_5000---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_5000---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_5000: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_5000: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
@@ -921,10 +921,10 @@ describe('ActsRpcClientJsTest', function(){
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_5000: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_5000: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_SHORT_MULTI, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_5000: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_5000: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 expect(result.reply.readShort() == 32767).assertTrue();
@@ -938,9 +938,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_5000: error " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_5000: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_5000---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_5000---------------------------");
     });
 
     /*
@@ -951,29 +951,29 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_5100", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_5100---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_5100---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_5100: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_5100: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             var short = 10000;
             var writelong = data.writeLong(short);
-            console.log("SUB_Softbus_IPC_MessageParcel_5100: run writeLong success, writelong is " + writelong);
+            console.info("SUB_Softbus_IPC_MessageParcel_5100: run writeLong success, writelong is " + writelong);
             expect(writelong == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_5100: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_5100: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_LONG, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_5100: run sendRequest success, result is "
+                console.info("SUB_Softbus_IPC_MessageParcel_5100: run sendRequest success, result is "
                              + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 var readlong = result.reply.readLong();
-                console.log("SUB_Softbus_IPC_MessageParcel_5100: run readLong is success, readlong is " + readlong);
+                console.info("SUB_Softbus_IPC_MessageParcel_5100: run readLong is success, readlong is " + readlong);
                 expect(readlong == short).assertTrue();
             });
 
@@ -981,9 +981,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_5100: error " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_5100: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_5100---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_5100---------------------------");
     });
 
     /*
@@ -993,38 +993,38 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_5200", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_5200---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_5200---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_5200: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_5200: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             var short = 2147483647;
             var writelong = data.writeLong(short);
-            console.log("SUB_Softbus_IPC_MessageParcel_5200: run writeLong success, writelong is " + writelong);
+            console.info("SUB_Softbus_IPC_MessageParcel_5200: run writeLong success, writelong is " + writelong);
             expect(writelong == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_5200: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_5200: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_LONG, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_5200: run sendRequest success, result is "
+                console.info("SUB_Softbus_IPC_MessageParcel_5200: run sendRequest success, result is "
                 + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 var readlong = result.reply.readLong();
-                console.log("SUB_Softbus_IPC_MessageParcel_5200: run readLong is success, readlong is " + readlong);
+                console.info("SUB_Softbus_IPC_MessageParcel_5200: run readLong is success, readlong is " + readlong);
                 expect(readlong == short).assertTrue();
             });
 
             data.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_5200: error " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_5200: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_5200---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_5200---------------------------");
     });
 
     /*
@@ -1034,38 +1034,38 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_5300", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_5300---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_5300---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_5300: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_5300: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             var short = 214748364887;
             var writelong = data.writeLong(short);
-            console.log("SUB_Softbus_IPC_MessageParcel_5300: run writeLong success, writelong is " + writelong);
+            console.info("SUB_Softbus_IPC_MessageParcel_5300: run writeLong success, writelong is " + writelong);
             expect(writelong == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_5300: gIRemoteObject undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_5300: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_LONG, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_5300: run sendRequest success, result is "
+                console.info("SUB_Softbus_IPC_MessageParcel_5300: run sendRequest success, result is "
                 + result.errCode);
                 expect(result.errCode == 0).assertTrue();
 
                 var readlong = result.reply.readLong();
-                console.log("SUB_Softbus_IPC_MessageParcel_5300: run readLong is success, readlong is " + readlong);
+                console.info("SUB_Softbus_IPC_MessageParcel_5300: run readLong is success, readlong is " + readlong);
                 expect(readlong == short).assertTrue();
             });
 
             data.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_5300: error " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_5300: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_5300---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_5300---------------------------");
     });
 
 
@@ -1076,25 +1076,25 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_5400", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_5400---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_5400---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_5400: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_5400: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             var token = 10.2;
             var result = data.writeDouble(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_5400:run writeDouble success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_5400:run writeDouble success, result is " + result);
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_5400: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_5400: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_DOUBLE, data, reply, option).then((result) => {
-                    console.log("SUB_Softbus_IPC_MessageParcel_5400: run sendRequest success, result is "
+                    console.info("SUB_Softbus_IPC_MessageParcel_5400: run sendRequest success, result is "
                                  + result.errCode);
                     var replyReadResult = reply.readDouble();
-                    console.log("SUB_Softbus_IPC_MessageParcel_5400: run replyReadResult is success," +
+                    console.info("SUB_Softbus_IPC_MessageParcel_5400: run replyReadResult is success," +
                     "replyReadResult is " + replyReadResult);
                     expect(replyReadResult == token).assertTrue();
                 });
@@ -1102,10 +1102,10 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_5400:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_5400:error = " + error);
         }
 
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_5400---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_5400---------------------------");
     });
 
     /*
@@ -1115,26 +1115,26 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_5500", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_5500---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_5500---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_5500: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_5500: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var token = 1.79E+308;
             var result = data.writeDouble(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_5500:run writeDouble success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_5500:run writeDouble success, result is " + result);
             expect(result == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_5400: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_5400: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_DOUBLE, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_5400: run sendRequest success, result is "
+                console.info("SUB_Softbus_IPC_MessageParcel_5400: run sendRequest success, result is "
                 + result.errCode);
                 var replyReadResult = reply.readDouble();
-                console.log("SUB_Softbus_IPC_MessageParcel_5400: run replyReadResult is success," +
+                console.info("SUB_Softbus_IPC_MessageParcel_5400: run replyReadResult is success," +
                 "replyReadResult is " + replyReadResult);
                 expect(replyReadResult == token).assertTrue();
             });
@@ -1142,9 +1142,9 @@ describe('ActsRpcClientJsTest', function(){
             data.reclaim();
             reply.reclaim();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_5500:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_5500:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_5500---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_5500---------------------------");
     });
 
     /*
@@ -1154,23 +1154,23 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_5600", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_5600---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_5600---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_5600: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_5600: create object successfully.");
 
             var flag = false;
             var token = "1.79E+465312156";
             var result = data.writeDouble(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_5600:run writeDouble success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_5600:run writeDouble success, result is " + result);
 
             flag = true;
             data.reclaim();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_5600:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_5600:error = " + error);
             expect(flag == false).assertTrue();
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_5600---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_5600---------------------------");
     });
 
     /*
@@ -1181,25 +1181,25 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_5700", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_5700---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_5700---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_5700: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_5700: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var token = true;
             var result = data.writeBoolean(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_5700:run writeBoolean success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_5700:run writeBoolean success, result is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_5700: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_5700: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_BOOLEAN, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_5700: run sendRequest success, result is "
+                console.info("SUB_Softbus_IPC_MessageParcel_5700: run sendRequest success, result is "
                              + result.errCode);
                 var replyReadResult = result.reply.readBoolean();
-                console.log("SUB_Softbus_IPC_MessageParcel_5700: run readBoolean is success," +
+                console.info("SUB_Softbus_IPC_MessageParcel_5700: run readBoolean is success," +
                 "result is " + replyReadResult);
                 expect(replyReadResult == token).assertTrue();
             });
@@ -1207,9 +1207,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_5700:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_5700:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_5700---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_5700---------------------------");
     });
 
     /*
@@ -1219,21 +1219,21 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_5800", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_5800---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_5800---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_5800: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_5800: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var token = 9;
             var result = data.writeBoolean(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_5800:run writeBoolean success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_5800:run writeBoolean success, result is " + result);
             expect(result == false).assertTrue();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_5800:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_5800:error = " + error);
         }
         data.reclaim();
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_5800---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_5800---------------------------");
     });
 
     /*
@@ -1244,24 +1244,24 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_5900", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_5900---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_5900---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_5900: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_5900: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
-            var token = 'a';
+            var token = 10;
             var result = data.writeChar(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_5900:run writeChar success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_5900:run writeChar success, result is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_5900: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_5900: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_CHAR, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_5900: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_5900: sendRequest success, result is " + result.errCode);
                 var replyReadResult = result.reply.readChar();
-                console.log("SUB_Softbus_IPC_MessageParcel_5900: run readChar is success," +
+                console.info("SUB_Softbus_IPC_MessageParcel_5900: run readChar is success," +
                 "result is " + replyReadResult);
                 expect(replyReadResult == token).assertTrue();
             });
@@ -1270,9 +1270,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_5900:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_5900:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_5900---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_5900---------------------------");
     });
 
     /*
@@ -1282,24 +1282,24 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_6000", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_6000---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_6000---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_6000: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_6000: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var token = 'ades';
             var result = data.writeChar(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_6000:run writeChar success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_6000:run writeChar success, result is " + result);
             expect(result == true).assertTrue()
             var readresult = data.readChar();
             expect(readresult == 'a').assertTrue()
 
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_6000:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_6000:error = " + error);
         }
         data.reclaim();
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_6000---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_6000---------------------------");
     });
 
     /*
@@ -1310,24 +1310,24 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_6100", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_6100---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_6100---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_6100: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_6100: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var token = 'weqea';
             var result = data.writeString(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_6100:run writeString success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_6100:run writeString success, result is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_6100: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_6100: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_STRING, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_6100: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_6100: sendRequest success, result is " + result.errCode);
                 var replyReadResult = result.reply.readString();
-                console.log("SUB_Softbus_IPC_MessageParcel_6100: run readString is success," +
+                console.info("SUB_Softbus_IPC_MessageParcel_6100: run readString is success," +
                 "result is " + replyReadResult);
                 expect(replyReadResult == token).assertTrue();
             });
@@ -1336,9 +1336,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_6100:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_6100:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_6100---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_6100---------------------------");
     });
 
     /*
@@ -1348,23 +1348,23 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_6200", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_6200---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_6200---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_6200: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_6200: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var token = 123;
             var result = data.writeString(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_6200:run writeString success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_6200:run writeString success, result is " + result);
             expect(result == false).assertTrue();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_6200:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_6200:error = " + error);
         }
         sleep(2000)
         data.reclaim();
         reply.reclaim();
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_6200---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_6200---------------------------");
     });
 
     /*
@@ -1375,24 +1375,24 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_6300", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_6300---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_6300---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_6300: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_6300: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var token = 2;
             var result = data.writeByte(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_6300:run writeByte success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_6300:run writeByte success, result is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_6300: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_6300: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_BYTE, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_6300: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_6300: sendRequest success, result is " + result.errCode);
                 var replyReadResult = result.reply.readByte();
-                console.log("SUB_Softbus_IPC_MessageParcel_6300: run readByte is success," +
+                console.info("SUB_Softbus_IPC_MessageParcel_6300: run readByte is success," +
                 "result is " + replyReadResult);
                 expect(replyReadResult == token).assertTrue();
             });
@@ -1401,9 +1401,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_6300:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_6300:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_6300---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_6300---------------------------");
     });
 
     /*
@@ -1413,10 +1413,10 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_6400", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_6400---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_6400---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_6400: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_6400: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
@@ -1427,10 +1427,10 @@ describe('ActsRpcClientJsTest', function(){
             expect(data.writeByte(127) == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_6400: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_6400: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_BYTE_MULTI, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_6400: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_6400: sendRequest success, result is " + result.errCode);
 
                 expect(reply.readByte() == -128).assertTrue();
                 expect(reply.readByte() == 0).assertTrue();
@@ -1443,9 +1443,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_6400:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_6400:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_6400---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_6400---------------------------");
     });
 
     /*
@@ -1455,10 +1455,10 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_6500", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_6500---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_6500---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_6500: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_6500: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
@@ -1469,10 +1469,10 @@ describe('ActsRpcClientJsTest', function(){
             expect(data.writeByte(128) == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_6500: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_6500: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_BYTE_MULTI, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_6500: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_6500: sendRequest success, result is " + result.errCode);
 
                 expect(reply.readByte() == 127).assertTrue();
                 expect(reply.readByte() == 0).assertTrue();
@@ -1485,9 +1485,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_6400:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_6400:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_6400---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_6400---------------------------");
     });
 
     /*
@@ -1498,24 +1498,24 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_6600", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_6600---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_6600---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_6600: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_6600: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var token = 2;
             var result = data.writeInt(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_6600:run writeInt success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_6600:run writeInt success, result is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_6600: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_6600: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_INT, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_6600: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_6600: sendRequest success, result is " + result.errCode);
                 var replyReadResult = result.reply.readInt();
-                console.log("SUB_Softbus_IPC_MessageParcel_6600: run readInt is success," +
+                console.info("SUB_Softbus_IPC_MessageParcel_6600: run readInt is success," +
                 "result is " + replyReadResult);
                 expect(replyReadResult == token).assertTrue();
             });
@@ -1524,10 +1524,10 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_6600:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_6600:error = " + error);
         }
 
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_6600---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_6600---------------------------");
     });
 
     /*
@@ -1537,10 +1537,10 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_6700", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_6700---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_6700---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_6700: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_6700: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
@@ -1552,10 +1552,10 @@ describe('ActsRpcClientJsTest', function(){
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_6700: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_6700: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_INT_MULTI, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_6700: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_6700: sendRequest success, result is " + result.errCode);
                 expect(result.reply.readInt() == -2147483648).assertTrue();
                 expect(result.reply.readInt() == 0).assertTrue();
                 expect(result.reply.readInt() == 1).assertTrue();
@@ -1567,10 +1567,10 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_6700:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_6700:error = " + error);
         }
 
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_6700---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_6700---------------------------");
     });
 
     /*
@@ -1580,10 +1580,10 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_6800", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_6700---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_6700---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_6800: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_6800: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
@@ -1595,10 +1595,10 @@ describe('ActsRpcClientJsTest', function(){
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_6800: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_6800: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_INT_MULTI, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_6800: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_6800: sendRequest success, result is " + result.errCode);
                 expect(result.reply.readInt() == 2147483647).assertTrue();
                 expect(result.reply.readInt() == 0).assertTrue();
                 expect(result.reply.readInt() == 1).assertTrue();
@@ -1610,10 +1610,10 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_6800:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_6800:error = " + error);
         }
 
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_6800---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_6800---------------------------");
     });
 
     /*
@@ -1624,24 +1624,24 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_6900", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_6900---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_6900---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_6900: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_6900: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var token = 2.2;
             var result = data.writeFloat(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_6900:run writeDouble success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_6900:run writeDouble success, result is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_6900: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_6900: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_FLOAT, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_6900: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_6900: sendRequest success, result is " + result.errCode);
                 var replyReadResult = result.reply.readFloat();
-                console.log("SUB_Softbus_IPC_MessageParcel_6900: run readFloat is success," +
+                console.info("SUB_Softbus_IPC_MessageParcel_6900: run readFloat is success," +
                 "result is " + replyReadResult);
                 expect(replyReadResult == token).assertTrue();
             });
@@ -1650,9 +1650,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_6900:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_6900:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_6900---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_6900---------------------------");
     });
 
     /*
@@ -1662,24 +1662,24 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_7000", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_7000---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_7000---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_7000: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_7000: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var token = 3.4E+38;
             var result = data.writeFloat(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_7000:run writeFloat success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_7000:run writeFloat success, result is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_7000: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_7000: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_FLOAT, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_7000: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_7000: sendRequest success, result is " + result.errCode);
                 var newReadResult = result.reply.readFloat();
-                console.log("SUB_Softbus_IPC_MessageParcel_7000: readFloat result is " + newReadResult);
+                console.info("SUB_Softbus_IPC_MessageParcel_7000: readFloat result is " + newReadResult);
                 expect(newReadResult == token).assertTrue();
             });
 
@@ -1687,10 +1687,10 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_7000:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_7000:error = " + error);
         }
 
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_7000---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_7000---------------------------");
     });
 
     /*
@@ -1700,20 +1700,20 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_7100", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_7100---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_7100---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_7100: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_7100: create object successfully.");
 
             var token = 'a';
             var result = data.writeFloat(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_7100:run writeFloat success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_7100:run writeFloat success, result is " + result);
             expect(result == false).assertTrue();
             data.reclaim();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_7100:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_7100:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_7100---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_7100---------------------------");
     });
 
     /*
@@ -1723,28 +1723,28 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_7200", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_7200---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_7200---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_7200: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_7200: create object successfully.");
 
             var Capacity = data.getRawDataCapacity()
-            console.log("SUB_Softbus_IPC_MessageParcel_7200:run Capacity success, Capacity is " + Capacity);
+            console.info("SUB_Softbus_IPC_MessageParcel_7200:run Capacity success, Capacity is " + Capacity);
 
-            var rawdata = new Int8Array([1, 2, 3])
+            var rawdata = [1, 2, 3]
             var result = data.writeRawData(rawdata, rawdata.length);
-            console.log("SUB_Softbus_IPC_MessageParcel_7200:run writeRawData success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_7200:run writeRawData success, result is " + result);
             expect(result == true).assertTrue();
             var newReadResult = data.readRawData(rawdata.length)
-            console.log("SUB_Softbus_IPC_MessageParcel_7200:run readRawData success, result is " + newReadResult);
+            console.info("SUB_Softbus_IPC_MessageParcel_7200:run readRawData success, result is " + newReadResult);
             expect(newReadResult[0] == rawdata[0]).assertTrue();
             expect(newReadResult[1] == rawdata[1]).assertTrue();
             expect(newReadResult[2] == rawdata[2]).assertTrue();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_7200:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_7200:error = " + error);
         }
         data.reclaim();
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_7200---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_7200---------------------------");
     });
 
     /*
@@ -1754,26 +1754,26 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_7300", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_7300---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_7300---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_7300: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_7300: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var Capacity = data.getRawDataCapacity()
-            console.log("SUB_Softbus_IPC_MessageParcel_7300:run Capacity success, result is " + Capacity);
-            var token = new Int8Array([2,1,4,3,129]) ;
+            console.info("SUB_Softbus_IPC_MessageParcel_7300:run Capacity success, result is " + Capacity);
+            var token = [2,1,4,3,129] ;
             var result = data.writeRawData(token, 149000000);
-            console.log("SUB_Softbus_IPC_MessageParcel_7300:run writeRawData success, result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_7300:run writeRawData success, result is " + result);
             expect(result == false).assertTrue();
             data.reclaim();
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_7300:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_7300:error = " + error);
         }
 
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_7300---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_7300---------------------------");
     });
 
     /*
@@ -1783,21 +1783,21 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_7400", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_7400---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_7400---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_7400: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_7400: create object successfully.");
 
             let testRemoteObject = new TestRemoteObject("testObject");
             var result = data.writeRemoteObject(testRemoteObject);
-            console.log("SUB_Softbus_IPC_MessageParcel_7400: result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_7400: result is " + result);
             expect(result == true).assertTrue();
             data.readRemoteObject()           
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_7400:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_7400:error = " + error);
         }
         data.reclaim();
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_7400---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_7400---------------------------");
     });
 
     /*
@@ -1807,20 +1807,20 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_7500", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_7500---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_7500---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_7500: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_7500: create object successfully.");
 
             var token = {}
             var result = data.writeRemoteObject(token);
-            console.log("SUB_Softbus_IPC_MessageParcel_7500: result is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_7500: result is " + result);
             expect(result == false).assertTrue();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_7500:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_7500:error = " + error);
         }
         data.reclaim();
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_7500---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_7500---------------------------");
     });
 
     /*
@@ -1831,26 +1831,26 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_7600", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_7600---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_7600---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_7600: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_7600: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             let sequenceable = new MySequenceable(1, "aaa");
             let result = data.writeSequenceable(sequenceable);
-            console.log("SUB_Softbus_IPC_MessageParcel_7600: writeSequenceable is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_7600: writeSequenceable is " + result);
             let ret = new MySequenceable(0, "");
 
             let result2 = data.readSequenceable(ret);
-            console.log("SUB_Softbus_IPC_MessageParcel_7600: readSequenceable is " + result2);
+            console.info("SUB_Softbus_IPC_MessageParcel_7600: readSequenceable is " + result2);
             expect(result2 == true).assertTrue();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_7600:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_7600:error = " + error);
         }
         data.reclaim();
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_7600---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_7600---------------------------");
     });
 
     /*
@@ -1861,26 +1861,26 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_7700", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_7700---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_7700---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_7700: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_7700: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             data.writeNoException();
-            console.log("SUB_Softbus_IPC_MessageParcel_7700: run writeNoException success");
+            console.info("SUB_Softbus_IPC_MessageParcel_7700: run writeNoException success");
             expect(data.writeInt(6) == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_7700: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_7700: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_NOEXCEPTION, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_7700: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_7700: sendRequest success, result is " + result.errCode);
                 result.reply.readException()
                 var replyData = result.reply.readInt();
-                console.log("SUB_Softbus_IPC_MessageParcel_7700: readResult is " + replyData);
+                console.info("SUB_Softbus_IPC_MessageParcel_7700: readResult is " + replyData);
                 expect(replyData == 6).assertTrue();
             });
 
@@ -1888,9 +1888,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_7700:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_7700:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_7700---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_7700---------------------------");
     });
 
     /*
@@ -1901,35 +1901,35 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_7800", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_7800---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_7800---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_7800: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_7800: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
             data.writeNoException();
-            console.log("SUB_Softbus_IPC_MessageParcel_7800: run writeNoException success");
+            console.info("SUB_Softbus_IPC_MessageParcel_7800: run writeNoException success");
             expect(data.writeInt(1232222223444) == true).assertTrue();
 
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_7800: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_7800: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_NOEXCEPTION, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_7800: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_7800: sendRequest success, result is " + result.errCode);
                 result.reply.readException()
                 var replyData = result.reply.readInt();
-                console.log("SUB_Softbus_IPC_MessageParcel_7800: readResult is " + replyData);
+                console.info("SUB_Softbus_IPC_MessageParcel_7800: readResult is " + replyData);
             });
 
             data.reclaim();
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_7800:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_7800:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_7800---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_7800---------------------------");
     });
 
     /*
@@ -1939,25 +1939,25 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_7900", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_7900---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_7900---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_7900: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_7900: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var sequenceable = new MySequenceable(1, "aaa");
             var result = data.writeSequenceable(sequenceable);
-            console.log("SUB_Softbus_IPC_MessageParcel_7900: writeSequenceable is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_7900: writeSequenceable is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_7900: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_7900: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_SEQUENCEABLE, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_7900: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_7900: sendRequest success, result is " + result.errCode);
                 var s = new MySequenceable(null,null)
                 var resultReply = result.reply.readSequenceable(s);
-                console.log("SUB_Softbus_IPC_MessageParcel_7900: run readSequenceable is success,result is "
+                console.info("SUB_Softbus_IPC_MessageParcel_7900: run readSequenceable is success,result is "
                              + resultReply);
                 expect(s.str == sequenceable.str).assertTrue();
                 expect(s.num == sequenceable.num).assertTrue();
@@ -1967,10 +1967,10 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_7900:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_7900:error = " + error);
         }
 
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_7900---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_7900---------------------------");
     });
 
     /*
@@ -1980,25 +1980,25 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_8000", 0, async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_8000---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_8000---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_8000: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_8000: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var sequenceable = new MySequenceable(1, "aaa");
             var result = data.writeSequenceable(sequenceable);
-            console.log("SUB_Softbus_IPC_MessageParcel_8000: writeSequenceable is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_8000: writeSequenceable is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_8000: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_8000: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_SEQUENCEABLE, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_8000: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_8000: sendRequest success, result is " + result.errCode);
                 var s = new MySequenceable(null,null)
                 var replyReadResult = reply.readSequenceable(s);
-                console.log("SUB_Softbus_IPC_MessageParcel_8000: run readSequenceable is success," +
+                console.info("SUB_Softbus_IPC_MessageParcel_8000: run readSequenceable is success," +
                 "result is " + replyReadResult);
                 expect(replyReadResult == true).assertTrue();
             });
@@ -2007,9 +2007,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_8000:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_8000:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_8000---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_8000---------------------------");
     });
 
     /*
@@ -2019,25 +2019,25 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_8100", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_8100---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_8100---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_8100: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_8100: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var sequenceable = 10;
             var result = data.writeInt(sequenceable);
-            console.log("RpcClient: writeInt is " + result);
+            console.info("RpcClient: writeInt is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_8100: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_8100: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_INT, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_8100: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_8100: sendRequest success, result is " + result.errCode);
                 var s = new MySequenceable(0,null)
                 var replyReadResult = result.reply.readSequenceable(s);
-                console.log("SUB_Softbus_IPC_MessageParcel_8100: run readSequenceable is success," +
+                console.info("SUB_Softbus_IPC_MessageParcel_8100: run readSequenceable is success," +
                 "result is " + replyReadResult);
             });
 
@@ -2045,10 +2045,10 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_8100:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_8100:error = " + error);
         }
 
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_8100---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_8100---------------------------");
     });
 
     /*
@@ -2059,25 +2059,25 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_8200", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_8200---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_8200---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_8200: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_8200: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var sequenceable = new MySequenceable(2, "abc");
             var result = data.writeSequenceable(sequenceable);
-            console.log("RpcClient: writeSequenceable is " + result);
+            console.info("RpcClient: writeSequenceable is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_8200: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_8200: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_SEQUENCEABLE, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_8200: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_8200: sendRequest success, result is " + result.errCode);
                 var s = new MySequenceable(null,null)
                 var replyReadResult = result.reply.readSequenceable(s);
-                console.log("SUB_Softbus_IPC_MessageParcel_8200: run readSequenceable is success," +
+                console.info("SUB_Softbus_IPC_MessageParcel_8200: run readSequenceable is success," +
                 "result is " + replyReadResult);
                 expect(s.str == sequenceable.str).assertTrue();
                 expect(s.num == sequenceable.num).assertTrue();
@@ -2087,10 +2087,10 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_8200:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_8200:error = " + error);
         }
 
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_8200---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_8200---------------------------");
     });
 
     /*
@@ -2101,27 +2101,27 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_8300", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_8300---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_8300---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_8300: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_8300: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var sequenceable = [new MySequenceable(1, "aaa"),
                                 new MySequenceable(2, "bbb"), new MySequenceable(3, "ccc")];
             var result = data.writeSequenceableArray(sequenceable);
-            console.log("SUB_Softbus_IPC_MessageParcel_8300: writeSequenceableArray is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_8300: writeSequenceableArray is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_8300: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_8300: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_SEQUENCEABLEARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_8300: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_8300: sendRequest success, result is " + result.errCode);
                 var s = [new MySequenceable(null, null), new MySequenceable(null, null),
                          new MySequenceable(null, null)];
                 result.reply.readSequenceableArray(s);
-                console.log("SUB_Softbus_IPC_MessageParcel_8300: run readSequenceableArray is success.");
+                console.info("SUB_Softbus_IPC_MessageParcel_8300: run readSequenceableArray is success.");
                 for (let i = 0; i < s.length; i++) {
                     expect(s[i].str).assertEqual(sequenceable[i].str)
                     expect(s[i].num).assertEqual(sequenceable[i].num)
@@ -2132,10 +2132,10 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_8300:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_8300:error = " + error);
         }
 
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_8300---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_8300---------------------------");
     });
 
     /*
@@ -2146,27 +2146,27 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_8400", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_8400---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_8400---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_8400: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_8400: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             var sequenceable = [new MySequenceable(4, "abc"),
             new MySequenceable(5, "bcd"), new MySequenceable(6, "cef")];
             var result = data.writeSequenceableArray(sequenceable);
-            console.log("SUB_Softbus_IPC_MessageParcel_8400: writeSequenceable is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_8400: writeSequenceable is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_8400: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_8400: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_SEQUENCEABLEARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_8400: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_8400: sendRequest success, result is " + result.errCode);
                 var s = [new MySequenceable(null, null),
                          new MySequenceable(null, null), new MySequenceable(null, null)]
                 result.reply.readSequenceableArray(s);
-                console.log("SUB_Softbus_IPC_MessageParcel_8400: run readSequenceableArray is success.");
+                console.info("SUB_Softbus_IPC_MessageParcel_8400: run readSequenceableArray is success.");
                 for (let i = 0; i < s.length; i++) {
                     expect(s[i].str).assertEqual(sequenceable[i].str)
                     expect(s[i].num).assertEqual(sequenceable[i].num)
@@ -2177,10 +2177,10 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_8400:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_8400:error = " + error);
         }
 
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_8400---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_8400---------------------------");
     });
 
     /*
@@ -2191,19 +2191,19 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_8500", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_8500---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_8500---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_8500: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_8500: create object successfully.");
             var sequenceable = 1;
             var result = data.writeSequenceableArray(sequenceable);
-            console.log("SUB_Softbus_IPC_MessageParcel_8500: writeSequenceable is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_8500: writeSequenceable is " + result);
             expect(result == false).assertTrue();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_8500:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_8500:error = " + error);
         }
         data.reclaim();
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_8500---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_8500---------------------------");
     });
 
     /*
@@ -2214,7 +2214,7 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_8600", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_8600---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_8600---------------------------");
         try{
             let count = 0
             function checkResult(num, str) {
@@ -2227,7 +2227,7 @@ describe('ActsRpcClientJsTest', function(){
                 }
             }
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_8600: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_8600: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
@@ -2236,14 +2236,14 @@ describe('ActsRpcClientJsTest', function(){
                                     new TestListener("rpcListener2", checkResult),
                                     new TestListener("rpcListener3", checkResult)];
             var result = data.writeRemoteObjectArray(listeners);
-            console.log("SUB_Softbus_IPC_MessageParcel_8600: writeRemoteObjectArray is " + result);
+            console.info("SUB_Softbus_IPC_MessageParcel_8600: writeRemoteObjectArray is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_8600: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_8600: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_REMOTEOBJECTARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_8600: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_8600: sendRequest success, result is " + result.errCode);
                 expect(result.errCode).assertEqual(0);
                 expect(result.code).assertEqual(CODE_WRITE_REMOTEOBJECTARRAY);
                 expect(result.data).assertEqual(data);
@@ -2254,10 +2254,10 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_8600:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_8600:error = " + error);
         }
 
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_8600---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_8600---------------------------");
     });
 
     /*
@@ -2268,7 +2268,7 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_8700", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_8700---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_8700---------------------------");
         try{
             let count = 0
             function checkResult(num, str) {
@@ -2281,7 +2281,7 @@ describe('ActsRpcClientJsTest', function(){
                 }
             }
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_8700: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_8700: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             expect(data.writeInterfaceToken("rpcTestAbility")).assertTrue()
@@ -2289,14 +2289,14 @@ describe('ActsRpcClientJsTest', function(){
                              new TestListener("rpcListener2", checkResult),
                              new TestListener("rpcListener3", checkResult)];
             var result = data.writeRemoteObjectArray(listeners);
-            console.log("RpcClient: writeRemoteObjectArray is " + result);
+            console.info("RpcClient: writeRemoteObjectArray is " + result);
             expect(result == true).assertTrue();
             if (gIRemoteObject == undefined)
             {
-                console.log("SUB_Softbus_IPC_MessageParcel_8700: gIRemoteObject is undefined");
+                console.info("SUB_Softbus_IPC_MessageParcel_8700: gIRemoteObject is undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_REMOTEOBJECTARRAY, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_MessageParcel_8700: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_MessageParcel_8700: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
             });
 
@@ -2304,9 +2304,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_8700:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_8700:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_8700---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_8700---------------------------");
     });
 
     /*
@@ -2316,7 +2316,7 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_8800", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_8800---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_8800---------------------------");
         let context = FA.getContext()
         await context.getFilesDir()
             .then(async function(path) {
@@ -2349,7 +2349,7 @@ describe('ActsRpcClientJsTest', function(){
                         let buf2 = new ArrayBuffer(str.length * 2);
                         let byteRd2 = fileio.readSync(dupFd, buf2, {position:0,});
                         let content2 = String.fromCharCode.apply(null, new Uint8Array(buf2));
-                        console.log("dupFd bytes read: " + byteRd2 + ", content2: " + content2);
+                        console.info("dupFd bytes read: " + byteRd2 + ", content2: " + content2);
                         expect(content2).assertEqual(str + str)
                         rpc.MessageParcel.closeFileDescriptor(fd);
                         rpc.MessageParcel.closeFileDescriptor(dupFd);
@@ -2363,7 +2363,7 @@ describe('ActsRpcClientJsTest', function(){
                 }
             })
         done()
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_8800---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_8800---------------------------");
     });
 
     /*
@@ -2373,10 +2373,10 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_8900", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_8900---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_8900---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_8900: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_8900: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             expect(data.writeByte(2)).assertTrue()
@@ -2386,7 +2386,7 @@ describe('ActsRpcClientJsTest', function(){
             expect(data.writeFloat(1.2)).assertTrue()
             expect(data.writeDouble(10.2)).assertTrue()
             expect(data.writeBoolean(true)).assertTrue()
-            expect(data.writeChar('a')).assertTrue()
+            expect(data.writeChar(5)).assertTrue()
             expect(data.writeString("HelloWorld")).assertTrue()
             expect(data.writeSequenceable(new MySequenceable(1, "aaa"))).assertTrue()
 
@@ -2400,7 +2400,7 @@ describe('ActsRpcClientJsTest', function(){
                 expect(result.reply.readFloat()).assertEqual(1.2)
                 expect(result.reply.readDouble()).assertEqual(10.2)
                 expect(result.reply.readBoolean()).assertTrue()
-                expect(result.reply.readChar()).assertEqual('a')
+                expect(result.reply.readChar()).assertEqual(5)
                 expect(result.reply.readString()).assertEqual("HelloWorld")
                 let s = new MySequenceable(null, null)
                 expect(result.reply.readSequenceable(s)).assertTrue()
@@ -2411,9 +2411,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_8900:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_8900:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_8900---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_8900---------------------------");
     });
 
     /*
@@ -2424,10 +2424,10 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_9000", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_9000---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_9000---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_8900: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_8900: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             expect(data.writeByte(2)).assertTrue()
@@ -2437,7 +2437,7 @@ describe('ActsRpcClientJsTest', function(){
             expect(data.writeFloat(1.2)).assertTrue()
             expect(data.writeDouble(10.2)).assertTrue()
             expect(data.writeBoolean(true)).assertTrue()
-            expect(data.writeChar('a')).assertTrue()
+            expect(data.writeChar(5)).assertTrue()
             expect(data.writeString("HelloWorld")).assertTrue()
             expect(data.writeSequenceable(new MySequenceable(1, "aaa"))).assertTrue()
 
@@ -2451,7 +2451,7 @@ describe('ActsRpcClientJsTest', function(){
                 expect(result.reply.readFloat()).assertEqual(1.2)
                 expect(result.reply.readDouble()).assertEqual(10.2)
                 expect(result.reply.readBoolean()).assertTrue()
-                expect(result.reply.readChar()).assertEqual('a')
+                expect(result.reply.readChar()).assertEqual(5)
                 expect(result.reply.readString()).assertEqual("HelloWorld")
                 let s = new MySequenceable(null, null)
                 expect(result.reply.readSequenceable(s)).assertTrue()
@@ -2462,12 +2462,12 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_9000:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_9000:error = " + error);
         }
         sleep(2000)
         data.reclaim();
         reply.reclaim();
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_9000---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_9000---------------------------");
     });
 
     /*
@@ -2478,20 +2478,20 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_9100", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_9100---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_9100---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_9100: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_9100: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
-            expect(data.writeByteArray(new Int8Array([1, 2, 3]))).assertTrue();
+            expect(data.writeByteArray([1, 2, 3])).assertTrue();
             expect(data.writeShortArray([4, 5, 6])).assertTrue()
             expect(data.writeIntArray([7, 8, 9])).assertTrue()
             expect(data.writeLongArray([10, 11, 12])).assertTrue()
             expect(data.writeFloatArray([1.1, 1.2, 1.3])).assertTrue()
             expect(data.writeDoubleArray([2.1, 2.2, 2.3])).assertTrue()
             expect(data.writeBooleanArray([true, true, false])).assertTrue()
-            expect(data.writeCharArray(['a', 'b', 'c'])).assertTrue()
+            expect(data.writeCharArray([10, 20, 30])).assertTrue()
             expect(data.writeStringArray(['abc', 'seggg'])).assertTrue()
             let a = [new MySequenceable(1, "aaa"), new MySequenceable(2, "bbb"), new MySequenceable(3, "ccc")]
             expect(data.writeSequenceableArray(a)).assertTrue()
@@ -2504,7 +2504,7 @@ describe('ActsRpcClientJsTest', function(){
                 assertArrayElementEqual(result.reply.readFloatArray(), [1.1, 1.2, 1.3])
                 assertArrayElementEqual(result.reply.readDoubleArray(), [2.1, 2.2, 2.3])
                 assertArrayElementEqual(result.reply.readBooleanArray(), [true, true, false])
-                assertArrayElementEqual(result.reply.readCharArray(), ['a', 'b', 'c'])
+                assertArrayElementEqual(result.reply.readCharArray(), [10, 20, 30])
                 assertArrayElementEqual(result.reply.readStringArray(), ['abc', 'seggg'])
                 let b = [new MySequenceable(null, null), new MySequenceable(null, null),
                     new MySequenceable(null, null)]
@@ -2518,12 +2518,12 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_9100:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_9100:error = " + error);
         }
         sleep(2000)
         data.reclaim();
         reply.reclaim();
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_9100---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_9100---------------------------");
     });
 
     /*
@@ -2535,24 +2535,24 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageParcel_9200", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_9200---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_9200---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_MessageParcel_9200: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageParcel_9200: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
-            expect(data.writeByteArray(new Int8Array([1, 2, 3]))).assertTrue();
+            expect(data.writeByteArray([1, 2, 3])).assertTrue();
             expect(data.writeShortArray([4, 5, 6])).assertTrue()
             expect(data.writeIntArray([7, 8, 9])).assertTrue()
             expect(data.writeLongArray([10, 11, 12])).assertTrue()
             expect(data.writeFloatArray([1.1, 1.2, 1.3])).assertTrue()
             expect(data.writeDoubleArray([2.1, 2.2, 2.3])).assertTrue()
             expect(data.writeBooleanArray([true, true, false])).assertTrue()
-            expect(data.writeCharArray(['a', 'b', 'c'])).assertTrue()
+            expect(data.writeCharArray([10, 20, 30])).assertTrue()
             expect(data.writeStringArray(['abc', 'seggg'])).assertTrue()
             let a = [new MySequenceable(1, "aaa"), new MySequenceable(2, "bbb"), new MySequenceable(3, "ccc")]
             expect(data.writeSequenceableArray(a)).assertTrue()
-            await gIRemoteObject.sendRequest(CODE_ALL_ARRAY_TYPE, data, reply, option).then((result) => {
+            gIRemoteObject.sendRequest(CODE_ALL_ARRAY_TYPE, data, reply, option).then((result) => {
                 expect(result.errCode).assertEqual(0)
                 assertArrayElementEqual(result.reply.readByteArray(), [1, 2, 3])
                 assertArrayElementEqual(result.reply.readShortArray(), [4, 5, 6])
@@ -2561,7 +2561,7 @@ describe('ActsRpcClientJsTest', function(){
                 assertArrayElementEqual(result.reply.readFloatArray(), [1.1, 1.2, 1.3])
                 assertArrayElementEqual(result.reply.readDoubleArray(), [2.1, 2.2, 2.3])
                 assertArrayElementEqual(result.reply.readBooleanArray(), [true, true, false])
-                assertArrayElementEqual(result.reply.readCharArray(), ['a', 'b', 'c'])
+                assertArrayElementEqual(result.reply.readCharArray(), [10, 20, 30])
                 assertArrayElementEqual(result.reply.readStringArray(), ['abc', 'seggg'])
                 let b = [new MySequenceable(null, null), new MySequenceable(null, null),
                 new MySequenceable(null, null)]
@@ -2575,12 +2575,12 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_9200:error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_9200:error = " + error);
         }
         sleep(2000)
         data.reclaim();
         reply.reclaim();
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_9200---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_9200---------------------------");
     });
 
     /*
@@ -2590,7 +2590,7 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it('SUB_Softbus_IPC_MessageParcel_9300', 0, async function(done) {
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_9300---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_9300---------------------------");
         function checkResult(num, str) {
             expect(num).assertEqual(123)
             expect(str).assertEqual("rpcListenerTest")
@@ -2616,11 +2616,11 @@ describe('ActsRpcClientJsTest', function(){
 
                 data.reclaim()
                 reply.reclaim()
-                console.log("test done")
+                console.info("test done")
     } catch(error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_9300: error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_9300: error = " + error);
         }
-            console.log("---------------------end SUB_Softbus_IPC_MessageParcel_9300---------------------------");
+            console.info("---------------------end SUB_Softbus_IPC_MessageParcel_9300---------------------------");
     })
     
 
@@ -2631,7 +2631,7 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it('SUB_Softbus_IPC_MessageParcel_9400', 0, async function(done) {
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_9400---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_9400---------------------------");
         
         let count = 0;
         function checkResult(num, str) {
@@ -2665,11 +2665,11 @@ describe('ActsRpcClientJsTest', function(){
 
                 data.reclaim()
                 reply.reclaim()
-                console.log("test done")
+                console.info("test done")
         } catch(error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_9400: error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_9400: error = " + error);
             }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_9400---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_9400---------------------------");
     })
 
     /*
@@ -2680,7 +2680,7 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it('SUB_Softbus_IPC_MessageParcel_9500', 0, async function(done) {
-        console.log("---------------------start SUB_Softbus_IPC_MessageParcel_9500---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_9500---------------------------");
         let count = 0;
         function checkResult(num, str) {
             expect(num).assertEqual(123)
@@ -2714,11 +2714,11 @@ describe('ActsRpcClientJsTest', function(){
 
                 data.reclaim()
                 reply.reclaim()
-                console.log("test done")
+                console.info("test done")
         } catch(error) {
-            console.log("SUB_Softbus_IPC_MessageParcel_9500: error = " + error);
+            console.info("SUB_Softbus_IPC_MessageParcel_9500: error = " + error);
             }
-        console.log("---------------------end SUB_Softbus_IPC_MessageParcel_9500---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_9500---------------------------");
     })
 
     /*
@@ -2728,34 +2728,34 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageOption_0100",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageOption_0100---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageOption_0100---------------------------");
         try{
             let option = new rpc.MessageOption();
-            console.log("SUB_Softbus_IPC_MessageOption_0100: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageOption_0100: create object successfully.");
 
             let time = option.getWaitTime();
-            console.log("SUB_Softbus_IPC_MessageOption_0100: run getWaitTime success, time is " + time);
+            console.info("SUB_Softbus_IPC_MessageOption_0100: run getWaitTime success, time is " + time);
             expect(time == rpc.MessageOption.TF_WAIT_TIME).assertTrue();
 
             let flog = option.getFlags();
-            console.log("SUB_Softbus_IPC_MessageOption_0100: run getFlags success, flog is " + flog);
+            console.info("SUB_Softbus_IPC_MessageOption_0100: run getFlags success, flog is " + flog);
             expect(flog == rpc.MessageOption.TF_SYNC).assertTrue();
 
             option.setFlags(rpc.MessageOption.TF_AYNC)
-            console.log("SUB_Softbus_IPC_MessageOption_0100: run setFlags success");
+            console.info("SUB_Softbus_IPC_MessageOption_0100: run setFlags success");
 
             let flog2 = option.getFlags();
-            console.log("SUB_Softbus_IPC_MessageOption_0100: run getFlags success, flog2 is " + flog2);
+            console.info("SUB_Softbus_IPC_MessageOption_0100: run getFlags success, flog2 is " + flog2);
 
             option.setWaitTime(16);
 
             let time2 = option.getWaitTime();
-            console.log("SUB_Softbus_IPC_MessageOption_0100: run getWaitTime success, time is " + time2);
+            console.info("SUB_Softbus_IPC_MessageOption_0100: run getWaitTime success, time is " + time2);
             expect(time2 == 16).assertTrue();
         }catch(error){
-            console.log("SUB_Softbus_IPC_MessageOption_0100: error " + error);
+            console.info("SUB_Softbus_IPC_MessageOption_0100: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageOption_0100---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageOption_0100---------------------------");
     })
 
     /*
@@ -2765,24 +2765,24 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageOption_0200",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageOption_0200---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageOption_0200---------------------------");
         try{
             let option = new rpc.MessageOption();
-            console.log("SUB_Softbus_IPC_MessageOption_0200: create object successfully.");
+            console.info("SUB_Softbus_IPC_MessageOption_0200: create object successfully.");
 
             let time = option.getWaitTime();
-            console.log("SUB_Softbus_IPC_MessageOption_0200: run getWaitTime success, time is " + time);
+            console.info("SUB_Softbus_IPC_MessageOption_0200: run getWaitTime success, time is " + time);
             expect(time == rpc.MessageOption.TF_WAIT_TIME).assertTrue();
 
             let flog = option.getFlags();
-            console.log("SUB_Softbus_IPC_MessageOption_0200: run getFlags success, flog is " + flog);
+            console.info("SUB_Softbus_IPC_MessageOption_0200: run getFlags success, flog is " + flog);
             expect(flog == rpc.MessageOption.TF_SYNC);
 
             option.setFlags(3);
         }catch(error){
-            console.log("SUB_Softbus_IPC_MessageOption_0200: error " + error);
+            console.info("SUB_Softbus_IPC_MessageOption_0200: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageOption_0200---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageOption_0200---------------------------");
     })
 
     /*
@@ -2792,7 +2792,7 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_MessageOption_0300",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_MessageOption_0300---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_MessageOption_0300---------------------------");
         try{
            expect(rpc.MessageOption.TF_SYNC).assertEqual(0);
 
@@ -2803,9 +2803,9 @@ describe('ActsRpcClientJsTest', function(){
            expect(rpc.MessageOption.TF_ACCEPT_FDS).assertEqual(0x10);
 
         }catch(error){
-            console.log("SUB_Softbus_IPC_MessageOption_0300: error " + error);
+            console.info("SUB_Softbus_IPC_MessageOption_0300: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_MessageOption_0300---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_MessageOption_0300---------------------------");
     })
 
     /*
@@ -2815,17 +2815,17 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_0100",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_0100---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_0100---------------------------");
         try{
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", -1)
-            console.log("SUB_Softbus_IPC_Ashmem_0100: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_0100: ashmem " + ashmem);
 
             let ashmem2 = rpc.Ashmem.createAshmem(null, 1024)
-            console.log("SUB_Softbus_IPC_Ashmem_0100: ashmem2 " + ashmem2);
+            console.info("SUB_Softbus_IPC_Ashmem_0100: ashmem2 " + ashmem2);
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_0100: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_0100: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_0100---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_0100---------------------------");
     })
 
     /*
@@ -2835,21 +2835,22 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_0200",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_0200---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_0200---------------------------");
         try{
             let mapSize = 4096;
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", mapSize)
-            console.log("SUB_Softbus_IPC_Ashmem_0200: run  createAshmem success");
-
-            let size = ashmem.getAshmemSize()
-            console.log("SUB_Softbus_IPC_Ashmem_0200: run getAshmemSize success, size is " + size);
-            expect(size == mapSize).assertTrue();
+            console.info("SUB_Softbus_IPC_Ashmem_0200: run  createAshmem success");
 
             ashmem.closeAshmem();
+            let size = ashmem.getAshmemSize()
+            console.info("SUB_Softbus_IPC_Ashmem_0200: run getAshmemSize success, size is " + size);
+            expect(size == mapSize).assertFale();
+
+            
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_0200: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_0200: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_0200---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_0200---------------------------");
     })
 
     /*
@@ -2859,21 +2860,21 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_0300",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_0300---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_0300---------------------------");
         try{
             let mapSize = 4096;
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", mapSize)
-            console.log("SUB_Softbus_IPC_Ashmem_0300: run  createAshmem success");
+            console.info("SUB_Softbus_IPC_Ashmem_0300: run  createAshmem success");
 
             let size = ashmem.getAshmemSize()
-            console.log("SUB_Softbus_IPC_Ashmem_0300: run getAshmemSize success, size is " + size);
+            console.info("SUB_Softbus_IPC_Ashmem_0300: run getAshmemSize success, size is " + size);
             expect(size == mapSize).assertTrue();
 
             ashmem.closeAshmem();
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_0300: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_0300: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_0300---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_0300---------------------------");
     })
 
     /*
@@ -2883,23 +2884,23 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_0400",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_0400---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_0400---------------------------");
         try{
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 4096)
-            console.log("SUB_Softbus_IPC_Ashmem_0400: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_0400: ashmem " + ashmem);
 
             ashmem.closeAshmem()
 
             var data = rpc.MessageParcel.create();
             let writeAshmem = data.writeAshmem(ashmem);
-            console.log("SUB_Softbus_IPC_Ashmem_0400: run writeAshmem success, writeAshmem is " + writeAshmem);
+            console.info("SUB_Softbus_IPC_Ashmem_0400: run writeAshmem success, writeAshmem is " + writeAshmem);
             expect(writeAshmem == false).assertTrue();
 
             data.reclaim();
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_0400: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_0400: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_0400---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_0400---------------------------");
     })
 
     /*
@@ -2909,25 +2910,25 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_0500",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_0500---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_0500---------------------------");
         try{
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 4096)
-            console.log("SUB_Softbus_IPC_Ashmem_0500: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_0500: ashmem " + ashmem);
 
             ashmem.unmapAshmem()
-            console.log("SUB_Softbus_IPC_Ashmem_0500: run unmapAshmem success");
+            console.info("SUB_Softbus_IPC_Ashmem_0500: run unmapAshmem success");
 
             let bytes = new Int8Array([1, 2, 3, 4, 5])
 
             let ret = ashmem.readFromAshmem(bytes.length, 0);
-            console.log("SUB_Softbus_IPC_Ashmem_0500: run readFromAshmem result is " + ret);
+            console.info("SUB_Softbus_IPC_Ashmem_0500: run readFromAshmem result is " + ret);
             expect(ret==null).assertTrue();
 
             ashmem.closeAshmem();
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_0500: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_0500: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_0500---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_0500---------------------------");
     })
 
     /*
@@ -2937,20 +2938,20 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_0600",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_0600---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_0600---------------------------");
         try{
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 4096)
-            console.log("SUB_Softbus_IPC_Ashmem_0600: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_0600: ashmem " + ashmem);
 
             let result = ashmem.mapAshmem(rpc.Ashmem.PROT_READ);
-            console.log("SUB_Softbus_IPC_Ashmem_0600: run mapAshmem success, result is " + result);
+            console.info("SUB_Softbus_IPC_Ashmem_0600: run mapAshmem success, result is " + result);
             expect(result == true).assertTrue();
 
             ashmem.closeAshmem()
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_0600: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_0600: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_0600---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_0600---------------------------");
     })
 
     /*
@@ -2960,21 +2961,21 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_0700",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_0700---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_0700---------------------------");
         try{
 
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 4096)
-            console.log("SUB_Softbus_IPC_Ashmem_0700: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_0700: ashmem " + ashmem);
 
             let result = ashmem.mapAshmem(999);
-            console.log("SUB_Softbus_IPC_Ashmem_0700: run mapAshmem success, result is " + result);
+            console.info("SUB_Softbus_IPC_Ashmem_0700: run mapAshmem success, result is " + result);
             expect(result == false).assertTrue();
 
             ashmem.closeAshmem()
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_0700: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_0700: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_0700---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_0700---------------------------");
     })
 
     /*
@@ -2984,21 +2985,21 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_0800",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_0800---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_0800---------------------------");
         try{
 
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 1024)
-            console.log("SUB_Softbus_IPC_Ashmem_0800: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_0800: ashmem " + ashmem);
 
             let result = ashmem.mapReadAndWriteAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_0800: run mapAshmem success, result is " + result);
+            console.info("SUB_Softbus_IPC_Ashmem_0800: run mapAshmem success, result is " + result);
 
             ashmem.closeAshmem()
 
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_0800: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_0800: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_0800---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_0800---------------------------");
     })
 
     /*
@@ -3008,27 +3009,27 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_0900",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_0900---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_0900---------------------------");
         try{
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 4096)
-            console.log("SUB_Softbus_IPC_Ashmem_0900: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_0900: ashmem " + ashmem);
 
             let result = ashmem.mapAshmem(rpc.Ashmem.PROT_READ);
-            console.log("SUB_Softbus_IPC_Ashmem_0900: run mapAshmem success, result is " + result);
+            console.info("SUB_Softbus_IPC_Ashmem_0900: run mapAshmem success, result is " + result);
             expect(result == true).assertTrue();
 
             ashmem.unmapAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_0900: run unmapAshmem success");
+            console.info("SUB_Softbus_IPC_Ashmem_0900: run unmapAshmem success");
             expect(ashmem.mapReadAndWriteAshmem()).assertFalse();
             let result2 = ashmem.mapReadAndWriteAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_0900: run mapReadAndWriteAshmem success, result2 is " + result2);
+            console.info("SUB_Softbus_IPC_Ashmem_0900: run mapReadAndWriteAshmem success, result2 is " + result2);
             expect(result2 == false).assertTrue();
 
             ashmem.closeAshmem()
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_0900: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_0900: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_0900---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_0900---------------------------");
     })
 
     /*
@@ -3038,21 +3039,21 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_1000",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_1000---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_1000---------------------------");
         try{
 
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 4096)
-            console.log("SUB_Softbus_IPC_Ashmem_1000: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_1000: ashmem " + ashmem);
 
             let result = ashmem.mapReadOnlyAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_1000: run mapReadAndWriteAshmem success, result is " + result);
+            console.info("SUB_Softbus_IPC_Ashmem_1000: run mapReadAndWriteAshmem success, result is " + result);
             expect(result == true).assertTrue();
 
             ashmem.closeAshmem();
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_1000: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_1000: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_1000---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_1000---------------------------");
     })
 
     /*
@@ -3062,26 +3063,26 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_1100",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_1100---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_1100---------------------------");
         try{
 
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 1024)
-            console.log("SUB_Softbus_IPC_Ashmem_1100: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_1100: ashmem " + ashmem);
 
             let result = ashmem.mapAshmem(rpc.Ashmem.PROT_WRITE);
-            console.log("SUB_Softbus_IPC_Ashmem_1100: run mapAshmem success, result is " + result);
+            console.info("SUB_Softbus_IPC_Ashmem_1100: run mapAshmem success, result is " + result);
             expect(result == true).assertTrue();
 
             ashmem.unmapAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_1100: run unmapAshmem success");
+            console.info("SUB_Softbus_IPC_Ashmem_1100: run unmapAshmem success");
             ashmem.closeAshmem()
             let result2 = ashmem.mapReadOnlyAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_1100: run mapReadAndWriteAshmem success, result2 is " + result2);
+            console.info("SUB_Softbus_IPC_Ashmem_1100: run mapReadAndWriteAshmem success, result2 is " + result2);
             expect(result2 == false).assertTrue();
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_1100: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_1100: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_1100---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_1100---------------------------");
     })
 
     /*
@@ -3091,36 +3092,36 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_1200",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_1200---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_1200---------------------------");
         try{
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 1024);
 
             let resultwrite = ashmem.setProtection(rpc.Ashmem.PROT_WRITE)
-            console.log("SUB_Softbus_IPC_Ashmem_1200: run setProtection success, resultwrite is " + resultwrite);
+            console.info("SUB_Softbus_IPC_Ashmem_1200: run setProtection success, resultwrite is " + resultwrite);
             expect(resultwrite == true).assertTrue();
 
             let resultread = ashmem.setProtection(rpc.Ashmem.PROT_READ)
-            console.log("SUB_Softbus_IPC_Ashmem_1200: run setProtection success, resultread is " + resultread);
+            console.info("SUB_Softbus_IPC_Ashmem_1200: run setProtection success, resultread is " + resultread);
             expect(resultread == false).assertTrue();
 
             let resultreadAndwrite = ashmem.mapReadAndWriteAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_1200: run setProtection success, mapReadAndWriteAshmem is "
+            console.info("SUB_Softbus_IPC_Ashmem_1200: run setProtection success, mapReadAndWriteAshmem is "
                          + resultreadAndwrite);
             expect(resultreadAndwrite == false).assertTrue();
 
             let resultnone = ashmem.setProtection(rpc.Ashmem.PROT_NONE)
-            console.log("SUB_Softbus_IPC_Ashmem_1200: run setProtection success, resultnone is " + resultnone);
+            console.info("SUB_Softbus_IPC_Ashmem_1200: run setProtection success, resultnone is " + resultnone);
             expect(resultnone == true).assertTrue();
 
             let resultread2 = ashmem.setProtection(rpc.Ashmem.PROT_READ)
-            console.log("SUB_Softbus_IPC_Ashmem_1200: run setProtection success, resultread2 is " + resultread2);
+            console.info("SUB_Softbus_IPC_Ashmem_1200: run setProtection success, resultread2 is " + resultread2);
             expect(resultread2 == false).assertTrue();
 
             ashmem.closeAshmem()
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_1200: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_1200: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_1200---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_1200---------------------------");
     })
 
     /*
@@ -3130,21 +3131,21 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_1300",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_1300---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_1300---------------------------");
         try{
 
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 1024);
-            console.log("SUB_Softbus_IPC_Ashmem_1300: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_1300: ashmem " + ashmem);
 
             let result = ashmem.setProtection(3);
-            console.log("SUB_Softbus_IPC_Ashmem_1300: run setProtection success, result is " + result);
+            console.info("SUB_Softbus_IPC_Ashmem_1300: run setProtection success, result is " + result);
             expect(result == true).assertTrue();
 
             ashmem.closeAshmem()
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_1300: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_1300: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_1300---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_1300---------------------------");
     })
 
     /*
@@ -3154,28 +3155,28 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_1400",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_1200---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_1200---------------------------");
         try{
             let mapSize = 4096
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", mapSize)
-            console.log("SUB_Softbus_IPC_Ashmem_1400: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_1400: ashmem " + ashmem);
 
             let resultMapRAndW = ashmem.mapReadAndWriteAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_1400: run mapReadAndWriteAshmem success, result2 is "
+            console.info("SUB_Softbus_IPC_Ashmem_1400: run mapReadAndWriteAshmem success, result2 is "
                          + resultMapRAndW);
             expect(resultMapRAndW == true).assertTrue();
 
             let bytes = new Int8Array([1, 2, 3, 4, 5]);
 
             let result = ashmem.writeToAshmem(bytes, bytes.length, 0);
-            console.log("SUB_Softbus_IPC_Ashmem_1400: run writeToAshmem success, result is " + result);
+            console.info("SUB_Softbus_IPC_Ashmem_1400: run writeToAshmem success, result is " + result);
             expect(result == true).assertTrue();
 
             ashmem.closeAshmem();
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_1400: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_1400: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_1400---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_1400---------------------------");
     })
 
     /*
@@ -3185,34 +3186,34 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_1500",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_1500---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_1500---------------------------");
         try{
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 4096)
-            console.log("SUB_Softbus_IPC_Ashmem_1500: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_1500: ashmem " + ashmem);
 
             let resultMapRAndW = ashmem.mapReadAndWriteAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_1500: run mapReadAndWriteAshmem success, result2 is " 
+            console.info("SUB_Softbus_IPC_Ashmem_1500: run mapReadAndWriteAshmem success, result2 is " 
                          + resultMapRAndW);
             expect(resultMapRAndW == true).assertTrue();
 
             let bytes = new Int8Array([1, 2, 3, 4, 5]);
             let result = ashmem.writeToAshmem(bytes, bytes.length, 0);
-            console.log("SUB_Softbus_IPC_Ashmem_1500: run writeToAshmem success, result is " +result);
+            console.info("SUB_Softbus_IPC_Ashmem_1500: run writeToAshmem success, result is " +result);
             expect(result == true).assertTrue();
 
             let resultread = ashmem.setProtection(rpc.Ashmem.PROT_READ);
-            console.log("SUB_Softbus_IPC_Ashmem_1500: run setProtection success, resultread is " + resultread);
+            console.info("SUB_Softbus_IPC_Ashmem_1500: run setProtection success, resultread is " + resultread);
             expect(resultread == true).assertTrue()
 
             let result2 = ashmem.writeToAshmem(bytes, bytes.length, 0);
-            console.log("SUB_Softbus_IPC_Ashmem_1500: run writeToAshmem success, result is2 " + result2);
+            console.info("SUB_Softbus_IPC_Ashmem_1500: run writeToAshmem success, result is2 " + result2);
             expect(result2 == false).assertTrue()
 
             ashmem.closeAshmem();
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_1500: error " +error);
+            console.info("SUB_Softbus_IPC_Ashmem_1500: error " +error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_1500---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_1500---------------------------");
     })
 
     /*
@@ -3222,29 +3223,29 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_1600",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_1600---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_1600---------------------------");
         try{
 
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 4096);
-            console.log("SUB_Softbus_IPC_Ashmem_1600: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_1600: ashmem " + ashmem);
 
             let resultMapRAndW = ashmem.mapReadAndWriteAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_1600: run mapReadAndWriteAshmem success, result2 is " 
+            console.info("SUB_Softbus_IPC_Ashmem_1600: run mapReadAndWriteAshmem success, result2 is " 
                          + resultMapRAndW);
             expect(resultMapRAndW == true).assertTrue();
 
             let bytes = new Int8Array([1, 2, 3, 4, 5]);
             let size = bytes.length + 10;
             let result = ashmem.writeToAshmem(bytes, 3, 0);
-            console.log("SUB_Softbus_IPC_Ashmem_1600: run writeToAshmem success, result is " + result);
+            console.info("SUB_Softbus_IPC_Ashmem_1600: run writeToAshmem success, result is " + result);
             expect(result == true).assertTrue();
 
             ashmem.closeAshmem()
 
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_1600: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_1600: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_1600---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_1600---------------------------");
     })
 
     /*
@@ -3254,24 +3255,24 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_1700",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_1700---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_1700---------------------------");
         try{
 
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 4096)
-            console.log("SUB_Softbus_IPC_Ashmem_1700: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_1700: ashmem " + ashmem);
 
             let resultMapRAndW = ashmem.mapReadAndWriteAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_1600: run mapReadAndWriteAshmem success, result2 is " 
+            console.info("SUB_Softbus_IPC_Ashmem_1600: run mapReadAndWriteAshmem success, result2 is " 
                          + resultMapRAndW);
             expect(resultMapRAndW == true).assertTrue();
 
             let bytes = new Int8Array([1, 2, 3, 4, 5]);
             let result = ashmem.writeToAshmem(bytes, bytes.length, 0);
-            console.log("SUB_Softbus_IPC_Ashmem_1700: run writeToAshmem success, result is " + result);
+            console.info("SUB_Softbus_IPC_Ashmem_1700: run writeToAshmem success, result is " + result);
             expect(result == true).assertTrue();
 
             var resultRead = ashmem.readFromAshmem(bytes.length, 0);
-            console.log("SUB_Softbus_IPC_Ashmem_1700: run readFromAshmem success, result is " + resultRead);
+            console.info("SUB_Softbus_IPC_Ashmem_1700: run readFromAshmem success, result is " + resultRead);
             expect(resultRead[0] == bytes[0]).assertTrue();
             expect(resultRead[1] == bytes[1]).assertTrue();
             expect(resultRead[2] == bytes[2]).assertTrue();
@@ -3281,9 +3282,9 @@ describe('ActsRpcClientJsTest', function(){
             ashmem.closeAshmem()
 
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_1700: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_1700: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_1700---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_1700---------------------------");
     })
 
     /*
@@ -3293,24 +3294,24 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_1800",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_1800---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_1800---------------------------");
         try{
 
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 4096);
-            console.log("SUB_Softbus_IPC_Ashmem_1800: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_1800: ashmem " + ashmem);
 
             let resultMapRAndW = ashmem.mapReadAndWriteAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_1800: run mapReadAndWriteAshmem success, result2 is " 
+            console.info("SUB_Softbus_IPC_Ashmem_1800: run mapReadAndWriteAshmem success, result2 is " 
                          + resultMapRAndW);
             expect(resultMapRAndW == true).assertTrue();
 
             let bytes = new Int8Array([1, 2, 3, 4, 5]);
             let result = ashmem.writeToAshmem(bytes, bytes.length, 1);
-            console.log("SUB_Softbus_IPC_Ashmem_1800: run writeToAshmem success, result is " + result);
+            console.info("SUB_Softbus_IPC_Ashmem_1800: run writeToAshmem success, result is " + result);
             expect(result == true).assertTrue()
 
             let result2 = ashmem.readFromAshmem(bytes.length, 3);
-            console.log("SUB_Softbus_IPC_Ashmem_1800: run readFromAshmem success, result2 is " + result2);
+            console.info("SUB_Softbus_IPC_Ashmem_1800: run readFromAshmem success, result2 is " + result2);
             expect(bytes[2] == result2[0]).assertTrue();
             expect(bytes[3] == result2[1]).assertTrue();
             expect(bytes[4] == result2[2]).assertTrue();
@@ -3318,9 +3319,9 @@ describe('ActsRpcClientJsTest', function(){
             ashmem.closeAshmem()
 
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_1800: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_1800: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_1800---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_1800---------------------------");
     })
 
     /*
@@ -3330,27 +3331,27 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_1900",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_1900---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_1900---------------------------");
         try{
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 4096)
-            console.log("SUB_Softbus_IPC_Ashmem_1900: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_1900: ashmem " + ashmem);
 
             let resultWriteAndRead = ashmem.mapReadAndWriteAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_1900:  run mapReadAndWriteAshmem result is " + resultWriteAndRead);
+            console.info("SUB_Softbus_IPC_Ashmem_1900:  run mapReadAndWriteAshmem result is " + resultWriteAndRead);
             expect(resultWriteAndRead == true).assertTrue();
 
             let bytes = new Int8Array([1, 2, 3]);
             let result = ashmem.writeToAshmem(bytes, bytes.length, 1);
-            console.log("SUB_Softbus_IPC_Ashmem_1900: run writeToAshmem success, result is " + result);
+            console.info("SUB_Softbus_IPC_Ashmem_1900: run writeToAshmem success, result is " + result);
             expect(result == true).assertTrue()
 
             let newashmem = rpc.Ashmem.createAshmemFromExisting(ashmem);
             let resultWriteAndRead2 = newashmem.mapReadAndWriteAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_1900:  run mapReadAndWriteAshmem result is " + resultWriteAndRead2);
+            console.info("SUB_Softbus_IPC_Ashmem_1900:  run mapReadAndWriteAshmem result is " + resultWriteAndRead2);
             expect(resultWriteAndRead2 == true).assertTrue();
 
             let result2 = newashmem.readFromAshmem(bytes.length, 1);
-            console.log("SUB_Softbus_IPC_Ashmem_1900: run readFromAshmem success, result2 is " + result2);
+            console.info("SUB_Softbus_IPC_Ashmem_1900: run readFromAshmem success, result2 is " + result2);
             expect(result == true).assertTrue()
             expect(result2[0] == bytes[0]).assertTrue()
             expect(result2[1] == bytes[1]).assertTrue()
@@ -3359,9 +3360,9 @@ describe('ActsRpcClientJsTest', function(){
             ashmem.closeAshmem();
             newashmem.closeAshmem();
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_1900: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_1900: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_1900---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_1900---------------------------");
     })
 
     /*
@@ -3372,31 +3373,31 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_2000",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_2000---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_2000---------------------------");
         try{
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 1024);
             let data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_Ashmem_2000: ashmem " + ashmem);
+            console.info("SUB_Softbus_IPC_Ashmem_2000: ashmem " + ashmem);
 
             let resultMapRAndW = ashmem.mapReadAndWriteAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_2000: run mapReadAndWriteAshmem result is " + resultMapRAndW);
+            console.info("SUB_Softbus_IPC_Ashmem_2000: run mapReadAndWriteAshmem result is " + resultMapRAndW);
             expect(resultMapRAndW == true).assertTrue();
 
             let bytes = new Int8Array([1, 2, 3]);
             let result = ashmem.writeToAshmem(bytes, bytes.length, 1);
 
-            console.log("SUB_Softbus_IPC_Ashmem_2000: run writeToAshmem success, result is " + result);
+            console.info("SUB_Softbus_IPC_Ashmem_2000: run writeToAshmem success, result is " + result);
             expect(result == true).assertTrue()
 
             let result2 = data.writeAshmem(ashmem)
-            console.log("SUB_Softbus_IPC_Ashmem_2000: run writeAshmem success, result is " + result2);
+            console.info("SUB_Softbus_IPC_Ashmem_2000: run writeAshmem success, result is " + result2);
             expect(result2 == true).assertTrue();
 
             let retReadAshmem = data.readAshmem();
-            console.log("SUB_Softbus_IPC_Ashmem_2000: run readAshmem is " + retReadAshmem);
+            console.info("SUB_Softbus_IPC_Ashmem_2000: run readAshmem is " + retReadAshmem);
 
             let retBytes = retReadAshmem.readFromAshmem(bytes.length, 1);
-            console.log("SUB_Softbus_IPC_Ashmem_2000: run readFromAshmem result is " + retBytes);
+            console.info("SUB_Softbus_IPC_Ashmem_2000: run readFromAshmem result is " + retBytes);
             for (let i = 0; i < bytes.length; i++) {
                 expect(retBytes[i]).assertEqual(bytes[i])
             }
@@ -3404,9 +3405,9 @@ describe('ActsRpcClientJsTest', function(){
             ashmem.closeAshmem()
             data.reclaim()
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_2000: error " +error);
+            console.info("SUB_Softbus_IPC_Ashmem_2000: error " +error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_2000---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_2000---------------------------");
     })
 
     /*
@@ -3417,83 +3418,25 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_Ashmem_2100",0,function(){
-        console.log("---------------------start SUB_Softbus_IPC_Ashmem_2100---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_Ashmem_2100---------------------------");
         try{
             let data = rpc.MessageParcel.create()
             let data2 = rpc.MessageParcel.create()
-            console.log("SUB_Softbus_IPC_Ashmem_2100: create MessageParcel object success");
+            console.info("SUB_Softbus_IPC_Ashmem_2100: create MessageParcel object success");
 
             var flag = false;
             let result = data.writeAshmem(data2)
-            console.log("SUB_Softbus_IPC_Ashmem_2100: run writeAshmem success, result is " + result);
+            console.info("SUB_Softbus_IPC_Ashmem_2100: run writeAshmem success, result is " + result);
 
             flag = true;
             data.reclaim()
             data2.reclaim()
         }catch(error){
-            console.log("SUB_Softbus_IPC_Ashmem_2100: error " + error);
+            console.info("SUB_Softbus_IPC_Ashmem_2100: error " + error);
             expect(flag == false).assertTrue();
         }
-        console.log("---------------------end SUB_Softbus_IPC_Ashmem_2100---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Ashmem_2100---------------------------");
     })
-
-    /*
-     * @tc.number  SUB_Softbus_IPC_Ashmem_2200
-     * @tc.name    Test messageparcel to pass ashmem object
-     * @tc.desc    Function test
-     * @tc.level   0
-     */
-//    it("SUB_Softbus_IPC_Ashmem_2200",0,async function(done){
-//        console.log("---------------------start SUB_Softbus_IPC_Ashmem_2200---------------------------");
-//        try{
-//            let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 4096);
-//            let data = rpc.MessageParcel.create()
-//            var reply = rpc.MessageParcel.create()
-//            let option = new rpc.MessageOption()
-//            console.log("SUB_Softbus_IPC_Ashmem_2200: ashmem " + ashmem);
-//
-//            let resultMapRAndW = ashmem.mapReadAndWriteAshmem();
-//            console.log("SUB_Softbus_IPC_Ashmem_2200: run mapReadAndWriteAshmem result is " + resultMapRAndW);
-//            expect(resultMapRAndW == true).assertTrue();
-//
-//            let bytes = new Int8Array([1, 2, 3]);
-//            let result = ashmem.writeToAshmem(bytes, bytes.length, 0);
-//            console.log("SUB_Softbus_IPC_Ashmem_2200: run writeToAshmem success, result is " + result);
-//
-//            let resultMessage = data.writeAshmem(ashmem);
-//            console.log("SUB_Softbus_IPC_Ashmem_2200: run writeAshmem success, resultMessage is " + resultMessage);
-//
-//            ashmem.unmapAshmem();
-//            ashmem.closeAshmem();
-//            await gIRemoteObject.sendRequest(CODE_WRITEINT8_ASHMEM, data, reply, option).then((result) => {
-//                console.log("SUB_Softbus_IPC_Ashmem_2200: sendRequest success, result is " + result.errCode);
-//                expect(result.errCode == 0).assertTrue();
-//                result.reply.readException();
-//                expect(result.reply.readInt()).assertEqual(bytes.length);
-//                console.log("SUB_Softbus_IPC_Ashmem_2200:1111111111111111");
-//                var replyAshmem = result.reply.readAshmem();
-//                console.log("SUB_Softbus_IPC_Ashmem_2200:22222222222222222222222");
-//
-//                expect(replyAshmem.mapReadOnlyAshmem()).assertTrue()
-//                console.log("SUB_Softbus_IPC_Ashmem_2200:33333333333333333333333333");
-//
-//                var replyByte = replyAshmem.readFromAshmem(bytes.length, 0);
-//                console.log("SUB_Softbus_IPC_Ashmem_2200: run readByteArray is success, result is "
-//                             + replyByte);
-//                for (let i = 0; i < replyByte.length; i++) {
-//                    expect(replyByte[i]).assertEqual(bytes[i]);
-//                }
-//                replyAshmem.unmapAshmem();
-//                replyAshmem.closeAshmem();
-//            });
-//            data.reclaim();
-//            reply.reclaim();
-//            done();
-//        }catch(error){
-//            console.log("SUB_Softbus_IPC_Ashmem_2200: error " + error);
-//        }
-//        console.log("---------------------end SUB_Softbus_IPC_Ashmem_2200---------------------------");
-//    })
 
  /*
      * @tc.number  SUB_Softbus_IPC_Ashmem_2300
@@ -3502,19 +3445,19 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
  it("SUB_Softbus_IPC_Ashmem_2300",0,function(){
-    console.log("---------------------start SUB_Softbus_IPC_Ashmem_2300---------------------------");
+    console.info("---------------------start SUB_Softbus_IPC_Ashmem_2300---------------------------");
     try{
         let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", 1024);
 
         let resultwrite = ashmem.setProtection(rpc.Ashmem.PROT_EXEC)
-        console.log("SUB_Softbus_IPC_Ashmem_2300: run setProtection success, resultwrite is " + resultwrite);
+        console.info("SUB_Softbus_IPC_Ashmem_2300: run setProtection success, resultwrite is " + resultwrite);
         expect(resultwrite == true).assertTrue();
 
         ashmem.closeAshmem()
     }catch(error){
-        console.log("SUB_Softbus_IPC_Ashmem_2300: error " + error);
+        console.info("SUB_Softbus_IPC_Ashmem_2300: error " + error);
     }
-    console.log("---------------------end SUB_Softbus_IPC_Ashmem_2300---------------------------");
+    console.info("---------------------end SUB_Softbus_IPC_Ashmem_2300---------------------------");
 })
 
     /*
@@ -3524,21 +3467,21 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_IRemoteObject_0100",0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_IRemoteObject_0100---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_IRemoteObject_0100---------------------------");
         try{
             let data = rpc.MessageParcel.create();
             let reply = rpc.MessageParcel.create();
             let option = new rpc.MessageOption();
             let sequenceable = new MySequenceable(1, "aaa");
             let result = data.writeSequenceable(sequenceable);
-            console.log("SUB_Softbus_IPC_IRemoteObject_0100: run writeSequenceable success, result is " + result);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0100: run writeSequenceable success, result is " + result);
 
             await gIRemoteObject.sendRequest(CODE_WRITESEQUENCEABLE, data, reply, option).then((result) => {
-                console.log("SUB_Softbus_IPC_IRemoteObject_0100: sendRequest success, result is " + result.errCode);
+                console.info("SUB_Softbus_IPC_IRemoteObject_0100: sendRequest success, result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
                 let ret = new MySequenceable(0, "");
                 var shortArryDataReply = result.reply.readSequenceable(ret);
-                console.log("SUB_Softbus_IPC_IRemoteObject_0100: run readSequenceable is success, result is "
+                console.info("SUB_Softbus_IPC_IRemoteObject_0100: run readSequenceable is success, result is "
                              + shortArryDataReply);
                 expect(shortArryDataReply == true).assertTrue()
                 expect(ret.num).assertEqual(1)
@@ -3549,9 +3492,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         }catch(error){
-            console.log("SUB_Softbus_IPC_IRemoteObject_0100: error " + error);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0100: error " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_IRemoteObject_0100---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_IRemoteObject_0100---------------------------");
     })
 
     /*
@@ -3562,10 +3505,10 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_IRemoteObject_0200", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_IRemoteObject_0200---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_IRemoteObject_0200---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_IRemoteObject_0200: create object successfully.");
+            console.info("SUB_Softbus_IPC_IRemoteObject_0200: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             expect(data.writeByte(1)).assertTrue()
@@ -3575,7 +3518,7 @@ describe('ActsRpcClientJsTest', function(){
             expect(data.writeFloat(1.2)).assertTrue()
             expect(data.writeDouble(10.2)).assertTrue()
             expect(data.writeBoolean(true)).assertTrue()
-            expect(data.writeChar('a')).assertTrue()
+            expect(data.writeChar(5)).assertTrue()
             expect(data.writeString("HelloWorld")).assertTrue()
             expect(data.writeSequenceable(new MySequenceable(1, "aaa"))).assertTrue()
 
@@ -3589,7 +3532,7 @@ describe('ActsRpcClientJsTest', function(){
                 expect(result.reply.readFloat()).assertEqual(1.2)
                 expect(result.reply.readDouble()).assertEqual(10.2)
                 expect(result.reply.readBoolean()).assertTrue()
-                expect(result.reply.readChar()).assertEqual('a')
+                expect(result.reply.readChar()).assertEqual(5)
                 expect(result.reply.readString()).assertEqual("HelloWorld")
                 let s = new MySequenceable(0, '')
                 expect(result.reply.readSequenceable(s)).assertTrue()
@@ -3600,9 +3543,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_IRemoteObject_0200:error = " + error);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0200:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_IRemoteObject_0200---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_IRemoteObject_0200---------------------------");
         done();
     });
 
@@ -3614,10 +3557,10 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_IRemoteObject_0300", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_IRemoteObject_0300---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_IRemoteObject_0300---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.log("SUB_Softbus_IPC_IRemoteObject_0300: create object successfully.");
+            console.info("SUB_Softbus_IPC_IRemoteObject_0300: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
 
@@ -3628,7 +3571,7 @@ describe('ActsRpcClientJsTest', function(){
             expect(data.writeFloat(1.2)).assertTrue()
             expect(data.writeDouble(10.2)).assertTrue()
             expect(data.writeBoolean(true)).assertTrue()
-            expect(data.writeChar('a')).assertTrue()
+            expect(data.writeChar(10)).assertTrue()
             expect(data.writeString("HelloWorld")).assertTrue()
             expect(data.writeSequenceable(new MySequenceable(1, "aaa"))).assertTrue()
 
@@ -3643,7 +3586,7 @@ describe('ActsRpcClientJsTest', function(){
                 expect(result.reply.readFloat()).assertEqual(1.2)
                 expect(result.reply.readDouble()).assertEqual(10.2)
                 expect(result.reply.readBoolean()).assertTrue()
-                expect(result.reply.readChar()).assertEqual('a')
+                expect(result.reply.readChar()).assertEqual(10)
                 expect(result.reply.readString()).assertEqual("HelloWorld")
                 let s = new MySequenceable(0, '')
                 expect(result.reply.readSequenceable(s)).assertTrue()
@@ -3654,9 +3597,9 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_IRemoteObject_0300:error = " + error);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0300:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_IRemoteObject_0300---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_IRemoteObject_0300---------------------------");
     });
 
     /*
@@ -3666,24 +3609,24 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_IRemoteObject_0400", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_IRemoteObject_0400---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_IRemoteObject_0400---------------------------");
         try{
             let object = new TestAbilityStub("Test1")
             var resultAdd1 = object.addDeathRecipient(null, 0)
-            console.log("SUB_Softbus_IPC_IRemoteObject_0400:run addDeathRecipient first result is " + resultAdd1);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0400:run addDeathRecipient first result is " + resultAdd1);
             expect(resultAdd1 == false).assertTrue();
 
             var resultRemove1 = object.removeDeathRecipient(null, 0)
-            console.log("SUB_Softbus_IPC_IRemoteObject_0400:run removeDeathRecipient1 result is " + resultRemove1);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0400:run removeDeathRecipient1 result is " + resultRemove1);
             expect(resultRemove1 == false).assertTrue();
 
             let isDead = object.isObjectDead()
-            console.log("SUB_Softbus_IPC_IRemoteObject_0400:run  isDead result is " + isDead);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0400:run  isDead result is " + isDead);
             expect(isDead == false).assertTrue();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_IRemoteObject_0400:error = " + error);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0400:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_IRemoteObject_0400---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_IRemoteObject_0400---------------------------");
     });
 
     /*
@@ -3694,27 +3637,27 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_IRemoteObject_0500", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_IRemoteObject_0500---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_IRemoteObject_0500---------------------------");
         try{
             let callingPid = rpc.IPCSkeleton.getCallingPid()
-            console.log("SUB_Softbus_IPC_IRemoteObject_0500: run getCallingPid success, callingPid is " + callingPid);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0500: run getCallingPid success, callingPid is " + callingPid);
 
             let callingUid = rpc.IPCSkeleton.getCallingUid()
-            console.log("SUB_Softbus_IPC_IRemoteObject_0500: run getCallingPid success, callingPid is " + callingUid);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0500: run getCallingPid success, callingPid is " + callingUid);
 
             let callingDeviceID = rpc.IPCSkeleton.getCallingDeviceID()
-            console.log("SUB_Softbus_IPC_IRemoteObject_0500: run getCallingDeviceID success, callingDeviceID is "
+            console.info("SUB_Softbus_IPC_IRemoteObject_0500: run getCallingDeviceID success, callingDeviceID is "
                          + callingDeviceID);
             expect(callingDeviceID == "").assertTrue();
 
             let localDeviceID = rpc.IPCSkeleton.getLocalDeviceID()
-            console.log("SUB_Softbus_IPC_IRemoteObject_0500: run getLocalDeviceID success, localDeviceID is "
+            console.info("SUB_Softbus_IPC_IRemoteObject_0500: run getLocalDeviceID success, localDeviceID is "
             + localDeviceID);
             expect(localDeviceID == "").assertTrue();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_IRemoteObject_0500:error = " + error);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0500:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_IRemoteObject_0500---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_IRemoteObject_0500---------------------------");
     });
 
     /*
@@ -3724,30 +3667,30 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_IRemoteObject_0600", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_IRemoteObject_0600---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_IRemoteObject_0600---------------------------");
         try{
             let object = new TestAbilityStub("Test1");
-            console.log("SUB_Softbus_IPC_IRemoteObject_0600: run TestAbilityStub success");
+            console.info("SUB_Softbus_IPC_IRemoteObject_0600: run TestAbilityStub success");
 
             let result = object.isObjectDead()
-            console.log("SUB_Softbus_IPC_IRemoteObject_0600: run isObjectDead success, result is " + result);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0600: run isObjectDead success, result is " + result);
             expect(result == false).assertTrue()
 
             let callingPid = object.getCallingPid()
-            console.log("SUB_Softbus_IPC_IRemoteObject_0600: run getCallingPid success, callingPid is " + callingPid);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0600: run getCallingPid success, callingPid is " + callingPid);
 
             let callingUid = object.getCallingUid()
-            console.log("SUB_Softbus_IPC_IRemoteObject_0600: run getCallingPid success, callingPid is " + callingUid);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0600: run getCallingPid success, callingPid is " + callingUid);
 
             object.attachLocalInterface(object, "Test1")
-            console.log("SUB_Softbus_IPC_IRemoteObject_0600: run attachLocalInterface success");
+            console.info("SUB_Softbus_IPC_IRemoteObject_0600: run attachLocalInterface success");
 
             let res = object.queryLocalInterface("Test1")
-            console.log("SUB_Softbus_IPC_IRemoteObject_0600: run queryLocalInterface success, res2 is " + res);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0600: run queryLocalInterface success, res2 is " + res);
         } catch (error) {
-            console.log("SUB_Softbus_IPC_IRemoteObject_0600:error = " + error);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0600:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_IRemoteObject_0600---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_IRemoteObject_0600---------------------------");
     });
 
     /*
@@ -3757,32 +3700,32 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_IRemoteObject_0700", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_IRemoteObject_0700---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_IRemoteObject_0700---------------------------");
         try{
             let object = new TestAbilityStub("Test1223");
 
             let result = object.isObjectDead()
-            console.log("SUB_Softbus_IPC_IRemoteObject_0700: run isObjectDead success, result is " + result);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0700: run isObjectDead success, result is " + result);
             expect(result == false).assertTrue()
 
             let callingPid = object.getCallingPid()
-            console.log("SUB_Softbus_IPC_IRemoteObject_0700: run getCallingPid success, callingPid is " + callingPid);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0700: run getCallingPid success, callingPid is " + callingPid);
 
             let callingUid = object.getCallingUid()
-            console.log("SUB_Softbus_IPC_IRemoteObject_0700: run getCallingPid success, callingPid is " + callingUid);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0700: run getCallingPid success, callingPid is " + callingUid);
 
             object.attachLocalInterface(object, "test1")
-            console.log("SUB_Softbus_IPC_IRemoteObject_0700: run attachLocalInterface success");
+            console.info("SUB_Softbus_IPC_IRemoteObject_0700: run attachLocalInterface success");
 
             let result2 = object.getInterfaceDescriptor();
-            console.log("SUB_Softbus_IPC_IRemoteObject_0700: run getInterfaceDescriptor success, result2 is "
+            console.info("SUB_Softbus_IPC_IRemoteObject_0700: run getInterfaceDescriptor success, result2 is "
                          + result2);
             expect(result2 == "test1").assertTrue();
 
         } catch (error) {
-            console.log("SUB_Softbus_IPC_IRemoteObject_0700:error = " + error);
+            console.info("SUB_Softbus_IPC_IRemoteObject_0700:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_IRemoteObject_0700---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_IRemoteObject_0700---------------------------");
     });
 
     /*
@@ -3792,32 +3735,32 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_RemoteProxy_0100", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_RemoteProxy_0100---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_RemoteProxy_0100---------------------------");
         try{
             let recipient = new MyDeathRecipient(gIRemoteObject, null)
             var resultAdd1 = gIRemoteObject.addDeathRecipient(recipient, 0)
-            console.log("SUB_Softbus_IPC_RemoteProxy_0100:run addDeathRecipient first result is " + resultAdd1);
+            console.info("SUB_Softbus_IPC_RemoteProxy_0100:run addDeathRecipient first result is " + resultAdd1);
             expect(resultAdd1 == true).assertTrue();
 
             var resultAdd2 = gIRemoteObject.addDeathRecipient(recipient, 0)
-            console.log("SUB_Softbus_IPC_RemoteProxy_0100:run addDeathRecipient second result is " + resultAdd2);
+            console.info("SUB_Softbus_IPC_RemoteProxy_0100:run addDeathRecipient second result is " + resultAdd2);
             expect(resultAdd2 == true).assertTrue();
 
             var resultRemove1 = gIRemoteObject.removeDeathRecipient(recipient, 0)
-            console.log("SUB_Softbus_IPC_RemoteProxy_0100:run removeDeathRecipient1 result is " + resultRemove1);
+            console.info("SUB_Softbus_IPC_RemoteProxy_0100:run removeDeathRecipient1 result is " + resultRemove1);
             expect(resultRemove1 == true).assertTrue();
 
             var resultRemove2 = gIRemoteObject.removeDeathRecipient(recipient, 0)
-            console.log("SUB_Softbus_IPC_RemoteProxy_0100:run  removeDeathRecipient2 result is " + resultRemove2);
+            console.info("SUB_Softbus_IPC_RemoteProxy_0100:run  removeDeathRecipient2 result is " + resultRemove2);
             expect(resultRemove2 == true).assertTrue();
 
             var resultRemove3 = gIRemoteObject.removeDeathRecipient(recipient, 0)
-            console.log("SUB_Softbus_IPC_RemoteProxy_0100:run  removeDeathRecipient3 result is " + resultRemove3);
+            console.info("SUB_Softbus_IPC_RemoteProxy_0100:run  removeDeathRecipient3 result is " + resultRemove3);
             expect(resultRemove3 == false).assertTrue();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_RemoteProxy_0100:error = " + error);
+            console.info("SUB_Softbus_IPC_RemoteProxy_0100:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_RemoteProxy_0100---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_RemoteProxy_0100---------------------------");
     });
 
     /*
@@ -3827,32 +3770,35 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_RemoteProxy_0200", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_RemoteProxy_0200---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_RemoteProxy_0200---------------------------");
         try{
-            let recipient = new MyDeathRecipient(proxy, null)
-            var resultAdd1 = proxy.addDeathRecipient(recipient, 0)
-            console.log("SUB_Softbus_IPC_RemoteProxy_0200:run addDeathRecipient first result is " + resultAdd1);
+            var flag = false
+            let recipient = new MyDeathRecipient(gIRemoteObject, null)
+            var resultAdd1 = gIRemoteObject.addDeathRecipient(recipient, 0)
+            console.info("SUB_Softbus_IPC_RemoteProxy_0200:run addDeathRecipient first result is " + resultAdd1);
             expect(resultAdd1 == true).assertTrue();
 
-            var isDead1 = proxy.isObjectDead();
-            console.log("SUB_Softbus_IPC_RemoteProxy_0200: run isObjectDead result is " + isDead1);
-            expect(isDead1 == true).assertTrue();
+            var isDead1 = gIRemoteObject.isObjectDead();
+            console.info("SUB_Softbus_IPC_RemoteProxy_0200: run isObjectDead result is " + isDead1);
+            expect(isDead1 == false).assertTrue();
 
-            var resultAdd2 = proxy.addDeathRecipient(recipient, 0)
-            console.log("SUB_Softbus_IPC_RemoteProxy_0200:run addDeathRecipient second result is " + resultAdd2);
+            var resultAdd2 = gIRemoteObject.addDeathRecipient(recipient, 0)
+            console.info("SUB_Softbus_IPC_RemoteProxy_0200:run addDeathRecipient second result is " + resultAdd2);
             expect(resultAdd2 == true).assertTrue();
 
-            var resultRemove1 = proxy.removeDeathRecipient(recipient, 0)
-            console.log("SUB_Softbus_IPC_RemoteProxy_0200:run removeDeathRecipient1 result is " + resultRemove1);
+            var resultRemove1 = gIRemoteObject.removeDeathRecipient(recipient, 0)
+            console.info("SUB_Softbus_IPC_RemoteProxy_0200:run removeDeathRecipient1 result is " + resultRemove1);
             expect(resultRemove1 == true).assertTrue();
 
-            var isDead2 = proxy.isObjectDead();
-            console.log("SUB_Softbus_IPC_RemoteProxy_0200: run isObjectDead2 result is " + isDead2);
+            var isDead2 = gIRemoteObject.isObjectDead();
+            console.info("SUB_Softbus_IPC_RemoteProxy_0200: run isObjectDead2 result is " + isDead2);
             expect(isDead1 == false).assertTrue();
+            flag = true
         } catch (error) {
-            console.log("SUB_Softbus_IPC_RemoteProxy_0200:error = " + error);
+            console.info("SUB_Softbus_IPC_RemoteProxy_0200:error = " + error);
+            expect(flag == false).assertTrue();
         }
-        console.log("---------------------end SUB_Softbus_IPC_RemoteProxy_0200---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_RemoteProxy_0200---------------------------");
     });
 
     /*
@@ -3862,18 +3808,18 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_RemoteProxy_0300", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_RemoteProxy_0300---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_RemoteProxy_0300---------------------------");
         try{
             let object = new TestAbilityStub("Test0300");
 
             let result = object.getInterfaceDescriptor()
-            console.log("SUB_Softbus_IPC_RemoteProxy_0300: run getInterfaceDescriptor success, result is " + result);
+            console.info("SUB_Softbus_IPC_RemoteProxy_0300: run getInterfaceDescriptor success, result is " + result);
             expect(result == "Test0300").assertTrue();
 
         } catch (error) {
-            console.log("SUB_Softbus_IPC_RemoteProxy_0300:error = " + error);
+            console.info("SUB_Softbus_IPC_RemoteProxy_0300:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_RemoteProxy_0300---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_RemoteProxy_0300---------------------------");
     });
 
     /*
@@ -3883,28 +3829,28 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_RemoteProxy_0400", 0,async function(){
-        console.log("---------------------start SUB_Softbus_IPC_RemoteProxy_0400---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_RemoteProxy_0400---------------------------");
         try{
             let object = new TestAbilityStub("Test0400");
 
             let result = object.isObjectDead()
-            console.log("SUB_Softbus_IPC_RemoteProxy_0400: run getInterfaceDescriptor success, result is " + result);
+            console.info("SUB_Softbus_IPC_RemoteProxy_0400: run getInterfaceDescriptor success, result is " + result);
             expect(result == false).assertTrue()
 
             let res = object.attachLocalInterface(object, "Test2")
-            console.log("SUB_Softbus_IPC_RemoteProxy_0400: run attachLocalInterface success, res is " + res);
+            console.info("SUB_Softbus_IPC_RemoteProxy_0400: run attachLocalInterface success, res is " + res);
 
             let res2 = object.queryLocalInterface('Test2');
-            console.log("SUB_Softbus_IPC_RemoteProxy_0400: run queryLocalInterface success, res2 is " + res2);
+            console.info("SUB_Softbus_IPC_RemoteProxy_0400: run queryLocalInterface success, res2 is " + res2);
 
             let resultDescrip = object.getInterfaceDescriptor()
-            console.log("SUB_Softbus_IPC_RemoteProxy_0400: run getInterfaceDescriptor success resultDescrip is "
+            console.info("SUB_Softbus_IPC_RemoteProxy_0400: run getInterfaceDescriptor success resultDescrip is "
                          + resultDescrip);
             expect(resultDescrip == "Test2").assertTrue();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_RemoteProxy_0400:error = " + error);
+            console.info("SUB_Softbus_IPC_RemoteProxy_0400:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_RemoteProxy_0400---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_RemoteProxy_0400---------------------------");
     });
 
     /*
@@ -3914,7 +3860,7 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_RemoteProxy_0500", 0, async function(){
-        console.log("SUB_Softbus_IPC_RemoteProxy_0500 is starting-------------")
+        console.info("SUB_Softbus_IPC_RemoteProxy_0500 is starting-------------")
         try {
             
                 expect(rpc.RemoteProxy.PING_TRANSACTION).assertEqual(1599098439);
@@ -3929,9 +3875,9 @@ describe('ActsRpcClientJsTest', function(){
                 
            
         } catch (error) {
-            console.log("SUB_Softbus_IPC_RemoteProxy_0500 error is" + error);
+            console.info("SUB_Softbus_IPC_RemoteProxy_0500 error is" + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_RemoteProxy_0500---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_RemoteProxy_0500---------------------------");
     })
 
     /*
@@ -3941,17 +3887,17 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it('SUB_Softbus_IPC_IPCSkeleton_1000', 0, async function() {
-        console.log("---------------------start SUB_Softbus_IPC_IPCSkeleton_1000---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_IPCSkeleton_1000---------------------------");
         try {
             console.info("SUB_Softbus_IPC_IPCSkeleton_1000")
             let remoteObject = {};
             let ret = rpc.IPCSkeleton.flushCommands(remoteObject);
-            console.log("RpcServer: flushCommands result: " + ret);
+            console.info("RpcServer: flushCommands result: " + ret);
         }
         catch (error) {
-            console.log("SUB_Softbus_IPC_IPCSkeleton_1000 error is :" + error)
+            console.info("SUB_Softbus_IPC_IPCSkeleton_1000 error is :" + error)
         }
-        console.log("---------------------end SUB_Softbus_IPC_IPCSkeleton_1000---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_IPCSkeleton_1000---------------------------");
     })
 
     /*
@@ -3962,31 +3908,31 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it('SUB_Softbus_IPC_IPCSkeleton_2000', 0, async function() {
-        console.log("---------------------start SUB_Softbus_IPC_IPCSkeleton_2000---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_IPCSkeleton_2000---------------------------");
         try{
             let getCallingPid = rpc.IPCSkeleton.getCallingPid();
-            console.log("SUB_Softbus_IPC_IPCSkeleton_2000: run  getCallingPid result is :" + getCallingPid);
+            console.info("SUB_Softbus_IPC_IPCSkeleton_2000: run  getCallingPid result is :" + getCallingPid);
             expect(getCallingPid.assertEqual(nll)).assertFale();
 
             let getCallingUid = rpc.IPCSkeleton.getCallingUid();
-            console.log("SUB_Softbus_IPC_IPCSkeleton_2000: run getCallingUid result is :" + getCallingUid);
+            console.info("SUB_Softbus_IPC_IPCSkeleton_2000: run getCallingUid result is :" + getCallingUid);
             expect(getCallingUid.assertEqual(nll)).assertFale();
 
             let getCallingToKenId = rpc.IPCSkeleton.getCallingToKenId();
-            console.log("SUB_Softbus_IPC_IPCSkeleton_2000: run getCallingToKenId result is :" + getCallingToKenId);
+            console.info("SUB_Softbus_IPC_IPCSkeleton_2000: run getCallingToKenId result is :" + getCallingToKenId);
             expect(getCallingToKenId.assertEqual(nll)).assertFale();
 
             let getLocalDeviceID = rpc.IPCSkeleton.getLocalDeviceID();
-            console.log("SUB_Softbus_IPC_IPCSkeleton_2000: run getLocalDeviceID result is :" + getLocalDeviceID);
+            console.info("SUB_Softbus_IPC_IPCSkeleton_2000: run getLocalDeviceID result is :" + getLocalDeviceID);
             expect(getLocalDeviceID.assertEqual(nll)).assertFale();
 
             let getCallingDeviceID = rpc.IPCSkeleton.getCallingDeviceID();
-            console.log("SUB_Softbus_IPC_IPCSkeleton_2000: run getCallingDeviceID result is :" + getCallingDeviceID);
+            console.info("SUB_Softbus_IPC_IPCSkeleton_2000: run getCallingDeviceID result is :" + getCallingDeviceID);
             expect(getCallingDeviceID.assertEqual(nll)).assertFale();
         } catch (error){
-            console.log("SUB_Softbus_IPC_IPCSkeleton_2000: error = " + error);
+            console.info("SUB_Softbus_IPC_IPCSkeleton_2000: error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_IPCSkeleton_2000---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_IPCSkeleton_2000---------------------------");
     })
 
     /*
@@ -3996,7 +3942,7 @@ describe('ActsRpcClientJsTest', function(){
      * @tc.level   0
      */
     it("SUB_Softbus_IPC_IPCSkeleton_3000", 0,async function(done){
-        console.log("---------------------start SUB_Softbus_IPC_IPCSkeleton_3000---------------------------");
+        console.info("---------------------start SUB_Softbus_IPC_IPCSkeleton_3000---------------------------");
         try{
             let object = rpc.IPCSkeleton.getContextObject();
             let callingPid = rpc.IPCSkeleton.getCallingPid();
@@ -4041,10 +3987,10 @@ describe('ActsRpcClientJsTest', function(){
             reply.reclaim();
             done();
         } catch (error) {
-            console.log("SUB_Softbus_IPC_IPCSkeleton_3000:error = " + error);
+            console.info("SUB_Softbus_IPC_IPCSkeleton_3000:error = " + error);
         }
-        console.log("---------------------end SUB_Softbus_IPC_IPCSkeleton_3000---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_IPCSkeleton_3000---------------------------");
     });
 
-    console.log("-----------------------SUB_Softbus_IPC_MessageParce_Test is end-----------------------");
+    console.info("-----------------------SUB_Softbus_IPC_MessageParce_Test is end-----------------------");
 });

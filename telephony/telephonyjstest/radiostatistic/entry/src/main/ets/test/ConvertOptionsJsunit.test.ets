@@ -17,7 +17,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'hypium/index'
 import  convertxml from '@ohos.convertxml'
 export default function convertOptionsJsunit() {
-  describe('XmlTest',function () {
+  describe('XmlTest_radio_1',function () {
     console.log("************* settings Test start*************");
     it('Telephony_convertxml_ConvertXML_0100', 0, async function (done) {
       var xml =

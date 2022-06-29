@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function patternLockJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_four_5', function () {
     beforeEach(async function (done) {
       console.info("patternLock beforeEach start");
       let options = {

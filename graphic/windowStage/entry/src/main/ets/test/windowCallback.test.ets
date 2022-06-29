@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
+
 import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 
@@ -116,13 +117,146 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     }
     /**
-     * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_010
-     * @tc.name       Test setSystemBarEnableTest10
-     * @tc.desc       Verify the scene where illegal values are entered when the navigation bar and status bar are displayed or hidden
-     */
-    it('setSystemBarEnableTest10', 0, function (done) {
-      let caseName = 'setSystemBarEnableTest10';
+    * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_006
+    * @tc.name       Test setSystemBarEnableTest6
+    * @tc.desc       Test ohosWindow.setSystemBarEnable API function test1.
+    */
+    it('setSystemBarEnableTest6', 0, function (done) {
+      let caseName = 'setSystemBarEnableTest6';
       let msgStr = 'jsunittest ' + caseName + ' ';
+      let [flagStatus, flagNav] = [false, false];
+      console.log(msgStr + 'begin');
+      listenerData.on = true;
+      listenerData.typeStr = 'systemBarTintChange';
+      ohosWindow.on('systemBarTintChange', systembartintstate => {
+        console.log(msgStr + 'ohosWindow.on  systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
+        if (flagStatus || flagNav) {
+          expect(!!systembartintstate).assertTrue();
+          expect(!!systembartintstate.regionTint).assertTrue();
+          console.log(msgStr + 'flagStatus || flagNav' + msgStr + 'ohosWindow.on systemBarTintChange regionTint:' + JSON.stringify(systembartintstate.regionTint));
+          done();
+        }
+      })
+      let mainWnd = null;
+      console.log(msgStr + 'mainWnd = null');
+      console.log(msgStr + 'windowStage = ' + JSON.stringify(windowStage));
+      windowStage.getMainWindow((err, data) => {
+        console.log(msgStr + 'getMainWindow data2' + JSON.stringify(data));
+        if (err && err.code) {
+          unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
+        }
+        expect(!!data).assertTrue();
+        mainWnd = data;
+        console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
+        mainWnd.show((err, data) => {
+          console.log(msgStr + 'mainWnd.show err' + JSON.stringify(err));
+          console.log(msgStr + 'mainWnd.show data' + JSON.stringify(data));
+          if (err && err.code) {
+            unexpectedError(data, caseName, 'mainWnd.show', done);
+          }
+          expect(!data).assertTrue();
+          console.log(msgStr + 'mainWnd.show success');
+          mainWnd.setFullScreen(true, (err, data) => {
+            console.log(msgStr + 'mainWnd.setFullScreen data:' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.setFullScreen true', done);
+            }
+            expect(!data).assertTrue();
+            console.log(msgStr + 'mainWnd.setFullScreen success');
+            flagNav = true;
+            mainWnd.setSystemBarEnable(['navigation'], (err, data) => {
+              console.log(msgStr + 'mainWnd.setSystemBarEnable navigation JSON.stringify(data)==' + JSON.stringify(data));
+              if (err && err.code) {
+                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [navigation]', done);
+              }
+              expect(!data).assertTrue();
+              console.log(msgStr + 'mainWnd.setSystemBarEnable success flagNav==' + flagNav);
+            })
+            flagStatus = true;
+            mainWnd.setSystemBarEnable(['status'], (err, data) => {
+              console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(data)===' + JSON.stringify(data));
+              if (err && err.code) {
+                console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(err)===' + JSON.stringify(err));
+                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status]', done);
+              }
+              expect(!data).assertTrue();
+            })
+          })
+        })
+      })
+      console.log(msgStr + 'finished!!');
+    });
+    /**
+    * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_007
+    * @tc.name       Test setSystemBarEnableTest7
+    * @tc.desc       Verify that the scene hides the status bar and displays the navigation bar.
+    */
+    it('setSystemBarEnableTest7', 0, function (done) {
+      let caseName = 'setSystemBarEnableTest7';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let [flagStatus, flagNav] = [false, false];
+      console.log(msgStr + 'begin');
+      listenerData.on = true;
+      listenerData.typeStr = 'systemBarTintChange';
+      ohosWindow.on('systemBarTintChange', systembartintstate => {
+        console.log(msgStr + 'ohosWindow.on systembartintstate ：' + JSON.stringify(systembartintstate));
+        console.log(msgStr + 'ohosWindow.on systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
+        if (flagStatus || flagNav) {
+          console.log(msgStr + 'ohosWindow.on flagStatus || flagNav：');
+          expect(!!systembartintstate).assertTrue();
+          done();
+        }
+      })
+      let mainWnd = null;
+      console.log(msgStr + 'mainWnd = null')
+      windowStage.getMainWindow((err, data) => {
+        if (err && err.code) {
+          unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
+        }
+        expect(!!data).assertTrue();
+        mainWnd = data;
+        console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
+        mainWnd.show((err, data) => {
+          if (err && err.code) {
+            unexpectedError(data, caseName, 'mainWnd.show', done);
+          }
+          console.log(msgStr + 'mainWnd.show success');
+          expect(!data).assertTrue();
+          mainWnd.setFullScreen(true, (err, data) => {
+            console.log(msgStr + 'mainWnd.setFullScreen' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.setFullScreen true', done);
+            }
+            expect(!data).assertTrue();
+            mainWnd.setSystemBarEnable(['status'], (err, data) => {
+              console.log(msgStr + 'mainWnd.setSystemBarEnable status JSON.stringify(data)==' + JSON.stringify(data));
+              if (err && err.code) {
+                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status]', done);
+              }
+              flagStatus = true;
+              expect(!data).assertTrue();
+              mainWnd.setSystemBarEnable(['navigation'], (err, data) => {
+                if (err && err.code) {
+                  unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [navitgation]', done);
+                }
+                flagNav = true;
+                expect(!data).assertTrue();
+              })
+            })
+          })
+        })
+      })
+      console.log(msgStr + 'finished!!');
+    });
+    /**
+    * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_008
+    * @tc.name       Test setSystemBarEnableTest8
+    * @tc.desc       Verify that the scene displays both the status bar and the navigation bar.
+    */
+    it('setSystemBarEnableTest8', 0, function (done) {
+      let caseName = 'setSystemBarEnableTest8';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let [flagStatus, flagNav] = [false, false];
       console.log(msgStr + 'begin');
       let mainWnd = null;
       console.log(msgStr + 'mainWnd = null');
@@ -150,13 +284,141 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               if (err && err.code) {
                 unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable []', done);
               }
+              expect(!data).assertTrue();
+              listenerData.on = true;
+              listenerData.typeStr = 'systemBarTintChange';
+              setTimeout(() => {
+                ohosWindow.on('systemBarTintChange', systembartintstate => {
+                  console.log(msgStr + 'ohosWindow.on systemBarTintChange ：' + JSON.stringify(systembartintstate));
+                  console.log(msgStr + 'ohosWindow.on systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
+                  setTimeout(() => {
+                    if (flagStatus || flagNav) {
+                      let enable = systembartintstate.regionTint[0].isEnable
+                      let numType = systembartintstate.regionTint[0].type
+                      console.log(msgStr + 'ohosWindow.on isEnable : ' + JSON.stringify(enable));
+                      console.log(msgStr + 'ohosWindow.on numType : ' + JSON.stringify(numType));
+
+                      expect(numType === ohosWindow.WindowType.TYPE_NAVIGATION_BAR || enable).assertTrue();
+                    }
+                    done();
+                  }, 3000)
+                })
+              }, 2300)
+              mainWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
+                if (err && err.code) {
+                  unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status,navigation]', done);
+                }
+                flagStatus = true;
+                flagNav = true;
+                expect(!data).assertTrue();
+              })
+            })
+          })
+        })
+      })
+    });
+    /**
+    * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_009
+    * @tc.name       Test setSystemBarEnableTest9
+    * @tc.desc       Verify that the scene hides both the status bar and the navigation bar.
+    */
+    it('setSystemBarEnableTest9', 0, function (done) {
+      let caseName = 'setSystemBarEnableTest9';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let [flagStatus, flagNav] = [false, false];
+      console.log(msgStr + 'begin');
+      let mainWnd = null;
+      console.log(msgStr + 'mainWnd = null');
+      windowStage.getMainWindow((err, data) => {
+        if (err && err.code) {
+          unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
+        }
+        expect(!!data).assertTrue();
+        mainWnd = data;
+        console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
+        mainWnd.show((err, data) => {
+          if (err && err.code) {
+            unexpectedError(data, caseName, 'mainWnd.show', done);
+          }
+          console.log(msgStr + 'mainWnd.show success');
+          expect(!data).assertTrue();
+          mainWnd.setFullScreen(true, (err, data) => {
+            console.log(msgStr + 'mainWnd.setFullScreen' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.setFullScreen', done);
+            }
+            expect(!data).assertTrue();
+            mainWnd.setSystemBarEnable(['status', 'navigation'], (err, data) => {
+              console.log(msgStr + 'mainWnd.setSystemBarEnable status,navigation JSON.stringify(data)==' + JSON.stringify(data));
+              if (err && err.code) {
+                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [status,navigation]', done);
+              }
+              flagStatus = true;
+              flagNav = true;
+              expect(!data).assertTrue();
+              listenerData.on = true;
+              listenerData.typeStr = 'systemBarTintChange';
+              ohosWindow.on('systemBarTintChange', (systembartintstate) => {
+                console.log(msgStr + 'ohosWindow.on systemBarTintChange ：' + JSON.stringify(systembartintstate));
+                console.log(msgStr + 'ohosWindow.on systemBarTintChange systembartintstate.regionTint : ' + JSON.stringify(systembartintstate.regionTint));
+                if (flagStatus || flagNav) {
+                  expect(!!systembartintstate).assertTrue();
+                  done();
+                }
+              })
+              mainWnd.setSystemBarEnable([], (err, data) => {
+                if (err && err.code) {
+                  unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable []', done);
+                }
+                expect(!data).assertTrue();
+              })
+            })
+          })
+        })
+      })
+    });
+    /**
+     * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_010
+     * @tc.name       Test setSystemBarEnableTest10
+     * @tc.desc       Verify the scene where illegal values are entered when the navigation bar and status bar are displayed or hidden
+     */
+    it('setSystemBarEnableTest10', 0, function (done) {
+      let caseName = 'setSystemBarEnableTest10';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWnd = null;
+      console.log(msgStr + 'mainWnd = null');
+      windowStage.getMainWindow((err, data) => {
+        if (err && err.code) {
+          unexpectedError(data, caseName, 'windowStage.getMainWindow', done);
+        }
+        expect(!!data).assertTrue();
+        mainWnd = data;
+        console.log(msgStr + 'await windowStage  JSON.stringify(mainWnd)===' + JSON.stringify(mainWnd));
+        mainWnd.show((err, data) => {
+          if (err && err.code) {
+            unexpectedError(data, caseName, 'mainWnd.show', done);
+          }
+          console.log(msgStr + 'mainWnd.show success');
+          expect(!data).assertTrue();
+          mainWnd.setFullScreen(true, (err, data) => {
+            console.log(msgStr + 'mainWnd.setFullScreen: ' + JSON.stringify(data));
+            if (err && err.code) {
+              unexpectedError(data, caseName, 'mainWnd.setFullScreen true', done);
+            }
+            expect(!data).assertTrue();
+            mainWnd.setSystemBarEnable([], (err, data) => {
+              console.log(msgStr + 'mainWnd.setSystemBarEnable [] JSON.stringify(data)==' + JSON.stringify(data));
+              if (err && err.code) {
+                unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable []', done);
+              }
 
               expect(!data).assertTrue();
               mainWnd.setSystemBarEnable([null, '123'], (err, data) => {
                 console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(data)==' + JSON.stringify(data));
                 console.log(msgStr + 'mainWnd.setSystemBarEnable [null,123] JSON.stringify(err)==' + JSON.stringify(err));
                 if (err && err.code) {
-                  expect(err.code === 130).assertTrue();
+                  expect(err.code === 1003).assertTrue();
                   done();
                 } else {
                   unexpectedError(data, caseName, 'mainWnd.setSystemBarEnable [null,123]', done);
@@ -189,7 +451,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           let arrLength = systemBarData.regionTint.length;
           for (let i = 0; i < arrLength; i++) {
             let tempData = systemBarData.regionTint[i];
-            if (tempData.type === 2108 || tempData.type === 2112) {
+            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
               console.log(msgStr + 'systemBarTintChange compare start!');
               compareCount++;
               let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
@@ -284,8 +546,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           let arrLength = systemBarData.regionTint.length;
           for (let i = 0; i < arrLength; i++) {
             let tempData = systemBarData.regionTint[i];
-            if (tempData.type === 2108) {
-              console.log(msgStr + 'systemBarTintChange compare start!');
+            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR) {
+              console.log(msgStr + 'systemBarTintChange compare start! arrLength= '+ arrLength);
               compareCount++;
               let backgroundIndex = cloneColorArr.SBC.indexOf(tempData.backgroundColor);
               let contentColorIndex = cloneColorArr.SCC.indexOf(tempData.contentColor);
@@ -295,7 +557,9 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               if (contentColorIndex >= 0) {
                 cloneColorArr.SCC.splice(contentColorIndex, 1);
               }
-            } else if (tempData.type === 2112) {
+              console.log(msgStr+'compareCount: '+compareCount +' ,length: '+JSON.stringify(cloneColorArr.SCC.length)+ '   ,cloneColorArr.SBC:'+JSON.stringify(cloneColorArr.SBC));
+              console.log(msgStr+'compareCount: '+compareCount +' ,length: '+JSON.stringify(cloneColorArr.SCC.length)+'    ,cloneColorArr.SCC'+JSON.stringify(cloneColorArr.SCC));
+            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
               console.log(msgStr + 'systemBarTintChange compare start!');
               compareCount++;
               let backgroundIndex = cloneColorArr.NBC.indexOf(tempData.backgroundColor);
@@ -306,6 +570,17 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               if (contentColorIndex >= 0) {
                 cloneColorArr.NCC.splice(contentColorIndex, 1);
               }
+              let ca = cloneColorArr;
+              let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
+              if(compareCount===18&&!flag){
+                console.log(msgStr + 'compareCount: '+compareCount +' ,true flag:'+flag);
+                expect(true).assertTrue();
+                done();
+              }else{
+                console.log(msgStr + 'compareCount: '+compareCount +' ,flag:'+flag);
+              }
+              console.log(msgStr+'compareCount: '+compareCount +' ,length: '+JSON.stringify(cloneColorArr.NBC.length)+ '   ,cloneColorArr.SBC:'+JSON.stringify(cloneColorArr.NBC));
+              console.log(msgStr+'compareCount: '+compareCount +' ,length: '+JSON.stringify(cloneColorArr.NCC.length)+'    ,cloneColorArr.SCC'+JSON.stringify(cloneColorArr.NCC));
             }
           }
         }
@@ -357,16 +632,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                   }
                 })
               }
-              setTimeout(() => {
-                console.log(msgStr + 'time wait finished. compareCount: ' + compareCount);
-                listenerFlag = listenerStatus.finished;
-                let ca = cloneColorArr;
-                if (ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length) {
-                  unexpectedError(null, caseName, ' something compaer failed', done);
-                } else {
-                  done();
-                }
-              }, 10000)
             })
           })
         })
@@ -394,7 +659,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           let arrLength = systemBarData.regionTint.length;
           for (let i = 0; i < arrLength; i++) {
             let tempData = systemBarData.regionTint[i];
-            if (tempData.type === 2108 || tempData.type === 2112) {
+            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
               console.log(msgStr + 'systemBarTintChange compare start!');
               compareCount++;
               let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
@@ -481,7 +746,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
           console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
           if (err && err.code) {
-            expect(err.code === 130).assertTrue();
+            expect(err.code === 1003).assertTrue();
             console.log(msgStr + 'ohosWindow.create err.code==' + JSON.stringify(err.code))
             if (i === loopCount - 1) {
               done();
@@ -548,7 +813,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       ohosWindow.create(context, windId, tempType, (err, data) => {
         console.log(msgStr + 'ohosWindow.create  data' + JSON.stringify(data));
         if (err && err.code) {
-          expect(err.code === 130).assertTrue();
+          expect(err.code === 1003).assertTrue();
           done();
           return;
         }
@@ -576,7 +841,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           console.log(msgStr + 'ohosWindow.create 1 twice err: ' + JSON.stringify(err));
           if (err && err.code) {
             console.log(msgStr + 'ohosWindow.create 1 twice data: ' + JSON.stringify(data));
-            expect(err.code).assertEqual(120)
+            expect(err.code).assertEqual(1001)
             done();
           } else {
             unexpectedError(err, caseName, 'ohosWindow.create', done);
@@ -668,30 +933,37 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           expect(!!tempWnd).assertTrue();
           let loopCount1 = systemWindowTypeArr;
           console.log(msgStr + 'ohosWindow.windowType' + JSON.stringify(loopCount1))
-          for (let i = 1; i < loopCount1.length; i++) {
+          for (let i = 0; i < loopCount1.length; i++) {
             let tempType = ohosWindow.WindowType[loopCount1[i]];
             console.log(msgStr + 'tempWnd.setWindowType ' + tempType + ' start');
             tempTypeArr.push(tempType);
             tempWnd.setWindowType(tempType, (err, data) => {
-              console.log(msgStr + 'tempWnd.setWindowType err' + JSON.stringify(err));
-              console.log(msgStr + 'tempWnd.setWindowType data' + JSON.stringify(data));
-              console.log(msgStr + 'tempWnd.setWindowType !!data' + !!data);
+              console.log(msgStr + 'tempWnd.setWindowType i: ' + i);
+              console.log(msgStr + 'tempWnd.setWindowType err: ' + JSON.stringify(err));
+              console.log(msgStr + 'tempWnd.setWindowType data: ' + JSON.stringify(data));
+              console.log(msgStr + 'tempWnd.setWindowType !data: ' + !data);
               if (!data) {
                 expect(!data).assertTrue();
-                tempWnd.getProperties((err, data) => {
-                  console.log(msgStr + 'tempWnd.getProperties err' + JSON.stringify(err));
-                  console.log(msgStr + 'tempWnd.getProperties data' + JSON.stringify(data));
-                  console.log(msgStr + 'tempWnd.getProperties !!data' + !!data);
-                  expect(!!data).assertTrue();
-                  if (!!data) {
-                    tempTypeArr.splice(tempTypeArr.findIndex(item => item === data.type), 1);
+                console.log(msgStr + 'tempWnd.getProperties start');
+                tempWnd.getProperties((err, dataProper) => {
+                  console.log(msgStr + 'tempWnd.getProperties err: ' + JSON.stringify(err));
+                  console.log(msgStr + 'tempWnd.getProperties dataProper: ' + JSON.stringify(dataProper));
+                  console.log(msgStr + 'tempWnd.getProperties !!dataProper: ' + !!dataProper);
+                  expect(!!dataProper).assertTrue();
+                  if (!!dataProper) {
+                    console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr: ' + JSON.stringify(tempTypeArr));
+                    console.log(msgStr + 'tempWnd.getProperties true  i: ' + i);
+                    tempTypeArr.splice(tempTypeArr.findIndex(item => item === dataProper.type), 1);
+                    console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr.length: ' + tempTypeArr.length);
+                    console.log(msgStr + 'tempWnd.getProperties true  loopCount1.length: ' + loopCount1.length);
+                    console.log(msgStr + 'tempWnd.getProperties true  tempTypeArr.length + 1: ' + tempTypeArr.length + 1);
                     expect((loopCount1.length - i) == (tempTypeArr.length + 1)).assertTrue();
                     if (i == loopCount1.length - 1) {
                       console.log(msgStr + 'tempWnd.getProperties i=' + i + '   ,    loopCount1.length-1==' + loopCount1.length);
                       done();
                     }
                   } else {
-                    unexpectedError(err, caseName, 'tempWnd.getProperties', done);
+                    unexpectedError(err, caseName, 'tempWnd.getProperties aa', done);
                   }
                 })
               } else {
@@ -704,13 +976,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           unexpectedError(err, caseName, 'ohosWindow.create', done);
         }
       })
-
     })
     /**
-* @tc.number     SUB_WINDOW_SETWINDOWTYPE_JSAPI_004
-* @tc.name       Test setWindowTypeTest4
-* @tc.desc       Verify the scene of setting illegal window type
-*/
+    * @tc.number     SUB_WINDOW_SETWINDOWTYPE_JSAPI_004
+    * @tc.name       Test setWindowTypeTest4
+    * @tc.desc       Verify the scene of setting illegal window type
+    */
     it('setWindowTypeTest4', 0, function (done) {
       let caseName = 'setWindowTypeTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
@@ -733,7 +1004,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             if (!!data) {
               expectedError(err, caseName, 'tempWnd.setWindowType', done);
             } else {
-              expect(err.code == 130).assertTrue();
+              expect(err.code == 1003).assertTrue();
               done();
             }
           })
@@ -774,7 +1045,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                 console.log(msgStr + 'ohosWindow.find data' + JSON.stringify(data));
                 console.log(msgStr + 'ohosWindow.find !!data' + !!data);
                 if (err && err.code) {
-                  expect(err.code == 120).assertTrue();
+                  expect(err.code == 1001).assertTrue();
                   done();
                 } else {
                   expectedError(err, caseName, 'tempWnd.setWindowType', done);
@@ -809,7 +1080,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           tempWnd.loadContent('pages/index', (err, data) => {
             console.log(msgStr + 'tempWnd.loadContent err' + JSON.stringify(err));
             console.log(msgStr + 'tempWnd.loadContent data' + JSON.stringify(data));
-            console.log(msgStr + 'tempWnd.loadContent !!data' + !!data);
+            console.log(msgStr + 'tempWnd.loadContent !data' + !data);
             if (err && err.code) {
               expectedError(err, caseName, 'tempWnd.loadContent', done);
             } else {
@@ -846,7 +1117,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             console.log(msgStr + 'tempWnd.loadContent data' + JSON.stringify(data));
             console.log(msgStr + 'tempWnd.loadContent !!data' + !!data);
             if (err && err.code) {
-              expect(err.code === 130).assertTrue();
+              expect(err.code === 1003).assertTrue();
               done();
             } else {
               expectedError(err, caseName, 'tempWnd.loadContent', done);
@@ -876,6 +1147,24 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         }
         done();
       });
+    })
+    /**
+    * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_010
+    * @tc.name       Test loadContentTest10
+    * @tc.desc       Verify the scenario of loading an existing page
+    */
+    it('loadContentTest10', 0, function (done) {
+      let caseName = 'loadContentTest10';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      windowStage.loadContent(null, (err, data) => {
+        if (err && err.code) {
+          expectedError(err, caseName, 'windowStage.loadContent', done, 1003);
+          console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+        }
+        done();
+      });
+      console.log(msgStr + 'end');
     })
     /**
     * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_011
@@ -908,7 +1197,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'begin');
       windowStage.loadContent(null, abilityStorage, (err, data) => {
         if (err && err.code) {
-          expectedError(err, caseName, 'windowStage.loadContent', done,130);
+          expectedError(err, caseName, 'windowStage.loadContent', done, 1003);
           console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
         }
         done();
@@ -945,7 +1234,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log(msgStr + 'begin');
       windowStage.createSubWindow(null, (err, data) => {
         if (err && err.code) {
-          expectedError(err, caseName, 'windowStage.createSubWindow', done, 130);
+          expectedError(err, caseName, 'windowStage.createSubWindow', done, 1003);
           console.log(msgStr + 'windowStage.createSubWindow(null) err=' + JSON.stringify(err));
         } else {
           expect(false).assertTrue();

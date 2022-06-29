@@ -17,7 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import inputmeth from '@ohos.inputmethod';
 
 export default function settingUiJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_input_2', function () {
     console.log("************* settings Test start*************");
     it('inputmethoh_test_001', 0, async function (done) {
       let inputMethodSetting = inputmeth.getInputMethodSetting();

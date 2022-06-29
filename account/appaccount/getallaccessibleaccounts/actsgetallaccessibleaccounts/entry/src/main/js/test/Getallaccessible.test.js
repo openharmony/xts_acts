@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
-import featureAbility from '@ohos.ability.featureability'
+import featureAbility from '@ohos.ability.featureAbility'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const TIMEOUT = 2000;
@@ -108,10 +108,26 @@ describe('ActsGetAllAccessibleAccounts', function () {
      * @tc.name      : getAllAccessibleAccounts promise
      * @tc.desc      : This application gets authorization after adding a single account
      */
-    it('ActsGetAllAccessibleAccounts_0400', 0, async function (done) {
+   it('ActsGetAllAccessibleAccounts_0400', 0, async function (done) {
         console.debug("====>ActsGetAllAccessibleAccounts_0400 start====");
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat finish====");
+        var selfBundle = "com.example.actsgetallaccessibleaccounts";
+        console.debug("====>getAllAccounts for clean====");
+        try{
+            var acclist = await appAccountManager.getAllAccounts(selfBundle);
+        }
+        catch(err){
+            console.error("====>getAllAccounts err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+        console.debug("====>account list length: " + acclist.length);
+        if(acclist.length > 0){
+            for(var i = 0;i < acclist.length; i++){
+                await appAccountManager.deleteAccount(acclist[i].name);
+            }
+        }
         console.debug("====>add account ActsGetAllAccessibleAccounts_0400 start====");
         await appAccountManager.addAccount("accessibleAccount_promise_single");
         console.debug("====>getAllAccessibleAccounts 0400 start====");
@@ -205,6 +221,22 @@ describe('ActsGetAllAccessibleAccounts', function () {
         console.debug("====>ActsGetAllAccessibleAccounts_0600 start====");
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat finish====");
+        console.debug("====>getAllAccounts for clean====");
+        var selfBundle = "com.example.actsgetallaccessibleaccounts";
+        try{
+            var acclist = await appAccountManager.getAllAccounts(selfBundle);
+        }
+        catch(err){
+            console.error("====>getAllAccounts err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+        console.debug("====>account list length: " + acclist.length);
+        if(acclist.length > 0){
+            for(var i = 0;i < acclist.length; i++){
+                await appAccountManager.deleteAccount(acclist[i].name);
+            }
+        }
         console.debug("====>add first account 0600 start====");
         await appAccountManager.addAccount("accessibleAccount_promise_first");
         console.debug("====>add second account 0600 start====");
@@ -310,6 +342,22 @@ describe('ActsGetAllAccessibleAccounts', function () {
         console.debug("====>ActsGetAllAccessibleAccounts_0800 start====");
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat finish====");
+        console.debug("====>getAllAccounts for clean====");
+        var selfBundle = "com.example.actsgetallaccessibleaccounts";
+        try{
+            var acclist = await appAccountManager.getAllAccounts(selfBundle);
+        }
+        catch(err){
+            console.error("====>getAllAccounts err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+        console.debug("====>account list length: " + acclist.length);
+        if(acclist.length > 0){
+            for(var i = 0;i < acclist.length; i++){
+                await appAccountManager.deleteAccount(acclist[i].name);
+            }
+        }
         console.debug("====>add first account 0800 start====");
         await appAccountManager.addAccount("accessibleAccount_promise_first");
         console.debug("====>add second account 0800 start====");
@@ -423,6 +471,22 @@ describe('ActsGetAllAccessibleAccounts', function () {
         console.debug("====>ActsGetAllAccessibleAccounts_1000 start====");
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat finish====");
+        console.debug("====>getAllAccounts for clean====");
+        var selfBundle = "com.example.actsgetallaccessibleaccounts";
+        try{
+            var acclist = await appAccountManager.getAllAccounts(selfBundle);
+        }
+        catch(err){
+            console.error("====>getAllAccounts err:" + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+        console.debug("====>account list length: " + acclist.length);
+        if(acclist.length > 0){
+            for(var i = 0;i < acclist.length; i++){
+                await appAccountManager.deleteAccount(acclist[i].name);
+            }
+        }
         console.debug("====>add first account 1000 start====");
         await appAccountManager.addAccount("accessibleAccount_promise_multiple_first");
         console.debug("====>add second account 1000 start====");

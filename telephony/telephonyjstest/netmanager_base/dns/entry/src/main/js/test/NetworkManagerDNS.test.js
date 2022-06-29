@@ -13,137 +13,148 @@
  * limitations under the License.
  */
 
-import netConnection from '@ohos.net.connection';
-import {describe, afterAll, it, expect, beforeAll, afterEach} from 'deccjsunit/index';
-
-
-describe('Telephony_NETMANAGER_TestDNSTest',function(){
-
-
-    it('Telephony_NETMANAGER_TestDNS_Test0100', 0, function(done){
-
-        netConnection.getDefaultNet().then(function(netHandle){
-            netHandle.getAddressesByName("www.zhihu.com").then(function(addresses){
-                if(addresses === undefined || addresses.length == 0 ){
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0100 addresses id undefined '+addresses);
-                    expect(false).assertFail();
-                }else{
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0100 is success');
-                    expect(true).assertTrue();
-                }
-                done();
-            })
-        })
-    });
-
-    it('Telephony_NETMANAGER_TestDNS_Test0200', 0, function(done){
-
-        netConnection.getDefaultNet().then(function(netHandle){
-            netHandle.getAddressesByName("www.zhihu.com", function(err, addresses){
-                if(addresses === undefined || addresses.length == 0 ){
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0200 addresses id undefined '+addresses);
-                    expect(false).assertFail();
-                }else{
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0200 is success');
-                    expect(true).assertTrue();
-                }
-                done();
-            })
-        })
-    });
-
-
-    it('Telephony_NETMANAGER_TestDNS_Test0300', 0, function(done){
-
-        netConnection.getDefaultNet().then(function(netHandle){
-            netHandle.getAddressByName("www.zhihu.com").then(function(address){
-                if(address === undefined){
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0300 addresses id undefined '+address);
-                    expect(false).assertFail();
-                }else{
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0300 is success');
-                    expect(true).assertTrue();
-                }
-                done();
-            })
-        })
-    });
-
-    it('Telephony_NETMANAGER_TestDNS_Test0400', 0, function(done){
-
-        netConnection.getDefaultNet().then(function(netHandle){
-            netHandle.getAddressByName("www.baidu.com", function(err, address){
-                if(address === undefined ){
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0400 addresses id undefined '+address);
-                    expect(false).assertFail();
-                }else{
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0400 is success');
-                    expect(true).assertTrue();
-                }
-                done();
-            })
-        })
-    });
-
-    it('Telephony_NETMANAGER_TestDNS_Test0500', 0, function(done){
-
-        netConnection.getDefaultNet().then(function(netHandle){
-            netHandle.getAddressesByName("www.askjdbaksjnhd.com").catch(function(error){
-                if(error === undefined){
-                    expect(false).assertTrue();
-                }else{
-                    expect(true).assertTrue()
-                }
-                done();
-            })
-        })
-    });
-
-    it('Telephony_NETMANAGER_TestDNS_Test0600', 0, function(done){
-
-        netConnection.getDefaultNet().then(function(netHandle){
-            netHandle.getAddressesByName("www.askjdbaksjnhd.com", function(err, addresses){
-                if(addresses instanceof Array && addresses.length !== 0 ){
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0600 addresses id undefined '+addresses);
-                    expect(false).assertFail();
-                }else{
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0600 is success');
-                    expect(true).assertTrue();
-                }
-                done();
-            })
-        })
-    });
-
-
-    it('Telephony_NETMANAGER_TestDNS_Test0700', 0, function(done){
-
-        netConnection.getDefaultNet().then(function(netHandle){
-            netHandle.getAddressesByName("www.askjdbaksjnhd.com").catch(function(error){
-                if(error === undefined){
-                    expect(false).assertTrue();
-                }else{
-                    expect(true).assertTrue()
-                }
-                done();
-            })
-        })
-    });
-
-    it('Telephony_NETMANAGER_TestDNS_Test0800', 0, function(done){
-
-        netConnection.getDefaultNet().then(function(netHandle){
-            netHandle.getAddressesByName("www.askjdbaksjnhd.com", function(err, address){
-                if(address !== undefined ){
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0800 addresses id undefined '+address);
-                    expect(false).assertFail();
-                }else{
-                    console.log('Telephony_NETMANAGER_TestDNS_Test0800 is success');
-                    expect(true).assertTrue();
-                }
-                done();
-            })
-        })
-    });
-
-});
+ import netConnection from '@ohos.net.connection';
+ import {describe, afterAll, it, expect, beforeAll, afterEach} from 'deccjsunit/index';
+ 
+ 
+ describe('Telephony_NETMANAGER_TestDNSTest',function(){
+ 
+ 
+     it('Telephony_NETMANAGER_TestDNS_Test0100', 0, function(done){
+ 
+         netConnection.getDefaultNet().then(function(netHandle){
+             netHandle.getAddressesByName("www.baidu.com").then(function(addresses){
+                 if(addresses === undefined || addresses.length == 0 ){
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0100 addresses is '+addresses);
+                     expect(false).assertFail();
+                 }else{
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0100 is success');
+                     expect(true).assertTrue();
+                 }
+                 done();
+             })
+         })
+     });
+ 
+     it('Telephony_NETMANAGER_TestDNS_Test0200', 0, function(done){
+ 
+         netConnection.getDefaultNet().then(function(netHandle){
+             netHandle.getAddressesByName("www.baidu.com", function(err, addresses){
+                 if(addresses === undefined || addresses.length == 0 ){
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0200 addresses is '+addresses);
+                     expect(false).assertFail();
+                 }else{
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0200 is success');
+                     expect(true).assertTrue();
+                 }
+                 done();
+             })
+         })
+     });
+ 
+ 
+     it('Telephony_NETMANAGER_TestDNS_Test0300', 0, function(done){
+ 
+         netConnection.getDefaultNet().then(function(netHandle){
+             netHandle.getAddressByName("www.baidu.com").then(function(address){
+                 if(address === undefined){
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0300 addresses is '+address);
+                     expect(false).assertFail();
+                 }else{
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0300 is success');
+                     expect(true).assertTrue();
+                 }
+                 done();
+             })
+         })
+     });
+ 
+     it('Telephony_NETMANAGER_TestDNS_Test0400', 0, function(done){
+ 
+         netConnection.getDefaultNet().then(function(netHandle){
+             netHandle.getAddressByName("www.baidu.com", function(err, address){
+                 if(address === undefined ){
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0400 addresses is '+address);
+                     expect(false).assertFail();
+                 }else{
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0400 is success');
+                     expect(true).assertTrue();
+                 }
+                 done();
+             })
+         })
+     });
+ 
+     it('Telephony_NETMANAGER_TestDNS_Test0500', 0, function(done){
+ 
+         netConnection.getDefaultNet().then(function(netHandle){
+             netHandle.getAddressesByName("www.askjdbaksjnhd.com").then(function (data) {
+                 if(data !== undefined && data.length !== 0){
+                     expect(false).assertTrue();
+                 }
+                 done()
+             }).catch(function (error) {
+                 if(error === undefined){
+                     expect(false).assertTrue();
+                 }else{
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0500 error is '+JSON.stringify(error));
+                 }
+                 done();
+             })
+         })
+     });
+ 
+     it('Telephony_NETMANAGER_TestDNS_Test0600', 0, function(done){
+ 
+         netConnection.getDefaultNet().then(function(netHandle){
+             netHandle.getAddressesByName("www.askjdbaksjnhd.com", function(err, addresses){
+                 if(addresses instanceof Array && addresses.length !== 0 ){
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0600 addresses is '+addresses);
+                     expect(false).assertFail();
+                 }else{
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0600 is success');
+                     expect(true).assertTrue();
+                 }
+                 done();
+             })
+         })
+     });
+ 
+ 
+     it('Telephony_NETMANAGER_TestDNS_Test0700', 0, function(done){
+ 
+         netConnection.getDefaultNet().then(function(netHandle){
+             netHandle.getAddressByName("www.askjdbaksjnhd.com").then(function(data) {
+                 if(data !== undefined && data.length !== 0){
+                     expect(false).assertTrue();
+                 }
+                 done()
+             }).catch(function (error){
+                 if(error !== undefined){
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0700 error is '+ JSON.stringify(error));
+                     expect(true).assertTrue();
+                 }else{
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0700 is success');
+                 }
+                 done();
+             })
+         })
+     });
+ 
+     it('Telephony_NETMANAGER_TestDNS_Test0800', 0, function(done){
+ 
+         netConnection.getDefaultNet().then(function(netHandle){
+             netHandle.getAddressByName("www.askjdbaksjnhd.com", function(err, address){
+                 if(address !== undefined ){
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0800 address is undefined '+address);
+                     expect(false).assertFail();
+                 }else{
+                     console.info('Telephony_NETMANAGER_TestDNS_Test0800 is success');
+                     expect(true).assertTrue();
+                 }
+                 done();
+             })
+         })
+     });
+ 
+ });

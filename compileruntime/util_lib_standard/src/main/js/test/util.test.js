@@ -51,7 +51,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilPrintf001
      * @tc.desc: Returns the formatted string.
-     * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
     it('testUtilPrintf001', 0, function () {
@@ -66,7 +65,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilPrintf002
      * @tc.desc: Returns the formatted string.
-     * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
     it('testUtilPrintf002', 0, function () {
@@ -79,7 +77,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilPrintf003
      * @tc.desc: Returns the formatted string.
-     * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
     it('testUtilPrintf003', 0, function () {
@@ -93,7 +90,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilPrintf004
      * @tc.desc: Returns the formatted string.
-     * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
     it('testUtilPrintf004', 0, function () {
@@ -107,7 +103,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilPrintf005
      * @tc.desc: Returns the formatted string.
-     * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
     it('testUtilPrintf005', 0, function () {
@@ -121,7 +116,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilGetErrorString001
      * @tc.desc: Get the string name of the system errno.
-     * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
      it('testUtilGetErrorString001', 0, async function () {
@@ -133,7 +127,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilGetErrorString002
      * @tc.desc: Get the string name of the system errno.
-     * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
     it('testUtilGetErrorString002', 0, async function () {
@@ -145,7 +138,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilGetErrorString003
      * @tc.desc: Get the string name of the system errno.
-     * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
     it('testUtilGetErrorString003', 0, async function () {
@@ -157,7 +149,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilGetErrorString004
      * @tc.desc: Get the string name of the system errno.
-     * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
     it('testUtilGetErrorString004', 0, async function () {
@@ -169,7 +160,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilGetErrorString005
      * @tc.desc: Get the string name of the system errno.
-     * @tc.require: AR000GFB4U
      * @tc.author: shikai
      */
     it('testUtilGetErrorString005', 0, async function () {
@@ -181,8 +171,7 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilPromiseWrapper001
      * @tc.desc: Takes a function following the common error-first callback style,
-	   taking an callback as the last argument, and return a version that returns promises.
-     * @tc.require: AR000GFB4U
+       taking an callback as the last argument, and return a version that returns promises.
      * @tc.author: shikai
      */
     it('testUtilPromiseWrapper001', 0, async function () {
@@ -202,8 +191,7 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilPromiseWrapper002
      * @tc.desc: Takes a function following the common error-first callback style,
-	   taking an callback as the last argument, and return a version that returns promises.
-     * @tc.require: AR000GFB4U
+       taking an callback as the last argument, and return a version that returns promises.
      * @tc.author: shikai
      */
     it('testUtilPromiseWrapper002', 0, async function () {
@@ -223,8 +211,7 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilPromiseWrapper003
      * @tc.desc: Takes a function following the common error-first callback style,
-	   taking an callback as the last argument, and return a version that returns promises.
-     * @tc.require: AR000GFB4U
+       taking an callback as the last argument, and return a version that returns promises.
      * @tc.author: shikai
      */
     it('testUtilPromiseWrapper003', 0, async function () {
@@ -236,8 +223,7 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilPromiseWrapper004
      * @tc.desc: Takes a function following the common error-first callback style,
-	   taking an callback as the last argument, and return a version that returns promises.
-     * @tc.require: AR000GFB4U
+       taking an callback as the last argument, and return a version that returns promises.
      * @tc.author: shikai
      */
     it('testUtilPromiseWrapper004', 0, async function () {
@@ -254,8 +240,7 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilPromiseWrapper005
      * @tc.desc: Takes a function following the common error-first callback style,
-	   taking an callback as the last argument, and return a version that returns promises.
-     * @tc.require: AR000GFB4U
+       taking an callback as the last argument, and return a version that returns promises.
      * @tc.author: shikai
      */
     it('testUtilPromiseWrapper005', 0, async function () {
@@ -275,8 +260,7 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilPromiseWrapper006
      * @tc.desc: Takes a function following the common error-first callback style,
-	   taking an callback as the last argument, and return a version that returns promises.
-     * @tc.require: AR000GFB4U
+       taking an callback as the last argument, and return a version that returns promises.
      * @tc.author: shikai
      */
     it('testUtilPromiseWrapper006', 0, async function () {
@@ -296,8 +280,7 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilPromiseWrapper007
      * @tc.desc: Takes a function following the common error-first callback style,
-	   taking an callback as the last argument, and return a version that returns promises.
-     * @tc.require: AR000GFB4U
+       taking an callback as the last argument, and return a version that returns promises.
      * @tc.author: shikai
      */
     it('testUtilPromiseWrapper007', 0, async function () {
@@ -313,8 +296,7 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilCallbackWrapper001
      * @tc.desc: Takes an async function (or a function that returns a Promise) and
-	   returns a function following the error-first callback style.
-     * @tc.require: AR000GFB4U
+       returns a function following the error-first callback style.
      * @tc.author: shikai
      */
     it('testUtilCallbackWrapper001', 0, async function () {
@@ -329,8 +311,7 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilCallbackWrapper002
      * @tc.desc: Takes an async function (or a function that returns a Promise) and
-	   returns a function following the error-first callback style.
-     * @tc.require: AR000GFB4U
+       returns a function following the error-first callback style.
      * @tc.author: shikai
      */
     it('testUtilCallbackWrapper002', 0, async function () {
@@ -347,8 +328,7 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilCallbackWrapper003
      * @tc.desc: Takes an async function (or a function that returns a Promise) and
-	   returns a function following the error-first callback style.
-     * @tc.require: AR000GFB4U
+       returns a function following the error-first callback style.
      * @tc.author: shikai
      */
     it('testUtilCallbackWrapper003', 0, async function () {
@@ -365,15 +345,13 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilCallbackWrapper004
      * @tc.desc: Takes an async function (or a function that returns a Promise) and
-	   returns a function following the error-first callback style.
-     * @tc.require: AR000GFB4U
+       returns a function following the error-first callback style.
      * @tc.author: shikai
      */
     it('testUtilCallbackWrapper004', 0, async function () {
         async function promiseFn() {
-			var err = Error('value');
-			return Promise.reject(err);
-			
+            var err = Error('value');
+            return Promise.reject(err);
         }
         var cb = util.callbackWrapper(promiseFn);
         cb((err, ret) => {
@@ -385,8 +363,7 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilCallbackWrapper005
      * @tc.desc: Takes an async function (or a function that returns a Promise) and
-	   returns a function following the error-first callback style.
-     * @tc.require: AR000GFB4U
+       returns a function following the error-first callback style.
      * @tc.author: shikai
      */
     it('testUtilCallbackWrapper005', 0, async function () {
@@ -403,8 +380,7 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testUtilCallbackWrapper006
      * @tc.desc: Takes an async function (or a function that returns a Promise) and
-	   returns a function following the error-first callback style.
-     * @tc.require: AR000GFB4U
+       returns a function following the error-first callback style.
      * @tc.author: shikai
      */
     it('testUtilCallbackWrapper006', 0, async function () {
@@ -422,7 +398,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncoding001
      * @tc.desc: The source encoding's name, lowercased.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncoding001', 0, function () {
@@ -434,7 +409,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncoding002
      * @tc.desc: The source encoding's name, lowercased.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncoding002', 0, function () {
@@ -446,7 +420,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncoding003
      * @tc.desc: The source encoding's name, lowercased.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncoding003', 0, function () {
@@ -458,7 +431,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncoding004
      * @tc.desc: The source encoding's name, lowercased.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncoding004', 0, function () {
@@ -470,7 +442,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncoding005
      * @tc.desc: The source encoding's name, lowercased.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncoding005', 0, function () {
@@ -483,7 +454,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testFatal001
      * @tc.desc: Returns `true` if error mode is "fatal", and `false` otherwise.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testFatal001', 0, function () {
@@ -495,7 +465,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testFatal002
      * @tc.desc: Returns `true` if error mode is "fatal", and `false` otherwise.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testFatal002', 0, function () {
@@ -507,7 +476,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testFatal003
      * @tc.desc: Returns `true` if error mode is "fatal", and `false` otherwise.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testFatal003', 0, function () {
@@ -519,7 +487,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testFatal004
      * @tc.desc: Returns `true` if error mode is "fatal", and `false` otherwise.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testFatal004', 0, function () {
@@ -531,7 +498,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testFatal005
      * @tc.desc: Returns `true` if error mode is "fatal", and `false` otherwise.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testFatal005', 0, function () {
@@ -541,9 +507,41 @@ describe('TextEncoderTest', function () {
     })
 
     /**
+     * @tc.name: testFatal006
+     * @tc.desc: Returns `true` if error mode is "fatal", and `false` otherwise.
+     * @tc.author: wangben
+     */
+     it('testFatal006', 0, function () {
+        var that = new util.TextDecoder('gbk')
+        var fatalStr = that.fatal
+        expect(fatalStr).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testFatal007
+     * @tc.desc: Returns `true` if error mode is "fatal", and `false` otherwise.
+     * @tc.author: wangben
+     */
+     it('testFatal007', 0, function () {
+        var that = new util.TextDecoder('gb18030')
+        var fatalStr = that.fatal
+        expect(fatalStr).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testFatal008
+     * @tc.desc: Returns `true` if error mode is "fatal", and `false` otherwise.
+     * @tc.author: wangben
+     */
+     it('testFatal008', 0, function () {
+        var that = new util.TextDecoder('gb2312')
+        var fatalStr = that.fatal
+        expect(fatalStr).assertEqual(false)
+    })
+
+    /**
      * @tc.name: testIgnoreBOM001
      * @tc.desc: Returns `true` if ignore BOM flag is set, and `false` otherwise.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testIgnoreBOM001', 0, function () {
@@ -555,7 +553,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testIgnoreBOM002
      * @tc.desc: Returns `true` if ignore BOM flag is set, and `false` otherwise.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testIgnoreBOM002', 0, function () {
@@ -567,7 +564,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testIgnoreBOM003
      * @tc.desc: Returns `true` if ignore BOM flag is set, and `false` otherwise.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testIgnoreBOM003', 0, function () {
@@ -579,7 +575,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testIgnoreBOM004
      * @tc.desc: Returns `true` if ignore BOM flag is set, and `false` otherwise.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testIgnoreBOM004', 0, function () {
@@ -591,7 +586,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testIgnoreBOM005
      * @tc.desc: Returns `true` if ignore BOM flag is set, and `false` otherwise.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testIgnoreBOM005', 0, function () {
@@ -600,11 +594,42 @@ describe('TextEncoderTest', function () {
         expect(ignoreBOMStr).assertEqual(false)
     })
 
+    /**
+     * @tc.name: testIgnoreBOM006
+     * @tc.desc: Returns `true` if ignore BOM flag is set, and `false` otherwise.
+     * @tc.author: wangben
+     */
+     it('testIgnoreBOM006', 0, function () {
+        var that = new util.TextDecoder('gbk')
+        var ignoreBOMStr = that.ignoreBOM
+        expect(ignoreBOMStr).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIgnoreBOM006
+     * @tc.desc: Returns `true` if ignore BOM flag is set, and `false` otherwise.
+     * @tc.author: wangben
+     */
+     it('testIgnoreBOM006', 0, function () {
+        var that = new util.TextDecoder('gb18030')
+        var ignoreBOMStr = that.ignoreBOM
+        expect(ignoreBOMStr).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testIgnoreBOM008
+     * @tc.desc: Returns `true` if ignore BOM flag is set, and `false` otherwise.
+     * @tc.author: wangben
+     */
+     it('testIgnoreBOM008', 0, function () {
+        var that = new util.TextDecoder('gb2312')
+        var ignoreBOMStr = that.ignoreBOM
+        expect(ignoreBOMStr).assertEqual(false)
+    })
 
     /**
      * @tc.name: testDecode001
      * @tc.desc: Returns the result of running encoding's decoder.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testDecode001', 0, function () {
@@ -621,7 +646,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testDecode002
      * @tc.desc: Returns the result of running encoding's decoder.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testDecode002', 0, function () {
@@ -641,7 +665,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testDecode003
      * @tc.desc: Returns the result of running encoding's decoder.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testDecode003', 0, function () {
@@ -661,7 +684,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testDecode004
      * @tc.desc: Returns the result of running encoding's decoder.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testDecode004', 0, function () {
@@ -683,7 +705,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testDecode005
      * @tc.desc: Returns the result of running encoding's decoder.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testDecode005', 0, function () {
@@ -705,9 +726,71 @@ describe('TextEncoderTest', function () {
     })
 
     /**
+     * @tc.name: testDecode006
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.author: wangben
+     */
+     it('testDecode006', 0, function () {
+        var that = new util.TextDecoder('gbk')
+        var arr = new Uint8Array(8)
+        arr[0] = 0xC4;
+        arr[1] = 0xE3;
+        arr[2] = 0xBA;
+        arr[3] = 0xC3;
+        arr[4] = 0xCA;
+        arr[5] = 0xC0;
+        arr[6] = 0xBD;
+        arr[7] = 0xE7;
+        var retStr = that.decode(arr)
+        var rel = '你好世界'
+        expect(retStr).assertEqual(rel)
+    })
+
+    /**
+     * @tc.name: testDecode007
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.author: wangben
+     */
+     it('testDecode007', 0, function () {
+        var that = new util.TextDecoder('gb18030')
+        var arr = new Uint8Array(8)
+        arr[0] = 0xC4;
+        arr[1] = 0xE3;
+        arr[2] = 0xBA;
+        arr[3] = 0xC3;
+        arr[4] = 0xCA;
+        arr[5] = 0xC0;
+        arr[6] = 0xBD;
+        arr[7] = 0xE7;
+        var retStr = that.decode(arr)
+        var rel = '你好世界'
+        expect(retStr).assertEqual(rel)
+    })
+
+    /**
+     * @tc.name: testDecode008
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.author: wangben
+     */
+     it('testDecode008', 0, function () {
+        var that = new util.TextDecoder('gb2312')
+        var arr = new Uint8Array(8)
+        arr[0] = 0xC4;
+        arr[1] = 0xE3;
+        arr[2] = 0xBA;
+        arr[3] = 0xC3;
+        arr[4] = 0xCA;
+        arr[5] = 0xC0;
+        arr[6] = 0xBD;
+        arr[7] = 0xE7;
+        var retStr = that.decode(arr)
+        var rel = '你好世界'
+        expect(retStr).assertEqual(rel)
+    })
+
+    /**
      * @tc.name: testGetEncoding001
      * @tc.desc: Encoding format.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testGetEncoding001', 0, function () {
@@ -719,7 +802,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncode001
      * @tc.desc: Returns the result of encoder.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncode001', 0, function () {
@@ -731,9 +813,50 @@ describe('TextEncoderTest', function () {
     })
 
     /**
+     * @tc.name: testEncoding002
+     * @tc.desc: Encoding format test gb18030.
+     * @tc.author: wangben
+     */
+    it('testEncoding002', 0, function () {
+        let that = new util.TextEncoder('gb18030')
+        let str = that.encoding
+        expect(str).assertEqual('gb18030')
+        that = new util.TextEncoder('GB18030')
+        str = that.encoding;
+        expect(str).assertEqual('GB18030')
+    })
+
+    /**
+     * @tc.name: testEncoding003
+     * @tc.desc: Encoding format test gbk.
+     * @tc.author: wangben
+     */
+     it('testEncoding003', 0, function () {
+        let that = new util.TextEncoder('gbk')
+        let str = that.encoding
+        expect(str).assertEqual('gbk')
+        that = new util.TextEncoder('GBK')
+        str = that.encoding;
+        expect(str).assertEqual('GBK')
+    })
+
+    /**
+     * @tc.name: testEncoding004
+     * @tc.desc: Encoding format test gb2313.
+     * @tc.author: wangben
+     */
+    it('testEncoding004', 0, function () {
+        let that = new util.TextEncoder('gb2312')
+        let str = that.encoding
+        expect(str).assertEqual('gb2312')
+        that = new util.TextEncoder('GB2312')
+        str = that.encoding;
+        expect(str).assertEqual('GB2312')
+    })
+
+    /**
      * @tc.name: testEncode002
      * @tc.desc: Returns the result of encoder.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncode002', 0, function () {
@@ -747,7 +870,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncode003
      * @tc.desc: Returns the result of encoder.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncode003', 0, function () {
@@ -761,7 +883,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncode004
      * @tc.desc: Returns the result of encoder.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncode004', 0, function () {
@@ -775,7 +896,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncode005
      * @tc.desc: Returns the result of encoder.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncode005', 0, function () {
@@ -790,7 +910,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncode006
      * @tc.desc: Returns the result of encoder.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncode006', 0, function () {
@@ -804,7 +923,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncode007
      * @tc.desc: Returns the result of encoder.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncode007', 0, function () {
@@ -818,7 +936,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncode008
      * @tc.desc: Returns the result of encoder.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncode008', 0, function () {
@@ -830,9 +947,127 @@ describe('TextEncoderTest', function () {
     })
 
     /**
+     * @tc.name: testEncode009
+     * @tc.desc: Returns the result of encoder for gb18030.
+     * @tc.author: wangben
+     */
+     it('testEncode009', 0, function () {
+        let that = new util.TextEncoder('gb18030')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encode('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(185)
+        expect(result[4]).assertEqual(254)
+        expect(result[7]).assertEqual(236)
+        expect(result[8]).assertEqual(218)
+    })
+
+    /**
+     * @tc.name: testEncode010
+     * @tc.desc: Returns the result of encoder for GB18030.
+     * @tc.author: wangben
+     */
+    it('testEncode0010', 0, function () {
+        let that = new util.TextEncoder('GB18030')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encode('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(185)
+        expect(result[4]).assertEqual(254)
+        expect(result[7]).assertEqual(236)
+        expect(result[8]).assertEqual(218)
+    })
+
+    /**
+     * @tc.name: testEncode011
+     * @tc.desc: Returns the result of encoder for GB18030.
+     * @tc.author: wangben
+     */
+     it('testEncode0011', 0, function () {
+        let that = new util.TextEncoder('GBK')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encode('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(185)
+        expect(result[4]).assertEqual(254)
+        expect(result[7]).assertEqual(236)
+        expect(result[8]).assertEqual(218)
+    })
+
+    /**
+     * @tc.name: testEncode012
+     * @tc.desc: Returns the result of encoder for gbk.
+     * @tc.author: wangben
+     */
+    it('testEncode012', 0, function () {
+        let that = new util.TextEncoder('gbk')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encode('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(185)
+        expect(result[4]).assertEqual(254)
+        expect(result[7]).assertEqual(236)
+        expect(result[8]).assertEqual(218)
+    })
+
+    /**
+     * @tc.name: testEncode013
+     * @tc.desc: Returns the result of encoder for gb2312.
+     * @tc.author: wangben
+     */
+    it('testEncode013', 0, function () {
+        let that = new util.TextEncoder('gb2312')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encode('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(185)
+        expect(result[4]).assertEqual(254)
+        expect(result[7]).assertEqual(236)
+        expect(result[8]).assertEqual(218)
+    })
+
+    /**
+     * @tc.name: testEncode014
+     * @tc.desc: Returns the result of encoder for gb2312.
+     * @tc.author: wangben
+     */
+     it('testEncode014', 0, function () {
+        let that = new util.TextEncoder('GB2312')
+        let buffer = new ArrayBuffer(20)
+        let result = new Uint8Array(buffer)
+        result = that.encode('abc哈哈熠熠')
+        expect(result[0]).assertEqual(97)
+        expect(result[3]).assertEqual(185)
+        expect(result[4]).assertEqual(254)
+        expect(result[7]).assertEqual(236)
+        expect(result[8]).assertEqual(218)
+    })
+
+    /**
+     * @tc.name: testEncode015
+     * @tc.desc: Returns the result of encoder for gb2312, input long string.
+     * @tc.author: wangben
+     */
+     it('testEncode015', 0, function () {
+        let that = new util.TextEncoder('GB18030')
+        let buffer = new ArrayBuffer(900)
+        let result = new Uint8Array(buffer)
+        result = that.encode('abcd哈哈哈哈哈哈哈哈哈哈哈哈哈abcd哈哈哈哈哈哈哈哈哈哈哈哈哈abcd哈哈哈哈哈哈哈哈哈哈哈哈哈abcd哈哈哈哈哈哈哈哈哈哈哈哈哈')
+        expect(result[6]).assertEqual(185)
+        expect(result[30]).assertEqual(97)
+        expect(result[57]).assertEqual(254)
+        expect(result[98]).assertEqual(185)
+        expect(result[119]).assertEqual(254)
+    })
+
+    /**
      * @tc.name: testEncodeInto001
      * @tc.desc: encode string, write the result to dest array.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncodeInto001', 0, function () {
@@ -848,7 +1083,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncodeInto002
      * @tc.desc: encode string, write the result to dest array.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncodeInto002', 0, function () {
@@ -864,7 +1098,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncodeInto003
      * @tc.desc: encode string, write the result to dest array.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncodeInto003', 0, function () {
@@ -880,7 +1113,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncodeInto004
      * @tc.desc: encode string, write the result to dest array.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncodeInto004', 0, function () {
@@ -896,7 +1128,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncodeInto005
      * @tc.desc: encode string, write the result to dest array.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncodeInto005', 0, function () {
@@ -912,7 +1143,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncodeInto006
      * @tc.desc: encode string, write the result to dest array.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncodeInto006', 0, function () {
@@ -928,7 +1158,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncodeInto007
      * @tc.desc: encode string, write the result to dest array.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncodeInto007', 0, function () {
@@ -944,7 +1173,6 @@ describe('TextEncoderTest', function () {
     /**
      * @tc.name: testEncodeInto008
      * @tc.desc: encode string, write the result to dest array.
-     * @tc.require: AR000GFB4U
      * @tc.author: wangben
      */
     it('testEncodeInto008', 0, function () {
@@ -961,611 +1189,556 @@ describe('TextEncoderTest', function () {
 describe('ScopeTest', function () {
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-001
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Obtains the lower bound of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-001', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var result = range.getLower()
         expect(result.toString()).assertEqual('30')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-002
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Obtains the lower bound of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-002', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var result = rangeFir.getLower()
         expect(result.toString()).assertEqual('35')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-003
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Obtains the lower bound of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-003', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var result = rangeSec.getLower()
         expect(result.toString()).assertEqual('20')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-004
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Obtains the lower bound of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-004', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var result = rangeThi.getLower()
         expect(result.toString()).assertEqual('20')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-005
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Obtains the lower bound of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-005', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         var result = rangeFif.getLower()
         expect(result.toString()).assertEqual('35')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-006
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Obtains the upper bound of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-006', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var result = range.getUpper()
         expect(result.toString()).assertEqual('40')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-007
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Obtains the upper bound of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-007', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var result = rangeFir.getUpper()
         expect(result.toString()).assertEqual('39')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-008
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Obtains the upper bound of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-008', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var result = rangeSec.getUpper()
         expect(result.toString()).assertEqual('45')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-009
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Obtains the upper bound of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-009', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var result = rangeThi.getUpper()
         expect(result.toString()).assertEqual('35')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-010
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Obtains the upper bound of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-010', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         var result = rangeFif.getUpper()
         expect(result.toString()).assertEqual('45')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-011
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Clamps a given value to the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-011', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var result =range.clamp(tempLess)
         expect(result.toString()).assertEqual('30')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-012
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Clamps a given value to the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-012', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var result =range.clamp(tempMiDF)
         expect(result.toString()).assertEqual('35')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-013
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Clamps a given value to the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-013', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var result =range.clamp(tempMore)
         expect(result.toString()).assertEqual('40')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-014
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Clamps a given value to the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-014', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var result =range.clamp(tempLower)
         expect(result.toString()).assertEqual('30')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-015
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Clamps a given value to the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-015', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         var result =range.clamp(tempUpper)
         expect(result.toString()).assertEqual('40')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-016
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Checks whether a given value is within the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-016', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var result = range.contains(tempLess)
         expect(result).assertEqual(false)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-017
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Checks whether a given value is within the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-017', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var result = range.contains(tempMiDF)
         expect(result).assertEqual(true)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-018
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Checks whether a given value is within the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-018', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var result = range.contains(tempMore)
         expect(result).assertEqual(false)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-019
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Checks whether a given value is within the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-019', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var result = range.contains(tempLower)
         expect(result).assertEqual(true)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-020
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Checks whether a given value is within the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-020', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         var result = range.contains(tempUpper)
         expect(result).assertEqual(true)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-021
+     * @tc.name: SUB_Runtime_JSAPI_006
      * @tc.desc: Checks whether a given range is within the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-021', 0, function () {
+    it('SUB_Runtime_JSAPI_006', 0, function () {
         var result = range.contains(rangeFir)
         expect(result).assertEqual(true)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-022
+     * @tc.name: SUB_Runtime_JSAPI_007
      * @tc.desc: Checks whether a given range is within the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-022', 0, function () {
+    it('SUB_Runtime_JSAPI_007', 0, function () {
         var result = range.contains(rangeSec)
         expect(result).assertEqual(false)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-023
+     * @tc.name: SUB_Runtime_JSAPI_008
      * @tc.desc: Checks whether a given range is within the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-023', 0, function () {
+    it('SUB_Runtime_JSAPI_008', 0, function () {
         var result = range.contains(rangeThi)
         expect(result).assertEqual(false)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-024
+     * @tc.name: SUB_Runtime_JSAPI_009
      * @tc.desc: Checks whether a given range is within the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-024', 0, function () {
+    it('SUB_Runtime_JSAPI_009', 0, function () {
         var result = range.contains(rangeFif)
         expect(result).assertEqual(false)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-025
+     * @tc.name: SUB_Runtime_JSAPI_010
      * @tc.desc: Checks whether a given range is within the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-025', 0, function () {
+    it('SUB_Runtime_JSAPI_010', 0, function () {
         var result = range.contains(range)
         expect(result).assertEqual(true)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-026
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-026', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var result = range.expand(tempMiDF, tempMidS)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-027
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-027', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var result = range.expand(tempLess, tempMore)
         expect(result.toString()).assertEqual('[20, 45]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-028
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-028', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var result = range.expand(tempLess, tempMiDF)
         expect(result.toString()).assertEqual('[20, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-029
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-029', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var result = range.expand(tempMiDF, tempMore)
         expect(result.toString()).assertEqual('[30, 45]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-030
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-030', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         var result = range.expand(tempLower, tempUpper)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-031
+     * @tc.name: SUB_Runtime_JSAPI_006
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-031', 0, function () {
+    it('SUB_Runtime_JSAPI_006', 0, function () {
         var result = range.expand(rangeFir)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-032
+     * @tc.name: SUB_Runtime_JSAPI_007
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-032', 0, function () {
+    it('SUB_Runtime_JSAPI_007', 0, function () {
         var result = range.expand(rangeSec)
         expect(result.toString()).assertEqual('[20, 45]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-033
+     * @tc.name: SUB_Runtime_JSAPI_008
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-033', 0, function () {
+    it('SUB_Runtime_JSAPI_008', 0, function () {
         var result = range.expand(rangeThi)
         expect(result.toString()).assertEqual('[20, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-034
+     * @tc.name: SUB_Runtime_JSAPI_009
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-034', 0, function () {
+    it('SUB_Runtime_JSAPI_009', 0, function () {
         var result = range.expand(rangeFif)
         expect(result.toString()).assertEqual('[30, 45]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-035
+     * @tc.name: SUB_Runtime_JSAPI_010
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-035', 0, function () {
+    it('SUB_Runtime_JSAPI_010', 0, function () {
         var result = range.expand(range)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-036
+     * @tc.name: SUB_Runtime_JSAPI_011
      * @tc.desc: Creates the smallest range that includes the current range and a given value.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-036', 0, function () {
+    it('SUB_Runtime_JSAPI_011', 0, function () {
         var result = range.expand(tempMiDF)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-037
+     * @tc.name: SUB_Runtime_JSAPI_012
      * @tc.desc: Creates the smallest range that includes the current range and a given value.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-037', 0, function () {
+    it('SUB_Runtime_JSAPI_012', 0, function () {
         var result = range.expand(tempLess)
         expect(result.toString()).assertEqual('[20, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-038
+     * @tc.name: SUB_Runtime_JSAPI_013
      * @tc.desc: Creates the smallest range that includes the current range and a given value.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-038', 0, function () {
+    it('SUB_Runtime_JSAPI_013', 0, function () {
         var result = range.expand(tempMore)
         expect(result.toString()).assertEqual('[30, 45]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-039
+     * @tc.name: SUB_Runtime_JSAPI_014
      * @tc.desc: Creates the smallest range that includes the current range and a given value.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-039', 0, function () {
+    it('SUB_Runtime_JSAPI_014', 0, function () {
         var result = range.expand(tempLower)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-040
+     * @tc.name: SUB_Runtime_JSAPI_015
      * @tc.desc: Creates the smallest range that includes the current range and a given value.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-040', 0, function () {
+    it('SUB_Runtime_JSAPI_015', 0, function () {
         var result = range.expand(tempUpper)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-041
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Returns the intersection of a given range and the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-041', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var result = range.intersect(rangeFir)
         expect(result.toString()).assertEqual('[35, 39]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-042
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Returns the intersection of a given range and the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-042', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var result = range.intersect(rangeSec)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-043
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Returns the intersection of a given range and the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-043', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var result = range.intersect(rangeThi)
         expect(result.toString()).assertEqual('[30, 35]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-044
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Returns the intersection of a given range and the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-044', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var result = range.intersect(rangeFif)
         expect(result.toString()).assertEqual('[35, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-045
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Returns the intersection of a given range and the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-045', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         var result = range.intersect(range)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-046
+     * @tc.name: SUB_Runtime_JSAPI_006
      * @tc.desc: Returns the intersection of the current range and the range specified by
-	   the given lower and upper bounds.
-     * @tc.require: AR000GFB4U
+       the given lower and upper bounds.
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-046', 0, function () {
+    it('SUB_Runtime_JSAPI_006', 0, function () {
         var result = range.intersect(tempMiDF, tempMidS)
         expect(result.toString()).assertEqual('[35, 39]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-047
+     * @tc.name: SUB_Runtime_JSAPI_007
      * @tc.desc: Returns the intersection of the current range and the range specified by
-	   the given lower and upper bounds.
-     * @tc.require: AR000GFB4U
+       the given lower and upper bounds.
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-047', 0, function () {
+    it('SUB_Runtime_JSAPI_007', 0, function () {
         var result = range.intersect(tempLess, tempMore)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-048
+     * @tc.name: SUB_Runtime_JSAPI_008
      * @tc.desc: Returns the intersection of the current range and the range specified by
-	   the given lower and upper bounds.
-     * @tc.require: AR000GFB4U
+       the given lower and upper bounds.
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-048', 0, function () {
+    it('SUB_Runtime_JSAPI_008', 0, function () {
         var result = range.intersect(tempLess, tempMiDF)
         expect(result.toString()).assertEqual('[30, 35]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-049
+     * @tc.name: SUB_Runtime_JSAPI_009
      * @tc.desc: Returns the intersection of the current range and the range specified by
-	   the given lower and upper bounds.
-     * @tc.require: AR000GFB4U
+       the given lower and upper bounds.
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-049', 0, function () {
+    it('SUB_Runtime_JSAPI_009', 0, function () {
         var result = range.intersect(tempMiDF, tempMore)
         expect(result.toString()).assertEqual('[35, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-050
+     * @tc.name: SUB_Runtime_JSAPI_010
      * @tc.desc: Returns the intersection of the current range and the range specified by
-	   the given lower and upper bounds.
-     * @tc.require: AR000GFB4U
+       the given lower and upper bounds.
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-050', 0, function () {
+    it('SUB_Runtime_JSAPI_010', 0, function () {
         var result = range.intersect(tempLower, tempUpper)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-051
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Obtains a string representation of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-051', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var result = range.toString()
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-052
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Obtains a string representation of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-052', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var result = rangeFir.toString()
         expect(result.toString()).assertEqual('[35, 39]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-053
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Obtains a string representation of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-053', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var result = rangeSec.toString()
         expect(result.toString()).assertEqual('[20, 45]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-054
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Obtains a string representation of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-054', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var result = rangeThi.toString()
         expect(result.toString()).assertEqual('[20, 35]')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-055
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Obtains a string representation of the current range.
-     * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('SUB_Runtime_JSAPI_SR000GGR36-055', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         var result = rangeFif.toString()
         expect(result.toString()).assertEqual('[35, 45]')
     })
@@ -1574,13 +1747,12 @@ describe('ScopeTest', function () {
 describe('Base64Test', function () {
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_001
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_001', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([115,49,51]);
         var rarray = new Uint8Array([99,122,69,122]);
@@ -1591,13 +1763,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_004
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_004', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
         var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
@@ -1608,18 +1779,17 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_005
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_005', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,
-		110,32,78,111,100,101,46,106,115]);
+        110,32,78,111,100,101,46,106,115]);
         var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,
-		73,71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
+        73,71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
         var result = that.encodeSync(array);
         for (var i = 0; i < 36; i++) {
             expect(result[i]).assertEqual(rarray[i]);
@@ -1627,13 +1797,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_002
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_002', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([168, 174, 155, 255]);
         var rarray = new Uint8Array([113,75,54,98,47,119,61,61]);
@@ -1644,13 +1813,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_003
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_003', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
         var rarray = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
@@ -1661,12 +1829,11 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_006
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_006', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([115,49,51]);
         var result = that.encodeToStringSync(array)
@@ -1674,12 +1841,11 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_009
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_009', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
         var result = that.encodeToStringSync(array);
@@ -1687,26 +1853,24 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_010
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_010', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,
-		32,78,111,100,101,46,106,115]);
+        32,78,111,100,101,46,106,115]);
         var result = that.encodeToStringSync(array);
         expect(result).assertEqual('QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=')
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_007
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_007', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([168, 174, 155, 255]);
         var result = that.encodeToStringSync(array);
@@ -1714,12 +1878,11 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_008
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_008', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
         var result = that.encodeToStringSync(array);
@@ -1727,13 +1890,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_011
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_011', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var that = new util.Base64()
         var buff = 'czEz';
         var rarray = new Uint8Array([115,49,51]);
@@ -1744,13 +1906,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_013
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_013', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var that = new util.Base64()
         var buff = 'QmFzZTY0IE5vZGUuanM=';
         var rarray = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
@@ -1761,17 +1922,16 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_014
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_014', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var that = new util.Base64()
         var buff = 'QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=';
         var rarray = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,
-		105,110,32,78,111,100,101,46,106,115]);
+        105,110,32,78,111,100,101,46,106,115]);
         var result = that.decodeSync(buff);
         for (var i = 0; i < 26; i++) {
             expect(result[i]).assertEqual(rarray[i]);
@@ -1779,13 +1939,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_012
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_012', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var that = new util.Base64()
         var buff = 'qK6b/w==';
         var rarray = new Uint8Array([168, 174, 155, 255]);
@@ -1798,8 +1957,7 @@ describe('Base64Test', function () {
     /**
      * @tc.name: testDecodeSync005
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
     it('testDecodeSync005', 0, function () {
@@ -1813,13 +1971,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_011
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_011', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([99,122,69,122]);
         var rarray = new Uint8Array([115,49,51]);
@@ -1830,13 +1987,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_013
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_013', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
         var rarray = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
@@ -1847,18 +2003,17 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_014
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_014', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,
-		53,110,73,71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
+        53,110,73,71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
         var rarray = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,
-		110,32,78,111,100,101,46,106,115]);
+        110,32,78,111,100,101,46,106,115]);
         var result = that.decodeSync(array);
         for (var i = 0; i < 26; i++) {
             expect(result[i]).assertEqual(rarray[i]);
@@ -1866,13 +2021,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_012
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_012', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([113,75,54,98,47,119,61,61]);
         var rarray = new Uint8Array([168, 174, 155, 255]);
@@ -1885,8 +2039,7 @@ describe('Base64Test', function () {
     /**
      * @tc.name: testDecodeSync005
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
     it('testDecodeSync005', 0, function () {
@@ -1901,13 +2054,12 @@ describe('Base64Test', function () {
 
     //base64 EncodeAsync test
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_015
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly
-	   allocated u8 array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       allocated u8 array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_015', 0, async function () {
+    it('SUB_Runtime_JSAPI_001', 0, async function () {
         var that = await new util.Base64();
         var array = new Uint8Array([115,49,51]);
         var rarray = new Uint8Array([99,122,69,122]);
@@ -1919,13 +2071,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_018
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly
-	   allocated u8 array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       allocated u8 array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_018', 0, async function () {
+    it('SUB_Runtime_JSAPI_002', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
         var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
@@ -1937,18 +2088,17 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_019
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_019', 0, async function () {
+    it('SUB_Runtime_JSAPI_003', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,32,
-		78,111,100,101,46,106,115]);
+        78,111,100,101,46,106,115]);
         var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,73,
-		71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
+        71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
         that.encode(array).then(val=>{
             for (var i = 0; i < rarray.length; i++) {
                 expect(val[i]).assertEqual(rarray[i])
@@ -1957,13 +2107,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_016
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_016', 0, async function () {
+    it('SUB_Runtime_JSAPI_004', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([168, 174, 155, 255]);
         var rarray = new Uint8Array([113,75,54,98,47,119,61,61]);
@@ -1975,13 +2124,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_017
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
-	   array using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
+       array using the Base64 encoding scheme.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_017', 0, async function () {
+    it('SUB_Runtime_JSAPI_005', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
         var rarray = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
@@ -1993,12 +2141,11 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_020
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_020', 0, async function () {
+    it('SUB_Runtime_JSAPI_001', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([115,49,51]);
         that.encodeToString(array).then(val=>{
@@ -2007,12 +2154,11 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_023
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_023', 0, async function () {
+    it('SUB_Runtime_JSAPI_002', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
         that.encodeToString(array).then(val=>{
@@ -2021,27 +2167,25 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_024
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_024', 0, async function () {
+    it('SUB_Runtime_JSAPI_003', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,73,71,108,
-		117,73,69,53,118,90,71,85,117,97,110,77,61]);
+        117,73,69,53,118,90,71,85,117,97,110,77,61]);
         that.encodeToString(array).then(val=>{
             expect(val).assertEqual('QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=')
         })
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_021
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_021', 0, async function () {
+    it('SUB_Runtime_JSAPI_004', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([168, 174, 155, 255]);
         that.encodeToString(array).then(val=>{
@@ -2050,12 +2194,11 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_022
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
-     * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_022', 0, async function () {
+    it('SUB_Runtime_JSAPI_005', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
         that.encodeToString(array).then(val=>{
@@ -2064,13 +2207,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_025
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
-	   array into a newly allocated u8 array.
-     * @tc.require: AR000GFB2Q
+       array into a newly allocated u8 array.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_025', 0, async function () {
+    it('SUB_Runtime_JSAPI_001', 0, async function () {
         var that = new util.Base64()
         var buff = 'czEz';
         var array = new Uint8Array([115,49,51]);
@@ -2082,13 +2224,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_027
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
-	   array into a newly allocated u8 array.
-     * @tc.require: AR000GFB2Q
+       array into a newly allocated u8 array.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_027', 0, async function () {
+    it('SUB_Runtime_JSAPI_002', 0, async function () {
         var that = new util.Base64()
         var buff = 'QmFzZTY0IE5vZGUuanM=';
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
@@ -2100,17 +2241,16 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_028
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
-	   array into a newly allocated u8 array.
-     * @tc.require: AR000GFB2Q
+       array into a newly allocated u8 array.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_028', 0, async function () {
+    it('SUB_Runtime_JSAPI_003', 0, async function () {
         var that = new util.Base64()
         var buff = 'QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=';
         var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,32,78,
-		111,100,101,46,106,115]);
+        111,100,101,46,106,115]);
         that.decode(buff).then(val=>{
             for (var i = 0; i < array.length; i++) {
                 expect(val[i]).assertEqual(array[i])
@@ -2119,13 +2259,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_026
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
-	   array into a newly allocated u8 array.
-     * @tc.require: AR000GFB2Q
+       array into a newly allocated u8 array.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_026', 0, async function () {
+    it('SUB_Runtime_JSAPI_004', 0, async function () {
         var that = new util.Base64()
         var buff = 'qK6b/w==';
         var array = new Uint8Array([168, 174, 155, 255]);
@@ -2139,8 +2278,7 @@ describe('Base64Test', function () {
     /**
      * @tc.name: testDecode005
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
-	   array into a newly allocated u8 array.
-     * @tc.require: AR000GFB2Q
+       array into a newly allocated u8 array.
      * @tc.author: bihu
      */
     it('testDecode005', 0, async function () {
@@ -2155,13 +2293,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_025
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
-	   array into a newly allocated u8 array.
-     * @tc.require: AR000GFB2Q
+       array into a newly allocated u8 array.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_025', 0, async function () {
+    it('SUB_Runtime_JSAPI_001', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([99,122,69,122]);
         var rarray = new Uint8Array([115,49,51]);
@@ -2173,13 +2310,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_027
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
-	   array into a newly allocated u8 array.
-     * @tc.require: AR000GFB2Q
+       array into a newly allocated u8 array.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_027', 0, async function () {
+    it('SUB_Runtime_JSAPI_002', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
         var rarray = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
@@ -2191,18 +2327,17 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_028
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
-	   array into a newly allocated u8 array.
-     * @tc.require: AR000GFB2Q
+       array into a newly allocated u8 array.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_028', 0, async function () {
+    it('SUB_Runtime_JSAPI_003', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,73,71,108,
-		117,73,69,53,118,90,71,85,117,97,110,77,61]);
+        117,73,69,53,118,90,71,85,117,97,110,77,61]);
         var rarray = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,32,78,111,
-		100,101,46,106,115]);
+        100,101,46,106,115]);
         that.decode(array).then(val=>{
             for (var i = 0; i < rarray.length; i++) {
                 expect(val[i]).assertEqual(rarray[i])
@@ -2211,13 +2346,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_026
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8 array
-	   into a newly allocated u8 array.
-     * @tc.require: AR000GFB2Q
+       into a newly allocated u8 array.
      * @tc.author: bihu
      */
-    it('SUB_Runtime_JSAPI_SR000GGR37_026', 0, async function () {
+    it('SUB_Runtime_JSAPI_004', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([113,75,54,98,47,119,61,61]);
         var rarray = new Uint8Array([168, 174, 155, 255]);
@@ -2231,8 +2365,7 @@ describe('Base64Test', function () {
     /**
      * @tc.name: testDecode005
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
-	   array into a newly allocated u8 array.
-     * @tc.require: AR000GFB2Q
+       array into a newly allocated u8 array.
      * @tc.author: bihu
      */
     it('testDecode005', 0, async function () {
@@ -2250,12 +2383,11 @@ describe('Base64Test', function () {
 describe('RationalNumberFunTest', function () {
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_001
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Creates a RationalNumber object based on a given string.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_001', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var pro = new util.RationalNumber(1, 2)
         var res = pro.createRationalFromString('-1:2')
         var result1 = res.valueOf()
@@ -2263,12 +2395,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_002
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Creates a RationalNumber object based on a given string.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_002', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var pro = new util.RationalNumber(1, 2)
         var res = pro.createRationalFromString('+3/4')
         var result1 = res.valueOf()
@@ -2276,12 +2407,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_003
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Creates a RationalNumber object based on a given string.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_003', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var pro = new util.RationalNumber(1, 2)
         var res = pro.createRationalFromString('+3:-4')
         var result1 = res.valueOf()
@@ -2289,12 +2419,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_004
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Creates a RationalNumber object based on a given string.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_004', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var pro = new util.RationalNumber(1, 2)
         var res = pro.createRationalFromString('+2:4')
         var result1 = res.valueOf()
@@ -2304,7 +2433,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberCreateRationalFromString005
      * @tc.desc: Creates a RationalNumber object based on a given string.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberCreateRationalFromString005', 0, function () {
@@ -2315,12 +2443,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_010
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Compares the current RationalNumber object with a given object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_010', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var pro = new util.RationalNumber(2, 1)
         var proc = new util.RationalNumber(3, 4)
         var res = pro.compareTo(proc)
@@ -2328,12 +2455,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_007
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Compares the current RationalNumber object with a given object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_007', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var pro = new util.RationalNumber(2, 1)
         var proc = new util.RationalNumber(0, 0)
         var res = pro.compareTo(proc)
@@ -2341,12 +2467,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_011
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Compares the current RationalNumber object with a given object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_011', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var pro = new util.RationalNumber(2, 1)
         var proc = new util.RationalNumber(8, 3)
         var res = pro.compareTo(proc)
@@ -2354,12 +2479,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_005
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Compares the current RationalNumber object with a given object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_005', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var pro = new util.RationalNumber(2, 1)
         var proc = new util.RationalNumber(2, 1)
         var res = pro.compareTo(proc)
@@ -2367,12 +2491,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_006
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Compares the current RationalNumber object with a given object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_006', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         var pro = new util.RationalNumber(0, 0)
         var proc = new util.RationalNumber(2, 1)
         var res = pro.compareTo(proc)
@@ -2380,12 +2503,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_016
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_016', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var pro = new util.RationalNumber(2, 1)
         var proc = new util.RationalNumber(3, 4)
         var res = pro.equals(proc)
@@ -2393,12 +2515,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_014
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_014', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var pro = new util.RationalNumber(2, 1)
         var proc = new util.RationalNumber(4, 2)
         var res = pro.equals(proc)
@@ -2408,7 +2529,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberEquals003
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberEquals003', 0, function () {
@@ -2421,7 +2541,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberEquals004
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberEquals004', 0, function () {
@@ -2432,12 +2551,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_015
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_015', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var pro = new util.RationalNumber(-2, 0)
         var proc = new util.RationalNumber(2, 0)
         var res = pro.equals(proc)
@@ -2447,7 +2565,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberValueOf001
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberValueOf001', 0, function () {
@@ -2457,12 +2574,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_012
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_012', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var pro = new util.RationalNumber(2, 10)
         var res = pro.valueOf()
         expect(res).assertEqual(0.2)
@@ -2471,7 +2587,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberValueOf003
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberValueOf003', 0, function () {
@@ -2481,12 +2596,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_013
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_013', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var pro = new util.RationalNumber(4, 2)
         var res = pro.valueOf()
         expect(res).assertEqual(2)
@@ -2495,34 +2609,31 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberValueOf005
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberValue005', 0, function () {
+    it('testRationalNumberValueOf005', 0, function () {
         var pro = new util.RationalNumber(4, 1)
         var res = pro.valueOf()
         expect(res).assertEqual(4)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_017
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_017', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var pro = new util.RationalNumber(0, 0)
         var res = pro.getCommonDivisor(4, 8)
         expect(res).assertEqual(4)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_018
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_018', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var pro = new util.RationalNumber(0, 0)
         var res = pro.getCommonDivisor(10, 15)
         expect(res).assertEqual(5)
@@ -2531,7 +2642,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberGetCommonDivisor003
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberGetCommonDivisor003', 0, function () {
@@ -2541,12 +2651,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_019
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_019', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var pro = new util.RationalNumber(0, 0)
         var res = pro.getCommonDivisor(8, 16)
         expect(res).assertEqual(8)
@@ -2555,7 +2664,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberGetCommonDivisor005
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberGetCommonDivisor005', 0, function () {
@@ -2565,12 +2673,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_023
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_023', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var pro = new util.RationalNumber(2, 1)
         var res = pro.getDenominator()
         expect(res).assertEqual(1)
@@ -2579,7 +2686,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberGetDenominator002
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberGetDenominator002', 0, function () {
@@ -2589,12 +2695,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_025
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_025', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var pro = new util.RationalNumber(2, 0)
         var res = pro.getDenominator()
         expect(res).assertEqual(0)
@@ -2603,7 +2708,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberGetDenominator004
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberGetDenominator004', 0, function () {
@@ -2615,7 +2719,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberGetDenominator005
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberGetDenominator005', 0, function () {
@@ -2625,48 +2728,44 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_024
+     * @tc.name: SUB_Runtime_JSAPI_006
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_024', 0, function () {
+    it('SUB_Runtime_JSAPI_006', 0, function () {
         var pro = new util.RationalNumber(6, -3)
         var res = pro.getDenominator()
         expect(res).assertEqual(1)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_021
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_021', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var pro = new util.RationalNumber(-2, 1)
         var res = pro.getNumerator()
         expect(res).assertEqual(-2)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_022
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_022', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var pro = new util.RationalNumber(0, 3)
         var res = pro.getNumerator()
         expect(res).assertEqual(0)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_020
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_020', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var pro = new util.RationalNumber(2, 4)
         var res = pro.getNumerator()
         expect(res).assertEqual(1)
@@ -2675,7 +2774,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberGetNumerator004
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberGetNumerator004', 0, function () {
@@ -2687,7 +2785,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberGetNumerator005
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberGetNumerator005', 0, function () {
@@ -2697,12 +2794,11 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_028
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_028', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var pro = new util.RationalNumber(-2, 1)
         var res = pro.isFinite()
         expect(res).assertEqual(true)
@@ -2711,7 +2807,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberIsFinite002
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberIsFinite002', 0, function () {
@@ -2721,24 +2816,22 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_026
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_026', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var pro = new util.RationalNumber(2, 0)
         var res = pro.isFinite()
         expect(res).assertEqual(false)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_027
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_027', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var pro = new util.RationalNumber(1, 3)
         var res = pro.isFinite()
         expect(res).assertEqual(true)
@@ -2747,7 +2840,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberIsFinite005
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberIsFinite005', 0, function () {
@@ -2757,48 +2849,44 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_030
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_030', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var pro = new util.RationalNumber(-2, 1)
         var res = pro.isNaN()
         expect(res).assertEqual(false)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_031
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_031', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var pro = new util.RationalNumber(0, 3)
         var res = pro.isNaN()
         expect(res).assertEqual(false)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_029
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_029', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var pro = new util.RationalNumber(0, 0)
         var res = pro.isNaN()
         expect(res).assertEqual(true)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_032
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_032', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var pro = new util.RationalNumber(10, 0)
         var res = pro.isNaN()
         expect(res).assertEqual(false)
@@ -2807,7 +2895,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberIsNaN005
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberIsNaN005', 0, function () {
@@ -2817,48 +2904,44 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_034
+     * @tc.name: SUB_Runtime_JSAPI_001
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_034', 0, function () {
+    it('SUB_Runtime_JSAPI_001', 0, function () {
         var pro = new util.RationalNumber(-2, 1)
         var res = pro.isZero()
         expect(res).assertEqual(false)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_033
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_033', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var pro = new util.RationalNumber(0, 3)
         var res = pro.isZero()
         expect(res).assertEqual(true)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_035
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_035', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var pro = new util.RationalNumber(0, 0)
         var res = pro.isZero()
         expect(res).assertEqual(false)
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_036
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_036', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var pro = new util.RationalNumber(10, 2)
         var res = pro.isZero()
         expect(res).assertEqual(false)
@@ -2867,7 +2950,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberIsZero005
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberIsZero005', 0, function () {
@@ -2879,7 +2961,6 @@ describe('RationalNumberFunTest', function () {
     /**
      * @tc.name: testRationalNumberToString001
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
     it('testRationalNumberToString001', 0, function () {
@@ -2889,48 +2970,44 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_037
+     * @tc.name: SUB_Runtime_JSAPI_002
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_037', 0, function () {
+    it('SUB_Runtime_JSAPI_002', 0, function () {
         var pro = new util.RationalNumber(0, 0)
         var res = pro.toString()
         expect(res).assertEqual("NaN")
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_038
+     * @tc.name: SUB_Runtime_JSAPI_003
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_038', 0, function () {
+    it('SUB_Runtime_JSAPI_003', 0, function () {
         var pro = new util.RationalNumber(3, 0)
         var res = pro.toString()
         expect(res).assertEqual("Infinity")
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_039
+     * @tc.name: SUB_Runtime_JSAPI_004
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_039', 0, function () {
+    it('SUB_Runtime_JSAPI_004', 0, function () {
         var pro = new util.RationalNumber(-3, 0)
         var res = pro.toString()
         expect(res).assertEqual("-Infinity")
     })
 
     /**
-     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_040
+     * @tc.name: SUB_Runtime_JSAPI_005
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
-     * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('SUB_Runtime_JSAPI_SR000GGR38_040', 0, function () {
+    it('SUB_Runtime_JSAPI_005', 0, function () {
         var pro = new util.RationalNumber(2, 3)
         var res = pro.toString()
         expect(res).assertEqual('2/3')
@@ -2942,7 +3019,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferUpdateGetCapacity001
      * @tc.desc: Updates the buffer capacity to a specified capacity.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferUpdateGetCapacity001', 0, function () {
@@ -2955,7 +3031,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferUpdateGetCapacity002
      * @tc.desc: Updates the buffer capacity to a specified capacity.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferUpdateGetCapacity002', 0, function () {
@@ -2968,7 +3043,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferUpdateGetCapacity003
      * @tc.desc: Updates the buffer capacity to a specified capacity.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferUpdateGetCapacity003', 0, function () {
@@ -2981,7 +3055,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferUpdateGetCapacity004
      * @tc.desc: Updates the buffer capacity to a specified capacity.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferUpdateGetCapacity004', 0, function () {
@@ -2994,7 +3067,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferUpdateGetCapacity005
      * @tc.desc: Updates the buffer capacity to a specified capacity.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferUpdateGetCapacity005', 0, function () {
@@ -3007,7 +3079,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGet001
      * @tc.desc: Obtains the value associated with a specified key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGet001', 0, function () {
@@ -3020,7 +3091,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGet002
      * @tc.desc: Obtains the value associated with a specified key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGet002', 0, function () {
@@ -3033,7 +3103,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGet003
      * @tc.desc: Obtains the value associated with a specified key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGet003', 0, function () {
@@ -3052,7 +3121,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGet004
      * @tc.desc: Obtains the value associated with a specified key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGet004', 0, function () {
@@ -3073,7 +3141,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGet005
      * @tc.desc: Obtains the value associated with a specified key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGet005', 0, function () {
@@ -3095,7 +3162,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferPut001
      * @tc.desc: Adds a key-value pair to the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferPut001', 0, function () {
@@ -3107,7 +3173,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferPut002
      * @tc.desc: Adds a key-value pair to the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferPut002', 0, function () {
@@ -3120,7 +3185,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferPut003
      * @tc.desc: Adds a key-value pair to the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferPut003', 0, function () {
@@ -3139,7 +3203,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferPut004
      * @tc.desc: Adds a key-value pair to the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferPut004', 0, function () {
@@ -3160,7 +3223,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferPut005
      * @tc.desc: Adds a key-value pair to the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferPut005', 0, function () {
@@ -3182,7 +3244,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetCreateCount001
      * @tc.desc: Obtains the number of times createDefault(Object) returned a value.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetCreateCount001', 0, function () {
@@ -3200,7 +3261,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetCreateCount002
      * @tc.desc: Obtains the number of times createDefault(Object) returned a value.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetCreateCount002', 0, function () {
@@ -3218,7 +3278,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetCreateCount003
      * @tc.desc: Obtains the number of times createDefault(Object) returned a value.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetCreateCount003', 0, function () {
@@ -3234,7 +3293,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetCreateCount004
      * @tc.desc: Obtains the number of times createDefault(Object) returned a value.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetCreateCount004', 0, function () {
@@ -3252,7 +3310,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetCreateCount005
      * @tc.desc: Obtains the number of times createDefault(Object) returned a value.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetCreateCount005', 0, function () {
@@ -3270,7 +3327,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetMissCount001
      * @tc.desc: Obtains the number of times that the queried values are not matched.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetMissCount001', 0, function () {
@@ -3288,7 +3344,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetMissCount002
      * @tc.desc: Obtains the number of times that the queried values are not matched.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetMissCount002', 0, function () {
@@ -3306,7 +3361,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetMissCount003
      * @tc.desc: Obtains the number of times that the queried values are not matched.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetMissCount003', 0, function () {
@@ -3324,7 +3378,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetMissCount004
      * @tc.desc: Obtains the number of times that the queried values are not matched.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetMissCount004', 0, function () {
@@ -3342,7 +3395,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetMissCount005
      * @tc.desc: Obtains the number of times that the queried values are not matched.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetMissCount005', 0, function () {
@@ -3362,7 +3414,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetMissCount006
      * @tc.desc: Obtains the number of times that the queried values are not matched.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetMissCount006', 0, function () {
@@ -3380,7 +3431,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetRemovalCount001
      * @tc.desc: Obtains the number of times that values are evicted from the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetRemovalCount001', 0, function () {
@@ -3397,7 +3447,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetRemovalCount002
      * @tc.desc: Obtains the number of times that values are evicted from the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetRemovalCount002', 0, function () {
@@ -3413,7 +3462,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetRemovalCount003
      * @tc.desc: Obtains the number of times that values are evicted from the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetRemovalCount003', 0, function () {
@@ -3428,7 +3476,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetRemovalCount004
      * @tc.desc: Obtains the number of times that values are evicted from the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetRemovalCount004', 0, function () {
@@ -3446,7 +3493,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetRemovalCount005
      * @tc.desc: Obtains the number of times that values are evicted from the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetRemovalCount005', 0, function () {
@@ -3465,7 +3511,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetMatchCount001
      * @tc.desc: Obtains the number of times that the queried values are successfully matched.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetMatchCount001', 0, function () {
@@ -3483,7 +3528,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetMatchCount002
      * @tc.desc: Obtains the number of times that the queried values are successfully matched.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetMatchCount002', 0, function () {
@@ -3502,7 +3546,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetMatchCount003
      * @tc.desc: Obtains the number of times that the queried values are successfully matched.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetMatchCount003', 0, function () {
@@ -3520,7 +3563,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetMatchCount004
      * @tc.desc: Obtains the number of times that the queried values are successfully matched.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetMatchCount004', 0, function () {
@@ -3541,7 +3583,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetMatchCount005
      * @tc.desc: Obtains the number of times that the queried values are successfully matched.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetMatchCount005', 0, function () {
@@ -3565,7 +3606,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetMatchCount006
      * @tc.desc: Obtains the number of times that the queried values are successfully matched.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetMatchCount006', 0, function () {
@@ -3581,7 +3621,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetPutCount001
      * @tc.desc: Obtains the number of times that values are added to the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetPutCount001', 0, function () {
@@ -3594,7 +3633,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetPutCount002
      * @tc.desc: Obtains the number of times that values are added to the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetPutCount002', 0, function () {
@@ -3608,7 +3646,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetPutCount003
      * @tc.desc: Obtains the number of times that values are added to the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetPutCount003', 0, function () {
@@ -3623,7 +3660,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetPutCount004
      * @tc.desc: Obtains the number of times that values are added to the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetPutCount004', 0, function () {
@@ -3638,7 +3674,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetPutCount005
      * @tc.desc: Obtains the number of times that values are added to the buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetPutCount005', 0, function () {
@@ -3654,7 +3689,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetCapacity001
      * @tc.desc: Obtains the capacity of the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetCapacity001', 0, function () {
@@ -3666,7 +3700,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetCapacity002
      * @tc.desc: Obtains the capacity of the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetCapacity002', 0, function () {
@@ -3678,7 +3711,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetCapacity003
      * @tc.desc: Obtains the capacity of the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetCapacity003', 0, function () {
@@ -3690,7 +3722,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetCapacity004
      * @tc.desc: Obtains the capacity of the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetCapacity004', 0, function () {
@@ -3703,7 +3734,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferGetCapacity005
      * @tc.desc: Obtains the capacity of the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferGetCapacity005', 0, function () {
@@ -3716,7 +3746,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferLength001
      * @tc.desc: Obtains the total number of values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferLength001', 0, function () {
@@ -3728,7 +3757,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferLength002
      * @tc.desc: Obtains the total number of values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferLength002', 0, function () {
@@ -3741,7 +3769,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferLength003
      * @tc.desc: Obtains the total number of values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferLength003', 0, function () {
@@ -3755,7 +3782,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferLength004
      * @tc.desc: Obtains the total number of values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferLength004', 0, function () {
@@ -3771,7 +3797,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferLength005
      * @tc.desc: Obtains the total number of values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferLength005', 0, function () {
@@ -3790,7 +3815,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferClear001
      * @tc.desc: Clears key-value pairs from the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferClear001', 0, function () {
@@ -3806,7 +3830,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferClear002
      * @tc.desc: Clears key-value pairs from the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferClear002', 0, function () {
@@ -3825,7 +3848,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferClear003
      * @tc.desc: Clears key-value pairs from the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferClear003', 0, function () {
@@ -3844,7 +3866,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferClear004
      * @tc.desc: Clears key-value pairs from the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferClear004', 0, function () {
@@ -3863,7 +3884,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferClear005
      * @tc.desc: Clears key-value pairs from the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferClear005', 0, function () {
@@ -3883,7 +3903,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferIsEmpty001
      * @tc.desc: Checks whether the current buffer is empty.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferIsEmpty001', 0, function () {
@@ -3896,7 +3915,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferIsEmpty002
      * @tc.desc: Checks whether the current buffer is empty.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferIsEmpty002', 0, function () {
@@ -3910,7 +3928,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferIsEmpty003
      * @tc.desc: Checks whether the current buffer is empty.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferIsEmpty003', 0, function () {
@@ -3925,7 +3942,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferIsEmpty004
      * @tc.desc: Checks whether the current buffer is empty.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferIsEmpty004', 0, function () {
@@ -3940,7 +3956,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferIsEmpty005
      * @tc.desc: Checks whether the current buffer is empty.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferIsEmpty005', 0, function () {
@@ -3956,7 +3971,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferContains001
      * @tc.desc: Checks whether the current buffer contains a specified key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferContains001', 0, function () {
@@ -3969,7 +3983,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferContains002
      * @tc.desc: Checks whether the current buffer contains a specified key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferContains002', 0, function () {
@@ -3982,7 +3995,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferContains003
      * @tc.desc: Checks whether the current buffer contains a specified key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferContains003', 0, function () {
@@ -3995,7 +4007,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferContains004
      * @tc.desc: Checks whether the current buffer contains a specified key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferContains004', 0, function () {
@@ -4011,7 +4022,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferContains005
      * @tc.desc: Checks whether the current buffer contains a specified key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferContains005', 0, function () {
@@ -4029,7 +4039,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferRemove001
      * @tc.desc: Deletes a specified key and its associated value from the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferRemove001', 0, function () {
@@ -4042,7 +4051,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferRemove002
      * @tc.desc: Deletes a specified key and its associated value from the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferRemove002', 0, function () {
@@ -4058,7 +4066,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferRemove003
      * @tc.desc: Deletes a specified key and its associated value from the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferRemove003', 0, function () {
@@ -4073,7 +4080,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferRemove004
      * @tc.desc: Deletes a specified key and its associated value from the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferRemove004', 0, function () {
@@ -4089,7 +4095,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferRemove005
      * @tc.desc: Deletes a specified key and its associated value from the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferRemove005', 0, function () {
@@ -4108,7 +4113,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferCreateDefault001
      * @tc.desc: Executes subsequent operations if miss to compute a value for the specific key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferCreateDefault001', 0, function () {
@@ -4120,7 +4124,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferCreateDefault002
      * @tc.desc: Executes subsequent operations if miss to compute a value for the specific key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferCreateDefault002', 0, function () {
@@ -4132,7 +4135,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferCreateDefault003
      * @tc.desc: Executes subsequent operations if miss to compute a value for the specific key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferCreateDefault003', 0, function () {
@@ -4144,7 +4146,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferCreateDefault004
      * @tc.desc: Executes subsequent operations if miss to compute a value for the specific key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferCreateDefault004', 0, function () {
@@ -4156,7 +4157,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferCreateDefault005
      * @tc.desc: Executes subsequent operations if miss to compute a value for the specific key.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferCreateDefault005', 0, function () {
@@ -4170,7 +4170,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferKeys001
      * @tc.desc: Obtains a list of keys for the values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferKeys001', 0, function () {
@@ -4183,7 +4182,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferKeys002
      * @tc.desc: Obtains a list of keys for the values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferKeys002', 0, function () {
@@ -4202,7 +4200,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferKeys003
      * @tc.desc: Obtains a list of keys for the values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferKeys003', 0, function () {
@@ -4222,7 +4219,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferKeys004
      * @tc.desc: Obtains a list of keys for the values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferKeys004', 0, function () {
@@ -4243,7 +4239,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferKeys005
      * @tc.desc: Obtains a list of keys for the values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferKeys005', 0, function () {
@@ -4266,7 +4261,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferValues001
      * @tc.desc: Obtains a list of all values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferValues001', 0, function () {
@@ -4279,7 +4273,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferValues002
      * @tc.desc: Obtains a list of all values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferValues002', 0, function () {
@@ -4298,7 +4291,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferValues003
      * @tc.desc: Obtains a list of all values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferValues003', 0, function () {
@@ -4318,7 +4310,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferValues004
      * @tc.desc: Obtains a list of all values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferValues004', 0, function () {
@@ -4339,7 +4330,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferValues005
      * @tc.desc: Obtains a list of all values in the current buffer.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferValues005', 0, function () {
@@ -4362,7 +4352,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferToString001
      * @tc.desc: Returns a string representation of the object.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferToString001', 0, function () {
@@ -4376,7 +4365,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferToString002
      * @tc.desc: Returns a string representation of the object.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferToString002', 0, function () {
@@ -4392,7 +4380,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferToString003
      * @tc.desc: Returns a string representation of the object.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferToString003', 0, function () {
@@ -4409,7 +4396,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferToString004
      * @tc.desc: Returns a string representation of the object.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferToString004', 0, function () {
@@ -4427,7 +4413,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferToString005
      * @tc.desc: Returns a string representation of the object.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferToString005', 0, function () {
@@ -4447,7 +4432,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferEntries001
      * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferEntries001', 0, function () {
@@ -4467,7 +4451,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferEntries002
      * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferEntries002', 0, function () {
@@ -4490,7 +4473,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferEntries003
      * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferEntries003', 0, function () {
@@ -4514,7 +4496,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferEntries004
      * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferEntries004', 0, function () {
@@ -4540,7 +4521,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferEntries005
      * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferEntries005', 0, function () {
@@ -4570,7 +4550,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBuffer[Symbol.iterator]001
      * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBuffer[Symbol.iterator]001', 0, function () {
@@ -4591,7 +4570,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBuffer[Symbol.iterator]002
      * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBuffer[Symbol.iterator]002', 0, function () {
@@ -4614,7 +4592,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBuffer[Symbol.iterator]003
      * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBuffer[Symbol.iterator]003', 0, function () {
@@ -4638,7 +4615,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBuffer[Symbol.iterator]004
      * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBuffer[Symbol.iterator]004', 0, function () {
@@ -4664,7 +4640,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBuffer[Symbol.iterator]005
      * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBuffer[Symbol.iterator]005', 0, function () {
@@ -4694,7 +4669,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferAfterRemoval001
      * @tc.desc: Executes subsequent operations after a value is deleted.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferAfterRemoval001', 0, function () {
@@ -4728,7 +4702,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferAfterRemoval002
      * @tc.desc: Executes subsequent operations after a value is deleted.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferAfterRemoval002', 0, function () {
@@ -4762,7 +4735,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferAfterRemoval003
      * @tc.desc: Executes subsequent operations after a value is deleted.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferAfterRemoval003', 0, function () {
@@ -4796,7 +4768,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferAfterRemoval004
      * @tc.desc: Executes subsequent operations after a value is deleted.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferAfterRemoval004', 0, function () {
@@ -4830,7 +4801,6 @@ describe('LruBufferFunTest', function () {
     /**
      * @tc.name: testLruBufferAfterRemoval005
      * @tc.desc: Executes subsequent operations after a value is deleted.
-     * @tc.require: AR000GFB59
      * @tc.author: lixingyang
      */
     it('testLruBufferAfterRemoval005', 0, function () {
@@ -4867,7 +4837,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsAnyArrayBuffer001
      * @tc.desc: Check whether the entered value is of arraybuffer or sharedarraybuffer type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer001', 0, function() {
@@ -4879,7 +4848,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsAnyArrayBuffer002
      * @tc.desc: Check whether the entered value is of arraybuffer or sharedarraybuffer type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer002', 0, function() {
@@ -4891,7 +4859,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsAnyArrayBuffer003
      * @tc.desc: Check whether the entered value is of arraybuffer or sharedarraybuffer type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer003', 0, function() {
@@ -4903,7 +4870,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsAnyArrayBuffer004
      * @tc.desc: Check whether the entered value is of arraybuffer or sharedarraybuffer type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer004', 0, function() {
@@ -4916,7 +4882,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsAnyArrayBuffer005
      * @tc.desc: Check whether the entered value is of arraybuffer or sharedarraybuffer type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer005', 0, function() {
@@ -4928,9 +4893,8 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArrayBufferView001
      * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array
-	   or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_
-	   uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
-     * @tc.require: AR000GFB59
+       or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_
+       uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView001', 0, function() {
@@ -4942,9 +4906,8 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArrayBufferView002
      * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array
-	   or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_
-	   int32_ array or napi_ uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
-     * @tc.require: AR000GFB59
+       or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_
+       int32_ array or napi_ uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView002', 0, function() {
@@ -4956,9 +4919,8 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArrayBufferView003
      * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_
-	   array or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or
-	   napi_ uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
-     * @tc.require: AR000GFB59
+       array or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or
+       napi_ uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView003', 0, function() {
@@ -4970,9 +4932,8 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArrayBufferView004
      * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array or naPi_ uint8_
-	   clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_ uint32_ array or
-	   napi_ float32_ array or napi_ float64_ array array or DataView type.
-     * @tc.require: AR000GFB59
+       clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_ uint32_ array or
+       napi_ float32_ array or napi_ float64_ array array or DataView type.
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView004', 0, function() {
@@ -4984,9 +4945,8 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArrayBufferView005
      * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array or naPi_ uint8_
-	   clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_ uint32_ array or
-	   napi_ float32_ array or napi_ float64_ array array or DataView type.
-     * @tc.require: AR000GFB59
+       clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_ uint32_ array or
+       napi_ float32_ array or napi_ float64_ array array or DataView type.
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView005', 0, function() {
@@ -4998,7 +4958,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArgumentsObject001
      * @tc.desc: Check whether the entered value is an arguments object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject001', 0, function() {
@@ -5013,7 +4972,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArgumentsObject002
      * @tc.desc: Check whether the entered value is an arguments object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject002', 0, function() {
@@ -5025,7 +4983,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArgumentsObject003
      * @tc.desc: Check whether the entered value is an arguments object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject003', 0, function() {
@@ -5037,7 +4994,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArgumentsObject004
      * @tc.desc: Check whether the entered value is an arguments object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject004', 0, function() {
@@ -5049,7 +5005,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArgumentsObject005
      * @tc.desc: Check whether the entered value is an arguments object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject005', 0, function() {
@@ -5061,7 +5016,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArrayBuffer001
      * @tc.desc: Check whether the entered value is of arraybuffer type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer001', 0, function() {
@@ -5073,7 +5027,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArrayBuffer002
      * @tc.desc: Check whether the entered value is of arraybuffer type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer002', 0, function() {
@@ -5085,7 +5038,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArrayBuffer003
      * @tc.desc: Check whether the entered value is of arraybuffer type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer003', 0, function() {
@@ -5097,7 +5049,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArrayBuffer004
      * @tc.desc: Check whether the entered value is of arraybuffer type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer004', 0, function() {
@@ -5109,7 +5060,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsArrayBuffer005
      * @tc.desc: Check whether the entered value is of arraybuffer type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer005', 0, function() {
@@ -5121,7 +5071,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsAsyncFunction001
      * @tc.desc: Check whether the value entered is an asynchronous function type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsAsyncFunction001', 0, function() {
@@ -5133,7 +5082,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsAsyncFunction002
      * @tc.desc: Check whether the value entered is an asynchronous function type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsAsyncFunction002', 0, function() {
@@ -5145,7 +5093,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsAsyncFunction003
      * @tc.desc: Check whether the value entered is an asynchronous function type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsAsyncFunction003', 0, function() {
@@ -5157,7 +5104,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsAsyncFunction004
      * @tc.desc: Check whether the value entered is an asynchronous function type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsAsyncFunction004', 0, function() {
@@ -5169,7 +5115,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsBigInt64Array001
      * @tc.desc: Check whether the entered value is of bigint64array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsBigInt64Array001', 0, function() {
@@ -5181,7 +5126,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsBigUint64Array001
      * @tc.desc: Check whether the entered value is of biguint64array array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsBigUint64Array001', 0, function() {
@@ -5193,7 +5137,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsBooleanObject001
      * @tc.desc: Check whether the entered value is a Boolean object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject001', 0, function() {
@@ -5205,7 +5148,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsBooleanObject002
      * @tc.desc: Check whether the entered value is a Boolean object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject002', 0, function() {
@@ -5217,7 +5159,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsBooleanObject003
      * @tc.desc: Check whether the entered value is a Boolean object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject003', 0, function() {
@@ -5229,7 +5170,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsBooleanObject004
      * @tc.desc: Check whether the entered value is a Boolean object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject004', 0, function() {
@@ -5241,7 +5181,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsBooleanObject005
      * @tc.desc: Check whether the entered value is a Boolean object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject005', 0, function() {
@@ -5253,7 +5192,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsBoxedPrimitive001
      * @tc.desc: Check whether the entered value is a Boolean or number or string or symbol object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive001', 0, function() {
@@ -5265,7 +5203,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsBoxedPrimitive002
      * @tc.desc: Check whether the entered value is a Boolean or number or string or symbol object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive002', 0, function() {
@@ -5277,7 +5214,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsBoxedPrimitive003
      * @tc.desc: Check whether the entered value is a Boolean or number or string or symbol object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive003', 0, function() {
@@ -5289,7 +5225,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsBoxedPrimitive004
      * @tc.desc: Check whether the entered value is a Boolean or number or string or symbol object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive004', 0, function() {
@@ -5301,7 +5236,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsBoxedPrimitive005
      * @tc.desc: Check whether the entered value is a Boolean or number or string or symbol object type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive005', 0, function() {
@@ -5313,7 +5247,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsDataView001
      * @tc.desc: Check whether the entered value is of DataView type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsDataView001', 0, function() {
@@ -5326,7 +5259,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsDataView002
      * @tc.desc: Check whether the entered value is of DataView type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsDataView002', 0, function() {
@@ -5338,7 +5270,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsDataView003
      * @tc.desc: Check whether the entered value is of DataView type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsDataView003', 0, function() {
@@ -5350,7 +5281,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsDataView004
      * @tc.desc: Check whether the entered value is of DataView type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsDataView004', 0, function() {
@@ -5362,7 +5292,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsDataView005
      * @tc.desc: Check whether the entered value is of DataView type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsDataView005', 0, function() {
@@ -5374,7 +5303,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsDate001
      * @tc.desc: Check whether the entered value is of type date.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsDate001', 0, function() {
@@ -5386,7 +5314,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsDate002
      * @tc.desc: Check whether the entered value is of type date.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsDate002', 0, function() {
@@ -5398,7 +5325,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsDate003
      * @tc.desc: Check whether the entered value is of type date.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsDate003', 0, function() {
@@ -5410,7 +5336,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsDate004
      * @tc.desc: Check whether the entered value is of type date.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsDate004', 0, function() {
@@ -5422,7 +5347,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsDate005
      * @tc.desc: Check whether the entered value is of type date.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsDate005', 0, function() {
@@ -5434,7 +5358,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsExternal001
      * @tc.desc: Check whether the entered value is a native external value type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsExternal001', 0, function() {
@@ -5447,7 +5370,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsExternal002
      * @tc.desc: Check whether the entered value is a native external value type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsExternal002', 0, function() {
@@ -5459,7 +5381,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsExternal003
      * @tc.desc: Check whether the entered value is a native external value type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsExternal003', 0, function() {
@@ -5471,7 +5392,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsExternal004
      * @tc.desc: Check whether the entered value is a native external value type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsExternal004', 0, function() {
@@ -5483,7 +5403,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsExternal005
      * @tc.desc: Check whether the entered value is a native external value type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsExternal005', 0, function() {
@@ -5495,7 +5414,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsFloat32Array001
      * @tc.desc: Check whether the entered value is of float32array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array001', 0, function() {
@@ -5507,7 +5425,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsFloat32Array002
      * @tc.desc: Check whether the entered value is of float32array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array002', 0, function() {
@@ -5519,7 +5436,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsFloat32Array003
      * @tc.desc: Check whether the entered value is of float32array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array003', 0, function() {
@@ -5531,7 +5447,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsFloat32Array004
      * @tc.desc: Check whether the entered value is of float32array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array004', 0, function() {
@@ -5543,7 +5458,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsFloat32Array005
      * @tc.desc: Check whether the entered value is of float32array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array005', 0, function() {
@@ -5555,7 +5469,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsFloat64Array001
      * @tc.desc: Check whether the entered value is of float64array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array001', 0, function() {
@@ -5567,7 +5480,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsFloat64Array002
      * @tc.desc: Check whether the entered value is of float64array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array002', 0, function() {
@@ -5579,7 +5491,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsFloat64Array003
      * @tc.desc: Check whether the entered value is of float64array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array003', 0, function() {
@@ -5591,7 +5502,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsFloat64Array004
      * @tc.desc: Check whether the entered value is of float64array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array004', 0, function() {
@@ -5603,7 +5513,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsFloat64Array005
      * @tc.desc: Check whether the entered value is of float64array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array005', 0, function() {
@@ -5615,7 +5524,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsGeneratorFunction001
      * @tc.desc: Check whether the input value is a generator function type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsGeneratorFunction001', 0, function() {
@@ -5627,7 +5535,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsGeneratorFunction002
      * @tc.desc: Check whether the input value is a generator function type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsGeneratorFunction002', 0, function() {
@@ -5639,7 +5546,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsGeneratorFunction003
      * @tc.desc: Check whether the input value is a generator function type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsGeneratorFunction003', 0, function() {
@@ -5651,7 +5557,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsGeneratorFunction004
      * @tc.desc: Check whether the input value is a generator function type.
-     * @tc.require: AR000GFB59
      * @tc.author: wangjingwu
      */
     it('testIsGeneratorFunction004', 0, function() {
@@ -5663,7 +5568,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsGeneratorObject001
      * @tc.desc: Check whether the entered value is a generator object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsGeneratorObject001', 0, function() {
@@ -5675,7 +5579,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsGeneratorObject002
      * @tc.desc: Check whether the entered value is a generator object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsGeneratorObject002', 0, function() {
@@ -5687,7 +5590,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsGeneratorObject003
      * @tc.desc: Check whether the entered value is a generator object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsGeneratorObject003', 0, function() {
@@ -5699,7 +5601,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsGeneratorObject004
      * @tc.desc: Check whether the entered value is a generator object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsGeneratorObject004', 0, function() {
@@ -5711,7 +5612,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt8Array001
      * @tc.desc: Check whether the entered value is of int8array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt8Array001', 0, function() {
@@ -5723,7 +5623,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt8Array002
      * @tc.desc: Check whether the entered value is of int8array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt8Array002', 0, function() {
@@ -5735,7 +5634,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt8Array003
      * @tc.desc: Check whether the entered value is of int8array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt8Array003', 0, function() {
@@ -5747,7 +5645,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt8Array004
      * @tc.desc: Check whether the entered value is of int8array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt8Array004', 0, function() {
@@ -5759,7 +5656,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt8Array005
      * @tc.desc: Check whether the entered value is of int8array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt8Array005', 0, function() {
@@ -5771,7 +5667,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt16Array001
      * @tc.desc: Check whether the entered value is the int16array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt16Array001', 0, function() {
@@ -5783,7 +5678,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt16Array002
      * @tc.desc: Check whether the entered value is the int16array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt16Array002', 0, function() {
@@ -5795,7 +5689,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt16Array003
      * @tc.desc: Check whether the entered value is the int16array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt16Array003', 0, function() {
@@ -5807,7 +5700,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt16Array004
      * @tc.desc: Check whether the entered value is the int16array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt16Array004', 0, function() {
@@ -5819,7 +5711,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt16Array005
      * @tc.desc: Check whether the entered value is the int16array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt16Array005', 0, function() {
@@ -5831,7 +5722,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt32Array001
      * @tc.desc: Check whether the entered value is the int32array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt32Array001', 0, function() {
@@ -5843,7 +5733,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt32Array002
      * @tc.desc: Check whether the entered value is the int32array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt32Array002', 0, function() {
@@ -5855,7 +5744,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt32Array003
      * @tc.desc: Check whether the entered value is the int32array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt32Array003', 0, function() {
@@ -5867,7 +5755,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt32Array004
      * @tc.desc: Check whether the entered value is the int32array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt32Array004', 0, function() {
@@ -5879,7 +5766,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsInt32Array005
      * @tc.desc: Check whether the entered value is the int32array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsInt32Array005', 0, function() {
@@ -5891,7 +5777,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsMap001
      * @tc.desc: Check whether the entered value is of map type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsMap001', 0, function() {
@@ -5903,7 +5788,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsMap002
      * @tc.desc: Check whether the entered value is of map type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsMap002', 0, function() {
@@ -5915,7 +5799,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsMap003
      * @tc.desc: Check whether the entered value is of map type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsMap003', 0, function() {
@@ -5927,7 +5810,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsMap004
      * @tc.desc: Check whether the entered value is of map type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsMap004', 0, function() {
@@ -5939,7 +5821,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsMap005
      * @tc.desc: Check whether the entered value is of map type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsMap005', 0, function() {
@@ -5951,7 +5832,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsMapIterator001
      * @tc.desc: Check whether the entered value is the iterator type of map.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsMapIterator001', 0, function() {
@@ -5964,7 +5844,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsMapIterator002
      * @tc.desc: Check whether the entered value is the iterator type of map.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsMapIterator002', 0, function() {
@@ -5977,7 +5856,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsMapIterator003
      * @tc.desc: Check whether the entered value is the iterator type of map.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsMapIterator003', 0, function() {
@@ -5990,7 +5868,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsMapIterator004
      * @tc.desc: Check whether the entered value is the iterator type of map.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsMapIterator004', 0, function() {
@@ -6003,7 +5880,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsMapIterator005
      * @tc.desc: Check whether the entered value is the iterator type of map.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsMapIterator005', 0, function() {
@@ -6016,7 +5892,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsModuleNamespaceObject001
      * @tc.desc: Check whether the entered value is the module namespace object object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject001', 0, function() {
@@ -6028,7 +5903,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsModuleNamespaceObject002
      * @tc.desc: Check whether the entered value is the module namespace object object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject002', 0, function() {
@@ -6040,7 +5914,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsModuleNamespaceObject003
      * @tc.desc: Check whether the entered value is the module namespace object object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject003', 0, function() {
@@ -6052,7 +5925,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsModuleNamespaceObject004
      * @tc.desc: Check whether the entered value is the module namespace object object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject004', 0, function() {
@@ -6064,7 +5936,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsModuleNamespaceObject005
      * @tc.desc: Check whether the entered value is the module namespace object object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject005', 0, function() {
@@ -6076,7 +5947,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsNativeError001
      * @tc.desc: Check whether the value entered is of type error.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsNativeError001', 0, function() {
@@ -6088,7 +5958,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsNativeError002
      * @tc.desc: Check whether the value entered is of type error.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsNativeError002', 0, function() {
@@ -6100,7 +5969,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsNativeError003
      * @tc.desc: Check whether the value entered is of type error.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsNativeError003', 0, function() {
@@ -6112,7 +5980,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsNativeError004
      * @tc.desc: Check whether the value entered is of type error.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsNativeError004', 0, function() {
@@ -6124,7 +5991,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsNativeError005
      * @tc.desc: Check whether the value entered is of type error.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsNativeError005', 0, function() {
@@ -6136,7 +6002,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsNumberObject001
      * @tc.desc: Check whether the entered value is of the number object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsNumberObject001', 0, function() {
@@ -6148,7 +6013,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsNumberObject002
      * @tc.desc: Check whether the entered value is of the number object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsNumberObject002', 0, function() {
@@ -6160,7 +6024,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsNumberObject003
      * @tc.desc: Check whether the entered value is of the number object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsNumberObject003', 0, function() {
@@ -6172,7 +6035,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsNumberObject004
      * @tc.desc: Check whether the entered value is of the number object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsNumberObject004', 0, function() {
@@ -6184,7 +6046,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsNumberObject005
      * @tc.desc: Check whether the entered value is of the number object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsNumberObject005', 0, function() {
@@ -6196,7 +6057,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsPromise001
      * @tc.desc: Check whether the entered value is of promise type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsPromise001', 0, function() {
@@ -6208,7 +6068,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsPromise002
      * @tc.desc: Check whether the entered value is of promise type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsPromise002', 0, function() {
@@ -6220,7 +6079,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsPromise003
      * @tc.desc: Check whether the entered value is of promise type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsPromise003', 0, function() {
@@ -6232,7 +6090,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsPromise004
      * @tc.desc: Check whether the entered value is of promise type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsPromise004', 0, function() {
@@ -6245,12 +6102,11 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsPromise005
      * @tc.desc: Check whether the entered value is of promise type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsPromise005', 0, function() {
         var proc = new util.types();
-		var err = Error(23);
+        var err = Error(23);
         var result = proc.isPromise(Promise.reject(err));
         expect(result).assertEqual(true);
     })
@@ -6258,7 +6114,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsProxy001
      * @tc.desc: Check whether the value entered is of proxy type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsProxy001', 0, function() {
@@ -6272,7 +6127,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsProxy002
      * @tc.desc: Check whether the value entered is of proxy type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsProxy002', 0, function() {
@@ -6286,7 +6140,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsProxy003
      * @tc.desc: Check whether the value entered is of proxy type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsProxy003', 0, function() {
@@ -6304,7 +6157,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsProxy004
      * @tc.desc: Check whether the value entered is of proxy type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsProxy004', 0, function() {
@@ -6322,7 +6174,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsProxy005
      * @tc.desc: Check whether the value entered is of proxy type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsProxy005', 0, function() {
@@ -6340,7 +6191,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsRegExp001
      * @tc.desc: Check whether the entered value is of type regexp.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsRegExp001', 0, function() {
@@ -6352,7 +6202,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsRegExp002
      * @tc.desc: Check whether the entered value is of type regexp.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsRegExp002', 0, function() {
@@ -6364,7 +6213,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsRegExp003
      * @tc.desc: Check whether the entered value is of type regexp.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsRegExp003', 0, function() {
@@ -6376,7 +6224,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsRegExp004
      * @tc.desc: Check whether the entered value is of type regexp.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsRegExp004', 0, function() {
@@ -6388,7 +6235,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsRegExp005
      * @tc.desc: Check whether the entered value is of type regexp.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsRegExp005', 0, function() {
@@ -6400,7 +6246,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSet001
      * @tc.desc: Check whether the entered value is of type set.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSet001', 0, function() {
@@ -6412,7 +6257,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSet002
      * @tc.desc: Check whether the entered value is of type set.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSet002', 0, function() {
@@ -6424,7 +6268,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSet003
      * @tc.desc: Check whether the entered value is of type set.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSet003', 0, function() {
@@ -6436,7 +6279,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSet004
      * @tc.desc: Check whether the entered value is of type set.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSet004', 0, function() {
@@ -6448,7 +6290,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSet005
      * @tc.desc: Check whether the entered value is of type set.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSet005', 0, function() {
@@ -6460,7 +6301,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSetIterator001
      * @tc.desc: Check whether the entered value is the iterator type of set.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSetIterator001', 0, function() {
@@ -6473,7 +6313,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSetIterator002
      * @tc.desc: Check whether the entered value is the iterator type of set.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSetIterator002', 0, function() {
@@ -6486,7 +6325,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSetIterator003
      * @tc.desc: Check whether the entered value is the iterator type of set.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSetIterator003', 0, function() {
@@ -6499,7 +6337,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSetIterator004
      * @tc.desc: Check whether the entered value is the iterator type of set.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSetIterator004', 0, function() {
@@ -6512,7 +6349,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSetIterator005
      * @tc.desc: Check whether the entered value is the iterator type of set.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSetIterator005', 0, function() {
@@ -6525,7 +6361,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSharedArrayBuffer001
      * @tc.desc: Check whether the entered value is of type sharedarraybuffer.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer001', 0, function() {
@@ -6537,7 +6372,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSharedArrayBuffer002
      * @tc.desc: Check whether the entered value is of type sharedarraybuffer.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer002', 0, function() {
@@ -6549,7 +6383,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSharedArrayBuffer003
      * @tc.desc: Check whether the entered value is of type sharedarraybuffer.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer003', 0, function() {
@@ -6561,7 +6394,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSharedArrayBuffer004
      * @tc.desc: Check whether the entered value is of type sharedarraybuffer.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer004', 0, function() {
@@ -6573,7 +6405,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSharedArrayBuffer005
      * @tc.desc: Check whether the entered value is of type sharedarraybuffer.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer005', 0, function() {
@@ -6585,7 +6416,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsStringObject001
      * @tc.desc: Check whether the entered value is a string object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsStringObject001', 0, function() {
@@ -6597,7 +6427,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsStringObject002
      * @tc.desc: Check whether the entered value is a string object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsStringObject002', 0, function() {
@@ -6609,7 +6438,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsStringObject003
      * @tc.desc: Check whether the entered value is a string object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsStringObject003', 0, function() {
@@ -6621,7 +6449,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsStringObject004
      * @tc.desc: Check whether the entered value is a string object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsStringObject004', 0, function() {
@@ -6633,7 +6460,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsStringObject005
      * @tc.desc: Check whether the entered value is a string object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsStringObject005', 0, function() {
@@ -6645,7 +6471,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSymbolObject001
      * @tc.desc: Check whether the entered value is a symbol object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSymbolObject001', 0, function() {
@@ -6658,7 +6483,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSymbolObject002
      * @tc.desc: Check whether the entered value is a symbol object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSymbolObject002', 0, function() {
@@ -6671,7 +6495,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSymbolObject003
      * @tc.desc: Check whether the entered value is a symbol object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSymbolObject003', 0, function() {
@@ -6684,7 +6507,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSymbolObject004
      * @tc.desc: Check whether the entered value is a symbol object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSymbolObject004', 0, function() {
@@ -6697,7 +6519,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsSymbolObject005
      * @tc.desc: Check whether the entered value is a symbol object type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsSymbolObject005', 0, function() {
@@ -6710,7 +6531,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsTypedArray001
      * @tc.desc: Check whether the entered value is a type contained in typedarray.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsTypedArray001', 0, function() {
@@ -6722,7 +6542,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsTypedArray002
      * @tc.desc: Check whether the entered value is a type contained in typedarray.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsTypedArray002', 0, function() {
@@ -6734,7 +6553,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsTypedArray003
      * @tc.desc: Check whether the entered value is a type contained in typedarray.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsTypedArray003', 0, function() {
@@ -6746,7 +6564,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsTypedArray004
      * @tc.desc: Check whether the entered value is a type contained in typedarray.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsTypedArray004', 0, function() {
@@ -6758,7 +6575,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsTypedArray005
      * @tc.desc: Check whether the entered value is a type contained in typedarray.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsTypedArray005', 0, function() {
@@ -6770,7 +6586,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint8Array001
      * @tc.desc: Check whether the entered value is the uint8array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint8Array001', 0, function() {
@@ -6782,7 +6597,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint8Array002
      * @tc.desc: Check whether the entered value is the uint8array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint8Array002', 0, function() {
@@ -6794,7 +6608,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint8Array003
      * @tc.desc: Check whether the entered value is the uint8array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint8Array003', 0, function() {
@@ -6806,7 +6619,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint8Array004
      * @tc.desc: Check whether the entered value is the uint8array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint8Array004', 0, function() {
@@ -6818,7 +6630,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint8Array005
      * @tc.desc: Check whether the entered value is the uint8array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint8Array005', 0, function() {
@@ -6830,7 +6641,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint8ClampedArray001
      * @tc.desc: Check whether the entered value is the uint8clapedarray array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray001', 0, function() {
@@ -6842,7 +6652,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint8ClampedArray002
      * @tc.desc: Check whether the entered value is the uint8clapedarray array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray002', 0, function() {
@@ -6854,7 +6663,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint8ClampedArray003
      * @tc.desc: Check whether the entered value is the uint8clapedarray array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray003', 0, function() {
@@ -6866,7 +6674,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint8ClampedArray004
      * @tc.desc: Check whether the entered value is the uint8clapedarray array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray004', 0, function() {
@@ -6878,7 +6685,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint8ClampedArray005
      * @tc.desc: Check whether the entered value is the uint8clapedarray array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray005', 0, function() {
@@ -6890,7 +6696,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint16Array001
      * @tc.desc: Check whether the entered value is the uint16array array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint16Array001', 0, function() {
@@ -6902,7 +6707,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint16Array002
      * @tc.desc: Check whether the entered value is the uint16array array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint16Array002', 0, function() {
@@ -6914,7 +6718,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint16Array003
      * @tc.desc: Check whether the entered value is the uint16array array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint16Array003', 0, function() {
@@ -6926,7 +6729,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint16Array004
      * @tc.desc: Check whether the entered value is the uint16array array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint16Array004', 0, function() {
@@ -6938,7 +6740,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint16Array005
      * @tc.desc: Check whether the entered value is the uint16array array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint16Array005', 0, function() {
@@ -6950,7 +6751,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint32Array001
      * @tc.desc: Check whether the entered value is the uint32array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint32Array001', 0, function() {
@@ -6962,7 +6762,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint32Array002
      * @tc.desc: Check whether the entered value is the uint32array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint32Array002', 0, function() {
@@ -6974,7 +6773,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint32Array003
      * @tc.desc: Check whether the entered value is the uint32array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint32Array003', 0, function() {
@@ -6986,7 +6784,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint32Array004
      * @tc.desc: Check whether the entered value is the uint32array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint32Array004', 0, function() {
@@ -6998,7 +6795,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsUint32Array005
      * @tc.desc: Check whether the entered value is the uint32array array type.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsUint32Array005', 0, function() {
@@ -7010,7 +6806,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsWeakMap001
      * @tc.desc: Check whether the entered value is of type weakmap.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsWeakMap001', 0, function() {
@@ -7022,7 +6817,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsWeakMap002
      * @tc.desc: Check whether the entered value is of type weakmap.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsWeakMap002', 0, function() {
@@ -7034,7 +6828,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsWeakMap003
      * @tc.desc: Check whether the entered value is of type weakmap.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsWeakMap003', 0, function() {
@@ -7046,7 +6839,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsWeakMap004
      * @tc.desc: Check whether the entered value is of type weakmap.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsWeakMap004', 0, function() {
@@ -7058,7 +6850,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsWeakMap005
      * @tc.desc: Check whether the entered value is of type weakmap.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsWeakMap005', 0, function() {
@@ -7070,7 +6861,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsWeakSet001
      * @tc.desc: Check whether the entered value is of type weakset.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsWeakSet001', 0, function() {
@@ -7082,7 +6872,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsWeakSet002
      * @tc.desc: Check whether the entered value is of type weakset.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsWeakSet002', 0, function() {
@@ -7094,7 +6883,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsWeakSet003
      * @tc.desc: Check whether the entered value is of type weakset.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsWeakSet003', 0, function() {
@@ -7106,7 +6894,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsWeakSet004
      * @tc.desc: Check whether the entered value is of type weakset.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsWeakSet004', 0, function() {
@@ -7118,7 +6905,6 @@ describe('TypesTest', function() {
     /**
      * @tc.name: testIsWeakSet005
      * @tc.desc: Check whether the entered value is of type weakset.
-     * @tc.require: AR000GFB59
      * @tc.author: bihu
      */
     it('testIsWeakSet005', 0, function() {

@@ -19,8 +19,12 @@ group("netmanager_base") {
     deps = [
       "dns:ActsDNSTest",
       "jshttp:ActsJSHTTPTest",
+      "network_nopermission:ActsNetworkNopermissionTest",
+      "network_nowifi:ActsNetworkNowifiTest",
+      "network_wifi:ActsNetworkWifiTest",
       "register:ActsRegisterTest",
       "socket:ActsSocketTest",
+      "system_fetch:ActsSystemFetchTest",
     ]
   }
 }

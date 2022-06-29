@@ -17,10 +17,6 @@ import fileio from '@ohos.fileio';
 import file from '@system.file';
 import {
   describe,
-  beforeAll,
-  beforeEach,
-  afterEach,
-  afterAll,
   it,
   expect
 }
@@ -50,11 +46,11 @@ describe('fileTest', function () {
     file.delete({
       uri: 'internal://cache/../files/File_Delete_001',
       success: function () {
-        console.log('File_Delete_001 call delete success');
+        console.info('File_Delete_001 call delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Delete_001 call delete fail, code: ' + code + ', data: ' + data);
+        console.info('File_Delete_001 call delete fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
         done();
       },
@@ -70,22 +66,22 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://cache/File_Delete_002',
       success: function () {
-        console.log('File_Delete_002 call mkdir success.');
+        console.info('File_Delete_002 call mkdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Delete_002 call mkdir fail, code: ' + code + ', data: ' + data);
+        console.info('File_Delete_002 call mkdir fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_Delete_002',
       success: function () {
-        console.log('File_Delete_002 call delete success.');
+        console.info('File_Delete_002 call delete success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Delete_002 call delete fail, code: ' + code + ', data: ' + data);
+        console.info('File_Delete_002 call delete fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -100,11 +96,11 @@ describe('fileTest', function () {
     file.delete({
       uri: 'internal://ohos/workspace/text.txt',
       success: function () {
-        console.log('File_Delete_003 call delete success.');
+        console.info('File_Delete_003 call delete success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Delete_003 call delete fail, code: ' + code + ', data: ' + data);
+        console.info('File_Delete_003 call delete fail, code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -125,11 +121,11 @@ describe('fileTest', function () {
     file.delete({
       uri: 'internal://app/File_Delete_004',
       success: function () {
-        console.log('File_Delete_004 call delete success.');
+        console.info('File_Delete_004 call delete success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Delete_004 call delete fail, code: ' + code + ', data: ' + data);
+        console.info('File_Delete_004 call delete fail, code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         done();
       },
@@ -145,11 +141,11 @@ describe('fileTest', function () {
     file.delete({
       uri: 'internal://app/File_Delete_005',
       success: function () {
-        console.log('File_Delete_005 call delete success.');
+        console.info('File_Delete_005 call delete success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Delete_005 call delete fail, code: ' + code + ', data: ' + data);
+        console.info('File_Delete_005 call delete fail, code: ' + code + ', data: ' + data);
         expect(code == 301).assertTrue();
         done();
       },
@@ -167,18 +163,18 @@ describe('fileTest', function () {
     let uri = 'internal://cache/' + firstPath;
     fileio.mkdirSync(dpath);
     for (let i = 0; i < 16; i++) {
-      console.log('frequency' + i);
+      console.info('frequency' + i);
       let sonPath = randomString(251);
       uri = uri + '/f' + sonPath;
     }
     file.delete({
       uri: uri,
       success: function () {
-        console.log('File_Delete_006 call delete success');
+        console.info('File_Delete_006 call delete success');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Delete_006 call delete fail, code: ' + code + ', data: ' + data);
+        console.info('File_Delete_006 call delete fail, code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         done();
       },
@@ -195,22 +191,22 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_Delete_007',
       text: 'test',
       success: function () {
-        console.log('File_Delete_007 call writeText success');
+        console.info('File_Delete_007 call writeText success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Delete_007 call writeText fail, code: ' + code + ', data: ' + data);
+        console.info('File_Delete_007 call writeText fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_Delete_007',
       success: function () {
-        console.log('File_Delete_007 call delete success');
+        console.info('File_Delete_007 call delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Delete_007 call delete fail, code: ' + code + ', data: ' + data);
+        console.info('File_Delete_007 call delete fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -226,22 +222,22 @@ describe('fileTest', function () {
       uri: 'internal://cache/../cache/File_Delete_008',
       text: 'Text that just for test.',
       success: function () {
-        console.log('File_Delete_008 call writeText success');
+        console.info('File_Delete_008 call writeText success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Delete_008 call writeText fail, code: ' + code + ', data: ' + data);
+        console.info('File_Delete_008 call writeText fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/../cache/File_Delete_008',
       success: function () {
-        console.log('File_Delete_008 call delete success');``
+        console.info('File_Delete_008 call delete success');``
         done();
       },
       fail: function (data, code) {
-        console.log('File_Delete_008 call delete fail, code: ' + code + ', data: ' + data);
+        console.info('File_Delete_008 call delete fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -257,33 +253,33 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_writeText_001',
       text: 'sawyerwang.',
       success: function () {
-        console.log('File_writeText_001 call writeText success');
+        console.info('File_writeText_001 call writeText success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_001 call writeText fail , code: ' + code + ', data: ' + data);
+        console.info('File_writeText_001 call writeText fail , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readText({
       uri: 'internal://cache/File_writeText_001',
       success: function (data) {
-        console.log('File_writeText_001 call read success. Content: ' );
+        console.info('File_writeText_001 call read success. Content: ' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_001 call read fail , code: ' + code + ', data: ' + data);
+        console.info('File_writeText_001 call read fail , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_writeText_001',
       success: function () {
-        console.log('File_writeText_001 call delete success');
+        console.info('File_writeText_001 call delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_001 call delete fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_001 call delete fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -299,11 +295,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_writeText_002',
       text: 'Text1.',
       success: function () {
-        console.log('File_writeText_002 call writeText success.');
+        console.info('File_writeText_002 call writeText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_002 call writeText fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_002 call writeText fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -312,33 +308,33 @@ describe('fileTest', function () {
       text: 'Text2.',
       append: true,
       success: function () {
-        console.log('File_writeText_002 call writeText success.');
+        console.info('File_writeText_002 call writeText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_002 call writeText fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_002 call writeText fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readText({
       uri: 'internal://cache/File_writeText_002',
       success: function (data) {
-        console.log('File_writeText_002 call read success. Content: ' );
+        console.info('File_writeText_002 call read success. Content: ' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_002 call read fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_002 call read fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_writeText_002',
       success: function () {
-        console.log('File_writeText_002 call delete success');
+        console.info('File_writeText_002 call delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_002 call delete fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_002 call delete fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -355,33 +351,33 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_writeText_003',
       text: txt,
       success: function () {
-        console.log('File_writeText_003 call writeText success.');
+        console.info('File_writeText_003 call writeText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_003 call writeText fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_003 call writeText fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readText({
       uri: 'internal://cache/File_writeText_003',
       success: function (data) {
-        console.log('File_writeText_003 call read success. Content: ' );
+        console.info('File_writeText_003 call read success. Content: ' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_003 call read fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_003 call read fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_writeText_003',
       success: function () {
-        console.log('File_writeText_003 call delete success');
+        console.info('File_writeText_003 call delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_003 call delete fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_003 call delete fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -398,11 +394,11 @@ describe('fileTest', function () {
       text: 'hello',
       encoding: 'UTF-8',
       success: function () {
-        console.log('File_writeText_004 call writeText success.');
+        console.info('File_writeText_004 call writeText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_004 call writeText fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_004 call writeText fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -410,22 +406,22 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_writeText_004',
       encoding: 'UTF-8',
       success: function (data) {
-        console.log('File_writeText_004 call readText success. Content: ' );
+        console.info('File_writeText_004 call readText success. Content: ' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_004 call readText fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_004 call readText fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_writeText_004',
       success: function () {
-        console.log('File_writeText_004 delete success');
+        console.info('File_writeText_004 delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_004 delete , code: ' + code + ', data: ' + data);
+        console.info('File_writeText_004 delete , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -441,11 +437,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_writeText_005',
       text: 'hello,world',
       success: function () {
-        console.log('File_writeText_005 call writeText success.');
+        console.info('File_writeText_005 call writeText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_005 call writeText fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_005 call writeText fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -454,33 +450,33 @@ describe('fileTest', function () {
       text: 'hello',
       append: true,
       success: function () {
-        console.log('File_writeText_005 call writeText success.');
+        console.info('File_writeText_005 call writeText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_005 call writeText fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_005 call writeText fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readText({
       uri: 'internal://cache/File_writeText_005',
       success: function (data) {
-        console.log('File_writeText_005 call read success ' );
+        console.info('File_writeText_005 call read success ' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_005 call readText fail , code: ' + code + ', data: ' + data);
+        console.info('File_writeText_005 call readText fail , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_writeText_005',
       success: function () {
-        console.log('File_writeText_005 call delete success');
+        console.info('File_writeText_005 call delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_005 call delete fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_005 call delete fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -496,33 +492,33 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_writeText_006',
       text: 'hello',
       success: function () {
-        console.log('File_writeText_006 call writeText success.');
+        console.info('File_writeText_006 call writeText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_006 call writeText fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_006 call writeText fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readText({
       uri: 'internal://cache/File_writeText_006',
       success: function (data) {
-        console.log('File_writeText_006 call read success ' );
+        console.info('File_writeText_006 call read success ' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_006 call readText fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_006 call readText fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_writeText_006',
       success: function () {
-        console.log('File_writeText_006 delete success');
+        console.info('File_writeText_006 delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_006 delete , code: ' + code + ', data: ' + data);
+        console.info('File_writeText_006 delete , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -538,11 +534,11 @@ describe('fileTest', function () {
       uri: '/data/accounts/account_0/appdata',
       text: 'hello',
       success: function () {
-        console.log('File_writeText_007 call writeText success.');
+        console.info('File_writeText_007 call writeText success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_writeText_007, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_007, code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -555,17 +551,17 @@ describe('fileTest', function () {
    * @tc.desc Function of API, error code: 300 The uri path is dir path.
    */
   it('File_writeText_008', 0, async function (done) {
-    let dpath = await fileName('File_writeText_008d');
+    let dpath = await nextFileName('File_writeText_008d');
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
     file.writeText({
       uri: 'internal://cache/File_writeText_008d/',
       text: 'hello',
       success: function () {
-        console.log('File_writeText_008 call writeText success.');
+        console.info('File_writeText_008 call writeText success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_writeText_008 , code: ' + code + ', data: ' + data);
+        console.info('File_writeText_008 , code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         done();
       },
@@ -582,11 +578,11 @@ describe('fileTest', function () {
       uri: 'internal://app/File_writeText_009d/File_writeText_009',
       text: 'test',
       success: function () {
-        console.log('File_writeText_009 call writeText success.');
+        console.info('File_writeText_009 call writeText success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_writeText_009 , code: ' + code + ', data: ' + data);
+        console.info('File_writeText_009 , code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         done();
       },
@@ -603,22 +599,22 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_writeText_010',
       text: 'test',
       success: function () {
-        console.log('File_writeText_010 mkdir success');
+        console.info('File_writeText_010 mkdir success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_010 fail code: ' + code + ', data: ' + data);
+        console.info('File_writeText_010 fail code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_writeText_010',
       success: function () {
-        console.log('File_writeText_010 delete success');
+        console.info('File_writeText_010 delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_010 fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeText_010 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -634,33 +630,33 @@ describe('fileTest', function () {
       uri: 'internal://cache/../cache/File_writeText_011',
       text: 'sawyerwang',
       success: function () {
-        console.log('File_writeText_011 mkdir success ');
+        console.info('File_writeText_011 mkdir success ');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_011 , code: ' + code + ', data: ' + data);
+        console.info('File_writeText_011 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readText({
       uri: 'internal://cache/../cache/File_writeText_011',
       success: function (data) {
-        console.log('File_writeText_011 read success ' );
+        console.info('File_writeText_011 read success ' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_011 , code: ' + code + ', data: ' + data);
+        console.info('File_writeText_011 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/../cache/File_writeText_011',
       success: function () {
-        console.log('File_writeText_011 delete success');
+        console.info('File_writeText_011 delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeText_011 delete , code: ' + code + ', data: ' + data);
+        console.info('File_writeText_011 delete , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -676,12 +672,12 @@ describe('fileTest', function () {
       uri: 'internal://app/notdir/File_writeText_013',
       text: 'sawyerwang',
       success: function () {
-        console.log('File_writeText_013 mkdir success');
+        console.info('File_writeText_013 mkdir success');
         expect(null).assertFail();
       },
       fail: function (data, code) {
         expect(code == 300).assertTrue();
-        console.log('File_writeText_013 , code: ' + code + ', data: ' + data);
+        console.info('File_writeText_013 , code: ' + code + ', data: ' + data);
         done();
       },
     });
@@ -700,22 +696,22 @@ describe('fileTest', function () {
       buffer: buf,
       append: true,
       success: function () {
-        console.log('File_writeArrayBuffer_001 call writeArrayBuffer success.');
+        console.info('File_writeArrayBuffer_001 call writeArrayBuffer success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_001 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_001 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_001',
       success: function (data) {
-        console.log('File_writeArrayBuffer_001 call readArrayBuffer success.' );
+        console.info('File_writeArrayBuffer_001 call readArrayBuffer success.' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_001 readArrayBuffer , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_001 readArrayBuffer , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -735,22 +731,22 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_writeArrayBuffer_002',
       buffer: buf,
       success: function () {
-        console.log('File_writeArrayBuffer_002 call writeArrayBuffer success.');
+        console.info('File_writeArrayBuffer_002 call writeArrayBuffer success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_002 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_002 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_002',
       success: function (data) {
-        console.log('File_writeArrayBuffer_002 call readArrayBuffer success.' );
+        console.info('File_writeArrayBuffer_002 call readArrayBuffer success.' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_002 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_002 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -770,11 +766,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_writeArrayBuffer_003',
       buffer: buf,
       success: function () {
-        console.log('File_writeArrayBuffer_003 call writeText success.');
+        console.info('File_writeArrayBuffer_003 call writeText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_003 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_003 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -783,22 +779,22 @@ describe('fileTest', function () {
       buffer: buf,
       append: true,
       success: function () {
-        console.log('File_writeArrayBuffer_003 call writeArrayBuffer success.');
+        console.info('File_writeArrayBuffer_003 call writeArrayBuffer success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_003 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_003 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_003',
       success: function (data) {
-        console.log('File_writeArrayBuffer_003 readArrayBuffer success:' );
+        console.info('File_writeArrayBuffer_003 readArrayBuffer success:' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_003 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_003 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -816,11 +812,11 @@ describe('fileTest', function () {
       buffer: buf,
       append: false,
       success: function () {
-        console.log('File_writeArrayBuffer_004 success call writeText success.');
+        console.info('File_writeArrayBuffer_004 success call writeText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_004 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_004 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -829,22 +825,22 @@ describe('fileTest', function () {
       buffer: buf,
       append: false,
       success: function () {
-        console.log('File_writeArrayBuffer_004 call writeArrayBuffer success.');
+        console.info('File_writeArrayBuffer_004 call writeArrayBuffer success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_004 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_004 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_004',
       success: function (data) {
-        console.log('File_writeArrayBuffer_004: readArrayBuffer success ' );
+        console.info('File_writeArrayBuffer_004: readArrayBuffer success ' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_004 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_004 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -864,11 +860,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_writeArrayBuffer_005',
       buffer: buf,
       success: function () {
-        console.log('File_writeArrayBuffer_005 call writeText success.');
+        console.info('File_writeArrayBuffer_005 call writeText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_005 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_005 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -877,22 +873,22 @@ describe('fileTest', function () {
       buffer: buf,
       position: 10,
       success: function () {
-        console.log('File_writeArrayBuffer_005 call writeArrayBuffer success.');
+        console.info('File_writeArrayBuffer_005 call writeArrayBuffer success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_005 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_005 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_005',
       success: function (data) {
-        console.log('File_writeArrayBuffer_005 read success:' );
+        console.info('File_writeArrayBuffer_005 read success:' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_005 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_005 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -912,11 +908,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_writeArrayBuffer_006',
       buffer: buf,
       success: function () {
-        console.log('File_writeArrayBuffer_006 call writeText success.');
+        console.info('File_writeArrayBuffer_006 call writeText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_006 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_006 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -924,22 +920,22 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_writeArrayBuffer_006',
       buffer: buf,
       success: function () {
-        console.log('File_writeArrayBuffer_006 call writeArrayBuffer success.');
+        console.info('File_writeArrayBuffer_006 call writeArrayBuffer success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_006 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_006 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_006',
       success: function () {
-        console.log('File_writeArrayBuffer_006 pass');
+        console.info('File_writeArrayBuffer_006 pass');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_006 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_006 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -956,11 +952,11 @@ describe('fileTest', function () {
       uri: '',
       buffer: buf,
       success: function () {
-        console.log('File_writeArrayBuffer_007 call writeArrayBuffer success.');
+        console.info('File_writeArrayBuffer_007 call writeArrayBuffer success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_007 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_007 , code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -977,7 +973,7 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://app/File_writeArrayBuffer_008',
       success: function () {
-        console.log('call mkdir success.');
+        console.info('call mkdir success.');
         done();
       },
       fail: function (data, code) {
@@ -988,11 +984,11 @@ describe('fileTest', function () {
       uri: 'internal://app/notdir/File_writeArrayBuffer_008',
       buffer: buf,
       success: function () {
-        console.log('File_writeArrayBuffer_008 call writeArrayBuffer success.');
+        console.info('File_writeArrayBuffer_008 call writeArrayBuffer success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_008 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_008 , code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         done();
       },
@@ -1010,33 +1006,33 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_writeArrayBuffer_009',
       buffer: buf,
       success: function () {
-        console.log('File_writeArrayBuffer_009 call success');
+        console.info('File_writeArrayBuffer_009 call success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_009 fail');
+        console.info('File_writeArrayBuffer_009 fail');
         expect(null).assertFail();
       },
     });
     file.readArrayBuffer({
       uri: 'internal://cache/File_writeArrayBuffer_009',
       success: function (data) {
-        console.log('File_writeArrayBuffer_009 pass');
+        console.info('File_writeArrayBuffer_009 pass');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_009 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_009 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_writeArrayBuffer_009',
       success: function () {
-        console.log('File_writeArrayBuffer_009 call success');
+        console.info('File_writeArrayBuffer_009 call success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_009 fail, code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_009 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1054,22 +1050,22 @@ describe('fileTest', function () {
       buffer: buf,
       append: true,
       success: function () {
-        console.log('File_writeArrayBuffer_010 call writeArrayBuffer success.');
+        console.info('File_writeArrayBuffer_010 call writeArrayBuffer success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_010 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_010 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readArrayBuffer({
       uri: 'internal://cache/../cache/File_writeArrayBuffer_010',
       success: function (data) {
-        console.log('File_writeArrayBuffer_010 pass');
+        console.info('File_writeArrayBuffer_010 pass');
         done();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_010 readArrayBuffer , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_010 readArrayBuffer , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1087,11 +1083,11 @@ describe('fileTest', function () {
       buffer: buf,
       append: true,
       success: function () {
-        console.log('File_writeArrayBuffer_012  => pass');
+        console.info('File_writeArrayBuffer_012  => pass');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_writeArrayBuffer_012 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_012 , code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         done();
       },
@@ -1108,22 +1104,22 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_readText_001',
       text: 'Text that just for test.',
       success: function () {
-        console.log('File_readText_001 call writeText success.');
+        console.info('File_readText_001 call writeText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_readText_001 , code: ' + code + ', data: ' + data);
+        console.info('File_readText_001 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readText({
       uri: 'internal://cache/File_readText_001',
       success: function (data) {
-        console.log('File_readText_001 call readText success.');
+        console.info('File_readText_001 call readText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_readText_001 , code: ' + code + ', data: ' + data);
+        console.info('File_readText_001 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1140,11 +1136,11 @@ describe('fileTest', function () {
       text: 'Text that just for test.',
       encoding: 'utf-8',
       success: function () {
-        console.log('File_readText_002 call writeText success.');
+        console.info('File_readText_002 call writeText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_readText_002 , code: ' + code + ', data: ' + data);
+        console.info('File_readText_002 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1152,11 +1148,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_readText_002',
       encoding: 'utf-8',
       success: function (data) {
-        console.log('File_readText_002 call readText success.');
+        console.info('File_readText_002 call readText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_readText_002 , code: ' + code + ', data: ' + data);
+        console.info('File_readText_002 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1171,11 +1167,11 @@ describe('fileTest', function () {
     file.readText({
       uri: '',
       success: function (data) {
-        console.log(data.text);
+        console.info(data.text);
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_readText_003 , code: ' + code + ', data: ' + data);
+        console.info('File_readText_003 , code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -1191,11 +1187,11 @@ describe('fileTest', function () {
     file.readText({
       uri: 'internal://cache/',
       success: function (data) {
-        console.log(data.text);
+        console.info(data.text);
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_readText_004 , code: ' + code + ', data: ' + data);
+        console.info('File_readText_004 , code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         done();
       },
@@ -1211,11 +1207,11 @@ describe('fileTest', function () {
     file.readText({
       uri: 'internal://cache/workspace/text.txt',
       success: function (data) {
-        console.log(data.text);
+        console.info(data.text);
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_readText_005 , code: ' + code + ', data: ' + data);
+        console.info('File_readText_005 , code: ' + code + ', data: ' + data);
         expect(code == 301).assertTrue();
         done();
       },
@@ -1232,33 +1228,33 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_readText_006',
       text: 'test',
       success: function () {
-        console.log('File_readText_006 call success');
+        console.info('File_readText_006 call success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_readText_006 fail, code: ' + code + ', data: ' + data);
+        console.info('File_readText_006 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readText({
       uri: 'internal://cache/File_readText_006',
       success: function (data) {
-        console.log('File_readText_006 call success' );
+        console.info('File_readText_006 call success' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_readText_006 fail');
+        console.info('File_readText_006 fail');
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_readText_006',
       success: function () {
-        console.log('File_readText_006 call success');
+        console.info('File_readText_006 call success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_readText_006 fail, code: ' + code + ', data: ' + data);
+        console.info('File_readText_006 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1274,22 +1270,22 @@ describe('fileTest', function () {
       uri: 'internal://cache/../files/../files/File_readText_007',
       text: 'Text that just for test.',
       success: function () {
-        console.log('File_readText_007 call writeText success.');
+        console.info('File_readText_007 call writeText success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_readText_007 , code: ' + code + ', data: ' + data);
+        console.info('File_readText_007 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readText({
       uri: 'internal://cache/../files/../files/File_readText_007',
       success: function (data) {
-        console.log('File_readText_007 call readText success. data.text:' );
+        console.info('File_readText_007 call readText success. data.text:' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_readText_007 , code: ' + code + ', data: ' + data);
+        console.info('File_readText_007 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1312,7 +1308,7 @@ describe('fileTest', function () {
       file.readText({
         uri: "internal://cache/File_readText_008",
         success: function (data) {
-          console.log("call readText success: " + data.text);
+          console.info("call readText success: " + data.text);
           expect(text == data.text).assertTrue();
           expect(fileio.unlinkSync(fpath) !== null).assertTrue();
           done();
@@ -1323,7 +1319,7 @@ describe('fileTest', function () {
         },
       });
     } catch (e) {
-      console.log("File_readText_008 has failed for " + e);
+      console.info("File_readText_008 has failed for " + e);
       expect(null).assertFail();
     }
   });
@@ -1339,11 +1335,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_read_array_buffer_001',
       buffer: buffer,
       success: function () {
-        console.log('File_read_array_buffer_001 call writeArrayBuffer success.');
+        console.info('File_read_array_buffer_001 call writeArrayBuffer success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_read_array_buffer_001 , code: ' + code + ', data: ' + data);
+        console.info('File_read_array_buffer_001 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1352,11 +1348,11 @@ describe('fileTest', function () {
       position: 0,
       length: 10,
       success: function (data) {
-        console.log('File_read_array_buffer_001 pass');
+        console.info('File_read_array_buffer_001 pass');
         done();
       },
       fail: function (data, code) {
-        console.log('File_read_array_buffer_001 , code: ' + code + ', data: ' + data);
+        console.info('File_read_array_buffer_001 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1376,22 +1372,22 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_read_array_buffer_002',
       buffer: buffer,
       success: function () {
-        console.log('File_read_array_buffer_002 call writeArrayBuffer success.');
+        console.info('File_read_array_buffer_002 call writeArrayBuffer success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_read_array_buffer_002 , code: ' + code + ', data: ' + data);
+        console.info('File_read_array_buffer_002 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readArrayBuffer({
       uri: 'internal://cache/File_read_array_buffer_002',
       success: function (data) {
-        console.log('File_read_array_buffer_002 pass');
+        console.info('File_read_array_buffer_002 pass');
         done();
       },
       fail: function (data, code) {
-        console.log('File_read_array_buffer_002 , code: ' + code + ', data: ' + data);
+        console.info('File_read_array_buffer_002 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1406,11 +1402,11 @@ describe('fileTest', function () {
     file.readArrayBuffer({
       uri: '',
       success: function (data) {
-        console.log('File_read_array_buffer_003 call readArrayBuffer success: ' );
+        console.info('File_read_array_buffer_003 call readArrayBuffer success: ' );
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_read_array_buffer_003 , code: ' + code + ', data: ' + data);
+        console.info('File_read_array_buffer_003 , code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -1429,11 +1425,11 @@ describe('fileTest', function () {
       uri: fpath,
       position: 100,
       success: function (data) {
-        console.log('File_read_array_buffer_004 call readArrayBuffer success: ' );
+        console.info('File_read_array_buffer_004 call readArrayBuffer success: ' );
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_read_array_buffer_004 , code: ' + code + ', data: ' + data);
+        console.info('File_read_array_buffer_004 , code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -1452,11 +1448,11 @@ describe('fileTest', function () {
       uri: fpath,
       length: -1,
       success: function (data) {
-        console.log('File_read_array_buffer_005 call readArrayBuffer success: ' );
+        console.info('File_read_array_buffer_005 call readArrayBuffer success: ' );
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_read_array_buffer_005 , code: ' + code + ', data: ' + data);
+        console.info('File_read_array_buffer_005 , code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -1472,11 +1468,11 @@ describe('fileTest', function () {
     file.readArrayBuffer({
       uri: 'internal://app',
       success: function (data) {
-        console.log('File_read_array_buffer_006 call readArrayBuffer success: ' );
+        console.info('File_read_array_buffer_006 call readArrayBuffer success: ' );
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_read_array_buffer_006 , code: ' + code + ', data: ' + data);
+        console.info('File_read_array_buffer_006 , code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -1492,11 +1488,11 @@ describe('fileTest', function () {
     file.readArrayBuffer({
       uri: 'internal://cache/File_read_array_buffer_007',
       success: function (data) {
-        console.log('File_read_array_buffer_007 call readArrayBuffer success: ' );
+        console.info('File_read_array_buffer_007 call readArrayBuffer success: ' );
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_read_array_buffer_007 , code: ' + code + ', data: ' + data);
+        console.info('File_read_array_buffer_007 , code: ' + code + ', data: ' + data);
         expect(code == 301).assertTrue();
         done();
       },
@@ -1514,33 +1510,33 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_read_array_buffer_008',
       buffer: buf,
       success: function () {
-        console.log('File_read_array_buffer_008 call success');
+        console.info('File_read_array_buffer_008 call success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_read_array_buffer_008 fail, code: ' + code + ', data: ' + data);
+        console.info('File_read_array_buffer_008 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readArrayBuffer({
       uri: 'internal://cache/File_read_array_buffer_008',
       success: function (data) {
-        console.log('File_read_array_buffer_008 call success ' );
+        console.info('File_read_array_buffer_008 call success ' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_read_array_buffer_008 fail');
+        console.info('File_read_array_buffer_008 fail');
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_read_array_buffer_008',
       success: function () {
-        console.log('File_read_array_buffer_008:call success');
+        console.info('File_read_array_buffer_008:call success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_read_array_buffer_008 fail, code: ' + code + ', data: ' + data);
+        console.info('File_read_array_buffer_008 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1557,11 +1553,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/../cache/File_read_array_buffer_009',
       buffer: buffer,
       success: function () {
-        console.log('File_read_array_buffer_009 call writeArrayBuffer success.');
+        console.info('File_read_array_buffer_009 call writeArrayBuffer success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_read_array_buffer_009 , code: ' + code + ', data: ' + data);
+        console.info('File_read_array_buffer_009 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1570,11 +1566,11 @@ describe('fileTest', function () {
       position: 0,
       length: 10,
       success: function (data) {
-        console.log('File_read_array_buffer_009 call readArrayBuffer success. data.buffer:' );
+        console.info('File_read_array_buffer_009 call readArrayBuffer success. data.buffer:' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_read_array_buffer_009 , code: ' + code + ', data: ' + data);
+        console.info('File_read_array_buffer_009 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1593,33 +1589,33 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_access_001',
       text: 'Text that just for test.',
       success: function () {
-        console.log('File_access_001 call success.');
+        console.info('File_access_001 call success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_access_001 fail，code: ' + code + ', data: ' + data);
+        console.info('File_access_001 fail，code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.access({
       uri: 'internal://cache/File_access_001',
       success: function () {
-        console.log('File_access_001 call access success.');
+        console.info('File_access_001 call access success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_access_001 , code: ' + code + ', data: ' + data);
+        console.info('File_access_001 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_access_001',
       success: function () {
-        console.log('File_access_001 call delete success.');
+        console.info('File_access_001 call delete success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_access_001 , code: ' + code + ', data: ' + data);
+        console.info('File_access_001 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1634,33 +1630,33 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://cache/File_access_002',
       success: function () {
-        console.log('File_access_002 call success.');
+        console.info('File_access_002 call success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_access_002 fail, code: ' + code + ', data: ' + data);
+        console.info('File_access_002 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.access({
       uri: 'internal://cache/File_access_002',
       success: function () {
-        console.log('File_access_002 call access success.');
+        console.info('File_access_002 call access success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_access_002 , code: ' + code + ', data: ' + data);
+        console.info('File_access_002 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.rmdir({
       uri: 'internal://cache/File_access_002',
       success: function () {
-        console.log('File_access_002 call rmdir success.');
+        console.info('File_access_002 call rmdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_access_002 , code: ' + code + ', data: ' + data);
+        console.info('File_access_002 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1676,11 +1672,11 @@ describe('fileTest', function () {
     file.access({
       uri: fpath,
       success: function () {
-        console.log('File_access_003 call access success.');
+        console.info('File_access_003 call access success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_access_003 , code: ' + code + ', data: ' + data);
+        console.info('File_access_003 , code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -1696,11 +1692,11 @@ describe('fileTest', function () {
     file.access({
       uri: 'internal://app/File_access_004.txt',
       success: function () {
-        console.log('File_access_004 call access success.');
+        console.info('File_access_004 call access success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_access_004 , code: ' + code + ', data: ' + data);
+        console.info('File_access_004 , code: ' + code + ', data: ' + data);
         expect(code == 301).assertTrue();
         done();
       },
@@ -1716,11 +1712,11 @@ describe('fileTest', function () {
     file.access({
       uri: 'internal://app/File_access_005',
       success: function () {
-        console.log('File_access_005 call access success.');
+        console.info('File_access_005 call access success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_access_005 , code: ' + code + ', data: ' + data);
+        console.info('File_access_005 , code: ' + code + ', data: ' + data);
         expect(code == 301).assertTrue();
         done();
       },
@@ -1738,18 +1734,18 @@ describe('fileTest', function () {
     let uri = 'internal://cache/' + firstPath;
     fileio.mkdirSync(dpath);
     for (let i = 0; i < 16; i++) {
-      console.log('time' + i);
+      console.info('time' + i);
       let sonPath = randomString(251);
       uri = uri + '/f' + sonPath;
     }
     file.access({
       uri: uri,
       success: function () {
-        console.log('File_access_006 => pass');
+        console.info('File_access_006 => pass');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_access_006 , code: ' + code + ', data: ' + data);
+        console.info('File_access_006 , code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         fileio.rmdirSync(dpath);
         done();
@@ -1768,33 +1764,33 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_access_007',
       text: 'hello',
       success: function () {
-        console.log('File_access_007 mkdir success ');
+        console.info('File_access_007 mkdir success ');
         done();
       },
       fail: function (data, code) {
-        console.log('File_access_007 fail, code: ' + code + ', data: ' + data);
+        console.info('File_access_007 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.access({
       uri: 'internal://cache/File_access_007',
       success: function () {
-        console.log('File_access_007 access success');
+        console.info('File_access_007 access success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_access_007 fail');
+        console.info('File_access_007 fail');
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_access_007',
       success: function () {
-        console.log('File_access_007 delete success');
+        console.info('File_access_007 delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_access_007 fail, code: ' + code + ', data: ' + data);
+        console.info('File_access_007 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1810,33 +1806,33 @@ describe('fileTest', function () {
       uri: 'internal://cache/../cache/File_access_008',
       text: 'Text that just for test.',
       success: function () {
-        console.log('File_access_008 mkdir success.');
+        console.info('File_access_008 mkdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_access_008 fail，code: ' + code + ', data: ' + data);
+        console.info('File_access_008 fail，code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.access({
       uri: 'internal://cache/../cache/File_access_008',
       success: function () {
-        console.log('File_access_008 call access success.');
+        console.info('File_access_008 call access success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_access_008 , code: ' + code + ', data: ' + data);
+        console.info('File_access_008 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/../cache/File_access_008',
       success: function () {
-        console.log('File_access_008 call delete success.');
+        console.info('File_access_008 call delete success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_access_008 , code: ' + code + ', data: ' + data);
+        console.info('File_access_008 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1851,22 +1847,22 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://cache/File_mkdir_001',
       success: function () {
-        console.log('File_mkdir_001 call mkdir success.');
+        console.info('File_mkdir_001 call mkdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_mkdir_001 , code: ' + code + ', data: ' + data);
+        console.info('File_mkdir_001 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.rmdir({
       uri: 'internal://cache/File_mkdir_001',
       success: function () {
-        console.log('File_mkdir_001 call rmdir success.');
+        console.info('File_mkdir_001 call rmdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_mkdir_001 , code: ' + code + ', data: ' + data);
+        console.info('File_mkdir_001 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1881,11 +1877,11 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://app/test/File_mkdir_002',
       success: function () {
-        console.log('File_mkdir_002 call mkdir success.');
+        console.info('File_mkdir_002 call mkdir success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_mkdir_002 , code: ' + code + ', data: ' + data);
+        console.info('File_mkdir_002 , code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         done();
       },
@@ -1902,11 +1898,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/test/File_mkdir_003d',
       recursive: true,
       success: function () {
-        console.log('File_mkdir_003 call mkdir success.');
+        console.info('File_mkdir_003 call mkdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_mkdir_003 , code: ' + code + ', data: ' + data);
+        console.info('File_mkdir_003 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -1921,11 +1917,11 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://files/test/File_mkdir_002d',
       success: function () {
-        console.log('File_mkdir_004 call mkdir success.');
+        console.info('File_mkdir_004 call mkdir success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_mkdir_004, code: ' + code + ', data: ' + data);
+        console.info('File_mkdir_004, code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -1941,11 +1937,11 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://cache/！@/<>',
       success: function () {
-        console.log('File_mkdir_005 mkdir success');
+        console.info('File_mkdir_005 mkdir success');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_mkdir_005 fail, code: ' + code + ', data: ' + data);
+        console.info('File_mkdir_005 fail, code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         done();
       },
@@ -1962,11 +1958,11 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://cache/' + fileName,
       success: function () {
-        console.log('File_mkdir_006 mkdir success');
+        console.info('File_mkdir_006 mkdir success');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_mkdir_006 =>fail ,code：' + code + ',data: ' + data);
+        console.info('File_mkdir_006 =>fail ,code：' + code + ',data: ' + data);
         expect(code == 300).assertTrue();
         done();
       },
@@ -1982,22 +1978,22 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://cache/File_mkdir_007d',
       success: function () {
-        console.log('File_mkdir_007 mkdir success');
+        console.info('File_mkdir_007 mkdir success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_mkdir_007 fail, code: ' + code + ', data: ' + data);
+        console.info('File_mkdir_007 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.rmdir({
       uri: 'internal://cache/File_mkdir_007d',
       success: function () {
-        console.log('File_mkdir_007 delete success');
+        console.info('File_mkdir_007 delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_mkdir_007 fail, code: ' + code + ', data: ' + data);
+        console.info('File_mkdir_007 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2012,22 +2008,22 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://cache/../files/File_mkdir_008',
       success: function () {
-        console.log('File_mkdir_008 call mkdir success.');
+        console.info('File_mkdir_008 call mkdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_mkdir_008 , code: ' + code + ', data: ' + data);
+        console.info('File_mkdir_008 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.rmdir({
       uri: 'internal://cache/../files/File_mkdir_008',
       success: function () {
-        console.log('File_mkdir_008 call rmdir success.');
+        console.info('File_mkdir_008 call rmdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_mkdir_008 , code: ' + code + ', data: ' + data);
+        console.info('File_mkdir_008 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2042,11 +2038,11 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://app/notdir/File_mkdir_010',
       success: function () {
-        console.log('File_mkdir_010 call mkdir success.');
+        console.info('File_mkdir_010 call mkdir success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_mkdir_010 call mkdir callback fail, code: ' + code + ', data: ' + data);
+        console.info('File_mkdir_010 call mkdir callback fail, code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         done();
       },
@@ -2062,22 +2058,22 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://cache/File_rmdir_001',
       success: function () {
-        console.log('File_rmdir_001 call mkdir success.');
+        console.info('File_rmdir_001 call mkdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_001 fail, code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_001 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.rmdir({
       uri: 'internal://cache/File_rmdir_001',
       success: function () {
-        console.log('File_rmdir_001 call rmdir success.');
+        console.info('File_rmdir_001 call rmdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_001 fail, code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_001 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2093,11 +2089,11 @@ describe('fileTest', function () {
       uri: 'internal://app/test/File_rmdir_002',
       recursive: true,
       success: function () {
-        console.log('File_rmdir_002 mkdir success.');
+        console.info('File_rmdir_002 mkdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_002 fail, code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_002 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2105,11 +2101,11 @@ describe('fileTest', function () {
       uri: 'internal://app/test',
       recursive: false,
       success: function () {
-        console.log('File_rmdir_002 call rmdir success.');
+        console.info('File_rmdir_002 call rmdir success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_002 fail, code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_002 fail, code: ' + code + ', data: ' + data);
         expect(code == 301 || code == 300).assertTrue();
         done();
       },
@@ -2126,11 +2122,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/test/File_rmdir_003/File_rmdir_003_1/File_rmdir_003_2',
       recursive: true,
       success: function () {
-        console.log('File_rmdir_003 mkdir success.');
+        console.info('File_rmdir_003 mkdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_003 fail, code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_003 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2138,11 +2134,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/test/File_rmdir_003_1/File_rmdir_003_1/File_rmdir_003_2',
       recursive: true,
       success: function () {
-        console.log('File_rmdir_003 mkdir success.');
+        console.info('File_rmdir_003 mkdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_003 fail, code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_003 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2150,11 +2146,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/test/File_rmdir_003_2/File_rmdir_003_1/File_rmdir_003_2',
       recursive: true,
       success: function () {
-        console.log('File_rmdir_003 mkdir success.');
+        console.info('File_rmdir_003 mkdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_003 fail, code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_003 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2162,11 +2158,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/test',
       recursive: true,
       success: function () {
-        console.log('File_rmdir_003 call rmdir success.');
+        console.info('File_rmdir_003 call rmdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_003 , code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_003 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2181,11 +2177,11 @@ describe('fileTest', function () {
     file.rmdir({
       uri: '/data/accounts/account_0/appdata/ohos.acts.distributeddatamgr.distributedfile/cache/',
       success: function () {
-        console.log('File_rmdir_004 call rmdir success.');
+        console.info('File_rmdir_004 call rmdir success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_004 , code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_004 , code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -2201,11 +2197,11 @@ describe('fileTest', function () {
     file.rmdir({
       uri: 'internal://app/test/123',
       success: function () {
-        console.log('File_rmdir_005 call rmdir success.');
+        console.info('File_rmdir_005 call rmdir success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_005 , code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_005 , code: ' + code + ', data: ' + data);
         expect(code == 301).assertTrue();
         done();
       },
@@ -2223,22 +2219,22 @@ describe('fileTest', function () {
     file.mkdir({
       uri: uri,
       success: function () {
-        console.log('File_rmdir_006 mkdir success');
+        console.info('File_rmdir_006 mkdir success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_006 fail');
+        console.info('File_rmdir_006 fail');
         expect(null).assertFail();
       },
     });
     file.rmdir({
       uri: uri,
       success: function () {
-        console.log('File_rmdir_006 =>  rmdir success');
+        console.info('File_rmdir_006 =>  rmdir success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_006 => fail');
+        console.info('File_rmdir_006 => fail');
         expect(null).assertFail();
       },
     });
@@ -2253,22 +2249,22 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://cache/File_rmdir_007d',
       success: function () {
-        console.log('File_rmdir_007 mkdir success');
+        console.info('File_rmdir_007 mkdir success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_007 fail, code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_007 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.rmdir({
       uri: 'internal://cache/File_rmdir_007d',
       success: function () {
-        console.log('File_rmdir_007 rmdir success');
+        console.info('File_rmdir_007 rmdir success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_007 fail, code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_007 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2283,22 +2279,22 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://cache/../files/File_rmdir_008',
       success: function () {
-        console.log('File_rmdir_008 call mkdir success.');
+        console.info('File_rmdir_008 call mkdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_008 , code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_008 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.rmdir({
       uri: 'internal://cache/../files/File_rmdir_008',
       success: function () {
-        console.log('File_rmdir_008 call rmdir success.');
+        console.info('File_rmdir_008 call rmdir success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_008 , code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_008 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2313,11 +2309,11 @@ describe('fileTest', function () {
     file.rmdir({
       uri: 'internal://app/../../com.ohos.systemui',
       success: function () {
-        console.log('File_rmdir_010 call rmdir success.');
+        console.info('File_rmdir_010 call rmdir success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_rmdir_010 call rmdir callback fail, code: ' + code + ', data: ' + data);
+        console.info('File_rmdir_010 call rmdir callback fail, code: ' + code + ', data: ' + data);
         expect(code == 301).assertTrue();
         done();
       },
@@ -2334,7 +2330,7 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_Move_001',
       text: 'Text that just for test.',
       success: function () {
-        console.log('File_Move_001 call writeText success.');
+        console.info('File_Move_001 call writeText success.');
         done();
       },
       fail: function (data, code) {
@@ -2346,11 +2342,11 @@ describe('fileTest', function () {
       srcUri: 'internal://cache/File_Move_001',
       dstUri: 'internal://cache/File_Move_001_1',
       success: function (data) {
-        console.log('File_Move_001 call writeText success. data:' + data);
+        console.info('File_Move_001 call writeText success. data:' + data);
         done();
       },
       fail: function (data, code) {
-        console.log('File_Move_001 , code: ' + code + ', data: ' + data);
+        console.info('File_Move_001 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2373,11 +2369,11 @@ describe('fileTest', function () {
         srcUri: 'internal://cache/../files/File_Move_002' + typeArray[i],
         dstUri: 'internal://cache/../files/cache/File_Move_002' + typeArray[i],
         success: function (uri) {
-          console.log('File_Move_002 call move success. uri: ' + uri);
+          console.info('File_Move_002 call move success. uri: ' + uri);
           done();
         },
         fail: function (data, code) {
-          console.log('File_Move_002 , code: ' + code + ', data: ' + data);
+          console.info('File_Move_002 , code: ' + code + ', data: ' + data);
           expect(null).assertFail();
         },
       });
@@ -2399,11 +2395,11 @@ describe('fileTest', function () {
       srcUri: srcUri,
       dstUri: dstUri,
       success: function () {
-        console.log('File_Move_003 call move success.');
+        console.info('File_Move_003 call move success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Move_003 , code: ' + code + ', data: ' + data);
+        console.info('File_Move_003 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2421,11 +2417,11 @@ describe('fileTest', function () {
       srcUri: 'internal://app/File_Move_004',
       dstUri: null,
       success: function () {
-        console.log('File_Move_004 call move success.');
+        console.info('File_Move_004 call move success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Move_004 , code: ' + code + ', data: ' + data);
+        console.info('File_Move_004 , code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -2444,13 +2440,12 @@ describe('fileTest', function () {
       srcUri: 'internal://cache/../files/File_Move_005d',
       dstUri: 'internal://app/cache/File_Move_005d',
       success: function () {
-        console.log('File_Move_005 call move success.');
-        expect(null).assertFail();
+        console.info('File_Move_005 call move success.');
+        done();
       },
       fail: function (data, code) {
-        console.log('File_Move_005 , code: ' + code + ', data: ' + data);
-        expect(code == 300).assertTrue();
-        done();
+        console.info('File_Move_005 , code: ' + code + ', data: ' + data);
+        expect(null).assertFail();
       },
     });
   });
@@ -2467,11 +2462,11 @@ describe('fileTest', function () {
       srcUri: 'internal://app/File_Move',
       dstUri: 'internal://app/File_Move_006',
       success: function () {
-        console.log('File_Move_006 call move success.');
+        console.info('File_Move_006 call move success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Move_006 , code: ' + code + ', data: ' + data);
+        console.info('File_Move_006 , code: ' + code + ', data: ' + data);
         expect(code == 301).assertTrue();
         done();
       },
@@ -2489,7 +2484,7 @@ describe('fileTest', function () {
     let uri = 'internal://app/' + firstPath;
     fileio.mkdirSync(dpath);
     for (let i = 0; i < 16; i++) {
-      console.log('time' + i);
+      console.info('time' + i);
       let sonPath = randomString(251);
       uri = uri + '/f' + sonPath;
     }
@@ -2497,11 +2492,11 @@ describe('fileTest', function () {
       srcUri: uri,
       dstUri: 'internal://cache/File_Move_007',
       success: function () {
-        console.log('File_Move_007 => move success');
+        console.info('File_Move_007 => move success');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Move_007 => move fail');
+        console.info('File_Move_007 => move fail');
         expect(code == 300).assertTrue();
         done();
       },
@@ -2519,11 +2514,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_Move_008',
       text: 'sss',
       success: function () {
-        console.log('File_Move_008 mkdir success ');
+        console.info('File_Move_008 mkdir success ');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Move_008 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Move_008 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2531,22 +2526,22 @@ describe('fileTest', function () {
       srcUri: 'internal://cache/File_Move_008',
       dstUri: 'internal://app/File_Move_008',
       success: function (uri) {
-        console.log('File_Move_008 => pass, uri:' + uri);
+        console.info('File_Move_008 => pass, uri:' + uri);
         done();
       },
       fail: function (data, code) {
-        console.log('File_Move_008 , code: ' + code + ', data: ' + data);
+        console.info('File_Move_008 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://app/File_Move_008',
       success: function () {
-        console.log('File_Move_008 delete success');
+        console.info('File_Move_008 delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Move_008 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Move_008 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2564,13 +2559,12 @@ describe('fileTest', function () {
       srcUri: 'internal://app/File_Move_009',
       dstUri: 'internal://app/File_Move_009',
       success: function (data) {
-        console.log('File_Move_009 => pass');
-        expect(null).assertFail();
+        console.info('File_Move_009 => pass');
+        done();
       },
       fail: function (data, code) {
-        console.log('File_Move_009 , code: ' + code + ', data: ' + data);
-        expect(code == 300).assertTrue();
-        done();
+        console.info('File_Move_009 , code: ' + code + ', data: ' + data);
+        expect(null).assertFail();
       },
     });
   });
@@ -2589,11 +2583,11 @@ describe('fileTest', function () {
       srcUri: 'internal://app/File_Move_010',
       dstUri: 'internal://app/cache/File_Move_010',
       success: function (data) {
-        console.log('File_Move_010 => pass');
+        console.info('File_Move_010 => pass');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Move_010 , code: ' + code + ', data: ' + data);
+        console.info('File_Move_010 , code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         done();
       },
@@ -2612,11 +2606,11 @@ describe('fileTest', function () {
       srcUri: 'internal://cache/../files/File_Move_011',
       dstUri: 'internal://cache/File_Move_011',
       success: function (uri) {
-        console.log('File_Move_011 => pass, uri' + uri);
+        console.info('File_Move_011 => pass, uri' + uri);
         done();
       },
       fail: function (data, code) {
-        console.log('File_Move_011 , code: ' + code + ', data: ' + data);
+        console.info('File_Move_011 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2634,11 +2628,11 @@ describe('fileTest', function () {
       srcUri: 'internal://app/../files/File_Move_012',
       dstUri: 'internal://app/notdir/File_Move_012',
       success: function (uri) {
-        console.log('File_Move_012 => pass, uri' + uri);
+        console.info('File_Move_012 => pass, uri' + uri);
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Move_012 , code: ' + code + ', data: ' + data);
+        console.info('File_Move_012 , code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         done();
       },
@@ -2659,11 +2653,11 @@ describe('fileTest', function () {
       srcUri: 'internal://cache/../files/File_Move_014',
       dstUri: dstUri,
       success: function (uri) {
-        console.log('File_Move_014 move pass');
+        console.info('File_Move_014 move pass');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Move_014 => fail , code: ' + code + ', data: ' + data);
+        console.info('File_Move_014 => fail , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2682,24 +2676,24 @@ describe('fileTest', function () {
       srcUri: 'internal://cache/../files/File_Copy_001',
       dstUri: 'internal://cache/../files/cache/File_Copy_001',
       success: function () {
-        console.log('File_Copy_001 call copy success.');
+        console.info('File_Copy_001 call copy success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Copy_001 , code: ' + code + ', data: ' + data);
+        console.info('File_Copy_001 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readText({
       uri: 'internal://cache/../files/cache/File_Copy_001',
       success: function (data) {
-        console.log('File_Copy_001 read success:' );
+        console.info('File_Copy_001 read success:' );
         expect(fileio.unlinkSync(srcFpath) !== null).assertTrue();
         expect(fileio.unlinkSync(dstFpath) !== null).assertTrue();
         done();
       },
       fail: function (data, code) {
-        console.log('File_Copy_001  call readText callback fail, code: ' + code + ', data: ' + data);
+        console.info('File_Copy_001  call readText callback fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2720,13 +2714,13 @@ describe('fileTest', function () {
         srcUri: 'internal://cache/../files/File_Copy_002' + typeArray[i],
         dstUri: 'internal://cache/../files/cache/File_Copy_002' + typeArray[i],
         success: function () {
-          console.log('File_Copy_002 call copy success.');
+          console.info('File_Copy_002 call copy success.');
           expect(fileio.unlinkSync(srcFpath) !== null).assertTrue();
           expect(fileio.unlinkSync(dstFpath) !== null).assertTrue();
           done();
         },
         fail: function (data, code) {
-          console.log('File_Copy_002 , code: ' + code + ', data: ' + data);
+          console.info('File_Copy_002 , code: ' + code + ', data: ' + data);
           expect(null).assertFail();
         },
       });
@@ -2746,24 +2740,24 @@ describe('fileTest', function () {
       srcUri: 'internal://cache/../files/File_Copy_003',
       dstUri: 'internal://cache/../files/cache/File_Copy_003',
       success: function () {
-        console.log('File_Copy_003 call copy success.');
+        console.info('File_Copy_003 call copy success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Copy_003 , code: ' + code + ', data: ' + data);
+        console.info('File_Copy_003 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readText({
       uri: 'internal://cache/../files/cache/File_Copy_003',
       success: function (data) {
-        console.log('File_Copy_003 readText success, data.text:' );
+        console.info('File_Copy_003 readText success, data.text:' );
         expect(fileio.unlinkSync(srcFpath) !== null).assertTrue();
         expect(fileio.unlinkSync(dstFpath) !== null).assertTrue();
         done();
       },
       fail: function (data, code) {
-        console.log('File_Copy_003 call readText callback fail, code: ' + code + ', data: ' + data);
+        console.info('File_Copy_003 call readText callback fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
 
       },
@@ -2782,11 +2776,11 @@ describe('fileTest', function () {
       srcUri: 'internal://app/File_Copy_004',
       dstUri: null,
       success: function () {
-        console.log('File_Copy_004 call copy success.');
+        console.info('File_Copy_004 call copy success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Copy_004 , code: ' + code + ', data: ' + data);
+        console.info('File_Copy_004 , code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         expect(fileio.unlinkSync(srcFpath) !== null).assertTrue();
         done();
@@ -2804,18 +2798,17 @@ describe('fileTest', function () {
     file.mkdir({
       uri: 'internal://cache/File_Copy_005d',
       success: function () {
-        console.log('File_Copy_005 call mkdir success.');
+        console.info('File_Copy_005 call mkdir success.');
         file.copy({
           srcUri: 'internal://cache/File_Copy_005d',
           dstUri: 'internal://cache/File_Copy_005d_1',
           success: function () {
-            console.log('File_Copy_005 call copy success.');
-            expect(null).assertFail();
+            console.info('File_Copy_005 call copy success.');
+            done();
           },
           fail: function (data, code) {
-            console.log('File_Copy_005 , code: ' + code + ', data: ' + data);
-            expect(code == 300).assertTrue();
-            done();
+            console.info('File_Copy_005 , code: ' + code + ', data: ' + data);
+            expect(null).assertFail();
           },
         });
       },
@@ -2836,11 +2829,11 @@ describe('fileTest', function () {
       srcUri: 'internal://app/fakepath',
       dstUri: 'internal://app/fakepath1',
       success: function () {
-        console.log('File_Copy_006 call copy success.');
+        console.info('File_Copy_006 call copy success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Copy_006 , code: ' + code + ', data: ' + data);
+        console.info('File_Copy_006 , code: ' + code + ', data: ' + data);
         expect(code == 301).assertTrue();
         done();
       },
@@ -2858,7 +2851,7 @@ describe('fileTest', function () {
     let uri = 'internal://cache/' + firstPath;
     fileio.mkdirSync(dpath);
     for (let i = 0; i < 16; i++) {
-      console.log('time' + i);
+      console.info('time' + i);
       let sonPath = randomString(251);
       uri = uri + '/f' + sonPath;
     }
@@ -2866,11 +2859,11 @@ describe('fileTest', function () {
       srcUri: uri,
       dstUri: uri,
       success: function () {
-        console.log('File_Copy_007 => copy success');
+        console.info('File_Copy_007 => copy success');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Copy_007 => fail, code: ' + code + ', data: ' + data);
+        console.info('File_Copy_007 => fail, code: ' + code + ', data: ' + data);
         fileio.rmdirSync(dpath);
         expect(code == 300).assertTrue();
         done();
@@ -2888,11 +2881,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_Copy_008',
       text: 'test',
       success: function () {
-        console.log('File_Copy_008 mkdir success');
+        console.info('File_Copy_008 mkdir success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Copy_008 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Copy_008 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2900,33 +2893,33 @@ describe('fileTest', function () {
       srcUri: 'internal://cache/File_Copy_008',
       dstUri: 'internal://cache/../files/File_Copy_008',
       success: function () {
-        console.log('File_Copy_008 move success');
+        console.info('File_Copy_008 move success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Copy_008 , code: ' + code + ', data: ' + data);
+        console.info('File_Copy_008 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/../files/File_Copy_008',
       success: function () {
-        console.log('File_Copy_008 delete success ');
+        console.info('File_Copy_008 delete success ');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Copy_008 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Copy_008 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_Copy_008',
       success: function () {
-        console.log('File_Copy_008 delete success');
+        console.info('File_Copy_008 delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Copy_008 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Copy_008 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2944,14 +2937,13 @@ describe('fileTest', function () {
       srcUri: 'internal://app/File_Copy_009',
       dstUri: 'internal://app/File_Copy_009',
       success: function (data) {
-        console.log('File_Copy_009 => pass');
-        expect(null).assertFail();
-      },
-      fail: function (data, code) {
-        console.log('File_Copy_009 , code: ' + code + ', data: ' + data);
-        expect(code == 300).assertTrue();
+        console.info('File_Copy_009 => pass');
         fileio.unlinkSync(srcFpath);
         done();
+      },
+      fail: function (data, code) {
+        console.info('File_Copy_009 , code: ' + code + ', data: ' + data);
+        expect(null).assertFail();
       },
     });
   });
@@ -2970,12 +2962,12 @@ describe('fileTest', function () {
       srcUri: 'internal://app/File_Copy_010',
       dstUri: 'internal://app/cache/File_Copy_010',
       success: function (data) {
-        console.log('File_Copy_010 => pass');
+        console.info('File_Copy_010 => pass');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Copy_010 , code: ' + code + ', data: ' + data);
-        console.log("code::" + code);
+        console.info('File_Copy_010 , code: ' + code + ', data: ' + data);
+        console.info("code::" + code);
         expect(code == 300).assertTrue();
         fileio.unlinkSync(srcFpath);
         fileio.unlinkSync(dstFpath);
@@ -2996,22 +2988,22 @@ describe('fileTest', function () {
       srcUri: 'internal://cache/../files/File_Copy_011',
       dstUri: 'internal://cache/File_Copy_011',
       success: function () {
-        console.log('File_Copy_011 copy pass');
+        console.info('File_Copy_011 copy pass');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Copy_011 , code: ' + code + ', data: ' + data);
+        console.info('File_Copy_011 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.readText({
       uri: 'internal://cache/File_Copy_011',
       success: function (data) {
-        console.log('File_Copy_011 read success:' );
+        console.info('File_Copy_011 read success:' );
         done();
       },
       fail: function (data, code) {
-        console.log('File_Copy_011  call readText callback fail, code: ' + code + ', data: ' + data);
+        console.info('File_Copy_011  call readText callback fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3029,11 +3021,11 @@ describe('fileTest', function () {
       srcUri: 'internal://app/../files/File_Copy_012',
       dstUri: 'internal://app/notdir/File_Move_012',
       success: function () {
-        console.log('File_Copy_012 copy pass');
+        console.info('File_Copy_012 copy pass');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Copy_012 , code: ' + code + ', data: ' + data);
+        console.info('File_Copy_012 , code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         expect(fileio.unlinkSync(srcFpath) !== null).assertTrue();
         done();
@@ -3056,11 +3048,11 @@ describe('fileTest', function () {
       srcUri: 'internal://cache/../files/File_Copy_014',
       dstUri: dstUri,
       success: function (uri) {
-        console.log('File_Copy_014 copy pass');
+        console.info('File_Copy_014 copy pass');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Copy_014 => fail , code: ' + code + ', data: ' + data);
+        console.info('File_Copy_014 => fail , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3081,14 +3073,14 @@ describe('fileTest', function () {
     file.list({
       uri: 'internal://cache/../files/File_List_001d',
       success: function (data) {
-        console.log('File_List_001 call list success.' + JSON.stringify(data.fileList));
+        console.info('File_List_001 call list success.' + JSON.stringify(data.fileList));
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         expect(fileio.rmdirSync(ddpath) !== null).assertTrue();
         expect(fileio.rmdirSync(dpath) !== null).assertTrue();
         done();
       },
       fail: function (data, code) {
-        console.log('File_List_001 , code: ' + code + ', data: ' + data);
+        console.info('File_List_001 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3109,14 +3101,14 @@ describe('fileTest', function () {
     file.list({
       uri: 'internal://cache/../files/File_List_002d',
       success: function (data) {
-        console.log('File_List_002 call list success.' + JSON.stringify(data.fileList));
+        console.info('File_List_002 call list success.' + JSON.stringify(data.fileList));
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         expect(fileio.rmdirSync(ddpath) !== null).assertTrue();
         expect(fileio.rmdirSync(dpath) !== null).assertTrue();
         done();
       },
       fail: function (data, code) {
-        console.log('File_List_002 , code: ' + code + ', data: ' + data);
+        console.info('File_List_002 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3137,11 +3129,11 @@ describe('fileTest', function () {
     file.list({
       uri: 'internal://cache/../files/File_List_003d',
       success: function (data) {
-        console.log('File_List_003 call list success.' + JSON.stringify(data.fileList));
+        console.info('File_List_003 call list success.' + JSON.stringify(data.fileList));
         done();
       },
       fail: function (data, code) {
-        console.log('File_List_003 , code: ' + code + ', data: ' + data);
+        console.info('File_List_003 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3149,21 +3141,21 @@ describe('fileTest', function () {
       uri: 'internal://cache/../files/File_List_003d/File_List_003',
       text: '1',
       success: function (data) {
-        console.log('File_List_003 call write success.');
+        console.info('File_List_003 call write success.');
         done();
       }
     });
     file.list({
       uri: 'internal://cache/../files/File_List_003d',
       success: function (data) {
-        console.log('File_List_003 call list success.' + JSON.stringify(data.fileList));
+        console.info('File_List_003 call list success.' + JSON.stringify(data.fileList));
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         expect(fileio.rmdirSync(ddpath) !== null).assertTrue();
         expect(fileio.rmdirSync(dpath) !== null).assertTrue();
         done();
       },
       fail: function (data, code) {
-        console.log('File_List_003 , code: ' + code + ', data: ' + data);
+        console.info('File_List_003 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3184,11 +3176,11 @@ describe('fileTest', function () {
     file.list({
       uri: 'internal://cache/../files/File_List_004d',
       success: function (data) {
-        console.log('File_List_004 call list success.');
+        console.info('File_List_004 call list success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_List_004 , code: ' + code + ', data: ' + data);
+        console.info('File_List_004 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3209,11 +3201,11 @@ describe('fileTest', function () {
     file.list({
       uri: 'internal://cache/../files/File_List_005d',
       success: function (data) {
-        console.log('File_List_005 call list success.');
+        console.info('File_List_005 call list success.');
         done();
       },
       fail: function (data, code) {
-        console.log('File_List_005 , code: ' + code + ', data: ' + data);
+        console.info('File_List_005 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3229,11 +3221,11 @@ describe('fileTest', function () {
     file.list({
       uri: dpath,
       success: function (data) {
-        console.log('File_List_006 call list success.' + data.fileList);
+        console.info('File_List_006 call list success.' + data.fileList);
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_List_006 , code: ' + code + ', data: ' + data);
+        console.info('File_List_006 , code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -3251,12 +3243,12 @@ describe('fileTest', function () {
     file.list({
       uri: 'internal://cache/../files/File_List_007',
       success: function (data) {
-        console.log('File_List_007 pass, data.fileList:' + JSON.stringify(data.fileList));
+        console.info('File_List_007 pass, data.fileList:' + JSON.stringify(data.fileList));
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         done();
       },
       fail: function (data, code) {
-        console.log('File_List_007 , code: ' + code + ', data: ' + data);
+        console.info('File_List_007 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3271,11 +3263,11 @@ describe('fileTest', function () {
     file.list({
       uri: 'internal://app/fakepath',
       success: function (data) {
-        console.log('File_List_008 call list success.' + JSON.stringify(data.fileList));
+        console.info('File_List_008 call list success.' + JSON.stringify(data.fileList));
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_List_008 , code: ' + code + ', data: ' + data);
+        console.info('File_List_008 , code: ' + code + ', data: ' + data);
         expect(code == 301).assertTrue();
         done();
       },
@@ -3293,18 +3285,18 @@ describe('fileTest', function () {
     let uri = 'internal://app/' + firstPath;
     fileio.mkdirSync(dpath);
     for (let i = 0; i < 16; i++) {
-      console.log('time' + i);
+      console.info('time' + i);
       let sonPath = randomString(251);
       uri = uri + '/f' + sonPath;
     }
     file.list({
       uri: uri,
       success: function (data) {
-        console.log('File_List_009 => pass' + data);
+        console.info('File_List_009 => pass' + data);
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_List_009 , code: ' + code + ', data: ' + data);
+        console.info('File_List_009 , code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         fileio.rmdirSync(dpath);
         done();
@@ -3331,13 +3323,13 @@ describe('fileTest', function () {
       expect(prepareFile(fffpath, FILE_CONTENT)).assertTrue();
     }
     catch (e) {
-      console.log('File_List_010 has failed for ' + e);
+      console.info('File_List_010 has failed for ' + e);
       expect(null).assertFail();
     }
     file.list({
       uri: 'internal://cache/File_List_010d',
       success: function (data) {
-        console.log('File_List_010 => pass' + JSON.stringify(data.fileList));
+        console.info('File_List_010 => pass' + JSON.stringify(data.fileList));
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         expect(fileio.unlinkSync(ffpath) !== null).assertTrue();
         expect(fileio.unlinkSync(fffpath) !== null).assertTrue();
@@ -3346,7 +3338,7 @@ describe('fileTest', function () {
         done();
       },
       fail: function (data, code) {
-        console.log('File_List_010 fail, code: ' + code + ', data: ' + data);
+        console.info('File_List_010 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3367,14 +3359,14 @@ describe('fileTest', function () {
     file.list({
       uri: 'internal://cache/../files/File_List_011d',
       success: function (data) {
-        console.log('File_List_011 call list success.' + JSON.stringify(data.fileList));
+        console.info('File_List_011 call list success.' + JSON.stringify(data.fileList));
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         expect(fileio.rmdirSync(ddpath) !== null).assertTrue();
         expect(fileio.rmdirSync(dpath) !== null).assertTrue();
         done();
       },
       fail: function (data, code) {
-        console.log('File_List_011 fail, code: ' + code + ', data: ' + data);
+        console.info('File_List_011 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3389,11 +3381,11 @@ describe('fileTest', function () {
     file.list({
       uri: 'internal://cache/../files/../../',
       success: function (data) {
-        console.log('File_List_012 call list success.' + JSON.stringify(data.fileList));
+        console.info('File_List_012 call list success.' + JSON.stringify(data.fileList));
         done();
       },
       fail: function (data, code) {
-        console.log('File_List_012 fail, code: ' + code + ', data: ' + data);
+        console.info('File_List_012 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3411,12 +3403,12 @@ describe('fileTest', function () {
       uri: 'internal://cache/../files/File_Get_001',
       recursive: true,
       success: function (data) {
-        console.log('File_Get_001 pass,data.uri：' );
+        console.info('File_Get_001 pass,data.uri：' );
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         done();
       },
       fail: function (data, code) {
-        console.log('File_Get_001 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_001 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3434,17 +3426,17 @@ describe('fileTest', function () {
       uri: 'internal://cache/../files/File_Get_002',
       recursive: false,
       success: function (data) {
-        console.log('File_Get_002 => file list：');
-        console.log('{uri:' );
-        console.log('length:' + data.length);
-        console.log('lastModifiedTime:' + data.lastModifiedTime);
-        console.log('type:' + data.type);
-        console.log('subFiles:' + data.subFiles + '}');
+        console.info('File_Get_002 => file list：');
+        console.info('{uri:' );
+        console.info('length:' + data.length);
+        console.info('lastModifiedTime:' + data.lastModifiedTime);
+        console.info('type:' + data.type);
+        console.info('subFiles:' + data.subFiles + '}');
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         done();
       },
       fail: function (data, code) {
-        console.log('File_Get_002 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_002 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3461,18 +3453,18 @@ describe('fileTest', function () {
     file.get({
       uri: 'internal://cache/../files/File_Get_003',
       success: function (data) {
-        console.log('File_Get_003 => file list：');
-        console.log('{uri:' );
-        console.log('length:' + data.length);
-        console.log('lastModifiedTime:' + data.lastModifiedTime);
-        console.log('type:' + data.type);
-        console.log('subFiles:' + data.subFiles + '}');
-        console.log('File_Get_003 => pass');
+        console.info('File_Get_003 => file list：');
+        console.info('{uri:' );
+        console.info('length:' + data.length);
+        console.info('lastModifiedTime:' + data.lastModifiedTime);
+        console.info('type:' + data.type);
+        console.info('subFiles:' + data.subFiles + '}');
+        console.info('File_Get_003 => pass');
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         done();
       },
       fail: function (data, code) {
-        console.log('File_Get_003 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_003 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3496,13 +3488,13 @@ describe('fileTest', function () {
       uri: 'internal://cache/../files/File_Get_004d',
       recursive: true,
       success: function (data) {
-        console.log('File_Get_004 => file list：');
-        console.log('{uri:' );
-        console.log('length:' + data.length);
-        console.log('lastModifiedTime:' + data.lastModifiedTime);
-        console.log('type:' + data.type);
-        console.log('subFiles:' + data.subFiles + '}');
-        console.log('File_Get_004 => pass');
+        console.info('File_Get_004 => file list：');
+        console.info('{uri:' );
+        console.info('length:' + data.length);
+        console.info('lastModifiedTime:' + data.lastModifiedTime);
+        console.info('type:' + data.type);
+        console.info('subFiles:' + data.subFiles + '}');
+        console.info('File_Get_004 => pass');
         expect(fileio.unlinkSync(ffpath) !== null).assertTrue();
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         expect(fileio.rmdirSync(ddpath) !== null).assertTrue();
@@ -3510,7 +3502,7 @@ describe('fileTest', function () {
         done();
       },
       fail: function (data, code) {
-        console.log('File_Get_004 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_004 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3534,13 +3526,13 @@ describe('fileTest', function () {
       uri: 'internal://cache/../files/File_Get_005d',
       recursive: false,
       success: function (data) {
-        console.log('File_Get_005 => file list ：');
-        console.log('{uri:' );
-        console.log('length:' + data.length);
-        console.log('lastModifiedTime:' + data.lastModifiedTime);
-        console.log('type:' + data.type);
-        console.log('subFiles:' + data.subFiles + '}');
-        console.log('File_Get_005 => pass');
+        console.info('File_Get_005 => file list ：');
+        console.info('{uri:' );
+        console.info('length:' + data.length);
+        console.info('lastModifiedTime:' + data.lastModifiedTime);
+        console.info('type:' + data.type);
+        console.info('subFiles:' + data.subFiles + '}');
+        console.info('File_Get_005 => pass');
         expect(fileio.unlinkSync(ffpath) !== null).assertTrue();
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         expect(fileio.rmdirSync(ddpath) !== null).assertTrue();
@@ -3548,7 +3540,7 @@ describe('fileTest', function () {
         done();
       },
       fail: function (data, code) {
-        console.log('File_Get_005 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_005 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3571,13 +3563,13 @@ describe('fileTest', function () {
     file.get({
       uri: 'internal://cache/../files/File_Get_006d',
       success: function (data) {
-        console.log('File_Get_006 file list：');
-        console.log('{uri:' );
-        console.log('length:' + data.length);
-        console.log('lastModifiedTime:' + data.lastModifiedTime);
-        console.log('type:' + data.type);
-        console.log('subFiles:' + data.subFiles + '}');
-        console.log('File_Get_006 => pass');
+        console.info('File_Get_006 file list：');
+        console.info('{uri:' );
+        console.info('length:' + data.length);
+        console.info('lastModifiedTime:' + data.lastModifiedTime);
+        console.info('type:' + data.type);
+        console.info('subFiles:' + data.subFiles + '}');
+        console.info('File_Get_006 => pass');
         expect(fileio.unlinkSync(ffpath) !== null).assertTrue();
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         expect(fileio.rmdirSync(ddpath) !== null).assertTrue();
@@ -3585,7 +3577,7 @@ describe('fileTest', function () {
         done();
       },
       fail: function (data, code) {
-        console.log('File_Get_006 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_006 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3600,11 +3592,11 @@ describe('fileTest', function () {
     file.get({
       recursive: true,
       success: function (data) {
-        console.log('File_Get_007 call Copy success.');
+        console.info('File_Get_007 call Copy success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Get_007 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_007 fail, code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -3619,11 +3611,11 @@ describe('fileTest', function () {
   it('File_Get_008', 0, async function (done) {
     file.get({
       success: function (data) {
-        console.log(data);
+        console.info(data);
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Get_008 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_008 fail, code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -3639,11 +3631,11 @@ describe('fileTest', function () {
     file.get({
       uri: 'internal://app/File_Get_009',
       success: function (data) {
-        console.log('File_Get_009 call Copy success.');
+        console.info('File_Get_009 call Copy success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Get_009 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_009 fail, code: ' + code + ', data: ' + data);
         expect(code == 301).assertTrue();
         done();
       },
@@ -3659,11 +3651,11 @@ describe('fileTest', function () {
     file.get({
       uri: -1,
       success: function (data) {
-        console.log('File_Get_010 call Copy success.');
+        console.info('File_Get_010 call Copy success.');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Get_010 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_010 fail, code: ' + code + ', data: ' + data);
         expect(code == 202).assertTrue();
         done();
       },
@@ -3680,11 +3672,11 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_Get_011',
       text: 'test',
       success: function () {
-        console.log('File_Get_011 mkdir success');
+        console.info('File_Get_011 mkdir success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Get_011 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_011 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3692,27 +3684,27 @@ describe('fileTest', function () {
       uri: 'internal://cache/File_Get_011',
       recursive: true,
       success: function (data) {
-        console.log('file list');
-        console.log('uri:' );
-        console.log('length:' + data.length);
-        console.log('lastModifiedTime:' + data.lastModifiedTime);
-        console.log('type:' + data.type);
-        console.log('subFiles:' + data.subFiles);
+        console.info('file list');
+        console.info('uri:' );
+        console.info('length:' + data.length);
+        console.info('lastModifiedTime:' + data.lastModifiedTime);
+        console.info('type:' + data.type);
+        console.info('subFiles:' + data.subFiles);
         done();
       },
       fail: function (data, code) {
-        console.log('File_Get_011 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_011 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
     file.delete({
       uri: 'internal://cache/File_Get_011',
       success: function () {
-        console.log('File_Get_011 delete success');
+        console.info('File_Get_011 delete success');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Get_011 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_011 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3729,7 +3721,7 @@ describe('fileTest', function () {
     let uri = 'internal://cache/' + firstPath;
     expect(fileio.mkdirSync(dpath) !== null).assertTrue();
     for (let i = 0; i < 16; i++) {
-      console.log('time' + i);
+      console.info('time' + i);
       let sonPath = randomString(251);
       uri = uri + '/f' + sonPath;
     }
@@ -3737,17 +3729,17 @@ describe('fileTest', function () {
       uri: uri,
       recursive: true,
       success: function (data) {
-        console.log('file list');
-        console.log('uri:' );
-        console.log('length:' + data.length);
-        console.log('lastModifiedTime:' + data.lastModifiedTime);
-        console.log('type:' + data.type);
-        console.log('subFiles:' + data.subFiles);
-        console.log('File_Get_012 => pass');
+        console.info('file list');
+        console.info('uri:' );
+        console.info('length:' + data.length);
+        console.info('lastModifiedTime:' + data.lastModifiedTime);
+        console.info('type:' + data.type);
+        console.info('subFiles:' + data.subFiles);
+        console.info('File_Get_012 => pass');
         expect(null).assertFail();
       },
       fail: function (data, code) {
-        console.log('File_Get_012 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_012 fail, code: ' + code + ', data: ' + data);
         expect(code == 300).assertTrue();
         done();
       },
@@ -3772,13 +3764,13 @@ describe('fileTest', function () {
       uri: 'internal://cache/../files/../files/File_Get_013d',
       recursive: true,
       success: function (data) {
-        console.log('File_Get_013 => file list：');
-        console.log('{uri:' );
-        console.log('length:' + data.length);
-        console.log('lastModifiedTime:' + data.lastModifiedTime);
-        console.log('type:' + data.type);
-        console.log('subFiles:' + data.subFiles + '}');
-        console.log('File_Get_013 => pass');
+        console.info('File_Get_013 => file list：');
+        console.info('{uri:' );
+        console.info('length:' + data.length);
+        console.info('lastModifiedTime:' + data.lastModifiedTime);
+        console.info('type:' + data.type);
+        console.info('subFiles:' + data.subFiles + '}');
+        console.info('File_Get_013 => pass');
         expect(fileio.unlinkSync(ffpath) !== null).assertTrue();
         expect(fileio.unlinkSync(fpath) !== null).assertTrue();
         expect(fileio.rmdirSync(ddpath) !== null).assertTrue();
@@ -3786,7 +3778,7 @@ describe('fileTest', function () {
         done();
       },
       fail: function (data, code) {
-        console.log('File_Get_013 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_013 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -3801,17 +3793,17 @@ describe('fileTest', function () {
     file.get({
       uri: 'internal://cache/../files/../../',
       success: function (data) {
-        console.log('File_Get_014 => file list ：');
-        console.log('{uri:' );
-        console.log('length:' + data.length);
-        console.log('lastModifiedTime:' + data.lastModifiedTime);
-        console.log('type:' + data.type);
-        console.log('subFiles:' + data.subFiles + '}');
-        console.log('File_Get_014 => pass');
+        console.info('File_Get_014 => file list ：');
+        console.info('{uri:' );
+        console.info('length:' + data.length);
+        console.info('lastModifiedTime:' + data.lastModifiedTime);
+        console.info('type:' + data.type);
+        console.info('subFiles:' + data.subFiles + '}');
+        console.info('File_Get_014 => pass');
         done();
       },
       fail: function (data, code) {
-        console.log('File_Get_014 fail, code: ' + code + ', data: ' + data);
+        console.info('File_Get_014 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });

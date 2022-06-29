@@ -52,7 +52,7 @@ let ProfId = {
 }
 
 
-describe('bluetoothhostTest', function () {
+describe('bluetoothhostTest_host_2', function () {
     beforeAll(function () {
         console.info('beforeAll called')
     })
@@ -148,7 +148,7 @@ describe('bluetoothhostTest', function () {
         await tryToEnableBt();
         let devState = hidHostProfile.getDeviceState('');
         console.info('[bluetooth_js] loop get device state result:' + JSON.stringify(devState));
-        expect(devState).assertEqual(3);
+        expect(devState).assertEqual(0);
         done();
     })
 

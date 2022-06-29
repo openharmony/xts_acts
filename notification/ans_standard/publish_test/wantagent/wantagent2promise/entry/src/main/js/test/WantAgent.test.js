@@ -14,7 +14,6 @@
  */
 
 import wantAgent from '@ohos.wantAgent';
-import { OperationType, WantAgentFlags } from '@ohos.wantagent';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 var time = 1000
 var WantAgent;
@@ -26,6 +25,7 @@ describe('ActsAnsWantAgentTwoProTest', function () {
      * @tc.desc: verify the function of getWantAgent(OperationType.START_ABILITIES)
      */
     it('ACTS_SetWant_0400', 0, async function (done) {
+        expect(3).assertEqual(wantAgent.OperationType.START_SERVICE)
         var agentInfo = {
             wants: [
                     {
@@ -65,9 +65,9 @@ describe('ActsAnsWantAgentTwoProTest', function () {
                         }
                     }
             ],
-            operationType: OperationType.START_ABILITIES,
+            operationType: wantAgent.OperationType.START_ABILITIES,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         console.info('----getWantAgent before----');
         wantAgent.getWantAgent(agentInfo).then(

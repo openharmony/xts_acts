@@ -1,0 +1,60 @@
+{
+    "description": "Configuration for Image Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "100000",
+        "package": "ohos.acts.multimedia.image.Webp",
+		"shell-timeout": "120000"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsImageWebpJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir   /data/app/el2/100/base/ohos.acts.multimedia.image.Webp/files",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Webp/files"
+            ],
+            "teardown-command":[
+              
+            ]
+        },
+		{
+            "type": "PushKit",
+            "pre-push": [
+            ],
+            "push": [
+               
+                "./resource/image/test_large.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.Webp/files",
+                "./resource/image/test.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.Webp/files",
+                "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Webp/files",
+				"./resource/image/test.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.image.Webp/files",
+                "./resource/image/test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image.Webp/files"
+            ]
+        },
+   
+		{
+            "type": "ShellKit",
+            "run-command": [
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Webp/files/test.jpg",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Webp/files/test.png",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Webp/files/test.bmp",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Webp/files/test.gif",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Webp/files/test_large.webp",
+                "hilog -Q pidoff"
+               
+            ],
+            "teardown-command":[
+              
+            ]
+        }
+        
+        
+    ]
+    
+}

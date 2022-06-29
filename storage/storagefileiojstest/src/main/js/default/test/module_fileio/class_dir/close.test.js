@@ -15,24 +15,19 @@
 
 import {
   fileio,
-  FILE_CONTENT,
-  prepareFile,
   nextFileName,
-  isIntNum,
-  isString,
-  isBoolean,
   describe,
   it,
   expect,
 } from '../../Common';
 
-describe('fileio_dir_close_read', function () {
+describe('fileio_dir_close', function () {
 
   /**
    * @tc.number SUB_DF_FILEIO_DIR_CLOSE_ASYNC_0000
    * @tc.name fileio_test_dir_close_async_000
-   * @tc.desc Test Dir.closeAsync() interface.
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test Dir close() interface,return in promise mode.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -41,38 +36,63 @@ describe('fileio_dir_close_read', function () {
     let dpath = await nextFileName('fileio_test_dir_close_async_000') + 'd';
 
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
-      expect((await dd.close()) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      await dd.close();
+      fileio.rmdirSync(dpath);
       done();
     } catch (e) {
-      console.log('fileio_test_dir_close_async_000 has failed for ' + e);
+      console.info('fileio_test_dir_close_async_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FileIO_Dir_close_Async_0001
+   * @tc.number SUB_DF_FileIO_Dir_close_Async_0100
    * @tc.name fileio_test_dir_close_async_001
-   * @tc.desc Test Dir.closeAsync() interface.
+   * @tc.desc Test Dir close() interface,return in callback mode.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
    */
   it('fileio_test_dir_close_async_001', 0, async function (done) {
     let dpath = await nextFileName('fileio_test_dir_close_async_001') + 'd';
 
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
+      fileio.mkdirSync(dpath);
       let dd = await fileio.opendir(dpath);
-      expect(dd !== null).assertTrue();
       dd.close(function (err) {
-        expect(!!err).assertTrue();
+        fileio.rmdirSync(dpath);
+        done();
       });
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-      done();
     } catch (e) {
-      console.log('fileio_test_dir_close_async_001 has failed for ' + e);
+      console.info('fileio_test_dir_close_async_001 has failed for ' + e);
       expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FileIO_Dir_close_Async_0200
+   * @tc.name fileio_test_dir_close_async_002
+   * @tc.desc Test Dir  close() interface,there are multiple parameters.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+   it('fileio_test_dir_close_async_002', 0, async function (done) {
+    let dpath = await nextFileName('fileio_test_dir_close_async_002') + 'd';
+    try {
+      fileio.mkdirSync(dpath);
+      let dd = await fileio.opendir(dpath);
+      dd.close(-1,function (err) {
+      });
+    } catch (e) {
+      console.info('fileio_test_dir_close_async_002 has failed for ' + e);
+      expect(e.message == "Number of arguments unmatched").assertTrue();
+      fileio.rmdirSync(dpath);
+      done(); 
     }
   });
 });

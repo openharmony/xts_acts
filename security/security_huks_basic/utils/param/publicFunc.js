@@ -35,5 +35,22 @@ function stringToUint8Array(str) {
   var tmpUint8Array = new Uint8Array(arr);
   return tmpUint8Array;
 }
+function arrayEqual(a, b) {
+  if ((!a instanceof Array) || (!b instanceof Array)) {
+    return false;
+  }
+  if (a.length !== b.length) {
+    return false;
+  }
+  for (let i = 0; i < a.length; ++i) {
+    if ((!a instanceof Number) || (!b instanceof Number)) {
+      return false;
+    }
+    if (a[i] !== b[i]) {
+      return false;
+    }
+  }
+  return true;
+}
 
-export { stringToArray, uint8ArrayToString, stringToUint8Array };
+export { stringToArray, uint8ArrayToString, stringToUint8Array, arrayEqual };

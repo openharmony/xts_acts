@@ -18,7 +18,7 @@ import router from '@system.router';
 import Utils from './Utils';
 
 export default function textTimerJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_four_14', function () {
     beforeEach(async function (done) {
       console.info("textTimer beforeEach start");
       let options = {

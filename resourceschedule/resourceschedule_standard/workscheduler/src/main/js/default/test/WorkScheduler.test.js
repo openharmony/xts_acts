@@ -950,42 +950,6 @@ describe("WorkSchedulerJsTest", function () {
     })
 	
 	/*
-     * @tc.name: WorkSchedulerJsTest049
-     * @tc.desc: test WorkSchedulerExtensoinAbility onWorkStart
-     * @tc.type: FUNC
-     * @tc.require: 
-     */
-    /*it("WorkSchedulerJsTest049", 0, async function (done) {
-        console.info('----------------------WorkSchedulerJsTest049---------------------------');
-        let workInfo = {
-            workId: 2,
-            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
-            abilityName: "com.mytest.abilityName",
-        }
-        let res = workScheduler.onWorkStart(workInfo);
-        expect(res).assertEqual(false);
-        done();
-    })*/
-	
-	/*
-     * @tc.name: WorkSchedulerJsTest050
-     * @tc.desc: test WorkSchedulerExtensoinAbility onWorkStop
-     * @tc.type: FUNC
-     * @tc.require: 
-     */
-    /*it("WorkSchedulerJsTest050", 0, async function (done) {
-        console.info('----------------------WorkSchedulerJsTest050---------------------------');
-        let workInfo = {
-            workId: 2,
-            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
-            abilityName: "com.mytest.abilityName",
-        }
-        let stopRes = workSchedulerCallback.onWorkStop(workInfo, true);
-			expect(stopRes).assertEqual(false);
-        done();
-    })*/
-	
-	/*
      * @tc.name: WorkSchedulerJsTest051
      * @tc.desc: test workScheduler bundleName
      * @tc.type: FUNC

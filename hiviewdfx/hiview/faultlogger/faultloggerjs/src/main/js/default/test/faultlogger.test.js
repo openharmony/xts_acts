@@ -103,6 +103,14 @@ describe("FaultlogJsTest", function () {
                 console.info("faultloggertestsummary02 " + i + " fullLog.length " + ret[i].fullLog.length);
                 if (ret[i].fullLog.indexOf("faultloggertestsummary02 " + (loopTimes - 1 - i)) != -1) {
                     console.info("FaultlogJsTest_002 " + ret[i].fullLog.length);
+                    expect(typeof(ret[i]).pid).assertEqual("number");
+                    expect(typeof(ret[i]).uid).assertEqual("number");
+                    expect(typeof(ret[i]).type).assertEqual("number");
+                    expect(typeof(ret[i]).timestamp).assertEqual("number");
+                    expect(typeof(ret[i]).reason).assertEqual("string");
+                    expect(typeof(ret[i]).module).assertEqual("string");
+                    expect(typeof(ret[i]).summary).assertEqual("string");
+                    expect(typeof(ret[i]).fullLog).assertEqual("string");
                     expect(true).assertTrue();
                 } else {
                     expect(false).assertTrue();

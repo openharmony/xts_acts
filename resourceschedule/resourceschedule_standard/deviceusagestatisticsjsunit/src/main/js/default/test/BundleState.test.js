@@ -707,10 +707,15 @@ describe('bundlestate', function() {
 		console.info('isIdleState_052 start');
 		bundlestate.isIdleState(bundleName, (err, res) => {
 			if(err) {
-				console.info('isIdleState_052 callback fail result = ' + err);
+				console.info('isIdleState_052 callback fail result = ' + JSON.stringify(err.code));
+				expect(err.code).assertLarger(0);
 			} else {
 				console.info('isIdleState_052 callback success result = ' + JSON.stringify(res));
-				expect(res).assertTrue();
+				if(res) {
+					expect(res).assertTrue();
+				} else {
+					expect(res).assertFalse();
+				}
 			}
 			done();
 		});
@@ -734,7 +739,7 @@ describe('bundlestate', function() {
 			} else {
 				console.info('isIdleState_053 callback success result = ' + JSON.stringify(res));
 				expect(res).assertInstanceOf('Boolean');
-			}
+			};
 			done();
 		});
 		console.info('isIdleState_053 end');
@@ -752,11 +757,15 @@ describe('bundlestate', function() {
 		console.info('isIdleState_054 start');
 		bundlestate.isIdleState(bundleName).then((data) => {
 			console.info('isIdleState_054 promise success result = ' + JSON.stringify(data));
-			expect(data).assertTrue();
+			if(res) {
+				expect(res).assertTrue();
+			} else {
+				expect(res).assertFalse();
+			};
 			done();
 		}).catch((err) => {
 			console.info('isIdleState_054 promise fail result = ' + JSON.stringify(err.code));
-			expect(err.code).assertLarger(0);
+			expect(err.code).assertUndefined();
 			done();
 		})
 		console.info('isIdleState_054 end');

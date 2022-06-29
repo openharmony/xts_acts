@@ -123,6 +123,7 @@ describe('fileio_stream_read', function () {
       expect(ss !== null).assertTrue();
       let readout = await ss.read(new ArrayBuffer(4096), {offset: 4096});
       expect(readout.bytesRead == 0).assertTrue();
+      expect(readout.offset == 4096).assertTrue();
       ss.closeSync();
       fileio.unlinkSync(fpath);
       done();
@@ -151,10 +152,15 @@ describe('fileio_stream_read', function () {
       expect(ss !== null).assertTrue();
       let options = {
         offset: 1,
-        position:5
+        position:6
       }
       let readout = await ss.read(new ArrayBuffer(4096),options);
-      expect(readout.bytesRead == FILE_CONTENT.length).assertTrue();
+      expect(readout.bytesRead == FILE_CONTENT.length-6).assertTrue();
+      expect(readout.offset == 1).assertTrue();
+      let start = readout.offset;
+      let end = readout.offset+readout.bytesRead;
+      let result = String.fromCharCode.apply(null, new Uint8Array(readout.buffer.slice(start,end)));
+      expect(result== "world").assertTrue();
       ss.closeSync();
       fileio.unlinkSync(fpath);
       done();
@@ -267,7 +273,7 @@ describe('fileio_stream_read', function () {
   /**
    * @tc.number SUB_DF_FILEIO_STREAM_READASYNC_0900
    * @tc.name fileio_test_stream_read_async_009
-   * @tc.desc Test read() interface, When the length is negative.
+   * @tc.desc Test read() interface, When the length is negative,equivalent to omitting the parameter.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -279,15 +285,13 @@ describe('fileio_stream_read', function () {
     let ss = fileio.createStreamSync(fpath, 'r+');
     expect(ss !== null).assertTrue();
     try {
-      let readout = await ss.read(new ArrayBuffer(4096), {length: -1});
-      console.info("====>"+readout.bytesRead);
-      done();
-    } catch (err) {
-      console.info('fileio_test_stream_read_async_009 has failed for ' + err);
-      expect(err.message == "Failed GetReadArg").assertTrue();
+      let readout = await ss.read(new ArrayBuffer(16), {offset:13, length: -1});
+      expect(readout.bytesRead == 3).assertTrue();
       ss.closeSync();
       fileio.unlinkSync(fpath);
       done();
+    } catch (err) {
+      console.info('fileio_test_stream_read_async_009 has failed for ' + err);
     }
   });
 
@@ -338,6 +342,56 @@ describe('fileio_stream_read', function () {
         done();
       } catch (err) {
         console.info('fileio_test_stream_read_async_011 has failed for ' + err);
+      }
+    });
+
+     /**
+   * @tc.number SUB_DF_FILEIO_STREAM_READASYNC_1200
+   * @tc.name fileio_test_stream_read_async_012
+   * @tc.desc Test read() interface, When the position is negative.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+   it('fileio_test_stream_read_async_012', 0, async function (done) {
+    let fpath = await nextFileName('fileio_test_stream_read_async_012');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let ss = fileio.createStreamSync(fpath, 'r+');
+    expect(ss !== null).assertTrue();
+    try {
+      await ss.read(new ArrayBuffer(4096), {position:-1});
+    } catch (err) {
+      console.info('fileio_test_stream_read_async_012 has failed for ' + err);
+      expect(err.message == "Failed GetReadArg").assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
+      done();
+    }
+  });
+
+   /**
+   * @tc.number SUB_DF_FILEIO_STREAM_READASYNC_1300
+   * @tc.name fileio_test_stream_read_async_013
+   * @tc.desc Test read() interface,When the parameter type is wrong.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+    it('fileio_test_stream_read_async_013', 0, async function (done) {
+      let fpath = await nextFileName('fileio_test_stream_read_async_013');
+      expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+      let ss = fileio.createStreamSync(fpath, 'r+');
+      expect(ss !== null).assertTrue();
+      try {
+        await ss.read("");
+      } catch (err) {
+        console.info('fileio_test_stream_read_async_013 has failed for ' + err);
+        expect(err.message == "Failed GetReadArg").assertTrue();
+        ss.closeSync();
+        fileio.unlinkSync(fpath);
+        done();
       }
     });
 });

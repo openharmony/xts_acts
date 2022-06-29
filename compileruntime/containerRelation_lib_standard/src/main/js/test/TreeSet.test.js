@@ -16,7 +16,13 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import TreeSet from "@ohos.util.TreeSet";
 
 describe("TreeSetTest", function () {
-  it("SR000GGR3I_testConstructor001", 0, function () {
+                              
+  /**
+   * @tc.name: testConstructor001
+   * @tc.desc: Create an TreeSet instance. For example: let treeSet = new TreeSet().
+   * @tc.author: wangyong
+   */   
+  it("testConstructor001", 0, function () {
     try {
       let treeSet = new TreeSet();
       expect(treeSet != undefined).assertEqual(true);
@@ -25,57 +31,111 @@ describe("TreeSetTest", function () {
       expect(err.message).assertEqual("Cannot create new TreeSet");
     }
   });
-  it("SR000GGR3I_testAdd002", 0, function () {
+                              
+  /**
+   * @tc.name: testAdd002
+   * @tc.desc: Add element to TreeSet instance. For example: treeSet.add("四").
+   * @tc.author: wangyong
+   */   
+  it("testAdd002", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add("四");
     let res = treeSet.has("四");
     expect(res).assertEqual(true);
   });
-  it("SR000GGR3I_testAdd003", 0, function () {
+                              
+  /**
+   * @tc.name: testAdd003
+   * @tc.desc: Add element to TreeSet instance. For example: treeSet.add("四").
+   * @tc.author: wangyong
+   */   
+  it("testAdd003", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(8);
     let res = treeSet.has(8);
     expect(res).assertEqual(true);
   });
-  it("SR000GGR3I_testAdd004", 0, function () {
+                              
+  /**
+   * @tc.name: testAdd004
+   * @tc.desc: Add element to TreeSet instance. For example: let a = [1, 2, 3, 4]; treeSet.add(a).
+   * @tc.author: wangyong
+   */   
+  it("testAdd004", 0, function () {
     let treeSet = new TreeSet();
     let a = [1, 2, 3, 4];
     treeSet.add(a);
     let res = treeSet.has(a);
     expect(res).assertEqual(true);
   });
-  it("SR000GGR3I_testAdd005", 0, function () {
+                              
+  /**
+   * @tc.name: testAdd005
+   * @tc.desc: Add element to TreeSet instance. For example: treeSet.add("*").
+   * @tc.author: wangyong
+   */   
+  it("testAdd005", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add("*");
     let res = treeSet.has("*");
     expect(res).assertEqual(true);
   });
-  it("SR000GGR3I_testAdd006", 0, function () {
+                              
+  /**
+   * @tc.name: testAdd006
+   * @tc.desc: Add element to TreeSet instance.
+   * @tc.author: wangyong
+   */   
+  it("testAdd006", 0, function () {
     let treeSet = new TreeSet();
     let a = {name: "lala", age: "13岁"};
     treeSet.add(a);
     let res = treeSet.has(a);
     expect(res).assertEqual(true);
   });
-  it("SR000GGR3I_testAdd007", 0, function () {
+                              
+  /**
+   * @tc.name: testAdd007
+   * @tc.desc: Add element to TreeSet instance. For example: treeSet.add(1.234).
+   * @tc.author: wangyong
+   */   
+  it("testAdd007", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(1.234);
     let res = treeSet.has(1.234);
     expect(res).assertEqual(true);
   });
-  it("SR000GGR3I_testAdd008", 0, function () {
+                              
+  /**
+   * @tc.name: testAdd008
+   * @tc.desc: Add element to TreeSet instance. For example: treeSet.add(true).
+   * @tc.author: wangyong
+   */   
+  it("testAdd008", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(true);
     let res = treeSet.has(true);
     expect(res).assertEqual(true);
   });
-  it("SR000GGR3I_testAdd009", 0, function () {
+                              
+  /**
+   * @tc.name: testAdd009
+   * @tc.desc: Add element to TreeSet instance. For example: treeSet.add("").
+   * @tc.author: wangyong
+   */   
+  it("testAdd009", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add("");
     let res = treeSet.has("");
     expect(res).assertEqual(true);
   });
-  it("SR000GGR3I_testAdd010", 0, function () {
+                              
+  /**
+   * @tc.name: testAdd010
+   * @tc.desc: Add element to TreeSet instance.
+   * @tc.author: wangyong
+   */   
+  it("testAdd010", 0, function () {
     let treeSet = new TreeSet();
     for (let i = 0; i < 10000; i++) {
       treeSet.add(i);
@@ -84,7 +144,13 @@ describe("TreeSetTest", function () {
     let res = treeSet.has(8888);
     expect(res).assertEqual(true);
   });
-  it("SR000GGR3I_testLength011", 0, function () {
+                              
+  /**
+   * @tc.name: testLength011
+   * @tc.desc: Get the number of element in the TreeSet instance. For example: treeSet.length.
+   * @tc.author: wangyong
+   */   
+  it("testLength011", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -92,12 +158,24 @@ describe("TreeSetTest", function () {
     let res = treeSet.length;
     expect(res).assertEqual(3);
   });
-  it("SR000GGR3I_testLength012", 0, function () {
+                              
+  /**
+   * @tc.name: testLength012
+   * @tc.desc: Get the number of element in the TreeSet instance. For example: treeSet.length.
+   * @tc.author: wangyong
+   */   
+  it("testLength012", 0, function () {
     let treeSet = new TreeSet();
     let res = treeSet.length;
     expect(res).assertEqual(0);
   });
-  it("SR000GGR3I_testHas013", 0, function () {
+                              
+  /**
+   * @tc.name: testHas013
+   * @tc.desc: Determine whether the TreeSet instance contains the specified element. For example: treeSet.has(2).
+   * @tc.author: wangyong
+   */   
+  it("testHas013", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -105,7 +183,13 @@ describe("TreeSetTest", function () {
     let res = treeSet.has(2);
     expect(res).assertEqual(true);
   });
-  it("SR000GGR3I_testHas014", 0, function () {
+                              
+  /**
+   * @tc.name: testHas014
+   * @tc.desc: Determine whether the TreeSet instance contains the specified element. For example: treeSet.has(2).
+   * @tc.author: wangyong
+   */   
+  it("testHas014", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -113,7 +197,13 @@ describe("TreeSetTest", function () {
     let res1 = treeSet.has(3);
     expect(res1).assertEqual(false);
   });
-  it("SR000GGR3I_testGetFirstValue015", 0, function () {
+                              
+  /**
+   * @tc.name: testGetFirstValue015
+   * @tc.desc: Get the value that ranks first in the TreeSet instance. For example: treeSet.getFirstValue().
+   * @tc.author: wangyong
+   */   
+  it("testGetFirstValue015", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -123,12 +213,25 @@ describe("TreeSetTest", function () {
     let res = treeSet.getFirstValue();
     expect(res).assertEqual(0);
   });
-  it("SR000GGR3I_testGetFirstValue016", 0, function () {
+                              
+  /**
+   * @tc.name: testGetFirstValue016
+   * @tc.desc: Get the value that ranks first in the TreeSet instance. 
+   * For example: treeSet.getFirstValue().
+   * @tc.author: wangyong
+   */   
+  it("testGetFirstValue016", 0, function () {
     let treeSet = new TreeSet();
     let res = treeSet.getFirstValue();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3I_testGetLastValue017", 0, function () {
+                              
+  /**
+   * @tc.name: testGetLastValue017
+   * @tc.desc: Get the last sorted key in the TreeSet instance. For example: treeSet.getLastValue().
+   * @tc.author: wangyong
+   */   
+  it("testGetLastValue017", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -136,12 +239,25 @@ describe("TreeSetTest", function () {
     let res = treeSet.getLastValue();
     expect(res).assertEqual(2);
   });
-  it("SR000GGR3I_testGetLastValue018", 0, function () {
+                              
+  /**
+   * @tc.name: testGetLastValue018
+   * @tc.desc: Get the last sorted key in the TreeSet instance. For example: treeSet.getLastValue().
+   * @tc.author: wangyong
+   */   
+  it("testGetLastValue018", 0, function () {
     let treeSet = new TreeSet();
     let res = treeSet.getLastValue();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3I_testGetLowerValue019", 0, function () {
+                              
+  /**
+   * @tc.name: testGetLowerValue019
+   * @tc.desc: Get a value that is a little lower than the specified value sort. 
+   * For example: treeSet.getLowerValue(2).
+   * @tc.author: wangyong
+   */   
+  it("testGetLowerValue019", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -151,12 +267,26 @@ describe("TreeSetTest", function () {
     let res = treeSet.getLowerValue(2);
     expect(res).assertEqual(1);
   });
-  it("SR000GGR3I_testGetLowerValue020", 0, function () {
+                              
+  /**
+   * @tc.name: testGetLowerValue020
+   * @tc.desc: Get a value that is a little lower than the specified value sort. 
+   * For example: treeSet.getLowerValue(2).
+   * @tc.author: wangyong
+   */   
+  it("testGetLowerValue020", 0, function () {
     let treeSet = new TreeSet();
     let res = treeSet.getLowerValue(2);
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3I_testGetHigherValue021", 0, function () {
+                              
+  /**
+   * @tc.name: testGetHigherValue021
+   * @tc.desc: Get a value that is a little higher than the specified value sort. 
+   * For example: treeSet.getHigherValue(3).
+   * @tc.author: wangyong
+   */   
+  it("testGetHigherValue021", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -166,12 +296,25 @@ describe("TreeSetTest", function () {
     let res = treeSet.getHigherValue(3);
     expect(res).assertEqual(4);
   });
-  it("SR000GGR3I_testGetHigherValue022", 0, function () {
+                              
+  /**
+   * @tc.name: testGetHigherValue022
+   * @tc.desc: Get a value that is a little higher than the specified value sort. 
+   * For example: treeSet.getHigherValue(3).
+   * @tc.author: wangyong
+   */   
+  it("testGetHigherValue022", 0, function () {
     let treeSet = new TreeSet();
     let res = treeSet.getHigherValue(3);
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3I_testPopFirst023", 0, function () {
+                              
+  /**
+   * @tc.name: testPopFirst023
+   * @tc.desc: Delete first value of sort. For example: treeSet.popFirst().
+   * @tc.author: wangyong
+   */   
+  it("testPopFirst023", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add("a");
     treeSet.add("b");
@@ -181,12 +324,24 @@ describe("TreeSetTest", function () {
     let res = treeSet.popFirst();
     expect(res).assertEqual("a");
   });
-  it("SR000GGR3I_testPopFirst024", 0, function () {
+                              
+  /**
+   * @tc.name: testPopFirst024
+   * @tc.desc: Delete first value of sort. For example: treeSet.popFirst().
+   * @tc.author: wangyong
+   */   
+  it("testPopFirst024", 0, function () {
     let treeSet = new TreeSet();
     let res = treeSet.popFirst();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3I_testPopLast025", 0, function () {
+                              
+  /**
+   * @tc.name: testPopLast025
+   * @tc.desc: Delete last value of sort. For example: treeSet.popLast().
+   * @tc.author: wangyong
+   */   
+  it("testPopLast025", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add("a");
     treeSet.add("b");
@@ -196,12 +351,24 @@ describe("TreeSetTest", function () {
     let res = treeSet.popLast();
     expect(res).assertEqual("e");
   });
-  it("SR000GGR3I_testPopLast026", 0, function () {
+                              
+  /**
+   * @tc.name: testPopLast026
+   * @tc.desc: Delete last value of sort. For example: treeSet.popLast().
+   * @tc.author: wangyong
+   */   
+  it("testPopLast026", 0, function () {
     let treeSet = new TreeSet();
     let res = treeSet.popLast();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR3I_testClear027", 0, function () {
+                              
+  /**
+   * @tc.name: testClear027
+   * @tc.desc: Clear all elements of the TreeSet instance. For example: treeSet.clear().
+   * @tc.author: wangyong
+   */   
+  it("testClear027", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -210,7 +377,13 @@ describe("TreeSetTest", function () {
     let res = treeSet.length;
     expect(res).assertEqual(0);
   });
-  it("SR000GGR3I_testClear028", 0, function () {
+                              
+  /**
+   * @tc.name: testClear028
+   * @tc.desc: Clear all elements of the TreeSet instance. For example: treeSet.clear().
+   * @tc.author: wangyong
+   */   
+  it("testClear028", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -221,18 +394,36 @@ describe("TreeSetTest", function () {
     let res1 = treeSet.popFirst();
     expect(res1).assertEqual(undefined);
   });
-  it("SR000GGR3I_testIsEmpty029", 0, function () {
+                              
+  /**
+   * @tc.name: testIsEmpty029
+   * @tc.desc: Determine whether the TreeSet instance is empty. For example: treeSet.isEmpty().
+   * @tc.author: wangyong
+   */   
+  it("testIsEmpty029", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add("a");
     let res1 = treeSet.isEmpty();
     expect(res1).assertEqual(false);
   });
-  it("SR000GGR3I_testIsEmpty030", 0, function () {
+                              
+  /**
+   * @tc.name: testIsEmpty030
+   * @tc.desc: Determine whether the TreeSet instance is empty. For example: treeSet.isEmpty().
+   * @tc.author: wangyong
+   */   
+  it("testIsEmpty030", 0, function () {
     let treeSet = new TreeSet();
     let res2 = treeSet.isEmpty();
     expect(res2).assertEqual(true);
   });
-  it("SR000GGR3I_testRemove031", 0, function () {
+                              
+  /**
+   * @tc.name: testRemove031
+   * @tc.desc: Delete the specified value. For example: hashSet.remove("c").
+   * @tc.author: wangyong
+   */   
+  it("testRemove031", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add("a");
     treeSet.add("b");
@@ -245,12 +436,24 @@ describe("TreeSetTest", function () {
     let res2 = treeSet.has("c");
     expect(res2).assertEqual(false);
   });
-  it("SR000GGR3I_testRemove032", 0, function () {
+                              
+  /**
+   * @tc.name: testRemove032
+   * @tc.desc: Delete the specified value. For example: hashSet.remove("c").
+   * @tc.author: wangyong
+   */   
+  it("testRemove032", 0, function () {
     let treeSet = new TreeSet();
     let res = treeSet.remove("c");
     expect(res).assertEqual(false);
   });
-  it("SR000GGR3I_testValues033", 0, function () {
+                              
+  /**
+   * @tc.name: testValues033
+   * @tc.desc: Get a collection of all the values in the TreeSet. For example: treeSet.values().
+   * @tc.author: wangyong
+   */   
+  it("testValues033", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add("a");
     treeSet.add("b");
@@ -264,7 +467,13 @@ describe("TreeSetTest", function () {
     expect(res.next().value).assertEqual("d");
     expect(res.next().value).assertEqual("g");
   });
-  it("SR000GGR3I_testForEach034", 0, function () {
+                              
+  /**
+   * @tc.name: testForEach034
+   * @tc.desc: Traverse the collection of all elements of the TreeSet instance.
+   * @tc.author: wangyong
+   */   
+  it("testForEach034", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -280,7 +489,13 @@ describe("TreeSetTest", function () {
       expect(arr[i]).assertEqual(arr1[i]);
     }
   });
-  it("SR000GGR3I_testEntries035", 0, function () {
+                              
+  /**
+   * @tc.name: testEntries035
+   * @tc.desc: Get all key value pairs collection in TreeMap.
+   * @tc.author: wangyong
+   */   
+  it("testEntries035", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add("a");
     treeSet.add("b");
@@ -294,7 +509,14 @@ describe("TreeSetTest", function () {
     expect(JSON.stringify(res.next().value)).assertEqual('["d","d"]');
     expect(JSON.stringify(res.next().value)).assertEqual('["g","g"]');
   });
-  it("SR000GGR3I_testIterator036", 0, function () {
+                              
+  /**
+   * @tc.name: testIterator036
+   * @tc.desc: Iterate over all elements of the TreeSet instance.
+   * For example: for (let item of treeSet) {arr.push(item);}
+   * @tc.author: wangyong
+   */   
+  it("testIterator036", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);
@@ -310,7 +532,13 @@ describe("TreeSetTest", function () {
       expect(arr[i]).assertEqual(arr1[i]);
     }
   });
-  it("SR000GGR3I_testIterator037", 0, function () {
+                              
+  /**
+   * @tc.name: testIterator037
+   * @tc.desc: Iterate over all elements of the TreeSet instance. For example: treeSet[Symbol.iterator]().
+   * @tc.author: wangyong
+   */   
+  it("testIterator037", 0, function () {
     let treeSet = new TreeSet();
     treeSet.add(0);
     treeSet.add(1);

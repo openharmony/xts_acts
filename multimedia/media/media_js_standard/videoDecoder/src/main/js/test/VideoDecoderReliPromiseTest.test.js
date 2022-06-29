@@ -16,7 +16,7 @@
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
 import router from '@system.router'
-import {getFileDescriptor, closeFileDescriptor} from './VideoDecoderTestBase.test.js'
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const DECODE_STEP = {
@@ -47,7 +47,6 @@ describe('VideoDecoderReliPromiseTest', function () {
     let inputEosFlag = false;
     let workdoneAtEOS = false;
     let surfaceID = '';
-    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/';
     const SRCPATH = 'out_320_240_10s.h264';
     let mediaDescription = {
         'track_type': 1,
@@ -110,12 +109,11 @@ describe('VideoDecoderReliPromiseTest', function () {
         }
         await router.clear().then(() => {
         }, failCallback).catch(failCatch);
-        await closeFileDescriptor(SRCPATH);
+        await fileio.close(fdRead);
     })
 
     afterAll(async function() {
         console.info('afterAll case');
-        await closeFileDescriptor(SRCPATH);
     })
     let caseCallback = function(err) {
         console.info(`in case caseCallback called, caseMessage is ${err.message}`);
@@ -168,11 +166,11 @@ describe('VideoDecoderReliPromiseTest', function () {
         let lengthReal = -1;
         try {
             if (pos == -1) {
-                lengthReal = readStreamSync.readSync(buf, {
+                lengthReal = fileio.readSync(fdRead, buf, {
                     length: len,
                 });
             } else {
-                lengthReal = readStreamSync.readSync(buf, {
+                lengthReal = fileio.readSync(fdRead, buf, {
                     length: len,
                     position: pos,
                 });
@@ -286,7 +284,6 @@ describe('VideoDecoderReliPromiseTest', function () {
                 videoDecodeProcessor.release().then(async() => {
                     console.info('in case : videoDecodeProcessor release success');
                     videoDecodeProcessor = null;
-                    await closeFileDescriptor(SRCPATH);
                     console.info('case to done');
                     done();
                 }, failCallback).catch(failCatch);
@@ -332,7 +329,6 @@ describe('VideoDecoderReliPromiseTest', function () {
                     toStart(mySteps, done, callbackExpectFail, failCatch);
                 } else {
                     readStreamSync = undefined;
-                    readFile(SRCPATH);
                     frameCountIn = 0;
                     frameCountOut = 0;
                     inputQueue = [];
@@ -375,11 +371,14 @@ describe('VideoDecoderReliPromiseTest', function () {
                 break;
             case DECODE_STEP.WAIT_FOR_EOS:
                 mySteps.shift();
-                setTimeout(() =>{
+                setTimeout(async() =>{
                     expect(inputEosFlag).assertTrue();
                     if (inputEosFlag == false) {
                         console.info(`in case error inputEosFlag == false`);
                     }
+                    await mediaTestBase.getFdRead(SRCPATH, done).then((fdNumber) => {
+                        fdRead = fdNumber;
+                    })
                     toNextStep(mySteps, done);
                 }, 7000);   // wait 7000 ms for eos
                 break;
@@ -413,17 +412,10 @@ describe('VideoDecoderReliPromiseTest', function () {
     }
 
     async function toCreateVideoDecoderByMime(mime, mySteps, done) {
-        await getFileDescriptor(SRCPATH).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("case fdRead is: " + fdRead);
-            }
+        await mediaTestBase.getFdRead(SRCPATH, done).then((fdNumber) => {
+            fdRead = fdNumber;
         })
-        media.createVideoDecoderByMime(mime).then((processor) => {
+        await media.createVideoDecoderByMime(mime).then((processor) => {
             console.info(`case createVideoDecoderByMime success`);
             videoDecodeProcessor = processor;
             setCallback(done);
@@ -492,7 +484,7 @@ describe('VideoDecoderReliPromiseTest', function () {
     it('SUB_MEDIA_VIDEO_DECODER_FUNCTION_PROMISE_01_0300', 0, async function (done) {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
             DECODE_STEP.WAIT_FOR_ALL_OUTS);
-        eosFrameId = 50;
+        eosFrameId = 10;
         workdoneAtEOS = true;
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
@@ -521,9 +513,9 @@ describe('VideoDecoderReliPromiseTest', function () {
     */
     it('SUB_MEDIA_VIDEO_DECODER_FUNCTION_PROMISE_01_0500', 0, async function (done) {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
-            DECODE_STEP.WAIT_FOR_EOS, DECODE_STEP.STOP, DECODE_STEP.START, DECODE_STEP.WAIT_FOR_EOS, DECODE_STEP.STOP,
+            DECODE_STEP.WAIT_FOR_EOS, DECODE_STEP.STOP, DECODE_STEP.START, DECODE_STEP.STOP,
             DECODE_STEP.RESET, DECODE_STEP.RELEASE);
-        eosFrameId = 50;
+        eosFrameId = 10;
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
 
@@ -607,7 +599,7 @@ describe('VideoDecoderReliPromiseTest', function () {
     it('SUB_MEDIA_VIDEO_DECODER_API_CONFIGURE_PROMISE_0600', 0, async function (done) {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
             DECODE_STEP.WAIT_FOR_EOS, DECODE_STEP.CONFIGURE, DECODE_STEP.ERROR, DECODE_STEP.RELEASE);
-        eosFrameId = 50;
+        eosFrameId = 10;
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
 
@@ -745,7 +737,7 @@ describe('VideoDecoderReliPromiseTest', function () {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
             DECODE_STEP.WAIT_FOR_EOS ,
             DECODE_STEP.PREPARE, DECODE_STEP.ERROR, DECODE_STEP.RELEASE);
-        eosFrameId = 50;
+        eosFrameId = 10;
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
 
@@ -857,7 +849,7 @@ describe('VideoDecoderReliPromiseTest', function () {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
             DECODE_STEP.WAIT_FOR_EOS, DECODE_STEP.START,
             DECODE_STEP.ERROR, DECODE_STEP.RELEASE);
-        eosFrameId = 50;
+        eosFrameId = 10;
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
 
@@ -968,7 +960,7 @@ describe('VideoDecoderReliPromiseTest', function () {
     it('SUB_MEDIA_VIDEO_DECODER_API_FLUSH_PROMISE_0700', 0, async function (done) {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
             DECODE_STEP.WAIT_FOR_EOS, DECODE_STEP.FLUSH, DECODE_STEP.RELEASE);
-        eosFrameId = 50;
+        eosFrameId = 10;
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
 
@@ -1079,7 +1071,7 @@ describe('VideoDecoderReliPromiseTest', function () {
     it('SUB_MEDIA_VIDEO_DECODER_API_STOP_PROMISE_0700', 0, async function (done) {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
             DECODE_STEP.WAIT_FOR_EOS, DECODE_STEP.STOP, DECODE_STEP.RELEASE);
-        eosFrameId = 50;
+        eosFrameId = 10;
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
 
@@ -1190,7 +1182,7 @@ describe('VideoDecoderReliPromiseTest', function () {
     it('SUB_MEDIA_VIDEO_DECODER_API_RESET_PROMISE_0700', 0, async function (done) {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
             DECODE_STEP.WAIT_FOR_EOS, DECODE_STEP.RESET, DECODE_STEP.RELEASE);
-        eosFrameId = 50;
+        eosFrameId = 10;
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
 
@@ -1219,7 +1211,7 @@ describe('VideoDecoderReliPromiseTest', function () {
     it('SUB_MEDIA_VIDEO_DECODER_API_EOS_PROMISE_0100', 0, async function (done) {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
             DECODE_STEP.WAIT_FOR_EOS, DECODE_STEP.FLUSH, DECODE_STEP.STOP, DECODE_STEP.RELEASE);
-        eosFrameId = 50;
+        eosFrameId = 10;
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
 
@@ -1234,7 +1226,7 @@ describe('VideoDecoderReliPromiseTest', function () {
     it('SUB_MEDIA_VIDEO_DECODER_API_EOS_PROMISE_0200', 0, async function (done) {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
             DECODE_STEP.WAIT_FOR_EOS, DECODE_STEP.FLUSH, DECODE_STEP.RELEASE);
-        eosFrameId = 50;
+        eosFrameId = 10;
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
 
@@ -1249,7 +1241,7 @@ describe('VideoDecoderReliPromiseTest', function () {
     it('SUB_MEDIA_VIDEO_DECODER_API_EOS_PROMISE_0300', 0, async function (done) {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
             DECODE_STEP.WAIT_FOR_EOS, DECODE_STEP.RESET, DECODE_STEP.CONFIGURE, DECODE_STEP.RELEASE);
-        eosFrameId = 50;
+        eosFrameId = 10;
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
 
@@ -1264,7 +1256,7 @@ describe('VideoDecoderReliPromiseTest', function () {
     it('SUB_MEDIA_VIDEO_DECODER_API_EOS_PROMISE_0400', 0, async function (done) {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
             DECODE_STEP.WAIT_FOR_EOS, DECODE_STEP.STOP, DECODE_STEP.START, DECODE_STEP.RELEASE);
-        eosFrameId = 50;
+        eosFrameId = 10;
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
 
@@ -1279,7 +1271,7 @@ describe('VideoDecoderReliPromiseTest', function () {
     it('SUB_MEDIA_VIDEO_DECODER_API_EOS_PROMISE_0500', 0, async function (done) {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
             DECODE_STEP.WAIT_FOR_EOS, DECODE_STEP.STOP, DECODE_STEP.START, DECODE_STEP.STOP, DECODE_STEP.RELEASE);
-        eosFrameId = 50;
+        eosFrameId = 10;
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
 })

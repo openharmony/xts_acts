@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "ohos.acts.hiviewdfx.hilog.function",
+    "bundleName": "ohos.acts.hiviewdfx.hitracechain.function",
     "vendor": "example",
     "version": {
       "code": 1,
@@ -13,7 +13,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "ohos.acts.hiviewdfx.hilog.function",
+    "package": "ohos.acts.hiviewdfx.hitracechain.function",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -36,7 +36,7 @@
             ]
           }
         ],
-        "name": "ohos.acts.hiviewdfx.hilog.function.MainAbility",
+        "name": "ohos.acts.hiviewdfx.hitracechain.function.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "MyApplication",

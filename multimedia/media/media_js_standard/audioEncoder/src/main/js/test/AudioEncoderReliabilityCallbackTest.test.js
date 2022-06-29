@@ -15,13 +15,12 @@
 
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
-import {getFileDescriptor, closeFileDescriptor} from './AudioEncoderTestBase.test.js';
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('AudioEncoderReliabilityCallback', function () {
-    const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/'
     const AUDIOPATH = 'S16LE.pcm';
-    const BASIC_PATH = RESOURCEPATH + 'results/encode_reliability_callback_';
+    const BASIC_PATH = 'results/encode_reliability_callback_';
     const END = 0;
     const CONFIGURE = 1;
     const PREPARE = 2;
@@ -91,12 +90,11 @@ describe('AudioEncoderReliabilityCallback', function () {
             }, failCallback).catch(failCatch);
             audioEncodeProcessor = null;
         }
-        await closeFileDescriptor(AUDIOPATH);
+        await fileio.close(fdRead);
     })
 
     afterAll(async function() {
         console.info('afterAll case');
-        await closeFileDescriptor(AUDIOPATH);
     })
 
     function resetParam() {
@@ -126,16 +124,9 @@ describe('AudioEncoderReliabilityCallback', function () {
         })
     }
 
-    async function getFdRead(pathName, done) {
-        await getFileDescriptor(pathName).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("case fdRead is: " + fdRead);
-            }
+    async function getFdRead(readPath, done) {
+        await mediaTestBase.getFdRead(readPath, done).then((fdNumber) => {
+            fdRead = fdNumber;
         })
     }
 
@@ -152,7 +143,7 @@ describe('AudioEncoderReliabilityCallback', function () {
     function getContent(buf, len) {
         console.info("case start get content");
         let lengthreal = -1;
-        lengthreal = readStreamSync.readSync(buf,{length:len});
+        lengthreal = fileio.readSync(fdRead, buf, {length:len});
         console.info('case lengthreal is :' + lengthreal);
     }
 
@@ -199,7 +190,6 @@ describe('AudioEncoderReliabilityCallback', function () {
                 audioEncodeProcessor.configure(mediaDescription, (err) => {
                     expect(err).assertUndefined();
                     console.info(`case configure 1`);
-                    readFile(AUDIOPATH);
                     nextStep(mySteps, mediaDescription, done);
                 });
                 break;
@@ -217,9 +207,7 @@ describe('AudioEncoderReliabilityCallback', function () {
                 console.info(`case to start`);
                 if (sawOutputEOS) {
                     resetParam();
-                    await closeFileDescriptor(AUDIOPATH);
                     await getFdRead(AUDIOPATH, done);
-                    readFile(AUDIOPATH);
                     workdoneAtEOS = true;
                     enqueueAllInputs(inputQueue);
                 }
@@ -238,10 +226,8 @@ describe('AudioEncoderReliabilityCallback', function () {
                     expect(err).assertUndefined();
                     console.info(`case flush 1`);
                     if (flushAtEOS) {
-                        await closeFileDescriptor(AUDIOPATH);
                         await getFdRead(AUDIOPATH, done);
                         resetParam();
-                        readFile(AUDIOPATH);
                         workdoneAtEOS = true;
                         flushAtEOS = false;
                     }

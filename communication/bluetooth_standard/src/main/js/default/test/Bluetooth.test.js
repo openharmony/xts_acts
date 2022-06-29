@@ -333,9 +333,9 @@ describe('bluetoothhostTest', function() {
     it('SUB_COMMUNACATION_bluetooth_SPP_CLOSE_SERVER_SOCKET_0001', 0, async function (done) {
         console.log("[bluetooth_js] spp closeServerSocket start");
         await tryToEnableBt();
-        let ret = bluetooth.sppCloseServerSocket(-1);
-        console.info('[bluetooth_js] bluetooth sppCloseServerSocket ret : ' + ret);
-        expect(ret).assertEqual(false);
+	setTimeout(async ()=>{
+            bluetooth.sppCloseServerSocket(-1);
+	},3000);
         done();
     })
 
@@ -382,6 +382,25 @@ describe('bluetoothhostTest', function() {
         expect(ret).assertEqual(false);
         done();
     })
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_SPP_CLOSE_CLIENT_SOCKET_0001
+     * @tc.name testSppCloseClientSocket
+     * @tc.desc Test SppCloseClientSocket api.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNACATION_bluetooth_SPP_CLOSE_CLIENT_SOCKET_0001', 0, async function (done) {
+        console.log("[bluetooth_js] spp closeClientSocket start");
+        await tryToEnableBt();
+        setTimeout(async ()=>{
+            bluetooth.sppCloseClientSocket(-1);
+        },3000);
+        done();
+    })
+
+
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_GET_REMO_DEV_NAME_0001

@@ -14,6 +14,7 @@
  */
 
 import fileio from '@ohos.fileio'
+import featureAbility from '@ohos.ability.featureAbility';
 
 export const FILE_CONTENT = 'hello world'
 
@@ -32,24 +33,17 @@ export function prepareFile(fpath, content) {
   }
 }
 
-export function nextFileName(testName) {
-  const BASE_PATH = '/data/storage/el2/base/haps/entry/cache/'
+export async function nextFileName(testName) {
+  let context = featureAbility.getContext();
+  let data = await context.getCacheDir();
+  let BASE_PATH = data + '/';
   return BASE_PATH + testName
 }
-export function fileName(testName) {
-  const BASE_PATH = '/data/storage/el2/base/haps/entry/files/'
+export async function fileName(testName) {
+  let context = featureAbility.getContext();
+  let data = await context.getFilesDir();
+  let BASE_PATH = data + '/';
   return BASE_PATH + testName
-}
-
-export function randomString(num) {
-  let len= num;
-  var $chars = 'aaaabbbbcccc';
-  var maxPos = $chars.length;
-  var pwd = '';
-  for (var i = 0; i < len; i++) {
-    pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-  }
-  return pwd;
 }
 
 export function isIntNum(val) {

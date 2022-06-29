@@ -9,7 +9,7 @@
     "apiVersion": {
       "compatible": 7,
       "releaseType": "Release",
-      "target": 7
+      "target": 8
     }
   },
   "deviceConfig": {},
@@ -40,7 +40,7 @@
         ],
         "orientation": "unspecified",
         "visible": true,
-        "srcPath": "",
+        "srcPath": "MainAbility",
         "name": ".MainAbility",
         "srcLanguage": "ets",
         "icon": "$media:icon",

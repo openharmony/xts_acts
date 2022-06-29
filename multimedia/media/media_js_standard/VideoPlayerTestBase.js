@@ -16,16 +16,6 @@
 import media from '@ohos.multimedia.media'
 import * as mediaTestBase from './MediaTestBase.js';
 
-export function checkDescription(actualDescription, descriptionKey, descriptionValue) {
-    for (let i = 0; i < descriptionKey.length; i++) {
-        let property = actualDescription[descriptionKey[i]];
-        console.info('case key is  '+ descriptionKey[i]);
-        console.info('case actual value is  '+ property);
-        console.info('case hope value is  '+ descriptionValue[i]);
-        expect(property).assertEqual(descriptionValue[i]);
-    }
-}
-
 export async function playVideoSource(url, width, height, duration, playTime, done) {
     console.info(`case media source url: ${url}`)
     let videoPlayer = null;
@@ -170,6 +160,150 @@ export async function playVideoSource(url, width, height, duration, playTime, do
         expect(videoPlayer.state).assertEqual('stopped');
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 
+    await videoPlayer.release().then(() => {
+        console.info('case release called');
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+}
+
+export async function testVideoSeek(url, duration, playTime, done) {
+    console.info(`case media source url: ${url}`)
+    let videoPlayer = null;
+    let surfaceID = globalThis.value;
+    await media.createVideoPlayer().then((video) => {
+        if (typeof (video) != 'undefined') {
+            console.info('case createVideoPlayer success');
+            videoPlayer = video;
+        } else {
+            console.error('case createVideoPlayer failed');
+            expect().assertFail();
+            done();
+        }
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+
+    videoPlayer.on('videoSizeChanged', (w, h) => {
+        console.info('case videoSizeChanged  width: ' + w + ' height: ' + h);
+    });
+
+    videoPlayer.on('error', (err) => {
+        console.error(`case error called, errMessage is ${err.message}`);
+        expect().assertFail();
+        videoPlayer.release();
+        done();
+    });
+    videoPlayer.url = url;
+    await videoPlayer.setDisplaySurface(surfaceID).then(() => {
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await videoPlayer.prepare().then(() => {}, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await videoPlayer.play().then(() => {
+        console.info('case play called');
+        expect(videoPlayer.state).assertEqual('playing');
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+
+    // pause when seeking
+    videoPlayer.seek(videoPlayer.duration / 3).then((seekDoneTime) => {
+        console.info('case seek called and seekDoneTime is ' + seekDoneTime);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    expect(videoPlayer.duration).assertClose(duration, 500);
+    await videoPlayer.pause().then(() => {
+        console.info('case pause called');
+        expect(videoPlayer.state).assertEqual('paused');
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+
+    // play when seeking
+    videoPlayer.seek(0).then((seekDoneTime) => {
+        console.info('case seek called and seekDoneTime is ' + seekDoneTime);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await videoPlayer.play().then(() => {
+        console.info('case play called');
+        expect(videoPlayer.state).assertEqual('playing');
+        mediaTestBase.msleep(playTime);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+
+    // setVolume when setSpeeding
+    videoPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X).then((speedMode) => {
+        console.info('case setSpeed called and speedMode is ' + speedMode);
+        expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    expect(videoPlayer.duration).assertClose(duration, 500);
+    await videoPlayer.setVolume(0.5).then(() => {
+        console.info('case setVolume called');
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+
+    // setSpeed when seeking
+    videoPlayer.seek(0, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
+        console.info('case seek called and seekDoneTime is ' + seekDoneTime);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await videoPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_00_X).then((speedMode) => {
+        console.info('case setSpeed called and speedMode is ' + speedMode);
+        expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_1_00_X);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+
+    // seek when pausing
+    videoPlayer.pause().then(() => {
+        console.info('case pause called');
+        expect(videoPlayer.state).assertEqual('paused');
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await videoPlayer.seek(0, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
+        console.info('case seek called and seekDoneTime is ' + seekDoneTime);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+
+    // seek when playing
+    videoPlayer.play().then(() => {
+        console.info('case pause called');
+        expect(videoPlayer.state).assertEqual('playing');
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await videoPlayer.seek(videoPlayer.duration / 3, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
+        console.info('case seek called and seekDoneTime is ' + seekDoneTime);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+
+    // seek when seeking
+    videoPlayer.seek(videoPlayer.duration / 3, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
+        console.info('case seek called and seekDoneTime is ' + seekDoneTime);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await videoPlayer.seek(0, media.SeekMode.SEEK_NEXT_SYNC).then((seekDoneTime) => {
+        console.info('case seek called and seekDoneTime is ' + seekDoneTime);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+
+    // stop when seeking
+    videoPlayer.seek(videoPlayer.duration, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
+        console.info('case seek called and seekDoneTime is ' + seekDoneTime);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await videoPlayer.stop().then(() => {
+        console.info('case stop called');
+        expect(videoPlayer.state).assertEqual('stopped');
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await videoPlayer.reset().then(() => {
+        console.info('case reset called');
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+
+    videoPlayer.url = url;
+    await videoPlayer.prepare().then(() => {
+        console.info('case prepare called');
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await videoPlayer.play().then(() => {
+        console.info('case play called');
+        expect(videoPlayer.state).assertEqual('playing');
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    
+    // reset when seeking
+    videoPlayer.seek(videoPlayer.duration, media.SeekMode.SEEK_PREV_SYNC).then((seekDoneTime) => {
+        console.info('case seek called and seekDoneTime is ' + seekDoneTime);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await videoPlayer.reset().then(() => {
+        console.info('case reset called');
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+   
+    videoPlayer.url = url;
+    await videoPlayer.prepare().then(() => {
+        console.info('case prepare called');
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await videoPlayer.play().then(() => {
+        console.info('case play called');
+        expect(videoPlayer.state).assertEqual('playing');
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    
+    // release when seeking
+    videoPlayer.seek(videoPlayer.duration, media.SeekMode.SEEK_PREV_SYNC);
     await videoPlayer.release().then(() => {
         console.info('case release called');
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);

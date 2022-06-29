@@ -108,7 +108,14 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             Subscriber.Support.COMMON_EVENT_SMS_RECEIVE_COMPLETED,
             Subscriber.Support.COMMON_EVENT_SPN_INFO_UPDATED,
             Subscriber.Support.COMMON_EVENT_BOOT_COMPLETED,
-            Subscriber.Support.COMMON_EVENT_SPLIT_SCREEN
+            Subscriber.Support.COMMON_EVENT_SPLIT_SCREEN,
+            Subscriber.Support.COMMON_EVENT_THERMAL_LEVEL_CHANGED,
+            Subscriber.Support.COMMON_EVENT_VOLUME_REMOVED,
+            Subscriber.Support.COMMON_EVENT_VOLUME_UNMOUNTED,
+            Subscriber.Support.COMMON_EVENT_VOLUME_MOUNTED,
+            Subscriber.Support.COMMON_EVENT_VOLUME_BAD_REMOVAL,
+            Subscriber.Support.COMMON_EVENT_VOLUME_EJECT,
+            Subscriber.Support.COMMON_EVENT_SLOT_CHANGE
     ];
 
     function publishCallback(err) {
@@ -187,6 +194,13 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
                     Subscriber.Support.COMMON_EVENT_HWID_LOGOFF,
                     Subscriber.Support.COMMON_EVENT_WIFI_POWER_STATE,
                     Subscriber.Support.COMMON_EVENT_WIFI_CONN_STATE,
+                    Subscriber.Support.COMMON_EVENT_THERMAL_LEVEL_CHANGED,
+                    Subscriber.Support.COMMON_EVENT_VOLUME_REMOVED,
+                    Subscriber.Support.COMMON_EVENT_VOLUME_UNMOUNTED,
+                    Subscriber.Support.COMMON_EVENT_VOLUME_MOUNTED,
+                    Subscriber.Support.COMMON_EVENT_VOLUME_BAD_REMOVAL,
+                    Subscriber.Support.COMMON_EVENT_VOLUME_EJECT,
+                    Subscriber.Support.COMMON_EVENT_SLOT_CHANGE
             ],
         };
 
@@ -287,7 +301,15 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
                 Subscriber.Support.COMMON_EVENT_ABILITY_UPDATED,
                 Subscriber.Support.COMMON_EVENT_VISIBLE_ACCOUNTS_UPDATED,
                 Subscriber.Support.COMMON_EVENT_ACCOUNT_DELETED,
-                Subscriber.Support.COMMON_EVENT_FOUNDATION_READY
+                Subscriber.Support.COMMON_EVENT_FOUNDATION_READY,
+                Subscriber.Support.COMMON_EVENT_BATTERY_CHANGED,
+                Subscriber.Support.COMMON_EVENT_THERMAL_LEVEL_CHANGED,
+                Subscriber.Support.COMMON_EVENT_VOLUME_REMOVED,
+                Subscriber.Support.COMMON_EVENT_VOLUME_UNMOUNTED,
+                Subscriber.Support.COMMON_EVENT_VOLUME_MOUNTED,
+                Subscriber.Support.COMMON_EVENT_VOLUME_BAD_REMOVAL,
+                Subscriber.Support.COMMON_EVENT_VOLUME_EJECT,
+                Subscriber.Support.COMMON_EVENT_SLOT_CHANGE
             ],
         };
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.emitter';
+import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -44,6 +44,7 @@ struct LoadingProgressExample {
       Text('Orbital LoadingProgress ')
         .fontSize(19)
         .fontColor(0xCCCCCC)
+        .height(50)
         .width('90%')
         .key('LP')
       LoadingProgress()

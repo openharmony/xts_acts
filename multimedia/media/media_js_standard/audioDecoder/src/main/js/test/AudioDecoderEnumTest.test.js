@@ -144,20 +144,5 @@ describe('AudioDecoderEnum', function () {
         expect(media.AVCodecType.AVCODEC_TYPE_AUDIO_ENCODER).assertEqual(2);
         expect(media.AVCodecType.AVCODEC_TYPE_AUDIO_DECODER).assertEqual(3);
         done();
-    })  
-    
-    /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_ENUM_CodecMimeType_0100
-        * @tc.name      : 004.CodecMimeType
-        * @tc.desc      : Test Enumerate CodecMimeType
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_AUDIO_DECODER_ENUM_CodecMimeType_0100', 0, async function (done) {
-        expect(media.CodecMimeType.AUDIO_AAC).assertEqual('audio/mp4a-latm');
-        expect(media.CodecMimeType.AUDIO_VORBIS).assertEqual('audio/vorbis');
-        expect(media.CodecMimeType.AUDIO_FLAC).assertEqual('audio/flac');
-        done();
     })
 })
