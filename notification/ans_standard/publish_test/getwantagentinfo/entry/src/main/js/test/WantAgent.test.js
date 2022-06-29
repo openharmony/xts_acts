@@ -14,7 +14,6 @@
  */
 
 import wantAgent from '@ohos.wantAgent';
-import { OperationType, WantAgentFlags } from '@ohos.wantagent';
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
@@ -54,9 +53,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         wantAgent.getWantAgent(agentInfoa,
             (err, data) => {
@@ -134,9 +133,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         wantAgent.getWantAgent(agentInfod).then(
             (data) => {
@@ -197,9 +196,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         wantAgent.getWantAgent(agentInfob,(err,data)=>{
             WantAgentb = data
@@ -226,9 +225,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
 		setTimeout(function(){
 			wantAgent.getWantAgent(agentInfoc,
@@ -304,9 +303,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         wantAgent.getWantAgent(agentInfoe,(err,data)=>{
             console.log("=======agentInfoe======="+err.code+JSON.stringify(data))
@@ -334,9 +333,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
 		setTimeout(function(){
 			wantAgent.getWantAgent(agentInfof,
@@ -399,9 +398,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
         wantAgent.getWantAgent(agentInfoe,(err,data)=>{
             WantAgentd = data
@@ -428,9 +427,9 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
                         }
                     },
             ],
-            operationType: OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[WantAgentFlags.UPDATE_PRESENT_FLAG]
+            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
 		setTimeout(function(){
 			wantAgent.getWantAgent(agentInfof,
