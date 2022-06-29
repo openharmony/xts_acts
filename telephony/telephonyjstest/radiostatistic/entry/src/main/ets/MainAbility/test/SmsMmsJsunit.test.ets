@@ -1,5 +1,6 @@
+// @ts-nocheck
 /**
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets";
 import mms from '@ohos.telephony.sms';
 import utils from './Utils.ets'
 export default function smsUiJsunit() {
@@ -137,8 +138,10 @@ export default function smsUiJsunit() {
         done();
         return;
       }
-      expect(sms.SEND_SMS_FAILURE_RADIO_OFF == 0).assertTrue();
-      expect(sms.SEND_SMS_FAILURE_SERVICE_UNAVAILABLE == 1).assertTrue();
+      expect(sms.SEND_SMS_SUCCESS  == 0).assertTrue();
+      expect(sms.SEND_SMS_FAILURE_UNKNOWN  == 1).assertTrue();
+      expect(sms.SEND_SMS_FAILURE_RADIO_OFF == 2).assertTrue();
+      expect(sms.SEND_SMS_FAILURE_SERVICE_UNAVAILABLE == 3).assertTrue();
       expect(sms.SIM_MESSAGE_STATUS_FREE == 0).assertTrue();
       expect(sms.INSTANT_MESSAGE == 1).assertTrue();
       expect(sms.OPTIONAL_MESSAGE == 2).assertTrue();
