@@ -1541,27 +1541,8 @@ export default function test() {
                 console.info(`FMS_acquireForm_2600 featureAbility.startAbility again end`);
             }
 
-            function onSupplyCallBack(_, data) {
-                if (data.parameters.kind == "onCastToNormal") {
-                    console.info("====>FMS_acquireForm_2600 onSupplyCallBack====>" + JSON.stringify(data));
-                    commonEvent.unsubscribe(subscriberSupply, () => unsubscribeSupplyCallback("FMS_acquireForm_2600"));
-                    formId2 = data.parameters.parameters;
-
-                    if (formId1 && formId2) {
-                        expect(formId1).assertEqual(formId2);
-                        let commonEventPublishData = {
-                            data: formId1
-                        };
-                        commonEvent.publish(deleteForm_Event, commonEventPublishData, () =>
-                        publishCallback1("FMS_acquireForm_2600"));
-                        done()
-                    }
-                }
-            }
-
             commonEvent.subscribe(subscriberOnAcquired, onAcquiredCallBack);
             commonEvent.subscribe(subscriberCast, onCastCallBack);
-            commonEvent.subscribe(subscriberSupply, onSupplyCallBack);
 
             console.info(`FMS_acquireForm_2600 featureAbility.startAbility start`);
             await featureAbility.startAbility({

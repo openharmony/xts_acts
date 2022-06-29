@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import rpc from "@ohos.rpc";
-import particleAbility from '@ohos.ability.particleability'
+import particleAbility from '@ohos.ability.particleAbility'
 import featureAbility from '@ohos.ability.featureAbility'
 import commonEvent from '@ohos.commonEvent'
 var server_bundleName = "com.amsst.stserviceabilityserver";

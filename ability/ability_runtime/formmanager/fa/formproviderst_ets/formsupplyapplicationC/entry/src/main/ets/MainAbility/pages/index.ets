@@ -15,13 +15,13 @@
 
 import featureAbility from "@ohos.ability.featureAbility";
 import formBindingData from "@ohos.application.formBindingData";
-import formManager from '@ohos.ability.formManager';
+import formManager from '@ohos.application.formProvider';
 import commonEvent from '@ohos.commonEvent';
 
 @Entry
 @Component
 struct Index {
-  @State formId: number = 0;
+  @State formId: string = "0";
   @State opt : string = "updateForm";
   @State formData: {[key: string]: any} = {temperature: "14c", "time": "12:00"};
   @State nextTime: number = 5;
@@ -36,12 +36,12 @@ struct Index {
     console.debug("====>formsystemhostc formOnDynamicRefreshEventk ====>");
   }
 
-  private aboutToAppear() {
+  aboutToAppear() {
     console.log(`form supply B aboutToAppear start`);
     console.error('form supply B getWant');
     featureAbility.getWant()
       .then((want: any) => {
-        this.formId = parseInt(want.parameters.formId);
+        this.formId = want.parameters.formId;
         this.opt = want.parameters.opt;
         if(want.parameters.formData) {
           this.formData = want.parameters.formData;
@@ -64,9 +64,9 @@ struct Index {
             .then((data) => {
               console.info('form supply B updateForm result:' + data);
               let commonEventPublishData = {
-                data: data.toString(),
+                data: JSON.stringify(data),
                 parameters: {
-                  "formId" : this.formId.toString()
+                  "formId" : this.formId
                 }
               };
               commonEvent.publish(this.formUpdateFormEvent, commonEventPublishData, this.publishUpdateFormCallBack);
@@ -81,9 +81,9 @@ struct Index {
             .then((data) => {
               console.info('form supply B setNextRefreshTime result:' + data);
               let commonEventPublishData = {
-                data: data.toString(),
+                data: JSON.stringify(data),
                 parameters: {
-                  "formId" : this.formId.toString()
+                  "formId" : this.formId
                 }
               };
               commonEvent.publish(this.formOnDynamicRefreshEvent, commonEventPublishData, this.formOnDynamicRefreshCallBack);
