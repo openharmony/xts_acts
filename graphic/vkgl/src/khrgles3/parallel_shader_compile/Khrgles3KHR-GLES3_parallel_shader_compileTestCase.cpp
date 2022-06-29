@@ -21,15 +21,15 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003892, Function | MediumTest | Level2)
+static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003709, Function | MediumTest | Level2)
 {
-    GTEST_LOG_(INFO) << "TestCase_003892 start";
+    GTEST_LOG_(INFO) << "TestCase_003709 start";
     int argc = 3;
     const char *argv[3] = {
         ".",
         "--deqp-case="
-        "KHR-GLES3.packed_depth_stencil.ve"
-        "rify_read_pixels.depth24_stencil8",
+        "KHR-GLES3.parallel_shade"
+        "r_compile.simple_queries",
         "--deqp-archive-dir=/data/local/tmp/"
     };
     
@@ -40,23 +40,23 @@ static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003892, Function | MediumTes
     ActsKhrgles30004TestSuite::runResult.numWarnings += result.numWarnings;
     ActsKhrgles30004TestSuite::runResult.numWaived += result.numWaived;
     if (result.numNotSupported == 1) {
-        GTEST_LOG_(INFO) << "TestCase_003892 notsupport!";
+        GTEST_LOG_(INFO) << "TestCase_003709 notsupport!";
     } else if (result.isComplete) {
         EXPECT_TRUE(result.isComplete);
         EXPECT_TRUE(result.numPassed == 1);
     };
-    GTEST_LOG_(INFO) << "TestCase_003892 end";
+    GTEST_LOG_(INFO) << "TestCase_003709 end";
 }
 
-static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003893, Function | MediumTest | Level2)
+static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003710, Function | MediumTest | Level2)
 {
-    GTEST_LOG_(INFO) << "TestCase_003893 start";
+    GTEST_LOG_(INFO) << "TestCase_003710 start";
     int argc = 3;
     const char *argv[3] = {
         ".",
         "--deqp-case="
-        "KHR-GLES3.packed_depth_stencil.ve"
-        "rify_read_pixels.depth32f_stencil8",
+        "KHR-GLES3.parallel_shader_comp"
+        "ile.max_shader_compile_threads",
         "--deqp-archive-dir=/data/local/tmp/"
     };
     
@@ -67,10 +67,37 @@ static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003893, Function | MediumTes
     ActsKhrgles30004TestSuite::runResult.numWarnings += result.numWarnings;
     ActsKhrgles30004TestSuite::runResult.numWaived += result.numWaived;
     if (result.numNotSupported == 1) {
-        GTEST_LOG_(INFO) << "TestCase_003893 notsupport!";
+        GTEST_LOG_(INFO) << "TestCase_003710 notsupport!";
     } else if (result.isComplete) {
         EXPECT_TRUE(result.isComplete);
         EXPECT_TRUE(result.numPassed == 1);
     };
-    GTEST_LOG_(INFO) << "TestCase_003893 end";
+    GTEST_LOG_(INFO) << "TestCase_003710 end";
+}
+
+static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003711, Function | MediumTest | Level2)
+{
+    GTEST_LOG_(INFO) << "TestCase_003711 start";
+    int argc = 3;
+    const char *argv[3] = {
+        ".",
+        "--deqp-case="
+        "KHR-GLES3.parallel_shader_compil"
+        "e.compilation_completion_parallel",
+        "--deqp-archive-dir=/data/local/tmp/"
+    };
+    
+    FuncRunResult result = RunTestKHRGLES(argc, argv);
+    ActsKhrgles30004TestSuite::runResult.numPassed += result.numPassed;
+    ActsKhrgles30004TestSuite::runResult.numFailed += result.numFailed;
+    ActsKhrgles30004TestSuite::runResult.numNotSupported += result.numNotSupported;
+    ActsKhrgles30004TestSuite::runResult.numWarnings += result.numWarnings;
+    ActsKhrgles30004TestSuite::runResult.numWaived += result.numWaived;
+    if (result.numNotSupported == 1) {
+        GTEST_LOG_(INFO) << "TestCase_003711 notsupport!";
+    } else if (result.isComplete) {
+        EXPECT_TRUE(result.isComplete);
+        EXPECT_TRUE(result.numPassed == 1);
+    };
+    GTEST_LOG_(INFO) << "TestCase_003711 end";
 }

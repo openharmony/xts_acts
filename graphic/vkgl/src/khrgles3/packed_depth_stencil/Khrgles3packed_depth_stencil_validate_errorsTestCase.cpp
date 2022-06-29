@@ -21,15 +21,15 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003138, Function | MediumTest | Level2)
+static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003890, Function | MediumTest | Level2)
 {
-    GTEST_LOG_(INFO) << "TestCase_003138 start";
+    GTEST_LOG_(INFO) << "TestCase_003890 start";
     int argc = 3;
     const char *argv[3] = {
         ".",
         "--deqp-case="
-        "KHR-GLES3.exposed_extens"
-        "ions.validate_extensions",
+        "KHR-GLES3.packed_depth_stencil."
+        "validate_errors.depth24_stencil8",
         "--deqp-archive-dir=/data/local/tmp/"
     };
     
@@ -40,10 +40,37 @@ static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003138, Function | MediumTes
     ActsKhrgles30004TestSuite::runResult.numWarnings += result.numWarnings;
     ActsKhrgles30004TestSuite::runResult.numWaived += result.numWaived;
     if (result.numNotSupported == 1) {
-        GTEST_LOG_(INFO) << "TestCase_003138 notsupport!";
+        GTEST_LOG_(INFO) << "TestCase_003890 notsupport!";
     } else if (result.isComplete) {
         EXPECT_TRUE(result.isComplete);
         EXPECT_TRUE(result.numPassed == 1);
     };
-    GTEST_LOG_(INFO) << "TestCase_003138 end";
+    GTEST_LOG_(INFO) << "TestCase_003890 end";
+}
+
+static HWTEST_F(ActsKhrgles30004TestSuite, TestCase_003891, Function | MediumTest | Level2)
+{
+    GTEST_LOG_(INFO) << "TestCase_003891 start";
+    int argc = 3;
+    const char *argv[3] = {
+        ".",
+        "--deqp-case="
+        "KHR-GLES3.packed_depth_stencil.v"
+        "alidate_errors.depth32f_stencil8",
+        "--deqp-archive-dir=/data/local/tmp/"
+    };
+    
+    FuncRunResult result = RunTestKHRGLES(argc, argv);
+    ActsKhrgles30004TestSuite::runResult.numPassed += result.numPassed;
+    ActsKhrgles30004TestSuite::runResult.numFailed += result.numFailed;
+    ActsKhrgles30004TestSuite::runResult.numNotSupported += result.numNotSupported;
+    ActsKhrgles30004TestSuite::runResult.numWarnings += result.numWarnings;
+    ActsKhrgles30004TestSuite::runResult.numWaived += result.numWaived;
+    if (result.numNotSupported == 1) {
+        GTEST_LOG_(INFO) << "TestCase_003891 notsupport!";
+    } else if (result.isComplete) {
+        EXPECT_TRUE(result.isComplete);
+        EXPECT_TRUE(result.numPassed == 1);
+    };
+    GTEST_LOG_(INFO) << "TestCase_003891 end";
 }
