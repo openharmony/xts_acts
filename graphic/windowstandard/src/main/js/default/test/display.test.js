@@ -151,4 +151,28 @@ describe('display_test', function () {
         })
     })
 
+
+    /**
+     * @tc.number	SUB_WMS_ENUM_WINDOWDisplayState_JSAPI_001
+     * @tc.name	    Test enumWindowDisplayState_Test_001.
+     * @tc.desc		To test the enum value of WindowDisplayState.
+    */
+    it('enumWindowDisplayState_Test_001', 0, async function (done) {
+        console.info('test the enum value of Window DisplayState begin');
+        try {
+            expect(0).assertEqual(display.DisplayState.STATE_UNKNOWN);
+            expect(1).assertEqual(display.DisplayState.STATE_OFF);
+            expect(2).assertEqual(display.DisplayState.STATE_ON);
+            expect(3).assertEqual(display.DisplayState.STATE_DOZE);
+            expect(4).assertEqual(display.DisplayState.STATE_DOZE_SUSPEND);
+            expect(5).assertEqual(display.DisplayState.STATE_VR);
+            expect(6).assertEqual(display.DisplayState.STATE_ON_SUSPEND);
+            done();
+        } catch (err) {
+            console.error('test enum value of windowDisplayState error ' + JSON.stringify(err));
+            expect.assertFail();
+            done();
+        }
+    })
+
 })
