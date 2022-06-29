@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
-import featureAbility from '@ohos.ability.featureability'
+import featureAbility from '@ohos.ability.featureAbility'
 
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
