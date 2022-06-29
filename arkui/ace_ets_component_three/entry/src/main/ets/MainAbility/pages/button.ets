@@ -120,6 +120,7 @@ struct ButtonExample {
         .width(200)
         .height(100)
         .fontSize(20)
+        .position({x: 50,y: 400})
         .onClick((event: ClickEvent) => {
           console.info(this.text = 'Click Point:' + '\n  screenX:' + event.screenX + '\n  screenY:' + event.screenY
           + '\n  x :' + event.x + '\n  y:' + event.y + '\ntarget:' + '\n  component globalPos：（'
