@@ -20,7 +20,6 @@ group("miscservices") {
     "TimeTest_js:ActsTimeJSApiTest",
     "TimerTest_js:ActsTimerJSApiTest",
     "actspasteboardjsapitest:ActsPasteBoardJSApiTest",
-#    "screenlock_js:ActsScreenLockJSApiTest",
     "wallpaper_js:ActsWallpaperJSApiTest",
   ]
 }
