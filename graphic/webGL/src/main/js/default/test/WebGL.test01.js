@@ -300,6 +300,7 @@ describe('webgl1Test', function() {
 	it('webgl_test_getContextAttributes', 0, async function(done) {
 		console.info("webgltest into getContextAttributes");
 		const getContextAttributesValue = gl.getContextAttributes();
+		const alphaValue = getContextAttributesValue.alpha();
 		console.info("webgltest getContextAttributes: " + getContextAttributesValue);
 		expect(typeof(getContextAttributesValue)).assertEqual("object" || null);
 		done();
