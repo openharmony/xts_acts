@@ -25,6 +25,7 @@ group("hiviewdfxtestacts") {
       "hitracechainjstest:ActsHiTraceChainJsTest",
       "hitracechaintest:ActsHiTraceChainTest",
       "hiview/faultlogger/faultloggerjs:faultloggerjs_test",
+      "hisyseventtest/hisyseventjstest:ActsHiSysEventJsTest",
     ]
   }
 }
