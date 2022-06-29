@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 // @ts-nocheck
-import osaccount from '@ohos.account.osaccount'
+import osaccount from '@ohos.account.osAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
 import commonEvent from '@ohos.commonEvent'
 var AbilityPermission1 = {
