@@ -14,9 +14,10 @@
  */
 
 // @ts-nocheck
-import {describe, beforeEach, afterEach, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, afterEach, it, expect} from 'deccjsunit/index'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
+import osAccount from '@ohos.account.osAccount'
 
 var PermissionFlag = {
     PERMISSION_USER_SET: 1,
@@ -37,11 +38,13 @@ var permissionNameUser = "ohos.permission.ALPHA";
 var permissionNameSystem = "ohos.permission.BETA";
 var tokenID = undefined
 describe('AccessTokenTest', function () {
-    console.log('##########start AccessTokenTest');
+    console.info('##########start AccessTokenTest');
     beforeAll(async function (done){
-        var appInfo = await bundle.getApplicationInfo('ohos.acts.security.access_token.normal', 0, 100);
+        var accountManager = osAccount.getAccountManager();  
+        var localled = await accountManager.getOsAccountTypeFromProcess();
+        var appInfo = await bundle.getApplicationInfo('ohos.acts.security.access_token.normal', 0, localled);
         tokenID = appInfo.accessTokenId;
-        console.log("AccessTokenTest accessTokenId:" + appInfo.accessTokenId + ", name:" + appInfo.name
+        console.info("AccessTokenTest accessTokenId:" + appInfo.accessTokenId + ", name:" + appInfo.name
             + ", bundleName:" + appInfo.bundleName)
         // setTimeout(done(),TIMEOUT);
 
