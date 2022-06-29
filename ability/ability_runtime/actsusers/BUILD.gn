@@ -22,8 +22,6 @@ group("actsusers") {
       "ActsAmsUsersKillProcessAppB:ActsAmsUsersKillProcessAppB",
       "ActsAmsUsersKillProcessAppC:ActsAmsUsersKillProcessAppC",
       "ActsAmsUsersSystemTest:ActsAmsUsersSystemTest",
-      "actsextensionconnectabilitytest:ActsExtensionConnectAbilityTest",
-      "actsserviceabilityrelytest:actsServiceAbilityRelyHap",
     ]
   }
 }

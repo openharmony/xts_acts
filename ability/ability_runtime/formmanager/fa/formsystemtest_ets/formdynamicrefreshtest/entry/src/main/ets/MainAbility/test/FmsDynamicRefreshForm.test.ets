@@ -70,6 +70,7 @@ export default function test() {
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
                 console.info('FMS_timedRefresh_0100 publish' + JSON.stringify(err));
+                done()
                 });
             };
             commonEvent.subscribe(subscriberOnRefresh, onRefreshCallback);
@@ -119,6 +120,7 @@ export default function test() {
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
                 console.info('FMS_timedRefresh_0200 publish' + JSON.stringify(err));
+                done()
                 });
             };
             commonEvent.subscribe(subscriberOnRefresh, onRefreshCallback);
@@ -169,6 +171,7 @@ export default function test() {
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
                 console.info('FMS_timedRefresh_0300 publish' + JSON.stringify(err));
+                done()
                 });
             };
             commonEvent.subscribe(subscriberOnRefresh, onRefreshCallback);
@@ -201,6 +204,7 @@ export default function test() {
                     console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    done()
                 });
                 console.info(`${tcNumber} featureAbility.startAbility again end`);
             };
@@ -225,6 +229,7 @@ export default function test() {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                done()
             });
             console.info(`${tcNumber} featureAbility.startAbility end`);
         });
@@ -250,6 +255,7 @@ export default function test() {
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
                 console.info('FMS_timedRefresh_0400 publish' + JSON.stringify(err));
+                done()
                 });
             };
             commonEvent.subscribe(subscriberOnRefresh, onRefreshCallback);
@@ -283,6 +289,7 @@ export default function test() {
                     console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    done()
                 });
                 console.info(`${tcNumber} featureAbility.startAbility again end`);
             };
@@ -309,6 +316,7 @@ export default function test() {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                done()
             });
             console.info(`${tcNumber} featureAbility.startAbility end`);
         });
@@ -332,6 +340,7 @@ export default function test() {
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
                 console.info('FMS_timedRefresh_0500 publish' + JSON.stringify(err));
+                done()
                 });
             };
             commonEvent.subscribe(subscriberOnRefresh, onRefreshCallback);
@@ -384,8 +393,10 @@ export default function test() {
                     };
                     commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
                     console.info('FMS_timedRefresh_0600 publish' + JSON.stringify(err));
+                    done()
                     });
                 }
+                done()
             };
             commonEvent.subscribe(subscriberSupply, onSupplyCallback);
 
