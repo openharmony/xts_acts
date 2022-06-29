@@ -15,31 +15,21 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
 import commonEvent from '@ohos.commonEvent'
-import missionManager from '@ohos.application.missionManager'
-import appManager from '@ohos.application.appManager'
 
-
-import formProvider from '@ohos.application.formProvider';
-import FormInfo from '@ohos.application.formInfo';
-import formError from '@ohos.application.formError';
-var EXTENSION_INFO_ERR = 2097152
-var USERID_ERR = 2097177
-var trueInfo;
-var array = new Array();
-function sleep(time) {
-  return new Promise((resolve)=>setTimeout(resolve,time));
-}
-
-const MAX_MISSION_NUM = 1024;
 var subscriberInfo = {
   events: ['onCreateMain_To_Test_CommonEvent',
     'onWindowStageCreateMain_To_Test_CommonEvent',
     'onForegroundMain_To_Test_CommonEvent',
     'onNewWantMain_To_Test_CommonEvent',
+    'onNewWantMain1_To_Test_CommonEvent',
+    'onNewWantMain2_To_Test_CommonEvent',
     'onCreateSecond_To_Test_CommonEvent',
     'onWindowStageCreateSecond_To_Test_CommonEvent',
     'onForegroundSecond_To_Test_CommonEvent',
     'onNewWantSecond_To_Test_CommonEvent',
+    'onNewWantSecond1_To_Test_CommonEvent',
+    'onNewWantSecond2_To_Test_CommonEvent',
+    'onNewWantSecond3_To_Test_CommonEvent',
   ],
 };
 
@@ -307,7 +297,7 @@ export default function abilityTest(abilityContext) {
           case 'onForegroundSecond_To_Test_CommonEvent':
             flagOnForeground++;
             break;
-          case 'onNewWantSecond_To_Test_CommonEvent':
+          case 'onNewWantSecond1_To_Test_CommonEvent':
             flagOnNewWant++;
             expect(data.data).assertEqual('restartSingleton');
             break;
@@ -382,7 +372,7 @@ export default function abilityTest(abilityContext) {
           case 'onForegroundMain_To_Test_CommonEvent':
             flagOnForeground++;
             break;
-          case 'onNewWantMain_To_Test_CommonEvent':
+          case 'onNewWantMain1_To_Test_CommonEvent':
             flagOnNewWant++;
             expect(data.data).assertEqual('restartHapB');
             break;
@@ -457,7 +447,7 @@ export default function abilityTest(abilityContext) {
           case 'onForegroundMain_To_Test_CommonEvent':
             flagOnForeground++;
             break;
-          case 'onNewWantMain_To_Test_CommonEvent':
+          case 'onNewWantMain2_To_Test_CommonEvent':
             flagOnNewWant++;
             expect(data.data).assertEqual('restartHapC');
             break;
@@ -532,7 +522,7 @@ export default function abilityTest(abilityContext) {
           case 'onForegroundSecond_To_Test_CommonEvent':
             flagOnForeground++;
             break;
-          case 'onNewWantSecond_To_Test_CommonEvent':
+          case 'onNewWantSecond2_To_Test_CommonEvent':
             flagOnNewWant++;
             expect(data.data).assertEqual('restartSecondAbility0700');
             break;
@@ -607,7 +597,7 @@ export default function abilityTest(abilityContext) {
           case 'onForegroundSecond_To_Test_CommonEvent':
             flagOnForeground++;
             break;
-          case 'onNewWantSecond_To_Test_CommonEvent':
+          case 'onNewWantSecond3_To_Test_CommonEvent':
             flagOnNewWant++;
             expect(data.data).assertEqual('restartSecondAbility0800');
             break;
