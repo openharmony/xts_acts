@@ -19,7 +19,7 @@ import thermal from "@ohos.thermal"
 import ThermalLevel from "@ohos.thermal"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe('appInfoTest', function () {
+describe('appInfoTest_thermal_2', function () {
     console.log("*************Thermal API Test Begin*************");
     test1();
     test2();
