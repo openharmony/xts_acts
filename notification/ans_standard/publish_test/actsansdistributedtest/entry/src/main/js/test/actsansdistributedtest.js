@@ -61,10 +61,13 @@ describe('ActsAnsDistributeTest', function () {
     it('ActsDistribute_test_0300', 0, async function (done) {
         await notify.getDeviceRemindType((err,data) => {
             console.debug("===>ActsDistribute_test_0300===>"+ JSON.stringify(data))
-            expect(data != notify.DeviceRemindType.IDLE_DONOT_REMIND ).assertEqual(true);
-            expect(data != notify.DeviceRemindType.IDLE_REMIND).assertEqual(true);
-            expect(data != notify.DeviceRemindType.ACTIVE_DONOT_REMIND).assertEqual(true);
-            expect(data).assertEqual(notify.DeviceRemindType.ACTIVE_REMIND);
+			if (data != notify.DeviceRemindType.IDLE_DONOT_REMIND 
+				&& data != notify.DeviceRemindType.IDLE_REMIND
+				&& data != notify.DeviceRemindType.ACTIVE_DONOT_REMIND
+				&& data != notify.DeviceRemindType.ACTIVE_REMIND )
+				{
+					expect().assertFail();
+				}
             done();
         });
     })
@@ -77,9 +80,15 @@ describe('ActsAnsDistributeTest', function () {
     it('ActsDistribute_test_0400', 0, async function (done) {
         function onConsume0100(data) {
             console.info("========ActsDistribute_test_0400 onConsume data:=======>" + JSON.stringify(data));
-            expect(data.request.distributedOption.remindType).assertEqual(3);
+			if (data.request.distributedOption.remindType != notify.DeviceRemindType.IDLE_DONOT_REMIND 
+				&& data.request.distributedOption.remindType != notify.DeviceRemindType.IDLE_REMIND
+				&& data.request.distributedOption.remindType != notify.DeviceRemindType.ACTIVE_DONOT_REMIND
+				&& data.request.distributedOption.remindType != notify.DeviceRemindType.ACTIVE_REMIND )		
+				{
+					expect().assertFail();
+				}
             expect(data.request.deviceId).assertEqual("");
-            console.info("========ActsDistribute_test_0400 onConsume data:=======>" + JSON.stringify(data.request.notificationFlags));
+            console.info("ActsDistribute_test_0400 onConsume data"+JSON.stringify(data.request.notificationFlags));
             expect(JSON.stringify(data.request.notificationFlags)).assertEqual(undefined);
         }
         await notify.enableDistributed(true);

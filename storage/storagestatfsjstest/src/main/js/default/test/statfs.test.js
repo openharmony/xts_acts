@@ -13,209 +13,212 @@
  * limitations under the License.
  */
 
-import {
-  describe, it, expect, isIntNum, statfs
-} from './Common';
+import {describe, it, expect, isIntNum, statfs} from './Common';
+import featureAbility from '@ohos.ability.featureAbility';
 
 describe('statfs', function () {
 
-  /**
-   * @tc.number SUB_DF_Statfs_getFreeBytes_0000
-   * @tc.name statfs_test_get_free_bytes_async_000
-   * @tc.desc Test getFreeBytes() interfaces.
-   */
+    /**
+     * @tc.number SUB_DF_STATFS_GET_FREE_BYTES_0000
+     * @tc.name statfs_test_get_free_bytes_async_000
+     * @tc.desc Test getFreeBytes() interfaces, When the path is a sandbox path, promise way back.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+    */
   it('statfs_test_get_free_bytes_async_000', 0, async function (done) {
     try {
-      statfs.getFreeBytes('/', function (err, number) {
-        expect(isIntNum(number)).assertTrue();
-        done();
-      })
+      let context = featureAbility.getContext();
+      let data = await context.getFilesDir();
+      let number = await statfs.getFreeBytes(data);
+      console.info("getFreeBytes getFilesDir===>" + (number / 1024));
+      expect(isIntNum(number)).assertTrue();
+      done();
     } catch (e) {
-      console.log('statfs_test_get_free_bytes_async_000 has failed for ' + e);
+      console.info('statfs_test_get_free_bytes_async_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
-  /**
-   * @tc.number SUB_DF_Statfs_getFreeBytes_0010
-   * @tc.name statfs_test_get_free_bytes_async_001
-   * @tc.desc Test getFreeBytes() interfaces.
-   */
+    /**
+     * @tc.number SUB_DF_STATFS_GET_FREE_BYTES_0010
+     * @tc.name statfs_test_get_free_bytes_async_001
+     * @tc.desc Test getFreeBytes() interfaces, When the path is dev, callback way back.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+    */
   it('statfs_test_get_free_bytes_async_001', 0, async function (done) {
     try {
-      let number = await statfs.getFreeBytes("/data");
-      expect(isIntNum(number)).assertTrue();
-      done();
-    } catch (e) {
-      console.log('statfs_test_get_free_bytes_async_001 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_Statfs_getFreeBytes_0020
-   * @tc.name statfs_test_get_free_bytes_async_002
-   * @tc.desc Test getFreeBytes() interfaces.
-   */
-  it('statfs_test_get_free_bytes_async_002', 0, async function (done) {
-    try {
-      let number = await statfs.getFreeBytes("/dev");
-      expect(isIntNum(number)).assertTrue();
-      done();
-    } catch (e) {
-      console.log('statfs_test_get_free_bytes_async_002 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_Statfs_getFreeBytes_0030
-   * @tc.name statfs_test_get_free_bytes_async_003
-   * @tc.desc Test getFreeBytes() interfaces.
-   */
-  it('statfs_test_get_free_bytes_async_003', 0, async function (done) {
-    try {
-      await statfs.getFreeBytes("/", '');
-      expect(null).assertFail();
-      done();
-    } catch (e) {
-      console.log('statfs_test_get_free_bytes_async_003 has failed for ' + e);
-      expect(!!e).assertTrue();
-      done();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_Statfs_getFreeBytes_0040
-   * @tc.name statfs_test_get_free_bytes_async_004
-   * @tc.desc Test getFreeBytes() interfaces.
-   */
-  it('statfs_test_get_free_bytes_async_004', 0, async function (done) {
-    try {
-      statfs.getFreeBytes(function (err, number) {
-        done();
-      })
-    } catch (e) {
-      console.log('statfs_test_get_free_bytes_async_004 has failed for ' + e);
-      expect(!!e).assertTrue();
-      done();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_Statfs_getFreeBytes_0050
-   * @tc.name statfs_test_get_free_bytes_async_005
-   * @tc.desc Test getFreeBytes() interfaces.
-   */
-  it('statfs_test_get_free_bytes_async_005', 0, async function (done) {
-    try {
-      await statfs.getFreeBytes("");
-      expect(null).assertFail();
-      done();
-    } catch (e) {
-      console.log('statfs_test_get_free_bytes_async_005 has failed for ' + e);
-      expect(!!e).assertTrue();
-      done();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_Statfs_getTotalBytes_0000
-   * @tc.name statfs_test_get_total_bytes_async_000
-   * @tc.desc Test getTotalBytes() interfaces.
-   */
-  it('statfs_test_get_total_bytes_async_000', 0, async function (done) {
-    try {
-      statfs.getTotalBytes('/', function (err, number) {
+      statfs.getFreeBytes("/dev",(err,number)=>{
+        console.info("getFreeBytesNumber dev===>:" + (number / 1024));
         expect(isIntNum(number)).assertTrue();
         done();
-      })
+      });
     } catch (e) {
-      console.log('statfs_test_get_total_bytes_async_000 has failed for ' + e);
+      console.info('statfs_test_get_free_bytes_async_001 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
-  /**
-   * @tc.number SUB_DF_Statfs_getTotalBytes_0010
-   * @tc.name statfs_test_get_total_bytes_async_001
-   * @tc.desc Test getTotalBytes() interfaces.
-   */
-  it('statfs_test_get_total_bytes_async_001', 0, async function (done) {
+    /**
+     * @tc.number SUB_DF_STATFS_GET_FREE_BYTES_0020
+     * @tc.name statfs_test_get_free_bytes_async_002
+     * @tc.desc Test getFreeBytes() interfaces, When the parameter type is wrong.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+    */
+  it('statfs_test_get_free_bytes_async_002', 0, async function (done) {
     try {
-      let number = await statfs.getTotalBytes("/data");
-      expect(isIntNum(number)).assertTrue();
-      done();
-    } catch (e) {
-      console.log('statfs_test_get_total_bytes_async_001 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_Statfs_getTotalBytes_0020
-   * @tc.name statfs_test_get_total_bytes_async_002
-   * @tc.desc Test getTotalBytes() interfaces.
-   */
-  it('statfs_test_get_total_bytes_async_002', 0, async function (done) {
-    try {
-      let number = await statfs.getTotalBytes("/dev");
-      expect(isIntNum(number)).assertTrue();
-      done();
-    } catch (e) {
-      console.log('statfs_test_get_total_bytes_async_002 has failed for ' + e);
-      expect(null).assertFail();
-    }
-  });
-
-  /**
-   * @tc.number SUB_DF_Statfs_getTotalBytes_0030
-   * @tc.name statfs_test_get_total_bytes_async_003
-   * @tc.desc Test getTotalBytes() interfaces.
-   */
-  it('statfs_test_get_total_bytes_async_003', 0, async function (done) {
-    try {
-      await statfs.getTotalBytes("/", '');
-      expect(null).assertFail();
-      done();
-    } catch (e) {
-      console.log('statfs_test_get_total_bytes_async_003 has failed for ' + e);
-      expect(!!e).assertTrue();
+      await statfs.getFreeBytes(1);
+    } catch (err) {
+      console.info('statfs_test_get_free_bytes_async_002 has failed for ' + err);
+      expect(err.message == "Invalid path").assertTrue();
       done();
     }
   });
 
-  /**
-   * @tc.number SUB_DF_Statfs_getTotalBytes_0040
-   * @tc.name statfs_test_get_total_bytes_async_004
-   * @tc.desc Test getTotalBytes() interfaces.
-   */
-  it('statfs_test_get_total_bytes_async_004', 0, async function (done) {
+    /**
+     * @tc.number SUB_DF_STATFS_GET_FREE_BYTES_0030
+     * @tc.name statfs_test_get_free_bytes_async_003
+     * @tc.desc Test getFreeBytes() interfaces, When there are no parameters.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+    */
+  it('statfs_test_get_free_bytes_async_003', 0, async function (done) {
     try {
-      statfs.getTotalBytes(function (err, number) {
-        done();
-      })
-    } catch (e) {
-      console.log('statfs_test_get_total_bytes_async_004 has failed for ' + e);
-      expect(!!e).assertTrue();
+      await statfs.getFreeBytes();
+    } catch (err) {
+      console.info('statfs_test_get_free_bytes_async_003 has failed for ' + err);
+      expect(err.message == "Number of arguments unmatched").assertTrue();
       done();
     }
   });
 
-  /**
-   * @tc.number SUB_DF_Statfs_getTotalBytes_0050
-   * @tc.name statfs_test_get_total_bytes_async_005
-   * @tc.desc Test getTotalBytes() interfaces.
-   */
-  it('statfs_test_get_total_bytes_async_005', 0, async function (done) {
+    /**
+     * @tc.number SUB_DF_STATFS_GET_FREE_BYTES_0040
+     * @tc.name statfs_test_get_free_bytes_async_004
+     * @tc.desc Test getFreeBytes() interfaces, When the path is empty.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+    */
+  it('statfs_test_get_free_bytes_async_004', 0, async function (done) {
     try {
       await statfs.getFreeBytes("");
-      expect(null).assertFail();
-      done();
-    } catch (e) {
-      console.log('statfs_test_get_total_bytes_async_005 has failed for ' + e);
-      expect(!!e).assertTrue();
+    } catch (err) {
+      console.info('statfs_test_get_free_bytes_async_004 has failed for ' + err);
+      expect(err.message == "No such file or directory").assertTrue();
       done();
     }
   });
+
+    /**
+     * @tc.number SUB_DF_STATFS_GET_TOTAL_BYTES_0000
+     * @tc.name statfs_test_get_total_bytes_async_000
+     * @tc.desc Test getTotalBytes() interfaces, When the path is a sandbox path, promise way back.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+    */
+     it('statfs_test_get_total_bytes_async_000', 0, async function (done) {
+      try {
+        let context = featureAbility.getContext();
+        let data = await context.getFilesDir();
+        let number = await statfs.getTotalBytes(data);
+        console.info("getTotalBytesNumber GetFilesDir====>:" + (number / 1024));
+        expect(isIntNum(number)).assertTrue();
+        done();
+      } catch (e) {
+        console.info('statfs_test_get_total_bytes_async_000 has failed for ' + e);
+        expect(null).assertFail();
+      }
+    });
+  
+    /**
+     * @tc.number SUB_DF_STATFS_GET_TOTAL_BYTES_0010
+     * @tc.name statfs_test_get_total_bytes_async_001
+     * @tc.desc Test getTotalBytes() interfaces, When the path is dev, callback way back.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+    */
+    it('statfs_test_get_total_bytes_async_001', 0, async function (done) {
+      try {
+        statfs.getTotalBytes("/dev",(err,number)=>{
+          console.info("getTotalBytesNumber dev===>:" + (number / 1024));
+          expect(isIntNum(number)).assertTrue();
+          done();
+        });
+      } catch (e) {
+        console.info('statfs_test_get_total_bytes_async_001 has failed for ' + e);
+        expect(null).assertFail();
+      }
+    });
+  
+    /**
+     * @tc.number SUB_DF_STATFS_GET_TOTAL_BYTES_0020
+     * @tc.name statfs_test_get_total_bytes_async_002
+     * @tc.desc Test getTotalBytes() interfaces, When the parameter type is wrong.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+    */
+    it('statfs_test_get_total_bytes_async_002', 0, async function (done) {
+      try {
+        await statfs.getTotalBytes(1);
+      } catch (err) {
+        console.info('statfs_test_get_total_bytes_async_002 has failed for ' + err);
+        expect(err.message == "Invalid path").assertTrue();
+        done();
+      }
+    });
+  
+    /**
+     * @tc.number SUB_DF_STATFS_GET_TOTAL_BYTES_0030
+     * @tc.name statfs_test_get_total_bytes_async_003
+     * @tc.desc Test getTotalBytes() interfaces, When there are no parameters.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+    */
+    it('statfs_test_get_total_bytes_async_003', 0, async function (done) {
+      try {
+        await statfs.getTotalBytes();
+      } catch (err) {
+        console.info('statfs_test_get_total_bytes_async_003 has failed for ' + err);
+        expect(err.message == "Number of arguments unmatched").assertTrue();
+        done();
+      }
+    });
+  
+    /**
+     * @tc.number SUB_DF_STATFS_GET_TOTAL_BYTES_0040
+     * @tc.name statfs_test_get_total_bytes_async_004
+     * @tc.desc Test getTotalBytes() interfaces, When the path is empty.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+    */
+    it('statfs_test_get_total_bytes_async_004', 0, async function (done) {
+      try {
+        await statfs.getTotalBytes("");
+      } catch (err) {
+        console.info('statfs_test_get_total_bytes_async_004 has failed for ' + err);
+        expect(err.message == "No such file or directory").assertTrue();
+        done();
+      }
+    });
 });

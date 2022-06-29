@@ -17,7 +17,7 @@ group("badgedisplayed") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "badgedisplay:ActsAnsBadgeDisplayTest",
+      #"badgedisplay:ActsAnsBadgeDisplayTest",
       "localcandisplay:localcandisplay",
     ]
   }

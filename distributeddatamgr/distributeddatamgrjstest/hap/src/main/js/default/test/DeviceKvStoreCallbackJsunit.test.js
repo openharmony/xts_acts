@@ -42,7 +42,7 @@ function sleep(ms) {
 
 function putBatchString(len, prefix) {
     let entries = [];
-    for (var i = 0; i < len; i++) {
+    for (let i = 0; i < len; i++) {
         var entry = {
             key : prefix + i,
             value : {

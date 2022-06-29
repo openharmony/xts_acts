@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import distributedObject from '@ohos.data.distributedDataObject';
 
 var baseLine = 500; //0.5 second
@@ -283,7 +283,7 @@ describe('objectStoreTest', function () {
         var testObject = distributedObject.createDistributedObject({ name: "Eric", age: 81, isVis: true });
         testObject.setSessionId("testSession1");
         if (testObject != undefined && testObject != null) {
-            expect("testSession1").assertEqual(testObject.__sessionId);
+            expect("testSession1" == testObject.__sessionId);
         } else {
             console.log(TAG + "testMultiObjectOn001 joinSession failed");
         }
@@ -296,25 +296,30 @@ describe('objectStoreTest', function () {
             objectTest.isVis = true;
             expect(objectTest.name == "jack1");
             expect(objectTest.age == 19);
-            objectTest.name = "jack2";
-            objectTest.age = 20;
-            objectTest.isVis = false;
-            expect(objectTest.name == "jack2");
-            expect(objectTest.age == 20);
             console.info(TAG + " set data success!");
         } else {
-            console.info(TAG + " object is null,set name fail");
+            console.info(TAG + " objectTest is null,set name fail");
+        }
+        if (testObject != undefined && testObject != null) {
+            testObject.name = "jack2";
+            testObject.age = 20;
+            testObject.isVis = false;
+            expect(testObject.name == "jack2");
+            expect(testObject.age == 20);
+            console.info(TAG + " set data success!");
+        } else {
+            console.info(TAG + " testObject is null,set name fail");
         }
 
         done()
         console.log(TAG + "************* testMultiObjectOn001 end *************");
     })
 
-/**
-     * @tc.name: testMultiObjectOff001
-     * @tc.desc: two objects join session and on&off,then two objects can not receive callbacks
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api_Multi_Off_001
-     */
+    /**
+         * @tc.name: testMultiObjectOff001
+         * @tc.desc: two objects join session and on&off,then two objects can not receive callbacks
+         * @tc.number: SUB_DDM_AppDataFWK_Object_Api_Multi_Off_001
+         */
     it('testMultiObjectOff001', 0, function (done) {
         console.log(TAG + "************* testMultiObjectOff001 start *************");
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
@@ -381,13 +386,13 @@ describe('objectStoreTest', function () {
         done()
         console.log(TAG + "************* testMultiObjectOff001 end *************");
     })
-	
-	/**
+
+    /**
      * @tc.name: testChangeSession001
      * @tc.desc: objects join session,then change sessionId
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api_Session_001
      */
-	it('testChangeSession001', 0, function (done) {
+    it('testChangeSession001', 0, function (done) {
         console.log(TAG + "************* testChangeSession001 start *************");
         var objectTest = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         objectTest.setSessionId("session9");
@@ -396,9 +401,9 @@ describe('objectStoreTest', function () {
         } else {
             console.log(TAG + "testChangeSession001 joinSession failed");
         }
-        console.log(TAG+"start change sessionId");
+        console.log(TAG + "start change sessionId");
         setTimeout(() => objectTest.setSessionId("session9"), 1000);
-		if (objectTest != undefined && objectTest != null) {
+        if (objectTest != undefined && objectTest != null) {
             expect("session9" == objectTest.__sessionId);
         } else {
             console.log(TAG + "testChangeSession001 joinSession again failed");
@@ -600,7 +605,7 @@ describe('objectStoreTest', function () {
         var setTime = 0;
         var onTime = 0;
         var offTime = 0;
-        for (var i = 0;i < 100; i++) {
+        for (var i = 0; i < 100; i++) {
             st1 = Date.now();
             complexObject.setSessionId("session14");
             setSessionIdTime += Date.now() - st1;

@@ -113,9 +113,8 @@ describe('rdbStorePredicatesJoinTest', function () {
 
     /**
      * @tc.name: testRdbJoin001
-     * @tc.desc: SUB_DDM_AppDataFWK_Rdb_Inner_Join
-     * @tc.type: FUNC
-     * @tc.require: I4NZP6
+     * @tc.number: SUB_DDM_AppDataFWK_Rdb_Inner_Join
+     * @tc.desc: sql query inner join test
      */
     it('testRdbJoin001', 0, async function (done) {
         console.log(TAG + "testRdbJoin001 begin.");
@@ -137,9 +136,8 @@ describe('rdbStorePredicatesJoinTest', function () {
 
     /**
      * @tc.name: testRdbJoin002
-     * @tc.desc: SUB_DDM_AppDataFWK_Rdb_Cross_Join
-     * @tc.type: FUNC
-     * @tc.require: I4NZP6
+     * @tc.number: SUB_DDM_AppDataFWK_Rdb_Cross_Join
+     * @tc.desc: sql query cross join test
      */
     it('testRdbJoin002', 0, async function (done) {
         console.log(TAG + "testRdbJoin002 begin.");
@@ -163,9 +161,8 @@ describe('rdbStorePredicatesJoinTest', function () {
 
     /**
      * @tc.name: testRdbJoin003
-     * @tc.desc: SUB_DDM_AppDataFWK_Rdb_Left_Outer_Join
-     * @tc.type: FUNC
-     * @tc.require: I4NZP6
+     * @tc.number: SUB_DDM_AppDataFWK_Rdb_Left_Outer_Join
+     * @tc.desc: sql query left outer join test
      */
     it('testRdbJoin003', 0, async function (done) {
         console.log(TAG + "testRdbJoin003 begin.");

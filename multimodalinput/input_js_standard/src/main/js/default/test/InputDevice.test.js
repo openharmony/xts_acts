@@ -52,63 +52,95 @@ describe('MultimodalInput_test', function () {
     })
   })
 
+  // 参数类型错误
+  it("inputDevice::getDeviceIds_test-03", 0, function () {
+    console.log(`inputDevice::getDeviceIds_test-03 enter`);
+    try {
+      inputDevice.getDeviceIds(-1);
+    } catch (error) {
+      expect(error.message).assertEqual("GetDeviceIds: \"The first parameter type is wrong\"");
+    }
+    console.log(`inputDevice::getDeviceIds_test-03 exit`);
+  })
+
+  // 参数数量错误
+  it("inputDevice::getDeviceIds_test-04", 0, function () {
+    console.log(`inputDevice::getDeviceIds_test-04 enter`);
+    try {
+      inputDevice.getDeviceIds(-1, (data) => {
+        console.log(data);
+      });
+    } catch (error) {
+      expect(error.message).assertEqual("GetDeviceIds: \"too many parameters\"");
+    }
+    console.log(`inputDevice::getDeviceIds_test-04 exit`);
+  })
+
+  // 无效的设备id
   it("inputDevice::getDevice_test-01", 0, function () {
-    console.log(`inputDevice::getDevice_test-03 enter`);
+    console.log(`inputDevice::getDevice_test-01 enter`);
     inputDevice.getDevice(-1, (data, err) => {
       if (err) {
         expect(false).assertTrue();
-        console.log(`inputDevice::getDevice_test-03 ${JSON.stringify(err)}`);
+        console.log(`inputDevice::getDevice_test-01 ${JSON.stringify(err)}`);
       } else {
         expect(JSON.stringify(data) !== "{}").assertTrue();
       }
-      console.log(`inputDevice::getDevice_test-03 exit`);
+      console.log(`inputDevice::getDevice_test-01 exit`);
     })
   })
 
   // 参数正常,返回值正常
   it("inputDevice::getDevice_test-02", 0, function () {
-    console.log(`inputDevice::getDevice_test-04 enter`);
+    console.log(`inputDevice::getDevice_test-03 enter`);
     inputDevice.getDeviceIds((data, err) => {
       if (err) {
         expect(false).assertTrue();
       } else {
         let arr = [];
-        for (var i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
           inputDevice.getDevice(data[i], (res, err) => {
-            console.log(`getDevice:data_i ${JSON.stringify(data[i])}`)
             console.log(`getDevice:data ${JSON.stringify(data)}`)
-            console.log(`getDevice:err ${JSON.stringify(err)}`)
             arr = Object.keys(res);
+            expect(res.id).assertInstanceOf('number');
+            expect(res.name).assertInstanceOf('string');
+            expect(res.sources).assertInstanceOf('Array');
+            expect(res.axisRanges).assertInstanceOf('Array');
           })
           expect(arr.length > 0).assertTrue();
         }
       }
-      console.log(`inputDevice::getDevice_test-04 exit`);
+      console.log(`inputDevice::getDevice_test-02 exit`);
     });
   })
 
-  it("inputDevice::getDevice_test03", 0, function () {
-    console.log(`inputDevice::getDevice_test-04 enter`);
+  // 参数正常,返回值正常
+  it("inputDevice::supportKeys_test-01", 0, function () {
+    console.log(`inputDevice::supportKeys_test-01 enter`);
     inputDevice.getDeviceIds((data, err) => {
       if (err) {
         expect(false).assertTrue();
       } else {
-        let arr = [];
-        for (var i = 0; i < data.length; i++) {
-          inputDevice.getDevice(data[i], (res, err) => {
-            console.log(`getDevice:data_i ${JSON.stringify(data[i])}`)
-            console.log(`getDevice:data ${JSON.stringify(data)}`)
-            console.log(`getDevice:err ${JSON.stringify(err)}`)
-            arr = Object.keys(res);
-            expect(data[i].id).assertInstanceOf('number');
-            expect(data[i].sources).assertInstanceOf('string');
-            expect(data[i].name).assertInstanceOf('Array');
-            expect(data[i].axisRanges).assertInstanceOf('Array');
-          })
-          expect(arr.length > 0).assertTrue();
+        for (let i = 0; i < data.length; ++i) {
+          inputDevice.supportKeys(data[i], [17, 22, 2055], (res, err) => {
+            expect(res).assertInstanceOf('Array');
+          });
         }
       }
-      console.log(`inputDevice::getDevice_test-04 exit`);
+      console.log(`inputDevice::supportKeys_test-01 exit`);
     });
+  })
+
+  // 第二个参数异常
+  it("inputDevice::supportKeys_test-02", 0, function () {
+    console.log(`inputDevice::supportKeys_test-01 enter`);
+    try {
+      inputDevice.supportKeys(0, 2022, (res) => {
+        console.log(res);
+      });
+    } catch (error) {
+      expect(error.message).assertEqual("SupportKeys: \"The second parameter type is wrong\"");
+    }
+    console.log(`inputDevice::supportKeys_test-02 exit`);
   })
 })

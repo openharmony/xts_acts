@@ -18,41 +18,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 var time = 1000
 describe('ActsAnsEnableNotificationTest', function () {
     console.info("===========ActsAnsEnableNotificationTest start====================>");
-    /*
-     * @tc.number: ActsGetEnable_test_0100
-     * @tc.name: isNotificationEnabled()
-     * @tc.desc: verify the function of isNotificationEnabled
-     */
-    it('ActsGetEnable_test_0100', 0, async function (done) {
-        await notify.isNotificationEnabled({
-            bundle:"com.example.actsanslocalnotificationtest",
-        },(err,data) => {
-            console.log("===>ActsGetEnable_test_0100 success===>"+err+data)
-            expect(typeof(data)).assertEqual('boolean')
-            expect(data).assertEqual(true)
-            done();
-        })
-        setTimeout(function(){
-            console.debug("====>time out ActsGetEnable_test_0100====>");
-        }, time);
-    })
-    /*
-     * @tc.number: ActsGetEnable_test_0200
-     * @tc.name: isNotificationEnabled()
-     * @tc.desc: verify the function of isNotificationEnabled
-     */
-    it('ActsGetEnable_test_0200', 0, async function (done) {
-        var promise = await notify.isNotificationEnabled({
-            bundle:"com.example.actsanslocalnotificationtest",
-        })
-        console.log("===>ActsGetEnable_test_0200 success===>"+promise)
-        expect(typeof(promise)).assertEqual('boolean')
-        expect(promise).assertEqual(true)
-        done();
-        setTimeout(function(){
-            console.debug("====>time out ActsGetEnable_test_0200====>");
-        }, time);
-    })
+    
     /*
      * @tc.number: ActsGetEnable_test_0300
      * @tc.name: isNotificationEnabled()
@@ -129,45 +95,7 @@ describe('ActsAnsEnableNotificationTest', function () {
         expect(promise).assertEqual(undefined)
         done();
     })
-    /*
-     * @tc.number: ActsGetEnable_test_0900
-     * @tc.name: isNotificationEnabled()
-     * @tc.desc: verify the function of isNotificationEnabled
-     */
-    it('ActsGetEnable_test_0900', 0, async function (done) {
-        await notify.enableNotification({
-            bundle:"com.example.actsanslocalnotificationtest"
-        },true,async(err) => {
-            console.log("===>ActsGetEnable_test_0900 success===>"+err)
-            await notify.isNotificationEnabled({
-                bundle:"com.example.actsanslocalnotificationtest",
-            },(err,data) => {
-                console.log("===>ActsGetEnable_test_0900 success===>"+err+data)
-                expect(typeof(data)).assertEqual('boolean')
-                expect(data).assertEqual(true)
-                done();
-            })
-        })
-    })
-    /*
-     * @tc.number: ActsGetEnable_test_1000
-     * @tc.name: isNotificationEnabled()
-     * @tc.desc: verify the function of isNotificationEnabled
-     */
-    it('ActsGetEnable_test_1000', 0, async function (done) {
-        await notify.enableNotification({
-            bundle:"com.example.actsanslocalnotificationtest"
-        },true,async(err) => {
-            console.log("===>ActsGetEnable_test_1000 success===>"+err)
-            var promise = await notify.isNotificationEnabled({
-                bundle:"com.example.actsanslocalnotificationtest",
-            })
-            console.log("===>ActsGetEnable_test_1000 success===>"+promise)
-            expect(typeof(promise)).assertEqual('boolean')
-            expect(promise).assertEqual(true)
-            done();
-        })
-    })
+   
     /*
      * @tc.number: ActsGetEnable_test_1100
      * @tc.name: isNotificationEnabled()
@@ -180,17 +108,7 @@ describe('ActsAnsEnableNotificationTest', function () {
         })
         done();
     })
-    /*
-     * @tc.number: ActsGetEnable_test_1200
-     * @tc.name: isNotificationEnabled()
-     * @tc.desc: verify the function of isNotificationEnabled
-     */
-    it('ActsGetEnable_test_1200', 0, async function (done) {
-        var promise = await notify.isNotificationEnabled()
-        console.log("==========================>ActsGetEnable_test_1200 success=======================>"+promise)
-        expect(typeof(promise)).assertEqual('boolean')
-        done();
-    })
+    
     /*
      * @tc.number: ActsSetEnable_test_0100
      * @tc.name: enableNotification()
@@ -244,49 +162,7 @@ describe('ActsAnsEnableNotificationTest', function () {
            done();
        })
     })
-    /*
-     * @tc.number: ActsSetEnable_test_0500
-     * @tc.name: enableNotification()
-     * @tc.desc: verify the function of enableNotification
-     */
-    it('ActsSetEnable_test_0500', 0, async function (done) {
-        await notify.enableNotification({
-            bundle:"com.example.actsanslocalnotificationtest"
-        },true,async(err) => {
-            await notify.isNotificationEnabled({
-                bundle:"com.example.actsanslocalnotificationtest",
-            },(err,data) => {
-                console.log("===>ActsSetEnable_test_0500 success===>"+err+data)
-                expect(typeof(data)).assertEqual('boolean')
-                expect(data).assertEqual(true)
-                done();
-            })
-        })
-        setTimeout(function(){
-            console.debug("====>time out ActsGetDisplay_test_0900====>");
-        }, time);
-    })
-    /*
-     * @tc.number: ActsSetEnable_test_0600
-     * @tc.name: enableNotification()
-     * @tc.desc: verify the function of enableNotification
-     */
-    it('ActsSetEnable_test_0600', 0, async function (done) {
-        await notify.enableNotification({
-            bundle:"com.example.actsanslocalnotificationtest"
-        },true).then(async(err) => {
-            var promise = await notify.isNotificationEnabled({
-                bundle:"com.example.actsanslocalnotificationtest",
-            })
-            console.log("===>ActsSetEnable_test_0600 success===>"+promise)
-            expect(typeof(promise)).assertEqual('boolean')
-            expect(promise).assertEqual(true)
-            done();
-        })
-        setTimeout(function(){
-            console.debug("===>time out ActsSetEnable_test_0600===>");
-        }, time);
-    })
+    
     /*
      * @tc.number: ActsSetEnable_test_0700
      * @tc.name: enableNotification()
@@ -307,55 +183,6 @@ describe('ActsAnsEnableNotificationTest', function () {
         })
         setTimeout(function(){
             console.debug("====>time out ActsSetEnable_test_0700====>");
-        }, time);
-    })
-    /*
-     * @tc.number: ActsSetEnable_test_0800
-     * @tc.name: enableNotification()
-     * @tc.desc: verify the function of enableNotification
-     */
-    it('ActsSetEnable_test_0800', 0, async function (done) {
-        await notify.enableNotification({
-            bundle:"com.example.actsanslocalnotificationtest"
-        },false).then(async(err) => {
-            var promise = await notify.isNotificationEnabled({
-                bundle:"com.example.actsanslocalnotificationtest",
-            })
-            console.log("===>ActsSetEnable_test_0800 success===>"+promise)
-            expect(typeof(promise)).assertEqual('boolean')
-            expect(promise).assertEqual(false)
-            done();
-        })
-        setTimeout(function(){
-            console.debug("===>time out ActsSetEnable_test_0800===>");
-        }, time);
-    })
-    /*
-     * @tc.number: ActsSetEnable_test_0900
-     * @tc.name: enableNotification()
-     * @tc.desc: verify the function of enableNotification
-     */
-    it('ActsSetEnable_test_0900', 0, async function (done) {
-        await notify.isNotificationEnabled({
-            bundle:"com.example.actsanslocalnotificationtest",
-        },(err,data) => {
-            console.log("===>ActsSetEnable_test_0900 success===>"+err+data)
-            expect(typeof(data)).assertEqual('boolean')
-            expect(data).assertEqual(false)
-        })
-        await notify.enableNotification({
-            bundle:"com.example.actsanslocalnotificationtest"
-        },true).then(async(err) => {
-            var promise = await notify.isNotificationEnabled({
-                bundle:"com.example.actsanslocalnotificationtest",
-            })
-            console.log("===>ActsSetEnable_test_0900 success===>"+promise)
-            expect(typeof(promise)).assertEqual('boolean')
-            expect(promise).assertEqual(true)
-            done();
-        })
-        setTimeout(function(){
-            console.debug("===>time out ActsSetEnable_test_0900===>");
         }, time);
     })
 })

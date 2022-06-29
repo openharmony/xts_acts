@@ -961,611 +961,611 @@ describe('TextEncoderTest', function () {
 describe('ScopeTest', function () {
 
     /**
-     * @tc.name: testGetLower001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-001
      * @tc.desc: Obtains the lower bound of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testGetLower001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-001', 0, function () {
         var result = range.getLower()
         expect(result.toString()).assertEqual('30')
     })
 
     /**
-     * @tc.name: testGetLower002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-002
      * @tc.desc: Obtains the lower bound of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testGetLower002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-002', 0, function () {
         var result = rangeFir.getLower()
         expect(result.toString()).assertEqual('35')
     })
 
     /**
-     * @tc.name: testGetLower003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-003
      * @tc.desc: Obtains the lower bound of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testGetLower003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-003', 0, function () {
         var result = rangeSec.getLower()
         expect(result.toString()).assertEqual('20')
     })
 
     /**
-     * @tc.name: testGetLower004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-004
      * @tc.desc: Obtains the lower bound of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testGetLower004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-004', 0, function () {
         var result = rangeThi.getLower()
         expect(result.toString()).assertEqual('20')
     })
 
     /**
-     * @tc.name: testGetLower005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-005
      * @tc.desc: Obtains the lower bound of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testGetLower005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-005', 0, function () {
         var result = rangeFif.getLower()
         expect(result.toString()).assertEqual('35')
     })
 
     /**
-     * @tc.name: testGetUpper001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-006
      * @tc.desc: Obtains the upper bound of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testGetUpper001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-006', 0, function () {
         var result = range.getUpper()
         expect(result.toString()).assertEqual('40')
     })
 
     /**
-     * @tc.name: testGetUpper002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-007
      * @tc.desc: Obtains the upper bound of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testGetUpper002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-007', 0, function () {
         var result = rangeFir.getUpper()
         expect(result.toString()).assertEqual('39')
     })
 
     /**
-     * @tc.name: testGetUpper003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-008
      * @tc.desc: Obtains the upper bound of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testGetUpper003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-008', 0, function () {
         var result = rangeSec.getUpper()
         expect(result.toString()).assertEqual('45')
     })
 
     /**
-     * @tc.name: testGetUpper004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-009
      * @tc.desc: Obtains the upper bound of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testGetUpper004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-009', 0, function () {
         var result = rangeThi.getUpper()
         expect(result.toString()).assertEqual('35')
     })
 
     /**
-     * @tc.name: testGetUpper005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-010
      * @tc.desc: Obtains the upper bound of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testGetUpper005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-010', 0, function () {
         var result = rangeFif.getUpper()
         expect(result.toString()).assertEqual('45')
     })
 
     /**
-     * @tc.name: testClamp001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-011
      * @tc.desc: Clamps a given value to the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testClamp001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-011', 0, function () {
         var result =range.clamp(tempLess)
         expect(result.toString()).assertEqual('30')
     })
 
     /**
-     * @tc.name: testClamp002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-012
      * @tc.desc: Clamps a given value to the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testClamp002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-012', 0, function () {
         var result =range.clamp(tempMiDF)
         expect(result.toString()).assertEqual('35')
     })
 
     /**
-     * @tc.name: testClamp003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-013
      * @tc.desc: Clamps a given value to the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testClamp003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-013', 0, function () {
         var result =range.clamp(tempMore)
         expect(result.toString()).assertEqual('40')
     })
 
     /**
-     * @tc.name: testClamp004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-014
      * @tc.desc: Clamps a given value to the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testClamp004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-014', 0, function () {
         var result =range.clamp(tempLower)
         expect(result.toString()).assertEqual('30')
     })
 
     /**
-     * @tc.name: testClamp005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-015
      * @tc.desc: Clamps a given value to the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testClamp005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-015', 0, function () {
         var result =range.clamp(tempUpper)
         expect(result.toString()).assertEqual('40')
     })
 
     /**
-     * @tc.name: testContains001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-016
      * @tc.desc: Checks whether a given value is within the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testContains001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-016', 0, function () {
         var result = range.contains(tempLess)
         expect(result).assertEqual(false)
     })
 
     /**
-     * @tc.name: testContains002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-017
      * @tc.desc: Checks whether a given value is within the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testContains002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-017', 0, function () {
         var result = range.contains(tempMiDF)
         expect(result).assertEqual(true)
     })
 
     /**
-     * @tc.name: testContains003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-018
      * @tc.desc: Checks whether a given value is within the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testContains003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-018', 0, function () {
         var result = range.contains(tempMore)
         expect(result).assertEqual(false)
     })
 
     /**
-     * @tc.name: testContains004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-019
      * @tc.desc: Checks whether a given value is within the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testContains004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-019', 0, function () {
         var result = range.contains(tempLower)
         expect(result).assertEqual(true)
     })
 
     /**
-     * @tc.name: testContains005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-020
      * @tc.desc: Checks whether a given value is within the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testContains005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-020', 0, function () {
         var result = range.contains(tempUpper)
         expect(result).assertEqual(true)
     })
 
     /**
-     * @tc.name: testContains001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-021
      * @tc.desc: Checks whether a given range is within the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testContains001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-021', 0, function () {
         var result = range.contains(rangeFir)
         expect(result).assertEqual(true)
     })
 
     /**
-     * @tc.name: testContains002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-022
      * @tc.desc: Checks whether a given range is within the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testContains002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-022', 0, function () {
         var result = range.contains(rangeSec)
         expect(result).assertEqual(false)
     })
 
     /**
-     * @tc.name: testContains003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-023
      * @tc.desc: Checks whether a given range is within the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testContains003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-023', 0, function () {
         var result = range.contains(rangeThi)
         expect(result).assertEqual(false)
     })
 
     /**
-     * @tc.name: testContains004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-024
      * @tc.desc: Checks whether a given range is within the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testContains004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-024', 0, function () {
         var result = range.contains(rangeFif)
         expect(result).assertEqual(false)
     })
 
     /**
-     * @tc.name: testContains005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-025
      * @tc.desc: Checks whether a given range is within the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testContains005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-025', 0, function () {
         var result = range.contains(range)
         expect(result).assertEqual(true)
     })
 
     /**
-     * @tc.name: testExpand001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-026
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-026', 0, function () {
         var result = range.expand(tempMiDF, tempMidS)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: testExpand002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-027
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-027', 0, function () {
         var result = range.expand(tempLess, tempMore)
         expect(result.toString()).assertEqual('[20, 45]')
     })
 
     /**
-     * @tc.name: testExpand003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-028
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-028', 0, function () {
         var result = range.expand(tempLess, tempMiDF)
         expect(result.toString()).assertEqual('[20, 40]')
     })
 
     /**
-     * @tc.name: testExpand004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-029
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-029', 0, function () {
         var result = range.expand(tempMiDF, tempMore)
         expect(result.toString()).assertEqual('[30, 45]')
     })
 
     /**
-     * @tc.name: testExpand005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-030
      * @tc.desc: Creates the smallest range that includes the current range and the given lower and upper bounds.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-030', 0, function () {
         var result = range.expand(tempLower, tempUpper)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: testExpand001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-031
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-031', 0, function () {
         var result = range.expand(rangeFir)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: testExpand002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-032
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-032', 0, function () {
         var result = range.expand(rangeSec)
         expect(result.toString()).assertEqual('[20, 45]')
     })
 
     /**
-     * @tc.name: testExpand003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-033
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-033', 0, function () {
         var result = range.expand(rangeThi)
         expect(result.toString()).assertEqual('[20, 40]')
     })
 
     /**
-     * @tc.name: testExpand004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-034
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-034', 0, function () {
         var result = range.expand(rangeFif)
         expect(result.toString()).assertEqual('[30, 45]')
     })
 
     /**
-     * @tc.name: testExpand005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-035
      * @tc.desc: Creates the smallest range that includes the current range and a given range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-035', 0, function () {
         var result = range.expand(range)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: testExpand001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-036
      * @tc.desc: Creates the smallest range that includes the current range and a given value.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-036', 0, function () {
         var result = range.expand(tempMiDF)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: testExpand002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-037
      * @tc.desc: Creates the smallest range that includes the current range and a given value.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-037', 0, function () {
         var result = range.expand(tempLess)
         expect(result.toString()).assertEqual('[20, 40]')
     })
 
     /**
-     * @tc.name: testExpand003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-038
      * @tc.desc: Creates the smallest range that includes the current range and a given value.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-038', 0, function () {
         var result = range.expand(tempMore)
         expect(result.toString()).assertEqual('[30, 45]')
     })
 
     /**
-     * @tc.name: testExpand004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-039
      * @tc.desc: Creates the smallest range that includes the current range and a given value.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-039', 0, function () {
         var result = range.expand(tempLower)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: testExpand005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-040
      * @tc.desc: Creates the smallest range that includes the current range and a given value.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testExpand005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-040', 0, function () {
         var result = range.expand(tempUpper)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: testInstersect001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-041
      * @tc.desc: Returns the intersection of a given range and the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testInstersect001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-041', 0, function () {
         var result = range.intersect(rangeFir)
         expect(result.toString()).assertEqual('[35, 39]')
     })
 
     /**
-     * @tc.name: testInstersect002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-042
      * @tc.desc: Returns the intersection of a given range and the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testInstersect002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-042', 0, function () {
         var result = range.intersect(rangeSec)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: testInstersect003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-043
      * @tc.desc: Returns the intersection of a given range and the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testInstersect003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-043', 0, function () {
         var result = range.intersect(rangeThi)
         expect(result.toString()).assertEqual('[30, 35]')
     })
 
     /**
-     * @tc.name: testInstersect004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-044
      * @tc.desc: Returns the intersection of a given range and the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testInstersect004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-044', 0, function () {
         var result = range.intersect(rangeFif)
         expect(result.toString()).assertEqual('[35, 40]')
     })
 
     /**
-     * @tc.name: testInstersect005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-045
      * @tc.desc: Returns the intersection of a given range and the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testInstersect005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-045', 0, function () {
         var result = range.intersect(range)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: testInstersect001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-046
      * @tc.desc: Returns the intersection of the current range and the range specified by
 	   the given lower and upper bounds.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testInstersect001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-046', 0, function () {
         var result = range.intersect(tempMiDF, tempMidS)
         expect(result.toString()).assertEqual('[35, 39]')
     })
 
     /**
-     * @tc.name: testInstersect002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-047
      * @tc.desc: Returns the intersection of the current range and the range specified by
 	   the given lower and upper bounds.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testInstersect002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-047', 0, function () {
         var result = range.intersect(tempLess, tempMore)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: testInstersect003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-048
      * @tc.desc: Returns the intersection of the current range and the range specified by
 	   the given lower and upper bounds.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testInstersect003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-048', 0, function () {
         var result = range.intersect(tempLess, tempMiDF)
         expect(result.toString()).assertEqual('[30, 35]')
     })
 
     /**
-     * @tc.name: testInstersect004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-049
      * @tc.desc: Returns the intersection of the current range and the range specified by
 	   the given lower and upper bounds.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testInstersect004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-049', 0, function () {
         var result = range.intersect(tempMiDF, tempMore)
         expect(result.toString()).assertEqual('[35, 40]')
     })
 
     /**
-     * @tc.name: testInstersect005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-050
      * @tc.desc: Returns the intersection of the current range and the range specified by
 	   the given lower and upper bounds.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testInstersect005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-050', 0, function () {
         var result = range.intersect(tempLower, tempUpper)
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: testToString001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-051
      * @tc.desc: Obtains a string representation of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testToString001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-051', 0, function () {
         var result = range.toString()
         expect(result.toString()).assertEqual('[30, 40]')
     })
 
     /**
-     * @tc.name: testToString002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-052
      * @tc.desc: Obtains a string representation of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testToString002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-052', 0, function () {
         var result = rangeFir.toString()
         expect(result.toString()).assertEqual('[35, 39]')
     })
 
     /**
-     * @tc.name: testToString003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-053
      * @tc.desc: Obtains a string representation of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testToString003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-053', 0, function () {
         var result = rangeSec.toString()
         expect(result.toString()).assertEqual('[20, 45]')
     })
 
     /**
-     * @tc.name: testToString004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-054
      * @tc.desc: Obtains a string representation of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testToString004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-054', 0, function () {
         var result = rangeThi.toString()
         expect(result.toString()).assertEqual('[20, 35]')
     })
 
     /**
-     * @tc.name: testToString005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR36-055
      * @tc.desc: Obtains a string representation of the current range.
      * @tc.require: AR000GFB4U
      * @tc.author: jiangkai
      */
-    it('testToString005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR36-055', 0, function () {
         var result = rangeFif.toString()
         expect(result.toString()).assertEqual('[35, 45]')
     })
@@ -1574,13 +1574,13 @@ describe('ScopeTest', function () {
 describe('Base64Test', function () {
 
     /**
-     * @tc.name: testEncodeSync001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_001
      * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeSync001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_001', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([115,49,51]);
         var rarray = new Uint8Array([99,122,69,122]);
@@ -1591,13 +1591,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncodeSync002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_004
      * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeSync002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_004', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
         var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
@@ -1608,13 +1608,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncodeSync003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_005
      * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeSync003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_005', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,
 		110,32,78,111,100,101,46,106,115]);
@@ -1627,13 +1627,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncodeSync004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_002
      * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeSync004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_002', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([168, 174, 155, 255]);
         var rarray = new Uint8Array([113,75,54,98,47,119,61,61]);
@@ -1644,13 +1644,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncodeSync005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_003
      * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeSync005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_003', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
         var rarray = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
@@ -1661,12 +1661,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncodeToStringSync001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_006
      * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeToStringSync001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_006', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([115,49,51]);
         var result = that.encodeToStringSync(array)
@@ -1674,12 +1674,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncodeToStringSync002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_009
      * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeToStringSync002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_009', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
         var result = that.encodeToStringSync(array);
@@ -1687,12 +1687,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncodeToStringSync003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_010
      * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeToStringSync003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_010', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,
 		32,78,111,100,101,46,106,115]);
@@ -1701,12 +1701,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncodeToStringSync004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_007
      * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeToStringSync004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_007', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([168, 174, 155, 255]);
         var result = that.encodeToStringSync(array);
@@ -1714,12 +1714,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncodeToStringSync005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_008
      * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeToStringSync005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_008', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
         var result = that.encodeToStringSync(array);
@@ -1727,13 +1727,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecodeSync001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_011
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecodeSync001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_011', 0, function () {
         var that = new util.Base64()
         var buff = 'czEz';
         var rarray = new Uint8Array([115,49,51]);
@@ -1744,13 +1744,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecodeSync002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_013
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecodeSync002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_013', 0, function () {
         var that = new util.Base64()
         var buff = 'QmFzZTY0IE5vZGUuanM=';
         var rarray = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
@@ -1761,13 +1761,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecodeSync003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_014
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecodeSync003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_014', 0, function () {
         var that = new util.Base64()
         var buff = 'QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=';
         var rarray = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,
@@ -1779,13 +1779,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecodeSync004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_012
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecodeSync004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_012', 0, function () {
         var that = new util.Base64()
         var buff = 'qK6b/w==';
         var rarray = new Uint8Array([168, 174, 155, 255]);
@@ -1813,13 +1813,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecodeSync001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_011
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecodeSync001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_011', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([99,122,69,122]);
         var rarray = new Uint8Array([115,49,51]);
@@ -1830,13 +1830,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecodeSync002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_013
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecodeSync002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_013', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
         var rarray = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
@@ -1847,13 +1847,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecodeSync003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_014
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecodeSync003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_014', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,
 		53,110,73,71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
@@ -1866,13 +1866,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecodeSync004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_012
      * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecodeSync004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_012', 0, function () {
         var that = new util.Base64()
         var array = new Uint8Array([113,75,54,98,47,119,61,61]);
         var rarray = new Uint8Array([168, 174, 155, 255]);
@@ -1901,13 +1901,13 @@ describe('Base64Test', function () {
 
     //base64 EncodeAsync test
     /**
-     * @tc.name: testEncode001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_015
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly
 	   allocated u8 array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncode001', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_015', 0, async function () {
         var that = await new util.Base64();
         var array = new Uint8Array([115,49,51]);
         var rarray = new Uint8Array([99,122,69,122]);
@@ -1919,13 +1919,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncode002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_018
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly
 	   allocated u8 array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncode002', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_018', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
         var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
@@ -1937,13 +1937,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncode003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_019
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncode003', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_019', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,32,
 		78,111,100,101,46,106,115]);
@@ -1957,13 +1957,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncode004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_016
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncode004', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_016', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([168, 174, 155, 255]);
         var rarray = new Uint8Array([113,75,54,98,47,119,61,61]);
@@ -1975,13 +1975,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncode005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_017
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
 	   array using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncode005', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_017', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
         var rarray = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
@@ -1993,12 +1993,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncodeToString001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_020
      * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeToString001', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_020', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([115,49,51]);
         that.encodeToString(array).then(val=>{
@@ -2007,12 +2007,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncodeToString002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_023
      * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeToString002', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_023', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
         that.encodeToString(array).then(val=>{
@@ -2021,12 +2021,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncodeToString003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_024
      * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeToString003', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_024', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,73,71,108,
 		117,73,69,53,118,90,71,85,117,97,110,77,61]);
@@ -2036,12 +2036,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncodeToString004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_021
      * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeToString004', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_021', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([168, 174, 155, 255]);
         that.encodeToString(array).then(val=>{
@@ -2050,12 +2050,12 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testEncodeToString005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_022
      * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testEncodeToString005', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_022', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
         that.encodeToString(array).then(val=>{
@@ -2064,13 +2064,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecode001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_025
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
 	   array into a newly allocated u8 array.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecode001', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_025', 0, async function () {
         var that = new util.Base64()
         var buff = 'czEz';
         var array = new Uint8Array([115,49,51]);
@@ -2082,13 +2082,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecode002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_027
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
 	   array into a newly allocated u8 array.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecode002', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_027', 0, async function () {
         var that = new util.Base64()
         var buff = 'QmFzZTY0IE5vZGUuanM=';
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
@@ -2100,13 +2100,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecode003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_028
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
 	   array into a newly allocated u8 array.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecode003', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_028', 0, async function () {
         var that = new util.Base64()
         var buff = 'QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=';
         var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,32,78,
@@ -2119,13 +2119,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecode004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_026
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
 	   array into a newly allocated u8 array.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecode004', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_026', 0, async function () {
         var that = new util.Base64()
         var buff = 'qK6b/w==';
         var array = new Uint8Array([168, 174, 155, 255]);
@@ -2155,13 +2155,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecode001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_025
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
 	   array into a newly allocated u8 array.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecode001', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_025', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([99,122,69,122]);
         var rarray = new Uint8Array([115,49,51]);
@@ -2173,13 +2173,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecode002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_027
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
 	   array into a newly allocated u8 array.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecode002', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_027', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
         var rarray = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
@@ -2191,13 +2191,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecode003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_028
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
 	   array into a newly allocated u8 array.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecode003', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_028', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,73,71,108,
 		117,73,69,53,118,90,71,85,117,97,110,77,61]);
@@ -2211,13 +2211,13 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: testDecode004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR37_026
      * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8 array
 	   into a newly allocated u8 array.
      * @tc.require: AR000GFB2Q
      * @tc.author: bihu
      */
-    it('testDecode004', 0, async function () {
+    it('SUB_Runtime_JSAPI_SR000GGR37_026', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([113,75,54,98,47,119,61,61]);
         var rarray = new Uint8Array([168, 174, 155, 255]);
@@ -2250,12 +2250,12 @@ describe('Base64Test', function () {
 describe('RationalNumberFunTest', function () {
 
     /**
-     * @tc.name: testRationalNumberCreateRationalFromString001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_001
      * @tc.desc: Creates a RationalNumber object based on a given string.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberCreateRationalFromString001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_001', 0, function () {
         var pro = new util.RationalNumber(1, 2)
         var res = pro.createRationalFromString('-1:2')
         var result1 = res.valueOf()
@@ -2263,12 +2263,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberCreateRationalFromString002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_002
      * @tc.desc: Creates a RationalNumber object based on a given string.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberCreateRationalFromString002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_002', 0, function () {
         var pro = new util.RationalNumber(1, 2)
         var res = pro.createRationalFromString('+3/4')
         var result1 = res.valueOf()
@@ -2276,12 +2276,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberCreateRationalFromString003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_003
      * @tc.desc: Creates a RationalNumber object based on a given string.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberCreateRationalFromString003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_003', 0, function () {
         var pro = new util.RationalNumber(1, 2)
         var res = pro.createRationalFromString('+3:-4')
         var result1 = res.valueOf()
@@ -2289,12 +2289,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberCreateRationalFromString004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_004
      * @tc.desc: Creates a RationalNumber object based on a given string.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberCreateRationalFromString004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_004', 0, function () {
         var pro = new util.RationalNumber(1, 2)
         var res = pro.createRationalFromString('+2:4')
         var result1 = res.valueOf()
@@ -2315,12 +2315,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberCompare001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_010
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberCompare001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_010', 0, function () {
         var pro = new util.RationalNumber(2, 1)
         var proc = new util.RationalNumber(3, 4)
         var res = pro.compareTo(proc)
@@ -2328,12 +2328,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberCompare002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_007
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberCompare002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_007', 0, function () {
         var pro = new util.RationalNumber(2, 1)
         var proc = new util.RationalNumber(0, 0)
         var res = pro.compareTo(proc)
@@ -2341,12 +2341,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberCompare003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_011
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberCompare003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_011', 0, function () {
         var pro = new util.RationalNumber(2, 1)
         var proc = new util.RationalNumber(8, 3)
         var res = pro.compareTo(proc)
@@ -2354,12 +2354,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberCompare004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_005
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberCompare004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_005', 0, function () {
         var pro = new util.RationalNumber(2, 1)
         var proc = new util.RationalNumber(2, 1)
         var res = pro.compareTo(proc)
@@ -2367,12 +2367,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberCompare005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_006
      * @tc.desc: Compares the current RationalNumber object with a given object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberCompare005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_006', 0, function () {
         var pro = new util.RationalNumber(0, 0)
         var proc = new util.RationalNumber(2, 1)
         var res = pro.compareTo(proc)
@@ -2380,12 +2380,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberEquals001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_016
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberEquals001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_016', 0, function () {
         var pro = new util.RationalNumber(2, 1)
         var proc = new util.RationalNumber(3, 4)
         var res = pro.equals(proc)
@@ -2393,12 +2393,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberEquals002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_014
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberEquals002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_014', 0, function () {
         var pro = new util.RationalNumber(2, 1)
         var proc = new util.RationalNumber(4, 2)
         var res = pro.equals(proc)
@@ -2432,12 +2432,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberEquals005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_015
      * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberEquals005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_015', 0, function () {
         var pro = new util.RationalNumber(-2, 0)
         var proc = new util.RationalNumber(2, 0)
         var res = pro.equals(proc)
@@ -2457,12 +2457,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberValueOf002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_012
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberValueOf002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_012', 0, function () {
         var pro = new util.RationalNumber(2, 10)
         var res = pro.valueOf()
         expect(res).assertEqual(0.2)
@@ -2481,12 +2481,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberValueOf004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_013
      * @tc.desc: Obtains the value of the current RationalNumber object as a number.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberValueOf004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_013', 0, function () {
         var pro = new util.RationalNumber(4, 2)
         var res = pro.valueOf()
         expect(res).assertEqual(2)
@@ -2505,24 +2505,24 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberGetCommonDivisor001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_017
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberGetCommonDivisor001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_017', 0, function () {
         var pro = new util.RationalNumber(0, 0)
         var res = pro.getCommonDivisor(4, 8)
         expect(res).assertEqual(4)
     })
 
     /**
-     * @tc.name: testRationalNumberGetCommonDivisor002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_018
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberGetCommonDivisor002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_018', 0, function () {
         var pro = new util.RationalNumber(0, 0)
         var res = pro.getCommonDivisor(10, 15)
         expect(res).assertEqual(5)
@@ -2541,12 +2541,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberGetCommonDivisor004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_019
      * @tc.desc: Obtains the greatest common divisor of two specified numbers.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberGetCommonDivisor004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_019', 0, function () {
         var pro = new util.RationalNumber(0, 0)
         var res = pro.getCommonDivisor(8, 16)
         expect(res).assertEqual(8)
@@ -2565,12 +2565,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberGetDenominator001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_023
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberGetDenominator001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_023', 0, function () {
         var pro = new util.RationalNumber(2, 1)
         var res = pro.getDenominator()
         expect(res).assertEqual(1)
@@ -2589,12 +2589,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberGetDenominator003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_025
      * @tc.desc: Obtains the denominator of the current RationalNumber object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberGetDenominator003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_025', 0, function () {
         var pro = new util.RationalNumber(2, 0)
         var res = pro.getDenominator()
         expect(res).assertEqual(0)
@@ -2625,36 +2625,48 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberGetNumerator001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_024
+     * @tc.desc: Obtains the denominator of the current RationalNumber object.
+     * @tc.require: AR000GFB5A
+     * @tc.author: liuqiang
+     */
+    it('SUB_Runtime_JSAPI_SR000GGR38_024', 0, function () {
+        var pro = new util.RationalNumber(6, -3)
+        var res = pro.getDenominator()
+        expect(res).assertEqual(1)
+    })
+
+    /**
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_021
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberGetNumerator001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_021', 0, function () {
         var pro = new util.RationalNumber(-2, 1)
         var res = pro.getNumerator()
         expect(res).assertEqual(-2)
     })
 
     /**
-     * @tc.name: testRationalNumberGetNumerator002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_022
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberGetNumerator002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_022', 0, function () {
         var pro = new util.RationalNumber(0, 3)
         var res = pro.getNumerator()
         expect(res).assertEqual(0)
     })
 
     /**
-     * @tc.name: testRationalNumberGetNumerator003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_020
      * @tc.desc: Obtains the numerator of the current RationalNumber object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberGetNumerator003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_020', 0, function () {
         var pro = new util.RationalNumber(2, 4)
         var res = pro.getNumerator()
         expect(res).assertEqual(1)
@@ -2685,12 +2697,12 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberIsFinite001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_028
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberIsFinite001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_028', 0, function () {
         var pro = new util.RationalNumber(-2, 1)
         var res = pro.isFinite()
         expect(res).assertEqual(true)
@@ -2709,24 +2721,24 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberIsFinite003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_026
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberIsFinite003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_026', 0, function () {
         var pro = new util.RationalNumber(2, 0)
         var res = pro.isFinite()
         expect(res).assertEqual(false)
     })
 
     /**
-     * @tc.name: testRationalNumberIsFinite004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_027
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberIsFinite004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_027', 0, function () {
         var pro = new util.RationalNumber(1, 3)
         var res = pro.isFinite()
         expect(res).assertEqual(true)
@@ -2745,48 +2757,48 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberIsNaN001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_030
      * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberIsNaN001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_030', 0, function () {
         var pro = new util.RationalNumber(-2, 1)
         var res = pro.isNaN()
         expect(res).assertEqual(false)
     })
 
     /**
-     * @tc.name: testRationalNumberIsNaN002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_031
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberIsNaN002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_031', 0, function () {
         var pro = new util.RationalNumber(0, 3)
         var res = pro.isNaN()
         expect(res).assertEqual(false)
     })
 
     /**
-     * @tc.name: testRationalNumberIsNaN003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_029
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberIsNaN003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_029', 0, function () {
         var pro = new util.RationalNumber(0, 0)
         var res = pro.isNaN()
         expect(res).assertEqual(true)
     })
 
     /**
-     * @tc.name: testRationalNumberIsNaN004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_032
      * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberIsNaN004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_032', 0, function () {
         var pro = new util.RationalNumber(10, 0)
         var res = pro.isNaN()
         expect(res).assertEqual(false)
@@ -2805,48 +2817,48 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberIsZero001
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_034
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberIsZero001', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_034', 0, function () {
         var pro = new util.RationalNumber(-2, 1)
         var res = pro.isZero()
         expect(res).assertEqual(false)
     })
 
     /**
-     * @tc.name: testRationalNumberIsZero002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_033
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberIsZero002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_033', 0, function () {
         var pro = new util.RationalNumber(0, 3)
         var res = pro.isZero()
         expect(res).assertEqual(true)
     })
 
     /**
-     * @tc.name: testRationalNumberIsZero003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_035
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberIsZero003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_035', 0, function () {
         var pro = new util.RationalNumber(0, 0)
         var res = pro.isZero()
         expect(res).assertEqual(false)
     })
 
     /**
-     * @tc.name: testRationalNumberIsZero004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_036
      * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberIsZero004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_036', 0, function () {
         var pro = new util.RationalNumber(10, 2)
         var res = pro.isZero()
         expect(res).assertEqual(false)
@@ -2877,48 +2889,48 @@ describe('RationalNumberFunTest', function () {
     })
 
     /**
-     * @tc.name: testRationalNumberToString002
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_037
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberToString002', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_037', 0, function () {
         var pro = new util.RationalNumber(0, 0)
         var res = pro.toString()
         expect(res).assertEqual("NaN")
     })
 
     /**
-     * @tc.name: testRationalNumberToString003
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_038
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberToString003', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_038', 0, function () {
         var pro = new util.RationalNumber(3, 0)
         var res = pro.toString()
         expect(res).assertEqual("Infinity")
     })
 
     /**
-     * @tc.name: testRationalNumberToString004
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_039
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberToString004', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_039', 0, function () {
         var pro = new util.RationalNumber(-3, 0)
         var res = pro.toString()
         expect(res).assertEqual("-Infinity")
     })
 
     /**
-     * @tc.name: testRationalNumberToString005
+     * @tc.name: SUB_Runtime_JSAPI_SR000GGR38_040
      * @tc.desc: Obtains a string representation of the current RationalNumber object.
      * @tc.require: AR000GFB5A
      * @tc.author: liuqiang
      */
-    it('testRationalNumberToString005', 0, function () {
+    it('SUB_Runtime_JSAPI_SR000GGR38_040', 0, function () {
         var pro = new util.RationalNumber(2, 3)
         var res = pro.toString()
         expect(res).assertEqual('2/3')
@@ -4859,7 +4871,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAnyArrayBuffer(new ArrayBuffer([]));
         expect(result).assertEqual(true);
     })
@@ -4871,7 +4883,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAnyArrayBuffer(true);
         expect(result).assertEqual(false);
     })
@@ -4883,7 +4895,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAnyArrayBuffer(false);
         expect(result).assertEqual(false);
     })
@@ -4895,7 +4907,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var buf = new ArrayBuffer();
         var result = proc.isAnyArrayBuffer(buf);
         expect(result).assertEqual(true);
@@ -4908,7 +4920,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAnyArrayBuffer005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAnyArrayBuffer(new Boolean(false));
         expect(result).assertEqual(false);
     })
@@ -4922,7 +4934,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBufferView(new Int8Array([]));
         expect(result).assertEqual(true);
     })
@@ -4936,7 +4948,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBufferView(new Int32Array([]));
         expect(result).assertEqual(true);
     })
@@ -4950,7 +4962,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBufferView(new DataView(new ArrayBuffer(16)));
         expect(result).assertEqual(true);
     })
@@ -4964,7 +4976,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBufferView(false);
         expect(result).assertEqual(false);
     })
@@ -4978,7 +4990,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBufferView005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBufferView(new Int16Array());
         expect(result).assertEqual(true);
     })
@@ -4990,7 +5002,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         function foo() {
             var result = proc.isArgumentsObject(arguments);
             expect(result).assertEqual(true);
@@ -5005,7 +5017,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArgumentsObject(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5017,7 +5029,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArgumentsObject(true);
         expect(result).assertEqual(false);
     })
@@ -5029,7 +5041,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArgumentsObject(false);
         expect(result).assertEqual(false);
     })
@@ -5041,7 +5053,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArgumentsObject005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArgumentsObject(new Boolean());
         expect(result).assertEqual(false);
     })
@@ -5053,7 +5065,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBuffer(new ArrayBuffer([]));
         expect(result).assertEqual(true);
     })
@@ -5065,7 +5077,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBuffer(true);
         expect(result).assertEqual(false);
     })
@@ -5077,7 +5089,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBuffer(false);
         expect(result).assertEqual(false);
     })
@@ -5089,7 +5101,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBuffer(new Int8Array());
         expect(result).assertEqual(false);
     })
@@ -5101,7 +5113,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsArrayBuffer005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isArrayBuffer(new Int16Array());
         expect(result).assertEqual(false);
     })
@@ -5113,7 +5125,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAsyncFunction001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAsyncFunction(false);
         expect(result).assertEqual(false);
     })
@@ -5125,7 +5137,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAsyncFunction002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAsyncFunction(function foo() {});
         expect(result).assertEqual(false);
     })
@@ -5137,7 +5149,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAsyncFunction003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAsyncFunction(new Int8Array());
         expect(result).assertEqual(false);
     })
@@ -5149,7 +5161,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsAsyncFunction004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isAsyncFunction(true);
         expect(result).assertEqual(false);
     })
@@ -5161,7 +5173,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBigInt64Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBigInt64Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5173,7 +5185,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBigUint64Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBigUint64Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5185,7 +5197,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBooleanObject(new Boolean(false));
         expect(result).assertEqual(true);
     })
@@ -5197,7 +5209,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBooleanObject(new Boolean(true));
         expect(result).assertEqual(true);
     })
@@ -5209,7 +5221,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBooleanObject(true);
         expect(result).assertEqual(false);
     })
@@ -5221,7 +5233,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBooleanObject(false);
         expect(result).assertEqual(false);
     })
@@ -5233,7 +5245,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBooleanObject005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBooleanObject(Boolean(true));
         expect(result).assertEqual(false);
     })
@@ -5245,7 +5257,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBoxedPrimitive(false);
         expect(result).assertEqual(false);
     })
@@ -5257,7 +5269,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBoxedPrimitive(new Boolean(false));
         expect(result).assertEqual(true);
     })
@@ -5269,7 +5281,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBoxedPrimitive(Symbol('foo'));
         expect(result).assertEqual(false);
     })
@@ -5281,7 +5293,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBoxedPrimitive(Object(Symbol('foo')));
         expect(result).assertEqual(true);
     })
@@ -5293,7 +5305,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsBoxedPrimitive005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isBoxedPrimitive(new Boolean(true));
         expect(result).assertEqual(true);
     })
@@ -5305,7 +5317,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDataView001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const ab = new ArrayBuffer(20);
         var result = proc.isDataView(new DataView(ab));
         expect(result).assertEqual(true);
@@ -5318,7 +5330,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDataView002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDataView(new Int8Array());
         expect(result).assertEqual(false);
     })
@@ -5330,7 +5342,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDataView003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDataView(new Float64Array());
         expect(result).assertEqual(false);
     })
@@ -5342,7 +5354,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDataView004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDataView(true);
         expect(result).assertEqual(false);
     })
@@ -5354,7 +5366,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDataView005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDataView(false);
         expect(result).assertEqual(false);
     })
@@ -5366,7 +5378,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDate001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDate(new Date());
         expect(result).assertEqual(true);
     })
@@ -5378,7 +5390,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDate002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDate(new Int8Array());
         expect(result).assertEqual(false);
     })
@@ -5390,7 +5402,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDate003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDate(true);
         expect(result).assertEqual(false);
     })
@@ -5402,7 +5414,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDate004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDate(new Int16Array());
         expect(result).assertEqual(false);
     })
@@ -5414,7 +5426,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsDate005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isDate(new Float64Array());
         expect(result).assertEqual(false);
     })
@@ -5426,7 +5438,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsExternal001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const data = util.createExternalType();
         var result = proc.isExternal(data);
         expect(result).assertEqual(true);
@@ -5439,7 +5451,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsExternal002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isExternal(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5451,7 +5463,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsExternal003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isExternal(true);
         expect(result).assertEqual(false);
     })
@@ -5463,7 +5475,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsExternal004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isExternal(false);
         expect(result).assertEqual(false);
     })
@@ -5475,7 +5487,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsExternal005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isExternal(new Int16Array());
         expect(result).assertEqual(false);
     })
@@ -5487,7 +5499,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat32Array(new Float32Array());
         expect(result).assertEqual(true);
     })
@@ -5499,7 +5511,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat32Array(new Int8Array());
         expect(result).assertEqual(false);
     })
@@ -5511,7 +5523,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat32Array(new Int16Array());
         expect(result).assertEqual(false);
     })
@@ -5523,7 +5535,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat32Array(new Float64Array());
         expect(result).assertEqual(false);
     })
@@ -5535,7 +5547,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat32Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat32Array(new Uint8Array());
         expect(result).assertEqual(false);
     })
@@ -5547,7 +5559,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat64Array(new Float64Array());
         expect(result).assertEqual(true);
     })
@@ -5559,7 +5571,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat64Array(new Int8Array());
         expect(result).assertEqual(false);
     })
@@ -5571,7 +5583,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat64Array(new Float32Array());
         expect(result).assertEqual(false);
     })
@@ -5583,7 +5595,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat64Array(new Uint8Array());
         expect(result).assertEqual(false);
     })
@@ -5595,7 +5607,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsFloat64Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isFloat64Array(new Int16Array([]));
         expect(result).assertEqual(false);
     })
@@ -5607,7 +5619,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsGeneratorFunction001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorFunction(new Int8Array());
         expect(result).assertEqual(false);
     })
@@ -5619,7 +5631,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsGeneratorFunction002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorFunction(function foo() {});
         expect(result).assertEqual(false);
     })
@@ -5631,7 +5643,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsGeneratorFunction003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorFunction(true);
         expect(result).assertEqual(false);
     })
@@ -5643,7 +5655,7 @@ describe('TypesTest', function() {
      * @tc.author: wangjingwu
      */
     it('testIsGeneratorFunction004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorFunction(false);
         expect(result).assertEqual(false);
     })
@@ -5655,7 +5667,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsGeneratorObject001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorObject(false);
         expect(result).assertEqual(false);
     })
@@ -5667,7 +5679,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsGeneratorObject002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorObject(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5679,7 +5691,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsGeneratorObject003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorObject(new Int16Array([]));
         expect(result).assertEqual(false);
     })
@@ -5691,7 +5703,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsGeneratorObject004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isGeneratorObject(true);
         expect(result).assertEqual(false);
     })
@@ -5703,7 +5715,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt8Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt8Array(new Int8Array([]));
         expect(result).assertEqual(true);
     })
@@ -5715,7 +5727,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt8Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt8Array(new ArrayBuffer([]));
         expect(result).assertEqual(false);
     })
@@ -5727,7 +5739,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt8Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt8Array(new Int32Array([]));
         expect(result).assertEqual(false);
     })
@@ -5739,7 +5751,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt8Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt8Array(new Float64Array([]));
         expect(result).assertEqual(false);
     })
@@ -5751,7 +5763,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt8Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt8Array(new Uint8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5763,7 +5775,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt16Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt16Array(new Int16Array([]));
         expect(result).assertEqual(true);
     })
@@ -5775,7 +5787,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt16Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt16Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5787,7 +5799,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt16Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt16Array(new Int32Array([]));
         expect(result).assertEqual(false);
     })
@@ -5799,7 +5811,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt16Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt16Array(new Uint8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5811,7 +5823,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt16Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt16Array(new Float64Array([]));
         expect(result).assertEqual(false);
     })
@@ -5823,7 +5835,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt32Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt32Array(new Int32Array([]));
         expect(result).assertEqual(true);
     })
@@ -5835,7 +5847,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt32Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt32Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5847,7 +5859,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt32Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt32Array(new Int16Array([]));
         expect(result).assertEqual(false);
     })
@@ -5859,7 +5871,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt32Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt32Array(new Float64Array([]));
         expect(result).assertEqual(false);
     })
@@ -5871,7 +5883,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsInt32Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isInt32Array(new Uint8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5883,7 +5895,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMap001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isMap(new Map());
         expect(result).assertEqual(true);
     })
@@ -5895,7 +5907,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMap002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isMap(new Set());
         expect(result).assertEqual(false);
     })
@@ -5907,7 +5919,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMap003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isMap(new String());
         expect(result).assertEqual(false);
     })
@@ -5919,7 +5931,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMap004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isMap(new Object());
         expect(result).assertEqual(false);
     })
@@ -5931,7 +5943,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMap005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isMap(new Boolean());
         expect(result).assertEqual(false);
     })
@@ -5943,7 +5955,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMapIterator001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const map = new Map();
         var result = proc.isMapIterator(map.keys());
         expect(result).assertEqual(true);
@@ -5956,7 +5968,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMapIterator002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const map = new Map();
         var result = proc.isMapIterator(map.values());
         expect(result).assertEqual(true);
@@ -5969,7 +5981,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMapIterator003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const map = new Map();
         var result = proc.isMapIterator(map.entries());
         expect(result).assertEqual(true);
@@ -5982,7 +5994,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMapIterator004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const map = new Map();
         var result = proc.isMapIterator(map[Symbol.iterator]());
         expect(result).assertEqual(true);
@@ -5995,7 +6007,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsMapIterator005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const map = new Map();
         var result = proc.isMapIterator(map);
         expect(result).assertEqual(false);
@@ -6008,7 +6020,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isModuleNamespaceObject(util);
         expect(result).assertEqual(false);
     })
@@ -6020,7 +6032,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isModuleNamespaceObject(url);
         expect(result).assertEqual(false);
     })
@@ -6032,7 +6044,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isModuleNamespaceObject(file);
         expect(result).assertEqual(false);
     })
@@ -6044,7 +6056,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isModuleNamespaceObject(process);
         expect(result).assertEqual(false);
     })
@@ -6056,7 +6068,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsModuleNamespaceObject005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isModuleNamespaceObject(app);
         expect(result).assertEqual(false);
     })
@@ -6068,7 +6080,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNativeError001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNativeError(new TypeError());
         expect(result).assertEqual(true);
     })
@@ -6080,7 +6092,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNativeError002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNativeError(new Error());
         expect(result).assertEqual(true);
     })
@@ -6092,7 +6104,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNativeError003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNativeError(new RangeError());
         expect(result).assertEqual(true);
     })
@@ -6104,7 +6116,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNativeError004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNativeError(true);
         expect(result).assertEqual(false);
     })
@@ -6116,7 +6128,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNativeError005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNativeError(false);
         expect(result).assertEqual(false);
     })
@@ -6128,7 +6140,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNumberObject001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNumberObject(new Number(0));
         expect(result).assertEqual(true);
     })
@@ -6140,7 +6152,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNumberObject002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNumberObject(new Number(10));
         expect(result).assertEqual(true);
     })
@@ -6152,7 +6164,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNumberObject003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNumberObject(new Number(200));
         expect(result).assertEqual(true);
     })
@@ -6164,7 +6176,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNumberObject004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNumberObject(0);
         expect(result).assertEqual(false);
     })
@@ -6176,7 +6188,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsNumberObject005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isNumberObject(100);
         expect(result).assertEqual(false);
     })
@@ -6188,7 +6200,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsPromise001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isPromise(Promise.resolve(42));
         expect(result).assertEqual(true);
     })
@@ -6200,7 +6212,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsPromise002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isPromise(Promise.resolve(33));
         expect(result).assertEqual(true);
     })
@@ -6212,7 +6224,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsPromise003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isPromise(Promise.resolve(44));
         expect(result).assertEqual(true);
     })
@@ -6224,7 +6236,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsPromise004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var err = Error(33);
         var result = proc.isPromise(Promise.reject(err));
         expect(result).assertEqual(true);
@@ -6237,7 +6249,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsPromise005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
 		var err = Error(23);
         var result = proc.isPromise(Promise.reject(err));
         expect(result).assertEqual(true);
@@ -6250,7 +6262,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsProxy001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const target = {};
         const proxy = new Proxy(target, {});
         var result = proc.isProxy(proxy);
@@ -6264,7 +6276,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsProxy002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const target = {};
         const proxy = new Proxy(target, {});
         var result = proc.isProxy(target);
@@ -6278,7 +6290,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsProxy003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const handler = {
             get: function(obj, prop) {
                 return prop in obj ? obj[prop] : 37;
@@ -6296,7 +6308,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsProxy004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const handler = {
             get: function(obj, prop) {
                 return prop in obj ? obj[prop] : 121;
@@ -6314,7 +6326,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsProxy005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const handler = {
             get: function(obj, prop) {
                 return prop in obj ? obj[prop] : 121;
@@ -6332,7 +6344,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsRegExp001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isRegExp(new RegExp('abc'));
         expect(result).assertEqual(true);
     })
@@ -6344,7 +6356,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsRegExp002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isRegExp(/abc/);
         expect(result).assertEqual(true);
     })
@@ -6356,7 +6368,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsRegExp003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isRegExp(new RegExp('fgd'));
         expect(result).assertEqual(true);
     })
@@ -6368,7 +6380,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsRegExp004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isRegExp(new RegExp('123'));
         expect(result).assertEqual(true);
     })
@@ -6380,7 +6392,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsRegExp005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isRegExp(new RegExp(/ab+c/, 'i'));
         expect(result).assertEqual(true);
     })
@@ -6392,7 +6404,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSet001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSet(new Set());
         expect(result).assertEqual(true);
     })
@@ -6404,7 +6416,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSet002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSet(new Map());
         expect(result).assertEqual(false);
     })
@@ -6416,7 +6428,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSet003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSet(new String());
         expect(result).assertEqual(false);
     })
@@ -6428,7 +6440,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSet004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSet(new Boolean());
         expect(result).assertEqual(false);
     })
@@ -6440,7 +6452,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSet005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSet(new WeakSet());
         expect(result).assertEqual(false);
     })
@@ -6452,7 +6464,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSetIterator001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set.keys());
         expect(result).assertEqual(true);
@@ -6465,7 +6477,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSetIterator002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set.values());
         expect(result).assertEqual(true);
@@ -6478,7 +6490,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSetIterator003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set.entries());
         expect(result).assertEqual(true);
@@ -6491,7 +6503,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSetIterator004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set[Symbol.iterator]());
         expect(result).assertEqual(true);
@@ -6504,7 +6516,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSetIterator005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const set = new Set();
         var result = proc.isSetIterator(set);
         expect(result).assertEqual(false);
@@ -6517,7 +6529,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6529,7 +6541,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new Int16Array([]));
         expect(result).assertEqual(false);
     })
@@ -6541,7 +6553,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new Int32Array([]));
         expect(result).assertEqual(false);
     })
@@ -6553,7 +6565,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new ArrayBuffer([]));
         expect(result).assertEqual(false);
     })
@@ -6565,7 +6577,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSharedArrayBuffer005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isSharedArrayBuffer(new Uint8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6577,7 +6589,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsStringObject001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isStringObject(new String('foo'));
         expect(result).assertEqual(true);
     })
@@ -6589,7 +6601,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsStringObject002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isStringObject(new String('twoo'));
         expect(result).assertEqual(true);
     })
@@ -6601,7 +6613,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsStringObject003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isStringObject(new String('fdfsfd'));
         expect(result).assertEqual(true);
     })
@@ -6613,7 +6625,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsStringObject004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isStringObject('ffds111');
         expect(result).assertEqual(false);
     })
@@ -6625,7 +6637,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsStringObject005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isStringObject('foo');
         expect(result).assertEqual(false);
     })
@@ -6637,7 +6649,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSymbolObject001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const symbols = Symbol('foo');
         var result = proc.isSymbolObject(Object(symbols));
         expect(result).assertEqual(true);
@@ -6650,7 +6662,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSymbolObject002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const symbols = Symbol('s12');
         var result = proc.isSymbolObject(Object(symbols));
         expect(result).assertEqual(true);
@@ -6663,7 +6675,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSymbolObject003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const symbols = Symbol('sads');
         var result = proc.isSymbolObject(Object(symbols));
         expect(result).assertEqual(true);
@@ -6676,7 +6688,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSymbolObject004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const symbols = Symbol('asdd');
         var result = proc.isSymbolObject(symbols);
         expect(result).assertEqual(false);
@@ -6689,7 +6701,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsSymbolObject005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         const symbols = Symbol('foo');
         var result = proc.isSymbolObject(symbols);
         expect(result).assertEqual(false);
@@ -6702,7 +6714,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsTypedArray001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isTypedArray(new Float64Array([]));
         expect(result).assertEqual(true);
     })
@@ -6714,7 +6726,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsTypedArray002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isTypedArray(new Uint8Array([]));
         expect(result).assertEqual(true);
     })
@@ -6726,7 +6738,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsTypedArray003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isTypedArray(new Uint16Array([]));
         expect(result).assertEqual(true);
     })
@@ -6738,7 +6750,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsTypedArray004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isTypedArray(new Uint32Array([]));
         expect(result).assertEqual(true);
     })
@@ -6750,7 +6762,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsTypedArray005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isTypedArray(new ArrayBuffer());
         expect(result).assertEqual(false);
     })
@@ -6762,7 +6774,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8Array(new Uint8Array([]));
         expect(result).assertEqual(true);
     })
@@ -6774,7 +6786,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8Array(new Uint16Array([]));
         expect(result).assertEqual(false);
     })
@@ -6786,7 +6798,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8Array(new Uint32Array([]));
         expect(result).assertEqual(false);
     })
@@ -6798,7 +6810,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6810,7 +6822,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8Array(new Int16Array([]));
         expect(result).assertEqual(false);
     })
@@ -6822,7 +6834,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Uint8ClampedArray([]));
         expect(result).assertEqual(true);
     })
@@ -6834,7 +6846,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6846,7 +6858,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Int16Array([]));
         expect(result).assertEqual(false);
     })
@@ -6858,7 +6870,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Int32Array([]));
         expect(result).assertEqual(false);
     })
@@ -6870,7 +6882,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint8ClampedArray005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint8ClampedArray(new Uint32Array([]));
         expect(result).assertEqual(false);
     })
@@ -6882,7 +6894,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint16Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint16Array(new Uint16Array([]));
         expect(result).assertEqual(true);
     })
@@ -6894,7 +6906,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint16Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint16Array(new Uint8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6906,7 +6918,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint16Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint16Array(new Uint32Array([]));
         expect(result).assertEqual(false);
     })
@@ -6918,7 +6930,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint16Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint16Array(new Uint8ClampedArray([]));
         expect(result).assertEqual(false);
     })
@@ -6930,7 +6942,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint16Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint16Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6942,7 +6954,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint32Array001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint32Array(new Uint32Array([]));
         expect(result).assertEqual(true);
     })
@@ -6954,7 +6966,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint32Array002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint32Array(new Uint8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6966,7 +6978,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint32Array003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint32Array(new Uint16Array([]));
         expect(result).assertEqual(false);
     })
@@ -6978,7 +6990,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint32Array004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint32Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -6990,7 +7002,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsUint32Array005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isUint32Array(new Uint8ClampedArray([]));
         expect(result).assertEqual(false);
     })
@@ -7002,7 +7014,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakMap001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakMap(new WeakMap());
         expect(result).assertEqual(true);
     })
@@ -7014,7 +7026,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakMap002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakMap(new Map());
         expect(result).assertEqual(false);
     })
@@ -7026,7 +7038,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakMap003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakMap(new Set());
         expect(result).assertEqual(false);
     })
@@ -7038,7 +7050,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakMap004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakMap(new String());
         expect(result).assertEqual(false);
     })
@@ -7050,7 +7062,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakMap005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakMap(new WeakSet());
         expect(result).assertEqual(false);
     })
@@ -7062,7 +7074,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakSet001', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakSet(new WeakSet());
         expect(result).assertEqual(true);
     })
@@ -7074,7 +7086,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakSet002', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakSet(new WeakMap());
         expect(result).assertEqual(false);
     })
@@ -7086,7 +7098,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakSet003', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakSet(new String());
         expect(result).assertEqual(false);
     })
@@ -7098,7 +7110,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakSet004', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakSet(new Set());
         expect(result).assertEqual(false);
     })
@@ -7110,7 +7122,7 @@ describe('TypesTest', function() {
      * @tc.author: bihu
      */
     it('testIsWeakSet005', 0, function() {
-        var proc = new util.Types();
+        var proc = new util.types();
         var result = proc.isWeakSet(new Map());
         expect(result).assertEqual(false);
     })

@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import file from '@system.file'
 import {Core, ExpectExtend} from 'deccjsunit/index'
 
 const injectRef = Object.getPrototypeOf(global) || global
@@ -20,10 +19,10 @@ injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
 export default {
     data: {
-        title: "测试setAppAccountSyncEnable和checkAppAccountSyncEnable接口"
+        title: "setAppAccountSyncEnable和checkAppAccountSyncEnable"
     },
     onInit() {
-        this.title = "测试setAppAccountSyncEnable和checkAppAccountSyncEnable接口";
+        this.title = "setAppAccountSyncEnable和checkAppAccountSyncEnable";
     },
     onShow() {
         console.info('onShow finish')

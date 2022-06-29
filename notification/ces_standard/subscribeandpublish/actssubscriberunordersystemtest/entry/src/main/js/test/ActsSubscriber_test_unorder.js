@@ -12,15 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Subscriber from '@ohos.commonevent'
+import Subscriber from '@ohos.commonEvent'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('ActsSubscriberTestUnorderSystem', async function (done) {
     console.info("===========ActsSubscriberTestUnorderSystem start====================>");
-    var commonEventSubscriber1;
-    var commonEventSubscriber2;
-    var commonEventSubscriber3;
-    var array = [
+    let commonEventSubscriber1;
+    let commonEventSubscriber2;
+    let commonEventSubscriber3;
+    let array = [
             Subscriber.Support.COMMON_EVENT_SHUTDOWN,
             Subscriber.Support.COMMON_EVENT_BATTERY_CHANGED,
             Subscriber.Support.COMMON_EVENT_BATTERY_LOW,
@@ -116,9 +116,9 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
     }
 
     function findArray(str) {
-        var value = false;
-        var index1 = 0;
-        var length = array.length;
+        let value = false;
+        let index1 = 0;
+        let length = array.length;
         for(; index1 < length; ++index1) {
             if (array[index1] == str) {
                 value = true;
@@ -135,7 +135,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
      */
     it('ActsSubscriberTestUnorderSystem_0100', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorderSystem_0100 start==========================>");
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: [
                     Subscriber.Support.COMMON_EVENT_SHUTDOWN,
                     Subscriber.Support.COMMON_EVENT_BATTERY_CHANGED,
@@ -190,7 +190,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             ],
         };
 
-        var result = 0;
+        let result = 0;
 
         function subscriberCallBack001(err, data) {
             console.info("==========================>subscriberCallBack001 event = "+ data.event);
@@ -219,82 +219,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
         })
     })
 
-    /*
-     * @tc.number    : ActsSubscriberTestUnorderSystem_0200
-     * @tc.name      : verify subscribe and publish : Check subscribe and publish system event data without permission
-     * @tc.desc      : Check the subscriber can receive event "publish_event0100" type of the interface (by Promise)
-     */
-    it('ActsSubscriberTestUnorderSystem_0200', 0, async function (done) {
-        console.info("===============ActsSubscriberTestUnorderSystem_0200 start==========================>");
-        var commonEventSubscribeInfo = {
-            events: [
-                    Subscriber.Support.COMMON_EVENT_WIFI_HOTSPOT_STATE,
-                    Subscriber.Support.COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE,
-                    Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT,
-                    Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL,
-                    Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ,
-                    Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY,
-                    Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL,
-                    Subscriber.Support.COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE,
-                    Subscriber.Support.COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE,
-                    Subscriber.Support.COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT,
-                    Subscriber.Support.COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE,
-                    Subscriber.Support.COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE,
-                    Subscriber.Support.COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED,
-                    Subscriber.Support.COMMON_EVENT_DISCHARGING,
-                    Subscriber.Support.COMMON_EVENT_CHARGING,
-                    Subscriber.Support.COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED,
-                    Subscriber.Support.COMMON_EVENT_POWER_SAVE_MODE_CHANGED,
-                    Subscriber.Support.COMMON_EVENT_LOCATION_MODE_STATE_CHANGED,
-                    Subscriber.Support.COMMON_EVENT_IVI_SLEEP,
-                    Subscriber.Support.COMMON_EVENT_IVI_PAUSE,
-                    Subscriber.Support.COMMON_EVENT_IVI_STANDBY,
-                    Subscriber.Support.COMMON_EVENT_IVI_LASTMODE_SAVE,
-                    Subscriber.Support.COMMON_EVENT_IVI_VOLTAGE_ABNORMAL,
-                    Subscriber.Support.COMMON_EVENT_IVI_HIGH_TEMPERATURE,
-                    Subscriber.Support.COMMON_EVENT_IVI_EXTREME_TEMPERATURE,
-                    Subscriber.Support.COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL,
-                    Subscriber.Support.COMMON_EVENT_IVI_VOLTAGE_RECOVERY,
-                    Subscriber.Support.COMMON_EVENT_IVI_TEMPERATURE_RECOVERY,
-                    Subscriber.Support.COMMON_EVENT_IVI_ACTIVE,
-                    Subscriber.Support.COMMON_EVENT_USB_DEVICE_ATTACHED,
-                    Subscriber.Support.COMMON_EVENT_USB_DEVICE_DETACHED,
-                    Subscriber.Support.COMMON_EVENT_USB_ACCESSORY_ATTACHED,
-                    Subscriber.Support.COMMON_EVENT_USB_ACCESSORY_DETACHED,
-                    Subscriber.Support.COMMON_EVENT_AIRPLANE_MODE_CHANGED,
-                    Subscriber.Support.COMMON_EVENT_SMS_RECEIVE_COMPLETED,
-                    Subscriber.Support.COMMON_EVENT_SPN_INFO_UPDATED,
-            ],
-        };
 
-        var result = 0;
-
-        function subscriberCallBack002(err, data) {
-            console.info("==========================>subscriberCallBack002 event = "+ data.event);
-            result = findArray(data.event);
-            if (result == true) {
-                console.info("==========================>subscriberCallBack002 result == true");
-                if (data.event == Subscriber.Support.COMMON_EVENT_SPN_INFO_UPDATED) {
-                    done();
-                }
-            }
-            console.info("==========================>subscriberCallBack002 end");
-        }
-
-        Subscriber.createSubscriber(
-            commonEventSubscribeInfo
-        ).then((data)=>{
-            console.info("===============>ActsSubscriberTestUnorderSystem_0200=========createSubscriber promise");
-            commonEventSubscriber2 = data;
-            Subscriber.subscribe(commonEventSubscriber2, subscriberCallBack002);
-            for (let i = 0; i < 36; ++i) {
-                setTimeout(function (){
-                    console.debug("===============>ActsSubscriberTestUnorderSystem_0200 delay 1s===========i:"+i);
-                    Subscriber.publish(commonEventSubscribeInfo.events[i], publishCallback);
-                }, 1000);
-            }
-        })
-    })
 
     /*
      * @tc.number    : ActsSubscriberTestUnorderSystem_0300
@@ -304,7 +229,7 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
      */
     it('ActsSubscriberTestUnorderSystem_0300', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorderSystem_0300 start==========================>");
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: [
                 Subscriber.Support.COMMON_EVENT_WIFI_P2P_CONN_STATE,
                 Subscriber.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED,

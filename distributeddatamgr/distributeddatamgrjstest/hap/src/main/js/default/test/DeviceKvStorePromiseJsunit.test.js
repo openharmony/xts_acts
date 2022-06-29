@@ -1568,7 +1568,7 @@ describe('DeviceKvStorePromiseTest', function () {
         try {
             var count = 0;
             kvStore.on('dataChange', 0, function (data) {
-                console.log('testDeviceKvStoreOnChange001 0' + JSON.stringify(data))
+                console.log('testDeviceKvStorestartTransaction001' + JSON.stringify(data))
                 count++;
             });
             await kvStore.startTransaction().then(async (err) => {
@@ -1621,7 +1621,7 @@ describe('DeviceKvStorePromiseTest', function () {
         try {
             var count = 0;
             kvStore.on('dataChange', 0, function (data) {
-                console.log('testDeviceKvStoreOnChange001 0' + JSON.stringify(data))
+                console.log('testDeviceKvStorestartTransaction002' + JSON.stringify(data))
                 count++;
             });
             await kvStore.startTransaction().then(async (err) => {

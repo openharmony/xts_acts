@@ -30,22 +30,25 @@ const OWNERSELF = "com.example.actsaccounttest";
 
 describe('ActsAccountOAuthToken', function () {
     function sleep(delay) {
-        var start = (new Date()).getTime();
-        while((new Date()).getTime() - start < delay) {
-            continue;
-        }
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve()
+            }, delay)
+        }).then(() => {
+            console.info(`sleep #{time} over ...`)
+        })
     }
 
     beforeAll(async function (done) {
         console.debug("====>beforeAll start====");
-        sleep(TIMEOUT);
+        await sleep(TIMEOUT);
         console.debug("====>beforeAll end====");
         done();
     });
 
     beforeEach(async function (done) {
         console.debug("====>beforeAll enter====");
-        sleep(EACHTIMEOUT);
+        await sleep(EACHTIMEOUT);
         done();
     });
 

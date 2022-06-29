@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -121,6 +121,13 @@ function sleep(ms) {
 
 describe('userauthTest', function () {
 
+	/**
+    * @tc.name      the token from old session is not available in the new session
+    * @tc.number    Security_IAM_Coauth_DFX_0105
+    * @tc.size      MEDIUM
+    * @tc.type      FUNC
+    * @tc.level     Level3
+    */
     it('Security_IAM_Coauth_DFX_0105', 1, async function (done) {
         console.info('testFace Security_IAM_Coauth_DFX_0105 start');
         try {
@@ -183,6 +190,13 @@ describe('userauthTest', function () {
         }
     })
 
+    /**
+    * @tc.name      old challenge is not available in the new session
+    * @tc.number    Security_IAM_Coauth_DFX_0106
+    * @tc.size      MEDIUM
+    * @tc.type      FUNC
+    * @tc.level     Level2
+    */
     it('Security_IAM_Coauth_DFX_0106', 3, async function (done) {
         console.info('testFace Security_IAM_Coauth_DFX_0106 start');
         try {
@@ -212,7 +226,4 @@ describe('userauthTest', function () {
             expect(null).assertFail();
         }
     })
-
-
-
 })

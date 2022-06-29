@@ -107,8 +107,10 @@ HWTEST_F(FifoTest, testFifoNonblack, Function | MediumTest | Level1)
     const int arrSize = MAX_PIPE_BUFFER + 10;
     int fd = -1;
     int tmpInt;
+    int memRet = -1;
     char testBuffer[arrSize];
-    memset_s(testBuffer, sizeof(testBuffer), '1', sizeof(testBuffer));
+    memRet = memset_s(testBuffer, sizeof(testBuffer), '1', sizeof(testBuffer));
+    EXPECT_EQ(0, memRet);
 
     int ret = mkfifo(FIFO_PATH, 0666);
     EXPECT_EQ(ret, 0) << "> parent: mkfifo errno = " << errno;
@@ -117,7 +119,8 @@ HWTEST_F(FifoTest, testFifoNonblack, Function | MediumTest | Level1)
     ASSERT_TRUE(pid >= 0) << "> parent : fork : error";
     if (pid == 0) {
         char readBuffer[arrSize];
-        memset_s(readBuffer, sizeof(readBuffer), 0, sizeof(readBuffer));
+        memRet = memset_s(readBuffer, sizeof(readBuffer), 0, sizeof(readBuffer));
+        EXPECT_EQ(0, memRet);
         fd = open(FIFO_PATH, O_RDONLY, S_IRUSR|S_IWUSR);
         if (fcntl(fd, F_SETFL, O_NONBLOCK) == -1) {
             LOG("> fcntl errno = %d", errno);
@@ -141,7 +144,8 @@ HWTEST_F(FifoTest, testFifoNonblack, Function | MediumTest | Level1)
     }
     // parent
     char writeBuffer[arrSize];
-    memset_s(writeBuffer, sizeof(writeBuffer), '1', sizeof(writeBuffer));
+    memRet = memset_s(writeBuffer, sizeof(writeBuffer), '1', sizeof(writeBuffer));
+    EXPECT_EQ(0, memRet);
     fd = open(FIFO_PATH, O_WRONLY, S_IRUSR|S_IWUSR);
     EXPECT_NE(fd, -1) << "> open faild errno = " << errno;
     EXPECT_NE(fcntl(fd, F_SETFL, O_NONBLOCK), -1) << "> fcntl errno = " << errno;
@@ -168,7 +172,9 @@ HWTEST_F(FifoTest, testFifoBlock, Function | MediumTest | Level1)
     int fd = -1;
     int tmpInt;
     char testBuffer[arrSize];
-    memset_s(testBuffer, sizeof(testBuffer), '1', sizeof(testBuffer));
+    int memRet = -1;
+    memRet = memset_s(testBuffer, sizeof(testBuffer), '1', sizeof(testBuffer));
+    EXPECT_EQ(0, memRet);
 
     int ret = mkfifo(FIFO_PATH, 0666);
     EXPECT_EQ(ret, 0) << "> parent: mkfifo errno = " << errno;
@@ -177,7 +183,8 @@ HWTEST_F(FifoTest, testFifoBlock, Function | MediumTest | Level1)
     ASSERT_TRUE(pid >= 0) << "> parent : fork : error";
     if (pid == 0) {
         char readBuffer[arrSize];
-        memset_s(readBuffer, sizeof(readBuffer), 0, sizeof(readBuffer));
+        memRet = memset_s(readBuffer, sizeof(readBuffer), 0, sizeof(readBuffer));
+        EXPECT_EQ(0, memRet);
         fd = open(FIFO_PATH, O_RDONLY);
 
         Msleep(60);
@@ -197,7 +204,8 @@ HWTEST_F(FifoTest, testFifoBlock, Function | MediumTest | Level1)
     }
     // parent
     char writeBuffer[arrSize];
-    memset_s(writeBuffer, sizeof(writeBuffer), '1', sizeof(writeBuffer));
+    memRet = memset_s(writeBuffer, sizeof(writeBuffer), '1', sizeof(writeBuffer));
+    EXPECT_EQ(0, memRet);
     fd = open(FIFO_PATH, O_WRONLY, S_IRUSR|S_IWUSR);
     EXPECT_NE(fd, -1) << "> open faild errno = " << errno;
 

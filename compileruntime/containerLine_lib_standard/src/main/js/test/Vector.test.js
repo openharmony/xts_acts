@@ -533,8 +533,8 @@ describe("VectorTest", function () {
     vector.add(2);
     vector.add(14);
     let arr1 = ["a", "b", "c"];
-    let res = vector.copyToArray(arr1);
-    let a = [4, 3, 1];
+    vector.copyToArray(arr1);
+    let a = ["a", "b", "c",4, 3, 1];
     for (let i = 0; i < a.length; i++) {
       expect(arr1[i]).assertEqual(a[i]);
     }

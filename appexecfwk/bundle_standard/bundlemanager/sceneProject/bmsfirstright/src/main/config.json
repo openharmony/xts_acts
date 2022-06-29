@@ -8,8 +8,8 @@
         "vendor": "example",
         "bundleName": "com.example.l3jsdemo",
         "version": {
-            "code": 1000000,
-            "name": "1.0.0"
+            "code": 2000000,
+            "name": "2.0.0"
         }
     },
     "deviceConfig": {
@@ -39,7 +39,16 @@
                 "label": "$string:app_name",
                 "type": "page",
                 "homeAbility": true,
-                "launchType": "standard"
+                "launchType": "standard",
+                "metaData": {
+                    "customizeData": [
+                        {
+                            "name": "Data3",
+                            "value": "float",
+                            "extra": "$string:mainability_description"
+                        }
+                    ]
+                }
             }
         ],
         "deviceType": [
@@ -48,7 +57,7 @@
         "mainAbility": "com.example.l3jsdemo.MainAbility",
         "distro": {
             "moduleType": "entry",
-            "installationFree": true,
+            "installationFree": false,
             "deliveryWithInstall": true,
             "moduleName": "entry"
         },

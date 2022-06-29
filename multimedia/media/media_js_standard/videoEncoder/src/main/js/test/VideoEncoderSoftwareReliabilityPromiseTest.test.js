@@ -19,7 +19,7 @@ import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('videoEncoderReliabilityPromise', function () {
-    const ROOT = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/';
+    const ROOT = '/data/app/el1/bundle/results/';
     const BASIC_PATH = ROOT + 'video_reliability_promise_';
     let videoEncodeProcessor;
     let mediaTest = mediademo.createMediaTest();
@@ -65,8 +65,10 @@ describe('videoEncoderReliabilityPromise', function () {
         console.info('beforeAll case');
     })
 
-    beforeEach(function() {
+    beforeEach(async function() {
         console.info('beforeEach case');
+        await msleep(1000).then(() => {
+        }, failCallback).catch(failCatch);
         videoEncodeProcessor = null;
         surfaceID = '';
         outputQueue = [];
@@ -86,8 +88,8 @@ describe('videoEncoderReliabilityPromise', function () {
         if (videoEncodeProcessor != null) {
             await videoEncodeProcessor.release().then(() => {
                 console.info(`case release 1`);
-                videoEncodeProcessor = null;
             }, failCallback).catch(failCatch);
+            videoEncodeProcessor = null;
         }
     })
 
@@ -109,6 +111,10 @@ describe('videoEncoderReliabilityPromise', function () {
     let failCatch = function(err) {
         console.info('case catch err : ' + err);
         expect(err).assertUndefined();
+    }
+
+    function msleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
     function resetParam() {
@@ -244,8 +250,7 @@ describe('videoEncoderReliabilityPromise', function () {
                     console.info("sawOutputEOS = true;");
                 }
             } else {
-                writeFile(path, outputObject.data, outputObject.length);
-                console.info("write to file success");
+                console.info('not last frame, continue');
                 videoEncodeProcessor.freeOutputBuffer(outputObject).then(() => {
                     console.info('release output success');
                     frameCountOut++;
@@ -1353,7 +1358,7 @@ describe('videoEncoderReliabilityPromise', function () {
     it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0500.es';
         let mySteps = new Array(CONFIGURE, GETSURFACE, SETSTREAMPARAM, PREPARE, START, STARTSTREAM, HOLDON, 
-            JUDGE_EOS, STOP, START, STOP, STOPSTREAM, END);
+            JUDGE_EOS, STOP, START, STOP, STOPSTREAM, RELEASE, END);
         frameTotal = 2;
         createVideoEncoder(savepath, mySteps, done);
     })

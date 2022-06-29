@@ -33,7 +33,7 @@
               "entity.system.home"
             ],
             "actions": [
-              "action.system.third5A"
+              "action.system.home"
             ]
           }
         ],
@@ -114,7 +114,7 @@
               "entity.system.home"
             ],
             "actions": [
-              "action.system.third5B"
+              "action.system.home"
             ]
           }
         ],

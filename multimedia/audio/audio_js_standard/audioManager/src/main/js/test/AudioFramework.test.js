@@ -29,6 +29,7 @@ describe('audioManger', function () {
     var maxVol = 15;
     var lowVol = 5;
     var highVol = 14;
+    var newVol = 20;
     var outOfRangeVol = 28;
     var longValue = '28374837458743875804735081439085918459801437584738967509184509813904850914375904790589104801843';
 
@@ -883,6 +884,32 @@ describe('audioManger', function () {
     })
 
     /* *
+            * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_030
+            * @tc.name      : setVolume - Media - Promise - Change Ringtone vol
+            * @tc.desc      : Setvol to 20
+            * @tc.size      : MEDIUM
+            * @tc.type      : Function
+            * @tc.level     : Level 0
+        */
+    it('SUB_AUDIO_MANAGER_SetVolume_030', 0, async function (done) {
+        const promise = audioManager.setVolume(audio.AudioVolumeType.MEDIA,newVol);
+        promise.then(function () {
+            audioManager.setVolume(audio.AudioVolumeType.RINGTONE,maxVol);
+            audioManager.getVolume(audio.AudioVolumeType.MEDIA).then(function (data) {
+                if(data == lowVol){
+                    console.info('AudioFrameworkTest: Media getVolume Promise: ENAME : PASS :' + data);
+                    expect(true).assertTrue();
+                }
+                else{
+                    console.info('AudioFrameworkTest: Media getVolume Promise: ENAME : FAIL :' + data);
+                    expect(false).assertTrue();
+                }
+            });
+        });
+        await promise;
+        done();
+    })
+    /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_026
                 * @tc.name      : setVolume - Media - Callback - Change Ringtone vol
                 * @tc.desc      : Setvol to 14
@@ -946,6 +973,35 @@ describe('audioManger', function () {
         await promise;
         done();
     })
+    /* *
+                * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_029
+                * @tc.name      : setVolume - Ringtone - Promise - Change Media vol
+                * @tc.desc      : Setvol to 20
+                * @tc.size      : MEDIUM
+                * @tc.type      : Function
+                * @tc.level     : Level 0
+            */
+    it('SUB_AUDIO_MANAGER_SetVolume_029', 0, async function (done) {
+        const promise = audioManager.setVolume(audio.AudioVolumeType.RINGTONE,newVol);
+        promise.then(function () {
+            console.info('AudioFrameworkTest: Ringtone setVolume promise: ENAME: successful');
+            audioManager.setVolume(audio.AudioVolumeType.MEDIA,lowVol);
+            audioManager.getVolume(audio.AudioVolumeType.RINGTONE).then(function (data) {
+                if(data == highVol){
+                    console.info('AudioFrameworkTest: Ringtone getVolume Promise: ENAME: PASS :' + data);
+                    expect(true).assertTrue();
+                }
+                else{
+                    console.info('AudioFrameworkTest: Ringtone getVolume Promise: ENAME: FAIL :' + data);
+                    expect(false).assertTrue();
+                }
+            });
+        });
+        await promise;
+        done();
+    })
+
+
 
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_SetVolume_028
@@ -4126,7 +4182,7 @@ describe('audioManger', function () {
                     console.info('AudioFrameworkTest: Audio Volume Type : VOICE_CALL');
                     console.info('AudioFrameworkTest: Audio Volume Number : '+VolumeEvent.volume);
                     console.info('AudioFrameworkTest: Audio Volume Update UI : '+VolumeEvent.updateUi);
-                    if(VolumeEvent.volume == minVol){
+                    if(VolumeEvent.volume == lowVol){
                         console.info('AudioFrameworkTest: VOICE_CALL CallBack : PASS :' + VolumeEvent.volume);
                         expect(true).assertTrue();
                     }
@@ -4162,7 +4218,7 @@ describe('audioManger', function () {
                     console.info('AudioFrameworkTest: Audio Volume Type : VOICE_ASSISTANT');
                     console.info('AudioFrameworkTest: Audio Volume Number : '+VolumeEvent.volume);
                     console.info('AudioFrameworkTest: Audio Volume Update UI : '+VolumeEvent.updateUi);
-                    if(VolumeEvent.volume == minVol){
+                    if(VolumeEvent.volume == lowVol){
                         console.info('AudioFrameworkTest: VOICE_ASSISTANT CallBack : PASS :' + VolumeEvent.volume);
                         expect(true).assertTrue();
                     }

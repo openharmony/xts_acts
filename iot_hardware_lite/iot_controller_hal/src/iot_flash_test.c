@@ -34,7 +34,7 @@ unsigned int (*g_ioTFlashDeinit)(void);
  * @tc.desc      : register a test suite, this suite is used to test basic flow and interface dependency
  * @param        : subsystem name is wifiiot
  * @param        : module name is wifiiotlite
- * @param        : test suit name is UtilsFileFuncTestSuite
+ * @param        : test suite name is UtilsFileFuncTestSuite
  */
 LITE_TEST_SUIT(wifiiot, wifiiotlite, IotFlashTestSuite);
 

@@ -20,6 +20,15 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 const TIMEOUT = 5000;
 describe('ActsAccountChangeOnOff', async function () {
 
+    function sleep(delay) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve()
+            }, delay)
+        }).then(() => {
+            console.info(`sleep #{time} over ...`)
+        })
+    }
     beforeAll(async function (done) {
         console.debug("====>startAbility start====");
         await featureAbility.startAbility(
@@ -35,7 +44,8 @@ describe('ActsAccountChangeOnOff', async function () {
                 },
             },
         );
-        setTimeout(done(), TIMEOUT);
+        await sleep(TIMEOUT);
+        done();
     });
 
     /*

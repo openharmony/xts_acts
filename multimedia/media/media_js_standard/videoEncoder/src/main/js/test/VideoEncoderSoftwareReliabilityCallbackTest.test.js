@@ -17,7 +17,7 @@ import media from '@ohos.multimedia.media'
 import mediademo from '@ohos.multimedia.mediademo'
 import Fileio from '@ohos.fileio'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-export
+
 const ENCODE_STEP = {
     WAIT_FOR_EOS : 'encode:waitForEOS',
     CONFIGURE : 'encode:configure',
@@ -50,7 +50,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     let isStreamRunning = false;
     let workdoneAtEOS = false;
     let stopBuffer = false;
-    const ROOT = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videoencoder/results/';
+    const ROOT = '/data/app/el1/bundle/results/';
     const BASIC_PATH = ROOT + 'video_reliability_callback_';
     let mediaDescription = {
         'width': 320,
@@ -64,6 +64,8 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
 
     beforeEach(async function() {
         console.info('beforeEach case');
+        await msleep(1000).then(() => {
+        }, failCallback).catch(failCatch);
         videoEncodeProcessor = null;
         mediaTest = null;
         surfaceID = '';
@@ -98,6 +100,11 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
         console.error(`in case error failCatch called,errMessage is ${err.message}`);
         expect(err == undefined).assertTrue();
     }
+
+    function msleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
     function printError(err, expectFail) {
         expect((err != undefined) == expectFail).assertTrue();
         if (expectFail == false && err != undefined) {
@@ -105,6 +112,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
             console.error(`in case error failCatch called,errMessage is ${err.message}`);
         }
     }
+    
     function writeFile(path, buf, len){
         try {
             let writestream = Fileio.createStreamSync(path, 'ab+');
@@ -128,7 +136,7 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
                 return;
             }
             frameCountOut++;
-            writeFile(path, outputObject.data, outputObject.length);
+            console.info('not last frame, continue');
             videoEncodeProcessor.freeOutputBuffer(outputObject, (err) => {
                 if (typeof(err) == 'undefined') {
                     console.debug('in case release output count:' + frameCountOut);

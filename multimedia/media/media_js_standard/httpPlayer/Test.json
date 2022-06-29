@@ -23,7 +23,7 @@
         },
         {
             "test-file-name": [
-                "HttpPlayerJsTest.hap"
+                "ActsHTTPPlayerJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

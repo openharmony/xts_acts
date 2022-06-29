@@ -55,6 +55,50 @@
           "autoDesignWidth": false
         }
       }
+    ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.USE_BLUETOOTH",
+        "reason": "",
+        "usedScene": {
+          "ability": [
+            "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
+          ],
+          "when": "inuse"
+        }
+      },
+      {
+        "name": "ohos.permission.MANAGE_BLUETOOTH",
+        "reason": "",
+        "usedScene": {
+          "ability": [
+            "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
+          ],
+          "when": "inuse"
+        }
+      },
+      {
+        "name": "ohos.permission.DISCOVER_BLUETOOTH",
+        "reason": "",
+        "usedScene": {
+          "ability": [
+            "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
+          ],
+          "when": "inuse"
+        }
+      },
+      {
+        "name": "ohos.permission.LOCATION",
+        "reason": "",
+        "usedScene": {
+          "ability": [
+            "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
+          ],
+          "when": "inuse"
+        }
+      }
     ]
+
   }
 }
+

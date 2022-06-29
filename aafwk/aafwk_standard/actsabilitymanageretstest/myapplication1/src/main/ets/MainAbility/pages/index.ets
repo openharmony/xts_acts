@@ -23,27 +23,19 @@ import featureAbility from "@ohos.ability.featureAbility";
 struct Index {
   aboutToAppear() {
     console.info("start run testcase!!!!")
-    featureAbility.getWant()
-      .then((Want) => {
-        const core = Core.getInstance();
-        const expectExtend = new ExpectExtend({
-          'id': 'extend'
-        });
-        core.addService('expect', expectExtend);
-        const reportExtend = new ReportExtend(file);
-        core.addService('report', reportExtend);
-        core.init();
-        core.subscribeEvent('task', reportExtend);
-        const configService = core.getDefaultService('config');
-        console.info('parameters---->' + JSON.stringify(Want.parameters));
-        configService.setConfig(Want.parameters);
-        testsuite_app1();
-        core.execute();
-        console.info('Operation successful. Data: ' + JSON.stringify(Want));
-      })
-      .catch((error) => {
-        console.error('Operation failed. Cause: ' + JSON.stringify(error));
-      })
+    const core = Core.getInstance();
+    const expectExtend = new ExpectExtend({
+      'id': 'extend'
+    });
+    core.addService('expect', expectExtend);
+    const reportExtend = new ReportExtend(file);
+    core.addService('report', reportExtend);
+    core.init();
+    core.subscribeEvent('task', reportExtend);
+    const configService = core.getDefaultService('config');
+    configService.setConfig(this)
+    testsuite_app1();
+    core.execute();
   }
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {

@@ -25,7 +25,7 @@
       }
     ],
     "package": "com.ohos.rpctest",
-    "name": "com.ohos.rpc.MyApplication",
+    "name": "com.ohos.rpctest.MyApplication",
     "deviceType": [
       "phone"
     ],
@@ -46,7 +46,7 @@
             ]
           }
         ],
-        "name": "com.ohos.rpc.MainAbility",
+        "name": "com.ohos.rpctest.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",

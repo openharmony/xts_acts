@@ -74,10 +74,7 @@ export function fileToWriteOnly(fpath) {
     return false
   }
 }
-export function nextFileName1(testName) {
-  const BASE_PATH = '/data/accounts/account_0/appdata/ohos.acts.storage.fileio/cache/'
-  return BASE_PATH + testName + '_' + randomString(testName.length);
-}
+
 export async function nextFileName(testName) {
   let context = featureAbility.getContext();
   let data = await context.getFilesDir();
@@ -100,6 +97,15 @@ export function randomString(num) {
     pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
   }
   return pwd;
+}
+
+export function forceRemoveDir(path, num) {
+  for (let i = num; i >= 0; i--) {
+    if (i < num) {
+      path = path.replace(`/d${i}`, "");
+    }
+    fileio.rmdirSync(path);
+  }
 }
 
 function isIntNum(val) {

@@ -121,8 +121,10 @@ HWTEST_F(PipeTest, testPipeBuf, Function | MediumTest | Level3)
     const int arrSize = MAX_PIPE_BUFFER + 1000;
     int fd[2];
     int tmpInt;
+    int memRet = -1;
     char testBuffer[arrSize];
-    memset_s(testBuffer, sizeof(testBuffer), '1', sizeof(testBuffer));
+    memRet = memset_s(testBuffer, sizeof(testBuffer), '1', sizeof(testBuffer));
+    EXPECT_EQ(0, memRet);
     printf("abcd \n");
     tmpInt = pipe(fd);
     ASSERT_EQ(tmpInt, 0) << "> parent: Create Pipe Error! ";
@@ -132,7 +134,8 @@ HWTEST_F(PipeTest, testPipeBuf, Function | MediumTest | Level3)
     ASSERT_TRUE(pid >= 0) << "> parent: error : fork";
     if (pid == 0) {
         char readBuffer[arrSize];
-        memset_s(readBuffer, sizeof(readBuffer), 0, sizeof(readBuffer));
+        memRet = memset_s(readBuffer, sizeof(readBuffer), 0, sizeof(readBuffer));
+        EXPECT_EQ(0, memRet);
         close(fd[1]);
 
         Msleep(60);
@@ -155,7 +158,8 @@ HWTEST_F(PipeTest, testPipeBuf, Function | MediumTest | Level3)
 
     // parent
     char writeBuffer[arrSize];
-    memset_s(writeBuffer, sizeof(writeBuffer), '1', sizeof(writeBuffer));
+    memRet = memset_s(writeBuffer, sizeof(writeBuffer), '1', sizeof(writeBuffer));
+    EXPECT_EQ(0, memRet);
     close(fd[0]);
 
     Msleep(30);
@@ -181,8 +185,9 @@ HWTEST_F(PipeTest, testPipeBlock, Function | MediumTest | Level2)
     int fd[2];
     int ret;
     char testBuffer[arrSize];
-    memset_s(testBuffer, sizeof(testBuffer), '1', sizeof(testBuffer));
-
+    int memRet = -1;
+    memRet = memset_s(testBuffer, sizeof(testBuffer), '1', sizeof(testBuffer));
+    EXPECT_EQ(0, memRet);
     ret = pipe(fd);
     ASSERT_EQ(ret, 0) << "> parent: Create Pipe Error! ";
 
@@ -190,7 +195,8 @@ HWTEST_F(PipeTest, testPipeBlock, Function | MediumTest | Level2)
     ASSERT_TRUE(pid >= 0) << "> parent: error : fork";
     if (pid == 0) {
         char readBuffer[arrSize];
-        memset_s(readBuffer, sizeof(readBuffer), 0, sizeof(readBuffer));
+        memRet = memset_s(readBuffer, sizeof(readBuffer), 0, sizeof(readBuffer));
+        EXPECT_EQ(0, memRet);
         close(fd[1]);
 
         Msleep(60);
@@ -210,7 +216,8 @@ HWTEST_F(PipeTest, testPipeBlock, Function | MediumTest | Level2)
 
     // parent
     char writeBuffer[arrSize];
-    memset_s(writeBuffer, sizeof(writeBuffer), '1', sizeof(writeBuffer));
+    memRet = memset_s(writeBuffer, sizeof(writeBuffer), '1', sizeof(writeBuffer));
+    EXPECT_EQ(0, memRet);
     close(fd[0]);
 
     Msleep(30);

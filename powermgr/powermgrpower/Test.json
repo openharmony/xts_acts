@@ -1,0 +1,24 @@
+{
+    "description": "Configuration for powermgr power Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "60000",
+        "package": "com.example.mypowerapp",
+        "shell-timeout": "60000"
+    },
+    "kits": [
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup"
+            ]
+        },
+        {
+            "test-file-name": [
+                "ActsPowerMgrPowerTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}

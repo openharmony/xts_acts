@@ -17,6 +17,7 @@ import notify from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 var time = 300
 var ERR_ANS_NON_SYSTEM_APP = 67108877
+var cancalAllFlag = false
 describe('ActsAnsActiveTest', function () {
     console.info("===========ActsAnsActiveTest start====================>");
     function getCallback(err, data){
@@ -48,6 +49,11 @@ describe('ActsAnsActiveTest', function () {
             expect(data[i].badgeIconStyle).assertEqual(1);
             console.log("============Ans_GetActive_0100 getCallback badgeIconStyle=====>"+data[i].badgeIconStyle)
         }
+    }
+
+    function cancelAllCallback(err) {
+        cancalAllFlag = true
+        console.info("===>cancelAllCallback===>");
     }
 
     /*
@@ -942,14 +948,17 @@ describe('ActsAnsActiveTest', function () {
         console.debug("===============Ans_GetActive_1900 publish1 end==================>");
         await notify.publish(notificationRequest2);
         console.debug("===============Ans_GetActive_1900 publish2 end==================>");
-        await notify.cancelAll();
+        await notify.cancelAll(cancelAllCallback);
+        expect(cancalAllFlag).assertEqual(false);
         console.debug("===============Ans_GetActive_1900 cancel end==================>");
-        notify.getActiveNotificationCount(getCountCallbackFive);
+        await notify.getActiveNotificationCount(getCountCallbackFive);
         console.debug("===============Ans_GetActive_1900 getActiveNotifications end==================>");
         setTimeout(function(){
             console.debug("===============Ans_GetActive_1900 done==================>");
             done();
         }, time);
+
+        
     })
 
     /*
@@ -989,7 +998,8 @@ describe('ActsAnsActiveTest', function () {
         console.debug("===============Ans_GetActive_2000 publish1 end==================>");
         await notify.publish(notificationRequest2);
         console.debug("===============Ans_GetActive_2000 publish2 end==================>");
-        await notify.cancelAll();
+        await notify.cancelAll(cancelAllCallback);
+        expect(cancalAllFlag).assertEqual(true);
         console.debug("===============Ans_GetActive_2000 cancelAll end==================>");
         var promiseCount = await notify.getActiveNotificationCount();
         expect(promiseCount).assertEqual(0);
@@ -1003,7 +1013,7 @@ describe('ActsAnsActiveTest', function () {
     function getAllCallbackNine(err,data){
         console.debug("===========Ans_GetAllActive_0900 getAllCallbackNine data.length============>"+data.length);
         console.debug("===========Ans_GetAllActive_0900 getAllCallbackNine err.code============>"+err.code);
-        expect(err.code != 0).assertEqual(true);
+        expect(err.code).assertEqual(0);
     }
 
     /*
@@ -1062,8 +1072,8 @@ describe('ActsAnsActiveTest', function () {
         console.debug("===============Ans_GetAllActive_1000 publish CurrentApp notify end==================>");
         await notify.getAllActiveNotifications().then(()=>{
             console.debug("=======Ans_GetAllActive_1000 then========>");
+			expect(err.code).assertEqual(0);
         }).catch((err)=>{
-            expect(err.code != 0).assertEqual(true);
             console.debug("=======Ans_GetAllActive_1000 err==========>"+err.code);
         });
         setTimeout(function(){

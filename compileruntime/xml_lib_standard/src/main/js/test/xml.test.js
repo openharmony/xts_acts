@@ -1414,4 +1414,125 @@ describe('XmlSerializerXmlPullParserTest', function () {
         var str3 = 'note:company:title:title:lens:lens:a:b:h:table:h:tr:h:td:h:td:'
         expect(str1).assertEqual(str3)
     })
+
+    /**
+     * @tc.name: testEventType001
+     * @tc.desc: Gets the START_DOCUMENT of EventType.
+     * @tc.require: AR000GGRB8
+     * @tc.author: lihucheng
+     */
+    it('testEventType001', 0, function () {
+        var event = xml.EventType.START_DOCUMENT;
+        expect(event).assertEqual(0)
+    })
+
+    /**
+     * @tc.name: testEventType002
+     * @tc.desc: Gets the END_DOCUMENT of EventType.
+     * @tc.require: AR000GGRB8
+     * @tc.author: lihucheng
+     */
+    it('testEventType002', 0, function () {
+        var event = xml.EventType.END_DOCUMENT;
+        expect(event).assertEqual(1)
+    })
+
+    /**
+     * @tc.name: testEventType003
+     * @tc.desc: Gets the START_TAG of EventType.
+     * @tc.require: AR000GGRB8
+     * @tc.author: lihucheng
+     */
+    it('testEventType003', 0, function () {
+        var event = xml.EventType.START_TAG;
+        expect(event).assertEqual(2)
+    })
+
+    /**
+     * @tc.name: testEventType004
+     * @tc.desc: Gets the END_TAG of EventType.
+     * @tc.require: AR000GGRB8
+     * @tc.author: lihucheng
+     */
+    it('testEventType004', 0, function () {
+        var event = xml.EventType.END_TAG;
+        expect(event).assertEqual(3)
+    })
+
+    /**
+     * @tc.name: testEventType005
+     * @tc.desc: Gets the TEXT of EventType.
+     * @tc.require: AR000GGRB8
+     * @tc.author: lihucheng
+     */
+    it('testEventType005', 0, function () {
+        var event = xml.EventType.TEXT;
+        expect(event).assertEqual(4)
+    })
+
+    /**
+     * @tc.name: testEventType006
+     * @tc.desc: Gets the CDSECT of EventType.
+     * @tc.require: AR000GGRB8
+     * @tc.author: lihucheng
+     */
+    it('testEventType006', 0, function () {
+        var event = xml.EventType.CDSECT;
+        expect(event).assertEqual(5)
+    })
+
+    /**
+     * @tc.name: testEventType007
+     * @tc.desc: Gets the COMMENT of EventType.
+     * @tc.require: AR000GGRB8
+     * @tc.author: lihucheng
+     */
+    it('testEventType007', 0, function () {
+        var event = xml.EventType.COMMENT;
+        expect(event).assertEqual(6)
+    })
+
+    /**
+     * @tc.name: testEventType008
+     * @tc.desc: Gets the DOCDECL of EventType.
+     * @tc.require: AR000GGRB8
+     * @tc.author: lihucheng
+     */
+    it('testEventType008', 0, function () {
+        var event = xml.EventType.DOCDECL;
+        expect(event).assertEqual(7)
+    })
+
+    /**
+     * @tc.name: testEventType009
+     * @tc.desc: Gets the INSTRUCTION of EventType.
+     * @tc.require: AR000GGRB8
+     * @tc.author: lihucheng
+     */
+    it('testEventType009', 0, function () {
+        var event = xml.EventType.INSTRUCTION;
+        expect(event).assertEqual(8)
+    })
+
+    /**
+     * @tc.name: testEventType010
+     * @tc.desc: Gets the ENTITY_REFERENCE of EventType.
+     * @tc.require: AR000GGRB8
+     * @tc.author: lihucheng
+     */
+    it('testEventType010', 0, function () {
+        var event = xml.EventType.ENTITY_REFERENCE;
+        expect(event).assertEqual(9)
+    })
+
+    /**
+     * @tc.name: testEventType011
+     * @tc.desc: Gets the WHITESPACE of EventType.
+     * @tc.require: AR000GGRB8
+     * @tc.author: lihucheng
+     */
+    it('testEventType011', 0, function () {
+        var event = xml.EventType.WHITESPACE;
+        expect(event).assertEqual(10)
+    })
 })

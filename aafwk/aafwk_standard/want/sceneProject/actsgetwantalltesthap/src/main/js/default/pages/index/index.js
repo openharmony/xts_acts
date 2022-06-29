@@ -14,32 +14,30 @@
  */
 import featureAbility from '@ohos.ability.featureAbility'
 
-var globalWant;
 export default {
     data: {
-        title: ""
+        title: ''
     },
     onInit() {
         this.title = this.$t('strings.world');
     },
-
     onShow() {
         console.info('============Start Ability onShow finish');
 
         featureAbility.getWant(
             (err, data) => {
-                globalWant = data;
-                console.debug("==========data=" + JSON.stringify(globalWant));
-                if (globalWant.parameters.mykey5[1] == 'test123'){
+                data = data;
+                console.debug("==========data=" + JSON.stringify(data));
+                if (data.parameters.mykey5[1] == 'test123'){
                     featureAbility.getWant().then((data) =>{
-                        globalWant = data
+                        data = data
                         setTimeout(function(){
                             console.debug("==========data2 bundleName is==========="
-                                           + JSON.stringify(globalWant.bundleName));
-                            var promise = featureAbility.terminateSelfWithResult(
+                                           + JSON.stringify(data.bundleName));
+                            featureAbility.terminateSelfWithResult(
                                 {
                                     resultCode: 1,
-                                    want: globalWant
+                                    want: data
                                 }
                             );
                         },1000);
@@ -47,11 +45,11 @@ export default {
                 }else{
                     setTimeout(function(){
                         console.debug("==========data1 bundleName is==========="
-                                       + JSON.stringify(globalWant.bundleName));
-                        var promise = featureAbility.terminateSelfWithResult(
+                                       + JSON.stringify(data.bundleName));
+                        featureAbility.terminateSelfWithResult(
                             {
                                 resultCode: 1,
-                                want: globalWant
+                                want: data
                             }
                         );
                     },1000);
@@ -60,5 +58,6 @@ export default {
         )
     },
     onReady() {
+        console.info('onReady');
     },
 }

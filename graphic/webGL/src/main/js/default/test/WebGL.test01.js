@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import app from '@system.app'
-import webgl from "@ohos.webglnapi";
 import Context from '@ohos.napi_context'
 
 import {

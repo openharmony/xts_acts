@@ -12,13 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import file from '@system.file'
-import app from '@system.app'
 import {Core, ExpectExtend, ReportExtend} from 'deccjsunit/index'
 
 export default {
     data: {
-        title: ""
+        title: ''
     },
     onInit() {
         this.title = this.$t('strings.world');
@@ -27,7 +27,7 @@ export default {
         console.info('====onShow finish====<')
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({
-            'id': 'extend'
+            id: 'extend'
         })
         const reportExtend = new ReportExtend(file)
         core.addService('expect', expectExtend)

@@ -25,7 +25,7 @@ export default {
     onInit() {
         this.title = this.$t('strings.world');
     },
-    onShow() {
+    onActive() {
         console.info('onShow finish')
         const core = Core.getInstance()
         const expectExtend = new ExpectExtend({

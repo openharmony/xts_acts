@@ -58,7 +58,7 @@ static BOOL UtilsFileFuncTestSuiteTearDown(void)
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_0100
- * @tc.name      : File operation for file creat and close with parameter RDONLY
+ * @tc.name      : File operation for file creation and close with parameter RDONLY
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose001, Function | MediumTest | Level1)
@@ -207,7 +207,7 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose004, Function | Medi
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_1000
- * @tc.name      : File operation for file creat and close with parameter WRONLY and EXCL
+ * @tc.name      : File operation for file creation and close with parameter WRONLY and EXCL
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose005, Function | MediumTest | Level1)
@@ -245,7 +245,7 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose006, Function | Medi
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_1200
- * @tc.name      : File operation for file creat and close with parameter TRUNC and EXCL
+ * @tc.name      : File operation for file creation and close with parameter TRUNC and EXCL
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose007, Function | MediumTest | Level1)
@@ -264,7 +264,7 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose007, Function | Medi
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_1300
- * @tc.name      : File operation for file creat and close with parameter APPEND and EXCL
+ * @tc.name      : File operation for file creation and close with parameter APPEND and EXCL
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose008, Function | MediumTest | Level1)

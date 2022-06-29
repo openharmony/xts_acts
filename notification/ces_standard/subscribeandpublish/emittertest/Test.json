@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "emittertest.hap"
+                "ActsEmitterTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -32,7 +32,6 @@ lite_component("acts_component") {
   } else {
     if (ohos_kernel_type == "liteos_m") {
       all_features += [
-        "//test/xts/acts/communication_lite/dsoftbus_hal:ActsDsoftbusMgrTest",
         "//test/xts/acts/aafwk_lite/ability_hal:ActsAbilityMgrTest",
         "//test/xts/acts/appexecfwk_lite/appexecfwk_hal:ActsBundleMgrTest",
         "//test/xts/acts/communication_lite/lwip_hal:ActsLwipTest",
@@ -40,7 +39,7 @@ lite_component("acts_component") {
         "//test/xts/acts/utils_lite/file_hal:ActsUtilsFileTest",
         "//test/xts/acts/startup_lite/syspara_hal:ActsParameterTest",
         "//test/xts/acts/iot_hardware_lite/iot_controller_hal:ActsWifiIotTest",
-        "//test/xts/acts/utils_lite/kv_store_hal:ActsKvStoreTest",
+        "//test/xts/acts/distributeddatamgr_lite/kv_store_hal:ActsKvStoreTest",
         "//test/xts/acts/security_lite/huks/liteos_m_adapter:ActsHuksHalFunctionTest",
         "//test/xts/acts/hiviewdfx_lite/hilog_hal:ActsDfxFuncTest",
         "//test/xts/acts/hiviewdfx_lite/hievent_hal:ActsHieventLiteTest",
@@ -52,7 +51,7 @@ lite_component("acts_component") {
       all_features += [
         "//test/xts/acts/kernel_lite:ActsKernelTest",
         "//test/xts/acts/security_lite:securitytest",
-        "//test/xts/acts/utils_lite/kv_store_posix:ActsKvStoreTest",
+        "//test/xts/acts/distributeddatamgr_lite/kv_store_posix:ActsKvStoreTest",
         "//test/xts/acts/startup_lite/syspara_posix:ActsParameterTest",
         "//test/xts/acts/startup_lite/bootstrap_posix:ActsBootstrapTest",
         "//test/xts/acts/open_posix_testsuite/conformance/interfaces:ActsOpenPosixTest",
@@ -78,7 +77,7 @@ lite_component("acts_component") {
       ]
     } else if (ohos_kernel_type == "linux") {
       all_features += [
-        "//test/xts/acts/utils_lite/kv_store_posix:ActsKvStoreTest",
+        "//test/xts/acts/distributeddatamgr_lite/kv_store_posix:ActsKvStoreTest",
         "//test/xts/acts/startup_lite/syspara_posix:ActsParameterTest",
         "//test/xts/acts/startup_lite/bootstrap_posix:ActsBootstrapTest",
         "//test/xts/acts/communication_lite/lwip_posix:ActsLwipTest",
@@ -131,6 +130,5 @@ generate_notice_file("acts_notice_file") {
     "//third_party/googletest",
     "//third_party/unity",
     "//third_party/bounds_checking_function",
-    "//third_party/iniparser",
   ]
 }

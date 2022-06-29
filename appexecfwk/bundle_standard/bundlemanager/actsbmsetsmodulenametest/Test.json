@@ -1,0 +1,43 @@
+{
+    "description": "Configuration for hjunit demo Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "120000",
+        "package": "com.example.actsbmsmodulenametest",
+        "shell-timeout": "60000"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsBmsEtsModuleNameTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "remount",
+                "mkdir /data/test"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                "bmsModuleNameTest1.hap->/data/test/bmsModuleNameTest1.hap",
+                "bmsModuleNameTest2.hap->/data/test/bmsModuleNameTest2.hap"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "bm install -p /data/test/bmsModuleNameTest1.hap",
+                "bm install -p /data/test/bmsModuleNameTest2.hap"
+            ],
+            "teardown-command":[
+                "bm uninstall -n com.example.bmsmodulename",
+                "rm -rf /data/test/"
+            ]
+        }
+    ]
+}

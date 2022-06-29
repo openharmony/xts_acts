@@ -1123,7 +1123,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testNotBetween0001
-     * @tc.number I4JWCV
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0230
      * @tc.desc test string value with notBetween.
      */
     it('testNotBetween0001', 0, async function (done) {
@@ -1142,7 +1142,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testNotBetween0002
-     * @tc.number I4JWCV
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0231
      * @tc.desc test double value with notBetween.
      */
     it('testNotBetween0002', 0, async function (done) {
@@ -1161,7 +1161,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testNotBetween0003
-     * @tc.number I4JWCV
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0232
      * @tc.desc test integer value with notBetween.
      */
     it('testNotBetween0003', 0, async function (done) {
@@ -1180,7 +1180,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testNotBetween0004
-     * @tc.number I4JWCV
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0233
      * @tc.desc test long value with notBetween.
      */
     it('testNotBetween0004', 0, async function (done) {
@@ -1199,7 +1199,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0001
-     * @tc.number I4JWCV
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0240
      * @tc.desc end with ? by glob.
      */
     it('testGlob0001', 0, async function (done) {
@@ -1218,7 +1218,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0002
-     * @tc.number I4JWCV
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0241
      * @tc.desc begin with * by glob.
      */
     it('testGlob0002', 0, async function (done) {
@@ -1237,7 +1237,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0003
-     * @tc.number I4JWCV
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0242
      * @tc.desc end with ? by glob.
      */
     it('testGlob0003', 0, async function (done) {
@@ -1256,7 +1256,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0004
-     * @tc.number I4JWCV
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0243
      * @tc.desc begin with ? by glob.
      */
     it('testGlob0004', 0, async function (done) {
@@ -1275,7 +1275,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0005
-     * @tc.number I4JWCV
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0244
      * @tc.desc begin and end with * by glob.
      */
     it('testGlob0005', 0, async function (done) {
@@ -1294,7 +1294,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testGlob0006
-     * @tc.number I4JWCV
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0245
      * @tc.desc begin and end with ? by glob.
      */
     it('testGlob0006', 0, async function (done) {
@@ -1521,7 +1521,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name predicates like normal test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0130
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0131
      * @tc.desc predicates like normal test
      */
     it('testLike0002', 0, async function (done) {
@@ -2058,7 +2058,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testNotIn0001
-     * @tc.number I4JWCV
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0250
      * @tc.desc the common and min value test with notin.
      */
     it('testNotIn0001', 0, async function (done) {
@@ -2075,7 +2075,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testNotIn0002
-     * @tc.number I4JWCV
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0251
      * @tc.desc the common and max value test with notin.
      */
     it('testNotIn0002', 0, async function (done) {
@@ -2092,7 +2092,7 @@ describe('rdbPredicatesTest', function () {
 
     /**
      * @tc.name testNotIn0003
-     * @tc.number I4JWCV
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Predicates_0252
      * @tc.desc the min and max value test with notin.
      */
     it('testNotIn0003', 0, async function (done) {

@@ -19,6 +19,9 @@
     "deviceType": [
       "phone"
     ],
+	"reqPermissions": [{
+      "name": "ohos.permission.NOTIFICATION_CONTROLLER"
+    }],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",

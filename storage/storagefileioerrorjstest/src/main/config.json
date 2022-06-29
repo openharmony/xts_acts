@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "ohos.acts.stroage.fileio",
+    "bundleName": "ohos.acts.storage.fileioerror",
     "vendor": "example",
     "version": {
       "code": 1000000,
@@ -13,7 +13,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "ohos.acts.stroage.fileio",
+    "package": "ohos.acts.storage.fileioerror",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -36,7 +36,7 @@
             ]
           }
         ],
-        "name": "ohos.acts.stroage.fileio.MainAbility",
+        "name": "ohos.acts.storage.fileioerror.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",

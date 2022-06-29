@@ -2,7 +2,6 @@
   "app": {
     "bundleName": "com.example.third1",
     "vendor": "example",
-    "singleUser":true,
     "version": {
       "code": 1,
       "name": "1.0"
@@ -14,13 +13,12 @@
     }
   },
   "deviceConfig": {
-    "default":{
-      "keepAlive":true
-    }
+    "default":{}
   },
   "module": {
     "package": "com.example.third3",
     "name": ".BmsThirdBundle3",
+    "colorMode": "auto",
     "deviceType": [
       "phone"
     ],
@@ -87,20 +85,6 @@
         ],
         "launchType": "standard",
         "metaData": {
-          "parameters": [
-            {
-              "name": "Data3",
-              "type": "float",
-              "description": "$string:mainability_description"
-            }
-          ],
-          "results": [
-            {
-              "name": "Data3",
-              "type": "float",
-              "description": "$string:mainability_description"
-            }
-          ],
           "customizeData": [
             {
               "name": "Data3",
@@ -132,7 +116,7 @@
           "voip",
           "taskKeeping"
         ],
-        "name": "com.example.third1.MainAbilityA",
+        "name": "com.example.third3.MainAbilityA",
         "icon": "$media:icon",
         "form": {
           "formEntity": [

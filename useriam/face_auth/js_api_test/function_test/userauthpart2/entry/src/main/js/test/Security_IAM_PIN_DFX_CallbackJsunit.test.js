@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -123,9 +123,13 @@ function sleep(ms) {
 
 describe('userauthTest', function () {
 
-
-
-
+    /*
+        * @tc.number    : Security_IAM_PIN_AddCred_DFX_0102
+        * @tc.name      : Add pin after add pin
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 3
+    */
     it('Security_IAM_PIN_AddCred_DFX_0102', 3, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
@@ -166,6 +170,13 @@ describe('userauthTest', function () {
         }
     })
 
+    /*
+        * @tc.number    : Security_IAM_PIN_AddCred_DFX_0103
+        * @tc.name      : Add pin after add pin
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 3
+    */
     it('Security_IAM_PIN_AddCred_DFX_0103', 3, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
@@ -205,8 +216,14 @@ describe('userauthTest', function () {
         }
     })
 
-
-    it('Security_IAM_PIN_Update_DFX_0101', 3, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Update_DFX_0101
+        * @tc.name      : Update pin with no pin
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_PIN_Update_DFX_0101', 1, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
             publicFC.publicOpenSession(UserIDM, function (data) {
@@ -239,15 +256,20 @@ describe('userauthTest', function () {
                     })
                 })
             })
-
-
         } catch (e) {
             console.log("Security_IAM_PIN_Update_DFX_0101 fail " + e);
             expect(null).assertFail();
         }
     })
 
-    it('Security_IAM_PIN_Update_DFX_0103', 3, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Update_DFX_0103
+        * @tc.name      : Update same pin with no error
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_PIN_Update_DFX_0103', 1, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
             publicFC.publicOpenSession(UserIDM, function (data) {
@@ -294,8 +316,14 @@ describe('userauthTest', function () {
     })
 
 
-
-    it('Security_IAM_PIN_Delet_DFX_0101', 3, async function (done) {
+    /*
+        * @tc.number    : Security_IAM_PIN_Delet_DFX_0101
+        * @tc.name      : Can't delete pin wirh no pin
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
+    */
+    it('Security_IAM_PIN_Delet_DFX_0101', 1, async function (done) {
         try {
             publicFC.publicRegisterInputer(PinAuth, AuthSubType.PIN_SIX, Inputerdata)
             publicFC.publicOpenSession(UserIDM, function (data) {

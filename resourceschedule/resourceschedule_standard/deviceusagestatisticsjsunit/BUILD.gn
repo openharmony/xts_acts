@@ -19,7 +19,7 @@ ohos_js_hap_suite("resourceschedule_deviceusagestatisticsjsunit_js_test") {
     ":resourceschedule_js_assets",
     ":resourceschedule_js_resources",
   ]
-  certificate_profile = "./signature/openharmony_sx.p7b"
+  certificate_profile = "./signature/ohos_device_usage_statistics.p7b"
   hap_name = "ActsResourcescheduleDeviceUsageStatisticsJsunitTest"
 }
 ohos_js_assets("resourceschedule_js_assets") {

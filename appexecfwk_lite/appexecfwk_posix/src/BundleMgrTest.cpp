@@ -29,11 +29,10 @@ using namespace OHOS;
 static bool g_installState = false;
 static int g_errorCode = -1;
 static sem_t g_sem;
-static const int32_t WAIT_TIMEOUT = 60;
 static string g_testPath;
 
 extern "C" {
-void __attribute__((weak)) HOS_SystemInit(void){};
+void __attribute__((weak)) HOS_SystemInit(void) { }
 }
 
 /* callback */
@@ -102,7 +101,8 @@ HWTEST_F(BundleMgrTest, testClearAbilityInfoIllegal, Function | MediumTest | Lev
     printf("------start testClearAbilityInfoIllegal------\n");
     // abilityInfo is nullptr
     AbilityInfo abilityInfo;
-    memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
+    int32_t result = memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
+    EXPECT_EQ(result, 0);
     abilityInfo.bundleName = (char*)"com.openharmony.testjsdemo";
     printf("abilityInfo.bundleName is %s \n", abilityInfo.bundleName);
     ClearAbilityInfo(nullptr);
@@ -119,7 +119,8 @@ HWTEST_F(BundleMgrTest, testClearBundleInfoIllegal, Function | MediumTest | Leve
 {
     printf("------start testClearBundleInfoIllegal------\n");
     BundleInfo bundleInfo;
-    memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    int32_t result = memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    EXPECT_EQ(result, 0);
     bundleInfo.bundleName = (char*)"com.openharmony.testjsdemo";
     printf("abilityInfo.bundleName is %s \n", bundleInfo.bundleName);
     ClearBundleInfo(nullptr);
@@ -137,7 +138,8 @@ HWTEST_F(BundleMgrTest, testClearModuleInfoIllegal, Function | MediumTest | Leve
 {
     printf("------start testClearModuleInfoIllegal------\n");
     ModuleInfo moduleInfo;
-    memset_s(&moduleInfo, sizeof(moduleInfo), 0, sizeof(moduleInfo));
+    int32_t result = memset_s(&moduleInfo, sizeof(moduleInfo), 0, sizeof(moduleInfo));
+    EXPECT_EQ(result, 0);
     moduleInfo.description = (char*)"test app";
     moduleInfo.moduleType = (char*)"entry";
     ClearModuleInfo(nullptr);
@@ -556,15 +558,18 @@ HWTEST_F(BundleMgrTest, testQueryAbilityInfoRight, Function | MediumTest | Level
 {
     printf("------start testQueryAbilityInfoRight------\n");
     Want want;
-    memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    int32_t resultWant = memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    EXPECT_EQ(resultWant, 0);
     ElementName element;
-    memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    int32_t resultElementName = memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    EXPECT_EQ(resultElementName, 0);
     SetElementAbilityName(&element, "MainAbility");
     SetElementBundleName(&element, "com.openharmony.testjsdemo");
     SetWantElement(&want, element);
     SetWantData(&want, "test", 4);
     AbilityInfo abilityInfo;
-    memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
+    int32_t result = memset_s(&abilityInfo, sizeof(abilityInfo), 0, sizeof(abilityInfo));
+    EXPECT_EQ(result, 0);
     printf("element.elementname is %s \n",  want.element->bundleName);
     printf("AbilityName2 is %s \n", want.element->abilityName);
     g_errorCode = QueryAbilityInfo(&want, &abilityInfo);
@@ -572,7 +577,7 @@ HWTEST_F(BundleMgrTest, testQueryAbilityInfoRight, Function | MediumTest | Level
     printf("abilityInfo.label is %s \n", abilityInfo.label);
     printf("abilityInfo.iconPath is %s \n", abilityInfo.iconPath);
     printf("ret is %d \n", g_errorCode);
-    EXPECT_TRUE(g_errorCode == 0);
+    EXPECT_EQ(g_errorCode, 0);
     printf("------end testQueryAbilityInfoRight------\n");
 }
 /**
@@ -584,23 +589,26 @@ HWTEST_F(BundleMgrTest, testQueryAbilityInfoIllegal, Function | MediumTest | Lev
 {
     printf("------start testQueryAbilityInfoIllegal------\n");
     AbilityInfo abilityInfo;
-    memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
+    int32_t result = memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
+    EXPECT_EQ(result, 0);
     // want is nullptr
     g_errorCode = QueryAbilityInfo(nullptr, &abilityInfo);
     printf("ret is %d \n", g_errorCode);
-    EXPECT_TRUE(g_errorCode == 4);
+    EXPECT_EQ(g_errorCode, 4);
     // abilityInfo is nullptr
     Want want;
-    memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    int32_t resultWant = memset_s(&want, sizeof(Want), 0, sizeof(Want));
+    EXPECT_EQ(resultWant, 0);
     ElementName element;
-    memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    int32_t resultElementName = memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
+    EXPECT_EQ(resultElementName, 0);
     SetElementAbilityName(&element, "MainAbility");
     SetElementBundleName(&element, "com.openharmony.testjsdemo");
     SetWantElement(&want, element);
     SetWantData(&want, "test", 4);
     g_errorCode = QueryAbilityInfo(&want, nullptr);
     printf("ret is %d \n", g_errorCode);
-    EXPECT_TRUE(g_errorCode == 4);
+    EXPECT_EQ(g_errorCode, 4);
     // content of want is ""
     Want want1 = { nullptr };
     ElementName element1 = { nullptr };
@@ -611,7 +619,7 @@ HWTEST_F(BundleMgrTest, testQueryAbilityInfoIllegal, Function | MediumTest | Lev
     g_errorCode = QueryAbilityInfo(&want1, &abilityInfo1);
     printf("abilityInfo is null \n");
     printf("ret is %d \n", g_errorCode);
-    EXPECT_TRUE(g_errorCode == 2);
+    EXPECT_EQ(g_errorCode, 2);
     printf("------end testQueryAbilityInfoIllegal------\n");
 }
 
@@ -624,7 +632,8 @@ HWTEST_F(BundleMgrTest, testGetBundleInfoRight, Function | MediumTest | Level1)
 {
     printf("------start testGetBundleInfoRight------\n");
     BundleInfo bundleInfo;
-    memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    int32_t result = memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    EXPECT_EQ(result, 0);
     const char *bundleName = (char*)"com.openharmony.testjsdemo";
     int32_t flags = 0;
     printf("bundleName is %s \n", bundleName);
@@ -655,7 +664,8 @@ HWTEST_F(BundleMgrTest, testGetBundleInfoIllegal, Function | MediumTest | Level2
 {
     printf("------start testGetBundleInfoIllegal------\n");
     BundleInfo bundleInfo;
-    memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    int32_t result = memset_s(&bundleInfo, sizeof(bundleInfo), 0, sizeof(bundleInfo));
+    EXPECT_EQ(result, 0);
     const char *bundleName = (char*)"com.openharmony.nothishap";
     int32_t flags = 0;
     // error bundleName
@@ -667,7 +677,7 @@ HWTEST_F(BundleMgrTest, testGetBundleInfoIllegal, Function | MediumTest | Level2
     // bundleName = nullptr
     g_errorCode = GetBundleInfo(nullptr, flags, &bundleInfo);
     printf("abilityInfo2 is %d \n", g_errorCode);
-    EXPECT_TRUE(g_errorCode == 4);
+    EXPECT_EQ(g_errorCode, 4);
     printf("bundleInfo2.bundleName is %s \n", bundleInfo.bundleName);
     printf("bundleInfo2.versionCode is %d \n", bundleInfo.versionCode);
     printf("bundleInfo2.codePath is %s \n", bundleInfo.codePath);
@@ -676,7 +686,7 @@ HWTEST_F(BundleMgrTest, testGetBundleInfoIllegal, Function | MediumTest | Level2
     printf("bundleInfo3.bundleName is %s \n", bundleInfo.bundleName);
     printf("bundleInfo3.versionCode is %d \n", bundleInfo.versionCode);
     printf("bundleInfo3.codePath is %s \n", bundleInfo.codePath);
-    EXPECT_TRUE(g_errorCode == 2);
+    EXPECT_EQ(g_errorCode, 2);
     // flags not exit
     g_errorCode = GetBundleInfo("com.openharmony.testjsdemo", 2, &bundleInfo);
     sleep(2);
@@ -736,7 +746,7 @@ HWTEST_F(BundleMgrTest, testGetBundleInfosIllegal, Function | MediumTest | Level
     EXPECT_EQ(g_errorCode, 4);
     g_errorCode = GetBundleInfos(flags, &bundleInfos, nullptr);
     printf("g_errorCode is %d \n", g_errorCode);
-    EXPECT_TRUE(g_errorCode == 4);
+    EXPECT_EQ(g_errorCode, 4);
     g_errorCode = GetBundleInfos(2, &bundleInfos, length);
     printf("g_errorCode is %d \n", g_errorCode);
     EXPECT_EQ(g_errorCode, 4);
@@ -758,10 +768,10 @@ HWTEST_F(BundleMgrTest, testGetBundleInfosByMetaDataIllegal, Function | MediumTe
     EXPECT_EQ(g_errorCode, 4);
     g_errorCode = GetBundleInfosByMetaData(metaDataKey, &bundleInfos, nullptr);
     printf("g_errorCode is %d \n", g_errorCode);
-    EXPECT_TRUE(g_errorCode == 4);
+    EXPECT_EQ(g_errorCode, 4);
     g_errorCode = GetBundleInfosByMetaData(metaDataKey, nullptr, &length);
     printf("g_errorCode is %d \n", g_errorCode);
-    EXPECT_TRUE(g_errorCode == 4);
+    EXPECT_EQ(g_errorCode, 4);
     const char *metaDataKey1 = "noThisKey";
     printf("metaDataKey is %s \n", metaDataKey1);
     g_errorCode = GetBundleInfosByMetaData(metaDataKey1, &bundleInfos, &length);
@@ -811,7 +821,7 @@ HWTEST_F(BundleMgrTest, testQueryKeepAliveBundleInfosIllegal, Function | MediumT
     EXPECT_EQ(g_errorCode, 4);
     g_errorCode = QueryKeepAliveBundleInfos(&bundleInfos, nullptr);
     printf("g_errorCode2 is %d \n", g_errorCode);
-    EXPECT_TRUE(g_errorCode == 4);
+    EXPECT_EQ(g_errorCode, 4);
     printf("------end testQueryKeepAliveBundleInfosIllegal------\n");
 }
 
@@ -872,7 +882,7 @@ HWTEST_F(BundleMgrTest, testGetBundleSizeWithLegal_0002, Function | MediumTest |
     char *bundleName = (char*)"com.openharmony.testjsdemoBundleNameleng" \
 "thequalto127testjsdemoBundleNamelengthequalto127testjsdemoBundleNamelengthequalto127tes";
     sem_init(&g_sem, 0, 0);
-    InstallParam installParam = {.installLocation = 1,.keepData = false };
+    InstallParam installParam = {.installLocation = 1, .keepData = false };
     string hapPath = g_testPath + "testGetBundleNameWithLegal127.hap";
     Install(hapPath.c_str(), &installParam, TestBundleStateCallback);
     sem_wait(&g_sem);
@@ -974,7 +984,7 @@ HWTEST_F(BundleMgrTest, testStressConfig_0002, Function | MediumTest | Level2)
     char *bundleName = (char*)"com.openharmony.testjsdemo";
     char *bundleName2 = (char*)"com.openharmony.testjsdemoBtestjsdemoB";
     sem_init(&g_sem, 0, 0);
-    InstallParam installParam = {.installLocation = 1,.keepData = false };
+    InstallParam installParam = {.installLocation = 1, .keepData = false };
     string hapPath = g_testPath + "frequentlyStress.hap";
     Install(hapPath.c_str(), &installParam, TestBundleStateCallback);
     sem_wait(&g_sem);

@@ -23,8 +23,8 @@ describe('fileio_stream', function () {
   /**
    * @tc.number SUB_DF_FILEIO_STREAM_CREATESTREAMSYNC_0000
    * @tc.name fileio_test_stream_create_stream_sync_000
-   * @tc.desc Test createStreamSync() interface.
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test createStreamSync() interface, Open read-write file.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -36,19 +36,19 @@ describe('fileio_stream', function () {
     try {
       let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
-      expect(ss.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-    } catch (e) {
-      console.log('fileio_test_stream_create_stream_sync_000 has failed for ' + e);
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
+    } catch (err) {
+      console.info('fileio_test_stream_create_stream_sync_000 has failed for ' + err);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_CREATESTREAMSYNC_0010
+   * @tc.number SUB_DF_FILEIO_STREAM_CREATESTREAMSYNC_0100
    * @tc.name fileio_test_stream_create_stream_sync_001
-   * @tc.desc Test createStreamSync() interface.
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test createStreamSync() interface, When file does not exist.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -58,17 +58,17 @@ describe('fileio_stream', function () {
 
     try {
       fileio.createStreamSync(fpath, 'r+');
-      expect(null).assertFail();
-    } catch (e) {
-      console.log('fileio_test_stream_create_stream_sync_001 has failed for ' + e);
+    } catch (err) {
+      console.info('fileio_test_stream_create_stream_sync_001 has failed for ' + err);
+      expect(err.message == "No such file or directory").assertTrue();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_CREATESTREAMSYNC_0020
+   * @tc.number SUB_DF_FILEIO_STREAM_CREATESTREAMSYNC_0200
    * @tc.name fileio_test_stream_create_stream_sync_002
-   * @tc.desc Test createStreamSync() interface.
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test createStreamSync() interface, When mode is invalid.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -79,17 +79,18 @@ describe('fileio_stream', function () {
 
     try {
       fileio.createStreamSync(fpath, 'ohos');
-      expect(null).assertFail();
-    } catch (e) {
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
+    } catch (err) {
+      console.info('fileio_test_stream_create_stream_sync_002 has failed for ' + err);
+      expect(err.message == "Invalid argument").assertTrue();
+      fileio.unlinkSync(fpath);
     }
   });
 
   /**
    * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0000
    * @tc.name fileio_test_stream_read_sync_000
-   * @tc.desc Test readSync() interface.
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test readSync() interface, read data from stream file.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -103,48 +104,46 @@ describe('fileio_stream', function () {
       expect(ss !== null).assertTrue();
       let len = ss.readSync(new ArrayBuffer(4096));
       expect(len == FILE_CONTENT.length).assertTrue();
-      expect(ss.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-    } catch (e) {
-      console.log('fileio_test_stream_read_sync_000 has failed for ' + e);
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
+    } catch (err) {
+      console.info('fileio_test_stream_read_sync_000 has failed for ' + err);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0010
+   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0100
    * @tc.name fileio_test_stream_read_sync_001
-   * @tc.desc Test the readSync method of class Stream.
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test the readSync method of class Stream,When offset equals buffer length..
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
   it('fileio_test_stream_read_sync_001', 0, async function () {
-    let bufLen = 5;
-    expect(FILE_CONTENT.length > bufLen).assertTrue();
     let fpath = await nextFileName('fileio_test_stream_read_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       let ss = fileio.createStreamSync(fpath, 'r+');
-      let len = ss.readSync(new ArrayBuffer(bufLen), {
-        offset: 1
+      let len = ss.readSync(new ArrayBuffer(4096), {
+        offset: 4096
       });
-      expect(len == (bufLen - 1)).assertTrue();
-      expect(ss.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-    } catch (e) {
-      console.log('fileio_test_stream_read_sync_001 has failed for ' + e);
+      expect(len == 0).assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
+    } catch (err) {
+      console.info('fileio_test_stream_read_sync_001 has failed for ' + err);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0020
+   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0200
    * @tc.name fileio_test_stream_read_sync_002
-   * @tc.desc Test the readSync method of class Stream.
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test the readSync method of class Stream,When the length is 1.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -159,19 +158,19 @@ describe('fileio_stream', function () {
         length: 1
       });
       expect(len == 1).assertTrue();
-      expect(ss.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-    } catch (e) {
-      console.log('fileio_test_stream_read_sync_002 has failed for ' + e);
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
+    } catch (err) {
+      console.info('fileio_test_stream_read_sync_002 has failed for ' + err);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0030
+   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0300
    * @tc.name fileio_test_stream_read_sync_003
-   * @tc.desc Test the readSync method of class Stream.
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test the readSync method of class Stream,When the position is 1.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -186,73 +185,73 @@ describe('fileio_stream', function () {
         position: 1
       });
       expect(len == (FILE_CONTENT.length - 1)).assertTrue();
-      expect(ss.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-    } catch (e) {
-      console.log('fileio_test_stream_read_sync_003 has failed for ' + e);
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
+    } catch (err) {
+      console.info('fileio_test_stream_read_sync_003 has failed for ' + err);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0040
+   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0400
    * @tc.name fileio_test_stream_read_sync_004
-   * @tc.desc Test the readSync method of class Stream.
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test the readSync method of class Stream,When the offset is greater than the buffer length.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
   it('fileio_test_stream_read_sync_004', 0, async function () {
     let ss;
-    const invalidOffset = 99999;
     let fpath = await nextFileName('fileio_test_stream_read_sync_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       ss = fileio.createStreamSync(fpath, 'r+');
       ss.readSync(new ArrayBuffer(4096), {
-        offset: invalidOffset
+        offset: 4097
       });
-      expect(null).assertFail();
-    } catch (e) {
-      expect(ss.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
+    } catch (err) {
+      console.info('fileio_test_stream_read_sync_004 has failed for ' + err);
+      expect(err.message == "Invalid option.offset, buffer limit exceeded").assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0050
+   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0500
    * @tc.name fileio_test_stream_read_sync_005
-   * @tc.desc Test the readSync method of class Stream.
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test the readSync method of class Stream, When the length is greater than the buffer length.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
   it('fileio_test_stream_read_sync_005', 0, async function () {
     let ss;
-    const invalidLength = 9999;
     let fpath = await nextFileName('fileio_test_stream_read_sync_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
       ss = fileio.createStreamSync(fpath, 'r+');
       ss.readSync(new ArrayBuffer(4096), {
-        length: invalidLength
+        length: 4097
       });
-      expect(null).assertFail();
-    } catch (e) {
-      expect(ss.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
+    } catch (err) {
+      console.info('fileio_test_stream_read_sync_005 has failed for ' + err);
+      expect(err.message == "Invalid option.length, buffer limit exceeded").assertTrue();
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0060
+   * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0600
    * @tc.name fileio_test_stream_read_sync_006
-   * @tc.desc Test the readSync method of class Stream.
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test the readSync method of class Stream, When position is equal to the length of the file content plus one.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -268,10 +267,10 @@ describe('fileio_stream', function () {
         position: invalidPos
       });
       expect(len == 0).assertTrue();
-      expect(ss.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-    } catch (e) {
-      console.log('fileio_test_stream_read_sync_006 has failed for ' + e);
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
+    } catch (err) {
+      console.info('fileio_test_stream_read_sync_006 has failed for ' + err);
       expect(null).assertFail();
     }
   });
@@ -279,8 +278,8 @@ describe('fileio_stream', function () {
   /**
    * @tc.number SUB_DF_FILEIO_STREAM_WRITESYNC_0000
    * @tc.name fileio_test_stream_write_sync_000
-   * @tc.desc Test writeSync() interface.
-   * @tc.size MEDIUM(中型)
+   * @tc.desc Test writeSync() interface, Write data to stream file.
+   * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
@@ -293,10 +292,10 @@ describe('fileio_stream', function () {
       let ss = fileio.createStreamSync(fpath, 'r+');
       expect(ss !== null).assertTrue();
       expect(ss.writeSync(FILE_CONTENT) == FILE_CONTENT.length).assertTrue();
-      expect(ss.closeSync() == null).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
-    } catch (e) {
-      console.log('fileio_test_stream_write_sync_000 has failed for ' + e);
+      ss.closeSync();
+      fileio.unlinkSync(fpath);
+    } catch (err) {
+      console.info('fileio_test_stream_write_sync_000 has failed for ' + err);
       expect(null).assertFail();
     }
   });

@@ -1,0 +1,20 @@
+{
+    "description": "Configuration for hjunit demo Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "180000",
+        "package": "com.amsst.stserviceabilityclient",
+        "shell-timeout": "60000"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsServiceAbilityClientTest.hap",
+                "ActsServiceAbilityServerRelyHap.hap",
+                "ActsServiceAbilityServerSecondRelyHap.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}

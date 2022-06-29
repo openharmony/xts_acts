@@ -26,13 +26,25 @@
             "push": [
                 "bmsAccessTokenTest1.hap->/data/test/bmsAccessTokenTest1.hap",
                 "bmsAccessTokenTest2.hap->/data/test/bmsAccessTokenTest2.hap",
-                "bmsAccessTokenTest3.hap->/data/test/bmsAccessTokenTest3.hap"
+                "bmsAccessTokenTest3.hap->/data/test/bmsAccessTokenTest3.hap",
+                "bmsAccessTokenTest4.hap->/data/test/bmsAccessTokenTest4.hap",
+                "bmsAccessTokenTest5.hap->/data/test/bmsAccessTokenTest5.hap"
             ]
         },
         {
             "type": "ShellKit",
             "run-command": [
-                "chmod 644 /data/test/*.hap"
+                "bm install -p /data/test/bmsAccessTokenTest1.hap",
+                "bm install -p /data/test/bmsAccessTokenTest4.hap",
+                "bm install -p /data/test/bmsAccessTokenTest3.hap",
+                "bm install -p /data/test/bmsAccessTokenTest2.hap",
+                "bm install -p /data/test/bmsAccessTokenTest5.hap"
+            ],
+            "teardown-command":[
+                "bm uninstall -n com.example.bmsaccesstoken1",
+                "bm uninstall -n com.example.bmsaccesstoken2",
+                "bm uninstall -n com.example.bmsaccesstoken3",
+                "rm -rf /data/test/"
             ]
         }
     ]

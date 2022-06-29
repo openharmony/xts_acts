@@ -29,10 +29,10 @@ using namespace testing::ext;
 // static membor must init before use.
 int AlarmTest::mReceivedSignal = 0;
 
-// general signal hander
+// general signal handler
 void AlarmTest::SignalHandler(int signum)
 {
-    LOG("hander recv a signal: %d", signum);
+    LOG("handler recv a signal: %d", signum);
     mReceivedSignal = signum;
 }
 

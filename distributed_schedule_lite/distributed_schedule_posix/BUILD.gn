@@ -27,7 +27,7 @@ hcpptest_suite("ActsDMSTest") {
     "src/utils",
     "//utils/native/lite/include",
     "//third_party/bounds_checking_function/include",
-    "//foundation/communication/ipc_lite/interfaces/kits",
+    "//foundation/communication/ipc/interfaces/innerkits/c/ipc/include",
     "//foundation/distributedschedule/samgr_lite/interfaces/kits/registry",
     "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
     "//foundation/distributedschedule/dmsfwk_lite/include",

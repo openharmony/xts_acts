@@ -44,7 +44,7 @@
           }
       ],
       "deviceType": [
-          "phone",
+          "default",
           "tablet",
           "tv",
           "wearable"

@@ -13,10 +13,9 @@
  * limitations under the License.
  */
 
-// export const AUTO_ACCEPT_NUMBER = '17615117737';
+
 export const AUTO_ACCEPT_NUMBER = '10010';
 export const AUTO_ACCEPT_NUMBER2 = '10010';
-export const NOT_ACCEPT_NUMBER = '17160409240';
 export const PHONE_NUMBER_AREA_LAND = '089800000000';
 export const PHONE_NUMBER_LENGTH_8 = '86459751';
 

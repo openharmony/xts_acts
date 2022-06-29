@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-import  ConvertXML from '@ohos.convertxml'
+import  convertxml from '@ohos.convertxml'
 describe('XmlTest', function () {
 
     /**
@@ -23,16 +23,21 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert001', 0, function () {
-        var xml =
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <title>Happy</title>' +
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, spaces: 0})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"element",'+
         '"_name":"note",'+
@@ -50,7 +55,7 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -60,16 +65,21 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert002', 0, function () {
-        var xml =
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <title>  Happy  </title>' +
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false,trim :true})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : true, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"element",'+
         '"_name":"note",'+
@@ -87,7 +97,7 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -97,16 +107,21 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert003', 0, function () {
-        var xml =
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <title>Happy</title>' +
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, ignoreDeclaration: true});
-        var str1 = '{"_elements":[{"_type":"element",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, ignoreDeclaration: true, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"element",'+
         '"_name":"note",'+
         '"_attributes":{"importance":"high",'+
         '"logged":"true"},'+
@@ -122,7 +137,7 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -132,7 +147,7 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert004', 0, function () {
-        var xml =
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <?go there?>'+
@@ -140,9 +155,14 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, ignoreInstruction: true});
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, ignoreInstruction: true, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"element",'+
         '"_name":"note",'+
@@ -161,7 +181,7 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -171,16 +191,21 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert005', 0, function () {
-        var xml =
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <title>Happy</title>' +
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, ignoreAttributes: true});
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, ignoreAttributes : true, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"element",'+
         '"_name":"note",'+
@@ -196,7 +221,7 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -206,7 +231,7 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert006', 0, function () {
-        var xml =
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <!--note-->'+
@@ -214,9 +239,14 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, ignoreComment: true})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration", ignoreComment: true,
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"element",'+
         '"_name":"note",'+
@@ -234,7 +264,7 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -244,7 +274,7 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert007', 0, function () {
-        var xml =
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<!--note-->'+
             '<note importance="high" logged="true">' +
@@ -252,9 +282,14 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, ignoreComment: true})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, ignoreComment: true, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"element",'+
         '"_name":"note",'+
@@ -272,7 +307,7 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -282,7 +317,7 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert008', 0, function () {
-        var xml =
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <![CDATA[<foo></bar>]]>'+
@@ -290,9 +325,14 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, ignoreCDATA: true})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration", ignoreCDATA: true,
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"element",'+
         '"_name":"note",'+
@@ -310,54 +350,50 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
-     * @tc.name: testConvert009
+     * @tc.name: testConvert09
      * @tc.desc: To convert XML text to JavaScript object.
      * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
-    it('testConvert009', 0, function () {
-        var xml =
+    it('testConvert09', 0, function () {
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
+            '<!DOCTYPE foo>'+
             '<note importance="high" logged="true">' +
             '    <title>Happy</title>' +
+            '    <todo>Work</todo>' +
+            '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, spaces: 4})
-        var str = '{\n'+
-        '    "_declaration": {\n'+
-        '        "_attributes": {\n'+
-        '            "version": "1.0",\n'+
-        '            "encoding": "utf-8"\n'+
-        '        }\n'+
-        '    },\n'+
-        '    "_elements": [\n'+
-        '        {\n'+
-        '            "_type": "element",\n'+
-        '            "_name": "note",\n'+
-        '            "_attributes": {\n'+
-        '                "importance": "high",\n'+
-        '                "logged": "true"\n'+
-        '            },\n'+
-        '            "_elements": [\n'+
-        '                {\n'+
-        '                    "_type": "element",\n'+
-        '                    "_name": "title",\n'+
-        '                    "_elements": [\n'+
-        '                        {\n'+
-        '                            "_type": "text",\n'+
-        '                            "_text": "Happy"\n'+
-        '                        }\n'+
-        '                    ]\n'+
-        '                }\n'+
-        '            ]\n'+
-        '        }\n'+
-        '    ]\n'+
-        '}'
-        expect(result1).assertEqual(str);
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration", ignoreDoctype: true,
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        '"encoding":"utf-8"}},'+
+        '"_elements":[{"_type":"element",'+
+        '"_name":"note",'+
+        '"_attributes":{"importance":"high",'+
+        '"logged":"true"},'+
+        '"_elements":[{"_type":"element",'+
+        '"_name":"title",'+
+        '"_elements":[{"_type":"text",'+
+        '"_text":"Happy"}]},'+
+        '{"_type":"element",'+
+        '"_name":"todo",'+
+        '"_elements":[{"_type":"text",'+
+        '"_text":"Work"}]},'+
+        '{"_type":"element",'+
+        '"_name":"todo",'+
+        '"_elements":[{"_type":"text",'+
+        '"_text":"Play"}]}]}]}'
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -367,54 +403,21 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert010', 0, function () {
-        var xml =
-            '<?xml version="1.0" encoding="utf-8"?>' +
-            '<!DOCTYPE foo>'+
-            '<note importance="high" logged="true">' +
-            '    <title>Happy</title>' +
-            '    <todo>Work</todo>' +
-            '    <todo>Play</todo>' +
-            '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, ignoreDoctype: true})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-        '"encoding":"utf-8"}},'+
-        '"_elements":[{"_type":"element",'+
-        '"_name":"note",'+
-        '"_attributes":{"importance":"high",'+
-        '"logged":"true"},'+
-        '"_elements":[{"_type":"element",'+
-        '"_name":"title",'+
-        '"_elements":[{"_type":"text",'+
-        '"_text":"Happy"}]},'+
-        '{"_type":"element",'+
-        '"_name":"todo",'+
-        '"_elements":[{"_type":"text",'+
-        '"_text":"Work"}]},'+
-        '{"_type":"element",'+
-        '"_name":"todo",'+
-        '"_elements":[{"_type":"text",'+
-        '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
-    })
-
-    /**
-     * @tc.name: testConvert011
-     * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
-     * @tc.author: lihucheng
-     */
-    it('testConvert011', 0, function () {
-        var xml =
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <title>Happy</title>' +
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, ignoreText: true})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, ignoreText: true, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"element",'+
         '"_name":"note",'+
@@ -426,26 +429,31 @@ describe('XmlTest', function () {
         '"_name":"todo"},'+
         '{"_type":"element",'+
         '"_name":"todo"}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
-     * @tc.name: testConvert012
+     * @tc.name: testConvert011
      * @tc.desc: To convert XML text to JavaScript object.
      * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
-    it('testConvert012', 0, function () {
-        var xml =
+    it('testConvert011', 0, function () {
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <title>Happy</title>' +
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, declarationKey: "123"})
-        var str1 = '{"123":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey: "123",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"123":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"element",'+
         '"_name":"note",'+
@@ -463,17 +471,17 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
-     * @tc.name: testConvert013
+     * @tc.name: testConvert012
      * @tc.desc: To convert XML text to JavaScript object.
      * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
-    it('testConvert013', 0, function () {
-        var xml =
+    it('testConvert012', 0, function () {
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <?go there?>'+
@@ -481,9 +489,14 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, instructionKey: "123"})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "123", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"element",'+
         '"_name":"note",'+
@@ -504,17 +517,17 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
-     * @tc.name: testConvert014
+     * @tc.name: testConvert013
      * @tc.desc: To convert XML text to JavaScript object.
      * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
-    it('testConvert014', 0, function () {
-        var xml =
+    it('testConvert013', 0, function () {
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <?go there?>'+
@@ -522,9 +535,14 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, attributesKey: "123"})
-        var str1 = '{"_declaration":{"123":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "123",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"123":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"123":{"importance":"high",'+
         '"logged":"true"},'+
@@ -545,26 +563,31 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
-     * @tc.name: testConvert015
+     * @tc.name: testConvert014
      * @tc.desc: To convert XML text to JavaScript object.
      * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
-    it('testConvert015', 0, function () {
-        var xml =
+    it('testConvert014', 0, function () {
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <title>Happy</title>' +
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, textKey: "123"})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "123", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"element",'+
         '"_name":"note",'+
@@ -582,17 +605,17 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"123":"Play",'+
         '"_type":"text"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
-     * @tc.name: testConvert016
+     * @tc.name: testConvert015
      * @tc.desc: To convert XML text to JavaScript object.
      * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
-    it('testConvert016', 0, function () {
-        var xml =
+    it('testConvert015', 0, function () {
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <![CDATA[1 is < 2]]>'+
@@ -600,9 +623,14 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, cdataKey: "123"})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey: "123", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"element",'+
         '"_name":"note",'+
@@ -622,17 +650,17 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
-     * @tc.name: testConvert017
+     * @tc.name: testConvert016
      * @tc.desc: To convert XML text to JavaScript object.
      * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
-    it('testConvert017', 0, function () {
-        var xml =
+    it('testConvert016', 0, function () {
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<!--note-->'+
             '<note importance="high" logged="true">' +
@@ -640,9 +668,14 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, commentKey: "123"})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "123", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"123":"note",'+
         '"_type":"comment"},'+
@@ -662,17 +695,17 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
-     * @tc.name: testConvert018
+     * @tc.name: testConvert017
      * @tc.desc: To convert XML text to JavaScript object.
      * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
-    it('testConvert018', 0, function () {
-        var xml =
+    it('testConvert017', 0, function () {
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <a><b/></a>'+
@@ -680,9 +713,14 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, parentKey: "123"})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "123", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"element",'+
         '"_name":"note",'+
@@ -704,26 +742,31 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
-     * @tc.name: testConvert019
+     * @tc.name: testConvert018
      * @tc.desc: To convert XML text to JavaScript object.
      * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
-    it('testConvert019', 0, function () {
-        var xml =
+    it('testConvert018', 0, function () {
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <title>Happy</title>' +
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, typeKey: "123"})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "123",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"123":"element",'+
         '"_name":"note",'+
@@ -741,26 +784,31 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"123":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
-     * @tc.name: testConvert020
+     * @tc.name: testConvert019
      * @tc.desc: To convert XML text to JavaScript object.
      * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
-    it('testConvert020', 0, function () {
-        var xml =
+    it('testConvert019', 0, function () {
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <title>Happy</title>' +
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, nameKey: "123"})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "123", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"123":"note",'+
         '"_type":"element",'+
@@ -778,26 +826,31 @@ describe('XmlTest', function () {
         '"_type":"element",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
-     * @tc.name: testConvert021
+     * @tc.name: testConvert020
      * @tc.desc: To convert XML text to JavaScript object.
      * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
-    it('testConvert021', 0, function () {
-        var xml =
+    it('testConvert020', 0, function () {
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<note importance="high" logged="true">' +
             '    <title>Happy</title>' +
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, elementsKey: "123"})
-        var str1 = '{"123":[{"123":[{"123":[{"_type":"text",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "123"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"123":[{"123":[{"123":[{"_type":"text",'+
         '"_text":"Happy"}],'+
         '"_type":"element",'+
         '"_name":"title"},'+
@@ -815,7 +868,26 @@ describe('XmlTest', function () {
         '"logged":"true"}}],'+
         '"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}}}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
+    })
+
+    /**
+     * @tc.name: testConvert021
+     * @tc.desc: To convert XML text to JavaScript object.
+     * @tc.require: AR000GFB5B
+     * @tc.author: lihucheng
+     */
+    it('testConvert021', 0, function () {
+        let xml = '<?xml?>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{}}'
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -825,11 +897,17 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert022', 0, function () {
-        var xml = '<?xml?>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_declaration":{}}'
-        expect(result1).assertEqual(str1);
+        let  xml = '<?xml version="1.0" encoding="utf-8"?>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        '"encoding":"utf-8"}}}'
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -839,12 +917,16 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert023', 0, function () {
-        var  xml = '<?xml version="1.0" encoding="utf-8"?>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
-        '"encoding":"utf-8"}}}'
-        expect(result1).assertEqual(str1);
+        let  xml = '<?xml?>\n<a/>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{},"_elements":[{"_type":"element","_name":"a"}]}'
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -854,11 +936,18 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert024', 0, function () {
-        var  xml = '<?xml?>\n<a/>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_declaration":{},"_elements":[{"_type":"element","_name":"a"}]}'
-        expect(result1).assertEqual(str1);
+        let  xml = '<?go there?>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"instruction",'+
+        '"_name":"go",'+
+        '"_instruction":"there"}]}'
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -868,13 +957,21 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert025', 0, function () {
-        var  xml = '<?go there?>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_elements":[{"_type":"instruction",'+
+        let  xml = '<?go there?><?come here?>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"instruction",'+
         '"_name":"go",'+
-        '"_instruction":"there"}]}'
-        expect(result1).assertEqual(str1);
+        '"_instruction":"there"},'+
+        '{"_type":"instruction",'+
+        '"_name":"come",'+
+        '"_instruction":"here"}]}'
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -884,16 +981,21 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert026', 0, function () {
-        var  xml = '<?go there?><?come here?>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_elements":[{"_type":"instruction",'+
-        '"_name":"go",'+
-        '"_instruction":"there"},'+
-        '{"_type":"instruction",'+
-        '"_name":"come",'+
-        '"_instruction":"here"}]}'
-        expect(result1).assertEqual(str1);
+        let  xml = '<!-- \t Hello World! \t -->';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"comment","_comment":"'+
+        ' \\t'+
+        ' Hello '+
+        'World! '+
+        '\\t '+
+        '"}]}'
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -903,16 +1005,24 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert027', 0, function () {
-        var  xml = '<!-- \t Hello World! \t -->';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_elements":[{"_type":"comment","_comment":"'+
-        ' \t'+
+        let  xml = '<!-- \t Hello \t -->\n<!-- \t World \t -->';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"comment","_comment":"'+
+        ' \\t'+
         ' Hello '+
-        'World! '+
-        '\t '+
+        '\\t '+
+        '"},{"_type":"comment","_comment":"'+
+        ' \\t'+
+        ' World '+
+        '\\t '+
         '"}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -922,19 +1032,20 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert028', 0, function () {
-        var  xml = '<!-- \t Hello \t -->\n<!-- \t World \t -->';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_elements":[{"_type":"comment","_comment":"'+
-        ' \t'+
-        ' Hello '+
-        '\t '+
-        '"},{"_type":"comment","_comment":"'+
-        ' \t'+
-        ' World '+
-        '\t '+
+        let  xml = '<![CDATA[ \t <foo></bar> \t ]]>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"cdata","_cdata":"'+
+        ' \\t'+
+        ' <foo></bar> '+
+        '\\t '+
         '"}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -944,15 +1055,26 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert029', 0, function () {
-        var  xml = '<![CDATA[ \t <foo></bar> \t ]]>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_elements":[{"_type":"cdata","_cdata":"'+
-        ' \t'+
-        ' <foo></bar> '+
-        '\t '+
-        '"}]}'
-        expect(result1).assertEqual(str1);
+        let  xml = '<![CDATA[ \t data]]><![CDATA[< > " and & \t ]]>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        console.log("LHC..." + result);
+        let str1 = '{"_elements":[{"_type":"cdata","_cdata":"'+
+        ' \\t'+
+        ' data"},{"_type":"cdata","_cdata":"< '+
+        '> '+
+        '\\"'+
+        ' and'+
+        ' & '+
+        '\\t '+
+        '"}]}';
+        console.log("LHC..." + str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -962,19 +1084,17 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert030', 0, function () {
-        var  xml = '<![CDATA[ \t data]]><![CDATA[< > " and & \t ]]>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_elements":[{"_type":"cdata","_cdata":"'+
-        ' \t'+
-        ' data"},{"_type":"cdata","_cdata":"< '+
-        '> '+
-        '"'+
-        ' and'+
-        ' & '+
-        '\t '+
-        '"}]}'
-        expect(result1).assertEqual(str1);
+        let  xml = '<a/>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"element",'+
+        '"_name":"a"}]}'
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -984,12 +1104,19 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert031', 0, function () {
-        var  xml = '<a/>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_elements":[{"_type":"element",'+
+        let  xml = '<a/>\n<a/>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"element",'+
+        '"_name":"a"},'+
+        '{"_type":"element",'+
         '"_name":"a"}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -999,14 +1126,19 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert032', 0, function () {
-        var  xml = '<a/>\n<a/>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact   : false})
-        var str1 = '{"_elements":[{"_type":"element",'+
+        let  xml = '<a/>\n<b/>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"element",'+
         '"_name":"a"},'+
         '{"_type":"element",'+
-        '"_name":"a"}]}'
-        expect(result1).assertEqual(str1);
+        '"_name":"b"}]}'
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -1016,14 +1148,18 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert033', 0, function () {
-        var  xml = '<a/>\n<b/>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_elements":[{"_type":"element",'+
-        '"_name":"a"},'+
-        '{"_type":"element",'+
-        '"_name":"b"}]}'
-        expect(result1).assertEqual(str1);
+        let  xml = '<a x="hello"/>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"element",'+
+        '"_name":"a",'+
+        '"_attributes":{"x":"hello"}}]}'
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -1033,13 +1169,19 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert034', 0, function () {
-        var  xml = '<a x="hello"/>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_elements":[{"_type":"element",'+
+        let  xml = '<a x="1.234" y="It\'s"/>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"element",'+
         '"_name":"a",'+
-        '"_attributes":{"x":"hello"}}]}'
-        expect(result1).assertEqual(str1);
+        '"_attributes":{"x":"1.234",'+
+        '"y":"It\'s"}}]}'
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -1049,14 +1191,20 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert035', 0, function () {
-        var  xml = '<a x="1.234" y="It\'s"/>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_elements":[{"_type":"element",'+
-        '"_name":"a",'+
-        '"_attributes":{"x":"1.234",'+
-        '"y":"It\'s"}}]}'
-        expect(result1).assertEqual(str1);
+        let  xml = '<a> \t Hi \t </a>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"element","_name":"a","_elements":[{"_type":"text","_text":"'+
+        ' \\t'+
+        ' Hi '+
+        '\\t '+
+        '"}]}]}';
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -1066,15 +1214,20 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert036', 0, function () {
-        var  xml = '<a> \t Hi \t </a>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_elements":[{"_type":"element","_name":"a","_elements":[{"_type":"text","_text":"'+
-        ' \t'+
-        ' Hi '+
-        '\t '+
-        '"}]}]}';
-        expect(result1).assertEqual(str1);
+        let  xml = '<a>  Hi  There \t </a>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"element","_name":"a","_elements":[{"_type":"text","_text":"'+
+        '  Hi '+
+        ' There '+
+        '\\t '+
+        '"}]}]}'
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -1084,15 +1237,19 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert037', 0, function () {
-        var  xml = '<a>  Hi  There \t </a>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_elements":[{"_type":"element","_name":"a","_elements":[{"_type":"text","_text":"'+
-        '  Hi '+
-        ' There '+
-        '\t '+
-        '"}]}]}'
-        expect(result1).assertEqual(str1);
+        let  xml = '<a>\n\v<b/>\n</a>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"element",'+
+        '"_name":"a",'+
+        '"_elements":[{"_type":"element",'+
+        '"_name":"b"}]}]}'
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -1102,14 +1259,21 @@ describe('XmlTest', function () {
      * @tc.author: lihucheng
      */
     it('testConvert038', 0, function () {
-        var  xml = '<a>\n\v<b/>\n</a>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_elements":[{"_type":"element",'+
+        let  xml = '<a>\n\v<b>\n\v\v<c/>\n\v</b>\n</a>';
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_elements":[{"_type":"element",'+
         '"_name":"a",'+
         '"_elements":[{"_type":"element",'+
-        '"_name":"b"}]}]}'
-        expect(result1).assertEqual(str1);
+        '"_name":"b",'+
+        '"_elements":[{"_type":"element",'+
+        '"_name":"c"}]}]}]}'
+        expect(result).assertEqual(str1);
     })
 
     /**
@@ -1118,27 +1282,8 @@ describe('XmlTest', function () {
      * @tc.require: AR000GFB5B
      * @tc.author: lihucheng
      */
-    it('testConvert039', 0, function () {
-        var  xml = '<a>\n\v<b>\n\v\v<c/>\n\v</b>\n</a>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false})
-        var str1 = '{"_elements":[{"_type":"element",'+
-        '"_name":"a",'+
-        '"_elements":[{"_type":"element",'+
-        '"_name":"b",'+
-        '"_elements":[{"_type":"element",'+
-        '"_name":"c"}]}]}]}'
-        expect(result1).assertEqual(str1);
-    })
-
-    /**
-     * @tc.name: testConvert040
-     * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.require: AR000GFB5B
-     * @tc.author: lihucheng
-     */
-        it('testConvert040', 0, function () {
-        var xml =
+        it('testConvert039', 0, function () {
+        let xml =
             '<?xml version="1.0" encoding="utf-8"?>' +
             '<!DOCTYPE foo>'+
             '<note importance="high" logged="true">' +
@@ -1146,9 +1291,14 @@ describe('XmlTest', function () {
             '    <todo>Work</todo>' +
             '    <todo>Play</todo>' +
             '</note>';
-        var convertml = new ConvertXML();
-        var result1 = convertml.convert(xml, {compact: false, doctypeKey: 'doctype'})
-        var str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
+        let conv = new convertxml.ConvertXML();
+        let options = {trim : false, declarationKey:"_declaration",
+                       instructionKey : "_instruction", attributesKey : "_attributes",
+                       textKey : "_text", cdataKey:"_cdata", doctypeKey : "doctype",
+                       commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                       nameKey : "_name", elementsKey : "_elements"}
+        let result = JSON.stringify(conv.convert(xml, options));
+        let str1 = '{"_declaration":{"_attributes":{"version":"1.0",'+
         '"encoding":"utf-8"}},'+
         '"_elements":[{"_type":"doctype","doctype":"foo"},'+
         '{"_type":"element",'+
@@ -1167,6 +1317,6 @@ describe('XmlTest', function () {
         '"_name":"todo",'+
         '"_elements":[{"_type":"text",'+
         '"_text":"Play"}]}]}]}'
-        expect(result1).assertEqual(str1);
+        expect(result).assertEqual(str1);
     })
 })

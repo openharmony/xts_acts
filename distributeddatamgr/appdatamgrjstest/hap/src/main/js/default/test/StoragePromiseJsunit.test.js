@@ -12,10 +12,10 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import storage from '@ohos.data.storage'
 
-const PATH = '/data/test_storage';
+const PATH = '/data/storage/el2/database/test_storage';
 const KEY_TEST_INT_ELEMENT = 'key_test_int';
 const KEY_TEST_LONG_ELEMENT = 'key_test_long';
 const KEY_TEST_FLOAT_ELEMENT = 'key_test_float';
@@ -24,14 +24,24 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 var mPref;
 
 describe('storageTest', function () {
-    beforeAll(function () {
+    beforeAll(async function () {
         console.info('beforeAll')
-        mPref = storage.getStorageSync(PATH);
+        const promise = storage.getStorage(PATH);
+        promise.then((Storage)=>{
+            mPref = Storage;
+        });
+        await promise;
+        done();
     })
 
-    afterAll(function () {
+    afterAll(async function (done) {
         console.info('afterAll')
-        storage.deleteStorageSync(PATH);
+        const promise = storage.deleteStorage(PATH);
+        promise.then(()=>{
+            console.log('Delete Storage finish');
+        });
+        await promise;
+        done();
     })
 
     /**
@@ -326,7 +336,7 @@ describe('storageTest', function () {
 
     /**
      * @tc.name deleteSync promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0140
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0180
      * @tc.desc deleteSync promise interface test
      */
     it('testPutString0171', 0, async function (done) {
@@ -347,7 +357,7 @@ describe('storageTest', function () {
 
     /**
      * @tc.name flush promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0150
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0190
      * @tc.desc flush promise interface test
      */
     it('testFlush00181', 0, async function (done) {
@@ -360,6 +370,81 @@ describe('storageTest', function () {
             expect('test').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
         }).catch((err) => {
             expect(null).assertFail();
+        });
+        await promise;
+        done();
+    })
+    
+    /**
+     * @tc.name Maximum length of key test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0200
+     * @tc.desc Maximum length of key test
+     */
+    it('testMaxLengthofKety0200', 0, async function(done){
+        mPref.clearSync();
+        const promise = mPref.put(MAX_KEY_LENGTH,"value1")
+        promise.then((ret)=>{
+            expect("value1").assertEqual(mPref.getSync(MAX_KEY_LENGTH,"defaultvalue"))
+        }).catch((err)=>{
+            expect(null).assertFail();
+        })
+        await promise;
+        done();
+    })
+
+    /**
+     * @tc.name Maximum length of value test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0210
+     * @tc.desc Maximum length of value test
+     */
+
+    it('testMaxLengthofValue0210', 0, async function (done) {
+        mPref.clearSync();
+        mPref.putSync("test", "abc");
+        const promise = mPref.put("test", MAX_VALUE_LENGTH);
+        promise.then((ret) => {
+            expect(MAX_VALUE_LENGTH).assertEqual(mPref.getSync("test", "defaultvalue"));
+        }).catch((err) => {
+            expect(null).assertFail();
+        });
+        await promise;
+        done();
+    })
+    
+
+        /**
+     * @tc.name Maximum length of value test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0220
+     * @tc.desc Maximum length of value test
+     */
+
+         it('testMaxLengthofValue0220', 0, async function (done) {
+            mPref.clearSync();
+            mPref.putSync("test",MAX_VALUE_LENGTH)
+            const promise = mPref.put("test", "y".repeat(8192));
+            promise.then((ret) => {
+                expect(MAX_VALUE_LENGTH).assertEqual(mPref.getSync("test", "defaultvalue"));
+            }).catch((err) => {
+                expect(null).assertFail();
+            });
+            await promise;
+            done();
+        })
+
+        /**
+     * @tc.name delete promise interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0230
+     * @tc.desc delete promise interface test
+     */
+
+    it('testDelete0230', 0, async function (done) {
+        mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
+        expect("abc").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
+        const promise = mPref.delete(KEY_TEST_STRING_ELEMENT);
+        promise.then((ret)=>{
+            expect("default").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT,"default"));
+        }).catch((err)=>{
+            expect('').assertFail();
         });
         await promise;
         done();

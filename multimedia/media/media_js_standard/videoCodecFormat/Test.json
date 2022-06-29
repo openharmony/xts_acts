@@ -1,0 +1,55 @@
+{
+    "description": "Configuration for video codec format Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "2000000",
+        "package": "ohos.acts.multimedia.video.codecformat",
+        "shell-timeout": "60000"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsVideoCodecFormatJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "rm -rf /storage/media/100/local/files/*",
+                "mkdir -p /data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/",
+                "chmod 777 -R /data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/"
+            ],
+            "teardown-command":[
+            ]
+        },
+        {
+            "type": "PushKit",
+            "pre-push": [
+            ],
+            "push": [
+                "./resource/media/es/H264_BP_720_480_10_3000000.h264 ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/",
+                "./resource/media/es/H264_BP_720_480_30_768000.h264 ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/",
+                "./resource/media/es/H264_BP_720_480_30_2000000.h264 ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/",
+                "./resource/media/es/H264_HP_352_288_30_3000000.h264 ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/",
+                "./resource/media/es/H264_HP_640_480_30_3000000.h264 ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/",
+                "./resource/media/es/H264_HP_720_480_25_3000000.h264 ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/",
+                "./resource/media/es/H264_HP_720_480_30_3000000.h264 ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/",
+                "./resource/media/es/H264_MP_720_480_30_64000.h264 ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/",
+                "./resource/media/es/H264_MP_720_480_30_128000.h264 ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/",
+                "./resource/media/es/H264_MP_720_480_30_192000.h264 ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/",
+                "./resource/media/es/H264_MP_720_480_30_384000.h264 ->/data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "chmod 777 -R /data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/",
+                "chmod 777 /data/app/el1/bundle/public/ohos.acts.multimedia.video.codecformat/ohos.acts.multimedia.video.codecformat/assets/entry/resources/rawfile/*"
+            ],
+            "teardown-command":[
+            ]
+        }
+    ]
+}

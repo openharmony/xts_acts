@@ -13,49 +13,12 @@
  * limitations under the License.
  */
 import featureAbility from '@ohos.ability.featureability'
-import missionManager from '@ohos.application.missionManager'
 import appManager from "@ohos.application.appManager"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-
-var abilityNameList = [
-    "com.ohos.launcher.MainAbility",
-    "com.ohos.callui.ServiceAbility",
-    "com.example.SimulateFeatureAbilityFir",
-    "com.example.actsamstestfourthscene.MainAbility",
-    "com.example.VerifyIoThirdAbility"
-]
-
-var bundleNameList = [
-    "com.ohos.launcher",
-    "com.ohos.systemui",
-    "com.ohos.callui",
-    "com.ohos.contacts",
-    "com.ohos.mms",
-    "com.ohos.telephonydataability",
-    "com.ohos.contactsdataability",
-    "com.ix.simulate.feature",
-    "com.example.actsamstestfourthscene",
-    "com.ix.verify.io"
-]
 
 describe('ActsAmsTestFourthScene', function () {
     console.info('----ActsAmsTestFourthScene----');
     beforeAll(async function (done) {
-        var maxnum = 10;
-        var data = await missionManager.getMissionInfos("", maxnum);
-        console.log('ActsAmsTestFourthScene beforeAll getMissionInfos data: ' + JSON.stringify(data));
-        for (var i = 0; i < data.length; i++) {
-            if (data[i].want.bundleName != 'com.example.actsamstestfourthscene') {
-                console.log("ActsAmsTestFourthScene, missionId: " + + JSON.stringify(data))
-                missionManager.clearMission(data[i].missionId,
-                    (error, info) => {
-                        console.info('ActsAmsTestFourthScene beforeAll clearMission error.code \
-                        ' + error.code + ', want.bundleName:' + data[i].want.bundleName);
-                    }
-                );
-            }
-        }
-
         await featureAbility.startAbility(
             {
                 want:
@@ -186,63 +149,6 @@ describe('ActsAmsTestFourthScene', function () {
             expect(typeof (info[i].uid)).assertEqual("number");
             expect(info[i].uid).assertLarger(0);
         }
-        done();
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_5500
-     * @tc.name      : removeMission : Remove Mission
-     * @tc.desc      : Remove Mission(by Promise)
-     */
-    it('Acts_Ams_test_5500', 0, async function (done) {
-        var maxnum = 30;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_5500 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        missionManager.clearMission(result[0].missionId,
-            (error, info) => {
-                console.info('clearMission error.code:' + error.code );
-                done();
-            }
-        );
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_5900
-     * @tc.name      : moveMissionToFront : Move Mission To Top
-     * @tc.desc      : Move Mission To Top(by Promise)
-     */
-    it('Acts_Ams_test_5900', 0, async function (done) {
-        var maxnum = 20;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_5900 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        var info = await missionManager.moveMissionToFront(result[0].missionId).catch(err => {
-            console.log('Acts_Ams_test_5900 moveMissionToFront failed: ' + err);
-            expect(err).assertEqual(0);
-        });
-        console.info('Acts_Ams_test_5900 moveMissionToFront data  [' + info + ']');
-        done();
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_2100
-     * @tc.name      : clearMission : Remove Mission
-     * @tc.desc      : Remove Mission(by Promise)
-     */
-    it('Acts_Ams_test_6100', 0, async function (done) {
-        var maxnum = 20;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_6100 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        var info = await missionManager.clearAllMissions().catch(err => {
-            console.log('Acts_Ams_test_6100 clearMissionInfos failed: ' + err);
-            expect(err).assertEqual(0);
-        });
-        console.info('Acts_Ams_test_6100 clearAllMissions data  [' + info + ']');
         done();
     })
 })

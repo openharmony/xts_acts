@@ -216,9 +216,9 @@ describe('KvStoreResultSetTest', function() {
      */
     it('testKvStoreResultSetGetPosition001', 0, async function(done) {
         try {
-            var positon = resultSet.getPosition();
-            console.log("testKvStoreResultSetGetPosition001 getPosition " + positon);
-            expect(positon == -1).assertTrue();
+            var position = resultSet.getPosition();
+            console.log("testKvStoreResultSetGetPosition001 getPosition " + position);
+            expect(position == -1).assertTrue();
         } catch (e) {
             console.log("testKvStoreResultSetGetPosition001 fail " + e);
             expect(null).assertFail();
@@ -233,13 +233,13 @@ describe('KvStoreResultSetTest', function() {
      */
     it('testKvStoreResultSetGetPosition002', 0, async function(done) {
         try {
-            var positon = resultSet.getPosition();
-            console.log("testKvStoreResultSetGetPosition002 getPosition " + positon);
-            expect(positon).assertEqual(-1);
+            var position = resultSet.getPosition();
+            console.log("testKvStoreResultSetGetPosition002 getPosition " + position);
+            expect(position).assertEqual(-1);
             var flag = resultSet.moveToLast();
             expect(flag).assertTrue();
-            positon = resultSet.getPosition();
-            expect(positon).assertEqual(9);
+            position = resultSet.getPosition();
+            expect(position).assertEqual(9);
         } catch (e) {
             console.log("testKvStoreResultSetGetPosition002 fail " + e);
             expect(null).assertFail();
@@ -254,8 +254,8 @@ describe('KvStoreResultSetTest', function() {
      */
     it('testKvStoreResultSetGetPosition003', 0, async function(done) {
         try {
-            var positon = resultSet.getPosition(123);
-            console.log("testKvStoreResultSetGetPosition003 getPosition " + positon);
+            var position = resultSet.getPosition(123);
+            console.log("testKvStoreResultSetGetPosition003 getPosition " + position);
             expect(null).assertFail();
         } catch (e) {
             console.log("testKvStoreResultSetGetPosition003 fail " + e);
@@ -270,8 +270,8 @@ describe('KvStoreResultSetTest', function() {
      */
     it('testKvStoreResultSetGetPosition004', 0, async function(done) {
         try {
-            var positon = resultSet.getPosition(123, 'test_string');
-            console.log("testKvStoreResultSetGetPosition004 getPosition " + positon);
+            var position = resultSet.getPosition(123, 'test_string');
+            console.log("testKvStoreResultSetGetPosition004 getPosition " + position);
             expect(null).assertFail();
         } catch (e) {
             console.log("testKvStoreResultSetGetPosition004 fail " + e);

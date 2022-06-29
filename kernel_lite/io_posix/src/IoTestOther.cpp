@@ -213,7 +213,9 @@ HWTEST_F(IoTest, testPread, Function | MediumTest | Level1)
 HWTEST_F(IoTest, testStrptime, Function | MediumTest | Level1)
 {
     struct tm tm;
-    memset_s(&tm, sizeof(struct tm), 0, sizeof(struct tm));
+    int memRet = -1;
+    memRet = memset_s(&tm, sizeof(struct tm), 0, sizeof(struct tm));
+    EXPECT_EQ(0, memRet);
     char *ret = strptime("2020-10-29 21:24:00abc", "%Y-%m-%d %H:%M:%S", &tm);
     EXPECT_STREQ(ret, "abc");
     EXPECT_EQ(tm.tm_year, 120);

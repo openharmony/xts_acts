@@ -23,6 +23,16 @@
       "moduleName": "entry",
       "moduleType": "entry"
     },
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.SET_TIME",
+        "reason": "use.ohos.permission.SET_TIME"
+      },
+      {
+        "name": "ohos.permission.SET_TIME_ZONE",
+        "reason": "use.ohos.permission.SET_TIME_ZONE"
+      }
+    ],
     "abilities": [
       {
         "visible": true,

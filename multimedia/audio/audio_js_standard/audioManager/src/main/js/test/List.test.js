@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (C) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +13,11 @@
  * limitations under the License.
  */
 
+require('./getPermission.test.js')
 require('./AudioFramework.test.js')
-//require('./AudioPerf.test.js')
-require('./AudioRenderer.test.js')
-require('./SR000GHLLV.test.js')
+require('./AudioVOIP.test.js')
 require('./AudioCall.test.js')
-require('./SR000GHQBN.test.js')
+require('./AudioCapturer.test.js')
+require('./AudioEventManagement.test.js')
+require('./AudioRenderer.test.js')
+

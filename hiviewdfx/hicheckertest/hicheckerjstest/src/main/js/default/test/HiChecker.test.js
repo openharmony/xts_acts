@@ -50,13 +50,12 @@ describe('HiCheckerTest', function () {
      * @tc.name HiCheckerTest001
      * @tc.desc 
      */
-    it('HiCheckerTest001', 0, async function (done) {
+    it('HiCheckerTest001', 0, function () {
         console.info('HiCheckerTest001 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
         let tmp = hichecker.contains(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
         console.log('add rule success!');
         expect(tmp).assertTrue();
-        done();
     })
 
     /**
@@ -64,19 +63,17 @@ describe('HiCheckerTest', function () {
      * @tc.name HiCheckerTest002
      * @tc.desc 
      */
-     it('HiCheckerTest002', 0, async function (done) {
+     it('HiCheckerTest002', 0, function () {
         console.info('HiCheckerTest002 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
-        hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
+        hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
         console.log('add rule success!');
         expect(hichecker.contains(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS)).assertTrue();
         expect(hichecker.contains(hichecker.RULE_CHECK_SLOW_EVENT)).assertTrue();
         expect(hichecker.contains(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK)).assertTrue();
         expect(hichecker.contains(hichecker.RULE_CAUTION_PRINT_LOG)).assertTrue();
-        expect(hichecker.contains(hichecker.RULE_CAUTION_TRIGGER_CRASH)).assertTrue();
-        let tmp = (hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT | hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
+        let tmp = (hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT | hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
         expect(hichecker.getRule() == tmp).assertTrue();
-        done();
     })
 
     /**
@@ -84,7 +81,7 @@ describe('HiCheckerTest', function () {
      * @tc.name HiCheckerTest003
      * @tc.desc 
      */
-     it('HiCheckerTest003', 0, async function (done) {
+     it('HiCheckerTest003', 0, function () {
         console.info('HiCheckerTest003 start');
         hichecker.addRule(-1);
         console.log('add wrong rule!');
@@ -95,7 +92,6 @@ describe('HiCheckerTest', function () {
         hichecker.addRule(999999);
         console.log('add wrong rule!');
         expect(hichecker.contains(-1)).assertEqual(false);
-        done();
     })
 
     /**
@@ -103,14 +99,13 @@ describe('HiCheckerTest', function () {
      * @tc.name HiCheckerTest004
      * @tc.desc 
      */
-     it('HiCheckerTest004', 0, async function (done) {
+     it('HiCheckerTest004', 0, function () {
         console.info('HiCheckerTest004 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
         expect(hichecker.contains(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS)).assertTrue();
         console.log('add rule success!');
         hichecker.removeRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
         expect(hichecker.contains(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS)).assertEqual(false);
-        done();
     })
 
     /**
@@ -118,17 +113,16 @@ describe('HiCheckerTest', function () {
      * @tc.name HiCheckerTest005
      * @tc.desc 
      */
-     it('HiCheckerTest005', 0, async function (done) {
+     it('HiCheckerTest005', 0, function () {
         console.info('HiCheckerTest005 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
-        hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
+        hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
         console.log('add rule success!');
-        let tmp = (hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
+        let tmp = (hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
         hichecker.removeRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
         expect(hichecker.getRule() == tmp).assertTrue();
-        hichecker.removeRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
+        hichecker.removeRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
         expect(hichecker.getRule() == 0).assertTrue();
-        done();
     })
 
     /**
@@ -136,19 +130,18 @@ describe('HiCheckerTest', function () {
      * @tc.name HiCheckerTest006
      * @tc.desc 
      */
-     it('HiCheckerTest006', 0, async function (done) {
+     it('HiCheckerTest006', 0, function () {
         console.info('HiCheckerTest006 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
-        hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
+        hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
         console.log('add rule success!');
-        let tmp = (hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT | hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG | hichecker.RULE_CAUTION_TRIGGER_CRASH);
+        let tmp = (hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT | hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
         hichecker.removeRule(-1);
         expect(hichecker.getRule() == tmp).assertTrue();
         hichecker.removeRule(0);
         expect(hichecker.getRule() == tmp).assertTrue();
         hichecker.removeRule(999999);
         expect(hichecker.getRule() == tmp).assertTrue();
-        done();
     })
     
 })

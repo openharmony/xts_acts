@@ -106,17 +106,17 @@ describe('ActsNetworkSearchTest', function () {
         radio.getNetworkState(SLOT_2, (err, data) => {
             if (err) {
                 console.log(`Telephony_NetworkSearch_getNetworkState_Async_0700 finish err: ${err}`);
-				expect(data.longOperatorName != 'longOperatorName').assertTrue();
-				expect(data.shortOperatorName != 'shortOperatorName').assertTrue();
-				expect(data.plmnNumeric != 'plmnNumeric').assertTrue();
-				expect(data.isRoaming != true).assertTrue();
-				expect(data.regState != radio.REG_STATE_IN_SERVICE).assertTrue();
-				expect(data.nsaState != radio.NSA_STATE_SA_ATTACHED).assertTrue();
-				expect(data.isCaActive != true).assertTrue();
                 done();
                 return;
             }
             console.log(`Telephony_NetworkSearch_getNetworkState_Async_0700 fail not go to err ${data}`);
+            expect(data.longOperatorName != 'longOperatorName').assertTrue();
+            expect(data.shortOperatorName != 'shortOperatorName').assertTrue();
+            expect(data.plmnNumeric != 'plmnNumeric').assertTrue();
+            expect(data.isRoaming != true).assertTrue();
+            expect(data.regState != radio.REG_STATE_IN_SERVICE).assertTrue();
+            expect(data.nsaState != radio.NSA_STATE_SA_ATTACHED).assertTrue();
+            expect(data.isCaActive != true).assertTrue();
             expect().assertFail();
             done();
         });
@@ -240,105 +240,9 @@ describe('ActsNetworkSearchTest', function () {
         done();
     });
 
-    /**
-     * @tc.number  Telephony_NetworkSearch_setNetworkSelectionMode_Async_0700
-     * @tc.name    SlotId parameter input is -1, test setNetworkSelectionMode() query function go to the error
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_setNetworkSelectionMode_Async_0700', 0, async function (done) {
+    
 
-        let networkSMode = {
-            slotId: 55, //set the error slot id is 55
-            selectMode: radio.NETWORK_SELECTION_AUTOMATIC,
-            networkInformation: {
-                operatorName: '',
-                operatorNumeric: '',
-                state: radio.NETWORK_AVAILABLE,
-                radioTech: radio.RADIO_TECHNOLOGY_GSM.toString(),
-            },
-            resumeSelection: false,
-        };
-        console.log(
-            `Telephony_NetworkSearch_setNetworkSelectionMode_Async_0700 networkSMode:${JSON.stringify(networkSMode)}`)
-        radio.setNetworkSelectionMode(networkSMode, (err) => {
-            if (err) {
-                console.log('Telephony_NetworkSearch_setNetworkSelectionMode_Async_0700 set finish');
-                done();
-                return;
-            }
-            console.log('Telephony_NetworkSearch_setNetworkSelectionMode_Async_0700 set not go to err');
-            expect().assertFail();
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0700
-     * @tc.name    SlotId parameter input is -1, test setNetworkSelectionMode() query function go to the error
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0700', 0, async function (done) {
-        let networkSMode = {
-            slotId: 55, //set the error slot id is 55
-            selectMode: radio.NETWORK_SELECTION_AUTOMATIC,
-            networkInformation: {
-                operatorName: '',
-                operatorNumeric: '',
-                state: radio.NETWORK_AVAILABLE,
-                radioTech: radio.RADIO_TECHNOLOGY_GSM.toString(),
-            },
-            resumeSelection: false,
-        };
-        console.log(
-            `Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0700 networkSMode:${JSON.stringify(networkSMode)}`)
-        try {
-            await radio.setNetworkSelectionMode(networkSMode);
-            console.log('Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0200 set fail');
-            expect().assertFail();
-            done();
-        } catch (err) {
-            console.log('Telephony_NetworkSearch_setNetworkSelectionMode_Promise_0200 set finish');
-            done();
-        };
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_getNetworkSearchInformation_Async_0400
-     * @tc.name    SlotId parameter input is -1, test getNetworkSearchInformation() query function go to the error
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_getNetworkSearchInformation_Async_0400', 0, async function (done) {
-        radio.getNetworkSearchInformation(SLOT_2, (err, data) => {
-            if (err) {
-				expect(data.isNetworkSearchSuccess != true).assertTrue();
-				expect(data.networkSearchResult != undefined).assertTrue();
-                console.log('Telephony_NetworkSearch_getNetworkSearchInformation_Async_0400 finish');
-                done();
-            } else {
-                console.log('Telephony_NetworkSearch_getNetworkSearchInformation_Async_0400 fail not go to err');
-                expect().assertFail();
-            }
-        });
-        done();
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_getNetworkSearchInformation_Promise_0400
-     * @tc.name    SlotId parameter input is -1, test getNetworkSearchInformation() query function go to the error
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_getNetworkSearchInformation_Promise_0400', 0, async function (done) {
-        try {
-            await radio.getNetworkSearchInformation(SLOT_2);
-            console.log('Telephony_NetworkSearch_getNetworkSearchInformation_Promise_0400 fail not go to err');
-            expect().assertFail();
-            done();
-            return;
-        } catch (err) {
-            console.log(`Telephony_NetworkSearch_getNetworkSearchInformation_Promise_0400 finish err: ${err}`);
-        }
-        done();
-    });
+    
 
     /**
      * @tc.number  Telephony_NetworkSearch_getNetworkState_Promise_0700
@@ -434,394 +338,41 @@ describe('ActsNetworkSearchTest', function () {
     })
 
     /**
-     * @tc.number  Telephony_NetworkSearch_getPreferredNetwork_Async_0700
-     * @tc.name    Verify the abnormal input of "slotId", test getPreferredNetwork() to view the callback result
-     * @tc.desc    Function test
+     * @tc.number  Telephony_NetworkSearch_getOperatorName_Async_0500
+     * @tc.name    testGetOperatorName_0500
+     * @tc.desc    Test getOperatorName api by callback.
      */
-    it('Telephony_NetworkSearch_getPreferredNetwork_Async_0700', 0, async function (done) {
-        radio.getPreferredNetwork(SLOT_2, (err, data) => {
+     it('Telephony_NetworkSearch_getOperatorName_Async_0500', 0, async function (done) {
+        radio.getOperatorName(0, (err, data) => {
             if (err) {
-                console.log(`Telephony_NetworkSearch_getPreferredNetwork_Async_0700 get PASS err: ${err}`);
+                console.log(`Telephony_NetworkSearch_getOperatorName_Async_0500 fail err: ${err}`);
+                expect().assertFail();
                 done();
                 return;
             }
-            console.log(`Telephony_NetworkSearch_getPreferredNetwork_Async_0700 fail not into err data: ${data}`);
-            expect().assertFail();
+            console.log(`Telephony_NetworkSearch_getOperatorName_Async_0500 finish  data: ${data}`);
+            expect(true).assertTrue();
             done();
         })
     })
 
     /**
-     * @tc.number  Telephony_NetworkSearch_getPreferredNetwork_Promise_0700
-     * @tc.name    Verify the abnormal input of "slotId", test getPreferredNetwork() to view the return result
-     * @tc.desc    Function test
+     * @tc.number  Telephony_NetworkSearch_getOperatorName_Async_0600
+     * @tc.name    testGetOperatorName_0600
+     * @tc.desc    Test getOperatorName api by promise.
      */
-    it('Telephony_NetworkSearch_getPreferredNetwork_Promise_0700', 0, async function (done) {
+    it('Telephony_NetworkSearch_getOperatorName_Promise_0500', 0, async function (done) {
         try {
-            let data = await radio.getPreferredNetwork(SLOT_2);
-            console.log(`Telephony_NetworkSearch_getPreferredNetwork_Promise_0700 fail  data: ${data}`);
-            expect().assertFail();
+            let data = await radio.getOperatorName(0);
+            console.log(`Telephony_NetworkSearch_getOperatorName_Promise_0500 finish data: ${data}`);
+            expect(true).assertTrue();
             done();
-            return;
         } catch (err) {
-            console.log(`Telephony_NetworkSearch_getPreferredNetwork_Promise_0700 finish err: ${err}`);
+            console.log(`Telephony_NetworkSearch_getOperatorName_Promise_0500 fail err: ${err}`);
+            expect().assertFail();
             done();
         }
     })
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_setPreferredNetwork_Async_0100
-     * @tc.name    Verify the abnormal input of "preferredNetworkMode",
-     *             test setPreferredNetwork() to view the callback result
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_setPreferredNetwork_Async_0100', 0, async function (done) {
-        radio.setPreferredNetwork(SLOT_0, PREFERRED_MODE_ERR2, (err, data) => {
-            if (err) {
-                console.log(`Telephony_NetworkSearch_setPreferredNetwork_Async_0100 set  err: ${err}`);
-                radio.getPreferredNetwork(SLOT_0, (err, data) => {
-                    if (err) {
-                        console.log(`Telephony_NetworkSearch_setPreferredNetwork_Async_0100 get fail err: ${err}`);
-                        expect().assertFail();
-                        done();
-                        return;
-                    }
-                    console.log(`Telephony_NetworkSearch_setPreferredNetwork_Async_0100 finish data: ${data}`);
-                    expect(data === radio.PREFERRED_NETWORK_MODE_AUTO).assertTrue();
-                    done();
-                })
-            } else {
-                console.log(`Telephony_NetworkSearch_setPreferredNetwork_Async_0100 fail err: ${data}`);
-                expect().assertFail();
-                done();
-            }
-        })
-    })
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_setPreferredNetwork_Async_0600
-     * @tc.name    Verify the "slotId" abnormal input, test setPreferredNetwork() to view the callback result
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_setPreferredNetwork_Async_0600', 0, async function (done) {
-        radio.setPreferredNetwork(SLOT_2, radio.PREFERRED_NETWORK_MODE_GSM, (err, data) => {
-            if (err) {
-                console.log(`Telephony_NetworkSearch_setPreferredNetwork_Async_0600 finish err: ${err}`);
-                radio.getPreferredNetwork(SLOT_0, (err, data) => {
-                    if (err) {
-                        console.log(`Telephony_NetworkSearch_setPreferredNetwork_Async_0600 get fail err: ${err}`);
-                        expect().assertFail();
-                        done();
-                        return;
-                    }
-                    console.log(
-                        `Telephony_NetworkSearch_setPreferredNetwork_Async_0600 finish data: ${JSON.stringify(data)}`);
-                    expect(data === radio.PREFERRED_NETWORK_MODE_AUTO).assertTrue();
-                    done();
-                })
-            } else {
-                console.log(`Telephony_NetworkSearch_setPreferredNetwork_Async_0600 fail: not go to err ${data}`);
-                expect().assertFail();
-                done();
-            }
-
-        })
-    })
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_setPreferredNetwork_Promise_0100
-     * @tc.name    Verify the abnormal input of "preferredNetworkMode",
-     *             test setPreferredNetwork() to view the callback result
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_setPreferredNetwork_Promise_0100', 0, async function (done) {
-        try {
-            await radio.setPreferredNetwork(SLOT_0, PREFERRED_MODE_ERR2);
-            console.log('Telephony_NetworkSearch_setPreferredNetwork_Promise_0100 set fail: not go to err');
-            expect().assertFail();
-            done();
-        } catch (err) {
-            try {
-                let data = await radio.getPreferredNetwork(SLOT_0);
-                console.log(`Telephony_NetworkSearch_setPreferredNetwork_Promise_0100 finish data: ${data}`);
-                expect(data === radio.PREFERRED_NETWORK_MODE_AUTO).assertTrue();
-                done();
-            } catch (err) {
-                console.log(`Telephony_NetworkSearch_setPreferredNetwork_Promise_0100 fail err: ${err}`);
-                expect().assertFail();
-                done();
-            }
-        }
-    })
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_setPreferredNetwork_Promise_0600
-     * @tc.name    Verify the abnormal input of "slotId", test setPreferredNetwork() return result
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_setPreferredNetwork_Promise_0600', 0, async function (done) {
-        try {
-            await radio.setPreferredNetwork(SLOT_2, radio.PREFERRED_NETWORK_MODE_GSM);
-            console.log('Telephony_NetworkSearch_setPreferredNetwork_Promise_0600 set fail: not go to err');
-            expect().assertFail();
-            done();
-        } catch (err) {
-            try {
-                let data = await radio.getPreferredNetwork(SLOT_0);
-                console.log(`Telephony_NetworkSearch_setPreferredNetwork_Promise_0600 finish data: ${data}`);
-                expect(data === radio.PREFERRED_NETWORK_MODE_AUTO).assertTrue();
-                done();
-            } catch (err) {
-                console.log(`Telephony_NetworkSearch_setPreferredNetwork_Promise_0600 fail err: ${err}`);
-                expect().assertFail();
-                done();
-            }
-        }
-    })
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_getCellInformation_Async_0500
-     * @tc.name    Test getCellInformation() with anomalous soltId(-1) to view the callback result
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_getCellInformation_Async_0500', 0, async function (done) {
-        radio.getCellInformation(SLOT_2, (err, data) => {
-            if (err) {
-                console.log(`Telephony_NetworkSearch_getCellInformation_Async_0500 fail: ${err}`);
-                expect().assertFail();
-                done();
-                return;
-            }
-            console.log(`Telephony_NetworkSearch_getCellInformation_Async_0500 end data: ${JSON.stringify(data)}`);
-            expect(data !== '' && data != undefined && data != null).assertTrue();
-            expect(data.length).assertEqual(0);
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_getCellInformation_Promise_0500
-     * @tc.name    Test getCellInformation() with anomalous soltId(-1) to view the callback result
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_getCellInformation_Promise_0500', 0, async function (done) {
-        radio.getCellInformation(SLOT_2).then(data => {
-            console.log(`Telephony_NetworkSearch_getCellInformation_Promise_0500 end data: ${JSON.stringify(data)}`);
-            expect(data !== '' && data != undefined && data != null).assertTrue();
-            expect(data.length).assertEqual(0);
-            done();
-        }).catch(err => {
-            console.log(`Telephony_NetworkSearch_getCellInformation_Promise_0500 fail: ${err}`);
-            expect().assertFail();
-            done();
-        })
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_sendUpdateCellLocationRequest_Async_0100
-     * @tc.name    Test sendUpdateCellLocationRequest() to view the callback result
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_sendUpdateCellLocationRequest_Async_0100', 0, async function (done) {
-        radio.sendUpdateCellLocationRequest((err) => {
-            if (err) {
-                console.log(`Telephony_NetworkSearch_sendUpdateCellLocationRequest_Async_0100 fail: ${err}`);
-                done();
-                return;
-            }
-            console.log(`Telephony_NetworkSearch_sendUpdateCellLocationRequest_Async_0100 success`)
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_sendUpdateCellLocationRequest_Promise_0100
-     * @tc.name    Test sendUpdateCellLocationRequest() to view the callback result
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_sendUpdateCellLocationRequest_Promise_0100', 0, async function (done) {
-        radio.sendUpdateCellLocationRequest().then(data => {
-            console.log(`Telephony_NetworkSearch_sendUpdateCellLocationRequest_Promise_0100 end data: ${data}`);
-            done();
-        }).catch(err => {
-            console.log(`Telephony_NetworkSearch_sendUpdateCellLocationRequest_Promise_0100 fail: ${err}`);
-            done();
-        })
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_getIMEI_Async_0500
-     * @tc.name    Test getIMEI(-1) to check the callback result
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_getIMEI_Async_0500', 0, async function (done) {
-        radio.getIMEI(SLOT_2, (err, data) => {
-            if (err) {
-                console.log(`Telephony_NetworkSearch_getIMEI_Async_0500 fail: ${err}`);
-                expect().assertFail();
-                done();
-                return;
-            }
-            console.log(`Telephony_NetworkSearch_getIMEI_Async_0500 end data: ${data}`);
-            expect(data === '').assertTrue();
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_getIMEI_Promise_0500
-     * @tc.name    Test getIMEI(-1) to check the callback result
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_getIMEI_Promise_0500', 0, async function (done) {
-        radio.getIMEI(SLOT_2).then(data => {
-            console.log(`Telephony_NetworkSearch_getIMEI_Promise_0500 end data: ${data}`);
-            expect(data === '').assertTrue();
-            done();
-        }).catch(err => {
-            console.log(`Telephony_NetworkSearch_getIMEI_Promise_0500 fail: ${err}`);
-            expect().assertFail();
-            done();
-        })
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_getUniqueDeviceId_Async_0500
-     * @tc.name    Test getUniqueDeviceId(-1) to check the callback result
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_getUniqueDeviceId_Async_0500', 0, async function (done) {
-        radio.getUniqueDeviceId(SLOT_2, (err, data) => {
-            if (err) {
-                console.log(`Telephony_NetworkSearch_getUniqueDeviceId_Async_0500 fail: ${err}`);
-                expect().assertFail();
-                done();
-                return;
-            }
-            console.log(`Telephony_NetworkSearch_getUniqueDeviceId_Async_0500 end data: ${data}`);
-            expect(data === '').assertTrue();
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_getUniqueDeviceId_Promise_0500
-     * @tc.name    Test getUniqueDeviceId(-1) to check the callback result
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_getUniqueDeviceId_Promise_0500', 0, async function (done) {
-        radio.getUniqueDeviceId(SLOT_2).then(data => {
-            console.log(`Telephony_NetworkSearch_getUniqueDeviceId_Promise_0500 end data: ${data}`);
-            expect(data === '').assertTrue();
-            done();
-        }).catch(err => {
-            console.log(`Telephony_NetworkSearch_getUniqueDeviceId_Promise_0500 fail: ${err}`);
-            expect().assertFail();
-            done();
-        })
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_getNrOptionMode_Async_0500
-     * @tc.name    Test getNrOptionMode(-1) to check the callback result
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_getNrOptionMode_Async_0500', 0, async function (done) {
-        radio.getNrOptionMode(SLOT_2, (err, data) => {
-            if (err) {
-                console.log(`Telephony_NetworkSearch_getNrOptionMode_Async_0500 get fail err: ${err}`);
-                expect().assertFail();
-                done();
-                return;
-            }
-            console.log(`Telephony_NetworkSearch_getNrOptionMode_Async_0500 end data: ${JSON.stringify(data)}`);
-            expect(data === radio.NR_OPTION_UNKNOWN).assertTrue();
-            done();
-        });
-    })
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_getNrOptionMode_Promise_0500
-     * @tc.name    Test getNrOptionMode(-1) to check the callback result
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_getNrOptionMode_Promise_0500', 0, async function (done) {
-        radio.getNrOptionMode(SLOT_2).then(data => {
-            console.log(`Telephony_NetworkSearch_getNrOptionMode_Promise_0500 end data: ${data}`);
-            expect(data === radio.NR_OPTION_UNKNOWN).assertTrue();
-            done();
-        }).catch(err => {
-            console.log(`Telephony_NetworkSearch_getNrOptionMode_Promise_0500 fail: ${err}`);
-            expect().assertFail();
-            done();
-        })
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_turnOnRadio_Async_0200
-     * @tc.name    Test The function turnOnRadio
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_turnOnRadio_Async_0200', 0, async function (done) {
-        radio.turnOnRadio((err) => {
-            if (err) {
-                console.log(`Telephony_NetworkSearch_turnOnRadio_Async_0200 turnOn fail: ${err}`);
-                done();
-                return;
-            }
-            console.log('Telephony_NetworkSearch_turnOnRadio_Async_0200 turnOn finish');
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_turnOnRadio_Promise_0200
-     * @tc.name    Test The function turnOnRadio
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_turnOnRadio_Promise_0200', 0, async function (done) {
-        try {
-            await radio.turnOnRadio();
-            console.log('Telephony_NetworkSearch_turnOnRadio_Promise_0200 success');
-            done();
-        } catch (err) {
-            console.log(`Telephony_NetworkSearch_turnOnRadio_Promise_0200 fail ${err}`);
-            done();
-        }
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_turnOffRadio_Async_0200
-     * @tc.name    Test The function turnOffRadio
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_turnOffRadio_Async_0200', 0, async function (done) {
-        radio.turnOffRadio((err) => {
-            if (err) {
-                console.log(`Telephony_NetworkSearch_turnOffRadio_Async_0200 turnOff fail: ${err}`);
-                done();
-                return;
-            }
-            console.log('Telephony_NetworkSearch_turnOffRadio_Async_0200 turnOff finish');
-            done();
-        });
-    });
-
-    /**
-     * @tc.number  Telephony_NetworkSearch_turnOffRadio_Promise_0200
-     * @tc.name    Test The function turnOffRadio
-     * @tc.desc    Function test
-     */
-    it('Telephony_NetworkSearch_turnOffRadio_Promise_0200', 0, async function (done) {
-        try {
-            await radio.turnOffRadio();
-            console.log('Telephony_NetworkSearch_turnOffRadio_Promise_0200 success');
-            done();
-        } catch (err) {
-            console.log(`Telephony_NetworkSearch_turnOffRadio_Promise_0200 fail ${err}`);
-            done();
-        }
-    });
 
     /**
      * @tc.number  Telephony_NetworkSearch_isRadioOn_Async_0200
@@ -855,7 +406,40 @@ describe('ActsNetworkSearchTest', function () {
             done();
         }
     });
-	
+
+    /**
+     * @tc.number  Telephony_NetworkSearch_isRadioOn_Async_0300
+     * @tc.name    testIsRadioOn_0300
+     * @tc.desc    Test isRadioOn api by callback.
+     */
+     it('Telephony_NetworkSearch_isRadioOn_Async_0300', 0, async function (done) {
+        radio.isRadioOn(0, (err) => {
+            if (err) {
+                console.log(`Telephony_NetworkSearch_isRadioOn_Async_0300  fail: ${err}`);
+                done();
+                return;
+            }
+            console.log('Telephony_NetworkSearch_isRadioOn_Async_0300  finish');
+            done();
+        });
+    });
+
+    /**
+     * @tc.number  Telephony_NetworkSearch_isRadioOn_Async_0400
+     * @tc.name    testIsRadioOn_0400
+     * @tc.desc    Test isRadioOn api by promise.
+     */
+    it('Telephony_NetworkSearch_isRadioOn_Promise_0300', 0, async function (done) {
+        try {
+            await radio.isRadioOn(0);
+            console.log('Telephony_NetworkSearch_isRadioOn_Promise_0300 success');
+            done();
+        } catch (err) {
+            console.log(`Telephony_NetworkSearch_isRadioOn_Promise_0300 fail ${err}`);
+            done();
+        }
+    });
+
     /**
      * @tc.number  Telephony_StateRegistry_on_0200
      * @tc.name    Add a networkStatus change listen and test observer.on({slotId:0}) to view the callback results
@@ -868,7 +452,7 @@ describe('ActsNetworkSearchTest', function () {
         });
         done();
     });
-	
+
     /**
      * @tc.number  Telephony_StateRegistry_off_0200
      * @tc.name    Add a networkStatus change listen and test observer.off() to view the callback results
@@ -878,7 +462,7 @@ describe('ActsNetworkSearchTest', function () {
         observer.off('networkStateChange');
         done();
     });
-	
+
     /**
      * @tc.number  Telephony_StateRegistry_on_0300
      * @tc.name    Add a networkStatus change listen and test observer.on({slotId:0}) to view the callback results
@@ -891,7 +475,7 @@ describe('ActsNetworkSearchTest', function () {
         });
         done();
     });
-	
+
     /**
      * @tc.number  Telephony_StateRegistry_off_0300
      * @tc.name    Add a networkStatus change listen and test observer.off() to view the callback results

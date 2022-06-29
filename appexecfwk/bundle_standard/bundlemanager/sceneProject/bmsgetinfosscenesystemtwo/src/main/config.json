@@ -2,7 +2,6 @@
   "app": {
     "bundleName": "com.example.system2",
     "vendor": "example",
-    "singleUser":true,
     "version": {
       "code": 1,
       "name": "1.0"
@@ -14,9 +13,7 @@
     }
   },
   "deviceConfig": {
-    "default":{
-      "keepAlive":false
-    }
+    "default":{}
   },
   "module": {
     "package": "com.example.system2",
@@ -35,7 +32,15 @@
         "skills": [
           {
             "entities": [
-              "entity.system.home"
+              "entity.app.music",
+              "entity.app.email",
+              "entity.app.contacts",
+              "entity.app.maps",
+              "entity.app.browser",
+              "entity.app.calendar",
+              "entity.app.messaging",
+              "entity.app.files",
+              "entity.app.gallery"
             ],
             "actions": [
               "action.system.home"

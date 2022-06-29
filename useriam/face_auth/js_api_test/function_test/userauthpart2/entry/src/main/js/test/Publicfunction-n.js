@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -26,17 +26,21 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-//同步
 function publicRegisterInputer(PinAuth,AuthSubType,Inputerdata){
     console.info('testFace publicRegisterInputer in');
     try {
         console.info('testFace publicRegisterInputer in try');
         console.info('testFace publicRegisterInputer PinAuth = ' + PinAuth);
+        let GetAuthSubType = 0;
         let registerresult = PinAuth.registerInputer({
-            onGetData: (AuthSubType, IInputData) => {
-                console.info('testFace faceDemo registerInputer AuthSubType');
-                console.info('testFace faceDemo registerInputer AuthSubType111');
-                IInputData.onSetData(AuthSubType, Inputerdata)
+            onGetData: (GetAuthSubType, IInputData) => {
+                if (GetAuthSubType == 0) {
+                    console.info('testFace faceDemo registerInputer AuthSubType');
+                    console.info('testFace faceDemo registerInputer AuthSubType111');
+                    IInputData.onSetData(AuthSubType, Inputerdata)
+                } else {
+                    IInputData.onSetData(GetAuthSubType, Inputerdata)
+                }
             }
         })
         console.log("testFace publicRegisterInputer result is: " + registerresult);
@@ -194,7 +198,6 @@ function publicupdateCred(UserIDM,CredentialInfo,callback1,callback2){
     }
 }
 
-//同步
 function publiccancel(UserIDM,challenge){
     console.info('testFace publiccancel in');
     try {
@@ -328,7 +331,6 @@ function publicgetallAuthInfo(UserIDM,callback){
     }
 }
 
-//同步
 function publicgetAvailabeStatus(UserAuth,authType,authTrustLevel){
     console.info('testFace publicgetAvailableStatus in');
     try {
@@ -465,7 +467,6 @@ function publicauthUser(UserAuth,userID,challenge,authType,authTrustLevel,callba
     }
 }
 
-//同步
 function publicgecancelAuth(UserAuth,contextID){
     console.info('testFace publicgecancelAuth in');
     try {

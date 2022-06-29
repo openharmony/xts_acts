@@ -8,15 +8,15 @@
 	},
 	"kits": [
 		{
-			"test-file-name": ["MiscservicesRequestJSApiTest.hap"],
+			"test-file-name": ["ActsMiscservicesRequestJSApiTest.hap"],
 			"type": "AppInstallKit",
 			"cleanup-apps": true
 		},
 		{
             "type": "ShellKit",
             "run-command": [
-                "mkdir -p /data/accounts/account_0/appdata/com.example.myapplication.hmservice/cache",
-                "echo \"123456\" > /data/accounts/account_0/appdata/com.example.myapplication.hmservice/cache/test.txt"
+                "mkdir -p /data/app/el2/100/base/com.example.myapplication.hmservice/haps/entry/cache",
+                "echo \"123456\" > /data/app/el2/100/base/com.example.myapplication.hmservice/haps/entry/cache/test.txt"
             ]
         }
 	]

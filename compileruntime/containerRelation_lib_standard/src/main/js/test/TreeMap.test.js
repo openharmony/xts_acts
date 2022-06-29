@@ -377,4 +377,17 @@ describe("TreeMapTest", function () {
     }
     expect(flag).assertEqual(true);
   });
+  it("SR000GGR3H_testIsEmpty040", 0, function () {
+    let treeMap = new TreeMap();
+    treeMap.set(0, "a");
+    treeMap.set(1, "b");
+    treeMap.set(2, "c");
+    treeMap.set(3, "d");
+    treeMap.set(4, "g");
+    let res = treeMap.isEmpty();
+    expect(res).assertEqual(false);
+    treeMap.clear();
+    let res1 = treeMap.isEmpty();
+    expect(res1).assertEqual(true);
+  });
 });

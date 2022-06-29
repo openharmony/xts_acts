@@ -18,6 +18,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <gtest/gtest.h>
+#include <securec.h>
 #include <sstream>
 #include <string>
 
@@ -35,6 +36,7 @@ static int ONE = 1;
 static int FOUR = 4;
 static int SIX = 6;
 static int EIGHT = 8;
+static int GARBAGE_LEN = strlen(GARBAGE);
 static unsigned BUFFER_SIZE = 8192;
 }
 
@@ -43,7 +45,7 @@ static unsigned pull(void *desc, unsigned char **buf)
     static unsigned int next = 0;
     static unsigned char dat[] = {0x63, 0, 2, 0};
 
-    if (desc == nullptr) {
+    if (!desc) {
         next = 0;
         return 0;   /* no input (already provided at next_in) */
     }
@@ -125,7 +127,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestCompress, Function | MediumTest | Level2)
     fprintf(stderr, "compress error: %d\n", err);
     ASSERT_EQ(err, Z_OK);
 
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     err = uncompress(uncompr, &uncomprLen, compr, comprLen);
     fprintf(stderr, "uncompress error: %d\n", err);
     ASSERT_EQ(err, Z_OK);
@@ -171,7 +173,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzio, Function | MediumTest | Level2)
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
     ASSERT_TRUE(compr != Z_NULL && uncompr != Z_NULL);
 
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     ASSERT_TRUE(gzread(file, uncompr, static_cast<unsigned>(uncomprLen)) == len);
     ASSERT_FALSE(strcmp(reinterpret_cast<char *>(uncompr), HELLO));
 
@@ -253,7 +255,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflate, Function | MediumTest | Level2)
 
     int err = Z_OK;
     z_stream d_stream; /* decompression stream */
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     d_stream.zalloc = nullptr;
     d_stream.zfree = nullptr;
     d_stream.opaque = nullptr;
@@ -314,7 +316,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestLargeDeflate, Function | MediumTest | Level2)
     err = deflate(&c_stream, Z_NO_FLUSH);
     fprintf(stderr, "deflate result: %d\n", err);
     ASSERT_EQ(err, Z_OK);
-    ASSERT_TRUE(c_stream.avail_in == 0);
+    ASSERT_TRUE(!c_stream.avail_in);
 
     /* Feed in already compressed data and switch to no compression: */
     deflateParams(&c_stream, Z_NO_COMPRESSION, Z_DEFAULT_STRATEGY);
@@ -356,7 +358,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestLargeInflate, Function | MediumTest | Level2)
 
     int err = Z_OK;
     z_stream d_stream; /* decompression stream */
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     d_stream.zalloc = nullptr;
     d_stream.zfree = nullptr;
     d_stream.opaque = nullptr;
@@ -438,7 +440,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestSync, Function | MediumTest | Level2)
 
     int err = Z_OK;
     z_stream d_stream; /* decompression stream */
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     d_stream.zalloc = nullptr;
     d_stream.zfree = nullptr;
     d_stream.opaque = nullptr;
@@ -455,7 +457,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestSync, Function | MediumTest | Level2)
     inflateSync(&d_stream);
     inflate(&d_stream, Z_FINISH);
     inflateEnd(&d_stream);
-    printf("after inflateSync: hel%s\n", reinterpret_cast<char *>(uncompr));
+    printf("after inflateSync: help%s\n", reinterpret_cast<char *>(uncompr));
     free(compr);
     free(uncompr);
 }
@@ -515,7 +517,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestDictInflate, Function | MediumTest | Level2)
 
     int err = Z_OK;
     z_stream d_stream; /* decompression stream */
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     d_stream.zalloc = nullptr;
     d_stream.zfree = nullptr;
     d_stream.opaque = nullptr;
@@ -577,7 +579,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestCompress2, Function | MediumTest | Level2)
     fprintf(stderr, "compress2 Z_BEST_COMPRESSION result: %d\n", err);
     ASSERT_EQ(err, Z_OK);
 
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     err = uncompress2(uncompr, &uncomprLen, compr, &comprLen);
     fprintf(stderr, "uncompress2 Z_BEST_COMPRESSION result: %d\n", err);
     ASSERT_EQ(err, Z_OK);
@@ -806,7 +808,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzBuffer, Function | MediumTest | Level2)
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
     ASSERT_TRUE(compr != Z_NULL && uncompr != Z_NULL);
 
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     ASSERT_TRUE(gzread(file, uncompr, static_cast<unsigned>(uncomprLen)) == len);
     ASSERT_FALSE(strcmp(reinterpret_cast<char *>(uncompr), HELLO));
 
@@ -950,7 +952,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzGets, Function | MediumTest | Level2)
     Byte *uncompr;
     uLong uncomprLen = 10000 * sizeof(int);
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     fprintf(stderr, "gzgets\n");
     gzgets(file, reinterpret_cast<char *>(uncompr), static_cast<int>(uncomprLen));
     ASSERT_TRUE(strcmp(reinterpret_cast<char *>(uncompr), HELLO + SIX));
@@ -1002,7 +1004,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzOpen, Function | MediumTest | Level2)
     gzclose(file);
     file = gzopen(TESTFILE, "rb");
     ASSERT_TRUE(file != NULL);
-    gzclose(file); 
+    gzclose(file);
 #endif
 #ifdef Z_LARGE64
     int err = Z_OK;
@@ -1019,7 +1021,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzOpen, Function | MediumTest | Level2)
     gzclose(file);
     file = gzopen64(TESTFILE, "rb");
     ASSERT_TRUE(file != NULL);
-    gzclose(file); 
+    gzclose(file);
 #endif
 #if (defined(_WIN32) || defined(__CYGWIN__)) && !defined(Z_SOLO)
     gzFile file;
@@ -1118,7 +1120,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzRead, Function | MediumTest | Level2)
     uncompr = static_cast<Byte*>(calloc(static_cast<uInt>(uncomprLen), CALLOC_SIZE));
     ASSERT_TRUE(uncompr != Z_NULL);
 
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     ASSERT_TRUE(gzread(file, uncompr, static_cast<unsigned>(uncomprLen)) == len);
     gzclose(file);
 #endif
@@ -1161,7 +1163,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzseek, Function | MediumTest | Level2)
     err = gzseek(file, 1L, SEEK_CUR);
 #endif
 #ifdef Z_LARGE64
-    err = gzseek64(file, 1L, SEEK_CUR); 
+    err = gzseek64(file, 1L, SEEK_CUR);
 #endif
     ASSERT_TRUE(err == 1L);
     gzclose(file);
@@ -1333,7 +1335,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateCodesUsed, Function | MediumTest | Lev
     ASSERT_TRUE(compr != Z_NULL && uncompr != Z_NULL);
     unsigned long err;
     z_stream d_stream; /* decompression stream */
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     d_stream.zalloc = nullptr;
     d_stream.zfree = nullptr;
     d_stream.opaque = nullptr;
@@ -1378,7 +1380,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateGetDictionary, Function | MediumTest |
 
     int err = Z_OK;
     z_stream d_stream; /* decompression stream */
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     d_stream.zalloc = nullptr;
     d_stream.zfree = nullptr;
     d_stream.opaque = nullptr;
@@ -1548,7 +1550,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateReset, Function | MediumTest | Level2)
     int err = Z_OK;
     int windowBits = 8;
     z_stream d_stream; /* decompression stream */
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     d_stream.zalloc = nullptr;
     d_stream.zfree = nullptr;
     d_stream.opaque = nullptr;
@@ -1586,7 +1588,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateSetDictionary, Function | MediumTest |
 
     int err = Z_OK;
     z_stream d_stream; /* decompression stream */
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     d_stream.zalloc = nullptr;
     d_stream.zfree = nullptr;
     d_stream.opaque = nullptr;
@@ -1620,7 +1622,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateSyncPoint, Function | MediumTest | Lev
 
     int err = Z_OK;
     z_stream d_stream; /* decompression stream */
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     d_stream.zalloc = nullptr;
     d_stream.zfree = nullptr;
     d_stream.opaque = nullptr;
@@ -1652,7 +1654,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateUndermine, Function | MediumTest | Lev
 
     int err = Z_OK;
     z_stream d_stream; /* decompression stream */
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     d_stream.zalloc = nullptr;
     d_stream.zfree = nullptr;
     d_stream.opaque = nullptr;
@@ -1684,7 +1686,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestInflateValidate, Function | MediumTest | Leve
 
     int err = Z_OK;
     z_stream d_stream; /* decompression stream */
-    strcpy(reinterpret_cast<char *>(uncompr), GARBAGE);
+    strcpy_s(reinterpret_cast<char *>(uncompr), GARBAGE_LEN, GARBAGE);
     d_stream.zalloc = nullptr;
     d_stream.zfree = nullptr;
     d_stream.opaque = nullptr;
@@ -1713,7 +1715,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestzlibCompileFlags, Function | MediumTest | Lev
         fprintf(stderr, "incompatible zlib version\n");
         ASSERT_TRUE(false);
 
-    } else if (strcmp(zlibVersion(), ZLIB_VERSION) != 0) {
+    } else if (strcmp(zlibVersion(), ZLIB_VERSION)) {
         fprintf(stderr, "warning: different zlib version\n");
     }
 
@@ -1728,7 +1730,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestzlibCompileFlags, Function | MediumTest | Lev
  */
 HWTEST_F(ActsZlibTest, ActsZlibTestzError, Function | MediumTest | Level2)
 {
-    const char* err;   
+    const char* err;
     err = zError(Z_DATA_ERROR);
     ASSERT_EQ(err, "data error");
 }

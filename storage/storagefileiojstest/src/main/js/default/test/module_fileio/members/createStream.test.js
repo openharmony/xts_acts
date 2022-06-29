@@ -134,11 +134,12 @@ describe('fileio_createStream', function () {
 
     try {
       fileio.createStream(fpath, 'ohos', function (err) {
+        fileio.unlinkSync(fpath);
         done();
       });
     } catch (e) {
-      expect(!!e).assertTrue();
-      expect(fileio.unlinkSync(fpath) == null).assertTrue();
+      console.info("fileio_test_stream_create_stream_async_004 has failed for " + e);
+      fileio.unlinkSync(fpath);
       done();
     }
   });

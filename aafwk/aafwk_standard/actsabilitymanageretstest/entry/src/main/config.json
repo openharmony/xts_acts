@@ -16,6 +16,7 @@
   "module": {
     "package": "com.ohos.acecollaboration",
     "name": ".MyApplication",
+    "srcPath": "",
     "mainAbility": "com.ohos.acecollaboration.MainAbility",
     "deviceType": [
       "phone"
@@ -53,6 +54,19 @@
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:entry_MainAbility",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "visible": true,
+        "srcPath": "TestAbility",
+        "name": ".TestAbility",
+        "srcLanguage": "ets",
+        "icon": "$media:icon",
+        "description": "$string:TestAbility_desc",
+        "formsEnabled": false,
+        "label": "$string:TestAbility_label",
         "type": "page",
         "launchType": "standard"
       },
@@ -149,6 +163,20 @@
           "pages/index"
         ],
         "name": ".MainAbility2",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": false
+        }
+      },
+      {
+        "mode": {
+          "syntax": "ets",
+          "type": "pageAbility"
+        },
+        "pages": [
+          "pages/index"
+        ],
+        "name": ".TestAbility",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false

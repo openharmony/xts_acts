@@ -28,3 +28,4 @@ export const MAIL_NUMBER_LEN20 = '01234567890123456789';
 export const SIM_MIN_COUNT = 0;
 export const STK_CMD = 'D30781020181900101';
 export const SIM_PN_PIN_PASSWORD = '1111';
+export const INVALID_VALUE = -1000;

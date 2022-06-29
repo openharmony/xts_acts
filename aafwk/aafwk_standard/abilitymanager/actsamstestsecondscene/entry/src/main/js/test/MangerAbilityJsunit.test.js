@@ -13,49 +13,12 @@
  * limitations under the License.
  */
 import featureAbility from '@ohos.ability.featureability'
-import missionManager from '@ohos.application.missionManager'
 import appManager from "@ohos.application.appManager"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-
-var abilityNameList = [
-    "com.ohos.launcher.MainAbility",
-    "com.ohos.callui.ServiceAbility",
-    "com.example.SimulateFeatureAbilityFir",
-    "com.example.actsamstestsecondscene.MainAbility",
-    "com.example.VerifyIoThirdAbility"
-]
-
-var bundleNameList = [
-    "com.ohos.launcher",
-    "com.ohos.systemui",
-    "com.ohos.callui",
-    "com.ohos.contacts",
-    "com.ohos.mms",
-    "com.ohos.telephonydataability",
-    "com.ohos.contactsdataability",
-    "com.ix.simulate.feature",
-    "com.example.actsamstestsecondscene",
-    "com.ix.verify.io"
-]
 
 describe('ActsAmsTestSecondScene', function () {
     console.info('----ActsAmsTestSecondScene----');
     beforeAll(async function (done) {
-        var maxnum = 10;
-        var data = await missionManager.getMissionInfos("", maxnum);
-        console.log('ActsAmsTestSecondScene beforeAll getMissionInfos data: ' + JSON.stringify(data));
-        for (var i = 0; i < data.length; i++) {
-            if (data[i].want.bundleName != 'com.example.actsamstestsecondscene') {
-                console.log("ActsAmsTestSecondScene, missionId: " + data[i].missionId)
-                missionManager.clearMission(data[i].missionId,
-                    (error, info) => {
-                        console.info('ActsAmsTestSecondScene beforeAll clearMission error.code \
-                        ' + error.code + ', want.bundleName:' + data[i].want.bundleName);
-                    }
-                );
-            }
-        }
-
         await featureAbility.startAbility(
             {
                 want:
@@ -143,89 +106,5 @@ describe('ActsAmsTestSecondScene', function () {
             expect(info[i].uid).assertLarger(0);
         }
         done();
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_2700
-     * @tc.name      : moveMissionToFront : Move Mission To Top
-     * @tc.desc      : Move Mission To Top(by Promise)
-     */
-    it('Acts_Ams_test_2700', 0, async function (done) {
-        var maxnum = 20;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_2700 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        var info = await missionManager.moveMissionToFront(result[0].missionId).catch(err => {
-            console.log('Acts_Ams_test_2700 moveMissionToFront failed: ' + err);
-            expect(err).assertEqual(0);
-        });
-        console.info('Acts_Ams_test_2700 moveMissionToFront data  [' + info + ']');
-        done();
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_1900
-     * @tc.name      : getMissionInfos : Query Running Ability Mission Infos
-     * @tc.desc      : Query Running Ability Mission Infos(by Promise)
-     */
-    it('Acts_Ams_test_1900', 0, async function (done) {
-        var maxnum = 20;
-        var data = await missionManager.getMissionInfos("", maxnum);
-        expect(Array.isArray(data)).assertEqual(true);
-        expect(data.length).assertEqual(3);
-        for (var i = 0; i < data.length; i++) {
-            console.info('Acts_Ams_test_1900 getMissionInfos data[' + i + "]: " + JSON.stringify(data[i]));
-            expect(typeof (data[i].missionId)).assertEqual("number");
-            expect(data[i].missionId).assertLarger(0);
-
-            expect(typeof (data[i].want)).assertEqual("object");
-            expect(typeof (data[i].want.deviceId)).assertEqual("string");
-            expect(typeof (data[i].want.bundleName)).assertEqual("string");
-            expect(data[i].want.bundleName.length).assertLarger(0);
-            expect(bundleNameList.indexOf(data[i].want.bundleName)).assertLarger(-1);
-            expect(typeof (data[i].want.abilityName)).assertEqual("string");
-            expect(data[i].want.abilityName.length).assertLarger(0);
-            expect(abilityNameList.indexOf(data[i].want.abilityName)).assertLarger(-1);
-
-            expect(typeof (data[i].label)).assertEqual("string");
-            expect(typeof (data[i].iconPath)).assertEqual("string");
-        }
-        done();
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_2100
-     * @tc.name      : clearMission : Remove Mission
-     * @tc.desc      : Remove Mission(by Promise)
-     */
-    it('Acts_Ams_test_2300', 0, async function (done) {
-        var maxnum = 20;
-        var result = await missionManager.getMissionInfos("", maxnum);
-        for (var i = 0; i < result.length; i++) {
-            console.info('Acts_Ams_test_2300 getMissionInfos result[' + i + "]: " + JSON.stringify(result[i]));
-        }
-        var info = await missionManager.clearMission(result[0].missionId).catch(err => {
-            console.log('Acts_Ams_test_2300 clearMission failed: ' + err);
-            expect(err).assertEqual(0);
-        });
-        console.info('Acts_Ams_test_2300 clearMission data  [' + info + ']');
-        done();
-    })
-
-    /*
-     * @tc.number    : Acts_Ams_test_3100
-     * @tc.name      : killProcessesByBundleName : Kill Processes By BundleName
-     * @tc.desc      : Kill Processes By BundleName(by Promise)
-     */
-    it('Acts_Ams_test_3100', 0, async function (done) {
-        console.info('Acts_test_3100 killProcessesByBundleName data');
-        appManager.killProcessesByBundleName('XXXXXXXXXXXX').then(data => {
-            console.log('Acts_test_3100 success: ' + data);
-        }).catch(err => {
-            console.log('Acts_test_3100 failed: ' + err.code);
-            expect(err.code).assertEqual(2097215);
-            done();
-        });
     })
 })

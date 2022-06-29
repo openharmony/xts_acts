@@ -33,11 +33,6 @@ export default {
         require('../../../test/List.test')
         core.execute()
     },
-    onclick: function () {
-        router.replace({
-            uri: 'pages/second/second'
-        })
-    },
     touchMove(e) {
         if (e.direction === 'right') {
             this.appExit();

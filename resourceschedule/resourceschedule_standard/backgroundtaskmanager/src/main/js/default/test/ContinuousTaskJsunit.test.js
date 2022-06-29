@@ -467,32 +467,6 @@ describe("ContinuousTaskJsTest", function () {
     })
 	
 	/*
-    * @tc.name: ContinuousTaskJsTest015
-    * @tc.desc: test work scheduler constant
-    * @tc.type: FUNC
-    * @tc.require: 
-    */
-    it("ContinuousTaskJsTest015", 0, function (done) {
-        console.info('----------------------ContinuousTaskJsTest015---------------------------');
-        let value1 = backgroundTaskManager.BackgroundMode.WIFI_INTERACTION;
-        expect(value1).assertEqual(7)
-        done();
-    })
-	
-	/*
-    * @tc.name: ContinuousTaskJsTest016
-    * @tc.desc: test work scheduler constant
-    * @tc.type: FUNC
-    * @tc.require: 
-    */
-    it("ContinuousTaskJsTest016", 0, function (done) {
-        console.info('----------------------ContinuousTaskJsTest016---------------------------');
-        let value1 = backgroundTaskManager.BackgroundMode.VOIP;
-        expect(value1).assertEqual(8)
-        done();
-    })
-	
-	/*
     * @tc.name: ContinuousTaskJsTest017
     * @tc.desc: test work scheduler constant
     * @tc.type: FUNC

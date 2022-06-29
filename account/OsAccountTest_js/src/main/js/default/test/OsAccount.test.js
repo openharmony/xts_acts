@@ -30,7 +30,7 @@ describe('AccountTest', function () {
     */
    it('ActsDistributedAccountDeviceId_0100', 0, async function(done){
         console.log("test query distribtued id start");
-        const distributedId = '169C610CEF7F8310D78763C7DD8D28F0668D9FB8B1A3659CEF8F6BC3D9B39E17';
+        const distributedId = '5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5';
         const accountAbility = account.getDistributedAccountAbility();
         accountAbility.updateOsAccountDistributedInfo(
         {
