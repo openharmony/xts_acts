@@ -17,7 +17,7 @@
 import notification from '@system.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 describe('ActsNotificationShowTest', function () {
-    console.info("===========ActsNotificationShowTest start====================>");
+    console.info("ActsNotificationShowTest start");
 
      /*
      * @tc.number: ActsNotificationShowTest_0100
@@ -25,14 +25,16 @@ describe('ActsNotificationShowTest', function () {
      * @tc.desc: verify the function of show
      */
     it('ActsNotificationShowTest_0100', 0, async function (done) {
-        let con = {
+        let ShowNotificationOptions = {
             contentTitle: 'Title1',
-            contextText: 'This is a notification 001'
+            contentText: 'This is a notification 001'
         }
-        notification.show(con);
-        expect(con.contentTitle).assertEqual('Title1');
-        expect(con.contextText).assertEqual('This is a notification 001');
-        console.log('===========ActsNotificationShowTest_0100 success====================>' + con.contentTitle + con.contextText);
+        notification.show(ShowNotificationOptions);
+        expect(ShowNotificationOptions.contentTitle).assertEqual('Title1');
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 001');
+        console.log('ActsNotificationShowTest_0100 success' 
+        + ShowNotificationOptions.contentTitle 
+        + ShowNotificationOptions.contentText);
         done();
     })
 
@@ -42,16 +44,18 @@ describe('ActsNotificationShowTest', function () {
      * @tc.desc: verify the function of show
      */
     it('ActsNotificationShowTest_0200', 0, async function (done) {
-        let con = {
+        let ShowNotificationOptions ={
            contentTitle: 123,
-           contextText: 'This is a notification 002'
+           contentText: 'This is a notification 002'
         }
-        notification.show(con);
-        if(con.contentTitle == 123){
-           console.log('===========ActsNotificationShowTest_0200 conteneTitle is number: ====================' + con.contentTitle);
+        notification.show(ShowNotificationOptions);
+        if(ShowNotificationOptions.contentTitle == 123){
+           console.log('ActsNotificationShowTest_0200 conteneTitle is number:' 
+           + ShowNotificationOptions.contentTitle);
         }
-        expect(con.contextText).assertEqual('This is a notification 002');
-        console.log('===========ActsNotificationShowTest_0200 success====================>' + con.contextText);
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 002');
+        console.log(' ActsNotificationShowTest_0200 success' 
+        + ShowNotificationOptions.contentText);
         done();
     })
 
@@ -61,10 +65,10 @@ describe('ActsNotificationShowTest', function () {
      * @tc.desc: verify the function of show
      */
     it('ActsNotificationShowTest_0300', 0, async function (done) {
-        let con = {}
-        notification.show(con);
-        expect(con.contentTitle).assertEqual(undefined);
-        console.log('===========ActsNotificationShowTest_0300 success====================>');
+        let ShowNotificationOptions ={}
+        notification.show(ShowNotificationOptions);
+        expect(ShowNotificationOptions.contentTitle).assertEqual(undefined);
+        console.log(' ActsNotificationShowTest_0300 success  ');
         done();
     })
 
@@ -74,22 +78,27 @@ describe('ActsNotificationShowTest', function () {
      * @tc.desc: verify the function of show
      */
     it('ActsNotificationShowTest_0400', 0, async function (done) {
-        let con = {
+        let ShowNotificationOptions ={
             contentTitle: 'Title4',
-            contextText: 'This is a notification 004',
-            clickAction: {                
+            contentText: 'This is a notification 004',
+            ActionResult: {                
                bundleName: 'com.example.notification',                
                abilityName: 'com.example.notification.MainAbility',                
                uri: '/',            
             }
         }
-        notification.show(con);
-        expect(con.contentTitle).assertEqual('Title4');
-        expect(con.contextText).assertEqual('This is a notification 004');
-        expect(con.clickAction.bundleName).assertEqual('com.example.notification');
-        expect(con.clickAction.abilityName).assertEqual('com.example.notification.MainAbility');
-        expect(con.clickAction.uri).assertEqual('/');
-        console.log('===========ActsNotificationShowTest_0400 success====================>' + con.contentTitle + con.contextText + con.clickAction.bundleName + con.clickAction.abilityName + con.clickAction.uri);
+        notification.show(ShowNotificationOptions);
+        expect(ShowNotificationOptions.contentTitle).assertEqual('Title4');
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 004');
+        expect(ShowNotificationOptions.ActionResult.bundleName).assertEqual('com.example.notification');
+        expect(ShowNotificationOptions.ActionResult.abilityName).assertEqual('com.example.notification.MainAbility');
+        expect(ShowNotificationOptions.ActionResult.uri).assertEqual('/');
+        console.log('ActsNotificationShowTest_0400 success' 
+        + ShowNotificationOptions.contentTitle 
+        + ShowNotificationOptions.contentText 
+        + ShowNotificationOptions.ActionResult.bundleName 
+        + ShowNotificationOptions.ActionResult.abilityName 
+        + ShowNotificationOptions.ActionResult.uri);
         done();
     })
 
@@ -99,22 +108,27 @@ describe('ActsNotificationShowTest', function () {
      * @tc.desc: verify the function of show
      */
     it('ActsNotificationShowTest_0500', 0, async function (done) {
-        let con = {
+        let ShowNotificationOptions ={
             contentTitle: 'Title5',
-            contextText: 'This is a notification 005',
-            clickAction: {                
+            contentText: 'This is a notification 005',
+            ActionResult: {                
                bundleName: 'com.example.notification',                
                abilityName: 'com.example.notification.MainAbility',                
                uri: 'pages/index/index',            
             }
         }
-        notification.show(con);
-        expect(con.contentTitle).assertEqual('Title5');
-        expect(con.contextText).assertEqual('This is a notification 005');
-        expect(con.clickAction.bundleName).assertEqual('com.example.notification');
-        expect(con.clickAction.abilityName).assertEqual('com.example.notification.MainAbility');
-        expect(con.clickAction.uri).assertEqual('pages/index/index');
-        console.log('===========ActsNotificationShowTest_0500 success====================>' + con.contentTitle + con.contextText + con.clickAction.bundleName + con.clickAction.abilityName + con.clickAction.uri);
+        notification.show(ShowNotificationOptions);
+        expect(ShowNotificationOptions.contentTitle).assertEqual('Title5');
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 005');
+        expect(ShowNotificationOptions.ActionResult.bundleName).assertEqual('com.example.notification');
+        expect(ShowNotificationOptions.ActionResult.abilityName).assertEqual('com.example.notification.MainAbility');
+        expect(ShowNotificationOptions.ActionResult.uri).assertEqual('pages/index/index');
+        console.log('ActsNotificationShowTest_0500 success' 
+        + ShowNotificationOptions.contentTitle 
+        + ShowNotificationOptions.contentText 
+        + ShowNotificationOptions.ActionResult.bundleName 
+        + ShowNotificationOptions.ActionResult.abilityName 
+        + ShowNotificationOptions.ActionResult.uri);
         done();
     })
 
@@ -124,24 +138,29 @@ describe('ActsNotificationShowTest', function () {
      * @tc.desc: verify the function of show
      */
     it('ActsNotificationShowTest_0600', 0, async function (done) {
-        let con = {
+        let ShowNotificationOptions ={
             contentTitle: 'Title6',
-            contextText: 'This is a notification 006',
-            clickAction: {                
+            contentText: 'This is a notification 006',
+            ActionResult: {                
                bundleName: '',                
                abilityName: 'com.example.notification.MainAbility',                
                uri: '/',            
             }
         }
-        notification.show(con);
-        if(con.clickAction.bundleName == ''){
-            console.log('===========ActsNotificationShowTest_0200 bundleName is null: ====================' + con.clickAction.bundleName);
+        notification.show(ShowNotificationOptions);
+        if(ShowNotificationOptions.ActionResult.bundleName == ''){
+            console.log('ActsNotificationShowTest_0200 bundleName is null:'
+            + ShowNotificationOptions.ActionResult.bundleName);
         }
-        expect(con.contentTitle).assertEqual('Title6');
-        expect(con.contextText).assertEqual('This is a notification 006');
-        expect(con.clickAction.abilityName).assertEqual('com.example.notification.MainAbility');
-        expect(con.clickAction.uri).assertEqual('/');
-        console.log('===========ActsNotificationShowTest_0600 success====================>' + con.contentTitle + con.contextText + con.clickAction.abilityName + con.clickAction.uri);
+        expect(ShowNotificationOptions.contentTitle).assertEqual('Title6');
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 006');
+        expect(ShowNotificationOptions.ActionResult.abilityName).assertEqual('com.example.notification.MainAbility');
+        expect(ShowNotificationOptions.ActionResult.uri).assertEqual('/');
+        console.log(' ActsNotificationShowTest_0600 success' 
+        + ShowNotificationOptions.contentTitle 
+        + ShowNotificationOptions.contentText 
+        + ShowNotificationOptions.ActionResult.abilityName 
+        + ShowNotificationOptions.ActionResult.uri);
         done();
     })
 
@@ -151,24 +170,29 @@ describe('ActsNotificationShowTest', function () {
      * @tc.desc: verify the function of show
      */
     it('ActsNotificationShowTest_0700', 0, async function (done) {
-        let con = {
+        let ShowNotificationOptions ={
             contentTitle: 'Title7',
-            contextText: 'This is a notification 007',
-            clickAction: {                
+            contentText: 'This is a notification 007',
+            ActionResult: {                
                bundleName: 'com.example.notification',                
                abilityName: '',                
                uri: '/',            
             }
         }
-        notification.show(con);
-        if(con.clickAction.abilityName == ''){
-            console.log('===========ActsNotificationShowTest_0200 abilityName is null: ====================' + con.clickAction.abilityName);
+        notification.show(ShowNotificationOptions);
+        if(ShowNotificationOptions.ActionResult.abilityName == ''){
+            console.log('ActsNotificationShowTest_0200 abilityName is null:' 
+            + ShowNotificationOptions.ActionResult.abilityName);
         }
-        expect(con.contentTitle).assertEqual('Title7');
-        expect(con.contextText).assertEqual('This is a notification 007');
-        expect(con.clickAction.bundleName).assertEqual('com.example.notification');
-        expect(con.clickAction.uri).assertEqual('/');
-        console.log('===========ActsNotificationShowTest_0700 success====================>' + con.contentTitle + con.contextText + con.clickAction.bundleName + con.clickAction.uri);
+        expect(ShowNotificationOptions.contentTitle).assertEqual('Title7');
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 007');
+        expect(ShowNotificationOptions.ActionResult.bundleName).assertEqual('com.example.notification');
+        expect(ShowNotificationOptions.ActionResult.uri).assertEqual('/');
+        console.log('ActsNotificationShowTest_0700 success'
+         + ShowNotificationOptions.contentTitle 
+         + ShowNotificationOptions.contentText 
+         + ShowNotificationOptions.ActionResult.bundleName 
+         + ShowNotificationOptions.ActionResult.uri);
         done();
     })
 
@@ -178,24 +202,28 @@ describe('ActsNotificationShowTest', function () {
      * @tc.desc: verify the function of show
      */
     it('ActsNotificationShowTest_0800', 0, async function (done) {
-        let con = {
+        let ShowNotificationOptions ={
             contentTitle: 'Title8',
-            contextText: 'This is a notification 008',
-            clickAction: {                
+            contentText: 'This is a notification 008',
+            ActionResult: {                
                bundleName: 'com.example.notification',                
                abilityName: 'com.example.notification.MainAbility',                
                uri: '',            
             }
         }
-        notification.show(con);
-        if(con.clickAction.uri == ''){
-            console.log('===========ActsNotificationShowTest_0200 uri is null: ====================' + con.clickAction.uri);
+        notification.show(ShowNotificationOptions);
+        if(ShowNotificationOptions.ActionResult.uri == ''){
+            console.log('ActsNotificationShowTest_0200 uri is null: ' + ShowNotificationOptions.ActionResult.uri);
         }
-        expect(con.contentTitle).assertEqual('Title8');
-        expect(con.contextText).assertEqual('This is a notification 008');
-        expect(con.clickAction.bundleName).assertEqual('com.example.notification');
-        expect(con.clickAction.abilityName).assertEqual('com.example.notification.MainAbility');
-        console.log('===========ActsNotificationShowTest_0800 success====================>' + con.contentTitle + con.contextText + con.clickAction.bundleName + con.clickAction.abilityName);
+        expect(ShowNotificationOptions.contentTitle).assertEqual('Title8');
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 008');
+        expect(ShowNotificationOptions.ActionResult.bundleName).assertEqual('com.example.notification');
+        expect(ShowNotificationOptions.ActionResult.abilityName).assertEqual('com.example.notification.MainAbility');
+        console.log('ActsNotificationShowTest_0800 success' 
+        + ShowNotificationOptions.contentTitle 
+        + ShowNotificationOptions.contentText 
+        + ShowNotificationOptions.ActionResult.bundleName 
+        + ShowNotificationOptions.ActionResult.abilityName);
         done();
     })
 
@@ -205,20 +233,24 @@ describe('ActsNotificationShowTest', function () {
      * @tc.desc: verify the function of show
      */
     it('ActsNotificationShowTest_0900', 0, async function (done) {
-        let con = {
-            contextText: 'This is a notification 009',
-            clickAction: {                
+        let ShowNotificationOptions ={
+            contentText: 'This is a notification 009',
+            ActionResult: {                
                bundleName: 'com.example.notification',                
                abilityName: 'com.example.notification.MainAbility',                
                uri: '/',            
             }
         }
-        notification.show(con);
-        expect(con.contextText).assertEqual('This is a notification 009');
-        expect(con.clickAction.bundleName).assertEqual('com.example.notification');
-        expect(con.clickAction.abilityName).assertEqual('com.example.notification.MainAbility');
-        expect(con.clickAction.uri).assertEqual('/');
-        console.log('===========ActsNotificationShowTest_0900 success====================>' + con.contextText + con.clickAction.bundleName + con.clickAction.abilityName + con.clickAction.uri);
+        notification.show(ShowNotificationOptions);
+        expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 009');
+        expect(ShowNotificationOptions.ActionResult.bundleName).assertEqual('com.example.notification');
+        expect(ShowNotificationOptions.ActionResult.abilityName).assertEqual('com.example.notification.MainAbility');
+        expect(ShowNotificationOptions.ActionResult.uri).assertEqual('/');
+        console.log('ActsNotificationShowTest_0900 success' 
+        + ShowNotificationOptions.contentText 
+        + ShowNotificationOptions.ActionResult.bundleName 
+        + ShowNotificationOptions.ActionResult.abilityName 
+        + ShowNotificationOptions.ActionResult.uri);
         done();
     })
 
@@ -228,20 +260,25 @@ describe('ActsNotificationShowTest', function () {
      * @tc.desc: verify the function of show
      */
     it('ActsNotificationShowTest_1000', 0, async function (done) {
-        let con = {
+        let ShowNotificationOptions ={
             contentTitle: 'Title10',
-            clickAction: {                
+            ActionResult: {                
                bundleName: 'com.example.notification',                
                abilityName: 'com.example.notification.MainAbility',                
                uri: '/',            
             }
         }
-        notification.show(con);
-        expect(con.contentTitle).assertEqual('Title10');
-        expect(con.clickAction.bundleName).assertEqual('com.example.notification');
-        expect(con.clickAction.abilityName).assertEqual('com.example.notification.MainAbility');
-        expect(con.clickAction.uri).assertEqual('/');
-        console.log('===========ActsNotificationShowTest_1000 success====================>' + con.contentTitle + con.clickAction.bundleName + con.clickAction.abilityName + con.clickAction.uri);
+        notification.show(ShowNotificationOptions);
+        expect(ShowNotificationOptions.contentTitle).assertEqual('Title10');
+        expect(ShowNotificationOptions.ActionResult.bundleName).assertEqual('com.example.notification');
+        expect(ShowNotificationOptions.ActionResult.abilityName).assertEqual('com.example.notification.MainAbility');
+        expect(ShowNotificationOptions.ActionResult.uri).assertEqual('/');
+        console.log('ActsNotificationShowTest_1000 success ' 
+        + ShowNotificationOptions.contentTitle 
+        + ShowNotificationOptions.ActionResult.bundleName 
+        + ShowNotificationOptions.ActionResult.abilityName 
+        + ShowNotificationOptions.ActionResult.uri);
         done();
     })
+
 })
