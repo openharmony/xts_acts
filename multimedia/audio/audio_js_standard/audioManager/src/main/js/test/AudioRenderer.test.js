@@ -7940,7 +7940,7 @@ describe('audioRenderer', function () {
      * @tc.type: FUNC
      * @tc.require: Issue Number
      */
-    it("SetInterruptMode_001", 0, function (done) {
+    it("SetInterruptMode_001", 0,async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -7974,7 +7974,7 @@ describe('audioRenderer', function () {
      * @tc.type: FUNC
      * @tc.require: Issue Number
      */
-    it("SetInterruptMode_002", 0, function (done) {
+    it("SetInterruptMode_002", 0,async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -8008,7 +8008,7 @@ describe('audioRenderer', function () {
      * @tc.type: FUNC
      * @tc.require: Issue Number
      */
-    it("SetInterruptMode_003", 0, function (done) {
+    it("SetInterruptMode_003", 0,async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -8041,7 +8041,7 @@ describe('audioRenderer', function () {
         * @tc.type: FUNC
         * @tc.require: Issue Number
         */
-    it("SetInterruptMode_004", 0, function (done) {
+    it("SetInterruptMode_004", 0,async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
