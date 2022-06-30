@@ -66,7 +66,6 @@ describe('ImageReceiver', function () {
         if (receiver == undefined) {
             expect(false).assertTrue();
             done()
-            return;
         } else {
             receiver.on('imageArrival', () => {
                 expect(true).assertTrue();
@@ -78,7 +77,6 @@ describe('ImageReceiver', function () {
                 if (img == undefined) {
                     expect(false).assertTrue();
                     done()
-                    return;
                 } else {
                     expect(img.size.width == WIDTH).assertTrue();
                     expect(img.size.height == HEIGHT).assertTrue();
@@ -105,7 +103,6 @@ describe('ImageReceiver', function () {
         if (receiver == undefined) {
             expect(false).assertTrue();
             done()
-            return;
         } else {
             receiver.on('imageArrival', () => {
                 expect(true).assertTrue();
@@ -117,7 +114,6 @@ describe('ImageReceiver', function () {
                 if (img == undefined) {
                     expect(false).assertTrue();
                     done()
-                    return;
                 } else {
                     expect(img.size.width == WIDTH).assertTrue();
                     expect(img.size.height == HEIGHT).assertTrue();
@@ -158,7 +154,6 @@ describe('ImageReceiver', function () {
             if (err) {
                 expect(false).assertTrue();
                 done();
-                return;
             } else {
                 expect(img.size.width == WIDTH).assertTrue();
                 expect(img.size.height == HEIGHT).assertTrue();
@@ -172,7 +167,6 @@ describe('ImageReceiver', function () {
                     if (component == undefined) {
                         expect(false).assertTrue();
                         done();
-                        return;
                     } else {
                         expect(component.componentType == param).assertTrue();
                         expect(component.byteBuffer != undefined).assertTrue();
@@ -207,7 +201,6 @@ describe('ImageReceiver', function () {
             if (err) {
                 expect(false).assertTrue();
                 done();
-                return;
             } else {
                 expect(img.size.width == WIDTH).assertTrue();
                 expect(img.size.height == HEIGHT).assertTrue();
@@ -240,7 +233,6 @@ describe('ImageReceiver', function () {
         if (receiver == undefined) {
             expect(false).assertTrue();
             done();
-            return;
         } else {
             try {
                 receiver.on(param, () => {
@@ -763,6 +755,7 @@ describe('ImageReceiver', function () {
     it('Receiver_010_4', 0, async function (done) {
         getComponentCb(done, 'Receiver_010_4', JPEG)
     })
+	
     /**
      * @tc.number    : Receiver_010_5
      * @tc.name      : getComponent-YUV_Y
@@ -777,6 +770,7 @@ describe('ImageReceiver', function () {
     it('Receiver_010_5', 0, async function (done) {
         getComponentCb(done, 'Receiver_010_5', YUV_Y)
     })
+	
     /**
      * @tc.number    : Receiver_010_6
      * @tc.name      : getComponent-YUV_V
@@ -791,6 +785,7 @@ describe('ImageReceiver', function () {
     it('Receiver_010_6', 0, async function (done) {
         getComponentCb(done, 'Receiver_010_6', YUV_V)
     })
+	
     /**
      * @tc.number    : Receiver_010_7
      * @tc.name      : getComponent-YUV_U
@@ -805,6 +800,7 @@ describe('ImageReceiver', function () {
     it('Receiver_010_7', 0, async function (done) {
         getComponentCb(done, 'Receiver_010_7', YUV_U)
     })
+	
     /**
     * @tc.number    : Receiver_011
     * @tc.name      : on
@@ -819,7 +815,6 @@ describe('ImageReceiver', function () {
         if (receiver == undefined) {
             expect(false).assertTrue();
             done();
-            return;
         } else {
             let pass = false;
             receiver.on('imageArrival', (err) => {
@@ -870,7 +865,6 @@ describe('ImageReceiver', function () {
             if (img == undefined) {
                 expect(false).assertTrue();
                 done();
-                return;
             } else {
                 expect(img.size.width == WIDTH).assertTrue();
                 expect(img.size.height == HEIGHT).assertTrue();
