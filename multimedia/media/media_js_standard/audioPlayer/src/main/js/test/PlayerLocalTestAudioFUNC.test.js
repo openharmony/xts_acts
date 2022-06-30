@@ -14,6 +14,7 @@
  */
 
 import media from '@ohos.multimedia.media'
+import audio from '@ohos.multimedia.audio'
 import {playAudioSource} from '../../../../../AudioPlayerTestBase.js';
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
@@ -44,6 +45,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
     let bufferFlag = false;
     let fdHead = 'fd://';
     let fileDescriptor = undefined;
+    let fdPath = '';
+    let fdNumber = 0;
     let audioTrackKey = new Array('channel_count', 'codec_mime', 'sample_rate', 'track_index',
         'track_type');
     let audioTrackValue = new Array(1, 'audio/mpeg', 48000, 0, 0);
@@ -53,6 +56,10 @@ describe('PlayerLocalTestAudioFUNC', function () {
         await mediaTestBase.getFileDescriptor(AUDIO_SOURCE).then((res) => {
             fileDescriptor = res;
         });
+        await mediaTestBase.getFdRead(AUDIO_SOURCE, openFileFailed).then((testNumber) => {
+            fdNumber = testNumber;
+            fdPath = fdHead + '' + fdNumber;
+        })
         console.info('beforeAll case');
     })
 
@@ -67,8 +74,13 @@ describe('PlayerLocalTestAudioFUNC', function () {
 
     afterAll(async function() {
         await mediaTestBase.closeFileDescriptor(AUDIO_SOURCE);
+        await mediaTestBase.closeFdNumber(fdNumber);
         console.info('afterAll case');
     })
+
+    function openFileFailed() {
+        console.info('case file fail');
+    }
 
     function initAudioPlayer() {
         if (typeof (audioPlayer) != 'undefined') {
@@ -299,12 +311,11 @@ describe('PlayerLocalTestAudioFUNC', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_SETVOLUME', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, VOLUME_STATE, 0, VOLUME_STATE, 0.5,
             VOLUME_STATE, MAX_VOLUME, RESET_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;       
+        audioPlayer.src = fdPath;     
     })
 
     /* *
@@ -392,7 +403,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
             testAudioPlayer.release();
             done();
         });
-        testAudioPlayer.src = fdHead + fileDescriptor.fd;
+        testAudioPlayer.src = fdPath;
     })
 
     /* *
@@ -405,7 +416,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
     */
     it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_BASE_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
-        playAudioSource(fdHead + fileDescriptor.fd, DURATION_TIME, PLAY_TIME, true, done);
+        playAudioSource(fdPath, DURATION_TIME, PLAY_TIME, true, done);
     })
 
     /* *
@@ -434,8 +445,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
         function waitForDone() {
             console.info('case wait for next player');
         }
-        playAudioSource(fdHead + fileDescriptor.fd, DURATION_TIME, PLAY_TIME, true, waitForDone);
+        playAudioSource(fdPath, DURATION_TIME, PLAY_TIME, true, waitForDone);
         mediaTestBase.msleep(1000);
-        playAudioSource(fdHead + fileDescriptor.fd, DURATION_TIME, PLAY_TIME, true, done);
+        playAudioSource(fdPath, DURATION_TIME, PLAY_TIME, true, done);
     })
 })
