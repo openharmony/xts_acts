@@ -230,28 +230,6 @@ export default function getAllApplicationBundleTest() {
         });
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0500_0010
-         * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
-         * @tc.desc: Check the return value of the interface (by promise)
-         * @tc.level   0
-         */
-        it(TAG_TEST_0500_002, 0, async function (done) {
-            let errors;
-            let startTime = await Utils.getNowTime();
-            await Bundle.getAllApplicationInfo('Bundle.BundleFlag.GET_BUNDLE_DEFAULT', userId).then((data) => {
-                console.info(TAG_TEST_0500_002 + 'noUserId promise data is: ' + data);
-                expect(data).assertFail();
-            }).catch((error) => {
-                console.info(TAG_TEST_0500_002 + 'UserId promise error is: ' + error);
-                errors = error;
-                expect(errors).assertEqual(1);
-            });
-            let endTime = Utils.getNowTime();
-            Utils.getDurationTime(TAG_TEST_0500_002, startTime, endTime);
-            done();
-        });
-
-        /**
          * @tc.number: getApplicationInfos_1000
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface
@@ -291,11 +269,6 @@ export default function getAllApplicationBundleTest() {
          * @tc.desc: Check the return value of the interface
          */
         it('getApplicationInfos_1200', 0, async function (done) {
-            await Bundle.getAllApplicationInfo('Bundle.BundleFlag.GET_BUNDLE_DEFAULT').then((data) => {
-                expect(data).assertFail();
-            }).catch((error) => {
-                expect(error).assertEqual(1);
-            });
             await Bundle.getAllApplicationInfo(null).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
@@ -309,14 +282,10 @@ export default function getAllApplicationBundleTest() {
             Bundle.getAllApplicationInfo(undefined, (err, data) => {
                 expect(err).assertEqual(1);
                 expect(data).assertEqual("type mismatch");
-                Bundle.getAllApplicationInfo('Bundle.BundleFlag.GET_BUNDLE_DEFAULT', (err, data) => {
+                Bundle.getAllApplicationInfo(null, (err, data) => {
                     expect(err).assertEqual(1);
                     expect(data).assertEqual("type mismatch");
-                    Bundle.getAllApplicationInfo(null, (err, data) => {
-                        expect(err).assertEqual(1);
-                        expect(data).assertEqual("type mismatch");
-                        done();
-                    });
+                    done();
                 });
             });
         });

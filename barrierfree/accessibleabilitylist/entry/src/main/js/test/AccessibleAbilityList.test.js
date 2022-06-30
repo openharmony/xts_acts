@@ -190,7 +190,7 @@ describe('AccessibleAbilityList', function () {
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
             if (err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0270 has error: ${err.code}`);
-                expect(null).assertFail();
+                expect(Array.isArray(data)).assertEqual(true);
                 done();
             }
             console.info(`AccessibleAbilityList: AbilityList_0270 result ${data.length}`);
@@ -213,7 +213,7 @@ describe('AccessibleAbilityList', function () {
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
             if (err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0280 has error: ${err.code}`);
-                expect(null).assertFail();
+                expect(Array.isArray(data)).assertEqual(true);
                 done();
             }
             console.info(`AccessibleAbilityList: AbilityList_0280 result ${data.length}`);
@@ -305,7 +305,7 @@ describe('AccessibleAbilityList', function () {
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
             if (err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0320 has error: ${err.code}`);
-                expect(null).assertFail();
+                expect(Array.isArray(data)).assertEqual(true);
                 done();
             }
             console.info(`AccessibleAbilityList: AbilityList_0320 result ${data.length}`);
@@ -328,7 +328,7 @@ describe('AccessibleAbilityList', function () {
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
             if (err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0330 has error: ${err.code}`);
-                expect(null).assertFail();
+                expect(Array.isArray(data)).assertEqual(true);
                 done();
             }
             console.info(`AccessibleAbilityList: AbilityList_0330 result ${data.length}`);

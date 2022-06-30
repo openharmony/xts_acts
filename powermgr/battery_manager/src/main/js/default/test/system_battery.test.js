@@ -39,7 +39,7 @@ function completeFunc(tag) {
     console.log(tag + ": The device information is obtained successfully.");
 }
 
-describe('appInfoTest', function () {
+describe('appInfoTest_battery_3', function () {
     console.log("*************System Battery Unit Test Begin*************");
 
     /**

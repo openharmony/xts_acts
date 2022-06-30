@@ -14,7 +14,7 @@
  */
 import commonEvent from '@ohos.commonEvent';
 
-describe('appInfoTest', function () {
+describe('appInfoTest_battery_1', function () {
     console.log("*************Battery commonEvent Test Begin*************");
 
     /**

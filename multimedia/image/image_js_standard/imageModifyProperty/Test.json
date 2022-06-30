@@ -1,0 +1,47 @@
+{
+    "description": "Configuration for Image Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "300000",
+        "package": "ohos.acts.multimedia.image.ModifyProperty",
+		"shell-timeout": "120000"
+    },
+    "kits": [
+		{
+            "test-file-name": [
+                "ActsImageModifyPropertyJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir   /data/app/el2/100/base/ohos.acts.multimedia.image.ModifyProperty/files",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.ModifyProperty/files"
+            ]
+        },
+		{
+            "type": "PushKit",
+            "pre-push": [
+            ],
+            "push": [
+				"./resource/image/test_exif.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.ModifyProperty/files"
+            ]
+        },
+   
+		{
+            "type": "ShellKit",
+            "run-command": [
+                "hilog -Q pidoff",
+                "hilog -b D",
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.ModifyProperty/files/test_exif.jpg"
+            ],
+            "teardown-command":[
+                "rm -rf /data/app/el2/100/base/ohos.acts.multimedia.image.ModifyProperty/*"
+
+            ]
+        }
+    ]
+    
+}

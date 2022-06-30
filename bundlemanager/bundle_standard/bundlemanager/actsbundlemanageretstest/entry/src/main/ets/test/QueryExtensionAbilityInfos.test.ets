@@ -309,15 +309,6 @@ export default function QueryExtensionAbilityInfos() {
         }).catch(err => {
           expect(err).assertEqual(1);
         });
-      await bundle.queryExtensionAbilityInfos(
-        {
-          "bundleName": BUNDLE_NAME1,
-          "abilityName": ABILITY_NAME1
-        }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT, null).then(data => {
-          expect(data).assertFail();
-        }).catch(err => {
-          expect(err).assertEqual(1);
-        });
       bundle.queryExtensionAbilityInfos(
         {
           "bundleName": BUNDLE_NAME1,
