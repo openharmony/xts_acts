@@ -17,7 +17,7 @@ group("apicover") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "apicoverhaptest:ApiCoverhapTest",
+      "apicoverhaptest:ActsApiCoverhapTest",
       "fasupplement:FaSupplement",
       "formmodule:FormModule",
       "stagesupplement:StageSupplement",
