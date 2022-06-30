@@ -52,10 +52,16 @@ describe('VideoPlayerAPICallbackTest', function () {
     const pagePath2 = 'pages/surfaceTest2/surfaceTest2';
     let pageId = 0;
     let fdHead = 'fd://';
+    let fdPath = '';
+    let fdNumber = 0;
     let events = require('events');
     let eventEmitter = new events.EventEmitter();
 
     beforeAll(async function() {
+        await mediaTestBase.getFdRead(VIDEO_SOURCE, openFileFailed).then((testNumber) => {
+            fdNumber = testNumber;
+            fdPath = fdHead + '' + fdNumber;
+        })
         console.info('beforeAll case');
     })
 
@@ -79,8 +85,13 @@ describe('VideoPlayerAPICallbackTest', function () {
     })
 
     afterAll(async function() {
+        await mediaTestBase.closeFdNumber(fdNumber);
         console.info('afterAll case');
     })
+
+    function openFileFailed() {
+        console.info('case file fail');
+    }
 
     function toNextStep(videoPlayer, steps, done) {
         if (steps[0] == END_EVENT) {
@@ -138,7 +149,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     });
     eventEmitter.on(SETURL_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
-        videoPlayer.url = fdHead + fileDescriptor.fd;
+        videoPlayer.url = fdPath;
         toNextStep(videoPlayer, steps, done);
     });
     eventEmitter.on(SETSURFACE_EVENT, (videoPlayer, steps, done) => {
