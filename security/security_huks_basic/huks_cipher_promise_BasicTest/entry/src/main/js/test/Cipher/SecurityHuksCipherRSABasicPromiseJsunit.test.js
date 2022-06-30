@@ -221,7 +221,7 @@ async function publicCipherFunc(
   }
 }
 
-describe('SecurityHuksCipherRSAPromiseJsunit', function () {
+describe('SecurityHuksCipherRSABasicPromiseJsunit', function () {
   it('testCipherRSA101', 0, async function (done) {
     const srcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256KeyAlias101';
     const newSrcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256NewKeyAlias101';
