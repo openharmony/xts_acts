@@ -25,7 +25,7 @@ import {
 
 describe('Multimodalinput_KeyCode_test', function () {
 
-    // 参数正确,返回一个数组
+    
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0010', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0010 enter`);
 
@@ -2818,6 +2818,29 @@ describe('Multimodalinput_KeyCode_test', function () {
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_348 exit`);
     })
+
+
+    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_349', 0, function () {
+        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_349 enter`);
+
+        expect(inputkeyCode.KeyCode.KEYCODE_ADDRESSBOOK == 2709).assertTrue();
+
+        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_349 exit`);
+    })
+
+
+    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_350', 0, function () {
+        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_350 enter`);
+
+        expect(inputkeyCode.KeyCode.KEYCODE_BRIGHTNESS_MAX == 2725).assertTrue();
+
+        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_350 exit`);
+    })
+
+
+
+
+
 })
 
 

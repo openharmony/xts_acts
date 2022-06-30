@@ -16,3 +16,5 @@
 
 require('./InputDevice.test.js')
 require('./MultimodalInputKey_Code.test.js')
+require('./inputMonitor.test.js')
+require('./MultimodalInputEventType.test.js')

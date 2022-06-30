@@ -253,4 +253,241 @@ describe('MultimodalInput_test', function () {
       + inputDevice.KeyboardType.REMOTE_CONTROL);
     expect(inputDevice.KeyboardType.REMOTE_CONTROL == 5).assertTrue();
   })
+
+  it('ultimodalInputDevice_Startlistening_InputDevice_Events_test',0,function(){
+    inputDevice.on("change",()=>{
+        var Type = inputDevice.DeviceListener.type
+        var IdNumber = inputDevice.DeviceListener.deviceId
+        console.info(Type)
+        expect(inputDevice.DeviceListener.type === 'add'|| inputDevice.DeviceListener.type === 'remove').assertTrue();
+        console.info(IdNumber)
+        expect(inputDevice.DeviceListener.type).assertInstanceOf('number');
+    }) 
+  })
+
+  it('ultimodalInputDevice_Stoplistening_InputDevice_Events_test',0,function(){
+    inputDevice.off("change",()=>{
+        var Type = inputDevice.DeviceListener.type
+        var IdNumber = inputDevice.DeviceListener.deviceId
+        console.info(Type)
+        expect(inputDevice.DeviceListener.type === 'add'|| inputDevice.DeviceListener.type === 'remove').assertTrue();
+        console.info(IdNumber)
+        expect(inputDevice.DeviceListener.type).assertInstanceOf('number');
+    }) 
+  })
+  // 参数正确,返回一个数组
+  it('inputDevice::getDeviceIds_test-01', 0, function () {
+      console.log(`inputDevice::getDeviceIds_test-01 enter`);
+      inputDevice.getDeviceIds()
+      .then((data)=>{
+          expect(data).assertInstanceOf('Array');
+      })
+      .catch(error => {
+          expect(false).assertTrue();
+      })
+    })
+  
+  // 参数正确,判断一种或多种设备
+  it("inputDevice::getDeviceIds_test-02", 0, function () {
+    console.log(`inputDevice::getDeviceIds_test-02 enter`);
+    inputDevice.getDeviceIds()
+    .then((data)=>{
+        expect(data.length > 0).assertTure();
+    })
+    .catch(error => {
+        expect(false).assertTrue();
+    })
+  })
+
+
+  it("inputDevice::setPointerLocation_test-01", 0, function () {
+    console.log(`inputDevice::setPointerLocation_test-01 enter`);
+    inputDevice.setPointerLocation(1,2)
+    .then((data)=>{
+        expect(data).assertTure();
+    })
+    .catch(error => {
+        expect(false).assertTrue();
+    })
+    console.log(`inputDevice::setPointerLocation_test-01 exit`);
+  })
+
+  
+    
+
+  it("inputDevice::setPointerLocation_test-02", 0, function () {
+    console.log(`inputDevice::setPointerLocation_test-02 enter`);
+        inputDevice.setPointerLocation(1,2,(data,error)=>{
+            if(data){
+                expect(true).assertTure();
+            }else{
+                expect(false).assertTrue();
+            }
+        })
+  })
+
+
+  it('inputDevice::DeviceListener_test-01', 0, function () {
+    console.log(`inputDevice::DeviceListener_test-01 enter`);
+
+    expect(  (inputDevice.DeviceListener.type=='add' || 'remove')).assertTrue();
+
+    console.log(`inputDevice::DeviceListener_test-01 exit`);
+  })
+
+  it('inputDevice::DeviceListener_test-02', 0, function () {
+      console.log(`inputDevice::DeviceListener_test-02 enter`);
+
+      expect(  (inputDevice.DeviceListener.deviceId)).assertInstanceOf("number");
+
+      console.log(`inputDevice::DeviceListener_test-02 exit`);
+  })
+
+  it('inputDevice::AxisRange_test-01', 0, function () {
+      console.log(`inputDevice::AxisRange_test-01 enter`);
+
+      expect((inputDevice.AxisRange.source=='keyboard'||'mouse'||'touchpad'||'touchscreen'
+        ||'joystick'||'trackball')).assertTrue();
+
+      console.log(`inputDevice::AxisRange_test-01 exit`);
+  })
+
+
+  it('inputDevice::AxisRange_test-02', 0, function () {
+      console.log(`inputDevice::AxisRange_test-02 enter`);
+
+      expect((inputDevice.AxisRange.axis=='touchMajor' || 'touchMinor' || 'orientation' || 'x' || 'y' || 'pressure'
+        || 'toolMinor' || 'toolMajor' || 'NULL')).assertTrue();
+
+      console.log(`inputDevice::AxisRange_test-02 exit`);
+  })
+
+  it('inputDevice::AxisRange_test-03', 0, function () {
+      console.log(`inputDevice::AxisRange_test-03 enter`);
+
+      expect(  (inputDevice.AxisRange.max)).assertInstanceOf("number");
+
+      console.log(`inputDevice::AxisRange_test-03 exit`);
+  })
+
+  it('inputDevice::AxisRange_test-04', 0, function () {
+      console.log(`inputDevice::AxisRange_test-04 enter`);
+
+      expect(  (inputDevice.AxisRange.min)).assertInstanceOf("number");
+
+      console.log(`inputDevice::AxisRange_test-04 exit`);
+  })
+
+  it('inputDevice::AxisRange_test-05', 0, function () {
+      console.log(`inputDevice::AxisRange_test-05 enter`);
+
+      expect(  (inputDevice.AxisRange.fuzz)).assertInstanceOf("number");
+
+      console.log(`inputDevice::AxisRange_test-05 exit`);
+  })
+
+
+  it('inputDevice::AxisRange_test-06', 0, function () {
+      console.log(`inputDevice::AxisRange_test-06 enter`);
+
+      expect(  (inputDevice.AxisRange.flat)).assertInstanceOf("number");
+
+      console.log(`inputDevice::AxisRange_test-06 exit`);
+  })
+
+  it('inputDevice::AxisRange_test-07', 0, function () {
+      console.log(`inputDevice::AxisRange_test-07 enter`);
+
+      expect(  (inputDevice.AxisRange.resolution)).assertInstanceOf("number");
+
+      console.log(`inputDevice::AxisRange_test-07 exit`);
+  })
+
+  it('inputDevice::InputDeviceData_test-01', 0, function () {
+      console.log(`inputDevice::InputDeviceData_test-01 enter`);
+
+      expect(  (inputDevice.InputDeviceData.id)).assertInstanceOf("number");
+
+      console.log(`inputDevice::InputDeviceData_test-01 exit`);
+  })
+
+  it('inputDevice::InputDeviceData_test-02', 0, function () {
+      console.log(`inputDevice::InputDeviceData_test-02 enter`);
+
+      expect(  (inputDevice.InputDeviceData.name)).assertInstanceOf("string");
+
+      console.log(`inputDevice::InputDeviceData_test-02 exit`);
+  })
+
+
+  it('inputDevice::InputDeviceData_test-03', 0, function () {
+      console.log(`inputDevice::InputDeviceData_test-03 enter`);
+
+      expect(  (inputDevice.InputDeviceData.sources)).assertInstanceOf("Array");
+
+      console.log(`inputDevice::InputDeviceData_test-03 exit`);
+  })
+
+
+  it('inputDevice::InputDeviceData_test-04', 0, function () {
+      console.log(`inputDevice::InputDeviceData_test-04 enter`);
+
+      expect(  (inputDevice.InputDeviceData.axisRanges)).assertInstanceOf("Array");
+
+      console.log(`inputDevice::InputDeviceData_test-04 exit`);
+  })
+
+
+  it('inputDevice::InputDeviceData_test-05', 0, function () {
+      console.log(`inputDevice::InputDeviceData_test-05 enter`);
+
+      expect(  (inputDevice.InputDeviceData.bus)).assertInstanceOf("Array");
+
+      console.log(`inputDevice::InputDeviceData_test-05 exit`);
+  })
+
+
+
+  it('inputDevice::InputDeviceData_test-06', 0, function () {
+      console.log(`inputDevice::InputDeviceData_test-06 enter`);
+
+      expect(  (inputDevice.InputDeviceData.product)).assertInstanceOf("number");
+
+      console.log(`inputDevice::InputDeviceData_test-06 exit`);
+  })
+
+
+  it('inputDevice::InputDeviceData_test-07', 0, function () {
+      console.log(`inputDevice::InputDeviceData_test-07 enter`);
+
+      expect(  (inputDevice.InputDeviceData.vendor)).assertInstanceOf("number");
+
+      console.log(`inputDevice::InputDeviceData_test-07 exit`);
+  })
+
+  it('inputDevice::InputDeviceData_test-08', 0, function () {
+      console.log(`inputDevice::InputDeviceData_test-08 enter`);
+
+      expect(  (inputDevice.InputDeviceData.version)).assertInstanceOf("number");
+
+      console.log(`inputDevice::InputDeviceData_test-08 exit`);
+  })
+
+
+  it('inputDevice::InputDeviceData_test-09', 0, function () {
+      console.log(`inputDevice::InputDeviceData_test-09 enter`);
+
+      expect(  (inputDevice.InputDeviceData.phys)).assertInstanceOf("string");
+
+      console.log(`inputDevice::InputDeviceData_test-09 exit`);
+  })
+
+  it('inputDevice::InputDeviceData_test-10', 0, function () {
+      console.log(`inputDevice::InputDeviceData_test-10 enter`);
+
+      expect(  (inputDevice.InputDeviceData.uniq)).assertInstanceOf("string");
+
+      console.log(`inputDevice::InputDeviceData_test-10 exit`);
+  })
+
 })
