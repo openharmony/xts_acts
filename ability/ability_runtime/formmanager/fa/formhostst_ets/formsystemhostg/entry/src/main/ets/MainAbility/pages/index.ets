@@ -78,7 +78,7 @@ struct Index {
     console.info("!!!====>[FormComponent.host] deleteCallBack end ====>");
   }
 
-  private aboutToAppear() {
+  aboutToAppear() {
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
         console.info("====>[FormComponent.host] Subscriber FormDelete data:====>", JSON.stringify(data)); 
         this.subscriberDel = data;     

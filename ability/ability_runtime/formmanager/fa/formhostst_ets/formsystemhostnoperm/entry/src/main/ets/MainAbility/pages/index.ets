@@ -52,7 +52,7 @@ struct Index {
     console.debug("====>formOnErrorEvent Publish CallBack ====>");
   }
 
-  private aboutToAppear() {
+  aboutToAppear() {
     console.error('[FormComponent] getWant');
     featureAbility.getWant()
     .then((want: any) => {

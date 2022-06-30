@@ -52,7 +52,7 @@
         "pages": [
           "pages/index/index"
         ],
-        "name": ".MainAbility",
+        "name": "default",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false

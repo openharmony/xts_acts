@@ -17,7 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 import mms from '@ohos.telephony.sms';
 import utils from './Utils.ets'
 export default function smsUiJsunit() {
-  describe('appInfoTest_redio1', function () {
+  describe('appInfoTest', function () {
    
     const SMS_SEND_DST_NUMBER = '';
     const TRUE_SLOT_ID = 0;
@@ -138,8 +138,10 @@ export default function smsUiJsunit() {
         done();
         return;
       }
-      expect(sms.SEND_SMS_FAILURE_RADIO_OFF == 0).assertTrue();
-      expect(sms.SEND_SMS_FAILURE_SERVICE_UNAVAILABLE == 1).assertTrue();
+      expect(sms.SEND_SMS_SUCCESS  == 0).assertTrue();
+      expect(sms.SEND_SMS_FAILURE_UNKNOWN  == 1).assertTrue();
+      expect(sms.SEND_SMS_FAILURE_RADIO_OFF == 2).assertTrue();
+      expect(sms.SEND_SMS_FAILURE_SERVICE_UNAVAILABLE == 3).assertTrue();
       expect(sms.SIM_MESSAGE_STATUS_FREE == 0).assertTrue();
       expect(sms.INSTANT_MESSAGE == 1).assertTrue();
       expect(sms.OPTIONAL_MESSAGE == 2).assertTrue();

@@ -14,7 +14,7 @@
  */
 
 // @ts-nocheck
-import {describe, beforeEach, afterEach, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, afterEach, it, expect} from 'deccjsunit/index'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import osAccount from '@ohos.account.osAccount'

@@ -153,7 +153,7 @@ struct Index {
     console.debug("====> [FormComponent] formsystemhostn optType unSubscribeCastFormCallback CallBack====>");
   }
 
-  private aboutToAppear() {
+  aboutToAppear() {
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
       console.info("====>[FormComponent] formsystemhostn Subscriber FormDelete data:====>", JSON.stringify(data));
       this.subscriberDel = data;

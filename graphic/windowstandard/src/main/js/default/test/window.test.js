@@ -1981,6 +1981,56 @@ describe('window_test', function () {
     })
 
     /**
+     * @tc.number	SUB_WMS_ENUM_WINDOWPROTERTIES_JSAPI_001
+     * @tc.name	    Test enumWindowProperties_Test_001.
+     * @tc.desc		To test the enum value of WindowProperties.
+    */
+    it('enumWindowProperties_Test_001', 0, async function (done) {
+        console.info('test the enum value of Window Properties begin');
+        try {
+            var windowP = {
+                windowRect : {
+                    left:20,
+                    top:20,
+                    width:20,
+                    height:20
+                },
+                type:0,
+                isFullScreen:false,
+                isLayoutFullScreen:false,
+                focusable:false,
+                touchable:false,
+                brightness:0.5,
+                dimBehindValue:3,
+                isKeepScreenOn:false,
+                isPrivacyMode:false,
+                isRoundCorner:false,
+                isTransparent:false
+            }
+            expect(20).assertEqual(windowP.windowRect.left);
+            expect(20).assertEqual(windowP.windowRect.top);
+            expect(20).assertEqual(windowP.windowRect.width);
+            expect(20).assertEqual(windowP.windowRect.height);
+		    expect(0).assertEqual(windowP.type);
+            expect(!windowP.isFullScreen).assertTrue();
+            expect(!windowP.isLayoutFullScreen).assertTrue();
+            expect(!windowP.focusable).assertTrue();
+            expect(!windowP.touchable).assertTrue();
+            expect(0.5).assertEqual(windowP.brightness);
+            expect(3).assertEqual(windowP.dimBehindValue);
+            expect(!windowP.isKeepScreenOn).assertTrue();
+            expect(!windowP.isPrivacyMode).assertTrue();
+            expect(!windowP.isRoundCorner).assertTrue();
+            expect(!windowP.isTransparent).assertTrue();
+            done();
+        } catch (err) {
+            console.error('test enum value of windowproperties error ' + JSON.stringify(err));
+            expect.assertFail();
+            done();
+        }
+    })
+
+    /**
      * @tc.number		SUB_WMS_SETFOCUSABLE_JSAPI_001
      * @tc.name			Test setFocusable_Test_001
      * @tc.desc			Setting window focus acquisition and defocus
