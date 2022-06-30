@@ -72,7 +72,6 @@ describe('PlayerLocalTestAudioFormat', function () {
     async function playSource(audioSource, done) {
         let audioPlayer = media.createAudioPlayer();
         await getFd(audioSource);
-        audioPlayer.src = fdPath;
         audioPlayer.on('dataLoad', () => {
             console.info('case set source success');
             expect(audioPlayer.state).assertEqual('paused');
@@ -142,6 +141,7 @@ describe('PlayerLocalTestAudioFormat', function () {
             expect().assertFail();
             done();
         });
+        audioPlayer.src = fdPath;
     }
 
     /* *
