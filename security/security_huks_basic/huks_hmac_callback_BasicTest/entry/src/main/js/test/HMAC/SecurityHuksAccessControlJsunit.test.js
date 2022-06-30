@@ -435,4 +435,12 @@ describe('SecurityHuksAccessControlJsunit', function () {
         await deleteKeyFunc(srcKeyAlias, HuksOptions);
         done();
     });
+
+    it('HUKS_Basic_Capability_AccessControl_9000', 0, async function (done) {
+        expect(-126).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_WRAPPED_FORMAT);
+        expect(-127).assertEqual(huks.HuksErrorCode.HUKS_ERROR_INVALID_USAGE_OF_KEY);
+        expect(0).assertEqual(huks.HuksImportKeyType.HUKS_KEY_TYPE_PUBLIC_KEY);
+        expect(1).assertEqual(huks.HuksImportKeyType.HUKS_KEY_TYPE_PRIVATE_KEY);
+        done();
+    });
 });
