@@ -189,7 +189,7 @@ async function publicCipherFunc(srcKeyAlies, genHuksOptionsNONECBC, HuksOptions,
   }
 }
 
-describe('SecurityHuksCipherAESPromiseJsunit', function () {
+describe('SecurityHuksCipherAESBasicPromiseJsunit', function () {
   it('testCipherAES101', 0, async function (done) {
     const srcKeyAlies = 'testCipherAESSize128PADDINGNONEMODECBCKeyAlias101';
     genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize128);
