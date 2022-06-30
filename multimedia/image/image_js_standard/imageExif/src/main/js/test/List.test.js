@@ -14,3 +14,4 @@
  */
 
 require('./image.test.js')
+require('./addImage.test.js')
