@@ -9,7 +9,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ApiCoverhapTest.hap",
+                "ActsApiCoverhapTest.hap",
                 "FaSupplement.hap",
                 "StageSupplement.hap",
                 "FormModule.hap"
