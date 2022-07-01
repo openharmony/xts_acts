@@ -471,7 +471,6 @@ describe('ActsSubscriberTestOrder', function () {
 
         async function subscriberCallBack0500(err, data) {
             console.info('===============>subscriberCallBack0500========event: ' + data.event);
-            //console.info('===============>subscriberCallBack0500========bundleName: ' + data.bundleName);
             console.info('===============>subscriberCallBack0500=========code: ' + data.code);
             console.info('===============>subscriberCallBack0500=========data: ' + data.data);
             expect(data.event).assertEqual('publish_event0500');
