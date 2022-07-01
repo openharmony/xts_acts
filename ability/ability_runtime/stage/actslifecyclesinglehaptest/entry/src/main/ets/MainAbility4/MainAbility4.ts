@@ -93,9 +93,8 @@ export default class MainAbility4 extends Ability {
                 console.log("[Demo] 7listKey4:" + JSON.stringify(listKey4));
             }
         }
-        let applicationContext = this.context.getApplicationContext();
-        console.log("[Demo] MainAbility4 applicationContext: " + JSON.stringify(applicationContext));
-        let lifecycleid = applicationContext.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
+        globalThis.applicationContext4 = this.context.getApplicationContext();
+        let lifecycleid = globalThis.applicationContext4.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
         console.log("[Demo] registerAbilityLifecycleCallback4 number: " + JSON.stringify(lifecycleid));
         setTimeout(function () {
             console.log("[Demo] registerAbilityLifecycleCallback4 listKey : " + JSON.stringify(listKey4));
