@@ -1,6 +1,6 @@
 // @ts-nocheck
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,13 +13,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
 
-export default function abilityTest(abilityContext){
+export default function abilityTest(abilityContext) {
 
-  describe('AbilityTest', function() {
+  describe('AbilityTest', function () {
 
     console.info("-----------------LifecycleTest is start----------------")
+    beforeEach(async function (done) {
+      console.info('LifeCycleTest before each called');
+      await sleep(1000);
+      done()
+    });
+
+    afterEach(async function (done) {
+      console.info('LifeCycleTest after each called');
+      if ("Multihap_LifecycleTest_007" != TAG || "Multihap_LifecycleTest_011" != TAG
+      || "Multihap_LifecycleTest_006" != TAG) {
+        var para = {
+          resultCode: 2,
+          want: {
+            "abilityName": "MainAbility4",
+            bundleName: "com.example.lifecycletest"
+          }
+        }
+        console.log("LifeCycleTest terminateSelfwithresult para: " + JSON.stringify(para));
+        await globalThis.ability4context.terminateSelfWithResult(para)
+          .then((data) => {
+            console.log("LifeCycleTest terminateSelfwithresult successful data: " + JSON.stringify(data));
+          }).catch((error) => {
+            console.log("LifeCycleTest terminateSelfwithresult error: " + JSON.stringify(error));
+          });
+      }
+      done();
+    });
 
     var TAG;
     var listKeyTemp = [];
@@ -49,7 +76,7 @@ export default function abilityTest(abilityContext){
         ",data: " + JSON.stringify(data));
       });
 
-      await sleep(500);
+      await sleep(1000);
 
       abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
@@ -63,7 +90,7 @@ export default function abilityTest(abilityContext){
               listKeyTemp.push(globalThis.mainAbility4ListKey[i]);
             }
           }
-          console.log(TAG +  "listKeyTemp is :" + listKeyTemp);
+          console.log(TAG + "listKeyTemp is :" + listKeyTemp);
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
           expect(listKeyTemp[0]).assertEqual("Hap2MainAbility3 onAbilityCreate");
           expect(listKeyTemp[1]).assertEqual("Hap2MainAbility3 onAbilityWindowStageCreate");
@@ -71,11 +98,12 @@ export default function abilityTest(abilityContext){
           expect(listKeyTemp[3]).assertEqual("Hap2MainAbility3 onAbilityBackground");
           expect(listKeyTemp[4]).assertEqual("Hap2MainAbility3 onAbilityWindowStageDestroy");
           expect(listKeyTemp[5]).assertEqual("Hap2MainAbility3 onAbilityDestroy");
-          abilityContext.getApplicationContext()
+          console.info(TAG + "globalThis.ApplicationContext4 is :" + JSON.stringify(globalThis.ApplicationContext4));
+          globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
-              expect(error.code == 0).assertTrue()
+              expect(error.code).assertEqual(0);
               done();
             });
         }, 4000)
@@ -102,7 +130,7 @@ export default function abilityTest(abilityContext){
         ",data: " + JSON.stringify(data));
       });
 
-      await sleep(500);
+      await sleep(1000);
 
       abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
@@ -112,7 +140,7 @@ export default function abilityTest(abilityContext){
         ",data: " + JSON.stringify(data));
       });
 
-      await sleep(500);
+      await sleep(1000);
 
       abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
@@ -121,8 +149,8 @@ export default function abilityTest(abilityContext){
         setTimeout(() => {
           console.log(TAG + ": second Hap2MainAbility4 startAbility success, err: " + JSON.stringify(error) +
           ",data: " + JSON.stringify(data));
-          for(var i = 0; i<globalThis.mainAbility4ListKey.length;i++){
-            if(globalThis.mainAbility4ListKey[i].substring(0,16)=="Hap2MainAbility4"){
+          for (var i = 0; i < globalThis.mainAbility4ListKey.length; i++) {
+            if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility4") {
               listKeyTemp.push(globalThis.mainAbility4ListKey[i]);
             }
           }
@@ -134,14 +162,14 @@ export default function abilityTest(abilityContext){
           expect(listKeyTemp[3]).assertEqual("Hap2MainAbility4 onAbilityBackground");
           expect(listKeyTemp[4]).assertEqual("Hap2MainAbility4 onAbilityWindowStageDestroy");
           expect(listKeyTemp[5]).assertEqual("Hap2MainAbility4 onAbilityDestroy");
-          abilityContext.getApplicationContext()
+          globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
-              expect(error.code == 0).assertTrue()
+              expect(error.code).assertEqual(0);
               done();
             });
-        }, 3000)
+        }, 4000)
       });
       console.log("------------Multihap_LifecycleTest_002 end-------------");
     });
@@ -165,7 +193,7 @@ export default function abilityTest(abilityContext){
         ",data: " + JSON.stringify(data));
       });
 
-      await sleep(500);
+      await sleep(1000);
 
       abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
@@ -175,7 +203,7 @@ export default function abilityTest(abilityContext){
         ",data: " + JSON.stringify(data));
       });
 
-      await sleep(500);
+      await sleep(1000);
 
       abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
@@ -184,8 +212,8 @@ export default function abilityTest(abilityContext){
         setTimeout(() => {
           console.log(TAG + ": second Hap2MainAbility5 startAbility success, err: " + JSON.stringify(error) +
           ",data: " + JSON.stringify(data));
-          for(var i = 0;i<globalThis.mainAbility4ListKey.length;i++){
-            if(globalThis.mainAbility4ListKey[i].substring(0,16)=="Hap2MainAbility5"){
+          for (var i = 0;i < globalThis.mainAbility4ListKey.length; i++) {
+            if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility5") {
               listKeyTemp.push(globalThis.mainAbility4ListKey[i]);
             }
           }
@@ -203,14 +231,14 @@ export default function abilityTest(abilityContext){
           expect(listKeyTemp[9]).assertEqual("Hap2MainAbility5 onAbilityBackground");
           expect(listKeyTemp[10]).assertEqual("Hap2MainAbility5 onAbilityWindowStageDestroy");
           expect(listKeyTemp[11]).assertEqual("Hap2MainAbility5 onAbilityDestroy");
-          abilityContext.getApplicationContext()
+          globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
-              expect(error.code == 0).assertTrue()
+              expect(error.code).assertEqual(0);
               done();
             });
-        }, 3000)
+        }, 4000)
       });
       console.log("------------Multihap_LifecycleTest_003 end-------------");
     });
@@ -235,7 +263,7 @@ export default function abilityTest(abilityContext){
         ",data: " + JSON.stringify(data));
       });
 
-      await sleep(500);
+      await sleep(1000);
 
       abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
@@ -245,7 +273,7 @@ export default function abilityTest(abilityContext){
         ",data: " + JSON.stringify(data));
       });
 
-      await sleep(500);
+      await sleep(1000);
 
       abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
@@ -254,10 +282,10 @@ export default function abilityTest(abilityContext){
         setTimeout(() => {
           console.log(TAG + ": second Hap3MainAbility2 startAbility success, err: " + JSON.stringify(error) +
           ",data: " + JSON.stringify(data));
-          for(var i = 0;i<globalThis.mainAbility4ListKey.length;i++){
-            if(globalThis.mainAbility4ListKey[i].substring(0,16)=="Hap2MainAbility6"){
+          for (var i = 0;i < globalThis.mainAbility4ListKey.length; i++) {
+            if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility6") {
               listKeyTemp.push(globalThis.mainAbility4ListKey[i]);
-            }else if(globalThis.mainAbility4ListKey[i].substring(0,16)=="Hap3MainAbility2"){
+            } else if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap3MainAbility2") {
               listKeyTemp1.push(globalThis.mainAbility4ListKey[i]);
             }
           }
@@ -278,14 +306,14 @@ export default function abilityTest(abilityContext){
           expect(listKeyTemp1[4]).assertEqual("Hap3MainAbility2 onAbilityWindowStageDestroy");
           expect(listKeyTemp1[5]).assertEqual("Hap3MainAbility2 onAbilityDestroy");
 
-          abilityContext.getApplicationContext()
+          globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
-              expect(error.code == 0).assertTrue()
+              expect(error.code).assertEqual(0);
               done();
             });
-        }, 3000)
+        }, 4000)
       });
       console.log("------------Multihap_LifecycleTest_004 end-------------");
     });
@@ -329,10 +357,10 @@ export default function abilityTest(abilityContext){
         setTimeout(() => {
           console.log(TAG + ": second Hap2MainAbility7 startAbility success, err: " + JSON.stringify(error) +
           ",data: " + JSON.stringify(data));
-          for(var i = 0;i<globalThis.mainAbility4ListKey.length;i++){
-            if(globalThis.mainAbility4ListKey[i].substring(0,16)=="Hap2MainAbility6"){
+          for (var i = 0;i < globalThis.mainAbility4ListKey.length; i++) {
+            if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility6") {
               listKeyTemp.push(globalThis.mainAbility4ListKey[i]);
-            }else if(globalThis.mainAbility4ListKey[i].substring(0,16)=="Hap2MainAbility7"){
+            } else if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility7") {
               listKeyTemp1.push(globalThis.mainAbility4ListKey[i]);
             }
           }
@@ -353,11 +381,11 @@ export default function abilityTest(abilityContext){
           expect(listKeyTemp1[4]).assertEqual("Hap2MainAbility7 onAbilityWindowStageDestroy");
           expect(listKeyTemp1[5]).assertEqual("Hap2MainAbility7 onAbilityDestroy");
 
-          abilityContext.getApplicationContext()
+          globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
-              expect(error.code == 0).assertTrue()
+              expect(error.code).assertEqual(0);
               done();
             });
         }, 3000)
@@ -382,9 +410,9 @@ export default function abilityTest(abilityContext){
 
       abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
-        abilityName: "MainAbility4"
+        abilityName: "MainAbility7"
       }, (error, data) => {
-        console.log(TAG + ": first MainAbility4 startAbility success, err: " + JSON.stringify(error) +
+        console.log(TAG + ": first MainAbility7 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
 
@@ -394,26 +422,26 @@ export default function abilityTest(abilityContext){
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility8"
       }, (error, data) => {
-        setTimeout(function(){
+        setTimeout(function () {
           console.log(TAG + ": first Hap2MainAbility8 startAbility success, err: " + JSON.stringify(error) +
           ",data: " + JSON.stringify(data));
-          console.log(TAG + "first globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
-          firstCallbackId = globalThis.mainAbility4CallBackId;
+          console.log(TAG + "first globalThis.mainAbility7CallBackId is :" + globalThis.mainAbility7CallBackId);
+          firstCallbackId = globalThis.mainAbility7CallBackId;
           console.log(TAG + "firstCallbackId is : " + firstCallbackId);
         }, 3000)
       });
 
-      await sleep(1000);
+      await sleep(500);
 
       abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
-        abilityName: "MainAbility4"
+        abilityName: "MainAbility7"
       }, (error, data) => {
-        console.log(TAG + ": second MainAbility4 startAbility success, err: " + JSON.stringify(error) +
+        console.log(TAG + ": second MainAbility7 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
 
-      await sleep(500);
+      await sleep(1000);
 
       abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
@@ -422,24 +450,25 @@ export default function abilityTest(abilityContext){
         setTimeout(() => {
           console.log(TAG + ": second Hap2MainAbility8 startAbility success, err: " + JSON.stringify(error) +
           ",data: " + JSON.stringify(data));
-          for(var i = 0;i<globalThis.mainAbility4ListKey.length;i++){
-            if(globalThis.mainAbility4ListKey[i].substring(0,16)=="Hap2MainAbility8"){
-              listKeyTemp1.push(globalThis.mainAbility4ListKey[i]);
+          for (var i = 0;i < globalThis.mainAbility7ListKey.length; i++) {
+            if (globalThis.mainAbility7ListKey[i].substring(0, 16) == "Hap2MainAbility8") {
+              listKeyTemp1.push(globalThis.mainAbility7ListKey[i]);
             }
           }
-          console.log(TAG + "second globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
-          secondCallbackId = globalThis.mainAbility4CallBackId;
+          console.log(TAG + "second globalThis.mainAbility7CallBackId is :" + globalThis.mainAbility7CallBackId);
+          secondCallbackId = globalThis.mainAbility7CallBackId;
           console.log(TAG + "secondCallbackId is : " + secondCallbackId);
-          expect(secondCallbackId).assertEqual(firstCallbackId+1)
-
-          abilityContext.getApplicationContext()
-            .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
-              console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
-              expect(error.code == 0).assertTrue()
-              done();
-            });
-        }, 3000)
+          expect(secondCallbackId).assertEqual(firstCallbackId + 1)
+          setTimeout(() => {
+            globalThis.ApplicationContext7
+              .unregisterAbilityLifecycleCallback(globalThis.mainAbility7CallBackId, (error, data) => {
+                console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
+                ",data: " + JSON.stringify(data));
+                expect(error.code).assertEqual(0);
+                done();
+              });
+          }, 1000)
+        }, 4000)
       });
 
       console.log("------------Multihap_LifecycleTest_006 end-------------");
@@ -469,7 +498,7 @@ export default function abilityTest(abilityContext){
         ",data: " + JSON.stringify(data));
       });
 
-      setTimeout(function(){
+      setTimeout(function () {
         abilityContext.startAbility({
           bundleName: "com.example.lifecycletest",
           abilityName: "Hap2MainAbility9"
@@ -478,8 +507,8 @@ export default function abilityTest(abilityContext){
             console.log(TAG + ":first Hap2MainAbility9 startAbility success, err: " +
             JSON.stringify(error) + ",data: " + JSON.stringify(data));
 
-            for(var i = 0;i<globalThis.mainAbility6ListKey.length;i++){
-              if(globalThis.mainAbility6ListKey[i].substring(0,16)=="Hap2MainAbility9"){
+            for (var i = 0;i < globalThis.mainAbility6ListKey.length; i++) {
+              if (globalThis.mainAbility6ListKey[i].substring(0, 16) == "Hap2MainAbility9") {
                 listKeyTemp.push(globalThis.mainAbility6ListKey[i]);
               }
             }
@@ -494,11 +523,11 @@ export default function abilityTest(abilityContext){
             expect(listKeyTemp[4]).assertEqual("Hap2MainAbility9 onAbilityWindowStageDestroy");
             expect(listKeyTemp[5]).assertEqual("Hap2MainAbility9 onAbilityDestroy");
 
-            abilityContext.getApplicationContext()
+            globalThis.ApplicationContext6
               .unregisterAbilityLifecycleCallback(globalThis.mainAbility6CallBackId, (error, data) => {
                 console.log(TAG + ": first unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
                 ",data: " + JSON.stringify(data));
-                expect(error.code == 0).assertTrue()
+                expect(error.code).assertEqual(0);
                 flag = error.code;
                 console.log(TAG + "flag is:" + flag);
               });
@@ -507,8 +536,8 @@ export default function abilityTest(abilityContext){
       }, 1000)
 
 
-      setTimeout(function(){
-        if(flag == 0){
+      setTimeout(function () {
+        if (flag == 0) {
 
           abilityContext.startAbility({
             bundleName: "com.example.lifecycletest",
@@ -518,7 +547,7 @@ export default function abilityTest(abilityContext){
             ",data: " + JSON.stringify(data));
           });
 
-          setTimeout(function(){
+          setTimeout(function () {
             abilityContext.startAbility({
               bundleName: "com.example.lifecycletest",
               abilityName: "Hap2MainAbility9"
@@ -528,8 +557,8 @@ export default function abilityTest(abilityContext){
                 console.log(TAG + ":second Hap2MainAbility9 startAbility success, err: " +
                 JSON.stringify(error) + ",data: " + JSON.stringify(data));
 
-                for(var i = 0;i<globalThis.mainAbility6ListKey.length;i++){
-                  if(globalThis.mainAbility6ListKey[i].substring(0,16)=="Hap2MainAbility9"){
+                for (var i = 0;i < globalThis.mainAbility6ListKey.length; i++) {
+                  if (globalThis.mainAbility6ListKey[i].substring(0, 16) == "Hap2MainAbility9") {
                     listKeyTemp1.push(globalThis.mainAbility6ListKey[i]);
                   }
                 }
@@ -545,16 +574,16 @@ export default function abilityTest(abilityContext){
                 expect(listKeyTemp1[4]).assertEqual("Hap2MainAbility9 onAbilityWindowStageDestroy");
                 expect(listKeyTemp1[5]).assertEqual("Hap2MainAbility9 onAbilityDestroy");
 
-                abilityContext.getApplicationContext()
+                globalThis.ApplicationContext6
                   .unregisterAbilityLifecycleCallback(globalThis.mainAbility6CallBackId, (error, data) => {
                     console.log(TAG + ": second unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
                     ",data: " + JSON.stringify(data));
-                    expect(error.code == 0).assertTrue()
+                    expect(error.code).assertEqual(0);
                     done();
                   });
-                }, 3000)
-              })
-            }, 2000)
+              }, 3000)
+            })
+          }, 2000)
         }
       }, 10000)
 
@@ -591,8 +620,8 @@ export default function abilityTest(abilityContext){
           console.log(TAG + ": Hap2MainAbility6 startAbility success, err: " +
           JSON.stringify(error) + ",data: " + JSON.stringify(data));
 
-          for(var i = 0;i<globalThis.mainAbility4ListKey.length;i++){
-            if(globalThis.mainAbility4ListKey[i].substring(0,16)=="Hap2MainAbility6"){
+          for (var i = 0;i < globalThis.mainAbility4ListKey.length; i++) {
+            if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility6") {
               listKeyTemp.push(globalThis.mainAbility4ListKey[i]);
             }
           }
@@ -605,16 +634,16 @@ export default function abilityTest(abilityContext){
           expect(listKeyTemp[4]).assertEqual("Hap2MainAbility6 onAbilityWindowStageDestroy");
           expect(listKeyTemp[5]).assertEqual("Hap2MainAbility6 onAbilityDestroy");
 
-          abilityContext.getApplicationContext()
+          globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": first unregisterAbilityLifecycleCallback, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
-              expect(error.code == 0).assertTrue;
-              abilityContext.getApplicationContext()
+              expect(error.code).assertEqual(0);
+              globalThis.ApplicationContext4
                 .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
                   console.log(TAG + ": second unregisterAbilityLifecycleCallback, err: " + JSON.stringify(error) +
                   ",data: " + JSON.stringify(data));
-                  expect(error.code == 0).assertTrue;
+                  expect(error.code).assertEqual(1);
                   done()
                 });
             });
@@ -702,7 +731,7 @@ export default function abilityTest(abilityContext){
           for (var i = 0;i < globalThis.mainAbility4ListKey.length; i++) {
             if (globalThis.mainAbility4ListKey[i].substring(0, 17) == "Hap2MainAbility10") {
               listKeyTemp.push(globalThis.mainAbility4ListKey[i]);
-            }else if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap3MainAbility3") {
+            } else if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap3MainAbility3") {
               listKeyTemp1.push(globalThis.mainAbility4ListKey[i]);
             }
           }
@@ -727,11 +756,11 @@ export default function abilityTest(abilityContext){
           expect(listKeyTemp1[5]).assertEqual("Hap3MainAbility3 onAbilityBackground");
           expect(listKeyTemp1[6]).assertEqual("Hap3MainAbility3 onAbilityForeground");
 
-          abilityContext.getApplicationContext()
+          globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
-              expect(error.code == 0).assertTrue()
+              expect(error.code).assertEqual(0);
               done();
             });
         }, 4000)
@@ -765,26 +794,26 @@ export default function abilityTest(abilityContext){
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap4MainAbility1",
       }, (error, data) => {
-      setTimeout(() => {
-        console.log(TAG + ": Hap4MainAbility1 startAbility success, err: " +
-        JSON.stringify(error) + ",data: " + JSON.stringify(data));
+        setTimeout(() => {
+          console.log(TAG + ": Hap4MainAbility1 startAbility success, err: " +
+          JSON.stringify(error) + ",data: " + JSON.stringify(data));
 
-        for (var i = 0; i < globalThis.mainAbility2ListKey.length; i++) {
-          if (globalThis.mainAbility2ListKey[i].substring(0, 16) == "Hap4MainAbility1") {
-            listKeyTemp.push(globalThis.mainAbility2ListKey[i]);
+          for (var i = 0; i < globalThis.mainAbility2ListKey.length; i++) {
+            if (globalThis.mainAbility2ListKey[i].substring(0, 16) == "Hap4MainAbility1") {
+              listKeyTemp.push(globalThis.mainAbility2ListKey[i]);
+            }
           }
-        }
-        console.log(TAG + " listKeyTemp is :" + listKeyTemp);
-        console.log(TAG + " globalThis.mainAbility2CallBackId is :" + globalThis.mainAbility2CallBackId);
-        expect(listKeyTemp.length == 0).assertTrue();
+          console.log(TAG + " listKeyTemp is :" + listKeyTemp);
+          console.log(TAG + " globalThis.mainAbility2CallBackId is :" + globalThis.mainAbility2CallBackId);
+          expect(listKeyTemp.length).assertEqual(0);
 
-        abilityContext.getApplicationContext()
-          .unregisterAbilityLifecycleCallback(globalThis.mainAbility2CallBackId, (error, data) => {
-            console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
-            expect(error.code == 0).assertTrue()
-            done();
-          });
+          globalThis.ApplicationContext2
+            .unregisterAbilityLifecycleCallback(globalThis.mainAbility2CallBackId, (error, data) => {
+              console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
+              ",data: " + JSON.stringify(data));
+              expect(error.code).assertEqual(0);
+              done();
+            });
         }, 4000)
       });
       console.info("---------------Multihap_LifecycleTest_011 is end---------------")
