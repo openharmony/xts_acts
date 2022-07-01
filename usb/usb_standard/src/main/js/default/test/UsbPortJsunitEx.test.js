@@ -39,15 +39,15 @@ describe('UsbPortJsFunctionsTestEx', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_get_supported_modes_test_02
+   * @tc.number    : SUB_USB_JS_0230
    * @tc.name      : getSupportedModes
    * @tc.desc      : 反向测试 改变id 获取指定的端口支持的模式列表的组合掩码
    */
-  it('SUB_USB_get_supported_modes_test_02', 0, function () {
-    console.info('usb get_supported_modes_test_02 begin');
+  it('SUB_USB_JS_0230', 0, function () {
+    console.info('usb SUB_USB_JS_0230 begin');
     var usbPortList = usb.getPorts()
     if (usbPortList.length == 0) {
-      console.info('usb get_supported_modes_test_01 usbPortList is null');
+      console.info('usb SUB_USB_JS_0230 usbPortList is null');
       expect(false).assertTrue();
       return
     }
@@ -58,16 +58,16 @@ describe('UsbPortJsFunctionsTestEx', function () {
     var maskCode = usb.getSupportedModes(portID)
     expect(maskCode).assertEqual(usb.NONE);
 
-    console.info('usb get_supported_modes_test_02 :  PASS');
+    console.info('usb SUB_USB_JS_0230 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_set_port_roles_test_03
+   * @tc.number    : SUB_USB_JS_0030
    * @tc.name      : setPortRoles
    * @tc.desc      : dataRole参数错误
    */
-  it('SUB_USB_set_port_roles_test_03', 0, function () {
+  it('SUB_USB_JS_0030', 0, function () {
     var portId = gPort.id;
     var powerRole = usb.SINK;
     var dataRole = usb.NONE - 1;
@@ -78,19 +78,19 @@ describe('UsbPortJsFunctionsTestEx', function () {
     }).catch(error => {
       console.info('usb case setPortRoles error : ' + error);
       expect(error).assertFalse();
-      console.info('usb set_port_roles_test_03:  PASS');
+      console.info('usb SUB_USB_JS_0030:  PASS');
     })
 
-    console.info('usb set_port_roles_test_03:  PASS');
+    console.info('usb SUB_USB_JS_0030:  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_set_port_roles_test_04
+   * @tc.number    : SUB_USB_JS_0040
    * @tc.name      : setPortRoles
    * @tc.desc      : portId，powerRole参数错误
    */
-  it('SUB_USB_set_port_roles_test_04', 0, function () {
+  it('SUB_USB_JS_0040', 0, function () {
     var portId = gPort.id;
     var powerRole = usb.NONE - 1;
     var dataRole = usb.DEVICE;
@@ -101,19 +101,19 @@ describe('UsbPortJsFunctionsTestEx', function () {
     }).catch(error => {
       console.info('usb case setPortRoles error : ' + error);
       expect(error).assertFalse();
-      console.info('usb set_port_roles_test_04:  PASS');
+      console.info('usb SUB_USB_JS_0040:  PASS');
     })
 
-    console.info('usb set_port_roles_test_04:  PASS');
+    console.info('usb SUB_USB_JS_0040:  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_set_port_roles_test_05
+   * @tc.number    : SUB_USB_JS_0050
    * @tc.name      : setPortRoles
    * @tc.desc      : portId，dataRole参数错误
    */
-  it('SUB_USB_set_port_roles_test_05', 0, function () {
+  it('SUB_USB_JS_0050', 0, function () {
     var portId = gPort.id - 3;
     var powerRole = usb.SINK;
     var dataRole = usb.NONE - 1;
@@ -124,19 +124,19 @@ describe('UsbPortJsFunctionsTestEx', function () {
     }).catch(error => {
       console.info('usb case setPortRoles error : ' + error);
       expect(error).assertFalse();
-      console.info('usb set_port_roles_test_05:  PASS');
+      console.info('usb SUB_USB_JS_0050:  PASS');
     })
 
-    console.info('usb set_port_roles_test_05:  PASS');
+    console.info('usb SUB_USB_JS_0050:  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_set_port_roles_test_06
+   * @tc.number    : SUB_USB_JS_0060
    * @tc.name      : setPortRoles
    * @tc.desc      : powerRole，dataRole参数错误
    */
-  it('SUB_USB_set_port_roles_test_06', 0, function () {
+  it('SUB_USB_JS_0060', 0, function () {
     var portId = gPort.id;
     var powerRole = usb.NONE - 1;
     var dataRole = usb.NONE - 1;
@@ -147,43 +147,43 @@ describe('UsbPortJsFunctionsTestEx', function () {
     }).catch(error => {
       console.info('usb case setPortRoles error : ' + error);
       expect(error).assertFalse();
-      console.info('usb set_port_roles_test_06:  PASS');
+      console.info('usb SUB_USB_JS_0060:  PASS');
     })
 
-    console.info('usb set_port_roles_test_06:  PASS');
+    console.info('usb SUB_USB_JS_0060:  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_set_port_roles_test_07
+   * @tc.number    : SUB_USB_JS_0070
    * @tc.name      : setPortRoles
    * @tc.desc      : portId,portId，dataRole参数错误
    */
-  it('SUB_USB_set_port_roles_test_07', 0, function () {
+  it('SUB_USB_JS_0070', 0, function () {
     var portId = gPort.id - 1;
     var dataRole = usb.NONE - 1;
     var powerRole = usb.NONE - 1;
 
     CheckEmptyUtils.sleep(2000)
     usb.setPortRoles(portId, powerRole, dataRole).then(data => {
-      console.info('usb case setPortRoles 07 return: ' + data);
+      console.info('usb case setPortRoles return: ' + data);
       expect(data).assertTrue();
     }).catch(error => {
-      console.info('usb case setPortRoles 07 error : ' + error);
+      console.info('usb case setPortRoles error : ' + error);
       expect(error).assertFalse();
-      console.info('usb set_port_roles_test_07:  PASS');
+      console.info('usb SUB_USB_JS_0070:  PASS');
     })
 
-    console.info('usb set_port_roles_test_07:  PASS');
+    console.info('usb SUB_USB_JS_0070:  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_set_port_roles_test_08
+   * @tc.number    : SUB_USB_JS_0080
    * @tc.name      : setPortRoles
    * @tc.desc      : portId参数错误
    */
-  it('SUB_USB_set_port_roles_test_08', 0, function () {
+  it('SUB_USB_JS_0080', 0, function () {
     var portId = gPort.id - 1;
     var powerRole = 1;
     var dataRole = 1;
@@ -194,10 +194,10 @@ describe('UsbPortJsFunctionsTestEx', function () {
     }).catch(error => {
       console.info('usb case setPortRoles error : ' + error);
       expect(error).assertFalse();
-      console.info('usb set_port_roles_test_08:  PASS');
+      console.info('usb SUB_USB_JS_0080:  PASS');
     })
 
-    console.info('usb set_port_roles_test_08:  PASS');
+    console.info('usb SUB_USB_JS_0080:  PASS');
     expect(true).assertTrue();
   })
 
