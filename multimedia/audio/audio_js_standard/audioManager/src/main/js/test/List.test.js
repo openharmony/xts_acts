@@ -20,4 +20,6 @@ require('./AudioCall.test.js')
 require('./AudioCapturer.test.js')
 require('./AudioEventManagement.test.js')
 require('./AudioRenderer.test.js')
+require('./AudioRendererChangeInfo.test.js')
+require('./AudioCapturerChangeInfo.test.js')
 
