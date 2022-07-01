@@ -136,7 +136,6 @@ describe('ActsSubscriberTestUnorder', async function (done) {
 
         let commonEventPublishData = {
             isOrdered: false,
-            bundleName: "PublishBundleName0300",
             code: 55,
             data: "PublishData0300",
         }
@@ -150,7 +149,6 @@ describe('ActsSubscriberTestUnorder', async function (done) {
         function subscriberCallBack003(err, data) {
             console.info("==========================>subscriberCallBack003");
             expect(data.event).assertEqual("publish_event0300");
-            expect(data.bundleName).assertEqual("PublishBundleName0300");
             expect(data.code).assertEqual(55);
             expect(data.data).assertEqual("PublishData0300");
             commonEventSubscriber003.isOrderedCommonEvent(isOrderedCommonEventCallback003);
