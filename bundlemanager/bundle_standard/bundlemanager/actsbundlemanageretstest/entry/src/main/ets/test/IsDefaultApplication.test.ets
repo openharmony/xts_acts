@@ -14,11 +14,7 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
-import innerBundleManager from '@ohos.bundle.innerBundleManager'
-import wc from '@ohos.ability.wantConstant'
 import defaultAppMgr from '@ohos.bundle.defaultAppManager'
-
-const INVALID_CODE = 1
 
 export default function isDefaultApplicationTest() {
     describe('isDefaultApplicationTest', function() {
@@ -30,21 +26,20 @@ export default function isDefaultApplicationTest() {
          */
           it('isDefaultApplication_0100', 0, async function (done) {
               const data = await defaultAppMgr.isDefaultApplication(defaultAppMgr.ApplicationType.IMAGE)
-              console.info("isDefaultApplication_0100 --- " + data);
+              console.info("isDefaultApplication_0100 --- " + data)
               expect(data).assertFalse()
-              done();
+              done()
           });
 
        /**
          * @tc.number: isDefaultApplication_0200
          * @tc.name: isDefaultApplication Promise
-         * @tc.desc: Error parameter type, return 1
+         * @tc.desc: The parameter type is correct, the string format is incorrect, return false
          */
         it('isDefaultApplication_0200', 0, async function (done) {
-            defaultAppMgr.isDefaultApplication("image/").catch((err) => {
-                console.info("isDefaultApplication_0200 --- " + err);
-                expect(err).assertEqual(INVALID_CODE)
-            })
+            const data = await defaultAppMgr.isDefaultApplication("image/")
+            console.info("isDefaultApplication_0200 --- " + data)
+            expect(data).assertFalse()
             done();
         });
 
@@ -55,9 +50,9 @@ export default function isDefaultApplicationTest() {
          */
         it('isDefaultApplication_0300', 0, async function (done) {
             const data = await defaultAppMgr.isDefaultApplication("abc")
-            console.info("isDefaultApplication_0300 --- " + data);
+            console.info("isDefaultApplication_0300 --- " + data)
             expect(data).assertFalse()
-            done();
+            done()
         });
     })
   }
