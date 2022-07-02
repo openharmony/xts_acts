@@ -70,7 +70,7 @@ describe("SensorJsTest_sensor_9", function () {
 
     /*
      * @tc.name:gravity_SensorJsTest001
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0010
      */
     it("gravity_SensorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
@@ -84,7 +84,7 @@ describe("SensorJsTest_sensor_9", function () {
 
     /*
      * @tc.name:gravity_SensorJsTest002
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0020
      */
     it("gravity_SensorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -100,7 +100,7 @@ describe("SensorJsTest_sensor_9", function () {
 
     /*
      * @tc.name:gravity_SensorJsTest003
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0030
      */
     it("gravity_SensorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
@@ -122,7 +122,7 @@ describe("SensorJsTest_sensor_9", function () {
 
     /*
      * @tc.name:gravity_SensorJsTest004
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0040
      */
     it("gravity_SensorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -135,7 +135,7 @@ describe("SensorJsTest_sensor_9", function () {
 
     /*
      * @tc.name:gravity_SensorJsTest005
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0050
      */
     it("gravity_SensorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
@@ -156,7 +156,7 @@ describe("SensorJsTest_sensor_9", function () {
 
     /*
      * @tc.name:gravity_SensorJsTest006
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0060
      */
     it("gravity_SensorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -172,7 +172,7 @@ describe("SensorJsTest_sensor_9", function () {
 
     /*
      * @tc.name:gravity_SensorJsTest007
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0070
      */
     it("gravity_SensorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -191,7 +191,7 @@ describe("SensorJsTest_sensor_9", function () {
 
     /*
      * @tc.name:gravity_SensorJsTest008
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0080
      */
     it("gravity_SensorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -212,7 +212,7 @@ describe("SensorJsTest_sensor_9", function () {
 
     /*
      * @tc.name:gravity_SensorJsTest009
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0090
      */
     it("gravity_SensorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -228,7 +228,7 @@ describe("SensorJsTest_sensor_9", function () {
 
     /*
      * @tc.name:gravity_SensorJsTest010
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0100
      */
     it("gravity_SensorJsTest010", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -249,7 +249,7 @@ describe("SensorJsTest_sensor_9", function () {
 
     /*
      * @tc.name:gravity_SensorJsTest011
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0110
      */
     it("gravity_SensorJsTest011", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -266,7 +266,7 @@ describe("SensorJsTest_sensor_9", function () {
 
     /*
      * @tc.name:gravity_SensorJsTest012
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0120
      */
     it("gravity_SensorJsTest012", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -288,7 +288,7 @@ describe("SensorJsTest_sensor_9", function () {
 
     /*
      * @tc.name:gravity_SensorJsTest013
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0130
      */
     it("gravity_SensorJsTest013", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {

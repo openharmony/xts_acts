@@ -72,7 +72,7 @@ describe("SensorJsTest_sensor_20", function () {
 
     /*
      * @tc.name:rotatingvector_SensorJsTest001
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_ROTATION_VECTOR_JsTest_0010
      */
     it("rotatingvector_SensorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
@@ -86,7 +86,7 @@ describe("SensorJsTest_sensor_20", function () {
 
     /*
      * @tc.name:rotatingvector_SensorJsTest002
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_ROTATION_VECTOR_JsTest_0020
      */
     it("rotatingvector_SensorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -102,7 +102,7 @@ describe("SensorJsTest_sensor_20", function () {
 
     /*
      * @tc.name:rotatingvector_SensorJsTest003
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_ROTATION_VECTOR_JsTest_0030
      */
     it("rotatingvector_SensorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
@@ -124,7 +124,7 @@ describe("SensorJsTest_sensor_20", function () {
 
     /*
      * @tc.name:rotatingvector_SensorJsTest004
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_ROTATION_VECTOR_JsTest_0040
      */
     it("rotatingvector_SensorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -137,7 +137,7 @@ describe("SensorJsTest_sensor_20", function () {
 
     /*
      * @tc.name:rotatingvector_SensorJsTest005
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_ROTATION_VECTOR_JsTest_0050
      */
     it("rotatingvector_SensorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
@@ -158,7 +158,7 @@ describe("SensorJsTest_sensor_20", function () {
 
     /*
      * @tc.name:rotatingvector_SensorJsTest006
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_ROTATION_VECTOR_JsTest_0060
      */
     it("rotatingvector_SensorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -174,7 +174,7 @@ describe("SensorJsTest_sensor_20", function () {
 
     /*
      * @tc.name:rotatingvector_SensorJsTest007
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_ROTATION_VECTOR_JsTest_0070
      */
     it("rotatingvector_SensorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -193,7 +193,7 @@ describe("SensorJsTest_sensor_20", function () {
 
     /*
      * @tc.name:rotatingvector_SensorJsTest008
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_ROTATION_VECTOR_JsTest_0080
      */
     it("rotatingvector_SensorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -214,7 +214,7 @@ describe("SensorJsTest_sensor_20", function () {
 
     /*
      * @tc.name:rotatingvector_SensorJsTest009
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_ROTATION_VECTOR_JsTest_0090
      */
     it("rotatingvector_SensorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -230,7 +230,7 @@ describe("SensorJsTest_sensor_20", function () {
 
     /*
      * @tc.name:rotatingvector_SensorJsTest010
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_ROTATION_VECTOR_JsTest_0100
      */
     it("rotatingvector_SensorJsTest010", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -251,7 +251,7 @@ describe("SensorJsTest_sensor_20", function () {
 
     /*
      * @tc.name:rotatingvector_SensorJsTest011
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_ROTATION_VECTOR_JsTest_0110
      */
     it("rotatingvector_SensorJsTest011", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -268,7 +268,7 @@ describe("SensorJsTest_sensor_20", function () {
 
     /*
      * @tc.name:rotatingvector_SensorJsTest012
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_ROTATION_VECTOR_JsTest_0120
      */
     it("rotatingvector_SensorJsTest012", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -290,7 +290,7 @@ describe("SensorJsTest_sensor_20", function () {
 
     /*
      * @tc.name:rotatingvector_SensorJsTest013
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_ROTATION_VECTOR_JsTest_0130
      */
     it("rotatingvector_SensorJsTest013", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {

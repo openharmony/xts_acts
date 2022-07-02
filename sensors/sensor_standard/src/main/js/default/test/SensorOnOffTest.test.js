@@ -51,11 +51,11 @@ describe('SystemParameterTest', function () {
 
 
     /**
-     * @tc.number    SUB_SENSORS_Sensor_JSTest_0010
-     * @tc.name      testRegisterSensortest001
-     * @tc.desc      test get sensor data by sensor id.
+     * @tc.number SUB_SENSORS_Sensor_JSTest_0010
+     * @tc.name   testRegisterSensortest001
+     * @tc.desc   test get sensor data by sensor id.
      */
-    it('SUB_SENSORS_Sensor_JSTest_0010', 0, async function (done) {
+    it('SUB_SENSORS_Sensor_JSTest_0010', FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
         console.info('SUB_SENSORS_Sensor_JSTest_0010 start');
         try {
             sensor.on(testSensorId, function (data) {
@@ -79,11 +79,11 @@ describe('SystemParameterTest', function () {
     })
 
    /**
-   * @tc.number    SUB_SENSORS_Sensor_JSTest_0020
-   * @tc.name      testRegisterSensortest002
-   * @tc.desc      test get sensor data by wrong sensor id.
+   * @tc.number SUB_SENSORS_Sensor_JSTest_0020
+   * @tc.name   testRegisterSensortest002
+   * @tc.desc   test get sensor data by wrong sensor id.
    */
-    it('SUB_SENSORS_Sensor_JSTest_0020', 0, async function (done) {
+    it('SUB_SENSORS_Sensor_JSTest_0020', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SUB_SENSORS_Sensor_JSTest_0020 start');
 
         function onSensorCallback(data) {

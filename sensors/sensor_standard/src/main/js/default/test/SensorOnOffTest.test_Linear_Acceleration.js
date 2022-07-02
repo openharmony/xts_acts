@@ -52,9 +52,9 @@ describe("SensorJsTest_sensor_13", function () {
     /*
      * @tc.number: SUB_SensorsSystem_Linear_Acceleration_JSTest_0010
      * @tc.name: SensorLinearAccelerationJSTest001
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_Linear_Acceleration_JSTest_0010", 0, async function (done) {
+    it("SUB_SensorsSystem_Linear_Acceleration_JSTest_0010", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
         console.info('---------------SUB_SensorsSystem_Linear_Acceleration_JSTest_0010-----------------');
         function offPromise() {
             return new Promise((resolve, reject) => {
@@ -109,9 +109,9 @@ describe("SensorJsTest_sensor_13", function () {
     /*
      * @tc.number: SUB_SensorsSystem_Linear_Acceleration_JSTest_0050
      * @tc.name: SensorLinearAccelerationJSTest005
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_Linear_Acceleration_JSTest_0050", 0, async function (done) {
+    it("SUB_SensorsSystem_Linear_Acceleration_JSTest_0050", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function onceSensorCallback(error, data) {
             if (error) {
                 console.info('SensorLinearAccelerationJSTest005  once error');

@@ -25,7 +25,7 @@ import {
 
 describe('Multimodalinput_KeyCode_test', function () {
 
-    
+
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0010', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0010 enter`);
 
@@ -101,7 +101,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0100', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0100 enter`);
 
-        expect(inputkeyCode.KeyCode.KKEYCODE_MEDIA_FAST_FORWARD == 15).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_MEDIA_FAST_FORWARD == 15).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0100 exit`);
     })
@@ -302,7 +302,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0350', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0010 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_DPAD_CENTER = 2016).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_DPAD_CENTER == 2016).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0010 exit`);
     })
@@ -374,7 +374,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0440', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0010 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_I = 2025).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_I == 2025).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0010 exit`);
     })
@@ -974,7 +974,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_119', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_119 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_F11 = 2100).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_F11 == 2100).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_119 exit`);
     })
@@ -1046,7 +1046,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_128', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_128 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_NUMPAD_6 = 2109).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_NUMPAD_6 == 2109).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_128 exit`);
     })
@@ -1174,7 +1174,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_144', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_144 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_ZENKAKU_HANKAKU = 2601).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_ZENKAKU_HANKAKU == 2601).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_144 exit`);
     })
@@ -1374,7 +1374,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_169', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_169 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_CALC = 2626).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_CALC == 2626).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_169 exit`);
     })
@@ -1425,22 +1425,6 @@ describe('Multimodalinput_KeyCode_test', function () {
         expect(inputkeyCode.KeyCode.KEYCODE_STOPCD == 2632).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_175 exit`);
-    })
-
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_176', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_176 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_STOPCD == 2632).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_176 exit`);
-    })
-
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_177', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_177 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_STOPCD == 2632).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_177 exit`);
     })
 
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_178', 0, function () {
@@ -1499,28 +1483,12 @@ describe('Multimodalinput_KeyCode_test', function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_184 exit`);
     })
 
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_185', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_185 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_NEW == 2640).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_185 exit`);
-    })
-
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_186', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_186 enter`);
 
         expect(inputkeyCode.KeyCode.KEYCODE_REDO == 2641).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_186 exit`);
-    })
-
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_187', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_187 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_REDO == 2641).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_187 exit`);
     })
 
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_188', 0, function () {
@@ -1545,14 +1513,6 @@ describe('Multimodalinput_KeyCode_test', function () {
         expect(inputkeyCode.KeyCode.KEYCODE_BASSBOOST == 2644).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_190 exit`);
-    })
-
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_191', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_191 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_BASSBOOST == 2644).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_191 exit`);
     })
 
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_192', 0, function () {
@@ -1585,14 +1545,6 @@ describe('Multimodalinput_KeyCode_test', function () {
         expect(inputkeyCode.KeyCode.KEYCODE_CANCEL == 2648).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_195 exit`);
-    })
-
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_196', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_196 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_CANCEL == 2648).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_196 exit`);
     })
 
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_197', 0, function () {
@@ -1635,28 +1587,12 @@ describe('Multimodalinput_KeyCode_test', function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_201 exit`);
     })
 
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_202', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_202 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_REPLY == 2653).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_202 exit`);
-    })
-
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_203', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_203 enter`);
 
         expect(inputkeyCode.KeyCode.KEYCODE_FORWARDMAIL == 2654).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_203 exit`);
-    })
-
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_204', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_204 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_FORWARDMAIL == 2654).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_204 exit`);
     })
 
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_205', 0, function () {
@@ -1779,14 +1715,6 @@ describe('Multimodalinput_KeyCode_test', function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_219 exit`);
     })
 
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_220', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_220 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_KEYBOARD == 2669).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_220 exit`);
-    })
-
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_221', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_221 enter`);
 
@@ -1819,14 +1747,6 @@ describe('Multimodalinput_KeyCode_test', function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_224 exit`);
     })
 
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_225', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_225 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_TV2 == 2673).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_225 exit`);
-    })
-
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_226', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_226 enter`);
 
@@ -1851,14 +1771,6 @@ describe('Multimodalinput_KeyCode_test', function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_228 exit`);
     })
 
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_229', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_229 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_SAT == 2676).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_229 exit`);
-    })
-
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_230', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_230 enter`);
 
@@ -1873,14 +1785,6 @@ describe('Multimodalinput_KeyCode_test', function () {
         expect(inputkeyCode.KeyCode.KEYCODE_TAPE == 2678).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_231 exit`);
-    })
-
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_232', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_232 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_TAPE == 2678).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_232 exit`);
     })
 
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_232', 0, function () {
@@ -1950,7 +1854,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_240', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_240 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_GREEN = 2687).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_GREEN == 2687).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_240 exit`);
     })
@@ -1977,14 +1881,6 @@ describe('Multimodalinput_KeyCode_test', function () {
         expect(inputkeyCode.KeyCode.KEYCODE_CHANNELUP == 2690).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_243 exit`);
-    })
-
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_244', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_244 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_CHANNELUP == 2690).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_244 exit`);
     })
 
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_245', 0, function () {
@@ -2057,14 +1953,6 @@ describe('Multimodalinput_KeyCode_test', function () {
         expect(inputkeyCode.KeyCode.KEYCODE_ZOOMOUT == 2699).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_253 exit`);
-    })
-
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_254', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_254 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_ZOOMOUT == 2699).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_254 exit`);
     })
 
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_255', 0, function () {
@@ -2275,14 +2163,6 @@ describe('Multimodalinput_KeyCode_test', function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_280 exit`);
     })
 
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_281', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_281 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_BRIGHTNESS_MAX == 2725).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_281 exit`);
-    })
-
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_282', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_282 enter`);
 
@@ -2355,22 +2235,6 @@ describe('Multimodalinput_KeyCode_test', function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_290 exit`);
     })
 
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_291', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_291 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_WAKEUP == 2802).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_291 exit`);
-    })
-
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_292', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_292 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_WAKEUP == 2802).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_292 exit`);
-    })
-
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_293', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_293 enter`);
 
@@ -2401,14 +2265,6 @@ describe('Multimodalinput_KeyCode_test', function () {
         expect(inputkeyCode.KeyCode.KEYCODE_PROG1 == 2806).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_296 exit`);
-    })
-
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_297', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_297 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_PROG1 == 2806).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_297 exit`);
     })
 
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_298', 0, function () {
@@ -2510,7 +2366,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_310', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_310 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_F16 = 2819).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_F16 == 2819).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_310 exit`);
     })
@@ -2537,14 +2393,6 @@ describe('Multimodalinput_KeyCode_test', function () {
         expect(inputkeyCode.KeyCode.KEYCODE_F19 == 2822).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_313 exit`);
-    })
-
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_314', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_314 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_F19 == 2822).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_314 exit`);
     })
 
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_315', 0, function () {
@@ -2818,29 +2666,6 @@ describe('Multimodalinput_KeyCode_test', function () {
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_348 exit`);
     })
-
-
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_349', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_349 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_ADDRESSBOOK == 2709).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_349 exit`);
-    })
-
-
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_350', 0, function () {
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_350 enter`);
-
-        expect(inputkeyCode.KeyCode.KEYCODE_BRIGHTNESS_MAX == 2725).assertTrue();
-
-        console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_350 exit`);
-    })
-
-
-
-
-
 })
 
 

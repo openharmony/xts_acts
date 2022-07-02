@@ -63,13 +63,12 @@ describe("SensorJsTest_sensor_7", function () {
 
     let errMessage;
 
-    /*
-     * @tc.name:Hall_SensorJsTest001
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_Hall_JSTest_0010
+     * @tc.name: Hall_SensorJsTest001
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("Hall_SensorJsTest001", 0, async function (done) {
+    it("Hall_SensorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
         console.info('----------------------Hall_SensorJsTest001---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
         setTimeout(() => {
@@ -78,13 +77,12 @@ describe("SensorJsTest_sensor_7", function () {
         }, 500);
     })
 
-    /*
-     * @tc.name:Hall_SensorJsTest002
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_Hall_JSTest_0020
+     * @tc.name: Hall_SensorJsTest002
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("Hall_SensorJsTest002", 0, async function (done) {
+    it("Hall_SensorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest002---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': 100000000 });
         setTimeout(() => {
@@ -95,13 +93,12 @@ describe("SensorJsTest_sensor_7", function () {
         }, 500);
     })
 
-    /*
-     * @tc.name:Hall_SensorJsTest003
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_Hall_JSTest_0030
+     * @tc.name: Hall_SensorJsTest003
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("Hall_SensorJsTest003", 0, async function (done) {
+    it("Hall_SensorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest003---------------------------');
         function onSensorCallback(data) {
             console.info('Hall_SensorJsTest003  on error');
@@ -118,13 +115,12 @@ describe("SensorJsTest_sensor_7", function () {
         }
     })
 
-    /*
-     * @tc.name:Hall_SensorJsTest004
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_Hall_JSTest_0040
+     * @tc.name: Hall_SensorJsTest004
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("Hall_SensorJsTest004", 0, async function (done) {
+    it("Hall_SensorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
         setTimeout(() => {
             expect(true).assertTrue();
@@ -132,13 +128,12 @@ describe("SensorJsTest_sensor_7", function () {
         }, 500);
     })
 
-    /*
-     * @tc.name:Hall_SensorJsTest005
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_Hall_JSTest_0050
+     * @tc.name: Hall_SensorJsTest005
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("Hall_SensorJsTest005", 0, async function (done) {
+    it("Hall_SensorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function onceSensorCallback(data) {
             console.info('Hall_SensorJsTest005  on error');
             expect(false).assertTrue();
@@ -154,13 +149,12 @@ describe("SensorJsTest_sensor_7", function () {
         }
     })
 
-    /*
-     * @tc.name:Hall_SensorJsTest006
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_Hall_JSTest_0060
+     * @tc.name: Hall_SensorJsTest006
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("Hall_SensorJsTest006", 0, async function (done) {
+    it("Hall_SensorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         try {
             sensor.off(string, "");
         } catch (error) {
@@ -171,13 +165,12 @@ describe("SensorJsTest_sensor_7", function () {
         }
     })
 
-    /*
-     * @tc.name:Hall_SensorJsTest007
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_Hall_JSTest_0070
+     * @tc.name: Hall_SensorJsTest007
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("Hall_SensorJsTest007", 0, async function (done) {
+    it("Hall_SensorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function onSensorCallback(data) {
             console.info('Hall_SensorJsTest007  on error');
             expect(false).assertTrue();
@@ -191,13 +184,12 @@ describe("SensorJsTest_sensor_7", function () {
         }, 500);
     })
 
-    /*
-     * @tc.name:Hall_SensorJsTest008
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_Hall_JSTest_0080
+     * @tc.name: Hall_SensorJsTest008
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("Hall_SensorJsTest008", 0, async function (done) {
+    it("Hall_SensorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function onSensorCallback(data) {
             console.info('Hall_SensorJsTest008  on error');
             expect(false).assertTrue();
@@ -214,12 +206,11 @@ describe("SensorJsTest_sensor_7", function () {
     })
 
     /*
-     * @tc.name:Hall_SensorJsTest009
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_Hall_JSTest_0090
+     * @tc.name: Hall_SensorJsTest009
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("Hall_SensorJsTest009", 0, async function (done) {
+    it("Hall_SensorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
         setTimeout(() => {
@@ -230,13 +221,12 @@ describe("SensorJsTest_sensor_7", function () {
         }, 1000);
     })
 
-    /*
-     * @tc.name:Hall_SensorJsTest010
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_Hall_JSTest_0100
+     * @tc.name: Hall_SensorJsTest010
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("Hall_SensorJsTest010", 0, async function (done) {
+    it("Hall_SensorJsTest010", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
         setTimeout(() => {
@@ -252,13 +242,12 @@ describe("SensorJsTest_sensor_7", function () {
         }, 1000);
     })
 
-    /*
-     * @tc.name:Hall_SensorJsTest011
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_Hall_JSTest_0110
+     * @tc.name: Hall_SensorJsTest011
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("Hall_SensorJsTest011", 0, async function (done) {
+    it("Hall_SensorJsTest011", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest011---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': 100000000 });
         sensor.once(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
@@ -270,13 +259,12 @@ describe("SensorJsTest_sensor_7", function () {
         }, 1000);
     })
 
-    /*
-     * @tc.name:Hall_SensorJsTest012
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_Hall_JSTest_0120
+     * @tc.name: Hall_SensorJsTest012
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("Hall_SensorJsTest012", 0, async function (done) {
+    it("Hall_SensorJsTest012", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest012---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': 100000000 });
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2, { 'interval': 100000000 });
@@ -293,13 +281,12 @@ describe("SensorJsTest_sensor_7", function () {
         }, 1000);
     })
 
-    /*
-     * @tc.name:Hall_SensorJsTest013
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_Hall_JSTest_0130
+     * @tc.name: Hall_SensorJsTest013
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("Hall_SensorJsTest013", 0, async function (done) {
+    it("Hall_SensorJsTest013", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Hall_SensorJsTest013---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': 100000000 });
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2, { 'interval': 100000000 });

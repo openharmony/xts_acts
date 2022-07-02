@@ -52,9 +52,9 @@ describe("SensorJsTest_sensor_22", function () {
     /*
      * @tc.number: SUB_SensorsSystem_Ambient_Temperature_JSTest_0010
      * @tc.name: SensorAmbientTemperatureJSTest001
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_Ambient_Temperature_JSTest_0010", 0, async function (done) {
+    it("SUB_SensorsSystem_Ambient_Temperature_JSTest_0010", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
         console.info('--------------------SUB_SensorsSystem_Ambient_Temperature_JSTest_0010-------------------------');
         function offPromise() {
             return new Promise((resolve, reject) => {
@@ -104,17 +104,17 @@ describe("SensorJsTest_sensor_22", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_Ambient_Temperature_JSTest_0050
-     * @tc.name: SensorAmbientTemperatureJSTest005
-     * @tc.desc:verify app info is not null
+     * @tc.number: SUB_SensorsSystem_Ambient_Temperature_JSTest_0020
+     * @tc.name: SensorAmbientTemperatureJSTest002
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_Ambient_Temperature_JSTest_0050", 0, async function (done) {
+    it("SensorAmbientTemperatureJSTest002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function onceSensorCallback(error, data) {
             if (error) {
-                console.info('SensorAmbientTemperatureJSTest005  once error');
+                console.info('SensorAmbientTemperatureJSTest002  once error');
                 expect(false).assertTrue();
             } else {
-                console.info('SensorAmbientTemperatureJSTest005  once success temperature: ' + data.temperature);
+                console.info('SensorAmbientTemperatureJSTest002s  once success temperature: ' + data.temperature);
                 expect(typeof (data.temperature)).assertEqual("number");
             }
             setTimeout(() => {

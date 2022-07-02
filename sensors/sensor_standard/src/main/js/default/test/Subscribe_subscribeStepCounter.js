@@ -54,12 +54,11 @@ describe("SensorJsTest_sensor_34", function () {
     let errMessage;
 
     /*
-    * @tc.name:subscribeStepCounter_SensorJsTest001
-    * @tc.desc:verify app info is not null
-    * @tc.type: FUNC
-    * @tc.require: SR000H0ALK, AR000H0ALM
-    */
-    it("subscribeStepCounter_SensorJsTest001", 0, async function (done) {
+     * @tc.number:SUB_SensorsSystem_SubscribeStepCounter_JSTest_0010
+     * @tc.name: subscribeStepCounter_SensorJsTest001
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeStepCounter_SensorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
         console.info('----------------------subscribeStepCounter_SensorJsTest001---------------------------');
         sensor.subscribeStepCounter({
             success: function (data) {
@@ -85,12 +84,11 @@ describe("SensorJsTest_sensor_34", function () {
     })
 
     /*
-     * @tc.name:subscribeStepCounter_SensorJsTest002
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeStepCounter_JSTest_0020
+     * @tc.name: subscribeStepCounter_SensorJsTest002
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeStepCounter_SensorJsTest002", 0, function (done) {
+    it("subscribeStepCounter_SensorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
         console.info('----------------------subscribeStepCounter_SensorJsTest002---------------------------');
         try {
             sensor.subscribeStepCounter({
@@ -112,12 +110,11 @@ describe("SensorJsTest_sensor_34", function () {
     })
 
     /*
-     * @tc.name:subscribeStepCounter_SensorJsTest003
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeStepCounter_JSTest_0030
+     * @tc.name: subscribeStepCounter_SensorJsTest003
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeStepCounter_SensorJsTest003", 0, function (done) {
+    it("subscribeStepCounter_SensorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
         console.info('----------------------subscribeStepCounter_SensorJsTest003---------------------------');
         try {
             sensor.subscribeStepCounter({
@@ -140,12 +137,11 @@ describe("SensorJsTest_sensor_34", function () {
     })
 
     /*
-     * @tc.name:subscribeStepCounter_SensorJsTest004
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeStepCounter_JSTest_0040
+     * @tc.name: subscribeStepCounter_SensorJsTest004
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeStepCounter_SensorJsTest004", 0, async function (done) {
+    it("subscribeStepCounter_SensorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeStepCounter_SensorJsTest004---------------------------');
         try {
             sensor.unsubscribeStepCounter('xxx');
@@ -158,12 +154,11 @@ describe("SensorJsTest_sensor_34", function () {
     })
 
     /*
-     * @tc.name:subscribeStepCounter_SensorJsTest005
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeStepCounter_JSTest_0050
+     * @tc.name: subscribeStepCounter_SensorJsTest005
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeStepCounter_SensorJsTest005", 0, async function (done) {
+    it("subscribeStepCounter_SensorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeStepCounter_SensorJsTest005---------------------------');
         try {
             sensor.subscribeStepCounter();
@@ -176,12 +171,11 @@ describe("SensorJsTest_sensor_34", function () {
     })
 
     /*
-     * @tc.name:subscribeStepCounter_SensorJsTest006
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeStepCounter_JSTest_0060
+     * @tc.name: subscribeStepCounter_SensorJsTest006
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeStepCounter_SensorJsTest006", 0, async function (done) {
+    it("subscribeStepCounter_SensorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeStepCounter_SensorJsTest006---------------------------');
         try {
             sensor.subscribeStepCounter('xxx');
@@ -194,12 +188,11 @@ describe("SensorJsTest_sensor_34", function () {
     })
 
     /*
-     * @tc.name:subscribeStepCounter_SensorJsTest007
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeStepCounter_JSTest_0070
+     * @tc.name: subscribeStepCounter_SensorJsTest007
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeStepCounter_SensorJsTest007", 0, function (done) {
+    it("subscribeStepCounter_SensorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
         console.info('----------------------subscribeStepCounter_SensorJsTest007---------------------------');
         sensor.subscribeStepCounter({
             success: function (data) {
@@ -235,12 +228,11 @@ describe("SensorJsTest_sensor_34", function () {
     })
 
     /*
-     * @tc.name:subscribeStepCounter_SensorJsTest008
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeStepCounter_JSTest_0080
+     * @tc.name: subscribeStepCounter_SensorJsTest008
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeStepCounter_SensorJsTest008", 0, async function (done) {
+    it("subscribeStepCounter_SensorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeStepCounter_SensorJsTest008---------------------------');
         try {
             sensor.unsubscribeStepCounter();
@@ -253,12 +245,11 @@ describe("SensorJsTest_sensor_34", function () {
     })
 
     /*
-     * @tc.name:subscribeStepCounter_SensorJsTest009
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeStepCounter_JSTest_0090
+     * @tc.name: subscribeStepCounter_SensorJsTest009
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeStepCounter_SensorJsTest009", 0, function (done) {
+    it("subscribeStepCounter_SensorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
         console.info('----------------------subscribeStepCounter_SensorJsTest009---------------------------');
         sensor.subscribeStepCounter({
             success: function (data) {

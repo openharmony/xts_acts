@@ -54,12 +54,11 @@ describe("SensorJsTest_sensor_27", function () {
     let errMessage;
 
     /*
-     * @tc.name:subscribeDeviceOrientation_SensorJsTest001
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0010
+     * @tc.name: subscribeDeviceOrientation_SensorJsTest001
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeDeviceOrientation_SensorJsTest001", 0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest001---------------------------');
         sensor.subscribeDeviceOrientation({
             interval: 'game',
@@ -89,13 +88,12 @@ describe("SensorJsTest_sensor_27", function () {
         }, 1000);
     })
 
-    /*
-     * @tc.name:subscribeDeviceOrientation_SensorJsTest002
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+   /*
+     * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0020
+     * @tc.name: subscribeDeviceOrientation_SensorJsTest002
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeDeviceOrientation_SensorJsTest002", 0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest002---------------------------');
         sensor.subscribeDeviceOrientation({
             interval: 'ui',
@@ -126,12 +124,11 @@ describe("SensorJsTest_sensor_27", function () {
     })
 
     /*
-     * @tc.name:subscribeDeviceOrientation_SensorJsTest003
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0030
+     * @tc.name: subscribeDeviceOrientation_SensorJsTest003
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeDeviceOrientation_SensorJsTest003", 0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest003---------------------------');
         sensor.subscribeDeviceOrientation({
             interval: 'normal',
@@ -162,12 +159,11 @@ describe("SensorJsTest_sensor_27", function () {
     })
 
     /*
-     * @tc.name:subscribeDeviceOrientation_SensorJsTest004
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0040
+     * @tc.name: subscribeDeviceOrientation_SensorJsTest004
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeDeviceOrientation_SensorJsTest004", 0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest004---------------------------');
         try {
             sensor.subscribeDeviceOrientation({
@@ -192,12 +188,11 @@ describe("SensorJsTest_sensor_27", function () {
     })
 
     /*
-     * @tc.name:subscribeDeviceOrientation_SensorJsTest005
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0050
+     * @tc.name: subscribeDeviceOrientation_SensorJsTest005
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeDeviceOrientation_SensorJsTest005", 0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest005---------------------------');
         try {
             sensor.subscribeDeviceOrientation({
@@ -223,12 +218,11 @@ describe("SensorJsTest_sensor_27", function () {
     })
 
     /*
-     * @tc.name:subscribeDeviceOrientation_SensorJsTest006
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0060
+     * @tc.name: subscribeDeviceOrientation_SensorJsTest006
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeDeviceOrientation_SensorJsTest006", 0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest006---------------------------');
         sensor.subscribeDeviceOrientation({
             interval: 'normal',
@@ -273,12 +267,11 @@ describe("SensorJsTest_sensor_27", function () {
     })
 
     /*
-     * @tc.name:subscribeDeviceOrientation_SensorJsTest007
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0070
+     * @tc.name: subscribeDeviceOrientation_SensorJsTest007
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeDeviceOrientation_SensorJsTest007", 0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest007---------------------------');
         try {
             sensor.subscribeDeviceOrientation();
@@ -291,12 +284,11 @@ describe("SensorJsTest_sensor_27", function () {
     })
 
     /*
-     * @tc.name:subscribeDeviceOrientation_SensorJsTest008
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0080
+     * @tc.name: subscribeDeviceOrientation_SensorJsTest008
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeDeviceOrientation_SensorJsTest008", 0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest008---------------------------');
         try {
             sensor.subscribeDeviceOrientation('xxx');
@@ -309,12 +301,11 @@ describe("SensorJsTest_sensor_27", function () {
     })
 
     /*
-     * @tc.name:subscribeDeviceOrientation_SensorJsTest009
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0090
+     * @tc.name: subscribeDeviceOrientation_SensorJsTest009
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeDeviceOrientation_SensorJsTest009", 0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest009---------------------------');
         try {
             sensor.unsubscribeDeviceOrientation('xxx');
@@ -326,13 +317,12 @@ describe("SensorJsTest_sensor_27", function () {
         }
     })
 
-    /*
-     * @tc.name:subscribeDeviceOrientation_SensorJsTest010
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+   /*
+     * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0100
+     * @tc.name: subscribeDeviceOrientation_SensorJsTest010
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeDeviceOrientation_SensorJsTest010", 0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest010", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest010---------------------------');
         sensor.subscribeDeviceOrientation({
             interval: 'xxx',
@@ -351,12 +341,11 @@ describe("SensorJsTest_sensor_27", function () {
     })
 
     /*
-     * @tc.name:subscribeDeviceOrientation_SensorJsTest011
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0110
+     * @tc.name: subscribeDeviceOrientation_SensorJsTest011
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeDeviceOrientation_SensorJsTest011", 0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest011", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest011---------------------------');
         try {
             sensor.unsubscribeDeviceOrientation();
@@ -369,12 +358,11 @@ describe("SensorJsTest_sensor_27", function () {
     })
 
     /*
-     * @tc.name:subscribeDeviceOrientation_SensorJsTest012
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0120
+     * @tc.name: subscribeDeviceOrientation_SensorJsTest012
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeDeviceOrientation_SensorJsTest012", 0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest012", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest012---------------------------');
         sensor.subscribeDeviceOrientation({
             interval: 'normal',
@@ -389,12 +377,11 @@ describe("SensorJsTest_sensor_27", function () {
     })
 
     /*
-     * @tc.name:subscribeDeviceOrientation_SensorJsTest013
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_0130
+     * @tc.name: subscribeDeviceOrientation_SensorJsTest013
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeDeviceOrientation_SensorJsTest013", 0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest013", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest013---------------------------');
         sensor.subscribeDeviceOrientation({
             interval: 'normal',
@@ -413,12 +400,11 @@ describe("SensorJsTest_sensor_27", function () {
     })
 
     /*
-     * @tc.name:subscribeDeviceOrientation_SensorJsTest014
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeDeviceOrientation_JSTest_010
+     * @tc.name: subscribeDeviceOrientation_SensorJsTest014
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeDeviceOrientation_SensorJsTest014", 0, async function (done) {
+    it("subscribeDeviceOrientation_SensorJsTest014", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeDeviceOrientation_SensorJsTest014---------------------------');
         sensor.subscribeDeviceOrientation({
             interval: 'normal',

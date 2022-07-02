@@ -70,7 +70,7 @@ describe("SensorJsTest_sensor_15", function () {
 
     /*
      * @tc.name:magnetic_SensorJsTest001
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0010
      */
     it("magnetic_SensorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
@@ -84,7 +84,7 @@ describe("SensorJsTest_sensor_15", function () {
 
     /*
      * @tc.name:magnetic_SensorJsTest002
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0020
      */
     it("magnetic_SensorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -100,7 +100,7 @@ describe("SensorJsTest_sensor_15", function () {
 
     /*
      * @tc.name:magnetic_SensorJsTest003
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0030
      */
     it("magnetic_SensorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
@@ -122,7 +122,7 @@ describe("SensorJsTest_sensor_15", function () {
 
     /*
      * @tc.name:magnetic_SensorJsTest004
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0040
      */
     it("magnetic_SensorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -135,7 +135,7 @@ describe("SensorJsTest_sensor_15", function () {
 
     /*
      * @tc.name:magnetic_SensorJsTest005
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0050
      */
     it("magnetic_SensorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
@@ -156,7 +156,7 @@ describe("SensorJsTest_sensor_15", function () {
 
     /*
      * @tc.name:magnetic_SensorJsTest006
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0060
      */
     it("magnetic_SensorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -172,7 +172,7 @@ describe("SensorJsTest_sensor_15", function () {
 
     /*
      * @tc.name:magnetic_SensorJsTest007
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0070
      */
     it("magnetic_SensorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -191,7 +191,7 @@ describe("SensorJsTest_sensor_15", function () {
 
     /*
      * @tc.name:magnetic_SensorJsTest008
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0080
      */
     it("magnetic_SensorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -212,7 +212,7 @@ describe("SensorJsTest_sensor_15", function () {
 
     /*
      * @tc.name:magnetic_SensorJsTest009
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0090
      */
     it("magnetic_SensorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -228,7 +228,7 @@ describe("SensorJsTest_sensor_15", function () {
 
     /*
      * @tc.name:magnetic_SensorJsTest010
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0100
      */
     it("magnetic_SensorJsTest010", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -249,7 +249,7 @@ describe("SensorJsTest_sensor_15", function () {
 
     /*
      * @tc.name:magnetic_SensorJsTest011
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0110
      */
     it("magnetic_SensorJsTest011", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -266,7 +266,7 @@ describe("SensorJsTest_sensor_15", function () {
 
     /*
      * @tc.name:magnetic_SensorJsTest012
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0120
      */
     it("magnetic_SensorJsTest012", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
@@ -288,7 +288,7 @@ describe("SensorJsTest_sensor_15", function () {
 
     /*
      * @tc.name:magnetic_SensorJsTest013
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      * @tc.number:SUB_SensorSystem_MAGNETIC_FIELD_JsTest_0130
      */
     it("magnetic_SensorJsTest013", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
