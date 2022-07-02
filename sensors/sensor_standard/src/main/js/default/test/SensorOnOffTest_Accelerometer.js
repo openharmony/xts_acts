@@ -15,7 +15,7 @@
 import sensor from '@ohos.sensor'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("SensorJsTest", function () {
+describe("SensorJsTest_sensor_3", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
         expect(typeof (data.x)).assertEqual("number");
@@ -63,7 +63,7 @@ describe("SensorJsTest", function () {
     })
 
     let errMessages = ['The number of parameters is not valid', 'Should subscribe first',
-    'string is not defined'];
+        'string is not defined'];
 
     let errMessage;
 

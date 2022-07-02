@@ -86,8 +86,8 @@ describe("SensorJsTest", function () {
                         reject(err);
                     }, 500);
                 } else {
-                    console.info('SensorGyroscopeUncalibratedJSTest001  on  success, x: ' + data.x + "y: " 
-                        + data.y + "z: " 
+                    console.info('SensorGyroscopeUncalibratedJSTest001  on  success, x: ' + data.x + "y: "
+                        + data.y + "z: "
                         + data.z + "biasX:" + data.biasX + "biasY: " + data.biasY + "biasZ: " + data.biasZ);
                     expect(typeof (data.x)).assertEqual("number");
                     expect(typeof (data.y)).assertEqual("number");
@@ -121,7 +121,7 @@ describe("SensorJsTest", function () {
                 console.info('SensorGyroscopeUncalibratedJSTest005  once error');
                 expect(false).assertTrue();
             } else {
-                console.info('SensorGyroscopeUncalibratedJSTest005  on  success, x: ' + data.x + "y: " + data.y + "z: " 
+                console.info('SensorGyroscopeUncalibratedJSTest005  on  success, x: ' + data.x + "y: " + data.y + "z: "
                     + data.z + "biasX:" + data.biasX + "biasY: " + data.biasY + "biasZ: " + data.biasZ);
                 expect(typeof (data.x)).assertEqual("number");
                 expect(typeof (data.y)).assertEqual("number");
