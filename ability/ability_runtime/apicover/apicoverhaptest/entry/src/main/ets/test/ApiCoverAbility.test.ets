@@ -227,19 +227,44 @@ export default function ApiCoverTest(abilityContext) {
       expect("/data/storage/el1/bundle").assertEqual(abilityContext.bundleCodeDir)
       expect("/data/storage/el2/distributedfiles").assertEqual(abilityContext.distributedFilesDir)
       expect(1).assertEqual(abilityContext.area)
-      abilityContext.resourceManager.getConfiguration((err, data) => {
-        if (err.code != 0 ) {
-          console.error(`Ability: getConfiguration failed: ${JSON.stringify(err)}`);
-          expect(USERID_ERR).assertEqual(err.code);
-          done()
-        } else {
-          console.log(`Ability: getConfiguration success: ${JSON.stringify(data)}`);
-          expect(1).assertEqual(data.direction)
-          done()
-        }
-      })
-      let moduleContext = abilityContext.createModuleContext("module1")
+	  let moduleContext = abilityContext.createModuleContext("module1")
       expect("/data/storage/el2/base/cache").assertEqual(moduleContext.cacheDir)
+	  abilityContext.resourceManager.getConfiguration((err, data) => {
+		if(err == undefined){
+          console.log(`Ability: getConfiguration success: ${JSON.stringify(data)}`);
+		  console.log(`Ability: getConfiguration success: JSON.stringify(data.direction)`);
+          expect(0).assertEqual(data.direction)
+          done()
+		}else{
+		  expect().assertFail()
+          done()
+		}
+	  })
+    })
+
+	/*
+     * @tc.number  SUB_AA_AMS_Context_0200
+     * @tc.name    Register the listener of Ability and cancel the listener.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+	it('SUB_AA_AMS_Context_0200', 0, async function (done) {
+      await abilityContext.eventHub.on("contextEvent", func1)
+      abilityContext.eventHub.emit("contextEvent", "aa", "bb")
+      await sleep(500)
+      expect("aa").assertEqual(array[0])
+      expect("bb").assertEqual(array[1])
+      array = []
+      await abilityContext.eventHub.off("contextEvent", func1)
+      abilityContext.eventHub.emit("contextEvent", "cc", "dd")
+      await sleep(500)
+      expect(array.length).assertEqual(0)
+      array = [];
+      function func1(a, b){
+        array.push(a)
+        array.push(b)
+      }
+      await sleep(2000)
       done()
     })
 
@@ -258,7 +283,7 @@ export default function ApiCoverTest(abilityContext) {
           expect(0).assertEqual(2)
         } else {
           for(let i = 0; i < value.length; i++){
-            if(value[i].bundleName == "com.example.extensionapitest" && value[i].name == "widget"){
+            if(value[i].bundleName == "com.example.apicoverhaptest" && value[i].name == "widget"){
               trueInfo = value[i]
               console.info("formProvider::GetFormsInfoTest trueInfo: " + JSON.stringify(trueInfo));
             }
@@ -267,7 +292,6 @@ export default function ApiCoverTest(abilityContext) {
         checkFormInfo(trueInfo)
         done()
       })
-      done()
     })
 
     /*
@@ -278,7 +302,7 @@ export default function ApiCoverTest(abilityContext) {
      */
     it('SUB_AA_Form_provider_getFormsInfo_0200', 0, async function (done) {
       console.info("SUB_AA_Form_provider_getFormsInfo_0200");
-      const filter: formInfo.FormInfoFilter = {
+      const filter: FormInfo.FormInfoFilter = {
         moduleName: "module1"
       };
       formProvider.getFormsInfo(filter, (err, value) => {
@@ -291,7 +315,7 @@ export default function ApiCoverTest(abilityContext) {
             expect(1).assertEqual(0)
           }else{
             for(let i = 0; i < value.length; i++){
-              if(value[i].bundleName == "com.example.extensionapitest" && value[i].name == "widget1"){
+              if(value[i].bundleName == "com.example.apicoverhaptest" && value[i].name == "widget1"){
                 trueInfo = value[i]
                 console.info("formProvider::GetFormsInfoTest trueInfo: " + JSON.stringify(trueInfo));
               }
@@ -301,7 +325,6 @@ export default function ApiCoverTest(abilityContext) {
         checkFormInfoModule1(trueInfo)
         done();
       })
-      done()
     })
 
     /*
@@ -362,7 +385,7 @@ export default function ApiCoverTest(abilityContext) {
 }
 function checkFormInfoModule1(formInfo){
   console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(formInfo));
-  expect("com.example.extensionapitest").assertEqual(formInfo.bundleName)
+  expect("com.example.apicoverhaptest").assertEqual(formInfo.bundleName)
   expect("module1").assertEqual(formInfo.moduleName)
   expect("FormAbility").assertEqual(formInfo.abilityName)
   expect("widget1").assertEqual(formInfo.name)
@@ -380,8 +403,8 @@ function checkFormInfoModule1(formInfo){
 }
 function checkFormInfo(formInfo){
   console.info("formProvider::GetFormsInfoTest formInfo: " + JSON.stringify(formInfo));
-  expect("com.example.extensionapitest").assertEqual(formInfo.bundleName)
-  expect("entry").assertEqual(formInfo.moduleName)
+  expect("com.example.apicoverhaptest").assertEqual(formInfo.bundleName)
+  expect("phone").assertEqual(formInfo.moduleName)
   expect("FormAbility").assertEqual(formInfo.abilityName)
   expect("widget").assertEqual(formInfo.name)
   expect("This is a service widget.").assertEqual(formInfo.description)
