@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("FormSupplyAppG") {
+ohos_hap("FormSupplyAppG") {
   hap_profile = "entry/src/main/config.json"
   deps = [
     ":FormOfFaEts_form_js_assets",
@@ -24,6 +24,10 @@ ohos_js_hap_suite("FormSupplyAppG") {
   hap_name = "FormSupplyAppG"
   part_name = "prebuilt_hap"
   subsystem_name = "applications"
+  js_build_mode = "debug"
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  testonly = true
 }
 
 ohos_js_assets("FormOfFaEts_js_assets") {
