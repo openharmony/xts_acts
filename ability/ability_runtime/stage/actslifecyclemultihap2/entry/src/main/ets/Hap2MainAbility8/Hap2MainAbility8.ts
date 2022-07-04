@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -40,6 +40,12 @@ export default class Hap2MainAbility8 extends Ability {
         // Ability has brought to foreground
         console.log("[Demo] Hap2MainAbility8 onForeground")
 
+
+    }
+
+    onBackground() {
+        // Ability has back to background
+        console.log("[Demo] Hap2MainAbility8 onBackground")
         setTimeout(() => {
             this.context.terminateSelf().then((data) => {
                 console.log("Hap2MainAbility8 EventTest terminateSelf data: " + JSON.stringify(data));
@@ -47,10 +53,5 @@ export default class Hap2MainAbility8 extends Ability {
                 console.log("Hap2MainAbility8 EventTest terminateSelf error: " + JSON.stringify(error));
             })
         }, 500)
-    }
-
-    onBackground() {
-        // Ability has back to background
-        console.log("[Demo] Hap2MainAbility8 onBackground")
     }
 };

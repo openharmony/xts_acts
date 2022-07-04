@@ -91,9 +91,9 @@ export default class MyAbilityStage extends AbilityStage {
                 console.log("[Demo] 7listKey:" + JSON.stringify(listKey));
             }
         }
-        let applicationContext = this.context.getApplicationContext();
-        console.log("[Demo] stage applicationContext: " + JSON.stringify(applicationContext));
-        let lifecycleid = applicationContext.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
+        globalThis.applicationContext = this.context.getApplicationContext();
+        console.log("[Demo] stage applicationContext: " + JSON.stringify(globalThis.applicationContext));
+        let lifecycleid = globalThis.applicationContext.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
         console.log("[Demo] registerAbilityLifecycleCallback number: " + JSON.stringify(lifecycleid));
         setTimeout(function () {
             console.log("[Demo] AbilityLifecycleCallback listKey : " + JSON.stringify(listKey));
