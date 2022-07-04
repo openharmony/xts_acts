@@ -16,7 +16,7 @@
 // @ts-nocheck
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-import systemparameter from '@ohos.systemParameter'
+import systemparameter from '@ohos.systemparameter'
 
 describe('SystemParameterTest', function () {
 

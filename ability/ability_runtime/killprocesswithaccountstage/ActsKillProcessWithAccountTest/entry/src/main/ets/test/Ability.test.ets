@@ -14,7 +14,7 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
-import appManager from '@ohos.application.AppManager';
+import appManager from '@ohos.application.appManager';
 import osaccount from '@ohos.account.osAccount'
 
 const NULL_ACCOUNT_ID = 102;

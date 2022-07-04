@@ -316,37 +316,6 @@ describe('ConnectAbilityTest', function () {
     })
 
     /*
-    * @tc.number: SUB_AA_JsApi_Ability_1600
-    * @tc.name: testAblity1600.
-    * @tc.desc: startAbilityForResult: The input parameter want is not configured (the value is {}).(by callback)
-    */
-    it("SUB_AA_JsApi_Ability_1600", 0, async function (done) {
-        let parameter = {}
-        featureAbility.startAbilityForResult(parameter, (error, data) => {
-            console.log('testAblity1600 data: ' + JSON.stringify(data))
-            console.log('testAblity1600 error: ' + JSON.stringify(error))
-            expect().assertEqual(error.code)
-            done();
-        })
-    })
-
-    /*
-    * @tc.number: SUB_AA_JsApi_Ability_1700
-    * @tc.name: testAblity1700.
-    * @tc.desc: startAbilityForResult: The input parameter optParam is undefined.(by promise)
-    */
-    it("SUB_AA_JsApi_Ability_1700", 0, async function (done) {
-        await featureAbility.startAbilityForResult(undefined).then((data) => {
-            console.log('testAblity1700 data: ' + JSON.stringify(data))
-            expect.assertFail()
-        }).catch((error) => {
-            console.log('testAblity1700' + JSON.stringify(error));
-            expect(errCode1).assertEqual(error.code)
-        })
-        done()
-    })
-
-    /*
     * @tc.number: SUB_AA_JsApi_Ability_1800
     * @tc.name: testAblity1800.
     * @tc.desc: startAbilityForResult: The input parameter optParam is undefined.(by callback)
@@ -357,34 +326,6 @@ describe('ConnectAbilityTest', function () {
             expect(errCode1).assertEqual(error.code)
             done()
         })
-    })
-
-    /*
-    * @tc.number: SUB_AA_JsApi_Ability_1900
-    * @tc.name: testAblity1900.
-    * @tc.desc: startAbilityForResult-wrong input parameter format want a layer outside.(by promise)
-    */
-    it("SUB_AA_JsApi_Ability_1900", 0, async function (done) {
-        let parameter = {
-            'StartAbilityParameter': {
-                'want': {
-                    'bundleName': bundleName,
-                    'abilityName': mainAbilityName,
-                    'parameters': {
-                        'key': resultCode,
-                        'terminate': true
-                    }
-                }
-            }
-        }
-        await featureAbility.startAbilityForResult(parameter).then((data) => {
-            console.log('testAblity1900 data: ' + JSON.stringify(data))
-            expect.assertFail()
-        }).catch((error) => {
-            console.log('testAblity1900 err:' + JSON.stringify(error));
-            expect(errCode1).assertEqual(error.code)
-        })
-        done()
     })
 
     /*
@@ -437,29 +378,5 @@ describe('ConnectAbilityTest', function () {
             expect(undefined).assertEqual(error.code)
         })
         done()
-    })
-
-    /*
-    * @tc.number: SUB_AA_JsApi_Ability_2200
-    * @tc.name: testAblity2200.
-    * @tc.desc: startAbilityForResult-want-Set bundleName and abilityName+flag-flag to character strings.(by callback)
-    */
-    it("SUB_AA_JsApi_Ability_2200", 0, async function (done) {
-        let parameter = {
-            'want': {
-                'bundleName': bundleName,
-                'abilityName': mainAbilityName,
-                'flages': 'abc',
-                'parameters': {
-                    'key': resultCode,
-                    'terminate': true
-                }
-            }
-        }
-        featureAbility.startAbilityForResult(parameter, (error, data) => {
-            console.log('testAblity2200' + JSON.stringify(error));
-            expect(undefined).assertEqual(error.code)
-            done()
-        })
     })
 })

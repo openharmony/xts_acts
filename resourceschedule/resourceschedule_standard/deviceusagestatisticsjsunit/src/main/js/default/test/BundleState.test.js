@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import bundlestate from '@ohos.bundlestate';
+import bundlestate from '@ohos.bundleState';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 function onInit() {

@@ -124,7 +124,7 @@ struct Index {
   private fill(value: number): string {
     return (value > 9 ? "" : "0") + value;
   }
-  private aboutToAppear() {
+  aboutToAppear() {
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {
         console.info("====>[FormComponent] Subscriber FormDelete data:====>", JSON.stringify(data)); 
         this.subscriberDel = data;     
@@ -191,7 +191,7 @@ struct Index {
         console.log("[FormComponent.host] sendCastForm start");
         setTimeout(() => {
           let commonEventPublishData = {
-            data: sendCastFormMsg,
+            data: this.sendCastFormMsg,
             parameters: {
               "formId" : ""
             }

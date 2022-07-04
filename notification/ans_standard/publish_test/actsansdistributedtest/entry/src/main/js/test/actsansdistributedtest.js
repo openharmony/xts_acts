@@ -80,10 +80,10 @@ describe('ActsAnsDistributeTest', function () {
     it('ActsDistribute_test_0400', 0, async function (done) {
         function onConsume0100(data) {
             console.info("========ActsDistribute_test_0400 onConsume data:=======>" + JSON.stringify(data));
-			if (data.request.distributedOption.remindType != notify.DeviceRemindType.IDLE_DONOT_REMIND 
-				&& data.request.distributedOption.remindType != notify.DeviceRemindType.IDLE_REMIND
-				&& data.request.distributedOption.remindType != notify.DeviceRemindType.ACTIVE_DONOT_REMIND
-				&& data.request.distributedOption.remindType != notify.DeviceRemindType.ACTIVE_REMIND )		
+			if (data.request.distributedOptions.remindType != notify.DeviceRemindType.IDLE_DONOT_REMIND 
+				&& data.request.distributedOptions.remindType != notify.DeviceRemindType.IDLE_REMIND
+				&& data.request.distributedOptions.remindType != notify.DeviceRemindType.ACTIVE_DONOT_REMIND
+				&& data.request.distributedOptions.remindType != notify.DeviceRemindType.ACTIVE_REMIND )		
 				{
 					expect().assertFail();
 				}
@@ -110,7 +110,7 @@ describe('ActsAnsDistributeTest', function () {
             id: 4,
             label: "ANS_PublishBasicText_0100",
             slotType : notify.SlotType.CONTENT_INFORMATION,
-            distributedOption:{isDistributed: true, supportDisplayDevices: ["0"], supportOperateDevices: ["0"]}
+            distributedOptions:{isDistributed: true, supportDisplayDevices: ["0"], supportOperateDevices: ["0"]}
         }
         await notify.publish(notificationRequest);
         console.info("===========ActsDistribute_test_0400 publish promise========>");

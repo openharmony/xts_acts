@@ -20,8 +20,10 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 /* usb device pipe test */
 describe('UsbDevicePipeJsFunctionsTestEx', function () {
+
   var gDeviceList
   var gPipe
+  var portCurrentMode
 
   beforeAll(function () {
     console.log('*************Usb Unit UsbDevicePipeJsFunctionsTestEx Begin*************');
@@ -30,20 +32,25 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
 
     // version > 17  host currentMode = 2 device currentMode = 1
     var usbPortList = usb.getPorts()
+    gDeviceList = usb.getDevices();
     if (usbPortList.length > 0) {
-      if (usbPortList[0].status.currentMode == 1) {
-        usb.setPortRoles(usbPortList[0].id, usb.SOURCE, usb.HOST).then(data => {
-          console.info('usb case setPortRoles  return: ' + data);
-        }).catch(error => {
-          console.info('usb case setPortRoles  error : ' + error);
-        });
-
-        console.log('*************Usb Unit switch to host Ex Begin*************');
-        CheckEmptyUtils.sleep(3000)
+      if (gDeviceList.length > 0) {
+        if (usbPortList[0].status.currentMode == 1) {
+          usb.setPortRoles(usbPortList[0].id, usb.SOURCE, usb.HOST).then(data => {
+            portCurrentMode = 2
+            console.info('usb case setPortRoles  return: ' + data);
+          }).catch(error => {
+            console.info('usb case setPortRoles  error : ' + error);
+          });
+  
+          console.log('*************Usb Unit switch to host Ex Begin*************');
+          CheckEmptyUtils.sleep(3000)
+        }
+      } else {
+        portCurrentMode = 1
       }
     }
 
-    gDeviceList = usb.getDevices();
     gPipe = usb.connectDevice(gDeviceList[0])
     console.info('usb unit connectDevice  gPipe ret : ' + JSON.stringify(gPipe));
   })
@@ -133,12 +140,17 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
   }
 
   /**
-   * @tc.number    : SUB_USB_bulk_transfer_test_03
+   * @tc.number    : SUB_USB_JS_0650
    * @tc.name      : bulkTransfer
    * @tc.desc      : 反向测试 批量传输 发数据 修改 outEndpoint.address = 123
    */
-  it('SUB_USB_bulk_transfer_test_03', 0, function () {
-    console.info('usb bulk_transfer_test_03 begin');
+  it('SUB_USB_JS_0650', 0, function () {
+    console.info('usb SUB_USB_JS_0650 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     var testParam = getTransferTestParam()
     if (testParam.interface == null || testParam.outEndpoint == null) {
       expect(false).assertTrue();
@@ -153,23 +165,28 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     var TmpTestParam = testParam
     TmpTestParam.outEndpoint.address = 123
     usb.bulkTransfer(TmpTestParam.pip, TmpTestParam.outEndpoint, tmpUint8Array, 5000).then(data => {
-      console.info('usb case bulk_transfer_test_03 ret: ' + data);
-      console.info('usb case bulk_transfer_test_03 :  PASS');
+      console.info('usb case SUB_USB_JS_0650 ret: ' + data);
+      console.info('usb case SUB_USB_JS_0650 :  PASS');
       expect(data).assertEqual(-1);
     }).catch(error => {
       console.info('usb 03 write error : ' + JSON.stringify(error));
       expect(false).assertFalse();
-      console.info('usb case bulk_transfer_test_03 :  PASS');
+      console.info('usb case SUB_USB_JS_0650 :  PASS');
     });
   })
 
   /**
-   * @tc.number    : SUB_USB_bulk_transfer_test_04
+   * @tc.number    : SUB_USB_JS_0660
    * @tc.name      : bulkTransfer
    * @tc.desc      : 反向测试 批量传输 发数据 修改 outEndpoint.number = 123
    */
-  it('SUB_USB_bulk_transfer_test_04', 0, function () {
-    console.info('usb bulk_transfer_test_04 begin');
+  it('SUB_USB_JS_0660', 0, function () {
+    console.info('usb SUB_USB_JS_0660 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     var testParam = getTransferTestParam()
     if (testParam.interface == null || testParam.outEndpoint == null) {
       expect(false).assertTrue();
@@ -184,23 +201,28 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     var TmpTestParam = testParam
     TmpTestParam.outEndpoint.number = 123
     usb.bulkTransfer(TmpTestParam.pip, TmpTestParam.outEndpoint, tmpUint8Array, 5000).then(data => {
-      console.info('usb case bulk_transfer_test_04 ret: ' + data);
-      console.info('usb case bulk_transfer_test_04 :  PASS');
+      console.info('usb case SUB_USB_JS_0660 ret: ' + data);
+      console.info('usb case SUB_USB_JS_0660 :  PASS');
       expect(data).assertEqual(-1);
     }).catch(error => {
       console.info('usb 04 write error : ' + JSON.stringify(error));
       expect(false).assertFalse();
-      console.info('usb case bulk_transfer_test_04 :  PASS');
+      console.info('usb case SUB_USB_JS_0660 :  PASS');
     });
   })
 
   /**
-   * @tc.number    : SUB_USB_bulk_transfer_test_05
+   * @tc.number    : SUB_USB_JS_0670
    * @tc.name      : bulkTransfer
    * @tc.desc      : 反向测试 批量传输 发数据 修改 outEndpoint.type = 123
    */
-  it('SUB_USB_bulk_transfer_test_05', 0, function () {
-    console.info('usb bulk_transfer_test_05 begin');
+  it('SUB_USB_JS_0670', 0, function () {
+    console.info('usb SUB_USB_JS_0670 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     var testParam = getTransferTestParam()
     if (testParam.interface == null || testParam.outEndpoint == null) {
       expect(false).assertTrue();
@@ -215,23 +237,28 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     var TmpTestParam = testParam
     TmpTestParam.outEndpoint.type = 123
     usb.bulkTransfer(TmpTestParam.pip, TmpTestParam.outEndpoint, tmpUint8Array, 5000).then(data => {
-      console.info('usb case bulk_transfer_test_05 ret: ' + data);
-      console.info('usb case bulk_transfer_test_05 :  PASS');
+      console.info('usb case SUB_USB_JS_0670 ret: ' + data);
+      console.info('usb case SUB_USB_JS_0670 :  PASS');
       expect(data).assertEqual(-1);
     }).catch(error => {
       console.info('usb 05 write error : ' + JSON.stringify(error));
       expect(false).assertFalse();
-      console.info('usb case bulk_transfer_test_05 :  PASS');
+      console.info('usb case SUB_USB_JS_0670 :  PASS');
     });
   })
 
   /**
-   * @tc.number    : SUB_USB_claim_interface_test_02
+   * @tc.number    : SUB_USB_JS_0430
    * @tc.name      : claimInterface
    * @tc.desc      : 反向测试 USBInterface传入异常id 获取接口 失败
    */
-  it('SUB_USB_claim_interface_test_02', 0, function () {
-    console.info('usb claim_interface_test_02 begin');
+  it('SUB_USB_JS_0430', 0, function () {
+    console.info('usb SUB_USB_JS_0430 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -239,14 +266,14 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     }
 
     if (gDeviceList[0].configs.length == 0) {
-      console.info('usb case 02 current device.configs.length = 0');
+      console.info('usb case SUB_USB_JS_0430 current device.configs.length = 0');
       expect(false).assertTrue();
       return
     }
 
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
-        console.info('usb case 02 current device.configs.interfaces.length = 0');
+        console.info('usb case SUB_USB_JS_0430 current device.configs.interfaces.length = 0');
       }
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var TmpInterface = gDeviceList[0].configs[j].interfaces[k]
@@ -257,17 +284,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       }
     }
 
-    console.info('usb claim_interface_test_02 :  PASS');
+    console.info('usb SUB_USB_JS_0430 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_claim_interface_test_03
+   * @tc.number    : SUB_USB_JS_0440
    * @tc.name      : claimInterface
    * @tc.desc      : 反向测试 USBInterface传入异常protocol 获取接口 失败
    */
-  it('SUB_USB_claim_interface_test_03', 0, function () {
-    console.info('usb claim_interface_test_03 begin');
+  it('SUB_USB_JS_0440', 0, function () {
+    console.info('usb SUB_USB_JS_0440 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -275,14 +307,14 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     }
 
     if (gDeviceList[0].configs.length == 0) {
-      console.info('usb case 03 current device.configs.length = 0');
+      console.info('usb case SUB_USB_JS_0440 current device.configs.length = 0');
       expect(false).assertTrue();
       return
     }
 
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
-        console.info('usb case 03 current device.configs.interfaces.length = 0');
+        console.info('usb case SUB_USB_JS_0440 current device.configs.interfaces.length = 0');
       }
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var TmpInterface = gDeviceList[0].configs[j].interfaces[k]
@@ -293,17 +325,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       }
     }
 
-    console.info('usb claim_interface_test_03 :  PASS');
+    console.info('usb SUB_USB_JS_0440 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_claim_interface_test_04
+   * @tc.number    : SUB_USB_JS_0450
    * @tc.name      : claimInterface
    * @tc.desc      : 反向测试 USBInterface传入异常clazz 获取接口 失败
    */
-  it('SUB_USB_claim_interface_test_04', 0, function () {
-    console.info('usb claim_interface_test_04 begin');
+  it('SUB_USB_JS_0450', 0, function () {
+    console.info('usb SUB_USB_JS_0450 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -311,14 +348,14 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     }
 
     if (gDeviceList[0].configs.length == 0) {
-      console.info('usb case 04 current device.configs.length = 0');
+      console.info('usb case SUB_USB_JS_0450 current device.configs.length = 0');
       expect(false).assertTrue();
       return
     }
 
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
-        console.info('usb case 04 current device.configs.interfaces.length = 0');
+        console.info('usb case SUB_USB_JS_0450 current device.configs.interfaces.length = 0');
       }
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var TmpInterface = gDeviceList[0].configs[j].interfaces[k]
@@ -329,17 +366,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       }
     }
 
-    console.info('usb claim_interface_test_04 :  PASS');
+    console.info('usb SUB_USB_JS_0450 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_claim_interface_test_05
+   * @tc.number    : SUB_USB_JS_0460
    * @tc.name      : claimInterface
    * @tc.desc      : 反向测试 USBInterface传入异常name 获取接口 失败
    */
-  it('SUB_USB_claim_interface_test_05', 0, function () {
-    console.info('usb claim_interface_test_05 begin');
+  it('SUB_USB_JS_0460', 0, function () {
+    console.info('usb SUB_USB_JS_0460 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -347,14 +389,14 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     }
 
     if (gDeviceList[0].configs.length == 0) {
-      console.info('usb case 05 current device.configs.length = 0');
+      console.info('usb case SUB_USB_JS_0460 current device.configs.length = 0');
       expect(false).assertTrue();
       return
     }
 
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
-        console.info('usb case 05 current device.configs.interfaces.length = 0');
+        console.info('usb case SUB_USB_JS_0460 current device.configs.interfaces.length = 0');
       }
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var TmpInterface = gDeviceList[0].configs[j].interfaces[k]
@@ -365,17 +407,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       }
     }
 
-    console.info('usb claim_interface_test_05 :  PASS');
+    console.info('usb SUB_USB_JS_0460 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_claim_interface_test_06
+   * @tc.number    : SUB_USB_JS_0470
    * @tc.name      : claimInterface
    * @tc.desc      : 反向测试 USBInterface传入异常subClass 获取接口 失败
    */
-  it('SUB_USB_claim_interface_test_06', 0, function () {
-    console.info('usb claim_interface_test_06 begin');
+  it('SUB_USB_JS_0470', 0, function () {
+    console.info('usb SUB_USB_JS_0470 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -383,14 +430,14 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     }
 
     if (gDeviceList[0].configs.length == 0) {
-      console.info('usb case 06 current device.configs.length = 0');
+      console.info('usb case SUB_USB_JS_0470 current device.configs.length = 0');
       expect(false).assertTrue();
       return
     }
 
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
-        console.info('usb case 06 current device.configs.interfaces.length = 0');
+        console.info('usb case SUB_USB_JS_0470 current device.configs.interfaces.length = 0');
       }
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var TmpInterface = gDeviceList[0].configs[j].interfaces[k]
@@ -401,17 +448,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       }
     }
 
-    console.info('usb claim_interface_test_06 :  PASS');
+    console.info('usb SUB_USB_JS_0470 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_release_interface_test_01
+   * @tc.number    : SUB_USB_JS_0280
    * @tc.name      : releaseInterface
    * @tc.desc      : 反向测试 获取接口 release传入Interface的错误ID 并释放
    */
-  it('SUB_USB_release_interface_test_01', 0, function () {
-    console.info('usb release_interface_test_01 begin');
+  it('SUB_USB_JS_0280', 0, function () {
+    console.info('usb SUB_USB_JS_0280 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -419,14 +471,14 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     }
 
     if (gDeviceList[0].configs.length == 0) {
-      console.info('usb 01 case current device.configs.length = 0');
+      console.info('usb SUB_USB_JS_0280 case current device.configs.length = 0');
       expect(false).assertTrue();
       return
     }
     gPipe = usb.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
-        console.info('usb 01 case current device.configs.interfaces.length = 0');
+        console.info('usb SUB_USB_JS_0280 case current device.configs.interfaces.length = 0');
       }
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var tmpInterface = gDeviceList[0].configs[j].interfaces[k]
@@ -437,17 +489,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       }
     }
 
-    console.info('usb release_interface_test_01 :  PASS');
+    console.info('usb SUB_USB_JS_0280 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_release_interface_test_02
+   * @tc.number    : SUB_USB_JS_0290
    * @tc.name      : releaseInterface
    * @tc.desc      : 反向测试 获取接口 release传入Interface的错误name 并释放
    */
-  it('SUB_USB_release_interface_test_02', 0, function () {
-    console.info('usb release_interface_test_02 begin');
+  it('SUB_USB_JS_0290', 0, function () {
+    console.info('usb SUB_USB_JS_0290 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -455,14 +512,14 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     }
 
     if (gDeviceList[0].configs.length == 0) {
-      console.info('usb 02 case current device.configs.length = 0');
+      console.info('usb SUB_USB_JS_0290 case current device.configs.length = 0');
       expect(false).assertTrue();
       return
     }
     gPipe = usb.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
-        console.info('usb 02 case current device.configs.interfaces.length = 0');
+        console.info('usb SUB_USB_JS_0290 case current device.configs.interfaces.length = 0');
       }
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var tmpInterface = gDeviceList[0].configs[j].interfaces[k]
@@ -473,17 +530,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       }
     }
 
-    console.info('usb release_interface_test_02 :  PASS');
+    console.info('usb SUB_USB_JS_0290 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_release_interface_test_03
+   * @tc.number    : SUB_USB_JS_0300
    * @tc.name      : releaseInterface
    * @tc.desc      : 反向测试 获取接口 release传入Interface的错误clazz 并释放
    */
-  it('SUB_USB_release_interface_test_03', 0, function () {
-    console.info('usb release_interface_test_03 begin');
+  it('SUB_USB_JS_0300', 0, function () {
+    console.info('usb SUB_USB_JS_0300 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -491,14 +553,14 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     }
 
     if (gDeviceList[0].configs.length == 0) {
-      console.info('usb 03 case current device.configs.length = 0');
+      console.info('usb SUB_USB_JS_0300 case current device.configs.length = 0');
       expect(false).assertTrue();
       return
     }
     gPipe = usb.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
-        console.info('usb 03 case current device.configs.interfaces.length = 0');
+        console.info('usb SUB_USB_JS_0300 case current device.configs.interfaces.length = 0');
       }
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var tmpInterface = gDeviceList[0].configs[j].interfaces[k]
@@ -509,17 +571,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       }
     }
 
-    console.info('usb release_interface_test_03 :  PASS');
+    console.info('usb SUB_USB_JS_0300 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_release_interface_test_04
+   * @tc.number    : SUB_USB_JS_0310
    * @tc.name      : releaseInterface
    * @tc.desc      : 反向测试 获取接口 release传入Interface的错误protocol 并释放
    */
-  it('SUB_USB_release_interface_test_04', 0, function () {
-    console.info('usb release_interface_test_04 begin');
+  it('SUB_USB_JS_0310', 0, function () {
+    console.info('usb SUB_USB_JS_0310 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -527,14 +594,14 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     }
 
     if (gDeviceList[0].configs.length == 0) {
-      console.info('usb 04 case current device.configs.length = 0');
+      console.info('usb SUB_USB_JS_0310 case current device.configs.length = 0');
       expect(false).assertTrue();
       return
     }
     gPipe = usb.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
-        console.info('usb 04 case current device.configs.interfaces.length = 0');
+        console.info('usb SUB_USB_JS_0310 case current device.configs.interfaces.length = 0');
       }
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var tmpInterface = gDeviceList[0].configs[j].interfaces[k]
@@ -545,17 +612,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       }
     }
 
-    console.info('usb release_interface_test_04 :  PASS');
+    console.info('usb SUB_USB_JS_0310 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_release_interface_test_05
+   * @tc.number    : SUB_USB_JS_0320
    * @tc.name      : releaseInterface
    * @tc.desc      : 反向测试 获取接口 release传入Interface的错误subClass 并释放
    */
-  it('SUB_USB_release_interface_test_05', 0, function () {
-    console.info('usb release_interface_test_05 begin');
+  it('SUB_USB_JS_0320', 0, function () {
+    console.info('usb SUB_USB_JS_0320 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -563,14 +635,14 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     }
 
     if (gDeviceList[0].configs.length == 0) {
-      console.info('usb 05 case current device.configs.length = 0');
+      console.info('usb SUB_USB_JS_0320 case current device.configs.length = 0');
       expect(false).assertTrue();
       return
     }
     gPipe = usb.connectDevice(gDeviceList[0])
     for (var j = 0; j < gDeviceList[0].configs.length; j++) {
       if (gDeviceList[0].configs[j].interfaces.length == 0) {
-        console.info('usb 05 case current device.configs.interfaces.length = 0');
+        console.info('usb SUB_USB_JS_0320 case current device.configs.interfaces.length = 0');
       }
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         var tmpInterface = gDeviceList[0].configs[j].interfaces[k]
@@ -581,17 +653,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       }
     }
 
-    console.info('usb release_interface_test_05 :  PASS');
+    console.info('usb SUB_USB_JS_0320 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_set_interface_test_03
+   * @tc.number    : SUB_USB_JS_0820
    * @tc.name      : setInterface
    * @tc.desc      : 反向测试 Interface的protocol 设置设备接口
    */
-  it('SUB_USB_set_interface_test_03', 0, function () {
-    console.info('usb set_interface_test_03 begin');
+  it('SUB_USB_JS_0820', 0, function () {
+    console.info('usb SUB_USB_JS_0820 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue()
@@ -608,17 +685,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       console.info('usb case setInterface return : ' + ret)
     }
 
-    console.info('usb set_interface_test_03 :  PASS');
+    console.info('usb SUB_USB_JS_0820 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_set_interface_test_04
+   * @tc.number    : SUB_USB_JS_0830
    * @tc.name      : setInterface
    * @tc.desc      : 反向测试 Interface的clazz 设置设备接口
    */
-  it('SUB_USB_set_interface_test_04', 0, function () {
-    console.info('usb set_interface_test_04 begin');
+  it('SUB_USB_JS_0830', 0, function () {
+    console.info('usb SUB_USB_JS_0830 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue()
@@ -636,17 +718,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
 
     }
 
-    console.info('usb set_interface_test_04 :  PASS');
+    console.info('usb SUB_USB_JS_0830 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_set_interface_test_05
+   * @tc.number    : SUB_USB_JS_0840
    * @tc.name      : setInterface
    * @tc.desc      : 反向测试 Interface的subClass 设置设备接口
    */
-  it('SUB_USB_set_interface_test_05', 0, function () {
-    console.info('usb set_interface_test_05 begin');
+  it('SUB_USB_JS_0840', 0, function () {
+    console.info('usb SUB_USB_JS_0840 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue()
@@ -664,17 +751,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
 
     }
 
-    console.info('usb set_interface_test_05 :  PASS');
+    console.info('usb SUB_USB_JS_0840 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_set_interface_test_06
+   * @tc.number    : SUB_USB_JS_0850
    * @tc.name      : setInterface
    * @tc.desc      : 反向测试 Interface的name 设置设备接口
    */
-  it('SUB_USB_set_interface_test_06', 0, function () {
-    console.info('usb set_interface_test_05 begin');
+  it('SUB_USB_JS_0850', 0, function () {
+    console.info('usb SUB_USB_JS_0840 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue()
@@ -691,17 +783,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       console.info('usb case setInterface return : ' + ret)
     }
 
-    console.info('usb set_interface_test_06 :  PASS');
+    console.info('usb SUB_USB_JS_0850 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_set_configuration_test_03
+   * @tc.number    : SUB_USB_JS_0760
    * @tc.name      : setConfiguration
    * @tc.desc      : 反向测试 USBConfig的name 赋值错误 设置设备接口
    */
-  it('SUB_USB_set_configuration_test_03', 0, function () {
-    console.info('usb set_configuration_test_03 begin');
+  it('SUB_USB_JS_0760', 0, function () {
+    console.info('usb SUB_USB_JS_0760 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -716,16 +813,21 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(ret).assertEqual(0);
     }
 
-    console.info('usb set_configuration_test_03 :  PASS');
+    console.info('usb SUB_USB_JS_0760 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_set_configuration_test_04
+   * @tc.number    : SUB_USB_JS_0770
    * @tc.name      : setConfiguration
    * @tc.desc      : 反向测试 USBConfig的name 赋值错误 设置设备接口
    */
-  it('SUB_USB_set_configuration_test_04', 0, function () {
-    console.info('usb set_configuration_test_04 begin');
+  it('SUB_USB_JS_0770', 0, function () {
+    console.info('usb SUB_USB_JS_0770 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -741,16 +843,21 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(ret).assertLess(0);
     }
 
-    console.info('usb set_configuration_test_04 :  PASS');
+    console.info('usb SUB_USB_JS_0770 :  PASS');
   })
 
   /**
-   * @tc.number    : SUB_USB_set_configuration_test_05
+   * @tc.number    : SUB_USB_JS_0780
    * @tc.name      : setConfiguration
    * @tc.desc      : 反向测试 USBConfig的attributes 赋值错误 设置设备接口
    */
-  it('SUB_USB_set_configuration_test_05', 0, function () {
-    console.info('usb set_configuration_test_05 begin');
+  it('SUB_USB_JS_0780', 0, function () {
+    console.info('usb SUB_USB_JS_0780 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -765,16 +872,21 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(ret).assertLess(0);
     }
 
-    console.info('usb set_configuration_test_05 :  PASS');
+    console.info('usb SUB_USB_JS_0780 :  PASS');
   })
 
 /**
-   * @tc.number    : SUB_USB_set_configuration_test_06
+   * @tc.number    : SUB_USB_JS_0790
    * @tc.name      : setConfiguration
    * @tc.desc      : 反向测试 USBConfig的name interval（1-16） 赋值错误 设置设备接口
    */
-   it('SUB_USB_set_configuration_test_06', 0, function () {
-    console.info('usb set_configuration_test_06 begin');
+   it('SUB_USB_JS_0790', 0, function () {
+    console.info('usb SUB_USB_JS_0790 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -790,7 +902,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(ret).assertLess(0);
     }
 
-    console.info('usb set_configuration_test_06 :  PASS');
+    console.info('usb SUB_USB_JS_0790 :  PASS');
   })
 
 })

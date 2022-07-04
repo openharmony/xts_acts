@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-#include <climits>
 #include <gtest/gtest.h>
 #include "../Khrgles3BaseFunc.h"
 #include "../ActsKhrgles30003TestSuite.h"

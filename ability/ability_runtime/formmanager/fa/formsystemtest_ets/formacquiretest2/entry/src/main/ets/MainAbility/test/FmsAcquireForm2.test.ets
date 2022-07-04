@@ -207,46 +207,6 @@ export default function test() {
         });
 
         /**
-         * @tc.number: FMS_acquireForm_4100
-         * @tc.name: Failed to add form when parameter moduleName is wrong.
-         * @tc.desc: Failed to create form when verifying that the parameter (moduleName) of creating form is wrong.
-         */
-        it(`FMS_acquireForm_4100`, 0, async (done) => {
-            console.info(`FMS_acquireForm_4100 start`);
-            function onErrorCallBack(_, data) {
-                console.info("!!!====>FMS_acquireForm_4100 onErrorCallBack data:====>" + JSON.stringify(data));
-                expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("invalid params received on operating form.");
-                commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_4100"));
-                console.info(`FMS_acquireForm_4100 end`);
-                done();
-            }
-            commonEvent.subscribe(subscriberOnError, onErrorCallBack);
-            console.info(`FMS_acquireForm_4100 featureAbility.startAbility start`);
-            await featureAbility.startAbility({
-                want: {
-                    bundleName: "com.ohos.st.formsystemhostj",
-                    abilityName: "com.ohos.st.formsystemhostj.MainAbility",
-                    parameters: {
-                        "formId": "0",
-                        "name": "Form_Js001",
-                        "bundle": "com.form.formsystemtestservicea.hmservice",
-                        "ability": "com.form.formsystemtestservicea.hmservice.FormAbility",
-                        "moduleName": "",
-                        "temporary": false,
-                        "isCreate": true
-                    }
-                }
-            }).then((res: any) => {
-                console.info(`FMS_acquireForm_4100 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
-            }).catch((err: any) => {
-                console.info(`FMS_acquireForm_4100 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
-            });
-            console.info(`FMS_acquireForm_4100 featureAbility.startAbility end`);
-        });
-
-
-        /**
          * @tc.number: FMS_acquireForm_4200
          * @tc.name: Success to add form when parameter formName is blank.
          * @tc.desc: Success to create form when verifying that the parameter (formName) of creating form is success.

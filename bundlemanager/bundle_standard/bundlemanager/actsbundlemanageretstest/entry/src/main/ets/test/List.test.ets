@@ -24,6 +24,7 @@ import getNameForUid from "./GetNameForUid.test.ets";
 import queryExtensionAbilityInfos from "./QueryExtensionAbilityInfos.test.ets";
 import getBundleArchiveInfo from "./getBundleArchiveInfo.test.ets";
 import getQueryAbilityByWant from './GetQueryAbilityByWant.test.ets';
+import isDefaultApplicationTest from './IsDefaultApplication.test.ets';
 
 export default function testsuite() {
   getBundleArchiveInfo();
@@ -32,6 +33,7 @@ export default function testsuite() {
   getLaunchWantForBundle();
   getNameForUid();
   getQueryAbilityByWant();
+  isDefaultApplicationTest();
   //RM.007
   getApplicationInfoJsunit();
   getAllAppInfoJsunit();

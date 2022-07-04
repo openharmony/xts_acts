@@ -20,7 +20,6 @@ import radioSecondJsunit from './RadioSecondJsunit.test.ets'
 import smsUiJsunit from './SmsMmsJsunit.test.ets';
 import callJsunit from './CallJsunit.test.ets';
 import dataJsunit from './DataJsunit.test.ets';
-import statisticsUiJsunit from './StatisticsJsunit.test.ets';
 
 export default function testsuite() {
   //other
@@ -30,5 +29,4 @@ export default function testsuite() {
   convertOptionsJsunit();
   radioJsunit();
   radioSecondJsunit();
-  statisticsUiJsunit();
 }

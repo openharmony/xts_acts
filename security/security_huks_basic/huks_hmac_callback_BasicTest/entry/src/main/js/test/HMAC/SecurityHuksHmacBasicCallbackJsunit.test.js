@@ -231,7 +231,7 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions, thirdInderfaceName) {
     });
 }
 
-describe('SecurityHuksHmacCallbackJsunit', function () {
+describe('SecurityHuksHmacBasicCallbackJsunit', function () {
   it('testHmacSHA1001', 0, async function (done) {
     let srcKeyAlies = 'testHmacDigestSHA1KeyAlias001';
     let HuksOptions = {

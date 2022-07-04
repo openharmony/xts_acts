@@ -18,7 +18,6 @@
 #include "utils/SamgrTestBase.h"
 
 const int RUN_TIMES = 10;
-const int THREAD_NUM = 2;
 
 using namespace testing::ext;
 

@@ -2021,4 +2021,45 @@ describe('ActsAnsNotificationCancel', function () {
             done();
         }),timeout);
     })
+
+    /*
+     * @tc.number: ANS_Cancel_2700
+     * @tc.name: cancel(id: number, label?: string): Promise<void>
+     * @tc.desc: add 
+     */
+    it('ANS_Cancel_2700', 0, async function (done) {
+        console.info('===============ANS_Cancel_2700 start==========================>');
+        let subscriber ={
+            onConsume:onConsumeCancelWrongLabelWrongIdPromise,
+            onCancel:onCancelCancelWrongLabelWrongIdPromise,
+        }
+        await notify.subscribe(subscriber);
+        console.info('===============ANS_Cancel_2700 subscribe promise==================>');
+        let notificationRequest = {
+            content:{
+                contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                normal: {
+                    title: 'test_title',
+                    text: 'test_text',
+                    additionalText: 'test_additionalText'
+                },
+            },
+            extraInfo:{
+                key1: "1231",
+                key2:"456"
+            },
+            template:{
+                name:'/system/etc/notification_template/assets/js/downloadTemplate.js',
+                data:{key3:"789",key4:"111"}
+            },
+            badgeNumber:1,
+        }
+        await notify.publish(notificationRequest);
+        console.info('===============ANS_Cancel_2700 publish promise==================>');
+        setTimeout((async function(){
+            await notify.unsubscribe(subscriber);
+            console.info('======ANS_Cancel_2700 setTimeout unsubscribe end==================>');
+            done();
+        }),timeout);
+    })
 }) 

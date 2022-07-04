@@ -25,7 +25,6 @@ group("ability_runtime") {
       "actscalltest:actscalltest",
       "actsfwkdataaccessortest:dataability",
       "actsserviceabilityclienttest:serviceability",
-      "actsstartcomponenttest:actsstartcomponenttest",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
       "actsusers:actsusers",
       "amscontextualinforquery:amscontextualinforquery",

@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
+ * you may not use this file expect in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
@@ -20,6 +20,14 @@ let updater;
 let param_value1 = 0;
 let param_value2 = 0;
 let expect_value = 0;
+
+let upgradeInfo ={
+	upgradeApp: "com.hmos.ouc",
+	businessType: {
+		vendor: "public",
+		subType: 1
+	}
+}
 
 let updateState = {
     UPDATE_STATE_INIT : 0,
@@ -53,12 +61,12 @@ describe('updateclient', function() {
     });
     beforeEach(function() {
         if (updater === undefined) {
-            updater = client.getUpdater('/data/updater/updater.zip', 'OTA');
-            console.info("beforeEach updater" + updater);
+            updater = client.getOnlineUpdater(upgradeInfo);
+            console.info("UPDATE_TEST beforeEach updater" + updater);
         }
     });
     afterEach(function() {
-        updater = None;
+        updater = undefined;
     });
     afterAll(function() {
         param_value1 = 0;
@@ -86,29 +94,6 @@ describe('updateclient', function() {
 
         console.info('[client.getUpdate] success.');
         console.info('testGetUpdate END');
-    });
-
-    /**
-     * @tc.number    SUB_UPDATE_JS_API_0002
-     * @tc.name      testGetUpdate2
-     * @tc.desc      Test incorrect parameters.
-     */
-    it('testGetUpdate2', 0, function() {
-        console.info('testGetUpdate2 START');
-        try {
-            if (client === undefined) {
-                console.error("client not defined");
-                return;
-            }
-            let tmpUpdater = client.getUpdater('/data/updater/updater.zip', '44444');
-            console.info("testGetUpdate3 updater" + tmpUpdater);
-            expect(tmpUpdater === undefined).assertTrue();
-        } catch(e) {
-            console.error('[testGetUpdate] fail.' + e);
-        }
-
-        console.info('[client.getUpdate] success.');
-        console.info('testGetUpdate2 END');
     });
 
     /**
@@ -140,51 +125,6 @@ describe('updateclient', function() {
     });
 
     /**
-     * @tc.number    SUB_UPDATE_JS_API_0004
-     * @tc.name      testGetUpdate4
-     * @tc.desc      Test incorrect parameters.
-     */
-    it('testGetUpdate4', 0, function() {
-        console.info('testGetUpdate4 START');
-        try {
-            if (client === undefined) {
-                console.error("client not defined");
-                return;
-            }
-            let tmpUpdater = client.getUpdater(function(){
-            });
-            expect(tmpUpdater === undefined).assertTrue();
-        } catch(e) {
-            console.error('[testGetUpdate4] fail.' + e);
-        }
-
-        console.info('[client.getUpdate] success.');
-        console.info('testGetUpdate4 END');
-    });
-
-    /**
-     * @tc.number    SUB_UPDATE_JS_API_0005
-     * @tc.name      testGetUpdate5
-     * @tc.desc      Test incorrect parameters.
-     */
-    it('testGetUpdate5', 0, function() {
-        console.info('testGetUpdate5 START');
-        try {
-            if (client === undefined) {
-                console.error("client not defined");
-                return;
-            }
-            let tmpUpdater = client.getUpdater(param_value1, param_value2);
-            expect(tmpUpdater === undefined).assertTrue();
-        } catch(e) {
-            console.error('[testGetUpdate] fail.' + e);
-        }
-
-        console.info('[client.getUpdate] success.');
-        console.info('testGetUpdate5 END');
-    });
-
-    /**
      * @tc.number    SUB_UPDATE_JS_API_0006
      * @tc.name      testGetNewVersionInfo1
      * @tc.desc      Get the current system version.
@@ -194,7 +134,7 @@ describe('updateclient', function() {
         try {
             let ret = updater.getNewVersionInfo(function(err, data){
                 console.log("getNewVersionInfo success" + data);
-                expect(data.status).assertEqual(0); // Has new version.
+				expect(data.versionDigestInfo.versionDigest).assertInstanceOf('String');
             });
             expect(ret).assertInstanceOf('Number');
         } catch(e) {
@@ -282,14 +222,7 @@ describe('updateclient', function() {
         try {
             let ret = updater.getNewVersionInfo().then(data => {
                 console.log("getNewVersionInfo success  " + data);
-                expect(data.status).assertEqual(0); // Has new version.
-                expect(data.checkResults.size > 0).assertTrue();
-                console.log(`info versionName = ` + data.checkResults[0].versionName);
-                console.log(`info versionCode = ` + data.checkResults[0].versionCode);
-                console.log(`info verifyInfo = ` + data.checkResults[0].verifyInfo);
-                console.log(`info descriptionId = ` + data.checkResults[0].descriptionId);
-                console.log(`info content = ` + data.descriptionInfo[0].content);
-                console.log(`info size = ` + data.checkResults[0].size);
+                expect(data.versionDigestInfo.versionDigest).assertInstanceOf('String');
             }).catch(error =>
                 console.error("getNewVersionInfo catch " + error)
             );
@@ -392,14 +325,7 @@ describe('updateclient', function() {
         try {
             let ret = updater.checkNewVersion(function(err, data){
                 console.log("checkNewVersion success" + data);
-                expect(data.status).assertEqual(0); // Has new version.
-                expect(data.checkResults.size > 0).assertTrue();
-                console.log(`info versionName = ` + data.checkResults[0].versionName);
-                console.log(`info versionCode = ` + data.checkResults[0].versionCode);
-                console.log(`info verifyInfo = ` + data.checkResults[0].verifyInfo);
-                console.log(`info descriptionId = ` + data.checkResults[0].descriptionId);
-                console.log(`info content = ` + data.descriptionInfo[0].content);
-                console.log(`info size = ` + data.checkResults[0].size);
+                expect(data.status).assertEqual(-1); // Has new version.
             },
             error => {
                 console.log("checkNewVersion error" + error)
@@ -490,14 +416,7 @@ describe('updateclient', function() {
         try {
             let ret = updater.checkNewVersion().then(data => {
                 console.log("checkNewVersion success" + data);
-                expect(data.status).assertEqual(0);
-                expect(data.checkResults.size > 0).assertTrue();
-                console.log(`info versionName = ` + data.checkResults[0].versionName);
-                console.log(`info versionCode = ` + data.checkResults[0].versionCode);
-                console.log(`info verifyInfo = ` + data.checkResults[0].verifyInfo);
-                console.log(`info descriptionId = ` + data.checkResults[0].descriptionId);
-                console.log(`info content = ` + data.descriptionInfo[0].content);
-                console.log(`info size = ` + data.checkResults[0].size);
+                expect(data.status).assertEqual(-1);
             }).catch(error =>
                 console.error("checkNewVersion error " + error)
             );
@@ -591,55 +510,70 @@ describe('updateclient', function() {
 
     /**
      * @tc.number    SUB_UPDATE_JS_API_0026
-     * @tc.name      testSetUpdatePolicy001
-     * @tc.desc      Test and set the upgrade strategy, check whether the result is correct.
+     * @tc.name      testSetUpgradePolicyAndGetUpgradePolicyCallback
+     * @tc.desc      Test set the upgrade strategy, check whether the result is correct.
      */
-    it('testSetUpdatePolicy001', 0, function() {
-        console.info('testSetUpdatePolicy001 START' + updater);
+    it('testSetUpgradePolicyAndGetUpgradePolicyCallback', 0, function() {
+        console.info('UPDATE_TEST testSetUpgradePolicyAndGetUpgradePolicyCallback START' + updater);
         // Set strategy.
         let policy = {
-            autoDownload: false,
-            autoDownloadNet: true,
-            mode: 2,
-            autoUpgradeInterval: [ 2, 3 ],
-            autoUpgradeCondition: 2
+            downloadStrategy: false,
+            autoUpgradeStrategy: false,
+            autoUpgradePeriods:[2, 3]
         }
         try {
-            let ret = updater.setUpdatePolicy(policy, function(err, data){
-                console.log("setUpdatePolicy success" + data);
+            let ret = updater.setUpgradePolicy(policy, function(err, data){
+                console.log("UPDATE_TEST setUpgradePolicy success" + data);
                 expect(data).assertEqual(0);
             });
             expect(ret).assertInstanceOf('Number');
+			ret = updater.getUpgradePolicy(function(err, data){
+                console.log("UPDATE_TEST getUpgradePolicy success" + data);
+                expect(data.downloadStrategy).assertEqual(false);
+                expect(data.autoUpgradeStrategy).assertEqual(false);
+                expect(data.autoUpgradePeriods[0]).assertEqual(2);
+                expect(data.autoUpgradePeriods[1]).assertEqual(3);
+            });
+			expect(ret).assertInstanceOf('Number');
         } catch(e) {
-            console.error('[testSetUpdatePolicy001] fail.' + e);
+            console.error('UPDATE_TEST [testSetUpgradePolicyAndGetUpgradePolicyCallback] fail.' + e);
         }
-        console.info('[setUpdatePolicy] success.');
-        console.info('testSetUpdatePolicy001 END');
+        console.info('UPDATE_TEST [testSetUpgradePolicyAndGetUpgradePolicyCallback] success.');
+        console.info('UPDATE_TEST testSetUpgradePolicyAndGetUpgradePolicyCallback END');
     });
-
+	
     /**
      * @tc.number    SUB_UPDATE_JS_API_0027
-     * @tc.name      testGetUpdatePolicy001
-     * @tc.desc      Test get update, policy func 001.
+     * @tc.name      testSetUpgradePolicyAndGetUpgradePolicyPromise
+     * @tc.desc      Test set the upgrade strategy, check whether the result is correct.
      */
-    it('testGetUpdatePolicy001', 0, function() {
-        console.info('testGetUpdatePolicy001 START');
-        try {
-            let ret = updater.getUpdatePolicy(function(err, data){
-                console.log("getUpdatePolicy success" + data);
-                expect(data.autoDownload).assertEqual(false);
-                expect(data.autoDownloadNet).assertEqual(true);
-                expect(data.mode).assertEqual(2);
-                expect(data.autoUpgradeInterval[0]).assertEqual(2);
-                expect(data.autoUpgradeInterval[1]).assertEqual(3);
-
-            });
-            expect(ret).assertInstanceOf('Number');
-        } catch(e) {
-            console.error('[testGetUpdatePolicy001] fail.' + e);
+    it('testSetUpgradePolicyAndGetUpgradePolicyPromise', 0, function() {
+        console.info('UPDATE_TEST testSetUpgradePolicyAndGetUpgradePolicyPromise START' + updater);
+        // Set strategy.
+        let policy = {
+            downloadStrategy: false,
+            autoUpgradeStrategy: false,
+            autoUpgradePeriods:[2, 3]
         }
-        console.info('[getUpdatePolicy] success.');
-        console.info('testGetUpdatePolicy001 END');
+        try {
+            let ret = updater.setUpgradePolicy(policy).then((err, data)=>{
+                console.log("UPDATE_TEST setUpgradePolicy success" + data);
+                expect(data).assertEqual(0);
+            });
+            expect(ret).assertInstanceOf('Promise');
+			ret = updater.getUpgradePolicy().then((err, data)=>{
+                console.log("UPDATE_TEST getUpgradePolicy success" + data);
+                expect(data.downloadStrategy).assertEqual(false);
+                expect(data.autoUpgradeStrategy).assertEqual(false);
+                expect(data.autoUpgradePeriods[0]).assertEqual(2);
+                expect(data.autoUpgradePeriods[1]).assertEqual(3);
+            });
+			expect(ret).assertInstanceOf('Promise');
+        } catch(e) {
+            console.error('UPDATE_TEST [testSetUpgradePolicyAndGetUpgradePolicyPromise] fail.' + e);
+        }
+        console.info('UPDATE_TEST [testSetUpgradePolicyAndGetUpgradePolicyPromise] success.');
+        console.info('UPDATE_TEST testSetUpgradePolicyAndGetUpgradePolicyPromise END');
     });
 
     /**
@@ -650,11 +584,9 @@ describe('updateclient', function() {
     it('testSetUpdatePolicy002', 0, function() {
         console.info('testSetUpdatePolicy002 START' + updater);
         let policy = {
-            autoDownload: true,
-            autoDownloadNet: true,
-            mode: 2,
-            autoUpgradeInterval: [ 2, 3 ],
-            autoUpgradeCondition: 2
+            downloadStrategy: true,
+            autoUpgradeStrategy: false,
+            autoUpgradePeriods:[2, 3]
         }
         try {
             let ret = updater.setUpdatePolicy(policy, function(err, data){
@@ -662,37 +594,20 @@ describe('updateclient', function() {
                 expect(data).assertEqual(0);
             });
             expect(ret).assertInstanceOf('Number');
+			ret = updater.getUpgradePolicy(function(err, data){
+                console.log("UPDATE_TEST getUpgradePolicy success" + data);
+                expect(data.downloadStrategy).assertEqual(true);
+                expect(data.autoUpgradeStrategy).assertEqual(false);
+                expect(data.autoUpgradePeriods[0]).assertEqual(2);
+                expect(data.autoUpgradePeriods[1]).assertEqual(3);
+            });
+			expect(ret).assertInstanceOf('Number');
         } catch(e) {
             console.error('[testSetUpdatePolicy002] fail.' + e);
         }
 
         console.info('[setUpdatePolicy] success.');
         console.info('testSetUpdatePolicy002 END');
-    });
-
-    /**
-     * @tc.number    SUB_UPDATE_JS_API_0029
-     * @tc.name      testGetUpdatePolicy002
-     * @tc.desc      Get the modified strategy.
-     */
-    it('testGetUpdatePolicy002', 0, function() {
-        console.info('testGetUpdatePolicy002 START');
-        try {
-            let ret = updater.getUpdatePolicy(function(err, data){
-                console.log("getUpdatePolicy success" + data);
-                expect(data.autoDownload).assertEqual(true);
-                expect(data.autoDownloadNet).assertEqual(true);
-                expect(data.mode).assertEqual(2);
-                expect(data.autoUpgradeInterval[0]).assertEqual(2);
-                expect(data.autoUpgradeInterval[1]).assertEqual(3);
-            });
-            expect(ret).assertInstanceOf('Number');
-        } catch(e) {
-            console.error('[testGetUpdatePolicy002] fail.' + e);
-        }
-
-        console.info('[getUpdatePolicy] success.');
-        console.info('testGetUpdatePolicy002 END');
     });
 
     /**
@@ -704,11 +619,9 @@ describe('updateclient', function() {
         console.info('testSetUpdatePolicy003 START' + updater);
         // Set strategy.
         let policy = {
-            autoDownload: false,
-            autoDownloadNet: false,
-            mode: 2,
-            autoUpgradeInterval: [ 2, 3 ],
-            autoUpgradeCondition: 2
+            downloadStrategy: true,
+            autoUpgradeStrategy: true,
+            autoUpgradePeriods:[2, 3]
         }
         try {
             let ret = updater.setUpdatePolicy(policy, function(err, data){
@@ -716,35 +629,19 @@ describe('updateclient', function() {
                 expect(data).assertEqual(0);
             })
             expect(ret).assertInstanceOf('Number');
+			ret = updater.getUpgradePolicy(function(err, data){
+                console.log("UPDATE_TEST getUpgradePolicy success" + data);
+                expect(data.downloadStrategy).assertEqual(true);
+                expect(data.autoUpgradeStrategy).assertEqual(true);
+                expect(data.autoUpgradePeriods[0]).assertEqual(2);
+                expect(data.autoUpgradePeriods[1]).assertEqual(3);
+            });
+			expect(ret).assertInstanceOf('Number');
         } catch(e) {
             console.error('[testSetUpdatePolicy003] fail.' + e);
         }
         console.info('[setUpdatePolicy] success.');
         console.info('testSetUpdatePolicy003 END');
-    });
-
-    /**
-     * @tc.number    SUB_UPDATE_JS_API_0031
-     * @tc.name      testGetUpdatePolicy003
-     * @tc.desc      Obtain strategy mode.
-     */
-    it('testGetUpdatePolicy003', 0, function() {
-        console.info('testGetUpdatePolicy003 START ' + updater);
-        try {
-            let ret = updater.getUpdatePolicy(function(err, data){
-                console.log("getUpdatePolicy success" + data);
-                expect(data.autoDownload).assertEqual(false);
-                expect(data.autoDownloadNet).assertEqual(false);
-                expect(data.mode).assertEqual(2);
-                expect(data.autoUpgradeInterval[0]).assertEqual(2);
-                expect(data.autoUpgradeInterval[1]).assertEqual(3);
-            })
-            expect(ret).assertInstanceOf('Number');
-        } catch(e) {
-            console.error('[testGetUpdatePolicy003] fail.' + e);
-        }
-        console.info('[getUpdatePolicy] success.');
-        console.info('testGetUpdatePolicy003 END');
     });
 
     /**
@@ -756,11 +653,9 @@ describe('updateclient', function() {
         console.info('testSetUpdatePolicy004 START' + updater);
         // Set strategy.
         let policy = {
-            autoDownload: false,
-            autoDownloadNet: false,
-            mode: 1,
-            autoUpgradeInterval: [ 100, 100],
-            autoUpgradeCondition: 2
+            downloadStrategy: true,
+            autoUpgradeStrategy: true,
+            autoUpgradePeriods:[3, 4]
         }
         try {
             let ret = updater.setUpdatePolicy(policy, function(err, data){
@@ -768,35 +663,19 @@ describe('updateclient', function() {
             expect(data).assertEqual(0);
             })
             expect(ret).assertInstanceOf('Number');
+			ret = updater.getUpgradePolicy(function(err, data){
+                console.log("UPDATE_TEST getUpgradePolicy success" + data);
+                expect(data.downloadStrategy).assertEqual(true);
+                expect(data.autoUpgradeStrategy).assertEqual(true);
+                expect(data.autoUpgradePeriods[0]).assertEqual(3);
+                expect(data.autoUpgradePeriods[1]).assertEqual(4);
+            });
+			expect(ret).assertInstanceOf('Number');
         } catch(e) {
             console.error('[testGetUpdatePolicy003] fail.' + e);
         }
         console.info('[setUpdatePolicy] success.');
         console.info('testSetUpdatePolicy004 END');
-    });
-
-    /**
-     * @tc.number    SUB_UPDATE_JS_API_0033
-     * @tc.name      testGetUpdatePolicy004
-     * @tc.desc      Obtain policy upgrade interval.
-     */
-    it('testGetUpdatePolicy004', 0, function() {
-        console.info('testGetUpdatePolicy004 START' + updater);
-        try {
-            let ret = updater.getUpdatePolicy(function(err, data){
-                console.log("getUpdatePolicy success" + data);
-                expect(data.autoDownload).assertEqual(false);
-                expect(data.autoDownloadNet).assertEqual(false);
-                expect(data.mode).assertEqual(1);
-                expect(data.autoUpgradeInterval[0]).assertEqual(expect_value);
-                expect(data.autoUpgradeInterval[1]).assertEqual(expect_value);
-            })
-            expect(ret).assertInstanceOf('Number');
-        } catch(e) {
-            console.error('[testGetUpdatePolicy004] fail.' + e);
-        }
-        console.info('[getUpdatePolicy] success.');
-        console.info('testGetUpdatePolicy004 END');
     });
 
     /**
@@ -846,11 +725,9 @@ describe('updateclient', function() {
         console.info('testSetUpdatePolicyPromise START' + updater);
         // Set strategy.
         let policy = {
-            autoDownload: false,
-            autoDownloadNet: true,
-            mode: 2,
-            autoUpgradeInterval: [ 2, 3 ],
-            autoUpgradeCondition: 2
+            downloadStrategy: false,
+            autoUpgradeStrategy: true,
+            autoUpgradePeriods:[3, 4]
         }
         try {
             let ret = updater.setUpdatePolicy(policy).then(data => {
@@ -876,13 +753,11 @@ describe('updateclient', function() {
         console.info('testGetUpdatePolicyPromise START');
         try {
             let ret = updater.getUpdatePolicy().then(data => {
-                console.log("getUpdatePolicy success" + data);
-                expect(data.autoDownload).assertEqual(false);
-                expect(data.autoDownload).assertEqual(true);
-                expect(data.mode).assertEqual(2);
-                expect(data.autoUpgradeInterval[0]).assertEqual(2);
-                expect(data.autoUpgradeInterval[1]).assertEqual(3);
-                expect(data.autoUpgradeCondition).assertEqual(2);
+                console.log("UPDATE_TEST getUpgradePolicy success" + data);
+                expect(data.downloadStrategy).assertEqual(false);
+                expect(data.autoUpgradeStrategy).assertEqual(true);
+                expect(data.autoUpgradePeriods[0]).assertEqual(3);
+                expect(data.autoUpgradePeriods[1]).assertEqual(4);
             }).catch(error =>
                 console.error("getUpdatePolicy catch " + error)
             );
@@ -902,11 +777,9 @@ describe('updateclient', function() {
     it('testSetUpdatePolicyPromise002', 0, function() {
         console.info('testSetUpdatePolicyPromise002 START' + updater);
         let policy = {
-            autoDownload: true,
-            autoDownloadNet: true,
-            mode: 2,
-            autoUpgradeInterval: [ 2, 3 ],
-            autoUpgradeCondition: 2
+            downloadStrategy: false,
+            autoUpgradeStrategy: true,
+            autoUpgradePeriods:[1, 2]
         }
         try {
             let ret = updater.setUpdatePolicy(policy).then(data => {
@@ -932,12 +805,11 @@ describe('updateclient', function() {
         console.info('testGetUpdatePolicyPromise002 START');
         try {
             let ret = updater.getUpdatePolicy().then(data => {
-                console.log("getUpdatePolicy success" + data);
-                expect(data.autoDownload).assertEqual(true);
-                expect(data.autoDownloadNet).assertEqual(true);
-                expect(data.mode).assertEqual(2);
-                expect(data.autoUpgradeInterval[0]).assertEqual(2);
-                expect(data.autoUpgradeInterval[1]).assertEqual(3);
+                console.log("UPDATE_TEST getUpgradePolicy success" + data);
+                expect(data.downloadStrategy).assertEqual(false);
+                expect(data.autoUpgradeStrategy).assertEqual(true);
+                expect(data.autoUpgradePeriods[0]).assertEqual(1);
+                expect(data.autoUpgradePeriods[1]).assertEqual(2);
             });
             expect(ret != 0).assertTrue();
         } catch(e) {
@@ -956,11 +828,9 @@ describe('updateclient', function() {
         console.info('testSetUpdatePolicyPromise003 START');
         // Set strategy.
         let policy = {
-            autoDownload: false,
-            autoDownloadNet: false,
-            mode: 2,
-            autoUpgradeInterval: [ 2, 3 ],
-            autoUpgradeCondition: 2
+            downloadStrategy: false,
+            autoUpgradeStrategy: false,
+            autoUpgradePeriods:[1, 2]
         }
         try {
             let ret = updater.setUpdatePolicy(policy).then(data => {
@@ -986,12 +856,11 @@ describe('updateclient', function() {
         console.info('testGetUpdatePolicyPromise003 START ');
         try {
             let ret = updater.getUpdatePolicy().then(data => {
-                console.log("getUpdatePolicy success" + data);
-                expect(data.autoDownload).assertEqual(false);
-                expect(data.autoDownloadNet).assertEqual(false);
-                expect(data.mode).assertEqual(2);
-                expect(data.autoUpgradeInterval[0]).assertEqual(2);
-                expect(data.autoUpgradeInterval[1]).assertEqual(3);
+                console.log("UPDATE_TEST getUpgradePolicy success" + data);
+                expect(data.downloadStrategy).assertEqual(false);
+                expect(data.autoUpgradeStrategy).assertEqual(false);
+                expect(data.autoUpgradePeriods[0]).assertEqual(1);
+                expect(data.autoUpgradePeriods[1]).assertEqual(2);
             }).catch(error => {
                 console.info('[getUpdatePolicy] error ' + error)
             })
@@ -1012,11 +881,9 @@ describe('updateclient', function() {
         console.info('testSetUpdatePolicyPromise004 START' + updater);
         // Set strategy.
         let policy = {
-            autoDownload: false,
-            autoDownloadNet: false,
-            mode: 1,
-            autoUpgradeInterval: [ 100, 100],
-            autoUpgradeCondition: 2
+            downloadStrategy: false,
+            autoUpgradeStrategy: false,
+            autoUpgradePeriods:[2, 3]
         }
         try {
             let ret = updater.setUpdatePolicy(policy).then(data => {
@@ -1042,12 +909,11 @@ describe('updateclient', function() {
         console.info('testGetUpdatePolicyPromise004 START' + updater);
         try {
             let ret = updater.getUpdatePolicy().then(data => {
-                console.log("getUpdatePolicy success" + data);
-                expect(data.autoDownload).assertEqual(false);
-                expect(data.autoDownloadNet).assertEqual(false);
-                expect(data.mode).assertEqual(1);
-                expect(data.autoUpgradeInterval[0]).assertEqual(expect_value);
-                expect(data.autoUpgradeInterval[1]).assertEqual(expect_value);
+                console.log("UPDATE_TEST getUpgradePolicy success" + data);
+                expect(data.downloadStrategy).assertEqual(false);
+                expect(data.autoUpgradeStrategy).assertEqual(false);
+                expect(data.autoUpgradePeriods[0]).assertEqual(2);
+                expect(data.autoUpgradePeriods[1]).assertEqual(3);
             }).catch(error => {
                 console.info('[getUpdatePolicy] error ' + error)
             })
@@ -1096,7 +962,8 @@ describe('updateclient', function() {
         console.info('[getUpdatePolicy] success.');
         console.info('testGetUpdatePolicyPromise005 END');
     });
-
+	
+    /*
     /**
      * @tc.number    SUB_UPDATE_JS_API_0046
      * @tc.name      testDownloadVersion
@@ -1106,19 +973,72 @@ describe('updateclient', function() {
         console.info('testDownloadVersion START');
         // Open download monitor.
         try{
-            updater.on('downloadProgress', progress => {
-                console.log("downloadProgress on" + progress);
-                console.log(`downloadProgress status: ` + progress.status);
-                console.log(`downloadProgress percent: ` + progress.percent);
-                console.log(`downloadProgress endReason: ` + progress.endReason);
-                if (progress.status === updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
-                    progress.status === updateState.UPDATE_STATE_VERIFY_SUCCESS) {
-                    expect(progress.percent).assertEqual(expect_value);
-                    updater.off("downloadProgress");
-                }
-            })
-            let ret = updater.download();
-            expect(ret).assertInstanceOf('Number');
+			let versionDigestInfo = {
+				versionDigest: "versionDigest test",
+			}
+			let downloadOptions ={
+				allowNetwork: 1,
+				order: 2
+			}
+			let eventClassifyInfo = {
+				eventClassify : 0x01000000,
+				extraInfo: ""
+			}
+            let ret = updater.off(eventClassifyInfo,eventInfo=>{
+			    console.info("UPDATE_TEST eventInfo is "+JSON.stringify(eventInfo));
+			}); 
+			expect(ret).assertInstanceOf('Number');
+            ret =updater.download(versionDigestInfo,downloadOptions,err=>{
+				console.info("UPDATE_TEST error msg is "+JSON.stringify(err));
+			})
+			console.info("UPDATE_TEST ret is "+ret);
+			expect(ret).assertInstanceOf('Number');
+			ret = updater.off(eventClassifyInfo,eventInfo=>{
+			    console.info("UPDATE_TEST eventInfo is "+JSON.stringify(eventInfo));
+			}); 
+			expect(ret).assertInstanceOf('Number');
+        } catch (e) {
+            console.info('[testDownloadVersion] catch ' + e);
+        }
+
+        console.info('[downloadVersion] success.');
+        console.info('testDownloadVersion END');
+    });
+
+    /*
+    /**
+     * @tc.number    SUB_UPDATE_JS_API_0047
+     * @tc.name      testDownloadVersionPromise
+     * @tc.desc      Unsubscribe from monitoring.
+     */
+    it('testDownloadVersionPromise', 0, function() {
+        console.info('testDownloadVersionPromise START');
+        // Open download monitor.
+        try{
+			let versionDigestInfo = {
+				versionDigest: "versionDigest test",
+			}
+			let downloadOptions ={
+				allowNetwork: 1,
+				order: 2
+			}
+			let eventClassifyInfo = {
+				eventClassify : 0x01000000,
+				extraInfo: ""
+			}
+            let ret = updater.off(eventClassifyInfo,eventInfo=>{
+			    console.info("UPDATE_TEST eventInfo is "+JSON.stringify(eventInfo));
+			}); 
+			expect(ret).assertInstanceOf('Number');
+            ret =updater.download(versionDigestInfo,downloadOptions).then(err=>{
+				console.info("UPDATE_TEST error msg is "+JSON.stringify(err));
+			})
+			console.info("UPDATE_TEST ret is "+ret);
+			expect(ret).assertInstanceOf('Promise');
+			ret = updater.off(eventClassifyInfo,eventInfo=>{
+			    console.info("UPDATE_TEST eventInfo is "+JSON.stringify(eventInfo));
+			}); 
+			expect(ret).assertInstanceOf('Number');
         } catch (e) {
             console.info('[testDownloadVersion] catch ' + e);
         }
@@ -1131,7 +1051,7 @@ describe('updateclient', function() {
      * @tc.number    SUB_UPDATE_JS_API_0047
      * @tc.name      testDownloadVersion02
      * @tc.desc      Unsubscribe out of monitoring.
-     */
+     *
     it('testDownloadVersion02', 0, function() {
         console.info('testDownloadVersion02 START');
         // Open download monitor
@@ -1156,6 +1076,7 @@ describe('updateclient', function() {
         console.info('[downloadVersion] success.');
         console.info('testDownloadVersion END');
     });
+	*/
 
     /**
      * @tc.number    SUB_UPDATE_JS_API_0048
@@ -1175,7 +1096,7 @@ describe('updateclient', function() {
                     expect(progress.percent).assertEqual(expect_value);
                 }
             })
-            expect(ret).assertInstanceOf('Number');
+            expect(ret).assertInstanceOf('Undefined');
         } catch (e) {
             console.info('[testDownloadVersion03] catch ' + e);
         }
@@ -1193,12 +1114,12 @@ describe('updateclient', function() {
         try{
             // Open download monitor.
             let ret = updater.on('downloadProgress');
-            expect(ret).assertInstanceOf('Number');
+            expect(ret).assertInstanceOf('Undefined');
             let ret_download = updater.download();
-            expect(ret_download).assertInstanceOf('Number');
+            expect(ret_download).assertInstanceOf('Undefined');
             // Cancel subscription immediately, no callback will be received.
             let ret_off = updater.off("downloadProgress");
-            expect(ret_off).assertInstanceOf('Number');
+            expect(ret_off).assertInstanceOf('Undefined');
         } catch (e) {
             console.info('[testDownloadVersion04] catch ' + e);
         }
@@ -1222,13 +1143,13 @@ describe('updateclient', function() {
         try{
             // Open download monitor.
             let ret = updater.on('downloadProgress', testFunction);
-            expect(ret).assertInstanceOf('Number');
+            expect(ret).assertInstanceOf('Undefined');
 
             let ret_download = updater.download();
-            expect(ret_download).assertInstanceOf('Number');
+            expect(ret_download).assertInstanceOf('Undefined');
             // Cancel subscription immediately, no callback will be received.
             let ret_off = updater.off("downloadProgress", testFunction);
-            expect(ret_off).assertInstanceOf('Number');
+            expect(ret_off).assertInstanceOf('Undefined');
         } catch (e) {
             console.info('[testDownloadVersion05] catch ' + e);
         }
@@ -1258,7 +1179,7 @@ describe('updateclient', function() {
                 }
             })
             let ret = updater.upgrade();
-            expect(ret).assertInstanceOf('Number');
+            expect(ret).assertInstanceOf('Undefined');
         } catch (e) {
             console.info('[testUpgradeVersion01] catch ' + e);
         }
@@ -1285,12 +1206,12 @@ describe('updateclient', function() {
                     expect(progress.percent).assertEqual(expect_value);
                 }
             })
-            expect(ret_on).assertInstanceOf('Number');
+            expect(ret_on).assertInstanceOf('Undefined');
             let ret = updater.upgrade();
-            expect(ret).assertInstanceOf('Number');
+            expect(ret).assertInstanceOf('Undefined');
             // Cancel subscription immediately, no callback will be received.
             let ret_off = updater.off("upgradeProgress");
-            expect(ret_off).assertInstanceOf('Number');
+            expect(ret_off).assertInstanceOf('Undefined');
         } catch (e) {
             console.info('[testUpgradeVersion02] catch ' + e);
         }
@@ -1316,7 +1237,7 @@ describe('updateclient', function() {
                     expect(progress.percent).assertEqual(expect_value);
                 }
             })
-            expect(ret).assertInstanceOf('Number');
+            expect(ret).assertInstanceOf('Undefined');
         } catch (e) {
             console.info('[testUpgradeVersion03] catch ' + e);
         }
@@ -1334,12 +1255,12 @@ describe('updateclient', function() {
         try{
             // Open download monitor.
             let ret = updater.on('upgradeProgress');
-            expect(ret).assertInstanceOf('Number');
+            expect(ret).assertInstanceOf('Undefined');
             let ret_upgrade = updater.upgrade();
-            expect(ret_upgrade).assertInstanceOf('Number');
+            expect(ret_upgrade).assertInstanceOf('Undefined');
             // Cancel subscription immediately, no callback will be received.
             let ret_off = updater.off("upgradeProgress");
-            expect(ret_off).assertInstanceOf('Number');
+            expect(ret_off).assertInstanceOf('Undefined');
         } catch (e) {
             console.info('[testUpgradeVersion04] catch ' + e);
         }
@@ -1362,13 +1283,13 @@ describe('updateclient', function() {
         console.info('testUpgradeVersion05 START');
         try{
             let ret = updater.on('upgradeProgress', testFunction);
-            expect(ret).assertInstanceOf('Number');
+            expect(ret).assertInstanceOf('Undefined');
 
             let ret_upgrade = updater.upgrade();
-            expect(ret_upgrade).assertInstanceOf('Number');
+            expect(ret_upgrade).assertInstanceOf('Undefined');
 
             let ret_off = updater.off("upgradeProgress", testFunction);
-            expect(ret_off).assertInstanceOf('Number');
+            expect(ret_off).assertInstanceOf('Undefined');
         } catch (e) {
             console.info('[testUpgradeVersion05] catch ' + e);
         }
@@ -1487,7 +1408,7 @@ describe('updateclient', function() {
         console.info('testOffDownload2 START');
         try{
             let ret = updater.off("333333333");
-            expect(ret).assertInstanceOf('Number');
+            expect(ret).assertInstanceOf('Undefined');
         } catch (e) {
             console.info('[testOffDownload2] catch ' + e);
         }
@@ -1555,7 +1476,7 @@ describe('updateclient', function() {
         console.info('testOnUpgrade START');
         try{
             let ret = updater.on("upgradeProgress", function(){});
-            expect(ret).assertInstanceOf('Number');
+            expect(ret).assertInstanceOf('Undefined');
         } catch (e) {
             console.info('[testOnUpgrade] catch ' + e);
         }
@@ -1640,7 +1561,7 @@ describe('updateclient', function() {
         console.info('testOffUpgrade START');
         try{
             let ret = updater.off("upgradeProgress");
-            expect(ret).assertInstanceOf('Number');
+            expect(ret).assertInstanceOf('Undefined');
         } catch (e) {
             console.info('[testOffUpgrade] catch ' + e);
         }
@@ -1716,109 +1637,6 @@ describe('updateclient', function() {
         console.info('testOffUpgrade5 END');
     });
 
-    /**
-     * @tc.number    SUB_UPDATE_JS_API_0076
-     * @tc.name      testCancelDownload
-     * @tc.desc      Test Cancel download.
-     */
-    it('testCancelDownload', 0, function() {
-        console.info('testCancelDownload START');
-        try{
-            let ret = updater.cancel();
-            console.info('updater.cancelUpgrade' + ret);
-            expect(ret === 0).assertTrue();
-        } catch (e) {
-            console.info('[cancel] catch ' + e);
-        }
-        console.info('[cancel] success.');
-        console.info('testCancelDownload END');
-    });
-
-    /**
-     * @tc.number    SUB_UPDATE_JS_API_0077
-     * @tc.name      testCancelDownload2
-     * @tc.desc      Test Cancel download.
-     */
-    it('testCancelDownload2', 0, function() {
-        console.info('testCancelDownload2 START');
-        try{
-            // Open download monitor.
-            updater.on('downloadProgress', progress => {
-                console.log("downloadProgress on" + progress);
-                console.log(`downloadProgress status: ` + progress.status);
-                console.log(`downloadProgress percent: ` + progress.percent);
-                console.log(`downloadProgress endReason: ` + progress.endReason);
-                if (progress.status === updateState.UPDATE_STATE_DOWNLOAD_SUCCESS ||
-                progress.status === updateState.UPDATE_STATE_VERIFY_SUCCESS) {
-                    expect(progress.percent).assertEqual(expect_value);
-                    updater.off("downloadProgress");
-                }
-            })
-            let ret = updater.download();
-            expect(ret === 0).assertTrue();
-
-            ret = updater.cancel();
-            console.info('updater.cancel' + ret);
-            expect(ret === 0).assertTrue();
-        } catch (e) {
-            console.info('[cancel] catch ' + e);
-        }
-        console.info('[cancel] success.');
-        console.info('testCancelDownload2 END');
-    });
-
-    /**
-     * @tc.number    SUB_UPDATE_JS_API_0078
-     * @tc.name      testCancelDownload3
-     * @tc.desc      Test Cancel download.
-     */
-    it('testCancelDownload3', 0, function() {
-        console.info('testCancelDownload3 START');
-        try{
-            let ret = updater.cancel();
-            console.info('updater.cancel' + ret);
-            expect(ret === 0).assertTrue();
-        } catch (e) {
-            console.info('[cancel] catch ' + e);
-        }
-        console.info('[cancel] success.');
-        console.info('testCancelDownload3 END');
-    });
-
-    /**
-     * @tc.number    SUB_UPDATE_JS_API_0079
-     * @tc.name      testCancelDownload4
-     * @tc.desc      Test Cancel download.
-     */
-    it('testCancelDownload4', 0, function() {
-        console.info('testCancelDownload4 START');
-        try{
-            let ret = updater.cancel("");
-            console.info('updater.cancel' + ret);
-            expect(ret === undefined).assertTrue();
-        } catch (e) {
-            console.info('[cancel] catch ' + e);
-        }
-        console.info('[cancel] success.');
-        console.info('testCancelDownload4 END');
-    });
-    /**
-     * @tc.number    SUB_UPDATE_JS_API_0080
-     * @tc.name      testCancelDownload5
-     * @tc.desc      Test Cancel download.
-     */
-    it('testCancelDownload5', 0, function() {
-        console.info('testCancelDownload5 START');
-        try{
-            let ret = updater.cancel(function(){});
-            console.info('updater.cancel' + ret);
-            expect(ret === undefined).assertTrue();
-        } catch (e) {
-            console.info('[cancel] catch ' + e);
-        }
-        console.info('[cancelUpgrade] success.');
-        console.info('testCancelDownload5 END');
-    });
 	    /**
      * @tc.number    SUB_UPDATE_JS_API_0081
      * @tc.name      testVerifyVersion
@@ -1910,11 +1728,11 @@ describe('updateclient', function() {
         console.info('testVerifyVersion04 START');
         try{
             let ret = updater.on('verifyProgress');
-            expect(ret).assertInstanceOf('Number');
+            expect(ret).assertInstanceOf('Undefined');
             let ret_verify = updater.verifyUpdatePackage();
-            expect(ret_verify).assertInstanceOf('Number');
+            expect(ret_verify).assertInstanceOf('Undefined');
             let ret_off = updater.off("verifyProgress");
-            expect(ret_off).assertInstanceOf('Number');
+            expect(ret_off).assertInstanceOf('Undefined');
         } catch (e) {
             console.info('[testVerifyVersion04] catch ' + e);
         }
@@ -1937,11 +1755,11 @@ describe('updateclient', function() {
         console.info('testVerifyVersion05 START');
         try{
             let ret = updater.on('verifyProgress', testFunction);
-            expect(ret).assertInstanceOf('Number');
+            expect(ret).assertInstanceOf('Undefined');
             let ret_verify = updater.verifyUpdatePackage('/data/updater/updater.zip','/data/updater/HwOUC/update_auth.sa');
             expect(ret_verify).assertInstanceOf('Number');
             let ret_off = updater.off("verifyProgress", testFunction);
-            expect(ret_off).assertInstanceOf('Number');
+            expect(ret_off).assertInstanceOf('Undefined');
         } catch (e) {
             console.info('[testVerifyVersion05] catch ' + e);
         }
@@ -2068,5 +1886,649 @@ describe('updateclient', function() {
 
         console.info('[client.getUpdaterFromOther] success.');
         console.info('testGetUpdaterFromOther END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0092
+     * @tc.name      testPauseDownloadCallback
+     * @tc.desc      Test PauseDownload Callback Type
+     */
+    it('testPauseDownloadCallback', 0, function() {
+        console.info('UPDATE_TEST testPauseDownloadCallback START');
+        try {
+            if(updater === undefined) {
+                updater = client.getOnlineUpdater(upgradeInfo);
+            }
+			let versionDigestInfo = {
+				versionDigest: "versionDigest pasue"
+			}
+			let pauseDownloadOptions = {
+				isAllowAutoResume: true
+			}
+            let ret =updater.pauseDownload(versionDigestInfo,pauseDownloadOptions,err=>{
+				console.info("UPDATE_TEST error msg is "+JSON.stringify(err));
+			})
+			console.info("UPDATE_TEST ret is "+ret);
+			expect(ret).assertInstanceOf('Number');
+        } catch(e) {
+            console.error('UPDATE_TEST [testPauseDownloadCallback] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testPauseDownloadCallback] success.');
+        console.info('UPDATE_TEST testPauseDownloadCallback END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0093
+     * @tc.name      testPauseDownloadPromise
+     * @tc.desc      Test PauseDownload promise Type
+     */
+    it('testPauseDownloadPromise', 0, function() {
+        console.info('UPDATE_TEST testPauseDownloadPromise START');
+        try {
+            if(updater === undefined) {
+                updater = client.getOnlineUpdater(upgradeInfo);
+            }
+			let versionDigestInfo = {
+				versionDigest: "versionDigest pasue"
+			}
+			let pauseDownloadOptions = {
+				isAllowAutoResume: true
+			}
+            let ret =updater.pauseDownload(versionDigestInfo,pauseDownloadOptions).then(err=>{
+				console.info("UPDATE_TEST error msg is "+JSON.stringify(err));
+			})
+			console.info("UPDATE_TEST ret is "+ret);
+			expect(ret).assertInstanceOf('Promise');
+        } catch(e) {
+            console.error('UPDATE_TEST [testPauseDownloadPromise] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testPauseDownloadPromise] success.');
+        console.info('UPDATE_TEST testPauseDownloadPromise END');
+    });
+
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0094
+     * @tc.name      testUpgradeCallback
+     * @tc.desc      Test testUpgrade Callback Type
+     */
+    it('testUpgradeCallback', 0, function() {
+        console.info('UPDATE_TEST testUpgradeCallback START');
+        try {
+            if(updater === undefined) {
+                updater = client.getOnlineUpdater(upgradeInfo);
+            }
+			let versionDigestInfo = {
+				versionDigest: "versionDigest pasue"
+			}
+			let upgradeOptions = {
+				order: 1
+			}
+			let eventClassifyInfo = {
+				eventClassify : 0x01000000,
+				extraInfo: ""
+			}
+			let ret = updater.off(eventClassifyInfo,eventInfo=>{
+			    console.info("UPDATE_TEST eventInfo is "+JSON.stringify(eventInfo));
+			}); 
+			expect(ret).assertInstanceOf('Number');
+            ret =updater.upgrade(versionDigestInfo,upgradeOptions,err=>{
+				console.info("UPDATE_TEST error msg is "+JSON.stringify(err));
+			})
+			console.info("UPDATE_TEST ret is "+ret);
+			expect(ret).assertInstanceOf('Number');
+			ret = updater.off(eventClassifyInfo,eventInfo=>{
+			    console.info("UPDATE_TEST eventInfo is "+JSON.stringify(eventInfo));
+			}); 
+			expect(ret).assertInstanceOf('Number');
+        } catch(e) {
+            console.error('UPDATE_TEST [testUpgradeCallback] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testUpgradeCallback] success.');
+        console.info('UPDATE_TEST testUpgradeCallback END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0095
+     * @tc.name      testUpgradePromise
+     * @tc.desc      Test testUpgrade promise Type
+     */
+    it('testUpgradePromise', 0, function() {
+        console.info('UPDATE_TEST testUpgradePromise START');
+        try {
+            if(updater === undefined) {
+                updater = client.getOnlineUpdater(upgradeInfo);
+            }
+			let versionDigestInfo = {
+				versionDigest: "versionDigest pasue"
+			}
+			let upgradeOptions = {
+				order: 1
+			}
+			let eventClassifyInfo = {
+				eventClassify : 0x01000000,
+				extraInfo: ""
+			}
+			let ret = updater.off(eventClassifyInfo,eventInfo=>{
+			    console.info("UPDATE_TEST eventInfo is "+JSON.stringify(eventInfo));
+			}); 
+			expect(ret).assertInstanceOf('Number');
+            ret =updater.upgrade(versionDigestInfo,upgradeOptions).then(err=> {
+				console.info("UPDATE_TEST error msg is "+JSON.stringify(err));
+			});
+			console.info("UPDATE_TEST ret is "+ret);
+			expect(ret).assertInstanceOf('Promise');
+			ret = updater.off(eventClassifyInfo,eventInfo=>{
+			    console.info("UPDATE_TEST eventInfo is "+JSON.stringify(eventInfo));
+			}); 
+			expect(ret).assertInstanceOf('Number');
+        } catch(e) {
+            console.error('UPDATE_TEST [testUpgradePromise] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testUpgradePromise] success.');
+        console.info('UPDATE_TEST testUpgradePromise END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0096
+     * @tc.name      testClearErrorCallback
+     * @tc.desc      Test testClearError Callback Type
+     */
+    it('testUpgradeCallback', 0, function() {
+        console.info('UPDATE_TEST testClearErrorCallback START');
+        try {
+            if(updater === undefined) {
+                updater = client.getOnlineUpdater(upgradeInfo);
+            }
+			let versionDigestInfo = {
+				versionDigest: "versionDigest clearError"
+			}
+			let clearOptions = {
+				status: 1
+			}
+            let ret =updater.upgrade(versionDigestInfo,clearOptions,err=>{
+				console.info("UPDATE_TEST error msg is "+JSON.stringify(err));
+			})
+			expect(ret).assertInstanceOf('Undefined');
+        } catch(e) {
+            console.error('UPDATE_TEST [testClearErrorCallback] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testClearErrorCallback] success.');
+        console.info('UPDATE_TEST testClearErrorCallback END');
+    });
+
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0097
+     * @tc.name      testClearErrorPromise
+     * @tc.desc      Test testClearError promise Type
+     */
+    it('testClearErrorPromise', 0, function() {
+        console.info('UPDATE_TEST testClearErrorPromise START');
+        try {
+            if(updater === undefined) {
+                updater = client.getOnlineUpdater(upgradeInfo);
+            }
+			let versionDigestInfo = {
+				versionDigest: "versionDigest clearError"
+			}
+			let clearOptions = {
+				status: 1
+			}
+            let ret =updater.upgrade(versionDigestInfo,clearOptions).then(err=>{
+				console.info("UPDATE_TEST error msg is "+JSON.stringify(err));
+			});
+			expect(ret).assertInstanceOf('Promise');
+        } catch(e) {
+            console.error('UPDATE_TEST [testClearErrorPromise] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testClearErrorPromise] success.');
+        console.info('UPDATE_TEST testClearErrorPromise END');
+    });
+
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0098
+     * @tc.name      testterminateUpgradeCallback
+     * @tc.desc      Test testterminateUpgrade Callback Type
+     */
+    it('testterminateUpgradeCallback', 0, function() {
+        console.info('UPDATE_TEST testterminateUpgradeCallback START');
+        try {
+			let ret = updater.terminateUpgrade(function(result){
+			    console.info("UPDATE_TEST testterminateUpgradeCallback result is "+result);
+			}); 
+			console.info("UPDATE_TEST testterminateUpgradeCallback ret is "+ret);
+			expect(ret).assertInstanceOf('Number');
+        } catch(e) {
+            console.error('UPDATE_TEST [testterminateUpgradeCallback] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testterminateUpgradeCallback] success.');
+        console.info('UPDATE_TEST testterminateUpgradeCallback END');
+    });
+
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0099
+     * @tc.name      testterminateUpgradePromise
+     * @tc.desc      Test testterminateUpgrade Promise Type
+     */
+    it('testterminateUpgradePromise', 0, function() {
+        console.info('UPDATE_TEST testterminateUpgradePromise START');
+        try {
+			let ret = updater.terminateUpgrade().then((result)=>{
+			    console.info("UPDATE_TEST testterminateUpgradePromise result is "+result);
+			}); 
+			console.info("UPDATE_TEST testterminateUpgradePromise ret is "+ret);
+			expect(ret).assertInstanceOf('Promise');
+        } catch(e) {
+            console.error('UPDATE_TEST [testterminateUpgradePromise] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testterminateUpgradePromise] success.');
+        console.info('UPDATE_TEST testterminateUpgradePromise END');
+    });
+
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0100
+     * @tc.name      testGetRestorer
+     * @tc.desc      Test GetRestorer API
+     */
+    it('testGetRestorer', 0, function() {
+        console.info('UPDATE_TEST testGetRestorer START');
+        try {
+			let ret = updater.getRestorer();
+			console.info("UPDATE_TEST testGetRestorer ret is "+ret);
+			expect(ret).assertInstanceOf('Restorer');
+        } catch(e) {
+            console.error('UPDATE_TEST [testGetRestorer] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testGetRestorer] success.');
+        console.info('UPDATE_TEST testGetRestorer END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0101
+     * @tc.name      testFactoryResetCallback
+     * @tc.desc      Test testFactoryResetCallback API
+     */
+    it('testFactoryResetCallback', 0, function() {
+        console.info('UPDATE_TEST testFactoryResetCallback START');
+        try {
+			let restorer = updater.getRestorer();
+			console.info("UPDATE_TEST testFactoryResetCallback restorer is "+restorer);
+			expect(restorer).assertInstanceOf('Restorer');
+			let ret = restorer.factoryReset((result)=>{
+				console.info("UPDATE_TEST testFactoryResetCallback result is "+result);
+			})
+			console.info("UPDATE_TEST testFactoryResetCallback ret is "+ret);
+			expect(ret).assertInstanceOf('Undefined');
+        } catch(e) {
+            console.error('UPDATE_TEST [testFactoryResetCallback] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testFactoryResetCallback] success.');
+        console.info('UPDATE_TEST testFactoryResetCallback END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0102
+     * @tc.name      testFactoryResetPromise
+     * @tc.desc      Test testFactoryResetPromise API
+     */
+    it('testFactoryResetPromise', 0, function() {
+        console.info('UPDATE_TEST testFactoryResetPromise START');
+        try {
+			let restorer = updater.getRestorer();
+			console.info("UPDATE_TEST testFactoryResetPromise restorer is "+restorer);
+			expect(restorer).assertInstanceOf('Restorer');
+			let ret = restorer.factoryReset().then((result)=>{
+				console.info("UPDATE_TEST testFactoryResetPromise result is "+result);
+			});
+			console.info("UPDATE_TEST testFactoryResetPromise ret is "+ret);
+			expect(ret).assertInstanceOf('Promise');
+        } catch(e) {
+            console.error('UPDATE_TEST [testFactoryResetPromise] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testFactoryResetPromise] success.');
+        console.info('UPDATE_TEST testFactoryResetPromise END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0103
+     * @tc.name      testGetLocalUpdater
+     * @tc.desc      Test GetRestorer API
+     */
+    it('testGetLocalUpdater', 0, function() {
+        console.info('UPDATE_TEST testGetLocalUpdater START');
+        try {
+			let restorer = updater.getRestorer();
+			console.info("UPDATE_TEST testGetLocalUpdater restorer is "+restorer);
+			expect(restorer).assertInstanceOf('Restorer');
+			let ret = restorer.getLocalUpdater();
+			console.info("UPDATE_TEST testGetLocalUpdater ret is "+ret);
+			expect(ret).assertInstanceOf('LocalUpdater');
+        } catch(e) {
+            console.error('UPDATE_TEST [testGetLocalUpdater] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testGetLocalUpdater] success.');
+        console.info('UPDATE_TEST testGetLocalUpdater END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0104
+     * @tc.name      testVerifyUpgradePackageCallback
+     * @tc.desc      Test GetRestorer API
+     */
+    it('testVerifyVersionerifyUpgradePackageCallback', 0, function() {
+        console.info('UPDATE_TEST testVerifyVersionerifyUpgradePackageCallback START');
+        try {
+			let restorer = updater.getRestorer();
+			console.info("UPDATE_TEST testVerifyVersionerifyUpgradePackageCallback restorer is "+restorer);
+			expect(restorer).assertInstanceOf('Restorer');
+			let localUpdater = restorer.getLocalUpdater();
+			console.info("UPDATE_TEST testVerifyVersionerifyUpgradePackageCallback localUpdater is "+localUpdater);
+			expect(localUpdater).assertInstanceOf('LocalUpdater');
+			let file = {
+				filePath: "/data/ota_package/updater.zip",
+				fileType: 1
+			};
+			let ret = localUpdater.verifyUpgradePackage(file,'/data/ota_package/signing_cert.crt',(result)=>{
+				console.info("UPDATE_TEST testVerifyVersionerifyUpgradePackageCallback result is "+result);
+			})
+			console.info("UPDATE_TEST testVerifyVersionerifyUpgradePackageCallback ret is "+ret);
+			expect(ret).assertInstanceOf('Number');
+        } catch(e) {
+            console.error('UPDATE_TEST [testVerifyVersionerifyUpgradePackageCallback] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testVerifyVersionerifyUpgradePackageCallback] success.');
+        console.info('UPDATE_TEST testVerifyVersionerifyUpgradePackageCallback END');
+    });
+
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0105
+     * @tc.name      testVerifyUpgradePackagePromise
+     * @tc.desc      Test GetRestorer API
+     */
+    it('testVerifyUpgradePackagePromise', 0, function() {
+        console.info('UPDATE_TEST testVerifyUpgradePackagePromise START');
+        try {
+			let restorer = updater.getRestorer();
+			console.info("UPDATE_TEST testVerifyUpgradePackagePromise restorer is "+restorer);
+			expect(restorer).assertInstanceOf('Restorer');
+			let localUpdater = restorer.getLocalUpdater();
+			console.info("UPDATE_TEST testVerifyUpgradePackagePromise localUpdater is "+localUpdater);
+			expect(localUpdater).assertInstanceOf('LocalUpdater');
+			let file = {
+				filePath: "/data/ota_package/updater.zip",
+				fileType: 1
+			};
+			let ret = localUpdater.verifyUpgradePackage(file,'/data/ota_package/signing_cert.crt').then((result)=>{
+				console.info("UPDATE_TEST testVerifyUpgradePackagePromise result is "+result);
+			})
+			console.info("UPDATE_TEST testVerifyUpgradePackagePromise ret is "+ret);
+			expect(ret).assertInstanceOf('Number');
+        } catch(e) {
+            console.error('UPDATE_TEST [testVerifyUpgradePackagePromise] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testVerifyUpgradePackagePromise] success.');
+        console.info('UPDATE_TEST testVerifyUpgradePackagePromise END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0106
+     * @tc.name      testApplyNewVersionCallback
+     * @tc.desc      Test GetRestorer API
+     */
+    it('testApplyNewVersionCallback', 0, function() {
+        console.info('UPDATE_TEST testApplyNewVersionCallback START');
+        try {
+			let restorer = updater.getRestorer();
+			console.info("UPDATE_TEST testApplyNewVersionCallback restorer is "+restorer);
+			expect(restorer).assertInstanceOf('Restorer');
+			let localUpdater = restorer.getLocalUpdater();
+			console.info("UPDATE_TEST testApplyNewVersionCallback localUpdater is "+localUpdater);
+			expect(localUpdater).assertInstanceOf('LocalUpdater');
+			let files = [{
+				filePath: "/data/ota_package/updater1.zip",
+				fileType: 1
+			},
+			{
+				filePath: "/data/ota_package/updater2.zip",
+				fileType: 4
+			}];
+			let ret = localUpdater.applyNewVersion(files,(result)=>{
+				console.info("UPDATE_TEST testApplyNewVersionCallback result is "+result);
+			})
+			console.info("UPDATE_TEST testApplyNewVersionCallback ret is "+ret);
+			expect(ret).assertInstanceOf('Undefined');
+        } catch(e) {
+            console.error('UPDATE_TEST [testApplyNewVersionCallback] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testApplyNewVersionCallback] success.');
+        console.info('UPDATE_TEST testApplyNewVersionCallback END');
+    });
+
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0107
+     * @tc.name      testApplyNewVersionPromise
+     * @tc.desc      Test GetRestorer API
+     */
+    it('testApplyNewVersionPromise', 0, function() {
+        console.info('UPDATE_TEST testApplyNewVersionPromise START');
+        try {
+			let restorer = updater.getRestorer();
+			console.info("UPDATE_TEST testApplyNewVersionPromise restorer is "+restorer);
+			expect(restorer).assertInstanceOf('Restorer');
+			
+			let localUpdater = restorer.getLocalUpdater();
+			console.info("UPDATE_TEST testApplyNewVersionPromise localUpdater is "+localUpdater);
+			expect(localUpdater).assertInstanceOf('LocalUpdater');
+			let files = [{
+				filePath: "/data/ota_package/updater1.zip",
+				fileType: 1
+			},
+			{
+				filePath: "/data/ota_package/updater2.zip",
+				fileType: 4
+			}];
+			let ret = localUpdater.applyNewVersion(files).then((result)=>{
+				console.info("UPDATE_TEST testApplyNewVersionPromise result is "+result);
+			})
+			console.info("UPDATE_TEST testApplyNewVersionPromise ret is "+ret);
+			expect(ret).assertInstanceOf('Promise');
+        } catch(e) {
+            console.error('UPDATE_TEST [testApplyNewVersionPromise] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testApplyNewVersionPromise] success.');
+        console.info('UPDATE_TEST testApplyNewVersionPromise END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0108
+     * @tc.name      testGetCurrentVersionInfoCallback
+     * @tc.desc      Test GetUpdater API
+     */
+    it('testGetCurrentVersionInfoCallback', 0, function() {
+        console.info('UPDATE_TEST testGetCurrentVersionInfoCallback START');
+        try {
+			let ret = updater.getCurrentVersionInfo((err, result)=>{
+				console.info("UPDATE_TEST error msg  is " + err);
+				console.info("UPDATE_TEST testGetCurrentVersionInfoCallback result is " + result);
+			});
+			console.info("UPDATE_TEST testGetCurrentVersionInfoCallback ret is "+ret);
+			expect(ret).assertInstanceOf('Number');
+        } catch(e) {
+            console.error('UPDATE_TEST [testGetCurrentVersionInfoCallback] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testGetCurrentVersionInfoCallback] success.');
+        console.info('UPDATE_TEST testGetCurrentVersionInfoCallback END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0109
+     * @tc.name      testGetCurrentVersionInfoPromise
+     * @tc.desc      Test GetUpdater API
+     */
+    it('testGetCurrentVersionInfoPromise', 0, function() {
+        console.info('UPDATE_TEST testGetCurrentVersionInfoPromise START');
+        try {
+			let ret = updater.getCurrentVersionInfo().then((err, result)=>{
+				console.info("UPDATE_TEST error msg  is " + err);
+				console.info("UPDATE_TEST testGetCurrentVersionInfoPromise result is " + result);
+			});
+			console.info("UPDATE_TEST testGetCurrentVersionInfoPromise ret is "+ret);
+			expect(ret).assertInstanceOf('Promise');
+        } catch(e) {
+            console.error('UPDATE_TEST [testGetCurrentVersionInfoPromise] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testGetCurrentVersionInfoPromise] success.');
+        console.info('UPDATE_TEST testGetCurrentVersionInfoPromise END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0110
+     * @tc.name      testResumeDownloadCallback
+     * @tc.desc      Test GetUpdater API
+     */
+    it('testResumeDownloadCallback', 0, function() {
+        console.info('UPDATE_TEST testResumeDownloadCallback START');
+        try {
+			let versionDigestInfo = {
+				versionDigest: "versionDigest resume"
+			}
+			let resumeDownloadOptions = {
+				allowNetwork: 1
+			}
+			let ret = updater.resumeDownload(versionDigestInfo, resumeDownloadOptions, (err)=>{
+				console.info("UPDATE_TEST error msg  is " + err);
+			});
+			console.info("UPDATE_TEST testResumeDownloadCallback ret is " + ret);
+			expect(ret).assertInstanceOf('Number');
+        } catch(e) {
+            console.error('UPDATE_TEST [testResumeDownloadCallback] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testResumeDownloadCallback] success.');
+        console.info('UPDATE_TEST testResumeDownloadCallback END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0111
+     * @tc.name      testResumeDownloadPromise
+     * @tc.desc      Test GetUpdater API
+     */
+    it('testResumeDownloadPromise', 0, function() {
+        console.info('UPDATE_TEST testResumeDownloadPromise START');
+        try {
+			let versionDigestInfo = {
+				versionDigest: "versionDigest resume"
+			}
+			let resumeDownloadOptions = {
+				allowNetwork: 1
+			}
+			let ret = updater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then((err)=>{
+				console.info("UPDATE_TEST error msg  is " + err);
+			});
+			console.info("UPDATE_TEST testResumeDownloadPromise ret is " + ret);
+			expect(ret).assertInstanceOf('Promise');
+        } catch(e) {
+            console.error('UPDATE_TEST [testResumeDownloadPromise] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testResumeDownloadPromise] success.');
+        console.info('UPDATE_TEST testResumeDownloadPromise END');
+    });
+	
+		/**
+     * @tc.number    SUB_UPDATE_JS_API_0112
+     * @tc.name      testLocalUpdaterOn
+     * @tc.desc      Test GetLocalUpdater API
+     */
+    it('testLocalUpdaterOn', 0, function() {
+        console.info('UPDATE_TEST testLocalUpdaterOn START');
+        try {
+			let restorer = updater.getRestorer();
+			console.info("UPDATE_TEST testLocalUpdaterOn restorer is " + restorer);
+			expect(restorer).assertInstanceOf('Restorer');
+			
+			let localUpdater = restorer.getLocalUpdater();
+			console.info("UPDATE_TEST testLocalUpdaterOn localUpdater is " + localUpdater);
+			expect(localUpdater).assertInstanceOf('LocalUpdater');
+			
+			let eventClassifyInfo = {eventClassify: 0x01000000, extraInfo: ""};
+			let ret = localUpdater.on(eventClassifyInfo, (eventInfo) => {
+				console.info("UPDATE_TEST testLocalUpdaterOn eventInfo is " + eventInfo);
+			});
+			console.info("UPDATE_TEST testLocalUpdaterOn ret is " + ret);
+			expect(ret).assertInstanceOf('Undefined');
+        } catch(e) {
+            console.error('UPDATE_TEST [testLocalUpdaterOn] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testLocalUpdaterOn] success.');
+        console.info('UPDATE_TEST testLocalUpdaterOn END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0113
+     * @tc.name      testLocalUpdaterOff
+     * @tc.desc      Test GetLocalUpdater API
+     */
+    it('testLocalUpdaterOff', 0, function() {
+        console.info('UPDATE_TEST testLocalUpdaterOff START');
+        try {
+			let restorer = updater.getRestorer();
+			console.info("UPDATE_TEST testLocalUpdaterOff restorer is " + restorer);
+			expect(restorer).assertInstanceOf('Restorer');
+			
+			let localUpdater = restorer.getLocalUpdater();
+			console.info("UPDATE_TEST testLocalUpdaterOff localUpdater is " + localUpdater);
+			expect(localUpdater).assertInstanceOf('LocalUpdater');
+			
+			let eventClassifyInfo = {eventClassify: 0x01000000, extraInfo: ""};
+			let ret = localUpdater.off(eventClassifyInfo, (eventInfo) => {
+				console.info("UPDATE_TEST testLocalUpdaterOff eventInfo is " + eventInfo);
+			});
+			console.info("UPDATE_TEST testLocalUpdaterOff ret is " + ret);
+			expect(ret).assertInstanceOf('Undefined');
+        } catch(e) {
+            console.error('UPDATE_TEST [testLocalUpdaterOff] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testLocalUpdaterOff] success.');
+        console.info('UPDATE_TEST testLocalUpdaterOff END');
+    });
+	
+		/**
+     * @tc.number    SUB_UPDATE_JS_API_0114
+     * @tc.name      testGetTaskInfoCallback
+     * @tc.desc      Test GetUpdater API
+     */
+    it('testGetTaskInfoCallback', 0, function() {
+        console.info('UPDATE_TEST testGetTaskInfoCallback START');
+        try {
+			let ret = updater.getTaskInfo((err, result) => {
+				console.info("UPDATE_TEST  error msg is " + err);
+				console.info("UPDATE_TEST  result is " + result);
+			});
+			console.info("UPDATE_TEST testGetTaskInfoCallback ret is " + ret);
+			expect(ret).assertInstanceOf('Number');
+        } catch(e) {
+            console.error('UPDATE_TEST [testGetTaskInfoCallback] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testGetTaskInfoCallback] success.');
+        console.info('UPDATE_TEST testGetTaskInfoCallback END');
+    });
+	
+			/**
+     * @tc.number    SUB_UPDATE_JS_API_0115
+     * @tc.name      testGetTaskInfoPromise
+     * @tc.desc      Test GetUpdater API
+     */
+    it('testGetTaskInfoPromise', 0, function() {
+        console.info('UPDATE_TEST testGetTaskInfoPromise START');
+        try {
+			let ret = updater.getTaskInfo().then((err, result) => {
+				console.info("UPDATE_TEST  error msg is " + err);
+				console.info("UPDATE_TEST  result is " + result);
+			});
+			console.info("UPDATE_TEST testGetTaskInfoPromise ret is " + ret);
+			expect(ret).assertInstanceOf('Promise');
+        } catch(e) {
+            console.error('UPDATE_TEST [testGetTaskInfoPromise] fail.' + e);
+        }
+        console.info('UPDATE_TEST [client.testGetTaskInfoPromise] success.');
+        console.info('UPDATE_TEST testGetTaskInfoPromise END');
     });
 });

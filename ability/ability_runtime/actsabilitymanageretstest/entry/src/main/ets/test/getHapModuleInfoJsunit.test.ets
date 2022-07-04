@@ -211,7 +211,7 @@ export default function getHapModuleInfoJsunit() {
       expect(data.description).assertEqual("$string:TestAbility_desc");
       expect(data.icon).assertEqual("$media:icon");
       expect(data.moduleName).assertEqual("entry");
-      expect(data.process).assertEqual("");
+      expect(data.process).assertEqual("com.ohos.acecollaboration");
       expect(data.targetAbility).assertEqual("");
       expect(data.backgroundModes).assertEqual(0);
       expect(data.isVisible).assertEqual(true);
