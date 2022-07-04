@@ -52,9 +52,9 @@ describe("SensorJsTest_sensor_21", function () {
     /*
      * @tc.number: SUB_SensorsSystem_Significant_Motion_JSTest_0010
      * @tc.name: SensorSignificantMotionJSTest001
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_Significant_Motion_JSTest_0010", 0, async function (done) {
+    it("SUB_SensorsSystem_Significant_Motion_JSTest_0010", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
         console.info('----------------------SUB_SensorsSystem_Significant_Motion_JSTest_0010------------------');
         function offPromise() {
             return new Promise((resolve, reject) => {
@@ -104,17 +104,17 @@ describe("SensorJsTest_sensor_21", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_Significant_Motion_JSTest_0050
-     * @tc.name: SensorSignificantMotionJSTest005
-     * @tc.desc:verify app info is not null
+     * @tc.number: SUB_SensorsSystem_Significant_Motion_JSTest_0020
+     * @tc.name: SensorSignificantMotionJSTest002
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_Significant_Motion_JSTest_0050", 0, async function (done) {
+    it("SensorSignificantMotionJSTest002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         function onceSensorCallback(error, data) {
             if (error) {
-                console.info('SensorSignificantMotionJSTest005  once error');
+                console.info('SensorSignificantMotionJSTest002  once error');
                 expect(false).assertTrue();
             } else {
-                console.info('SensorSignificantMotionJSTest005  once success scalar: ' + data.scalar);
+                console.info('SensorSignificantMotionJSTest002  once success scalar: ' + data.scalar);
                 expect(typeof (data.scalar)).assertEqual("number");
             }
             setTimeout(() => {

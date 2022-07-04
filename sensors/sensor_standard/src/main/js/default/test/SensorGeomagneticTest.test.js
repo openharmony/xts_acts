@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import sensor from '@ohos.sensor'
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 describe("SensorJsTest_sensor_2", function () {
@@ -81,12 +82,12 @@ describe("SensorJsTest_sensor_2", function () {
     let timeMillis = [1580486400000, 1612108800000, 1643644800000, 1675180800000, 1706716800000]
 
     /**
-    * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0010
+    * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0010
     * @tc.name: SensorGeomagenticAlgorithmJSTest001
     * @tc.desc: Verification results of the incorrect parameters of the test interface.
     */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0010', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0010-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest001', FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest001-------------------------");
         let promiseArray = []
         for (let i = 0; i < timeMillis.length; i++) {
             promiseArray.push(new Promise((resolve, reject) => {
@@ -122,12 +123,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0020
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0020
      * @tc.name: SensorGeomagenticAlgorithmJSTest002
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0020', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0020-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest002', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest002-------------------------");
         let promiseArray = []
         for (let i = 0; i < GEOMAGNETIC_COORDINATES.length; i++) {
             promiseArray.push(new Promise((resolve, reject) => {
@@ -166,12 +167,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0030
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0030
      * @tc.name: SensorGeomagenticAlgorithmJSTest003
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0030', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0030-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest003', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest003-------------------------");
         let geomagneticComponent = [-1417119616, 23146989568, -6406359552, -15.442885398864746,
         93.50342559814453, 23190329344, 24058943488]
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': 0 }, Number.MAX_VALUE,
@@ -199,12 +200,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0040
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0040
      * @tc.name: SensorGeomagenticAlgorithmJSTest004
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0040', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0040-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest004', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest004-------------------------");
         let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125, -27.667943954467773,
         -12.610970497131348, 28465.9765625, 32141.2109375]
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': 0 }, Number.MIN_VALUE,
@@ -233,12 +234,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0050
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0050
      * @tc.name: SensorGeomagenticAlgorithmJSTest005
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0050', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0050-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest005', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest005-------------------------");
         let geomagneticComponent = [1824.141845703125, 116.58167266845703, 56727.7734375, 88.15447235107422,
         3.6568238735198975, 1827.8634033203125, 56757.21484375]
         sensor.getGeomagneticField({ 'latitude': Number.MAX_VALUE, 'longitude': 0, 'altitude': 0 },
@@ -266,12 +267,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0060
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0060
      * @tc.name: SensorGeomagenticAlgorithmJSTest006
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0060', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0060-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest006', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest006-------------------------");
         let geomagneticComponent = [1824.141845703125, 116.58167266845703, 56727.7734375, 88.15447235107422,
         3.6568238735198975, 1827.8634033203125, 56757.21484375]
         sensor.getGeomagneticField({ 'latitude': Number.NaN, 'longitude': 0, 'altitude': 0 }, timeMillis[0],
@@ -299,12 +300,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0070
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0070
      * @tc.name: SensorGeomagenticAlgorithmJSTest007
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0070', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0070-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest007', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest007-------------------------");
         let geomagneticComponent = [14425.57421875, -17156.767578125, -52023.21484375, -66.69005584716797,
         -49.94255447387695, 22415.4375, 56646.859375]
         sensor.getGeomagneticField({ 'latitude': Number.NEGATIVE_INFINITY, 'longitude': 0, 'altitude': 0 },
@@ -333,12 +334,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0080
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0080
      * @tc.name: SensorGeomagenticAlgorithmJSTest008
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0080', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0080-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest008', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest008-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.MAX_VALUE, 'altitude': 0 }, timeMillis[0],
             (error, data) => {
                 if (error) {
@@ -359,12 +360,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0090
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0090
      * @tc.name: SensorGeomagenticAlgorithmJSTest009
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0090', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0090-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest009', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest009-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.NaN, 'altitude': 0 }, timeMillis[0],
             (error, data) => {
                 if (error) {
@@ -385,12 +386,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0100
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0100
      * @tc.name: SensorGeomagenticAlgorithmJSTest010
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0100', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0100-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest010', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest010-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.NEGATIVE_INFINITY, 'altitude': 0 },
             timeMillis[0], (error, data) => {
                 if (error) {
@@ -411,12 +412,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0110
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0110
      * @tc.name: SensorGeomagenticAlgorithmJSTest011
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0110', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0110-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest011', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest011-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.MAX_VALUE }, timeMillis[0],
             (error, data) => {
                 if (error) {
@@ -437,12 +438,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0120
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0120
      * @tc.name: SensorGeomagenticAlgorithmJSTest012
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0120', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0120-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest012', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest012-------------------------");
         let geomagneticComponent = [27536.40234375, -2248.586669921875, -16022.4306640625, -30.110872268676758,
         -4.66834020614624, 27628.05859375, 31937.875]
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.MIN_VALUE }, timeMillis[0],
@@ -471,12 +472,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0130
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0130
      * @tc.name: SensorGeomagenticAlgorithmJSTest013
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0130', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0130-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest013', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest013-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.NaN }, timeMillis[0],
             (error, data) => {
                 if (error) {
@@ -497,12 +498,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0140
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0140
      * @tc.name: SensorGeomagenticAlgorithmJSTest014
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0140', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0140-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest014', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest014-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.NEGATIVE_INFINITY },
             timeMillis[0], (error, data) => {
                 if (error) {
@@ -523,12 +524,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0150
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0150
      * @tc.name: SensorGeomagenticAlgorithmJSTest015
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0150', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0150-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest015', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest015-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.NaN, 'altitude': 0 }, timeMillis[0],
             (error, data) => {
                 if (error) {
@@ -549,12 +550,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0160
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0160
      * @tc.name: SensorGeomagenticAlgorithmJSTest016
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0160', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0160-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest016', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest016-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.NEGATIVE_INFINITY, 'altitude': 0 },
             timeMillis[0], (error, data) => {
                 if (error) {
@@ -575,12 +576,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0170
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0170
      * @tc.name: SensorGeomagenticAlgorithmJSTest017
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0170', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0170-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest017', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest017-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.MAX_VALUE }, timeMillis[0],
             (error, data) => {
                 if (error) {
@@ -600,12 +601,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0180
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0180
      * @tc.name: SensorGeomagenticAlgorithmJSTest018
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0180', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0180-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest018', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest018-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.NaN }, timeMillis[0],
             (error, data) => {
                 if (error) {
@@ -626,12 +627,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0190
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0190
      * @tc.name: SensorGeomagenticAlgorithmJSTest019
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0190', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0190-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest019', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest019-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.NEGATIVE_INFINITY },
             timeMillis[0], (error, data) => {
                 if (error) {
@@ -652,12 +653,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0200
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0200
      * @tc.name: SensorGeomagenticAlgorithmJSTest020
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0200', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0200-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest020', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest020-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.MAX_VALUE, 'altitude': 0 }, timeMillis[0],
             (error, data) => {
                 if (error) {
@@ -677,12 +678,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0210
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0210
      * @tc.name: SensorGeomagenticAlgorithmJSTest021
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0210', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0210-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest021', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest021-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.NaN, 'altitude': 0 }, timeMillis[0],
             (error, data) => {
                 if (error) {
@@ -703,12 +704,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0220
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0220
      * @tc.name: SensorGeomagenticAlgorithmJSTest022
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0220', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0220-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest022', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest022-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.NEGATIVE_INFINITY, 'altitude': 0 },
             timeMillis[0], (error, data) => {
                 if (error) {
@@ -729,12 +730,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0230
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0230
      * @tc.name: SensorGeomagenticAlgorithmJSTest023
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0230', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0230-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest023', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest023-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.MAX_VALUE }, timeMillis[0],
             (error, data) => {
                 if (error) {
@@ -755,12 +756,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0240
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0240
      * @tc.name: SensorGeomagenticAlgorithmJSTest024
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0240', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0240-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest024', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest024-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.NaN }, timeMillis[0],
             (error, data) => {
                 if (error) {
@@ -780,12 +781,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0250
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0250
      * @tc.name: SensorGeomagenticAlgorithmJSTest025
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0250', 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0250-------------------------");
+    it('SensorGeomagenticAlgorithmJSTest025', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest025-------------------------");
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.NEGATIVE_INFINITY },
             timeMillis[0], (error, data) => {
                 if (error) {
@@ -805,12 +806,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0260
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0260
      * @tc.name: SensorGeomagenticAlgorithmJSTest026
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0260", 0, async function (done) {
-        console.info("------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0260-------------------------");
+    it("SensorGeomagenticAlgorithmJSTest026", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info("------------------SensorGeomagenticAlgorithmJSTest026-------------------------");
         for (let i = 0; i < timeMillis.length; i++) {
             await sensor.getGeomagneticField({ 'latitude': 80, 'longitude': 0, 'altitude': 0 },
                 timeMillis[i]).then((data) => {
@@ -833,12 +834,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0270
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0270
      * @tc.name: SensorGeomagenticAlgorithmJSTest027
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0270", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0270------------------');
+    it("SensorGeomagenticAlgorithmJSTest027", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest027------------------');
         let geomagneticComponent = [-1417119616, 23146989568, -6406359552, -15.442885398864746,
         93.50342559814453, 23190329344, 24058943488]
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': 0 },
@@ -861,12 +862,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0280
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0280
      * @tc.name: SensorGeomagenticAlgorithmJSTest028
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0280", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0280------------------');
+    it("SensorGeomagenticAlgorithmJSTest028", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest028------------------');
         let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125, -27.667943954467773,
         -12.610970497131348, 28465.9765625, 32141.2109375]
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': 0 },
@@ -889,12 +890,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0290
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0290
      * @tc.name: SensorGeomagenticAlgorithmJSTest029
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0290", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0290------------------');
+    it("SensorGeomagenticAlgorithmJSTest029", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest029------------------');
         let geomagneticComponent = [1824.141845703125, 116.58167266845703, 56727.7734375, 88.15447235107422,
         3.6568238735198975, 1827.8634033203125, 56757.21484375]
         await sensor.getGeomagneticField({ 'latitude': Number.MAX_VALUE, 'longitude': 0, 'altitude': 0 },
@@ -917,12 +918,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0300
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0300
      * @tc.name: SensorGeomagenticAlgorithmJSTest030
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0300", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0300------------------');
+    it("SensorGeomagenticAlgorithmJSTest030", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest030------------------');
         let geomagneticComponent = [1824.141845703125, 116.58167266845703, 56727.7734375, 88.15447235107422,
         3.6568238735198975, 1827.8634033203125, 56757.21484375]
         await sensor.getGeomagneticField({ 'latitude': Number.NaN, 'longitude': 0, 'altitude': 0 },
@@ -945,12 +946,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /**
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0310
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0310
      * @tc.name: SensorGeomagenticAlgorithmJSTest031
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0310", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0310------------------');
+    it("SensorGeomagenticAlgorithmJSTest031", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest031------------------');
         let geomagneticComponent = [14425.57421875, -17156.767578125, -52023.21484375, -66.69005584716797,
         -49.94255447387695, 22415.4375, 56646.859375]
         await sensor.getGeomagneticField({ 'latitude': Number.NEGATIVE_INFINITY, 'longitude': 0, 'altitude': 0 },
@@ -973,12 +974,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0320
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0320
      * @tc.name: SensorGeomagenticAlgorithmJSTest032
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0320", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0320------------------');
+    it("SensorGeomagenticAlgorithmJSTest032", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest032------------------');
         let geomagneticComponent = [NaN, NaN, NaN]
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.MAX_VALUE, 'altitude': 0 },
             timeMillis[0]).then((data) => {
@@ -994,12 +995,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0330
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0330
      * @tc.name: SensorGeomagenticAlgorithmJSTest033
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0330", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0330------------------');
+    it("SensorGeomagenticAlgorithmJSTest033", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest033------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.NaN, 'altitude': 0 },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest033 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1014,12 +1015,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0340
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0340
      * @tc.name: SensorGeomagenticAlgorithmJSTest034
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0340", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0340------------------');
+    it("SensorGeomagenticAlgorithmJSTest034", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest034------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.NEGATIVE_INFINITY, 'altitude': 0 },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest034 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1034,12 +1035,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0350
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0350
      * @tc.name: SensorGeomagenticAlgorithmJSTest035
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0350", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0350------------------');
+    it("SensorGeomagenticAlgorithmJSTest035", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest035------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.MAX_VALUE },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest035 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1054,12 +1055,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0360
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0360
      * @tc.name: SensorGeomagenticAlgorithmJSTest036
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0360", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0360------------------');
+    it("SensorGeomagenticAlgorithmJSTest036", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest036------------------');
         let geomagneticComponent = [27536.40234375, -2248.586669921875, -16022.4306640625, -30.110872268676758,
         -4.66834020614624, 27628.05859375, 31937.875]
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.MIN_VALUE },
@@ -1082,12 +1083,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0370
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0370
      * @tc.name: SensorGeomagenticAlgorithmJSTest037
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0370", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0370------------------start');
+    it("SensorGeomagenticAlgorithmJSTest037", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest037------------------start');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.NaN },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest037 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1102,14 +1103,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0380
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0380
      * @tc.name: SensorGeomagenticAlgorithmJSTest038
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0380", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0380------------------');
+    it("SensorGeomagenticAlgorithmJSTest038", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest038------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.NEGATIVE_INFINITY },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest038 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1124,13 +1123,13 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0390
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0390
      * @tc.name: SensorGeomagenticAlgorithmJSTest039
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0390', 0, async function (done) {
+    it('SensorGeomagenticAlgorithmJSTest039', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         for (let i = 0; i < timeMillis.length; i++) {
-            console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0390------------------');
+            console.info('------------------SensorGeomagenticAlgorithmJSTest039------------------');
             await sensor.getGeomagneticField({ 'latitude': 80, 'longitude': 0, 'altitude': 0 },
                 timeMillis[i]).then((data) => {
                 console.info('SensorGeomagenticAlgorithmJSTest039 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1152,12 +1151,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0400
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0400
      * @tc.name: SensorGeomagenticAlgorithmJSTest040
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0400", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0400------------------');
+    it("SensorGeomagenticAlgorithmJSTest040", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest040------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.NaN, 'altitude': 0 },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest040 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1172,12 +1171,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0410
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0410
      * @tc.name: SensorGeomagenticAlgorithmJSTest041
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0410", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0410------------------');
+    it("SensorGeomagenticAlgorithmJSTest041", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest041------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.NEGATIVE_INFINITY, 'altitude': 0 },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest041 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1192,12 +1191,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0420
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0420
      * @tc.name: SensorGeomagenticAlgorithmJSTest042
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0420", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0420 max ------------------');
+    it("SensorGeomagenticAlgorithmJSTest042", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest042 max ------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.MAX_VALUE },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest042 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1212,12 +1211,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0430
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0430
      * @tc.name: SensorGeomagenticAlgorithmJSTest043
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0430", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0430------------------');
+    it("SensorGeomagenticAlgorithmJSTest043", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest043------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.NaN },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest043 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1232,12 +1231,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0440
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0440
      * @tc.name: SensorGeomagenticAlgorithmJSTest044
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0440", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0440------------------');
+    it("SensorGeomagenticAlgorithmJSTest044", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest044------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.NEGATIVE_INFINITY },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest044 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1252,12 +1251,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0450
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0450
      * @tc.name: SensorGeomagenticAlgorithmJSTest045
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it('SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0450', 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0450------------------');
+    it('SensorGeomagenticAlgorithmJSTest045', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest045------------------');
         for (let i = 0; i < GEOMAGNETIC_COORDINATES.length; i++) {
             await sensor.getGeomagneticField({
                 'latitude': GEOMAGNETIC_COORDINATES[i][0],
@@ -1283,12 +1282,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0460
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0460
      * @tc.name: SensorGeomagenticAlgorithmJSTest046
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0460", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0460------------------');
+    it("SensorGeomagenticAlgorithmJSTest046", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest046------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.MAX_VALUE, 'altitude': 0 },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest046 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1303,12 +1302,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0470
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0470
      * @tc.name: SensorGeomagenticAlgorithmJSTest047
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0470", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0470------------------');
+    it("SensorGeomagenticAlgorithmJSTest047", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest047------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.NaN, 'altitude': 0 },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest047 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1323,12 +1322,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0480
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0480
      * @tc.name: SensorGeomagenticAlgorithmJSTest048
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0480", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0480------------------');
+    it("SensorGeomagenticAlgorithmJSTest048", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest048------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': Number.NEGATIVE_INFINITY, 'altitude': 0 },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest048 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1343,12 +1342,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0490
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0490
      * @tc.name: SensorGeomagenticAlgorithmJSTest049
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0490", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0490------------------');
+    it("SensorGeomagenticAlgorithmJSTest049", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest049------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.MAX_VALUE },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest049 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1363,12 +1362,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0500
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0500
      * @tc.name: SensorGeomagenticAlgorithmJSTest050
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0500", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0500------------------');
+    it("SensorGeomagenticAlgorithmJSTest050", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest050------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.NaN },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest050 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -1383,12 +1382,12 @@ describe("SensorJsTest_sensor_2", function () {
     })
 
     /*
-     * @tc.number: SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0510
+     * @tc.number:SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0510
      * @tc.name: SensorGeomagenticAlgorithmJSTest051
-     * @tc.desc:verify app info is not null
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0510", 0, async function (done) {
-        console.info('------------------SUB_SensorsSystem_GeomagneticAlgorithm_JSTest_0510------------------');
+    it("SensorGeomagenticAlgorithmJSTest051", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+        console.info('------------------SensorGeomagenticAlgorithmJSTest051------------------');
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': Number.NEGATIVE_INFINITY },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest051 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z

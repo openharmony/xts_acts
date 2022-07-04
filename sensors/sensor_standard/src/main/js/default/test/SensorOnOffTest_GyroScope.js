@@ -68,12 +68,11 @@ describe("SensorJsTest_sensor_5", function () {
     let errMessage;
 
     /*
-     * @tc.name:GYROSCOPE_SensorJsTest001
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_GYROSCOPE_JSTest_0010
+     * @tc.name: GYROSCOPE_SensorJsTest001
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("GYROSCOPE_SensorJsTest001", 0, async function (done) {
+    it("GYROSCOPE_SensorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest001---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback);
         setTimeout(() => {
@@ -82,13 +81,12 @@ describe("SensorJsTest_sensor_5", function () {
         }, 500);
     })
 
-    /*
-     * @tc.name:GYROSCOPE_SensorJsTest002
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_GYROSCOPE_JSTest_0020
+     * @tc.name: GYROSCOPE_SensorJsTest002
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("GYROSCOPE_SensorJsTest002", 0, async function (done) {
+    it("GYROSCOPE_SensorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest002---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback, { 'interval': 100000000 });
         setTimeout(() => {
@@ -99,13 +97,12 @@ describe("SensorJsTest_sensor_5", function () {
         }, 500);
     })
 
-    /*
-     * @tc.name:GYROSCOPE_SensorJsTest003
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_GYROSCOPE_JSTest_0030
+     * @tc.name: GYROSCOPE_SensorJsTest003
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("GYROSCOPE_SensorJsTest003", 0, async function (done) {
+    it("GYROSCOPE_SensorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest003---------------------------');
         function onSensorCallback(data) {
             console.info('GYROSCOPE_SensorJsTest003  on error');
@@ -123,12 +120,11 @@ describe("SensorJsTest_sensor_5", function () {
     })
 
     /*
-     * @tc.name:GYROSCOPE_SensorJsTest004
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_GYROSCOPE_JSTest_0040
+     * @tc.name: GYROSCOPE_SensorJsTest004
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("GYROSCOPE_SensorJsTest004", 0, async function (done) {
+    it("GYROSCOPE_SensorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest004---------------------------');
         sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback);
         setTimeout(() => {
@@ -137,13 +133,12 @@ describe("SensorJsTest_sensor_5", function () {
         }, 500);
     })
 
-    /*
-     * @tc.name:GYROSCOPE_SensorJsTest005
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_GYROSCOPE_JSTest_0050
+     * @tc.name: GYROSCOPE_SensorJsTest005
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("GYROSCOPE_SensorJsTest005", 0, async function (done) {
+    it("GYROSCOPE_SensorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest005---------------------------');
         function onceSensorCallback(data) {
             console.info('GYROSCOPE_SensorJsTest005  on error');
@@ -160,13 +155,12 @@ describe("SensorJsTest_sensor_5", function () {
         }
     })
 
-    /*
-     * @tc.name:GYROSCOPE_SensorJsTest006
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_GYROSCOPE_JSTest_0060
+     * @tc.name: GYROSCOPE_SensorJsTest006
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("GYROSCOPE_SensorJsTest006", 0, async function (done) {
+    it("GYROSCOPE_SensorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest006---------------------------');
         try {
             sensor.off(string, "");
@@ -178,13 +172,12 @@ describe("SensorJsTest_sensor_5", function () {
         }
     })
 
-    /*
-     * @tc.name:GYROSCOPE_SensorJsTest007
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_GYROSCOPE_JSTest_0070
+     * @tc.name: GYROSCOPE_SensorJsTest007
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("GYROSCOPE_SensorJsTest007", 0, async function (done) {
+    it("GYROSCOPE_SensorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest007---------------------------');
         function onSensorCallback(data) {
             console.info('GYROSCOPE_SensorJsTest007  on error');
@@ -199,13 +192,12 @@ describe("SensorJsTest_sensor_5", function () {
         }, 500);
     })
 
-    /*
-     * @tc.name:GYROSCOPE_SensorJsTest008
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_GYROSCOPE_JSTest_0080
+     * @tc.name: GYROSCOPE_SensorJsTest008
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("GYROSCOPE_SensorJsTest008", 0, async function (done) {
+    it("GYROSCOPE_SensorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest008---------------------------');
         function onSensorCallback(data) {
             console.info('GYROSCOPE_SensorJsTest008  on error');
@@ -222,13 +214,12 @@ describe("SensorJsTest_sensor_5", function () {
         }
     })
 
-    /*
-     * @tc.name:GYROSCOPE_SensorJsTest009
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_GYROSCOPE_JSTest_0090
+     * @tc.name: GYROSCOPE_SensorJsTest009
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("GYROSCOPE_SensorJsTest009", 0, async function (done) {
+    it("GYROSCOPE_SensorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest009---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback);
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback2);
@@ -240,13 +231,12 @@ describe("SensorJsTest_sensor_5", function () {
         }, 1000);
     })
 
-    /*
-     * @tc.name:GYROSCOPE_SensorJsTest010
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_GYROSCOPE_JSTest_0100
+     * @tc.name: GYROSCOPE_SensorJsTest010
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("GYROSCOPE_SensorJsTest010", 0, async function (done) {
+    it("GYROSCOPE_SensorJsTest010", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest010---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback);
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback2);
@@ -264,12 +254,11 @@ describe("SensorJsTest_sensor_5", function () {
     })
 
     /*
-     * @tc.name:GYROSCOPE_SensorJsTest011
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_GYROSCOPE_JSTest_0110
+     * @tc.name: GYROSCOPE_SensorJsTest011
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("GYROSCOPE_SensorJsTest011", 0, async function (done) {
+    it("GYROSCOPE_SensorJsTest011", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest011---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback, { 'interval': 100000000 });
         sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback2);
@@ -282,12 +271,11 @@ describe("SensorJsTest_sensor_5", function () {
     })
 
     /*
-     * @tc.name:GYROSCOPE_SensorJsTest012
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_GYROSCOPE_JSTest_0120
+     * @tc.name: GYROSCOPE_SensorJsTest012
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("GYROSCOPE_SensorJsTest012", 0, async function (done) {
+    it("GYROSCOPE_SensorJsTest012", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest012---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback, { 'interval': 100000000 });
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback2, { 'interval': 100000000 });
@@ -304,13 +292,12 @@ describe("SensorJsTest_sensor_5", function () {
         }, 1000);
     })
 
-    /*
-     * @tc.name:GYROSCOPE_SensorJsTest013
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_GYROSCOPE_JSTest_0130
+     * @tc.name: GYROSCOPE_SensorJsTest013
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("GYROSCOPE_SensorJsTest013", 0, async function (done) {
+    it("GYROSCOPE_SensorJsTest013", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------GYROSCOPE_SensorJsTest013---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback, { 'interval': 100000000 });
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback2, { 'interval': 100000000 });

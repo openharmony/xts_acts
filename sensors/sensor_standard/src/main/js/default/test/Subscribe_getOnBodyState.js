@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import sensor from '@system.sensor';
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 describe("SensorJsTest_sensor_24", function () {
@@ -53,13 +54,12 @@ describe("SensorJsTest_sensor_24", function () {
 
     let errMessage;
 
-    /*
-    * @tc.name:getOnBodyState_SensorJsTest001
-    * @tc.desc:verify app info is not null
-    * @tc.type: FUNC
-    * @tc.require: SR000H0ALK, AR000H0ALM
-    */
-    it("getOnBodyState_SensorJsTest001", 0, async function (done) {
+     /*
+     * @tc.number:SUB_SensorsSystem_GetOnBodyState_JSTest_0010
+     * @tc.name: getOnBodyState_SensorJsTest001
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("getOnBodyState_SensorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
         console.info('----------------------getOnBodyState_SensorJsTest001---------------------------');
         try {
             sensor.getOnBodyState();
@@ -72,12 +72,11 @@ describe("SensorJsTest_sensor_24", function () {
     })
 
     /*
-    * @tc.name:getOnBodyState_SensorJsTest002
-    * @tc.desc:verify app info is not null
-    * @tc.type: FUNC
-    * @tc.require: SR000H0ALK, AR000H0ALM
-    */
-    it("getOnBodyState_SensorJsTest002", 0, async function (done) {
+     * @tc.number:SUB_SensorsSystem_GetOnBodyState_JSTest_0020
+     * @tc.name: getOnBodyState_SensorJsTest002
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("getOnBodyState_SensorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------getOnBodyState_SensorJsTest002---------------------------');
         try {
             sensor.getOnBodyState({
@@ -95,12 +94,11 @@ describe("SensorJsTest_sensor_24", function () {
     })
 
     /*
-     * @tc.name:getOnBodyState_SensorJsTest003
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_GetOnBodyState_JSTest_0030
+     * @tc.name: getOnBodyState_SensorJsTest003
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("getOnBodyState_SensorJsTest003", 0, async function (done) {
+    it("getOnBodyState_SensorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------getOnBodyState_SensorJsTest003---------------------------');
         sensor.getOnBodyState({
             success: function (data) {
@@ -119,12 +117,11 @@ describe("SensorJsTest_sensor_24", function () {
     })
 
     /*
-    * @tc.name:getOnBodyState_SensorJsTest004
-    * @tc.desc:verify app info is not null
-    * @tc.type: FUNC
-    * @tc.require: SR000H0ALK, AR000H0ALM
-    */
-    it("getOnBodyState_SensorJsTest004", 0, async function (done) {
+     * @tc.number:SUB_SensorsSystem_GetOnBodyState_JSTest_0040
+     * @tc.name: getOnBodyState_SensorJsTest004
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("getOnBodyState_SensorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------getOnBodyState_SensorJsTest004---------------------------');
         sensor.getOnBodyState({
             success: function (data) {
@@ -136,12 +133,11 @@ describe("SensorJsTest_sensor_24", function () {
     })
 
     /*
-     * @tc.name:getOnBodyState_SensorJsTest005
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_GetOnBodyState_JSTest_0050
+     * @tc.name: getOnBodyState_SensorJsTest005
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("getOnBodyState_SensorJsTest005", 0, async function (done) {
+    it("getOnBodyState_SensorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------getOnBodyState_SensorJsTest005---------------------------');
         sensor.getOnBodyState({
             success: function (data) {
@@ -156,13 +152,12 @@ describe("SensorJsTest_sensor_24", function () {
         });
     })
 
-    /*
-     * @tc.name:getOnBodyState_SensorJsTest006
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+   /*
+     * @tc.number:SUB_SensorsSystem_GetOnBodyState_JSTest_0060
+     * @tc.name: getOnBodyState_SensorJsTest006
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("getOnBodyState_SensorJsTest006", 0, async function (done) {
+    it("getOnBodyState_SensorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------getOnBodyState_SensorJsTest006---------------------------');
         sensor.getOnBodyState({
             inInvalid: 2,
@@ -179,12 +174,11 @@ describe("SensorJsTest_sensor_24", function () {
     })
 
     /*
-     * @tc.name:getOnBodyState_SensorJsTest007
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_GetOnBodyState_JSTest_0070
+     * @tc.name: getOnBodyState_SensorJsTest007
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("getOnBodyState_SensorJsTest007", 0, async function (done) {
+    it("getOnBodyState_SensorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------getOnBodyState_SensorJsTest007---------------------------');
         try {
             sensor.getOnBodyState({
@@ -202,12 +196,11 @@ describe("SensorJsTest_sensor_24", function () {
     })
 
     /*
-     * @tc.name:getOnBodyState_SensorJsTest008
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_GetOnBodyState_JSTest_0080
+     * @tc.name: getOnBodyState_SensorJsTest008
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("getOnBodyState_SensorJsTest008", 0, async function (done) {
+    it("getOnBodyState_SensorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------getOnBodyState_SensorJsTest008---------------------------');
         sensor.getOnBodyState({
             success: function (data) {
@@ -235,12 +228,11 @@ describe("SensorJsTest_sensor_24", function () {
     })
 
     /*
-     * @tc.name:getOnBodyState_SensorJsTest009
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_GetOnBodyState_JSTest_0090
+     * @tc.name: getOnBodyState_SensorJsTest009
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("getOnBodyState_SensorJsTest009", 0, async function (done) {
+    it("getOnBodyState_SensorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------getOnBodyState_SensorJsTest009---------------------------');
         try {
             sensor.getOnBodyState('xxx');
@@ -254,12 +246,11 @@ describe("SensorJsTest_sensor_24", function () {
     })
 
     /*
-     * @tc.name:getOnBodyState_SensorJsTest010
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_GetOnBodyState_JSTest_0100
+     * @tc.name: getOnBodyState_SensorJsTest010
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("getOnBodyState_SensorJsTest010", 0, async function (done) {
+    it("getOnBodyState_SensorJsTest010", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------getOnBodyState_SensorJsTest010---------------------------');
         try {
             sensor.getOnBodyState();
@@ -272,12 +263,11 @@ describe("SensorJsTest_sensor_24", function () {
     })
 
     /*
-     * @tc.name:getOnBodyState_SensorJsTest011
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_GetOnBodyState_JSTest_0110
+     * @tc.name: getOnBodyState_SensorJsTest011
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("getOnBodyState_SensorJsTest011", 0, async function (done) {
+    it("getOnBodyState_SensorJsTest011", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------getOnBodyState_SensorJsTest011---------------------------');
         try {
             sensor.getOnBodyState({
@@ -297,12 +287,11 @@ describe("SensorJsTest_sensor_24", function () {
     })
 
     /*
-    * @tc.name:getOnBodyState_SensorJsTest012
-    * @tc.desc:verify app info is not null
-    * @tc.type: FUNC
-    * @tc.require: SR000H0ALK, AR000H0ALM
-    */
-    it("getOnBodyState_SensorJsTest012", 0, async function (done) {
+     * @tc.number:SUB_SensorsSystem_GetOnBodyState_JSTest_0120
+     * @tc.name: getOnBodyState_SensorJsTest012
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("getOnBodyState_SensorJsTest012", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------getOnBodyState_SensorJsTest012---------------------------');
         sensor.getOnBodyState({
             success: function (data) {
