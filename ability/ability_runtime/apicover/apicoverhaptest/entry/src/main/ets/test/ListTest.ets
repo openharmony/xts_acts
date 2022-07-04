@@ -12,11 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import verificationTest from './VerificationTest'
+
 import apiCoverAbility from './ApiCoverAbility.test'
+import verificationTest from './VerificationTest'
+import wantAgentCover from './WantAgentCover.test'
 
 export default function List(context) {
 
-  verificationTest(context)
   apiCoverAbility(context)
+  verificationTest(context)
+  wantAgentCover(context)
 }

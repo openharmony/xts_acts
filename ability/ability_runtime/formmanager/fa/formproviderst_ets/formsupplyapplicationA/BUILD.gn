@@ -13,15 +13,19 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("FormSupplyAppA") {
+ohos_hap("FormSupplyAppA") {
   hap_profile = "entry/src/main/config.json"
+  hap_name = "FormSupplyAppA"
+  js_build_mode = "debug"
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  testonly = true
   deps = [
     ":FormOfFaEts_form_js_assets",
     ":FormOfFaEts_js_assets",
     ":FormOfFaEts_resources",
   ]
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "FormSupplyAppA"
   part_name = "prebuilt_hap"
   subsystem_name = "applications"
 }
