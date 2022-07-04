@@ -32,7 +32,7 @@ let HuksOptions63kb = {
   inData: srcData63Kb,
 };
 
-describe('SecurityHuksDeriveHKDFCallbackJsunit', function () {
+describe('SecurityHuksHKDFBasicFinish63KBCallbackJsunit', function () {
   it('testDeriveHKDF001', 0, async function (done) {
     const srcKeyAliesFirst = 'testDeriveHKDFSize128SHA256Finish63KBDeriveKeyAlias_01_001';
     let huksOptionsFinish = {

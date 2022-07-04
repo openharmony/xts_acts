@@ -35,7 +35,7 @@ let HuksOptions63kb = {
   inData: srcData63Kb,
 };
 
-describe('SecurityHuksAgreeECDHPromiseJsunit', function () {
+describe('SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit', function () {
   beforeEach(function () {
     HuksOptions63kb = {
       properties: new Array(
