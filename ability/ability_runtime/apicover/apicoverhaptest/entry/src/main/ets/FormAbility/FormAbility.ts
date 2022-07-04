@@ -1,4 +1,18 @@
-import commonEvent from '@ohos.commonEvent';
+/*
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ 
 import FormExtension from '@ohos.application.FormExtension';
 import formBindingData from '@ohos.application.formBindingData';
 import formInfo from '@ohos.application.formInfo';
@@ -8,29 +22,6 @@ export default class FormAbility extends FormExtension {
     onCreate(want) {
         // Called to return a FormBindingData object.
         let formData = {};
-
-        let extensionInfo_currentInfo_name = this.context.currentHapModuleInfo.name
-        let extensionInfo_currentInfo_description = this.context.currentHapModuleInfo.description
-
-        this.context.resourceManager.getConfiguration((err, data) => {
-                if (err.code != 0 ) {
-                    console.error(`Ability: getConfiguration failed: ${JSON.stringify(err)}`);
-                } else {
-                    console.log(`Ability: getConfiguration success: ${JSON.stringify(data)}`);
-                    extensionInfo_config_direction = data.direction
-                }
-            })
-        var CommonEventPublishData = {
-            parameters: {
-                "extensionInfo_currentInfo_name": extensionInfo_currentInfo_name,
-                "extensionInfo_currentInfo_description": extensionInfo_currentInfo_description,
-                "extensionInfo_config_direction": extensionInfo_config_direction,
-                "key":"value"
-            }
-        }
-        commonEvent.publish("FormAbility_OnCreate", CommonEventPublishData, (err) => {
-            console.log('FormAbility_OnCreate');
-        });
         console.info("FormAbility onCreate")
         return formBindingData.createFormBindingData(formData);
     }
