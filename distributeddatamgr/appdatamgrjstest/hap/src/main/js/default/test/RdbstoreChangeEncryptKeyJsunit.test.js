@@ -34,7 +34,7 @@ var i = 1;
 
 var rdbStore = undefined;
 
-describe('rdbStoreInsertTest', function () {
+describe('rdbstoreChangeEncryptKeyTest', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
      })
