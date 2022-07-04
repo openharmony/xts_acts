@@ -533,6 +533,9 @@ export default function actsBmsJsModuleNameTest() {
                     "name": "", "value": "", "resource": ""
                 }]]
             ]);
+            let resource = {
+                "bundleName": "", "moduleName": "", "id": 0
+            }
             let abilityInfo = {
                 bundleName: bundleName,
                 name: name,
@@ -552,16 +555,13 @@ export default function actsBmsJsModuleNameTest() {
                 subType: 0,
                 orientation: 0,
                 launchMode: 0,
-                permissions: [],
-                deviceTypes: [],
-                deviceCapabilities: [],
-                readPermission: "",
-                writePermission: "",
+                permissions: [], deviceTypes: [], deviceCapabilities: [], readPermission: "", writePermission: "",
                 applicationInfo: {
                     name: "", description: "", descriptionId: 0, systemApp: true, enabled: true, label: "",
                     labelId: "", icon: "", iconId: "", process: "", supportedModes: 0, moduleSourceDirs: [],
                     permissions: [], moduleInfos: [], entryDir: "", codePath: "", metaData: map1, metadata: map2,
-                    removable: true, accessTokenId: 0, uid: 0, entityType: "", fingerprint: ""
+                    removable: true, accessTokenId: 0, uid: 0, entityType: "", fingerprint: "",
+                    iconResource: resource, labelResource: resource, descriptionResource: resource
                 },
                 uri: "", metaData: [], metadata: [], enabled: true, supportWindowMode: [],
                 maxWindowRatio: 0, minWindowRatio: 0, maxWindowWidth: 0, minWindowWidth: 0, maxWindowHeight: 0, minWindowHeight: 0

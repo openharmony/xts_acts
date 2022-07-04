@@ -18,14 +18,12 @@ import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('PlayerLocalTestAudioFormat', function () {
-    let audioSource = '01.mp3';
     const MAX_VOLUME = 1;
     const PLAY_TIME = 3000;
     const SEEK_TIME = 10000; // 10s
     let isToSeek = false;
     let isToDuration = false;
-    let fileDescriptor = undefined;
-
+    let fdNumber = 0;
     beforeAll(function() {
         console.info('beforeAll case');
     })
@@ -36,23 +34,20 @@ describe('PlayerLocalTestAudioFormat', function () {
         console.info('beforeEach case');
     })
 
-    afterEach(function() {
+    afterEach(async function() {
+        await mediaTestBase.closeFdNumber(fdNumber);
         console.info('afterEach case');
     })
 
-    afterAll(async function() {
-        await mediaTestBase.closeFileDescriptor(audioSource);
+    afterAll(function() {
         console.info('afterAll case');
     })
 
     async function playSource(audioFile, done) {
         let audioPlayer = media.createAudioPlayer();
-        audioSource = audioFile;
-        await mediaTestBase.getFileDescriptor(audioSource).then((res) => {
-            fileDescriptor = res;
-        });
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        audioPlayer.src = 'fd://' + fileDescriptor.fd;
+        await mediaTestBase.getFdRead(audioFile, done).then((testNumber) => {
+            fdNumber = testNumber;
+        })
         audioPlayer.on('dataLoad', () => {
             console.info('case set source success');
             expect(audioPlayer.state).assertEqual('paused');
@@ -122,6 +117,7 @@ describe('PlayerLocalTestAudioFormat', function () {
             expect().assertFail();
             done();
         });
+        audioPlayer.src = 'fd://' + fdNumber;
     }
 
     /* *

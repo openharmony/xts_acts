@@ -95,6 +95,10 @@ function getMissionId(abilityName, state) {
   })
 }
 
+function sleep(time) {
+  return new Promise((resolve)=>setTimeout(resolve,time));
+}
+
 function delay(time) {
   let delta;
   if (typeof time != 'number' || time <= 0) {
@@ -1767,6 +1771,7 @@ export default function abilityTest(abilityContext) {
           done();
         }
       }
+      await sleep(1000);
 
       await globalThis.abilityContext.startAbility(want, startAbilityCallback);
 

@@ -23,7 +23,7 @@ import ability_featureAbility from '@ohos.ability.featureAbility';
 import resourceManager from '@ohos.resourceManager';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
-describe('audioRenderer_audio_1', function () {
+describe('audioRenderer', function () {
 
     let fdRead;
     let readpath;
@@ -1400,7 +1400,7 @@ describe('audioRenderer_audio_1', function () {
          });
          await sleep(waitTime);
      }
-     await sleep(2000);
+     await sleep(100);
      if (resultFlag == false){
          console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
          return resultFlag;

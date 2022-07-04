@@ -167,4 +167,18 @@ describe('VideoPlayerEnumTest', function () {
         expect(media.MediaDescriptionKey.MD_KEY_AUD_SAMPLE_RATE).assertEqual("sample_rate");
         done();
     })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_ENUM_MEDIA_SCALE_TYPE_00_0100
+        * @tc.name      : MediaType
+        * @tc.desc      : MediaType Enumeration test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_VIDEO_PLAYER_ENUM_MEDIA_TYPE_00_0100', 0, async function (done) {
+        expect(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT).assertEqual(0);
+        expect(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_CROP).assertEqual(1);
+        done();
+    })
 })

@@ -152,7 +152,7 @@ struct Index {
     console.debug("====> [FormComponent] formsystemhosto optType unSubscribeCastFormCallback CallBack====>");
   }
 
-  private aboutToAppear() {
+  aboutToAppear() {
     const TAG = "[FormComponent.hosto]";
 
     commonEvent.createSubscriber(this.subscriberFormDeleteEvent).then(async (data) => {

@@ -15,7 +15,7 @@
 
 // @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-import systemTimer from '@ohos.systemtimer'
+import systemTimer from '@ohos.systemTimer'
 
 describe('TimerTest', function() {
     console.log('start################################start');

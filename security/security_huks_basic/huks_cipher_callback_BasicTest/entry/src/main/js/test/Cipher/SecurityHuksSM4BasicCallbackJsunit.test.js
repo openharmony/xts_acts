@@ -250,7 +250,7 @@ async function publicCipherFunc(
   }
 }
 
-describe('SecurityHuksCipherSM4CallbackJsunit', function () {
+describe('SecurityHuksSM4BasicCallbackJsunit', function () {
   // HKS_SUPPORT_SM4_CBC_NOPADDING
   it('testCipherSM4001_48', 0, async function (done) {
     const srcKeyAlias = 'testCipherSM4Size128PADDINGNONEMODECBCKeyAlias001';

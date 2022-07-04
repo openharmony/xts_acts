@@ -556,7 +556,7 @@ describe('ActsAnsWantAgentOneTest', function () {
             ],
             operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
-            wantAgentFlags:[wantAgent.WantAgentFlags.REPLACE_ENTITIES]
+            wantAgentFlags:[wantAgent.WantAgentFlags.REPLACE_BUNDLE]
         }
         console.info('----getWantAgent before----');
         await wantAgent.getWantAgent(agentInfo,

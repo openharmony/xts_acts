@@ -20,7 +20,7 @@ import { publicSignVerifyFunc } from '../../../../../../../utils/param/signverif
 let srcData65 = Data.Data65b;
 let srcData65Kb = stringToUint8Array(srcData65);
 let finishOutData;
-describe('SecurityHuksSignVerifyECCCallbackJsunit', function () {
+describe('SecurityHuksECCBasicFinish65KBCallbackJsunit', function () {
   it('testSignVerifyECC003', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyECCSize224SIGNNONEKeyAlias003';
     let HuksOptions = {

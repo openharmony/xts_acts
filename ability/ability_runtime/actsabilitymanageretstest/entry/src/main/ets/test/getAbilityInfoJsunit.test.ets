@@ -210,7 +210,7 @@ export default function getHapModuleInfoJsunit() {
       expect(data.descriptionId > 0).assertTrue();
       expect(data.iconId > 0).assertTrue();
       expect(data.moduleName).assertEqual("entry");
-      expect(data.process).assertEqual("");
+      expect(data.process).assertEqual("com.ohos.acecollaboration");
       expect(data.targetAbility).assertEqual("");
       expect(data.backgroundModes).assertEqual(0);
       expect(data.isVisible).assertEqual(true);
@@ -283,13 +283,13 @@ export default function getHapModuleInfoJsunit() {
       expect(typeof (info.entryDir)).assertEqual("string");
 
       expect(info.name).assertEqual("com.ohos.acecollaboration");
-      expect(info.description).assertEqual("$string:mainability_description");
-      expect(info.descriptionId > 0).assertTrue();
+      expect(info.description).assertEqual("");
+      expect(info.descriptionId).assertEqual(0);
       expect(info.systemApp).assertEqual(true);
       expect(info.enabled).assertEqual(true);
       expect(info.label).assertEqual("$string:entry_MainAbility");
       expect(info.icon).assertEqual("$media:icon");
-      expect(info.process).assertEqual("");
+      expect(info.process).assertEqual("com.ohos.acecollaboration");
       expect(info.supportedModes).assertEqual(0);
       expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/" +
       "com.ohos.acecollaboration/com.ohos.acecollaboration");

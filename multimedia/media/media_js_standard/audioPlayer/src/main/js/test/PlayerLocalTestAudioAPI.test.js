@@ -42,7 +42,8 @@ describe('PlayerLocalTestAudioAPI', function () {
     const VOLUME_VALUE = 0.5;
     let fdHead = 'fd://';
     let fileDescriptor = undefined;
-
+    let fdPath = '';
+    let fdNumber = 0;
     beforeAll(async function() {
         console.info('beforeAll case');
     })
@@ -52,10 +53,15 @@ describe('PlayerLocalTestAudioAPI', function () {
         await mediaTestBase.getFileDescriptor(AUDIO_SOURCE).then((res) => {
             fileDescriptor = res;
         });
+        await mediaTestBase.getFdRead(AUDIO_SOURCE, openFileFailed).then((testNumber) => {
+            fdNumber = testNumber;
+            fdPath = fdHead + '' + fdNumber;
+        })
         console.info('beforeEach case');
     })
 
     afterEach(async function() {
+        await mediaTestBase.closeFdNumber(fdNumber);
         await mediaTestBase.closeFileDescriptor(AUDIO_SOURCE);
         console.info('afterEach case');
     })
@@ -63,6 +69,10 @@ describe('PlayerLocalTestAudioAPI', function () {
     afterAll(async function() {
         console.info('afterAll case');
     })
+
+    function openFileFailed() {
+        console.info('case file fail');
+    }
 
     function initAudioPlayer() {
         if (typeof (audioPlayer) != 'undefined') {
@@ -85,7 +95,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         switch (mySteps[0]) {
             case SRC_STATE:
                 console.info(`case to prepare`);
-                audioPlayer.src = fdHead + fileDescriptor.fd;
+                audioPlayer.src = fdPath;
                 break;
             case PLAY_STATE:
                 console.info(`case to play`);
@@ -320,7 +330,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, PLAY_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -336,7 +346,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, PLAY_STATE, ERROR_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -352,7 +362,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, SEEK_TIME, PLAY_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -368,7 +378,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, RESET_STATE, PLAY_STATE, ERROR_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -400,7 +410,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -416,7 +426,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(PLAY_STATE, STOP_STATE, PAUSE_STATE, ERROR_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -432,7 +442,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, SEEK_TIME, PAUSE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -448,7 +458,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -464,7 +474,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, STOP_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -480,7 +490,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, SEEK_TIME, STOP_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -496,7 +506,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, SEEK_TIME, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -512,7 +522,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, SEEK_STATE, SEEK_TIME, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -528,7 +538,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -544,7 +554,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -560,7 +570,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, RESET_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -592,7 +602,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         var mySteps = new Array(SRC_STATE, PLAY_STATE, VOLUME_STATE, VOLUME_VALUE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -608,7 +618,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         var mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, VOLUME_STATE, VOLUME_VALUE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -624,7 +634,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -640,7 +650,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, PAUSE_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -656,7 +666,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -672,7 +682,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, SEEK_TIME, RELEASE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *
@@ -688,7 +698,7 @@ describe('PlayerLocalTestAudioAPI', function () {
         let mySteps = new Array(SRC_STATE, PLAY_STATE, RESET_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdHead + fileDescriptor.fd;
+        audioPlayer.src = fdPath;
     })
 
     /* *

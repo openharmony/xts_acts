@@ -87,7 +87,7 @@ struct Index {
     console.info(`${this.TAG} unSubscribeDeleteCallback`);
   }
 
-  private async aboutToAppear() {
+  async aboutToAppear() {
     const onDeleteEventSubscriber = await commonEvent.createSubscriber(this.subscriberFormDeleteEvent);
     const onTerminateEventSubscriber = await commonEvent.createSubscriber(this.subscriberFormTerminateEvent);
     commonEvent.subscribe(onDeleteEventSubscriber, async (err, data) => {

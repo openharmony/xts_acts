@@ -1254,7 +1254,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(typeof (info.entryDir)).assertEqual("string");
 
         expect(info.name).assertEqual("com.example.actsfeatureabilitytest");
-        expect(info.description).assertEqual("$string:mainability_description");
+        expect(info.description).assertEqual("descriptionTest");
         //            expect(info.descriptionId).assertEqual(0);    //create by DevEco when building HAP.
         expect(info.systemApp).assertEqual(true);
         expect(info.enabled).assertEqual(true);
