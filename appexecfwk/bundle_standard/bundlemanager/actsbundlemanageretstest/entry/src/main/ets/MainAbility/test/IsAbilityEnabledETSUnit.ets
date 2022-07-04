@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect } from 'deccjsunit/index.ets';
+import { describe, it, expect } from 'deccjsunit/index';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 
@@ -20,14 +20,6 @@ const BUNDLE_NAME = 'com.open.harmony.packagemag';
 const BUNDLE_NAME_ERROR = 'com.ohos.acepackage.error';
 const ABILITY_NAME = 'com.open.harmony.packagemag.MainAbility';
 const ABILITY_NAME_ERROR = 'com.ohos.acepackage.error.MainAbility';
-const ABILITY = {
-    bundleName: BUNDLE_NAME,
-    name: ABILITY_NAME
-}
-const ABILITY_ERROR = {
-    bundleName: BUNDLE_NAME_ERROR,
-    name: ABILITY_NAME_ERROR
-}
 
 export default function isAbilityEnabledETSUnit() {
 
@@ -40,9 +32,10 @@ export default function isAbilityEnabledETSUnit() {
          * @tc.level   0
          */
         it('isAbilityEnabled_test_0100', 0, async function (done) {
+            let abilityInfo = generateAbilityInfoForTest(BUNDLE_NAME,ABILITY_NAME);
             let timeOldStamp = await Utils.getNowTime();
             let mData;
-            await Bundle.isAbilityEnabled(ABILITY).then((data) => {
+            await Bundle.isAbilityEnabled(abilityInfo).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
                 Utils.getDurationTime('[isAbilityEnabled_test_0100]', timeOldStamp, timeNewStamp);
                 mData = data;
@@ -62,9 +55,10 @@ export default function isAbilityEnabledETSUnit() {
          * @tc.level   0
          */
         it('isAbilityEnabled_test_0200', 0, async function (done) {
+            let abilityInfo = generateAbilityInfoForTest(BUNDLE_NAME,ABILITY_NAME);
             let timeOldStamp = await Utils.getNowTime();
             let mData;
-            Bundle.isAbilityEnabled(ABILITY, (error, data) => {
+            Bundle.isAbilityEnabled(abilityInfo, (error, data) => {
                 if (error) {
                     console.error('[isAbilityEnabled_test_0200]Operation failed. Cause: ' + JSON.stringify(error));
                     expect(error).assertFail();
@@ -86,9 +80,10 @@ export default function isAbilityEnabledETSUnit() {
          * @tc.level   0
          */
         it('isAbilityEnabled_test_0300', 0, async function (done) {
+            let abilityInfo = generateAbilityInfoForTest(BUNDLE_NAME_ERROR,ABILITY_NAME_ERROR);
             let timeOldStamp = await Utils.getNowTime();
             let mData;
-            await Bundle.isAbilityEnabled(ABILITY_ERROR).then((data) => {
+            await Bundle.isAbilityEnabled(abilityInfo).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
                 Utils.getDurationTime('[isAbilityEnabled_test_0300]', timeOldStamp, timeNewStamp);
                 mData = data;
@@ -110,9 +105,10 @@ export default function isAbilityEnabledETSUnit() {
          * @tc.level   0
          */
         it('isAbilityEnabled_test_0400', 0, async function (done) {
+            let abilityInfo = generateAbilityInfoForTest(BUNDLE_NAME_ERROR,ABILITY_NAME_ERROR);
             let timeOldStamp = await Utils.getNowTime();
             let mData;
-            Bundle.isAbilityEnabled(ABILITY_ERROR, (error, data) => {
+            Bundle.isAbilityEnabled(abilityInfo, (error, data) => {
                 if (error) {
                     console.error('[isAbilityEnabled_test_0400]Operation failed. Cause: ' + JSON.stringify(error));
                     expect(error).assertFail();
@@ -142,6 +138,48 @@ export default function isAbilityEnabledETSUnit() {
         function getAbilityEnabledFalse(msg, data) {
             getAbilityEnabledSuccess(msg, data);
             expect(data).assertEqual(false);
+        }
+
+        function generateAbilityInfoForTest(bundleName, name) {
+            let map1 = new Map([
+                ["", [{
+                    "name": "", "value": "", "extra": ""
+                }]]
+            ]);
+
+            let abilityInfo = {
+                bundleName: bundleName,
+                name: name,
+                label: "",
+                description: "",
+                icon: "",
+                labelId: 0,
+                descriptionId: 0,
+                iconId: 0,
+                moduleName: "",
+                process: "",
+                targetAbility: "",
+                backgroundModes: 0,
+                isVisible: true,
+                formEnabled: true,
+                type: 0,
+                subType: 0,
+                orientation: 0,
+                launchMode: 0,
+                permissions: [],
+                deviceTypes: [],
+                deviceCapabilities: [],
+                readPermission: "",
+                writePermission: "",
+                applicationInfo: {
+                    name: "", description: "", descriptionId: 0, systemApp: true, enabled: true, label: "",
+                    labelId: "", icon: "", iconId: "", process: "", supportedModes: 0, moduleSourceDirs: [],
+                    permissions: [], moduleInfos: [], entryDir: "", codePath: "", metaData: map1,
+                    removable: true, accessTokenId: 0, uid: 0, entityType: ""
+                },
+                uri: "", metaData: [], enabled: true
+            };
+            return abilityInfo;
         }
 
     })

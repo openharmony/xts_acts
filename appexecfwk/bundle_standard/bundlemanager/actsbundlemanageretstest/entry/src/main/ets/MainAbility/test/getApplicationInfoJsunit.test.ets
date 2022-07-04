@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, beforeAll, expect } from 'deccjsunit/index.ets';
+import { describe, it, beforeAll, expect } from 'deccjsunit/index';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 import account from '@ohos.account.osAccount';
@@ -251,26 +251,6 @@ export default function applicationBundleJsunit() {
             });
             let endTime = Utils.getNowTime();
             Utils.getDurationTime(TAG_TEST_0500_001, startTime, endTime);
-            done();
-        });
-
-        /**
-         * @tc.number: bundle_getApplicationInfo_test_0500_002
-         * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
-         * @tc.desc: Check the return value of the interface (by promise)
-         * @tc.level 0
-         */
-        it(TAG_TEST_0500_002, 0, async function (done) {
-            let startTime = await Utils.getNowTime();
-            await Bundle.getApplicationInfo('', 'Bundle.BundleFlag.GET_BUNDLE_DEFAULT', userId).then((data) => {
-                console.info(TAG_TEST_0500_002 + 'UserId promise data is: ' + data);
-                expect(data).assertFail();
-            }).catch((error) => {
-                console.info(TAG_TEST_0500_002 + 'UserId promise error is: ' + error);
-                expect(error).assertEqual(1);
-            });
-            let endTime = Utils.getNowTime();
-            Utils.getDurationTime(TAG_TEST_0500_002, startTime, endTime);
             done();
         });
 

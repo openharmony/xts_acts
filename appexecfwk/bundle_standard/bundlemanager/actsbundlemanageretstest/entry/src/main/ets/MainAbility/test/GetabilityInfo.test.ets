@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from 'deccjsunit/index.ets';
+import { describe, it, expect } from 'deccjsunit/index';
 import Utils from './Utils';
 import bundleManager from '@ohos.bundle';
 
