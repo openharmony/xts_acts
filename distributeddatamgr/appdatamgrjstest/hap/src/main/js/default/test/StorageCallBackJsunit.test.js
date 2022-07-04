@@ -23,7 +23,7 @@ const KEY_TEST_BOOLEAN_ELEMENT = 'key_test_boolean';
 const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 var mPref;
 
-describe('storageTest_storage4', function () {
+describe('storageCallBackTest', function () {
     beforeAll(function () {
         console.info('beforeAll')
         mPref = storage.getStorageSync(PATH);
@@ -280,37 +280,37 @@ describe('storageTest_storage4', function () {
      * @tc.desc flush String callback interface test
      */
      it('testCallback0172', 0, function (done) {
-        console.log("*******************testCallback0172 begin.");
+        console.info("*******************testCallback0172 begin.");
         mPref.clear(function (err, val) {
             if(err){
-                console.log("*******************clear error: " + err);
+                console.info("*******************clear error: " + err);
                 expect(false).assertTrue();
             }
             mPref.put(KEY_TEST_STRING_ELEMENT, '', function (err, ret) {
                 if(err){
-                    console.log("*******************put error: " + err);
+                    console.info("*******************put error: " + err);
                     expect(false).assertTrue();
                 }
-                console.log("*******************put done.");
+                console.info("*******************put done.");
                 mPref.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
                     if(err){
-                        console.log("*******************get error: " + err);
+                        console.info("*******************get error: " + err);
                         expect(false).assertTrue();
                     }
                     expect('').assertEqual(pre);
                     mPref.flush(function (err, val) {
                         if(err){
-                            console.log("*******************flush error: " + err);
+                            console.info("*******************flush error: " + err);
                             expect(false).assertTrue();
                         }
                         mPref.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre2) {
                             if(err){
-                                console.log("*******************get error: " + err);
+                                console.info("*******************get error: " + err);
                                 expect(false).assertTrue();
                             }
                             expect('').assertEqual(pre2);
                             done();
-                            console.log("*******************testCallback0172 end.");
+                            console.info("*******************testCallback0172 end.");
                         })
                     });
                 })

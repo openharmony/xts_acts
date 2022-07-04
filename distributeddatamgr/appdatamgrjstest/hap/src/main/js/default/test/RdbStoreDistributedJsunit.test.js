@@ -38,7 +38,7 @@ describe('rdbStoreDistributedTest', function () {
         await dataRdb.deleteRdbStore(STORE_NAME);
     })
 
-    console.log(TAG + "*************Unit Test Begin*************");
+    console.info(TAG + "*************Unit Test Begin*************");
 
     /**
      * @tc.name rdb open test
@@ -46,13 +46,13 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc rdb open test
      */
     it('testRdbStoreDistributed0001', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreDistributed001 start *************");
+        console.info(TAG + "************* testRdbStoreDistributed001 start *************");
         const config = {
             "name": STORE_NAME,
         }
         try {
             rdbStore = await dataRdb.getRdbStore(config, 1);
-            console.log(TAG + "create rdb store success")
+            console.info(TAG + "create rdb store success")
             expect(rdbStore).assertEqual(rdbStore)
             let sqlStatement = "CREATE TABLE IF NOT EXISTS employee (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -60,9 +60,9 @@ describe('rdbStoreDistributedTest', function () {
                 "age INTEGER)"
             try {
                 await rdbStore.executeSql(sqlStatement, null)
-                console.log(TAG + "create table employee success")
+                console.info(TAG + "create table employee success")
             } catch (err) {
-                console.log(TAG + "create table employee failed")
+                console.info(TAG + "create table employee failed")
                 expect(null).assertFail()
             }
 
@@ -74,17 +74,17 @@ describe('rdbStoreDistributedTest', function () {
                 "describe TEXT)"
             try {
                 await rdbStore.executeSql(sqlStatement, null)
-                console.log(TAG + "create table product success")
+                console.info(TAG + "create table product success")
             } catch (err) {
-                console.log(TAG + "create table product failed")
+                console.info(TAG + "create table product failed")
                 expect(null).assertFail()
             }
         } catch (err) {
-            console.log(TAG + "create rdb store failed")
+            console.info(TAG + "create rdb store failed")
             expect(null).assertFail()
         }
         done()
-        console.log(TAG + "************* testRdbStoreDistributed001 end *************");
+        console.info(TAG + "************* testRdbStoreDistributed001 end *************");
     })
 
     /**
@@ -93,17 +93,17 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc rdb set distributed table using none table as argment
      */
     it('testRdbStoreDistributed0002', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreDistributed002 start *************");
+        console.info(TAG + "************* testRdbStoreDistributed002 start *************");
         try {
             await rdbStore.setDistributedTables([])
-            console.log(TAG + "set none to be distributed table success");
+            console.info(TAG + "set none to be distributed table success");
             expect(rdbStore).assertEqual(rdbStore)
         } catch (err) {
-            console.log(TAG + "set none to be distributed table failed");
+            console.info(TAG + "set none to be distributed table failed");
             expect(null).assertFail();
         }
         done()
-        console.log(TAG + "************* testRdbStoreDistributed002 end *************");
+        console.info(TAG + "************* testRdbStoreDistributed002 end *************");
     })
 
     /**
@@ -112,17 +112,17 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc set distributed table using one table name
      */
     it('testRdbStoreDistributed0003', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreDistributed003 start *************");
+        console.info(TAG + "************* testRdbStoreDistributed003 start *************");
         try {
             await rdbStore.setDistributedTables(['employee'])
-            console.log(TAG + "set employee to be distributed table success");
+            console.info(TAG + "set employee to be distributed table success");
             expect(rdbStore).assertEqual(rdbStore)
         } catch (err) {
-            console.log(TAG + "set employee to be distributed table failed");
+            console.info(TAG + "set employee to be distributed table failed");
             expect(null).assertFail();
         }
         done()
-        console.log(TAG + "************* testRdbStoreDistributed003 end *************");
+        console.info(TAG + "************* testRdbStoreDistributed003 end *************");
     })
 
     /**
@@ -131,17 +131,17 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc set distributed table using two table name
      */
     it('testRdbStoreDistributed0004', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreDistributed004 start *************");
+        console.info(TAG + "************* testRdbStoreDistributed004 start *************");
         try {
             await rdbStore.setDistributedTables(['employee', 'product'])
-            console.log(TAG + "set employee and product to be distributed table success");
+            console.info(TAG + "set employee and product to be distributed table success");
             expect(rdbStore).assertEqual(rdbStore)
         } catch (err) {
-            console.log(TAG + "set employee and product to be distributed table failed");
+            console.info(TAG + "set employee and product to be distributed table failed");
             expect(null).assertFail();
         }
         done()
-        console.log(TAG + "************* testRdbStoreDistributed004 end *************");
+        console.info(TAG + "************* testRdbStoreDistributed004 end *************");
     })
 
     /**
@@ -150,21 +150,21 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc insert record after setting distributed table
      */
     it('testRdbStoreDistributed0005', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreDistributed005 start *************");
+        console.info(TAG + "************* testRdbStoreDistributed005 start *************");
         const record = {
             "name": "Jim",
             "age": 20,
         }
         try {
             let rowId = await rdbStore.insert("employee", record)
-            console.log(TAG + "insert one record success " + rowId)
+            console.info(TAG + "insert one record success " + rowId)
             expect(1).assertEqual(rowId)
         } catch (err) {
-            console.log(TAG + "insert one record failed");
+            console.info(TAG + "insert one record failed");
             expect(null).assertFail();
         }
         done()
-        console.log(TAG + "************* testRdbStoreDistributed005 end *************");
+        console.info(TAG + "************* testRdbStoreDistributed005 end *************");
     })
 
     /**
@@ -173,7 +173,7 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc update record after setting distributed table
      */
     it('testRdbStoreDistributed0006', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreDistributed006 start *************");
+        console.info(TAG + "************* testRdbStoreDistributed006 start *************");
         const record = {
             "name": "Jim",
             "age": 30,
@@ -183,18 +183,18 @@ describe('rdbStoreDistributedTest', function () {
             predicate.equalTo("id", 1);
             try {
                 let rowId = await rdbStore.update(record, predicate);
-                console.log(TAG + "update one record success " + rowId)
+                console.info(TAG + "update one record success " + rowId)
                 expect(1).assertEqual(rowId)
             } catch (err) {
-                console.log(TAG + "update one record failed");
+                console.info(TAG + "update one record failed");
                 expect(null).assertFail();
             }
         } catch (err) {
-            console.log(TAG + "construct predicate failed");
+            console.info(TAG + "construct predicate failed");
             expect(null).assertFail();
         }
         done()
-        console.log(TAG + "************* testRdbStoreDistributed006 end *************");
+        console.info(TAG + "************* testRdbStoreDistributed006 end *************");
     })
 
     /**
@@ -203,12 +203,12 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc query record after setting distributed table
      */
     it('testRdbStoreDistributed0007', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreDistributed0007 start *************");
+        console.info(TAG + "************* testRdbStoreDistributed0007 start *************");
         try {
             let predicates = new dataRdb.RdbPredicates("employee")
             let resultSet = await rdbStore.query(predicates)
             try {
-                console.log(TAG + "product resultSet query done");
+                console.info(TAG + "product resultSet query done");
                 expect(true).assertEqual(resultSet.goToFirstRow())
                 const id = await resultSet.getLong(resultSet.getColumnIndex("id"))
                 const name = await resultSet.getString(resultSet.getColumnIndex("name"))
@@ -220,15 +220,15 @@ describe('rdbStoreDistributedTest', function () {
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
             } catch (e) {
-                console.log(TAG + "result get value failed")
+                console.info(TAG + "result get value failed")
                 expect(null).assertFail();
             }
         } catch (err) {
-            console.log("query failed");
+            console.info("query failed");
             expect(null).assertFail();
         }
         done();
-        console.log(TAG + "************* testRdbStoreDistributed0007 end *************");
+        console.info(TAG + "************* testRdbStoreDistributed0007 end *************");
     })
 
     /**
@@ -237,18 +237,18 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc delete record after setting distributed table
      */
     it('testRdbStoreDistributed0008', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreDistributed0008 start *************");
+        console.info(TAG + "************* testRdbStoreDistributed0008 start *************");
         let predicates = new dataRdb.RdbPredicates("employee")
         try {
             let number = await rdbStore.delete(predicates)
-            console.log(TAG + "employee Delete done: " + number)
+            console.info(TAG + "employee Delete done: " + number)
             expect(1).assertEqual(number)
         } catch (err) {
-            console.log(TAG + "delete record failed");
+            console.info(TAG + "delete record failed");
             expect(null).assertFail()
         }
         done();
-        console.log(TAG + "************* testRdbStoreDistributed0008 end *************");
+        console.info(TAG + "************* testRdbStoreDistributed0008 end *************");
     })
 
     /**
@@ -257,18 +257,18 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc predicates inDevice
      */
     it('testRdbStoreDistributed0009', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreDistributed0009 start *************");
+        console.info(TAG + "************* testRdbStoreDistributed0009 start *************");
         let predicates = new dataRdb.RdbPredicates("employee")
         try {
             predicates = predicates.inDevices("1234567890");
-            console.log(TAG + "inDevices success");
+            console.info(TAG + "inDevices success");
             expect(predicates).assertEqual(predicates);
         } catch (err) {
-            console.log(TAG + "inDevices failed");
+            console.info(TAG + "inDevices failed");
             expect(null).assertFail();
         }
         done();
-        console.log(TAG + "************* testRdbStoreDistributed0009 end *************");
+        console.info(TAG + "************* testRdbStoreDistributed0009 end *************");
     })
 
     /**
@@ -277,18 +277,18 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc predicates inAllDevices
      */
     it('testRdbStoreDistributed0010', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreDistributed0010 start *************");
+        console.info(TAG + "************* testRdbStoreDistributed0010 start *************");
         let predicates = new dataRdb.RdbPredicates("employee")
         try {
             predicates = predicates.inAllDevices();
-            console.log(TAG + "inAllDevices success");
+            console.info(TAG + "inAllDevices success");
             expect(predicates).assertEqual(predicates);
         } catch (err) {
-            console.log(TAG + "inAllDevices failed");
+            console.info(TAG + "inAllDevices failed");
             expect(null).assertFail();
         }
         done();
-        console.log(TAG + "************* testRdbStoreDistributed0010 end *************");
+        console.info(TAG + "************* testRdbStoreDistributed0010 end *************");
     })
 
     /**
@@ -297,17 +297,17 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc sync test
      */
     it('testRdbStoreDistributed0011', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreDistributed0011 start *************");
+        console.info(TAG + "************* testRdbStoreDistributed0011 start *************");
         let predicates = new dataRdb.RdbPredicates("employee")
         predicates = predicates.inDevices("12345678abcd");
         rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates);
-        console.log(TAG + "sync push success");
+        console.info(TAG + "sync push success");
         expect(rdbStore).assertEqual(rdbStore);
         rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates);
-        console.log(TAG + "sync pull success");
+        console.info(TAG + "sync pull success");
         expect(rdbStore).assertEqual(rdbStore);
         done();
-        console.log(TAG + "************* testRdbStoreDistributed0011 end *************");
+        console.info(TAG + "************* testRdbStoreDistributed0011 end *************");
     })
 	
 	/**
@@ -316,19 +316,19 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc sync Callback test
      */
     it('testRdbStoreDistributedCallback0011', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreDistributedCallback0011 start *************");
+        console.info(TAG + "************* testRdbStoreDistributedCallback0011 start *************");
         let predicates = new dataRdb.RdbPredicates("employee")
         predicates = predicates.inDevices("12345678abcd");
         rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates,(err,ret)=>{
-            console.log(TAG + "sync push success");
+            console.info(TAG + "sync push success");
             expect(rdbStore).assertEqual(rdbStore);
         });
         rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates,(err,ret)=>{
-            console.log(TAG + "sync push success");
+            console.info(TAG + "sync push success");
             expect(rdbStore).assertEqual(rdbStore);
         });
         done();
-        console.log(TAG + "************* testRdbStoreDistributedCallback0011 end *************");
+        console.info(TAG + "************* testRdbStoreDistributedCallback0011 end *************");
     })
 
     /**
@@ -337,14 +337,14 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc subscribe test
      */
     it('testRdbStoreDistributed0012', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreDistributed0012 start *************");
+        console.info(TAG + "************* testRdbStoreDistributed0012 start *************");
         rdbStore.on("dataChange", (device) => {
-            console.log(TAG + device + " dataChange");
+            console.info(TAG + device + " dataChange");
         });
-        console.log(TAG + "on dataChange success");
+        console.info(TAG + "on dataChange success");
         expect(rdbStore).assertEqual(rdbStore);
         done()
-        console.log(TAG + "************* testRdbStoreDistributed0012 end *************");
+        console.info(TAG + "************* testRdbStoreDistributed0012 end *************");
     })
 
     /**
@@ -353,14 +353,14 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc subscribe test
      */
     it('testRdbStoreDistributed0013', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreDistributed0013 start *************");
+        console.info(TAG + "************* testRdbStoreDistributed0013 start *************");
         rdbStore.off("dataChange", (device) => {
-            console.log(TAG + device + " dataChange");
+            console.info(TAG + device + " dataChange");
         });
-        console.log(TAG + "off dataChange success");
+        console.info(TAG + "off dataChange success");
         expect(rdbStore).assertEqual(rdbStore);
         done()
-        console.log(TAG + "************* testRdbStoreDistributed0013 end *************");
+        console.info(TAG + "************* testRdbStoreDistributed0013 end *************");
     })
 	
 	    /**
@@ -398,5 +398,5 @@ describe('rdbStoreDistributedTest', function () {
         done();
     })
 	
-    console.log(TAG + "*************Unit Test End*************");
+    console.info(TAG + "*************Unit Test End*************");
 })

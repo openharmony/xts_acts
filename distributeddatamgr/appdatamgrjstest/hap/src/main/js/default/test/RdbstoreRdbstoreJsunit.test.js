@@ -41,7 +41,7 @@ describe('rdbStoreTest', function () {
         console.info(TAG + 'afterAll')
     })
 
-    console.log(TAG + "*************Unit Test Begin*************");
+    console.info(TAG + "*************Unit Test Begin*************");
 
     /**
      * @tc.name rdb store getRdbStore test
@@ -49,11 +49,11 @@ describe('rdbStoreTest', function () {
      * @tc.desc rdb store getRdbStore test
      */
     it('testRdbStore0001', 0, async function (done) {
-        console.log(TAG + "************* testRdbStore0001 start *************");
+        console.info(TAG + "************* testRdbStore0001 start *************");
         let storePromise = dataRdb.getRdbStore(STORE_CONFIG, 1);
         storePromise.then(async (store) => {
             try {
-                await console.log(TAG + "getRdbStore done: " + store);
+                await console.info(TAG + "getRdbStore done: " + store);
             } catch (e) {
                 expect(null).assertFail();
             }
@@ -63,7 +63,7 @@ describe('rdbStoreTest', function () {
         await storePromise
         storePromise = null
         done();
-        console.log(TAG + "************* testRdbStore0001 end   *************");
+        console.info(TAG + "************* testRdbStore0001 end   *************");
     })
 
     /**
@@ -72,11 +72,11 @@ describe('rdbStoreTest', function () {
      * @tc.desc rdb store getRdbStore and create table
      */
     it('testRdbStore0002', 0, async function (done) {
-        console.log(TAG + "************* testRdbStore0002 start *************");
+        console.info(TAG + "************* testRdbStore0002 start *************");
         let storePromise = dataRdb.getRdbStore(STORE_CONFIG, 2);
         storePromise.then(async (store) => {
             try {
-                await console.log(TAG + "getRdbStore done: " + store);
+                await console.info(TAG + "getRdbStore done: " + store);
                 await store.executeSql(CREATE_TABLE_TEST);
             } catch (e) {
                 expect(null).assertFail();
@@ -87,7 +87,7 @@ describe('rdbStoreTest', function () {
         await storePromise
         storePromise = null
         done();
-        console.log(TAG + "************* testRdbStore0002 end   *************");
+        console.info(TAG + "************* testRdbStore0002 end   *************");
     })
 
     /**
@@ -96,21 +96,21 @@ describe('rdbStoreTest', function () {
      * @tc.desc rdb store getRdbStore with wrong path
      */
     it('testRdbStore0003', 0, async function (done) {
-        console.log(TAG + "************* testRdbStore0003 start *************");
+        console.info(TAG + "************* testRdbStore0003 start *************");
 
         let storeConfig = {
             name: "/wrong/rdbstore.db",
         }
         let storePromise = dataRdb.getRdbStore(storeConfig, 4);
         storePromise.then(async (ret) => {
-            await console.log(TAG + "getRdbStore done" + ret);
+            await console.info(TAG + "getRdbStore done" + ret);
             expect(null).assertFail();
         }).catch((err) => {
-            console.log(TAG + "getRdbStore with wrong path");
+            console.info(TAG + "getRdbStore with wrong path");
         })
         storePromise = null
         done();
-        console.log(TAG + "************* testRdbStore0003 end   *************");
+        console.info(TAG + "************* testRdbStore0003 end   *************");
     })
 
     /**
@@ -119,14 +119,14 @@ describe('rdbStoreTest', function () {
      * @tc.desc rdb store deleteRdbStore
      */
     it('testRdbStore0004', 0, async function (done) {
-        console.log(TAG + "************* testRdbStore0004 start *************");
+        console.info(TAG + "************* testRdbStore0004 start *************");
         let storePromise = dataRdb.getRdbStore(STORE_CONFIG, 1);
         storePromise.then(async (store) => {
             try {
                 await store.executeSql(CREATE_TABLE_TEST);
                 let deletePromise = dataRdb.deleteRdbStore("rdbstore.db")
                 deletePromise.then(()=>{
-                    console.log(TAG + "deleteRdbStore promise done" + store);
+                    console.info(TAG + "deleteRdbStore promise done" + store);
                     expect(true).assertTrue();
                 })
             } catch (e) {
@@ -138,7 +138,7 @@ describe('rdbStoreTest', function () {
         await storePromise
         storePromise = null
         done();
-        console.log(TAG + "************* testRdbStore0004 end   *************");
+        console.info(TAG + "************* testRdbStore0004 end   *************");
     })
 
     /**
@@ -147,7 +147,7 @@ describe('rdbStoreTest', function () {
      * @tc.desc rdb store deleteRdbStore
      */
     it('testRdbStore0005', 0, async function (done) {
-        console.log(TAG + "************* testRdbStore0005 start *************");
+        console.info(TAG + "************* testRdbStore0005 start *************");
 
         let storePromise = dataRdb.getRdbStore(STORE_CONFIG, 2);
         storePromise.then(async (store) => {
@@ -155,7 +155,7 @@ describe('rdbStoreTest', function () {
                 await store.executeSql(CREATE_TABLE_TEST);
                 let deletePromise = dataRdb.deleteRdbStore("rdbstore.db")
                 deletePromise.then(()=>{
-                    console.log(TAG + "deleteRdbStore promise done" + store);
+                    console.info(TAG + "deleteRdbStore promise done" + store);
                     expect(true).assertTrue();
                 })
             } catch (e) {
@@ -167,8 +167,8 @@ describe('rdbStoreTest', function () {
         await storePromise
         storePromise = null
         done();
-        console.log(TAG + "************* testRdbStore0005 end   *************");
+        console.info(TAG + "************* testRdbStore0005 end   *************");
     })
     
-    console.log(TAG + "*************Unit Test End*************");
+    console.info(TAG + "*************Unit Test End*************");
 })

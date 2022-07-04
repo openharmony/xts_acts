@@ -68,7 +68,7 @@ describe('dataAbilityPredicatesTest', function () {
     }
 
     async function buildAllDataType1() {
-        console.log(TAG + "buildAllDataType1 start");
+        console.info(TAG + "buildAllDataType1 start");
         {
             var u8 = new Uint8Array([1, 2, 3])
             const valueBucket = {
@@ -88,7 +88,7 @@ describe('dataAbilityPredicatesTest', function () {
     }
 
     async function buildAllDataType2() {
-        console.log(TAG + "buildAllDataType2 start");
+        console.info(TAG + "buildAllDataType2 start");
         {
             var u8 = new Uint8Array([1, 2, 3])
             const valueBucket = {
@@ -108,7 +108,7 @@ describe('dataAbilityPredicatesTest', function () {
     }
 
     async function buildAllDataType3() {
-        console.log(TAG + "buildAllDataType3 start");
+        console.info(TAG + "buildAllDataType3 start");
         {
             var u8 = new Uint8Array([1, 2, 3])
             const valueBucket = {
@@ -127,7 +127,7 @@ describe('dataAbilityPredicatesTest', function () {
         }
     }
 
-    console.log(TAG + "*************Unit Test Begin*************");
+    console.info(TAG + "*************Unit Test Begin*************");
 
     /**
      * @tc.name predicates equalTo normal test
@@ -135,7 +135,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0001', 0, async function (done) {
-        console.log(TAG + "************* testEqualTo0001 start *************");
+        console.info(TAG + "************* testEqualTo0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("booleanValue", true);
@@ -146,7 +146,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testEqualTo0001 end   *************");
+        console.info(TAG + "************* testEqualTo0001 end   *************");
     })
 
     /**
@@ -155,7 +155,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0002', 0, async function (done) {
-        console.log(TAG + "************* testEqualTo0002 start *************");
+        console.info(TAG + "************* testEqualTo0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("byteValue", -128).or().equalTo("byteValue", 1);
@@ -166,7 +166,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testEqualTo0002 end   *************");
+        console.info(TAG + "************* testEqualTo0002 end   *************");
     })
 
     /**
@@ -175,7 +175,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0003', 0, async function (done) {
-        console.log(TAG + "************* testEqualTo0003 start *************");
+        console.info(TAG + "************* testEqualTo0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN");
@@ -186,7 +186,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testEqualTo0003 end   *************");
+        console.info(TAG + "************* testEqualTo0003 end   *************");
     })
 
     /**
@@ -195,7 +195,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0004', 0, async function (done) {
-        console.log(TAG + "************* testEqualTo0004 start *************");
+        console.info(TAG + "************* testEqualTo0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("doubleValue", DOUBLE_MAX);
@@ -206,7 +206,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testEqualTo0004 end   *************");
+        console.info(TAG + "************* testEqualTo0004 end   *************");
     })
 
     /**
@@ -215,7 +215,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0005', 0, async function (done) {
-        console.log(TAG + "************* testEqualTo0005 start *************");
+        console.info(TAG + "************* testEqualTo0005 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("shortValue", -32768.0);
@@ -226,7 +226,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testEqualTo0005 end   *************");
+        console.info(TAG + "************* testEqualTo0005 end   *************");
     })
 
     /**
@@ -235,7 +235,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0006', 0, async function (done) {
-        console.log(TAG + "************* testEqualTo0006 start *************");
+        console.info(TAG + "************* testEqualTo0006 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("integerValue", 1);
@@ -246,7 +246,7 @@ describe('dataAbilityPredicatesTest', function () {
             expect(2).assertEqual(result.getLong(0));
         }
         done();
-        console.log(TAG + "************* testEqualTo0006 end   *************");
+        console.info(TAG + "************* testEqualTo0006 end   *************");
     })
 
     /**
@@ -255,7 +255,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0007', 0, async function (done) {
-        console.log(TAG + "************* testEqualTo0007 start *************");
+        console.info(TAG + "************* testEqualTo0007 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("longValue", 1);
@@ -266,7 +266,7 @@ describe('dataAbilityPredicatesTest', function () {
             expect(2).assertEqual(result.getLong(0))
         }
         done();
-        console.log(TAG + "************* testEqualTo0007 end   *************");
+        console.info(TAG + "************* testEqualTo0007 end   *************");
     })
 
     /**
@@ -275,7 +275,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates equalTo normal test
      */
     it('testEqualTo0008', 0, async function (done) {
-        console.log(TAG + "************* testEqualTo0008 start *************");
+        console.info(TAG + "************* testEqualTo0008 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("floatValue", -0.123);
@@ -287,7 +287,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testEqualTo0008 end   *************");
+        console.info(TAG + "************* testEqualTo0008 end   *************");
     })
 
     /**
@@ -296,7 +296,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0001', 0, async function (done) {
-        console.log(TAG + "************* testNotEqualTo0001 start *************");
+        console.info(TAG + "************* testNotEqualTo0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.notEqualTo("booleanValue", true);
@@ -307,7 +307,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testNotEqualTo0001 end *************");
+        console.info(TAG + "************* testNotEqualTo0001 end *************");
     })
 
     /**
@@ -316,7 +316,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0002', 0, async function (done) {
-        console.log(TAG + "************* testNotEqualTo0002 start *************");
+        console.info(TAG + "************* testNotEqualTo0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.notEqualTo("byteValue", -128);
@@ -328,7 +328,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testNotEqualTo0002 end *************");
+        console.info(TAG + "************* testNotEqualTo0002 end *************");
     })
 
     /**
@@ -337,7 +337,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0003', 0, async function (done) {
-        console.log(TAG + "************* testNotEqualTo0003 start *************");
+        console.info(TAG + "************* testNotEqualTo0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.notEqualTo("stringValue", "ABCDEFGHIJKLMN");
@@ -348,7 +348,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testNotEqualTo0003 end *************");
+        console.info(TAG + "************* testNotEqualTo0003 end *************");
     })
 
     /**
@@ -357,7 +357,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0004', 0, async function (done) {
-        console.log(TAG + "************* testNotEqualTo0004 start *************");
+        console.info(TAG + "************* testNotEqualTo0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.notEqualTo("doubleValue", DOUBLE_MAX);
@@ -368,7 +368,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testNotEqualTo0004 end *************");
+        console.info(TAG + "************* testNotEqualTo0004 end *************");
     })
 
     /**
@@ -377,7 +377,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0005', 0, async function (done) {
-        console.log(TAG + "************* testNotEqualTo0005 start *************");
+        console.info(TAG + "************* testNotEqualTo0005 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.notEqualTo("shortValue", -32768);
@@ -388,7 +388,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testNotEqualTo0005 end *************");
+        console.info(TAG + "************* testNotEqualTo0005 end *************");
     })
 
     /**
@@ -397,7 +397,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0006', 0, async function (done) {
-        console.log(TAG + "************* testNotEqualTo0006 start *************");
+        console.info(TAG + "************* testNotEqualTo0006 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.notEqualTo("integerValue", 1);
@@ -408,7 +408,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testNotEqualTo0006 end *************");
+        console.info(TAG + "************* testNotEqualTo0006 end *************");
     })
 
     /**
@@ -417,7 +417,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0007', 0, async function (done) {
-        console.log(TAG + "************* testNotEqualTo0007 start *************");
+        console.info(TAG + "************* testNotEqualTo0007 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.notEqualTo("longValue", 1);
@@ -428,7 +428,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testNotEqualTo0007 end *************");
+        console.info(TAG + "************* testNotEqualTo0007 end *************");
     })
 
     /**
@@ -437,7 +437,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates notEqualTo normal test
      */
     it('testNotEqualTo0008', 0, async function (done) {
-        console.log(TAG + "************* testNotEqualTo0008 start *************");
+        console.info(TAG + "************* testNotEqualTo0008 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.notEqualTo("floatValue", -0.123);
@@ -448,7 +448,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testNotEqualTo0008 end *************");
+        console.info(TAG + "************* testNotEqualTo0008 end *************");
     })
 
     /**
@@ -457,7 +457,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc resultSet isNull normal test
      */
     it('testIsNull0001', 0, async function (done) {
-        console.log(TAG + "************* testIsNull001 start *************");
+        console.info(TAG + "************* testIsNull001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNull("primLongValue");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -466,7 +466,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testIsNull0001 end *************");
+        console.info(TAG + "************* testIsNull0001 end *************");
     })
 
     /**
@@ -475,7 +475,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates isNull normal test
      */
     it('testIsNull0002', 0, async function (done) {
-        console.log(TAG + "************* testIsNull0002 start *************");
+        console.info(TAG + "************* testIsNull0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNull("longValue");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -484,7 +484,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(0).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testIsNull0002 end *************");
+        console.info(TAG + "************* testIsNull0002 end *************");
     })
 
     /**
@@ -493,7 +493,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates isNull normal test
      */
     it('testIsNull0003', 0, async function (done) {
-        console.log(TAG + "************* testIsNull0003 start *************");
+        console.info(TAG + "************* testIsNull0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNull("stringValue");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -502,7 +502,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(0).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testIsNull0003 end *************");
+        console.info(TAG + "************* testIsNull0003 end *************");
     })
 
     /**
@@ -511,7 +511,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates isNull normal test
      */
     it('testIsNull0004', 0, async function (done) {
-        console.log(TAG + "************* testIsNull0004 start *************");
+        console.info(TAG + "************* testIsNull0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNull("stringValueX");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -520,7 +520,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(-1).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testIsNull0004 end *************");
+        console.info(TAG + "************* testIsNull0004 end *************");
     })
 
     /**
@@ -529,7 +529,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates isNotNull normal test
      */
     it('testIsNotNull0001', 0, async function (done) {
-        console.log(TAG + "************* testIsNotNull0001 start *************");
+        console.info(TAG + "************* testIsNotNull0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNotNull("primLongValue");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -538,7 +538,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(0).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testIsNotNull0001 end *************");
+        console.info(TAG + "************* testIsNotNull0001 end *************");
     })
 
     /**
@@ -547,7 +547,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates isNotNull normal test
      */
     it('testIsNotNull0002', 0, async function (done) {
-        console.log(TAG + "************* testIsNotNull0002 start *************");
+        console.info(TAG + "************* testIsNotNull0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNotNull("longValue");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -556,7 +556,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testIsNotNull0002 end *************");
+        console.info(TAG + "************* testIsNotNull0002 end *************");
     })
 
     /**
@@ -565,7 +565,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates isNotNull normal test
      */
     it('testIsNotNull0003', 0, async function (done) {
-        console.log(TAG + "************* testIsNotNull0003 start *************");
+        console.info(TAG + "************* testIsNotNull0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNotNull("stringValue");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -574,7 +574,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testIsNotNull0003 end *************");
+        console.info(TAG + "************* testIsNotNull0003 end *************");
     })
 
     /**
@@ -583,7 +583,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates isNotNull normal test
      */
     it('testIsNotNull0004', 0, async function (done) {
-        console.log(TAG + "************* testIsNotNull0004 start *************");
+        console.info(TAG + "************* testIsNotNull0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.isNotNull("stringValueX");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -592,7 +592,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(-1).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testIsNotNull0004 end *************");
+        console.info(TAG + "************* testIsNotNull0004 end *************");
     })
 
     /**
@@ -601,7 +601,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0001', 0, async function (done) {
-        console.log(TAG + "************* testGreaterThan0001 start *************");
+        console.info(TAG + "************* testGreaterThan0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.greaterThan("stringValue", "ABC");
@@ -612,7 +612,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGreaterThan0001 end *************");
+        console.info(TAG + "************* testGreaterThan0001 end *************");
     })
 
     /**
@@ -621,7 +621,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0002', 0, async function (done) {
-        console.log(TAG + "************* testGreaterThan0002 start *************");
+        console.info(TAG + "************* testGreaterThan0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.greaterThan("doubleValue", 0.0);
@@ -632,7 +632,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGreaterThan0002 end *************");
+        console.info(TAG + "************* testGreaterThan0002 end *************");
     })
 
     /**
@@ -641,7 +641,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0003', 0, async function (done) {
-        console.log(TAG + "************* testGreaterThan0003 start *************");
+        console.info(TAG + "************* testGreaterThan0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.greaterThan("integerValue", 1);
@@ -652,7 +652,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGreaterThan0003 end *************");
+        console.info(TAG + "************* testGreaterThan0003 end *************");
     })
 
     /**
@@ -661,7 +661,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0004', 0, async function (done) {
-        console.log(TAG + "************* testGreaterThan0004 start *************");
+        console.info(TAG + "************* testGreaterThan0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.greaterThan("longValue", 1);
@@ -672,7 +672,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGreaterThan0004 end *************");
+        console.info(TAG + "************* testGreaterThan0004 end *************");
     })
 
 
@@ -682,7 +682,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0005', 0, async function (done) {
-        console.log(TAG + "************* testGreaterThan0005 start *************");
+        console.info(TAG + "************* testGreaterThan0005 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.greaterThan("stringValue", "ZZZ");
@@ -693,7 +693,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGreaterThan0005 end *************");
+        console.info(TAG + "************* testGreaterThan0005 end *************");
     })
 
     /**
@@ -702,7 +702,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0006', 0, async function (done) {
-        console.log(TAG + "************* testGreaterThan0006 start *************");
+        console.info(TAG + "************* testGreaterThan0006 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.greaterThan("doubleValue", 999.0);
@@ -713,7 +713,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGreaterThan0006 end *************");
+        console.info(TAG + "************* testGreaterThan0006 end *************");
     })
 
     /**
@@ -722,7 +722,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0007', 0, async function (done) {
-        console.log(TAG + "************* testGreaterThan0007 start *************");
+        console.info(TAG + "************* testGreaterThan0007 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.greaterThan("integerValue", -999);
@@ -733,7 +733,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGreaterThan0007 end *************");
+        console.info(TAG + "************* testGreaterThan0007 end *************");
     })
 
     /**
@@ -742,7 +742,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates greaterThan normal test
      */
     it('testGreaterThan0008', 0, async function (done) {
-        console.log(TAG + "************* testGreaterThan0008 start *************");
+        console.info(TAG + "************* testGreaterThan0008 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.greaterThan("longValue", -999);
@@ -753,7 +753,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGreaterThan0008 end *************");
+        console.info(TAG + "************* testGreaterThan0008 end *************");
     })
 
     /**
@@ -762,7 +762,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates greaterThanOrEqualTo normal test
      */
     it('testGreaterThanOrEqualTo0001', 0, async function (done) {
-        console.log(TAG + "************* testGreaterThanOrEqualTo0001 start *************");
+        console.info(TAG + "************* testGreaterThanOrEqualTo0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.greaterThanOrEqualTo("stringValue", "ABC");
@@ -773,7 +773,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGreaterThanOrEqualTo0001 end *************");
+        console.info(TAG + "************* testGreaterThanOrEqualTo0001 end *************");
     })
 
     /**
@@ -782,7 +782,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates greaterThanOrEqualTo normal test
      */
     it('testGreaterThanOrEqualTo0002', 0, async function (done) {
-        console.log(TAG + "************* testGreaterThanOrEqualTo0002 start *************");
+        console.info(TAG + "************* testGreaterThanOrEqualTo0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.greaterThanOrEqualTo("doubleValue", 0.0);
@@ -793,7 +793,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGreaterThanOrEqualTo0002 end *************");
+        console.info(TAG + "************* testGreaterThanOrEqualTo0002 end *************");
     })
 
     /**
@@ -802,7 +802,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates greaterThanOrEqualTo normal test
      */
     it('testGreaterThanOrEqualTo0003', 0, async function (done) {
-        console.log(TAG + "************* testGreaterThanOrEqualTo0003 start *************");
+        console.info(TAG + "************* testGreaterThanOrEqualTo0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.greaterThanOrEqualTo("integerValue", 1);
@@ -813,7 +813,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGreaterThanOrEqualTo0003 end *************");
+        console.info(TAG + "************* testGreaterThanOrEqualTo0003 end *************");
     })
 
     /**
@@ -822,7 +822,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates greaterThanOrEqualTo normal test
      */
     it('testGreaterThanOrEqualTo0004', 0, async function (done) {
-        console.log(TAG + "************* testGreaterThanOrEqualTo0004 start *************");
+        console.info(TAG + "************* testGreaterThanOrEqualTo0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.greaterThanOrEqualTo("longValue", 1);
@@ -833,7 +833,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGreaterThanOrEqualTo0004 end *************");
+        console.info(TAG + "************* testGreaterThanOrEqualTo0004 end *************");
     })
 
     /**
@@ -842,7 +842,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0001', 0, async function (done) {
-        console.log(TAG + "************* testLessThan0001 start *************");
+        console.info(TAG + "************* testLessThan0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.lessThan("stringValue", "ABD");
@@ -853,7 +853,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testLessThan0001 end *************");
+        console.info(TAG + "************* testLessThan0001 end *************");
     })
 
     /**
@@ -862,7 +862,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0002', 0, async function (done) {
-        console.log(TAG + "************* testLessThan0002 start *************");
+        console.info(TAG + "************* testLessThan0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.lessThan("doubleValue", 0.0);
@@ -873,7 +873,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testLessThan0002 end *************");
+        console.info(TAG + "************* testLessThan0002 end *************");
     })
 
     /**
@@ -882,7 +882,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0003', 0, async function (done) {
-        console.log(TAG + "************* testLessThan0003 start *************");
+        console.info(TAG + "************* testLessThan0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.lessThan("integerValue", 1);
@@ -893,7 +893,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testLessThan0003 end *************");
+        console.info(TAG + "************* testLessThan0003 end *************");
     })
 
     /**
@@ -902,7 +902,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0004', 0, async function (done) {
-        console.log(TAG + "************* testLessThan0004 start *************");
+        console.info(TAG + "************* testLessThan0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.lessThan("longValue", 1);
@@ -913,7 +913,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testLessThan0004 end *************");
+        console.info(TAG + "************* testLessThan0004 end *************");
     })
 
 
@@ -923,7 +923,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0005', 0, async function (done) {
-        console.log(TAG + "************* testLessThan0005 start *************");
+        console.info(TAG + "************* testLessThan0005 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.lessThan("stringValue", "ABD");
@@ -934,7 +934,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testLessThan0005 end *************");
+        console.info(TAG + "************* testLessThan0005 end *************");
     })
 
     /**
@@ -943,7 +943,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0006', 0, async function (done) {
-        console.log(TAG + "************* testLessThan0006 start *************");
+        console.info(TAG + "************* testLessThan0006 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.lessThan("doubleValue", 1.0);
@@ -954,7 +954,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testLessThan0006 end *************");
+        console.info(TAG + "************* testLessThan0006 end *************");
     })
 
     /**
@@ -963,7 +963,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0007', 0, async function (done) {
-        console.log(TAG + "************* testLessThan0007 start *************");
+        console.info(TAG + "************* testLessThan0007 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.lessThan("integerValue", -2147483648);
@@ -974,7 +974,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testLessThan0007 end *************");
+        console.info(TAG + "************* testLessThan0007 end *************");
     })
 
     /**
@@ -983,7 +983,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates lessThan normal test
      */
     it('testLessThan0008', 0, async function (done) {
-        console.log(TAG + "************* testLessThan0008 start *************");
+        console.info(TAG + "************* testLessThan0008 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.lessThan("longValue", -9223372036854775808);
@@ -994,7 +994,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testLessThan0008 end *************");
+        console.info(TAG + "************* testLessThan0008 end *************");
     })
 
 
@@ -1004,7 +1004,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates lessThanOrEqualTo normal test
      */
     it('testLessThanOrEqualTo0001', 0, async function (done) {
-        console.log(TAG + "************* testLessThanOrEqualTo0001 start *************");
+        console.info(TAG + "************* testLessThanOrEqualTo0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.lessThanOrEqualTo("stringValue", "ABD");
@@ -1015,7 +1015,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testLessThanOrEqualTo0001 end *************");
+        console.info(TAG + "************* testLessThanOrEqualTo0001 end *************");
     })
 
     /**
@@ -1024,7 +1024,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates lessThanOrEqualTo normal test
      */
     it('testLessThanOrEqualTo0002', 0, async function (done) {
-        console.log(TAG + "************* testLessThanOrEqualTo0002 start *************");
+        console.info(TAG + "************* testLessThanOrEqualTo0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.lessThanOrEqualTo("doubleValue", 0.0);
@@ -1035,7 +1035,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testLessThanOrEqualTo0002 end *************");
+        console.info(TAG + "************* testLessThanOrEqualTo0002 end *************");
     })
 
     /**
@@ -1044,7 +1044,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates lessThanOrEqualTo normal test
      */
     it('testLessThanOrEqualTo0003', 0, async function (done) {
-        console.log(TAG + "************* testLessThanOrEqualTo0003 start *************");
+        console.info(TAG + "************* testLessThanOrEqualTo0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.lessThanOrEqualTo("integerValue", 1);
@@ -1055,7 +1055,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testLessThanOrEqualTo0003 end *************");
+        console.info(TAG + "************* testLessThanOrEqualTo0003 end *************");
     })
 
     /**
@@ -1064,7 +1064,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates lessThanOrEqualTo normal test
      */
     it('testLessThanOrEqualTo0004', 0, async function (done) {
-        console.log(TAG + "************* testLessThanOrEqualTo0004 start *************");
+        console.info(TAG + "************* testLessThanOrEqualTo0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.lessThanOrEqualTo("longValue", 1);
@@ -1075,7 +1075,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testLessThanOrEqualTo0004 end *************");
+        console.info(TAG + "************* testLessThanOrEqualTo0004 end *************");
     })
 
     /**
@@ -1084,7 +1084,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates between normal test
      */
     it('testBetween0001', 0, async function (done) {
-        console.log(TAG + "************* testBetween0001 start *************");
+        console.info(TAG + "************* testBetween0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.between("stringValue", "ABB", "ABD");
@@ -1095,7 +1095,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testBetween0001 end *************");
+        console.info(TAG + "************* testBetween0001 end *************");
     })
 
     /**
@@ -1104,7 +1104,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates between normal test
      */
     it('testBetween0002', 0, async function (done) {
-        console.log(TAG + "************* testBetween0002 start *************");
+        console.info(TAG + "************* testBetween0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.between("doubleValue", 0.0, DOUBLE_MAX);
@@ -1115,7 +1115,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testBetween0002 end *************");
+        console.info(TAG + "************* testBetween0002 end *************");
     })
 
     /**
@@ -1124,7 +1124,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates between normal test
      */
     it('testBetween0003', 0, async function (done) {
-        console.log(TAG + "************* testBetween0003 start *************");
+        console.info(TAG + "************* testBetween0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.between("integerValue", 0, 1);
@@ -1135,7 +1135,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testBetween0003 end *************");
+        console.info(TAG + "************* testBetween0003 end *************");
     })
 
     /**
@@ -1144,7 +1144,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates between normal test
      */
     it('testBetween0004', 0, async function (done) {
-        console.log(TAG + "************* testBetween0004 start *************");
+        console.info(TAG + "************* testBetween0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.between("longValue", 0, 2);
@@ -1155,7 +1155,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testBetween0004 end *************");
+        console.info(TAG + "************* testBetween0004 end *************");
     })
 
     /**
@@ -1164,7 +1164,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates between normal test
      */
     it('testBetween0005', 0, async function (done) {
-        console.log(TAG + "************* testBetween0005 start *************");
+        console.info(TAG + "************* testBetween0005 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.between("stringValue", "ABB", "ABB");
@@ -1175,7 +1175,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testBetween0005 end *************");
+        console.info(TAG + "************* testBetween0005 end *************");
     })
 
     /**
@@ -1184,7 +1184,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates between normal test
      */
     it('testBetween0006', 0, async function (done) {
-        console.log(TAG + "************* testBetween0006 start *************");
+        console.info(TAG + "************* testBetween0006 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.between("doubleValue", DOUBLE_MAX, DOUBLE_MAX);
@@ -1195,7 +1195,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testBetween0006 end *************");
+        console.info(TAG + "************* testBetween0006 end *************");
     })
 
     /**
@@ -1204,7 +1204,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates between normal test
      */
     it('testBetween0007', 0, async function (done) {
-        console.log(TAG + "************* testBetween0007 start *************");
+        console.info(TAG + "************* testBetween0007 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.between("integerValue", 1, 0);
@@ -1215,7 +1215,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testBetween0007 end *************");
+        console.info(TAG + "************* testBetween0007 end *************");
     })
 
     /**
@@ -1224,7 +1224,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates between normal test
      */
     it('testBetween0008', 0, async function (done) {
-        console.log(TAG + "************* testBetween0008 start *************");
+        console.info(TAG + "************* testBetween0008 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.between("longValue", 2, -1);
@@ -1235,7 +1235,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testBetween0008 end *************");
+        console.info(TAG + "************* testBetween0008 end *************");
     })
 
     /**
@@ -1244,7 +1244,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc test string value with notBetween.
      */
     it('testNotBetween0001', 0, async function (done) {
-        console.log(TAG + "************* testNotBetween0001 start *************");
+        console.info(TAG + "************* testNotBetween0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.notBetween("stringValue", "ABB", "ABD");
@@ -1256,7 +1256,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testNotBetween0001 end *************");
+        console.info(TAG + "************* testNotBetween0001 end *************");
     })
 
     /**
@@ -1265,7 +1265,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc test double value with notBetween.
      */
     it('testNotBetween0002', 0, async function (done) {
-        console.log(TAG + "************* testNotBetween0002 start *************");
+        console.info(TAG + "************* testNotBetween0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.notBetween("doubleValue", 0.0, DOUBLE_MAX);
@@ -1277,7 +1277,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testNotBetween0002 end *************");
+        console.info(TAG + "************* testNotBetween0002 end *************");
     })
 
     /**
@@ -1286,7 +1286,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc test integer value with notBetween.
      */
     it('testNotBetween0003', 0, async function (done) {
-        console.log(TAG + "************* testNotBetween0003 start *************");
+        console.info(TAG + "************* testNotBetween0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.notBetween("integerValue", 0, 1);
@@ -1298,7 +1298,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testNotBetween0003 end *************");
+        console.info(TAG + "************* testNotBetween0003 end *************");
     })
 
     /**
@@ -1307,7 +1307,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc test long value with notBetween.
      */
     it('testNotBetween0004', 0, async function (done) {
-        console.log(TAG + "************* testNotBetween0004 start *************");
+        console.info(TAG + "************* testNotBetween0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.notBetween("longValue", 0, 2);
@@ -1319,7 +1319,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testNotBetween0004 end *************");
+        console.info(TAG + "************* testNotBetween0004 end *************");
     })
 
     /**
@@ -1328,7 +1328,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc end with ? by glob.
      */
     it('testGlob0001', 0, async function (done) {
-        console.log(TAG + "************* testGlob0001 start *************");
+        console.info(TAG + "************* testGlob0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.glob("stringValue", "ABC*");
@@ -1340,7 +1340,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGlob0001 end *************");
+        console.info(TAG + "************* testGlob0001 end *************");
     })
 
     /**
@@ -1349,7 +1349,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc begin with * by glob.
      */
     it('testGlob0002', 0, async function (done) {
-        console.log(TAG + "************* testGlob0002 start *************");
+        console.info(TAG + "************* testGlob0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.glob("stringValue", "*LMN");
@@ -1361,7 +1361,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGlob0002 end *************");
+        console.info(TAG + "************* testGlob0002 end *************");
     })
 
     /**
@@ -1370,7 +1370,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc end with ? by glob.
      */
     it('testGlob0003', 0, async function (done) {
-        console.log(TAG + "************* testGlob0003 start *************");
+        console.info(TAG + "************* testGlob0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.glob("stringValue", "ABCDEFGHIJKLM?");
@@ -1382,7 +1382,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGlob0003 end *************");
+        console.info(TAG + "************* testGlob0003 end *************");
     })
 
     /**
@@ -1391,7 +1391,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc begin with ? by glob.
      */
     it('testGlob0004', 0, async function (done) {
-        console.log(TAG + "************* testGlob0004 start *************");
+        console.info(TAG + "************* testGlob0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.glob("stringValue", "?BCDEFGHIJKLMN");
@@ -1403,7 +1403,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGlob0004 end *************");
+        console.info(TAG + "************* testGlob0004 end *************");
     })
 
     /**
@@ -1412,7 +1412,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc begin and end with * by glob.
      */
     it('testGlob0005', 0, async function (done) {
-        console.log(TAG + "************* testGlob0005 start *************");
+        console.info(TAG + "************* testGlob0005 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.glob("stringValue", "*FGHI*");
@@ -1424,7 +1424,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGlob0005 end *************");
+        console.info(TAG + "************* testGlob0005 end *************");
     })
 
     /**
@@ -1433,7 +1433,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc begin and end with ? by glob.
      */
     it('testGlob0006', 0, async function (done) {
-        console.log(TAG + "************* testGlob0006 start *************");
+        console.info(TAG + "************* testGlob0006 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.glob("stringValue", "?BCDEFGHIJKLM?");
@@ -1445,7 +1445,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testGlob0006 end *************");
+        console.info(TAG + "************* testGlob0006 end *************");
     })
 
     /**
@@ -1454,7 +1454,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates contains normal test
      */
     it('testContains0001', 0, async function (done) {
-        console.log(TAG + "************* testContains0001 start *************");
+        console.info(TAG + "************* testContains0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.contains("stringValue", "DEF");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1463,7 +1463,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testContains0001 end *************");
+        console.info(TAG + "************* testContains0001 end *************");
     })
 
     /**
@@ -1472,7 +1472,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates contains normal test
      */
     it('testContains0002', 0, async function (done) {
-        console.log(TAG + "************* testContains0002 start *************");
+        console.info(TAG + "************* testContains0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.contains("stringValue", "DEFX");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1481,7 +1481,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(0).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testContains0002 end *************");
+        console.info(TAG + "************* testContains0002 end *************");
     })
 
     /**
@@ -1490,7 +1490,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates contains normal test
      */
     it('testContains0003', 0, async function (done) {
-        console.log(TAG + "************* testContains0003 start *************");
+        console.info(TAG + "************* testContains0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.contains("characterValue", "中");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1499,7 +1499,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(1).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testContains0003 end *************");
+        console.info(TAG + "************* testContains0003 end *************");
     })
 
     /**
@@ -1508,7 +1508,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates contains normal test
      */
     it('testContains0004', 0, async function (done) {
-        console.log(TAG + "************* testContains0004 start *************");
+        console.info(TAG + "************* testContains0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.contains("characterValue", "#");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1517,7 +1517,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(1).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testContains0004 end *************");
+        console.info(TAG + "************* testContains0004 end *************");
     })
 
     /**
@@ -1526,7 +1526,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates beginsWith normal test
      */
     it('testBeginsWith0001', 0, async function (done) {
-        console.log(TAG + "************* testBeginsWith0001 start *************");
+        console.info(TAG + "************* testBeginsWith0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.beginsWith("stringValue", "ABC");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1535,7 +1535,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testBeginsWith0001 end *************");
+        console.info(TAG + "************* testBeginsWith0001 end *************");
     })
 
     /**
@@ -1544,7 +1544,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates beginsWith normal test
      */
     it('testBeginsWith0002', 0, async function (done) {
-        console.log(TAG + "************* testBeginsWith0002 start *************");
+        console.info(TAG + "************* testBeginsWith0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.beginsWith("stringValue", "ABCX");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1553,7 +1553,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(0).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testBeginsWith0002 end *************");
+        console.info(TAG + "************* testBeginsWith0002 end *************");
     })
 
     /**
@@ -1562,7 +1562,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates beginsWith normal test
      */
     it('testBeginsWith0003', 0, async function (done) {
-        console.log(TAG + "************* testBeginsWith0003 start *************");
+        console.info(TAG + "************* testBeginsWith0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.beginsWith("characterValue", "中");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1571,7 +1571,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(1).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testBeginsWith0003 end *************");
+        console.info(TAG + "************* testBeginsWith0003 end *************");
     })
 
     /**
@@ -1580,7 +1580,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates beginsWith normal test
      */
     it('testBeginsWith0004', 0, async function (done) {
-        console.log(TAG + "************* testBeginsWith0004 start *************");
+        console.info(TAG + "************* testBeginsWith0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.beginsWith("characterValue", "#");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1589,7 +1589,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(1).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testBeginsWith0004 end *************");
+        console.info(TAG + "************* testBeginsWith0004 end *************");
     })
 
     /**
@@ -1598,7 +1598,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates endsWith normal test
      */
     it('testEndsWith0001', 0, async function (done) {
-        console.log(TAG + "************* testEndsWith0001 start *************");
+        console.info(TAG + "************* testEndsWith0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.endsWith("stringValue", "LMN");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1607,7 +1607,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testEndsWith0001 end *************");
+        console.info(TAG + "************* testEndsWith0001 end *************");
     })
 
     /**
@@ -1616,7 +1616,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates endsWith normal test
      */
     it('testEndsWith0002', 0, async function (done) {
-        console.log(TAG + "************* testEndsWith0002 start *************");
+        console.info(TAG + "************* testEndsWith0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.endsWith("stringValue", "LMNX");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1625,7 +1625,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(0).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testEndsWith0002 end *************");
+        console.info(TAG + "************* testEndsWith0002 end *************");
     })
 
     /**
@@ -1634,7 +1634,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates endsWith normal test
      */
     it('testEndsWith0003', 0, async function (done) {
-        console.log(TAG + "************* testEndsWith0003 start *************");
+        console.info(TAG + "************* testEndsWith0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.endsWith("characterValue", "中");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1643,7 +1643,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(1).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testEndsWith0003 end *************");
+        console.info(TAG + "************* testEndsWith0003 end *************");
     })
 
     /**
@@ -1652,7 +1652,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates endsWith normal test
      */
     it('testEndsWith0004', 0, async function (done) {
-        console.log(TAG + "************* testEndsWith0004 start *************");
+        console.info(TAG + "************* testEndsWith0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.endsWith("characterValue", "#");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1661,7 +1661,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(1).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testEndsWith0004 end *************");
+        console.info(TAG + "************* testEndsWith0004 end *************");
     })
 
     /**
@@ -1670,7 +1670,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates like normal test
      */
     it('testLike0001', 0, async function (done) {
-        console.log(TAG + "************* testLike0001 start *************");
+        console.info(TAG + "************* testLike0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "%LMN%");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1679,7 +1679,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testLike0001 end *************");
+        console.info(TAG + "************* testLike0001 end *************");
     })
 
     /**
@@ -1688,7 +1688,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates like normal test
      */
     it('testLike0002', 0, async function (done) {
-        console.log(TAG + "************* testLike0002 start *************");
+        console.info(TAG + "************* testLike0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "%LMNX%");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1697,7 +1697,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(0).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testLike0002 end *************");
+        console.info(TAG + "************* testLike0002 end *************");
     })
 
     /**
@@ -1706,7 +1706,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates like normal test
      */
     it('testLike0003', 0, async function (done) {
-        console.log(TAG + "************* testLike0003 start *************");
+        console.info(TAG + "************* testLike0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("characterValue", "%中%");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1715,7 +1715,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(1).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testLike0003 end *************");
+        console.info(TAG + "************* testLike0003 end *************");
     })
 
     /**
@@ -1724,7 +1724,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates like normal test
      */
     it('testLike0004', 0, async function (done) {
-        console.log(TAG + "************* testLike0004 start *************");
+        console.info(TAG + "************* testLike0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("characterValue", "%#%");
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -1733,7 +1733,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(1).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testLike0004 end *************");
+        console.info(TAG + "************* testLike0004 end *************");
     })
 
     /**
@@ -1742,7 +1742,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0001', 0, async function (done) {
-        console.log(TAG + "************* testBeginWrap0001 start *************");
+        console.info(TAG + "************* testBeginWrap0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
@@ -1758,7 +1758,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testBeginWrap0001 end *************");
+        console.info(TAG + "************* testBeginWrap0001 end *************");
     })
 
     /**
@@ -1767,7 +1767,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0002', 0, async function (done) {
-        console.log(TAG + "************* testBeginWrap0002 start *************");
+        console.info(TAG + "************* testBeginWrap0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
@@ -1781,7 +1781,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testBeginWrap0002 end *************");
+        console.info(TAG + "************* testBeginWrap0002 end *************");
     })
 
     /**
@@ -1790,7 +1790,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0003', 0, async function (done) {
-        console.log(TAG + "************* testBeginWrap0003 start *************");
+        console.info(TAG + "************* testBeginWrap0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
@@ -1804,7 +1804,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testBeginWrap0003 end *************");
+        console.info(TAG + "************* testBeginWrap0003 end *************");
     })
 
     /**
@@ -1813,7 +1813,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0004', 0, async function (done) {
-        console.log(TAG + "************* testBeginWrap0004 start *************");
+        console.info(TAG + "************* testBeginWrap0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
@@ -1826,7 +1826,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testBeginWrap0004 end *************");
+        console.info(TAG + "************* testBeginWrap0004 end *************");
     })
 
     /**
@@ -1835,7 +1835,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates beginWrap normal test
      */
     it('testBeginWrap0005', 0, async function (done) {
-        console.log(TAG + "************* testBeginWrap0005 start *************");
+        console.info(TAG + "************* testBeginWrap0005 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
@@ -1848,7 +1848,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testBeginWrap0005 end *************");
+        console.info(TAG + "************* testBeginWrap0005 end *************");
     })
 
     /**
@@ -1857,7 +1857,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates and normal test
      */
     it('testAnd0001', 0, async function (done) {
-        console.log(TAG + "************* testAnd0001 start *************");
+        console.info(TAG + "************* testAnd0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
@@ -1870,7 +1870,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testAnd0001 end *************");
+        console.info(TAG + "************* testAnd0001 end *************");
     })
 
     /**
@@ -1879,7 +1879,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates or normal test
      */
     it('testAnd0002', 0, async function (done) {
-        console.log(TAG + "************* testAnd0002 start *************");
+        console.info(TAG + "************* testAnd0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
@@ -1895,7 +1895,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testAnd0002 end *************");
+        console.info(TAG + "************* testAnd0002 end *************");
     })
 
     /**
@@ -1904,16 +1904,16 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates and normal test
      */
     it('testAnd0003', 0, async function (done) {
-        console.log(TAG + "************* testAnd0003 start *************");
+        console.info(TAG + "************* testAnd0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN").or().and().equalTo("integerValue", 1);
             let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
 
-            console.log(TAG + "you should not start a request" + " with \"and\" or use or() before this function");
+            console.info(TAG + "you should not start a request" + " with \"and\" or use or() before this function");
         }
         done();
-        console.log(TAG + "************* testAnd0003 end *************");
+        console.info(TAG + "************* testAnd0003 end *************");
     })
 
     /**
@@ -1922,17 +1922,17 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates and normal test
      */
     it('testAnd0004', 0, async function (done) {
-        console.log(TAG + "************* testAnd0004 start *************");
+        console.info(TAG + "************* testAnd0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN").or().or().equalTo("integerValue", 1);
             let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
 
-            console.log(TAG + "you are starting a sql request with predicate or or,"
+            console.info(TAG + "you are starting a sql request with predicate or or,"
                 + "using function or() immediately after another or(). that is ridiculous.");
         }
         done();
-        console.log(TAG + "************* testAnd0004 end *************");
+        console.info(TAG + "************* testAnd0004 end *************");
     })
 
     /**
@@ -1941,7 +1941,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates order normal test
      */
     it('testOrder0001', 0, async function (done) {
-        console.log(TAG + "************* testOrder0001 start *************");
+        console.info(TAG + "************* testOrder0001 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN").orderByAsc("integerValue").distinct();
@@ -1958,7 +1958,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testOrder0001 end *************");
+        console.info(TAG + "************* testOrder0001 end *************");
     })
 
     /**
@@ -1967,7 +1967,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates order normal test
      */
     it('testOrder0002', 0, async function (done) {
-        console.log(TAG + "************* testOrder0002 start *************");
+        console.info(TAG + "************* testOrder0002 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN").orderByDesc("integerValue").distinct();
@@ -1984,7 +1984,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testOrder0002 end *************");
+        console.info(TAG + "************* testOrder0002 end *************");
     })
 
     /**
@@ -1993,7 +1993,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates order normal test
      */
     it('testOrder0003', 0, async function (done) {
-        console.log(TAG + "************* testOrder0003 start *************");
+        console.info(TAG + "************* testOrder0003 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN").orderByDesc("integerValueX").distinct();
@@ -2004,7 +2004,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testOrder0003 end *************");
+        console.info(TAG + "************* testOrder0003 end *************");
     })
 
     /**
@@ -2013,7 +2013,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates order normal test
      */
     it('testOrder0004', 0, async function (done) {
-        console.log(TAG + "************* testOrder0004 start *************");
+        console.info(TAG + "************* testOrder0004 start *************");
         {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN").orderByAsc("integerValueX").distinct();
@@ -2024,7 +2024,7 @@ describe('dataAbilityPredicatesTest', function () {
             result = null
         }
         done();
-        console.log(TAG + "************* testOrder0004 end *************");
+        console.info(TAG + "************* testOrder0004 end *************");
     })
 
     /**
@@ -2033,7 +2033,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates limit normal test
      */
     it('testLimit0001', 0, async function (done) {
-        console.log(TAG + "************* testLimit0001 start *************");
+        console.info(TAG + "************* testLimit0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(1);
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2042,7 +2042,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(1).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testLimit0001 end *************");
+        console.info(TAG + "************* testLimit0001 end *************");
     })
 
     /**
@@ -2051,7 +2051,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates limit normal test
      */
     it('testLimit0002', 0, async function (done) {
-        console.log(TAG + "************* testLimit0002 start *************");
+        console.info(TAG + "************* testLimit0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3);
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2060,7 +2060,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testLimit0002 end *************");
+        console.info(TAG + "************* testLimit0002 end *************");
     })
 
     /**
@@ -2069,7 +2069,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates limit normal test
      */
     it('testLimit0003', 0, async function (done) {
-        console.log(TAG + "************* testLimit0003 start *************");
+        console.info(TAG + "************* testLimit0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(100);
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2078,7 +2078,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testLimit0003 end *************");
+        console.info(TAG + "************* testLimit0003 end *************");
     })
 
     /**
@@ -2087,7 +2087,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates limit normal test
      */
     it('testLimit0004', 0, async function (done) {
-        console.log(TAG + "************* testLimit0004 start *************");
+        console.info(TAG + "************* testLimit0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "中").limitAs(1);
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2096,7 +2096,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(0).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testLimit0004 end *************");
+        console.info(TAG + "************* testLimit0004 end *************");
     })
 
     /**
@@ -2105,7 +2105,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates limit normal test
      */
     it('testLimit0005', 0, async function (done) {
-        console.log(TAG + "************* testLimit0005 start *************");
+        console.info(TAG + "************* testLimit0005 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(0);
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2114,7 +2114,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testLimit0005 end *************");
+        console.info(TAG + "************* testLimit0005 end *************");
     })
 
     /**
@@ -2123,7 +2123,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates limit normal test
      */
     it('testLimit0006', 0, async function (done) {
-        console.log(TAG + "************* testLimit0006 start *************");
+        console.info(TAG + "************* testLimit0006 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(-1);
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2132,7 +2132,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testLimit0006 end *************");
+        console.info(TAG + "************* testLimit0006 end *************");
     })
 
     /**
@@ -2141,7 +2141,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates offset normal test
      */
     it('testOffset0001', 0, async function (done) {
-        console.log(TAG + "************* testOffset0001 start *************");
+        console.info(TAG + "************* testOffset0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(1);
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2150,7 +2150,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(2).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testOffset0001 end *************");
+        console.info(TAG + "************* testOffset0001 end *************");
     })
 
     /**
@@ -2159,7 +2159,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates offset normal test
      */
     it('testOffset0002', 0, async function (done) {
-        console.log(TAG + "************* testOffset0002 start *************");
+        console.info(TAG + "************* testOffset0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(0);
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2168,7 +2168,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testOffset0002 end *************");
+        console.info(TAG + "************* testOffset0002 end *************");
     })
 
     /**
@@ -2177,7 +2177,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates offset normal test
      */
     it('testOffset0003', 0, async function (done) {
-        console.log(TAG + "************* testOffset0003 start *************");
+        console.info(TAG + "************* testOffset0003 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(5);
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2186,7 +2186,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(0).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testOffset0003 end *************");
+        console.info(TAG + "************* testOffset0003 end *************");
     })
 
     /**
@@ -2195,7 +2195,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates offset normal test
      */
     it('testOffset0004', 0, async function (done) {
-        console.log(TAG + "************* testOffset0004 start *************");
+        console.info(TAG + "************* testOffset0004 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(-1);
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2204,7 +2204,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testOffset0004 end *************");
+        console.info(TAG + "************* testOffset0004 end *************");
     })
 
     /**
@@ -2213,13 +2213,13 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates constructor test
      */
     it('testCreate0001', 0, async function (done) {
-        console.log(TAG + "************* testCreate0001 start *************");
+        console.info(TAG + "************* testCreate0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
         done();
-        console.log(TAG + "************* testCreate0001 end *************");
+        console.info(TAG + "************* testCreate0001 end *************");
     })
 
     /**
@@ -2228,13 +2228,13 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates constructor test
      */
     it('testCreate0002', 0, async function (done) {
-        console.log(TAG + "************* testCreate0002 start *************");
+        console.info(TAG + "************* testCreate0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         let predicates = dataAbility.createRdbPredicates("test", dataAbilityPredicates);
         let result = await rdbStore.query(predicates);
         expect(-1).assertEqual(result.rowCount);
         done();
-        console.log(TAG + "************* testCreate0002 end *************");
+        console.info(TAG + "************* testCreate0002 end *************");
     })
 
 
@@ -2244,7 +2244,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates groupBy test
      */
     it('testGroupBy0001', 0, async function (done) {
-        console.log(TAG + "************* testGroupBy0001 start *************");
+        console.info(TAG + "************* testGroupBy0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").groupBy(["characterValue"]);
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2253,7 +2253,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testGroupBy0001 end *************");
+        console.info(TAG + "************* testGroupBy0001 end *************");
     })
 
     /**
@@ -2262,7 +2262,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates groupBy test
      */
     it('testGroupBy0002', 0, async function (done) {
-        console.log(TAG + "************* testGroupBy0002 start *************");
+        console.info(TAG + "************* testGroupBy0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").groupBy(["characterValueX"]);
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2271,7 +2271,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(-1).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testGroupBy0002 end *************");
+        console.info(TAG + "************* testGroupBy0002 end *************");
     })
 
     /**
@@ -2280,7 +2280,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates indexedBy test
      */
     it('testIndexedBy0001', 0, async function (done) {
-        console.log(TAG + "************* testIndexedBy0001 start *************");
+        console.info(TAG + "************* testIndexedBy0001 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy(["characterValue"]);
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2289,7 +2289,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testIndexedBy0001 end *************");
+        console.info(TAG + "************* testIndexedBy0001 end *************");
     })
 
     /**
@@ -2298,7 +2298,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates indexedBy test
      */
     it('testIndexedBy0002', 0, async function (done) {
-        console.log(TAG + "************* testIndexedBy0002 start *************");
+        console.info(TAG + "************* testIndexedBy0002 start *************");
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy(["characterValueX"]);
         let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
@@ -2306,7 +2306,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(3).assertEqual(result.rowCount);
         result = null
         done();
-        console.log(TAG + "************* testIndexedBy0002 end *************");
+        console.info(TAG + "************* testIndexedBy0002 end *************");
     })
 
     /**
@@ -2315,7 +2315,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc the common and min value test with notin.
      */
     it('testNotIn0001', 0, async function (done) {
-        console.log(TAG + "************* testNotIn0001 start *************");
+        console.info(TAG + "************* testNotIn0001 start *************");
         var values = [1, -2147483648];
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.notIn("integerValue", values);
@@ -2325,7 +2325,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(1).assertEqual(result.rowCount);
         result.close();
         done();
-        console.log(TAG + "************* testNotIn0001 end *************");
+        console.info(TAG + "************* testNotIn0001 end *************");
     })
 
     /**
@@ -2334,7 +2334,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc the common and max value test with notin.
      */
     it('testNotIn0002', 0, async function (done) {
-        console.log(TAG + "************* testNotIn0002 start *************");
+        console.info(TAG + "************* testNotIn0002 start *************");
         let values = [1, 2147483647];
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.notIn("integerValue", values);
@@ -2344,7 +2344,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(1).assertEqual(result.rowCount);
         result.close();
         done();
-        console.log(TAG + "************* testNotIn0002 end *************");
+        console.info(TAG + "************* testNotIn0002 end *************");
     })
 
     /**
@@ -2353,7 +2353,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc the min and max value test with notin.
      */
     it('testNotIn0003', 0, async function (done) {
-        console.log(TAG + "************* testNotIn0003 start *************");
+        console.info(TAG + "************* testNotIn0003 start *************");
         var values = [-2147483648, 2147483647];
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.notIn("integerValue", values);
@@ -2363,7 +2363,7 @@ describe('dataAbilityPredicatesTest', function () {
         expect(1).assertEqual(result.rowCount);
         result.close();
         done();
-        console.log(TAG + "************* testNotIn0003 end *************");
+        console.info(TAG + "************* testNotIn0003 end *************");
     })
 
     /**
@@ -2372,7 +2372,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates in normal test
      */
     it('testIn0001', 0, async function (done) {
-        console.log(TAG + "************* testIn0001 start *************");
+        console.info(TAG + "************* testIn0001 start *************");
         var values = [Number.MIN_VALUE.toString()];
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.in("doubleValue", values);
@@ -2380,7 +2380,7 @@ describe('dataAbilityPredicatesTest', function () {
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
         done();
-        console.log(TAG + "************* testIn0001 end *************");
+        console.info(TAG + "************* testIn0001 end *************");
     })
 
     /**
@@ -2389,7 +2389,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates in normal test
      */
     it('testIn0002', 0, async function (done) {
-        console.log(TAG + "************* testIn0002 start *************");
+        console.info(TAG + "************* testIn0002 start *************");
         var values = ["1.0"];
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.in("doubleValue", values);
@@ -2397,7 +2397,7 @@ describe('dataAbilityPredicatesTest', function () {
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
         done();
-        console.log(TAG + "************* testIn0002 end *************");
+        console.info(TAG + "************* testIn0002 end *************");
     })
 
     /**
@@ -2406,7 +2406,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates in normal test
      */
     it('testIn0003', 0, async function (done) {
-        console.log(TAG + "************* testIn0003 start *************");
+        console.info(TAG + "************* testIn0003 start *************");
         var values = [DOUBLE_MAX.toString()];
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.in("doubleValue", values);
@@ -2414,7 +2414,7 @@ describe('dataAbilityPredicatesTest', function () {
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
         done();
-        console.log(TAG + "************* testIn0003 end *************");
+        console.info(TAG + "************* testIn0003 end *************");
     })
 
     /**
@@ -2423,7 +2423,7 @@ describe('dataAbilityPredicatesTest', function () {
      * @tc.desc predicates in normal test
      */
     it('testIn0004', 0, async function (done) {
-        console.log(TAG + "************* testIn0004 start *************");
+        console.info(TAG + "************* testIn0004 start *************");
         var values = [Number.MIN_VALUE.toString(), "1.0", DOUBLE_MAX.toString()];
         let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
         dataAbilityPredicates.in("doubleValue", values);
@@ -2431,7 +2431,7 @@ describe('dataAbilityPredicatesTest', function () {
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
         done();
-        console.log(TAG + "************* testIn0004 end *************");
+        console.info(TAG + "************* testIn0004 end *************");
     })
-    console.log(TAG + "*************Unit Test End*************");
+    console.info(TAG + "*************Unit Test End*************");
 })

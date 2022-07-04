@@ -23,7 +23,7 @@ const STORE_CONFIG = {
 }
 var rdbStore = undefined;
 
-describe('rdbStoreInsertTest_insert3', function () {
+describe('rdbstoreStoreExcuteSqlTest', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
         rdbStore = await dataRdb.getRdbStore(STORE_CONFIG, 1);
@@ -51,7 +51,7 @@ describe('rdbStoreInsertTest_insert3', function () {
      * @tc.desc resultSet ExcuteSql normal test
      */
     it('ExcuteSqlTest0001', 0, async function (done) {
-        console.log(TAG + "************* ExcuteSqlTest0001 start *************");
+        console.info(TAG + "************* ExcuteSqlTest0001 start *************");
         var u8 = new Uint8Array([1, 2, 3])
         //插入
         {
@@ -64,7 +64,7 @@ describe('rdbStoreInsertTest_insert3', function () {
             let insertPromise = rdbStore.insert("test", valueBucket)
             insertPromise.then(async (ret) => {
                 expect(1).assertEqual(ret);
-                await console.log(TAG + "insert done: " + ret);
+                await console.info(TAG + "insert done: " + ret);
             }).catch((err) => {
                 expect(null).assertFail();
             })
@@ -80,7 +80,7 @@ describe('rdbStoreInsertTest_insert3', function () {
             let insertPromise = rdbStore.insert("test", valueBucket)
             insertPromise.then(async (ret) => {
                 expect(2).assertEqual(ret);
-                await console.log(TAG + "insert done: " + ret);
+                await console.info(TAG + "insert done: " + ret);
             }).catch((err) => {
                 expect(null).assertFail();
             })
@@ -96,7 +96,7 @@ describe('rdbStoreInsertTest_insert3', function () {
             let insertPromise = rdbStore.insert("test", valueBucket)
             insertPromise.then(async (ret) => {
                 expect(3).assertEqual(ret);
-                await console.log(TAG + "insert done: " + ret);
+                await console.info(TAG + "insert done: " + ret);
             }).catch((err) => {
                 expect(null).assertFail();
             })
@@ -106,7 +106,7 @@ describe('rdbStoreInsertTest_insert3', function () {
         {
             let executeSqlPromise = rdbStore.executeSql("DELETE FROM test WHERE age = ? OR age = ?", ["18", "20"])
             executeSqlPromise.then(async (resultSet) => {
-                await console.log(TAG + "executeSql done: " + resultSet);
+                await console.info(TAG + "executeSql done: " + resultSet);
             }).catch((err) => {
                 expect(null).assertFail();
             })
@@ -122,7 +122,7 @@ describe('rdbStoreInsertTest_insert3', function () {
             await querySqlPromise
         }
         done();
-        console.log(TAG + "************* ExcuteSqlTest0001 end   *************");
+        console.info(TAG + "************* ExcuteSqlTest0001 end   *************");
     })
 
     /**
@@ -131,7 +131,7 @@ describe('rdbStoreInsertTest_insert3', function () {
      * @tc.desc resultSet ExcuteSql normal test
      */
     it('ExcuteSqlTest0002', 0, async function (done) {
-        console.log(TAG + "************* ExcuteSqlTest0002 start *************");
+        console.info(TAG + "************* ExcuteSqlTest0002 start *************");
         var u8 = new Uint8Array([2, 3, 4])
         //插入
         {
@@ -144,7 +144,7 @@ describe('rdbStoreInsertTest_insert3', function () {
             let insertPromise = rdbStore.insert("test", valueBucket)
             insertPromise.then(async (ret) => {
                 expect(4).assertEqual(ret);
-                await console.log(TAG + "insert done: " + ret);
+                await console.info(TAG + "insert done: " + ret);
             }).catch((err) => {
                 expect(null).assertFail();
             })
@@ -160,7 +160,7 @@ describe('rdbStoreInsertTest_insert3', function () {
             let insertPromise = rdbStore.insert("test", valueBucket)
             insertPromise.then(async (ret) => {
                 expect(5).assertEqual(ret);
-                await console.log(TAG + "insert done: " + ret);
+                await console.info(TAG + "insert done: " + ret);
             }).catch((err) => {
                 expect(null).assertFail();
             })
@@ -176,7 +176,7 @@ describe('rdbStoreInsertTest_insert3', function () {
             let insertPromise = rdbStore.insert("test", valueBucket)
             insertPromise.then(async (ret) => {
                 expect(6).assertEqual(ret);
-                await console.log(TAG + "insert done: " + ret);
+                await console.info(TAG + "insert done: " + ret);
             }).catch((err) => {
                 expect(null).assertFail();
             })
@@ -185,7 +185,7 @@ describe('rdbStoreInsertTest_insert3', function () {
         {
             let executeSqlPromise = rdbStore.executeSql("DELETE FROM test WHERE name = 'lisi'")
             executeSqlPromise.then(async () => {
-                await console.log(TAG + "executeSql done");
+                await console.info(TAG + "executeSql done");
             }).catch((err) => {
                 expect(null).assertFail();
             })
@@ -201,7 +201,7 @@ describe('rdbStoreInsertTest_insert3', function () {
             await querySqlPromise
         }
         done();
-        console.log(TAG + "************* ExcuteSqlTest0002 end   *************");
+        console.info(TAG + "************* ExcuteSqlTest0002 end   *************");
     })
 
     /**
@@ -210,7 +210,7 @@ describe('rdbStoreInsertTest_insert3', function () {
      * @tc.desc resultSet ExcuteSql normal test
      */
     it('ExcuteSqlTest0003', 0, async function (done) {
-        console.log(TAG + "************* ExcuteSqlTest0003 start *************");
+        console.info(TAG + "************* ExcuteSqlTest0003 start *************");
         var u8 = new Uint8Array([3, 4, 5])
         //插入
         {
@@ -223,7 +223,7 @@ describe('rdbStoreInsertTest_insert3', function () {
             let insertPromise = rdbStore.insert("test", valueBucket)
             insertPromise.then(async (ret) => {
                 expect(7).assertEqual(ret);
-                await console.log(TAG + "insert done: " + ret);
+                await console.info(TAG + "insert done: " + ret);
             }).catch((err) => {
                 expect(null).assertFail();
             })
@@ -239,7 +239,7 @@ describe('rdbStoreInsertTest_insert3', function () {
             let insertPromise = rdbStore.insert("test", valueBucket)
             insertPromise.then(async (ret) => {
                 expect(8).assertEqual(ret);
-                await console.log(TAG + "insert done: " + ret);
+                await console.info(TAG + "insert done: " + ret);
             }).catch((err) => {
                 expect(null).assertFail();
             })
@@ -255,7 +255,7 @@ describe('rdbStoreInsertTest_insert3', function () {
             let insertPromise = rdbStore.insert("test", valueBucket)
             insertPromise.then(async (ret) => {
                 expect(9).assertEqual(ret);
-                await console.log(TAG + "insert done: " + ret);
+                await console.info(TAG + "insert done: " + ret);
             }).catch((err) => {
                 expect(null).assertFail();
             })
@@ -264,14 +264,14 @@ describe('rdbStoreInsertTest_insert3', function () {
         {
             let QuerySqlPromise = rdbStore.executeSql("DROP TABLE IF EXISTS test")
             QuerySqlPromise.then(async (resultSet) => {
-                await console.log(TAG + "executeSql done: " + resultSet);
+                await console.info(TAG + "executeSql done: " + resultSet);
             }).catch((err) => {
                 expect(null).assertFail();
             })
             await QuerySqlPromise
         }
         done();
-        console.log(TAG + "************* ExcuteSqlTest0003 end   *************");
+        console.info(TAG + "************* ExcuteSqlTest0003 end   *************");
     })
-    console.log(TAG + "*************Unit Test End*************");
+    console.info(TAG + "*************Unit Test End*************");
 })

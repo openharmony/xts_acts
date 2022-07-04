@@ -28,13 +28,13 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.equalTo("test", 3);
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
             expect(query.getSqlLike() !== "").assertTrue();
             query.reset();
             expect("").assertEqual(query.getSqlLike());
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("simply calls should be ok : " + e);
+            console.info("simply calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -54,16 +54,16 @@ describe('QueryTest', function() {
             query.equalTo("number", 5);
             query.equalTo("string", 'v');
             query.equalTo("boolean", false);
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
             expect(query.getSqlLike() !== "").assertTrue();
             query.reset();
             query.reset();
             query.reset();
             expect("").assertEqual(query.getSqlLike());
-            console.log("sql after  reset: " + query.getSqlLike());
-            console.log("query is " + query.getSqlLike());
+            console.info("sql after  reset: " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -84,10 +84,10 @@ describe('QueryTest', function() {
             expect(query.getSqlLike() !== "").assertTrue();
             let sql = query.getSqlLike();
             query.reset().equalTo("key", "value");
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
             expect(sql === query.getSqlLike()).assertTrue();
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -107,10 +107,10 @@ describe('QueryTest', function() {
             query.equalTo("key", "value");
             expect(query.getSqlLike() !== "").assertTrue();
             query.reset(3);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -131,9 +131,9 @@ describe('QueryTest', function() {
             query.equalTo("key3", false);
             query.equalTo("key3", "string");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -152,9 +152,9 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.equalTo("key1", 1).equalTo("key2", 2).equalTo("key3", 3);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -173,7 +173,7 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.equalTo("key2", NaN);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
             expect(null).assertFail();
         }
@@ -192,11 +192,11 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.equalTo("key1", "value", "too more");
-            console.log("should throw exception on invalid arguments");
-            console.log("query is " + query.getSqlLike());
+            console.info("should throw exception on invalid arguments");
+            console.info("query is " + query.getSqlLike());
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -217,9 +217,9 @@ describe('QueryTest', function() {
             query.notEqualTo("key3", false);
             query.notEqualTo("key4", "string");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -240,9 +240,9 @@ describe('QueryTest', function() {
             query.reset();
             query.notEqualTo("key0", 5).equalTo("key1", 5).notEqualTo("key2", "str").notEqualTo("key3", false);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -261,7 +261,7 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.notEqualTo("key2", NaN);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
             expect(null).assertFail();
         }
@@ -280,9 +280,9 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.notEqualTo("key1", "value", "too more", 4);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -303,9 +303,9 @@ describe('QueryTest', function() {
             query.greaterThan("key3", true);
             query.greaterThan("key4", "string");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -326,9 +326,9 @@ describe('QueryTest', function() {
             query.reset();
             query.greaterThan("key0", 5).greaterThan("key1", "v5").greaterThan("key3", false);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -346,8 +346,8 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.greaterThan("key2", NaN);
-            console.log("should throw exception on invalid arguments");
-            console.log("query is " + query.getSqlLike());
+            console.info("should throw exception on invalid arguments");
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
             expect(null).assertFail();
         }
@@ -366,10 +366,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.greaterThan("key1", "value", "too more", 4);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -390,9 +390,9 @@ describe('QueryTest', function() {
             query.lessThan("key3", true);
             query.lessThan("key4", "string");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
         }
         query = null;
         done();
@@ -412,9 +412,9 @@ describe('QueryTest', function() {
             query.reset();
             query.lessThan("key0", 5).lessThan("key1", "v5").lessThan("key3", false);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertTrue();
         }
         query = null;
@@ -432,7 +432,7 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.lessThan("key2", NaN);
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
             expect(null).assertFail();
         }
@@ -451,10 +451,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.lessThan("key1", "value", "too more", 4);
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -475,9 +475,9 @@ describe('QueryTest', function() {
             query.greaterThanOrEqualTo("key3", true);
             query.greaterThanOrEqualTo("key4", "string");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -500,9 +500,9 @@ describe('QueryTest', function() {
                 .greaterThanOrEqualTo("key1", "v5")
                 .greaterThanOrEqualTo("key3", false);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -521,7 +521,7 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.greaterThanOrEqualTo("key2", NaN);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
             expect(null).assertFail();
         }
@@ -540,10 +540,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.greaterThanOrEqualTo("key1", "value", "too more", 4);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -564,9 +564,9 @@ describe('QueryTest', function() {
             query.lessThanOrEqualTo("key3", true);
             query.lessThanOrEqualTo("key4", "string");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -587,9 +587,9 @@ describe('QueryTest', function() {
             query.reset();
             query.lessThanOrEqualTo("key0", 5).lessThanOrEqualTo("key1", "v5").lessThanOrEqualTo("key3", false);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -607,7 +607,7 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.lessThanOrEqualTo("key2", NaN);
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
             expect(null).assertFail();
         }
@@ -626,10 +626,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.lessThanOrEqualTo("key1", "value", "too more", 4);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -648,9 +648,9 @@ describe('QueryTest', function() {
             query.isNull("key");
             query.isNull("key2");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -669,9 +669,9 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.isNull("key").notEqualTo("key1", 4).isNull("key2");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -689,10 +689,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.isNull("key", 0);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -709,10 +709,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.isNull(0);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -745,40 +745,40 @@ describe('QueryTest', function() {
         try {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
-            console.log("testInNumber001 start ");
+            console.info("testInNumber001 start ");
             var i8 = new Int8Array([-21,31]);
             query.reset().inNumber("key", i8);
-            console.log("inNumber(Int8Array([-21,31])  => " + query.getSqlLike());
+            console.info("inNumber(Int8Array([-21,31])  => " + query.getSqlLike());
             var u8 = new Uint8Array([-21,31]);
             query.reset().inNumber("key", u8);
-            console.log("inNumber(Uint8Array([-21,31])  => " + query.getSqlLike());
+            console.info("inNumber(Uint8Array([-21,31])  => " + query.getSqlLike());
             var c8 = new Uint8ClampedArray([-21,31]);
             query.reset().inNumber("key", c8);
-            console.log("inNumber(Uint8Array([-21,31])  => " + query.getSqlLike());
+            console.info("inNumber(Uint8Array([-21,31])  => " + query.getSqlLike());
             var i16 = new Int16Array([-21,31]);
             query.reset().inNumber("key", i16);
-            console.log("inNumber(Int16Array([-21,31])  => " + query.getSqlLike());
+            console.info("inNumber(Int16Array([-21,31])  => " + query.getSqlLike());
             var u16 = new Uint16Array([-21,31]);
             query.reset().inNumber("key", u16);
-            console.log("inNumber(Uint16Array([-21,31])  => " + query.getSqlLike());
+            console.info("inNumber(Uint16Array([-21,31])  => " + query.getSqlLike());
             var i32 = new Int32Array([-21, 31]);
             query.reset().inNumber("key", i32);
-            console.log("inNumber(Int32Array([-21,31])  => " + query.getSqlLike());
+            console.info("inNumber(Int32Array([-21,31])  => " + query.getSqlLike());
             var u32 = new Uint32Array([-21, 31]);
             query.reset().inNumber("key", u32);
-            console.log("inNumber(UInt32Array([-21,31])  => " + query.getSqlLike());
+            console.info("inNumber(UInt32Array([-21,31])  => " + query.getSqlLike());
             var f32 = new Float32Array([-21, 31]);
             query.reset().inNumber("key", f32);
-            console.log("inNumber(Float32Array([-21,31])  => " + query.getSqlLike());
+            console.info("inNumber(Float32Array([-21,31])  => " + query.getSqlLike());
             var f32e = new Float32Array([21, 31, "a"]); // "a" will be ignored as not a float.
             query.reset().inNumber("key", f32e);
-            console.log("inNumber(Float32Array([-21,31, 'a'])  => " + query.getSqlLike());
+            console.info("inNumber(Float32Array([-21,31, 'a'])  => " + query.getSqlLike());
             var f64 = new Float64Array([-21, 31]);
             query.reset().inNumber("key", f64);
-            console.log("inNumber(Float64Array([-21,31])  => " + query.getSqlLike());
+            console.info("inNumber(Float64Array([-21,31])  => " + query.getSqlLike());
             query.reset();
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -800,9 +800,9 @@ describe('QueryTest', function() {
                 inNumber("key2", [0xf0123456]).
                 inNumber("key2", [0b10101]);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -820,10 +820,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.inNumber("key", 0);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -840,10 +840,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.inNumber([0, 1]);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -863,10 +863,10 @@ describe('QueryTest', function() {
             query.inNumber("key", u64);
             var b64 = new BigInt64Array([21, 31]);
             query.inNumber("key", b64);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -881,27 +881,27 @@ describe('QueryTest', function() {
         var query = null;
         try {
             query = new ddm.Query();
-            console.log("typeof([1, 2, 97])" + typeof([1, 2, 97]))
-            console.log("typeof([1, 2, 97][0])" + typeof([1, 2, 97][0]))
+            console.info("typeof([1, 2, 97])" + typeof([1, 2, 97]))
+            console.info("typeof([1, 2, 97][0])" + typeof([1, 2, 97][0]))
             query.inNumber("key", [1, 2, 97]);
-            console.log("inNumber([1, 2, 97])  => " + query.getSqlLike());
+            console.info("inNumber([1, 2, 97])  => " + query.getSqlLike());
             query.reset();
             query.inNumber("key1", [-1, 3, 987654.123, 0xabc123456]);
-            console.log("inNumber([1, 2, 0xa1234567890123456])  => " + query.getSqlLike());
+            console.info("inNumber([1, 2, 0xa1234567890123456])  => " + query.getSqlLike());
             query.reset();
             query.inNumber("key2", [-1, 3, -987654.123, 0xabc123456]);
-            console.log("inNumber([1, 2, 0xa1234567890123456])  => " + query.getSqlLike());
+            console.info("inNumber([1, 2, 0xa1234567890123456])  => " + query.getSqlLike());
             query.reset();
             query.inNumber("key3", [-1, 4, -987654.123, Number.MAX_VALUE]);
-            console.log("inNumber([1, 2, Number.MAX_VALUE])  => " + query.getSqlLike());
+            console.info("inNumber([1, 2, Number.MAX_VALUE])  => " + query.getSqlLike());
             query.reset();
             query.inNumber("key4", [1, -2.3, Number.MIN_VALUE, Number.MAX_VALUE]);
-            console.log("inNumber([1, -2.3, Number.MAX_VALUE])  => " + query.getSqlLike());
+            console.info("inNumber([1, -2.3, Number.MAX_VALUE])  => " + query.getSqlLike());
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
             query.reset();
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -920,10 +920,10 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.inString("key", ["a2z" , 'z2a']);
             query.inString("key2", ["AAA" ]);
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
             expect(query.getSqlLike() !== "").assertTrue();
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -944,9 +944,9 @@ describe('QueryTest', function() {
                 .inString("key2", ["AAA" ])
                 .inString("key2", ["AAA", "AAABBB","CCCAAA" ]);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -964,10 +964,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.inString("key", 0);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -984,10 +984,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.inString("key", [0, 1]);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1006,9 +1006,9 @@ describe('QueryTest', function() {
             query.notInNumber("key", [1, 2]);
             query.notInNumber("key", [1000]);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1027,9 +1027,9 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.notInNumber("key", [1, 2, 3]).notInNumber("key", [1, 7, 8]).notEqualTo("kkk", 5);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1047,10 +1047,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.notInNumber("key", [1], 2);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1068,10 +1068,10 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.notInNumber("key", ["string"]);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1090,9 +1090,9 @@ describe('QueryTest', function() {
             query.notInString("key", ["v1", "v2"]);
             query.notInString("key", ["v1", "NaN"]);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1111,9 +1111,9 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.notInString("key", ["v1", "v2", "v3"]).notEqualTo("kkk", "v3");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1131,10 +1131,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.notInString("key", ["", "abccd"], 2);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1151,10 +1151,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.notInString("key", [1, 2]);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1173,9 +1173,9 @@ describe('QueryTest', function() {
             query.like("key", "v1");
             query.like("key2", "v2");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1194,9 +1194,9 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.like("key", "v1").like("key", "v3").like("key", "v2");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1214,10 +1214,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.like("key", 0);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1234,10 +1234,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.like("key", "str1", "str2");
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1255,9 +1255,9 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.unlike("key", "v1");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1276,9 +1276,9 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.unlike("key", "v1").unlike("key", "v3").unlike("key", "v2");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1296,10 +1296,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.unlike("key", 0);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1316,10 +1316,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.unlike("key", "str1", "str2");
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1339,9 +1339,9 @@ describe('QueryTest', function() {
             query.and();
             query.notEqualTo("key", "v1");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1360,9 +1360,9 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.equalTo("key1", 0).and().equalTo("key2", "v1");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1382,7 +1382,7 @@ describe('QueryTest', function() {
             query.notEqualTo("key", 0).and().notEqualTo("key", 1).and();
             expect(query.getSqlLike() !== "").assertTrue();
             query.reset();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
             expect(null).assertFail();
         }
@@ -1401,10 +1401,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.notEqualTo("key", 0).and(1).notInNumber("key", [1, 3]);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1424,9 +1424,9 @@ describe('QueryTest', function() {
             query.or();
             query.notEqualTo("key", "v1");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1446,9 +1446,9 @@ describe('QueryTest', function() {
             query.equalTo("key1", 0).or().equalTo("key2", "v1");
             expect(query.getSqlLike() !== "").assertTrue();
             query.reset();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1466,12 +1466,12 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.notEqualTo("key", 0).or();
-            console.log("or ... sql:" + query.getSqlLike());
+            console.info("or ... sql:" + query.getSqlLike());
             expect(query.getSqlLike() !== "").assertTrue();
             query.reset();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1489,10 +1489,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.notEqualTo("key", 0).or(1).notInNumber("key", [1, 3]);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1511,9 +1511,9 @@ describe('QueryTest', function() {
             query.notEqualTo("key", 0);
             query.orderByAsc("sortbykey");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1532,9 +1532,9 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.notEqualTo("key", "V0").orderByAsc("sortbykey1").orderByAsc("sortbykey2");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1552,10 +1552,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.notEqualTo("key", false).orderByAsc(1);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1572,10 +1572,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.orderByAsc();
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1594,9 +1594,9 @@ describe('QueryTest', function() {
             query.notEqualTo("key", 0);
             query.orderByDesc("sortbykey");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1615,9 +1615,9 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.notEqualTo("key", "V0").orderByDesc("sortbykey1").orderByDesc("sortbykey2");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1635,10 +1635,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.notEqualTo("key", false).orderByDesc(1);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1655,10 +1655,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.orderByDesc();
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1677,9 +1677,9 @@ describe('QueryTest', function() {
             query.notEqualTo("key", "vx");
             query.limit(10, 2);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1699,9 +1699,9 @@ describe('QueryTest', function() {
             query.notEqualTo("key", "vx").limit(10, 2)
                 .equalTo("key2", 2).limit(10, 2);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1719,11 +1719,11 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.notEqualTo("key", false).limit(10, 2, "any");
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1740,10 +1740,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.notEqualTo("key", false).limit(10);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1760,11 +1760,11 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.notEqualTo("key", false).limit("any", 10);
-            console.log("should throw exception on invalid arguments");
-            console.log("query is " + query.getSqlLike());
+            console.info("should throw exception on invalid arguments");
+            console.info("query is " + query.getSqlLike());
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1782,9 +1782,9 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.isNotNull("key");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1803,9 +1803,9 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.isNotNull("key1").and().notEqualTo("key1", 123);
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1823,10 +1823,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.isNotNull("key2", "any");
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1843,10 +1843,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.isNotNull(1);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1866,9 +1866,9 @@ describe('QueryTest', function() {
             query.isNotNull("$.name");
             query.endGroup();
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1891,9 +1891,9 @@ describe('QueryTest', function() {
             query.endGroup();
             query.beginGroup();
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -1911,10 +1911,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.beginGroup(1);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1931,10 +1931,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.beginGroup("any", 1);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -1954,7 +1954,7 @@ describe('QueryTest', function() {
             query.isNotNull("$.name");
             query.endGroup();
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
             expect(null).assertFail();
         }
@@ -1977,7 +1977,7 @@ describe('QueryTest', function() {
             query.isNotNull("$.name");
             query.endGroup();
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
             expect(null).assertFail();
         }
@@ -1996,10 +1996,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.endGroup(0);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -2016,10 +2016,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.endGroup("any");
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -2038,7 +2038,7 @@ describe('QueryTest', function() {
             query.prefixKey("$.name");
             query.prefixKey("0");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
             expect(null).assertFail();
         }
@@ -2058,7 +2058,7 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.prefixKey("kx1").or().prefixKey("kx2").or().prefixKey("kx3");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
             expect(null).assertFail();
         }
@@ -2077,10 +2077,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.prefixKey("k", "any");
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -2097,10 +2097,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.prefixKey(123);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -2119,7 +2119,7 @@ describe('QueryTest', function() {
             query.setSuggestIndex("$.name");
             query.setSuggestIndex("0");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
             expect(null).assertFail();
         }
@@ -2139,7 +2139,7 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.setSuggestIndex("kxx").or().equalTo("key2", "v1");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
             expect(null).assertFail();
         }
@@ -2158,10 +2158,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.setSuggestIndex("k", "any");
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -2178,10 +2178,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.setSuggestIndex(123);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -2200,9 +2200,9 @@ describe('QueryTest', function() {
             query.deviceId("$.name");
             query.deviceId("0");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -2221,9 +2221,9 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.deviceId("kxx").equalTo("key2", "v1");
             expect(query.getSqlLike() !== "").assertTrue();
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -2241,10 +2241,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.deviceId("k", "any");
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -2261,10 +2261,10 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             query.deviceId(123);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -2281,12 +2281,12 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             let sql1 = query.getSqlLike();
-            console.log("testGetSqlLike001 sql=" + sql1);
+            console.info("testGetSqlLike001 sql=" + sql1);
             let sql2 = query.getSqlLike();
             expect(sql1).assertEqual(sql2);
-            console.log("query is " + query.getSqlLike());
+            console.info("query is " + query.getSqlLike());
         } catch (e) {
-            console.log("dumplicated calls should be ok : " + e);
+            console.info("dumplicated calls should be ok : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -2304,16 +2304,16 @@ describe('QueryTest', function() {
             query = new ddm.Query();
             expect("").assertEqual(query.getSqlLike());
             let sql1 = query.getSqlLike();
-            console.log("testGetSqlLike002 sql=" + sql1);
+            console.info("testGetSqlLike002 sql=" + sql1);
             query.inString("key1", ["AAA", "BBB"])
                 .or()
                 .notEqualTo("key2", 0);
             let sql2 = query.getSqlLike();
-            console.log("testGetSqlLike002 sql=" + sql2);
-            console.log("query is " + query.getSqlLike());
+            console.info("testGetSqlLike002 sql=" + sql2);
+            console.info("query is " + query.getSqlLike());
             expect(sql1 !== sql2).assertTrue();
         } catch (e) {
-            console.log("should be ok on Method Chaining : " + e);
+            console.info("should be ok on Method Chaining : " + e);
             expect(null).assertFail();
         }
         query = null;
@@ -2332,10 +2332,10 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.inNumber("key");
             query.getSqlLike(0);
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();
@@ -2353,10 +2353,10 @@ describe('QueryTest', function() {
             expect("").assertEqual(query.getSqlLike());
             query.inNumber("key");
             query.getSqlLike("any");
-            console.log("should throw exception on invalid arguments");
+            console.info("should throw exception on invalid arguments");
             expect(null).assertFail();
         } catch (e) {
-            console.log("throw exception is ok : " + e);
+            console.info("throw exception is ok : " + e);
         }
         query = null;
         done();

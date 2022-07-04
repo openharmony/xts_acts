@@ -25,7 +25,7 @@ const MAX_KEY_LENGTH = 'X'.repeat(32)
 const MAX_VALUE_LENGTH = 'y'.repeat(8191)
 var mPref;
 
-describe('storageTest_storage2', function () {
+describe('storagePromiseTest', function () {
     beforeAll(async function () {
         console.info('beforeAll')
         const promise = storage.getStorage(PATH);
@@ -40,7 +40,7 @@ describe('storageTest_storage2', function () {
         console.info('afterAll')
         const promise = storage.deleteStorage(PATH);
         promise.then(()=>{
-            console.log('Delete Storage finish');
+            console.info('Delete Storage finish');
         });
         await promise;
         done();

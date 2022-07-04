@@ -38,21 +38,21 @@ function putBatchString(len, prefix) {
 async function testPutAndGet(kvManager, options) {
     try {
         await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
-            console.log('testPutAndGet getKVStore success' + JSON.stringify(options));
+            console.info('testPutAndGet getKVStore success' + JSON.stringify(options));
             kvStore = store;
             expect(store != null).assertTrue();
         }).catch((err) => {
-            console.log('testPutAndGet getKVStore fail ' + err);
+            console.info('testPutAndGet getKVStore fail ' + err);
             expect(null).assertFail();
         });
         var canGet = new Promise((resolve, reject) => {
             kvStore.on('dataChange', 0, function (data) {
-                console.log('testPutAndGet resolve on data change: ' + JSON.stringify(data));
+                console.info('testPutAndGet resolve on data change: ' + JSON.stringify(data));
                 resolve(data.deviceId);
             });
             let entries = putBatchString(10, 'test_key_');
             kvStore.putBatch(entries).then((data) => {
-                console.log('testPutAndGet put success');
+                console.info('testPutAndGet put success');
                 expect(data == undefined).assertTrue();
             });
             setTimeout(() => {
@@ -64,22 +64,22 @@ async function testPutAndGet(kvManager, options) {
             query.prefixKey('test_key_');
             query.like('$.english.first', 'led%');
             if (options.kvStoreType == ddm.KVStoreType.DEVICE_COLLABORATION) {
-                console.log('testPutAndGet deviceId = ' + deviceId);
+                console.info('testPutAndGet deviceId = ' + deviceId);
                 query.deviceId(deviceId);
             }
             await kvStore.getEntries(query).then((entries) => {
-                console.log('testPutAndGet get success : ' + JSON.stringify(entries));
+                console.info('testPutAndGet get success : ' + JSON.stringify(entries));
                 expect(entries.length == 10).assertTrue();
             }).catch((err) => {
-                console.log('testPutAndGet get fail ' + err);
+                console.info('testPutAndGet get fail ' + err);
                 expect(null).assertFail();
             });
         }).catch((error) => {
-            console.log('testPutAndGet canGet fail: ' + error);
+            console.info('testPutAndGet canGet fail: ' + error);
             expect(null).assertFail();
         });
     } catch (e) {
-        console.log('testPutAndGet get exception: ' + e);
+        console.info('testPutAndGet get exception: ' + e);
     }
 }
 
@@ -104,43 +104,43 @@ describe('SchemaTest', function() {
 
     beforeAll(async function (done) {
         try {
-            console.log("beforeAll: createKVManager (single) with " + JSON.stringify(options));
+            console.info("beforeAll: createKVManager (single) with " + JSON.stringify(options));
             await ddm.createKVManager(config).then((manager) => {
                 kvManager = manager;
-                console.log('beforeAll createKVManager success');
+                console.info('beforeAll createKVManager success');
             }).catch((err) => {
-                console.log('beforeAll createKVManager err ' + err);
+                console.info('beforeAll createKVManager err ' + err);
             });
         } catch (e) {
-            console.log("fail on exception: " + e);
+            console.info("fail on exception: " + e);
             expect(null).assertFail();
         }
         done();
     })
 
     afterAll(async function (done) {
-        console.log('afterAll');
+        console.info('afterAll');
         kvManager = null;
         kvStore = null;
         done();
     })
 
     beforeEach(async function (done) {
-        console.log('beforeEach testcase will update options:' + JSON.stringify(options));
+        console.info('beforeEach testcase will update options:' + JSON.stringify(options));
         done();
     })
 
     afterEach(async function (done) {
-        console.log('afterEach');
+        console.info('afterEach');
         await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore).then(async () => {
-            console.log('afterEach closeKVStore success');
+            console.info('afterEach closeKVStore success');
             await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
-                console.log('afterEach deleteKVStore success');
+                console.info('afterEach deleteKVStore success');
             }).catch((err) => {
-                console.log('afterEach deleteKVStore err ' + err);
+                console.info('afterEach deleteKVStore err ' + err);
             });
         }).catch((err) => {
-            console.log('afterEach closeKVStore err ' + err);
+            console.info('afterEach closeKVStore err ' + err);
         });
         kvStore = null;
         done();
@@ -172,7 +172,7 @@ describe('SchemaTest', function() {
             schema.root.appendChild(english);
             schema.indexes = ['$.english.first', '$.english.second'];
         } catch (e) {
-            console.log("schema fail on exception: " + e);
+            console.info("schema fail on exception: " + e);
             expect(null).assertFail();
         }
         done();
@@ -206,9 +206,9 @@ describe('SchemaTest', function() {
             options.kvStoreType = ddm.KVStoreType.DEVICE_COLLABORATION;
             options.schema = schema;
             await testPutAndGet(kvManager, options);
-            console.log("schematestPutAndGet done");
+            console.info("schematestPutAndGet done");
         } catch (e) {
-            console.log("schema fail on exception: " + e);
+            console.info("schema fail on exception: " + e);
             expect(null).assertFail();
         }
         done();
@@ -233,27 +233,27 @@ describe('SchemaTest', function() {
             options.kvStoreType = ddm.KVStoreType.SINGLE_VERSION;
             options.schema = schema;
             await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
-                console.log('testToJsonString003 getKVStore success' + JSON.stringify(options));
+                console.info('testToJsonString003 getKVStore success' + JSON.stringify(options));
                 kvStore = store;
                 expect(store != null).assertTrue();
                 await kvStore.put("test_key_1", '{"name":1}');
                 await kvStore.put("test_key_2", '{"name":2}');
                 await kvStore.put("test_key_3", '{"name":3}');
-                console.log('testToJsonString003 Put success');
+                console.info('testToJsonString003 Put success');
             });
-            console.log('testToJsonString003 start Query ...');
+            console.info('testToJsonString003 start Query ...');
             var query = new ddm.Query();
             query.prefixKey('test_key_');
             query.notEqualTo("$.name", 3);
             await kvStore.getEntries(query).then((entries) => {
-                console.log('testToJsonString003 get success : ' + JSON.stringify(entries));
+                console.info('testToJsonString003 get success : ' + JSON.stringify(entries));
                 expect(entries.length == 2).assertTrue();
             }).catch((err) => {
-                console.log('testToJsonString003 get fail ' + err);
+                console.info('testToJsonString003 get fail ' + err);
                 expect(null).assertFail();
             });
         } catch (e) {
-            console.log("testToJsonString003 fail on exception: " + e);
+            console.info("testToJsonString003 fail on exception: " + e);
             expect(null).assertFail();
         }
         done();
@@ -274,7 +274,7 @@ describe('SchemaTest', function() {
             schema.indexes = [];    // indexex set to empty array -> invalid indexes.
             expect(null).assertFail();
         } catch (e) {
-            console.log("schema exception is ok: " + e);
+            console.info("schema exception is ok: " + e);
         }
         done();
     })
@@ -292,7 +292,7 @@ describe('SchemaTest', function() {
             let schema = new ddm.Schema();
             expect(schema.root instanceof ddm.FieldNode).assertTrue();
         } catch (e) {
-            console.log("schema fail on exception: " + e);
+            console.info("schema fail on exception: " + e);
             expect(null).assertFail();
         }
         done();
@@ -310,7 +310,7 @@ describe('SchemaTest', function() {
             schema.indexes = ['$.english.first', '$.english.second'];
             expect(schema.indexes[0] === '$.english.first' && schema.indexes[1] === '$.english.second').assertTrue();
         } catch (e) {
-            console.log("schema fail on exception: " + e);
+            console.info("schema fail on exception: " + e);
             expect(null).assertFail();
         }
         done();
@@ -326,10 +326,10 @@ describe('SchemaTest', function() {
 
             let schema = new ddm.Schema();
             schema.mode = 1;
-            console.log("schema mode = "+schema.mode)   
+            console.info("schema mode = "+schema.mode)   
             expect(schema.mode === 1).assertTrue();
         } catch (e) {
-            console.log("schema fail on exception: " + e);
+            console.info("schema fail on exception: " + e);
             expect(null).assertFail();
         }
         done();
@@ -345,10 +345,10 @@ describe('SchemaTest', function() {
 
             let schema = new ddm.Schema();
             schema.mode = 0;
-            console.log("schema mode = "+schema.mode) 
+            console.info("schema mode = "+schema.mode) 
             expect(schema.mode === 0).assertTrue();
         } catch (e) {
-            console.log("schema fail on exception: " + e);
+            console.info("schema fail on exception: " + e);
             expect(null).assertFail();
         }
         done();
@@ -366,7 +366,7 @@ describe('SchemaTest', function() {
             schema.skip = 0;
             expect(schema.skip === 0).assertTrue();
         } catch (e) {
-            console.log("schema fail on exception: " + e);
+            console.info("schema fail on exception: " + e);
             expect(null).assertFail();
         }
         done();
