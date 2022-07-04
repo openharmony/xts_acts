@@ -41,46 +41,46 @@ describe('KvStoreResultSetTest', function() {
     }
 
     beforeAll(async function (done) {
-        console.log('beforeAll');
-        console.log('beforeAll config:' + JSON.stringify(config));
+        console.info('beforeAll');
+        console.info('beforeAll config:' + JSON.stringify(config));
         await factory.createKVManager(config).then((manager) => {
             kvManager = manager;
-            console.log('beforeAll createKVManager success');
+            console.info('beforeAll createKVManager success');
         }).catch((err) => {
-            console.log('beforeAll createKVManager err ' + err);
+            console.info('beforeAll createKVManager err ' + err);
         });
         await kvManager.getAllKVStoreId(TEST_BUNDLE_NAME).then(async (data) => {
-            console.log('beforeAll getAllKVStoreId size = ' + data.length);
+            console.info('beforeAll getAllKVStoreId size = ' + data.length);
             for (var i = 0; i < data.length; i++) {
                 await kvManager.deleteKVStore(TEST_BUNDLE_NAME, data[i]).then(() => {
-                    console.log('beforeAll deleteKVStore success ' + data[i]);
+                    console.info('beforeAll deleteKVStore success ' + data[i]);
                 }).catch((err) => {
-                    console.log('beforeAll deleteKVStore store: ' + data[i]);
-                    console.log('beforeAll deleteKVStore error ' + err);
+                    console.info('beforeAll deleteKVStore store: ' + data[i]);
+                    console.info('beforeAll deleteKVStore error ' + err);
                 });
             }
         }).catch((err) => {
-            console.log('beforeAll getAllKVStoreId err ' + err);
+            console.info('beforeAll getAllKVStoreId err ' + err);
         });
 
-        console.log('beforeAll end');
+        console.info('beforeAll end');
         done();
     })
 
     afterAll(async function (done) {
-        console.log('afterAll');
+        console.info('afterAll');
         kvManager = null;
         kvStore = null;
         done();
     })
 
     beforeEach(async function (done) {
-        console.log('beforeEach');
+        console.info('beforeEach');
         await kvManager.getKVStore(TEST_STORE_ID, options).then((store) => {
             kvStore = store;
-            console.log('beforeEach getKVStore success');
+            console.info('beforeEach getKVStore success');
         }).catch((err) => {
-            console.log('beforeEach getKVStore err ' + err);
+            console.info('beforeEach getKVStore err ' + err);
         });
         let entries = [];
         for (var i = 0; i < 10; i++) {
@@ -95,36 +95,36 @@ describe('KvStoreResultSetTest', function() {
             entries.push(entry);
         }
         await kvStore.putBatch(entries).then(async (err) => {
-            console.log('beforeEach putBatch success');
+            console.info('beforeEach putBatch success');
         }).catch((err) => {
-            console.log('beforeEach putBatch fail ' + err);
+            console.info('beforeEach putBatch fail ' + err);
         });
         await kvStore.getResultSet('batch_test_string_key').then((result) => {
-            console.log('beforeEach getResultSet success');
+            console.info('beforeEach getResultSet success');
             resultSet = result;
         }).catch((err) => {
-            console.log('beforeEach getResultSet fail ' + err);
+            console.info('beforeEach getResultSet fail ' + err);
         });
-        console.log('beforeEach end');
+        console.info('beforeEach end');
         done();
     })
 
     afterEach(async function (done) {
-        console.log('afterEach');
+        console.info('afterEach');
         await kvStore.closeResultSet(resultSet).then((err) => {
-            console.log('afterEach closeResultSet success');
+            console.info('afterEach closeResultSet success');
         }).catch((err) => {
-            console.log('afterEach closeResultSet fail ' + err);
+            console.info('afterEach closeResultSet fail ' + err);
         });
         await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore).then(async () => {
-            console.log('afterEach closeKVStore success');
+            console.info('afterEach closeKVStore success');
             await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
-                console.log('afterEach deleteKVStore success');
+                console.info('afterEach deleteKVStore success');
             }).catch((err) => {
-                console.log('afterEach deleteKVStore err ' + err);
+                console.info('afterEach deleteKVStore err ' + err);
             });
         }).catch((err) => {
-            console.log('afterEach closeKVStore err ' + err);
+            console.info('afterEach closeKVStore err ' + err);
         });
         kvStore = null;
         resultSet = null;
@@ -139,10 +139,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetGetCount001', 0, async function(done) {
         try {
             var count = resultSet.getCount();
-            console.log("testKvStoreResultSetGetCount001 getCount " + count);
+            console.info("testKvStoreResultSetGetCount001 getCount " + count);
             expect(count == 10).assertTrue();
         } catch (e) {
-            console.log("testKvStoreResultSetGetCount001 fail " + e);
+            console.info("testKvStoreResultSetGetCount001 fail " + e);
             expect(null).assertFail();
         }
         done();
@@ -157,21 +157,21 @@ describe('KvStoreResultSetTest', function() {
         try {
             var rs;
             await kvStore.getResultSet('test').then((result) => {
-                console.log('testKvStoreResultSetGetCount002 getResultSet success');
+                console.info('testKvStoreResultSetGetCount002 getResultSet success');
                 rs = result;
                 expect(rs.getCount() == 0).assertTrue();
             }).catch((err) => {
-                console.log('testKvStoreResultSetGetCount002 getResultSet fail ' + err);
+                console.info('testKvStoreResultSetGetCount002 getResultSet fail ' + err);
                 expect(null).assertFail();
             });
             await kvStore.closeResultSet(rs).then((err) => {
-                console.log('testKvStoreResultSetGetCount002 closeResultSet success');
+                console.info('testKvStoreResultSetGetCount002 closeResultSet success');
             }).catch((err) => {
-                console.log('testKvStoreResultSetGetCount002 closeResultSet fail ' + err);
+                console.info('testKvStoreResultSetGetCount002 closeResultSet fail ' + err);
                 expect(null).assertFail();
             });
         } catch (e) {
-            console.log('testKvStoreResultSetGetCount002 e ' + e);
+            console.info('testKvStoreResultSetGetCount002 e ' + e);
             expect(null).assertFail();
         }
         done();
@@ -185,10 +185,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetGetCount003', 0, async function(done) {
         try {
             var count = resultSet.getCount(123);
-            console.log("testKvStoreResultSetGetCount003 getCount " + count);
+            console.info("testKvStoreResultSetGetCount003 getCount " + count);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetGetCount003 fail " + e);
+            console.info("testKvStoreResultSetGetCount003 fail " + e);
         }
         done();
     })
@@ -201,10 +201,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetGetCount004', 0, async function(done) {
         try {
             var count = resultSet.getCount(123, 'test_string');
-            console.log("testKvStoreResultSetGetCount004 getCount " + count);
+            console.info("testKvStoreResultSetGetCount004 getCount " + count);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetGetCount004 fail " + e);
+            console.info("testKvStoreResultSetGetCount004 fail " + e);
         }
         done();
     })
@@ -217,10 +217,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetGetPosition001', 0, async function(done) {
         try {
             var position = resultSet.getPosition();
-            console.log("testKvStoreResultSetGetPosition001 getPosition " + position);
+            console.info("testKvStoreResultSetGetPosition001 getPosition " + position);
             expect(position == -1).assertTrue();
         } catch (e) {
-            console.log("testKvStoreResultSetGetPosition001 fail " + e);
+            console.info("testKvStoreResultSetGetPosition001 fail " + e);
             expect(null).assertFail();
         }
         done();
@@ -234,14 +234,14 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetGetPosition002', 0, async function(done) {
         try {
             var position = resultSet.getPosition();
-            console.log("testKvStoreResultSetGetPosition002 getPosition " + position);
+            console.info("testKvStoreResultSetGetPosition002 getPosition " + position);
             expect(position).assertEqual(-1);
             var flag = resultSet.moveToLast();
             expect(flag).assertTrue();
             position = resultSet.getPosition();
             expect(position).assertEqual(9);
         } catch (e) {
-            console.log("testKvStoreResultSetGetPosition002 fail " + e);
+            console.info("testKvStoreResultSetGetPosition002 fail " + e);
             expect(null).assertFail();
         }
         done();
@@ -255,10 +255,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetGetPosition003', 0, async function(done) {
         try {
             var position = resultSet.getPosition(123);
-            console.log("testKvStoreResultSetGetPosition003 getPosition " + position);
+            console.info("testKvStoreResultSetGetPosition003 getPosition " + position);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetGetPosition003 fail " + e);
+            console.info("testKvStoreResultSetGetPosition003 fail " + e);
         }
         done();
     })
@@ -271,10 +271,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetGetPosition004', 0, async function(done) {
         try {
             var position = resultSet.getPosition(123, 'test_string');
-            console.log("testKvStoreResultSetGetPosition004 getPosition " + position);
+            console.info("testKvStoreResultSetGetPosition004 getPosition " + position);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetGetPosition004 fail " + e);
+            console.info("testKvStoreResultSetGetPosition004 fail " + e);
         }
         done();
     })
@@ -287,11 +287,11 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToFirst001', 0, async function(done) {
         try {
             var moved = resultSet.moveToFirst();
-            console.log("testKvStoreResultSetMoveToFirst001 moveToFirst " + moved);
+            console.info("testKvStoreResultSetMoveToFirst001 moveToFirst " + moved);
             expect(moved).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetMoveToFirst001 fail " + e);
+            console.info("testKvStoreResultSetMoveToFirst001 fail " + e);
         }
         done();
     })
@@ -304,14 +304,14 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToFirst002', 0, async function(done) {
         try {
             var moved = resultSet.moveToFirst();
-            console.log("testKvStoreResultSetMoveToFirst002 moveToFirst " + moved);
+            console.info("testKvStoreResultSetMoveToFirst002 moveToFirst " + moved);
             expect(moved).assertTrue();
             var pos = resultSet.getPosition();
-            console.log("testKvStoreResultSetMoveToFirst002 getPosition " + pos);
+            console.info("testKvStoreResultSetMoveToFirst002 getPosition " + pos);
             expect(pos == 0).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetMoveToFirst002 fail " + e);
+            console.info("testKvStoreResultSetMoveToFirst002 fail " + e);
         }
         done();
     })
@@ -324,10 +324,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToFirst003', 0, async function(done) {
         try {
             var moved = resultSet.moveToFirst(123);
-            console.log("testKvStoreResultSetMoveToFirst003 moveToFirst " + moved);
+            console.info("testKvStoreResultSetMoveToFirst003 moveToFirst " + moved);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToFirst003 fail " + e);
+            console.info("testKvStoreResultSetMoveToFirst003 fail " + e);
         }
         done();
     })
@@ -340,10 +340,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToFirst004', 0, async function(done) {
         try {
             var moved = resultSet.moveToFirst(123, 'test_string');
-            console.log("testKvStoreResultSetMoveToFirst004 moveToFirst " + moved);
+            console.info("testKvStoreResultSetMoveToFirst004 moveToFirst " + moved);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToFirst004 fail " + e);
+            console.info("testKvStoreResultSetMoveToFirst004 fail " + e);
         }
         done();
     })
@@ -356,12 +356,12 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToFirst005', 0, async function(done) {
         try {
             var moved = resultSet.moveToLast();
-            console.log("testKvStoreResultSetMoveToFirst004 moveToFirst " + moved);
+            console.info("testKvStoreResultSetMoveToFirst004 moveToFirst " + moved);
             expect(moved && (resultSet.getPosition() == 9)).assertTrue();
             moved = resultSet.moveToFirst();
             expect(moved && (resultSet.getPosition() == 0)).assertTrue();
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToFirst004 fail " + e);
+            console.info("testKvStoreResultSetMoveToFirst004 fail " + e);
         }
         done();
     })
@@ -374,11 +374,11 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToLast001', 0, async function(done) {
         try {
             var moved = resultSet.moveToLast();
-            console.log("testKvStoreResultSetMoveToLast001 moveToLast " + moved);
+            console.info("testKvStoreResultSetMoveToLast001 moveToLast " + moved);
             expect(moved).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetMoveToLast001 fail " + e);
+            console.info("testKvStoreResultSetMoveToLast001 fail " + e);
         }
         done();
     })
@@ -391,11 +391,11 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToLast002', 0, async function(done) {
         try {
             var moved = resultSet.moveToLast();
-            console.log("testKvStoreResultSetMoveToLast002 moveToLast " + moved);
+            console.info("testKvStoreResultSetMoveToLast002 moveToLast " + moved);
             expect(moved && (resultSet.getPosition() == 9)).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetMoveToLast002 fail " + e);
+            console.info("testKvStoreResultSetMoveToLast002 fail " + e);
         }
         done();
     })
@@ -408,10 +408,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToLast003', 0, async function(done) {
         try {
             var moved = resultSet.moveToLast(123);
-            console.log("testKvStoreResultSetMoveToLast003 moveToLast " + moved);
+            console.info("testKvStoreResultSetMoveToLast003 moveToLast " + moved);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToLast003 fail " + e);
+            console.info("testKvStoreResultSetMoveToLast003 fail " + e);
         }
         done();
     })
@@ -424,10 +424,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToLast004', 0, async function(done) {
         try {
             var moved = resultSet.moveToLast(123, 'test_string');
-            console.log("testKvStoreResultSetMoveToLast004 moveToLast " + moved);
+            console.info("testKvStoreResultSetMoveToLast004 moveToLast " + moved);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToLast004 fail " + e);
+            console.info("testKvStoreResultSetMoveToLast004 fail " + e);
         }
         done();
     })
@@ -440,11 +440,11 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToNext001', 0, async function(done) {
         try {
             var moved = resultSet.moveToNext();
-            console.log("testKvStoreResultSetMoveToNext001 moveToNext " + moved);
+            console.info("testKvStoreResultSetMoveToNext001 moveToNext " + moved);
             expect(moved && (resultSet.getPosition() == 0)).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetMoveToNext001 fail " + e);
+            console.info("testKvStoreResultSetMoveToNext001 fail " + e);
         }
         done();
     })
@@ -457,13 +457,13 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToNext002', 0, async function(done) {
         try {
             var moved = resultSet.moveToNext();
-            console.log("testKvStoreResultSetMoveToNext002 moveToNext " + moved);
+            console.info("testKvStoreResultSetMoveToNext002 moveToNext " + moved);
             expect(moved && (resultSet.getPosition() == 0)).assertTrue();
             moved = resultSet.moveToNext();
             expect(moved && (resultSet.getPosition() == 1)).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetMoveToNext002 fail " + e);
+            console.info("testKvStoreResultSetMoveToNext002 fail " + e);
         }
         done();
     })
@@ -476,10 +476,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToNext003', 0, async function(done) {
         try {
             var moved = resultSet.moveToNext(123);
-            console.log("testKvStoreResultSetMoveToNext003 moveToNext " + moved);
+            console.info("testKvStoreResultSetMoveToNext003 moveToNext " + moved);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToNext003 fail " + e);
+            console.info("testKvStoreResultSetMoveToNext003 fail " + e);
         }
         done();
     })
@@ -492,10 +492,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToNext004', 0, async function(done) {
         try {
             var moved = resultSet.moveToNext(123, 'test_string');
-            console.log("testKvStoreResultSetMoveToNext004 moveToNext " + moved);
+            console.info("testKvStoreResultSetMoveToNext004 moveToNext " + moved);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToNext004 fail " + e);
+            console.info("testKvStoreResultSetMoveToNext004 fail " + e);
         }
         done();
     })
@@ -508,11 +508,11 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToPrevious001', 0, async function(done) {
         try {
             var moved = resultSet.moveToPrevious();
-            console.log("testKvStoreResultSetMoveToPrevious001 moveToPrevious " + moved);
+            console.info("testKvStoreResultSetMoveToPrevious001 moveToPrevious " + moved);
             expect(!moved).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetMoveToPrevious001 fail " + e);
+            console.info("testKvStoreResultSetMoveToPrevious001 fail " + e);
         }
         done();
     })
@@ -527,13 +527,13 @@ describe('KvStoreResultSetTest', function() {
             var moved = resultSet.moveToFirst();
             expect(moved && (resultSet.getPosition() == 0)).assertTrue();
             moved = resultSet.moveToNext();
-            console.log("testKvStoreResultSetMoveToPrevious002 moveToNext " + moved);
+            console.info("testKvStoreResultSetMoveToPrevious002 moveToNext " + moved);
             expect(moved && (resultSet.getPosition() == 1)).assertTrue();
             moved = resultSet.moveToPrevious();
-            console.log("testKvStoreResultSetMoveToPrevious002 moveToPrevious " + moved);
+            console.info("testKvStoreResultSetMoveToPrevious002 moveToPrevious " + moved);
             expect(moved && (resultSet.getPosition() == 0)).assertTrue();
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToPrevious002 fail " + e);
+            console.info("testKvStoreResultSetMoveToPrevious002 fail " + e);
             expect(null).assertFail();
         }
         done();
@@ -547,10 +547,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToPrevious003', 0, async function(done) {
         try {
             var moved = resultSet.moveToPrevious(123);
-            console.log("testKvStoreResultSetMoveToPrevious003 moveToPrevious " + moved);
+            console.info("testKvStoreResultSetMoveToPrevious003 moveToPrevious " + moved);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToPrevious003 fail " + e);
+            console.info("testKvStoreResultSetMoveToPrevious003 fail " + e);
         }
         done();
     })
@@ -563,10 +563,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToPrevious004', 0, async function(done) {
         try {
             var moved = resultSet.moveToPrevious(123, 'test_string');
-            console.log("testKvStoreResultSetMoveToPrevious004 moveToPrevious " + moved);
+            console.info("testKvStoreResultSetMoveToPrevious004 moveToPrevious " + moved);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToPrevious004 fail " + e);
+            console.info("testKvStoreResultSetMoveToPrevious004 fail " + e);
         }
         done();
     })
@@ -581,12 +581,12 @@ describe('KvStoreResultSetTest', function() {
             var moved = resultSet.moveToFirst();
             expect(moved && (resultSet.getPosition() == 0)).assertTrue();
             moved = resultSet.moveToPrevious();
-            console.log("testKvStoreResultSetMoveToPrevious005 from 0 to -1 return" + moved);
+            console.info("testKvStoreResultSetMoveToPrevious005 from 0 to -1 return" + moved);
             expect(moved == false).assertTrue();
-            console.log("testKvStoreResultSetMoveToPrevious005 from 0 to " + resultSet.getPosition());
+            console.info("testKvStoreResultSetMoveToPrevious005 from 0 to " + resultSet.getPosition());
             expect(-1).assertEqual(resultSet.getPosition());
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToPrevious005 fail " + e);
+            console.info("testKvStoreResultSetMoveToPrevious005 fail " + e);
             expect(null).assertFail();
         }
         done();
@@ -600,10 +600,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMove001', 0, async function(done) {
         try {
             var moved = resultSet.move();
-            console.log("testKvStoreResultSetMove001 move " + moved);
+            console.info("testKvStoreResultSetMove001 move " + moved);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetMove001 fail " + e);
+            console.info("testKvStoreResultSetMove001 fail " + e);
         }
         done();
     })
@@ -618,11 +618,11 @@ describe('KvStoreResultSetTest', function() {
             resultSet.moveToFirst();
             expect(resultSet.getPosition() == 0).assertTrue();
             var moved = resultSet.move(3);
-            console.log("testKvStoreResultSetMove002 move " + moved);
+            console.info("testKvStoreResultSetMove002 move " + moved);
             expect(moved).assertTrue();
             expect(3).assertEqual(resultSet.getPosition());
         } catch (e) {
-            console.log("testKvStoreResultSetMove002 fail " + e);
+            console.info("testKvStoreResultSetMove002 fail " + e);
             expect(null).assertFail();
         }
         done();
@@ -637,13 +637,13 @@ describe('KvStoreResultSetTest', function() {
         try {
             expect(resultSet.getPosition() == -1).assertTrue();
             var moved = resultSet.move(3);
-            console.log("testKvStoreResultSetMove003 move " + moved);
+            console.info("testKvStoreResultSetMove003 move " + moved);
             expect(moved && (resultSet.getPosition() == 2)).assertTrue();
             moved = resultSet.move(2);
-            console.log("testKvStoreResultSetMove003 move " + moved);
+            console.info("testKvStoreResultSetMove003 move " + moved);
             expect(moved && (resultSet.getPosition() == 4)).assertTrue();
         } catch (e) {
-            console.log("testKvStoreResultSetMove003 fail " + e);
+            console.info("testKvStoreResultSetMove003 fail " + e);
             expect(null).assertFail();
         }
         done();
@@ -657,10 +657,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMove004', 0, async function(done) {
         try {
             var moved = resultSet.move(3, 'test_string');
-            console.log("testKvStoreResultSetMove004 move " + moved);
+            console.info("testKvStoreResultSetMove004 move " + moved);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetMove004 fail " + e);
+            console.info("testKvStoreResultSetMove004 fail " + e);
         }
         done();
     })
@@ -673,10 +673,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToPosition001', 0, async function(done) {
         try {
             var moved = resultSet.moveToPosition();
-            console.log("testKvStoreResultSetMoveToPosition001 moveToPosition " + moved);
+            console.info("testKvStoreResultSetMoveToPosition001 moveToPosition " + moved);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToPosition001 fail " + e);
+            console.info("testKvStoreResultSetMoveToPosition001 fail " + e);
         }
         done();
     })
@@ -689,10 +689,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToPosition002', 0, async function(done) {
         try {
             var moved = resultSet.moveToPosition(1, 'test_string');
-            console.log("testKvStoreResultSetMoveToPosition002 moveToPosition " + moved);
+            console.info("testKvStoreResultSetMoveToPosition002 moveToPosition " + moved);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToPosition002 fail " + e);
+            console.info("testKvStoreResultSetMoveToPosition002 fail " + e);
         }
         done();
     })
@@ -705,10 +705,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToPosition003', 0, async function(done) {
         try {
             var moved = resultSet.moveToPosition(5);
-            console.log("testKvStoreResultSetMoveToPosition003 moveToPosition " + moved);
+            console.info("testKvStoreResultSetMoveToPosition003 moveToPosition " + moved);
             expect(moved && (resultSet.getPosition() == 5)).assertTrue();
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToPosition003 fail " + e);
+            console.info("testKvStoreResultSetMoveToPosition003 fail " + e);
         }
         done();
     })
@@ -721,13 +721,13 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetMoveToPosition004', 0, async function(done) {
         try {
             var moved = resultSet.move(3);
-            console.log("testKvStoreResultSetMoveToPosition004 moveToPosition " + moved);
+            console.info("testKvStoreResultSetMoveToPosition004 moveToPosition " + moved);
             expect(moved && (resultSet.getPosition() == 2)).assertTrue();
             moved = resultSet.moveToPosition(5);
-            console.log("testKvStoreResultSetMoveToPosition004 moveToPosition " + moved);
+            console.info("testKvStoreResultSetMoveToPosition004 moveToPosition " + moved);
             expect(moved && (resultSet.getPosition() == 5)).assertTrue();
         } catch (e) {
-            console.log("testKvStoreResultSetMoveToPosition004 fail " + e);
+            console.info("testKvStoreResultSetMoveToPosition004 fail " + e);
         }
         done();
     })
@@ -740,11 +740,11 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetIsFirst001', 0, async function(done) {
         try {
             var flag = resultSet.isFirst();
-            console.log("testKvStoreResultSetIsFirst001 isFirst " + flag);
+            console.info("testKvStoreResultSetIsFirst001 isFirst " + flag);
             expect(!flag).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetIsFirst001 fail " + e);
+            console.info("testKvStoreResultSetIsFirst001 fail " + e);
         }
         done();
     })
@@ -757,15 +757,15 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetIsFirst002', 0, async function(done) {
         try {
             var flag = resultSet.isFirst();
-            console.log("testKvStoreResultSetIsFirst002 isFirst " + flag);
+            console.info("testKvStoreResultSetIsFirst002 isFirst " + flag);
             expect(!flag).assertTrue();
             resultSet.move(3);
             flag = resultSet.isFirst();
-            console.log("testKvStoreResultSetIsFirst002 isFirst " + flag);
+            console.info("testKvStoreResultSetIsFirst002 isFirst " + flag);
             expect(!flag).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetIsFirst002 fail " + e);
+            console.info("testKvStoreResultSetIsFirst002 fail " + e);
         }
         done();
     })
@@ -778,10 +778,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetIsFirst003', 0, async function(done) {
         try {
             var flag = resultSet.isFirst(1);
-            console.log("testKvStoreResultSetIsFirst003 isFirst " + flag);
+            console.info("testKvStoreResultSetIsFirst003 isFirst " + flag);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetIsFirst003 fail " + e);
+            console.info("testKvStoreResultSetIsFirst003 fail " + e);
         }
         done();
     })
@@ -794,10 +794,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetIsFirst004', 0, async function(done) {
         try {
             var flag = resultSet.isFirst(1, 'test_string');
-            console.log("testKvStoreResultSetIsFirst004 isFirst " + flag);
+            console.info("testKvStoreResultSetIsFirst004 isFirst " + flag);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetIsFirst004 fail " + e);
+            console.info("testKvStoreResultSetIsFirst004 fail " + e);
         }
         done();
     })
@@ -810,11 +810,11 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetIsLast001', 0, async function(done) {
         try {
             var flag = resultSet.isLast();
-            console.log("testKvStoreResultSetIsLast001 isLast " + flag);
+            console.info("testKvStoreResultSetIsLast001 isLast " + flag);
             expect(!flag).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetIsFirst004 fail " + e);
+            console.info("testKvStoreResultSetIsFirst004 fail " + e);
         }
         done();
     })
@@ -828,11 +828,11 @@ describe('KvStoreResultSetTest', function() {
         try {
             resultSet.moveToLast();
             var flag = resultSet.isLast();
-            console.log("testKvStoreResultSetIsLast002 isLast " + flag);
+            console.info("testKvStoreResultSetIsLast002 isLast " + flag);
             expect(flag).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetIsLast002 fail " + e);
+            console.info("testKvStoreResultSetIsLast002 fail " + e);
         }
         done();
     })
@@ -845,10 +845,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetIsLast003', 0, async function(done) {
         try {
             var flag = resultSet.isLast(1);
-            console.log("testKvStoreResultSetIsLast003 isLast " + flag);
+            console.info("testKvStoreResultSetIsLast003 isLast " + flag);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetIsLast003 fail " + e);
+            console.info("testKvStoreResultSetIsLast003 fail " + e);
         }
         done();
     })
@@ -861,10 +861,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetIsLast004', 0, async function(done) {
         try {
             var flag = resultSet.isLast(1, 'test_string');
-            console.log("testKvStoreResultSetIsLast004 isLast " + flag);
+            console.info("testKvStoreResultSetIsLast004 isLast " + flag);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetIsLast004 fail " + e);
+            console.info("testKvStoreResultSetIsLast004 fail " + e);
         }
         done();
     })
@@ -877,11 +877,11 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetIsBeforeFirst001', 0, async function(done) {
         try {
             var flag = resultSet.isBeforeFirst();
-            console.log("testKvStoreResultSetIsBeforeFirst001 isBeforeFirst " + flag);
+            console.info("testKvStoreResultSetIsBeforeFirst001 isBeforeFirst " + flag);
             expect(flag).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetIsBeforeFirst001 fail " + e);
+            console.info("testKvStoreResultSetIsBeforeFirst001 fail " + e);
         }
         done();
     })
@@ -896,11 +896,11 @@ describe('KvStoreResultSetTest', function() {
             var moved = resultSet.moveToPrevious();
             expect(!moved).assertTrue();
             var flag = resultSet.isBeforeFirst();
-            console.log("testKvStoreResultSetIsBeforeFirst002 isBeforeFirst " + flag);
+            console.info("testKvStoreResultSetIsBeforeFirst002 isBeforeFirst " + flag);
             expect(flag).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetIsBeforeFirst002 fail " + e);
+            console.info("testKvStoreResultSetIsBeforeFirst002 fail " + e);
         }
         done();
     })
@@ -913,10 +913,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetIsBeforeFirst003', 0, async function(done) {
         try {
             var flag = resultSet.isBeforeFirst(1);
-            console.log("testKvStoreResultSetIsBeforeFirst003 isBeforeFirst " + flag);
+            console.info("testKvStoreResultSetIsBeforeFirst003 isBeforeFirst " + flag);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetIsBeforeFirst003 fail " + e);
+            console.info("testKvStoreResultSetIsBeforeFirst003 fail " + e);
         }
         done();
     })
@@ -929,10 +929,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetIsBeforeFirst004', 0, async function(done) {
         try {
             var flag = resultSet.isBeforeFirst(1, 'test_string');
-            console.log("testKvStoreResultSetIsBeforeFirst004 isBeforeFirst " + flag);
+            console.info("testKvStoreResultSetIsBeforeFirst004 isBeforeFirst " + flag);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetIsBeforeFirst004 fail " + e);
+            console.info("testKvStoreResultSetIsBeforeFirst004 fail " + e);
         }
         done();
     })
@@ -945,11 +945,11 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetIsAfterLast001', 0, async function(done) {
         try {
             var flag = resultSet.isAfterLast();
-            console.log("testKvStoreResultSetIsAfterLast001 isAfterLast " + flag);
+            console.info("testKvStoreResultSetIsAfterLast001 isAfterLast " + flag);
             expect(!flag).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetIsAfterLast001 fail " + e);
+            console.info("testKvStoreResultSetIsAfterLast001 fail " + e);
         }
         done();
     })
@@ -962,16 +962,16 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetIsAfterLast002', 0, async function(done) {
         try {
             var moved = resultSet.moveToLast();
-            console.log("testKvStoreResultSetIsAfterLast002  moveToLast  moved=" + moved);
+            console.info("testKvStoreResultSetIsAfterLast002  moveToLast  moved=" + moved);
             expect(moved).assertTrue();
             moved = resultSet.moveToNext();
-            console.log("testKvStoreResultSetIsAfterLast002  moveToNext  moved=" + moved);
+            console.info("testKvStoreResultSetIsAfterLast002  moveToNext  moved=" + moved);
             expect(moved == false).assertTrue();
             var flag = resultSet.isAfterLast();
-            console.log("testKvStoreResultSetIsAfterLast002  isAfterLast true=" + flag);
+            console.info("testKvStoreResultSetIsAfterLast002  isAfterLast true=" + flag);
             expect(flag).assertTrue();
         } catch (e) {
-            console.log("testKvStoreResultSetIsAfterLast002 fail " + e);
+            console.info("testKvStoreResultSetIsAfterLast002 fail " + e);
             expect(null).assertFail();
         }
         done();
@@ -985,10 +985,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetIsAfterLast003', 0, async function(done) {
         try {
             var flag = resultSet.isAfterLast(1);
-            console.log("testKvStoreResultSetIsAfterLast003 isAfterLast " + flag);
+            console.info("testKvStoreResultSetIsAfterLast003 isAfterLast " + flag);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetIsAfterLast003 fail " + e);
+            console.info("testKvStoreResultSetIsAfterLast003 fail " + e);
         }
         done();
     })
@@ -1001,10 +1001,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetIsAfterLast004', 0, async function(done) {
         try {
             var flag = resultSet.isAfterLast(1, 'test_string');
-            console.log("testKvStoreResultSetIsAfterLast004 isAfterLast " + flag);
+            console.info("testKvStoreResultSetIsAfterLast004 isAfterLast " + flag);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetIsAfterLast004 fail " + e);
+            console.info("testKvStoreResultSetIsAfterLast004 fail " + e);
         }
         done();
     })
@@ -1018,12 +1018,12 @@ describe('KvStoreResultSetTest', function() {
         try {
             var moved = resultSet.moveToNext();
             var entry = resultSet.getEntry();
-            console.log("testKvStoreResultSetGetEntry001 getEntry " + entry);
+            console.info("testKvStoreResultSetGetEntry001 getEntry " + entry);
             expect(moved && (entry.key == 'batch_test_string_key0')).assertTrue();
             expect(moved && (entry.value.value == 'batch_test_string_value')).assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetGetEntry001 fail " + e);
+            console.info("testKvStoreResultSetGetEntry001 fail " + e);
         }
         done();
     })
@@ -1037,18 +1037,18 @@ describe('KvStoreResultSetTest', function() {
         try {
             var moved = resultSet.moveToNext();
             var entry = resultSet.getEntry();
-            console.log("testKvStoreResultSetGetEntry002 getEntry " + entry);
+            console.info("testKvStoreResultSetGetEntry002 getEntry " + entry);
             expect(entry.key == 'batch_test_string_key0').assertTrue();
             expect(entry.value.value == 'batch_test_string_value').assertTrue();
             moved = resultSet.moveToNext();
             expect(moved).assertTrue();
             entry = resultSet.getEntry();
-            console.log("testKvStoreResultSetGetEntry002 getEntry " + entry);
+            console.info("testKvStoreResultSetGetEntry002 getEntry " + entry);
             expect(entry.key == 'batch_test_string_key1').assertTrue();
             expect(entry.value.value == 'batch_test_string_value').assertTrue();
         } catch (e) {
             expect(null).assertFail();
-            console.log("testKvStoreResultSetGetEntry002 fail " + e);
+            console.info("testKvStoreResultSetGetEntry002 fail " + e);
         }
         done();
     })
@@ -1061,10 +1061,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetGetEntry003', 0, async function(done) {
         try {
             var entry = resultSet.getEntry(1);
-            console.log("testKvStoreResultSetGetEntry003 getEntry " + entry);
+            console.info("testKvStoreResultSetGetEntry003 getEntry " + entry);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetGetEntry003 fail " + e);
+            console.info("testKvStoreResultSetGetEntry003 fail " + e);
         }
         done();
     })
@@ -1077,10 +1077,10 @@ describe('KvStoreResultSetTest', function() {
     it('testKvStoreResultSetGetEntry004', 0, async function(done) {
         try {
             var entry = resultSet.getEntry(1, 'test_string');
-            console.log("testKvStoreResultSetGetEntry004 getEntry " + entry);
+            console.info("testKvStoreResultSetGetEntry004 getEntry " + entry);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testKvStoreResultSetGetEntry004 fail " + e);
+            console.info("testKvStoreResultSetGetEntry004 fail " + e);
         }
         done();
     })

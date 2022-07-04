@@ -109,7 +109,7 @@ describe('rdbStorePredicatesJoinTest', function () {
         console.info(TAG + 'generateBookTable end')
     }
 
-    console.log(TAG + "*************Unit Test Begin*************");
+    console.info(TAG + "*************Unit Test Begin*************");
 
     /**
      * @tc.name: testRdbJoin001
@@ -117,7 +117,7 @@ describe('rdbStorePredicatesJoinTest', function () {
      * @tc.desc: sql query inner join test
      */
     it('testRdbJoin001', 0, async function (done) {
-        console.log(TAG + "testRdbJoin001 begin.");
+        console.info(TAG + "testRdbJoin001 begin.");
         let resultSet = await rdbStore.querySql(
             "SELECT * FROM user INNER JOIN Book ON user.userId = Book.id WHERE Book.name = 'sanguo'")
 
@@ -140,7 +140,7 @@ describe('rdbStorePredicatesJoinTest', function () {
      * @tc.desc: sql query cross join test
      */
     it('testRdbJoin002', 0, async function (done) {
-        console.log(TAG + "testRdbJoin002 begin.");
+        console.info(TAG + "testRdbJoin002 begin.");
         let resultSet = await rdbStore.querySql("" +
             "SELECT * FROM user  CROSS JOIN Book USING(userId) WHERE Book.name = 'sanguo'");
 
@@ -165,7 +165,7 @@ describe('rdbStorePredicatesJoinTest', function () {
      * @tc.desc: sql query left outer join test
      */
     it('testRdbJoin003', 0, async function (done) {
-        console.log(TAG + "testRdbJoin003 begin.");
+        console.info(TAG + "testRdbJoin003 begin.");
         let resultSet = await rdbStore.querySql("" +
             "SELECT * FROM user LEFT OUTER JOIN Book USING(userId) WHERE Book.name = 'sanguo'");
 
@@ -182,5 +182,5 @@ describe('rdbStorePredicatesJoinTest', function () {
         done();
     })
 
-    console.log(TAG + "*************Unit Test End*************");
+    console.info(TAG + "*************Unit Test End*************");
 })

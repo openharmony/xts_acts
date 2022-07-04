@@ -50,7 +50,7 @@ describe('rdbStoreUpdateTest', function () {
      * @tc.desc resultSet Update test
      */
     it('testRdbStoreUpdate0001', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreUpdate0001 start *************");
+        console.info(TAG + "************* testRdbStoreUpdate0001 start *************");
         var u8 = new Uint8Array([1, 2, 3])
         //插入
         {
@@ -63,7 +63,7 @@ describe('rdbStoreUpdateTest', function () {
             let insertPromise = rdbStore.insert("test", valueBucket)
             insertPromise.then(async (ret) => {
                 expect(1).assertEqual(ret);
-                await console.log(TAG + "update done: " + ret);
+                await console.info(TAG + "update done: " + ret);
             }).catch((err) => {
                 expect(null).assertFail();
             })
@@ -83,7 +83,7 @@ describe('rdbStoreUpdateTest', function () {
             let updatePromise = rdbStore.update(valueBucket, predicates)
             updatePromise.then(async (ret) => {
                 await expect(1).assertEqual(ret);
-                await console.log(TAG + "update done: " + ret);
+                await console.info(TAG + "update done: " + ret);
                 let resultSet = await rdbStore.query(predicates)
 
                 expect(true).assertEqual(resultSet.goToFirstRow())
@@ -100,17 +100,17 @@ describe('rdbStoreUpdateTest', function () {
                 await expect(4).assertEqual(blobType[0]);
                 await expect(5).assertEqual(blobType[1]);
                 await expect(6).assertEqual(blobType[2]);
-                console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+                console.info(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
                 await expect(false).assertEqual(resultSet.goToNextRow())
                 resultSet = null
             }).catch((err) => {
-                console.log(TAG + "update error");
+                console.info(TAG + "update error");
                 expect(null).assertFail();
             })
             //await updatePromise
         }
         done();
-        console.log(TAG + "************* testRdbStoreUpdate0001 end   *************");
+        console.info(TAG + "************* testRdbStoreUpdate0001 end   *************");
     })
 
     /**
@@ -119,7 +119,7 @@ describe('rdbStoreUpdateTest', function () {
      * @tc.desc resultSet Update test
      */
     it('testRdbStoreUpdate0002', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreUpdate0002 start *************");
+        console.info(TAG + "************* testRdbStoreUpdate0002 start *************");
         //更新
         {
             var u8 = new Uint8Array([1, 2, 3])
@@ -133,10 +133,10 @@ describe('rdbStoreUpdateTest', function () {
                 let predicates = new dataRdb.RdbPredicates("")
                 let updatePromise = rdbStore.update(valueBucket, predicates)
                 updatePromise.then(async (ret) => {
-                    await console.log(TAG + "update done: " + ret);
+                    await console.info(TAG + "update done: " + ret);
                     expect(null).assertFail();
                 }).catch((err) => {
-                    console.log(TAG + "update with null table name");
+                    console.info(TAG + "update with null table name");
                 })
             }
             {
@@ -144,10 +144,10 @@ describe('rdbStoreUpdateTest', function () {
                 let predicates = await new dataRdb.RdbPredicates("test")
                 let updatePromise = rdbStore.update(emptyBucket, predicates)
                 updatePromise.then(async (ret) => {
-                    await console.log(TAG + "update done: " + ret);
+                    await console.info(TAG + "update done: " + ret);
                     expect(null).assertFail();
                 }).catch((err) => {
-                    console.log(TAG + "update with wrong valueBucket");
+                    console.info(TAG + "update with wrong valueBucket");
                 })
             }
             {
@@ -155,15 +155,15 @@ describe('rdbStoreUpdateTest', function () {
                 await predicates.equalTo("aaa", "null")
                 let updatePromise = rdbStore.update(valueBucket, predicates)
                 updatePromise.then(async (ret) => {
-                    await console.log(TAG + "update done: " + ret);
+                    await console.info(TAG + "update done: " + ret);
                     expect(null).assertFail();
                 }).catch((err) => {
-                    console.log(TAG + "update with wrong condition");
+                    console.info(TAG + "update with wrong condition");
                 })
             }
         }
         done();
-        console.log(TAG + "************* testRdbStoreUpdate0002 end   *************");
+        console.info(TAG + "************* testRdbStoreUpdate0002 end   *************");
     })
 
     /**
@@ -172,7 +172,7 @@ describe('rdbStoreUpdateTest', function () {
      * @tc.desc resultSet Update test
      */
     it('testRdbStoreUpdate0003', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreUpdate0003 start *************");
+        console.info(TAG + "************* testRdbStoreUpdate0003 start *************");
         //更新
         {
             var u8 = new Uint8Array([1, 2, 3])
@@ -187,10 +187,10 @@ describe('rdbStoreUpdateTest', function () {
                 let predicates = new dataRdb.RdbPredicates("wrongTable")
                 let updatePromise = rdbStore.update(valueBucket, predicates)
                 updatePromise.then(async (ret) => {
-                    await console.log(TAG + "update done: " + ret);
+                    await console.info(TAG + "update done: " + ret);
                     expect(null).assertFail();
                 }).catch((err) => {
-                    console.log(TAG + "update with wrong table name");
+                    console.info(TAG + "update with wrong table name");
                 })
                 //await updatePromise
             }
@@ -198,16 +198,16 @@ describe('rdbStoreUpdateTest', function () {
                 let predicates = await new dataRdb.RdbPredicates("test")
                 let updatePromise = rdbStore.update(valueBucket, predicates)
                 updatePromise.then(async (ret) => {
-                    await console.log(TAG + "update done: " + ret);
+                    await console.info(TAG + "update done: " + ret);
                     expect(null).assertFail();
                 }).catch((err) => {
-                    console.log(TAG + "update with wrong column name");
+                    console.info(TAG + "update with wrong column name");
                 })
                 //await updatePromise
             }
         }
         done();
-        console.log(TAG + "************* testRdbStoreUpdate0003 end   *************");
+        console.info(TAG + "************* testRdbStoreUpdate0003 end   *************");
     })
 
     /**
@@ -216,7 +216,7 @@ describe('rdbStoreUpdateTest', function () {
      * @tc.desc resultSet Update test
      */
     it('testRdbStoreUpdate0004', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreUpdate0004 start *************");
+        console.info(TAG + "************* testRdbStoreUpdate0004 start *************");
         //更新
         {
             var u8 = new Uint8Array([1, 2, 3])
@@ -231,10 +231,10 @@ describe('rdbStoreUpdateTest', function () {
                 await predicates.equalTo("aaa", "null")
                 let updatePromise = rdbStore.update(valueBucket, predicates)
                 updatePromise.then(async (ret) => {
-                    await console.log(TAG + "update done: " + ret);
+                    await console.info(TAG + "update done: " + ret);
                     expect(null).assertFail();
                 }).catch((err) => {
-                    console.log(TAG + "update with wrong condition");
+                    console.info(TAG + "update with wrong condition");
                 })
                 //await updatePromise
             }
@@ -246,16 +246,16 @@ describe('rdbStoreUpdateTest', function () {
                 await predicates.equalTo("null", 100.5)
                 let updatePromise = rdbStore.update(valueBucket, predicates)
                 updatePromise.then(async (ret) => {
-                    await console.log(TAG + "update done: " + ret);
+                    await console.info(TAG + "update done: " + ret);
                     expect(null).assertFail();
                 }).catch((err) => {
-                    console.log(TAG + "update with wrong condition");
+                    console.info(TAG + "update with wrong condition");
                 })
             }
         }
         done();
-        console.log(TAG + "************* testRdbStoreUpdate0004 end   *************");
+        console.info(TAG + "************* testRdbStoreUpdate0004 end   *************");
     })
-    console.log(TAG + "*************Unit Test End*************");
+    console.info(TAG + "*************Unit Test End*************");
 })
   

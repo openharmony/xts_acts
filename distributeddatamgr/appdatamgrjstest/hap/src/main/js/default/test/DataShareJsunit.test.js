@@ -41,7 +41,7 @@ describe('dataShareTest', function () {
         console.info(TAG + 'afterAll')
     })
 
-    console.log(TAG + "*************Unit Test Begin*************");
+    console.info(TAG + "*************Unit Test Begin*************");
 
     function onChangeNotify() {
         console.info("==========================>onChangeNotify=======================>");
@@ -53,17 +53,17 @@ describe('dataShareTest', function () {
      * @tc.desc data share createDataShareHelper test
      */
     it('createDataShareHelper_0000', 0, async function (done) {
-        console.log(TAG + ":createDataShareHelper_0000 start");
+        console.info(TAG + ":createDataShareHelper_0000 start");
         try {
             let helper = dataShare.createDataShareHelper(this.context, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             expect(false).assertTrue();
         } catch (err) {
             expect(true).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":createDataShareHelper_0000 end");
+        console.info(TAG + ":createDataShareHelper_0000 end");
     })
 
     /**
@@ -72,17 +72,17 @@ describe('dataShareTest', function () {
      * @tc.desc data share createDataShareHelper test
      */
     it('createDataShareHelper_0010', 0, async function (done) {
-        console.log(TAG + ":createDataShareHelper_0010 start");
+        console.info(TAG + ":createDataShareHelper_0010 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":createDataShareHelper_0010 end");
+        console.info(TAG + ":createDataShareHelper_0010 end");
     })
 
     /**
@@ -91,17 +91,17 @@ describe('dataShareTest', function () {
      * @tc.desc data share createDataShareHelper test
      */
     it('createDataShareHelper_0011', 0, async function (done) {
-        console.log(TAG + ":createDataShareHelper_0011 start");
+        console.info(TAG + ":createDataShareHelper_0011 start");
         try {
             let helper = dataShare.createDataShareHelper(this.context, null, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             expect(false).assertTrue();
         } catch (err) {
             expect(true).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":createDataShareHelper_0011 end");
+        console.info(TAG + ":createDataShareHelper_0011 end");
     })
 
     /**
@@ -110,17 +110,17 @@ describe('dataShareTest', function () {
      * @tc.desc data share createDataShareHelper test
      */
     it('createDataShareHelper_0012', 0, async function (done) {
-        console.log(TAG + ":createDataShareHelper_0012 start");
+        console.info(TAG + ":createDataShareHelper_0012 start");
         try {
             let helper = dataShare.createDataShareHelper(this.context, dseWant, null);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             expect(false).assertTrue();
         } catch (err) {
             expect(true).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":createDataShareHelper_0012 end");
+        console.info(TAG + ":createDataShareHelper_0012 end");
     })
 
     /**
@@ -129,10 +129,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share onEvent test
      */
     it('on_0020', 0, async function (done) {
-        console.log(TAG + ":on_0020 start");
+        console.info(TAG + ":on_0020 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.on(
                 "dataChange",
                 URI,
@@ -141,10 +141,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":on_0020 end");
+        console.info(TAG + ":on_0020 end");
     })
 
     /**
@@ -153,10 +153,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share onEvent test
      */
     it('on_0021', 0, async function (done) {
-        console.log(TAG + ":on_0021 start");
+        console.info(TAG + ":on_0021 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.on(
                 "dataChange",
                 null,
@@ -165,10 +165,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":on_0021 end");
+        console.info(TAG + ":on_0021 end");
     })
 
     /**
@@ -177,10 +177,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share offEvent test
      */
     it('off_0030', 0, async function (done) {
-        console.log(TAG + ":off_0030 start");
+        console.info(TAG + ":off_0030 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.off(
                 "dataChange",
                 URI,
@@ -193,10 +193,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":off_0030 end");
+        console.info(TAG + ":off_0030 end");
     })
 
     /**
@@ -205,10 +205,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share offEvent test
      */
     it('off_0031', 0, async function (done) {
-        console.log(TAG + ":off_0031 start");
+        console.info(TAG + ":off_0031 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.off(
                 "dataChange",
                 null,
@@ -217,10 +217,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":off_0031 end");
+        console.info(TAG + ":off_0031 end");
     })
 
     /**
@@ -229,10 +229,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share getType_callback test
      */
     it('getType_callback_0040', 0, async function (done) {
-        console.log(TAG + ":getType_callback_0040 start");
+        console.info(TAG + ":getType_callback_0040 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.getType(
                 URI,
                 (err, data) => {
@@ -241,10 +241,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":getType_callback_0040 end");
+        console.info(TAG + ":getType_callback_0040 end");
     })
 
     /**
@@ -253,10 +253,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share getType_promise test
      */
     it('getType_promise_0041', 0, async function (done) {
-        console.log(TAG + ":getType_promise_0041 start");
+        console.info(TAG + ":getType_promise_0041 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.getType(
                 URI
                 ).then((data) => {
@@ -265,10 +265,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":getType_promise_0041 end");
+        console.info(TAG + ":getType_promise_0041 end");
     })
 
     /**
@@ -277,10 +277,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share getFileType_callback test
      */
     it('getFileType_callback_0050', 0, async function (done) {
-        console.log(TAG + ":getFileType_callback_0050 start");
+        console.info(TAG + ":getFileType_callback_0050 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.getFileTypes(
                 URI,
                 "image/*",
@@ -290,10 +290,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":getFileType_callback_0050 end");
+        console.info(TAG + ":getFileType_callback_0050 end");
     })
 
     /**
@@ -302,10 +302,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share getFileType_promise test
      */
     it('getFileType_promise_0051', 0, async function (done) {
-        console.log(TAG + ":getFileType_promise_0051 start");
+        console.info(TAG + ":getFileType_promise_0051 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.getFileTypes(
                 URI,
                 "image/*"
@@ -315,10 +315,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":getFileType_promise_0051 end");
+        console.info(TAG + ":getFileType_promise_0051 end");
     })
 
     /**
@@ -327,10 +327,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share getFileType_callback test
      */
     it('getFileType_callback_0052', 0, async function (done) {
-        console.log(TAG + ":getFileType_callback_0052 start");
+        console.info(TAG + ":getFileType_callback_0052 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.getFileTypes(
                 null,
                 "image/*",
@@ -340,10 +340,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":getFileType_callback_0052 end");
+        console.info(TAG + ":getFileType_callback_0052 end");
     })
 
     /**
@@ -352,10 +352,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share normalizeUri_callback test
      */
     it('normalizeUri_callback_0060', 0, async function (done) {
-        console.log(TAG + ":normalizeUri_callback_0060 start");
+        console.info(TAG + ":normalizeUri_callback_0060 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.normalizeUri(
                 URI,
                 (err, data) => {
@@ -364,10 +364,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":normalizeUri_callback_0060 end");
+        console.info(TAG + ":normalizeUri_callback_0060 end");
     })
 
     /**
@@ -376,10 +376,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share normalizeUri_promise test
      */
     it('normalizeUri_promise_0061', 0, async function (done) {
-        console.log(TAG + ":normalizeUri_promise_0061 start");
+        console.info(TAG + ":normalizeUri_promise_0061 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.normalizeUri(
                 URI,
                 ).then((data) => {
@@ -388,10 +388,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":normalizeUri_promise_0061 end");
+        console.info(TAG + ":normalizeUri_promise_0061 end");
     })
 
     /**
@@ -400,10 +400,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share normalizeUri_callback test
      */
     it('normalizeUri_callback_0062', 0, async function (done) {
-        console.log(TAG + ":normalizeUri_callback_0062 start");
+        console.info(TAG + ":normalizeUri_callback_0062 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.normalizeUri(
                 null,
                 (err, data) => {
@@ -412,10 +412,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":normalizeUri_callback_0062 end");
+        console.info(TAG + ":normalizeUri_callback_0062 end");
     })
 
     /**
@@ -424,10 +424,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share denormalizeUri_callback test
      */
     it('denormalizeUri_callback_0070', 0, async function (done) {
-        console.log(TAG + ":denormalizeUri_callback_0070 start");
+        console.info(TAG + ":denormalizeUri_callback_0070 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.denormalizeUri(
                 URI,
                 (err, data) => {
@@ -436,10 +436,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":denormalizeUri_callback_0070 end");
+        console.info(TAG + ":denormalizeUri_callback_0070 end");
     })
 
     /**
@@ -448,10 +448,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share denormalizeUri_promise test
      */
     it('denormalizeUri_promise_0071', 0, async function (done) {
-        console.log(TAG + ":denormalizeUri_promise_0071 start");
+        console.info(TAG + ":denormalizeUri_promise_0071 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.denormalizeUri(
                 URI,
                 ).then((data) => {
@@ -460,10 +460,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":denormalizeUri_promise_0071 end");
+        console.info(TAG + ":denormalizeUri_promise_0071 end");
     })
 
     /**
@@ -472,10 +472,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share denormalizeUri_callback test
      */
     it('denormalizeUri_callback_0072', 0, async function (done) {
-        console.log(TAG + ":denormalizeUri_callback_0072 start");
+        console.info(TAG + ":denormalizeUri_callback_0072 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.denormalizeUri(
                 null,
                 (err, data) => {
@@ -484,10 +484,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":denormalizeUri_callback_0072 end");
+        console.info(TAG + ":denormalizeUri_callback_0072 end");
     })
 
     /**
@@ -496,10 +496,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share notifyChange_callback test
      */
     it('notifyChange_callback_0080', 0, async function (done) {
-        console.log(TAG + ":notifyChange_callback_0080 start");
+        console.info(TAG + ":notifyChange_callback_0080 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.notifyChange(
                 URI,
                 (err) => {
@@ -508,10 +508,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":notifyChange_callback_0080 end");
+        console.info(TAG + ":notifyChange_callback_0080 end");
     })
 
     /**
@@ -520,10 +520,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share notifyChange_promise test
      */
     it('notifyChange_promise_0081', 0, async function (done) {
-        console.log(TAG + ":notifyChange_promise_0081 start");
+        console.info(TAG + ":notifyChange_promise_0081 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.notifyChange(
                 URI,
                 ).then(() => {
@@ -532,10 +532,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":notifyChange_promise_0081 end");
+        console.info(TAG + ":notifyChange_promise_0081 end");
     })
 
     /**
@@ -544,10 +544,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share notifyChange_callback test
      */
     it('notifyChange_callback_0082', 0, async function (done) {
-        console.log(TAG + ":notifyChange_callback_0082 start");
+        console.info(TAG + ":notifyChange_callback_0082 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             helper.notifyChange(
                 null,
                 (err) => {
@@ -556,10 +556,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":notifyChange_callback_0082 end");
+        console.info(TAG + ":notifyChange_callback_0082 end");
     })
 
     /**
@@ -568,10 +568,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share insert_callback test
      */
     it('insert_callback_0090', 0, async function (done) {
-        console.log(TAG + ":insert_callback_0090 start");
+        console.info(TAG + ":insert_callback_0090 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             const valueBucket = {
                 "name": "rose",
                 "age": 22,
@@ -587,10 +587,10 @@ describe('dataShareTest', function () {
             expect(false).assertTrue();
         } catch (err) {
             expect(true).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":insert_callback_0090 end");
+        console.info(TAG + ":insert_callback_0090 end");
     })
 
     /**
@@ -599,10 +599,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share insert_promise test
      */
     it('insert_promise_0091', 0, async function (done) {
-        console.log(TAG + ":insert_promise_0081 start");
+        console.info(TAG + ":insert_promise_0081 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             const valueBucket = {
                 "name": "rose1",
                 "age": 221,
@@ -618,10 +618,10 @@ describe('dataShareTest', function () {
             expect(false).assertTrue();
         } catch (err) {
             expect(true).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":insert_promise_0091 end");
+        console.info(TAG + ":insert_promise_0091 end");
     })
 
     /**
@@ -630,10 +630,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share insert_callback test
      */
     it('insert_callback_0092', 0, async function (done) {
-        console.log(TAG + ":insert_callback_0092 start");
+        console.info(TAG + ":insert_callback_0092 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             const valueBucket = {
                 "name": "rose",
                 "age": 22,
@@ -649,10 +649,10 @@ describe('dataShareTest', function () {
             expect(false).assertTrue();
         } catch (err) {
             expect(true).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":insert_callback_0092 end");
+        console.info(TAG + ":insert_callback_0092 end");
     })
 
     /**
@@ -661,10 +661,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share batchInsert_callback test
      */
     it('batchInsert_callback_0100', 0, async function (done) {
-        console.log(TAG + ":batchInsert_callback_0100 start");
+        console.info(TAG + ":batchInsert_callback_0100 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             var cars = new Array({"name": "roe11", "age": 21, "salary": 20.5, "blobType": u8,},
                                  {"name": "roe12", "age": 21, "salary": 20.5, "blobType": u8,},
                                  {"name": "roe13", "age": 21, "salary": 20.5, "blobType": u8,})
@@ -677,10 +677,10 @@ describe('dataShareTest', function () {
             expect(false).assertTrue();
         } catch (err) {
             expect(true).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":batchInsert_callback_0100 end");
+        console.info(TAG + ":batchInsert_callback_0100 end");
     })
 
     /**
@@ -689,10 +689,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share createDataShareHelper test
      */
     it('batchInsert_promise_0101', 0, async function (done) {
-        console.log(TAG + ":batchInsert_promise_0101 start");
+        console.info(TAG + ":batchInsert_promise_0101 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             var cars = new Array({"name": "roe11", "age": 21, "salary": 20.5, "blobType": u8,},
                                  {"name": "roe12", "age": 21, "salary": 20.5, "blobType": u8,},
                                  {"name": "roe13", "age": 21, "salary": 20.5, "blobType": u8,})
@@ -705,10 +705,10 @@ describe('dataShareTest', function () {
             expect(false).assertTrue();
         } catch (err) {
             expect(true).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":batchInsert_promise_0101 end");
+        console.info(TAG + ":batchInsert_promise_0101 end");
     })
 
     /**
@@ -717,10 +717,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share batchInsert_callback test
      */
     it('batchInsert_callback_0102', 0, async function (done) {
-        console.log(TAG + ":batchInsert_callback_0102 start");
+        console.info(TAG + ":batchInsert_callback_0102 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             var cars = new Array({"name": "roe11", "age": 21, "salary": 20.5, "blobType": u8,},
                                  {"name": "roe12", "age": 21, "salary": 20.5, "blobType": u8,},
                                  {"name": "roe13", "age": 21, "salary": 20.5, "blobType": u8,})
@@ -733,10 +733,10 @@ describe('dataShareTest', function () {
             expect(false).assertTrue();
         } catch (err) {
             expect(true).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":batchInsert_callback_0102 end");
+        console.info(TAG + ":batchInsert_callback_0102 end");
     })
 
     /**
@@ -745,10 +745,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share delete_callback test
      */
     it('delete_callback_0110', 0, async function (done) {
-        console.log(TAG + ":delete_callback_0110 start");
+        console.info(TAG + ":delete_callback_0110 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             let da = new dataAbility.DataAbilityPredicates()
             helper.delete(
                 URI,
@@ -759,10 +759,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":delete_callback_0110 end");
+        console.info(TAG + ":delete_callback_0110 end");
     })
 
     /**
@@ -771,10 +771,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share delete_promise test
      */
     it('delete_promise_0111', 0, async function (done) {
-        console.log(TAG + ":delete_promise_0111 start");
+        console.info(TAG + ":delete_promise_0111 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             let da = new dataAbility.DataAbilityPredicates()
             helper.delete(
                 URI,
@@ -785,10 +785,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":delete_promise_0111 end");
+        console.info(TAG + ":delete_promise_0111 end");
     })
 
     /**
@@ -797,10 +797,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share delete_callback test
      */
     it('delete_callback_0112', 0, async function (done) {
-        console.log(TAG + ":delete_callback_0112 start");
+        console.info(TAG + ":delete_callback_0112 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             let da = new dataAbility.DataAbilityPredicates()
             helper.delete(
                 null,
@@ -811,10 +811,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":delete_callback_0112 end");
+        console.info(TAG + ":delete_callback_0112 end");
     })
 
     /**
@@ -823,10 +823,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share delete_callback test
      */
     it('delete_callback_0113', 0, async function (done) {
-        console.log(TAG + ":delete_callback_0113 start");
+        console.info(TAG + ":delete_callback_0113 start");
         try {
             let helper = dataShare.createDataShareHelper(this.context, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             let da = new dataAbility.DataAbilityPredicates()
             helper.delete(
                 URI,
@@ -837,10 +837,10 @@ describe('dataShareTest', function () {
             expect(false).assertTrue();
         } catch (err) {
             expect(true).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":delete_callback_0113 end");
+        console.info(TAG + ":delete_callback_0113 end");
     })
 
     /**
@@ -849,10 +849,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share update_callback test
      */
     it('update_callback_0120', 0, async function (done) {
-        console.log(TAG + ":update_callback_0120 start");
+        console.info(TAG + ":update_callback_0120 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             const va = {
                 "name": "roe1",
                 "age": 21,
@@ -870,10 +870,10 @@ describe('dataShareTest', function () {
             expect(false).assertTrue();
         } catch (err) {
             expect(true).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":update_callback_0120 end");
+        console.info(TAG + ":update_callback_0120 end");
     })
 
     /**
@@ -882,10 +882,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share update_promise test
      */
     it('update_promise_0121', 0, async function (done) {
-        console.log(TAG + ":update_promise_0121 start");
+        console.info(TAG + ":update_promise_0121 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             const va = {
                 "name": "roe1",
                 "age": 21,
@@ -903,10 +903,10 @@ describe('dataShareTest', function () {
             expect(false).assertTrue();
         } catch (err) {
             expect(true).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":update_promise_0121 end");
+        console.info(TAG + ":update_promise_0121 end");
     })
 
     /**
@@ -915,10 +915,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share update_callback test
      */
     it('update_callback_0122', 0, async function (done) {
-        console.log(TAG + ":update_callback_0122 start");
+        console.info(TAG + ":update_callback_0122 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             const va = {
                 "name": "roe1",
                 "age": 21,
@@ -936,10 +936,10 @@ describe('dataShareTest', function () {
             expect(false).assertTrue();
         } catch (err) {
             expect(true).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":update_callback_0122 end");
+        console.info(TAG + ":update_callback_0122 end");
     })
 
     /**
@@ -948,10 +948,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share update_callback test
      */
     it('update_callback_0123', 0, async function (done) {
-        console.log(TAG + ":update_callback_0123 start");
+        console.info(TAG + ":update_callback_0123 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             let da = new dataAbility.DataAbilityPredicates()
             helper.update(
                 URI,
@@ -963,10 +963,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":update_callback_0123 end");
+        console.info(TAG + ":update_callback_0123 end");
     })
 
     /**
@@ -975,10 +975,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share query_callback test
      */
     it('query_callback_0130', 0, async function (done) {
-        console.log(TAG + ":query_callback_0130 start");
+        console.info(TAG + ":query_callback_0130 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             let da = new dataAbility.DataAbilityPredicates()
             helper.query(
                 URI,
@@ -990,10 +990,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":query_callback_0130 end");
+        console.info(TAG + ":query_callback_0130 end");
     })
 
     /**
@@ -1002,10 +1002,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share query_promise test
      */
     it('query_promise_0131', 0, async function (done) {
-        console.log(TAG + ":query_promise_0131 start");
+        console.info(TAG + ":query_promise_0131 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             let da = new dataAbility.DataAbilityPredicates()
             helper.query(
                 URI,
@@ -1017,10 +1017,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":query_promise_0131 end");
+        console.info(TAG + ":query_promise_0131 end");
     })
 
     /**
@@ -1029,10 +1029,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share query_callback test
      */
     it('query_callback_0132', 0, async function (done) {
-        console.log(TAG + ":query_callback_0132 start");
+        console.info(TAG + ":query_callback_0132 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             let da = new dataAbility.DataAbilityPredicates()
             helper.query(
                 null,
@@ -1044,10 +1044,10 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":query_callback_0130 end");
+        console.info(TAG + ":query_callback_0130 end");
     })
 
     /**
@@ -1056,10 +1056,10 @@ describe('dataShareTest', function () {
      * @tc.desc data share query_promise test
      */
     it('query_promise_0133', 0, async function (done) {
-        console.log(TAG + ":query_promise_0133 start");
+        console.info(TAG + ":query_promise_0133 start");
         try {
             let helper = dataShare.createDataShareHelper(null, dseWant, URI);
-            console.log(TAG + ":DataShareHelper helper:" + helper);
+            console.info(TAG + ":DataShareHelper helper:" + helper);
             let da = new dataAbility.DataAbilityPredicates()
             helper.query(
                 URI,
@@ -1071,11 +1071,11 @@ describe('dataShareTest', function () {
             expect(true).assertTrue();
         } catch (err) {
             expect(false).assertTrue();
-            console.log(TAG + ":DataShareHelper catch err:" + err);
+            console.info(TAG + ":DataShareHelper catch err:" + err);
         }
         done();
-        console.log(TAG + ":query_promise_0133 end");
+        console.info(TAG + ":query_promise_0133 end");
     })
 
-    console.log(TAG + "*************Unit Test End*************");
+    console.info(TAG + "*************Unit Test End*************");
 })

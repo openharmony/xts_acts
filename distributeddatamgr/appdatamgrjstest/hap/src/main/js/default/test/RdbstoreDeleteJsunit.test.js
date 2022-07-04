@@ -45,14 +45,14 @@ describe('rdbStoreDeleteTest', function () {
         console.info(TAG + 'afterAll')
     })
 
-    console.log(TAG + '*************Unit Test Begin*************');
+    console.info(TAG + '*************Unit Test Begin*************');
     /**
      * @tc.name rdb delete test
      * @tc.number SUB_DDM_AppDataFWK_JSRDB_Delete_0010
      * @tc.desc rdb delete test
      */
     it('testRdbStoreDelete0001', 0, async function (done) {
-        console.log(TAG + '************* testRdbStoreDelete0001 start *************');
+        console.info(TAG + '************* testRdbStoreDelete0001 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
             const valueBucket = {
@@ -87,14 +87,14 @@ describe('rdbStoreDeleteTest', function () {
             let deletePromise = rdbStore.delete(predicates)
             deletePromise.then(async (ret) => {
                 expect(3).assertEqual(ret)
-                console.log(TAG + 'Delete done: ' + ret)
+                console.info(TAG + 'Delete done: ' + ret)
             }).catch((err) => {
                 expect(null).assertFail()
             })
             await deletePromise
         }
         done()
-        console.log(TAG + '************* testRdbStoreDelete0001 end *************');
+        console.info(TAG + '************* testRdbStoreDelete0001 end *************');
     })
 
     /**
@@ -103,7 +103,7 @@ describe('rdbStoreDeleteTest', function () {
      * @tc.desc rdb delete test
      */
     it('testRdbStoreDelete0002', 0, async function (done) {
-        console.log(TAG + '************* testRdbStoreDelete0002 start *************');
+        console.info(TAG + '************* testRdbStoreDelete0002 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
             const valueBucket = {
@@ -139,14 +139,14 @@ describe('rdbStoreDeleteTest', function () {
             let deletePromise = rdbStore.delete(predicates)
             deletePromise.then(async (ret) => {
                 await expect(1).assertEqual(ret)
-                await console.log(TAG + 'Delete done: ' + ret)
+                await console.info(TAG + 'Delete done: ' + ret)
             }).catch((err) => {
                 expect(null).assertFail()
             })
             await deletePromise
         }
         done()
-        console.log(TAG + '************* testRdbStoreDelete0002 end *************');
+        console.info(TAG + '************* testRdbStoreDelete0002 end *************');
     })
 
     /**
@@ -155,7 +155,7 @@ describe('rdbStoreDeleteTest', function () {
      * @tc.desc rdb delete test
      */
     it('testRdbStoreDelete0003', 0, async function (done) {
-        console.log(TAG + '************* testRdbStoreDelete0003 start *************');
+        console.info(TAG + '************* testRdbStoreDelete0003 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
             const valueBucket = {
@@ -189,7 +189,7 @@ describe('rdbStoreDeleteTest', function () {
             let deletePromise = rdbStore.delete(predicates)
             deletePromise.then(async (ret) => {
                 expect(1).assertEqual(ret)
-                console.log(TAG + 'Delete done: ' + ret)
+                console.info(TAG + 'Delete done: ' + ret)
             }).catch((err) => {
                 expect(null).assertFail()
             })
@@ -203,7 +203,7 @@ describe('rdbStoreDeleteTest', function () {
             expect(0).assertEqual(resultSet.rowCount)
         }
         done()
-        console.log(TAG + '************* testRdbStoreDelete0003 end *************');
+        console.info(TAG + '************* testRdbStoreDelete0003 end *************');
     })
 
     /**
@@ -212,7 +212,7 @@ describe('rdbStoreDeleteTest', function () {
      * @tc.desc rdb delete test
      */
     it('testRdbStoreDelete0004', 0, async function (done) {
-        console.log(TAG + '************* testRdbStoreDelete0004 start *************');
+        console.info(TAG + '************* testRdbStoreDelete0004 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
             const valueBucket = {
@@ -247,14 +247,14 @@ describe('rdbStoreDeleteTest', function () {
             predicates.equalTo('aaa id', 1)
             let deletePromise = rdbStore.delete(predicates)
             deletePromise.then(async (ret) => {
-                console.log(TAG + 'delete done: ' + ret)
+                console.info(TAG + 'delete done: ' + ret)
                 expect(null).assertFail()
             }).catch((err) => {
-                console.log(TAG + 'delete with wrong conditions')
+                console.info(TAG + 'delete with wrong conditions')
             })
         }
         done()
-        console.log(TAG + '************* testRdbStoreDelete0004 end *************');
+        console.info(TAG + '************* testRdbStoreDelete0004 end *************');
     })
 
     /**
@@ -263,7 +263,7 @@ describe('rdbStoreDeleteTest', function () {
      * @tc.desc rdb delete test
      */
     it('testRdbStoreDelete0005', 0, async function (done) {
-        console.log(TAG + '************* testRdbStoreDelete0005 start *************');
+        console.info(TAG + '************* testRdbStoreDelete0005 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
             const valueBucket = {
@@ -299,14 +299,14 @@ describe('rdbStoreDeleteTest', function () {
             let deletePromise = rdbStore.delete(predicates)
             deletePromise.then(async (ret) => {
                 expect(2).assertEqual(ret)
-                console.log(TAG + 'Delete done: ' + ret)
+                console.info(TAG + 'Delete done: ' + ret)
             }).catch((err) => {
                 expect(null).assertFail()
             })
             await deletePromise
         }
         done()
-        console.log(TAG + '************* testRdbStoreDelete0005 end *************');
+        console.info(TAG + '************* testRdbStoreDelete0005 end *************');
     })
 
     /**
@@ -315,7 +315,7 @@ describe('rdbStoreDeleteTest', function () {
      * @tc.desc rdb delete test
      */
     it('testRdbStoreDelete0006', 0, async function (done) {
-        console.log(TAG + '************* testRdbStoreDelete0006 start *************');
+        console.info(TAG + '************* testRdbStoreDelete0006 start *************');
         let u8 = new Uint8Array([1, 2, 3])
         {
             const valueBucket = {
@@ -349,15 +349,15 @@ describe('rdbStoreDeleteTest', function () {
             let predicates = await new dataRdb.RdbPredicates('')
             let deletePromise = rdbStore.delete(predicates)
             deletePromise.then(async (ret) => {
-                console.log(TAG + 'delete done: ' + ret)
+                console.info(TAG + 'delete done: ' + ret)
                 expect(null).assertFail()
             }).catch((err) => {
-                console.log(TAG + 'delete with null')
+                console.info(TAG + 'delete with null')
             })
         }
         done()
-        console.log(TAG + '************* testRdbStoreDelete0006 end *************');
+        console.info(TAG + '************* testRdbStoreDelete0006 end *************');
     })
 
-    console.log(TAG + '*************Unit Test End*************');
+    console.info(TAG + '*************Unit Test End*************');
 })
