@@ -19,16 +19,16 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 describe("SensorJsTest_sensor_16", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
-        expect(typeof(data.beta)).assertEqual("number");
-        expect(typeof(data.gamma)).assertEqual("number");
-        expect(typeof(data.alpha)).assertEqual("number");
+        expect(typeof (data.beta)).assertEqual("number");
+        expect(typeof (data.gamma)).assertEqual("number");
+        expect(typeof (data.alpha)).assertEqual("number");
     }
 
     function callback2(data) {
         console.info("callback2" + JSON.stringify(data));
-        expect(typeof(data.beta)).assertEqual("number");
-        expect(typeof(data.gamma)).assertEqual("number");
-        expect(typeof(data.alpha)).assertEqual("number");
+        expect(typeof (data.beta)).assertEqual("number");
+        expect(typeof (data.gamma)).assertEqual("number");
+        expect(typeof (data.alpha)).assertEqual("number");
     }
 
     beforeAll(function () {
@@ -64,8 +64,8 @@ describe("SensorJsTest_sensor_16", function () {
     })
 
     let errMessages = ['The number of parameters is not valid', 'Should subscribe first',
-    'string is not defined'];
-	
+        'string is not defined'];
+
     let errMessage;
 
     /*
@@ -73,10 +73,10 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorSystem_ORIENTATION_JsTest_0010
      */
-    it("orientating_SensorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
+    it("orientating_SensorJsTest001", FUNCTION | MEDIUMTEST | LEVEL0, async function (done) {
         console.info('----------------------orientating_SensorJsTest001---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
-        setTimeout(()=>{
+        setTimeout(() => {
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION);
             done();
         }, 500);
@@ -87,10 +87,10 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorSystem_ORIENTATION_JsTest_0020
      */
-    it("orientating_SensorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("orientating_SensorJsTest002", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         console.info('----------------------orientating_SensorJsTest002---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback, {'interval': 100000000});
-        setTimeout(()=>{
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback, { 'interval': 100000000 });
+        setTimeout(() => {
             console.info('----------------------orientating_SensorJsTest002 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION);
             console.info('----------------------orientating_SensorJsTest002 off end---------------------------');
@@ -103,7 +103,7 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorSystem_ORIENTATION_JsTest_0030
      */
-    it("orientating_SensorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
+    it("orientating_SensorJsTest003", FUNCTION | MEDIUMTEST | LEVEL3, function (done) {
         console.info('----------------------orientating_SensorJsTest003---------------------------');
         function onSensorCallback(data) {
             console.info('orientating_SensorJsTest003  on error');
@@ -111,7 +111,7 @@ describe("SensorJsTest_sensor_16", function () {
             done();
         }
         try {
-            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, onSensorCallback, {'interval': 100000000}, 5);
+            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, onSensorCallback, { 'interval': 100000000 }, 5);
         } catch (error) {
             console.info('orientating_SensorJsTest005 error' + error);
             errMessage = error.toString().slice(12, 49);
@@ -125,9 +125,9 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorSystem_ORIENTATION_JsTest_0040
      */
-    it("orientating_SensorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("orientating_SensorJsTest004", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
-        setTimeout(()=>{
+        setTimeout(() => {
             expect(true).assertTrue();
             done();
         }, 500);
@@ -138,13 +138,13 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorSystem_ORIENTATION_JsTest_0050
      */
-    it("orientating_SensorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
+    it("orientating_SensorJsTest005", FUNCTION | MEDIUMTEST | LEVEL3, function (done) {
         function onceSensorCallback(data) {
             console.info('orientating_SensorJsTest005  on error');
             expect(false).assertTrue();
             done();
         }
-        try{
+        try {
             sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, onceSensorCallback, 5);
         } catch (error) {
             console.info('orientating_SensorJsTest005 error' + error);
@@ -159,7 +159,7 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorSystem_ORIENTATION_JsTest_0060
      */
-    it("orientating_SensorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("orientating_SensorJsTest006", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         try {
             sensor.off(string, "");
         } catch (error) {
@@ -175,7 +175,7 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorSystem_ORIENTATION_JsTest_0070
      */
-    it("orientating_SensorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("orientating_SensorJsTest007", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         function onSensorCallback(data) {
             console.info('orientating_SensorJsTest007  on error');
             expect(false).assertTrue();
@@ -183,7 +183,7 @@ describe("SensorJsTest_sensor_16", function () {
         }
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, onSensorCallback);
         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, onSensorCallback);
-        setTimeout(()=>{
+        setTimeout(() => {
             expect(true).assertTrue();
             done();
         }, 500);
@@ -194,7 +194,7 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorSystem_ORIENTATION_JsTest_0080
      */
-    it("orientating_SensorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("orientating_SensorJsTest008", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         function onSensorCallback(data) {
             console.info('orientating_SensorJsTest008  on error');
             expect(false).assertTrue();
@@ -215,10 +215,10 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorSystem_ORIENTATION_JsTest_0090
      */
-    it("orientating_SensorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("orientating_SensorJsTest009", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback2);
-        setTimeout(()=>{
+        setTimeout(() => {
             console.info('----------------------orientating_SensorJsTest009 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION);
             console.info('----------------------orientating_SensorJsTest009 off end---------------------------');
@@ -231,15 +231,15 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorSystem_ORIENTATION_JsTest_0100
      */
-    it("orientating_SensorJsTest010", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("orientating_SensorJsTest010", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback2);
-        setTimeout(()=>{
+        setTimeout(() => {
             console.info('----------------------orientating_SensorJsTest010 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
             console.info('----------------------orientating_SensorJsTest010 off end---------------------------');
         }, 500);
-        setTimeout(()=>{
+        setTimeout(() => {
             console.info('----------------------SensorJsTest010 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback2);
             console.info('----------------------SensorJsTest010 off end---------------------------');
@@ -252,11 +252,11 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorSystem_ORIENTATION_JsTest_0110
      */
-    it("orientating_SensorJsTest011", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("orientating_SensorJsTest011", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         console.info('----------------------orientating_SensorJsTest011---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback, {'interval': 100000000});
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback, { 'interval': 100000000 });
         sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback2);
-        setTimeout(()=>{
+        setTimeout(() => {
             console.info('----------------------orientating_SensorJsTest011 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION);
             console.info('----------------------orientating_SensorJsTest011 off end---------------------------');
@@ -269,16 +269,16 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorSystem_ORIENTATION_JsTest_0120
      */
-    it("orientating_SensorJsTest012", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("orientating_SensorJsTest012", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         console.info('----------------------orientating_SensorJsTest012---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback, {'interval': 100000000});
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback2, {'interval': 100000000});
-        setTimeout(()=>{
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback, { 'interval': 100000000 });
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback2, { 'interval': 100000000 });
+        setTimeout(() => {
             console.info('----------------------orientating_SensorJsTest012 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
             console.info('----------------------orientating_SensorJsTest012 off end---------------------------');
         }, 500);
-        setTimeout(()=>{
+        setTimeout(() => {
             console.info('----------------------orientating_SensorJsTest012 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback2);
             console.info('----------------------orientating_SensorJsTest012 off end---------------------------');
@@ -291,11 +291,11 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorSystem_ORIENTATION_JsTest_0130
      */
-    it("orientating_SensorJsTest013", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("orientating_SensorJsTest013", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         console.info('----------------------orientating_SensorJsTest013---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback, {'interval': 100000000});
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback2, {'interval': 100000000});
-        setTimeout(()=>{
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback, { 'interval': 100000000 });
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback2, { 'interval': 100000000 });
+        setTimeout(() => {
             console.info('----------------------orientating_SensorJsTest013 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION);
             console.info('----------------------orientating_SensorJsTest013 off end---------------------------');

@@ -19,16 +19,16 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 describe("SensorJsTest_sensor_9", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
-        expect(typeof(data.x)).assertEqual("number");
-        expect(typeof(data.y)).assertEqual("number");
-        expect(typeof(data.z)).assertEqual("number");
+        expect(typeof (data.x)).assertEqual("number");
+        expect(typeof (data.y)).assertEqual("number");
+        expect(typeof (data.z)).assertEqual("number");
     }
 
     function callback2(data) {
         console.info("callback2" + JSON.stringify(data));
-        expect(typeof(data.x)).assertEqual("number");
-        expect(typeof(data.y)).assertEqual("number");
-        expect(typeof(data.z)).assertEqual("number");
+        expect(typeof (data.x)).assertEqual("number");
+        expect(typeof (data.y)).assertEqual("number");
+        expect(typeof (data.z)).assertEqual("number");
     }
 
     beforeAll(function () {
@@ -64,8 +64,8 @@ describe("SensorJsTest_sensor_9", function () {
     })
 
     let errMessages = ['The number of parameters is not valid', 'Should subscribe first',
-    'string is not defined'];
-	
+        'string is not defined'];
+
     let errMessage;
 
     /*
@@ -73,10 +73,10 @@ describe("SensorJsTest_sensor_9", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0010
      */
-    it("gravity_SensorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
+    it("gravity_SensorJsTest001", FUNCTION | MEDIUMTEST | LEVEL0, async function (done) {
         console.info('----------------------gravity_SensorJsTest001---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback);
-        setTimeout(()=>{
+        setTimeout(() => {
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY);
             done();
         }, 500);
@@ -87,10 +87,10 @@ describe("SensorJsTest_sensor_9", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0020
      */
-    it("gravity_SensorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("gravity_SensorJsTest002", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         console.info('----------------------gravity_SensorJsTest002---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, {'interval': 100000000});
-        setTimeout(()=>{
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, { 'interval': 100000000 });
+        setTimeout(() => {
             console.info('----------------------gravity_SensorJsTest002 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY);
             console.info('----------------------gravity_SensorJsTest002 off end---------------------------');
@@ -103,7 +103,7 @@ describe("SensorJsTest_sensor_9", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0030
      */
-    it("gravity_SensorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
+    it("gravity_SensorJsTest003", FUNCTION | MEDIUMTEST | LEVEL3, function (done) {
         console.info('----------------------gravity_SensorJsTest003---------------------------');
         function onSensorCallback(data) {
             console.info('gravity_SensorJsTest003  on error');
@@ -111,9 +111,9 @@ describe("SensorJsTest_sensor_9", function () {
             done();
         }
         try {
-            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, onSensorCallback, {'interval': 100000000}, 5);
+            sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, onSensorCallback, { 'interval': 100000000 }, 5);
         } catch (error) {
-            console.info('gravity_SensorJsTest003 error' +error);
+            console.info('gravity_SensorJsTest003 error' + error);
             errMessage = error.toString().slice(12, 49);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
@@ -125,9 +125,9 @@ describe("SensorJsTest_sensor_9", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0040
      */
-    it("gravity_SensorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("gravity_SensorJsTest004", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback);
-        setTimeout(()=>{
+        setTimeout(() => {
             expect(true).assertTrue();
             done();
         }, 500);
@@ -138,16 +138,16 @@ describe("SensorJsTest_sensor_9", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0050
      */
-    it("gravity_SensorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
+    it("gravity_SensorJsTest005", FUNCTION | MEDIUMTEST | LEVEL3, function (done) {
         function onceSensorCallback(data) {
             console.info('gravity_SensorJsTest005  on error');
             expect(false).assertTrue();
             done();
         }
-        try{
+        try {
             sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, onceSensorCallback, 5);
         } catch (error) {
-            console.info('gravity_SensorJsTest005 error' +error);
+            console.info('gravity_SensorJsTest005 error' + error);
             errMessage = error.toString().slice(14, 51);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
@@ -159,7 +159,7 @@ describe("SensorJsTest_sensor_9", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0060
      */
-    it("gravity_SensorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("gravity_SensorJsTest006", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         try {
             sensor.off(string, "");
         } catch (error) {
@@ -175,7 +175,7 @@ describe("SensorJsTest_sensor_9", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0070
      */
-    it("gravity_SensorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("gravity_SensorJsTest007", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         function onSensorCallback(data) {
             console.info('gravity_SensorJsTest007 on error');
             expect(false).assertTrue();
@@ -183,7 +183,7 @@ describe("SensorJsTest_sensor_9", function () {
         }
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, onSensorCallback);
         sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, onSensorCallback);
-        setTimeout(()=>{
+        setTimeout(() => {
             expect(true).assertTrue();
             done();
         }, 500);
@@ -194,7 +194,7 @@ describe("SensorJsTest_sensor_9", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0080
      */
-    it("gravity_SensorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("gravity_SensorJsTest008", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         function onSensorCallback(data) {
             console.info('gravity_SensorJsTest008  on error');
             expect(false).assertTrue();
@@ -215,10 +215,10 @@ describe("SensorJsTest_sensor_9", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0090
      */
-    it("gravity_SensorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("gravity_SensorJsTest009", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback);
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback2);
-        setTimeout(()=>{
+        setTimeout(() => {
             console.info('----------------------gravity_SensorJsTest009 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY);
             console.info('----------------------gravity_SensorJsTest009 off end---------------------------');
@@ -231,15 +231,15 @@ describe("SensorJsTest_sensor_9", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0100
      */
-    it("gravity_SensorJsTest010", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("gravity_SensorJsTest010", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback);
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback2);
-        setTimeout(()=>{
+        setTimeout(() => {
             console.info('----------------------gravity_SensorJsTest010 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback);
             console.info('----------------------gravity_SensorJsTest010 off end---------------------------');
         }, 500);
-        setTimeout(()=>{
+        setTimeout(() => {
             console.info('----------------------gravity_SensorJsTest010 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback2);
             console.info('----------------------gravity_SensorJsTest010 off end---------------------------');
@@ -252,11 +252,11 @@ describe("SensorJsTest_sensor_9", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0110
      */
-    it("gravity_SensorJsTest011", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("gravity_SensorJsTest011", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         console.info('----------------------gravity_SensorJsTest011---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, {'interval': 100000000});
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, { 'interval': 100000000 });
         sensor.once(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback2);
-        setTimeout(()=>{
+        setTimeout(() => {
             console.info('----------------------gravity_SensorJsTest011 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY);
             console.info('----------------------gravity_SensorJsTest011 off end---------------------------');
@@ -269,16 +269,16 @@ describe("SensorJsTest_sensor_9", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0120
      */
-    it("gravity_SensorJsTest012", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("gravity_SensorJsTest012", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         console.info('----------------------gravity_SensorJsTest012---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, {'interval': 100000000});
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback2, {'interval': 100000000});
-        setTimeout(()=>{
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, { 'interval': 100000000 });
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback2, { 'interval': 100000000 });
+        setTimeout(() => {
             console.info('----------------------gravity_SensorJsTest012 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback);
             console.info('----------------------gravity_SensorJsTest012 off end---------------------------');
         }, 500);
-        setTimeout(()=>{
+        setTimeout(() => {
             console.info('----------------------gravity_SensorJsTest012 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback2);
             console.info('----------------------gravity_SensorJsTest012 off end---------------------------');
@@ -291,11 +291,11 @@ describe("SensorJsTest_sensor_9", function () {
      * @tc.desc:verify app info is not null
      * @tc.number:SUB_SensorsSystem_GRAVITY_JsTest_0130
      */
-    it("gravity_SensorJsTest013", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("gravity_SensorJsTest013", FUNCTION | MEDIUMTEST | LEVEL3, async function (done) {
         console.info('----------------------gravity_SensorJsTest013---------------------------');
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, {'interval': 100000000});
-        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback2, {'interval': 100000000});
-        setTimeout(()=>{
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, { 'interval': 100000000 });
+        sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback2, { 'interval': 100000000 });
+        setTimeout(() => {
             console.info('----------------------gravity_SensorJsTest013 off in---------------------------');
             sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY);
             console.info('----------------------gravity_SensorJsTest013 off end---------------------------');

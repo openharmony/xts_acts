@@ -16,7 +16,7 @@ import sensor from '@ohos.sensor'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("SensorJsTest", function () {
+describe("SensorJsTest_sensor_13", function () {
     beforeAll(function () {
 
         /*
@@ -86,7 +86,7 @@ describe("SensorJsTest", function () {
                         reject(err);
                     }, 500);
                 } else {
-                    console.info('SensorLinearAccelerationJSTest001  on  success, x: ' + data.x + "y: " 
+                    console.info('SensorLinearAccelerationJSTest001  on  success, x: ' + data.x + "y: "
                         + data.y + "z: " + data.z);
                     expect(typeof (data.x)).assertEqual("number");
                     expect(typeof (data.y)).assertEqual("number");
@@ -117,7 +117,7 @@ describe("SensorJsTest", function () {
                 console.info('SensorLinearAccelerationJSTest005  once error');
                 expect(false).assertTrue();
             } else {
-                console.info('SensorLinearAccelerationJSTest005  on  success, x: ' + data.x + "y: " 
+                console.info('SensorLinearAccelerationJSTest005  on  success, x: ' + data.x + "y: "
                     + data.y + "z: " + data.z);
                 expect(typeof (data.x)).assertEqual("number");
                 expect(typeof (data.y)).assertEqual("number");

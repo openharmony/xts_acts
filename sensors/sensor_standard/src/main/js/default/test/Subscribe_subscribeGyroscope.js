@@ -15,7 +15,7 @@
 import sensor from '@system.sensor'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("SensorJsTest", function () {
+describe("SensorJsTest_sensor_29", function () {
     beforeAll(function () {
 
         /*
@@ -49,7 +49,7 @@ describe("SensorJsTest", function () {
     })
 
     let errMessages = ['The number of parameters is not valid',
-    'Wrong argument type, should be object', 'UnsubscribeSensor failed'];
+        'Wrong argument type, should be object', 'UnsubscribeSensor failed'];
 
     let errMessage;
 
