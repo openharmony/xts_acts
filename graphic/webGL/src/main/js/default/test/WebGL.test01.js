@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import app from '@system.app'
-import Context from '@ohos.napi_context'
 
 import {
 	describe,
@@ -300,6 +299,7 @@ describe('webgl1Test_webgl1', function() {
 	it('webgl_test_getContextAttributes', 0, async function(done) {
 		console.info("webgltest into getContextAttributes");
 		const getContextAttributesValue = gl.getContextAttributes();
+		const alphaValue = getContextAttributesValue.alpha();
 		console.info("webgltest getContextAttributes: " + getContextAttributesValue);
 		expect(typeof(getContextAttributesValue)).assertEqual("object" || null);
 		done();
