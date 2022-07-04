@@ -79,7 +79,8 @@ export default class MainAbility9 extends Ability {
                 listKey9.push(abilityName + " onAbilityContinue");
             }
         }
-        var callBackId = this.context.getApplicationContext()
+        globalThis.applicationContext9 = this.context.getApplicationContext();
+        var callBackId = globalThis.applicationContext9
             .registerAbilityLifecycleCallback(AbilityLifecycleCallback);
 
         console.log("callBackId is aaa :" + callBackId);
