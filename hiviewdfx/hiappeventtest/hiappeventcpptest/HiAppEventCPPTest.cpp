@@ -1011,7 +1011,7 @@ HWTEST_F(HiAppEventCPPTest, DFX_DFT_HiviewKit_HiAppEvent_Native_3300, Function|M
     string fileinfo = "";
     fileinfo = ReadFile(path);
     std::vector<std::string> para = {"test_event", "\"type_\":4",
-                           "\"str_arr_key\":[\"hello_world_0\",\"hello_world_1\",\"hello_world_2\"]", "hello_world_99"};
+                           "\"str_arr_key\":[\"hello_world_0\",\"hello_world_1\",\"hello_world_2\"", "hello_world_99"};
     if (fileinfo != "") {
         result = CheckInfo(para, fileinfo);
     } else {
