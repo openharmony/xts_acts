@@ -1754,7 +1754,7 @@ HWTEST_F(CameraLiteTest, Test_AddSurface_002, Level1)
     frameConfig->AddSurface(*surface);
     frameConfig->AddSurface(*surface);
     list<Surface *> list = frameConfig->GetSurfaces();
-    EXPECT_TRUE(list.size() == 2);
+    EXPECT_TRUE(list.size() == 1);
 }
 
 HWTEST_F(CameraLiteTest, Test_AddSurface_003, Level1)
@@ -1765,7 +1765,7 @@ HWTEST_F(CameraLiteTest, Test_AddSurface_003, Level1)
     frameConfig->AddSurface(*surface);
     frameConfig->AddSurface(*surface);
     list<Surface *> list = frameConfig->GetSurfaces();
-    EXPECT_TRUE(list.size() == 3);
+    EXPECT_TRUE(list.size() == 1);
 }
 
 HWTEST_F(CameraLiteTest, PrfTest_AddSurface_001, Level1)
