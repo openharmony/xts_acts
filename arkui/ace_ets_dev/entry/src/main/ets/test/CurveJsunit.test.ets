@@ -71,7 +71,7 @@ export default function CurveJsunit() {
         console.info('curve ***** result_height is ' + result_height);
         console.info('curve ***** result_width is ' + result_width);
         var finalRes;
-        if ((Math.round(result_height)==44) && (Math.round(result_width)==44)) {
+        if ((Math.round(result_height) == 44) && (Math.round(result_width) == 44)) {
           finalRes = true;
           console.info('curve SurfaceChangedTest success');
         } else {
@@ -108,7 +108,7 @@ export default function CurveJsunit() {
         console.info('curve1 ***** result_height1 is ' + result_height);
         console.info('curve1 ***** result_width1 is ' + result_width);
         var finalRes;
-        if ((Math.round(result_height)==78) && (Math.round(result_width)==78)) {
+        if ((Math.round(result_height) == 78) && (Math.round(result_width) == 78)) {
           finalRes = true;
           console.info('curve1 SurfaceChangedTest success');
         } else {
@@ -145,7 +145,7 @@ export default function CurveJsunit() {
         console.info('curve2 ***** result_height2 is ' + result_height);
         console.info('curve2 ***** result_width2 is ' + result_width);
         var finalRes;
-        if ((Math.round(result_height)==50) && (Math.round(result_width)==50)) {
+        if ((Math.round(result_height) == 50) && (Math.round(result_width) == 50)) {
           finalRes = true;
           console.info('curve2 SurfaceChangedTest success');
         } else {

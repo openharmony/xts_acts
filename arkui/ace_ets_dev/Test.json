@@ -3,7 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
-	    "bundle-name": "com.open.harmony.acedevtest",
+        "bundle-name": "com.open.harmony.acedevtest",
         "package-name": "com.open.harmony.acedevtest",
         "shell-timeout": "600000"
     },
