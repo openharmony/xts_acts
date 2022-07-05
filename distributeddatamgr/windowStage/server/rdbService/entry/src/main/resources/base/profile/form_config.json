@@ -1,0 +1,24 @@
+{
+  "forms": [
+    {
+      "name": "Form_Js",
+      "description": "$string:form_description",
+      "src": "pages/card/index",
+      "window": {
+        "designWidth": 720,
+        "autoDesignWidth": true
+      },
+      "colorMode": "auto",
+      "formConfigAbility": "ability://xxxxx",
+      "formVisibleNotify": false,
+      "isDefault": true,
+      "updateEnabled": true,
+      "scheduledUpdateTime": "10:30",
+      "updateDuration": 1,
+      "defaultDimension": "2*2",
+      "supportDimensions": [
+        "2*2"
+      ]
+    }
+  ]
+}
