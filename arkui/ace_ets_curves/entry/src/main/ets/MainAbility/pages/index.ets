@@ -14,42 +14,23 @@
  * limitations under the License.
  */
 
-import router from '@ohos.router';
-
-globalThis.flag =true
 @Entry
 @Component
-struct Index {
-  onPageShow() {
-
-    let options = {
-      url: 'pages/curve',
-    }
-    try {
-      console.info("lanyi Index flag: " + globalThis.flag);
-      if(globalThis.flag) {
-        router.push(options)
-      }
-
-
-
-    } catch (err) {
-    }
-
-
+struct MyComponent {
+  aboutToAppear() {
   }
 
   build() {
-    Row() {
-      Column() {
-        Text("Curve test index")
-          .fontSize(30)
-          .fontWeight(FontWeight.Bold)
-
-
-      }
-      .width('100%')
+    Flex({
+      direction: FlexDirection.Column,
+      alignItems: ItemAlign.Center,
+      justifyContent: FlexAlign.Center
+    }) {
+      Text('ACE CURVES ETS TEST')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
     }
+    .width('100%')
     .height('100%')
   }
 }

@@ -25,6 +25,6 @@ group("arkui") {
     "ace_napi_test:ActsAceNapiEtsTest",
     "ace_standard:ace_standard_test",
     "ace_standard_video:ace_standard_video_test",
-    "ace_ets_curves:AceEtsCurveTest",
+    "ace_ets_curves:ActsAceCurveTest",
  ]
 }

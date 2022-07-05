@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-
-
-import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
+import router from '@system.router';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import Utils from './Utils.ets'
 
 export default function CurveJsunit() {
   describe('CurveTest', function () {
@@ -47,29 +46,32 @@ export default function CurveJsunit() {
       console.info("curve after each called");
     });
 
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0010
+     * @tc.name         testCurve001
+     * @tc.desic         aceCurveEtsTest
+     */
+    it('testCurve001', 0, async function (done) {
+      console.info('curve testCurve001 START');
+      var result_height;
+      var result_width;
+      var control;
 
-
-      it('testcurve01', 0, async function (done) {
-        console.info('curve testcurve01 START');
-        var result_height;
-        var result_width;
-        var control;
-
-        control =JSON.stringify(sendEventByKey('curve', 10, ""));
-        console.info("curve sendEventByKey result is: " + control);
-        setTimeout(() => {
+      control = JSON.stringify(sendEventByKey('curve', 10, ""));
+      console.info("curve sendEventByKey result is: " + control);
+      setTimeout(() => {
         if (control) {
           result_height = globalThis.widthSize;
           console.info('curve ***** globalThis  widthSize is ' + globalThis.widthSize);
-          result_width  =  globalThis.heightSize;
+          result_width = globalThis.heightSize;
           console.info('curve ***** globalThis  heightSize is ' + globalThis.heightSize);
-         } else {
-             console.error('control failed');
-           }
+        } else {
+          console.error('control failed');
+        }
         console.info('curve ***** result_height is ' + result_height);
         console.info('curve ***** result_width is ' + result_width);
         var finalRes;
-        if ((result_height == 44.44444477558136) && (result_width == 44.44444477558136)){
+        if ((Math.round(result_height)==44) && (Math.round(result_width)==44)) {
           finalRes = true;
           console.info('curve SurfaceChangedTest success');
         } else {
@@ -81,19 +83,24 @@ export default function CurveJsunit() {
       }, 3000)
     });
 
-    it('testcurve02', 0, async function (done) {
-      console.info('curve testcurve02 START');
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0020
+     * @tc.name         testCurve002
+     * @tc.desic         aceCurveEtsTest
+     */
+    it('testCurve002', 0, async function (done) {
+      console.info('curve testCurve02 START');
       var result_height;
       var result_width;
       var control;
 
-      control =JSON.stringify(sendEventByKey('curve1', 10, ""));
+      control = JSON.stringify(sendEventByKey('curve1', 10, ""));
       console.info("curve1 sendEventByKey result is: " + control);
       setTimeout(() => {
         if (control) {
           result_height = globalThis.widthSize1;
           console.info('curve1 ***** globalThis  widthSize1 is ' + globalThis.widthSize1);
-          result_width  =  globalThis.heightSize1;
+          result_width = globalThis.heightSize1;
           console.info('curve1 ***** globalThis  heightSize1 is ' + globalThis.heightSize1);
         } else {
           console.error('control failed');
@@ -101,7 +108,7 @@ export default function CurveJsunit() {
         console.info('curve1 ***** result_height1 is ' + result_height);
         console.info('curve1 ***** result_width1 is ' + result_width);
         var finalRes;
-        if ((result_height == 78.03846001625061) && (result_width == 78.03846001625061)){
+        if ((Math.round(result_height)==78) && (Math.round(result_width)==78)) {
           finalRes = true;
           console.info('curve1 SurfaceChangedTest success');
         } else {
@@ -113,19 +120,24 @@ export default function CurveJsunit() {
       }, 3000)
     });
 
-    it('testcurve03', 0, async function (done) {
-      console.info('curve testcurve03 START');
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0030
+     * @tc.name         testCurve003
+     * @tc.desic        aceCurveEtsTest
+     */
+    it('testCurve003', 0, async function (done) {
+      console.info('curve testCurve003 START');
       var result_height;
       var result_width;
       var control;
 
-      control =JSON.stringify(sendEventByKey('curve2', 10, ""));
+      control = JSON.stringify(sendEventByKey('curve2', 10, ""));
       console.info("curve2 sendEventByKey result is: " + control);
       setTimeout(() => {
         if (control) {
           result_height = globalThis.widthSize2;
           console.info('curve2 ***** globalThis  widthSize2 is ' + globalThis.widthSize2);
-          result_width  =  globalThis.heightSize2;
+          result_width = globalThis.heightSize2;
           console.info('curve2 ***** globalThis  heightSize2 is ' + globalThis.heightSize2);
         } else {
           console.error('control failed');
@@ -133,7 +145,7 @@ export default function CurveJsunit() {
         console.info('curve2 ***** result_height2 is ' + result_height);
         console.info('curve2 ***** result_width2 is ' + result_width);
         var finalRes;
-        if ((result_height == 50) && (result_width == 50)){
+        if ((Math.round(result_height)==50) && (Math.round(result_width)==50)) {
           finalRes = true;
           console.info('curve2 SurfaceChangedTest success');
         } else {
@@ -145,19 +157,24 @@ export default function CurveJsunit() {
       }, 3000)
     });
 
-    it('testcurve04', 0, async function (done) {
-      console.info('curve testcurve04 START');
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0040
+     * @tc.name         testCurve004
+     * @tc.desic         aceCurveEtsTest
+     */
+    it('testCurve004', 0, async function (done) {
+      console.info('curve testCurve004 START');
       var result_height;
       var result_width;
       var control;
 
-      control =JSON.stringify(sendEventByKey('curve3', 10, ""));
+      control = JSON.stringify(sendEventByKey('curve3', 10, ""));
       console.info("curve3 sendEventByKey result is: " + control);
       setTimeout(() => {
         if (control) {
           result_height = globalThis.widthSize3;
           console.info('curve3 ***** globalThis  widthSize3 is ' + globalThis.widthSize3);
-          result_width  =  globalThis.heightSize3;
+          result_width = globalThis.heightSize3;
           console.info('curve3 ***** globalThis  heightSize3 is ' + globalThis.heightSize3);
         } else {
           console.error('control failed');
@@ -165,7 +182,7 @@ export default function CurveJsunit() {
         console.info('curve3 ***** result_height3 is ' + result_height);
         console.info('curve3 ***** result_width3 is ' + result_width);
         var finalRes;
-        if ((result_height == 98.68008494377136) && (result_width == 98.68008494377136)){
+        if ((Math.round(result_height) == 99) && (Math.round(result_width) == 99)) {
           finalRes = true;
           console.info('curve3 SurfaceChangedTest success');
         } else {
@@ -176,5 +193,5 @@ export default function CurveJsunit() {
         done();
       }, 3000)
     });
-    })
+  })
 }
