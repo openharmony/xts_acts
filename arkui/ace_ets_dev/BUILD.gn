@@ -13,24 +13,24 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAceCurveTest") {
+ohos_js_hap_suite("ActsAceDevTest") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
-    ":ace_ets_curve_assets",
-    ":ace_ets_curve_resources",
-    ":ace_ets_curve_test_assets",
+    ":ace_ets_dev_assets",
+    ":ace_ets_dev_resources",
+    ":ace_ets_dev_test_assets",
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAceCurveTest"
+  hap_name = "ActsAceDevTest"
 }
-ohos_js_assets("ace_ets_curve_assets") {
+ohos_js_assets("ace_ets_dev_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"
 }
-ohos_js_assets("ace_ets_curve_test_assets") {
+ohos_js_assets("ace_ets_dev_test_assets") {
   source_dir = "./entry/src/main/ets/TestAbility"
 }
-ohos_resources("ace_ets_curve_resources") {
+ohos_resources("ace_ets_dev_resources") {
   sources = [ "./entry/src/main/resources" ]
   hap_profile = "./entry/src/main/config.json"
 }

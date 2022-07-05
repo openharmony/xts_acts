@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.open.harmony.acetestcurve",
+    "bundleName": "com.open.harmony.acedevtest",
     "vendor": "open",
     "version": {
       "code": 1000000,
@@ -14,9 +14,9 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.open.harmony.acetestcurve",
+    "package": "com.open.harmony.acedevtest",
     "name": ".MyApplication",
-    "mainAbility": "com.open.harmony.acetestcurve.MainAbility",
+    "mainAbility": "com.open.harmony.acedevtest.MainAbility",
     "deviceType": [
       "phone"
     ],
