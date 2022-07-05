@@ -41,8 +41,8 @@ describe('AccessTokenTest', function () {
     console.info('##########start AccessTokenTest');
     beforeAll(async function (done){
         var accountManager = osAccount.getAccountManager();  
-        var localled = await accountManager.getOsAccountTypeFromProcess();
-        var appInfo = await bundle.getApplicationInfo('ohos.acts.security.access_token.normal', 0, localled);
+        var userId = await accountManager.getOsAccountLocalIdFromProcess();
+        var appInfo = await bundle.getApplicationInfo('ohos.acts.security.access_token.normal', 0, userId);
         tokenID = appInfo.accessTokenId;
         console.info("AccessTokenTest accessTokenId:" + appInfo.accessTokenId + ", name:" + appInfo.name
             + ", bundleName:" + appInfo.bundleName)
@@ -82,7 +82,7 @@ describe('AccessTokenTest', function () {
     /**
      * @tc.number Test_verifyAccessToken_002
      * @tc.name Test atManager.verifyAccessToken.
-     * @tc.desc After the installation, system_grant permission is not granted by default(Promise).
+     * @tc.desc After the installation, system_grant permission is granted by default(Promise).
      */
     it('Test_verifyAccessToken_002', 0, async function(done){
         console.info("Test_verifyAccessToken_002 start");
