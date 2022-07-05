@@ -278,13 +278,13 @@ describe('mediaLibraryTestPromise.test.js', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-     it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_008', 0, async function (done) {
+    it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_008', 0, async function (done) {
         let fetchOp = {
             selections: mediaLibrary.FileKey.MEDIA_TYPE + 'abc= ?',
             selectionArgs: ['abc'],
         };
         try {
-            await media.getFileAssets(fetchOp).then((err, fetchFileResult) => {
+            media.getFileAssets(fetchOp).then((err, fetchFileResult) => {
                 expect(err != undefined).assertTrue();
                 done();
             })
@@ -309,7 +309,7 @@ describe('mediaLibraryTestPromise.test.js', function () {
             selectionArgs: ['abc', audioType.toString()],
         };
         try {
-            await media.getFileAssets(fetchOp).then((err, fetchFileResult) => {
+            media.getFileAssets(fetchOp).then((err, fetchFileResult) => {
                 expect(err != undefined).assertTrue();
                 done();
             })
@@ -340,7 +340,7 @@ describe('mediaLibraryTestPromise.test.js', function () {
             selectionArgs: ['abc', videoType.toString(), fileType.toString()],
         };
         try {
-            await media.getFileAssets(fetchOp).then((err, fetchFileResult) => {
+            media.getFileAssets(fetchOp).then((err, fetchFileResult) => {
                 expect(err != undefined).assertTrue();
                 done();
             })
@@ -377,7 +377,7 @@ describe('mediaLibraryTestPromise.test.js', function () {
             // console.info('MediaLibraryTest : getFileAssets 011 failed');
             // expect(false).assertTrue();
             // done();
-            await media.getFileAssets(fetchOp).then((err, fetchFileResult) => {
+            media.getFileAssets(fetchOp).then((err, fetchFileResult) => {
                 expect(err != undefined).assertTrue();
                 done();
             })
