@@ -506,7 +506,6 @@ export default function requestDownloadJsunit() {
       }
       done();
     });
-
   })
 }
-}
+
