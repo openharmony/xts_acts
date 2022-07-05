@@ -195,8 +195,7 @@ export default function requestJsunit() {
       }
       console.log("-----------------------request_upload_0006 end-----------------------");
       done();
-    })
-  });
+    });
 
     /**
      * @tc.number request_upload_0007
