@@ -21,15 +21,15 @@ using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
 
-static HWTEST_F(ActsDeqpgles20017TestSuite, TestCase_016488, Function | MediumTest | Level2)
+static HWTEST_F(ActsDeqpgles20017TestSuite, TestCase_016335, Function | MediumTest | Level2)
 {
-    GTEST_LOG_(INFO) << "TestCase_016488 start";
+    GTEST_LOG_(INFO) << "TestCase_016335 start";
     int argc = 3;
     const char *argv[3] = {
         ".",
         "--deqp-case="
-        "dEQP-GLES2.functional.lifetime.attac"
-        "h.deleted_output.texture_framebuffer",
+        "dEQP-GLES2.functional.draw.draw_el"
+        "ements.indices.user_ptr.index_byte",
         "--deqp-archive-dir=/data/local/tmp/"
     };
     
@@ -40,23 +40,23 @@ static HWTEST_F(ActsDeqpgles20017TestSuite, TestCase_016488, Function | MediumTe
     ActsDeqpgles20017TestSuite::runResult.numWarnings += result.numWarnings;
     ActsDeqpgles20017TestSuite::runResult.numWaived += result.numWaived;
     if (result.numNotSupported == 1) {
-        GTEST_LOG_(INFO) << "TestCase_016488 notsupport!";
+        GTEST_LOG_(INFO) << "TestCase_016335 notsupport!";
     } else if (result.isComplete) {
         EXPECT_TRUE(result.isComplete);
         EXPECT_TRUE(result.numPassed == 1);
     };
-    GTEST_LOG_(INFO) << "TestCase_016488 end";
+    GTEST_LOG_(INFO) << "TestCase_016335 end";
 }
 
-static HWTEST_F(ActsDeqpgles20017TestSuite, TestCase_016489, Function | MediumTest | Level2)
+static HWTEST_F(ActsDeqpgles20017TestSuite, TestCase_016336, Function | MediumTest | Level2)
 {
-    GTEST_LOG_(INFO) << "TestCase_016489 start";
+    GTEST_LOG_(INFO) << "TestCase_016336 start";
     int argc = 3;
     const char *argv[3] = {
         ".",
         "--deqp-case="
-        "dEQP-GLES2.functional.lifetime.attach."
-        "deleted_output.renderbuffer_framebuffer",
+        "dEQP-GLES2.functional.draw.draw_el"
+        "ements.indices.user_ptr.index_short",
         "--deqp-archive-dir=/data/local/tmp/"
     };
     
@@ -67,10 +67,10 @@ static HWTEST_F(ActsDeqpgles20017TestSuite, TestCase_016489, Function | MediumTe
     ActsDeqpgles20017TestSuite::runResult.numWarnings += result.numWarnings;
     ActsDeqpgles20017TestSuite::runResult.numWaived += result.numWaived;
     if (result.numNotSupported == 1) {
-        GTEST_LOG_(INFO) << "TestCase_016489 notsupport!";
+        GTEST_LOG_(INFO) << "TestCase_016336 notsupport!";
     } else if (result.isComplete) {
         EXPECT_TRUE(result.isComplete);
         EXPECT_TRUE(result.numPassed == 1);
     };
-    GTEST_LOG_(INFO) << "TestCase_016489 end";
+    GTEST_LOG_(INFO) << "TestCase_016336 end";
 }
