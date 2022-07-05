@@ -194,7 +194,7 @@ export default function edmPromiseTest() {
     it('enableAdmin_test_015', 0, async function (done) {
         var retValue = await enterpriseDeviceManager.enableAdmin(WANT1, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
-        var retValue = await enterpriseDeviceManager.enableAdmin(WANT1, ENTINFO1,
+        await enterpriseDeviceManager.enableAdmin(WANT1, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, TEST_USER_ID, OnReceiveEvent);
         async function OnReceiveEvent(err, datainfo) {
             console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL :' + datainfo);
