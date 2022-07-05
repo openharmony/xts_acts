@@ -15,10 +15,10 @@
 
 import cameraTestCase from '../test/CameraJSUnitEnum.test.test'
 import cameraTestCase from '../test/CameraJSUnitCameraFormat.test'
-import cameraTestCase from '../test/CameraJSUnitPhotoPromise.test'
-import cameraTestCase from '../test/CameraJSUnitPhotoAsync.test'
-import cameraTestCase from '../test/CameraJSUnitVideoPromise.test'
-import cameraTestCase from '../test/CameraJSUnitVideoAsync.test'
+//import cameraTestCase from '../test/CameraJSUnitPhotoPromise.test'
+//import cameraTestCase from '../test/CameraJSUnitPhotoAsync.test'
+//import cameraTestCase from '../test/CameraJSUnitVideoPromise.test'
+//import cameraTestCase from '../test/CameraJSUnitVideoAsync.test'
 
 
 let TAG = 'CameraModuleTest: '
