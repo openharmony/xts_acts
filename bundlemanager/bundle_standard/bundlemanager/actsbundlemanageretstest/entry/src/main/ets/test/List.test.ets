@@ -25,6 +25,7 @@ import queryExtensionAbilityInfos from "./QueryExtensionAbilityInfos.test.ets";
 import getBundleArchiveInfo from "./getBundleArchiveInfo.test.ets";
 import getQueryAbilityByWant from './GetQueryAbilityByWant.test.ets';
 import isDefaultApplicationTest from './IsDefaultApplication.test.ets';
+import getWindowPorperties from './getWindowProperties.test.ets';
 
 export default function testsuite() {
   getBundleArchiveInfo();
@@ -44,4 +45,5 @@ export default function testsuite() {
   //RM.017
   isAbilityEnableETSUnit();
   isApplicationEnabledETSUnit();
+  getWindowPorperties();
 }
