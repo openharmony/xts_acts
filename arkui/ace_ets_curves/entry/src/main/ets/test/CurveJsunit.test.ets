@@ -16,87 +16,9 @@
 
 
 
-//import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
-////import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index";
-//import events_emitter from '@ohos.events.emitter';
-//
-//
-//export default function CurveJsunit() {
-//    describe('CurveTest', function () {
-////        beforeEach(async function (done) {
-////            console.info("curve beforeEach start");
-////            let options = {
-////                uri: 'pages/curve',
-////            }
-////            try {
-////                router.clear();
-////                let pages = router.getState();
-////                console.info("get curve state pages:" + JSON.stringify(pages));
-////                if (!("curve" == pages.name)) {
-////                    console.info("get curve state pages.name:" + JSON.stringify(pages.name));
-////                    let result = await router.push(options);
-////                    await Utils.sleep(2000);
-////                    console.info("push curve page result:" + JSON.stringify(result));
-////                }
-////            } catch (err) {
-////                console.error("push curve page error:" + err);
-////            }
-////            done()
-////        });
-////
-////        afterEach(async function () {
-////            await Utils.sleep(1000);
-////            console.info("curve after each called");
-////        });
-//
-//        it('testcurve01', 0, async function (done) {
-//            console.info('LANYI [testcurve01] START');
-//            try {
-//                var eventData = {
-//                    data: {
-//                        heightSize:88.88888955116272,
-//                        widthSize: 88.88888955116272,
-//                    }
-//                }
-//                var innerEvent = {
-//                    eventId: 8,
-//                    priority: events_emitter.EventPriority.LOW
-//                }
-//                console.info("LANYI [testcurve01] start to publish emit");
-//                events_emitter.emit(innerEvent, eventData);
-//            } catch (err) {
-//                console.log("LANYI [testcurve01] change component data error: " + err.message);
-//            }
-//            await Utils.sleep(1000);
-////           // let strJson = getInspectorByKey('curve');
-////            let obj = JSON.parse(strJson);
-//            console.info("LANYI [testcurve01] sendEventByKey result is: " + JSON.stringify(sendEventByKey('curve', 10, "")));
-//            expect(globalThis.widthSize).assertEqual(88.88888955116272);
-//            expect(globalThis.heightSize).assertEqual(88.88888955116272);
-//            console.info('LANYI testcurve01 END');
-//            done();
-//        });
-//
-//    })
-//}
-
 import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index.ets"
 
-//export default function CurveJsunit() {
-//    describe('CurveTest', function () {
-//        async function sleep(time) {
-//            return new Promise((resolve, reject) => {
-//                setTimeout(() => {
-//                    resolve()
-//                    console.info('curve ***** setTime ');
-//
-//                }, time)
-//            }).then(() => {
-//                console.info( `sleep ${time} over...`)
-//                console.info('curve ***** then ');
-//            })
-//        }
 export default function CurveJsunit() {
   describe('CurveTest', function () {
     beforeEach(async function (done) {
@@ -127,37 +49,37 @@ export default function CurveJsunit() {
 
 
 
-        it('testcurve01', 0, async function (done) {
-            console.info('curve testcurve01 START');
-            var result_height;
-            var result_width;
-            var control;
+      it('testcurve01', 0, async function (done) {
+        console.info('curve testcurve01 START');
+        var result_height;
+        var result_width;
+        var control;
 
-            control =JSON.stringify(sendEventByKey('curve', 10, ""));
-            console.info("curve sendEventByKey result is: " + control);
-            setTimeout(() => {
-                if (control) {
-                  result_height = globalThis.widthSize;
-                  console.info('curve ***** globalThis  widthSize is ' + globalThis.widthSize);
-                  result_width  =  globalThis.heightSize;
-                  console.info('curve ***** globalThis  heightSize is ' + globalThis.heightSize);
-                } else {
-                  console.error('control failed');
-                }
-                console.info('curve ***** result_height is ' + result_height);
-                console.info('curve ***** result_width is ' + result_width);
-                var finalRes;
-                if ((result_height == 44.44444477558136) && (result_width == 44.44444477558136)){
-                    finalRes = true;
-                    console.info('curve SurfaceChangedTest success');
-                } else {
-                    finalRes = false;
-                    console.error('curve SurfaceChangedTest fail');
-                }
-                expect(finalRes).assertEqual(true);
-                done();
-            }, 3000)
-        });
+        control =JSON.stringify(sendEventByKey('curve', 10, ""));
+        console.info("curve sendEventByKey result is: " + control);
+        setTimeout(() => {
+        if (control) {
+          result_height = globalThis.widthSize;
+          console.info('curve ***** globalThis  widthSize is ' + globalThis.widthSize);
+          result_width  =  globalThis.heightSize;
+          console.info('curve ***** globalThis  heightSize is ' + globalThis.heightSize);
+         } else {
+             console.error('control failed');
+           }
+        console.info('curve ***** result_height is ' + result_height);
+        console.info('curve ***** result_width is ' + result_width);
+        var finalRes;
+        if ((result_height == 44.44444477558136) && (result_width == 44.44444477558136)){
+          finalRes = true;
+          console.info('curve SurfaceChangedTest success');
+        } else {
+          finalRes = false;
+          console.error('curve SurfaceChangedTest fail');
+        }
+        expect(finalRes).assertEqual(true);
+        done();
+      }, 3000)
+    });
 
     it('testcurve02', 0, async function (done) {
       console.info('curve testcurve02 START');
