@@ -170,6 +170,56 @@ describe('ActsSubscriberTestUnorder', async function (done) {
         })
     })
 
+ /*
+     * @tc.number    : ActsSubscriberTestUnorder_0400
+     * @tc.name      : verify subscribe and publish : Check subscribe and publish common event data
+     *                 with publishInfo data
+     * @tc.desc      : Check the subscriber can receive event "publish_event0300" type of the interface (by Promise)
+     */
+ it('ActsSubscriberTestUnorder_0400', 0, async function (done) {
+    console.info("===============ActsSubscriberTestUnorder_0400==========================>");
+    let commonEventSubscribeInfo = {
+        events: ["publish_event0400"],
+        publisherDeviceId: "PublishDeviceId0400",
+        priority: 10,
+    };
+
+    let commonEventPublishData = {
+        isOrdered: false,
+        bundleName: "com.example.actssubscribertestunorder",
+        code: 55,
+        data: "PublishData0400",
+    }
+
+    function isOrderedCommonEventCallback004(err, data) {
+        console.info("==========================>isOrderedCommonEventCallback003");
+        expect(data).assertEqual(false);
+        done();
+    }
+
+    function subscriberCallBack004(err, data) {
+        console.info("==========================>subscriberCallBack004");
+        expect(data.event).assertEqual("publish_event0400");
+        expect(data.code).assertEqual(55);
+        expect(data.data).assertEqual("PublishData0400");
+        commonEventSubscriber004.isOrderedCommonEvent(isOrderedCommonEventCallback004);
+    }
+
+    Subscriber.createSubscriber(
+        commonEventSubscribeInfo
+    ).then((data)=>{
+        console.info("===============ActsSubscriberTestUnorder_0400=========createSubscriber promise");
+        commonEventSubscriber004 = data;
+        data.getSubscribeInfo().then(()=>{
+            console.info("===============ActsSubscriberTestUnorder_0400=========getSubscribeInfo promise");
+            Subscriber.subscribe(commonEventSubscriber004, subscriberCallBack004);
+            setTimeout(function (){
+                console.info("==========ActsSubscriberTestUnorder_0400 publish start============");
+                Subscriber.publish("publish_event0400", commonEventPublishData, publishCallback);
+            }, 1000);
+        });
+    })
+})
 
     /*
      * @tc.number    : ActsSubscriberTestUnorder_0500
