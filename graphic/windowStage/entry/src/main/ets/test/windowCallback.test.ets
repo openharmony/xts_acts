@@ -14,9 +14,9 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
-
 import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
+import screenManager from '@ohos.screen';
 
 export default function windowCallbackTest(context, windowStage, abilityStorage) {
   console.log('testets context: ' + JSON.stringify(context))
@@ -534,6 +534,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         NCC: JSON.parse(JSON.stringify(commonNUMBERColorArr))
       };
       let compareCount = 0;
+      let endNum = 0;
       let listenerFlag = listenerStatus.ready;
       console.log(msgStr + 'begin');
       listenerData.on = true;
@@ -547,18 +548,22 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           for (let i = 0; i < arrLength; i++) {
             let tempData = systemBarData.regionTint[i];
             if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR) {
-              console.log(msgStr + 'systemBarTintChange compare start! arrLength= '+ arrLength);
+              console.log(msgStr + 'systemBarTintChange compare start! arrLength= ' + arrLength);
               compareCount++;
               let backgroundIndex = cloneColorArr.SBC.indexOf(tempData.backgroundColor);
               let contentColorIndex = cloneColorArr.SCC.indexOf(tempData.contentColor);
               if (backgroundIndex >= 0) {
                 cloneColorArr.SBC.splice(backgroundIndex, 1);
+              }else{
+                console.log(msgStr + 'SBC tempData.backgroundColor:' + JSON.stringify(tempData.backgroundColor));
               }
               if (contentColorIndex >= 0) {
                 cloneColorArr.SCC.splice(contentColorIndex, 1);
+              }else{
+                console.log(msgStr + 'SCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
               }
-              console.log(msgStr+'compareCount: '+compareCount +' ,length: '+JSON.stringify(cloneColorArr.SCC.length)+ '   ,cloneColorArr.SBC:'+JSON.stringify(cloneColorArr.SBC));
-              console.log(msgStr+'compareCount: '+compareCount +' ,length: '+JSON.stringify(cloneColorArr.SCC.length)+'    ,cloneColorArr.SCC'+JSON.stringify(cloneColorArr.SCC));
+              console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.SBC));
+              console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '    ,cloneColorArr.SCC' + JSON.stringify(cloneColorArr.SCC));
             } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
               console.log(msgStr + 'systemBarTintChange compare start!');
               compareCount++;
@@ -566,21 +571,26 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               let contentColorIndex = cloneColorArr.NCC.indexOf(tempData.contentColor);
               if (backgroundIndex >= 0) {
                 cloneColorArr.NBC.splice(backgroundIndex, 1);
+              } else {
+                console.log(msgStr + 'NBC tempData.backgroundColor:' + JSON.stringify(tempData.backgroundColor));
               }
               if (contentColorIndex >= 0) {
                 cloneColorArr.NCC.splice(contentColorIndex, 1);
+              } else {
+                console.log(msgStr + 'NCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
               }
               let ca = cloneColorArr;
               let flag = ca.NCC.length || ca.NBC.length || ca.SBC.length || ca.SCC.length
-              if(compareCount===18&&!flag){
-                console.log(msgStr + 'compareCount: '+compareCount +' ,true flag:'+flag);
+              if (compareCount === 18 && !flag) {
+                console.log(msgStr + 'compareCount: ' + compareCount + ' ,true flag:' + flag);
                 expect(true).assertTrue();
                 done();
-              }else{
-                console.log(msgStr + 'compareCount: '+compareCount +' ,flag:'+flag);
+              } else {
+                console.log(msgStr + 'compareCount: ' + compareCount + ' ,flag:' + flag);
               }
-              console.log(msgStr+'compareCount: '+compareCount +' ,length: '+JSON.stringify(cloneColorArr.NBC.length)+ '   ,cloneColorArr.SBC:'+JSON.stringify(cloneColorArr.NBC));
-              console.log(msgStr+'compareCount: '+compareCount +' ,length: '+JSON.stringify(cloneColorArr.NCC.length)+'    ,cloneColorArr.SCC'+JSON.stringify(cloneColorArr.NCC));
+              console.log(msgStr + 'compareCount: ' + endNum + ' ,compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.NBC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.NBC));
+              console.log(msgStr + 'compareCount: ' + endNum + ' ,compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.NCC.length) + '    ,cloneColorArr.SCC' + JSON.stringify(cloneColorArr.NCC));
+              endNum = compareCount
             }
           }
         }
@@ -1403,6 +1413,41 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             }
           })
         }
+      })
+    })
+    /**
+    * @tc.number     SUB_WINDOW_SETSCREENROTATIONLOCKED_JSAPI_002
+    * @tc.name       Test setScreenRotationLockedTest2
+    * @tc.desc       Verify the scene of setting screen automatic screen rotation and locking
+    */
+    it('setScreenRotationLockedTest2', 0, function (done) {
+      let caseName = 'setScreenRotationLockedTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      screenManager.setScreenRotationLocked(true, (err, data) => {
+        if (err && err.code)unexpectedError(err, caseName, 'screenManager.setScreenRotationLocked(true)', done);
+        console.log(msgStr + 'screenManager.setScreenRotationLocked err: ' + JSON.stringify(err));
+        console.log(msgStr + 'screenManager.setScreenRotationLocked true data: ' + JSON.stringify(data));
+        expect(!data).assertTrue();
+        screenManager.isScreenRotationLocked((err, data) => {
+          if (err && err.code)unexpectedError(err, caseName, 'screenManager.isScreenRotationLocked', done);
+          console.log(msgStr + 'screenManager.isLocked err: ' + JSON.stringify(err));
+          console.log(msgStr + 'data:' + data)
+          expect(data).assertTrue();
+          screenManager.setScreenRotationLocked(false, (err, data) => {
+            if (err && err.code)unexpectedError(err, caseName, 'screenManager.setScreenRotationLocked(false)', done);
+            console.log(msgStr + 'screenManager.setScreenRotationLocked err: ' + JSON.stringify(err));
+            console.log(msgStr + 'screenManager.setScreenRotationLocked true data: ' + JSON.stringify(data));
+            expect(!data).assertTrue();
+            screenManager.isScreenRotationLocked((err, data) => {
+              if (err && err.code)unexpectedError(err, caseName, 'screenManager.isScreenRotationLocked', done);
+              console.log(msgStr + 'screenManager.isLocked err: ' + JSON.stringify(err));
+              console.log(msgStr + 'data:' + data)
+              expect(!data).assertTrue();
+              done();
+            })
+          })
+        })
       })
     })
   })
