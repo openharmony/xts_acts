@@ -33,7 +33,7 @@ let HuksOptions63kb = {
   inData: srcData63Kb,
 };
 
-describe('SecurityHuksDerivePBKDF2PromiseJsunit', function () {
+describe('SecurityHuksDerivePBKDF2BasicFinish63KBPromiseJsunit', function () {
   it('testDerivePBKDF2101', 0, async function (done) {
     const srcKeyAliesFirst = 'testDerivePBKDF2Size128SHA256Finish63KBDeriveKeyAlias_01_101';
     let huksOptionsFinish = {

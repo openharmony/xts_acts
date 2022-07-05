@@ -22,7 +22,7 @@ let srcData63Kb = stringToUint8Array(srcData63);
 let srcData65 = Data.Data65b;
 let srcData65Kb = stringToUint8Array(srcData65);
 let finishOutData;
-describe('SecurityHuksSignVerifyED25519PromiseJsunit', function () {
+describe('SecurityHuksED25519BasicPromiseJsunit', function () {
   it('testSignVerifyED25519101', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyED25519Size256SIGNKeyAlias101';
     let HuksOptions = {

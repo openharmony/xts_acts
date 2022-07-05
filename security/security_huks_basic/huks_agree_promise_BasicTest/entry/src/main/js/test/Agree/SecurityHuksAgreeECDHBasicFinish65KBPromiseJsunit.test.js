@@ -24,7 +24,7 @@ let srcData65 = Data.Date65KB;
 let srcData65Kb = stringToUint8Array(srcData65);
 let HuksOptions65kb;
 
-describe('SecurityHuksAgreeECDHPromiseJsunit', function () {
+describe('SecurityHuksAgreeECDHBasicFinish65KBPromiseJsunit', function () {
   beforeEach(function () {
     HuksOptions65kb = {
       properties: new Array(
