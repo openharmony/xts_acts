@@ -97,6 +97,8 @@ export default function test() {
                 console.log(`FMS_disableFormsUpdate_0200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.log(`FMS_disableFormsUpdate_0200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail()
+                done()
             });
             console.log(`FMS_disableFormsUpdate_0200 featureAbility.startAbility again end`);
         });
@@ -144,6 +146,8 @@ export default function test() {
                 console.log(`FMS_disableFormsUpdate_0300 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.log(`FMS_disableFormsUpdate_0300 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail()
+                done()
             });
             console.log(`FMS_disableFormsUpdate _0300 featureAbility.startAbility end`);
         });
@@ -161,12 +165,8 @@ export default function test() {
                 expect(data.event).assertEqual("FMS_FormOnState_commonEvent");
                 expect(data.data).assertEqual("13");
                 commonEvent.unsubscribe(subscriberOnState, () => unsubscribeOnStateCallback("FMS_disableFormsUpdate_0400"))
-
-                setTimeout(function () {
-                    console.info('FMS_disableFormsUpdate_0400 delPublishCallBack end');
-                    console.log(`FMS_disableFormsUpdate_0400 end`);
-                    done();
-                }, 100)
+                console.log(`FMS_disableFormsUpdate_0400 end`);
+                done();
             }
             commonEvent.subscribe(subscriberOnState, onStateCallBack);
             console.log(`FMS_disableFormsUpdate_0400 featureAbility.startAbility start`);
@@ -190,6 +190,8 @@ export default function test() {
                 console.log(`FMS_disableFormsUpdate_0400 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.log(`FMS_disableFormsUpdate_0400 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail()
+                done()
             });
             console.log(`FMS_disableFormsUpdate _0400 featureAbility.startAbility end`);
         });
@@ -207,12 +209,9 @@ export default function test() {
                 expect(data.event).assertEqual("FMS_FormOnState_commonEvent");
                 expect(data.data).assertEqual("13");
                 commonEvent.unsubscribe(subscriberOnState, () => unsubscribeOnStateCallback("FMS_disableFormsUpdate_0500"))
-
-                setTimeout(function () {
-                    console.info('FMS_disableFormsUpdate_0500 delPublishCallBack end');
-                    console.log(`FMS_disableFormsUpdate_0500 end`);
-                    done();
-                }, 100)
+                console.log(`FMS_disableFormsUpdate_0500 end`);
+                done();
+                
             }
             commonEvent.subscribe(subscriberOnState, onStateCallBack);
             console.log(`FMS_disableFormsUpdate_0500 featureAbility.startAbility start`);
@@ -236,6 +235,8 @@ export default function test() {
                 console.log(`FMS_disableFormsUpdate_0500 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.log(`FMS_disableFormsUpdate_0500 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail()
+                done()
             });
             console.log(`FMS_disableFormsUpdate_0500 featureAbility.startAbility end`);
         });
@@ -262,7 +263,8 @@ export default function test() {
                     data: hostFormId
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                console.info('FMS_disableFormsUpdate_0600 publish' + JSON.stringify(err));
+                    console.info('FMS_disableFormsUpdate_0600 publish' + JSON.stringify(err));
+                    done()
                 });
             }
 
@@ -290,6 +292,8 @@ export default function test() {
                     console.debug(`FMS_disableFormsUpdate_0600 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.debug(`FMS_disableFormsUpdate_0600 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeOnAcquiredCallback("FMS_disableFormsUpdate_0600"));
             }
@@ -315,6 +319,8 @@ export default function test() {
                 console.debug(`FMS_disableFormsUpdate_0600 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.debug(`FMS_disableFormsUpdate_0600 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail()
+                done()
             });
         });
         /**
@@ -336,8 +342,8 @@ export default function test() {
                 expect(data.data).assertEqual("13");
                 commonEvent.unsubscribe(subscriberOnState, () => {
                     console.info("====>FMS_disableFormsUpdate_0700 unSubscribeOnDisableCallback====>");
+                    done()
                 });
-                done();
             }
 
             const onDeleteCallback = async (_, data) => {
@@ -364,6 +370,8 @@ export default function test() {
                     console.debug(`FMS_disableFormsUpdate_0700 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.debug(`FMS_disableFormsUpdate_0700 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail()
+                    done()
                 });
 
                 commonEvent.unsubscribe(subscriberDel, () => {
@@ -394,6 +402,8 @@ export default function test() {
                 console.debug(`FMS_disableFormsUpdate_0700 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.debug(`FMS_disableFormsUpdate_0700 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail()
+                done()
             });
         });
         /**
@@ -416,7 +426,8 @@ export default function test() {
                     data: formId
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                console.info('FMS_disableFormsUpdate_0800 publish' + JSON.stringify(err));
+                    console.info('FMS_disableFormsUpdate_0800 publish' + JSON.stringify(err));
+                    done()
                 });
             }
 
@@ -442,6 +453,8 @@ export default function test() {
                 console.log(`FMS_disableFormsUpdate_0800 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.log(`FMS_disableFormsUpdate_0800 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail()
+                done()
             });
             console.log(`FMS_disableFormsUpdate_0800 featureAbility.startAbility end`);
         });
@@ -466,7 +479,8 @@ export default function test() {
                     data: formId
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                console.info('FMS_disableFormsUpdate_0900 publish' + JSON.stringify(err));
+                    console.info('FMS_disableFormsUpdate_0900 publish' + JSON.stringify(err));
+                    done()
                 });
             }
             async function OnEnableCallBack(_, data) {
@@ -497,6 +511,8 @@ export default function test() {
                     console.log(`FMS_disableFormsUpdate_0900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.log(`FMS_disableFormsUpdate_0900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 console.log(`FMS_disableFormsUpdate_0900 featureAbility.startAbility end`);
             }
@@ -523,6 +539,8 @@ export default function test() {
                 console.log(`FMS_disableFormsUpdate_0900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.log(`FMS_disableFormsUpdate_0900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.log(`FMS_disableFormsUpdate_0900 featureAbility.startAbility end`);
         });
@@ -574,7 +592,8 @@ export default function test() {
                         data: formId
                     };
                     commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                    console.info('FMS_disableFormsUpdate_1000 publish' + JSON.stringify(err));
+                        console.info('FMS_disableFormsUpdate_1000 publish' + JSON.stringify(err));
+                        done()
                     });
                 }, 10000);
             }
@@ -610,6 +629,8 @@ export default function test() {
                     console.log(`FMS_disableFormsUpdate_1000 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.log(`FMS_disableFormsUpdate_1000 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail()
+                    done()
                 });
                 console.log(`FMS_disableFormsUpdate_1000 featureAbility.startAbility notify disable end`);
             }
@@ -636,6 +657,8 @@ export default function test() {
                 console.log(`FMS_disableFormsUpdate_1000 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.log(`FMS_disableFormsUpdate_1000 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail()
+                done()
             });
             console.log(`FMS_disableFormsUpdate_1000 featureAbility.startAbility servicea end`);
         });
@@ -688,7 +711,8 @@ export default function test() {
                         data: formId
                     };
                     commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                    console.info('FMS_disableFormsUpdate_1100 publish' + JSON.stringify(err));
+                        console.info('FMS_disableFormsUpdate_1100 publish' + JSON.stringify(err));
+                        done()
                     });
                 }, 10000);
             }
@@ -724,6 +748,8 @@ export default function test() {
                     console.log(`FMS_disableFormsUpdate_1100 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.log(`FMS_disableFormsUpdate_1100 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail()
+                    done()
                 });
                 console.log(`FMS_disableFormsUpdate_1100 featureAbility.startAbility notify disable end`);
             }
@@ -750,6 +776,8 @@ export default function test() {
                 console.log(`FMS_disableFormsUpdate_1100 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.log(`FMS_disableFormsUpdate_1100 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail()
+                done()
             });
             console.log(`FMS_disableFormsUpdate_1100 featureAbility.startAbility servicea end`);
         });

@@ -58,9 +58,11 @@ export default function test() {
                 console.info("!!!====>FMS_acquireForm_3800 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
                 expect(data.data).assertEqual("invalid params received on operating form.");
-                commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_3800"));
-                console.info(`FMS_acquireForm_3800 end`);
-                done();
+                commonEvent.unsubscribe(subscriberOnError, () => {
+                    console.info(`FMS_acquireForm_3800 unsubscribe callback`);
+                    done();
+                });
+                
             }
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
             console.info(`FMS_acquireForm_3800 featureAbility.startAbility start`);
@@ -82,6 +84,8 @@ export default function test() {
                 console.info(`FMS_acquireForm_3800 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`FMS_acquireForm_3800 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.info(`FMS_acquireForm_3800 featureAbility.startAbility end`);
         });
@@ -96,9 +100,10 @@ export default function test() {
                 console.info("!!!====>FMS_acquireForm_3900 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
                 expect(data.data).assertEqual("invalid params received on operating form.");
-                commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_3900"));
-                console.info(`FMS_acquireForm_3900 end`);
-                done();
+                commonEvent.unsubscribe(subscriberOnError, () => {
+                    console.info(`FMS_acquireForm_3900 unsubscribe callback`);
+                    done();
+                });
             }
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
             console.info(`FMS_acquireForm_3900 featureAbility.startAbility start`);
@@ -120,6 +125,8 @@ export default function test() {
                 console.info(`FMS_acquireForm_3900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`FMS_acquireForm_3900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.info(`FMS_acquireForm_3900 featureAbility.startAbility end`);
         });
@@ -144,7 +151,8 @@ export default function test() {
                     data: formId
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                console.info('FMS_acquireForm_4000 publish' + JSON.stringify(err));
+                    console.info('FMS_acquireForm_4000 publish' + JSON.stringify(err));
+                    done()
                 });
             }
             function onAcquiredCallBack(_, data) {
@@ -174,6 +182,8 @@ export default function test() {
                     console.info(`FMS_acquireForm_4000 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.info(`FMS_acquireForm_4000 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 console.info(`FMS_acquireForm_4000 featureAbility.startAbility again end`);
             }
@@ -202,6 +212,8 @@ export default function test() {
                 console.info(`FMS_acquireForm_4000 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`FMS_acquireForm_4000 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.info(`FMS_acquireForm_4000 featureAbility.startAbility end`);
         });
@@ -273,6 +285,8 @@ export default function test() {
                 console.info(`FMS_acquireForm_4200 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`FMS_acquireForm_4200 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
 
             console.info(`FMS_acquireForm_4200 featureAbility.startAbility end`);
@@ -313,6 +327,8 @@ export default function test() {
                 console.info(`FMS_acquireForm_4300 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`FMS_acquireForm_4300 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.info(`FMS_acquireForm_4300 featureAbility.startAbility end`);
         });
@@ -327,10 +343,12 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_4400 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_4400"));
                 expect(data.data).assertEqual("the dimension not exist in the form.");
-                console.info(`FMS_acquireForm_4400 end`);
-                done();
+                commonEvent.unsubscribe(subscriberOnError, () => {
+                    console.info(`FMS_acquireForm_4400 unsubscribe callback`);
+                    done();
+                });
+                
             }
             commonEvent.subscribe(subscriberOnError, onErrorCallBack);
             console.info(`FMS_acquireForm_4400 featureAbility.startAbility start`);
@@ -353,6 +371,8 @@ export default function test() {
                 console.info(`FMS_acquireForm_4400 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`FMS_acquireForm_4400 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.info(`FMS_acquireForm_4400 featureAbility.startAbility end`);
         });
@@ -374,7 +394,8 @@ export default function test() {
                     data: data.parameters.formId
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData,(err) => {
-                console.info('FMS_acquireForm_4900 publish' + JSON.stringify(err));
+                    console.info('FMS_acquireForm_4900 publish' + JSON.stringify(err));
+		            done()
                 });
             }
             function onAcquiredCallBack(_, data) {
@@ -404,6 +425,8 @@ export default function test() {
                     console.info(`FMS_acquireForm_4900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.info(`FMS_acquireForm_4900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 console.info(`FMS_acquireForm_4900 featureAbility.startAbility again end`);
             }
@@ -428,6 +451,8 @@ export default function test() {
                 console.info(`FMS_acquireForm_4900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`FMS_acquireForm_4900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.info(`FMS_acquireForm_4900 featureAbility.startAbility end`);
         });
