@@ -286,7 +286,6 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_TC_005 FAILED: " + err.message);
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_TC_005 ends here");
-        camera0Input.release();
         await sleep(1000);
         done();
       })
@@ -689,7 +688,6 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
     */
     it('CREATE_CAMERA_INPUT_POS_BACK_TYPE_UNSPECIFIED_TC_021', 0, async function (done) {
       console.info("--------------CREATE_CAMERA_INPUT_POS_BACK_TYPE_UNSPECIFIED_TC_021--------------");
-      camera0InputPromise.release();
       cameraManager.createCameraInput(cameraObj.CameraPosition.CAMERA_POSITION_BACK, cameraObj.CameraType.CAMERA_TYPE_UNSPECIFIED, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_UNSPECIFIED_TC_021 success");
@@ -704,7 +702,6 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           expect().assertFail();
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_BACK_TYPE_UNSPECIFIED_TC_021 ends here");
-        camera0InputPosBack.release();
         await sleep(1000);
         done();
       })
@@ -1007,7 +1004,6 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
           expect().assertFail();
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_POS_FRONT_TYPE_UNSPECIFIED_TC_031 ends here");
-        camera0InputPosFront.release();
         await sleep(1000);
         done();
       })

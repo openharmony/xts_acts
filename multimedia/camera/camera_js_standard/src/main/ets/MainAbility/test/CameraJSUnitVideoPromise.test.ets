@@ -35,6 +35,19 @@ let fdPath;
 let fileAsset;
 let fdNumber;
 
+var minFrameRate_Grp0=12;
+var maxFrameRate_Grp0=12;
+var minFrameRate_Mix=14;
+var maxFrameRate_Mix=15;
+var minFrameRate_Err1=11;
+var maxFrameRate_Err1=31;
+var minFrameRate_Err2=14;
+var maxFrameRate_Err2=28;
+var minFrameRate_Err3=16;
+var maxFrameRate_Err3=25;
+var minFrameRate_Grp20=30;
+var maxFrameRate_Grp20=30;
+
 var Point1 = { x: 1, y: 1 }
 var Point2 = { x: 2, y: 2 }
 var Point3 = { x: 3, y: 3 }
@@ -88,7 +101,7 @@ let configFile = {
   videoCodec: 'video/mp4v-es',
   videoFrameWidth: 640,
   videoFrameHeight: 480,
-  videoFrameRate: 10
+  videoFrameRate: 30
 }
 
 let videoConfig = {
@@ -608,36 +621,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : isMirrorSupported_PHOTO_OUTPUT
-      * @tc.name      : isMirrorSupported
-      * @tc.desc      : isMirrorSupported
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('isMirrorSupported_PHOTO_OUTPUT', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering isMirrorSupported_PHOTO_OUTPUT to operate");
-        await photoOutputPromise.isMirrorSupported()
-          .then(function (data) {
-            console.info(TAG + "Entering isMirrorSupported_PHOTO_OUTPUT is success");
-            console.info(TAG + "isMirrorSupported : " + data);
-            expect(true).assertTrue();
-          })
-          .catch((err) => {
-            expect().assertFail();
-            console.info(TAG + "isMirrorSupported_PHOTO_OUTPUT FAILED : " + err.message);
-          });
-        await sleep(1);
-        done();
-      }
-      await sleep(1);
-      done();
-    })
-
-    /**
       * @tc.number    : PHOTO_OUTPUT_CALLBACK_ON_ERROR
       * @tc.name      : Photo output callback on error api
       * @tc.desc      : Photo output callback on error api
@@ -879,6 +862,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+ 
     /**
       * @tc.number    : REMOVE_INPUT_SUCCESS
       * @tc.name      : remove input api
@@ -1123,6 +1107,572 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
         await sleep(1);
         done();
       }
+      await sleep(1);
+      done();
+    })
+
+    /**
+      * @tc.number    : GET_FRAME_RATE_RANGE
+      * @tc.name      : get frame rate range camera0 api
+      * @tc.desc      : get frame rate range promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('GET_FRAME_RATE_RANGE', 0, async function (done) {
+      console.info(TAG + "Entering GET_FRAME_RATE_RANGE to operate");
+      await videoOutputPromise.getFrameRateRange()
+        .then(function (data) {
+          console.info(TAG + "Entering get frame rate range SUCCESS ");
+          console.info(TAG + "Entering GET_FRAME_RATE_RANGE PASSED : " + JSON.stringify(data))
+          expect(true).assertTrue();
+        })
+        .catch((err) => {
+          console.info(TAG + "Entering GET_FRAME_RATE_RANGE FAILED : " + err.message);
+          expect().assertFail();
+        });
+      console.info(TAG + "Entering GET_FRAME_RATE_RANGE ends here");
+      await sleep(1);
+      done();
+    })
+
+    /**
+      * @tc.number    : SET_FRAME_RATE_RANGE_Grp0
+      * @tc.name      : set frame rate range camera0 api
+      * @tc.desc      : set frame rate range promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SET_FRAME_RATE_RANGE_Grp0', 0, async function (done) {
+      console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Grp0 to operate");
+      await videoOutputPromise.setFrameRateRange(minFrameRate_Grp0,maxFrameRate_Grp0)
+        .then(function (data) {
+          console.info(TAG + "Entering setFrameRateRange SUCCESS");
+          console.info(TAG + "Current FrameRateRange is: " + JSON.stringify(data));
+          expect(true).assertTrue();
+          console.info(TAG + "SET_FRAME_RATE_RANGE_Grp0 PASSED");
+        })
+        .catch((err) => {
+          expect().assertFail();
+          console.info(TAG + "SET_FRAME_RATE_RANGE_Grp0 FAILED: " + err.message);
+        });
+      console.info(TAG + "SET_FRAME_RATE_RANGE_Grp0 ends here");
+      await sleep(1);
+      done();
+    })
+
+    /**
+      * @tc.number    : SET_FRAME_RATE_RANGE_MIX
+      * @tc.name      : set frame rate range camera0 api
+      * @tc.desc      : set frame rate range promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SET_FRAME_RATE_RANGE_MIX', 0, async function (done) {
+      console.info(TAG + "Entering SET_FRAME_RATE_RANGE_MIX to operate");
+      await videoOutputPromise.setFrameRateRange(minFrameRate_Mix,maxFrameRate_Mix)
+        .then(function (data) {
+          console.info(TAG + "Entering setFrameRateRange");
+          console.info(TAG + "Current FrameRateRange is: " + JSON.stringify(data));
+         expect().assertFail();
+          console.info(TAG + "SET_FRAME_RATE_RANGE_MIX FAILED");
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "SET_FRAME_RATE_RANGE_MIX PASSED: " + err.message);
+        });
+      console.info(TAG + "SET_FRAME_RATE_RANGE_MIX ends here");
+      await sleep(1);
+      done();
+    })
+
+    /**
+      * @tc.number    : SET_FRAME_RATE_RANGE_Err1
+      * @tc.name      : set frame rate range camera0 api
+      * @tc.desc      : set frame rate range promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SET_FRAME_RATE_RANGE_Err1', 0, async function (done) {
+      console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Err1 to operate");
+      await videoOutputPromise.setFrameRateRange(minFrameRate_Err1,maxFrameRate_Err1)
+        .then(function (data) {
+          console.info(TAG + "Entering setFrameRateRange");
+          console.info(TAG + "Current FrameRateRange is: " + JSON.stringify(data));
+          expect().assertFail();
+          console.info(TAG + "SET_FRAME_RATE_RANGE_Err1 FAILED");
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "SET_FRAME_RATE_RANGE_Err1 PASSED: " + err.message);
+        });
+      console.info(TAG + "SET_FRAME_RATE_RANGE_Err1 ends here");
+      await sleep(1);
+      done();
+    })
+
+    /**
+      * @tc.number    : SET_FRAME_RATE_RANGE_Err2
+      * @tc.name      : set frame rate range camera0 api
+      * @tc.desc      : set frame rate range promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SET_FRAME_RATE_RANGE_Err2', 0, async function (done) {
+      console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Err2 to operate");
+      await videoOutputPromise.setFrameRateRange(minFrameRate_Err2,maxFrameRate_Err2)
+        .then(function (data) {
+          console.info(TAG + "Entering setFrameRateRange SUCCESS");
+          console.info(TAG + "Current FrameRateRange is: " + JSON.stringify(data));
+          expect().assertFail();
+          console.info(TAG + "SET_FRAME_RATE_RANGE_Err2 FAILED");
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "SET_FRAME_RATE_RANGE_Err2 PASSED: " + err.message);
+        });
+      console.info(TAG + "SET_FRAME_RATE_RANGE_Err2 ends here");
+      await sleep(1);
+      done();
+    })
+
+    /**
+      * @tc.number    : SET_FRAME_RATE_RANGE_Err3
+      * @tc.name      : set frame rate range camera0 api
+      * @tc.desc      : set frame rate range promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SET_FRAME_RATE_RANGE_Err3', 0, async function (done) {
+      console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Err3 to operate");
+      await videoOutputPromise.setFrameRateRange(minFrameRate_Err3,maxFrameRate_Err3)
+        .then(function (data) {
+          console.info(TAG + "Entering setFrameRateRange SUCCESS");
+          console.info(TAG + "Current FrameRateRange is: " + JSON.stringify(data));
+          expect().assertFail();
+          console.info(TAG + "SET_FRAME_RATE_RANGE_Err3 FAILED");
+        })
+        .catch((err) => {
+          expect(true).assertTrue();
+          console.info(TAG + "SET_FRAME_RATE_RANGE_Err3 PASSED: " + err.message);
+        });
+      console.info(TAG + "SET_FRAME_RATE_RANGE_Err3 ends here");
+      await sleep(1);
+      done();
+    })
+
+    /**
+      * @tc.number    : SET_FRAME_RATE_RANGE_Grp20
+      * @tc.name      : set frame rate range camera0 api
+      * @tc.desc      : set frame rate range promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SET_FRAME_RATE_RANGE_Grp20', 0, async function (done) {
+      console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Grp20 to operate");
+      await videoOutputPromise.setFrameRateRange(minFrameRate_Grp20,maxFrameRate_Grp20)
+        .then(function (data) {
+          console.info(TAG + "Entering setFrameRateRange SUCCESS");
+          console.info(TAG + "Current FrameRateRange is: " + JSON.stringify(data));
+          expect(true).assertTrue();
+          console.info(TAG + "SET_FRAME_RATE_RANGE_Grp20 PASSED");
+        })
+        .catch((err) => {
+          expect().assertFail();
+          console.info(TAG + "SET_FRAME_RATE_RANGE_Grp20 FAILED: " + err.message);
+        });
+      console.info(TAG + "SET_FRAME_RATE_RANGE_Grp20 ends here");
+      await sleep(1);
+      done();
+    })
+ 
+    /**
+      * @tc.number    : ISVIDEOSTABILIZATIONMODESUPPORTEDOFF
+      * @tc.name      : isVideoStabilizationModeSupportedOff
+      * @tc.desc      : isVideoStabilizationModeSupported promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('ISVIDEOSTABILIZATIONMODESUPPORTEDOFF', 0, async function (done) {
+      console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTEDOFF to operate");
+      await captureSessionPromise.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.OFF)
+      .then(function (data){
+      console.info(TAG + "Entering is Video Stabilization Mode OFF Supported SUCCESS ");
+      console.info(TAG + "isVideoStabilizationModeSupported : " + data);
+      expect(data).assertEqual(true);
+      console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTEDOFF PASSED");
+      })
+        .catch((err) => {
+        console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTEDOFF FAILED : " + err.message);
+        expect().assertFail();
+        console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTEDOFF ends here");
+      });
+      await sleep(1);
+      done();
+    })
+ 
+    /**
+      * @tc.number    : SET_VIDEOSTABILIZATIONMODEOFF
+      * @tc.name      : SetVideoStabilizationModeOff
+      * @tc.desc      : SetVideoStabilizationModeOff promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SET_VIDEOSTABILIZATIONMODEOFF', 0, async function (done) {
+      console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEOFF to operate");
+      await captureSessionPromise.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.OFF)
+      .then(function (){
+        console.info(TAG + "Entering Set VideoStabilization Mode Off SUCCESS, current VideoStabilization Mode  is: " + cameraObj.VideoStabilizationMode.OFF);
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEOFF PASSED")
+        expect(cameraObj.VideoStabilizationMode.OFF).assertEqual(0)
+      })
+        .catch((err) => {
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEOFF FAILED : " + err.message);
+        expect().assertFail();
+        });
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEOFF ends here");
+      await sleep(1);
+      done();
+    })
+ 
+    /**
+      * @tc.number    : GET_VIDEOSTABILIZATIONMODEOFF
+      * @tc.name      : getVideoStabilizationModeOff 
+      * @tc.desc      : getVideoStabilizationModeOff promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('GET_VIDEOSTABILIZATIONMODEOFF', 0, async function (done) {
+      console.info(TAG + "Entering GET_VIDEOSTABILIZATIONMODEOFF to operate");
+      await captureSessionPromise.getActiveVideoStabilizationMode()
+      .then(function (data){
+      console.info(TAG + "Entering getVideoStabilizationModeOff SUCCESS");
+        console.info(TAG + "Current VideoStabilizationMode is: " + data);
+        expect(data).assertEqual(0);
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODEOFF PASSED");
+      })
+        .catch((err) => {
+        expect().assertFail();
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODEOFF FAILED : " + err.message);
+        });
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODEOFF ends here");
+      await sleep(1);
+      done();
+    })
+ 
+    /**
+      * @tc.number    : ISVIDEOSTABILIZATIONMODESUPPORTED_LOW
+      * @tc.name      : isVideoStabilizationModeSupported low 
+      * @tc.desc      : isVideoStabilizationModeSupported low promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('ISVIDEOSTABILIZATIONMODESUPPORTED_LOW', 0, async function (done) {
+      console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_LOW to operate");
+      await captureSessionPromise.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.LOW)
+      .then(function (data){
+      console.info(TAG + "Entering is Video Stabilization Mode LOW Supported SUCCESS ");
+      console.info(TAG + "isVideoStabilizationModeSupported : " + data);
+      expect(data).assertEqual(true);
+      console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_LOW PASSED");
+      })
+        .catch((err) => {
+        console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_LOW FAILED : " + err.message);
+        expect().assertFail();
+        console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_LOW ends here");
+      });
+      await sleep(1);
+      done();
+    })
+ 
+    /**
+      * @tc.number    : SET_VIDEOSTABILIZATIONMODELOW
+      * @tc.name      : SetVideoStabilizationModelow
+      * @tc.desc      : SetVideoStabilizationModelow promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SET_VIDEOSTABILIZATIONMODELOW', 0, async function (done) {
+      console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODELOW to operate");
+      await captureSessionPromise.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.LOW)
+      .then(function (){
+        console.info(TAG + "Entering Set VideoStabilization Mode Off SUCCESS, current VideoStabilization Mode  is: " + cameraObj.VideoStabilizationMode.LOW);
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODELOW PASSED")
+        expect(cameraObj.VideoStabilizationMode.LOW).assertEqual(1)
+      })
+        .catch((err) => {
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODELOW FAILED : " + err.message);
+        expect().assertFail();
+        });
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODELOW ends here");
+      await sleep(1);
+      done();
+    })
+ 
+    /**
+      * @tc.number    : GET_VIDEOSTABILIZATIONMODELOW
+      * @tc.name      : getVideoStabilizationModeLow 
+      * @tc.desc      : getVideoStabilizationModeLow promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('GET_VIDEOSTABILIZATIONMODELOW', 0, async function (done) {
+      console.info(TAG + "Entering GET_VIDEOSTABILIZATIONMODELOW to operate");
+      await captureSessionPromise.getActiveVideoStabilizationMode()
+      .then(function (data){
+      console.info(TAG + "Entering getVideoStabilizationModeLow SUCCESS");
+        console.info(TAG + "Current VideoStabilizationMode is: " + data);
+        expect(data).assertEqual(1);
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODELOW PASSED");
+      })
+        .catch((err) => {
+        expect().assertFail();
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODELOW FAILED : " + err.message);
+        });
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODELOW ends here");
+      await sleep(1);
+      done();
+    })
+ 
+    /**
+      * @tc.number    : ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE
+      * @tc.name      : isVideoStabilizationModeSupported MIDDLE
+      * @tc.desc      : isVideoStabilizationModeSupported MIDDLE promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE', 0, async function (done) {
+      console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE to operate");
+      await captureSessionPromise.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.MIDDLE)
+      .then(function (data){
+      console.info(TAG + "Entering is Video Stabilization Mode MIDDLE Supported SUCCESS ");
+      console.info(TAG + "isVideoStabilizationModeSupported : " + data);
+      expect(data).assertEqual(false);
+      console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE PASSED");
+      })
+        .catch((err) => {
+        console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE FAILED : " + err.message);
+        expect().assertFail();
+        console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE ends here");
+      });
+      await sleep(1);
+      done();
+    })
+ 
+    /**
+      * @tc.number    : SET_VIDEOSTABILIZATIONMODEMIDDLE
+      * @tc.name      : SetVideoStabilizationModeMIDDLE
+      * @tc.desc      : SetVideoStabilizationModeMIDDLE promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SET_VIDEOSTABILIZATIONMODEMIDDLE', 0, async function (done) {
+      console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEMIDDLE to operate");
+      await captureSessionPromise.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.MIDDLE)
+      .then(function (){
+        console.info(TAG + "Entering Set VideoStabilization Mode MIDDLE SUCCESS, current VideoStabilization Mode  is: " + cameraObj.VideoStabilizationMode.MIDDLE);
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEMIDDLE FAILED")
+        expect().assertFail();
+      })
+        .catch((err) => {
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEMIDDLE PASSED : " + err.message);
+        expect(true).assertTrue();
+        });
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEMIDDLE ends here");
+      await sleep(1);
+      done();
+    })
+ 
+    /**
+      * @tc.number    : GET_VIDEOSTABILIZATIONMODEMIDDLE
+      * @tc.name      : getVideoStabilizationModeMIDDLE
+      * @tc.desc      : getVideoStabilizationModeMIDDLE promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('GET_VIDEOSTABILIZATIONMODEMIDDLE', 0, async function (done) {
+      console.info(TAG + "Entering GET_VIDEOSTABILIZATIONMODEMIDDLE to operate");
+      await captureSessionPromise.getActiveVideoStabilizationMode()
+      .then(function (data){
+      console.info(TAG + "Entering getVideoStabilizationModeMIDDLE SUCCESS");
+        console.info(TAG + "Current VideoStabilizationMode is: " + data);
+        expect(true).assertTrue();
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODEMIDDLE PASSED");
+      })
+        .catch((err) => {
+        expect().assertFail();
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODEMIDDLE FAILED : " + err.message);
+        });
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODEMIDDLE ends here");
+      await sleep(1);
+      done();
+    })
+
+    /**
+      * @tc.number    : ISVIDEOSTABILIZATIONMODESUPPORTED_HIGH
+      * @tc.name      : isVideoStabilizationModeSupported High
+      * @tc.desc      : isVideoStabilizationModeSupported High promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('ISVIDEOSTABILIZATIONMODESUPPORTED_HIGH', 0, async function (done) {
+      console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_HIGH to operate");
+      await captureSessionPromise.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.HIGH)
+      .then(function (data){
+      console.info(TAG + "Entering is Video Stabilization Mode HIGH Supported SUCCESS ");
+      console.info(TAG + "isVideoStabilizationModeSupported : " + data);
+      expect(data).assertEqual(false);
+      console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_HIGH PASSED");
+      })
+        .catch((err) => {
+        console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_HIGH FAILED : " + err.message);
+        expect().assertFail();
+        console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_HIGH ends here");
+      });
+      await sleep(1);
+      done();
+    })
+ 
+    /**
+      * @tc.number    : SET_VIDEOSTABILIZATIONMODEHIGH
+      * @tc.name      : SetVideoStabilizationModeHigh
+      * @tc.desc      : SetVideoStabilizationModeHigh promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SET_VIDEOSTABILIZATIONMODEHIGH', 0, async function (done) {
+      console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEHIGH to operate");
+      await captureSessionPromise.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.HIGH)
+      .then(function (){
+        console.info(TAG + "Entering Set VideoStabilization Mode High SUCCESS, current VideoStabilization Mode  is: " + cameraObj.VideoStabilizationMode.HIGH);
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEHIGH FAILED")
+        expect().assertFail();
+      })
+        .catch((err) => {
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEHIGH PASSED : " + err.message);
+        expect(true).assertTrue();
+        });
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEHIGH ends here");
+      await sleep(1);
+      done();
+    })
+ 
+    /**
+      * @tc.number    : GET_VIDEOSTABILIZATIONMODEHIGH
+      * @tc.name      : getVideoStabilizationModeHigh
+      * @tc.desc      : getVideoStabilizationModeHigh promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('GET_VIDEOSTABILIZATIONMODEHIGH', 0, async function (done) {
+      console.info(TAG + "Entering GET_VIDEOSTABILIZATIONMODEHIGH to operate");
+      await captureSessionPromise.getActiveVideoStabilizationMode()
+      .then(function (data){
+      console.info(TAG + "Entering getVideoStabilizationModeHigh SUCCESS");
+        console.info(TAG + "Current VideoStabilizationMode is: " + data);
+        expect(true).assertTrue();
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODEHIGH PASSED");
+      })
+        .catch((err) => {
+        expect().assertFail();
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODEHIGH FAILED : " + err.message);
+        });
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODEHIGH ends here");
+      await sleep(1);
+      done();
+    })
+ 
+    /**
+      * @tc.number    : ISVIDEOSTABILIZATIONMODESUPPORTED_AUTO
+      * @tc.name      : isVideoStabilizationModeSupported Auto
+      * @tc.desc      : isVideoStabilizationModeSupported Auto promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('ISVIDEOSTABILIZATIONMODESUPPORTED_AUTO', 0, async function (done) {
+      console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_AUTO to operate");
+      await captureSessionPromise.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.AUTO)
+      .then(function (data){
+      console.info(TAG + "Entering is Video Stabilization Mode AUTO Supported SUCCESS ");
+      console.info(TAG + "isVideoStabilizationModeSupported : " + data);
+      expect(data).assertEqual(false);
+      console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_AUTO PASSED");
+      })
+        .catch((err) => {
+        console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_AUTO FAILED : " + err.message);
+        expect().assertFail();
+        console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_AUTO ends here");
+      });
+      await sleep(1);
+      done();
+    })
+ 
+    /**
+      * @tc.number    : SET_VIDEOSTABILIZATIONMODEAUTO
+      * @tc.name      : SetVideoStabilizationModeAuto
+      * @tc.desc      : SetVideoStabilizationModeAuto promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SET_VIDEOSTABILIZATIONMODEAUTO', 0, async function (done) {
+      console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEAUTO to operate");
+      await captureSessionPromise.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.AUTO)
+      .then(function (){
+        console.info(TAG + "Entering Set VideoStabilization Mode Auto SUCCESS, current VideoStabilization Mode  is: " + cameraObj.VideoStabilizationMode.AUTO);
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEAUTO FAILED")
+        expect().assertFail();
+      })
+        .catch((err) => {
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEAUTO PASSED : " + err.message);
+        expect(true).assertTrue();
+        });
+        console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEAUTO ends here");
+      await sleep(1);
+      done();
+    })
+ 
+    /**
+      * @tc.number    : GET_VIDEOSTABILIZATIONMODEAUTO
+      * @tc.name      : getVideoStabilizationModeAuto
+      * @tc.desc      : getVideoStabilizationModeAuto promise api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('GET_VIDEOSTABILIZATIONMODEAUTO', 0, async function (done) {
+      console.info(TAG + "Entering GET_VIDEOSTABILIZATIONMODEAUTO to operate");
+      await captureSessionPromise.getActiveVideoStabilizationMode()
+      .then(function (data){
+      console.info(TAG + "Entering getVideoStabilizationModeAuto SUCCESS");
+        console.info(TAG + "Current VideoStabilizationMode is: " + data);
+        expect(true).assertTrue();
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODEAUTO PASSED");
+      })
+        .catch((err) => {
+        expect().assertFail();
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODEAUTO FAILED : " + err.message);
+        });
+        console.info(TAG + "GET_VIDEOSTABILIZATIONMODEAUTO ends here");
       await sleep(1);
       done();
     })
@@ -3073,35 +3623,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : VIDEO_RECORDER_START_PROMISE
-      * @tc.name      : VideoOutput start promise api
-      * @tc.desc      : VideoOutput start promise api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VIDEO_RECORDER_START_PROMISE', 0, async function (done) {
-      if (videoRecorder == null || videoRecorder == undefined) {
-        console.info(TAG + 'Entering Video recorder start videoRecorderPromise == null || undefined')
-      } else {
-        console.info(TAG + 'Entering VIDEO_RECORDER_START_PROMISE to operate')
-        await videoRecorder.start()
-        console.info(TAG + 'Video recorder start called');
-        sleep(3);
-        console.info(TAG + 'Capture with photosettings1 during video - Start & setMirror : true.');
-        photoOutputPromise.capture(photosettings1)
-        console.info(TAG + 'Capture during video - End.')
-        expect(true).assertTrue()
-        console.info(TAG + 'Entering VIDEO_RECORDER_START_PROMISE PASSED')
-        console.info(TAG + 'Entering VIDEO_RECORDER_START_PROMISE ends here')
-        await sleep(1)
-        done()
-      }
-      await sleep(1)
-      done()
-    })
-
-    /**
       * @tc.number    : VIDEO_OUTPUT_STOP_PROMISE
       * @tc.name      : VideoOutput stop promise api
       * @tc.desc      : VideoOutput stop promise api
@@ -3118,31 +3639,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
         expect(true).assertTrue()
         console.info(TAG + 'Entering VIDEO_OUTPUT_STOP_PROMISE PASSED')
         console.info(TAG + 'Entering VIDEO_OUTPUT_STOP_PROMISE ends here')
-        await sleep(1)
-        done()
-      }
-      await sleep(1)
-      done()
-    })
-
-    /**
-      * @tc.number    : VIDEO_RECORDER_STOP_PROMISE
-      * @tc.name      : VideoRecorder stop promise api
-      * @tc.desc      : VideoRecorder stop promise api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VIDEO_RECORDER_STOP_PROMISE', 0, async function (done) {
-      if (videoOutputPromise == null || videoOutputPromise == undefined) {
-        console.info(TAG + 'Entering Video recorder stop videoOutputPromise == null || undefined')
-      } else {
-        console.info(TAG + 'Entering VIDEO_RECORDER_STOP_PROMISE to operate')
-        await videoRecorder.stop()
-        expect(true).assertTrue()
-        console.info(TAG + 'VIDEO_RECORDER_STOP done.')
-        console.info(TAG + 'Entering VIDEO_RECORDER_STOP_PROMISE PASSED')
-        console.info(TAG + 'Entering VIDEO_RECORDER_STOP_PROMISE ends here')
         await sleep(1)
         done()
       }
