@@ -26,7 +26,7 @@ describe('ActsNetworkSearchTest', function () {
     function sleep(timeout) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                console.log(`Telephony_NetworkSearch_CellInformation sleep ${timeout}ms`);
+                console.info(`Telephony_NetworkSearch_CellInformation sleep ${timeout}ms`);
                 resolve();
             }, timeout);
         })
@@ -36,7 +36,7 @@ describe('ActsNetworkSearchTest', function () {
         let isOn = await radio.isRadioOn();
         if (!isOn) {
             await radio.turnOnRadio();
-            console.log('Telephony_NetworkSearch_CellInformation turnOnRadio success');
+            console.info('Telephony_NetworkSearch_CellInformation turnOnRadio success');
             await sleep(5000);
         }
     }
@@ -54,7 +54,6 @@ describe('ActsNetworkSearchTest', function () {
     afterEach(async function () {
         try {
             expect(radio.RADIO_TECHNOLOGY_UNKNOWN === 0).assertTrue();
-            expect(radio.RADIO_TECHNOLOGY_GSM === 1).assertTrue();
             expect(radio.RADIO_TECHNOLOGY_1XRTT === 2).assertTrue();
             expect(radio.RADIO_TECHNOLOGY_WCDMA === 3).assertTrue();
             expect(radio.RADIO_TECHNOLOGY_HSPA === 4).assertTrue();
@@ -94,7 +93,7 @@ describe('ActsNetworkSearchTest', function () {
             expect(radio.NETWORK_SELECTION_UNKNOWN === 0).assertTrue();
             expect(radio.NETWORK_SELECTION_MANUAL === 2).assertTrue();
         } catch (error) {
-            console.log(`Telephony_NetworkSearch error`);
+            console.info(`Telephony_NetworkSearch error`);
         }
     });
 
@@ -106,11 +105,11 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_getNetworkState_Async_0700', 0, async function (done) {
         radio.getNetworkState(SLOT_2, (err, data) => {
             if (err) {
-                console.log(`Telephony_NetworkSearch_getNetworkState_Async_0700 finish err: ${err}`);
+                console.info(`Telephony_NetworkSearch_getNetworkState_Async_0700 finish err: ${err}`);
                 done();
                 return;
             }
-            console.log(`Telephony_NetworkSearch_getNetworkState_Async_0700 fail not go to err ${data}`);
+            console.info(`Telephony_NetworkSearch_getNetworkState_Async_0700 fail not go to err ${data}`);
             expect(data.longOperatorName != 'longOperatorName').assertTrue();
             expect(data.shortOperatorName != 'shortOperatorName').assertTrue();
             expect(data.plmnNumeric != 'plmnNumeric').assertTrue();
@@ -118,7 +117,6 @@ describe('ActsNetworkSearchTest', function () {
             expect(data.regState != radio.REG_STATE_IN_SERVICE).assertTrue();
             expect(data.nsaState != radio.NSA_STATE_SA_ATTACHED).assertTrue();
             expect(data.isCaActive != true).assertTrue();
-            expect(data.isEmergency != true).assertTrue();
             expect().assertFail();
             done();
         });
@@ -132,11 +130,11 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_getRadioTech_Async_0400', 0, async function (done) {
         radio.getRadioTech(SLOT_2, (err, data) => {
             if (err) {
-                console.log(`Telephony_NetworkSearch_getRadioTech_Async_0400 finish err: ${err}`);
+                console.info(`Telephony_NetworkSearch_getRadioTech_Async_0400 finish err: ${err}`);
                 done();
                 return;
             }
-            console.log(`Telephony_NetworkSearch_getRadioTech_Async_0400 fail not go to err ${data}`);
+            console.info(`Telephony_NetworkSearch_getRadioTech_Async_0400 fail not go to err ${data}`);
             expect().assertFail();
             done();
         });
@@ -150,12 +148,12 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_getSignalInformation_Async_0400', 0, async function (done) {
         radio.getSignalInformation(SLOT_2, (err, data) => {
             if (err) {
-                console.log(`Telephony_NetworkSearch_getSignalInformation_Async_0400 fail err: ${err}`);
-                expect().assertFail();
+                console.info(`Telephony_NetworkSearch_getSignalInformation_Async_0400 fail err: ${err}`);
+                expect(err.code).assertEqual("202");
                 done();
                 return;
             }
-            console.log(`Telephony_NetworkSearch_getSignalInformation_Async_0400 finish data: ${JSON.stringify(data)}`);
+            console.info(`getSignalInformation_Async_0400 data: ${JSON.stringify(data)}`);
 			if (data.length > 0) {
 				expect(data[0].signalLevel != -1).assertTrue();
 				expect(data[0].signalType != radio.NETWORK_TYPE_WCDMA).assertTrue();
@@ -173,12 +171,12 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0400', 0, async function (done) {
         radio.getISOCountryCodeForNetwork(SLOT_2, (err, data) => {
             if (err) {
-                console.log(`Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0400 fail err: ${err}`);
-                expect().assertFail();
+                console.info(`Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0400 fail err: ${err}`);
+                expect(err.code).assertEqual("-1");
                 done();
                 return;
             }
-            console.log(
+            console.info(
                 `Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0400 finish data: ${JSON.stringify(data)}`);
             expect(data.length === 0).assertTrue();
             done();
@@ -193,12 +191,12 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0400', 0, async function (done) {
         try {
             let data = await radio.getISOCountryCodeForNetwork(SLOT_2);
-            console.log(
+            console.info(
                 `Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0400 finish data:${JSON.stringify(data)}`);
             expect(data.length === 0).assertTrue();
         } catch (err) {
-            console.log(`Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0400 fail err: ${err}`);
-            expect().assertFail();
+            console.info(`Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0400 fail err: ${err}`);
+            expect(err.code).assertEqual("-1");
             done();
             return;
         }
@@ -213,10 +211,10 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_getNetworkSelectionMode_Async_0500', 0, async function (done) {
         radio.getNetworkSelectionMode(SLOT_2, (err, res) => {
             if (err) {
-                console.log(`Telephony_NetworkSearch_getNetworkSelectionMode_Async_0500 err: ${err}`);
+                console.info(`Telephony_NetworkSearch_getNetworkSelectionMode_Async_0500 err: ${err}`);
                 done();
             } else {
-                console.log('Telephony_NetworkSearch_getNetworkSelectionMode_Async_0500 fail not go to err');
+                console.info('Telephony_NetworkSearch_getNetworkSelectionMode_Async_0500 fail not go to err');
                 expect().assertFail();
                 done();
             }
@@ -232,10 +230,10 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0500', 0, async function (done) {
         try {
             await radio.getNetworkSelectionMode(SLOT_2);
-            console.log('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0500 fail not go to err');
+            console.info('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0500 fail not go to err');
             expect().assertFail();
         } catch (err) {
-            console.log('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0500 finish');
+            console.info('Telephony_NetworkSearch_getNetworkSelectionMode_Promise_0500 finish');
             done();
             return;
         }
@@ -254,10 +252,10 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_getNetworkState_Promise_0700', 0, async function (done) {
         try {
             await radio.getNetworkState(SLOT_2);
-            console.log('Telephony_NetworkSearch_getNetworkState_Promise_0700 fail not go to err');
+            console.info('Telephony_NetworkSearch_getNetworkState_Promise_0700 fail not go to err');
             expect().assertFail();
         } catch (err) {
-            console.log(`Telephony_NetworkSearch_getNetworkState_Promise_0700 finish err: ${err}`);
+            console.info(`Telephony_NetworkSearch_getNetworkState_Promise_0700 finish err: ${err}`);
             done();
             return;
         }
@@ -272,10 +270,10 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_getRadioTech_Promise_0400', 0, async function (done) {
         try {
             await radio.getRadioTech(SLOT_2);
-            console.log('Telephony_NetworkSearch_getRadioTech_Promise_0400 fail not go to err');
+            console.info('Telephony_NetworkSearch_getRadioTech_Promise_0400 fail not go to err');
             expect().assertFail();
         } catch (err) {
-            console.log(`Telephony_NetworkSearch_getRadioTech_Promise_0400 finish err: ${err}`);
+            console.info(`Telephony_NetworkSearch_getRadioTech_Promise_0400 finish err: ${err}`);
             done();
             return;
         }
@@ -290,12 +288,12 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_getSignalInformation_Promise_0400', 0, async function (done) {
         try {
             let data = await radio.getSignalInformation(SLOT_2);
-            console.log(
+            console.info(
                 `Telephony_NetworkSearch_getSignalInformation_Promise_0400 finish data: ${JSON.stringify(data)}`);
             expect(data.length === 0).assertTrue();
         } catch (err) {
-            console.log(`Telephony_NetworkSearch_getSignalInformation_Promise_0400 fail err: ${err}`);
-            expect().assertFail();
+            console.info(`Telephony_NetworkSearch_getSignalInformation_Promise_0400 fail err: ${err}`);
+            expect(err.code).assertEqual("202");
             done();
             return;
         }
@@ -310,12 +308,12 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_getOperatorName_Async_0400', 0, async function (done) {
         radio.getOperatorName(SLOT_2, (err, data) => {
             if (err) {
-                console.log(`Telephony_NetworkSearch_getOperatorName_Async_0400 fail err: ${err}`);
-                expect().assertFail();
+                console.info(`Telephony_NetworkSearch_getOperatorName_Async_0400 fail err: ${err}`);
+                expect(err.code).assertEqual("202");
                 done();
                 return;
             }
-            console.log(`Telephony_NetworkSearch_getOperatorName_Async_0400 finish  data: ${data}`);
+            console.info(`Telephony_NetworkSearch_getOperatorName_Async_0400 finish  data: ${data}`);
             expect(data === '').assertTrue();
             done();
         })
@@ -329,12 +327,12 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_getOperatorName_Promise_0400', 0, async function (done) {
         try {
             let data = await radio.getOperatorName(SLOT_2);
-            console.log(`Telephony_NetworkSearch_getOperatorName_Promise_0400 finish data: ${data}`);
+            console.info(`Telephony_NetworkSearch_getOperatorName_Promise_0400 finish data: ${data}`);
             expect(data === '').assertTrue();
             done();
         } catch (err) {
-            console.log(`Telephony_NetworkSearch_getOperatorName_Promise_0400 fail err: ${err}`);
-            expect().assertFail();
+            console.info(`Telephony_NetworkSearch_getOperatorName_Promise_0400 fail err: ${err}`);
+            expect(err.code).assertEqual("202");
             done();
         }
     })
@@ -347,12 +345,12 @@ describe('ActsNetworkSearchTest', function () {
      it('Telephony_NetworkSearch_getOperatorName_Async_0500', 0, async function (done) {
         radio.getOperatorName(0, (err, data) => {
             if (err) {
-                console.log(`Telephony_NetworkSearch_getOperatorName_Async_0500 fail err: ${err}`);
+                console.info(`Telephony_NetworkSearch_getOperatorName_Async_0500 fail err: ${err}`);
                 expect().assertFail();
                 done();
                 return;
             }
-            console.log(`Telephony_NetworkSearch_getOperatorName_Async_0500 finish  data: ${data}`);
+            console.info(`Telephony_NetworkSearch_getOperatorName_Async_0500 finish  data: ${data}`);
             expect(true).assertTrue();
             done();
         })
@@ -366,11 +364,11 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_getOperatorName_Promise_0500', 0, async function (done) {
         try {
             let data = await radio.getOperatorName(0);
-            console.log(`Telephony_NetworkSearch_getOperatorName_Promise_0500 finish data: ${data}`);
+            console.info(`Telephony_NetworkSearch_getOperatorName_Promise_0500 finish data: ${data}`);
             expect(true).assertTrue();
             done();
         } catch (err) {
-            console.log(`Telephony_NetworkSearch_getOperatorName_Promise_0500 fail err: ${err}`);
+            console.info(`Telephony_NetworkSearch_getOperatorName_Promise_0500 fail err: ${err}`);
             expect().assertFail();
             done();
         }
@@ -384,11 +382,11 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_isRadioOn_Async_0200', 0, async function (done) {
         radio.isRadioOn((err) => {
             if (err) {
-                console.log(`Telephony_NetworkSearch_isRadioOn_Async_0200  fail: ${err}`);
+                console.info(`Telephony_NetworkSearch_isRadioOn_Async_0200  fail: ${err}`);
                 done();
                 return;
             }
-            console.log('Telephony_NetworkSearch_isRadioOn_Async_0200  finish');
+            console.info('Telephony_NetworkSearch_isRadioOn_Async_0200  finish');
             done();
         });
     });
@@ -401,10 +399,10 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_isRadioOn_Promise_0200', 0, async function (done) {
         try {
             await radio.isRadioOn();
-            console.log('Telephony_NetworkSearch_isRadioOn_Promise_0200 success');
+            console.info('Telephony_NetworkSearch_isRadioOn_Promise_0200 success');
             done();
         } catch (err) {
-            console.log(`Telephony_NetworkSearch_isRadioOn_Promise_0200 fail ${err}`);
+            console.info(`Telephony_NetworkSearch_isRadioOn_Promise_0200 fail ${err}`);
             done();
         }
     });
@@ -417,11 +415,11 @@ describe('ActsNetworkSearchTest', function () {
      it('Telephony_NetworkSearch_isRadioOn_Async_0300', 0, async function (done) {
         radio.isRadioOn(0, (err) => {
             if (err) {
-                console.log(`Telephony_NetworkSearch_isRadioOn_Async_0300  fail: ${err}`);
+                console.info(`Telephony_NetworkSearch_isRadioOn_Async_0300  fail: ${err}`);
                 done();
                 return;
             }
-            console.log('Telephony_NetworkSearch_isRadioOn_Async_0300  finish');
+            console.info('Telephony_NetworkSearch_isRadioOn_Async_0300  finish');
             done();
         });
     });
@@ -434,10 +432,10 @@ describe('ActsNetworkSearchTest', function () {
     it('Telephony_NetworkSearch_isRadioOn_Promise_0300', 0, async function (done) {
         try {
             await radio.isRadioOn(0);
-            console.log('Telephony_NetworkSearch_isRadioOn_Promise_0300 success');
+            console.info('Telephony_NetworkSearch_isRadioOn_Promise_0300 success');
             done();
         } catch (err) {
-            console.log(`Telephony_NetworkSearch_isRadioOn_Promise_0300 fail ${err}`);
+            console.info(`Telephony_NetworkSearch_isRadioOn_Promise_0300 fail ${err}`);
             done();
         }
     });
@@ -449,7 +447,7 @@ describe('ActsNetworkSearchTest', function () {
      */
     it('Telephony_StateRegistry_on_0200', 0, async function (done) {
         observer.on('networkStateChange', { slotId: SLOT_0 }, (networkState) => {
-            console.log(`Telephony_StateRegistry_on_0200 networkStateChanged data: ${JSON.stringify(networkState)}`);
+            console.info(`Telephony_StateRegistry_on_0200 networkStateChanged data: ${JSON.stringify(networkState)}`);
             done();
         });
         done();
@@ -472,7 +470,7 @@ describe('ActsNetworkSearchTest', function () {
      */
     it('Telephony_StateRegistry_on_0300', 0, async function (done) {
         observer.on('signalInfoChange', { slotId: SLOT_0 }, (networkState) => {
-            console.log(`Telephony_StateRegistry_on_0200 networkStateChanged data: ${JSON.stringify(networkState)}`);
+            console.info(`Telephony_StateRegistry_on_0200 networkStateChanged data: ${JSON.stringify(networkState)}`);
             done();
         });
         done();
