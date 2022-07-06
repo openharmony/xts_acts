@@ -20,7 +20,7 @@ import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 
-describe('VideoDecoderFuncPromiseTest', function () {
+describe('VideoSoftwareDecoderFuncPromiseTest', function () {
     let videoDecodeProcessor = null;
     let readStreamSync = undefined;
     let frameCountIn = 0;
