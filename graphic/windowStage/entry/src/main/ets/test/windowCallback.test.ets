@@ -63,14 +63,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       on: false,
       typeStr: '',
     };
+    var newWindowObj = null;
     beforeAll(function () {
       appWindowTypeArr = Object.keys(appWindowTypeDic);
       systemWindowTypeArr = Object.keys(systemWindowTypeDic);
-      for (i in ohosWindow.WindowType) {
+      for (var i in ohosWindow.WindowType) {
         windowTypeArr.push(ohosWindow.WindowType[i]);
       }
       console.log('jsunittest beforeall');
-      console.log(msgStr + 'beforeall ohosWindow.windowType' + JSON.stringify(ohosWindow.windowType))
+      console.log('beforeall ohosWindow.windowType' + JSON.stringify(ohosWindow.WindowType))
     })
     beforeEach(function () {
     })
