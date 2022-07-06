@@ -3,7 +3,7 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "1500000",
-        "package": "ohos.acts.multimedia.image",
+        "package": "ohos.acts.multimedia.image.YUV",
 		"shell-timeout": "120000"
     },
     "kits": [
