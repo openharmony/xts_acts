@@ -64,9 +64,12 @@ export default function lifecycleTest(abilityContext) {
 
     var TAG = "";
     var listKeyTemp = ""
+    var tempCallbackId;
+
     function sleep(time) {
       return new Promise((resolve) => setTimeout(resolve, time))
     }
+
     /*
      * @tc.number  Singlehap_LifeCycleTest_0100
      * @tc.name    Register in abilitystage,listen to the lifecycle of abilityA,deregister after listening
@@ -90,6 +93,8 @@ export default function lifecycleTest(abilityContext) {
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid));
+        tempCallbackId = globalThis.callbackid;
+        console.log(TAG + " registerAbilityLifecycleCallback tempCallbackId : " + JSON.stringify(tempCallbackId));
         var strtemp = "";
         var listtemp = [];
         for (var i = 0; i < globalThis.list.length; i++) {
@@ -100,8 +105,8 @@ export default function lifecycleTest(abilityContext) {
         }
         console.log(TAG + " listtemp is :" + JSON.stringify(listtemp));
         let exlist = listtemp;
-        globalThis.abilityContext.getApplicationContext()
-          .unregisterAbilityLifecycleCallback(globalThis.callbackid, (error, data) => {
+        globalThis.applicationContext
+          .unregisterAbilityLifecycleCallback(tempCallbackId, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
             code = error.code;
@@ -154,7 +159,6 @@ export default function lifecycleTest(abilityContext) {
       }, 500);
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
-        var list = globalThis.list1
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
         var strtemp = "";
         var listtemp = [];
@@ -166,7 +170,7 @@ export default function lifecycleTest(abilityContext) {
         }
         console.log(TAG + " listtemp is :" + JSON.stringify(listtemp));
         let exlist = listtemp;
-        globalThis.ability1context.getApplicationContext()
+        globalThis.applicationContext1
           .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
@@ -235,7 +239,7 @@ export default function lifecycleTest(abilityContext) {
         }
         console.log(TAG + " listtemp is :" + JSON.stringify(listtemp));
         let exlist = listtemp;
-        globalThis.ability1context.getApplicationContext()
+        globalThis.applicationContext1
           .unregisterAbilityLifecycleCallback(globalThis.callbackid1)
           .then((data) => {
             console.info(TAG + ' unregisterAbilityLifecycleCallback successful. Data: ' + data);
@@ -245,7 +249,7 @@ export default function lifecycleTest(abilityContext) {
           })
         setTimeout(function () {
           console.log(TAG + " secondunregister callbackid : " + JSON.stringify(globalThis.callbackid1));
-          globalThis.ability1context.getApplicationContext()
+          globalThis.applicationContext1
             .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback_1 success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
@@ -330,7 +334,7 @@ export default function lifecycleTest(abilityContext) {
           console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
         });
         setTimeout(function () {
-          globalThis.ability1context.getApplicationContext()
+          globalThis.applicationContext3
             .unregisterAbilityLifecycleCallback(globalThis.callbackid3, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback3 success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
@@ -388,7 +392,7 @@ export default function lifecycleTest(abilityContext) {
       }, 500);
       setTimeout(function () {
         console.log(TAG + " start after callbackid3 : " + JSON.stringify(globalThis.callbackid3));
-        globalThis.abilityContext.getApplicationContext()
+        globalThis.applicationContext3
           .unregisterAbilityLifecycleCallback(globalThis.callbackid3)
           .then((data) => {
             console.info(TAG + ' unregisterAbilityLifecycleCallback3 successful. Data: ' + data);
@@ -417,12 +421,12 @@ export default function lifecycleTest(abilityContext) {
         console.log(TAG + " callbackid4 : " + JSON.stringify(globalThis.callbackid4));
         let id4 = globalThis.callbackid4;
         expect(id3 + 1).assertEqual(id4);
-        globalThis.ability1context.getApplicationContext()
+        globalThis.applicationContext4
           .unregisterAbilityLifecycleCallback(globalThis.callbackid4, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback4 success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
           })
-        globalThis.ability1context.getApplicationContext()
+        globalThis.applicationContext1
           .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback1 success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
@@ -500,7 +504,7 @@ export default function lifecycleTest(abilityContext) {
         expect(exlist[9]).assertEqual("MainAbility2 onAbilityBackground");
         expect(exlist[10]).assertEqual("MainAbility2 onAbilityWindowStageDestroy");
         expect(exlist[11]).assertEqual("MainAbility2 onAbilityDestroy");
-        globalThis.ability1context.getApplicationContext()
+        globalThis.applicationContext1
           .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
@@ -666,6 +670,7 @@ export default function lifecycleTest(abilityContext) {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
       }, 3000);
+
       setTimeout(function () {
         var str1 = {
           "bundleName": "com.example.lifecycle_xts",
@@ -678,6 +683,7 @@ export default function lifecycleTest(abilityContext) {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
       }, 4500);
+
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
@@ -713,7 +719,7 @@ export default function lifecycleTest(abilityContext) {
         expect(exlist[19]).assertEqual("MainAbility2 onAbilityWindowStageCreate");
         expect(exlist[20]).assertEqual("MainAbility2 onAbilityForeground");
         expect(exlist[21]).assertEqual("MainAbility1 onAbilityBackground");
-        abilityContext.getApplicationContext()
+        globalThis.applicationContext1
           .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
@@ -797,7 +803,7 @@ export default function lifecycleTest(abilityContext) {
         expect(exlist[15]).assertEqual("MainAbility2 onAbilityBackground");
         expect(exlist[16]).assertEqual("MainAbility2 onAbilityWindowStageDestroy");
         expect(exlist[17]).assertEqual("MainAbility2 onAbilityDestroy");
-        abilityContext.getApplicationContext()
+        globalThis.applicationContext1
           .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
@@ -850,7 +856,7 @@ export default function lifecycleTest(abilityContext) {
         id2 = globalThis.callbackid6;
         console.log(TAG + " secondCallback id : " + JSON.stringify(id2));
         expect(id1 + 1).assertEqual(id2);
-        abilityContext.getApplicationContext()
+        globalThis.applicationContext6
           .unregisterAbilityLifecycleCallback(globalThis.callbackid6, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
@@ -903,7 +909,7 @@ export default function lifecycleTest(abilityContext) {
         id2 = globalThis.callbackid7;
         console.log(TAG + " secondCallback id : " + JSON.stringify(id2));
         expect(id1).assertEqual(id2);
-        abilityContext.getApplicationContext()
+        globalThis.applicationContext7
           .unregisterAbilityLifecycleCallback(globalThis.callbackid7, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
@@ -967,7 +973,7 @@ export default function lifecycleTest(abilityContext) {
         id2 = globalThis.callbackid8;
         console.log(TAG + " secondCallback id : " + JSON.stringify(id2));
         expect(id1 + 1).assertEqual(id2);
-        abilityContext.getApplicationContext()
+        globalThis.applicationContext8
           .unregisterAbilityLifecycleCallback(globalThis.callbackid8, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
@@ -1035,7 +1041,7 @@ export default function lifecycleTest(abilityContext) {
           expect(listKeyTemp[3]).assertEqual("Hap1MainAbility1 onAbilityBackground");
           expect(listKeyTemp[4]).assertEqual("Hap1MainAbility1 onAbilityWindowStageDestroy");
           expect(listKeyTemp[5]).assertEqual("Hap1MainAbility1 onAbilityDestroy");
-          abilityContext.getApplicationContext()
+          globalThis.applicationContext9
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility9CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
@@ -1098,7 +1104,7 @@ export default function lifecycleTest(abilityContext) {
           expect(listKeyTemp[9]).assertEqual("Hap1MainAbility2 onAbilityBackground");
           expect(listKeyTemp[10]).assertEqual("Hap1MainAbility2 onAbilityWindowStageDestroy");
           expect(listKeyTemp[11]).assertEqual("Hap1MainAbility2 onAbilityDestroy");
-          abilityContext.getApplicationContext()
+          globalThis.applicationContext9
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility9CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
@@ -1191,7 +1197,7 @@ export default function lifecycleTest(abilityContext) {
         expect(exlist[4]).assertEqual("MainAbility2 onAbilityWindowStageDestroy");
         expect(exlist[5]).assertEqual("MainAbility2 onAbilityDestroy");
         expect(id1 + 1).assertEqual(id2);
-        abilityContext.getApplicationContext()
+        globalThis.applicationContext11
           .unregisterAbilityLifecycleCallback(globalThis.callbackid11, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
@@ -1387,8 +1393,8 @@ export default function lifecycleTest(abilityContext) {
         expect(exlist[4]).assertEqual("MainAbility2 onAbilityWindowStageDestroy");
         expect(exlist[5]).assertEqual("MainAbility2 onAbilityDestroy");
         expect(id1 + 1).assertEqual(id2);
-        abilityContext.getApplicationContext()
-          .unregisterAbilityLifecycleCallback(globalThis.callbackid6, (error, data) => {
+        globalThis.applicationContext12
+          .unregisterAbilityLifecycleCallback(id2, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
             ",data: " + JSON.stringify(data));
             console.log("------------Singlehap_LifeCycleTest_2000 END-------------");
@@ -1574,12 +1580,12 @@ export default function lifecycleTest(abilityContext) {
           expect(exlist1[5]).assertEqual("MainAbility2 onAbilityDestroy");
           expect(id1 + 1).assertEqual(id2);
           expect(id3 + 1).assertEqual(id4);
-          abilityContext.getApplicationContext()
+          globalThis.applicationContext12
             .unregisterAbilityLifecycleCallback(globalThis.callbackid12, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
             });
-          abilityContext.getApplicationContext()
+          globalThis.applicationContext1
             .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
               ",data: " + JSON.stringify(data));
@@ -1589,5 +1595,6 @@ export default function lifecycleTest(abilityContext) {
         }, 100);
       }, 7000);
     });
+
   })
 }

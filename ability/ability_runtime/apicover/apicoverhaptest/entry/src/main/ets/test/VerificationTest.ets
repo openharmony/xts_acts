@@ -16,8 +16,6 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 import commonEvent from '@ohos.commonEvent';
 import AbilityConstant from "@ohos.application.AbilityConstant";
 import appManager from "@ohos.application.appManager";
-import bundle from '@ohos.bundle';
-import uriPermissionManager from '@ohos.application.uriPermissionManager';
 import wantConstant from '@ohos.ability.wantConstant';
 
 var TAG
@@ -210,54 +208,6 @@ export default function verificationTest(abilityContext){
           expect().assertFail();
           done();
         });
-      } catch (err) {
-        console.info(TAG + "catch err = " + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      }
-    })
-
-    /*
-     * @tc.number  SUB_AA_OpenHarmony_UriPermissionManager_0100
-     * @tc.name    Verify URI permissions through verifyUriPermission.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_OpenHarmony_UriPermissionManager_0100', 0, async function(done) {
-      TAG = 'SUB_AA_OpenHarmony_UriPermissionManager_0100 ==>';
-
-      try {
-        let uri1 = 'fileshare:///com.samples.filesharetest.FileShare/person/10'
-        let uri2 = 'fileshare:///com.samples.filesharetest.FileShare/person/20'
-        let number1 = undefined
-        let number2 = undefined
-        let accessTokenId = undefined
-
-        await bundle.getApplicationInfo('ohos.acts.aafwk.test.stagesupplement', 0, 100).then((data) => {
-          console.info(TAG + "getApplicationInfo data = " + JSON.stringify(data.accessTokenId));
-          accessTokenId = data.accessTokenId
-        }).catch((err) => {
-          console.info(TAG + "getApplicationInfo err = " + JSON.stringify(err));
-        });
-
-        await uriPermissionManager.verifyUriPermission(uri1, 2, accessTokenId).then((data) => {
-          console.info(TAG + "verifyUriPermission data = " + JSON.stringify(data));
-        }).catch((err) => {
-          console.info(TAG + "verifyUriPermission err = " + JSON.stringify(err));
-          number1 = err.code
-        });
-
-        uriPermissionManager.verifyUriPermission(uri2, 2, accessTokenId, (err, data) => {
-          console.info(TAG + "verifyUriPermission err = " + JSON.stringify(err));
-          console.info(TAG + "verifyUriPermission data = " + JSON.stringify(data));
-          number2 = err.code
-        })
-
-        setTimeout(()=>{
-          expect(number1).assertEqual(-1);
-          expect(number2).assertEqual(-1);
-          done()
-        }, 3000)
       } catch (err) {
         console.info(TAG + "catch err = " + JSON.stringify(err));
         expect().assertFail();

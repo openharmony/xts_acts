@@ -315,7 +315,7 @@ async function publicCipherFunc(
   }
 }
 
-describe('SecurityHuksCipherRSACallbackJsunit', function () {
+describe('SecurityHuksRSABasicCallbackJsunit', function () {
   it('testCipherRSA001', 0, async function (done) {
     const srcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256KeyAlias001';
     const newSrcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256NewKeyAlias001';

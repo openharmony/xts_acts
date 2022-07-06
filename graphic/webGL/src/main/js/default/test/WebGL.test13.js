@@ -24,7 +24,7 @@ import {
 	expect
 } from 'deccjsunit/index'
 
-describe('webgl1Test', function() {
+describe('webgl1Test13', function() {
 	console.info('webgltest start');
 	var gl;
 	var gl2;

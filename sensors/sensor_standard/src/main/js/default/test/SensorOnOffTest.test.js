@@ -78,11 +78,11 @@ describe('SystemParameterTest', function () {
         console.info('SUB_SENSORS_Sensor_JSTest_0010 end');
     })
 
-   /**
-   * @tc.number    SUB_SENSORS_Sensor_JSTest_0020
-   * @tc.name      testRegisterSensortest002
-   * @tc.desc      test get sensor data by wrong sensor id.
-   */
+    /**
+    * @tc.number    SUB_SENSORS_Sensor_JSTest_0020
+    * @tc.name      testRegisterSensortest002
+    * @tc.desc      test get sensor data by wrong sensor id.
+    */
     it('SUB_SENSORS_Sensor_JSTest_0020', 0, async function (done) {
         console.info('SUB_SENSORS_Sensor_JSTest_0020 start');
 

@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import LifeCycleTest from './LifeCycleTest'
+import Test from './Test'
 
 export default function List(context) {
   LifeCycleTest(context)
+//  Test(context)
 }
