@@ -17,13 +17,16 @@ import formHost from '@ohos.application.formHost';
 import { describe, expect, it } from 'deccjsunit/index';
 import FormInfo from '@ohos.application.formInfo';
 
+function sleep(time) {
+  return new Promise((resolve)=>setTimeout(resolve,time));
+}
 export const getAllFormsInfoTest = (describeName, filterParameter) => {
   const ERR_OK_CODE = 0;
   const ERR_OK = `success`;
 
   describe(`${describeName}`, () => {
-    const callbackName = `FMS_getFormsInfo_0400 callback`;
-    const promiseName = `FMS_getFormsInfo_0400 promise`;
+    const callbackName = `FMS_getFormsInfo_0400_callback`;
+    const promiseName = `FMS_getFormsInfo_0400_promise`;
     var tempDataB = undefined;
 
     /**
@@ -103,6 +106,7 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
         console.log(`${promiseName} exception caught: ${JSON.stringify(error)})`);
         console.log(`${promiseName} should not reach here`);
         expect().assertFail();
+        done()
       }
     });
     function checkDataB(formInfo){

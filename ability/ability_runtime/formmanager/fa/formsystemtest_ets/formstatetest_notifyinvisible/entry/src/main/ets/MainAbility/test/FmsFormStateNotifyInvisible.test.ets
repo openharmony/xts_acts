@@ -257,7 +257,8 @@ export default function test() {
                     data: formId
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                console.info('FMS_notifyInvisibleForms_0600 publish' + JSON.stringify(err));
+                    console.info('FMS_notifyInvisibleForms_0600 publish' + JSON.stringify(err));
+                    done()
                 });
             }
 
@@ -288,6 +289,7 @@ export default function test() {
                     console.log(`FMS_notifyInvisibleForms_0600 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.log(`FMS_notifyInvisibleForms_0600 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    
                 });
                 console.log(`FMS_notifyInvisibleForms_0600 featureAbility.startAbility again end`);
             }
@@ -312,6 +314,8 @@ export default function test() {
                 console.log(`FMS_notifyInvisibleForms_0600 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.log(`FMS_notifyInvisibleForms_0600 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.log(`FMS_notifyInvisibleForms_0600 featureAbility.startAbility end`);
         });
@@ -431,7 +435,8 @@ export default function test() {
                             data: formIdInvisible
                         };
                         commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                        console.info('FMS_notifyInvisibleForms_0800 publish' + JSON.stringify(err));
+                            console.info('FMS_notifyInvisibleForms_0800 publish' + JSON.stringify(err));
+                            done()
                         });
                     }
                 }
@@ -448,7 +453,8 @@ export default function test() {
                         data: formIdInvisible
                     };
                     commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                    console.info('FMS_notifyInvisibleForms_0600 publish' + JSON.stringify(err));
+                        console.info('FMS_notifyInvisibleForms_0800 publish' + JSON.stringify(err));
+                        done()
                     });
                 }
             }

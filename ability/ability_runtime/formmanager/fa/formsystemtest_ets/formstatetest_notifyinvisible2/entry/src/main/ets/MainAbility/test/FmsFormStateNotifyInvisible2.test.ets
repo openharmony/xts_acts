@@ -72,7 +72,8 @@ export default function test() {
                             data: formIdInvisible
                         };
                         commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                        console.info('FMS_notifyInvisibleForms_0900 publish' + JSON.stringify(err));
+                            console.info('FMS_notifyInvisibleForms_0900 publish' + JSON.stringify(err));
+                            done()
                         });
                     }
                 }
@@ -89,7 +90,8 @@ export default function test() {
                         data: formIdInvisible
                     };
                     commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                    console.info('FMS_notifyInvisibleForms_0900 publish' + JSON.stringify(err));
+                        console.info('FMS_notifyInvisibleForms_0900 publish' + JSON.stringify(err));
+                        done()
                     });
                 }
             }
@@ -123,6 +125,8 @@ export default function test() {
                     console.log(`FMS_notifyInvisibleForms_0900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.log(`FMS_notifyInvisibleForms_0900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 console.log(`FMS_notifyInvisibleForms_0900 featureAbility.startAbility again end`);
             }
@@ -150,6 +154,8 @@ export default function test() {
                 console.log(`FMS_notifyInvisibleForms_0900 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.log(`FMS_notifyInvisibleForms_0900 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.log(`FMS_notifyInvisibleForms_0900 featureAbility.startAbility end`);
         });
@@ -214,6 +220,8 @@ export default function test() {
                 console.log(`FMS_notifyInvisibleForms_1000 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.log(`FMS_notifyInvisibleForms_1000 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.log(`FMS_notifyInvisibleForms_1000 featureAbility.startAbility end`);
         });
@@ -303,6 +311,8 @@ export default function test() {
                     console.log(`FMS_notifyInvisibleForms_1100 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.log(`FMS_notifyInvisibleForms_1100 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 console.log(`FMS_notifyInvisibleForms_1100 featureAbility.startAbility again end`);
             }
@@ -330,6 +340,8 @@ export default function test() {
                 console.log(`FMS_notifyInvisibleForms_1100 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.log(`FMS_notifyInvisibleForms_1100 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.log(`FMS_notifyInvisibleForms_1100 featureAbility.startAbility end`);
         });
@@ -395,6 +407,8 @@ export default function test() {
                     console.log(`FMS_notifyInvisibleForms_1200_normal1 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.log(`FMS_notifyInvisibleForms_1200_normal1 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
 
                 console.log(`FMS_notifyInvisibleForms_1200_normal1 featureAbility.startAbility end`);
@@ -477,6 +491,8 @@ export default function test() {
                     console.log(`FMS_notifyInvisibleForms_1200_normal2 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.log(`FMS_notifyInvisibleForms_1200_normal2 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
 
                 console.log(`FMS_notifyInvisibleForms_1200_normal2 featureAbility.startAbility end`);
@@ -598,6 +614,8 @@ export default function test() {
                 console.debug(`FMS_notifyInvisibleForms_1300 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.debug(`FMS_notifyInvisibleForms_1300 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
         });
 
@@ -686,6 +704,8 @@ export default function test() {
                     console.log(`FMS_notifyInvisibleForms_1400 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.log(`FMS_notifyInvisibleForms_1400 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 console.log(`FMS_notifyInvisibleForms_1400 featureAbility.startAbility notifyInVisible end`);
             }
@@ -717,6 +737,8 @@ export default function test() {
                     console.log(`FMS_notifyInvisibleForms_1400 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.log(`FMS_notifyInvisibleForms_1400 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 console.log(`FMS_notifyInvisibleForms_1400 featureAbility.startAbility serviceb end`);
             }
@@ -741,6 +763,8 @@ export default function test() {
                 console.log(`FMS_notifyInvisibleForms_1400 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.log(`FMS_notifyInvisibleForms_1400 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.log(`FMS_notifyInvisibleForms_1400 featureAbility.startAbility servicea end`);
         });
@@ -790,6 +814,8 @@ export default function test() {
                 console.log(`FMS_notifyInvisibleForms_1500 featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.log(`FMS_notifyInvisibleForms_1500 featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.log(`FMS_notifyInvisibleForms_1500 featureAbility.startAbility end`);
         });

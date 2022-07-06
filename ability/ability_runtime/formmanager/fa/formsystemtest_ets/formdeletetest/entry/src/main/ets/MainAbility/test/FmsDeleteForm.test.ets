@@ -68,7 +68,8 @@ export default function test() {
                     data: formId
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                console.info('FMS_deleteForm_0200 publish' + JSON.stringify(err));
+                    console.info('FMS_deleteForm_0200 publish' + JSON.stringify(err));
+                    done()
                 });
             };
             commonEvent.subscribe(subscriberOnDeleted, onDeletedCallback);
@@ -100,6 +101,8 @@ export default function test() {
                     console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 console.info(`${tcNumber} featureAbility.startAbility again end`);
             };
@@ -146,7 +149,8 @@ export default function test() {
                     data: data.parameters.formId
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                console.info('FMS_deleteForm_0300 publish' + JSON.stringify(err));
+                    console.info('FMS_deleteForm_0300 publish' + JSON.stringify(err));
+                    done()
                 });
             };
             commonEvent.subscribe(subscriberOnDeleted, onDeletedCallback);
@@ -172,6 +176,8 @@ export default function test() {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.info(`${tcNumber} featureAbility.startAbility end`);
         });
@@ -194,7 +200,8 @@ export default function test() {
                     data: data.parameters.formId
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                console.info('FMS_deleteForm_0400 publish' + JSON.stringify(err));
+                    console.info('FMS_deleteForm_0400 publish' + JSON.stringify(err));
+                    done()
                 });
             };
             commonEvent.subscribe(subscriberOnDeleted, onDeletedCallback);
@@ -220,6 +227,8 @@ export default function test() {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.info(`${tcNumber} featureAbility.startAbility end`);
         });
@@ -244,7 +253,8 @@ export default function test() {
                     data: formId
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                console.info('FMS_deleteForm_0500 publish' + JSON.stringify(err));
+                    console.info('FMS_deleteForm_0500 publish' + JSON.stringify(err));
+                    done()
                 });
             };
             commonEvent.subscribe(subscriberOnDeleted, onDeletedCallback);
@@ -276,6 +286,8 @@ export default function test() {
                     console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 console.info(`${tcNumber} featureAbility.startAbility again end`);
             };
@@ -300,6 +312,8 @@ export default function test() {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.info(`${tcNumber} featureAbility.startAbility end`);
         });
@@ -419,6 +433,8 @@ export default function test() {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.info(`${tcNumber} featureAbility.startAbility end`);
         });
@@ -507,6 +523,8 @@ export default function test() {
                     console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 console.info(`${tcNumber} featureAbility.startAbility again end`);
             };
@@ -540,6 +558,8 @@ export default function test() {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.info(`${tcNumber} featureAbility.startAbility end`);
         });
@@ -640,6 +660,8 @@ export default function test() {
                     console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 console.info(`${tcNumber} featureAbility.startAbility again end`);
             };
@@ -680,6 +702,8 @@ export default function test() {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.info(`${tcNumber} featureAbility.startAbility end`);
         });
@@ -706,7 +730,8 @@ export default function test() {
                     data: formId
                 };
                 commonEvent.publish(deleteForm_Event, commonEventPublishData, (err) => {
-                console.info('FMS_deleteForm_0900 publish' + JSON.stringify(err));
+                    console.info('FMS_deleteForm_0900 publish' + JSON.stringify(err));
+                    done()
                 });
             }
 
@@ -741,6 +766,8 @@ export default function test() {
                     console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 console.info(`${tcNumber} featureAbility.startAbility again end`);
             };
@@ -767,6 +794,8 @@ export default function test() {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.info(`${tcNumber} featureAbility.startAbility end`);
         });
@@ -810,6 +839,8 @@ export default function test() {
                     console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 console.info(`${tcNumber} featureAbility.startAbility again end`);
             }
@@ -936,6 +967,8 @@ export default function test() {
                     console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
                 }).catch((err: any) => {
                     console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                    expect().assertFail();
+                    done();
                 });
                 console.info(`${tcNumber} featureAbility.startAbility again end`);
             };
@@ -969,6 +1002,8 @@ export default function test() {
                 console.info(`${tcNumber} featureAbility.startAbilityhost res: ${JSON.stringify(res)}`);
             }).catch((err: any) => {
                 console.info(`${tcNumber} featureAbility.startAbilityhost error: ${JSON.stringify(err)}`);
+                expect().assertFail();
+                done();
             });
             console.info(`${tcNumber} featureAbility.startAbility end`);
         });
