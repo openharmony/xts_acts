@@ -18,7 +18,7 @@ import fileio from '@ohos.fileio';
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
-describe('audioCapturer', function () {
+describe('audioCapturerChangeInfo', function () {
     var audioCapCallBack;
     var audioStreamManager;
 	var audioStreamManagerCB;
