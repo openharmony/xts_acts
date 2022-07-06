@@ -17,7 +17,7 @@ import audio from '@ohos.multimedia.audio';
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
-describe('audioManger', function () {
+describe('AudioFramework', function () {
     console.info('AudioFrameworkTest: Create AudioManger Object JS Framework');
     const audioManager = audio.getAudioManager();
     var deviceRoleValue = null;
