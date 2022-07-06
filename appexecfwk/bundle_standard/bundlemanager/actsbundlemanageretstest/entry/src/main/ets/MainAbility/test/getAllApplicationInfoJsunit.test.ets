@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll ,it, expect } from 'deccjsunit/index.ets';
+import { describe, beforeAll ,it, expect } from 'deccjsunit/index';
 import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 import account from '@ohos.account.osAccount';
@@ -223,50 +223,6 @@ export default function applicationBundleJsunit() {
             console.info(TAG_TEST_0400_001 + 'noUserId callBack datas is:' + JSON.stringify(datas));
             expectData(TAG_TEST_0400_001, datas)
             getApplicationInfoSuccess(TAG_TEST_0400_001, datas);
-            done();
-        });
-
-        /**
-         * @tc.number: bundle_getApplicationInfo_test_0500_009
-         * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
-         * @tc.desc: Check the return value of the interface (by promise)
-         * @tc.level   0
-         */
-        it(TAG_TEST_0500_001, 0, async function (done) {
-            let errors;
-            let startTime = await Utils.getNowTime();
-            await Bundle.getAllApplicationInfo('Bundle.BundleFlag.GET_BUNDLE_DEFAULT').then((data) => {
-                console.info(TAG_TEST_0500_001 + 'noUserId promise data is: ' + data);
-                expect(data).assertFail();
-            }).catch((error) => {
-                console.info(TAG_TEST_0500_001 + 'noUserId promise error is: ' + error);
-                errors = error;
-                expect(errors).assertEqual(1);
-            });
-            let endTime = Utils.getNowTime();
-            Utils.getDurationTime(TAG_TEST_0500_001, startTime, endTime);
-            done();
-        });
-
-        /**
-         * @tc.number: bundle_getApplicationInfo_test_0500_0010
-         * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
-         * @tc.desc: Check the return value of the interface (by promise)
-         * @tc.level   0
-         */
-        it(TAG_TEST_0500_002, 0, async function (done) {
-            let errors;
-            let startTime = await Utils.getNowTime();
-            await Bundle.getAllApplicationInfo('Bundle.BundleFlag.GET_BUNDLE_DEFAULT', userId).then((data) => {
-                console.info(TAG_TEST_0500_002 + 'noUserId promise data is: ' + data);
-                expect(data).assertFail();
-            }).catch((error) => {
-                console.info(TAG_TEST_0500_002 + 'UserId promise error is: ' + error);
-                errors = error;
-                expect(errors).assertEqual(1);
-            });
-            let endTime = Utils.getNowTime();
-            Utils.getDurationTime(TAG_TEST_0500_002, startTime, endTime);
             done();
         });
 
