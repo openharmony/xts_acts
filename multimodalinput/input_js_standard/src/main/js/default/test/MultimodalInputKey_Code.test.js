@@ -101,7 +101,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0100', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0100 enter`);
 
-        expect(inputkeyCode.KeyCode.KKEYCODE_MEDIA_FAST_FORWARD == 15).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_MEDIA_FAST_FORWARD == 15).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0100 exit`);
     })
@@ -302,7 +302,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0350', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0010 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_DPAD_CENTER = 2016).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_DPAD_CENTER == 2016).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0010 exit`);
     })
@@ -374,7 +374,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0440', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0010 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_I = 2025).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_I == 2025).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0010 exit`);
     })
@@ -974,7 +974,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_119', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_119 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_F11 = 2100).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_F11 == 2100).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_119 exit`);
     })
@@ -1046,7 +1046,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_128', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_128 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_NUMPAD_6 = 2109).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_NUMPAD_6 == 2109).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_128 exit`);
     })
@@ -1174,7 +1174,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_144', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_144 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_ZENKAKU_HANKAKU = 2601).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_ZENKAKU_HANKAKU == 2601).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_144 exit`);
     })
@@ -1374,7 +1374,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_169', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_169 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_CALC = 2626).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_CALC == 2626).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_169 exit`);
     })
@@ -1950,7 +1950,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_240', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_240 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_GREEN = 2687).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_GREEN == 2687).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_240 exit`);
     })
@@ -2510,7 +2510,7 @@ describe('Multimodalinput_KeyCode_test', function () {
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_310', 0, function () {
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_310 enter`);
 
-        expect(inputkeyCode.KeyCode.KEYCODE_F16 = 2819).assertTrue();
+        expect(inputkeyCode.KeyCode.KEYCODE_F16 == 2819).assertTrue();
 
         console.log(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_310 exit`);
     })
