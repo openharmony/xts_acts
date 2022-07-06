@@ -64,12 +64,16 @@ export default function inputMethodEngineJsunit() {
       });
       mKeyboardDelegate = inputMethodEngine.createKeyboardDelegate();
       mKeyboardDelegate.on('keyDown', (keyEvent) => {
-        console.log("inputMethodEngine beforeEach keyDown:" + keyEvent);
+        console.info("inputMethodEngine beforeEach keyDown:" + keyEvent.keyCode);
         expect(keyEvent.keyCode).assertEqual('1');
+        console.info("inputMethodEngine beforeEach keyDown:" + keyEvent.keyAction);
+        expect(keyEvent.keyAction).assertEqual('1');
       });
       mKeyboardDelegate.on('keyUp', (keyEvent) => {
-        console.log("inputMethodEngine beforeEach keyUp:" + keyEvent.keyCode);
+        console.info("inputMethodEngine beforeEach keyUp:" + keyEvent.keyCode);
         expect(keyEvent.keyCode).assertEqual('1');
+        console.info("inputMethodEngine beforeEach keyDown:" + keyEvent.keyAction);
+        expect(keyEvent.keyAction).assertEqual('0');
       });
       mKeyboardDelegate.on('cursorContextChange', (x, y, height) => {
         console.log("inputMethodEngine beforeEach cursorContextChange x:" + x);
@@ -433,7 +437,7 @@ export default function inputMethodEngineJsunit() {
         expect(textInputClient == null).assertEqual(true);
       } else {
         textInputClient.getEditorAttribute(1, (editorAttribute) => {
-          console.log("inputMethodEngine_test_036 getEditorAttribute:" + value);
+          console.log("inputMethodEngine_test_038 getEditorAttribute:" + value);
           expect(editorAttribute.inputPattern).assertEqual(1);
           expect(editorAttribute.enterKeyType).assertEqual(1);
         });
@@ -447,11 +451,11 @@ export default function inputMethodEngineJsunit() {
       } else {
         let promise = textInputClient.getEditorAttribute();
         promise.then(res => {
-          console.info("inputMethodEngine_test_037 getEditorAttribute promise result-----" + JSON.stringify(res));
+          console.info("inputMethodEngine_test_039 getEditorAttribute promise result-----" + JSON.stringify(res));
           expect(res.inputPattern).assertEqual(1);
           expect(res.enterKeyType).assertEqual(1);
         }).catch(err => {
-          console.info("inputMethodEngine_test_037 getEditorAttribute promise error----" + JSON.stringify(err));
+          console.info("inputMethodEngine_test_039 getEditorAttribute promise error----" + JSON.stringify(err));
           expect().assertFail();
         });
       }
@@ -476,15 +480,43 @@ export default function inputMethodEngineJsunit() {
       } else {
         let promise = kbController.hideKeyboard();
         promise.then(res => {
-          console.info("inputMethodEngine_test_037 hideKeyboard promise result-----" + JSON.stringify(res));
+          console.info("inputMethodEngine_test_041 hideKeyboard promise result-----" + JSON.stringify(res));
           expect(1 == 1).assertTrue();
         }).catch(err => {
-          console.info("inputMethodEngine_test_037 hideKeyboard promise error----" + JSON.stringify(err));
+          console.info("inputMethodEngine_test_041 hideKeyboard promise error----" + JSON.stringify(err));
+          expect().assertFail();
+        });
+      }
+      done();
+    });
+    it('inputMethodEngine_test_042', 0, async function (done) {
+      if (textInputClient == null) {
+        expect(textInputClient == null).assertEqual(true);
+      } else {
+        textInputClient.getBackward(1, (value) => {
+          console.info("inputMethodEngine_test_042 getBackward:" + value);
+          expect(value).assertEqual(true);
+        });
+      }
+      done();
+    });
+
+    it('inputMethodEngine_test_043', 0, async function (done) {
+      if (textInputClient == null) {
+        expect(textInputClient == null).assertEqual(true);
+      } else {
+        let promise = textInputClient.getBackward(1);
+        promise.then(res => {
+          console.info("inputMethodEngine_test_043 getBackward promise result-----" + JSON.stringify(res));
+          expect(res).assertEqual(true);
+        }).catch(err => {
+          console.info("inputMethodEngine_test_043 getBackward promise error----" + JSON.stringify(err));
           expect().assertFail();
         });
       }
       done();
     });
 
-  })
+
+    })
 }
