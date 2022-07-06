@@ -79,6 +79,14 @@
       {
         "name": "MainAbility6_label",
         "value": "label"
+      },
+      {
+        "name": "MainAbility7_desc",
+        "value": "description"
+      },
+      {
+        "name": "MainAbility7_label",
+        "value": "label"
       }
   ]
 }

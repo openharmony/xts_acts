@@ -71,6 +71,13 @@
           "icon": "$media:icon",
           "label": "$string:MainAbility6_label",
           "launchType": "standard"
+          },
+          {
+          "name": "MainAbility7",
+          "srcEntrance": "./ets/MainAbility7/MainAbility7.ts",
+          "description": "$string:MainAbility7_desc",
+          "icon": "$media:icon",
+          "label": "$string:MainAbility7_label"
           }],
           "requestPermissions": [
             {
