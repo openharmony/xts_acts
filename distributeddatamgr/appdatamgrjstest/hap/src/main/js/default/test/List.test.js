@@ -29,6 +29,6 @@ require('./RdbstorePredicatesJoinJsunit.test.js')
 require('./RdbStoreDistributedJsunit.test.js')
 require('./RdbstoreChangeEncryptKeyJsunit.test.js')
 require('./RdbStoreDataShareJsunit.test.js')
-
+require('./RdbstoreBackupRestoreWithFAContextJsunit.test.js')
 
 
