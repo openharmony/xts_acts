@@ -22,8 +22,9 @@ import featureAbility from '@ohos.ability.featureAbility'
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import resourceManager from '@ohos.resourceManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import account from '@ohos.account.osAccount'
 
-describe('audioRenderer', function () {
+describe('audioRenderer', async function () {
 
     let fdRead;
     let readpath;
@@ -50,7 +51,8 @@ describe('audioRenderer', function () {
         return mediaDirTemp;
 
     }*/
-
+    let userId = await account.getAccountManager().getOsAccountLocalldFromProcess();
+    console.info('userId :' + userId);
     beforeAll(async function () {
         await applyPermission();
         console.info('AudioFrameworkRenderLog: beforeAll: Prerequisites at the test suite level');
@@ -107,7 +109,7 @@ describe('audioRenderer', function () {
     //         }
     //     })
     // }
-    async function getFdRead(pathName,done) {
+    async function getFdRead(pathName, done) {
         let context = await featureAbility.getContext();
         console.info("case0 context is  " + context);
         await context.getFilesDir().then((data) => {
@@ -130,7 +132,7 @@ describe('audioRenderer', function () {
         });
     }
     async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.audiomanager', 0, 100);
+        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.audiomanager', 0, userId);
         let atManager = abilityAccessCtrl.createAtManager();
         if (atManager != null) {
             let tokenID = appInfo.accessTokenId;
@@ -1498,7 +1500,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1508,7 +1510,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-1C-44100-2SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1536,7 +1538,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1546,7 +1548,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-2C-24000-3SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackPromise_93(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        var resultFlag = await playbackPromise_93(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1575,7 +1577,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1585,7 +1587,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-2C-24000-3SW.wav'
         await getFdRead(readpath, done);
-        var resultFlag = await playbackPromise_94(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        var resultFlag = await playbackPromise_94(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1613,7 +1615,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1623,7 +1625,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-2C-24000-3SW.wav'
         await getFdRead(readpath, done);
-        var resultFlag = await playbackPromise_95(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        var resultFlag = await playbackPromise_95(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1650,7 +1652,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1661,7 +1663,7 @@ describe('audioRenderer', function () {
         //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done);
-        var resultFlag = await playbackPromise_102(AudioRendererOptions,filePath);
+        var resultFlag = await playbackPromise_102(AudioRendererOptions, filePath);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1689,7 +1691,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1699,7 +1701,7 @@ describe('audioRenderer', function () {
         //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done);
-        var resultFlag = await playbackPromise_103(AudioRendererOptions,filePath);
+        var resultFlag = await playbackPromise_103(AudioRendererOptions, filePath);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1727,7 +1729,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1738,7 +1740,7 @@ describe('audioRenderer', function () {
         //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readpath = 'StarWars10s-2C-48000-4SW.wav';
         await getFdRead(readpath, done);
-        var resultFlag = await playbackPromise_104(AudioRendererOptions,filePath);
+        var resultFlag = await playbackPromise_104(AudioRendererOptions, filePath);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1766,7 +1768,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1775,7 +1777,7 @@ describe('audioRenderer', function () {
         }
         readpath = 'StarWars10s-2C-48000-4SW.wav';
         await getFdRead(readpath, done);
-        var resultFlag = await playbackPromise_105(AudioRendererOptions,filePath);
+        var resultFlag = await playbackPromise_105(AudioRendererOptions, filePath);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1803,7 +1805,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1813,7 +1815,7 @@ describe('audioRenderer', function () {
         //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readpath = 'StarWars10s-2C-48000-4SW.wav';
         await getFdRead(readpath, done);
-        var resultFlag = await playbackPromise_106(AudioRendererOptions,filePath);
+        var resultFlag = await playbackPromise_106(AudioRendererOptions, filePath);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1841,7 +1843,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1852,7 +1854,7 @@ describe('audioRenderer', function () {
         //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readpath = 'StarWars10s-2C-48000-4SW.wav';
         await getFdRead(readpath, done);
-        var resultFlag = await playbackPromise_107(AudioRendererOptions,filePath);
+        var resultFlag = await playbackPromise_107(AudioRendererOptions, filePath);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1879,7 +1881,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1889,7 +1891,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-1C-8000-2SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -1917,7 +1919,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1927,7 +1929,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-1C-32000-1SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -1955,7 +1957,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1965,7 +1967,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-1C-64000-3SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1992,7 +1994,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2002,7 +2004,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-1C-96000-4SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -2029,7 +2031,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2039,7 +2041,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-2C-11025-1SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -2066,7 +2068,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2076,7 +2078,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-2C-12000-2SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -2103,7 +2105,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2113,7 +2115,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -2140,7 +2142,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2151,7 +2153,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -2188,7 +2190,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2199,7 +2201,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -2235,7 +2237,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2246,7 +2248,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -2282,7 +2284,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2293,7 +2295,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -2330,7 +2332,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2341,7 +2343,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
             if (data == true) {
@@ -2377,7 +2379,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2388,7 +2390,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
             if (data == true) {
@@ -2424,7 +2426,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2435,7 +2437,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -2471,7 +2473,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2482,7 +2484,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.VOICE_ASSISTANT).then(function (data) {
             if (data == true) {
@@ -2518,7 +2520,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2529,7 +2531,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -2566,7 +2568,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2577,7 +2579,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -2613,7 +2615,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2624,7 +2626,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
             if (data == true) {
@@ -2660,7 +2662,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2671,7 +2673,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
             if (data == true) {
@@ -2707,7 +2709,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2718,7 +2720,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -2754,7 +2756,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2765,7 +2767,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.VOICE_CALL).then(function (data) {
             if (data == true) {
@@ -2801,7 +2803,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2812,7 +2814,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -2848,7 +2850,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2859,7 +2861,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -2895,7 +2897,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2906,7 +2908,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -2942,7 +2944,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2953,7 +2955,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -2989,7 +2991,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -3000,7 +3002,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -3037,7 +3039,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -3048,7 +3050,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -3085,7 +3087,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -3096,7 +3098,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
             if (data == true) {
@@ -3133,7 +3135,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -3144,7 +3146,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -3181,7 +3183,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -3192,7 +3194,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
@@ -3228,7 +3230,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -3239,7 +3241,7 @@ describe('audioRenderer', function () {
         var resultFlag = true;
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        playbackPromise(AudioRendererOptions,filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
         audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
             if (data == true) {
@@ -3276,7 +3278,7 @@ describe('audioRenderer', function () {
     // var AudioRendererInfo = {
     //     content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
     //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
+    //      rendererFlags: 0
     // }
 
     // var AudioRendererOptions = {
@@ -3328,7 +3330,7 @@ describe('audioRenderer', function () {
     // var AudioRendererInfo = {
     //     content: audio.ContentType.CONTENT_TYPE_SPEECH,
     //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
+    //      rendererFlags: 0
     // }
 
     // var AudioRendererOptions = {
@@ -3380,7 +3382,7 @@ describe('audioRenderer', function () {
     // var AudioRendererInfo = {
     //     content: audio.ContentType.CONTENT_TYPE_MUSIC,
     //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
+    //      rendererFlags: 0
     // }
 
     // var AudioRendererOptions = {
@@ -3432,7 +3434,7 @@ describe('audioRenderer', function () {
     // var AudioRendererInfo = {
     //     content: audio.ContentType.CONTENT_TYPE_MOVIE,
     //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
+    //      rendererFlags: 0
     // }
 
     // var AudioRendererOptions = {
@@ -3484,7 +3486,7 @@ describe('audioRenderer', function () {
     // var AudioRendererInfo = {
     //     content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
     //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
+    //      rendererFlags: 0
     // }
 
     // var AudioRendererOptions = {
@@ -3536,7 +3538,7 @@ describe('audioRenderer', function () {
     // var AudioRendererInfo = {
     //     content: audio.ContentType.CONTENT_TYPE_RINGTONE,
     //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
+    //      rendererFlags: 0
     // }
 
     // var AudioRendererOptions = {
@@ -3588,7 +3590,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -3661,7 +3663,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -3736,7 +3738,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -3811,7 +3813,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -3886,7 +3888,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -3961,7 +3963,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -4036,7 +4038,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -4111,7 +4113,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -4186,7 +4188,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -4261,7 +4263,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -4336,7 +4338,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -4411,7 +4413,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -4486,7 +4488,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -4561,7 +4563,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -4636,7 +4638,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -4711,7 +4713,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -4786,7 +4788,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -4861,7 +4863,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -4936,7 +4938,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -5011,7 +5013,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -5086,7 +5088,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -5161,7 +5163,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -5236,7 +5238,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -5311,7 +5313,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -5386,7 +5388,7 @@ describe('audioRenderer', function () {
     // var AudioRendererInfo = {
     //     content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
     //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
+    //      rendererFlags: 0
     // }
 
     // var AudioRendererOptions = {
@@ -5461,7 +5463,7 @@ describe('audioRenderer', function () {
     // var AudioRendererInfo = {
     //     content: audio.ContentType.CONTENT_TYPE_SPEECH,
     //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
+    //      rendererFlags: 0
     // }
 
     // var AudioRendererOptions = {
@@ -5536,7 +5538,7 @@ describe('audioRenderer', function () {
     // var AudioRendererInfo = {
     //     content: audio.ContentType.CONTENT_TYPE_MUSIC,
     //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
+    //      rendererFlags: 0
     // }
 
     // var AudioRendererOptions = {
@@ -5610,7 +5612,7 @@ describe('audioRenderer', function () {
     // var AudioRendererInfo = {
     //     content: audio.ContentType.CONTENT_TYPE_MOVIE,
     //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
+    //      rendererFlags: 0
     // }
 
     // var AudioRendererOptions = {
@@ -5684,7 +5686,7 @@ describe('audioRenderer', function () {
     // var AudioRendererInfo = {
     //     content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
     //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
+    //      rendererFlags: 0
     // }
 
     // var AudioRendererOptions = {
@@ -5758,7 +5760,7 @@ describe('audioRenderer', function () {
     // var AudioRendererInfo = {
     //     content: audio.ContentType.CONTENT_TYPE_RINGTONE,
     //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
+    //      rendererFlags: 0
     // }
 
     // var AudioRendererOptions = {
@@ -5832,7 +5834,7 @@ describe('audioRenderer', function () {
     //  var AudioRendererInfo = {
     //      content: audio.ContentType.CONTENT_TYPE_RINGTONE,
     //      usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //      rendererFlags: 1
+    //       rendererFlags: 0
     //  }
 
     //  var AudioRendererOptions = {
@@ -5889,7 +5891,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -5946,7 +5948,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -6018,7 +6020,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -6092,7 +6094,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -6167,7 +6169,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -6251,7 +6253,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -6415,7 +6417,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -6578,7 +6580,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -6734,7 +6736,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -6890,7 +6892,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -6901,7 +6903,7 @@ describe('audioRenderer', function () {
         //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readpath = 'StarWars10s-1C-32000-1SW.wav'
         await getFdRead(readpath, done);
-        var resultFlag = await playbackPromise_113(AudioRendererOptions,filePath);
+        var resultFlag = await playbackPromise_113(AudioRendererOptions, filePath);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -6929,7 +6931,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7006,7 +7008,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7070,7 +7072,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7150,7 +7152,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7232,7 +7234,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7314,7 +7316,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7461,7 +7463,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7566,7 +7568,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7576,7 +7578,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions,filePath);
+        var resultFlag = await playbackCB(AudioRendererOptions, filePath);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         await sleep(9000);
         expect(resultFlag).assertTrue();
@@ -7604,7 +7606,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7614,7 +7616,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-1C-44100-2SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions,filePath);
+        var resultFlag = await playbackCB(AudioRendererOptions, filePath);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         await sleep(5000);
         expect(resultFlag).assertTrue();
@@ -7641,7 +7643,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7651,7 +7653,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-1C-8000-2SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions,filePath);
+        var resultFlag = await playbackCB(AudioRendererOptions, filePath);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -7678,7 +7680,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7688,7 +7690,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-1C-32000-1SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions,filePath);
+        var resultFlag = await playbackCB(AudioRendererOptions, filePath);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -7715,7 +7717,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7725,7 +7727,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-1C-64000-3SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions,filePath);
+        var resultFlag = await playbackCB(AudioRendererOptions, filePath);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -7752,7 +7754,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7762,7 +7764,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-1C-96000-4SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions,filePath);
+        var resultFlag = await playbackCB(AudioRendererOptions, filePath);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -7789,7 +7791,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7799,7 +7801,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-2C-11025-1SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions,filePath);
+        var resultFlag = await playbackCB(AudioRendererOptions, filePath);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -7826,7 +7828,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7836,7 +7838,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-2C-12000-2SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions,filePath);
+        var resultFlag = await playbackCB(AudioRendererOptions, filePath);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -7863,7 +7865,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7873,7 +7875,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-2C-16000-3SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions,filePath);
+        var resultFlag = await playbackCB(AudioRendererOptions, filePath);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -7902,7 +7904,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7912,7 +7914,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-2C-22050-2SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions,filePath);
+        var resultFlag = await playbackCB(AudioRendererOptions, filePath);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -7940,7 +7942,7 @@ describe('audioRenderer', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -7950,7 +7952,7 @@ describe('audioRenderer', function () {
 
         readpath = 'StarWars10s-2C-24000-3SW.wav'
         await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions,filePath);
+        var resultFlag = await playbackCB(AudioRendererOptions, filePath);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();

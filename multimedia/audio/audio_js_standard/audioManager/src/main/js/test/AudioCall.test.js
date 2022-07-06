@@ -22,10 +22,11 @@ import bundle from '@ohos.bundle';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import featureAbility from '@ohos.ability.featureAbility'
 import resourceManager from '@ohos.resourceManager';
+import account from '@ohos.account.osAccount'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
-describe('audioCall', function () {
+describe('audioCall', async function () {
     var mediaDir;
     let fdRead;
     let readpath;
@@ -38,7 +39,8 @@ describe('audioCall', function () {
 
     const audioManagerRec = audio.getAudioManager();
     console.info('AudioFrameworkRecLog: Create AudioManger Object JS Framework');
-
+    let userId = await account.getAccountManager().getOsAccountLocalldFromProcess();
+    console.info('userId :' + userId);
     /*async function getPathName(){
         var path1 = '/data/accounts/account_0/appdata/';
         var packageName;
@@ -135,7 +137,7 @@ describe('audioCall', function () {
         });
     }
     async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.audiomanager', 0, 100);
+        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.audiomanager', 0, userId);
         let atManager = abilityAccessCtrl.createAtManager();
         if (atManager != null) {
             let tokenID = appInfo.accessTokenId;
@@ -436,7 +438,7 @@ describe('audioCall', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+             rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -526,7 +528,7 @@ describe('audioCall', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+             rendererFlags: 0
         }
 
         var AudioRendererOptions = {
