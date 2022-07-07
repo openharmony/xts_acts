@@ -457,35 +457,6 @@ export default function cameraJSUnitPhotoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : isMirrorSupported_PHOTO_OUTPUT
-      * @tc.name      : isMirrorSupported
-      * @tc.desc      : isMirrorSupported
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('isMirrorSupported_PHOTO_OUTPUT', 0, async function (done) {
-      if (photoOutputAsync == null || photoOutputAsync == undefined) {
-        console.info(TAG + "photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering isMirrorSupported_PHOTO_OUTPUT to operate");
-        photoOutputAsync.isMirrorSupported(async (err, data) => {
-          if (!err) {
-            console.info(TAG + "Entering isMirrorSupported_PHOTO_OUTPUT is success");
-            console.info(TAG + "isMirrorSupported : " + data);
-            expect(true).assertTrue();
-          } else {
-            expect().assertFail();
-          }
-          await sleep(1000);
-          done();
-        })
-        await sleep(1000);
-        done();
-      }
-    })
-
-    /**
       * @tc.number    : PHOTO_OUTPUT_CALLBACK_ON_ERROR
       * @tc.name      : Photo output callback on error api
       * @tc.desc      : Photo output callback on error api
@@ -856,64 +827,6 @@ export default function cameraJSUnitPhotoAsync(surfaceId: any) {
           if (!err) {
             console.info(TAG + "Entering setMirror_false is success");
             console.info(TAG + "setMirror is : " + 'false');
-            expect(true).assertTrue();
-          } else {
-            expect().assertFail();
-          }
-          await sleep(1000);
-          done();
-        })
-        await sleep(1000);
-        done();
-      }
-    })
-
-    /**
-      * @tc.number    : setMirror_1
-      * @tc.name      : setMirror 1
-      * @tc.desc      : setMirror 1
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('setMirror_1', 0, async function (done) {
-      if (photoOutputAsync == null || photoOutputAsync == undefined) {
-        console.info(TAG + "photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering setMirror_1 to operate");
-        photoOutputAsync.setMirror(1, async (err, data) => {
-          if (!err) {
-            console.info(TAG + "Entering setMirror_1 is success:");
-            console.info(TAG + "setMirror is : " + '1');
-            expect(true).assertTrue();
-          } else {
-            expect().assertFail();
-          }
-          await sleep(1000);
-          done();
-        })
-        await sleep(1000);
-        done();
-      }
-    })
-
-    /**
-      * @tc.number    : setMirror_0
-      * @tc.name      : setMirror 0
-      * @tc.desc      : setMirror 0
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('setMirror_0', 0, async function (done) {
-      if (photoOutputAsync == null || photoOutputAsync == undefined) {
-        console.info(TAG + "photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering setMirror_0 to operate");
-        photoOutputAsync.setMirror(0, async (err, data) => {
-          if (!err) {
-            console.info(TAG + "Entering setMirror_0 is success:");
-            console.info(TAG + "setMirror is : " + '0');
             expect(true).assertTrue();
           } else {
             expect().assertFail();

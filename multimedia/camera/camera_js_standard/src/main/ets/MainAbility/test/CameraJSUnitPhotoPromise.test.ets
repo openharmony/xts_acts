@@ -420,36 +420,6 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : isMirrorSupported_PHOTO_OUTPUT
-      * @tc.name      : isMirrorSupported
-      * @tc.desc      : isMirrorSupported
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('isMirrorSupported_PHOTO_OUTPUT', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering isMirrorSupported_PHOTO_OUTPUT to operate");
-        await photoOutputPromise.isMirrorSupported()
-          .then(function (data) {
-            console.info(TAG + "Entering isMirrorSupported_PHOTO_OUTPUT is success");
-            console.info(TAG + "isMirrorSupported : " + data);
-            expect(true).assertTrue();
-          })
-          .catch((err) => {
-            expect().assertFail();
-            console.info(TAG + "isMirrorSupported_PHOTO_OUTPUT FAILED : " + err.message);
-          });
-        await sleep(1000);
-        done();
-      }
-      await sleep(1000);
-      done();
-    })
-
-    /**
       * @tc.number    : PHOTO_OUTPUT_CALLBACK_ON_ERROR
       * @tc.name      : Photo output callback on error api
       * @tc.desc      : Photo output callback on error api
@@ -778,10 +748,10 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
             expect().assertFail();
             console.info(TAG + "setMirror_true FAILED : " + err.message);
           });
-        await sleep(2000);
+        await sleep(1000);
         done();
       }
-      await sleep(2000);
+      await sleep(1000);
       done();
     })
 
@@ -808,70 +778,10 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
             expect().assertFail();
             console.info(TAG + "setMirror_false FAILED : " + err.message);
           });
-        await sleep(2000);
+        await sleep(1000);
         done();
       }
-      await sleep(2000);
-      done();
-    })
-
-    /**
-      * @tc.number    : setMirror_1
-      * @tc.name      : setMirror 1
-      * @tc.desc      : setMirror 1
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('setMirror_1', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering setMirror_1 to operate");
-        await photoOutputPromise.setMirror(1)
-          .then(function (data) {
-            console.info(TAG + "Entering setMirror_1 is success:");
-            console.info(TAG + "setMirror is : " + '1');
-            expect(true).assertTrue();
-          })
-          .catch((err) => {
-            expect().assertFail();
-            console.info(TAG + "setMirror_1 FAILED : " + err.message);
-          });
-        await sleep(2000);
-        done();
-      }
-      await sleep(2000);
-      done();
-    })
-
-    /**
-      * @tc.number    : setMirror_0
-      * @tc.name      : setMirror 0
-      * @tc.desc      : setMirror 0
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('setMirror_0', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering setMirror_0 to operate");
-        await photoOutputPromise.setMirror(0)
-          .then(function (data) {
-            console.info(TAG + "Entering setMirror_0 is success:");
-            console.info(TAG + "setMirror is : " + '0');
-            expect(true).assertTrue();
-          })
-          .catch((err) => {
-            expect().assertFail();
-            console.info(TAG + "setMirror_0 FAILED : " + err.message);
-          });
-        await sleep(2000);
-        done();
-      }
-      await sleep(2000);
+      await sleep(1000);
       done();
     })
 

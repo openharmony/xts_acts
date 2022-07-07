@@ -226,7 +226,6 @@ export default function cameraJSUnitEnum(surfaceId: any) {
           console.info(TAG + "Entering CREATE_CAMERA_INPUT_TC_003 FAILED: " + err.message);
         }
         console.info(TAG + "Entering CREATE_CAMERA_INPUT_TC_003 ends here");
-        camera0Input.release();
         await sleep(1000);
         done();
       })
@@ -478,6 +477,30 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       expect(cameraObj.QualityLevel.QUALITY_LEVEL_MEDIUM).assertEqual(1);
       console.info(TAG + "QualityLevel QUALITY_LEVEL_LOW : " + cameraObj.QualityLevel.QUALITY_LEVEL_LOW);
       expect(cameraObj.QualityLevel.QUALITY_LEVEL_LOW).assertEqual(2);
+      await sleep(1000);
+      done();
+    })
+
+/**
+      * @tc.number    : VIDEOSTABILIZATION_ENUM
+      * @tc.name      : VIDEOSTABILIZATION ENAME
+      * @tc.desc      : VIDEOSTABILIZATION ENAME
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('VideoStabilization', 0, async function (done) {
+      console.info(TAG + "--------------VideoStabilization ------------")
+      console.info(TAG + "VideoStabilization OFF : " + cameraObj.VideoStabilizationMode.OFF);
+      expect(cameraObj.VideoStabilizationMode.OFF).assertEqual(0);
+      console.info(TAG + "VideoStabilization LOW : " + cameraObj.VideoStabilizationMode.LOW);
+      expect(cameraObj.VideoStabilizationMode.LOW).assertEqual(1);
+      console.info(TAG + "VideoStabilization MIDDLE : " + cameraObj.VideoStabilizationMode.MIDDLE);
+      expect(cameraObj.VideoStabilizationMode.MIDDLE).assertEqual(2);
+      console.info(TAG + "VideoStabilization HIGH : " + cameraObj.VideoStabilizationMode.HIGH);
+      expect(cameraObj.VideoStabilizationMode.HIGH).assertEqual(3);
+      console.info(TAG + "VideoStabilization AUTO : " + cameraObj.VideoStabilizationMode.AUTO);
+      expect(cameraObj.VideoStabilizationMode.AUTO).assertEqual(4);
       await sleep(1000);
       done();
     })
