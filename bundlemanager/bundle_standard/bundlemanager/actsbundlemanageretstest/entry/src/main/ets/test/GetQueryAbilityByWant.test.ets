@@ -656,11 +656,15 @@ export default function ActsBmsQueryAbilityByWant() {
                 }, bundle.BundleFlag.GET_BUNDLE_DEFAULT, userId).then(res => {
                     console.info(' success bms_queryAbilityByWant_2900 '+ JSON.stringify(res))
                     const list = ['TypeDoubleWildCard','TypeSingleWildCard','TypeString', 'TypeStringExt']
-                    if(res && res.length) {
-                        for(let i = 0; i < res.length; i++) {
-                            expect(list.includes(res[i].description)).assertEqual(true)
+                    let cnt = 0;
+                    if (res && res.length) {
+                        for (let i = 0; i < res.length; i++) {
+                            if (list.includes(res[i].description)) {
+                                cnt++;
+                            }
                         }
                     }
+                    expect(cnt).assertEqual(list.length)
                     done()
                 }).catch(err => {
                     console.error(' fail bms_queryAbilityByWant_2900' + JSON.stringify(err))
