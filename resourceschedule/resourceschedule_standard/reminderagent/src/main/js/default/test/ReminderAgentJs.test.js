@@ -57,25 +57,25 @@ describe('ReminderAgentTest', function () {
   console.info('start################################start');
   
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_001
-     * @tc.name      testActionButton001
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_001
+     * @tc.name      testActionButton_001
      * @tc.desc      test ActionButton title.
      */
-    it("testActionButton001", 0, async function (done) {
-        console.log('----------------------testActionButton001---------------------------');
+    it("testActionButton_001", 0, async function (done) {
+        console.info('----------------------testActionButton_001---------------------------');
         let timer = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
 			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
 		}
 		reminderAgent.publishReminder(timer).then((reminderId) => {
-			console.log("reminderId =" + reminderId);
+			console.info("reminderId =" + reminderId);
 			reminderAgent.getValidReminders().then((reminder) => {
 				if(reminder.length !== 0) {
 					let actionButton = reminder[0].actionButton;
 					if(actionButton.length === 0) {
-						actionButton = [{title: '����ʱ'}]
+						actionButton = [{title: '?????'}]
 					}
-					console.log('ActionButton title:' + actionButton[0].title);
+					console.info('ActionButton title:' + actionButton[0].title);
 				} 
 			},(error) => {
 				
@@ -88,28 +88,28 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_002
-     * @tc.name      testActionButton002
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_002
+     * @tc.name      testActionButton_002
      * @tc.desc      test ActionButton 
      */
-    it("testActionButton002", 0, async function (done) {
-        console.log('----------------------testActionButton002---------------------------');
+    it("testActionButton_002", 0, async function (done) {
+        console.info('----------------------testActionButton_002---------------------------');
         let timer = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
 			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
 		}
 		reminderAgent.publishReminder(timer).then((reminderId) => {
-			console.log("reminderId =" + reminderId);
+			console.info("reminderId =" + reminderId);
 			reminderAgent.getValidReminders().then((reminder) => {
 				if(reminder.length !== 0) {
 					let actionButton = reminder[0].actionButton;
 					if(actionButton.length === 0) {
 						actionButton = [{type: 0}]
 					}
-					console.log('ActionButton type:' + actionButton[0].type);
+					console.info('ActionButton type:' + actionButton[0].type);
 				} else {
 					reminder = [{actionButton: [{type: 1}]}];
-					console.log('ActionButton Type: ' + reminder[0].actionButton[0].type);
+					console.info('ActionButton Type: ' + reminder[0].actionButton[0].type);
 					expect(true).assertTrue();
 				}
 			},(error) => {
@@ -123,12 +123,12 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_003
-     * @tc.name      testWantAgentAbilityName003
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_003
+     * @tc.name      testWantAgentAbilityName_003
      * @tc.desc      test wantAgent abilityName 
      */
-    it("testWantAgentAbilityName003", 0, async function (done) {
-        console.log('----------------------testWantAgentAbilityName003---------------------------');
+    it("testWantAgentAbilityName_003", 0, async function (done) {
+        console.info('----------------------testWantAgentAbilityName_003---------------------------');
         let timer = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
 			triggerTimeInSeconds: 4,
@@ -138,11 +138,10 @@ describe('ReminderAgentTest', function () {
 			},
 		};
 		reminderAgent.publishReminder(timer).then((reminderId) => {
-			console.log("reminderId =" + reminderId);
+			console.info("reminderId =" + reminderId);
 			reminderAgent.getValidReminders((err, reminder) => {
 				if(reminder.length !== 0) {
 					let wantAgent = reminder[0].wantAgent.abilityName;
-					//expect(wantAgent).assertEqual("ohos.samples.jshelloworld.MainAbility");
 					if (wantAgent == "ohos.samples.jshelloworld.MainAbility") {
 						expect(true).assertTrue();
 					} else {
@@ -158,33 +157,30 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_004
-     * @tc.name      testMaxScreenWantAgentAbilityName004
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_004
+     * @tc.name      testMaxScreenWantAgentAbilityName_004
      * @tc.desc      test MaxScreenWantAgent abilityName 
      */
-    it("testMaxScreenWantAgentAbilityName004", 0, async function (done) {
-        console.log('----------------------testMaxScreenWantAgentAbilityName004---------------------------');
+    it("testMaxScreenWantAgentAbilityName_004", 0, async function (done) {
+        console.info('----------------------testMaxScreenWantAgentAbilityName_004---------------------------');
         let timer = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
 			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
 		}
 		reminderAgent.publishReminder(timer).then((reminderId) => {
-			console.log("reminderId =" + reminderId);
+			console.info("reminderId =" + reminderId);
 			reminderAgent.getValidReminders().then((reminder) => {
 				if(reminder.length !== 0) {
 					let maxScreenWantAgent = reminder[0].maxScreenWantAgent;
-					console.log('maxScreenWantAgent abilityName:' + maxScreenWantAgent.abilityName);
+					console.info('maxScreenWantAgent abilityName:' + maxScreenWantAgent.abilityName);
 					if (maxScreenWantAgent.abilityName === "") {
-						console.log("maxScreenWantAgent.abilityName value is ");
+						console.info("maxScreenWantAgent.abilityName value is ");
 						expect(true).assertEqual(true);
 					}
 				} else {
 					reminder = [{maxScreenWantAgent: {abilityName: 'title.com.oh.phone.MainAbility'}}];
-					//expect(false).assertEqual(false);
 				}
-			},(error) => {
-				//expect(false).assertTrue();
-			});
+			},(error) => {});
 		});
 		
 		setTimeout(() => {
@@ -193,31 +189,28 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_005
-     * @tc.name      testReminderRequestTitle005
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_005
+     * @tc.name      testReminderRequestTitle_005
      * @tc.desc      test ReminderRequest title 
      */
-    it("testReminderRequestTitle005", 0, async function (done) {
-        console.log('----------------------testReminderRequestTitle005---------------------------');
+    it("testReminderRequestTitle_005", 0, async function (done) {
+        console.info('----------------------testReminderRequestTitle_005---------------------------');
         let timer = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
 			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
 		}
 		reminderAgent.publishReminder(timer).then((reminderId) => {
-			console.log("reminderId =" + reminderId);
+			console.info("reminderId =" + reminderId);
 			reminderAgent.getValidReminders().then((reminder) => {
 				if(reminder.length !== 0) {
 					let title = reminder[0].title;
-					console.log('ReminderRequest title:' + title);
-					expect(true).assertEqual(true);
+					console.info('ReminderRequest title:' + title);
+					expect(title).assertEqual("");
 				} else {
-					reminder = [{title: '��������'}];
-					console.log('ReminderRequest title:' + reminder[0].title);
-					//expect(false).assertEqual(false);
+					reminder = [{title: '????????'}];
+					console.info('ReminderRequest title:' + reminder[0].title);
 				}
-			},(error) => {
-				//expect(false).assertTrue();
-			});
+			},(error) => {});
 		});
 		
 		setTimeout(() => {
@@ -226,31 +219,28 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_006
-     * @tc.name      testReminderRequestContent006
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_006
+     * @tc.name      testReminderRequestContent_006
      * @tc.desc      test ReminderRequest content 
      */
-    it("testReminderRequestContent006", 0, async function (done) {
-        console.log('----------------------testReminderRequestContent006---------------------------');
+    it("testReminderRequestContent_006", 0, async function (done) {
+        console.info('----------------------testReminderRequestContent_006---------------------------');
         let timer = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
 			triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
 		}
 		reminderAgent.publishReminder(timer).then((reminderId) => {
-			console.log("reminderId =" + reminderId);
+			console.info("reminderId =" + reminderId);
 			reminderAgent.getValidReminders().then((reminder) => {
 				if(reminder.length !== 0) {
 					let content = reminder[0].content;
-					console.log('ReminderRequest content:' + content);
-					expect(true).assertEqual(true);
+					console.info('ReminderRequest content:' + content);
+					expect(content).assertEqual("");
 				} else {
-					reminder = [{content: '8���ˣ����ϰ���'}];
-					console.log('ReminderRequest content:' + reminder[0].content);
-					//expect(false).assertEqual(false);
+					reminder = [{content: '8????????????'}];
+					console.info('ReminderRequest content:' + reminder[0].content);
 				}
-			},(error) => {
-				//expect(false).assertTrue();
-			});
+			},(error) => {});
 		});
 		
 		setTimeout(() => {
@@ -259,12 +249,12 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_007
-     * @tc.name      testReminderRequestType007
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_007
+     * @tc.name      testReminderRequestType_007
      * @tc.desc      test ReminderRequest LocalDateTime second 
      */
-    it("testReminderRequestType007", 0, async function (done) {
-        console.log('----------------------testReminderRequestType007---------------------------');
+    it("testReminderRequestType_007", 0, async function (done) {
+        console.info('----------------------testReminderRequestType_007---------------------------');
         let calendar = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
 			dateTime: {
@@ -277,8 +267,8 @@ describe('ReminderAgentTest', function () {
 			}
 		}
 		reminderAgent.publishReminder(calendar).then((reminderId) => {
-			console.log("testReminderRequestType007 reminderId =" + reminderId);
-			expect(true).assertEqual(true);
+			console.info("testReminderRequestType_007 reminderId =" + reminderId);
+			expect(reminderId).assertLarger(0);
 		});
 		
 		setTimeout(() => {
@@ -287,12 +277,12 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_008
-     * @tc.name      testReminderRequestType008
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_008
+     * @tc.name      testReminderRequestType_008
      * @tc.desc      test ReminderRequest ReminderRequestAlarm daysOfWeek 
      */
-    it("testReminderRequestType008", 0, async function (done) {
-        console.log('----------------------testReminderRequestType008---------------------------');
+    it("testReminderRequestType_008", 0, async function (done) {
+        console.info('----------------------testReminderRequestType_008---------------------------');
         let alarm = {
 			reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
 			hour: 7,
@@ -301,13 +291,10 @@ describe('ReminderAgentTest', function () {
 		}
 		reminderAgent.publishReminder(alarm).then((reminderId) => {
 			if (reminderId != -1) {
-				console.log("testReminderRequestType008 reminderId =" + reminderId);
-				expect(true).assertEqual(true);
+				console.info("testReminderRequestType_008 reminderId =" + reminderId);
+				expect(reminderId).assertLarger(0);
 			}
-			//console.log("reminderId =" + reminderId);
-		},error => {
-			//expect(false).assertTrue();
-		});
+		},error => {});
 		
 		setTimeout(() => {
 			done();
@@ -315,11 +302,12 @@ describe('ReminderAgentTest', function () {
     })
   
   /**
-   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_009
-   * @tc.name      testPublishReminderNorFun009
-   * @tc.desc      Publishes an agent-powered reminder with the promise function.
+   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_009
+   * @tc.name      testPublishReminderNorFun_009
+   * @tc.desc      test reminderId is outo increment with the promise function.
    */
-  it('testPublishReminderNorFun009', 0, async function (done) {
+  it('testPublishReminderNorFun_009', 0, async function (done) {
+    console.info('----------------------testPublishReminderNorFun_009---------------------------');
     let timer = {
       reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
       triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -344,11 +332,12 @@ describe('ReminderAgentTest', function () {
   })
 
   /**
-   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_010
-   * @tc.name      testPublishReminderNorFun010
-   * @tc.desc      Publishes an agent-powered reminder with the callback function.
+   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_010
+   * @tc.name      testPublishReminderNorFun_010
+   * @tc.desc      test reminderId is outo increment with the callback function.
    */
-  it('testPublishReminderNorFun010', 0, async function (done) {
+  it('testPublishReminderNorFun_010', 0, async function (done) {
+    console.info('----------------------testPublishReminderNorFun_010---------------------------');
     let timer = {
       reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
       triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -365,11 +354,12 @@ describe('ReminderAgentTest', function () {
   })
 
   /**
-   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_011
-   * @tc.name      testAddNotificationSlotNorFun011
+   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_011
+   * @tc.name      testAddNotificationSlotNorFun_011
    * @tc.desc      Adds a reminder notification slot with the callback function.
    */
-  it('testAddNotificationSlotNorFun011', 0, async function (done) {
+  it('testAddNotificationSlotNorFun_011', 0, async function (done) {
+    console.info('----------------------testAddNotificationSlotNorFun_011---------------------------');
     try {
 		function reminderCallback(err, data) {
 			let i = 0;
@@ -377,41 +367,43 @@ describe('ReminderAgentTest', function () {
 		}
 		reminderAgent.addNotificationSlot(0, reminderCallback);
 	} catch(error) {
-		console.info('testAddNotificationSlotNorFun011 slot err.code')
+		console.info('testAddNotificationSlotNorFun_011 slot err.code')
 	}
     done();
   })
 
   /**
-   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_012
-   * @tc.name      testAddNotificationSlotNorFun012
+   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_012
+   * @tc.name      testAddNotificationSlotNorFun_012
    * @tc.desc      Adds a reminder notification slot with the promise function and null mySlot.
    */
-    it('testAddNotificationSlotNorFun012', 0, async function (done) {
+    it('testAddNotificationSlotNorFun_012', 0, async function (done) {
+      console.info('----------------------testAddNotificationSlotNorFun_012---------------------------');
       let mySlot = null;
       try {
         reminderAgent.addNotificationSlot(mySlot,function(err) {
             if(err == undefined) {
-                console.info('testAddNotificationSlotNorFun002 execute success');
+                console.info('testAddNotificationSlotNorFun_012 execute success');
             } else {
-            console.info('testAddNotificationSlotNorFun002 execute failed');
+            console.info('testAddNotificationSlotNorFun_012 execute failed');
           }
         }).catch(function(err) {
-          console.info("testAddNotificationSlotNorFun002 execute catch" + err.code);
+          console.info("testAddNotificationSlotNorFun_012 execute catch" + err.code);
         })
     } catch(error) {
-      console.info("testAddNotificationSlotNorFun002 execute try - catch" + error.code);
+      console.info("testAddNotificationSlotNorFun_012 execute try - catch" + error.code);
       let i = 0;
       expect(0).assertEqual(i);
       done();
     }})
   
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_013
-     * @tc.name      testAddNotificationSlotNorFun013
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_013
+     * @tc.name      testAddNotificationSlotNorFun_013
      * @tc.desc      Adds a reminder notification slot with the promise function and mySlot type 3.
      */
-    it('testAddNotificationSlotNorFun013', 0, async function (done) {
+    it('testAddNotificationSlotNorFun_013', 0, async function (done) {
+      console.info('----------------------testAddNotificationSlotNorFun_013---------------------------');
       let mySlot = {
         type: 3
       }
@@ -429,11 +421,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_014
-     * @tc.name      testAddNotificationSlotNorFun014
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_014
+     * @tc.name      testAddNotificationSlotNorFun_014
      * @tc.desc      Adds a reminder notification slot with the promise function and mySlot more types.
      */
-    it('testAddNotificationSlotNorFun014', 0, async function (done) {
+    it('testAddNotificationSlotNorFun_014', 0, async function (done) {
+      console.info('----------------------testAddNotificationSlotNorFun_014---------------------------');
       let mySlot0 = {
         type: 0
       }
@@ -467,11 +460,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_015
-     * @tc.name      testGetValidRemindersNorFun015
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_015
+     * @tc.name      testGetValidRemindersNorFun_015
      * @tc.desc      Obtains all valid remindeers set by the current application. 
      */
-    it('testGetValidRemindersNorFun015', 0, async function (done) {
+    it('testGetValidRemindersNorFun_015', 0, async function (done) {
+      console.info('----------------------testGetValidRemindersNorFun_015---------------------------');
       let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -490,11 +484,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_016
-     * @tc.name      testCancelAllRemindersNorFun016
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_016
+     * @tc.name      testCancelAllRemindersNorFun_016
      * @tc.desc      test cancel all reminders can cancel all exist reminders
      */
-    it('testCancelAllRemindersNorFun016', 0, async function (done) {
+    it('testCancelAllRemindersNorFun_016', 0, async function (done) {
+      console.info('----------------------testCancelAllRemindersNorFun_016---------------------------');
       let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -513,11 +508,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_017
-     * @tc.name      testCancelRemindersNorFun017
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_017
+     * @tc.name      testCancelRemindersNorFun_017
      * @tc.desc      test cancelReminder with not exit reminder.
      */
-    it('testCancelRemindersNorFun017', 0, async function (done) {
+    it('testCancelRemindersNorFun_017', 0, async function (done) {
+      console.info('----------------------testCancelRemindersNorFun_017---------------------------');
       let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -546,11 +542,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_018
-     * @tc.name      testCancelRemindersNorFun018
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_018
+     * @tc.name      testCancelRemindersNorFun_018
      * @tc.desc      test cancel reminder with not exit reminder.
      */
-    it('testCancelRemindersNorFun018', 0, async function (done) {
+    it('testCancelRemindersNorFun_018', 0, async function (done) {
+      console.info('----------------------testCancelRemindersNorFun_018---------------------------');
       let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -579,11 +576,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_019
-     * @tc.name      testCancelRemindersNorFun019
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_019
+     * @tc.name      testCancelRemindersNorFun_019
      * @tc.desc      test cancel reminder with exist reminder.
      */
-    it('testCancelRemindersNorFun019', 0, async function (done) {
+    it('testCancelRemindersNorFun_019', 0, async function (done) {
+      console.info('----------------------testCancelRemindersNorFun_019---------------------------');
       let alarm = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
         hour: 21,
@@ -616,11 +614,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_020
-     * @tc.name      testCancelRemindersNorFun020
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_020
+     * @tc.name      testCancelRemindersNorFun_020
      * @tc.desc      test cancel reminder with exist reminder with the promise function.
      */
-    it('testCancelRemindersNorFun020', 0, async function (done) {
+    it('testCancelRemindersNorFun_020', 0, async function (done) {
+      console.info('----------------------testCancelRemindersNorFun_020---------------------------');
       let alarm = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
         hour: 21,
@@ -653,11 +652,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_021
-     * @tc.name      testGetValidRemindersNorFun021
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_021
+     * @tc.name      testGetValidRemindersNorFun_021
      * @tc.desc      test get valid reminders verify all the information is correct.
      */
-    it('testGetValidRemindersNorFun021', 0, async function (done) {
+    it('testGetValidRemindersNorFun_021', 0, async function (done) {
+      console.info('----------------------testGetValidRemindersNorFun_021---------------------------');
       let alarm = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
         hour: 21,
@@ -683,11 +683,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_022
-     * @tc.name      testGetValidRemindersNorFun022
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_022
+     * @tc.name      testGetValidRemindersNorFun_022
      * @tc.desc      test get valid reminders verify all the information is correct with the callback function.
      */
-    it('testGetValidRemindersNorFun022', 0, async function (done) {
+    it('testGetValidRemindersNorFun_022', 0, async function (done) {
+      console.info('----------------------testGetValidRemindersNorFun_022---------------------------');
       let alarm = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
         hour: 21,
@@ -713,11 +714,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_023
-     * @tc.name      testRemonveNotificationSlotNorFun023
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_023
+     * @tc.name      testRemoveNotificationSlotNorFun_023
      * @tc.desc      test remove notification Slot with not exist slot.
      */
-    it('testRemonveNotificationSlotNorFun023', 0, async function (done) {
+    it('testRemoveNotificationSlotNorFun_023', 0, async function (done) {
+      console.info('----------------------testRemoveNotificationSlotNorFun_023---------------------------');
       function reminderCallback(err, data) {
         let i = 0;
         expect(0).assertEqual(i);
@@ -727,18 +729,17 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_001
-     * @tc.name      testReminderAgentRequest_001
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_024
+     * @tc.name      testPublishReminderTimer_024
      * @tc.desc      test timer without reminderType .
      */
-    it("testReminderAgentRequest_001", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_001---------------------------');
+    it("testPublishReminderTimer_024", 0, async function (done) {
+        console.info('----------------------testPublishReminderTimer_024---------------------------');
         let timer = {
-        //            reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 10
         }
         reminderAgent.publishReminder(timer,(err,reminderId) =>{
-            console.log("callback,the testReminderAgentRequest_001 reminderId=" + reminderId);
+            console.info("callback,the testPublishReminderTimer_024 reminderId=" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -748,18 +749,17 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_002
-     * @tc.name      testReminderAgentRequest_002
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_025
+     * @tc.name      testPublishReminderTimer_025
      * @tc.desc      test timer without triggerTimeInSeconds.
      */
-    it("testReminderAgentRequest_002", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_002---------------------------');
+    it("testPublishReminderTimer_025", 0, async function (done) {
+        console.info('----------------------testPublishReminderTimer_025---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER
-        //            triggerTimeInSeconds: 10
         }
         reminderAgent.publishReminder(timer,(err,reminderId) =>{
-            console.log("callback,the testReminderAgentRequest_002 reminderId=" + reminderId);
+            console.info("callback,the testPublishReminderTimer_025 reminderId=" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -769,18 +769,18 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_003
-     * @tc.name      testReminderAgentRequest_003
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_026
+     * @tc.name      testPublishReminderTimer_026
      * @tc.desc      test timer triggerTimeInSeconds with wrong parameter.
      */
-    it("testReminderAgentRequest_003", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_003---------------------------');
+    it("testPublishReminderTimer_026", 0, async function (done) {
+        console.info('----------------------testPublishReminderTimer_026---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: -10
         }
         reminderAgent.publishReminder(timer,(err,reminderId) =>{
-            console.log("callback,the testReminderAgentRequest_003 reminderId=" + reminderId);
+            console.info("callback,the testPublishReminderTimer_026 reminderId=" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -790,18 +790,18 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_004
-     * @tc.name      testReminderAgentRequest_004
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_027
+     * @tc.name      testPublishReminderTimer_027
      * @tc.desc      test timer triggerTimeInSeconds with illegal parameter.
      */
-    it("testReminderAgentRequest_004", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_004---------------------------');
+    it("testPublishReminderTimer_027", 0, async function (done) {
+        console.info('----------------------testPublishReminderTimer_027---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 0
         }
         reminderAgent.publishReminder(timer,(err,reminderId) =>{
-            console.log("callback,the testReminderAgentRequest_004 reminderId=" + reminderId);
+            console.info("callback,the testPublishReminderTimer_027 reminderId=" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -811,18 +811,18 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_005
-     * @tc.name      testReminderAgentRequest_005
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_028
+     * @tc.name      testPublishReminderTimer_028
      * @tc.desc      test timer triggerTimeInSeconds with illegal parameter.
      */
-    it("testReminderAgentRequest_005", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_005---------------------------');
+    it("testPublishReminderTimer_028", 0, async function (done) {
+        console.info('----------------------testPublishReminderTimer_028---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 'fye'
         }
         reminderAgent.publishReminder(timer,(err,reminderId) =>{
-            console.log("callback,the testReminderAgentRequest_005 reminderId=" + reminderId);
+            console.info("callback,the testPublishReminderTimer_028 reminderId=" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -832,18 +832,18 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_006
-     * @tc.name      testReminderAgentRequest_006
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_029
+     * @tc.name      testPublishReminderTimer_029
      * @tc.desc      test timer normal parameter,return with callback.
      */
-    it("testReminderAgentRequest_006", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_006---------------------------');
+    it("testPublishReminderTimer_029", 0, async function (done) {
+        console.info('----------------------testPublishReminderTimer_029---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20
         }
         reminderAgent.publishReminder(timer,(err,reminderId) =>{
-            console.log("callback,the testReminderAgentRequest_006 reminderId=" + reminderId);
+            console.info("callback,the testPublishReminderTimer_029 reminderId=" + reminderId);
             expect(reminderId).assertLarger(0);
         });
 
@@ -853,18 +853,18 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_007
-     * @tc.name      testReminderAgentRequest_007
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_030
+     * @tc.name      testPublishReminderTimer_030
      * @tc.desc      test timer normal parameter,return with promise.
      */
-    it("testReminderAgentRequest_007", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_007---------------------------');
+    it("testPublishReminderTimer_030", 0, async function (done) {
+        console.info('----------------------testPublishReminderTimer_030---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20
         }
         reminderAgent.publishReminder(timer).then((reminderId) => {
-            console.log("promise,the testReminderAgentRequest_007 reminderId =" + reminderId);
+            console.info("promise,the testPublishReminderTimer_030 reminderId =" + reminderId);
             expect(reminderId).assertLarger(0);
         });
 
@@ -874,19 +874,18 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_008
-     * @tc.name      testReminderAgentRequest_008
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_031
+     * @tc.name      testPublishReminderAlarm_031
      * @tc.desc      test alarm without reminderType parameter.
      */
-    it("testReminderAgentRequest_008", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_008---------------------------');
+    it("testPublishReminderAlarm_031", 0, async function (done) {
+        console.info('----------------------testPublishReminderAlarm_031---------------------------');
         let alarm = {
-        //          reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
             minute: 13
         }
         reminderAgent.publishReminder(alarm,(err,reminderId) =>{
-            console.log("promise,the testReminderAgentRequest_008 reminderId=" + reminderId);
+            console.info("promise,the testPublishReminderAlarm_031 reminderId=" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -896,19 +895,18 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_009
-     * @tc.name      testReminderAgentRequest_009
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_032
+     * @tc.name      testPublishReminderAlarm_032
      * @tc.desc      test alarm without hour parameter.
      */
-    it("testReminderAgentRequest_009", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_009---------------------------');
+    it("testPublishReminderAlarm_032", 0, async function (done) {
+        console.info('----------------------testPublishReminderAlarm_032---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
-        //          hour: 11,
             minute: 13
         }
         reminderAgent.publishReminder(alarm,(err,reminderId) =>{
-            console.log("promise,the testReminderAgentRequest_009 reminderId=" + reminderId);
+            console.info("callback,the testPublishReminderAlarm_032 reminderId=" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -918,19 +916,19 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_010
-     * @tc.name      testReminderAgentRequest_010
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_033
+     * @tc.name      testPublishReminderAlarm_033
      * @tc.desc      test alarm with illegal hour parameter.
      */
-    it("testReminderAgentRequest_010", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_010---------------------------');
+    it("testPublishReminderAlarm_033", 0, async function (done) {
+        console.info('----------------------testPublishReminderAlarm_033---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: "11",
             minute: 13
         }
         reminderAgent.publishReminder(alarm,(err,reminderId) =>{
-            console.log("promise,the testReminderAgentRequest_010 reminderId=" + reminderId);
+            console.info("callback,the testPublishReminderAlarm_033 reminderId=" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -940,19 +938,19 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_011
-     * @tc.name      testReminderAgentRequest_011
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_034
+     * @tc.name      testPublishReminderAlarm_034
      * @tc.desc      test alarm hour with illegal parameter 24.
      */
-    it("testReminderAgentRequest_011", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_011---------------------------');
+    it("testPublishReminderAlarm_034", 0, async function (done) {
+        console.info('----------------------testPublishReminderAlarm_034---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 24,
             minute: 13
         }
         reminderAgent.publishReminder(alarm,(err,reminderId) =>{
-            console.log("promise,the testReminderAgentRequest_011 reminderId=" + reminderId);
+            console.info("callback,the testPublishReminderAlarm_034 reminderId=" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -962,19 +960,18 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_012
-     * @tc.name      testReminderAgentRequest_012
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_035
+     * @tc.name      testPublishReminderAlarm_035
      * @tc.desc      test alarm without minute parameter.
      */
-    it("testReminderAgentRequest_012", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_012---------------------------');
+    it("testPublishReminderAlarm_035", 0, async function (done) {
+        console.info('----------------------testPublishReminderAlarm_035---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11
-        //          minute: 13
         }
         reminderAgent.publishReminder(alarm,(err,reminderId) =>{
-            console.log("promise,the testReminderAgentRequest_012 reminderId=" + reminderId);
+            console.info("callback,the testPublishReminderAlarm_035 reminderId=" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -984,19 +981,19 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_013
-     * @tc.name      testReminderAgentRequest_013
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_036
+     * @tc.name      testPublishReminderAlarmNorFun_036
      * @tc.desc      test alarm with illegal minute parameter.
      */
-    it("testReminderAgentRequest_013", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_013---------------------------');
+    it("testPublishReminderAlarmNorFun_036", 0, async function (done) {
+        console.info('----------------------testPublishReminderAlarmNorFun_036---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
             minute: "13"
         }
         reminderAgent.publishReminder(alarm,(err,reminderId) =>{
-            console.log("promise,the testReminderAgentRequest_013 reminderId=" + reminderId);
+            console.info("callback,the testPublishReminderAlarmNorFun_036 reminderId=" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1006,19 +1003,19 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_014
-     * @tc.name      testReminderAgentRequest_014
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_037
+     * @tc.name      testPublishReminderAlarm_037
      * @tc.desc      test alarm hour with illegal parameter 60.
      */
-    it("testReminderAgentRequest_014", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_014---------------------------');
+    it("testPublishReminderAlarm_037", 0, async function (done) {
+        console.info('----------------------testPublishReminderAlarm_037---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
             minute: 60
         }
         reminderAgent.publishReminder(alarm,(err,reminderId) =>{
-            console.log("promise,the testReminderAgentRequest_014 reminderId=" + reminderId);
+            console.info("callback,the testPublishReminderAlarm_037 reminderId=" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1028,19 +1025,19 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_015
-     * @tc.name      testReminderAgentRequest_015
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_038
+     * @tc.name      testPublishReminderAlarmFun_038
      * @tc.desc      test alarm with normal parameter,return with callback.
      */
-    it("testReminderAgentRequest_015", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_015---------------------------');
+    it("testPublishReminderAlarmFun_038", 0, async function (done) {
+        console.info('----------------------testPublishReminderAlarmFun_038---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
             minute: 30
         }
         reminderAgent.publishReminder(alarm,(err,reminderId) =>{
-            console.log("promise,the testReminderAgentRequest_015 reminderId=" + reminderId);
+            console.info("callback,the testPublishReminderAlarmFun_038 reminderId=" + reminderId);
             expect(reminderId).assertLarger(0);
         });
 
@@ -1050,19 +1047,19 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_016
-     * @tc.name      testReminderAgentRequest_016
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_039
+     * @tc.name      testPublishReminderAlarmFun_039
      * @tc.desc      test alarm with normal parameter,return with promise.
      */
-    it("testReminderAgentRequest_016", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_016---------------------------');
+    it("testPublishReminderAlarmFun_039", 0, async function (done) {
+        console.info('----------------------testPublishReminderAlarmFun_039---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
             minute: 30
         }
         reminderAgent.publishReminder(alarm,(err,reminderId) =>{
-            console.log("promise,the testReminderAgentRequest_016 reminderId=" + reminderId);
+            console.info("callback,the testPublishReminderAlarmFun_039 reminderId=" + reminderId);
             expect(reminderId).assertLarger(0);
         });
 
@@ -1072,12 +1069,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_017
-     * @tc.name      testReminderAgentRequest_017
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_040
+     * @tc.name      testPublishReminderAlarm_040
      * @tc.desc      test alarm with illegal daysOfWeek parameter.
      */
-    it("testReminderAgentRequest_017", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_017---------------------------');
+    it("testPublishReminderAlarm_040", 0, async function (done) {
+        console.info('----------------------testPublishReminderAlarm_040---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
@@ -1085,7 +1082,7 @@ describe('ReminderAgentTest', function () {
             daysOfWeek: [8]
         }
         reminderAgent.publishReminder(alarm).then((reminderId) => {
-            console.log("promise,the testReminderAgentRequest_017 reminderId =" + reminderId);
+            console.info("promise,the testPublishReminderAlarm_040 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1095,12 +1092,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_018
-     * @tc.name      testReminderAgentRequest_018
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_041
+     * @tc.name      testPublishReminderAlarm_041
      * @tc.desc      test alarm with null daysOfWeek parameter.
      */
-    it("testReminderAgentRequest_018", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_018---------------------------');
+    it("testPublishReminderAlarm_041", 0, async function (done) {
+        console.info('----------------------testPublishReminderAlarm_041---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
@@ -1108,7 +1105,7 @@ describe('ReminderAgentTest', function () {
             daysOfWeek: []
         }
         reminderAgent.publishReminder(alarm).then((reminderId) => {
-            console.log("promise,the testReminderAgentRequest_018 reminderId =" + reminderId);
+            console.info("promise,the testPublishReminderAlarm_041 reminderId =" + reminderId);
             expect(reminderId).assertLarger(0);
         });
 
@@ -1118,12 +1115,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_019
-     * @tc.name      testReminderAgentRequest_019
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_042
+     * @tc.name      testPublishReminderCalendar_042
      * @tc.desc      test calendar without reminderType parameter.
      */
-    it("testReminderAgentRequest_019", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_019---------------------------');
+    it("testPublishReminderCalendar_042", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_042---------------------------');
         let calendar = {
             dateTime: {
                 year: 2025,
@@ -1135,7 +1132,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_019 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_042 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1145,16 +1142,15 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_020
-     * @tc.name      testReminderAgentRequest_020
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_043
+     * @tc.name      testPublishReminderCalendar_043
      * @tc.desc      test calendar without year parameter.
      */
-    it("testReminderAgentRequest_020", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_020---------------------------');
+    it("testPublishReminderCalendar_043", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_043---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
-            //                year: 2025,
                 month: 7,
                 day: 28,
                 hour: 14,
@@ -1163,7 +1159,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_020 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_043 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1173,12 +1169,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_021
-     * @tc.name      testReminderAgentRequest_021
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_044
+     * @tc.name      testPublishReminderCalendar_044
      * @tc.desc      test calendar with illegal year parameter.
      */
-    it("testReminderAgentRequest_021", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_021---------------------------');
+    it("testPublishReminderCalendar_044", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_044---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1191,7 +1187,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_021 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_044 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1201,17 +1197,16 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_022
-     * @tc.name      testReminderAgentRequest_022
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_045
+     * @tc.name      testPublishReminderCalendar_045
      * @tc.desc      test calendar without month parameter.
      */
-    it("testReminderAgentRequest_022", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_022---------------------------');
+    it("testPublishReminderCalendar_045", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_045---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
                 year: 2025,
-            //                month: 7,
                 day: 28,
                 hour: 14,
                 minute: 30,
@@ -1219,7 +1214,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_022 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_045 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1229,12 +1224,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_023
-     * @tc.name      testReminderAgentRequest_023
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_046
+     * @tc.name      testPublishReminderCalendar_046
      * @tc.desc      test calendar with illegal month parameter.
      */
-    it("testReminderAgentRequest_023", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_023---------------------------');
+    it("testPublishReminderCalendar_046", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_046---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1247,7 +1242,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_023 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_046 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1257,12 +1252,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_024
-     * @tc.name      testReminderAgentRequest_024
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_047
+     * @tc.name      testPublishReminderCalendar_047
      * @tc.desc      test calendar with illegal month parameter 0.
      */
-    it("testReminderAgentRequest_024", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_024---------------------------');
+    it("testPublishReminderCalendar_047", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_047---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1275,7 +1270,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_024 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_047 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1285,12 +1280,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_025
-     * @tc.name      testReminderAgentRequest_025
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_048
+     * @tc.name      testPublishReminderCalendar_048
      * @tc.desc      test calendar with illegal month parameter 13.
      */
-    it("testReminderAgentRequest_025", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_025---------------------------');
+    it("testPublishReminderCalendar_048", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_048---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1303,7 +1298,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_025 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_048 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1313,25 +1308,24 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_026
-     * @tc.name      testReminderAgentRequest_026
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_049
+     * @tc.name      testPublishReminderCalendar_049
      * @tc.desc      test calendar without day parameter.
      */
-    it("testReminderAgentRequest_026", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_026---------------------------');
+    it("testPublishReminderCalendar_049", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_049---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
                 year: 2025,
                 month: 5,
-            //              day: 28,
                 hour: 14,
                 minute: 30,
                 second: 50
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_026 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_049 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1341,12 +1335,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_027
-     * @tc.name      testReminderAgentRequest_027
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_050
+     * @tc.name      testPublishReminderCalendar_050
      * @tc.desc      test calendar with illegal day parameter.
      */
-    it("testReminderAgentRequest_027", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_027---------------------------');
+    it("testPublishReminderCalendar_050", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_050---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1359,7 +1353,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_027 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_050 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1369,12 +1363,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_028
-     * @tc.name      testReminderAgentRequest_028
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_051
+     * @tc.name      testPublishReminderCalendar_051
      * @tc.desc      test calendar with illegal day parameter 0.
      */
-    it("testReminderAgentRequest_028", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_028---------------------------');
+    it("testPublishReminderCalendar_051", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_051---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1387,7 +1381,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_028 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_051 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1397,12 +1391,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_029
-     * @tc.name      testReminderAgentRequest_029
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_052
+     * @tc.name      testPublishReminderCalendar_052
      * @tc.desc      test calendar with illegal day parameter 32.
      */
-    it("testReminderAgentRequest_029", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_029---------------------------');
+    it("testPublishReminderCalendar_052", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_052---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1415,7 +1409,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_029 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_052 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1425,25 +1419,24 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_030
-     * @tc.name      testReminderAgentRequest_030
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_053
+     * @tc.name      testPublishReminderCalendar_053
      * @tc.desc      test calendar without hour parameter.
      */
-    it("testReminderAgentRequest_030", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_030---------------------------');
+    it("testPublishReminderCalendar_053", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_053---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
                 year: 2025,
                 month: 5,
                 day: 28,
-            //              hour: 14,
                 minute: 30,
                 second: 50
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_030 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_053 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1453,12 +1446,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_031
-     * @tc.name      testReminderAgentRequest_031
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_054
+     * @tc.name      testPublishReminderCalendar_054
      * @tc.desc      test calendar with illegal hour parameter.
      */
-    it("testReminderAgentRequest_031", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_031---------------------------');
+    it("testPublishReminderCalendar_054", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_054---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1471,7 +1464,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_031 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_054 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1481,12 +1474,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_032
-     * @tc.name      testReminderAgentRequest_032
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_055
+     * @tc.name      testPublishReminderCalendar_055
      * @tc.desc      test calendar with illegal hour parameter 24.
      */
-    it("testReminderAgentRequest_032", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_032---------------------------');
+    it("testPublishReminderCalendar_055", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_055---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1499,7 +1492,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_032 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_055 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1509,12 +1502,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_033
-     * @tc.name      testReminderAgentRequest_033
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_056
+     * @tc.name      testPublishReminderCalendar_056
      * @tc.desc      test calendar without minute parameter.
      */
-    it("testReminderAgentRequest_033", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_033---------------------------');
+    it("testPublishReminderCalendar_056", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_056---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1522,12 +1515,11 @@ describe('ReminderAgentTest', function () {
                 month: 5,
                 day: 28,
                 hour: 11,
-            //              minute: 30,
                 second: 50
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_033 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_056 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1537,12 +1529,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_034
-     * @tc.name      testReminderAgentRequest_034
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_057
+     * @tc.name      testPublishReminderCalendar_057
      * @tc.desc      test calendar with illegal minute parameter.
      */
-    it("testReminderAgentRequest_034", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_034---------------------------');
+    it("testPublishReminderCalendar_057", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_057---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1555,7 +1547,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_034 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_057 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1565,12 +1557,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_035
-     * @tc.name      testReminderAgentRequest_035
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_058
+     * @tc.name      testPublishReminderCalendar_058
      * @tc.desc      test calendar with illegal minute parameter 60.
      */
-    it("testReminderAgentRequest_035", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_035---------------------------');
+    it("testPublishReminderCalendar_058", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_058---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1583,7 +1575,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_035 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_058 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1593,12 +1585,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_036
-     * @tc.name      testReminderAgentRequest_036
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_059
+     * @tc.name      testPublishReminderCalendarFun_059
      * @tc.desc      test calendar with normal parameter,return with callback.
      */
-    it("testReminderAgentRequest_036", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_036---------------------------');
+    it("testPublishReminderCalendarFun_059", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendarFun_059---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1611,7 +1603,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_036 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendarFun_059 reminderId =" + reminderId);
             expect(reminderId).assertLarger(0);
         });
 
@@ -1621,12 +1613,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_037
-     * @tc.name      testReminderAgentRequest_037
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_060
+     * @tc.name      testPublishReminderCalendarFun_060
      * @tc.desc      test calendar with normal parameter,return with promise.
      */
-    it("testReminderAgentRequest_037", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_037---------------------------');
+    it("testPublishReminderCalendarFun_060", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendarFun_060---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1639,7 +1631,7 @@ describe('ReminderAgentTest', function () {
             }
         }
         reminderAgent.publishReminder(calendar).then((reminderId) => {
-            console.log("promise,the testReminderAgentRequest_037 reminderId =" + reminderId);
+            console.info("promise,the testPublishReminderCalendarFun_060 reminderId =" + reminderId);
             expect(reminderId).assertLarger(0);
         });
 
@@ -1649,12 +1641,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_038
-     * @tc.name      testReminderAgentRequest_038
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_061
+     * @tc.name      testPublishReminderCalendar_061
      * @tc.desc      test calendar with illegal repeatMonths parameter 13.
      */
-    it("testReminderAgentRequest_038", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_038---------------------------');
+    it("testPublishReminderCalendar_061", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_061---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1668,7 +1660,7 @@ describe('ReminderAgentTest', function () {
             repeatMonths: [13]
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_038 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_061 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1678,12 +1670,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_039
-     * @tc.name      testReminderAgentRequest_039
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_062
+     * @tc.name      testPublishReminderCalendar_062
      * @tc.desc      test calendar with illegal repeatMonths parameter 0.
      */
-    it("testReminderAgentRequest_039", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_039---------------------------');
+    it("testPublishReminderCalendar_062", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_062---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1697,7 +1689,7 @@ describe('ReminderAgentTest', function () {
             repeatMonths: [0]
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_039 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_062 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1707,12 +1699,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_040
-     * @tc.name      testReminderAgentRequest_040
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_063
+     * @tc.name      testPublishReminderCalendar_063
      * @tc.desc      test calendar with illegal repeatDays parameter 32.
      */
-    it("testReminderAgentRequest_040", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_040---------------------------');
+    it("testPublishReminderCalendar_063", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_063---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1726,7 +1718,7 @@ describe('ReminderAgentTest', function () {
             repeatDays: [32]
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_040 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_063 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1736,12 +1728,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_041
-     * @tc.name      testReminderAgentRequest_041
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_064
+     * @tc.name      testPublishReminderCalendar_064
      * @tc.desc      test calendar with illegal repeatDays parameter 0.
      */
-    it("testReminderAgentRequest_041", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_041---------------------------');
+    it("testPublishReminderCalendar_064", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_064---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1755,7 +1747,7 @@ describe('ReminderAgentTest', function () {
             repeatDays: [0]
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_041 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_064 reminderId =" + reminderId);
             expect(-1).assertEqual(reminderId);
         });
 
@@ -1765,12 +1757,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_042
-     * @tc.name      testReminderAgentRequest_042
-     * @tc.desc      test calendar with repeatMonths、repeatDays parameter null,return with callback.
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_065
+     * @tc.name      testPublishReminderCalendar_065
+     * @tc.desc      test calendar with repeatMonths��repeatDays parameter null,return with callback.
      */
-    it("testReminderAgentRequest_042", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_042---------------------------');
+    it("testPublishReminderCalendar_065", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_065---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1785,7 +1777,7 @@ describe('ReminderAgentTest', function () {
             repeatDays: []
         }
         reminderAgent.publishReminder(calendar,(err,reminderId) => {
-            console.log("callback,the testReminderAgentRequest_042 reminderId =" + reminderId);
+            console.info("callback,the testPublishReminderCalendar_065 reminderId =" + reminderId);
             expect(reminderId).assertLager(0);
         });
 
@@ -1795,12 +1787,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_043
-     * @tc.name      testReminderAgentRequest_043
-     * @tc.desc      test calendar with repeatMonths、repeatDays parameter null,return with promise.
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_066
+     * @tc.name      testPublishReminderCalendar_066
+     * @tc.desc      test calendar with repeatMonths��repeatDays parameter null,return with promise.
      */
-    it("testReminderAgentRequest_043", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_043---------------------------');
+    it("testPublishReminderCalendar_066", 0, async function (done) {
+        console.info('----------------------testPublishReminderCalendar_066---------------------------');
         let calendar = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
             dateTime: {
@@ -1815,7 +1807,7 @@ describe('ReminderAgentTest', function () {
             repeatDays: []
         }
         reminderAgent.publishReminder(calendar).then((reminderId) => {
-            console.log("promise,the testReminderAgentRequest_043 reminderId =" + reminderId);
+            console.info("promise,the testPublishReminderCalendar_066 reminderId =" + reminderId);
         });
 
         setTimeout(() => {
@@ -1824,12 +1816,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_044
-     * @tc.name      testReminderAgentRequest_044
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_067
+     * @tc.name      testGetValidRemindersButton_067
      * @tc.desc      test actionButton with illegal parameter.
      */
-    it("testReminderAgentRequest_044", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_044---------------------------');
+    it("testGetValidRemindersButton_067", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersButton_067---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
@@ -1843,19 +1835,20 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(alarm,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_044 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersButton_067 reminderId =" + reminderId);
             });
         });
 
         setTimeout(() => {
             reminderAgent.getValidReminders((err,reminder) =>{
-                console.log("callback,the testReminderAgentRequest_044 reminder length =" + reminder.length);
+                console.info("callback,the testGetValidRemindersButton_067 reminder length =" + reminder.length);
                 if (reminder.length!==0) {
                     let actionButton = reminder[0].actionButton;
                     if (actionButton.length === 0) {
                         expect(0).assertEqual(actionButton.length);
                     }
-                    console.log("callback,the testReminderAgentRequest_044 actionButton type: " + actionButton[0].type);
+                    console.info("callback,the testGetValidRemindersButton_067 actionButton type: " + 
+                    actionButton[0].type);
                 }
             },(error) =>{
             });
@@ -1864,38 +1857,38 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_045
-     * @tc.name      testReminderAgentRequest_045
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_068
+     * @tc.name      testGetValidRemindersButton_068
      * @tc.desc      test actionButton without title.
      */
-    it("testReminderAgentRequest_045", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_045---------------------------');
+    it("testGetValidRemindersButton_068", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersButton_068---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
             minute: 15,
             actionButton: [
                 {
-                //                  title: "this is a title",
                     type: 0
                 }
             ]
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(alarm,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_045 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersButton_068 reminderId =" + reminderId);
             });
         });
 
         setTimeout(() => {
             reminderAgent.getValidReminders((err,reminder) =>{
-                console.log("callback,the testReminderAgentRequest_045 reminder length =" + reminder.length);
+                console.info("callback,the testGetValidRemindersButton_068 reminder length =" + reminder.length);
                 if (reminder.length!==0) {
                     let actionButton = reminder[0].actionButton;
                     if (actionButton.length === 0) {
                         expect(0).assertEqual(actionButton.length);
                     }
-                    console.log("callback,the actionButton title: " + actionButton[0].title);
+                    console.info("callback,the testGetValidRemindersButton_068 actionButton title: " + 
+                    actionButton[0].title);
                 }
             },(error) =>{
             });
@@ -1904,12 +1897,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_046
-     * @tc.name      testReminderAgentRequest_046
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_069
+     * @tc.name      testGetValidRemindersButton_069
      * @tc.desc      test actionButton with illegal title.
      */
-    it("testReminderAgentRequest_046", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_046---------------------------');
+    it("testGetValidRemindersButton_069", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersButton_069---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
@@ -1923,19 +1916,20 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(alarm,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_046 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersButton_069 reminderId =" + reminderId);
             });
         });
 
         setTimeout(() => {
             reminderAgent.getValidReminders((err,reminder) =>{
-                console.log("callback,the testReminderAgentRequest_046 reminder length =" + reminder.length);
+                console.info("callback,the testGetValidRemindersButton_069 reminder length =" + reminder.length);
                 if (reminder.length!==0) {
                     let actionButton = reminder[0].actionButton;
                     if (actionButton.length === 0) {
                         expect(0).assertEqual(actionButton.length);
                     }
-                    console.log("callback,the actionButton title: " + actionButton[0].title);
+                    console.info("callback,the testGetValidRemindersButton_069 actionButton title: " + 
+                    actionButton[0].title);
                 }
             },(error) =>{
             });
@@ -1944,12 +1938,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_047
-     * @tc.name      testReminderAgentRequest_047
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_070
+     * @tc.name      testGetValidRemindersSnoozTimes_070
      * @tc.desc      test snoozeTimes with parameter 0.
      */
-    it("testReminderAgentRequest_047", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_047---------------------------');
+    it("testGetValidRemindersSnoozTimes_070", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersSnoozTimes_070---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
@@ -1958,13 +1952,14 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(alarm,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_047 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersSnoozTimes_070 reminderId =" + reminderId);
             });
         });
 
         setTimeout(() => {
             reminderAgent.getValidReminders((err,reminder) =>{
-                console.log("callback,the testReminderAgentRequest_047 snoozeTimes =" + reminder[0].snoozeTimes);
+                console.info("callback,the testGetValidRemindersSnoozTimes_070 snoozeTimes =" + 
+                reminder[0].snoozeTimes);
                 expect(reminder[0].snoozeTimes).assertEqual(0);
             });
         },500);
@@ -1972,12 +1967,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_048
-     * @tc.name      testReminderAgentRequest_048
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_071
+     * @tc.name      testGetValidRemindersSnoozTimes_071
      * @tc.desc      test snoozeTimes with illegal parameter.
      */
-    it("testReminderAgentRequest_048", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_048---------------------------');
+    it("testGetValidRemindersSnoozTimes_071", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersSnoozTimes_071---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
@@ -1986,13 +1981,14 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(alarm,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_048 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersSnoozTimes_071 reminderId =" + reminderId);
             });
         });
 
         setTimeout(() => {
             reminderAgent.getValidReminders((err,reminder) =>{
-                console.log("callback,the testReminderAgentRequest_048 snoozeTimes =" + reminder[0].snoozeTimes);
+                console.info("callback,the testGetValidRemindersSnoozTimes_071 snoozeTimes =" + 
+                reminder[0].snoozeTimes);
                 expect(reminder[0].snoozeTimes).assertEqual(0);
             });
         },500);
@@ -2000,12 +1996,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_049
-     * @tc.name      testReminderAgentRequest_049
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_072
+     * @tc.name      testGetValidRemindersSnoozTimes_072
      * @tc.desc      test snoozeTimes with illegal parameter.
      */
-    it("testReminderAgentRequest_049", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_049---------------------------');
+    it("testGetValidRemindersSnoozTimes_072", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersSnoozTimes_072---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
@@ -2014,13 +2010,14 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(alarm,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_049 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersSnoozTimes_072 reminderId =" + reminderId);
             });
         });
 
         setTimeout(() => {
             reminderAgent.getValidReminders((err,reminder) =>{
-                console.log("callback,the testReminderAgentRequest_049 snoozeTimes =" + reminder[0].snoozeTimes);
+                console.info("callback,the testGetValidRemindersSnoozTimes_072 snoozeTimes =" + 
+                reminder[0].snoozeTimes);
                 expect(reminder[0].snoozeTimes).assertEqual(0);
             });
         },500);
@@ -2028,12 +2025,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_050
-     * @tc.name      testReminderAgentRequest_050
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_073
+     * @tc.name      testGetValidRemindersRingDuration_073
      * @tc.desc      test ringDuration default parameters.
      */
-    it("testReminderAgentRequest_050", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_050---------------------------');
+    it("testGetValidRemindersRingDuration_073", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersRingDuration_073---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
@@ -2041,13 +2038,14 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(alarm,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_050 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersRingDuration_073 reminderId =" + reminderId);
             });
         });
 
         setTimeout(() => {
             reminderAgent.getValidReminders((err,reminder) =>{
-                console.log("callback,the testReminderAgentRequest_050 ringDuration =" + reminder[0].ringDuration);
+                console.info("callback,the testGetValidRemindersRingDuration_073 ringDuration =" + 
+                reminder[0].ringDuration);
                 expect(reminder[0].ringDuration).assertEqual(1);
             });
         },500);
@@ -2055,12 +2053,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_051
-     * @tc.name      testReminderAgentRequest_051
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_074
+     * @tc.name      testGetValidRemindersRingDuration_074
      * @tc.desc      test ringDuration with illegal parameter.
      */
-    it("testReminderAgentRequest_051", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_051---------------------------');
+    it("testGetValidRemindersRingDuration_074", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersRingDuration_074---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
@@ -2069,13 +2067,14 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(alarm,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_051 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersRingDuration_074 reminderId =" + reminderId);
             });
         });
 
         setTimeout(() => {
             reminderAgent.getValidReminders((err,reminder) =>{
-                console.log("callback,the testReminderAgentRequest_051 ringDuration =" + reminder[0].ringDuration);
+                console.info("callback,the testGetValidRemindersRingDuration_074 ringDuration =" + 
+                reminder[0].ringDuration);
                 expect(reminder[0].ringDuration).assertEqual(1);
             });
         },500);
@@ -2083,12 +2082,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_052
-     * @tc.name      testReminderAgentRequest_052
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_075
+     * @tc.name      testGetValidRemindersRingDuration_075
      * @tc.desc      test ringDuration with illegal parameter.
      */
-    it("testReminderAgentRequest_052", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_052---------------------------');
+    it("testGetValidRemindersRingDuration_075", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersRingDuration_075---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
@@ -2097,13 +2096,14 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(alarm,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_052 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersRingDuration_075 reminderId =" + reminderId);
             });
         });
 
         setTimeout(() => {
             reminderAgent.getValidReminders((err,reminder) =>{
-                console.log("callback,the testReminderAgentRequest_052 ringDuration =" + reminder[0].ringDuration);
+                console.info("callback,the testGetValidRemindersRingDuration_075 ringDuration =" + 
+                reminder[0].ringDuration);
                 expect(reminder[0].ringDuration).assertEqual(1);
             });
         },500);
@@ -2111,12 +2111,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_053
-     * @tc.name      testReminderAgentRequest_053
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_076
+     * @tc.name      testGetValidRemindersTimeInterval_076
      * @tc.desc      test timeInterval default parameters.
      */
-    it("testReminderAgentRequest_053", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_053---------------------------');
+    it("testGetValidRemindersTimeInterval_076", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersTimeInterval_076---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
@@ -2124,13 +2124,14 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(alarm,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_053 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersTimeInterval_076 reminderId =" + reminderId);
             });
         });
 
         setTimeout(() => {
             reminderAgent.getValidReminders((err,reminder) =>{
-                console.log("callback,the testReminderAgentRequest_053 timeInterval =" + reminder[0].timeInterval);
+                console.info("callback,the testGetValidRemindersTimeInterval_076 timeInterval =" + 
+                reminder[0].timeInterval);
                 expect(reminder[0].timeInterval).assertEqual(0);
             });
         },500);
@@ -2138,12 +2139,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_054
-     * @tc.name      testReminderAgentRequest_054
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_077
+     * @tc.name      testGetValidRemindersTimeInterval_077
      * @tc.desc      test timeInterval with illegal parameters.
      */
-    it("testReminderAgentRequest_054", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_054---------------------------');
+    it("testGetValidRemindersTimeInterval_077", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersTimeInterval_077---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
@@ -2152,13 +2153,14 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(alarm,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_054 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersTimeInterval_077 reminderId =" + reminderId);
             });
         });
 
         setTimeout(() => {
             reminderAgent.getValidReminders((err,reminder) =>{
-                console.log("callback,the testReminderAgentRequest_054 timeInterval =" + reminder[0].timeInterval);
+                console.info("callback,the testGetValidRemindersTimeInterval_077 timeInterval =" + 
+                reminder[0].timeInterval);
                 expect(reminder[0].timeInterval).assertEqual(0);
             });
         },500);
@@ -2166,12 +2168,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_055
-     * @tc.name      testReminderAgentRequest_055
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_078
+     * @tc.name      testGetValidRemindersTimeInterval_078
      * @tc.desc      test timeInterval with illegal parameters.
      */
-    it("testReminderAgentRequest_055", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_055---------------------------');
+    it("testGetValidRemindersTimeInterval_078", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersTimeInterval_078---------------------------');
         let alarm = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
             hour: 11,
@@ -2180,13 +2182,14 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(alarm,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_055 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersTimeInterval_078 reminderId =" + reminderId);
             });
         });
 
         setTimeout(() => {
             reminderAgent.getValidReminders((err,reminder) =>{
-                console.log("callback,the testReminderAgentRequest_055 timeInterval =" + reminder[0].timeInterval);
+                console.info("callback,the testGetValidRemindersTimeInterval_078 timeInterval =" + 
+                reminder[0].timeInterval);
                 expect(reminder[0].timeInterval).assertEqual(0);
             });
         },500);
@@ -2194,12 +2197,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_056
-     * @tc.name      testReminderAgentRequest_056
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_079
+     * @tc.name      testGetValidRemindersTitle_079
      * @tc.desc      test title with empty parameters.
      */
-    it("testReminderAgentRequest_056", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_056---------------------------');
+    it("testGetValidRemindersTitle_079", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersTitle_079---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2209,7 +2212,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_056 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersTitle_079 reminderId =" + reminderId);
             });
         });
 
@@ -2217,7 +2220,7 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let title = reminder[0].title;
-                    console.log("callback,the testReminderAgentRequest_056 title is: " + title);
+                    console.info("callback,the testGetValidRemindersTitle_079 title is: " + title);
                     expect(title).assertEqual('');
                 }
             });
@@ -2226,12 +2229,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_057
-     * @tc.name      testReminderAgentRequest_057
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_080
+     * @tc.name      testGetValidRemindersTitle_080
      * @tc.desc      test title with illegal parameters.
      */
-    it("testReminderAgentRequest_057", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_057---------------------------');
+    it("testGetValidRemindersTitle_080", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersTitle_080---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2241,7 +2244,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_057 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersTitle_080 reminderId =" + reminderId);
             });
         });
 
@@ -2249,7 +2252,7 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let title = reminder[0].title;
-                    console.log("callback,the testReminderAgentRequest_057 title is: " + title);
+                    console.info("callback,the testGetValidRemindersTitle_080 title is: " + title);
                     expect(title).assertEqual('');
                 }
             });
@@ -2258,19 +2261,19 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_058
-     * @tc.name      testReminderAgentRequest_058
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_081
+     * @tc.name      testGetValidRemindersSlotType_081
      * @tc.desc      test slotType default parameters.
      */
-    it("testReminderAgentRequest_058", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_058---------------------------');
+    it("testGetValidRemindersSlotType_081", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersSlotType_081---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_058 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersSlotType_081 reminderId =" + reminderId);
             });
         });
 
@@ -2278,7 +2281,7 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let slotType = reminder[0].slotType;
-                    console.log("callback,the testReminderAgentRequest_058 slotType  is: " + slotType);
+                    console.info("callback,the testGetValidRemindersSlotType_081 slotType  is: " + slotType);
                     expect(slotType).assertEqual(1);
                 }
             });
@@ -2287,12 +2290,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_059
-     * @tc.name      testReminderAgentRequest_059
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_082
+     * @tc.name      testGetValidRemindersSlotType_082
      * @tc.desc      test slotType with illegal parameter 5.
      */
-    it("testReminderAgentRequest_059", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_059---------------------------');
+    it("testGetValidRemindersSlotType_082", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersSlotType_082---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2300,7 +2303,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_059 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersSlotType_082 reminderId =" + reminderId);
             });
         });
 
@@ -2308,7 +2311,7 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let slotType = reminder[0].slotType;
-                    console.log("callback,the testReminderAgentRequest_059 slotType is: " + slotType);
+                    console.info("callback,the testGetValidRemindersSlotType_082 slotType is: " + slotType);
                     expect(slotType).assertEqual(1);
                 }
             });
@@ -2317,12 +2320,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_060
-     * @tc.name      testReminderAgentRequest_060
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_083
+     * @tc.name      testGetValidRemindersPkgName_083
      * @tc.desc      test pkgName with empty parameters.
      */
-    it("testReminderAgentRequest_060", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_060---------------------------');
+    it("testGetValidRemindersPkgName_083", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersPkgName_083---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2333,7 +2336,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_060 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersPkgName_083 reminderId =" + reminderId);
             });
         });
 
@@ -2341,7 +2344,7 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let pkgName = reminder[0].wantAgent.pkgName;
-                    console.log("callback,the testReminderAgentRequest_060 pkgName is: " + pkgName);
+                    console.info("callback,the testGetValidRemindersPkgName_083 pkgName is: " + pkgName);
                     expect(pkgName).assertEqual("");
                 }
             });
@@ -2350,12 +2353,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_061
-     * @tc.name      testReminderAgentRequest_061
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_084
+     * @tc.name      testGetValidRemindersPkgName_084
      * @tc.desc      test pkgName with illegal parameters.
      */
-    it("testReminderAgentRequest_061", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_061---------------------------');
+    it("testGetValidRemindersPkgName_084", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersPkgName_084---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2366,7 +2369,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_061 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersPkgName_084 reminderId =" + reminderId);
             });
         });
 
@@ -2374,7 +2377,7 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let pkgName = reminder[0].wantAgent.pkgName;
-                    console.log("callback,the testReminderAgentRequest_061 pkgName is: " + pkgName);
+                    console.info("callback,the testGetValidRemindersPkgName_084 pkgName is: " + pkgName);
                     expect(pkgName).assertEqual("");
                 }
             });
@@ -2383,12 +2386,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_062
-     * @tc.name      testReminderAgentRequest_062
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_085
+     * @tc.name      testGetValidRemindersAbilityName_085
      * @tc.desc      test abilityName with empty parameters.
      */
-    it("testReminderAgentRequest_062", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_062---------------------------');
+    it("testGetValidRemindersAbilityName_085", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersAbilityName_085---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2399,7 +2402,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_062 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersAbilityName_085 reminderId =" + reminderId);
             });
         });
 
@@ -2407,7 +2410,8 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let abilityName = reminder[0].wantAgent.abilityName;
-                    console.log("callback,the testReminderAgentRequest_062 abilityName is: " + abilityName);
+                    console.info("callback,the testGetValidRemindersAbilityName_085 abilityName is: " + 
+                    abilityName);
                     expect(abilityName).assertEqual("");
                 }
             });
@@ -2416,12 +2420,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_063
-     * @tc.name      testReminderAgentRequest_063
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_086
+     * @tc.name      testGetValidRemindersAbilityName_086
      * @tc.desc      test abilityName with illegal parameters.
      */
-    it("testReminderAgentRequest_063", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_063---------------------------');
+    it("testGetValidRemindersAbilityName_086", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersAbilityName_086---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2432,7 +2436,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_063 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersAbilityName_086 reminderId =" + reminderId);
             });
         });
 
@@ -2440,7 +2444,8 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let abilityName = reminder[0].wantAgent.abilityName;
-                    console.log("callback,the testReminderAgentRequest_063 abilityName is: " + abilityName);
+                    console.info("callback,the testGetValidRemindersAbilityName_086 abilityName is: " + 
+                    abilityName);
                     expect(abilityName).assertEqual("");
                 }
             });
@@ -2449,12 +2454,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_064
-     * @tc.name      testReminderAgentRequest_064
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_087
+     * @tc.name      testGetValidRemindersContent_087
      * @tc.desc      test content with illegal parameters.
      */
-    it("testReminderAgentRequest_064", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_064---------------------------');
+    it("testGetValidRemindersContent_087", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersContent_087---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2462,7 +2467,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_064 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersContent_087 reminderId =" + reminderId);
             });
         });
 
@@ -2470,7 +2475,7 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let content = reminder[0].content;
-                    console.log("callback,the testReminderAgentRequest_064 content is: " + content);
+                    console.info("callback,the testGetValidRemindersContent_087 content is: " + content);
                     expect(content).assertEqual("");
                 }
             });
@@ -2479,12 +2484,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_065
-     * @tc.name      testReminderAgentRequest_065
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_088
+     * @tc.name      testGetValidRemindersContent_088
      * @tc.desc      test content with illegal parameters.
      */
-    it("testReminderAgentRequest_065", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_065---------------------------');
+    it("testGetValidRemindersContent_088", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersContent_088---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2492,7 +2497,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_065 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersContent_088 reminderId =" + reminderId);
             });
         });
 
@@ -2500,7 +2505,7 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let content = reminder[0].content;
-                    console.log("callback,the testReminderAgentRequest_065 content is: " + content);
+                    console.info("callback,the testGetValidRemindersContent_088 content is: " + content);
                     expect(content).assertEqual("");
                 }
             });
@@ -2509,12 +2514,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_066
-     * @tc.name      testReminderAgentRequest_066
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_089
+     * @tc.name      testGetValidRemindersExpiredContent_089
      * @tc.desc      test expiredContent with empty parameters.
      */
-    it("testReminderAgentRequest_066", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_066---------------------------');
+    it("testGetValidRemindersExpiredContent_089", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersExpiredContent_089---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2522,7 +2527,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_066 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersExpiredContent_089 reminderId =" + reminderId);
             });
         });
 
@@ -2530,7 +2535,8 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let expiredContent = reminder[0].expiredContent;
-                    console.log("callback,the testReminderAgentRequest_066 expiredContent is: " + expiredContent);
+                    console.info("callback,the testGetValidRemindersExpiredContent_089 expiredContent is: " + 
+                    expiredContent);
                     expect(expiredContent).assertEqual("");
                 }
             });
@@ -2539,12 +2545,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_067
-     * @tc.name      testReminderAgentRequest_067
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_090
+     * @tc.name      testGetValidRemindersExpiredContent_090
      * @tc.desc      test expiredContent with illegal parameters.
      */
-    it("testReminderAgentRequest_067", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_067---------------------------');
+    it("testGetValidRemindersExpiredContent_090", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersExpiredContent_090---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2552,7 +2558,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_067 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersExpiredContent_090 reminderId =" + reminderId);
             });
         });
 
@@ -2560,7 +2566,8 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let expiredContent = reminder[0].expiredContent;
-                    console.log("callback,the testReminderAgentRequest_067 expiredContent is: " + expiredContent);
+                    console.info("callback,the testGetValidRemindersExpiredContent_090 expiredContent is: " + 
+                    expiredContent);
                     expect(expiredContent).assertEqual("");
                 }
             });
@@ -2569,12 +2576,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_068
-     * @tc.name      testReminderAgentRequest_068
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_091
+     * @tc.name      testGetValidRemindersSnoozeContent_091
      * @tc.desc      test snoozeContent with empty parameters.
      */
-    it("testReminderAgentRequest_068", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_068---------------------------');
+    it("testGetValidRemindersSnoozeContent_091", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersSnoozeContent_091---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2582,7 +2589,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_068 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersSnoozeContent_091 reminderId =" + reminderId);
             });
         });
 
@@ -2590,7 +2597,8 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let snoozeContent = reminder[0].snoozeContent;
-                    console.log("callback,the testReminderAgentRequest_068 snoozeContent is: " + snoozeContent);
+                    console.info("callback,the testGetValidRemindersSnoozeContent_091 snoozeContent is: " + 
+                    snoozeContent);
                     expect(snoozeContent).assertEqual("");
                 }
             });
@@ -2599,12 +2607,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_069
-     * @tc.name      testReminderAgentRequest_069
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_092
+     * @tc.name      testGetValidRemindersSnoozeContent_092
      * @tc.desc      test snoozeContent with illegal parameters.
      */
-    it("testReminderAgentRequest_069", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_069---------------------------');
+    it("testGetValidRemindersSnoozeContent_092", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersSnoozeContent_092---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2612,7 +2620,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_069 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersSnoozeContent_092 reminderId =" + reminderId);
             });
         });
 
@@ -2620,7 +2628,7 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let snoozeContent = reminder[0].snoozeContent;
-                    console.log("callback,the testReminderAgentRequest_069 snoozeContent is: " + snoozeContent);
+                    console.info("callback,the snoozeContent is: " + snoozeContent);
                     expect(snoozeContent).assertEqual("");
                 }
             });
@@ -2629,12 +2637,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_070
-     * @tc.name      testReminderAgentRequest_070
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_093
+     * @tc.name      testGetValidRemindersNotificationId_093
      * @tc.desc      test notificationId with illegal parameters.
      */
-    it("testReminderAgentRequest_070", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_070---------------------------');
+    it("testGetValidRemindersNotificationId_093", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersNotificationId_093---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2642,7 +2650,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_070 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersNotificationId_093 reminderId =" + reminderId);
             });
         });
 
@@ -2650,7 +2658,8 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let notificationId = reminder[0].notificationId;
-                    console.log("callback,the testReminderAgentRequest_070 notificationId is: " + notificationId);
+                    console.info("callback,the testGetValidRemindersNotificationId_093 notificationId is: " + 
+                    notificationId);
                     expect(notificationId).assertEqual(0);
                 }
             });
@@ -2659,12 +2668,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_071
-     * @tc.name      testReminderAgentRequest_071
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_094
+     * @tc.name      testGetValidRemindersNotificationId_094
      * @tc.desc      test snoozeContent with illegal parameters.
      */
-    it("testReminderAgentRequest_071", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_071---------------------------');
+    it("testGetValidRemindersNotificationId_094", 0, async function (done) {
+        console.info('----------------------testGetValidRemindersNotificationId_094---------------------------');
         let timer = {
             reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
             triggerTimeInSeconds: 20,
@@ -2672,7 +2681,7 @@ describe('ReminderAgentTest', function () {
         }
         reminderAgent.cancelAllReminders((err,data) => {
             reminderAgent.publishReminder(timer,(err,reminderId) => {
-                console.log("callback,the testReminderAgentRequest_071 reminderId =" + reminderId);
+                console.info("callback,the testGetValidRemindersNotificationId_094 reminderId =" + reminderId);
             });
         });
 
@@ -2680,7 +2689,8 @@ describe('ReminderAgentTest', function () {
             reminderAgent.getValidReminders((err,reminder) =>{
                 if (reminder.length !== 0){
                     let notificationId = reminder[0].notificationId;
-                    console.log("callback,the testReminderAgentRequest_071 notificationId is: " + notificationId);
+                    console.info("callback,the testGetValidRemindersNotificationId_094 notificationId is: " + 
+                    notificationId);
                     expect(notificationId).assertEqual(0);
                 }
             });
@@ -2689,131 +2699,132 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_072
-     * @tc.name      testReminderAgentRequest_072
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_095
+     * @tc.name      testReminderType_095
      * @tc.desc      test timer default parameter with 0.
      */
-    it("testReminderAgentRequest_072", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_072---------------------------');
+    it("testReminderType_095", 0, async function (done) {
+        console.info('----------------------testReminderType_095---------------------------');
         let timer = reminderAgent.ReminderType.REMINDER_TYPE_TIMER;
         expect(timer).assertEqual(0);
         done();
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_073
-     * @tc.name      testReminderAgentRequest_073
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_096
+     * @tc.name      testReminderType_096
      * @tc.desc      test calendar default parameter with 1.
      */
-    it("testReminderAgentRequest_073", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_073---------------------------');
+    it("testReminderType_096", 0, async function (done) {
+        console.info('----------------------testReminderType_096---------------------------');
         let calendar = reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR;
         expect(calendar).assertEqual(1);
         done();
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_074
-     * @tc.name      testReminderAgentRequest_074
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_097
+     * @tc.name      testReminderType_097
      * @tc.desc      test alarm default parameter with 2.
      */
-    it("testReminderAgentRequest_074", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_074---------------------------');
+    it("testReminderType_097", 0, async function (done) {
+        console.info('----------------------testReminderType_097---------------------------');
         let alarm = reminderAgent.ReminderType.REMINDER_TYPE_ALARM;
         expect(alarm).assertEqual(2);
         done();
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_075
-     * @tc.name      testReminderAgentRequest_075
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_098
+     * @tc.name      testActionButtonType_098
      * @tc.desc      test button close default parameter with 0.
      */
-    it("testReminderAgentRequest_075", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_075---------------------------');
+    it("testActionButtonType_098", 0, async function (done) {
+        console.info('----------------------testActionButtonType_098---------------------------');
         let button = reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE;
         expect(button).assertEqual(0);
         done();
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_076
-     * @tc.name      testReminderAgentRequest_076
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_099
+     * @tc.name      testActionButtonType_099
      * @tc.desc      test button snooze default parameter with 1.
      */
-    it("testReminderAgentRequest_076", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_076---------------------------');
+    it("testActionButtonType_099", 0, async function (done) {
+        console.info('----------------------testActionButtonType_099---------------------------');
         let button = reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE;
         expect(button).assertEqual(1);
         done();
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_077
-     * @tc.name      testReminderAgentRequest_077
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0100
+     * @tc.name      testNotificationSlotType_0100
      * @tc.desc      test UNKNOWN_TYPE default parameter with 0.
      */
-    it("testReminderAgentRequest_077", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_077---------------------------');
+    it("testNotificationSlotType_0100", 0, async function (done) {
+        console.info('----------------------testNotificationSlotType_0100---------------------------');
         let type = notification.SlotType.UNKNOWN_TYPE;
         expect(type).assertEqual(0);
         done();
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_078
-     * @tc.name      testReminderAgentRequest_078
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0101
+     * @tc.name      testNotificationSlotType_0101
      * @tc.desc      test SOCIAL_COMMUNICATION default parameter with 1.
      */
-    it("testReminderAgentRequest_078", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_078---------------------------');
+    it("testNotificationSlotType_0101", 0, async function (done) {
+        console.info('----------------------testNotificationSlotType_0101---------------------------');
         let type = notification.SlotType.SOCIAL_COMMUNICATION;
         expect(type).assertEqual(1);
         done();
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_079
-     * @tc.name      testReminderAgentRequest_079
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0102
+     * @tc.name      testNotificationSlotType_0102
      * @tc.desc      test SERVICE.INFORMATION default parameter with 2.
      */
-    it("testReminderAgentRequest_079", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_079---------------------------');
+    it("testNotificationSlotType_0102", 0, async function (done) {
+        console.info('----------------------testNotificationSlotType_0102---------------------------');
         let type = notification.SlotType.SERVICE_INFORMATION;
         expect(type).assertEqual(2);
         done();
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_080
-     * @tc.name      testReminderAgentRequest_080
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0103
+     * @tc.name      testNotificationSlotType_0103
      * @tc.desc      test CONTENT_INFORMATION default parameter with 3.
      */
-    it("testReminderAgentRequest_080", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_080---------------------------');
+    it("testNotificationSlotType_0103", 0, async function (done) {
+        console.info('----------------------testNotificationSlotType_0103---------------------------');
         let type = notification.SlotType.CONTENT_INFORMATION;
         expect(type).assertEqual(3);
         done();
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_081
-     * @tc.name      testReminderAgentRequest_081
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0104
+     * @tc.name      testNotificationSlotType_0104
      * @tc.desc      test OTHER_TYPES default parameter with 65535.
      */
-    it("testReminderAgentRequest_081", 0, async function (done) {
-        console.log('----------------------testReminderAgentRequest_081---------------------------');
+    it("testNotificationSlotType_0104", 0, async function (done) {
+        console.info('----------------------testNotificationSlotType_0104---------------------------');
         let type = notification.SlotType.OTHER_TYPES;
         expect(type).assertEqual(65535);
         done();
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_024
-     * @tc.name      testRemonveNotificationSlotNorFun024
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0105
+     * @tc.name      testRemoveNotificationSlotNorFun_0105
      * @tc.desc      test remove notification Slot with not exist slot with the promise function.
      */
-    it('testRemonveNotificationSlotNorFun024', 0, async function (done) {
+    it('testRemoveNotificationSlotNorFun_0105', 0, async function (done) {
+      console.info('----------------------testRemoveNotificationSlotNorFun_0105---------------------------');
       let promise = new Promise((resolve, reject) => {
         reminderAgent.removeNotificationSlot(1).then(() => {
           resolve();
@@ -2829,11 +2840,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_025
-     * @tc.name      testRemonveNotificationSlotNorFun025
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0106
+     * @tc.name      testRemoveNotificationSlotNorFun_0106
      * @tc.desc      test remove notification Slot with exist slot.
      */
-    it('testRemonveNotificationSlotNorFun025', 0, async function (done) {
+    it('testRemoveNotificationSlotNorFun_0106', 0, async function (done) {
+      console.info('----------------------testRemoveNotificationSlotNorFun_0106---------------------------');
       let tarRemoveSlot = {
         type: 1
       }
@@ -2846,11 +2858,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_026
-     * @tc.name      testRemonveNotificationSlotNorFun026
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0107
+     * @tc.name      testRemoveNotificationSlotNorFun_0107
      * @tc.desc      test remove notification Slot with exist slot with the promise function.
      */
-    it('testRemonveNotificationSlotNorFun026', 0, async function (done) {
+    it('testRemoveNotificationSlotNorFun_0107', 0, async function (done) {
+      console.info('----------------------testRemoveNotificationSlotNorFun_0107---------------------------');
       let tarRemoveSlot = {
         type: 1
       }
@@ -2863,11 +2876,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_027
-     * @tc.name      testGetValidRemindersNorFun027
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0108
+     * @tc.name      testGetValidRemindersNorFun_0108
      * @tc.desc      test get valid reminders with promise function.
      */
-    it('testGetValidRemindersNorFun027', 0, async function (done) {
+    it('testGetValidRemindersNorFun_0108', 0, async function (done) {
+      console.info('----------------------testGetValidRemindersNorFun_0108---------------------------');
       let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: 3
@@ -2882,11 +2896,12 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_028
-     * @tc.name      testGetValidRemindersNorFun028
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0109
+     * @tc.name      testGetValidRemindersNorFun_0109
      * @tc.desc      test get valid reminders with the callback function.
      */
-    it('testGetValidRemindersNorFun028', 0, async function (done) {
+    it('testGetValidRemindersNorFun_0109', 0, async function (done) {
+      console.info('----------------------testGetValidRemindersNorFun_0109---------------------------');
       let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: 3
@@ -2901,52 +2916,50 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_029
-     * @tc.name      testPublishReminderNorAlarmFun029
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0110
+     * @tc.name      testPublishReminderNorAlarmFun_0110
      * @tc.desc      test publish reminder with a nomal alarm promise function.
      */
-    it('testPublishReminderNorAlarmFun029', 0, async function (done) {
+    it('testPublishReminderNorAlarmFun_0110', 0, async function (done) {
+      console.info('----------------------testPublishReminderNorAlarmFun_0110---------------------------');
       let alarm = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
         hour: 21,
         minute: 14
       }
       reminderAgent.publishReminder(alarm).then((reminderId) => {
-        if (reminderId) {
-          let i = 0;
-          expect(0).assertEqual(i);
-        }
+        console.info("promise the testPublishReminderNorAlarmFun_0110 remiderId =" + reminderId);
+        expect(reminderId).assertLarger(0);
       });
       done();
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_030
-     * @tc.name      testPublishReminderNorAlarmFun030
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0111
+     * @tc.name      testPublishReminderNorAlarmFun_0111
      * @tc.desc      test publish reminder with a nomal alarm callback function.
      */
-    it('testPublishReminderNorAlarmFun030', 0, async function (done) {
+    it('testPublishReminderNorAlarmFun_0111', 0, async function (done) {
+      console.info('----------------------testPublishReminderNorAlarmFun_0111---------------------------');
       let alarm = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,
-        hour: 21,
+        hour: 20,
         minute: 14
       }
-      function reminderCallback(err, reminderId) {
-        if (reminderId) {
-          let i = 0;
-          expect(0).assertEqual(i);
-        }
-      }
-      reminderAgent.publishReminder(alarm, reminderCallback);
+      reminderAgent.publishReminder(alarm, (err, reminderId) => {
+        console.info("callback the testPublishReminderNorAlarmFun_0111 remiderId =" + reminderId);
+        expect(reminderId).assertLarger(0);
+      });
       done();
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_031
-     * @tc.name      testPublishReminderAbNorFun031
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0112
+     * @tc.name      testPublishReminderAbNorFun_0112
      * @tc.desc      test publish reminder with max number limit of each application.
      */
-    it('testPublishReminderAbNorFun031', 0, async function (done) {
+    it('testPublishReminderAbNorFun_0112', 0, async function (done) {
+      console.info('----------------------testPublishReminderAbNorFun_0112---------------------------');
       let timer = {
         reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
         triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
@@ -2975,11 +2988,12 @@ describe('ReminderAgentTest', function () {
     })
 
        /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_032
-     * @tc.name      testReminderTypeCalendarFun032
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0113
+     * @tc.name      testReminderTypeCalendarFun_0113
      * @tc.desc      test cancelAllReminders can cancel all exist reminders with type of calendar.
      */
-      it('testReminderTypeCalendarFun032', 0, async function (done) {
+      it('testReminderTypeCalendarFun_0113', 0, async function (done) {
+        console.info('----------------------testReminderTypeCalendarFun_0113---------------------------');
         let timer = {
           reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
           triggerTimeInSeconds: 100
@@ -3007,11 +3021,12 @@ describe('ReminderAgentTest', function () {
       })
 
      /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_033
-     * @tc.name      testPublishReminderTypeCalendarFun033
-     * @tc.desc      test pulish reminders with type of calendar.
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0114
+     * @tc.name      testPublishReminderTypeCalendarFun_0114
+     * @tc.desc      test publish reminders with type of calendar.
      */
-      it('testReminderTypeCalendarFun033', 0, async function (done) {
+      it('testPublishReminderTypeCalendarFun_0114', 0, async function (done) {
+        console.info('----------------------testPublishReminderTypeCalendarFun_0114---------------------------');
         let calendar = {
           reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,
           dateTime : {
@@ -3054,47 +3069,49 @@ describe('ReminderAgentTest', function () {
       reminderAgent.publishReminder(calendar).then((reminderId) => {
           reminderAgent.getValidReminders().then((reminders) => {
               for (let i = 0; i < reminders.length; i++) {
-                  console.log("getValidReminders = " + JSON.stringify(reminders[i]));
-                  console.log("getValidReminders, reminderType = " + reminders[i].reminderType);
+                  console.info("getValidReminders = " + JSON.stringify(reminders[i]));
+                  console.info("getValidReminders, reminderType = " + reminders[i].reminderType);
                   for (let j = 0; j < reminders[i].actionButton.length; j++) {
-                      console.log("getValidReminders, actionButton.title = " + reminders[i].actionButton[j].title);
-                      console.log("getValidReminders, actionButton.type = " + reminders[i].actionButton[j].type);
+                      console.info("getValidReminders, actionButton.title = " + reminders[i].actionButton[j].title);
+                      console.info("getValidReminders, actionButton.type = " + reminders[i].actionButton[j].type);
                   }
-                  console.log("getValidReminders, wantAgent.pkgName = " + reminders[i].wantAgent.pkgName);
-                  console.log("getValidReminders, wantAgent.abilityName = " + reminders[i].wantAgent.abilityName);
-                  console.log("getValidReminders, maxScreenWantAgent.pkgName = " + reminders[i].maxScreenWantAgent.pkgName);
-                  console.log("getValidReminders, maxScreenWantAgent.abilityName = " + reminders[i].maxScreenWantAgent.abilityName);
+                  console.info("getValidReminders, wantAgent.pkgName = " + reminders[i].wantAgent.pkgName);
+                  console.info("getValidReminders, wantAgent.abilityName = " + reminders[i].wantAgent.abilityName);
+                  console.info("getValidReminders, maxScreenWantAgent.pkgName = \
+                  " + reminders[i].maxScreenWantAgent.pkgName);
+                  console.info("getValidReminders, maxScreenWantAgent.abilityName = \
+                  " + reminders[i].maxScreenWantAgent.abilityName);
                   expect(reminders[i].ringDuration).assertEqual(5);
-                  console.log("getValidReminders, ringDuration = " + reminders[i].ringDuration);
+                  console.info("getValidReminders, ringDuration = " + reminders[i].ringDuration);
                   expect(reminders[i].snoozeTimes).assertEqual(2);
-                  console.log("getValidReminders, snoozeTimes = " + reminders[i].snoozeTimes);
-                  console.log("getValidReminders, timeInterval = " + reminders[i].timeInterval);
+                  console.info("getValidReminders, snoozeTimes = " + reminders[i].snoozeTimes);
+                  console.info("getValidReminders, timeInterval = " + reminders[i].timeInterval);
                   expect(reminders[i].title).assertEqual("this is title");
-                  console.log("getValidReminders, title = " + reminders[i].title);
+                  console.info("getValidReminders, title = " + reminders[i].title);
                   expect(reminders[i].content).assertEqual("this is content");
-                  console.log("getValidReminders, content = " + reminders[i].content);
+                  console.info("getValidReminders, content = " + reminders[i].content);
                   expect(reminders[i].expiredContent).assertEqual("this reminder has expired");
-                  console.log("getValidReminders, expiredContent = " + reminders[i].expiredContent);
+                  console.info("getValidReminders, expiredContent = " + reminders[i].expiredContent);
                   expect(reminders[i].snoozeContent).assertEqual("remind later");
-                  console.log("getValidReminders, snoozeContent = " + reminders[i].snoozeContent);
+                  console.info("getValidReminders, snoozeContent = " + reminders[i].snoozeContent);
                   expect(reminders[i].notificationId).assertEqual(100);
-                  console.log("getValidReminders, notificationId = " + reminders[i].notificationId);
-                  console.log("getValidReminders, slotType = " + reminders[i].slotType);
+                  console.info("getValidReminders, notificationId = " + reminders[i].notificationId);
+                  console.info("getValidReminders, slotType = " + reminders[i].slotType);
               }
           })
       });
       done();
       })
-	 
+	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_036
-     * @tc.name      testActionButtonType036
-     * @tc.desc      test acton butto type type = 0.
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0115
+     * @tc.name      testActionButtonType_0115
+     * @tc.desc      test action butto type type = 0.
      */
-    it("testActionButtonType036", 0, async function (done) {
-        console.log('----------------------testActionButtonType036---------------------------');
+    it("testActionButtonType_0115", 0, async function (done) {
+        console.info('----------------------testActionButtonType_0115---------------------------');
         let type1 = reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE;
-		console.log(type1 + typeof(type1));
+		console.info(type1 + typeof(type1));
 		if (type1 == 0) {
 			expect(true).assertTrue();
 		} else {
@@ -3104,14 +3121,14 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_037
-     * @tc.name      testActionButtonType038
-     * @tc.desc      test acton butto type type = 0.
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0116
+     * @tc.name      testActionButtonType_0116
+     * @tc.desc      test action butto type type = 1.
      */
-    it("testActionButtonType037", 0, async function (done) {
-        console.log('----------------------testActionButtonType037---------------------------');
+    it("testActionButtonType_0116", 0, async function (done) {
+        console.info('----------------------testActionButtonType_0116---------------------------');
         let type1 = reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE;
-		console.log(type1 + typeof(type1));
+		console.info(type1 + typeof(type1));
 		if (type1 == 1) {
 			expect(true).assertTrue();
 		} else {
