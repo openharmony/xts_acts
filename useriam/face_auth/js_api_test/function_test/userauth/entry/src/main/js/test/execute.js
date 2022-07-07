@@ -21,7 +21,7 @@ var waitFlag = false;
 /**
  * test case
  */
-describe('userAuthTest', function () {
+describe('userAuthTest_one1', function () {
     beforeEach(function(done) {
         let waitTime = 1000;
         if (waitFlag) {
