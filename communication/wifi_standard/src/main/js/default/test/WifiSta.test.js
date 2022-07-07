@@ -31,6 +31,15 @@ let WifiSecurityType = {
 }
 
 function checkWifiPowerOn(){
+	let enable = wifi.enableWifi();
+	console.info("enableWifi result0000123:" + enable);
+	wifi.on('wifiStateChange', state => {
+    console.info("wifiStateLisener state:" +state)
+    if (state === 1) { // 1: wifi is enable, 0:wifi is disable
+      wifi.scan()
+	  wifi.getLinkedInfo()
+    }
+    })
     console.info("wifi_test/wifi status:" + wifi.isWifiActive());
     expect(wifi.isWifiActive()).assertTrue();
 }
@@ -53,11 +62,13 @@ let ConnState = {
 }
 
 describe('ACTS_WifiTest', function() {
+
     beforeEach(function() {
         checkWifiPowerOn();
     })
 
     afterEach(function() {})
+
 
     /**
      * @tc.number     open_0001
