@@ -23,7 +23,7 @@ import ability_featureAbility from '@ohos.ability.featureAbility';
 import resourceManager from '@ohos.resourceManager';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
-describe('audioRenderer', function () {
+describe('audioRendererChangeInfo', function () {
 
     var audioStreamManager;
 	var audioStreamManagerCB;
