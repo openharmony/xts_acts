@@ -20,9 +20,14 @@ import events_emitter from '@ohos.events.emitter'
 struct SearchExample {
   @State changevalue: string= ''
   @State submitvalue: string= ''
-  @State controller: SearchController= new SearchController()
-  @State textFont:Font=10
-  @State searchButton:number=10
+  @State textFont:Font = {
+          size: 10,
+          weight: 10,
+          family: 'serif', 
+          style: FontStyle.Normal
+        }
+  @State searchButton:string = "10"
+  controller: SearchController= new SearchController()
 
   private stateChangCallBack = (eventData) => {
     console.info("search page state change called:" + JSON.stringify(eventData));
@@ -58,7 +63,7 @@ struct SearchExample {
         .placeholderFont({
           size: 10,
           weight: 10,
-          family: 'serif',
+          family: 'serif', 
           style: FontStyle.Normal
         })
         .onSubmit((value: string) => {
