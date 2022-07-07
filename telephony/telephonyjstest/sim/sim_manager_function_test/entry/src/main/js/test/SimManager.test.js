@@ -47,7 +47,7 @@ describe('SimManagerTest', function () {
       expect(lockStatusResponse.result === RES_RESULT).assertTrue();
       expect(lockStatusResponse.remain === RES_REMAIN).assertTrue();
     } catch (error) {
-      console.log(`Telephony_Sim error`);
+      console.info(`Telephony_Sim error`);
     }
   });
 
@@ -57,7 +57,7 @@ describe('SimManagerTest', function () {
     * @tc.desc    Function test
     */
     it('Telephony_Sim_constantValidate_0100', 0, async function (done) {
-        console.log(`Telephony_Sim_constantValidate_0100 start`);
+        console.info(`Telephony_Sim_constantValidate_0100 start`);
         expect(sim.SimState.SIM_STATE_UNKNOWN !== env.INVALID_VALUE).assertTrue();
         expect(sim.SimState.SIM_STATE_NOT_PRESENT !== env.INVALID_VALUE).assertTrue();
         expect(sim.SimState.SIM_STATE_LOCKED !== env.INVALID_VALUE).assertTrue();
@@ -90,7 +90,7 @@ describe('SimManagerTest', function () {
         expect(sim.PC_PUK_LOCK !== env.INVALID_VALUE).assertTrue();
         expect(sim.SIM_PIN_LOCK !== env.INVALID_VALUE).assertTrue();
         expect(sim.SIM_PUK_LOCK !== env.INVALID_VALUE).assertTrue();
-        console.log(`Telephony_Sim_constantValidate_0100 finish`);
+        console.info(`Telephony_Sim_constantValidate_0100 finish`);
         done();
     });
 	
@@ -104,13 +104,13 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_getISOCountryCodeForSim_Async_0200';
     sim.getISOCountryCodeForSim(env.SLOTID2, (err, data) => {
       if (err) {
-        console.log(`${CASE_NAME} expect err: ${err.message}`);
-        console.log(`${CASE_NAME} finish`);
+        console.info(`${CASE_NAME} expect err: ${err.message}`);
+        console.info(`${CASE_NAME} finish`);
         done();
         return;
       }
       expect().assertFail();
-      console.log(`${CASE_NAME} fail, data = ${data}`);
+      console.info(`${CASE_NAME} fail, data = ${data}`);
       done();
     });
   });
@@ -126,13 +126,13 @@ describe('SimManagerTest', function () {
     try {
       var data = await sim.getISOCountryCodeForSim(env.SLOTID2);
     } catch (err) {
-      console.log(`${CASE_NAME} expect err: ${err.message}`);
-      console.log(`${CASE_NAME} finish`);
+      console.info(`${CASE_NAME} expect err: ${err.message}`);
+      console.info(`${CASE_NAME} finish`);
       done();
       return;
     }
     expect().assertFail();
-    console.log(`${CASE_NAME} fail, data = ${data}`);
+    console.info(`${CASE_NAME} fail, data = ${data}`);
     done();
   });
 
@@ -146,13 +146,13 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_getSimOperatorNumeric_Async_0200';
     sim.getSimOperatorNumeric(env.SLOTID2, (err, data) => {
       if (err) {
-        console.log(`${CASE_NAME} expect err: ${err.message}`);
-        console.log(`${CASE_NAME} finish`);
+        console.info(`${CASE_NAME} expect err: ${err.message}`);
+        console.info(`${CASE_NAME} finish`);
         done();
         return;
       }
       expect().assertFail();
-      console.log(`${CASE_NAME} fail, data = ${data}`);
+      console.info(`${CASE_NAME} fail, data = ${data}`);
       done();
     });
   });
@@ -168,13 +168,13 @@ describe('SimManagerTest', function () {
     try {
       var data = await sim.getSimOperatorNumeric(env.SLOTID2);
     } catch (err) {
-      console.log(`${CASE_NAME} expect err: ${err.message}`);
-      console.log(`${CASE_NAME} finish`);
+      console.info(`${CASE_NAME} expect err: ${err.message}`);
+      console.info(`${CASE_NAME} finish`);
       done();
       return;
     }
     expect().assertFail();
-    console.log(`${CASE_NAME} fail, data = ${data}`);
+    console.info(`${CASE_NAME} fail, data = ${data}`);
     done();
   });
 
@@ -187,13 +187,13 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_getSimSpn_Async_0200';
     sim.getSimSpn(env.SLOTID2, (err, data) => {
       if (err) {
-        console.log(`${CASE_NAME} fail: ${err.message}`);
-        console.log(`${CASE_NAME} finish`);
+        console.info(`${CASE_NAME} fail: ${err.message}`);
+        console.info(`${CASE_NAME} finish`);
         done();
         return;
       }
       expect().assertFail();
-      console.log(`${CASE_NAME} fail, data = ${data}`);
+      console.info(`${CASE_NAME} fail, data = ${data}`);
       done();
     });
   });
@@ -208,13 +208,13 @@ describe('SimManagerTest', function () {
     try {
       var data = await sim.getSimSpn(env.SLOTID2);
     } catch (err) {
-      console.log(`${CASE_NAME} expect err: ${err.message}`);
-      console.log(`${CASE_NAME} finish`);
+      console.info(`${CASE_NAME} expect err: ${err.message}`);
+      console.info(`${CASE_NAME} finish`);
       done();
       return;
     }
     expect().assertFail();
-    console.log(`${CASE_NAME} fail, data = ${data}`);
+    console.info(`${CASE_NAME} fail, data = ${data}`);
     done();
   });
 
@@ -227,13 +227,13 @@ describe('SimManagerTest', function () {
     sim.getSimState(env.SLOTID2, (err, data) => {
       const CASE_NAME = 'Telephony_Sim_getSimState_Async_0200';
       if (err) {
-        console.log(`${CASE_NAME} expect err: ${err.message}`);
-        console.log(`${CASE_NAME} finish`);
+        console.info(`${CASE_NAME} expect err: ${err.message}`);
+        console.info(`${CASE_NAME} finish`);
         done();
         return;
       }
       expect().assertFail();
-      console.log(`${CASE_NAME} fail, data = ${data}`);
+      console.info(`${CASE_NAME} fail, data = ${data}`);
       done();
     });
   });
@@ -248,13 +248,13 @@ describe('SimManagerTest', function () {
     try {
       var data = await sim.getSimState(env.SLOTID2);
     } catch (err) {
-      console.log(`${CASE_NAME} expect err: ${err.message}`);
-      console.log(`${CASE_NAME} finish`);
+      console.info(`${CASE_NAME} expect err: ${err.message}`);
+      console.info(`${CASE_NAME} finish`);
       done();
       return;
     }
     expect().assertFail();
-    console.log(`${CASE_NAME} fail, data = ${data}`);
+    console.info(`${CASE_NAME} fail, data = ${data}`);
     done();
   });  
 
@@ -265,18 +265,12 @@ describe('SimManagerTest', function () {
    * @tc.desc    Function test
    */
   it('Telephony_Sim_isSimActive_Async_0700', 0, async function (done) {
-    const CASE_NAME = 'Telephony_Sim_isSimActive_Async_0700';
-    sim.isSimActive(env.SLOTID2, (err, data) => {
-      if (err) {
-        console.log(`${CASE_NAME} fail, err: ${err.message}`);
-        expect().assertFail();
+      const CASE_NAME = 'Telephony_Sim_isSimActive_Async_0700';
+      sim.isSimActive(env.SLOTID2, (err, data) => {
+        console.info("isSimActive async err info :" + JSON.stringify(err) + "data:" + JSON.stringify(data));
+        expect(err.code).assertEqual("-1");
         done();
-        return;
-      }
-      expect(data).assertFalse();
-      console.log(`${CASE_NAME} finish`);
-      done();
-    });
+      });
   });
 
   /**
@@ -287,17 +281,16 @@ describe('SimManagerTest', function () {
    */
   it('Telephony_Sim_isSimActive_Promise_0700', 0, async function (done) {
     const CASE_NAME = 'Telephony_Sim_isSimActive_Promise_0700';
-    try {
-      let data = await sim.isSimActive(env.SLOTID2);
+    let promise = sim.isSimActive(env.SLOTID2);
+    promise.then(data => {
+      console.log(`isSimActive success, promise: data->${JSON.stringify(data)}`);
       expect(data).assertFalse();
-    } catch (err) {
-      console.log(`${CASE_NAME} isSimActive fail, err: ${err.message}`);
-      expect().assertFail();
       done();
-      return;
-    }
-    console.log(`${CASE_NAME} finish`);
-    done();
+    }).catch(err => {
+      console.info("isSimActive promise err info :" + JSON.stringify(err));
+      expect(err.code).assertEqual("-1");
+      done();
+    });
   });
 
   /**
@@ -310,14 +303,12 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_hasSimCard_Async_0600';
     sim.hasSimCard(env.SLOTID2, (err, data) => {
       if (err) {
-        expect().assertFail();
-        console.log(`${CASE_NAME} fail, err: ${err.message}`);
+        expect(err.code).assertEqual("-1");
+        console.info(`${CASE_NAME} fail, err: ${err.message}`);
         done();
         return;
       }
-      expect(data).assertFalse();
-      console.log(`${CASE_NAME} finish`);
-      done();
+      console.info(`${CASE_NAME} finish`);
     });
   });
 
@@ -331,15 +322,13 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_hasSimCard_Promise_0600';
     try {
       let data = await sim.hasSimCard(env.SLOTID2);
-      expect(data).assertFalse();
     } catch (err) {
-      expect().assertFail();
-      console.log(`${CASE_NAME} fail, err: ${err.message}`);
+      expect(err.code).assertEqual("-1");
+      console.info(`${CASE_NAME} fail, err: ${err.message}`);
       done();
       return;
     }
-    console.log(`${CASE_NAME} finish`);
-    done();
+    console.info(`${CASE_NAME} finish`);
   });
 
   /**
@@ -351,7 +340,7 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_getMaxSimCount_0100';
     let simCount = sim.getMaxSimCount();
     expect(simCount > env.SIM_MIN_COUNT).assertTrue();
-    console.log(`${CASE_NAME} test finish.`);
+    console.info(`${CASE_NAME} test finish.`);
     done();
   });
 
@@ -363,16 +352,14 @@ describe('SimManagerTest', function () {
    */
   it('Telephony_Sim_GetCardType_Async_0400', 0, function (done) {
     const CASE_NAME = 'Telephony_Sim_GetCardType_Async_0400';
-    sim.getCardType(env.SLOTID2, (error, cardType) => {
-      if (error) {
-        console.log(`${CASE_NAME} GetCardType error: ${error.message}`);
-        expect().assertFail();
+    sim.getCardType(env.SLOTID2, (err, cardType) => {
+      if (err) {
+        console.info(`${CASE_NAME} GetCardType error: ${err.message}`);
+        expect(err.code).assertEqual("-1");
         done();
         return;
       }
-      expect(cardType === sim.UNKNOWN_CARD).assertTrue();
-      console.log(`${CASE_NAME} test finish.`);
-      done();
+      console.info(`${CASE_NAME} test finish.`);
     });
   });
 
@@ -386,11 +373,10 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_GetCardType_Promise_0400';
     try {
       const cardType = await sim.getCardType(env.SLOTID2);
-      expect(cardType === sim.UNKNOWN_CARD).assertTrue();
-      console.log(`${CASE_NAME} test finish.`);
-    } catch (error) {
-      console.log(`${CASE_NAME} GetCardType error: ${error.message}`);
-      expect().assertFail();
+      console.info(`${CASE_NAME} test finish.`);
+    } catch (err) {
+      console.info(`${CASE_NAME} GetCardType error: ${err.message}`);
+      expect(err.code).assertEqual("-1");
     }
     done();
   });
@@ -405,13 +391,13 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_hasOperatorPrivileges_Async_0400';
     sim.hasOperatorPrivileges(env.SLOTID2, (error, result) => {
       if (error) {
-        console.log(`${CASE_NAME} hasOperatorPrivileges error: ${error.message}`);
+        console.info(`${CASE_NAME} hasOperatorPrivileges error: ${error.message}`);
         expect().assertFail();
         done();
         return;
       }
       expect(result).assertFalse();
-      console.log(`${CASE_NAME} test finish.`);
+      console.info(`${CASE_NAME} test finish.`);
       done();
     });
   });
@@ -427,9 +413,9 @@ describe('SimManagerTest', function () {
     try {
       const result = await sim.hasOperatorPrivileges(env.SLOTID2);
       expect(result).assertFalse();
-      console.log(`${CASE_NAME} test finish.`);
+      console.info(`${CASE_NAME} test finish.`);
     } catch (error) {
-      console.log(`${CASE_NAME} hasOperatorPrivileges error: ${error.message}`);
+      console.info(`${CASE_NAME} hasOperatorPrivileges error: ${error.message}`);
       expect().assertFail();
     }
     done();
