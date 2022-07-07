@@ -20,7 +20,6 @@ hctest_suite("ActsAbilityMgrTest") {
     "${aafwk_lite_path}/interfaces/kits/want_lite",
     "${aafwk_lite_path}/interfaces/kits/ability_lite",
     "${appexecfwk_lite_path}/interfaces/kits/bundle_lite",
-    "//foundation/communication/ipc_lite/interfaces/kits",
   ]
   cflags = [ "-Wno-error" ]
 }
