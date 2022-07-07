@@ -183,7 +183,8 @@ export default function verificationTest(abilityContext){
             screenDensity = data.parameters.screenDensity
           }
           if (data.event == "Stage_MainAbility4_onDestroy") {
-            expect(screenDensity).assertEqual(240);
+            expect(typeof screenDensity).assertEqual("number");
+            expect(screenDensity).assertLarger(0);
             commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
           }
         }

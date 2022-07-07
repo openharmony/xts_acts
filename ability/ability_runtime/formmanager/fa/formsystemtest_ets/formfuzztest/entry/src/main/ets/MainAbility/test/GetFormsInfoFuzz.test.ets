@@ -93,8 +93,8 @@ export const getFormsInfoFuzzTest = (describeName, filterParameter) => {
   });
 
   describe(`${describeName}`, () => {
-    const callbackName = `FMS_fuzzTest_getinfomodule`;
-    const promiseName = `FMS_fuzzTest_getinfomodule`;
+    const callbackName = `FMS_fuzzTest_getinfomodule_callback`;
+    const promiseName = `FMS_fuzzTest_getinfomodule_promise`;
     const length = DATA_TYPE_LIST.length;
 
     for (let i = 0; i < length; ++i) {
