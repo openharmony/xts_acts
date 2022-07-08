@@ -17,6 +17,8 @@ import geolocation from '@ohos.geolocation';
 import { LocationEventListener } from '@ohos.geolocation';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
+import osaccount from '@ohos.account.osAccount'
+
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 let LocationRequestScenario = {UNSET : 0x300 ,NAVIGATION : 0x301 ,
     TRAJECTORY_TRACKING : 0x302 ,CAR_HAILING : 0x303,
@@ -44,11 +46,18 @@ async function changedLocationMode(){
                 expect().assertFail();
             });
         }
-    })
+    });
+    await geolocation.isLocationEnabled().then(async(result) => {
+        console.info('[lbs_js] check LocationSwitchState result: ' + result);
+    });
 }
 
 async function applyPermission() {
-    let appInfo = await bundle.getApplicationInfo('ohos.acts.location.geolocation.function', 0, 100);
+    let osAccountManager = osaccount.getAccountManager();
+    console.info('[permission] getAccountManager call end');
+    let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
+    console.info('[permission] getOsAccountLocalIdFromProcess localId' + localId);
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.location.geolocation.function', 0, localId);
     let atManager = abilityAccessCtrl.createAtManager();
     if (atManager != null) {
         let tokenID = appInfo.accessTokenId;
