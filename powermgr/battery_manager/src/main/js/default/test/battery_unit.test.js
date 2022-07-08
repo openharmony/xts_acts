@@ -236,7 +236,7 @@ describe('appInfoTest_battery_2', function () {
      * @tc.desc BatteryPluggedType values Interface Test
      */
     it('enum_plugged_type_JSTest_usb', 0, function () {
-        let batteryPluggedType = batteryInfo.BatteryPluggedType.SUB;
+        let batteryPluggedType = batteryInfo.BatteryPluggedType.USB;
         console.info('batteryPluggedType = ' + batteryPluggedType);
         expect(batteryPluggedType == 2).assertTrue()
     })
