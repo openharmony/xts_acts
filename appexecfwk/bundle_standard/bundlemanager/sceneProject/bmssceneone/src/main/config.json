@@ -45,7 +45,7 @@
         "launchType": "standard",
         "orientation": "unspecified",
         "language": "C++",
-        "permissions":["com.permission.BMS_PERMISSION_CAMERA"],
+        "permissions":["ohos.permission.INTERNET"],
         "metaData": {
             "customizeData": [
                 {
@@ -68,26 +68,10 @@
         }
       }
     ],
-    "defPermissions": [
-      {
-        "availableScope": [
-          "signature"
-        ],
-        "grantMode": "system_grant",
-        "name": "com.permission.BMS_PERMISSION_CAMERA",
-        "description": "BMS_PERMISSION_CAMERA permission in detail",
-        "label": "BMS_PERMISSION_CAMERA permission"
-      },
-      {
-        "name": "com.permission.PERMISSION_A",
-        "grantMode": "system_grant",
-        "availableScope": ["signature"]
-      }
-    ],
     "reqPermissions": [
       {
-        "name": "com.permission.PERMISSION_A",
-        "reason": "Need PERMISSION_A",
+        "name": "ohos.permission.USE_BLUETOOTH",
+        "reason": "Need USE_BLUETOOTH",
         "usedScene": {
           "ability": [
             "com.example.myapplication1.MainAbility"

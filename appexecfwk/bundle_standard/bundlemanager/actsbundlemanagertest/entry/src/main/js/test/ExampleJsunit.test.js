@@ -77,9 +77,9 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.appInfo.supportedModes).assertEqual(0);
         expect(datainfo.installTime).assertLarger(0);
         expect(datainfo.updateTime).assertLarger(0);
-        expect(datainfo.reqPermissions[0]).assertEqual("com.permission.PERMISSION_A");
-        expect(datainfo.reqPermissionDetails[0].name).assertEqual("com.permission.PERMISSION_A");
-        expect(datainfo.reqPermissionDetails[0].reason).assertEqual("Need PERMISSION_A");
+        expect(datainfo.reqPermissions[0]).assertEqual("ohos.permission.USE_BLUETOOTH");
+        expect(datainfo.reqPermissionDetails[0].name).assertEqual("ohos.permission.USE_BLUETOOTH");
+        expect(datainfo.reqPermissionDetails[0].reason).assertEqual("Need USE_BLUETOOTH");
         expect(datainfo.reqPermissionDetails[0].usedScene.abilities[0]).assertEqual(NAME1 + ".MainAbility");
         expect(datainfo.reqPermissionDetails[0].usedScene.when).assertEqual("always");
         expect(datainfo.compatibleVersion).assertEqual(5);
@@ -1030,7 +1030,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.subType).assertEqual(demo.AbilitySubType.UNSPECIFIED);
                     expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.UNSPECIFIED);
                     expect(datainfo.launchMode).assertEqual(demo.LaunchMode.STANDARD);
-                    expect(datainfo.permissions[0]).assertEqual("com.permission.BMS_PERMISSION_CAMERA");
+                    expect(datainfo.permissions[0]).assertEqual("ohos.permission.INTERNET");
                     expect(datainfo.applicationInfo.name).assertEqual(NAME1);
                     expect(datainfo.applicationInfo.description).assertEqual(APPLICATION_DESCRIPTION);
                     expect(datainfo.applicationInfo.descriptionId >= 0).assertTrue();
