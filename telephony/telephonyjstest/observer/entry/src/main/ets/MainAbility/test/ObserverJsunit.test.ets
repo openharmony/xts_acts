@@ -128,14 +128,14 @@ export default function observerJsunit() {
      */
     it('Telephony_observer_observer_off_networkStateChange_0100', 0, async function (done) {
       console.log("************* Telephony_observer_observer_off_networkStateChange_0100 Test start *************")
-      observer.off('networkStateChange', (networkState) => {
-        expect().assertFail()
-        done()
-        return
-      })
-      setTimeout(timeout, 3000)
+      let callback = data => {
+        console.log("on networkStateChange, data:" + JSON.stringify(data));
+      }
+      observer.on('networkStateChange', callback);
+      observer.off('networkStateChange', callback);
+      expect(true).assertTrue();
+      done();
       console.log("************* Telephony_observer_observer_off_networkStateChange_0100 Test end *************")
-      done()
     })
 
     /*
@@ -181,14 +181,14 @@ export default function observerJsunit() {
      */
     it('Telephony_observer_observer_off_signalInfoChange_0100', 0, async function (done) {
       console.log("************* Telephony_observer_observer_off_signalInfoChange_0100 Test start *************")
-      observer.off('signalInfoChange', (networkState) => {
-        expect().assertFail()
-        done()
-        return
-      })
-      setTimeout(timeout, 3000)
+      let callback = data => {
+        console.log("on signalInfoChange, data:" + JSON.stringify(data));
+      }
+      observer.on('signalInfoChange', callback);
+      observer.off('signalInfoChange', callback);
+      expect(true).assertTrue();
+      done();
       console.log("************* Telephony_observer_observer_off_signalInfoChange_0100 Test end *************")
-      done()
     })
 
     
@@ -236,14 +236,14 @@ export default function observerJsunit() {
      */
     it('Telephony_observer_observer_off_cellularDataConnectionStateChange_0100', 0, async function (done) {
       console.log("************* Telephony_observer_observer_off_cellularDataConnectionStateChange_0100 Test start *************")
-      observer.off('cellularDataConnectionStateChange', (data) => {
-        expect().assertFail()
-        done()
-        return
-      })
-      setTimeout(timeout, 3000)
+      let callback = value => {
+        console.log("on cellularDataConnectionStateChange, state:" + value.state + ", network:" + value.network);
+      }
+      observer.on('cellularDataConnectionStateChange', callback);
+      observer.off('cellularDataConnectionStateChange', callback);
+      expect(true).assertTrue();
+      done();
       console.log("************* Telephony_observer_observer_off_cellularDataConnectionStateChange_0100 Test end *************")
-      done()
     })
 
     /*
@@ -289,14 +289,14 @@ export default function observerJsunit() {
      */
     it('Telephony_observer_observer_off_cellularDataFlowChange_0100', 0, async function (done) {
       console.log("************* Telephony_observer_observer_off_cellularDataFlowChange_0100 Test start *************")
-      observer.off('cellularDataFlowChange', (data) => {
-        expect().assertFail()
-        done()
-        return
-      })
-      setTimeout(timeout, 3000)
+      let callback = data => {
+        console.log("on cellularDataFlowChange, data:" + JSON.stringify(data));
+      }
+      observer.on('cellularDataFlowChange', callback);
+      observer.off('cellularDataFlowChange', callback);
+      expect(true).assertTrue();
+      done();
       console.log("************* Telephony_observer_observer_off_cellularDataFlowChange_0100 Test end *************")
-      done()
     })
 
     /*
@@ -342,14 +342,14 @@ export default function observerJsunit() {
      */
     it('Telephony_observer_observer_off_callStateChange_0100', 0, async function (done) {
       console.log("************* Telephony_observer_observer_off_callStateChange_0100 Test start *************")
-      observer.off('callStateChange', (data) => {
-        expect().assertFail()
-        done()
-        return
-      })
-      setTimeout(timeout, 3000)
+      let callback = value => {
+        console.log("on callStateChange, state:" + value.state + ", number:" + value.number);
+      }
+      observer.on('callStateChange', callback);
+      observer.off('callStateChange', callback);
+      expect(true).assertTrue();
+      done();
       console.log("************* Telephony_observer_observer_off_callStateChange_0100 Test end *************")
-      done()
     })
 
     /*
@@ -395,14 +395,14 @@ export default function observerJsunit() {
      */
     it('Telephony_observer_observer_off_simStateChange_0100', 0, async function (done) {
       console.log("************* Telephony_observer_observer_off_simStateChange_0100 Test start *************")
-      observer.off('simStateChange', (data) => {
-        expect().assertFail()
-        done()
-        return
-      })
-      setTimeout(timeout, 3000)
+     let callback = data => {
+    console.log("on simStateChange, data:" + JSON.stringify(data));
+    }
+      observer.on('simStateChange', callback);
+      observer.off('simStateChange',callback);
+      expect(true).assertTrue();
+      done();
       console.log("************* Telephony_observer_observer_off_simStateChange_0100 Test end *************")
-      done()
     })
 
     /*
