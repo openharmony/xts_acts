@@ -314,111 +314,6 @@ export default function albumTestPromiseTest(abilityContext){
 
         // ------------------------------ 002 test start -------------------------
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002_01
-         * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by 666
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002_01', 0, async function (done) {
-            try {
-                await media.getAlbums(666);
-                expect(false).assertTrue();
-                console.info('ALBUM_PROMISE getalbum 002_01 failed');
-                done();
-            } catch (error) {
-                console.info('ALBUM_PROMISE getalbum 002_01 passed');
-                expect(true).assertTrue();
-                done();
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002_02
-         * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by '666'
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002_02', 0, async function (done) {
-            try {
-                await media.getAlbums('666');
-                console.info('ALBUM_PROMISE getalbum 002_02 failed');
-                expect(false).assertTrue();
-                done();
-            } catch (error) {
-                console.info('ALBUM_PROMISE getalbum 002_02 passed');
-                expect(true).assertTrue();
-                done();
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002_03
-         * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by 0
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002_03', 0, async function (done) {
-            try {
-                await media.getAlbums(0);
-                console.info('ALBUM_PROMISE getalbum 002_03 failed');
-                expect(false).assertTrue();
-                done();
-            } catch (error) {
-                console.info('ALBUM_PROMISE getalbum 002_03 passed');
-                expect(true).assertTrue();
-                done();
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002_04
-         * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by true
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002_04', 0, async function (done) {
-            try {
-                await media.getAlbums(true);
-                console.info('ALBUM_PROMISE getalbum 002_04 failed');
-                expect(false).assertTrue();
-                done();
-            } catch (error) {
-                console.info('ALBUM_PROMISE getalbum 002_04 passed');
-                expect(true).assertTrue();
-                done();
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002_05
-         * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by false
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_PROMISE_002_05', 0, async function (done) {
-            try {
-                await media.getAlbums(false);
-                console.info('ALBUM_PROMISE getalbum 002_05 failed');
-                expect(false).assertTrue();
-                done();
-            } catch (error) {
-                console.info('ALBUM_PROMISE getalbum 002_05 passed');
-                expect(true).assertTrue();
-                done();
-            }
-        });
-
-        /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_06
          * @tc.name      : album.getFileAssets
          * @tc.desc      : Get Album Assets by fileHasArgsfetchOp3
@@ -581,9 +476,9 @@ export default function albumTestPromiseTest(abilityContext){
                 const albumId = album.albumId;
 
                 console.info('ALBUM_PROMISE Modify 003_04 album.albumName(old) = ' + album.albumName);
-                let newName = true;
+                let newName = "";
                 for (var i = 0; i < 1200; i++) {
-                    newName += 'i';
+                    newName += i.toString();
                 }
                 album.albumName = newName;
 
@@ -599,76 +494,6 @@ export default function albumTestPromiseTest(abilityContext){
                 done();
             } catch (error) {
                 console.info('ALBUM_PROMISE Modify 003_04 passed');
-                expect(true).assertTrue();
-            }
-            done();
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_05
-         * @tc.name      : commitModify
-         * @tc.desc      : Modify Album name  true
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_05', 0, async function (done) {
-            try {
-                const albumList = await media.getAlbums(allTypefetchOp);
-                const album = albumList[0];
-                const albumId = album.albumId;
-
-                console.info('ALBUM_PROMISE Modify 003_05 album.albumName(old) = ' + album.albumName);
-                const newName = true;
-                album.albumName = newName;
-
-                await album.commitModify();
-
-                let currentfetchOp = {
-                    selections: fileKeyObj.ALBUM_ID + '= ?',
-                    selectionArgs: [albumId + ''],
-                };
-                const newAlbumList = await media.getAlbums(currentfetchOp);
-
-                expect(newAlbumList[0].albumName === newName).assertFalse();
-                done();
-            } catch (error) {
-                console.info('ALBUM_PROMISE Modify 003_05 passed');
-                expect(true).assertTrue();
-            }
-            done();
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_06
-         * @tc.name      : commitModify
-         * @tc.desc      : Modify Album name  false
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_003_06', 0, async function (done) {
-            try {
-                const albumList = await media.getAlbums(allTypefetchOp);
-                const album = albumList[0];
-                const albumId = album.albumId;
-
-                console.info('ALBUM_PROMISE Modify 003_06 album.albumName(old) = ' + album.albumName);
-                const newName = false;
-                album.albumName = newName;
-
-                await album.commitModify();
-
-                let currentfetchOp = {
-                    selections: fileKeyObj.ALBUM_ID + '= ?',
-                    selectionArgs: [albumId + ''],
-                };
-                const newAlbumList = await media.getAlbums(currentfetchOp);
-
-                expect(newAlbumList[0].albumName === newName).assertFalse();
-                done();
-            } catch (error) {
-                console.info('ALBUM_PROMISE Modify 003_06 passed');
                 expect(true).assertTrue();
             }
             done();
@@ -713,54 +538,6 @@ export default function albumTestPromiseTest(abilityContext){
             }
         });
         // ------------------------------ 004 test end -------------------------
-
-        // ------------------------------ 006 test start -------------------------
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_006_01
-         * @tc.name      : commitModify
-         * @tc.desc      : Modify Album albumUri
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_006_01', 0, async function (done) {
-            try {
-                const albumList = await media.getAlbums(allTypefetchOp);
-                const album = albumList[0];
-                album.albumUri = 'testalbumUri';
-                await album.commitModify();
-                console.info('ALBUM_PROMISE Modify 006_01 failed');
-                expect(false).assertTrue();
-            } catch (error) {
-                console.info('ALBUM_PROMISE Modify 006_01 passed');
-                expect(true).assertTrue();
-            }
-            done();
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_006_02
-         * @tc.name      : commitModify
-         * @tc.desc      : Modify Album name  false
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_PROMISE_006_02', 0, async function (done) {
-            try {
-                const albumList = await media.getAlbums(allTypefetchOp);
-                const album = albumList[0];
-                album.coverUri = 'testcoverUri';
-                await album.commitModify();
-                console.info('ALBUM_PROMISE Modify 006_02 failed');
-                expect(false).assertTrue();
-            } catch (error) {
-                console.info('ALBUM_PROMISE Modify 006_02 passed');
-                expect(true).assertTrue();
-            }
-            done();
-        });
-        // ------------------------------ 006 test end -------------------------
     });
 }
 
