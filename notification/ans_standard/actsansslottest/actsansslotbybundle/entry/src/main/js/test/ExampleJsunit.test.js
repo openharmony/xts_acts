@@ -360,6 +360,41 @@ describe('ActsAnsSlotByBundle', function () {
     })
 
     /*
+     * @tc.number    : ActsAnsGetSlotsByBundle_1100
+     * @tc.name      : Verify getSlot OTHER_TYPES
+     * @tc.desc      : After adding slottype to OTHER_TYPES's slot,
+     *                 call getsbybundle for information.(callback)
+     */
+    it('ActsAnsGetSlotsByBundle_1100', 0, async function (done) {
+        console.debug("====>ActsAnsGetSlotsByBundle_1100 start====>");
+        var bundleoption = {
+            bundle: "com.example.actsansslotbybundle"
+        }
+        console.debug("====>addSlotByTypePromise OTHER_TYPES enter====>");
+        await notification.addSlot(notification.SlotType.OTHER_TYPES);
+        console.debug("====>getSlotsByBundle1 start====>");
+        notification.getSlotsByBundle(bundleoption, (err, data) => {
+            console.debug("====>ActsAnsGetSlotsByBundle_1100====>" + JSON.stringify(data) );
+            expect(data[0].type).assertEqual(65535)
+            expect(data[0].level).assertEqual(1)
+            expect(data[0].badgeFlag).assertEqual(true)
+            expect(data[0].bypassDnd).assertEqual(false)
+            expect(data[0].lockscreenVisibility).assertEqual(3)
+            expect(data[0].vibrationEnabled).assertEqual(false)
+            expect(data[0].lightEnabled).assertEqual(false)
+            expect(data[0].enabled).assertEqual(true)
+            expect(data[0].lightColor).assertEqual(0)
+            console.debug("====>getSlotsByBundle1 finish====>");
+            console.debug("====>setSlotByBundle start====>");
+            notification.removeSlot(notification.SlotType.OTHER_TYPES, (err)=>{
+                console.debug("====>removeSlot OTHER_TYPES====>");
+                expect(err.code).assertEqual(0);
+                done();
+            })
+        })
+    })
+
+    /*
      * @tc.number    : ActsAnsSetSlotByBundle_0100
      * @tc.name      : Verify getSlot SERVICE_INFORMATION
      * @tc.desc      : After adding slottype to SERVICE_INFORMATION's slot,
@@ -1534,8 +1569,8 @@ describe('ActsAnsSlotByBundle', function () {
                 console.debug("====>setSlotsByBundle1====>")
                 console.debug("====>getSlotsByBundle1.1 start====>");
                 notification.getSlotsByBundle(bundleoption,(err,data) => {
-                    console.debug("====>ActsAnsSetSlotByBundle_2100.1====>" + JSON.stringify(data));
-                    expect(data).assertEqual(0)
+                    console.debug("====>ActsAnsSetSlotByBundle_2100====>" + JSON.stringify(data));
+                    expect(typeof(data)).assertEqual("object")
                     console.debug("====>getSlotsByBundle1.1 finish====>");
                     done();
                 })
@@ -1555,15 +1590,16 @@ describe('ActsAnsSlotByBundle', function () {
             }
             var notificationslot = {
                 type: notification.SlotType.OTHER_TYPES,
-                level: 4
+                level: 4,
+
             }
             notification.setSlotByBundle(bundleoption, notificationslot).then(() => {
             }).catch((err)=>{
                 console.debug("====>setSlotsByBundle1====>")
                 console.debug("====>getSlotsByBundle1.1 start====>");
                 notification.getSlotsByBundle(bundleoption, (err,data) => {
-                    console.debug("====>ActsAnsSetSlotByBundle_2200.1====>" + JSON.stringify(data));
-                    expect(data).assertEqual(0)
+                    console.debug("====>ActsAnsSetSlotByBundle_2200====>" + JSON.stringify(data));
+                    expect(typeof(data)).assertEqual("object")
                     console.debug("====>getSlotsByBundle1.1 finish====>");
                     done();
                 })

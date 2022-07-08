@@ -12,23 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Subscriber from '@ohos.commonevent'
+import Subscriber from '@ohos.commonEvent'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('ActsSubscriberTestUnorder', async function (done) {
     console.info("===========ActsSubscriberTestUnorder start====================>");
-    var commonEventSubscriber001;
-    var commonEventSubscriber002;
-    var commonEventSubscriber003;
-    var commonEventSubscriber004;
-    var commonEventSubscriber0051;
-    var commonEventSubscriber0052;
-    var commonEventSubscriber006;
-    var commonEventSubscriber008;
-    var commonEventSubscriber0101;
-    var commonEventSubscriber0102;
-    var commonEventSubscriber011;
-    var commonEventSubscriber012;
+    let commonEventSubscriber001;
+    let commonEventSubscriber002;
+    let commonEventSubscriber003;
+    let commonEventSubscriber004;
+    let commonEventSubscriber0051;
+    let commonEventSubscriber0052;
+    let commonEventSubscriber006;
+    let commonEventSubscriber008;
+    let commonEventSubscriber0101;
+    let commonEventSubscriber0102;
+    let commonEventSubscriber011;
+    let commonEventSubscriber012;
 
     function publishCallback(err) {
         console.info("==========================>publishCallback");
@@ -62,7 +62,7 @@ describe('ActsSubscriberTestUnorder', async function (done) {
             done();
         }
 
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: ["publish_event0100"],
         };
 
@@ -100,7 +100,7 @@ describe('ActsSubscriberTestUnorder', async function (done) {
             done();
         }
 
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: ["@#￥#3243adsafdf_"],
         };
 
@@ -128,15 +128,14 @@ describe('ActsSubscriberTestUnorder', async function (done) {
      */
     it('ActsSubscriberTestUnorder_0300', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorder_0300==========================>");
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: ["publish_event0300"],
             publisherDeviceId: "PublishDeviceId0300",
             priority: 10,
         };
 
-        var commonEventPublishData = {
+        let commonEventPublishData = {
             isOrdered: false,
-            bundleName: "PublishBundleName0300",
             code: 55,
             data: "PublishData0300",
         }
@@ -150,7 +149,6 @@ describe('ActsSubscriberTestUnorder', async function (done) {
         function subscriberCallBack003(err, data) {
             console.info("==========================>subscriberCallBack003");
             expect(data.event).assertEqual("publish_event0300");
-            expect(data.bundleName).assertEqual("PublishBundleName0300");
             expect(data.code).assertEqual(55);
             expect(data.data).assertEqual("PublishData0300");
             commonEventSubscriber003.isOrderedCommonEvent(isOrderedCommonEventCallback003);
@@ -172,6 +170,7 @@ describe('ActsSubscriberTestUnorder', async function (done) {
         })
     })
 
+
     /*
      * @tc.number    : ActsSubscriberTestUnorder_0500
      * @tc.name      : verify subscribe and publish : Check the two different subscribe and one publish,
@@ -180,11 +179,11 @@ describe('ActsSubscriberTestUnorder', async function (done) {
      */
     it('ActsSubscriberTestUnorder_0500', 0, async function (done) {
         console.info("===============ActsSubscriberTestUnorder_0500==========================>");
-        var commonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
             events: ["publish_event0500"]
         };
 
-        var commonEventPublishData = {
+        let commonEventPublishData = {
             isOrdered: false,
             isSticky: false,
         }
@@ -225,5 +224,51 @@ describe('ActsSubscriberTestUnorder', async function (done) {
             });
         })
     })
+
+
+    /*
+     * @tc.number    : ActsSubscriberTestUnorder_0600
+     * @tc.name      : verify subscribe and publish : Check whether the current public event is a sticky event              
+     * @tc.desc      : isStickyCommonEvent(callback: AsyncCallback<boolean>): void
+     */
+    it('ActsSubscriberTestUnorder_0600', 0, async function (done) {
+        console.info("===============ActsSubscriberTestUnorder_0600==========================>");
+        let commonEventSubscribeInfo = {
+            events: ["publish_event0600"]
+        };
+
+        let commonEventPublishData = {
+            isOrdered: false,
+            isSticky: false,
+        }
+
+        function isStickyCallback(err, data) {
+            console.info("==========================>isStickyCallback");
+            expect(data).assertEqual(false);
+            done();
+        }
+
+        function subscriberCallBack006(err, data) {
+            console.info("==========================>subscriberCallBack006");
+            commonEventSubscriber006.isStickyCommonEvent(isStickyCallback);
+        }
+
+        Subscriber.createSubscriber(
+            commonEventSubscribeInfo
+        ).then((data)=>{
+            console.info("===============ActsSubscriberTestUnorder_0600=========createSubscriber promise");
+            commonEventSubscriber006 = data;
+            data.getSubscribeInfo().then(()=>{
+                console.info("===============ActsSubscriberTestUnorder_0600=========getSubscribeInfo promise");
+                Subscriber.subscribe(commonEventSubscriber006, subscriberCallBack006);
+                Subscriber.unsubscribe(commonEventSubscriber006, unsubscriberCallBack);
+                setTimeout(function (){
+                    console.info("==========ActsSubscriberTestUnorder_0600 publish start============");
+                    Subscriber.publish("publish_event0600", commonEventPublishData, publishCallback);
+                }, 1000);
+            });
+        })
+    })
+
 })
 

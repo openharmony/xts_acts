@@ -80,10 +80,10 @@ describe('ActsAnsDistributeTest', function () {
     it('ActsDistribute_test_0400', 0, async function (done) {
         function onConsume0100(data) {
             console.info("========ActsDistribute_test_0400 onConsume data:=======>" + JSON.stringify(data));
-			if (data.request.distributedOption.remindType != notify.DeviceRemindType.IDLE_DONOT_REMIND 
-				&& data.request.distributedOption.remindType != notify.DeviceRemindType.IDLE_REMIND
-				&& data.request.distributedOption.remindType != notify.DeviceRemindType.ACTIVE_DONOT_REMIND
-				&& data.request.distributedOption.remindType != notify.DeviceRemindType.ACTIVE_REMIND )		
+			if (data.request.distributedOptions.remindType != notify.DeviceRemindType.IDLE_DONOT_REMIND 
+				&& data.request.distributedOptions.remindType != notify.DeviceRemindType.IDLE_REMIND
+				&& data.request.distributedOptions.remindType != notify.DeviceRemindType.ACTIVE_DONOT_REMIND
+				&& data.request.distributedOptions.remindType != notify.DeviceRemindType.ACTIVE_REMIND )		
 				{
 					expect().assertFail();
 				}
@@ -110,7 +110,7 @@ describe('ActsAnsDistributeTest', function () {
             id: 4,
             label: "ANS_PublishBasicText_0100",
             slotType : notify.SlotType.CONTENT_INFORMATION,
-            distributedOption:{isDistributed: true, supportDisplayDevices: ["0"], supportOperateDevices: ["0"]}
+            distributedOptions:{isDistributed: true, supportDisplayDevices: ["0"], supportOperateDevices: ["0"]}
         }
         await notify.publish(notificationRequest);
         console.info("===========ActsDistribute_test_0400 publish promise========>");
@@ -158,6 +158,46 @@ describe('ActsAnsDistributeTest', function () {
             done();
         }),timeout);
     })
+
+    /*
+     * @tc.number: ActsDistribute_test_0600
+     * @tc.name: Query whether the template exists
+     * @tc.desc: isSupportTemplate(templateName: string, callback: AsyncCallback<boolean>): void
+     */
+    it('ActsDistribute_test_0600', 0, async function (done) {
+        console.info("==>ActsDistribute_test_0600 start==>");
+        var templateName = '/system/etc/notification_template/assets/js/downloadTemplate.js';
+        function isSupportTemplateCallback(err, data) {
+            if(err) {
+                console.error("isSupportTemplateCallback" + err.code);
+            } else {
+                expect(true).assertTrue();
+                console.info("isSupportTemplateCallback" + JSON.stringify(data));
+                done();
+            }
+        }
+        notify.isSupportTemplate(templateName, isSupportTemplateCallback);
+        done();
+    })
+
+    /*
+     * @tc.number: ActsDistribute_test_0700
+     * @tc.name: Query whether the template exists
+     * @tc.desc: isSupportTemplate(templateName: string): Promise<boolean>
+     */
+    it('ActsDistribute_test_0700', 0, async function (done) {
+        console.info("==>ActsDistribute_test_0700 start==>");
+        var templateName = '/system/etc/notification_template/assets/js/downloadTemplate.js';
+        notify.isSupportTemplate(templateName).then ((data) => {
+            expect(data).assertEqual(false);
+            console.info("isSupportTemplatePromise");
+            console.info("==>ActsDistribute_test_0700 success==>" + JSON.stringify(data));
+            done();
+        })
+        done();
+    })
+
+
   })
 
 

@@ -25,6 +25,7 @@ describe('ActsAnsWantAgentTwoProTest', function () {
      * @tc.desc: verify the function of getWantAgent(OperationType.START_ABILITIES)
      */
     it('ACTS_SetWant_0400', 0, async function (done) {
+        expect(3).assertEqual(wantAgent.OperationType.START_SERVICE)
         var agentInfo = {
             wants: [
                     {
