@@ -16,52 +16,60 @@ import geolocation from '@ohos.geolocation';
 import geolocations from '@system.geolocation';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
+import osaccount from '@ohos.account.osAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async function changedLocationMode(){
+async function changedLocationMode(){
     await geolocation.isLocationEnabled().then(async(result) => {
-       console.info('[lbs_js] getLocationSwitchState result: ' + result);
-       if(!result){
-           await geolocation.requestEnableLocation().then(async(result) => {
-               await sleep(3000);
-               console.info('[lbs_js] test requestEnableLocation promise result: ' + result);
-               expect(result).assertTrue();
-           }).catch((error) => {
-               console.info("[lbs_js] promise then error." + error.message);
-               expect().assertFail();
-           });
-       }
-   })
+        console.info('[lbs_js] getLocationSwitchState result: ' + JSON.stringify(result));
+        if(!result){
+            await geolocation.requestEnableLocation().then(async(result) => {
+                await sleep(3000);
+                console.info('[lbs_js] test requestEnableLocation promise result: ' + JSON.stringify(result));
+                expect(result).assertTrue();
+            }).catch((error) => {
+                console.info("[lbs_js] promise then error." + JSON.stringify(error));
+                expect().assertFail();
+            });
+        }
+    });
+    await geolocation.isLocationEnabled().then(async(result) => {
+        console.info('[lbs_js] getLocationSwitchState result: ' + JSON.stringify(result));
+    });
 }
 
 async function applyPermission() {
-   let appInfo = await bundle.getApplicationInfo('ohos.acts.location.geolocation.function', 0, 100);
-   let atManager = abilityAccessCtrl.createAtManager();
-   if (atManager != null) {
-       let tokenID = appInfo.accessTokenId;
-       console.info('[permission] case accessTokenID is ' + tokenID);
-       let permissionName1 = 'ohos.permission.LOCATION';
-       let permissionName2 = 'ohos.permission.LOCATION_IN_BACKGROUND';
-       await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-           console.info('[permission] case grantUserGrantedPermission success :' + result);
-       }).catch((err) => {
-           console.info('[permission] case grantUserGrantedPermission failed :' + err);
-       });
-       await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-           console.info('[permission] case grantUserGrantedPermission success :' + result);
-       }).catch((err) => {
-           console.info('[permission] case grantUserGrantedPermission failed :' + err);
-       });
-   } else {
-       console.info('[permission] case apply permission failed, createAtManager failed');
-   }
+    let osAccountManager = osaccount.getAccountManager();
+    console.debug("=== getAccountManager finish");
+    let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
+    console.info("LocalId is :" + localId);
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.location.geolocation.function', 0, localId);
+    let atManager = abilityAccessCtrl.createAtManager();
+    if (atManager != null) {
+        let tokenID = appInfo.accessTokenId;
+        console.info('[permission] case accessTokenID is ' + tokenID);
+        let permissionName1 = 'ohos.permission.LOCATION';
+        let permissionName2 = 'ohos.permission.LOCATION_IN_BACKGROUND';
+        await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+        await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+    } else {
+        console.info('[permission] case apply permission failed, createAtManager failed');
+    }
 }
 
-describe('geolocationTest', function () {
+describe('geolocationTest_geo2', function () {
     beforeAll(async function (done) {
         console.info('beforeAll case');
         await applyPermission();
@@ -192,17 +200,12 @@ describe('geolocationTest', function () {
      * @tc.level Level 2
     */
      it('SUB_HSS_LocationSystem_0005', 0,  async function (done) {	
-        geolocation.unsubscribe(
-            (result) => {
-                if(err){
-                    return console.info("unsubscribe err:  " + err);
-                }
-                console.info("unsubscribe result:  " + JSON.stringify(result));
-                expect(true).assertEqual(result !=null);
-        });
+        geolocation.unsubscribe();
+        console.info("[lbs_js] unsubscribe called")
         done();
     })
     
 })
+
 
 
