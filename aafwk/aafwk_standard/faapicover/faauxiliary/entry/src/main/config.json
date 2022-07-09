@@ -108,19 +108,6 @@
         "launchType": "singleton"
       },
       {
-        "orientation": "unspecified",
-        "visible": true,
-        "srcPath": "MainAbility7",
-        "name": ".MainAbility7",
-        "srcLanguage": "ets",
-        "icon": "$media:icon",
-        "description": "$string:MainAbility7_desc",
-        "formsEnabled": false,
-        "label": "$string:MainAbility7_label",
-        "type": "page",
-        "launchType": "singleton"
-      },
-      {
         "srcPath": "ServiceAbility",
         "name": ".ServiceAbility",
         "srcLanguage": "ets",
@@ -228,20 +215,6 @@
           "pages/index"
         ],
         "name": ".MainAbility6",
-        "window": {
-          "designWidth": 720,
-          "autoDesignWidth": false
-        }
-      },
-      {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
-        "pages": [
-          "pages/index"
-        ],
-        "name": ".MainAbility7",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false

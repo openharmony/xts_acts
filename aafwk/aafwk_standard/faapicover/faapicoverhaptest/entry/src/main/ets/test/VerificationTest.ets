@@ -34,8 +34,6 @@ export default function verificationTest(){
       TAG = 'SUB_AA_OpenHarmony_Test_HasWindowFocus_0100 ==>';
 
       try {
-        let stageMode:any = ability_featureAbility.getContext
-        console.info(TAG + "stageMode = " + stageMode.stageMode)
         let flags = false
         let subscriber = null
         let subscribeInfo = {
@@ -363,6 +361,61 @@ export default function verificationTest(){
           console.info(TAG + "getWindow data = " + data);
           done();
         })
+      } catch (err) {
+        console.info(TAG + "getWindow catch err = " + JSON.stringify(err));
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  SUB_AA_OpenHarmony_Test_TerminateSelfWithResult_0100
+     * @tc.name    CTerminate ability through TerminateSelfWithResult.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_OpenHarmony_Test_TerminateSelfWithResult_0100', 0, async function(done) {
+      TAG = 'SUB_AA_OpenHarmony_Test_TerminateSelfWithResult_0100 ==>';
+      try {
+        let stageMode = ability_featureAbility.getContext().stageMode
+        let resultCode = undefined
+        let subscriber = null
+        let subscribeInfo = {
+          events: ["Fa_Auxiliary_MainAbility6_onDestroy"]
+        }
+        function SubscribeInfoCallback(err, data) {
+          console.info(TAG + "===SubscribeInfoCallback===" + JSON.stringify(data))
+          if (data.event == "Fa_Auxiliary_MainAbility6_onDestroy") {
+            setTimeout(()=>{
+              expect(stageMode).assertFalse()
+              expect(resultCode).assertEqual(661);
+              commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
+            }, 1000)
+          }
+        }
+        function UnSubscribeInfoCallback(err, data) {
+          console.info(TAG + "===UnSubscribeInfoCallback===")
+          done()
+        }
+        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
+          console.info(TAG + "===CreateSubscriberCallback===")
+          subscriber = data
+          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
+        })
+
+        let wantNum = {
+          want: {
+            bundleName: 'ohos.acts.aafwk.test.faauxiliary',
+            abilityName: 'ohos.acts.aafwk.test.faauxiliary.MainAbility6'
+          }
+        }
+        ability_featureAbility.startAbilityForResult(wantNum).then((data) => {
+          console.info(TAG + "startAbilityForResult data = " + JSON.stringify(data));
+          resultCode = data.resultCode
+        }).catch((err) => {
+          console.info(TAG + "startAbilityForResult err = " + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        });
       } catch (err) {
         console.info(TAG + "getWindow catch err = " + JSON.stringify(err));
         done();

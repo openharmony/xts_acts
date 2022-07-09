@@ -21,9 +21,20 @@ export default {
   onCreate() {
     console.info(printLog1 + 'onCreate');
 
-    commonEvent.publish(listPush1 + "onCreate", (err) => {
-      console.info(printLog1 + listPush1 + "onCreate");
-    });
+    setTimeout(()=>{
+      let wantNum = {
+        want: {
+          bundleName: 'ohos.acts.aafwk.test.faauxiliary',
+          abilityName: 'ohos.acts.aafwk.test.faauxiliary.MainAbility'
+        },
+        resultCode: 661
+      }
+      ability_featureAbility.terminateSelfWithResult(wantNum).then((data) => {
+        console.info(printLog1 + "terminateSelfWithResult data = " + JSON.stringify(data));
+      }).catch((err) => {
+        console.info(printLog1 + "terminateSelfWithResult err = " + JSON.stringify(err));
+      });
+    }, 3000)
   },
   onDestroy() {
     console.info(printLog1 + 'onDestroy');
@@ -51,20 +62,5 @@ export default {
     commonEvent.publish(listPush1 + "onNewWant", (err) => {
       console.info(printLog1 + listPush1 + "onNewWant");
     });
-
-    setTimeout(()=>{
-      let wantNum = {
-        want: {
-          bundleName: 'ohos.acts.aafwk.test.faauxiliary',
-          abilityName: 'ohos.acts.aafwk.test.faauxiliary.MainAbility'
-        },
-        resultCode: 661
-      }
-      ability_featureAbility.terminateSelfWithResult(wantNum).then((data) => {
-        console.info(printLog1 + "terminateSelfWithResult data = " + JSON.stringify(data));
-      }).catch((err) => {
-        console.info(printLog1 + "terminateSelfWithResult err = " + JSON.stringify(err));
-      });
-    }, 3000)
   }
 }
