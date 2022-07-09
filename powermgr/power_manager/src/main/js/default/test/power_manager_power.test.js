@@ -21,41 +21,41 @@ describe('appInfoTest_power_1', function () {
     console.log("*************Power Unit Test Begin*************");
 
     /**
-     * @tc.number power_js_001
-     * @tc.name power_is_screen_on_promise_test
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0010
+     * @tc.name Power_Is_Screnn_On_Promise_JSTest0010
      * @tc.desc Checks whether the screen of a device is on or off
      */
-    it('power_is_screen_on_promise_test', 0, async function (done) {
-        power.wakeupDevice("power_is_screen_on_promise_test");
+    it('Power_Is_Screnn_On_Promise_JSTest0010', 0, async function (done) {
+        power.wakeupDevice("Power_Is_Screnn_On_Promise_JSTest0010");
         power.isScreenOn()
             .then(screenOn => {
-                console.info('power_is_screen_on_promise_test screenOn is ' + screenOn);
+                console.info('Power_Is_Screnn_On_Promise_JSTest0010 screenOn is ' + screenOn);
                 expect(screenOn).assertTrue();
-                console.info('power_is_screen_on_promise_test success');
+                console.info('Power_Is_Screnn_On_Promise_JSTest0010 success');
                 done();
             })
             .catch(error => {
-                console.log('power_is_screen_on_promise_test error: ' + error);
+                console.log('Power_Is_Screnn_On_Promise_JSTest0010 error: ' + error);
                 expect().assertFail();
                 done();
             })
     })
 
     /**
-     * @tc.number power_js_002
-     * @tc.name power_is_screen_on_callback_test
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0020
+     * @tc.name Power_Is_Screnn_On_Callback_JSTest0020
      * @tc.desc Checks whether the screen of a device is on or off
      */
-    it('power_is_screen_on_callback_test', 0, async function (done) {
-        power.wakeupDevice("power_is_screen_on_callback_test");
+    it('Power_Is_Screnn_On_Callback_JSTest0020', 0, async function (done) {
+        power.wakeupDevice("Power_Is_Screnn_On_Callback_JSTest0020");
         power.isScreenOn((error, screenOn) => {
             if (typeof error === "undefined") {
-                console.info('power_is_screen_on_callback_test screenOn is ' + screenOn);
+                console.info('Power_Is_Screnn_On_Callback_JSTest0020 screenOn is ' + screenOn);
                 expect(screenOn).assertTrue();
-                console.info('power_is_screen_on_callback_test success');
+                console.info('Power_Is_Screnn_On_Callback_JSTest0020 success');
                 done();
             } else {
-                console.log('power_is_screen_on_callback_test: ' + error);
+                console.log('Power_Is_Screnn_On_Callback_JSTest0020: ' + error);
                 expect().assertFail();
                 done();
             }
@@ -63,34 +63,34 @@ describe('appInfoTest_power_1', function () {
     })
 
     /**
-     * @tc.number power_js_003
-     * @tc.name power_wakeupDevice_test_string
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0030
+     * @tc.name Power_WakeupDevices_String_JSTest0030
      * @tc.desc Try to wakeup the device and let screen on
      */
-    it('power_wakeupDevice_test_string', 0, async function (done) {
+    it('Power_WakeupDevices_String_JSTest0030', 0, async function (done) {
         power.isScreenOn()
             .then(screenOn => {
-                console.info('power_wakeupDevice_test_string: The current screenOn is ' + screenOn);
+                console.info('Power_WakeupDevices_String_JSTest0030: The current screenOn is ' + screenOn);
                 if (screenOn) {
                     power.suspendDevice();
                 }  
             })
             .catch(error => {
-                console.log('power_wakeupDevice_test_string error: ' + error);
+                console.log('Power_WakeupDevices_String_JSTest0030 error: ' + error);
                 expect().assertFail();
                 done();
             })
         setTimeout(function(){
-            power.wakeupDevice("power_wakeupDevice_test_string");
+            power.wakeupDevice("Power_WakeupDevices_String_JSTest0030");
             power.isScreenOn()
             .then(screenOn => {
-                console.info('power_wakeupDevice_test_string: The current screenOn is ' + screenOn);
+                console.info('Power_WakeupDevices_String_JSTest0030: The current screenOn is ' + screenOn);
                 expect(screenOn).assertTrue();
-                console.info('power_wakeupDevice_test_string success');
+                console.info('Power_WakeupDevices_String_JSTest0030 success');
                 done();
             })
             .catch(error => {
-                console.log('power_wakeupDevice_test_string error: ' + error);
+                console.log('Power_WakeupDevices_String_JSTest0030 error: ' + error);
                 expect().assertFail();
                 done();
             })
@@ -98,35 +98,35 @@ describe('appInfoTest_power_1', function () {
     })
 
     /**
-     * @tc.number power_js_004
-     * @tc.name power_suspendDevice_test
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0040
+     * @tc.name Power_SuspendDevices_JSTest0040
      * @tc.desc Try to suspend the device and let screen off
      */
-    it('power_suspendDevice_test', 0, async function (done) {
+    it('Power_SuspendDevices_JSTest0040', 0, async function (done) {
         power.isScreenOn()
             .then(screenOn => {
-                console.info('power_suspendDevice_test: The current screenOn is ' + screenOn);
+                console.info('Power_SuspendDevices_JSTest0040: The current screenOn is ' + screenOn);
                 if (!screenOn) { 
-                    power.wakeupDevice("power_suspendDevice_test");
+                    power.wakeupDevice("Power_SuspendDevices_JSTest0040");
                 } 
             })
             .catch(error => {
-                console.log('power_suspendDevice_test error: ' + error);
+                console.log('Power_SuspendDevices_JSTest0040 error: ' + error);
                 expect().assertFail();
                 done();
             })
         setTimeout(function(){
             power.suspendDevice();
-            console.info('power_suspendDevice_test: SuspendDevice end');
+            console.info('Power_SuspendDevices_JSTest0040: SuspendDevice end');
             power.isScreenOn()
             .then(screenOn => {
-                console.info('power_suspendDevice_test: The current screenOn is ' + screenOn);
+                console.info('Power_SuspendDevices_JSTest0040: The current screenOn is ' + screenOn);
                 expect(screenOn).assertFalse();
-                console.info('power_suspendDevice_test success');
+                console.info('Power_SuspendDevices_JSTest0040 success');
                 done();
             })
             .catch(error => {
-                console.log('power_suspendDevice_test error: ' + error);
+                console.log('Power_SuspendDevices_JSTest0040 error: ' + error);
                 expect().assertFail();
                 done();
             })
@@ -134,37 +134,37 @@ describe('appInfoTest_power_1', function () {
     })
 
     /**
-     * @tc.number power_js_005
-     * @tc.name power_set_power_mode_promise
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0050
+     * @tc.name Power_Get_PowerMode_Callback_JSTest0050
      * @tc.desc Get The mode the device
      */
-     it('power_get_power_mode_promise', 0, async function (done) {
+     it('Power_Get_PowerMode_Callback_JSTest0050', 0, async function (done) {
         power.getPowerMode()
         .then(powerMode => {
-            console.info('power_get_set_power_mode_promise power mode is ' + powerMode);
+            console.info('Power_Get_PowerMode_Callback_JSTest0050 power mode is ' + powerMode);
             expect(powerMode >= 600 && powerMode <= 603).assertTrue();
             done();
         })
         .catch(error => {
-            console.log('power_get_set_power_mode_promise error: ' + error);
+            console.log('Power_Get_PowerMode_Callback_JSTest0050 error: ' + error);
             expect().assertFail();
             done();
         })    
     })
 
     /**
-     * @tc.number power_js_006
-     * @tc.name power_get_power_mode_callback
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0060
+     * @tc.name Power_Get_PowerMode_Promise_JSTest0060
      * @tc.desc Get The mode the device
      */
-    it('power_get_power_mode_callback', 0, async function (done) {
+    it('Power_Get_PowerMode_Promise_JSTest0060', 0, async function (done) {
         power.getPowerMode((error, powerMode) => {
             if (typeof error === "undefined") {
-                console.info('power_power_mode_callback power mode is ' + powerMode);
+                console.info('Power_Get_PowerMode_Promise_JSTest0060 power mode is ' + powerMode);
                 expect(powerMode >= 600 && powerMode <= 603).assertTrue();
                 done();
             } else {
-                console.log('power_get_power_mode_callback: ' + error);
+                console.log('Power_Get_PowerMode_Promise_JSTest0060: ' + error);
                 expect().assertFail();
                 done();
             }    
@@ -172,44 +172,44 @@ describe('appInfoTest_power_1', function () {
     })
 
     /**
-     * @tc.number power_js_007
-     * @tc.name power_device_power_mode_MODE_NORMAL
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0070
+     * @tc.name Power_Device_Power_Mode_MODENORMAL_JSTest0070
      * @tc.desc Get device power mode MODE_NORMAL
      */
-     it('power_device_power_mode_normal', 0, function () {
+     it('Power_Device_Power_Mode_MODENORMAL_JSTest0070', 0, function () {
         let devicePowerMode = power.DevicePowerMode.MODE_NORMAL;
         console.info('MODE_NORMAL = ' + devicePowerMode);
         expect(devicePowerMode === 600).assertTrue();
       })
 
     /**
-     * @tc.number power_js_008
-     * @tc.name power_device_power_mode_MODE_POWER_SAVE
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0080
+     * @tc.name Power_Device_Power_Mode_MODEPOWERSAVE_JSTest0080
      * @tc.desc Get device power mode MODE_POWER_SAVE
      */
-     it('power_device_power_mode_power_save', 0, function () {
+     it('Power_Device_Power_Mode_MODEPOWERSAVE_JSTest0080', 0, function () {
         let devicePowerMode = power.DevicePowerMode.MODE_POWER_SAVE;
         console.info('MODE_POWER_SAVE = ' + devicePowerMode);
         expect(devicePowerMode === 601).assertTrue();
       })
 
     /**
-     * @tc.number power_js_009
-     * @tc.name power_device_power_mode_MODE_PERFORMANCE
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0090
+     * @tc.name Power_Device_pPower_Mode_MODEPERFORMANCE_JSTest0090
      * @tc.desc Get device power mode MODE_PERFORMANCE
      */
-     it('power_device_power_mode_performance', 0, function () {
+     it('Power_Device_pPower_Mode_MODEPERFORMANCE_JSTest0090', 0, function () {
         let devicePowerMode = power.DevicePowerMode.MODE_PERFORMANCE;
         console.info('MODE_PERFORMANCE = ' + devicePowerMode);
         expect(devicePowerMode === 602).assertTrue();
       })
 
     /**
-     * @tc.number power_js_010
-     * @tc.name power_device_power_mode_MODE_EXTREME_POWER_SAVE
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0100
+     * @tc.name Power_Device_Power_Mode_MODE_EXTREME_POWER_SAVE_JSTest0100
      * @tc.desc Get device power mode MODE_EXTREME_POWER_SAVE
      */
-     it('power_device_power_mode_extreme_power_save', 0, function () {
+     it('Power_Device_Power_Mode_MODE_EXTREME_POWER_SAVE_JSTest0100', 0, function () {
         let devicePowerMode = power.DevicePowerMode.MODE_EXTREME_POWER_SAVE;
         console.info('MODE_EXTREME_POWER_SAVE = ' + devicePowerMode);
         expect(devicePowerMode === 603).assertTrue();

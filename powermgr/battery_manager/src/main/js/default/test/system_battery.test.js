@@ -43,7 +43,7 @@ describe('appInfoTest_battery_3', function () {
     console.log("*************System Battery Unit Test Begin*************");
 
     /**
-     * @tc.number system_battery_js_0100
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0010
      * @tc.name get_status_success_test
      * @tc.desc Battery acquisition kit
      */
@@ -69,7 +69,7 @@ describe('appInfoTest_battery_3', function () {
     });
 
     /**
-     * @tc.number system_battery_js_0200
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0020
      * @tc.name get_status_success_null_test
      * @tc.desc Battery acquisition kit
      */
@@ -90,7 +90,7 @@ describe('appInfoTest_battery_3', function () {
     });
 
     /**
-     * @tc.number system_battery_js_0300
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0030
      * @tc.name get_status_success_empty_test
      * @tc.desc Battery acquisition kit
      */
@@ -110,7 +110,7 @@ describe('appInfoTest_battery_3', function () {
     });
 
     /**
-     * @tc.number system_battery_js_0400
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0040
      * @tc.name get_status_fail_null_test
      * @tc.desc Battery acquisition kit
      */
@@ -134,7 +134,7 @@ describe('appInfoTest_battery_3', function () {
     });
 
     /**
-     * @tc.number system_battery_js_0500
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0050
      * @tc.name get_status_fail_empty_test
      * @tc.desc Battery acquisition kit
      */
@@ -157,7 +157,7 @@ describe('appInfoTest_battery_3', function () {
     });
 
     /**
-     * @tc.number system_battery_js_0600
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0060
      * @tc.name get_status_complete_null_test
      * @tc.desc Battery acquisition kit
      */
@@ -178,7 +178,7 @@ describe('appInfoTest_battery_3', function () {
     });
 
     /**
-     * @tc.number system_battery_js_0700
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0070
      * @tc.name get_status_complete_empty_test
      * @tc.desc Battery acquisition kit
      */
@@ -198,7 +198,7 @@ describe('appInfoTest_battery_3', function () {
     });
 
     /**
-     * @tc.number system_battery_js_0800
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0080
      * @tc.name get_status_all_null
      * @tc.desc Battery acquisition kit
      */
@@ -213,7 +213,7 @@ describe('appInfoTest_battery_3', function () {
     });
 
     /**
-     * @tc.number system_battery_js_0800
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0090
      * @tc.name get_status_all_empty
      * @tc.desc Battery acquisition kit
      */
