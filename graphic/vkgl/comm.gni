@@ -22,7 +22,7 @@ common_include = [
   "//foundation/graphic/standard/rosen/modules/render_service_client",
   "//foundation/graphic/standard/interfaces/innerkits/vsync_module",
   "//foundation/graphic/standard/rosen/include/common",
-  "//foundation/windowmanager/interfaces/innerkits/wm",
+  "//foundation/window/window_manager/interfaces/innerkits/wm",
   "//third_party/VK-GL-CTS",
   "//third_party/VK-GL-CTS/framework/delibs/debase",
   "//third_party/VK-GL-CTS/framework/delibs/decpp",
@@ -60,7 +60,7 @@ common_depends = [
   "//foundation/graphic/standard/rosen/modules/render_service_base:librender_service_base",
   "//foundation/graphic/standard/rosen/modules/render_service_client:librender_service_client",
   "//foundation/graphic/standard/rosen/samples/2d_graphics:drawing_sample_rs",
-  "//foundation/windowmanager/wm:libwm",
+  "//foundation/window/window_manager/wm:libwm",
   "//third_party/zlib:libz",
   "//third_party/VK-GL-CTS/framework/common:libdeqp_tcutil",
   "//third_party/VK-GL-CTS/framework/delibs/decpp:libdeqp_decpp",
@@ -89,10 +89,10 @@ common_depends = [
   "//foundation/graphic/standard/rosen/modules/render_service_client:librender_service_client",
   "//third_party/zlib:libz",
 
-  "//foundation/windowmanager/dm:libdm",
-  "//foundation/windowmanager/dmserver:libdms",
-  "//foundation/windowmanager/wm:libwm",
-  "//foundation/windowmanager/wmserver:libwms",
+  "//foundation/window/window_manager/dm:libdm",
+  "//foundation/window/window_manager/dmserver:libdms",
+  "//foundation/window/window_manager/wm:libwm",
+  "//foundation/window/window_manager/wmserver:libwms",
   "//third_party/VK-GL-CTS/framework/platform/ohos/rosen_context:rosen_context",
 ]
 
