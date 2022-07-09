@@ -2494,7 +2494,7 @@ describe('ActsAccountOAuthToken', function () {
             appAccountManager.getAuthenticatorInfo(OWNERSELF,(err,databack)=>{
                 console.debug("====>ActsAccountOAuthToken_9500 getAuthenticatorInfo err:" + JSON.stringify(err));
                 expect(err.code!=0).assertEqual(true);
-                except(account.ResultCode.SUCCESS).assertEqual(0);
+                expect(account.ResultCode.SUCCESS).assertEqual(0);
                 expect(account.ResultCode.ERROR_ACCOUNT_NOT_EXIST).assertEqual(10001);
                 expect(account.ResultCode.ERROR_APP_ACCOUNT_SERVICE_EXCEPTION).assertEqual(10002);
                 expect(account.ResultCode.ERROR_INVALID_PASSWORD).assertEqual(10003);
@@ -2528,7 +2528,8 @@ describe('ActsAccountOAuthToken', function () {
                 expect(account.Constants.KEY_NAME).assertEqual('name');
                 expect(account.Constants.KEY_OWNER).assertEqual('owner');
                 expect(account.Constants.KEY_TOKEN).assertEqual('token');
-                expect(account.Constants.KEY_AUTHTYPE).assertEqual('authType');
+                expect(account.Constants.KEY_ACTION).assertEqual('action');
+                expect(account.Constants.KEY_AUTH_TYPE).assertEqual('authType');
                 expect(account.Constants.KEY_SESSION_ID).assertEqual('sessionId');
                 expect(account.Constants.KEY_CALLER_PID).assertEqual('callerPid');
                 expect(account.Constants.KEY_CALLER_UID).assertEqual('callerUid');
