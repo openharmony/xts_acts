@@ -323,6 +323,73 @@ export default function filekeyTestCallBackTest(abilityContext){
         it('test_fileKey_0015', 0, async function (done) {
             getFileAssetsBy(done, 'audioAlbum');
         });
+
+        /**
+         * @tc.number    : test_fileKey_0016
+         * @tc.name      : getFileAssets
+         * @tc.desc      : filekey relative_path
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('test_fileKey_0016', 0, async function (done) {
+            try {
+                let mediaType = mediaLibrary.MediaType.IMAGE;
+                let DIR_IMAGE = mediaLibrary.DirectoryType.DIR_IMAGE;
+                const path = await media.getPublicDirectory(DIR_IMAGE);
+                let fileAsset = await media.createAsset(mediaType, 'forRelative.jpg', path);
+                if (fileAsset == undefined) {
+                    console.info('MediaLibraryTest : FETCHRESULT createAsset fail');
+                    expect(false).assertTrue();
+                    done();
+                    return;
+                }
+                let fetchOption = {
+                    selections: fileKeyObj.RELATIVE_PATH + '= ?',
+                    selectionArgs: [path]
+                }
+                let fetchFileResult = await media.getFileAssets(fetchOption);
+                let firstObject = await fetchFileResult.getFirstObject();
+                expect(firstObject.relativePath == path).assertTrue();
+                done();
+            } catch (error) {
+                console.info('ASSET_CALLBACK test_fileKey_0016 failed, message = ' + error);
+            }
+        });
+
+        /**
+         * @tc.number    : test_fileKey_0017
+         * @tc.name      : getFileAssets
+         * @tc.desc      : filekey display_name
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('test_fileKey_0017', 0, async function (done) {
+        try {
+            let mediaType = mediaLibrary.MediaType.IMAGE;
+            let DIR_IMAGE = mediaLibrary.DirectoryType.DIR_IMAGE;
+            const path = await media.getPublicDirectory(DIR_IMAGE);
+            let name = 'forDisplay.jpg'
+            let fileAsset = await media.createAsset(mediaType, name, path);
+            if (fileAsset == undefined) {
+                console.info('MediaLibraryTest : FETCHRESULT createAsset fail');
+                expect(false).assertTrue();
+                done();
+                return;
+            }
+            let fetchOption = {
+                selections: fileKeyObj.DISPLAY_NAME + '= ?',
+                selectionArgs: [name]
+            }
+            let fetchFileResult = await media.getFileAssets(fetchOption);
+            let firstObject = await fetchFileResult.getFirstObject();
+            expect(firstObject.displayName == name).assertTrue();
+            done();
+        } catch (error) {
+            console.info('ASSET_CALLBACK test_fileKey_0017 failed, message = ' + error);
+        }
+        });
     });
 }
 

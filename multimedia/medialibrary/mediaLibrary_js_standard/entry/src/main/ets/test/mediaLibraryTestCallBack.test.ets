@@ -980,7 +980,31 @@ export default function mediaLibraryTestCallBackTest(abilityContext){
             }
         });
 
-
+        /**
+         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_RELEASE_001
+         * @tc.name      : release
+         * @tc.desc      : Release MediaLibrary instance
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_RELEASE_001', 0, async function (done) {
+            try {
+                console.info('MediaLibraryTest : release 001 begin');
+                media.release((err, data) => {
+                if (err == undefined) {
+                    expect(true).assertTrue();
+                    done();
+                } else {
+                    expect(false).assertTrue();
+                    done();
+                }});
+            } catch (error) {
+                console.info('MediaLibraryTest : release 001 failed, message = ' + error);
+                expect(false).assertTrue();
+                done();
+            }
+        });
     });
 }
 
