@@ -355,147 +355,6 @@ export default function albumTestCallBackTest(abilityContext){
 
         // ------------------------------ 002 test start -------------------------
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_01
-         * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by 666
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_01', 0, async function (done) {
-            try {
-                media.getAlbums(666, (err, albumList) => {
-                    if (albumList == undefined) {
-                        console.info('ALBUM_CALLBACK getalbum 002_01 passed');
-                        expect(true).assertTrue();
-                        done();
-                    } else {
-                        expect(false).assertTrue();
-                        console.info('ALBUM_CALLBACK getalbum 002_01 failed');
-                        done();
-                    }
-                });
-
-            } catch (error) {
-                console.info('ALBUM_CALLBACK getalbum 002_01 passed');
-                expect(true).assertTrue();
-                done();
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_02
-         * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by '666'
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_02', 0, async function (done) {
-            try {
-                media.getAlbums('666', (err, albumList) => {
-                    if (albumList == undefined) {
-                        console.info('ALBUM_CALLBACK getalbum 002_02 passed');
-                        expect(true).assertTrue();
-                        done();
-                    } else {
-                        expect(false).assertTrue();
-                        console.info('ALBUM_CALLBACK getalbum 002_02 failed');
-                        done();
-                    }
-                });
-            } catch (error) {
-                console.info('ALBUM_CALLBACK getalbum 002_02 passed');
-                expect(true).assertTrue();
-                done();
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_03
-         * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by 0
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_03', 0, async function (done) {
-            try {
-                media.getAlbums(0, (err, albumList) => {
-                    if (albumList == undefined) {
-                        console.info('ALBUM_CALLBACK getalbum 002_03 passed');
-                        expect(true).assertTrue();
-                        done();
-                    } else {
-                        expect(false).assertTrue();
-                        console.info('ALBUM_CALLBACK getalbum 002_03 failed');
-                        done();
-                    }
-                });
-            } catch (error) {
-                console.info('ALBUM_CALLBACK getalbum 002_03 passed');
-                expect(true).assertTrue();
-                done();
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_04
-         * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by true
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_04', 0, async function (done) {
-            try {
-                media.getAlbums(true, (err, albumList) => {
-                    if (albumList == undefined) {
-                        console.info('ALBUM_CALLBACK getalbum 002_04 passed');
-                        expect(true).assertTrue();
-                        done();
-                    } else {
-                        expect(false).assertTrue();
-                        console.info('ALBUM_CALLBACK getalbum 002_04 failed');
-                        done();
-                    }
-                });
-            } catch (error) {
-                console.info('ALBUM_CALLBACK getalbum 002_04 passed');
-                expect(true).assertTrue();
-                done();
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_05
-         * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by false
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_002_05', 0, async function (done) {
-            try {
-                media.getAlbums(false, (err, albumList) => {
-                    if (albumList == undefined) {
-                        console.info('ALBUM_CALLBACK getalbum 002_05 passed');
-                        expect(true).assertTrue();
-                        done();
-                    } else {
-                        expect(false).assertTrue();
-                        console.info('ALBUM_CALLBACK getalbum 002_05 failed');
-                        done();
-                    }
-                });
-            } catch (error) {
-                console.info('ALBUM_CALLBACK getalbum 002_05 passed');
-                expect(true).assertTrue();
-                done();
-            }
-        });
-
-        /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_06
          * @tc.name      : album.getFileAssets
          * @tc.desc      : Get Album Assets by fileHasArgsfetchOp3
@@ -685,9 +544,9 @@ export default function albumTestCallBackTest(abilityContext){
                 const albumId = album.albumId;
 
                 console.info('ALBUM_CALLBACK Modify 003_03 album.albumName(old) = ' + album.albumName);
-                let newName = true;
+                let newName = "";
                 for (var i = 0; i < 1200; i++) {
-                    newName += 'i';
+                    newName += i.toString();
                 }
                 album.albumName = newName;
 
@@ -708,83 +567,6 @@ export default function albumTestCallBackTest(abilityContext){
 
             } catch (error) {
                 console.info('ALBUM_CALLBACK Modify 003_03 passed');
-                expect(true).assertTrue();
-            }
-            done();
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_04
-         * @tc.name      : commitModify
-         * @tc.desc      : Modify Album name  true
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_04', 0, async function (done) {
-            try {
-                const albumList = await media.getAlbums(allTypefetchOp);
-                const album = albumList[0];
-                const albumId = album.albumId;
-
-                console.info('ALBUM_CALLBACK Modify 003_04 album.albumName(old) = ' + album.albumName);
-                const newName = true;
-                album.albumName = newName;
-
-                album.commitModify(async () => {
-                    try {
-                        let currentfetchOp = {
-                            selections: fileKeyObj.ALBUM_ID + '= ?',
-                            selectionArgs: [albumId + ''],
-                        };
-                        const newAlbumList = await media.getAlbums(currentfetchOp);
-
-                        expect(newAlbumList[0].albumName == newName).assertFalse();
-                        done();
-                    } catch (error) {
-                        console.info('ALBUM_CALLBACK Modify 003_04 commitModify failed, message = ' + error);
-                    }
-                });
-            } catch (error) {
-                console.info('ALBUM_CALLBACK Modify 003_04 passed');
-                expect(true).assertTrue();
-            }
-            done();
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_05
-         * @tc.name      : commitModify
-         * @tc.desc      : Modify Album name  false
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_05', 0, async function (done) {
-            try {
-                const albumList = await media.getAlbums(allTypefetchOp);
-                const album = albumList[0];
-                const albumId = album.albumId;
-
-                console.info('ALBUM_CALLBACK Modify 003_05 album.albumName(old) = ' + album.albumName);
-                const newName = false;
-                album.albumName = newName;
-                album.commitModify(async () => {
-                    try {
-                        let currentfetchOp = {
-                            selections: fileKeyObj.ALBUM_ID + '= ?',
-                            selectionArgs: [albumId + ''],
-                        };
-                        const newAlbumList = await media.getAlbums(currentfetchOp);
-
-                        expect(newAlbumList[0].albumName == newName).assertFalse();
-                        done();
-                    } catch (error) {
-                        console.info('ALBUM_CALLBACK Modify 003_05 commitModify failed, message = ' + error);
-                    }
-                });
-            } catch (error) {
-                console.info('ALBUM_CALLBACK Modify 003_05 passed');
                 expect(true).assertTrue();
             }
             done();
@@ -835,52 +617,6 @@ export default function albumTestCallBackTest(abilityContext){
             }
         });
         // ------------------------------ 004 test end -------------------------
-
-        // ------------------------------ 006 test start -------------------------
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_006_01
-         * @tc.name      : commitModify
-         * @tc.desc      : Modify Album albumUri
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_006_01', 0, async function (done) {
-            const albumList = await media.getAlbums(allTypefetchOp);
-            const album = albumList[0];
-            try {
-                album.albumUri = 'testalbumUri';
-                expect(false).assertTrue();
-                done();
-            } catch (error) {
-                expect(true).assertTrue();
-                done();
-                console.info('ALBUM_CALLBACK Modify 006_01 003 album.albumUri error = album.albumUri has no setter');
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_006_02
-         * @tc.name      : commitModify
-         * @tc.desc      : Modify Album name  false
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_006_02', 0, async function (done) {
-            const albumList = await media.getAlbums(allTypefetchOp);
-            const album = albumList[0];
-            try {
-                album.coverUri = 'testcoverUri';
-                expect(false).assertTrue();
-                done();
-            } catch (error) {
-                expect(true).assertTrue();
-                console.info('ALBUM_CALLBACK Modify 006_01 003 album.albumUri error =  album.coverUri has no setter');
-                done();
-            }
-        });
-        // ------------------------------ 006 test end -------------------------
     });
 }
 

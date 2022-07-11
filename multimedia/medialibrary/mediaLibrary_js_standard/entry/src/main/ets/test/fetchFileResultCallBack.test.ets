@@ -381,7 +381,8 @@ export default function fetchFileResultCallBackTest(abilityContext) {
                         console.info('MediaLibraryTest : FETCHRESULT getNextObject 008_01  fail');
                         done();
                     } else {
-                        expect(0 < targetObjects.length <= 1).assertTrue();
+                        expect(targetObjects.length > 0).assertTrue();
+                        expect(targetObjects.length <= 1).assertTrue();
                         console.info('MediaLibraryTest : FETCHRESULT getPositionObject 008_01 end');
                         done();
                     }
@@ -412,7 +413,8 @@ export default function fetchFileResultCallBackTest(abilityContext) {
                         console.info('MediaLibraryTest : FETCHRESULT getNextObject 008_01  fail');
                         done();
                     } else {
-                        expect(0 < targetObjects.length <= 2).assertTrue();
+                        expect(targetObjects.length > 0).assertTrue();
+                        expect(targetObjects.length <= 2).assertTrue();
                         console.info('MediaLibraryTest :  FETCHRESULT getAllObject 008_02 targetObjects.length:'
                         + targetObjects.length);
                         console.info('MediaLibraryTest :  FETCHRESULT getAllObject 008_02 end');
@@ -445,7 +447,8 @@ export default function fetchFileResultCallBackTest(abilityContext) {
                         console.info('MediaLibraryTest : FETCHRESULT getNextObject 008_03  fail');
                         done();
                     } else {
-                        expect(0 < targetObjects.length <= 100).assertTrue();
+                        expect(targetObjects.length > 0).assertTrue();
+                        expect(targetObjects.length <= 100).assertTrue();
                         console.info('MediaLibraryTest : FETCHRESULT getAllObject 008_03 end');
                         done();
                     }

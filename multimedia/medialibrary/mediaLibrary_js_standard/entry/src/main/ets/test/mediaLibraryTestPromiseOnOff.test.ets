@@ -70,7 +70,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 await asset.commitModify();
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 1000)
                 })
                 expect(conut > 0).assertTrue();
@@ -104,7 +104,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 await asset.commitModify();
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 1000)
                 })
                 expect(conut > 0).assertTrue();
@@ -138,7 +138,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 await asset.commitModify();
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 1000)
                 })
                 expect(conut > 0).assertTrue();
@@ -172,7 +172,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 await asset.commitModify();
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 1000)
                 })
                 expect(conut > 0).assertTrue();
@@ -206,7 +206,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 await asset.commitModify();
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 1000)
                 })
                 expect(conut == 0).assertTrue();
@@ -242,7 +242,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 await asset.commitModify();
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 1000)
                 })
                 expect(conut == 0).assertTrue();
@@ -278,7 +278,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 await asset.commitModify();
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 1000)
                 })
                 expect(conut == 0).assertTrue();
@@ -309,7 +309,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 });
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 300)
                 })
                 const fetchFileResult = await media.getFileAssets(imagesfetchOp);
@@ -318,13 +318,13 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 media.off('imageChange');
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 600)
                 })
                 await asset.commitModify();
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 1000)
                 })
                 console.info('MediaLibraryTest : off 001 passed');
@@ -356,7 +356,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 });
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 300)
                 })
                 const fetchFileResult = await media.getFileAssets(videosfetchOp);
@@ -365,13 +365,13 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 media.off('videoChange');
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 600)
                 })
                 await asset.commitModify();
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 1000)
                 })
                 console.info('MediaLibraryTest : off 002 passed');
@@ -403,7 +403,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 });
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 300)
                 })
                 const fetchFileResult = await media.getFileAssets(audiosfetchOp);
@@ -412,13 +412,13 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 media.off('audioChange');
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 600)
                 })
                 await asset.commitModify();
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 1000)
                 })
                 console.info('MediaLibraryTest : off 003 passed');
@@ -450,7 +450,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 });
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 300)
                 })
                 const fetchFileResult = await media.getFileAssets(videosfetchOp);
@@ -459,13 +459,13 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 media.off('fileChange');
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 600)
                 })
                 await asset.commitModify();
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 1000)
                 })
                 console.info('MediaLibraryTest : off 004 passed');
@@ -497,7 +497,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 });
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 300)
                 })
                 const fetchFileResult = await media.getFileAssets(videosfetchOp);
@@ -506,13 +506,13 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 media.off('albumChange');
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 600)
                 })
                 await asset.commitModify();
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 1000)
                 })
                 console.info('MediaLibraryTest : off 005 passed');
@@ -544,7 +544,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 });
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 300)
                 })
                 const fetchFileResult = await media.getFileAssets(videosfetchOp);
@@ -553,13 +553,13 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 media.off('deviceChange');
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 600)
                 })
                 await asset.commitModify();
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 1000)
                 })
                 console.info('MediaLibraryTest : off 006 passed');
@@ -591,7 +591,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 });
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 300)
                 })
 
@@ -601,13 +601,13 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext){
                 asset.title = asset.title + 'remoteFileChange';
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 600)
                 })
                 await asset.commitModify();
                 await new Promise(res => {
                     setTimeout(() => {
-                        res()
+                        res(true)
                     }, 1000)
                 })
                 console.info('MediaLibraryTest : off 007 passed');

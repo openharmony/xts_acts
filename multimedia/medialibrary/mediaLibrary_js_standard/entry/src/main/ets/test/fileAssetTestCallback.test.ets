@@ -180,6 +180,9 @@ export default function fileAssetTestCallbackTest(abilityContext){
             let asset1;
             let fd;
             let fd1;
+            let assetProps = {
+                write: 4096,
+            }
             try {
                 let type = mediaLibrary.MediaType.FILE;
                 let fetchOp = {
@@ -237,113 +240,6 @@ export default function fileAssetTestCallbackTest(abilityContext){
         });
 
         //======================== FILE END ==================================
-
-        //======================== ALBUM BEGIN ==================================
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_04
-         * @tc.name      : open('rw')
-         * @tc.desc      : open -rw the type of ALBUM
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_04', 0, async function (done) {
-            let asset;
-            let fd;
-            try {
-                let type = mediaLibrary.MediaType.ALBUM;
-                let fetchOp = {
-                    selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                    selectionArgs: [type.toString()],
-                };
-                let fetchFileResult = await media.getFileAssets(fetchOp);
-                const dataList = await fetchFileResult.getAllObject();
-                asset = dataList[0];
-                asset.open('rw', async (error, fd) => {
-                    expect(false).assertTrue();
-                    done();
-                });
-            } catch (error) {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_04  error:'
-                + error);
-                expect(true).assertTrue();
-                if (isNum(fd)) {
-                    asset.close(fd);
-                }
-                done();
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_05
-         * @tc.name      : open('r')
-         * @tc.desc      : open -r the type of ALBUM
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_05', 0, async function (done) {
-            let asset;
-            let fd;
-            try {
-                let type = mediaLibrary.MediaType.ALBUM;
-                let fetchOp = {
-                    selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                    selectionArgs: [type.toString()],
-                };
-                let fetchFileResult = await media.getFileAssets(fetchOp);
-                const dataList = await fetchFileResult.getAllObject();
-                asset = dataList[0];
-                asset.open('r', async (error, fd) => {
-                    expect(false).assertTrue();
-                    done();
-                });
-            } catch (error) {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_05  error:'
-                + error);
-                expect(true).assertTrue();
-                if (isNum(fd)) {
-                    asset.close(fd);
-                }
-                done();
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_06
-         * @tc.name      : open('w')
-         * @tc.desc      : open -w the type of ALBUM
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_06', 0, async function (done) {
-            let asset;
-            let fd;
-            try {
-                let type = mediaLibrary.MediaType.ALBUM;
-                let fetchOp = {
-                    selections: fileKeyObj.MEDIA_TYPE + '= ?',
-                    selectionArgs: [type.toString()],
-                };
-                let fetchFileResult = await media.getFileAssets(fetchOp);
-                const dataList = await fetchFileResult.getAllObject();
-                asset = dataList[0];
-                asset.open('w', (error, fd) => {
-                    expect(false).assertTrue();
-                });
-            } catch (error) {
-                console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_06  error:'
-                + error);
-                expect(true).assertTrue();
-                if (isNum(fd)) {
-                    asset.close(fd);
-                }
-                done();
-            }
-        });
-
-        //======================== ALBUM END ==================================
 
         //======================== IMAGE BEGIN ==================================
         /**
@@ -700,6 +596,9 @@ export default function fileAssetTestCallbackTest(abilityContext){
             let asset1;
             let fd;
             let fd1;
+            let assetProps = {
+                write: 4096,
+            }
             try {
                 let type = mediaLibrary.MediaType.AUDIO;
                 let fetchOp = {
@@ -915,6 +814,9 @@ export default function fileAssetTestCallbackTest(abilityContext){
             let asset1;
             let fd;
             let fd1;
+            let assetProps = {
+                write: 4096,
+            }
             try {
                 let type = mediaLibrary.MediaType.VIDEO;
                 let fetchOp = {

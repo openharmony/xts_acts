@@ -17,13 +17,6 @@ import featureAbility from '@ohos.ability.featureAbility';
 import fileio from '@ohos.fileio';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 let fileKeyObj = mediaLibrary.FileKey;
-let fetchOp = {
-    selections: fileKeyObj.PATH + ' LIKE ? ',
-    selectionArgs: ['/data/media/%'],
-    order: fileKeyObj.PATH,
-};
-// let directoryTypeObj = mediaLibrary.DirectoryType;
-
 let DIR_CAMERA = mediaLibrary.DirectoryType.DIR_CAMERA;
 let DIR_VIDEO = mediaLibrary.DirectoryType.DIR_VIDEO;
 let DIR_IMAGE = mediaLibrary.DirectoryType.DIR_IMAGE;
@@ -248,7 +241,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext){
                 const fetchFileResult = await media.getFileAssets(imageRelativefetchOp);
                 let count = 1;
                 let type = 'image';
-                await checkFileAssetAttr(done, fetchFileResult, type, count)
+                await checkFileAssetAttr(done, fetchFileResult, type, count, null)
                 done();
             } catch (error) {
                 console.info(`MediaLibraryTest : getFileAssets 001 failed, error: ${error}`);
@@ -270,7 +263,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext){
                 const fetchFileResult = await media.getFileAssets(videoRelativefetchOp);
                 let count = 1;
                 let type = 'video';
-                await checkFileAssetAttr(done, fetchFileResult, type, count)
+                await checkFileAssetAttr(done, fetchFileResult, type, count, null)
                 done();
             } catch (error) {
                 console.info(`MediaLibraryTest : getFileAssets 002 failed, error: ${error}`);
@@ -292,7 +285,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext){
                 const fetchFileResult = await media.getFileAssets(audioRelativefetchOp);
                 let count = 1;
                 let type = 'audio';
-                await checkFileAssetAttr(done, fetchFileResult, type, count)
+                await checkFileAssetAttr(done, fetchFileResult, type, count, null)
                 done();
             } catch (error) {
                 console.info(`MediaLibraryTest : getFileAssets 003 failed, error: ${error}`);
@@ -314,7 +307,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext){
                 const fetchFileResult = await media.getFileAssets(fileRelativefetchOp);
                 let count = 1;
                 let type = 'file';
-                await checkFileAssetAttr(done, fetchFileResult, type, count)
+                await checkFileAssetAttr(done, fetchFileResult, type, count, null)
                 done();
             } catch (error) {
                 console.info(`MediaLibraryTest : getFileAssets 004 failed, error: ${error}`);

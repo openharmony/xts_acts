@@ -270,7 +270,6 @@ export default function fetchFileResultPromiseTest(abilityContext){
                     let targetObject = await fetchFileResult.getPositionObject(0);
                     expect(false).assertTrue();
                     console.info('MediaLibraryTest : FETCHRESULT close getPositionObject 003 failed');
-                    s
                     done();
                 } catch {
                     console.info('MediaLibraryTest : FETCHRESULT close 003 closed');
