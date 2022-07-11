@@ -2021,4 +2021,89 @@ describe('ActsAnsNotificationCancel', function () {
             done();
         }),timeout);
     })
+
+  /*
+   * @tc.number: ANS_Cancel_2700
+   * @tc.name: cancel(id: number, label?: string): Promise<void>
+   * @tc.desc: add NotificationTemplate extraInfo template badgeNumber
+   */
+  it('ANS_Cancel_2700', 0, async function (done) {
+    console.info('===============ANS_Cancel_2700 start==========================>');
+    let subscriber ={
+      onConsume:onConsumeCancelWrongLabelWrongIdPromise,
+      onCancel:onCancelCancelWrongLabelWrongIdPromise,
+    }
+    await notify.subscribe(subscriber);
+    console.info('===============ANS_Cancel_2700 subscribe promise==================>');
+    let NotificationTemplate = {
+      name:'/system/etc/notification_template/assets/js/downloadTemplate.js',
+      data:{key3:"789",key4:"111"}
+    }
+    let notificationRequest = {
+      content:{
+        contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        normal: {
+          title: 'test_title',
+          text: 'test_text',
+          additionalText: 'test_additionalText'
+        },
+      },
+      extraInfo:{
+        key1: "1231",
+        key2:"456"
+      },
+      template:NotificationTemplate,
+      badgeNumber:1,
+    }
+    await notify.publish(notificationRequest);
+    console.info('===============ANS_Cancel_2700 publish promise==================>');
+    setTimeout((async function(){
+      await notify.unsubscribe(subscriber);
+      console.info('======ANS_Cancel_2700 setTimeout unsubscribe end==================>');
+      done();
+    }),timeout);
+  })
+
+    /*
+	* @tc.number: ANS_Cancel_2800
+	* @tc.name: cancel(id: number, label?: string): Promise<void>
+	* @tc.desc: add creatorPid
+	*/
+	it('ANS_Cancel_2800', 0, async function (done) {
+		console.info('===============ANS_Cancel_2800 start==========================>');
+    let subscriber ={
+		onConsume:onConsumeCancelWrongLabelWrongIdPromise,
+		onCancel:onCancelCancelWrongLabelWrongIdPromise,
+    }
+    await notify.subscribe(subscriber);
+    console.info('===============ANS_Cancel_2800 subscribe promise==================>');
+
+    let NotificationTemplate = {
+		name:'/system/etc/notification_template/assets/js/downloadTemplate.js',
+		data:{key3:"789",key4:"111"}
+    }
+    let notificationRequest = {
+		content:{
+			contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+			normal: {
+				title: 'test_title',
+				text: 'test_text',
+				additionalText: 'test_additionalText'
+			},
+		},
+		extraInfo:{
+			key1: "1231",
+			key2:"456"
+		},
+		template:NotificationTemplate,
+		creatorPid:1,
+		}
+    await notify.publish(notificationRequest);
+    console.info('===============ANS_Cancel_2800 publish promise==================>');
+    setTimeout((async function(){
+      await notify.unsubscribe(subscriber);
+      console.info('======ANS_Cancel_2800 setTimeout unsubscribe end==================>');
+      done();
+    }),timeout);
+  })
 }) 

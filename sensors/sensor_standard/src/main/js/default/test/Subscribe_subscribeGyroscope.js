@@ -15,7 +15,7 @@
 import sensor from '@system.sensor'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("SensorJsTest", function () {
+describe("SensorJsTest_sensor_29", function () {
     beforeAll(function () {
 
         /*
@@ -54,12 +54,11 @@ describe("SensorJsTest", function () {
     let errMessage;
 
     /*
-     * @tc.name:subscribeGyroscope_SensorJsTest001
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0010
+     * @tc.name: subscribeGyroscope_SensorJsTest001
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeGyroscope_SensorJsTest001", 0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest001---------------------------');
         sensor.subscribeGyroscope({
             interval: 'game',
@@ -89,12 +88,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeGyroscope_SensorJsTest002
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0020
+     * @tc.name: subscribeGyroscope_SensorJsTest002
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeGyroscope_SensorJsTest002", 0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest002---------------------------');
         sensor.subscribeGyroscope({
             interval: 'ui',
@@ -124,12 +122,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeGyroscope_SensorJsTest003
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0030
+     * @tc.name: subscribeGyroscope_SensorJsTest003
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeGyroscope_SensorJsTest003", 0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest003---------------------------');
         sensor.subscribeGyroscope({
             interval: 'normal',
@@ -160,12 +157,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeGyroscope_SensorJsTest004
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0040
+     * @tc.name: subscribeGyroscope_SensorJsTest004
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeGyroscope_SensorJsTest004", 0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest004---------------------------');
         sensor.subscribeGyroscope({
             interval: 'xxx',
@@ -184,12 +180,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeGyroscope_SensorJsTest005
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0050
+     * @tc.name: subscribeGyroscope_SensorJsTest005
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeGyroscope_SensorJsTest005", 0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest005---------------------------');
         sensor.subscribeGyroscope({
             interval: 'normal',
@@ -208,12 +203,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeGyroscope_SensorJsTest006
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0060
+     * @tc.name: subscribeGyroscope_SensorJsTest006
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeGyroscope_SensorJsTest006", 0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest006---------------------------');
         try {
             sensor.subscribeGyroscope({
@@ -238,12 +232,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeGyroscope_SensorJsTest007
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0070
+     * @tc.name: subscribeGyroscope_SensorJsTest007
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeGyroscope_SensorJsTest007", 0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest007---------------------------');
         try {
             sensor.subscribeGyroscope({
@@ -269,12 +262,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeGyroscope_SensorJsTest008
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0080
+     * @tc.name: subscribeGyroscope_SensorJsTest008
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeGyroscope_SensorJsTest008", 0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest008---------------------------');
         sensor.subscribeGyroscope({
             interval: 'normal',
@@ -317,12 +309,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeGyroscope_SensorJsTest009
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0090
+     * @tc.name: subscribeGyroscope_SensorJsTest009
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeGyroscope_SensorJsTest009", 0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest009---------------------------');
         try {
             sensor.subscribeGyroscope();
@@ -335,12 +326,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeGyroscope_SensorJsTest010
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0100
+     * @tc.name: subscribeGyroscope_SensorJsTest010
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeGyroscope_SensorJsTest010", 0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest010", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest010---------------------------');
         try {
             sensor.subscribeGyroscope('xxx');
@@ -352,13 +342,12 @@ describe("SensorJsTest", function () {
         }
     })
 
-    /*
-     * @tc.name:subscribeGyroscope_SensorJsTest011
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+   /*
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0110
+     * @tc.name: subscribeGyroscope_SensorJsTest011
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeGyroscope_SensorJsTest011", 0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest011", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest011---------------------------');
         try {
             sensor.unsubscribeGyroscope();
@@ -371,12 +360,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeGyroscope_SensorJsTest012
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0120
+     * @tc.name: subscribeGyroscope_SensorJsTest012
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeGyroscope_SensorJsTest012", 0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest012", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest012---------------------------');
         try {
             sensor.unsubscribeGyroscope('xxx');
@@ -389,12 +377,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeGyroscope_SensorJsTest013
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0130
+     * @tc.name: subscribeGyroscope_SensorJsTest013
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeGyroscope_SensorJsTest013", 0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest013", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest013---------------------------');
         sensor.subscribeGyroscope({
             interval: 'normal',
@@ -409,12 +396,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeGyroscope_SensorJsTest014
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0140
+     * @tc.name: subscribeGyroscope_SensorJsTest014
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeGyroscope_SensorJsTest014", 0, async function (done) {
+    it("subscribeGyroscope_SensorJsTest014", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest014---------------------------');
         sensor.subscribeGyroscope({
             interval: 'normal',

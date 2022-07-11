@@ -16,13 +16,15 @@ import geolocation from '@ohos.geolocation';
 import geolocations from '@system.geolocation';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
+import osaccount from '@ohos.account.osAccount'
+
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async function changedLocationMode(){
+async function changedLocationMode(){
     await geolocation.isLocationEnabled().then(async(result) => {
        console.info('[lbs_js] getLocationSwitchState result: ' + result);
        if(!result){
@@ -35,11 +37,18 @@ function sleep(ms) {
                expect().assertFail();
            });
        }
-   })
+   });
+   await geolocation.isLocationEnabled().then(async(result) => {
+       console.info('[lbs_js] check LocationSwitchState result: ' + result);
+   });
 }
 
 async function applyPermission() {
-   let appInfo = await bundle.getApplicationInfo('ohos.acts.location.geolocation.function', 0, 100);
+   let osAccountManager = osaccount.getAccountManager();
+   console.info('[permission] getAccountManager call end');
+   let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
+   console.info('[permission] getOsAccountLocalIdFromProcess localId' + localId);
+   let appInfo = await bundle.getApplicationInfo('ohos.acts.location.geolocation.function', 0, localId);
    let atManager = abilityAccessCtrl.createAtManager();
    if (atManager != null) {
        let tokenID = appInfo.accessTokenId;
@@ -61,7 +70,7 @@ async function applyPermission() {
    }
 }
 
-describe('geolocationTest', function () {
+describe('geolocationTest_geo2', function () {
     beforeAll(async function (done) {
         console.info('beforeAll case');
         await applyPermission();
@@ -204,5 +213,6 @@ describe('geolocationTest', function () {
     })
     
 })
+
 
 

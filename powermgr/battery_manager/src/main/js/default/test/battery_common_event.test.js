@@ -14,1405 +14,1405 @@
  */
 import commonEvent from '@ohos.commonEvent';
 
-describe('appInfoTest', function () {
+describe('appInfoTest_battery_1', function () {
     console.log("*************Battery commonEvent Test Begin*************");
 
     /**
-     * @tc.number BatteryCommonEventTest_001
-     * @tc.name subscribe battery changed common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0100
+     * @tc.name Subscribe_Battery_Changed_Common_Event
      * @tc.desc battery acquisition kit
      */
-    it('BatteryCommonEventTest_001', 0, function (done) {
+    it('Subscribe_Battery_Changed_Common_Event', 0, function (done) {
         createBatteryChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_002
-     * @tc.name subscribe battery okay common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0110
+     * @tc.name Subscribe_Battery_Okay_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_002', 0, function (done) {
+    it('Subscribe_Battery_Okay_Common_Event', 0, function (done) {
         createBatteryOkaySubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_003
-     * @tc.name subscribe battery low common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0120
+     * @tc.name Subscribe_Battery_Low_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_003', 0, function (done) {
+    it('Subscribe_Battery_Low_Common_Event', 0, function (done) {
         createBatteryLowSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_004
-     * @tc.name subscribe power connected common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0130
+     * @tc.name Subscribe_Power_Connected_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_004', 0, function (done) {
+    it('Subscribe_Power_Connected_Common_Event', 0, function (done) {
         createBatteryPowerConnectedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_005
-     * @tc.name subscribe power disconnected common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0140
+     * @tc.name Subscribe_Power_Disconnected_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_005', 0, function (done) {
+    it('Subscribe_Power_Disconnected_Common_Event', 0, function (done) {
         createBatteryPowerDisconnectedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_006
-     * @tc.name subscribe battery charging common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0150
+     * @tc.name Subscribe_Battery_Charging_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_006', 0, function (done) {
+    it('Subscribe_Battery_Charging_Common_Event', 0, function (done) {
         createBatteryChargingSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_007
-     * @tc.name subscribe battery discharging common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0160
+     * @tc.name Subscribe_Battery_Discharging_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_007', 0, function (done) {
+    it('Subscribe_Battery_Discharging_Common_Event', 0, function (done) {
         createBatteryDischargingSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_008
-     * @tc.name subscribe boot completed common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0170
+     * @tc.name Subscribe_Boot_Completed_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_008', 0, function (done) {
+    it('Subscribe_Boot_Completed_Common_Event', 0, function (done) {
         createBootCompletedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_009
-     * @tc.name subscribe locked boot completed common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0180
+     * @tc.name Subscribe_Locked_Boot_Completed_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_009', 0, function (done) {
+    it('Subscribe_Locked_Boot_Completed_Common_Event', 0, function (done) {
         createLockedBootCompletedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_010
-     * @tc.name subscribe shutdown common event
+     * @tc.number Usb_powersystem_batterymanager_jstest_0190
+     * @tc.name Subscribe_Shutdown_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_010', 0, function (done) {
+    it('Subscribe_Shutdown_Common_Event', 0, function (done) {
         createShutdownSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_011
-     * @tc.name subscribe screen on common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0200
+     * @tc.name Subscribe_Screen_On_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_011', 0, function (done) {
+    it('Subscribe_Screen_On_Common_Event', 0, function (done) {
         createScreenOnSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_012
-     * @tc.name subscribe user present common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0210
+     * @tc.name Subscribe_User_Present_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_012', 0, function (done) {
+    it('Subscribe_User_Present_Common_Event', 0, function (done) {
         createUserPresentSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_013
-     * @tc.name subscribe time tick common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0220
+     * @tc.name Subscribe_Time_Tick_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_013', 0, function (done) {
+    it('Subscribe_Time_Tick_Common_Event', 0, function (done) {
         createTimeTickSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_014
-     * @tc.name subscribe screen off common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0230
+     * @tc.name Subscribe_Screen_Off_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_014', 0, function (done) {
+    it('Subscribe_Screen_Off_Common_Event', 0, function (done) {
         createScreenOffSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_015
-     * @tc.name subscribe time changed common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0240
+     * @tc.name Subscribe_Time_Changed_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_015', 0, function (done) {
+    it('Subscribe_Time_Changed_Common_Event', 0, function (done) {
         createTimeChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_016
-     * @tc.name subscribe date changed common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0250
+     * @tc.name Subscribe_Date_Changed_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_016', 0, function (done) {
+    it('Subscribe_Date_Changed_Common_Event', 0, function (done) {
         createDateChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_017
-     * @tc.name subscribe timezone changed common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0260
+     * @tc.name Subscribe_Timezone_Changed_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_017', 0, function (done) {
+    it('Subscribe_Timezone_Changed_Common_Event', 0, function (done) {
         createTimezoneChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_018
-     * @tc.name subscribe close system dialogs common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0270
+     * @tc.name Subscribe_Close_System_Dialogs_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_018', 0, function (done) {
+    it('Subscribe_Close_System_Dialogs_Common_Event', 0, function (done) {
         createCloseSystemDialogsSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_019
-     * @tc.name subscribe package added common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0280
+     * @tc.name Subscribe_Package_Added_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_019', 0, function (done) {
+    it('Subscribe_Package_Added_Common_Event', 0, function (done) {
         createPackageAddedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_020
-     * @tc.name subscribe package replaced common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0290
+     * @tc.name Subscribe_Package_Replaced_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_020', 0, function (done) {
+    it('Subscribe_Package_Replaced_Common_Event', 0, function (done) {
         createPackageReplacedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_021
-     * @tc.name subscribe my package replaced common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0300
+     * @tc.name Subscribe_My_Package_Replaced_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_021', 0, function (done) {
+    it('Subscribe_My_Package_Replaced_Common_Event', 0, function (done) {
         createMyPackageReplacedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_022
-     * @tc.name subscribe package removed common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0310
+     * @tc.name Subscribe_Package_Removed_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_022', 0, function (done) {
+    it('Subscribe_Package_Removed_Common_Event', 0, function (done) {
         createPackageRemovedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_023
-     * @tc.name subscribe bundle removed common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0320
+     * @tc.name Subscribe_Bundle_Removed_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_023', 0, function (done) {
+    it('Subscribe_Bundle_Removed_Common_Event', 0, function (done) {
         createBundleRemovedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_024
-     * @tc.name subscribe PackageFullyRemoved common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0330
+     * @tc.name Subscribe_Packagefullyremoved_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_024', 0, function (done) {
+    it('Subscribe_Packagefullyremoved_Common_Event', 0, function (done) {
         createPackageFullyRemovedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_025
-     * @tc.name subscribe PackageChanged common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0340
+     * @tc.name Subscribe_Packagechanged_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_025', 0, function (done) {
+    it('Subscribe_Packagechanged_Common_Event', 0, function (done) {
         createPackageChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_026
-     * @tc.name subscribe PackageRestarted common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0350
+     * @tc.name Subscribe_Packagerestarted_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_026', 0, function (done) {
+    it('Subscribe_Packagerestarted_Common_Event', 0, function (done) {
         createPackageRestartedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_027
-     * @tc.name subscribe PackageDataCleared common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0360
+     * @tc.name Subscribe_Packagedatacleared_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_027', 0, function (done) {
+    it('Subscribe_Packagedatacleared_Common_Event', 0, function (done) {
         createPackageDataClearedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_028
-     * @tc.name subscribe PackageSuspended common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0370
+     * @tc.name Subscribe_Packagesuspended_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_028', 0, function (done) {
+    it('Subscribe_Packagesuspended_Common_Event', 0, function (done) {
         createPackageSuspendedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_029
-     * @tc.name subscribe PackagesUnsuspended common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0380
+     * @tc.name Subscribe_Packagesunsuspended_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_029', 0, function (done) {
+    it('Subscribe_Packagesunsuspended_Common_Event', 0, function (done) {
         createPackagesUnsuspendedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_030
-     * @tc.name subscribe MyPackageSuspended common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0390
+     * @tc.name Subscribe_Mypackagesuspended_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_030', 0, function (done) {
+    it('Subscribe_Mypackagesuspended_Common_Event', 0, function (done) {
         createMyPackageSuspendedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_031
-     * @tc.name subscribe MyPackageUnsuspended common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0400
+     * @tc.name Subscribe_Mypackageunsuspended_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_031', 0, function (done) {
+    it('Subscribe_Mypackageunsuspended_Common_Event', 0, function (done) {
         createMyPackageUnsuspendedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_032
-     * @tc.name subscribe MyPackageFirstLaunch common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0410
+     * @tc.name Subscribe_Mypackagefirstlaunch_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_032', 0, function (done) {
+    it('Subscribe_Mypackagefirstlaunch_Common_Event', 0, function (done) {
         createMyPackageFirstLaunchSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_033
-     * @tc.name subscribe MyPackageNeedsVerification common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0420
+     * @tc.name Subscribe_Mypackageneedsverification_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_033', 0, function (done) {
+    it('Subscribe_Mypackageneedsverification_Common_Event', 0, function (done) {
         createMyPackageNeedsVerificationSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_034
-     * @tc.name subscribe ExternalApplicationsAvailable common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0430
+     * @tc.name Subscribe_Externalapplicationsavailable_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_034', 0, function (done) {
+    it('Subscribe_Externalapplicationsavailable_Common_Event', 0, function (done) {
         createExternalApplicationsAvailableSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_035
-     * @tc.name subscribe ExternalApplicationsUnAvailable common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0440
+     * @tc.name Subscribe_Externalapplicationsunavailable_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_035', 0, function (done) {
+    it('Subscribe_Externalapplicationsunavailable_Common_Event', 0, function (done) {
         createExternalApplicationsUnAvailableSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_036
-     * @tc.name subscribe ConfigurationChanged common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0450
+     * @tc.name Subscribe_Configurationchanged_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_036', 0, function (done) {
+    it('Subscribe_Configurationchanged_Common_Event', 0, function (done) {
         createConfigurationChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_037
-     * @tc.name subscribe LocateChanged common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0460
+     * @tc.name Subscribe_Locatechanged_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_037', 0, function (done) {
+    it('Subscribe_Locatechanged_Common_Event', 0, function (done) {
         createLocateChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_038
-     * @tc.name subscribe ManagePackageStorage common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0470
+     * @tc.name Subscribe_Managepackagestorage_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_038', 0, function (done) {
+    it('Subscribe_Managepackagestorage_Common_Event', 0, function (done) {
         createManagePackageStorageSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_039
-     * @tc.name subscribe DriveMode common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0480
+     * @tc.name Subscribe_Drivemode_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_039', 0, function (done) {
+    it('Subscribe_Drivemode_Common_Event', 0, function (done) {
         createDriveModeSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_040
-     * @tc.name subscribe HomeMode common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0490
+     * @tc.name Subscribe_Homemode_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_040', 0, function (done) {
+    it('Subscribe_Homemode_Common_Event', 0, function (done) {
         createHomeModeSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_041
-     * @tc.name subscribe OfficeMode common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0500
+     * @tc.name Subscribe_Officemode_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_041', 0, function (done) {
+    it('Subscribe_Officemode_Common_Event', 0, function (done) {
         createOfficeModeSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_042
-     * @tc.name subscribe UserStarted common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0510
+     * @tc.name Subscribe_Userstarted_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_042', 0, function (done) {
+    it('Subscribe_Userstarted_Common_Event', 0, function (done) {
         createUserStartedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_043
-     * @tc.name subscribe UserBackground common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0520
+     * @tc.name Subscribe_Userbackground_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_043', 0, function (done) {
+    it('Subscribe_Userbackground_Common_Event', 0, function (done) {
         createUserBackgroundSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_044
-     * @tc.name subscribe UserForground common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0530
+     * @tc.name Subscribe_Userforground_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_044', 0, function (done) {
+    it('Subscribe_Userforground_Common_Event', 0, function (done) {
         createUserForgroundSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_045
-     * @tc.name subscribe UserSwitched common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0540
+     * @tc.name Subscribe_Userswitched_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_045', 0, function (done) {
+    it('Subscribe_Userswitched_Common_Event', 0, function (done) {
         createUserSwitchedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_046
-     * @tc.name subscribe UserStarting common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0550
+     * @tc.name Subscribe_Userstarting_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_046', 0, function (done) {
+    it('Subscribe_Userstarting_Common_Event', 0, function (done) {
         createUserStartingSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_047
-     * @tc.name subscribe UserUnlocked common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0560
+     * @tc.name Subscribe_Userunlocked_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_047', 0, function (done) {
+    it('Subscribe_Userunlocked_Common_Event', 0, function (done) {
         createUserUnlockedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_048
-     * @tc.name subscribe UserStopping common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0570
+     * @tc.name Subscribe_Userstopping_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_048', 0, function (done) {
+    it('Subscribe_Userstopping_Common_Event', 0, function (done) {
         createUserStoppingSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_049
-     * @tc.name subscribe UserStopped common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0580
+     * @tc.name Subscribe_Userstopped_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_049', 0, function (done) {
+    it('Subscribe_Userstopped_Common_Event', 0, function (done) {
         createUserStoppedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_050
-     * @tc.name subscribe HwidLogin common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0590
+     * @tc.name Subscribe_Hwidlogin_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_050', 0, function (done) {
+    it('Subscribe_Hwidlogin_Common_Event', 0, function (done) {
         createHwidLoginSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_051
-     * @tc.name subscribe HwidLogout common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0600
+     * @tc.name Subscribe_Hwidlogout_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_051', 0, function (done) {
+    it('Subscribe_Hwidlogout_Common_Event', 0, function (done) {
         createHwidLogoutSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_052
-     * @tc.name subscribe HwidTokenInvalid common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0610
+     * @tc.name Subscribe_Hwidtokeninvalid_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_052', 0, function (done) {
+    it('Subscribe_Hwidtokeninvalid_Common_Event', 0, function (done) {
         createHwidTokenInvalidSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_053
-     * @tc.name subscribe HwidLogOff common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0620
+     * @tc.name Subscribe_Hwidlogoff_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_053', 0, function (done) {
+    it('Subscribe_Hwidlogoff_Common_Event', 0, function (done) {
         createHwidLogOffSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_054
-     * @tc.name subscribe WifiPowerState common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0630
+     * @tc.name Subscribe_Wifipowerstate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_054', 0, function (done) {
+    it('Subscribe_Wifipowerstate_Common_Event', 0, function (done) {
         createWifiPowerStateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_055
-     * @tc.name subscribe WifiScanFinished common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0640
+     * @tc.name Subscribe_Wifiscanfinished_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_055', 0, function (done) {
+    it('Subscribe_Wifiscanfinished_Common_Event', 0, function (done) {
         createWifiScanFinishedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_056
-     * @tc.name subscribe WifiRssiValue common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0650
+     * @tc.name Subscribe_Wifirssivalue_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_056', 0, function (done) {
+    it('Subscribe_Wifirssivalue_Common_Event', 0, function (done) {
         createWifiRssiValueSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_057
-     * @tc.name subscribe WifiConnState common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0660
+     * @tc.name Subscribe_Wificonnstate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_057', 0, function (done) {
+    it('Subscribe_Wificonnstate_Common_Event', 0, function (done) {
         createWifiConnStateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_058
-     * @tc.name subscribe WifiHostpotState common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0670
+     * @tc.name Subscribe_Wifihostpotstate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_058', 0, function (done) {
+    it('Subscribe_Wifihostpotstate_Common_Event', 0, function (done) {
         createWifiHostpotStateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_059
-     * @tc.name subscribe WifiApStaJoin common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0680
+     * @tc.name Subscribe_Wifiapstajoin_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_059', 0, function (done) {
+    it('Subscribe_Wifiapstajoin_Common_Event', 0, function (done) {
         createWifiApStaJoinSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_060
-     * @tc.name subscribe WifiApStaLeave common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0690
+     * @tc.name Subscribe_Wifiapstaleave_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_060', 0, function (done) {
+    it('Subscribe_Wifiapstaleave_Common_Event', 0, function (done) {
         createWifiApStaLeaveSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_061
-     * @tc.name subscribe WifiMplinkStateChange common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0700
+     * @tc.name Subscribe_Wifimplinkstatechange_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_061', 0, function (done) {
+    it('Subscribe_Wifimplinkstatechange_Common_Event', 0, function (done) {
         createWifiMplinkStateChangeSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_062
-     * @tc.name subscribe WifiP2PConnState common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0710
+     * @tc.name Subscribe_Wifip2pconnstate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_062', 0, function (done) {
+    it('Subscribe_Wifip2pconnstate_Common_Event', 0, function (done) {
         createWifiP2PConnStateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_063
-     * @tc.name subscribe WifiP2PStateChanged common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0720
+     * @tc.name Subscribe_Wifip2pstatechanged_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_063', 0, function (done) {
+    it('Subscribe_Wifip2pstatechanged_Common_Event', 0, function (done) {
         createWifiP2PStateChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_064
-     * @tc.name subscribe WifiP2PPeersStateChanged common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0730
+     * @tc.name Subscribe_Wifip2ppeersstatechanged_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_064', 0, function (done) {
+    it('Subscribe_Wifip2ppeersstatechanged_Common_Event', 0, function (done) {
         createWifiP2PPeersStateChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_065
-     * @tc.name subscribe WifiP2PPeersDiscoveryStateChanged common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0740
+     * @tc.name Subscribe_Wifip2ppeersdiscoverystatechanged_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_065', 0, function (done) {
+    it('Subscribe_Wifip2ppeersdiscoverystatechanged_Common_Event', 0, function (done) {
         createWifiP2PPeersDiscoveryStateChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_066
-     * @tc.name subscribe WifiP2PCurrentDeviceStateChanged common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0750
+     * @tc.name Subscribe_Wifip2pcurrentdevicestatechanged_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_066', 0, function (done) {
+    it('Subscribe_Wifip2pcurrentdevicestatechanged_Common_Event', 0, function (done) {
         createWifiP2PCurrentDeviceStateChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_067
-     * @tc.name subscribe WifiP2PGroupStateChanged common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0760
+     * @tc.name Subscribe_Wifip2pgroupstatechanged_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_067', 0, function (done) {
+    it('Subscribe_Wifip2pgroupstatechanged_Common_Event', 0, function (done) {
         createWifiP2PGroupStateChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_068
-     * @tc.name subscribe BluetoothHandsfreeAgConntectStateUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0770
+     * @tc.name Subscribe_Bluetoothhandsfreeagconntectstateupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_068', 0, function (done) {
+    it('Subscribe_Bluetoothhandsfreeagconntectstateupdate_Common_Event', 0, function (done) {
         createBluetoothHandsfreeAgConntectStateUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_069
-     * @tc.name subscribe BluetoothHandsfreeAgConntectDeviceUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0780
+     * @tc.name Subscribe_Bluetoothhandsfreeagconntectdeviceupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_069', 0, function (done) {
+    it('Subscribe_Bluetoothhandsfreeagconntectdeviceupdate_Common_Event', 0, function (done) {
         createBluetoothHandsfreeAgConntectDeviceUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_070
-     * @tc.name subscribe BluetoothHandsfreeAgAudioStateUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0790
+     * @tc.name Subscribe_Bluetoothhandsfreeagaudiostateupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_070', 0, function (done) {
+    it('Subscribe_Bluetoothhandsfreeagaudiostateupdate_Common_Event', 0, function (done) {
         createBluetoothHandsfreeAgAudioStateUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_071
-     * @tc.name subscribe BluetoothA2DPsourceConnectStateUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0800
+     * @tc.name Subscribe_Bluetootha2dpsourceconnectstateupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_071', 0, function (done) {
+    it('Subscribe_Bluetootha2dpsourceconnectstateupdate_Common_Event', 0, function (done) {
         createBluetoothA2DPsourceConnectStateUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_072
-     * @tc.name subscribe BluetoothA2DPsourceCurrentDeviceUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0810
+     * @tc.name Subscribe_Bluetootha2dpsourcecurrentdeviceupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_072', 0, function (done) {
+    it('Subscribe_Bluetootha2dpsourcecurrentdeviceupdate_Common_Event', 0, function (done) {
         createBluetoothA2DPsourceCurrentDeviceUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_073
-     * @tc.name subscribe BluetoothA2DPsourcePlayingStateUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0820
+     * @tc.name Subscribe_Bluetootha2dpsourceplayingstateupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_073', 0, function (done) {
+    it('Subscribe_Bluetootha2dpsourceplayingstateupdate_Common_Event', 0, function (done) {
         createBluetoothA2DPsourcePlayingStateUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_074
-     * @tc.name subscribe BluetoothA2DPsourceAvrcpConntectStateUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0830
+     * @tc.name Subscribe_Bluetootha2dpsourceavrcpconntectstateupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_074', 0, function (done) {
+    it('Subscribe_Bluetootha2dpsourceavrcpconntectstateupdate_Common_Event', 0, function (done) {
         createBluetoothA2DPsourceAvrcpConntectStateUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_075
-     * @tc.name subscribe BluetoothA2DPsourceCodecValueUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0840
+     * @tc.name Subscribe_Bluetootha2dpsourcecodecvalueupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_075', 0, function (done) {
+    it('Subscribe_Bluetootha2dpsourcecodecvalueupdate_Common_Event', 0, function (done) {
         createBluetoothA2DPsourceCodecValueUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_076
-     * @tc.name subscribe BluetoothRemotedeviceDiscovered common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0850
+     * @tc.name Subscribe_Bluetoothremotedevicediscovered_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_076', 0, function (done) {
+    it('Subscribe_Bluetoothremotedevicediscovered_Common_Event', 0, function (done) {
         createBluetoothRemotedeviceDiscoveredSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_077
-     * @tc.name subscribe BluetoothRemotedeviceClassValueUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0860
+     * @tc.name Subscribe_Bluetoothremotedeviceclassvalueupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_077', 0, function (done) {
+    it('Subscribe_Bluetoothremotedeviceclassvalueupdate_Common_Event', 0, function (done) {
         createBluetoothRemotedeviceClassValueUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_078
-     * @tc.name subscribe BluetoothRemotedeviceAclConnected common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0870
+     * @tc.name Subscribe_Bluetoothremotedeviceaclconnected_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_078', 0, function (done) {
+    it('Subscribe_Bluetoothremotedeviceaclconnected_Common_Event', 0, function (done) {
         createBluetoothRemotedeviceAclConnectedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_079
-     * @tc.name subscribe BluetoothRemotedeviceAclDisconnected common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0880
+     * @tc.name Subscribe_Bluetoothremotedeviceacldisconnected_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_079', 0, function (done) {
+    it('Subscribe_Bluetoothremotedeviceacldisconnected_Common_Event', 0, function (done) {
         createBluetoothRemotedeviceAclDisconnectedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_080
-     * @tc.name subscribe BluetoothRemotedeviceNameUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0890
+     * @tc.name Subscribe_Bluetoothremotedevicenameupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_080', 0, function (done) {
+    it('Subscribe_Bluetoothremotedevicenameupdate_Common_Event', 0, function (done) {
         createBluetoothRemotedeviceNameUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_081
-     * @tc.name subscribe BluetoothRemotedevicePairState common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0900
+     * @tc.name Subscribe_Bluetoothremotedevicepairstate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_081', 0, function (done) {
+    it('Subscribe_Bluetoothremotedevicepairstate_Common_Event', 0, function (done) {
         createBluetoothRemotedevicePairStateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_082
-     * @tc.name subscribe BluetoothRemotedeviceBateryValueUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0910
+     * @tc.name Subscribe_Bluetoothremotedevicebateryvalueupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_082', 0, function (done) {
+    it('Subscribe_Bluetoothremotedevicebateryvalueupdate_Common_Event', 0, function (done) {
         createBluetoothRemotedeviceBateryValueUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_083
-     * @tc.name subscribe BluetoothRemotedeviceSdpResult common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0920
+     * @tc.name Subscribe_Bluetoothremotedevicesdpresult_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_083', 0, function (done) {
+    it('Subscribe_Bluetoothremotedevicesdpresult_Common_Event', 0, function (done) {
         createBluetoothRemotedeviceSdpResultSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_084
-     * @tc.name subscribe BluetoothRemotedeviceUuidValue common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0930
+     * @tc.name Subscribe_Bluetoothremotedeviceuuidvalue_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_084', 0, function (done) {
+    it('Subscribe_Bluetoothremotedeviceuuidvalue_Common_Event', 0, function (done) {
         createBluetoothRemotedeviceUuidValueSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_085
-     * @tc.name subscribe BluetoothPairingReq common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0940
+     * @tc.name Subscribe_Bluetoothpairingreq_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_085', 0, function (done) {
+    it('Subscribe_Bluetoothpairingreq_Common_Event', 0, function (done) {
         createBluetoothPairingReqSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_086
-     * @tc.name subscribe BluetoothRemotedevicePairingCancel common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0950
+     * @tc.name Subscribe_Bluetoothremotedevicepairingcancel_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_086', 0, function (done) {
+    it('Subscribe_Bluetoothremotedevicepairingcancel_Common_Event', 0, function (done) {
         createBluetoothRemotedevicePairingCancelSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_087
-     * @tc.name subscribe BluetoothRemotedeviceConntectReq common event
-     * @tc.desc Battery acquisition kit
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0960
+     * @tc.name Subscribe_Bluetoothremotedeviceconntectreq_Common_Event
+     * @tc.desc Battery acquisition Kit
      */
-    it('BatteryCommonEventTest_087', 0, function (done) {
+    it('Subscribe_Bluetoothremotedeviceconntectreq_Common_Event', 0, function (done) {
         createBluetoothRemotedeviceConntectReqSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_088
-     * @tc.name subscribe BluetoothRemotedeviceConntectReply common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0970
+     * @tc.name Subscribe_Bluetoothremotedeviceconntectreply_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_088', 0, function (done) {
+    it('Subscribe_Bluetoothremotedeviceconntectreply_Common_Event', 0, function (done) {
         createBluetoothRemotedeviceConntectReplySubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_089
-     * @tc.name subscribe BluetoothRemotedeviceConntectCancel common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0980
+     * @tc.name Subscribe_Bluetoothremotedeviceconntectcancel_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_089', 0, function (done) {
+    it('Subscribe_Bluetoothremotedeviceconntectcancel_Common_Event', 0, function (done) {
         createBluetoothRemotedeviceConntectCancelSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_090
-     * @tc.name subscribe BluetoothHandsfreeunitConntectStateUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0990
+     * @tc.name Subscribe_Bluetoothhandsfreeunitconntectstateupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_090', 0, function (done) {
+    it('Subscribe_Bluetoothhandsfreeunitconntectstateupdate_Common_Event', 0, function (done) {
         createBluetoothHandsfreeunitConntectStateUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_091
-     * @tc.name subscribe BluetoothHandsfreeunitAudioStateUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1010
+     * @tc.name Subscribe_Bluetoothhandsfreeunitaudiostateupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_091', 0, function (done) {
+    it('Subscribe_Bluetoothhandsfreeunitaudiostateupdate_Common_Event', 0, function (done) {
         createBluetoothHandsfreeunitAudioStateUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_092
-     * @tc.name subscribe BluetoothHandsfreeunitAgCommonEvent common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1020
+     * @tc.name Subscribe_Bluetoothhandsfreeunitagcommonevent_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_092', 0, function (done) {
+    it('Subscribe_Bluetoothhandsfreeunitagcommonevent_Common_Event', 0, function (done) {
         createBluetoothHandsfreeunitAgCommonEventSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_093
-     * @tc.name subscribe BluetoothHandsfreeunitAgCallStateUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1030
+     * @tc.name Subscribe_Bluetoothhandsfreeunitagcallstateupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_093', 0, function (done) {
+    it('Subscribe_Bluetoothhandsfreeunitagcallstateupdate_Common_Event', 0, function (done) {
         createBluetoothHandsfreeunitAgCallStateUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_094
-     * @tc.name subscribe BluetoothHostStateUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1040
+     * @tc.name Subscribe_Bluetoothhoststateupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_094', 0, function (done) {
+    it('Subscribe_Bluetoothhoststateupdate_Common_Event', 0, function (done) {
         createBluetoothHostStateUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_095
-     * @tc.name subscribe BluetoothHostReqDiscoverable common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1050
+     * @tc.name Subscribe_Bluetoothhostreqdiscoverable_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_095', 0, function (done) {
+    it('Subscribe_Bluetoothhostreqdiscoverable_Common_Event', 0, function (done) {
         createBluetoothHostReqDiscoverableSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_096
-     * @tc.name subscribe CommonEventHostReqEnable common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1060
+     * @tc.name Subscribe_Commoneventhostreqenable_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_096', 0, function (done) {
+    it('Subscribe_Commoneventhostreqenable_Common_Event', 0, function (done) {
         createCommonEventHostReqEnableSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_097
-     * @tc.name subscribe CommonEventHostReqDisable common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1070
+     * @tc.name Subscribe_Commoneventhostreqdisable_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_097', 0, function (done) {
+    it('Subscribe_Commoneventhostreqdisable_Common_Event', 0, function (done) {
         createCommonEventHostReqDisableSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_098
-     * @tc.name subscribe CommonEventHostScanModeUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1080
+     * @tc.name Subscribe_Commoneventhostscanmodeupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_098', 0, function (done) {
+    it('Subscribe_Commoneventhostscanmodeupdate_Common_Event', 0, function (done) {
         createCommonEventHostScanModeUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_099
-     * @tc.name subscribe CommonEventHostDiscovetyStarted common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1090
+     * @tc.name Subscribe_Commoneventhostdiscovetystarted_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_099', 0, function (done) {
+    it('Subscribe_Commoneventhostdiscovetystarted_Common_Event', 0, function (done) {
         createCommonEventHostDiscovetyStartedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_100
-     * @tc.name subscribe CommonEventHostDiscovetyFinished common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1100
+     * @tc.name Subscribe_Commoneventhostdiscovetyfinished_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_100', 0, function (done) {
+    it('Subscribe_Commoneventhostdiscovetyfinished_Common_Event', 0, function (done) {
         createCommonEventHostDiscovetyFinishedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_101
-     * @tc.name subscribe CommonEventHostNameUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1110
+     * @tc.name Subscribe_Commoneventhostnameupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_101', 0, function (done) {
+    it('Subscribe_Commoneventhostnameupdate_Common_Event', 0, function (done) {
         createCommonEventHostNameUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_102
-     * @tc.name subscribe CommonEventHostStateUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1120
+     * @tc.name Subscribe_Commoneventhoststateupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_102', 0, function (done) {
+    it('Subscribe_Commoneventhoststateupdate_Common_Event', 0, function (done) {
         createCommonEventHostStateUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_103
-     * @tc.name subscribe CommonEventA2DPsinkPlayingStateUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1130
+     * @tc.name Subscribe_Commoneventa2dpsinkplayingstateupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_103', 0, function (done) {
+    it('Subscribe_Commoneventa2dpsinkplayingstateupdate_Common_Event', 0, function (done) {
         createCommonEventA2DPsinkPlayingStateUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_104
-     * @tc.name subscribe CommonEventA2DPsinkAudioStateUpdate common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1140
+     * @tc.name Subscribe_Commoneventa2dpsinkaudiostateupdate_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_104', 0, function (done) {
+    it('Subscribe_Commoneventa2dpsinkaudiostateupdate_Common_Event', 0, function (done) {
         createCommonEventA2DPsinkAudioStateUpdateSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_105
-     * @tc.name subscribe CommonEventNFCActionAdapterStateChanged common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1150
+     * @tc.name Subscribe_Commoneventnfcactionadapterstatechanged_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_105', 0, function (done) {
+    it('Subscribe_Commoneventnfcactionadapterstatechanged_Common_Event', 0, function (done) {
         createCommonEventNFCActionAdapterStateChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_106
-     * @tc.name subscribe CommonEventNFCActionRFFieldOnDetected common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1160
+     * @tc.name Subscribe_Commoneventnfcactionrffieldondetected_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_106', 0, function (done) {
+    it('Subscribe_Commoneventnfcactionrffieldondetected_Common_Event', 0, function (done) {
         createCommonEventNFCActionRFFieldOnDetectedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_107
-     * @tc.name subscribe CommonEventNFCActionRFFieldOffDetected common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1170
+     * @tc.name Subscribe_Commoneventnfcactionrffieldoffdetected_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_107', 0, function (done) {
+    it('Subscribe_Commoneventnfcactionrffieldoffdetected_Common_Event', 0, function (done) {
         createCommonEventNFCActionRFFieldOffDetectedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_108
-     * @tc.name subscribe CommonEventDeviceIdleModeChanged common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1180
+     * @tc.name Subscribe_Commoneventdeviceidlemodechanged_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_108', 0, function (done) {
+    it('Subscribe_Commoneventdeviceidlemodechanged_Common_Event', 0, function (done) {
         createCommonEventDeviceIdleModeChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_109
-     * @tc.name subscribe CommonEventPowerSaveModeChanged common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1190
+     * @tc.name Subscribe_Commoneventpowersavemodechanged_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_109', 0, function (done) {
+    it('Subscribe_Commoneventpowersavemodechanged_Common_Event', 0, function (done) {
         createCommonEventPowerSaveModeChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_110
-     * @tc.name subscribe CommonEventUserAdded common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1200
+     * @tc.name Subscribe_Commoneventuseradded_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_110', 0, function (done) {
+    it('Subscribe_Commoneventuseradded_Common_Event', 0, function (done) {
         createCommonEventUserAddedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_111
-     * @tc.name subscribe CommonEventUserRemoved common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1210
+     * @tc.name Subscribe_Commoneventuserremoved_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_111', 0, function (done) {
+    it('Subscribe_Commoneventuserremoved_Common_Event', 0, function (done) {
         createCommonEventUserRemovedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_112
-     * @tc.name subscribe CommonEventAbilityAdded common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1220
+     * @tc.name Subscribe_Commoneventabilityadded_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_112', 0, function (done) {
+    it('Subscribe_Commoneventabilityadded_Common_Event', 0, function (done) {
         createCommonEventAbilityAddedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_113
-     * @tc.name subscribe CommonEventAbilityRemoved common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1230
+     * @tc.name subscribe_CommonEventAbilityRemoved_common_event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_113', 0, function (done) {
+    it('subscribe_CommonEventAbilityRemoved_common_event', 0, function (done) {
         createCommonEventAbilityRemovedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_114
-     * @tc.name subscribe CommonEventAbilityUpdated common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1240
+     * @tc.name subscribe_CommonEventAbilityUpdated_common_event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_114', 0, function (done) {
+    it('subscribe_CommonEventAbilityUpdated_common_event', 0, function (done) {
         createCommonEventAbilityUpdatedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_115
-     * @tc.name subscribe CommonEventLocationModeStateChanged common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1250
+     * @tc.name subscribe_CommonEventLocationModeStateChanged_common_event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_115', 0, function (done) {
+    it('subscribe_CommonEventLocationModeStateChanged_common_event', 0, function (done) {
         createCommonEventLocationModeStateChangedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_116
-     * @tc.name subscribe CommonEventIVISleep common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1260
+     * @tc.name subscribe_CommonEventIVISleep_common_event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_116', 0, function (done) {
+    it('subscribe_CommonEventIVISleep_common_event', 0, function (done) {
         createCommonEventIVISleepSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_117
-     * @tc.name subscribe CommonEventIVIPause common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1270
+     * @tc.name subscribe_CommonEventIVIPause_common_event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_117', 0, function (done) {
+    it('subscribe_CommonEventIVIPause_common_event', 0, function (done) {
         createCommonEventIVIPauseSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_118
-     * @tc.name subscribe CommonEventIVIStandBy common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1280
+     * @tc.name Subscribe_Commoneventivistandby_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_118', 0, function (done) {
+    it('Subscribe_Commoneventivistandby_Common_Event', 0, function (done) {
         createCommonEventIVIStandBySubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_119
-     * @tc.name subscribe CommonEventIVILastmodeSave common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1290
+     * @tc.name Subscribe_Commoneventivilastmodesave_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_119', 0, function (done) {
+    it('Subscribe_Commoneventivilastmodesave_Common_Event', 0, function (done) {
         createCommonEventIVILastmodeSaveSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_120
-     * @tc.name subscribe CommonEventIVIVoltageAbnormal common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1300
+     * @tc.name Subscribe_Commoneventivivoltageabnormal_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_120', 0, function (done) {
+    it('Subscribe_Commoneventivivoltageabnormal_Common_Event', 0, function (done) {
         createCommonEventIVIVoltageAbnormalSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_121
-     * @tc.name subscribe CommonEventIVIHightTemperature common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1310
+     * @tc.name Subscribe_Commoneventivihighttemperature_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_121', 0, function (done) {
+    it('Subscribe_Commoneventivihighttemperature_Common_Event', 0, function (done) {
         createCommonEventIVIHightTemperatureSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_122
-     * @tc.name subscribe CommonEventIVIExtremeTemperature common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1320
+     * @tc.name Subscribe_Commoneventiviextremetemperature_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_122', 0, function (done) {
+    it('Subscribe_Commoneventiviextremetemperature_Common_Event', 0, function (done) {
         createCommonEventIVIExtremeTemperatureSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_123
-     * @tc.name subscribe CommonEventIVITemperatureAbnormal common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1330
+     * @tc.name Subscribe_Commoneventivitemperatureabnormal_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_123', 0, function (done) {
+    it('Subscribe_Commoneventivitemperatureabnormal_Common_Event', 0, function (done) {
         createCommonEventIVITemperatureAbnormalSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_124
-     * @tc.name subscribe CommonEventIVIVoltageRecovery common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1340
+     * @tc.name Subscribe_Commoneventivivoltagerecovery_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_124', 0, function (done) {
+    it('Subscribe_Commoneventivivoltagerecovery_Common_Event', 0, function (done) {
         createCommonEventIVIVoltageRecoverySubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_125
-     * @tc.name subscribe CommonEventIVITempratureRecovery common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1350
+     * @tc.name Subscribe_Commoneventivitempraturerecovery_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_125', 0, function (done) {
+    it('Subscribe_Commoneventivitempraturerecovery_Common_Event', 0, function (done) {
         createCommonEventIVITempratureRecoverySubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_126
-     * @tc.name subscribe CommonEventIVIActive common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1360
+     * @tc.name Subscribe_Commoneventiviactive_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_126', 0, function (done) {
+    it('Subscribe_Commoneventiviactive_Common_Event', 0, function (done) {
         createCommonEventIVIActiveSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_127
-     * @tc.name subscribe CommonEventUSBDevidceAttached common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1370
+     * @tc.name Subscribe_Commoneventusbdevidceattached_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_127', 0, function (done) {
-        createCommonEventUSBDevidceAttachedSubscriber();
+    it('Subscribe_Commoneventusbdevidceattached_Common_Event', 0, function (done) {
+        createCommonEventSUBDevidceAttachedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_128
-     * @tc.name subscribe CommonEventUSBDevidceDetached common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1380
+     * @tc.name Subscribe_Commoneventusbdevidcedetached_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_128', 0, function (done) {
-        createCommonEventUSBDevidceDetachedSubscriber();
+    it('Subscribe_Commoneventusbdevidcedetached_Common_Event', 0, function (done) {
+        createCommonEventSUBDevidceDetachedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_129
-     * @tc.name subscribe CommonEventUSBAccessoryAttached common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1390
+     * @tc.name Subscribe_Commoneventusbaccessoryattached_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_129', 0, function (done) {
-        createCommonEventUSBAccessoryAttachedSubscriber();
+    it('Subscribe_Commoneventusbaccessoryattached_Common_Event', 0, function (done) {
+        createCommonEventSUBAccessoryAttachedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_130
-     * @tc.name subscribe CommonEventUSBAccessoryDetached common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1400
+     * @tc.name Subscribe_Commoneventusbaccessorydetached_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_130', 0, function (done) {
-        createCommonEventUSBAccessoryDetachedSubscriber();
+    it('Subscribe_Commoneventusbaccessorydetached_Common_Event', 0, function (done) {
+        createCommonEventSUBAccessoryDetachedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_131
-     * @tc.name subscribe CommonEventDickRemoved common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1410
+     * @tc.name Subscribe_Commoneventdickremoved_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_131', 0, function (done) {
+    it('Subscribe_Commoneventdickremoved_Common_Event', 0, function (done) {
         createCommonEventDickRemovedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_132
-     * @tc.name subscribe CommonEventDickUnmounted common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1420
+     * @tc.name Subscribe_Commoneventdickunmounted_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_132', 0, function (done) {
+    it('Subscribe_Commoneventdickunmounted_Common_Event', 0, function (done) {
         createCommonEventDickUnmountedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_133
-     * @tc.name subscribe CommonEventDickMounted common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1430
+     * @tc.name Subscribe_Commoneventdickmounted_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_133', 0, function (done) {
+    it('Subscribe_Commoneventdickmounted_Common_Event', 0, function (done) {
         createCommonEventDickMountedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_134
-     * @tc.name subscribe CommonEventDickNadRemoval common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1440
+     * @tc.name Subscribe_Commoneventdicknadremoval_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_134', 0, function (done) {
+    it('Subscribe_Commoneventdicknadremoval_Common_Event', 0, function (done) {
         createCommonEventDickNadRemovalSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_135
-     * @tc.name subscribe CommonEventDickUnmoutable common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1450
+     * @tc.name Subscribe_Commoneventdickunmoutable_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_135', 0, function (done) {
+    it('Subscribe_Commoneventdickunmoutable_Common_Event', 0, function (done) {
         createCommonEventDickUnmoutableSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_136
-     * @tc.name subscribe CommonEventDickEject common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1460
+     * @tc.name Subscribe_CommonEventDickEject_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_136', 0, function (done) {
+    it('Subscribe_CommonEventDickEject_Common_Event', 0, function (done) {
         createCommonEventDickEjectSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_137
-     * @tc.name subscribe CommonEventVisibleAccountsUpdated common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1470
+     * @tc.name Subscribe_CommonEventVisibleAccountsUpdated_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_137', 0, function (done) {
+    it('Subscribe_CommonEventVisibleAccountsUpdated_Common_Event', 0, function (done) {
         createCommonEventVisibleAccountsUpdatedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_138
-     * @tc.name subscribe CommonEventAccountDeleted common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1480
+     * @tc.name Subscribe_CommonEventAccountDeleted_Common_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_138', 0, function (done) {
+    it('Subscribe_CommonEventAccountDeleted_Common_Event', 0, function (done) {
         createCommonEventAccountDeletedSubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_139
-     * @tc.name subscribe CommonEventFoundationReady common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1490
+     * @tc.name Subscribe_CommonEventFoundation_ReadyCommon_Event
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_139', 0, function (done) {
+    it('Subscribe_CommonEventFoundation_ReadyCommon_Event', 0, function (done) {
         createCommonEventFoundationReadySubscriber();
         done();
     })
 
     /**
-     * @tc.number BatteryCommonEventTest_140
-     * @tc.name subscribe CommonEventAirplaneModeChanged common event
+     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_1500
+     * @tc.name Subscribe_CommonEventAirplane_ModeChanged_CommonEvent
      * @tc.desc Battery acquisition kit
      */
-    it('BatteryCommonEventTest_140', 0, function (done) {
+    it('Subscribe_CommonEventAirplane_ModeChanged_CommonEvent', 0, function (done) {
         createCommonEventAirplaneModeChangedSubscriber();
         done();
     })
@@ -1851,13 +1851,13 @@ function createCommonEventDickRemovedSubscriber() {
     });
 }
 
-function createCommonEventUSBAccessoryDetachedSubscriber() {
+function createCommonEventSUBAccessoryDetachedSubscriber() {
     var commonEventSubscribeInfo = {
-        events: [commonEvent.Support.COMMON_EVENT_USB_ACCESSORY_DETACHED],
+        events: [commonEvent.Support.COMMON_EVENT_SUB_ACCESSORY_DETACHED],
     };
     commonEvent.createSubscriber(commonEventSubscribeInfo)
         .then(subscriber => {
-            console.info('createCommonEventUSBAccessoryDetachedSubscriber success');
+            console.info('createCommonEventSUBAccessoryDetachedSubscriber success');
             var mySubscriber = subscriber;
             console.log(subscriber);
 
@@ -1876,7 +1876,7 @@ function createCommonEventUSBAccessoryDetachedSubscriber() {
                 }).catch((error) => {
                 console.error('Subscriber getData error because: ' + JSON.stringify(error));
             })
-            console.info('subscribe Common_Event_USB_Accessory_Detached begin ');
+            console.info('subscribe Common_Event_SUB_Accessory_Detached begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
                 console.error('err code: ' + JSON.stringify(error));
@@ -1894,13 +1894,13 @@ function createCommonEventUSBAccessoryDetachedSubscriber() {
     });
 }
 
-function createCommonEventUSBAccessoryAttachedSubscriber() {
+function createCommonEventSUBAccessoryAttachedSubscriber() {
     var commonEventSubscribeInfo = {
-        events: [commonEvent.Support.COMMON_EVENT_USB_ACCESSORY_ATTACHED],
+        events: [commonEvent.Support.COMMON_EVENT_SUB_ACCESSORY_ATTACHED],
     };
     commonEvent.createSubscriber(commonEventSubscribeInfo)
         .then(subscriber => {
-            console.info('createCommonEventUSBAccessoryAttachedSubscriber success');
+            console.info('createCommonEventSUBAccessoryAttachedSubscriber success');
             var mySubscriber = subscriber;
             console.log(subscriber);
 
@@ -1919,7 +1919,7 @@ function createCommonEventUSBAccessoryAttachedSubscriber() {
                 }).catch((error) => {
                 console.error('Subscriber getData error because: ' + JSON.stringify(error));
             })
-            console.info('subscribe Common_Event_USB_Accessory_Attached begin ');
+            console.info('subscribe Common_Event_SUB_Accessory_Attached begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
                 console.error('err code: ' + JSON.stringify(error));
@@ -1937,13 +1937,13 @@ function createCommonEventUSBAccessoryAttachedSubscriber() {
     });
 }
 
-function createCommonEventUSBDevidceDetachedSubscriber() {
+function createCommonEventSUBDevidceDetachedSubscriber() {
     var commonEventSubscribeInfo = {
-        events: [commonEvent.Support.COMMON_EVENT_USB_DEVICE_DETACHED],
+        events: [commonEvent.Support.COMMON_EVENT_SUB_DEVICE_DETACHED],
     };
     commonEvent.createSubscriber(commonEventSubscribeInfo)
         .then(subscriber => {
-            console.info('createCommonEventUSBDevidceDetachedSubscriber success');
+            console.info('createCommonEventSUBDevidceDetachedSubscriber success');
             var mySubscriber = subscriber;
             console.log(subscriber);
 
@@ -1962,7 +1962,7 @@ function createCommonEventUSBDevidceDetachedSubscriber() {
                 }).catch((error) => {
                 console.error('Subscriber getData error because: ' + JSON.stringify(error));
             })
-            console.info('subscribe Common_Event_USB_Devidce_Detached begin ');
+            console.info('subscribe Common_Event_SUB_Devidce_Detached begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
                 console.error('err code: ' + JSON.stringify(error));
@@ -1980,13 +1980,13 @@ function createCommonEventUSBDevidceDetachedSubscriber() {
     });
 }
 
-function createCommonEventUSBDevidceAttachedSubscriber() {
+function createCommonEventSUBDevidceAttachedSubscriber() {
     var commonEventSubscribeInfo = {
-        events: [commonEvent.Support.COMMON_EVENT_USB_DEVICE_ATTACHED],
+        events: [commonEvent.Support.COMMON_EVENT_SUB_DEVICE_ATTACHED],
     };
     commonEvent.createSubscriber(commonEventSubscribeInfo)
         .then(subscriber => {
-            console.info('createCommonEventUSBDevidceAttachedSubscriber success');
+            console.info('createCommonEventSUBDevidceAttachedSubscriber success');
             var mySubscriber = subscriber;
             console.log(subscriber);
 
@@ -2005,7 +2005,7 @@ function createCommonEventUSBDevidceAttachedSubscriber() {
                 }).catch((error) => {
                 console.error('Subscriber getData error because: ' + JSON.stringify(error));
             })
-            console.info('subscribe Common_Event_USB_Devidce_Attached begin ');
+            console.info('subscribe Common_Event_SUB_Devidce_Attached begin ');
 
             commonEvent.subscribe(mySubscriber, (error, commonEventData) => {
                 console.error('err code: ' + JSON.stringify(error));

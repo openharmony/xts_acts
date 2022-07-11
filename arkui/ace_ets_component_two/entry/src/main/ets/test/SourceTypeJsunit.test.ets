@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 
 export default function sourceTypeJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_two_9', function () {
     beforeEach(async function (done) {
       console.info("sourceType beforeEach start");
       let options = {

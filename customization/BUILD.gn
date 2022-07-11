@@ -13,9 +13,19 @@
 
 import("//build/ohos_var.gni")
 
+group("edm_test_grop") {
+  testonly = true
+  if (is_standard_system) {
+    deps = [
+      "TestExtensionAbility_001:ExtensionZeroTest",
+      "edm_xts_stage:ActsEdmTest",
+    ]
+  }
+}
+
 group("customization") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "enterprise_device_management:edm_test_grop" ]
+    deps = [ ":edm_test_grop" ]
   }
 }

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import workScheduler from '@ohos.workScheduler'
-import workSchedulerCallback from '@ohos.workSchedulerExtensionAbility'
+import workSchedulerCallback from '@ohos.WorkSchedulerExtensionAbility'
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
@@ -948,42 +948,6 @@ describe("WorkSchedulerJsTest", function () {
 		console.info("workSchedulerLog workInfo BatteryStatus :" + workScheduler.BatteryStatus.BATTERY_STATUS_LOW);
         done();
     })
-	
-	/*
-     * @tc.name: WorkSchedulerJsTest049
-     * @tc.desc: test WorkSchedulerExtensoinAbility onWorkStart
-     * @tc.type: FUNC
-     * @tc.require: 
-     */
-    /*it("WorkSchedulerJsTest049", 0, async function (done) {
-        console.info('----------------------WorkSchedulerJsTest049---------------------------');
-        let workInfo = {
-            workId: 2,
-            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
-            abilityName: "com.mytest.abilityName",
-        }
-        let res = workScheduler.onWorkStart(workInfo);
-        expect(res).assertEqual(false);
-        done();
-    })*/
-	
-	/*
-     * @tc.name: WorkSchedulerJsTest050
-     * @tc.desc: test WorkSchedulerExtensoinAbility onWorkStop
-     * @tc.type: FUNC
-     * @tc.require: 
-     */
-    /*it("WorkSchedulerJsTest050", 0, async function (done) {
-        console.info('----------------------WorkSchedulerJsTest050---------------------------');
-        let workInfo = {
-            workId: 2,
-            bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
-            abilityName: "com.mytest.abilityName",
-        }
-        let stopRes = workSchedulerCallback.onWorkStop(workInfo, true);
-			expect(stopRes).assertEqual(false);
-        done();
-    })*/
 	
 	/*
      * @tc.name: WorkSchedulerJsTest051

@@ -49,6 +49,11 @@ describe('PasteBoardTest', function() {
         console.log('f_test1: systemPasteboard.hasPasteData promise data = ' + data);
         expect(data === true || data === false).assertTrue();
 
+        var types = pasteData.getMimeTypes();
+        console.info('f_test1: getMimeTypes = ' + types);
+        console.info('f_test1: getMimeTypes = ' + typeof (types));
+        expect("text/plain").assertEqual(types[0]);
+
         console.log('f_test1: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test1: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
@@ -58,6 +63,15 @@ describe('PasteBoardTest', function() {
         console.log('f_test1: Checks the pasteboard content');
 		var primaryText = pasteData1.getPrimaryText()
 		console.log('f_test1: primaryText = ' + primaryText);
+
+        console.info('Checks pasteboard MAX_RECORD_NUM' + pasteboard.MAX_RECORD_NUM);
+        expect(pasteboard.MAX_RECORD_NUM == 128).assertTrue();
+
+        console.info('Checks PasteDataProperty.localOnly')
+        var pasteDataProperty = pasteData1.getProperty()
+        console.info('Checks: localOnly = ' + pasteDataProperty.localOnly)
+
+
 
         console.log('Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
 		console.log('f_test1: getPrimaryMimeType = ' + pasteData1.getPrimaryMimeType());
@@ -69,7 +83,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-    
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_0200
      * @tc.name      Adds PlainTextData = ''
@@ -106,7 +120,7 @@ describe('PasteBoardTest', function() {
 		var recordCount = pasteData1.getRecordCount();
 		console.log('f_test2: recordCount=' + recordCount);
 		expect(recordCount == 1).assertTrue();
-		
+
         console.log('SUB_pasteBoard_function_JS_API_0200 end');
         done();
         })
@@ -114,7 +128,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-    
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_0300
      * @tc.name      Adds PlainTextData = 'Hello 中国!@#$%^&*()_+{}\?.'
@@ -165,7 +179,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_0400
      * @tc.name      Adds 300K PlainTextData
@@ -220,7 +234,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_0500
      * @tc.name      Adds 301K PlainTextData
@@ -274,7 +288,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-    
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_0600
      * @tc.name      Adds htmlText
@@ -310,6 +324,11 @@ describe('PasteBoardTest', function() {
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
 
+        console.info('f_test6: Checks the pasteboard content');
+        var primaryHtml = pasteData1.getPrimaryHtml()
+        console.info('f_test6: getPrimaryHtml = ' + primaryHtml);
+        expect(primaryHtml == htmlText).assertTrue();
+
         console.log('Checks there is a MIMETYPE_TEXT_HTML MIME type of data' + pasteboard.MIMETYPE_TEXT_HTML);
         expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === true ||
                 pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_HTML) === false).assertTrue();
@@ -322,7 +341,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-    
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_0700
      * @tc.name      Adds htmlText = ''
@@ -357,7 +376,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test7: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
         console.log('SUB_pasteBoard_function_JS_API_0700 end');
         done();
         })
@@ -365,7 +384,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-    
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_0800
      * @tc.name      Adds htmlText = 'Hello 中国!@#$%^&*()_+{}\?.'
@@ -412,7 +431,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-    
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_0900
      * @tc.name      Adds uriText
@@ -448,6 +467,11 @@ describe('PasteBoardTest', function() {
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
 
+        console.info('f_test9: Checks the pasteboard content');
+        var primaryUri = pasteData1.getPrimaryUri()
+        console.info('f_test9: getPrimaryUri = ' + primaryUri);
+        expect(primaryUri == uriText).assertTrue();
+
         console.log('Checks there is a MIMETYPE_TEXT_URI MIME type of data' + pasteboard.MIMETYPE_TEXT_URI);
         expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === true ||
                 pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_URI) === false).assertTrue();
@@ -459,7 +483,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-    
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_1000
      * @tc.name      Adds uriText = ''
@@ -502,7 +526,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-    
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_1100
      * @tc.name      Set uriText = 'Hello //'
@@ -549,7 +573,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-    
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_1200
      * @tc.name      Adds want
@@ -560,18 +584,24 @@ describe('PasteBoardTest', function() {
      */
 	it('pasteboard_function_test12',0, async function (done) {
         console.log('SUB_pasteBoard_function_JS_API_1200 start')
-		
+
         var systemPasteboard = pasteboard.getSystemPasteboard();
         systemPasteboard.clear().then(() => {
         console.log('f_test12: systemPasteboard.clear promise');
-		
+
 		var want = {
             bundleName: "com.example.myapplication8",
             abilityName: "com.example.myapplication8.MainAbility"
         }
-        console.log('f_test12: createWantData want = ' + want);
+        console.info('f_test12: createWantData want.bundleName = ' + want.bundleName);
+        console.info('f_test12: createWantData want.bundleName = ' + want.abilityName);
+
+
         var pasteData = pasteboard.createWantData(want);
-        console.log('f_test12: createWantData pasteData = ' + JSON.stringify(pasteData));
+
+        console.info('f_test12: createWantData pasteData = ' + pasteData);
+
+        console.info('f_test12: createWantData pasteData = ' + JSON.stringify(pasteData));
 
         console.log('f_test12: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData).then(() => {
@@ -588,6 +618,13 @@ describe('PasteBoardTest', function() {
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
 
+        console.info('f_test12: Checks the pasteboard content');
+        var primaryWant = pasteData1.getPrimaryWant()
+        console.info('f_test12: createWantData want.bundleName = ' + primaryWant.bundleName);
+        console.info('f_test12: createWantData want.bundleName = ' + primaryWant.abilityName);
+        expect(want.bundleName).assertEqual(primaryWant.bundleName);
+        expect(want.abilityName).assertEqual(primaryWant.abilityName);
+
         console.log('Checks there is a MIMETYPE_TEXT_WANT MIME type of data' + pasteboard.MIMETYPE_TEXT_WANT);
         expect(pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_WANT) === true ||
                 pasteData1.hasMimeType(pasteboard.MIMETYPE_TEXT_WANT) === false).assertTrue();
@@ -599,7 +636,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_1300
      * @tc.name      Adds one record(s)
@@ -607,7 +644,7 @@ describe('PasteBoardTest', function() {
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
-     */	
+     */
 	it('pasteboard_function_test13',0, async function (done) {
         console.log('SUB_pasteBoard_function_JS_API_1300 start')
 
@@ -646,7 +683,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_1400
      * @tc.name      Adds 2 record(s)
@@ -654,7 +691,7 @@ describe('PasteBoardTest', function() {
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
-     */	
+     */
 	it('pasteboard_function_test14',0, async function (done) {
         console.log('SUB_pasteBoard_function_JS_API_1400 start')
 
@@ -666,7 +703,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test14: createPlainTextData textData = ' + textData0);
         var pasteData = pasteboard.createPlainTextData(textData0);
         console.log('f_test14: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
-		
+
 		var textData1 = 'Hello World1'
 		console.log('f_test14: addTextRecord = ' + textData1)
 		pasteData.addTextRecord(textData1)
@@ -685,7 +722,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test14: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 2).assertTrue();
-		
+
         console.log('SUB_pasteBoard_function_JS_API_1400 end');
         done();
         })
@@ -693,7 +730,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_1500
      * @tc.name      Adds 15 record(s)
@@ -701,7 +738,7 @@ describe('PasteBoardTest', function() {
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
-     */	
+     */
 	it('pasteboard_function_test15',0, async function (done) {
         console.log('SUB_pasteBoard_function_JS_API_1500 start')
 
@@ -713,7 +750,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test15: createPlainTextData textData = ' + textData0);
         var pasteData = pasteboard.createPlainTextData(textData0);
         console.log('f_test15: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
-		
+
 		var textData = ''
 		for(var i = 1; i < 15; i++)
 		{
@@ -737,7 +774,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test15: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
 		expect(pasteData1.getRecordCount() == 15).assertTrue();
-		
+
         console.log('SUB_pasteBoard_function_JS_API_1500 end');
         done();
         })
@@ -745,7 +782,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_1600
      * @tc.name      Adds 30 record(s)
@@ -765,7 +802,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test16: createPlainTextData textData = ' + textData0);
         var pasteData = pasteboard.createPlainTextData(textData0);
         console.log('f_test16: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
-		
+
 		var textData = ''
 		for(var i = 1; i < 30; i++)
 		{
@@ -789,7 +826,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test16: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 30).assertTrue();
-		
+
         console.log('SUB_pasteBoard_function_JS_API_1600 end');
         done();
         })
@@ -797,7 +834,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_1700
      * @tc.name      Adds 31 record(s)
@@ -817,7 +854,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test17: createPlainTextData textData = ' + textData0);
         var pasteData = pasteboard.createPlainTextData(textData0);
         console.log('f_test17: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
-		
+
 		var textData = ''
 		for(var i = 1; i < 31; i++)
 		{
@@ -843,7 +880,7 @@ describe('PasteBoardTest', function() {
 		var recordCount = pasteData1.getRecordCount()
 		console.log('f_test17: recordCount = ' + recordCount);
         expect(pasteData1.getRecordCount() == 31).assertTrue();
-		
+
         console.log('SUB_pasteBoard_function_JS_API_1700 end');
         done();
         })
@@ -851,7 +888,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-    
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_1800
      * @tc.name      Adds PlainText,HtmlText,UriText
@@ -871,15 +908,23 @@ describe('PasteBoardTest', function() {
         console.log('f_test18: createPlainTextData textData = ' + textData);
         var pasteData = pasteboard.createPlainTextData(textData);
         console.log('f_test18: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
-		
+
 		var htmlText = '<html><head></head><body>Hello World!</body></html>'
         console.log('f_test18: addHtmlRecord = ' + htmlText)
         pasteData.addHtmlRecord(htmlText)
-        
+
         var uriText = 'https://www.baidu.com/'
         console.log('f_test18: addUriRecord = ' + uriText)
         pasteData.addUriRecord(uriText)
-        
+
+        var want = {
+            bundleName: "com.example.myapplication8",
+            abilityName: "com.example.myapplication8.MainAbility"
+        }
+        console.info('f_test18: addWantRecord = ' + want)
+        pasteData.addWantRecord(want)
+
+
         console.log('f_test18: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData).then(() => {
         console.log('f_test18: systemPasteboard.setPasteData promise');
@@ -893,8 +938,8 @@ describe('PasteBoardTest', function() {
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test18: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
-        expect(pasteData1.getRecordCount() == 3).assertTrue();
-		
+        expect(pasteData1.getRecordCount() == 4).assertTrue();
+
         console.log('SUB_pasteBoard_function_JS_API_1800 end');
         done();
         })
@@ -902,7 +947,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-    
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_1900
      * @tc.name      Delete one PlainTextData
@@ -937,24 +982,24 @@ describe('PasteBoardTest', function() {
         console.log('f_test19: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test19: Removes the Record')
 		expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
-		
+
 		console.log('f_test19: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData1).then(() => {
         console.log('f_test19: systemPasteboard.setPasteData promise');
-		
+
 		console.log('f_test19: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test19: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData2 = data;
 		var recordCount = pasteData2.getRecordCount();
 		console.log('f_test19: recordCount = ' + recordCount);
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_1900 end');
         done();
-		
+
 		});
 		});
         });
@@ -962,7 +1007,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_2000
      * @tc.name      Delete one htmlText
@@ -997,24 +1042,24 @@ describe('PasteBoardTest', function() {
         console.log('f_test20: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test20: Removes the Record')
         expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
-        
+
 		console.log('f_test20: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData1).then(() => {
         console.log('f_test20: systemPasteboard.setPasteData promise');
-		
+
 		console.log('f_test20: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test20: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData2 = data;
 		var recordCount = pasteData2.getRecordCount();
 		console.log('f_test20: recordCount = ' + recordCount);
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_2000 end');
         done();
-		
+
 		});
 		});
         });
@@ -1022,7 +1067,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_2100
      * @tc.name      Delete one uriText
@@ -1057,24 +1102,24 @@ describe('PasteBoardTest', function() {
         console.log('f_test21: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test21: f_test21: Removes the Record')
         expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
-        
+
 		console.log('f_test21: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData1).then(() => {
         console.log('f_test21: systemPasteboard.setPasteData promise');
-		
+
 		console.log('f_test21: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test21: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData2 = data;
 		var recordCount = pasteData2.getRecordCount();
 		console.log('f_test21: recordCount = ' + recordCount);
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_2100 end');
         done();
-		
+
 		});
 		});
         });
@@ -1082,7 +1127,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_2200
      * @tc.name      Delete one want
@@ -1120,24 +1165,24 @@ describe('PasteBoardTest', function() {
         console.log('f_test22: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test22: Removes the Record')
         expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
-        
+
 		console.log('f_test22: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData1).then(() => {
         console.log('f_test22: systemPasteboard.setPasteData promise');
-		
+
 		console.log('f_test22: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test22: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData2 = data;
 		var recordCount = pasteData2.getRecordCount();
 		console.log('f_test22: recordCount = ' + recordCount);
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_2200 end');
         done();
-		
+
 		});
 		});
         });
@@ -1145,7 +1190,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_2300
      * @tc.name      Deletes 300K PlainTextData
@@ -1183,24 +1228,24 @@ describe('PasteBoardTest', function() {
         console.log('f_test23: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test23: Removes the Record')
         expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
-        
+
 		console.log('f_test23: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData1).then(() => {
         console.log('f_test23: systemPasteboard.setPasteData promise');
-		
+
 		console.log('f_test23: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test23: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData2 = data;
 		var recordCount = pasteData2.getRecordCount();
 		console.log('f_test23: recordCount = ' + recordCount);
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_2300 end');
         done();
-		
+
 		});
 		});
         });
@@ -1208,7 +1253,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_2400
      * @tc.name      Deletes 30 record(s)
@@ -1228,7 +1273,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test24: createPlainTextData textData = ' + textData0);
         var pasteData = pasteboard.createPlainTextData(textData0);
         console.log('f_test24: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
-		
+
 		var textData = ''
 		for(var i = 1; i < 30; i++)
 		{
@@ -1248,25 +1293,25 @@ describe('PasteBoardTest', function() {
         console.log('f_test24: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
 		expect(pasteData1.getRecordCount() == 30).assertTrue();
-		
+
 		console.log('f_test24: Removes the Record')
 		for(var i = 0; i < 30; i++)
 		{
 			expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
 		}
-		
+
         systemPasteboard.setPasteData(pasteData1).then(() => {
         console.log('f_test24: systemPasteboard.setPasteData promise');
-		
+
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test24: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData2 = data;
 		var recordCount = pasteData2.getRecordCount();
 		console.log('f_test24: recordCount = ' + recordCount);
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_2400 end');
         done();
-		
+
 		});
 		});
         });
@@ -1274,7 +1319,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_2500
      * @tc.name      Deletes replaced record
@@ -1298,7 +1343,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test25: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData).then(() => {
         console.log('f_test25: systemPasteboard.setPasteData promise');
-		
+
         console.log('f_test25: Checks there is content in the pasteboard')
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test25: systemPasteboard.hasPasteData promise data = ' + data);
@@ -1309,30 +1354,30 @@ describe('PasteBoardTest', function() {
         console.log('f_test25: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		var textData1 = 'Hello World1'
         console.log('f_test25: Replaces the Record = ' + textData1)
         var pasteDataRecord = pasteboard.createPlainTextRecord(textData1)
 		var replace = pasteData1.replaceRecordAt(0, pasteDataRecord);
 		console.log('f_test25: replace = ' + replace)
-		
+
 		console.log('f_test25: Removes the Record')
         expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
-        
+
 		console.log('f_test25: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData1).then(() => {
         console.log('f_test25: systemPasteboard.setPasteData promise');
-		
+
 		console.log('f_test25: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test25: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData2 = data;
 		var recordCount = pasteData2.getRecordCount();
 		console.log('f_test25: recordCount = ' + recordCount);
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_2500 end');
         done();
-		
+
 		});
 		});
         });
@@ -1340,7 +1385,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_2600
      * @tc.name      Deletes 文本、uri、html
@@ -1360,15 +1405,15 @@ describe('PasteBoardTest', function() {
         console.log('f_test26: createPlainTextData textData = ' + textData);
         var pasteData = pasteboard.createPlainTextData(textData);
         console.log('f_test26: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
-		
+
 		var htmlText = '<html><head></head><body>Hello World!</body></html>'
         console.log('f_test26: addHtmlRecord = ' + htmlText)
         pasteData.addHtmlRecord(htmlText)
-        
+
         var uriText = 'https://www.baidu.com/'
         console.log('f_test26: addUriRecord = ' + uriText)
         pasteData.addUriRecord(uriText)
-        
+
         console.log('f_test26: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData).then(() => {
         console.log('f_test26: systemPasteboard.setPasteData promise');
@@ -1383,26 +1428,26 @@ describe('PasteBoardTest', function() {
         console.log('f_test26: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
 		expect(pasteData1.getRecordCount() == 3).assertTrue();
-		
+
 		console.log('f_test26: Removes the Record')
         expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
 		expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
 		expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
-        
+
 		console.log('f_test26: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData1).then(() => {
         console.log('f_test26: systemPasteboard.setPasteData promise');
-		
+
 		console.log('f_test26: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test26: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData2 = data;
 		var recordCount = pasteData2.getRecordCount();
 		console.log('f_test26: recordCount = ' + recordCount);
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_2600 end');
         done();
-		
+
 		});
 		});
         });
@@ -1410,7 +1455,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_2700
      * @tc.name      Replaces 文本 record
@@ -1418,7 +1463,7 @@ describe('PasteBoardTest', function() {
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
-     */	
+     */
 	it('pasteboard_function_test27',0, async function (done) {
         console.log('SUB_pasteBoard_function_JS_API_2700 start')
 
@@ -1434,7 +1479,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test27: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData).then(() => {
         console.log('f_test27: systemPasteboard.setPasteData promise');
-		
+
         console.log('f_test27: Checks there is content in the pasteboard')
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test27: systemPasteboard.hasPasteData promise data = ' + data);
@@ -1445,13 +1490,13 @@ describe('PasteBoardTest', function() {
         console.log('f_test27: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		var textData1 = 'Hello World1'
         console.log('f_test27: Replaces the Record = ' + textData1)
         var pasteDataRecord = pasteboard.createPlainTextRecord(textData1)
 		var replace = pasteData1.replaceRecordAt(0, pasteDataRecord);
 		console.log('f_test27: replace = ' + replace)
-		
+
 		console.log('f_test27: Checks the pasteboard content');
 		var primaryText = pasteData1.getPrimaryText();
 		console.log('f_test27: primaryText = ' + primaryText);
@@ -1463,7 +1508,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_2800
      * @tc.name      Replaces htmlText record
@@ -1487,7 +1532,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test28: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData).then(() => {
         console.log('f_test28: systemPasteboard.setPasteData promise');
-		
+
         console.log('f_test28: Checks there is content in the pasteboard')
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test28: systemPasteboard.hasPasteData promise data = ' + data);
@@ -1498,7 +1543,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test28: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		var htmlText1 = '<html><head></head><body>Hello World 1</body></html>'
         console.log('f_test28: Replaces the htmlText = ' + htmlText1)
         var pasteDataRecord = pasteboard.createHtmlTextRecord(htmlText1)
@@ -1512,7 +1557,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_2900
      * @tc.name      Replaces uri record
@@ -1536,7 +1581,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test29: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData).then(() => {
         console.log('f_test29: systemPasteboard.setPasteData promise');
-		
+
         console.log('f_test29: Checks there is content in the pasteboard')
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test29: systemPasteboard.hasPasteData promise data = ' + data);
@@ -1547,13 +1592,13 @@ describe('PasteBoardTest', function() {
         console.log('f_test29: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		var uriText1 = 'https://www.baidu.com/1'
         console.log('f_test29: Replaces the uriText = ' + uriText1)
         var pasteDataRecord = pasteboard.createUriRecord(uriText1)
 		var replace = pasteData1.replaceRecordAt(0, pasteDataRecord);
 		console.log('f_test29: replace = ' + replace)
-		
+
         console.log('SUB_pasteBoard_function_JS_API_2900 end');
         done();
         })
@@ -1561,7 +1606,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_3000
      * @tc.name      Replaces want record
@@ -1588,7 +1633,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test30: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData).then(() => {
         console.log('f_test30: systemPasteboard.setPasteData promise');
-		
+
         console.log('f_test30: Checks there is content in the pasteboard')
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test30: systemPasteboard.hasPasteData promise data = ' + data);
@@ -1599,7 +1644,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test30: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		var wantText1 = {
             bundleName: "com.example.myapplication30",
             abilityName: "com.example.myapplication30.MainAbility"
@@ -1616,7 +1661,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_3100
      * @tc.name      Replaces 300k文本 record
@@ -1660,7 +1705,7 @@ describe('PasteBoardTest', function() {
         var pasteDataRecord = pasteboard.createPlainTextRecord(textData1)
 		var replace = pasteData1.replaceRecordAt(0, pasteDataRecord);
 		console.log('f_test31: replace = ' + replace)
-		
+
 		console.log('f_test31: Checks the pasteboard content');
 		var primaryText = pasteData1.getPrimaryText();
 		console.log('f_test31: primaryText = ' + primaryText);
@@ -1672,7 +1717,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_3200
      * @tc.name      Adds one record(s), gets record count
@@ -1715,7 +1760,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-    
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_3300
      * @tc.name      Adds 2 record(s), gets record count
@@ -1725,49 +1770,49 @@ describe('PasteBoardTest', function() {
      * @tc.level     : Level 0
      */
     it('pasteboard_function_test33',0, async function (done) {
-        console.log('SUB_pasteBoard_function_JS_API_3300 start')
+        console.info('SUB_pasteBoard_function_JS_API_3300 start')
 
         var systemPasteboard = pasteboard.getSystemPasteboard();
         systemPasteboard.clear().then(() => {
-        console.log('f_test33: systemPasteboard.clear promise');
+        console.info('f_test33: systemPasteboard.clear promise');
 
         var textData0 = 'Hello World!';
-        console.log('f_test33: createPlainTextData textData = ' + textData0);
+        console.info('f_test33: createPlainTextData textData = ' + textData0);
         var pasteData = pasteboard.createPlainTextData(textData0);
-        console.log('f_test33: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
-		
+        console.info('f_test33: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
+
 		var textData = ''
 		for(var i = 1; i < 2; i++)
 		{
 			textData = 'Hello World'
 			textData = textData + i
-			console.log('f_test33: addTextRecord = ' + textData)
+			console.info('f_test33: addTextRecord = ' + textData)
 			pasteData.addTextRecord(textData)
 		}
 
-        console.log('f_test33: Writes PasteData to the pasteboard');
+        console.info('f_test33: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData).then(() => {
-        console.log('f_test33: systemPasteboard.setPasteData promise');
+        console.info('f_test33: systemPasteboard.setPasteData promise');
 
-        console.log('f_test33: Checks there is content in the pasteboard')
+        console.info('f_test33: Checks there is content in the pasteboard')
         systemPasteboard.hasPasteData().then((data) => {
-        console.log('f_test33: systemPasteboard.hasPasteData promise data = ' + data);
+        console.info('f_test33: systemPasteboard.hasPasteData promise data = ' + data);
         expect(data === true || data === false).assertTrue();
 
-        console.log('f_test33: Checks the number of records');
+        console.info('f_test33: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
-        console.log('f_test33: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
+        console.info('f_test33: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 2).assertTrue();
-		
-        console.log('SUB_pasteBoard_function_JS_API_3300 end');
+
+        console.info('SUB_pasteBoard_function_.' + 'JS_API_3300 end');
         done();
         })
     });
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_3400
      * @tc.name      Adds 15 record(s), gets record count
@@ -1787,7 +1832,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test34: createPlainTextData textData = ' + textData0);
         var pasteData = pasteboard.createPlainTextData(textData0);
         console.log('f_test34: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
-		
+
 		var textData = ''
 		for(var i = 1; i < 15; i++)
 		{
@@ -1811,7 +1856,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test34: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 15).assertTrue();
-		
+
         console.log('SUB_pasteBoard_function_JS_API_3400 end');
         done();
         })
@@ -1819,7 +1864,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-    
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_3500
      * @tc.name      Adds 30 record(s), gets record count
@@ -1839,7 +1884,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test35: createPlainTextData textData = ' + textData0);
         var pasteData = pasteboard.createPlainTextData(textData0);
         console.log('f_test35: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
-		
+
 		var textData = ''
 		for(var i = 1; i < 30; i++)
 		{
@@ -1863,7 +1908,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test35: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 30).assertTrue();
-		
+
         console.log('SUB_pasteBoard_function_JS_API_3500 end');
         done();
         })
@@ -1871,7 +1916,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_3600
      * @tc.name      Adds 31 record(s), gets record count
@@ -1891,7 +1936,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test36: createPlainTextData textData = ' + textData0);
         var pasteData = pasteboard.createPlainTextData(textData0);
         console.log('f_test36: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
-		
+
 		var textData = ''
 		for(var i = 1; i < 31; i++)
 		{
@@ -1915,7 +1960,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test36: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 31).assertTrue();
-		
+
         console.log('SUB_pasteBoard_function_JS_API_3600 end');
         done();
         })
@@ -1923,7 +1968,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_3700
      * @tc.name      Replaces one record, gets record count
@@ -1947,7 +1992,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test37: Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData).then(() => {
         console.log('f_test37: systemPasteboard.setPasteData promise');
-		
+
         console.log('f_test37: Checks there is content in the pasteboard')
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test37: systemPasteboard.hasPasteData promise data = ' + data);
@@ -1958,19 +2003,19 @@ describe('PasteBoardTest', function() {
         console.log('f_test37: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		var textData1 = 'Hello World1'
         console.log('f_test37: Replaces the Record = ' + textData1)
         var pasteDataRecord = pasteboard.createPlainTextRecord(textData1)
 		var replace = pasteData1.replaceRecordAt(0, pasteDataRecord);
 		console.log('f_test37: replace = ' + replace)
-		
+
 		console.log('f_test37: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test37: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData2 = data;
         expect(pasteData2.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_3700 end');
         done();
 		});
@@ -1979,7 +2024,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_3800
      * @tc.name      Clears pasteBoard, gets record count
@@ -2014,17 +2059,17 @@ describe('PasteBoardTest', function() {
         console.log('f_test38: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test38: Clears the pasteBoard')
 		systemPasteboard.clear()
-		
+
 		console.log('f_test38: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test38: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData2 = data;
         var recordCount = pasteData2.getRecordCount();
 		console.log('f_test38 recordCount = ' + recordCount);
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_3800 end');
         done();
 		});
@@ -2033,7 +2078,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_3900
      * @tc.name      Adds Property
@@ -2068,12 +2113,12 @@ describe('PasteBoardTest', function() {
         console.log('f_test39: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test39: Sets the Property')
         var pasteDataProperty = pasteData1.getProperty()
         console.log('f_test39: timestamp = ' + pasteDataProperty.timestamp)
         pasteDataProperty.additions["one"] = "Hello"
-		
+
 		console.log('f_test39: Checks the Property')
         var pasteDataProperty1 = pasteData1.getProperty()
         console.log('f_test39: timestamp = ' + pasteDataProperty1.timestamp)
@@ -2086,7 +2131,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_4000
      * @tc.name      Set Property's tags
@@ -2121,13 +2166,13 @@ describe('PasteBoardTest', function() {
         console.log('f_test40: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test40: Sets the Property')
         var pasteDataProperty = pasteData1.getProperty()
         console.log('f_test40: timestamp = ' + pasteDataProperty.timestamp)
         pasteDataProperty.additions["one"] = "Hello"
 		pasteDataProperty.tag = "Test"
-		
+
 		console.log('f_test40: Checks the Property')
         var pasteDataProperty1 = pasteData1.getProperty()
         console.log('f_test40: timestamp = ' + pasteDataProperty1.timestamp)
@@ -2142,7 +2187,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
     /**
      * @tc.number    SUB_pasteBoard_function_JS_API_4100
      * @tc.name      Clears pasteBoard and check property
@@ -2177,15 +2222,15 @@ describe('PasteBoardTest', function() {
         console.log('f_test41: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test41: Clears the pasteBoard')
 		systemPasteboard.clear()
-		
+
 		console.log('f_test41: Checks the Property')
         var pasteDataProperty1 = pasteData1.getProperty()
         console.log('f_test41: timestamp = ' + pasteDataProperty1.timestamp)
 		console.log('f_test41: tag = ' + pasteDataProperty1.tag)
-		
+
         console.log('SUB_pasteBoard_function_JS_API_4100 end');
         done();
         })
@@ -2193,7 +2238,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-    
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_4200
      * @tc.name      打开内容变化通知功能：向剪贴板数据增加、删除等文本数据项
@@ -2208,7 +2253,7 @@ describe('PasteBoardTest', function() {
         var systemPasteboard = pasteboard.getSystemPasteboard();
         systemPasteboard.clear().then(() => {
         console.log('f_test42: systemPasteboard.clear promise');
-		
+
 		console.log('f_test42: Open the infor for pasteboard content changes')
 		systemPasteboard.on('update', contentChanges)
 
@@ -2231,10 +2276,10 @@ describe('PasteBoardTest', function() {
         console.log('f_test42: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test42: Removes the Record')
         expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
-		
+
         console.log('SUB_pasteBoard_function_JS_API_4200 end');
         done();
         })
@@ -2242,7 +2287,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_4300
      * @tc.name      打开内容变化通知功能：向剪贴板数据增加、删除等html数据项
@@ -2253,11 +2298,11 @@ describe('PasteBoardTest', function() {
      */
     it('pasteboard_function_test43',0, async function (done) {
         console.log('SUB_pasteBoard_function_JS_API_4300 start')
-		
+
         var systemPasteboard = pasteboard.getSystemPasteboard();
         systemPasteboard.clear().then(() => {
         console.log('f_test43: systemPasteboard.clear promise');
-		
+
 		console.log('f_test43: Open the infor for pasteboard content changes')
 		systemPasteboard.on('update', contentChanges)
 
@@ -2280,7 +2325,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test43: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test43: Removes the Record')
         expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
 
@@ -2291,7 +2336,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_4400
      * @tc.name      打开内容变化通知功能：向剪贴板数据增加、删除等uri数据项
@@ -2302,11 +2347,11 @@ describe('PasteBoardTest', function() {
      */
     it('pasteboard_function_test44',0, async function (done) {
         console.log('SUB_pasteBoard_function_JS_API_4400 start')
-		
+
         var systemPasteboard = pasteboard.getSystemPasteboard();
         systemPasteboard.clear().then(() => {
         console.log('f_test44: systemPasteboard.clear promise');
-		
+
 	    console.log('f_test44: Open the infor for pasteboard content changes')
 		systemPasteboard.on('update', contentChanges)
 
@@ -2329,7 +2374,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test44: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test44: Removes the Record')
         expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
 
@@ -2340,7 +2385,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_4500
      * @tc.name      打开内容变化通知功能：向剪贴板数据增加、删除等want数据项
@@ -2355,7 +2400,7 @@ describe('PasteBoardTest', function() {
         var systemPasteboard = pasteboard.getSystemPasteboard();
         systemPasteboard.clear().then(() => {
         console.log('f_test45: systemPasteboard.clear promise');
-		
+
 		console.log('f_test45: Open the infor for pasteboard content changes')
 		systemPasteboard.on('update', contentChanges)
 
@@ -2381,7 +2426,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test45: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test45: Removes the Record')
         expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
 
@@ -2392,7 +2437,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_4600
      * @tc.name      打开内容变化通知功能：清除剪切板内容
@@ -2403,11 +2448,11 @@ describe('PasteBoardTest', function() {
      */
 	it('pasteboard_function_test46',0, async function (done) {
         console.log('SUB_pasteBoard_function_JS_API_4600 start')
-		
+
         var systemPasteboard = pasteboard.getSystemPasteboard();
         systemPasteboard.clear().then(() => {
         console.log('f_test46: systemPasteboard.clear promise');
-		
+
 		console.log('f_test46: Open the infor for pasteboard content changes')
 		systemPasteboard.on('update', contentChanges)
 
@@ -2430,7 +2475,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test46: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test46: Clears the pasteBoard')
 		systemPasteboard.clear()
 
@@ -2441,7 +2486,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_4700
      * @tc.name      关闭内容变化通知功能：向剪贴板数据增加、删除等文本数据项
@@ -2452,11 +2497,11 @@ describe('PasteBoardTest', function() {
      */
     it('pasteboard_function_test47',0, async function (done) {
         console.log('SUB_pasteBoard_function_JS_API_4700 start')
-		
+
         var systemPasteboard = pasteboard.getSystemPasteboard();
         systemPasteboard.clear().then(() => {
         console.log('f_test47: systemPasteboard.clear promise');
-		
+
 		console.log('f_test47: Close the infor for pasteboard content changes')
 		systemPasteboard.off('update', contentChanges)
 
@@ -2479,7 +2524,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test47: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test47: Removes the Record')
         expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
 
@@ -2490,7 +2535,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_4800
      * @tc.name      关闭内容变化通知功能：向剪贴板数据增加、删除等html数据项
@@ -2501,11 +2546,11 @@ describe('PasteBoardTest', function() {
      */
     it('pasteboard_function_test48',0, async function (done) {
         console.log('SUB_pasteBoard_function_JS_API_4800 start')
-		
+
         var systemPasteboard = pasteboard.getSystemPasteboard();
         systemPasteboard.clear().then(() => {
         console.log('f_test48: systemPasteboard.clear promise');
-		
+
 		console.log('f_test48: Close the infor for pasteboard content changes')
 		systemPasteboard.off('update', contentChanges)
 
@@ -2528,7 +2573,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test48: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test48: Removes the Record')
         expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
 
@@ -2539,7 +2584,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_4900
      * @tc.name      关闭内容变化通知功能：向剪贴板数据增加、删除等uri数据项
@@ -2550,11 +2595,11 @@ describe('PasteBoardTest', function() {
      */
     it('pasteboard_function_test49',0, async function (done) {
         console.log('SUB_pasteBoard_function_JS_API_4900 start')
-		
+
         var systemPasteboard = pasteboard.getSystemPasteboard();
         systemPasteboard.clear().then(() => {
         console.log('f_test49: systemPasteboard.clear promise');
-		
+
 		console.log('f_test49: Close the infor for pasteboard content changes')
 		systemPasteboard.off('update', contentChanges)
 
@@ -2577,9 +2622,9 @@ describe('PasteBoardTest', function() {
         console.log('f_test49: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test49: Removes the Record')
-        expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();   
+        expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
 
         console.log('SUB_pasteBoard_function_JS_API_4900 end');
         done();
@@ -2588,7 +2633,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_5000
      * @tc.name      关闭内容变化通知功能：向剪贴板数据增加、删除等want数据项
@@ -2603,7 +2648,7 @@ describe('PasteBoardTest', function() {
         var systemPasteboard = pasteboard.getSystemPasteboard();
         systemPasteboard.clear().then(() => {
         console.log('f_test50: systemPasteboard.clear promise');
-		
+
 		console.log('f_test50: Open the infor for pasteboard content changes')
 		systemPasteboard.off('update', contentChanges)
 
@@ -2629,7 +2674,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test50: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test50: Removes the Record')
         expect(pasteData1.removeRecordAt(0) === true || pasteData1.removeRecordAt(0) === false).assertTrue();
 
@@ -2640,7 +2685,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_5100
      * @tc.name      关闭内容变化通知功能：清除剪切板内容
@@ -2651,11 +2696,11 @@ describe('PasteBoardTest', function() {
      */
     it('pasteboard_function_test51',0, async function (done) {
         console.log('SUB_pasteBoard_function_JS_API_5100 start')
-		
+
         var systemPasteboard = pasteboard.getSystemPasteboard();
         systemPasteboard.clear().then(() => {
         console.log('f_test51: systemPasteboard.clear promise');
-		
+
 		console.log('f_test51: Close the infor for pasteboard content changes')
 		systemPasteboard.off('update', contentChanges)
 
@@ -2678,7 +2723,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test51: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test51: Clears the pasteBoard')
 		systemPasteboard.clear()
 
@@ -2689,7 +2734,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_5200
      * @tc.name      清除剪切板内的文本数据项
@@ -2724,10 +2769,10 @@ describe('PasteBoardTest', function() {
         console.log('f_test52: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test52: Clears the pasteBoard')
 		systemPasteboard.clear()
-		
+
 		console.log('f_test52: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test52: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
@@ -2742,7 +2787,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_5300
      * @tc.name      清除剪切板内的uri数据项
@@ -2780,7 +2825,7 @@ describe('PasteBoardTest', function() {
 
         console.log('f_test53: Clears the pasteBoard')
 		systemPasteboard.clear()
-		
+
 		console.log('f_test53: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test53: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
@@ -2795,7 +2840,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_5400
      * @tc.name      清除剪切板内的html数据项
@@ -2833,7 +2878,7 @@ describe('PasteBoardTest', function() {
 
         console.log('f_test54: Clears the pasteBoard')
 		systemPasteboard.clear()
-		
+
 		console.log('f_test54: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test54: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
@@ -2848,7 +2893,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_5500
      * @tc.name      清除剪切板内的want数据项
@@ -2889,7 +2934,7 @@ describe('PasteBoardTest', function() {
 
         console.log('f_test55: Clears the pasteBoard')
 		systemPasteboard.clear()
-		
+
 		console.log('f_test55: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test55: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
@@ -2904,7 +2949,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_5600
      * @tc.name      向剪切板内增加30条数据项，然后清除
@@ -2924,7 +2969,7 @@ describe('PasteBoardTest', function() {
         console.log('f_test56: createPlainTextData textData = ' + textData0);
         var pasteData = pasteboard.createPlainTextData(textData0);
         console.log('f_test56: createPlainTextData pasteData = ' + JSON.stringify(pasteData));
-		
+
 		var textData = ''
 		for(var i = 1; i < 30; i++)
 		{
@@ -2948,17 +2993,17 @@ describe('PasteBoardTest', function() {
         console.log('f_test56: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 30).assertTrue();
-		
+
 		console.log('f_test56: Clears the pasteBoard')
 		systemPasteboard.clear()
-		
+
 		console.log('f_test56: Checks the number of records');
         systemPasteboard.getPasteData().then((data) => {
         console.log('f_test56: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData2 = data;
         var recordCount = pasteData2.getRecordCount();
 		console.log('f_test38 recordCount = ' + recordCount);})
-		
+
         console.log('SUB_pasteBoard_function_JS_API_5600 end');
         done();
         })
@@ -2966,7 +3011,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_5700
      * @tc.name      向剪贴板数据各增加5条文本、uri、html数据，然后清除
@@ -2984,7 +3029,7 @@ describe('PasteBoardTest', function() {
         var textData0 = 'Hello World0'
         console.log('f_test57: createPlainTextData = ' + textData0)
         var pasteData = pasteboard.createPlainTextData(textData0)
-        
+
 		var textData = ''
 		for(var i = 1; i < 5; i++)
 		{
@@ -2992,7 +3037,7 @@ describe('PasteBoardTest', function() {
 			textData = textData + i
 			pasteData.addTextRecord(textData)
 		}
-		
+
 		var htmlText = ''
 		for(var i = 0; i < 5; i++)
 		{
@@ -3000,7 +3045,7 @@ describe('PasteBoardTest', function() {
 			htmlText = htmlText + i
 			pasteData.addHtmlRecord(htmlText)
 		}
-		
+
 		var uriText = ''
 		for(var i = 0; i < 5; i++)
 		{
@@ -3024,7 +3069,7 @@ describe('PasteBoardTest', function() {
         var pasteData2 = data;
         var recordCount = pasteData2.getRecordCount();
 		console.log('f_test38 recordCount = ' + recordCount);})
-		
+
         console.log('SUB_pasteBoard_function_JS_API_5700 end');
         done();
         })
@@ -3032,7 +3077,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_5800
      * @tc.name      向剪贴板数据增加文本数据项，查询剪贴板存在剪贴板数据
@@ -3061,14 +3106,14 @@ describe('PasteBoardTest', function() {
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test58: systemPasteboard.hasPasteData promise data = ' + data);
         expect(data === true || data === false).assertTrue();
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_5800 end')
 		done();
     });
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_5900
      * @tc.name      向剪贴板数据增加uri数据项，查询剪贴板存在剪贴板数据
@@ -3097,14 +3142,14 @@ describe('PasteBoardTest', function() {
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test59: systemPasteboard.hasPasteData promise data = ' + data);
         expect(data === true || data === false).assertTrue();
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_5900 end')
 		done();
     });
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_6000
      * @tc.name      向剪贴板数据增加html数据项，查询剪贴板存在剪贴板数据
@@ -3133,14 +3178,14 @@ describe('PasteBoardTest', function() {
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test60systemPasteboard.hasPasteData promise data = ' + data);
         expect(data === true || data === false).assertTrue();
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_6000 end')
 		done();
     });
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_6100
      * @tc.name      向剪贴板数据增加want数据项，查询剪贴板存在剪贴板数据
@@ -3172,14 +3217,14 @@ describe('PasteBoardTest', function() {
         systemPasteboard.hasPasteData().then((data) => {
         console.log('systemPasteboard.hasPasteData promise data = ' + data);
         expect(data === true || data === false).assertTrue();
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_6100 end')
 		done();
     });
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_6200
      * @tc.name      向剪贴板数据各增加5条文本、uri、html，查询剪贴板存在剪贴板数据
@@ -3198,7 +3243,7 @@ describe('PasteBoardTest', function() {
         var textData0 = 'Hello World0'
         console.log('f_test62 createPlainTextData = ' + textData0)
         var pasteData = pasteboard.createPlainTextData(textData0)
-        
+
 		var textData = ''
 		for(var i = 1; i < 5; i++)
 		{
@@ -3207,7 +3252,7 @@ describe('PasteBoardTest', function() {
 			console.log('f_test62 addTextRecord = ' + textData)
 			pasteData.addTextRecord(textData)
 		}
-		
+
 		var htmlText = ''
 		for(var i = 0; i < 5; i++)
 		{
@@ -3216,7 +3261,7 @@ describe('PasteBoardTest', function() {
 			console.log('f_test62 addHtmlRecord = ' + htmlText)
 			pasteData.addHtmlRecord(htmlText)
 		}
-		
+
 		var uriText = ''
 		for(var i = 0; i < 5; i++)
 		{
@@ -3225,7 +3270,7 @@ describe('PasteBoardTest', function() {
 			console.log('f_test62 addUriRecord = ' + uriText)
 			pasteData.addUriRecord(uriText)
 		}
-		
+
         console.log('f_test62 Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData).then(() => {
         console.log('f_test62 systemPasteboard.setPasteData promise');
@@ -3234,14 +3279,14 @@ describe('PasteBoardTest', function() {
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test62 systemPasteboard.hasPasteData promise data = ' + data);
         expect(data === true || data === false).assertTrue();
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_6200 end')
 		done();
     });
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_6300
      * @tc.name      更新剪贴板数据，查询剪贴板存在剪贴板数据
@@ -3265,7 +3310,7 @@ describe('PasteBoardTest', function() {
         console.log('Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData).then(() => {
         console.log('f_test63 systemPasteboard.setPasteData promise');
-		
+
         console.log('f_test63 Checks there is content in the pasteboard')
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test63 systemPasteboard.hasPasteData promise data = ' + data);
@@ -3276,12 +3321,12 @@ describe('PasteBoardTest', function() {
         console.log('f_test63 systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		var textData1 = 'Hello World1'
         console.log('f_test63 Replaces the Record = ' + textData1)
         var pasteDataRecord = pasteboard.createPlainTextRecord(textData1)
 		pasteData1.replaceRecordAt(0, pasteDataRecord)
-		
+
 		console.log('f_test63 Checks there is content in the pasteboard')
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test63 systemPasteboard.hasPasteData promise data = ' + data);
@@ -3294,7 +3339,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_6400
      * @tc.name      删除所有的剪贴板数据，查询剪贴板不存在剪贴板数据
@@ -3329,14 +3374,14 @@ describe('PasteBoardTest', function() {
         var pasteData1 = data;
 		var recordCount = pasteData1.getRecordCount();
 		console.log('f_test64 recordCount = ' + recordCount);
-		
+
 		console.log('f_test64 Removes the Record')
 		pasteData1.removeRecordAt(0)
-        
+
 		console.log('f_test64 Checks the number of records');
 		var recordCount1 = pasteData1.getRecordCount();
 		console.log('f_test64 recordCount = ' + recordCount1);
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_6400 end');
         done();
         })
@@ -3344,7 +3389,7 @@ describe('PasteBoardTest', function() {
    });
   });
  })
-	
+
 	/**
      * @tc.number    SUB_pasteBoard_function_JS_API_6500
      * @tc.name      清除剪贴板数据，查询剪贴板不存在剪贴板数据
@@ -3379,21 +3424,21 @@ describe('PasteBoardTest', function() {
         console.log('f_test65 systemPasteboard.getPasteData data = ' + JSON.stringify(data));
         var pasteData1 = data;
         expect(pasteData1.getRecordCount() == 1).assertTrue();
-		
+
 		console.log('f_test65 Clears the pasteBoard')
 		systemPasteboard.clear()
-		
+
 		console.log('f_test65 Writes PasteData to the pasteboard');
         systemPasteboard.setPasteData(pasteData1).then(() => {
         console.log('f_test65 systemPasteboard.setPasteData promise');
-		
+
 		console.log('f_test65 Checks there is no content in the pasteboard')
         systemPasteboard.hasPasteData().then((data) => {
         console.log('f_test65 systemPasteboard.hasPasteData promise data = ' + data);
-		
+
 		console.log('SUB_pasteBoard_function_JS_API_6400 end');
         done();
-        });	
+        });
 		});
         });
     });
@@ -3438,6 +3483,8 @@ describe('PasteBoardTest', function() {
 		
 		console.log('f_test66 Converts the PlainTextData to text')
         var pasteDataRecord = pasteData1.getRecordAt(0)
+        console.info('checks pasteDataRecord.mimeType = ' + pasteDataRecord.mimeType)
+
 		console.log('f_test66 pasteDataRecord.convertToText = ' + pasteDataRecord.convertToText);
 
         console.log('f_test66 SUB_pasteBoard_function_JS_API_6600 end');
@@ -3591,6 +3638,56 @@ describe('PasteBoardTest', function() {
    });
   });
  })
+
+    /**
+     * @tc.number    SUB_pasteBoard_function_JS_API_7000
+     * @tc.name      复制文本、uri格式
+     * @tc.desc      Test pasteBoard API functionality.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('pasteboard_function_test70',0, async function (done) {
+        console.info('SUB_pasteBoard_function_JS_API_7000 start')
+
+        var systemPasteboard = pasteboard.getSystemPasteboard();
+        systemPasteboard.clear().then(() => {
+
+            var textData0 = 'Hello World0'
+            console.info('f_test70: createPlainTextData = ' + textData0)
+
+            var pasteData = pasteboard.createPlainTextData(textData0)
+            console.info('f_test70: createPlainTextData = ' + JSON.stringify(pasteData))
+
+            var uriText = pasteboard.createUriRecord("https://www.baidu.com/");
+            pasteData.addRecord(uriText);
+            console.info('f_test70: addRecord(uriText) = ' + pasteData)
+            console.info('f_test70: addRecord(uriText) = ' + JSON.stringify(pasteData))
+
+
+
+            systemPasteboard.setPasteData(pasteData).then(() => {
+                console.info('---------------------------->1')
+                systemPasteboard.hasPasteData().then((data) => {
+                    console.info('f_test70: systemPasteboard.hasPasteData promise data = ' + data);
+                    expect(data === true || data === false).assertTrue();
+
+                    systemPasteboard.getPasteData().then((data) => {
+                        console.info('f_test70: systemPasteboard.getPasteData data = ' + JSON.stringify(data));
+                        var pasteData1 = data;
+                        var recordCount = pasteData1.getRecordCount();
+                        console.info('f_test70: recordCount=' + recordCount);
+                        expect(pasteData1.getRecordCount() == 2).assertTrue();
+
+                        console.info('SUB_pasteBoard_function_JS_API_7000 end');
+                        done();
+                    })
+                });
+            });
+        });
+    })
+
+
  
     /**
      *  The callback function is used for pasteboard content changes
@@ -3598,4 +3695,4 @@ describe('PasteBoardTest', function() {
 	function contentChanges() {
 		console.log('#EVENT: The content is changed in the pasteboard')
 	}
-})
+});

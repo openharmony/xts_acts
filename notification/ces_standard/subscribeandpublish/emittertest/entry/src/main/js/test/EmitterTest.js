@@ -92,6 +92,18 @@ describe('EmitterTest', function () {
         done();
     })
 
-
+    
+    /*
+     * @tc.number    : EmitterOffTest
+     * @tc.name      : verify off : Check subscribe same off common ordered event
+     * @tc.desc      : Check the subscriber can receive event "EmitterOffTest" type of the interface (by Promise)
+     */
+    it('EmitterOffTest', 0, async function (done){
+        console.info("===========EmitterOffTest111====================>");
+        emitter.once(InnerEventLow, callback01);
+		emitter.emit(InnerEventImmediate, eventData);
+        emitter.off(1);
+        done();
+    })
 
 })

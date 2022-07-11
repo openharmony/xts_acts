@@ -43,7 +43,7 @@ struct SwiperExample {
   private swiperController: SwiperController = new SwiperController()
   private data: MyDataSource = new MyDataSource([])
 
-  private aboutToAppear(): void {
+  aboutToAppear(): void {
     let list = []
     for (var i = 1; i <= 10; i++) {
       list.push(i.toString());

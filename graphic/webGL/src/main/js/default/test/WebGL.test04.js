@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import app from '@system.app'
-import Context from '@ohos.napi_context'
 
 import {
 	describe,
@@ -25,7 +24,7 @@ import {
 	expect
 } from 'deccjsunit/index'
 
-describe('webgl1Test', function() {
+describe('webgl1Test_webgl4', function() {
 	console.info('webgltest start');
 	var gl;
 	var gl2;

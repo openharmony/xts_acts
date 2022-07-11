@@ -19,7 +19,7 @@ import ThermalLevel from "@ohos.thermal"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 const MSEC_1000 = 1000;
 
-describe('appInfoTest', function () {
+describe('appInfoTest_thermal_1', function () {
     console.log("*************Thermal API Test Begin*************");
     test14();
     test15();
@@ -27,7 +27,7 @@ describe('appInfoTest', function () {
 
 function test14() {
 
-    /* @tc.number thermal_manager_js_014
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0010
      * @tc.name Thermal_014
      * @tc.desc Thermal acquisition kit
      */
@@ -47,7 +47,7 @@ function test14() {
 
 function test15() {
 
-    /* @tc.number thermal_manager_js_015
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0020
      * @tc.name Thermal_015
      * @tc.desc Thermal acquisition kit
      */

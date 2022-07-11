@@ -13,13 +13,13 @@
  * limitations under the License.
  */
 
-import notification from '@ohos.notification';
-import wantAgent from '@ohos.wantAgent';
-import particleAbility from '@ohos.ability.particleAbility'
-import backgroundTaskManager from '@ohos.backgroundTaskManager'
-import featureAbility from '@ohos.ability.featureAbility'
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
+import featureAbility from '@ohos.ability.featureAbility';
+import commonEvent from '@ohos.commonEvent';
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
+
+const TAG = "ContinuousTaskJsTest ";
 
 describe("ContinuousTaskJsTest", function () {
     beforeAll(function() {
@@ -27,7 +27,7 @@ describe("ContinuousTaskJsTest", function () {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-         console.info('beforeAll called')
+         console.info('beforeAll called');
     })
     
     afterAll(function() {
@@ -35,7 +35,7 @@ describe("ContinuousTaskJsTest", function () {
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
-         console.info('afterAll called')
+         console.info('afterAll called');
     })
     
     beforeEach(function() {
@@ -43,7 +43,7 @@ describe("ContinuousTaskJsTest", function () {
         /*
          * @tc.setup: setup invoked before each testcases
          */
-         console.info('beforeEach called')
+         console.info('beforeEach called');
     })
     
     afterEach(function() {
@@ -51,431 +51,241 @@ describe("ContinuousTaskJsTest", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-         console.info('afterEach called')
-         particleAbility.cancelBackgroundRunning();
-         setTimeout(() => {}, 500);
-         backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext());
-         setTimeout(() => {}, 500);
+         console.info('afterEach called');
     })
+
+    async function startAbilityWithOption(subscribeInfo, option, event, done) {
+        commonEvent.createSubscriber(subscribeInfo, (err, subscriber) => {
+            if (subscriber !== null && subscriber !== undefined) {
+                console.info(TAG + "Subscribe begin");
+                commonEvent.subscribe(subscriber, (err, data) => {
+                    if (data !== null && data !== undefined) {
+                        console.info(TAG + "Get comment event: " + JSON.stringify(data));
+                        if (data.event === event) {
+                            expect(true).assertTrue();
+                        } else {
+                            expect(false).assertTrue();
+                        }
+                    } else {
+                        console.error(TAG + "SubscribeCallBack failed");
+                        expect(false).assertTrue();
+                    }
+                    done();
+                })
+            } else {
+                console.error(TAG + "createSubscriber failed");
+                expect(false).assertTrue();
+                done();
+            }
+        })
+
+        setTimeout(() => {
+            console.info(TAG + "Start ability with option:" + option + " begin");
+            featureAbility.startAbility(
+                {
+                want: {
+                    bundleName: "com.example.continuoustaskserver",
+                    abilityName: "com.example.continuoustaskserver.ServiceAbility",
+                    parameters: {
+                        option: option
+                    }
+                }
+                }
+            ).catch(() => {
+                console.error(TAG + "Start ability failed");
+                expect(false).assertTrue();
+                done();
+            });
+        }, 1000);
+    }
 
     /*
      * @tc.name:ContinuousTaskJsTest001
-     * @tc.desc:verify new startBackgroundrunning interface promise mode work properly
+     * @tc.desc:verify old startBackgroundrunning interface callback mode work properly
      * @tc.type: FUNC
      * @tc.require:
      */
     it("ContinuousTaskJsTest001", 0, async function (done) {
-        let wantAgentInfo = {
-            wants: [
-                {
-                    bundleName: "com.continuoustask.test",
-                    abilityName: "com.continuoustask.test.MainAbility"
-                }
-            ],
-            operationType: 2,
-            requestCode: 0,
-            wantAgentFlags: [3]
-        };
-        wantAgent.getWantAgent(wantAgentInfo).then((data) => {
-            backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
-                backgroundTaskManager.BackgroundMode.DATA_TRANSFER, data).then(() => {
-                console.log("ContinuousTaskJsTest001 startBackgroundRunning success");
-                expect(true).assertTrue();
-                setTimeout(() => {
-                    done();
-                }, 500);
-            }).catch((err) => {
-                expect(false).assertTrue();
-                console.log("ContinuousTaskJsTest001 startBackgroundRunning failure");
-                setTimeout(() => {
-                    done();
-                }, 500);
-            });
-        });
+        console.info(TAG + '-----------------ContinuousTaskJsTest001 begin--------------------');
+        startAbilityWithOption({ events: ["startTaskUseApi7Callback"] }, "testcase1", "startTaskUseApi7Callback", done);
     })
 
     /*
      * @tc.name:ContinuousTaskJsTest002
-     * @tc.desc:verify new startBackgroundrunning interface callback mode work properly
+     * @tc.desc:verify cancelBackgroundrunning interface callback mode work properly
      * @tc.type: FUNC
      * @tc.require: 
      */
     it("ContinuousTaskJsTest002", 0, async function (done) {
-        function conTaskCallback(err, data) {
-            if (err) {
-                console.info('ContinuousTaskJsTest002 startBackgroundRunning failed');
-                expect(false).assertTrue();
-            } else {
-                console.info('ContinuousTaskJsTest002 startBackgroundRunning succeed');
-                expect(true).assertTrue();
-            }
-            setTimeout(()=>{
-                done();
-            }, 500);
-        }
-        let wantAgentInfo = {
-            wants: [
-                {
-                    bundleName: "com.continuoustask.test",
-                    abilityName: "com.continuoustask.test.MainAbility"
-                }
-            ],
-            operationType: 2,
-            requestCode: 0,
-            wantAgentFlags: [3]
-        };
-        wantAgent.getWantAgent(wantAgentInfo).then((data) => {
-            backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
-                backgroundTaskManager.BackgroundMode.DATA_TRANSFER, data, conTaskCallback);
-        });
+        console.info(TAG + '-----------------ContinuousTaskJsTest002 begin--------------------');
+        startAbilityWithOption({ events: ["stopTaskUseApi7Callback"] }, "testcase2", "stopTaskUseApi7Callback", done);
     })
 
     /*
      * @tc.name:ContinuousTaskJsTest003
-     * @tc.desc:verify old startBackgroundrunning interface promise mode work properly
+     * @tc.desc:verify new startBackgroundrunning interface callback mode work properly
      * @tc.type: FUNC
      * @tc.require: 
      */
     it("ContinuousTaskJsTest003", 0, async function (done) {
-        let wantAgentInfo = {
-            wants: [
-                {
-                    bundleName: "com.continuoustask.test",
-                    abilityName: "com.continuoustask.test.MainAbility"
-                }
-            ],
-            operationType: 2,
-            requestCode: 0,
-            wantAgentFlags: [3]
-        };
-        wantAgent.getWantAgent(wantAgentInfo).then((data) => {
-            let basicContent = {
-                title: "title",
-                text: "text"
-            };
-
-            let notificationContent = {
-                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-                normal: basicContent
-            };
-
-            let request = {
-                content: notificationContent,
-                wantAgent: data
-            }
-
-            let id = 1;
-
-            particleAbility.startBackgroundRunning(id, request).then((data) => {
-                console.log("ContinuousTaskJsTest003 startBackgroundRunning success");
-                expect(true).assertTrue();
-                setTimeout(() => {
-                    done();
-                }, 500);
-            }).catch((err) => {
-                expect(false).assertTrue();
-                console.log("ContinuousTaskJsTest003 startBackgroundRunning failure");
-                setTimeout(() => {
-                    done();
-                }, 500);
-            });
-        });
+        console.info(TAG + '-----------------ContinuousTaskJsTest003 begin--------------------');
+        startAbilityWithOption({ events: ["startTaskUseApi8Callback"] }, "testcase3", "startTaskUseApi8Callback", done);
     })
 
     /*
      * @tc.name:ContinuousTaskJsTest004
-     * @tc.desc:verify old startBackgroundrunning interface callback mode work properly
+     * @tc.desc:verify new stopBackgroundrunning interface callback mode work properly
      * @tc.type: FUNC
      * @tc.require: 
      */
     it("ContinuousTaskJsTest004", 0, async function (done) {
-        function conTaskCallback(err, data) {
-            if (err) {
-                console.info('ContinuousTaskJsTest004 startBackgroundRunning failure');
-                expect(false).assertTrue();
-            } else {
-                console.info('ContinuousTaskJsTest004 startBackgroundRunning success');
-                expect(true).assertTrue();
-            }
-            setTimeout(()=>{
-                done();
-            }, 500);
-        }
-        let wantAgentInfo = {
-            wants: [
-                {
-                    bundleName: "com.continuoustask.test",
-                    abilityName: "com.continuoustask.test.MainAbility"
-                }
-            ],
-            operationType: 2,
-            requestCode: 0,
-            wantAgentFlags: [3]
-        };
-        wantAgent.getWantAgent(wantAgentInfo).then((data) => {
-            let basicContent = {
-                title: "title",
-                text: "text"
-            };
-
-            let notificationContent = {
-                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-                normal: basicContent
-            };
-
-            let request = {
-                content: notificationContent,
-                wantAgent: data
-            }
-
-            let id = 1;
-
-            particleAbility.startBackgroundRunning(id, request, conTaskCallback);
-        });
+        console.info(TAG + '-----------------ContinuousTaskJsTest004 begin--------------------');
+        startAbilityWithOption({ events: ["stopTaskUseApi8Callback"] }, "testcase4", "stopTaskUseApi8Callback", done);
     })
 
     /*
      * @tc.name:ContinuousTaskJsTest005
-     * @tc.desc:verify new api stopBackgroundrunning interface promise mode work properly
+     * @tc.desc:verify old startBackgroundrunning interface promise mode work properly
      * @tc.type: FUNC
      * @tc.require: 
      */
     it("ContinuousTaskJsTest005", 0, async function (done) {
-        let wantAgentInfo = {
-            wants: [
-                {
-                    bundleName: "com.continuoustask.test",
-                    abilityName: "com.continuoustask.test.MainAbility"
-                }
-            ],
-            operationType: 2,
-            requestCode: 0,
-            wantAgentFlags: [3]
-        };
-        wantAgent.getWantAgent(wantAgentInfo).then((data) => {
-            backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
-                backgroundTaskManager.BackgroundMode.DATA_TRANSFER, data).then((data) => {
-                backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext()).then((data) => {
-                    console.log("ContinuousTaskJsTest005 cancelBackgroundRunning success");
-                    expect(true).assertTrue();
-                    setTimeout(() => {
-                        done();
-                    }, 500);
-                }).catch((err) => {
-                    expect(false).assertTrue();
-                    console.log("ContinuousTaskJsTest005 cancelBackgroundRunning failure");
-                    setTimeout(() => {
-                        done();
-                    }, 500);
-                });
-            })
-        });
+        console.info(TAG + '-----------------ContinuousTaskJsTest005 begin--------------------');
+        startAbilityWithOption({ events: ["startTaskUseApi7Promise"] }, "testcase5", "startTaskUseApi7Promise", done);
     })
 
     /*
-        * @tc.name:ContinuousTaskJsTest006
-        * @tc.desc:verify new api stopBackgroundrunning interface callback mode work properly
-        * @tc.type: FUNC
-        * @tc.require: 
-        */
+     * @tc.name:ContinuousTaskJsTest006
+     * @tc.desc:verify cancelBackgroundrunning interface promise mode work properly
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
     it("ContinuousTaskJsTest006", 0, async function (done) {
-        function conTaskCallback(err, data) {
-            if (err) {
-                console.info('ContinuousTaskJsTest006 startBackgroundRunning failure');
-                expect(false).assertTrue();
-            } else {
-                console.info('ContinuousTaskJsTest006 startBackgroundRunning success');
-                expect(true).assertTrue();
-            }
-            setTimeout(()=>{
-                done();
-            }, 500);
-        }
-        let wantAgentInfo = {
-            wants: [
-                {
-                    bundleName: "com.continuoustask.test",
-                    abilityName: "com.continuoustask.test.MainAbility"
-                }
-            ],
-            operationType: 2,
-            requestCode: 0,
-            wantAgentFlags: [3]
-        };
-        wantAgent.getWantAgent(wantAgentInfo).then((data) => {
-            backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
-                backgroundTaskManager.BackgroundMode.DATA_TRANSFER, data).then((data) => {
-                backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext(), conTaskCallback);
-            })
-        });
+        console.info(TAG + '-----------------ContinuousTaskJsTest006 begin--------------------');
+        startAbilityWithOption({ events: ["stopTaskUseApi7Promise"] }, "testcase6", "stopTaskUseApi7Promise", done);
     })
 
     /*
      * @tc.name:ContinuousTaskJsTest007
-     * @tc.desc:verify old api cancelBackgroundrunning interface promise mode work properly
+     * @tc.desc:verify new startBackgroundrunning interface promise mode work properly
      * @tc.type: FUNC
      * @tc.require: 
      */
     it("ContinuousTaskJsTest007", 0, async function (done) {
-        let wantAgentInfo = {
-            wants: [
-                {
-                    bundleName: "com.continuoustask.test",
-                    abilityName: "com.continuoustask.test.MainAbility"
-                }
-            ],
-            operationType: 2,
-            requestCode: 0,
-            wantAgentFlags: [3]
-        };
-        await wantAgent.getWantAgent(wantAgentInfo).then((data) => {
-            particleAbility.startBackgroundRunning(data);
-            setTimeout(()=>{
-            }, 500);
-        });
-
-        particleAbility.cancelBackgroundRunning().then(() => {
-            console.log("ContinuousTaskJsTest007 cancelBackgroundRunning success");
-            expect(true).assertTrue();
-            setTimeout(() => {
-                done();
-            }, 500);
-        }).catch( (err) => {
-            expect(false).assertTrue();
-            console.log("ContinuousTaskJsTest007 cancelBackgroundRunning failure");
-            setTimeout(() => {
-                done();
-            }, 500);
-        });
+        console.info(TAG + '-----------------ContinuousTaskJsTest007 begin--------------------');
+        startAbilityWithOption({ events: ["startTaskUseApi8Promise"] }, "testcase7", "startTaskUseApi8Promise", done);
     })
 
     /*
      * @tc.name:ContinuousTaskJsTest008
-     * @tc.desc:verify old cancelBackgroundrunning interface callback mode work properly
+     * @tc.desc:verify new stopBackgroundrunning interface promise mode work properly
      * @tc.type: FUNC
      * @tc.require: 
      */
     it("ContinuousTaskJsTest008", 0, async function (done) {
-        function conTaskCallback(err, data) {
-            if (err) {
-                console.info('ContinuousTaskJsTest008 startBackgroundRunning failure');
-                expect(false).assertTrue();
-            } else {
-                console.info('ContinuousTaskJsTest008 startBackgroundRunning success');
-                expect(true).assertTrue();
-            }
-            setTimeout(()=>{
-                done();
-            }, 500);
-        }
-        let wantAgentInfo = {
-            wants: [
-                {
-                    bundleName: "com.continuoustask.test",
-                    abilityName: "com.continuoustask.test.MainAbility"
-                }
-            ],
-            operationType: 2,
-            requestCode: 0,
-            wantAgentFlags: [3]
-        };
-        await wantAgent.getWantAgent(wantAgentInfo).then((data) => {
-            particleAbility.startBackgroundRunning(data);
-            setTimeout(()=>{
-            }, 500);
-        });
+        console.info(TAG + '-----------------ContinuousTaskJsTest008 begin--------------------');
+        startAbilityWithOption({ events: ["stopTaskUseApi8Promise"] }, "testcase8", "stopTaskUseApi8Promise", done);
+    })
 
-        particleAbility.cancelBackgroundRunning(conTaskCallback);
+    /*
+     * @tc.name:ContinuousTaskJsTest009
+     * @tc.desc:verify continuous task request failed with invalid background mode
+     * @tc.type: FUNC
+     * @tc.require:
+     */
+    it("ContinuousTaskJsTest009", 0, async function (done) {
+        console.info(TAG + '-----------------ContinuousTaskJsTest009 begin--------------------');
+        startAbilityWithOption({ events: ["startTaskInvalidBgmode"] }, "testcase9", "startTaskInvalidBgmode", done);
     })
-	
-	/*
-    * @tc.name: ContinuousTaskJsTest009
-    * @tc.desc: test work scheduler constant
-    * @tc.type: FUNC
-    * @tc.require: 
-    */
-    it("ContinuousTaskJsTest009", 0, function (done) {
-        console.info('----------------------ContinuousTaskJsTest009---------------------------');
+
+    /*
+     * @tc.name: ContinuousTaskJsTest010
+     * @tc.desc: test work scheduler constant
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("ContinuousTaskJsTest010", 0, async function (done) {
+        console.info(TAG + '-----------------ContinuousTaskJsTest010 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.DATA_TRANSFER;
-        expect(value1).assertEqual(1)
+        expect(value1).assertEqual(1);
         done();
     })
-	
-	/*
-    * @tc.name: ContinuousTaskJsTest010
-    * @tc.desc: test work scheduler constant
-    * @tc.type: FUNC
-    * @tc.require: 
-    */
-    it("ContinuousTaskJsTest010", 0, function (done) {
-        console.info('----------------------ContinuousTaskJsTest010---------------------------');
+
+    /*
+     * @tc.name: ContinuousTaskJsTest011
+     * @tc.desc: test work scheduler constant
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("ContinuousTaskJsTest011", 0, async function (done) {
+        console.info(TAG + '-----------------ContinuousTaskJsTest011 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK;
-        expect(value1).assertEqual(2)
+        expect(value1).assertEqual(2);
         done();
     })
-	
-	/*
-    * @tc.name: ContinuousTaskJsTest011
-    * @tc.desc: test work scheduler constant
-    * @tc.type: FUNC
-    * @tc.require: 
-    */
-    it("ContinuousTaskJsTest011", 0, function (done) {
-        console.info('----------------------ContinuousTaskJsTest011---------------------------');
+
+    /*
+     * @tc.name: ContinuousTaskJsTest012
+     * @tc.desc: test work scheduler constant
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("ContinuousTaskJsTest012", 0, async function (done) {
+        console.info(TAG + '-----------------ContinuousTaskJsTest012 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.AUDIO_RECORDING;
-        expect(value1).assertEqual(3)
+        expect(value1).assertEqual(3);
         done();
     })
-	
-	/*
-    * @tc.name: ContinuousTaskJsTest012
-    * @tc.desc: test work scheduler constant
-    * @tc.type: FUNC
-    * @tc.require: 
-    */
-    it("ContinuousTaskJsTest012", 0, function (done) {
-        console.info('----------------------ContinuousTaskJsTest012---------------------------');
+
+    /*
+     * @tc.name: ContinuousTaskJsTest013
+     * @tc.desc: test work scheduler constant
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("ContinuousTaskJsTest013", 0, async function (done) {
+        console.info(TAG + '-----------------ContinuousTaskJsTest013 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.LOCATION;
-        expect(value1).assertEqual(4)
+        expect(value1).assertEqual(4);
         done();
     })
-	
-	/*
-    * @tc.name: ContinuousTaskJsTest013
-    * @tc.desc: test work scheduler constant
-    * @tc.type: FUNC
-    * @tc.require: 
-    */
-    it("ContinuousTaskJsTest013", 0, function (done) {
-        console.info('----------------------ContinuousTaskJsTest013---------------------------');
+
+    /*
+     * @tc.name: ContinuousTaskJsTest014
+     * @tc.desc: test work scheduler constant
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("ContinuousTaskJsTest014", 0, async function (done) {
+        console.info(TAG + '-----------------ContinuousTaskJsTest014 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.BLUETOOTH_INTERACTION;
-        expect(value1).assertEqual(5)
+        expect(value1).assertEqual(5);
         done();
     })
-	
-	/*
-    * @tc.name: ContinuousTaskJsTest014
-    * @tc.desc: test work scheduler constant
-    * @tc.type: FUNC
-    * @tc.require: 
-    */
-    it("ContinuousTaskJsTest014", 0, function (done) {
-        console.info('----------------------ContinuousTaskJsTest014---------------------------');
+
+    /*
+     * @tc.name: ContinuousTaskJsTest015
+     * @tc.desc: test work scheduler constant
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("ContinuousTaskJsTest015", 0, async function (done) {
+        console.info(TAG + '-----------------ContinuousTaskJsTest015 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.MULTI_DEVICE_CONNECTION;
-        expect(value1).assertEqual(6)
+        expect(value1).assertEqual(6);
         done();
     })
-	
-	/*
-    * @tc.name: ContinuousTaskJsTest017
-    * @tc.desc: test work scheduler constant
-    * @tc.type: FUNC
-    * @tc.require: 
-    */
-    it("ContinuousTaskJsTest017", 0, function (done) {
-        console.info('----------------------ContinuousTaskJsTest017---------------------------');
+
+    /*
+     * @tc.name: ContinuousTaskJsTest016
+     * @tc.desc: test work scheduler constant
+     * @tc.type: FUNC
+     * @tc.require: 
+     */
+    it("ContinuousTaskJsTest016", 0, async function (done) {
+        console.info(TAG + '-----------------ContinuousTaskJsTest016 begin--------------------');
         let value1 = backgroundTaskManager.BackgroundMode.TASK_KEEPING;
-        expect(value1).assertEqual(9)
+        expect(value1).assertEqual(9);
         done();
     })
 })

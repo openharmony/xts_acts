@@ -16,7 +16,13 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import LightWeightMap from "@ohos.util.LightWeightMap";
 
 describe("LightWeightMapTest", function () {
-  it("SR00GGR3L_testConstructor001", 0, function () {
+            
+  /**
+   * @tc.name: testConstructor001
+   * @tc.desc: Create an LightWeightMap instance. For example: let lightWeightMap = new LightWeightMap().
+   * @tc.author: wangyong
+   */
+  it("testConstructor001", 0, function () {
     try {
       let lightWeightMap = new LightWeightMap();
       expect(lightWeightMap != undefined).assertEqual(true);
@@ -25,7 +31,13 @@ describe("LightWeightMapTest", function () {
       expect(err.message).assertEqual("Cannot create new TreeMap");
     }
   });
-  it("SR00GGR3L_testSet002", 0, function () {
+            
+  /**
+   * @tc.name: testSet002
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap. For example: lightWeightMap.set(1, "A").
+   * @tc.author: wangyong
+   */
+  it("testSet002", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     let res = lightWeightMap.hasValue("A");
@@ -33,7 +45,13 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.hasKey(1);
     expect(res1).assertEqual(true);
   });
-  it("SR00GGR3L_testSet003", 0, function () {
+            
+  /**
+   * @tc.name: testSet003
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap. For example: lightWeightMap.set("a", "A").
+   * @tc.author: wangyong
+   */
+  it("testSet003", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     let res = lightWeightMap.hasValue("A");
@@ -41,7 +59,13 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.hasKey("a");
     expect(res1).assertEqual(true);
   });
-  it("SR00GGR3L_testSet004", 0, function () {
+            
+  /**
+   * @tc.name: testSet004
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap. For example: lightWeightMap.set("a", "A").
+   * @tc.author: wangyong
+   */
+  it("testSet004", 0, function () {
     let lightWeightMap = new LightWeightMap();
     let a = [1, 2, 3, 4];
     lightWeightMap.set(1, a);
@@ -50,7 +74,13 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.hasKey(1);
     expect(res1).assertEqual(true);
   });
-  it("SR00GGR3L_testSet005", 0, function () {
+            
+  /**
+   * @tc.name: testSet005
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap.
+   * @tc.author: wangyong
+   */
+  it("testSet005", 0, function () {
     let lightWeightMap = new LightWeightMap();
     let c = {name: "lili", age: "13"};
     lightWeightMap.set(1, c);
@@ -59,7 +89,13 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.hasKey(1);
     expect(res1).assertEqual(true);
   });
-  it("SR00GGR3L_testGet006", 0, function () {
+            
+  /**
+   * @tc.name: testGet006
+   * @tc.desc: Get the corresponding value through the key. For example: lightWeightMap.get(4).
+   * @tc.author: wangyong
+   */
+  it("testGet006", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -69,7 +105,13 @@ describe("LightWeightMapTest", function () {
     let res = lightWeightMap.get(4);
     expect(res).assertEqual("D");
   });
-  it("SR00GGR3L_testLength007", 0, function () {
+            
+  /**
+   * @tc.name: testLength007
+   * @tc.desc: Get the number of key value pairs in the lightWeightMap instance. For example: lightWeightMap.length.
+   * @tc.author: wangyong
+   */
+  it("testLength007", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -79,7 +121,13 @@ describe("LightWeightMapTest", function () {
     let res = lightWeightMap.length;
     expect(res).assertEqual(5);
   });
-  it("SR00GGR3L_testHasAll008", 0, function () {
+            
+  /**
+   * @tc.name: testHasAll008
+   * @tc.desc: Judge whether a lightweightmap contains all key value pairs in another lightweightmap.
+   * @tc.author: wangyong
+   */
+  it("testHasAll008", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     lightWeightMap.set("b", "B");
@@ -92,7 +140,13 @@ describe("LightWeightMapTest", function () {
     let res = lightWeightMap.hasAll(lightWeightMap1);
     expect(res).assertEqual(true);
   });
-  it("SR00GGR3L_testHasKey009", 0, function () {
+            
+  /**
+   * @tc.name: testConstructor001
+   * @tc.desc: Determine whether the LightWeightMap contains the specified key. For example: lightWeightMap.hasKey("a").
+   * @tc.author: wangyong
+   */
+  it("testHasKey009", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     lightWeightMap.set("b", "B");
@@ -104,7 +158,14 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.hasKey(1);
     expect(res1).assertEqual(false);
   });
-  it("SR00GGR3L_testHasValue010", 0, function () {
+              
+  /**
+   * @tc.name: testHasValue010
+   * @tc.desc: Determine whether the LightWeightMap contains the specified value. 
+   * For example: lightWeightMap.hasValue("A").
+   * @tc.author: wangyong
+   */
+  it("testHasValue010", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     lightWeightMap.set("b", "B");
@@ -116,7 +177,14 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.hasValue(1);
     expect(res1).assertEqual(false);
   });
-  it("SR00GGR3L_testIncreaseCapacityTo011", 0, function () {
+              
+  /**
+   * @tc.name: testIncreaseCapacityTo011
+   * @tc.desc: Expand the LightWeightMap instance capacity to the specified value. 
+   * For example: lightWeightMap.increaseCapacityTo(3).
+   * @tc.author: wangyong
+   */
+  it("testIncreaseCapacityTo011", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     lightWeightMap.set("b", "B");
@@ -127,7 +195,13 @@ describe("LightWeightMapTest", function () {
     let length = lightWeightMap.length;
     expect(length).assertEqual(5);
   });
-  it("SR00GGR3L_testEntries012", 0, function () {
+              
+  /**
+   * @tc.name: testEntries012
+   * @tc.desc: Get all key value pairs collection in lightWeightMap.
+   * @tc.author: wangyong
+   */
+  it("testEntries012", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -141,7 +215,14 @@ describe("LightWeightMapTest", function () {
     expect(JSON.stringify(res.next().value)).assertEqual('[4,"D"]');
     expect(JSON.stringify(res.next().value)).assertEqual('[5,"E"]');
   });
-  it("SR00GGR3L_testGetIndexOfKey013", 0, function () {
+              
+  /**
+   * @tc.name: testGetIndexOfKey013
+   * @tc.desc: Find the index of the key value pair according to the corresponding key. 
+   * If no key is specified, return -1.
+   * @tc.author: wangyong
+   */
+  it("testGetIndexOfKey013", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -151,7 +232,14 @@ describe("LightWeightMapTest", function () {
     let res = lightWeightMap.getIndexOfKey(2);
     expect(res).assertEqual(1);
   });
-  it("SR00GGR3L_testGetIndexOfValue014", 0, function () {
+              
+  /**
+   * @tc.name: testGetIndexOfValue014
+   * @tc.desc: Find the index of the key value pair according to the corresponding value. 
+   * If no key is specified, return -1.
+   * @tc.author: wangyong
+   */
+  it("testGetIndexOfValue014", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -162,7 +250,13 @@ describe("LightWeightMapTest", function () {
     let res = lightWeightMap.getIndexOfValue("F");
     expect(res).assertEqual(4);
   });
-  it("SR00GGR3L_testIsEmpty015", 0, function () {
+              
+  /**
+   * @tc.name: testIsEmpty015
+   * @tc.desc: Determine whether the LightWeightMap instance is empty. For example: lightWeightMap.isEmpty().
+   * @tc.author: wangyong
+   */
+  it("testIsEmpty015", 0, function () {
     let lightWeightMap = new LightWeightMap();
     let res1 = lightWeightMap.isEmpty();
     expect(res1).assertEqual(true);
@@ -174,7 +268,14 @@ describe("LightWeightMapTest", function () {
     let res2 = lightWeightMap.isEmpty();
     expect(res2).assertEqual(false);
   });
-  it("SR00GGR3L_testGetKeyAt016", 0, function () {
+              
+  /**
+   * @tc.name: testGetKeyAt016
+   * @tc.desc: Find the key of the key value pair according to the corresponding index. 
+   * For example: lightWeightMap.getKeyAt(1).
+   * @tc.author: wangyong
+   */
+  it("testGetKeyAt016", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -184,7 +285,13 @@ describe("LightWeightMapTest", function () {
     let res = lightWeightMap.getKeyAt(1);
     expect(res).assertEqual(2);
   });
-  it("SR00GGR3L_testKeys017", 0, function () {
+              
+  /**
+   * @tc.name: testKeys017
+   * @tc.desc: Get a collection of all the keys in the LightWeightMap. For example: lightWeightMap.keys().
+   * @tc.author: wangyong
+   */
+  it("testKeys017", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -198,7 +305,13 @@ describe("LightWeightMapTest", function () {
     expect(res.next().value).assertEqual(4);
     expect(res.next().value).assertEqual(5);
   });
-  it("SR00GGR3L_testSetAll018", 0, function () {
+              
+  /**
+   * @tc.name: testSetAll018
+   * @tc.desc: Copy key value pairs from one LightWeightMap to another.
+   * @tc.author: wangyong
+   */
+  it("testSetAll018", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -213,7 +326,13 @@ describe("LightWeightMapTest", function () {
       expect(lightWeightMap.hasKey(i)).assertEqual(true);
     }
   });
-  it("SR00GGR3L_testRemove019", 0, function () {
+              
+  /**
+   * @tc.name: testRemove019
+   * @tc.desc: Delete key value pairs according to key. For example: lightWeightMap.remove(3).
+   * @tc.author: wangyong
+   */
+  it("testRemove019", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -225,7 +344,13 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.hasValue("C");
     expect(res1).assertEqual(false);
   });
-  it("SR00GGR3L_testRemoveAt020", 0, function () {
+              
+  /**
+   * @tc.name: testRemoveAt020
+   * @tc.desc: Delete key value pairs according to index. For example: lightWeightMap.removeAt(1).
+   * @tc.author: wangyong
+   */
+  it("testRemoveAt020", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -241,7 +366,13 @@ describe("LightWeightMapTest", function () {
     let res3 = lightWeightMap.removeAt(10);
     expect(res3).assertEqual(false);
   });
-  it("SR00GGR3L_testClear021", 0, function () {
+              
+  /**
+   * @tc.name: testClear021
+   * @tc.desc: Clear all key value pairs in LightWeightMap. For example: lightWeightMap.clear().
+   * @tc.author: wangyong
+   */
+  it("testClear021", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -254,7 +385,14 @@ describe("LightWeightMapTest", function () {
     let isEmpty = lightWeightMap.isEmpty();
     expect(isEmpty).assertEqual(true);
   });
-  it("SR00GGR3L_testSetValueAt022", 0, function () {
+              
+  /**
+   * @tc.name: testSetValueAt022
+   * @tc.desc: Modify the value of the key value pair according to the corresponding index. 
+   * For example: setValueAt(0, "a").
+   * @tc.author: wangyong
+   */
+  it("testSetValueAt022", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -265,7 +403,13 @@ describe("LightWeightMapTest", function () {
     let res = lightWeightMap.get(1);
     expect(res).assertEqual("a");
   });
-  it("SR00GGR3L_testForEach023", 0, function () {
+              
+  /**
+   * @tc.name: testForEach023
+   * @tc.desc: Traverse all key value pairs in the LightWeightMap instance.
+   * @tc.author: wangyong
+   */
+  it("testForEach023", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -281,7 +425,14 @@ describe("LightWeightMapTest", function () {
       expect(arr[i]).assertEqual(arr1[i]);
     }
   });
-  it("SR00GGR3L_testToString024", 0, function () {
+              
+  /**
+   * @tc.name: testToString024
+   * @tc.desc: Use "," to splice the elements in the LightWeightMap instance into a string. 
+   * For example: lightWeightMap.toString().
+   * @tc.author: wangyong
+   */
+  it("testToString024", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -289,7 +440,13 @@ describe("LightWeightMapTest", function () {
     let res = lightWeightMap.toString();
     expect(res).assertEqual("1:A,2:B,3:C");
   });
-  it("SR00GGR3L_testValues025", 0, function () {
+                
+  /**
+   * @tc.name: testValues025
+   * @tc.desc: Get a collection of all the values in the LightWeightMap. For example: lightWeightMap.values().
+   * @tc.author: wangyong
+   */
+  it("testValues025", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -303,7 +460,14 @@ describe("LightWeightMapTest", function () {
     expect(res.next().value).assertEqual("D");
     expect(res.next().value).assertEqual("E");
   });
-  it("SR00GGR3L_testGetValueAt026", 0, function () {
+                
+  /**
+   * @tc.name: testGetValueAt026
+   * @tc.desc: Get the value of the key value pair according to the corresponding index. 
+   * For example: lightWeightMap.getValueAt(1).
+   * @tc.author: wangyong
+   */
+  it("testGetValueAt026", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -313,7 +477,13 @@ describe("LightWeightMapTest", function () {
     let res = lightWeightMap.getValueAt(1);
     expect(res).assertEqual("B");
   });
-  it("SR00GGR3L_testIterator027", 0, function () {
+                
+  /**
+   * @tc.name: testIterator027
+   * @tc.desc: Iterate over all key value pairs in the LightWeightMap. 
+   * @tc.author: wangyong
+   */
+  it("testIterator027", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -332,7 +502,13 @@ describe("LightWeightMapTest", function () {
     }
     expect(flag).assertEqual(true);
   });
-  it("SR00GGR3L_testSet028", 0, function () {
+                
+  /**
+   * @tc.name: testSet028
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap. For example: lightWeightMap.set(1, null).
+   * @tc.author: wangyong
+   */
+  it("testSet028", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, null);
     let res = lightWeightMap.hasValue(null);
@@ -340,7 +516,13 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.hasKey(1);
     expect(res1).assertEqual(true);
   });
-  it("SR00GGR3L_testSet029", 0, function () {
+                
+  /**
+   * @tc.name: testSet029
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap. For example: lightWeightMap.set(null, null).
+   * @tc.author: wangyong
+   */
+  it("testSet029", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(null, null);
     let res = lightWeightMap.hasValue(null);
@@ -348,7 +530,13 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.hasKey(null);
     expect(res1).assertEqual(true);
   });
-  it("SR00GGR3L_testSet030", 0, function () {
+                
+  /**
+   * @tc.name: testSet030
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap. For example: lightWeightMap.set(true, false).
+   * @tc.author: wangyong
+   */
+  it("testSet030", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(true, false);
     let res = lightWeightMap.hasValue(false);
@@ -356,7 +544,13 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.hasKey(true);
     expect(res1).assertEqual(true);
   });
-  it("SR00GGR3L_testSet031", 0, function () {
+                
+  /**
+   * @tc.name: testSet031
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap. For example: lightWeightMap.set(1.23, 321).
+   * @tc.author: wangyong
+   */
+  it("testSet031", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1.23, 321);
     let res = lightWeightMap.hasValue(321);
@@ -364,7 +558,13 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.hasKey(1.23);
     expect(res1).assertEqual(true);
   });
-  it("SR00GGR3L_testHasAll032", 0, function () {
+                
+  /**
+   * @tc.name: testHasAll032
+   * @tc.desc: Judge whether a lightweightmap contains all key value pairs in another lightweightmap.
+   * @tc.author: wangyong
+   */
+  it("testHasAll032", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     lightWeightMap.set("b", "B");
@@ -377,7 +577,13 @@ describe("LightWeightMapTest", function () {
     let res = lightWeightMap.hasAll(lightWeightMap1);
     expect(res).assertEqual(false);
   });
-  it("SR00GGR3L_testHasAll033", 0, function () {
+                  
+  /**
+   * @tc.name: testHasAll033
+   * @tc.desc: Judge whether a lightweightmap contains all key value pairs in another lightweightmap.
+   * @tc.author: wangyong
+   */
+  it("testHasAll033", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     lightWeightMap.set("b", "B");
@@ -390,17 +596,36 @@ describe("LightWeightMapTest", function () {
     let res = lightWeightMap.hasAll(lightWeightMap1);
     expect(res).assertEqual(false);
   });
-  it("SR00GGR3L_testRemove034", 0, function () {
+                  
+  /**
+   * @tc.name: testRemove034
+   * @tc.desc: Delete key value pairs according to key. For example: lightWeightMap.remove(3).
+   * @tc.author: wangyong
+   */
+  it("testRemove034", 0, function () {
     let lightWeightMap = new LightWeightMap();
     let res = lightWeightMap.remove(3);
     expect(res).assertEqual(undefined);
   });
-  it("SR00GGR3L_testRemoveAt035", 0, function () {
+                  
+  /**
+   * @tc.name: testRemoveAt035
+   * @tc.desc: Delete key value pairs according to index. For example: lightWeightMap.removeAt(1).
+   * @tc.author: wangyong
+   */
+  it("testRemoveAt035", 0, function () {
     let lightWeightMap = new LightWeightMap();
     let res = lightWeightMap.removeAt(1);
     expect(res).assertEqual(false);
   });
-  it("SR00GGR3L_testIncreaseCapacityTo036", 0, function () {
+                  
+  /**
+   * @tc.name: testIncreaseCapacityTo036
+   * @tc.desc: Expand the LightWeightMap instance capacity to the specified value. 
+   * For example: lightWeightMap.increaseCapacityTo(10).
+   * @tc.author: wangyong
+   */
+  it("testIncreaseCapacityTo036", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     lightWeightMap.set("b", "B");
@@ -410,7 +635,14 @@ describe("LightWeightMapTest", function () {
     let res = lightWeightMap.increaseCapacityTo(10);
     expect(res).assertEqual(undefined);
   });
-  it("SR00GGR3L_testIncreaseCapacityTo037", 0, function () {
+                  
+  /**
+   * @tc.name: testIncreaseCapacityTo037
+   * @tc.desc: Expand the LightWeightMap instance capacity to the specified value. 
+   * For example: lightWeightMap.increaseCapacityTo("qwe").
+   * @tc.author: wangyong
+   */
+  it("testIncreaseCapacityTo037", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     lightWeightMap.set("b", "B");
@@ -424,16 +656,29 @@ describe("LightWeightMapTest", function () {
       expect(err.message).assertEqual("the size is not integer");
     }
   });
-  it("SR00GGR3L_testRemoveAt038", 0, function () {
+                  
+  /**
+   * @tc.name: testRemoveAt038
+   * @tc.desc: Delete key value pairs according to index. For example: lightWeightMap.removeAt("123").
+   * @tc.author: wangyong
+   */
+  it("testRemoveAt038", 0, function () {
     let lightWeightMap = new LightWeightMap();
     try {
       let res = lightWeightMap.removeAt("123");
     } catch (err) {
       expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("the size is not integer");
+      expect(err.message).assertEqual("index is not integer");
     }
   });
-  it("SR00GGR3L_testGetValueAt039", 0, function () {
+                  
+  /**
+   * @tc.name: testGetValueAt039
+   * @tc.desc: Get the value of the key value pair according to the corresponding index. 
+   * For example: lightWeightMap.getValueAt("123").
+   * @tc.author: wangyong
+   */
+  it("testGetValueAt039", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -447,7 +692,14 @@ describe("LightWeightMapTest", function () {
       expect(err.message).assertEqual("the index is not integer");
     }
   });
-  it("SR00GGR3L_testGetKeyAt040", 0, function () {
+                  
+  /**
+   * @tc.name: testGetKeyAt040
+   * @tc.desc: Find the key of the key value pair according to the corresponding index. 
+   * For example: lightWeightMap.getKeyAt("123").
+   * @tc.author: wangyong
+   */
+  it("testGetKeyAt040", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -461,13 +713,25 @@ describe("LightWeightMapTest", function () {
       expect(err.message).assertEqual("the index is not integer");
     }
   });
-  it("SR00GGR3L_testHasAll041", 0, function () {
+                  
+  /**
+   * @tc.name: testConstructor001
+   * @tc.desc: Judge whether a lightweightmap contains all key value pairs in another lightweightmap.
+   * @tc.author: wangyong
+   */
+  it("testHasAll041", 0, function () {
     let lightWeightMap = new LightWeightMap();
     let lightWeightMap1 = new LightWeightMap();
     let res = lightWeightMap.hasAll(lightWeightMap1);
     expect(res).assertEqual(true);
   });
-  it("SR00GGR3L_testSet042", 0, function () {
+                  
+  /**
+   * @tc.name: testSet042
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap.
+   * @tc.author: wangyong
+   */
+  it("testSet042", 0, function () {
     let lightWeightMap = new LightWeightMap();
     for (let i = 0; i < 100; i++) {
       lightWeightMap.set(i, "A");
@@ -477,7 +741,13 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.length;
     expect(res1).assertEqual(100);
   });
-  it("SR00GGR3L_testSet043", 0, function () {
+                  
+  /**
+   * @tc.name: testSet043
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap.
+   * @tc.author: wangyong
+   */
+  it("testSet043", 0, function () {
     let lightWeightMap = new LightWeightMap();
     for (let i = 0; i < 100; i++) {
       lightWeightMap.set(1, i);
@@ -487,7 +757,13 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.length;
     expect(res1).assertEqual(1);
   });
-  it("SR00GGR3L_testSet044", 0, function () {
+                  
+  /**
+   * @tc.name: testSet044
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap.
+   * @tc.author: wangyong
+   */
+  it("testSet044", 0, function () {
     let lightWeightMap = new LightWeightMap();
     for (let i = 0; i < 10000; i++) {
       lightWeightMap.set(i, i);
@@ -501,7 +777,13 @@ describe("LightWeightMapTest", function () {
       expect(resValue).assertEqual(true);
     }
   });
-  it("SR00GGR3L_testSet045", 0, function () {
+                  
+  /**
+   * @tc.name: testSet045
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap.
+   * @tc.author: wangyong
+   */
+  it("testSet045", 0, function () {
     let lightWeightMap = new LightWeightMap();
     for (let i = 0; i < 5000; i++) {
       lightWeightMap.set(i, i);
@@ -524,7 +806,13 @@ describe("LightWeightMapTest", function () {
       expect(resValue).assertEqual(true);
     }
   });
-  it("SR00GGR3L_testSet046", 0, function () {
+                  
+  /**
+   * @tc.name: testSet046
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap.
+   * @tc.author: wangyong
+   */
+  it("testSet046", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(true, 0.001);
     let res = lightWeightMap.hasValue(0.001);
@@ -532,7 +820,13 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.hasKey(true);
     expect(res1).assertEqual(true);
   });
-  it("SR00GGR3L_testSet047", 0, function () {
+                  
+  /**
+   * @tc.name: testSet047
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap.
+   * @tc.author: wangyong
+   */
+  it("testSet047", 0, function () {
     let lightWeightMap = new LightWeightMap();
     let a = [1, 2, 3, 4];
     lightWeightMap.set(a, 1);
@@ -541,7 +835,13 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.hasKey(a);
     expect(res1).assertEqual(true);
   });
-  it("SR00GGR3L_testSet048", 0, function () {
+                  
+  /**
+   * @tc.name: testSet048
+   * @tc.desc: Add a pair of key value pairs to the LightWeightMap.
+   * @tc.author: wangyong
+   */
+  it("testSet048", 0, function () {
     let lightWeightMap = new LightWeightMap();
     let a = {abc: 1};
     lightWeightMap.set(a, "");
@@ -550,7 +850,13 @@ describe("LightWeightMapTest", function () {
     let res1 = lightWeightMap.hasKey(a);
     expect(res1).assertEqual(true);
   });
-  it("SR00GGR3L_testGet049", 0, function () {
+                  
+  /**
+   * @tc.name: testGet049
+   * @tc.desc: Get the corresponding value through the key. For example: lightWeightMap.get(10).
+   * @tc.author: wangyong
+   */
+  it("testGet049", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set(1, "A");
     lightWeightMap.set(2, "B");
@@ -560,7 +866,13 @@ describe("LightWeightMapTest", function () {
     let res = lightWeightMap.get(10);
     expect(res).assertEqual(undefined);
   });
-  it("SR00GGR3L_testHasAll050", 0, function () {
+                  
+  /**
+   * @tc.name: testHasAll050
+   * @tc.desc: Judge whether a lightweightmap contains all key value pairs in another lightweightmap.
+   * @tc.author: wangyong
+   */
+  it("testHasAll050", 0, function () {
     let lightWeightMap = new LightWeightMap();
     lightWeightMap.set("a", "A");
     lightWeightMap.set("b", "B");

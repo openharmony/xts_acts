@@ -96,7 +96,7 @@ static void HotspotStateTask(void)
  */
 static void OnWifiScanStateChangedHandler(int state, int size)
 {
-    if (state != WIFI_STATE_AVALIABLE) {
+    if (state != WIFI_STATE_AVAILABLE) {
         printf("ScanStateChanged:state is unavailable.\n");
     } else {
         printf("ScanStateChanged:state[%d], size[%d].\n", state, size);
@@ -214,7 +214,7 @@ static BOOL WifiServiceFuncTestSuiteSetUp(void)
     WifiErrorCode error;
     // check wifi stat
     int ret = IsWifiActive();
-    if (ret == WIFI_STATE_AVALIABLE) {
+    if (ret == WIFI_STATE_AVAILABLE) {
         printf("[Setup]wifi is active, disable now...\n");
         error = DisableWifi();
         if (error == WIFI_SUCCESS) {
@@ -299,12 +299,12 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testEnableDisableWifi, Function | Mediu
     WifiErrorCode error = EnableWifi();
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
     stat = IsWifiActive();
-    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVALIABLE, stat);
+    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVAILABLE, stat);
 
     error = EnableWifi();
     TEST_ASSERT_EQUAL_INT(ERROR_WIFI_BUSY, error);
     stat = IsWifiActive();
-    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVALIABLE, stat);
+    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVAILABLE, stat);
 
     error = DisableWifi();
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
@@ -328,7 +328,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testScan, Function | MediumTest | Level
     WifiErrorCode error = EnableWifi();
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
     int stat = IsWifiActive();
-    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVALIABLE, stat);
+    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVAILABLE, stat);
 
     WifiScanInfo* info = malloc(sizeof(WifiScanInfo) * WIFI_SCAN_HOTSPOT_LIMIT);
     TEST_ASSERT_NOT_NULL(info);
@@ -590,7 +590,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanType, Function | MediumT
     WifiErrorCode error = EnableWifi();
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
     int stat = IsWifiActive();
-    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVALIABLE, stat);
+    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVAILABLE, stat);
 
     int freq = 2460;
     WifiScanParams scanParams = {0};
@@ -644,7 +644,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanInvalidParam01, Function
     WifiErrorCode error = EnableWifi();
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
     int stat = IsWifiActive();
-    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVALIABLE, stat);
+    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVAILABLE, stat);
 
     g_staScanSuccess = 0;
     error = AdvanceScan(NULL);
@@ -672,7 +672,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanInvalidParam02, Function
     WifiErrorCode error = EnableWifi();
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
     int stat = IsWifiActive();
-    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVALIABLE, stat);
+    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVAILABLE, stat);
 
     WifiScanParams* scanParams = malloc(sizeof(WifiScanParams));
     TEST_ASSERT_NOT_NULL(scanParams);
@@ -717,7 +717,7 @@ LITE_TEST_CASE(WifiServiceFuncTestSuite, testAdvanceScanInvalidParam03, Function
     WifiErrorCode error = EnableWifi();
     TEST_ASSERT_EQUAL_INT(WIFI_SUCCESS, error);
     int stat = IsWifiActive();
-    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVALIABLE, stat);
+    TEST_ASSERT_EQUAL_INT(WIFI_STATE_AVAILABLE, stat);
 
     WifiScanParams* scanParams = malloc(sizeof(WifiScanParams));
     TEST_ASSERT_NOT_NULL(scanParams);

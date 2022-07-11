@@ -62,7 +62,7 @@ function off(OFF_VALUE_TEST_ELEMENT) {
 }
 
 
-describe('bluetoothhostTest', function () {
+describe('bluetoothhostTest_host_1', function () {
     beforeAll(function () {
         console.info('beforeAll called')
     })
@@ -160,6 +160,25 @@ describe('bluetoothhostTest', function () {
         await sleep(3000);
         done();
     })
+
+
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_A2DP_GET_PROFILE_STATE_0001
+     * @tc.name testgetProfileState
+     * @tc.desc Test getProfileState api.
+     * @tc.type Function
+     * @tc.level Level 0
+     */
+    it('SUB_COMMUNACATION_bluetooth_DEVICE_JS_A2DP_GET_PROFILE_STATE_0001', 0, async function (done) {
+        console.info('[bluetooth_js] a2dpSourceProfile getProfileState start');
+        await tryToEnableBt();
+        let state = bluetooth.getProfileConnState(bluetooth.ProfileId.PROFILE_A2DP_SOURCE);
+        console.info('[bluetooth_js] a2dpSourceProfile state is:' + state);
+        expect(state).assertEqual(0);
+        await sleep(1000);
+        done();
+    })
+
 
 
     /**

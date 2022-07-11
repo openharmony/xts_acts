@@ -16,7 +16,7 @@
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
 import router from '@system.router'
-import {getFileDescriptor, closeFileDescriptor} from './VideoDecoderTestBase.test.js'
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 
@@ -33,7 +33,6 @@ describe('VideoDecoderFuncPromiseTest', function () {
     let surfaceID = '';
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/';
     let ES_FRAME_SIZE = [];
     const H264_FRAME_SIZE_60FPS_320 =
     [ 2106, 11465, 321, 72, 472, 68, 76, 79, 509, 90, 677, 88, 956, 99, 347, 77, 452, 681, 81, 1263, 94, 106, 97,
@@ -98,7 +97,6 @@ describe('VideoDecoderFuncPromiseTest', function () {
 
     beforeAll(function() {
         console.info('beforeAll case');
-        // getSurfaceID();
     })
 
     beforeEach(async function() {
@@ -127,6 +125,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
         }
         await router.clear().then(() => {
         }, failCallback).catch(failCatch);
+        await fileio.close(fdRead);
     })
 
     afterAll(function() {
@@ -156,16 +155,9 @@ describe('VideoDecoderFuncPromiseTest', function () {
         }
     }
 
-    async function getFdRead(pathName, done) {
-        await getFileDescriptor(pathName).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("case fdRead is: " + fdRead);
-            }
+    async function getFdRead(readPath, done) {
+        await mediaTestBase.getFdRead(readPath, done).then((fdNumber) => {
+            fdRead = fdNumber;
         })
     }
 
@@ -183,7 +175,7 @@ describe('VideoDecoderFuncPromiseTest', function () {
         console.info("case start get content");
         console.info("case start get content length is: " + len);
         let lengthreal = -1;
-        lengthreal = readStreamSync.readSync(buf,{length:len});
+        lengthreal = fileio.readSync(fdRead, buf, {length:len});
         console.info('case lengthreal is :' + lengthreal);
     }
 
@@ -297,7 +289,6 @@ describe('VideoDecoderFuncPromiseTest', function () {
     async function toConfigure(mediaDescription, srcPath) {
         await videoDecodeProcessor.configure(mediaDescription).then(() =>{
             console.info('in case : configure success');
-            readFile(srcPath);
         }, failCallback).catch(failCatch);
     }
     async function toSetOutputSurface(isDisplay) {
@@ -317,7 +308,6 @@ describe('VideoDecoderFuncPromiseTest', function () {
             console.info('in case : release success');
         }, failCallback).catch(failCatch);
         videoDecodeProcessor = null;
-        await closeFileDescriptor(readpath);
         console.info('in case : done');
         done();
     });
@@ -466,7 +456,6 @@ describe('VideoDecoderFuncPromiseTest', function () {
                 console.info('in case : release success');
             }, failCallback).catch(failCatch);
             videoDecodeProcessor = null;
-            await closeFileDescriptor(readpath);
             done();
         })
         for (let i = 0; i < 3; i++) {

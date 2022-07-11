@@ -34,7 +34,7 @@ let HuksOptions65kb = {
   inData: srcData65Kb,
 };
 
-describe('SecurityHuksAgreeX25519PromiseJsunit', function () {
+describe('SecurityHuksAgreeX25519BasicFinish65KBPromiseJsunit', function () {
   it('testAgreeX25519103', 0, async function (done) {
     const srcKeyAliesFirst = 'testAgreeX25519Size256Finish65KBAgreeKeyAlias_01_101';
     const srcKeyAliesSecond = 'testAgreeX25519Size256Finish65KBAgreeKeyAlias_02_101';

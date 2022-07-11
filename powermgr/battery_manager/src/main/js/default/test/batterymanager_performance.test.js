@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import batteryInfo from '@ohos.batteryInfo';
+import batteryInfo from '@ohos.batteryinfo';
 import { describe, it, expect } from 'deccjsunit/index';
 
-describe('appInfoTest', function () {
+describe('appInfoTest_battery_4', function () {
 
     console.log("*************Edited Battery Performance Test Begin*************");
     const MAXNUM = 1000;

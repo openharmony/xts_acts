@@ -1400,7 +1400,7 @@ describe('audioRenderer', function () {
          });
          await sleep(waitTime);
      }
-     await sleep(2000);
+     await sleep(100);
      if (resultFlag == false){
          console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
          return resultFlag;
@@ -7523,416 +7523,205 @@ describe('audioRenderer', function () {
         done();
     })
 
-    /* *
-            * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_082
-            * @tc.name      : AudioRenderer-Set11-Media - CALLBACK
-            * @tc.desc      : AudioRenderer with parameter set 11
-            * @tc.size      : MEDIUM
-            * @tc.type      : Function
-            * @tc.level     : Level 0
-        */
-    it('SUB_AUDIO_RENDERER_Play_audio_082', 0,async function (done) {
-        var AudioStreamInfo = {
+    /*
+     * @tc.name:SetInterruptMode_001
+     * @tc.desc:SetInterruptMode mode 0 callback,is public share mode
+     * @tc.type: FUNC
+     * @tc.require: Issue Number
+     */
+    it("SetInterruptMode_001", 0,async function (done) {
+        var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-            channels: audio.AudioChannel.CHANNEL_2,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-        }
-
-        var AudioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_SPEECH,
-            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
-        }
-
-        var AudioRendererOptions = {
-            streamInfo: AudioStreamInfo,
-            rendererInfo: AudioRendererInfo
-        }
-
-        readpath='StarWars10s-2C-48000-4SW.wav'
-        await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions, readpath);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-        await sleep(9000);
-        expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
-        done();
-    })
-
-    /* *
-           * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_083
-           * @tc.name      : AudioRenderer-Set1-Media - CALLBACK
-           * @tc.desc      : AudioRenderer with parameter set 1
-           * @tc.size      : MEDIUM
-           * @tc.type      : Function
-           * @tc.level     : Level 0
-       */
-    it('SUB_AUDIO_RENDERER_Play_audio_083', 0, async function (done) {
-
-        var AudioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-
-        var AudioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_SPEECH,
-            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+        var audioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 0
         }
-
-        var AudioRendererOptions = {
-            streamInfo: AudioStreamInfo,
-            rendererInfo: AudioRendererInfo
+        var audioRendererOptions = {
+            streamInfo: audioStreamInfo,
+            rendererInfo: audioRendererInfo
         }
-
-        readpath='StarWars10s-1C-44100-2SW.wav'
-        await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions, readpath);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-        await sleep(5000);
-        expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
-        done();
+        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        let mode = 0;
+        audioRenderer.setInterruptMode(mode,(err,data)=>{
+            if(err){
+                expect(true).assertEqual(false);
+                return done();
+            }
+            expect(true).assertEqual(true);
+            done();
+        })
     })
 
-    /* *
-           * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_084
-           * @tc.name      : AudioRenderer-Set2-Media - CALLBACK
-           * @tc.desc      : AudioRenderer with parameter set 2
-           * @tc.size      : MEDIUM
-           * @tc.type      : Function
-           * @tc.level     : Level 0
-       */
-    it('SUB_AUDIO_RENDERER_Play_audio_084', 0,async function (done) {
-        var AudioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
+    /*
+     * @tc.name:SetInterruptMode_002
+     * @tc.desc:SetInterruptMode mode 1 callback,is independent mode
+     * @tc.type: FUNC
+     * @tc.require: Issue Number
+     */
+    it("SetInterruptMode_002", 0,async function (done) {
+        var audioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-
-        var AudioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_SPEECH,
-            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+        var audioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 0
         }
-
-        var AudioRendererOptions = {
-            streamInfo: AudioStreamInfo,
-            rendererInfo: AudioRendererInfo
+        var audioRendererOptions = {
+            streamInfo: audioStreamInfo,
+            rendererInfo: audioRendererInfo
         }
-
-        readpath='StarWars10s-1C-8000-2SW.wav'
-        await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions, readpath);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-        expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
-        done();
+        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        let mode = 1;
+        audioRenderer.setInterruptMode(mode,(err,data)=>{
+            if(err){
+                expect(true).assertEqual(false);
+                return done();
+            }
+            expect(true).assertEqual(true);
+            done();
+        })
     })
 
-    /* *
-           * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_085
-           * @tc.name      : AudioRenderer-Set3-Media - CALLBACK
-           * @tc.desc      : AudioRenderer with parameter set 3
-           * @tc.size      : MEDIUM
-           * @tc.type      : Function
-           * @tc.level     : Level 0
-       */
-    it('SUB_AUDIO_RENDERER_Play_audio_085', 0,async function (done) {
-        var AudioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
+    /*
+     * @tc.name:SetInterruptMode_003
+     * @tc.desc:SetInterruptMode mode 0 promise,is public share mode
+     * @tc.type: FUNC
+     * @tc.require: Issue Number
+     */
+    it("SetInterruptMode_003", 0,async function (done) {
+        var audioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_U8,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-        }
-
-        var AudioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_SPEECH,
-            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
-        }
-
-        var AudioRendererOptions = {
-            streamInfo: AudioStreamInfo,
-            rendererInfo: AudioRendererInfo
-        }
-
-        readpath='StarWars10s-1C-32000-1SW.wav'
-        await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions, readpath);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-        expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
-        done();
-    })
-
-    /* *
-           * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_086
-           * @tc.name      : AudioRenderer-Set4-Media - CALLBACK
-           * @tc.desc      : AudioRenderer with parameter set 4
-           * @tc.size      : MEDIUM
-           * @tc.type      : Function
-           * @tc.level     : Level 0
-       */
-    it('SUB_AUDIO_RENDERER_Play_audio_086', 0,async function (done) {
-        var AudioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_64000,
-            channels: audio.AudioChannel.CHANNEL_1,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-        }
-
-        var AudioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_SPEECH,
-            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
-        }
-
-        var AudioRendererOptions = {
-            streamInfo: AudioStreamInfo,
-            rendererInfo: AudioRendererInfo
-        }
-
-        readpath='StarWars10s-1C-64000-3SW.wav'
-        await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions, readpath);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-        expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
-        done();
-    })
-
-    /* *
-            * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_087
-            * @tc.name      : AudioRenderer-Set5-Media - CALLBACK
-            * @tc.desc      : AudioRenderer with parameter set 5
-            * @tc.size      : MEDIUM
-            * @tc.type      : Function
-            * @tc.level     : Level 0
-        */
-    it('SUB_AUDIO_RENDERER_Play_audio_087', 0,async function (done) {
-        var AudioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
-            channels: audio.AudioChannel.CHANNEL_1,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-        }
-
-        var AudioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_SPEECH,
-            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
-        }
-
-        var AudioRendererOptions = {
-            streamInfo: AudioStreamInfo,
-            rendererInfo: AudioRendererInfo
-        }
-
-        readpath='StarWars10s-1C-96000-4SW.wav'
-        await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions, readpath);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-        expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
-        done();
-    })
-
-    /* *
-            * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_088
-            * @tc.name      : AudioRenderer-Set6-Media - CALLBACK
-            * @tc.desc      : AudioRenderer with parameter set 6
-            * @tc.size      : MEDIUM
-            * @tc.type      : Function
-            * @tc.level     : Level 0
-        */
-    it('SUB_AUDIO_RENDERER_Play_audio_088', 0,async function (done) {
-        var AudioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_11025,
-            channels: audio.AudioChannel.CHANNEL_2,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_U8,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-        }
-
-        var AudioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_SPEECH,
-            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
-        }
-
-        var AudioRendererOptions = {
-            streamInfo: AudioStreamInfo,
-            rendererInfo: AudioRendererInfo
-        }
-
-        readpath='StarWars10s-2C-11025-1SW.wav'
-        await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions, readpath);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-        expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
-        done();
-    })
-
-    /* *
-            * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_089
-            * @tc.name      : AudioRenderer-Set7-Media - CALLBACK
-            * @tc.desc      : AudioRenderer with parameter set 7
-            * @tc.size      : MEDIUM
-            * @tc.type      : Function
-            * @tc.level     : Level 0
-        */
-    it('SUB_AUDIO_RENDERER_Play_audio_089', 0,async function (done) {
-        var AudioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_12000,
-            channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-
-        var AudioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_SPEECH,
-            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+        var audioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 0
         }
-
-        var AudioRendererOptions = {
-            streamInfo: AudioStreamInfo,
-            rendererInfo: AudioRendererInfo
+        var audioRendererOptions = {
+            streamInfo: audioStreamInfo,
+            rendererInfo: audioRendererInfo
         }
-
-        readpath='StarWars10s-2C-12000-2SW.wav'
-        await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions, readpath);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-        expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
-        done();
+        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        let mode = 0;
+        audioRenderer.setInterruptMode(mode).then(data=>{
+            expect(true).assertEqual(true);
+            done();
+        }).catch(err=>{
+            expect(true).assertEqual(false);
+            done();
+        })
     })
 
-    /* *
-            * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_090
-            * @tc.name      : AudioRenderer-Set8-Media - CALLBACK
-            * @tc.desc      : AudioRenderer with parameter set 8
-            * @tc.size      : MEDIUM
-            * @tc.type      : Function
-            * @tc.level     : Level 0
+    /*
+        * @tc.name:SetInterruptMode_004
+        * @tc.desc:SetInterruptMode mode 1 promise,is independent mode
+        * @tc.type: FUNC
+        * @tc.require: Issue Number
         */
-    it('SUB_AUDIO_RENDERER_Play_audio_090', 0,async function (done) {
-        var AudioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
-            channels: audio.AudioChannel.CHANNEL_2,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-        }
-
-        var AudioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_SPEECH,
-            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
-        }
-
-        var AudioRendererOptions = {
-            streamInfo: AudioStreamInfo,
-            rendererInfo: AudioRendererInfo
-        }
-
-        readpath='StarWars10s-2C-16000-3SW.wav'
-        await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions, readpath);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-        expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
-        done();
-
-    })
-
-    /* *
-            * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_091
-            * @tc.name      : AudioRenderer-Set9-Media - CALLBACK
-            * @tc.desc      : AudioRenderer with parameter set 9
-            * @tc.size      : MEDIUM
-            * @tc.type      : Function
-            * @tc.level     : Level 0
-        */
-    it('SUB_AUDIO_RENDERER_Play_audio_091', 0,async function (done) {
-
-        var AudioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_22050,
-            channels: audio.AudioChannel.CHANNEL_2,
+    it("SetInterruptMode_004", 0,async function (done) {
+        var audioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-
-        var AudioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_SPEECH,
-            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+        var audioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 0
         }
-
-        var AudioRendererOptions = {
-            streamInfo: AudioStreamInfo,
-            rendererInfo: AudioRendererInfo
+        var audioRendererOptions = {
+            streamInfo: audioStreamInfo,
+            rendererInfo: audioRendererInfo
         }
-
-        readpath='StarWars10s-2C-22050-2SW.wav'
-        await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions, readpath);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-        expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
-        done();
+        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        let mode = 1;
+        audioRenderer.setInterruptMode(mode).then(data=>{
+            expect(true).assertEqual(true);
+            done();
+        }).catch(err=>{
+            expect(true).assertEqual(false);
+            done();
+        })
     })
 
-    /* *
-            * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_092
-            * @tc.name      : AudioRenderer-Set10-Media - CALLBACK
-            * @tc.desc      : AudioRenderer with parameter set 10
-            * @tc.size      : MEDIUM
-            * @tc.type      : Function
-            * @tc.level     : Level 0
-        */
-    it('SUB_AUDIO_RENDERER_Play_audio_092', 0,async function (done) {
-
-        var AudioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
-            channels: audio.AudioChannel.CHANNEL_2,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
+    /*
+    * @tc.name:SetInterruptMode_005
+    * @tc.desc:SetInterruptMode mode '1',will catch error with type error
+    * @tc.type: FUNC
+    * @tc.require: Issue Number
+    */
+    it("SetInterruptMode_005", 0,async function (done) {
+        var audioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-
-        var AudioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_SPEECH,
-            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+        var audioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 0
         }
-
-        var AudioRendererOptions = {
-            streamInfo: AudioStreamInfo,
-            rendererInfo: AudioRendererInfo
+        var audioRendererOptions = {
+            streamInfo: audioStreamInfo,
+            rendererInfo: audioRendererInfo
         }
-
-        readpath='StarWars10s-2C-24000-3SW.wav'
-        await getFdRead(readpath, done)
-        var resultFlag = await playbackCB(AudioRendererOptions, readpath);
-        await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-        expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
-        done();
+        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        let mode = '1';
+        try{
+            let data = await audioRenderer.setInterruptMode(mode);
+            expect(false).assertEqual(false);
+            done();
+        }catch(err){
+            expect('assertion (false) failed: type mismatch').assertEqual(err.message);
+            done();
+        }
     })
 
-
+    /*
+   * @tc.name:SetInterruptMode_006
+   * @tc.desc:SetInterruptMode mode 2,will catch error with out of border
+   * @tc.type: FUNC
+   * @tc.require: Issue Number
+   */
+    it("SetInterruptMode_006", 0,async function (done) {
+        var audioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        var audioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 0
+        }
+        var audioRendererOptions = {
+            streamInfo: audioStreamInfo,
+            rendererInfo: audioRendererInfo
+        }
+        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        let mode = 2;
+        try{
+            let data = await audioRenderer.setInterruptMode(mode)
+            expect(true).assertEqual(true);
+            done();
+        }catch(err){
+            expect(err).assertEqual(undefined);
+            done();
+        }
+    })
 })

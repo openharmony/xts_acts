@@ -19,7 +19,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 const TIMEOUT = 1000;
 const ERR_OSACCOUNT_KIT_IS_OS_ACCOUNT_ACTIVED_ERROR = 4587542;
 const ERR_OSACCOUNT_KIT_IS_OS_ACCOUNT_VERIFIED_ERROR = 4587545;
-describe('ActsOsAccountThirdPartyTest', function () {
+describe('ActsOsAccountThirdPartyTest_third_1', function () {
 
     /*
      * @tc.number  : ActsOsAccountDeviceId_0100

@@ -48,12 +48,12 @@ describe('UsbFunctionsJsFunctionsTest', function () {
   })
 
   /**
-   * @tc.number    : SUB_USB_get_current_functions_test_01
+   * @tc.number    : SUB_USB_JS_0330
    * @tc.name      : getCurrentFunctions
    * @tc.desc      : 获取当前设备模式 掩码与描述字符转换
    */
-  it('SUB_USB_get_current_functions_test_01', 0, function () {
-    console.info('usb get_current_functions_test_01 begin');
+  it('SUB_USB_JS_0330', 0, function () {
+    console.info('usb SUB_USB_JS_0330 begin');
     var maskCode = usb.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
 
@@ -62,17 +62,17 @@ describe('UsbFunctionsJsFunctionsTest', function () {
     var nMaskCode = usb.usbFunctionsFromString(strMaskCode)
     console.info('usb case strMaskCode usbFunctionsFromString return int: ' + nMaskCode);
     expect(nMaskCode).assertEqual(maskCode);
-    console.info('usb get_current_functions_test_01 :  PASS');
+    console.info('usb SUB_USB_JS_0330 :  PASS');
     expect(true).assertTrue();
   })
 
   /**
-   * @tc.number    : SUB_USB_get_current_functions_test_02
+   * @tc.number    : SUB_USB_JS_0340
    * @tc.name      : usbFunctionString
    * @tc.desc      : 反向测试 获取当前设备模式 掩码与描述字符转换
    */
-  it('SUB_USB_get_current_functions_test_02', 0, function () {
-    console.info('usb get_current_functions_test_02 begin');
+  it('SUB_USB_JS_0340', 0, function () {
+    console.info('usb SUB_USB_JS_0340 begin');
     var maskCode = usb.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
 
@@ -92,7 +92,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
     console.info('usb case errStrMaskCode ' + errStrMaskCode +
       ' usbFunctionsFromString return int: ' + nMaskCode);
 
-    console.info('usb get_current_functions_test_02 :  PASS');
+    console.info('usb SUB_USB_JS_0340 :  PASS');
   })
 
   function callSetCurFunction(caseName, iValue) {
@@ -110,93 +110,93 @@ describe('UsbFunctionsJsFunctionsTest', function () {
   }
 
   /**
-   * @tc.number    : SUB_USB_set_current_functions_test_02
+   * @tc.number    : SUB_USB_JS_0350
    * @tc.name      : functions_test
    * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 1 设置为ACM功能
    */
-  it('SUB_USB_set_current_functions_test_02', 0, function () {
+  it('SUB_USB_JS_0350', 0, function () {
     CheckEmptyUtils.sleep(3000)
-    console.info('usb set_current_functions_test_02 set ACM begin');
+    console.info('usb SUB_USB_JS_0350 set ACM begin');
     var maskCode = usb.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('set_current_functions_test_02 ACM 1', usb.ACM)
+    callSetCurFunction('SUB_USB_JS_0350 ACM 1', usb.ACM)
   })
 
   /**
-   * @tc.number    : SUB_USB_set_current_functions_test_03
+   * @tc.number    : SUB_USB_JS_0360
    * @tc.name      : functions_test
    * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 2 设置为ECM功能
    */
-  it('SUB_USB_set_current_functions_test_03', 0, function () {
+  it('SUB_USB_JS_0360', 0, function () {
     CheckEmptyUtils.sleep(3000)
-    console.info('usb set_current_functions_test_03 set ECM begin');
+    console.info('usb SUB_USB_JS_0360 set ECM begin');
     var maskCode = usb.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('set_current_functions_test_03 ECM 2', usb.ECM)
+    callSetCurFunction('SUB_USB_JS_0360 ECM 2', usb.ECM)
   })
 
   /**
-   * @tc.number    : SUB_USB_set_current_functions_test_04
+   * @tc.number    : SUB_USB_JS_0370
    * @tc.name      : functions_test
    * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 3 设置为ACM、ECM功能
    */
-  it('SUB_USB_set_current_functions_test_04', 0, function () {
+  it('SUB_USB_JS_0370', 0, function () {
     CheckEmptyUtils.sleep(3000)
-    console.info('usb set_current_functions_test_04 set ACM ECM begin');
+    console.info('usb SUB_USB_JS_0370 set ACM ECM begin');
     var maskCode = usb.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('set_current_functions_test_04 ACM ECM 3', (usb.ACM | usb.ECM))
+    callSetCurFunction('SUB_USB_JS_0370 ACM ECM 3', (usb.ACM | usb.ECM))
   })
 
   /**
-   * @tc.number    : SUB_USB_set_current_functions_test_05
+   * @tc.number    : SUB_USB_JS_0380
    * @tc.name      : functions_test
    * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 4 设置为HDC功能
    */
-  it('SUB_USB_set_current_functions_test_05', 0, function () {
+  it('SUB_USB_JS_0380', 0, function () {
     CheckEmptyUtils.sleep(3000)
-    console.info('usb set_current_functions_test_05 set HDC begin');
+    console.info('usb SUB_USB_JS_0380 set HDC begin');
     var maskCode = usb.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('set_current_functions_test_05 HDC 4', usb.HDC)
+    callSetCurFunction('SUB_USB_JS_0380 HDC 4', usb.HDC)
   })
 
   /**
-   * @tc.number    : SUB_USB_set_current_functions_test_06
+   * @tc.number    : SUB_USB_JS_0390
    * @tc.name      : functions_test
    * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 5 设置为ACM、HDC功能
    */
-  it('SUB_USB_set_current_functions_test_06', 0, function () {
+  it('SUB_USB_JS_0390', 0, function () {
     CheckEmptyUtils.sleep(3000)
-    console.info('usb set_current_functions_test_06 set ACM HDC begin');
+    console.info('usb SUB_USB_JS_0390 set ACM HDC begin');
     var maskCode = usb.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('set_current_functions_test_06 ACM HDC 5', (usb.HDC | usb.ACM))
+    callSetCurFunction('SUB_USB_JS_0390 ACM HDC 5', (usb.HDC | usb.ACM))
   })
 
   /**
-   * @tc.number    : SUB_USB_set_current_functions_test_07
+   * @tc.number    : SUB_USB_JS_0400
    * @tc.name      : functions_test
    * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 6 设置为ECM、HDC功能
    */
-  it('SUB_USB_set_current_functions_test_07', 0, function () {
+  it('SUB_USB_JS_0400', 0, function () {
     CheckEmptyUtils.sleep(3000)
-    console.info('usb set_current_functions_test_07 set ECM HDC begin');
+    console.info('usb SUB_USB_JS_0400 set ECM HDC begin');
     var maskCode = usb.getCurrentFunctions();
     console.info('usb case getCurrentFunctions return: ' + maskCode);
     var funcString = usb.usbFunctionsToString(maskCode);
     console.info('usb case funcString:' + funcString);
-    callSetCurFunction('set_current_functions_test_07 ECM HDC 6', (usb.HDC | usb.ECM))
+    callSetCurFunction('SUB_USB_JS_0400 ECM HDC 6', (usb.HDC | usb.ECM))
   })
 
 })

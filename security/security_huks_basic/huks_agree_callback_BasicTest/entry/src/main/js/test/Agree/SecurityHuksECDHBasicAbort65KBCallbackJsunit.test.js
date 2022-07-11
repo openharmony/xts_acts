@@ -34,7 +34,7 @@ let HuksOptions65kb = {
   inData: srcData65Kb,
 };
 
-describe('SecurityHuksAgreeECDHCallbackJsunit', function () {
+describe('SecurityHuksECDHBasicAbort65KBCallbackJsunit', function () {
   it('testAgreeEDCH104', 0, async function (done) {
     const srcKeyAliesFirst = 'testAgreeECDHSize224Abort65KBAgreeKeyAlias_01_001';
     const srcKeyAliesSecond = 'testAgreeECDHSize224Abort65KBAgreeKeyAlias_02_001';

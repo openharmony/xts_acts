@@ -16,7 +16,7 @@ import sensor from '@ohos.sensor'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("SensorJsTest", function () {
+describe("SensorJsTest_sensor_1", function () {
     beforeAll(function () {
 
         /*
@@ -115,13 +115,12 @@ describe("SensorJsTest", function () {
         [30, 25, 41], [3, 2, 4], [-123, -456, -564], [3.40282e+38, 3.40282e+38, 3.40282e+38], [NaN, NaN, NaN]
     ]
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_068
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
+    /*
+     * @tc.name:SensorJsTest_068
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0010
      */
-    it('SensorJsTest_068', 0, async function (done) {
+    it('SensorJsTest_068', FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
         sensor.createRotationMatrix(gravity[0], geomagnetic[0], (error, data) => {
             if (error) {
                 console.info('SensorJsTest_068 failed');
@@ -134,14 +133,12 @@ describe("SensorJsTest", function () {
         })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_069
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
+    /*
+     * @tc.name:SensorJsTest_069
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0020
      */
-
-    it('SensorJsTest_069', 0, async function (done) {
+    it('SensorJsTest_069', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         sensor.createRotationMatrix(gravity[2], geomagnetic[2], (error, data) => {
             if (error) {
                 console.info('SensorJsTest_069 failed');
@@ -154,13 +151,12 @@ describe("SensorJsTest", function () {
         })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_070
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
+    /*
+     * @tc.name:SensorJsTest_070
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0030
      */
-    it('SensorJsTest_070', 0, async function (done) {
+    it('SensorJsTest_070', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         sensor.getDirection(rotationMatrix[0], (error, data) => {
             if (error) {
                 console.info('SensorJsTest_070 failed');
@@ -175,13 +171,12 @@ describe("SensorJsTest", function () {
         })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_071
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
+     /*
+     * @tc.name:SensorJsTest_071
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0040
      */
-    it('SensorJsTest_071', 0, async function (done) {
+    it('SensorJsTest_071', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         sensor.getDirection(rotationMatrix[1], function (error, data) {
             if (error) {
                 console.info('SensorJsTest_071 failed');
@@ -196,13 +191,12 @@ describe("SensorJsTest", function () {
         })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_072
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
+     /*
+     * @tc.name:SensorJsTest_072
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0050
      */
-    it('SensorJsTest_072', 0, async function (done) {
+    it('SensorJsTest_072', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         sensor.createRotationMatrix(gravity[0], geomagnetic[0]).then((data) => {
             console.info("SensorJsTest_072" + JSON.stringify(data))
             expect(JSON.stringify(data)).assertEqual(JSON.stringify(SENSOR_DATA_MATRIX[0]))
@@ -213,13 +207,12 @@ describe("SensorJsTest", function () {
         })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_073
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
+     /*
+     * @tc.name:SensorJsTest_073
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0060
      */
-    it('SensorJsTest_073', 0, async function (done) {
+    it('SensorJsTest_073', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         sensor.createRotationMatrix(gravity[1], geomagnetic[1]).then((data) => {
             console.info("SensorJsTest_073" + JSON.stringify(data))
             expect(JSON.stringify(data)).assertEqual(JSON.stringify(SENSOR_DATA_MATRIX[1]))
@@ -230,13 +223,12 @@ describe("SensorJsTest", function () {
         })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_074
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
+     /*
+     * @tc.name:SensorJsTest_074
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0070
      */
-    it('SensorJsTest_074', 0, async function (done) {
+    it('SensorJsTest_074', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         sensor.createRotationMatrix(gravity[2], geomagnetic[2]).then((data) => {
             console.info("SensorJsTest_074" + JSON.stringify(data))
             expect(JSON.stringify(data)).assertEqual(JSON.stringify(SENSOR_DATA_MATRIX[2]))
@@ -247,13 +239,12 @@ describe("SensorJsTest", function () {
         })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_075
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
+     /*
+     * @tc.name:SensorJsTest_075
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0080
      */
-    it('SensorJsTest_075', 0, async function (done) {
+    it('SensorJsTest_075', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         sensor.getDirection(rotationMatrix[0]).then((data) => {
             for (let i = 0; i < data.length; i++) {
                 console.info("SensorJsTest_075" + data[i])
@@ -266,13 +257,12 @@ describe("SensorJsTest", function () {
         })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_076
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
+     /*
+     * @tc.name:SensorJsTest_076
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0090
      */
-    it('SensorJsTest_076', 0, async function (done) {
+    it('SensorJsTest_076', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         sensor.getDirection(rotationMatrix[1]).then((data) => {
             for (let i = 0; i < data.length; i++) {
                 console.info("SensorJsTest_076" + data[i])
@@ -285,13 +275,12 @@ describe("SensorJsTest", function () {
         })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_077
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
+     /*
+     * @tc.name:SensorJsTest_077
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0100
      */
-    it('SensorJsTest_077', 0, async function (done) {
+    it('SensorJsTest_077', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         sensor.getDirection([1, 2, 3, 1, 2, 3, 1, 2, 3, 0]).then((data) => {
             for (let i = 0; i < data.length; i++) {
                 console.info("SensorJsTest_077 failed")
@@ -312,13 +301,12 @@ describe("SensorJsTest", function () {
         [0.7853981852531433, NaN, -0.7853981852531433],   //FLOAT.MAXVALUE+1
     ];
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_078
-     * @tc.desc:
+     /*
+     * @tc.name:SensorJsTest_078
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0110
      */
-    it('SensorJsTest_078', 0, async function (done) {
+    it('SensorJsTest_078', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_078");
         sensor.getAngleModify([1, 2, 3, 1, 2, 3, 1, 2, 3], [2, 2, 2, 2, 2, 2, 2, 2, 2], function (error, data) {
             if (error) {
@@ -336,13 +324,12 @@ describe("SensorJsTest", function () {
         })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_079
-     * @tc.desc:
+     /*
+     * @tc.name:SensorJsTest_079
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0120
      */
-    it('SensorJsTest_079', 0, async function (done) {
+    it('SensorJsTest_079', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_079");
         sensor.getAngleModify([3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38,
             3.40282e+38, 3.40282e+38, 3.40282e+38],
@@ -364,13 +351,12 @@ describe("SensorJsTest", function () {
             })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_080
-     * @tc.desc:
+     /*
+     * @tc.name:SensorJsTest_080
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0130
      */
-    it('SensorJsTest_080', 0, async function (done) {
+    it('SensorJsTest_080', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_080");
         sensor.getAngleModify([1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38,
             1.17549e-38, 1.17549e-38, 1.17549e-38],
@@ -392,13 +378,12 @@ describe("SensorJsTest", function () {
             });
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_081
-     * @tc.desc:
+     /*
+     * @tc.name:SensorJsTest_081
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0140
      */
-    it('SensorJsTest_081', 0, async function (done) {
+    it('SensorJsTest_081', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_081");
         sensor.getAngleModify([3.40282e+38 + 1, 3.40282e+38 + 1, 3.40282e+38 + 1, 3.40282e+38 + 1, 3.40282e+38 + 1,
         3.40282e+38 + 1, 3.40282e+38 + 1, 3.40282e+38 + 1, 3.40282e+38 + 1],
@@ -420,13 +405,12 @@ describe("SensorJsTest", function () {
             });
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_082
-     * @tc.desc:
+    /*
+     * @tc.name:SensorJsTest_082
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0150
      */
-    it('SensorJsTest_082', 0, async function (done) {
+    it('SensorJsTest_082', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_082");
         sensor.getAngleModify([0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0,
         0.0 / 0.0],
@@ -445,13 +429,12 @@ describe("SensorJsTest", function () {
             });
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_083
-     * @tc.desc:
+    /*
+     * @tc.name:SensorJsTest_083
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0160
      */
-    it('SensorJsTest_083', 0, async function (done) {
+    it('SensorJsTest_083', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_083");
         sensor.getAngleModify([1, 2, 3, 1, 2, 3, 1, 2, 3], [2, 2, 2, 2, 2, 2, 2, 2, 2]).then((data) => {
             console.info("SensorJsAPI--->SensorJsTest_083");
@@ -468,13 +451,12 @@ describe("SensorJsTest", function () {
         })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_084
-     * @tc.desc:
+    /*
+     * @tc.name:SensorJsTest_084
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0170
      */
-    it('SensorJsTest_084', 0, async function (done) {
+    it('SensorJsTest_084', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_084");
         sensor.getAngleModify([3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38,
             3.40282e+38, 3.40282e+38, 3.40282e+38],
@@ -494,13 +476,12 @@ describe("SensorJsTest", function () {
                 })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_085
-     * @tc.desc:
+    /*
+     * @tc.name:SensorJsTest_085
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0180
      */
-    it('SensorJsTest_085', 0, async function (done) {
+    it('SensorJsTest_085', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_085");
         sensor.getAngleModify([1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38, 1.17549e-38,
             1.17549e-38, 1.17549e-38, 1.17549e-38],
@@ -520,13 +501,12 @@ describe("SensorJsTest", function () {
                 })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_086
-     * @tc.desc:
+    /*
+     * @tc.name:SensorJsTest_086
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0190
      */
-    it('SensorJsTest_086', 0, async function (done) {
+    it('SensorJsTest_086', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_076");
         sensor.getAngleModify([3.40282e+38 + 1, 3.40282e+38 + 1, 3.40282e+38 + 1, 3.40282e+38 + 1, 3.40282e+38
             + 1, 3.40282e+38 + 1, 3.40282e+38 + 1, 3.40282e+38 + 1, 3.40282e+38 + 1],
@@ -546,13 +526,12 @@ describe("SensorJsTest", function () {
             })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: SensorJsTest_087
-     * @tc.desc:
+    /*
+     * @tc.name:SensorJsTest_087
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0200
      */
-    it('SensorJsTest_087', 0, async function (done) {
+    it('SensorJsTest_087', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("SensorJsAPI--->SensorJsTest_087");
         sensor.getAngleModify([0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0, 0.0 / 0.0,
         0.0 / 0.0],
@@ -579,10 +558,11 @@ describe("SensorJsTest", function () {
     ]
 
     /*
-    * @tc.name: SensorJsTest_088
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_088', 0, async function (done) {
+     * @tc.name:SensorJsTest_088
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0210
+     */
+    it('SensorJsTest_088', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_088 start')
         sensor.createQuaternion([0.52, -0.336, -0.251], (error, data) => {
             console.info('SensorJsTest_088' + 'length:' + data.length);
@@ -599,11 +579,12 @@ describe("SensorJsTest", function () {
         })
     })
 
-    /*
-    * @tc.name: SensorJsTest_089
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_089', 0, async function (done) {
+   /*
+     * @tc.name:SensorJsTest_089
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0220
+     */
+    it('SensorJsTest_089', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_089 start')
         sensor.createQuaternion([3.40282e+38, 3.40282e+38, 3.40282e+38], (error, data) => {
             if (error) {
@@ -620,10 +601,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-    * @tc.name: SensorJsTest_090
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_090', 0, async function (done) {
+     * @tc.name:SensorJsTest_090
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0230
+     */
+    it('SensorJsTest_090', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_090 start')
         sensor.createQuaternion([0, 0, 0], (error, data) => {
             if (error) {
@@ -640,11 +622,12 @@ describe("SensorJsTest", function () {
         console.info("SensorJsTest_090 end")
     })
 
-    /*
-    * @tc.name: SensorJsTest_091
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_091', 0, async function (done) {
+   /*
+     * @tc.name:SensorJsTest_091
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0240
+     */
+    it('SensorJsTest_091', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_091 start')
         sensor.createQuaternion([-0.325, -0.562, -0.25], (error, data) => {
             if (error) {
@@ -662,10 +645,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-    * @tc.name: SensorJsTest_092
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_092', 0, async function (done) {
+     * @tc.name:SensorJsTest_092
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0250
+     */
+    it('SensorJsTest_092', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_092 start')
         sensor.createQuaternion([0.25, 0.14], (error, data) => {
             if (error) {
@@ -679,11 +663,12 @@ describe("SensorJsTest", function () {
         console.info("SensorJsTest_092 end")
     })
 
-    /*
-    * @tc.name: SensorJsTest_093
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_093', 0, async function (done) {
+   /*
+     * @tc.name:SensorJsTest_093
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0260
+     */
+    it('SensorJsTest_093', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_093 start')
         sensor.createQuaternion([0.52, -0.336, -0.251]).then((data) => {
             console.info('SensorJsTest_093');
@@ -700,11 +685,12 @@ describe("SensorJsTest", function () {
         console.info("SensorJsTest_093 end")
     })
 
-    /*
-    * @tc.name: SensorJsTest_094
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_094', 0, async function (done) {
+   /*
+     * @tc.name:SensorJsTest_094
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0270
+     */
+    it('SensorJsTest_094', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_094 start')
         sensor.createQuaternion([0, 0]).then((data) => {
             console.info('SensorJsTest_094');
@@ -719,10 +705,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-    * @tc.name: SensorJsTest_095
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_095', 0, async function (done) {
+     * @tc.name:SensorJsTest_095
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0280
+     */
+    it('SensorJsTest_095', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_095 start')
         sensor.createQuaternion([0, 0, 0]).then((data) => {
             console.info('SensorJsTest_095');
@@ -740,10 +727,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-    * @tc.name: SensorJsTest_096
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_096', 0, async function (done) {
+     * @tc.name:SensorJsTest_096
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0290
+     */
+    it('SensorJsTest_096', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_096 start')
         sensor.createQuaternion([-0.325, -0.562, -0.25]).then((data) => {
             console.info('SensorJsTest_096');
@@ -760,10 +748,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-    * @tc.name: SensorJsTest_097
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_097', 0, async function (done) {
+     * @tc.name:SensorJsTest_097
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0300
+     */
+    it('SensorJsTest_097', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_097 start')
         sensor.createQuaternion([0.25, 0.14]).then((data) => {
             console.info('SensorJsTest_097');
@@ -783,10 +772,11 @@ describe("SensorJsTest", function () {
     ]
 
     /*
-    * @tc.name: SensorJsTest_098
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_098', 0, async function (done) {
+     * @tc.name:SensorJsTest_098
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0310
+     */
+    it('SensorJsTest_098', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("SensorJsTest_098 start");
         sensor.createRotationMatrix([-0.0245, 0.402, 0.0465], (error, data) => {
             console.info("SensorJsTest_098");
@@ -804,11 +794,12 @@ describe("SensorJsTest", function () {
         console.info(LABEL + "SensorJsTest_098 end");
     })
 
-    /*
-    * tc.name: SensorJsTest_099
-    * tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_099', 0, async function (done) {
+   /*
+     * @tc.name:SensorJsTest_099
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0320
+     */
+    it('SensorJsTest_099', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_099 start')
         sensor.createRotationMatrix([-0.0245, 0.402, 0.0465]).then((data) => {
             for (let i = 0; i < data.length; i++) {
@@ -825,10 +816,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-    * tc.name: SensorJsTest_100
-    * tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_100', 0, async function (done) {
+     * @tc.name:SensorJsTest_100
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0330
+     */
+    it('SensorJsTest_100', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_100 start')
         sensor.createRotationMatrix([0, 0, 0]).then((data) => {
             for (let i = 0; i < data.length; i++) {
@@ -846,11 +838,12 @@ describe("SensorJsTest", function () {
 
     let getGeomagneticDipResult = [0.8760581016540527, 0.862170, -Infinity, 44330]
 
-    /*
-    * @tc.name: SensorJsTest_101
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_101', 0, async function (done) {
+     /*
+     * @tc.name:SensorJsTest_101
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0340
+     */
+    it('SensorJsTest_101', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_101 start')
         sensor.getGeomagneticDip([1, 2, 3, 4, 5, 6, 7, 8, 9], (error, data) => {
             if (error) {
@@ -866,11 +859,12 @@ describe("SensorJsTest", function () {
         console.info("SensorJsTest_101 end")
     })
 
-    /*
-    * @tc.name: SensorJsTest_102
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_102', 0, async function (done) {
+     /*
+     * @tc.name:SensorJsTest_102
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0350
+     */
+    it('SensorJsTest_102', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_102 start')
         sensor.getGeomagneticDip([1, 2, 3, 4], (error, data) => {
             if (error) {
@@ -885,11 +879,12 @@ describe("SensorJsTest", function () {
         console.info("SensorJsTest_102 end")
     })
 
-    /*
-    * @tc.name: SensorJsTest_103
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_103', 0, async function (done) {
+     /*
+     * @tc.name:SensorJsTest_103
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0360
+     */
+    it('SensorJsTest_103', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_103 start')
         sensor.getAltitude(0, 100, (error, data) => {
             if (error) {
@@ -904,11 +899,12 @@ describe("SensorJsTest", function () {
         })
     })
 
-    /*
-    * @tc.name: SensorJsTest_104
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_104', 0, async function (done) {
+     /*
+     * @tc.name:SensorJsTest_104
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0370
+     */
+    it('SensorJsTest_104', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('SensorJsTest_104 start')
         sensor.getAltitude(5, 0, (error, data) => {
             if (error) {
@@ -924,10 +920,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-    * @tc.name: SensorJsTest_105
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_105', 0, async function (done) {
+     * @tc.name:SensorJsTest_105
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0380
+     */
+    it('SensorJsTest_105', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         sensor.getAltitude(0, 100).then((data) => {
             console.info("SensorJsTest_104" + data)
             expect(data).assertEqual(getGeomagneticDipResult[2])
@@ -940,10 +937,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-    * @tc.name: SensorJsTest_106
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_106', 0, async function (done) {
+     * @tc.name:SensorJsTest_106
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0390
+     */
+    it('SensorJsTest_106', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         sensor.getAltitude(5, 0).then((data) => {
             console.info("SensorJsTest_104" + data)
             expect(data).assertEqual(getGeomagneticDipResult[3])
@@ -965,11 +963,12 @@ describe("SensorJsTest", function () {
             340282001837565600000000000000000000000.000000],
         [Infinity, -Infinity, Infinity, Infinity, -Infinity, Infinity, Infinity, -Infinity, Infinity]]
 
-    /*
-    * @tc.name: SensorJsTest_107
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_107', 0, async function (done) {
+     /*
+     * @tc.name:SensorJsTest_107
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0400
+     */
+    it('SensorJsTest_107', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("---------------------------SensorJsTest_107----------------------------------");
         sensor.transformCoordinateSystem([1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], {
             'axisX': 1,
@@ -986,11 +985,12 @@ describe("SensorJsTest", function () {
         })
     })
 
-    /*
-    * @tc.name: SensorJsTest_108
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it('SensorJsTest_108', 0, async function (done) {
+     /*
+     * @tc.name:SensorJsTest_108
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0410
+     */
+    it('SensorJsTest_108', FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("---------------------------SensorJsTest_108----------------------------------");
         sensor.transformCoordinateSystem([3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38, 3.40282e+38,
             3.40282e+38, 3.40282e+38, 3.40282e+38], { 'axisX': 1, 'axisY': 2 }, (error, data) => {
@@ -1005,11 +1005,12 @@ describe("SensorJsTest", function () {
             })
     })
 
-    /*
-    * @tc.name: SensorJsTest_109
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it("SensorJsTest_109", 0, async function (done) {
+     /*
+     * @tc.name:SensorJsTest_109
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0420
+     */
+    it("SensorJsTest_109", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("---------------------------SensorJsTest_109----------------------------------");
         sensor.transformCoordinateSystem([1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], {
             'axisX': 1,
@@ -1027,11 +1028,12 @@ describe("SensorJsTest", function () {
         });
     })
 
-    /*
-    * @tc.name: SensorJsTest_110
-    * @tc.desc: Verfication results of the incorrect parameters of test interface.
-    */
-    it("SensorJsTest_110", 0, async function (done) {
+     /*
+     * @tc.name:SensorJsTest_110
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0430
+     */
+    it("SensorJsTest_110", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info("---------------------------SensorJsTest_110----------------------------------");
         sensor.transformCoordinateSystem([3.40282e+39, 3.40282e+39, 3.40282e+39, 3.40282e+39, 3.40282e+39,
             3.40282e+39, 3.40282e+39, 3.40282e+39, 3.40282e+39], { 'axisX': 1, 'axisY': 3 }).then((data) => {

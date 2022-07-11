@@ -21,8 +21,8 @@ import {
 describe('fileio_createWatcher', function () {
 
   /**
-   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
-   * @tc.name fileio_test_createWatcher_000
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_0000
+   * @tc.name fileio_test_createWatcher_async_000
    * @tc.desc Test createWatcher() interface. rename  1 times stopSync()
    * @tc.size MEDIUM(中型)
    * @tc.type Function
@@ -49,15 +49,15 @@ describe('fileio_createWatcher', function () {
         done();
       }, 51);
     } catch (e) {
-      console.log('fileio_test_createWatcher_000 has failed for ' + e);
+      console.log('fileio_test_createWatcher_async_000 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
-   * @tc.name fileio_test_createWatcher_001
-   * @tc.desc Test createWatcher() interface. write 1 times stopSync()
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_0100
+   * @tc.name fileio_test_createWatcher_async_001
+   * @tc.desc Test createWatcher() interface. write 2 times stopSync()
    * @tc.size MEDIUM(中型)
    * @tc.type Function
    * @tc.level Level 0
@@ -82,14 +82,14 @@ describe('fileio_createWatcher', function () {
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
-      console.log('fileio_test_createWatcher_001 has failed for ' + e);
+      console.log('fileio_test_createWatcher_async_001 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
-   * @tc.name fileio_test_createWatcher_002
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_0200
+   * @tc.name fileio_test_createWatcher_async_002
    * @tc.desc Test createWatcher() interface. rename 1 time ,stop()
    * @tc.size MEDIUM(中型)
    * @tc.type Function
@@ -115,15 +115,15 @@ describe('fileio_createWatcher', function () {
         done();
       }, 50);
     } catch (e) {
-      console.log('fileio_test_createWatcher_002 has failed for ' + e);
+      console.log('fileio_test_createWatcher_async_002 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
-   * @tc.name fileio_test_createWatcher_003
-   * @tc.desc Test createWatcher() interface. rename 1 time ,stop()
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_0300
+   * @tc.name fileio_test_createWatcher_async_003
+   * @tc.desc Test createWatcher() interface. rename 2 time ,stop()
    * @tc.size MEDIUM(中型)
    * @tc.type Function
    * @tc.level Level 0
@@ -148,15 +148,15 @@ describe('fileio_createWatcher', function () {
         done();
       });
     } catch (e) {
-      console.log('fileio_test_createWatcher_003 has failed for ' + e);
+      console.log('fileio_test_createWatcher_async_003 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
-   * @tc.name fileio_test_createWatcher_004
-   * @tc.desc Test createWatcher() interface.write  1 time ,stop()
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_0400
+   * @tc.name fileio_test_createWatcher_async_004
+   * @tc.desc Test createWatcher() interface.write  2 time ,stop()
    * @tc.size MEDIUM(中型)
    * @tc.type Function
    * @tc.level Level 0
@@ -183,15 +183,15 @@ describe('fileio_createWatcher', function () {
         done();
       });
     } catch (e) {
-      console.log('fileio_test_createWatcher_004 has failed for ' + e);
+      console.log('fileio_test_createWatcher_async_004 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
-   * @tc.name fileio_test_createWatcher_005
-   * @tc.desc Test createWatcher() interface. rename 3 times
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_0500
+   * @tc.name fileio_test_createWatcher_async_005
+   * @tc.desc Test createWatcher() interface. rename 3 times stopSync()
    * @tc.size MEDIUM(中型)
    * @tc.type Function
    * @tc.level Level 0
@@ -219,14 +219,14 @@ describe('fileio_createWatcher', function () {
         done();
       }, 51);
     } catch (e) {
-      console.log('fileio_test_createWatcher_005 has failed for ' + e);
+      console.log('fileio_test_createWatcher_async_005 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
-   * @tc.name fileio_test_createWatcher_006
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_0600
+   * @tc.name fileio_test_createWatcher_async_006
    * @tc.desc Test createWatcher() interface.write 2 times, stop()
    * @tc.size MEDIUM(中型)
    * @tc.type Function
@@ -254,14 +254,14 @@ describe('fileio_createWatcher', function () {
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
-      console.log('fileio_test_createWatcher_006 has failed for ' + e);
+      console.log('fileio_test_createWatcher_async_006 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
-   * @tc.name fileio_test_createWatcher_007
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_0700
+   * @tc.name fileio_test_createWatcher_async_007
    * @tc.desc Test createWatcher() interface.rename 1 times, write 1 times, stop()
    * @tc.size MEDIUM(中型)
    * @tc.type Function
@@ -289,22 +289,22 @@ describe('fileio_createWatcher', function () {
       expect(fileio.unlinkSync(after) == null).assertTrue();
       done();
     } catch (e) {
-      console.log('fileio_test_createWatcher_007 has failed for ' + e);
+      console.log('fileio_test_createWatcher_async_007 has failed for ' + e);
       expect(null).assertFail();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_000
-   * @tc.name fileio_test_createWatcher_008
-   * @tc.desc Test createWatcher() interface.rename 1 times, write 1 times, stop()
+   * @tc.number SUB_DF_FILEIO_CREATEWATCHER_0800
+   * @tc.name fileio_test_createWatcher_async_008
+   * @tc.desc Test createWatcher() interface.rename 1 times, write 1 times
    * @tc.size MEDIUM(中型)
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
   it('fileio_test_createWatcher_async_008', 0, async function (done) {
-    let fpath = await nextFileName('fileio_test_createWatcher_async_007');
+    let fpath = await nextFileName('fileio_test_createWatcher_async_008');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     try {
       let event = 3;
@@ -324,7 +324,7 @@ describe('fileio_createWatcher', function () {
         done();
       }, 50);
     } catch (e) {
-      console.log('fileio_test_createWatcher_008 has failed for ' + e);
+      console.log('fileio_test_createWatcher_async_008 has failed for ' + e);
       expect(null).assertFail();
     }
   });

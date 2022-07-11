@@ -20,7 +20,7 @@ import { stringToUint8Array } from '../../../../../../../utils/param/publicFunc'
 import { publicSignVerifyFunc } from '../../../../../../../utils/param/signverify/publicSignverifyPromise.js';
 let srcData65 = Data.Data65b;
 let srcData65Kb = stringToUint8Array(srcData65);
-describe('SecurityHuksSignVerifyRSAPromiseJsunit', function () {
+describe('SecurityHuksRSABasicAbort65KBPromiseJsunit', function () {
   it('testSignVerifyRSA104', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyRSASize512SIGNPKCS1MD5KeyAlias104';
     let HuksOptions = {

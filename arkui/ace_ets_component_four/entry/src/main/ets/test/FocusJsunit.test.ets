@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function focusJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_four_2', function () {
     beforeEach(async function (done) {
       console.info("focus beforeEach start");
       let options = {

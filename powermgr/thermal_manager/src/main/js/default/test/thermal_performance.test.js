@@ -16,7 +16,7 @@
 import thermal from "@ohos.thermal"
 import { describe, it, expect } from 'deccjsunit/index';
 
-describe('appInfoTest', function () {
+describe('appInfoTest_thermal_4', function () {
     console.log("*************Thermal Performance Test Begin*************");
     performanceTest1();
     performanceTest2();

@@ -1,0 +1,225 @@
+{
+    "module": {
+        "name": "phone",
+        "type": "entry",
+        "srcEntrance": "./ets/Application/AbilityStage.ts",
+        "description": "$string:phone_entry_dsc",
+        "mainElement": "MainAbility",
+        "deviceTypes": [
+            "phone"
+        ],
+        "deliveryWithInstall": true,
+        "installationFree": false,
+        "uiSyntax": "ets",
+        "pages": "$profile:main_pages",
+        "abilities": [
+            {
+                "name": "ohos.acts.bundle.stage.MainAbility",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "description": "$string:phone_entry_main",
+                "icon": "$media:icon",
+                "label": "$string:entry_label",
+                "orientation": "portrait",
+                "visible": true,
+                "skills": [
+                    {
+                        "actions": [
+                            "action.system.home"
+                        ],
+                        "entities":[
+                            "entity.system.home"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "MainAbility",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "startWindowIcon": "$media:icon"
+			},
+            {
+                "name": "MainAbility1",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "startWindowIcon": "$media:icon",
+				"orientation": "unspecified",
+				"supportWindowMode": ["fullscreen"]
+			},
+			{
+                "name": "MainAbility2",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "startWindowIcon": "$media:icon",
+				"orientation": "landscape",
+				"supportWindowMode": ["split"]
+			},
+			{
+                "name": "MainAbility3",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "startWindowIcon": "$media:icon",
+				"orientation": "portrait",
+				"supportWindowMode": ["floating"]
+			},
+			{
+                "name": "MainAbility4",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "startWindowIcon": "$media:icon",
+				"orientation": "landscape_inverted",
+				"supportWindowMode": ["fullscreen", "split", "floating"]
+			},
+			{
+                "name": "MainAbility5",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "startWindowIcon": "$media:icon",
+				"orientation": "portrait_inverted",
+				"maxWindowRatio": 3.5
+			},
+			{
+                "name": "MainAbility6",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "startWindowIcon": "$media:icon",
+				"orientation": "auto_rotation",
+				"minWindowRatio": 0.5
+			},
+			{
+                "name": "MainAbility7",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "startWindowIcon": "$media:icon",
+				"orientation": "auto_rotation_landscape",
+				"maxWindowWidth": 2560
+			},
+			{
+                "name": "MainAbility8",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "startWindowIcon": "$media:icon",
+				"orientation": "auto_rotation_portrait",
+				"minWindowWidth": 1400
+			},
+			{
+				"name": "MainAbility9",
+				"srcEntrance": "./ets/MainAbility/MainAbility.ts",
+				"startWindowIcon": "$media:icon",
+				"orientation": "auto_rotation_restricted",
+				"maxWindowHeight": 300
+			},
+			{
+				"name": "MainAbility10",
+				"srcEntrance": "./ets/MainAbility/MainAbility.ts",
+				"startWindowIcon": "$media:icon",
+				"orientation": "auto_rotation_landscape_restricted",
+				"minWindowHeight": 200
+			},
+			{
+				"name": "MainAbility11",
+				"srcEntrance": "./ets/MainAbility/MainAbility.ts",
+				"startWindowIcon": "$media:icon",
+				"orientation": "auto_rotation_portrait_restricted"
+			},
+			{
+				"name": "MainAbility12",
+				"srcEntrance": "./ets/MainAbility/MainAbility.ts",
+				"startWindowIcon": "$media:icon",
+				"orientation": "locked"
+			}
+        ],
+        "extensionAbilities": [
+            {
+                "name": "FormAbility",
+                "srcEntrance": "./ets/FormAbility/FormAbility.ts",
+                "label": "$string:form_FormAbility_label",
+                "description": "$string:form_FormAbility_desc",
+                "type": "form",
+                "skills": [
+                    {
+                        "actions": ["actionZ"]
+                    },
+                    {
+                        "actions": ["actionZ12"],
+                        "uris": [
+                            {
+                                "scheme": "https",
+                                "host": "www.test.com",
+                                "pathStartWith": "query/teacher"
+                            }
+                        ]
+                    },
+                    {
+                        "actions": ["action_1"],
+                        "uris": [
+                            {
+                                "scheme": "https",
+                                "host": "www.test.com",
+                                "path": "query/student/name"
+                            }
+                        ]
+                    },
+                    {
+                        "actions": ["actionZ14"],
+                        "entities": ["entitiesZ14","entitiesCommon","entitiesZZ"]
+                    }
+                ],
+                "metadata": [
+                    {
+                        "name": "ohos.extension.form",
+                        "resource": "$profile:form_config"
+                    }
+                ]
+            },
+            {
+                "name": "ExtensionAbility1",
+                "srcEntrance": "./ets/FormAbility/FormAbility.ts",
+                "label": "$string:form_FormAbility_label",
+                "description": "$string:form_FormAbility_desc",
+                "type": "form",
+                "skills": [
+                    {
+                        "actions": ["actionY"]
+                    },
+                    {
+                        "actions": ["actionY12"],
+                        "uris": [
+                            {
+                                "scheme": "https",
+                                "host": "www.test.com",
+                                "path": "query/student/name"
+                            }
+                        ]
+                    },
+                    {
+                        "actions": ["action_2"],
+                        "uris": [
+                            {
+                                "scheme": "https",
+                                "host": "www.test.com",
+                                "pathStartWith": "query/teacher"
+                            }
+                        ]
+                    },
+                    {
+                        "actions": ["actionY14"],
+                        "entities": ["entitiesY14"]
+                    }
+                ],
+                "metadata": [
+                    {
+                        "name": "ohos.extension.form",
+                        "value": "testExtensionAbilities",
+                        "resource": "$profile:form_config"
+                    }
+                ],
+                "permissions": ["ohos.permission.GET_BUNDLE_INFO"]
+            },
+            {
+                "name": "ServiceAbility",
+                "srcEntrance": "./ets/ServiceAbility/FormAbility.ts",
+                "label": "$string:form_FormAbility_label",
+                "description": "$string:form_FormAbility_desc",
+                "type": "service",
+                "metadata": [
+                    {
+                        "name": "ohos.extension.form",
+                        "resource": "$profile:form_config"
+                    }
+                ]
+            }
+        ]
+    }
+}

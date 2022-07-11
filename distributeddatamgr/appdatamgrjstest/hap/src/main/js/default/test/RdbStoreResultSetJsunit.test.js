@@ -47,7 +47,7 @@ describe('rdbResultSetTest', function () {
     })
     //插入数据
     async function createTest() {
-        console.log(TAG + 'createTest data start');
+        console.info(TAG + 'createTest data start');
         {
             var u8 = new Uint8Array([1, 2, 3])
             const valueBucket = {
@@ -78,7 +78,7 @@ describe('rdbResultSetTest', function () {
             }
             await rdbStore.insert('test', valueBucket)
         }
-        console.log(TAG + 'createTest data end');
+        console.info(TAG + 'createTest data end');
     }
 
     /**
@@ -87,7 +87,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getBlob normal test
      */
     it('testGetBlob0001', 0, async function (done) {
-        console.log(TAG + '************* testGetBlob0001 start *************');
+        console.info(TAG + '************* testGetBlob0001 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -95,7 +95,7 @@ describe('rdbResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToFirstRow())
                 const id = resultSet.getLong(resultSet.getColumnIndex('id'))
                 const data4 = resultSet.getBlob(resultSet.getColumnIndex('data4'))
-                console.log(TAG + 'id=' + id + ', data4=' + data4);
+                console.info(TAG + 'id=' + id + ', data4=' + data4);
                 expect(1).assertEqual(data4[0]);
                 expect(2).assertEqual(data4[1]);
                 expect(3).assertEqual(data4[2]);
@@ -107,7 +107,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testGetBlob0001 end *************');
+        console.info(TAG + '************* testGetBlob0001 end *************');
     })
 
     /**
@@ -116,7 +116,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getBlob normal test
      */
     it('testGetBlob0002', 0, async function (done) {
-        console.log(TAG + '************* testGetBlob0002 start *************');
+        console.info(TAG + '************* testGetBlob0002 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -125,7 +125,7 @@ describe('rdbResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToNextRow())
                 const id = resultSet.getLong(resultSet.getColumnIndex('id'))
                 const data4 = resultSet.getBlob(resultSet.getColumnIndex('data4'))
-                console.log(TAG + 'id=' + id + ', data4=' + data4);
+                console.info(TAG + 'id=' + id + ', data4=' + data4);
                 expect(3).assertEqual(data4[0]);
                 expect(4).assertEqual(data4[1]);
                 expect(5).assertEqual(data4[2]);
@@ -137,7 +137,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testGetBlob0002 end *************');
+        console.info(TAG + '************* testGetBlob0002 end *************');
     })
 
     /**
@@ -146,7 +146,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getBlob normal test
      */
     it('testGetBlob0003', 0, async function (done) {
-        console.log(TAG + '************* testGetBlob0003 start *************');
+        console.info(TAG + '************* testGetBlob0003 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -156,7 +156,7 @@ describe('rdbResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToNextRow())
                 const id = resultSet.getLong(resultSet.getColumnIndex('id'))
                 const data4 = resultSet.getBlob(resultSet.getColumnIndex('data4'))
-                console.log(TAG + 'id=' + id);
+                console.info(TAG + 'id=' + id);
             }
             resultSet.close();
             expect(true).assertEqual(resultSet.isClosed)
@@ -165,7 +165,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testGetBlob0003 end *************');
+        console.info(TAG + '************* testGetBlob0003 end *************');
     })
 
     /**
@@ -174,7 +174,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isStarted normal test
      */
     it('testIsStarted0001', 0, async function (done) {
-        console.log(TAG + '************* testIsStarted0001 start *************');
+        console.info(TAG + '************* testIsStarted0001 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -184,7 +184,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testIsStarted0001 end *************');
+        console.info(TAG + '************* testIsStarted0001 end *************');
     })
 
     /**
@@ -193,7 +193,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isStarted normal test
      */
     it('testIsStarted0002', 0, async function (done) {
-        console.log(TAG + '************* testIsStarted0002 start *************');
+        console.info(TAG + '************* testIsStarted0002 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -204,7 +204,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testIsStarted0002 end *************');
+        console.info(TAG + '************* testIsStarted0002 end *************');
     })
 
     /**
@@ -213,7 +213,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isStarted normal test
      */
     it('testIsStarted0003', 0, async function (done) {
-        console.log(TAG + '************* testIsStarted0003 start *************');
+        console.info(TAG + '************* testIsStarted0003 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -226,7 +226,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testIsStarted0003 end *************');
+        console.info(TAG + '************* testIsStarted0003 end *************');
     })
 
     /**
@@ -235,7 +235,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isStarted with no result test
      */
     it('testIsStarted0004', 0, async function (done) {
-        console.log(TAG + '************* testIsStarted0004 start *************');
+        console.info(TAG + '************* testIsStarted0004 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -247,7 +247,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testIsStarted0004 end *************');
+        console.info(TAG + '************* testIsStarted0004 end *************');
     })
 
 
@@ -257,7 +257,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isEnded normal test
      */
     it('testIsEnded0001', 0, async function (done) {
-        console.log(TAG + '************* testIsEnded0001 start *************');
+        console.info(TAG + '************* testIsEnded0001 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -268,7 +268,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testIsEnded0001 end *************');
+        console.info(TAG + '************* testIsEnded0001 end *************');
     })
 
     /**
@@ -277,7 +277,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isEnded normal test
      */
     it('testIsEnded0002', 0, async function (done) {
-        console.log(TAG + '************* testIsEnded0002 start *************');
+        console.info(TAG + '************* testIsEnded0002 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -288,7 +288,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testIsEnded0002 end *************');
+        console.info(TAG + '************* testIsEnded0002 end *************');
     })
 
     /**
@@ -297,7 +297,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isEnded normal test
      */
     it('testIsEnded0003', 0, async function (done) {
-        console.log(TAG + '************* testIsEnded0003 start *************');
+        console.info(TAG + '************* testIsEnded0003 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -308,7 +308,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testIsEnded0003 end *************');
+        console.info(TAG + '************* testIsEnded0003 end *************');
     })
 
     /**
@@ -317,7 +317,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isEnded normal test
      */
     it('testIsEnded0004', 0, async function (done) {
-        console.log(TAG + '************* testIsEnded0004 start *************');
+        console.info(TAG + '************* testIsEnded0004 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -329,7 +329,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testIsEnded0004 end *************');
+        console.info(TAG + '************* testIsEnded0004 end *************');
     })
 
     /**
@@ -338,7 +338,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet rowCount normal test
      */
     it('testRowCount0001', 0, async function (done) {
-        console.log(TAG + '************* testRowCount0001 start *************');
+        console.info(TAG + '************* testRowCount0001 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -348,7 +348,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testRowCount0001 end *************');
+        console.info(TAG + '************* testRowCount0001 end *************');
     })
 
     /**
@@ -357,7 +357,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet rowCount with no result test
      */
     it('testRowCount0002', 0, async function (done) {
-        console.log(TAG + '************* testRowCount0002 start *************');
+        console.info(TAG + '************* testRowCount0002 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         predicates.equalTo('name', 'wangwu');
         let resultSet = await rdbStore.query(predicates)
@@ -368,7 +368,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testRowCount0002 end *************');
+        console.info(TAG + '************* testRowCount0002 end *************');
     })
 
     /**
@@ -377,7 +377,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet rowCount test
      */
     it('testRowCount0003', 0, async function (done) {
-        console.log(TAG + '************* testRowCount0003 start *************');
+        console.info(TAG + '************* testRowCount0003 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         predicates.equalTo('data1', 'hello');
         let resultSet = await rdbStore.query(predicates)
@@ -388,7 +388,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testRowCount0003 end *************');
+        console.info(TAG + '************* testRowCount0003 end *************');
     })
 
     /**
@@ -397,7 +397,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet rowCount test
      */
     it('testRowCount0004', 0, async function (done) {
-        console.log(TAG + '************* testRowCount0004 start *************');
+        console.info(TAG + '************* testRowCount0004 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         predicates.equalTo('data1', 'hello');
         predicates.equalTo('data2', 3);
@@ -409,7 +409,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testRowCount0003 end *************');
+        console.info(TAG + '************* testRowCount0003 end *************');
     })
 
     /**
@@ -418,7 +418,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getLong test
      */
     it('testGetLong0001', 0, async function (done) {
-        console.log(TAG + '************* testGetLong0001 start *************');
+        console.info(TAG + '************* testGetLong0001 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -426,7 +426,7 @@ describe('rdbResultSetTest', function () {
                 expect(true).assertEqual(resultSet.goToFirstRow())
                 const id = resultSet.getLong(resultSet.getColumnIndex('id'))
                 const data2 = resultSet.getLong(resultSet.getColumnIndex('data2'))
-                console.log(TAG + 'id=' + id + ', data2=' + data2);
+                console.info(TAG + 'id=' + id + ', data2=' + data2);
                 expect(10).assertEqual(data2);
             }
             resultSet.close();
@@ -436,7 +436,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testGetLong0001 end *************');
+        console.info(TAG + '************* testGetLong0001 end *************');
     })
 
     /**
@@ -445,7 +445,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getLong test
      */
     it('testGetLong0002', 0, async function (done) {
-        console.log(TAG + '************* testGetLong0002 start *************');
+        console.info(TAG + '************* testGetLong0002 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -462,7 +462,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testGetLong0002 end *************');
+        console.info(TAG + '************* testGetLong0002 end *************');
     })
 
     /**
@@ -471,7 +471,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getLong test
      */
     it('testGetLong0003', 0, async function (done) {
-        console.log(TAG + '************* testGetLong0003 start *************');
+        console.info(TAG + '************* testGetLong0003 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         try {
@@ -488,7 +488,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testGetLong0003 end *************');
+        console.info(TAG + '************* testGetLong0003 end *************');
     })
 
     /**
@@ -497,7 +497,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getString test
      */
     it('testGetString0001', 0, async function (done) {
-        console.log(TAG + '************* testGetString0001 start *************');
+        console.info(TAG + '************* testGetString0001 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         {
@@ -507,7 +507,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testGetString0001 end *************');
+        console.info(TAG + '************* testGetString0001 end *************');
     })
 
     /**
@@ -516,7 +516,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getString test
      */
     it('testGetString0002', 0, async function (done) {
-        console.log(TAG + '************* testGetString0002 start *************');
+        console.info(TAG + '************* testGetString0002 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         {
@@ -526,7 +526,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testGetString0002 end *************');
+        console.info(TAG + '************* testGetString0002 end *************');
     })
 
     /**
@@ -535,7 +535,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getString test
      */
     it('testGetString0003', 0, async function (done) {
-        console.log(TAG + '************* testGetString0003 start *************');
+        console.info(TAG + '************* testGetString0003 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         {
@@ -546,7 +546,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testGetString0003 end *************');
+        console.info(TAG + '************* testGetString0003 end *************');
     })
 
     /**
@@ -555,7 +555,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getString test
      */
     it('testGetString0004', 0, async function (done) {
-        console.log(TAG + '************* testGetString0004 start *************');
+        console.info(TAG + '************* testGetString0004 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         {
@@ -571,7 +571,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testGetString0004 end *************');
+        console.info(TAG + '************* testGetString0004 end *************');
     })
 
     /**
@@ -580,7 +580,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isClosed test
      */
     it('testIsClosed0001', 0, async function (done) {
-        console.log(TAG + '************* testIsClosed0001 start *************');
+        console.info(TAG + '************* testIsClosed0001 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
 
@@ -590,7 +590,7 @@ describe('rdbResultSetTest', function () {
 
         resultSet = null
         done();
-        console.log(TAG + '************* testIsClosed0001 end *************');
+        console.info(TAG + '************* testIsClosed0001 end *************');
     })
 
     /**
@@ -599,14 +599,14 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isClosed with not close test
      */
     it('testIsClosed0002', 0, async function (done) {
-        console.log(TAG + '************* testIsClosed0002 start *************');
+        console.info(TAG + '************* testIsClosed0002 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
         expect(false).assertEqual(resultSet.isClosed)
 
         resultSet = null
         done();
-        console.log(TAG + '************* testIsClosed0002 end *************');
+        console.info(TAG + '************* testIsClosed0002 end *************');
     })
 
     /**
@@ -615,7 +615,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isClosed with not close test
      */
     it('testIsClosed0003', 0, async function (done) {
-        console.log(TAG + '************* testIsClosed0003 start *************');
+        console.info(TAG + '************* testIsClosed0003 start *************');
         let predicates = await new dataRdb.RdbPredicates('test')
         predicates.equalTo('name', 'wangwu');
         let resultSet = await rdbStore.query(predicates)
@@ -623,7 +623,7 @@ describe('rdbResultSetTest', function () {
 
         resultSet = null
         done();
-        console.log(TAG + '************* testIsClosed0003 end *************');
+        console.info(TAG + '************* testIsClosed0003 end *************');
     })
 
     /**
@@ -632,14 +632,14 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet columnCount test
      */
     it('testColumnCount0001', 0, async function (done) {
-        console.log(TAG + '************* testColumnCount0001 start *************');
+        console.info(TAG + '************* testColumnCount0001 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
             expect(5).assertEqual(resultSet.columnCount);
             resultSet = null;
             done();
-            console.log(TAG + '************* testColumnCount0001 end *************');
+            console.info(TAG + '************* testColumnCount0001 end *************');
         }
     })
 
@@ -649,7 +649,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet columnCount test
      */
     it('testColumnCount0002', 0, async function (done) {
-        console.log(TAG + '************* testColumnCount0002 start *************');
+        console.info(TAG + '************* testColumnCount0002 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('name', 'wangwu');
@@ -657,7 +657,7 @@ describe('rdbResultSetTest', function () {
             expect(0).assertEqual(resultSet.columnCount);
             resultSet = null;
             done();
-            console.log(TAG + '************* testColumnCount0002 end *************');
+            console.info(TAG + '************* testColumnCount0002 end *************');
         }
     })
 
@@ -667,7 +667,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet rowIndex test
      */
     it('testRowIndex0001', 0, async function (done) {
-        console.log(TAG + '************* testRowIndex0001 *************');
+        console.info(TAG + '************* testRowIndex0001 *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -678,7 +678,7 @@ describe('rdbResultSetTest', function () {
 
             resultSet = null;
             done();
-            console.log(TAG + '************* testRowIndex0001 end *************');
+            console.info(TAG + '************* testRowIndex0001 end *************');
         }
     })
 
@@ -688,7 +688,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet rowIndex at last row test
      */
     it('testRowIndex0002', 0, async function (done) {
-        console.log(TAG + '************* testRowIndex0002 *************');
+        console.info(TAG + '************* testRowIndex0002 *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -699,7 +699,7 @@ describe('rdbResultSetTest', function () {
 
             resultSet = null;
             done();
-            console.log(TAG + '************* testRowIndex0002 end *************');
+            console.info(TAG + '************* testRowIndex0002 end *************');
         }
     })
 
@@ -709,7 +709,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToFirstRow normal test
      */
     it('testGoToFirstRow0001', 0, async function (done) {
-        console.log(TAG + '************* testGoToFirstRow0001 start *************');
+        console.info(TAG + '************* testGoToFirstRow0001 start *************');
 
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
@@ -721,7 +721,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testGoToFirstRow0001 end *************');
+        console.info(TAG + '************* testGoToFirstRow0001 end *************');
     })
 
     /**
@@ -730,7 +730,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToFirstRow with no result test
      */
     it('testGoToFirstRow0002', 0, async function (done) {
-        console.log(TAG + '************* testGoToFirstRow0002 start *************');
+        console.info(TAG + '************* testGoToFirstRow0002 start *************');
 
         let predicates = await new dataRdb.RdbPredicates('test')
         predicates.equalTo('name', 'wangwu');
@@ -742,7 +742,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testGoToFirstRow0002 end *************');
+        console.info(TAG + '************* testGoToFirstRow0002 end *************');
     })
 
     /**
@@ -751,7 +751,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToFirstRow test
      */
     it('testGoToFirstRow0003', 0, async function (done) {
-        console.log(TAG + '************* testGoToFirstRow0003 start *************');
+        console.info(TAG + '************* testGoToFirstRow0003 start *************');
 
         let predicates = await new dataRdb.RdbPredicates('test')
         let resultSet = await rdbStore.query(predicates)
@@ -764,7 +764,7 @@ describe('rdbResultSetTest', function () {
         }
         resultSet = null
         done();
-        console.log(TAG + '************* testGoToFirstRow0003 end *************');
+        console.info(TAG + '************* testGoToFirstRow0003 end *************');
     })
 
     /**
@@ -773,7 +773,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToFirstRow test
      */
     it('testGoToLastRow0001', 0, async function (done) {
-        console.log(TAG + '************* testGoToLastRow0001 start *************');
+        console.info(TAG + '************* testGoToLastRow0001 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -782,7 +782,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToLastRow0001 end *************');
+            console.info(TAG + '************* testGoToLastRow0001 end *************');
         }
     })
 
@@ -792,7 +792,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToLastRow with no result test
      */
     it('testGoToLastRow0002', 0, async function (done) {
-        console.log(TAG + '************* testGoToLastRow0002 start *************');
+        console.info(TAG + '************* testGoToLastRow0002 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('name', 'wangwu');
@@ -802,7 +802,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToLastRow0002 end *************');
+            console.info(TAG + '************* testGoToLastRow0002 end *************');
         }
     })
 
@@ -812,7 +812,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToLastRow test
      */
     it('testGoToLastRow0003', 0, async function (done) {
-        console.log(TAG + '************* testGoToLastRow0003 start *************');
+        console.info(TAG + '************* testGoToLastRow0003 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -823,7 +823,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToLastRow0003 end *************');
+            console.info(TAG + '************* testGoToLastRow0003 end *************');
         }
     })
 
@@ -833,7 +833,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToNextRow test
      */
     it('testGoToNextRow0001', 0, async function (done) {
-        console.log(TAG + '************* testGoToNextRow0001 start *************');
+        console.info(TAG + '************* testGoToNextRow0001 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -842,7 +842,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToNextRow0001 end *************');
+            console.info(TAG + '************* testGoToNextRow0001 end *************');
         }
     })
 
@@ -852,7 +852,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToNextRow with no result test
      */
     it('testGoToNextRow0002', 0, async function (done) {
-        console.log(TAG + '************* testGoToNextRow0002 start *************');
+        console.info(TAG + '************* testGoToNextRow0002 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('name', 'wangwu');
@@ -862,7 +862,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToNextRow0002 end *************');
+            console.info(TAG + '************* testGoToNextRow0002 end *************');
         }
     })
 
@@ -872,7 +872,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToNextRow test
      */
     it('testGoToNextRow0003', 0, async function (done) {
-        console.log(TAG + '************* testGoToNextRow0003 start *************');
+        console.info(TAG + '************* testGoToNextRow0003 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -884,7 +884,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToNextRow0003 end *************');
+            console.info(TAG + '************* testGoToNextRow0003 end *************');
         }
     })
 
@@ -894,7 +894,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToNextRow after last row test
      */
     it('testGoToNextRow0004', 0, async function (done) {
-        console.log(TAG + '************* testGoToNextRow0004 start *************');
+        console.info(TAG + '************* testGoToNextRow0004 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -904,7 +904,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToNextRow0004 end *************');
+            console.info(TAG + '************* testGoToNextRow0004 end *************');
         }
     })
 
@@ -914,7 +914,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToPreviousRow test
      */
     it('testGoToPreviousRow0001', 0, async function (done) {
-        console.log(TAG + '************* testGoToPreviousRow0001 start *************');
+        console.info(TAG + '************* testGoToPreviousRow0001 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -923,7 +923,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToPreviousRow0001 end *************');
+            console.info(TAG + '************* testGoToPreviousRow0001 end *************');
         }
     })
 
@@ -933,7 +933,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToPreviousRow with no result test
      */
     it('testGoToPreviousRow0002', 0, async function (done) {
-        console.log(TAG + '************* testGoToPreviousRow0002 start *************');
+        console.info(TAG + '************* testGoToPreviousRow0002 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('name', 'wangwu');
@@ -943,7 +943,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToPreviousRow0002 end *************');
+            console.info(TAG + '************* testGoToPreviousRow0002 end *************');
         }
     })
 
@@ -953,7 +953,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToPreviousRow test
      */
     it('testGoToPreviousRow0003', 0, async function (done) {
-        console.log(TAG + '************* testGoToPreviousRow0003 start *************');
+        console.info(TAG + '************* testGoToPreviousRow0003 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -964,7 +964,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToPreviousRow0003 end *************');
+            console.info(TAG + '************* testGoToPreviousRow0003 end *************');
         }
     })
 
@@ -974,7 +974,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToPreviousRow after last row test
      */
     it('testGoToPreviousRow0004', 0, async function (done) {
-        console.log(TAG + '************* testGoToPreviousRow0004 start *************');
+        console.info(TAG + '************* testGoToPreviousRow0004 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -984,7 +984,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToPreviousRow0004 end *************');
+            console.info(TAG + '************* testGoToPreviousRow0004 end *************');
         }
     })
 
@@ -994,7 +994,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goTo test
      */
     it('testGoTo0001', 0, async function (done) {
-        console.log(TAG + '************* testGoTo0001 start *************');
+        console.info(TAG + '************* testGoTo0001 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1005,7 +1005,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoTo0001 end *************');
+            console.info(TAG + '************* testGoTo0001 end *************');
         }
     })
 
@@ -1015,7 +1015,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goTo with no result test
      */
     it('testGoTo0002', 0, async function (done) {
-        console.log(TAG + '************* testGoTo0002 start *************');
+        console.info(TAG + '************* testGoTo0002 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('name', 'wangwu');
@@ -1026,7 +1026,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoTo0002 end *************');
+            console.info(TAG + '************* testGoTo0002 end *************');
         }
     })
 
@@ -1036,7 +1036,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goTo test
      */
     it('testGoTo0003', 0, async function (done) {
-        console.log(TAG + '************* testGoTo0003 start *************');
+        console.info(TAG + '************* testGoTo0003 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1048,7 +1048,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoTo0003 end *************');
+            console.info(TAG + '************* testGoTo0003 end *************');
         }
     })
 
@@ -1058,7 +1058,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goTo after last row test
      */
     it('testGoTo0004', 0, async function (done) {
-        console.log(TAG + '************* testGoTo0004 start *************');
+        console.info(TAG + '************* testGoTo0004 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1069,7 +1069,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoTo0004 end *************');
+            console.info(TAG + '************* testGoTo0004 end *************');
         }
     })
 
@@ -1079,7 +1079,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToRow test
      */
     it('testGoToRow0001', 0, async function (done) {
-        console.log(TAG + '************* testGoToRow0001 start *************');
+        console.info(TAG + '************* testGoToRow0001 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1090,7 +1090,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToRow0001 end *************');
+            console.info(TAG + '************* testGoToRow0001 end *************');
         }
     })
 
@@ -1100,7 +1100,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToRow with no result test
      */
     it('testGoToRow0002', 0, async function (done) {
-        console.log(TAG + '************* testGoToRow0002 start *************');
+        console.info(TAG + '************* testGoToRow0002 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('name', 'wangwu');
@@ -1111,7 +1111,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToRow0002 end *************');
+            console.info(TAG + '************* testGoToRow0002 end *************');
         }
     })
 
@@ -1121,7 +1121,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToRow test
      */
     it('testGoToRow0003', 0, async function (done) {
-        console.log(TAG + '************* testGoToRow0003 start *************');
+        console.info(TAG + '************* testGoToRow0003 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1134,7 +1134,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToRow0003 end *************');
+            console.info(TAG + '************* testGoToRow0003 end *************');
         }
     })
 
@@ -1144,7 +1144,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet goToRow after last row test
      */
     it('testGoToRow0004', 0, async function (done) {
-        console.log(TAG + '************* testGoToRow0004 start *************');
+        console.info(TAG + '************* testGoToRow0004 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1155,7 +1155,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGoToRow0004 end *************');
+            console.info(TAG + '************* testGoToRow0004 end *************');
         }
     })
 
@@ -1165,7 +1165,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isAtFirstRow test
      */
     it('testIsAtFirstRow0001', 0, async function (done) {
-        console.log(TAG + '************* testIsAtFirstRow0001 start *************');
+        console.info(TAG + '************* testIsAtFirstRow0001 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1175,7 +1175,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsAtFirstRow0001 end *************');
+            console.info(TAG + '************* testIsAtFirstRow0001 end *************');
         }
     })
 
@@ -1185,7 +1185,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isAtFirstRow with no result test
      */
     it('testIsAtFirstRow0002', 0, async function (done) {
-        console.log(TAG + '************* testIsAtFirstRow0002 start *************');
+        console.info(TAG + '************* testIsAtFirstRow0002 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('name', 'wangwu');
@@ -1195,7 +1195,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsAtFirstRow0002 end *************');
+            console.info(TAG + '************* testIsAtFirstRow0002 end *************');
         }
     })
 
@@ -1205,7 +1205,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isAtFirstRow test
      */
     it('testIsAtFirstRow0003', 0, async function (done) {
-        console.log(TAG + '************* testIsAtFirstRow0003 start *************');
+        console.info(TAG + '************* testIsAtFirstRow0003 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1216,7 +1216,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsAtFirstRow0003 end *************');
+            console.info(TAG + '************* testIsAtFirstRow0003 end *************');
         }
     })
 
@@ -1226,7 +1226,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isAtFirstRow after last row test
      */
     it('testIsAtFirstRow0004', 0, async function (done) {
-        console.log(TAG + '************* testIsAtFirstRow0004 start *************');
+        console.info(TAG + '************* testIsAtFirstRow0004 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1236,7 +1236,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsAtFirstRow0004 end *************');
+            console.info(TAG + '************* testIsAtFirstRow0004 end *************');
         }
     })
 
@@ -1246,7 +1246,7 @@ describe('rdbResultSetTest', function () {
      * @tc.descresultSet isAtFirstRow test
      */
     it('testIsAtFirstRow0005', 0, async function (done) {
-        console.log(TAG + '************* testIsAtFirstRow0005 start *************');
+        console.info(TAG + '************* testIsAtFirstRow0005 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1257,7 +1257,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsAtFirstRow0005 end *************');
+            console.info(TAG + '************* testIsAtFirstRow0005 end *************');
         }
     })
 
@@ -1267,7 +1267,7 @@ describe('rdbResultSetTest', function () {
      * @tc.descresultSet isAtFirstRow test
      */
     it('testIsAtFirstRow0006', 0, async function (done) {
-        console.log(TAG + '************* testIsAtFirstRow0006 start *************');
+        console.info(TAG + '************* testIsAtFirstRow0006 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1278,7 +1278,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsAtFirstRow0006 end *************');
+            console.info(TAG + '************* testIsAtFirstRow0006 end *************');
         }
     })
 
@@ -1288,7 +1288,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isAtLastRow test
      */
     it('testIsAtLastRow0001', 0, async function (done) {
-        console.log(TAG + '************* testIsAtLastRow0001 start *************');
+        console.info(TAG + '************* testIsAtLastRow0001 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1298,7 +1298,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsAtLastRow0001 end *************');
+            console.info(TAG + '************* testIsAtLastRow0001 end *************');
         }
     })
 
@@ -1308,7 +1308,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isAtLastRow with no result test
      */
     it('testIsAtLastRow0002', 0, async function (done) {
-        console.log(TAG + '************* testIsAtLastRow0002 start *************');
+        console.info(TAG + '************* testIsAtLastRow0002 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('name', 'wangwu');
@@ -1318,7 +1318,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsAtLastRow0002 end *************');
+            console.info(TAG + '************* testIsAtLastRow0002 end *************');
         }
     })
 
@@ -1328,7 +1328,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isAtLastRow test
      */
     it('testIsAtLastRow0003', 0, async function (done) {
-        console.log(TAG + '************* testIsAtLastRow0003 start *************');
+        console.info(TAG + '************* testIsAtLastRow0003 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1339,7 +1339,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsAtLastRow0003 end *************');
+            console.info(TAG + '************* testIsAtLastRow0003 end *************');
         }
     })
 
@@ -1349,7 +1349,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isAtLastRow after last row test
      */
     it('testIsAtLastRow0004', 0, async function (done) {
-        console.log(TAG + '************* testIsAtLastRow0004 start *************');
+        console.info(TAG + '************* testIsAtLastRow0004 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1359,7 +1359,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsAtLastRow0004 end *************');
+            console.info(TAG + '************* testIsAtLastRow0004 end *************');
         }
     })
 
@@ -1369,7 +1369,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isAtLastRow test
      */
     it('testIsAtLastRow0005', 0, async function (done) {
-        console.log(TAG + '************* testIsAtLastRow0005 start *************');
+        console.info(TAG + '************* testIsAtLastRow0005 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1380,7 +1380,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsAtLastRow0005 end *************');
+            console.info(TAG + '************* testIsAtLastRow0005 end *************');
         }
     })
 
@@ -1390,7 +1390,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getDouble test
      */
     it('testGetDouble0001', 0, async function (done) {
-        console.log(TAG + '************* testGetDouble0001 start *************');
+        console.info(TAG + '************* testGetDouble0001 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1401,7 +1401,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGetDouble0001 end *************');
+            console.info(TAG + '************* testGetDouble0001 end *************');
         }
     })
 
@@ -1411,7 +1411,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getDouble test
      */
     it('testGetDouble0002', 0, async function (done) {
-        console.log(TAG + '************* testGetDouble0002 start *************');
+        console.info(TAG + '************* testGetDouble0002 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1422,7 +1422,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGetDouble0002 end *************');
+            console.info(TAG + '************* testGetDouble0002 end *************');
         }
     })
 
@@ -1432,7 +1432,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getDouble test
      */
     it('testGetDouble0003', 0, async function (done) {
-        console.log(TAG + '************* testGetDouble0003 start *************');
+        console.info(TAG + '************* testGetDouble0003 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1443,7 +1443,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGetDouble0003 end *************');
+            console.info(TAG + '************* testGetDouble0003 end *************');
         }
     })
 
@@ -1453,7 +1453,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getDouble test
      */
     it('testGetDouble0004', 0, async function (done) {
-        console.log(TAG + '************* testGetDouble0004 start *************');
+        console.info(TAG + '************* testGetDouble0004 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1464,7 +1464,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testGetDouble0004 end *************');
+            console.info(TAG + '************* testGetDouble0004 end *************');
         }
     })
 
@@ -1474,7 +1474,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isColumnNull test
      */
     it('testIsColumnNull0001', 0, async function (done) {
-        console.log(TAG + '************* testIsColumnNull0001 start *************');
+        console.info(TAG + '************* testIsColumnNull0001 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1487,7 +1487,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsColumnNull0001 end *************');
+            console.info(TAG + '************* testIsColumnNull0001 end *************');
         }
     })
 
@@ -1497,7 +1497,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isColumnNull test
      */
     it('testIsColumnNull0002', 0, async function (done) {
-        console.log(TAG + '************* testIsColumnNull0002 start *************');
+        console.info(TAG + '************* testIsColumnNull0002 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1510,7 +1510,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsColumnNull0002 end *************');
+            console.info(TAG + '************* testIsColumnNull0002 end *************');
         }
     })
 
@@ -1520,7 +1520,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isColumnNull test
      */
     it('testIsColumnNull0003', 0, async function (done) {
-        console.log(TAG + '************* testIsColumnNull0003 start *************');
+        console.info(TAG + '************* testIsColumnNull0003 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1530,7 +1530,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsColumnNull0003 end *************');
+            console.info(TAG + '************* testIsColumnNull0003 end *************');
         }
     })
     /**
@@ -1539,7 +1539,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isColumnNull test
      */
     it('testIsColumnNull0004', 0, async function (done) {
-        console.log(TAG + '************* testIsColumnNull0004 start *************');
+        console.info(TAG + '************* testIsColumnNull0004 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1549,7 +1549,7 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testIsColumnNull0004 end *************');
+            console.info(TAG + '************* testIsColumnNull0004 end *************');
         }
     })
 
@@ -1559,7 +1559,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getColumnIndex test
      */
     it('testGetColumnIndex0001', 0, async function (done) {
-        console.log(TAG + '************* testGetColumnIndex0001 start *************');
+        console.info(TAG + '************* testGetColumnIndex0001 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1568,7 +1568,7 @@ describe('rdbResultSetTest', function () {
 
             resultSet = null;
             done();
-            console.log(TAG + '************* testGetColumnIndex0001 end *************');
+            console.info(TAG + '************* testGetColumnIndex0001 end *************');
         }
     })
 
@@ -1578,7 +1578,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getColumnIndex test
      */
     it('testGetColumnIndex0002', 0, async function (done) {
-        console.log(TAG + '************* testGetColumnIndex0002 start *************');
+        console.info(TAG + '************* testGetColumnIndex0002 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('name', 'wangwu');
@@ -1587,7 +1587,7 @@ describe('rdbResultSetTest', function () {
 
             resultSet = null;
             done();
-            console.log(TAG + '************* testGetColumnIndex0002 end *************');
+            console.info(TAG + '************* testGetColumnIndex0002 end *************');
         }
     })
 
@@ -1597,7 +1597,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getColumnIndex test
      */
     it('testGetColumnIndex0003', 0, async function (done) {
-        console.log(TAG + '************* testGetColumnIndex0003 start *************');
+        console.info(TAG + '************* testGetColumnIndex0003 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1605,7 +1605,7 @@ describe('rdbResultSetTest', function () {
 
             resultSet = null;
             done();
-            console.log(TAG + '************* testGetColumnIndex0003 end *************');
+            console.info(TAG + '************* testGetColumnIndex0003 end *************');
         }
     })
 
@@ -1615,7 +1615,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getColumnIndex test
      */
     it('testGetColumnIndex0004', 0, async function (done) {
-        console.log(TAG + '************* testGetColumnIndex0004 start *************');
+        console.info(TAG + '************* testGetColumnIndex0004 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1623,7 +1623,7 @@ describe('rdbResultSetTest', function () {
 
             resultSet = null;
             done();
-            console.log(TAG + '************* testGetColumnIndex0004 end *************');
+            console.info(TAG + '************* testGetColumnIndex0004 end *************');
         }
     })
 
@@ -1633,7 +1633,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getColumnName test
      */
     it('testGetColumnName0001', 0, async function (done) {
-        console.log(TAG + '************* testGetColumnIndex0001 start *************');
+        console.info(TAG + '************* testGetColumnIndex0001 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1643,7 +1643,7 @@ describe('rdbResultSetTest', function () {
 
             resultSet = null;
             done();
-            console.log(TAG + '************* testGetColumnName0001 end *************');
+            console.info(TAG + '************* testGetColumnName0001 end *************');
         }
     })
 
@@ -1653,7 +1653,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getColumnName test
      */
     it('testGetColumnName0002', 0, async function (done) {
-        console.log(TAG + '************* testGetColumnName0002 start *************');
+        console.info(TAG + '************* testGetColumnName0002 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('name', 'wangwu');
@@ -1664,7 +1664,7 @@ describe('rdbResultSetTest', function () {
 
             resultSet = null;
             done();
-            console.log(TAG + '************* testGetColumnName0002 end *************');
+            console.info(TAG + '************* testGetColumnName0002 end *************');
         }
     })
 
@@ -1674,7 +1674,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getColumnName test
      */
     it('testGetColumnName0003', 0, async function (done) {
-        console.log(TAG + '************* testGetColumnName0003 start *************');
+        console.info(TAG + '************* testGetColumnName0003 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1683,7 +1683,7 @@ describe('rdbResultSetTest', function () {
 
             resultSet = null;
             done();
-            console.log(TAG + '************* testGetColumnName0003 end *************');
+            console.info(TAG + '************* testGetColumnName0003 end *************');
         }
     })
 
@@ -1693,7 +1693,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet getColumnName test
      */
     it('testGetColumnName0004', 0, async function (done) {
-        console.log(TAG + '************* testGetColumnName0004 start *************');
+        console.info(TAG + '************* testGetColumnName0004 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('name', 'wangwu');
@@ -1703,7 +1703,7 @@ describe('rdbResultSetTest', function () {
 
             resultSet = null;
             done();
-            console.log(TAG + '************* testGetColumnName0004 end *************');
+            console.info(TAG + '************* testGetColumnName0004 end *************');
         }
     })
 
@@ -1713,7 +1713,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet close test
      */
     it('testClose0001', 0, async function (done) {
-        console.log(TAG + '************* testClose0001 start *************');
+        console.info(TAG + '************* testClose0001 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1723,7 +1723,7 @@ describe('rdbResultSetTest', function () {
 
             resultSet = null;
             done();
-            console.log(TAG + '************* testClose0001 end *************');
+            console.info(TAG + '************* testClose0001 end *************');
         }
     })
 
@@ -1733,7 +1733,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet close test
      */
     it('testClose0002', 0, async function (done) {
-        console.log(TAG + '************* testClose0002 start *************');
+        console.info(TAG + '************* testClose0002 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             predicates.equalTo('name', 'wangwu');
@@ -1743,7 +1743,7 @@ describe('rdbResultSetTest', function () {
 
             resultSet = null;
             done();
-            console.log(TAG + '************* testClose0002 end *************');
+            console.info(TAG + '************* testClose0002 end *************');
         }
     })
 
@@ -1753,7 +1753,7 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet columnNames test
      */
      it('testcolumnNames0001', 0, async function (done) {
-        console.log(TAG + '************* testcolumnNames0001 start *************');
+        console.info(TAG + '************* testcolumnNames0001 start *************');
         {
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
@@ -1764,9 +1764,9 @@ describe('rdbResultSetTest', function () {
             }
             resultSet = null;
             done();
-            console.log(TAG + '************* testcolumnNames0001 end *************');
+            console.info(TAG + '************* testcolumnNames0001 end *************');
         }
     })
     
-    console.log(TAG + '*************Unit Test End*************');
+    console.info(TAG + '*************Unit Test End*************');
 })

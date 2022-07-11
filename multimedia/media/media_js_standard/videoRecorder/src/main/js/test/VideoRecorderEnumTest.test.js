@@ -60,4 +60,21 @@ describe('VideoRecorderEnumTest', function () {
         expect(media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES).assertEqual(1);
         done();
     })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_ENUM_CodecMimeType_0100
+        * @tc.name      : CodecMimeType
+        * @tc.desc      : Test Enumerate CodecMimeType
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_VIDEO_DECODER_ENUM_CodecMimeType_0100', 0, async function (done) {
+        expect(media.CodecMimeType.VIDEO_H263).assertEqual('video/h263');
+        expect(media.CodecMimeType.VIDEO_AVC).assertEqual('video/avc');
+        expect(media.CodecMimeType.VIDEO_MPEG2).assertEqual('video/mpeg2');
+        expect(media.CodecMimeType.VIDEO_MPEG4).assertEqual('video/mp4v-es');
+        expect(media.CodecMimeType.VIDEO_VP8).assertEqual('video/x-vnd.on2.vp8');
+        done();
+    }) 
 })

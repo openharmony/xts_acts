@@ -52,10 +52,16 @@ describe('VideoPlayerAPICallbackTest', function () {
     const pagePath2 = 'pages/surfaceTest2/surfaceTest2';
     let pageId = 0;
     let fdHead = 'fd://';
+    let fdPath = '';
+    let fdNumber = 0;
     let events = require('events');
     let eventEmitter = new events.EventEmitter();
 
     beforeAll(async function() {
+        await mediaTestBase.getFdRead(VIDEO_SOURCE, openFileFailed).then((testNumber) => {
+            fdNumber = testNumber;
+            fdPath = fdHead + '' + fdNumber;
+        })
         console.info('beforeAll case');
     })
 
@@ -79,8 +85,13 @@ describe('VideoPlayerAPICallbackTest', function () {
     })
 
     afterAll(async function() {
+        await mediaTestBase.closeFdNumber(fdNumber);
         console.info('afterAll case');
     })
+
+    function openFileFailed() {
+        console.info('case file fail');
+    }
 
     function toNextStep(videoPlayer, steps, done) {
         if (steps[0] == END_EVENT) {
@@ -138,7 +149,7 @@ describe('VideoPlayerAPICallbackTest', function () {
     });
     eventEmitter.on(SETURL_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
-        videoPlayer.url = fdHead + fileDescriptor.fd;
+        videoPlayer.url = fdPath;
         toNextStep(videoPlayer, steps, done);
     });
     eventEmitter.on(SETSURFACE_EVENT, (videoPlayer, steps, done) => {
@@ -1741,23 +1752,6 @@ describe('VideoPlayerAPICallbackTest', function () {
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
             PREPARE_EVENT, PLAY_EVENT, GETDESCRIPTION, SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
-        eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1100
-        * @tc.name      : 11.seek 3 times
-        * @tc.desc      : Video playback control test
-        * @tc.size      : MediumTest
-        * @tc.type      : Function
-        * @tc.level     : Level2
-    */
-    it('SUB_MEDIA_VIDEO_PLAYER_SEEK_CALLBACK_1100', 0, async function (done) {
-        mediaTestBase.isFileOpen(fileDescriptor, done);
-        let videoPlayer = null;
-        let mySteps = new Array(CREATE_EVENT, SETURL_EVENT, SETSURFACE_EVENT,
-            PREPARE_EVENT, PLAY_EVENT, SEEK_EVENT, SEEK_TIME, SEEK_EVENT, SEEK_TIME,
-            SEEK_EVENT, SEEK_TIME, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 

@@ -16,7 +16,7 @@
 // @ts-nocheck
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-import systemparameter from '@ohos.systemParameter'
+import systemparameter from '@ohos.systemparameter'
 
 describe('SystemParameterTest', function () {
 
@@ -321,7 +321,6 @@ describe('SystemParameterTest', function () {
                 } else {
                     console.info('testGet0410 set failed :' + err.code());
                 }
-                return p;
             })
             setTimeout(function () {
                 let parameterInfo = systemparameter.get('hw_sc.build.os.version');

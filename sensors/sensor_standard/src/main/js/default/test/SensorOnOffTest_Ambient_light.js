@@ -13,9 +13,10 @@
  * limitations under the License.
  */
 import sensor from '@ohos.sensor'
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("SensorJsTest", function () {
+describe("SensorJsTest_sensor_4", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
         expect(typeof (data.intensity)).assertEqual("number");
@@ -64,12 +65,11 @@ describe("SensorJsTest", function () {
     let errMessage;
 
     /*
-     * @tc.name:Ambient_Light_SensorJsTest001
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0010
+     * @tc.name: Ambient_Light_SensorJsTest001
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Ambient_Light_SensorJsTest001", 0, async function (done) {
+    it("Ambient_Light_SensorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
         console.info('----------------------Ambient_Light_SensorJsTest001---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
         setTimeout(() => {
@@ -79,12 +79,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:Ambient_Light_SensorJsTest002
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0020
+     * @tc.name: Ambient_Light_SensorJsTest002
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Ambient_Light_SensorJsTest002", 0, async function (done) {
+    it("Ambient_Light_SensorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Ambient_Light_SensorJsTest002---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback, { 'interval': 100000000 });
         setTimeout(() => {
@@ -96,12 +95,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:Ambient_Light_SensorJsTest003
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0030
+     * @tc.name: Ambient_Light_SensorJsTest003
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Ambient_Light_SensorJsTest003", 0, async function (done) {
+    it("Ambient_Light_SensorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Ambient_Light_SensorJsTest003---------------------------');
         function onSensorCallback(data) {
             console.info('Ambient_Light_SensorJsTest003  on error');
@@ -120,12 +118,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:Ambient_Light_SensorJsTest004
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0040
+     * @tc.name: Ambient_Light_SensorJsTest004
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Ambient_Light_SensorJsTest004", 0, async function (done) {
+    it("Ambient_Light_SensorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Ambient_Light_SensorJsTest004---------------------------');
         sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
         setTimeout(() => {
@@ -135,12 +132,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:Ambient_Light_SensorJsTest005
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0050
+     * @tc.name: Ambient_Light_SensorJsTest005
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Ambient_Light_SensorJsTest005", 0, async function (done) {
+    it("Ambient_Light_SensorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Ambient_Light_SensorJsTest005---------------------------');
         function onceSensorCallback(data) {
             console.info('Ambient_Light_SensorJsTest005  on error');
@@ -159,12 +155,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:Ambient_Light_SensorJsTest006
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0060
+     * @tc.name: Ambient_Light_SensorJsTest006
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Ambient_Light_SensorJsTest006", 0, async function (done) {
+    it("Ambient_Light_SensorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Ambient_Light_SensorJsTest006---------------------------');
         try {
             sensor.off(string, "");
@@ -177,13 +172,12 @@ describe("SensorJsTest", function () {
         }
     })
 
-    /*
-     * @tc.name:Ambient_Light_SensorJsTest007
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+   /*
+     * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0070
+     * @tc.name: Ambient_Light_SensorJsTest007
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Ambient_Light_SensorJsTest007", 0, async function (done) {
+    it("Ambient_Light_SensorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Ambient_Light_SensorJsTest007---------------------------');
         function onSensorCallback(data) {
             console.info('Ambient_Light_SensorJsTest007  on error');
@@ -199,12 +193,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:Ambient_Light_SensorJsTest008
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0080
+     * @tc.name: Ambient_Light_SensorJsTest008
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Ambient_Light_SensorJsTest008", 0, async function (done) {
+    it("Ambient_Light_SensorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Ambient_Light_SensorJsTest008---------------------------');
         function onSensorCallback(data) {
             console.info('Ambient_Light_SensorJsTest008  on error');
@@ -223,12 +216,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:Ambient_Light_SensorJsTest009
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0090
+     * @tc.name: Ambient_Light_SensorJsTest009
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Ambient_Light_SensorJsTest009", 0, async function (done) {
+    it("Ambient_Light_SensorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Ambient_Light_SensorJsTest009---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback2);
@@ -241,12 +233,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:Ambient_Light_SensorJsTest010
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0100
+     * @tc.name: Ambient_Light_SensorJsTest010
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Ambient_Light_SensorJsTest010", 0, async function (done) {
+    it("Ambient_Light_SensorJsTest010", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Ambient_Light_SensorJsTest010---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback2);
@@ -263,13 +254,12 @@ describe("SensorJsTest", function () {
         }, 2000);
     })
 
-    /*
-     * @tc.name:Ambient_Light_SensorJsTest011
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     /*
+     * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0110
+     * @tc.name: Ambient_Light_SensorJsTest011
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Ambient_Light_SensorJsTest011", 0, async function (done) {
+    it("Ambient_Light_SensorJsTest011", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Ambient_Light_SensorJsTest011---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback, { 'interval': 100000000 });
         sensor.once(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback2);
@@ -282,12 +272,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:Ambient_Light_SensorJsTest012
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+     * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0120
+     * @tc.name: Ambient_Light_SensorJsTest012
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Ambient_Light_SensorJsTest012", 0, async function (done) {
+    it("Ambient_Light_SensorJsTest012", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Ambient_Light_SensorJsTest012---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback, { 'interval': 100000000 });
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback2, { 'interval': 100000000 });
@@ -304,13 +293,12 @@ describe("SensorJsTest", function () {
         }, 1000);
     })
 
-    /*
-     * @tc.name:Ambient_Light_SensorJsTest013
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
+   /*
+     * @tc.number:SUB_SensorsSystem_Ambient_Light_JSTest_0130
+     * @tc.name: Ambient_Light_SensorJsTest013
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Ambient_Light_SensorJsTest013", 0, async function (done) {
+    it("Ambient_Light_SensorJsTest013", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------Ambient_Light_SensorJsTest013---------------------------');
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback, { 'interval': 100000000 });
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback2, { 'interval': 100000000 });

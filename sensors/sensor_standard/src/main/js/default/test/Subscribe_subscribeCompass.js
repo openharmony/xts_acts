@@ -15,7 +15,7 @@
 import sensor from '@system.sensor'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("SensorJsTest", function () {
+describe("SensorJsTest_sensor_28", function () {
     beforeAll(function () {
 
         /*
@@ -53,13 +53,12 @@ describe("SensorJsTest", function () {
 
     let errMessage;
 
-    /*
-     * @tc.name:subscribeCompass_SensorJsTest001
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     /*
+     * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0010
+     * @tc.name: subscribeCompass_SensorJsTest001
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeCompass_SensorJsTest001", 0, function (done) {
+    it("subscribeCompass_SensorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest001---------------------------');
         sensor.subscribeCompass({
             success: function (data) {
@@ -86,12 +85,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeCompass_SensorJsTest002
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0020
+     * @tc.name: subscribeCompass_SensorJsTest002
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeCompass_SensorJsTest002", 0, function (done) {
+    it("subscribeCompass_SensorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest002---------------------------');
         try {
             sensor.subscribeCompass({
@@ -113,12 +111,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-    * @tc.name:subscribeCompass_SensorJsTest003
-    * @tc.desc:verify app info is not null
-    * @tc.type: FUNC
-    * @tc.require: SR000H0ALK, AR000H0ALM
-    */
-    it("subscribeCompass_SensorJsTest003", 0, function (done) {
+     * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0030
+     * @tc.name: subscribeCompass_SensorJsTest003
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeCompass_SensorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest003---------------------------');
         sensor.subscribeCompass({
             success: function (data) {
@@ -141,12 +138,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeCompass_SensorJsTest004
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0040
+     * @tc.name: subscribeCompass_SensorJsTest004
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeCompass_SensorJsTest004", 0, function (done) {
+    it("subscribeCompass_SensorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest004---------------------------');
         try {
             sensor.subscribeCompass({
@@ -169,12 +165,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeCompass_SensorJsTest005
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0050
+     * @tc.name: subscribeCompass_SensorJsTest005
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeCompass_SensorJsTest005", 0, async function (done) {
+    it("subscribeCompass_SensorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest005---------------------------');
         try {
             sensor.unsubscribeCompass('xxx');
@@ -187,12 +182,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeCompass_SensorJsTest006
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0060
+     * @tc.name: subscribeCompass_SensorJsTest006
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeCompass_SensorJsTest006", 0, async function (done) {
+    it("subscribeCompass_SensorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest006---------------------------');
         try {
             sensor.subscribeCompass();
@@ -205,12 +199,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeCompass_SensorJsTest007
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0070
+     * @tc.name: subscribeCompass_SensorJsTest007
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeCompass_SensorJsTest007", 0, async function (done) {
+    it("subscribeCompass_SensorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest007---------------------------');
         try {
             sensor.subscribeCompass('xxx');
@@ -223,12 +216,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeCompass_SensorJsTest008
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0080
+     * @tc.name: subscribeCompass_SensorJsTest008
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeCompass_SensorJsTest008", 0, function (done) {
+    it("subscribeCompass_SensorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest008---------------------------');
         sensor.subscribeCompass({
             success: function (data) {
@@ -265,12 +257,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeCompass_SensorJsTest009
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0090
+     * @tc.name: subscribeCompass_SensorJsTest009
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeCompass_SensorJsTest009", 0, async function (done) {
+    it("subscribeCompass_SensorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest009---------------------------');
         try {
             sensor.unsubscribeCompass();
@@ -283,12 +274,11 @@ describe("SensorJsTest", function () {
     })
 
     /*
-     * @tc.name:subscribeCompass_SensorJsTest010
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0100
+     * @tc.name: subscribeCompass_SensorJsTest010
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeCompass_SensorJsTest010", 0, function (done) {
+    it("subscribeCompass_SensorJsTest010", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest010---------------------------');
         sensor.subscribeCompass({
             success: function (data) {

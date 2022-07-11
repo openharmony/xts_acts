@@ -25,7 +25,7 @@ const STORE_CONFIG = {
 
 var rdbStore = undefined;
 
-describe('rdbStoreInsertTest', function () {
+describe('rdbstoreTransactionTest', function () {
     beforeAll(function () {
         console.info(TAG + 'beforeAll')
     })
@@ -47,7 +47,7 @@ describe('rdbStoreInsertTest', function () {
         console.info(TAG + 'afterAll')
     })
 
-    console.log(TAG + "*************Unit Test Begin*************");
+    console.info(TAG + "*************Unit Test Begin*************");
 
     /**
      * @tc.name rdb transaction insert test
@@ -55,7 +55,7 @@ describe('rdbStoreInsertTest', function () {
      * @tc.desc rdb transaction insert & commit, the result comes out is 3 items;
      */
     it('testRdbTransactionInsert0001', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreInsert0001 start *************");
+        console.info(TAG + "************* testRdbStoreInsert0001 start *************");
         var u8 = new Uint8Array([1, 2, 3])
         try {
             rdbStore.beginTransaction()
@@ -71,17 +71,17 @@ describe('rdbStoreInsertTest', function () {
 
             let predicates = new dataRdb.RdbPredicates("test");
             let resultSet = await rdbStore.query(predicates)
-            console.log(TAG + "testRdbTransactionInsert0001 result count " + resultSet.rowCount)
+            console.info(TAG + "testRdbTransactionInsert0001 result count " + resultSet.rowCount)
             expect(1).assertEqual(resultSet.rowCount)
             resultSet.close()
 //            resultSet == null;
         } catch (e) {
-            console.log(TAG + e);
+            console.info(TAG + e);
             expect(null).assertFail()
-            console.log(TAG + "testRdbTransactionInsert0001 failed");
+            console.info(TAG + "testRdbTransactionInsert0001 failed");
         }
         done()
-        console.log(TAG + "************* testRdbTransactionInsert0001 end *************");
+        console.info(TAG + "************* testRdbTransactionInsert0001 end *************");
     })
 
     /**
@@ -90,7 +90,7 @@ describe('rdbStoreInsertTest', function () {
      * @tc.desc rdb transaction insert & commit, the result comes out is 3 items;
      */
     it('testRdbTransactionInsert0002', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreInsert0002 start *************");
+        console.info(TAG + "************* testRdbStoreInsert0002 start *************");
         var u8 = new Uint8Array([1, 2, 3])
         try {
             await rdbStore.beginTransaction()
@@ -128,10 +128,10 @@ describe('rdbStoreInsertTest', function () {
 //            resultSet == null;
         } catch (e) {
             expect(null).assertFail()
-            console.log(TAG + "testRdbTransactionInsert0002 failed");
+            console.info(TAG + "testRdbTransactionInsert0002 failed");
         }
         done()
-        console.log(TAG + "************* testRdbTransactionInsert0002 end *************");
+        console.info(TAG + "************* testRdbTransactionInsert0002 end *************");
     })
 
 
@@ -142,7 +142,7 @@ describe('rdbStoreInsertTest', function () {
      *     the result comes out is 0;
      */
     it('testRdbTransactionInsert0003', 0, async function (done) {
-        console.log(TAG + "************* testRdbTransactionInsert0003 start *************");
+        console.info(TAG + "************* testRdbTransactionInsert0003 start *************");
         var u8 = new Uint8Array([1, 2, 3])
         try {
             await rdbStore.beginTransaction()
@@ -178,10 +178,10 @@ describe('rdbStoreInsertTest', function () {
             await rdbStore.commit()
         } catch (e) {
             expect(null).assertFail()
-            console.log(TAG + "testRdbTransactionInsert0003 failed");
+            console.info(TAG + "testRdbTransactionInsert0003 failed");
         }
         done()
-        console.log(TAG + "************* testRdbTransactionInsert0003 end *************");
+        console.info(TAG + "************* testRdbTransactionInsert0003 end *************");
     })
 
     /**
@@ -191,7 +191,7 @@ describe('rdbStoreInsertTest', function () {
      *     db returns an exception, we need to catch exception and rollback.
      */
     it('testRdbTransactionRollBack0001', 0, async function (done) {
-        console.log(TAG + "************* testRdbTransactionRollBack0001 start *************");
+        console.info(TAG + "************* testRdbTransactionRollBack0001 start *************");
         var u8 = new Uint8Array([1, 2, 3])
         try {
             await rdbStore.beginTransaction()
@@ -210,13 +210,13 @@ describe('rdbStoreInsertTest', function () {
             await rdbStore.rollBack()
             let predicates = new dataRdb.RdbPredicates("test");
             let resultSet = await rdbStore.query(predicates)
-            console.log(TAG + "testRdbTransactionRollBack0001 result count " + resultSet.rowCount);
+            console.info(TAG + "testRdbTransactionRollBack0001 result count " + resultSet.rowCount);
             expect(0).assertEqual(resultSet.rowCount)
             resultSet.close()
 //            resultSet == null;
         }
         done()
-        console.log(TAG + "************* testRdbTransactionRollBack0001 end *************");
+        console.info(TAG + "************* testRdbTransactionRollBack0001 end *************");
     })
 
     /**
@@ -226,7 +226,7 @@ describe('rdbStoreInsertTest', function () {
      *     db returns an exception, we need to catch exception and rollback.
      */
     it('testRdbTransactionMulti0001', 0, async function (done) {
-        console.log(TAG + "************* testRdbTransactionMulti0001 start *************");
+        console.info(TAG + "************* testRdbTransactionMulti0001 start *************");
         var u8 = new Uint8Array([1, 2, 3])
         try {
             await rdbStore.beginTransaction()
@@ -248,7 +248,7 @@ describe('rdbStoreInsertTest', function () {
             }
             let num = rdbStore.insert("test", valueBucket1)
             num.then(async (ret) => {
-                console.log(TAG + "testRdbTransactionMulti0001 * insert result " + ret);
+                console.info(TAG + "testRdbTransactionMulti0001 * insert result " + ret);
                 expect(2).assertEqual(ret)
             })
 
@@ -262,10 +262,10 @@ describe('rdbStoreInsertTest', function () {
                 ret.close()
             })
         } catch (e) {
-            console.log(TAG + "testRdbTransactionMulti0001 fail ***** ");
+            console.info(TAG + "testRdbTransactionMulti0001 fail ***** ");
         }
         done()
-        console.log(TAG + "************* testRdbTransactionMulti0001 end *************");
+        console.info(TAG + "************* testRdbTransactionMulti0001 end *************");
     })
 
     /**
@@ -275,7 +275,7 @@ describe('rdbStoreInsertTest', function () {
      *     db returns an exception, we need to catch exception and rollback.
      */
     it('testRdbTransactionMulti0002', 0, async function (done) {
-        console.log(TAG + "************* testRdbTransactionMulti0002 start *************");
+        console.info(TAG + "************* testRdbTransactionMulti0002 start *************");
         var u8 = new Uint8Array([1, 2, 3])
         try {
             await rdbStore.beginTransaction()
@@ -299,7 +299,7 @@ describe('rdbStoreInsertTest', function () {
             }
             let num = rdbStore.insert("test", valueBucket1)
             num.then(async (ret) => {
-                console.log(TAG + "testRdbTransactionMulti0002 * insert result " + ret);
+                console.info(TAG + "testRdbTransactionMulti0002 * insert result " + ret);
                 expect(2).assertEqual(ret)
                 ret.close()
             })
@@ -311,15 +311,15 @@ describe('rdbStoreInsertTest', function () {
             let predicates = new dataRdb.RdbPredicates("test");
             num =  rdbStore.query(predicates)
             num.then(async (ret) => {
-                console.log(TAG + "testRdbTransactionMulti0002 * final query " + ret.rowCount);
+                console.info(TAG + "testRdbTransactionMulti0002 * final query " + ret.rowCount);
                 expect(1).assertEqual(ret.rowCount)
                 ret.close()
             })
         } catch (e) {
-            console.log(TAG + "testRdbTransactionMulti0002 fail ***** ");
+            console.info(TAG + "testRdbTransactionMulti0002 fail ***** ");
         }
         done()
-        console.log(TAG + "************* testRdbTransactionMulti0002 end *************");
+        console.info(TAG + "************* testRdbTransactionMulti0002 end *************");
     })
 
     /**
@@ -329,7 +329,7 @@ describe('rdbStoreInsertTest', function () {
      *     db returns an exception, we need to catch exception and rollback.
      */
     it('testRdbTransactionMulti0003', 0, async function (done) {
-        console.log(TAG + "************* testRdbTransactionMulti0003 start *************");
+        console.info(TAG + "************* testRdbTransactionMulti0003 start *************");
         var u8 = new Uint8Array([1, 2, 3])
         try {
             await rdbStore.beginTransaction()
@@ -361,16 +361,16 @@ describe('rdbStoreInsertTest', function () {
             let predicates = new dataRdb.RdbPredicates("test");
             num =  rdbStore.query(predicates)
             num.then(async (ret) => {
-                console.log(TAG + "testRdbTransactionMulti0003 * final query " + ret.rowCount);
+                console.info(TAG + "testRdbTransactionMulti0003 * final query " + ret.rowCount);
                 expect(1).assertEqual(ret.rowCount)
                 ret.close()
             })
         } catch (e) {
             await rdbStore.rollBack()
-            console.log(TAG + "testRdbTransactionMulti0003 rollback ***** ");
+            console.info(TAG + "testRdbTransactionMulti0003 rollback ***** ");
         }
         done()
-        console.log(TAG + "************* testRdbTransactionMulti0003 end *************");
+        console.info(TAG + "************* testRdbTransactionMulti0003 end *************");
     })
 
     /**
@@ -380,7 +380,7 @@ describe('rdbStoreInsertTest', function () {
      *     db returns an exception, we need to catch exception and rollback.
      */
     it('testRdbTransactionDelete0001', 0, async function (done) {
-        console.log(TAG + "************* testRdbTransactionDelete0001 start *************");
+        console.info(TAG + "************* testRdbTransactionDelete0001 start *************");
         var u8 = new Uint8Array([1, 2, 3])
         try {
             await rdbStore.beginTransaction()
@@ -416,7 +416,7 @@ describe('rdbStoreInsertTest', function () {
             await rdbStore.commit()
         } catch (e) {
             expect(null).assertFail()
-            console.log(TAG + "testRdbTransactionInsert0003 failed");
+            console.info(TAG + "testRdbTransactionInsert0003 failed");
         }
         //删除
         {
@@ -424,15 +424,15 @@ describe('rdbStoreInsertTest', function () {
             let deletePromise = rdbStore.delete(predicates)
             deletePromise.then(async (ret) => {
                 expect(3).assertEqual(ret)
-                console.log(TAG + "Delete done: " + ret)
+                console.info(TAG + "Delete done: " + ret)
             }).catch((err) => {
                 expect(null).assertFail()
             })
             await deletePromise
         }
         done()
-        console.log(TAG + "************* testRdbTransactionDelete0001 end *************");
+        console.info(TAG + "************* testRdbTransactionDelete0001 end *************");
     })
 
-    console.log(TAG + "*************Unit Test End*************");
+    console.info(TAG + "*************Unit Test End*************");
 })

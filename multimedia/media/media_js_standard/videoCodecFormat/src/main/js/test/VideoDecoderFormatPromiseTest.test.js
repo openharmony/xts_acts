@@ -16,7 +16,7 @@
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
 import router from '@system.router'
-import {getFileDescriptor, closeFileDescriptor} from './VideoFormatTestBase.test.js'
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 
@@ -261,8 +261,8 @@ describe('VideoDecoderFormatPromise', function () {
             }, failCallback).catch(failCatch);
             videoDecodeProcessor = null;
         }
-        await closeFileDescriptor(readPath);
         await router.clear();
+        await fileio.close(fdRead);
     })
 
     afterAll(function() {
@@ -294,16 +294,9 @@ describe('VideoDecoderFormatPromise', function () {
         }
     }
 
-    async function getFdRead(pathName, done) {
-        await getFileDescriptor(pathName).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("case fdRead is: " + fdRead);
-            }
+    async function getFdRead(readPath, done) {
+        await mediaTestBase.getFdRead(readPath, done).then((fdNumber) => {
+            fdRead = fdNumber;
         })
     }
     
@@ -321,7 +314,7 @@ describe('VideoDecoderFormatPromise', function () {
         console.info("case start get content");
         console.info("case start get content length is: " + len);
         let lengthreal = -1;
-        lengthreal = readStreamSync.readSync(buf,{length:len});
+        lengthreal = fileio.readSync(fdRead, buf,{length:len});
         console.info('case lengthreal is :' + lengthreal);
     }
 
@@ -464,7 +457,6 @@ describe('VideoDecoderFormatPromise', function () {
 
         await videoDecodeProcessor.configure(mediaDescription).then(() =>{
             console.info('in case : configure success');
-            readFile(srcPath);
         }, failCallback).catch(failCatch);
 
         await videoDecodeProcessor.setOutputSurface(surfaceID, true).then(() => {

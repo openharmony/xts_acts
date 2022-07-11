@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function navigationJsunit() {
-  describe('appInfoTest', function () {
+  describe('appInfoTest_two_5', function () {
     beforeEach(async function (done) {
       console.info("navigation beforeEach start");
       let options = {

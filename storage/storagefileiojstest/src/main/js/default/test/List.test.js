@@ -29,6 +29,7 @@ require('./module_fileio/members/chown.test.js');
 require('./module_fileio/members/close.test.js');
 require('./module_fileio/members/copyFile.test.js');
 require('./module_fileio/members/createStream.test.js');
+require('./module_fileio/members/fchmod.test.js');
 require('./module_fileio/members/fchown.test.js');
 require('./module_fileio/members/fdatasync.test.js');
 require('./module_fileio/members/fdopenStream.test.js');

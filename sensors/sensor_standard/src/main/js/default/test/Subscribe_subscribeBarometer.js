@@ -13,9 +13,10 @@
  * limitations under the License.
  */
 import sensor from '@system.sensor'
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe("SensorJsTest", function () {
+describe("SensorJsTest_sensor_26", function () {
     beforeAll(function () {
 
         /*
@@ -54,12 +55,11 @@ describe("SensorJsTest", function () {
     let errMessage;
 
     /*
-    * @tc.name:subscribeBarometer_SensorJsTest001
-    * @tc.desc:verify app info is not null
-    * @tc.type: FUNC
-    * @tc.require: SR000H0ALK, AR000H0ALM
-    */
-    it("subscribeBarometer_SensorJsTest001", 0, async function (done) {
+     * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0010
+     * @tc.name:subscribeBarometer_SensorJsTest001
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeBarometer_SensorJsTest001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest001---------------------------');
         sensor.subscribeBarometer({
             success: function (data) {
@@ -84,13 +84,12 @@ describe("SensorJsTest", function () {
         }, 1000);
     })
 
-    /*
-     * @tc.name:subscribeBarometer_SensorJsTest002
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     /*
+     * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0020
+     * @tc.name: subscribeBarometer_SensorJsTest002
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeBarometer_SensorJsTest002", 0, function (done) {
+    it("subscribeBarometer_SensorJsTest002", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest002---------------------------');
         try {
             sensor.subscribeBarometer({
@@ -111,13 +110,12 @@ describe("SensorJsTest", function () {
         }
     })
 
-    /*
-     * @tc.name:subscribeBarometer_SensorJsTest003
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     /*
+     * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0030
+     * @tc.name: subscribeBarometer_SensorJsTest003
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeBarometer_SensorJsTest003", 0, function (done) {
+    it("subscribeBarometer_SensorJsTest003", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest003---------------------------');
         try {
             sensor.subscribeBarometer({
@@ -139,13 +137,12 @@ describe("SensorJsTest", function () {
         }
     })
 
-    /*
-     * @tc.name:subscribeBarometer_SensorJsTest004
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     /*
+     * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0040
+     * @tc.name: subscribeBarometer_SensorJsTest004
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeBarometer_SensorJsTest004", 0, async function (done) {
+    it("subscribeBarometer_SensorJsTest004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest004---------------------------');
         try {
             sensor.unsubscribeBarometer('xxx');
@@ -157,13 +154,12 @@ describe("SensorJsTest", function () {
         }
     })
 
-    /*
-     * @tc.name:subscribeBarometer_SensorJsTest005
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     /*
+     * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0050
+     * @tc.name: subscribeBarometer_SensorJsTest005
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeBarometer_SensorJsTest005", 0, async function (done) {
+    it("subscribeBarometer_SensorJsTest005", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest005---------------------------');
         try {
             sensor.subscribeBarometer();
@@ -175,13 +171,12 @@ describe("SensorJsTest", function () {
         }
     })
 
-    /*
-     * @tc.name:subscribeBarometer_SensorJsTest006
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     /*
+     * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0060
+     * @tc.name: subscribeBarometer_SensorJsTest006
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeBarometer_SensorJsTest006", 0, async function (done) {
+    it("subscribeBarometer_SensorJsTest006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest006---------------------------');
         try {
             sensor.subscribeBarometer('xxx');
@@ -193,13 +188,12 @@ describe("SensorJsTest", function () {
         }
     })
 
-    /*
-     * @tc.name:subscribeBarometer_SensorJsTest007
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     /*
+     * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0070
+     * @tc.name: subscribeBarometer_SensorJsTest007
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeBarometer_SensorJsTest007", 0, function (done) {
+    it("subscribeBarometer_SensorJsTest007", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest007---------------------------');
         sensor.subscribeBarometer({
             success: function (data) {
@@ -234,13 +228,12 @@ describe("SensorJsTest", function () {
         }, 1000);
     })
 
-    /*
-     * @tc.name:subscribeBarometer_SensorJsTest008
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     /*
+     * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0080
+     * @tc.name: subscribeBarometer_SensorJsTest008
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeBarometer_SensorJsTest008", 0, async function (done) {
+    it("subscribeBarometer_SensorJsTest008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest008---------------------------');
         try {
             sensor.unsubscribeBarometer();
@@ -252,13 +245,12 @@ describe("SensorJsTest", function () {
         }
     })
 
-    /*
-     * @tc.name:subscribeBarometer_SensorJsTest009
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: SR000H0ALK, AR000H0ALM
+     /*
+     * @tc.number:SUB_SensorsSystem_SubscribeBarometer_JSTest_0090
+     * @tc.name: subscribeBarometer_SensorJsTest009
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeBarometer_SensorJsTest009", 0, function (done) {
+    it("subscribeBarometer_SensorJsTest009", FUNCTION|MEDIUMTEST|LEVEL3, function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest009---------------------------');
         sensor.subscribeBarometer({
             success: function (data) {

@@ -19,7 +19,7 @@ hctest_suite("ActsDbmKvStoreTest") {
 
   include_dirs = [
     "src",
-    "//foundation/distributeddatamgr/appdatamgr/interfaces/innerkits/dbm_kv_store/include",
+    "//foundation/distributeddatamgr/appdatamgr/kv_store/interfaces/innerkits/dbm_kv_store/include",
     "//base/iot_hardware/peripheral/interfaces/kits",
   ]
   cflags = [ "-Wno-error" ]

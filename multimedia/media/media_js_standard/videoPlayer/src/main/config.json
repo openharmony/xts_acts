@@ -40,7 +40,7 @@
               "label": "$string:entry_MainAbility",
               "type": "page",
               "homeAbility": true,
-              "launchType": "standard"
+              "launchType": "singleton"
           }
       ],
       "deviceType": [

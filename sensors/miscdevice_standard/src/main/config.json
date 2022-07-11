@@ -55,6 +55,12 @@
           "autoDesignWidth": false
         }
       }
+    ],
+	 "reqPermissions": [ 
+      {
+        "name": "ohos.permission.VIBRATE",
+        "reason": "need use ohos.permission.VIBRATE"
+      }
     ]
   }
 }

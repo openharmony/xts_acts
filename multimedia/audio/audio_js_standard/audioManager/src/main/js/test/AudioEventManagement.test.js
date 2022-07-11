@@ -13,12 +13,13 @@
  * limitations under the License.
  */
 
+
 import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
-describe('audioManger', function () {
+describe('audioEventManagement', function () {
     console.info('AudioFrameworkTest: Create AudioManger Object JS Framework');
     const audioManager = audio.getAudioManager();
     var deviceRoleValue = null;
@@ -58,9 +59,6 @@ describe('audioManger', function () {
         }
         else if (value.deviceType == 3){
             devTypeName = 'WIRED_HEADSET';
-        }
-        else if (value.deviceType == 7){
-            devTypeName = 'BLUETOOTH_SCO';
         }
         else if (value.deviceType == 8){
             devTypeName = 'BLUETOOTH_A2DP';
@@ -491,63 +489,7 @@ describe('audioManger', function () {
             done();
         });
     })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_PR_Activate_013
-                * @tc.name      : setDeviceActive - BLUETOOTH_SCO - Activate - Promise
-                * @tc.desc      : Activate BLUETOOTH_SCO - Promise
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_PR_Activate_013', 0, async function (done) {
-        await audioManager.setDeviceActive(audio.ActiveDeviceType.BLUETOOTH_SCO,true).then(function (){
-            console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : BLUETOOTH_SCO: Activate');
-            audioManager.isDeviceActive(audio.ActiveDeviceType.BLUETOOTH_SCO).then(function (value){
-                if(value==true){
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_SCO: Activate : PASS :' +value);
-                    expect(true).assertTrue();
-                }
-                else{
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_SCO: Activate : FAIL :' +value);
-                    expect(false).assertTrue();
-                }
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive :  BLUETOOTH_SCO: Activate : FAIL : Error :' + err.message);
-            expect(false).assertTrue();
-        });
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_PR_Activate_ENUM_014
-                * @tc.name      : setDeviceActive - BLUETOOTH_SCO - Activate - Promise
-                * @tc.desc      : Activate BLUETOOTH_SCO - Promise
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_PR_Activate_ENUM_014', 0, async function (done) {
-        await audioManager.setDeviceActive(7,true).then(function (){
-            console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : BLUETOOTH_SCO: Activate');
-            audioManager.isDeviceActive(7).then(function (value){
-                if(value==true){
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_SCO: Activate : PASS :' +value);
-                    expect(true).assertTrue();
-                }
-                else{
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_SCO: Activate : FAIL :' +value);
-                    expect(false).assertTrue();
-                }
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive :  BLUETOOTH_SCO: Activate : FAIL : Error :' + err.message);
-            expect(false).assertTrue();
-        });
-        done();
-    })
-
+   
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_PR_Deactivate_015
                 * @tc.name      : setDeviceActive - SPEAKER - deactivate - Promise
@@ -663,139 +605,6 @@ describe('audioManger', function () {
             expect(false).assertTrue();
         });
         done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_PR_Deactivate_019
-                * @tc.name      : setDeviceActive - BLUETOOTH_SCO - deactivate - Promise
-                * @tc.desc      : Deactivate BLUETOOTH_SCO - Promise
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_PR_Deactivate_019', 0, async function (done) {
-        await audioManager.setDeviceActive(audio.ActiveDeviceType.BLUETOOTH_SCO,false).then(function (){
-            // Setting device active ENUM 3 = BLUETOOTH_SCO
-            console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : BLUETOOTH_SCO: Deactivate');
-            audioManager.isDeviceActive(audio.ActiveDeviceType.BLUETOOTH_SCO).then(function (value){
-                if(value==false){
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_SCO: Deactivate : PASS :' +value);
-                    expect(true).assertTrue();
-                }
-                else{
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_SCO: Deactivate : FAIL :' +value);
-                    expect(false).assertTrue();
-                }
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive :  BLUETOOTH_SCO: Deactivate : FAIL : Error :' + err.message);
-            expect(false).assertTrue();
-        });
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_PR_Deactivate_ENUM_020
-                * @tc.name      : setDeviceActive - BLUETOOTH_SCO - deactivate - Promise
-                * @tc.desc      : Deactivate BLUETOOTH_SCO - Promise
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_PR_Deactivate_ENUM_020', 0, async function (done) {
-        await audioManager.setDeviceActive(7,true).then(function (){
-            console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : BLUETOOTH_SCO: Active');
-        });
-        await audioManager.setDeviceActive(7,false).then(function (){
-            // Setting device active ENUM 3 = BLUETOOTH_SCO
-            console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : BLUETOOTH_SCO: Deactivate');
-            audioManager.isDeviceActive(7).then(function (value){
-                if(value==false){
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_SCO: Deactivate : PASS :' +value);
-                    expect(true).assertTrue();
-                }
-                else{
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : BLUETOOTH_SCO: Deactivate : FAIL :' +value);
-                    expect(false).assertTrue();
-                }
-            });
-        }).catch((err) => {
-            console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive :  BLUETOOTH_SCO: Deactivate : FAIL : Error :' + err.message);
-            expect(false).assertTrue();
-        });
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_CB_Activate_021
-                * @tc.name      : setDeviceActive - BLUETOOTH_SCO - Activate - Callback
-                * @tc.desc      : Activate BLUETOOTH_SCO - Callback
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_CB_Activate_021', 0, async function (done) {
-        audioManager.setDeviceActive(audio.ActiveDeviceType.BLUETOOTH_SCO,true, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Active: Error: ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Active');
-                audioManager.isDeviceActive(audio.ActiveDeviceType.BLUETOOTH_SCO,(err, value) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Active: Error: ${err.message}`);
-                        expect(false).assertTrue();
-                    }
-                    else if(value==true){
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Active : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Active : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                    done();
-                });
-            }
-            done();
-        });
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_CB_Activate_ENUM_022
-                * @tc.name      : setDeviceActive - BLUETOOTH_SCO - Activate - Callback
-                * @tc.desc      : Activate BLUETOOTH_SCO - Callback
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_CB_Activate_ENUM_022', 0, async function (done) {
-        audioManager.setDeviceActive(7,true, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Active: Error: ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Active');
-                audioManager.isDeviceActive(7,(err, value) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Active: Error: ${err.message}`);
-                        expect(false).assertTrue();
-                    }
-                    else if(value==true){
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Active : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Active : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                    done();
-                });
-            }
-            done();
-        });
     })
 
     /* *
@@ -944,83 +753,6 @@ describe('audioManger', function () {
             }
             done();
         });
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_DEACTIVATE_027
-                * @tc.name      : setDeviceActive - BLUETOOTH_SCO - deactivate - Callback
-                * @tc.desc      : Deactivate BLUETOOTH_SCO - Callback
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_DEACTIVATE_027', 0, async function (done) {
-        audioManager.setDeviceActive(audio.ActiveDeviceType.BLUETOOTH_SCO,false, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Deactivate: Error: ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Active');
-                audioManager.isDeviceActive(audio.ActiveDeviceType.BLUETOOTH_SCO,(err, value) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Deactivate: Error: ${err.message}`);
-                        expect(false).assertTrue();
-                    }
-                    else if(value==false){
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Deactivate : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Deactivate : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                    done();
-                });
-            }
-            done();
-        });
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_setDeviceActive_DEACTIVATE_ENUM_028
-                * @tc.name      : setDeviceActive - BLUETOOTH_SCO - deactivate - Callback
-                * @tc.desc      : Deactivate BLUETOOTH_SCO - Callback
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_setDeviceActive_DEACTIVATE_ENUM_028', 0, async function (done) {
-        await audioManager.setDeviceActive(7,true).then(function (){
-            console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : BLUETOOTH_SCO : Active');
-        });
-        audioManager.setDeviceActive(7,false, (err) => {
-            if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Deactivate: Error: ${err.message}`);
-                expect(false).assertTrue();
-            }
-            else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : BLUETOOTH_SCO: Active');
-                audioManager.isDeviceActive(7,async(err, value) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Deactivate: Error: ${err.message}`);
-                        expect(false).assertTrue();
-                    }
-                    else if(value==false){
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Deactivate : PASS :' +value);
-                        expect(true).assertTrue();
-                    }
-                    else{
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : BLUETOOTH_SCO: Deactivate : FAIL :' +value);
-                        expect(false).assertTrue();
-                    }
-                    done();
-                    await sleep(1000);
-                });
-            }
-            done();
-        });
-        await sleep(1000);
     })
 
     /* *

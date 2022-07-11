@@ -19,7 +19,7 @@ import thermal from "@ohos.thermal"
 import ThermalLevel from "@ohos.thermal"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-describe('appInfoTest', function () {
+describe('appInfoTest_thermal_2', function () {
     console.log("*************Thermal API Test Begin*************");
     test1();
     test2();
@@ -40,11 +40,11 @@ describe('appInfoTest', function () {
 function test1() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number thermal_manager_js_001
-     * @tc.name Thermal_001
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0010
+     * @tc.name Thermal_JSTest0010
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_001', 0, async function (done) {
+    it('Thermal_JSTest0010', 0, async function (done) {
         console.info("enter");
         await new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -61,11 +61,11 @@ function test1() {
 function test2() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number thermal_manager_js_002
-     * @tc.name Thermal_002
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0020
+     * @tc.name Thermal_JSTest0020
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_002', 0, async function (done) {
+    it('Thermal_JSTest0020', 0, async function (done) {
         await new Promise((resolve, reject) => {
             setTimeout(() => {
                 let warm = thermal.getThermalLevel();
@@ -81,11 +81,11 @@ function test2() {
 function test3() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number thermal_manager_js_003
-     * @tc.name Thermal_003
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0030
+     * @tc.name Thermal_JSTest0030
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_003', 0, async function (done) {
+    it('Thermal_JSTest0030', 0, async function (done) {
         await new Promise((resolve, reject) => {
             setTimeout(() => {
                 let hot = thermal.getThermalLevel();
@@ -101,11 +101,11 @@ function test3() {
 function test4() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number thermal_manager_js_004
-     * @tc.name Thermal_004
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0040
+     * @tc.name Thermal_JSTest0040
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_004', 0, async function (done) {
+    it('Thermal_JSTest0040', 0, async function (done) {
         await new Promise((resolve, reject) => {
             setTimeout(() => {
                 let overheated = thermal.getThermalLevel();
@@ -122,11 +122,11 @@ function test4() {
 function test5() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number thermal_manager_js_005
-     * @tc.name Thermal_005
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0050
+     * @tc.name Thermal_JSTest0050
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_005', 0, async function (done) {
+    it('Thermal_JSTest0050', 0, async function (done) {
         await new Promise((resolve, reject) => {
             setTimeout(() => {
                 let warning = thermal.getThermalLevel();
@@ -142,11 +142,11 @@ function test5() {
 function test6() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number thermal_manager_js_006
-     * @tc.name Thermal_006
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0060
+     * @tc.name Thermal_JSTest0060
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_006', 0, async function (done) {
+    it('Thermal_JSTest0060', 0, async function (done) {
         await new Promise((resolve, reject) => {
             setTimeout(() => {
                 let emergency = thermal.getThermalLevel();
@@ -163,11 +163,11 @@ function test6() {
 function test7() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number thermal_manager_js_007
-     * @tc.name Thermal_007
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0070
+     * @tc.name Thermal_JSTest0070
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_007', 0, async function (done) {
+    it('Thermal_JSTest0070', 0, async function (done) {
         thermal.subscribeThermalLevel((cool) => {
             console.info("warm level is: " + cool);
             expect(cool >= thermal.ThermalLevel.COOL && cool <= thermal.ThermalLevel.EMERGENCY).assertTrue();
@@ -187,11 +187,11 @@ function test7() {
 function test8() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number thermal_manager_js_008
-     * @tc.name Thermal_008
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0080
+     * @tc.name Thermal_JSTest0080
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_008', 0, async function (done) {
+    it('Thermal_JSTest0080', 0, async function (done) {
         thermal.subscribeThermalLevel((warm) => {
             console.info("warm level is: " + warm);
             expect(warm >= thermal.ThermalLevel.COOL && warm <= thermal.ThermalLevel.EMERGENCY).assertTrue();
@@ -211,11 +211,11 @@ function test8() {
 function test9() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number thermal_manager_js_009
-     * @tc.name Thermal_009
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0090
+     * @tc.name Thermal_JSTest0090
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_009', 0, async function (done) {
+    it('Thermal_JSTest0090', 0, async function (done) {
         thermal.subscribeThermalLevel((hot) => {
             console.info("hot level is: " + hot);
             expect(hot >= thermal.ThermalLevel.COOL && hot <= thermal.ThermalLevel.EMERGENCY).assertTrue();
@@ -236,11 +236,11 @@ function test9() {
 function test10() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number thermal_manager_js_010
-     * @tc.name Thermal_010
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0100
+     * @tc.name Thermal_JSTest0100
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_010', 0, async function (done) {
+    it('Thermal_JSTest0100', 0, async function (done) {
         thermal.subscribeThermalLevel((overheated) => {
             console.info("overheated level is: " + overheated);
             expect(overheated >= thermal.ThermalLevel.COOL &&
@@ -261,11 +261,11 @@ function test10() {
 function test11() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number thermal_manager_js_011
-     * @tc.name Thermal_011
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0110
+     * @tc.name Thermal_JSTest0110
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_011', 0, async function (done) {
+    it('Thermal_JSTest0110', 0, async function (done) {
         thermal.subscribeThermalLevel((warning) => {
             console.info("warning level is: " + warning);
             expect(warning >= thermal.ThermalLevel.COOL && warning <= thermal.ThermalLevel.EMERGENCY).assertTrue();
@@ -285,11 +285,11 @@ function test11() {
 function test12() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number thermal_manager_js_012
-     * @tc.name Thermal_012
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0120
+     * @tc.name Thermal_JSTest0120
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_012', 0, async function (done) {
+    it('Thermal_JSTest0120', 0, async function (done) {
         thermal.subscribeThermalLevel((emergency) => {
             console.info("emergency level is: " + emergency);
             expect(emergency >= thermal.ThermalLevel.COOL && emergency <= thermal.ThermalLevel.EMERGENCY).assertTrue();
@@ -309,11 +309,11 @@ function test12() {
 function test13() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number thermal_manager_js_013
-     * @tc.name Thermal_013
+    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0130
+     * @tc.name Thermal_JSTest0130
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_013', 0, async function (done) {
+    it('Thermal_JSTest0130', 0, async function (done) {
         thermal.subscribeThermalLevel((cool) => {
             console.info("cool level is: " + cool);
             expect(cool >= thermal.ThermalLevel.COOL && cool <= thermal.ThermalLevel.EMERGENCY).assertTrue();

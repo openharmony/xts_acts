@@ -36,7 +36,7 @@ describe('FieldNodeTest', function() {
             child3 = null;
             node = null;
         } catch (e) {
-            console.log("testAppendChild001 " + e);
+            console.info("testAppendChild001 " + e);
             expect(null).assertFail();
         }
         done();
@@ -55,7 +55,7 @@ describe('FieldNodeTest', function() {
             child = null;
             node = null;
         } catch (e) {
-            console.log("testAppendChild002 " + e);
+            console.info("testAppendChild002 " + e);
         }
         done();
     })
@@ -72,7 +72,7 @@ describe('FieldNodeTest', function() {
             node.appendChild(child);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testAppendChild003 is ok :" + e);
+            console.info("testAppendChild003 is ok :" + e);
         }
         done();
     })
@@ -121,7 +121,7 @@ describe('FieldNodeTest', function() {
             node.appendChild(child);
             expect(null).assertFail();
         } catch (e) {
-            console.log("testToJson003 is ok : " + e);
+            console.info("testToJson003 is ok : " + e);
         }
         done();
     })
@@ -138,7 +138,7 @@ describe('FieldNodeTest', function() {
             console.info('defaultValue = ' + node.default);
             expect(node.default === 'first name').assertTrue()
         } catch (e) {
-            console.log("testdefault001 fail on exception: " + e);
+            console.info("testdefault001 fail on exception: " + e);
         }
         done();
     })
@@ -155,7 +155,7 @@ describe('FieldNodeTest', function() {
             console.info('nullable = ' + node.nullable);
             expect(node.nullable === false).assertTrue()
         } catch (e) {
-            console.log("testnullable001 fail on exception: " + e);
+            console.info("testnullable001 fail on exception: " + e);
         }
         done();
     })
@@ -172,7 +172,7 @@ describe('FieldNodeTest', function() {
             console.info('type = ' + node.type);
             expect(node.type === ddm.type.STRING).assertTrue()
         } catch (e) {
-            console.log("testtype001 fail on exception: " + e);
+            console.info("testtype001 fail on exception: " + e);
         }
         done();
     })
@@ -189,7 +189,7 @@ describe('FieldNodeTest', function() {
             console.info('type = ' + node.type);
             expect(node.type === ddm.type.INTEGER).assertTrue()
         } catch (e) {
-            console.log("testtype002 fail on exception: " + e);
+            console.info("testtype002 fail on exception: " + e);
         }
         done();
     })
@@ -206,7 +206,7 @@ describe('FieldNodeTest', function() {
             console.info('type = ' + node.type);
             expect(node.type === ddm.type.FLOAT).assertTrue()
         } catch (e) {
-            console.log("testtype003 fail on exception: " + e);
+            console.info("testtype003 fail on exception: " + e);
         }
         done();
     })
@@ -223,7 +223,7 @@ describe('FieldNodeTest', function() {
             console.info('type = ' + node.type);
             expect(node.type === ddm.type.BYTE_ARRAY).assertTrue()
         } catch (e) {
-            console.log("testtype004 fail on exception: " + e);
+            console.info("testtype004 fail on exception: " + e);
         }
         done();
     })
@@ -240,7 +240,7 @@ describe('FieldNodeTest', function() {
             console.info('type = ' + node.type);
             expect(node.type === ddm.ValueType.BOOLEAN).assertTrue()
         } catch (e) {
-            console.log("testtype005 fail on exception: " + e);
+            console.info("testtype005 fail on exception: " + e);
         }
         done();
     })
@@ -257,7 +257,7 @@ describe('FieldNodeTest', function() {
             console.info('type = ' + node.type);
             expect(node.type === ddm.type.DOUBLE).assertTrue()
         } catch (e) {
-            console.log("testtype006 fail on exception: " + e);
+            console.info("testtype006 fail on exception: " + e);
         }
         done();
     })

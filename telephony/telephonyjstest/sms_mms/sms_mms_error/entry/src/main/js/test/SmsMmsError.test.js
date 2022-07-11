@@ -26,7 +26,7 @@ import {
 describe('SmsMmsErrorTest', function () {
   const FALSE_SLOT_ID = 9;
   const CORRECT_SMS_PDU = '01000F9168683106019196F400080A00680065006C006C006F';
-  const eorroMessagePath = '/data/telephony/deSrc/EorroMessagePath.mms';
+  const ERROR_MESSAGE_PATH = '/data/telephony/deSrc/EorroMessagePath.mms';
   const IDENTIFIER_MIN = 0;
   const IDENTIFIER_MAX = 0xFFFF;
   const RANTYPE_GSM = 1;

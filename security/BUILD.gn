@@ -17,7 +17,7 @@ group("security") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "access_token/AccessTokenTest_Normal_js:ActsAccessTokenJSApiTestNormal",
+      "access_token/AccessTokenTest_Normal_js:ActsAccessTokenApiJSNormalTest",
       "cipher/datacipher:datacipher",
       "huks_standard",
       "security_huks_basic",

@@ -16,7 +16,13 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import Queue from "@ohos.util.Queue";
 
 describe("QueueTest", function () {
-  it("SR000GGR48_testConstructor001", 0, function () {
+
+  /**
+   * @tc.name: testConstructor001
+   * @tc.desc: Create an Queue instance. For example: let queue = new Queue().
+   * @tc.author: wangyong
+   */
+  it("testConstructor001", 0, function () {
     try {
       let queue = new Queue();
     } catch (err) {
@@ -24,33 +30,63 @@ describe("QueueTest", function () {
       expect(err.message).assertEqual("Cannot create new queue");
     }
   });
-  it("SR000GGR48_testAdd002", 0, function () {
+  
+  /**
+   * @tc.name: testAdd002
+   * @tc.desc: Add element to Queue instance end. For example: queue.add("四").
+   * @tc.author: wangyong
+   */
+  it("testAdd002", 0, function () {
     let queue = new Queue();
     queue.add("四");
     let res = queue.getFirst();
     expect(res).assertEqual("四");
   });
-  it("SR000GGR48_testAdd003", 0, function () {
+  
+  /**
+   * @tc.name: testAdd003
+   * @tc.desc: Add element to Queue instance end. For example: queue.add(8).
+   * @tc.author: wangyong
+   */
+  it("testAdd003", 0, function () {
     let queue = new Queue();
     queue.add(8);
     let res = queue.getFirst();
     expect(res).assertEqual(8);
   });
-  it("SR000GGR48_testAdd004", 0, function () {
+  
+  /**
+   * @tc.name: testAdd004
+   * @tc.desc: Add element to Queue instance end. For example: queue.add(8).
+   * @tc.author: wangyong
+   */
+  it("testAdd004", 0, function () {
     let queue = new Queue();
     let a = ["a", "b", "c"];
     queue.add(a);
     let res = queue.getFirst();
     expect(res).assertEqual(a);
   });
-  it("SR000GGR48_testGetFirst005", 0, function () {
+  
+  /**
+   * @tc.name: testGetFirst005
+   * @tc.desc: Get the header element of the queue instance. For example: queue.getFirst().
+   * @tc.author: wangyong
+   */
+  it("testGetFirst005", 0, function () {
     let queue = new Queue();
     queue.add(6);
     queue.add("四");
     let res = queue.getFirst();
     expect(res).assertEqual(6);
   });
-  it("SR000GGR48_testPop006", 0, function () {
+  
+  /**
+   * @tc.name: testPop006
+   * @tc.desc: Delete the header element of a queue instance. For example: queue.pop().
+   * @tc.author: wangyong
+   */
+  it("testPop006", 0, function () {
     let queue = new Queue();
     queue.add(6);
     queue.add("四");
@@ -59,7 +95,13 @@ describe("QueueTest", function () {
     expect(res).assertEqual(6);
     expect(res1).assertEqual("四");
   });
-  it("SR000GGR48_testForEach007", 0, function () {
+  
+  /**
+   * @tc.name: testForEach007
+   * @tc.desc: Traversing elements in queue instances. For example: queue.forEach((item, index) => {arr.push(item);}).
+   * @tc.author: wangyong
+   */
+  it("testForEach007", 0, function () {
     let queue = new Queue();
     queue.add(8);
     queue.add("一");
@@ -81,7 +123,13 @@ describe("QueueTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR48_testIterator008", 0, function () {
+  
+  /**
+   * @tc.name: testIterator008
+   * @tc.desc: Iterate over all elements in the queue instance. For example: for (let item of queue) { arr.push(item);}.
+   * @tc.author: wangyong
+   */
+  it("testIterator008", 0, function () {
     let queue = new Queue();
     queue.add(8);
     queue.add("一");
@@ -99,7 +147,13 @@ describe("QueueTest", function () {
       expect(arr[i]).assertEqual(a[i]);
     }
   });
-  it("SR000GGR48_testLength009", 0, function () {
+  
+  /**
+   * @tc.name: testLength009
+   * @tc.desc: Get the number of elements in the queue instance. For example: queue.length.
+   * @tc.author: wangyong
+   */
+  it("testLength009", 0, function () {
     let queue = new Queue();
     queue.add(8);
     queue.add("一");
@@ -113,31 +167,61 @@ describe("QueueTest", function () {
     let res = queue.length;
     expect(9).assertEqual(res);
   });
-  it("SR000GGR48_testAdd010", 0, function () {
+
+  /**
+   * @tc.name: testAdd010
+   * @tc.desc: Add element to Queue instance end. For example: queue.add("$").
+   * @tc.author: wangyong
+   */
+  it("testAdd010", 0, function () {
     let queue = new Queue();
     queue.add("$");
     let res = queue.getFirst();
     expect(res).assertEqual("$");
   });
-  it("SR000GGR48_testAdd011", 0, function () {
+  
+  /**
+   * @tc.name: testAdd011
+   * @tc.desc: Add element to Queue instance end. For example: queue.add(" ").
+   * @tc.author: wangyong
+   */
+  it("testAdd011", 0, function () {
     let queue = new Queue();
     queue.add(" ");
     let res = queue.getFirst();
     expect(res).assertEqual(" ");
   });
-  it("SR000GGR48_testAdd012", 0, function () {
+  
+  /**
+   * @tc.name: testAdd012
+   * @tc.desc: Add element to Queue instance end. For example: queue.add(null).
+   * @tc.author: wangyong
+   */
+  it("testAdd012", 0, function () {
     let queue = new Queue();
     queue.add(null);
     let res = queue.getFirst();
     expect(res).assertEqual(null);
   });
-  it("SR000GGR48_testAdd013", 0, function () {
+  
+  /**
+   * @tc.name: testAdd013
+   * @tc.desc: Add element to Queue instance end. For example: queue.add(undefined).
+   * @tc.author: wangyong
+   */
+  it("testAdd013", 0, function () {
     let queue = new Queue();
     queue.add(undefined);
     let res = queue.getFirst();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR48_testAdd014", 0, function () {
+  
+  /**
+   * @tc.name: testAdd014
+   * @tc.desc: Add element to Queue instance end. For example: for (let i = 0; i < 100; i++) { queue.add(i);}.
+   * @tc.author: wangyong
+   */
+  it("testAdd014", 0, function () {
     let queue = new Queue();
     for (let i = 0; i < 100; i++) {
       queue.add(i);
@@ -145,17 +229,35 @@ describe("QueueTest", function () {
     let res = queue.length;
     expect(res).assertEqual(100);
   });
-  it("SR000GGR48_testGetFirst015", 0, function () {
+  
+  /**
+   * @tc.name: testGetFirst015
+   * @tc.desc: Get the header element of the queue instance. For example: queue.getFirst().
+   * @tc.author: wangyong
+   */
+  it("testGetFirst015", 0, function () {
     let queue = new Queue();
     let res = queue.getFirst();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR48_testPop016", 0, function () {
+  
+  /**
+   * @tc.name: testPop016
+   * @tc.desc: Delete the header element of a queue instance. For example: queue.pop().
+   * @tc.author: wangyong
+   */
+  it("testPop016", 0, function () {
     let queue = new Queue();
     let res = queue.pop();
     expect(res).assertEqual(undefined);
   });
-  it("SR000GGR48_testForEach017", 0, function () {
+
+  /**
+   * @tc.name: testForEach017
+   * @tc.desc: Traversing elements in queue instances. For example: queue.forEach((item, index) => {arr.push(item);}).
+   * @tc.author: wangyong
+   */
+  it("testForEach017", 0, function () {
     let queue = new Queue();
     let arr = [];
     queue.forEach((item, index) => {
@@ -163,7 +265,13 @@ describe("QueueTest", function () {
     });
     expect(arr.length).assertEqual(0);
   });
-  it("SR000GGR48_testIterator018", 0, function () {
+  
+  /**
+   * @tc.name: testIterator018
+   * @tc.desc: Iterate over all elements in the queue instance. For example: for (let item of queue) { arr.push(item);}.
+   * @tc.author: wangyong
+   */
+  it("testIterator018", 0, function () {
     let queue = new Queue();
     let arr = [];
     for (let item of queue) {
@@ -171,7 +279,13 @@ describe("QueueTest", function () {
     }
     expect(arr.length).assertEqual(0);
   });
-  it("SR000GGR48_testIterator019", 0, function () {
+  
+  /**
+   * @tc.name: testIterator019
+   * @tc.desc: Iterate over all elements in the queue instance. For example: queue[Symbol.iterator]().
+   * @tc.author: wangyong
+   */
+  it("testIterator019", 0, function () {
     let queue = new Queue();
     queue.add(8);
     queue.add("一");

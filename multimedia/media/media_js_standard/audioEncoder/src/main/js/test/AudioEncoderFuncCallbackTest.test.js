@@ -15,17 +15,13 @@
 
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
 import featureAbility from '@ohos.ability.featureAbility'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
-import {getFileDescriptor, closeFileDescriptor} from './AudioEncoderTestBase.test.js';
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('AudioEncoderFuncCallback', function () {
-    const RESOURCEPATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.audio.audioencoder/'
     const AUDIOPATH = 'S16LE.pcm';
-    const BASIC_PATH = RESOURCEPATH + 'results/encode_func_callback_';
     let audioEncodeProcessor;
     let readStreamSync;
     let eosframenum = 0;
@@ -54,7 +50,12 @@ describe('AudioEncoderFuncCallback', function () {
 
     beforeAll(async function() {
         console.info('beforeAll case 1');
-        await applyPermission();
+        let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
+        let permissionName2 = 'ohos.permission.READ_MEDIA';
+        let permissionName3 = 'ohos.permission.WRITE_MEDIA';
+        let permissionNameList = [permissionName1, permissionName2, permissionName3];
+        let appName = 'ohos.acts.multimedia.audio.audioencoder';
+        await mediaTestBase.applyPermission(appName, permissionNameList);
         console.info('beforeAll case after get permission');
     })
 
@@ -86,13 +87,10 @@ describe('AudioEncoderFuncCallback', function () {
                 audioEncodeProcessor = null;
             }, failCallback).catch(failCatch);
         }
-        await closeFileDescriptor(AUDIOPATH);
-        await closeFdWrite();
     })
 
     afterAll(async function() {
         console.info('afterAll case');
-        await closeFileDescriptor(AUDIOPATH);
     })
 
     function resetParam() {
@@ -112,47 +110,10 @@ describe('AudioEncoderFuncCallback', function () {
         outputQueue = [];
     }
 
-    async function getFdRead(pathName, done) {
-        await getFileDescriptor(pathName).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("case pathName is: " + pathName);
-                console.info("case fdRead is: " + fdRead);
-            }
+    async function getFdRead(readPath, done) {
+        await mediaTestBase.getFdRead(readPath, done).then((fdNumber) => {
+            fdRead = fdNumber;
         })
-    }
-
-    async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.audioencoder', 0, 100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info('[permission] case accessTokenID is ' + tokenID);
-            let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName2 = 'ohos.permission.READ_MEDIA';
-            let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
-            });
-        } else {
-            console.info('[permission] case apply permission failed, createAtManager failed');
-        }
     }
 
     async function getFdWrite(pathName) {
@@ -173,7 +134,7 @@ describe('AudioEncoderFuncCallback', function () {
             console.info('[mediaLibrary] case getFdWrite getFileAssets() success');
             fileAsset = await fetchWriteFileResult.getAllObject();
             console.info('[mediaLibrary] case getFdWrite getAllObject() success');
-            fdWrite = await fileAsset[0].open('Rw');
+            fdWrite = await fileAsset[0].open('rw');
             console.info('[mediaLibrary] case getFdWrite fdWrite is ' + fdWrite);
         }
     }
@@ -203,7 +164,7 @@ describe('AudioEncoderFuncCallback', function () {
     function getContent(buf, len) {
         console.info("case start get content");
         let lengthreal = -1;
-        lengthreal = readStreamSync.readSync(buf,{length:len});
+        lengthreal = fileio.readSync(fdRead, buf, {length:len});
         console.info('case lengthreal is :' + lengthreal);
     }
 
@@ -269,13 +230,11 @@ describe('AudioEncoderFuncCallback', function () {
     async function flushWork(done) {
         inputQueue = [];
         outputQueue = [];
-        await closeFileDescriptor(readpath);
         await getFdRead(readpath, done);
         audioEncodeProcessor.flush((err) => {
             expect(err).assertUndefined();
             console.info("case flush at inputeos success");
             resetParam();
-            readFile(AUDIOPATH);
             workdoneAtEOS =true;
         })
     }
@@ -291,7 +250,7 @@ describe('AudioEncoderFuncCallback', function () {
                     expect(err).assertUndefined();
                     console.log("case release success");
                     audioEncodeProcessor = null;
-                    await closeFileDescriptor(AUDIOPATH);
+                    await fileio.close(fdRead);
                     await closeFdWrite();
                     done();
                 })
@@ -425,7 +384,6 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH);
                 eventEmitter.emit('prepare');
             })
         });
@@ -508,7 +466,6 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH);
                 eventEmitter.emit('prepare');
             })
         });
@@ -568,7 +525,6 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH);
                 eventEmitter.emit('prepare');
             })
         });
@@ -584,7 +540,7 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.start(async(err) => {
                 expect(err).assertUndefined();
                 console.info(`case start 1`);
-                await sleep(2000);
+                await sleep(500);
                 eventEmitter.emit('flush');
             })
         });
@@ -639,7 +595,6 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH);
                 eventEmitter.emit('prepare');
             })
         });
@@ -698,7 +653,6 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH);
                 eventEmitter.emit('prepare');
             })
         });
@@ -739,7 +693,7 @@ describe('AudioEncoderFuncCallback', function () {
                 expect(err).assertUndefined();
                 console.info(`case release 1`);
                 audioEncodeProcessor = null;
-                await closeFileDescriptor(AUDIOPATH);
+                await fileio.close(fdRead);
                 await closeFdWrite();
                 done();
             })
@@ -786,7 +740,6 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH);
                 eventEmitter.emit('prepare');
             })
         });
@@ -811,7 +764,6 @@ describe('AudioEncoderFuncCallback', function () {
                     expect(err).assertUndefined();
                     console.info(`stop after 5s`);
                     resetParam();
-                    readFile(AUDIOPATH);
                     eventEmitter.emit('restart');
                 })
             })
@@ -819,9 +771,7 @@ describe('AudioEncoderFuncCallback', function () {
         eventEmitter.on('restart', () => {
             sleep(2000).then(async() => {
                 resetParam();
-                await closeFileDescriptor(readpath);
                 await getFdRead(readpath, done);
-                readFile(readpath);
                 audioEncodeProcessor.start((err) => {
                     expect(err).assertUndefined();
                     console.info(`restart after 2s`);
@@ -879,7 +829,6 @@ describe('AudioEncoderFuncCallback', function () {
             audioEncodeProcessor.configure(mediaDescription, (err) => {
                 expect(err).assertUndefined();
                 console.info(`case configure 1`);
-                readFile(AUDIOPATH);
                 eventEmitter.emit('prepare');
             })
         });
@@ -903,7 +852,7 @@ describe('AudioEncoderFuncCallback', function () {
         eventEmitter.on('reconfigure', (mediaDescription2) => {
             sleep(10000).then(async() => {
                 resetParam();
-                await closeFileDescriptor(readpath);
+                await fileio.close(fdRead);
                 await closeFdWrite();
                 audioEncodeProcessor.configure(mediaDescription2, async(err) => {
                     expect(err).assertUndefined();
@@ -913,7 +862,6 @@ describe('AudioEncoderFuncCallback', function () {
                     savepath = 'audioEncode_function_callback_06_2.aac';
                     await getFdWrite(savepath);
                     await getFdRead(readpath, done);
-                    readFile(AUDIOPATH);
                     workdoneAtEOS = true;
                     hasreconfigured = true;
                     eventEmitter.emit('prepare');

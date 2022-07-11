@@ -16,7 +16,7 @@
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
 import router from '@system.router'
-import {getFileDescriptor, closeFileDescriptor} from './VideoDecoderTestBase.test.js'
+import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 
@@ -34,7 +34,6 @@ describe('VideoDecoderEnum', function () {
     let surfaceID = '';
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
-    const BASIC_PATH = '/data/accounts/account_0/appdata/ohos.acts.multimedia.video.videodecoder/';
     let ES_FRAME_SIZE = [];
     const H264_FRAME_SIZE_60FPS_320 =
     [ 2106, 11465];
@@ -43,7 +42,6 @@ describe('VideoDecoderEnum', function () {
 
     beforeAll(function() {
         console.info('beforeAll case');
-        // getSurfaceID();
     })
 
     beforeEach(async function() {
@@ -101,7 +99,7 @@ describe('VideoDecoderEnum', function () {
     function getContent(buf, len) {
         console.info("case start get content");
         let lengthreal = -1;
-        lengthreal = readStreamSync.readSync(buf,{length:len});
+        lengthreal = fileio.readSync(fdRead, buf, {length:len});
         console.info('case lengthreal is :' + lengthreal);
     }
 
@@ -252,7 +250,6 @@ describe('VideoDecoderEnum', function () {
     async function toConfigure(mediaDescription, srcPath) {
         await videoDecodeProcessor.configure(mediaDescription).then(() =>{
             console.info('in case : configure success');
-            readFile(srcPath);
         }, failCallback).catch(failCatch);
     }
     async function setSurfaceID(done) {
@@ -289,7 +286,6 @@ describe('VideoDecoderEnum', function () {
         }, failCallback).catch(failCatch);
         videoDecodeProcessor = null;
         console.info('in case : done');
-        await closeFileDescriptor(readpath);
         done();
     });
     async function toPrepare() {
@@ -316,15 +312,8 @@ describe('VideoDecoderEnum', function () {
         isCodecData = true;
         let srcPath = 'out_320_240_10s.h264';
         readpath = srcPath;
-        await getFileDescriptor(readpath).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("case fdRead is: " + fdRead);
-            }
+        await mediaTestBase.getFdRead(readpath, done).then((fdNumber) => {
+            fdRead = fdNumber;
         })
         let mediaDescription = {
             'track_type': 1,
@@ -345,22 +334,5 @@ describe('VideoDecoderEnum', function () {
         await toPrepare();
         await toStart();
     })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_ENUM_CodecMimeType_0100
-        * @tc.name      : 002.CodecMimeType
-        * @tc.desc      : Test Enumerate CodecMimeType
-        * @tc.size      : MediumTest
-        * @tc.type      : Function test
-        * @tc.level     : Level0
-    */
-    it('SUB_MEDIA_VIDEO_DECODER_ENUM_CodecMimeType_0100', 0, async function (done) {
-        expect(media.CodecMimeType.VIDEO_H263).assertEqual('video/h263');
-        expect(media.CodecMimeType.VIDEO_AVC).assertEqual('video/avc');
-        expect(media.CodecMimeType.VIDEO_MPEG2).assertEqual('video/mpeg2');
-        expect(media.CodecMimeType.VIDEO_MPEG4).assertEqual('video/mp4v-es');
-        expect(media.CodecMimeType.VIDEO_VP8).assertEqual('video/x-vnd.on2.vp8');
-        done();
-    })   
 })
     

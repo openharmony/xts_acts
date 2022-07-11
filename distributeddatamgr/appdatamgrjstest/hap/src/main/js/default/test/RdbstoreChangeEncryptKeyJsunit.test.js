@@ -34,7 +34,7 @@ var i = 1;
 
 var rdbStore = undefined;
 
-describe('rdbStoreInsertTest', function () {
+describe('rdbstoreChangeEncryptKeyTest', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
      })
@@ -60,7 +60,7 @@ describe('rdbStoreInsertTest', function () {
         console.info(TAG + 'afterAll')
     })
 
-    console.log(TAG + "*************Unit Test Begin*************");
+    console.info(TAG + "*************Unit Test Begin*************");
 
     /**
      * @tc.name testRdbStoreChangeEncryptKey0001
@@ -68,7 +68,7 @@ describe('rdbStoreInsertTest', function () {
      * @tc.desc encrypt the db at start, then change the encrypt key
      */
     it('testRdbStoreChangeEncryptKey0001', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreChangeEncryptKey0001 start *************");
+        console.info(TAG + "************* testRdbStoreChangeEncryptKey0001 start *************");
 
         var u8 = new Uint8Array([1, 2, 3])
         {
@@ -89,16 +89,16 @@ describe('rdbStoreInsertTest', function () {
         let resultSet = await rdbStore.query(predicates)
 
         try {
-            console.log(TAG + "resultSet query done");
+            console.info(TAG + "resultSet query done");
             resultSet.goToFirstRow()
             const id = resultSet.getLong(resultSet.getColumnIndex("id"))
             expect(1).assertEqual(id);
 
         } catch (e) {
-            console.log("insert1 error " + e);
+            console.info("insert1 error " + e);
         }
         done()
-        console.log(TAG + "************* testRdbStoreChangeEncryptKey0001 end *************");
+        console.info(TAG + "************* testRdbStoreChangeEncryptKey0001 end *************");
     })
 
     /**
@@ -107,7 +107,7 @@ describe('rdbStoreInsertTest', function () {
      * @tc.desc encrypt the db at start, then change the encrypt key
      */
     it('testRdbStoreChangeEncryptKey0002', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreChangeEncryptKey0002 start *************");
+        console.info(TAG + "************* testRdbStoreChangeEncryptKey0002 start *************");
         var u8 = new Uint8Array([1, 2, 3])
         let result = 1;
         {
@@ -124,10 +124,10 @@ describe('rdbStoreInsertTest', function () {
 
           } catch (e) {
             expect(1).assertEqual(result);
-            console.log(TAG + "can not change encrypt key, since config with no key");
+            console.info(TAG + "can not change encrypt key, since config with no key");
         }
         done()
-        console.log(TAG + "************* testRdbStoreChangeEncryptKey0002 end *************");
+        console.info(TAG + "************* testRdbStoreChangeEncryptKey0002 end *************");
     })
 
     /**
@@ -137,7 +137,7 @@ describe('rdbStoreInsertTest', function () {
      *      now sqlite does not support this feature, switch encrypt to non-encrypt.
      */
     it('testRdbStoreChangeEncryptKey0003', 0, async function (done) {
-        console.log(TAG + "************* testRdbStoreChangeEncryptKey0003 start *************");
+        console.info(TAG + "************* testRdbStoreChangeEncryptKey0003 start *************");
         let result = -1;
         var u8 = new Uint8Array([1, 2, 3])
         {
@@ -153,12 +153,12 @@ describe('rdbStoreInsertTest', function () {
             result = await rdbStore.changeEncryptKey(new Uint8Array());
           } catch (e) {
             expect(-1).assertEqual(result);
-            console.log(TAG + "can not clear encrypt key 2");
+            console.info(TAG + "can not clear encrypt key 2");
         }
 
         done()
-        console.log(TAG + "************* testRdbStoreChangeEncryptKey0003 end *************");
+        console.info(TAG + "************* testRdbStoreChangeEncryptKey0003 end *************");
     })
 
-    console.log(TAG + "*************Unit Test End*************");
+    console.info(TAG + "*************Unit Test End*************");
 })

@@ -12,9 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, afterAll, it, expect, afterEach} from 'deccjsunit/index.ets';
+
+import {describe, beforeAll, afterAll, it, expect, afterEach} from 'hypium/index';
 import http from '@ohos.net.http';
-import utils from './Utils.ets'
+import utils from './Utils'
 
 export default function httpRequestJsunit() {
   describe("HttpRequestJsunitTest", function () {
@@ -28,7 +29,7 @@ export default function httpRequestJsunit() {
       console.log("-----------------------HttpRequest_request Test is starting-----------------------");
       try {
         let httpRequestOptions = {
-          method: 'GET',
+          method: http.RequestMethod.GET,
           extraData: null,
           header: "content-type': 'application/json",
           readTimeout: 60,
@@ -42,7 +43,7 @@ export default function httpRequestJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.getResponseCode = 200).assertTrue();
+          expect(data.responseCode = 200).assertTrue();
           console.log("-----------------------HttpRequest_request Test end-----------------------");
           done();
         });
@@ -69,7 +70,7 @@ export default function httpRequestJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.getResponseCode = 200).assertTrue();
+          expect(data.responseCode = 200).assertTrue();
           console.log("-----------------------HttpRequest_request_01 Test end-----------------------");
           done();
         });
@@ -89,12 +90,12 @@ export default function httpRequestJsunit() {
       console.log("-----------------------HttpRequest_request_02 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
-          method: 'GET',
+          method: http.RequestMethod.GET,
           extraData: null,
           header: "content-type': 'application/json",
           readTimeout: 60,
           connectTimeout: 60
-        }
+        };
         var httpRequest = http.createHttp();
         if (utils.notCheck) {
           expect(true).assertTrue();
@@ -103,7 +104,7 @@ export default function httpRequestJsunit() {
         }
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.getResponseCode = 200).assertTrue();
+          expect(data.responseCode = 200).assertTrue();
           console.log("-----------------------HttpRequest_request_02 Test end-----------------------");
           done();
         }).catch(error => {
@@ -126,7 +127,7 @@ export default function httpRequestJsunit() {
       console.log("-----------------------HttpRequest_destroy Test is starting-----------------------");
       try {
         let httpRequestOptions = {
-          method: 'GET',
+          method: http.RequestMethod.GET,
           extraData: null,
           header: "content-type': 'application/json",
           readTimeout: 60,
@@ -146,7 +147,7 @@ export default function httpRequestJsunit() {
             console.log("-----------------------HttpRequest_destroy Test end-----------------------");
             done();
           }catch(error){
-            expect().assertFail();
+            expect(false).assertFail();
             done();
           }
         });
@@ -171,7 +172,7 @@ export default function httpRequestJsunit() {
           done();
           return;
         }
-        httpRequest.on_headerReceive((data) => {
+       httpRequest.on('headerReceive',(data) => {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(true).assertTrue();
           console.log("-----------------------HttpRequest_on_headerReceive Test end-----------------------");
@@ -199,7 +200,8 @@ export default function httpRequestJsunit() {
           done();
           return;
         }
-        httpRequest.off_headerReceive((data) => {
+        //httpRequest.off_headerReceive((data) => {
+        httpRequest.off('headerReceive',(data) => {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(true).assertTrue();
           console.log("-----------------------HttpRequest_off_headerReceive Test end-----------------------");

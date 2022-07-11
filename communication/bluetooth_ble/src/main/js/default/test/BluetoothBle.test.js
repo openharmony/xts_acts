@@ -685,7 +685,7 @@ describe('bluetoothhostTest', function() {
         desValue[0] = 11;
         let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
             characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
-            descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB',
+            descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB',
             descriptorValue: arrayBuffer};
         descriptors[0] = descriptor;
         let characteristics = [];
@@ -700,27 +700,15 @@ describe('bluetoothhostTest', function() {
             isPrimary: true, characteristics: characteristics, includeServices: []};
         let ret = gattServer.addService(service);
         console.info('[bluetooth_js] bluetooth addService ret : ' + ret);
-        expect(ret).assertEqual(false);
+        expect(ret).assertTrue();
+        await sleep(3500);
+        let ret1=gattServer.removeService('00001810-0000-1000-8000-00805F9B34FB');
+        console.info('[bluetooth_js]removeService ret:'+ret1);
+        expect(ret1).assertTrue();
         done();
     })
 
-    /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_GATT_REMOVE_SERVICE_0001
-     * @tc.name testRemoveService
-     * @tc.desc Test RemoveService api.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 2
-     */
-    it('SUB_COMMUNACATION_bluetooth_GATT_REMOVE_SERVICE_0001', 0, async function (done) {
-        console.info('[bluetooth_js] removeService start');
-        await tryToEnableBt();
-        let gattServer = bluetooth.BLE.createGattServer();
-        let ret = gattServer.removeService('00001810-0000-1000-8000-008000000000');
-        console.info('[bluetooth_js] removeService ret : ' + ret);
-        expect(ret).assertEqual(false);
-        done();
-    })
+
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_GATT_NOTIFY_CHARA_CHANGED_0001

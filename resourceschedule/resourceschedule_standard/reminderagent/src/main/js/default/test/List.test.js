@@ -14,7 +14,3 @@
  */
 
 require('./ReminderAgentJs.test.js')
-
-
-
-
