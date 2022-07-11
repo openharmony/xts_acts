@@ -22,23 +22,23 @@ ohos_hap("ActsRdbServiceHap") {
       "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
   js_build_mode = "debug"
   deps = [
-    ":kvService_js_assets",
-    ":kvService_resources",
+    ":rdbService_js_assets",
+    ":rdbService_resources",
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
 }
-ohos_app_scope("dataSharekv_app_profile") {
+ohos_app_scope("dataSharerdb_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
 
-ohos_js_assets("kvService_js_assets") {
+ohos_js_assets("rdbService_js_assets") {
   source_dir = "./entry/src/main/ets"
 }
 
-ohos_resources("kvService_resources") {
+ohos_resources("rdbService_resources") {
   sources = [ "./entry/src/main/resources" ]
-  deps = [ ":dataSharekv_app_profile" ]
+  deps = [ ":dataSharerdb_app_profile" ]
   hap_profile = "./entry/src/main/module.json"
 }
