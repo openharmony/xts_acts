@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "AceEtsComponentFourTest.hap"
+                "ActsAceEtsComponentFourTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -90,7 +90,7 @@ export default function textInputJsunit() {
       console.info("[textInputTest03] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[textInputTest03] fontColor:" + obj.$attrs.fontColor);
-      expect(obj.$attrs.fontColor).assertEqual('#E6000000');
+      expect(obj.$attrs.fontColor).assertEqual('#FF000000');
       done();
     });
 
@@ -115,7 +115,7 @@ export default function textInputJsunit() {
       let strJson = getInspectorByKey('TextInput');
       let obj = JSON.parse(strJson);
       console.info("[textInputTest04] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.fontColor).assertEqual('#E6000000');
+      expect(obj.$attrs.fontColor).assertEqual('#FFFF0000');
       done();
     });
 

@@ -17,7 +17,11 @@
 @Entry
 @Component
 struct GlobalExample {
+
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
+  
   onPageShow() {
+    console.info("global page called")
   }
 
   build() {

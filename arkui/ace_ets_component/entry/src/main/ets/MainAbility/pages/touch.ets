@@ -80,12 +80,7 @@ struct TouchExample {
           + '\nDistance between touch point and touch element:\nx: '
           + event.touches[0].x + '\n' + 'y: ' + event.touches[0].y + '\ncomponent globalPos：（'
           + event.target.area.globalPos.x + ',' + event.target.area.globalPos.y + '）\nwidth:'
-          + event.target.area.width + '\nheight：' + event.target.area.height)
-          console.info(this.text = 'TouchType:' + this.eventType
-          + '\nDistance between touch point and touch element:\nx: '
-          + event.changedTouches[0].x + '\n' + 'y: ' + event.changedTouches[0].y + '\ncomponent globalPos：（'
-          + event.target.area.globalPos.x + ',' + event.target.area.globalPos.y + '）\nwidth:'
-          + event.target.area.width + '\nheight：' + event.target.area.height)
+          + event.target.area.width + '\nheight：' + event.target.area.height);
           console.log('fang--->A')
           try {
             console.log('fang--->B')
@@ -102,7 +97,7 @@ struct TouchExample {
             console.log('fang--->D')
             console.info("touchFlag start to emit action state")
             events_emitter.emit(backEvent, backData)
-          } catch {
+          } catch(err) {
             console.info("touchFlag emit action state err: " + JSON.stringify(err.message))
           }
         })
