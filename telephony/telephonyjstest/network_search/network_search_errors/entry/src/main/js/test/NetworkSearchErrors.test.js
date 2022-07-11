@@ -172,7 +172,7 @@ describe('ActsNetworkSearchTest', function () {
         radio.getISOCountryCodeForNetwork(SLOT_2, (err, data) => {
             if (err) {
                 console.info(`Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0400 fail err: ${err}`);
-                expect(err.code).assertEqual("-1");
+                expect(err.code).assertEqual("202");
                 done();
                 return;
             }
@@ -196,7 +196,7 @@ describe('ActsNetworkSearchTest', function () {
             expect(data.length === 0).assertTrue();
         } catch (err) {
             console.info(`Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0400 fail err: ${err}`);
-            expect(err.code).assertEqual("-1");
+            expect(err.code).assertEqual("202");
             done();
             return;
         }
