@@ -17,7 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 import mms from '@ohos.telephony.sms';
 import utils from './Utils.ets'
 export default function smsUiJsunit() {
-  describe('appInfoTest', function () {
+  describe('SmsMmsTest', function () {
    
     const SMS_SEND_DST_NUMBER = '';
     const TRUE_SLOT_ID = 0;

@@ -40,7 +40,9 @@
      function sleepOther(timeout) {
          for (var t = Date.now(); Date.now() - t <= timeout;) ;
      }
- 
+     function sleep(time) {
+         return new Promise((resolve)=>setTimeout(resolve,time));
+     }
      /**
       *@tc.number  Telephony_NetworkManager_register_Async_0100
       *@tc.name Enter  bearerTypes and networkCap asempty, set class NetConnection,
@@ -229,13 +231,13 @@
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
+         netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
                  console.info(`${caseName} register fail: ${error}`);
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
@@ -2491,13 +2493,14 @@
                  done();
              }
          });
+
          netConn.unregister((error) => {
              if (error) {
                  console.info(`${caseName} unregister result : ${error}`);
                  expect().assertFail();
                  done();
              }
- 
+            await sleep(1000);
              done();
          });
          done();
