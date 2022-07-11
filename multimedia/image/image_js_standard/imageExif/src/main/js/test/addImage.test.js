@@ -17,7 +17,7 @@ import image from '@ohos.multimedia.image'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import { testPng } from '../../../../../image/src/main/js/test/testImg'
 
-describe('Image', function () {
+describe('AddImage', function () {
 
     beforeAll(async function () {
         console.info('beforeAll case');
