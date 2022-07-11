@@ -14,24 +14,11 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
 import commonEvent from '@ohos.commonEvent'
-import bundle from '@ohos.bundle'
-import missionManager from '@ohos.application.missionManager'
-import appManager from '@ohos.application.appManager'
 
-var subscriberInfoMultiInstance = {
+let subscriberInfoMultiInstance = {
   events: ["MultiInstanceStartNext", "MultiInstanceStartFinish"]
 };
-const BUNDLE_PATHS = [['/data/ActsAmsAbilityMultiinstanceHapARelyHap.hap'], 
-['/data/ActsAmsAbilityMultiinstanceHapBRelyHap.hap'],
-['/data/ActsAmsAbilityMultiinstanceHapCRelyHap.hap'], 
-['/data/ActsAmsAbilityMultiinstanceHapDRelyHap.hap'],
-['/data/ActsAmsAbilityMultiinstanceHapERelyHap.hap']];
-const BUNDLE_NAMES = ['com.example.amsabilitymultiinstanceappa', 'com.example.amsabilitymultiinstanceappb',
-'com.example.amsabilitymultiinstanceappc', 'com.example.amsabilitymultiinstanceappd',
-'com.example.amsabilitymultiinstanceappe'];
-const BUNDLE_COUNT = 5;
 const START_ABILITY_TIMEOUT = 9000;
-const MAX_MISSION_NUM = 1024;
 const ONACCEPTWANT_KEY_NOTSET_ID = -1;
 const ONACCEPTWANT_KEY_UNDEFINED_ID = -2;
 const UNSUBSCRIBE_TIMEOUT = 5000;
@@ -47,6 +34,9 @@ async function startAbilityProcess(abilityContext, parameters) {
       break;
     case "StartA2":
       parameters.startId = 2;
+      break;
+    case "StartA3":
+      parameters.startId = 3;
       break;
     case "StartANS":
       parameters.startId = ONACCEPTWANT_KEY_NOTSET_ID;
@@ -101,17 +91,6 @@ async function startAbilityProcess(abilityContext, parameters) {
 export default function abilityTest(abilityContext) {
   describe('ActsAbilityTest', function () {
 
-    beforeEach(async (done) => {
-      console.log('======>beforeEach  ininin<=======');
-      done();
-    })
-
-    afterEach(async (done) => {
-      let installer = await bundle.getBundleInstaller();
-      var count = 0;
-      done();
-    })
-
     /*
     * @tc.number: ACTS_AbilityMultiInstance_Multi_0100
     * @tc.name: Connects a service ability, which is used to start a cloned page ability.
@@ -119,16 +98,15 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_0100', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_0100====<begin');
-      var subscriber;
-      var id;
-      var result;
-      var checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId1", "AppB:onCreateonForeground",
+      let subscriber;
+      let id;
+      let result;
+      let checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId1", "AppB:onCreateonForeground",
       "AppA:onForegroundonAcceptWantCalledId1"];
-      var checkIndex = 0;
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
-
         if (data.event == "MultiInstanceStartFinish") {
           clearTimeout(id);
           console.log('ACTS_AbilityMultiInstance_Single_0100 finish callBackSeq = ' + data.data);
@@ -136,7 +114,7 @@ export default function abilityTest(abilityContext) {
           expect(checkIndex).assertEqual(3);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback)
         } else if (data.event == "MultiInstanceStartNext") {
-          console.log('ACTS_AbilityMultiInstance_Single_0100 callBackSeq = ' + data.data);
+          console.log('ACTS_AbilityMultiInstance_Single_010022 callBackSeq = ' + data.data);
           expect(data.data).assertEqual(checkEventResults[checkIndex++]);
         }
       }
@@ -178,19 +156,18 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_0200', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_0200====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId1", "AppB:onCreateonForeground",
+      let checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId3", "AppB:onCreateonForeground",
       "AppA:onCreateonForegroundonAcceptWantCalledId2"];
-      var checkIndex = 0;
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
 
         if (data.event == "MultiInstanceStartFinish") {
           clearTimeout(id);
-          console.log('ACTS_AbilityMultiInstance_Single_0200 finish callBackSeq = ' + data.data);
+          console.log('ACTS_AbilityMultiInstance_Single_0200234 finish callBackSeq = ' + data.data);
           expect(data.data).assertEqual(checkEventResults[checkIndex++]);
           expect(checkIndex).assertEqual(3);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
@@ -227,7 +204,7 @@ export default function abilityTest(abilityContext) {
         startId: 0,
         stepNum: 3,
         nextStep: 0,
-        step: ["StartA1", "StartB", "StartA2"]
+        step: ["StartA3", "StartB", "StartA2"]
       });
     })
 
@@ -238,12 +215,12 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_0300', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_0300====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId1", "AppC:onCreateonForeground",
+      let result;
+      let checkEventResults = ["AppA:onForegroundonAcceptWantCalledId1", "AppC:onCreateonForeground",
       "AppA:onForegroundonAcceptWantCalledId1"];
-      var checkIndex = 0;
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
@@ -298,12 +275,12 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_0400', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_0400====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId1", "AppC:onCreateonForeground",
-      "AppA:onCreateonForegroundonAcceptWantCalledId2"];
-      var checkIndex = 0;
+      let result;
+      let checkEventResults = ["AppA:onForegroundonAcceptWantCalledId3", "AppC:onForeground",
+      "AppA:onForegroundonAcceptWantCalledId2"];
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
@@ -312,7 +289,7 @@ export default function abilityTest(abilityContext) {
           clearTimeout(id);
           console.log('ACTS_AbilityMultiInstance_Single_0400 finish callBackSeq = ' + data.data);
           expect(data.data).assertEqual(checkEventResults[checkIndex++]);
-          expect(checkIndex).assertEqual(3);
+          expect(checkIndex).assertEqual(2);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           console.log('ACTS_AbilityMultiInstance_Single_0400 finish');
         } else if (data.event == "MultiInstanceStartNext") {
@@ -347,7 +324,7 @@ export default function abilityTest(abilityContext) {
         startId: 0,
         stepNum: 3,
         nextStep: 0,
-        step: ["StartA1", "StartC", "StartA2"]
+        step: ["StartA3", "StartC", "StartA2"]
       });
     })
 
@@ -358,12 +335,12 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_0600', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_0600====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId1",
-      "AppA:onCreateonForegroundonAcceptWantCalledId2"];
-      var checkIndex = 0;
+      let result;
+      let checkEventResults = ["AppA:onForegroundonAcceptWantCalledId1",
+      "AppA:onForegroundonAcceptWantCalledId2"];
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
@@ -418,12 +395,12 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_0700', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_0700====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId1", "AppB:onCreateonForeground",
-      "AppC:onCreateonForeground", "AppA:onForegroundonAcceptWantCalledId1"];
-      var checkIndex = 0;
+      let result;
+      let checkEventResults = ["AppA:onForegroundonAcceptWantCalledId1", "AppB:onCreateonForeground",
+      "AppC:onForeground", "AppA:onForegroundonAcceptWantCalledId1"];
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
@@ -432,7 +409,7 @@ export default function abilityTest(abilityContext) {
           clearTimeout(id);
           console.log('ACTS_AbilityMultiInstance_Single_0700 finish callBackSeq = ' + data.data);
           expect(data.data).assertEqual(checkEventResults[checkIndex++]);
-          expect(checkIndex).assertEqual(4);
+          expect(checkIndex).assertEqual(3);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           console.log('ACTS_AbilityMultiInstance_Single_0700 finish');
         } else if (data.event == "MultiInstanceStartNext") {
@@ -478,12 +455,12 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_0800', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_0800====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId1", "AppB:onCreateonForeground",
-      "AppC:onCreateonForeground", "AppA:onCreateonForegroundonAcceptWantCalledId2"];
-      var checkIndex = 0;
+      let result;
+      let checkEventResults = ["AppA:onForegroundonAcceptWantCalledId3", "AppB:onCreateonForeground",
+      "AppC:onForeground", "AppA:onCreateonForegroundonAcceptWantCalledId2"];
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
@@ -492,7 +469,7 @@ export default function abilityTest(abilityContext) {
           clearTimeout(id);
           console.log('ACTS_AbilityMultiInstance_Single_0800 finish callBackSeq = ' + data.data);
           expect(data.data).assertEqual(checkEventResults[checkIndex++]);
-          expect(checkIndex).assertEqual(4);
+          expect(checkIndex).assertEqual(3);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           console.log('ACTS_AbilityMultiInstance_Single_0800 finish');
         } else if (data.event == "MultiInstanceStartNext") {
@@ -527,7 +504,7 @@ export default function abilityTest(abilityContext) {
         startId: 0,
         stepNum: 4,
         nextStep: 0,
-        step: ["StartA1", "StartB", "StartC", "StartA2"]
+        step: ["StartA3", "StartB", "StartC", "StartA2"]
       });
     })
 
@@ -538,12 +515,12 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_0900', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_0900====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppB:onCreateonForeground", "AppA:onCreateonForegroundonAcceptWantCalledId1",
-      "AppC:onCreateonForeground", "AppA:onForegroundonAcceptWantCalledId1"];
-      var checkIndex = 0;
+      let result;
+      let checkEventResults = ["AppB:onCreateonForeground", "AppA:onForegroundonAcceptWantCalledId1",
+      "AppC:onForeground", "AppA:onForegroundonAcceptWantCalledId1"];
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
@@ -552,7 +529,7 @@ export default function abilityTest(abilityContext) {
           clearTimeout(id);
           console.log('ACTS_AbilityMultiInstance_Single_0900 finish callBackSeq = ' + data.data);
           expect(data.data).assertEqual(checkEventResults[checkIndex++]);
-          expect(checkIndex).assertEqual(4);
+          expect(checkIndex).assertEqual(3);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           console.log('ACTS_AbilityMultiInstance_Single_0900 finish');
         } else if (data.event == "MultiInstanceStartNext") {
@@ -598,12 +575,12 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_1000', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_1000====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppB:onCreateonForeground", "AppA:onCreateonForegroundonAcceptWantCalledId1",
-      "AppC:onCreateonForeground", "AppA:onCreateonForegroundonAcceptWantCalledId2"];
-      var checkIndex = 0;
+      let result;
+      let checkEventResults = ["AppB:onCreateonForeground", "AppA:onForegroundonAcceptWantCalledId1",
+      "AppC:onForeground", "AppA:onForegroundonAcceptWantCalledId2"];
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
@@ -612,7 +589,7 @@ export default function abilityTest(abilityContext) {
           clearTimeout(id);
           console.log('ACTS_AbilityMultiInstance_Single_1000 finish callBackSeq = ' + data.data);
           expect(data.data).assertEqual(checkEventResults[checkIndex++]);
-          expect(checkIndex).assertEqual(4);
+          expect(checkIndex).assertEqual(3);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           console.log('ACTS_AbilityMultiInstance_Single_1000 finish');
         } else if (data.event == "MultiInstanceStartNext") {
@@ -658,12 +635,12 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_1100', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_1100====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppD:onCreateonForegroundonAcceptWantCalledId1", "AppD:onCreateonForeground",
+      let result;
+      let checkEventResults = ["AppD:onCreateonForegroundonAcceptWantCalledId1", "AppD:onCreateonForeground",
       "AppD:onCreateonForeground", "AppD:onForegroundonAcceptWantCalledId1"];
-      var checkIndex = 0;
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
@@ -718,12 +695,12 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_1200', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_1200====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppD:onCreateonForegroundonAcceptWantCalledId1", "AppD:onCreateonForeground",
-      "AppD:onCreateonForeground", "AppD:onCreateonForegroundonAcceptWantCalledId2"];
-      var checkIndex = 0;
+      let result;
+      let checkEventResults = ["AppD:onCreateonForegroundonAcceptWantCalledId2", "AppD:onCreateonForeground",
+      "AppD:onForeground", "AppD:onForegroundonAcceptWantCalledId1"];
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
@@ -767,7 +744,7 @@ export default function abilityTest(abilityContext) {
         startId: 0,
         stepNum: 4,
         nextStep: 0,
-        step: ["StartDMain1", "StartDSec", "StartDThd", "StartDMain2"]
+        step: ["StartDMain2", "StartDSec", "StartDThd", "StartDMain1"]
       });
     })
 
@@ -778,11 +755,11 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_1300', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_1300====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppB:onCreateonForeground", "AppB:onCreateonForeground"];
-      var checkIndex = 0;
+      let result;
+      let checkEventResults = ["AppB:onCreateonForeground", "AppB:onCreateonForeground"];
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
@@ -837,11 +814,11 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_1400', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_1400====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppE:onInitonShow", "AppA:onCreateonForegroundonAcceptWantCalledId1"];
-      var checkIndex = 0;
+      let result;
+      let checkEventResults = ["AppE:onInitonShow", "AppA:onForegroundonAcceptWantCalledId1"];
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
@@ -896,11 +873,11 @@ export default function abilityTest(abilityContext) {
             */
     it('ACTS_AbilityMultiInstance_Single_1500', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_1500====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId1", "AppE:onInitonShow"];
-      var checkIndex = 0;
+      let result;
+      let checkEventResults = ["AppA:onForegroundonAcceptWantCalledId2", "AppE:onInitonShow"];
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
@@ -944,7 +921,7 @@ export default function abilityTest(abilityContext) {
         startId: 0,
         stepNum: 2,
         nextStep: 0,
-        step: ["StartA1", "StartE"]
+        step: ["StartA2", "StartE"]
       });
     })
 
@@ -955,11 +932,11 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_1600', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_1600====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId-1"];
-      var checkIndex = 0;
+      let result;
+      let checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId-1"];
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
@@ -1013,11 +990,11 @@ export default function abilityTest(abilityContext) {
     */
     it('ACTS_AbilityMultiInstance_Single_1700', 0, async function (done) {
       console.log('ACTS_AbilityMultiInstance_Single_1700====<begin');
-      var subscriber;
+      let subscriber;
       let id;
-      var result;
-      var checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId-2"];
-      var checkIndex = 0;
+      let result;
+      let checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId-2"];
+      let checkIndex = 0;
 
       function subscribeCallBack(err, data) {
         console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
