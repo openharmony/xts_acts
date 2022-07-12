@@ -114,7 +114,7 @@ export default function abilityTest(abilityContext) {
           expect(checkIndex).assertEqual(3);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback)
         } else if (data.event == "MultiInstanceStartNext") {
-          console.log('ACTS_AbilityMultiInstance_Single_010022 callBackSeq = ' + data.data);
+          console.log('ACTS_AbilityMultiInstance_Single_0100 callBackSeq = ' + data.data);
           expect(data.data).assertEqual(checkEventResults[checkIndex++]);
         }
       }
@@ -167,7 +167,7 @@ export default function abilityTest(abilityContext) {
 
         if (data.event == "MultiInstanceStartFinish") {
           clearTimeout(id);
-          console.log('ACTS_AbilityMultiInstance_Single_0200234 finish callBackSeq = ' + data.data);
+		  console.log('ACTS_AbilityMultiInstance_Single_0200 finish callBackSeq = ' + data.data);
           expect(data.data).assertEqual(checkEventResults[checkIndex++]);
           expect(checkIndex).assertEqual(3);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
