@@ -3,7 +3,8 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "300000",
-        "package": "com.example.actsamstestthirdscene",
+        "bundle-name": "com.example.actsamstestthirdscene",
+        "package-name": "com.example.actsamstestthirdscene",
         "shell-timeout": "600000"
     },
     "kits": [
