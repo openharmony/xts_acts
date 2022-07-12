@@ -1316,39 +1316,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'find findWnd: ' + JSON.stringify(findWnd));
       expect(!findWnd).assertTrue();
       done();
-    }) 
-    /**
-    * @tc.number     SUB_WINDOW_SETDENSITTYDPI_JSAPI_001
-    * @tc.name       Test setDensityDpiTest1
-    * @tc.desc       Verify Sets the screen pixel
-    */
-    it('setDensityDpiTest1', 0, async function (done) {
-      let caseName = 'setDensityDpiTest1';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let screens = await screenManager.getAllScreens().catch(err => {
-        unexpectedError(err, caseName, 'screenManager.getAllScreen', done);
-      })
-      console.log(msgStr + 'screenManager.getAllScreen' + JSON.stringify(screens));
-      expect(!!screens).assertTrue();
-      let dpiItem = [-80,80,1000,160,0,320,188.88,0,640,300];
-      for (let i = 0;i < dpiItem.length; i++) {
-        await sleep(1000);
-        await screens[0].setDensityDpi(dpiItem[i]).then(async()=>{
-          console.log(msgStr + 'screen.setDensityDpi success set DPI ' + dpiItem[i]);
-          let defaultDpi = await display.getDefaultDisplay().catch(err => {
-            console.log(msgStr + 'screen.setDensityDpi display.getDefaultDisplay failed');
-          });
-          console.log(msgStr + 'screen.setDensityDpi display.getDefaultDisplay'+JSON.stringify(defaultDpi));
-          let isEqual = defaultDpi.densityDPI == parseInt(dpiItem[i])
-          console.log(msgStr+'是否相同'+isEqual)
-          expect(isEqual).assertTrue()
-        }).catch(err => {
-          console.log(msgStr + 'screen.setDensityDpi failed set DPI error' + dpiItem[i]);
-        });
-      }
-      console.log(msgStr + 'done ');
-      done();
     })
     /**
     * @tc.number     SUB_WINDOW_SETDENSITTYDPI_JSAPI_001
