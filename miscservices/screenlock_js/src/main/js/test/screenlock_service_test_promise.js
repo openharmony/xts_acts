@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import screenLock from '@ohos.app.screenlockability';
+import screenLock from '@ohos.screenLock';
 import {describe, expect, it} from 'deccjsunit/index'
 
 const SLEEP_TIME = 1000;
 
 describe('ScreenLockServicePromiseTest', function () {
-    console.log("-----------------------ScreenlockPromiseTest is starting-----------------------");
+    console.info("-----------------------ScreenlockPromiseTest is starting-----------------------");
 
     function sleep(numberMillis) {
         var now = new Date();
@@ -41,21 +41,16 @@ describe('ScreenLockServicePromiseTest', function () {
         console.info("------------------start ScreenLock_Test_Promise_0100-------------------");
         var isScreenLocked = true;
         try {
-            screenLock.test_setScreenLocked(isScreenLocked).then((data) => {
-                console.log("ScreenLock_Test_Promise_0100 test_setScreenLocked  result is " + data);
-                expect(data == true).assertTrue();
-                screenLock.isScreenLocked().then((data) => {
-                    console.log("ScreenLock_Test_Promise_0100 isScreenLocked result is " + data);
-                    expect(data == true).assertTrue();
-                    done();
-                })
+            screenLock.isScreenLocked().then((data) => {
+                console.info("ScreenLock_Test_Promise_0100 isScreenLocked result is " + data);
+                expect(data == true).assertTrue()
             })
         } catch (error) {
-            console.log("ScreenLock_Test_Promise_0100 test_setScreenLocked : error = " + error);
-            expect(true).assertTrue();
-            done();
+            console.info("ScreenLock_Test_Promise_0100 test_setScreenLocked : error = " + error);
+            expect(true).assertTrue();    
         }
         console.info("------------------end ScreenLock_Test_Promise_0100-------------------");
+        done();
     });
 
     /*
@@ -68,21 +63,16 @@ describe('ScreenLockServicePromiseTest', function () {
         console.info("------------------start ScreenLock_Test_Promise_0200-------------------");
         var isScreenLocked = false;
         try {
-            screenLock.test_setScreenLocked(isScreenLocked).then((data) => {
-                console.log("ScreenLock_Test_Promise_0200 test_setScreenLocked  result is " + data);
-                expect(data == true).assertTrue();
-                screenLock.isScreenLocked().then((data) => {
-                    console.log("ScreenLock_Test_Promise_0200 isScreenLocked result is " + data);
-                    expect(data == false).assertTrue();
-                    done();
-                });
+            screenLock.isScreenLocked().then((data) => {
+                console.info("ScreenLock_Test_Promise_0200 isScreenLocked result is " + data);
+                expect(data == false).assertTrue();
             });
         } catch (error) {
-            console.log("ScreenLock_Test_Promise_0200 test_setScreenLocked : error = " + error);
+            console.info("ScreenLock_Test_Promise_0200 test_setScreenLocked : error = " + error);
             expect(true).assertTrue();
-            done();
         }
         console.info("------------------end ScreenLock_Test_Promise_0200-------------------");
+        done();
     });
 
     /*
@@ -95,16 +85,15 @@ describe('ScreenLockServicePromiseTest', function () {
         console.info("------------------start ScreenLock_Test_Promise_0300-------------------");
         try {
             screenLock.isSecureMode().then((data) => {
-                console.log("ScreenLock_Test_Promise_0300 isScreenLocked result is " + data);
+                console.info("ScreenLock_Test_Promise_0300 isScreenLocked result is " + data);
                 expect(data == false).assertTrue();
-                done();
             });
         } catch (error) {
-            console.log("ScreenLock_Test_Promise_0300 isScreenLocked TRUE: error = " + error);
+            console.info("ScreenLock_Test_Promise_0300 isScreenLocked TRUE: error = " + error);
             expect(true).assertTrue();
-            done();
         }
         console.info("------------------end ScreenLock_Test_Promise_0300-------------------");
+        done();
     });
 
     /*
@@ -116,41 +105,27 @@ describe('ScreenLockServicePromiseTest', function () {
     it("ScreenLock_Test_Promise_0400", 0, async function (done) {
         console.info("------------------start ScreenLock_Test_Promise_0400-------------------");
         try {
-            var isScreenLocked = true;
-            screenLock.test_setScreenLocked(isScreenLocked).then((data) => {
-                console.log("ScreenLock_Test_Promise_0400: test_setScreenLocked1 " + data + " result is successfull");
-            });
-
-            sleep(SLEEP_TIME);
             screenLock.unlockScreen().then(() => {
-                console.log("ScreenLock_Test_Promise_0400: send unlockScreen issue success");
+                console.info("ScreenLock_Test_Promise_0400: send unlockScreen issue success");
             });
-
             sleep(SLEEP_TIME);
             var unlockScreenResult = 0;
             var eventType = 'unlockScreenResult';
             screenLock.sendScreenLockEvent(eventType, unlockScreenResult).then((data) => {
-                console.log("ScreenLock_Test_Promise_0400: sendScreenLockEvent result is " + data);
+                console.info("ScreenLock_Test_Promise_0400: sendScreenLockEvent result is " + data);
                 expect(data == true).assertTrue();
             });
-
             sleep(SLEEP_TIME);
             screenLock.isScreenLocked().then((data) => {
-                console.log("ScreenLock_Test_Promise_0400: isScreenLocked result is " + data);
+                console.info("ScreenLock_Test_Promise_0400: isScreenLocked result is " + data);
                 expect(data == false).assertTrue();
-            });
-
-            sleep(SLEEP_TIME);
-            screenLock.test_setScreenLocked(isScreenLocked).then((data) => {
-                console.log("ScreenLock_Test_Promise_0400: test_setScreenLocked2 " + data + " result is successfull");
-                done();
             });
         } catch (error) {
             console.info("Screenlock_Test_1400: error = " + error);
             expect(true).assertTrue();
-            done();
         }
         console.info("------------------end ScreenLock_Test_Promise_0400-------------------");
+        done();
     });
 
     /*
@@ -162,36 +137,30 @@ describe('ScreenLockServicePromiseTest', function () {
     it("ScreenLock_Test_Promise_0500", 0, async function (done) {
         console.info("------------------start ScreenLock_Test_Promise_0500-------------------");
         try {
-            var isScreenLocked = true;
-            screenLock.test_setScreenLocked(isScreenLocked).then((data) => {
-                console.log("ScreenLock_Test_Promise_0500: test_setScreenLocked " + data + " result is successfull");
-            });
-
-            sleep(SLEEP_TIME);
             screenLock.unlockScreen().then(() => {
-                console.log("ScreenLock_Test_Promise_0500: send unlockScreen issue success");
+                console.info("ScreenLock_Test_Promise_0500: send unlockScreen issue success");
             });
 
             sleep(SLEEP_TIME);
             var unlockScreenResult = 1;
             var eventType = 'unlockScreenResult';
             screenLock.sendScreenLockEvent(eventType, unlockScreenResult).then((data) => {
-                console.log("ScreenLock_Test_Promise_0500: sendScreenLockEvent result is " + data);
+                console.info("ScreenLock_Test_Promise_0500: sendScreenLockEvent result is " + data);
                 expect(data == true).assertTrue();
             });
 
             sleep(SLEEP_TIME);
             screenLock.isScreenLocked().then((data) => {
-                console.log("ScreenLock_Test_Promise_0500: isScreenLocked result is " + data);
+                console.info("ScreenLock_Test_Promise_0500: isScreenLocked result is " + data);
                 expect(data == true).assertTrue();
                 done();
             });
         } catch (error) {
             console.info("logMessage ScreenLock_Test_Promise_0500: error = " + error);
             expect(true).assertTrue();
-            done();
         }
         console.info("------------------end ScreenLock_Test_Promise_0500-------------------");
+        done();
     });
 
 })
