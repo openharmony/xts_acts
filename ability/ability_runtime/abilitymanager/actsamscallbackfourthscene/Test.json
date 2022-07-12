@@ -1,9 +1,10 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "300000",
-        "package": "com.example.actsamscallbackfourthscene",
+        "bundle-name": "com.example.actsamscallbackfourthscene",
+        "package-name": "com.example.actsamscallbackfourthscene",
         "shell-timeout": "600000"
     },
     "kits": [
