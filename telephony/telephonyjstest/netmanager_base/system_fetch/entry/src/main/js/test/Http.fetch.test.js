@@ -18,7 +18,7 @@ import NetHttp from '@ohos.net.http';
 import fetch from '@system.fetch';
 import {describe, afterAll, it, expect, beforeAll, afterEach} from 'deccjsunit/index';
 
-describe("Telephony_NetStack_HttpTest", function () {
+describe("Telephony_NetStack_HttpFetchTest", function () {
 
     /**
      * @tc.number   Telephony_NetStack_HttpTestBasicGet_0100
@@ -44,7 +44,7 @@ describe("Telephony_NetStack_HttpTest", function () {
         http.request("https://httpbin.org/user-agent").then(function(data){
             console.info("NetStack "+ JSON.stringify(data));
             expect(data.responseCode === NetHttp.ResponseCode.OK).assertTrue()
-            expect(JSON.parse(data.result)["user-agent"] === "libcurl-agent/1.0").assertTrue()
+            expect(JSON.parse(data.result)["user-agent"] === "libcurl-agent/1.0").assertTrue();
             done();
         })
     });
@@ -174,7 +174,7 @@ describe("Telephony_NetStack_HttpTest", function () {
             success : function(data){
                 console.info("NetStack fetch success "+ JSON.stringify(data))
                 expect(data.code === 200).assertTrue()
-                expect(JSON.parse(data.data)["user-agent"] === "libcurl-agent/1.0").assertTrue()
+                expect(JSON.parse(data.result)["user-agent"] === "libcurl-agent/1.0").assertTrue();
                 done();
             },
             fail : function(){
@@ -200,7 +200,7 @@ describe("Telephony_NetStack_HttpTest", function () {
             success : function(data){
                 console.info("NetStack fetch success "+ JSON.stringify(data))
                 expect(data.code === 200).assertTrue()
-                expect(data.data["user-agent"] === "libcurl-agent/1.0").assertTrue()
+                expect(JSON.parse(data.result)["user-agent"] === "libcurl-agent/1.0").assertTrue();
                 done();
             },
             fail : function(){
