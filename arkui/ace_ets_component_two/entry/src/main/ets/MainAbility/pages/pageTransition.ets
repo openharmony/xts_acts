@@ -70,7 +70,6 @@ struct PageTransitionExample1 {
 
   onPageShow() {
     console.info('active page show called');
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack)
 
     var stateChangeEventOne = {
       eventId: 145,

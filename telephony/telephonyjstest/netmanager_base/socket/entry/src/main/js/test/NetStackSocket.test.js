@@ -227,6 +227,14 @@ describe('Telephony_NETSTACK_SocketTest', function () {
 
         it('Telephony_NetStack_UDPTest1200', 0, function (done) {
                 let udp = netSocket.constructUDPSocketInstance()
+                udp.on('message', function () {
+                })
+                udp.on('listening', function () {
+                })
+                udp.on('close', function () {
+                })
+                udp.on('error', function () {
+                })
                 udp.off('message', function () {
                         expect().assertFail()
                         done()
@@ -245,9 +253,6 @@ describe('Telephony_NETSTACK_SocketTest', function () {
                 })
                 done()
         });
-
-
-
 
         /**
          * @tc.number Telephony_NetStack_TCPTest0100
@@ -423,7 +428,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
                         expect().assertFail()
                         done()
                 })
-                tcp.on('listening', function () {
+                tcp.on('connect', function () {
                         expect().assertFail()
                         done()
                 })
@@ -446,11 +451,19 @@ describe('Telephony_NETSTACK_SocketTest', function () {
 
         it('Telephony_NetStack_TCPTest1200', 0, function (done) {
                 let tcp = netSocket.constructTCPSocketInstance()
+                tcp.on('message', function () {
+                })
+                tcp.on('connect', function () {
+                })
+                tcp.on('close', function () {
+                })
+                tcp.on('error', function () {
+                })
                 tcp.off('message', function () {
                         expect().assertFail()
                         done()
                 })
-                tcp.off('listening', function () {
+                tcp.off('connect', function () {
                         expect().assertFail()
                         done()
                 })

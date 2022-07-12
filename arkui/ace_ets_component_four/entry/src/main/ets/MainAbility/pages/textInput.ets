@@ -57,7 +57,6 @@ struct TextAreaExample2 {
     Column() {
       TextArea({ placeholder: 'input your word' })
         .key('TextInput')
-        .type(this.inputType)
         .placeholderColor("rgb(0,0,225)")
         .placeholderFont({ size: 30, weight: 100, family: 'cursive', style: FontStyle.Italic })
         .textAlign(this.textAlign)

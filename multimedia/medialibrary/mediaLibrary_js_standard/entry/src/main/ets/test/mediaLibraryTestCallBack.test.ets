@@ -17,13 +17,6 @@ import featureAbility from '@ohos.ability.featureAbility';
 import fileio from '@ohos.fileio';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 let fileKeyObj = mediaLibrary.FileKey;
-let fetchOp = {
-    selections: fileKeyObj.PATH + ' LIKE ? ',
-    selectionArgs: ['/data/media/%'],
-    order: fileKeyObj.PATH,
-};
-// let directoryTypeObj = mediaLibrary.DirectoryType;
-
 let DIR_CAMERA = mediaLibrary.DirectoryType.DIR_CAMERA;
 let DIR_VIDEO = mediaLibrary.DirectoryType.DIR_VIDEO;
 let DIR_IMAGE = mediaLibrary.DirectoryType.DIR_IMAGE;
@@ -227,7 +220,7 @@ export default function mediaLibraryTestCallBackTest(abilityContext){
                 media.getFileAssets(imageRelativefetchOp, async (err, fetchFileResult) => {
                     let count = 1;
                     let type = 'image';
-                    await checkFileAssetAttr(done, fetchFileResult, type, count)
+                    await checkFileAssetAttr(done, fetchFileResult, type, count, null)
                     done();
                 });
             } catch (error) {
@@ -250,7 +243,7 @@ export default function mediaLibraryTestCallBackTest(abilityContext){
                 media.getFileAssets(videoRelativefetchOp, async (err, fetchFileResult) => {
                     let count = 1;
                     let type = 'video';
-                    await checkFileAssetAttr(done, fetchFileResult, type, count)
+                    await checkFileAssetAttr(done, fetchFileResult, type, count, null)
                     done();
                 });
             } catch (error) {
@@ -273,7 +266,7 @@ export default function mediaLibraryTestCallBackTest(abilityContext){
                 media.getFileAssets(audioRelativefetchOp, async (err, fetchFileResult) => {
                     let count = 1;
                     let type = 'audio';
-                    await checkFileAssetAttr(done, fetchFileResult, type, count)
+                    await checkFileAssetAttr(done, fetchFileResult, type, count, null)
                     done();
                 });
             } catch (error) {
@@ -296,7 +289,7 @@ export default function mediaLibraryTestCallBackTest(abilityContext){
                 media.getFileAssets(fileRelativefetchOp, async (err, fetchFileResult) => {
                     let count = 1;
                     let type = 'file';
-                    await checkFileAssetAttr(done, fetchFileResult, type, count)
+                    await checkFileAssetAttr(done, fetchFileResult, type, count, null)
                     done();
                 });
             } catch (error) {
@@ -980,7 +973,31 @@ export default function mediaLibraryTestCallBackTest(abilityContext){
             }
         });
 
-
+        /**
+         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_RELEASE_001
+         * @tc.name      : release
+         * @tc.desc      : Release MediaLibrary instance
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_RELEASE_001', 0, async function (done) {
+            try {
+                console.info('MediaLibraryTest : release 001 begin');
+                media.release((err, data) => {
+                if (err == undefined) {
+                    expect(true).assertTrue();
+                    done();
+                } else {
+                    expect(false).assertTrue();
+                    done();
+                }});
+            } catch (error) {
+                console.info('MediaLibraryTest : release 001 failed, message = ' + error);
+                expect(false).assertTrue();
+                done();
+            }
+        });
     });
 }
 

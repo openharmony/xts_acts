@@ -71,6 +71,53 @@ export default function fetchFileResultCallBackTest(abilityContext) {
         afterAll(function () {
         });
 
+        /**
+     * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETFIRSTOBJECT_CALLBACK_003
+     * @tc.name      : getFirstObject
+     * @tc.desc      : Get FetchResult, get first object, check result
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+         it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETFIRSTOBJECT_CALLBACK_003', 0, async function (done) {
+            try {
+                console.info('MediaLibraryTest : FETCHRESULT getFirstObject 003 begin');
+                let mediaType = mediaLibrary.MediaType.IMAGE;
+                let dir = mediaLibrary.DirectoryType.DIR_IMAGE;
+                const path = await media.getPublicDirectory(dir);
+                let fileAsset = await media.createAsset(mediaType, 'forUri.jpg', path + 'myPicture/');
+                if (fileAsset == undefined) {
+                    console.info('MediaLibraryTest : FETCHRESULT createAsset fail');
+                    expect(false).assertTrue();
+                    done();
+                    return;
+                }
+                let fetchOption = {
+                    selections: '',
+                    selectionArgs: [],
+                    uri: fileAsset.uri,
+                    networkId: ''
+                }
+                let fetchFileResult = await media.getFileAssets(fetchOption);
+                fetchFileResult.getFirstObject(async (error, firstObject) => {
+                    if (firstObject == undefined) {
+                        expect(false).assertTrue();
+                        console.info('MediaLibraryTest : FETCHRESULT getFirstObject 003 fail');
+                        done();
+                    } else {
+                        expect(firstObject.displayName  == 'forUri.jpg').assertTrue();
+                        fetchFileResult.close();
+                        console.info('MediaLibraryTest : FETCHRESULT getFirstObject 003 end');
+                        done();
+                    }
+                });
+            } catch (error) {
+                console.info('MediaLibraryTest : FETCHRESULT getFirstObject 003 failed, message = ' + error);
+                expect(false).assertTrue();
+                done();
+            }
+        });
+
         // ------------------------------ 004 test start -------------------------
         /**
      * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETFIRSTOBJECT_CALLBACK_004
@@ -82,7 +129,7 @@ export default function fetchFileResultCallBackTest(abilityContext) {
      */
         it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETFIRSTOBJECT_CALLBACK_004', 0, async function (done) {
             try {
-                console.info('MediaLibraryTest : FETCHRESULT getFirstObject begin');
+                console.info('MediaLibraryTest : FETCHRESULT getFirstObject 004 begin');
                 let fetchFileResult = await media.getFileAssets(getFirstObjectOp);
                 fetchFileResult.getFirstObject(async (error, firstObject) => {
                     if (firstObject == undefined) {
@@ -334,7 +381,8 @@ export default function fetchFileResultCallBackTest(abilityContext) {
                         console.info('MediaLibraryTest : FETCHRESULT getNextObject 008_01  fail');
                         done();
                     } else {
-                        expect(0 < targetObjects.length <= 1).assertTrue();
+                        expect(targetObjects.length > 0).assertTrue();
+                        expect(targetObjects.length <= 1).assertTrue();
                         console.info('MediaLibraryTest : FETCHRESULT getPositionObject 008_01 end');
                         done();
                     }
@@ -365,7 +413,8 @@ export default function fetchFileResultCallBackTest(abilityContext) {
                         console.info('MediaLibraryTest : FETCHRESULT getNextObject 008_01  fail');
                         done();
                     } else {
-                        expect(0 < targetObjects.length <= 2).assertTrue();
+                        expect(targetObjects.length > 0).assertTrue();
+                        expect(targetObjects.length <= 2).assertTrue();
                         console.info('MediaLibraryTest :  FETCHRESULT getAllObject 008_02 targetObjects.length:'
                         + targetObjects.length);
                         console.info('MediaLibraryTest :  FETCHRESULT getAllObject 008_02 end');
@@ -398,7 +447,8 @@ export default function fetchFileResultCallBackTest(abilityContext) {
                         console.info('MediaLibraryTest : FETCHRESULT getNextObject 008_03  fail');
                         done();
                     } else {
-                        expect(0 < targetObjects.length <= 100).assertTrue();
+                        expect(targetObjects.length > 0).assertTrue();
+                        expect(targetObjects.length <= 100).assertTrue();
                         console.info('MediaLibraryTest : FETCHRESULT getAllObject 008_03 end');
                         done();
                     }

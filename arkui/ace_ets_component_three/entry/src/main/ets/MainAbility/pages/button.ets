@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct ButtonExample {
   @State buttonTypeValue: ButtonType = ButtonType.Normal;
-  @State fontSizeValue: number = 20;
+  @State fontSizeValue: string = '20px';
   @State fontColorValue: Color = Color.Black;
   @State text: string = '';
   @State onClickValue: boolean = false;
@@ -120,6 +120,7 @@ struct ButtonExample {
         .width(200)
         .height(100)
         .fontSize(20)
+        .position({x: 50,y: 400})
         .onClick((event: ClickEvent) => {
           console.info(this.text = 'Click Point:' + '\n  screenX:' + event.screenX + '\n  screenY:' + event.screenY
           + '\n  x :' + event.x + '\n  y:' + event.y + '\ntarget:' + '\n  component globalPos：（'

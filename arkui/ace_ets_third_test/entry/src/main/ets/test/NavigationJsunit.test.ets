@@ -36,10 +36,12 @@ export default function navigationJsunit() {
     */
     beforeEach(async function (done) {
       console.info('[navigationTest] before each called')
+      await sleep(1)
       let options = {
         uri: 'pages/Navigation',
       }
       try {
+        router.clear();
         let result = router.push(options)
         console.info("push navigation page success " + JSON.stringify(result));
       } catch (err) {
