@@ -118,7 +118,7 @@ export default {
             style3:styleValue3,
             style4:styleValue4,
             style5:styleValue5,
-            style6:styleValue6,
+            style6:styleValue6
         }
     },
 

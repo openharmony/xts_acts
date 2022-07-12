@@ -28,9 +28,7 @@ struct PanGestureExample {
     .key('panDirection').height(100).width(200).padding(20).border({ width: 1 }).margin(80)
     .translate({ x: this.offsetX, y: this.offsetY, z: 5 })
     .gesture(
-    PanGesture({})
-      .direction(this.direction)
-      .setDirection(this.direction)
+    PanGesture({direction:this.direction})
       .onActionStart((event: PanGestureEvent) => {
         console.info('Pan start')
       })

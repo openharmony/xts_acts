@@ -54,10 +54,7 @@ struct PanGestureExample {
     .translate({ x: this.offsetX, y: this.offsetY, z: 5 })
     .touchable(this.touchable)
     .gesture(
-    PanGesture({})
-      .setDirection(PanDirection.All)
-      .setDistance(1)
-      .setFingers(1)
+    PanGesture({ fingers: 1, direction: PanDirection.All, distance: 1 })
       .onActionStart((event: PanGestureEvent) => {
         console.info('Pan start')
         console.log('PanGesture globalX' + event.globalX);

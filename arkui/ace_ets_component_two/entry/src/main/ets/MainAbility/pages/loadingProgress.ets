@@ -48,6 +48,7 @@ struct LoadingProgressExample {
         .width('90%')
         .key('LP')
       LoadingProgress()
+        .height(50)
         .color(Color.Black)
     }.width('100%').margin({ top: 6 })
   }
