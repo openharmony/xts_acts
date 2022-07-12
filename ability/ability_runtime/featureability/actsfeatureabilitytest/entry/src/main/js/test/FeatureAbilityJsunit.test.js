@@ -25,6 +25,7 @@ const CREATELOCALDIR = "/data/storage/el2/base/haps/entry";
 const START_ABILITY_TIMEOUT = 4000;
 const TERMINATE_ABILITY_TIMEOUT = 1000;
 const TIMEOUT = 1000;
+const errCode = 1;
 var subscriberInfoActsStartAbility0100 = {
     events: ["ACTS_StartAbility_0100_CommonEvent"],
 };
@@ -1845,7 +1846,7 @@ describe('ActsFeatureAbilityTest', function () {
             featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
                 console.log('ACTS_StartAbility_0700 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
-                expect(err.code == 2097152).assertTrue();
+                expect(errCode).assertEqual(error.code);
                 done();
             });
         }catch(error){
