@@ -22,8 +22,8 @@
 namespace OHOS {
     class ActsDeqpgles310016TestSuite : public testing::Test {
     public:
-        static time_t starttime;
-        static time_t endtime;
+        static time_t startTime;
+        static time_t endTime;
         static FuncRunResult runResult;
     protected:
         // Preset action of the test suite, which is executed before the first test case
@@ -31,9 +31,9 @@ namespace OHOS {
         // Test suite cleanup action, which is executed after the last test case
         static void TearDownTestCase(void);
         // Preset action of the test case
-        virtual void SetUp();
+        virtual void SetUp(void);
         // Cleanup action of the test case
-        virtual void TearDown();
+        virtual void TearDown(void);
     };
 } // namespace OHOS
 
