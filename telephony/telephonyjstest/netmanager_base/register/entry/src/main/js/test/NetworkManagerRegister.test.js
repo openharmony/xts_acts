@@ -2325,6 +2325,7 @@
                  console.info(`${caseName} register fail ${error}`);
              }
          });
+         await sleep(1000);
          netConn.unregister((error) => {
              if (error) {
                  console.info(`${caseName} unregister result : ${error}`);
@@ -2412,6 +2413,7 @@
                  console.info(`${caseName} register fail ${error}`);
              }
          });
+         await sleep(1000);
          netConn.unregister((error) => {
              if (error) {
                  console.info(`${caseName} unregister result : ${error}`);
@@ -2493,14 +2495,18 @@
                  done();
              }
          });
-
+         netConn.register((error) => {
+             if (error) {
+                 console.info(`${caseName} register fail ${error}`);
+             }
+         });
+         await sleep(1000);
          netConn.unregister((error) => {
              if (error) {
                  console.info(`${caseName} unregister result : ${error}`);
                  expect().assertFail();
                  done();
              }
-            await sleep(1000);
              done();
          });
          done();
