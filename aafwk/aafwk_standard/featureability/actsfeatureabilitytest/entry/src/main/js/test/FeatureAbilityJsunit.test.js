@@ -1081,7 +1081,7 @@ describe('ActsFeatureAbilityTest', function () {
                     tempInfo = data
                 }
         });
-        console.info("ACTS_GetAppType_0100 getAppType promise info :" + JSON.stringify(tempInfo))
+        console.info("ACTS_GetAppType_0200 getAppType callback info :" + JSON.stringify(tempInfo))
         setTimeout(function () {
             console.info('====> ACTS_GetAppType_0200 =====>' + JSON.stringify(tempInfo))
             checkAppType(tempInfo);
