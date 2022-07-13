@@ -63,14 +63,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       on: false,
       typeStr: '',
     };
+    var newWindowObj = null;
     beforeAll(function () {
       appWindowTypeArr = Object.keys(appWindowTypeDic);
       systemWindowTypeArr = Object.keys(systemWindowTypeDic);
-      for (i in ohosWindow.WindowType) {
+      for (var i in ohosWindow.WindowType) {
         windowTypeArr.push(ohosWindow.WindowType[i]);
       }
       console.log('jsunittest beforeall');
-      console.log(msgStr + 'beforeall ohosWindow.windowType' + JSON.stringify(ohosWindow.windowType))
+      console.log('beforeall ohosWindow.windowType' + JSON.stringify(ohosWindow.WindowType))
     })
     beforeEach(function () {
     })
@@ -762,7 +763,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               done();
             }
           } else {
-            expectedError(err, caseName, 'ohosWindow.create ' + tempType, done);
+            unexpectedError(err, caseName, 'ohosWindow.create ' + tempType, done);
           }
         })
       }
@@ -827,7 +828,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           done();
           return;
         }
-        expectedError(err, caseName, 'ohosWindow.create', done);
+        unexpectedError(err, caseName, 'ohosWindow.create', done);
       })
     })
 
@@ -1012,7 +1013,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             console.log(msgStr + 'tempWnd.setWindowType data' + JSON.stringify(data));
             console.log(msgStr + 'tempWnd.setWindowType !!data' + !!data);
             if (!!data) {
-              expectedError(err, caseName, 'tempWnd.setWindowType', done);
+              unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
             } else {
               expect(err.code == 1003).assertTrue();
               done();
@@ -1058,7 +1059,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
                   expect(err.code == 1001).assertTrue();
                   done();
                 } else {
-                  expectedError(err, caseName, 'tempWnd.setWindowType', done);
+                  unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
                 }
               })
             }
@@ -1092,7 +1093,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             console.log(msgStr + 'tempWnd.loadContent data' + JSON.stringify(data));
             console.log(msgStr + 'tempWnd.loadContent !data' + !data);
             if (err && err.code) {
-              expectedError(err, caseName, 'tempWnd.loadContent', done);
+              unexpectedError(err, caseName, 'tempWnd.loadContent', done);
             } else {
               expect(!data).assertTrue();
               done();
@@ -1130,7 +1131,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               expect(err.code === 1003).assertTrue();
               done();
             } else {
-              expectedError(err, caseName, 'tempWnd.loadContent', done);
+              unexpectedError(err, caseName, 'tempWnd.loadContent', done);
             }
           })
         } else {
@@ -1428,7 +1429,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         if (err && err.code)unexpectedError(err, caseName, 'screenManager.setScreenRotationLocked(true)', done);
         console.log(msgStr + 'screenManager.setScreenRotationLocked err: ' + JSON.stringify(err));
         console.log(msgStr + 'screenManager.setScreenRotationLocked true data: ' + JSON.stringify(data));
-        expect(!data).assertTrue();
         screenManager.isScreenRotationLocked((err, data) => {
           if (err && err.code)unexpectedError(err, caseName, 'screenManager.isScreenRotationLocked', done);
           console.log(msgStr + 'screenManager.isLocked err: ' + JSON.stringify(err));
@@ -1438,7 +1438,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
             if (err && err.code)unexpectedError(err, caseName, 'screenManager.setScreenRotationLocked(false)', done);
             console.log(msgStr + 'screenManager.setScreenRotationLocked err: ' + JSON.stringify(err));
             console.log(msgStr + 'screenManager.setScreenRotationLocked true data: ' + JSON.stringify(data));
-            expect(!data).assertTrue();
             screenManager.isScreenRotationLocked((err, data) => {
               if (err && err.code)unexpectedError(err, caseName, 'screenManager.isScreenRotationLocked', done);
               console.log(msgStr + 'screenManager.isLocked err: ' + JSON.stringify(err));
