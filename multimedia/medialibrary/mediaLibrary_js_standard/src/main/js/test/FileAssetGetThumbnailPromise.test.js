@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import mediaLibrary from '@ohos.multimedia.medialibrary';
+import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import image from '@ohos.multimedia.image';
 import featureAbility from '@ohos.ability.featureAbility';
 

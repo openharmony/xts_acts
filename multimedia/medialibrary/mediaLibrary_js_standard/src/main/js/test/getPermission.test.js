@@ -13,28 +13,30 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll,afterAll, it, expect } from 'deccjsunit/index';
+import { describe, beforeAll, afterAll, it, expect } from 'deccjsunit/index';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundle from '@ohos.bundle';
+import account from '@ohos.account.osAccount'
 
-describe("get_permission", function () {
-
-  /**
-   * @tc.number SUB_DF_GRANT_USER_GRANTED_PERMISSION_0000
-   * @tc.name grant_user_granted_permission_async_000
-   * @tc.desc Test grantUserGrantedPermission() interfaces, grant permission.
-   * @tc.size MEDIUM
-   * @tc.type Function
-   * @tc.level Level 0
-   * @tc.require
-   */
+describe("get_permission", async function () {
+    let userId = await account.getAccountManager().getOsAccountLocalldFromProcess();
+    console.info('userId :' + userId);
+    /**
+     * @tc.number SUB_DF_GRANT_USER_GRANTED_PERMISSION_0000
+     * @tc.name grant_user_granted_permission_async_000
+     * @tc.desc Test grantUserGrantedPermission() interfaces, grant permission.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
     it("grant_user_granted_permission_async_000", 0, async function (done) {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.mediaLibrary', 0, 100);
+        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.mediaLibrary', 0, userId);
         let tokenID = appInfo.accessTokenId;
         let atManager = abilityAccessCtrl.createAtManager();
-        let result1 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.MEDIA_LOCATION",1);
-        let result2 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_MEDIA",1);
-        let result3 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.WRITE_MEDIA",1);
+        let result1 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.MEDIA_LOCATION", 1);
+        let result2 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_MEDIA", 1);
+        let result3 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.WRITE_MEDIA", 1);
         let isGranted1 = await atManager.verifyAccessToken(tokenID, "ohos.permission.MEDIA_LOCATION");
         let isGranted2 = await atManager.verifyAccessToken(tokenID, "ohos.permission.READ_MEDIA");
         let isGranted3 = await atManager.verifyAccessToken(tokenID, "ohos.permission.WRITE_MEDIA");

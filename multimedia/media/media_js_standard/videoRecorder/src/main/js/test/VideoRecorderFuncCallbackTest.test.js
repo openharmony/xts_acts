@@ -19,8 +19,9 @@ import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import account from '@ohos.account.osAccount'
 
-describe('VideoRecorderFuncCallbackTest', function () {
+describe('VideoRecorderFuncCallbackTest', async function () {
     const RECORDER_TIME = 3000;
     const PAUSE_TIME = 1000;
     const END_EVENT = 'end';
@@ -90,7 +91,8 @@ describe('VideoRecorderFuncCallbackTest', function () {
     function sleep(time) {
         for(let t = Date.now();Date.now() - t <= time;);
     }
-
+    let userId = await account.getAccountManager().getOsAccountLocalldFromProcess();
+    console.info('userId :' + userId);
     beforeAll(async function () {
         await initCamera();
         await applyPermission();
@@ -112,7 +114,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.video.videorecorder', 0, 100);
+        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.video.videorecorder', 0, userId);
         let atManager = abilityAccessCtrl.createAtManager();
         if (atManager != null) {
             let tokenID = appInfo.accessTokenId;

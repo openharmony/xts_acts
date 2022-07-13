@@ -18,8 +18,9 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import account from '@ohos.account.osAccount'
 
-describe('RecorderLocalTestAudioFUNC', function () {
+describe('RecorderLocalTestAudioFUNC', async function () {
     let audioRecorder = media.createAudioRecorder();
     const END_STATE = 0;
     const PRE_STATE = 1;
@@ -48,7 +49,8 @@ describe('RecorderLocalTestAudioFUNC', function () {
         uri : 'file:///data/accounts/account_0/appdata/appdata/recorder/test.m4a',
         location : { latitude : 1, longitude : 1 },
     }
-
+    let userId = await account.getAccountManager().getOsAccountLocalldFromProcess();
+    console.info('userId :' + userId);
     function sleep(time) {
         for(let t = Date.now();Date.now() - t <= time;);
     }
@@ -80,7 +82,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
     })
 
     async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.audiorecorder', 0, 100);
+        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.audiorecorder', 0, userId);
         let atManager = abilityAccessCtrl.createAtManager();
         if (atManager != null) {
             let tokenID = appInfo.accessTokenId;
