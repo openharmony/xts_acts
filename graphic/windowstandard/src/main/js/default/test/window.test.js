@@ -1965,6 +1965,54 @@ describe('window_test', function () {
     })
 
     /**
+  * @tc.number		SUB_WMS_ENUM_AvoidAreaType_JSAPI_001
+  * @tc.name			Test enumAvoidAreaType_Test_001.
+  * @tc.desc			To test the enum value of AvoidAreaType.
+  */
+    it('enumAvoidAreaType_Test_001', 0, async function (done) {
+        console.info('windowTest the enum value of AvoidAreaType begin');
+        try {
+            expect(0).assertEqual(window.AvoidAreaType.TYPE_SYSTEM);
+            expect(1).assertEqual(window.AvoidAreaType.TYPE_CUTOUT);
+            expect(2).assertEqual(window.AvoidAreaType.TYPE_SYSTEM_GESTURE);
+            expect(3).assertEqual(window.AvoidAreaType.TYPE_KEYBOARD);
+            done();
+        } catch (err) {
+            console.info('windowTest enum value of AvoidAreaType error ' + JSON.stringify(err));
+            expect.assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number		SUB_WMS_ENUM_Orientation_JSAPI_001
+     * @tc.name			Test enumOrientation_Test_001.
+     * @tc.desc			To test the enum value of Orientation.
+    */
+    it('enumOrientation_Test_001', 0, async function (done) {
+        console.info('windowTest the enum value of Orientation begin');
+        try {
+            expect(0).assertEqual(window.Orientation.UNSPECIFIED);
+            expect(1).assertEqual(window.Orientation.PORTRAIT);
+            expect(2).assertEqual(window.Orientation.LANDSCAPE);
+            expect(3).assertEqual(window.Orientation.PORTRAIT_INVERTED);
+            expect(4).assertEqual(window.Orientation.LANDSCAPE_INVERTED);
+            expect(5).assertEqual(window.Orientation.AUTO_ROTATION);
+            expect(6).assertEqual(window.Orientation.AUTO_ROTATION_PORTRAIT);
+            expect(7).assertEqual(window.Orientation.AUTO_ROTATION_LANDSCAPE);
+            expect(8).assertEqual(window.Orientation.AUTO_ROTATION_RESTRICTED);
+            expect(9).assertEqual(window.Orientation.AUTO_ROTATION_PORTRAIT_RESTRICTED);
+            expect(10).assertEqual(window.Orientation.AUTO_ROTATION_LANDSCAPE_RESTRICTED);
+            expect(11).assertEqual(window.Orientation.LOCKED);
+            done();
+        } catch (err) {
+            console.info('windowTest enum value of Orientation error ' + JSON.stringify(err));
+            expect.assertFail();
+            done();
+        }
+    })
+
+    /**
      * @tc.number		SUB_WMS_ENUM_WINDOWTYPE_JSAPI_001
      * @tc.name			Test enumWindowType_Test_001.
      * @tc.desc			To test the enum value of WindowType.
