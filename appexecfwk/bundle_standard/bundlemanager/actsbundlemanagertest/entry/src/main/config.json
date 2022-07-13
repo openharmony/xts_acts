@@ -46,29 +46,6 @@
         "launchType": "standard"
       }
     ],
-    "defPermissions": [
-      {
-        "name": "com.permission.CAMERA",
-        "grantMode": "system_grant",
-        "availableScope": ["signature"],
-        "label": "CAMERA permission",
-        "description": "CAMERA permission in detail"
-      },
-      {
-        "name": "com.permission.music",
-        "grantMode": "system_grant",
-        "availableScope": ["signature"],
-        "label": "music permission",
-        "description": "music permission in detail"
-      },
-      {
-        "name": "com.permission.WeChat",
-        "grantMode": "system_grant",
-        "availableScope": ["signature"],
-        "label": "WeChat permission",
-        "description": "WeChat permission in detail"
-      }
-    ],
     "reqPermissions": [
       {
         "name":"ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",

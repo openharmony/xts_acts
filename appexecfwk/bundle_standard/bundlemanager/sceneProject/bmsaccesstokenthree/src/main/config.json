@@ -66,30 +66,10 @@
         }
       }
     ],
-    "definePermissions":[
-      {
-          "availableLevel":"normal",
-          "description":"ALPHA description",
-          "distributedSceneEnable":true,
-          "grantMode":"user_grant",
-          "label":"ALPHA label",
-          "name":"ohos.permission.ALPHA",
-          "provisionEnable":true
-      },
-      {
-          "availableLevel":"normal",
-          "description":"BETA description",
-          "distributedSceneEnable":true,
-          "grantMode":"user_grant",
-          "label":"BETA label",
-          "name":"ohos.permission.BETA",
-          "provisionEnable":true
-      }
-    ],
     "reqPermissions":[
       {
-          "name":"ohos.permission.ALPHA",
-          "reason":"use ohos.permission.ALPHA"
+          "name":"ohos.permission.READ_CALENDAR",
+          "reason":"use ohos.permission.READ_CALENDAR"
       },
       {
         "name": "ohos.permission.KEEP_BACKGROUND_RUNNING",
