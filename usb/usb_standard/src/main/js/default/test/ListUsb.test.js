@@ -27,5 +27,6 @@ require('./UsbFunctionsJsunitEx.test.js')
 /* device and host test case */
 require('./UsbPortJsunit.test.js')
 require('./UsbPortJsunitEx.test.js')
+// require('./UsbPortAndFunctionJsunit.test.js')
 
 require('./UsbAutoJsunit.test.js')
