@@ -385,7 +385,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testSetParameter002, Function | MediumTes
     char key[] = "_._..__...___";
     char value[] = "！@#￥%……&*（）——+~《》？，。、“‘；：、12345767890";
     ret = SetParameter(key, value);
-    TEST_ASSERT_EQUAL_INT(0, ret);
+    TEST_ASSERT_EQUAL_INT(-9, ret);
 };
 
 /**
@@ -427,14 +427,14 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testSetParameter005, Function | MediumTes
 {
     int ret;
 
-    char key1[] = "rw.sys.version.version.version.";
+    char key1[] = "rw.sys.version.version.version";
     char value1[] = "set with key = 31";
     ret = SetParameter(key1, value1);
     TEST_ASSERT_EQUAL_INT(0, ret);
 
     char key2[] = "rw.sys.version.version";
-    char value2[] = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890\
-abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrs";
+    char value2[] = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklm\
+nopqrstuvwxyz1234567890abcdefghijklmnopqrstuvw";
     ret = SetParameter(key2, value2);
     TEST_ASSERT_EQUAL_INT(0, ret);
 };
@@ -642,8 +642,8 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testGetParameter002, Function | MediumTes
     char value[MAX_LEN] = {0};
     SetParameter(key, rightVal);
     ret = GetParameter(key, g_defSysParam, value, MAX_LEN);
-    TEST_ASSERT_EQUAL_INT(strlen(rightVal), ret);
-    TEST_ASSERT_EQUAL_STRING(rightVal, value);
+    TEST_ASSERT_EQUAL_INT(strlen(g_defSysParam), ret);
+    TEST_ASSERT_EQUAL_STRING(g_defSysParam, value);
 };
 
 /**
@@ -725,7 +725,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testGetParameter007, Function | MediumTes
 {
     int ret;
 
-    char key1[] = "rw.sys.version.version.version.";
+    char key1[] = "rw.sys.version.version.version";
     char rightVal1[] = "set with key = 31";
     char value1[MAX_LEN] = {0};
     SetParameter(key1, rightVal1);
@@ -734,8 +734,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testGetParameter007, Function | MediumTes
     TEST_ASSERT_EQUAL_STRING(rightVal1, value1);
 
     char key2[] = "rw.sys.version.version";
-    char rightVal2[] = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890\
-abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrs";
+    char rightVal2[] = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvw";
     char value2[MAX_LEN] = {0};
     SetParameter(key2, rightVal2);
     ret = GetParameter(key2, g_defSysParam, value2, MAX_LEN);
@@ -794,7 +793,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testGetParameter010, Function | MediumTes
     char key[] = "none.exist.key";
     char value[INVALID_LEN] = {0};
     ret = GetParameter(key, g_defSysParam, value, INVALID_LEN);
-    TEST_ASSERT_EQUAL_INT(-1, ret);
+    TEST_ASSERT_EQUAL_INT(-9, ret);
 };
 
 /**
@@ -809,7 +808,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite, testGetParameter011, Function | MediumTes
     char key[] = "none.exist.key";
     char value[MAX_LEN] = {0};
     ret = GetParameter(key, NULL, value, MAX_LEN);
-    TEST_ASSERT_EQUAL_INT(-1, ret);
+    TEST_ASSERT_EQUAL_INT(-9, ret);
 };
 
 /**
