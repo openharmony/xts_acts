@@ -110,6 +110,9 @@ describe('VideoSoftwareDecoderFuncPromiseTest', function () {
         232, 250, 248, 281, 219, 243, 293, 287, 253, 328, 3719];
     let fdRead;
     let readpath;
+    let outputCnt = 0;
+    let inputCnt = 0;
+    let frameThreshold = 10;
 
     beforeAll(function() {
         console.info('beforeAll case');
@@ -129,6 +132,8 @@ describe('VideoSoftwareDecoderFuncPromiseTest', function () {
         isCodecData = false;
         inputEosFlag = false;
         surfaceID = globalThis.value;
+        outputCnt = 0;
+        inputCnt = 0;
     })
 
     afterEach(async function() {
@@ -219,6 +224,7 @@ describe('VideoSoftwareDecoderFuncPromiseTest', function () {
         }
         videoDecodeProcessor.pushInputData(inputObject).then(() => {
             console.info('in case: queueInput success ');
+            inputCnt += 1;
         }, failCallback).catch(failCatch);          
     }
 
@@ -243,6 +249,11 @@ describe('VideoSoftwareDecoderFuncPromiseTest', function () {
 
         videoDecodeProcessor.on('newOutputData', async (outBuffer) => {
             console.info('in case: outputBufferAvailable outBuffer.index: '+ outBuffer.index);
+            outputCnt += 1;
+            if (outputCnt == 1 && outBuffer.flags == 1) {
+                console.info("case error occurs! first output is EOS");
+                expect().assertFail();
+            }
             dequeueOutputs(nextStep, outBuffer);
         });
 
@@ -302,6 +313,7 @@ describe('VideoSoftwareDecoderFuncPromiseTest', function () {
             console.info('in case : release success');
         }, failCallback).catch(failCatch);
         videoDecodeProcessor = null;
+        expect(outputCnt).assertClose(inputCnt, frameThreshold);
         console.info('in case : done');
         done();
     });

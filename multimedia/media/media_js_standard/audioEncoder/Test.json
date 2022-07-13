@@ -38,9 +38,7 @@
                 "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.audio.audioencoder/haps/entry/files/",
                 "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.audio.audioencoder/haps/entry/files/*",
                 "chmod 777 -R  /storage/media/100/local/files/",
-                "chmod 777 /storage/media/100/local/files/*",
-                "killall com.ohos.medialibrary.MediaScannerAbilityA",
-                "aa start  -a MediaScannerAbility -b com.ohos.medialibrary.MediaScannerAbilityA"
+                "chmod 777 /storage/media/100/local/files/*"
             ],
             "teardown-command":[
             ]

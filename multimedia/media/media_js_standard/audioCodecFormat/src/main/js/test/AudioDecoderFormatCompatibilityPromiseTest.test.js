@@ -16,7 +16,6 @@
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
 import featureAbility from '@ohos.ability.featureAbility'
-import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
@@ -2100,18 +2099,12 @@ describe('AudioDecoderFormatCompatibilityPromise', function () {
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
     const context = featureAbility.getContext();
-    const mediaTest = mediaLibrary.getMediaLibrary(context);
-    let fileKeyObj = mediaLibrary.FileKey;
+    let outputCnt = 0;
+    let inputCnt = 0;
+    let frameThreshold = 10;
 
     beforeAll(async function() {
         console.info('beforeAll case 1');
-        let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
-        let permissionName2 = 'ohos.permission.READ_MEDIA';
-        let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-        let permissionNameList = [permissionName1, permissionName2, permissionName3];
-        let appName = 'ohos.acts.multimedia.audio.codecformat';
-        await mediaTestBase.applyPermission(appName, permissionNameList);
-        console.info('beforeAll case after get permission');
     })
 
     beforeEach(function() {
@@ -2134,6 +2127,8 @@ describe('AudioDecoderFormatCompatibilityPromise', function () {
         isMp3 = false;
         isVorbis = false;
         ES_DICT = {}
+        outputCnt = 0;
+        inputCnt = 0;
     })
 
     afterEach(async function() {
@@ -2188,49 +2183,15 @@ describe('AudioDecoderFormatCompatibilityPromise', function () {
                 audioDecodeProcessor = null;
             }, failCallback).catch(failCatch);
         }
+        inputCnt = 0;
+        outputCnt = 0;
         await closeFdRead();
-        await closeFdWrite();
-    }
-
-    async function getFdWrite(pathName) {
-        console.info('[mediaLibrary] case start getFdWrite');
-        console.info('[mediaLibrary] case getFdWrite pathName is ' + pathName);
-        let mediaType = mediaLibrary.MediaType.AUDIO;
-        console.info('[mediaLibrary] case mediaType is ' + mediaType);
-        let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO);
-        console.info('[mediaLibrary] case getFdWrite publicPath is ' + publicPath);
-        let dataUri = await mediaTest.createAsset(mediaType, pathName, publicPath);
-        if (dataUri != undefined) {
-            let args = dataUri.id.toString();
-            let fetchOp = {
-                selections : fileKeyObj.ID + "=?",
-                selectionArgs : [args],
-            }
-            let fetchWriteFileResult = await mediaTest.getFileAssets(fetchOp);
-            console.info('[mediaLibrary] case getFdWrite getFileAssets() success');
-            fileAssetWrite = await fetchWriteFileResult.getAllObject();
-            console.info('[mediaLibrary] case getFdWrite getAllObject() success');
-            fdWrite = await fileAssetWrite[0].open('Rw');
-            console.info('[mediaLibrary] case getFdWrite fdWrite is ' + fdWrite);
-        }
     }
 
     async function getFdRead(readPath, done) {
         await mediaTestBase.getFdRead(readPath, done).then((fdNumber) => {
             fdRead = fdNumber;
         })
-    }
-
-    async function closeFdWrite() {
-        if (fileAssetWrite != null) {
-            await fileAssetWrite[0].close(fdWrite).then(() => {
-                console.info('[mediaLibrary] case close fdWrite success, fd is ' + fdWrite);
-            }).catch((err) => {
-                console.info('[mediaLibrary] case close fdWrite failed');
-            });
-        } else {
-            console.info('[mediaLibrary] case fileAssetWrite is null');
-        }
     }
 
     async function closeFdRead() {
@@ -2297,7 +2258,8 @@ describe('AudioDecoderFormatCompatibilityPromise', function () {
             }
             frameCnt += 1;
             audioDecodeProcessor.pushInputData(inputobject).then(() => {
-                console.info("pushInputData success")
+                console.info("pushInputData success");
+                inputCnt += 1;
             })
         }
     }
@@ -2307,6 +2269,7 @@ describe('AudioDecoderFormatCompatibilityPromise', function () {
             let outputobject = queue.shift();
             if (outputobject.flags == 1) {
                 sawOutputEOS = true;
+                expect(outputCnt).assertClose(inputCnt, frameThreshold);
                 await audioDecodeProcessor.stop().then(() => {
                     console.log("stop success");
                 }, failCallback).catch(failCatch);
@@ -2327,7 +2290,6 @@ describe('AudioDecoderFormatCompatibilityPromise', function () {
                 }
             }
             else{
-                writeFile(outputobject.data, outputobject.length);
                 console.log("write to file success");
             }
             audioDecodeProcessor.freeOutputBuffer(outputobject).then(() => {
@@ -2352,6 +2314,11 @@ describe('AudioDecoderFormatCompatibilityPromise', function () {
         });
         audioDecodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info("newOutputData");
+            outputCnt += 1;
+            if (outputCnt == 1 && outBuffer.flags == 1) {
+                console.info("case error occurs! first output is EOS");
+                expect().assertFail();
+            }
             if (needGetMediaDes) {
                 audioDecodeProcessor.getOutputMediaDescription().then((MediaDescription) => {
                     console.log("get OutputMediaDescription success");
@@ -2447,9 +2414,6 @@ describe('AudioDecoderFormatCompatibilityPromise', function () {
         console.info('start test case');
         let mediaDescription = config;
         let decodeMime = mime;
-
-        await getFdWrite(savePath);
-        console.info('case getFdWrite success');
         await getFdRead(readPath, done);
         console.info('case getFdRead success');
         await media.createAudioDecoderByMime(decodeMime).then((processor) => {
