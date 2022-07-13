@@ -22,6 +22,7 @@ import bundle from '@ohos.bundle'
 
 describe('Image', function () {
     var pathExifJpg = '/data/storage/el2/base/files/test_exif.jpg';
+    var pathExifJpg1 = '/data/storage/el2/base/files/test_exif1.jpg';	
     let globalpixelmap;
     beforeAll(async function () {
         await applyPermission();
@@ -1230,7 +1231,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_171', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        let fdNumber = fileio.openSync(pathExifJpg1);
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_171 create image source failed');
@@ -1240,7 +1241,7 @@ describe('Image', function () {
             imageSourceApi.getImageProperty("BitsPerSample")
                 .then(data => {
                     console.info('TC_171 BitsPerSample ' + data);
-                    expect(data != undefined).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
@@ -1526,7 +1527,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_172', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        let fdNumber = fileio.openSync(pathExifJpg1);
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_172 create image source failed');
@@ -1540,7 +1541,7 @@ describe('Image', function () {
                     done();
                 } else {
                     console.info('TC_172 BitsPerSample ' + data);
-                    expect(data != undefined).assertTrue();
+                    expect(data != undefined && data != '').assertTrue();
                     done();
                 }
             })
@@ -1815,7 +1816,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_173', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        let fdNumber = fileio.openSync(pathExifJpg1);
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_173 create image source failed');
@@ -1830,7 +1831,7 @@ describe('Image', function () {
                     done();
                 } else {
                     console.info('TC_173 BitsPerSample ' + data);
-                    expect(data != '9999' && data != undefined).assertTrue();
+                    expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
                 }
             })
