@@ -72,7 +72,7 @@ export default function loadingProgressJsunit() {
       let strJson = getInspectorByKey('LP');
       let obj = JSON.parse(strJson);
       console.info("testLoadingProgress_300 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.height).assertEqual("50.00px");
+      expect(obj.$attrs.height).assertEqual("50.00vp");
       console.info('testLoadingProgress_300 END');
       done();
     });
