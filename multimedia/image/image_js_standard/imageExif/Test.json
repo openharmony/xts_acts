@@ -26,14 +26,16 @@
             "pre-push": [
             ],
             "push": [
-				"./resource/image/test_exif.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Exif/files"
+				"./resource/image/test_exif.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Exif/files",
+				"./resource/image/test_exif1.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Exif/files"
             ]
         },
    
 		{
             "type": "ShellKit",
             "run-command": [
-                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Exif/files/test_exif.jpg"
+                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Exif/files/test_exif.jpg",
+		"chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Exif/files/test_exif1.jpg"
             ],
             "teardown-command":[
               
