@@ -169,6 +169,31 @@ export async function getFd(pathName) {
     return fdObject;
 }
 
+export async function getAudioFd(pathName) {
+    let fdObject = {
+        fileAsset : null,
+        fdNumber : null
+    }
+    let displayName = pathName;
+    const mediaTest = mediaLibrary.getMediaLibrary();
+    let fileKeyObj = mediaLibrary.FileKey;
+    let mediaType = mediaLibrary.MediaType.AUDIO;
+    let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO);
+    let dataUri = await mediaTest.createAsset(mediaType, displayName, publicPath);
+    if (dataUri != undefined) {
+        let args = dataUri.id.toString();
+        let fetchOp = {
+            selections : fileKeyObj.ID + "=?",
+            selectionArgs : [args],
+        }
+        let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
+        fdObject.fileAsset = await fetchFileResult.getAllObject();
+        fdObject.fdNumber = await fdObject.fileAsset[0].open('rw');
+        console.info('case getFd number is: ' + fdObject.fdNumber);
+    }
+    return fdObject;
+}
+
 export async function closeFd(fileAsset, fdNumber) {
     if (fileAsset != null) {
         await fileAsset[0].close(fdNumber).then(() => {
