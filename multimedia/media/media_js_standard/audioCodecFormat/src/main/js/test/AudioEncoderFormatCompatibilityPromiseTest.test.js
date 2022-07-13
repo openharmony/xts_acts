@@ -16,7 +16,6 @@
 import media from '@ohos.multimedia.media'
 import fileio from '@ohos.fileio'
 import featureAbility from '@ohos.ability.featureAbility'
-import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
@@ -48,22 +47,18 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
     const events = require('events');
     const eventEmitter = new events.EventEmitter();
     const context = featureAbility.getContext();
-    const mediaTest = mediaLibrary.getMediaLibrary(context);
-    let fileKeyObj = mediaLibrary.FileKey;
+    let outputCnt = 0;
+    let inputCnt = 0;
+    let frameThreshold = 10;
 
     beforeAll(async function() {
         console.info('beforeAll case 1');
-        let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
-        let permissionName2 = 'ohos.permission.READ_MEDIA';
-        let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-        let permissionNameList = [permissionName1, permissionName2, permissionName3];
-        let appName = 'ohos.acts.multimedia.audio.codecformat';
-        await mediaTestBase.applyPermission(appName, permissionNameList);
-        console.info('beforeAll case after get permission');
     })
 
     beforeEach(function() {
         console.info('beforeEach case');
+        outputCnt = 0;
+        inputCnt = 0;
     })
 
     afterEach(async function() {
@@ -107,6 +102,8 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
         outputQueue = [];
         ES = [0, 4096]
         ES_LENGTH = 1000;
+        outputCnt = 0;
+        inputCnt = 0;
     }
 
     async function beforeTest() {
@@ -139,30 +136,8 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
             }, failCallback).catch(failCatch);
         }
         await closeFdRead();
-        await closeFdWrite();
-    }
-
-    async function getFdWrite(pathName) {
-        console.info('[mediaLibrary] case start getFdWrite');
-        console.info('[mediaLibrary] case getFdWrite pathName is ' + pathName);
-        let mediaType = mediaLibrary.MediaType.AUDIO;
-        console.info('[mediaLibrary] case mediaType is ' + mediaType);
-        let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO);
-        console.info('[mediaLibrary] case getFdWrite publicPath is ' + publicPath);
-        let dataUri = await mediaTest.createAsset(mediaType, pathName, publicPath);
-        if (dataUri != undefined) {
-            let args = dataUri.id.toString();
-            let fetchOp = {
-                selections : fileKeyObj.ID + "=?",
-                selectionArgs : [args],
-            }
-            let fetchWriteFileResult = await mediaTest.getFileAssets(fetchOp);
-            console.info('[mediaLibrary] case getFdWrite getFileAssets() success');
-            fileAssetWrite = await fetchWriteFileResult.getAllObject();
-            console.info('[mediaLibrary] case getFdWrite getAllObject() success');
-            fdWrite = await fileAssetWrite[0].open('Rw');
-            console.info('[mediaLibrary] case getFdWrite fdWrite is ' + fdWrite);
-        }
+        inputCnt = 0;
+        outputCnt = 0;
     }
 
     async function getFdRead(readPath, done) {
@@ -176,29 +151,7 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
             console.info('[fileio] case close fdRead success, fd is ' + fdRead);
         }, failCallback).catch(failCatch);
     }
-    
-    async function closeFdWrite() {
-        if (fileAssetWrite != null) {
-            await fileAssetWrite[0].close(fdWrite).then(() => {
-                console.info('[mediaLibrary] case close fdWrite success, fd is ' + fdWrite);
-            }).catch((err) => {
-                console.info('[mediaLibrary] case close fdWrite failed');
-            });
-        } else {
-            console.info('[mediaLibrary] case fileAssetWrite is null');
-        }
-    }
 
-    function writeHead(len) {
-        try{
-            let head = new ArrayBuffer(7);
-            addADTStoPacket(head, len);
-            let res = fileio.writeSync(fdWrite, head, {length: 7});
-            console.info('case fileio.write head success');
-        } catch(e) {
-            console.info('case fileio.write head error is ' + e);
-        }
-    }
 
     function writeFile(buf, len) {
         try{
@@ -224,23 +177,6 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
         let lengthreal = -1;
         lengthreal = fileio.readSync(fdRead, buf, {length:len});
         console.info('case lengthreal is :' + lengthreal);
-    }
-
-    function addADTStoPacket(head, len) {
-        let view = new Uint8Array(head);
-        console.info("start add ADTS to Packet");
-        let packetLen = len + 7; // 7: head length
-        let profile = 2; // 2: AAC LC  
-        let freqIdx = rate; // 3: 48000HZ 
-        let chanCfg = channelCount; // 1: 1 channel
-        console.info('rate: ' + rate);
-        view[0] = 0xFF;
-        view[1] = 0xF9;
-        view[2] = ((profile - 1) << 6) + (freqIdx << 2) + (chanCfg >> 2);
-        view[3] = ((chanCfg & 3) << 6) + (packetLen >> 11);
-        view[4] = (packetLen & 0x7FF) >> 3;
-        view[5] = ((packetLen & 7) << 5) + 0x1F;
-        view[6] = 0xFC;
     }
 
     async function resetWork() {
@@ -292,6 +228,7 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
             frameCnt += 1;
             audioEncodeProcessor.pushInputData(inputobject).then(() => {
                 console.info('case queueInput success');
+                inputCnt += 1;
             });
         }
     }
@@ -301,6 +238,7 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
             let outputObject = queue.shift();
             if (outputObject.flags == 1) {
                 sawOutputEOS = true;
+                expect(outputCnt).assertClose(inputCnt, frameThreshold);
                 await doneWork(); 
                 if(sampleRateList == false && channelCountList[0] != undefined) {
                     await aferTest();
@@ -318,7 +256,6 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
                     return;
                 }                
             } else {
-                writeFile(outputObject.data, outputObject.length);
                 console.info("write to file success");
             }
             audioEncodeProcessor.freeOutputBuffer(outputObject).then(() => {
@@ -343,6 +280,11 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
         });
         audioEncodeProcessor.on('newOutputData', async(outBuffer) => {
             console.info('outputBufferAvailable');
+            outputCnt += 1;
+            if (outputCnt == 1 && outBuffer.flags == 1) {
+                console.info("case error occurs! first output is EOS");
+                expect().assertFail();
+            }
             if (needgetMediaDes) {
                 audioEncodeProcessor.getOutputMediaDescription().then((MediaDescription) => {
                     console.info("get OutputMediaDescription success");
@@ -410,9 +352,6 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
         readPath = srcPath;
         needgetMediaDes = true;
         workdoneAtEOS = true;
-
-        await getFdWrite(savePath);
-        console.info('case getFdWrite success');
         await getFdRead(readPath, done);
         console.info('case getFdRead success');
         await media.createAudioEncoderByMime('audio/mp4a-latm').then((processor) => {
