@@ -284,10 +284,10 @@ describe('mediaLibraryTestPromise.test.js', function () {
             selectionArgs: ['abc'],
         };
         try {
-            await media.getFileAssets(fetchOp);
-            console.info('MediaLibraryTest : getFileAssets 008 failed');
-            expect(false).assertTrue();
-            done();
+            media.getFileAssets(fetchOp).then((err, fetchFileResult) => {
+                expect(err != undefined).assertTrue();
+                done();
+            })
         } catch (error) {
             console.info(`MediaLibraryTest : getFileAssets 008 passed`);
             expect(true).assertTrue();
@@ -309,10 +309,10 @@ describe('mediaLibraryTestPromise.test.js', function () {
             selectionArgs: ['abc', audioType.toString()],
         };
         try {
-            await media.getFileAssets(fetchOp);
-            console.info('MediaLibraryTest : getFileAssets 009 failed');
-            expect(false).assertTrue();
-            done();
+            media.getFileAssets(fetchOp).then((err, fetchFileResult) => {
+                expect(err != undefined).assertTrue();
+                done();
+            })
         } catch (error) {
             console.info('MediaLibraryTest : getFileAssets 009 passed');
             expect(true).assertTrue();
@@ -340,10 +340,10 @@ describe('mediaLibraryTestPromise.test.js', function () {
             selectionArgs: ['abc', videoType.toString(), fileType.toString()],
         };
         try {
-            await media.getFileAssets(fetchOp);
-            console.info('MediaLibraryTest : getFileAssets 010 failed');
-            expect(false).assertTrue();
-            done();
+            media.getFileAssets(fetchOp).then((err, fetchFileResult) => {
+                expect(err != undefined).assertTrue();
+                done();
+            })
         } catch (error) {
             console.info('MediaLibraryTest : getFileAssets 010 passed');
             expect(true).assertTrue();
@@ -373,10 +373,14 @@ describe('mediaLibraryTestPromise.test.js', function () {
             selectionArgs: ['abc', videoType.toString(), fileType.toString(), audioType.toString()],
         };
         try {
-            await media.getFileAssets(fetchOp);
-            console.info('MediaLibraryTest : getFileAssets 011 failed');
-            expect(false).assertTrue();
-            done();
+            // await media.getFileAssets(fetchOp);
+            // console.info('MediaLibraryTest : getFileAssets 011 failed');
+            // expect(false).assertTrue();
+            // done();
+            media.getFileAssets(fetchOp).then((err, fetchFileResult) => {
+                expect(err != undefined).assertTrue();
+                done();
+            })
         } catch (error) {
             console.info('MediaLibraryTest : getFileAssets 011 passed');
             expect(true).assertTrue();

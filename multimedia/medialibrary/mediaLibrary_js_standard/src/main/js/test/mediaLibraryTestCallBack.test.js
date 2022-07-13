@@ -265,14 +265,14 @@ describe('mediaLibraryTestCallBack.test.js', function () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_008', 0, async function (done) {
+     it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_008', 0, async function (done) {
         let fetchOp = {
             selections: mediaLibrary.FileKey.MEDIA_TYPE + 'abc= ?',
             selectionArgs: ['abc'],
         };
         try {
             media.getFileAssets(fetchOp, (err, fetchFileResult) => {
-                expect(fetchFileResult == undefined).assertTrue();
+                expect(err != undefined).assertTrue();
                 done();
             });
         } catch (error) {
@@ -297,7 +297,7 @@ describe('mediaLibraryTestCallBack.test.js', function () {
         };
         try {
             media.getFileAssets(fetchOp, (err, fetchFileResult) => {
-                expect(fetchFileResult == undefined).assertTrue();
+                expect(err != undefined).assertTrue();
                 done();
             });
         } catch (error) {
@@ -328,7 +328,7 @@ describe('mediaLibraryTestCallBack.test.js', function () {
         };
         try {
             media.getFileAssets(fetchOp, (err, fetchFileResult) => {
-                expect(fetchFileResult == undefined).assertTrue();
+                expect(err != undefined).assertTrue();
                 done();
             });
         } catch (error) {
@@ -361,7 +361,7 @@ describe('mediaLibraryTestCallBack.test.js', function () {
         };
         try {
             media.getFileAssets(fetchOp, (err, fetchFileResult) => {
-                expect(fetchFileResult == undefined).assertTrue();
+                expect(err != undefined).assertTrue();
                 done();
             });
         } catch (error) {

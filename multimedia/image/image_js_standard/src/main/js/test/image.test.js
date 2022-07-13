@@ -33,8 +33,8 @@ describe('Image', function () {
     }
     async function releasePixelmap() {
         if (globalpixelmap != undefined) {
-            globalpixelmap.release().then((data) => {
-                console.info('globalpixelmap release start' + data);
+            globalpixelmap.release().then(() => {
+                console.info('globalpixelmap release start');
             })
                 .catch(error => {
                     console.info('globalpixelmap release fail' + error)
