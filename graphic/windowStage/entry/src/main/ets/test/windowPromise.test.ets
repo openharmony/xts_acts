@@ -1350,40 +1350,5 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'done ');
       done();
     })
-    /**
-    * @tc.number     SUB_WINDOW_SETSCREENROTATIONLOCKED_JSAPI_001
-    * @tc.name       Test setScreenRotationLockedTest1
-    * @tc.desc       Verify the scene of setting screen automatic screen rotation and locking
-    */
-    it('setScreenRotationLockedTest1', 0, async function (done) {
-      let caseName = 'setScreenRotationLockedTest1';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let screens = await screenManager.setScreenRotationLocked(true).catch(err => {
-        unexpectedError(err, caseName, 'screenManager.setScreenRotationLocked(true)', done);
-        console.log(msgStr + 'screenManager.setScreenRotationLocked err: ' + JSON.stringify(err));
-      })
-      console.log(msgStr + 'screenManager.setScreenRotationLocked screens: ' + JSON.stringify(screens));
-      expect(!screens).assertTrue();
-      let isLocked = await screenManager.isScreenRotationLocked().catch(err => {
-        unexpectedError(err, caseName, 'screenManager.isScreenRotationLocked', done);
-        console.log(msgStr + 'screenManager.isLocked err: ' + JSON.stringify(err));
-      })
-      console.log(msgStr+'isLocked:'+isLocked)
-      expect(isLocked).assertTrue();
-      let screensFalse = await screenManager.setScreenRotationLocked(false).catch(err => {
-        unexpectedError(err, caseName, 'screenManager.setScreenRotationLocked(false)', done);
-        console.log(msgStr + 'screenManager.setScreenRotationLocked screensFalse err: ' + JSON.stringify(err));
-      })
-      console.log(msgStr + 'screenManager.setScreenRotationLocked screensFalse: ' + JSON.stringify(screensFalse));
-      expect(!screensFalse).assertTrue();
-      let isLockedFalse = await screenManager.isScreenRotationLocked().catch(err => {
-        unexpectedError(err, caseName, 'screenManager.isScreenRotationLocked isLockedFalse', done);
-        console.log(msgStr + 'screenManager.isLocked isLockedFalse err: ' + JSON.stringify(err));
-      })
-      console.log(msgStr+'isLockedFalse:'+isLockedFalse)
-      expect(!isLockedFalse).assertTrue();
-      done();
-    })
   })
 }

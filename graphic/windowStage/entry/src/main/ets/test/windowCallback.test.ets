@@ -1416,38 +1416,5 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         }
       })
     })
-    /**
-    * @tc.number     SUB_WINDOW_SETSCREENROTATIONLOCKED_JSAPI_002
-    * @tc.name       Test setScreenRotationLockedTest2
-    * @tc.desc       Verify the scene of setting screen automatic screen rotation and locking
-    */
-    it('setScreenRotationLockedTest2', 0, function (done) {
-      let caseName = 'setScreenRotationLockedTest2';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      screenManager.setScreenRotationLocked(true, (err, data) => {
-        if (err && err.code)unexpectedError(err, caseName, 'screenManager.setScreenRotationLocked(true)', done);
-        console.log(msgStr + 'screenManager.setScreenRotationLocked err: ' + JSON.stringify(err));
-        console.log(msgStr + 'screenManager.setScreenRotationLocked true data: ' + JSON.stringify(data));
-        screenManager.isScreenRotationLocked((err, data) => {
-          if (err && err.code)unexpectedError(err, caseName, 'screenManager.isScreenRotationLocked', done);
-          console.log(msgStr + 'screenManager.isLocked err: ' + JSON.stringify(err));
-          console.log(msgStr + 'data:' + data)
-          expect(data).assertTrue();
-          screenManager.setScreenRotationLocked(false, (err, data) => {
-            if (err && err.code)unexpectedError(err, caseName, 'screenManager.setScreenRotationLocked(false)', done);
-            console.log(msgStr + 'screenManager.setScreenRotationLocked err: ' + JSON.stringify(err));
-            console.log(msgStr + 'screenManager.setScreenRotationLocked true data: ' + JSON.stringify(data));
-            screenManager.isScreenRotationLocked((err, data) => {
-              if (err && err.code)unexpectedError(err, caseName, 'screenManager.isScreenRotationLocked', done);
-              console.log(msgStr + 'screenManager.isLocked err: ' + JSON.stringify(err));
-              console.log(msgStr + 'data:' + data)
-              expect(!data).assertTrue();
-              done();
-            })
-          })
-        })
-      })
-    })
   })
 }
