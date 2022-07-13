@@ -35,48 +35,48 @@ function sleep(ms) {
 
 async function changedLocationMode(){
     await geolocation.isLocationEnabled().then(async(result) => {
-       console.info('[lbs_js] getLocationSwitchState result: ' + result);
-       if(!result){
-           await geolocation.requestEnableLocation().then(async(result) => {
-               await sleep(3000);
-               console.info('[lbs_js] test requestEnableLocation promise result: ' + result);
-               expect(result).assertTrue();
-           }).catch((error) => {
-               console.info("[lbs_js] promise then error." + error.message);
-               expect().assertFail();
-           });
-       }
-   });
-   await geolocation.isLocationEnabled().then(async(result) => {
-       console.info('[lbs_js] check LocationSwitchState result: ' + result);
-   });
+        console.info('[lbs_js] getLocationSwitchState result: ' + JSON.stringify(result));
+        if(!result){
+            await geolocation.requestEnableLocation().then(async(result) => {
+                await sleep(3000);
+                console.info('[lbs_js] test requestEnableLocation promise result: ' + JSON.stringify(result));
+                expect(result).assertTrue();
+            }).catch((error) => {
+                console.info("[lbs_js] promise then error." + JSON.stringify(error));
+                expect().assertFail();
+            });
+        }
+    });
+    await geolocation.isLocationEnabled().then(async(result) => {
+        console.info('[lbs_js] getLocationSwitchState result: ' + JSON.stringify(result));
+    });
 }
 
 async function applyPermission() {
-   let osAccountManager = osaccount.getAccountManager();
-   console.info('[permission] getAccountManager call end');
-   let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
-   console.info('[permission] getOsAccountLocalIdFromProcess localId' + localId);
-   let appInfo = await bundle.getApplicationInfo('ohos.acts.location.geolocation.function', 0, localId);
-   let atManager = abilityAccessCtrl.createAtManager();
-   if (atManager != null) {
-       let tokenID = appInfo.accessTokenId;
-       console.info('[permission] case accessTokenID is ' + tokenID);
-       let permissionName1 = 'ohos.permission.LOCATION';
-       let permissionName2 = 'ohos.permission.LOCATION_IN_BACKGROUND';
-       await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-           console.info('[permission] case grantUserGrantedPermission success :' + result);
-       }).catch((err) => {
-           console.info('[permission] case grantUserGrantedPermission failed :' + err);
-       });
-       await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-           console.info('[permission] case grantUserGrantedPermission success :' + result);
-       }).catch((err) => {
-           console.info('[permission] case grantUserGrantedPermission failed :' + err);
-       });
-   } else {
-       console.info('[permission] case apply permission failed, createAtManager failed');
-   }
+    let osAccountManager = osaccount.getAccountManager();
+    console.debug("=== getAccountManager finish");
+    let localId = await osAccountManager.getOsAccountLocalIdFromProcess();  
+    console.info("LocalId is :" + localId);
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.location.geolocation.function', 0, localId);
+    let atManager = abilityAccessCtrl.createAtManager();
+    if (atManager != null) {
+        let tokenID = appInfo.accessTokenId;
+        console.info('[permission] case accessTokenID is ' + tokenID);
+        let permissionName1 = 'ohos.permission.LOCATION';
+        let permissionName2 = 'ohos.permission.LOCATION_IN_BACKGROUND';
+        await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+        await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+    } else {
+        console.info('[permission] case apply permission failed, createAtManager failed');
+    }
 }
 
 describe('geolocationTest_geo3', function () {
@@ -1045,6 +1045,8 @@ describe('geolocationTest_geo3', function () {
         geolocation.getCachedGnssLocationsSize((err, data) => {
             if (err) {
                 console.info('[lbs_js]  getCachedGnssLocationsSize callback err is : ' + err);
+                expect(true).assertTrue(err != null);
+                done();
             }else {
                 console.info("[lbs_js] getCachedGnssLocationsSize callback data is: " + JSON.stringify(data));
                 expect(true).assertTrue(data != null);
@@ -1094,7 +1096,8 @@ describe('geolocationTest_geo3', function () {
             done();
         }).catch((error) => {
             console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
+            expect(true).assertTrue(error != null);
+            done();
             done();
         });
     })
@@ -1114,6 +1117,8 @@ describe('geolocationTest_geo3', function () {
             (result) => {
                 if(err){
                     return console.info("oncachedGnssLocationsReporting callback  err:  " + err);
+                    expect(true).assertTrue(err != null);
+                    done();
                 }
                 console.info("cachedGnssLocationsReporting result:  " + JSON.stringify(result));
                 expect(true).assertEqual(result !=null);
@@ -1136,6 +1141,8 @@ describe('geolocationTest_geo3', function () {
         geolocation.flushCachedGnssLocations((err, data) => {
             if (err) {
                 console.info('[lbs_js]  flushCachedGnssLocations callback err is : ' + err);
+                expect(true).assertTrue(err != null);
+                done();
             }else {
                 console.info("[lbs_js] flushCachedGnssLocations callback data is: " + JSON.stringify(data));
                 expect(true).assertTrue(data);
@@ -1185,7 +1192,7 @@ describe('geolocationTest_geo3', function () {
             done();
         }).catch((error) => {
             console.info("[lbs_js] promise then error." + error.message);
-            expect().assertFail();
+            expect(true).assertTrue(error != null);
             done();
         });
     })
