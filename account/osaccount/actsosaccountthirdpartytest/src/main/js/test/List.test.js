@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import ActsOsAccountThirdPartyTest_third_2 from './OsAccountGet.test.js'
-import ActsOsAccountThirdPartyTest_third_1 from './OsAccountGet.test.js'
+import ActsOsAccountThirdPartyTest_third_1 from './OsAccountIs.test.js'
 export default function testsuite() {
     ActsOsAccountThirdPartyTest_third_2()
     ActsOsAccountThirdPartyTest_third_1()
