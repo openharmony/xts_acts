@@ -47,21 +47,6 @@
         "launchType": "standard"
       }
     ],
-    "defPermissions": [
-      {
-        "name": "com.permission.CAMERA",
-        "grantMode": "system_grant",
-        "availableScope": ["signature"],
-        "label": "$string:testFormA",
-        "description": "CAMERA permission in detail"
-      },
-      {
-        "name": "ohos.permission.REQUIRE_FORM",
-        "grantMode": "system_grant",
-        "label": "$string:testForm",
-        "description": "REQUIRE_FORM permission in detail"
-      }
-    ],
     "reqPermissions": [
       {
         "name": "ohos.permission.REQUIRE_FORM",

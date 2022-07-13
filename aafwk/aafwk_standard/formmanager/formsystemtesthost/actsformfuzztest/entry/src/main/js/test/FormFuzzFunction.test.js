@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import formManager from '@ohos.ability.formManager'
+import formManager from '@ohos.ability.formHost'
 import {describe, it, expect} from 'deccjsunit/index'
 import {stringTest, numberTest, booleanTest, nullTest, undefinedTest,
     objectTest, arrayTest, functionTest, REPEAT_COUNT} from './getParam.js'

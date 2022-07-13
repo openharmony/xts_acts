@@ -55,11 +55,24 @@ describe('CoverApiTest', function () {
                 "test":11,
                 "test3":true
             }
-            var result = formBindingData.createFormBindingData(dataObj)
-            console.log(TAG + " result is : " + JSON.stringify(result))
-            expect(JSON.stringify(result)).
-            assertEqual(JSON.stringify(
-                {"data":"{\"temperature\":\"11c\",\"time\":\"11:00\",\"test\":11,\"test3\":true}"}));
+            var formData = formBindingData.createFormBindingData(dataObj)
+            console.info(TAG + " result is : " + JSON.stringify(formData))
+
+            let formDataStr  = JSON.stringify(formData.data);
+            let formDataStrToObj = JSON.parse(formDataStr);
+            if (typeof(formDataStrToObj) == "string" ) {
+                console.info(TAG + " formDataStrToObj1 is : " + typeof formDataStrToObj)
+                let formDataStrToObj2 = JSON.parse(formDataStrToObj)
+                console.info(TAG + " formDataStrToObj2 is : " + typeof formDataStrToObj2)
+                expect(formDataStrToObj2.test).assertEqual(11)
+                expect(formDataStrToObj2.test3).assertTrue()
+                expect(formDataStrToObj2.time).assertEqual("11:00")
+            } else {
+                console.info(TAG + " formDataStrToObj is : " + typeof formDataStrToObj)
+                expect(formDataStrToObj.test).assertEqual(11)
+                expect(formDataStrToObj.test3).assertTrue()
+                expect(formDataStrToObj.time).assertEqual("11:00")
+            }
             done();
             console.info('------------end SUB_AA_OpenHarmony_FormBase_1000-------------');
         });
