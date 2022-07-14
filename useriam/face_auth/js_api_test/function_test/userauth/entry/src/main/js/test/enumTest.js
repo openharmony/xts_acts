@@ -20,7 +20,7 @@ var index = require('../default/pages/index/index.js');
 /**
  * test case
  */
-describe('userAuthTest_one1', function () {
+describe('userAuthTestEnum', function () {
     beforeEach(function(done) {
         let waitTime = 1000;
         setTimeout(function() {
