@@ -87,7 +87,7 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.targetVersion).assertEqual(5);
         expect(datainfo.isCompressNativeLibs).assertEqual(true);
         for (let s = 0; s < datainfo.hapModuleInfos.length; s++) {
-            expect(datainfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1");
+            expect(datainfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1.MyApplication1");
             expect(datainfo.hapModuleInfos[s].moduleName).assertEqual("entry");
         }
         expect(datainfo.entryModuleName).assertEqual("entry");
@@ -151,7 +151,7 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.targetVersion).assertEqual(5);
         expect(datainfo.isCompressNativeLibs).assertEqual(true);
         for (let s = 0; s < datainfo.hapModuleInfos.length; s++) {
-            expect(datainfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1");
+            expect(datainfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1.MyApplication1");
             expect(datainfo.hapModuleInfos[s].moduleName).assertEqual("entry");
         }
         expect(datainfo.entryModuleName).assertEqual("entry");
@@ -501,7 +501,7 @@ describe('ActsBundleManagerTest', function () {
         expect(dataInfo.targetVersion).assertEqual(5);
         expect(dataInfo.isCompressNativeLibs).assertEqual(true);
         for (let s = 0; s < dataInfo.hapModuleInfos.length; s++) {
-            expect(dataInfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1");
+            expect(dataInfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1.MyApplication1");
             expect(dataInfo.hapModuleInfos[s].moduleName).assertEqual("entry");
         }
         expect(dataInfo.entryModuleName).assertEqual("entry");
@@ -550,7 +550,7 @@ describe('ActsBundleManagerTest', function () {
             expect(dataInfo.targetVersion).assertEqual(5);
             expect(dataInfo.isCompressNativeLibs).assertEqual(true);
             for (let s = 0; s < dataInfo.hapModuleInfos.length; s++) {
-                expect(dataInfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1");
+                expect(dataInfo.hapModuleInfos[s].name).assertEqual("com.example.myapplication1.MyApplication1");
                 expect(dataInfo.hapModuleInfos[s].moduleName).assertEqual("entry");
             }
             expect(dataInfo.entryModuleName).assertEqual("entry");
