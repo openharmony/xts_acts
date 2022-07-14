@@ -1015,7 +1015,6 @@ describe('ActsFeatureAbilityTest', function () {
         await sleep(1000)
     })
 
-    // checkAppType
     function checkAppType(info) {
         console.info("AppType : " + info);
         expect(typeof (info)).assertEqual("string");
@@ -1029,10 +1028,9 @@ describe('ActsFeatureAbilityTest', function () {
      */
     it('ACTS_GetAppType_0100', 0, async function (done) {
         await featureAbility.getContext().getAppType().then((data)=>{
-            checkAppType(data);
             console.info("ACTS_GetAppType_0100 getAppType info :" + JSON.stringify(data))
+            checkAppType(data);
             console.info('====> ACTS_GetAppType_0100 end=====>')
-            done();
         }).catch((err)=>{
             console.info('====> ACTS_GetAppType_0100 err=====>' + JSON.stringify(err))
             expect().assertFail()
@@ -1046,22 +1044,18 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
     it('ACTS_GetAppType_0200', 0, async function (done) {
-        let tempInfo;
         featureAbility.getContext().getAppType((err, data) => {
             if(err.code != 0){
+                console.info("ACTS_GetAppType_0200 getAppType callback err :" + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }else{
-                    tempInfo = data
+                console.info("ACTS_GetAppType_0200 getAppType callback data :" + JSON.stringify(data))
+                checkAppType(data)
+                done()
                 }
         });
-        console.info("ACTS_GetAppType_0200 getAppType callback info :" + JSON.stringify(tempInfo))
-        setTimeout(function () {
-            console.info('====> ACTS_GetAppType_0200 =====>' + JSON.stringify(tempInfo))
-            checkAppType(tempInfo);
-            console.info('====> ACTS_GetAppType_0200 =====>')
-            done()
-        }, TIMEOUT)
+        await sleep(1000)
     })
 
     // checkAbilityInfo
@@ -1179,7 +1173,7 @@ describe('ActsFeatureAbilityTest', function () {
 
     // checkHapModuleInfo
     function checkHapModuleInfo(data) {
-        console.info("checkHapModuleInfo start  " + data);
+        console.info("checkHapModuleInfo start  " + JSON.stringify(data));
         expect(typeof (data)).assertEqual("object");
         expect(typeof (data.name)).assertEqual("string");
         expect(typeof (data.description)).assertEqual("string");
@@ -1192,7 +1186,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(typeof (data.supportedModes)).assertEqual("number");
         expect(Array.isArray(data.reqCapabilities)).assertEqual(true);
         expect(Array.isArray(data.deviceTypes)).assertEqual(true);
-        expect(Array.isArray(data.abilityInfos)).assertEqual(true);
+        expect(Array.isArray(data.abilityInfo)).assertEqual(true);
         expect(typeof (data.moduleName)).assertEqual("string");
         expect(typeof (data.mainAbilityName)).assertEqual("string");
         expect(typeof (data.installationFree)).assertEqual("boolean");
