@@ -1450,5 +1450,64 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         })
       })
     })
+    /**
+    * @tc.number     SUB_WINDOW_SETPREFERREDORIENTATION_JSAPI_001
+    * @tc.name       Test setPreferredOrientation
+    * @tc.desc       Sets the display direction property of the window
+    */
+    it('setPreferredOrientation', 0, async function (done) {
+      let caseName = 'setPreferredOrientation';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWin = await windowStage.getMainWindow().catch(err => {
+        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
+      });
+      console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
+      expect(!!mainWin).assertTrue();
+      let orientationItem = ['UNSPECIFIED','LOCKED','PORTRAIT_UNSPECIFIED','PORTRAIT','LANDSCAPE','PORTRAIT_INVERTED','LANDSCAPE_INVERTED','AUTO_ROTATION','AUTO_ROTATION_PORTRAIT','AUTO_ROTATION_LANDSCAPE','AUTO_ROTATION_RESTRICTED','AUTO_ROTATION_PORTRAIT_RESTRICTED','AUTO_ROTATION_LANDSCAPE_RESTRICTED'];
+      for (let i = 0;i < orientationItem.length; i++) {
+        await sleep(1000);
+        let orientation=ohosWindow.Orientation[orientationItem[i]]
+        await mainWin.setPreferredOrientation(orientation,(err,data) => {
+          if(err.code){
+            console.log(msgStr + 'window.setPreferredOrientation failed set error' + orientation);
+          }
+          console.log(msgStr + 'success set window.setPreferredOrientation ' + orientation+JSON.stringify(data));
+        })
+      }
+      console.log(msgStr + 'done ');
+      done();
+    })
+    /**
+    * @tc.number     SUB_WINDOW_SETFORBIDSPLITMOVE_JSAPI_001
+    * @tc.name       Test setForbidSplitMove
+    * @tc.desc       Sets whether Windows are forbidden to move in split screen mode
+    */
+    it('setForbidSplitMove', 0, async function (done) {
+      let caseName = 'setForbidSplitMove';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWin = await windowStage.getMainWindow().catch(err => {
+        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
+      });
+      console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
+      expect(!!mainWin).assertTrue();
+      await mainWin.setForbidSplitMove(true,(err,data) => {
+        if(err.code){
+          console.log(msgStr + 'failed set window.setForbidSplitMove drag is prohibited');
+          return;
+        }
+        console.log(msgStr + 'success set window.setForbidSplitMove drag is prohibited'+JSON.stringify(data));
+      })
+      await mainWin.setForbidSplitMove(false,(err,data) => {
+        if(err.code){
+          console.log(msgStr + 'failed set window.setForbidSplitMove you can drag it now');
+          return;
+        }
+        console.log(msgStr + 'success set window.setForbidSplitMove you can drag it now'+JSON.stringify(data));
+      })
+      console.log(msgStr + 'done ');
+      done();
+    })
   })
 }
