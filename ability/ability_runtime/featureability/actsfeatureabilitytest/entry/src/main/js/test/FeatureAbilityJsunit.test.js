@@ -16,13 +16,10 @@ import featureAbility from '@ohos.ability.featureAbility'
 import wantconstant from '@ohos.ability.wantConstant'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import commonEvent from '@ohos.commonEvent'
-import notification from '@ohos.notification';
-import wantAgent from '@ohos.wantAgent';
 import particleAbility from '@ohos.ability.particleAbility'
 import backgroundTaskManager from '@ohos.backgroundTaskManager'
 
 const START_ABILITY_TIMEOUT = 4000;
-const TERMINATE_ABILITY_TIMEOUT = 1000;
 const TIMEOUT = 1000;
 let subscriberInfo_ACTS_StartAbility_0100 = {
     events: ["ACTS_StartAbility_0100_CommonEvent"],
@@ -48,34 +45,9 @@ let subscriberInfoStartAbilityTen = {
 let subscriberInfoStartAbilityThirteen = {
     events: ["ACTS_StartAbility_1300_CommonEvent"],
 };
-let subscriberInfo_ACTS_StartAbilityForResult_0100 = {
-    events: ["ACTS_StartAbilityForResult_0100_CommonEvent"],
-};
-let subscriberInfo_ACTS_StartAbilityForResult_0200 = {
-    events: ["ACTS_StartAbilityForResult_0200_CommonEvent"],
-};
-let subscriberInfo_ACTS_StartAbilityForResult_0300 = {
-    events: ["ACTS_StartAbilityForResult_0300_CommonEvent"],
-};
-let subscriberInfo_ACTS_StartAbilityForResult_0400 = {
-    events: ["ACTS_StartAbilityForResult_0400_CommonEvent"],
-};
-let subscriberInfo_ACTS_StartAbilityForResult_0500 = {
-    events: ["ACTS_StartAbilityForResult_0500_CommonEvent"],
-};
-let subscriberInfoStartAbilityForResultSix = {
-    events: ["ACTS_StartAbilityForResult_0600_CommonEvent"],
-};
-let subscriberInfo_ACTS_TerminateAbility_0100 = {
-    events: ["ACTS_TerminateAbility_0100_CommonEvent",
-        "ACTS_TerminateAbility_0100_Return"],
-};
 let subscriberInfoTerminateAbilityTwo = {
     events: ["ACTS_TerminateAbility_0200_CommonEvent",
         "ACTS_TerminateAbility_0200_Return"],
-};
-let subscriberInfo_ACTS_FinishWithResult_0100 = {
-    events: ["ACTS_FinishWithResult_0100_CommonEvent"],
 };
 let subscriberInfo_ACTS_GetCallingBundle_0100 = {
     events: ["ACTS_GetCallingBundle_0100_CommonEvent",
@@ -135,8 +107,10 @@ describe('ActsFeatureAbilityTest', function () {
         expect(wantconstant.Action.ACTION_DIAL).assertEqual("ohos.want.action.dial");
         expect(wantconstant.Action.ACTION_SEARCH).assertEqual("ohos.want.action.search");
         expect(wantconstant.Action.ACTION_WIRELESS_SETTINGS).assertEqual("ohos.settings.wireless");
-        expect(wantconstant.Action.ACTION_MANAGE_APPLICATIONS_SETTINGS).assertEqual("ohos.settings.manage.applications");
-        expect(wantconstant.Action.ACTION_APPLICATION_DETAILS_SETTINGS).assertEqual("ohos.settings.application.details");
+        expect(wantconstant.Action.ACTION_MANAGE_APPLICATIONS_SETTINGS)
+        .assertEqual("ohos.settings.manage.applications");
+        expect(wantconstant.Action.ACTION_APPLICATION_DETAILS_SETTINGS)
+        .assertEqual("ohos.settings.application.details");
         expect(wantconstant.Action.ACTION_SET_ALARM).assertEqual("ohos.want.action.setAlarm");
         expect(wantconstant.Action.ACTION_SHOW_ALARMS).assertEqual("ohos.want.action.showAlarms");
         expect(wantconstant.Action.ACTION_SNOOZE_ALARM).assertEqual("ohos.want.action.snoozeAlarm");
