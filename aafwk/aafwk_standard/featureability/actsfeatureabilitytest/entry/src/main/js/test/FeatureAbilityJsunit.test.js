@@ -16,13 +16,10 @@ import featureAbility from '@ohos.ability.featureAbility'
 import wantconstant from '@ohos.ability.wantConstant'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import commonEvent from '@ohos.commonEvent'
-import notification from '@ohos.notification';
-import wantAgent from '@ohos.wantAgent';
 import particleAbility from '@ohos.ability.particleAbility'
 import backgroundTaskManager from '@ohos.backgroundTaskManager'
 
 const START_ABILITY_TIMEOUT = 4000;
-const TERMINATE_ABILITY_TIMEOUT = 1000;
 const TIMEOUT = 1000;
 let subscriberInfo_ACTS_StartAbility_0100 = {
     events: ["ACTS_StartAbility_0100_CommonEvent"],
@@ -48,34 +45,9 @@ let subscriberInfoStartAbilityTen = {
 let subscriberInfoStartAbilityThirteen = {
     events: ["ACTS_StartAbility_1300_CommonEvent"],
 };
-let subscriberInfo_ACTS_StartAbilityForResult_0100 = {
-    events: ["ACTS_StartAbilityForResult_0100_CommonEvent"],
-};
-let subscriberInfo_ACTS_StartAbilityForResult_0200 = {
-    events: ["ACTS_StartAbilityForResult_0200_CommonEvent"],
-};
-let subscriberInfo_ACTS_StartAbilityForResult_0300 = {
-    events: ["ACTS_StartAbilityForResult_0300_CommonEvent"],
-};
-let subscriberInfo_ACTS_StartAbilityForResult_0400 = {
-    events: ["ACTS_StartAbilityForResult_0400_CommonEvent"],
-};
-let subscriberInfo_ACTS_StartAbilityForResult_0500 = {
-    events: ["ACTS_StartAbilityForResult_0500_CommonEvent"],
-};
-let subscriberInfoStartAbilityForResultSix = {
-    events: ["ACTS_StartAbilityForResult_0600_CommonEvent"],
-};
-let subscriberInfo_ACTS_TerminateAbility_0100 = {
-    events: ["ACTS_TerminateAbility_0100_CommonEvent",
-        "ACTS_TerminateAbility_0100_Return"],
-};
 let subscriberInfoTerminateAbilityTwo = {
     events: ["ACTS_TerminateAbility_0200_CommonEvent",
         "ACTS_TerminateAbility_0200_Return"],
-};
-let subscriberInfo_ACTS_FinishWithResult_0100 = {
-    events: ["ACTS_FinishWithResult_0100_CommonEvent"],
 };
 let subscriberInfo_ACTS_GetCallingBundle_0100 = {
     events: ["ACTS_GetCallingBundle_0100_CommonEvent",
@@ -135,8 +107,10 @@ describe('ActsFeatureAbilityTest', function () {
         expect(wantconstant.Action.ACTION_DIAL).assertEqual("ohos.want.action.dial");
         expect(wantconstant.Action.ACTION_SEARCH).assertEqual("ohos.want.action.search");
         expect(wantconstant.Action.ACTION_WIRELESS_SETTINGS).assertEqual("ohos.settings.wireless");
-        expect(wantconstant.Action.ACTION_MANAGE_APPLICATIONS_SETTINGS).assertEqual("ohos.settings.manage.applications");
-        expect(wantconstant.Action.ACTION_APPLICATION_DETAILS_SETTINGS).assertEqual("ohos.settings.application.details");
+        expect(wantconstant.Action.ACTION_MANAGE_APPLICATIONS_SETTINGS)
+        .assertEqual("ohos.settings.manage.applications");
+        expect(wantconstant.Action.ACTION_APPLICATION_DETAILS_SETTINGS)
+        .assertEqual("ohos.settings.application.details");
         expect(wantconstant.Action.ACTION_SET_ALARM).assertEqual("ohos.want.action.setAlarm");
         expect(wantconstant.Action.ACTION_SHOW_ALARMS).assertEqual("ohos.want.action.showAlarms");
         expect(wantconstant.Action.ACTION_SNOOZE_ALARM).assertEqual("ohos.want.action.snoozeAlarm");
@@ -1041,7 +1015,6 @@ describe('ActsFeatureAbilityTest', function () {
         await sleep(1000)
     })
 
-    // checkAppType
     function checkAppType(info) {
         console.info("AppType : " + info);
         expect(typeof (info)).assertEqual("string");
@@ -1055,10 +1028,10 @@ describe('ActsFeatureAbilityTest', function () {
      */
     it('ACTS_GetAppType_0100', 0, async function (done) {
         await featureAbility.getContext().getAppType().then((data)=>{
-            checkAppType(data);
             console.info("ACTS_GetAppType_0100 getAppType info :" + JSON.stringify(data))
+            checkAppType(data);
             console.info('====> ACTS_GetAppType_0100 end=====>')
-            done();
+            done()
         }).catch((err)=>{
             console.info('====> ACTS_GetAppType_0100 err=====>' + JSON.stringify(err))
             expect().assertFail()
@@ -1072,22 +1045,18 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
     it('ACTS_GetAppType_0200', 0, async function (done) {
-        let tempInfo;
         featureAbility.getContext().getAppType((err, data) => {
             if(err.code != 0){
+                console.info("ACTS_GetAppType_0200 getAppType callback err :" + JSON.stringify(err))
                 expect().assertFail()
                 done()
             }else{
-                    tempInfo = data
+                console.info("ACTS_GetAppType_0200 getAppType callback data :" + JSON.stringify(data))
+                checkAppType(data)
+                done()
                 }
         });
-        console.info("ACTS_GetAppType_0200 getAppType callback info :" + JSON.stringify(tempInfo))
-        setTimeout(function () {
-            console.info('====> ACTS_GetAppType_0200 =====>' + JSON.stringify(tempInfo))
-            checkAppType(tempInfo);
-            console.info('====> ACTS_GetAppType_0200 =====>')
-            done()
-        }, TIMEOUT)
+        await sleep(1000)
     })
 
     // checkAbilityInfo
@@ -1184,28 +1153,24 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
     it('ACTS_GetAbilityInfo_0200', 0, async function (done) {
-        let tempInfo;
         featureAbility.getContext().getAbilityInfo(
             (err, data) => {
                 if(err.code != 0){
                     expect().assertFail()
                     done()
                 }else{
-                    tempInfo = data
+                    console.info('====> ACTS_GetAbilityInfo_0200 =====>' + JSON.stringify(data))
+                    checkAbilityInfo(data);
+                    done()
                 }
             }
         );
-        setTimeout(function () {
-            console.info('====> ACTS_GetAbilityInfo_0200 =====>' + JSON.stringify(tempInfo))
-            checkAbilityInfo(tempInfo);
-            console.info('====> ACTS_GetAbilityInfo_0200 =====>')
-            done()
-        }, TIMEOUT)
+        await sleep(1000)
     })
 
     // checkHapModuleInfo
     function checkHapModuleInfo(data) {
-        console.info("checkHapModuleInfo start  " + data);
+        console.info("checkHapModuleInfo start  " + JSON.stringify(data));
         expect(typeof (data)).assertEqual("object");
         expect(typeof (data.name)).assertEqual("string");
         expect(typeof (data.description)).assertEqual("string");
@@ -1218,7 +1183,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(typeof (data.supportedModes)).assertEqual("number");
         expect(Array.isArray(data.reqCapabilities)).assertEqual(true);
         expect(Array.isArray(data.deviceTypes)).assertEqual(true);
-        expect(Array.isArray(data.abilityInfos)).assertEqual(true);
+        expect(Array.isArray(data.abilityInfo)).assertEqual(true);
         expect(typeof (data.moduleName)).assertEqual("string");
         expect(typeof (data.mainAbilityName)).assertEqual("string");
         expect(typeof (data.installationFree)).assertEqual("boolean");
