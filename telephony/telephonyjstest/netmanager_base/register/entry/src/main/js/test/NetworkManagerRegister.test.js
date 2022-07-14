@@ -43,6 +43,7 @@
      function sleep(time) {
          return new Promise((resolve)=>setTimeout(resolve,time));
      }
+ 
      /**
       *@tc.number  Telephony_NetworkManager_register_Async_0100
       *@tc.name Enter  bearerTypes and networkCap asempty, set class NetConnection,
@@ -2507,6 +2508,7 @@
                  expect().assertFail();
                  done();
              }
+ 
              done();
          });
          done();

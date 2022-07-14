@@ -253,7 +253,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
                 })
                 done()
         });
-        
+
         /**
          * @tc.number Telephony_NetStack_TCPTest0100
          * @tc.name TCP bind,callback方式，预计无异常，错误码为undefined
