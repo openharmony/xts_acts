@@ -166,7 +166,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
             console.info('case prepare called!!');
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-
+        videoPlayer.audioInterruptMode = audio.InterruptMode.INDEPENDENT_MODE; // 1
         let startTime = videoPlayer.currentTime;
         await videoPlayer.play().then(() => {
             console.info('case play called!!');

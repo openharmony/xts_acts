@@ -419,7 +419,7 @@ describe('RecorderLocalTestAudioAPI', function () {
     */
     it('SUB_MEDIA_RECORDER_AudioRecorder_Start_API_0400', 0, async function (done) {
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE, START_STATE,
+        let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE, START_STATE, ERROR_STATE,
             RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
@@ -484,7 +484,8 @@ describe('RecorderLocalTestAudioAPI', function () {
     */
     it('SUB_MEDIA_RECORDER_AudioRecorder_Start_API_0900', 0, async function (done) {
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, START_STATE, START_STATE, RELEASE_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, START_STATE, ERROR_STATE,
+            START_STATE, ERROR_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -608,8 +609,8 @@ describe('RecorderLocalTestAudioAPI', function () {
     */
     it('SUB_MEDIA_RECORDER_AudioRecorder_Pause_API_0900', 0, async function (done) {
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, PAUSE_STATE, PAUSE_STATE,
-            RELEASE_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, PAUSE_STATE, ERROR_STATE,
+            PAUSE_STATE, ERROR_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -654,7 +655,7 @@ describe('RecorderLocalTestAudioAPI', function () {
     */
     it('SUB_MEDIA_RECORDER_AudioRecorder_Resume_API_0300', 0, async function (done) {
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, RESUME_STATE, RELEASE_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, RESUME_STATE, ERROR_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -716,8 +717,9 @@ describe('RecorderLocalTestAudioAPI', function () {
     */
     it('SUB_MEDIA_RECORDER_AudioRecorder_Resume_API_0800', 0, async function (done) {
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, RESUME_STATE, PAUSE_STATE, RESUME_STATE, STOP_STATE,
-            RESUME_STATE, ERROR_STATE, RESET_STATE, RESUME_STATE, ERROR_STATE, RELEASE_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, RESUME_STATE, ERROR_STATE,
+            PAUSE_STATE, RESUME_STATE, STOP_STATE, RESUME_STATE, ERROR_STATE,
+            RESET_STATE, RESUME_STATE, ERROR_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -733,7 +735,7 @@ describe('RecorderLocalTestAudioAPI', function () {
     it('SUB_MEDIA_RECORDER_AudioRecorder_Resume_API_0900', 0, async function (done) {
         initAudioRecorder();
         let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE,
-            RESUME_STATE, RESUME_STATE, RESUME_STATE, RELEASE_STATE, END_STATE);
+            RESUME_STATE, RESUME_STATE, ERROR_STATE, RESUME_STATE, ERROR_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
@@ -979,8 +981,8 @@ describe('RecorderLocalTestAudioAPI', function () {
     */
     it('SUB_MEDIA_RECORDER_AudioRecorder_Reset_API_0900', 0, async function (done) {
         initAudioRecorder();
-        let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, RESET_STATE, RESET_STATE,
-            RELEASE_STATE, END_STATE);
+        let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE,
+            RESET_STATE, RESET_STATE, RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
