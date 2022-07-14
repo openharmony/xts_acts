@@ -23,9 +23,10 @@ ohos_js_hap_suite("ActsBmsJsUnPermissionTest") {
   hap_name = "ActsBmsJsUnPermissionTest"
 }
 ohos_js_assets("hjs_demo_js_assets") {
-  js2abc=true
+  js2abc = true
   hap_profile = "./src/main/config.json"
-  source_dir = "./src/main/js"}
+  source_dir = "./src/main/js"
+}
 ohos_resources("hjs_demo_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"
