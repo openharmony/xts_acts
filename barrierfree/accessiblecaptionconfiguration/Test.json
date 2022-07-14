@@ -1,10 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "package": "com.example.accessiblecaptionconfiguration",
-        "shell-timeout": "180000"
+        "shell-timeout": "180000",
+        "bundle-name": "com.example.accessiblecaptionconfiguration",
+        "package-name": "com.example.accessiblecaptionconfiguration"
     },
     "kits": [
         {
