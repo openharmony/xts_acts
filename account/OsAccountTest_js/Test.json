@@ -1,9 +1,10 @@
 {
     "description": "Configuration for osaccount js api Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "60000",
-        "package": "ohos.acts.account.osaccount",
+        "bundle-name": "ohos.acts.account.osaccount",
+        "package-name": "ohos.acts.account.osaccount",
         "shell-timeout": "60000"
     },
     "kits": [

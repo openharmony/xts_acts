@@ -16,16 +16,19 @@ import("//test/xts/tools/build/suite.gni")
 ohos_js_hap_suite("ActsOsAccountJSApiTest") {
   hap_profile = "./src/main/config.json"
   deps = [
-    ":osaccount_js_assets",
-    ":osaccount_resources",
+    ":hjs_demo_js_assets",
+    ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsOsAccountJSApiTest"
 }
-ohos_js_assets("osaccount_js_assets") {
-  source_dir = "./src/main/js/default"
+ohos_js_assets("hjs_demo_js_assets") {
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
-ohos_resources("osaccount_resources") {
+
+ohos_resources("hjs_demo_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"
 }
