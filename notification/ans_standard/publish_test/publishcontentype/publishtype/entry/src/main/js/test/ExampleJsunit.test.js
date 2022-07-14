@@ -279,7 +279,7 @@ describe('ActsAnsNotificationTest', function () {
            var notificationInfo = {
                id: 2,
                content: {
-               //  contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+                   contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
                    multiLine: {
                        title: "test_title",
                        text: "test_text",
@@ -373,7 +373,7 @@ describe('ActsAnsNotificationTest', function () {
         var promise = notification.publish({
             id: 5,
             content: {
-            //  contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
                 multiLine: {
                     title: "test_title",
                     text: "test_text",
@@ -384,7 +384,7 @@ describe('ActsAnsNotificationTest', function () {
                 },
             }
         })
-        expect(promise).assertEqual(undefined)
+        expect(typeof(promise)).assertEqual("object")
         done();
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishMULTILINEContent_0500====>");
@@ -400,18 +400,18 @@ describe('ActsAnsNotificationTest', function () {
         var promise = notification.publish({
             id: 6,
             content: {
-                contentType: notification.ContentType.NOTIFICATION_CONTENT_PICTURE,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
                 multiLine: {
                     title: "test_title",
                     text: "test_text",
                     additionalText: "test_additionalText",
                     briefText:"briefText",
                     longTitle:"longTitle",
-                    lines: ["thrive", "democracy", "civilization", "harmonious"]
+                    lines: ["thrive", "civilization", "harmonious"]
                 },
             }
         })
-        expect(promise).assertEqual(undefined)
+        expect(typeof(promise)).assertEqual("object")
         done();
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishMULTILINEContent_0600====>");
@@ -470,7 +470,7 @@ describe('ActsAnsNotificationTest', function () {
         await notification.publish({
             id: 8,
             content: {
-            //  contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
                 longText: {
                     title: "test_title",
                     text: "test_text",
@@ -490,13 +490,13 @@ describe('ActsAnsNotificationTest', function () {
     /*
      * @tc.number: ACTS_PublishLONGContent_0300
      * @tc.name: publish()
-     * @tc.desc: verify the function of publish(contentType:NOTIFICATION_CONTENT_MEDIA)
+     * @tc.desc: verify the function of publish(contentType:NOTIFICATION_CONTENT_LONG_TEXT)
      */
     it('ACTS_PublishLONGContent_0300', 0,async function (done) {
         await notification.publish({
             id: 9,
             content: {
-                contentType: notification.ContentType.NOTIFICATION_CONTENT_MEDIA,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
                 longText: {
                     title: "test_title",
                     text: "test_text",
@@ -566,7 +566,7 @@ describe('ActsAnsNotificationTest', function () {
         var promise = await notification.publish({
             id: 11,
             content: {
-            //                contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
                 longText: {
                     title: "test_title",
                     text: "test_text",
@@ -576,30 +576,30 @@ describe('ActsAnsNotificationTest', function () {
                     expandedTitle:"expandedTitle"
                 }}
         })
-        expect(promise).assertEqual(undefined)
+        expect(typeof(promise)).assertEqual("object")
         done();
     })
 
     /*
      * @tc.number: ACTS_PublishLONGContent_0600
      * @tc.name: publish()
-     * @tc.desc: verify the function of publish(contentType:NOTIFICATION_CONTENT_MEDIA) promise
+     * @tc.desc: verify the function of publish(contentType:NOTIFICATION_CONTENT_LONG_TEXT) promise
      */
     it('ACTS_PublishLONGContent_0600', 0,async function (done) {
         var promise = notification.publish({
             id: 12,
             content: {
-                contentType: notification.ContentType.NOTIFICATION_CONTENT_MEDIA,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
                 longText: {
                     title: "test_title",
                     text: "test_text",
                     additionalText: "test_additionalText",
                     longText:"longText",
                     briefText:"briefText",
-                    expandedTitle:"expandedTitle"
+                    expandedTitle:"expandedTitleing"
                 }}
         })
-        expect(promise).assertEqual(undefined)
+        expect(typeof(promise)).assertEqual("object")
         done();
     })
 
@@ -657,7 +657,7 @@ describe('ActsAnsNotificationTest', function () {
         await notification.publish({
             id: 14,
             content: {
-            //  contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
                     title: "test_title",
                     text: "test_text",
@@ -816,7 +816,7 @@ describe('ActsAnsNotificationTest', function () {
         var promise = notification.publish({
             id: 18,
             content: {
-            //  contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
                     title: "test_title",
                     text: "test_text",
@@ -825,7 +825,7 @@ describe('ActsAnsNotificationTest', function () {
             },
             slotType:notification.SlotType.CONTENT_INFORMATION
         })
-        expect(promise).assertEqual(undefined)
+        expect(typeof(promise)).assertEqual("object")
         done();
         setTimeout(function(){
             console.debug("====>time out ACTS_Publish_SlotTypeContent_0600====>");
@@ -974,7 +974,7 @@ describe('ActsAnsNotificationTest', function () {
         await notification.publish({
             id:22,
             content: {
-            //  contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
                     title: "test_title",
                     text: "test_text",
@@ -1133,7 +1133,7 @@ describe('ActsAnsNotificationTest', function () {
         var promise = notification.publish({
             id:26,
             content: {
-            // contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
                     title: "test_title",
                     text: "test_text",
@@ -1142,7 +1142,7 @@ describe('ActsAnsNotificationTest', function () {
                 slotType:notification.SlotType.OTHER_TYPES
             }
         })
-        expect(promise).assertEqual(undefined)
+        expect(typeof(promise)).assertEqual("object")
         done();
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeOther_0600====>");
@@ -1291,7 +1291,7 @@ describe('ActsAnsNotificationTest', function () {
         await notification.publish({
             id: 30,
             content: {
-            // contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
                     title: "test_title",
                     text: "test_text",
@@ -1450,7 +1450,7 @@ describe('ActsAnsNotificationTest', function () {
         var promise = notification.publish({
             id: 34,
             content: {
-            // contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
                     title: "test_title",
                     text: "test_text",
@@ -1459,7 +1459,7 @@ describe('ActsAnsNotificationTest', function () {
             },
             slotType:notification.SlotType.SERVICE_INFORMATION
         })
-        expect(promise).assertEqual(undefined)
+        expect(typeof(promise)).assertEqual("object")
         done();
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeService_0600====>");
@@ -1608,7 +1608,7 @@ describe('ActsAnsNotificationTest', function () {
         await notification.publish({
             id: 38,
             content: {
-            // contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
                     title: "test_title",
                     text: "test_text",
@@ -1767,7 +1767,7 @@ describe('ActsAnsNotificationTest', function () {
         var promise = notification.publish({
             id: 42,
             content: {
-            // contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
                     title: "test_title",
                     text: "test_text",
@@ -1776,7 +1776,7 @@ describe('ActsAnsNotificationTest', function () {
                 slotType:notification.SlotType.SOCIAL_COMMUNICATION
             }
         })
-        expect(promise).assertEqual(undefined)
+        expect(typeof(promise)).assertEqual("object")
         done();
         setTimeout(function(){
             console.debug("====>time out ACTS_PublishSlotTypeSocial_0600====>");
