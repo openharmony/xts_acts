@@ -400,6 +400,113 @@ describe('LangTest', function () {
     })
 
     /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1800
+    * @tc.name test getAvailableIDs method
+    * @tc.desc get the getAvailableIDs value
+    */
+    it('timezone_test_1800', 0, function () {
+        console.log('timezone_test_1800 ' + 'start');
+        let value = I18n.TimeZone.getAvailableIDs();
+        console.log('timezone_test_1800 ' + value);
+        expect(value.length > 0).assertEqual(true);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_1900
+    * @tc.name test getAvailableZoneCityIDs method
+    * @tc.desc get the getAvailableZoneCityIDs value
+    */
+    it('timezone_test_1900', 0, function () {
+        console.log('timezone_test_1900 ' + 'start');
+        let value = I18n.TimeZone.getAvailableZoneCityIDs();
+        console.log('timezone_test_1900 ' + value);
+        expect(value.length > 0).assertEqual(true);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_2000
+    * @tc.name test getCityDisplayName method with zh locale
+    * @tc.desc get the getCityDisplayName value
+    */
+    it('timezone_test_2000', 0, function () {
+        console.log('timezone_test_2000 ' + 'start');
+        let value = I18n.TimeZone.getCityDisplayName('Auckland', 'zh');
+        console.log('timezone_test_2000 ' + value);
+        expect(value).assertEqual('奥克兰 (新西兰)');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_2020
+    * @tc.name test getCityDisplayName method with en loacle
+    * @tc.desc get the getCityDisplayName value
+    */
+    it('timezone_test_2020', 0, function () {
+        console.log('timezone_test_2020 ' + 'start');
+        let value = I18n.TimeZone.getCityDisplayName('Auckland', 'en');
+        console.log('timezone_test_2020 ' + value);
+        expect(value).assertEqual('Auckland (New Zealand)');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_2040
+    * @tc.name test getCityDisplayName method with not exist cityid
+    * @tc.desc get the getCityDisplayName value
+    */
+    it('timezone_test_2040', 0, function () {
+        console.log('timezone_test_2040 ' + 'start');
+        let value = I18n.TimeZone.getCityDisplayName('abcd', 'en');
+        console.log('timezone_test_2040 ' + value);
+        expect(value).assertEqual('');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_2060
+    * @tc.name test getCityDisplayName method with not exist locale
+    * @tc.desc get the getCityDisplayName value
+    */
+    it('timezone_test_2060', 0, function () {
+        console.log('timezone_test_2060 ' + 'start');
+        let value = I18n.TimeZone.getCityDisplayName('Auckland', 'abc');
+        console.log('timezone_test_2060 ' + value);
+        expect(value).assertEqual('Auckland (New Zealand)');
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_2100
+    * @tc.name test getTimezoneFromCity method
+    * @tc.desc get the getTimezoneFromCity value
+    */
+    it('timezone_test_2100', 0, function () {
+        console.log('timezone_test_2100 ' + 'start');
+        let value = I18n.TimeZone.getTimezoneFromCity('Auckland');
+        console.log('timezone_test_2100 ' + value);
+        expect(value != null).assertTrue();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_TIMEZONE_2120
+    * @tc.name test getTimezoneFromCity method with not exist cityid
+    * @tc.desc get the getTimezoneFromCity value
+    */
+    it('timezone_test_2120', 0, function () {
+        console.log('timezone_test_2120 ' + 'start');
+        let value = I18n.TimeZone.getTimezoneFromCity('abc');
+        console.log('timezone_test_2120 ' + value);
+        expect(value != null).assertTrue();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_LOCALDIGIT_0100
+    * @tc.name test getUsingLocalDigit method
+    * @tc.desc get the getUsingLocalDigit value
+    */
+    it('localdigit_test_0100', 0, function () {
+        let value = I18n.getUsingLocalDigit();
+        console.log('localdigit_test_0100 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_I18N_JS_DATEORDER_0100
     * @tc.name    test getDateOrder method with zh param
     * @tc.desc    get the DateOrder value
