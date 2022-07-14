@@ -998,48 +998,6 @@ describe('ReminderAgentTest', function () {
       });
       done();
       })
-	  
-	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_034
-     * @tc.name      testActionButtonTypeClose034
-     * @tc.desc      test acton butto type is close.
-     */
-	 it('testActionButtonTypeClose034', 0, async function (done) {
-		 let timer = {
-			 reminderType: reminderAgent.ReminderType.ACTION_BUTTON_TYPE_CLOSE,
-			 triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
-		 }
-		 let expectId = -1;
-		 function reminderCallback(err, reminderId) {
-			 expect(reminderId).assertEqual(expectId);
-		 }
-		 reminderAgent.publishReminder(timer, (err, reminderId) => {
-			 expectId = reminderId + 1;
-			 reminderAgent.publishReminder(timer, reminderCallback);
-		 })
-		 done();
-	 })
-	 
-	 /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_035
-     * @tc.name      testActionButtonTypeSnooze035
-     * @tc.desc      test acton butto type is snooze.
-     */
-	 it('testActionButtonTypeSnooze035', 0, async function (done) {
-		 let timer = {
-			 reminderType: reminderAgent.ReminderType.ACTION_BUTTON_TYPE_SNOOZE,
-			 triggerTimeInSeconds: TRIGGER_TIME_IN_SECONDS
-		 }
-		 let expectId = -1;
-		 function reminderCallback(err, reminderId) {
-			 expect(reminderId).assertEqual(expectId);
-		 }
-		 reminderAgent.publishReminder(timer, (err, reminderId) => {
-			 expectId = reminderId + 1;
-			 reminderAgent.publishReminder(timer, reminderCallback);
-		 })
-		 done();
-	 })
 	 
 	/**
      * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_036
