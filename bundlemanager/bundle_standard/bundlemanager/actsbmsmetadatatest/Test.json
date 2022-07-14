@@ -1,10 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "60000",
-        "package": "com.example.actsbmsmetadatatest",
-        "shell-timeout": "60000"
+        "shell-timeout": "60000",
+        "bundle-name": "com.example.actsbmsmetadatatest",
+        "package-name": "com.example.actsbmsmetadatatest"
     },
     "kits": [
         {
@@ -46,7 +47,7 @@
                 "bm install -p /data/test/first_right.hap",
                 "bm install -p /data/test/second_right.hap"
             ],
-            "teardown-command":[
+            "teardown-command": [
                 "bm uninstall -n com.example.third1",
                 "bm uninstall -n com.example.system1",
                 "bm uninstall -n com.example.vendor1",

@@ -1,10 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "60000",
-        "package": "com.example.actsbmshapmoduletest",
-        "shell-timeout": "60000"
+        "shell-timeout": "60000",
+        "bundle-name": "com.example.actsbmshapmoduletest",
+        "package-name": "com.example.actsbmshapmoduletest"
     },
     "kits": [
         {
@@ -40,7 +41,7 @@
                 "bm install -p /data/test/bmsThirdBundleTest2.hap",
                 "bm install -p /data/test/bmsThirdBundleTest5.hap"
             ],
-            "teardown-command":[
+            "teardown-command": [
                 "bm uninstall -n com.example.third2",
                 "bm uninstall -n com.example.third5",
                 "bm uninstall -n com.example.bmsmainabilityfirstscene",
