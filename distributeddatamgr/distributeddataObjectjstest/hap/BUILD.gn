@@ -23,7 +23,9 @@ ohos_js_hap_suite("distributeddataObject_js_test") {
   hap_name = "ActsDistributedDataObjectJsTest"
 }
 ohos_js_assets("distributeddataObject_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("distributeddataObject_resources") {
   sources = [ "./src/main/resources" ]
