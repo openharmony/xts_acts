@@ -1,10 +1,11 @@
 {
     "description": "Global js interface performance Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "300000",
-        "package": "ohos.perf.test",
-        "shell-timeout": "60000"
+        "shell-timeout": "300000",
+        "bundle-name": "ohos.perf.test",
+        "package-name": "ohos.perf.test"
     },
     "kits": [
         {

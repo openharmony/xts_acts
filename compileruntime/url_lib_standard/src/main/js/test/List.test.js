@@ -12,5 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('./url.test.js')
-
+import UrlFunTest from './url.test.js'
+export default function testsuite() {
+UrlFunTest()
+}

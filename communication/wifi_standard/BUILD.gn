@@ -23,7 +23,9 @@ ohos_js_hap_suite("ActsWifiJSTest") {
   hap_name = "ActsWifiJSApiTest"
 }
 ohos_js_assets("wifi_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("wifi_resources") {
   sources = [ "./src/main/resources" ]

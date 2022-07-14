@@ -13,4 +13,7 @@
  * limitations under the License.
  */
 
-require('./xml.test.js')
+import XmlSerializerXmlPullParserTest from './xml.test.js'
+export default function testsuite() {
+XmlSerializerXmlPullParserTest()
+}
