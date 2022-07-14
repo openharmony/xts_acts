@@ -3629,7 +3629,12 @@ describe('PasteBoardTest', function() {
 
         console.log('f_test69 Converts the PlainTextData to text')
         var pasteDataRecord = pasteData1.getRecordAt(0)
-		console.log('f_test69 pasteDataRecord.convertToText = ' + pasteDataRecord.convertToText);
+        
+		pasteDataRecord.convertToText().then((data) => {
+            console.info('convertToText success data : ' + JSON.stringify(data));
+        }).catch((error) => { 
+            console.error('convertToText failed because ' + JSON.stringify(error));
+        });;
 
         console.log('SUB_pasteBoard_function_JS_API_6900 end');
         done();
