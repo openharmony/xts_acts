@@ -1,9 +1,10 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "60000",
-        "package": "com.example.amsZipfileUnzipfileST",
+        "bundle-name": "com.example.amsZipfileUnzipfileST",
+        "package-name": "com.example.amsZipfileUnzipfileST",
         "shell-timeout": "60000"
     },
     "kits": [

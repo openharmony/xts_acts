@@ -13,8 +13,8 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("actszipfileandunzipfiletest") {
-  hap_profile = "./entry/src/main/config.json"
+ohos_js_hap_suite("actszipfileandunzipfiletest") {
+  hap_profile = "./src/main/config.json"
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
@@ -25,9 +25,12 @@ ohos_hap_assist_suite("actszipfileandunzipfiletest") {
   part_name = "bundle_framework"
 }
 ohos_js_assets("hjs_demo_js_assets") {
-  source_dir = "./entry/src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
+
 ohos_resources("hjs_demo_resources") {
-  sources = [ "./entry/src/main/js/resources" ]
-  hap_profile = "./entry/src/main/config.json"
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }

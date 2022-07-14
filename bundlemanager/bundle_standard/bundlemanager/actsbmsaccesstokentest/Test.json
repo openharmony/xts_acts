@@ -1,10 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "120000",
-        "package": "com.example.actsbmsaccesstokentest",
-        "shell-timeout": "60000"
+        "shell-timeout": "120000",
+        "bundle-name": "com.example.actsbmsaccesstokentest",
+        "package-name": "com.example.actsbmsaccesstokentest"
     },
     "kits": [
         {
@@ -40,7 +41,7 @@
                 "bm install -p /data/test/bmsAccessTokenTest2.hap",
                 "bm install -p /data/test/bmsAccessTokenTest5.hap"
             ],
-            "teardown-command":[
+            "teardown-command": [
                 "bm uninstall -n com.example.bmsaccesstoken1",
                 "bm uninstall -n com.example.bmsaccesstoken2",
                 "bm uninstall -n com.example.bmsaccesstoken3",
