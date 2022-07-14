@@ -1031,6 +1031,7 @@ describe('ActsFeatureAbilityTest', function () {
             console.info("ACTS_GetAppType_0100 getAppType info :" + JSON.stringify(data))
             checkAppType(data);
             console.info('====> ACTS_GetAppType_0100 end=====>')
+            done()
         }).catch((err)=>{
             console.info('====> ACTS_GetAppType_0100 err=====>' + JSON.stringify(err))
             expect().assertFail()
@@ -1152,23 +1153,19 @@ describe('ActsFeatureAbilityTest', function () {
      * @tc.desc: Check the return value of the interface (by AsyncCallback)
      */
     it('ACTS_GetAbilityInfo_0200', 0, async function (done) {
-        let tempInfo;
         featureAbility.getContext().getAbilityInfo(
             (err, data) => {
                 if(err.code != 0){
                     expect().assertFail()
                     done()
                 }else{
-                    tempInfo = data
+                    console.info('====> ACTS_GetAbilityInfo_0200 =====>' + JSON.stringify(data))
+                    checkAbilityInfo(data);
+                    done()
                 }
             }
         );
-        setTimeout(function () {
-            console.info('====> ACTS_GetAbilityInfo_0200 =====>' + JSON.stringify(tempInfo))
-            checkAbilityInfo(tempInfo);
-            console.info('====> ACTS_GetAbilityInfo_0200 =====>')
-            done()
-        }, TIMEOUT)
+        await sleep(1000)
     })
 
     // checkHapModuleInfo
