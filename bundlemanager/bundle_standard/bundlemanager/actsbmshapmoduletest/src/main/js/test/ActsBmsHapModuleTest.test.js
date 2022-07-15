@@ -20,12 +20,19 @@ const BUNDLE_NAME1 = 'com.example.bmsmainabilityfirstscene';
 const BUNDLE_NAME2 = 'com.example.third2';
 const BUNDLE_NAME3 = 'com.example.third5';
 const BUNDLE_NAME5 = 'com.example.system1';
-const BUNDLE_NAME6 = "com.example.bmsmainabilitysecondscene";
 const FIRSTMAINABILITY = 'com.example.bmsmainabilityfirstscene.MainAbility';
 const SECONDMAINABILITY = 'com.example.bmsmainabilitysecondscene.MainAbility';
 const MODULE_NAME = 'entry';
+const ICON = '$media:icon';
+const ICON_ID = 16777218;
 const LABEL = '$string:app_name';
+const LABEL_ID = 16777216;
 const DEVICE_TYPES = 'phone';
+const FIRST_SCENE_HAP_NAME = 'com.example.bmsmainabilityfirstscene.MyApplication';
+const SECOND_SCENE_HAP_NAME = 'com.example.bmsmainabilitysecondscene.MyApplication';
+const THIRD_TWO_HAP_NAME = 'com.example.third2.MyApplication';
+const THIRD_FIVE_HAP_NAME = 'com.example.third5.BmsThirdBundle5';
+const SYSTEM_ONE_HAP_NAME = 'com.example.system1.BmsSystemBundle1';
 
 export default function ActsBmsHapModuleTest() {
 describe('ActsBmsHapModuleTest', function () {
@@ -43,14 +50,14 @@ describe('ActsBmsHapModuleTest', function () {
             expect(result.hapModuleInfos.length).assertEqual(2);
             if (result.hapModuleInfos.length > 0) {
                 let hapModuleInfo = result.hapModuleInfos[0];
-                expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME1);
+                expect(hapModuleInfo.name).assertEqual(FIRST_SCENE_HAP_NAME);
                 expect(hapModuleInfo.moduleName).assertEqual(MODULE_NAME);
                 expect(hapModuleInfo.description).assertEqual('');
                 expect(hapModuleInfo.descriptionId).assertEqual(0);
-                expect(hapModuleInfo.icon).assertEqual('');
+                expect(hapModuleInfo.icon).assertEqual(ICON);
                 expect(hapModuleInfo.label).assertEqual(LABEL);
-                expect(hapModuleInfo.labelId).assertEqual(0);
-                expect(hapModuleInfo.iconId).assertEqual(0);
+                expect(hapModuleInfo.labelId).assertEqual(LABEL_ID);
+                expect(hapModuleInfo.iconId).assertEqual(ICON_ID);
                 expect(hapModuleInfo.backgroundImg).assertEqual("");
                 expect(hapModuleInfo.supportedModes).assertEqual(0);
                 expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
@@ -81,10 +88,9 @@ describe('ActsBmsHapModuleTest', function () {
                 let hapModuleInfo = result.hapModuleInfos[0];
                 let hapModuleInfo1 = result.hapModuleInfos[1];
                 checkHapMoudleInfos(hapModuleInfo);
-                checkHapMoudleInfos(hapModuleInfo1);
-                expect(hapModuleInfo.label).assertEqual(LABEL);
-                expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME1);
-                expect(hapModuleInfo1.name).assertEqual(BUNDLE_NAME6);
+                checkHapMoudleInfos(hapModuleInfo1);           
+                expect(hapModuleInfo.name).assertEqual(FIRST_SCENE_HAP_NAME);
+                expect(hapModuleInfo1.name).assertEqual(SECOND_SCENE_HAP_NAME);
                 expect(hapModuleInfo.moduleName).assertEqual(MODULE_NAME);
                 expect(hapModuleInfo.mainAbilityName).assertEqual(FIRSTMAINABILITY);
                 expect(hapModuleInfo.mainElementName).assertEqual(FIRSTMAINABILITY);
@@ -108,12 +114,12 @@ describe('ActsBmsHapModuleTest', function () {
             expect(result.hapModuleInfos.length).assertEqual(1);
             if (result.hapModuleInfos.length > 0) {
                 let hapModuleInfo = result.hapModuleInfos[0];
-                expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME2);
+                expect(hapModuleInfo.name).assertEqual(THIRD_TWO_HAP_NAME);
                 expect(hapModuleInfo.moduleName).assertEqual(MODULE_NAME);
                 expect(hapModuleInfo.description).assertEqual('');
                 expect(hapModuleInfo.descriptionId).assertEqual(0);
                 expect(hapModuleInfo.icon).assertEqual('');
-                expect(hapModuleInfo.label).assertEqual(LABEL);
+                expect(hapModuleInfo.label).assertEqual('');
                 expect(hapModuleInfo.labelId).assertEqual(0);
                 expect(hapModuleInfo.iconId).assertEqual(0);
                 expect(hapModuleInfo.backgroundImg).assertEqual("");
@@ -144,14 +150,14 @@ describe('ActsBmsHapModuleTest', function () {
             expect(result.hapModuleInfos.length).assertEqual(1);
             if (result.hapModuleInfos.length == 1) {
                 let hapModuleInfo = result.hapModuleInfos[0];
-                expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME3);
+                expect(hapModuleInfo.name).assertEqual(THIRD_FIVE_HAP_NAME);
                 expect(hapModuleInfo.moduleName).assertEqual(MODULE_NAME);
                 expect(hapModuleInfo.description).assertEqual('');
                 expect(hapModuleInfo.descriptionId).assertEqual(0);
-                expect(hapModuleInfo.icon).assertEqual('');
+                expect(hapModuleInfo.icon).assertEqual(ICON);
                 expect(hapModuleInfo.label).assertEqual(LABEL);
-                expect(hapModuleInfo.labelId).assertEqual(0);
-                expect(hapModuleInfo.iconId).assertEqual(0);
+                expect(hapModuleInfo.labelId).assertEqual(LABEL_ID);
+                expect(hapModuleInfo.iconId).assertEqual(16777219);
                 expect(hapModuleInfo.backgroundImg).assertEqual("");
                 expect(hapModuleInfo.supportedModes).assertEqual(0);
                 expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
@@ -181,14 +187,14 @@ describe('ActsBmsHapModuleTest', function () {
             expect(data.hapModuleInfos.length).assertEqual(1);
             if (data.hapModuleInfos.length == 1) {
                 let hapModuleInfo = data.hapModuleInfos[0];
-                expect(hapModuleInfo.name).assertEqual(BUNDLE_NAME5);
+                expect(hapModuleInfo.name).assertEqual(SYSTEM_ONE_HAP_NAME);
                 expect(hapModuleInfo.moduleName).assertEqual(MODULE_NAME);
                 expect(hapModuleInfo.description).assertEqual('');
                 expect(hapModuleInfo.descriptionId).assertEqual(0);
-                expect(hapModuleInfo.icon).assertEqual('');
+                expect(hapModuleInfo.icon).assertEqual(ICON);
                 expect(hapModuleInfo.label).assertEqual(LABEL);
-                expect(hapModuleInfo.labelId).assertEqual(0);
-                expect(hapModuleInfo.iconId).assertEqual(0);
+                expect(hapModuleInfo.labelId).assertEqual(LABEL_ID);
+                expect(hapModuleInfo.iconId).assertEqual(16777219);
                 expect(hapModuleInfo.backgroundImg).assertEqual("");
                 expect(hapModuleInfo.supportedModes).assertEqual(0);
                 expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
@@ -208,9 +214,10 @@ describe('ActsBmsHapModuleTest', function () {
     function checkHapMoudleInfos(info) {
         expect(info.description).assertEqual('');
         expect(info.descriptionId).assertEqual(0);
-        expect(info.icon).assertEqual('');
-        expect(info.labelId).assertEqual(0);
-        expect(info.iconId).assertEqual(0);
+        expect(info.icon).assertEqual(ICON);
+        expect(info.labelId).assertEqual(LABEL_ID);
+        expect(info.iconId).assertEqual(ICON_ID);
+        expect(info.label).assertEqual(LABEL);
         expect(info.backgroundImg).assertEqual("");
         expect(info.supportedModes).assertEqual(0);
         expect(info.reqCapabilities.length).assertEqual(0);
