@@ -41,7 +41,7 @@ describe('AudioRecorderFormatCompatibilityTest', function () {
         audioSampleRate : 22050,
         numberOfChannels : 2,
         format : media.AudioOutputFormat.AAC_ADTS,
-        uri : 'file:///data/accounts/account_0/appdata/appdata/recorder/test.m4a',
+        uri : 'fd://',
         location : { latitude : 1, longitude : 1 },
     }
 
@@ -114,8 +114,8 @@ describe('AudioRecorderFormatCompatibilityTest', function () {
         let displayName = pathName;
         const mediaTest = mediaLibrary.getMediaLibrary();
         let fileKeyObj = mediaLibrary.FileKey;
-        let mediaType = mediaLibrary.MediaType.VIDEO;
-        let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
+        let mediaType = mediaLibrary.MediaType.AUDIO;
+        let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO);
         let dataUri = await mediaTest.createAsset(mediaType, displayName, publicPath);
         if (dataUri != undefined) {
             let args = dataUri.id.toString();
