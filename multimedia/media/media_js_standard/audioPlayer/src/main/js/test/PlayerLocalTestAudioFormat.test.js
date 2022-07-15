@@ -50,7 +50,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         })
         audioPlayer.on('dataLoad', () => {
             console.info('case set source success');
-            expect(audioPlayer.state).assertEqual('paused');
+            expect(audioPlayer.state).assertEqual('idle');
             expect(audioPlayer.currentTime).assertEqual(0);
             audioPlayer.play();
         });
