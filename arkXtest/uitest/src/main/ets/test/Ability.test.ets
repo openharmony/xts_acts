@@ -330,7 +330,8 @@ export default function abilityTest() {
       await driver.delayMs(waitUiReadyMs)
       let window = await driver.findWindow({bundleName:'com.example.windows'})
       await window.resume()
-      await window.maximize()
+      let window2 = await driver.findWindow({bundleName:'com.example.windows'})
+      await window2.maximize()
       await stopApplication('com.example.windows')
     })
 
