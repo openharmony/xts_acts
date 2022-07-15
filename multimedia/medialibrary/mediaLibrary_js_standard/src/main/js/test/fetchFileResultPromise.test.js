@@ -460,6 +460,7 @@ describe('fetchFileResultPromise.test.js', async function() {
                     expect(true).assertTrue();
                     fetchFileResult.close();
                     done();
+                    return;
                 }
                 expect(false).assertTrue();
                 fetchFileResult.close();

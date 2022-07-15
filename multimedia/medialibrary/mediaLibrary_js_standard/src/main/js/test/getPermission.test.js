@@ -18,9 +18,16 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundle from '@ohos.bundle';
 import account from '@ohos.account.osAccount'
 
-describe("get_permission", async function () {
-    let userId = await account.getAccountManager().getOsAccountLocalldFromProcess();
-    console.info('userId :' + userId);
+describe("get_permission", function () {
+    let userId ;
+    async function getUserId () {
+            await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
+                console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
+                userId = account;
+              }).catch(err=>{
+                console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
+              })
+        }
     /**
      * @tc.number SUB_DF_GRANT_USER_GRANTED_PERMISSION_0000
      * @tc.name grant_user_granted_permission_async_000
@@ -31,6 +38,7 @@ describe("get_permission", async function () {
      * @tc.require
      */
     it("grant_user_granted_permission_async_000", 0, async function (done) {
+        await getUserId();
         let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.mediaLibrary', 0, userId);
         let tokenID = appInfo.accessTokenId;
         let atManager = abilityAccessCtrl.createAtManager();

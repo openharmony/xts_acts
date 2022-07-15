@@ -17,12 +17,11 @@ import audio from '@ohos.multimedia.audio';
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
-describe('audioManger_audio2', function () {
+describe('audioFramework', function () {
     console.info('AudioFrameworkTest: Create AudioManger Object JS Framework');
     const audioManager = audio.getAudioManager();
     var deviceRoleValue = null;
     var deviceTypeValue = null;
-    var volErrorMesg = 'Error, Operation not supported or Failed';
     var audioMedia = 3;
     var audioRingtone = 2;
     var minVol = 0;

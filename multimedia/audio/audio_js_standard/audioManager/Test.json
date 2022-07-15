@@ -12,15 +12,18 @@
                 "ActsAudioManagerJsTest.hap"
             ],
             "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
             "run-command": [
-                "mkdir /data/app/el2/100/base/ohos.acts.multimedia.audio.audiomanager/haps/entry/files/media"
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audiomanager/haps/entry/files/media"
             ],
             "cleanup-apps": true
         },
         {
             "type": "PushKit",
-            "pre-push": [
-            ],
+            "pre-push": [],
             "push": [
                 "./resource/audio/audioManager/Believer.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiomanager/haps/entry/files/",
                 "./resource/audio/audioManager/Believer60s.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiomanager/haps/entry/files/",

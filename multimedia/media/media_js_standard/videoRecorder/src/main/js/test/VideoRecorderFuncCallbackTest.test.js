@@ -21,7 +21,7 @@ import bundle from '@ohos.bundle'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import account from '@ohos.account.osAccount'
 
-describe('VideoRecorderFuncCallbackTest', async function () {
+describe('VideoRecorderFuncCallbackTest', function () {
     const RECORDER_TIME = 3000;
     const PAUSE_TIME = 1000;
     const END_EVENT = 'end';
@@ -43,6 +43,7 @@ describe('VideoRecorderFuncCallbackTest', async function () {
     let fdPath;
     let fileAsset;
     let fdNumber;
+    let userId;
     let configFile = {
         audioBitrate : 48000,
         audioChannels : 2,
@@ -91,9 +92,16 @@ describe('VideoRecorderFuncCallbackTest', async function () {
     function sleep(time) {
         for(let t = Date.now();Date.now() - t <= time;);
     }
-    let userId = await account.getAccountManager().getOsAccountLocalldFromProcess();
-    console.info('userId :' + userId);
+    async function getUserId () {
+        await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
+            console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
+            userId = account;
+          }).catch(err=>{
+            console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
+          })
+    }
     beforeAll(async function () {
+        await getUserId();
         await initCamera();
         await applyPermission();
         console.info('beforeAll case');
