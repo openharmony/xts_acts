@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import TreeSet from "@ohos.util.TreeSet";
-
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+export default function TreeSetTest() {
 describe("TreeSetTest", function () {
                               
   /**
@@ -558,3 +558,4 @@ describe("TreeSetTest", function () {
     }
   });
 });
+}

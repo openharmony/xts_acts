@@ -12,8 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import  Url from '@ohos.url'
+export default function UrlFunTest() {
 describe('UrlFunTest', function () {
 
     /**
@@ -2063,4 +2064,4 @@ describe('UrlFunTest', function () {
         var result = params.searchParams.toString();
         expect(result).assertEqual('abc=123&def=456')
     })
-})
+})}

@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import LightWeightSet from "@ohos.util.LightWeightSet";
-
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+export default function LightWeightSetTest() {
 describe("LightWeightSetTest", function () {
               
   /**
@@ -756,3 +756,4 @@ describe("LightWeightSetTest", function () {
     expect(res).assertEqual(false);
   });
 });
+}

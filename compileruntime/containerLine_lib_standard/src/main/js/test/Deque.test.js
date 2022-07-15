@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import Deque from "@ohos.util.Deque";
-
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+export default function DequeTest() {
 describe("DequeTest", function () {
 
   /**
@@ -541,3 +541,4 @@ describe("DequeTest", function () {
     expect(size).assertEqual(7);
   });
 });
+}

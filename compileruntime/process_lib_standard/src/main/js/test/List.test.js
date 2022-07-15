@@ -13,4 +13,7 @@
  * limitations under the License.
  */
 
-require('./Process.test.js')
+import ChildProcessTest from './Process.test.js'
+export default function testsuite() {
+ChildProcessTest()
+}

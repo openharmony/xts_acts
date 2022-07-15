@@ -12,12 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import QueueTest from './Deque.test.js'
+import ArraylistTest from './ArrayList.test.js'
+import DequeTest from './Queue.test.js'
+import StackTest from './Stack.test.js'
+import ListTest from './List.test.js'
+import LinkedListTest from './LinkedList.test.js'
+import VectorTest from './Vector.test.js'
 
-require('./Deque.test.js');
-require('./ArrayList.test.js');
-require('./Queue.test.js');
-require('./Stack.test.js');
-require('./List.test.js');
-require('./LinkedList.test.js');
-require('./Vector.test.js');
+
+export default function testsuite() {
+    ArraylistTest()
+    DequeTest()
+    LinkedListTest()
+    QueueTest()
+    ListTest()
+    StackTest()
+    VectorTest()
+}
+
 

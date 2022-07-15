@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import HashSet from "@ohos.util.HashSet";
-
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+export default function HashSetTest() {
 describe("HashSetTest", function () {
             
   /**
@@ -535,3 +535,4 @@ describe("HashSetTest", function () {
     }
   });
 });
+}

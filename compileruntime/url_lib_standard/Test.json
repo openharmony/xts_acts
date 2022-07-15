@@ -1,10 +1,11 @@
 {
     "description": "Configuration for startup url js api Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "800000",
-        "package": "com.example.url",
-        "shell-timeout": "90000"
+        "shell-timeout": "800000",
+        "bundle-name": "com.example.url",
+        "package-name": "com.example.url"
     },
     "kits": [
         {

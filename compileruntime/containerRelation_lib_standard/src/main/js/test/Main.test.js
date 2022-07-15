@@ -12,11 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import LightWeightMapTest from './LightWeightMap.test.js'
+import LightWeightSetTest from './LightWeightSet.test.js'
+import HashMapTest from './HashMap.test.js'
+import HashSetTest from './HashSet.test.js'
+import PlainArrayTest from './PlainArray.test.js'
+import TreeMapTest from './TreeMap.test.js'
+import TreeSetTest from './TreeSet.test.js'
 
-require('./LightWeightMap.test.js');
-require('./LightWeightSet.test.js');
-require('./HashMap.test.js');
-require('./HashSet.test.js');
-require('./PlainArray.test.js');
-require('./TreeMap.test.js');
-require('./TreeSet.test.js');
+export default function testsuite() {
+    HashMapTest()
+    HashSetTest()
+    LightWeightMapTest()
+    LightWeightSetTest()
+    PlainArrayTest()
+    TreeMapTest()
+    TreeSetTest()
+}

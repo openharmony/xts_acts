@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import LinkedList from "@ohos.util.LinkedList";
-
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+export default function LinkedListTest() {
 describe("LinkedListTest", function () {
       
   /**
@@ -988,3 +988,4 @@ describe("LinkedListTest", function () {
     }
   });
 });
+}

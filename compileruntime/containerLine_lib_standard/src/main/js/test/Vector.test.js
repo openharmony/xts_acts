@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import Vector from "@ohos.util.Vector";
-
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+export default function VectorTest() {
 describe("VectorTest", function () {
     
   /**
@@ -1264,3 +1264,4 @@ describe("VectorTest", function () {
     }
   });
 });
+}
