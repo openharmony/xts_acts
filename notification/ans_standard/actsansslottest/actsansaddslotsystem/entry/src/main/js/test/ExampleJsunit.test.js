@@ -214,9 +214,10 @@ describe('ActsAnsAddSlotSystem', function () {
             (err)=>{
                 console.debug("====>addSlot OTHER_TYPES callback====>");
                 expect(err.code).assertEqual(0);
+                notification.getSlot(notification.SlotType.OTHER_TYPES, getSlotCallback);
             })
         console.debug("====>getSlot SlotType.OTHER_TYPES====>");
-        notification.getSlot(notification.SlotType.OTHER_TYPES, getSlotCallback);
+       
         setTimeout(function(){
             console.debug("====>time out ActsAnsAddSlotSystem_0400====>");
         }, TIMEOUT);
@@ -404,7 +405,7 @@ describe('ActsAnsAddSlotSystem', function () {
     it('ActsAnsAddSlotSystem_0900', 0, async function (done) {
         console.debug("====>ActsAnsAddSlotSystem_0900 start====>");
         console.debug("====>addSlot OTHER_TYPES====>");
-        notification.addSlot(
+        await notification.addSlot(
             {
                 type: notification.SlotType.OTHER_TYPES,
                 level: notification.SlotLevel.LEVEL_DEFAULT,

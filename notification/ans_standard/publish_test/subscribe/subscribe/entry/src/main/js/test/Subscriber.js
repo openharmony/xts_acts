@@ -364,7 +364,7 @@ describe('ActsAnsSubscriberTest', function () {
     })
 
     /*
-     * @tc.number: ActsSubscriber_test_0700
+     * @tc.number: ActsSubscriber_test_0600
      * @tc.name: subscribe()
      * @tc.desc: verify the function of subscribe
      */
@@ -480,7 +480,7 @@ describe('ActsAnsSubscriberTest', function () {
             onConnect:connectCallbacko,
             onDisconnect:disconnectCallbacko,
         }
-        await notify.subscribe(subInfo,{bundleNames:[]},subscribeCallbackp);
+        await notify.subscribe(subInfo,{bundleNames:[""]},subscribeCallbackp);
         await notify.unsubscribe(subInfo, unSubscribeCallbacko);
         console.debug("==ActsSubscriber_test_1400==end==>");
         done();
