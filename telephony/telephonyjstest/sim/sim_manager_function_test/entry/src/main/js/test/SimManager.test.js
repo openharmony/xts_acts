@@ -403,10 +403,10 @@ describe('SimManagerTest', function () {
    */
   it('Telephony_Sim_hasOperatorPrivileges_Async_0400', 0, function (done) {
     const CASE_NAME = 'Telephony_Sim_hasOperatorPrivileges_Async_0400';
-    sim.hasOperatorPrivileges(env.SLOTID2, (error, result) => {
-      if (error) {
-        console.log(`${CASE_NAME} hasOperatorPrivileges error: ${error.message}`);
-        expect().assertFail();
+    sim.hasOperatorPrivileges(env.SLOTID2, (err, result) => {
+      if (err) {
+        console.log(`${CASE_NAME} hasOperatorPrivileges err: ${err.message}`);
+        expect(err.code).assertEqual(202);
         done();
         return;
       }
@@ -430,7 +430,7 @@ describe('SimManagerTest', function () {
       console.log(`${CASE_NAME} test finish.`);
     } catch (error) {
       console.log(`${CASE_NAME} hasOperatorPrivileges error: ${error.message}`);
-      expect().assertFail();
+      expect(err.code).assertEqual(202);
     }
     done();
   });

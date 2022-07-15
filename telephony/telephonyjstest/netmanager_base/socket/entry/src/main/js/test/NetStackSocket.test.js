@@ -229,23 +229,23 @@ describe('Telephony_NETSTACK_SocketTest', function () {
                 let udp = netSocket.constructUDPSocketInstance()
                 udp.on('message', function () {
                 })
-                udp.on('listening', function () {
-                })
-                udp.on('close', function () {
-                })
-                udp.on('error', function () {
-                })
                 udp.off('message', function () {
                         expect().assertFail()
                         done()
+                })
+                udp.on('listening', function () {
                 })
                 udp.off('listening', function () {
                         expect().assertFail()
                         done()
                 })
+                udp.on('close', function () {
+                })
                 udp.off('close', function () {
                         expect().assertFail()
                         done()
+                })
+                udp.on('error', function () {
                 })
                 udp.off('error', function () {
                         expect().assertFail()
@@ -453,23 +453,23 @@ describe('Telephony_NETSTACK_SocketTest', function () {
                 let tcp = netSocket.constructTCPSocketInstance()
                 tcp.on('message', function () {
                 })
-                tcp.on('connect', function () {
-                })
-                tcp.on('close', function () {
-                })
-                tcp.on('error', function () {
-                })
                 tcp.off('message', function () {
                         expect().assertFail()
                         done()
+                })
+                tcp.on('connect', function () {
                 })
                 tcp.off('connect', function () {
                         expect().assertFail()
                         done()
                 })
+                tcp.on('close', function () {
+                })
                 tcp.off('close', function () {
                         expect().assertFail()
                         done()
+                })
+                tcp.on('error', function () {
                 })
                 tcp.off('error', function () {
                         expect().assertFail()
