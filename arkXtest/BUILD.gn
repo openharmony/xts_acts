@@ -16,8 +16,6 @@ import("//build/ohos_var.gni")
 group("arkXtest") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "uitest:uitest_xts",
-    ]
+    deps = [ "uitest:uitest_xts" ]
   }
 }
