@@ -681,6 +681,159 @@ describe('I18nTest', function () {
     })
 
     /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7810
+    * @tc.name test getLocationName method with 135... num in zh-CN locale
+    * @tc.desc get the getLocationName value
+    */
+    it('i18n_test_7810', 0, function () {
+        console.log('i18n_test_7810 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7810 ' + ran);
+        let value = phonenumber.getLocationName('1351057467' + ran, 'zh-CN');
+        console.log('i18n_test_7810 ' + value);
+        expect(value).assertEqual('广东省深圳市');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7820
+    * @tc.name test getLocationName method with 135... num in en-US locale
+    * @tc.desc get the getLocationName value
+    */
+    it('i18n_test_7820', 0, function () {
+        console.log('i18n_test_7820 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7820 ' + ran);
+        let value = phonenumber.getLocationName('+861351057467' + ran, 'en-US');
+        console.log('i18n_test_7820 ' + value);
+        expect(value).assertEqual('Shenzhen, Guangdong');
+        let value2 = phonenumber.getLocationName('+86 1351057467' + ran, 'en-US');
+        console.log('i18n_test_7820 ' + value2);
+        expect(value2).assertEqual('Shenzhen, Guangdong');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7830
+    * @tc.name test getLocationName method with 158... num in en-US locale
+    * @tc.desc get the getLocationName value
+    */
+    it('i18n_test_7830', 0, function () {
+        console.log('i18n_test_7830 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7830 ' + ran);
+        let value1 = phonenumber.getLocationName('+861586661737' + ran, 'en-US');
+        console.log('i18n_test_7830 ' + value1);
+        expect(value1).assertEqual('Jinan, Shandong');
+        let value2 = phonenumber.getLocationName('+86 1586661737' + ran, 'en-US');
+        console.log('i18n_test_7830 ' + value2);
+        expect(value2).assertEqual('Jinan, Shandong');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7840
+    * @tc.name test getLocationName method with 027... num in zh-CN locale
+    * @tc.desc get the getLocationName value
+    */
+    it('i18n_test_7840', 0, function () {
+        console.log('i18n_test_7840 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7840 ' + ran);
+        let value = phonenumber.getLocationName('027-5937411' + ran, 'zh-CN');
+        console.log('i18n_test_7840 ' + value);
+        expect(value).assertEqual('湖北省武汉市');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7850
+    * @tc.name test getLocationName method with 0728... num in zh-CN locale
+    * @tc.desc get the getLocationName value
+    */
+    it('i18n_test_7850', 0, function () {
+        console.log('i18n_test_7850 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7850 ' + ran);
+        let value = phonenumber.getLocationName('0728-623797' + ran, 'zh-CN');
+        console.log('i18n_test_7850 ' + value);
+        expect(value).assertEqual('湖北省仙桃市');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7860
+    * @tc.name test getLocationName method with +34... num in en-US locale
+    * @tc.desc get the getLocationName value
+    */
+    it('i18n_test_7860', 0, function () {
+        console.log('i18n_test_7860 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7860 ' + ran);
+        let value1 = phonenumber.getLocationName('+3460724205' + ran, 'en-US');
+        console.log('i18n_test_7860 ' + value1);
+        expect(value1).assertEqual('Spain');
+        let value2 = phonenumber.getLocationName('+34 60724205' + ran, 'en-US');
+        console.log('i18n_test_7860 ' + value2);
+        expect(value2).assertEqual('Spain');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7870
+    * @tc.name test getLocationName method with +39... num in en-US locale
+    * @tc.desc get the getLocationName value
+    */
+    it('i18n_test_7870', 0, function () {
+        console.log('i18n_test_7870 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7870 ' + ran);
+        let value = phonenumber.getLocationName('+39342652441' + ran, 'en-US');
+        console.log('i18n_test_7870 ' + value);
+        expect(value).assertEqual('Italy');
+        let value2 = phonenumber.getLocationName('+39 342652441' + ran, 'en-US');
+        console.log('i18n_test_7870 ' + value2);
+        expect(value2).assertEqual('Italy');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7880
+    * @tc.name test getLocationName method with +39... num in zh-CN locale
+    * @tc.desc get the getLocationName value
+    */
+    it('i18n_test_7880', 0, function () {
+        console.log('i18n_test_7880 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7880 ' + ran);
+        let value = phonenumber.getLocationName('+39342652441' + ran, 'zh-CN');
+        console.log('i18n_test_7880 ' + value);
+        expect(value).assertEqual('意大利');
+        let value2 = phonenumber.getLocationName('+39 342652441' + ran, 'zh-CN');
+        console.log('i18n_test_7880 ' + value2);
+        expect(value2).assertEqual('意大利');
+    })
+
+    /**
+    * @tc.number SUB_GLOBAL_I18N_JS_7890
+    * @tc.name test getLocationName method with +34... num in zh-CN locale
+    * @tc.desc get the getLocationName value
+    */
+    it('i18n_test_7890', 0, function () {
+        console.log('i18n_test_7890 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('i18n_test_7890 ' + ran);
+        let value1 = phonenumber.getLocationName('+3460724205' + ran, 'zh-CN');
+        console.log('i18n_test_7890 ' + value1);
+        expect(value1).assertEqual('西班牙');
+        let value2 = phonenumber.getLocationName('+34 60724205' + ran, 'zh-CN');
+        console.log('i18n_test_7890 ' + value2);
+        expect(value2).assertEqual('西班牙');
+    })
+
+    /**
     * @tc.number  SUB_GLOBAL_I18N_JS_7900
     * @tc.name    test isWeekend interface
     * @tc.desc    get the isWeekend value
