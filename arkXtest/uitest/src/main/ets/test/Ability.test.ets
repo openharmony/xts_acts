@@ -41,7 +41,6 @@ export default function abilityTest() {
   describe('UiTestCase', function () {
     it('UiComponent.InputText', 0, async function () {
       let driver = UiDriver.create()
-      //await startAbility('com.example.myapplication', 'com.example.entry.MainAbility')
       await driver.delayMs(waitUiReadyMs)
       let input = await driver.findComponent(BY.type('TextInput'))
       await input.inputText('123')
@@ -255,30 +254,10 @@ export default function abilityTest() {
       expect(await button_ori.getText() == 'next page').assertTrue()
     })
 
-    it('UiDriver.swipe', 0, async function () {
-      let driver = UiDriver.create()
-      await driver.delayMs(waitUiReadyMs)
-      await driver.swipe(100, 500, 100, 100)
-      await driver.delayMs(waitUiReadyMs)
-      let button = await driver.findComponent(BY.text('bottom'))
-      let text = await button.getText()
-      expect(text == 'bottom').assertTrue()
-      await driver.swipe(100, 100, 100, 600)
-
-    })
-
-    it('UiDriver.screenCap', 0, async function () {
-      let driver = UiDriver.create()
-      await driver.delayMs(waitUiReadyMs)
-      let path = '/data/local/tmp/1.png'
-      let success = await driver.screenCap(path)
-      expect(typeof (success) == 'boolean').assertTrue()
-    })
-
     it('getUiComponentBounds', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let text = await driver.findComponent(BY.text('Hello World'))
+      let text = await driver.findComponent(BY.text('next page'))
       expect(text !== null).assertTrue()
       let bounds = await text.getBounds();
       console.info(`UiTestCase, bounds=${bounds}, type=${typeof (bounds)}`)
@@ -306,6 +285,14 @@ export default function abilityTest() {
       expect(button !== null).assertTrue()
     })
 
+    it('UiDriver.screenCap', 0, async function () {
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let path = '/data/local/tmp/1.png'
+      let success = await driver.screenCap(path)
+      expect(typeof (success) == 'boolean').assertTrue()
+    })
+
     it('By.isBefore', 0, async function () {
       await startAbility('com.ohos.settings', 'com.ohos.settings.MainAbility')
       let driver = UiDriver.create()
@@ -322,34 +309,6 @@ export default function abilityTest() {
       expect(await button.getText() == '声音').assertTrue()
     })
 
-    it('window.test', 0, async function () {
-      await startAbility('com.example.windows', 'MainAbility')
-      let driver = UiDriver.create()
-      await driver.delayMs(200)
-      let window = await driver.findWindow({bundleName:'com.example.windows'})
-      await window.resume()
-      await driver.delayMs(200)
-      let window2 = await driver.findWindow({bundleName:'com.example.windows'})
-      await window2.moveTo(300, 300)
-      await driver.delayMs(200)
-      let button2 = await driver.findComponent(BY.text('Clock'))
-      await button2.click()
-    })
-
-    it('window.test_2', 0, async function () {
-      await startAbility('com.example.windows', 'MainAbility')
-      let driver = UiDriver.create()
-      await driver.delayMs(waitUiReadyMs)
-      let button = await driver.findComponent(BY.text('自由窗口创建'))
-      await button.click()
-      await driver.delayMs(waitUiReadyMs)
-      let window_2 = await driver.findWindow({bundleName:'com.example.windows'})
-      await window_2.resize(400, 400, 7)
-      let window = await driver.findWindow({bundleName:'com.example.windows'})
-      await window.resize(600, 600, 7)
-      await stopApplication('com.example.windows')
-    })
-
     it('window.resize', 0, async function () {
       await startAbility('com.example.windows', 'MainAbility')
       let driver = UiDriver.create()
@@ -362,7 +321,7 @@ export default function abilityTest() {
       await driver.delayMs(waitUiReadyMs)
       let window2 = await driver.findWindow({bundleName:'com.example.windows'})
       await window2.resize(600, 600,7)
-      await driver.delayMs(waitUiReadyMs)
+      await stopApplication('com.example.windows')
       })
 
     it('window.maximize', 0, async function () {
@@ -370,7 +329,9 @@ export default function abilityTest() {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let window = await driver.findWindow({bundleName:'com.example.windows'})
+      await window.resume()
       await window.maximize()
+      await stopApplication('com.example.windows')
     })
 
     it('window.minimize', 0, async function () {
@@ -379,6 +340,7 @@ export default function abilityTest() {
       await driver.delayMs(waitUiReadyMs)
       let window = await driver.findWindow({bundleName:'com.example.windows'})
       await window.minimize()
+      await stopApplication('com.example.windows')
     })
 
     it('window.close', 0, async function () {
@@ -395,6 +357,7 @@ export default function abilityTest() {
       await driver.delayMs(waitUiReadyMs)
       let window = await driver.findWindow({bundleName:'com.example.windows'})
       await window.split()
+      await stopApplication('com.example.windows')
     })
 
     })
