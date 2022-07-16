@@ -14,7 +14,7 @@
  */
 
 import bluetooth from '@ohos.bluetooth';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 
 let Btname = {
@@ -38,6 +38,7 @@ let Btname = {
     +'345678901234567890123456789012345678901234567890123456789012367890123456789012345568'
 }
 
+export default function bluetoothhostTest() {
 describe('bluetoothhostTest', function() {
 
     beforeAll(function () {
@@ -714,3 +715,4 @@ describe('bluetoothhostTest', function() {
 
 })
 
+}

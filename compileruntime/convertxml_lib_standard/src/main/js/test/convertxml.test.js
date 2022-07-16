@@ -12,8 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import  convertxml from '@ohos.convertxml'
+export default function XmlTest() {
 describe('XmlTest', function () {
 
     /**
@@ -1280,4 +1281,4 @@ describe('XmlTest', function () {
         '"_text":"Play"}]}]}]}'
         expect(result).assertEqual(str1);
     })
-})
+})}
