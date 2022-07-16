@@ -15,5 +15,5 @@
 
 import statfs from './statfs.test.js'
 export default function testsuite() {
-statfs()
+    statfs_test()
 }
