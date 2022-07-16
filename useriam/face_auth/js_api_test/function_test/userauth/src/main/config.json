@@ -87,16 +87,6 @@
                     "designWidth": 720,
                     "autoDesignWidth": false
                 }
-            },
-            {
-                "pages": [
-                    "pages/index/index"
-                ],
-                "name": ".TestAbility",
-                "window": {
-                    "designWidth": 720,
-                    "autoDesignWidth": false
-                }
             }
         ],
         "reqPermissions": [
