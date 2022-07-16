@@ -1,10 +1,11 @@
 {
     "description": "Configuration for storage statfs Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "60000",
-        "package": "ohos.acts.storage.statfs",
-        "shell-timeout": "60000"
+        "shell-timeout": "60000",
+        "bundle-name": "ohos.acts.storage.statfs",
+        "package-name": "ohos.acts.storage.statfs"
     },
     "kits": [
         {
