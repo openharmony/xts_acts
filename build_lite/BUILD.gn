@@ -32,7 +32,7 @@ lite_component("acts_component") {
   } else {
     if (ohos_kernel_type == "liteos_m") {
       all_features += [
-        "//test/xts/acts/aafwk_lite/ability_hal:ActsAbilityMgrTest",
+        "//test/xts/acts/ability_lite/ability_hal:ActsAbilityMgrTest",
         "//test/xts/acts/appexecfwk_lite/appexecfwk_hal:ActsBundleMgrTest",
         "//test/xts/acts/communication_lite/lwip_hal:ActsLwipTest",
 
@@ -68,7 +68,7 @@ lite_component("acts_component") {
         "//test/xts/acts/hiviewdfx_lite/hilog_posix:ActsHilogTest",
 
         "//test/xts/acts/appexecfwk_lite/appexecfwk_posix:ActsBundleMgrTest",
-        "//test/xts/acts/aafwk_lite/ability_posix:ActsAbilityMgrTest",
+        "//test/xts/acts/ability_lite/ability_posix:ActsAbilityMgrTest",
         "//test/xts/acts/communication_lite/lwip_posix:ActsLwipTest",
 
         "//test/xts/acts/ai_lite/ai_engine_posix/base:ActsAiEngineTest",
@@ -89,7 +89,7 @@ lite_component("acts_component") {
         #"//test/xts/acts/multimedia_lite/media_lite_posix/recorder_native:ActsMediaRecorderTest",
         "//test/xts/acts/distributed_schedule_lite/system_ability_manager_posix:ActsSamgrTest",
         "//test/xts/acts/appexecfwk_lite/appexecfwk_posix:ActsBundleMgrTest",
-        "//test/xts/acts/aafwk_lite/ability_posix:ActsAbilityMgrTest",
+        "//test/xts/acts/ability_lite/ability_posix:ActsAbilityMgrTest",
         "//test/xts/acts/ai_lite/ai_engine_posix/base:ActsAiEngineTest",
       ]
     }
