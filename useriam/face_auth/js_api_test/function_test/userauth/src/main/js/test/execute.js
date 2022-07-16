@@ -21,7 +21,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 /**
  * test case
  */
-export default function AbilityDisable() {
+export default function userAuthTestExecute() {
 describe('userAuthTestExecute', function () {
     beforeEach(function(done) {
         let waitTime = 1000;

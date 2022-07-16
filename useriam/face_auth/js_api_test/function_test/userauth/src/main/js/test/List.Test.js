@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ActsAmsCallBackFourthScene from './execute.js'
-import ActsAmsCallBackFourthScene from './enumTest.js'
+import userAuthTestExecute from './execute.js'
+import userAuthTestEnum from './enumTest.js'
 export default function testsuite() {
     userAuthTestEnum()
     userAuthTestExecute()

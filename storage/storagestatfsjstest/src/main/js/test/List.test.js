@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import statfs from './statfs.test.js'
+import statfs_test from './statfs.test.js'
 export default function testsuite() {
     statfs_test()
 }

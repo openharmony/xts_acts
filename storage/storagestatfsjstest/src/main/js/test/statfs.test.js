@@ -16,8 +16,8 @@
 import {describe, it, expect, isIntNum, statfs} from './Common';
 import featureAbility from '@ohos.ability.featureAbility';
 
-export default function statfs() {
-describe('statfs', function () {
+export default function statfs_test() {
+describe('statfs_test', function () {
 
     /**
      * @tc.number SUB_DF_STATFS_GET_FREE_BYTES_0000
