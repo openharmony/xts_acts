@@ -43,6 +43,7 @@ group("ability_runtime") {
       "processmultiinstance:processmultiinstance",
       "stage:stage",
       "want:want",
+      "workercontextcover:workercontextcover",
 
       #"zidltest:zidltest",
     ]

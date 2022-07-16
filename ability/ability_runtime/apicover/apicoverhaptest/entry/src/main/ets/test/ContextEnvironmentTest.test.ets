@@ -61,7 +61,7 @@ export default function ContextEnvironmentTest(applicationContext) {
       TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0400 ==== '
       console.info(TAG, `begin`)
 
-      for (let i = 0;i < 10;i++) {
+      for (let i = 0;i < 5;i++) {
         // registerEnvironmentCallback
         var callbackId = applicationContext.registerEnvironmentCallback(envCallback);
         var code = undefined
@@ -151,7 +151,7 @@ export default function ContextEnvironmentTest(applicationContext) {
       TAG = 'SUB_AA_AMS_Context_EnvironmentTest_0800 ==== '
       console.info(TAG, `begin`)
 
-      applicationContext.unregisterEnvironmentCallback(undefined).then((data) => {
+      await applicationContext.unregisterEnvironmentCallback(undefined).then((data) => {
         console.info(TAG + "unregisterEnvironmentCallback data is : " + JSON.stringify(data))
         expect().assertFail();
       }).catch((error) => {
