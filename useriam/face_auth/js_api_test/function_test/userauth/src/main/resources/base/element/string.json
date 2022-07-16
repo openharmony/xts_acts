@@ -4,26 +4,6 @@
       "name": "entry_MainAbility",
       "value": "entry_MainAbility"
     },
-    {
-      "name": "mainability_description",
-      "value": "JS_Empty Ability"
-		},
-	{
-		"name": "MainAbility_desc",
-		"value": "description"
-	},
-		{
-		"name": "MainAbility_label",
-		"value": "label"
-	},
-		{
-		"name": "TestAbility_desc",
-		"value": "description"
-	},
-		{
-		"name": "TestAbility_label",
-		"value": "label"
-		},
 	{
 		"name": "MainAbility_desc",
 		"value": "description"
