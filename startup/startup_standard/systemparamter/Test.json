@@ -1,10 +1,11 @@
 {
     "description": "Configuration for startup sysparam js api Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "300000",
-        "package": "ohos.acts.startup.sysparam.function",
-        "shell-timeout": "60000"
+        "shell-timeout": "300000",
+        "bundle-name": "ohos.acts.startup.sysparam.function",
+        "package-name": "ohos.acts.startup.sysparam.function"
     },
     "kits": [
         {
