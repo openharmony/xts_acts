@@ -15,9 +15,10 @@
 
 import usb from '@ohos.usb';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 /* usb core functions test */
+export default function UsbPortAndFunctionsJsFunctionsTest() {
 describe('UsbPortAndFunctionsJsFunctionsTest', function () {
 
   beforeAll(function () {
@@ -211,3 +212,4 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   })
 
 })
+}
