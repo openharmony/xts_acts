@@ -1,10 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "600000",
-        "package": "com.example.myapplication101",
-        "shell-timeout": "600000"
+        "shell-timeout": "600000",
+        "bundle-name": "com.example.myapplication101",
+        "package-name": "com.example.myapplication101"
     },
     "kits": [
         {
@@ -31,7 +32,7 @@
             "type": "ShellKit",
             "run-command": [
                 "chmod 644 /data/test/*.hap",
-		"chmod 777 -R data"
+                "chmod 777 -R data"
             ]
         }
     ]
