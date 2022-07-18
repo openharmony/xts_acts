@@ -37,8 +37,8 @@ const toMerge = {
 	"infosBeginTime": 1629907200000,
 	"infosEndTime": 1629993599999
 }
-export default function bundlestate() {
-describe('bundlestate', function() {
+export default function bundlestate_test() {
+describe('bundlestate_test', function() {
 	console.info('Start test tvmw bundlestate######################');
 	beforeAll(function() {
 		console.info('beforeAll')

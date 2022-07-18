@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import bundlestate from './BundleState.test.js'
+import bundlestate_test from './BundleState.test.js'
 import DeviceUsageStatisticsJsTest from './DeviceUsageStatisticsJsunit.test.js'
 export default function testsuite() {
-bundlestate()
-DeviceUsageStatisticsJsTest()
+    bundlestate_test()
+    DeviceUsageStatisticsJsTest()
 }
