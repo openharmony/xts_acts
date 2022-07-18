@@ -811,7 +811,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('centerRow9');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects033] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.hueRotate).assertEqual(-2147483648);
+      expect(objNew.$attrs.hueRotate).assertEqual(232);
       done();
     });
 
@@ -837,7 +837,7 @@ export default function imageEffectsJsunit() {
       let strJsonNew = getInspectorByKey('centerRow9');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testImageEffects034] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.hueRotate).assertEqual(2147483648);
+      expect(objNew.$attrs.hueRotate).assertEqual(128);
       done();
     });
 
