@@ -1,10 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "300000",
-        "package": "ohos.faultloggerjs.test",
-        "shell-timeout": "60000"
+        "bundle-name": "ohos.faultloggerjs.test",
+        "package-name": "ohos.faultloggerjs.test",
+        "shell-timeout": "300000"
     },
     "kits": [
         {

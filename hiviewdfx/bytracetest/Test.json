@@ -1,10 +1,11 @@
 {
     "description": "Configuration for bytrace demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "300000",
-        "package": "ohos.bytrace.test",
-        "shell-timeout": "60000"
+        "package-name": "ohos.bytrace.test",
+        "bundle-name": "ohos.bytrace.test",
+        "shell-timeout": "300000"
     },
     "kits": [
         {

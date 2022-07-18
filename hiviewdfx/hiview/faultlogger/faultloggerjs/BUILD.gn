@@ -22,7 +22,9 @@ ohos_js_hap_suite("faultloggerjs_test") {
   hap_name = "ActsFaultloggerJsTest"
 }
 ohos_js_assets("faultloggerjs_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("faultloggerjs_resources") {
   sources = [ "./src/main/resources" ]

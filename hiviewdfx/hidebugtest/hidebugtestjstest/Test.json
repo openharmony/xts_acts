@@ -1,10 +1,11 @@
 {
     "description": "Configuration for ActsHiDebugTest Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "1800000",
-        "package": "com.hidebug.test",
-        "shell-timeout": "60000"
+        "shell-timeout": "1800000",
+        "bundle-name": "com.hidebug.test",
+        "package-name": "com.hidebug.test"
     },
     "kits": [
         {
