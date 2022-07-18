@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,16 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World Test Fa 4'
 
-import apiCoverAbility from './ApiCoverAbility.test'
-import verificationTest from './VerificationTest'
-import wantAgentCover from './WantAgentCover.test'
-import contextEnvironmentTest from './ContextEnvironmentTest.test';
-
-export default function List(context) {
-
-  apiCoverAbility(context)
-  verificationTest(context)
-  wantAgentCover(context)
-  contextEnvironmentTest(globalThis.applicationContext)
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 }

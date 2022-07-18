@@ -19,6 +19,7 @@ export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility onCreate")
         globalThis.abilityWant = want;
+        globalThis.applicationContext = this.context.getApplicationContext();
     }
 
     onDestroy() {

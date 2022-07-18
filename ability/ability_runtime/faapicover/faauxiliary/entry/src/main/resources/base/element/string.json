@@ -10,7 +10,15 @@
     },
     {
       "name": "MainAbility_label",
-      "value": "StageSupplement"
+      "value": "FaAuxiliary"
+    },
+    {
+      "name": "MainAbility2_desc",
+      "value": "description"
+    },
+    {
+      "name": "MainAbility2_label",
+      "value": "label"
     },
     {
       "name": "MainAbility3_desc",
@@ -37,20 +45,20 @@
       "value": "label"
     },
     {
-      "name": "MainAbility9_desc",
+      "name": "MainAbility6_desc",
       "value": "description"
     },
     {
-      "name": "MainAbility9_label",
+      "name": "MainAbility6_label",
       "value": "label"
     },
     {
-      "name": "MainAbility10_desc",
-      "value": "description"
+      "name": "ServiceAbility_desc",
+      "value": "hap sample empty service"
     },
     {
-      "name": "MainAbility10_label",
-      "value": "label"
+      "name": "ServiceAbility2_desc",
+      "value": "hap sample empty service"
     }
   ]
 }
