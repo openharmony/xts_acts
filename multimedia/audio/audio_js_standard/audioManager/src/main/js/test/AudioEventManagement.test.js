@@ -1069,7 +1069,47 @@ describe('audioManger_audio1', function () {
         await sleep(50);
         done();
     })
+	
+	/* *
+                * @tc.number    : SUB_AUDIO_MANAGER_DeviceType_004
+                * @tc.name      : DeviceType - WIRED_HEADPHONES 
+                * @tc.desc      : DeviceType - WIRED_HEADPHONES 
+                * @tc.size      : MEDIUM
+                * @tc.type      : Function
+                * @tc.level     : Level 0
+            */
+    it('SUB_AUDIO_MANAGER_DeviceType_003', 0, async function (done) {
+        expect(audio.DeviceType.WIRED_HEADPHONES).assertEqual(4);
+        await sleep(50);
+        done();
+    })
 
-
+	/* *
+                * @tc.number    : SUB_AUDIO_MANAGER_DeviceChangeType_001
+                * @tc.name      : DeviceChangeType - CONNECT  
+                * @tc.desc      : DeviceChangeType - CONNECT  
+                * @tc.size      : MEDIUM
+                * @tc.type      : Function
+                * @tc.level     : Level 0
+            */
+    it('SUB_AUDIO_MANAGER_DeviceChangeType_001', 0, async function (done) {
+        expect(audio.DeviceChangeType.CONNECT ).assertEqual(0);
+        await sleep(50);
+        done();
+    })
+	
+	/* *
+                * @tc.number    : SUB_AUDIO_MANAGER_DeviceChangeType_002
+                * @tc.name      : DeviceChangeType - DISCONNECT   
+                * @tc.desc      : DeviceChangeType - DISCONNECT   
+                * @tc.size      : MEDIUM
+                * @tc.type      : Function
+                * @tc.level     : Level 0
+            */
+    it('SUB_AUDIO_MANAGER_DeviceChangeType_002', 0, async function (done) {
+        expect(audio.DeviceChangeType.DISCONNECT  ).assertEqual(1);
+        await sleep(50);
+        done();
+    })
 
 })
