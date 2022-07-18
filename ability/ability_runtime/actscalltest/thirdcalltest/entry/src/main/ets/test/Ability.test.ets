@@ -298,33 +298,16 @@ export default function abilityTest(abilityContext) {
     it('ACTS_CommonComponent_Call_1500', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_1500 begin');
       var caller;
-
-      function releaseCallback(data) {
-        expect(data).assertEqual('release');
-        console.log('ACTS_CommonComponent_Call_1500 releaseCallBack' + data);
+      try{
+        caller = await globalThis.abilityContext.startAbilityByCall({
+          bundleName: systemAppCalleeABundleName,
+          abilityName: systemAppCalleeAMainAbilityName,
+        });
+      }catch(error){
+        console.log('ACTS_CommonComponent_Call_1500 start err'+error);
+        expect(error=="Error: function request remote error").assertTrue();
         done();
       }
-
-      caller = await globalThis.abilityContext.startAbilityByCall({
-        bundleName: systemAppCalleeABundleName,
-        abilityName: systemAppCalleeAMainAbilityName,
-      });
-
-      caller.onRelease(releaseCallback);
-      let param = new MySequenceable(1500, "ACTS_CommonComponent_Call_1500", 'default');
-      caller.callWithResult('testCallWithResult', param).then((data) => {
-        console.log('ACTS_CommonComponent_Call_1500 call success');
-        var result = new MySequenceable(0, '', '');
-        data.readSequenceable(result);
-        expect(result.num).assertEqual(1500);
-        expect(result.str).assertEqual('ACTS_CommonComponent_Call_1500');
-        expect(result.result).assertEqual('ACTS_CommonComponent_Call_1500processed');
-        caller.release();
-      }).catch(err => {
-        console.log('ACTS_CommonComponent_Call_1500 call exception' + err);
-        expect().assertFail();
-        caller.release();
-      })
     })
 
     /**
