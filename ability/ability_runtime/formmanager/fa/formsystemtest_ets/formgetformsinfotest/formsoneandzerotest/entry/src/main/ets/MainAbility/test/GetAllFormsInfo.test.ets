@@ -68,6 +68,7 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
         console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
         console.log(`${callbackName} should not reach here`);
         expect().assertFail();
+        done();
       }
     });
 
@@ -118,9 +119,9 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
          expect(FormInfo.FormType.JS).assertEqual(formInfo.type)
          expect('card_b').assertEqual(formInfo.jsComponentName)
          expect(FormInfo.ColorMode.MODE_AUTO).assertEqual(formInfo.colorMode)
-         expect(1).assertEqual(formInfo.isDefault)
-         expect(1).assertEqual(formInfo.updateEnabled)
-         expect(1).assertEqual(formInfo.formVisibleNotify)
+         expect(formInfo.isDefault).assertTrue()
+         expect(formInfo.updateEnabled).assertTrue()
+         expect(formInfo.formVisibleNotify).assertTrue()
          expect(undefined).assertEqual(formInfo.relatedBundleName)
          expect("abilityb").assertEqual(formInfo.formConfigAbility)
          expect(3).assertEqual(formInfo.updateDuration)
@@ -128,8 +129,8 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
          expect('10:30').assertEqual(formInfo.scheduledUpdateTime)
          expect(1).assertEqual(formInfo.supportDimensions[0])
          expect(2).assertEqual(formInfo.supportDimensions[1])
-         expect('originWidgetNameB').assertEqual(formInfo.metaData.customizeData[0].name)
-         expect('valueB').assertEqual(formInfo.metaData.customizeData[0].value)
+         expect('originWidgetNameB').assertEqual(formInfo.customizeData[0].name)
+         expect('valueB').assertEqual(formInfo.customizeData[0].value)
       }
   });
 };

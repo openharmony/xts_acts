@@ -24,8 +24,8 @@ export const getFormsInfoFuzzTest = (describeName, filterParameter) => {
   const ERR_ADD_INVALID_PARAM = `invalid input parameter during form operation`;
 
   describe(`${describeName}`, () => {
-    const callbackName = `FMS_fuzzTest_getinfobundle`;
-    const promiseName = `FMS_fuzzTest_getinfobundle`;
+    const callbackName = `FMS_fuzzTest_getinfomodule_callback`;
+    const promiseName = `FMS_fuzzTest_getinfomodule_promise`;
     const length = DATA_TYPE_LIST.length;
 
     for (let i = 0; i < length; ++i) {
@@ -35,13 +35,13 @@ export const getFormsInfoFuzzTest = (describeName, filterParameter) => {
        * @tc.number FMS_fuzzTest_getinfobundle_0100 ~ FMS_fuzzTest_getinfobundle_0800
        * @tc.desc Check whether the getFormsInfo interface can pass the fuzzy test (by AsyncCallback)
        */
-      it(`${callbackName}_${tcNumber}`, filterParameter, async (done) => {
+      it(`FMS_fuzzTest_getinfobundle_${tcNumber}`, filterParameter, async (done) => {
         const dataType = DATA_TYPE_LIST[i];
         const bundleName = getFuzzData(dataType);
-        console.log(`${callbackName} ${tcNumber} bundleName typeof: ${typeof bundleName}`);
+        console.log(`FMS_fuzzTest_getinfobundle ${tcNumber} bundleName typeof: ${typeof bundleName}`);
         try {
           formHost.getFormsInfo(bundleName, (error, data) => {
-            console.log(`${callbackName} ${tcNumber} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
+            console.log(`FMS_fuzzTest_getinfobundle ${tcNumber} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
             expect(data).assertUndefined();
             if (`STRING` === dataType) {
               expect(error.code).assertEqual(ERR_GET_BUNDLE_FAILED_CODE);
@@ -53,8 +53,8 @@ export const getFormsInfoFuzzTest = (describeName, filterParameter) => {
             done();
           });
         } catch (error) {
-          console.log(`${callbackName} ${tcNumber} exception caught: ${JSON.stringify(error)}`);
-          console.log(`${callbackName} ${tcNumber} should not reach here`);
+          console.log(`FMS_fuzzTest_getinfobundle ${tcNumber} exception caught: ${JSON.stringify(error)}`);
+          console.log(`FMS_fuzzTest_getinfobundle ${tcNumber} should not reach here`);
           expect().assertFail();
         }
       });
@@ -68,17 +68,17 @@ export const getFormsInfoFuzzTest = (describeName, filterParameter) => {
        * @tc.number FMS_fuzzTest_getinfobundle_0900 ~ FMS_fuzzTest_getinfobundle_1600
        * @tc.desc Check whether the getFormsInfo interface can pass the fuzzy test (by Promise)
        */
-      it(`${promiseName}_${tcNumber}`, filterParameter, async (done) => {
+      it(`FMS_fuzzTest_getinfobundle_${tcNumber}`, filterParameter, async (done) => {
         const dataType = DATA_TYPE_LIST[i];
         const bundleName = getFuzzData(dataType);
-        console.log(`${promiseName} ${tcNumber} ${describeName} bundleName typeof: ${typeof bundleName}`);
+        console.log(`FMS_fuzzTest_getinfobundle ${tcNumber} ${describeName} bundleName typeof: ${typeof bundleName}`);
         try {
           const data = await formHost.getFormsInfo(bundleName);
-          console.log(`${promiseName} ${tcNumber} getFormsInfo data: ${JSON.stringify(data)}`);
-          console.log(`${promiseName} ${tcNumber} should not reach here`);
+          console.log(`FMS_fuzzTest_getinfobundle ${tcNumber} getFormsInfo data: ${JSON.stringify(data)}`);
+          console.log(`FMS_fuzzTest_getinfobundle ${tcNumber} should not reach here`);
           expect().assertFail();
         } catch (error) {
-          console.log(`${promiseName} ${tcNumber} exception caught: ${JSON.stringify(error)}`);
+          console.log(`FMS_fuzzTest_getinfobundle ${tcNumber} exception caught: ${JSON.stringify(error)}`);
           if (`STRING` === dataType) {
             expect(error.code).assertEqual(ERR_GET_BUNDLE_FAILED_CODE);
             expect(error.message).assertEqual(ERR_GET_BUNDLE_FAILED);
@@ -90,12 +90,6 @@ export const getFormsInfoFuzzTest = (describeName, filterParameter) => {
         }
       });
     }
-  });
-
-  describe(`${describeName}`, () => {
-    const callbackName = `FMS_fuzzTest_getinfomodule_callback`;
-    const promiseName = `FMS_fuzzTest_getinfomodule_promise`;
-    const length = DATA_TYPE_LIST.length;
 
     for (let i = 0; i < length; ++i) {
       const tcNumber = `0${(i + 1) * 100}`;
