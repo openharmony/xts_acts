@@ -30,9 +30,10 @@ ohos_js_hap_suite("ActsHiSysEventJsTest") {
   #  subsystem_name = "xts"
 }
 ohos_js_assets("hisysevent_js_assets") {
-  js2abc=true
+  js2abc = true
   hap_profile = "./src/main/config.json"
-  source_dir = "./src/main/js"}
+  source_dir = "./src/main/js"
+}
 ohos_resources("hisysevent_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"

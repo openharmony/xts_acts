@@ -30,9 +30,10 @@ ohos_js_hap_suite("ActsHiAppeventTest") {
   #  subsystem_name = "xts"
 }
 ohos_js_assets("hiappevent_js_assets") {
-  js2abc=true
+  js2abc = true
   hap_profile = "./src/main/config.json"
-  source_dir = "./src/main/js"}
+  source_dir = "./src/main/js"
+}
 ohos_resources("hiappevent_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"

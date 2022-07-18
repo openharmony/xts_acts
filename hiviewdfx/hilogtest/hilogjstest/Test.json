@@ -3,7 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "270000",
-        "shell-timeout": "270000",
+        "shell-timeout": "60000",
         "bundle-name": "ohos.acts.hiviewdfx.hilog.function",
         "package-name": "ohos.acts.hiviewdfx.hilog.function"
     },
