@@ -1093,7 +1093,7 @@ describe('audioManger_audio1', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_MANAGER_DeviceChangeType_001', 0, async function (done) {
-        expect(audio.DeviceChangeType.CONNECT ).assertEqual(0);
+        expect(audio.DeviceChangeType.CONNECT).assertEqual(0);
         await sleep(50);
         done();
     })
@@ -1107,7 +1107,7 @@ describe('audioManger_audio1', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_MANAGER_DeviceChangeType_002', 0, async function (done) {
-        expect(audio.DeviceChangeType.DISCONNECT  ).assertEqual(1);
+        expect(audio.DeviceChangeType.DISCONNECT).assertEqual(1);
         await sleep(50);
         done();
     })
