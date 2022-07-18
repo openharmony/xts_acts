@@ -66,6 +66,7 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
         console.log(`${promiseName} exception caught: ${JSON.stringify(error)})`);
         console.log(`${promiseName} should not reach here`);
         expect().assertFail();
+        done()
       }
     });
   });

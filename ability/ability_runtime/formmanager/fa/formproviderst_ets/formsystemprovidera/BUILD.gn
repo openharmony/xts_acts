@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("FormSystemProviderA") {
+ohos_hap("FormSystemProviderA") {
   hap_name = "FormSystemProviderA"
   hap_profile = "./entry/src/main/config.json"
   deps = [
@@ -22,6 +22,10 @@ ohos_js_hap_suite("FormSystemProviderA") {
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
+  js_build_mode = "debug"
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  testonly = true
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"
