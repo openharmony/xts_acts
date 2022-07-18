@@ -29,9 +29,37 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
   }
 
   describe(`${describeName}`, () => {
-    const callbackName = `FMS_getFormsInfo_0900 callback`;
-    const promiseName = `FMS_getFormsInfo_0900 promise`;
+    const callbackName = `FMS_getFormsInfo_Callback_0900`;
+    const promiseName = `FMS_getFormsInfo_Promise_0900`;
     const bundleName = ``;
+    const callbackName1 = `FMS_getFormsInfo_Callback_1000 `;
+    const promiseName1 = `FMS_getFormsInfo_Promise_1000`;
+    const bundleName1 = `wrong.bundle.name`;
+    const callbackName2 = `FMS_getFormsInfo_Callback_1100`;
+    const promiseName2 = `FMS_getFormsInfo_Promise_1100`;
+    const bundleName2 = `com.ohos.st.formsystemproviderb`;
+    const callbackName3 = `FMS_getFormsInfo_Callback_1400`;
+    const promiseName3 = `FMS_getFormsInfo_Promise_1400`;
+    const bundleName3 = ``;
+    const moduleName = `form_module_c`;
+    const callbackName4 = `FMS_getFormsInfo_Callback_1500`;
+    const promiseName4 = `FMS_getFormsInfo_Promise_1500`;
+    const bundleName4 = `wrong.bundle.name`;
+    const moduleName1 = `form_module_c`;
+    const callbackName5 = `FMS_getFormsInfo_Callback_1600`;
+    const promiseName5 = `FMS_getFormsInfo_promise_1600`;
+    const bundleName5 = `com.ohos.st.formsystemproviderc`;
+    const moduleName2 = ``;
+    const callbackName6 = `FMS_getFormsInfo_Callback_1700`;
+    const promiseName6 = `FMS_getFormsInfo_promise_1700`;
+    const bundleName6 = `com.ohos.st.formsystemproviderc`;
+    const moduleName3 = `wrong.module.name`;
+    const callbackName7 = `FMS_getFormsInfo_Callback_1800`;
+    const promiseName7 = `FMS_getFormsInfo_Promise_1800`;
+    const bundleName7 = `com.ohos.st.formsystemproviderc`;
+    const moduleName4 = `form_module_c`;
+    var tempDataB = undefined;
+    var tempDataC = undefined;
 
     /**
      * @tc.name: getFormsInfo
@@ -77,33 +105,28 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
         console.log(`==========${promiseName} ${describeName} end==========`);
       }
     });
-  });
-
-  describe(`${describeName}`, () => {
-    const callbackName = `FMS_getFormsInfo_1000 callback`;
-    const promiseName = `FMS_getFormsInfo_1000 promise`;
-    const bundleName = `wrong.bundle.name`;
 
     /**
      * @tc.name: getFormsInfo
      * @tc.number: FMS_getFormsInfo_1000
      * @tc.desc: Query specific form configuration information by wrong bundle name (by AsyncCallback)
      */
-    it(`${callbackName}`, filterParameter, async (done) => {
-      console.log(`==========${callbackName} ${describeName} start==========`);
+    it(`${callbackName1}`, filterParameter, async (done) => {
+      console.log(`==========${callbackName1} ${describeName} start==========`);
 
       try {
-        formHost.getFormsInfo(bundleName, (error, data) => {
-          console.log(`${callbackName} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
+        formHost.getFormsInfo(bundleName1, (error, data) => {
+          console.log(`${callbackName1} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
           expect(error.code).assertEqual(ERR_GET_BUNDLE_FAILED_CODE);
           expect(error.message).assertEqual(ERR_GET_BUNDLE_FAILED);
           done();
-          console.log(`==========${callbackName} ${describeName} end==========`);
+          console.log(`==========${callbackName1} ${describeName} end==========`);
         });
       } catch (error) {
-        console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
-        console.log(`${callbackName} should not reach here`);
+        console.log(`${callbackName1} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${callbackName1} should not reach here`);
         expect().assertFail();
+        done()
       }
     });
 
@@ -112,48 +135,42 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
      * @tc.number FMS_getFormsInfo_1000
      * @tc.desc: Query specific form configuration information by wrong bundle name (by Promise)
      */
-    it(`${promiseName}`, filterParameter, async (done) => {
-      console.log(`==========${promiseName} ${describeName} start==========`);
+    it(`${promiseName1}`, filterParameter, async (done) => {
+      console.log(`==========${promiseName1} ${describeName} start==========`);
 
       try {
-        const data = await formHost.getFormsInfo(bundleName);
-        console.log(`${promiseName} getFormsInfo data: ${JSON.stringify(data)}`);
-        console.log(`${promiseName} should not reach here`);
+        const data = await formHost.getFormsInfo(bundleName1);
+        console.log(`${promiseName1} getFormsInfo data: ${JSON.stringify(data)}`);
+        console.log(`${promiseName1} should not reach here`);
         expect().assertFail();
+        done()
       } catch (error) {
-        console.log(`${promiseName} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${promiseName1} exception caught: ${JSON.stringify(error)})`);
         expect(error.code).assertEqual(ERR_GET_BUNDLE_FAILED_CODE);
         expect(error.message).assertEqual(ERR_GET_BUNDLE_FAILED);
         done();
-        console.log(`==========${promiseName} ${describeName} end==========`);
+        console.log(`==========${promiseName1} ${describeName} end==========`);
       }
     });
-  });
-
-  describe(`${describeName}`, () => {
-    const callbackName = `FMS_getFormsInfo_1100 callback`;
-    const promiseName = `FMS_getFormsInfo_1100 promise`;
-    const bundleName = `com.ohos.st.formsystemproviderb`;
-    var tempDataB = undefined;
 
     /**
      * @tc.name: getFormsInfo
      * @tc.number: FMS_getFormsInfo_1100
      * @tc.desc: Query specific form configuration information by correct bundle name (by AsyncCallback)
      */
-    it(`${callbackName}`, filterParameter, async (done) => {
-      console.log(`==========${callbackName} ${describeName} start==========`);
+    it(`${callbackName2}`, filterParameter, async (done) => {
+      console.log(`==========${callbackName2} ${describeName} start==========`);
 
       try {
-        formHost.getFormsInfo(bundleName, (error, data) => {
-          console.log(`${callbackName} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
-          console.log(`${callbackName} forms amount: ${data.length}`);
+        formHost.getFormsInfo(bundleName2, (error, data) => {
+          console.log(`${callbackName2} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
+          console.log(`${callbackName2} forms amount: ${data.length}`);
 
           const dataB = data.filter((form) => {
             return `com.ohos.st.formsystemproviderb` === form.bundleName;
           });
-          console.log(`${callbackName} form dataB: ${JSON.stringify(dataB)}`);
-          console.log(`${callbackName} formB amount: ${dataB.length}`);
+          console.log(`${callbackName2} form dataB: ${JSON.stringify(dataB)}`);
+          console.log(`${callbackName2} formB amount: ${dataB.length}`);
 
           expect(data.length).assertEqual(1);
           expect(dataB.length).assertEqual(1);
@@ -161,15 +178,16 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
           expect(error.code).assertEqual(ERR_OK_CODE);
           expect(error.message).assertEqual(ERR_OK);
           done();
-          console.log(`==========${callbackName} ${describeName} end==========`);
+          console.log(`==========${callbackName2} ${describeName} end==========`);
         });
         await sleep(2000)
         checkDataB(tempDataB)
         done()
       } catch (error) {
-        console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
-        console.log(`${callbackName} should not reach here`);
+        console.log(`${callbackName2} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${callbackName2} should not reach here`);
         expect().assertFail();
+        done()
       }
     });
 
@@ -178,30 +196,31 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
      * @tc.number FMS_getFormsInfo_1100
      * @tc.desc: Query specific form configuration information by correct bundle name (by Promise)
      */
-    it(`${promiseName}`, filterParameter, async (done) => {
-      console.log(`==========${promiseName} ${describeName} start==========`);
+    it(`${promiseName2}`, filterParameter, async (done) => {
+      console.log(`==========${promiseName2} ${describeName} start==========`);
 
       try {
-        const data = await formHost.getFormsInfo(bundleName);
-        console.log(`${promiseName} getFormsInfo data: ${JSON.stringify(data)}`);
-        console.log(`${promiseName} forms amount: ${data.length}`);
+        const data = await formHost.getFormsInfo(bundleName2);
+        console.log(`${promiseName2} getFormsInfo data: ${JSON.stringify(data)}`);
+        console.log(`${promiseName2} forms amount: ${data.length}`);
 
         const dataB = data.filter((form) => {
           return `com.ohos.st.formsystemproviderb` === form.bundleName;
         });
-        console.log(`${promiseName} form dataB: ${JSON.stringify(dataB)}`);
-        console.log(`${promiseName} formB amount: ${dataB.length}`);
+        console.log(`${promiseName2} form dataB: ${JSON.stringify(dataB)}`);
+        console.log(`${promiseName2} formB amount: ${dataB.length}`);
 
         expect(data.length).assertEqual(1);
         expect(dataB.length).assertEqual(1);
         tempDataB = dataB[0]
         checkDataB(tempDataB)
         done();
-        console.log(`==========${promiseName} ${describeName} end==========`);
+        console.log(`==========${promiseName2} ${describeName} end==========`);
       } catch (error) {
-        console.log(`${promiseName} exception caught: ${JSON.stringify(error)})`);
-        console.log(`${promiseName} should not reach here`);
+        console.log(`${promiseName2} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${promiseName2} should not reach here`);
         expect().assertFail();
+        done()
       }
     });
     function checkDataB(formInfo){
@@ -226,34 +245,28 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
          expect('originWidgetNameB').assertEqual(formInfo.metaData.customizeData[0].name)
          expect('valueB').assertEqual(formInfo.metaData.customizeData[0].value)
       }
-  });
-
-  describe(`${describeName}`, () => {
-    const callbackName = `FMS_getFormsInfo_1400 callback`;
-    const promiseName = `FMS_getFormsInfo_1400 promise`;
-    const bundleName = ``;
-    const moduleName = `form_module_c`;
 
     /**
      * @tc.name: getFormsInfo
      * @tc.number: FMS_getFormsInfo_1400
      * @tc.desc: Query specific form configuration information by empty bundle name and correct module name (by AsyncCallback)
      */
-    it(`${callbackName}`, filterParameter, async (done) => {
-      console.log(`==========${callbackName} ${describeName} start==========`);
+    it(`${callbackName3}`, filterParameter, async (done) => {
+      console.log(`==========${callbackName3} ${describeName} start==========`);
 
       try {
-        formHost.getFormsInfo(bundleName, moduleName, (error, data) => {
-          console.log(`${callbackName} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
+        formHost.getFormsInfo(bundleName3, moduleName, (error, data) => {
+          console.log(`${callbackName3} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
           expect(error.code).assertEqual(ERR_ADD_INVALID_PARAM_CODE);
           expect(error.message).assertEqual(ERR_ADD_INVALID_PARAM);
           done();
-          console.log(`==========${callbackName} ${describeName} end==========`);
+          console.log(`==========${callbackName3} ${describeName} end==========`);
         });
       } catch (error) {
-        console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
-        console.log(`${callbackName} should not reach here`);
+        console.log(`${callbackName3} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${callbackName3} should not reach here`);
         expect().assertFail();
+        done()
       }
     });
 
@@ -262,49 +275,42 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
      * @tc.number FMS_getFormsInfo_1400
      * @tc.desc: Query specific form configuration information by empty bundle name and correct module name (by Promise)
      */
-    it(`${promiseName}`, filterParameter, async (done) => {
-      console.log(`==========${promiseName} ${describeName} start==========`);
+    it(`${promiseName3}`, filterParameter, async (done) => {
+      console.log(`==========${promiseName3} ${describeName} start==========`);
 
       try {
-        const data = await formHost.getFormsInfo(bundleName, moduleName);
-        console.log(`${promiseName} getFormsInfo data: ${JSON.stringify(data)}`);
-        console.log(`${promiseName} should not reach here`);
+        const data = await formHost.getFormsInfo(bundleName3, moduleName);
+        console.log(`${promiseName3} getFormsInfo data: ${JSON.stringify(data)}`);
+        console.log(`${promiseName3} should not reach here`);
         expect().assertFail();
       } catch (error) {
-        console.log(`${promiseName} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${promiseName3} exception caught: ${JSON.stringify(error)})`);
         expect(error.code).assertEqual(ERR_ADD_INVALID_PARAM_CODE);
         expect(error.message).assertEqual(ERR_ADD_INVALID_PARAM);
         done();
-        console.log(`==========${promiseName} ${describeName} end==========`);
+        console.log(`==========${promiseName3} ${describeName} end==========`);
       }
     });
-  });
-
-  describe(`${describeName}`, () => {
-    const callbackName = `FMS_getFormsInfo_1500 callback`;
-    const promiseName = `FMS_getFormsInfo_1500 promise`;
-    const bundleName = `wrong.bundle.name`;
-    const moduleName = `form_module_c`;
 
     /**
      * @tc.name: getFormsInfo
      * @tc.number: FMS_getFormsInfo_1500
      * @tc.desc: Query specific form configuration information by wrong bundle name and correct module name (by AsyncCallback)
      */
-    it(`${callbackName}`, filterParameter, async (done) => {
-      console.log(`==========${callbackName} ${describeName} start==========`);
+    it(`${callbackName4}`, filterParameter, async (done) => {
+      console.log(`==========${callbackName4} ${describeName} start==========`);
 
       try {
-        formHost.getFormsInfo(bundleName, moduleName, (error, data) => {
-          console.log(`${callbackName} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
+        formHost.getFormsInfo(bundleName4, moduleName1, (error, data) => {
+          console.log(`${callbackName4} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
           expect(error.code).assertEqual(ERR_GET_BUNDLE_FAILED_CODE);
           expect(error.message).assertEqual(ERR_GET_BUNDLE_FAILED);
           done();
-          console.log(`==========${callbackName} ${describeName} end==========`);
+          console.log(`==========${callbackName4} ${describeName} end==========`);
         });
       } catch (error) {
-        console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
-        console.log(`${callbackName} should not reach here`);
+        console.log(`${callbackName4} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${callbackName4} should not reach here`);
         expect().assertFail();
       }
     });
@@ -314,49 +320,42 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
      * @tc.number FMS_getFormsInfo_1500
      * @tc.desc: Query specific form configuration information by wrong bundle name and correct module name (by Promise)
      */
-    it(`${promiseName}`, filterParameter, async (done) => {
-      console.log(`==========${promiseName} ${describeName} start==========`);
+    it(`${promiseName4}`, filterParameter, async (done) => {
+      console.log(`==========${promiseName4} ${describeName} start==========`);
 
       try {
-        const data = await formHost.getFormsInfo(bundleName, moduleName);
-        console.log(`${promiseName} getFormsInfo data: ${JSON.stringify(data)}`);
-        console.log(`${promiseName} should not reach here`);
+        const data = await formHost.getFormsInfo(bundleName4, moduleName1);
+        console.log(`${promiseName4} getFormsInfo data: ${JSON.stringify(data)}`);
+        console.log(`${promiseName4} should not reach here`);
         expect().assertFail();
       } catch (error) {
-        console.log(`${promiseName} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${promiseName4} exception caught: ${JSON.stringify(error)})`);
         expect(error.code).assertEqual(ERR_GET_BUNDLE_FAILED_CODE);
         expect(error.message).assertEqual(ERR_GET_BUNDLE_FAILED);
         done();
-        console.log(`==========${promiseName} ${describeName} end==========`);
+        console.log(`==========${promiseName4} ${describeName} end==========`);
       }
     });
-  });
-
-  describe(`${describeName}`, () => {
-    const callbackName = `FMS_getFormsInfo_1600 callback`;
-    const promiseName = `FMS_getFormsInfo_1600 promise`;
-    const bundleName = `com.ohos.st.formsystemproviderc`;
-    const moduleName = ``;
 
     /**
      * @tc.name: getFormsInfo
      * @tc.number: FMS_getFormsInfo_1600
      * @tc.desc: Query specific form configuration information by correct bundle name and empty module name (by AsyncCallback)
      */
-    it(`${callbackName}`, filterParameter, async (done) => {
-      console.log(`==========${callbackName} ${describeName} start==========`);
+    it(`${callbackName5}`, filterParameter, async (done) => {
+      console.log(`==========${callbackName5} ${describeName} start==========`);
 
       try {
-        formHost.getFormsInfo(bundleName, moduleName, (error, data) => {
-          console.log(`${callbackName} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
+        formHost.getFormsInfo(bundleName5, moduleName2, (error, data) => {
+          console.log(`${callbackName5} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
           expect(error.code).assertEqual(ERR_ADD_INVALID_PARAM_CODE);
           expect(error.message).assertEqual(ERR_ADD_INVALID_PARAM);
           done();
-          console.log(`==========${callbackName} ${describeName} end==========`);
+          console.log(`==========${callbackName5} ${describeName} end==========`);
         });
       } catch (error) {
-        console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
-        console.log(`${callbackName} should not reach here`);
+        console.log(`${callbackName5} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${callbackName5} should not reach here`);
         expect().assertFail();
       }
     });
@@ -366,50 +365,43 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
      * @tc.number FMS_getFormsInfo_1600
      * @tc.desc: Query specific form configuration information by correct bundle name and empty module name (by Promise)
      */
-    it(`${promiseName}`, filterParameter, async (done) => {
-      console.log(`==========${promiseName} ${describeName} start==========`);
+    it(`${promiseName5}`, filterParameter, async (done) => {
+      console.log(`==========${promiseName5} ${describeName} start==========`);
 
       try {
-        const data = await formHost.getFormsInfo(bundleName, moduleName);
-        console.log(`${promiseName} getFormsInfo data: ${JSON.stringify(data)}`);
-        console.log(`${promiseName} should not reach here`);
+        const data = await formHost.getFormsInfo(bundleName5, moduleName2);
+        console.log(`${promiseName5} getFormsInfo data: ${JSON.stringify(data)}`);
+        console.log(`${promiseName5} should not reach here`);
         expect().assertFail();
       } catch (error) {
-        console.log(`${promiseName} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${promiseName5} exception caught: ${JSON.stringify(error)})`);
         expect(error.code).assertEqual(ERR_ADD_INVALID_PARAM_CODE);
         expect(error.message).assertEqual(ERR_ADD_INVALID_PARAM);
         done();
-        console.log(`==========${promiseName} ${describeName} end==========`);
+        console.log(`==========${promiseName5} ${describeName} end==========`);
       }
     });
-  });
-
-  describe(`${describeName}`, () => {
-    const callbackName = `FMS_getFormsInfo_1700 callback`;
-    const promiseName = `FMS_getFormsInfo_1700 promise`;
-    const bundleName = `com.ohos.st.formsystemproviderc`;
-    const moduleName = `wrong.module.name`;
 
     /**
      * @tc.name: getFormsInfo
      * @tc.number: FMS_getFormsInfo_1700
      * @tc.desc: Query specific form configuration information by correct bundle name and wrong module name (by AsyncCallback)
      */
-    it(`${callbackName}`, filterParameter, async (done) => {
-      console.log(`==========${callbackName} ${describeName} start==========`);
+    it(`${callbackName6}`, filterParameter, async (done) => {
+      console.log(`==========${callbackName6} ${describeName} start==========`);
 
       try {
-        formHost.getFormsInfo(bundleName, moduleName, (error, data) => {
-          console.log(`${callbackName} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
+        formHost.getFormsInfo(bundleName6, moduleName3, (error, data) => {
+          console.log(`${callbackName6} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
           expect(JSON.stringify(data)).assertEqual(`[]`);
           expect(error.code).assertEqual(ERR_OK_CODE);
           expect(error.message).assertEqual(ERR_OK);
           done();
-          console.log(`==========${callbackName} ${describeName} end==========`);
+          console.log(`==========${callbackName6} ${describeName} end==========`);
         });
       } catch (error) {
-        console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
-        console.log(`${callbackName} should not reach here`);
+        console.log(`${callbackName6} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${callbackName6} should not reach here`);
         expect().assertFail();
       }
     });
@@ -419,86 +411,54 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
      * @tc.number FMS_getFormsInfo_1700
      * @tc.desc: Query specific form configuration information by correct bundle name and wrong module name (by Promise)
      */
-    it(`${promiseName}`, filterParameter, async (done) => {
-      console.log(`==========${promiseName} ${describeName} start==========`);
+    it(`${promiseName6}`, filterParameter, async (done) => {
+      console.log(`==========${promiseName6} ${describeName} start==========`);
 
       try {
-        const data = await formHost.getFormsInfo(bundleName, moduleName);
-        console.log(`${promiseName} getFormsInfo data: ${JSON.stringify(data)}`);
+        const data = await formHost.getFormsInfo(bundleName6, moduleName3);
+        console.log(`${promiseName6} getFormsInfo data: ${JSON.stringify(data)}`);
         expect(JSON.stringify(data)).assertEqual(`[]`);
         done();
-        console.log(`==========${promiseName} ${describeName} end==========`);
+        console.log(`==========${promiseName6} ${describeName} end==========`);
       } catch (error) {
-        console.log(`${promiseName} exception caught: ${JSON.stringify(error)})`);
-        console.log(`${promiseName} should not reach here`);
+        console.log(`${promiseName6} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${promiseName6} should not reach here`);
         expect().assertFail();
       }
     });
-  });
-
-  describe(`${describeName}`, () => {
-    const callbackName = `FMS_getFormsInfo_1800 callback`;
-    const promiseName = `FMS_getFormsInfo_1800 promise`;
-    const bundleName = `com.ohos.st.formsystemproviderc`;
-    const moduleName = `form_module_c`;
-    var tempDataC = undefined;
-
-    const expectDataC = {
-      bundleName: 'com.ohos.st.formsystemproviderc',
-      moduleName: 'form_module_c',
-      abilityName: 'com.ohos.st.formsystemproviderc.MainAbility',
-      name: 'FormC_Js001',
-      description: 'form_description_FormC_Js001',
-      descriptionId: 30,
-      type: 1,
-      jsComponentName: 'card_c',
-      colorMode: 1,
-      isDefault: 1,
-      updateEnabled: 1,
-      isStatic:true,
-      window:{"autoDesignWidth":false,"designWidth":720},
-      formVisibleNotify: 1,
-      formConfigAbility: 'abilityc',
-      updateDuration: 4,
-      scheduledUpdateTime: '15:30',
-      defaultDimension: 3,
-      supportDimensions: [3, 4],
-      metaData: { customizeData: [{ name: 'originWidgetNameC', value: 'valueC' }] },
-    };
 
     /**
      * @tc.name: getFormsInfo
      * @tc.number: FMS_getFormsInfo_1800
      * @tc.desc: Query specific form configuration information by correct bundle name and correct module name (by AsyncCallback)
      */
-    it(`${callbackName}`, filterParameter, async (done) => {
-      console.log(`==========${callbackName} ${describeName} start==========`);
+    it(`${callbackName7}`, filterParameter, async (done) => {
+      console.log(`==========${callbackName7} ${describeName} start==========`);
 
       try {
-        formHost.getFormsInfo(bundleName, moduleName, (error, data) => {
-          console.log(`${callbackName} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
-          console.log(`${callbackName} forms amount: ${data.length}`);
+        formHost.getFormsInfo(bundleName7, moduleName4, (error, data) => {
+          console.log(`${callbackName7} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
+          console.log(`${callbackName7} forms amount: ${data.length}`);
 
           const dataC = data.filter((form) => {
             return `com.ohos.st.formsystemproviderc` === form.bundleName;
           });
-          console.log(`${callbackName} form dataC: ${JSON.stringify(dataC)}`);
-          console.log(`${callbackName} formC amount: ${dataC.length}`);
+          console.log(`${callbackName7} form dataC: ${JSON.stringify(dataC)}`);
+          console.log(`${callbackName7} formC amount: ${dataC.length}`);
           tempDataC = dataC[0];
           expect(data.length).assertEqual(1);
           expect(dataC.length).assertEqual(1);
-          //expect(JSON.stringify(dataC[0])).assertEqual(JSON.stringify(expectDataC));
           expect(error.code).assertEqual(ERR_OK_CODE);
           expect(error.message).assertEqual(ERR_OK);
-          console.log(`==========${callbackName} ${describeName} end==========`);
+          console.log(`==========${callbackName7} ${describeName} end==========`);
         });
         await sleep(2000)
         checkDataC(tempDataC)
         tempDataC = undefined;
         done();
       } catch (error) {
-        console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
-        console.log(`${callbackName} should not reach here`);
+        console.log(`${callbackName7} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${callbackName7} should not reach here`);
         expect().assertFail();
       }
     });
@@ -508,30 +468,29 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
      * @tc.number FMS_getFormsInfo_1800
      * @tc.desc: Query specific form configuration information by correct bundle name and correct module name (by Promise)
      */
-    it(`${promiseName}`, filterParameter, async (done) => {
-      console.log(`==========${promiseName} ${describeName} start==========`);
+    it(`${promiseName7}`, filterParameter, async (done) => {
+      console.log(`==========${promiseName7} ${describeName} start==========`);
 
       try {
-        const data = await formHost.getFormsInfo(bundleName, moduleName);
-        console.log(`${promiseName} getFormsInfo data: ${JSON.stringify(data)}`);
-        console.log(`${promiseName} forms amount: ${data.length}`);
+        const data = await formHost.getFormsInfo(bundleName7, moduleName4);
+        console.log(`${promiseName7} getFormsInfo data: ${JSON.stringify(data)}`);
+        console.log(`${promiseName7} forms amount: ${data.length}`);
 
         const dataC = data.filter((form) => {
           return `com.ohos.st.formsystemproviderc` === form.bundleName;
         });
-        console.log(`${promiseName} form dataC: ${JSON.stringify(dataC)}`);
-        console.log(`${promiseName} formC amount: ${dataC.length}`);
+        console.log(`${promiseName7} form dataC: ${JSON.stringify(dataC)}`);
+        console.log(`${promiseName7} formC amount: ${dataC.length}`);
 
         expect(data.length).assertEqual(1);
         expect(dataC.length).assertEqual(1);
-        //expect(JSON.stringify(dataC[0])).assertEqual(JSON.stringify(expectDataC));
         tempDataC = dataC[0];
-        console.log(`==========${promiseName} ${describeName} end==========`);
+        console.log(`==========${promiseName7} ${describeName} end==========`);
         checkDataC(tempDataC)
         done()
       } catch (error) {
-        console.log(`${promiseName} exception caught: ${JSON.stringify(error)})`);
-        console.log(`${promiseName} should not reach here`);
+        console.log(`${promiseName7} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${promiseName7} should not reach here`);
         expect().assertFail();
       }
     });

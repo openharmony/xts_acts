@@ -16,15 +16,6 @@ import { getAllFormsInfoTest } from './GetAllFormsInfo.test.ets';
 import { getFormsInfoTest } from './GetFormsInfo.test.ets';
 
 export default function testsuite() {
-  // FMS_getFormsInfo_0500
   getAllFormsInfoTest(`GetAllFormsInfoTest`, 0);
-  // FMS_getFormsInfo_0900
-  // FMS_getFormsInfo_1000
-  // FMS_getFormsInfo_1100
-  // FMS_getFormsInfo_1400
-  // FMS_getFormsInfo_1500
-  // FMS_getFormsInfo_1600
-  // FMS_getFormsInfo_1700 fail
-  // FMS_getFormsInfo_1800
   getFormsInfoTest(`GetFormsInfoTest`, 0);
 }
