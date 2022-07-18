@@ -56,6 +56,26 @@ describe('AccessibleAbilityList', function () {
                 done();
             }
             console.info(`AccessibleAbilityList: AbilityList_0210 result ${data.length}`);
+			for (let item of data) {
+				console.info(item.id);
+				expect(item.id != undefined).assertEqual(true);
+				console.info(item.name);
+				expect(item.name != undefined).assertEqual(true);
+				console.info(item.description);
+				expect(item.description != undefined).assertEqual(true);
+				console.info(item.abilityTypes);
+				expect(item.abilityTypes != undefined).assertEqual(true);
+				console.info(item.eventTypes);
+				expect(item.eventTypes != undefined).assertEqual(true);
+				console.info(item.capabilities);
+				expect(item.capabilities != undefined).assertEqual(true);
+				console.info(item.packageName);
+				expect(item.packageName != undefined).assertEqual(true);
+				console.info(item.filterBundleNames);
+				expect(item.filterBundleNames != undefined).assertEqual(true);
+				console.info(item.bundleName);
+				expect(item.bundleName != undefined).assertEqual(true);
+			}
             expect(Array.isArray(data)).assertEqual(true);
             done();
         });

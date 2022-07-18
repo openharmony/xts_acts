@@ -38,6 +38,9 @@ describe('AccessibleCaptionConfiguration', function () {
   it('CaptionConfiguration_0010', 0, async function (done) {
     console.info('CaptionConfiguration_0010');
     let captionManager = accessibility.getCaptionsManager();
+	let enabled = captionManager.enabled;
+	expect(enabled).assertEqual(false);
+    done();
     let stateEventType = 'enableChange';
     let ret = captionManager.on(stateEventType, (data) => {});
     expect(ret).assertEqual(undefined);
