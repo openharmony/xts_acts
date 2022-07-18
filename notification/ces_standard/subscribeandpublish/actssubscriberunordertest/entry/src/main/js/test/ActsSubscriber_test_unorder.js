@@ -327,7 +327,7 @@ describe("ActsSubscriberTestUnorder", async function (done) {
   /*
    * @tc.number    : ActsSubscriberTestUnorder_0700
    * @tc.name      : verify subscribe and publish : Check whether the current public event is a sticky event
-   * @tc.desc      : isStickyCommonEvent(callback: AsyncCallback<boolean>): void
+   * @tc.desc      : isStickyCommonEvent(): Promise<boolean>
    */
   it("ActsSubscriberTestUnorder_0700", 0, async function (done) {
     console.info("===============ActsSubscriberTestUnorder_0700==========================>");
