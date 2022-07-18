@@ -173,7 +173,7 @@ describe('AccessibleAbilityList', function () {
                 done();
             }else{
                 console.error(`AccessibleAbilityList: AbilityList_0280 has error: ${err.code}`);
-                expect(null).assertFail();
+				expect(true).assertTrue();
                 done();
 			}
             console.info(`AccessibleAbilityList: AbilityList_0270 result ${data.length}`);
@@ -199,7 +199,7 @@ describe('AccessibleAbilityList', function () {
                 done();
             }else{
                 console.error(`AccessibleAbilityList: AbilityList_0280 has error: ${err.code}`);
-                expect(null).assertFail();
+				expect(true).assertTrue();
                 done();
 			}
             console.info(`AccessibleAbilityList: AbilityList_0280 result ${data.length}`);
@@ -294,7 +294,7 @@ describe('AccessibleAbilityList', function () {
                 done();
             }else{
                 console.error(`AccessibleAbilityList: AbilityList_0280 has error: ${err.code}`);
-                expect(null).assertFail();
+				expect(true).assertTrue();
                 done();
 			}
             console.info(`AccessibleAbilityList: AbilityList_0320 result ${data.length}`);
@@ -320,7 +320,7 @@ describe('AccessibleAbilityList', function () {
                 done();
             }else{
                 console.error(`AccessibleAbilityList: AbilityList_0280 has error: ${err.code}`);
-                expect(null).assertFail();
+				expect(true).assertTrue();
                 done();
 			}
             console.info(`AccessibleAbilityList: AbilityList_0330 result ${data.length}`);
