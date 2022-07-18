@@ -1078,7 +1078,7 @@ describe('audioManger_audio1', function () {
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_DeviceType_003', 0, async function (done) {
+    it('SUB_AUDIO_MANAGER_DeviceType_004', 0, async function (done) {
         expect(audio.DeviceType.WIRED_HEADPHONES).assertEqual(4);
         await sleep(50);
         done();
