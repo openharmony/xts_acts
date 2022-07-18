@@ -1,10 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "270000",
-        "package": "ohos.acts.hiviewdfx.hisysevent.function",
-        "shell-timeout": "100000"
+        "shell-timeout": "270000",
+        "bundle-name": "ohos.acts.hiviewdfx.hisysevent.function",
+        "package-name": "ohos.acts.hiviewdfx.hisysevent.function"
     },
     "kits": [
         {

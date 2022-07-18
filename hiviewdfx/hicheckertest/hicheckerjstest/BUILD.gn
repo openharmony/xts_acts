@@ -30,7 +30,9 @@ ohos_js_hap_suite("hicheckerjstest") {
   #  subsystem_name = "xts"
 }
 ohos_js_assets("hichecker_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("hichecker_resources") {
   sources = [ "./src/main/resources" ]
