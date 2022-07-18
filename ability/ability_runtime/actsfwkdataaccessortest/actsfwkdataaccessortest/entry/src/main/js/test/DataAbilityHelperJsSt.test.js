@@ -35,6 +35,7 @@ describe('ActsDataAbilityHelperTest', function () {
             console.debug('ACTS_beforeAll DAHelper ====>: ' + DAHelper + " ,JSON. " + JSON.stringify(DAHelper));
             if(DAHelper == null){
                 console.debug('ACTS_beforeAll DAHelper ====>: DAHelper == null');
+                return;
             }
         } catch (err) {
             console.error('=ACTS_beforeAll acquireDataAbilityHelper catch(err)====>:' + err);
