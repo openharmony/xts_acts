@@ -1,10 +1,11 @@
 {
     "description": "Configuration for acevideo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "1000000",
-        "package": "com.example.acevideo",
-        "shell-timeout": "30000"
+        "shell-timeout": "1000000",
+        "bundle-name": "com.example.acevideo",
+        "package-name": "com.example.acevideo"
     },
     "kits": [
         {
