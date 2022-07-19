@@ -31,7 +31,15 @@ ohos_js_hap_suite("ActsAceXComponentEtsTest") {
 }
 
 ohos_prebuilt_shared_library("libcppsharedso") {
-  source = "//prebuilts/clang/ohos/linux-x86_64/libcxx-ndk/lib/arm-linux-ohos/c++/libc++_shared.so"
+  if (!(product_name == "m40")) {
+    if (target_cpu == "arm") {
+      source = "//prebuilts/clang/ohos/linux-x86_64/libcxx-ndk/lib/arm-linux-ohos/c++/libc++_shared.so"
+    } else if (target_cpu == "arm64") {
+      source = "//prebuilts/clang/ohos/linux-x86_64/libcxx-ndk/lib/aarch64-linux-ohos/c++/libc++_shared.so"
+    } else {
+      source = " "
+    }
+  }
 }
 
 ohos_js_assets("ace_ets_xcomponent_assets") {
