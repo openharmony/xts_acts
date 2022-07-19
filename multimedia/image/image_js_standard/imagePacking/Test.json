@@ -3,7 +3,7 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "1500000",
-        "package": "ohos.acts.multimedia.image",
+        "package": "ohos.acts.multimedia.image.Packing",
 		"shell-timeout": "120000"
     },
     "kits": [
@@ -27,7 +27,7 @@
         
         {
             "test-file-name": [
-                "ActsImagepackingJsTest.hap"
+                "ActsImagePackingJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
