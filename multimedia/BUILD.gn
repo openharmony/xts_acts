@@ -21,6 +21,7 @@ group("multimedia") {
 
       #"camera/camera_js_standard:camera_standard_ets_hap",
       "image/image_js_standard/image:image_js_hap",
+      "image/image_js_standard/image_ndk_test:image_pixelmap_ndk_hap",
       "image/image_js_standard/imageColorspace:image_colorspace_js_hap",
       "image/image_js_standard/imageDecodeOptions:image_DecodeOptions_js_hap",
       "image/image_js_standard/imageExif:image_exif_js_hap",
