@@ -1568,8 +1568,8 @@
          }
          let netId = 0;
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
                  console.info(`${caseName} register fail: ${error}`);
                  expect().assertFail();
                  done();
@@ -1727,8 +1727,8 @@
              }, bearerPrivateIdentifier: '123'
          }
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
                  console.info(`${caseName} register fail: ${error}`);
                  expect().assertFail();
                  done();
@@ -1865,8 +1865,8 @@
          }
          let netId = 0;
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
+         netConn.on('netAvailable', ( value) => {
+             if (value === undefined) {
                  console.info(`${caseName} register fail: ${error}`);
                  expect().assertFail();
                  done();
@@ -2031,8 +2031,8 @@
          }
          let netId = 0;
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
                  console.info(`${caseName} register fail: ${error}`);
                  expect().assertFail();
                  done();
@@ -2261,8 +2261,8 @@
              }, bearerPrivateIdentifier: '123'
          }
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT_1);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
                  console.info(`${caseName} register fail: ${error}`);
                  expect().assertFail();
                  done();
@@ -2349,8 +2349,8 @@
      it('Telephony_NetworkManager_unregister_Async_0200', 0, async function (done) {
          let caseName = 'Telephony_NetworkManager_unregister_Async_0200';
          let netConn = connection.createNetConnection();
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
                  console.info(`${caseName} register fail: ${error}`);
                  expect().assertFail();
                  done();
@@ -2436,8 +2436,8 @@
      it('Telephony_NetworkManager_unregister_Async_0300', 0, async function (done) {
          let caseName = 'Telephony_NetworkManager_unregister_Async_0300';
          let netConn = connection.createNetConnection();
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
                  console.info(`${caseName} register fail: ${error}`);
                  expect().assertFail();
                  done();
