@@ -1,10 +1,11 @@
 {
     "description": "Function test of sim manager interface",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "1800000",
-        "package": "com.ohos.network_nowifi",
-        "shell-timeout": "60000"
+        "bundle-name": "com.ohos.network_nowifi",
+        "package-name": "com.ohos.network_nowifi",
+        "shell-timeout": "1800000"
     },
     "kits": [
         {
