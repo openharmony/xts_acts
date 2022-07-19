@@ -19,7 +19,6 @@ group("security") {
     deps = [
       "access_token/AccessTokenTest_Normal_js:ActsAccessTokenApiJSNormalTest",
       "cipher/datacipher:datacipher",
-      "huks_standard",
       "security_huks_basic",
     ]
   }
