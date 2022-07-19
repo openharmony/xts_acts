@@ -59,8 +59,9 @@ describe('ImageCreator', function () {
             done();
         } else {
             try {
-                creator.on(param, () => {
+                creator.on(param, (err) => {
                     expect(false).assertTrue();
+                    done();
                 });
             } catch (error) {
                 expect(error.code == 1).assertTrue();
@@ -77,35 +78,36 @@ describe('ImageCreator', function () {
                 if (img == undefined) {
                     expect(false).assertTrue();
                     done();
-                } else {
-                    img.getComponent(JPEG, async (err, component) => {
-                        if (err) {
-                            expect(false).assertTrue();
-                            console.log(`${testNum} getComponent err:` + err)
-                        } else {
-                            expect(component.componentType == JPEG).assertTrue();
-                            expect(component.byteBuffer != undefined).assertTrue();
-                            var bufferArr = new Uint8Array(component.byteBuffer);
-
-                            for (var i = 0; i < bufferArr.length; i += 4) {
-                                bufferArr[i] = 0; //B
-                                bufferArr[i + 1] = 0; //G
-                                bufferArr[i + 2] = 255; //R
-                                bufferArr[i + 3] = 255; //A
-                            }
-
-                            try {
-                                await creator.queueImage(param);
-                                expect(false).assertTrue();
-                                done();
-                            } catch (error) {
-                                expect(error.code == 1).assertTrue();
-                                console.log(`${testNum} error msg: ` + error);
-                                done();
-                            }
-                        }
-                    })
+                    return
                 }
+                img.getComponent(JPEG, async (err, component) => {
+                    if (err != 0) {
+                        expect(false).assertTrue();
+                        console.log(`${testNum} getComponent err:` + err);
+                        done();
+                        return;
+                    }
+                    expect(component.componentType == JPEG).assertTrue();
+                    expect(component.byteBuffer != undefined).assertTrue();
+                    var bufferArr = new Uint8Array(component.byteBuffer);
+
+                    for (var i = 0; i < bufferArr.length; i += 4) {
+                        bufferArr[i] = 0; //B
+                        bufferArr[i + 1] = 0; //G
+                        bufferArr[i + 2] = 255; //R
+                        bufferArr[i + 3] = 255; //A
+                    }
+
+                    try {
+                        await creator.queueImage(param);
+                        expect(false).assertTrue();
+                        done();
+                    } catch (error) {
+                        expect(error.code == 1).assertTrue();
+                        console.log(`${testNum} error msg: ` + error);
+                        done();
+                    }
+                })
             }).catch(error => {
                 console.log(`${testNum} dequeue error:` + error);
                 expect(false).assertTrue();
@@ -124,34 +126,35 @@ describe('ImageCreator', function () {
             creator.dequeueImage().then(img => {
                 if (img == undefined) {
                     expect(false).assertTrue();
-                    done();
+                    done()
                 } else {
                     img.getComponent(JPEG, (err, component) => {
-                        if (err) {
+                        if (err != 0) {
                             expect(false).assertTrue();
-                            console.log(`${testNum} getComponent error:` + err)
-                        } else {
-                            expect(component.componentType == JPEG).assertTrue();
-                            expect(component.byteBuffer != undefined).assertTrue();
-                            var bufferArr = new Uint8Array(component.byteBuffer);
+                            console.log(`${testNum} getComponent error:` + err);
+                            done();
+                            return;
+                        }
+                        expect(component.componentType == JPEG).assertTrue();
+                        expect(component.byteBuffer != undefined).assertTrue();
+                        var bufferArr = new Uint8Array(component.byteBuffer);
 
-                            for (var i = 0; i < bufferArr.length; i += 4) {
-                                bufferArr[i] = 0; //B
-                                bufferArr[i + 1] = 0; //G
-                                bufferArr[i + 2] = 255; //R
-                                bufferArr[i + 3] = 255; //A
-                            }
+                        for (var i = 0; i < bufferArr.length; i += 4) {
+                            bufferArr[i] = 0; //B
+                            bufferArr[i + 1] = 0; //G
+                            bufferArr[i + 2] = 255; //R
+                            bufferArr[i + 3] = 255; //A
+                        }
 
-                            try {
-                                creator.queueImage(param, () => {
-                                    expect(false).assertTrue();
-                                    done();
-                                })
-                            } catch (error) {
-                                expect(error.code == 1).assertTrue();
-                                console.log(`${testNum} error msg: ` + error);
+                        try {
+                            creator.queueImage(param, (err) => {
+                                expect(false).assertTrue();
                                 done();
-                            }
+                            })
+                        } catch (error) {
+                            expect(error.code == 1).assertTrue();
+                            console.log(`${testNum} error msg: ` + error);
+                            done();
                         }
                     })
                 }
@@ -343,7 +346,7 @@ describe('ImageCreator', function () {
         } else {
             expect(false).assertTrue();
             console.info('Creator_002 finished');
-            done();
+            done()
         }
     })
 
@@ -361,19 +364,20 @@ describe('ImageCreator', function () {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             creator.release((err) => {
-                if (err) {
+                if (err != 0) {
+                    console.info('Creator_003 release call back' + err);
                     expect(false).assertTrue();
                     done();
-                } else {
-                    console.info('Creator_003 release call back');
-                    expect(true).assertTrue();
-                    done();
+                    return;
                 }
+                console.info('Creator_003 release call back');
+                expect(true).assertTrue();
+                done();
             });
         } else {
             expect(false).assertTrue();
             console.info('Creator_003 finished');
-            done();
+            done()
         }
     })
 
@@ -420,19 +424,20 @@ describe('ImageCreator', function () {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             creator.dequeueImage((err, img) => {
-                if (err) {
+                if (err != 0) {
+                    console.info('Creator_005 err:' + err);
                     expect(false).assertTrue();
                     done();
-                } else {
-                    console.info('Creator_005 dequeueImage call back Success');
-                    expect(img != undefined).assertTrue();
-                    done();
+                    return;
                 }
+                console.info('Creator_005 dequeueImage call back Success');
+                expect(img != undefined).assertTrue();
+                done();
             });
         } else {
             expect(false).assertTrue();
             console.info('Creator_005 finished');
-            done();
+            done()
         }
     })
 
@@ -454,42 +459,42 @@ describe('ImageCreator', function () {
                 if (img == undefined) {
                     expect(false).assertTrue();
                     done();
-                } else {
-                    img.getComponent(JPEG, (err, component) => {
-                        if (err) {
-                            expect(false).assertTrue();
-                            done();
-                        } else {
-                            expect(component.componentType == JPEG).assertTrue();
-                            expect(component.byteBuffer != undefined).assertTrue();
-                            var bufferArr = new Uint8Array(component.byteBuffer);
-
-                            for (var i = 0; i < bufferArr.length; i += 4) {
-                                bufferArr[i] = 0; //B
-                                bufferArr[i + 1] = 0; //G
-                                bufferArr[i + 2] = 255; //R
-                                bufferArr[i + 3] = 255; //A
-                            }
-                            console.info("this is img " + img);
-
-                            creator.queueImage(img).then(() => {
-                                console.info('Creator_006 queueImage Success');
-                                var dummy = creator.test;
-                                expect(true).assertTrue();
-                                done();
-                            }).catch(error => {
-                                console.info('Creator_006 queueImage error: ' + error);
-                                expect(false).assertTrue();
-                                done();
-                            })
-                        }
-                    })
+                    return;
                 }
+                img.getComponent(JPEG, (err, component) => {
+                    if (err != 0) {
+                        expect(false).assertTrue();
+                        done();
+                        return;
+                    }
+                    expect(component.componentType == JPEG).assertTrue();
+                    expect(component.byteBuffer != undefined).assertTrue();
+                    var bufferArr = new Uint8Array(component.byteBuffer);
+
+                    for (var i = 0; i < bufferArr.length; i += 4) {
+                        bufferArr[i] = 0; //B
+                        bufferArr[i + 1] = 0; //G
+                        bufferArr[i + 2] = 255; //R
+                        bufferArr[i + 3] = 255; //A
+                    }
+                    console.info("this is img " + img);
+
+                    creator.queueImage(img).then(() => {
+                        console.info('Creator_006 queueImage Success');
+                        var dummy = creator.test;
+                        expect(true).assertTrue();
+                        done();
+                    }).catch(error => {
+                        console.info('Creator_006 queueImage error: ' + error);
+                        expect(false).assertTrue();
+                        done();
+                    })
+                })
             })
         } else {
             expect(false).assertTrue();
             console.info('Creator_006 createImageCreator failed');
-            done();
+            done()
         }
     })
 
@@ -560,35 +565,38 @@ describe('ImageCreator', function () {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             creator.dequeueImage((err, img) => {
-                if (img == undefined) {
+                if (err != 0 || img == undefined) {
+                    console.log('Creator_007 dequeueImage error:' + err);
                     expect(false).assertTrue();
                     done();
-                } else {
-                    img.getComponent(JPEG, (err, component) => {
-                        if (err) {
-                            expect(false).assertTrue();
-                            console.log(`${testNum} getComponent error:` + err)
-                        } else {
-                            expect(component.componentType == JPEG).assertTrue();
-                            expect(component.byteBuffer != undefined).assertTrue();
-                            var bufferArr = new Uint8Array(component.byteBuffer);
-
-                            for (var i = 0; i < bufferArr.length; i += 4) {
-                                bufferArr[i] = 0; //B
-                                bufferArr[i + 1] = 0; //G
-                                bufferArr[i + 2] = 255; //R
-                                bufferArr[i + 3] = 255; //A
-                            }
-                            console.info("this is img " + img);
-                            creator.queueImage(img, () => {
-                                console.info('Creator_007 queueImage Success');
-                                var dummy = creator.test;
-                                expect(true).assertTrue();
-                                done();
-                            })
-                        }
-                    })
+                    return;
                 }
+
+                img.getComponent(JPEG, (err, component) => {
+                    if (err != 0) {
+                        expect(false).assertTrue();
+                        console.log('Creator_007 getComponent error:' + err);
+                        done();
+                        return;
+                    }
+                    expect(component.componentType == JPEG).assertTrue();
+                    expect(component.byteBuffer != undefined).assertTrue();
+                    var bufferArr = new Uint8Array(component.byteBuffer);
+
+                    for (var i = 0; i < bufferArr.length; i += 4) {
+                        bufferArr[i] = 0; //B
+                        bufferArr[i + 1] = 0; //G
+                        bufferArr[i + 2] = 255; //R
+                        bufferArr[i + 3] = 255; //A
+                    }
+                    console.info("this is img " + img);
+                    creator.queueImage(img, () => {
+                        console.info('Creator_007 queueImage Success');
+                        var dummy = creator.test;
+                        expect(true).assertTrue();
+                        done();
+                    })
+                })
             })
         } else {
             expect(false).assertTrue();
@@ -671,43 +679,54 @@ describe('ImageCreator', function () {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY)
         expect(creator != undefined).assertTrue();
         if (creator == undefined) {
-            done();
+            done()
             return;
         }
-        creator.on('imageRelease', () => {
+        creator.on('imageRelease', (err) => {
+            if (err != 0) {
+                console.info('Creator_008 on release faild' + err);
+                expect(false).assertTrue();
+                done();
+                return;
+            }
             console.info('Creator_008 on call back IN');
             expect(true).assertTrue();
             done();
         })
         creator.dequeueImage((err, img) => {
-            expect(img != undefined).assertTrue();
-            if (img == undefined) {
+            if (err != 0 || img == undefined) {
+                console.info('Creator_008 dequeueImage fail: ' + err);
                 expect(false).assertTrue();
                 done();
-            }else{
-                img.getComponent(JPEG, (err, component) => {
-                    if (component == undefined) {
+                return;
+            }
+            img.getComponent(JPEG, (err, component) => {
+                if (err != 0 || component == undefined) {
+                    console.info('Creator_008 getComponent err:' + err);
+                    expect(false).assertTrue();
+                    done();
+                    return;
+                }
+                expect(component.componentType == JPEG).assertTrue();
+                expect(component.byteBuffer != undefined).assertTrue();
+                var bufferArr = new Uint8Array(component.byteBuffer);
+                for (var i = 0; i < bufferArr.length; i += 4) {
+                    bufferArr[i] = 0; //B
+                    bufferArr[i + 1] = 0; //G
+                    bufferArr[i + 2] = 255; //R
+                    bufferArr[i + 3] = 255; //A
+                }
+                creator.queueImage(img, (err) => {
+                    if (err != 0) {
+                        console.info('Creator_008 queueImage failerr: ' + err);
                         expect(false).assertTrue();
                         done();
-                    }else{
-                        expect(component.componentType == JPEG).assertTrue();
-                        expect(component.byteBuffer != undefined).assertTrue();
-                        var bufferArr = new Uint8Array(component.byteBuffer);
-                        for (var i = 0; i < bufferArr.length; i += 4) {
-                            bufferArr[i] = 0; //B
-                            bufferArr[i + 1] = 0; //G
-                            bufferArr[i + 2] = 255; //R
-                            bufferArr[i + 3] = 255; //A
-                        }
-                        creator.queueImage(img, () => {
-                            console.info('Creator_008 queueImage Success');
-                            var dummy = creator.test;
-                        })
+                        return;
                     }
-                   
+                    console.info('Creator_008 queueImage Success');
+                    var dummy = creator.test;
                 })
-            }
-            
+            })
         })
     })
 
