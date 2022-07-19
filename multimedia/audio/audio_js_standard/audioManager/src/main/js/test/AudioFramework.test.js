@@ -4220,28 +4220,28 @@ describe('audioManger_audio2', function () {
 
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_TnterruptActionType_001
-                * @tc.name      : TnterruptActionType - TYPE_ACTIVATED 
-                * @tc.desc      : TnterruptActionType - TYPE_ACTIVATED 
+                * @tc.name      : InterruptActionType - TYPE_ACTIVATED 
+                * @tc.desc      : InterruptActionType - TYPE_ACTIVATED 
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_MANAGER_TnterruptActionType_001', 0, async function (done) {
-		expect(audio.TnterruptActionType.TYPE_ACTIVATED).assertEqual(0);
+		expect(audio.InterruptActionType.TYPE_ACTIVATED).assertEqual(0);
 		await sleep(50);
 		done();
     })
 
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_TnterruptActionType_002
-                * @tc.name      : TnterruptActionType - TYPE_INTERRUPT
-                * @tc.desc      : TnterruptActionType - TYPE_INTERRUPT
+                * @tc.name      : InterruptActionType - TYPE_INTERRUPT
+                * @tc.desc      : InterruptActionType - TYPE_INTERRUPT
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
     */
     it('SUB_AUDIO_MANAGER_TnterruptActionType_002', 0, async function (done) {  
-		expect(audio.TnterruptActionType.TYPE_INTERRUPT).assertEqual(1);
+		expect(audio.InterruptActionType.TYPE_INTERRUPT).assertEqual(1);
 		await sleep(50);
 		done();
     })
