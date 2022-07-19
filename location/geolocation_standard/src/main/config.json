@@ -46,38 +46,6 @@
         "launchType": "standard"
       }
     ],
-    "defPermissions": [
-      {
-        "availableScope": [],
-        "grantMode": "user_grant",
-        "name": "ohos.permission.ACCESS_LOCATION",
-        "availableLevel": "system_basic",
-          "provisionEnable": true,
-          "distributedSceneEnable": true,
-          "label": "ACCESS_LOCATION label",
-          "description": "ACCESS_LOCATION description"
-      },
-    {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "ohos.permission.MANAGE_SECURE_SETTINGS",
-        "availableLevel": "system_basic",
-          "provisionEnable": true,
-          "distributedSceneEnable": false,
-          "label": "MANAGE_SECURE_SETTINGS label",
-          "description": "MANAGE_SECURE_SETTINGS description"
-      },
-      {
-        "availableScope": [],
-        "grantMode": "user_grant",
-        "name": "ohos.permission.LOCATION",
-       "availableLevel": "system_basic",
-          "provisionEnable": true,
-          "distributedSceneEnable": true,
-          "label": "LOCATION label",
-          "description": "LOCATION description"
-      }
-    ],
     "reqPermissions": [
       {
         "name": "ohos.permission.LOCATION",
