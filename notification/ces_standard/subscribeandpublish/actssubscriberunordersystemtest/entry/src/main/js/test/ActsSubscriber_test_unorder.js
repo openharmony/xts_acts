@@ -115,7 +115,8 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
             Subscriber.Support.COMMON_EVENT_VOLUME_MOUNTED,
             Subscriber.Support.COMMON_EVENT_VOLUME_BAD_REMOVAL,
             Subscriber.Support.COMMON_EVENT_VOLUME_EJECT,
-            Subscriber.Support.COMMON_EVENT_SLOT_CHANGE
+            Subscriber.Support.COMMON_EVENT_SLOT_CHANGE,
+            Subscriber.Support.COMMON_EVENT_SPN_INFO_CHANGED 
     ];
 
     function publishCallback(err) {
@@ -200,8 +201,9 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
                     Subscriber.Support.COMMON_EVENT_VOLUME_MOUNTED,
                     Subscriber.Support.COMMON_EVENT_VOLUME_BAD_REMOVAL,
                     Subscriber.Support.COMMON_EVENT_VOLUME_EJECT,
-                    Subscriber.Support.COMMON_EVENT_SLOT_CHANGE
-            ],
+                    Subscriber.Support.COMMON_EVENT_SLOT_CHANGE,
+                    Subscriber.Support.COMMON_EVENT_SPN_INFO_CHANGED 
+                ],
         };
 
         let result = 0;
@@ -309,7 +311,8 @@ describe('ActsSubscriberTestUnorderSystem', async function (done) {
                 Subscriber.Support.COMMON_EVENT_VOLUME_MOUNTED,
                 Subscriber.Support.COMMON_EVENT_VOLUME_BAD_REMOVAL,
                 Subscriber.Support.COMMON_EVENT_VOLUME_EJECT,
-                Subscriber.Support.COMMON_EVENT_SLOT_CHANGE
+                Subscriber.Support.COMMON_EVENT_SLOT_CHANGE,
+                Subscriber.Support.COMMON_EVENT_SPN_INFO_CHANGED 
             ],
         };
 
