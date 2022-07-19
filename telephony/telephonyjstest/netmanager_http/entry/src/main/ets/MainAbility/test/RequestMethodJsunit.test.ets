@@ -417,6 +417,222 @@ export default function requestMethodJsunit() {
       }
     });
 
+    /**
+     * @tc.number Telephony_http_HttpRequestMethod_head_0100
+     * @tc.name HttpRequestMethod::HEAD
+     * @tc.desc Test Test HttpRequestMethod property.
+     */
+
+    it("Telephony_http_HttpRequestMethod_head_0100", 0, async function (done) {
+      var casename = 'Telephony_http_HttpRequestMethod_0600';
+      console.log("-----------------------HttpRequestMethod_head Test is starting-----------------------");
+      try {
+        let httpRequestOptions = {
+          method: "HEAD",
+          extraData: null,
+          header: "content-type': 'application/json",
+          readTimeout: 60,
+          connectTimeout: 60
+        }
+        var httpRequest = http.createHttp();
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
+        httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
+          console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
+          expect(data.getResponseCode = 200).assertTrue();
+          console.log("-----------------------HttpRequestMethod_head Test end-----------------------");
+          done();
+        });
+      } catch (error) {
+        console.log("Telephony_Http_HttpRequestMethod_head_0100 : error = " + error);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number Telephony_http_HttpRequestMethod_HEAD_0200
+     * @tc.name HttpRequestMethod::HEAD
+     * @tc.desc Test Test HttpRequestMethod property.
+     */
+    it("Telephony_http_HttpRequestMethod_HEAD_0200", 0, async function (done) {
+      var casename = "Telephony_http_HttpRequestMethod_0600"
+      console.log("-----------------------HttpRequestMethod_HEAD_01 Test is starting-----------------------");
+      try {
+        let httpRequestOptions = {
+          method: "HEAD",
+          extraData: null,
+          header: "content-type': 'application/json",
+          readTimeout: 60,
+          connectTimeout: 60
+        }
+        var httpRequest = http.createHttp();
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
+        httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
+          console.log(casename + JSON.stringify(data));
+          expect(data.getResponseCode = 200).assertTrue();
+          console.log("-----------------------HttpRequestMethod_HEAD_01 Test end-----------------------");
+          done();
+        }).catch(error => {
+          console.info(casename+"errocode" + JSON.stringify(error));
+          done();
+        });
+      } catch (error) {
+        console.log("Telephony_http_HttpRequestMethod_HEAD_0200 : error = " + error);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number Telephony_http_HttpRequestMethod_DELETE_0100
+     * @tc.name HttpRequestMethod::DELETE
+     * @tc.desc Test Test HttpRequestMethod property.
+     */
+
+    it("Telephony_http_HttpRequestMethod_DELETE_0100", 0, async function (done) {
+      var casename = 'Telephony_http_HttpRequestMethod_0700';
+      console.log("-----------------------HttpRequestMethod_DELETE Test is starting-----------------------");
+      try {
+        let httpRequestOptions = {
+          method: "DELETE",
+          extraData: null,
+          header: "content-type': 'application/json",
+          readTimeout: 60,
+          connectTimeout: 60
+        }
+        var httpRequest = http.createHttp();
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
+        httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
+          console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
+          expect(data.getResponseCode = 200).assertTrue();
+          console.log("-----------------------HttpRequestMethod_DELETE Test end-----------------------");
+          done();
+        });
+      } catch (error) {
+        console.log("Telephony_Http_HttpRequestMethod_DELETE_0100 : error = " + error);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number Telephony_http_HttpRequestMethod_DELETE_0200
+     * @tc.name HttpRequestMethod::DELETE
+     * @tc.desc Test Test HttpRequestMethod property.
+     */
+    it("Telephony_http_HttpRequestMethod_DELETE_0200", 0, async function (done) {
+      var casename = "Telephony_http_HttpRequestMethod_0700"
+      console.log("-----------------------HttpRequestMethod_DELETE_01 Test is starting-----------------------");
+      try {
+        let httpRequestOptions = {
+          method: "DELETE",
+          extraData: null,
+          header: "content-type': 'application/json",
+          readTimeout: 60,
+          connectTimeout: 60
+        }
+        var httpRequest = http.createHttp();
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
+        httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
+          console.log(casename + JSON.stringify(data));
+          expect(data.getResponseCode = 200).assertTrue();
+          console.log("-----------------------HttpRequestMethod_DELETE_01 Test end-----------------------");
+          done();
+        }).catch(error => {
+          console.info(casename+"errocode" + JSON.stringify(error));
+          done();
+        });
+      } catch (error) {
+        console.log("Telephony_http_HttpRequestMethod_DELETE_0200 : error = " + error);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number Telephony_http_HttpRequestMethod_CONNECT_0100
+     * @tc.name HttpRequestMethod::CONNECT
+     * @tc.desc Test Test HttpRequestMethod property.
+     */
+
+    it("Telephony_http_HttpRequestMethod_CONNECT_0100", 0, async function (done) {
+      var casename = 'Telephony_http_HttpRequestMethod_0800';
+      console.log("-----------------------HttpRequestMethod_CONNECT Test is starting-----------------------");
+      try {
+        let httpRequestOptions = {
+          method: "CONNECT",
+          extraData: null,
+          header: "content-type': 'application/json",
+          readTimeout: 60,
+          connectTimeout: 60
+        }
+        var httpRequest = http.createHttp();
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
+        httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
+          console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
+          expect(data.getResponseCode = 200).assertTrue();
+          console.log("-----------------------HttpRequestMethod_CONNECT Test end-----------------------");
+          done();
+        });
+      } catch (error) {
+        console.log("Telephony_Http_HttpRequestMethod_CONNECT_0100 : error = " + error);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number Telephony_http_HttpRequestMethod_CONNECT_0200
+     * @tc.name HttpRequestMethod::CONNECT
+     * @tc.desc Test Test HttpRequestMethod property.
+     */
+    it("Telephony_http_HttpRequestMethod_CONNECT_0200", 0, async function (done) {
+      var casename = "Telephony_http_HttpRequestMethod_0800"
+      console.log("-----------------------HttpRequestMethod_CONNECT_01 Test is starting-----------------------");
+      try {
+        let httpRequestOptions = {
+          method: "CONNECT",
+          extraData: null,
+          header: "content-type': 'application/json",
+          readTimeout: 60,
+          connectTimeout: 60
+        }
+        var httpRequest = http.createHttp();
+        if (utils.notCheck) {
+          expect(true).assertTrue();
+          done();
+          return;
+        }
+        httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
+          console.log(casename + JSON.stringify(data));
+          expect(data.getResponseCode = 200).assertTrue();
+          console.log("-----------------------HttpRequestMethod_CONNECT_01 Test end-----------------------");
+          done();
+        }).catch(error => {
+          console.info(casename+"errocode" + JSON.stringify(error));
+          done();
+        });
+      } catch (error) {
+        console.log("Telephony_http_HttpRequestMethod_CONNECT_0200 : error = " + error);
+        done();
+      }
+    });
+
   })
 
 };

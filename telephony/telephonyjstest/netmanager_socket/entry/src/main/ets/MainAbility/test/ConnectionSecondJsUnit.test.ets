@@ -26,6 +26,9 @@ export default function connectionSecondJsUnit() {
      */
     it("Telephony_connection_ConnectionProperties_0100", 0, function (done) {
       console.log("-----------------------Telephony ConnectionProperties Test is starting-----------------------");
+      expect(connection.HttpRequest != null).assertTrue();
+      expect(connection.TCPSocket != null).assertTrue();
+      expect(connection.UDPSocket != null).assertTrue();
       let caseName = 'Telephony_connection_ConnectionProperties_0100';
       try {
         let resultLinkAddresses = {
@@ -121,6 +124,19 @@ export default function connectionSecondJsUnit() {
     it("Telephony_connection_RouteInfo_0300", 0, function (done) {
       console.log("----------------------RouteInfo Properties Test is starting-----------------------");
       try {
+        let resultInterface = {
+          interface: '123'
+        };
+        let resultDestination = {
+          destination: {
+            address: "192.168.1.2"
+          }
+        };
+        let resultGateway = {
+          gateway: {
+            address: "192.168.1.3"
+          }
+        }
         let resultDefaultRoute = {
           isDefaultRoute: true
         };
@@ -129,6 +145,9 @@ export default function connectionSecondJsUnit() {
         };
         expect(true).assertEqual(resultDefaultRoute.isDefaultRoute);
         expect(true).assertEqual(resultHasGateway.hasGateway);
+        expect("123").assertEqual(resultInterface.interface);
+        expect("192.168.1.2").assertEqual(resultDestination.destination.address);
+        expect("192.168.1.3").assertEqual(resultGateway.gateway.address);
         console.log("-----------------------RouteInfo Properties Test end-----------------------");
         done();
       } catch (err) {
