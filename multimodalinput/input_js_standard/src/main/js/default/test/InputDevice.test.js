@@ -28,71 +28,71 @@ describe('MultimodalInput_test', function () {
 
   // 参数正确,返回一个数组
   it('inputDevice::getDeviceIds_test-01', 0, function () {
-    console.log(`inputDevice::getDeviceIds_test-01 enter`);
+    console.info(`inputDevice::getDeviceIds_test-01 enter`);
     inputDevice.getDeviceIds((data, err) => {
       if (err) {
         expect(false).assertTrue();
       } else {
         expect(data).assertInstanceOf('Array');
       }
-      console.log(`inputDevice::getDeviceIds_test-01 exit`);
+      console.info(`inputDevice::getDeviceIds_test-01 exit`);
     })
   })
 
   // 参数正确,判断一种或多种设备
   it("inputDevice::getDeviceIds_test-02", 0, function () {
-    console.log(`inputDevice::getDeviceIds_test-02 enter`);
+    console.info(`inputDevice::getDeviceIds_test-02 enter`);
     inputDevice.getDeviceIds((data, err) => {
       if (err) {
         expect(false).assertTrue();
       } else {
         expect(data.length > 0).assertTure();
       }
-      console.log(`inputDevice::getDeviceIds_test-02 exit`);
+      console.info(`inputDevice::getDeviceIds_test-02 exit`);
     })
   })
 
   // 参数类型错误
   it("inputDevice::getDeviceIds_test-03", 0, function () {
-    console.log(`inputDevice::getDeviceIds_test-03 enter`);
+    console.info(`inputDevice::getDeviceIds_test-03 enter`);
     try {
       inputDevice.getDeviceIds(-1);
     } catch (error) {
       expect(error.message).assertEqual("GetDeviceIds: \"The first parameter type is wrong\"");
     }
-    console.log(`inputDevice::getDeviceIds_test-03 exit`);
+    console.info(`inputDevice::getDeviceIds_test-03 exit`);
   })
 
   // 参数数量错误
   it("inputDevice::getDeviceIds_test-04", 0, function () {
-    console.log(`inputDevice::getDeviceIds_test-04 enter`);
+    console.info(`inputDevice::getDeviceIds_test-04 enter`);
     try {
       inputDevice.getDeviceIds(-1, (data) => {
-        console.log(data);
+        console.info(data);
       });
     } catch (error) {
       expect(error.message).assertEqual("GetDeviceIds: \"too many parameters\"");
     }
-    console.log(`inputDevice::getDeviceIds_test-04 exit`);
+    console.info(`inputDevice::getDeviceIds_test-04 exit`);
   })
 
   // 无效的设备id
   it("inputDevice::getDevice_test-01", 0, function () {
-    console.log(`inputDevice::getDevice_test-01 enter`);
+    console.info(`inputDevice::getDevice_test-01 enter`);
     inputDevice.getDevice(-1, (data, err) => {
       if (err) {
         expect(false).assertTrue();
-        console.log(`inputDevice::getDevice_test-01 ${JSON.stringify(err)}`);
+        console.info(`inputDevice::getDevice_test-01 ${JSON.stringify(err)}`);
       } else {
         expect(JSON.stringify(data) !== "{}").assertTrue();
       }
-      console.log(`inputDevice::getDevice_test-01 exit`);
+      console.info(`inputDevice::getDevice_test-01 exit`);
     })
   })
 
   // 参数正常,返回值正常
   it("inputDevice::getDevice_test-02", 0, function () {
-    console.log(`inputDevice::getDevice_test-03 enter`);
+    console.info(`inputDevice::getDevice_test-02 enter`);
     inputDevice.getDeviceIds((data, err) => {
       if (err) {
         expect(false).assertTrue();
@@ -100,23 +100,46 @@ describe('MultimodalInput_test', function () {
         let arr = [];
         for (let i = 0; i < data.length; i++) {
           inputDevice.getDevice(data[i], (res, err) => {
-            console.log(`getDevice:data ${JSON.stringify(data)}`)
+            console.info(`getDevice:data ${JSON.stringify(data)}`);
             arr = Object.keys(res);
             expect(res.id).assertInstanceOf('number');
             expect(res.name).assertInstanceOf('string');
             expect(res.sources).assertInstanceOf('Array');
             expect(res.axisRanges).assertInstanceOf('Array');
+            expect(res.bus).assertInstanceOf('number');
+            expect(res.product).assertInstanceOf('number');
+            expect(res.vendor).assertInstanceOf('number');
+            expect(res.version).assertInstanceOf('number');
+            expect(res.phys).assertInstanceOf('string');
+            expect(res.uniq).assertInstanceOf('string');
+            expect(res).assertInstanceOf('InputDeviceData');
+            for(let j = 0;j < res.axisRanges.length; j++ ){
+              expect(res.axisRanges[j].source == 'keyboard' || res.axisRanges[j].source == 'mouse'
+              || res.axisRanges[j].source == 'touchpad' || res.axisRanges[j].source == 'touchscreen'
+              || res.axisRanges[j].source == 'joystick' || res.axisRanges[j].source == 'trackball').assertTrue();
+              expect(res.axisRanges[j].axis == 'touchMajor' || res.axisRanges[j].axis == 'touchMinor'
+              || res.axisRanges[j].axis == 'orientation' || res.axisRanges[j].axis == 'x'
+              || res.axisRanges[j].axis == 'y' || res.axisRanges[j].axis == 'pressure'
+              || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'touchMajor'
+              || res.axisRanges[j].axis == 'NULL').assertTrue();
+              expect(res.axisRanges[j].max).assertInstanceOf('number');
+              expect(res.axisRanges[j]).assertInstanceOf('AxisRange');
+              expect(res.axisRanges[j].min).assertInstanceOf('number');
+              expect(res.axisRanges[j].fuzz).assertInstanceOf('number');
+              expect(res.axisRanges[j].flat).assertInstanceOf('number');
+              expect(res.axisRanges[j].resolution).assertInstanceOf('number');
+            }
           })
           expect(arr.length > 0).assertTrue();
         }
       }
-      console.log(`inputDevice::getDevice_test-02 exit`);
+      console.info(`inputDevice::getDevice_test-02 exit`);
     });
   })
 
   // 参数正常,返回值正常
   it("inputDevice::supportKeys_test-01", 0, function () {
-    console.log(`inputDevice::supportKeys_test-01 enter`);
+    console.info(`inputDevice::supportKeys_test-01 enter`);
     inputDevice.getDeviceIds((data, err) => {
       if (err) {
         expect(false).assertTrue();
@@ -127,26 +150,26 @@ describe('MultimodalInput_test', function () {
           });
         }
       }
-      console.log(`inputDevice::supportKeys_test-01 exit`);
+      console.info(`inputDevice::supportKeys_test-01 exit`);
     });
   })
 
   // 第二个参数异常
   it("inputDevice::supportKeys_test-02", 0, function () {
-    console.log(`inputDevice::supportKeys_test-01 enter`);
+    console.info(`inputDevice::supportKeys_test-02 enter`);
     try {
       inputDevice.supportKeys(0, 2022, (res) => {
-        console.log(res);
+        console.info(res);
       });
     } catch (error) {
       expect(error.message).assertEqual("SupportKeys: \"The second parameter type is wrong\"");
     }
-    console.log(`inputDevice::supportKeys_test-02 exit`);
+    console.info(`inputDevice::supportKeys_test-02 exit`);
   })
 
   // 参数正常
   it("inputDevice::getKeyboardType_test-01", 0, function () {
-    console.log(`inputDevice::getKeyboardType_test-01 enter`);
+    console.info(`inputDevice::getKeyboardType_test-01 enter`);
     inputDevice.getDeviceIds((data, err) => {
       if (err) {
         expect(false).assertTrue();
@@ -157,24 +180,24 @@ describe('MultimodalInput_test', function () {
           });
         }
       }
-      console.log(`inputDevice::getKeyboardType_test-01 exit`);
+      console.info(`inputDevice::getKeyboardType_test-01 exit`);
     });
   })
 
   //参数异常
   it("inputDevice::getKeyboardType_test-02", 0, function () {
-    console.log(`inputDevice::getKeyboardType_test-02 enter`);
+    console.info(`inputDevice::getKeyboardType_test-02 enter`);
     try {
       inputDevice.getKeyboardType(-1);
     } catch (error) {
       expect(error.message).assertEqual("getKeyboardType: \"The second parameter type is wrong\"");
     }
-    console.log(`inputDevice::getKeyboardType_test-02 exit`);
+    console.info(`inputDevice::getKeyboardType_test-02 exit`);
   });
 
   // 参数正常
   it("inputDevice::getKeyboardType_test-03", 0, function () {
-    console.log(`inputDevice::getKeyboardType_test-03 enter`);
+    console.info(`inputDevice::getKeyboardType_test-03 enter`);
     inputDevice.getDeviceIds((data, err) => {
       if (err) {
         expect(false).assertTrue();
@@ -186,7 +209,7 @@ describe('MultimodalInput_test', function () {
           });
         }
       }
-      console.log(`inputDevice::getKeyboardType_test-03 exit`);
+      console.info(`inputDevice::getKeyboardType_test-03 exit`);
     });
   })
 
@@ -260,7 +283,7 @@ describe('MultimodalInput_test', function () {
    * @tc.desc inputdevice interface getDeviceIds & supportKeys test
    */
   it("MultimodalInputDevice_getDeviceIds_Promise_test", 0, async function () {
-    console.log(`inputDevice::supportKeys_test-01 enter`);
+    console.info(`inputDevice::supportKeys_test-01 enter`);
     await inputDevice.getDeviceIds().then((data, err) => {
       if (err) {
         expect(false).assertTrue();
@@ -269,11 +292,73 @@ describe('MultimodalInput_test', function () {
         for (let i = 0; i < data.length; ++i) {
           inputDevice.supportKeys(data[i], [17, 22, 2055]).then((res, err) => {
             expect(res).assertInstanceOf('Array');
-          })
+          });
         }
         done();
       }
-      console.log(`inputDevice::supportKeys_test-01 exit`);
+      console.info(`inputDevice::supportKeys_test-01 exit`);
     });
   })
+
+  /**
+   * @tc.number MultimodalInputDevice_js_0080
+   * @tc.name MultimodalInputDevice_getDevice_Promise_test
+   * @tc.desc inputdevice interface getDevice test
+   */
+  it("MultimodalInputDevice_getDevice_Promise_test", 0, async function () {
+    console.info(`inputDevice::getDevice_test-01 enter`);
+    await inputDevice.getDevice(-1).then((data, err) => {
+      if (err) {
+        expect(false).assertTrue();
+        console.info(`inputDevice::getDevice_test-01 ${JSON.stringify(err)}`);
+        done();
+      } else {
+        expect(JSON.stringify(data) !== "{}").assertTrue();
+        done();
+      }
+      console.info(`inputDevice::getDevice_test-01 exit`);
+    });
+  })
+
+  /**
+   * @tc.number MultimodalInputDevice_js_0090
+   * @tc.name MultimodalInputDevice_on_test
+   * @tc.desc inputdevice interface getDevice test
+   */
+  it("MultimodalInputDevice_on_test", 0, function () {
+    console.info(`MultimodalInputDevice_on_test enter`);
+    let isPhysicalKeyboardExist = true;
+    inputDevice.on("changed", (data) => {
+      console.info("type: " + data.type + ", deviceId: " + data.deviceId);
+      inputDevice.getKeyboardType(data.deviceId, (err, ret) => {
+        console.info("The keyboard type of the device is: " + ret);
+        if (ret == inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'add') {
+          // 监听物理键盘已连接。
+          isPhysicalKeyboardExist = true;
+        } else if (ret == inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'remove') {
+          // 监听物理键盘已断开。
+          isPhysicalKeyboardExist = false;
+        }
+      });
+    });
+    console.info(`MultimodalInputDevice_on_test exit`);
+  })
+
+  /**
+ * @tc.number MultimodalInputDevice_js_0100
+ * @tc.name MultimodalInputDevice_off_test
+ * @tc.desc inputdevice interface getDevice test
+ */
+  it("MultimodalInputDevice_off_test", 0, function () {
+    console.info(`MultimodalInputDevice_off_test enter`);
+    function listener(data) {
+      console.info("type: " + data.type + ", deviceId: " + data.deviceId);
+      expect(data.type== 'add' || data.type== 'remove').assertTrue();
+      expect(data).assertInstanceOf('DeviceListener');
+    }
+    // 单独取消listener的监听。
+    inputDevice.off("changed", listener);
+    console.info(`MultimodalInputDevice_off_test exit`);
+  })
+  
 })
