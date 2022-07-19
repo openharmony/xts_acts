@@ -326,14 +326,14 @@ export default function DataShareCombinationRdb() {
         })
         await pubfun.publicquery(globalThis.helper, uri, PredicatesAll, ["*"]).then((data) => {
           console.info("TestDataShare going query = " + data);
-          globalThis.helper.notifyChange(uri, notifyChangeCallback);
+          globalThis.helper.notifyChange(uri);
         }).catch((err) => {
           console.info("DataShareNotifyChangeRdb0101 query err" + JSON.stringify(err));
           expect(err).assertFail();
         })
         await pubfun.publicdelete(globalThis.helper, uri, PredicatesAll).then((data) => {
           console.info("TestDataShare going delete = " + data);
-          globalThis.helper.notifyChange(uri, notifyChangeCallback);
+          globalThis.helper.notifyChange(uri);
         }).catch((err) => {
           console.info("DataShareNotifyChangeRdb0101 delete err" + JSON.stringify(err));
           expect(err).assertFail();
