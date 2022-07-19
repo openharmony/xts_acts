@@ -32,7 +32,6 @@ export default function socketJsunit() {
      */
     it('Telephony_Socket_Socket_constructUDPSocketInstance_0100', 0, function (done) {
       console.log("************* Telephony_Socket_Socket_constructUDPSocketInstance_0100 Test start*************");
-      console
       expect(connection.UDPSocket != undefined).assertFalse();
       console.log("************* Telephony_Socket_Socket_constructUDPSocketInstance_0100 Test end*************");
       done();
