@@ -71,10 +71,10 @@ describe('VideoPlayerHLSBitrateTest.test', function () {
                 releaseVideoPlayer(done);
             }
         });
-        videoPlayer.on('availableBitrateCollected', (bitrates) => {
+        videoPlayer.on('availableBitratesCollect', (bitrates) => {
             bitrateArray = bitrates;
             for (let i = 0; i < bitrateArray.length; i++) { 
-                console.info('case availableBitrateCollected bitrates: '  + bitrateArray[i]);
+                console.info('case availableBitratesCollect bitrates: '  + bitrateArray[i]);
             }
         });
         videoPlayer.on('error', (err) => {
