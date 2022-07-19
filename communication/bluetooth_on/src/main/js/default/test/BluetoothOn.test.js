@@ -240,7 +240,11 @@ describe('bluetoothhostTest', function() {
 			console.info('[bluetooth_js] BLE scan device find result1 = '+JSON.stringify(data));
 			except(true).assertTrue(data.length>0);
 		}
+<<<<<<< HEAD
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
+=======
+		bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
+>>>>>>> 38f2b81935e5260f075cb7d6702ead0bffa7af8a
         bluetooth.BLE.startBLEScan([{}]);
 		await sleep(1000);
 		console.info('[bluetooth_js] BLE SCAN OFF01');
@@ -267,12 +271,21 @@ describe('bluetoothhostTest', function() {
 	    	 console.info('[bluetooth_js] BLE scan device find result2 = '+JSON.stringify(data ));          
 			 except(true).assertTrue(data.length>0);
          }
+<<<<<<< HEAD
         bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
         bluetooth.BLE.startBLEScan([{deviceId:"00:11:22:33:44:55"}]);
         await sleep(1000);
         console.info('[bluetooth_js] BLE scan off2');
         bluetooth.BLE.off('BLEDeviceFind');
         bluetooth.BLE.stopBLEScan();
+=======
+		bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
+        bluetooth.BLE.startBLEScan([{deviceId:"00:11:22:33:44:55"}]);
+		await sleep(1000);
+		console.info('[bluetooth_js] BLE scan off2');
+		bluetooth.BLE.off('BLEDeviceFind');
+		bluetooth.BLE.stopBLEScan();
+>>>>>>> 38f2b81935e5260f075cb7d6702ead0bffa7af8a
         done();
     })
 
@@ -287,6 +300,7 @@ describe('bluetoothhostTest', function() {
      */
     it('SUB_COMMUNACATION_bluetooth_START_BLESCAN_WITHOUT_PARAM_0003', 0, async function (done) {
        	console.info('[bluetooth_js] BLE scan3 test start');
+<<<<<<< HEAD
         await sleep(1000);
         await tryToEnableBt();
         function onReceiveEvent(data)
@@ -301,6 +315,23 @@ describe('bluetoothhostTest', function() {
         bluetooth.BLE.off('BLEDeviceFind',onReceiveEvent);
         bluetooth.BLE.stopBLEScan();
         done();
+=======
+		 await sleep(1000);
+		 await tryToEnableBt();
+		 function onReceiveEvent(data)
+		 {
+			 console.info('[bluetooth_js] BLE scan device find result3 = '+JSON.stringify(dat
+				    a ));
+			 except(true).assertTrue(data.length>0);
+			 }
+		 bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
+	    bluetooth.BLE.startBLEScan([{deviceId:"00:11:22:33:44:55"}]);
+	    await sleep(1000);
+	    console.info('[bluetooth_js] BLE scan off3');
+	    bluetooth.BLE.off('BLEDeviceFind',onReceiveEvent);
+	    bluetooth.BLE.stopBLEScan();
+		done();
+>>>>>>> 38f2b81935e5260f075cb7d6702ead0bffa7af8a
     })
 
 
