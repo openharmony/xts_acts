@@ -26,9 +26,6 @@ export default function connectionSecondJsUnit() {
      */
     it("Telephony_connection_ConnectionProperties_0100", 0, function (done) {
       console.log("-----------------------Telephony ConnectionProperties Test is starting-----------------------");
-      expect(connection.HttpRequest != null).assertTrue();
-      expect(connection.TCPSocket != null).assertTrue();
-      expect(connection.UDPSocket != null).assertTrue();
       let caseName = 'Telephony_connection_ConnectionProperties_0100';
       try {
         let resultLinkAddresses = {
