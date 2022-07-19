@@ -28,7 +28,7 @@ hctest_suite("ActsWifiIotTest") {
   include_dirs = [
     "//test/xts/tools/hctest/include",
     "src",
-    "//base/iot_hardware/peripheral/interfaces/kits",
+    "//base/iothardware/peripheral/interfaces/inner_api",
   ]
 
   cflags = [ "-Wno-error" ]
