@@ -212,7 +212,7 @@ export default function abilityTest(abilityContext) {
             expect(data.formEnabled).assertEqual(false);
             expect(data.type).assertEqual(1);
             expect(data.subType).assertEqual(0);
-            expect(data.orientation).assertEqual(0);
+            expect(data.orientation).assertEqual(2);
             expect(data.launchMode).assertEqual(0);
             expect(data.permissions.length).assertEqual(0);
             expect(data.deviceTypes[0]).assertEqual("phone");

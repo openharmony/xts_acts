@@ -21,9 +21,13 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
   const ERR_PERMISSION_DENY = `does not have permission to use forms`;
 
   describe(`${describeName}`, () => {
-    const callbackName = `FMS_getFormsInfo_0800 callback`;
-    const promiseName = `FMS_getFormsInfo_0800 promise`;
+    const callbackName = `FMS_getFormsInfo_Callback_0800`;
+    const promiseName = `FMS_getFormsInfo_Promise_0800`;
     const bundleName = `1`;
+    const callbackName1 = `FMS_getFormsInfo_Callback_1300`;
+    const promiseName1 = `FMS_getFormsInfo_Promise_1300`;
+    const bundleName1 = `2`;
+    const moduleName = `a`;
 
     /**
      * @tc.name: getFormsInfo
@@ -69,33 +73,26 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
         console.log(`==========${promiseName} ${describeName} end==========`);
       }
     });
-  });
-
-  describe(`${describeName}`, () => {
-    const callbackName = `FMS_getFormsInfo_1300 callback`;
-    const promiseName = `FMS_getFormsInfo_1300 promise`;
-    const bundleName = `2`;
-    const moduleName = `a`;
 
     /**
      * @tc.name: getFormsInfo
      * @tc.number: FMS_getFormsInfo_1300
      * @tc.desc: Query specific form configuration information by bundle name and module name without permission (by AsyncCallback)
      */
-    it(`${callbackName}`, filterParameter, async (done) => {
-      console.log(`==========${callbackName} ${describeName} start==========`);
+    it(`${callbackName1}`, filterParameter, async (done) => {
+      console.log(`==========${callbackName1} ${describeName} start==========`);
 
       try {
-        formHost.getFormsInfo(bundleName, moduleName, (error, data) => {
-          console.log(`${callbackName} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
+        formHost.getFormsInfo(bundleName1, moduleName, (error, data) => {
+          console.log(`${callbackName1} getFormsInfo data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
           expect(error.code).assertEqual(ERR_PERMISSION_DENY_CODE);
           expect(error.message).assertEqual(ERR_PERMISSION_DENY);
           done();
-          console.log(`==========${callbackName} ${describeName} end==========`);
+          console.log(`==========${callbackName1} ${describeName} end==========`);
         });
       } catch (error) {
-        console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
-        console.log(`${callbackName} should not reach here`);
+        console.log(`${callbackName1} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${callbackName1} should not reach here`);
         expect().assertFail();
       }
     });
@@ -105,20 +102,20 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
      * @tc.number FMS_getFormsInfo_1300
      * @tc.desc: Query specific form configuration information by bundle name and module name without permission (by Promise)
      */
-    it(`${promiseName}`, filterParameter, async (done) => {
-      console.log(`==========${promiseName} ${describeName} start==========`);
+    it(`${promiseName1}`, filterParameter, async (done) => {
+      console.log(`==========${promiseName1} ${describeName} start==========`);
 
       try {
-        const data = await formHost.getFormsInfo(bundleName, moduleName);
-        console.log(`${promiseName} getFormsInfo data: ${JSON.stringify(data)}`);
-        console.log(`${promiseName} should not reach here`);
+        const data = await formHost.getFormsInfo(bundleName1, moduleName);
+        console.log(`${promiseName1} getFormsInfo data: ${JSON.stringify(data)}`);
+        console.log(`${promiseName1} should not reach here`);
         expect().assertFail();
       } catch (error) {
-        console.log(`${promiseName} exception caught: ${JSON.stringify(error)})`);
+        console.log(`${promiseName1} exception caught: ${JSON.stringify(error)})`);
         expect(error.code).assertEqual(ERR_PERMISSION_DENY_CODE);
         expect(error.message).assertEqual(ERR_PERMISSION_DENY);
         done();
-        console.log(`==========${promiseName} ${describeName} end==========`);
+        console.log(`==========${promiseName1} ${describeName} end==========`);
       }
     });
   });
