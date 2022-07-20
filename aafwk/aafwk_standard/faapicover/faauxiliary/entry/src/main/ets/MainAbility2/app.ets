@@ -22,23 +22,18 @@ export default {
     console.info(printLog1 + 'onCreate');
 
     let list = ["ohos.permission.CAMERA"]
-    try {
-      ability_featureAbility.getContext().requestPermissionsFromUser(list, 100).then((permissionRequestResult) => {
-        console.info(printLog1 + "requestPermissionsFromUser data = " + JSON.stringify(permissionRequestResult));
-        var CommonEventPublishData = {
-          parameters: {
-            permissionRequestResult: permissionRequestResult
-          }
+    ability_featureAbility.getContext().requestPermissionsFromUser(list, 1, (err, data) => {
+      console.info(printLog1 + "requestPermissionsFromUser data = " + JSON.stringify(data));
+      console.info(printLog1 + "requestPermissionsFromUser err = " + JSON.stringify(err));
+      var CommonEventPublishData = {
+        parameters: {
+          permissionRequestResult: err
         }
-        commonEvent.publish(listPush1 + "onCreate", CommonEventPublishData, (err) => {
-          console.info(printLog1 + listPush1 + "onCreate");
-        });
-      }).catch((err) => {
-        console.info(printLog1 + "requestPermissionsFromUser err = " + JSON.stringify(err));
+      }
+      commonEvent.publish(listPush1 + "onCreate", CommonEventPublishData, (err) => {
+        console.info(printLog1 + listPush1 + "onCreate");
       });
-    } catch(err) {
-      console.info(printLog1 + "requestPermissionsFromUser catch err = " + JSON.stringify(err));
-    }
+    })
 
     setTimeout(()=>{
       ability_featureAbility.terminateSelf().then((data) => {
@@ -66,5 +61,34 @@ export default {
   },
   onHide() {
     console.info(printLog1 + 'onHide');
+  },
+  onNewWant(want) {
+    console.info(printLog1 + 'onNewWant');
+  },
+  onStartContinuation() {
+    console.info(printLog1 + 'onStartContinuation');
+    return true;
+  },
+  onSaveData(data) {
+    console.info(printLog1 + 'onSaveData');
+    return true;
+  },
+  onCompleteContinuation(number) {
+    console.info(printLog1 + 'onCompleteContinuation');
+  },
+  onRestoreData(data) {
+    console.info(printLog1 + 'onRestoreData');
+  },
+  onRemoteTerminated() {
+    console.info(printLog1 + 'onRemoteTerminated');
+  },
+  onSaveAbilityState(outState) {
+    console.info(printLog1 + 'onSaveAbilityState');
+  },
+  onRestoreAbilityState(inState) {
+    console.info(printLog1 + 'onRestoreAbilityState');
+  },
+  onMemoryLevel(level) {
+    console.info(printLog1 + 'onMemoryLevel');
   }
 }

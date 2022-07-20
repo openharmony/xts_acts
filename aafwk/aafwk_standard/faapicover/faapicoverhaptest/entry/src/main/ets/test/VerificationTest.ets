@@ -25,11 +25,11 @@ export default function verificationTest(){
 
   describe('VerificationTestTest', function() {
     /*
-         * @tc.number  SUB_AA_OpenHarmony_Test_HasWindowFocus_0100
-         * @tc.name    Start ability to judge whether there is window focus.
-         * @tc.desc    Function test
-         * @tc.level   3
-         */
+     * @tc.number  SUB_AA_OpenHarmony_Test_HasWindowFocus_0100
+     * @tc.name    Start ability to judge whether there is window focus.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
     it('SUB_AA_OpenHarmony_Test_HasWindowFocus_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_Test_HasWindowFocus_0100 ==>';
 
@@ -80,6 +80,64 @@ export default function verificationTest(){
     })
 
     /*
+     * @tc.number  SUB_AA_OpenHarmony_Test_RequestPermissionsFromUser_0100
+     * @tc.name    FA model is not configured with permission for authorization verification.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_OpenHarmony_Test_RequestPermissionsFromUser_0100', 0, async function(done) {
+      TAG = 'SUB_AA_OpenHarmony_Test_RequestPermissionsFromUser_0100 ==>';
+
+      try {
+        let permissionRequestResult = null
+        let subscriber = null
+        let subscribeInfo = {
+          events: ["Fa_Auxiliary_MainAbility2_onCreate", "Fa_Auxiliary_MainAbility2_onDestroy"]
+        }
+        function SubscribeInfoCallback(err, data) {
+          console.info(TAG + "===SubscribeInfoCallback===" + JSON.stringify(data))
+          if (data.event == "Fa_Auxiliary_MainAbility2_onCreate") {
+            permissionRequestResult = data.parameters.permissionRequestResult
+          }
+          if (data.event == "Fa_Auxiliary_MainAbility2_onDestroy") {
+            console.info(TAG + "===PermissionRequestResult===" + JSON.stringify(permissionRequestResult))
+            expect(permissionRequestResult.requestCode).assertEqual(1);
+            expect(JSON.stringify(permissionRequestResult.permissions)).assertEqual(JSON.stringify(["ohos.permission.CAMERA"]));
+            expect(JSON.stringify(permissionRequestResult.authResults)).assertEqual(JSON.stringify([2]));
+            commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
+          }
+        }
+        function UnSubscribeInfoCallback(err, data) {
+          console.info(TAG + "===UnSubscribeInfoCallback===")
+          done()
+        }
+        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
+          console.info(TAG + "===CreateSubscriberCallback===")
+          subscriber = data
+          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
+        })
+
+        let wantNum = {
+          want: {
+            bundleName: 'ohos.acts.aafwk.test.faauxiliary',
+            abilityName: 'ohos.acts.aafwk.test.faauxiliary.MainAbility2'
+          }
+        }
+        ability_featureAbility.startAbility(wantNum).then((data) => {
+          console.info(TAG + "startAbility data = " + JSON.stringify(data));
+        }).catch((err) => {
+          console.info(TAG + "startAbility err = " + JSON.stringify(err));
+          expect().assertFail();
+          done();
+        });
+      } catch (err) {
+        console.info(TAG + "catch err = " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /*
      * @tc.number  SUB_AA_OpenHarmony_Test_AppManagerTest_0100
      * @tc.name    Whether the user is conducting stability test verification.
      * @tc.desc    Function test
@@ -103,11 +161,11 @@ export default function verificationTest(){
     })
 
     /*
-    * @tc.number  SUB_AA_OpenHarmony_Test_StartAbilityFlags_0100
-    * @tc.name    Validate the input parameter flags of startAbility.
-    * @tc.desc    Function test
-    * @tc.level   3
-    */
+     * @tc.number  SUB_AA_OpenHarmony_Test_StartAbilityFlags_0100
+     * @tc.name    Validate the input parameter flags of startAbility.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
     it('SUB_AA_OpenHarmony_Test_StartAbilityFlags_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_Test_StartAbilityFlags_0100 ==>';
 
@@ -139,7 +197,7 @@ export default function verificationTest(){
             list1[1] = "Fa_Auxiliary_MainAbility5_onDestroy"
           }
           if (JSON.stringify(list1) == JSON.stringify(list2)) {
-            expect(number3).assertEqual(22);
+            expect(number3).assertEqual(1);
             expect(number1).assertEqual(code1);
             expect(number2).assertEqual(code2);
             commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
@@ -206,11 +264,11 @@ export default function verificationTest(){
     })
 
     /*
-   * @tc.number  SUB_AA_OpenHarmony_Test_ServiceAbility_0100
-   * @tc.name    Start and stop serviceability.
-   * @tc.desc    Function test
-   * @tc.level   3
-   */
+     * @tc.number  SUB_AA_OpenHarmony_Test_ServiceAbility_0100
+     * @tc.name    Start and stop serviceability.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
     it('SUB_AA_OpenHarmony_Test_ServiceAbility_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_Test_ServiceAbility_0100 ==>';
 
@@ -256,11 +314,11 @@ export default function verificationTest(){
     })
 
     /*
-   * @tc.number  SUB_AA_OpenHarmony_Test_ServiceAbility_0200
-   * @tc.name    Bind and unbind serviceability.
-   * @tc.desc    Function test
-   * @tc.level   3
-   */
+     * @tc.number  SUB_AA_OpenHarmony_Test_ServiceAbility_0200
+     * @tc.name    Bind and unbind serviceability.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
     it('SUB_AA_OpenHarmony_Test_ServiceAbility_0200', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_Test_ServiceAbility_0200 ==>';
 
@@ -338,6 +396,75 @@ export default function verificationTest(){
         let wantNum = {
           bundleName: 'ohos.acts.aafwk.test.faauxiliary',
           abilityName: 'ohos.acts.aafwk.test.faauxiliary.ServiceAbility2'
+        }
+        let num = ability_featureAbility.connectAbility(wantNum, options)
+      } catch (err) {
+        console.info(TAG + "catch err = " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  SUB_AA_OpenHarmony_Test_ServiceAbility_0300
+     * @tc.name    Service binding unbinding service.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_OpenHarmony_Test_ServiceAbility_0300', 0, async function(done) {
+      TAG = 'SUB_AA_OpenHarmony_Test_ServiceAbility_0300 ==>';
+
+      try {
+        let status = undefined
+        let subscriber = null
+        let subscribeInfo = {
+          events: ["Fa_Auxiliary_ServiceAbility3_onConnect"]
+        }
+        function SubscribeInfoCallback(err, data) {
+          console.info(TAG + "===SubscribeInfoCallback===" + JSON.stringify(data))
+          if (data.event == "Fa_Auxiliary_ServiceAbility3_onConnect") {
+            status = data.parameters.status
+            commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback);
+          }
+        }
+        function UnSubscribeInfoCallback(err, data) {
+          console.info(TAG + "===UnSubscribeInfoCallback===")
+          expect(status).assertTrue();
+          done()
+        }
+        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
+          console.info(TAG + "===CreateSubscriberCallback===")
+          subscriber = data
+          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
+        })
+
+        let options = {
+          onConnect: function (elementName, proxy) {
+            console.info(TAG + 'Ext onConnect SUCCESS, elementName = ' + JSON.stringify(elementName));
+            if (proxy == null) {
+              console.info(TAG + 'Ext proxy == null');
+              return;
+            }
+            let option = new rpc.MessageOption();
+            let data = new rpc.MessageParcel();
+            let reply = new rpc.MessageParcel();
+            data.writeInt(1);
+            data.writeInt(99);
+            proxy.sendRequest(1, data, reply, option, (result) => {
+              let msg = result.reply.readInt();
+              console.info(TAG + 'Ext connect, msg = ' + msg);
+            });
+          },
+          onDisconnect: function (elementName) {
+            console.info(TAG + 'Ext onDisconnect, elementName = ' + JSON.stringify(elementName));
+          },
+          onFailed: function (number) {
+            console.info(TAG + 'Ext onFailed, number = ' + number);
+          }
+        };
+        let wantNum = {
+          bundleName: 'ohos.acts.aafwk.test.faauxiliary',
+          abilityName: 'ohos.acts.aafwk.test.faauxiliary.ServiceAbility3'
         }
         let num = ability_featureAbility.connectAbility(wantNum, options)
       } catch (err) {

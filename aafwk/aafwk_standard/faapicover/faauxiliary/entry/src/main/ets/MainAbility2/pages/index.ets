@@ -12,9 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ability_featureAbility from '@ohos.ability.featureAbility';
-
-var printLog1 = "Fa:Auxiliary:MainAbility2:";
 @Entry
 @Component
 struct Index {
@@ -26,29 +23,6 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        Button() {
-          Text('requestPermissionsFromUser')
-            .fontSize(20)
-            .fontWeight(FontWeight.Bold)
-        }.type(ButtonType.Capsule)
-        .margin({
-          top: 20
-        })
-        .backgroundColor('#0D9FFB')
-        .width('30%')
-        .height('5%')
-        .onClick(()=>{
-          let list = ["ohos.permission.CAMERA"]
-          try {
-            ability_featureAbility.getContext().requestPermissionsFromUser(list, 1).then((permissionRequestResult) => {
-              console.info(printLog1 + "requestPermissionsFromUser data = " + JSON.stringify(permissionRequestResult));
-            }).catch((err) => {
-              console.info(printLog1 + "requestPermissionsFromUser err = " + JSON.stringify(err));
-            });
-          } catch(err) {
-            console.info(printLog1 + "requestPermissionsFromUser catch err = " + JSON.stringify(err));
-          }
-        })
       }
       .width('100%')
     }

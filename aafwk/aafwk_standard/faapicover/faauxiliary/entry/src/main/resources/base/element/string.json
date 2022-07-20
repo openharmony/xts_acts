@@ -59,6 +59,18 @@
     {
       "name": "ServiceAbility2_desc",
       "value": "hap sample empty service"
+    },
+    {
+      "name": "form_FormAbility_desc",
+      "value": "form_description"
+    },
+    {
+      "name": "form_FormAbility_label",
+      "value": "form_label"
+    },
+    {
+      "name": "ServiceAbility3_desc",
+      "value": "hap sample empty service"
     }
   ]
 }

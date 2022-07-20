@@ -124,6 +124,43 @@
         "description": "$string:ServiceAbility2_desc",
         "type": "service",
         "visible": true
+      },
+      {
+        "name": ".ServiceAbility3",
+        "srcLanguage": "ets",
+        "srcPath": "ServiceAbility3",
+        "icon": "$media:icon",
+        "description": "$string:ServiceAbility3_desc",
+        "type": "service",
+        "visible": true
+      },
+      {
+        "name": ".FormAbility",
+        "srcPath": "FormAbility",
+        "description": "$string:form_FormAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:form_FormAbility_label",
+        "type": "service",
+        "formsEnabled": true,
+        "srcLanguage": "ets",
+        "forms": [
+          {
+            "jsComponentName": "widget",
+            "isDefault": true,
+            "scheduledUpdateTime": "10:30",
+            "defaultDimension": "2*2",
+            "name": "widget",
+            "description": "This is a service widget.",
+            "colorMode": "auto",
+            "type": "JS",
+            "formVisibleNotify": true,
+            "supportDimensions": [
+              "2*2"
+            ],
+            "updateEnabled": true,
+            "updateDuration": 1
+          }
+        ]
       }
     ],
     "distro": {
@@ -219,11 +256,17 @@
           "designWidth": 720,
           "autoDesignWidth": false
         }
-      }
-    ],
-    "reqPermissions": [
+      },
       {
-        "name": "ohos.permission.CAMERA"
+        "name": "widget",
+        "pages": [
+          "pages/index/index"
+        ],
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": true
+        },
+        "type": "form"
       }
     ]
   }
