@@ -4219,7 +4219,7 @@ describe('audioManger_audio2', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_TnterruptActionType_001
+                * @tc.number    : SUB_AUDIO_MANAGER_InterruptActionType_001
                 * @tc.name      : InterruptActionType - TYPE_ACTIVATED 
                 * @tc.desc      : InterruptActionType - TYPE_ACTIVATED 
                 * @tc.size      : MEDIUM
@@ -4233,7 +4233,7 @@ describe('audioManger_audio2', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_TnterruptActionType_002
+                * @tc.number    : SUB_AUDIO_MANAGER_InterruptActionType_002
                 * @tc.name      : InterruptActionType - TYPE_INTERRUPT
                 * @tc.desc      : InterruptActionType - TYPE_INTERRUPT
                 * @tc.size      : MEDIUM
