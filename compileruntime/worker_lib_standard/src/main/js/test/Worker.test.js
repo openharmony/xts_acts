@@ -15,9 +15,9 @@
 
 // @ts-nocheck
 import app from '@system.app'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import worker from "@ohos.worker"
-
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+export default function workerTest() {
 describe('workerTest', function () {
 
     afterAll(function () {
@@ -1349,3 +1349,4 @@ describe('workerTest', function () {
         done()
     })
 })
+}
