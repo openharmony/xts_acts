@@ -71,7 +71,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : getPss
      * @tc.desc      : Get application process proportional set size memory information
      */
-    it('DFX_DFR_Hiprofiler_Interface_0004', 0, function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_0004', 0, function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0004 Test start*************');
         try {
             const times = 3;
@@ -94,7 +94,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : getSharedDirty
      * @tc.desc      : Obtains the size of the shared dirty memory of a process.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0005', 0, function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_0005', 0, function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0005 Test start*************');
         try {
             let dirty = hidebug.getSharedDirty();
@@ -111,7 +111,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : startProfiling with normal parameter
      * @tc.desc      : Start CPU Profiling.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0006', 0, function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_0006', 0, function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0006 Test start*************');
         try {
             let timestamp = Date.now();
@@ -134,7 +134,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : startProfiling repeatedly
      * @tc.desc      : Start CPU Profiling.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0007', 0, function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_0007', 0, function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0007 Test start*************');
         try {
             let path1 = '/data/app/el2/100/base/com.hidebug.test/files/cpuprofiler-111.json'
@@ -161,7 +161,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : startProfiling with empty parameter
      * @tc.desc      : Start CPU Profiling.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0008', 0, function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_0008', 0, function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0008 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.json'
         try {
@@ -188,7 +188,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : startProfiling with overlong parameter
      * @tc.desc      : Start CPU Profiling.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0009', 0, function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_0009', 0, function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0009 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.json'
         try {
@@ -219,7 +219,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : dumpHeapData with normal parameter
      * @tc.desc      : Dump JS Virtual Machine Heap Snapshot.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0010', 0, function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_0010', 0, function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0010 Test start*************');
         try {
             let timestamp = Date.now();
@@ -240,7 +240,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : dumpHeapData with empty parameter
      * @tc.desc      : Dump JS Virtual Machine Heap Snapshot.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0011', 0, function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_0011', 0, function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0011 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.heapsnapshot'
         try {
@@ -265,7 +265,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : dumpHeapData with overlog parameter
      * @tc.desc      : Dump JS Virtual Machine Heap Snapshot.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0012', 0, function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_0012', 0, function () {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0012 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.heapsnapshot'
         try {
