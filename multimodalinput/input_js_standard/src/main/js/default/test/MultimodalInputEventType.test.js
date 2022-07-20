@@ -34,17 +34,17 @@ import {
 describe('MultimodalInput_test', function () {
 
     it('MultimodalInput_test::KeyEventTypeTest_0010', 0, function () {
-        console.log(`MultimodalInput_test::KeyEventTypeTest_0010 enter`);
+        console.info(`MultimodalInput_test::KeyEventTypeTest_0010 enter`);
 
         expect(keyEvent.Action.CANCEL == 0).assertTrue();
         expect(keyEvent.Action.DOWN == 1).assertTrue();
         expect(keyEvent.Action.UP == 2).assertTrue();
 
-        console.log(`MultimodalInput_test::KeyEventTypeTest_0010 exit`);
+        console.info(`MultimodalInput_test::KeyEventTypeTest_0010 exit`);
     })
 
     it('MultimodalInput_test::KeyEventTypeTest_0020', 0, function () {
-        console.log(`MultimodalInput_test::KeyEventTypeTest_0020 enter`);
+        console.info(`MultimodalInput_test::KeyEventTypeTest_0020 enter`);
 
         let testKey: Key = { code: inputkeyCode.KeyCode.KEYCODE_FN, pressedTime: 10, deviceId: 1 };
 
@@ -52,11 +52,11 @@ describe('MultimodalInput_test', function () {
         expect(testKey.pressedTime == 10).assertTrue();
         expect(testKey.deviceId == 1).assertTrue();
 
-        console.log(`MultimodalInput_test::KeyEventTypeTest_0020 exit`);
+        console.info(`MultimodalInput_test::KeyEventTypeTest_0020 exit`);
     })
 
     it('MultimodalInput_test::KeyEventTypeTest_0030', 0, function () {
-        console.log(`MultimodalInput_test::KeyEventTypeTest_0030 enter`);
+        console.info(`MultimodalInput_test::KeyEventTypeTest_0030 enter`);
 
         let testKey: Key = { code: inputkeyCode.KeyCode.KEYCODE_FN, pressedTime: 10, deviceId: 1 };
         let testKeyEvent: KeyEvent = {
@@ -78,11 +78,11 @@ describe('MultimodalInput_test', function () {
         expect(testKeyEvent.numLock).assertTrue();
         expect(testKeyEvent.scrollLock).assertTrue();
 
-        console.log(`MultimodalInput_test::KeyEventTypeTest_0030 exit`);
+        console.info(`MultimodalInput_test::KeyEventTypeTest_0030 exit`);
     })
 
     it('MultimodalInput_test::MouseEventTypeTest_0010', 0, function () {
-        console.log(`MultimodalInput_test::MouseEventTypeTest_0010 enter`);
+        console.info(`MultimodalInput_test::MouseEventTypeTest_0010 enter`);
 
         expect(mouseEvent.Action.CANCEL == 0).assertTrue();
         expect(mouseEvent.Action.MOVE == 1).assertTrue();
@@ -92,11 +92,11 @@ describe('MultimodalInput_test', function () {
         expect(mouseEvent.Action.AXIS_UPDATE == 5).assertTrue();
         expect(mouseEvent.Action.AXIS_END == 6).assertTrue();
 
-        console.log(`MultimodalInput_test::MouseEventTypeTest_0010 exit`);
+        console.info(`MultimodalInput_test::MouseEventTypeTest_0010 exit`);
     })
 
     it('MultimodalInput_test::MouseEventTypeTest_0020', 0, function () {
-        console.log(`MultimodalInput_test::MouseEventTypeTest_0020 enter`);
+        console.info(`MultimodalInput_test::MouseEventTypeTest_0020 enter`);
 
         expect(mouseEvent.Button.LEFT == 0).assertTrue();
         expect(mouseEvent.Button.MIDDLE == 1).assertTrue();
@@ -107,31 +107,31 @@ describe('MultimodalInput_test', function () {
         expect(mouseEvent.Button.BACK == 6).assertTrue();
         expect(mouseEvent.Button.TASK == 6).assertTrue();
 
-        console.log(`MultimodalInput_test::MouseEventTypeTest_0020 exit`);
+        console.info(`MultimodalInput_test::MouseEventTypeTest_0020 exit`);
     })
 
     it('MultimodalInput_test::MouseEventTypeTest_0030', 0, function () {
-        console.log(`MultimodalInput_test::MouseEventTypeTest_0030 enter`);
+        console.info(`MultimodalInput_test::MouseEventTypeTest_0030 enter`);
 
         expect(mouseEvent.Axis.SCROLL_VERTICAL == 0).assertTrue();
         expect(mouseEvent.Axis.SCROLL_HORIZONTAL == 1).assertTrue();
         expect(mouseEvent.Axis.PINCH == 2).assertTrue();
 
-        console.log(`MultimodalInput_test::MouseEventTypeTest_0030 exit`);
+        console.info(`MultimodalInput_test::MouseEventTypeTest_0030 exit`);
     })
 
     it('MultimodalInput_test::MouseEventTypeTest_0040', 0, function () {
-        console.log(`MultimodalInput_test::MouseEventTypeTest_0040 enter`);
+        console.info(`MultimodalInput_test::MouseEventTypeTest_0040 enter`);
 
         let testAxisValue: AxisValue = { axis: mouseEvent.Axis.SCROLL_VERTICAL, value: 1 };
         expect(testAxisValue.axis == mouseEvent.Axis.SCROLL_VERTICAL).assertTrue();
         expect(testAxisValue.value == 1).assertTrue();
 
-        console.log(`MultimodalInput_test::MouseEventTypeTest_0040 exit`);
+        console.info(`MultimodalInput_test::MouseEventTypeTest_0040 exit`);
     })
 
     it('MultimodalInput_test::MouseEventTypeTest_0050', 0, function () {
-        console.log(`MultimodalInput_test::MouseEventTypeTest_0050 enter`);
+        console.info(`MultimodalInput_test::MouseEventTypeTest_0050 enter`);
 
         let testAxisValue: AxisValue = { axis: mouseEvent.Axis.SCROLL_VERTICAL, value: 1 };
         let testMouseEvent: MouseEvent = {
@@ -161,22 +161,22 @@ describe('MultimodalInput_test', function () {
         expect(testMouseEvent.numLock).assertTrue();
         expect(testMouseEvent.scrollLock).assertTrue();
 
-        console.log(`MultimodalInput_test::MouseEventTypeTest_0050 exit`);
+        console.info(`MultimodalInput_test::MouseEventTypeTest_0050 exit`);
     })
 
     it('MultimodalInput_test::TouchEventTypeTest_0010', 0, function () {
-        console.log(`MultimodalInput_test::TouchEventTypeTest_0010 enter`);
+        console.info(`MultimodalInput_test::TouchEventTypeTest_0010 enter`);
 
         expect(touchEvent.Action.CANCEL == 0).assertTrue();
         expect(touchEvent.Action.DOWN == 1).assertTrue();
         expect(touchEvent.Action.MOVE == 2).assertTrue();
         expect(touchEvent.Action.UP == 3).assertTrue();
 
-        console.log(`MultimodalInput_test::TouchEventTypeTest_0010 exit`);
+        console.info(`MultimodalInput_test::TouchEventTypeTest_0010 exit`);
     })
 
     it('MultimodalInput_test::TouchEventTypeTest_0020', 0, function () {
-        console.log(`MultimodalInput_test::TouchEventTypeTest_0020 enter`);
+        console.info(`MultimodalInput_test::TouchEventTypeTest_0020 enter`);
 
         expect(touchEvent.ToolType.FINGER == 0).assertTrue();
         expect(touchEvent.ToolType.PEN == 1).assertTrue();
@@ -187,21 +187,21 @@ describe('MultimodalInput_test', function () {
         expect(touchEvent.ToolType.MOUSE == 6).assertTrue();
         expect(touchEvent.ToolType.LENS == 7).assertTrue();
 
-        console.log(`MultimodalInput_test::TouchEventTypeTest_0020 exit`);
+        console.info(`MultimodalInput_test::TouchEventTypeTest_0020 exit`);
     })
 
     it('MultimodalInput_test::TouchEventTypeTest_0030', 0, function () {
-        console.log(`MultimodalInput_test::TouchEventTypeTest_0030 enter`);
+        console.info(`MultimodalInput_test::TouchEventTypeTest_0030 enter`);
 
         expect(touchEvent.SourceType.TOUCH_SCREEN == 0).assertTrue();
         expect(touchEvent.SourceType.PEN == 1).assertTrue();
         expect(touchEvent.SourceType.TOUCH_PAD == 2).assertTrue();
 
-        console.log(`MultimodalInput_test::TouchEventTypeTest_0030 exit`);
+        console.info(`MultimodalInput_test::TouchEventTypeTest_0030 exit`);
     })
 
     it('MultimodalInput_test::TouchEventTypeTest_0040', 0, function () {
-        console.log(`MultimodalInput_test::TouchEventTypeTest_0040 enter`);
+        console.info(`MultimodalInput_test::TouchEventTypeTest_0040 enter`);
 
         let testTouch: Touch = {
             id: 1, pressedTime: 1, screenX: 1, screenY: 1, windowX: 1, windowY: 1, pressure: 1,
@@ -227,11 +227,11 @@ describe('MultimodalInput_test', function () {
         expect(touchEvent.rawY == 1).assertTrue();
         expect(touchEvent.toolType == touchEvent.ToolType.FINGER).assertTrue();
 
-        console.log(`MultimodalInput_test::TouchEventTypeTest_0040 exit`);
+        console.info(`MultimodalInput_test::TouchEventTypeTest_0040 exit`);
     })
 
     it('MultimodalInput_test::TouchEventTypeTest_0050', 0, function () {
-        console.log(`MultimodalInput_test::TouchEventTypeTest_0050 enter`);
+        console.info(`MultimodalInput_test::TouchEventTypeTest_0050 enter`);
 
         let testTouch: Touch = {
             id: 1, pressedTime: 1, screenX: 1, screenY: 1, windowX: 1, windowY: 1, pressure: 1,
@@ -247,6 +247,6 @@ describe('MultimodalInput_test', function () {
         expect(testTouchEvent.touches[0].id == 1).assertTrue();
         expect(testTouchEvent.sourceType == touchEvent.SourceType.TOUCH_SCREEN).assertTrue();
 
-        console.log(`MultimodalInput_test::TouchEventTypeTest_0050 exit`);
+        console.info(`MultimodalInput_test::TouchEventTypeTest_0050 exit`);
     })
 })
