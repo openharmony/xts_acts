@@ -98,6 +98,99 @@ describe('window_test', function () {
     afterAll(function () {
     })
 
+
+    /**
+     * @tc.number		SUB_WMS_ENUM_WINDOWCOLORSPACE_JSAPI_001
+     * @tc.name			Test enumWindowCOLORSPACE_Test_001.
+    * @tc.desc			To test the enum value of WindowCOLORSPACE.
+    */
+    it('enumWindowCOLORSPACE_Test_001', 0, async function (done) {
+        console.log('test the enum value of Window colorspace begin');
+        try {
+            expect(0).assertEqual(window.ColorSpace.DEFAULT);
+            expect(1).assertEqual(window.ColorSpace.WIDE_GAMUT);
+            done();
+        } catch (err) {
+            console.log('test enum value of window colorspace error ' + JSON.stringify(err));
+            expect.assertFail();
+            done();
+        }
+    })
+    
+    /**
+     * @tc.number	SUB_WMS_ENUM_WINDOWPROTERTIES_JSAPI_001
+     * @tc.name	    Test enumWindowProperties_Test_001.
+     * @tc.desc		To test the enum value of WindowProperties.
+    */
+    it('enumWindowProperties_Test_001', 0, async function (done) {
+        console.info('test the enum value of Window Properties begin');
+        try {
+            var windowP = {
+                windowRect : {
+                    left:20,
+                    top:20,
+                    width:20,
+                    height:20
+                },
+                type:0,
+                isFullScreen:false,
+                isLayoutFullScreen:false,
+                focusable:false,
+                touchable:false,
+                brightness:0.5,
+                dimBehindValue:3,
+                isKeepScreenOn:false,
+                isPrivacyMode:false,
+                isRoundCorner:false,
+                isTransparent:false
+            }
+            expect(20).assertEqual(windowP.windowRect.left);
+            expect(20).assertEqual(windowP.windowRect.top);
+            expect(20).assertEqual(windowP.windowRect.width);
+            expect(20).assertEqual(windowP.windowRect.height);
+            expect(0).assertEqual(windowP.type);
+            expect(!windowP.isFullScreen).assertTrue();
+            expect(!windowP.isLayoutFullScreen).assertTrue();
+            expect(!windowP.focusable).assertTrue();
+            expect(!windowP.touchable).assertTrue();
+            expect(0.5).assertEqual(windowP.brightness);
+            expect(3).assertEqual(windowP.dimBehindValue);
+            expect(!windowP.isKeepScreenOn).assertTrue();
+            expect(!windowP.isPrivacyMode).assertTrue();
+            expect(!windowP.isRoundCorner).assertTrue();
+            expect(!windowP.isTransparent).assertTrue();
+            done();
+        } catch (err) {
+            console.error('test enum value of windowproperties error ' + JSON.stringify(err));
+            expect.assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number	SUB_WMS_ENUM_WINDOWDisplayState_JSAPI_001
+     * @tc.name	    Test enumWindowDisplayState_Test_001.
+     * @tc.desc		To test the enum value of WindowDisplayState.
+    */
+    it('enumWindowDisplayState_Test_001', 0, async function (done) {
+        console.info('test the enum value of Window DisplayState begin');
+        try {
+            expect(0).assertEqual(display.DisplayState.STATE_UNKNOWN);
+            expect(1).assertEqual(display.DisplayState.STATE_OFF);
+            expect(2).assertEqual(display.DisplayState.STATE_ON);
+            expect(3).assertEqual(display.DisplayState.STATE_DOZE);
+            expect(4).assertEqual(display.DisplayState.STATE_DOZE_SUSPEND);
+            expect(5).assertEqual(display.DisplayState.STATE_VR);
+            expect(6).assertEqual(display.DisplayState.STATE_ON_SUSPEND);
+            done();
+        } catch (err) {
+            console.error('test enum value of windowDisplayState error ' + JSON.stringify(err));
+            expect.assertFail();
+            done();
+        }
+    })
+
+
     /**
 	 * @tc.number     SUB_WMS_GETPROPERTIES_JSAPI_001
 	 * @tc.name       Test getProperties_Test_001
@@ -2749,6 +2842,7 @@ describe('window_test', function () {
             }
         })
     })
+
     /**
     * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_001
     * @tc.name       Test loadContentTest1
