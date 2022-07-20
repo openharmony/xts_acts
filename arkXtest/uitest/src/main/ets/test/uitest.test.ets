@@ -14,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import { UiDriver, BY, ResizeDirection, MatchPattern } from '@ohos.uitest'
+import { UiDriver, BY, ResizeDirection, MatchPattern, WindowMode } from '@ohos.uitest'
 import ability_featureAbility from '@ohos.ability.featureAbility';
 
 const delegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -39,7 +39,7 @@ async function stopApplication(bundleName: string) {
 
 export default function abilityTest() {
   describe('UiTestCase', function () {
-    it('UiComponent.InputText', 0, async function () {
+    it('testInputNumber', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let input = await driver.findComponent(BY.type('TextInput'))
@@ -50,37 +50,54 @@ export default function abilityTest() {
       expect(text == '123').assertTrue()
     })
 
-    it('UiComponent.ClearText', 0, async function () {
+    it('testClearText', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let input = await driver.findComponent(BY.type('TextInput'))
-      await input.clearText()
+      let input1 = await driver.findComponent(BY.type('TextInput'))
+      await input1.inputText('abc')
+      let input2 = await driver.findComponent(BY.type('TextInput'))
+      await input2.clearText()
       await driver.delayMs(waitUiReadyMs)
       let input_new = await driver.findComponent(BY.type('TextInput'))
       let text = await input_new.getText()
       expect(text).assertEqual('')
     })
 
-    it('checkable', 0, async function () {
+    it('testCheckable', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.checkable(true).type('Checkbox'))
       let checkable = await button.isCheckable()
-      expect(typeof (checkable) == 'boolean').assertTrue()
+      expect(checkable == true).assertTrue()
     })
 
-    it('checked', 0, async function () {
+    it('testChecked', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.checked(false).type('Checkbox'))
       let checked = await button.isChecked()
-      expect(typeof (checked) == 'boolean').assertTrue()
+      expect(checked == false).assertTrue()
     })
 
-    it('UiDriver.click', 0, async function () {
+    it('testMatchPattren', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      await driver.click(350, 90)
+      let Button1 = await driver.findComponent(BY.text('next page',MatchPattern.EQUALS))
+      expect(await Button1.getText() == 'next page').assertTrue()
+      let Button2 = await driver.findComponent(BY.text('next',MatchPattern.STARTS_WITH))
+      expect(await Button2.getText() == 'next page').assertTrue()
+      let Button3 = await driver.findComponent(BY.text('page',MatchPattern.ENDS_WITH))
+      expect(await Button3.getText() == 'next page').assertTrue()
+      let Button4 = await driver.findComponent(BY.text('ext',MatchPattern.CONTAINS))
+      expect(await Button4.getText() == 'next page').assertTrue()
+    })
+
+    it('testClick', 0, async function () {
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let Button = await driver.findComponent(BY.text('next page'))
+      let center = await Button.getBoundsCenter()
+      await driver.click(center.X, center.Y)
       await driver.delayMs(waitUiReadyMs)
       let newButton = await driver.findComponent(BY.text('back to index'))
       let text = await newButton.getText()
@@ -88,10 +105,25 @@ export default function abilityTest() {
       await newButton.click()
     })
 
-    it('UiDriver.LongClick', 0, async function () {
+    it('testDoubleClick', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      await driver.longClick(350, 90)
+      let Button = await driver.findComponent(BY.text('Click twice'))
+      let center = await Button.getBoundsCenter()
+      await driver.doubleClick(center.X, center.Y)
+      await driver.delayMs(waitUiReadyMs)
+      let button = await driver.findComponent(BY.text('doubleClick'))
+      let text = await button.getText()
+      expect(text == 'doubleClick').assertTrue()
+      await button.click()
+    })
+
+    it('testLongClick', 0, async function () {
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let Button = await driver.findComponent(BY.text('next page'))
+      let center = await Button.getBoundsCenter()
+      await driver.longClick(center.X, center.Y)
       await driver.delayMs(waitUiReadyMs)
       let newButton = await driver.findComponent(BY.text('longClick'))
       let text = await newButton.getText()
@@ -99,17 +131,10 @@ export default function abilityTest() {
       await newButton.click()
     })
 
-    it('key', 0, async function () {
+    it('testUiComponentClick', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let button = await driver.findComponent(BY.key('my-key'))
-      expect(await button.getKey() == 'my-key').assertTrue()
-    })
-
-    it('UiComponent.Click', 0, async function () {
-      let driver = UiDriver.create()
-      await driver.delayMs(waitUiReadyMs)
-      let button = await driver.findComponent(BY.text('next page', MatchPattern.EQUALS))
+      let button = await driver.findComponent(BY.text('next page'))
       await button.click()
       await driver.delayMs(waitUiReadyMs)
       let newButton = await driver.findComponent(BY.text('back to index'))
@@ -118,7 +143,19 @@ export default function abilityTest() {
       await newButton.click()
     })
 
-    it('UiComponent.LongClick', 0, async function () {
+    it('testUiComponentDoubleClick', 0, async function () {
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let button = await driver.findComponent(BY.text('Click twice'))
+      await button.doubleClick()
+      await driver.delayMs(waitUiReadyMs)
+      let newButton = await driver.findComponent(BY.text('doubleClick'))
+      let text = await newButton.getText()
+      expect(text == 'doubleClick').assertTrue()
+      await newButton.click()
+    })
+
+    it('testUiComponentLongClick', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page'))
@@ -130,7 +167,23 @@ export default function abilityTest() {
       await newButton.click()
     })
 
-    it('UiComponent.getType', 0, async function () {
+    it('testKey', 0, async function () {
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let button = await driver.findComponent(BY.key('my-key'))
+      expect(await button.getKey() == 'my-key').assertTrue()
+    })
+
+    it('testId', 0, async function () {
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let button = await driver.findComponent(BY.text('next page'))
+      let id = await button.getId()
+      let button2 = await driver.findComponent(BY.id(id))
+      expect(await button.getText() == 'next page').assertTrue()
+    })
+
+    it('testGetType', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let text = await driver.findComponent(BY.type('Text'))
@@ -138,63 +191,55 @@ export default function abilityTest() {
       expect(type == 'Text').assertTrue()
     })
 
-    it('UiComponent.getText', 0, async function () {
-      let driver = UiDriver.create()
-      await driver.delayMs(waitUiReadyMs)
-      let button = await driver.findComponent(BY.text('next page'))
-      let text = await button.getText()
-      expect(text == 'next page').assertTrue()
-    })
-
-    it('UiComponent.isClickable', 0, async function () {
+    it('testClickable', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page').clickable(false))
       let clickable = await button.isClickable()
-      expect(typeof (clickable) == 'boolean').assertTrue()
+      expect(clickable == false).assertTrue()
     })
 
-    it('UiComponent.isLongClickable', 0, async function () {
+    it('testLongClickable', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page').longClickable(false))
       let longClickable = await button.isLongClickable()
-      expect(typeof (longClickable) == 'boolean').assertTrue()
+      expect(longClickable== false).assertTrue()
     })
 
-    it('UiComponent.isScrollable', 0, async function () {
+    it('testScrollable', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let scrollBar = await driver.findComponent(BY.type('Scroll').scrollable(false))
       let scrollable = await scrollBar.isScrollable()
-      expect(typeof (scrollable) == 'boolean').assertTrue()
+      expect(scrollable == false).assertTrue()
     })
 
-    it('UiComponent.isEnabled', 0, async function () {
+    it('testEnabled', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page').enabled(true))
       let enable = await button.isEnabled()
-      expect(enable).assertEqual(true)
+      expect(enable == true).assertTrue()
     })
 
-    it('UiComponent.isFocused', 0, async function () {
+    it('testFocused', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page').focused(false))
       let focused = await button.isFocused()
-      expect(typeof (focused) == 'boolean').assertTrue()
+      expect(focused == false).assertTrue()
     })
 
-    it('UiComponent.isSelected', 0, async function () {
+    it('testSelected', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page').selected(false))
       let selected = await button.isSelected()
-      expect(typeof (selected) == 'boolean').assertTrue()
+      expect(selected == false).assertTrue()
     })
 
-    it('UiComponent.scrollToBottom', 0, async function () {
+    it('testScrollToBottom', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let scrollBar = await driver.findComponent(BY.type('Scroll'))
@@ -202,28 +247,26 @@ export default function abilityTest() {
       await scrollBar.scrollToBottom()
       let button = await driver.findComponent(BY.text('bottom'))
       expect(await button.getText() == 'bottom').assertTrue()
-      await scrollBar.scrollToTop()
     })
 
-    it('UiComponent.scrollToTop', 0, async function () {
+    it('testScrollToTop', 0, async function () {
       let driver = UiDriver.create()
-      await driver.delayMs(waitUiReadyMs)
-      await driver.swipe(100, 200, 100, 100)
       await driver.delayMs(waitUiReadyMs)
       let scrollBar = await driver.findComponent(BY.type('Scroll'))
       expect(scrollBar !== null).assertTrue()
+      await scrollBar.scrollToBottom()
       await scrollBar.scrollToTop()
       let button = await driver.findComponent(BY.text('next page'))
       expect(await button.getText() == 'next page').assertTrue()
     })
 
-    it('UiDriver.assertComponentExist', 0, async function () {
+    it('testAssertComponentExist', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       await driver.assertComponentExist(BY.text('next page'))
     })
 
-    it('UiDriver.pressBack', 0, async function () {
+    it('testPressBack', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page'))
@@ -235,81 +278,98 @@ export default function abilityTest() {
       expect(await button_ori.getText() == 'next page').assertTrue()
     })
 
-    it('UiDriver.findComponents', 0, async function () {
+    it('testFindComponents', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let buttons = await driver.findComponents(BY.type('Button'))
       expect(await buttons[0].getText() != null).assertTrue()
     })
 
-    it('UiDriver.triggerKey', 0, async function () {
+    it('testTriggerKey', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page'))
       await button.click()
       await driver.delayMs(waitUiReadyMs)
-      await driver.triggerKey(2)
+      let keyBack = 2
+      await driver.triggerKey(keyBack)
       await driver.delayMs(waitUiReadyMs)
       let button_ori = await driver.findComponent(BY.text('next page'))
       expect(await button_ori.getText() == 'next page').assertTrue()
     })
 
-    it('getUiComponentBounds', 0, async function () {
+    it('testGetUiComponentBounds', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let text = await driver.findComponent(BY.text('next page'))
       expect(text !== null).assertTrue()
       let bounds = await text.getBounds();
-      console.info(`UiTestCase, bounds=${bounds}, type=${typeof (bounds)}`)
-      console.info(bounds.rightX.toString())
-      console.info(bounds.leftX.toString())
-      console.info(bounds.topY.toString())
-      console.info(bounds.bottomY.toString())
       expect(bounds !== null).assertTrue()
       expect(bounds.rightX).assertLarger(bounds.leftX)
       expect(bounds.bottomY).assertLarger(bounds.topY)
     })
 
-    it('getUiComponentBoundsCenter', 0, async function () {
+    it('testGetUiComponentBoundsCenter', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page'))
       let point = await button.getBoundsCenter()
+      let bounds = await button.getBounds()
       expect(point!== null).assertTrue()
+      expect(point.Y == (bounds.bottomY + bounds.topY)/2).assertTrue()
+      expect(point.X == (bounds.rightX + bounds.leftX)/2).assertTrue()
     })
 
-    it('UiDriver.waitForComponent', 0, async function () {
+    it('testWaitForComponent', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.waitForComponent(BY.text('next page'), waitUiReadyMs)
       expect(button !== null).assertTrue()
     })
 
-    it('UiDriver.screenCap', 0, async function () {
+    it('testScreenCap', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let path = '/data/local/tmp/1.png'
-      let success = await driver.screenCap(path)
-      expect(typeof (success) == 'boolean').assertTrue()
+      let savePath = '/data/local/tmp/1.png'
+      let success = await driver.screenCap(savePath)
+      expect(success == true).assertTrue()
     })
 
-    it('By.isBefore', 0, async function () {
-      await startAbility('com.ohos.settings', 'com.ohos.settings.MainAbility')
+    it('testIsBefore', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let button = await driver.findComponent(BY.isBefore(BY.text('显示与亮度')).text('移动数据'))
-      expect(await button.getText() == '移动数据').assertTrue()
+      let button = await driver.findComponent(BY.isBefore(BY.text('Click twice')).type('Button'))
+      expect(await button.getType() == 'Button').assertTrue()
     })
 
-    it('By.isAfter', 0, async function () {
-      await startAbility('com.ohos.settings', 'com.ohos.settings.MainAbility')
+    it('testIsAfter', 0, async function () {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let button = await driver.findComponent(BY.isAfter(BY.text('显示与亮度')).text('声音'))
-      expect(await button.getText() == '声音').assertTrue()
+      let button = await driver.findComponent(BY.isAfter(BY.text('next page')).type('Text'))
+      expect(await button.getText() == 'Click twice').assertTrue()
     })
 
-    it('window.resize', 0, async function () {
+    it('testScrollSearch', 0, async function () {
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let scrollBar = await driver.findComponent(BY.type('Scroll'))
+      let text = await scrollBar.scrollSearch(BY.text('4'))
+      await driver.delayMs(waitUiReadyMs)
+      expect(text != null).assertTrue()
+      await scrollBar.scrollToTop()
+    })
+
+    it('testGetWindowMode', 0, async function () {
+      await startAbility('com.example.windows', 'MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let window = await driver.findWindow({bundleName:'com.example.windows'})
+      let mode = await window.getWindowMode()
+      expect(mode == WindowMode.FULLSCREEN).assertTrue()
+      await stopApplication('com.example.windows')
+    })
+
+    it('testWindowMoveTo', 0, async function () {
       await startAbility('com.example.windows', 'MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
@@ -317,14 +377,44 @@ export default function abilityTest() {
       await window.resume()
       await driver.delayMs(waitUiReadyMs)
       let window1 = await driver.findWindow({bundleName:'com.example.windows'})
+      let bounds1 = await window1.getBounds()
       await window1.moveTo(100,100)
       await driver.delayMs(waitUiReadyMs)
       let window2 = await driver.findWindow({bundleName:'com.example.windows'})
-      await window2.resize(600, 600,7)
+      let bounds2 = await window2.getBounds()
+      expect(bounds1 != bounds2).assertTrue()
       await stopApplication('com.example.windows')
-      })
+    })
 
-    it('window.maximize', 0, async function () {
+    it('testWindowResize', 0, async function () {
+      await startAbility('com.example.windows', 'MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let window = await driver.findWindow({bundleName:'com.example.windows'})
+      await window.resume()
+      await driver.delayMs(waitUiReadyMs)
+      let window1 = await driver.findWindow({bundleName:'com.example.windows'})
+      let bounds1 = await window1.getBounds()
+      await window1.resize(400,400,ResizeDirection.RIGHT_DOWN)
+      await driver.delayMs(waitUiReadyMs)
+      let window2 = await driver.findWindow({bundleName:'com.example.windows'})
+      let bounds2 = await window2.getBounds()
+      expect(bounds1 != bounds2).assertTrue()
+      await stopApplication('com.example.windows')
+    })
+
+    it('testWindowFocus', 0, async function () {
+      await startAbility('com.example.windows', 'MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let window = await driver.findWindow({bundleName:'com.example.windows'})
+      await window.focus()
+      let IsActive = await window.focus()
+      expect(IsActive == true).assertTrue()
+      await stopApplication('com.example.windows')
+    })
+
+    it('testWindowMaximize', 0, async function () {
       await startAbility('com.example.windows', 'MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
@@ -332,72 +422,36 @@ export default function abilityTest() {
       await window.resume()
       let window2 = await driver.findWindow({bundleName:'com.example.windows'})
       await window2.maximize()
+      await driver.delayMs(waitUiReadyMs)
+      let window3 = await driver.findWindow({bundleName:'com.example.windows'})
+      let mode = await window3.getWindowMode()
+      expect(mode == WindowMode.FULLSCREEN).assertTrue()
       await stopApplication('com.example.windows')
     })
 
-    it('window.minimize', 0, async function () {
+    it('testWindowMinimize', 0, async function () {
       await startAbility('com.example.windows', 'MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let window = await driver.findWindow({bundleName:'com.example.windows'})
       await window.minimize()
+      await driver.delayMs(waitUiReadyMs)
+      let button = await driver.findComponent(BY.text('Clock'))
+      expect(button != null).assertTrue()
       await stopApplication('com.example.windows')
     })
 
-    it('window.close', 0, async function () {
+    it('testWindowClose', 0, async function () {
       await startAbility('com.example.windows', 'MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let window = await driver.findWindow({bundleName:'com.example.windows'})
       await window.close()
-    })
-
-    it('window.split', 0, async function () {
-      await startAbility('com.example.windows', 'MainAbility')
-      let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let window = await driver.findWindow({bundleName:'com.example.windows'})
-      await window.split()
-      await stopApplication('com.example.windows')
+      let button = await driver.findComponent(BY.text('Clock'))
+      expect(button != null).assertTrue()
     })
 
-    })
+  })
 
-
-
-    afterAll(function () {
-      console.info(`uitestApiStatistic::Start runnig afterAll`)
-      try {
-        let mod = globalThis.requireInternal('uitest')
-        // collect all functions
-        let objects = {
-          'By': mod.By, 'UiDriver': mod.UiDriver, 'UiComponent': mod.UiComponent
-        }
-        let allApis = []
-        for (let name in objects) {
-          let object = objects[name]
-          Object.getOwnPropertyNames(object).forEach(pn => {
-            if (pn != 'constructor' && typeof (object[pn]) == 'function') {
-              allApis.push(name + '.' + pn)
-            }
-          })
-
-          Object.getOwnPropertyNames(object.prototype).forEach(pn => {
-            if (pn != 'constructor' && typeof (object.prototype[pn]) == 'function') {
-              allApis.push(name + '.' + pn)
-            }
-          })
-        }
-
-        let calledApis: Array<string> = mod.getCalledJsApis()
-        calledApis.forEach(name => console.info(`uitestApiStatistic::CoveredApi: ${name}`))
-        let missedApis = allApis.filter(value =>!calledApis.includes(value))
-        console.info(`uitestApiStatistic::Total ${allApis.length}, coverd ${calledApis.length}, missed ${missedApis.length}`)
-        missedApis.forEach(name => console.warn(`uitestApiStatistic::NotCoveredApi: ${name}`))
-      } catch (e) {
-        console.error(`uitestApiStatistic::Runnig afterAll failed: ${e}`)
-      } finally {
-        console.info(`uitestApiStatistic::End runnig afterAll`)
-      }
-    })
-  }
+}

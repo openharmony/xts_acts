@@ -25,7 +25,7 @@ struct Third{
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
       Button() {
-        Text('page_3')
+        Text('doubleClick')
           .fontSize(20)
           .fontWeight(FontWeight.Bold)
       }.type(ButtonType.Capsule)

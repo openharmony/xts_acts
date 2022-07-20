@@ -41,7 +41,12 @@ struct ScrollExample {
                 router.push({ uri: 'pages/fourth' })
             })
           )
-          Text('Click twice')
+          Button() {
+            Text('Click twice')
+              .fontSize(25)
+              .fontWeight(FontWeight.Bold)
+          }
+          .type(ButtonType.Capsule)
           .margin({top:20})
             .gesture(
               TapGesture({ count: 2 })

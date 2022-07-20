@@ -1,7 +1,7 @@
 {
   "app": {
     "vendor": "open",
-    "bundleName": "com.uitest.test",
+    "bundleName": "com.uitest.acts",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.uitest.test",
+    "package": "com.uitest.acts",
     "name": ".MyApplication",
     "mainAbility": ".MainAbility",
     "srcPath": "MainAbility",
