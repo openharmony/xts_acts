@@ -81,6 +81,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
         console.log(`${callbackName} exception caught: ${JSON.stringify(error)})`);
         console.log(`${callbackName} should not reach here`);
         expect().assertFail();
+        done();
       }
     });
 
@@ -97,6 +98,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
         console.log(`${promiseName} getFormsInfo data: ${JSON.stringify(data)}`);
         console.log(`${promiseName} should not reach here`);
         expect().assertFail();
+        done();
       } catch (error) {
         console.log(`${promiseName} exception caught: ${JSON.stringify(error)})`);
         expect(error.code).assertEqual(ERR_ADD_INVALID_PARAM_CODE);
@@ -177,7 +179,6 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
           tempDataB = dataB[0]
           expect(error.code).assertEqual(ERR_OK_CODE);
           expect(error.message).assertEqual(ERR_OK);
-          done();
           console.log(`==========${callbackName2} ${describeName} end==========`);
         });
         await sleep(2000)
@@ -232,9 +233,9 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
          expect(FormInfo.FormType.JS).assertEqual(formInfo.type)
          expect('card_b').assertEqual(formInfo.jsComponentName)
          expect(FormInfo.ColorMode.MODE_AUTO).assertEqual(formInfo.colorMode)
-         expect(1).assertEqual(formInfo.isDefault)
-         expect(1).assertEqual(formInfo.updateEnabled)
-         expect(1).assertEqual(formInfo.formVisibleNotify)
+         expect(formInfo.isDefault).assertTrue()
+         expect(formInfo.updateEnabled).assertTrue()
+         expect(formInfo.formVisibleNotify).assertTrue()
          expect(undefined).assertEqual(formInfo.relatedBundleName)
          expect("abilityb").assertEqual(formInfo.formConfigAbility)
          expect(3).assertEqual(formInfo.updateDuration)
@@ -242,8 +243,8 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
          expect('10:30').assertEqual(formInfo.scheduledUpdateTime)
          expect(1).assertEqual(formInfo.supportDimensions[0])
          expect(2).assertEqual(formInfo.supportDimensions[1])
-         expect('originWidgetNameB').assertEqual(formInfo.metaData.customizeData[0].name)
-         expect('valueB').assertEqual(formInfo.metaData.customizeData[0].value)
+         expect('originWidgetNameB').assertEqual(formInfo.customizeData[0].name)
+         expect('valueB').assertEqual(formInfo.customizeData[0].value)
       }
 
     /**
@@ -283,6 +284,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
         console.log(`${promiseName3} getFormsInfo data: ${JSON.stringify(data)}`);
         console.log(`${promiseName3} should not reach here`);
         expect().assertFail();
+        done();
       } catch (error) {
         console.log(`${promiseName3} exception caught: ${JSON.stringify(error)})`);
         expect(error.code).assertEqual(ERR_ADD_INVALID_PARAM_CODE);
@@ -312,6 +314,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
         console.log(`${callbackName4} exception caught: ${JSON.stringify(error)})`);
         console.log(`${callbackName4} should not reach here`);
         expect().assertFail();
+        done();
       }
     });
 
@@ -328,6 +331,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
         console.log(`${promiseName4} getFormsInfo data: ${JSON.stringify(data)}`);
         console.log(`${promiseName4} should not reach here`);
         expect().assertFail();
+        done();
       } catch (error) {
         console.log(`${promiseName4} exception caught: ${JSON.stringify(error)})`);
         expect(error.code).assertEqual(ERR_GET_BUNDLE_FAILED_CODE);
@@ -357,6 +361,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
         console.log(`${callbackName5} exception caught: ${JSON.stringify(error)})`);
         console.log(`${callbackName5} should not reach here`);
         expect().assertFail();
+        done();
       }
     });
 
@@ -373,6 +378,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
         console.log(`${promiseName5} getFormsInfo data: ${JSON.stringify(data)}`);
         console.log(`${promiseName5} should not reach here`);
         expect().assertFail();
+        done();
       } catch (error) {
         console.log(`${promiseName5} exception caught: ${JSON.stringify(error)})`);
         expect(error.code).assertEqual(ERR_ADD_INVALID_PARAM_CODE);
@@ -403,6 +409,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
         console.log(`${callbackName6} exception caught: ${JSON.stringify(error)})`);
         console.log(`${callbackName6} should not reach here`);
         expect().assertFail();
+        done();
       }
     });
 
@@ -424,6 +431,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
         console.log(`${promiseName6} exception caught: ${JSON.stringify(error)})`);
         console.log(`${promiseName6} should not reach here`);
         expect().assertFail();
+        done();
       }
     });
 
@@ -460,6 +468,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
         console.log(`${callbackName7} exception caught: ${JSON.stringify(error)})`);
         console.log(`${callbackName7} should not reach here`);
         expect().assertFail();
+        done();
       }
     });
 
@@ -492,6 +501,7 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
         console.log(`${promiseName7} exception caught: ${JSON.stringify(error)})`);
         console.log(`${promiseName7} should not reach here`);
         expect().assertFail();
+        done();
       }
     });
     
@@ -504,17 +514,17 @@ export const getFormsInfoTest = (describeName, filterParameter) => {
          expect(FormInfo.FormType.JS).assertEqual(formInfo.type)
          expect('card_c').assertEqual(formInfo.jsComponentName)
          expect(FormInfo.ColorMode.MODE_LIGHT).assertEqual(formInfo.colorMode)
-         expect(1).assertEqual(formInfo.isDefault)
-         expect(1).assertEqual(formInfo.updateEnabled)
-         expect(1).assertEqual(formInfo.formVisibleNotify)
+         expect(formInfo.isDefault).assertTrue()
+         expect(formInfo.updateEnabled).assertTrue()
+         expect(formInfo.formVisibleNotify).assertTrue()
          expect(undefined).assertEqual(formInfo.relatedBundleName)
          expect("abilityc").assertEqual(formInfo.formConfigAbility)
          expect(4).assertEqual(formInfo.updateDuration)
          expect(3).assertEqual(formInfo.defaultDimension)
          expect(3).assertEqual(formInfo.supportDimensions[0])
          expect(4).assertEqual(formInfo.supportDimensions[1])
-         expect('originWidgetNameC').assertEqual(formInfo.metaData.customizeData[0].name)
-         expect('valueC').assertEqual(formInfo.metaData.customizeData[0].value)
+         expect('originWidgetNameC').assertEqual(formInfo.customizeData[0].name)
+         expect('valueC').assertEqual(formInfo.customizeData[0].value)
       }
   });
 };
