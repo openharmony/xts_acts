@@ -127,10 +127,13 @@ int RunElf(const char *fname, char * const argv[], char * const envp[], int time
 {
     int isTimeout = 0;
     int exitCode;
-    sigset_t set;
+    sigset_t set, orig_mask;
     sigemptyset(&set);
     sigaddset(&set, SIGCHLD);
-
+    
+    if (sigprocmask(SIG_BLOCK, &set, &orig_mask) < 0) {
+        LOG("sigprocmask");
+    }
     int pid = StartElf(fname, argv, envp);
     if (pid == -1) { // fork error
         return -1;

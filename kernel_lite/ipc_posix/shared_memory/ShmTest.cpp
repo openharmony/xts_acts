@@ -227,10 +227,10 @@ HWTEST_F(ShmTest, testShmatSHM_REMAP, Function | MediumTest | Level1)
     strncpy(shared, SHM_TEST_STR, SHM_TEST_STR_LEN);
     ASSERT_NE(shmdt(shared), -1) << "> parent: shmdt 2 : errno = " << errno;
     Msleep(50);
-    ASSERT_NE(shmctl(shmid, IPC_RMID, nullptr), -1) << "> parent: shmctl : errno = " << errno;
+    WaitProcExitedOK(pid);
 
     Msleep(50);
-    WaitProcExitedOK(pid);
+    ASSERT_NE(shmctl(shmid, IPC_RMID, nullptr), -1) << "> parent: shmctl : errno = " << errno;
 }
 
 /**
