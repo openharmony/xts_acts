@@ -1,10 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "1200000",
-        "package": "ohos.acts.distributedschedule.continuationmanager",
-        "shell-timeout": "60000"
+        "shell-timeout": "1200000",
+        "bundle-name": "ohos.acts.distributedschedule.continuationmanager",
+        "package-name": "ohos.acts.distributedschedule.continuationmanager"
     },
     "kits": [
         {
