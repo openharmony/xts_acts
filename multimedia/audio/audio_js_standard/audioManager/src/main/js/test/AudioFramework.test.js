@@ -4226,7 +4226,7 @@ describe('audioManger_audio2', function () {
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_TnterruptActionType_001', 0, async function (done) {
+    it('SUB_AUDIO_MANAGER_InterruptActionType_001', 0, async function (done) {
 		expect(audio.InterruptActionType.TYPE_ACTIVATED).assertEqual(0);
 		await sleep(50);
 		done();
@@ -4240,7 +4240,7 @@ describe('audioManger_audio2', function () {
                 * @tc.type      : Function
                 * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_MANAGER_TnterruptActionType_002', 0, async function (done) {  
+    it('SUB_AUDIO_MANAGER_InterruptActionType_002', 0, async function (done) {  
 		expect(audio.InterruptActionType.TYPE_INTERRUPT).assertEqual(1);
 		await sleep(50);
 		done();
