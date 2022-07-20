@@ -35,18 +35,6 @@
         ]
       },
       {
-        "name": "MainAbility2",
-        "srcEntrance": "./ets/MainAbility2/MainAbility2.ts",
-        "description": "$string:MainAbility2_desc",
-        "icon": "$media:icon",
-        "label": "$string:MainAbility2_label",
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:white",
-        "visible": true,
-        "launchType": "singleton",
-        "continuable": true
-      },
-      {
         "name": "MainAbility3",
         "srcEntrance": "./ets/MainAbility3/MainAbility3.ts",
         "description": "$string:MainAbility3_desc",
@@ -80,39 +68,6 @@
         "launchType": "singleton"
       },
       {
-        "name": "MainAbility6",
-        "srcEntrance": "./ets/MainAbility6/MainAbility6.ts",
-        "description": "$string:MainAbility6_desc",
-        "icon": "$media:icon",
-        "label": "$string:MainAbility6_label",
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:white",
-        "visible": true,
-        "launchType": "singleton"
-      },
-      {
-        "name": "MainAbility7",
-        "srcEntrance": "./ets/MainAbility7/MainAbility7.ts",
-        "description": "$string:MainAbility7_desc",
-        "icon": "$media:icon",
-        "label": "$string:MainAbility7_label",
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:white",
-        "visible": true,
-        "launchType": "singleton"
-      },
-      {
-        "name": "MainAbility8",
-        "srcEntrance": "./ets/MainAbility8/MainAbility8.ts",
-        "description": "$string:MainAbility8_desc",
-        "icon": "$media:icon",
-        "label": "$string:MainAbility8_label",
-        "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:white",
-        "visible": true,
-        "launchType": "singleton"
-      },
-      {
         "name": "MainAbility9",
         "srcEntrance": "./ets/MainAbility9/MainAbility9.ts",
         "description": "$string:MainAbility9_desc",
@@ -133,25 +88,6 @@
         "startWindowBackground": "$color:white",
         "visible": true,
         "launchType": "singleton"
-      }
-    ],
-    "extensionAbilities": [
-      {
-        "srcEntrance": "./ets/ExtensionAbility/ExtensionAbility.ts",
-        "name": "ExtensionAbility",
-        "icon": "$media:icon",
-        "description": "$string:MainAbility_desc",
-        "type": "service",
-        "visible": true
-      },
-      {
-        "srcEntrance": "./ets/ExtensionAbility2/ExtensionAbility2.ts",
-        "name": "ExtensionAbility2",
-        "icon": "$media:icon",
-        "description": "$string:MainAbility_desc",
-        "type": "fileShare",
-        "uri": "fileshare://com.samples.filesharetest.FileShare",
-        "visible": true
       }
     ],
     "requestPermissions": [
