@@ -1,10 +1,12 @@
 {
     "description": "Configuration for algorithm completion test",
     "driver": {
-        "type": "JSUnitTest",
-        "test-timeout": "26000000",
-        "package": "com.example.hksxtstest",
-        "shell-timeout": "60000"
+        "type": "OHJSUnitTest",
+        "test-timeout": "4200000",
+        "shell-timeout": "4200000",
+        "bundle-name": "com.example.hksxtstest",
+        "package-name": "com.example.hksxtstest",
+        "testcase-timeout": 7200000
     },
     "kits": [
         {
