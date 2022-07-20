@@ -2,4 +2,7 @@
     <text class="title">
         {{ $t('strings.hello') }} {{ title }}
     </text>
+    <text class="titleST">
+        STDataUriUtils
+    </text>
 </div>

@@ -1,10 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "package": "com.amsst.amsdatauriutils",
-        "shell-timeout": "600000"
+        "shell-timeout": "180000",
+        "bundle-name": "com.amsst.amsdatauriutils",
+        "package-name": "com.amsst.amsdatauriutils"
     },
     "kits": [
         {
