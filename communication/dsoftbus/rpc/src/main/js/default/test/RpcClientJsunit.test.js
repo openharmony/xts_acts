@@ -99,6 +99,9 @@ describe('ActsRpcClientJsTest', function(){
         constructor(descriptor) {
             super(descriptor);
         }
+        asObject(){
+            return this;
+        }
     }
 
     class MyDeathRecipient {
@@ -117,9 +120,15 @@ describe('ActsRpcClientJsTest', function(){
         }
     }
 
-    class TestAbility extends rpc.RemoteObject {
+    class TestProxy {
+        remote = rpc.RemoteObject;
+        constructor(remote) {
+            this.remote = remote;
+            console.info("test remote")
+        }
         asObject() {
-            return this;
+            console.info("server remote")
+            return this.remote;
         }
     }
 
@@ -2722,6 +2731,44 @@ describe('ActsRpcClientJsTest', function(){
     })
 
     /*
+     * @tc.number  SUB_Softbus_IPC_MessageParcel_9600
+     * @tc.name    Test messageparcel delivery file descriptor object
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it("SUB_Softbus_IPC_MessageParcel_9600", 0,async function(){
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_9600---------------------------");
+        try{
+            let testab = new TestProxy(gIRemoteObject).asObject();
+            console.info("SUB_Softbus_IPC_MessageParcel_9600: asObject is" + testab);
+            expect(testab != null).assertTrue();
+        } catch (error) {
+            console.info("SUB_Softbus_IPC_MessageParcel_9600:error = " + error);
+        }
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_9600---------------------------");
+    });
+
+    /*
+     * @tc.number  SUB_Softbus_IPC_MessageParcel_9700
+     * @tc.name    Test that the asObject interface is called by a RemoteObject and returns itself
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it("SUB_Softbus_IPC_MessageParcel_9700", 0,async function(){
+        console.info("---------------------start SUB_Softbus_IPC_MessageParcel_9700---------------------------");
+        try{
+            let testRemoteObject = new TestRemoteObject("testObject");
+            console.info("SUB_Softbus_IPC_MessageParcel_9700: asObject is" + testRemoteObject);
+            let testab = testRemoteObject.asObject();
+            console.info("SUB_Softbus_IPC_MessageParcel_9700: asObject is" + testab);
+            expect(testab != null).assertTrue();
+        } catch (error) {
+            console.info("SUB_Softbus_IPC_MessageParcel_9700:error = " + error);
+        }
+        console.info("---------------------end SUB_Softbus_IPC_MessageParcel_9700---------------------------");
+    });
+
+    /*
      * @tc.number  SUB_Softbus_IPC_MessageOption_0100
      * @tc.name    Basic method of testing messageoption
      * @tc.desc    Function test
@@ -3829,26 +3876,38 @@ describe('ActsRpcClientJsTest', function(){
     it("SUB_Softbus_IPC_RemoteProxy_0200", 0,async function(){
         console.log("---------------------start SUB_Softbus_IPC_RemoteProxy_0200---------------------------");
         try{
-            let recipient = new MyDeathRecipient(proxy, null)
-            var resultAdd1 = proxy.addDeathRecipient(recipient, 0)
+            let recipient = new MyDeathRecipient(gIRemoteObject, null)
+            var isDead = gIRemoteObject.isObjectDead();
+            console.log("SUB_Softbus_IPC_RemoteProxy_0200: run isObjectDead result is " + isDead);
+            expect(isDead == false).assertTrue();
+
+            var resultAdd1 = gIRemoteObject.addDeathRecipient(recipient, 0)
             console.log("SUB_Softbus_IPC_RemoteProxy_0200:run addDeathRecipient first result is " + resultAdd1);
             expect(resultAdd1 == true).assertTrue();
 
-            var isDead1 = proxy.isObjectDead();
+            var isDead1 = gIRemoteObject.isObjectDead();
             console.log("SUB_Softbus_IPC_RemoteProxy_0200: run isObjectDead result is " + isDead1);
-            expect(isDead1 == true).assertTrue();
+            expect(isDead1 == false).assertTrue();
 
-            var resultAdd2 = proxy.addDeathRecipient(recipient, 0)
+            var resultRemove1 = gIRemoteObject.removeDeathRecipient(recipient, 0)
+            console.log("SUB_Softbus_IPC_RemoteProxy_0200:run removeDeathRecipient result is " + resultRemove1);
+            expect(resultRemove1 == true).assertTrue();
+
+            var resultAdd2 = gIRemoteObject.addDeathRecipient(recipient, 0)
             console.log("SUB_Softbus_IPC_RemoteProxy_0200:run addDeathRecipient second result is " + resultAdd2);
             expect(resultAdd2 == true).assertTrue();
 
-            var resultRemove1 = proxy.removeDeathRecipient(recipient, 0)
-            console.log("SUB_Softbus_IPC_RemoteProxy_0200:run removeDeathRecipient1 result is " + resultRemove1);
-            expect(resultRemove1 == true).assertTrue();
+            var resultRemove2 = gIRemoteObject.removeDeathRecipient(recipient, 0)
+            console.log("SUB_Softbus_IPC_RemoteProxy_0200:run removeDeathRecipient1 result is " + resultRemove2);
+            expect(resultRemove2 == true).assertTrue();
 
-            var isDead2 = proxy.isObjectDead();
+            var resultRemove3 = gIRemoteObject.removeDeathRecipient(recipient, 0)
+            console.log("SUB_Softbus_IPC_RemoteProxy_0200:run removeDeathRecipient3 result is " + resultRemove3);
+            expect(resultRemove3 == false).assertTrue();
+
+            var isDead2 = gIRemoteObject.isObjectDead();
             console.log("SUB_Softbus_IPC_RemoteProxy_0200: run isObjectDead2 result is " + isDead2);
-            expect(isDead1 == false).assertTrue();
+            expect(isDead2 == false).assertTrue();
         } catch (error) {
             console.log("SUB_Softbus_IPC_RemoteProxy_0200:error = " + error);
         }
