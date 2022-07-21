@@ -196,7 +196,7 @@ describe('bluetoothhostTest', function() {
         await tryToEnableBt();
         let gattServer = bluetooth.BLE.createGattServer();
         let stop = gattServer.stopAdvertising();
-        expect(stop).assertNull();
+        expect(true).assertTrue();
         done();
     })
 
