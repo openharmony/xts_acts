@@ -20,7 +20,7 @@ import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import account from '@ohos.account.osAccount'
 
-describe('RecorderLocalTestAudioFUNC', async function () {
+describe('RecorderLocalTestAudioFUNC', function () {
     let audioRecorder = media.createAudioRecorder();
     const END_STATE = 0;
     const PRE_STATE = 1;
@@ -49,8 +49,16 @@ describe('RecorderLocalTestAudioFUNC', async function () {
         uri : 'file:///data/accounts/account_0/appdata/appdata/recorder/test.m4a',
         location : { latitude : 1, longitude : 1 },
     }
-    let userId = await account.getAccountManager().getOsAccountLocalldFromProcess();
-    console.info('userId :' + userId);
+    let userId ;
+    async function getUserId () {
+            await account.getAccountManager().getOsAccountLocalIdFromProcess().then(account => {
+                console.info("getOsAccountLocalIdFromProcess userid  ==========" + account);
+                userId = account;
+              }).catch(err=>{
+                console.info("getOsAccountLocalIdFromProcess err ==========" + JSON.stringify(err));
+              })
+        }
+    console.info('case userId :' + userId);
     function sleep(time) {
         for(let t = Date.now();Date.now() - t <= time;);
     }
@@ -64,6 +72,7 @@ describe('RecorderLocalTestAudioFUNC', async function () {
     }
 
     beforeAll(async function () {
+        await getUserId();
         await applyPermission();
         console.info('beforeAll case');
     })

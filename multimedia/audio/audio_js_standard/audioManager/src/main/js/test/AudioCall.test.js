@@ -22,11 +22,10 @@ import bundle from '@ohos.bundle';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import featureAbility from '@ohos.ability.featureAbility'
 import resourceManager from '@ohos.resourceManager';
-import account from '@ohos.account.osAccount'
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
-describe('audioCall', async function () {
+describe('audioCall', function () {
     var mediaDir;
     let fdRead;
     let readpath;
@@ -39,26 +38,6 @@ describe('audioCall', async function () {
 
     const audioManagerRec = audio.getAudioManager();
     console.info('AudioFrameworkRecLog: Create AudioManger Object JS Framework');
-    let userId = await account.getAccountManager().getOsAccountLocalldFromProcess();
-    console.info('userId :' + userId);
-    /*async function getPathName(){
-        var path1 = '/data/accounts/account_0/appdata/';
-        var packageName;
-        var context = ability_featureAbility.getContext();
-        await context.getBundleName()
-            .then((data) => {
-                console.info('AudioFrameworkRenderLog: Cache directory obtained. Data: ' + data);
-                packageName = data;
-            }).catch((error) => {
-                console.error('AudioFrameworkRenderLog: Failed to obtain the cache directory. Cause:' + error.message);
-            });
-        await sleep(200);
-        //var mediaDirTemp = path1 + packageName + '/' + packageName + '/assets/entry/resources/rawfile';
-        var mediaDirTemp = path1+packageName
-        console.info('AudioFrameworkRenderLog: Resource DIR Path : '+mediaDirTemp);
-        return mediaDirTemp;
-
-    }*/
     async function getAbilityInfo(fileName) {
         let context = await featureAbility.getContext();
         console.info("case0 context is  " + context);
@@ -69,9 +48,7 @@ describe('audioCall', async function () {
         })
     }
     beforeAll(async function () {
-        await applyPermission();
         console.info('AudioFrameworkTest: beforeAll: Prerequisites at the test suite level');
-        // mediaDir = '/data/storage/el2/base/haps/entry/cache';
     })
 
     beforeEach(async function () {
@@ -102,18 +79,7 @@ describe('audioCall', async function () {
             });
         });
     }
-    // async function getFdRead(pathName, done) {
-    //     await getFileDescriptor(pathName).then((res) => {
-    //         if (res == undefined) {
-    //             expect().assertFail();
-    //             console.info('AudioFrameworkRenderLog:case error fileDescriptor undefined, open file fail');
-    //             done();
-    //         } else {
-    //             fdRead = res.fd;
-    //             console.info("AudioFrameworkRenderLog:case 0 fdRead is: " + fdRead);
-    //         }
-    //     })
-    // }
+  
     async function getFdRead(pathName) {
         let context = await featureAbility.getContext();
         console.info("case0 context is  " + context);
@@ -136,36 +102,7 @@ describe('audioCall', async function () {
             console.info('[fileIO]case catch open fd failed');
         });
     }
-    async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.audiomanager', 0, userId);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info('AudioFrameworkRenderLog:[permission] case accessTokenID is ' + tokenID);
-            let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName2 = 'ohos.permission.READ_MEDIA';
-            let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission failed :' + err);
-            });
-        } else {
-            console.info('AudioFrameworkRenderLog:[permission] case apply permission failed, createAtManager failed');
-        }
-    }
-
-
+  
     async function playbackPromise(AudioRendererOptions, pathName, AudioScene) {
         resultFlagRen = 'new';
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
@@ -426,7 +363,7 @@ describe('audioCall', async function () {
                * @tc.type      : Function
                * @tc.level     : Level 0
            */
-    it('SUB_AUDIO_VOIP_Play_001', 0, async function (done) {
+    it('SUB_AUDIO_CALL_Play_001', 0, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -463,7 +400,7 @@ describe('audioCall', async function () {
                * @tc.type      : Function
                * @tc.level     : Level 0
            */
-    it('SUB_AUDIO_VOIP_Rec_001', 0, async function (done) {
+    it('SUB_AUDIO_CALL_Rec_001', 0, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -499,7 +436,7 @@ describe('audioCall', async function () {
                * @tc.type      : Function
                * @tc.level     : Level 0
            */
-    it('SUB_AUDIO_VOIP_RecPlay_001', 0, async function (done) {
+    it('SUB_AUDIO_CALL_RecPlay_001', 0, async function (done) {
 
         var AudioStreamInfoCap = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,

@@ -14,25 +14,15 @@
  */
 
 import audio from '@ohos.multimedia.audio';
-import fileio from '@ohos.fileio';
+
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
-describe('audioManger_audio1', function () {
+describe('audioEventManger', function () {
     console.info('AudioFrameworkTest: Create AudioManger Object JS Framework');
     const audioManager = audio.getAudioManager();
     var deviceRoleValue = null;
     var deviceTypeValue = null;
-    var volErrorMesg = 'Error, Operation not supported or Failed';
-    var audioMedia = 3;
-    var audioRingtone = 2;
-    var minVol = 0;
-    var maxVol = 15;
-    var lowVol = 5;
-    var highVol = 14;
-    var outOfRangeVol = 28;
-    var longValue = '28374837458743875804735081439085918459801437584738967509184509813904850914375904790589104801843';
-
     function sleep (ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
