@@ -436,22 +436,22 @@ describe('UrlFunTest', function () {
     })
 
     /**
-     * @tc.name: testUrlForEach002
+     * @tc.name: testUrlGet002
      * @tc.desc: Returns the first value associated to the given search parameter.
      * @tc.author: maxiaodong
      */
-    it('testUrlForEach002', 0, function () {
+    it('testUrlGet002', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
         var result =  params.get("key2")
         expect(result).assertEqual("value2")
     })
 
     /**
-     * @tc.name: testUrlForEach003
+     * @tc.name: testUrlGet003
      * @tc.desc: Returns the first value associated to the given search parameter.
      * @tc.author: maxiaodong
      */
-    it('testUrlForEach003', 0, function () {
+    it('testUrlGet003', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
         params.append("5","JKL")
         var result =  params.get("5")
@@ -459,22 +459,22 @@ describe('UrlFunTest', function () {
     })
 
     /**
-     * @tc.name: testUrlForEach004
+     * @tc.name: testUrlGet004
      * @tc.desc: Returns the first value associated to the given search parameter.
      * @tc.author: maxiaodong
      */
-    it('testUrlForEach004', 0, function () {
+    it('testUrlGet004', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
         var result =  params.get("key1")
         expect(result).assertEqual("value1")
     })
 
     /**
-     * @tc.name: testUrlForEach005
+     * @tc.name: testUrlGet005
      * @tc.desc: Returns the first value associated to the given search parameter.
      * @tc.author: maxiaodong
      */
-    it('testUrlForEach005', 0, function () {
+    it('testUrlGet005', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
         params.append("jss","JL")
         var result =  params.get("jss")
@@ -893,22 +893,22 @@ describe('UrlFunTest', function () {
     })
 
     /**
-     * @tc.name: testUrlToString001
+     * @tc.name: testUrlSearchParamsToString001
      * @tc.desc: Returns a query string suitable for use in a URL.
      * @tc.author: maxiaodong
      */
-    it('testUrlToString001', 0, function () {
+    it('testUrlSearchParamsToString001', 0, function () {
         let params = new Url.URLSearchParams("d=value1&c=value2&b=大")
         var result= params.toString()
         expect(result).assertEqual("d=value1&c=value2&b=%E5%A4%A7")
     })
 
     /**
-     * @tc.name: testUrlToString002
+     * @tc.name: testUrlSearchParamsToString002
      * @tc.desc: Returns a query string suitable for use in a URL.
      * @tc.author: maxiaodong
      */
-    it('testUrlToString002', 0, function () {
+    it('testUrlSearchParamsToString002', 0, function () {
         let params = new Url.URLSearchParams("d=value1&c=value2&b= 大")
         params.append("1 12","QQQ")
         var result= params.toString()
@@ -916,11 +916,11 @@ describe('UrlFunTest', function () {
     })
 
     /**
-     * @tc.name: testUrlToString003
+     * @tc.name: testUrlSearchParamsToString003
      * @tc.desc: Returns a query string suitable for use in a URL.
      * @tc.author: maxiaodong
      */
-    it('testUrlToString003', 0, function () {
+    it('testUrlSearchParamsToString003', 0, function () {
         let params = new Url.URLSearchParams("￥=)")
         params.delete("5")
         var result= params.toString()
@@ -928,22 +928,22 @@ describe('UrlFunTest', function () {
     })
 
     /**
-     * @tc.name: testUrlToString004
+     * @tc.name: testUrlSearchParamsToString004
      * @tc.desc: Returns a query string suitable for use in a URL.
      * @tc.author: maxiaodong
      */
-    it('testUrlToString004', 0, function () {
+    it('testUrlSearchParamsToString004', 0, function () {
         let params = new Url.URLSearchParams("d=value1&c=value2&b=大&4=key4")
         var result= params.toString()
         expect(result).assertEqual("d=value1&c=value2&b=%E5%A4%A7&4=key4")
     })
 
     /**
-     * @tc.name: testUrlToString005
+     * @tc.name: testUrlSearchParamsToString005
      * @tc.desc: Returns a query string suitable for use in a URL.
      * @tc.author: maxiaodong
      */
-    it('testUrlToString005', 0, function () {
+    it('testUrlSearchParamsToString005', 0, function () {
         let params = new Url.URLSearchParams("d=value1&c=value2&b= 大&4=key4&5=key5")
         params.append("1 12","QQQ")
         var result= params.toString()
@@ -2064,4 +2064,4 @@ describe('UrlFunTest', function () {
         var result = params.searchParams.toString();
         expect(result).assertEqual('abc=123&def=456')
     })
-})}
+})

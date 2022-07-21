@@ -14,4 +14,7 @@
  */
 
 
-require('./framework.test.js')
+import Image_test from './framework.test.js'
+export default function testsuite() {
+    Image_test()
+}

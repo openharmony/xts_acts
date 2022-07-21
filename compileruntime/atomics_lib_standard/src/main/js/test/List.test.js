@@ -12,5 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import WaitTest from './Atomics.test.js'
 
-require('./Atomics.test.js')
+export default function testsuite() {
+    WaitTest()
+}

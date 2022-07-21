@@ -1,18 +1,19 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "package": "com.example.actsansactionbuttontest",
-        "shell-timeout": "60000"
+        "shell-timeout": "180000",
+        "bundle-name": "com.example.actsansactionbuttontest",
+        "package-name": "com.example.actsansactionbuttontest"
     },
     "kits": [
         {
             "test-file-name": [
                 "ActsAnsActionButtonTest.hap",
                 "testA.hap",
-		"testB.hap",
-		"testC.hap"
+                "testB.hap",
+                "testC.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

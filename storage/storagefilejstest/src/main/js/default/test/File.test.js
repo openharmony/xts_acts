@@ -233,13 +233,16 @@ describe('fileTest', function () {
     file.delete({
       uri: 'internal://cache/../cache/File_Delete_008',
       success: function () {
-        console.info('File_Delete_008 call delete success');``
+        console.info('File_Delete_008 call delete success');
         done();
       },
       fail: function (data, code) {
         console.info('File_Delete_008 call delete fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
+      complete: function () {
+        console.info('delete completed');
+      }
     });
   });
 
@@ -680,8 +683,10 @@ describe('fileTest', function () {
         console.info('File_writeText_013 , code: ' + code + ', data: ' + data);
         done();
       },
+      complete: function () {
+        console.info('writeText completed');
+      }
     });
-
   });
 
   /**
@@ -1091,6 +1096,9 @@ describe('fileTest', function () {
         expect(code == 300).assertTrue();
         done();
       },
+      complete: function () {
+        console.info('writeArrayBuffer completed');
+      }
     });
   });
 
@@ -1317,6 +1325,9 @@ describe('fileTest', function () {
           console.error("call fail callback fail, code: " + code + ", data: " + data);
           expect(null).assertFail();
         },
+        complete: function () {
+          console.info('readText completed');
+        }
       });
     } catch (e) {
       console.info("File_readText_008 has failed for " + e);
@@ -1573,6 +1584,9 @@ describe('fileTest', function () {
         console.info('File_read_array_buffer_009 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
+      complete: function () {
+        console.info('readArrayBuffer completed');
+      }
     });
     file.delete({
       uri: 'internal://cache/../cache/File_read_array_buffer_009'
@@ -1824,6 +1838,9 @@ describe('fileTest', function () {
         console.info('File_access_008 , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
+      complete: function () {
+        console.info('access completed');
+      }
     });
     file.delete({
       uri: 'internal://cache/../cache/File_access_008',
@@ -2046,6 +2063,9 @@ describe('fileTest', function () {
         expect(code == 300).assertTrue();
         done();
       },
+      complete: function () {
+        console.info('mkdir completed');
+      }
     });
   });
 
@@ -2317,6 +2337,9 @@ describe('fileTest', function () {
         expect(code == 301).assertTrue();
         done();
       },
+      complete: function () {
+        console.info('rmdir completed');
+      }
     });
   });
 
@@ -2660,6 +2683,9 @@ describe('fileTest', function () {
         console.info('File_Move_014 => fail , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
+      complete: function () {
+        console.info('move completed');
+      }
     });
   });
 
@@ -3055,6 +3081,9 @@ describe('fileTest', function () {
         console.info('File_Copy_014 => fail , code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
+      complete: function () {
+        console.info('copy completed');
+      }
     });
   });
 
@@ -3388,6 +3417,9 @@ describe('fileTest', function () {
         console.info('File_List_012 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
+      complete: function () {
+        console.info('list completed');
+      }
     });
   });
 
@@ -3806,6 +3838,9 @@ describe('fileTest', function () {
         console.info('File_Get_014 fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
+      complete: function () {
+        console.info('get completed');
+      }
     });
   });
 });

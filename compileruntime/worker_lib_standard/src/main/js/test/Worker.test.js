@@ -15,9 +15,9 @@
 
 // @ts-nocheck
 import app from '@system.app'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 import worker from "@ohos.worker"
-
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+export default function workerTest() {
 describe('workerTest', function () {
 
     afterAll(function () {
@@ -249,6 +249,8 @@ describe('workerTest', function () {
         }
         ss.onmessage = function (e) {
             res = e.data
+            console.info("worker:: type " + e.type)
+            console.info("worker:: timeStamp " + e.timeStamp)
             flag = true
         }
 
@@ -322,6 +324,10 @@ describe('workerTest', function () {
 
         ss.onerror = function (e) {
             res = e.message
+            console.info("worker:: filename " + e.filename)
+            console.info("worker:: lineno " + e.lineno)
+            console.info("worker:: colno " + e.colno)
+            console.info("worker:: error " + e.error)
             flag = true
         }
         ss.onexit = function () {
@@ -1349,3 +1355,4 @@ describe('workerTest', function () {
         done()
     })
 })
+}

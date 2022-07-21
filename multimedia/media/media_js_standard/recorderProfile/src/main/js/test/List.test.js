@@ -13,7 +13,13 @@
  * limitations under the License.
  */
 
-require('./ProfileTestCallback.test.js')
-require('./ProfileTestPromise.test.js')
-require('./ProfileAbnormalTestCallback.test.js')
-require('./ProfileAbnormalTestPromise.test.js')
+import ProfileAbnormalTestCallback from './ProfileAbnormalTestCallback.test.js'
+import ProfileAbnormalTestPromise from './ProfileAbnormalTestPromise.test.js'
+import ProfileTestCallback from './ProfileTestCallback.test.js'
+import ProfileTestPromise from './ProfileTestPromise.test.js'
+export default function testsuite() {
+ProfileAbnormalTestCallback()
+ProfileAbnormalTestPromise()
+ProfileTestCallback()
+ProfileTestPromise()
+}

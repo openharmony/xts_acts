@@ -14,4 +14,7 @@
  */
 
 
-require('./receiver.test.js')
+import ImageReceiver from './receiver.test.js'
+export default function testsuite() {
+ImageReceiver()
+}

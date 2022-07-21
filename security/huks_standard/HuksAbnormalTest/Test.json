@@ -1,10 +1,12 @@
 {
     "description": "Configuration for algorithm completion test",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "7200000",
-        "package": "com.example.err",
-        "shell-timeout": "60000"
+        "shell-timeout": "7200000",
+        "bundle-name": "com.example.err",
+        "package-name": "com.example.err",
+        "testcase-timeout": 1000000
     },
     "kits": [
         {

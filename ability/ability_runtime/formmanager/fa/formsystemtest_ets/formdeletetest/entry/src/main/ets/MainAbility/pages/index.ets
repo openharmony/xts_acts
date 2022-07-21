@@ -40,7 +40,7 @@ struct Index {
         core.init();
         core.subscribeEvent('task', reportExtend);
         const configService = core.getDefaultService('config');
-        want.parameters['timeout'] = 10000;
+        want.parameters['timeout'] = 20000;
         console.info('[FormComponent] parameters---->' + JSON.stringify(want.parameters));
         configService.setConfig(want.parameters);
         testsuite();

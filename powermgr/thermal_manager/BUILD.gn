@@ -23,7 +23,9 @@ ohos_js_hap_suite("powermgr_thermal_test") {
   hap_name = "ActsPowerMgrThermalTest"
 }
 ohos_js_assets("powermgr_thermal_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("powermgr_thermal_resources") {
   sources = [ "./src/main/resources" ]

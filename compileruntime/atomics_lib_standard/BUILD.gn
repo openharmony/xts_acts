@@ -23,7 +23,9 @@ ohos_js_hap_suite("atomics_js_hap") {
   hap_name = "ActsAtomicsJSTest"
 }
 ohos_js_assets("atomics_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("atomics_resources") {
   sources = [ "./src/main/resources" ]
