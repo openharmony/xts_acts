@@ -54,5 +54,37 @@ export default function isDefaultApplicationTest() {
             expect(data).assertFalse()
             done()
         });
+
+        /**
+         * @tc.number: applicationType_0100
+         * @tc.name: test ApplicationType
+         * @tc.desc: ApplicationType is string
+         */
+        it('applicationType_0100', 0, async function (done) {
+            expect(typeof (defaultAppMgr.ApplicationType.BROWSER)).assertEqual("string");
+            expect(defaultAppMgr.ApplicationType.BROWSER).assertEqual("BROWSER");
+
+            expect(typeof (defaultAppMgr.ApplicationType.IMAGE)).assertEqual("string");
+            expect(defaultAppMgr.ApplicationType.IMAGE).assertEqual("IMAGE");
+
+            expect(typeof (defaultAppMgr.ApplicationType.AUDIO)).assertEqual("string");
+            expect(defaultAppMgr.ApplicationType.AUDIO).assertEqual("AUDIO");
+
+            expect(typeof (defaultAppMgr.ApplicationType.VIDEO)).assertEqual("string");
+            expect(defaultAppMgr.ApplicationType.VIDEO).assertEqual("VIDEO");
+
+            expect(typeof (defaultAppMgr.ApplicationType.PDF)).assertEqual("string");
+            expect(defaultAppMgr.ApplicationType.PDF).assertEqual("PDF");
+
+            expect(typeof (defaultAppMgr.ApplicationType.WORD)).assertEqual("string");
+            expect(defaultAppMgr.ApplicationType.WORD).assertEqual("WORD");
+
+            expect(typeof (defaultAppMgr.ApplicationType.EXCEL)).assertEqual("string");
+            expect(defaultAppMgr.ApplicationType.EXCEL).assertEqual("EXCEL");
+
+            expect(typeof (defaultAppMgr.ApplicationType.PPT)).assertEqual("string");
+            expect(defaultAppMgr.ApplicationType.PPT).assertEqual("PPT");
+            done()
+        });
     })
   }
