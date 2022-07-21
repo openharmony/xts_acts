@@ -61,8 +61,7 @@ describe('AddImage', function () {
 
     /**
      * @tc.number    : addImage_001
-     * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, 
-     * bytes = buffer,scaleMode: 1, alphaType: 0)
+     * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 1, alphaType: 0)
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
      *                 3.using color and opts create newPixelMap
@@ -78,8 +77,7 @@ describe('AddImage', function () {
 
     /**
      * @tc.number    : add_01_002
-     * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, 
-     * bytes = buffer,scaleMode: 1, alphaType: 1)
+     * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 1, alphaType: 1)
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
      *                 3.using color and opts create newPixelMap
@@ -95,8 +93,7 @@ describe('AddImage', function () {
 
     /**
      * @tc.number    : add_01_003
-     * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, 
-     * bytes = buffer,scaleMode: 0, alphaType: 2)
+     * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 0, alphaType: 2)
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
      *                 3.using color and opts create newPixelMap
@@ -112,8 +109,7 @@ describe('AddImage', function () {
 
     /**
      * @tc.number    : add_01_004
-     * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, 
-     * bytes = buffer,scaleMode: 0, alphaType: 3)
+     * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 0, alphaType: 3)
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
      *                 3.using color and opts create newPixelMap
@@ -129,8 +125,7 @@ describe('AddImage', function () {
 
     /**
      * @tc.number    : add_02_001
-     * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, 
-     * bytes = buffer,scaleMode: 0, alphaType: 0)
+     * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 0, alphaType: 0)
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
      *                 3.using color and opts create newPixelMap
@@ -146,8 +141,7 @@ describe('AddImage', function () {
 
     /**
      * @tc.number    : add_02_002
-     * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, 
-     * bytes = buffer,scaleMode: 0, alphaType: 1)
+     * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 0, alphaType: 1)
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
      *                 3.using color and opts create newPixelMap
@@ -163,8 +157,7 @@ describe('AddImage', function () {
 
     /**
      * @tc.number    : add_02_003
-     * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, 
-     * bytes = buffer,scaleMode: 1, alphaType: 2)
+     * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 1, alphaType: 2)
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
      *                 3.using color and opts create newPixelMap
@@ -180,8 +173,7 @@ describe('AddImage', function () {
 
     /**
      * @tc.number    : add_02_004
-     * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, 
-     * bytes = buffer,scaleMode: 1, alphaType: 3)
+     * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 1, alphaType: 3)
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
      *                 3.using color and opts create newPixelMap
