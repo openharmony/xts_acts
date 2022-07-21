@@ -15,8 +15,9 @@
 
 import media from '@ohos.multimedia.media'
 import * as base from './ProfileTestBase.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
+export default function ProfileTestCallback() {
 describe('ProfileTestCallback', function () {
     beforeAll(function () {
         console.info('beforeAll case');
@@ -338,4 +339,4 @@ describe('ProfileTestCallback', function () {
         callbackHasVideoProfile(0, media.VideoRecorderQualityLevel.RECORDER_QUALITY_LOW, done);
     })
 
-})
+})}
