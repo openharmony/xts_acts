@@ -219,6 +219,19 @@
                         "resource": "$profile:form_config"
                     }
                 ]
+            },
+            {
+                "name": "EnterpriseAdminAbility",
+                "srcEntrance": "./ets/ServiceAbility/FormAbility.ts",
+                "label": "$string:form_FormAbility_label",
+                "description": "$string:form_FormAbility_desc",
+                "type": "enterpriseAdmin",
+                "metadata": [
+                    {
+                        "name": "ohos.extension.form",
+                        "resource": "$profile:form_config"
+                    }
+                ]
             }
         ]
     }
