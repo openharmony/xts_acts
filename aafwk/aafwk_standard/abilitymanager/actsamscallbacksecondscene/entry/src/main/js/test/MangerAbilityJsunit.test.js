@@ -31,8 +31,7 @@ describe('ActsAmsCallBackSecondScene', function () {
                         {},
                 },
             }, (error, data) => {
-                console.info('ActsAmsCallBackSecondScene VerifyIoThirdAbility start, error.code \
-                ' + error.code + ', data length [' + data.length + ']');
+                console.info('ActsAmsCallBackSecondScene VerifyIoThirdAbility start:' + error.code)
             }
         );
 
@@ -48,8 +47,7 @@ describe('ActsAmsCallBackSecondScene', function () {
                         {},
                 },
             }, (error, data) => {
-                console.info('ActsAmsCallBackSecondScene SimulateFeatureAbilityFir start, error.code \
-                ' + error.code + ', data length [' + data.length + ']');
+                console.info('ActsAmsCallBackSecondScene SimulateFeatureAbilityFir start, error.code ' + error.code);
             }
         );
         done();
@@ -81,8 +79,7 @@ describe('ActsAmsCallBackSecondScene', function () {
         console.info("sleep end");
         appManager.getProcessRunningInfos(
             (error, info) => {
-                console.info('Acts_Ams_test_1800 getProcessRunningInfos error.code \
-                ' + error.code + ', data length [' + info.length + ']');
+                console.info('Acts_Ams_test_1800 getProcessRunningInfos error.code ' + error.code);
                 expect(Array.isArray(info)).assertEqual(true);
                 expect(info.length).assertLarger(0);
                 for (let i = 0; i < info.length; i++) {
@@ -93,7 +90,7 @@ describe('ActsAmsCallBackSecondScene', function () {
                     expect(typeof (info[i].processName)).assertEqual("string");
                     expect(info[i].processName.length).assertLarger(0);
                     expect(Array.isArray(info[i].bundleNames)).assertEqual(true);
-                    expect(info[i].bundleNames.length).assertEqual(0);
+                    expect(info[i].bundleNames.length).assertLarger(0);
 
                     expect(typeof (info[i].uid)).assertEqual("number");
                     expect(info[i].uid).assertLarger(0);

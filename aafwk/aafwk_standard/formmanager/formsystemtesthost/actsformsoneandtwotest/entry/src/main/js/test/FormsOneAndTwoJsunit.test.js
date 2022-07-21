@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import formManager from '@ohos.ability.formManager'
+import formManager from '@ohos.ability.formHost'
 import {describe, it, expect} from 'deccjsunit/index'
 
 const TIMEOUT = 5000;

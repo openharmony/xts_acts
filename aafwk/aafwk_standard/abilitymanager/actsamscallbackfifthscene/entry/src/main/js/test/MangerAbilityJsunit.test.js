@@ -31,8 +31,7 @@ describe('ActsAmsCallBackFifthScene', function () {
                         {},
                 },
             }, (error, data) => {
-                console.info('ActsAmsCallBackFifthScene SimulateFeatureAbilityFir start, error.code \
-                ' + error.code + ', data length [' + data.length + ']');
+                console.info('ActsAmsCallBackFifthScene SimulateFeatureAbilityFir start, error.code' + error.code);
             }
         );
 
@@ -48,8 +47,7 @@ describe('ActsAmsCallBackFifthScene', function () {
                         {},
                 },
             }, (error, data) => {
-                console.info('ActsAmsCallBackFifthScene VerifyIoThirdAbility start, error.code \
-                ' + error.code + ', data length [' + data.length + ']');
+                console.info('ActsAmsCallBackFifthScene VerifyIoThirdAbility start, error.code' + error.code);
             }
         );
 
@@ -65,8 +63,7 @@ describe('ActsAmsCallBackFifthScene', function () {
                         {},
                 },
             }, (error, data) => {
-                console.info('ActsAmsCallBackFifthScene SimulateFeatureAbilitySed start, error.code \
-                ' + error.code + ', data length [' + data.length + ']');
+                console.info('ActsAmsCallBackFifthScene SimulateFeatureAbilitySed start, error.code' + error.code);
             }
         );
         setTimeout(done, 5000);
@@ -98,8 +95,7 @@ describe('ActsAmsCallBackFifthScene', function () {
         console.info("sleep end");
         appManager.getProcessRunningInfos(
             (error, info) => {
-                console.info('Acts_Ams_test_6600 getProcessRunningInfos error.code \
-                ' + error.code + ', data length [' + info.length + ']');
+                console.info('Acts_Ams_test_6600 getProcessRunningInfos error.code ' + error.code);
                 expect(Array.isArray(info)).assertEqual(true);
                 expect(info.length).assertLarger(0);
                 for (let i = 0; i < info.length; i++) {
@@ -110,7 +106,7 @@ describe('ActsAmsCallBackFifthScene', function () {
                     expect(typeof (info[i].processName)).assertEqual("string");
                     expect(info[i].processName.length).assertLarger(0);
                     expect(Array.isArray(info[i].bundleNames)).assertEqual(true);
-                    expect(info[i].bundleNames.length).assertEqual(0);
+                    expect(info[i].bundleNames.length).assertLarger(0);
 
                     expect(typeof (info[i].uid)).assertEqual("number");
                     expect(info[i].uid).assertLarger(0);

@@ -36,8 +36,7 @@ describe('ActsAmsTestSecondScene', function () {
                         {},
                 },
             }, (error, data) => {
-                console.info('ActsAmsTestSecondScene VerifyIoThirdAbility start, error.code \
-                ' + error.code + ', data length [' + data.length + ']');
+                console.info('ActsAmsTestSecondScene VerifyIoThirdAbility start, error.code ' + error.code);
             }
         );
 
@@ -58,8 +57,8 @@ describe('ActsAmsTestSecondScene', function () {
                         {},
                 },
             }, (error, data) => {
-                console.info('ActsAmsTestSecondScene SimulateFeatureAbilityFir start, error.code \
-                ' + error.code + ', data length [' + data.length + ']');
+                console.info('ActsAmsTestSecondScene SimulateFeatureAbilityFir start, error.code ' + error.code);
+
             }
         );
         done();
@@ -100,7 +99,7 @@ describe('ActsAmsTestSecondScene', function () {
             expect(typeof (info[i].processName)).assertEqual("string");
             expect(info[i].processName.length).assertLarger(0);
             expect(Array.isArray(info[i].bundleNames)).assertEqual(true);
-            expect(info[i].bundleNames.length).assertEqual(0);
+            expect(info[i].bundleNames.length).assertLarger(0);
 
             expect(typeof (info[i].uid)).assertEqual("number");
             expect(info[i].uid).assertLarger(0);

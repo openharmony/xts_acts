@@ -14,7 +14,7 @@
  */
 
 import formBindingData from "@ohos.application.formBindingData"
-import formManager from '@ohos.ability.formManager'
+import formManager from '@ohos.ability.formHost'
 import {describe, it, expect} from 'deccjsunit/index'
 
 const TIMEOUT = 3000;
@@ -107,5 +107,4 @@ describe('ActsFormsZeroTest', function () {
         done();
         console.log("FMS_CreateFormBindingData_0100 end");
     })
-
 }) 

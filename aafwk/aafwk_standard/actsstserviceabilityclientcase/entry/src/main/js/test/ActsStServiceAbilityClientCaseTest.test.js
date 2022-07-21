@@ -99,7 +99,7 @@ describe('ActsStServiceAbilityTest', function () {
             featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
                 console.log('ACTS_AAbilityStartSetting_0100 asyncCallback errCode : ' + JSON.stringify(err) 
                 + " data: " + JSON.stringify(data));
-                expect(2097152).assertEqual(err.code);
+                expect(1).assertEqual(err.code);
                 done();
             });
         }catch(error){
@@ -137,7 +137,7 @@ describe('ActsStServiceAbilityTest', function () {
         featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
             console.log('ACTS_AAbilityStartSettingNew_0200 asyncCallback errCode : ' + JSON.stringify(err) 
             + " data: " + JSON.stringify(data));
-            expect(2097152).assertEqual(err.code);
+            expect(1).assertEqual(err.code);
             done();
         });
     }catch(error){
@@ -175,7 +175,7 @@ it("ACTS_AAbilityStartSettingNew_0300",0, async function(done){
         featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
             console.log('ACTS_AAbilityStartSettingNew_0300 asyncCallback errCode : ' + JSON.stringify(err) 
             + " data: " + JSON.stringify(data));
-            expect(2097152).assertEqual(err.code);
+            expect(1).assertEqual(err.code);
             done();
         });
     }catch(error){
@@ -213,7 +213,7 @@ it("ACTS_AAbilityStartSettingNew_0400",0, async function(done){
         featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
             console.log('ACTS_AAbilityStartSettingNew_0400 asyncCallback errCode : ' + JSON.stringify(err) 
             + " data: " + JSON.stringify(data));
-            expect(2097152).assertEqual(err.code);
+            expect(1).assertEqual(err.code);
             done();
         });
     }catch(error){
@@ -251,7 +251,7 @@ it("ACTS_AAbilityStartSettingNew_0500",0, async function(done){
         featureAbility.startAbility(StartAbilityParameter,(err,data)=>{
             console.log('ACTS_AAbilityStartSettingNew_0500 asyncCallback errCode : ' + JSON.stringify(err) 
             + " data: " + JSON.stringify(data));
-            expect(2097152).assertEqual(err.code);
+            expect(1).assertEqual(err.code);
             done();
         });
     }catch(error){

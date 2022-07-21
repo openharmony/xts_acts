@@ -36,8 +36,7 @@ describe('ActsAmsTestFourthScene', function () {
                         {},
                 },
             }, (error, data) => {
-                console.info('ActsAmsTestFourthScene VerifyIoThirdAbility start, error.code \
-                ' + error.code + ', data length [' + data.length + ']');
+                console.info('ActsAmsTestFourthScene VerifyIoThirdAbility start, error.code ' + error.code);
             }
         );
 
@@ -58,8 +57,7 @@ describe('ActsAmsTestFourthScene', function () {
                         {},
                 },
             }, (error, data) => {
-                console.info('ActsAmsTestFourthScene SimulateFeatureAbilityFir start, error.code \
-                ' + error.code + ', data length [' + data.length + ']');
+                console.info('ActsAmsTestFourthScene SimulateFeatureAbilityFir start, error.code' + error.code);
             }
         );
 
@@ -80,8 +78,7 @@ describe('ActsAmsTestFourthScene', function () {
                         {},
                 },
             }, (error, data) => {
-                console.info('ActsAmsTestFourthScene VerifyActThirdAbility start, error.code \
-                ' + error.code + ', data length [' + data.length + ']');
+                console.info('ActsAmsTestFourthScene VerifyActThirdAbility start, error.code' + error.code);
             }
         );
 
@@ -102,8 +99,7 @@ describe('ActsAmsTestFourthScene', function () {
                         {},
                 },
             }, (error, data) => {
-                console.info('ActsAmsTestFourthScene SimulateEntryAbility start, error.code \
-                ' + error.code + ', data length [' + data.length + ']');
+                console.info('ActsAmsTestFourthScene SimulateEntryAbility start, error.code ' + error.code);
             }
         );
         done();
@@ -144,7 +140,7 @@ describe('ActsAmsTestFourthScene', function () {
             expect(typeof (info[i].processName)).assertEqual("string");
             expect(info[i].processName.length).assertLarger(0);
             expect(Array.isArray(info[i].bundleNames)).assertEqual(true);
-            expect(info[i].bundleNames.length).assertEqual(0);
+            expect(info[i].bundleNames.length).assertLarger(0);
 
             expect(typeof (info[i].uid)).assertEqual("number");
             expect(info[i].uid).assertLarger(0);

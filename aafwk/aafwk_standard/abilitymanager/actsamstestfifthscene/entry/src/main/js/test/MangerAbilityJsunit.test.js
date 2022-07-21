@@ -16,28 +16,6 @@ import featureAbility from '@ohos.ability.featureAbility'
 import appManager from "@ohos.application.appManager"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
-let abilityNameList = [
-    "com.ohos.launcher.MainAbility",
-    "com.ohos.callui.ServiceAbility",
-    "com.example.SimulateFeatureAbilityFir",
-    "com.example.SimulateFeatureAbilitySed",
-    "com.example.VerifyIoThirdAbility",
-    "com.example.actsamstestfifthscene.MainAbility"
-]
-
-let bundleNameList = [
-    "com.ohos.launcher",
-    "com.ohos.systemui",
-    "com.ohos.callui",
-    "com.ohos.contacts",
-    "com.ohos.mms",
-    "com.ohos.telephonydataability",
-    "com.ohos.contactsdataability",
-    "com.ix.simulate.feature",
-    "com.ix.verify.io",
-    "com.example.actsamstestfifthscene"
-]
-
 describe('ActsAmsTestFifthScene', function () {
     console.info('----ActsAmsTestFifthScene----');
     beforeAll(async function (done) {
@@ -58,8 +36,7 @@ describe('ActsAmsTestFifthScene', function () {
                         {},
                 },
             }, (error, data) => {
-                console.info('ActsAmsTestFifthScene SimulateFeatureAbilityFir start, error.code \
-                ' + error.code + ', data length [' + data.length + ']');
+                console.info('ActsAmsTestFifthScene SimulateFeatureAbilityFir start, error.code ' + error.code);
             }
         );
 
@@ -80,8 +57,7 @@ describe('ActsAmsTestFifthScene', function () {
                         {},
                 },
             },  (error, data) => {
-                console.info('ActsAmsTestFifthScene VerifyIoThirdAbility start, error.code \
-                ' + error.code + ', data length [' + data.length + ']');
+                console.info('ActsAmsTestFifthScene VerifyIoThirdAbility start, error.code ' + error.code);
             }
         );
 
@@ -102,8 +78,7 @@ describe('ActsAmsTestFifthScene', function () {
                         {},
                 },
             }, (error, data) => {
-                console.info('ActsAmsTestFifthScene SimulateFeatureAbilitySed start, error.code \
-                ' + error.code + ', data length [' + data.length + ']');
+                console.info('ActsAmsTestFifthScene SimulateFeatureAbilitySed start, error.code' + error.code);
             }
         );
         done();
@@ -144,7 +119,7 @@ describe('ActsAmsTestFifthScene', function () {
             expect(typeof (info[i].processName)).assertEqual("string");
             expect(info[i].processName.length).assertLarger(0);
             expect(Array.isArray(info[i].bundleNames)).assertEqual(true);
-            expect(info[i].bundleNames.length).assertEqual(0);
+            expect(info[i].bundleNames.length).assertLarger(0);
 
             expect(typeof (info[i].uid)).assertEqual("number");
             expect(info[i].uid).assertLarger(0);
