@@ -16,10 +16,12 @@
 import apiCoverAbility from './ApiCoverAbility.test'
 import verificationTest from './VerificationTest'
 import wantAgentCover from './WantAgentCover.test'
+import contextEnvironmentTest from './ContextEnvironmentTest.test';
 
 export default function List(context) {
 
   apiCoverAbility(context)
   verificationTest(context)
   wantAgentCover(context)
+  contextEnvironmentTest(globalThis.applicationContext)
 }

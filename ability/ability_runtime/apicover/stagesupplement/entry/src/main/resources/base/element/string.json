@@ -13,14 +13,6 @@
       "value": "StageSupplement"
     },
     {
-      "name": "MainAbility2_desc",
-      "value": "description"
-    },
-    {
-      "name": "MainAbility2_label",
-      "value": "label"
-    },
-    {
       "name": "MainAbility3_desc",
       "value": "description"
     },
@@ -45,30 +37,6 @@
       "value": "label"
     },
     {
-      "name": "MainAbility6_desc",
-      "value": "description"
-    },
-    {
-      "name": "MainAbility6_label",
-      "value": "label"
-    },
-    {
-      "name": "MainAbility7_desc",
-      "value": "description"
-    },
-    {
-      "name": "MainAbility7_label",
-      "value": "label"
-    },
-    {
-      "name": "MainAbility8_desc",
-      "value": "description"
-    },
-    {
-      "name": "MainAbility8_label",
-      "value": "label"
-    },
-    {
       "name": "MainAbility9_desc",
       "value": "description"
     },
@@ -82,14 +50,6 @@
     },
     {
       "name": "MainAbility10_label",
-      "value": "label"
-    },
-    {
-      "name": "MainAbility11_desc",
-      "value": "description"
-    },
-    {
-      "name": "MainAbility11_label",
       "value": "label"
     }
   ]
