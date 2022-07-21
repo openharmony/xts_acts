@@ -132,7 +132,7 @@ const props = {
         mediaType: '5',
         title: '01',
         dateTaken: '0',
-        artist: 'Richard Stoltzman/Slovak Radio Symphony Orchestra',
+        artist: '元数据测试',
         width: '0',
         height: '0',
         orientation: '0',
