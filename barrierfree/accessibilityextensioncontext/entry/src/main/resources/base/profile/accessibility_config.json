@@ -1,6 +1,8 @@
 {
   "accessibilityCapabilities": [
-    "retrieve"
+    "retrieve",
+    "touchGuide",
+    "gesture"
   ],
   "accessibilityCapabilityRationale": "a11y_rationale",
   "settingsAbility": "com.accessibility.voiceaid.voiceAidSetting"
