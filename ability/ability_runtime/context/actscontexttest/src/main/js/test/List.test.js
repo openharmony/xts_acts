@@ -12,15 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-const injectRef = Object.getPrototypeOf(global) || global
-injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
-
-export default {
-    data: {
-        title: ''
-    },
-    onInit() {
-        this.title = this.$t('strings.world');
-    }
+import ActsContextTest from './ContextJsunit.test.js'
+export default function testsuite() {
+ActsContextTest()
 }
