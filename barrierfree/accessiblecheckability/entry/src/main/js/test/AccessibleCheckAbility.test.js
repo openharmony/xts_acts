@@ -45,7 +45,7 @@ describe('AccessibleCheckAbility', function () {
     it('CheckAbilityIsOpen_0170', 0, async function (done) {
         console.info('CheckAbilityIsOpen_0170');
         accessibility.isOpenAccessibility((err, data) => {
-            if (err.code != 0) {
+            if (err != null && err.code != 0) {
                 console.error(`AccessibilityApi: CheckAbilityIsOpen_0170 has error: ${err.code}`);
                 expect(null).assertFail();
                 done();
@@ -91,7 +91,7 @@ describe('AccessibleCheckAbility', function () {
     it('CheckAbilityIsOpen_0190', 0, async function (done) {
         console.info('CheckAbilityIsOpen_0190');
         accessibility.isOpenTouchGuide((err, data) => {
-            if (err.code != 0) {
+            if (err != null && err.code != 0) {
                 console.error(`AccessibilityApi: CheckAbilityIsOpen_0190 has error: ${err.code}`);
                 expect(null).assertFail();
                 done();
