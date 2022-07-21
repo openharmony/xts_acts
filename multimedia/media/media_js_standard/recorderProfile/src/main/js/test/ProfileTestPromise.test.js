@@ -15,8 +15,9 @@
 
 import media from '@ohos.multimedia.media'
 import * as base from './ProfileTestBase.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
+export default function ProfileTestPromise() {
 describe('ProfileTestPromise', function () {
     beforeAll(function () {
         console.info('beforeAll case');
@@ -359,3 +360,4 @@ describe('ProfileTestPromise', function () {
     })
 
 })
+}

@@ -1,42 +1,34 @@
 {
     "description": "Configuration for Image Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "1200000",
-        "package": "ohos.acts.multimedia.image.Receiver",
-		"shell-timeout": "120000"
+        "shell-timeout": "120000",
+        "testcase-timeout": 60000,
+        "bundle-name": "ohos.acts.multimedia.image.Receiver",
+        "package-name": "ohos.acts.multimedia.image.Receiver"
     },
     "kits": [
         {
             "type": "ShellKit",
-            "run-command": [
-                
-            ],
-            "teardown-command":[
-              
-            ]
+            "run-command": [],
+            "teardown-command": []
         },
-		{
+        {
             "type": "PushKit",
-            "pre-push": [
-            ],
-            "push": [
-            ]
+            "pre-push": [],
+            "push": []
         },
-   
-		{
+        {
             "type": "ShellKit",
             "run-command": [
                 "hilog -Q pidoff",
                 "hilog -b D",
-				"killall com.ohos.medialibrary.MediaScannerAbilityA",
+                "killall com.ohos.medialibrary.MediaScannerAbilityA",
                 "aa start  -a MediaScannerAbility -b com.ohos.medialibrary.MediaScannerAbilityA"
             ],
-            "teardown-command":[
-              
-            ]
+            "teardown-command": []
         },
-        
         {
             "test-file-name": [
                 "ActsImageReceiverJsTest.hap"
@@ -45,5 +37,4 @@
             "cleanup-apps": true
         }
     ]
-    
 }

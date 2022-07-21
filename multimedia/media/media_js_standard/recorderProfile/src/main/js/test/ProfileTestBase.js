@@ -14,7 +14,7 @@
  */
 
 import media from '@ohos.multimedia.media'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 const audioRecorderCaps = {
     outputFormat: media.ContainerFormatType.CFT_MPEG_4A,

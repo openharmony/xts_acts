@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 import image from '@ohos.multimedia.image'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
+export default function ImageReceiver() {
 describe('ImageReceiver', function () {
 
     const YUV_Y = 1;
@@ -1115,3 +1116,4 @@ describe('ImageReceiver', function () {
         onErr(done, 'Receiver_025', 'a')
     })
 })
+}
