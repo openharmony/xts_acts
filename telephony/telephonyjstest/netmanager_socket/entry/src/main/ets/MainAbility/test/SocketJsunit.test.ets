@@ -15,6 +15,7 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
+import connection from '@ohos.net.connection';
 import socket from '@ohos.net.socket'
 import utils from './Utils.ets'
 
@@ -31,8 +32,7 @@ export default function socketJsunit() {
      */
     it('Telephony_Socket_Socket_constructUDPSocketInstance_0100', 0, function (done) {
       console.log("************* Telephony_Socket_Socket_constructUDPSocketInstance_0100 Test start*************");
-      var udpSocket = udp;
-      expect(udpSocket != null).assertTrue();
+      expect(connection.UDPSocket != undefined).assertFalse();
       console.log("************* Telephony_Socket_Socket_constructUDPSocketInstance_0100 Test end*************");
       done();
     })
@@ -44,8 +44,7 @@ export default function socketJsunit() {
      */
     it('Telephony_Socket_Socket_constructTCPSocketInstance_0100', 0, function (done) {
       console.log("************* Telephony_Socket_Socket_constructTCPSocketInstance_0100 Test start*************");
-      var tcpSocket = tcp;
-      expect(tcpSocket != null).assertTrue();
+      expect(connection.TCPSocket != undefined).assertFalse();
       console.log("************* Telephony_Socket_Socket_constructTCPSocketInstance_0100 Test end*************");
       done();
     })

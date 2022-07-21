@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, afterAll, it, expect, afterEach} from 'deccjsunit/index';
+import connection from '@ohos.net.connection';
 import http from '@ohos.net.http';
 
 export default function httpJsunit() {
@@ -24,8 +25,7 @@ export default function httpJsunit() {
      */
     it("Telephony_Http_Http_createHttp_0100", 0, async function (done) {
       console.log("-----------------------http createHttp Test is starting-----------------------");
-      var httpRequest = http.createHttp();
-      expect(httpRequest != null).assertTrue();
+      expect(connection.HttpRequest != undefined).assertFalse();
       console.log("-----------------------http createHttp Test end-----------------------");
       done();
     });
