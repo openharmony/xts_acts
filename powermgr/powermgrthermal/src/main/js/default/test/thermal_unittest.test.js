@@ -23,6 +23,7 @@ describe('appInfoTest_thermal4', function () {
     console.log("*************Thermal API Test Begin*************");
     test14();
     test15();
+    test16();
 })
 
 function test14() {
@@ -65,5 +66,25 @@ function test15() {
                 resolve();
             }, MSEC_1000 * 4);
         })
+    })
+}
+
+function test16() {
+
+    /* @tc.number thermal_manager_js_013
+     * @tc.name Thermal_013
+     * @tc.desc Thermal acquisition kit
+     */
+    it('Thermal_016', 0, function () {
+        console.info("Thermal level is: " + thermal.ThermalLevel.COOL + thermal.ThermalLevel.NORMAL
+            + thermal.ThermalLevel.WARM + thermal.ThermalLevel.HOT + thermal.ThermalLevel.OVERHEATED
+            + thermal.ThermalLevel.WARNING + thermal.ThermalLevel.EMERGENCY);
+        expect(thermal.ThermalLevel.COOL == 0).assertTrue();
+        expect(thermal.ThermalLevel.NORMAL == 1).assertTrue();
+        expect(thermal.ThermalLevel.WARM == 2).assertTrue();
+        expect(thermal.ThermalLevel.HOT == 3).assertTrue();
+        expect(thermal.ThermalLevel.OVERHEATED == 4).assertTrue();
+        expect(thermal.ThermalLevel.WARNING == 5).assertTrue();
+        expect(thermal.ThermalLevel.EMERGENCY == 6).assertTrue();
     })
 }
