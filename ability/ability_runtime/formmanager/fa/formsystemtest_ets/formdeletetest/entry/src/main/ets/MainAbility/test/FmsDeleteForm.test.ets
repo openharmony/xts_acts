@@ -599,7 +599,6 @@ export default function test() {
 
             async function delPublishCallbackB() {
                 console.info(`${tcNumber} delPublishCallbackB`);
-                await sleep(1000);
                 console.info(`${tcNumber} delPublishCallbackB end`);
                 console.info(`${tcNumber} end`);
                 done();

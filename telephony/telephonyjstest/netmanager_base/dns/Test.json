@@ -1,10 +1,12 @@
 {
     "description": "Function test of sim manager interface",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "900000",
-        "package": "com.ohos.dns",
-        "shell-timeout": "60000"
+        "bundle-name": "com.ohos.dns",
+        "package-name": "com.ohos.dns",
+        "shell-timeout": "900000",
+        "testcase-timeout": "30000"
     },
     "kits": [
         {

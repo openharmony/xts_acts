@@ -15,8 +15,9 @@
 
 import media from '@ohos.multimedia.media'
 import * as base from './ProfileTestBase.js';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
+export default function ProfileAbnormalTestPromise() {
 describe('ProfileAbnormalTestPromise', function () {
     beforeAll(function () {
         console.info('beforeAll case');
@@ -351,3 +352,4 @@ describe('ProfileAbnormalTestPromise', function () {
         promiseAbnormalGetVideoProfile(0, 65536, done);
     })
 })
+}

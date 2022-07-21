@@ -17,12 +17,8 @@ import brightness from '@system.brightness';
 import { describe } from 'deccjsunit/index';
 
 const INPUT_ERROR_CODE_CODE = 202;
-const SET_VALUE_MSG = "setValue: value is not an available number";
-const SET_MODE_MSG = "setMode: value is not an available number";
-
-function isNotSupported(data) {
-    return data === "setMode: Auto adjusting brightness is not supported";
-}
+const SET_VALUE_MSG = "value is not an available number";
+const SET_MODE_MSG = "value is not an available number";
 
 function sleep(time){
     return new Promise((resolve) => setTimeout(resolve, time));
@@ -206,7 +202,7 @@ describe('appInfoTest_display', function () {
             mode: modeVal ? 0 : 1,
             fail: (data, code) => {
                 console.log("get_mode_success, data: " + data + ", code: " + code);
-                exec = isNotSupported(data) ? false : true;
+                exec = false;
             }
         })
         if (!exec) {
@@ -268,15 +264,6 @@ describe('appInfoTest_display', function () {
                         expect(data.mode === (modeVal ? 0 : 1)).assertTrue();
                     }
                 });
-            },
-            fail: (data, code) => {
-                if (!isNotSupported(data)) {
-                    console.log("set_mode_success, data: " + data + ", code: " + code);
-                    expect().assertFail();
-                } else {
-                    console.log("set_mode_success not supported");
-                    expect(isNotSupported(data)).assertTrue();
-                }
             },
             complete: () => {
                 console.log("The device information is obtained successfully. Procedure");

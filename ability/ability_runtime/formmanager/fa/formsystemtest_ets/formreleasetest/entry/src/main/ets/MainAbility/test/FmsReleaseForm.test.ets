@@ -31,7 +31,9 @@ var deleteForm_Event = "FMS_FormDelete_commonEvent";
 var subscriberOnAcquired;
 var subscriberOnDeleted;
 var subscriberOnReleased;
-
+function sleep(time) {
+  return new Promise((resolve)=>setTimeout(resolve,time));
+}
 export default function test() {
     describe(`FmsReleaseFormTest`, () => {
 
@@ -437,12 +439,12 @@ export default function test() {
                     }
                 }
             }
-            function releaseForms() {
+            async function releaseForms() {
                 console.debug("====>FMS_releaseForm_1300 releaseForms====>");
                 commonEvent.subscribe(subscriberOnReleased, onReleasedCallBack);
                 for(var iIndex = 0; iIndex < formIdList.length; iIndex++) {
                     console.log(`FMS_releaseForm_1300 featureAbility.startAbility start`);
-                    featureAbility.startAbility({
+                    await featureAbility.startAbility({
                         want: {
                             bundleName: "com.ohos.st.formsystemhostc",
                             abilityName: "com.ohos.st.formsystemhostc.MainAbility",
@@ -465,6 +467,7 @@ export default function test() {
                         expect().assertFail();
                         done();
                     });
+                    await sleep(1000)
                     console.log(`FMS_releaseForm_1300 featureAbility.startAbility end`);
                 }
             }

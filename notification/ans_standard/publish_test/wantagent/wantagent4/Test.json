@@ -1,10 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "160000",
-        "package": "com.example.actsanswantagentfourtest",
-        "shell-timeout": "160000"
+        "shell-timeout": "160000",
+        "bundle-name": "com.example.actsanswantagentfourtest",
+        "package-name": "com.example.actsanswantagentfourtest"
     },
     "kits": [
         {

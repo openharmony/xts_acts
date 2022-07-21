@@ -1,10 +1,11 @@
 {
     "description": "Configuration for startup worker js api Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "800000",
-        "package": "com.example.workerxts",
-        "shell-timeout": "90000"
+        "bundle-name": "com.example.workerxts",
+        "package-name": "com.example.workerxts",
+        "shell-timeout": "800000"
     },
     "kits": [
         {
