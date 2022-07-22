@@ -28,20 +28,19 @@ describe('ImageReceiver', function () {
     const YCBCR_422_SP = 1000;
     const FORMATJPEG = 2000;
 
-    beforeAll(function () {
+    beforeAll(async function () {
         console.info('beforeAll case');
     })
 
     beforeEach(function () {
-        isTimeOut = false;
         console.info('beforeEach case');
     })
 
-    afterEach(function () {
+    afterEach(async function () {
         console.info('afterEach case');
     })
 
-    afterAll(function () {
+    afterAll(async function () {
         console.info('afterAll case');
     })
 
@@ -49,7 +48,7 @@ describe('ImageReceiver', function () {
         await new Promise(res => setTimeout(() => { res() }, times));
     }
 
-    function createRecriver(done, testNum, wid, hei, fmt, cap) {
+    async function createRecriver(done, testNum, wid, hei, fmt, cap) {
         try {
             image.createImageReceiver(wid, hei, fmt, cap);
             expect(false).assertTrue();
@@ -62,21 +61,21 @@ describe('ImageReceiver', function () {
     }
 
     async function getComponentProErr(done, testNum, param) {
-        var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
+        var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY);
+        let once = false;
         if (receiver == undefined) {
             expect(false).assertTrue();
-            done()
+            done();
         } else {
             receiver.on('imageArrival', () => {
-                expect(true).assertTrue();
-            })
-
-            var dummy = receiver.test
-
+            if (once) {
+                return;
+            }
+            once = true;
             receiver.readLatestImage(async (err, img) => {
                 if (img == undefined) {
                     expect(false).assertTrue();
-                    done()
+                    done();
                 } else {
                     expect(img.size.width == WIDTH).assertTrue();
                     expect(img.size.height == HEIGHT).assertTrue();
@@ -95,25 +94,70 @@ describe('ImageReceiver', function () {
                     }
                 }
             })
+            expect(true).assertTrue();
+        })
+        var dummy = receiver.test;
         }
     }
 
     async function getComponentCbErr(done, testNum, param) {
-        var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
+        var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY);
+        let once = false;
         if (receiver == undefined) {
             expect(false).assertTrue();
-            done()
+            done();
         } else {
             receiver.on('imageArrival', () => {
+                if (once) {
+                    return;
+                }
+                once = true;
+                receiver.readLatestImage(async (err, img) => {
+                    if (img == undefined) {
+                        expect(false).assertTrue();
+                        done();
+                    } else {
+                        expect(img.size.width == WIDTH).assertTrue();
+                        expect(img.size.height == HEIGHT).assertTrue();
+                        expect(img.format == 12).assertTrue();
+                        expect(img.clipRect.size.width == WIDTH).assertTrue();
+                        expect(img.clipRect.size.height == HEIGHT).assertTrue();
+                        expect(img.clipRect.x == 0).assertTrue();
+                        expect(img.clipRect.y == 0).assertTrue();
+                        try {
+                            img.getComponent(param, (err, component) => {
+                                expect(false).assertTrue();
+                            })
+                        } catch (error) {
+                            expect(error.code == 1).assertTrue();
+                            console.log(`${testNum} error msg: ` + error);
+                            done();
+                        }
+                    }
+                })
                 expect(true).assertTrue();
             })
+            var dummy = receiver.test;
+        }
+    }
 
-            var dummy = receiver.test
-
-            receiver.readLatestImage(async (err, img) => {
-                if (img == undefined) {
+    async function getComponentP(done, testNum, param) {
+        var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY);
+        let once = false;
+        if (receiver == undefined) {
+            expect(false).assertTrue();
+            done();
+            return;
+        }
+        receiver.on('imageArrival', () => {
+            if (once) {
+                return;
+            }
+            once = true;
+            receiver.readLatestImage((err, img) => {
+                if (err) {
                     expect(false).assertTrue();
-                    done()
+                    done();
                 } else {
                     expect(img.size.width == WIDTH).assertTrue();
                     expect(img.size.height == HEIGHT).assertTrue();
@@ -123,108 +167,74 @@ describe('ImageReceiver', function () {
                     expect(img.clipRect.x == 0).assertTrue();
                     expect(img.clipRect.y == 0).assertTrue();
 
-                    try {
-                        img.getComponent(param, (err, component) => {
+                    img.getComponent(param).then(component => {
+                        if (component == undefined) {
                             expect(false).assertTrue();
-                        })
-                    } catch (error) {
-                        expect(error.code == 1).assertTrue();
-                        console.log(`${testNum} error msg: ` + error);
-                        done();
-                    }
-                }
-            })
-        }
-    }
-    async function getComponentP(done, testNum, param) {
-        var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
-        if (receiver == undefined) {
-            expect(false).assertTrue();
-            done()
-            return;
-        }
-
-        receiver.on('imageArrival', () => {
-            expect(true).assertTrue();
-        })
-
-        var dummy = receiver.test
-
-        receiver.readLatestImage((err, img) => {
-            if (err) {
-                expect(false).assertTrue();
-                done();
-            } else {
-                expect(img.size.width == WIDTH).assertTrue();
-                expect(img.size.height == HEIGHT).assertTrue();
-                expect(img.format == 12).assertTrue();
-                expect(img.clipRect.size.width == WIDTH).assertTrue();
-                expect(img.clipRect.size.height == HEIGHT).assertTrue();
-                expect(img.clipRect.x == 0).assertTrue();
-                expect(img.clipRect.y == 0).assertTrue();
-
-                img.getComponent(param).then(component => {
-                    if (component == undefined) {
+                            done();
+                        } else {
+                            expect(component.componentType == param).assertTrue();
+                            expect(component.byteBuffer != undefined).assertTrue();
+                            expect(component.rowStride == 0).assertTrue();
+                            expect(component.pixelStride == 0).assertTrue();
+                            done();
+                        }
+                    }).catch(error => {
+                        console.log(`${testNum} error:` + error)
                         expect(false).assertTrue();
                         done();
-                    } else {
-                        expect(component.componentType == param).assertTrue();
-                        expect(component.byteBuffer != undefined).assertTrue();
-                        expect(component.rowStride == 0).assertTrue();
-                        expect(component.pixelStride == 0).assertTrue();
-                        done();
-                    }
-                }).catch(error => {
-                    console.log(`${testNum} error:` + error)
-                    expect(false).assertTrue();
-                    done();
-                })
-            }
+                    })
+                }
+            })
+            expect(true).assertTrue();
         })
+        var dummy = receiver.test;
     }
 
     async function getComponentCb(done, testNum, param) {
-        var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY)
+        var receiver = image.createImageReceiver(WIDTH, HEIGHT, FORMAT, CAPACITY);
+        let once = false;
         if (receiver == undefined) {
             expect(false).assertTrue();
-            done()
+            done();
             return;
         }
 
         receiver.on('imageArrival', () => {
+            if (once) {
+                return;
+            }
+            once = true;
+            receiver.readLatestImage((err, img) => {
+                if (err) {
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    expect(img.size.width == WIDTH).assertTrue();
+                    expect(img.size.height == HEIGHT).assertTrue();
+                    expect(img.format == 12).assertTrue();
+                    expect(img.clipRect.size.width == WIDTH).assertTrue();
+                    expect(img.clipRect.size.height == HEIGHT).assertTrue();
+                    expect(img.clipRect.x == 0).assertTrue();
+                    expect(img.clipRect.y == 0).assertTrue();
+
+                    img.getComponent(param, (err, component) => {
+                        if (err) {
+                            expect(false).assertTrue();
+                            console.log(`${testNum} geterror: ` + err)
+                        } else {
+                            expect(component != undefined).assertTrue();
+                            expect(component.componentType == param).assertTrue();
+                            expect(component.byteBuffer != undefined).assertTrue();
+                            expect(component.rowStride == 0).assertTrue();
+                            expect(component.pixelStride == 0).assertTrue();
+                            done();
+                        }
+                    })
+                }
+            })
             expect(true).assertTrue();
         })
-
-        var dummy = receiver.test
-
-        receiver.readLatestImage((err, img) => {
-            if (err) {
-                expect(false).assertTrue();
-                done();
-            } else {
-                expect(img.size.width == WIDTH).assertTrue();
-                expect(img.size.height == HEIGHT).assertTrue();
-                expect(img.format == 12).assertTrue();
-                expect(img.clipRect.size.width == WIDTH).assertTrue();
-                expect(img.clipRect.size.height == HEIGHT).assertTrue();
-                expect(img.clipRect.x == 0).assertTrue();
-                expect(img.clipRect.y == 0).assertTrue();
-
-                img.getComponent(param, (err, component) => {
-                    if (err) {
-                        expect(false).assertTrue();
-                        console.log(`${testNum} geterror: ` + err)
-                    } else {
-                        expect(component != undefined).assertTrue();
-                        expect(component.componentType == param).assertTrue();
-                        expect(component.byteBuffer != undefined).assertTrue();
-                        expect(component.rowStride == 0).assertTrue();
-                        expect(component.pixelStride == 0).assertTrue();
-                        done();
-                    }
-                })
-            }
-        })
+        var dummy = receiver.test;
     }
 
     async function onErr(done, testNum, param) {
@@ -243,7 +253,7 @@ describe('ImageReceiver', function () {
                 console.log(`${testNum} error msg: ` + error);
                 done();
             }
-            var dummy = receiver.test
+            var dummy = receiver.test;
         }
 
     }
