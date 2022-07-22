@@ -24,6 +24,7 @@ group("appaccount_scene") {
       "actsaccountsceneappaccess:ActsAccountSceneAppAccess",
       "actsaccountsceneonoff:ActsAccountSceneOnOff",
       "actsscenegetallaccounts:ActsSceneGetAllAccounts",
+      "actsaccountauthenticator:ActsAccountAuthenticator"
     ]
   }
 }
