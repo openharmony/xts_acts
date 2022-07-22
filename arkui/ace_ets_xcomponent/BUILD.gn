@@ -39,6 +39,8 @@ ohos_prebuilt_shared_library("libcppsharedso") {
     } else {
       source = " "
     }
+  } else {
+    source = " "
   }
 }
 
