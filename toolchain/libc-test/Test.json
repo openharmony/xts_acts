@@ -1,0 +1,32 @@
+{
+    "kits": [
+        {
+            "push": [
+                "ActToolChainTest->/data/local/tmp/ActToolChainTest",
+                "libc-test.tar->/data/local/tmp/libc-test.tar",
+                "libc-test-lib.tar->/data/local/tmp/libc-test-lib.tar"
+            ],
+            "type": "PushKit",
+            "post-push": [
+                "mkdir /tmp",
+                "mkdir /dev/shm",
+                "mkdir /src",
+                "mkdir /src/functional",
+                "tar -xf /data/local/tmp/libc-test.tar -C /data/local/tmp/",
+                "tar -xf /data/local/tmp/libc-test-lib.tar -C /data/local/tmp/",
+                "chmod a+x -R /data/local/tmp/libc-test-lib",
+                "cp /data/local/tmp/libc-test-lib/{libdlopen_dso.so,libdlclose_reset_dso.so,libtls_get_new-dtv_dso.so} /",
+                "cp /data/local/tmp/libc-test-lib/{libtls_align_dso.so,libtls_init_dso.so} /src/functional/",
+                "chmod a+x -R /data/local/tmp/libc-test"
+            ]
+        }
+    ],
+    "driver": {
+        "native-test-timeout": "120000",
+        "type": "CppTest",
+        "module-name": "ActToolChainTest",
+        "runtime-hint": "1s",
+        "native-test-device-path": "/data/local/tmp"
+    },
+    "description": "Configuration for ActToolChainTest Tests"
+}
