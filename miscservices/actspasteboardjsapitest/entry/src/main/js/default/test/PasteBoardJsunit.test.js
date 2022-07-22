@@ -70,6 +70,7 @@ describe('PasteBoardTest', function() {
         console.info('Checks PasteDataProperty.localOnly')
         var pasteDataProperty = pasteData1.getProperty()
         console.info('Checks: localOnly = ' + pasteDataProperty.localOnly)
+        console.info('Checks: mimeTypes = ' + pasteDataProperty.mimeTypes)
         
         console.log('Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
 		console.log('f_test1: getPrimaryMimeType = ' + pasteData1.getPrimaryMimeType());
@@ -3471,7 +3472,14 @@ describe('PasteBoardTest', function() {
 		
 		console.log('f_test66 Converts the PlainTextData to text')
         var pasteDataRecord = pasteData1.getRecordAt(0)
-        console.info('checks pasteDataRecord.mimeType = ' + pasteDataRecord.mimeType)
+        console.info('checks pasteDataRecord.mimeType = ' + pasteDataRecord.mimeType);
+        expect(pasteDataRecord.mimeType == undefined).assertTrue();
+        console.info('checks pasteDataRecord.htmlText = ' + pasteDataRecord.htmlText);
+        expect(pasteDataRecord.htmlText == undefined).assertTrue();
+        console.info('checks pasteDataRecord.want = ' + pasteDataRecord.want);
+        expect(pasteDataRecord.want == undefined).assertTrue();
+        console.info('checks pasteDataRecord.uri = ' + pasteDataRecord.uri);
+        expect(pasteDataRecord.uri == undefined).assertTrue();
 		console.log('f_test66 pasteDataRecord.convertToText = ' + pasteDataRecord.convertToText);
 
         console.log('f_test66 SUB_pasteBoard_function_JS_API_6600 end');
