@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Subscriber from '@ohos.commonevent'
+import Subscriber from '@ohos.commonEvent'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('ActsSubscriberTestOrder', function () {
