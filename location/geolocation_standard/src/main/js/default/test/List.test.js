@@ -16,3 +16,5 @@
 require('./GeocoderTest.test.js')
 require('./LocationTest.test.js')
 require('./Geolocation.test.js')
+require('./LocationMock.test.js')
+
