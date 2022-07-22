@@ -70,7 +70,9 @@ describe('PasteBoardTest', function() {
         console.info('Checks PasteDataProperty.localOnly')
         var pasteDataProperty = pasteData1.getProperty()
         console.info('Checks: localOnly = ' + pasteDataProperty.localOnly)
+        expect(pasteDataProperty.localOnly == undefined).assertTrue();
         console.info('Checks: mimeTypes = ' + pasteDataProperty.mimeTypes)
+        expect(pasteDataProperty.mimeTypes == undefined).assertTrue();
         
         console.log('Checks there is a MIMETYPE_TEXT_PLAIN MIME type of data' + pasteboard.MIMETYPE_TEXT_PLAIN);
 		console.log('f_test1: getPrimaryMimeType = ' + pasteData1.getPrimaryMimeType());
