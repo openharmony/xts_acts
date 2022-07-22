@@ -14,8 +14,9 @@
  */
 import vibrator from '@system.vibrator';
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
+export default function VibratorJsTest_misc_1() {
 describe("VibratorJsTest_misc_1", function () {
      beforeAll(function () {
 
@@ -59,7 +60,7 @@ describe("VibratorJsTest_misc_1", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0190
      */
-    it("SubVibratorJsTest0001", FUNCTION|MEDIUMTEST|LEVEL0, async function (done) {
+    it("SubVibratorJsTest0001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('----------------------SubVibratorJsTest0001---------------------------');
         vibrator.vibrate({
             mode: 'long',
@@ -82,7 +83,7 @@ describe("VibratorJsTest_misc_1", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0200
      */
-    it("SubVibratorJsTest0002", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("SubVibratorJsTest0002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------SubVibratorJsTest0002---------------------------');
         vibrator.vibrate({
             mode: 'short',
@@ -105,7 +106,7 @@ describe("VibratorJsTest_misc_1", function () {
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0210
     */
-    it("SubVibratorJsTest0003", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("SubVibratorJsTest0003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------SubVibratorJsTest0003---------------------------');
         vibrator.vibrate({
             mode: 'short',
@@ -125,7 +126,7 @@ describe("VibratorJsTest_misc_1", function () {
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0220
     */
-    it("SubVibratorJsTest0004", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("SubVibratorJsTest0004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------SubVibratorJsTest0004---------------------------');
         vibrator.vibrate({
             mode: 'short',
@@ -141,7 +142,7 @@ describe("VibratorJsTest_misc_1", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0230
      */
-    it("SubVibratorJsTest0005", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("SubVibratorJsTest0005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------SubVibratorJsTest0005---------------------------');
         vibrator.vibrate({
             success: function () {
@@ -160,7 +161,7 @@ describe("VibratorJsTest_misc_1", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0240
      */
-    it("SubVibratorJsTest0006", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("SubVibratorJsTest0006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------SubVibratorJsTest0006---------------------------');
         vibrator.vibrate({
             mode: 'long',
@@ -181,7 +182,7 @@ describe("VibratorJsTest_misc_1", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0250
      */
-    it("SubVibratorJsTest0007", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("SubVibratorJsTest0007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------SubVibratorJsTest0007---------------------------');
         try {
             vibrator.vibrate({
@@ -205,7 +206,7 @@ describe("VibratorJsTest_misc_1", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0260
      */
-    it("SubVibratorJsTest0008", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("SubVibratorJsTest0008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------SubVibratorJsTest0008---------------------------');
         vibrator.vibrate({
             mode: 'short',
@@ -237,7 +238,7 @@ describe("VibratorJsTest_misc_1", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0270
      */
-    it("SubVibratorJsTest0009", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("SubVibratorJsTest0009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------SubVibratorJsTest0009---------------------------');
         try {
             vibrator.vibrate();
@@ -254,7 +255,7 @@ describe("VibratorJsTest_misc_1", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0280
      */
-    it("SubVibratorJsTest0010", FUNCTION|MEDIUMTEST|LEVEL3, async function (done) {
+    it("SubVibratorJsTest0010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------SubVibratorJsTest0010---------------------------');
         try {
             vibrator.vibrate({
@@ -275,4 +276,4 @@ describe("VibratorJsTest_misc_1", function () {
     })
 })
 	
-	
+	}

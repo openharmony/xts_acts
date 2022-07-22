@@ -14,5 +14,5 @@
 */
 import objectStoreTest from './ObjectStoreJsunit.test.js'
 export default function testsuite() {
-objectStoreTest()
+    objectStoreTest()
 }
