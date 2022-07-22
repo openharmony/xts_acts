@@ -502,10 +502,8 @@ export default function uiTest() {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let scrollBar = await driver.findComponent(BY.type('Scroll'))
-      let text = await scrollBar.scrollSearch(BY.text('4'))
-      await driver.delayMs(waitUiReadyMs)
-      expect(text == null).assertTrue()
-      await scrollBar.scrollToTop()
+      let button = await scrollBar.scrollSearch(BY.text('next page'))
+      expect(await button.getText() == 'next page').assertTrue()
     })
 
     /*
