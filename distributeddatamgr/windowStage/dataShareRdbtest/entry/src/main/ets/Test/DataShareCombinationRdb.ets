@@ -50,6 +50,8 @@ let Update100 = { "name": "suns", "age": 1 };
 let PredicatesNumber = new dataSharePredicates.DataSharePredicates();
 PredicatesNumber.equalTo("age", 1);
 let PredicatesAll = new dataSharePredicates.DataSharePredicates();
+let predicates = new dataSharePredicates.DataSharePredicates()
+predicates.inKeys(["Lisa", "Rose"])
 
 //getColumnIndex
 const IndexNumber = "age";
@@ -293,18 +295,22 @@ export default function DataShareCombinationRdb() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 1
-*/
+    */
     it('DataShareNotifyChangeRdb0101', 1, async function (done) {
       try {
         let Count = 1;
-        globalThis.helper.on("dataChange", uri, function (data) {
+        globalThis.helper.on("dataChange", uri, function (err,data) {
           if (Count < 4) {
-            console.info("TestDataShare notifyChange = " + data);
-            expect(true).assertEqual(data != null);
+            console.info("TestDataShare notifyChange err = " + err);
+			console.info("TestDataShare notifyChange data = " + data);
+            expect(true).assertEqual(err == null);
+			expect(true).assertEqual(data == null);
             Count = Count + 1;
           } else {
-            console.info("TestDataShare notifyChange = " + data);
-            expect(true).assertEqual(data != null);
+            console.info("TestDataShare notifyChange err = " + err);
+			console.info("TestDataShare notifyChange data = " + data);
+            expect(true).assertEqual(err == null);
+			expect(true).assertEqual(data == null);
             globalThis.helper.off("dataChange", uri);
             console.info("TestDataShare off");
             done();
