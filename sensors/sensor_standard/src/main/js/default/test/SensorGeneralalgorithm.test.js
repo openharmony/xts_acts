@@ -867,6 +867,25 @@ describe("SensorJsTest_sensor5", function () {
     })
 
     /*
+    * @tc.name: SensorJsTest_101
+    * @tc.desc: Verfication results of the incorrect parameters of test interface.
+    */
+    it('SensorJsTest_1011', 0, async function (done) {
+        console.info('SensorJsTest_1011 start')
+        await sensor.getGeomagneticDip([1, 2, 3, 4, 5, 6, 7, 8, 9]).then((data) => {
+            console.info("SensorJsTest_1011" + data)
+            expect(data).assertEqual(getGeomagneticDipResult[0])
+            done()
+            console.info('SensorJsTest_1011' + 'length:' + data.length);
+        }, (error) => {
+            console.info('SensorJsTest_1011 failed');
+            expect(false).assertTrue();
+            done()
+        })
+        console.info("SensorJsTest_1011 end")
+    })
+
+    /*
     * @tc.name: SensorJsTest_102
     * @tc.desc: Verfication results of the incorrect parameters of test interface.
     */
