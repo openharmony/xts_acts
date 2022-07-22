@@ -10,16 +10,22 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import("//build/ohos_var.gni")
-group("hiviewdfxtestacts") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "hiappeventtest/hiappeventjstest:ActsHiAppeventTest",
-      "hicheckertest/hicheckerjstest:hicheckerjstest",
-      "hilogjstest:ActsHilogJsTest",
-      "hitracechainjstest:ActsHiTraceChainJsTest",
-      "hiview/faultlogger/faultloggerjs:faultloggerjs_test",
-    ]
-  }
+
+import("//test/xts/tools/build/suite.gni")
+ohos_js_hap_suite("ActsHilogJsTest") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":hilog_js_assets",
+    ":hilog_resources",
+  ]
+
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsHilogJsTest"
+}
+ohos_js_assets("hilog_js_assets") {
+  source_dir = "./src/main/js/default"
+}
+ohos_resources("hilog_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }
