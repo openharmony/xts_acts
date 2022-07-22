@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -93,7 +93,7 @@ describe('AddImage', function () {
 
     /**
      * @tc.number    : add_01_003
-     * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 2, alphaType: 2)
+     * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 0, alphaType: 2)
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
      *                 3.using color and opts create newPixelMap
@@ -103,13 +103,13 @@ describe('AddImage', function () {
      * @tc.level     : Level 0
      */
     it('add_01_003', 0, async function (done) {
-        let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 2, alphaType: 2 }
+        let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 0, alphaType: 2 }
         createPixMapPromise(done, 'add_01_003', opts);
     })
 
     /**
      * @tc.number    : add_01_004
-     * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 2, alphaType: 3)
+     * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 0, alphaType: 3)
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
      *                 3.using color and opts create newPixelMap
@@ -119,13 +119,13 @@ describe('AddImage', function () {
      * @tc.level     : Level 0
      */
     it('add_01_004', 0, async function (done) {
-        let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 2, alphaType: 3 }
+        let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 0, alphaType: 3 }
         createPixMapPromise(done, 'add_01_004', opts);
     })
 
     /**
      * @tc.number    : add_02_001
-     * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 2, alphaType: 0)
+     * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 0, alphaType: 0)
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
      *                 3.using color and opts create newPixelMap
@@ -135,13 +135,13 @@ describe('AddImage', function () {
      * @tc.level     : Level 0
      */
     it('add_02_001', 0, async function (done) {
-        let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 2, alphaType: 0 }
+        let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 0, alphaType: 0 }
         createPixMapCb(done, 'add_02_001', opts);
     })
 
     /**
      * @tc.number    : add_02_002
-     * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 2, alphaType: 1)
+     * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 0, alphaType: 1)
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
      *                 3.using color and opts create newPixelMap
@@ -151,7 +151,7 @@ describe('AddImage', function () {
      * @tc.level     : Level 0
      */
     it('add_02_002', 0, async function (done) {
-        let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 2, alphaType: 1 }
+        let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 0, alphaType: 1 }
         createPixMapCb(done, 'add_02_002', opts);
     })
 
