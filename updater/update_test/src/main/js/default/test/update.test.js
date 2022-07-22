@@ -2069,4 +2069,182 @@ describe('updateclient', function() {
         console.info('[client.getUpdaterFromOther] success.');
         console.info('testGetUpdaterFromOther END');
     });
+
+   /**
+    * @tc.number   SUB_UPDATE_JS_API_0092
+    * @tc.name     testApplyNewVersionCallback
+    * @tc.desc     Test testApplyNewVersionCallback obj.
+    */
+    it('testApplyNewVersionCallback', 0, function(){
+	console.info('testApplyNewVersionCallback START');
+	try{
+	if (client === undefined){
+	    console.error("client not defined");
+	    return;
+	}
+    if (updater === undefined){
+	    updater = client.getUpdater('/data/updater/updater.zip', 'OTA');
+        console.info("beforeEach updater" + updater);
+	}
+	let ret = updater.applyNewVersion((err,data) => {
+    console.log("UPDATE_TEST applyNewVersionCallback success " + data);
+	});
+	expect(ret).assertInstanceOf('Number');
+	} catch(e) {
+        console.error('[testApplyNewVersionCallback] fail.' + e);
+	}
+	console.info('[updater.applyNewVersion] success.');
+	console.info('testApplyNewVersionCallback END');
+    });
+	
+   /**
+    * @tc.number   SUB_UPDATE_JS_API_0093
+    * @tc.name     testApplyNewVersionPromise
+    * @tc.desc     Test testApplyNewVersionPromise obj.
+    */
+    it('testApplyNewVersionPromise', 0, function(){
+	console.info('testApplyNewVersionPromise START');
+	try{ 
+	if (client === undefined){
+	    console.error("client not defined");
+	    return;
+	}
+    if (updater === undefined){
+	    updater = client.getUpdater('/data/updater/updater.zip', 'OTA');
+        console.info("beforeEach updater" + updater);
+	}
+	let ret = updater.applyNewVersion().then((err,data) => {
+    console.log("UPDATE_TEST applyNewVersionPromise success " + data);
+	});
+	expect(ret).assertInstanceOf('Promise');
+	} catch(e) {
+        console.error('[testApplyNewVersionPromise] fail.' + e);
+	}
+	console.info('[updater.applyNewVersion] success.');
+	console.info('testApplyNewVersionPromise END');
+    });				
+	
+   /**
+    * @tc.number   SUB_UPDATE_JS_API_0094
+    * @tc.name     testRebootAndCleanCacheCallback
+    * @tc.desc     Test testRebootAndCleanCacheCallback obj.
+    */
+    it('testRebootAndCleanCacheCallback', 0, function(){
+	console.info('testRebootAndCleanCacheCallback START');
+	try{
+	if (client === undefined){
+	    console.error("client not defined");
+	    return;
+	}
+    if (updater === undefined){
+	    updater = client.getUpdater('/data/updater/updater.zip', 'OTA');
+        console.info("beforeEach updater" + updater);
+	}
+	let ret = updater.rebootAndCleanCache((err,data) => {
+    console.log("UPDATE_TEST testRebootAndCleanCacheCallback success " + data);
+	});
+	expect(ret).assertInstanceOf('Number');
+	} catch(e) {
+        console.error('[testRebootAndCleanCacheCallback] fail.' + e);
+	}
+	console.info('[updater.rebootAndCleanCache] success.');
+	console.info('testRebootAndCleanCacheCallback END');
+    });	
+	
+   /**
+    * @tc.number   SUB_UPDATE_JS_API_0095
+    * @tc.name     testRebootAndCleanCachePromise
+    * @tc.desc     Test testRebootAndCleanCachePromise obj.
+    */
+    it('testRebootAndCleanCachePromise', 0, function(){
+	console.info('testRebootAndCleanCachePromise START');
+	try{
+	if (client === undefined){
+	    console.error("client not defined");
+	    return;
+	}
+    if (updater === undefined){
+	    updater = client.getUpdater('/data/updater/updater.zip', 'OTA');
+        console.info("beforeEach updater" + updater);
+	}
+	let ret = updater.rebootAndCleanCache().then((err,data) => {
+    console.log("UPDATE_TEST testRebootAndCleanCachePromise success " + data);
+	});
+	expect(ret).assertInstanceOf('Promise');
+	} catch(e) {
+        console.error('[testRebootAndCleanCachePromise] fail.' + e);
+	}
+	console.info('[updater.rebootAndCleanCache] success.');
+	console.info('testRebootAndCleanCachePromise END');
+    });	
+	
+   /**
+    * @tc.number   SUB_UPDATE_JS_API_0096
+    * @tc.name     testRebootAndCleanUserDataCallback
+    * @tc.desc     Test testRebootAndCleanUserDataCallback obj.
+    */
+    it('testRebootAndCleanUserDataCallback', 0, function(){
+	console.info('testRebootAndCleanUserDataCallback START');
+	try{
+	if (client === undefined){
+	    console.error("client not defined");
+	    return;
+	}
+    if (updater === undefined){
+	    updater = client.getUpdater('/data/updater/updater.zip', 'OTA');
+        console.info("beforeEach updater" + updater);
+	}
+	let ret = updater.rebootAndCleanUserData((err,data) => {
+    console.log("UPDATE_TEST testRebootAndCleanUserDataCallback success " + data);
+	});
+    expect(ret).assertInstanceOf('Number');
+	} catch(e) {
+        console.error('[testRebootAndCleanUserDataCallback] fail.' + e);
+	}
+	console.info('[updater.rebootAndCleanUserData] success.');
+	console.info('testRebootAndCleanUserDataCallback END');
+    });	
+	
+   /**
+    * @tc.number   SUB_UPDATE_JS_API_0097
+    * @tc.name     testRebootAndCleanUserDataPromise
+    * @tc.desc     Test testRebootAndCleanUserDataPromise obj.
+    */
+    it('testRebootAndCleanUserDataPromise', 0, function(){
+	console.info('testRebootAndCleanUserDataPromise START');
+	try{
+	if(client === undefined){
+	    console.error("client not defined");
+	    return;
+	}
+    if (updater === undefined){
+	    updater = client.getUpdater('/data/updater/updater.zip', 'OTA');
+        console.info("beforeEach updater" + updater);
+	}
+	let ret = updater.rebootAndCleanUserData().then((err,data) => {
+    console.log("UPDATE_TEST testRebootAndCleanUserDataPromise success " + data);
+	});
+	expect(ret).assertInstanceOf('Promise');
+	} catch(e) {
+        console.error('[testRebootAndCleanUserDataPromise] fail.' + e);
+	}
+	console.info('[updater.rebootAndCleanUserData] success.');
+	console.info('testRebootAndCleanUserDataPromise END');
+    });
+	
+	/**
+     * @tc.number    SUB_UPDATE_JS_API_0098
+     * @tc.name      testErrMsg
+     * @tc.desc      check errMsg is defined correct.
+     */
+    it('testErrMsg', 0, function() {
+        console.info('testErrMsg START');
+        try {
+            expect(updater.NewVersionInfo.errMsg).assertInstanceOf('String');			
+        } catch(e) {
+            console.error('[testErrMsg] fail.' + e);
+        }
+        console.info('[ErrMsg] success.');
+        console.info('testErrMsg END');
+    });	
 });
