@@ -168,5 +168,32 @@ describe('rdbStoreInsertTest_test3', function () {
         done()
         console.log(TAG + "************* testRdbStoreInsert0003 end   *************");
     })
+
+    /**
+     * @tc.name rdb insert test
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_Insert_0040
+     * @tc.desc rdb insert test
+     */
+     it('testRdbStoreInsert0004', 0, async function (done) {
+        console.log(TAG + "************* testRdbStoreInsert0004 start *************");
+        var u8 = new Uint8Array([1, 2, 3])
+        const valueBucket = {
+            "name": "zhangsan",
+            "age": 18,
+            "salary": null,
+            "blobType": u8,
+        }
+        let insertPromise = rdbStore.insert("test", valueBucket)
+        insertPromise.then(async (ret) => {
+            expect(1).assertEqual(ret)
+            console.log(TAG + "insert first done: " + ret)
+        }).catch((err) => {
+            console.log(TAG + "insert with null table")
+            expect(null).assertFail()
+        })
+        done();
+        console.log(TAG + "************* testRdbStoreInsert0004 end   *************");
+    })
+
     console.log(TAG + "*************Unit Test End*************");
 })
