@@ -1996,8 +1996,14 @@ describe('webgl1Test_webgl1', function() {
 			return;
 		}
 
-		var viewPortParameter = gl.getParameter(gl.MAX_VIEWPORT_DIMS);
+		var maxViewPortDimsParameter = gl.getParameter(gl.MAX_VIEWPORT_DIMS);
+		console.log('maxViewPortDimsParameter: ' + maxViewPortDimsParameter);
+		var viewPortParameter = gl.getParameter(gl.VIEWPORT);
 		console.log('viewPortParameter: ' + viewPortParameter);
+		var boolParameter = gl.getParameter(gl.BOOL);
+		console.log('boolParameter: ' + boolParameter);
+		var SamplerCubeParameter = gl.getParameter(gl.SAMPLER_CUBE);
+		console.log('SamplerCubeParameter: ' + SamplerCubeParameter);
 
 		const isContextLostValue = gl.isContextLost();
 		console.info("isContextLostValue: " + isContextLostValue);
@@ -27024,9 +27030,11 @@ describe('webgl1Test_webgl1', function() {
 		gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.LOW_INT).rangeMin;
 		const min = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.LOW_INT).rangeMin;
 		const max = gl.getShaderPrecisionFormat(gl.VERTEX_SHADER, gl.MEDIUM_FLOAT).rangeMax;
+		const precision = gl.getShaderPrecisionFormat(gl.VERTEX_SHADER, gl.MEDIUM_FLOAT).precision;
 		expect(min).assertEqual(24);
 		expect(max).assertEqual(127);
-		done();
+		expect(precision).assertEqual(23);
+		done();	
 	});
 	
 	/**
@@ -27152,6 +27160,9 @@ describe('webgl1Test_webgl1', function() {
 	
 		var x8 = gl2.SYNC_FLAGS;
 		expect(x8).assertEqual(37141);
+
+		var x9 = gl2.OBJECT_TYPE;
+		expect(x9).assertEqual(37138);
 		
 		done();
 		
@@ -27165,11 +27176,15 @@ describe('webgl1Test_webgl1', function() {
 	it('testAttributeBase', 0, async function(done) {
 		console.info('jsWebGL testAttributeBase test start');
 		var attribute = gl.getContextAttributes();
-		expect(atttribute.desynchronized).assertEqual(false);
-		expect(atttribute.antialias).assertEqual(true);
-		expect(atttribute.premultipliedAlpha).assertEqual(true);
-		expect(atttribute.preserveDrawingBuffer).assertEqual(false);
-		expect(atttribute.failIfMajorPerformanceCaveat).assertEqual(false);
+		expect(attribute.alpha).assertEqual(true);
+		expect(attribute.antialias).assertEqual(true);
+		expect(attribute.depth).assertEqual(true);
+		expect(attribute.failIfMajorPerformanceCaveat).assertEqual(false);
+		expect(attribute.desynchronized).assertEqual(false);
+		expect(attribute.premultipliedAlpha).assertEqual(true);
+		expect(attribute.preserveDrawingBuffer).assertEqual(false);
+		expect(attribute.powerPreference).assertEqual("default");
+		expect(attribute.stencil).assertEqual(false);
 		done()
 	});
 })
