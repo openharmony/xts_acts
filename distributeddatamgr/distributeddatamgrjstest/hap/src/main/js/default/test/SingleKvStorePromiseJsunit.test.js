@@ -2657,4 +2657,79 @@ describe('SingleKvStorePromiseTest', function () {
         }
         done();
     })
+	
+    /**
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_CHANGENOTIFICATION_0100
+     * @tc.name [JS-API8]SingleKvStoreChangeNotification.
+     * @tc.desc Test Js Api SingleKvStoreChangeNotification testcase 001
+     */
+    it('testSingleKvStoreChangeNotification101', 0, async function (done) {
+        var getInsertEntries = new Promise((resolve, reject) => {
+            kvStore.on('dataChange', 0, function(ChangeNotification){
+                resolve(ChangeNotification.insertEntries);
+            });
+            kvStore.put("getInsertEntries", "byPut").then(() => {
+                console.info('testSingleKvStoreChangeNotification101 put success');
+            });
+        });
+        await getInsertEntries.then(function(insertEntries){
+            console.info('testSingleKvStoreChangeNotification101 getInsertEntries' + JSON.stringify(insertEntries));
+            expect(insertEntries).assertNotNull();
+        }).catch((error) => {
+            console.info('testSingleKvStoreChangeNotification101 can NOT getInsertEntries, fail:' + error);
+        });
+        done();
+    })
+	
+    /**
+    * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_CHANGENOTIFICATION_0200
+    * @tc.name [JS-API8]SingleKvStoreChangeNotification.
+    * @tc.desc Test Js Api SingleKvStoreChangeNotification testcase 002
+    */
+    it('testSingleKvStoreChangeNotification102', 0, async function (done) {
+        await kvStore.put('getUpdateEntries', 'byPut').then(() => {
+                console.info('testSingleKvStoreChangeNotification102 put success');
+        });
+        var getUpdateEntries = new Promise((resolve, reject) => {
+            kvStore.on('dataChange', 0, function(ChangeNotification){
+                resolve(ChangeNotification.updateEntries);
+            });
+            kvStore.put("getUpdateEntries", "byPut").then(() => {
+                console.info('testSingleKvStoreChangeNotification102 update success');
+            });
+        });
+        await getUpdateEntries.then(function(updateEntries){
+            console.info('testSingleKvStoreChangeNotification102 getUpdateEntries' + JSON.stringify(updateEntries));
+            expect(updateEntries).assertNotNull();
+        }).catch((error) => {
+            console.info('testSingleKvStoreChangeNotification102 can NOT getUpdateEntries, fail:' + error);
+        });
+        done();
+    })
+	
+    /**
+    * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_CHANGENOTIFICATION_0300
+    * @tc.name [JS-API8]SingleKvStoreChangeNotification.
+    * @tc.desc Test Js Api SingleKvStoreChangeNotification testcase 003
+    */
+    it('testSingleKvStoreChangeNotification103', 0, async function (done) {
+        await kvStore.put('deleteEntries', 'byPut').then(() => {
+            console.info('testSingleKvStoreChangeNotification103 put success');
+        });
+        var getdeleteEntries = new Promise((resolve, reject) => {
+            kvStore.on('dataChange', 0, function(ChangeNotification){
+                resolve(ChangeNotification.deleteEntries);
+            });
+            kvStore.delete("deleteEntries").then(() => {
+                console.info('testSingleKvStoreChangeNotification103 delete success');
+            });
+        });
+        await getdeleteEntries.then(function(deleteEntries){
+            console.info('testSingleKvStoreChangeNotification103 deleteEntries' + JSON.stringify(getdeleteEntries));
+            expect(deleteEntries != null).assertNotNull();
+        }).catch((error) => {
+            console.info('testSingleKvStoreChangeNotification103 can NOT getdeleteEntries, fail:' + error);
+        });
+        done();
+    })
 })
