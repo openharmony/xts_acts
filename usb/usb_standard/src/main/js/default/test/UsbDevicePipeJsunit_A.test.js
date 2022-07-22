@@ -20,12 +20,12 @@ import parameter from '@ohos.systemparameter';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 /* usb device pipe test */
-describe('UsbDevicePipeJsFunctionsTest', function () {
+describe('UsbDevicePipeJsFunctionsTestA', function () {
   var gDeviceList
   var gPipe
 
   beforeAll(function () {
-    console.log('*************Usb Unit UsbDevicePipeJsFunctionsTest Begin*************');
+    console.log('*************Usb Unit UsbDevicePipeJsFunctionsTestA Begin*************');
     var Version = usb.getVersion()
     console.info('usb unit begin test getversion :' + Version)
     // version > 17  host currentMode = 2 device currentMode = 1
@@ -59,7 +59,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   afterAll(function () {
     var isPipClose = usb.closePipe(gPipe)
     console.info('usb unit close gPipe ret : ' + isPipClose);
-    console.log('*************Usb Unit UsbDevicePipeJsFunctionsTest End*************');
+    console.log('*************Usb Unit UsbDevicePipeJsFunctionsTestA End*************');
   })
 
   function findInitPoint(testParam, j) {
@@ -445,7 +445,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number    : SUB_USB_control_transfer_test_04
    * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 GetInterface: cmd 10 reqType 129 value 0 index 1
+   * @tc.desc      : 控制传输 GetInterface: cmd 8 reqType 129 value 0 index 1
    */
   it('SUB_USB_control_transfer_test_04', 0, function () {
     console.info('usb control_transfer_test_04 begin');
@@ -483,7 +483,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number    : SUB_USB_control_transfer_test_06
    * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 ClearFeature: cmd 1 reqType 0 value 0 index 0
+   * @tc.desc      : 控制传输 ClearFeature: cmd 255 reqType 129 value 512 index 0
    */
    it('SUB_USB_control_transfer_test_06', 0, function () {
     console.info('usb control_transfer_test_06 begin');
@@ -502,7 +502,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number    : SUB_USB_control_transfer_test_07
    * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 ClearFeature: cmd 1 reqType 0 value 0 index 0
+   * @tc.desc      : 控制传输 ClearFeature: cmd 255 reqType 3 value 512 index 0
    */
    it('SUB_USB_control_transfer_test_07', 0, function () {
     console.info('usb control_transfer_test_07 begin');
@@ -521,7 +521,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number    : SUB_USB_control_transfer_test_08
    * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 ClearFeature: cmd 1 reqType 0 value 0 index 0
+   * @tc.desc      : 控制传输 ClearFeature: cmd 255 reqType 5 value 512 index 0
    */
     it('SUB_USB_control_transfer_test_08', 0, function () {
       console.info('usb control_transfer_test_08 begin');
@@ -540,7 +540,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number    : SUB_USB_control_transfer_test_09
    * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 ClearFeature: cmd 1 reqType 0 value 0 index 0
+   * @tc.desc      : 控制传输 ClearFeature: cmd 255 reqType 4 value 0 index 0
    */
       it('SUB_USB_control_transfer_test_09', 0, function () {
         console.info('usb control_transfer_test_09 begin');
