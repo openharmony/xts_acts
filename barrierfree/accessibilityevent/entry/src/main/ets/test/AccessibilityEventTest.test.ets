@@ -79,7 +79,7 @@ export default function abilityTest(abilityContext) {
         it('AccessibilityEventTest_0100', 0, async function (done) {
             console.info(`AccessibilityEventTest_0100`);
             let eventType = 'accessibilityFocus';
-            let event = new accessibility.EventInfo();
+            let event = new accessibility.EventInfo({});
             event.type = eventType;
             event.bundleName = targetBundleName;
             event.triggerAction = 'accessibilityFocus';
@@ -110,7 +110,7 @@ export default function abilityTest(abilityContext) {
         it('AccessibilityEventTest_0200', 0, async function (done) {
             console.info(`AccessibilityEventTest_0200`);
             let eventType = 'accessibilityFocusClear';
-            let event = new accessibility.EventInfo();
+            let event = new accessibility.EventInfo({});
             event.type = eventType;
             event.bundleName = targetBundleName;
             event.triggerAction = 'clearAccessibilityFocus';
@@ -141,7 +141,7 @@ export default function abilityTest(abilityContext) {
         it('AccessibilityEventTest_0300', 0, async function (done) {
             console.info(`AccessibilityEventTest_0300`);
             let eventType = 'click';
-            let event = new accessibility.EventInfo();
+            let event = new accessibility.EventInfo({});
             event.type = eventType;
             event.bundleName = targetBundleName;
             event.triggerAction = 'click';
@@ -172,7 +172,7 @@ export default function abilityTest(abilityContext) {
         it('AccessibilityEventTest_0400', 0, async function (done) {
             console.info(`AccessibilityEventTest_0400`);
             let eventType = 'longClick';
-            let event = new accessibility.EventInfo();
+            let event = new accessibility.EventInfo({});
             event.type = eventType;
             event.bundleName = targetBundleName;
             event.triggerAction = 'longClick';
@@ -203,7 +203,7 @@ export default function abilityTest(abilityContext) {
         it('AccessibilityEventTest_0500', 0, async function (done) {
             console.info(`AccessibilityEventTest_0500`);
             let eventType = 'focus';
-            let event = new accessibility.EventInfo();
+            let event = new accessibility.EventInfo({});
             event.type = eventType;
             event.bundleName = targetBundleName;
             event.triggerAction = 'focus';
@@ -234,7 +234,7 @@ export default function abilityTest(abilityContext) {
         it('AccessibilityEventTest_0600', 0, async function (done) {
             console.info(`AccessibilityEventTest_0600`);
             let eventType = 'select';
-            let event = new accessibility.EventInfo();
+            let event = new accessibility.EventInfo({});
             event.type = eventType;
             event.bundleName = targetBundleName;
             event.triggerAction = 'select';
@@ -265,7 +265,7 @@ export default function abilityTest(abilityContext) {
         it('AccessibilityEventTest_0700', 0, async function (done) {
             console.info(`AccessibilityEventTest_0700`);
             let eventType = 'hoverEnter';
-            let event = new accessibility.EventInfo();
+            let event = new accessibility.EventInfo({});
             event.type = eventType;
             event.bundleName = targetBundleName;
             event.triggerAction = 'focus';
@@ -296,7 +296,7 @@ export default function abilityTest(abilityContext) {
         it('AccessibilityEventTest_0800', 0, async function (done) {
             console.info(`AccessibilityEventTest_0800`);
             let eventType = 'hoverExit';
-            let event = new accessibility.EventInfo();
+            let event = new accessibility.EventInfo({});
             event.type = eventType;
             event.bundleName = targetBundleName;
             event.triggerAction = 'focus';
@@ -327,7 +327,7 @@ export default function abilityTest(abilityContext) {
         it('AccessibilityEventTest_0900', 0, async function (done) {
             console.info(`AccessibilityEventTest_0900`);
             let eventType = 'textUpdate';
-            let event = new accessibility.EventInfo();
+            let event = new accessibility.EventInfo({});
             event.type = eventType;
             event.bundleName = targetBundleName;
             event.triggerAction = 'cut';
@@ -358,7 +358,7 @@ export default function abilityTest(abilityContext) {
         it('AccessibilityEventTest_1000', 0, async function (done) {
             console.info(`AccessibilityEventTest_1000`);
             let eventType = 'textSelectionUpdate';
-            let event = new accessibility.EventInfo();
+            let event = new accessibility.EventInfo({});
             event.type = eventType;
             event.bundleName = targetBundleName;
             event.triggerAction = 'setSelection';
@@ -389,7 +389,7 @@ export default function abilityTest(abilityContext) {
         it('AccessibilityEventTest_1100', 0, async function (done) {
             console.info(`AccessibilityEventTest_1100`);
             let eventType = 'scroll';
-            let event = new accessibility.EventInfo();
+            let event = new accessibility.EventInfo({});
             event.type = eventType;
             event.bundleName = targetBundleName;
             event.triggerAction = 'scrollForward';
