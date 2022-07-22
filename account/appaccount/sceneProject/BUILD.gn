@@ -19,12 +19,12 @@ group("appaccount_scene") {
     deps = [
       "actsaccountaccessibleFirst:ActsAccountAccessibleFirst",
       "actsaccountaccessibleSecond:ActsAccountAccessibleSecond",
+      "actsaccountauthenticator:ActsAccountAuthenticator",
       "actsaccountoauthtoken:ActsAccountOauthtoken",
       "actsaccountsceneaccessible:ActsAccountSceneAccessible",
       "actsaccountsceneappaccess:ActsAccountSceneAppAccess",
       "actsaccountsceneonoff:ActsAccountSceneOnOff",
       "actsscenegetallaccounts:ActsSceneGetAllAccounts",
-      "actsaccountauthenticator:ActsAccountAuthenticator"
     ]
   }
 }
