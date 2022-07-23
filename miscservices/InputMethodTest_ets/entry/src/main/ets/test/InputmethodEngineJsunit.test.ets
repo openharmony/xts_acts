@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'hypium/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index';
 import inputMethodEngine from '@ohos.inputmethodengine';
 import Utils from './Utils';
 import router from '@system.router';
@@ -26,7 +26,7 @@ export default function inputMethodEngineJsunit() {
     var textInputClient = null;
     var kbController = null;
 
-    console.log("************* inputMethodEngine Test start*************");
+    console.info("************* inputMethodEngine Test start*************");
     beforeEach(async function (done) {
       let options = {
         uri: 'pages/input',
@@ -45,22 +45,22 @@ export default function inputMethodEngineJsunit() {
     });
 
     afterEach(async function () {
-      console.log("inputMethodEngine afterEach start:" + inputMethodEngineObject);
+      console.info("inputMethodEngine afterEach start:" + inputMethodEngineObject);
       await Utils.sleep(1000);
     });
 
     it('inputMethodEngine_test_000', 0, async function (done) {
       inputMethodEngineObject.on('inputStart', (kbController, textInputClient) => {
-        console.log("inputMethodEngine beforeEach inputStart:" + JSON.stringify(kbController));
-        console.log("inputMethodEngine beforeEach inputStart:" + JSON.stringify(textInputClient));
+        console.info("inputMethodEngine beforeEach inputStart:" + JSON.stringify(kbController));
+        console.info("inputMethodEngine beforeEach inputStart:" + JSON.stringify(textInputClient));
         textInputClient = textInputClient;
         kbController = kbController;
       });
       inputMethodEngineObject.on('keyboardShow', (err) => {
-        console.log("inputMethodEngine beforeEach keyboardShow:" + err);
+        console.info("inputMethodEngine beforeEach keyboardShow:" + err);
       });
       inputMethodEngineObject.on('keyboardHide', (err) => {
-        console.log("inputMethodEngine beforeEach keyboardHide:" + err);
+        console.info("inputMethodEngine beforeEach keyboardHide:" + err);
       });
       mKeyboardDelegate = inputMethodEngine.createKeyboardDelegate();
       mKeyboardDelegate.on('keyDown', (keyEvent) => {
@@ -80,200 +80,200 @@ export default function inputMethodEngineJsunit() {
 
       });
       mKeyboardDelegate.on('cursorContextChange', (x, y, height) => {
-        console.log("inputMethodEngine beforeEach cursorContextChange x:" + x);
-        console.log("inputMethodEngine beforeEach cursorContextChange y:" + y);
-        console.log("inputMethodEngine beforeEach cursorContextChange height:" + height);
+        console.info("inputMethodEngine beforeEach cursorContextChange x:" + x);
+        console.info("inputMethodEngine beforeEach cursorContextChange y:" + y);
+        console.info("inputMethodEngine beforeEach cursorContextChange height:" + height);
       });
       mKeyboardDelegate.on('selectionChange', (oldBegin, oldEnd, newBegin, newEnd) => {
-        console.log("inputMethodEngine beforeEach selectionChange oldBegin:" + oldBegin);
-        console.log("inputMethodEngine beforeEach selectionChange oldEnd:" + oldEnd);
-        console.log("inputMethodEngine beforeEach selectionChange newBegin:" + newBegin);
-        console.log("inputMethodEngine beforeEach selectionChange newEnd:" + newEnd);
+        console.info("inputMethodEngine beforeEach selectionChange oldBegin:" + oldBegin);
+        console.info("inputMethodEngine beforeEach selectionChange oldEnd:" + oldEnd);
+        console.info("inputMethodEngine beforeEach selectionChange newBegin:" + newBegin);
+        console.info("inputMethodEngine beforeEach selectionChange newEnd:" + newEnd);
       });
       mKeyboardDelegate.on('textChange', (text) => {
-        console.log("inputMethodEngine beforeEach textChange:" + text);
+        console.info("inputMethodEngine beforeEach textChange:" + text);
       });
       done();
     });
 
     it('inputMethodEngine_test_001', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED;
-      console.log("inputMethodEngine_test_001 result:" + keyType);
+      console.info("inputMethodEngine_test_001 result:" + keyType);
       expect(keyType).assertEqual(0);
       done();
     });
 
     it('inputMethodEngine_test_002', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_GO;
-      console.log("inputMethodEngine_test_002 result:" + keyType);
+      console.info("inputMethodEngine_test_002 result:" + keyType);
       expect(keyType).assertEqual(2);
       done();
     });
 
     it('inputMethodEngine_test_003', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_SEARCH;
-      console.log("inputMethodEngine_test_003 result:" + keyType);
+      console.info("inputMethodEngine_test_003 result:" + keyType);
       expect(keyType).assertEqual(3);
       done();
     });
 
     it('inputMethodEngine_test_004', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_SEND;
-      console.log("inputMethodEngine_test_004 result:" + keyType);
+      console.info("inputMethodEngine_test_004 result:" + keyType);
       expect(keyType).assertEqual(4);
       done();
     });
 
     it('inputMethodEngine_test_005', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_NEXT;
-      console.log("inputMethodEngine_test_005 result:" + keyType);
+      console.info("inputMethodEngine_test_005 result:" + keyType);
       expect(keyType).assertEqual(5);
       done();
     });
 
     it('inputMethodEngine_test_006', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_DONE;
-      console.log("inputMethodEngine_test_006 result:" + keyType);
+      console.info("inputMethodEngine_test_006 result:" + keyType);
       expect(keyType).assertEqual(6);
       done();
     });
 
     it('inputMethodEngine_test_007', 0, async function (done) {
       let keyType = inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS;
-      console.log("inputMethodEngine_test_007 result:" + keyType);
+      console.info("inputMethodEngine_test_007 result:" + keyType);
       expect(keyType).assertEqual(7);
       done();
     });
 
     it('inputMethodEngine_test_008', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_NULL;
-      console.log("inputMethodEngine_test_008 result:" + keyType);
+      console.info("inputMethodEngine_test_008 result:" + keyType);
       expect(keyType).assertEqual(-1);
       done();
     });
 
     it('inputMethodEngine_test_009', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_TEXT;
-      console.log("inputMethodEngine_test_009 result:" + keyType);
+      console.info("inputMethodEngine_test_009 result:" + keyType);
       expect(keyType).assertEqual(0);
       done();
     });
 
     it('inputMethodEngine_test_010', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_NUMBER;
-      console.log("inputMethodEngine_test_010 result:" + keyType);
+      console.info("inputMethodEngine_test_010 result:" + keyType);
       expect(keyType).assertEqual(2);
       done();
     });
 
     it('inputMethodEngine_test_011', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_PHONE;
-      console.log("inputMethodEngine_test_011 result:" + keyType);
+      console.info("inputMethodEngine_test_011 result:" + keyType);
       expect(keyType).assertEqual(3);
       done();
     });
 
     it('inputMethodEngine_test_012', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_DATETIME;
-      console.log("inputMethodEngine_test_012 result:" + keyType);
+      console.info("inputMethodEngine_test_012 result:" + keyType);
       expect(keyType).assertEqual(4);
       done();
     });
 
     it('inputMethodEngine_test_013', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_EMAIL;
-      console.log("inputMethodEngine_test_013 result:" + keyType);
+      console.info("inputMethodEngine_test_013 result:" + keyType);
       expect(keyType).assertEqual(5);
       done();
     });
 
     it('inputMethodEngine_test_014', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_URI;
-      console.log("inputMethodEngine_test_014 result:" + keyType);
+      console.info("inputMethodEngine_test_014 result:" + keyType);
       expect(keyType).assertEqual(6);
       done();
     });
 
     it('inputMethodEngine_test_015', 0, async function (done) {
       let keyType = inputMethodEngine.PATTERN_PASSWORD;
-      console.log("inputMethodEngine_test_015 result:" + keyType);
+      console.info("inputMethodEngine_test_015 result:" + keyType);
       expect(keyType).assertEqual(7);
       done();
     });
 
     it('inputMethodEngine_test_016', 0, async function (done) {
       let keyType = inputMethodEngine.FLAG_SELECTING;
-      console.log("inputMethodEngine_test_016 result:" + keyType);
+      console.info("inputMethodEngine_test_016 result:" + keyType);
       expect(keyType).assertEqual(2);
       done();
     });
 
     it('inputMethodEngine_test_017', 0, async function (done) {
       let keyType = inputMethodEngine.FLAG_SINGLE_LINE;
-      console.log("inputMethodEngine_test_017 result:" + keyType);
+      console.info("inputMethodEngine_test_017 result:" + keyType);
       expect(keyType).assertEqual(1);
       done();
     });
 
     it('inputMethodEngine_test_018', 0, async function (done) {
       let keyType = inputMethodEngine.DISPLAY_MODE_PART;
-      console.log("inputMethodEngine_test_018 result:" + keyType);
+      console.info("inputMethodEngine_test_018 result:" + keyType);
       expect(keyType).assertEqual(0);
       done();
     });
 
     it('inputMethodEngine_test_019', 0, async function (done) {
       let keyType = inputMethodEngine.DISPLAY_MODE_FULL;
-      console.log("inputMethodEngine_test_019 result:" + keyType);
+      console.info("inputMethodEngine_test_019 result:" + keyType);
       expect(keyType).assertEqual(1);
       done();
     });
 
     it('inputMethodEngine_test_020', 0, async function (done) {
       let keyType = inputMethodEngine.OPTION_ASCII;
-      console.log("inputMethodEngine_test_020 result:" + keyType);
+      console.info("inputMethodEngine_test_020 result:" + keyType);
       expect(keyType).assertEqual(20);
       done();
     });
 
     it('inputMethodEngine_test_021', 0, async function (done) {
       let keyType = inputMethodEngine.OPTION_NONE;
-      console.log("inputMethodEngine_test_021 result:" + keyType);
+      console.info("inputMethodEngine_test_021 result:" + keyType);
       expect(keyType).assertEqual(0);
       done();
     });
 
     it('inputMethodEngine_test_022', 0, async function (done) {
       let keyType = inputMethodEngine.OPTION_AUTO_CAP_CHARACTERS;
-      console.log("inputMethodEngine_test_022 result:" + keyType);
+      console.info("inputMethodEngine_test_022 result:" + keyType);
       expect(keyType).assertEqual(2);
       done();
     });
 
     it('inputMethodEngine_test_023', 0, async function (done) {
       let keyType = inputMethodEngine.OPTION_AUTO_CAP_SENTENCES;
-      console.log("inputMethodEngine_test_023 result:" + keyType);
+      console.info("inputMethodEngine_test_023 result:" + keyType);
       expect(keyType).assertEqual(8);
       done();
     });
 
     it('inputMethodEngine_test_024', 0, async function (done) {
       let keyType = inputMethodEngine.OPTION_AUTO_WORDS;
-      console.log("inputMethodEngine_test_024 result:" + keyType);
+      console.info("inputMethodEngine_test_024 result:" + keyType);
       expect(keyType).assertEqual(4);
       done();
     });
 
     it('inputMethodEngine_test_025', 0, async function (done) {
       let keyType = inputMethodEngine.OPTION_MULTI_LINE;
-      console.log("inputMethodEngine_test_025 result:" + keyType);
+      console.info("inputMethodEngine_test_025 result:" + keyType);
       expect(keyType).assertEqual(1);
       done();
     });
 
     it('inputMethodEngine_test_026', 0, async function (done) {
       let keyType = inputMethodEngine.OPTION_NO_FULLSCREEN;
-      console.log("inputMethodEngine_test_026 result:" + keyType);
+      console.info("inputMethodEngine_test_026 result:" + keyType);
       expect(keyType).assertEqual(10);
       done();
     });
@@ -304,7 +304,7 @@ export default function inputMethodEngineJsunit() {
         expect(textInputClient == null).assertEqual(true);
       } else {
         textInputClient.sendKeyFunction(0, (value) => {
-          console.log("inputMethodEngine_test_028 textInputClient sendKeyFunction:" + value);
+          console.info("inputMethodEngine_test_028 textInputClient sendKeyFunction:" + value);
           expect(value).assertEqual(true);
         });
       }
@@ -332,7 +332,7 @@ export default function inputMethodEngineJsunit() {
         expect(textInputClient == null).assertEqual(true);
       } else {
         textInputClient.deleteForward(1, (value) => {
-          console.log("inputMethodEngine_test_030 deleteForward:" + value);
+          console.info("inputMethodEngine_test_030 deleteForward:" + value);
           expect(value).assertEqual(true);
         });
       }
@@ -360,7 +360,7 @@ export default function inputMethodEngineJsunit() {
         expect(textInputClient == null).assertEqual(true);
       } else {
         textInputClient.deleteBackward(1, (value) => {
-          console.log("inputMethodEngine_test_032 deleteBackward:" + value);
+          console.info("inputMethodEngine_test_032 deleteBackward:" + value);
           expect(value).assertEqual(true);
         });
       }
@@ -388,7 +388,7 @@ export default function inputMethodEngineJsunit() {
         expect(textInputClient == null).assertEqual(true);
       } else {
         textInputClient.InsertText('test', (value) => {
-          console.log("inputMethodEngine_test_034 InsertText:" + value);
+          console.info("inputMethodEngine_test_034 InsertText:" + value);
           expect(value).assertEqual(true);
         });
       }
@@ -416,7 +416,7 @@ export default function inputMethodEngineJsunit() {
         expect(textInputClient == null).assertEqual(true);
       } else {
         textInputClient.getForward(1, (value) => {
-          console.log("inputMethodEngine_test_036 getForward:" + value);
+          console.info("inputMethodEngine_test_036 getForward:" + value);
           expect(value).assertEqual(true);
         });
       }
@@ -444,7 +444,7 @@ export default function inputMethodEngineJsunit() {
         expect(textInputClient == null).assertEqual(true);
       } else {
         textInputClient.getEditorAttribute(1, (editorAttribute) => {
-          console.log("inputMethodEngine_test_038 getEditorAttribute:" + value);
+          console.info("inputMethodEngine_test_038 getEditorAttribute:" + value);
           expect(editorAttribute.inputPattern).assertEqual(1);
           expect(editorAttribute.enterKeyType).assertEqual(1);
         });
@@ -474,7 +474,7 @@ export default function inputMethodEngineJsunit() {
         expect(kbController == null).assertEqual(true);
       } else {
         kbController.hideKeyboard(() => {
-          console.log("inputMethodEngine_test_040 hideKeyboard:" + value);
+          console.info("inputMethodEngine_test_040 hideKeyboard:" + value);
           expect(1 == 1).assertTrue();
         });
       }
@@ -524,6 +524,41 @@ export default function inputMethodEngineJsunit() {
       }
       done();
     });
+
+    it('inputMethodEngine_test_044', 0, async function (done) {
+      let keyType = inputMethodEngine.WINDOW_TYPE_INPUT_METHOD_FLOAT;
+      console.error("inputMethodEngine_test_044 result:" + keyType);
+      expect(keyType == null).assertTrue();
+      done();
+    });
+
+    it('inputMethodEngine_test_045', 0, async function (done) {
+      if (textInputClient == null) {
+        expect(textInputClient == null).assertEqual(true);
+      } else {
+        textInputClient.moveCursor(1, (value) => {
+          console.info("inputMethodEngine_test_045 getBackward:" + value);
+          expect(value == null).assertEqual(true);
+        });
+      }
+      done();
+    });
+
+    it('inputMethodEngine_test_046', 0, async function (done) {
+      if (textInputClient == null) {
+        expect(textInputClient == null).assertEqual(true);
+      } else {
+        let promise = textInputClient.moveCursor(1);
+        promise.then(res => {
+          console.info("inputMethodEngine_test_046 getBackward promise result-----" + JSON.stringify(res));
+          expect(res == null).assertEqual(true);
+        }).catch(err => {
+          console.info("inputMethodEngine_test_046 getBackward promise error----" + JSON.stringify(err));
+          expect().assertFail();
+        });
+      }
+      done();
+    })
 
   })
 }
