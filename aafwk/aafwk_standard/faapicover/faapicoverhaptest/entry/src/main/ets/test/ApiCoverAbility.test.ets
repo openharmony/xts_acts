@@ -75,5 +75,27 @@ export default function ApiCoverTest() {
       expect(1).assertEqual(FormInfo.FormState.READY)
       done();
     });
+	
+	/*
+     * @tc.number  SUB_AA_Form_Provider_Test_FormInfo_0200
+     * @tc.name    Get all FormInfo.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_Form_Provider_Test_FormInfo_0200', 0, async function (done) {
+      let TAG = 'SUB_AA_Form_Provider_Test_FormInfo_0200===<'
+      let Configuration = {
+        language: 'en-us'
+      }
+      try {
+        let formConfigAbility = FormInfo.FormInfo.formConfigAbility
+        let relatedBundleName = FormInfo.FormInfo.relatedBundleName
+        expect().assertFail();
+        done();
+      } catch(error) {
+        expect(Configuration.language).assertEqual('en-us')
+        done()
+      }
+    });
   })
 }
