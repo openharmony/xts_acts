@@ -71,6 +71,10 @@ describe('WallpaperJsunitTest', function () {
         await wallpaper.getColors(WALLPAPER_SYSTEM, function (err, data) {
             console.info('wallpaperXTS ===> testGetColorsCallbackSystem err : ' + JSON.stringify(err));
             console.info('wallpaperXTS ===> testGetColorsCallbackSystem data : ' + JSON.stringify(data));
+            expect(data[0].red != -1).assertTrue();
+            expect(data[0].green != -1).assertTrue();
+            expect(data[0].blue != -1).assertTrue();
+            expect(data[0].alpha != -1).assertTrue();
             if (err) {
                 expect(null).assertFail();
             }
