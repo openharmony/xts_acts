@@ -947,6 +947,9 @@ describe('webgl1Test_webgl15', function() {
 		var x8 = gl2.SYNC_FLAGS;
 		expect(x8).assertEqual(37141);
 
+		var x9 = gl2.OBJECT_TYPE;
+		expect(x9).assertEqual(37138);
+
 		done();
 	});
 })
