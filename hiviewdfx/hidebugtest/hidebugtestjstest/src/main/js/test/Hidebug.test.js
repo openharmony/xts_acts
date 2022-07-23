@@ -20,60 +20,60 @@ export default function HidebugJsTest() {
 describe('HidebugJsTest', function () {
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0001
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0600
      * @tc.name      : getNativeHeapSize
      * @tc.desc      : Get total native heap memory size
      */
-    it('DFX_DFR_Hiprofiler_Interface_0001', 0, function() {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0001 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_0600', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0600 Test start*************');
         try {
             let heapSize = hidebug.getNativeHeapSize();
             expect(heapSize>=BigInt(0)).assertTrue();
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0001 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0600 Test end*************');
     });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0002
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0400
      * @tc.name      : getNativeHeapAllocatedSize
      * @tc.desc      : Get Native heap memory allocation size.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0002', 0, function() {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0002 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_0400', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0400 Test start*************');
         try {
             let heapAllocatedSize = hidebug.getNativeHeapAllocatedSize();
             expect(heapAllocatedSize>=BigInt(0)).assertTrue();
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0002 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0400 Test end*************');
     });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0003
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0500
      * @tc.name      : getNativeHeapFreeSize
      * @tc.desc      : Get Native heap memory free size
      */
-    it('DFX_DFR_Hiprofiler_Interface_0003', 0, function() {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0003 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_0500', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0500 Test start*************');
         try {
             let heapFreeSize = hidebug.getNativeHeapFreeSize();
             expect(heapFreeSize>=BigInt(0)).assertTrue();
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0003 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0500 Test end*************');
     });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0004
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0800
      * @tc.name      : getPss
      * @tc.desc      : Get application process proportional set size memory information
      */
-    it('DFX_DFR_Hiprofiler_Interface_0004', 0, async function (done) {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0004 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_0800', 0, async function (done) {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0800 Test start*************');
         try {
             const times = 3;
             let pssValue = BigInt(0);
@@ -87,17 +87,17 @@ describe('HidebugJsTest', function () {
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0004 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0800 Test end*************');
         done();
     });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0005
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_1200
      * @tc.name      : getSharedDirty
      * @tc.desc      : Obtains the size of the shared dirty memory of a process.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0005', 0, async function (done) {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0005 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_1200', 0, async function (done) {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1200 Test start*************');
         try {
             let dirty = hidebug.getSharedDirty();
             let temp = hidebug.getSharedDirty();
@@ -105,17 +105,17 @@ describe('HidebugJsTest', function () {
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0005 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1200 Test end*************');
         done();
     });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0006
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_1600
      * @tc.name      : startProfiling with normal parameter
      * @tc.desc      : Start CPU Profiling.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0006', 0, async function (done) {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0006 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_1600', 0, async function (done) {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1600 Test start*************');
         try {
             let timestamp = Date.now();
             let filename = 'cpuprofiler-' + timestamp.toString();
@@ -129,17 +129,17 @@ describe('HidebugJsTest', function () {
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0006 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1600 Test end*************');
         done();
     });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0007
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_1500
      * @tc.name      : startProfiling repeatedly
      * @tc.desc      : Start CPU Profiling.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0007', 0, async function (done) {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0007 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_1500', 0, async function (done) {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1500 Test start*************');
         try {
             let path1 = '/data/app/el2/100/base/com.hidebug.test/files/cpuprofiler-111.json'
             let path2 = '/data/app/el2/100/base/com.hidebug.test/files/cpuprofiler-222.json'
@@ -157,17 +157,17 @@ describe('HidebugJsTest', function () {
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0007 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1500 Test end*************');
         done();
     });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0008
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_1400
      * @tc.name      : startProfiling with empty parameter
      * @tc.desc      : Start CPU Profiling.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0008', 0, async function (done) {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0008 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_1400', 0, async function (done) {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1400 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.json'
         try {
             fileio.accessSync(path, 0);
@@ -185,17 +185,17 @@ describe('HidebugJsTest', function () {
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0008 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1400 Test end*************');
         done();
     });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0009
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_1300
      * @tc.name      : startProfiling with overlong parameter
      * @tc.desc      : Start CPU Profiling.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0009', 0, async function (done) {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0009 Test start*************');
+    it('cDFX_DFR_Hiprofiler_Interface_1300', 0, async function (done) {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1300 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.json'
         try {
             fileio.accessSync(path, 0);
@@ -217,17 +217,17 @@ describe('HidebugJsTest', function () {
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0009 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1300 Test end*************');
         done();
     });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0010
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0300
      * @tc.name      : dumpHeapData with normal parameter
      * @tc.desc      : Dump JS Virtual Machine Heap Snapshot.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0010', 0, async function (done) {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0010 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_0300', 0, async function (done) {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0300 Test start*************');
         try {
             let timestamp = Date.now();
             let filename = 'heap-' + timestamp.toString();
@@ -239,17 +239,17 @@ describe('HidebugJsTest', function () {
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0010 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0300 Test end*************');
         done();
       });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0011
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0200
      * @tc.name      : dumpHeapData with empty parameter
      * @tc.desc      : Dump JS Virtual Machine Heap Snapshot.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0011', 0, async function (done) {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0011 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_0200', 0, async function (done) {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0200 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.heapsnapshot'
         try {
             fileio.accessSync(path, 0);
@@ -265,17 +265,17 @@ describe('HidebugJsTest', function () {
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0011 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0200 Test end*************');
         done();
       });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0012
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0100
      * @tc.name      : dumpHeapData with overlog parameter
      * @tc.desc      : Dump JS Virtual Machine Heap Snapshot.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0012', 0, async function (done) {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0012 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_0100', 0, async function (done) {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0100 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.heapsnapshot'
         try {
             fileio.accessSync(path, 0);
@@ -295,33 +295,33 @@ describe('HidebugJsTest', function () {
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0012 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0100 Test end*************');
         done();
     });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0013
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0700
      * @tc.name      : getPrivateDirty
      * @tc.desc      : Get the size of the private dirty memory
      */
-    it('DFX_DFR_Hiprofiler_Interface_0013', 0, function() {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0013 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_0700', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0700 Test start*************');
         try {
             let temp = hidebug.getPrivateDirty();
             expect(temp>=BigInt(0)).assertTrue();
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0013 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0700 Test end*************');
     });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0014
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_1700
      * @tc.name      : getCpuUsage
      * @tc.desc      : Get the cpu usage of a process
      */
-    it('DFX_DFR_Hiprofiler_Interface_0014', 0, function() {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0014 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_1700', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1700 Test start*************');
         try {
             let temp = -1;
             for(let i=0;i<=101;i++){
@@ -336,16 +336,16 @@ describe('HidebugJsTest', function () {
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0014 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1700 Test end*************');
     });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0015
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_1100
      * @tc.name      : getServiceDump with normal parameter
      * @tc.desc      : getServiceDump
      */
-    it('DFX_DFR_Hiprofiler_Interface_0015', 0, function() {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0015 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_1100', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1100 Test start*************');
         try {
             let temp = hidebug.getServiceDump(10);
             console.info("ServiceDump is " + temp);
@@ -353,16 +353,16 @@ describe('HidebugJsTest', function () {
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0015 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1100 Test end*************');
     });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0016
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0900
      * @tc.name      : getServiceDump with abnormal parameter
      * @tc.desc      : getServiceDump
      */
-    it('DFX_DFR_Hiprofiler_Interface_0016', 0, function() {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0016 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_0900', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0900 Test start*************');
         try {
             let temp = hidebug.getServiceDump(-1);
             console.info("ServiceDump is " + temp);
@@ -370,16 +370,16 @@ describe('HidebugJsTest', function () {
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0016 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_0900 Test end*************');
     });
 
     /*
-     * @tc.number    : DFX_DFR_Hiprofiler_Interface_0017
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_1000
      * @tc.name      : getServiceDump with overlog parameter
      * @tc.desc      : getServiceDump
      */
-    it('DFX_DFR_Hiprofiler_Interface_0017', 0, function() {
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0017 Test start*************');
+    it('DFX_DFR_Hiprofiler_Interface_1000', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1000 Test start*************');
         try {
             let temp = hidebug.getServiceDump(9007199254740993);
             console.info("ServiceDump is " + temp);
@@ -387,7 +387,7 @@ describe('HidebugJsTest', function () {
         } catch (error) {
             expect().assertFail();
         }
-        console.log('************* DFX_DFR_Hiprofiler_Interface_0017 Test end*************');
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1000 Test end*************');
     });
     
 })
