@@ -14,8 +14,9 @@
  */
 
 import image from '@ohos.multimedia.image'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
+export default function Image() {
 describe('Image', function () {
 
     beforeAll(async function () {
@@ -864,4 +865,4 @@ describe('Image', function () {
         let packOpts = { format: "image/jpeg", quality: 99 }
         yuvToJpegByImageSourceCallback_fail(done, 'SUB_IMAGE_yuv_imagesource_CB_008', sourceOptions, packOpts, yuvData)
     })
-})
+})}

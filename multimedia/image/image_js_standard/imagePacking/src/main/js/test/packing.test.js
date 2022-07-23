@@ -15,9 +15,10 @@
 
 import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
-describe('Image', function () {
+export default function Image_test() {
+describe('Image_test', function () {
 
     beforeAll(async function () {
         await applyPermission();
@@ -530,4 +531,4 @@ describe('Image', function () {
         packing_cb_fail(done, 'SUB_IMAGE_packing_CB_010', 5, packOpts)
     })
 
-})
+})}

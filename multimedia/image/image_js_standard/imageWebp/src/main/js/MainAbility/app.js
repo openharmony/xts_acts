@@ -13,7 +13,11 @@
  * limitations under the License.
  */
 
-import Image_test from './webp.test.js'
-export default function testsuite() {
-    Image_test()
-}
+export default {
+    onCreate() {
+        console.info('AceApplication onCreate');
+    },
+    onDestroy() {
+        console.info('AceApplication onDestroy');
+    }
+};
