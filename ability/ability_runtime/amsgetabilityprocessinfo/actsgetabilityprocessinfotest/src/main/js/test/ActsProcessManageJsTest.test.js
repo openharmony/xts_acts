@@ -40,7 +40,7 @@ describe('ActsAbilityRunningInfosTest', function () {
         console.log('ACTS_getProcessRunningInfos_0100====<begin');
         var data = await appManager.getProcessRunningInfos()
         console.info('====> ACTS_getProcessRunningInfos_0100 ====>' + JSON.stringify(data))
-        expect(checkRunningProcess('com.ohos.launcher', data)).assertTrue();
+        expect(checkRunningProcess('com.example.abilityrunninginfostest', data)).assertTrue();
         done();
     })
 
