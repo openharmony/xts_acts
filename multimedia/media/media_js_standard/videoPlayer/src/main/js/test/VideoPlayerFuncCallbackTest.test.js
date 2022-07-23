@@ -15,8 +15,9 @@
 
 import media from '@ohos.multimedia.media'
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
+export default function VideoPlayerFuncCallbackTest() {
 describe('VideoPlayerFuncCallbackTest', function () {
     const VIDEO_SOURCE = 'H264_AAC.mp4';
     const PLAY_TIME = 3000;
@@ -645,3 +646,4 @@ describe('VideoPlayerFuncCallbackTest', function () {
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done); 
     })
 })
+}
