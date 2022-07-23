@@ -53,7 +53,7 @@
         "launchType": "singleton",
         "process": "processTestAbility",
         "permissions": ["ohos.permission.ACCELEROMETER"],
-        "deviceCapability": ["ability_base","ability_runtime"],
+        "deviceCapability": ["SystemCapability.Ability.AbilityBase"],
         "uri": "uriTest",
         "visible": true
       }
